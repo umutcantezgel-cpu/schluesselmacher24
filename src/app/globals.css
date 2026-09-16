@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   SCHLÜSSELMACHER24 — Designsystem
+   Ruhig, technisch, fachlich. Graphit + Stahlblau auf kühlem Off-White.
+   Bewusst KEINE Notdienst-Optik (kein Gelb/Schwarz, keine Signalfarben
+   als Flächen).
+   ========================================================================== */
+
+@layer base {
+  :root {
+    /* Flächen */
+    --background: 210 20% 98%;
+    --surface: 0 0% 100%;
+    --surface-muted: 210 20% 96%;
+    --surface-sunken: 213 18% 93%;
+    --surface-ink: 215 28% 15%;
+
+    /* Text */
+    --foreground: 215 28% 15%;
+    --foreground-muted: 215 14% 42%;
+    --foreground-subtle: 215 12% 56%;
+    --foreground-inverse: 210 20% 98%;
+
+    /* Linien */
+    --border: 214 16% 88%;
+    --border-strong: 214 14% 76%;
+    --input: 214 16% 88%;
+    --ring: 211 62% 34%;
+
+    /* Primär — Stahlblau */
+    --primary: 211 62% 34%;
+    --primary-hover: 211 62% 28%;
+    --primary-soft: 211 58% 95%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Sekundär */
+    --secondary: 213 18% 93%;
+    --secondary-foreground: 215 28% 15%;
+
+    /* Akzent — Technisch-Teal, sparsam für Bestätigungen */
+    --accent: 188 52% 30%;
+    --accent-soft: 188 44% 94%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Funktionsfarben — nur für Status, nie als Markenfläche */
+    --success: 152 48% 30%;
+    --success-soft: 152 44% 94%;
+    --warning: 35 72% 38%;
+    --warning-soft: 38 70% 95%;
+    --danger: 0 58% 42%;
+    --danger-soft: 0 60% 96%;
+    --info: 211 62% 34%;
+    --info-soft: 211 58% 95%;
+
+    /* Karten / Popover */
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 15%;
+    --muted: 213 18% 93%;
+    --muted-foreground: 215 14% 42%;
+    --destructive: 0 58% 42%;
+    --destructive-foreground: 0 0% 100%;
+
+    --radius: 0.75rem;
+
+    /* Layout */
+    --header-height: 4rem;
+    --header-height-md: 5rem;
+    --shell-max: 1240px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-foreground;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Sichtbarer Fokus — Pflicht für Tastaturbedienung */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Eingabefelder auf iOS nicht zoomen lassen (min. 16px) */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  @media (min-width: 768px) {
+    input,
+    select,
+    textarea {
+      font-size: inherit;
+    }
+  }
+}
+
+@layer components {
+  /* Seitenbreite — einheitlich für alle Bereiche */
+  .shell {
+    @apply w-full mx-auto px-5 sm:px-6 lg:px-8;
+    max-width: var(--shell-max);
+  }
+
+  .shell-wide {
+    @apply w-full mx-auto px-5 sm:px-6 lg:px-8;
+    max-width: 1440px;
+  }
+
+  /* Vertikaler Rhythmus */
+  .section {
+    @apply py-14 md:py-20;
+  }
+
+  .section-tight {
+    @apply py-10 md:py-14;
+  }
+
+  /* Kleine Überschrift über der Hauptüberschrift */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary;
+  }
+
+  /* Fließtext in redaktionellen Bereichen */
+  .prose-sm24 {
+    @apply text-[15px] leading-relaxed text-foreground-muted;
+  }
+
+  .prose-sm24 p + p {
+    @apply mt-4;
+  }
+
+  .prose-sm24 ul {
+    @apply mt-4 space-y-2 list-disc pl-5;
+  }
+
+  .prose-sm24 h2 {
+    @apply mt-10 mb-3 text-xl font-bold text-foreground;
+  }
+
+  .prose-sm24 h3 {
+    @apply mt-8 mb-2 text-base font-bold text-foreground;
+  }
+
+  /* Tabellen auf schmalen Geräten horizontal scrollbar halten */
+  .table-scroll {
+    @apply w-full overflow-x-auto -mx-5 px-5 sm:mx-0 sm:px-0;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Sicherer Abstand über der mobilen Aktionsleiste */
+  .pb-safe-nav {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+
+  @media (min-width: 768px) {
+    .pb-safe-nav {
+      padding-bottom: 0;
+    }
+  }
+
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Bewegung reduzieren — Layout darf dadurch nicht brechen */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

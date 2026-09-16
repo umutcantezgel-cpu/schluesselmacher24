@@ -1,0 +1,3122 @@
+[
+  {
+    "id": "ms-01",
+    "slug": "ms-01",
+    "name": "Büroschrank und Rollcontainer — Serie MS-01",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Möbel- und Büroschloss: Büroschrank und Rollcontainer",
+    "keyType": "Möbelschlüssel",
+    "description": "Nachschlüssel für möbel- und büroschloss: büroschrank und rollcontainer. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 4 Ziffern",
+    "codePattern": "^[0-9]{3,4}$",
+    "codeExample": "0812",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MS-01",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MS-01",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Möbel- und Büroschloss",
+      "Möbelschlüssel",
+      "MS",
+      "Möbel- und Büroschlösser"
+    ],
+    "seo": {
+      "title": "Büroschrank und Rollcontainer — Serie MS-01 nach Code bestellen",
+      "description": "Nachschlüssel für möbel- und büroschloss: büroschrank und rollcontainer nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ms-02",
+    "slug": "ms-02",
+    "name": "Schreibtisch und Sideboard — Serie MS-02",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Möbel- und Büroschloss: Schreibtisch und Sideboard",
+    "keyType": "Möbelschlüssel",
+    "description": "Nachschlüssel für möbel- und büroschloss: schreibtisch und sideboard. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 bis 2 Buchstaben, dann 3 Ziffern",
+    "codePattern": "^[A-Z]{1,2}[0-9]{3}$",
+    "codeExample": "C214",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 bis 2 Buchstaben, dann 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MS-02",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MS-02",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Möbel- und Büroschloss",
+      "Möbelschlüssel",
+      "MS",
+      "Möbel- und Büroschlösser"
+    ],
+    "seo": {
+      "title": "Schreibtisch und Sideboard — Serie MS-02 nach Code bestellen",
+      "description": "Nachschlüssel für möbel- und büroschloss: schreibtisch und sideboard nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 bis 2 Buchstaben, dann 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ms-03",
+    "slug": "ms-03",
+    "name": "Aktenschrank und Registratur — Serie MS-03",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Möbel- und Büroschloss: Aktenschrank und Registratur",
+    "keyType": "Möbelschlüssel",
+    "description": "Nachschlüssel für möbel- und büroschloss: aktenschrank und registratur. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "4 Ziffern",
+    "codePattern": "^[0-9]{4}$",
+    "codeExample": "4471",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MS-03",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MS-03",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Möbel- und Büroschloss",
+      "Möbelschlüssel",
+      "MS",
+      "Möbel- und Büroschlösser"
+    ],
+    "seo": {
+      "title": "Aktenschrank und Registratur — Serie MS-03 nach Code bestellen",
+      "description": "Nachschlüssel für möbel- und büroschloss: aktenschrank und registratur nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ms-04",
+    "slug": "ms-04",
+    "name": "Vitrine und Glasschrank — Serie MS-04",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Möbel- und Büroschloss: Vitrine und Glasschrank",
+    "keyType": "Möbelschlüssel",
+    "description": "Nachschlüssel für möbel- und büroschloss: vitrine und glasschrank. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 2 bis 3 Ziffern",
+    "codePattern": "^[A-Z][0-9]{2,3}$",
+    "codeExample": "K118",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 2 bis 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MS-04",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MS-04",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Möbel- und Büroschloss",
+      "Möbelschlüssel",
+      "MS",
+      "Möbel- und Büroschlösser"
+    ],
+    "seo": {
+      "title": "Vitrine und Glasschrank — Serie MS-04 nach Code bestellen",
+      "description": "Nachschlüssel für möbel- und büroschloss: vitrine und glasschrank nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 2 bis 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ms-05",
+    "slug": "ms-05",
+    "name": "Küchenmöbel und Einbauschrank — Serie MS-05",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Möbel- und Büroschloss: Küchenmöbel und Einbauschrank",
+    "keyType": "Möbelschlüssel",
+    "description": "Nachschlüssel für möbel- und büroschloss: küchenmöbel und einbauschrank. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 Ziffern",
+    "codePattern": "^[0-9]{3}$",
+    "codeExample": "226",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MS-05",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MS-05",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Möbel- und Büroschloss",
+      "Möbelschlüssel",
+      "MS",
+      "Möbel- und Büroschlösser"
+    ],
+    "seo": {
+      "title": "Küchenmöbel und Einbauschrank — Serie MS-05 nach Code bestellen",
+      "description": "Nachschlüssel für möbel- und büroschloss: küchenmöbel und einbauschrank nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ms-06",
+    "slug": "ms-06",
+    "name": "Werkstattschrank und Werkbank — Serie MS-06",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Möbel- und Büroschloss: Werkstattschrank und Werkbank",
+    "keyType": "Möbelschlüssel",
+    "description": "Nachschlüssel für möbel- und büroschloss: werkstattschrank und werkbank. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "2 Buchstaben, dann 3 Ziffern",
+    "codePattern": "^[A-Z]{2}[0-9]{3}$",
+    "codeExample": "WB104",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 2 Buchstaben, dann 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MS-06",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MS-06",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Möbel- und Büroschloss",
+      "Möbelschlüssel",
+      "MS",
+      "Möbel- und Büroschlösser"
+    ],
+    "seo": {
+      "title": "Werkstattschrank und Werkbank — Serie MS-06 nach Code bestellen",
+      "description": "Nachschlüssel für möbel- und büroschloss: werkstattschrank und werkbank nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 2 Buchstaben, dann 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sp-01",
+    "slug": "sp-01",
+    "name": "Umkleidespind Sport und Verein — Serie SP-01",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Spind- und Garderobenschloss: Umkleidespind Sport und Verein",
+    "keyType": "Spindschlüssel",
+    "description": "Nachschlüssel für spind- und garderobenschloss: umkleidespind sport und verein. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 4 Ziffern",
+    "codePattern": "^[0-9]{3,4}$",
+    "codeExample": "0347",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle SP-01",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie SP-01",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Spind- und Garderobenschloss",
+      "Spindschlüssel",
+      "SP",
+      "Spind- und Garderobenschlösser"
+    ],
+    "seo": {
+      "title": "Umkleidespind Sport und Verein — Serie SP-01 nach Code bestellen",
+      "description": "Nachschlüssel für spind- und garderobenschloss: umkleidespind sport und verein nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sp-02",
+    "slug": "sp-02",
+    "name": "Betriebsspind und Sozialraum — Serie SP-02",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Spind- und Garderobenschloss: Betriebsspind und Sozialraum",
+    "keyType": "Spindschlüssel",
+    "description": "Nachschlüssel für spind- und garderobenschloss: betriebsspind und sozialraum. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 3 Ziffern",
+    "codePattern": "^[A-Z][0-9]{3}$",
+    "codeExample": "S482",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle SP-02",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie SP-02",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Spind- und Garderobenschloss",
+      "Spindschlüssel",
+      "SP",
+      "Spind- und Garderobenschlösser"
+    ],
+    "seo": {
+      "title": "Betriebsspind und Sozialraum — Serie SP-02 nach Code bestellen",
+      "description": "Nachschlüssel für spind- und garderobenschloss: betriebsspind und sozialraum nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sp-03",
+    "slug": "sp-03",
+    "name": "Schulspind und Schließfach — Serie SP-03",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Spind- und Garderobenschloss: Schulspind und Schließfach",
+    "keyType": "Spindschlüssel",
+    "description": "Nachschlüssel für spind- und garderobenschloss: schulspind und schließfach. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "2 Ziffern, Bindestrich, 3 Ziffern",
+    "codePattern": "^[0-9]{2}-[0-9]{3}$",
+    "codeExample": "21-508",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 2 Ziffern, Bindestrich, 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle SP-03",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie SP-03",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Spind- und Garderobenschloss",
+      "Spindschlüssel",
+      "SP",
+      "Spind- und Garderobenschlösser"
+    ],
+    "seo": {
+      "title": "Schulspind und Schließfach — Serie SP-03 nach Code bestellen",
+      "description": "Nachschlüssel für spind- und garderobenschloss: schulspind und schließfach nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 2 Ziffern, Bindestrich, 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sp-04",
+    "slug": "sp-04",
+    "name": "Garderobenschrank Hotel und Gastronomie — Serie SP-04",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Spind- und Garderobenschloss: Garderobenschrank Hotel und Gastronomie",
+    "keyType": "Spindschlüssel",
+    "description": "Nachschlüssel für spind- und garderobenschloss: garderobenschrank hotel und gastronomie. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "2 Buchstaben, dann 2 bis 3 Ziffern",
+    "codePattern": "^[A-Z]{2}[0-9]{2,3}$",
+    "codeExample": "GH215",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 2 Buchstaben, dann 2 bis 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle SP-04",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie SP-04",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Spind- und Garderobenschloss",
+      "Spindschlüssel",
+      "SP",
+      "Spind- und Garderobenschlösser"
+    ],
+    "seo": {
+      "title": "Garderobenschrank Hotel und Gastronomie — Serie SP-04 nach Code bestellen",
+      "description": "Nachschlüssel für spind- und garderobenschloss: garderobenschrank hotel und gastronomie nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 2 Buchstaben, dann 2 bis 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sp-05",
+    "slug": "sp-05",
+    "name": "Wertfach und Schließfachanlage — Serie SP-05",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Spind- und Garderobenschloss: Wertfach und Schließfachanlage",
+    "keyType": "Spindschlüssel",
+    "description": "Nachschlüssel für spind- und garderobenschloss: wertfach und schließfachanlage. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 Ziffern, Bindestrich, 2 Ziffern",
+    "codePattern": "^[0-9]{3}-[0-9]{2}$",
+    "codeExample": "204-11",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 Ziffern, Bindestrich, 2 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle SP-05",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie SP-05",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1000,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 900
+      },
+      {
+        "minQty": 5,
+        "priceCents": 820
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Spind- und Garderobenschloss",
+      "Spindschlüssel",
+      "SP",
+      "Spind- und Garderobenschlösser"
+    ],
+    "seo": {
+      "title": "Wertfach und Schließfachanlage — Serie SP-05 nach Code bestellen",
+      "description": "Nachschlüssel für spind- und garderobenschloss: wertfach und schließfachanlage nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 Ziffern, Bindestrich, 2 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "bk-01",
+    "slug": "bk-01",
+    "name": "Einzelbriefkasten Hauswand — Serie BK-01",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Briefkasten- und Postanlage: Einzelbriefkasten Hauswand",
+    "keyType": "Briefkastenschlüssel",
+    "description": "Nachschlüssel für briefkasten- und postanlage: einzelbriefkasten hauswand. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 5 Ziffern",
+    "codePattern": "^[0-9]{3,5}$",
+    "codeExample": "10428",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 5 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle BK-01",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie BK-01",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 700,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 630
+      },
+      {
+        "minQty": 5,
+        "priceCents": 574
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Briefkasten- und Postanlage",
+      "Briefkastenschlüssel",
+      "BK",
+      "Briefkasten- und Postanlagen"
+    ],
+    "seo": {
+      "title": "Einzelbriefkasten Hauswand — Serie BK-01 nach Code bestellen",
+      "description": "Nachschlüssel für briefkasten- und postanlage: einzelbriefkasten hauswand nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 5 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "bk-02",
+    "slug": "bk-02",
+    "name": "Briefkastenanlage Mehrfamilienhaus — Serie BK-02",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Briefkasten- und Postanlage: Briefkastenanlage Mehrfamilienhaus",
+    "keyType": "Briefkastenschlüssel",
+    "description": "Nachschlüssel für briefkasten- und postanlage: briefkastenanlage mehrfamilienhaus. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 4 Ziffern",
+    "codePattern": "^[A-Z][0-9]{4}$",
+    "codeExample": "B1042",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle BK-02",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie BK-02",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Briefkasten- und Postanlage",
+      "Briefkastenschlüssel",
+      "BK",
+      "Briefkasten- und Postanlagen"
+    ],
+    "seo": {
+      "title": "Briefkastenanlage Mehrfamilienhaus — Serie BK-02 nach Code bestellen",
+      "description": "Nachschlüssel für briefkasten- und postanlage: briefkastenanlage mehrfamilienhaus nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "bk-03",
+    "slug": "bk-03",
+    "name": "Paketkasten und Zustellfach — Serie BK-03",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Briefkasten- und Postanlage: Paketkasten und Zustellfach",
+    "keyType": "Briefkastenschlüssel",
+    "description": "Nachschlüssel für briefkasten- und postanlage: paketkasten und zustellfach. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "4 Ziffern, optional 1 Buchstabe",
+    "codePattern": "^[0-9]{4}[A-Z]?$",
+    "codeExample": "2280A",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 4 Ziffern, optional 1 Buchstabe.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle BK-03",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie BK-03",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Briefkasten- und Postanlage",
+      "Briefkastenschlüssel",
+      "BK",
+      "Briefkasten- und Postanlagen"
+    ],
+    "seo": {
+      "title": "Paketkasten und Zustellfach — Serie BK-03 nach Code bestellen",
+      "description": "Nachschlüssel für briefkasten- und postanlage: paketkasten und zustellfach nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 4 Ziffern, optional 1 Buchstabe.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "bk-04",
+    "slug": "bk-04",
+    "name": "Zeitungsrohr und Nebenfach — Serie BK-04",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Briefkasten- und Postanlage: Zeitungsrohr und Nebenfach",
+    "keyType": "Briefkastenschlüssel",
+    "description": "Nachschlüssel für briefkasten- und postanlage: zeitungsrohr und nebenfach. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 Ziffern",
+    "codePattern": "^[0-9]{3}$",
+    "codeExample": "417",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle BK-04",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie BK-04",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 700,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 630
+      },
+      {
+        "minQty": 5,
+        "priceCents": 574
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Briefkasten- und Postanlage",
+      "Briefkastenschlüssel",
+      "BK",
+      "Briefkasten- und Postanlagen"
+    ],
+    "seo": {
+      "title": "Zeitungsrohr und Nebenfach — Serie BK-04 nach Code bestellen",
+      "description": "Nachschlüssel für briefkasten- und postanlage: zeitungsrohr und nebenfach nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "bk-05",
+    "slug": "bk-05",
+    "name": "Briefkastenanlage Gewerbeobjekt — Serie BK-05",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Briefkasten- und Postanlage: Briefkastenanlage Gewerbeobjekt",
+    "keyType": "Briefkastenschlüssel",
+    "description": "Nachschlüssel für briefkasten- und postanlage: briefkastenanlage gewerbeobjekt. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "2 Buchstaben, dann 3 bis 4 Ziffern",
+    "codePattern": "^[A-Z]{2}[0-9]{3,4}$",
+    "codeExample": "GB2104",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 2 Buchstaben, dann 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle BK-05",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie BK-05",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Briefkasten- und Postanlage",
+      "Briefkastenschlüssel",
+      "BK",
+      "Briefkasten- und Postanlagen"
+    ],
+    "seo": {
+      "title": "Briefkastenanlage Gewerbeobjekt — Serie BK-05 nach Code bestellen",
+      "description": "Nachschlüssel für briefkasten- und postanlage: briefkastenanlage gewerbeobjekt nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 2 Buchstaben, dann 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "zy-01",
+    "slug": "zy-01",
+    "name": "Profilzylinder Wohnungstür — Serie ZY-01",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Zylinder- und Türschloss: Profilzylinder Wohnungstür",
+    "keyType": "Profilschlüssel",
+    "description": "Nachschlüssel für zylinder- und türschloss: profilzylinder wohnungstür. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "2 Buchstaben, dann 5 Ziffern",
+    "codePattern": "^[A-Z]{2}[0-9]{5}$",
+    "codeExample": "PZ10488",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 2 Buchstaben, dann 5 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle ZY-01",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie ZY-01",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 2200,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1980
+      },
+      {
+        "minQty": 5,
+        "priceCents": 1804
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Zylinder- und Türschloss",
+      "Profilschlüssel",
+      "ZY",
+      "Zylinder- und Türschlösser"
+    ],
+    "seo": {
+      "title": "Profilzylinder Wohnungstür — Serie ZY-01 nach Code bestellen",
+      "description": "Nachschlüssel für zylinder- und türschloss: profilzylinder wohnungstür nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 2 Buchstaben, dann 5 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "zy-02",
+    "slug": "zy-02",
+    "name": "Profilzylinder Haustür mit Sicherungskarte — Serie ZY-02",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Zylinder- und Türschloss: Profilzylinder Haustür mit Sicherungskarte",
+    "keyType": "Profilschlüssel",
+    "description": "Nachschlüssel für zylinder- und türschloss: profilzylinder haustür mit sicherungskarte. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "2 Buchstaben, dann 6 Ziffern",
+    "codePattern": "^[A-Z]{2}[0-9]{6}$",
+    "codeExample": "PZ104882",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 2 Buchstaben, dann 6 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle ZY-02",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie ZY-02",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 2900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 2610
+      },
+      {
+        "minQty": 5,
+        "priceCents": 2378
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Zylinder- und Türschloss",
+      "Profilschlüssel",
+      "ZY",
+      "Zylinder- und Türschlösser"
+    ],
+    "seo": {
+      "title": "Profilzylinder Haustür mit Sicherungskarte — Serie ZY-02 nach Code bestellen",
+      "description": "Nachschlüssel für zylinder- und türschloss: profilzylinder haustür mit sicherungskarte nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 2 Buchstaben, dann 6 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "zy-03",
+    "slug": "zy-03",
+    "name": "Nebentür, Keller und Garage — Serie ZY-03",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Zylinder- und Türschloss: Nebentür, Keller und Garage",
+    "keyType": "Profilschlüssel",
+    "description": "Nachschlüssel für zylinder- und türschloss: nebentür, keller und garage. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "5 bis 6 Ziffern",
+    "codePattern": "^[0-9]{5,6}$",
+    "codeExample": "204881",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 5 bis 6 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle ZY-03",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie ZY-03",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1710
+      },
+      {
+        "minQty": 5,
+        "priceCents": 1558
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Zylinder- und Türschloss",
+      "Profilschlüssel",
+      "ZY",
+      "Zylinder- und Türschlösser"
+    ],
+    "seo": {
+      "title": "Nebentür, Keller und Garage — Serie ZY-03 nach Code bestellen",
+      "description": "Nachschlüssel für zylinder- und türschloss: nebentür, keller und garage nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 5 bis 6 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "zy-04",
+    "slug": "zy-04",
+    "name": "Rundzylinder und Ovalzylinder — Serie ZY-04",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Zylinder- und Türschloss: Rundzylinder und Ovalzylinder",
+    "keyType": "Profilschlüssel",
+    "description": "Nachschlüssel für zylinder- und türschloss: rundzylinder und ovalzylinder. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 4 bis 5 Ziffern",
+    "codePattern": "^[A-Z][0-9]{4,5}$",
+    "codeExample": "R20488",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 4 bis 5 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle ZY-04",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie ZY-04",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 2100,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1890
+      },
+      {
+        "minQty": 5,
+        "priceCents": 1722
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Zylinder- und Türschloss",
+      "Profilschlüssel",
+      "ZY",
+      "Zylinder- und Türschlösser"
+    ],
+    "seo": {
+      "title": "Rundzylinder und Ovalzylinder — Serie ZY-04 nach Code bestellen",
+      "description": "Nachschlüssel für zylinder- und türschloss: rundzylinder und ovalzylinder nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 4 bis 5 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "zy-05",
+    "slug": "zy-05",
+    "name": "Buntbartschloss Zimmertür — Serie ZY-05",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Zylinder- und Türschloss: Buntbartschloss Zimmertür",
+    "keyType": "Profilschlüssel",
+    "description": "Nachschlüssel für zylinder- und türschloss: buntbartschloss zimmertür. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 bis 3 Ziffern",
+    "codePattern": "^[0-9]{1,3}$",
+    "codeExample": "24",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 bis 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle ZY-05",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie ZY-05",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 600,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 540
+      },
+      {
+        "minQty": 5,
+        "priceCents": 492
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Zylinder- und Türschloss",
+      "Profilschlüssel",
+      "ZY",
+      "Zylinder- und Türschlösser"
+    ],
+    "seo": {
+      "title": "Buntbartschloss Zimmertür — Serie ZY-05 nach Code bestellen",
+      "description": "Nachschlüssel für zylinder- und türschloss: buntbartschloss zimmertür nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 bis 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "zy-06",
+    "slug": "zy-06",
+    "name": "Zimmertür mit Chubb-Bart — Serie ZY-06",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Zylinder- und Türschloss: Zimmertür mit Chubb-Bart",
+    "keyType": "Profilschlüssel",
+    "description": "Nachschlüssel für zylinder- und türschloss: zimmertür mit chubb-bart. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "optional 1 Buchstabe, dann 3 bis 4 Ziffern",
+    "codePattern": "^[A-Z]?[0-9]{3,4}$",
+    "codeExample": "C482",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: optional 1 Buchstabe, dann 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle ZY-06",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie ZY-06",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1200,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1080
+      },
+      {
+        "minQty": 5,
+        "priceCents": 984
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Zylinder- und Türschloss",
+      "Profilschlüssel",
+      "ZY",
+      "Zylinder- und Türschlösser"
+    ],
+    "seo": {
+      "title": "Zimmertür mit Chubb-Bart — Serie ZY-06 nach Code bestellen",
+      "description": "Nachschlüssel für zylinder- und türschloss: zimmertür mit chubb-bart nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: optional 1 Buchstabe, dann 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vh-01",
+    "slug": "vh-01",
+    "name": "Vorhängeschloss Tor und Zaun — Serie VH-01",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Vorhänge- und Hebelschloss: Vorhängeschloss Tor und Zaun",
+    "keyType": "Vorhängeschlossschlüssel",
+    "description": "Nachschlüssel für vorhänge- und hebelschloss: vorhängeschloss tor und zaun. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 4 Ziffern",
+    "codePattern": "^[0-9]{3,4}$",
+    "codeExample": "1120",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle VH-01",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie VH-01",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Vorhänge- und Hebelschloss",
+      "Vorhängeschlossschlüssel",
+      "VH",
+      "Vorhänge- und Hebelschlösser"
+    ],
+    "seo": {
+      "title": "Vorhängeschloss Tor und Zaun — Serie VH-01 nach Code bestellen",
+      "description": "Nachschlüssel für vorhänge- und hebelschloss: vorhängeschloss tor und zaun nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vh-02",
+    "slug": "vh-02",
+    "name": "Vorhängeschloss Kette und Transport — Serie VH-02",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Vorhänge- und Hebelschloss: Vorhängeschloss Kette und Transport",
+    "keyType": "Vorhängeschlossschlüssel",
+    "description": "Nachschlüssel für vorhänge- und hebelschloss: vorhängeschloss kette und transport. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 3 Ziffern",
+    "codePattern": "^[A-Z][0-9]{3}$",
+    "codeExample": "T318",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle VH-02",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie VH-02",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Vorhänge- und Hebelschloss",
+      "Vorhängeschlossschlüssel",
+      "VH",
+      "Vorhänge- und Hebelschlösser"
+    ],
+    "seo": {
+      "title": "Vorhängeschloss Kette und Transport — Serie VH-02 nach Code bestellen",
+      "description": "Nachschlüssel für vorhänge- und hebelschloss: vorhängeschloss kette und transport nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vh-03",
+    "slug": "vh-03",
+    "name": "Hebelschloss Automat und Kasse — Serie VH-03",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Vorhänge- und Hebelschloss: Hebelschloss Automat und Kasse",
+    "keyType": "Vorhängeschlossschlüssel",
+    "description": "Nachschlüssel für vorhänge- und hebelschloss: hebelschloss automat und kasse. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "4 Ziffern",
+    "codePattern": "^[0-9]{4}$",
+    "codeExample": "7734",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle VH-03",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie VH-03",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Vorhänge- und Hebelschloss",
+      "Vorhängeschlossschlüssel",
+      "VH",
+      "Vorhänge- und Hebelschlösser"
+    ],
+    "seo": {
+      "title": "Hebelschloss Automat und Kasse — Serie VH-03 nach Code bestellen",
+      "description": "Nachschlüssel für vorhänge- und hebelschloss: hebelschloss automat und kasse nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vh-04",
+    "slug": "vh-04",
+    "name": "Hebelschloss Schaltschrank — Serie VH-04",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Vorhänge- und Hebelschloss: Hebelschloss Schaltschrank",
+    "keyType": "Vorhängeschlossschlüssel",
+    "description": "Nachschlüssel für vorhänge- und hebelschloss: hebelschloss schaltschrank. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "2 Buchstaben, dann 2 Ziffern",
+    "codePattern": "^[A-Z]{2}[0-9]{2}$",
+    "codeExample": "SS14",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 2 Buchstaben, dann 2 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle VH-04",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie VH-04",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Vorhänge- und Hebelschloss",
+      "Vorhängeschlossschlüssel",
+      "VH",
+      "Vorhänge- und Hebelschlösser"
+    ],
+    "seo": {
+      "title": "Hebelschloss Schaltschrank — Serie VH-04 nach Code bestellen",
+      "description": "Nachschlüssel für vorhänge- und hebelschloss: hebelschloss schaltschrank nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 2 Buchstaben, dann 2 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vh-05",
+    "slug": "vh-05",
+    "name": "Vorhängeschloss wetterfest Außenbereich — Serie VH-05",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Vorhänge- und Hebelschloss: Vorhängeschloss wetterfest Außenbereich",
+    "keyType": "Vorhängeschlossschlüssel",
+    "description": "Nachschlüssel für vorhänge- und hebelschloss: vorhängeschloss wetterfest außenbereich. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "4 Ziffern, dann 1 Buchstabe",
+    "codePattern": "^[0-9]{4}[A-Z]$",
+    "codeExample": "3140W",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 4 Ziffern, dann 1 Buchstabe.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle VH-05",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie VH-05",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1000,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 900
+      },
+      {
+        "minQty": 5,
+        "priceCents": 820
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Vorhänge- und Hebelschloss",
+      "Vorhängeschlossschlüssel",
+      "VH",
+      "Vorhänge- und Hebelschlösser"
+    ],
+    "seo": {
+      "title": "Vorhängeschloss wetterfest Außenbereich — Serie VH-05 nach Code bestellen",
+      "description": "Nachschlüssel für vorhänge- und hebelschloss: vorhängeschloss wetterfest außenbereich nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 4 Ziffern, dann 1 Buchstabe.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ts-01",
+    "slug": "ts-01",
+    "name": "Zählerschrank und Hausanschluss — Serie TS-01",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Technik- und Zählerschrank: Zählerschrank und Hausanschluss",
+    "keyType": "Technikschlüssel",
+    "description": "Nachschlüssel für technik- und zählerschrank: zählerschrank und hausanschluss. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 4 Ziffern",
+    "codePattern": "^[0-9]{3,4}$",
+    "codeExample": "1242",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle TS-01",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie TS-01",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Technik- und Zählerschrank",
+      "Technikschlüssel",
+      "TS",
+      "Technik-, Zähler- und Versorgungsschränke"
+    ],
+    "seo": {
+      "title": "Zählerschrank und Hausanschluss — Serie TS-01 nach Code bestellen",
+      "description": "Nachschlüssel für technik- und zählerschrank: zählerschrank und hausanschluss nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ts-02",
+    "slug": "ts-02",
+    "name": "Schaltschrank Industrie — Serie TS-02",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Technik- und Zählerschrank: Schaltschrank Industrie",
+    "keyType": "Technikschlüssel",
+    "description": "Nachschlüssel für technik- und zählerschrank: schaltschrank industrie. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 bis 2 Buchstaben, dann 2 bis 4 Ziffern",
+    "codePattern": "^[A-Z]{1,2}[0-9]{2,4}$",
+    "codeExample": "IND204",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 bis 2 Buchstaben, dann 2 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle TS-02",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie TS-02",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1000,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 900
+      },
+      {
+        "minQty": 5,
+        "priceCents": 820
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Technik- und Zählerschrank",
+      "Technikschlüssel",
+      "TS",
+      "Technik-, Zähler- und Versorgungsschränke"
+    ],
+    "seo": {
+      "title": "Schaltschrank Industrie — Serie TS-02 nach Code bestellen",
+      "description": "Nachschlüssel für technik- und zählerschrank: schaltschrank industrie nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 bis 2 Buchstaben, dann 2 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ts-03",
+    "slug": "ts-03",
+    "name": "Heizungs- und Technikraum — Serie TS-03",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Technik- und Zählerschrank: Heizungs- und Technikraum",
+    "keyType": "Technikschlüssel",
+    "description": "Nachschlüssel für technik- und zählerschrank: heizungs- und technikraum. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "4 Ziffern",
+    "codePattern": "^[0-9]{4}$",
+    "codeExample": "3188",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle TS-03",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie TS-03",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Technik- und Zählerschrank",
+      "Technikschlüssel",
+      "TS",
+      "Technik-, Zähler- und Versorgungsschränke"
+    ],
+    "seo": {
+      "title": "Heizungs- und Technikraum — Serie TS-03 nach Code bestellen",
+      "description": "Nachschlüssel für technik- und zählerschrank: heizungs- und technikraum nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ts-04",
+    "slug": "ts-04",
+    "name": "Aufzug- und Wartungsschrank — Serie TS-04",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Technik- und Zählerschrank: Aufzug- und Wartungsschrank",
+    "keyType": "Technikschlüssel",
+    "description": "Nachschlüssel für technik- und zählerschrank: aufzug- und wartungsschrank. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 3 bis 4 Ziffern",
+    "codePattern": "^[A-Z][0-9]{3,4}$",
+    "codeExample": "A2140",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle TS-04",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie TS-04",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1100,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 990
+      },
+      {
+        "minQty": 5,
+        "priceCents": 902
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Technik- und Zählerschrank",
+      "Technikschlüssel",
+      "TS",
+      "Technik-, Zähler- und Versorgungsschränke"
+    ],
+    "seo": {
+      "title": "Aufzug- und Wartungsschrank — Serie TS-04 nach Code bestellen",
+      "description": "Nachschlüssel für technik- und zählerschrank: aufzug- und wartungsschrank nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ts-05",
+    "slug": "ts-05",
+    "name": "Verteilerkasten Außenbereich — Serie TS-05",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Technik- und Zählerschrank: Verteilerkasten Außenbereich",
+    "keyType": "Technikschlüssel",
+    "description": "Nachschlüssel für technik- und zählerschrank: verteilerkasten außenbereich. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 Ziffern, optional 1 Buchstabe",
+    "codePattern": "^[0-9]{3}[A-Z]?$",
+    "codeExample": "618B",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 Ziffern, optional 1 Buchstabe.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle TS-05",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie TS-05",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1000,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 900
+      },
+      {
+        "minQty": 5,
+        "priceCents": 820
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Technik- und Zählerschrank",
+      "Technikschlüssel",
+      "TS",
+      "Technik-, Zähler- und Versorgungsschränke"
+    ],
+    "seo": {
+      "title": "Verteilerkasten Außenbereich — Serie TS-05 nach Code bestellen",
+      "description": "Nachschlüssel für technik- und zählerschrank: verteilerkasten außenbereich nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 Ziffern, optional 1 Buchstabe.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fe-01",
+    "slug": "fe-01",
+    "name": "Abschließbarer Fenstergriff — Serie FE-01",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Fenster- und Balkontechnik: Abschließbarer Fenstergriff",
+    "keyType": "Fenstergriffschlüssel",
+    "description": "Nachschlüssel für fenster- und balkontechnik: abschließbarer fenstergriff. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 4 Ziffern",
+    "codePattern": "^[0-9]{3,4}$",
+    "codeExample": "0421",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle FE-01",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie FE-01",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 700,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 630
+      },
+      {
+        "minQty": 5,
+        "priceCents": 574
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Fenster- und Balkontechnik",
+      "Fenstergriffschlüssel",
+      "FE",
+      "Fenster- und Balkontechnik"
+    ],
+    "seo": {
+      "title": "Abschließbarer Fenstergriff — Serie FE-01 nach Code bestellen",
+      "description": "Nachschlüssel für fenster- und balkontechnik: abschließbarer fenstergriff nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fe-02",
+    "slug": "fe-02",
+    "name": "Balkon- und Terrassentür — Serie FE-02",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Fenster- und Balkontechnik: Balkon- und Terrassentür",
+    "keyType": "Fenstergriffschlüssel",
+    "description": "Nachschlüssel für fenster- und balkontechnik: balkon- und terrassentür. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 3 Ziffern",
+    "codePattern": "^[A-Z][0-9]{3}$",
+    "codeExample": "B214",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle FE-02",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie FE-02",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Fenster- und Balkontechnik",
+      "Fenstergriffschlüssel",
+      "FE",
+      "Fenster- und Balkontechnik"
+    ],
+    "seo": {
+      "title": "Balkon- und Terrassentür — Serie FE-02 nach Code bestellen",
+      "description": "Nachschlüssel für fenster- und balkontechnik: balkon- und terrassentür nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fe-03",
+    "slug": "fe-03",
+    "name": "Fensterzusatzschloss — Serie FE-03",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Fenster- und Balkontechnik: Fensterzusatzschloss",
+    "keyType": "Fenstergriffschlüssel",
+    "description": "Nachschlüssel für fenster- und balkontechnik: fensterzusatzschloss. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "4 Ziffern",
+    "codePattern": "^[0-9]{4}$",
+    "codeExample": "5510",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle FE-03",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie FE-03",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Fenster- und Balkontechnik",
+      "Fenstergriffschlüssel",
+      "FE",
+      "Fenster- und Balkontechnik"
+    ],
+    "seo": {
+      "title": "Fensterzusatzschloss — Serie FE-03 nach Code bestellen",
+      "description": "Nachschlüssel für fenster- und balkontechnik: fensterzusatzschloss nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fe-04",
+    "slug": "fe-04",
+    "name": "Rollladen- und Gittersicherung — Serie FE-04",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Fenster- und Balkontechnik: Rollladen- und Gittersicherung",
+    "keyType": "Fenstergriffschlüssel",
+    "description": "Nachschlüssel für fenster- und balkontechnik: rollladen- und gittersicherung. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "2 Buchstaben, dann 3 Ziffern",
+    "codePattern": "^[A-Z]{2}[0-9]{3}$",
+    "codeExample": "RG118",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 2 Buchstaben, dann 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle FE-04",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie FE-04",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Fenster- und Balkontechnik",
+      "Fenstergriffschlüssel",
+      "FE",
+      "Fenster- und Balkontechnik"
+    ],
+    "seo": {
+      "title": "Rollladen- und Gittersicherung — Serie FE-04 nach Code bestellen",
+      "description": "Nachschlüssel für fenster- und balkontechnik: rollladen- und gittersicherung nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 2 Buchstaben, dann 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fe-05",
+    "slug": "fe-05",
+    "name": "Dachfenster und Lichtkuppel — Serie FE-05",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Fenster- und Balkontechnik: Dachfenster und Lichtkuppel",
+    "keyType": "Fenstergriffschlüssel",
+    "description": "Nachschlüssel für fenster- und balkontechnik: dachfenster und lichtkuppel. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 4 Ziffern",
+    "codePattern": "^[0-9]{3,4}$",
+    "codeExample": "0742",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle FE-05",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie FE-05",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Fenster- und Balkontechnik",
+      "Fenstergriffschlüssel",
+      "FE",
+      "Fenster- und Balkontechnik"
+    ],
+    "seo": {
+      "title": "Dachfenster und Lichtkuppel — Serie FE-05 nach Code bestellen",
+      "description": "Nachschlüssel für fenster- und balkontechnik: dachfenster und lichtkuppel nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fa-01",
+    "slug": "fa-01",
+    "name": "Anhänger und Deichselschloss — Serie FA-01",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Fahrzeugaufbau und Anhänger: Anhänger und Deichselschloss",
+    "keyType": "Aufbauschlüssel",
+    "description": "Nachschlüssel für fahrzeugaufbau und anhänger: anhänger und deichselschloss. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 4 Ziffern",
+    "codePattern": "^[0-9]{3,4}$",
+    "codeExample": "0918",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle FA-01",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie FA-01",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1000,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 900
+      },
+      {
+        "minQty": 5,
+        "priceCents": 820
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Fahrzeugaufbau und Anhänger",
+      "Aufbauschlüssel",
+      "FA",
+      "Fahrzeugaufbauten und Anhänger"
+    ],
+    "seo": {
+      "title": "Anhänger und Deichselschloss — Serie FA-01 nach Code bestellen",
+      "description": "Nachschlüssel für fahrzeugaufbau und anhänger: anhänger und deichselschloss nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fa-02",
+    "slug": "fa-02",
+    "name": "Wohnwagen und Wohnmobil Aufbautür — Serie FA-02",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Fahrzeugaufbau und Anhänger: Wohnwagen und Wohnmobil Aufbautür",
+    "keyType": "Aufbauschlüssel",
+    "description": "Nachschlüssel für fahrzeugaufbau und anhänger: wohnwagen und wohnmobil aufbautür. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 bis 2 Buchstaben, dann 3 bis 4 Ziffern",
+    "codePattern": "^[A-Z]{1,2}[0-9]{3,4}$",
+    "codeExample": "WM2104",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 bis 2 Buchstaben, dann 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle FA-02",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie FA-02",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1200,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1080
+      },
+      {
+        "minQty": 5,
+        "priceCents": 984
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Fahrzeugaufbau und Anhänger",
+      "Aufbauschlüssel",
+      "FA",
+      "Fahrzeugaufbauten und Anhänger"
+    ],
+    "seo": {
+      "title": "Wohnwagen und Wohnmobil Aufbautür — Serie FA-02 nach Code bestellen",
+      "description": "Nachschlüssel für fahrzeugaufbau und anhänger: wohnwagen und wohnmobil aufbautür nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 bis 2 Buchstaben, dann 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fa-03",
+    "slug": "fa-03",
+    "name": "Serviceklappe und Gaskasten — Serie FA-03",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Fahrzeugaufbau und Anhänger: Serviceklappe und Gaskasten",
+    "keyType": "Aufbauschlüssel",
+    "description": "Nachschlüssel für fahrzeugaufbau und anhänger: serviceklappe und gaskasten. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 5 Ziffern",
+    "codePattern": "^[0-9]{3,5}$",
+    "codeExample": "21104",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 5 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle FA-03",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie FA-03",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1000,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 900
+      },
+      {
+        "minQty": 5,
+        "priceCents": 820
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Fahrzeugaufbau und Anhänger",
+      "Aufbauschlüssel",
+      "FA",
+      "Fahrzeugaufbauten und Anhänger"
+    ],
+    "seo": {
+      "title": "Serviceklappe und Gaskasten — Serie FA-03 nach Code bestellen",
+      "description": "Nachschlüssel für fahrzeugaufbau und anhänger: serviceklappe und gaskasten nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 5 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fa-04",
+    "slug": "fa-04",
+    "name": "Koffer- und Pritschenaufbau — Serie FA-04",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Fahrzeugaufbau und Anhänger: Koffer- und Pritschenaufbau",
+    "keyType": "Aufbauschlüssel",
+    "description": "Nachschlüssel für fahrzeugaufbau und anhänger: koffer- und pritschenaufbau. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 4 Ziffern",
+    "codePattern": "^[A-Z][0-9]{4}$",
+    "codeExample": "K2088",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle FA-04",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie FA-04",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1100,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 990
+      },
+      {
+        "minQty": 5,
+        "priceCents": 902
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Fahrzeugaufbau und Anhänger",
+      "Aufbauschlüssel",
+      "FA",
+      "Fahrzeugaufbauten und Anhänger"
+    ],
+    "seo": {
+      "title": "Koffer- und Pritschenaufbau — Serie FA-04 nach Code bestellen",
+      "description": "Nachschlüssel für fahrzeugaufbau und anhänger: koffer- und pritschenaufbau nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fa-05",
+    "slug": "fa-05",
+    "name": "Dachbox und Trägersystem — Serie FA-05",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Fahrzeugaufbau und Anhänger: Dachbox und Trägersystem",
+    "keyType": "Aufbauschlüssel",
+    "description": "Nachschlüssel für fahrzeugaufbau und anhänger: dachbox und trägersystem. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "optional 1 Buchstabe, dann 3 bis 4 Ziffern",
+    "codePattern": "^[A-Z]?[0-9]{3,4}$",
+    "codeExample": "N142",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: optional 1 Buchstabe, dann 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle FA-05",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie FA-05",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1000,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 900
+      },
+      {
+        "minQty": 5,
+        "priceCents": 820
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Fahrzeugaufbau und Anhänger",
+      "Aufbauschlüssel",
+      "FA",
+      "Fahrzeugaufbauten und Anhänger"
+    ],
+    "seo": {
+      "title": "Dachbox und Trägersystem — Serie FA-05 nach Code bestellen",
+      "description": "Nachschlüssel für fahrzeugaufbau und anhänger: dachbox und trägersystem nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: optional 1 Buchstabe, dann 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ma-01",
+    "slug": "ma-01",
+    "name": "Bau- und Landmaschine — Serie MA-01",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Maschine und Sonderanwendung: Bau- und Landmaschine",
+    "keyType": "Maschinenschlüssel",
+    "description": "Nachschlüssel für maschine und sonderanwendung: bau- und landmaschine. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 5 Ziffern",
+    "codePattern": "^[0-9]{3,5}$",
+    "codeExample": "14401",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 5 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MA-01",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MA-01",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1200,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1080
+      },
+      {
+        "minQty": 5,
+        "priceCents": 984
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Maschine und Sonderanwendung",
+      "Maschinenschlüssel",
+      "MA",
+      "Maschinen und Sonderanwendungen"
+    ],
+    "seo": {
+      "title": "Bau- und Landmaschine — Serie MA-01 nach Code bestellen",
+      "description": "Nachschlüssel für maschine und sonderanwendung: bau- und landmaschine nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 5 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ma-02",
+    "slug": "ma-02",
+    "name": "Flurförderzeug und Stapler — Serie MA-02",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Maschine und Sonderanwendung: Flurförderzeug und Stapler",
+    "keyType": "Maschinenschlüssel",
+    "description": "Nachschlüssel für maschine und sonderanwendung: flurförderzeug und stapler. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 bis 2 Buchstaben, dann 3 Ziffern",
+    "codePattern": "^[A-Z]{1,2}[0-9]{3}$",
+    "codeExample": "ST104",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 bis 2 Buchstaben, dann 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MA-02",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MA-02",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1200,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1080
+      },
+      {
+        "minQty": 5,
+        "priceCents": 984
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Maschine und Sonderanwendung",
+      "Maschinenschlüssel",
+      "MA",
+      "Maschinen und Sonderanwendungen"
+    ],
+    "seo": {
+      "title": "Flurförderzeug und Stapler — Serie MA-02 nach Code bestellen",
+      "description": "Nachschlüssel für maschine und sonderanwendung: flurförderzeug und stapler nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 bis 2 Buchstaben, dann 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ma-03",
+    "slug": "ma-03",
+    "name": "Automat und Warenausgabe — Serie MA-03",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Maschine und Sonderanwendung: Automat und Warenausgabe",
+    "keyType": "Maschinenschlüssel",
+    "description": "Nachschlüssel für maschine und sonderanwendung: automat und warenausgabe. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "4 Ziffern",
+    "codePattern": "^[0-9]{4}$",
+    "codeExample": "8820",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MA-03",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MA-03",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1100,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 990
+      },
+      {
+        "minQty": 5,
+        "priceCents": 902
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Maschine und Sonderanwendung",
+      "Maschinenschlüssel",
+      "MA",
+      "Maschinen und Sonderanwendungen"
+    ],
+    "seo": {
+      "title": "Automat und Warenausgabe — Serie MA-03 nach Code bestellen",
+      "description": "Nachschlüssel für maschine und sonderanwendung: automat und warenausgabe nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ma-04",
+    "slug": "ma-04",
+    "name": "Aufzug-Notentriegelung — Serie MA-04",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Maschine und Sonderanwendung: Aufzug-Notentriegelung",
+    "keyType": "Maschinenschlüssel",
+    "description": "Nachschlüssel für maschine und sonderanwendung: aufzug-notentriegelung. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 2 bis 3 Ziffern",
+    "codePattern": "^[A-Z][0-9]{2,3}$",
+    "codeExample": "N42",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 2 bis 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MA-04",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MA-04",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1400,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1260
+      },
+      {
+        "minQty": 5,
+        "priceCents": 1148
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Maschine und Sonderanwendung",
+      "Maschinenschlüssel",
+      "MA",
+      "Maschinen und Sonderanwendungen"
+    ],
+    "seo": {
+      "title": "Aufzug-Notentriegelung — Serie MA-04 nach Code bestellen",
+      "description": "Nachschlüssel für maschine und sonderanwendung: aufzug-notentriegelung nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 2 bis 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ma-05",
+    "slug": "ma-05",
+    "name": "Kompressor und Anlagenabdeckung — Serie MA-05",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Maschine und Sonderanwendung: Kompressor und Anlagenabdeckung",
+    "keyType": "Maschinenschlüssel",
+    "description": "Nachschlüssel für maschine und sonderanwendung: kompressor und anlagenabdeckung. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "2 Buchstaben, dann 3 bis 4 Ziffern",
+    "codePattern": "^[A-Z]{2}[0-9]{3,4}$",
+    "codeExample": "KA1140",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 2 Buchstaben, dann 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle MA-05",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie MA-05",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1200,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1080
+      },
+      {
+        "minQty": 5,
+        "priceCents": 984
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Maschine und Sonderanwendung",
+      "Maschinenschlüssel",
+      "MA",
+      "Maschinen und Sonderanwendungen"
+    ],
+    "seo": {
+      "title": "Kompressor und Anlagenabdeckung — Serie MA-05 nach Code bestellen",
+      "description": "Nachschlüssel für maschine und sonderanwendung: kompressor und anlagenabdeckung nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 2 Buchstaben, dann 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "go-01",
+    "slug": "go-01",
+    "name": "Müll- und Containerstandplatz — Serie GO-01",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Gewerbe und Außenanlage: Müll- und Containerstandplatz",
+    "keyType": "Objektschlüssel",
+    "description": "Nachschlüssel für gewerbe und außenanlage: müll- und containerstandplatz. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 bis 4 Ziffern",
+    "codePattern": "^[0-9]{3,4}$",
+    "codeExample": "2204",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle GO-01",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie GO-01",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Gewerbe und Außenanlage",
+      "Objektschlüssel",
+      "GO",
+      "Gewerbe, Objekt und Außenanlagen"
+    ],
+    "seo": {
+      "title": "Müll- und Containerstandplatz — Serie GO-01 nach Code bestellen",
+      "description": "Nachschlüssel für gewerbe und außenanlage: müll- und containerstandplatz nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "go-02",
+    "slug": "go-02",
+    "name": "Schranke und Poller — Serie GO-02",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Gewerbe und Außenanlage: Schranke und Poller",
+    "keyType": "Objektschlüssel",
+    "description": "Nachschlüssel für gewerbe und außenanlage: schranke und poller. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "2 Buchstaben, dann 2 bis 4 Ziffern",
+    "codePattern": "^[A-Z]{2}[0-9]{2,4}$",
+    "codeExample": "SR2140",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 2 Buchstaben, dann 2 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle GO-02",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie GO-02",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1200,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1080
+      },
+      {
+        "minQty": 5,
+        "priceCents": 984
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Gewerbe und Außenanlage",
+      "Objektschlüssel",
+      "GO",
+      "Gewerbe, Objekt und Außenanlagen"
+    ],
+    "seo": {
+      "title": "Schranke und Poller — Serie GO-02 nach Code bestellen",
+      "description": "Nachschlüssel für gewerbe und außenanlage: schranke und poller nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 2 Buchstaben, dann 2 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "go-03",
+    "slug": "go-03",
+    "name": "Tiefgaragentor und Zufahrt — Serie GO-03",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Gewerbe und Außenanlage: Tiefgaragentor und Zufahrt",
+    "keyType": "Objektschlüssel",
+    "description": "Nachschlüssel für gewerbe und außenanlage: tiefgaragentor und zufahrt. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 4 Ziffern",
+    "codePattern": "^[A-Z][0-9]{4}$",
+    "codeExample": "G1180",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle GO-03",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie GO-03",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 1200,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 1080
+      },
+      {
+        "minQty": 5,
+        "priceCents": 984
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Gewerbe und Außenanlage",
+      "Objektschlüssel",
+      "GO",
+      "Gewerbe, Objekt und Außenanlagen"
+    ],
+    "seo": {
+      "title": "Tiefgaragentor und Zufahrt — Serie GO-03 nach Code bestellen",
+      "description": "Nachschlüssel für gewerbe und außenanlage: tiefgaragentor und zufahrt nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "go-04",
+    "slug": "go-04",
+    "name": "Gartenhaus und Nebengebäude — Serie GO-04",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Gewerbe und Außenanlage: Gartenhaus und Nebengebäude",
+    "keyType": "Objektschlüssel",
+    "description": "Nachschlüssel für gewerbe und außenanlage: gartenhaus und nebengebäude. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "3 Ziffern",
+    "codePattern": "^[0-9]{3}$",
+    "codeExample": "304",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle GO-04",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie GO-04",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 800,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 720
+      },
+      {
+        "minQty": 5,
+        "priceCents": 656
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Gewerbe und Außenanlage",
+      "Objektschlüssel",
+      "GO",
+      "Gewerbe, Objekt und Außenanlagen"
+    ],
+    "seo": {
+      "title": "Gartenhaus und Nebengebäude — Serie GO-04 nach Code bestellen",
+      "description": "Nachschlüssel für gewerbe und außenanlage: gartenhaus und nebengebäude nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 3 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  },
+  {
+    "id": "go-05",
+    "slug": "go-05",
+    "name": "Sport- und Vereinsanlage — Serie GO-05",
+    "manufacturer": "[Hersteller eintragen]",
+    "application": "Gewerbe und Außenanlage: Sport- und Vereinsanlage",
+    "keyType": "Objektschlüssel",
+    "description": "Nachschlüssel für gewerbe und außenanlage: sport- und vereinsanlage. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
+    "codeFormatLabel": "1 Buchstabe, dann 3 bis 4 Ziffern",
+    "codePattern": "^[A-Z][0-9]{3,4}$",
+    "codeExample": "V1204",
+    "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 Buchstabe, dann 3 bis 4 Ziffern.",
+    "codeLocationImage": {
+      "motif": "Beispielbild Codefundstelle GO-05",
+      "ratio": "4/3",
+      "note": "Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung."
+    },
+    "productImage": {
+      "motif": "Produktfoto Schlüssel Serie GO-05",
+      "ratio": "1/1",
+      "note": "Echtes Produktfoto vor neutralem Hintergrund."
+    },
+    "priceCents": 900,
+    "bulkPrices": [
+      {
+        "minQty": 3,
+        "priceCents": 810
+      },
+      {
+        "minQty": 5,
+        "priceCents": 738
+      }
+    ],
+    "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
+    "maxQty": 20,
+    "photoUpload": "optional",
+    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "shippingClass": "code-schluessel",
+    "active": true,
+    "tags": [
+      "Gewerbe und Außenanlage",
+      "Objektschlüssel",
+      "GO",
+      "Gewerbe, Objekt und Außenanlagen"
+    ],
+    "seo": {
+      "title": "Sport- und Vereinsanlage — Serie GO-05 nach Code bestellen",
+      "description": "Nachschlüssel für gewerbe und außenanlage: sport- und vereinsanlage nach Code bestellen. Ohne Einsendung des Originalschlüssels. Codeformat: 1 Buchstabe, dann 3 bis 4 Ziffern.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Alle Codelinien ansehen"
+        },
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code vorhanden? Schlüssel nach Vorlage"
+        }
+      ]
+    }
+  }
+]

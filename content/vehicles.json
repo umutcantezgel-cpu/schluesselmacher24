@@ -1,0 +1,777 @@
+[
+  {
+    "id": "volkswagen",
+    "slug": "volkswagen",
+    "name": "Volkswagen",
+    "pricingGroupId": "gruppe-b",
+    "intro": "Für Volkswagen decken wir mechanische Schlüssel, Klappschlüssel mit Funk und schlüssellose Systeme ab. Welche Variante Ihr Fahrzeug hat, erkennen wir an Ihren Schlüsselfotos und den Fahrzeugdaten.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung Volkswagen",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "golf",
+        "slug": "golf",
+        "name": "Golf",
+        "yearFrom": 2003,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "polo",
+        "slug": "polo",
+        "name": "Polo",
+        "yearFrom": 2002,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "passat",
+        "slug": "passat",
+        "name": "Passat",
+        "yearFrom": 2005,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true,
+        "pricingGroupId": "gruppe-c"
+      },
+      {
+        "id": "tiguan",
+        "slug": "tiguan",
+        "name": "Tiguan",
+        "yearFrom": 2007,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true,
+        "pricingGroupId": "gruppe-c"
+      },
+      {
+        "id": "t-roc",
+        "slug": "t-roc",
+        "name": "T-Roc",
+        "yearFrom": 2017,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true,
+        "pricingGroupId": "gruppe-c"
+      },
+      {
+        "id": "transporter",
+        "slug": "transporter",
+        "name": "Transporter",
+        "yearFrom": 2003,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      }
+    ]
+  },
+  {
+    "id": "bmw",
+    "slug": "bmw",
+    "name": "BMW",
+    "pricingGroupId": "gruppe-c",
+    "intro": "BMW setzt je nach Baureihe auf Funkschlüssel oder schlüssellose Systeme. Bei neueren Fahrzeugen ist der Zugriff auf das Fahrzeug zum Anlernen zwingend erforderlich.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung BMW",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "1er",
+        "slug": "1er",
+        "name": "1er",
+        "yearFrom": 2004,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "3er",
+        "slug": "3er",
+        "name": "3er",
+        "yearFrom": 1998,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "5er",
+        "slug": "5er",
+        "name": "5er",
+        "yearFrom": 1996,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "x1",
+        "slug": "x1",
+        "name": "X1",
+        "yearFrom": 2009,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "x3",
+        "slug": "x3",
+        "name": "X3",
+        "yearFrom": 2003,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      }
+    ]
+  },
+  {
+    "id": "mercedes-benz",
+    "slug": "mercedes-benz",
+    "name": "Mercedes-Benz",
+    "pricingGroupId": "gruppe-d",
+    "intro": "Mercedes-Benz arbeitet bei vielen Baureihen mit geschützten Zugängen. Wir prüfen Unterlagen, Fahrzeugdaten und Machbarkeit grundsätzlich vor der verbindlichen Terminbestätigung.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung Mercedes-Benz",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "a-klasse",
+        "slug": "a-klasse",
+        "name": "A-Klasse",
+        "yearFrom": 2004,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "c-klasse",
+        "slug": "c-klasse",
+        "name": "C-Klasse",
+        "yearFrom": 2000,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "e-klasse",
+        "slug": "e-klasse",
+        "name": "E-Klasse",
+        "yearFrom": 2002,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "sprinter",
+        "slug": "sprinter",
+        "name": "Sprinter",
+        "yearFrom": 2006,
+        "keyKinds": [
+          "mechanisch",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "vito",
+        "slug": "vito",
+        "name": "Vito",
+        "yearFrom": 2003,
+        "keyKinds": [
+          "mechanisch",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      }
+    ]
+  },
+  {
+    "id": "audi",
+    "slug": "audi",
+    "name": "Audi",
+    "pricingGroupId": "gruppe-c",
+    "intro": "Bei Audi reichen die Systeme vom mechanischen Schlüssel bis zu schlüssellosem Zugang und Start. Die Schlüsselfotos zeigen uns, welche Variante vorliegt.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung Audi",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "a1",
+        "slug": "a1",
+        "name": "A1",
+        "yearFrom": 2010,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "a3",
+        "slug": "a3",
+        "name": "A3",
+        "yearFrom": 1996,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "a4",
+        "slug": "a4",
+        "name": "A4",
+        "yearFrom": 1994,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "a6",
+        "slug": "a6",
+        "name": "A6",
+        "yearFrom": 1997,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "q3",
+        "slug": "q3",
+        "name": "Q3",
+        "yearFrom": 2011,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      }
+    ]
+  },
+  {
+    "id": "opel",
+    "slug": "opel",
+    "name": "Opel",
+    "pricingGroupId": "gruppe-b",
+    "intro": "Opel-Fahrzeuge lassen sich in vielen Fällen zügig bearbeiten. Mechanischer Bart und Funkteil werden getrennt betrachtet.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung Opel",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "corsa",
+        "slug": "corsa",
+        "name": "Corsa",
+        "yearFrom": 2000,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "astra",
+        "slug": "astra",
+        "name": "Astra",
+        "yearFrom": 1998,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "insignia",
+        "slug": "insignia",
+        "name": "Insignia",
+        "yearFrom": 2008,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true,
+        "pricingGroupId": "gruppe-c"
+      },
+      {
+        "id": "mokka",
+        "slug": "mokka",
+        "name": "Mokka",
+        "yearFrom": 2012,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true,
+        "pricingGroupId": "gruppe-c"
+      }
+    ]
+  },
+  {
+    "id": "ford",
+    "slug": "ford",
+    "name": "Ford",
+    "pricingGroupId": "gruppe-b",
+    "intro": "Für Ford bearbeiten wir mechanische Schlüssel, Klappschlüssel und Systeme mit schlüssellosem Start.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung Ford",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "fiesta",
+        "slug": "fiesta",
+        "name": "Fiesta",
+        "yearFrom": 2002,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "focus",
+        "slug": "focus",
+        "name": "Focus",
+        "yearFrom": 1998,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "kuga",
+        "slug": "kuga",
+        "name": "Kuga",
+        "yearFrom": 2008,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true,
+        "pricingGroupId": "gruppe-c"
+      },
+      {
+        "id": "transit",
+        "slug": "transit",
+        "name": "Transit",
+        "yearFrom": 2000,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      }
+    ]
+  },
+  {
+    "id": "koda",
+    "slug": "koda",
+    "name": "Škoda",
+    "pricingGroupId": "gruppe-b",
+    "intro": "Škoda teilt sich viele Schlüsselsysteme mit anderen Marken des Konzerns. Das erleichtert die Beschaffung passender Rohlinge.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung Škoda",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "fabia",
+        "slug": "fabia",
+        "name": "Fabia",
+        "yearFrom": 1999,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "octavia",
+        "slug": "octavia",
+        "name": "Octavia",
+        "yearFrom": 1996,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "kodiaq",
+        "slug": "kodiaq",
+        "name": "Kodiaq",
+        "yearFrom": 2016,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true,
+        "pricingGroupId": "gruppe-c"
+      },
+      {
+        "id": "superb",
+        "slug": "superb",
+        "name": "Superb",
+        "yearFrom": 2001,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true,
+        "pricingGroupId": "gruppe-c"
+      }
+    ]
+  },
+  {
+    "id": "seat",
+    "slug": "seat",
+    "name": "SEAT",
+    "pricingGroupId": "gruppe-b",
+    "intro": "Für SEAT gelten in vielen Fällen dieselben Schlüsselsysteme wie bei den Schwestermarken. Die Fahrzeugdaten klären den Einzelfall.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung SEAT",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "ibiza",
+        "slug": "ibiza",
+        "name": "Ibiza",
+        "yearFrom": 2002,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "leon",
+        "slug": "leon",
+        "name": "Leon",
+        "yearFrom": 1999,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "ateca",
+        "slug": "ateca",
+        "name": "Ateca",
+        "yearFrom": 2016,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true,
+        "pricingGroupId": "gruppe-c"
+      }
+    ]
+  },
+  {
+    "id": "renault",
+    "slug": "renault",
+    "name": "Renault",
+    "pricingGroupId": "gruppe-c",
+    "intro": "Renault nutzt bei vielen Modellen Kartenschlüssel und schlüssellose Systeme. Diese erfordern besondere Beschaffung und Zeit am Fahrzeug.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung Renault",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "clio",
+        "slug": "clio",
+        "name": "Clio",
+        "yearFrom": 1998,
+        "keyKinds": [
+          "mechanisch",
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "captur",
+        "slug": "captur",
+        "name": "Captur",
+        "yearFrom": 2013,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "m-gane",
+        "slug": "m-gane",
+        "name": "Mégane",
+        "yearFrom": 1995,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "kangoo",
+        "slug": "kangoo",
+        "name": "Kangoo",
+        "yearFrom": 1997,
+        "keyKinds": [
+          "mechanisch",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true,
+        "pricingGroupId": "gruppe-b"
+      }
+    ]
+  },
+  {
+    "id": "toyota",
+    "slug": "toyota",
+    "name": "Toyota",
+    "pricingGroupId": "gruppe-c",
+    "intro": "Toyota setzt je nach Baujahr auf Klappschlüssel oder Smart-Key-Systeme. Die Schlüsselfotos zeigen die Bauform eindeutig.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung Toyota",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "yaris",
+        "slug": "yaris",
+        "name": "Yaris",
+        "yearFrom": 1999,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk",
+          "smart-key"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "corolla",
+        "slug": "corolla",
+        "name": "Corolla",
+        "yearFrom": 1997,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "smart-key"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "rav4",
+        "slug": "rav4",
+        "name": "RAV4",
+        "yearFrom": 2000,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      }
+    ]
+  },
+  {
+    "id": "fiat",
+    "slug": "fiat",
+    "name": "Fiat",
+    "pricingGroupId": "gruppe-b",
+    "intro": "Fiat-Fahrzeuge lassen sich häufig über den mechanischen Bart und das Funkteil getrennt bearbeiten.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung Fiat",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "500",
+        "slug": "500",
+        "name": "500",
+        "yearFrom": 2007,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "panda",
+        "slug": "panda",
+        "name": "Panda",
+        "yearFrom": 2003,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "ducato",
+        "slug": "ducato",
+        "name": "Ducato",
+        "yearFrom": 2006,
+        "keyKinds": [
+          "mechanisch",
+          "klappschluessel",
+          "funk"
+        ],
+        "requiresVehicleOnSite": true
+      }
+    ]
+  },
+  {
+    "id": "hyundai",
+    "slug": "hyundai",
+    "name": "Hyundai",
+    "pricingGroupId": "gruppe-c",
+    "intro": "Hyundai verwendet bei neueren Modellen überwiegend Funk- und Smart-Key-Systeme mit Zugriff auf das Fahrzeug.",
+    "image": {
+      "motif": "Werkstattfoto: Schlüsselbearbeitung Hyundai",
+      "ratio": "16/9",
+      "note": "Echtes Werkstatt- oder Produktfoto, kein Stockfoto."
+    },
+    "models": [
+      {
+        "id": "i20",
+        "slug": "i20",
+        "name": "i20",
+        "yearFrom": 2008,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "smart-key"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "i30",
+        "slug": "i30",
+        "name": "i30",
+        "yearFrom": 2007,
+        "keyKinds": [
+          "klappschluessel",
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      },
+      {
+        "id": "tucson",
+        "slug": "tucson",
+        "name": "Tucson",
+        "yearFrom": 2004,
+        "keyKinds": [
+          "funk",
+          "smart-key",
+          "keyless"
+        ],
+        "requiresVehicleOnSite": true
+      }
+    ]
+  }
+]

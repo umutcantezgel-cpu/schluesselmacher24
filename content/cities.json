@@ -1,0 +1,290 @@
+[
+  {
+    "id": "berlin",
+    "slug": "berlin",
+    "city": "Berlin",
+    "state": "Berlin",
+    "localIntro": "[Platzhalter — örtlicher Text für Berlin eintragen] Dieser Abschnitt soll beschreiben, was den Bereich Berlin konkret ausmacht: welche Objektarten hier häufig vorkommen, welche Anfahrtszeiten realistisch sind und welche Leistungen wir vor Ort erbringen. Bitte keinen allgemeinen Text mehrfach verwenden.",
+    "localFacts": [
+      {
+        "label": "Bundesland",
+        "value": "Berlin"
+      },
+      {
+        "label": "Einsatzradius",
+        "value": "40 km"
+      },
+      {
+        "label": "Vor-Ort-Leistungen",
+        "value": "[Platzhalter: konkrete Leistungen eintragen]"
+      },
+      {
+        "label": "Übliche Anfahrt",
+        "value": "[Platzhalter: Anfahrtszeit eintragen]"
+      }
+    ],
+    "servicesOffered": [
+      "autoschluessel",
+      "tuer-und-schliesstechnik",
+      "schliessanlagen",
+      "elektronische-zutrittsloesungen",
+      "sicherheitstechnik"
+    ],
+    "onSiteRadiusKm": 40,
+    "seo": {
+      "title": "Schlüsseldienst und Autoschlüssel in Berlin",
+      "description": "Autoschlüssel, Schließtechnik und Sicherheitstechnik für Berlin und Umgebung. Termine nach Vereinbarung, Versand deutschlandweit.",
+      "internalLinks": [
+        {
+          "href": "/standorte",
+          "label": "Alle Einsatzgebiete"
+        },
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Autoschlüssel-Termin"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "hamburg",
+    "slug": "hamburg",
+    "city": "Hamburg",
+    "state": "Hamburg",
+    "localIntro": "[Platzhalter — örtlicher Text für Hamburg eintragen] Dieser Abschnitt soll beschreiben, was den Bereich Hamburg konkret ausmacht: welche Objektarten hier häufig vorkommen, welche Anfahrtszeiten realistisch sind und welche Leistungen wir vor Ort erbringen. Bitte keinen allgemeinen Text mehrfach verwenden.",
+    "localFacts": [
+      {
+        "label": "Bundesland",
+        "value": "Hamburg"
+      },
+      {
+        "label": "Einsatzradius",
+        "value": "40 km"
+      },
+      {
+        "label": "Vor-Ort-Leistungen",
+        "value": "[Platzhalter: konkrete Leistungen eintragen]"
+      },
+      {
+        "label": "Übliche Anfahrt",
+        "value": "[Platzhalter: Anfahrtszeit eintragen]"
+      }
+    ],
+    "servicesOffered": [
+      "autoschluessel",
+      "tuer-und-schliesstechnik",
+      "schliessanlagen",
+      "elektronische-zutrittsloesungen",
+      "sicherheitstechnik"
+    ],
+    "onSiteRadiusKm": 40,
+    "seo": {
+      "title": "Schlüsseldienst und Autoschlüssel in Hamburg",
+      "description": "Autoschlüssel, Schließtechnik und Sicherheitstechnik für Hamburg und Umgebung. Termine nach Vereinbarung, Versand deutschlandweit.",
+      "internalLinks": [
+        {
+          "href": "/standorte",
+          "label": "Alle Einsatzgebiete"
+        },
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Autoschlüssel-Termin"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "muenchen",
+    "slug": "muenchen",
+    "city": "München",
+    "state": "Bayern",
+    "localIntro": "[Platzhalter — örtlicher Text für München eintragen] Dieser Abschnitt soll beschreiben, was den Bereich München konkret ausmacht: welche Objektarten hier häufig vorkommen, welche Anfahrtszeiten realistisch sind und welche Leistungen wir vor Ort erbringen. Bitte keinen allgemeinen Text mehrfach verwenden.",
+    "localFacts": [
+      {
+        "label": "Bundesland",
+        "value": "Bayern"
+      },
+      {
+        "label": "Einsatzradius",
+        "value": "40 km"
+      },
+      {
+        "label": "Vor-Ort-Leistungen",
+        "value": "[Platzhalter: konkrete Leistungen eintragen]"
+      },
+      {
+        "label": "Übliche Anfahrt",
+        "value": "[Platzhalter: Anfahrtszeit eintragen]"
+      }
+    ],
+    "servicesOffered": [
+      "autoschluessel",
+      "tuer-und-schliesstechnik",
+      "schliessanlagen",
+      "elektronische-zutrittsloesungen",
+      "sicherheitstechnik"
+    ],
+    "onSiteRadiusKm": 40,
+    "seo": {
+      "title": "Schlüsseldienst und Autoschlüssel in München",
+      "description": "Autoschlüssel, Schließtechnik und Sicherheitstechnik für München und Umgebung. Termine nach Vereinbarung, Versand deutschlandweit.",
+      "internalLinks": [
+        {
+          "href": "/standorte",
+          "label": "Alle Einsatzgebiete"
+        },
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Autoschlüssel-Termin"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "koeln",
+    "slug": "koeln",
+    "city": "Köln",
+    "state": "Nordrhein-Westfalen",
+    "localIntro": "[Platzhalter — örtlicher Text für Köln eintragen] Dieser Abschnitt soll beschreiben, was den Bereich Köln konkret ausmacht: welche Objektarten hier häufig vorkommen, welche Anfahrtszeiten realistisch sind und welche Leistungen wir vor Ort erbringen. Bitte keinen allgemeinen Text mehrfach verwenden.",
+    "localFacts": [
+      {
+        "label": "Bundesland",
+        "value": "Nordrhein-Westfalen"
+      },
+      {
+        "label": "Einsatzradius",
+        "value": "40 km"
+      },
+      {
+        "label": "Vor-Ort-Leistungen",
+        "value": "[Platzhalter: konkrete Leistungen eintragen]"
+      },
+      {
+        "label": "Übliche Anfahrt",
+        "value": "[Platzhalter: Anfahrtszeit eintragen]"
+      }
+    ],
+    "servicesOffered": [
+      "autoschluessel",
+      "tuer-und-schliesstechnik",
+      "schliessanlagen",
+      "elektronische-zutrittsloesungen",
+      "sicherheitstechnik"
+    ],
+    "onSiteRadiusKm": 40,
+    "seo": {
+      "title": "Schlüsseldienst und Autoschlüssel in Köln",
+      "description": "Autoschlüssel, Schließtechnik und Sicherheitstechnik für Köln und Umgebung. Termine nach Vereinbarung, Versand deutschlandweit.",
+      "internalLinks": [
+        {
+          "href": "/standorte",
+          "label": "Alle Einsatzgebiete"
+        },
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Autoschlüssel-Termin"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "frankfurt-am-main",
+    "slug": "frankfurt-am-main",
+    "city": "Frankfurt am Main",
+    "state": "Hessen",
+    "localIntro": "[Platzhalter — örtlicher Text für Frankfurt am Main eintragen] Dieser Abschnitt soll beschreiben, was den Bereich Frankfurt am Main konkret ausmacht: welche Objektarten hier häufig vorkommen, welche Anfahrtszeiten realistisch sind und welche Leistungen wir vor Ort erbringen. Bitte keinen allgemeinen Text mehrfach verwenden.",
+    "localFacts": [
+      {
+        "label": "Bundesland",
+        "value": "Hessen"
+      },
+      {
+        "label": "Einsatzradius",
+        "value": "40 km"
+      },
+      {
+        "label": "Vor-Ort-Leistungen",
+        "value": "[Platzhalter: konkrete Leistungen eintragen]"
+      },
+      {
+        "label": "Übliche Anfahrt",
+        "value": "[Platzhalter: Anfahrtszeit eintragen]"
+      }
+    ],
+    "servicesOffered": [
+      "autoschluessel",
+      "tuer-und-schliesstechnik",
+      "schliessanlagen",
+      "elektronische-zutrittsloesungen",
+      "sicherheitstechnik"
+    ],
+    "onSiteRadiusKm": 40,
+    "seo": {
+      "title": "Schlüsseldienst und Autoschlüssel in Frankfurt am Main",
+      "description": "Autoschlüssel, Schließtechnik und Sicherheitstechnik für Frankfurt am Main und Umgebung. Termine nach Vereinbarung, Versand deutschlandweit.",
+      "internalLinks": [
+        {
+          "href": "/standorte",
+          "label": "Alle Einsatzgebiete"
+        },
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Autoschlüssel-Termin"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "stuttgart",
+    "slug": "stuttgart",
+    "city": "Stuttgart",
+    "state": "Baden-Württemberg",
+    "localIntro": "[Platzhalter — örtlicher Text für Stuttgart eintragen] Dieser Abschnitt soll beschreiben, was den Bereich Stuttgart konkret ausmacht: welche Objektarten hier häufig vorkommen, welche Anfahrtszeiten realistisch sind und welche Leistungen wir vor Ort erbringen. Bitte keinen allgemeinen Text mehrfach verwenden.",
+    "localFacts": [
+      {
+        "label": "Bundesland",
+        "value": "Baden-Württemberg"
+      },
+      {
+        "label": "Einsatzradius",
+        "value": "40 km"
+      },
+      {
+        "label": "Vor-Ort-Leistungen",
+        "value": "[Platzhalter: konkrete Leistungen eintragen]"
+      },
+      {
+        "label": "Übliche Anfahrt",
+        "value": "[Platzhalter: Anfahrtszeit eintragen]"
+      }
+    ],
+    "servicesOffered": [
+      "autoschluessel",
+      "tuer-und-schliesstechnik",
+      "schliessanlagen",
+      "elektronische-zutrittsloesungen",
+      "sicherheitstechnik"
+    ],
+    "onSiteRadiusKm": 40,
+    "seo": {
+      "title": "Schlüsseldienst und Autoschlüssel in Stuttgart",
+      "description": "Autoschlüssel, Schließtechnik und Sicherheitstechnik für Stuttgart und Umgebung. Termine nach Vereinbarung, Versand deutschlandweit.",
+      "internalLinks": [
+        {
+          "href": "/standorte",
+          "label": "Alle Einsatzgebiete"
+        },
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Autoschlüssel-Termin"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  }
+]

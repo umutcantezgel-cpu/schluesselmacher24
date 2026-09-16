@@ -1,0 +1,374 @@
+[
+  {
+    "id": "autoschluessel-verloren-was-tun",
+    "slug": "autoschluessel-verloren-was-tun",
+    "title": "Autoschlüssel verloren — was jetzt zu tun ist",
+    "excerpt": "Die richtige Reihenfolge spart Zeit und Geld: erst sichern, dann prüfen, dann bestellen.",
+    "topic": "autoschluessel",
+    "body": [
+      {
+        "heading": "Zuerst: Ruhe bewahren und nachsehen",
+        "text": "Prüfen Sie zuerst die üblichen Stellen und fragen Sie an den Orten nach, an denen Sie zuletzt waren. Ein wiedergefundener Schlüssel ist immer die günstigste Lösung."
+      },
+      {
+        "heading": "Prüfen: Ist noch ein Schlüssel vorhanden?",
+        "text": "Wenn noch ein funktionierender Schlüssel da ist, ist der Aufwand für einen Ersatz deutlich geringer. Ist kein Schlüssel mehr vorhanden, ist mehr Vorarbeit nötig — und wir brauchen Ihre Fahrzeugpapiere."
+      },
+      {
+        "heading": "Sicherheitsfrage: Sollte etwas gesperrt werden?",
+        "text": "Wenn der Schlüssel zusammen mit Unterlagen verloren ging, aus denen sich Ihre Adresse ergibt, sprechen Sie mit uns über das weitere Vorgehen. In manchen Fällen ist es sinnvoll, den verlorenen Schlüssel aus dem Fahrzeug zu entfernen."
+      },
+      {
+        "heading": "Was wir von Ihnen brauchen",
+        "text": "Fahrzeugmarke, Modell und Baujahr, Fotos eines vorhandenen Schlüssels, falls es einen gibt, und den Fahrzeugschein. Damit können wir Machbarkeit und Preis einordnen."
+      }
+    ],
+    "image": {
+      "motif": "Beitragsbild: Autoschlüssel verloren — was jetzt zu tun ist",
+      "ratio": "16/9"
+    },
+    "nextStep": {
+      "href": "/autoschluessel/anfrage",
+      "label": "Anfrage für Ersatzschlüssel starten"
+    },
+    "seo": {
+      "title": "Autoschlüssel verloren — was jetzt zu tun ist",
+      "description": "Die richtige Reihenfolge spart Zeit und Geld: erst sichern, dann prüfen, dann bestellen.",
+      "internalLinks": [
+        {
+          "href": "/ratgeber",
+          "label": "Alle Ratgeber"
+        },
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Anfrage für Ersatzschlüssel starten"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "unterschied-kopie-und-programmierung",
+    "slug": "unterschied-kopie-und-programmierung",
+    "title": "Kopie oder Programmierung — wo ist der Unterschied?",
+    "excerpt": "Ein gefräster Bart öffnet die Tür. Für den Motorstart braucht es meist mehr.",
+    "topic": "autoschluessel",
+    "body": [
+      {
+        "heading": "Der mechanische Teil",
+        "text": "Der Bart ist der gefräste Teil des Schlüssels. Er passt in das Schloss und öffnet Tür oder Lenkradschloss. Diesen Teil können wir nach Vorlage oder geeigneten Fahrzeugdaten anfertigen."
+      },
+      {
+        "heading": "Der elektronische Teil",
+        "text": "Im Schlüssel sitzt meist zusätzlich ein Transponder. Das Fahrzeug startet nur, wenn es diesen Transponder kennt. Dieses Anlernen ist ein eigener Arbeitsschritt am Fahrzeug."
+      },
+      {
+        "heading": "Was das für Sie bedeutet",
+        "text": "Eine reine Kopie kann ausreichen, wenn Sie nur eine Tür oder eine Klappe öffnen wollen. Soll der Schlüssel das Fahrzeug starten, gehört die Programmierung dazu."
+      }
+    ],
+    "image": {
+      "motif": "Beitragsbild: Kopie oder Programmierung — wo ist der Unterschied?",
+      "ratio": "16/9"
+    },
+    "nextStep": {
+      "href": "/autoschluessel/programmieren",
+      "label": "Programmierung und Anlernen"
+    },
+    "seo": {
+      "title": "Kopie oder Programmierung — wo ist der Unterschied?",
+      "description": "Ein gefräster Bart öffnet die Tür. Für den Motorstart braucht es meist mehr.",
+      "internalLinks": [
+        {
+          "href": "/ratgeber",
+          "label": "Alle Ratgeber"
+        },
+        {
+          "href": "/autoschluessel/programmieren",
+          "label": "Programmierung und Anlernen"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "zylinder-richtig-ausmessen",
+    "slug": "zylinder-richtig-ausmessen",
+    "title": "Zylinder richtig ausmessen",
+    "excerpt": "Maß A und Maß B — gemessen ab der Mitte der Stulpschraube.",
+    "topic": "gleichschliessende-zylinder",
+    "body": [
+      {
+        "heading": "Der Bezugspunkt",
+        "text": "Gemessen wird immer ab der Mitte der Stulpschraube — das ist die Schraube in der schmalen Stirnseite der Tür. Von dort nach außen ist Maß A, nach innen Maß B."
+      },
+      {
+        "heading": "So gehen Sie vor",
+        "text": "Öffnen Sie die Tür und messen Sie mit einem Lineal oder Zollstock von der Schraubenmitte bis zum jeweiligen Ende des Zylinders. Runden Sie auf volle 5 Millimeter."
+      },
+      {
+        "heading": "Typische Fehler",
+        "text": "Ein zu kurzer Zylinder lässt sich nicht sicher betätigen. Ein zu langer steht über und bietet unnötig Angriffsfläche. Ein Überstand von mehr als etwa 3 Millimetern sollte durch einen passenden Schutzbeschlag abgedeckt sein."
+      }
+    ],
+    "image": {
+      "motif": "Beitragsbild: Zylinder richtig ausmessen",
+      "ratio": "16/9"
+    },
+    "nextStep": {
+      "href": "/gleichschliessende-zylinder",
+      "label": "Zylinder konfigurieren"
+    },
+    "seo": {
+      "title": "Zylinder richtig ausmessen",
+      "description": "Maß A und Maß B — gemessen ab der Mitte der Stulpschraube.",
+      "internalLinks": [
+        {
+          "href": "/ratgeber",
+          "label": "Alle Ratgeber"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Zylinder konfigurieren"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "welche-schliessanlage-passt",
+    "slug": "welche-schliessanlage-passt",
+    "title": "Welche Schließanlage passt zu meinem Objekt?",
+    "excerpt": "Gleichschließung, Z, HS oder GHS — in einfacher Sprache erklärt.",
+    "topic": "schliessanlagen",
+    "body": [
+      {
+        "heading": "Gleichschließung",
+        "text": "Alle Zylinder werden mit demselben Schlüssel geöffnet. Passt für ein Einfamilienhaus oder einen klar abgegrenzten Bereich."
+      },
+      {
+        "heading": "Zentralschlossanlage (Z)",
+        "text": "Jeder hat seinen eigenen Schlüssel für die eigene Tür. Zusätzlich öffnet jeder Schlüssel eine gemeinsame Tür, meist den Hauseingang. Typisch für Mehrfamilienhäuser."
+      },
+      {
+        "heading": "Hauptschlüsselanlage (HS)",
+        "text": "Einzelschlüssel öffnen bestimmte Türen. Ein Hauptschlüssel öffnet alle oder eine größere Gruppe davon. Typisch für Betriebe und Verwaltungen."
+      },
+      {
+        "heading": "Generalhauptschlüsselanlage (GHS)",
+        "text": "Mehrere Ebenen: Abteilungs- oder Bereichsschlüssel, darüber Hauptschlüssel und ganz oben ein Generalhauptschlüssel. Für größere Liegenschaften mit mehreren Gebäuden."
+      },
+      {
+        "heading": "Und die Erweiterbarkeit?",
+        "text": "Planen Sie früh mit, ob später Türen, Nutzer oder Gebäude dazukommen. Eine Anlage, die von Anfang an Reserve hat, lässt sich später ergänzen, ohne alles zu tauschen."
+      }
+    ],
+    "image": {
+      "motif": "Beitragsbild: Welche Schließanlage passt zu meinem Objekt?",
+      "ratio": "16/9"
+    },
+    "nextStep": {
+      "href": "/schliessanlagen/konfigurator",
+      "label": "Projekt erfassen"
+    },
+    "seo": {
+      "title": "Welche Schließanlage passt zu meinem Objekt?",
+      "description": "Gleichschließung, Z, HS oder GHS — in einfacher Sprache erklärt.",
+      "internalLinks": [
+        {
+          "href": "/ratgeber",
+          "label": "Alle Ratgeber"
+        },
+        {
+          "href": "/schliessanlagen/konfigurator",
+          "label": "Projekt erfassen"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "schluesselcode-finden",
+    "slug": "schluesselcode-finden",
+    "title": "Wo finde ich den Schlüsselcode?",
+    "excerpt": "Auf dem Schloss, auf dem Schlüsselkopf oder in den Unterlagen.",
+    "topic": "schluessel-nach-code",
+    "body": [
+      {
+        "heading": "Am Schloss selbst",
+        "text": "Bei Möbel-, Spind- und Briefkastenschlössern steht der Code häufig auf der Stirnseite des Schlosses oder auf dem Schließzylinder — sichtbar, sobald die Tür offen ist."
+      },
+      {
+        "heading": "Auf dem Schlüssel",
+        "text": "Viele Schlüssel tragen den Code auf dem Kopf oder am Schaft. Fotografieren Sie ihn bei gutem Licht, damit die Prägung lesbar ist."
+      },
+      {
+        "heading": "In den Unterlagen",
+        "text": "Bei Schließanlagen und geschützten Systemen steht die Nummer auf der Sicherungskarte oder im Schließplan. Bewahren Sie diese Unterlagen getrennt von den Schlüsseln auf."
+      },
+      {
+        "heading": "Wenn Sie keinen Code finden",
+        "text": "Dann ist der Weg über Schlüssel nach Vorlage der richtige: drei Fotos, und wir prüfen, ob eine Anfertigung möglich ist."
+      }
+    ],
+    "image": {
+      "motif": "Beitragsbild: Wo finde ich den Schlüsselcode?",
+      "ratio": "16/9"
+    },
+    "nextStep": {
+      "href": "/schluessel-nach-code",
+      "label": "Codelinien ansehen"
+    },
+    "seo": {
+      "title": "Wo finde ich den Schlüsselcode?",
+      "description": "Auf dem Schloss, auf dem Schlüsselkopf oder in den Unterlagen.",
+      "internalLinks": [
+        {
+          "href": "/ratgeber",
+          "label": "Alle Ratgeber"
+        },
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Codelinien ansehen"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "einbruchschutz-wo-anfangen",
+    "slug": "einbruchschutz-wo-anfangen",
+    "title": "Einbruchschutz — wo fängt man sinnvoll an?",
+    "excerpt": "Erst die erreichbaren Stellen, dann die Meldetechnik.",
+    "topic": "sicherheitstechnik",
+    "body": [
+      {
+        "heading": "Schauen Sie von außen auf Ihr Gebäude",
+        "text": "Welche Türen und Fenster sind ohne Hilfsmittel erreichbar? Genau dort beginnt sinnvoller Schutz — nicht bei der Kamera."
+      },
+      {
+        "heading": "Mechanik zuerst",
+        "text": "Mechanik hält auf und kostet Zeit. Zusatzschlösser, Schutzbeschläge und geeignete Zylinder wirken auch dann, wenn niemand zu Hause ist und kein Strom fließt."
+      },
+      {
+        "heading": "Dann Meldetechnik",
+        "text": "Alarm- und Meldetechnik erkennt und informiert. Sie ersetzt keine Mechanik, sondern ergänzt sie."
+      },
+      {
+        "heading": "Kamera zuletzt — und rechtlich sauber",
+        "text": "Kameras helfen bei der Aufklärung. Achten Sie darauf, dass Sie nur Ihren eigenen Bereich erfassen. Öffentliche Flächen und Nachbargrundstücke dürfen nicht gefilmt werden."
+      }
+    ],
+    "image": {
+      "motif": "Beitragsbild: Einbruchschutz — wo fängt man sinnvoll an?",
+      "ratio": "16/9"
+    },
+    "nextStep": {
+      "href": "/sicherheitstechnik/sicherheitscheck",
+      "label": "Sicherheitscheck starten"
+    },
+    "seo": {
+      "title": "Einbruchschutz — wo fängt man sinnvoll an?",
+      "description": "Erst die erreichbaren Stellen, dann die Meldetechnik.",
+      "internalLinks": [
+        {
+          "href": "/ratgeber",
+          "label": "Alle Ratgeber"
+        },
+        {
+          "href": "/sicherheitstechnik/sicherheitscheck",
+          "label": "Sicherheitscheck starten"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "schluessel-verloren-wohnung",
+    "slug": "schluessel-verloren-wohnung",
+    "title": "Wohnungsschlüssel verloren — Schloss tauschen oder nicht?",
+    "excerpt": "Es kommt darauf an, ob der Schlüssel Ihrer Wohnung zugeordnet werden kann.",
+    "topic": "tuer-und-schliesstechnik",
+    "body": [
+      {
+        "heading": "Die entscheidende Frage",
+        "text": "Kann jemand den gefundenen Schlüssel Ihrer Wohnung zuordnen? Wenn am Schlüsselbund eine Adresse oder ein beschrifteter Anhänger hing, sollten Sie handeln."
+      },
+      {
+        "heading": "Bei einer Schließanlage",
+        "text": "Gehört der Schlüssel zu einer Anlage, betrifft der Verlust nicht nur Ihre Tür. Informieren Sie in diesem Fall Vermieter oder Verwaltung."
+      },
+      {
+        "heading": "Die praktische Lösung",
+        "text": "Oft genügt ein Zylindertausch an der betroffenen Tür. Wenn mehrere Türen betroffen sind, ist eine gleichschließende Lösung häufig günstiger als einzelne Zylinder."
+      }
+    ],
+    "image": {
+      "motif": "Beitragsbild: Wohnungsschlüssel verloren — Schloss tauschen oder nicht?",
+      "ratio": "16/9"
+    },
+    "nextStep": {
+      "href": "/gleichschliessende-zylinder",
+      "label": "Gleichschließende Zylinder"
+    },
+    "seo": {
+      "title": "Wohnungsschlüssel verloren — Schloss tauschen oder nicht?",
+      "description": "Es kommt darauf an, ob der Schlüssel Ihrer Wohnung zugeordnet werden kann.",
+      "internalLinks": [
+        {
+          "href": "/ratgeber",
+          "label": "Alle Ratgeber"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "mechanisch-oder-elektronisch",
+    "slug": "mechanisch-oder-elektronisch",
+    "title": "Mechanisch oder elektronisch — was ist sinnvoller?",
+    "excerpt": "Beides hat seinen Platz. Entscheidend ist, wie oft sich etwas ändert.",
+    "topic": "elektronische-zutrittsloesungen",
+    "body": [
+      {
+        "heading": "Wenn sich selten etwas ändert",
+        "text": "Bei einem Einfamilienhaus mit festen Nutzern ist eine mechanische Lösung robust, wartungsarm und unabhängig von Strom und Netz."
+      },
+      {
+        "heading": "Wenn sich häufig etwas ändert",
+        "text": "Wechseln Nutzer regelmäßig — Personal, Reinigung, Handwerk, Mieter — spielt Elektronik ihre Stärke aus: Ein verlorenes Medium wird gesperrt, statt Zylinder zu tauschen."
+      },
+      {
+        "heading": "Die Kombination",
+        "text": "In der Praxis ist die Mischung häufig die beste Lösung: elektronisch an den Türen mit wechselnden Nutzern, mechanisch überall dort, wo Ruhe herrscht."
+      }
+    ],
+    "image": {
+      "motif": "Beitragsbild: Mechanisch oder elektronisch — was ist sinnvoller?",
+      "ratio": "16/9"
+    },
+    "nextStep": {
+      "href": "/elektronische-zutrittsloesungen/konfigurator",
+      "label": "Bedarf erfassen"
+    },
+    "seo": {
+      "title": "Mechanisch oder elektronisch — was ist sinnvoller?",
+      "description": "Beides hat seinen Platz. Entscheidend ist, wie oft sich etwas ändert.",
+      "internalLinks": [
+        {
+          "href": "/ratgeber",
+          "label": "Alle Ratgeber"
+        },
+        {
+          "href": "/elektronische-zutrittsloesungen/konfigurator",
+          "label": "Bedarf erfassen"
+        }
+      ]
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  }
+]

@@ -1,0 +1,658 @@
+[
+  {
+    "route": "",
+    "headline": "Autoschlüssel nachmachen und programmieren",
+    "subline": "Dazu Schlüssel, Schließanlagen, Zutrittslösungen und Sicherheitstechnik aus einer Hand.",
+    "intro": "Wir sind ein Fachbetrieb für Schlüssel- und Schließtechnik. Der Schwerpunkt liegt auf Autoschlüsseln: nachmachen, programmieren, reparieren. Daneben bearbeiten wir Schlüssel nach Vorlage und nach Code, planen Schließanlagen, richten elektronische Zutrittslösungen ein und sichern Gebäude ab.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "SCHLÜSSELMACHER24 — Autoschlüssel, Schließtechnik und Sicherheitstechnik",
+      "description": "Autoschlüssel nachmachen und programmieren, Schlüssel nach Code und Vorlage, gleichschließende Zylinder, Schließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik — aus einer Hand.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        },
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Schlüssel nach Code"
+        },
+        {
+          "href": "/schliessanlagen",
+          "label": "Schließanlagen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Autoschlüssel nachmachen und programmieren",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel",
+    "headline": "Autoschlüssel",
+    "subline": "Nachmachen, programmieren, reparieren — mit klarem Ablauf und festem Termin.",
+    "intro": "Ob Zweitschlüssel, Ersatz nach Verlust, Programmierung oder Reparatur: Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder Preisrahmen. Erst dann buchen Sie einen Termin.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Autoschlüssel nachmachen und programmieren",
+      "description": "Autoschlüssel nachmachen, kopieren, programmieren und reparieren. Geführte Anfrage mit Schlüsselfotos, Preisangabe, Anzahlung und fester Terminbuchung.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Fahrzeug auswählen und Termin starten"
+        },
+        {
+          "href": "/autoschluessel/programmieren",
+          "label": "Autoschlüssel programmieren"
+        },
+        {
+          "href": "/autoschluessel/marken",
+          "label": "Fahrzeugmarken und Modelle"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Autoschlüssel",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel/nachmachen",
+    "headline": "Autoschlüssel nachmachen",
+    "subline": "Zweitschlüssel und Ersatzschlüssel für Ihr Fahrzeug.",
+    "intro": "Ein zweiter Schlüssel ist dann am günstigsten, wenn noch ein funktionierender vorhanden ist. Ist kein Schlüssel mehr da, prüfen wir den Einzelfall gesondert — Umfang und Aufwand unterscheiden sich deutlich.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Autoschlüssel nachmachen — Zweit- und Ersatzschlüssel",
+      "description": "Zweitschlüssel und Ersatzschlüssel für Ihr Fahrzeug anfertigen lassen. Mit Schlüsselfotos, Preisangabe und fester Terminbuchung.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Anfrage starten"
+        },
+        {
+          "href": "/autoschluessel/programmieren",
+          "label": "Programmierung und Anlernen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Autoschlüssel nachmachen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel/programmieren",
+    "headline": "Autoschlüssel programmieren und anlernen",
+    "subline": "Transponder, Funk und Smart Key elektronisch am Fahrzeug anlernen.",
+    "intro": "Ein neuer oder vorhandener Schlüssel muss dem Fahrzeug bekannt gemacht werden. Dafür ist in aller Regel Zugriff auf das Fahrzeug nötig — das lässt sich nicht per Versand lösen.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Autoschlüssel programmieren und anlernen",
+      "description": "Transponder, Wegfahrsperre, Funkfernbedienung und Smart Key anlernen lassen. Termin mit Fahrzeug vor Ort.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Termin mit Fahrzeug buchen"
+        },
+        {
+          "href": "/autoschluessel/smart-key",
+          "label": "Smart Key und Keyless"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Autoschlüssel programmieren und anlernen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel/kopieren",
+    "headline": "Autoschlüssel kopieren",
+    "subline": "Mechanische Kopie nach Vorlage — und was sie leistet.",
+    "intro": "Eine mechanische Kopie bildet den Bart des Originals ab. Bei vielen Fahrzeugen öffnet sie die Tür, startet den Motor aber nicht, weil Transponder und Wegfahrsperre fehlen. Was in Ihrem Fall möglich ist, klären wir vorab.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Autoschlüssel kopieren — was mechanisch möglich ist",
+      "description": "Mechanische Kopie von Autoschlüsseln nach Vorlage. Wir erklären, wann eine Kopie reicht und wann zusätzlich programmiert werden muss.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Schlüssel nach Vorlage anfragen"
+        },
+        {
+          "href": "/autoschluessel/programmieren",
+          "label": "Programmierung ergänzen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Autoschlüssel kopieren",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel/funkschluessel",
+    "headline": "Funkschlüssel und Funkfernbedienung",
+    "subline": "Tasten, Funkfunktion, Gehäuse und Ersatz.",
+    "intro": "Wenn das Fahrzeug auf Knopfdruck nicht mehr reagiert, liegt das nicht immer am Schlüssel. Wir grenzen ein, ob Batterie, Taster, Platine oder das Anlernen die Ursache ist.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Funkschlüssel und Funkfernbedienung",
+      "description": "Funkschlüssel reparieren, Gehäuse und Tasten tauschen, Funkfunktion prüfen und Ersatz anfertigen lassen.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Anfrage starten"
+        },
+        {
+          "href": "/autoschluessel/nachmachen",
+          "label": "Ersatzschlüssel anfertigen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Funkschlüssel und Funkfernbedienung",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel/smart-key",
+    "headline": "Smart Key und Keyless",
+    "subline": "Schlüsselloser Zugang und Start — je nach Fahrzeug.",
+    "intro": "Smart-Key-Systeme erkennen den Schlüssel in der Nähe des Fahrzeugs. Beschaffung und Anlernen sind aufwendiger als bei einfachen Funkschlüsseln. Planen Sie dafür mehr Vorlauf und mehr Zeit am Fahrzeug ein.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Smart Key und Keyless — Ersatz und Programmierung",
+      "description": "Smart Key und schlüssellose Systeme: Ersatz, Programmierung und Prüfung. Mit Vorlaufzeit und festem Termin.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Anfrage starten"
+        },
+        {
+          "href": "/autoschluessel/programmieren",
+          "label": "Programmierung und Anlernen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Smart Key und Keyless",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel/schluesselbart-fraesen",
+    "headline": "Schlüsselbart fräsen",
+    "subline": "Mechanische Fertigung nach Vorlage oder geeigneten Fahrzeugdaten.",
+    "intro": "Der Bart ist der mechanische Teil des Schlüssels. Wir fräsen ihn nach einem vorhandenen Schlüssel oder anhand geeigneter Fahrzeugdaten. Die Elektronik ist davon unabhängig.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Schlüsselbart fräsen nach Vorlage oder Fahrzeugdaten",
+      "description": "Schlüsselbart für Autoschlüssel fräsen lassen — nach Original oder geeigneten Fahrzeugdaten.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Nach Vorlage anfragen"
+        },
+        {
+          "href": "/autoschluessel/kopieren",
+          "label": "Was eine Kopie leistet"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüsselbart fräsen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel/fahrzeugoeffnung",
+    "headline": "Fahrzeugöffnung",
+    "subline": "Wenn der Schlüssel im Fahrzeug liegt.",
+    "intro": "Wir öffnen Fahrzeuge zerstörungsfrei. Vor Ort weisen Sie bitte nach, dass Sie über das Fahrzeug verfügen dürfen. Die Öffnung ist eine eigene Leistung und ersetzt keinen Ersatzschlüssel.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Fahrzeugöffnung — zerstörungsfrei",
+      "description": "Zerstörungsfreie Fahrzeugöffnung als eigene Serviceleistung. Nachweis der Verfügungsberechtigung erforderlich.",
+      "internalLinks": [
+        {
+          "href": "/service-und-termin/anfrage?thema=fahrzeugoeffnung",
+          "label": "Fahrzeugöffnung anfragen"
+        },
+        {
+          "href": "/autoschluessel/nachmachen",
+          "label": "Ersatzschlüssel anfertigen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Fahrzeugöffnung",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "schluessel-nach-vorlage",
+    "headline": "Schlüssel nach Vorlage",
+    "subline": "Sie haben den Schlüssel — wir prüfen, ob wir ihn nachfertigen können.",
+    "intro": "Sie fotografieren Ihren Schlüssel aus drei Richtungen und schicken uns die Bilder. Wir sagen Ihnen, ob eine Anfertigung möglich ist und was sie kostet. Einsenden müssen Sie Ihren Schlüssel zunächst nicht.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Schlüssel nach Vorlage nachmachen lassen",
+      "description": "Schlüssel nach Vorlage: drei Fotos hochladen, Machbarkeit und Preis erhalten. Einsendung des Originals nur, wenn es nötig ist.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Code vorhanden? Direkt bestellen"
+        },
+        {
+          "href": "/autoschluessel/kopieren",
+          "label": "Mechanische Autoschlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel nach Vorlage",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "schluessel-nach-code",
+    "headline": "Schlüssel nach Code",
+    "subline": "Code eingeben, bestellen, fertig. Ohne Einsendung des Originals.",
+    "intro": "Viele Schlösser tragen einen aufgedruckten oder eingeprägten Code. Mit diesem Code fertigen wir den passenden Schlüssel an — Sie behalten Ihren Originalschlüssel.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Schlüssel nach Code bestellen",
+      "description": "Nachschlüssel nach Code für Möbel, Briefkasten, Spind, Technikschrank und mehr. Ohne Einsendung des Originalschlüssels.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Kein Code? Schlüssel nach Vorlage"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Mehrere Türen mit einem Schlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel nach Code",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "gleichschliessende-zylinder",
+    "headline": "Gleichschließende Zylinder",
+    "subline": "Mehrere Türen, ein Schlüssel. Direkt konfigurierbar.",
+    "intro": "Sie stellen sich Ihre Zylinder mit den passenden Maßen zusammen. Alle erhalten dieselbe Schließung und werden mit derselben Anzahl gemeinsamer Schlüssel geliefert.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Gleichschließende Zylinder konfigurieren und bestellen",
+      "description": "Gleichschließende Zylinder online zusammenstellen: Bauform, Maße, Funktion, Stückzahl und Anzahl gemeinsamer Schlüssel.",
+      "internalLinks": [
+        {
+          "href": "/schliessanlagen",
+          "label": "Größere Anlage? Zur Projektplanung"
+        },
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Tür- und Schließtechnik"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Gleichschließende Zylinder",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "schliessanlagen",
+    "headline": "Mechanische Schließanlagen",
+    "subline": "Von der Gleichschließung bis zur Generalhauptschlüsselanlage.",
+    "intro": "Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert werden kann.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Schließanlagen planen — Z, HS und GHS",
+      "description": "Mechanische Schließanlagen für Privat, Unternehmen und Hausverwaltungen. Gleichschließung, Zentralschloss, Hauptschlüssel und Generalhauptschlüssel.",
+      "internalLinks": [
+        {
+          "href": "/schliessanlagen/konfigurator",
+          "label": "Projekt erfassen"
+        },
+        {
+          "href": "/elektronische-zutrittsloesungen",
+          "label": "Elektronische Zutrittslösungen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Mechanische Schließanlagen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "elektronische-zutrittsloesungen",
+    "headline": "Elektronische Zutrittslösungen",
+    "subline": "Karte, Transponder, PIN, App und digitale Zylinder.",
+    "intro": "Elektronische Zutrittslösungen ersetzen den mechanischen Schlüssel oder ergänzen ihn. Verlorene Medien sperren Sie selbst — ohne die Zylinder zu tauschen.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Elektronische Zutrittslösungen — RFID, PIN, App",
+      "description": "Elektronische Zutrittskontrolle mit Karte, Transponder, PIN, Smartphone und digitalen Zylindern. Benutzerverwaltung und zeitliche Berechtigungen.",
+      "internalLinks": [
+        {
+          "href": "/elektronische-zutrittsloesungen/konfigurator",
+          "label": "Bedarf erfassen"
+        },
+        {
+          "href": "/schliessanlagen",
+          "label": "Mechanische Schließanlagen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Elektronische Zutrittslösungen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "tuer-und-schliesstechnik",
+    "headline": "Tür- und Schließtechnik",
+    "subline": "Zylinder, Schlösser, Beschläge und Türtechnik.",
+    "intro": "Alles rund um die Tür selbst: Zylinder, Einsteckschlösser, Mehrfachverriegelungen, Beschläge, Türschließer und die Technik, die dafür sorgt, dass eine Tür sauber schließt.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Tür- und Schließtechnik — Zylinder, Schlösser, Beschläge",
+      "description": "Profilzylinder, Einsteckschlösser, Mehrfachverriegelungen, Schutzbeschläge, Türzusatzschlösser und Türschließer — Beratung, Montage und Reparatur.",
+      "internalLinks": [
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder"
+        },
+        {
+          "href": "/sicherheitstechnik",
+          "label": "Sicherheitstechnik"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Tür- und Schließtechnik",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "sicherheitstechnik",
+    "headline": "Sicherheitstechnik",
+    "subline": "Einbruchschutz, Überwachung und Alarmierung.",
+    "intro": "Sicherheit entsteht aus dem Zusammenspiel: Mechanik hält auf, Meldetechnik erkennt, Alarmierung informiert. Wir planen die Bereiche gemeinsam statt einzeln.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Sicherheitstechnik — Kamera, Alarm, Einbruchschutz",
+      "description": "Videoüberwachung, Alarmanlagen, Glasbruch- und Bewegungsmelder, Tür- und Fenstersicherung sowie kombinierte Einbruchschutzkonzepte.",
+      "internalLinks": [
+        {
+          "href": "/sicherheitstechnik/sicherheitscheck",
+          "label": "Sicherheitscheck starten"
+        },
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Mechanischer Grundschutz"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Sicherheitstechnik",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel/marken",
+    "headline": "Fahrzeugmarken und Modelle",
+    "subline": "Was bei Ihrem Fahrzeug technisch möglich ist.",
+    "intro": "Welche Schlüsselart Ihr Fahrzeug hat und ob es zum Anlernen vor Ort sein muss, hängt von Marke, Modell und Baujahr ab. Hier finden Sie, was wir zu den gängigen Fahrzeugen hinterlegt haben.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Autoschlüssel nach Fahrzeugmarke und Modell",
+      "description": "Übersicht der Fahrzeugmarken und Modelle: mögliche Schlüsselarten, Baujahre und ob das Fahrzeug zum Anlernen vor Ort sein muss.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Anfrage für Ihr Fahrzeug starten"
+        },
+        {
+          "href": "/autoschluessel",
+          "label": "Alle Autoschlüssel-Leistungen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Fahrzeugmarken und Modelle",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel/anfrage",
+    "headline": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+    "subline": "Fahrzeug angeben, Fotos hochladen, Preis sehen, Termin buchen.",
+    "intro": "Sie geben Schritt für Schritt an, welches Fahrzeug und welchen Schlüssel Sie haben. Am Ende sehen Sie den Preis oder den Preisrahmen, leisten eine Anzahlung und buchen einen festen Termin. Ihre Eingaben werden im Browser zwischengespeichert.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "description": "Geführte Autoschlüssel-Anfrage: Fahrzeugdaten, Schlüsselfotos, Fahrzeugschein, Preisangabe, Anzahlung und feste Terminbuchung.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Alle Autoschlüssel-Leistungen"
+        },
+        {
+          "href": "/service-und-termin/terminstatus",
+          "label": "Terminstatus abrufen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Autoschlüssel-Anfrage mit Termin und Anzahlung",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "schluessel-nach-vorlage/anfrage",
+    "headline": "Anfrage: Schlüssel nach Vorlage",
+    "subline": "Drei Fotos genügen für die Prüfung.",
+    "intro": "Fotografieren Sie Ihren Schlüssel aus drei Richtungen und ergänzen Sie, was Sie über ihn wissen. Wir melden uns mit Machbarkeit und Preis. Einsenden müssen Sie Ihren Schlüssel zunächst nicht.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Schlüssel nach Vorlage anfragen",
+      "description": "Anfrage für einen Schlüssel nach Vorlage: drei Fotos, Nummern und Beschriftungen, Stückzahl und Kontaktdaten.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "So funktioniert es"
+        },
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Code vorhanden? Direkt bestellen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Anfrage: Schlüssel nach Vorlage",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "gleichschliessende-zylinder/konfigurator",
+    "headline": "Gleichschließende Zylinder zusammenstellen",
+    "subline": "Bauform, Maße, Funktion und Anzahl gemeinsamer Schlüssel.",
+    "intro": "Legen Sie für jede Tür eine Position an. Am Ende sehen Sie die vollständige Preisaufstellung und legen die Zusammenstellung in den Warenkorb.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Gleichschließende Zylinder konfigurieren",
+      "description": "Zylinder zusammenstellen: Bauform, Maß A und Maß B, Funktion, Stückzahl, Anzahl gemeinsamer Schlüssel und Zusatzoptionen.",
+      "internalLinks": [
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Was ist eine Gleichschließung?"
+        },
+        {
+          "href": "/ratgeber/zylinder-richtig-ausmessen",
+          "label": "Zylinder richtig messen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Gleichschließende Zylinder zusammenstellen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "schliessanlagen/konfigurator",
+    "headline": "Schließanlage: Projekt erfassen",
+    "subline": "Zehn Frageblöcke, aus denen ein belastbares Angebot entsteht.",
+    "intro": "Sie beschreiben Ihr Objekt, Ihre Nutzer und Ihre Türen. Am Ende sehen Sie eine Zusammenfassung, die wir als Projektbericht übernehmen. Ihre Eingaben werden im Browser zwischengespeichert.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Schließanlage planen — Projektkonfigurator",
+      "description": "Projektkonfigurator für mechanische Schließanlagen: Kundentyp, Objekt, Nutzer, bestehende Anlage, Türen, Berechtigungen, Schlüssel, Unterlagen und Service.",
+      "internalLinks": [
+        {
+          "href": "/schliessanlagen",
+          "label": "Systeme im Vergleich"
+        },
+        {
+          "href": "/ratgeber/welche-schliessanlage-passt",
+          "label": "Welche Anlage passt?"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schließanlage: Projekt erfassen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "elektronische-zutrittsloesungen/konfigurator",
+    "headline": "Elektronische Zutrittslösung: Bedarf erfassen",
+    "subline": "Acht Fragen zu Objekt, Umfang, Medien und Berechtigungen.",
+    "intro": "Wir klären, wie viele Türen und Nutzer es gibt, womit geöffnet werden soll und wie die Berechtigungen aussehen. Daraus entsteht ein passender Vorschlag.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Elektronische Zutrittslösung konfigurieren",
+      "description": "Bedarf für eine elektronische Zutrittslösung erfassen: Objekt, Türen, Nutzer, Identmedium, Verwaltung, Berechtigungen, Standorte und Service.",
+      "internalLinks": [
+        {
+          "href": "/elektronische-zutrittsloesungen",
+          "label": "Überblick über die Lösungen"
+        },
+        {
+          "href": "/ratgeber/mechanisch-oder-elektronisch",
+          "label": "Mechanisch oder elektronisch?"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Elektronische Zutrittslösung: Bedarf erfassen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "sicherheitstechnik/sicherheitscheck",
+    "headline": "Geführter Sicherheitscheck",
+    "subline": "Bestandsaufnahme Ihres Objekts in wenigen Schritten.",
+    "intro": "Wir gehen Ihr Objekt gemeinsam durch: Zugänge, erreichbare Fenster, Nebengebäude und vorhandene Technik. Daraus entsteht ein Vorschlag, der zu Ihrer Situation passt.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Sicherheitscheck für Ihr Objekt",
+      "description": "Geführter Sicherheitscheck: Objektart, Zugänge, erreichbare Fenster, vorhandene Technik, Schwerpunkte und Vor-Ort-Termin.",
+      "internalLinks": [
+        {
+          "href": "/sicherheitstechnik",
+          "label": "Alle Bereiche der Sicherheitstechnik"
+        },
+        {
+          "href": "/ratgeber/einbruchschutz-wo-anfangen",
+          "label": "Wo sinnvoll anfangen?"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Geführter Sicherheitscheck",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "service-und-termin",
+    "headline": "Service und Termin",
+    "subline": "Anfrage stellen, Terminstatus prüfen, Kontakt aufnehmen.",
+    "intro": "Hier finden Sie alles, was nicht in einen der Fachbereiche gehört: die allgemeine Anfrage, den Stand Ihres Vorgangs, unsere Erreichbarkeit und unsere Vor-Ort-Leistungen.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Service und Termin",
+      "description": "Allgemeine Anfrage stellen, Terminstatus abrufen, Kontakt aufnehmen und Vor-Ort-Leistungen ansehen.",
+      "internalLinks": [
+        {
+          "href": "/service-und-termin/anfrage",
+          "label": "Allgemeine Anfrage"
+        },
+        {
+          "href": "/service-und-termin/terminstatus",
+          "label": "Terminstatus prüfen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Service und Termin",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-09-15T00:00:00.000Z"
+  }
+]

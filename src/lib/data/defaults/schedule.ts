@@ -1,0 +1,20 @@
+import type { BlockedDay } from '@/lib/types';
+
+/**
+ * Sperrtage: Urlaub, Feiertage, ausgebuchte Tage und interne Sperrzeiten.
+ * Wird im Backend unter „Termine“ gepflegt.
+ */
+export function blockedDays(): BlockedDay[] {
+  return [
+    { id: 'feiertag-2026-10-03', date: '2026-10-03', reason: 'Feiertag: Tag der Deutschen Einheit' },
+    { id: 'feiertag-2026-12-25', date: '2026-12-25', reason: 'Feiertag: 1. Weihnachtstag' },
+    { id: 'feiertag-2026-12-26', date: '2026-12-26', reason: 'Feiertag: 2. Weihnachtstag' },
+    { id: 'feiertag-2027-01-01', date: '2027-01-01', reason: 'Feiertag: Neujahr' },
+    {
+      id: 'intern-2026-10-16',
+      date: '2026-10-16',
+      reason: 'Interne Sperrzeit: Werkstattwartung',
+      spans: [{ from: '14:00', to: '17:00' }],
+    },
+  ];
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="sm24-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="sm24-key" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="url(#sm24-grad)" />
+  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="6.25" fill="none" stroke="#334155" stroke-width="1.5" />
+  <!-- Schlüsselkopf -->
+  <circle cx="12" cy="14" r="5.5" fill="none" stroke="url(#sm24-key)" stroke-width="2.25" />
+  <circle cx="12" cy="14" r="2" fill="#38bdf8" />
+  <!-- Schlüsselschaft & Bärte -->
+  <path d="M16 16.5 L24.5 25" stroke="url(#sm24-key)" stroke-width="2.25" stroke-linecap="round" />
+  <path d="M21 21.5 L23.5 19" stroke="url(#sm24-key)" stroke-width="2" stroke-linecap="round" />
+  <path d="M23 23.5 L25.5 21" stroke="url(#sm24-key)" stroke-width="2" stroke-linecap="round" />
+</svg>
