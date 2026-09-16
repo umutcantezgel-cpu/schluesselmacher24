@@ -1,8 +1,9 @@
 import type { MetadataRoute } from 'next';
 
 import { getCities, getCodeLines, getGuides, getServicePages, getVehicleMakes } from '@/lib/data';
+import { getSiteUrl } from '@/lib/site-url';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://schluesselmacher24.de';
+const siteUrl = getSiteUrl();
 
 /** Feste Seiten. Neue Routen hier ergänzen. */
 const STATIC_ROUTES: Array<{ path: string; priority: number }> = [

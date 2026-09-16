@@ -1,4 +1,5 @@
 import type { CityPage, CodeLine, Guide, Settings } from '@/lib/types';
+import { getSiteUrl } from '@/lib/site-url';
 
 /**
  * Strukturierte Daten für Suchmaschinen und KI-Systeme.
@@ -17,7 +18,7 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://schluesselmacher24.de';
+const siteUrl = getSiteUrl();
 
 const WEEKDAYS = [
   'Monday',

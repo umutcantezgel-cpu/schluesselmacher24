@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { MobileActionBar } from '@/components/layout/mobile-action-bar';
+import { getSiteUrl } from '@/lib/site-url';
 
 import './globals.css';
 
@@ -31,7 +32,7 @@ const mono = IBM_Plex_Mono({
   weight: ['400', '500', '600'],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://schluesselmacher24.de';
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
