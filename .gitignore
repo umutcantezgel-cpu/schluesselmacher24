@@ -44,3 +44,4 @@ next-env.d.ts
 # Vorgangsdaten enthalten Kundendaten und gehören nicht in die Versionsverwaltung
 /content/records.json
 tsbuildinfo
+dev_server.log

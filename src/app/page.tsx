@@ -19,7 +19,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { Section, SectionHeading } from '@/components/layout/section';
-import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
+import { JsonLd, localBusinessSchema, faqSchema } from '@/components/seo/json-ld';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('');
@@ -84,6 +84,7 @@ export default async function HomePage() {
   return (
     <>
       <JsonLd data={localBusinessSchema(settings)} />
+      <JsonLd data={faqSchema(guides.map((g) => ({ question: g.title, answer: g.excerpt })))} />
 
       {/* Einstieg */}
       <section className="border-b border-border bg-surface">
@@ -298,7 +299,7 @@ export default async function HomePage() {
             ['schliessanlagen', 'elektronische-zutrittsloesungen', 'sicherheitstechnik'].includes(a.key),
           ).map((area) => (
             <li key={area.key}>
-              <Card className="flex h-full flex-col">
+              <Card className="group relative flex h-full flex-col overflow-hidden transition-all hover:shadow-[0_0_20px_rgba(var(--primary),0.15)]">
                 <CardBody className="flex flex-1 flex-col">
                   <p className="text-[15px] font-bold text-foreground">{area.label}</p>
                   <p className="mt-2 flex-1 text-[14px] leading-relaxed text-foreground-muted">
