@@ -32,6 +32,11 @@ describe('format utilities', () => {
     it('handles large numbers', () => {
       expect(formatCents(123456789)).toBe('1.234.567,89\u00A0€');
     });
+
+    it('handles decimal inputs gracefully', () => {
+      expect(formatCents(6990.5)).toBe('69,91\u00A0€');
+      expect(formatCents(6990.1)).toBe('69,90\u00A0€');
+    });
   });
 
   describe('formatNumber', () => {
