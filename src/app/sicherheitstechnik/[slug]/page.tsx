@@ -60,11 +60,18 @@ export default async function SecurityDetailPage(props: PageProps) {
   const showLegal = LEGAL_RELEVANT.includes(page.slug);
 
   // Interne Links aus der Datenschicht, ergänzt um die Bereichsübersicht — ohne Dopplung.
-  const links = [
+  const rawLinks = [
     ...page.seo.internalLinks,
     { href: `/${AREA}`, label: `Übersicht ${AREA_LABEL}` },
     { href: '/tuer-und-schliesstechnik', label: 'Mechanischer Grundschutz an der Tür' },
-  ].filter((link, index, list) => list.findIndex((l) => l.href === link.href) === index);
+  ];
+
+  const seen = new Set<string>();
+  const links = rawLinks.filter((link) => {
+    if (seen.has(link.href)) return false;
+    seen.add(link.href);
+    return true;
+  });
 
   return (
     <>
