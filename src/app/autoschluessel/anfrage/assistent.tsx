@@ -534,9 +534,7 @@ export function Assistent({
     return () => {
       cancelled = true;
     };
-    // Die Eingaben stecken vollständig im Schlüssel.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [needsQuote, hasQuoteInputs, quoteKey]);
+  }, [needsQuote, hasQuoteInputs, quoteKey, data.makeSlug, model?.slug, data.serviceId, data.keyKind, data.workingKeys]);
 
   /* ---------- Termine laden --------------------------------------------- */
 
@@ -566,9 +564,7 @@ export function Assistent({
     return () => {
       cancelled = true;
     };
-    // slotsKey fasst Terminlänge und Vorlauf zusammen.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSlotStep, slotsKey]);
+  }, [isSlotStep, slotMinutes, leadTimeDays, slotsKey]);
 
   /* ---------- Zusammenfassung und Absenden ------------------------------ */
 
