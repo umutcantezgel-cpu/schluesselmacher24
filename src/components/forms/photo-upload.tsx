@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Camera, ImageUp, Trash2 } from 'lucide-react';
 import type { ImageSlot } from '@/lib/types';
 import { cn } from '@/lib/cn';
+import Image from 'next/image';
 import { formatFileSize } from '@/lib/format';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 
@@ -177,9 +178,9 @@ export function PhotoUpload({
           {files.map((file) => (
             <li key={file.id} className="relative overflow-hidden rounded-lg border border-border bg-surface">
               {file.mimeType.startsWith('image/') ? (
-                // Vorschau aus dem Browser-Speicher; bewusst kein next/image.
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={file.previewUrl} alt="" className="aspect-square w-full object-cover" />
+                <div className="relative aspect-square w-full">
+                  <Image src={file.previewUrl} alt="" fill className="object-cover" unoptimized />
+                </div>
               ) : (
                 <div className="flex aspect-square w-full items-center justify-center bg-surface-muted text-xs font-semibold text-foreground-muted">
                   PDF
