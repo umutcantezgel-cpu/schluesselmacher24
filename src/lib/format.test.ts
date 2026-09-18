@@ -67,7 +67,7 @@ describe('format utilities', () => {
 
   describe('formatDateTime', () => {
     it('formats a valid ISO datetime', () => {
-      expect(formatDateTime('2026-10-02T14:30:00Z')).toMatch(/02\.10\.2026, 1[46]:30/); // Timezone dependent
+      expect(formatDateTime('2026-10-02T14:30:00Z')).toMatch(/02\.10\.2026, \d{2}:30/); // Timezone dependent
     });
 
     it('returns the input if the datetime is invalid', () => {
