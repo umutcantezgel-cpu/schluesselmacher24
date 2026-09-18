@@ -57,6 +57,15 @@ describe('format utilities', () => {
 
     it('returns the input if the date is invalid', () => {
       expect(formatDate('not-a-date')).toBe('not-a-date');
+      expect(formatDate('2026-15-40')).toBe('2026-15-40');
+      expect(formatDate('')).toBe('');
+      expect(formatDate('null')).toBe('null');
+      expect(formatDate('undefined')).toBe('undefined');
+      expect(formatDate('abc')).toBe('abc');
+    });
+
+    it('handles leap years correctly', () => {
+      expect(formatDate('2024-02-29')).toBe('Donnerstag, 29. Februar 2024');
     });
   });
 
