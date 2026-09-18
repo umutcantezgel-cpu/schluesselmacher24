@@ -1,0 +1,10 @@
+{
+  "framework": "Next.js App Router (16.x)",
+  "typescript_strictness": "strict",
+  "styling_engine": "Tailwind CSS v3",
+  "class_merging_utility": "cn via clsx + tailwind-merge",
+  "component_style": "function declaration, named export / default export",
+  "icon_library": "lucide-react",
+  "animation_library": "framer-motion",
+  "color_system": "CSS Variables via Tailwind hsl"
+}
