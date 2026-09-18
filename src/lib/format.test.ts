@@ -91,16 +91,21 @@ describe('format utilities', () => {
 
   describe('formatDuration', () => {
     it('formats minutes less than an hour', () => {
-      expect(formatDuration(45)).toBe('45 Min.');
       expect(formatDuration(0)).toBe('0 Min.');
+      expect(formatDuration(30)).toBe('30 Min.');
+      expect(formatDuration(45)).toBe('45 Min.');
+      expect(formatDuration(59)).toBe('59 Min.');
     });
 
     it('formats exact hours', () => {
       expect(formatDuration(60)).toBe('1 Std.');
       expect(formatDuration(120)).toBe('2 Std.');
+      expect(formatDuration(180)).toBe('3 Std.');
+      expect(formatDuration(600)).toBe('10 Std.');
     });
 
     it('formats hours and minutes', () => {
+      expect(formatDuration(61)).toBe('1 Std. 1 Min.');
       expect(formatDuration(90)).toBe('1 Std. 30 Min.');
       expect(formatDuration(125)).toBe('2 Std. 5 Min.');
     });
