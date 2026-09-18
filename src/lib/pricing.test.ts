@@ -235,11 +235,17 @@ describe('pricing', () => {
       codePattern: 'Test Pattern',
       codeExample: 'Test Example',
       codeHint: 'Test Hint',
-      codeLocationImage: { url: 'test', alt: 'test', width: 1, height: 1 },
-      productImage: { url: 'test', alt: 'test', width: 1, height: 1 },
+      codeLocationImage: { motif: 'test', ratio: '1/1' },
+      productImage: { motif: 'test', ratio: '1/1' },
       priceCents: 1000,
+      scope: 'test',
+      maxQty: 100,
+      photoUpload: 'nein',
+      shippingClass: 'code-schluessel',
+      active: true,
+      tags: [],
       ...overrides,
-    });
+    }) as CodeLine;
 
     it('returns the base price if bulkPrices is not defined or empty', () => {
       const line1 = createCodeLine({ bulkPrices: undefined });
