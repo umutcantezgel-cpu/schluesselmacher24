@@ -63,9 +63,13 @@ function zylinderZeilen(
 ): Array<{ label: string; value: string }> {
   const zeilen: Array<{ label: string; value: string }> = [];
 
+  const formsMap = new Map(catalog.forms.map(f => [f.id, f]));
+  const functionsMap = new Map(catalog.functions.map(f => [f.id, f]));
+  const extrasMap = new Map(catalog.extras.map(e => [e.id, e]));
+
   for (const eintrag of draft.items) {
-    const form = catalog.forms.find((f) => f.id === eintrag.form);
-    const funktion = catalog.functions.find((f) => f.id === eintrag.functionId);
+    const form = formsMap.get(eintrag.form);
+    const funktion = functionsMap.get(eintrag.functionId ?? '');
     const masse =
       eintrag.measureBMm === undefined
         ? formatMillimeter(eintrag.measureAMm)
@@ -81,7 +85,7 @@ function zylinderZeilen(
   zeilen.push({ label: 'Gemeinsame Schlüssel', value: `${draft.keyCount} Stück` });
 
   const zusatz = draft.extraIds
-    .map((id) => catalog.extras.find((extra) => extra.id === id)?.label)
+    .map((id) => extrasMap.get(id)?.label)
     .filter((label): label is string => Boolean(label));
   if (zusatz.length > 0) {
     zeilen.push({ label: 'Zusatzoptionen', value: zusatz.join(', ') });
