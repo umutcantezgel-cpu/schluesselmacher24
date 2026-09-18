@@ -1,9 +1,9 @@
 {
-  "epoch": 0,
-  "last_stable_commit": "",
+  "epoch": 1,
+  "last_stable_commit": "HEAD",
   "active_feature_vector": "INIT",
-  "drift_index": 0.0,
-  "design_inconsistency_score": 0.0,
+  "drift_index": 0,
+  "design_inconsistency_score": 0,
   "resolved_issues": [],
   "metrics": {
     "lighthouse_performance": 0,
