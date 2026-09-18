@@ -34,10 +34,28 @@ describe('reference utilities', () => {
 
     it('replaces non-alphanumeric characters with hyphens', () => {
       expect(buildRecordId('My Awesome Reference 123!')).toBe('my-awesome-reference-123-');
+      expect(buildRecordId('My Reference 123')).toBe('my-reference-123');
     });
 
     it('handles multiple consecutive non-alphanumeric characters correctly', () => {
       expect(buildRecordId('A_B--C  D')).toBe('a-b-c-d');
+      expect(buildRecordId('foo--bar___baz!!qux')).toBe('foo-bar-baz-qux');
+    });
+
+    it('should handle strings that are already valid IDs', () => {
+      expect(buildRecordId('valid-id-1')).toBe('valid-id-1');
+    });
+
+    it('should handle empty strings', () => {
+      expect(buildRecordId('')).toBe('');
+    });
+
+    it('should replace spaces at the beginning and end with a hyphen', () => {
+      expect(buildRecordId('  test  ')).toBe('-test-');
+    });
+
+    it('should handle german umlauts by replacing them with hyphens', () => {
+      expect(buildRecordId('Müller')).toBe('m-ller');
     });
   });
 });
