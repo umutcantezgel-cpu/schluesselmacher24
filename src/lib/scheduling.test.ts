@@ -28,15 +28,18 @@ describe('scheduling', () => {
   describe('earliestBookableDate', () => {
     it('adds lead time days correctly', () => {
       expect(earliestBookableDate('2024-01-01', 2)).toBe('2024-01-03');
+      expect(earliestBookableDate('2023-10-15', 3)).toBe('2023-10-18');
     });
 
     it('handles month transitions', () => {
       expect(earliestBookableDate('2024-01-31', 1)).toBe('2024-02-01');
       expect(earliestBookableDate('2024-04-30', 1)).toBe('2024-05-01');
+      expect(earliestBookableDate('2023-10-30', 3)).toBe('2023-11-02');
     });
 
     it('handles year transitions', () => {
       expect(earliestBookableDate('2024-12-31', 1)).toBe('2025-01-01');
+      expect(earliestBookableDate('2023-12-30', 3)).toBe('2024-01-02');
     });
 
     it('handles leap years correctly', () => {
@@ -48,16 +51,19 @@ describe('scheduling', () => {
 
     it('handles non-leap years correctly', () => {
       expect(earliestBookableDate('2023-02-28', 1)).toBe('2023-03-01');
+      expect(earliestBookableDate('2023-02-28', 2)).toBe('2023-03-02');
       // Year 2100 is not a leap year
       expect(earliestBookableDate('2100-02-28', 1)).toBe('2100-03-01');
     });
 
     it('handles negative lead times', () => {
       expect(earliestBookableDate('2024-01-05', -2)).toBe('2024-01-03');
+      expect(earliestBookableDate('2023-10-15', -2)).toBe('2023-10-13');
     });
 
     it('handles 0 lead time', () => {
       expect(earliestBookableDate('2024-01-01', 0)).toBe('2024-01-01');
+      expect(earliestBookableDate('2023-10-15', 0)).toBe('2023-10-15');
     });
 
     it('handles large day additions', () => {
