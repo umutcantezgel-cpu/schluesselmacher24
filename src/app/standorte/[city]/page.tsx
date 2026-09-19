@@ -3,14 +3,15 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 
-import { getCities, getCity } from '@/lib/data';
+import { getCities, getCity, getSettings } from '@/lib/data';
 import { areaByKey } from '@/lib/navigation';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
-import { JsonLd, breadcrumbSchema, serviceAreaSchema } from '@/components/seo/json-ld';
+import { JsonLd, breadcrumbSchema, serviceAreaSchema, baseGraphSchema } from '@/components/seo/json-ld';
+import { getSiteUrl } from '@/lib/site-url';
 
 export async function generateStaticParams() {
   const cities = await getCities();
@@ -33,7 +34,7 @@ export async function generateMetadata(props: {
 
 export default async function CityPage(props: { params: Promise<{ city: string }> }) {
   const { city: slug } = await props.params;
-  const city = await getCity(slug);
+  const [city, settings] = await Promise.all([getCity(slug), getSettings()]);
 
   if (!city) notFound();
 
@@ -44,10 +45,21 @@ export default async function CityPage(props: { params: Promise<{ city: string }
     { href: `/standorte/${city.slug}`, label: city.city },
   ];
 
+  const pageUrl = `${getSiteUrl()}/standorte/${city.slug}`;
+
   return (
     <>
-      <JsonLd data={serviceAreaSchema(city)} />
-      <JsonLd data={breadcrumbSchema(crumbs)} />
+      <JsonLd
+        data={baseGraphSchema(
+          pageUrl,
+          `Schlüssel- und Schließtechnik in ${city.city}`,
+          settings,
+          [
+            serviceAreaSchema(city),
+            breadcrumbSchema(crumbs, pageUrl)
+          ]
+        )}
+      />
 
       <PageHeader
         eyebrow={city.state}

@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 
-import { getGuide, getGuides } from '@/lib/data';
+import { getGuide, getGuides, getSettings } from '@/lib/data';
 import { areaByKey } from '@/lib/navigation';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
-import { JsonLd, articleSchema, breadcrumbSchema } from '@/components/seo/json-ld';
+import { JsonLd, articleSchema, breadcrumbSchema, baseGraphSchema } from '@/components/seo/json-ld';
+import { getSiteUrl } from '@/lib/site-url';
 
 export async function generateStaticParams() {
   const guides = await getGuides();
@@ -31,7 +32,7 @@ export async function generateMetadata(props: {
 
 export default async function GuidePage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
-  const [guide, allGuides] = await Promise.all([getGuide(slug), getGuides()]);
+  const [guide, allGuides, settings] = await Promise.all([getGuide(slug), getGuides(), getSettings()]);
 
   if (!guide) notFound();
 
@@ -43,10 +44,21 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
     { href: `/ratgeber/${guide.slug}`, label: guide.title },
   ];
 
+  const pageUrl = `${getSiteUrl()}/ratgeber/${guide.slug}`;
+
   return (
     <>
-      <JsonLd data={articleSchema(guide)} />
-      <JsonLd data={breadcrumbSchema(crumbs)} />
+      <JsonLd
+        data={baseGraphSchema(
+          pageUrl,
+          guide.title,
+          settings,
+          [
+            articleSchema(guide),
+            breadcrumbSchema(crumbs, pageUrl)
+          ]
+        )}
+      />
 
       <PageHeader
         eyebrow={area?.label ?? 'Ratgeber'}

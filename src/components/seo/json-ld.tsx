@@ -1,4 +1,5 @@
 import type { CityPage, CodeLine, Guide, Settings } from '@/lib/types';
+import type { Graph, Thing, Locksmith, OpeningHoursSpecification } from 'schema-dts';
 import { getSiteUrl } from '@/lib/site-url';
 
 /**
@@ -7,7 +8,7 @@ import { getSiteUrl } from '@/lib/site-url';
  * Beim Einbetten werden spitze Klammern ersetzt, damit Inhalte aus der
  * Inhaltsverwaltung nicht als Markup interpretiert werden können.
  */
-export function JsonLd({ data }: { data: Record<string, unknown> }) {
+export function JsonLd({ data }: { data: Graph | Record<string, unknown> }) {
   return (
     <script
       type="application/ld+json"
@@ -20,6 +21,48 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
 
 const siteUrl = getSiteUrl();
 
+export function baseGraphSchema(
+  pageUrl: string,
+  pageTitle: string,
+  settings: Settings,
+  additionalNodes: Thing[] = []
+): Graph {
+  const { company } = settings;
+
+  const orgId = `${siteUrl}/#organization`;
+  const websiteId = `${siteUrl}/#website`;
+  const webpageId = `${pageUrl}/#webpage`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': orgId,
+        name: company.brandName,
+        url: siteUrl,
+        logo: `${siteUrl}/icon.svg`,
+      },
+      {
+        '@type': 'WebSite',
+        '@id': websiteId,
+        url: siteUrl,
+        name: company.brandName,
+        publisher: { '@id': orgId },
+      },
+      {
+        '@type': 'WebPage',
+        '@id': webpageId,
+        url: pageUrl,
+        name: pageTitle,
+        isPartOf: { '@id': websiteId },
+        about: { '@id': orgId },
+      },
+      ...additionalNodes,
+    ],
+  } satisfies Graph;
+}
+
 const WEEKDAYS = [
   'Monday',
   'Tuesday',
@@ -28,17 +71,17 @@ const WEEKDAYS = [
   'Friday',
   'Saturday',
   'Sunday',
-];
+] as const;
 
 /** Der Betrieb selbst. Wird auf der Startseite eingebunden. */
-export function localBusinessSchema(settings: Settings) {
+export function localBusinessSchema(settings: Settings): Thing {
   const { company } = settings;
 
   const openingHours = settings.openingHours
     .filter((entry) => entry.spans.length > 0)
     .flatMap((entry) =>
       entry.spans.map((span) => ({
-        '@type': 'OpeningHoursSpecification',
+        '@type': 'OpeningHoursSpecification' as const,
         dayOfWeek: WEEKDAYS[entry.day - 1],
         opens: span.from,
         closes: span.to,
@@ -46,8 +89,8 @@ export function localBusinessSchema(settings: Settings) {
     );
 
   return {
-    '@context': 'https://schema.org',
     '@type': 'Locksmith',
+    '@id': `${siteUrl}/#localbusiness`,
     name: company.brandName,
     url: siteUrl,
     areaServed: { '@type': 'Country', name: 'Deutschland' },
@@ -76,10 +119,10 @@ export function localBusinessSchema(settings: Settings) {
 }
 
 /** Eine Codelinie im Shop. */
-export function productSchema(line: CodeLine) {
+export function productSchema(line: CodeLine): Thing {
   return {
-    '@context': 'https://schema.org',
     '@type': 'Product',
+    '@id': `${siteUrl}/schluessel-nach-code/${line.slug}/#product`,
     name: line.name,
     description: line.description,
     category: line.application,
@@ -99,24 +142,24 @@ export function productSchema(line: CodeLine) {
 }
 
 /** Ein Ratgeberbeitrag. */
-export function articleSchema(guide: Guide) {
+export function articleSchema(guide: Guide): Thing {
   return {
-    '@context': 'https://schema.org',
     '@type': 'Article',
+    '@id': `${siteUrl}/ratgeber/${guide.slug}/#article`,
     headline: guide.title,
     description: guide.excerpt,
     inLanguage: 'de-DE',
     dateModified: guide.updatedAt,
-    mainEntityOfPage: `${siteUrl}/ratgeber/${guide.slug}`,
-    publisher: { '@type': 'Organization', name: 'SCHLÜSSELMACHER24' },
+    mainEntityOfPage: { '@id': `${siteUrl}/ratgeber/${guide.slug}/#webpage` },
+    publisher: { '@id': `${siteUrl}/#organization` },
   };
 }
 
 /** Häufige Fragen einer Seite. */
-export function faqSchema(items: Array<{ question: string; answer: string }>) {
+export function faqSchema(items: Array<{ question: string; answer: string }>, pageUrl: string): Thing {
   return {
-    '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    '@id': `${pageUrl}/#faq`,
     mainEntity: items.map((item) => ({
       '@type': 'Question',
       name: item.question,
@@ -126,10 +169,10 @@ export function faqSchema(items: Array<{ question: string; answer: string }>) {
 }
 
 /** Ein Einsatzgebiet. */
-export function serviceAreaSchema(city: CityPage) {
+export function serviceAreaSchema(city: CityPage): Thing {
   return {
-    '@context': 'https://schema.org',
     '@type': 'Service',
+    '@id': `${siteUrl}/standorte/${city.slug}/#service`,
     name: `Schlüssel- und Schließtechnik in ${city.city}`,
     serviceType: 'Schlüsseldienst und Schließtechnik',
     areaServed: {
@@ -137,15 +180,15 @@ export function serviceAreaSchema(city: CityPage) {
       name: city.city,
       containedInPlace: { '@type': 'AdministrativeArea', name: city.state },
     },
-    provider: { '@type': 'Organization', name: 'SCHLÜSSELMACHER24' },
+    provider: { '@id': `${siteUrl}/#organization` },
   };
 }
 
 /** Brotkrumenpfad — hilft bei der Einordnung tiefer Seiten. */
-export function breadcrumbSchema(crumbs: Array<{ href: string; label: string }>) {
+export function breadcrumbSchema(crumbs: Array<{ href: string; label: string }>, pageUrl: string): Thing {
   return {
-    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+    '@id': `${pageUrl}/#breadcrumb`,
     itemListElement: [{ href: '/', label: 'Start' }, ...crumbs].map((crumb, index) => ({
       '@type': 'ListItem',
       position: index + 1,
