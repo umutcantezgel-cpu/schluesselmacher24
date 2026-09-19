@@ -43,3 +43,10 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+---
+## Architecture Audit & Blueprint
+The architecture matrix and blueprint have been generated and recorded in `.jules/architecture-matrix.md` and `.jules/revolution-plan.json`.
+Our goals:
+- Enhance content depth (>800 words) for existing pages.
+- Adopt React 19 Server Actions, Next.js 16 app router specifications, and Tailwind v4 CSS standard with OKLCH Color Space and Swiss High-End Aesthetic.
