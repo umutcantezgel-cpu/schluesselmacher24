@@ -47,7 +47,7 @@ export default async function CityPage(props: { params: Promise<{ city: string }
   return (
     <>
       <JsonLd data={serviceAreaSchema(city)} />
-      <JsonLd data={breadcrumbSchema(crumbs)} />
+      <JsonLd data={breadcrumbSchema(crumbs, `${process.env.NEXT_PUBLIC_SITE_URL || 'https://schluesselmacher24.de'}/standorte/${city.slug}`)} />
 
       <PageHeader
         eyebrow={city.state}
