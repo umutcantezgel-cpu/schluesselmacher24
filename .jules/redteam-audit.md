@@ -1,16 +1,19 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# RED-TEAM AUDIT BEFUNDE (JC-PHILOSOPHER-REDTEAM-v1)
 
-## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+## 1. SILENT LOGIC DEATH & INTERAKTIONS-FALLEN
+- `src/components/forms/photo-upload.tsx`: Fehlerhafter Ladezustand bei langsamer Netzwerkverbindung. Kein Fallback, wenn das Bild über 5 MB groß ist, nur silent fail.
+- `src/components/ui/button.tsx`: onClick-Handler in bestimmten Konfigurationen (z. B. als disabled state) fangen Klicks nicht sauber ab, was event bubbling verursacht.
+- `src/app/autoschluessel/page.tsx`: Bedingtes Rendering der Termin-Auswahl weist Layout-Löcher bei leeren Arrays auf, was zu einem unruhigen "Sprung" in der UI führt.
 
-## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+## 2. HYDRATION MISMATCHES & SSR-KONFLIKTE
+- `src/components/calculator/service-budget-calculator.tsx`: Zugriff auf `localStorage` zur Wiederherstellung von Kalkulator-Zuständen ohne sauberen `useEffect` Guard, was Hydration-Fehler bei Erstaufruf erzeugt.
+- `src/lib/format.ts`: Datumsformatierungen verlassen sich teilweise auf System-Locales, was auf Server und Client zu unterschiedlichen Outputs führt.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TYPESCRIPT-SCHWÄCHEN
+- `src/components/seo/json-ld.tsx`: Maskierte Typen. Schema.org-Graphen sind nicht durchgängig mit `satisfies Graph` gegen `schema-dts` abgesichert.
+- `src/components/autoschluessel/vehicle-facts.tsx`: Prop-Typing nutzt in einigen Objekten ungenaue Strukturen statt strenger Literal Types.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. CORE WEB VITALS SÜNDEN & SCHWEIZER AESTHETIK-BRÜCHE
+- `src/components/ui/image-placeholder.tsx`: Keine festen Aspect-Ratios oder Dimensionen hinterlegt, was CLS (Cumulative Layout Shift) verschlechtert.
+- Chromatische Reinheit: Einige Rand-Border in `src/components/ui/card.tsx` fallen auf harte HEX-Werte zurück anstatt konsequent OKLCH-Tokens (`oklch(0.89 0.008 260)`) zu verwenden.
+- Kinetische Disziplin: Zuviele parallele Hover-Effekte in der Navigation. Fordere den Rückbau auf EINE dominante Signature-Interaktion pro Route.
