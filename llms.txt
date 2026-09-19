@@ -1,0 +1,1 @@
+System Architecture Blueprint has been generated for Next.js 16+, React 19.2+, TypeScript 5.5+, Tailwind CSS v4.x (OKLCH Color Space) on Direct-to-Main Pipeline via sentinel/auto Fast-Forward Engine.
