@@ -83,7 +83,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <JsonLd data={localBusinessSchema(settings)} />
+      <JsonLd data={localBusinessSchema(settings, 'https://codayweb.de', page?.seo.title ?? 'SCHLÜSSELMACHER24')} />
       <JsonLd data={faqSchema(guides.map((g) => ({ question: g.title, answer: g.excerpt })))} />
 
       {/* Einstieg */}
