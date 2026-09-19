@@ -1,0 +1,6 @@
+# Codebase Architecture Goals
+
+This project implements the JC-AUDITOR-ARCHITECT-v1 standard:
+- Next.js 16+ App Router
+- React 19.2+ Server Actions
+- OKLCH Swiss Light Design
