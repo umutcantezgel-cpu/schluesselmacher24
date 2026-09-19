@@ -1,16 +1,23 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# RED-TEAM AUDIT
+## Phase 0: Systematischer Befund
 
-## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+### Silent Logic Death & Interaktions-Fallen
+- In `src/app/kasse/kasse-formular.tsx` und anderen Formularen fehlt teilweise ein explizites Feedback für Server Actions, wenn diese Netzwerkfehler werfen. Dies führt zu einer "stillen" Oberfläche ohne Ladeindikator.
+- Leere Arrays triggern in `src/app/admin/fahrzeugdaten/fahrzeug-verwaltung.tsx` leere Tabellen ohne Fallback-State, was das Layout zerreißt.
 
-## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+### Hydration Mismatches & SSR-Konflikte
+- Einige formatierte Daten oder Preise in Client-Komponenten (z.B. in `src/components/calculator/service-budget-calculator.tsx`) riskieren Hydration Mismatches, falls sie vom Server-Locale abweichen.
+- Unsynchronisierte Zeitstempel beim Prerendering von dynamischen Datumsangaben (z.B. in Terminauswahl).
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+### TypeScript-Schwächen
+- Unpräzise Interfaces in Domänenmodellen, z.B. in `src/lib/types.ts` gibt es noch Ausbaufähigkeit bei union types.
+- Vage `schema-dts` Definitionen in `src/components/seo/json-ld.tsx`, wo `@graph` Arrays strenger mit `satisfies Graph` gegen `schema-dts` abgesichert sein sollten.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+### Core Web Vitals Sünden
+- `src/components/ui/image-placeholder.tsx` weist nicht konsequent eine explizite `aspect-ratio` auf kleinen Viewports auf, was Layout Shifts (CLS) verursacht.
+- Asynchron geladene Drittanbieter-Skripte verzögern potenziell den LCP der Startseite (`src/app/page.tsx`).
+
+### Visuelle Inkonsistenz (Schweizer Light Mode Doktrin)
+- Mangelhafte Abstimmung der Typografie-Hierarchien auf kleinen Viewports in `src/app/globals.css` (fehlendes CSS Clamp für perfekte Rhythmik).
+- Die Kinetik (Animationen) in `src/components/ui/accordion.tsx` ist teilweise ruckelig und weicht von den strengen `cubic-bezier(0.16, 1, 0.3, 1)` Interpolationen ab.
+- Farb-Tokens weichen ab: harte Grautöne statt sauberer OKLCH-Tokens (`oklch(0.988 0.002 260)`), z.B. in manchen Border-Colors.
