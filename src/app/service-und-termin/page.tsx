@@ -7,6 +7,8 @@ import { NAV_AREAS, PROCESS_LABELS } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
+import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -127,6 +129,101 @@ export default async function ServiceUndTerminPage() {
             );
           })}
         </ul>
+      </Section>
+
+
+      <Section>
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Präzision in jedem Schritt: Unsere Service-Architektur"
+          lead="Wir verstehen Schließtechnik und Sicherheitssysteme nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Langlebigkeit erfüllen müssen."
+        />
+
+        <div className="mt-8 prose prose-slate max-w-none text-[15px] leading-relaxed text-foreground-muted space-y-6">
+          <p>
+            Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">1. Die Phasen unserer Service-Implementierung</h3>
+          <p>
+            Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li><strong>Initiierung und Bedarfsanalyse:</strong> Im ersten Schritt erfassen wir nicht nur die offensichtlichen Anforderungen, sondern analysieren auch die verborgenen Risikofaktoren. Dies beinhaltet die Bewertung von Türbeschaffenheiten, Zylindermaßen, elektronischen Schnittstellen und den allgemeinen architektonischen Gegebenheiten vor Ort.</li>
+            <li><strong>Projektierung und Lösungsdesign:</strong> Basierend auf der Analyse entwickeln wir ein fundiertes Konzept. Bei Schließanlagen bedeutet dies die Erstellung präziser Schließpläne unter Berücksichtigung komplexer Hierarchien und Zutrittsberechtigungen. Bei elektronischen Systemen planen wir die Vernetzung, Stromversorgung und Integration in bestehende IT- oder Smart-Home-Umgebungen.</li>
+            <li><strong>Präzise Fertigung und Vorkonfiguration:</strong> Bevor wir vor Ort tätig werden, bereiten wir alle Komponenten in unserer Fachwerkstatt vor. Zylinder werden nach Maß gefertigt, Transponder codiert und elektronische Komponenten vorab getestet, um die Ausfallzeiten vor Ort auf ein absolutes Minimum zu reduzieren.</li>
+            <li><strong>Fachgerechte Montage und Integration:</strong> Unsere Techniker installieren die Systeme mit höchster handwerklicher Präzision. Dies umfasst die fachgerechte Montage mechanischer Sicherungen ebenso wie die Verkabelung und Inbetriebnahme komplexer elektronischer Anlagen, stets unter Einhaltung geltender Normen und Sicherheitsrichtlinien (z.B. DIN 18252 für Profilzylinder, DIN EN 1303).</li>
+            <li><strong>Dokumentation und Systemübergabe:</strong> Jedes Projekt schließt mit einer umfassenden Dokumentation ab. Sie erhalten Sicherungskarten, detaillierte Schließpläne, Bedienungsanleitungen und Protokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">2. Technologische Standards und Materialqualität</h3>
+          <p>
+            Die von uns verbauten Systeme genügen höchsten Qualitätsstandards. Wir kooperieren ausschließlich mit renommierten Herstellern, deren Produkte sich durch herausragende mechanische Stabilität, Manipulationsresistenz und Langlebigkeit auszeichnen.
+          </p>
+          <p>
+            Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik setzen wir auf verschlüsselte Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">3. Nachhaltigkeit und Lebenszyklus-Management</h3>
+          <p>
+            Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen.
+          </p>
+          <p>
+            Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">4. Spezialisierung auf kritische Infrastrukturen und Gewerbeobjekte</h3>
+          <p>
+            Während wir selbstverständlich auch Privatkunden mit höchster Sorgfalt betreuen, liegt ein besonderer Schwerpunkt unserer Expertise in der Absicherung gewerblicher Objekte und kritischer Infrastrukturen. Hier gelten oft verschärfte regulatorische Anforderungen und komplexe organisatorische Abläufe.
+          </p>
+          <p>
+            Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Unsere Lösungen für den gewerblichen Bereich zeichnen sich durch hohe Skalierbarkeit, mandantenfähige Verwaltungssoftware und robuste Hardware aus, die auch extremen Beanspruchungen im industriellen Umfeld standhält.
+          </p>
+        </div>
+      </Section>
+
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Kostenkalkulation"
+          title="Transparente Budgetierung für Ihr Projekt"
+          lead="Nutzen Sie unseren interaktiven Kalkulator, um eine erste, unverbindliche Einschätzung der Projektkosten basierend auf dem geschätzten zeitlichen Aufwand zu erhalten."
+        />
+        <div className="mt-8 max-w-3xl mx-auto">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading
+          eyebrow="Fachwissen"
+          title="Häufig gestellte Fragen (FAQ)"
+          lead="Detaillierte Antworten auf die wichtigsten Fragen rund um unsere Services, Abläufe und technischen Standards."
+        />
+        <Accordion
+          items={[
+            {
+              question: 'Wie lange dauert die Implementierung einer komplexen Schließanlage?',
+              answer: 'Die Dauer variiert stark nach Umfang und Komplexität. Nach der initialen Bestandsaufnahme und Freigabe des Schließplans rechnen wir bei mechanischen Anlagen in der Regel mit einer Liefer- und Fertigungszeit von 2 bis 4 Wochen. Die eigentliche Montage vor Ort erfolgt dann meist innerhalb weniger Tage, um Störungen in Ihrem Betriebsablauf zu minimieren. Elektronische Systeme erfordern oft zusätzliche Vorbereitungen in der IT-Infrastruktur.'
+            },
+            {
+              question: 'Sind elektronische Zutrittssysteme sicher vor Hacker-Angriffen?',
+              answer: 'Absolute Sicherheit gibt es in der IT nicht, jedoch setzen wir ausschließlich Systeme ein, die modernste kryptografische Standards nutzen. Die Kommunikation zwischen Transponder, Leser und Steuergerät erfolgt zumeist verschlüsselt (z.B. AES-128 oder höher). Zudem achten wir auf eine sichere Netzwerkarchitektur und empfehlen regelmäßige Firmware-Updates, um das Sicherheitsniveau kontinuierlich aufrechtzuerhalten.'
+            },
+            {
+              question: 'Was passiert bei einem Stromausfall mit elektronischen Schlössern?',
+              answer: 'Die meisten von uns geplanten elektronischen Türkomponenten sind batteriebetrieben oder verfügen über Notstromakkus. Bei batteriebetriebenen Zylindern erhalten Sie rechtzeitig Warnungen bei niedrigem Batteriestand. Bei vernetzten, kabelgebundenen Systemen stellen wir durch USV (Unterbrechungsfreie Stromversorgung) sicher, dass die Anlage auch bei Netzwerkausfällen funktionsfähig bleibt. Fluchtwege sind mechanisch so konstruiert, dass sie jederzeit von innen passierbar bleiben.'
+            },
+            {
+              question: 'Können bestehende mechanische Schließanlagen elektronisch aufgerüstet werden?',
+              answer: 'Ja, in vielen Fällen ist eine hybride Lösung oder eine schrittweise Migration möglich und wirtschaftlich sinnvoll. Wir können beispielsweise stark frequentierte Außentüren mit elektronischen Zylindern oder Wandlesern ausstatten, während Innentüren weiterhin mechanisch betrieben werden. Dies erfordert jedoch eine sorgfältige Analyse der vorhandenen Türen und Einsteckschlösser, um Kompatibilität und Zertifizierungen (z.B. Brandschutz) nicht zu gefährden.'
+            },
+            {
+              question: 'Welche Informationen benötigen Sie für einen fundierten Kostenvoranschlag?',
+              answer: 'Für eine präzise Kalkulation benötigen wir detaillierte Angaben zum Objekt: Anzahl und Art der Türen (Holz, Metall, Glas, Brandschutz), die gewünschte Sicherheitsstufe, eine grobe Vorstellung der Nutzerhierarchie (wer darf wohin?) und idealerweise Grundrisspläne. Je mehr Kontext wir im Vorfeld erhalten, desto genauer und zielgerichteter können wir die Architektur planen und kalkulieren. Der interaktive Kalkulator auf dieser Seite bietet lediglich einen ersten Anhaltspunkt für den Aufwand.'
+            }
+          ]}
+          className="mt-8 max-w-4xl mx-auto"
+        />
       </Section>
 
       <Section tight>
