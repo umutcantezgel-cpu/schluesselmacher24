@@ -319,7 +319,7 @@ export default async function HomePage() {
                     href={area.highlight?.href ?? area.href}
                     className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
                   >
-                    {area.highlight?.label ?? 'Mehr erfahren'}
+                    {area.highlight?.label ?? `${area.label} entdecken`}
                     <ArrowRight size={15} aria-hidden />
                   </Link>
                 </CardBody>
@@ -341,7 +341,7 @@ export default async function HomePage() {
             href="/ratgeber"
             className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
           >
-            Alle Beiträge
+            Zum Ratgeber wechseln
             <ArrowRight size={15} aria-hidden />
           </Link>
         </div>
@@ -360,7 +360,7 @@ export default async function HomePage() {
                   {guide.excerpt}
                 </span>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
-                  Lesen
+                  Beitrag lesen
                   <ArrowRight size={14} aria-hidden />
                 </span>
               </Link>
