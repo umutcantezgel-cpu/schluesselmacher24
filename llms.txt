@@ -1,0 +1,1351 @@
+Updated Architecture Blueprint and Extracted DNA.
+This repository follows the deterministic 5-phase execution runner protocol by JC-AUDITOR-ARCHITECT-v1.
+\n# Codebase DNA\n
+{
+  "scanned_at": "2026-09-19T07:14:55.112252+00:00",
+  "runtime_environment": "Next.js 16+ App Router",
+  "language_standard": "TypeScript 5.5+ Strict",
+  "ui_engine": "Tailwind CSS v4",
+  "color_space": "OKLCH Light Mode",
+  "active_routes_count": 55,
+  "active_components_count": 28
+}\n# Revolution Plan\n
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-09-19T07:14:55.113043+00:00",
+  "total_existing_routes": 55,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "app/page.tsx",
+      "target_word_count": 2391,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr Home",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeWidget",
+        "target_file": "components/interactive/home-widget.tsx",
+        "action_file": "actions/home-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/admin",
+      "source_file": "app/admin/page.tsx",
+      "target_word_count": 2348,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr Admin",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminWidget",
+        "target_file": "components/interactive/admin-widget.tsx",
+        "action_file": "actions/admin-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/admin/einstellungen",
+      "source_file": "app/admin/einstellungen/page.tsx",
+      "target_word_count": 1058,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AdminEinstellungen",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminEinstellungenWidget",
+        "target_file": "components/interactive/admineinstellungen-widget.tsx",
+        "action_file": "actions/admineinstellungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/admin/fahrzeugdaten",
+      "source_file": "app/admin/fahrzeugdaten/page.tsx",
+      "target_word_count": 1070,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AdminFahrzeugdaten",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminFahrzeugdatenWidget",
+        "target_file": "components/interactive/adminfahrzeugdaten-widget.tsx",
+        "action_file": "actions/adminfahrzeugdaten-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/admin/inhalte",
+      "source_file": "app/admin/inhalte/page.tsx",
+      "target_word_count": 1037,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AdminInhalte",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminInhalteWidget",
+        "target_file": "components/interactive/admininhalte-widget.tsx",
+        "action_file": "actions/admininhalte-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/admin/preise",
+      "source_file": "app/admin/preise/page.tsx",
+      "target_word_count": 1031,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AdminPreise",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminPreiseWidget",
+        "target_file": "components/interactive/adminpreise-widget.tsx",
+        "action_file": "actions/adminpreise-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/admin/produkte",
+      "source_file": "app/admin/produkte/page.tsx",
+      "target_word_count": 1052,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AdminProdukte",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminProdukteWidget",
+        "target_file": "components/interactive/adminprodukte-widget.tsx",
+        "action_file": "actions/adminprodukte-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/admin/termine",
+      "source_file": "app/admin/termine/page.tsx",
+      "target_word_count": 1309,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AdminTermine",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminTermineWidget",
+        "target_file": "components/interactive/admintermine-widget.tsx",
+        "action_file": "actions/admintermine-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/admin/vorgaenge",
+      "source_file": "app/admin/vorgaenge/page.tsx",
+      "target_word_count": 1155,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AdminVorgaenge",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminVorgaengeWidget",
+        "target_file": "components/interactive/adminvorgaenge-widget.tsx",
+        "action_file": "actions/adminvorgaenge-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/admin/vorgaenge/[id]",
+      "source_file": "app/admin/vorgaenge/[id]/page.tsx",
+      "target_word_count": 2712,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AdminVorgaengeId",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminVorgaengeIdWidget",
+        "target_file": "components/interactive/adminvorgaengeid-widget.tsx",
+        "action_file": "actions/adminvorgaengeid-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel",
+      "source_file": "app/autoschluessel/page.tsx",
+      "target_word_count": 2991,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr Autoschluessel",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselWidget",
+        "target_file": "components/interactive/autoschluessel-widget.tsx",
+        "action_file": "actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1342,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselAnfrage",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselAnfrageWidget",
+        "target_file": "components/interactive/autoschluesselanfrage-widget.tsx",
+        "action_file": "actions/autoschluesselanfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1794,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselFahrzeugoeffnung",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFahrzeugoeffnungWidget",
+        "target_file": "components/interactive/autoschluesselfahrzeugoeffnung-widget.tsx",
+        "action_file": "actions/autoschluesselfahrzeugoeffnung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1751,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselFunkschluessel",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFunkschluesselWidget",
+        "target_file": "components/interactive/autoschluesselfunkschluessel-widget.tsx",
+        "action_file": "actions/autoschluesselfunkschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1806,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselKopieren",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselKopierenWidget",
+        "target_file": "components/interactive/autoschluesselkopieren-widget.tsx",
+        "action_file": "actions/autoschluesselkopieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/autoschluessel/marken/page.tsx",
+      "target_word_count": 1652,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselMarken",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenWidget",
+        "target_file": "components/interactive/autoschluesselmarken-widget.tsx",
+        "action_file": "actions/autoschluesselmarken-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 2044,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselMarkenMake",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenMakeWidget",
+        "target_file": "components/interactive/autoschluesselmarkenmake-widget.tsx",
+        "action_file": "actions/autoschluesselmarkenmake-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2163,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselMarkenMakeModel",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenMakeModelWidget",
+        "target_file": "components/interactive/autoschluesselmarkenmakemodel-widget.tsx",
+        "action_file": "actions/autoschluesselmarkenmakemodel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1847,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselNachmachen",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselNachmachenWidget",
+        "target_file": "components/interactive/autoschluesselnachmachen-widget.tsx",
+        "action_file": "actions/autoschluesselnachmachen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1871,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselProgrammieren",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselProgrammierenWidget",
+        "target_file": "components/interactive/autoschluesselprogrammieren-widget.tsx",
+        "action_file": "actions/autoschluesselprogrammieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1708,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselSchluesselbartFraesen",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSchluesselbartFraesenWidget",
+        "target_file": "components/interactive/autoschluesselschluesselbartfraesen-widget.tsx",
+        "action_file": "actions/autoschluesselschluesselbartfraesen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1860,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr AutoschluesselSmartKey",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSmartKeyWidget",
+        "target_file": "components/interactive/autoschluesselsmartkey-widget.tsx",
+        "action_file": "actions/autoschluesselsmartkey-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/bestellung/[id]/page.tsx",
+      "target_word_count": 1985,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr BestellungId",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "BestellungIdWidget",
+        "target_file": "components/interactive/bestellungid-widget.tsx",
+        "action_file": "actions/bestellungid-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3381,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr ElektronischeZutrittsloesungen",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenWidget",
+        "target_file": "components/interactive/elektronischezutrittsloesungen-widget.tsx",
+        "action_file": "actions/elektronischezutrittsloesungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1208,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr ElektronischeZutrittsloesungenKonfigurator",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenKonfiguratorWidget",
+        "target_file": "components/interactive/elektronischezutrittsloesungenkonfigurator-widget.tsx",
+        "action_file": "actions/elektronischezutrittsloesungenkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3359,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr GleichschliessendeZylinder",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderWidget",
+        "target_file": "components/interactive/gleichschliessendezylinder-widget.tsx",
+        "action_file": "actions/gleichschliessendezylinder-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 1139,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr GleichschliessendeZylinderKonfigurator",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderKonfiguratorWidget",
+        "target_file": "components/interactive/gleichschliessendezylinderkonfigurator-widget.tsx",
+        "action_file": "actions/gleichschliessendezylinderkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/kasse",
+      "source_file": "app/kasse/page.tsx",
+      "target_word_count": 1062,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr Kasse",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseWidget",
+        "target_file": "components/interactive/kasse-widget.tsx",
+        "action_file": "actions/kasse-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/ratgeber",
+      "source_file": "app/ratgeber/page.tsx",
+      "target_word_count": 1070,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr Ratgeber",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberWidget",
+        "target_file": "components/interactive/ratgeber-widget.tsx",
+        "action_file": "actions/ratgeber-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1255,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr RatgeberSlug",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberSlugWidget",
+        "target_file": "components/interactive/ratgeberslug-widget.tsx",
+        "action_file": "actions/ratgeberslug-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/rechtliches/agb/page.tsx",
+      "target_word_count": 1249,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr RechtlichesAgb",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesAgbWidget",
+        "target_file": "components/interactive/rechtlichesagb-widget.tsx",
+        "action_file": "actions/rechtlichesagb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 1032,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr RechtlichesCookieEinstellungen",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesCookieEinstellungenWidget",
+        "target_file": "components/interactive/rechtlichescookieeinstellungen-widget.tsx",
+        "action_file": "actions/rechtlichescookieeinstellungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1597,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr RechtlichesDatenschutz",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesDatenschutzWidget",
+        "target_file": "components/interactive/rechtlichesdatenschutz-widget.tsx",
+        "action_file": "actions/rechtlichesdatenschutz-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/rechtliches/impressum/page.tsx",
+      "target_word_count": 1083,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr RechtlichesImpressum",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesImpressumWidget",
+        "target_file": "components/interactive/rechtlichesimpressum-widget.tsx",
+        "action_file": "actions/rechtlichesimpressum-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1312,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr RechtlichesVersandUndZahlung",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesVersandUndZahlungWidget",
+        "target_file": "components/interactive/rechtlichesversandundzahlung-widget.tsx",
+        "action_file": "actions/rechtlichesversandundzahlung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1190,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr RechtlichesWiderruf",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesWiderrufWidget",
+        "target_file": "components/interactive/rechtlicheswiderruf-widget.tsx",
+        "action_file": "actions/rechtlicheswiderruf-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/schliessanlagen/page.tsx",
+      "target_word_count": 2523,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr Schliessanlagen",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenWidget",
+        "target_file": "components/interactive/schliessanlagen-widget.tsx",
+        "action_file": "actions/schliessanlagen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1205,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr SchliessanlagenKonfigurator",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenKonfiguratorWidget",
+        "target_file": "components/interactive/schliessanlagenkonfigurator-widget.tsx",
+        "action_file": "actions/schliessanlagenkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/schluessel-nach-code/page.tsx",
+      "target_word_count": 1323,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr SchluesselNachCode",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeWidget",
+        "target_file": "components/interactive/schluesselnachcode-widget.tsx",
+        "action_file": "actions/schluesselnachcode-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1676,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr SchluesselNachCodeSlug",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeSlugWidget",
+        "target_file": "components/interactive/schluesselnachcodeslug-widget.tsx",
+        "action_file": "actions/schluesselnachcodeslug-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2743,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr SchluesselNachVorlage",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageWidget",
+        "target_file": "components/interactive/schluesselnachvorlage-widget.tsx",
+        "action_file": "actions/schluesselnachvorlage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 1060,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr SchluesselNachVorlageAnfrage",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageAnfrageWidget",
+        "target_file": "components/interactive/schluesselnachvorlageanfrage-widget.tsx",
+        "action_file": "actions/schluesselnachvorlageanfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/service-und-termin",
+      "source_file": "app/service-und-termin/page.tsx",
+      "target_word_count": 1426,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr ServiceUndTermin",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminWidget",
+        "target_file": "components/interactive/serviceundtermin-widget.tsx",
+        "action_file": "actions/serviceundtermin-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 942,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr ServiceUndTerminAnfrage",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminAnfrageWidget",
+        "target_file": "components/interactive/serviceundterminanfrage-widget.tsx",
+        "action_file": "actions/serviceundterminanfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr ServiceUndTerminKontakt",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminKontaktWidget",
+        "target_file": "components/interactive/serviceundterminkontakt-widget.tsx",
+        "action_file": "actions/serviceundterminkontakt-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 904,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr ServiceUndTerminTerminstatus",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminTerminstatusWidget",
+        "target_file": "components/interactive/serviceundterminterminstatus-widget.tsx",
+        "action_file": "actions/serviceundterminterminstatus-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1566,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr ServiceUndTerminVorOrt",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminVorOrtWidget",
+        "target_file": "components/interactive/serviceundterminvorort-widget.tsx",
+        "action_file": "actions/serviceundterminvorort-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/sicherheitstechnik/page.tsx",
+      "target_word_count": 2041,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr Sicherheitstechnik",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikWidget",
+        "target_file": "components/interactive/sicherheitstechnik-widget.tsx",
+        "action_file": "actions/sicherheitstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1583,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr SicherheitstechnikSlug",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikSlugWidget",
+        "target_file": "components/interactive/sicherheitstechnikslug-widget.tsx",
+        "action_file": "actions/sicherheitstechnikslug-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 1161,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr SicherheitstechnikSicherheitscheck",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikSicherheitscheckWidget",
+        "target_file": "components/interactive/sicherheitstechniksicherheitscheck-widget.tsx",
+        "action_file": "actions/sicherheitstechniksicherheitscheck-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/standorte",
+      "source_file": "app/standorte/page.tsx",
+      "target_word_count": 1109,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr Standorte",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteWidget",
+        "target_file": "components/interactive/standorte-widget.tsx",
+        "action_file": "actions/standorte-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/standorte/[city]/page.tsx",
+      "target_word_count": 1294,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr StandorteCity",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteCityWidget",
+        "target_file": "components/interactive/standortecity-widget.tsx",
+        "action_file": "actions/standortecity-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 1714,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr TuerUndSchliesstechnik",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikWidget",
+        "target_file": "components/interactive/tuerundschliesstechnik-widget.tsx",
+        "action_file": "actions/tuerundschliesstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1415,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr TuerUndSchliesstechnikSlug",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikSlugWidget",
+        "target_file": "components/interactive/tuerundschliesstechnikslug-widget.tsx",
+        "action_file": "actions/tuerundschliesstechnikslug-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "/warenkorb",
+      "source_file": "app/warenkorb/page.tsx",
+      "target_word_count": 1085,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr Warenkorb",
+        "Methodischer Transformationsprozess",
+        "Detaillierte Fach-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbWidget",
+        "target_file": "components/interactive/warenkorb-widget.tsx",
+        "action_file": "actions/warenkorb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}\n# Architecture Matrix\n
+# Architecture Matrix
+
+| URL | Source | Current Words | Target Words | Component |
+|---|---|---|---|---|
+| / | app/page.tsx | 1591 | 2391 | HomeWidget |
+| /admin | app/admin/page.tsx | 1548 | 2348 | AdminWidget |
+| /admin/einstellungen | app/admin/einstellungen/page.tsx | 258 | 1058 | AdminEinstellungenWidget |
+| /admin/fahrzeugdaten | app/admin/fahrzeugdaten/page.tsx | 270 | 1070 | AdminFahrzeugdatenWidget |
+| /admin/inhalte | app/admin/inhalte/page.tsx | 237 | 1037 | AdminInhalteWidget |
+| /admin/preise | app/admin/preise/page.tsx | 231 | 1031 | AdminPreiseWidget |
+| /admin/produkte | app/admin/produkte/page.tsx | 252 | 1052 | AdminProdukteWidget |
+| /admin/termine | app/admin/termine/page.tsx | 509 | 1309 | AdminTermineWidget |
+| /admin/vorgaenge | app/admin/vorgaenge/page.tsx | 355 | 1155 | AdminVorgaengeWidget |
+| /admin/vorgaenge/[id] | app/admin/vorgaenge/[id]/page.tsx | 1912 | 2712 | AdminVorgaengeIdWidget |
+| /autoschluessel | app/autoschluessel/page.tsx | 2191 | 2991 | AutoschluesselWidget |
+| /autoschluessel/anfrage | app/autoschluessel/anfrage/page.tsx | 542 | 1342 | AutoschluesselAnfrageWidget |
+| /autoschluessel/fahrzeugoeffnung | app/autoschluessel/fahrzeugoeffnung/page.tsx | 994 | 1794 | AutoschluesselFahrzeugoeffnungWidget |
+| /autoschluessel/funkschluessel | app/autoschluessel/funkschluessel/page.tsx | 951 | 1751 | AutoschluesselFunkschluesselWidget |
+| /autoschluessel/kopieren | app/autoschluessel/kopieren/page.tsx | 1006 | 1806 | AutoschluesselKopierenWidget |
+| /autoschluessel/marken | app/autoschluessel/marken/page.tsx | 852 | 1652 | AutoschluesselMarkenWidget |
+| /autoschluessel/marken/[make] | app/autoschluessel/marken/[make]/page.tsx | 1244 | 2044 | AutoschluesselMarkenMakeWidget |
+| /autoschluessel/marken/[make]/[model] | app/autoschluessel/marken/[make]/[model]/page.tsx | 1363 | 2163 | AutoschluesselMarkenMakeModelWidget |
+| /autoschluessel/nachmachen | app/autoschluessel/nachmachen/page.tsx | 1047 | 1847 | AutoschluesselNachmachenWidget |
+| /autoschluessel/programmieren | app/autoschluessel/programmieren/page.tsx | 1071 | 1871 | AutoschluesselProgrammierenWidget |
+| /autoschluessel/schluesselbart-fraesen | app/autoschluessel/schluesselbart-fraesen/page.tsx | 908 | 1708 | AutoschluesselSchluesselbartFraesenWidget |
+| /autoschluessel/smart-key | app/autoschluessel/smart-key/page.tsx | 1060 | 1860 | AutoschluesselSmartKeyWidget |
+| /bestellung/[id] | app/bestellung/[id]/page.tsx | 1185 | 1985 | BestellungIdWidget |
+| /elektronische-zutrittsloesungen | app/elektronische-zutrittsloesungen/page.tsx | 2581 | 3381 | ElektronischeZutrittsloesungenWidget |
+| /elektronische-zutrittsloesungen/konfigurator | app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 408 | 1208 | ElektronischeZutrittsloesungenKonfiguratorWidget |
+| /gleichschliessende-zylinder | app/gleichschliessende-zylinder/page.tsx | 2559 | 3359 | GleichschliessendeZylinderWidget |
+| /gleichschliessende-zylinder/konfigurator | app/gleichschliessende-zylinder/konfigurator/page.tsx | 339 | 1139 | GleichschliessendeZylinderKonfiguratorWidget |
+| /kasse | app/kasse/page.tsx | 262 | 1062 | KasseWidget |
+| /ratgeber | app/ratgeber/page.tsx | 270 | 1070 | RatgeberWidget |
+| /ratgeber/[slug] | app/ratgeber/[slug]/page.tsx | 455 | 1255 | RatgeberSlugWidget |
+| /rechtliches/agb | app/rechtliches/agb/page.tsx | 449 | 1249 | RechtlichesAgbWidget |
+| /rechtliches/cookie-einstellungen | app/rechtliches/cookie-einstellungen/page.tsx | 232 | 1032 | RechtlichesCookieEinstellungenWidget |
+| /rechtliches/datenschutz | app/rechtliches/datenschutz/page.tsx | 797 | 1597 | RechtlichesDatenschutzWidget |
+| /rechtliches/impressum | app/rechtliches/impressum/page.tsx | 283 | 1083 | RechtlichesImpressumWidget |
+| /rechtliches/versand-und-zahlung | app/rechtliches/versand-und-zahlung/page.tsx | 512 | 1312 | RechtlichesVersandUndZahlungWidget |
+| /rechtliches/widerruf | app/rechtliches/widerruf/page.tsx | 390 | 1190 | RechtlichesWiderrufWidget |
+| /schliessanlagen | app/schliessanlagen/page.tsx | 1723 | 2523 | SchliessanlagenWidget |
+| /schliessanlagen/konfigurator | app/schliessanlagen/konfigurator/page.tsx | 405 | 1205 | SchliessanlagenKonfiguratorWidget |
+| /schluessel-nach-code | app/schluessel-nach-code/page.tsx | 523 | 1323 | SchluesselNachCodeWidget |
+| /schluessel-nach-code/[slug] | app/schluessel-nach-code/[slug]/page.tsx | 876 | 1676 | SchluesselNachCodeSlugWidget |
+| /schluessel-nach-vorlage | app/schluessel-nach-vorlage/page.tsx | 1943 | 2743 | SchluesselNachVorlageWidget |
+| /schluessel-nach-vorlage/anfrage | app/schluessel-nach-vorlage/anfrage/page.tsx | 260 | 1060 | SchluesselNachVorlageAnfrageWidget |
+| /service-und-termin | app/service-und-termin/page.tsx | 626 | 1426 | ServiceUndTerminWidget |
+| /service-und-termin/anfrage | app/service-und-termin/anfrage/page.tsx | 142 | 942 | ServiceUndTerminAnfrageWidget |
+| /service-und-termin/kontakt | app/service-und-termin/kontakt/page.tsx | 608 | 1408 | ServiceUndTerminKontaktWidget |
+| /service-und-termin/terminstatus | app/service-und-termin/terminstatus/page.tsx | 104 | 904 | ServiceUndTerminTerminstatusWidget |
+| /service-und-termin/vor-ort | app/service-und-termin/vor-ort/page.tsx | 766 | 1566 | ServiceUndTerminVorOrtWidget |
+| /sicherheitstechnik | app/sicherheitstechnik/page.tsx | 1241 | 2041 | SicherheitstechnikWidget |
+| /sicherheitstechnik/[slug] | app/sicherheitstechnik/[slug]/page.tsx | 783 | 1583 | SicherheitstechnikSlugWidget |
+| /sicherheitstechnik/sicherheitscheck | app/sicherheitstechnik/sicherheitscheck/page.tsx | 361 | 1161 | SicherheitstechnikSicherheitscheckWidget |
+| /standorte | app/standorte/page.tsx | 309 | 1109 | StandorteWidget |
+| /standorte/[city] | app/standorte/[city]/page.tsx | 494 | 1294 | StandorteCityWidget |
+| /tuer-und-schliesstechnik | app/tuer-und-schliesstechnik/page.tsx | 914 | 1714 | TuerUndSchliesstechnikWidget |
+| /tuer-und-schliesstechnik/[slug] | app/tuer-und-schliesstechnik/[slug]/page.tsx | 615 | 1415 | TuerUndSchliesstechnikSlugWidget |
+| /warenkorb | app/warenkorb/page.tsx | 285 | 1085 | WarenkorbWidget |
