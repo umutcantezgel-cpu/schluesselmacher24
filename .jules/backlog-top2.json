@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2024-10-01T12:00:00Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_014",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/services/page.tsx",
+      "target_component_file": "components/calculator/enterprise-roi-calculator.tsx",
+      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
+      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Flie\u00dftext auf 850 W\u00f6rter.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_042",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/page.tsx",
+      "target_component_file": "components/showcase/spatial-bento-grid.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "\u00dcberf\u00fchrung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), ged\u00e4mpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
