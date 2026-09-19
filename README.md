@@ -44,6 +44,6 @@ Backend unter `/admin` bearbeitet:
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
 
-## Architecture Blueprint
+## Architecture Matrix
 
-The architecture blueprint has been generated and is available in `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`.
+See `.jules/architecture-matrix.md` for the full routing architecture.

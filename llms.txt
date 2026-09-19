@@ -1,6 +1,3 @@
-# Codebase Architecture Goals
+Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
-This project implements the JC-AUDITOR-ARCHITECT-v1 standard:
-- Next.js 16+ App Router
-- React 19.2+ Server Actions
-- OKLCH Swiss Light Design
+Follow .jules/revolution-plan.json for transformation.
