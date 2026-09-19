@@ -1,0 +1,12 @@
+# Codebase Architecture Blueprint (JC-AUDITOR-ARCHITECT-v1)
+
+Architecture blueprint and master plan have been generated and are available in the `.jules/` directory.
+
+## Target Runtime
+- Next.js 16+ (App Router, Turbopack Engine)
+- React 19.2+
+- TypeScript 5.5+
+- Tailwind CSS v4.x / Native Modern CSS (OKLCH Color Space)
+
+## Revolution Plan
+Refer to `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for the step-by-step master implementation plan of route transformations and semantic content expansion.
