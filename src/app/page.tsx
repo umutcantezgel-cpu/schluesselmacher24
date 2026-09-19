@@ -95,7 +95,7 @@ export default async function HomePage() {
               Fachbetrieb für Schlüssel- und Schließtechnik
             </p>
 
-            <h1 className="mt-4 text-[2rem] font-bold leading-[1.1] md:text-5xl">
+            <h1 className="mt-4 text-[2rem] font-bold leading-[1.1] md:text-5xl">Autoschlüssel, Schließtechnik und Sicherheitstechnik -
               {page?.headline ?? 'Autoschlüssel nachmachen und programmieren'}
             </h1>
 

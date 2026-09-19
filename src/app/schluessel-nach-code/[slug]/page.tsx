@@ -10,6 +10,7 @@ import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { JsonLd, productSchema, breadcrumbSchema } from '@/components/seo/json-ld';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 
@@ -28,6 +29,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: CodeLinePageProps): Promise<Metadata> {
   const { slug } = await props.params;
   const line = await getCodeLine(slug);
+
 
   if (!line || !line.active) {
     return { title: 'Codelinie nicht gefunden', robots: { index: false, follow: true } };
@@ -62,6 +64,10 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
     { href: '/schluessel-nach-vorlage', label: 'Kein Code? Schlüssel nach Vorlage' },
     { href: '/ratgeber/schluesselcode-finden', label: 'Ratgeber: Wo finde ich den Code?' },
   ];
+  const crumbs = [
+    { href: '/schluessel-nach-code', label: 'Schlüssel nach Code' },
+    { href: `/schluessel-nach-code/${line.slug}`, label: line.name },
+  ];
   const links = [
     ...baseLinks,
     ...line.seo.internalLinks.filter((link) => !baseLinks.some((b) => b.href === link.href)),
@@ -69,14 +75,13 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
 
   return (
     <>
+      <JsonLd data={productSchema(line)} />
+      <JsonLd data={breadcrumbSchema(crumbs, `${process.env.NEXT_PUBLIC_SITE_URL || 'https://schluesselmacher24.de'}/schluessel-nach-code/${line.slug}`)} />
       <PageHeader
         eyebrow={PROCESS_LABELS.direktkauf.label}
         title={line.name}
         lead={line.application}
-        crumbs={[
-          { href: '/schluessel-nach-code', label: 'Schlüssel nach Code' },
-          { href: `/schluessel-nach-code/${line.slug}`, label: line.name },
-        ]}
+        crumbs={crumbs}
       >
         <div className="flex flex-wrap items-center gap-2">
           <Badge tone="primary">Ohne Einsendung des Originalschlüssels</Badge>

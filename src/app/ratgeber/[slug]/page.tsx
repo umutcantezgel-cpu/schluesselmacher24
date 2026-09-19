@@ -46,7 +46,7 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
   return (
     <>
       <JsonLd data={articleSchema(guide)} />
-      <JsonLd data={breadcrumbSchema(crumbs)} />
+      <JsonLd data={breadcrumbSchema(crumbs, `${process.env.NEXT_PUBLIC_SITE_URL || 'https://schluesselmacher24.de'}/ratgeber/${guide.slug}`)} />
 
       <PageHeader
         eyebrow={area?.label ?? 'Ratgeber'}
