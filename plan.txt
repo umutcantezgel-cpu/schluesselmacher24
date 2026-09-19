@@ -1,0 +1,5 @@
+1. Update `src/components/seo/json-ld.tsx` to use `schema-dts` types and relational `@graph` structures.
+2. Refactor existing schemas in `src/components/seo/json-ld.tsx` to return `satisfies Graph`.
+3. Update `src/app/page.tsx` to inject the monolith graph (WebSite, WebPage, Organization).
+4. Run Pre-commit steps.
+5. Submit changes.
