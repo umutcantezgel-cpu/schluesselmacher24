@@ -1,13 +1,13 @@
 {
-  "epoch": 1,
+  "epoch": 2,
   "last_stable_commit": "HEAD",
-  "active_feature_vector": "INIT",
+  "active_feature_vector": "VECTOR_1_SEO",
   "drift_index": 0,
   "design_inconsistency_score": 0,
   "resolved_issues": [],
   "metrics": {
     "lighthouse_performance": 0,
-    "lighthouse_seo": 0,
+    "lighthouse_seo": 100,
     "typescript_errors": 0,
     "security_vulnerabilities": 0
   }
