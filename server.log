@@ -1,0 +1,19 @@
+
+> schluesselmacher24@0.1.0 dev
+> next dev
+
+▲ Next.js 16.3.5 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 570ms
+✓ Running next.config.ts took 54ms
+
+○ Compiling / ...
+ GET / 200 in 6.2s (next.js: 5.5s, application-code: 758ms)
+ GET /schliessanlagen 200 in 1204ms (next.js: 715ms, application-code: 489ms)
+[browser] eval() is not supported in this environment. If this page was served with a `Content-Security-Policy` header, make sure that `unsafe-eval` is included. React requires eval() in development mode for various debugging features like reconstructing callstacks from a different environment.
+React will never use eval() in production mode
+ POST /schliessanlagen 200 in 528ms (next.js: 5ms, application-code: 524ms)
+  └─ ƒ calculateEnterpriseRoi({"breakEvenMonths":42,"doors":50,"electronicCost":24000,"...":"3 items not stringified"}, {}) in 502ms src/lib/actions/calculate-enterprise-roi.ts
+ POST /schliessanlagen 200 in 516ms (next.js: 4ms, application-code: 512ms)
+  └─ ƒ calculateEnterpriseRoi({"breakEvenMonths":297,"doors":150,"electronicCost":69000,"...":"3 items not stringified"}, {}) in 502ms src/lib/actions/calculate-enterprise-roi.ts
