@@ -1,59 +1,59 @@
 # Architecture Matrix
 
-| URL | Source File | Current Words | Target Words | Status |
-|---|---|---|---|---|
-| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | 231 | 950 | PENDING_BUILDER |
-| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /admin/inhalte | src/app/admin/inhalte/page.tsx | 213 | 950 | PENDING_BUILDER |
-| /admin | src/app/admin/page.tsx | 1172 | 1172 | PENDING_BUILDER |
-| /admin/preise | src/app/admin/preise/page.tsx | 216 | 950 | PENDING_BUILDER |
-| /admin/produkte | src/app/admin/produkte/page.tsx | 228 | 950 | PENDING_BUILDER |
-| /admin/termine | src/app/admin/termine/page.tsx | 453 | 950 | PENDING_BUILDER |
-| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | 1593 | 1593 | PENDING_BUILDER |
-| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | 322 | 950 | PENDING_BUILDER |
-| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | 519 | 950 | PENDING_BUILDER |
-| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | 1122 | 1122 | PENDING_BUILDER |
-| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | 1092 | 1092 | PENDING_BUILDER |
-| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | 1134 | 1134 | PENDING_BUILDER |
-| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | 1224 | 1224 | PENDING_BUILDER |
-| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | 980 | 980 | PENDING_BUILDER |
-| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | 719 | 950 | PENDING_BUILDER |
-| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | 1190 | 1190 | PENDING_BUILDER |
-| /autoschluessel | src/app/autoschluessel/page.tsx | 1971 | 1971 | PENDING_BUILDER |
-| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | 1223 | 1223 | PENDING_BUILDER |
-| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | 1043 | 1043 | PENDING_BUILDER |
-| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | 1208 | 1208 | PENDING_BUILDER |
-| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | 994 | 994 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 383 | 950 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | 2451 | 2451 | PENDING_BUILDER |
-| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | 311 | 950 | PENDING_BUILDER |
-| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | 2052 | 2052 | PENDING_BUILDER |
-| /kasse | src/app/kasse/page.tsx | 240 | 950 | PENDING_BUILDER |
-| / | src/app/page.tsx | 1140 | 1140 | PENDING_BUILDER |
-| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | 353 | 950 | PENDING_BUILDER |
-| /ratgeber | src/app/ratgeber/page.tsx | 225 | 950 | PENDING_BUILDER |
-| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | 417 | 950 | PENDING_BUILDER |
-| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | 229 | 950 | PENDING_BUILDER |
-| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | 716 | 950 | PENDING_BUILDER |
-| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | 428 | 950 | PENDING_BUILDER |
-| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | 371 | 950 | PENDING_BUILDER |
-| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | 369 | 950 | PENDING_BUILDER |
-| /schliessanlagen | src/app/schliessanlagen/page.tsx | 1603 | 1603 | PENDING_BUILDER |
-| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | 710 | 950 | PENDING_BUILDER |
-| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | 468 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | 222 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | 1762 | 1762 | PENDING_BUILDER |
-| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | 152 | 950 | PENDING_BUILDER |
-| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | 475 | 950 | PENDING_BUILDER |
-| /service-und-termin | src/app/service-und-termin/page.tsx | 462 | 950 | PENDING_BUILDER |
-| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | 108 | 950 | PENDING_BUILDER |
-| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | 656 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | 645 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | 995 | 995 | PENDING_BUILDER |
-| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | 330 | 950 | PENDING_BUILDER |
-| /standorte/[city] | src/app/standorte/[city]/page.tsx | 399 | 950 | PENDING_BUILDER |
-| /standorte | src/app/standorte/page.tsx | 250 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | 494 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | 746 | 950 | PENDING_BUILDER |
-| /warenkorb | src/app/warenkorb/page.tsx | 259 | 950 | PENDING_BUILDER |
+| URL | Source File | Current Words | Target Words | Content Expansion | Interactive Module | Status | Schema-Status | CWV-Status |
+|---|---|---|---|---|---|---|---|---|
+| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | 161 | 950 | Administratives Dashboard-Design, Rollen- und Berechtigungskonzept, Audit-Log Analyse | AdminEinstellungenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | 185 | 950 | Administratives Dashboard-Design, Rollen- und Berechtigungskonzept, Audit-Log Analyse | AdminFahrzeugdatenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /admin/inhalte | src/app/admin/inhalte/page.tsx | 141 | 950 | Administratives Dashboard-Design, Rollen- und Berechtigungskonzept, Audit-Log Analyse | AdminInhalteInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /admin | src/app/admin/page.tsx | 715 | 1215 | Administratives Dashboard-Design, Rollen- und Berechtigungskonzept, Audit-Log Analyse | AdminInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /admin/preise | src/app/admin/preise/page.tsx | 159 | 950 | Administratives Dashboard-Design, Rollen- und Berechtigungskonzept, Audit-Log Analyse | AdminPreiseInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /admin/produkte | src/app/admin/produkte/page.tsx | 157 | 950 | Administratives Dashboard-Design, Rollen- und Berechtigungskonzept, Audit-Log Analyse | AdminProdukteInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /admin/termine | src/app/admin/termine/page.tsx | 384 | 950 | Administratives Dashboard-Design, Rollen- und Berechtigungskonzept, Audit-Log Analyse | AdminTermineInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | 956 | 1456 | Administratives Dashboard-Design, Rollen- und Berechtigungskonzept, Audit-Log Analyse | AdminVorgaengeInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | 259 | 950 | Administratives Dashboard-Design, Rollen- und Berechtigungskonzept, Audit-Log Analyse | AdminVorgaengeInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | 333 | 950 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselAnfrageInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | 175 | 950 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselFahrzeugoeffnungInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | 164 | 950 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselFunkschluesselInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | 196 | 950 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselKopierenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | 749 | 1249 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselMarkenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | 495 | 995 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselMarkenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | 389 | 950 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselMarkenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | 93 | 950 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselNachmachenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel | src/app/autoschluessel/page.tsx | 1342 | 1842 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | 206 | 950 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselProgrammierenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | 186 | 950 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselSchluesselbartFraesenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | 236 | 950 | Wegfahrsperren-Technologie und Transponder, Fahrzeugspezifische Programmierungsverfahren, Notdienst-Protokolle bei Autoschlüsseln | AutoschluesselSmartKeyInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | 633 | 1133 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | BestellungInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 215 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | ElektronischeZutrittsloesungenKonfiguratorInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | 1808 | 2308 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | ElektronischeZutrittsloesungenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | 176 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | GleichschliessendeZylinderKonfiguratorInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | 1159 | 1659 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | GleichschliessendeZylinderInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /kasse | src/app/kasse/page.tsx | 134 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | KasseInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| / | src/app/page.tsx | 468 | 968 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | HomeInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | 175 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | RatgeberInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /ratgeber | src/app/ratgeber/page.tsx | 112 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | RatgeberInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | 375 | 950 | DSGVO-Konforme Datenverarbeitung, Rechtssichere AGB-Formulierungen, Verbraucherschutz-Richtlinien | RechtlichesAgbInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | 193 | 950 | DSGVO-Konforme Datenverarbeitung, Rechtssichere AGB-Formulierungen, Verbraucherschutz-Richtlinien | RechtlichesCookieEinstellungenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | 638 | 1138 | DSGVO-Konforme Datenverarbeitung, Rechtssichere AGB-Formulierungen, Verbraucherschutz-Richtlinien | RechtlichesDatenschutzInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | 202 | 950 | DSGVO-Konforme Datenverarbeitung, Rechtssichere AGB-Formulierungen, Verbraucherschutz-Richtlinien | RechtlichesImpressumInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | 325 | 950 | DSGVO-Konforme Datenverarbeitung, Rechtssichere AGB-Formulierungen, Verbraucherschutz-Richtlinien | RechtlichesVersandUndZahlungInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | 331 | 950 | DSGVO-Konforme Datenverarbeitung, Rechtssichere AGB-Formulierungen, Verbraucherschutz-Richtlinien | RechtlichesWiderrufInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | 228 | 950 | Zylinder-Profil-Architektur, Sicherheitsklassen und Einbruchschutz, Planung großer Schließanlagen | SchliessanlagenKonfiguratorInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /schliessanlagen | src/app/schliessanlagen/page.tsx | 1121 | 1621 | Zylinder-Profil-Architektur, Sicherheitsklassen und Einbruchschutz, Planung großer Schließanlagen | SchliessanlagenInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | 424 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | SchluesselNachCodeInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | 273 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | SchluesselNachCodeInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | 111 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | SchluesselNachVorlageAnfrageInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | 1172 | 1672 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | SchluesselNachVorlageInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | 75 | 950 | SLA und Service-Garantien, Ablauf der Vor-Ort-Unterstützung, Wartungsverträge im Detail | ServiceUndTerminAnfrageInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | 193 | 950 | SLA und Service-Garantien, Ablauf der Vor-Ort-Unterstützung, Wartungsverträge im Detail | ServiceUndTerminKontaktInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /service-und-termin | src/app/service-und-termin/page.tsx | 799 | 1299 | SLA und Service-Garantien, Ablauf der Vor-Ort-Unterstützung, Wartungsverträge im Detail | ServiceUndTerminInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | 46 | 950 | SLA und Service-Garantien, Ablauf der Vor-Ort-Unterstützung, Wartungsverträge im Detail | ServiceUndTerminTerminstatusInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | 409 | 950 | SLA und Service-Garantien, Ablauf der Vor-Ort-Unterstützung, Wartungsverträge im Detail | ServiceUndTerminVorOrtInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | 354 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | SicherheitstechnikInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | 506 | 1006 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | SicherheitstechnikInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | 171 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | SicherheitstechnikSicherheitscheckInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /standorte/[city] | src/app/standorte/[city]/page.tsx | 168 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | StandorteInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /standorte | src/app/standorte/page.tsx | 105 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | StandorteInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | 243 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | TuerUndSchliesstechnikInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | 1157 | 1657 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | TuerUndSchliesstechnikInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |
+| /warenkorb | src/app/warenkorb/page.tsx | 160 | 950 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | WarenkorbInteractiveModule | PENDING_BUILDER | MISSING | NEEDS_AUDIT |

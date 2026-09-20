@@ -1,3 +1,6 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+The architectural transformation targets Next.js 16+, React 19.2+, and strictly typed TS 5.5+.
+Ensure complete compliance with the Swiss Light Design Doctrine using OKLCH color space.
+Refer to .jules/architecture-matrix.md for the full transformation matrix.
