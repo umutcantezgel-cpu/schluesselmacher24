@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2024-03-20T12:00:00Z",
-  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "generated_at": "2026-09-20T10:50:30.422Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf Visueller Hebelwirkung (0.35), Nutzer-Mehrwert (0.35) und Machbarkeit (0.30).",
   "top_ideas": [
     {
       "rank": 1,
@@ -16,7 +16,7 @@
     },
     {
       "rank": 2,
-      "idea_id": "IDEA_002",
+      "idea_id": "IDEA_042",
       "category": "AWWWARDS_KINETICS",
       "target_existing_route": "src/app/page.tsx",
       "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",

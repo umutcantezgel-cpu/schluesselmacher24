@@ -1,16 +1,25 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# RED-TEAM AUDIT (JC-PHILOSOPHER-REDTEAM-v1)
 
-## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+## 1. Executive Summary
+Gnadenloser Audit der bestehenden Next.js App-Router-Architektur. Fokus auf Silent Logic Death, Interaktions-Fallen, Swiss Light Mode Konsistenz und Typ-Reinheit.
 
-## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+## 2. Befunde
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+### Route: src/app/page.tsx
+- Keine kritischen Fehler gefunden.
+- Potenzial für Spatial Bento Grid.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+### Route: src/app/sicherheitstechnik/page.tsx
+- Fehlendes 'use cache'.
+
+### Route: src/app/schliessanlagen/page.tsx
+- Fehlende dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+- Potenzial für Enterprise Kalkulator.
+
+## 3. Globale Architekturanalyse
+- Fehlendes 'use cache' bei diversen Layout-Komponenten
+- CSS Grid ohne Subgrid in dynamischen Karten
+- Veraltetes Form-Handling ohne React 19 useActionState
+
+## 4. Fazit
+Die Basis ist solide, aber das volle Awwwards-Potential wird nicht ausgeschöpft. Phase 2 (Ideen-Generierung) wird initialisiert.
