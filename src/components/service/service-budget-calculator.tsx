@@ -2,7 +2,7 @@
 
 import { useActionState, useOptimistic, startTransition } from 'react';
 import { calculateServiceBudget } from '@/lib/actions/calculate-budget';
-import type { BudgetCalculationResult } from '@/lib/actions/calculate-budget';
+import type { BudgetCalculationResult } from '@/types/budget';
 
 const initialState: BudgetCalculationResult = {
   totalEstimate: 0,
@@ -63,10 +63,10 @@ export function ServiceBudgetCalculator() {
               Aufschlüsselung ({state.tier})
             </h4>
             <ul className="space-y-2">
-              {state.breakdown.map((item, index) => (
+              {state.breakdown.map((item: {item: string; cost: number}, index: number) => (
                 <li key={index} className="flex justify-between text-[13px] text-[oklch(0.32_0.02_260)]">
-                  <span>{item.label}</span>
-                  <span className="font-medium">{item.amount.toLocaleString('de-DE')} €</span>
+                  <span>{item.item}</span>
+                  <span className="font-medium">{item.cost.toLocaleString('de-DE')} €</span>
                 </li>
               ))}
             </ul>
