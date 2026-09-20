@@ -14,5 +14,9 @@
   "src/app/standorte/[city]/page.tsx": {
     "status": "VERIFIZIERT_FROZEN",
     "hash": "c1c409c035d53749881480d8983e5d782055ab3f40dfecbcb0cbfffe4d688819"
+  },
+  "src/components/calculator/security-check-calculator.tsx": {
+    "hash": "84aa7cc86d9fbb564b3476983d73f47f32f373f822bb3ff7c3d719de080b7a86",
+    "status": "VERIFIZIERT_FROZEN"
   }
 }

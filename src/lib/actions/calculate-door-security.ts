@@ -1,19 +1,6 @@
-import { z } from 'zod';
+'use server';
 
-export const securityCheckSchema = z.object({
-  doorType: z.enum(['WOHNUNG', 'HAUSTUER', 'GEWERBE']),
-  lockType: z.enum(['EINFACH', 'MEHRFACH', 'ELEKTRONISCH']),
-  urgency: z.enum(['STANDARD', 'HOCH']),
-});
-
-export type SecurityCheckInput = z.infer<typeof securityCheckSchema>;
-
-export interface SecurityCheckResult {
-  totalEstimate: number;
-  breakdown: { label: string; value: number }[];
-  tier: 'BASIC' | 'RECOMMENDED' | 'PREMIUM';
-  message: string;
-}
+import { securityCheckSchema, type SecurityCheckResult } from '@/lib/schemas/security-check';
 
 export async function calculateDoorSecurity(
   prevState: SecurityCheckResult,
