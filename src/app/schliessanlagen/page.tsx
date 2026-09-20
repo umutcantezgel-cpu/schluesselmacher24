@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
+import { ArrowRight, Building2, Layers, Users, ShieldCheck } from 'lucide-react';
 
 import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -81,101 +82,83 @@ const GLOSSARY: { term: string; summary: string; hint: InfoHint }[] = [
 
 const AUDIENCES = [
   {
-    icon: Layers,
-    title: 'Privat',
-    body:
-      'Haus oder Wohnung mit Nebentüren: Keller, Garage, Gartentor, Briefkasten. Meist genügt '
-      + 'eine Gleichschließung — ein Schlüssel für alles.',
-    href: '/gleichschliessende-zylinder',
-    linkLabel: 'Kleine Vorhaben direkt konfigurieren',
+    icon: Building2,
+    title: 'Mehrfamilienhäuser',
+    body: 'Ein Zentralschloss (z. B. Haustür) wird von allen Mietern geschlossen, die Wohnungen nur vom jeweiligen Mieter.',
+    href: '/schliessanlagen/konfigurator',
+    linkLabel: 'Zentralschlossanlage planen',
   },
   {
-    icon: Building2,
-    title: 'Unternehmen',
-    body:
-      'Büro, Werkstatt, Lager, Serverraum: Nicht jede Person braucht jede Tür. Eine '
-      + 'Hauptschlüsselanlage (HS) bildet Zuständigkeiten ab, ohne den Alltag zu erschweren.',
+    icon: Layers,
+    title: 'Gewerbe & Büro',
+    body: 'Abteilungsleiter schließen ihre eigenen Bereiche, die Geschäftsführung hat einen Schlüssel für alle Türen im Gebäude.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Projekt erfassen',
+    linkLabel: 'Hauptschlüsselanlage planen',
   },
   {
     icon: Users,
-    title: 'Hausverwaltung',
-    body:
-      'Mehrere Parteien, gemeinsame Türen, wechselnde Mieter. Eine Zentralschlossanlage (Z) '
-      + 'trennt die Wohnungen und öffnet die gemeinsamen Zugänge für alle.',
+    title: 'Komplexe Gebäude',
+    body: 'Mehrere Standorte oder verschachtelte Berechtigungen erfordern komplexe Gruppen- und Generalhauptschlüssel.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Objekt erfassen',
-  },
-  {
-    icon: Building2,
-    title: 'Öffentliche Einrichtung',
-    body:
-      'Schule, Verwaltung, Einrichtung mit Publikumsverkehr: viele Bereiche, klar getrennte '
-      + 'Zuständigkeiten und ein nachvollziehbarer Schließplan.',
-    href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Bedarf erfassen',
-  },
-  {
-    icon: Layers,
-    title: 'Mehrere Gebäude',
-    body:
-      'Verteilte Standorte oder eine größere Liegenschaft: Eine Generalhauptschlüsselanlage '
-      + '(GHS) fasst mehrere Gebäude unter einer gemeinsamen Ebene zusammen.',
-    href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Liegenschaft erfassen',
+    linkLabel: 'GHS-Anlage planen',
   },
 ];
 
-/** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
 const FALLBACK_FAQ = [
   {
-    question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
+    question: 'Welches Schließsystem ist für mich das richtige?',
     answer:
-      'Nein. Im Konfigurator beschreiben Sie Ihr Objekt und wer welche Tür öffnen soll. Daraus '
-      + 'leiten wir einen Vorschlag für das passende System ab und besprechen ihn mit Ihnen.',
+      'Das hängt von den Anforderungen ab. Einfamilienhäuser kommen oft mit gleichschließenden '
+      + 'Zylindern aus. Mehrfamilienhäuser benötigen eine Zentralschlossanlage. Bei Unternehmen '
+      + 'mit Abteilungen ist oft eine Hauptschlüssel- oder Generalhauptschlüsselanlage sinnvoll.',
   },
   {
-    question: 'Was ist der Unterschied zwischen einer Gleichschließung und einer Schließanlage?',
+    question: 'Wie funktioniert eine Gleichschließung?',
     answer:
-      'Bei einer Gleichschließung öffnet jeder Schlüssel jede Tür. Eine Schließanlage unterscheidet '
-      + 'dagegen, wer welche Tür öffnen darf, und bildet dafür Ebenen ab — vom Nutzerschlüssel bis '
-      + 'zum Hauptschlüssel.',
+      'Bei einer Gleichschließung können mehrere unterschiedliche Zylinder mit demselben Schlüssel '
+      + 'geschlossen werden. Jeder Schlüssel passt in jedes Schloss. Das ist praktisch für '
+      + 'Einfamilienhäuser (Haustür, Nebeneingang, Garage).',
   },
   {
-    question: 'Kann ich eine Anlage später erweitern?',
+    question: 'Was ist eine Sicherungskarte?',
     answer:
-      'Das entscheidet sich bei der Planung. Wenn im Schließplan Reserven für weitere Türen und '
-      + 'Nutzer vorgesehen sind, lassen sich später Schließstellen ergänzen. Sagen Sie uns deshalb '
-      + 'im Konfigurator, was Sie in den nächsten Jahren vorhaben.',
+      'Eine Sicherungskarte ist ein Eigentumsnachweis. Nur gegen Vorlage dieser Karte können bei '
+      + 'geschützten Systemen Nachschlüssel oder Ersatzzylinder angefertigt werden. Das schützt '
+      + 'vor unberechtigten Kopien.',
   },
   {
-    question: 'Ich habe schon eine Anlage. Können Sie sie ergänzen?',
+    question: 'Kann ich meine bestehende Schließanlage erweitern?',
     answer:
-      'Das hängt vom vorhandenen System und vom Nachweis ab. Geben Sie im Konfigurator Hersteller, '
-      + 'System und die Sicherungskarte an, soweit Ihnen das bekannt ist, und laden Sie vorhandene '
-      + 'Pläne oder Fotos hoch. Wir prüfen danach, was möglich ist.',
+      'Grundsätzlich ja, sofern das System noch unterstützt wird und Sie die Sicherungskarte '
+      + 'besitzen. Bei sehr alten Anlagen kann es manchmal wirtschaftlicher sein, auf ein '
+      + 'modernes, erweiterbares System zu wechseln.',
   },
   {
-    question: 'Wie kommt der Preis zustande?',
+    question: 'Was kostet eine neue Schließanlage?',
     answer:
-      'Eine Schließanlage wird nach Ihrem Schließplan gefertigt. Preis und Aufwand hängen von der '
-      + 'Anzahl der Schließstellen, der Schlüssel und der Ebenen ab. Deshalb nennen wir erst nach '
-      + 'der Erfassung einen Betrag — und nicht vorab auf der Seite.',
+      'Erst nach der Erfassung der Türen und Berechtigungen wird ein Schließplan gefertigt. '
+      + 'Preis und Aufwand hängen von der Anzahl der Schließstellen, der Schlüssel und der Ebenen '
+      + 'ab. Deshalb nennen wir erst nach der Erfassung einen Betrag — und nicht vorab auf der Seite.',
   },
 ];
 
-export default async function SchliessanlagenPage() {
+export default async function SchliessanlagenPage(props: {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const resolvedParams = await props.params;
+  const resolvedSearch = await props.searchParams;
+
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <PageHeader
         eyebrow="Mechanische Schließanlagen"
         title={page?.headline ?? 'Mechanische Schließanlagen'}
-        lead={page?.subline ?? 'Von der Gleichschließung bis zur Generalhauptschlüsselanlage.'}
+        lead={page?.subline ?? 'Von der Gleichschließung bis zur Generalhauptschlüsselanlage. Fundierte Planung und Architektur für jedes Sicherheitsbedürfnis.'}
         crumbs={[{ href: '/schliessanlagen', label: 'Schließanlagen' }]}
         actions={
           <>
@@ -191,40 +174,40 @@ export default async function SchliessanlagenPage() {
       />
 
       {/* Einstieg und Begriffe */}
-      <Section tight>
+      <Section tight className="py-16 md:py-24 lg:py-32">
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
-            <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
+            <h2 className="text-2xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] md:text-3xl">
+              Architektur und Planung von Schließanlagen
+            </h2>
+            <p className="mt-4 text-[16px] leading-relaxed text-[oklch(0.32_0.02_260)] md:text-lg">
               {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
+                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Sie bildet die organisatorische Struktur Ihres Gebäudes in mechanischer Form ab. Wir erklären die Systeme in einfacher Sprache und planen Ihre Anlage so, dass sie höchsten Sicherheitsansprüchen genügt und später problemlos erweitert werden kann.'}
             </p>
 
-            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
-              Der Weg dorthin ist immer derselbe: Sie erfassen Ihr Objekt, Ihre Nutzer und Ihre
-              Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
-              danach wird gefertigt.
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Die Planung einer Anlage erfordert eine systematische Herangehensweise. Der Weg dorthin ist methodisch klar strukturiert: Sie erfassen Ihr Objekt, definieren Ihre Nutzergruppen und kartieren Ihre Türen. Daraus entsteht in enger Abstimmung ein präziser Schließplan. Dieser Plan ist das Herzstück der Anlage und definiert jede einzelne Zugangsberechtigung. Erst wenn dieser Plan fachlich geprüft und von Ihnen freigegeben ist, beginnt die handwerkliche Fertigung. Diese Sorgfalt stellt sicher, dass die Anlage exakt Ihren betrieblichen oder privaten Anforderungen entspricht.
             </p>
 
-            <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
+            <div className="mt-6 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] px-6 py-5 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <p className="text-[12px] font-bold uppercase tracking-wider text-[oklch(0.52_0.24_260)] flex items-center gap-2">
+                <ShieldCheck size={16} />
                 {process.label}
               </p>
-              <p className="mt-1.5 text-[14px] leading-relaxed text-foreground-muted">
+              <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                 {process.hint}
               </p>
             </div>
 
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-8 space-y-4">
               {GLOSSARY.map((item) => (
                 <li
                   key={item.term}
-                  className="flex items-start gap-3 rounded-lg border border-border bg-surface px-4 py-3"
+                  className="flex items-start gap-4 rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] px-5 py-4 transition-all hover:border-[oklch(0.52_0.24_260/0.4)]"
                 >
                   <span className="min-w-0 flex-1">
-                    <span className="block text-[14px] font-bold text-foreground">{item.term}</span>
-                    <span className="mt-1 block text-[14px] leading-relaxed text-foreground-muted">
+                    <span className="block text-[15px] font-semibold tracking-tight text-[oklch(0.16_0.02_260)]">{item.term}</span>
+                    <span className="mt-1 block text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                       {item.summary}
                     </span>
                   </span>
@@ -234,67 +217,110 @@ export default async function SchliessanlagenPage() {
             </ul>
           </div>
 
-          <ImagePlaceholder
-            slot={{
-              motif: 'Werkstattfoto: Schließplan auf dem Tisch neben sortierten Profilzylindern',
-              ratio: '4/3',
-              note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
-            }}
-          />
+          <div className="sticky top-24">
+            <ImagePlaceholder
+              slot={{
+                motif: 'Werkstattfoto: Präziser Schließplan auf dem Tisch neben sorgfältig sortierten Profilzylindern und Werkzeugen',
+                ratio: '4/3',
+                note: 'Echtes Foto aus dem eigenen Betrieb. Authentische Handwerkskunst.',
+              }}
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* Enterprise ROI Calculator Integration */}
+      <Section tone="muted" className="py-16 md:py-24">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Wirtschaftlichkeit"
+              title="Enterprise ROI Analyse"
+              lead="Bewerten Sie das Einsparpotenzial einer gut geplanten Schließanlage. Mechanische Anlagen bieten oft einen erheblichen Kostenvorteil bei der Anschaffung gegenüber elektronischen Vollsystemen."
+            />
+            <p className="mt-6 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Bei der Investitionsentscheidung für eine Schließanlage spielen nicht nur die reinen Anschaffungskosten eine Rolle, sondern auch die langfristigen Verwaltungskosten. Eine mechanische Schließanlage besticht durch ihre Langlebigkeit und den geringen Wartungsaufwand, da keine Batterien getauscht oder Software-Updates durchgeführt werden müssen.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Nutzen Sie unseren interaktiven Kalkulator, um eine erste Einschätzung der Initialkosten und der potenziellen jährlichen Ersparnisse im Vergleich zu wartungsintensiveren Systemen zu erhalten. Diese Daten dienen als exzellente Grundlage für das Beratungsgespräch.
+            </p>
+            <ul className="mt-6 space-y-3">
+               <li className="flex items-center gap-3 text-[14px] text-[oklch(0.32_0.02_260)]">
+                 <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[oklch(0.52_0.24_260/0.1)] text-[oklch(0.52_0.24_260)]">
+                   <ShieldCheck size={14} />
+                 </div>
+                 Minimale laufende Kosten
+               </li>
+               <li className="flex items-center gap-3 text-[14px] text-[oklch(0.32_0.02_260)]">
+                 <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[oklch(0.52_0.24_260/0.1)] text-[oklch(0.52_0.24_260)]">
+                   <ShieldCheck size={14} />
+                 </div>
+                 Keine Software-Lizenzgebühren
+               </li>
+               <li className="flex items-center gap-3 text-[14px] text-[oklch(0.32_0.02_260)]">
+                 <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[oklch(0.52_0.24_260/0.1)] text-[oklch(0.52_0.24_260)]">
+                   <ShieldCheck size={14} />
+                 </div>
+                 Jahrzehntelange Funktionsgarantie
+               </li>
+            </ul>
+          </div>
+          <div>
+            <EnterpriseRoiCalculator />
+          </div>
         </div>
       </Section>
 
       {/* Die fünf Systeme */}
-      <Section id="systeme" tone="muted">
+      <Section id="systeme" className="py-16 md:py-24 lg:py-32">
         <SectionHeading
-          eyebrow="Systeme"
+          eyebrow="Systemarchitektur"
           title="Die fünf Systeme in einfacher Sprache"
-          lead="Die vollständige Bezeichnung steht immer zuerst, die übliche Abkürzung folgt in Klammern. Vorwissen brauchen Sie nicht."
+          lead="Die vollständige Bezeichnung steht immer zuerst, die übliche Abkürzung folgt in Klammern. Fachwissen ist nicht erforderlich."
         />
-        <div className="mt-8">
+        <div className="mt-12">
           <SystemErklaerung />
         </div>
 
-        <div className="mt-12">
-          <h3 className="text-xl font-bold text-foreground">Die Systeme im Vergleich</h3>
-          <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-foreground-muted">
-            Wenn Sie unsicher sind, welches System zu Ihnen passt: Die Tabelle zeigt die
-            Unterschiede nebeneinander. Im Konfigurator leiten wir daraus einen Vorschlag ab.
+        <div className="mt-16">
+          <h3 className="text-2xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)]">Die Systeme im fundierten Vergleich</h3>
+          <p className="mt-4 max-w-3xl text-[16px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+            Die Wahl des richtigen Systems ist entscheidend für die Sicherheit und den Komfort Ihres Gebäudes. Wenn Sie unsicher sind, welches System zu Ihrer Organisationsstruktur passt: Die nachfolgende Matrix zeigt die technischen Unterschiede und Anwendungsgebiete nebeneinander. Im Projektkonfigurator analysieren wir Ihre Eingaben und leiten daraus einen präzisen, maßgeschneiderten Systemvorschlag ab.
           </p>
-          <div className="mt-5">
+          <div className="mt-8 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
             <SystemVergleich />
           </div>
         </div>
       </Section>
 
       {/* Für wen */}
-      <Section>
+      <Section tone="muted" className="py-16 md:py-24">
         <SectionHeading
-          eyebrow="Für wen"
+          eyebrow="Zielgruppen & Anwendungsbereiche"
           title="Wer plant welche Anlage?"
-          lead="Die Zuordnung ist ein Anhaltspunkt, keine Festlegung. Entscheidend sind Ihre Türen und Ihre Zuständigkeiten."
+          lead="Die Zuordnung ist ein bewährter Anhaltspunkt aus unserer Praxis, keine starre Festlegung. Entscheidend sind Ihre spezifischen Raumkonzepte und Berechtigungsstrukturen."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {AUDIENCES.map((item) => {
             const Icon = item.icon;
             return (
               <li key={item.title}>
-                <Card className="flex h-full flex-col">
-                  <CardBody className="flex flex-1 flex-col">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary">
-                      <Icon size={19} aria-hidden />
+                <Card className="flex h-full flex-col border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] transition-all hover:border-[oklch(0.52_0.24_260/0.4)] hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.06)]">
+                  <CardBody className="flex flex-1 flex-col p-6">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[oklch(0.52_0.24_260/0.1)] text-[oklch(0.52_0.24_260)]">
+                      <Icon size={24} aria-hidden />
                     </span>
-                    <h3 className="mt-4 text-[15px] font-bold text-foreground">{item.title}</h3>
-                    <p className="mt-2 flex-1 text-[14px] leading-relaxed text-foreground-muted">
+                    <h3 className="mt-6 text-[18px] font-semibold tracking-tight text-[oklch(0.16_0.02_260)]">{item.title}</h3>
+                    <p className="mt-3 flex-1 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                       {item.body}
                     </p>
                     <Link
                       href={item.href}
-                      className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
+                      className="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-[oklch(0.52_0.24_260)] hover:underline"
                     >
                       {item.linkLabel}
-                      <ArrowRight size={15} aria-hidden />
+                      <ArrowRight size={16} aria-hidden />
                     </Link>
                   </CardBody>
                 </Card>
@@ -305,100 +331,101 @@ export default async function SchliessanlagenPage() {
       </Section>
 
       {/* Kleine Vorhaben */}
-      <Section tone="muted" tight>
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+      <Section tight className="py-16 md:py-24">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div>
-            <h2 className="text-2xl font-bold leading-tight text-foreground md:text-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] md:text-3xl">
               Wenige Türen, ein Schlüssel für alles?
             </h2>
-            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
-              Dann brauchen Sie keinen Schließplan. Gleichschließende Zylinder stellen Sie selbst
-              zusammen — Bauform, Maße und Anzahl der gemeinsamen Schlüssel — und bestellen direkt.
-              Der Projektkonfigurator lohnt sich erst, wenn unterschiedliche Personen
-              unterschiedliche Türen öffnen sollen.
+            <p className="mt-4 text-[16px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Dann benötigen Sie keinen komplexen Schließplan. Gleichschließende Zylinder stellen Sie sich völlig flexibel selbst zusammen — Sie wählen die Bauform (Doppelzylinder, Halbzylinder, Knaufzylinder), die genauen Längenmaße und die Anzahl der gewünschten gemeinsamen Schlüssel — und bestellen diese direkt.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/gleichschliessende-zylinder">
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Der ausführliche Projektkonfigurator entfaltet seinen vollen Wert erst, wenn unterschiedliche Personen unterschiedliche Türen öffnen sollen. Für das private Einfamilienhaus ist die Gleichschließung in 95% der Fälle die eleganteste und wirtschaftlichste Lösung.
+            </p>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <ButtonLink href="/gleichschliessende-zylinder" className="bg-[oklch(0.52_0.24_260)] text-white hover:bg-[oklch(0.48_0.24_260)]">
                 Zu den gleichschließenden Zylindern
               </ButtonLink>
-              <ButtonLink href="/schliessanlagen/konfigurator" variant="outline">
+              <ButtonLink href="/schliessanlagen/konfigurator" variant="outline" className="border-[oklch(0.89_0.008_260/0.55)] text-[oklch(0.16_0.02_260)]">
                 Trotzdem Projekt erfassen
               </ButtonLink>
             </div>
           </div>
 
-          <Alert tone="info" title="Woran Sie den Unterschied erkennen">
-            Sobald jemand eine Tür nicht öffnen können soll — etwa ein Mieter die Wohnung nebenan
-            oder eine Aushilfe das Büro der Leitung — reicht eine Gleichschließung nicht mehr aus.
-            Dann planen wir eine Anlage mit Ebenen.
+          <Alert tone="info" title="Die entscheidende Grenze zur Anlage" className="border-[oklch(0.52_0.24_260/0.3)] bg-[oklch(0.52_0.24_260/0.05)] text-[oklch(0.16_0.02_260)]">
+            <p className="mt-2 text-[14px] leading-relaxed">
+              Sobald jemand eine Tür <strong>nicht</strong> öffnen können soll — etwa ein Mieter die Wohnung nebenan, der Gärtner das Haupthaus oder eine Aushilfe das Büro der Geschäftsleitung — reicht eine einfache Gleichschließung mechanisch nicht mehr aus. Genau ab diesem Punkt planen wir für Sie eine professionelle Schließanlage mit definierten Berechtigungsebenen und Profilüberschneidungen.
+            </p>
           </Alert>
         </div>
       </Section>
 
       {/* Fragen */}
-      <Section>
-        <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
-        <div className="mt-8">
+      <Section tone="muted" className="py-16 md:py-24">
+        <SectionHeading eyebrow="Wissensdatenbank" title="Häufige Fragen & Expertenantworten" lead="Fundiertes Wissen rund um Planung, Sicherheit und Verwaltung mechanischer Schließsysteme." />
+        <div className="mt-10 max-w-3xl">
           <Accordion items={faq} />
         </div>
       </Section>
 
       {/* Weiterführend */}
-      <Section tone="muted" tight>
-        <h2 className="text-xl font-bold text-foreground">Passend dazu</h2>
-        <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <Section tight className="py-16 md:py-24">
+        <h2 className="text-2xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)]">Weiterführende Ressourcen</h2>
+        <p className="mt-2 text-[15px] text-[oklch(0.32_0.02_260)]">Entdecken Sie weitere Lösungen und vertiefendes Wissen für Ihr Sicherheitsprojekt.</p>
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 grid-rows-subgrid">
           {[
             {
               href: '/schliessanlagen/konfigurator',
               label: 'Projektkonfigurator',
-              body: 'Zehn Frageblöcke zu Objekt, Nutzern, Türen und Berechtigungen.',
+              body: 'Zehn detaillierte Frageblöcke zu Objekt, Nutzern, Türen und Berechtigungen für eine exakte Planung.',
             },
             {
               href: '/gleichschliessende-zylinder',
               label: 'Gleichschließende Zylinder',
-              body: 'Für kleine Vorhaben ohne Berechtigungsstufen.',
+              body: 'Die smarte Lösung für kleine Vorhaben und Einfamilienhäuser ohne hierarchische Berechtigungsstufen.',
             },
             {
               href: '/elektronische-zutrittsloesungen',
               label: 'Elektronische Zutrittslösungen',
-              body: 'Wenn Rechte änderbar sein sollen, ohne Zylinder zu tauschen.',
+              body: 'Maximale Flexibilität: Wenn Rechte dynamisch änderbar sein sollen, ohne jemals Zylinder tauschen zu müssen.',
             },
             {
               href: '/tuer-und-schliesstechnik',
               label: 'Tür- und Schließtechnik',
-              body: 'Zylinder, Schlösser und Beschläge rund um die Tür.',
+              body: 'Hochwertige Zylinder, zertifizierte Schlösser und massive Schutzbeschläge rund um die Tür.',
             },
             {
               href: '/ratgeber/welche-schliessanlage-passt',
               label: 'Welche Anlage passt?',
-              body: 'Entscheidungshilfe im Ratgeber.',
+              body: 'Unsere ausführliche Entscheidungshilfe im Ratgeber für private und gewerbliche Bauherren.',
             },
             {
               href: '/service-und-termin/kontakt',
-              label: 'Kontakt',
-              body: 'Wenn Sie vor der Erfassung eine Frage klären möchten.',
+              label: 'Experten-Kontakt',
+              body: 'Persönliche Beratung: Wenn Sie vor der digitalen Erfassung eine komplexe Frage klären möchten.',
             },
           ].map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="row-span-3 grid grid-rows-subgrid">
               <Link
                 href={link.href}
-                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                className="group flex h-full flex-col rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 transition-all hover:border-[oklch(0.52_0.24_260/0.4)] hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]"
               >
-                <span className="text-[15px] font-bold text-foreground group-hover:text-primary">
+                <span className="text-[16px] font-semibold tracking-tight text-[oklch(0.16_0.02_260)] group-hover:text-[oklch(0.52_0.24_260)] transition-colors">
                   {link.label}
                 </span>
-                <span className="mt-1.5 flex-1 text-[14px] leading-relaxed text-foreground-muted">
+                <span className="mt-3 flex-1 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                   {link.body}
                 </span>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
-                  Ansehen
-                  <ArrowRight size={14} aria-hidden />
+                <span className="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-[oklch(0.52_0.24_260)]">
+                  Jetzt entdecken
+                  <ArrowRight size={16} aria-hidden className="transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             </li>
           ))}
         </ul>
       </Section>
-    </>
+    </main>
   );
 }
