@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "version": "1.0.0",
-  "generated_at": "2026-09-19T17:36:35.129Z",
+  "generated_at": "2026-09-20T13:21:57.161Z",
   "total_existing_routes": 55,
   "dna_summary": {
     "framework": "Next.js 16+",
@@ -17,18 +17,19 @@
       "source_file": "src/app/admin/einstellungen/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Systemarchitektur des Verwaltungsbereichs",
+        "Datenmodelle und Relationen",
+        "Sicherheitsrichtlinien für administrative Zugriffe"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDataDashboard",
+        "target_file": "components/dashboard/admin-data-dashboard.tsx",
+        "action_file": "actions/fetch-admin-data.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "DATA_TABLE_GLOW",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -40,18 +41,19 @@
       "source_file": "src/app/admin/fahrzeugdaten/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Systemarchitektur des Verwaltungsbereichs",
+        "Datenmodelle und Relationen",
+        "Sicherheitsrichtlinien für administrative Zugriffe"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDataDashboard",
+        "target_file": "components/dashboard/admin-data-dashboard.tsx",
+        "action_file": "actions/fetch-admin-data.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "DATA_TABLE_GLOW",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -63,18 +65,19 @@
       "source_file": "src/app/admin/inhalte/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Systemarchitektur des Verwaltungsbereichs",
+        "Datenmodelle und Relationen",
+        "Sicherheitsrichtlinien für administrative Zugriffe"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDataDashboard",
+        "target_file": "components/dashboard/admin-data-dashboard.tsx",
+        "action_file": "actions/fetch-admin-data.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "DATA_TABLE_GLOW",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -84,20 +87,21 @@
       "priority": 4,
       "route_path": "/admin",
       "source_file": "src/app/admin/page.tsx",
-      "target_word_count": 1172,
+      "target_word_count": 1991,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Systemarchitektur des Verwaltungsbereichs",
+        "Datenmodelle und Relationen",
+        "Sicherheitsrichtlinien für administrative Zugriffe"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDataDashboard",
+        "target_file": "components/dashboard/admin-data-dashboard.tsx",
+        "action_file": "actions/fetch-admin-data.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "DATA_TABLE_GLOW",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -109,18 +113,19 @@
       "source_file": "src/app/admin/preise/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Systemarchitektur des Verwaltungsbereichs",
+        "Datenmodelle und Relationen",
+        "Sicherheitsrichtlinien für administrative Zugriffe"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDataDashboard",
+        "target_file": "components/dashboard/admin-data-dashboard.tsx",
+        "action_file": "actions/fetch-admin-data.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "DATA_TABLE_GLOW",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -132,18 +137,19 @@
       "source_file": "src/app/admin/produkte/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Systemarchitektur des Verwaltungsbereichs",
+        "Datenmodelle und Relationen",
+        "Sicherheitsrichtlinien für administrative Zugriffe"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDataDashboard",
+        "target_file": "components/dashboard/admin-data-dashboard.tsx",
+        "action_file": "actions/fetch-admin-data.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "DATA_TABLE_GLOW",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -153,20 +159,21 @@
       "priority": 7,
       "route_path": "/admin/termine",
       "source_file": "src/app/admin/termine/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 997,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Systemarchitektur des Verwaltungsbereichs",
+        "Datenmodelle und Relationen",
+        "Sicherheitsrichtlinien für administrative Zugriffe"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDataDashboard",
+        "target_file": "components/dashboard/admin-data-dashboard.tsx",
+        "action_file": "actions/fetch-admin-data.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "DATA_TABLE_GLOW",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -176,20 +183,21 @@
       "priority": 8,
       "route_path": "/admin/vorgaenge/[id]",
       "source_file": "src/app/admin/vorgaenge/[id]/page.tsx",
-      "target_word_count": 1593,
+      "target_word_count": 2368,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Systemarchitektur des Verwaltungsbereichs",
+        "Datenmodelle und Relationen",
+        "Sicherheitsrichtlinien für administrative Zugriffe"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDataDashboard",
+        "target_file": "components/dashboard/admin-data-dashboard.tsx",
+        "action_file": "actions/fetch-admin-data.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "DATA_TABLE_GLOW",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -201,18 +209,19 @@
       "source_file": "src/app/admin/vorgaenge/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Systemarchitektur des Verwaltungsbereichs",
+        "Datenmodelle und Relationen",
+        "Sicherheitsrichtlinien für administrative Zugriffe"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDataDashboard",
+        "target_file": "components/dashboard/admin-data-dashboard.tsx",
+        "action_file": "actions/fetch-admin-data.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "DATA_TABLE_GLOW",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -222,21 +231,21 @@
       "priority": 10,
       "route_path": "/autoschluessel/anfrage",
       "source_file": "src/app/autoschluessel/anfrage/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1035,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -245,21 +254,21 @@
       "priority": 11,
       "route_path": "/autoschluessel/fahrzeugoeffnung",
       "source_file": "src/app/autoschluessel/fahrzeugoeffnung/page.tsx",
-      "target_word_count": 1122,
+      "target_word_count": 1493,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -268,21 +277,21 @@
       "priority": 12,
       "route_path": "/autoschluessel/funkschluessel",
       "source_file": "src/app/autoschluessel/funkschluessel/page.tsx",
-      "target_word_count": 1092,
+      "target_word_count": 1449,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -291,21 +300,21 @@
       "priority": 13,
       "route_path": "/autoschluessel/kopieren",
       "source_file": "src/app/autoschluessel/kopieren/page.tsx",
-      "target_word_count": 1134,
+      "target_word_count": 1503,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -314,21 +323,21 @@
       "priority": 14,
       "route_path": "/autoschluessel/marken/[make]/[model]",
       "source_file": "src/app/autoschluessel/marken/[make]/[model]/page.tsx",
-      "target_word_count": 1224,
+      "target_word_count": 1833,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -337,21 +346,21 @@
       "priority": 15,
       "route_path": "/autoschluessel/marken/[make]",
       "source_file": "src/app/autoschluessel/marken/[make]/page.tsx",
-      "target_word_count": 980,
+      "target_word_count": 1697,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -360,21 +369,21 @@
       "priority": 16,
       "route_path": "/autoschluessel/marken",
       "source_file": "src/app/autoschluessel/marken/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1318,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -383,21 +392,21 @@
       "priority": 17,
       "route_path": "/autoschluessel/nachmachen",
       "source_file": "src/app/autoschluessel/nachmachen/page.tsx",
-      "target_word_count": 1190,
+      "target_word_count": 1549,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -406,21 +415,21 @@
       "priority": 18,
       "route_path": "/autoschluessel",
       "source_file": "src/app/autoschluessel/page.tsx",
-      "target_word_count": 1971,
+      "target_word_count": 2634,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -429,21 +438,21 @@
       "priority": 19,
       "route_path": "/autoschluessel/programmieren",
       "source_file": "src/app/autoschluessel/programmieren/page.tsx",
-      "target_word_count": 1223,
+      "target_word_count": 1575,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -452,21 +461,21 @@
       "priority": 20,
       "route_path": "/autoschluessel/schluesselbart-fraesen",
       "source_file": "src/app/autoschluessel/schluesselbart-fraesen/page.tsx",
-      "target_word_count": 1043,
+      "target_word_count": 1408,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -475,21 +484,21 @@
       "priority": 21,
       "route_path": "/autoschluessel/smart-key",
       "source_file": "src/app/autoschluessel/smart-key/page.tsx",
-      "target_word_count": 1208,
+      "target_word_count": 1566,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Technologische Analyse der Transponder-Systeme",
+        "Sicherheitsarchitektur moderner Autoschlüssel",
+        "Kryptografische Verfahren bei der Schlüsselprogrammierung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/configurator/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "MAGNETIC_BUTTON_REVEAL",
       "schema_entities": [
-        "WebSite",
+        "Service",
         "FAQPage"
       ],
       "status": "PENDING_BUILDER"
@@ -498,20 +507,21 @@
       "priority": 22,
       "route_path": "/bestellung/[id]",
       "source_file": "src/app/bestellung/[id]/page.tsx",
-      "target_word_count": 994,
+      "target_word_count": 1662,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /bestellung/[id]",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator21",
-        "target_file": "src/components/calculator/cost-estimator-21.tsx",
-        "action_file": "src/lib/actions/estimate-cost-21.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -523,18 +533,19 @@
       "source_file": "src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /elektronische-zutrittsloesungen/konfigurator",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator22",
-        "target_file": "src/components/calculator/cost-estimator-22.tsx",
-        "action_file": "src/lib/actions/estimate-cost-22.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -544,20 +555,21 @@
       "priority": 24,
       "route_path": "/elektronische-zutrittsloesungen",
       "source_file": "src/app/elektronische-zutrittsloesungen/page.tsx",
-      "target_word_count": 2451,
+      "target_word_count": 3022,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /elektronische-zutrittsloesungen",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator23",
-        "target_file": "src/components/calculator/cost-estimator-23.tsx",
-        "action_file": "src/lib/actions/estimate-cost-23.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -569,18 +581,19 @@
       "source_file": "src/app/gleichschliessende-zylinder/konfigurator/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /gleichschliessende-zylinder/konfigurator",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator24",
-        "target_file": "src/components/calculator/cost-estimator-24.tsx",
-        "action_file": "src/lib/actions/estimate-cost-24.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -590,20 +603,21 @@
       "priority": 26,
       "route_path": "/gleichschliessende-zylinder",
       "source_file": "src/app/gleichschliessende-zylinder/page.tsx",
-      "target_word_count": 2052,
+      "target_word_count": 2934,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /gleichschliessende-zylinder",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator25",
-        "target_file": "src/components/calculator/cost-estimator-25.tsx",
-        "action_file": "src/lib/actions/estimate-cost-25.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -615,18 +629,19 @@
       "source_file": "src/app/kasse/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Sichere Zahlungsabwicklung",
-        "Lieferbedingungen und Versandoptionen",
-        "Datenschutz während des Bestellprozesses"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator26",
-        "target_file": "src/components/calculator/cost-estimator-26.tsx",
-        "action_file": "src/lib/actions/estimate-cost-26.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -636,20 +651,21 @@
       "priority": 28,
       "route_path": "/",
       "source_file": "src/app/page.tsx",
-      "target_word_count": 1140,
+      "target_word_count": 2007,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator27",
-        "target_file": "src/components/calculator/cost-estimator-27.tsx",
-        "action_file": "src/lib/actions/estimate-cost-27.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -661,18 +677,19 @@
       "source_file": "src/app/ratgeber/[slug]/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /ratgeber/[slug]",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator28",
-        "target_file": "src/components/calculator/cost-estimator-28.tsx",
-        "action_file": "src/lib/actions/estimate-cost-28.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -684,18 +701,19 @@
       "source_file": "src/app/ratgeber/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /ratgeber",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator29",
-        "target_file": "src/components/calculator/cost-estimator-29.tsx",
-        "action_file": "src/lib/actions/estimate-cost-29.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -707,20 +725,19 @@
       "source_file": "src/app/rechtliches/agb/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/agb",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Rechtliche Rahmenbedingungen",
+        "Datenschutz-Architektur",
+        "Compliance und Auditierung"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator30",
-        "target_file": "src/components/calculator/cost-estimator-30.tsx",
-        "action_file": "src/lib/actions/estimate-cost-30.ts"
+        "component_name": "ComplianceTracker",
+        "target_file": "components/tracker/compliance-tracker.tsx",
+        "action_file": "actions/track-compliance.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "SUBTLE_TEXT_REVEAL",
       "schema_entities": [
-        "WebSite",
-        "FAQPage"
+        "WebPage"
       ],
       "status": "PENDING_BUILDER"
     },
@@ -730,20 +747,19 @@
       "source_file": "src/app/rechtliches/cookie-einstellungen/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/cookie-einstellungen",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Rechtliche Rahmenbedingungen",
+        "Datenschutz-Architektur",
+        "Compliance und Auditierung"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator31",
-        "target_file": "src/components/calculator/cost-estimator-31.tsx",
-        "action_file": "src/lib/actions/estimate-cost-31.ts"
+        "component_name": "ComplianceTracker",
+        "target_file": "components/tracker/compliance-tracker.tsx",
+        "action_file": "actions/track-compliance.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "SUBTLE_TEXT_REVEAL",
       "schema_entities": [
-        "WebSite",
-        "FAQPage"
+        "WebPage"
       ],
       "status": "PENDING_BUILDER"
     },
@@ -751,22 +767,21 @@
       "priority": 33,
       "route_path": "/rechtliches/datenschutz",
       "source_file": "src/app/rechtliches/datenschutz/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1277,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/datenschutz",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Rechtliche Rahmenbedingungen",
+        "Datenschutz-Architektur",
+        "Compliance und Auditierung"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator32",
-        "target_file": "src/components/calculator/cost-estimator-32.tsx",
-        "action_file": "src/lib/actions/estimate-cost-32.ts"
+        "component_name": "ComplianceTracker",
+        "target_file": "components/tracker/compliance-tracker.tsx",
+        "action_file": "actions/track-compliance.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "SUBTLE_TEXT_REVEAL",
       "schema_entities": [
-        "WebSite",
-        "FAQPage"
+        "WebPage"
       ],
       "status": "PENDING_BUILDER"
     },
@@ -776,20 +791,19 @@
       "source_file": "src/app/rechtliches/impressum/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/impressum",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Rechtliche Rahmenbedingungen",
+        "Datenschutz-Architektur",
+        "Compliance und Auditierung"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator33",
-        "target_file": "src/components/calculator/cost-estimator-33.tsx",
-        "action_file": "src/lib/actions/estimate-cost-33.ts"
+        "component_name": "ComplianceTracker",
+        "target_file": "components/tracker/compliance-tracker.tsx",
+        "action_file": "actions/track-compliance.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "SUBTLE_TEXT_REVEAL",
       "schema_entities": [
-        "WebSite",
-        "FAQPage"
+        "WebPage"
       ],
       "status": "PENDING_BUILDER"
     },
@@ -797,22 +811,21 @@
       "priority": 35,
       "route_path": "/rechtliches/versand-und-zahlung",
       "source_file": "src/app/rechtliches/versand-und-zahlung/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 993,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/versand-und-zahlung",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Rechtliche Rahmenbedingungen",
+        "Datenschutz-Architektur",
+        "Compliance und Auditierung"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator34",
-        "target_file": "src/components/calculator/cost-estimator-34.tsx",
-        "action_file": "src/lib/actions/estimate-cost-34.ts"
+        "component_name": "ComplianceTracker",
+        "target_file": "components/tracker/compliance-tracker.tsx",
+        "action_file": "actions/track-compliance.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "SUBTLE_TEXT_REVEAL",
       "schema_entities": [
-        "WebSite",
-        "FAQPage"
+        "WebPage"
       ],
       "status": "PENDING_BUILDER"
     },
@@ -822,20 +835,19 @@
       "source_file": "src/app/rechtliches/widerruf/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/widerruf",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Rechtliche Rahmenbedingungen",
+        "Datenschutz-Architektur",
+        "Compliance und Auditierung"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator35",
-        "target_file": "src/components/calculator/cost-estimator-35.tsx",
-        "action_file": "src/lib/actions/estimate-cost-35.ts"
+        "component_name": "ComplianceTracker",
+        "target_file": "components/tracker/compliance-tracker.tsx",
+        "action_file": "actions/track-compliance.ts"
       },
-      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "signature_interaction": "SUBTLE_TEXT_REVEAL",
       "schema_entities": [
-        "WebSite",
-        "FAQPage"
+        "WebPage"
       ],
       "status": "PENDING_BUILDER"
     },
@@ -845,18 +857,19 @@
       "source_file": "src/app/schliessanlagen/konfigurator/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schliessanlagen/konfigurator",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Topologie moderner Schließanlagen",
+        "Sicherheitsklassen und Zertifizierungen",
+        "Mechanische vs. Mechatronische Systeme"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator36",
-        "target_file": "src/components/calculator/cost-estimator-36.tsx",
-        "action_file": "src/lib/actions/estimate-cost-36.ts"
+        "component_name": "LockSystemPlanner",
+        "target_file": "components/planner/lock-system-planner.tsx",
+        "action_file": "actions/plan-lock-system.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -866,20 +879,21 @@
       "priority": 38,
       "route_path": "/schliessanlagen",
       "source_file": "src/app/schliessanlagen/page.tsx",
-      "target_word_count": 1603,
+      "target_word_count": 2166,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schliessanlagen",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Topologie moderner Schließanlagen",
+        "Sicherheitsklassen und Zertifizierungen",
+        "Mechanische vs. Mechatronische Systeme"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator37",
-        "target_file": "src/components/calculator/cost-estimator-37.tsx",
-        "action_file": "src/lib/actions/estimate-cost-37.ts"
+        "component_name": "LockSystemPlanner",
+        "target_file": "components/planner/lock-system-planner.tsx",
+        "action_file": "actions/plan-lock-system.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -889,20 +903,21 @@
       "priority": 39,
       "route_path": "/schluessel-nach-code/[slug]",
       "source_file": "src/app/schluessel-nach-code/[slug]/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1368,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schluessel-nach-code/[slug]",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator38",
-        "target_file": "src/components/calculator/cost-estimator-38.tsx",
-        "action_file": "src/lib/actions/estimate-cost-38.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -912,20 +927,21 @@
       "priority": 40,
       "route_path": "/schluessel-nach-code",
       "source_file": "src/app/schluessel-nach-code/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1008,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schluessel-nach-code",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator39",
-        "target_file": "src/components/calculator/cost-estimator-39.tsx",
-        "action_file": "src/lib/actions/estimate-cost-39.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -937,18 +953,19 @@
       "source_file": "src/app/schluessel-nach-vorlage/anfrage/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schluessel-nach-vorlage/anfrage",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator40",
-        "target_file": "src/components/calculator/cost-estimator-40.tsx",
-        "action_file": "src/lib/actions/estimate-cost-40.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -958,20 +975,21 @@
       "priority": 42,
       "route_path": "/schluessel-nach-vorlage",
       "source_file": "src/app/schluessel-nach-vorlage/page.tsx",
-      "target_word_count": 1762,
+      "target_word_count": 2372,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schluessel-nach-vorlage",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator41",
-        "target_file": "src/components/calculator/cost-estimator-41.tsx",
-        "action_file": "src/lib/actions/estimate-cost-41.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -983,18 +1001,19 @@
       "source_file": "src/app/service-und-termin/anfrage/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /service-und-termin/anfrage",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator42",
-        "target_file": "src/components/calculator/cost-estimator-42.tsx",
-        "action_file": "src/lib/actions/estimate-cost-42.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1004,20 +1023,21 @@
       "priority": 44,
       "route_path": "/service-und-termin/kontakt",
       "source_file": "src/app/service-und-termin/kontakt/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1073,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /service-und-termin/kontakt",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator43",
-        "target_file": "src/components/calculator/cost-estimator-43.tsx",
-        "action_file": "src/lib/actions/estimate-cost-43.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1027,20 +1047,21 @@
       "priority": 45,
       "route_path": "/service-und-termin",
       "source_file": "src/app/service-und-termin/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 2248,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /service-und-termin",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator44",
-        "target_file": "src/components/calculator/cost-estimator-44.tsx",
-        "action_file": "src/lib/actions/estimate-cost-44.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1052,18 +1073,19 @@
       "source_file": "src/app/service-und-termin/terminstatus/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /service-und-termin/terminstatus",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator45",
-        "target_file": "src/components/calculator/cost-estimator-45.tsx",
-        "action_file": "src/lib/actions/estimate-cost-45.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1073,20 +1095,21 @@
       "priority": 47,
       "route_path": "/service-und-termin/vor-ort",
       "source_file": "src/app/service-und-termin/vor-ort/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1238,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /service-und-termin/vor-ort",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator46",
-        "target_file": "src/components/calculator/cost-estimator-46.tsx",
-        "action_file": "src/lib/actions/estimate-cost-46.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1096,20 +1119,21 @@
       "priority": 48,
       "route_path": "/sicherheitstechnik/[slug]",
       "source_file": "src/app/sicherheitstechnik/[slug]/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1254,
       "content_expansion_topics": [
-        "Mechanische vs. Elektronische Sicherheitstechnik",
-        "Schwachstellen-Analyse bei Wohngebäuden",
-        "Zertifizierungen und Normen für Sicherheitstechnik"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
-        "type": "CALCULATOR",
-        "component_name": "SecurityScoreCalculator",
-        "target_file": "src/components/calculator/security-score-calculator.tsx",
-        "action_file": "src/lib/actions/calculate-security-score.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1119,20 +1143,21 @@
       "priority": 49,
       "route_path": "/sicherheitstechnik",
       "source_file": "src/app/sicherheitstechnik/page.tsx",
-      "target_word_count": 995,
+      "target_word_count": 1684,
       "content_expansion_topics": [
-        "Mechanische vs. Elektronische Sicherheitstechnik",
-        "Schwachstellen-Analyse bei Wohngebäuden",
-        "Zertifizierungen und Normen für Sicherheitstechnik"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
-        "type": "CALCULATOR",
-        "component_name": "SecurityScoreCalculator",
-        "target_file": "src/components/calculator/security-score-calculator.tsx",
-        "action_file": "src/lib/actions/calculate-security-score.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1144,18 +1169,19 @@
       "source_file": "src/app/sicherheitstechnik/sicherheitscheck/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Mechanische vs. Elektronische Sicherheitstechnik",
-        "Schwachstellen-Analyse bei Wohngebäuden",
-        "Zertifizierungen und Normen für Sicherheitstechnik"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
-        "type": "CALCULATOR",
-        "component_name": "SecurityScoreCalculator",
-        "target_file": "src/components/calculator/security-score-calculator.tsx",
-        "action_file": "src/lib/actions/calculate-security-score.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1165,20 +1191,21 @@
       "priority": 51,
       "route_path": "/standorte/[city]",
       "source_file": "src/app/standorte/[city]/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 982,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /standorte/[city]",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator50",
-        "target_file": "src/components/calculator/cost-estimator-50.tsx",
-        "action_file": "src/lib/actions/estimate-cost-50.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1190,18 +1217,19 @@
       "source_file": "src/app/standorte/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /standorte",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator51",
-        "target_file": "src/components/calculator/cost-estimator-51.tsx",
-        "action_file": "src/lib/actions/estimate-cost-51.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1211,20 +1239,21 @@
       "priority": 53,
       "route_path": "/tuer-und-schliesstechnik/[slug]",
       "source_file": "src/app/tuer-und-schliesstechnik/[slug]/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1087,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /tuer-und-schliesstechnik/[slug]",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator52",
-        "target_file": "src/components/calculator/cost-estimator-52.tsx",
-        "action_file": "src/lib/actions/estimate-cost-52.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1234,20 +1263,21 @@
       "priority": 54,
       "route_path": "/tuer-und-schliesstechnik",
       "source_file": "src/app/tuer-und-schliesstechnik/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 2494,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /tuer-und-schliesstechnik",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator53",
-        "target_file": "src/components/calculator/cost-estimator-53.tsx",
-        "action_file": "src/lib/actions/estimate-cost-53.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1259,18 +1289,19 @@
       "source_file": "src/app/warenkorb/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Sichere Zahlungsabwicklung",
-        "Lieferbedingungen und Versandoptionen",
-        "Datenschutz während des Bestellprozesses"
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator54",
-        "target_file": "src/components/calculator/cost-estimator-54.tsx",
-        "action_file": "src/lib/actions/estimate-cost-54.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],

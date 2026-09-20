@@ -47,3 +47,9 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+
+## Architecture Goals
+- Next.js 16+ App Router, React 19.2+, TypeScript 5.5+
+- strict typing, Server Actions, zero new routes invariant
+- Design System: Swiss Light Mode (OKLCH, no dark mode, typography scales)
