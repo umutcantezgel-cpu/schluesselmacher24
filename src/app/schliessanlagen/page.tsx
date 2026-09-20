@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -163,15 +164,46 @@ const FALLBACK_FAQ = [
       + 'Anzahl der Schließstellen, der Schlüssel und der Ebenen ab. Deshalb nennen wir erst nach '
       + 'der Erfassung einen Betrag — und nicht vorab auf der Seite.',
   },
+  {
+    question: 'Warum sollte ein Unternehmen über eine elektronische Anlage nachdenken?',
+    answer:
+      'Der größte Kostentreiber in mittleren bis großen Unternehmen ist nicht die Anschaffung der Zylinder, '
+      + 'sondern der Verwaltungsaufwand und vor allem der Schlüsselverlust. Geht ein mechanischer '
+      + 'Generalschlüssel verloren, müssen aus Sicherheitsgründen weite Teile der Anlage getauscht werden. '
+      + 'Bei elektronischen Anlagen wird der Transponder einfach mit einem Klick gesperrt. Unser ROI-Kalkulator '
+      + 'zeigt Ihnen, wie schnell sich dieser Wechsel rechnet.',
+  },
+  {
+    question: 'Sind hybride Schließanlagen sinnvoll?',
+    answer:
+      'Absolut. In fast jedem Objekt gibt es Türen mit hoher Fluktuation oder Sicherheitsrelevanz (Haupteingang, Serverraum) '
+      + 'und Türen, die sich selten ändern (Archiv, Putzkammer). Die Kombination aus flexibler Elektronik an den neuralgischen '
+      + 'Punkten und robuster Mechanik im Rest des Gebäudes bietet oft das beste Verhältnis aus Sicherheit, Komfort und Kosten.',
+  },
+  {
+    question: 'Wie sieht die architektonische Methodik bei der Planung aus?',
+    answer:
+      'Wir planen nach dem "Zwiebelschalen-Prinzip". Das bedeutet, wir analysieren Ihr Gebäude von außen nach innen. '
+      + 'Der äußere Ring (Außenhaut) erfordert den höchsten mechanischen Widerstand und oft elektronische Protokollierung. '
+      + 'Nach innen verästeln sich die Berechtigungen feiner. So entsteht eine Leistungsarchitektur, die nicht nur sicher, '
+      + 'sondern auch im Alltag logisch und gut bedienbar ist.',
+  },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <PageHeader
         eyebrow="Mechanische Schließanlagen"
         title={page?.headline ?? 'Mechanische Schließanlagen'}
@@ -244,8 +276,92 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+      {/* Architektonische Methodik & Leistungsarchitektur */}
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Methodik"
+              title="Die architektonische Methodik moderner Schließanlagen"
+              lead="Eine Schließanlage ist mehr als die Summe ihrer Zylinder. Sie ist das physische Abbild Ihrer Organisationsstruktur."
+            />
+            <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-foreground-muted">
+              <p>
+                Wir betrachten Gebäude nicht als eine Ansammlung von Türen, sondern als Zonen unterschiedlicher
+                Sicherheitsbedürfnisse. Unsere architektonische Methodik basiert auf dem Zwiebelschalen-Prinzip:
+                Wir definieren Perimeter – von der Grundstücksgrenze über die Gebäudehülle (Außenhaut) bis
+                hin zu hochsensiblen inneren Bereichen wie Serverräumen oder Führungsetagen.
+              </p>
+              <p>
+                Für jede Schale definieren wir die exakt passende Leistungsarchitektur. Während die Außenhaut
+                höchsten Aufbohr-, Zieh- und Schlagschutz (VdS-Klasse B oder höher) sowie oft eine
+                elektronische Protokollierung verlangt, genügen für innere Bürostrukturen häufig Basis-Sicherheitsstufen.
+              </p>
+              <p>
+                Diese Ausdifferenzierung verhindert Überinvestitionen an den falschen Stellen und
+                garantiert gleichzeitig Kompromisslosigkeit dort, wo es wirklich darauf ankommt. Wir
+                übersetzen Ihre Abläufe, Hierarchien und Brandschutzvorgaben in eine matrixbasierte,
+                skalierbare Berechtigungsstruktur.
+              </p>
+            </div>
+          </div>
+          <div className="rounded-2xl border border-border bg-surface-muted p-8">
+            <h3 className="text-lg font-bold text-foreground mb-6">Leistungsstufen im Profil</h3>
+            <ul className="space-y-5">
+              <li className="flex gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary font-bold">1</div>
+                <div>
+                  <h4 className="font-bold text-[15px] text-foreground">Standard-Sicherheit (Innenraum)</h4>
+                  <p className="mt-1 text-[14px] text-foreground-muted">Basisschutz gegen Manipulation. Ideal für unkritische Innentüren und Büros ohne besondere Vertraulichkeit.</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary font-bold">2</div>
+                <div>
+                  <h4 className="font-bold text-[15px] text-foreground">Erhöhte Sicherheit (Außenhaut)</h4>
+                  <p className="mt-1 text-[14px] text-foreground-muted">Verstärkter Aufbohr- und Ziehschutz. Zwingend für Außentüren, Haupteingänge und Zugang zum Grundstück.</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[oklch(0.52_0.24_260)] text-white font-bold">3</div>
+                <div>
+                  <h4 className="font-bold text-[15px] text-foreground">Hochsicherheit & Protokollierung</h4>
+                  <p className="mt-1 text-[14px] text-foreground-muted">Mechatronische Komponenten, lückenlose Nachvollziehbarkeit und zeitliche Sperrfunktionen für kritische Infrastruktur.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      {/* ROI Calculator Sektion */}
+      <Section tone="muted">
+        <div className="mb-12 max-w-3xl">
+          <SectionHeading
+            eyebrow="Wirtschaftlichkeit"
+            title="Der ökonomische Wendepunkt: Mechanik vs. Elektronik"
+            lead="Ab wann rechnet sich der Wechsel auf ein elektronisches oder hybrides System für Ihr Unternehmen?"
+          />
+          <p className="mt-6 text-[15px] leading-relaxed text-foreground-muted">
+            Der reine Anschaffungspreis einer mechanischen Anlage täuscht oft über die wahren
+            Total Cost of Ownership (TCO) hinweg. Der größte Kostentreiber in Unternehmen ist die
+            Fluktuation: Wenn Mitarbeiter das Unternehmen verlassen und Schlüssel nicht zurückgeben
+            oder verlieren, muss bei herkömmlichen Anlagen oft die gesamte Schließgruppe ausgetauscht
+            werden, um die Sicherheit (und den Versicherungsschutz) wiederherzustellen.
+          </p>
+          <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+            Zudem bindet die physische Schlüsselübergabe, Rücknahme und Dokumentation wertvolle
+            Ressourcen in der Verwaltung oder im Facility Management. Elektronische Systeme
+            eliminieren diese Kostenpunkte nahezu vollständig. Unser Kalkulator macht diese
+            versteckten Kosten transparent.
+          </p>
+        </div>
+
+        <EnterpriseROICalculator />
+      </Section>
+
       {/* Die fünf Systeme */}
-      <Section id="systeme" tone="muted">
+      <Section id="systeme">
         <SectionHeading
           eyebrow="Systeme"
           title="Die fünf Systeme in einfacher Sprache"
@@ -399,6 +515,6 @@ export default async function SchliessanlagenPage() {
           ))}
         </ul>
       </Section>
-    </>
+    </main>
   );
 }
