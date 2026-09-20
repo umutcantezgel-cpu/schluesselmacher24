@@ -44,6 +44,8 @@ Backend unter `/admin` bearbeitet:
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
 
-## Architecture Matrix
+## Architecture Blueprint Matrix
+
+The current state of the application architecture, routing schema, and content expansion targets has been fully audited. See `.jules/architecture-matrix.md` and `.jules/revolution-plan.json` for deterministic transformation specifications.
 
 See `.jules/architecture-matrix.md` for the full routing architecture.

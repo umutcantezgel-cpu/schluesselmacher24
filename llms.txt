@@ -1,3 +1,5 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+
+The master blueprint for codebase evolution has been synthesized. The application architecture and codebase DNA have been profiled into .jules/codebase-dna.json and .jules/revolution-plan.json.
