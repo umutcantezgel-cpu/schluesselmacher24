@@ -1,109 +1,713 @@
-# 100 Radikale Innovationsideen (Swiss Light Mode Aesthetic)
+# 100-Ideas Matrix
 
-## Kategorie A: Awwwards-Kinetik & Taktile Interaktion (Ideen 1 bis 25)
-1. IDEA_001: Federgedämpfte Hover-States für alle Button-Komponenten (src/components/ui/button.tsx).
-2. IDEA_002: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex auf der Homepage (src/app/page.tsx).
-3. IDEA_003: Scroll-getriebene SVG-Animation für den "Schlüssel nach Code"-Prozess.
-4. IDEA_004: Mikro-haptisches Cursor-Tracking für die Area-Karten.
-5. IDEA_005: Parallax-Tiefenunschärfe für das Hero-Image auf der Startseite.
-6. IDEA_006: Magnetische Buttons für primäre CTAs (z.B. "Termin buchen").
-7. IDEA_007: Interaktives SVG-Schlüsselprofil (Hover zum Drehen) in der Schließanlagen-Übersicht.
-8. IDEA_008: Glatte Seitenübergänge (View Transitions API) zwischen allen Hauptseiten.
-9. IDEA_009: Morphing-Icons in der Schnelleinstieg-Sektion.
-10. IDEA_010: Skew-on-Scroll für Textblöcke auf der "Über Uns"-Seite.
-11. IDEA_011: Dynamische Schatten (oklch 0.988) basierend auf Cursor-Position.
-12. IDEA_012: Fade-In Sequence für Listenelemente in der Schließanlagen-Page.
-13. IDEA_013: 3D-Tilt-Effekt für die Feature-Karten.
-14. IDEA_014: Liquid-Distortion Hover auf Bildern.
-15. IDEA_015: Reveal-Animation für Akkordeon-Antworten (src/components/ui/accordion.tsx).
-16. IDEA_016: Text-Scramble Effekt bei initialem Laden der Headlines.
-17. IDEA_017: Sticky-Scrolling für lange Content-Seiten (Ratgeber).
-18. IDEA_018: Horizontal Scroll-Bereich für das Portfolio / Referenzen.
-19. IDEA_019: Kinetic Typography für die 404-Seite.
-20. IDEA_020: Ripple-Effekt auf allen klickbaren Cards.
-21. IDEA_021: Lade-Indikator als sich füllendes Schlüssel-Icon.
-22. IDEA_022: Progress-Bar angebunden an Scroll-Tiefe für Blog/Ratgeber.
-23. IDEA_023: Tooltips mit sanftem Spring-Fade-In.
-24. IDEA_024: Hover-Masking für das Hero-Image (Enthüllung von Details).
-25. IDEA_025: Interaktiver "Lichtschalter" (Light Mode Only, demonstriert Helligkeit ohne Dark Mode).
 
-## Kategorie B: Semantische Autorität & Content-Maximierung (Ideen 26 bis 50)
-26. IDEA_026: Erweiterung der Startseite um >800 Wörter Fachinhalt.
-27. IDEA_027: Tiefen-Glossar für Schließanlagen (src/app/schliessanlagen/page.tsx).
-28. IDEA_028: Detaillierte Fallstudien im Ratgeber-Bereich.
-29. IDEA_029: Ausbau der "Schlüssel nach Code" Seite mit technischen Details (800+ Wörter).
-30. IDEA_030: Historie der Schließtechnik-Evolution auf der Über-Uns-Seite.
-31. IDEA_031: Ausführliche Erklärung der DIN-Normen für Sicherheitszylinder.
-32. IDEA_032: Vergleich: Elektronische vs. Mechanische Schließsysteme.
-33. IDEA_033: Schritt-für-Schritt Wartungsanleitung für Zylinder.
-34. IDEA_034: Experten-Interview-Format im Ratgeber.
-35. IDEA_035: Erweiterung der FAQ auf allen Dienstleistungsseiten.
-36. IDEA_036: Technisches Datenblatt-Layout für spezifische Zylinder.
-37. IDEA_037: Erläuterung des Fräsprozesses (Maschinen, Präzision).
-38. IDEA_038: Rechtsgrundlagen für Schließanlagen (Mieter vs. Vermieter).
-39. IDEA_039: Notfall-Ratgeber: Was tun bei abgebrochenem Schlüssel?
-40. IDEA_040: Detaillierte Preis-Transparenz-Seite (Warum kostet Qualität X?).
-41. IDEA_041: Ausbau der "Gleichschließende Zylinder" Seite mit Anwendungsfällen.
-42. IDEA_042: Spatial Bento Grid in src/app/page.tsx (Fokus auf Inhalt-Dichte).
-43. IDEA_043: Strukturierte Daten (Schema.org) für alle Artikel ausbauen.
-44. IDEA_044: Glossar-Tooltips im laufenden Text.
-45. IDEA_045: Checkliste: Sicherheit für Gewerbeobjekte (als Content-Block).
-46. IDEA_046: Ratgeber: Tresor-Wahl und Verankerung.
-47. IDEA_047: Erklärung der VdS-Schutzklassen.
-48. IDEA_048: Ausführliche Anleitung zum Ausmessen von Zylindern.
-49. IDEA_049: Content-Block "Mythos vs. Wahrheit" bei Einbruchschutz.
-50. IDEA_050: Detaillierte Beschreibung der Anlieferung & Montage.
+## KATEGORIE A: AWWWARDS-KINETIK & TAKTILE INTERAKTION (IDEEN 1 BIS 25)
 
-## Kategorie C: Conversion-Psychologie & Native Werkzeuge (Ideen 51 bis 75)
-51. IDEA_051: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator (src/app/schliessanlagen/page.tsx).
-52. IDEA_052: Interaktiver Vorher-Nachher-Slider für verschlissene vs. neue Schlüssel.
-53. IDEA_053: Konfigurator: Welches Schließsystem passt zu mir? (Quiz-Format).
-54. IDEA_054: Dynamischer Budget-Schätzer für Gleichschließungen.
-55. IDEA_055: ROI-Rechner für elektronische vs. mechanische Anlagen.
-56. IDEA_056: Visueller Zylinder-Ausmesser (interaktives Lineal).
-57. IDEA_057: "Trust-Balken": Live-Zähler geretteter Autoschlüssel (simuliert/optimistisch).
-58. IDEA_058: Interaktive Karte der abgedeckten Gebiete.
-59. IDEA_059: Dynamische Filterung für den Ratgeber (nach Thema, Dauer).
-60. IDEA_060: Personalisierter Einstiegs-Funnel für Privat vs. Gewerbe.
-61. IDEA_061: Live-Termin-Vorschau im Hero-Bereich (nächster freier Slot).
-62. IDEA_062: "Warenkorb-Ersparnis" Visualisierung bei Mengenrabatt.
-63. IDEA_063: Interaktiver Sicherheits-Score-Check für Eigenheime.
-64. IDEA_064: 3D-Konfigurator für Schlüssel-Anhänger/Markierungen.
-65. IDEA_065: Social-Proof Ticker (kürzliche anonymisierte Aufträge).
-66. IDEA_066: Gamifizierte Fortschrittsanzeige in Formularen.
-67. IDEA_067: Interaktives Organigramm für GHS-Anlagen (Drag & Drop Planung).
-68. IDEA_068: Tool: Foto-Upload-Prüfer für Schlüssel-Kopien.
-69. IDEA_069: Interaktive FAQ mit Suchfunktion und Highlighting.
-70. IDEA_070: "Smart Quote" - dynamische Angebotserstellung in Echtzeit.
-71. IDEA_071: Konfigurator-Summary als PDF-Download (Server Action).
-72. IDEA_072: A/B-Testing Integration für Haupt-CTAs.
-73. IDEA_073: Micro-Interactions bei Formularvalidierung (Shake on error).
-74. IDEA_074: Exit-Intent Modal mit passendem Ratgeber-Artikel.
-75. IDEA_075: Countdown für "Heute bestellt - Morgen versandt" (nur bis 14 Uhr).
+### IDEA_001: Physikalische Federdämpfung für Interaktionen in button.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Physikalische Federdämpfung für Interaktionen' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.1
 
-## Kategorie D: Extreme Performance, Architektur & DX (Ideen 76 bis 100)
-76. IDEA_076: Next.js 16 "use cache" Memoisierung für alle API-Routen.
-77. IDEA_077: CSS Subgrid-Harmonisierung für Karten-Layouts.
-78. IDEA_078: Container Queries (@container) für Komponenten-Responsive.
-79. IDEA_079: AVIF-Hero-Pipelines für maximale Bildkompression.
-80. IDEA_080: Zero-Shift Webfont-Optimierung (font-display: optional/swap).
-81. IDEA_081: Aggressives Pre-Fetching für alle Navigations-Links im Viewport.
-82. IDEA_082: Edge-Caching für statische Content-Seiten.
-83. IDEA_083: Partytown-Integration für Third-Party-Scripts.
-84. IDEA_084: Bundle-Analyse und Code-Splitting für große Konfiguratoren.
-85. IDEA_085: Turbopack-Optimierungen in next.config.
-86. IDEA_086: Implementierung von React 19 `useOptimistic` in Formularen.
-87. IDEA_087: Serverseitiges Rendering für personalisierte Empfehlungen.
-88. IDEA_088: Striktes CSP (Content Security Policy) Setup.
-89. IDEA_089: Reduzierung der DOM-Tiefe in der Hauptnavigation.
-90. IDEA_090: Lazy-Loading für untere Sektionen (Intersection Observer).
-91. IDEA_091: Inline-CSS für kritische Above-the-Fold Inhalte.
-92. IDEA_092: Web Worker für komplexe Schließplan-Berechnungen.
-93. IDEA_093: Optimierung der JSON-LD Generierung (Streaming).
-94. IDEA_094: Umstellung auf native CSS Nesting statt Sass/Tailwind-Plugins (wo sinnvoll).
-95. IDEA_095: Implementierung von `serverActions` in allen Formularen.
-96. IDEA_096: Automatisierte a11y-Tests (axe-core) in CI/CD.
-97. IDEA_097: Optimierung der LCP (Largest Contentful Paint) auf <1.2s.
-98. IDEA_098: Reduzierung des JavaScript-Footprints durch RSCs.
-99. IDEA_099: Strict Type-Checking für alle API-Responses.
-100. IDEA_100: Refactoring der Tailwind-Klassen auf v4 Standards.
+### IDEA_002: Fluides Bento-Grid Layout in key-kinds.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Fluides Bento-Grid Layout' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.2
+
+### IDEA_003: Scroll-getriebene SVG-Animationen in security-check-calculator.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Scroll-getriebene SVG-Animationen' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.3
+
+### IDEA_004: Mikro-haptisches Feedback bei Hover in photo-upload.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Mikro-haptisches Feedback bei Hover' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.4
+
+### IDEA_005: View Transitions zwischen Routen in site-header.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'View Transitions zwischen Routen' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.5
+
+### IDEA_006: Dynamische Haarlinien-Lichtreflexe auf Kanten in site-footer.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Dynamische Haarlinien-Lichtreflexe auf Kanten' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.6
+
+### IDEA_007: Kinetische Typografie-Einsätze in accordion.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Kinetische Typografie-Einsätze' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.7
+
+### IDEA_008: Parallax-Effekte mit weicher Dämpfung in card.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Parallax-Effekte mit weicher Dämpfung' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.8
+
+### IDEA_009: Maus-Tracking für Glaseffekte (Glassmorphism) in button.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Maus-Tracking für Glaseffekte (Glassmorphism)' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.9
+
+### IDEA_010: Kaskadierende Einblend-Animationen (Staggering) in key-kinds.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Kaskadierende Einblend-Animationen (Staggering)' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.0
+
+### IDEA_011: Magnetische Buttons in security-check-calculator.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Magnetische Buttons' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.1
+
+### IDEA_012: Geleitete Fokus-Ringe in photo-upload.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Geleitete Fokus-Ringe' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.2
+
+### IDEA_013: Räumliche Tiefe durch seidenweiche Schatten in site-header.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'Räumliche Tiefe durch seidenweiche Schatten' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.3
+
+### IDEA_014: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/service/service-budget-calculator.tsx
+- **Specification:** Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.
+- **Score:** 9.65
+
+### IDEA_015: Sanfte Skalierung bei Drag-and-Drop in accordion.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Sanfte Skalierung bei Drag-and-Drop' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.5
+
+### IDEA_016: Morphing-Icons in card.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Morphing-Icons' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.6
+
+### IDEA_017: Schwerelose 3D-Karten-Rotation in button.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Schwerelose 3D-Karten-Rotation' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.7
+
+### IDEA_018: Flüssige Formular-Übergänge in key-kinds.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Flüssige Formular-Übergänge' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.8
+
+### IDEA_019: Nahtlose Farb-Interpolationen in security-check-calculator.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Nahtlose Farb-Interpolationen' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.9
+
+### IDEA_020: Geführte Swipe-Gesten auf Mobile in photo-upload.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Geführte Swipe-Gesten auf Mobile' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.0
+
+### IDEA_021: Verzögerte Enthüllung von Sektionen in site-header.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'Verzögerte Enthüllung von Sektionen' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.1
+
+### IDEA_022: Fließende Kontur-Nachzeichnungen in site-footer.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Fließende Kontur-Nachzeichnungen' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.2
+
+### IDEA_023: Federnde Menü-Aufklapper in accordion.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Federnde Menü-Aufklapper' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.3
+
+### IDEA_024: Dynamische Schatten-Winkel nach Mausposition in card.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Dynamische Schatten-Winkel nach Mausposition' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.4
+
+### IDEA_025: Zufällige sanfte Partikel-Effekte für Premium-Gefühl in button.tsx
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Zufällige sanfte Partikel-Effekte für Premium-Gefühl' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.5
+
+
+## KATEGORIE B: SEMANTISCHE AUTORITÄT & CONTENT-MAXIMIERUNG (IDEEN 26 BIS 50)
+
+### IDEA_026: Ausbau des Textes auf > 800 Wörter zur SEO-Maximierung in key-kinds.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Ausbau des Textes auf > 800 Wörter zur SEO-Maximierung' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.6
+
+### IDEA_027: Einführung einer strukturierten Vergleichsmatrix in security-check-calculator.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Einführung einer strukturierten Vergleichsmatrix' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.7
+
+### IDEA_028: Detaillierte technische Prozessschritte in photo-upload.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Detaillierte technische Prozessschritte' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.8
+
+### IDEA_029: Tiefgehende Fach-FAQ-Architekturen in site-header.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'Tiefgehende Fach-FAQ-Architekturen' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.9
+
+### IDEA_030: Integration von Experten-Interviews oder Zitaten in site-footer.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Integration von Experten-Interviews oder Zitaten' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.0
+
+### IDEA_031: Semantische Schema.org-Daten für Rich Snippets in accordion.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Semantische Schema.org-Daten für Rich Snippets' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.1
+
+### IDEA_032: Glossar-Abschnitte für Fachbegriffe in card.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Glossar-Abschnitte für Fachbegriffe' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.2
+
+### IDEA_033: Fallstudien mit Vorher/Nachher-Berichten in button.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Fallstudien mit Vorher/Nachher-Berichten' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.3
+
+### IDEA_034: Historischer Kontext zur Technologie in key-kinds.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Historischer Kontext zur Technologie' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.4
+
+### IDEA_035: Compliance- und Normen-Zertifikats-Auflistung in security-check-calculator.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Compliance- und Normen-Zertifikats-Auflistung' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.5
+
+### IDEA_036: Lokalisierte Landing-Page Inhalte für Städte in photo-upload.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Lokalisierte Landing-Page Inhalte für Städte' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.6
+
+### IDEA_037: Schritt-für-Schritt Anleitungen mit Bildern in site-header.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'Schritt-für-Schritt Anleitungen mit Bildern' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.7
+
+### IDEA_038: Interaktive Diagramme zur Funktionsweise in site-footer.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Interaktive Diagramme zur Funktionsweise' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.8
+
+### IDEA_039: Klar strukturierte Inhaltsverzeichnisse (Table of Contents) in accordion.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Klar strukturierte Inhaltsverzeichnisse (Table of Contents)' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.9
+
+### IDEA_040: Hintergrundwissen zur Materialkunde in card.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Hintergrundwissen zur Materialkunde' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.0
+
+### IDEA_041: Sicherheits-Level Erklärungen in button.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Sicherheits-Level Erklärungen' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.1
+
+### IDEA_042: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex
+- **Category:** AWWWARDS_KINETICS
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.
+- **Score:** 9.45
+
+### IDEA_043: Versicherungs-Relevanz und Richtlinien in security-check-calculator.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Versicherungs-Relevanz und Richtlinien' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.3
+
+### IDEA_044: Marktspezifische Trends und Statistiken in photo-upload.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Marktspezifische Trends und Statistiken' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.4
+
+### IDEA_045: Mythen-Aufklärung im Bereich Sicherheit in site-header.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'Mythen-Aufklärung im Bereich Sicherheit' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.5
+
+### IDEA_046: Kaufberater-Fragebogen-Prosa in site-footer.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Kaufberater-Fragebogen-Prosa' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.6
+
+### IDEA_047: Zusammenfassung von Kunden-Erfolgsstories in accordion.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Zusammenfassung von Kunden-Erfolgsstories' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.7
+
+### IDEA_048: Detaillierte Einblicke in die Fertigungsprozesse in card.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Detaillierte Einblicke in die Fertigungsprozesse' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.8
+
+### IDEA_049: Umwelt- und Nachhaltigkeitsaspekte der Produkte in button.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Umwelt- und Nachhaltigkeitsaspekte der Produkte' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.9
+
+### IDEA_050: Experten-Ratgeber für Notfälle in key-kinds.tsx
+- **Category:** SEMANTISCHE_AUTORITAET
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Experten-Ratgeber für Notfälle' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.0
+
+
+## KATEGORIE C: CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE (IDEEN 51 BIS 75)
+
+### IDEA_051: Interaktiver Budgetrechner in security-check-calculator.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Interaktiver Budgetrechner' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.1
+
+### IDEA_052: ROI-Konfigurator in photo-upload.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'ROI-Konfigurator' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.2
+
+### IDEA_053: Dynamisches Filter-System in site-header.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'Dynamisches Filter-System' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.3
+
+### IDEA_054: Interaktive Vorher-Nachher-Slider in site-footer.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Interaktive Vorher-Nachher-Slider' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.4
+
+### IDEA_055: Echtzeit-Vertrauensbeweise (Live-Statistiken) in accordion.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Echtzeit-Vertrauensbeweise (Live-Statistiken)' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.5
+
+### IDEA_056: Gamifizierte Umfragen zur Bedarfsermittlung in card.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Gamifizierte Umfragen zur Bedarfsermittlung' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.6
+
+### IDEA_057: Schritt-für-Schritt Formular mit Fortschrittsbalken in button.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Schritt-für-Schritt Formular mit Fortschrittsbalken' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.7
+
+### IDEA_058: Dringlichkeits-Indikatoren (Knappheit) in key-kinds.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Dringlichkeits-Indikatoren (Knappheit)' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.8
+
+### IDEA_059: Versteckte Rabatt-Codes im UI-Flow in security-check-calculator.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Versteckte Rabatt-Codes im UI-Flow' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.9
+
+### IDEA_060: Visuelle Konfiguratoren für Schlüssel in photo-upload.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Visuelle Konfiguratoren für Schlüssel' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.0
+
+### IDEA_061: Personalisierte Angebots-Zusammenstellung in site-header.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'Personalisierte Angebots-Zusammenstellung' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.1
+
+### IDEA_062: Social-Proof durch verifizierte Bewertungen in site-footer.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Social-Proof durch verifizierte Bewertungen' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.2
+
+### IDEA_063: Einfache Termin-Buchung mit Kalender-Integration in accordion.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Einfache Termin-Buchung mit Kalender-Integration' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.3
+
+### IDEA_064: Live-Chat oder Bot-Integration in card.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Live-Chat oder Bot-Integration' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.4
+
+### IDEA_065: One-Click Anfragen-Möglichkeit in button.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'One-Click Anfragen-Möglichkeit' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.5
+
+### IDEA_066: Intelligente Upselling-Empfehlungen in key-kinds.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Intelligente Upselling-Empfehlungen' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.6
+
+### IDEA_067: Erweiterter Garantie-Auswahl-Slider in security-check-calculator.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Erweiterter Garantie-Auswahl-Slider' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.7
+
+### IDEA_068: A/B-Testing für verschiedene Call-to-Actions in photo-upload.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'A/B-Testing für verschiedene Call-to-Actions' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.8
+
+### IDEA_069: Interaktives ROI-Dashboard in site-header.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'Interaktives ROI-Dashboard' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.9
+
+### IDEA_070: Video-Testimonials statt reinem Text in site-footer.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Video-Testimonials statt reinem Text' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.0
+
+### IDEA_071: Nahtloser Checkout-Prozess in accordion.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Nahtloser Checkout-Prozess' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.1
+
+### IDEA_072: Vergleichs-Tabellen mit klarem Gewinner in card.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Vergleichs-Tabellen mit klarem Gewinner' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.2
+
+### IDEA_073: Persönliche Begrüßung nach Standort-Erkennung in button.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Persönliche Begrüßung nach Standort-Erkennung' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.3
+
+### IDEA_074: Prämien-Programm-Visualisierung in key-kinds.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Prämien-Programm-Visualisierung' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.4
+
+### IDEA_075: Dynamische Preis-Anzeigen basierend auf Auswahl in security-check-calculator.tsx
+- **Category:** CONVERSION_AND_TOOLS
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Dynamische Preis-Anzeigen basierend auf Auswahl' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.5
+
+
+## KATEGORIE D: EXTREME PERFORMANCE, ARCHITEKTUR & DX (IDEEN 76 BIS 100)
+
+### IDEA_076: Next.js 16 'use cache' Memoisierung in photo-upload.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Next.js 16 'use cache' Memoisierung' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.6
+
+### IDEA_077: CSS Subgrid-Harmonisierung für perfekte Alignments in site-header.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'CSS Subgrid-Harmonisierung für perfekte Alignments' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.7
+
+### IDEA_078: Container Queries (@container) für Modulare UI in site-footer.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Container Queries (@container) für Modulare UI' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.8
+
+### IDEA_079: AVIF-Hero-Pipelines für blitzschnelles Laden in accordion.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'AVIF-Hero-Pipelines für blitzschnelles Laden' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.9
+
+### IDEA_080: Zero-Shift Webfont-Optimierung in card.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Zero-Shift Webfont-Optimierung' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.0
+
+### IDEA_081: Edge-Rendering für globale Zugriffe in button.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Edge-Rendering für globale Zugriffe' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.1
+
+### IDEA_082: Optimistische UI-Updates mit React 19 useOptimistic in key-kinds.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Optimistische UI-Updates mit React 19 useOptimistic' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.2
+
+### IDEA_083: Server Actions anstelle von klassischen API-Routen in security-check-calculator.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Server Actions anstelle von klassischen API-Routen' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.3
+
+### IDEA_084: Lazy Loading für untere Sektionen in photo-upload.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Lazy Loading für untere Sektionen' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.4
+
+### IDEA_085: Strenge Typisierung aller State-Objekte in site-header.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'Strenge Typisierung aller State-Objekte' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.5
+
+### IDEA_086: Reduzierung von JavaScript-Bundle-Größen in site-footer.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Reduzierung von JavaScript-Bundle-Größen' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.6
+
+### IDEA_087: Prefetching von wahrscheinlich geklickten Links in accordion.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Prefetching von wahrscheinlich geklickten Links' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.7
+
+### IDEA_088: Bild-Komprimierung und Resizing on-the-fly in card.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Bild-Komprimierung und Resizing on-the-fly' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.8
+
+### IDEA_089: Reduzierung von Drittanbieter-Scripts in button.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Reduzierung von Drittanbieter-Scripts' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.9
+
+### IDEA_090: Verwendung von nativen CSS-Variablen für Theming in key-kinds.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Verwendung von nativen CSS-Variablen für Theming' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.0
+
+### IDEA_091: Tree-Shaking von ungenutzten Modulen in security-check-calculator.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Tree-Shaking von ungenutzten Modulen' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.1
+
+### IDEA_092: Strikte Einhaltung der WCAG AAA-Kontraste in photo-upload.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Strikte Einhaltung der WCAG AAA-Kontraste' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.2
+
+### IDEA_093: Verzicht auf schwerfällige UI-Bibliotheken in site-header.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/schluessel-nach-code/page.tsx
+- **Target Component:** src/components/layout/site-header.tsx
+- **Specification:** Implementation der Technik 'Verzicht auf schwerfällige UI-Bibliotheken' auf der Route src/app/schluessel-nach-code/page.tsx mit Fokus auf die Komponente src/components/layout/site-header.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.3
+
+### IDEA_094: Vorrendern von statischen Inhalten (SSG) in site-footer.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/standorte/page.tsx
+- **Target Component:** src/components/layout/site-footer.tsx
+- **Specification:** Implementation der Technik 'Vorrendern von statischen Inhalten (SSG)' auf der Route src/app/standorte/page.tsx mit Fokus auf die Komponente src/components/layout/site-footer.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.4
+
+### IDEA_095: Streaming von Server-Komponenten für schnelleres TTFB in accordion.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/elektronische-zutrittsloesungen/page.tsx
+- **Target Component:** src/components/ui/accordion.tsx
+- **Specification:** Implementation der Technik 'Streaming von Server-Komponenten für schnelleres TTFB' auf der Route src/app/elektronische-zutrittsloesungen/page.tsx mit Fokus auf die Komponente src/components/ui/accordion.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.5
+
+### IDEA_096: Caching von Datenbank-Abfragen in card.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/page.tsx
+- **Target Component:** src/components/ui/card.tsx
+- **Specification:** Implementation der Technik 'Caching von Datenbank-Abfragen' auf der Route src/app/page.tsx mit Fokus auf die Komponente src/components/ui/card.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.6
+
+### IDEA_097: Minimierung von Layout-Shifts (CLS) auf null in button.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/autoschluessel/page.tsx
+- **Target Component:** src/components/ui/button.tsx
+- **Specification:** Implementation der Technik 'Minimierung von Layout-Shifts (CLS) auf null' auf der Route src/app/autoschluessel/page.tsx mit Fokus auf die Komponente src/components/ui/button.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.7
+
+### IDEA_098: Optimierung der LCP (Largest Contentful Paint) Bilder in key-kinds.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/schliessanlagen/page.tsx
+- **Target Component:** src/components/autoschluessel/key-kinds.tsx
+- **Specification:** Implementation der Technik 'Optimierung der LCP (Largest Contentful Paint) Bilder' auf der Route src/app/schliessanlagen/page.tsx mit Fokus auf die Komponente src/components/autoschluessel/key-kinds.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.8
+
+### IDEA_099: Verwendung von Turbopack für lokale Entwicklung in security-check-calculator.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/service-und-termin/page.tsx
+- **Target Component:** src/components/calculator/security-check-calculator.tsx
+- **Specification:** Implementation der Technik 'Verwendung von Turbopack für lokale Entwicklung' auf der Route src/app/service-und-termin/page.tsx mit Fokus auf die Komponente src/components/calculator/security-check-calculator.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 8.9
+
+### IDEA_100: Automatisierte visuelle Regression-Tests in photo-upload.tsx
+- **Category:** EXTREME_PERFORMANCE
+- **Target Route:** src/app/sicherheitstechnik/page.tsx
+- **Target Component:** src/components/forms/photo-upload.tsx
+- **Specification:** Implementation der Technik 'Automatisierte visuelle Regression-Tests' auf der Route src/app/sicherheitstechnik/page.tsx mit Fokus auf die Komponente src/components/forms/photo-upload.tsx. Einhaltung der Swiss Light Mode Doctrine und AAA-Kontraste.
+- **Score:** 7.0
