@@ -1,0 +1,14 @@
+
+> schluesselmacher24@0.1.0 dev
+> next dev
+
+▲ Next.js 16.3.5 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 544ms
+✓ Running next.config.ts took 46ms
+
+○ Compiling /admin/einstellungen ...
+ GET /admin/einstellungen 200 in 5.7s (next.js: 5.0s, application-code: 638ms)
+[browser] eval() is not supported in this environment. If this page was served with a `Content-Security-Policy` header, make sure that `unsafe-eval` is included. React requires eval() in development mode for various debugging features like reconstructing callstacks from a different environment.
+React will never use eval() in production mode
