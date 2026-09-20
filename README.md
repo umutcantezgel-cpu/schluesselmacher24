@@ -47,3 +47,7 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+## Architecture Blueprint
+
+This repository is currently being transformed. See `.jules/architecture-matrix.md` for a full mapping of existing routes, content deficits, and planned interactive modules. The master execution plan is defined in `.jules/revolution-plan.json`.

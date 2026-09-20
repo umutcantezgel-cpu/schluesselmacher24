@@ -1,3 +1,25 @@
-Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
+# AI ASSISTANT INSTRUCTIONS
 
-Follow .jules/revolution-plan.json for transformation.
+This codebase follows strict architectural and design patterns.
+
+## Technical Stack
+- Next.js 16+ (App Router)
+- React 19.2+
+- TypeScript 5.5+ (Strict mode, NO `any`)
+- Tailwind CSS v4
+
+## Design System (Swiss Light)
+- ONLY Light mode allowed. `dark:` classes are STRICTLY PROHIBITED.
+- Color space: OKLCH.
+- No "emergency" styling (no yellow/black combinations as brand surfaces).
+- Semantic spacing: 8px spatial rhythm.
+- Typography: CSS clamp() fluid typography.
+
+## Code Invariants
+1. ZERO-NEW-ROUTES: Do not create new top-level routes or `[slug]` placeholders. Use what exists.
+2. Form handling: Use React 19 Server Actions, `useActionState`, `useOptimistic`, and `useTransition`. No legacy `onSubmit` fetch.
+3. Component paradigms: Default to Server Components. Access `params` and `searchParams` with `await`.
+4. Types: NEVER use `any`. Use schema-dts for JSON-LD.
+5. Caching: Use `use cache`, `cacheTag()`, `cacheLife()` over legacy revalidation rules.
+
+See `.jules/architecture-matrix.md` for current content and interaction upgrade plans.
