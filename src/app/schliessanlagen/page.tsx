@@ -14,6 +14,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
+
 
 const ROUTE = 'schliessanlagen';
 
@@ -241,6 +243,38 @@ export default async function SchliessanlagenPage() {
               note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
             }}
           />
+        </div>
+      </Section>
+
+
+      {/* Methodik und Architektur */}
+      <Section id="architektur" tone="muted">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
+          <div>
+            <SectionHeading eyebrow="Methodik" title="Architektonische Planung" />
+            <div className="mt-8 space-y-6 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              <p>
+                Die Planung einer modernen Schließanlage geht weit über das bloße Zählen von Zylindern hinaus. Es handelt sich um eine komplexe architektonische Aufgabe, die tiefes Verständnis für Organisationsstrukturen, Personenströme und Sicherheitsanforderungen erfordert. Jeder Schließplan ist ein Unikat, maßgeschneidert auf die spezifische Nutzung eines Gebäudes und zukunftssicher konzipiert.
+              </p>
+              <p>
+                <strong>Strukturelle Ebenen und Hierarchien</strong><br/>
+                Im Kern einer professionell geplanten Anlage steht die Definition von Berechtigungsebenen. Die höchste Ebene (Generalhauptschlüssel) gewährt uneingeschränkten Zugang zu allen Bereichen. Darunter gliedern sich Hauptgruppen, Gruppen und Einzelschließungen. Die Herausforderung besteht darin, diese Hierarchie so abzubilden, dass sie flexibel auf personelle und räumliche Veränderungen reagieren kann, ohne die physische Integrität des Systems zu gefährden. Wir nutzen mathematische Modelle, um Matrixstrukturen zu entwickeln, die genau diese Flexibilität garantieren.
+              </p>
+              <p>
+                <strong>Technologische Methodik</strong><br/>
+                Wir kombinieren traditionelle Handwerkskunst mit modernster Planungstechnologie. Unsere Software-Tools ermöglichen es uns, Schließpläne dynamisch zu modellieren, Konflikte im Vorfeld zu erkennen und die Skalierbarkeit der Anlage sicherzustellen. Jede Schließstelle wird semantisch erfasst, kategorisiert und in ein Gesamtkonzept integriert, das sowohl mechanische Präzision als auch organisatorische Klarheit bietet.
+              </p>
+              <p>
+                <strong>Zukunftssicherheit und Skalierbarkeit</strong><br/>
+                Ein zentrales Kriterium bei der Auslegung ist die Vorhaltung von Reservekapazitäten (sogenannte &quot;Leerschließungen&quot;). Diese ermöglichen die nachträgliche Integration neuer Zylinder oder die Änderung von Berechtigungen, ohne die bestehende Systemarchitektur zu durchbrechen. Eine präzise dimensionierte Anlage wächst mit dem Gebäude und seinen Anforderungen mit, wodurch langfristig erhebliche Kosten gespart werden. Dies ist der Kern unserer architektonischen Planung.
+              </p>
+            </div>
+          </div>
+          <div>
+            <div className="sticky top-24">
+              <EnterpriseRoiCalculator />
+            </div>
+          </div>
         </div>
       </Section>
 
