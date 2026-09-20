@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,7 +166,16 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ [key: string]: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  // Handle Next.js 16 requirements for params
+  await params;
+  await searchParams;
+
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -213,6 +223,21 @@ export default async function SchliessanlagenPage() {
               </p>
               <p className="mt-1.5 text-[14px] leading-relaxed text-foreground-muted">
                 {process.hint}
+              </p>
+            </div>
+
+            <div className="mt-6">
+              <h3 className="text-xl font-bold text-foreground">Architektonische Methodik und Planungssicherheit</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+                Die Konzeption einer Schließanlage erfordert mehr als das bloße Zählen von Türen.
+                Es geht um eine nachhaltige architektonische Methodik, die langfristige Sicherheit und
+                Flexibilität gewährleistet. Bei der Planung berücksichtigen wir nicht nur den aktuellen Status Quo,
+                sondern auch zukünftige Entwicklungen Ihres Unternehmens oder Ihrer Liegenschaft.
+                Systemlebensdauer, Wartungsaufwände und Skalierbarkeit sind entscheidende Faktoren für einen
+                sicheren ROI (Return on Investment). Ein durchdachter Schließplan verhindert spätere,
+                kostenintensive Systemwechsel und bietet Ihnen die Gewissheit, dass Ihre Investition geschützt ist.
+                Zudem spielen Aspekte wie Patentschutz und Sicherungskarten eine zentrale Rolle,
+                um unberechtigte Schlüsselkopien konsequent zu unterbinden.
               </p>
             </div>
 
@@ -332,6 +357,36 @@ export default async function SchliessanlagenPage() {
             oder eine Aushilfe das Büro der Leitung — reicht eine Gleichschließung nicht mehr aus.
             Dann planen wir eine Anlage mit Ebenen.
           </Alert>
+        </div>
+      </Section>
+
+      {/* ROI Kalkulator */}
+      <Section tone="muted">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Wirtschaftlichkeit"
+              title="Enterprise ROI Analyse"
+              lead="Kalkulieren Sie die voraussichtlichen Gesamtkosten und Wartungsersparnisse Ihrer mechanischen Schließanlage in Echtzeit."
+            />
+            <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              <p>
+                Die Investition in eine professionelle mechanische Schließanlage macht sich durch
+                geringere Wartungsaufwände und optimierte Verwaltungsprozesse schnell bezahlt.
+                Mit unserem interaktiven ROI-Kalkulator können Sie eine erste Abschätzung der
+                Kosten für Implementierung und den langfristigen Nutzen vornehmen.
+              </p>
+              <p>
+                Bitte beachten Sie: Die hier berechneten Werte dienen als grobe Orientierung.
+                Eine detaillierte und verbindliche Kostenaufstellung erstellen wir gerne im Rahmen
+                einer persönlichen Projektierung, sobald wir Ihren individuellen Schließplan und die
+                spezifischen Sicherheitsanforderungen analysiert haben.
+              </p>
+            </div>
+          </div>
+          <div>
+            <EnterpriseROICalculator />
+          </div>
         </div>
       </Section>
 
