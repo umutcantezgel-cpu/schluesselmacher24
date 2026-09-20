@@ -47,3 +47,14 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+
+## Architecture Blueprint
+
+This project follows a strict Next.js 16+ App Router, React 19.2+, and TypeScript 5.5+ architecture.
+The complete route transformation plan and existing architecture matrix are documented in the `.jules/` directory.
+
+- **Master Plan:** `.jules/revolution-plan.json`
+- **Architecture Matrix:** `.jules/architecture-matrix.md`
+
+Please adhere to the strict ZERO-NEW-ROUTES invariant and utilize the OKLCH Light Mode Design System.

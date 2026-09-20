@@ -1,3 +1,6 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
-Follow .jules/revolution-plan.json for transformation.
+1. Follow `.jules/revolution-plan.json` for exact route transformations.
+2. Adhere to the ZERO-NEW-ROUTES invariant.
+3. Utilize Next.js 16+ Server Components, React 19 Actions, and strict TypeScript 5.5+.
+4. Apply the Swiss Light Mode Doctrine (OKLCH color space).
