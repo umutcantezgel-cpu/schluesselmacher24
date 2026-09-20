@@ -1,12 +1,9 @@
-import { z } from 'zod';
+"use server";
 
-export const securityCheckSchema = z.object({
-  doorType: z.enum(['WOHNUNG', 'HAUSTUER', 'GEWERBE']),
-  lockType: z.enum(['EINFACH', 'MEHRFACH', 'ELEKTRONISCH']),
-  urgency: z.enum(['STANDARD', 'HOCH']),
-});
+import { securityCheckSchema } from "../schemas/security-check";
 
-export type SecurityCheckInput = z.infer<typeof securityCheckSchema>;
+
+
 
 export interface SecurityCheckResult {
   totalEstimate: number;

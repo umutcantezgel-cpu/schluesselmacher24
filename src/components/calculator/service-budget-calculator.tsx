@@ -1,7 +1,7 @@
 'use client';
 
 import { useActionState, useOptimistic, startTransition } from 'react';
-import { calculateServiceBudget } from '@/actions/calculate-budget';
+import { calculateServiceBudget } from '@/lib/actions/calculate-budget';
 import type { BudgetCalculationResult } from '@/types/budget';
 
 const initialState: BudgetCalculationResult = {
