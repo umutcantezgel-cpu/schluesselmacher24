@@ -16,7 +16,7 @@ npm run typecheck
 ## Technischer Aufbau
 
 - **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript** (strict)
-- **Tailwind CSS 3** mit semantischen CSS-Variablen (`src/app/globals.css`)
+- **Tailwind CSS v4** mit semantischen CSS-Variablen (`src/app/globals.css`) und OKLCH Color Space (Swiss Light Mode)
 - **Formulare**: react-hook-form + zod
 - **Zwischenspeicherung** langer Konfiguratoren: `src/lib/flow/`
 - **Datenschicht**: `src/lib/data/` — austauschbarer Adapter,
@@ -44,6 +44,7 @@ Backend unter `/admin` bearbeitet:
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
 
-## Architecture Matrix
+## Architecture Matrix & Blueprint
 
-See `.jules/architecture-matrix.md` for the full routing architecture.
+See `.jules/architecture-matrix.md` for the full routing architecture and `.jules/revolution-plan.json` for the transformation strategy.
+Targeting Next.js 16+, React 19.2+, and TS 5.5+ adherence.
