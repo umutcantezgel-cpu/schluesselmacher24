@@ -1,59 +1,59 @@
 # Architecture Matrix
 
-| URL | Source File | Current Words | Target Words | Status |
-|---|---|---|---|---|
-| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | 231 | 950 | PENDING_BUILDER |
-| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /admin/inhalte | src/app/admin/inhalte/page.tsx | 213 | 950 | PENDING_BUILDER |
-| /admin | src/app/admin/page.tsx | 1172 | 1172 | PENDING_BUILDER |
-| /admin/preise | src/app/admin/preise/page.tsx | 216 | 950 | PENDING_BUILDER |
-| /admin/produkte | src/app/admin/produkte/page.tsx | 228 | 950 | PENDING_BUILDER |
-| /admin/termine | src/app/admin/termine/page.tsx | 453 | 950 | PENDING_BUILDER |
-| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | 1593 | 1593 | PENDING_BUILDER |
-| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | 322 | 950 | PENDING_BUILDER |
-| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | 519 | 950 | PENDING_BUILDER |
-| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | 1122 | 1122 | PENDING_BUILDER |
-| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | 1092 | 1092 | PENDING_BUILDER |
-| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | 1134 | 1134 | PENDING_BUILDER |
-| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | 1224 | 1224 | PENDING_BUILDER |
-| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | 980 | 980 | PENDING_BUILDER |
-| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | 719 | 950 | PENDING_BUILDER |
-| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | 1190 | 1190 | PENDING_BUILDER |
-| /autoschluessel | src/app/autoschluessel/page.tsx | 1971 | 1971 | PENDING_BUILDER |
-| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | 1223 | 1223 | PENDING_BUILDER |
-| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | 1043 | 1043 | PENDING_BUILDER |
-| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | 1208 | 1208 | PENDING_BUILDER |
-| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | 994 | 994 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 383 | 950 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | 2451 | 2451 | PENDING_BUILDER |
-| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | 311 | 950 | PENDING_BUILDER |
-| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | 2052 | 2052 | PENDING_BUILDER |
-| /kasse | src/app/kasse/page.tsx | 240 | 950 | PENDING_BUILDER |
-| / | src/app/page.tsx | 1140 | 1140 | PENDING_BUILDER |
-| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | 353 | 950 | PENDING_BUILDER |
-| /ratgeber | src/app/ratgeber/page.tsx | 225 | 950 | PENDING_BUILDER |
-| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | 417 | 950 | PENDING_BUILDER |
-| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | 229 | 950 | PENDING_BUILDER |
-| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | 716 | 950 | PENDING_BUILDER |
-| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | 428 | 950 | PENDING_BUILDER |
-| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | 371 | 950 | PENDING_BUILDER |
-| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | 369 | 950 | PENDING_BUILDER |
-| /schliessanlagen | src/app/schliessanlagen/page.tsx | 1603 | 1603 | PENDING_BUILDER |
-| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | 710 | 950 | PENDING_BUILDER |
-| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | 468 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | 222 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | 1762 | 1762 | PENDING_BUILDER |
-| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | 152 | 950 | PENDING_BUILDER |
-| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | 475 | 950 | PENDING_BUILDER |
-| /service-und-termin | src/app/service-und-termin/page.tsx | 462 | 950 | PENDING_BUILDER |
-| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | 108 | 950 | PENDING_BUILDER |
-| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | 656 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | 645 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | 995 | 995 | PENDING_BUILDER |
-| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | 330 | 950 | PENDING_BUILDER |
-| /standorte/[city] | src/app/standorte/[city]/page.tsx | 399 | 950 | PENDING_BUILDER |
-| /standorte | src/app/standorte/page.tsx | 250 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | 494 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | 746 | 950 | PENDING_BUILDER |
-| /warenkorb | src/app/warenkorb/page.tsx | 259 | 950 | PENDING_BUILDER |
+| Route | Status | Current Words | Schema Status | CWV Status | Interactive Module | Awwwards Interaction |
+|-------|--------|---------------|---------------|------------|--------------------|----------------------|
+| /admin/einstellungen | PENDING | 230 | Missing | Needs Check | AdminAuditWidget | BENTO_HOVER_GLOW_LIGHT |
+| /admin/fahrzeugdaten | PENDING | 248 | Missing | Needs Check | AdminAuditWidget | BENTO_HOVER_GLOW_LIGHT |
+| /admin/inhalte | PENDING | 212 | Missing | Needs Check | AdminAuditWidget | BENTO_HOVER_GLOW_LIGHT |
+| /admin | PENDING | 1171 | Missing | Needs Check | AdminAuditWidget | BENTO_HOVER_GLOW_LIGHT |
+| /admin/preise | PENDING | 215 | Missing | Needs Check | AdminAuditWidget | BENTO_HOVER_GLOW_LIGHT |
+| /admin/produkte | PENDING | 227 | Missing | Needs Check | AdminAuditWidget | BENTO_HOVER_GLOW_LIGHT |
+| /admin/termine | PENDING | 452 | Missing | Needs Check | AdminAuditWidget | BENTO_HOVER_GLOW_LIGHT |
+| /admin/vorgaenge/[id] | PENDING | 1592 | Missing | Needs Check | AdminAuditWidget | BENTO_HOVER_GLOW_LIGHT |
+| /admin/vorgaenge | PENDING | 321 | Missing | Needs Check | AdminAuditWidget | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/anfrage | PENDING | 518 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/fahrzeugoeffnung | PENDING | 1121 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/funkschluessel | PENDING | 1091 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/kopieren | PENDING | 1133 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make]/[model] | PENDING | 1223 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make] | PENDING | 979 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken | PENDING | 718 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/nachmachen | PENDING | 1189 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel | PENDING | 1970 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/programmieren | PENDING | 1222 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/schluesselbart-fraesen | PENDING | 1042 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/smart-key | PENDING | 1207 | Missing | Needs Check | VehicleCompatibilityFilter | BENTO_HOVER_GLOW_LIGHT |
+| /bestellung/[id] | PENDING | 993 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING | 382 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen | PENDING | 2450 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder/konfigurator | PENDING | 310 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder | PENDING | 2051 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /kasse | PENDING | 239 | Missing | Needs Check | CheckoutTrustIndicator | BENTO_HOVER_GLOW_LIGHT |
+| / | PENDING | 1148 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber/[slug] | PENDING | 355 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber | PENDING | 224 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/agb | PENDING | 416 | Missing | Needs Check | LegalComplianceViewer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/cookie-einstellungen | PENDING | 228 | Missing | Needs Check | LegalComplianceViewer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/datenschutz | PENDING | 715 | Missing | Needs Check | LegalComplianceViewer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/impressum | PENDING | 248 | Missing | Needs Check | LegalComplianceViewer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/versand-und-zahlung | PENDING | 427 | Missing | Needs Check | LegalComplianceViewer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/widerruf | PENDING | 370 | Missing | Needs Check | LegalComplianceViewer | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen/konfigurator | PENDING | 368 | Missing | Needs Check | SystemSizingCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen | PENDING | 1602 | Missing | Needs Check | SystemSizingCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code/[slug] | PENDING | 730 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code | PENDING | 467 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage/anfrage | PENDING | 221 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage | PENDING | 1761 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/anfrage | PENDING | 151 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/kontakt | PENDING | 474 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin | PENDING | 1539 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/terminstatus | PENDING | 107 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/vor-ort | PENDING | 655 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/[slug] | PENDING | 644 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik | PENDING | 994 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/sicherheitscheck | PENDING | 329 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /standorte/[city] | PENDING | 401 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /standorte | PENDING | 249 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik/[slug] | PENDING | 493 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik | PENDING | 1754 | Missing | Needs Check | ServiceBudgetCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /warenkorb | PENDING | 258 | Missing | Needs Check | CheckoutTrustIndicator | BENTO_HOVER_GLOW_LIGHT |
