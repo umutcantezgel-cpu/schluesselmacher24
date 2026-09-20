@@ -1,109 +1,109 @@
 # 100 Radikale Innovationsideen (Swiss Light Mode Aesthetic)
 
 ## Kategorie A: Awwwards-Kinetik & Taktile Interaktion (Ideen 1 bis 25)
-1. IDEA_001: Federgedämpfte Hover-States für alle Button-Komponenten (src/components/ui/button.tsx).
-2. IDEA_002: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex auf der Homepage (src/app/page.tsx).
-3. IDEA_003: Scroll-getriebene SVG-Animation für den "Schlüssel nach Code"-Prozess.
-4. IDEA_004: Mikro-haptisches Cursor-Tracking für die Area-Karten.
-5. IDEA_005: Parallax-Tiefenunschärfe für das Hero-Image auf der Startseite.
-6. IDEA_006: Magnetische Buttons für primäre CTAs (z.B. "Termin buchen").
-7. IDEA_007: Interaktives SVG-Schlüsselprofil (Hover zum Drehen) in der Schließanlagen-Übersicht.
-8. IDEA_008: Glatte Seitenübergänge (View Transitions API) zwischen allen Hauptseiten.
-9. IDEA_009: Morphing-Icons in der Schnelleinstieg-Sektion.
-10. IDEA_010: Skew-on-Scroll für Textblöcke auf der "Über Uns"-Seite.
-11. IDEA_011: Dynamische Schatten (oklch 0.988) basierend auf Cursor-Position.
-12. IDEA_012: Fade-In Sequence für Listenelemente in der Schließanlagen-Page.
-13. IDEA_013: 3D-Tilt-Effekt für die Feature-Karten.
-14. IDEA_014: Liquid-Distortion Hover auf Bildern.
-15. IDEA_015: Reveal-Animation für Akkordeon-Antworten (src/components/ui/accordion.tsx).
-16. IDEA_016: Text-Scramble Effekt bei initialem Laden der Headlines.
-17. IDEA_017: Sticky-Scrolling für lange Content-Seiten (Ratgeber).
-18. IDEA_018: Horizontal Scroll-Bereich für das Portfolio / Referenzen.
-19. IDEA_019: Kinetic Typography für die 404-Seite.
-20. IDEA_020: Ripple-Effekt auf allen klickbaren Cards.
-21. IDEA_021: Lade-Indikator als sich füllendes Schlüssel-Icon.
-22. IDEA_022: Progress-Bar angebunden an Scroll-Tiefe für Blog/Ratgeber.
-23. IDEA_023: Tooltips mit sanftem Spring-Fade-In.
-24. IDEA_024: Hover-Masking für das Hero-Image (Enthüllung von Details).
-25. IDEA_025: Interaktiver "Lichtschalter" (Light Mode Only, demonstriert Helligkeit ohne Dark Mode).
+1. IDEA_001: Federgedämpfte Hover-States für alle Button-Komponenten. (Target: src/app/service-und-termin/page.tsx)
+2. IDEA_002: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex auf der Homepage. (Target: src/app/schluessel-nach-vorlage/page.tsx)
+3. IDEA_003: Scroll-getriebene SVG-Animation für den "Schlüssel nach Code"-Prozess. (Target: src/app/schliessanlagen/page.tsx)
+4. IDEA_004: Mikro-haptisches Cursor-Tracking für die Area-Karten. (Target: src/app/schliessanlagen/page.tsx)
+5. IDEA_005: Parallax-Tiefenunschärfe für das Hero-Image auf der Startseite. (Target: src/app/autoschluessel/page.tsx)
+6. IDEA_006: Magnetische Buttons für primäre CTAs. (Target: src/app/ratgeber/page.tsx)
+7. IDEA_007: Interaktives SVG-Schlüsselprofil (Hover zum Drehen) in der Schließanlagen-Übersicht. (Target: src/app/gleichschliessende-zylinder/page.tsx)
+8. IDEA_008: Glatte Seitenübergänge (View Transitions API) zwischen allen Hauptseiten. (Target: src/app/autoschluessel/page.tsx)
+9. IDEA_009: Morphing-Icons in der Schnelleinstieg-Sektion. (Target: src/app/service-und-termin/page.tsx)
+10. IDEA_010: Skew-on-Scroll für Textblöcke auf der "Über Uns"-Seite. (Target: src/app/autoschluessel/page.tsx)
+11. IDEA_011: Dynamische Schatten (oklch 0.988) basierend auf Cursor-Position. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
+12. IDEA_012: Fade-In Sequence für Listenelemente in der Schließanlagen-Page. (Target: src/app/page.tsx)
+13. IDEA_013: 3D-Tilt-Effekt für die Feature-Karten. (Target: src/app/ratgeber/page.tsx)
+14. IDEA_014: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator. (Target: src/app/service-und-termin/page.tsx)
+15. IDEA_015: Reveal-Animation für Akkordeon-Antworten. (Target: src/app/sicherheitstechnik/page.tsx)
+16. IDEA_016: Text-Scramble Effekt bei initialem Laden der Headlines. (Target: src/app/page.tsx)
+17. IDEA_017: Sticky-Scrolling für lange Content-Seiten. (Target: src/app/service-und-termin/page.tsx)
+18. IDEA_018: Horizontal Scroll-Bereich für das Portfolio / Referenzen. (Target: src/app/elektronische-zutrittsloesungen/page.tsx)
+19. IDEA_019: Kinetic Typography für die 404-Seite. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
+20. IDEA_020: Ripple-Effekt auf allen klickbaren Cards. (Target: src/app/schluessel-nach-code/page.tsx)
+21. IDEA_021: Lade-Indikator als sich füllendes Schlüssel-Icon. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
+22. IDEA_022: Progress-Bar angebunden an Scroll-Tiefe für Blog/Ratgeber. (Target: src/app/elektronische-zutrittsloesungen/page.tsx)
+23. IDEA_023: Tooltips mit sanftem Spring-Fade-In. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
+24. IDEA_024: Hover-Masking für das Hero-Image. (Target: src/app/schluessel-nach-vorlage/page.tsx)
+25. IDEA_025: Interaktiver "Lichtschalter". (Target: src/app/sicherheitstechnik/page.tsx)
 
 ## Kategorie B: Semantische Autorität & Content-Maximierung (Ideen 26 bis 50)
-26. IDEA_026: Erweiterung der Startseite um >800 Wörter Fachinhalt.
-27. IDEA_027: Tiefen-Glossar für Schließanlagen (src/app/schliessanlagen/page.tsx).
-28. IDEA_028: Detaillierte Fallstudien im Ratgeber-Bereich.
-29. IDEA_029: Ausbau der "Schlüssel nach Code" Seite mit technischen Details (800+ Wörter).
-30. IDEA_030: Historie der Schließtechnik-Evolution auf der Über-Uns-Seite.
-31. IDEA_031: Ausführliche Erklärung der DIN-Normen für Sicherheitszylinder.
-32. IDEA_032: Vergleich: Elektronische vs. Mechanische Schließsysteme.
-33. IDEA_033: Schritt-für-Schritt Wartungsanleitung für Zylinder.
-34. IDEA_034: Experten-Interview-Format im Ratgeber.
-35. IDEA_035: Erweiterung der FAQ auf allen Dienstleistungsseiten.
-36. IDEA_036: Technisches Datenblatt-Layout für spezifische Zylinder.
-37. IDEA_037: Erläuterung des Fräsprozesses (Maschinen, Präzision).
-38. IDEA_038: Rechtsgrundlagen für Schließanlagen (Mieter vs. Vermieter).
-39. IDEA_039: Notfall-Ratgeber: Was tun bei abgebrochenem Schlüssel?
-40. IDEA_040: Detaillierte Preis-Transparenz-Seite (Warum kostet Qualität X?).
-41. IDEA_041: Ausbau der "Gleichschließende Zylinder" Seite mit Anwendungsfällen.
-42. IDEA_042: Spatial Bento Grid in src/app/page.tsx (Fokus auf Inhalt-Dichte).
-43. IDEA_043: Strukturierte Daten (Schema.org) für alle Artikel ausbauen.
-44. IDEA_044: Glossar-Tooltips im laufenden Text.
-45. IDEA_045: Checkliste: Sicherheit für Gewerbeobjekte (als Content-Block).
-46. IDEA_046: Ratgeber: Tresor-Wahl und Verankerung.
-47. IDEA_047: Erklärung der VdS-Schutzklassen.
-48. IDEA_048: Ausführliche Anleitung zum Ausmessen von Zylindern.
-49. IDEA_049: Content-Block "Mythos vs. Wahrheit" bei Einbruchschutz.
-50. IDEA_050: Detaillierte Beschreibung der Anlieferung & Montage.
+26. IDEA_026: Erweiterung der Startseite um >800 Wörter Fachinhalt. (Target: src/app/schluessel-nach-code/page.tsx)
+27. IDEA_027: Tiefen-Glossar für Schließanlagen. (Target: src/app/schluessel-nach-vorlage/page.tsx)
+28. IDEA_028: Detaillierte Fallstudien im Ratgeber-Bereich. (Target: src/app/service-und-termin/page.tsx)
+29. IDEA_029: Ausbau der "Schlüssel nach Code" Seite mit technischen Details. (Target: src/app/schliessanlagen/page.tsx)
+30. IDEA_030: Historie der Schließtechnik-Evolution auf der Über-Uns-Seite. (Target: src/app/autoschluessel/page.tsx)
+31. IDEA_031: Ausführliche Erklärung der DIN-Normen für Sicherheitszylinder. (Target: src/app/schluessel-nach-code/page.tsx)
+32. IDEA_032: Vergleich: Elektronische vs. Mechanische Schließsysteme. (Target: src/app/gleichschliessende-zylinder/page.tsx)
+33. IDEA_033: Schritt-für-Schritt Wartungsanleitung für Zylinder. (Target: src/app/schluessel-nach-vorlage/page.tsx)
+34. IDEA_034: Experten-Interview-Format im Ratgeber. (Target: src/app/autoschluessel/page.tsx)
+35. IDEA_035: Erweiterung der FAQ auf allen Dienstleistungsseiten. (Target: src/app/ratgeber/page.tsx)
+36. IDEA_036: Technisches Datenblatt-Layout für spezifische Zylinder. (Target: src/app/page.tsx)
+37. IDEA_037: Erläuterung des Fräsprozesses. (Target: src/app/page.tsx)
+38. IDEA_038: Rechtsgrundlagen für Schließanlagen. (Target: src/app/gleichschliessende-zylinder/page.tsx)
+39. IDEA_039: Notfall-Ratgeber: Was tun bei abgebrochenem Schlüssel?. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
+40. IDEA_040: Detaillierte Preis-Transparenz-Seite. (Target: src/app/schluessel-nach-vorlage/page.tsx)
+41. IDEA_041: Ausbau der "Gleichschließende Zylinder" Seite mit Anwendungsfällen. (Target: src/app/schluessel-nach-code/page.tsx)
+42. IDEA_042: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex. (Target: src/app/page.tsx)
+43. IDEA_043: Strukturierte Daten (Schema.org) für alle Artikel ausbauen. (Target: src/app/page.tsx)
+44. IDEA_044: Glossar-Tooltips im laufenden Text. (Target: src/app/schluessel-nach-code/page.tsx)
+45. IDEA_045: Checkliste: Sicherheit für Gewerbeobjekte. (Target: src/app/page.tsx)
+46. IDEA_046: Ratgeber: Tresor-Wahl und Verankerung. (Target: src/app/page.tsx)
+47. IDEA_047: Erklärung der VdS-Schutzklassen. (Target: src/app/ratgeber/page.tsx)
+48. IDEA_048: Ausführliche Anleitung zum Ausmessen von Zylindern. (Target: src/app/autoschluessel/page.tsx)
+49. IDEA_049: Content-Block "Mythos vs. Wahrheit" bei Einbruchschutz. (Target: src/app/elektronische-zutrittsloesungen/page.tsx)
+50. IDEA_050: Detaillierte Beschreibung der Anlieferung & Montage. (Target: src/app/sicherheitstechnik/page.tsx)
 
 ## Kategorie C: Conversion-Psychologie & Native Werkzeuge (Ideen 51 bis 75)
-51. IDEA_051: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator (src/app/schliessanlagen/page.tsx).
-52. IDEA_052: Interaktiver Vorher-Nachher-Slider für verschlissene vs. neue Schlüssel.
-53. IDEA_053: Konfigurator: Welches Schließsystem passt zu mir? (Quiz-Format).
-54. IDEA_054: Dynamischer Budget-Schätzer für Gleichschließungen.
-55. IDEA_055: ROI-Rechner für elektronische vs. mechanische Anlagen.
-56. IDEA_056: Visueller Zylinder-Ausmesser (interaktives Lineal).
-57. IDEA_057: "Trust-Balken": Live-Zähler geretteter Autoschlüssel (simuliert/optimistisch).
-58. IDEA_058: Interaktive Karte der abgedeckten Gebiete.
-59. IDEA_059: Dynamische Filterung für den Ratgeber (nach Thema, Dauer).
-60. IDEA_060: Personalisierter Einstiegs-Funnel für Privat vs. Gewerbe.
-61. IDEA_061: Live-Termin-Vorschau im Hero-Bereich (nächster freier Slot).
-62. IDEA_062: "Warenkorb-Ersparnis" Visualisierung bei Mengenrabatt.
-63. IDEA_063: Interaktiver Sicherheits-Score-Check für Eigenheime.
-64. IDEA_064: 3D-Konfigurator für Schlüssel-Anhänger/Markierungen.
-65. IDEA_065: Social-Proof Ticker (kürzliche anonymisierte Aufträge).
-66. IDEA_066: Gamifizierte Fortschrittsanzeige in Formularen.
-67. IDEA_067: Interaktives Organigramm für GHS-Anlagen (Drag & Drop Planung).
-68. IDEA_068: Tool: Foto-Upload-Prüfer für Schlüssel-Kopien.
-69. IDEA_069: Interaktive FAQ mit Suchfunktion und Highlighting.
-70. IDEA_070: "Smart Quote" - dynamische Angebotserstellung in Echtzeit.
-71. IDEA_071: Konfigurator-Summary als PDF-Download (Server Action).
-72. IDEA_072: A/B-Testing Integration für Haupt-CTAs.
-73. IDEA_073: Micro-Interactions bei Formularvalidierung (Shake on error).
-74. IDEA_074: Exit-Intent Modal mit passendem Ratgeber-Artikel.
-75. IDEA_075: Countdown für "Heute bestellt - Morgen versandt" (nur bis 14 Uhr).
+51. IDEA_051: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator. (Target: src/app/ratgeber/page.tsx)
+52. IDEA_052: Interaktiver Vorher-Nachher-Slider für verschlissene vs. neue Schlüssel. (Target: src/app/schluessel-nach-vorlage/page.tsx)
+53. IDEA_053: Konfigurator: Welches Schließsystem passt zu mir?. (Target: src/app/sicherheitstechnik/page.tsx)
+54. IDEA_054: Dynamischer Budget-Schätzer für Gleichschließungen. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
+55. IDEA_055: ROI-Rechner für elektronische vs. mechanische Anlagen. (Target: src/app/ratgeber/page.tsx)
+56. IDEA_056: Visueller Zylinder-Ausmesser. (Target: src/app/schliessanlagen/page.tsx)
+57. IDEA_057: "Trust-Balken": Live-Zähler geretteter Autoschlüssel. (Target: src/app/autoschluessel/page.tsx)
+58. IDEA_058: Interaktive Karte der abgedeckten Gebiete. (Target: src/app/page.tsx)
+59. IDEA_059: Dynamische Filterung für den Ratgeber. (Target: src/app/service-und-termin/page.tsx)
+60. IDEA_060: Personalisierter Einstiegs-Funnel für Privat vs. Gewerbe. (Target: src/app/sicherheitstechnik/page.tsx)
+61. IDEA_061: Live-Termin-Vorschau im Hero-Bereich. (Target: src/app/schliessanlagen/page.tsx)
+62. IDEA_062: "Warenkorb-Ersparnis" Visualisierung bei Mengenrabatt. (Target: src/app/gleichschliessende-zylinder/page.tsx)
+63. IDEA_063: Interaktiver Sicherheits-Score-Check für Eigenheime. (Target: src/app/autoschluessel/page.tsx)
+64. IDEA_064: 3D-Konfigurator für Schlüssel-Anhänger/Markierungen. (Target: src/app/autoschluessel/page.tsx)
+65. IDEA_065: Social-Proof Ticker. (Target: src/app/elektronische-zutrittsloesungen/page.tsx)
+66. IDEA_066: Gamifizierte Fortschrittsanzeige in Formularen. (Target: src/app/autoschluessel/page.tsx)
+67. IDEA_067: Interaktives Organigramm für GHS-Anlagen. (Target: src/app/elektronische-zutrittsloesungen/page.tsx)
+68. IDEA_068: Tool: Foto-Upload-Prüfer für Schlüssel-Kopien. (Target: src/app/schluessel-nach-code/page.tsx)
+69. IDEA_069: Interaktive FAQ mit Suchfunktion und Highlighting. (Target: src/app/gleichschliessende-zylinder/page.tsx)
+70. IDEA_070: "Smart Quote" - dynamische Angebotserstellung in Echtzeit. (Target: src/app/schliessanlagen/page.tsx)
+71. IDEA_071: Konfigurator-Summary als PDF-Download. (Target: src/app/schluessel-nach-vorlage/page.tsx)
+72. IDEA_072: A/B-Testing Integration für Haupt-CTAs. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
+73. IDEA_073: Micro-Interactions bei Formularvalidierung. (Target: src/app/schliessanlagen/page.tsx)
+74. IDEA_074: Exit-Intent Modal mit passendem Ratgeber-Artikel. (Target: src/app/gleichschliessende-zylinder/page.tsx)
+75. IDEA_075: Countdown für "Heute bestellt - Morgen versandt". (Target: src/app/schliessanlagen/page.tsx)
 
 ## Kategorie D: Extreme Performance, Architektur & DX (Ideen 76 bis 100)
-76. IDEA_076: Next.js 16 "use cache" Memoisierung für alle API-Routen.
-77. IDEA_077: CSS Subgrid-Harmonisierung für Karten-Layouts.
-78. IDEA_078: Container Queries (@container) für Komponenten-Responsive.
-79. IDEA_079: AVIF-Hero-Pipelines für maximale Bildkompression.
-80. IDEA_080: Zero-Shift Webfont-Optimierung (font-display: optional/swap).
-81. IDEA_081: Aggressives Pre-Fetching für alle Navigations-Links im Viewport.
-82. IDEA_082: Edge-Caching für statische Content-Seiten.
-83. IDEA_083: Partytown-Integration für Third-Party-Scripts.
-84. IDEA_084: Bundle-Analyse und Code-Splitting für große Konfiguratoren.
-85. IDEA_085: Turbopack-Optimierungen in next.config.
-86. IDEA_086: Implementierung von React 19 `useOptimistic` in Formularen.
-87. IDEA_087: Serverseitiges Rendering für personalisierte Empfehlungen.
-88. IDEA_088: Striktes CSP (Content Security Policy) Setup.
-89. IDEA_089: Reduzierung der DOM-Tiefe in der Hauptnavigation.
-90. IDEA_090: Lazy-Loading für untere Sektionen (Intersection Observer).
-91. IDEA_091: Inline-CSS für kritische Above-the-Fold Inhalte.
-92. IDEA_092: Web Worker für komplexe Schließplan-Berechnungen.
-93. IDEA_093: Optimierung der JSON-LD Generierung (Streaming).
-94. IDEA_094: Umstellung auf native CSS Nesting statt Sass/Tailwind-Plugins (wo sinnvoll).
-95. IDEA_095: Implementierung von `serverActions` in allen Formularen.
-96. IDEA_096: Automatisierte a11y-Tests (axe-core) in CI/CD.
-97. IDEA_097: Optimierung der LCP (Largest Contentful Paint) auf <1.2s.
-98. IDEA_098: Reduzierung des JavaScript-Footprints durch RSCs.
-99. IDEA_099: Strict Type-Checking für alle API-Responses.
-100. IDEA_100: Refactoring der Tailwind-Klassen auf v4 Standards.
+76. IDEA_076: Next.js 16 "use cache" Memoisierung für alle API-Routen. (Target: src/app/gleichschliessende-zylinder/page.tsx)
+77. IDEA_077: CSS Subgrid-Harmonisierung für Karten-Layouts. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
+78. IDEA_078: Container Queries (@container) für Komponenten-Responsive. (Target: src/app/page.tsx)
+79. IDEA_079: AVIF-Hero-Pipelines für maximale Bildkompression. (Target: src/app/autoschluessel/page.tsx)
+80. IDEA_080: Zero-Shift Webfont-Optimierung. (Target: src/app/schliessanlagen/page.tsx)
+81. IDEA_081: Aggressives Pre-Fetching für alle Navigations-Links im Viewport. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
+82. IDEA_082: Edge-Caching für statische Content-Seiten. (Target: src/app/page.tsx)
+83. IDEA_083: Partytown-Integration für Third-Party-Scripts. (Target: src/app/page.tsx)
+84. IDEA_084: Bundle-Analyse und Code-Splitting für große Konfiguratoren. (Target: src/app/ratgeber/page.tsx)
+85. IDEA_085: Turbopack-Optimierungen in next.config. (Target: src/app/sicherheitstechnik/page.tsx)
+86. IDEA_086: Implementierung von React 19 `useOptimistic` in Formularen. (Target: src/app/schluessel-nach-code/page.tsx)
+87. IDEA_087: Serverseitiges Rendering für personalisierte Empfehlungen. (Target: src/app/ratgeber/page.tsx)
+88. IDEA_088: Striktes CSP (Content Security Policy) Setup. (Target: src/app/schluessel-nach-code/page.tsx)
+89. IDEA_089: Reduzierung der DOM-Tiefe in der Hauptnavigation. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
+90. IDEA_090: Lazy-Loading für untere Sektionen. (Target: src/app/page.tsx)
+91. IDEA_091: Inline-CSS für kritische Above-the-Fold Inhalte. (Target: src/app/schliessanlagen/page.tsx)
+92. IDEA_092: Web Worker für komplexe Schließplan-Berechnungen. (Target: src/app/sicherheitstechnik/page.tsx)
+93. IDEA_093: Optimierung der JSON-LD Generierung. (Target: src/app/page.tsx)
+94. IDEA_094: Umstellung auf native CSS Nesting statt Sass/Tailwind-Plugins. (Target: src/app/service-und-termin/page.tsx)
+95. IDEA_095: Implementierung von `serverActions` in allen Formularen. (Target: src/app/autoschluessel/page.tsx)
+96. IDEA_096: Automatisierte a11y-Tests (axe-core) in CI/CD. (Target: src/app/autoschluessel/page.tsx)
+97. IDEA_097: Optimierung der LCP (Largest Contentful Paint) auf <1.2s. (Target: src/app/page.tsx)
+98. IDEA_098: Reduzierung des JavaScript-Footprints durch RSCs. (Target: src/app/schluessel-nach-vorlage/page.tsx)
+99. IDEA_099: Strict Type-Checking für alle API-Responses. (Target: src/app/schluessel-nach-vorlage/page.tsx)
+100. IDEA_100: Refactoring der Tailwind-Klassen auf v4 Standards. (Target: src/app/tuer-und-schliesstechnik/page.tsx)
