@@ -1,7 +1,7 @@
 'use client';
 
 import { useActionState, useOptimistic } from 'react';
-import { calculateDoorSecurity, type SecurityCheckResult } from '@/actions/calculate-door-security';
+import { calculateDoorSecurity, type SecurityCheckResult } from '@/lib/actions/calculate-door-security';
 import { Lock, ShieldCheck, ShieldAlert } from 'lucide-react';
 import clsx from 'clsx';
 
