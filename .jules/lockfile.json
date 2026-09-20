@@ -14,5 +14,13 @@
   "src/app/standorte/[city]/page.tsx": {
     "status": "VERIFIZIERT_FROZEN",
     "hash": "c1c409c035d53749881480d8983e5d782055ab3f40dfecbcb0cbfffe4d688819"
+  },
+  "src/lib/actions/calculate-door-security.ts": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "86694cc9f26cb51c16782657f482e55d5dd9bdfc7c0a849d4f1e9af54db49762"
+  },
+  "src/components/calculator/security-check-calculator.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "1fe81f2ef4e8d2d6645225a27e327280a3002134eabb816b23a39865c8f29834"
   }
 }

@@ -1,35 +1,30 @@
 'use server';
 
-export type BudgetCalculationResult = {
-  totalEstimate: number;
-  breakdown: { label: string; amount: number }[];
-  tier: 'STANDARD' | 'COMPLEX' | 'ENTERPRISE';
-};
+import type { BudgetCalculationResult } from '@/types/budget';
 
 export async function calculateServiceBudget(
   prevState: BudgetCalculationResult,
   formData: FormData
 ): Promise<BudgetCalculationResult> {
+  // Simulate network delay
+  await new Promise((resolve) => setTimeout(resolve, 800));
+
   const scopeDays = Number(formData.get('scopeDays')) || 15;
   const totalEstimate = scopeDays * 150;
 
-  let tier: 'STANDARD' | 'COMPLEX' | 'ENTERPRISE' = 'STANDARD';
-  if (scopeDays > 30) {
-    tier = 'COMPLEX';
+  let tier: BudgetCalculationResult['tier'] = 'STANDARD';
+  if (totalEstimate > 5000) {
+    tier = 'PREMIUM';
   }
-  if (scopeDays > 45) {
+  if (totalEstimate > 8000) {
     tier = 'ENTERPRISE';
   }
-
-  // Simulate network delay for realism
-  await new Promise((resolve) => setTimeout(resolve, 600));
 
   return {
     totalEstimate,
     breakdown: [
-      { label: 'Grundaufwand & Anfahrt', amount: totalEstimate * 0.2 },
-      { label: 'Material & Komponenten', amount: totalEstimate * 0.3 },
-      { label: 'Montage & Servicezeit', amount: totalEstimate * 0.5 },
+      { item: 'Basispauschale', cost: 150 },
+      { item: `Tagesaufwand (${scopeDays} Tage)`, cost: scopeDays * 150 }
     ],
     tier,
   };
