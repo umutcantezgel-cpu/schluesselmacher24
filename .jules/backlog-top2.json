@@ -12,7 +12,7 @@
       "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
       "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
       "score": 9.65,
-      "status": "READY_FOR_EXPANSION"
+      "status": "COMPLETED_BY_BUILDER"
     },
     {
       "rank": 2,
@@ -23,7 +23,7 @@
       "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
       "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
       "score": 9.45,
-      "status": "READY_FOR_EXPANSION"
+      "status": "COMPLETED_BY_BUILDER"
     }
   ]
 }

@@ -1,0 +1,5 @@
+feat(expansion): elevate src/app/schliessanlagen/page.tsx with 850w content and interactive enterprise-roi-calculator
+
+Elevated the mechanical lock systems page with expanded >800 word content detailing architectural methodology.
+Integrated the Enterprise ROI Calculator using React 19 Server Actions, useOptimistic, and Swiss Light Mode aesthetics (OKLCH).
+Extended the FAQ section to provide more context on patent protection, mechatronic combinations, and GHS loss consequences.
