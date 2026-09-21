@@ -1,16 +1,19 @@
 # Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
 
-## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+## 1. Silent Logic Death & Interaction Traps
+- **Empty Handlers:** Found potential dead ends in `src/components/forms/controls.tsx` wo dummy-Funktionen ohne visuelle Hinweise genutzt werden.
+- **Form State Mismatches:** Submit-Buttons im Anfrageflow (`src/app/autoschluessel/anfrage/page.tsx`) verlassen sich rein auf Client-seitiges JS, anstatt Server Actions mit progressive enhancement zu nutzen.
+- **Missing Loading States:** Bestimmte Nested Client Components nutzen React 19 `useActionState` nicht, was zu UI-Freezes während Netzwerkanfragen führt.
 
-## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+## 2. Hydration Mismatches & SSR Conflicts
+- **Date/Time Rendering:** Potentieller Hydration-Mismatch in `src/app/service-und-termin/page.tsx`, da dort lokale Zeit verarbeitet wird, ohne stricte Client-Boundary.
+- **Third-Party Injections:** DOM-Zugriffe in Helfer-Funktionen, die nicht sauber hinter `useEffect` Guards isoliert sind.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TypeScript Weaknesses
+- **Generic Catch-Alls:** Diverse Input-Payloads haben keine strikte Zod-Inferenz und fallen auf laxere Typsignaturen zurück.
+- **Schema.org Graphs:** Der JSON-LD Provider (`src/components/seo/json-ld.tsx`) benötigt striktes Typing mit `satisfies Graph` via schema-dts.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. Core Web Vitals Sins
+- **LCP Delays:** Die Hauptbilder in `src/app/page.tsx` sind nicht präzise dimensioniert und triggern leichte Layout-Shifts.
+- **Subgrid Misalignment:** Das Bento-Grid nutzt kein `grid-rows-subgrid`, was zu asymmetrischen Button-Höhen in der Service-Übersicht führt.
+- **Client Bundle Bloat:** Unnötiger Client-State in Komponenten, die statisch als Server-Components via `use cache` memoisiert werden könnten.
