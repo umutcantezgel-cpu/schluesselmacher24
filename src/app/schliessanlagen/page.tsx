@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -267,6 +268,69 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+
+      {/* Methodik und Architektur */}
+      <Section tone="default">
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Präzisionsplanung für langlebige Sicherheit"
+          lead="Eine Schließanlage ist kein Produkt von der Stange, sondern ein maßgeschneidertes Sicherheitssystem. Wir planen jede Anlage mit einer klaren Methodik, die Skalierbarkeit, Flexibilität und höchste mechanische Präzision vereint."
+        />
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <div>
+            <h3 className="text-xl font-bold text-foreground">Das Prinzip der Reserveschließungen</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Bereits in der Erstkonzeption kalkulieren wir zukünftige Erweiterungen ein. Durch mathematisch optimierte Profilberechnungen stellen wir sicher, dass neue Gebäudeabschnitte oder Abteilungen später nahtlos in die bestehende Anlage integriert werden können, ohne die Sicherheit der bestehenden Zylinder zu kompromittieren. Dies nennen wir &quot;intelligente Vorhalteschließungen&quot;.
+            </p>
+            <h3 className="mt-6 text-xl font-bold text-foreground">Mechanische Toleranzen</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Wir arbeiten ausschließlich mit Systemen, die geringste Frästoleranzen im Hundertstel-Millimeter-Bereich garantieren. Dies erschwert Manipulationsversuche wie Picking oder Schlagschlüsseltechniken massiv. Darüber hinaus setzen wir auf modulare Zylinderbauweisen, die bei Umzügen oder neuen Türmaßen einfach in der Länge angepasst werden können, anstatt sie komplett auszutauschen.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-surface p-6 shadow-sm">
+             <h3 className="text-xl font-bold text-foreground mb-4">Wartungsprotokoll & Lebenszyklus</h3>
+             <ul className="space-y-4">
+               <li className="flex gap-3">
+                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary text-xs font-bold">1</span>
+                 <div>
+                   <p className="font-bold text-[14px]">Präventive Pflege</p>
+                   <p className="text-[13px] text-foreground-muted">Einsatz von harzfreiem Spezial-Zylinderspray alle 6 Monate für maximale Lebensdauer.</p>
+                 </div>
+               </li>
+               <li className="flex gap-3">
+                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary text-xs font-bold">2</span>
+                 <div>
+                   <p className="font-bold text-[14px]">Rechtemanagement</p>
+                   <p className="text-[13px] text-foreground-muted">Jährlicher Abgleich des Schließplans mit der tatsächlichen Schlüsselausgabe.</p>
+                 </div>
+               </li>
+               <li className="flex gap-3">
+                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary text-xs font-bold">3</span>
+                 <div>
+                   <p className="font-bold text-[14px]">Zylinder-Check</p>
+                   <p className="text-[13px] text-foreground-muted">Sichtprüfung und Funktionstest hochfrequentierter Außen- und Durchgangstüren.</p>
+                 </div>
+               </li>
+             </ul>
+          </div>
+        </div>
+      </Section>
+
+      {/* ROI Calculator */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Investitionsanalyse"
+          title="Mechanik vs. Elektronik: Der ROI-Kalkulator"
+          lead="Viele Unternehmen unterschätzen die Folgekosten von Schlüsselverlusten. Berechnen Sie hier, ab wann sich der Umstieg von einer mechanischen Anlage auf ein elektronisches Zutrittssystem für Sie amortisiert."
+        />
+        <div className="mt-10">
+          <EnterpriseRoiCalculator />
+        </div>
+        <p className="mt-6 text-sm text-[oklch(0.32_0.02_260)]">
+          *Hinweis: Dies ist ein Richtwert-Kalkulator. Mechanische Anlagen haben geringere Anschaffungskosten, verursachen aber bei Schlüsselverlust hohe Austauschkosten (Sicherheitsrisiko). Elektronische Systeme sind in der Anschaffung teurer, erlauben aber das sofortige und kostengünstige Sperren von verlorenen Transpondern.
+        </p>
+      </Section>
+
       {/* Für wen */}
       <Section>
         <SectionHeading
@@ -332,6 +396,48 @@ export default async function SchliessanlagenPage() {
             oder eine Aushilfe das Büro der Leitung — reicht eine Gleichschließung nicht mehr aus.
             Dann planen wir eine Anlage mit Ebenen.
           </Alert>
+        </div>
+      </Section>
+
+
+      {/* Deep Dive Fachwissen */}
+      <Section tone="default">
+        <SectionHeading
+          eyebrow="Expertenwissen"
+          title="Technische Detailfragen & Planungskomplexität"
+          lead="Für IT-Leiter, Facility Manager und Architekten: Die wichtigsten technischen Nuancen vor der Beauftragung."
+        />
+        <div className="mt-8 space-y-6">
+          <div>
+            <h3 className="text-[16px] font-bold text-foreground">Wie verhält sich die Schließanlagenplanung bei Brandschutztüren?</h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
+              Bei T30- oder T90-Brandschutztüren müssen Zylinder und Beschläge eine entsprechende Zertifizierung (z. B. nach DIN EN 18273 oder EN 1303) aufweisen. Ein Standard-Profilzylinder darf hier nicht verbaut werden, da er im Brandfall schmelzen und die Brandschutzfunktion der Tür aufheben könnte. Wir achten bei der Planung strikt darauf, dass die Zylinder-Klassifikation exakt zu den Brandschutzvorgaben der jeweiligen Tür passt, um den Versicherungsschutz und die behördliche Abnahme nicht zu gefährden.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-[16px] font-bold text-foreground">Was bedeutet &quot;modulare Zylinderbauweise&quot; konkret für die TCO (Total Cost of Ownership)?</h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
+              Kompaktzylinder haben eine feste Länge (z. B. 30/30 mm). Wird eine neue Tür mit dickeren Beschlägen eingebaut, muss der Zylinder komplett ausgetauscht werden. Modulare Zylinder hingegen bestehen aus flexibel koppelbaren Elementen. Bei einem Umzug oder Türentausch können wir den Zylinder in unserer Werkstatt durch den Austausch von Verbindungsstegen einfach verlängern oder verkürzen. Das reduziert die langfristigen Kosten massiv, da der teure Schließkern erhalten bleibt.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-[16px] font-bold text-foreground">Wie sichern Sie die Anlage gegen unberechtigte Schlüsselkopien ab?</h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
+              Wir setzen konsequent auf Zylinder mit Patentschutz und Markenschutz (z. B. durch 3D-Profilierung im Schlüssel). Der Patentschutz bietet eine rechtliche Handhabe gegen illegale Rohling-Hersteller, während der Markenschutz theoretisch zeitlich unbegrenzt verlängert werden kann. Jeder Anlage liegt eine kryptografisch gesicherte Sicherungskarte bei. Ohne Vorlage dieser physischen Karte (oder eines authorisierten digitalen Tokens bei modernen Systemen) dürfen weder wir noch der Hersteller Ersatzschlüssel anfertigen.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-[16px] font-bold text-foreground">Lassen sich mechanische Anlagen später mit elektronischen Komponenten hybridisieren?</h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
+              Ja, die mechatronische Integration ist ein Kernbestandteil moderner Schließpläne. Wir empfehlen häufig eine hybride Architektur: Hochfrequentierte Außentüren, Serverräume oder Personalzugänge werden mit elektronischen Zylindern oder Wandlesern ausgestattet (volle Kontrolle, schnelle Sperrung). Innentüren, Büros oder Lagerräume behalten kosteneffiziente mechanische Zylinder. Der Nutzer erhält einen Kombischlüssel, der mechanische Fräsungen und einen integrierten RFID-Chip im Schlüsselreide vereint – ein Schlüssel für beide Welten.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-[16px] font-bold text-foreground">Wie gehen Sie mit dem Problem der &quot;Schließzwänge&quot; bei Generalhauptschlüsselanlagen um?</h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
+              Bei komplexen GHS-Anlagen (Generalhauptschlüsselanlagen) mit vielen Kreuzschließungen steigt das Risiko von Phantom-Schließungen (Schlüssel öffnet Türen, die er nicht öffnen soll) durch die Vielzahl der benötigten Stiftteilungen im Zylinder. Wir nutzen modernste Planungssoftware, um die Matrix mathematisch zu validieren. In extrem komplexen Fällen raten wir zur Aufspaltung in mehrere kleinere Anlagen oder zum Teilumstieg auf elektronische Systeme, da die mechanischen Permutationen physikalische Grenzen haben.
+            </p>
+          </div>
         </div>
       </Section>
 
