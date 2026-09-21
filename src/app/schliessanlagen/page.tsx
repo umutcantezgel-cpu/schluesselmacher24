@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,7 +166,14 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ [key: string]: string | undefined }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -190,21 +198,28 @@ export default async function SchliessanlagenPage() {
         }
       />
 
+      {/* Erweiterter Einstieg und architektonische Methodik */}
+      <Section tight>
+        <div className="mx-auto max-w-4xl text-center mb-16">
+          <h2 className="text-3xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] md:text-4xl">
+            Mechanische Schließanlagen: Die architektonische Methodik
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-[oklch(0.32_0.02_260)]">
+            Eine moderne Schließanlage ist mehr als nur eine Sammlung von Zylindern und Schlüsseln. Sie ist das mechanische Rückgrat der Gebäudesicherheit. Die präzise architektonische Planung regelt exakt, wer zu welchem Zeitpunkt welche Tür öffnen darf. Unsere Methodik basiert auf jahrzehntelanger Expertise in der Konzeption und Umsetzung komplexer Zutrittsszenarien — von der einfachen Gleichschließung im privaten Wohnhaus bis zur hochkomplexen Generalhauptschlüsselanlage für weitläufige Industriekomplexe und Filialnetze. Wir erklären die Systeme in einfacher, verständlicher Sprache und planen Ihre Anlage so, dass sie flexibel bleibt und auch in Zukunft problemlos erweitert werden kann.
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-[oklch(0.32_0.02_260)]">
+            Der strukturierte Weg zu einer sicheren und langlebigen Lösung ist dabei immer derselbe: In einer detaillierten Analyse erfassen Sie Ihr Objekt, Ihre Nutzergruppen und alle relevanten Türen. Aus diesen Daten synthetisieren wir einen intelligenten Schließplan, den wir in iterativen Schleifen gemeinsam mit Ihnen abstimmen und optimieren. Erst nach der finalen Freigabe des Schließplans beginnt die hochpräzise Fertigung der Komponenten. So garantieren wir maximale Sicherheit, Transparenz und Kosteneffizienz für Ihr Projekt.
+          </p>
+        </div>
+      </Section>
+
       {/* Einstieg und Begriffe */}
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mb-4">Grundbegriffe der Schließtechnik</h3>
             <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
-              {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
-            </p>
-
-            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
-              Der Weg dorthin ist immer derselbe: Sie erfassen Ihr Objekt, Ihre Nutzer und Ihre
-              Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
-              danach wird gefertigt.
+              Um die optimale Anlage für Ihr Projekt zu planen, ist ein grundlegendes Verständnis der wichtigsten Fachbegriffe essenziell. Die folgenden Definitionen helfen Ihnen, die Struktur und die Möglichkeiten moderner Schließanlagen besser zu verstehen.
             </p>
 
             <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
@@ -264,6 +279,27 @@ export default async function SchliessanlagenPage() {
           <div className="mt-5">
             <SystemVergleich />
           </div>
+        </div>
+      </Section>
+
+      {/* Enterprise ROI Calculator Integration */}
+      <Section id="roi-calculator">
+        <SectionHeading
+          eyebrow="Kalkulation"
+          title="Return on Investment und Systemkosten"
+          lead="Nutzen Sie unseren interaktiven Kalkulator, um die voraussichtlichen Kosten und die langfristige Amortisation Ihrer geplanten Schließanlage zu simulieren."
+        />
+        <div className="mt-12">
+          <EnterpriseROICalculator />
+        </div>
+        <div className="mt-8 text-[15px] leading-relaxed text-foreground-muted max-w-3xl">
+          <h3 className="text-xl font-bold text-foreground mb-4">Warum sich eine professionelle Planung rechnet</h3>
+          <p className="mb-4">
+            Die Investition in eine gut geplante Schließanlage amortisiert sich oft schneller als erwartet. Neben der reinen Hardware (Zylinder, Schlüssel, Beschläge) ist die Ersparnis an Verwaltungsaufwand ein entscheidender Faktor. Eine strukturierte Anlage reduziert den Zeitaufwand für die Schlüsselübergabe, die Dokumentation und das Onboarding neuer Mitarbeiter drastisch.
+          </p>
+          <p>
+            Zudem minimieren moderne Anlagen mit integriertem Kopierschutz (z. B. durch Sicherungskarten) das Risiko unautorisierter Schlüsselkopien. Bei einem Verlust muss oft nicht mehr die gesamte Anlage getauscht werden, sondern durch klug geplante Hierarchien lassen sich Risiken isolieren und Kosten senken.
+          </p>
         </div>
       </Section>
 
@@ -335,11 +371,37 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
-      {/* Fragen */}
-      <Section>
-        <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
-        <div className="mt-8">
-          <Accordion items={faq} />
+      {/* Erweiterte FAQ Sektion */}
+      <Section id="faq" tone="muted">
+        <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
+          <div>
+            <SectionHeading eyebrow="Fragen & Antworten" title="Umfassende Expertise zu Schließanlagen" lead="Wir beantworten die wichtigsten technischen und organisatorischen Fragen rund um Planung, Installation und Erweiterung von mechanischen Schließanlagen." />
+          </div>
+          <div className="space-y-6">
+            <Accordion items={[
+              ...faq,
+              {
+                question: 'Wie funktioniert die Integration von elektronischen und mechanischen Komponenten?',
+                answer: 'Eine sogenannte mechatronische Schließanlage kombiniert die Vorteile beider Welten. Hochfrequentierte Außentüren werden elektronisch abgesichert (für schnelle Sperrung bei Schlüsselverlust), während Innentüren mechanisch bleiben. Beide Zylinderarten lassen sich oft mit einem hybriden Medium (Schlüssel mit integriertem Chip) bedienen.'
+              },
+              {
+                question: 'Was passiert, wenn ein Generalhauptschlüssel (GHS) verloren geht?',
+                answer: 'Der Verlust eines GHS ist kritisch, da er Zugang zu allen Bereichen bietet. In rein mechanischen Anlagen muss aus Sicherheitsgründen oft die gesamte Anlage getauscht werden. Daher empfehlen wir für die höchste Hierarchieebene elektronische Schließzylinder, um den Zugangskern bei Verlust sofort digital sperren und ersetzen zu können.'
+              },
+              {
+                question: 'Ist eine nachträgliche Erweiterung meiner Schließanlage möglich?',
+                answer: 'Ja, wenn dies bei der Erstplanung berücksichtigt wurde. Wir planen Anlagen standardmäßig mit sogenannten "Ausbaureserven". Das bedeutet, dass mathematische Schließgruppen im Vorfeld reserviert werden, um später neue Türen oder Gebäudeabschnitte ohne Sicherheitsverlust in das System integrieren zu können.'
+              },
+              {
+                question: 'Welche Zertifizierungen und Normen sind bei Schließanlagen relevant?',
+                answer: 'Wichtige Normen sind die DIN 18252 (Profilzylinder für Türschlösser) und die DIN EN 1303 (Schließzylinder für Schlösser). Für Versicherungen ist zudem die VdS-Anerkennung (Vertrauen durch Sicherheit) entscheidend, die Auskunft über den Bohr-, Zieh- und Nachschließschutz der verwendeten Zylinder gibt.'
+              },
+              {
+                question: 'Wie lange dauert die Fertigung einer komplexen Schließanlage?',
+                answer: 'Die Produktionszeit hängt von der Größe und dem Hersteller ab. Nach der finalen Freigabe des Schließplans durch Sie, dauert die Fertigung einer durchschnittlichen Anlage in der Regel zwischen 10 und 15 Werktagen. Bei speziellen Hochsicherheitsprofilen kann die Lieferzeit auch bis zu 4 Wochen betragen.'
+              }
+            ]} />
+          </div>
         </div>
       </Section>
 
