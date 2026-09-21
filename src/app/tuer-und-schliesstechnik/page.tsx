@@ -252,7 +252,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
 
       {/* Normen und Brandschutz */}
       <Section tight>
-        <div className="rounded-3xl bg-[oklch(0.16_0.02_260)] text-[oklch(0.988_0.002_260)] p-8 md:p-12 lg:p-16 overflow-hidden relative">
+        <div className="rounded-3xl bg-[oklch(0.16_0.02_260)] text-[oklch(0.988_0.002_260)] p-8 md:p-12 lg:p-16 overflow-x-clip relative">
           <div className="absolute top-0 right-0 -mr-20 -mt-20 opacity-5 pointer-events-none">
             <ShieldCheck size={400} />
           </div>

@@ -14,5 +14,13 @@
   "src/app/standorte/[city]/page.tsx": {
     "status": "VERIFIZIERT_FROZEN",
     "hash": "c1c409c035d53749881480d8983e5d782055ab3f40dfecbcb0cbfffe4d688819"
+  },
+  "src/app/tuer-und-schliesstechnik/page.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "1c3e0461be5c543ef4dd8976fbf319051b9e5b1af00d04c4b20b4cb4c9b24c63"
+  },
+  "src/components/calculator/security-check-calculator.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "21428bfd95317ddc633794321971d72d555ccdcb0d3b3d0245fc96ab051e18c1"
   }
 }
