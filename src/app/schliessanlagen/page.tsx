@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,13 +166,20 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <PageHeader
         eyebrow="Mechanische Schließanlagen"
         title={page?.headline ?? 'Mechanische Schließanlagen'}
@@ -194,18 +202,58 @@ export default async function SchliessanlagenPage() {
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
-            <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
-              {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
-            </p>
+            <div className="prose prose-neutral max-w-none">
+              <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
+                Eine Schließanlage regelt mit mathematischer Präzision, welche Person mit welchem Schlüssel welche Türen, Tore oder Zugänge öffnen darf. Ob es sich dabei um ein einfaches Zweifamilienhaus, eine mittelständische Unternehmenszentrale oder einen hochkomplexen Industriekomplex handelt – die konzeptionellen Grundprinzipien der Zugangsarchitektur bleiben stets identisch. Wir erklären Ihnen die unterschiedlichen mechanischen und elektronischen Systeme in leicht verständlicher, aber fachlich hochpräziser Sprache und planen Ihre Anlage von Anfang an so zukunftssicher, dass sie bei organisatorischen Veränderungen oder baulichen Erweiterungen nahtlos mitwachsen kann, ohne dass ein vollständiger Austausch der Zylinder erforderlich wird.
+              </p>
 
-            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
-              Der Weg dorthin ist immer derselbe: Sie erfassen Ihr Objekt, Ihre Nutzer und Ihre
-              Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
-              danach wird gefertigt.
-            </p>
+              <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                Der architektonische Weg zu einer sicheren, effizienten und normgerechten Schließanlage folgt immer einer fest definierten, standardisierten Methodik: Zunächst erfassen Sie die strukturelle Beschaffenheit Ihres Objekts, definieren die Nutzergruppen (wie Geschäftsführung, Verwaltung, Facility Management oder externe Dienstleister) und kartieren alle relevanten Türen und Zugänge. Aus dieser mehrdimensionalen Matrix generieren wir anschließend einen detaillierten, logisch konsistenten Schließplan. Dieser Plan wird in einem iterativen Prozess gemeinsam mit Ihnen auf Herz und Nieren geprüft, optimiert und final freigegeben. Erst wenn jede Hierarchieebene und jede Schließberechtigung exakt Ihren Sicherheitsrichtlinien entspricht, leiten wir die Präzisionsfertigung der Schließzylinder und Schlüssel bei unseren zertifizierten Partner-Manufakturen ein.
+              </p>
+
+              <h2 className="mt-8 text-xl font-bold text-foreground">Architektonische Methodik und Planungstiefe</h2>
+
+              <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                Die Konzeption einer Schließanlage ist weit mehr als nur die bloße Zuordnung von Schlüsseln zu Zylindern. Sie ist die physikalische Manifestation Ihrer organisatorischen Sicherheitsrichtlinien und Unternehmensstrukturen. Eine sorgfältig geplante Anlage minimiert nicht nur das Risiko von unbefugtem Zutritt und Spionage, sondern optimiert auch signifikant die täglichen Abläufe im Gebäude. Das Facility Management muss nicht mehr mit unübersichtlichen Schlüsselbünden hantieren, und bei Personalwechseln oder dem Verlust eines Schlüssels lassen sich die Sicherheitsrisiken durch intelligente Anlagenstrukturen – etwa durch den Einsatz von Sperrschließungen oder modular aufgebauten Zylindern – effektiv und kostengünstig eingrenzen.
+              </p>
+
+              <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                Ein entscheidender Faktor bei der Planung ist die Antizipation zukünftiger Entwicklungen. Die sogenannte &quot;Reserve&quot;, also vorausschauend eingeplante, aber noch nicht physisch produzierte Schließzylinder und Schlüsselprofile, ermöglicht es, zu einem späteren Zeitpunkt neue Abteilungen, Gebäudeerweiterungen oder geänderte Berechtigungsstrukturen nahtlos in die bestehende Anlage zu integrieren. Diese vorausschauende Planung, kombiniert mit der Auswahl der richtigen Zylindertechnologie (z.B. Wendeschlüsselsysteme mit aktivem Kopierschutz, Magnetcodierung oder mechatronische Komponenten), stellt sicher, dass die Investition in Ihre Gebäudesicherheit auch nach Jahrzehnten noch Bestand hat und den wachsenden normativen Anforderungen gerecht wird.
+              </p>
+
+              <h3 className="mt-8 text-lg font-bold text-foreground">Mechanik, Mechatronik und vollelektronische Systeme</h3>
+
+              <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                Während rein mechanische Systeme durch ihre absolute Zuverlässigkeit, Wartungsfreiheit und Unabhängigkeit von Stromquellen bestechen, bieten mechatronische und elektronische Systeme eine beispiellose Flexibilität in der Rechteverwaltung. Eine moderne Sicherheitsarchitektur setzt oft auf hybride Konzepte: Sensible Außenhüllen, Serverräume und Vorstands-Etagen werden mit elektronischen Zylindern ausgestattet, bei denen Berechtigungen in Echtzeit erteilt, entzogen und Zutrittsereignisse protokolliert werden können. Weniger kritische Innenbereiche, Lagerräume oder Technikschächte hingegen werden aus wirtschaftlichen Gründen oft weiterhin mit hochsicheren mechanischen Komponenten in das Gesamtsystem integriert.
+              </p>
+
+              <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                Diese hybriden Anlagen erfordern eine besonders präzise Planung, da die mechanischen Schließhierarchien und die elektronischen Berechtigungsmatrizen logisch und administrativ miteinander verknüpft werden müssen. Die Verwaltung erfolgt in der Regel über eine zentrale Management-Software, die es dem Administrator ermöglicht, sowohl die mechanischen Schlüssel als auch die elektronischen Transponder oder Smart-Cards über eine einheitliche Oberfläche zu verwalten. Dies reduziert den administrativen Overhead erheblich und schließt Sicherheitslücken, die durch redundante oder asynchrone Datenhaltung in getrennten Systemen entstehen könnten.
+              </p>
+
+              <h3 className="mt-8 text-lg font-bold text-foreground">Sicherheitsklassen und Einbruchhemmung</h3>
+
+              <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                Ein entscheidendes Kriterium bei der Planung und Dimensionierung einer Schließanlage ist die geforderte Einbruchhemmung der einzelnen Zylinder. Mechanische und mechatronische Schließzylinder werden nach verschiedenen DIN- und EN-Normen zertifiziert, die ihre Widerstandsfähigkeit gegenüber gewaltsamen Öffnungsmethoden klassifizieren. Die EN 1303 definiert beispielsweise detaillierte Anforderungen an die Verschlusssicherheit, die Dauerhaftigkeit und den Feuerwiderstand. Für den Einsatz in stark gefährdeten Bereichen, wie etwa bei Außentüren von Gewerbeobjekten oder Juweliergeschäften, empfehlen wir den Einsatz von Zylindern mit integriertem Bohr- und Ziehschutz. Diese Spezialzylinder sind mit gehärteten Stahlstiften und massiven Hartmetallplatten im Zylinderkern und -gehäuse ausgestattet, die ein zerstörerisches Aufbohren oder das gewaltsame Herausziehen des Zylinderkerns extrem erschweren.
+              </p>
+
+              <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                Darüber hinaus spielt der aktive Kopierschutz der verwendeten Schlüsselprofile eine essenzielle Rolle. Bei minderwertigen Systemen können Nachschlüssel von Unbefugten problemlos bei jedem Schlüsseldienst angefertigt werden, sofern sie kurzfristig Zugriff auf den Originalschlüssel haben. Hochwertige Schließanlagen nutzen hingegen patentierte Schlüsselprofile, die nur unter Vorlage einer eindeutig zugeordneten Sicherungskarte und oft nur vom Originalhersteller selbst reproduziert werden dürfen. Einige moderne Wendeschlüsselsysteme integrieren zudem bewegliche Elemente (wie kleine Kugeln oder Rotoren) im Schlüsselschaft, die eine illegale Kopie mit 3D-Druckern oder Fräsmaschinen technisch nahezu unmöglich machen. Diese Kombination aus physischem Einbruchschutz und organisatorischem Kopierschutz bildet das Fundament einer kompromisslosen Sicherheitsarchitektur.
+              </p>
+
+              <h3 className="mt-8 text-lg font-bold text-foreground">Projektphasen: Von der Analyse bis zur Inbetriebnahme</h3>
+
+              <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                Die Realisierung einer maßgeschneiderten Schließanlage erfolgt in strukturierten, streng dokumentierten Phasen. In der initialen Bedarfsanalyse erfassen wir die architektonischen Gegebenheiten Ihres Objekts. Dies umfasst nicht nur die Anzahl und Art der Türen, sondern auch spezifische Anforderungen wie Brandschutzvorgaben, Flucht- und Rettungswege (Panikschlösser) sowie die Integration in bestehende Gefahrenmeldeanlagen. Basierend auf dieser Analyse erstellen wir eine detaillierte Matrix der Berechtigungsstrukturen. Diese Matrix visualisiert transparent, welche Nutzergruppen (z.B. Reinigungspersonal, IT-Administration, Geschäftsführung) zu welchen Zeiten Zugang zu welchen Gebäudezonen erhalten sollen.
+              </p>
+
+              <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                Nach der Freigabe der Planungsdokumente beginnt die Produktionsphase. Jeder Zylinder und jeder Schlüssel wird mit höchster Präzision individuell gefertigt und codiert. Wir überwachen den gesamten Herstellungsprozess und führen vor der Auslieferung rigorose Qualitätskontrollen durch. Die abschließende Montage und Inbetriebnahme erfolgt durch unsere zertifizierten Servicetechniker. Dabei legen wir größten Wert auf eine fachgerechte Installation, die sicherstellt, dass die Zylinder bündig mit dem Schutzbeschlag abschließen und keine Angriffsflächen für Werkzeuge bieten. Eine ausführliche Dokumentation, einschließlich des finalen Schließplans und der Übergabe der Sicherungskarten, bildet den Abschluss des Projekts und garantiert Ihnen eine transparente und sichere Verwaltung Ihrer neuen Anlage.
+              </p>
+
+            </div>
+
+            <EnterpriseROICalculator />
 
             <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
               <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
@@ -399,6 +447,6 @@ export default async function SchliessanlagenPage() {
           ))}
         </ul>
       </Section>
-    </>
+    </main>
   );
 }
