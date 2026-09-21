@@ -1,3 +1,4 @@
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
@@ -129,6 +130,26 @@ const AUDIENCES = [
 
 /** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
 const FALLBACK_FAQ = [
+  {
+    question: 'Welches Profilsystem eignet sich am besten für eine hohe Mitarbeiterfluktuation?',
+    answer: 'Bei hoher Fluktuation empfehlen wir mechatronische Systeme oder Wendeschlüsselsysteme mit technischem und rechtlichem Kopierschutz (Markenschutz und Patent). Mechatronische Anlagen bieten den Vorteil, dass verlorene Medien sofort gesperrt werden können, ohne physische Zylinder tauschen zu müssen.'
+  },
+  {
+    question: 'Können bestehende Einzelschließungen in eine neue Schließanlage integriert werden?',
+    answer: 'Technisch ist eine nachträgliche Integration von Fremdsystemen in der Regel nicht möglich. Allerdings können wir oft bestehende Beschläge und Schlösser beibehalten und lediglich die Profilzylinder durch die der neuen Anlage ersetzen, was Kosten spart.'
+  },
+  {
+    question: 'Wie verhält sich der Brandschutz in Verbindung mit Schließanlagen?',
+    answer: 'An Brand- und Rauchschutztüren dürfen ausschließlich speziell zertifizierte Zylinder und Beschläge eingesetzt werden (z.B. Antipanik-Zylinder). In der Planungsphase unseres Schließplans markieren wir diese Türen explizit, um die gesetzlichen Vorgaben strikt einzuhalten.'
+  },
+  {
+    question: 'Was passiert bei Verlust eines Generalhauptschlüssels (GHS)?',
+    answer: 'Der Verlust eines GHS ist bei rein mechanischen Anlagen der Worst Case, da theoretisch alle Zylinder der Anlage ausgetauscht werden müssten, um die Sicherheit wiederherzustellen. Deshalb empfehlen wir oft die Kombination mit elektronischen Zutrittskontrollen für die Außenhülle und mechanischen für den Innenbereich.'
+  },
+  {
+    question: 'Wie gewährleisten Sie die Datensicherheit bei elektronischen und mechatronischen Schließplänen?',
+    answer: 'Schließpläne und Sicherungskarten werden unter Einhaltung strenger Datenschutzrichtlinien physisch und digital gesichert. Die Legitimation für Nachbestellungen erfolgt ausschließlich über manipulationssichere Sicherungskarten und autorisierte Personen.'
+  },
   {
     question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
     answer:
@@ -332,6 +353,49 @@ export default async function SchliessanlagenPage() {
             oder eine Aushilfe das Büro der Leitung — reicht eine Gleichschließung nicht mehr aus.
             Dann planen wir eine Anlage mit Ebenen.
           </Alert>
+        </div>
+      </Section>
+
+
+      {/* Enterprise ROI Rechner & Erweiterter Inhalt */}
+      <Section id="roi" tone="muted">
+        <SectionHeading
+          eyebrow="ROI & Skalierung"
+          title="Enterprise Schließanlagen: Kalkulieren Sie Ihr Potenzial"
+          lead="Moderne mechanische und mechatronische Schließanlagen rechnen sich oft schneller als gedacht. Nutzen Sie unseren ROI-Kalkulator."
+        />
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start">
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Warum ein Neukauf oft günstiger ist als Flickschusterei</h3>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Viele Hausverwaltungen und Unternehmen scheuen die initiale Investition in eine komplett neue Schließanlage. Stattdessen werden über Jahre hinweg verlorene Schlüssel einzeln nachbestellt, Zylinder punktuell ausgetauscht und provisorische Berechtigungen vergeben. Diese Flickschusterei verursacht nicht nur enorme versteckte Verwaltungskosten, sondern stellt auch ein signifikantes Sicherheitsrisiko dar.
+            </p>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Mit einer professionell geplanten Neuanlage — sei es eine klassische Generalhauptschlüsselanlage oder ein mechatronisches System — reduzieren Sie den administrativen Aufwand drastisch. Verlorene Schlüssel können bei mechatronischen Systemen einfach ausprogrammiert werden, statt den Austausch ganzer Schließzylindergruppen nach sich zu ziehen.
+            </p>
+
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">Der Lebenszyklus einer professionellen Schließanlage</h4>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Bei der Kalkulation des ROI (Return on Investment) betrachten wir nicht nur die Anschaffungskosten, sondern die Total Cost of Ownership (TCO) über einen Zeitraum von 10 bis 15 Jahren. In diese Berechnung fließen ein:
+            </p>
+            <ul className="list-disc pl-5 space-y-2 text-[15px] text-[oklch(0.32_0.02_260)] marker:text-[oklch(0.52_0.24_260)]">
+              <li><strong>Verwaltungsaufwand:</strong> Zeitersparnis bei der Ausgabe und Rücknahme von Schlüsseln, insbesondere bei Mitarbeiterwechseln.</li>
+              <li><strong>Wartungskosten:</strong> Hochwertige Systeme namhafter Hersteller (wie BKS, EVVA, DOM oder KESO) bieten eine deutlich höhere Zyklenfestigkeit.</li>
+              <li><strong>Folgekosten bei Verlust:</strong> Kosten für Ersatzschlüssel und ggf. Zylindertausch im Vergleich zur einfachen Sperrung von Transpondern.</li>
+              <li><strong>Versicherungsprämien:</strong> Zertifizierte und VdS-anerkannte Schließanlagen können zu reduzierten Prämien in der Sachversicherung führen.</li>
+            </ul>
+
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">Erweiterte Systemarchitektur und Skalierbarkeit</h4>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Die zukunftssichere Planung einer Schließanlage erfordert Weitsicht. Wir empfehlen immer eine Reserve-Planung, die künftige Erweiterungen ohne strukturelle Neukonzeption ermöglicht. Bei mechanischen Anlagen bedeutet dies, dass bei der Berechnung der Schließkreise sogenannte &quot;freie Sperren&quot; vorgehalten werden. So können später neue Türen oder Gebäudeabschnitte nahtlos integriert werden, ohne dass die Hierarchie der Anlage (z.B. der Generalhauptschlüssel) ihre Integrität verliert.
+            </p>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Unser ROI-Kalkulator gibt Ihnen einen ersten Richtwert, wie sich diese Investition in Abhängigkeit von Türanzahl und Mitarbeiterstruktur über die Zeit amortisiert.
+            </p>
+          </div>
+          <div className="sticky top-24">
+            <EnterpriseRoiCalculator />
+          </div>
         </div>
       </Section>
 
