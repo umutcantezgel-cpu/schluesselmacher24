@@ -23,9 +23,44 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
+import type { Graph } from "schema-dts";
+import { getSiteUrl } from "@/lib/site-url";
 import { JsonLd, faqSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'tuer-und-schliesstechnik';
+
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/${ROUTE}`;
+const pageTitle = "Tür- und Schließtechnik: Sicherheit vom Zylinder bis zum Mehrfachschloss";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "SCHLÜSSELMACHER24",
+      "url": siteUrl,
+      "logo": `${siteUrl}/logo.png`
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": siteUrl,
+      "name": "SCHLÜSSELMACHER24",
+      "publisher": { "@id": `${siteUrl}/#organization` }
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}/#webpage`,
+      "url": pageUrl,
+      "name": pageTitle,
+      "isPartOf": { "@id": `${siteUrl}/#website` },
+      "about": { "@id": `${siteUrl}/#organization` }
+    }
+  ]
+} satisfies Graph;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
@@ -126,6 +161,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
       data-search={JSON.stringify(searchParams)}
       className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
     >
+      <JsonLd data={structuredData} />
       <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
 
       <PageHeader
