@@ -1,16 +1,21 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# RED-TEAM AUDIT BEFUNDE
 
-## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+## 1. SILENT LOGIC DEATH & INTERAKTIONS-FALLEN
+- Es wurden auf diversen Seiten Buttons und Interaktionselemente gefunden, die nur Platzhalter-Funktionen aufrufen.
+- Formulare (wie in der Service-Seite) haben unzureichendes Error-Handling.
 
-## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+## 2. HYDRATION MISMATCHES & SSR-KONFLIKTE
+- Datumsformate werden in Client-Komponenten direkt gerendert, was zu Hydration-Mismatch mit dem SSR-Ergebnis führt.
+- Fehlende `useEffect` Guards beim Zugriff auf `window`.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TYPESCRIPT-SCHWÄCHEN
+- `as any` wird vereinzelt verwendet.
+- Schema.org Graphen sind nicht mit `satisfies Graph` typisiert.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. CORE WEB VITALS SÜNDEN
+- Bilder laden in einigen Layout-Bereichen ohne explizite Größenangaben.
+- Layout-Shifts durch nicht-harmonisierte CSS-Grids.
+
+## DESIGN-KRITIK (SCHWEIZER AESTHETIK)
+- Inkonsistente Schattierungen, die nicht der seidenweichen OKLCH-Spezifikation entsprechen.
+- Typografischer Rhythmus in den Überschriften kann durch verbessertes Tracking und Line-Height weiter geschärft werden.
