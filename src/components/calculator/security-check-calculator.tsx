@@ -1,7 +1,8 @@
 'use client';
 
 import { useActionState, useOptimistic } from 'react';
-import { calculateDoorSecurity, type SecurityCheckResult } from '@/actions/calculate-door-security';
+import { calculateDoorSecurity } from '@/actions/calculate-door-security';
+import type { SecurityCheckResult } from '@/lib/schemas/security-check';
 import { Lock, ShieldCheck, ShieldAlert } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -50,7 +51,7 @@ export function SecurityCheckCalculator() {
               { id: 'HAUSTUER', label: 'Haustür' },
               { id: 'GEWERBE', label: 'Gewerbe' },
             ].map((option) => (
-              <label key={option.id} className="relative flex cursor-pointer rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4 shadow-sm hover:border-[oklch(0.52_0.24_260/0.5)] transition-colors focus-within:ring-2 focus-within:ring-[oklch(0.52_0.24_260/0.5)]">
+              <label key={option.id} className="relative flex cursor-pointer rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4 shadow-sm hover:border-[oklch(0.52_0.24_260/0.5)] transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none focus-within:ring-2 focus-within:ring-[oklch(0.52_0.24_260/0.5)] focus-within:ring-offset-2">
                 <input type="radio" name="doorType" value={option.id} defaultChecked={option.id === 'WOHNUNG'} className="sr-only peer" />
                 <div className="flex w-full items-center justify-between">
                   <span className="text-sm font-medium text-[oklch(0.32_0.02_260)] peer-checked:text-[oklch(0.52_0.24_260)]">{option.label}</span>
@@ -70,7 +71,7 @@ export function SecurityCheckCalculator() {
               { id: 'MEHRFACH', label: 'Mehrfach' },
               { id: 'ELEKTRONISCH', label: 'Smart/Elektronisch' },
             ].map((option) => (
-              <label key={option.id} className="relative flex cursor-pointer rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4 shadow-sm hover:border-[oklch(0.52_0.24_260/0.5)] transition-colors focus-within:ring-2 focus-within:ring-[oklch(0.52_0.24_260/0.5)]">
+              <label key={option.id} className="relative flex cursor-pointer rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4 shadow-sm hover:border-[oklch(0.52_0.24_260/0.5)] transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none focus-within:ring-2 focus-within:ring-[oklch(0.52_0.24_260/0.5)] focus-within:ring-offset-2">
                 <input type="radio" name="lockType" value={option.id} defaultChecked={option.id === 'EINFACH'} className="sr-only peer" />
                 <div className="flex w-full items-center justify-between">
                   <span className="text-sm font-medium text-[oklch(0.32_0.02_260)] peer-checked:text-[oklch(0.52_0.24_260)]">{option.label}</span>
@@ -89,7 +90,7 @@ export function SecurityCheckCalculator() {
               { id: 'STANDARD', label: 'Standard Vorlauf' },
               { id: 'HOCH', label: 'Express (+20%)' },
             ].map((option) => (
-              <label key={option.id} className="relative flex cursor-pointer rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4 shadow-sm hover:border-[oklch(0.52_0.24_260/0.5)] transition-colors focus-within:ring-2 focus-within:ring-[oklch(0.52_0.24_260/0.5)]">
+              <label key={option.id} className="relative flex cursor-pointer rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4 shadow-sm hover:border-[oklch(0.52_0.24_260/0.5)] transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none focus-within:ring-2 focus-within:ring-[oklch(0.52_0.24_260/0.5)] focus-within:ring-offset-2">
                 <input type="radio" name="urgency" value={option.id} defaultChecked={option.id === 'STANDARD'} className="sr-only peer" />
                 <div className="flex w-full items-center justify-between">
                   <span className="text-sm font-medium text-[oklch(0.32_0.02_260)] peer-checked:text-[oklch(0.52_0.24_260)]">{option.label}</span>
@@ -138,7 +139,7 @@ export function SecurityCheckCalculator() {
         <button
           type="submit"
           disabled={isPending}
-          className="w-full rounded-xl bg-[oklch(0.52_0.24_260)] py-4 text-[15px] font-semibold text-white shadow-sm transition-all hover:bg-[oklch(0.48_0.24_260)] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full rounded-xl bg-[oklch(0.52_0.24_260)] py-4 text-[15px] font-semibold text-white shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none hover:bg-[oklch(0.48_0.24_260)] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.52_0.24_260)] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {isPending ? (
             <>
