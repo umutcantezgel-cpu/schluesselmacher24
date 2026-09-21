@@ -1,16 +1,18 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# Red-Team Audit (JC-PHILOSOPHER-REDTEAM-v1)
 
-## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+## 1. SILENT LOGIC DEATH & INTERAKTIONS-FALLEN
+- Gefunden: Diverse UI-Komponenten (z.B. Buttons in `src/components/ui/button.tsx`) haben potenziell fehlende Loading-States bei Server Actions.
+- Befund: Formulare könnten in bestimmten Edge-Cases Hydration-Fehler verursachen, wenn Netzwerk-Feedback ausbleibt.
 
-## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+## 2. HYDRATION MISMATCHES & SSR-KONFLIKTE
+- Gefunden: Keine direkten `window`-Zugriffe im Render-Pfad entdeckt, jedoch ist eine ständige Überprüfung der `useOptimistic`-Implementierungen in den Calculators notwendig, um Zustandssynchronisationsprobleme zu vermeiden.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TYPESCRIPT-SCHWÄCHEN
+- Befund: Die strikte Regelung von `any` und Enums erfordert eine Durchsicht der Shared Types.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. CORE WEB VITALS SÜNDEN
+- Befund: Fehlende `view-transition-name` in dynamischen Routen, was nahtlose Übergänge behindert. Bilder müssen auf strikte Aspect-Ratios geprüft werden.
+
+## Design Kritik (Schweizer Light Mode)
+- Farb-Tokens: Alle Schatten und Grautöne müssen strictly auf OKLCH (Canvas oklch(0.988 0.002 260)) umgestellt werden, um chromatische Reinheit zu gewährleisten.
+- Animation: Reduktion auf EINE dominante Signature-Interaktion pro Route.
