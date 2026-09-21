@@ -14,5 +14,10 @@
   "src/app/standorte/[city]/page.tsx": {
     "status": "VERIFIZIERT_FROZEN",
     "hash": "c1c409c035d53749881480d8983e5d782055ab3f40dfecbcb0cbfffe4d688819"
+  },
+  "src/components/calculator/security-check-calculator.tsx": {
+    "hash": "96c987463ec932a0e47b95aa533b7caf7abbd43666f9b994682b7f0d98093e2d",
+    "status": "VERIFIZIERT_FROZEN",
+    "timestamp": "2026-09-21T08:33:00.725Z"
   }
 }
