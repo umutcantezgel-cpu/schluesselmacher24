@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,9 +166,33 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
-  const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
+  const faq = page?.faq?.length ? page.faq : [...FALLBACK_FAQ,
+  {
+    question: 'Was ist der Unterschied zwischen einer Z-Anlage und einer HS-Anlage?',
+    answer: 'Eine Zentralschlossanlage (Z-Anlage) zeichnet sich dadurch aus, dass verschiedene Einzelschlüssel ein gemeinsames Zentralschloss (z.B. die Haustür eines Mehrfamilienhauses) schließen können, während sie gleichzeitig nur ihren jeweiligen Einzelzylinder (die Wohnungstür) öffnen. Bei einer Hauptschlüsselanlage (HS-Anlage) gibt es hingegen einen übergeordneten Hauptschlüssel, der alle Zylinder der Anlage schließt, während die Einzelschlüssel nur für spezifische Türen berechtigt sind.'
+  },
+  {
+    question: 'Wie verhalte ich mich bei Schlüsselverlust in einer Schließanlage?',
+    answer: 'Bei Verlust eines Schlüssels, der zu einer registrierten Schließanlage gehört, ist umgehend die Hausverwaltung oder der Sicherheitsbeauftragte zu informieren. Aus Sicherheitsgründen und um den Versicherungsschutz aufrechtzuerhalten, müssen in der Regel alle Zylinder, die mit dem verlorenen Schlüssel geöffnet werden konnten, ausgetauscht werden. Handelt es sich um einen Hauptschlüssel, kann dies den Austausch der gesamten Anlage nach sich ziehen.'
+  },
+  {
+    question: 'Können Schließanlagen nachträglich erweitert werden?',
+    answer: 'Ja, professionelle mechanische Schließanlagen werden mit einer "Ausbaureserve" geplant. Das bedeutet, dass bei der mathematischen Berechnung der Schließcodes bereits Kapazitäten für zukünftige Erweiterungen, neue Abteilungen oder zusätzliche Gebäude berücksichtigt werden. Es ist jedoch wichtig, diese Anforderungen schon bei der Erstbestellung anzugeben.'
+  },
+  {
+    question: 'Was ist eine Sicherungskarte und wofür brauche ich sie?',
+    answer: 'Die Sicherungskarte (oft auch Servicekarte genannt) ist der "Ausweis" Ihrer Schließanlage. Sie berechtigt ausschließlich den Inhaber der Karte dazu, Nachschlüssel oder zusätzliche Zylinder für die bestehende Anlage fertigen zu lassen. Dies schützt effektiv vor unberechtigten Schlüsselkopien und gewährleistet die Integrität Ihres Sicherheitssystems.'
+  },
+];
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
@@ -332,6 +357,70 @@ export default async function SchliessanlagenPage() {
             oder eine Aushilfe das Büro der Leitung — reicht eine Gleichschließung nicht mehr aus.
             Dann planen wir eine Anlage mit Ebenen.
           </Alert>
+        </div>
+      </Section>
+
+
+      {/* Enterprise ROI und Erweiterte Methodik */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Moderne Schließanlagen-Architektur im Enterprise-Umfeld"
+        />
+        <div className="mt-8 grid gap-12 lg:grid-cols-2">
+          <div className="prose prose-sm md:prose-base prose-neutral max-w-none text-foreground-muted">
+            <h3 className="text-xl font-bold text-foreground mb-4">Warum eine systematische Schließplanung essenziell ist</h3>
+            <p>
+              Die Konzeption einer komplexen Schließanlage geht weit über die bloße Zuteilung von Schlüsseln hinaus.
+              Sie ist eine fundamentale Sicherheitsarchitektur, die den physischen Zugang zu kritischen Ressourcen
+              eines Unternehmens regelt. Eine durchdachte Generalhauptschlüsselanlage (GHS) minimiert administrative
+              Aufwände, erhöht die organisatorische Effizienz und schützt sensible Unternehmensbereiche vor unbefugtem Zugriff.
+            </p>
+            <p className="mt-4">
+              Bei der Planung müssen verschiedene Faktoren berücksichtigt werden: Die aktuelle Organisationsstruktur,
+              zukünftiges Wachstum, Fluktuation von Mitarbeitern und externe Dienstleister. Jeder verlorene Schlüssel
+              kann im schlimmsten Fall den Austausch hunderter Zylinder bedeuten, wenn die Anlage nicht in logische,
+              abgeschottete Sicherheitszonen unterteilt wurde.
+            </p>
+            <h3 className="text-xl font-bold text-foreground mt-8 mb-4">Die technische Methodik hinter der Berechtigungsmatrix</h3>
+            <p>
+              Das Kernstück jeder mechanischen Schließanlage ist der Schließplan – eine detaillierte Kreuzmatrix,
+              die Schließzylinder (Türen) und Schlüssel (Nutzer) miteinander in Beziehung setzt. Diese Matrix
+              übersetzt hierarchische Unternehmensstrukturen in mechanische Stiftzuhaltungen innerhalb der Zylinder.
+            </p>
+            <p className="mt-4">
+              Moderne Zylinder nutzen hochkomplexe Profilierungen und parazentrische Schlüsselprofile, um
+              Picking und Manipulation zu erschweren. Die Schließgeheimnisse werden durch Variation der Stiftlängen
+              und zusätzliche Sperrelemente (wie seitliche Codierstifte oder Magnetpillen) realisiert.
+              Dies ermöglicht eine astronomische Anzahl von Permutationen, die selbst für große Konzernzentralen ausreicht.
+            </p>
+            <h3 className="text-xl font-bold text-foreground mt-8 mb-4">Wirtschaftlichkeit und Total Cost of Ownership (TCO)</h3>
+            <p>
+              Die anfänglichen Investitionskosten (CAPEX) einer mechanischen Anlage sind oft niedriger als bei
+              vollelektronischen Systemen. Jedoch müssen die laufenden Betriebskosten (OPEX) genau betrachtet werden.
+              Der Verwaltungsaufwand für die Schlüsselausgabe, Dokumentation und Rücknahme bindet wertvolle
+              Personalressourcen im Facility Management.
+            </p>
+            <p className="mt-4">
+              Darüber hinaus stellt der Verlust eines übergeordneten Gruppenschlüssels oder gar eines Generalhauptschlüssels
+              ein signifikantes finanzielles Risiko dar. Die Versicherungsschutz-Auflagen erfordern in solchen Fällen
+              häufig den sofortigen Austausch der betroffenen Schließgruppen. Daher ist eine hybride Architektur,
+              die mechanische Grundsicherung mit elektronischen Zylindern an Außen- und Hochsicherheitstüren kombiniert,
+              oft der wirtschaftlichste und sicherste Ansatz.
+            </p>
+            <h3 className="text-xl font-bold text-foreground mt-8 mb-4">Nachhaltigkeit und Langlebigkeit</h3>
+            <p>
+              Qualitativ hochwertige Schließzylinder aus deutscher oder Schweizer Fertigung (z.B. KESO, EVVA, DOM, BKS)
+              zeichnen sich durch enorme Langlebigkeit aus. Durch modulare Bauweisen können Zylinder bei Umzügen
+              oder Umbauten an neue Türstärken angepasst werden, anstatt sie komplett zu ersetzen. Dies schont
+              Budgets und Ressourcen gleichermaßen.
+            </p>
+          </div>
+          <div>
+            <div className="sticky top-24">
+              <EnterpriseRoiCalculator />
+            </div>
+          </div>
         </div>
       </Section>
 
