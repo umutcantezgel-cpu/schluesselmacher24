@@ -44,6 +44,7 @@ Backend unter `/admin` bearbeitet:
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
 
+
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
