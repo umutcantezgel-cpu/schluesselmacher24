@@ -1,16 +1,26 @@
 # Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
 
 ## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+- **Befund:** Mehrere interaktive Elemente in den UI-Komponenten rufen potenziell leere Funktionen auf oder lassen Nutzer bei Formularen ohne Feedback im Unklaren.
+- **Speziell:** `src/components/forms/photo-upload.tsx` und andere Formulare zeigen bei Netzwerkfehlern oder langsamen Verbindungen oft keine adäquaten Ladezustände an.
+- **Empfehlung:** Integration von React 19 `useActionState` und `useOptimistic` in allen interaktiven Modulen zur Garantie von robusten Lade- und Fehlerzuständen.
 
 ## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+- **Befund:** Es besteht die Gefahr, dass Datumsformatierungen oder dynamische Berechnungen (z.B. in Kalkulatoren wie `src/components/calculator/service-budget-calculator.tsx`) auf Server und Client unterschiedlich rendern.
+- **Speziell:** Fehlen von strengen Mounting-Guards bei Zugriff auf client-spezifische APIs.
+- **Empfehlung:** Striktes Isolieren interaktiver Logik in dedizierte Client-Komponenten und Sicherstellung asynchroner Zugriffe auf `params`, `searchParams` etc. (Next.js 16+ Standard).
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TypeScript-Schwächen
+- **Befund:** Gefahr von maskierten Typfehlern oder unvollständigen Interfaces in der Datenstruktur.
+- **Speziell:** Die Schema.org Graphen in `src/components/seo/json-ld.tsx` müssen strenger typisiert werden.
+- **Empfehlung:** Eliminierung aller verbleibenden `any`-Typen und Ersatz durch präzise Typen oder `satisfies`-Deklarationen. Keine Verwendung von Enums (nur `as const` Maps).
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. Core Web Vitals Sünden
+- **Befund:** Optimierungspotenzial bei der Ladezeit und visuellen Stabilität.
+- **Speziell:** Bilder ohne explizite Dimensionen oder unoptimierte Assets.
+- **Empfehlung:** Durchgehende Nutzung von Next.js Image mit definierten Aspect Ratios. Einführung von `use cache` Memoisierung für rechenintensive oder datenlastige Routen.
+
+## 5. Design-Kritik (Schweizer Ästhetik-Standards)
+- **Befund:** Inkonsistenzen in der visuellen Hierarchie und Rhythmik.
+- **Speziell:** Einige Komponenten nutzen eventuell noch nicht die reinen OKLCH-Tokens der "Swiss Light Mode" Doktrin (z.B. `Canvas oklch(0.988 0.002 260)`).
+- **Empfehlung:** Rigorose Harmonisierung durch CSS Subgrid, 1px Kanten und Vermeidung von "Frankenstein-UI"-Elementen. Konzentration auf exakt eine dominante Signature-Interaktion pro Route.
