@@ -46,4 +46,4 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 
 ## Architecture Matrix
 
-See `.jules/architecture-matrix.md` for the full routing architecture.
+See `.jules/architecture-matrix.md` for the full routing architecture and `.jules/revolution-plan.json` for the master blueprint. The codebase DNA profile is stored in `.jules/codebase-dna.json`.
