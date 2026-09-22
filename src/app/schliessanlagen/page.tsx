@@ -12,6 +12,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
 
@@ -129,6 +130,20 @@ const AUDIENCES = [
 
 /** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
 const FALLBACK_FAQ = [
+
+  {
+    question: 'Wie funktioniert die Nachbestellung bei patentierten Anlagen?',
+    answer: 'Nachbestellungen sind nur gegen Vorlage der originalen Sicherungskarte möglich. Wir authentifizieren die Anfrage und bestellen die Zylinder oder Schlüssel exakt nach den Vorgaben des ursprünglichen Schließplans beim Hersteller.',
+  },
+  {
+    question: 'Was ist der Unterschied zwischen einer Hauptschlüssel- und einer Generalhauptschlüsselanlage?',
+    answer: 'Eine Hauptschlüsselanlage (HS) hat einen übergeordneten Schlüssel, der alle Zylinder schließt. Eine Generalhauptschlüsselanlage (GHS) hat zusätzlich Gruppenschlüssel, die nur bestimmte Teilbereiche (z.B. Abteilungen) schließen, während der GHS-Schlüssel weiterhin überall passt. GHS-Anlagen bilden komplexe Firmenhierarchien ab.',
+  },
+  {
+    question: 'Wie hoch ist die Lebensdauer einer hochwertigen Schließanlage?',
+    answer: 'Bei regelmäßiger Wartung (Reinigung, Spezialpflegeöl) und sachgemäßer Nutzung erreichen hochwertige Zylinder namhafter Hersteller eine Lebensdauer von 15 bis über 20 Jahren. Der Verschleiß hängt primär von der Schließfrequenz ab.',
+  },
+
   {
     question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
     answer:
@@ -165,13 +180,16 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props { params: Promise<{ id?: string }>; searchParams: Promise<{ [key: string]: string | string[] | undefined }>; }
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <PageHeader
         eyebrow="Mechanische Schließanlagen"
         title={page?.headline ?? 'Mechanische Schließanlagen'}
@@ -335,6 +353,68 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+
+      {/* Wirtschaftlichkeit */}
+      <Section>
+        <SectionHeading
+          eyebrow="Wirtschaftlichkeit & ROI"
+          title="Wann rechnet sich der Wechsel zur Elektronik?"
+          lead="Nutzen Sie unseren Kalkulator, um die Amortisation einer elektronischen Schließanlage zu simulieren."
+        />
+        <div className="mt-8">
+          <EnterpriseRoiCalculator />
+        </div>
+      </Section>
+
+      {/* Tiefenanalyse */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Tiefenanalyse"
+          title="Architektur und Skalierbarkeit mechanischer Schließanlagen"
+          lead="Ein detaillierter Blick auf die Planung, Sicherheit und Lebenszyklen von modernen Schließsystemen."
+        />
+        <div className="mt-8 prose prose-slate max-w-none text-[15px] leading-relaxed text-foreground-muted">
+          <p>
+            Die Entscheidung für eine spezifische Schließanlage ist eine langfristige infrastrukturelle Weichenstellung.
+            Mechanische Schließanlagen, insbesondere Generalhauptschlüsselanlagen (GHS), bilden das Rückgrat der Gebäudesicherheit in unzähligen Unternehmen, Behörden und Wohnkomplexen.
+            Ihre Architektur basiert auf präziser Feinmechanik, bei der Profilzylinder mit hochkomplexen Stift- und Scheibenzuhaltungen auf exakt gefräste Schlüsselprofile reagieren.
+          </p>
+          <h3 className="mt-8 text-lg font-bold text-foreground">Die Mathematik der Schließpläne</h3>
+          <p>
+            Die Planung einer Schließanlage gleicht der Konstruktion einer mathematischen Matrix. Auf der X-Achse befinden sich die Nutzer (Personengruppen, Abteilungen), auf der Y-Achse die Schließzylinder (Räume, Zonen).
+            Jeder Kreuzungspunkt definiert eine Zutrittsberechtigung.
+            Bei der Konstruktion der Zylinder werden diese Berechtigungen durch Trennungen der Stiftzuhaltungen physisch realisiert.
+            Je komplexer die Hierarchie (Zentralschlossanlagen, Hauptschlüsselanlagen, Generalhauptschlüsselanlagen), desto mehr mechanische Varianz muss in jedem Zylinder abgebildet werden.
+            Dies führt unweigerlich zu einer Reduzierung der passiven Sicherheit (Abtastsicherheit), da mehr mögliche Scherkanten im Zylinderkern existieren.
+          </p>
+          <h3 className="mt-8 text-lg font-bold text-foreground">Kryptografische Mechanik: Patente und Kopierschutz</h3>
+          <p>
+            Ein zentrales Qualitätsmerkmal hochwertiger mechanischer Anlagen ist der rechtliche und technische Kopierschutz.
+            Moderne Hochsicherheitszylinder verfügen nicht nur über Standard-Stiftzuhaltungen, sondern integrieren zusätzliche Sperrelemente wie Profilleisten, magnetische Rotoren oder bewegliche Elemente im Schlüssel (z.B. Kaba, DOM, BKS).
+            Der Patentschutz stellt sicher, dass Rohlinge nicht frei auf dem Markt verfügbar sind.
+            Die Fertigung von Nachschlüsseln ist ausschließlich dem Hersteller oder zertifizierten Fachpartnern nach Vorlage einer Sicherungskarte gestattet.
+            Dies verhindert illegale Schlüsselkopien und gewährleistet die Integrität der Anlage über Jahrzehnte.
+          </p>
+          <h3 className="mt-8 text-lg font-bold text-foreground">Lebenszyklus und Schwachstellen-Analyse</h3>
+          <p>
+            Mechanische Anlagen sind robust und benötigen keine Stromversorgung, was sie immun gegen Stromausfälle oder Netzwerkprobleme macht.
+            Ihre größte Schwachstelle ist jedoch der Schlüsselverlust.
+            Geht ein Generalhauptschlüssel verloren, ist die Sicherheit des gesamten Objekts kompromittiert.
+            Die Wiederherstellung der Sicherheit erfordert oft den Austausch hunderter Zylinder, was immense Kosten verursacht.
+            Aus diesem Grund empfehlen wir bei großen, dynamischen Organisationen zunehmend hybride Ansätze oder rein elektronische Systeme (Mechatronik), bei denen verlorene Medien digital gesperrt werden können.
+            Trotzdem bleibt die Mechanik im Bereich kritischer Infrastruktur (Kritis) oft die primäre Fallback-Lösung.
+          </p>
+          <h3 className="mt-8 text-lg font-bold text-foreground">Planungsmethodik und Erweiterbarkeit (Reserveplanung)</h3>
+          <p>
+            Eine professionelle Schließplanung berücksichtigt stets zukünftiges Wachstum.
+            Werden Anlagen ohne Reserven geplant, können neue Abteilungen oder Gebäude später nicht in das bestehende System integriert werden.
+            Wir berechnen bei jeder GHS-Anlage systematische Schließungsreserven auf Basis algorithmischer Modelle.
+            Dabei achten wir darauf, dass die Erweiterungen die Sicherheit der bestehenden Hierarchien nicht schwächen.
+            Die Dokumentation erfolgt digital und revisionssicher, sodass auch nach 15 Jahren exakte Nachbestellungen und Modifikationen möglich sind.
+          </p>
+        </div>
+      </Section>
+
       {/* Fragen */}
       <Section>
         <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
@@ -399,6 +479,6 @@ export default async function SchliessanlagenPage() {
           ))}
         </ul>
       </Section>
-    </>
+    </main>
   );
 }
