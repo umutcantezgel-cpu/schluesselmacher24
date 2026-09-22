@@ -14,6 +14,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
+
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,7 +167,20 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+
+
+
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+
+
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -264,6 +279,56 @@ export default async function SchliessanlagenPage() {
           <div className="mt-5">
             <SystemVergleich />
           </div>
+        </div>
+      </Section>
+
+
+      {/* Tiefgreifende Architektonische Methodik */}
+      <Section id="architektur">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-start lg:gap-14">
+          <div>
+            <h2 className="text-2xl font-bold leading-tight text-foreground md:text-3xl">
+              Architektonische Methodik & Skalierbarkeit
+            </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Eine moderne Schließanlage ist mehr als nur eine Sammlung von Zylindern und Schlüsseln; sie ist die physische Manifestation der Berechtigungsstruktur Ihres Unternehmens. Die architektonische Planung erfordert Präzision, Weitsicht und eine tiefgreifende Methodik, um Sicherheit, Komfort und Flexibilität in Einklang zu bringen. Wir verfolgen einen systematischen Ansatz, der weit über die reine Bestandsaufnahme hinausgeht. Jeder Schließplan ist ein Unikat, das die spezifischen Abläufe, Hierarchien und Sicherheitsanforderungen Ihres Objekts exakt abbildet.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Unser Ansatz beginnt mit einer detaillierten Schwachstellenanalyse und einer umfassenden Risikoabschätzung. Wir bewerten nicht nur die offensichtlichen Zugangspunkte wie Haupteingänge und Serverräume, sondern auch Nebeneingänge, Fluchtwege, Lieferantenzugänge und interne Sicherheitszonen. Die Methodik basiert auf der Schaffung modularer Sicherheitszonen, die unabhängig voneinander verwaltet und bei Bedarf erweitert werden können. Dies stellt sicher, dass eine Kompromittierung eines Bereichs nicht die Gesamtsicherheit der Anlage gefährdet.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Skalierbarkeit ist ein weiterer Eckpfeiler unserer Planungsphilosophie. Unternehmen wachsen, Abteilungen werden umstrukturiert und räumliche Anforderungen ändern sich. Eine starr geplante Schließanlage ohne Reserven führt unweigerlich zu hohen Folgekosten, da bei jeder noch so kleinen Änderung das gesamte System neu gedacht werden muss. Wir integrieren von Beginn an strategische Ausbaureserven auf allen Hierarchieebenen des Schließplans. Dies ermöglicht es, neue Türen, Mitarbeiter oder ganze Gebäudekomplexe nahtlos in die bestehende Struktur zu integrieren, ohne die physische Integrität oder die logische Klarheit der Anlage zu beeinträchtigen.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-foreground">
+              Zertifizierungen und Normen für maximale Sicherheit
+            </h3>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Jedes Element unserer Schließanlagen entspricht den höchsten nationalen und internationalen Sicherheitsstandards. Von der VdS-Anerkennung über DIN EN 1303 bis hin zu spezifischen Anforderungen für den Brandschutz und Fluchtwege – wir gewährleisten, dass Ihre Anlage nicht nur funktional, sondern auch rechtssicher und versicherungskonform ist. Die Wahl der richtigen Zylinder, ob mit Bohr-, Zieh- oder Kopierschutz, wird individuell auf das Gefährdungspotenzial jeder einzelnen Tür abgestimmt. Mechanische Schließzylinder der höchsten Sicherheitsstufe bieten massiven Widerstand gegen Manipulationstechniken wie Picking oder Bumping und sind durch patentierte Schlüsselprofile vor unberechtigten Kopien geschützt.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Darüber hinaus beraten wir Sie umfassend zu den Lebenszykluskosten verschiedener Systeme. Während mechanische Anlagen in der Anschaffung oft günstiger erscheinen, können elektronische oder mechatronische Systeme bei hoher Fluktuation oder häufigen Schlüsselverlusten langfristig deutlich wirtschaftlicher sein. Unser Ziel ist es, die für Ihr spezifisches Risikoprofil und Budget optimale Balance zwischen Sicherheit, Komfort und Total Cost of Ownership (TCO) zu finden. Vertrauen Sie auf unsere Expertise, um eine zukunftssichere Sicherheitsarchitektur zu realisieren, die mit Ihrem Unternehmen wächst und höchsten Ansprüchen genügt.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Enterprise ROI Kalkulator Modul */}
+      <Section tone="muted">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-start lg:gap-14">
+          <div>
+            <h2 className="text-2xl font-bold leading-tight text-foreground md:text-3xl">
+              Investition und Wirtschaftlichkeit
+            </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Die Wahl zwischen mechanischer und elektronischer Schließtechnik ist eine fundamentale Investitionsentscheidung. Elektronische Anlagen erfordern eine höhere Startinvestition, punkten aber bei den Betriebskosten enorm, insbesondere wenn Schlüssel verloren gehen. Bei einer mechanischen Generalhauptschlüsselanlage bedeutet der Verlust eines übergeordneten Schlüssels oft den kostenintensiven Austausch zahlloser Zylinder, um die Sicherheit wiederherzustellen. Elektronische Systeme erlauben hingegen das einfache und sofortige Sperren verlorener Transponder, was diesen Risikofaktor vollständig eliminiert.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Mit unserem interaktiven Enterprise ROI-Kalkulator können Sie die zu erwartenden Kosten für Ihr spezifisches Projekt simulieren. Geben Sie einfach die Anzahl der Türen und Nutzer ein und schätzen Sie ab, wie häufig Schlüssel in Ihrer Organisation erfahrungsgemäß verloren gehen. Das Modell berechnet in Echtzeit, ab wann sich der Wechsel zu einer intelligenten, elektronischen Lösung für Ihr Unternehmen amortisiert.
+            </p>
+          </div>
+          <EnterpriseROICalculator />
         </div>
       </Section>
 
