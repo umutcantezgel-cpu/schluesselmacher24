@@ -13,6 +13,10 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
+
+
+
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
 
 const ROUTE = 'schliessanlagen';
@@ -165,7 +169,11 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props { params: Promise<{ id?: string }>; searchParams: Promise<{ [key: string]: string | string[] | undefined }>; }
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  void params;
+  void searchParams;
+
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -189,6 +197,81 @@ export default async function SchliessanlagenPage() {
           </>
         }
       />
+
+
+      {/* Fachliche Tiefenanalyse & Methodik (Expanded Content > 800 W.) */}
+      <Section id="methodik" tight>
+        <div className="mx-auto max-w-4xl space-y-8">
+          <h2 className="text-3xl font-bold tracking-tight text-[oklch(0.16_0.02_260)]">Architektur moderner Schließanlagen: Von der Planung bis zum Betrieb</h2>
+
+          <div className="prose prose-lg text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+            <p>
+              Die Konzeption einer funktionalen, sicheren und zukunftsfähigen Schließanlage erfordert weit mehr als nur das Zählen von Zylindern und Schlüsseln. Es handelt sich um ein komplexes architektonisches Unterfangen, bei dem Sicherheitsanforderungen, organisatorische Abläufe und wirtschaftliche Effizienz in Einklang gebracht werden müssen. Eine sorgfältig geplante Anlage ist das Fundament der physischen Gebäudesicherheit und bestimmt maßgeblich, wie flexibel eine Organisation auf personelle oder strukturelle Veränderungen reagieren kann.
+            </p>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8">Technologische Grundlagen und Systemdifferenzierung</h3>
+            <p>
+              Im Zentrum der Überlegungen steht zunächst die Wahl der richtigen technologischen Basis. Mechanische Schließanlagen bilden seit Jahrzehnten das Rückgrat der Gebäudesicherheit. Sie zeichnen sich durch absolute Zuverlässigkeit, Wartungsfreiheit (keine Batterien erforderlich) und eine hohe Widerstandsfähigkeit gegen Umwelteinflüsse aus. Die Sicherheit beruht auf physischen Profilen, Stiftzuhaltungen und oftmals patentierten Schlüsselprofilen, die einen unberechtigten Nachschlüssel extrem erschweren oder gänzlich verhindern (Sicherungskarte).
+            </p>
+            <p>
+              Moderne mechanische Systeme nutzen komplexe Schließkurven und mehrdimensionale Abtastungen im Zylinderkern. Diese Hochsicherheitszylinder bieten nicht nur Schutz gegen klassische Aufbruchmethoden wie Picking oder Bumping (Schlagschlüssel-Methode), sondern integrieren oftmals auch einen serienmäßigen Bohr- und Ziehschutz. Die Planung solcher Systeme basiert auf einer strikten hierarchischen Struktur, dem sogenannten Schließplan.
+            </p>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8">Die Architektur des Schließplans: Hierarchien und Berechtigungen</h3>
+            <p>
+              Der Schließplan ist das Gehirn der Anlage. Er übersetzt die organisatorische Struktur eines Unternehmens oder Gebäudes in mechanische oder elektronische Berechtigungen. Die Komplexität reicht hierbei von der einfachen Gleichschließung bis hin zur komplexen Generalhauptschlüsselanlage (GHS-Anlage).
+            </p>
+            <p>
+              Bei einer GHS-Anlage existiert ein <strong>Generalhauptschlüssel</strong>, der jede einzelne Tür im System öffnet. Darunter gliedern sich Hauptschlüssel für einzelne Gebäudeteile oder Abteilungen, gefolgt von Gruppenschlüsseln für spezifische Teams. Ganz unten in der Hierarchie stehen die Einzelschlüssel, die beispielsweise nur den Zugang zum eigenen Büro und zur Haupteingangstür gewähren (Zentralzylinder-Funktion). Diese Matrix muss präzise mathematisch berechnet werden, da die Anzahl der physischen Variationen (Stiftteilungen) in einem Zylinder begrenzt ist. Fehler in der Planung können später dazu führen, dass die Anlage nicht mehr erweiterbar ist (Erschöpfung der Schließwerte).
+            </p>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8">Wirtschaftlichkeitsbetrachtung: Der ROI einer optimierten Anlage</h3>
+            <p>
+              Ein oft unterschätzter Aspekt ist die wirtschaftliche Dimension. Die Investition in eine gut strukturierte Anlage amortisiert sich durch signifikante Zeiteinsparungen in der Schlüsselverwaltung und reduzierte Risiken bei Schlüsselverlusten. Insbesondere bei einer hohen Fluktuation von Mitarbeitern oder wechselnden Raumbelegungen zeigt sich der wahre Wert eines durchdachten Konzepts.
+            </p>
+            <p>
+              Ein Schlüsselverlust in einer traditionellen GHS-Anlage kann den Austausch großer Teile der Zylinderlandschaft nach sich ziehen – ein enormer Kostenblock. Intelligente Planungskonzepte (wie die Bildung von Brandabschnitten oder die Kombination mit mechatronischen Zylindern an neuralgischen Punkten) minimieren dieses Risiko drastisch.
+            </p>
+
+            <EnterpriseROICalculator />
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-12">Mechatronische Integration: Das Beste aus zwei Welten</h3>
+            <p>
+              Um die Grenzen der reinen Mechanik zu überwinden, setzen moderne Architekturen zunehmend auf hybride Systeme. Außentüren, Serverräume und hochsensible Bereiche werden mit elektronischen Zylindern oder Wandlesern ausgestattet, während Innentüren mechanisch bleiben. Dieses Konzept vereint die Kosteneffizienz der Mechanik mit der Flexibilität der Elektronik (sofortige Sperrung verlorener Schlüssel, zeitgesteuerte Zutritte). Der &quot;Schlüssel&quot; ist in diesem Fall oft ein mechanischer Schlüssel mit integriertem RFID-Chip (Transponder).
+            </p>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8">Implementierungsstrategien und Lebenszyklus</h3>
+            <p>
+              Die Lebensdauer einer Schließanlage beträgt in der Regel 15 bis 20 Jahre. Daher ist die Skalierbarkeit bei der initialen Planung das absolute A und O. Wir empfehlen immer, eine Anlage mit sogenannten Schließwertreserven (Reservegruppen und Reservezylinder) zu projektieren. Dies bedeutet, dass in der mathematischen Matrix der Anlage Leerstellen gelassen werden, die später mit Zylindern gefüllt werden können, ohne das bestehende System zu stören oder Sicherheitslücken zu schaffen.
+            </p>
+
+            <h2 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] mt-12 mb-6">Erweiterte Fragen &amp; Antworten (Deep Dive FAQ)</h2>
+            <div className="space-y-6">
+              <div className="border border-[oklch(0.89_0.008_260/0.55)] rounded-lg p-5">
+                <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">1. Wie verhält sich eine GHS-Anlage bei einem Schlüsselverlust des Generalhauptschlüssels?</h3>
+                <p className="mt-2 text-[oklch(0.32_0.02_260)]">Bei Verlust des GHS muss aus sicherheitstechnischen Gründen in der Regel die komplette Anlage ausgetauscht werden, da der Finder potenziell zu allen Räumen Zugang hat. Dies ist das größte Risiko rein mechanischer Systeme und der Grund, warum wir für GHS-Ebenen zunehmend mechatronische Schließzylinder empfehlen.</p>
+              </div>
+              <div className="border border-[oklch(0.89_0.008_260/0.55)] rounded-lg p-5">
+                <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">2. Was bedeutet der Begriff &quot;Schließanlagen-Reserven&quot; konkret in der Praxis?</h3>
+                <p className="mt-2 text-[oklch(0.32_0.02_260)]">Reserven bedeuten, dass bei der werksseitigen Berechnung der Stiftteilungen bereits mathematische Kombinationen für zukünftige Türen oder Hierarchieebenen reserviert werden. Wenn Sie beispielsweise später einen neuen Gebäudetrakt anbauen, können wir Zylinder liefern, die exakt in die bestehende Hierarchie passen, ohne dass alte Zylinder ausgetauscht werden müssen.</p>
+              </div>
+              <div className="border border-[oklch(0.89_0.008_260/0.55)] rounded-lg p-5">
+                <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">3. Lassen sich mechanische Zylinder später elektronisch aufrüsten?</h3>
+                <p className="mt-2 text-[oklch(0.32_0.02_260)]">In den meisten Fällen ja, allerdings nicht der mechanische Zylinder selbst. Man tauscht den mechanischen Zylinder gegen einen elektronischen Halbzylinder oder Knaufzylinder aus. Wenn Sie einen hybriden Schlüssel (Kombischlüssel mit RFID) nutzen, kann derselbe Schlüssel weiterhin die verbliebenen mechanischen Türen als auch die neue elektronische Tür öffnen.</p>
+              </div>
+              <div className="border border-[oklch(0.89_0.008_260/0.55)] rounded-lg p-5">
+                <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">4. Welche DIN-Normen sind bei der Planung von Schließanlagen relevant?</h3>
+                <p className="mt-2 text-[oklch(0.32_0.02_260)]">Besonders wichtig ist die DIN 18252 (Profilzylinder für Türschlösser) sowie die DIN EN 1303, welche Anforderungen und Prüfverfahren für Schließzylinder bezüglich Verschleißfestigkeit, Verschlusssicherheit und Angriffswiderstand definiert. Zusätzlich müssen bei Fluchttüren die Normen DIN EN 179 und DIN EN 1125 für Panikverschlüsse zwingend beachtet werden.</p>
+              </div>
+              <div className="border border-[oklch(0.89_0.008_260/0.55)] rounded-lg p-5">
+                <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">5. Wie lange ist ein Schließanlagenprofil in der Regel patentrechtlich geschützt?</h3>
+                <p className="mt-2 text-[oklch(0.32_0.02_260)]">Markenschließanlagen werden häufig mit einem zeitlich begrenzten Patentschutz (oft 15 bis 20 Jahre ab Anmeldung) sowie einem unbegrenzten Markenschutz auf das Schlüsselprofil versehen. Solange das Patent gültig ist, dürfen Dritthersteller keine passenden Schlüsselrohlinge produzieren, was einen extrem hohen Schutz vor illegalen Kopien bietet.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
 
       {/* Einstieg und Begriffe */}
       <Section tight>
