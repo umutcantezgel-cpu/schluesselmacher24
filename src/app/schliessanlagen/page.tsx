@@ -1,3 +1,4 @@
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
@@ -165,7 +166,14 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  void params;
+  void searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -334,6 +342,73 @@ export default async function SchliessanlagenPage() {
           </Alert>
         </div>
       </Section>
+
+
+      {/* Enterprise ROI & Wirtschaftlichkeit (Expanded) */}
+      <Section id="roi-rechner" tone="muted">
+        <SectionHeading
+          eyebrow="Wirtschaftlichkeit & ROI"
+          title="Die ökonomische Architektur moderner Schließanlagen"
+          lead="Eine mechanische oder mechatronische Schließanlage ist mehr als nur ein Sicherheitswerkzeug – sie ist eine Investition in die operative Effizienz."
+        />
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
+            <div className="space-y-6 text-[15px] leading-relaxed text-foreground-muted">
+                <p>
+                    Die Total Cost of Ownership (TCO) einer Schließanlage wird häufig unterschätzt.
+                    Unternehmen betrachten primär die Initialkosten für Schließzylinder und Schlüssel.
+                    Doch die wahren Kostentreiber verbergen sich in der täglichen Administration, im
+                    Schlüsselmanagement und vor allem bei Schlüsselverlusten.
+                </p>
+                <p>
+                    <strong>Die Administrationskosten-Falle</strong><br/>
+                    In einem Gebäude mit 200 Türen und regelmäßiger Fluktuation (z.B. Mitarbeiterwechsel,
+                    externe Dienstleister, Handwerker) summiert sich der Aufwand für die Schlüsselübergabe,
+                    die Dokumentation in Excel-Listen oder ungeeigneten Tools und die Rückforderung von Schlüsseln.
+                    Konservative Schätzungen gehen von durchschnittlich 30 bis 45 Minuten administrativer
+                    Arbeitszeit pro Schlüsselereignis aus. Bei einem internen Stundensatz von 65 Euro
+                    entstehen so signifikante, oft unsichtbare Kosten.
+                </p>
+                <p>
+                    <strong>Das Risiko Schlüsselverlust</strong><br/>
+                    Verliert ein Mitarbeiter einen Master- oder Gruppenschlüssel einer rein mechanischen Anlage,
+                    entsteht nicht nur eine akute Sicherheitslücke. Aus versicherungstechnischen Gründen
+                    müssen oft komplette Zylindergruppen oder gar die gesamte Anlage ausgetauscht werden.
+                    Diese Ersatzkosten können schnell fünfstellige Beträge erreichen. Hinzu kommt der
+                    Reputationsverlust und der operative Stillstand, bis das Gebäude wieder gesichert ist.
+                </p>
+                <p>
+                    <strong>Mechanik vs. Elektronik: Der ROI-Kipppunkt</strong><br/>
+                    Ab einer bestimmten Unternehmensgröße oder Fluktuationsrate rechnet sich der Einsatz
+                    mechatronischer oder rein elektronischer Zylinder innerhalb weniger Monate. Bei elektronischen
+                    Systemen wird ein verlorenes Medium (Karte, Transponder oder Smartphone-Credential)
+                    mit wenigen Klicks im System gesperrt. Der Zylindertausch entfällt komplett.
+                    Die Administrationszeit sinkt durch Over-the-Air (OTA) Updates und zentrale
+                    Verwaltungssoftware (oft cloudbasiert) auf einen Bruchteil.
+                </p>
+                <p>
+                    <strong>Planungssicherheit durch modulare Architektur</strong><br/>
+                    Wir konzipieren Ihre Schließanlage nach dem Prinzip der maximalen Skalierbarkeit.
+                    Kernbereiche mit hohem Sicherheitsbedarf und hoher Fluktuation (Außenhaut, Serverräume,
+                    Haupteingänge) werden elektronisch ausgestattet. Weniger kritische Innenbereiche
+                    (Bürotüren, Lagerräume) erhalten mechanische Qualitätszylinder. Dieses Hybrid-Modell
+                    optimiert die initiale Investitionssumme bei gleichzeitiger Maximierung der Flexibilität.
+                </p>
+                 <p>
+                    <strong>Integration in bestehende Ökosysteme</strong><br/>
+                    Moderne Zutrittssysteme arbeiten nicht isoliert. Sie fügen sich nahtlos in bestehende
+                    Active Directory (AD) Umgebungen, HR-Software (z.B. Workday, Personio) oder
+                    Zeiterfassungssysteme ein. Das On- und Offboarding von Mitarbeitern wird automatisiert.
+                    Erhält ein Mitarbeiter im HR-System den Status &quot;ausgeschieden&quot;, werden seine
+                    Zutrittsrechte in Echtzeit und ohne manuelles Eingreifen entzogen.
+                </p>
+            </div>
+
+            <div className="sticky top-8">
+               <EnterpriseRoiCalculator />
+            </div>
+        </div>
+      </Section>
+
 
       {/* Fragen */}
       <Section>
