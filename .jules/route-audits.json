@@ -1,0 +1,442 @@
+[
+  {
+    "path": "/ratgeber",
+    "file": "src/app/ratgeber/page.tsx",
+    "wordCount": 47,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/ratgeber/[slug]",
+    "file": "src/app/ratgeber/[slug]/page.tsx",
+    "wordCount": 119,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/schluessel-nach-vorlage/anfrage",
+    "file": "src/app/schluessel-nach-vorlage/anfrage/page.tsx",
+    "wordCount": 38,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/schluessel-nach-vorlage",
+    "file": "src/app/schluessel-nach-vorlage/page.tsx",
+    "wordCount": 388,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/warenkorb",
+    "file": "src/app/warenkorb/page.tsx",
+    "wordCount": 45,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/kasse",
+    "file": "src/app/kasse/page.tsx",
+    "wordCount": 44,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/schluessel-nach-code",
+    "file": "src/app/schluessel-nach-code/page.tsx",
+    "wordCount": 88,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/schluessel-nach-code/[slug]",
+    "file": "src/app/schluessel-nach-code/[slug]/page.tsx",
+    "wordCount": 281,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/",
+    "file": "src/app/page.tsx",
+    "wordCount": 159,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/sicherheitstechnik",
+    "file": "src/app/sicherheitstechnik/page.tsx",
+    "wordCount": 295,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/sicherheitstechnik/[slug]",
+    "file": "src/app/sicherheitstechnik/[slug]/page.tsx",
+    "wordCount": 193,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/sicherheitstechnik/sicherheitscheck",
+    "file": "src/app/sicherheitstechnik/sicherheitscheck/page.tsx",
+    "wordCount": 81,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/tuer-und-schliesstechnik",
+    "file": "src/app/tuer-und-schliesstechnik/page.tsx",
+    "wordCount": 393,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/tuer-und-schliesstechnik/[slug]",
+    "file": "src/app/tuer-und-schliesstechnik/[slug]/page.tsx",
+    "wordCount": 164,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/bestellung/[id]",
+    "file": "src/app/bestellung/[id]/page.tsx",
+    "wordCount": 341,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/gleichschliessende-zylinder",
+    "file": "src/app/gleichschliessende-zylinder/page.tsx",
+    "wordCount": 514,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/gleichschliessende-zylinder/konfigurator",
+    "file": "src/app/gleichschliessende-zylinder/konfigurator/page.tsx",
+    "wordCount": 96,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/elektronische-zutrittsloesungen",
+    "file": "src/app/elektronische-zutrittsloesungen/page.tsx",
+    "wordCount": 320,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/elektronische-zutrittsloesungen/konfigurator",
+    "file": "src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+    "wordCount": 121,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/schliessanlagen",
+    "file": "src/app/schliessanlagen/page.tsx",
+    "wordCount": 282,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/schliessanlagen/konfigurator",
+    "file": "src/app/schliessanlagen/konfigurator/page.tsx",
+    "wordCount": 65,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/service-und-termin/terminstatus",
+    "file": "src/app/service-und-termin/terminstatus/page.tsx",
+    "wordCount": 23,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/service-und-termin/anfrage",
+    "file": "src/app/service-und-termin/anfrage/page.tsx",
+    "wordCount": 39,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/service-und-termin",
+    "file": "src/app/service-und-termin/page.tsx",
+    "wordCount": 645,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/service-und-termin/vor-ort",
+    "file": "src/app/service-und-termin/vor-ort/page.tsx",
+    "wordCount": 133,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/service-und-termin/kontakt",
+    "file": "src/app/service-und-termin/kontakt/page.tsx",
+    "wordCount": 117,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/admin/einstellungen",
+    "file": "src/app/admin/einstellungen/page.tsx",
+    "wordCount": 60,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/admin/fahrzeugdaten",
+    "file": "src/app/admin/fahrzeugdaten/page.tsx",
+    "wordCount": 57,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/admin",
+    "file": "src/app/admin/page.tsx",
+    "wordCount": 316,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/admin/termine",
+    "file": "src/app/admin/termine/page.tsx",
+    "wordCount": 213,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/admin/preise",
+    "file": "src/app/admin/preise/page.tsx",
+    "wordCount": 62,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/admin/vorgaenge",
+    "file": "src/app/admin/vorgaenge/page.tsx",
+    "wordCount": 119,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/admin/vorgaenge/[id]",
+    "file": "src/app/admin/vorgaenge/[id]/page.tsx",
+    "wordCount": 464,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/admin/inhalte",
+    "file": "src/app/admin/inhalte/page.tsx",
+    "wordCount": 57,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/admin/produkte",
+    "file": "src/app/admin/produkte/page.tsx",
+    "wordCount": 67,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/rechtliches/impressum",
+    "file": "src/app/rechtliches/impressum/page.tsx",
+    "wordCount": 182,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/rechtliches/cookie-einstellungen",
+    "file": "src/app/rechtliches/cookie-einstellungen/page.tsx",
+    "wordCount": 18,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/rechtliches/versand-und-zahlung",
+    "file": "src/app/rechtliches/versand-und-zahlung/page.tsx",
+    "wordCount": 201,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/rechtliches/widerruf",
+    "file": "src/app/rechtliches/widerruf/page.tsx",
+    "wordCount": 15,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/rechtliches/agb",
+    "file": "src/app/rechtliches/agb/page.tsx",
+    "wordCount": 15,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/rechtliches/datenschutz",
+    "file": "src/app/rechtliches/datenschutz/page.tsx",
+    "wordCount": 609,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/standorte",
+    "file": "src/app/standorte/page.tsx",
+    "wordCount": 69,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/standorte/[city]",
+    "file": "src/app/standorte/[city]/page.tsx",
+    "wordCount": 112,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/marken",
+    "file": "src/app/autoschluessel/marken/page.tsx",
+    "wordCount": 240,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/marken/[make]/[model]",
+    "file": "src/app/autoschluessel/marken/[make]/[model]/page.tsx",
+    "wordCount": 432,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/marken/[make]",
+    "file": "src/app/autoschluessel/marken/[make]/page.tsx",
+    "wordCount": 334,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/funkschluessel",
+    "file": "src/app/autoschluessel/funkschluessel/page.tsx",
+    "wordCount": 40,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/programmieren",
+    "file": "src/app/autoschluessel/programmieren/page.tsx",
+    "wordCount": 48,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/anfrage",
+    "file": "src/app/autoschluessel/anfrage/page.tsx",
+    "wordCount": 134,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel",
+    "file": "src/app/autoschluessel/page.tsx",
+    "wordCount": 309,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/kopieren",
+    "file": "src/app/autoschluessel/kopieren/page.tsx",
+    "wordCount": 87,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/nachmachen",
+    "file": "src/app/autoschluessel/nachmachen/page.tsx",
+    "wordCount": 33,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/smart-key",
+    "file": "src/app/autoschluessel/smart-key/page.tsx",
+    "wordCount": 48,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/schluesselbart-fraesen",
+    "file": "src/app/autoschluessel/schluesselbart-fraesen/page.tsx",
+    "wordCount": 42,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  },
+  {
+    "path": "/autoschluessel/fahrzeugoeffnung",
+    "file": "src/app/autoschluessel/fahrzeugoeffnung/page.tsx",
+    "wordCount": 42,
+    "hasUseClient": false,
+    "hasUseCache": false,
+    "hasSchema": false
+  }
+]
