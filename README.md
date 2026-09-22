@@ -47,3 +47,6 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+## Architecture Blueprint
+The latest auditor architecture and transformation blueprint is located in `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`.
