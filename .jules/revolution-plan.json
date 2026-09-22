@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "version": "1.0.0",
-  "generated_at": "2026-09-19T17:36:35.129Z",
+  "generated_at": "2026-09-22T13:29:07.408Z",
   "total_existing_routes": 55,
   "dna_summary": {
     "framework": "Next.js 16+",
@@ -17,18 +17,19 @@
       "source_file": "src/app/admin/einstellungen/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /admin/einstellungen",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /admin/einstellungen",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /admin/einstellungen"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDashboardModule",
+        "target_file": "src/components/calculator/admin-einstellungen-module.tsx",
+        "action_file": "src/lib/actions/admin-einstellungen-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -40,18 +41,19 @@
       "source_file": "src/app/admin/fahrzeugdaten/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /admin/fahrzeugdaten",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /admin/fahrzeugdaten",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /admin/fahrzeugdaten"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDashboardModule",
+        "target_file": "src/components/calculator/admin-fahrzeugdaten-module.tsx",
+        "action_file": "src/lib/actions/admin-fahrzeugdaten-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -63,18 +65,19 @@
       "source_file": "src/app/admin/inhalte/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /admin/inhalte",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /admin/inhalte",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /admin/inhalte"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDashboardModule",
+        "target_file": "src/components/calculator/admin-inhalte-module.tsx",
+        "action_file": "src/lib/actions/admin-inhalte-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -84,20 +87,21 @@
       "priority": 4,
       "route_path": "/admin",
       "source_file": "src/app/admin/page.tsx",
-      "target_word_count": 1172,
+      "target_word_count": 1772,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /admin",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /admin",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /admin"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDashboardModule",
+        "target_file": "src/components/calculator/admin-module.tsx",
+        "action_file": "src/lib/actions/admin-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -109,18 +113,19 @@
       "source_file": "src/app/admin/preise/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /admin/preise",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /admin/preise",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /admin/preise"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDashboardModule",
+        "target_file": "src/components/calculator/admin-preise-module.tsx",
+        "action_file": "src/lib/actions/admin-preise-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -132,18 +137,19 @@
       "source_file": "src/app/admin/produkte/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /admin/produkte",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /admin/produkte",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /admin/produkte"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDashboardModule",
+        "target_file": "src/components/calculator/admin-produkte-module.tsx",
+        "action_file": "src/lib/actions/admin-produkte-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -153,20 +159,21 @@
       "priority": 7,
       "route_path": "/admin/termine",
       "source_file": "src/app/admin/termine/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1053,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /admin/termine",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /admin/termine",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /admin/termine"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "BookingCalendarModule",
+        "target_file": "src/components/calculator/admin-termine-module.tsx",
+        "action_file": "src/lib/actions/admin-termine-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -176,20 +183,21 @@
       "priority": 8,
       "route_path": "/admin/vorgaenge/[id]",
       "source_file": "src/app/admin/vorgaenge/[id]/page.tsx",
-      "target_word_count": 1593,
+      "target_word_count": 2193,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /admin/vorgaenge/[id]",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /admin/vorgaenge/[id]",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /admin/vorgaenge/[id]"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDashboardModule",
+        "target_file": "src/components/calculator/admin-vorgaenge-id-module.tsx",
+        "action_file": "src/lib/actions/admin-vorgaenge-id-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -201,18 +209,19 @@
       "source_file": "src/app/admin/vorgaenge/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Verwaltung der Systemeinstellungen",
-        "Sicherheits-Audit und Zugriffskontrolle",
-        "Übersicht der Administrativen Aufgaben"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /admin/vorgaenge",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /admin/vorgaenge",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /admin/vorgaenge"
       ],
       "interactive_module": {
-        "type": "DASHBOARD",
-        "component_name": "AdminAnalyticsDashboard",
-        "target_file": "src/components/dashboard/admin-analytics-dashboard.tsx",
-        "action_file": "src/lib/actions/fetch-analytics.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminDashboardModule",
+        "target_file": "src/components/calculator/admin-vorgaenge-module.tsx",
+        "action_file": "src/lib/actions/admin-vorgaenge-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -222,20 +231,21 @@
       "priority": 10,
       "route_path": "/autoschluessel/anfrage",
       "source_file": "src/app/autoschluessel/anfrage/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1119,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/anfrage",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/anfrage",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/anfrage"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-anfrage-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-anfrage-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -245,20 +255,21 @@
       "priority": 11,
       "route_path": "/autoschluessel/fahrzeugoeffnung",
       "source_file": "src/app/autoschluessel/fahrzeugoeffnung/page.tsx",
-      "target_word_count": 1122,
+      "target_word_count": 1722,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/fahrzeugoeffnung",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/fahrzeugoeffnung",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/fahrzeugoeffnung"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-fahrzeugoeffnung-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-fahrzeugoeffnung-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -268,20 +279,21 @@
       "priority": 12,
       "route_path": "/autoschluessel/funkschluessel",
       "source_file": "src/app/autoschluessel/funkschluessel/page.tsx",
-      "target_word_count": 1092,
+      "target_word_count": 1692,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/funkschluessel",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/funkschluessel",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/funkschluessel"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-funkschluessel-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-funkschluessel-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -291,20 +303,21 @@
       "priority": 13,
       "route_path": "/autoschluessel/kopieren",
       "source_file": "src/app/autoschluessel/kopieren/page.tsx",
-      "target_word_count": 1134,
+      "target_word_count": 1734,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/kopieren",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/kopieren",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/kopieren"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-kopieren-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-kopieren-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -314,20 +327,21 @@
       "priority": 14,
       "route_path": "/autoschluessel/marken/[make]/[model]",
       "source_file": "src/app/autoschluessel/marken/[make]/[model]/page.tsx",
-      "target_word_count": 1224,
+      "target_word_count": 1824,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/marken/[make]/[model]",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/marken/[make]/[model]",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/marken/[make]/[model]"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-marken-make-model-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-marken-make-model-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -337,20 +351,21 @@
       "priority": 15,
       "route_path": "/autoschluessel/marken/[make]",
       "source_file": "src/app/autoschluessel/marken/[make]/page.tsx",
-      "target_word_count": 980,
+      "target_word_count": 1580,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/marken/[make]",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/marken/[make]",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/marken/[make]"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-marken-make-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-marken-make-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -360,20 +375,21 @@
       "priority": 16,
       "route_path": "/autoschluessel/marken",
       "source_file": "src/app/autoschluessel/marken/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1319,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/marken",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/marken",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/marken"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-marken-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-marken-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -383,20 +399,21 @@
       "priority": 17,
       "route_path": "/autoschluessel/nachmachen",
       "source_file": "src/app/autoschluessel/nachmachen/page.tsx",
-      "target_word_count": 1190,
+      "target_word_count": 1790,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/nachmachen",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/nachmachen",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/nachmachen"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-nachmachen-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-nachmachen-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -406,20 +423,21 @@
       "priority": 18,
       "route_path": "/autoschluessel",
       "source_file": "src/app/autoschluessel/page.tsx",
-      "target_word_count": 1971,
+      "target_word_count": 2571,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -429,20 +447,21 @@
       "priority": 19,
       "route_path": "/autoschluessel/programmieren",
       "source_file": "src/app/autoschluessel/programmieren/page.tsx",
-      "target_word_count": 1223,
+      "target_word_count": 1823,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/programmieren",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/programmieren",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/programmieren"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-programmieren-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-programmieren-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -452,20 +471,21 @@
       "priority": 20,
       "route_path": "/autoschluessel/schluesselbart-fraesen",
       "source_file": "src/app/autoschluessel/schluesselbart-fraesen/page.tsx",
-      "target_word_count": 1043,
+      "target_word_count": 1643,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/schluesselbart-fraesen",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/schluesselbart-fraesen",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/schluesselbart-fraesen"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-schluesselbart-fraesen-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-schluesselbart-fraesen-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -475,20 +495,21 @@
       "priority": 21,
       "route_path": "/autoschluessel/smart-key",
       "source_file": "src/app/autoschluessel/smart-key/page.tsx",
-      "target_word_count": 1208,
+      "target_word_count": 1808,
       "content_expansion_topics": [
-        "Spezifische Lösungen für Autoschlüssel",
-        "Technologie hinter modernen Funkschlüsseln",
-        "FAQ zur Programmierung und Kosten"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /autoschluessel/smart-key",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /autoschluessel/smart-key",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /autoschluessel/smart-key"
       ],
       "interactive_module": {
-        "type": "FILTER",
-        "component_name": "CarKeyCompatibilityFilter",
-        "target_file": "src/components/filter/car-key-compatibility-filter.tsx",
-        "action_file": "src/lib/actions/filter-keys.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/autoschluessel-smart-key-module.tsx",
+        "action_file": "src/lib/actions/autoschluessel-smart-key-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -498,20 +519,21 @@
       "priority": 22,
       "route_path": "/bestellung/[id]",
       "source_file": "src/app/bestellung/[id]/page.tsx",
-      "target_word_count": 994,
+      "target_word_count": 1594,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /bestellung/[id]",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /bestellung/[id]",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /bestellung/[id]",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /bestellung/[id]"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator21",
-        "target_file": "src/components/calculator/cost-estimator-21.tsx",
-        "action_file": "src/lib/actions/estimate-cost-21.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/bestellung-id-module.tsx",
+        "action_file": "src/lib/actions/bestellung-id-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -521,20 +543,21 @@
       "priority": 23,
       "route_path": "/elektronische-zutrittsloesungen/konfigurator",
       "source_file": "src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 983,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /elektronische-zutrittsloesungen/konfigurator",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /elektronische-zutrittsloesungen/konfigurator",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /elektronische-zutrittsloesungen/konfigurator",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /elektronische-zutrittsloesungen/konfigurator"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator22",
-        "target_file": "src/components/calculator/cost-estimator-22.tsx",
-        "action_file": "src/lib/actions/estimate-cost-22.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/elektronische-zutrittsloesungen-konfigurator-module.tsx",
+        "action_file": "src/lib/actions/elektronische-zutrittsloesungen-konfigurator-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -544,20 +567,21 @@
       "priority": 24,
       "route_path": "/elektronische-zutrittsloesungen",
       "source_file": "src/app/elektronische-zutrittsloesungen/page.tsx",
-      "target_word_count": 2451,
+      "target_word_count": 3051,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /elektronische-zutrittsloesungen",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /elektronische-zutrittsloesungen",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /elektronische-zutrittsloesungen",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /elektronische-zutrittsloesungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator23",
-        "target_file": "src/components/calculator/cost-estimator-23.tsx",
-        "action_file": "src/lib/actions/estimate-cost-23.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/elektronische-zutrittsloesungen-module.tsx",
+        "action_file": "src/lib/actions/elektronische-zutrittsloesungen-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -569,18 +593,19 @@
       "source_file": "src/app/gleichschliessende-zylinder/konfigurator/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /gleichschliessende-zylinder/konfigurator",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /gleichschliessende-zylinder/konfigurator",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /gleichschliessende-zylinder/konfigurator",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /gleichschliessende-zylinder/konfigurator"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator24",
-        "target_file": "src/components/calculator/cost-estimator-24.tsx",
-        "action_file": "src/lib/actions/estimate-cost-24.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/gleichschliessende-zylinder-konfigurator-module.tsx",
+        "action_file": "src/lib/actions/gleichschliessende-zylinder-konfigurator-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -590,20 +615,21 @@
       "priority": 26,
       "route_path": "/gleichschliessende-zylinder",
       "source_file": "src/app/gleichschliessende-zylinder/page.tsx",
-      "target_word_count": 2052,
+      "target_word_count": 2652,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /gleichschliessende-zylinder",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /gleichschliessende-zylinder",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /gleichschliessende-zylinder",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /gleichschliessende-zylinder"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator25",
-        "target_file": "src/components/calculator/cost-estimator-25.tsx",
-        "action_file": "src/lib/actions/estimate-cost-25.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/gleichschliessende-zylinder-module.tsx",
+        "action_file": "src/lib/actions/gleichschliessende-zylinder-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -615,18 +641,19 @@
       "source_file": "src/app/kasse/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Sichere Zahlungsabwicklung",
-        "Lieferbedingungen und Versandoptionen",
-        "Datenschutz während des Bestellprozesses"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /kasse",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /kasse",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /kasse"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator26",
-        "target_file": "src/components/calculator/cost-estimator-26.tsx",
-        "action_file": "src/lib/actions/estimate-cost-26.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/kasse-module.tsx",
+        "action_file": "src/lib/actions/kasse-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -636,20 +663,21 @@
       "priority": 28,
       "route_path": "/",
       "source_file": "src/app/page.tsx",
-      "target_word_count": 1140,
+      "target_word_count": 1749,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für die Startseite",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für Startseite",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von Startseite"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator27",
-        "target_file": "src/components/calculator/cost-estimator-27.tsx",
-        "action_file": "src/lib/actions/estimate-cost-27.ts"
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "src/components/calculator/home-module.tsx",
+        "action_file": "src/lib/actions/home-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -659,20 +687,21 @@
       "priority": 29,
       "route_path": "/ratgeber/[slug]",
       "source_file": "src/app/ratgeber/[slug]/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 956,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /ratgeber/[slug]",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /ratgeber/[slug]",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /ratgeber/[slug]",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /ratgeber/[slug]"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator28",
-        "target_file": "src/components/calculator/cost-estimator-28.tsx",
-        "action_file": "src/lib/actions/estimate-cost-28.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/ratgeber-slug-module.tsx",
+        "action_file": "src/lib/actions/ratgeber-slug-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -684,18 +713,19 @@
       "source_file": "src/app/ratgeber/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /ratgeber",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /ratgeber",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /ratgeber",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /ratgeber"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator29",
-        "target_file": "src/components/calculator/cost-estimator-29.tsx",
-        "action_file": "src/lib/actions/estimate-cost-29.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/ratgeber-module.tsx",
+        "action_file": "src/lib/actions/ratgeber-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -705,20 +735,21 @@
       "priority": 31,
       "route_path": "/rechtliches/agb",
       "source_file": "src/app/rechtliches/agb/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1017,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/agb",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /rechtliches/agb",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /rechtliches/agb",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /rechtliches/agb"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator30",
-        "target_file": "src/components/calculator/cost-estimator-30.tsx",
-        "action_file": "src/lib/actions/estimate-cost-30.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/rechtliches-agb-module.tsx",
+        "action_file": "src/lib/actions/rechtliches-agb-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -730,18 +761,19 @@
       "source_file": "src/app/rechtliches/cookie-einstellungen/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/cookie-einstellungen",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /rechtliches/cookie-einstellungen",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /rechtliches/cookie-einstellungen",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /rechtliches/cookie-einstellungen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator31",
-        "target_file": "src/components/calculator/cost-estimator-31.tsx",
-        "action_file": "src/lib/actions/estimate-cost-31.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/rechtliches-cookie-einstellungen-module.tsx",
+        "action_file": "src/lib/actions/rechtliches-cookie-einstellungen-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -751,20 +783,21 @@
       "priority": 33,
       "route_path": "/rechtliches/datenschutz",
       "source_file": "src/app/rechtliches/datenschutz/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1316,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/datenschutz",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /rechtliches/datenschutz",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /rechtliches/datenschutz",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /rechtliches/datenschutz"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator32",
-        "target_file": "src/components/calculator/cost-estimator-32.tsx",
-        "action_file": "src/lib/actions/estimate-cost-32.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/rechtliches-datenschutz-module.tsx",
+        "action_file": "src/lib/actions/rechtliches-datenschutz-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -776,18 +809,19 @@
       "source_file": "src/app/rechtliches/impressum/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/impressum",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /rechtliches/impressum",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /rechtliches/impressum",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /rechtliches/impressum"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator33",
-        "target_file": "src/components/calculator/cost-estimator-33.tsx",
-        "action_file": "src/lib/actions/estimate-cost-33.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/rechtliches-impressum-module.tsx",
+        "action_file": "src/lib/actions/rechtliches-impressum-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -797,20 +831,21 @@
       "priority": 35,
       "route_path": "/rechtliches/versand-und-zahlung",
       "source_file": "src/app/rechtliches/versand-und-zahlung/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1028,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/versand-und-zahlung",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /rechtliches/versand-und-zahlung",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /rechtliches/versand-und-zahlung",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /rechtliches/versand-und-zahlung"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator34",
-        "target_file": "src/components/calculator/cost-estimator-34.tsx",
-        "action_file": "src/lib/actions/estimate-cost-34.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/rechtliches-versand-und-zahlung-module.tsx",
+        "action_file": "src/lib/actions/rechtliches-versand-und-zahlung-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -820,20 +855,21 @@
       "priority": 36,
       "route_path": "/rechtliches/widerruf",
       "source_file": "src/app/rechtliches/widerruf/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 971,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /rechtliches/widerruf",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /rechtliches/widerruf",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /rechtliches/widerruf",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /rechtliches/widerruf"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator35",
-        "target_file": "src/components/calculator/cost-estimator-35.tsx",
-        "action_file": "src/lib/actions/estimate-cost-35.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/rechtliches-widerruf-module.tsx",
+        "action_file": "src/lib/actions/rechtliches-widerruf-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -843,20 +879,21 @@
       "priority": 37,
       "route_path": "/schliessanlagen/konfigurator",
       "source_file": "src/app/schliessanlagen/konfigurator/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 969,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schliessanlagen/konfigurator",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /schliessanlagen/konfigurator",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /schliessanlagen/konfigurator",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /schliessanlagen/konfigurator"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator36",
-        "target_file": "src/components/calculator/cost-estimator-36.tsx",
-        "action_file": "src/lib/actions/estimate-cost-36.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/schliessanlagen-konfigurator-module.tsx",
+        "action_file": "src/lib/actions/schliessanlagen-konfigurator-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -866,20 +903,21 @@
       "priority": 38,
       "route_path": "/schliessanlagen",
       "source_file": "src/app/schliessanlagen/page.tsx",
-      "target_word_count": 1603,
+      "target_word_count": 2203,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schliessanlagen",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /schliessanlagen",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /schliessanlagen",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /schliessanlagen"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator37",
-        "target_file": "src/components/calculator/cost-estimator-37.tsx",
-        "action_file": "src/lib/actions/estimate-cost-37.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/schliessanlagen-module.tsx",
+        "action_file": "src/lib/actions/schliessanlagen-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -889,20 +927,21 @@
       "priority": 39,
       "route_path": "/schluessel-nach-code/[slug]",
       "source_file": "src/app/schluessel-nach-code/[slug]/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1331,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schluessel-nach-code/[slug]",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /schluessel-nach-code/[slug]",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /schluessel-nach-code/[slug]",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /schluessel-nach-code/[slug]"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator38",
-        "target_file": "src/components/calculator/cost-estimator-38.tsx",
-        "action_file": "src/lib/actions/estimate-cost-38.ts"
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/schluessel-nach-code-slug-module.tsx",
+        "action_file": "src/lib/actions/schluessel-nach-code-slug-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -912,20 +951,21 @@
       "priority": 40,
       "route_path": "/schluessel-nach-code",
       "source_file": "src/app/schluessel-nach-code/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1068,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schluessel-nach-code",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /schluessel-nach-code",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /schluessel-nach-code",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /schluessel-nach-code"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator39",
-        "target_file": "src/components/calculator/cost-estimator-39.tsx",
-        "action_file": "src/lib/actions/estimate-cost-39.ts"
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/schluessel-nach-code-module.tsx",
+        "action_file": "src/lib/actions/schluessel-nach-code-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -937,18 +977,19 @@
       "source_file": "src/app/schluessel-nach-vorlage/anfrage/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schluessel-nach-vorlage/anfrage",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /schluessel-nach-vorlage/anfrage",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /schluessel-nach-vorlage/anfrage",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /schluessel-nach-vorlage/anfrage"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator40",
-        "target_file": "src/components/calculator/cost-estimator-40.tsx",
-        "action_file": "src/lib/actions/estimate-cost-40.ts"
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/schluessel-nach-vorlage-anfrage-module.tsx",
+        "action_file": "src/lib/actions/schluessel-nach-vorlage-anfrage-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -958,20 +999,21 @@
       "priority": 42,
       "route_path": "/schluessel-nach-vorlage",
       "source_file": "src/app/schluessel-nach-vorlage/page.tsx",
-      "target_word_count": 1762,
+      "target_word_count": 2362,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /schluessel-nach-vorlage",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /schluessel-nach-vorlage",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /schluessel-nach-vorlage",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /schluessel-nach-vorlage"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator41",
-        "target_file": "src/components/calculator/cost-estimator-41.tsx",
-        "action_file": "src/lib/actions/estimate-cost-41.ts"
+        "component_name": "KeyConfiguratorModule",
+        "target_file": "src/components/calculator/schluessel-nach-vorlage-module.tsx",
+        "action_file": "src/lib/actions/schluessel-nach-vorlage-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -983,18 +1025,19 @@
       "source_file": "src/app/service-und-termin/anfrage/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /service-und-termin/anfrage",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /service-und-termin/anfrage",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /service-und-termin/anfrage",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /service-und-termin/anfrage"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator42",
-        "target_file": "src/components/calculator/cost-estimator-42.tsx",
-        "action_file": "src/lib/actions/estimate-cost-42.ts"
+        "component_name": "BookingCalendarModule",
+        "target_file": "src/components/calculator/service-und-termin-anfrage-module.tsx",
+        "action_file": "src/lib/actions/service-und-termin-anfrage-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1004,20 +1047,21 @@
       "priority": 44,
       "route_path": "/service-und-termin/kontakt",
       "source_file": "src/app/service-und-termin/kontakt/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1075,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /service-und-termin/kontakt",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /service-und-termin/kontakt",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /service-und-termin/kontakt",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /service-und-termin/kontakt"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator43",
-        "target_file": "src/components/calculator/cost-estimator-43.tsx",
-        "action_file": "src/lib/actions/estimate-cost-43.ts"
+        "component_name": "BookingCalendarModule",
+        "target_file": "src/components/calculator/service-und-termin-kontakt-module.tsx",
+        "action_file": "src/lib/actions/service-und-termin-kontakt-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1027,20 +1071,21 @@
       "priority": 45,
       "route_path": "/service-und-termin",
       "source_file": "src/app/service-und-termin/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 2140,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /service-und-termin",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /service-und-termin",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /service-und-termin",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /service-und-termin"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator44",
-        "target_file": "src/components/calculator/cost-estimator-44.tsx",
-        "action_file": "src/lib/actions/estimate-cost-44.ts"
+        "component_name": "BookingCalendarModule",
+        "target_file": "src/components/calculator/service-und-termin-module.tsx",
+        "action_file": "src/lib/actions/service-und-termin-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1052,18 +1097,19 @@
       "source_file": "src/app/service-und-termin/terminstatus/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /service-und-termin/terminstatus",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /service-und-termin/terminstatus",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /service-und-termin/terminstatus",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /service-und-termin/terminstatus"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator45",
-        "target_file": "src/components/calculator/cost-estimator-45.tsx",
-        "action_file": "src/lib/actions/estimate-cost-45.ts"
+        "component_name": "BookingCalendarModule",
+        "target_file": "src/components/calculator/service-und-termin-terminstatus-module.tsx",
+        "action_file": "src/lib/actions/service-und-termin-terminstatus-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1073,20 +1119,21 @@
       "priority": 47,
       "route_path": "/service-und-termin/vor-ort",
       "source_file": "src/app/service-und-termin/vor-ort/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1256,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /service-und-termin/vor-ort",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /service-und-termin/vor-ort",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /service-und-termin/vor-ort",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /service-und-termin/vor-ort"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator46",
-        "target_file": "src/components/calculator/cost-estimator-46.tsx",
-        "action_file": "src/lib/actions/estimate-cost-46.ts"
+        "component_name": "BookingCalendarModule",
+        "target_file": "src/components/calculator/service-und-termin-vor-ort-module.tsx",
+        "action_file": "src/lib/actions/service-und-termin-vor-ort-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1096,20 +1143,21 @@
       "priority": 48,
       "route_path": "/sicherheitstechnik/[slug]",
       "source_file": "src/app/sicherheitstechnik/[slug]/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1245,
       "content_expansion_topics": [
-        "Mechanische vs. Elektronische Sicherheitstechnik",
-        "Schwachstellen-Analyse bei Wohngebäuden",
-        "Zertifizierungen und Normen für Sicherheitstechnik"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /sicherheitstechnik/[slug]",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /sicherheitstechnik/[slug]",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /sicherheitstechnik/[slug]"
       ],
       "interactive_module": {
-        "type": "CALCULATOR",
-        "component_name": "SecurityScoreCalculator",
-        "target_file": "src/components/calculator/security-score-calculator.tsx",
-        "action_file": "src/lib/actions/calculate-security-score.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecurityCheckModule",
+        "target_file": "src/components/calculator/sicherheitstechnik-slug-module.tsx",
+        "action_file": "src/lib/actions/sicherheitstechnik-slug-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1119,20 +1167,21 @@
       "priority": 49,
       "route_path": "/sicherheitstechnik",
       "source_file": "src/app/sicherheitstechnik/page.tsx",
-      "target_word_count": 995,
+      "target_word_count": 1595,
       "content_expansion_topics": [
-        "Mechanische vs. Elektronische Sicherheitstechnik",
-        "Schwachstellen-Analyse bei Wohngebäuden",
-        "Zertifizierungen und Normen für Sicherheitstechnik"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /sicherheitstechnik",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /sicherheitstechnik",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /sicherheitstechnik"
       ],
       "interactive_module": {
-        "type": "CALCULATOR",
-        "component_name": "SecurityScoreCalculator",
-        "target_file": "src/components/calculator/security-score-calculator.tsx",
-        "action_file": "src/lib/actions/calculate-security-score.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecurityCheckModule",
+        "target_file": "src/components/calculator/sicherheitstechnik-module.tsx",
+        "action_file": "src/lib/actions/sicherheitstechnik-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1144,18 +1193,19 @@
       "source_file": "src/app/sicherheitstechnik/sicherheitscheck/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Mechanische vs. Elektronische Sicherheitstechnik",
-        "Schwachstellen-Analyse bei Wohngebäuden",
-        "Zertifizierungen und Normen für Sicherheitstechnik"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /sicherheitstechnik/sicherheitscheck",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /sicherheitstechnik/sicherheitscheck",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /sicherheitstechnik/sicherheitscheck"
       ],
       "interactive_module": {
-        "type": "CALCULATOR",
-        "component_name": "SecurityScoreCalculator",
-        "target_file": "src/components/calculator/security-score-calculator.tsx",
-        "action_file": "src/lib/actions/calculate-security-score.ts"
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecurityCheckModule",
+        "target_file": "src/components/calculator/sicherheitstechnik-sicherheitscheck-module.tsx",
+        "action_file": "src/lib/actions/sicherheitstechnik-sicherheitscheck-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1165,20 +1215,21 @@
       "priority": 51,
       "route_path": "/standorte/[city]",
       "source_file": "src/app/standorte/[city]/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1002,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /standorte/[city]",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /standorte/[city]",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /standorte/[city]",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /standorte/[city]"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator50",
-        "target_file": "src/components/calculator/cost-estimator-50.tsx",
-        "action_file": "src/lib/actions/estimate-cost-50.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/standorte-city-module.tsx",
+        "action_file": "src/lib/actions/standorte-city-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1190,18 +1241,19 @@
       "source_file": "src/app/standorte/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /standorte",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /standorte",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /standorte",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /standorte"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator51",
-        "target_file": "src/components/calculator/cost-estimator-51.tsx",
-        "action_file": "src/lib/actions/estimate-cost-51.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/standorte-module.tsx",
+        "action_file": "src/lib/actions/standorte-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1211,20 +1263,21 @@
       "priority": 53,
       "route_path": "/tuer-und-schliesstechnik/[slug]",
       "source_file": "src/app/tuer-und-schliesstechnik/[slug]/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 1094,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /tuer-und-schliesstechnik/[slug]",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /tuer-und-schliesstechnik/[slug]",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /tuer-und-schliesstechnik/[slug]",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /tuer-und-schliesstechnik/[slug]"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator52",
-        "target_file": "src/components/calculator/cost-estimator-52.tsx",
-        "action_file": "src/lib/actions/estimate-cost-52.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/tuer-und-schliesstechnik-slug-module.tsx",
+        "action_file": "src/lib/actions/tuer-und-schliesstechnik-slug-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1234,20 +1287,21 @@
       "priority": 54,
       "route_path": "/tuer-und-schliesstechnik",
       "source_file": "src/app/tuer-und-schliesstechnik/page.tsx",
-      "target_word_count": 950,
+      "target_word_count": 2355,
       "content_expansion_topics": [
-        "Detaillierte Informationen zu /tuer-und-schliesstechnik",
-        "Schritt-für-Schritt Anleitung",
-        "Häufig gestellte Fragen (FAQ)"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /tuer-und-schliesstechnik",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /tuer-und-schliesstechnik",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /tuer-und-schliesstechnik"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator53",
-        "target_file": "src/components/calculator/cost-estimator-53.tsx",
-        "action_file": "src/lib/actions/estimate-cost-53.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/tuer-und-schliesstechnik-module.tsx",
+        "action_file": "src/lib/actions/tuer-und-schliesstechnik-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
@@ -1259,18 +1313,19 @@
       "source_file": "src/app/warenkorb/page.tsx",
       "target_word_count": 950,
       "content_expansion_topics": [
-        "Sichere Zahlungsabwicklung",
-        "Lieferbedingungen und Versandoptionen",
-        "Datenschutz während des Bestellprozesses"
+        "Tiefgründige technische Erläuterung der Funktionalität und Architektur für /warenkorb",
+        "Sicherheitsaspekte, Zertifizierungen und Schweizer Light Mode Design-Integration für /warenkorb",
+        "Häufig gestellte Fragen (FAQ) zur Implementierung und Nutzung von /warenkorb"
       ],
       "interactive_module": {
         "type": "CALCULATOR_OR_FILTER",
-        "component_name": "CostEstimator54",
-        "target_file": "src/components/calculator/cost-estimator-54.tsx",
-        "action_file": "src/lib/actions/estimate-cost-54.ts"
+        "component_name": "InteractiveModule",
+        "target_file": "src/components/calculator/warenkorb-module.tsx",
+        "action_file": "src/lib/actions/warenkorb-action.ts"
       },
       "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
       "schema_entities": [
+        "Organization",
         "WebSite",
         "FAQPage"
       ],
