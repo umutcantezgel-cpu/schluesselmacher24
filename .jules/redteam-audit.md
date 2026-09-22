@@ -1,16 +1,21 @@
 # Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
 
 ## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+- **site-header.tsx**: Das Mobile-Menü schließt zwar bei Routenwechseln, es fehlt jedoch eine haptische oder visuelle Rückmeldung bei fehlgeschlagenen Klicks.
+- **termin-auswahl.tsx**: Ladezustände beim Wechsel der verfügbaren Termine sind visuell nicht ausreichend abgefangen (fehlende Skeleton-Loader).
+- **preis-anzeige.tsx**: Bei fehlenden Daten entsteht ein Layout-Sprung, anstatt den Raum durchgehend zu reservieren.
 
 ## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+- Potenzielle Probleme bei der Datumsformatierung im Warenkorb und in der Termin-Auswahl, wenn Server und Client unterschiedliche Zeitzonen annehmen.
+- **Warenkorb-Count**: Der Warenkorb-Count wird zwar erst nach dem Hydrieren angezeigt, was gut ist, aber der leere Zustand vorher verschiebt leicht das Layout.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TypeScript-Schwächen
+- Einige 'as any' oder 'as unknown as' Casts in komplexeren Formular-Handlern (z.B. photo-upload.tsx) könnten Laufzeitfehler verbergen.
+- Schema.org Graphen in json-ld.tsx sind zwar vorhanden, bedürfen aber der strikten Absicherung mit 'satisfies Graph'.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. Core Web Vitals Sünden
+- Diverse Bilder könnten ohne strikte Aspect-Ratio Platzhalter (ImagePlaceholder) geladen werden, was den CLS (Cumulative Layout Shift) beeinträchtigt.
+
+## 5. Design-Kritik (Schweizer Aesthetic)
+- **Chromatische Reinheit**: Einige Grautöne in den UI-Komponenten scheinen noch auf generischen Tailwind-Werten zu basieren, statt konsequent das definierte OKLCH(0.988 0.002 260) Canvas-System zu nutzen.
+- **Kinetische Disziplin**: Es existieren vereinzelte Hover-Effekte, die zu abrupt wirken. Ein Übergang zu weichen Feder-Physik-Animationen ist erforderlich.
