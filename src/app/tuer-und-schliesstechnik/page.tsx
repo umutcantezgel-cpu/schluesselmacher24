@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import type { Graph } from 'schema-dts';
+import { getSiteUrl } from '@/lib/site-url';
+
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -120,6 +123,38 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
+  const siteUrl = getSiteUrl();
+  const pageUrl = `${siteUrl}/${ROUTE}`;
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteUrl}/#organization`,
+        "name": "Schlüsselmacher24",
+        "url": siteUrl,
+        "logo": `${siteUrl}/logo.png`
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        "url": siteUrl,
+        "name": "Schlüsselmacher24",
+        "publisher": { "@id": `${siteUrl}/#organization` }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}/#webpage`,
+        "url": pageUrl,
+        "name": page?.seo.title ?? "Tür- und Schließtechnik: Sicherheit vom Zylinder bis zum Mehrfachschloss",
+        "isPartOf": { "@id": `${siteUrl}/#website` },
+        "about": { "@id": `${siteUrl}/#organization` }
+      }
+    ]
+  } satisfies Graph;
+
+
   return (
     <main
       data-params={JSON.stringify(params)}
@@ -127,6 +162,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
       className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
     >
       <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
+        <JsonLd data={structuredData} />
 
       <PageHeader
         eyebrow="Leistungsbereich"
