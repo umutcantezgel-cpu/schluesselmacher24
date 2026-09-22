@@ -1,3 +1,7 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+
+
+## JC-AUDITOR-ARCHITECT-v1 Audit
+Blueprint and Architecture Matrix have been generated under .jules directory.
