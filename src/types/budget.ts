@@ -1,5 +1,8 @@
 export interface BudgetCalculationResult {
   totalEstimate: number;
-  breakdown: { item: string; cost: number }[];
-  tier: 'STANDARD' | 'PREMIUM' | 'ENTERPRISE';
+  breakdown: Array<{
+    label: string;
+    value: number;
+  }>;
+  tier: 'STANDARD' | 'ENTERPRISE' | 'CUSTOM';
 }

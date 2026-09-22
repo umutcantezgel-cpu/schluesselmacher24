@@ -14,17 +14,14 @@ export async function calculateServiceBudget(
 
   let tier: BudgetCalculationResult['tier'] = 'STANDARD';
   if (totalEstimate > 5000) {
-    tier = 'PREMIUM';
-  }
-  if (totalEstimate > 8000) {
     tier = 'ENTERPRISE';
   }
 
   return {
     totalEstimate,
     breakdown: [
-      { item: 'Basispauschale', cost: 150 },
-      { item: `Tagesaufwand (${scopeDays} Tage)`, cost: scopeDays * 150 }
+      { label: 'Basispauschale', value: 150 },
+      { label: `Tagesaufwand (${scopeDays} Tage)`, value: scopeDays * 150 }
     ],
     tier,
   };
