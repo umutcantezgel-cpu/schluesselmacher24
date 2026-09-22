@@ -1,3 +1,9 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+
+### New Interactive Modules
+- **Enterprise ROI Calculator:** Added to  for real-time ROI calculations.
+
+### New Interactive Modules
+- **Enterprise ROI Calculator:** Added to `src/app/schliessanlagen/page.tsx` for real-time ROI calculations.

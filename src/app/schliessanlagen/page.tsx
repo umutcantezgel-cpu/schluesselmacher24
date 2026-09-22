@@ -14,6 +14,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
+
 
 const ROUTE = 'schliessanlagen';
 
@@ -244,6 +246,52 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+
+      {/* Architektonische Methodik & Enterprise-Tiefe */}
+      <Section tone="muted" tight>
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
+          <div>
+            <h2 className="text-2xl font-bold leading-tight text-[oklch(0.16_0.02_260)] md:text-3xl">
+              Architektur und Leistungsdimensionierung
+            </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Die Planung einer hochsicheren Schließanlage ist nicht bloß eine Aneinanderreihung von Zylindern,
+              sondern eine präzise ausgearbeitete Berechtigungsarchitektur. Jedes System wird auf Basis der
+              physischen und organisatorischen Anforderungen des Unternehmens skaliert. Wir analysieren dabei
+              die Fluktuationsrate, die kritischen Zugangszonen und die Skalierbarkeit für zukünftige
+              Standorterweiterungen.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Durch die Integration moderner Sicherheitsstandards – von Bohrschutz bis hin zu komplexen
+              Profilüberlappungen – garantieren wir eine Langlebigkeit, die weit über den Standardzyklus
+              hinausgeht. Die Matrix-Planung berücksichtigt sowohl horizontale Abteilungsstrukturen als auch
+              vertikale Hierarchieebenen, um eine feingranulare Zutrittskontrolle zu gewährleisten.
+            </p>
+            <h3 className="mt-8 text-xl font-bold text-[oklch(0.16_0.02_260)]">
+              Sicherheitsstufen und Materialität
+            </h3>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Jede Schließstelle wird individuell bemustert. Hochsicherheitsbereiche erhalten Zylinder mit
+              erhöhtem Zieh- und Bohrschutz (VdS-Klasse B/C), während interne Durchgangstüren mit robusten
+              Standardkomponenten ausgestattet werden können, um das Gesamtbudget zu optimieren, ohne die
+              Kernintegrität des Systems zu kompromittieren. Dieser hybride Ansatz stellt sicher, dass
+              Ressourcen exakt dort eingesetzt werden, wo das Bedrohungspotenzial am höchsten ist.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Darüber hinaus implementieren wir einen lückenlosen Patentschutz für die eingesetzten
+              Schlüsselprofile. Dies verhindert die unautorisierte Kopie von Schlüsseln durch Dritte und
+              gewährleistet, dass Nachbestellungen ausschließlich über autorisierte Kanäle mit entsprechender
+              Sicherungskarte erfolgen können. Ein essenzieller Baustein für die langfristige Sicherheit
+              komplexer Organisationen.
+            </p>
+          </div>
+
+          <div className="sticky top-8">
+            <EnterpriseROICalculator />
+          </div>
+        </div>
+      </Section>
+
       {/* Die fünf Systeme */}
       <Section id="systeme" tone="muted">
         <SectionHeading
@@ -267,7 +315,63 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
-      {/* Für wen */}
+
+      {/* Fachspezifisches FAQ */}
+      <Section id="faq-experten" tone="muted">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-2xl font-bold leading-tight text-[oklch(0.16_0.02_260)] md:text-3xl mb-8">
+            Experten-FAQ: Architektur & Sicherheit
+          </h2>
+          <div className="space-y-6">
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">
+                1. Wie verhält sich die Schließanlage bei Schlüsselverlust in Hochsicherheitszonen?
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Bei mechanischen Anlagen ohne elektronische Komponenten ist bei Verlust eines übergeordneten Schlüssels (z. B. Generalhauptschlüssel) oft der Austausch relevanter Zylinder notwendig, um die Sicherheit aufrechtzuerhalten. Durch hybride Ansätze – die Kombination von Mechanik mit elektronischen Zutrittszylindern in kritischen Zonen – können wir dieses Risiko massiv minimieren. Verlorene elektronische Transponder oder Hybrid-Schlüssel können dann einfach aus dem System gelöscht werden, ohne die mechanische Hardware zu tauschen.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">
+                2. Was bedeutet Patentschutz für Schlüsselprofile konkret?
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Der Patentschutz verbietet es Drittherstellern, identische Rohlinge für unsere Schlüsselprofile herzustellen. Das bedeutet, ein Schlüssel kann physisch von einem Schlüsseldienst ohne den originalen Rohling nicht kopiert werden. Zusätzlich schützt die Sicherungskarte davor, dass selbst bei Vorliegen eines Rohlings eine Nachbestellung ohne Legitimation des Eigentümers ausgeführt wird. Dies ist der wichtigste organisatorische Schutz für Ihr Gebäude.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">
+                3. Wie zukunftssicher ist eine mechanische Schließanlage bei Firmenerweiterungen?
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Die Skalierbarkeit wird bereits in der ersten Schließplan-Erstellung (der sogenannten Matrix) berechnet. Wir lassen bewusst Reserven in den Profilierungen und Stiftkombinationen. So können später neue Abteilungen, Gebäude oder Hierarchieebenen hinzugefügt werden, ohne das gesamte System austauschen zu müssen. Die Lebensdauer und Erweiterbarkeit ist bei korrekter Planung nahezu unbegrenzt.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">
+                4. Was ist der Unterschied zwischen Bohrschutz und Ziehschutz?
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Der Bohrschutz besteht aus gehärteten Stahlstiften im Zylinderkern und -gehäuse, die ein einfaches Aufbohren des Schließkanals verhindern. Der Ziehschutz (oder Kernziehschutz) verhindert hingegen, dass der Zylinderkern mit Spezialwerkzeugen komplett aus dem Gehäuse gezogen wird. Für Außentüren und kritische Bereiche ist die Kombination beider Schutzmaßnahmen nach VdS-Norm absolut unerlässlich, um gegen gewaltsame Überwindungsmethoden gerüstet zu sein.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">
+                5. Sind Nachbestellungen bei großen Anlagen zeitaufwendig?
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Durch unsere vollständig digitalisierte Prozesskette sind Nachbestellungen von Schlüsseln und Zylindern effizient und schnell. Sofern die Legitimation durch die Sicherungskarte vorliegt, greifen wir direkt auf die hinterlegte Berechtigungsmatrix zurück. Die Fertigung im Werk erfolgt automatisiert anhand der in unserem System gespeicherten Profil- und Stiftdaten. Für Enterprise-Kunden bieten wir zudem garantierte Service-Level-Agreements (SLAs) für beschleunigte Produktions- und Lieferzeiten an.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {}
       <Section>
         <SectionHeading
           eyebrow="Für wen"
