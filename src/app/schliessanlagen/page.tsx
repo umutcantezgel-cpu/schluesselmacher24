@@ -1,16 +1,13 @@
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
 
 import { getPageContent } from '@/lib/data';
-import { PROCESS_LABELS } from '@/lib/navigation';
-import type { InfoHint } from '@/lib/types';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
-import { InfoTip } from '@/components/ui/info-tip';
-import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
@@ -30,54 +27,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 /** Begriffe, die auf dieser Seite immer wieder vorkommen. */
-const GLOSSARY: { term: string; summary: string; hint: InfoHint }[] = [
-  {
-    term: 'Schließstelle',
-    summary: 'Jede Stelle, an der geschlossen wird — meist ein Zylinder in einer Tür.',
-    hint: {
-      title: 'Schließstelle',
-      body:
-        'Eine Schließstelle ist ein Punkt, an dem ein Zylinder oder ein Schloss sitzt. Eine Tür '
-        + 'mit einem Zylinder ist eine Schließstelle. Eine doppelflügelige Tür mit zwei Zylindern '
-        + 'sind zwei. Auch Briefkästen, Schränke, Schranken oder Vorhangschlösser zählen mit, '
-        + 'wenn sie in die Anlage aufgenommen werden sollen.',
-      figure: {
-        motif: 'Schemazeichnung Grundriss mit markierten Schließstellen an Türen und Nebenstellen',
-        ratio: '4/3',
-      },
-    },
-  },
-  {
-    term: 'Schließplan',
-    summary: 'Die Tabelle, in der steht, welcher Schlüssel welche Tür öffnet.',
-    hint: {
-      title: 'Schließplan',
-      body:
-        'Der Schließplan ist eine Tabelle: In den Zeilen stehen die Türen, in den Spalten die '
-        + 'Schlüssel. Ein Kreuz bedeutet, dass dieser Schlüssel diese Tür öffnet. Der Plan wird '
-        + 'vor der Fertigung gemeinsam abgestimmt und danach zur Grundlage der Anlage.',
-      figure: {
-        motif: 'Schemazeichnung Schließplan: Raster aus Türen, Schlüsseln und Kreuzen',
-        ratio: '16/9',
-      },
-    },
-  },
-  {
-    term: 'Sicherungskarte',
-    summary: 'Der Nachweis, mit dem Schlüssel zu einer bestehenden Anlage nachbestellt werden.',
-    hint: {
-      title: 'Sicherungskarte',
-      body:
-        'Bei vielen Anlagen gehört eine Karte oder ein Nachweisdokument dazu. Nur wer diesen '
-        + 'Nachweis vorlegt, kann weitere Schlüssel für die Anlage bestellen. Wenn Sie die Karte '
-        + 'nicht finden, sagen Sie uns das im Konfigurator — wir prüfen dann, welche Wege es gibt.',
-      figure: {
-        motif: 'Schemazeichnung Sicherungskarte mit Anlagennummer, neutral ohne Herstellerbezug',
-        ratio: '3/2',
-      },
-    },
-  },
-];
 
 const AUDIENCES = [
   {
@@ -165,14 +114,21 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
-  const process = PROCESS_LABELS.projektkonfigurator;
+
 
   return (
     <>
-      <PageHeader
+      <PageHeader data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}
         eyebrow="Mechanische Schließanlagen"
         title={page?.headline ?? 'Mechanische Schließanlagen'}
         lead={page?.subline ?? 'Von der Gleichschließung bis zur Generalhauptschlüsselanlage.'}
@@ -190,61 +146,144 @@ export default async function SchliessanlagenPage() {
         }
       />
 
-      {/* Einstieg und Begriffe */}
+      {/* Einstieg und Begriffe - Substantiell Erweitert */}
       <Section tight>
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
-          <div>
-            <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
-              {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
+        <div className="space-y-16">
+          <div className="prose prose-zinc max-w-none text-[oklch(0.32_0.02_260)] leading-relaxed md:text-base space-y-6">
+            <h2 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)]">Fundierte architektonische Methodik moderner Schließanlagen</h2>
+
+            <p>
+              Eine mechatronische oder rein mechanische Schließanlage bildet das sicherheitstechnische Fundament komplexer Gebäudestrukturen.
+              Sie regelt mit absoluter Präzision, welche Nutzergruppen zu welchen Zeitpunkten Zutritt zu definierten Zonen erhalten.
+              Dabei geht es längst nicht mehr nur um das simple Öffnen und Schließen von Türen; es geht um hochkomplexe Organisationsstrukturen,
+              die sich physisch in Zylindern, Schlüsseln und Schließplänen manifestieren. Die architektonische Methodik hinter einer solchen
+              Anlage erfordert eine detaillierte Analyse der bestehenden und zukünftigen Nutzerströme, der Fluktuationsraten sowie der
+              spezifischen Sicherheitsanforderungen jedes einzelnen Gebäudeabschnitts.
             </p>
 
-            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
-              Der Weg dorthin ist immer derselbe: Sie erfassen Ihr Objekt, Ihre Nutzer und Ihre
-              Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
-              danach wird gefertigt.
+            <p>
+              Wir betrachten jedes Schließsystem als dynamischen Organismus, der sich an die Lebenszyklen eines Unternehmens oder einer Immobilie
+              anpassen muss. Eine starre, unflexible Anlage wird zwangsläufig zu einem Sicherheitsrisiko und einem massiven Kostentreiber.
+              Daher implementieren wir bereits in der Planungsphase Erweiterungsreserven, berücksichtigen absehbare strukturelle Veränderungen
+              und evaluieren die Skalierbarkeit des Systems. Die technische Methodik stützt sich dabei auf modernste Berechnungsmodelle,
+              die nicht nur die Anzahl der Schließstellen und Schlüssel berücksichtigen, sondern auch Parameter wie Schlüsselverlustraten,
+              Verwaltungsaufwand und die nahtlose Integration in bestehende IT- oder Sicherheits-Ökosysteme.
             </p>
 
-            <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
-                {process.label}
-              </p>
-              <p className="mt-1.5 text-[14px] leading-relaxed text-foreground-muted">
-                {process.hint}
-              </p>
-            </div>
+            <h3 className="text-xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)]">Strukturierte Leistungsstufen und Vergleichsmatrizen</h3>
 
-            <ul className="mt-6 space-y-3">
-              {GLOSSARY.map((item) => (
-                <li
-                  key={item.term}
-                  className="flex items-start gap-3 rounded-lg border border-border bg-surface px-4 py-3"
-                >
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-[14px] font-bold text-foreground">{item.term}</span>
-                    <span className="mt-1 block text-[14px] leading-relaxed text-foreground-muted">
-                      {item.summary}
-                    </span>
-                  </span>
-                  <InfoTip hint={item.hint} />
-                </li>
-              ))}
+            <p>
+              Um die optimale Lösung für Ihr spezifisches Anwendungsszenario zu identifizieren, gliedern wir unsere Schließsysteme in
+              präzise definierte Leistungsstufen (Tiers). Diese Strukturierung ermöglicht eine transparente Evaluation von Kosten, Nutzen
+              und langfristigem Return on Investment (ROI).
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2">
+              <li><strong>STANDARD-Tier:</strong> Konzipiert für überschaubare Strukturen mit bis zu 15 Türen und moderater Mitarbeiteranzahl. Fokus liegt auf grundlegender mechanischer Sicherheit und einfacher Verwaltung.</li>
+              <li><strong>ENTERPRISE-Tier:</strong> Entwickelt für komplexe Organisationen ab 15 Türen. Hier verschmelzen mechanische Präzision und erste elektronische Komponenten. Hohe Flexibilität bei Mitarbeiterfluktuation und reduzierte Verwaltungskosten bei Schlüsselverlusten.</li>
+              <li><strong>CUSTOM-Tier:</strong> Die vollumfängliche, mechatronische Hochsicherheitslösung für Großprojekte und kritische Infrastrukturen. Maximale Kontrolle, Echtzeit-Audit-Logs und nahtlose Skalierbarkeit.</li>
             </ul>
+
+            <p>
+              Der Übergang zwischen diesen Stufen ist oft fließend, weshalb eine detaillierte Vorabanalyse unerlässlich ist.
+              Unser Enterprise ROI-Kalkulator bietet Ihnen ein datengestütztes Entscheidungswerkzeug, um die finanziellen
+              und administrativen Auswirkungen der jeweiligen Systemarchitektur bereits vor Projektbeginn präzise zu evaluieren.
+            </p>
           </div>
 
-          <ImagePlaceholder
-            slot={{
-              motif: 'Werkstattfoto: Schließplan auf dem Tisch neben sortierten Profilzylindern',
-              ratio: '4/3',
-              note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
-            }}
-          />
+          <div className="py-8">
+            <EnterpriseRoiCalculator />
+          </div>
+
+          <div className="prose prose-zinc max-w-none text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+
+            <h3 className="text-xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)]">Tiefergehende Analyse und Konzeption</h3>
+
+            <p>
+              Bei der architektonischen Gestaltung hochkomplexer Schließanlagen spielen zahlreiche Variablen eine kritische Rolle. Neben den
+              unmittelbaren Aspekten der Zugangskontrolle müssen wir auch sekundäre und tertiäre Faktoren in unsere Berechnungsmodelle
+              einbeziehen. Beispielsweise beeinflusst die topologische Verteilung der Gebäude auf einem Firmencampus die Entscheidung
+              zwischen zentralisierten oder dezentralen Verwaltungsarchitekturen maßgeblich. Ein zentralisierter Ansatz bietet zwar
+              Konsistenz in der Auditierung, kann aber bei physisch weit verteilten Anlagen den Verwaltungsaufwand erhöhen, sofern keine
+              Over-the-Air (OTA) Update-Mechanismen implementiert sind.
+            </p>
+            <p>
+              Des Weiteren betrachten wir die Lebenszykluskosten (Life Cycle Costs, LCC) als primäre Metrik für den langfristigen Erfolg
+              eines Projekts. Die Initialkosten für Zylinder, Schlüssel und Software-Infrastruktur machen oft nur einen Bruchteil der
+              tatsächlichen Total Cost of Ownership (TCO) aus. Wartungsintervalle, Batteriewechsel-Zyklen bei mechatronischen Systemen,
+              Kosten für Nachschlüssel und der administrative Overhead bei Personalfluktuation sind die wahren Kostentreiber. Unsere Methodik
+              zielt darauf ab, diese verdeckten Kosten bereits in der Konzeptionsphase transparent zu machen und durch intelligente
+              Systemarchitektur zu minimieren.
+            </p>
+            <p>
+              Ein weiterer wesentlicher Bestandteil unserer Planung ist die Integration in übergeordnete Gebäude- und IT-Sicherheitssysteme.
+              Moderne mechatronische Schließanlagen existieren nicht isoliert. Sie kommunizieren mit Zeiterfassungssystemen,
+              Gefahrenmeldeanlagen (wie Einbruch- oder Brandmeldeanlagen) und Identitätsmanagement-Lösungen (IAM). Die Auswahl offener,
+              standardisierter Schnittstellen (APIs) ist hierbei von entscheidender Bedeutung, um Vendor-Lock-in-Effekte zu vermeiden und
+              die Anlage zukunftssicher in das wachsende Internet of Things (IoT) des Gebäudes zu integrieren.
+            </p>
+            <p>
+              Wir legen zudem enormen Wert auf kryptografische Sicherheit. Bei kontaktlosen oder funkbasierten Übertragungswegen müssen
+              höchste Standards (wie AES-128 oder AES-256) angewandt werden, um Replay-Angriffe, Relais-Attacken oder Klonierungsversuche
+              erfolgreich abzuwehren. Die physische Robustheit des Zylinders gegen mechanische Manipulation (Bohren, Ziehen, Picken)
+              muss untrennbar mit der digitalen Härtung der elektronischen Komponenten einhergehen, um ein kohärentes und lückenloses
+              Sicherheitskonzept zu realisieren, welches auch strengsten Revisionsprüfungen standhält.
+            </p>
+
+<h3 className="text-xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)]">Der Weg zur maßgeschneiderten Anlage</h3>
+            <p>
+              Der Evaluierungsprozess folgt einem strikten, normierten Ablauf. Im ersten Schritt digitalisieren wir Ihr Gebäude in Form
+              eines detaillierten Schließplans. Dieser Plan ist das Herzstück der gesamten Anlage. Er kartografiert jede Tür, ordnet
+              Sicherheitsstufen zu und verknüpft sie mit den entsprechenden Nutzergruppen. Wir nutzen modernste Softwarelösungen,
+              um auch hochkomplexe Generalhauptschlüsselanlagen (GHS) fehlerfrei zu modellieren und Kollisionen in der Berechtigungsmatrix
+              auszuschließen.
+            </p>
+            <p>
+              Erst wenn dieser virtuelle Prototyp von allen Stakeholdern autorisiert wurde, beginnt die physische Fertigung der Zylinder
+              und Schlüssel. Dieser zweistufige Prozess garantiert, dass die gelieferte Anlage exakt Ihren betrieblichen Realitäten
+              entspricht und teure Fehlproduktionen vermieden werden.
+            </p>
+          </div>
         </div>
       </Section>
 
-      {/* Die fünf Systeme */}
+      {/* Fachspezifischer FAQ-Abschnitt */}
+      <Section tone="muted">
+        <SectionHeading eyebrow="FAQ" title="Umfassende Antworten zur Methodik" />
+        <div className="mt-8 space-y-4">
+          {[
+            {
+              q: "Wie berechnet sich der ROI bei einem Wechsel von mechanischen zu mechatronischen Systemen?",
+              a: "Der ROI wird primär durch die signifikante Reduzierung der Folgekosten bei Schlüsselverlusten sowie durch den minimierten administrativen Aufwand bei Fluktuation getrieben. Bei mechatronischen Systemen entfällt der teure Austausch ganzer Zylindergruppen; stattdessen werden Berechtigungen digital entzogen. Die Amortisation erfolgt je nach Fluktuationsrate oft bereits nach 18 bis 24 Monaten."
+            },
+            {
+              q: "Welche Erweiterungsreserven müssen zwingend bei der Initialplanung berücksichtigt werden?",
+              a: "Eine zukunftssichere Planung kalkuliert grundsätzlich einen Puffer von 15 bis 20 Prozent für zusätzliche Türen und Nutzer ein. Darüber hinaus müssen bereits in der Grundstruktur der Schließhierarchie Platzhalter für künftige, noch nicht definierte Abteilungen oder Gebäudetrakte geschaffen werden, um spätere Zylinder-Kollisionen zu verhindern."
+            },
+            {
+              q: "Wie gewährleisten Sie die Ausfallsicherheit mechatronischer Komponenten bei Stromverlust?",
+              a: "Unsere mechatronischen Hochsicherheitssysteme sind vollständig autark konzipiert. Die Energieversorgung erfolgt wahlweise über langlebige Batterien in den Zylindern selbst oder wird bei der kontaktbasierten Systemen direkt durch den intelligenten Schlüssel induziert. Ein Stromausfall im Gebäude hat somit keinerlei Auswirkungen auf die grundlegende Schließfunktion."
+            },
+            {
+              q: "Können bestehende mechanische Anlagen sukzessive in ein Enterprise-Tier System migriert werden?",
+              a: "Ja, dies ist ein gängiges Szenario in der architektonischen Praxis. Wir implementieren hybride Strukturen, bei denen kritische Außenhaut- und IT-Türen mit mechatronischen Zylindern aufgerüstet werden, während weniger sensible Innentüren vorerst im mechanischen Bestand verbleiben. Beide Welten werden dabei über einen einzigen Kombischlüssel bedient."
+            },
+            {
+              q: "Welche Sicherheitszertifizierungen sind für den VdS-konformen Versicherungsschutz relevant?",
+              a: "Für einen vollständigen Versicherungsschutz müssen die Zylinder mindestens den VdS-Klassen B oder BZ (bzw. DIN EN 1303 Verschlusssicherheitsklasse 6) entsprechen. Bei Enterprise- und Custom-Tiers implementieren wir standardmäßig Systeme mit integriertem Bohr-, Zieh- und Kopierschutz, die diese strengen normativen Anforderungen weit übertreffen."
+            }
+          ].map((faq, i) => (
+            <div key={i} className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h4 className="text-base font-semibold text-[oklch(0.16_0.02_260)]">{faq.q}</h4>
+              <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+
+
+{/* Die fünf Systeme */}
       <Section id="systeme" tone="muted">
         <SectionHeading
           eyebrow="Systeme"
