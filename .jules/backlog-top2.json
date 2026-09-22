@@ -1,28 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2024-03-20T12:00:00Z",
-  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "generated_at": "2026-09-22T18:43:01.288Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf SCORE = (Vis * 0.35) + (ROI * 0.35) + (Mach * 0.30).",
   "top_ideas": [
     {
       "rank": 1,
-      "idea_id": "IDEA_051",
-      "category": "CONVERSION_AND_TOOLS",
-      "target_existing_route": "src/app/schliessanlagen/page.tsx",
-      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
-      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
-      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
+      "idea_id": "IDEA_014",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/admin/einstellungen/page.tsx",
+      "target_component_file": "components/forms/field.tsx",
+      "title": "Kinetische Veredelung: forms/field",
+      "specification": "Überführung des Layouts in ein dynamisches Spatial Bento Grid mit oklch-Haarlinien und Cursor-Tracking in `src/components/forms/field.tsx` auf der Route `src/app/admin/einstellungen/page.tsx`, zur Etablierung der strikten Swiss Light Mode Ästhetik.",
       "score": 9.65,
       "status": "READY_FOR_EXPANSION"
     },
     {
       "rank": 2,
-      "idea_id": "IDEA_002",
-      "category": "AWWWARDS_KINETICS",
-      "target_existing_route": "src/app/page.tsx",
-      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
-      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
-      "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
-      "score": 9.45,
+      "idea_id": "IDEA_042",
+      "category": "SEMANTIC_AUTHORITY",
+      "target_existing_route": "app/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_component_file": "components/layout/section.tsx",
+      "title": "Content-Maximierung: autoschluessel/schluesselbart-fraesen",
+      "specification": "Integration von forensischen Fallstudien und präzisen Materialanalysen (z.B. Zylinder-Stahlgüten) auf der Route `src/app/autoschluessel/schluesselbart-fraesen/page.tsx`, um das Vertrauen von B2B-Einkäufern durch technische Tiefe zu gewinnen.",
+      "score": 9.49,
       "status": "READY_FOR_EXPANSION"
     }
   ]
