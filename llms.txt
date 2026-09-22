@@ -1,3 +1,5 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+## Neue Interaktive Module
+- Enterprise ROI Calculator: Integriert auf der Schließanlagen-Seite (/schliessanlagen). Nutzt React 19 useActionState und useOptimistic.
