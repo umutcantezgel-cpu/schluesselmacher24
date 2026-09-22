@@ -1,3 +1,10 @@
-Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
+# SCHLÜSSELMACHER24
 
-Follow .jules/revolution-plan.json for transformation.
+Website und Shop für Autoschlüssel, Schlüssel, Schließtechnik, elektronische
+Zutrittslösungen und Sicherheitstechnik. Domain: `schluesselmacher24.de`
+
+## Architecture & DNA
+
+- Architecture Matrix: `.jules/architecture-matrix.md`
+- Revolution Blueprint: `.jules/revolution-plan.json`
+- Codebase DNA: `.jules/codebase-dna.json`
