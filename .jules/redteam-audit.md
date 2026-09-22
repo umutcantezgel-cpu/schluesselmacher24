@@ -1,16 +1,14 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# Red-Team Audit Befunde
 
-## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+## Silent Logic Death & Interaktions-Fallen
+- Tote `onClick` Handler ohne Funktion in Formular-Komponenten.
+- Leere Layout-Container bei fehlenden Daten, statt dedizierter Fallback-UI.
 
-## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+## Hydration Mismatches
+- Warnungen bezüglich `localStorage` im initialen SSR-Baum in E-Commerce Komponenten.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## Core Web Vitals
+- Schwerfällige Client-Komponenten in der Startseite, die besser als Server-Komponenten realisiert werden sollten.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## Design Doktrin Verstöße
+- Fehlende Einhaltung des 1px Kanten / OKLCH Standards in einigen Legacy-Ansichten.
