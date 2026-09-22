@@ -1,16 +1,20 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# RED-TEAM AUDIT BEFUNDE
 
 ## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+- Keine expliziten leeren Handler gefunden, aber generelle Interaktions-Latenz auf Routen-Ebene beobachtet.
 
 ## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+- `src/app/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx`: Unsafe 'window' access outside useEffect.
+- `src/app/kasse/kasse-formular.tsx`: Unsafe 'window' access outside useEffect.
+- `src/app/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`: Unsafe 'window' access outside useEffect.
+- `src/app/admin/vorgaenge/[id]/vorgangs-aktionen.tsx`: Unsafe 'window' access outside useEffect.
+- `src/app/rechtliches/cookie-einstellungen/cookie-einstellungen.tsx`: Unsafe 'window' access outside useEffect.
+- `src/lib/scheduling.ts`: Unsafe 'window' access outside useEffect.
+- `src/lib/client-state.ts`: Unsafe 'window' access outside useEffect.
+- `src/lib/flow/use-flow.ts`: Unsafe 'window' access outside useEffect.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TypeScript-Schwächen
+- Typisierungen teilweise zu permissiv; fehlende exhaustive Checks bei as const Maps.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. Core Web Vitals Sünden
+- Bild-Optimierung akzeptabel, jedoch fehlendes Preloading für LCP-Hero-Elemente in Layouts.
