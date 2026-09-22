@@ -1,59 +1,59 @@
 # Architecture Matrix
 
-| URL | Source File | Current Words | Target Words | Status |
-|---|---|---|---|---|
-| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | 231 | 950 | PENDING_BUILDER |
-| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /admin/inhalte | src/app/admin/inhalte/page.tsx | 213 | 950 | PENDING_BUILDER |
-| /admin | src/app/admin/page.tsx | 1172 | 1172 | PENDING_BUILDER |
-| /admin/preise | src/app/admin/preise/page.tsx | 216 | 950 | PENDING_BUILDER |
-| /admin/produkte | src/app/admin/produkte/page.tsx | 228 | 950 | PENDING_BUILDER |
-| /admin/termine | src/app/admin/termine/page.tsx | 453 | 950 | PENDING_BUILDER |
-| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | 1593 | 1593 | PENDING_BUILDER |
-| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | 322 | 950 | PENDING_BUILDER |
-| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | 519 | 950 | PENDING_BUILDER |
-| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | 1122 | 1122 | PENDING_BUILDER |
-| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | 1092 | 1092 | PENDING_BUILDER |
-| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | 1134 | 1134 | PENDING_BUILDER |
-| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | 1224 | 1224 | PENDING_BUILDER |
-| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | 980 | 980 | PENDING_BUILDER |
-| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | 719 | 950 | PENDING_BUILDER |
-| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | 1190 | 1190 | PENDING_BUILDER |
-| /autoschluessel | src/app/autoschluessel/page.tsx | 1971 | 1971 | PENDING_BUILDER |
-| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | 1223 | 1223 | PENDING_BUILDER |
-| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | 1043 | 1043 | PENDING_BUILDER |
-| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | 1208 | 1208 | PENDING_BUILDER |
-| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | 994 | 994 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 383 | 950 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | 2451 | 2451 | PENDING_BUILDER |
-| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | 311 | 950 | PENDING_BUILDER |
-| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | 2052 | 2052 | PENDING_BUILDER |
-| /kasse | src/app/kasse/page.tsx | 240 | 950 | PENDING_BUILDER |
-| / | src/app/page.tsx | 1140 | 1140 | PENDING_BUILDER |
-| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | 353 | 950 | PENDING_BUILDER |
-| /ratgeber | src/app/ratgeber/page.tsx | 225 | 950 | PENDING_BUILDER |
-| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | 417 | 950 | PENDING_BUILDER |
-| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | 229 | 950 | PENDING_BUILDER |
-| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | 716 | 950 | PENDING_BUILDER |
-| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | 428 | 950 | PENDING_BUILDER |
-| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | 371 | 950 | PENDING_BUILDER |
-| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | 369 | 950 | PENDING_BUILDER |
-| /schliessanlagen | src/app/schliessanlagen/page.tsx | 1603 | 1603 | PENDING_BUILDER |
-| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | 710 | 950 | PENDING_BUILDER |
-| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | 468 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | 222 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | 1762 | 1762 | PENDING_BUILDER |
-| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | 152 | 950 | PENDING_BUILDER |
-| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | 475 | 950 | PENDING_BUILDER |
-| /service-und-termin | src/app/service-und-termin/page.tsx | 462 | 950 | PENDING_BUILDER |
-| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | 108 | 950 | PENDING_BUILDER |
-| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | 656 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | 645 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | 995 | 995 | PENDING_BUILDER |
-| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | 330 | 950 | PENDING_BUILDER |
-| /standorte/[city] | src/app/standorte/[city]/page.tsx | 399 | 950 | PENDING_BUILDER |
-| /standorte | src/app/standorte/page.tsx | 250 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | 494 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | 746 | 950 | PENDING_BUILDER |
-| /warenkorb | src/app/warenkorb/page.tsx | 259 | 950 | PENDING_BUILDER |
+| Route | Source File | Status | Schema-Status | CWV-Status | Current Words | Target Words |
+|-------|-------------|--------|---------------|------------|---------------|--------------|
+| / | src/app/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1148 | 1748 |
+| /admin | src/app/admin/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1171 | 1771 |
+| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 230 | 850 |
+| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 248 | 850 |
+| /admin/inhalte | src/app/admin/inhalte/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 212 | 850 |
+| /admin/preise | src/app/admin/preise/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 215 | 850 |
+| /admin/produkte | src/app/admin/produkte/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 227 | 850 |
+| /admin/termine | src/app/admin/termine/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 452 | 1052 |
+| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 321 | 921 |
+| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1592 | 2192 |
+| /autoschluessel | src/app/autoschluessel/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1970 | 2570 |
+| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 518 | 1118 |
+| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1121 | 1721 |
+| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1091 | 1691 |
+| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1133 | 1733 |
+| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 718 | 1318 |
+| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 979 | 1579 |
+| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1223 | 1823 |
+| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1189 | 1789 |
+| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1222 | 1822 |
+| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1042 | 1642 |
+| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1207 | 1807 |
+| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 993 | 1593 |
+| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 2450 | 3050 |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 382 | 982 |
+| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 2051 | 2651 |
+| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 310 | 910 |
+| /kasse | src/app/kasse/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 239 | 850 |
+| /ratgeber | src/app/ratgeber/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 224 | 850 |
+| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 355 | 955 |
+| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 416 | 1016 |
+| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 228 | 850 |
+| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 715 | 1315 |
+| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 248 | 850 |
+| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 427 | 1027 |
+| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 370 | 970 |
+| /schliessanlagen | src/app/schliessanlagen/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1602 | 2202 |
+| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 368 | 968 |
+| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 467 | 1067 |
+| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 730 | 1330 |
+| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1761 | 2361 |
+| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 221 | 850 |
+| /service-und-termin | src/app/service-und-termin/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1539 | 2139 |
+| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 151 | 850 |
+| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 474 | 1074 |
+| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 107 | 850 |
+| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 655 | 1255 |
+| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 994 | 1594 |
+| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 644 | 1244 |
+| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 329 | 929 |
+| /standorte | src/app/standorte/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 249 | 850 |
+| /standorte/[city] | src/app/standorte/[city]/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 401 | 1001 |
+| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 1754 | 2354 |
+| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 493 | 1093 |
+| /warenkorb | src/app/warenkorb/page.tsx | PENDING | REQUIRED | NEEDS_LCP_OPT | 258 | 858 |
