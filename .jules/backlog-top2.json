@@ -1,28 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2024-03-20T12:00:00Z",
+  "generated_at": "2026-09-22T20:53:12.807814+00:00",
   "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
   "top_ideas": [
     {
       "rank": 1,
-      "idea_id": "IDEA_051",
-      "category": "CONVERSION_AND_TOOLS",
-      "target_existing_route": "src/app/schliessanlagen/page.tsx",
-      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
-      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
-      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
-      "score": 9.65,
+      "idea_id": "IDEA_009",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/page.tsx",
+      "target_component_file": "app/service-und-termin/terminstatus/status-formular.tsx",
+      "title": "Neukonzeption: Mikro-haptische Hover-States für Status Formular",
+      "specification": "Verfeinerung der Hover-Effekte durch physikalische Federdämpfung (spring animations) und OKLCH-Soft-Shadows. Spezifisch für app/service-und-termin/terminstatus/status-formular.tsx unter strenger Einhaltung der Schweizer Light Mode Ästhetik (oklch 0.988) und 1px Haarlinien.",
+      "score": 9.42,
       "status": "READY_FOR_EXPANSION"
     },
     {
       "rank": 2,
-      "idea_id": "IDEA_002",
-      "category": "AWWWARDS_KINETICS",
-      "target_existing_route": "src/app/page.tsx",
-      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
-      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
-      "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
-      "score": 9.45,
+      "idea_id": "IDEA_089",
+      "category": "EXTREME_PERFORMANCE",
+      "target_existing_route": "app/page.tsx",
+      "target_component_file": "app/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx",
+      "title": "Refactoring: Zero-Shift Font Strategy für Anfrage Formular",
+      "specification": "Optimierung der Webfont-Ladevorgänge durch striktes Preloading und size-adjust zur Eliminierung jeglichen Cumulative Layout Shifts. Spezifisch für app/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx unter strenger Einhaltung der Schweizer Light Mode Ästhetik (oklch 0.988) und 1px Haarlinien.",
+      "score": 9.38,
       "status": "READY_FOR_EXPANSION"
     }
   ]
