@@ -1,16 +1,21 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# Red-Team Audit Report
+## 1. SILENT LOGIC DEATH & INTERAKTIONS-FALLEN
+- Gefundene leere Event-Handler in `src/components/flow/flow-shell.tsx`.
+- Keine dedizierten Loading-States bei diversen Buttons.
+- Fehlende Error-Boundaries bei leeren Arrays in `src/components/layout/summary-list.tsx`.
 
-## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+## 2. HYDRATION MISMATCHES & SSR-KONFLIKTE
+- Datumsanzeigen in Admin-Ansichten können Hydration Mismatches erzeugen.
+- Potenzieller `window` Zugriff im Calculator ohne Mount-Guard.
 
-## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+## 3. TYPESCRIPT-SCHWÄCHEN
+- Schema.org Graphen in `src/components/seo/json-ld.tsx` nicht immer mit `satisfies Graph` abgedeckt.
+- Fehlende `Promise`-Typisierung für `params` in Next.js 16.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 4. CORE WEB VITALS SÜNDEN
+- LCP Optimierungen bei Hero-Bildern fehlen (`loading="eager"` und `fetchPriority="high"`).
+- CSS Subgrid Harmonisierung könnte Layout-Shifts vermeiden.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## DESIGN-KRITIK (SCHWEIZER AESTHETIK)
+- Chromatische Reinheit muss durch striktes `oklch()` sichergestellt werden.
+- Kinetische Disziplin: Zu viele Animationen konkurrieren.
