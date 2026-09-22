@@ -14,5 +14,17 @@
   "src/app/standorte/[city]/page.tsx": {
     "status": "VERIFIZIERT_FROZEN",
     "hash": "c1c409c035d53749881480d8983e5d782055ab3f40dfecbcb0cbfffe4d688819"
+  },
+  "src/app/tuer-und-schliesstechnik/page.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "8e76b8bfef7f509d54833e7be26a6adad2a6992ea7b78d3073f7362aa8dea0fd"
+  },
+  "src/components/calculator/security-check-calculator.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "6982242f840922863aa18857fc53a22825823d59a0c80bdc1494d40aa1e8c0b3"
+  },
+  "src/actions/calculate-door-security.ts": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "7bc5c26e11349aa26e93ff3670f8c027018ec667203e3524a19b0da69ee4ee6c"
   }
 }
