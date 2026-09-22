@@ -1,3 +1,5 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+
+- **Enterprise ROI-Kalkulator:** Added to /schliessanlagen to compute mechanical vs electronic system cost savings.
