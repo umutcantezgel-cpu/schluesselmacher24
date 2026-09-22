@@ -1,28 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2024-03-20T12:00:00Z",
+  "generated_at": "2026-09-22T12:43:01.814Z",
   "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
   "top_ideas": [
     {
-      "rank": 1,
-      "idea_id": "IDEA_051",
+      "idea_id": "IDEA_060",
       "category": "CONVERSION_AND_TOOLS",
-      "target_existing_route": "src/app/schliessanlagen/page.tsx",
-      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
+      "target_existing_route": "app/schliessanlagen/page.tsx",
+      "target_component_file": "components/calculator/enterprise-roi-calculator.tsx",
       "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
       "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
       "score": 9.65,
+      "rank": 1,
       "status": "READY_FOR_EXPANSION"
     },
     {
-      "rank": 2,
-      "idea_id": "IDEA_002",
+      "idea_id": "IDEA_014",
       "category": "AWWWARDS_KINETICS",
-      "target_existing_route": "src/app/page.tsx",
-      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
+      "target_existing_route": "app/page.tsx",
+      "target_component_file": "components/showcase/spatial-bento-grid.tsx",
       "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
       "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
       "score": 9.45,
+      "rank": 2,
       "status": "READY_FOR_EXPANSION"
     }
   ]
