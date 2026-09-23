@@ -24,6 +24,8 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
 import { JsonLd, faqSchema } from '@/components/seo/json-ld';
+import { getSiteUrl } from '@/lib/site-url';
+import type { Graph } from 'schema-dts';
 
 const ROUTE = 'tuer-und-schliesstechnik';
 
@@ -111,12 +113,44 @@ interface Props {
 
 export default async function TuerUndSchliesstechnikPage(props: Props) {
   const params = await props.params;
+  void params;
   const searchParams = await props.searchParams;
+  void searchParams;
 
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
   ]);
+  const siteUrl = getSiteUrl();
+  const pageUrl = `${siteUrl}/${ROUTE}`;
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://schluesselmacher24.de/#organization",
+        "name": "SCHLÜSSELMACHER24",
+        "url": "https://schluesselmacher24.de",
+        "logo": "https://schluesselmacher24.de/logo.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://schluesselmacher24.de/#website",
+        "url": "https://schluesselmacher24.de",
+        "name": "SCHLÜSSELMACHER24",
+        "publisher": { "@id": "https://schluesselmacher24.de/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}/#webpage`,
+        "url": pageUrl,
+        "name": page?.seo.title ?? "Tür- und Schließtechnik",
+        "isPartOf": { "@id": "https://schluesselmacher24.de/#website" },
+        "about": { "@id": "https://schluesselmacher24.de/#organization" }
+      }
+    ]
+  } satisfies Graph;
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
@@ -127,6 +161,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
       className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
     >
       <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
+      <JsonLd data={structuredData} />
 
       <PageHeader
         eyebrow="Leistungsbereich"
