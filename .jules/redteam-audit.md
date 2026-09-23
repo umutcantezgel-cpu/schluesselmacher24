@@ -1,16 +1,61 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# Philosophie & Red-Team Audit Report
 
-## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+## Zusammenfassung der Architektur- und Designschwächen
 
-## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
-
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
-
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+- **Thin Content (Content-Defizit):** src/app/page.tsx (161 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/ratgeber/page.tsx (48 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/ratgeber/[slug]/page.tsx (120 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/schluessel-nach-vorlage/page.tsx (389 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/schluessel-nach-vorlage/anfrage/page.tsx (38 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/warenkorb/page.tsx (45 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/kasse/page.tsx (44 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/schluessel-nach-code/page.tsx (88 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/schluessel-nach-code/[slug]/page.tsx (283 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/sicherheitstechnik/page.tsx (295 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/sicherheitstechnik/[slug]/page.tsx (197 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/sicherheitstechnik/sicherheitscheck/page.tsx (81 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/tuer-und-schliesstechnik/page.tsx (395 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/tuer-und-schliesstechnik/[slug]/page.tsx (167 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/bestellung/[id]/page.tsx (344 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/gleichschliessende-zylinder/page.tsx (516 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/gleichschliessende-zylinder/konfigurator/page.tsx (96 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/elektronische-zutrittsloesungen/page.tsx (320 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx (121 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/schliessanlagen/page.tsx (282 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/schliessanlagen/konfigurator/page.tsx (66 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/service-und-termin/page.tsx (645 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/service-und-termin/terminstatus/page.tsx (23 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/service-und-termin/anfrage/page.tsx (41 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/service-und-termin/vor-ort/page.tsx (133 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/service-und-termin/kontakt/page.tsx (120 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/admin/page.tsx (322 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/admin/einstellungen/page.tsx (60 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/admin/fahrzeugdaten/page.tsx (57 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/admin/termine/page.tsx (219 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/admin/preise/page.tsx (62 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/admin/vorgaenge/page.tsx (120 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/admin/vorgaenge/[id]/page.tsx (473 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/admin/inhalte/page.tsx (57 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/admin/produkte/page.tsx (67 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/rechtliches/impressum/page.tsx (183 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/rechtliches/cookie-einstellungen/page.tsx (18 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/rechtliches/versand-und-zahlung/page.tsx (202 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/rechtliches/widerruf/page.tsx (15 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/rechtliches/agb/page.tsx (15 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/rechtliches/datenschutz/page.tsx (610 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/standorte/page.tsx (69 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/standorte/[city]/page.tsx (113 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/page.tsx (310 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/marken/page.tsx (240 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/marken/[make]/page.tsx (336 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/marken/[make]/[model]/page.tsx (447 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/funkschluessel/page.tsx (40 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/programmieren/page.tsx (48 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/anfrage/page.tsx (136 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/kopieren/page.tsx (87 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/nachmachen/page.tsx (33 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/smart-key/page.tsx (48 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/schluesselbart-fraesen/page.tsx (42 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **Thin Content (Content-Defizit):** src/app/autoschluessel/fahrzeugoeffnung/page.tsx (42 Wörter) - Verfehlt die 800-Wörter-Marke für Semantische Autorität.
+- **TypeScript-Schwäche:** src/components/seo/json-ld.tsx - Type-Casting mit 'as unknown as' oder 'any' maskiert potenzielle Fehler.
+- **TypeScript-Schwäche:** src/components/layout/site-footer.tsx - Type-Casting mit 'as unknown as' oder 'any' maskiert potenzielle Fehler.
