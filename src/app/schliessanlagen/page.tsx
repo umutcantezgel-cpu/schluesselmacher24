@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -167,7 +168,30 @@ const FALLBACK_FAQ = [
 
 export default async function SchliessanlagenPage() {
   const page = await getPageContent(ROUTE);
-  const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
+  const baseFaq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
+  const faq = [
+    ...baseFaq,
+    {
+      question: 'Was ist der Unterschied zwischen einer Gleichschließung und einer echten Anlage?',
+      answer: 'Bei einer Gleichschließung öffnet ein Schlüsseltyp exakt dieselben Zylinder. Es gibt keine Hierarchie. Bei einer Schließanlage gibt es übergeordnete Schlüssel (z. B. den Generalhauptschlüssel), die alle Türen öffnen, während untergeordnete Schlüssel nur bestimmte Türen öffnen können.'
+    },
+    {
+      question: 'Wie verhalte ich mich bei einem Schlüsselverlust in einer Anlage?',
+      answer: 'Der Verlust eines Anlagenschlüssels stellt ein Sicherheitsrisiko dar. Je nach Ebene (Generalhauptschlüssel vs. Einzelschlüssel) muss im schlimmsten Fall die gesamte Anlage ausgetauscht werden. Wir raten daher immer zur Absicherung durch eine Schließanlagenversicherung und dokumentieren verlorene Schlüssel im System.'
+    },
+    {
+      question: 'Sind mechanische Schließanlagen überhaupt noch zeitgemäß?',
+      answer: 'Absolut. Während elektronische Systeme an Flexibilität gewinnen, bietet die Mechanik unübertroffene Zuverlässigkeit, Wartungsarmut und Unabhängigkeit von Stromquellen. In großen Projekten empfehlen wir oft eine Hybridlösung: Mechanik für die Grundsicherheit und Elektronik für hochfrequentierte oder sicherheitskritische Bereiche.'
+    },
+    {
+      question: 'Kann eine bestehende Schließanlage erweitert werden?',
+      answer: 'Ja, sofern bei der ursprünglichen Planung sogenannte Schließreserven (Leerstücke im Schließplan) einkalkuliert wurden. Unsere methodische Herangehensweise stellt sicher, dass Anlagen auch Jahre später skalierbar bleiben. Ohne diese Reserven ist eine Erweiterung oft technisch nicht möglich.'
+    },
+    {
+      question: 'Wie lange dauert die Fertigung einer Generalhauptschlüsselanlage?',
+      answer: 'Nach finaler Freigabe des Schließplans durch Sie, dauert die werkseitige Fertigung und Programmierung der Zylinder in der Regel zwischen 2 und 4 Wochen, abhängig von der Komplexität und dem Umfang des Projekts.'
+    }
+  ];
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
@@ -253,6 +277,65 @@ export default async function SchliessanlagenPage() {
         />
         <div className="mt-8">
           <SystemErklaerung />
+        </div>
+
+        <div className="mt-16 mb-8 max-w-4xl">
+          <h3 className="text-2xl font-bold text-foreground">Architektonische Methodik & Skalierbarkeit</h3>
+          <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+            Eine mechanische Schließanlage für ein größeres Gebäude oder einen Campus ist weit mehr als eine Sammlung
+            von Schlössern und Schlüsseln. Es handelt sich um ein fein abgestimmtes Sicherheitssystem, dessen
+            Planung weitsichtig erfolgen muss. Die architektonische Methodik bei der Konzeption einer
+            Generalhauptschlüsselanlage (GHS) beruht auf der präzisen Modellierung von Organisationsstrukturen in
+            mechanische Berechtigungsstufen. Jede Abteilung, jeder Brandabschnitt und jede externe
+            Zugangsberechtigung (z. B. für Reinigung oder Haustechnik) muss in der Schließhierarchie berücksichtigt werden.
+          </p>
+          <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+            Unsere Planungsprämisse lautet: Maximale Flexibilität in der Zukunft. Ein starrer Schließplan,
+            der nachträgliche Erweiterungen nicht zulässt, wird schnell zur Kostenfalle. Daher arbeiten wir
+            mit algorithmisch berechneten Schließreserven. Diese &quot;Leerstücke&quot; im Schließplan garantieren,
+            dass auch Jahre später neue Türen oder Gebäudeabschnitte nahtlos integriert werden können,
+            ohne die bestehende Sicherheitsstruktur zu kompromittieren. Wir dokumentieren jede Schließanlage
+            vollumfänglich, sodass Nachbestellungen oder Sperrungen bei Schlüsselverlust jederzeit mit
+            höchster Effizienz abgewickelt werden können.
+          </p>
+
+          <h4 className="text-xl font-bold text-foreground mt-8">Vergleichsmatrix: Leistungsstufen</h4>
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full text-left text-[14px] border-collapse border border-border">
+              <thead>
+                <tr className="bg-surface-muted">
+                  <th className="p-3 border border-border">Anforderungsprofil</th>
+                  <th className="p-3 border border-border">Z-Anlage (Zentral)</th>
+                  <th className="p-3 border border-border">HS-Anlage (Hauptschlüssel)</th>
+                  <th className="p-3 border border-border">GHS-Anlage (Generalhaupt)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="p-3 border border-border font-medium">Ideales Einsatzgebiet</td>
+                  <td className="p-3 border border-border">Mehrfamilienhäuser, kleine Büros</td>
+                  <td className="p-3 border border-border">Mittelständische Unternehmen, Schulen</td>
+                  <td className="p-3 border border-border">Großkonzerne, Kliniken, Universitäten</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-border font-medium">Berechtigungsebenen</td>
+                  <td className="p-3 border border-border">1 (Zentraltür + Einzeltüren)</td>
+                  <td className="p-3 border border-border">2 (Übergeordnet + Einzel)</td>
+                  <td className="p-3 border border-border">3+ (General, Haupt, Gruppen)</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-border font-medium">Skalierbarkeit</td>
+                  <td className="p-3 border border-border">Gering (meist fest definiert)</td>
+                  <td className="p-3 border border-border">Mittel (begrenzte Gruppen)</td>
+                  <td className="p-3 border border-border">Maximal (mit Schließreserven)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <EnterpriseRoiCalculator />
         </div>
 
         <div className="mt-12">
