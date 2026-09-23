@@ -1,3 +1,8 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+
+---
+## JULES AUTOMATED AUDIT (JC-AUDITOR-ARCHITECT-v1)
+Blueprint generated and documented in `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`.
+Goal: Modernize React/Next.js 16+ setup, strictly utilizing App Router, RSC, and Tailwind v4 in OKLCH light mode.
