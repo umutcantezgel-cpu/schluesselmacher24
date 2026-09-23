@@ -1,9 +1,9 @@
 {
-  "scanned_at": "2026-09-19T17:36:35.128Z",
+  "scanned_at": "2026-09-23T07:04:09.968966Z",
   "runtime_environment": "Next.js 16+ App Router",
   "language_standard": "TypeScript 5.5+ Strict",
   "ui_engine": "Tailwind CSS v4",
   "color_space": "OKLCH Light Mode",
   "active_routes_count": 55,
-  "active_components_count": 27
+  "active_components_count": 31
 }
