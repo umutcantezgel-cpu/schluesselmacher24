@@ -1,59 +1,59 @@
 # Architecture Matrix
 
-| URL | Source File | Current Words | Target Words | Status |
-|---|---|---|---|---|
-| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | 231 | 950 | PENDING_BUILDER |
-| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /admin/inhalte | src/app/admin/inhalte/page.tsx | 213 | 950 | PENDING_BUILDER |
-| /admin | src/app/admin/page.tsx | 1172 | 1172 | PENDING_BUILDER |
-| /admin/preise | src/app/admin/preise/page.tsx | 216 | 950 | PENDING_BUILDER |
-| /admin/produkte | src/app/admin/produkte/page.tsx | 228 | 950 | PENDING_BUILDER |
-| /admin/termine | src/app/admin/termine/page.tsx | 453 | 950 | PENDING_BUILDER |
-| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | 1593 | 1593 | PENDING_BUILDER |
-| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | 322 | 950 | PENDING_BUILDER |
-| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | 519 | 950 | PENDING_BUILDER |
-| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | 1122 | 1122 | PENDING_BUILDER |
-| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | 1092 | 1092 | PENDING_BUILDER |
-| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | 1134 | 1134 | PENDING_BUILDER |
-| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | 1224 | 1224 | PENDING_BUILDER |
-| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | 980 | 980 | PENDING_BUILDER |
-| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | 719 | 950 | PENDING_BUILDER |
-| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | 1190 | 1190 | PENDING_BUILDER |
-| /autoschluessel | src/app/autoschluessel/page.tsx | 1971 | 1971 | PENDING_BUILDER |
-| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | 1223 | 1223 | PENDING_BUILDER |
-| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | 1043 | 1043 | PENDING_BUILDER |
-| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | 1208 | 1208 | PENDING_BUILDER |
-| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | 994 | 994 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 383 | 950 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | 2451 | 2451 | PENDING_BUILDER |
-| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | 311 | 950 | PENDING_BUILDER |
-| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | 2052 | 2052 | PENDING_BUILDER |
-| /kasse | src/app/kasse/page.tsx | 240 | 950 | PENDING_BUILDER |
-| / | src/app/page.tsx | 1140 | 1140 | PENDING_BUILDER |
-| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | 353 | 950 | PENDING_BUILDER |
-| /ratgeber | src/app/ratgeber/page.tsx | 225 | 950 | PENDING_BUILDER |
-| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | 417 | 950 | PENDING_BUILDER |
-| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | 229 | 950 | PENDING_BUILDER |
-| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | 716 | 950 | PENDING_BUILDER |
-| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | 428 | 950 | PENDING_BUILDER |
-| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | 371 | 950 | PENDING_BUILDER |
-| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | 369 | 950 | PENDING_BUILDER |
-| /schliessanlagen | src/app/schliessanlagen/page.tsx | 1603 | 1603 | PENDING_BUILDER |
-| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | 710 | 950 | PENDING_BUILDER |
-| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | 468 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | 222 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | 1762 | 1762 | PENDING_BUILDER |
-| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | 152 | 950 | PENDING_BUILDER |
-| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | 475 | 950 | PENDING_BUILDER |
-| /service-und-termin | src/app/service-und-termin/page.tsx | 462 | 950 | PENDING_BUILDER |
-| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | 108 | 950 | PENDING_BUILDER |
-| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | 656 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | 645 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | 995 | 995 | PENDING_BUILDER |
-| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | 330 | 950 | PENDING_BUILDER |
-| /standorte/[city] | src/app/standorte/[city]/page.tsx | 399 | 950 | PENDING_BUILDER |
-| /standorte | src/app/standorte/page.tsx | 250 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | 494 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | 746 | 950 | PENDING_BUILDER |
-| /warenkorb | src/app/warenkorb/page.tsx | 259 | 950 | PENDING_BUILDER |
+| Route | Source | Current Status | Target Words | Topics | Module | Signature Interaction | Schema |
+|---|---|---|---|---|---|---|---|
+| / | src/app/page.tsx | Adequate (1601 words) | 2101 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /ratgeber | src/app/ratgeber/page.tsx | Thin Content (350 words) | 850 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | Thin Content (464 words) | 964 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | Adequate (1943 words) | 2443 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | Thin Content (350 words) | 850 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /warenkorb | src/app/warenkorb/page.tsx | Thin Content (350 words) | 850 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /kasse | src/app/kasse/page.tsx | Thin Content (350 words) | 850 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | Thin Content (523 words) | 1023 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | Adequate (907 words) | 1407 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | Adequate (1241 words) | 1741 | Hausabsicherung nach DIN-Norm, Schwachstellen-Analyse, Wartung und Checklisten | SecurityCheckCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | Thin Content (783 words) | 1283 | Hausabsicherung nach DIN-Norm, Schwachstellen-Analyse, Wartung und Checklisten | SecurityCheckCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | Thin Content (361 words) | 861 | Hausabsicherung nach DIN-Norm, Schwachstellen-Analyse, Wartung und Checklisten | SecurityCheckCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | Adequate (2224 words) | 2724 | Schließzylinder und Türschlösser, Mechanische Einbruchhemmung, FAQ zu Schließanlagen | CylinderConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | Thin Content (615 words) | 1115 | Schließzylinder und Türschlösser, Mechanische Einbruchhemmung, FAQ zu Schließanlagen | CylinderConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | Adequate (1185 words) | 1685 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | Adequate (2559 words) | 3059 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | Thin Content (350 words) | 850 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | Adequate (2581 words) | 3081 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | Thin Content (408 words) | 908 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /schliessanlagen | src/app/schliessanlagen/page.tsx | Adequate (1723 words) | 2223 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | Thin Content (405 words) | 905 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /service-und-termin | src/app/service-und-termin/page.tsx | Adequate (1797 words) | 2297 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | Thin Content (350 words) | 850 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | Thin Content (350 words) | 850 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | Thin Content (766 words) | 1266 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | Thin Content (608 words) | 1108 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /admin | src/app/admin/page.tsx | Adequate (1548 words) | 2048 | Systemverwaltung und Konfiguration, Datenmodelle im Backend, Sicherheitsrichtlinien für Administratoren | AdminDataGrid | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | Thin Content (350 words) | 850 | Systemverwaltung und Konfiguration, Datenmodelle im Backend, Sicherheitsrichtlinien für Administratoren | AdminDataGrid | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | Thin Content (350 words) | 850 | Systemverwaltung und Konfiguration, Datenmodelle im Backend, Sicherheitsrichtlinien für Administratoren | AdminDataGrid | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /admin/termine | src/app/admin/termine/page.tsx | Thin Content (509 words) | 1009 | Systemverwaltung und Konfiguration, Datenmodelle im Backend, Sicherheitsrichtlinien für Administratoren | AdminDataGrid | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /admin/preise | src/app/admin/preise/page.tsx | Thin Content (350 words) | 850 | Systemverwaltung und Konfiguration, Datenmodelle im Backend, Sicherheitsrichtlinien für Administratoren | AdminDataGrid | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | Thin Content (355 words) | 855 | Systemverwaltung und Konfiguration, Datenmodelle im Backend, Sicherheitsrichtlinien für Administratoren | AdminDataGrid | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | Adequate (1912 words) | 2412 | Systemverwaltung und Konfiguration, Datenmodelle im Backend, Sicherheitsrichtlinien für Administratoren | AdminDataGrid | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /admin/inhalte | src/app/admin/inhalte/page.tsx | Thin Content (350 words) | 850 | Systemverwaltung und Konfiguration, Datenmodelle im Backend, Sicherheitsrichtlinien für Administratoren | AdminDataGrid | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /admin/produkte | src/app/admin/produkte/page.tsx | Thin Content (350 words) | 850 | Systemverwaltung und Konfiguration, Datenmodelle im Backend, Sicherheitsrichtlinien für Administratoren | AdminDataGrid | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | Thin Content (350 words) | 850 | Rechtliche Rahmenbedingungen, Datenschutz und DSGVO, AGB und Widerrufsrecht | LegalNoticePanel | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | Thin Content (350 words) | 850 | Rechtliche Rahmenbedingungen, Datenschutz und DSGVO, AGB und Widerrufsrecht | LegalNoticePanel | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | Thin Content (512 words) | 1012 | Rechtliche Rahmenbedingungen, Datenschutz und DSGVO, AGB und Widerrufsrecht | LegalNoticePanel | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | Thin Content (390 words) | 890 | Rechtliche Rahmenbedingungen, Datenschutz und DSGVO, AGB und Widerrufsrecht | LegalNoticePanel | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | Thin Content (449 words) | 949 | Rechtliche Rahmenbedingungen, Datenschutz und DSGVO, AGB und Widerrufsrecht | LegalNoticePanel | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | Thin Content (797 words) | 1297 | Rechtliche Rahmenbedingungen, Datenschutz und DSGVO, AGB und Widerrufsrecht | LegalNoticePanel | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /standorte | src/app/standorte/page.tsx | Thin Content (350 words) | 850 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /standorte/[city] | src/app/standorte/[city]/page.tsx | Thin Content (503 words) | 1003 | Institutionelle Leistungsübersicht und Systemarchitektur, Methodischer Transformationsprozess, Detaillierte Fach-FAQ | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel | src/app/autoschluessel/page.tsx | Adequate (2191 words) | 2691 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | Adequate (852 words) | 1352 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | Adequate (1244 words) | 1744 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | Adequate (1363 words) | 1863 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | Adequate (951 words) | 1451 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | Adequate (1071 words) | 1571 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | Thin Content (542 words) | 1042 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | Adequate (1006 words) | 1506 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | Adequate (1047 words) | 1547 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | Adequate (1060 words) | 1560 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | Adequate (908 words) | 1408 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
+| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | Adequate (994 words) | 1494 | Modellübersicht und Sicherheit, Codierungsverfahren im Detail, Häufige Fragen zur Wegfahrsperre | VehicleKeyConfigurator | BENTO_HOVER_GLOW_LIGHT | Organization, FAQPage |
