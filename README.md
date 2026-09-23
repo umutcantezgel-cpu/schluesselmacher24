@@ -47,3 +47,7 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+## Architecture Blueprint Synchronized
+- Architectural audit completed and recorded in `.jules/architecture-matrix.md`.
+- See `llms.txt` and `.jules/revolution-plan.json` for Next.js 16+, React 19.2+ standards adherence.
