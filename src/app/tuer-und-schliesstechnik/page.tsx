@@ -24,6 +24,8 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
 import { JsonLd, faqSchema } from '@/components/seo/json-ld';
+import type { Graph } from 'schema-dts';
+import { headers } from 'next/headers';
 
 const ROUTE = 'tuer-und-schliesstechnik';
 
@@ -118,7 +120,43 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
     getServicePages(ROUTE),
   ]);
 
-  const process = PROCESS_LABELS['gefuehrte-anfrage'];
+  const processInfo = PROCESS_LABELS['gefuehrte-anfrage'];
+
+  const headersList = await headers();
+  const host = headersList.get('host') || 'schluesselmacher24.de';
+  const processEnvNodeEnv = process.env.NODE_ENV;
+  const protocol = processEnvNodeEnv === 'development' ? 'http' : 'https';
+  const pageUrl = `${protocol}://${host}/${ROUTE}`;
+  const pageTitle = page?.seo.title ?? 'Tür- und Schließtechnik: Sicherheit vom Zylinder bis zum Mehrfachschloss';
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${protocol}://${host}/#organization`,
+        "name": "Schlüsselmacher24",
+        "url": `${protocol}://${host}`,
+        "logo": `${protocol}://${host}/logo.png`
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${protocol}://${host}/#website`,
+        "url": `${protocol}://${host}`,
+        "name": "Schlüsselmacher24",
+        "publisher": { "@id": `${protocol}://${host}/#organization` }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}/#webpage`,
+        "url": pageUrl,
+        "name": pageTitle,
+        "isPartOf": { "@id": `${protocol}://${host}/#website` },
+        "about": { "@id": `${protocol}://${host}/#organization` }
+      }
+    ]
+  } satisfies Graph;
+
 
   return (
     <main
@@ -126,6 +164,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
       data-search={JSON.stringify(searchParams)}
       className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
     >
+      <JsonLd data={structuredData as Graph} />
       <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
 
       <PageHeader
@@ -188,9 +227,9 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
               <p className="text-xs font-bold uppercase tracking-wider text-[oklch(0.52_0.24_260)]">
                 Ablauf in diesem Bereich
               </p>
-              <p className="mt-2 text-lg font-bold text-[oklch(0.16_0.02_260)]">{process.label}</p>
+              <p className="mt-2 text-lg font-bold text-[oklch(0.16_0.02_260)]">{processInfo.label}</p>
               <p className="mt-2 text-sm leading-relaxed text-[oklch(0.32_0.02_260)]">
-                {process.hint} Wir analysieren die bauliche Substanz Ihrer Tür und erstellen darauf basierend ein präzises Sicherheitskonzept, bevor wir Komponenten austauschen.
+                {processInfo.hint} Wir analysieren die bauliche Substanz Ihrer Tür und erstellen darauf basierend ein präzises Sicherheitskonzept, bevor wir Komponenten austauschen.
               </p>
             </div>
           </div>
