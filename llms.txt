@@ -1,3 +1,7 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+
+---
+## Architektur- & DNA-Profile
+Der aktuelle Architektur-Blueprint befindet sich in `.jules/revolution-plan.json` und `.jules/architecture-matrix.md`.
