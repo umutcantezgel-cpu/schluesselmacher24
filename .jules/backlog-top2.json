@@ -1,28 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2024-03-20T12:00:00Z",
-  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "generated_at": "2026-09-23T18:58:18.935721+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf (Visuelle Hebelwirkung * 0.35) + (Nutzer-Mehrwert/ROI * 0.35) + (Machbarkeit * 0.30).",
   "top_ideas": [
     {
       "rank": 1,
-      "idea_id": "IDEA_051",
+      "idea_id": "IDEA_068",
       "category": "CONVERSION_AND_TOOLS",
-      "target_existing_route": "src/app/schliessanlagen/page.tsx",
-      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
-      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
-      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
-      "score": 9.65,
+      "target_existing_route": "src/app/elektronische-zutrittsloesungen/page.tsx",
+      "target_component_file": "src/components/ui/card.tsx",
+      "title": "Dynamisches Filter-System via useOptimistic für card.tsx",
+      "specification": "Spezifische Erweiterung: Dynamisches Filter-System via useOptimistic in der bestehenden Datei src/components/ui/card.tsx implementieren. Dies veredelt die Swiss Light Mode Ästhetik und maximiert UX ohne neue Routen zu erzeugen.",
+      "score": 9.05,
       "status": "READY_FOR_EXPANSION"
     },
     {
       "rank": 2,
-      "idea_id": "IDEA_002",
-      "category": "AWWWARDS_KINETICS",
-      "target_existing_route": "src/app/page.tsx",
-      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
-      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
-      "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
-      "score": 9.45,
+      "idea_id": "IDEA_053",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/autoschluessel/page.tsx",
+      "target_component_file": "src/components/calculator/service-budget-calculator.tsx",
+      "title": "Vorher-Nachher-Slider zur Conversion-Steigerung für service-budget-calculator.tsx",
+      "specification": "Spezifische Erweiterung: Vorher-Nachher-Slider zur Conversion-Steigerung in der bestehenden Datei src/components/calculator/service-budget-calculator.tsx implementieren. Dies veredelt die Swiss Light Mode Ästhetik und maximiert UX ohne neue Routen zu erzeugen.",
+      "score": 8.96,
       "status": "READY_FOR_EXPANSION"
     }
   ]
