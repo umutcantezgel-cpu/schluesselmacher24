@@ -23,17 +23,19 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
-import { JsonLd, faqSchema } from '@/components/seo/json-ld';
+import { JsonLd } from '@/components/seo/json-ld';
+import { getSiteUrl } from '@/lib/site-url';
+import type { Graph } from 'schema-dts';
 
 const ROUTE = 'tuer-und-schliesstechnik';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Tür- und Schließtechnik: Sicherheit vom Zylinder bis zum Mehrfachschloss',
+    title: page?.seo.title ?? 'Tür- und Schließtechnik vom Experten | Schlüsselmacher24',
     description:
       page?.seo.description
-      ?? 'Ganzheitliche Tür- und Schließtechnik. Beratung, Montage und Reparatur von Zylindern, Einsteckschlössern, Mehrfachverriegelungen und Beschlägen. Erhöhen Sie Ihre Sicherheit durch fachgerechte Türtechnik.',
+      ?? 'Ganzheitliche Tür- und Schließtechnik. Beratung, Montage und Reparatur von Zylindern, Einsteckschlössern und Mehrfachverriegelungen für maximalen Schutz.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }
@@ -126,7 +128,48 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
       data-search={JSON.stringify(searchParams)}
       className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
     >
-      <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
+            {/* JSON-LD Knowledge Graph SEO Integration */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://schluesselmacher24.de/#organization",
+              "name": "SCHLÜSSELMACHER24",
+              "url": "https://schluesselmacher24.de"
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://schluesselmacher24.de/#website",
+              "url": "https://schluesselmacher24.de",
+              "name": "SCHLÜSSELMACHER24",
+              "publisher": { "@id": "https://schluesselmacher24.de/#organization" }
+            },
+            {
+              "@type": "WebPage",
+              "@id": `${getSiteUrl()}/${ROUTE}/#webpage`,
+              "url": `${getSiteUrl()}/${ROUTE}`,
+              "name": page?.seo.title ?? 'Tür- und Schließtechnik vom Experten | Schlüsselmacher24',
+              "description": page?.seo.description ?? 'Ganzheitliche Tür- und Schließtechnik. Beratung, Montage und Reparatur von Zylindern, Einsteckschlössern und Mehrfachverriegelungen für maximalen Schutz.',
+              "isPartOf": { "@id": "https://schluesselmacher24.de/#website" },
+              "about": { "@id": "https://schluesselmacher24.de/#organization" }
+            },
+            {
+              "@type": "FAQPage",
+              "@id": `${getSiteUrl()}/${ROUTE}/#faq`,
+              "mainEntity": EXPERT_FAQ.map(item => ({
+                "@type": "Question",
+                "name": item.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": item.answer
+                }
+              }))
+            }
+          ]
+        } satisfies Graph}
+      />
 
       <PageHeader
         eyebrow="Leistungsbereich"
