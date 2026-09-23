@@ -47,3 +47,7 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+
+## Interaktive Module
+- **Enterprise ROI-Kalkulator**: Ein reaktives Tool zur Berechnung von Budgets für Schließanlagen unter Berücksichtigung von Tür- und Nutzeranzahl, Komplexität und theoretischen Einsparungen (eingebunden in `/schliessanlagen`).
