@@ -14,6 +14,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
+
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,7 +167,11 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+export default async function SchliessanlagenPage(props: { params: Promise<{ id?: string }>; searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  const resolvedParams = await props.params;
+  const resolvedSearch = await props.searchParams;
+  void resolvedParams;
+  void resolvedSearch;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -244,6 +250,30 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+
+      {/* Architektonische Methodik und Planungstiefe */}
+      <Section tight>
+        <SectionHeading
+          eyebrow="Architektur & Planung"
+          title="Methodik und Planungstiefe für zukunftssichere Sicherheit"
+        />
+        <div className="mt-8 prose prose-lg prose-slate text-[oklch(0.32_0.02_260)] leading-relaxed max-w-none">
+          <p>
+            Die Planung einer mechanischen Schließanlage ist weit mehr als die bloße Zuordnung von Schlüsseln zu Türen. Sie erfordert eine profunde architektonische Methodik, die sowohl die aktuellen Sicherheitsanforderungen als auch die zukünftige Skalierbarkeit Ihres Objekts berücksichtigt. Unsere Experten analysieren die physische Struktur Ihres Gebäudes, die Laufwege der Nutzer und die spezifischen Sicherheitszonen.
+          </p>
+          <p className="mt-4">
+            Wir beginnen mit einer detaillierten Schwachstellen-Analyse, bei der wir nicht nur die offensichtlichen Zugangspunkte wie Haupt- und Nebeneingänge betrachten, sondern auch sensible Innenbereiche, Serverräume und Lagereinheiten evaluieren. Diese holistische Herangehensweise stellt sicher, dass Ihre Schließanlage keine blinden Flecken aufweist.
+          </p>
+          <p className="mt-4">
+            Ein zentraler Bestandteil unserer Methodik ist die zukunftssichere Dimensionierung. Eine professionell geplante Anlage muss mitwachsen können. Egal ob Abteilungszusammenlegungen, Gebäudeerweiterungen oder ein Wechsel der Mieterstruktur anstehen – die Grundarchitektur des Schließplans wird so ausgelegt, dass spätere Erweiterungen nahtlos und ohne vollständigen Austausch der Kernkomponenten integriert werden können. Dies schont nicht nur Ihr langfristiges Budget, sondern minimiert auch den administrativen Aufwand bei strukturellen Veränderungen.
+          </p>
+          <p className="mt-4">
+            Zusätzlich integrieren wir modernste Erkenntnisse der Kriminalprävention in die Planung. Durch den gezielten Einsatz von unterschiedlichen Sicherheitsstufen innerhalb derselben Anlage – beispielsweise hochsichere Zylinder mit Kopierschutz für Außentüren und funktionale Standardzylinder für Innentüren – optimieren wir das Verhältnis von maximaler Sicherheit und wirtschaftlicher Effizienz.
+          </p>
+        </div>
+      </Section>
+
+
       {/* Die fünf Systeme */}
       <Section id="systeme" tone="muted">
         <SectionHeading
@@ -253,6 +283,18 @@ export default async function SchliessanlagenPage() {
         />
         <div className="mt-8">
           <SystemErklaerung />
+
+        <div className="mt-8 prose prose-lg prose-slate text-[oklch(0.32_0.02_260)] leading-relaxed max-w-none">
+          <h3>1. Gleichschließung (GS)</h3>
+          <p>Die Basis-Stufe für Einfamilienhäuser und kleine Gewerbeeinheiten. Ein einziger Schlüssel öffnet alle definierten Türen (z. B. Haustür, Garage, Kellertür). Diese Variante bietet hohen Komfort, eignet sich jedoch nicht für die Vergabe differenzierter Zutrittsrechte.</p>
+          <h3 className="mt-6">2. Zentralschlossanlage (Z-Anlage)</h3>
+          <p>Die klassische Lösung für Mehrfamilienhäuser. Jeder Mieter erhält einen individuellen Wohnungsschlüssel, der zusätzlich die Zentraltüren (Haupteingang, Kellereingang) öffnet. Ein gegenseitiges Aufschließen der Privatwohnungen ist dabei ausgeschlossen.</p>
+          <h3 className="mt-6">3. Hauptschlüsselanlage (HS-Anlage)</h3>
+          <p>Konzipiert für kleinere bis mittlere Unternehmen oder Schulen. Ein übergeordneter Hauptschlüssel (HS) schließt alle Zylinder der Anlage. Darunter gibt es Einzelschlüssel, die jeweils nur eine bestimmte Tür (z. B. ein spezifisches Büro) öffnen.</p>
+          <h3 className="mt-6">4. Generalhauptschlüsselanlage (GHS-Anlage)</h3>
+          <p>Die Spitzenklasse für große Unternehmen, Krankenhäuser und komplexe Behördenzentren. Die Architektur ist streng hierarchisch gegliedert: Der Generalhauptschlüssel (GHS) öffnet das gesamte Objekt. Darunter ordnen sich Hauptgruppenschlüssel (HGS) für Gebäudeteile, Gruppenschlüssel (GS) für Abteilungen und schließlich Einzelschlüssel für spezifische Räume an. Diese extrem leistungsfähige Matrix erlaubt die Abbildung auch hochkomplexer Unternehmensstrukturen.</p>
+        </div>
+
         </div>
 
         <div className="mt-12">
@@ -303,6 +345,67 @@ export default async function SchliessanlagenPage() {
           })}
         </ul>
       </Section>
+
+
+      {/* Enterprise ROI Calculator */}
+      <Section>
+        <SectionHeading
+          eyebrow="Investition"
+          title="Planungssicherheit für Ihr Projekt"
+        />
+        <div className="mt-8">
+          <EnterpriseRoiCalculator />
+        </div>
+      </Section>
+
+
+
+      {/* Fachspezifische FAQs */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Fachwissen"
+          title="Häufige Fragen zur Anlagenarchitektur (FAQ)"
+        />
+        <div className="mt-8 space-y-6 text-[oklch(0.32_0.02_260)]">
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+            <h3 className="text-base font-bold text-[oklch(0.16_0.02_260)]">1. Wie lange dauert die Produktion einer individuellen Schließanlage?</h3>
+            <p className="mt-2 text-sm leading-relaxed">
+              Die Produktionszeit hängt stark vom gewählten System und der Komplexität ab. Bei Standardanlagen (Z- oder HS-Anlagen) rechnen Sie im Schnitt mit 10 bis 14 Werktagen nach finaler Freigabe des Schließplans. Hochkomplexe GHS-Anlagen können aufgrund der aufwendigen Matrixberechnung und Fertigung auch 3 bis 4 Wochen in Anspruch nehmen.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+            <h3 className="text-base font-bold text-[oklch(0.16_0.02_260)]">2. Kann eine bestehende Anlage später erweitert werden?</h3>
+            <p className="mt-2 text-sm leading-relaxed">
+              Ja, das ist ein Kernpunkt unserer architektonischen Methodik. Wenn wir den Schließplan entwerfen, kalkulieren wir standardmäßig Reserven für zukünftige Erweiterungen (sogenannte Sperrungsreserven) ein. Wichtig ist jedoch, dass Sie uns bei der Erstplanung mitteilen, in welchem Rahmen Expansionen denkbar sind, damit die Matrix groß genug dimensioniert wird.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+            <h3 className="text-base font-bold text-[oklch(0.16_0.02_260)]">3. Was passiert, wenn ein übergeordneter Schlüssel (z. B. der Hauptschlüssel) verloren geht?</h3>
+            <p className="mt-2 text-sm leading-relaxed">
+              Der Verlust eines Haupt- oder Generalhauptschlüssels ist ein gravierendes Sicherheitsrisiko, da er potenziell Zugang zum gesamten Gebäude gewährt. Bei rein mechanischen Anlagen muss in diesem Fall oft ein großer Teil der Zylinder ausgetauscht werden, um die Sicherheit wiederherzustellen. Für Bereiche mit hohem Verlustrisiko empfehlen wir daher oft Hybrid-Anlagen, bei denen kritische Außentüren elektronisch gesichert sind, da elektronische Medien bei Verlust einfach gesperrt werden können.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+            <h3 className="text-base font-bold text-[oklch(0.16_0.02_260)]">4. Sind die Schlüssel meiner Anlage vor unberechtigten Kopien geschützt?</h3>
+            <p className="mt-2 text-sm leading-relaxed">
+              Absolut. Alle unsere professionellen Schließanlagen werden mit einer Sicherungskarte ausgeliefert. Nur wer im Besitz dieser Karte ist, ist legitimiert, bei uns oder dem Hersteller Ersatzschlüssel oder Erweiterungszylinder anfertigen zu lassen. Zudem verwenden wir patentrechtlich geschützte Profile, für die im freien Handel keine Rohlinge verfügbar sind.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+            <h3 className="text-base font-bold text-[oklch(0.16_0.02_260)]">5. Wie verhält es sich mit dem Brandschutz?</h3>
+            <p className="mt-2 text-sm leading-relaxed">
+              Schließanlagen in öffentlichen und gewerblichen Gebäuden unterliegen strengen Brandschutz- und Fluchtwegverordnungen (DIN EN 179 und DIN EN 1125). Unsere Planung stellt sicher, dass Flucht- und Rettungswege jederzeit in Fluchtrichtung ohne Schlüssel geöffnet werden können (Panikfunktion). Wir integrieren diese Anforderungen nahtlos in den Gesamtschließplan.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+            <h3 className="text-base font-bold text-[oklch(0.16_0.02_260)]">6. Wie pflege ich die Zylinder meiner neuen Anlage richtig?</h3>
+            <p className="mt-2 text-sm leading-relaxed">
+              Mechanische Präzisionszylinder erfordern Pflege, jedoch mit dem richtigen Mittel. Verwenden Sie niemals Öl oder herkömmliche Schmiersprays (wie WD-40), da diese verharzen und den Zylinder zerstören können. Nutzen Sie ausschließlich spezielles Pflegespray des jeweiligen Herstellers. Eine Pflegeeinheit vor Beginn der kalten Jahreszeit ist in der Regel ausreichend.
+            </p>
+          </div>
+        </div>
+      </Section>
+
 
       {/* Kleine Vorhaben */}
       <Section tone="muted" tight>
