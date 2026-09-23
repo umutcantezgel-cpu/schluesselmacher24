@@ -1,16 +1,21 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# Red-Team Audit Report
 
 ## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+- Keine offensichtlichen Silent Logic Deaths gefunden.
 
 ## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+- src/app/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx: Gefährlicher Client-Objekt-Zugriff (window/document) im potenziellen Render-Pfad.
+- src/app/kasse/kasse-formular.tsx: Gefährlicher Client-Objekt-Zugriff (window/document) im potenziellen Render-Pfad.
+- src/app/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx: Gefährlicher Client-Objekt-Zugriff (window/document) im potenziellen Render-Pfad.
+- src/app/admin/vorgaenge/[id]/vorgangs-aktionen.tsx: Gefährlicher Client-Objekt-Zugriff (window/document) im potenziellen Render-Pfad.
+- src/app/rechtliches/cookie-einstellungen/cookie-einstellungen.tsx: Gefährlicher Client-Objekt-Zugriff (window/document) im potenziellen Render-Pfad.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TypeScript-Schwächen
+- Keine offensichtlichen TypeScript-Schwächen (any/unknown) gefunden.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. Core Web Vitals Sünden
+- src/app/page.tsx: Bild-Komponenten gefunden, Überprüfung der Dimensionen und LCP-Priorität erforderlich.
+- src/app/ratgeber/[slug]/page.tsx: Bild-Komponenten gefunden, Überprüfung der Dimensionen und LCP-Priorität erforderlich.
+- src/app/schluessel-nach-vorlage/page.tsx: Bild-Komponenten gefunden, Überprüfung der Dimensionen und LCP-Priorität erforderlich.
+- src/app/warenkorb/warenkorb-ansicht.tsx: Bild-Komponenten gefunden, Überprüfung der Dimensionen und LCP-Priorität erforderlich.
+- src/app/schluessel-nach-code/shop-liste.tsx: Bild-Komponenten gefunden, Überprüfung der Dimensionen und LCP-Priorität erforderlich.

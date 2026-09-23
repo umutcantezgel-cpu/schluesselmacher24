@@ -1,28 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2024-03-20T12:00:00Z",
-  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "generated_at": "2026-09-23T20:57:04.221801+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten.",
   "top_ideas": [
     {
       "rank": 1,
-      "idea_id": "IDEA_051",
-      "category": "CONVERSION_AND_TOOLS",
-      "target_existing_route": "src/app/schliessanlagen/page.tsx",
-      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
-      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
-      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
-      "score": 9.65,
+      "idea_id": "IDEA_001",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/rechtliches/cookie-einstellungen/page.tsx",
+      "target_component_file": "src/components/ui/info-tip.tsx",
+      "title": "Kinetische Federd\u00e4mpfung",
+      "specification": "Implementierung einer physikalisch-basierten Federd\u00e4mpfung (Spring Physics) in `src/components/ui/info-tip.tsx`, die bei User-Interaktion die Masse und Tr\u00e4gheit simuliert. Reduziert kognitive Br\u00fcche durch nahtlose, taktile Animation ohne Layout-Shifts (Motion-Reduce Fallback Pflicht).",
+      "score": 8.81,
       "status": "READY_FOR_EXPANSION"
     },
     {
       "rank": 2,
-      "idea_id": "IDEA_002",
+      "idea_id": "IDEA_015",
       "category": "AWWWARDS_KINETICS",
-      "target_existing_route": "src/app/page.tsx",
-      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
-      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
-      "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
-      "score": 9.45,
+      "target_existing_route": "src/app/autoschluessel/funkschluessel/page.tsx",
+      "target_component_file": "src/components/ui/info-tip.tsx",
+      "title": "Spatial Hover-Reflexionen",
+      "specification": "Einbettung eines Mauspositions-getriebenen Lichtreflex-Effekts in den R\u00e4ndern von `src/components/ui/info-tip.tsx`. Der Effekt nutzt CSS-Maus-Variablen, um eine feine oklch(0.89 0.008 260 / 0.55) Haarlinie am Klickpunkt aufleuchten zu lassen \u2013 absolute Awwwards-Level Kinetik ohne Performance-Drops.",
+      "score": 8.81,
       "status": "READY_FOR_EXPANSION"
     }
   ]
