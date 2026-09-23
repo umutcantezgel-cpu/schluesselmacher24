@@ -47,3 +47,4 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+Added interactive Enterprise ROI Calculator module.

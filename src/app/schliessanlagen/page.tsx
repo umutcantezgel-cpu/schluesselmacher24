@@ -13,6 +13,8 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
+
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
 
 const ROUTE = 'schliessanlagen';
@@ -334,6 +336,110 @@ export default async function SchliessanlagenPage() {
           </Alert>
         </div>
       </Section>
+
+
+      {/* Fachliche Tiefenbetrachtung: Architektonische Methodik und Strukturebenen */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Die Anatomie hochkomplexer mechanischer Schließanlagen"
+          lead="Eine tiefgreifende Analyse der strukturellen Ebenen, technischen Spezifikationen und der Planungsmethodik für Enterprise-Umgebungen."
+        />
+        <div className="mt-8 space-y-6 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          <p>
+            Die Konzeption einer mechanischen Schließanlage für komplexe Gebäudestrukturen erfordert ein Höchstmaß an präziser Planung und architektonischem Weitblick. Es geht nicht nur darum, Türen zu verschließen, sondern vielmehr um die Orchestrierung von Zutrittsberechtigungen in einer mehrdimensionalen Matrix. Eine sorgfältig geplante Anlage spiegelt die Organisationsstruktur eines Unternehmens wider und übersetzt diese in physische Zugangskontrollen.
+          </p>
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Strukturelle Hierarchien und Ebenenmodelle</h3>
+          <p>
+            In der Welt der Schließtechnik unterscheiden wir fundamental zwischen verschiedenen Hierarchieebenen. Die Basis bildet der Einzelschlüssel, gefolgt von Gruppenschlüsseln, Hauptschlüsseln und schließlich dem Generalhauptschlüssel (GHS). Ein GHS-System ist ein Meisterwerk der Feinmechanik. Es ermöglicht die Abbildung beliebig vieler und beliebig komplexer Hierarchiestufen. Jeder Zylinder in einem solchen System verfügt über spezifische Stiftzuhaltungen, die mathematisch exakt berechnet werden, um Überschneidungen zu vermeiden und maximale Sicherheit zu garantieren.
+          </p>
+          <p>
+            Die mathematische Kombinatorik bei der Berechnung von Schließanlagen ist von entscheidender Bedeutung. Bei einer Anlage mit Tausenden von Zylindern muss sichergestellt sein, dass kein Schlüssel versehentlich einen nicht autorisierten Zylinder öffnet. Dies wird durch komplexe Profilvariationen und mehrdimensionale Stiftanordnungen realisiert. Moderne mechanische Systeme nutzen zudem patentierte Profile und bewegliche Elemente im Schlüssel, um unberechtigte Schlüsselkopien, beispielsweise durch 3D-Druckverfahren, effektiv zu verhindern.
+          </p>
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Materialwissenschaft und physische Resilienz</h3>
+          <p>
+            Ein weiterer kritischer Aspekt ist die Materialbeschaffenheit der Komponenten. Hochsicherheitszylinder werden aus gehärtetem Stahl, Neusilber und speziellen Legierungen gefertigt. Sie müssen extremen mechanischen Belastungen standhalten – von Aufbohrversuchen über Kernziehen bis hin zur zerstörungsfreien Überwindungstechnik wie der Schlagschlüsselmethode oder dem Lockpicking. Integrierte Hartmetallstifte und komplexe Geometrien der Schlüsselkanäle bilden hierbei die erste Verteidigungslinie.
+          </p>
+          <p>
+            Darüber hinaus spielt die Langlebigkeit eine zentrale Rolle. Eine mechanische Schließanlage ist eine langfristige Investition. Die Zylinder müssen über Jahrzehnte hinweg zehntausende von Schließzyklen verschleißfrei überstehen. Dies erfordert präzise Fertigungstoleranzen im Mikrometerbereich und den Einsatz spezieller Schmiermittel, die weder verharzen noch Schmutz binden.
+          </p>
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Zukunftssicherheit durch modulares Anlagendesign</h3>
+          <p>
+            Eine der größten Herausforderungen bei der Planung ist die Antizipation zukünftiger Veränderungen. Unternehmen wachsen, Abteilungen werden umstrukturiert, neue Gebäude kommen hinzu. Eine starre Schließanlage würde hier schnell an ihre Grenzen stoßen. Daher setzen wir auf modulare Anlagenarchitekturen. Dies bedeutet, dass bei der initialen Berechnung sogenannte &quot;Reserven&quot; eingeplant werden. Diese mathematischen Freiräume erlauben es, das System später zu erweitern, ohne die bestehende Sicherheitsstruktur zu kompromittieren.
+          </p>
+          <p>
+            Modulare Zylindersysteme bieten zudem den Vorteil, dass die Länge des Zylinders bei einem Umzug in ein anderes Türblatt flexibel angepasst werden kann. Dies schützt die Investition und reduziert die Total Cost of Ownership (TCO) signifikant.
+          </p>
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Integration von Mechanik und Elektronik (Mechatronik)</h3>
+          <p>
+            Auch wenn der Fokus auf der Mechanik liegt, ist die Konvergenz mit elektronischen Systemen unaufhaltsam. In hochkritischen Bereichen werden rein mechanische Zylinder zunehmend durch mechatronische Systeme ergänzt. Dabei kommuniziert ein Mikrochip im Schlüsselkopf mit einer Elektronik im Zylinder. Dies kombiniert die absolute Robustheit der Mechanik mit der Flexibilität der Elektronik (z. B. zeitlich befristete Zutrittsrechte oder die sofortige Sperrung verlorener Schlüssel).
+          </p>
+          <p>
+            Die strategische Planung einer solchen hybriden Infrastruktur erfordert tiefgreifendes Wissen über beide Domänen. Es gilt, die Schnittstellen zwischen mechanischer und elektronischer Schließebene nahtlos zu gestalten und ein homogenes Benutzererlebnis zu schaffen.
+          </p>
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Zertifizierungen, Normen und Versicherungsrechtliche Relevanz</h3>
+          <p>
+            Im professionellen Umfeld ist die Einhaltung einschlägiger Normen wie der DIN 18252, DIN EN 1303 sowie der VdS-Richtlinien nicht nur ein Qualitätsmerkmal, sondern eine zwingende juristische Notwendigkeit. Im Falle eines Einbruchs prüfen Sachversicherer akribisch, ob die verbauten Schließzylinder den vereinbarten Sicherheitsklassen entsprechen. Eine Abweichung kann zum vollständigen Verlust des Versicherungsschutzes führen.
+          </p>
+          <p>
+            Die DIN EN 1303 definiert beispielsweise detaillierte Leistungsanforderungen an Schließzylinder in Bezug auf Verschlusssicherheit, Korrosionsbeständigkeit, Feuerwiderstand und Angriffswiderstand. Hochwertige Enterprise-Anlagen werden systematisch auf die höchsten Stufen dieser Skalen projektiert. So wird sichergestellt, dass nicht nur der physische Zugang reglementiert ist, sondern auch das unternehmerische Risiko im Schadensfall rechtssicher minimiert wird. Die lückenlose Dokumentation durch Sicherungskarten und zertifizierte Montageprotokolle bildet hierbei das fundamentale Rückgrat der Compliance.
+          </p>
+        </div>
+      </Section>
+
+      {/* ROI Calculator Injection */}
+      <Section>
+        <SectionHeading
+          eyebrow="Wirtschaftlichkeit"
+          title="Enterprise ROI- und Ladezeit-Kalkulator"
+          lead="Berechnen Sie den Return on Investment und die langfristigen Kostenvorteile einer professionell geplanten Schließanlage."
+        />
+        <div className="mt-8">
+          <EnterpriseRoiCalculator />
+        </div>
+      </Section>
+
+      {/* Erweiterter FAQ Bereich mit fachlicher Tiefe */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Experten-FAQ"
+          title="Tiefgehende Antworten zur Schließtechnik"
+          lead="Detailwissen für Facility Manager, Architekten und Sicherheitsverantwortliche."
+        />
+        <div className="mt-8 space-y-4">
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">1. Wie wird die mathematische Sicherheit gegen Schlüsseldeplikation gewährleistet?</h4>
+            <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Moderne Hochsicherheitssysteme nutzen patentierte, mehrdimensionale Schlüsselprofile. Dies beinhaltet unterschnittene Profile, bewegliche Elemente (wie z. B. gefederte Kugeln oder Röllchen) im Schlüssel und komplexe seitliche Codierungen. Diese technischen Barrieren machen es nahezu unmöglich, den Schlüssel mit konventionellen Methoden (einschließlich 3D-Druck oder Fräsen ohne Original-Rohling) zu kopieren. Zudem ist die Rohlingsausgabe strikt restriktiert und werkseitig dokumentiert.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">2. Was bedeutet &quot;Anlagenreserve&quot; und wie wird sie berechnet?</h4>
+            <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Die Anlagenreserve ist ein mathematischer Puffer im Schließplan. Bei der Konstruktion der Matrix werden bestimmte Stiftkombinationen bewusst ausgelassen und für zukünftige Erweiterungen &quot;reserviert&quot;. Die Berechnung erfordert eine vorausschauende Analyse des potenziellen Unternehmenswachstums. Eine zu knapp bemessene Reserve erfordert bei Erweiterungen einen kompletten Anlagentausch; eine zu großzügige Reserve kann die maximal mögliche Sicherheit (Anzahl der theoretischen Schließverschiedenheiten) reduzieren. Der Sweet-Spot liegt meist bei einer Reserve von 20-30% in strategisch wichtigen Gruppen.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">3. Wie verhält sich die Mechanik bei extremen klimatischen Bedingungen?</h4>
+            <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Für Außenbereiche oder aggressive Umgebungen (z. B. maritime Umgebungen oder Industrieanlagen mit hoher Staubbelastung) müssen Zylinder spezielle Spezifikationen erfüllen. Dies beinhaltet den Einsatz von seewasserfesten Materialien (wie speziellen Messinglegierungen oder Edelstahl), integrierte Staub- und Wetterschutzkappen sowie die Schmierung mit temperaturbeständigen Hochleistungsgleitmitteln, die auch bei -20°C nicht verharzen und bei +60°C nicht auslaufen.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">4. Was ist der genaue Unterschied zwischen VdS-Klasse B und VdS-Klasse C bei Schließzylindern?</h4>
+            <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Die VdS-Zertifizierung definiert den Widerstandsgrad gegen physische Angriffe. Klasse B bietet einen mittleren bis hohen Schutz und ist für den gewerblichen Bereich oft ausreichend (geprüfter Bohr- und Ziehschutz). Klasse C stellt die höchste Sicherheitsstufe dar. Zylinder dieser Klasse verfügen über massive Hartmetallschutzelemente im Gehäuse und Kern, die extremen Angriffen (wie schwerem Bohrgerät oder Kernziehwerkzeugen) deutlich länger standhalten. Für Hochrisikobereiche ist Klasse C oft eine Vorgabe der Sachversicherer.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">5. Wie geht man mit dem Verlust eines Generalhauptschlüssels (GHS) um?</h4>
+            <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Der Verlust eines GHS ist das Worst-Case-Szenario, da dieser alle Zylinder der Anlage schließt. In rein mechanischen Anlagen erfordert dies oft den Austausch der gesamten Anlage, um die Sicherheit wiederherzustellen. Um dieses Risiko zu minimieren, empfehlen wir in der Planung, sensible Bereiche so zu entkoppeln, dass der GHS diese bewusst nicht schließt, oder mechatronische Zylinder in der Außenhülle einzusetzen. Bei Letzteren kann ein verlorener (hybrider) GHS elektronisch gesperrt werden, ohne dass die mechanische Struktur der Anlage verändert werden muss.
+            </p>
+          </div>
+        </div>
+      </Section>
+
 
       {/* Fragen */}
       <Section>
