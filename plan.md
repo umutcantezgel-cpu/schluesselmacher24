@@ -1,11 +1,20 @@
-1. Use `replace_with_git_merge_diff` to update `src/components/seo/json-ld.tsx`.
-   - Update imports: `import type { Graph, Thing, DayOfWeek, WithContext } from 'schema-dts';`.
-   - Update `JsonLd` props: `data: Graph | Thing | WithContext<Thing>`.
-   - Update `localBusinessSchema`: return `{ '@context': 'https://schema.org', '@graph': [ { '@type': 'Organization', ... }, { '@type': 'WebSite', ... }, { '@type': 'WebPage', ... }, { '@type': 'Locksmith', ... } ] } satisfies Graph;`. Connect the nodes via `@id`. Use `'@type': 'OpeningHoursSpecification' as const` for opening hours and correctly type `dayOfWeek`.
-   - Update `productSchema`: wrap the returned object in a `{ '@context': 'https://schema.org', '@graph': [ ... ] } satisfies Graph` structure, and use `'@type': 'Product' as const`, `'@type': 'Offer' as const` etc.
-   - Update `articleSchema`: wrap the returned object in a `@graph` array satisfying `Graph`, and use `as const` for literals.
-   - Update `faqSchema`: wrap the returned object in a `@graph` array satisfying `Graph`, and use `as const` for literals.
-   - Update `serviceAreaSchema`: wrap the returned object in a `@graph` array satisfying `Graph`, and use `as const` for literals.
-   - Update `breadcrumbSchema`: wrap the returned object in a `@graph` array satisfying `Graph`, and use `as const` for literals.
-2. Run `npx tsc --noEmit`, `npm run lint`, `npm test`, and `npm run build` using `run_in_bash_session` to verify the types compile and build passes.
-3. Complete pre-commit steps to ensure proper testing, verification, review, and reflection are done.
+1. **Explore & Prepare Target Route:**
+   - I will fetch `src/app/schliessanlagen/page.tsx` and analyze its content to ensure I can insert the required minimum of 850 words.
+   - The goal is to deeply expand the content describing "Mechanische Schließanlagen", "Zentralschlossanlagen", "Hauptschlüsselanlagen", and "Generalhauptschlüsselanlagen" (as these match the scope), as well as provide a deeper FAQ.
+2. **Create Interactive Module (Enterprise ROI Calculator):**
+   - Create `src/components/calculator/enterprise-roi-calculator.tsx` (the required interactive component for `IDEA_051`).
+   - Create the corresponding action `src/lib/actions/estimate-roi.ts` utilizing `useActionState` and `useOptimistic` (React 19 style).
+   - Ensure it respects the Swiss Light Mode doctrine (OKLCH colors, 1px borders, smooth subgrid).
+3. **In-place Content Expansion (Target > 850 Words):**
+   - I will modify `src/app/schliessanlagen/page.tsx` to add > 850 words of highly professional, technically sound content (e.g. detailed architectural methodology, structural tiers, and an extensive minimum 5-question FAQ section).
+   - I will inject the `<EnterpriseRoiCalculator />` component into the page.
+4. **Compile & Verification (Phase 3 Gates):**
+   - Run `npx tsc --noEmit`
+   - Run `npm run lint`
+   - Run `npx next build`
+   - Ensure the modified word count satisfies > 850 words in `src/app/schliessanlagen/page.tsx`.
+5. **Handoff Synthesis & Pre-Commit & Submit:**
+   - Create the builder handoff JSON at `.jules/builder-handoff.json` and heartbeat at `.jules/heartbeat.json`.
+   - Update `README.md` and `llms.txt`.
+   - Complete pre-commit steps to ensure proper testing, verification, review, and reflection are done.
+   - Run git commands to commit `feat(expansion): elevate schliessanlagen with 880w content and interactive Enterprise ROI Calculator`.
