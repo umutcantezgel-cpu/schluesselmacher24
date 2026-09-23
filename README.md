@@ -47,3 +47,8 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+## Architektur- & DNA-Profile
+- **Blueprint:** .jules/revolution-plan.json
+- **Matrix:** .jules/architecture-matrix.md
+- **DNA:** .jules/codebase-dna.json
