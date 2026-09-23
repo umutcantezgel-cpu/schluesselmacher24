@@ -47,3 +47,7 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+## Revolution Builder
+
+For architectural changes and the evolution blueprint, please refer to `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` which are maintained by JC-AUDITOR-ARCHITECT-v1.
