@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -163,9 +164,32 @@ const FALLBACK_FAQ = [
       + 'Anzahl der Schließstellen, der Schlüssel und der Ebenen ab. Deshalb nennen wir erst nach '
       + 'der Erfassung einen Betrag — und nicht vorab auf der Seite.',
   },
+
+  {
+    question: 'Wie erfolgt die Einbindung in bestehende Zutrittskontrollsysteme?',
+    answer: 'Mechanische Schließanlagen lassen sich über Hybridzylinder nahtlos in elektronische Zutrittskontrollsysteme integrieren. Dabei wird der mechanische Zylinder mit einem elektronischen Knauf kombiniert. Dies ermöglicht eine zentrale Verwaltung und Protokollierung bei gleichzeitiger Beibehaltung der mechanischen Grundsicherheit.'
+  },
+  {
+    question: 'Was bedeutet der Patentschutz bei Schließanlagen?',
+    answer: 'Ein Patentschutz verhindert, dass Schlüsselrohlinge frei auf dem Markt verfügbar sind. Dies schützt effektiv vor illegalen Schlüsselkopien. Wir empfehlen für gewerbliche Objekte ausschließlich Systeme mit aktivem, noch lange laufendem Patentschutz.'
+  },
+  {
+    question: 'Können elektronische und mechanische Systeme kombiniert werden?',
+    answer: 'Ja, das sogenannte Mechatronik-Konzept. Außenbereiche oder Serverräume erhalten oft elektronische Komponenten für flexible Rechtevergabe und Protokollierung, während Innentüren klassisch mechanisch gesichert werden.'
+  },
 ];
 
-export default async function SchliessanlagenPage() {
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  void resolvedParams;
+  void resolvedSearch;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -243,6 +267,26 @@ export default async function SchliessanlagenPage() {
           />
         </div>
       </Section>
+
+
+  <div className="mt-16 mb-8">
+    <SectionHeading eyebrow="ROI & Budget" title="Investitionsplanung für Schließanlagen" lead="Ermitteln Sie die voraussichtlichen Kosten und die Amortisationszeit (ROI) Ihrer neuen Anlage." />
+    <div className="mt-8 max-w-2xl mx-auto">
+      <EnterpriseROICalculator />
+    </div>
+    <div className="mt-8 text-[15px] leading-relaxed text-foreground-muted prose prose-p:text-[oklch(0.32_0.02_260)]">
+      <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Architektonische Methodik und Lebenszykluskosten</h3>
+      <p className="mt-2">Die Implementierung einer modernen Schließanlage geht weit über die rein physische Sicherheit hinaus. Es handelt sich um eine strategische Investition in die Gebäudelogistik und das Risikomanagement. Unsere architektonische Methodik basiert auf einer detaillierten Analyse der Nutzerströme und Zuständigkeiten innerhalb Ihrer Liegenschaft. Wir modellieren die Schließhierarchie so, dass sie nicht nur die aktuellen Anforderungen abbildet, sondern auch zukünftige strukturelle Veränderungen flexibel aufnehmen kann.</p>
+      <p className="mt-2">Ein wesentlicher Faktor bei der Planung sind die Total Cost of Ownership (TCO) über den gesamten Lebenszyklus der Anlage. Während mechanische Systeme geringere Initialkosten verursachen, punkten mechatronische Erweiterungen bei häufigen Personalwechseln durch reduzierte Folgekosten bei Schlüsselverlusten. Der integrierte ROI-Kalkulator hilft Ihnen, den Kipppunkt zu ermitteln, ab dem sich eine Investition in höherwertige Systeme auszahlt.</p>
+      <h3 className="mt-6 text-xl font-semibold text-[oklch(0.16_0.02_260)]">Strukturierte Leistungsstufen (Tiers)</h3>
+      <ul className="list-disc pl-5 space-y-2 mt-4">
+        <li><strong>STANDARD (bis 2.000 €):</strong> Fokus auf Grundsicherheit. Ideal für kleinere Gewerbeobjekte oder private Mehrfamilienhäuser mit klar abgegrenzten Berechtigungen.</li>
+        <li><strong>PREMIUM (2.000 € - 5.000 €):</strong> Erweiterter Kopierschutz (Patent) und modulare Erweiterbarkeit. Geeignet für mittelständische Unternehmen mit abteilungsübergreifenden Zugangsrechten.</li>
+        <li><strong>ENTERPRISE (ab 5.000 €):</strong> Maximale Sicherheit mit integrierter Mechatronik, umfassendem Schlüsselmanagement und garantierter Langzeitverfügbarkeit von Ersatzkomponenten. Für komplexe Liegenschaften und KRITIS-Infrastruktur.</li>
+      </ul>
+    </div>
+  </div>
+
 
       {/* Die fünf Systeme */}
       <Section id="systeme" tone="muted">
