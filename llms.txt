@@ -1,3 +1,4 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+- Added Enterprise ROI Calculator to /schliessanlagen with expanded architecture, methodology, and FAQ content.
