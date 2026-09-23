@@ -47,3 +47,8 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+---
+## JULES AUTOMATED AUDIT (JC-AUDITOR-ARCHITECT-v1)
+Blueprint generated and documented in `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`.
+Goal: Modernize React/Next.js 16+ setup, strictly utilizing App Router, RSC, and Tailwind v4 in OKLCH light mode.

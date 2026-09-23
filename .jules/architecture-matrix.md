@@ -1,59 +1,59 @@
 # Architecture Matrix
 
-| URL | Source File | Current Words | Target Words | Status |
-|---|---|---|---|---|
-| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | 231 | 950 | PENDING_BUILDER |
-| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /admin/inhalte | src/app/admin/inhalte/page.tsx | 213 | 950 | PENDING_BUILDER |
-| /admin | src/app/admin/page.tsx | 1172 | 1172 | PENDING_BUILDER |
-| /admin/preise | src/app/admin/preise/page.tsx | 216 | 950 | PENDING_BUILDER |
-| /admin/produkte | src/app/admin/produkte/page.tsx | 228 | 950 | PENDING_BUILDER |
-| /admin/termine | src/app/admin/termine/page.tsx | 453 | 950 | PENDING_BUILDER |
-| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | 1593 | 1593 | PENDING_BUILDER |
-| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | 322 | 950 | PENDING_BUILDER |
-| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | 519 | 950 | PENDING_BUILDER |
-| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | 1122 | 1122 | PENDING_BUILDER |
-| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | 1092 | 1092 | PENDING_BUILDER |
-| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | 1134 | 1134 | PENDING_BUILDER |
-| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | 1224 | 1224 | PENDING_BUILDER |
-| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | 980 | 980 | PENDING_BUILDER |
-| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | 719 | 950 | PENDING_BUILDER |
-| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | 1190 | 1190 | PENDING_BUILDER |
-| /autoschluessel | src/app/autoschluessel/page.tsx | 1971 | 1971 | PENDING_BUILDER |
-| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | 1223 | 1223 | PENDING_BUILDER |
-| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | 1043 | 1043 | PENDING_BUILDER |
-| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | 1208 | 1208 | PENDING_BUILDER |
-| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | 994 | 994 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 383 | 950 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | 2451 | 2451 | PENDING_BUILDER |
-| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | 311 | 950 | PENDING_BUILDER |
-| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | 2052 | 2052 | PENDING_BUILDER |
-| /kasse | src/app/kasse/page.tsx | 240 | 950 | PENDING_BUILDER |
-| / | src/app/page.tsx | 1140 | 1140 | PENDING_BUILDER |
-| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | 353 | 950 | PENDING_BUILDER |
-| /ratgeber | src/app/ratgeber/page.tsx | 225 | 950 | PENDING_BUILDER |
-| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | 417 | 950 | PENDING_BUILDER |
-| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | 229 | 950 | PENDING_BUILDER |
-| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | 716 | 950 | PENDING_BUILDER |
-| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | 428 | 950 | PENDING_BUILDER |
-| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | 371 | 950 | PENDING_BUILDER |
-| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | 369 | 950 | PENDING_BUILDER |
-| /schliessanlagen | src/app/schliessanlagen/page.tsx | 1603 | 1603 | PENDING_BUILDER |
-| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | 710 | 950 | PENDING_BUILDER |
-| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | 468 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | 222 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | 1762 | 1762 | PENDING_BUILDER |
-| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | 152 | 950 | PENDING_BUILDER |
-| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | 475 | 950 | PENDING_BUILDER |
-| /service-und-termin | src/app/service-und-termin/page.tsx | 462 | 950 | PENDING_BUILDER |
-| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | 108 | 950 | PENDING_BUILDER |
-| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | 656 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | 645 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | 995 | 995 | PENDING_BUILDER |
-| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | 330 | 950 | PENDING_BUILDER |
-| /standorte/[city] | src/app/standorte/[city]/page.tsx | 399 | 950 | PENDING_BUILDER |
-| /standorte | src/app/standorte/page.tsx | 250 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | 494 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | 746 | 950 | PENDING_BUILDER |
-| /warenkorb | src/app/warenkorb/page.tsx | 259 | 950 | PENDING_BUILDER |
+| Route | Status | Word Count | Target Words | Topics | Interactive Component | Schema-Status | CWV-Status |
+|-------|--------|------------|--------------|--------|-----------------------|---------------|------------|
+| `/` | PENDING | 1601 | 2101 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/ratgeber` | PENDING | 270 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/ratgeber/[slug]` | PENDING | 464 | 964 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/schluessel-nach-vorlage` | PENDING | 1943 | 2443 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/schluessel-nach-vorlage/anfrage` | PENDING | 260 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/warenkorb` | PENDING | 285 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `DynamicCartSummary` | PENDING | PENDING |
+| `/kasse` | PENDING | 262 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `DynamicCartSummary` | PENDING | PENDING |
+| `/schluessel-nach-code` | PENDING | 523 | 1023 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/schluessel-nach-code/[slug]` | PENDING | 907 | 1407 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/sicherheitstechnik` | PENDING | 1241 | 1741 | Einbruchschutz nach DIN-Normen, Moderne Sensortechnik und Smart-Home-Integration, Wartungsintervalle und Systempflege | `SecurityCheckCalculator` | PENDING | PENDING |
+| `/sicherheitstechnik/[slug]` | PENDING | 783 | 1283 | Einbruchschutz nach DIN-Normen, Moderne Sensortechnik und Smart-Home-Integration, Wartungsintervalle und Systempflege | `SecurityCheckCalculator` | PENDING | PENDING |
+| `/sicherheitstechnik/sicherheitscheck` | PENDING | 361 | 861 | Einbruchschutz nach DIN-Normen, Moderne Sensortechnik und Smart-Home-Integration, Wartungsintervalle und Systempflege | `SecurityCheckCalculator` | PENDING | PENDING |
+| `/tuer-und-schliesstechnik` | PENDING | 2224 | 2724 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/tuer-und-schliesstechnik/[slug]` | PENDING | 615 | 1115 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/bestellung/[id]` | PENDING | 1185 | 1685 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/gleichschliessende-zylinder` | PENDING | 2559 | 3059 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/gleichschliessende-zylinder/konfigurator` | PENDING | 339 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/elektronische-zutrittsloesungen` | PENDING | 2581 | 3081 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/elektronische-zutrittsloesungen/konfigurator` | PENDING | 408 | 908 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/schliessanlagen` | PENDING | 1723 | 2223 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `SystemConfigurator` | PENDING | PENDING |
+| `/schliessanlagen/konfigurator` | PENDING | 405 | 905 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `SystemConfigurator` | PENDING | PENDING |
+| `/service-und-termin` | PENDING | 1797 | 2297 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/service-und-termin/terminstatus` | PENDING | 104 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/service-und-termin/anfrage` | PENDING | 142 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/service-und-termin/vor-ort` | PENDING | 766 | 1266 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/service-und-termin/kontakt` | PENDING | 608 | 1108 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/admin` | PENDING | 1548 | 2048 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `AdminDataTable` | PENDING | PENDING |
+| `/admin/einstellungen` | PENDING | 258 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `AdminDataTable` | PENDING | PENDING |
+| `/admin/fahrzeugdaten` | PENDING | 270 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `AdminDataTable` | PENDING | PENDING |
+| `/admin/termine` | PENDING | 509 | 1009 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `AdminDataTable` | PENDING | PENDING |
+| `/admin/preise` | PENDING | 231 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `AdminDataTable` | PENDING | PENDING |
+| `/admin/vorgaenge` | PENDING | 355 | 855 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `AdminDataTable` | PENDING | PENDING |
+| `/admin/vorgaenge/[id]` | PENDING | 1912 | 2412 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `AdminDataTable` | PENDING | PENDING |
+| `/admin/inhalte` | PENDING | 237 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `AdminDataTable` | PENDING | PENDING |
+| `/admin/produkte` | PENDING | 252 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `AdminDataTable` | PENDING | PENDING |
+| `/rechtliches/impressum` | PENDING | 283 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/rechtliches/cookie-einstellungen` | PENDING | 232 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/rechtliches/versand-und-zahlung` | PENDING | 512 | 1012 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/rechtliches/widerruf` | PENDING | 390 | 890 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/rechtliches/agb` | PENDING | 449 | 949 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/rechtliches/datenschutz` | PENDING | 797 | 1297 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/standorte` | PENDING | 309 | 850 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/standorte/[city]` | PENDING | 503 | 1003 | Umfassende Leistungsübersicht und Qualitätsgarantie, Transparente Preisstruktur und Kosteneffizienz, Detaillierte Fach-FAQ mit tiefgreifenden Erläuterungen | `InteractiveFaqWidget` | PENDING | PENDING |
+| `/autoschluessel` | PENDING | 2191 | 2691 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/marken` | PENDING | 852 | 1352 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/marken/[make]` | PENDING | 1244 | 1744 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/marken/[make]/[model]` | PENDING | 1363 | 1863 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/funkschluessel` | PENDING | 951 | 1451 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/programmieren` | PENDING | 1071 | 1571 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/anfrage` | PENDING | 542 | 1042 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/kopieren` | PENDING | 1006 | 1506 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/nachmachen` | PENDING | 1047 | 1547 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/smart-key` | PENDING | 1060 | 1560 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/schluesselbart-fraesen` | PENDING | 908 | 1408 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
+| `/autoschluessel/fahrzeugoeffnung` | PENDING | 994 | 1494 | Detaillierter Prozess der Autoschlüssel-Nachmachung, Kompatibilität und Frequenzprüfung, Sicherheitsrichtlinien und Wegfahrsperre (Immobilizer) | `CarKeyPriceCalculator` | PENDING | PENDING |
