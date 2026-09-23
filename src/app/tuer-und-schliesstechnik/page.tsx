@@ -24,6 +24,7 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
 import { JsonLd, faqSchema } from '@/components/seo/json-ld';
+import { getSiteUrl } from '@/lib/site-url';
 
 const ROUTE = 'tuer-und-schliesstechnik';
 
@@ -126,7 +127,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
       data-search={JSON.stringify(searchParams)}
       className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
     >
-      <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
+      <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })), `${getSiteUrl()}/tuer-und-schliesstechnik`)} />
 
       <PageHeader
         eyebrow="Leistungsbereich"
