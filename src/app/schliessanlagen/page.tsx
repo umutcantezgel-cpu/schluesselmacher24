@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -334,6 +335,90 @@ export default async function SchliessanlagenPage() {
           </Alert>
         </div>
       </Section>
+
+
+      {/* Tiefergehende Analyse: Mechanische vs. Elektronische Systeme und ROI */}
+      <Section id="analyse" tone="muted">
+        <SectionHeading
+          eyebrow="Architektur"
+          title="Tiefenanalyse: Strukturelle Planung und Wirtschaftlichkeit"
+          lead="Eine Schließanlage ist eine langfristige Investition in die Sicherheit und Organisation Ihres Gebäudes. Wir betrachten die architektonischen Aspekte und den Return on Investment."
+        />
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
+          <div>
+             <h3 className="text-xl font-bold text-foreground">Architektonische Methodik</h3>
+             <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+               Die Planung einer Schließanlage beginnt nicht bei den Schlüsseln, sondern bei den Prozessen in Ihrem Gebäude. Wir analysieren Laufwege, Sicherheitszonen und organisatorische Hierarchien. Eine gut durchdachte Generalhauptschlüsselanlage (GHS) spiegelt exakt diese Struktur wider. So vermeiden wir Insellösungen und sorgen für maximale Effizienz im Alltag.
+             </p>
+             <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+               Besonderes Augenmerk legen wir auf die Erweiterbarkeit. Ein starrer Schließplan zwingt Sie bei organisatorischen Veränderungen zu teuren Umbauten. Durch die Einplanung von Reserveschließungen und die Wahl flexibler Systemkomponenten stellen wir sicher, dass Ihre Anlage auch in zehn Jahren noch den Anforderungen Ihres wachsenden Unternehmens entspricht.
+             </p>
+
+             <h3 className="mt-8 text-xl font-bold text-foreground">Vergleichsmatrix: System-Ausbaustufen</h3>
+             <div className="mt-4 overflow-x-auto rounded-lg border border-border bg-surface">
+               <table className="w-full text-left text-[14px]">
+                 <thead className="bg-surface-muted text-foreground">
+                   <tr>
+                     <th className="px-4 py-3 font-semibold">Stufe</th>
+                     <th className="px-4 py-3 font-semibold">Komplexität</th>
+                     <th className="px-4 py-3 font-semibold">Ideal für</th>
+                     <th className="px-4 py-3 font-semibold">Skalierbarkeit</th>
+                   </tr>
+                 </thead>
+                 <tbody className="divide-y divide-border text-foreground-muted">
+                   <tr>
+                     <td className="px-4 py-3">Zentralschloss</td>
+                     <td className="px-4 py-3">Gering</td>
+                     <td className="px-4 py-3">Mehrfamilienhäuser</td>
+                     <td className="px-4 py-3">Begrenzt</td>
+                   </tr>
+                   <tr>
+                     <td className="px-4 py-3">Hauptschlüssel</td>
+                     <td className="px-4 py-3">Mittel</td>
+                     <td className="px-4 py-3">KMU, Schulen</td>
+                     <td className="px-4 py-3">Gut</td>
+                   </tr>
+                   <tr>
+                     <td className="px-4 py-3">Generalhauptschlüssel</td>
+                     <td className="px-4 py-3">Hoch</td>
+                     <td className="px-4 py-3">Konzerne, Kliniken</td>
+                     <td className="px-4 py-3">Sehr Hoch</td>
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+
+             <h3 className="mt-8 text-xl font-bold text-foreground">Häufige Fachfragen (FAQ) im Vorfeld</h3>
+             <div className="mt-4 space-y-4">
+               <div>
+                 <h4 className="font-semibold text-foreground">1. Wie lange dauert die Lieferung einer komplett neuen Anlage?</h4>
+                 <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">Die Lieferzeit hängt stark vom Hersteller und der Komplexität ab. In der Regel kalkulieren wir mit 3 bis 6 Wochen nach finaler Freigabe des Schließplans. Expressfertigungen sind bei einigen Systemen gegen Aufpreis möglich.</p>
+               </div>
+               <div>
+                 <h4 className="font-semibold text-foreground">2. Was passiert bei Verlust eines Generalhauptschlüssels?</h4>
+                 <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">Dies ist das kritischste Szenario bei rein mechanischen Anlagen. Im schlimmsten Fall müssen alle betroffenen Zylinder ausgetauscht werden. Wir beraten Sie präventiv zu Versicherungslösungen oder hybriden Systemen, die dieses Risiko minimieren.</p>
+               </div>
+               <div>
+                 <h4 className="font-semibold text-foreground">3. Können bestehende Anlagen erweitert werden?</h4>
+                 <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">Ja, sofern bei der Erstplanung ausreichend Reserven berücksichtigt wurden und das System vom Hersteller noch unterstützt wird. Die Erweiterung erfolgt immer unter Vorlage der Sicherungskarte.</p>
+               </div>
+               <div>
+                 <h4 className="font-semibold text-foreground">4. Welche Zylinder-Sicherheitsstufen empfehlen Sie?</h4>
+                 <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">Für Außentüren empfehlen wir grundsätzlich Zylinder mit VdS-Anerkennung oder hohem DIN-Schutz (z.B. Bohr- und Ziehschutz). Im Innenbereich können oft Standard-Zylinder des gleichen Systems verwendet werden, um Kosten zu optimieren.</p>
+               </div>
+               <div>
+                 <h4 className="font-semibold text-foreground">5. Wann lohnt sich der Wechsel auf elektronische Komponenten?</h4>
+                 <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">Sobald eine hohe Fluktuation an Schlüsselnächtern besteht oder Berechtigungen regelmäßig zeitlich begrenzt werden müssen, amortisiert sich ein elektronisches (oder hybrides) System trotz höherer Initialkosten sehr schnell.</p>
+               </div>
+             </div>
+          </div>
+
+          <div className="sticky top-8">
+            <EnterpriseRoiCalculator />
+          </div>
+        </div>
+      </Section>
+
 
       {/* Fragen */}
       <Section>
