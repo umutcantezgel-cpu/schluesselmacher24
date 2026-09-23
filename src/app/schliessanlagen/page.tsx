@@ -14,6 +14,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
+
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,7 +167,17 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  void resolvedParams;
+  void resolvedSearch;
+
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -243,6 +255,105 @@ export default async function SchliessanlagenPage() {
           />
         </div>
       </Section>
+
+
+      {/* Architektur, ROI & Enterprise Methodik - Expansion */}
+      <Section id="methodik" tone="muted">
+        <SectionHeading
+          eyebrow="Architektur & ROI"
+          title="Enterprise Methodik und Effizienz-Kalkulation"
+          lead="Wie digitalisierte Schließsysteme messbaren Mehrwert schaffen und operative Kosten drastisch reduzieren."
+        />
+        <div className="mt-8 space-y-6 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          <p>
+            Die Konzeption einer hochsicheren Schließanlage geht heute weit über die reine mechanische Berechtigungsvergabe hinaus. In modernen Enterprise-Umgebungen – sei es ein weitläufiger Campus, ein verteilter Bürokomplex oder ein Filialnetz – ist die Architektur der Schließanlage ein integraler Bestandteil des Facility Managements und der Unternehmenssicherheit. Eine durchdachte Methodik in der Planung und Implementierung sichert nicht nur den Zugang, sondern optimiert operative Prozesse, senkt langfristig Kosten und minimiert Risiken bei Schlüsselverlusten.
+          </p>
+          <p>
+            Unsere Herangehensweise basiert auf einer mehrschichtigen Architektur-Analyse. Zunächst evaluieren wir die physischen Zonen Ihres Objekts und definieren gemeinsam mit Ihnen klare Sicherheitsperimeter. Diese Perimeter werden in einer Matrix den jeweiligen Nutzergruppen zugeordnet. Dabei setzen wir auf das Prinzip des &apos;Least Privilege&apos;: Jeder Nutzer erhält nur exakt die Zugriffsrechte, die für seine Rolle zwingend erforderlich sind. Dies reduziert die Komplexität im Schließplan und erhöht die Gesamtsicherheit.
+          </p>
+          <h3 className="mt-10 text-lg font-bold text-[oklch(0.16_0.02_260)]">Vergleichsmatrix: Mechanik vs. Elektronik vs. Hybrid</h3>
+          <p>
+            Ein zentraler Aspekt der Enterprise-Methodik ist die Entscheidung zwischen rein mechanischen, voll elektronischen oder hybriden Systemen.
+            <strong>Mechanische Systeme</strong> punkten durch ihre Robustheit, Unabhängigkeit von Stromquellen und geringe Anschaffungskosten. Sie eignen sich hervorragend für periphere Türen mit konstanter Berechtigungsstruktur.
+            <strong>Elektronische Systeme</strong> bieten höchste Flexibilität: Rechte können in Echtzeit entzogen werden, Schließprotokolle sorgen für Nachvollziehbarkeit, und bei Schlüsselverlust muss kein Zylinder getauscht werden.
+            <strong>Hybride Systeme</strong> kombinieren beide Welten. Hochfrequentierte Außentüren und kritische Bereiche werden elektronisch gesichert, während Innentüren mechanisch bleiben. Dies bietet den optimalen Kompromiss aus Sicherheit, Komfort und Budget.
+          </p>
+          <p>
+            Der Return on Investment (ROI) bei der Umstellung auf elektronische oder hybride Anlagen manifestiert sich vor allem in der Administration. Die manuelle Verwaltung von Schlüsselausgaben, das Führen von Listen und der physische Austausch von Zylindern entfallen. Stattdessen erfolgt die Verwaltung zentralisiert über eine Software-Plattform, die sich nahtlos in bestehende HR- oder IT-Systeme (wie Active Directory) integrieren lässt.
+          </p>
+          <h3 className="mt-10 text-lg font-bold text-[oklch(0.16_0.02_260)]">Nachhaltigkeit und Lifecycle-Management</h3>
+          <p>
+            Neben den direkten administrativen Einsparungen berücksichtigen wir in unserer Methodik auch den gesamten Lebenszyklus der Anlage. Hochwertige elektronische Zylinder und Beschläge zeichnen sich durch lange Batterielaufzeiten und wartungsarme Mechanik aus. Zudem sind sie durch Firmware-Updates zukunftssicher. Das Lifecycle-Management umfasst auch die Schulung Ihrer Mitarbeiter und die Etablierung klarer Prozesse für das Onboarding und Offboarding. Nur wenn die Technologie von den richtigen Prozessen flankiert wird, kann das volle Effizienzpotenzial ausgeschöpft werden.
+          </p>
+          <p>
+            Zusammenfassend lässt sich sagen, dass eine professionell geplante Schließanlage eine strategische Investition ist. Sie schützt nicht nur Sachwerte und Daten, sondern entlastet das Facility Management spürbar. Der Schlüssel zum Erfolg liegt in der sorgfältigen Bedarfsanalyse, der Wahl der passenden Architektur und der nahtlosen Integration in die operativen Abläufe Ihres Unternehmens.
+          </p>
+
+          <h3 className="mt-10 text-lg font-bold text-[oklch(0.16_0.02_260)]">Experten-FAQ zur Enterprise Architektur</h3>
+          <div className="mt-6 space-y-4">
+            <details className="group rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-white p-4 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer items-center justify-between font-medium text-[oklch(0.16_0.02_260)]">
+                1. Wie skaliert eine hybride Anlage bei starkem Unternehmenswachstum?
+                <span className="transition duration-300 group-open:-rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p className="mt-4 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Hybride Systeme sind inhärent skalierbar konzipiert. Die elektronische Verwaltungsebene (Software) kann eine unbegrenzte Anzahl von Nutzern und Berechtigungen abbilden. Neue physische Standorte oder Gebäudeabschnitte können entweder mit weiteren elektronischen Komponenten (die sofort ins Netzwerk integriert werden) oder mit mechanischen Zylindern (die in den bestehenden Schließplan eingegliedert werden) ausgestattet werden. Wichtig ist, die Software-Architektur von Beginn an als Mandanten-fähig oder Multisite-fähig auszulegen.
+              </p>
+            </details>
+            <details className="group rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-white p-4 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer items-center justify-between font-medium text-[oklch(0.16_0.02_260)]">
+                2. Welche Redundanzen gibt es bei Stromausfall oder Netzwerkausfall?
+                <span className="transition duration-300 group-open:-rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p className="mt-4 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Elektronische Offline-Beschläge und Zylinder verfügen über eigene, batteriegepufferte Speicher. Berechtigungen sind lokal in der Komponente oder auf dem RFID-Medium des Nutzers hinterlegt (Data-on-Card). Bei einem Stromausfall im Gebäude bleiben diese Türen voll funktionsfähig. Online-Komponenten an Außentüren werden über eine USV (Unterbrechungsfreie Stromversorgung) abgesichert, um auch bei primärem Netzausfall den kontrollierten Zutritt zu gewährleisten.
+              </p>
+            </details>
+            <details className="group rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-white p-4 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer items-center justify-between font-medium text-[oklch(0.16_0.02_260)]">
+                3. Wie wird der Datenschutz (DSGVO) bei der Protokollierung sichergestellt?
+                <span className="transition duration-300 group-open:-rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p className="mt-4 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Zutrittsprotokolle stellen personenbezogene Daten dar. Enterprise-Systeme bieten feingranulare Konfigurationsmöglichkeiten. Oft wird das &apos;Vier-Augen-Prinzip&apos; implementiert: Protokolle sind verschlüsselt und können nur eingesehen werden, wenn beispielsweise der Betriebsrat und ein Administrator gemeinsam ihr Passwort eingeben. Zudem lassen sich automatische Löschfristen konfigurieren, sodass Daten nach z.B. 30 Tagen irreversibel vernichtet werden, gemäß den Bestimmungen der DSGVO und betrieblichen Vereinbarungen.
+              </p>
+            </details>
+            <details className="group rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-white p-4 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer items-center justify-between font-medium text-[oklch(0.16_0.02_260)]">
+                4. Können bestehende Identitätsmedien (z.B. Mitarbeiterausweise) genutzt werden?
+                <span className="transition duration-300 group-open:-rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p className="mt-4 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Ja, moderne elektronische Zutrittssysteme unterstützen gängige RFID-Standards wie MIFARE DESFire, LEGIC advant oder iCLASS. Wenn Ihre Mitarbeiter bereits kontaktlose Ausweise für die Zeiterfassung oder die Kantine nutzen, können diese in der Regel in das neue System integriert werden (&apos;One-Card-Solution&apos;). Alternativ setzen immer mehr Unternehmen auf mobile Access via Smartphone (Bluetooth Low Energy oder NFC), was die Vergabe von Schlüsseln aus der Ferne ermöglicht (&apos;Over-the-Air&apos;).
+              </p>
+            </details>
+            <details className="group rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-white p-4 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer items-center justify-between font-medium text-[oklch(0.16_0.02_260)]">
+                5. Wie sieht der Migrationspfad von einer alten mechanischen Anlage aus?
+                <span className="transition duration-300 group-open:-rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p className="mt-4 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Ein &apos;Big Bang&apos; Austausch ist oft nicht praktikabel. Wir empfehlen eine schrittweise Migration (&apos;Phased Approach&apos;). In Phase 1 werden die Gebäudehülle und kritische Zonen (Serverraum, Archiv) elektronisch gesichert. In Phase 2 folgen ausgewählte Abteilungen. Die alte mechanische Anlage existiert parallel weiter. Um das Handling für die Nutzer zu vereinfachen, können mechatronische Schlüssel eingesetzt werden, die sowohl die alten mechanischen Zylinder als auch die neuen elektronischen Zylinder öffnen können.
+              </p>
+            </details>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <EnterpriseRoiCalculator />
+        </div>
+      </Section>
+
 
       {/* Die fünf Systeme */}
       <Section id="systeme" tone="muted">
