@@ -1,3 +1,4 @@
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
@@ -242,6 +243,61 @@ export default async function SchliessanlagenPage() {
             }}
           />
         </div>
+      </Section>
+
+
+      {/* Interaktiver ROI Kalkulator & Detaillierte Analyse */}
+      <Section>
+        <SectionHeading
+          eyebrow="Wirtschaftlichkeit"
+          title="Planung und Budgetierung auf Enterprise-Niveau"
+          lead="Nutzen Sie unseren interaktiven Kalkulator, um die voraussichtlichen Kosten und den ROI Ihrer neuen Anlage zu berechnen."
+        />
+
+        <div className="mt-8">
+          <EnterpriseRoiCalculator />
+        </div>
+
+        <div className="mt-12 space-y-6">
+          <h3 className="text-xl font-bold text-foreground">Architektonische Methodik & Skalierbarkeit</h3>
+          <p className="text-[15px] leading-relaxed text-foreground-muted">
+            Die Planung einer Enterprise-Schließanlage erfordert mehr als nur das Zählen von Türen. Unsere Methodik basiert auf einer tiefgreifenden Analyse Ihrer Gebäudeinfrastruktur und der zu erwartenden Nutzerdynamik. Wir berücksichtigen dabei nicht nur den Status quo, sondern entwerfen skalierbare Systeme, die zukünftiges Wachstum nahtlos integrieren. Durch den Einsatz moderner, teils hybrider Systeme aus mechanischen und elektronischen Komponenten stellen wir sicher, dass Flexibilität und Sicherheit stets im Einklang stehen.
+          </p>
+          <p className="text-[15px] leading-relaxed text-foreground-muted">
+            Ein zentraler Aspekt unserer Planung ist die langfristige Kosteneffizienz. Mechanische Anlagen zeichnen sich durch ihre Robustheit und geringe Wartungskosten aus, stoßen jedoch bei häufigem Schlüsselverlust oder komplexen Berechtigungsstrukturen an ihre Grenzen. Elektronische Zylinder bieten hier Abhilfe, indem sie Berechtigungen in Echtzeit anpassen lassen und so teure Zylinderwechsel vermeiden. Unser Kalkulator liefert Ihnen erste Anhaltspunkte, doch erst in der individuellen Beratung zeigt sich das volle Optimierungspotenzial.
+          </p>
+
+          <h3 className="text-xl font-bold text-foreground">Vergleichsmatrix: Systemkosten und ROI</h3>
+          <p className="text-[15px] leading-relaxed text-foreground-muted">
+            Die Amortisation (ROI) einer Schließanlage hängt stark von der Fluktuation der Nutzer und der Häufigkeit von Berechtigungsänderungen ab. Die nachfolgende Betrachtung verdeutlicht die Unterschiede:
+          </p>
+          <ul className="mt-4 space-y-4">
+              <li className="rounded-lg border border-border bg-surface p-4">
+                  <strong className="block text-[15px] font-bold">Rein Mechanische Anlagen</strong>
+                  <span className="mt-1 block text-[14px] text-foreground-muted">Geringere Anfangsinvestition, jedoch potenziell hohe Folgekosten bei Schlüsselverlust, da oft mehrere Zylinder oder gar Teile der Anlage ausgetauscht werden müssen.</span>
+              </li>
+              <li className="rounded-lg border border-border bg-surface p-4">
+                  <strong className="block text-[15px] font-bold">Elektronische / Mechatronische Anlagen</strong>
+                  <span className="mt-1 block text-[14px] text-foreground-muted">Höhere initiale Hardwarekosten. Der ROI wird typischerweise innerhalb von 2-4 Jahren erreicht, wenn Schlüssel häufig wechseln (z.B. Co-Working Spaces, große Unternehmen), da verlorene Medien einfach ausprogrammiert werden können.</span>
+              </li>
+              <li className="rounded-lg border border-border bg-surface p-4">
+                  <strong className="block text-[15px] font-bold">Hybride Anlagen</strong>
+                  <span className="mt-1 block text-[14px] text-foreground-muted">Die optimale Balance. Außenhaut und kritische Bereiche werden elektronisch gesichert, Standard-Innentüren mechanisch. Dies maximiert die Sicherheit bei gleichzeitiger Budgetschonung.</span>
+              </li>
+          </ul>
+        </div>
+      </Section>
+
+      <Section tone="muted">
+          <SectionHeading eyebrow="Expertise" title="Technologische Tiefe & Umsetzung" />
+          <div className="mt-8 space-y-6 text-[15px] leading-relaxed text-foreground-muted">
+              <p>
+                  Jede von uns geplante Schließanlage wird als geschlossenes, mathematisches Modell betrachtet. Der Schließplan ist dabei nicht nur ein Dokument, sondern die Matrix, die definiert, welche Schlüssel-Einschnitte (bei mechanischen Anlagen) oder kryptografischen Tokens (bei elektronischen Systemen) welche Zylinder passieren dürfen.
+              </p>
+              <p>
+                  Die Herausforderung liegt in der Vorhersehbarkeit von Erweiterungen. Eine starr geplante Anlage kann schon nach wenigen Umbauten im Gebäude unbrauchbar werden, wenn keine Reserven im Schließplan vorgesehen wurden. Daher planen wir standardmäßig mit einer &quot;Raumreserve&quot; von mindestens 20%, die es erlaubt, neue Türen und Gruppen hinzuzufügen, ohne die bestehende Sicherheitsarchitektur zu kompromittieren.
+              </p>
+          </div>
       </Section>
 
       {/* Die fünf Systeme */}
