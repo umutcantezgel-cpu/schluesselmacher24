@@ -1,59 +1,62 @@
 # Architecture Matrix
 
-| URL | Source File | Current Words | Target Words | Status |
-|---|---|---|---|---|
-| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | 231 | 950 | PENDING_BUILDER |
-| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /admin/inhalte | src/app/admin/inhalte/page.tsx | 213 | 950 | PENDING_BUILDER |
-| /admin | src/app/admin/page.tsx | 1172 | 1172 | PENDING_BUILDER |
-| /admin/preise | src/app/admin/preise/page.tsx | 216 | 950 | PENDING_BUILDER |
-| /admin/produkte | src/app/admin/produkte/page.tsx | 228 | 950 | PENDING_BUILDER |
-| /admin/termine | src/app/admin/termine/page.tsx | 453 | 950 | PENDING_BUILDER |
-| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | 1593 | 1593 | PENDING_BUILDER |
-| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | 322 | 950 | PENDING_BUILDER |
-| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | 519 | 950 | PENDING_BUILDER |
-| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | 1122 | 1122 | PENDING_BUILDER |
-| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | 1092 | 1092 | PENDING_BUILDER |
-| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | 1134 | 1134 | PENDING_BUILDER |
-| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | 1224 | 1224 | PENDING_BUILDER |
-| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | 980 | 980 | PENDING_BUILDER |
-| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | 719 | 950 | PENDING_BUILDER |
-| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | 1190 | 1190 | PENDING_BUILDER |
-| /autoschluessel | src/app/autoschluessel/page.tsx | 1971 | 1971 | PENDING_BUILDER |
-| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | 1223 | 1223 | PENDING_BUILDER |
-| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | 1043 | 1043 | PENDING_BUILDER |
-| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | 1208 | 1208 | PENDING_BUILDER |
-| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | 994 | 994 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 383 | 950 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | 2451 | 2451 | PENDING_BUILDER |
-| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | 311 | 950 | PENDING_BUILDER |
-| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | 2052 | 2052 | PENDING_BUILDER |
-| /kasse | src/app/kasse/page.tsx | 240 | 950 | PENDING_BUILDER |
-| / | src/app/page.tsx | 1140 | 1140 | PENDING_BUILDER |
-| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | 353 | 950 | PENDING_BUILDER |
-| /ratgeber | src/app/ratgeber/page.tsx | 225 | 950 | PENDING_BUILDER |
-| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | 417 | 950 | PENDING_BUILDER |
-| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | 229 | 950 | PENDING_BUILDER |
-| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | 716 | 950 | PENDING_BUILDER |
-| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | 428 | 950 | PENDING_BUILDER |
-| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | 371 | 950 | PENDING_BUILDER |
-| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | 369 | 950 | PENDING_BUILDER |
-| /schliessanlagen | src/app/schliessanlagen/page.tsx | 1603 | 1603 | PENDING_BUILDER |
-| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | 710 | 950 | PENDING_BUILDER |
-| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | 468 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | 222 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | 1762 | 1762 | PENDING_BUILDER |
-| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | 152 | 950 | PENDING_BUILDER |
-| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | 475 | 950 | PENDING_BUILDER |
-| /service-und-termin | src/app/service-und-termin/page.tsx | 462 | 950 | PENDING_BUILDER |
-| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | 108 | 950 | PENDING_BUILDER |
-| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | 656 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | 645 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | 995 | 995 | PENDING_BUILDER |
-| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | 330 | 950 | PENDING_BUILDER |
-| /standorte/[city] | src/app/standorte/[city]/page.tsx | 399 | 950 | PENDING_BUILDER |
-| /standorte | src/app/standorte/page.tsx | 250 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | 494 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | 746 | 950 | PENDING_BUILDER |
-| /warenkorb | src/app/warenkorb/page.tsx | 259 | 950 | PENDING_BUILDER |
+| URL Path | Source File | Current Words | Target Words | Interactive Module | Schema Entities | Status |
+|---|---|---|---|---|---|---|
+| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | 178 | 850 | AdminDashboardMetrics | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | 197 | 850 | AdminDashboardMetrics | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /admin/inhalte | src/app/admin/inhalte/page.tsx | 155 | 850 | AdminDashboardMetrics | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /admin | src/app/admin/layout.tsx | 136 | 850 | AdminDashboardMetrics | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /admin | src/app/admin/page.tsx | 750 | 1250 | AdminDashboardMetrics | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /admin/preise | src/app/admin/preise/page.tsx | 169 | 850 | AdminDashboardMetrics | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /admin/produkte | src/app/admin/produkte/page.tsx | 173 | 850 | AdminDashboardMetrics | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /admin/termine | src/app/admin/termine/page.tsx | 380 | 880 | AdminDashboardMetrics | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | 1098 | 1598 | AdminDashboardMetrics | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | 281 | 850 | AdminDashboardMetrics | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | 363 | 863 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | 199 | 850 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | 185 | 850 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | 221 | 850 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | 795 | 1295 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | 539 | 1039 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | 424 | 924 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | 110 | 850 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel | src/app/autoschluessel/page.tsx | 1427 | 1927 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | 229 | 850 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | 209 | 850 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | 260 | 850 | CarKeyPriceCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | 710 | 1210 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 250 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | 1907 | 2407 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | 201 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | 1227 | 1727 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /kasse | src/app/kasse/page.tsx | 159 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| / | src/app/layout.tsx | 212 | 850 | ServiceBudgetCalculator | WebPage, Organization, WebSite | PENDING_BUILDER |
+| / | src/app/page.tsx | 504 | 1004 | ServiceBudgetCalculator | WebPage, Organization, WebSite | PENDING_BUILDER |
+| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | 222 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /ratgeber | src/app/ratgeber/page.tsx | 133 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | 384 | 884 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | 206 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | 654 | 1154 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | 218 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /rechtliches | src/app/rechtliches/layout.tsx | 89 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | 344 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | 342 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | 259 | 850 | LockSystemConfigurator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /schliessanlagen | src/app/schliessanlagen/page.tsx | 1202 | 1702 | LockSystemConfigurator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | 491 | 991 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | 305 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | 127 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | 1246 | 1746 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | 97 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | 220 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /service-und-termin | src/app/service-und-termin/page.tsx | 831 | 1331 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | 62 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | 442 | 942 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | 404 | 904 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | 542 | 1042 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | 196 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /standorte/[city] | src/app/standorte/[city]/page.tsx | 217 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /standorte | src/app/standorte/page.tsx | 127 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | 284 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | 1214 | 1714 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
+| /warenkorb | src/app/warenkorb/page.tsx | 183 | 850 | ServiceBudgetCalculator | WebPage, FAQPage, Service | PENDING_BUILDER |
