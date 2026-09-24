@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload';
 
-import { istInhaber, istTeam } from '../access/rollen';
+import { istInhaber, istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import { SCHLUESSELARTEN, kennungFeld, slugFeld } from '../fields/gemeinsam';
 import { erneuernHooks } from '../hooks/revalidate';
 
@@ -9,7 +9,7 @@ export const AutoschluesselLeistungen: CollectionConfig = {
   slug: 'autoschluessel-leistungen',
   labels: { singular: 'Autoschlüssel-Leistung', plural: 'Autoschlüssel-Leistungen' },
   admin: { group: 'Autoschlüssel', useAsTitle: 'label', defaultColumns: ['label', 'aktiv', 'updatedAt'] },
-  access: { read: istTeam, create: istInhaber, update: istTeam, delete: istInhaber },
+  access: { read: istTeam, create: istInhaber, update: istTeam, delete: papierkorbTeamLoeschenInhaber },
   trash: true,
   hooks: erneuernHooks,
   fields: [

@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload';
 
-import { istInhaber, istTeam } from '../access/rollen';
+import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import { BEREICHE, kennungFeld, seoFeld, slugFeld } from '../fields/gemeinsam';
 import { erneuernHooks } from '../hooks/revalidate';
 
@@ -9,7 +9,7 @@ export const Einsatzgebiete: CollectionConfig = {
   slug: 'einsatzgebiete',
   labels: { singular: 'Einsatzgebiet', plural: 'Einsatzgebiete' },
   admin: { group: 'Inhalte', useAsTitle: 'stadt', defaultColumns: ['stadt', 'bundesland', '_status', 'updatedAt'] },
-  access: { read: istTeam, create: istTeam, update: istTeam, delete: istInhaber, readVersions: istTeam },
+  access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },
   versions: { drafts: true, maxPerDoc: 20 },
   trash: true,
   hooks: erneuernHooks,

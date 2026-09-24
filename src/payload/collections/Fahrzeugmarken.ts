@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload';
 
-import { istInhaber, istTeam } from '../access/rollen';
+import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import { SCHLUESSELARTEN, bildFeld, kennungFeld, slugFeld } from '../fields/gemeinsam';
 import { erneuernHooks } from '../hooks/revalidate';
 
@@ -9,7 +9,7 @@ export const Fahrzeugmarken: CollectionConfig = {
   slug: 'fahrzeugmarken',
   labels: { singular: 'Fahrzeugmarke', plural: 'Fahrzeugmarken' },
   admin: { group: 'Autoschlüssel', useAsTitle: 'name', defaultColumns: ['name', 'preisgruppe', '_status', 'updatedAt'] },
-  access: { read: istTeam, create: istTeam, update: istTeam, delete: istInhaber, readVersions: istTeam },
+  access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },
   versions: { drafts: true, maxPerDoc: 30 },
   trash: true,
   hooks: erneuernHooks,

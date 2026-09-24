@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "seed": "payload run src/scripts/seed.ts",
-    "test": "vitest run",
+    "test": "vitest run && vitest run -c vitest.db.config.ts",
     "payload": "payload",
     "db:start": "node scripts/db.mjs start",
     "db:stop": "node scripts/db.mjs stop",
@@ -20,7 +20,9 @@
     "generate:types": "payload generate:types",
     "generate:importmap": "payload generate:importmap",
     "db:seed": "payload run src/scripts/seed.ts",
-    "admin:anlegen": "payload run src/scripts/admin-anlegen.ts"
+    "admin:anlegen": "payload run src/scripts/admin-anlegen.ts",
+    "test:unit": "vitest run",
+    "test:db": "vitest run -c vitest.db.config.ts"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^5.3.0",

@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload';
 
-import { istInhaber, istTeam } from '../access/rollen';
+import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import { BEREICHE, bildFeld, kennungFeld, seoFeld, slugFeld } from '../fields/gemeinsam';
 import { erneuernHooks } from '../hooks/revalidate';
 
@@ -8,7 +8,7 @@ export const Ratgeber: CollectionConfig = {
   slug: 'ratgeber',
   labels: { singular: 'Ratgeber-Artikel', plural: 'Ratgeber' },
   admin: { group: 'Inhalte', useAsTitle: 'titel', defaultColumns: ['titel', 'thema', '_status', 'updatedAt'] },
-  access: { read: istTeam, create: istTeam, update: istTeam, delete: istInhaber, readVersions: istTeam },
+  access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },
   versions: { drafts: { schedulePublish: true }, maxPerDoc: 30 },
   trash: true,
   hooks: erneuernHooks,

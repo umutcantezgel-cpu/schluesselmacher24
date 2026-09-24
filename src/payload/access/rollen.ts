@@ -25,3 +25,13 @@ export const feldNurInhaber: FieldAccess = ({ req: { user } }) => hatRolle(user,
 
 /** Öffentlich lesbar. */
 export const oeffentlich: Access = () => true;
+
+/**
+ * Löschen in Sammlungen mit Papierkorb: In den Papierkorb legen darf das
+ * ganze Team (Payload prüft dabei `data.deletedAt`), endgültig löschen nur
+ * die Inhaberin oder der Inhaber.
+ */
+export const papierkorbTeamLoeschenInhaber: Access = ({ req: { user }, data }) => {
+  const inDenPapierkorb = Boolean((data as { deletedAt?: unknown } | undefined)?.deletedAt);
+  return inDenPapierkorb ? hatRolle(user, 'inhaber', 'mitarbeiter') : hatRolle(user, 'inhaber');
+};

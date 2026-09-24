@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload';
 
-import { istInhaber, istTeam } from '../access/rollen';
+import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import { BEREICHE, PROZESSE, bildFeld, kennungFeld, seoFeld, slugFeld, textListe } from '../fields/gemeinsam';
 import { erneuernHooks } from '../hooks/revalidate';
 
@@ -9,7 +9,7 @@ export const Leistungsseiten: CollectionConfig = {
   slug: 'leistungsseiten',
   labels: { singular: 'Leistungsseite', plural: 'Leistungsseiten' },
   admin: { group: 'Inhalte', useAsTitle: 'titel', defaultColumns: ['titel', 'bereich', '_status', 'updatedAt'] },
-  access: { read: istTeam, create: istTeam, update: istTeam, delete: istInhaber, readVersions: istTeam },
+  access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },
   versions: { drafts: true, maxPerDoc: 30 },
   trash: true,
   hooks: erneuernHooks,

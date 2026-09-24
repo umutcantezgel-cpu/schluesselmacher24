@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload';
 
 import { pruefeCodeMuster, codePasst } from '../../lib/code-pattern';
-import { istInhaber, istTeam } from '../access/rollen';
+import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import {
   VERSANDKLASSEN,
   bildFeld,
@@ -38,7 +38,7 @@ export const Produkte: CollectionConfig = {
     read: istTeam,
     create: istTeam,
     update: istTeam,
-    delete: istInhaber,
+    delete: papierkorbTeamLoeschenInhaber,
     readVersions: istTeam,
   },
   versions: { drafts: { schedulePublish: true }, maxPerDoc: 50 },

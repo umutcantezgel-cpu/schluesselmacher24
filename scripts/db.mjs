@@ -35,8 +35,8 @@ function binDir() {
   return dir;
 }
 
-const BIN = binDir();
-const bin = (name) => path.join(BIN, name);
+// Erst bei Bedarf auflösen: mit externer Datenbank werden keine Binärdateien gebraucht.
+const bin = (name) => path.join(binDir(), name);
 
 function run(cmd, args, options = {}) {
   const result = spawnSync(cmd, args, { encoding: 'utf8', ...options });
