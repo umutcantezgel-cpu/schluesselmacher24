@@ -11,17 +11,14 @@ Gate je Commit: `npm run typecheck && npm run lint && npm test` · je Paket zus�
 | 1 | Payload-Probelauf (Entscheidung A/B) | fertig — **Pfad A** | c5cea73 |
 | 2 | Sicherheit, Aufräumen, Ernte, Design-Verträge (CP1) | fertig | 55ece02 |
 | 3 | Payload-Modell, Seed, Datenschicht (CP2) | fertig | (siehe git log) |
-| 4 | Bestellungen, Termine, Artikel, Richtwerte (CP3) | offen | — |
+| 4 | Bestellungen, Termine, Artikel, Richtwerte (CP3) | fertig | 1b685f3 |
 | 5 | Stripe, Visual-Einbau, E2E (CP4) | offen | — |
 | 6 | Puffer und Abschluss (CP5) | offen | — |
 
 ## Nächster Schritt
-Paket 4 läuft als Workflow `paket4-welle1` (Run `wf_bd41af16-90e`, Basis 51b5556): Aufgaben
-vorgaenge | artikel | rechner | uploads | grafik in eigenen Worktrees unter `.claude/worktrees/`,
-je 2 Prüfer + Nachbesserung. Danach: Branches einzeln prüfen (`git diff --name-only`),
-zusammenführen, `verknuepfeKundendateien` in `createRecord` einhängen, Gate + Build, Push → CP3.
-Welle 2 (Paket 5): Stripe (Checkout, Webhook, Erstattung), Grafiken auf die Seiten, danach E2E.
-Wiederaufnahme nach Abbruch: `Workflow({scriptPath, resumeFromRunId: 'wf_bd41af16-90e'})`.
+Prüf-Workflow `paket4-pruefung` (Run `wf_b92d5c55-28d`) auswerten, bestätigte Mängel beheben.
+Danach Paket 5 als Workflow: Stripe (Checkout, Webhook, Erstattung) | Grafiken auf die Seiten |
+anschließend Playwright-E2E. Gate: `npm run typecheck && npm run lint && npm test`, Build `npm run build`.
 
 ## Notizen
 - **Pfad A (Payload 3.90.2)** — Probelauf 17:08–17:15 bestanden:
@@ -48,3 +45,10 @@ Wiederaufnahme nach Abbruch: `Workflow({scriptPath, resumeFromRunId: 'wf_bd41af1
 - **Paket 4 (Vorbereitung)**: Standardartikel im Warenkorb/Kasse + 8 Beispielartikel, Seed mit
   dauerhaftem Vermerk (`payload.kv`), Strukturen Richtwerte/Kundendateien/Nachweise/Zahlungsereignisse,
   Tabellen `sm24_zaehler`/`sm24_ratenbegrenzung`, 54 Icons + 4 Generatoren übernommen.
+- **Paket 4** (CP3): Workflow-Welle 1 — 3 von 5 Agenten fertig, 2 hingen (vermutlich Nutzungslimit)
+  kurz vor dem Commit; ihre Arbeit war grün und wurde nach eigener Durchsicht übernommen.
+  Vorgänge atomar (Zähler, Terminsperre per Advisory-Lock, Schnappschuss, Löschsperre), /artikel,
+  Richtwert-Rechner (ersetzen Bot-Rechner), Kunden-Uploads (Route, Magic Bytes, Einmal-Schlüssel,
+  Zuordnung, Aufräum-Skript), Ratenbegrenzung über DB, Grafik-Registry + BereichIcon.
+  Geprüft am laufenden Server: echtes PNG angenommen, gefälschtes 415, fremde Herkunft 403,
+  Dateien/Listen ohne Anmeldung 403. Build 198 Seiten. Tests 680 + 52 (DB).

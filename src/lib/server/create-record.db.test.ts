@@ -1,6 +1,6 @@
 import { getPayload, type Payload } from 'payload';
 import sharp from 'sharp';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import config from '@payload-config';
 
@@ -14,6 +14,7 @@ import { speichereKundendatei } from './kundendateien';
 
 let payload: Payload;
 let png: Uint8Array;
+const angelegt: number[] = [];
 
 beforeAll(async () => {
   payload = await getPayload({ config });
@@ -35,8 +36,16 @@ async function hochladen() {
     aufbewahrenBis: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     uploadSchluesselHash: hash,
   });
+  angelegt.push(Number(datei.id));
   return { id: String(datei.id), token };
 }
+
+// Die Dateien liegen wie im Betrieb in private-uploads/ — danach wegräumen.
+afterAll(async () => {
+  for (const id of angelegt) {
+    await payload.delete({ collection: 'kundendateien', id, overrideAccess: true }).catch(() => undefined);
+  }
+});
 
 const kontakt = {
   firstName: 'Erika',
