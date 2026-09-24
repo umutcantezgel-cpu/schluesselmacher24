@@ -23,7 +23,7 @@ import { FlowShell } from '@/components/flow/flow-shell';
 import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
-import { PhotoUpload, type PickedFile } from '@/components/forms/photo-upload';
+import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import {
   KEY_KIND_OPTIONS,
   KEY_KIND_ORDER,
@@ -568,25 +568,15 @@ export function Assistent({
 
   /* ---------- Zusammenfassung und Absenden ------------------------------ */
 
-  function buildUploads(): Array<Omit<UploadRef, 'id' | 'uploadedAt' | 'storageKey'>> {
-    const result: Array<Omit<UploadRef, 'id' | 'uploadedAt' | 'storageKey'>> = [];
+  function buildUploads(): Array<Omit<UploadRef, 'id' | 'uploadedAt'>> {
+    const result: Array<Omit<UploadRef, 'id' | 'uploadedAt'>> = [];
     for (const slot of KEY_PHOTO_SLOTS) {
       for (const file of files[slot.id]) {
-        result.push({
-          fileName: file.name,
-          sizeBytes: file.sizeBytes,
-          mimeType: file.mimeType,
-          category: 'schluesselfoto',
-        });
+        result.push(alsUpload(file, 'schluesselfoto'));
       }
     }
     for (const file of files.fahrzeugschein) {
-      result.push({
-        fileName: file.name,
-        sizeBytes: file.sizeBytes,
-        mimeType: file.mimeType,
-        category: 'fahrzeugschein',
-      });
+      result.push(alsUpload(file, 'fahrzeugschein'));
     }
     return result;
   }
@@ -719,6 +709,8 @@ export function Assistent({
 
   async function handleSubmit() {
     if (!quote || !data.slotDate || !data.slotTime) return;
+    // Laufende Uploads abschließen, damit ihre Kennungen mitgehen.
+    await uploadsAbwarten();
 
     /* Ein geladener Zwischenstand enthält keine Dateien mehr. Deshalb vor dem
        Absenden noch einmal jeden Schritt prüfen und notfalls dorthin zurück. */
@@ -1125,6 +1117,7 @@ export function Assistent({
 
           {KEY_PHOTO_SLOTS.map((slot) => (
             <PhotoUpload
+              category="schluesselfoto"
               key={slot.id}
               id={`schluessel-${slot.id}`}
               label={slot.label}
@@ -1153,6 +1146,7 @@ export function Assistent({
       {flow.step.id === 'fahrzeugschein' && (
         <div className="space-y-6">
           <PhotoUpload
+            category="fahrzeugschein"
             id="fahrzeugschein"
             label="Zulassungsbescheinigung Teil I (Fahrzeugschein)"
             description="Als Foto oder als PDF. Bitte vollständig und lesbar, alle vier Ecken im Bild."

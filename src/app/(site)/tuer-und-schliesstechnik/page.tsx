@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 
 import { getPageContent, getServicePages } from '@/lib/data';
+import { getNachweise } from '@/lib/data/nachweise';
 import { getRichtwerte } from '@/lib/data/richtwerte';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { ButtonLink } from '@/components/ui/button';
@@ -24,6 +25,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { TuerAbsicherungRechner } from '@/components/calculator/tuer-absicherung-rechner';
+import { NachweiseListe } from '@/components/vertrauen/nachweise-liste';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'tuer-und-schliesstechnik';
@@ -106,10 +108,11 @@ const EXPERT_FAQ = [
 ];
 
 export default async function TuerUndSchliesstechnikPage() {
-  const [page, services, richtwerte] = await Promise.all([
+  const [page, services, richtwerte, nachweise] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
     getRichtwerte(),
+    getNachweise(),
   ]);
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
@@ -278,6 +281,8 @@ export default async function TuerUndSchliesstechnikPage() {
             </div>
           </div>
         </div>
+        {/* Erscheint erst, wenn im Backend ein Nachweis vorliegt und freigegeben ist. */}
+        <NachweiseListe nachweise={nachweise} titel="Unsere Nachweise" ebene="h3" className="mt-8 max-w-3xl" />
       </Section>
 
       {/* FAQ Sektion */}

@@ -14,7 +14,7 @@ import { Button, ButtonLink } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { Field } from '@/components/forms/field';
 import { QuantityInput, TextInput } from '@/components/forms/controls';
-import { PhotoUpload, type PickedFile } from '@/components/forms/photo-upload';
+import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 
 export interface BestellFormularProps {
   line: CodeLine;
@@ -93,19 +93,16 @@ export function BestellFormular({ line }: BestellFormularProps) {
 
   const canSubmit = codeValid && !photoMissing;
 
-  function handleAdd() {
+  async function handleAdd() {
     setTouched(true);
     setPhotoTouched(true);
     if (!canSubmit) return;
 
-    // Ohne angebundene Dateiablage bleibt `storageKey` leer — der Upload ist
-    // vorerst nur als Absicht des Kunden vermerkt.
+    // Laufende Uploads abschließen, damit Kennung und Schlüssel mitgehen.
+    await uploadsAbwarten();
     const photoRefs: UploadRef[] = photos.map((file) => ({
       id: file.id,
-      fileName: file.name,
-      sizeBytes: file.sizeBytes,
-      mimeType: file.mimeType,
-      category: 'schluesselfoto',
+      ...alsUpload(file, 'schluesselfoto'),
       uploadedAt: new Date().toISOString(),
     }));
 
@@ -280,6 +277,7 @@ export function BestellFormular({ line }: BestellFormularProps) {
         {/* Foto — nur wenn die Codelinie es vorsieht */}
         {showPhotoUpload && (
           <PhotoUpload
+            category="schluesselfoto"
             id={`foto-${line.slug}`}
             label={photoRequired ? 'Foto des Schlüssels' : 'Foto des Schlüssels (freiwillig)'}
             description={

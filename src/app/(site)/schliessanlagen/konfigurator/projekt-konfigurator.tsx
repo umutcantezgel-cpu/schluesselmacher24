@@ -12,7 +12,7 @@ import { FlowShell } from '@/components/flow/flow-shell';
 import { Field } from '@/components/forms/field';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
-import { PhotoUpload, type PickedFile } from '@/components/forms/photo-upload';
+import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { SummaryList } from '@/components/layout/summary-list';
 import { Alert } from '@/components/ui/alert';
 import { Button, ButtonLink } from '@/components/ui/button';
@@ -895,20 +895,12 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
   async function handleSubmit() {
     setSubmitting(true);
     setError(null);
+    // Laufende Uploads abschließen, damit ihre Kennungen mitgehen.
+    await uploadsAbwarten();
 
-    const uploads: Array<Omit<UploadRef, 'id' | 'uploadedAt' | 'storageKey'>> = [
-      ...planFiles.map((file) => ({
-        fileName: file.name,
-        sizeBytes: file.sizeBytes,
-        mimeType: file.mimeType,
-        category: 'dokument' as const,
-      })),
-      ...docFiles.map((file) => ({
-        fileName: file.name,
-        sizeBytes: file.sizeBytes,
-        mimeType: file.mimeType,
-        category: 'grundriss' as const,
-      })),
+    const uploads: Array<Omit<UploadRef, 'id' | 'uploadedAt'>> = [
+      ...planFiles.map((file) => alsUpload(file, 'dokument')),
+      ...docFiles.map((file) => alsUpload(file, 'grundriss')),
     ];
 
     try {
@@ -1310,6 +1302,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
               </Question>
 
               <PhotoUpload
+                category="dokument"
                 id="bestand-plan"
                 label="Fotos oder vorhandener Schließplan"
                 description="Fotos der Schlüssel und Zylinder, die Sicherungskarte oder ein vorhandener Schließplan. Freiwillig."
@@ -1730,6 +1723,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
           </div>
 
           <PhotoUpload
+            category="grundriss"
             id="projekt-dokumente"
             label="Türlisten, Grundrisse, Fotos und vorhandene Pläne"
             description="Bilder oder PDF-Dateien. Alles freiwillig — Sie können diesen Schritt auch überspringen."

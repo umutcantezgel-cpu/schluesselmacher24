@@ -30,7 +30,7 @@ export interface SubmitInput {
   contact: ContactDetails;
   payload: Record<string, unknown>;
   summary: SummarySection[];
-  uploads: Array<Omit<UploadRef, 'id' | 'uploadedAt' | 'storageKey'>>;
+  uploads: Array<Omit<UploadRef, 'id' | 'uploadedAt'>>;
   quote?: PriceQuote;
   appointment?: AppointmentInfo;
   payment?: { scope: 'anzahlung' | 'gesamt'; amountCents: number; description: string };

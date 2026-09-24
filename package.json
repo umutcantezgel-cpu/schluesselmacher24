@@ -22,7 +22,8 @@
     "db:seed": "payload run src/scripts/seed.ts",
     "admin:anlegen": "payload run src/scripts/admin-anlegen.ts",
     "test:unit": "vitest run",
-    "test:db": "vitest run -c vitest.db.config.ts"
+    "test:db": "vitest run -c vitest.db.config.ts",
+    "aufbewahrung:bereinigen": "payload run src/scripts/aufbewahrung-bereinigen.ts"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^5.3.0",

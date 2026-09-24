@@ -13,7 +13,7 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { Field } from '@/components/forms/field';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
-import { PhotoUpload, type PickedFile } from '@/components/forms/photo-upload';
+import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { SummaryList } from '@/components/layout/summary-list';
 
@@ -553,20 +553,12 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
   async function handleSubmit() {
     setSubmitting(true);
     setError(null);
+    // Laufende Uploads abschließen, damit ihre Kennungen mitgehen.
+    await uploadsAbwarten();
 
-    const uploads: Array<Omit<UploadRef, 'id' | 'uploadedAt' | 'storageKey'>> = [
-      ...objectPhotos.map((file) => ({
-        fileName: file.name,
-        sizeBytes: file.sizeBytes,
-        mimeType: file.mimeType,
-        category: 'objektfoto' as const,
-      })),
-      ...floorPlans.map((file) => ({
-        fileName: file.name,
-        sizeBytes: file.sizeBytes,
-        mimeType: file.mimeType,
-        category: 'grundriss' as const,
-      })),
+    const uploads: Array<Omit<UploadRef, 'id' | 'uploadedAt'>> = [
+      ...objectPhotos.map((file) => alsUpload(file, 'objektfoto')),
+      ...floorPlans.map((file) => alsUpload(file, 'grundriss')),
     ];
 
     try {
@@ -959,6 +951,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
       {flow.step?.id === 'unterlagen' && (
         <div className="space-y-8">
           <PhotoUpload
+            category="objektfoto"
             id="objektfotos"
             label="Fotos vom Objekt"
             description={`Außenansicht, Eingangsbereich, Fenster und Nebenzugänge. Wir bewahren Objektfotos ${retention.objectPhotos} Tage auf.`}
@@ -973,6 +966,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
           />
 
           <PhotoUpload
+            category="grundriss"
             id="grundriss"
             label="Grundriss oder Lageplan"
             description={`Als Foto oder PDF. Wir bewahren Grundrisse ${retention.floorPlans} Tage auf.`}

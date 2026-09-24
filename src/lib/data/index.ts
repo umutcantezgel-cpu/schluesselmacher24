@@ -265,6 +265,28 @@ export async function updateRecord(id: string, patch: Partial<Vorgang>) {
   return vorgangZuSeite(doc);
 }
 
+/**
+ * Vermerkt am Vorgang die zugeordneten Kundendateien (Beziehung fürs Backend)
+ * und die Upload-Angaben mit Kennung.
+ */
+export async function vorgangDateienSetzen(
+  id: string,
+  dateiIds: number[],
+  uploads: Vorgang['uploads'],
+): Promise<Vorgang | null> {
+  if (useJson) return updateRecord(id, { uploads });
+  if (!/^\d{1,15}$/.test(id)) return null;
+  const payload = await payloadInstanz();
+  const doc = (await payload.update({
+    collection: 'vorgaenge',
+    id: Number(id),
+    data: { dateien: dateiIds, uploads: uploads as unknown as Record<string, unknown>[] },
+    overrideAccess: true,
+    depth: 0,
+  })) as Vorgaenge;
+  return vorgangZuSeite(doc);
+}
+
 /* ---------- Vorgänge: interne Helfer ------------------------------------- */
 
 /**

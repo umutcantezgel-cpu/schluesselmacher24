@@ -12,7 +12,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { Field } from '@/components/forms/field';
 import { OptionCard } from '@/components/forms/option-card';
-import { PhotoUpload, type PickedFile } from '@/components/forms/photo-upload';
+import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
 
@@ -126,6 +126,8 @@ export function AllgemeineAnfrage({
   async function absenden() {
     setSenden(true);
     setFehler(null);
+    // Laufende Uploads abschließen, damit ihre Kennungen mitgehen.
+    await uploadsAbwarten();
 
     const ergebnis = await submitRecord({
       kind: 'anfrage',
@@ -144,12 +146,7 @@ export function AllgemeineAnfrage({
       },
       payload: { ...data, dateien: dateien.map((f) => f.name) },
       summary: zusammenfassung,
-      uploads: dateien.map((f) => ({
-        fileName: f.name,
-        sizeBytes: f.sizeBytes,
-        mimeType: f.mimeType,
-        category: 'dokument' as const,
-      })),
+      uploads: dateien.map((f) => alsUpload(f, 'dokument')),
     });
 
     setSenden(false);
@@ -292,6 +289,7 @@ export function AllgemeineAnfrage({
 
         {flow.step?.id === 'unterlagen' && (
           <PhotoUpload
+            category="dokument"
             id="anfrage-dateien"
             label="Fotos oder Unterlagen"
             description="Freiwillig. Fotos der betroffenen Tür, des Schlüssels oder vorhandene Unterlagen helfen uns sehr."

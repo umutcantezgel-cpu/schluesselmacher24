@@ -15,7 +15,7 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { Field } from '@/components/forms/field';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
-import { PhotoUpload, type PickedFile } from '@/components/forms/photo-upload';
+import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { SummaryList } from '@/components/layout/summary-list';
 
@@ -326,6 +326,8 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
   async function handleSubmit() {
     setSubmitting(true);
     setFehler(null);
+    // Laufende Uploads abschließen, damit ihre Kennungen mitgehen.
+    await uploadsAbwarten();
 
     const alleFotos = [
       ...fotoVorderseite,
@@ -362,12 +364,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
           originalEingesendet: false,
         },
         summary,
-        uploads: alleFotos.map((file) => ({
-          fileName: file.name,
-          sizeBytes: file.sizeBytes,
-          mimeType: file.mimeType,
-          category: 'schluesselfoto' as const,
-        })),
+        uploads: alleFotos.map((file) => alsUpload(file, 'schluesselfoto')),
       });
 
       if (antwort.ok) {
@@ -637,6 +634,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
 
           <div className="border-t border-border pt-5">
             <PhotoUpload
+              category="schluesselfoto"
               id="foto-beschriftung"
               label="Nahaufnahmen der Beschriftung (freiwillig)"
               description="Bis zu drei Nahaufnahmen der Stellen mit Zahlen oder Buchstaben. Scharf, gut ausgeleuchtet, formatfüllend."
@@ -948,6 +946,7 @@ function FotoSchritt({
       </ul>
 
       <PhotoUpload
+        category="schluesselfoto"
         id={id}
         label={label}
         description={description}

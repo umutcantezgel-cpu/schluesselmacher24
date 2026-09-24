@@ -7,6 +7,7 @@ import {
   getSettings,
   updateRecord,
   vorgangAnlegen,
+  vorgangDateienSetzen,
   type TerminSperre,
 } from '@/lib/data';
 import { createPayment, sendMail, storageStatus } from '@/lib/integrations';
@@ -47,7 +48,7 @@ export interface TrustedRecordInput {
   contact: ContactDetails;
   payload: Record<string, unknown>;
   summary: SummarySection[];
-  uploads: Array<Omit<UploadRef, 'id' | 'uploadedAt' | 'storageKey'>>;
+  uploads: Array<Omit<UploadRef, 'id' | 'uploadedAt'>>;
   quote?: PriceQuote;
   appointment?: AppointmentInfo;
   payment?: { scope: 'anzahlung' | 'gesamt'; amountCents: number; description: string };
@@ -110,8 +111,13 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
         contact: input.contact,
         payload: input.payload,
         summary: input.summary,
+        // Kennung und Einmal-Schlüssel erst nach der Zuordnung übernehmen —
+        // der Schlüssel wird nie gespeichert.
         uploads: input.uploads.map((upload, index) => ({
-          ...upload,
+          fileName: upload.fileName,
+          sizeBytes: upload.sizeBytes,
+          mimeType: upload.mimeType,
+          category: upload.category,
           id: `${buildRecordId(reference)}-datei-${index + 1}`,
           uploadedAt: timestamp,
         })),
@@ -139,11 +145,8 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
   // Ab hier ist der Vorgang gespeichert. Was jetzt scheitert, wird als Hinweis
   // gemeldet, nicht als Fehler — sonst bestellt der Kunde ein zweites Mal.
 
-  if (input.uploads.length > 0 && !storageStatus().configured) {
-    notices.push(
-      'Ihre Dateien konnten noch nicht dauerhaft gespeichert werden. Wir melden uns, '
-        + 'falls wir sie erneut benötigen.',
-    );
+  if (input.uploads.length > 0) {
+    saved = await dateienZuordnen(saved, input.uploads, notices);
   }
 
   const redirectUrl = input.payment
@@ -388,4 +391,49 @@ export async function verifyCarKeyBooking(
       location: quote.requiresVehicleOnSite ? 'vor-ort' : 'werkstatt',
     },
   };
+}
+
+/* ---------- Hochgeladene Dateien ----------------------------------------- */
+
+const DATEIEN_NICHT_ZUGEORDNET =
+  'Einige Ihrer Dateien konnten nicht übernommen werden. Wir melden uns, falls wir sie benötigen.';
+
+/**
+ * Ordnet die hochgeladenen Kundendateien dem neuen Vorgang zu. Nur Dateien
+ * mit passendem Einmal-Schlüssel werden übernommen; der Vorgang vermerkt
+ * danach je Datei ihre Kennung.
+ */
+async function dateienZuordnen(
+  saved: BusinessRecord,
+  uploads: TrustedRecordInput['uploads'],
+  notices: string[],
+): Promise<BusinessRecord> {
+  const verweise = uploads.flatMap((upload, index) =>
+    upload.storageKey && upload.uploadToken
+      ? [{ index, id: upload.storageKey, uploadToken: upload.uploadToken }]
+      : [],
+  );
+  if (verweise.length === 0 || !storageStatus().configured) {
+    notices.push(DATEIEN_NICHT_ZUGEORDNET);
+    return saved;
+  }
+  try {
+    // Erst hier laden: nur mit Datenbank vorhanden.
+    const { verknuepfeKundendateien } = await import('@/lib/server/kundendateien');
+    const zugeordnet = await verknuepfeKundendateien({
+      vorgangId: saved.id,
+      uploads: verweise.map(({ id, uploadToken }) => ({ id, uploadToken })),
+    });
+    const ids = new Set(zugeordnet.map(String));
+    const vermerkt = saved.uploads.map((upload, index) => {
+      const verweis = verweise.find((v) => v.index === index);
+      return verweis && ids.has(verweis.id) ? { ...upload, storageKey: verweis.id } : upload;
+    });
+    if (zugeordnet.length < uploads.length) notices.push(DATEIEN_NICHT_ZUGEORDNET);
+    return (await vorgangDateienSetzen(saved.id, zugeordnet, vermerkt)) ?? saved;
+  } catch (error) {
+    console.error('[vorgang] Dateien nicht zugeordnet', error);
+    notices.push(DATEIEN_NICHT_ZUGEORDNET);
+    return saved;
+  }
 }

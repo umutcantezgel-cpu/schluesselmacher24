@@ -9,6 +9,7 @@ import { zylinderDetails } from '@/lib/cylinder-summary';
 import { formatCents } from '@/lib/format';
 import { availableShipping, cartTotals, priceCylinderOrder, unitPriceForCodeLine } from '@/lib/pricing';
 import { createRecord } from '@/lib/server/create-record';
+import { KUNDENDATEI_ID_MUSTER, UPLOAD_TOKEN_MUSTER } from '@/lib/server/datei-pruefung';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { contactSchema } from '@/lib/server/record-schema';
 import type { Cart, CartItem, ContactDetails, OrderLine, OrderTotals, SummarySection } from '@/lib/types';
@@ -47,7 +48,8 @@ const uploadRefSchema = z.object({
   sizeBytes: z.number().int().min(0).max(30 * 1024 * 1024),
   mimeType: z.string().max(120),
   category: z.enum(['schluesselfoto', 'fahrzeugschein', 'grundriss', 'dokument', 'objektfoto']),
-  storageKey: z.string().max(500).optional(),
+  storageKey: z.string().regex(KUNDENDATEI_ID_MUSTER).optional(),
+  uploadToken: z.string().regex(UPLOAD_TOKEN_MUSTER).optional(),
   uploadedAt: z.string().max(40),
 });
 
@@ -287,14 +289,31 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
     process: 'direktkauf',
     contact: data.contact,
     payload: {
-      items: verified,
+      // Einmal-Schlüssel der Fotos gehören nicht in die gespeicherten Daten.
+      items: verified.map((item) =>
+        item.kind === 'code-schluessel'
+          ? { ...item, photoRefs: item.photoRefs.map((ref) => ({ ...ref, uploadToken: undefined })) }
+          : item,
+      ),
       shippingOptionId: shipping.id,
       shippingLabel: shipping.label,
       deliveryNote: data.deliveryNote,
       totals,
     },
     summary,
-    uploads: [],
+    // Fotos zu Code-Schlüsseln: Zuordnung zum Vorgang über den Einmal-Schlüssel.
+    uploads: verified.flatMap((item) =>
+      item.kind === 'code-schluessel'
+        ? item.photoRefs.map((ref) => ({
+            fileName: ref.fileName,
+            sizeBytes: ref.sizeBytes,
+            mimeType: ref.mimeType,
+            category: ref.category,
+            storageKey: ref.storageKey,
+            uploadToken: ref.uploadToken,
+          }))
+        : [],
+    ),
     lines,
     totals: orderTotals,
     payment: {
