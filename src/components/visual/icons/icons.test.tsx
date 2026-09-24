@@ -17,6 +17,16 @@ import { IconElektronischeZutrittsloesungen } from './elektronische-zutrittsloes
 import { IconTuerUndSchliesstechnik } from './tuer-und-schliesstechnik';
 import { IconSicherheitstechnik } from './sicherheitstechnik';
 import { IconServiceUndTermin } from './service-und-termin';
+// Autoschlüssel
+import { IconKlappschluessel } from './klappschluessel';
+import { IconFunkschluessel } from './funkschluessel';
+import { IconSmartKey } from './smart-key';
+import { IconTransponder } from './transponder';
+import { IconSchluesselProgrammieren } from './schluessel-programmieren';
+import { IconSchluesselbartFraesen } from './schluesselbart-fraesen';
+import { IconFahrzeugoeffnung } from './fahrzeugoeffnung';
+import { IconSchluesselKopieren } from './schluessel-kopieren';
+import { IconFahrzeugmarke } from './fahrzeugmarke';
 
 /** Dateiname (ohne Endung) → Komponente. Jede Icon-Datei im Ordner muss hier stehen. */
 const ICONS: Record<string, ComponentType<IconProps>> = {
@@ -30,6 +40,16 @@ const ICONS: Record<string, ComponentType<IconProps>> = {
   'tuer-und-schliesstechnik': IconTuerUndSchliesstechnik,
   sicherheitstechnik: IconSicherheitstechnik,
   'service-und-termin': IconServiceUndTermin,
+  // Autoschlüssel
+  klappschluessel: IconKlappschluessel,
+  funkschluessel: IconFunkschluessel,
+  'smart-key': IconSmartKey,
+  transponder: IconTransponder,
+  'schluessel-programmieren': IconSchluesselProgrammieren,
+  'schluesselbart-fraesen': IconSchluesselbartFraesen,
+  fahrzeugoeffnung: IconFahrzeugoeffnung,
+  'schluessel-kopieren': IconSchluesselKopieren,
+  fahrzeugmarke: IconFahrzeugmarke,
 };
 
 const ICON_DIR = path.dirname(fileURLToPath(import.meta.url));
