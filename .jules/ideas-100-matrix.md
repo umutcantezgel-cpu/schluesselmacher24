@@ -1,109 +1,406 @@
-# 100 Radikale Innovationsideen (Swiss Light Mode Aesthetic)
+# Die Philosophische 100-Ideen-Matrix
 
-## Kategorie A: Awwwards-Kinetik & Taktile Interaktion (Ideen 1 bis 25)
-1. IDEA_001: Federgedämpfte Hover-States für alle Button-Komponenten (src/components/ui/button.tsx).
-2. IDEA_002: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex auf der Homepage (src/app/page.tsx).
-3. IDEA_003: Scroll-getriebene SVG-Animation für den "Schlüssel nach Code"-Prozess.
-4. IDEA_004: Mikro-haptisches Cursor-Tracking für die Area-Karten.
-5. IDEA_005: Parallax-Tiefenunschärfe für das Hero-Image auf der Startseite.
-6. IDEA_006: Magnetische Buttons für primäre CTAs (z.B. "Termin buchen").
-7. IDEA_007: Interaktives SVG-Schlüsselprofil (Hover zum Drehen) in der Schließanlagen-Übersicht.
-8. IDEA_008: Glatte Seitenübergänge (View Transitions API) zwischen allen Hauptseiten.
-9. IDEA_009: Morphing-Icons in der Schnelleinstieg-Sektion.
-10. IDEA_010: Skew-on-Scroll für Textblöcke auf der "Über Uns"-Seite.
-11. IDEA_011: Dynamische Schatten (oklch 0.988) basierend auf Cursor-Position.
-12. IDEA_012: Fade-In Sequence für Listenelemente in der Schließanlagen-Page.
-13. IDEA_013: 3D-Tilt-Effekt für die Feature-Karten.
-14. IDEA_014: Liquid-Distortion Hover auf Bildern.
-15. IDEA_015: Reveal-Animation für Akkordeon-Antworten (src/components/ui/accordion.tsx).
-16. IDEA_016: Text-Scramble Effekt bei initialem Laden der Headlines.
-17. IDEA_017: Sticky-Scrolling für lange Content-Seiten (Ratgeber).
-18. IDEA_018: Horizontal Scroll-Bereich für das Portfolio / Referenzen.
-19. IDEA_019: Kinetic Typography für die 404-Seite.
-20. IDEA_020: Ripple-Effekt auf allen klickbaren Cards.
-21. IDEA_021: Lade-Indikator als sich füllendes Schlüssel-Icon.
-22. IDEA_022: Progress-Bar angebunden an Scroll-Tiefe für Blog/Ratgeber.
-23. IDEA_023: Tooltips mit sanftem Spring-Fade-In.
-24. IDEA_024: Hover-Masking für das Hero-Image (Enthüllung von Details).
-25. IDEA_025: Interaktiver "Lichtschalter" (Light Mode Only, demonstriert Helligkeit ohne Dark Mode).
+## KATEGORIE A: AWWWARDS-KINETIK & TAKTILE INTERAKTION (IDEEN 1 BIS 25)
+### IDEA_001: Scroll-getriebene SVGs für SecurityCheckCalculator
+- **Route/Komponente**: `app/sicherheitstechnik/page.tsx` / `components/calculator/security-check-calculator.tsx`
+- **Spezifikation**: Ersetze statische Icons durch scroll-getriebene SVG-Pfade, die sich anhand des Scroll-Fortschritts visuell aufbauen. Integriere ein Parallax-Layering für den Hintergrund, ohne Layout-Shifts auszulösen.
 
-## Kategorie B: Semantische Autorität & Content-Maximierung (Ideen 26 bis 50)
-26. IDEA_026: Erweiterung der Startseite um >800 Wörter Fachinhalt.
-27. IDEA_027: Tiefen-Glossar für Schließanlagen (src/app/schliessanlagen/page.tsx).
-28. IDEA_028: Detaillierte Fallstudien im Ratgeber-Bereich.
-29. IDEA_029: Ausbau der "Schlüssel nach Code" Seite mit technischen Details (800+ Wörter).
-30. IDEA_030: Historie der Schließtechnik-Evolution auf der Über-Uns-Seite.
-31. IDEA_031: Ausführliche Erklärung der DIN-Normen für Sicherheitszylinder.
-32. IDEA_032: Vergleich: Elektronische vs. Mechanische Schließsysteme.
-33. IDEA_033: Schritt-für-Schritt Wartungsanleitung für Zylinder.
-34. IDEA_034: Experten-Interview-Format im Ratgeber.
-35. IDEA_035: Erweiterung der FAQ auf allen Dienstleistungsseiten.
-36. IDEA_036: Technisches Datenblatt-Layout für spezifische Zylinder.
-37. IDEA_037: Erläuterung des Fräsprozesses (Maschinen, Präzision).
-38. IDEA_038: Rechtsgrundlagen für Schließanlagen (Mieter vs. Vermieter).
-39. IDEA_039: Notfall-Ratgeber: Was tun bei abgebrochenem Schlüssel?
-40. IDEA_040: Detaillierte Preis-Transparenz-Seite (Warum kostet Qualität X?).
-41. IDEA_041: Ausbau der "Gleichschließende Zylinder" Seite mit Anwendungsfällen.
-42. IDEA_042: Spatial Bento Grid in src/app/page.tsx (Fokus auf Inhalt-Dichte).
-43. IDEA_043: Strukturierte Daten (Schema.org) für alle Artikel ausbauen.
-44. IDEA_044: Glossar-Tooltips im laufenden Text.
-45. IDEA_045: Checkliste: Sicherheit für Gewerbeobjekte (als Content-Block).
-46. IDEA_046: Ratgeber: Tresor-Wahl und Verankerung.
-47. IDEA_047: Erklärung der VdS-Schutzklassen.
-48. IDEA_048: Ausführliche Anleitung zum Ausmessen von Zylindern.
-49. IDEA_049: Content-Block "Mythos vs. Wahrheit" bei Einbruchschutz.
-50. IDEA_050: Detaillierte Beschreibung der Anlieferung & Montage.
+### IDEA_002: Taktile Hover-States für ZutrittKonfigurator
+- **Route/Komponente**: `app/elektronische-zutrittsloesungen/konfigurator/page.tsx` / `app/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`
+- **Spezifikation**: Füge mikro-haptische Interaktionen beim Hovern hinzu: Die Elemente skalieren minimal (1.02) und verschieben ihren Schlagschatten dynamisch basierend auf der Mausposition, um taktile Tiefe zu simulieren.
 
-## Kategorie C: Conversion-Psychologie & Native Werkzeuge (Ideen 51 bis 75)
-51. IDEA_051: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator (src/app/schliessanlagen/page.tsx).
-52. IDEA_052: Interaktiver Vorher-Nachher-Slider für verschlissene vs. neue Schlüssel.
-53. IDEA_053: Konfigurator: Welches Schließsystem passt zu mir? (Quiz-Format).
-54. IDEA_054: Dynamischer Budget-Schätzer für Gleichschließungen.
-55. IDEA_055: ROI-Rechner für elektronische vs. mechanische Anlagen.
-56. IDEA_056: Visueller Zylinder-Ausmesser (interaktives Lineal).
-57. IDEA_057: "Trust-Balken": Live-Zähler geretteter Autoschlüssel (simuliert/optimistisch).
-58. IDEA_058: Interaktive Karte der abgedeckten Gebiete.
-59. IDEA_059: Dynamische Filterung für den Ratgeber (nach Thema, Dauer).
-60. IDEA_060: Personalisierter Einstiegs-Funnel für Privat vs. Gewerbe.
-61. IDEA_061: Live-Termin-Vorschau im Hero-Bereich (nächster freier Slot).
-62. IDEA_062: "Warenkorb-Ersparnis" Visualisierung bei Mengenrabatt.
-63. IDEA_063: Interaktiver Sicherheits-Score-Check für Eigenheime.
-64. IDEA_064: 3D-Konfigurator für Schlüssel-Anhänger/Markierungen.
-65. IDEA_065: Social-Proof Ticker (kürzliche anonymisierte Aufträge).
-66. IDEA_066: Gamifizierte Fortschrittsanzeige in Formularen.
-67. IDEA_067: Interaktives Organigramm für GHS-Anlagen (Drag & Drop Planung).
-68. IDEA_068: Tool: Foto-Upload-Prüfer für Schlüssel-Kopien.
-69. IDEA_069: Interaktive FAQ mit Suchfunktion und Highlighting.
-70. IDEA_070: "Smart Quote" - dynamische Angebotserstellung in Echtzeit.
-71. IDEA_071: Konfigurator-Summary als PDF-Download (Server Action).
-72. IDEA_072: A/B-Testing Integration für Haupt-CTAs.
-73. IDEA_073: Micro-Interactions bei Formularvalidierung (Shake on error).
-74. IDEA_074: Exit-Intent Modal mit passendem Ratgeber-Artikel.
-75. IDEA_075: Countdown für "Heute bestellt - Morgen versandt" (nur bis 14 Uhr).
+### IDEA_003: Kinetische Typografie für SystemErklaerung
+- **Route/Komponente**: `app/schliessanlagen/page.tsx` / `components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation**: Überarbeite die Typografie-Hierarchie zu einer kinetischen Darstellung, bei der Überschriften beim Scrollen buchstabenweise mit einem Fade-in und einer minimalen Y-Translation (10px) einfliegen.
 
-## Kategorie D: Extreme Performance, Architektur & DX (Ideen 76 bis 100)
-76. IDEA_076: Next.js 16 "use cache" Memoisierung für alle API-Routen.
-77. IDEA_077: CSS Subgrid-Harmonisierung für Karten-Layouts.
-78. IDEA_078: Container Queries (@container) für Komponenten-Responsive.
-79. IDEA_079: AVIF-Hero-Pipelines für maximale Bildkompression.
-80. IDEA_080: Zero-Shift Webfont-Optimierung (font-display: optional/swap).
-81. IDEA_081: Aggressives Pre-Fetching für alle Navigations-Links im Viewport.
-82. IDEA_082: Edge-Caching für statische Content-Seiten.
-83. IDEA_083: Partytown-Integration für Third-Party-Scripts.
-84. IDEA_084: Bundle-Analyse und Code-Splitting für große Konfiguratoren.
-85. IDEA_085: Turbopack-Optimierungen in next.config.
-86. IDEA_086: Implementierung von React 19 `useOptimistic` in Formularen.
-87. IDEA_087: Serverseitiges Rendering für personalisierte Empfehlungen.
-88. IDEA_088: Striktes CSP (Content Security Policy) Setup.
-89. IDEA_089: Reduzierung der DOM-Tiefe in der Hauptnavigation.
-90. IDEA_090: Lazy-Loading für untere Sektionen (Intersection Observer).
-91. IDEA_091: Inline-CSS für kritische Above-the-Fold Inhalte.
-92. IDEA_092: Web Worker für komplexe Schließplan-Berechnungen.
-93. IDEA_093: Optimierung der JSON-LD Generierung (Streaming).
-94. IDEA_094: Umstellung auf native CSS Nesting statt Sass/Tailwind-Plugins (wo sinnvoll).
-95. IDEA_095: Implementierung von `serverActions` in allen Formularen.
-96. IDEA_096: Automatisierte a11y-Tests (axe-core) in CI/CD.
-97. IDEA_097: Optimierung der LCP (Largest Contentful Paint) auf <1.2s.
-98. IDEA_098: Reduzierung des JavaScript-Footprints durch RSCs.
-99. IDEA_099: Strict Type-Checking für alle API-Responses.
-100. IDEA_100: Refactoring der Tailwind-Klassen auf v4 Standards.
+### IDEA_004: Fluide View Transitions für KeyKinds
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/key-kinds.tsx`
+- **Spezifikation**: Implementiere flüssige View-Transitions (React 19 native oder View Transitions API) zwischen den Zuständen, um abrupte DOM-Updates zu vermeiden und ein nahtloses App-Gefühl zu erzeugen.
+
+### IDEA_005: Bento Grid mit Lichtreflex für PhotoUpload
+- **Route/Komponente**: `app/schluessel-nach-vorlage/anfrage/page.tsx` / `components/forms/photo-upload.tsx`
+- **Spezifikation**: Verwandle die starren Container in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik (framer-motion spring config: stiffness: 400, damping: 30) und Cursor-Positions-Tracking, das Lichtreflexe über die Ränder zeichnet.
+
+### IDEA_006: Scroll-getriebene SVGs für VehicleFacts
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/vehicle-facts.tsx`
+- **Spezifikation**: Ersetze statische Icons durch scroll-getriebene SVG-Pfade, die sich anhand des Scroll-Fortschritts visuell aufbauen. Integriere ein Parallax-Layering für den Hintergrund, ohne Layout-Shifts auszulösen.
+
+### IDEA_007: Taktile Hover-States für ServiceArticle
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/service-article.tsx`
+- **Spezifikation**: Füge mikro-haptische Interaktionen beim Hovern hinzu: Die Elemente skalieren minimal (1.02) und verschieben ihren Schlagschatten dynamisch basierend auf der Mausposition, um taktile Tiefe zu simulieren.
+
+### IDEA_008: Kinetische Typografie für Controls
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/controls.tsx`
+- **Spezifikation**: Überarbeite die Typografie-Hierarchie zu einer kinetischen Darstellung, bei der Überschriften beim Scrollen buchstabenweise mit einem Fade-in und einer minimalen Y-Translation (10px) einfliegen.
+
+### IDEA_009: Fluide View Transitions für Field
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/field.tsx`
+- **Spezifikation**: Implementiere flüssige View-Transitions (React 19 native oder View Transitions API) zwischen den Zuständen, um abrupte DOM-Updates zu vermeiden und ein nahtloses App-Gefühl zu erzeugen.
+
+### IDEA_010: Bento Grid mit Lichtreflex für OptionCard
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/option-card.tsx`
+- **Spezifikation**: Verwandle die starren Container in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik (framer-motion spring config: stiffness: 400, damping: 30) und Cursor-Positions-Tracking, das Lichtreflexe über die Ränder zeichnet.
+
+### IDEA_011: Scroll-getriebene SVGs für InfoTip
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/info-tip.tsx`
+- **Spezifikation**: Ersetze statische Icons durch scroll-getriebene SVG-Pfade, die sich anhand des Scroll-Fortschritts visuell aufbauen. Integriere ein Parallax-Layering für den Hintergrund, ohne Layout-Shifts auszulösen.
+
+### IDEA_012: Taktile Hover-States für Alert
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/alert.tsx`
+- **Spezifikation**: Füge mikro-haptische Interaktionen beim Hovern hinzu: Die Elemente skalieren minimal (1.02) und verschieben ihren Schlagschatten dynamisch basierend auf der Mausposition, um taktile Tiefe zu simulieren.
+
+### IDEA_013: Kinetische Typografie für ImagePlaceholder
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/image-placeholder.tsx`
+- **Spezifikation**: Überarbeite die Typografie-Hierarchie zu einer kinetischen Darstellung, bei der Überschriften beim Scrollen buchstabenweise mit einem Fade-in und einer minimalen Y-Translation (10px) einfliegen.
+
+### IDEA_014: Fluide View Transitions für Badge
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/badge.tsx`
+- **Spezifikation**: Implementiere flüssige View-Transitions (React 19 native oder View Transitions API) zwischen den Zuständen, um abrupte DOM-Updates zu vermeiden und ein nahtloses App-Gefühl zu erzeugen.
+
+### IDEA_015: Bento Grid mit Lichtreflex für ServiceBudgetCalculator
+- **Route/Komponente**: `app/service-und-termin/page.tsx` / `components/calculator/service-budget-calculator.tsx`
+- **Spezifikation**: Verwandle die starren Container in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik (framer-motion spring config: stiffness: 400, damping: 30) und Cursor-Positions-Tracking, das Lichtreflexe über die Ränder zeichnet.
+
+### IDEA_016: Scroll-getriebene SVGs für SecurityCheckCalculator
+- **Route/Komponente**: `app/sicherheitstechnik/page.tsx` / `components/calculator/security-check-calculator.tsx`
+- **Spezifikation**: Ersetze statische Icons durch scroll-getriebene SVG-Pfade, die sich anhand des Scroll-Fortschritts visuell aufbauen. Integriere ein Parallax-Layering für den Hintergrund, ohne Layout-Shifts auszulösen.
+
+### IDEA_017: Taktile Hover-States für ZutrittKonfigurator
+- **Route/Komponente**: `app/elektronische-zutrittsloesungen/konfigurator/page.tsx` / `app/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`
+- **Spezifikation**: Füge mikro-haptische Interaktionen beim Hovern hinzu: Die Elemente skalieren minimal (1.02) und verschieben ihren Schlagschatten dynamisch basierend auf der Mausposition, um taktile Tiefe zu simulieren.
+
+### IDEA_018: Kinetische Typografie für SystemErklaerung
+- **Route/Komponente**: `app/schliessanlagen/page.tsx` / `components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation**: Überarbeite die Typografie-Hierarchie zu einer kinetischen Darstellung, bei der Überschriften beim Scrollen buchstabenweise mit einem Fade-in und einer minimalen Y-Translation (10px) einfliegen.
+
+### IDEA_019: Fluide View Transitions für KeyKinds
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/key-kinds.tsx`
+- **Spezifikation**: Implementiere flüssige View-Transitions (React 19 native oder View Transitions API) zwischen den Zuständen, um abrupte DOM-Updates zu vermeiden und ein nahtloses App-Gefühl zu erzeugen.
+
+### IDEA_020: Bento Grid mit Lichtreflex für PhotoUpload
+- **Route/Komponente**: `app/schluessel-nach-vorlage/anfrage/page.tsx` / `components/forms/photo-upload.tsx`
+- **Spezifikation**: Verwandle die starren Container in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik (framer-motion spring config: stiffness: 400, damping: 30) und Cursor-Positions-Tracking, das Lichtreflexe über die Ränder zeichnet.
+
+### IDEA_021: Scroll-getriebene SVGs für VehicleFacts
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/vehicle-facts.tsx`
+- **Spezifikation**: Ersetze statische Icons durch scroll-getriebene SVG-Pfade, die sich anhand des Scroll-Fortschritts visuell aufbauen. Integriere ein Parallax-Layering für den Hintergrund, ohne Layout-Shifts auszulösen.
+
+### IDEA_022: Taktile Hover-States für ServiceArticle
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/service-article.tsx`
+- **Spezifikation**: Füge mikro-haptische Interaktionen beim Hovern hinzu: Die Elemente skalieren minimal (1.02) und verschieben ihren Schlagschatten dynamisch basierend auf der Mausposition, um taktile Tiefe zu simulieren.
+
+### IDEA_023: Kinetische Typografie für Controls
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/controls.tsx`
+- **Spezifikation**: Überarbeite die Typografie-Hierarchie zu einer kinetischen Darstellung, bei der Überschriften beim Scrollen buchstabenweise mit einem Fade-in und einer minimalen Y-Translation (10px) einfliegen.
+
+### IDEA_024: Fluide View Transitions für Field
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/field.tsx`
+- **Spezifikation**: Implementiere flüssige View-Transitions (React 19 native oder View Transitions API) zwischen den Zuständen, um abrupte DOM-Updates zu vermeiden und ein nahtloses App-Gefühl zu erzeugen.
+
+### IDEA_025: Bento Grid mit Lichtreflex für OptionCard
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/option-card.tsx`
+- **Spezifikation**: Verwandle die starren Container in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik (framer-motion spring config: stiffness: 400, damping: 30) und Cursor-Positions-Tracking, das Lichtreflexe über die Ränder zeichnet.
+
+## KATEGORIE B: SEMANTISCHE AUTORITÄT & CONTENT-MAXIMIERUNG (IDEEN 26 BIS 50)
+### IDEA_026: Historische Vergleichsmatrix für InfoTip
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/info-tip.tsx`
+- **Spezifikation**: Integriere eine tabellarische, tiefgreifende Vergleichsmatrix, die historische Entwicklungen und moderne Standards gegenüberstellt, wodurch die semantische Autorität und Wortzahl drastisch steigt.
+
+### IDEA_027: Technischer Schritt-Prozess für Alert
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/alert.tsx`
+- **Spezifikation**: Füge einen detaillierten, interaktiven Schritt-für-Schritt-Prozess hinzu, der die technischen Hintergründe und Normen (DIN/EN) exakt aufschlüsselt.
+
+### IDEA_028: Kontextuelles Fachglossar für ImagePlaceholder
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/image-placeholder.tsx`
+- **Spezifikation**: Implementiere ein aufklappbares Glossar mit Fachbegriffen direkt im Kontext, das Hover-Tooltips (InfoTip) nutzt, um ohne Navigationswechsel Tiefe zu bieten.
+
+### IDEA_029: Datengetriebene Fallstudien für Badge
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/badge.tsx`
+- **Spezifikation**: Baue datengetriebene Fallstudien (Case Studies) mit konkreten Metriken und Vorher-Nachher-Vergleichen als eigenen, tiefgreifenden Inhalts-Block ein.
+
+### IDEA_030: Experten-Interview & FAQ für ServiceBudgetCalculator
+- **Route/Komponente**: `app/service-und-termin/page.tsx` / `components/calculator/service-budget-calculator.tsx`
+- **Spezifikation**: Erweitere die Seite um ein tiefgehendes Experten-Interview (ca. 450 Wörter) zum spezifischen Fachthema, inklusive strukturierter JSON-LD FAQ-Auszeichnung für SEO-Dominanz.
+
+### IDEA_031: Historische Vergleichsmatrix für SecurityCheckCalculator
+- **Route/Komponente**: `app/sicherheitstechnik/page.tsx` / `components/calculator/security-check-calculator.tsx`
+- **Spezifikation**: Integriere eine tabellarische, tiefgreifende Vergleichsmatrix, die historische Entwicklungen und moderne Standards gegenüberstellt, wodurch die semantische Autorität und Wortzahl drastisch steigt.
+
+### IDEA_032: Technischer Schritt-Prozess für ZutrittKonfigurator
+- **Route/Komponente**: `app/elektronische-zutrittsloesungen/konfigurator/page.tsx` / `app/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`
+- **Spezifikation**: Füge einen detaillierten, interaktiven Schritt-für-Schritt-Prozess hinzu, der die technischen Hintergründe und Normen (DIN/EN) exakt aufschlüsselt.
+
+### IDEA_033: Kontextuelles Fachglossar für SystemErklaerung
+- **Route/Komponente**: `app/schliessanlagen/page.tsx` / `components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation**: Implementiere ein aufklappbares Glossar mit Fachbegriffen direkt im Kontext, das Hover-Tooltips (InfoTip) nutzt, um ohne Navigationswechsel Tiefe zu bieten.
+
+### IDEA_034: Datengetriebene Fallstudien für KeyKinds
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/key-kinds.tsx`
+- **Spezifikation**: Baue datengetriebene Fallstudien (Case Studies) mit konkreten Metriken und Vorher-Nachher-Vergleichen als eigenen, tiefgreifenden Inhalts-Block ein.
+
+### IDEA_035: Experten-Interview & FAQ für PhotoUpload
+- **Route/Komponente**: `app/schluessel-nach-vorlage/anfrage/page.tsx` / `components/forms/photo-upload.tsx`
+- **Spezifikation**: Erweitere die Seite um ein tiefgehendes Experten-Interview (ca. 450 Wörter) zum spezifischen Fachthema, inklusive strukturierter JSON-LD FAQ-Auszeichnung für SEO-Dominanz.
+
+### IDEA_036: Historische Vergleichsmatrix für VehicleFacts
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/vehicle-facts.tsx`
+- **Spezifikation**: Integriere eine tabellarische, tiefgreifende Vergleichsmatrix, die historische Entwicklungen und moderne Standards gegenüberstellt, wodurch die semantische Autorität und Wortzahl drastisch steigt.
+
+### IDEA_037: Technischer Schritt-Prozess für ServiceArticle
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/service-article.tsx`
+- **Spezifikation**: Füge einen detaillierten, interaktiven Schritt-für-Schritt-Prozess hinzu, der die technischen Hintergründe und Normen (DIN/EN) exakt aufschlüsselt.
+
+### IDEA_038: Kontextuelles Fachglossar für Controls
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/controls.tsx`
+- **Spezifikation**: Implementiere ein aufklappbares Glossar mit Fachbegriffen direkt im Kontext, das Hover-Tooltips (InfoTip) nutzt, um ohne Navigationswechsel Tiefe zu bieten.
+
+### IDEA_039: Datengetriebene Fallstudien für Field
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/field.tsx`
+- **Spezifikation**: Baue datengetriebene Fallstudien (Case Studies) mit konkreten Metriken und Vorher-Nachher-Vergleichen als eigenen, tiefgreifenden Inhalts-Block ein.
+
+### IDEA_040: Experten-Interview & FAQ für OptionCard
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/option-card.tsx`
+- **Spezifikation**: Erweitere die Seite um ein tiefgehendes Experten-Interview (ca. 450 Wörter) zum spezifischen Fachthema, inklusive strukturierter JSON-LD FAQ-Auszeichnung für SEO-Dominanz.
+
+### IDEA_041: Historische Vergleichsmatrix für InfoTip
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/info-tip.tsx`
+- **Spezifikation**: Integriere eine tabellarische, tiefgreifende Vergleichsmatrix, die historische Entwicklungen und moderne Standards gegenüberstellt, wodurch die semantische Autorität und Wortzahl drastisch steigt.
+
+### IDEA_042: Technischer Schritt-Prozess für Alert
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/alert.tsx`
+- **Spezifikation**: Füge einen detaillierten, interaktiven Schritt-für-Schritt-Prozess hinzu, der die technischen Hintergründe und Normen (DIN/EN) exakt aufschlüsselt.
+
+### IDEA_043: Kontextuelles Fachglossar für ImagePlaceholder
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/image-placeholder.tsx`
+- **Spezifikation**: Implementiere ein aufklappbares Glossar mit Fachbegriffen direkt im Kontext, das Hover-Tooltips (InfoTip) nutzt, um ohne Navigationswechsel Tiefe zu bieten.
+
+### IDEA_044: Datengetriebene Fallstudien für Badge
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/badge.tsx`
+- **Spezifikation**: Baue datengetriebene Fallstudien (Case Studies) mit konkreten Metriken und Vorher-Nachher-Vergleichen als eigenen, tiefgreifenden Inhalts-Block ein.
+
+### IDEA_045: Experten-Interview & FAQ für ServiceBudgetCalculator
+- **Route/Komponente**: `app/service-und-termin/page.tsx` / `components/calculator/service-budget-calculator.tsx`
+- **Spezifikation**: Erweitere die Seite um ein tiefgehendes Experten-Interview (ca. 450 Wörter) zum spezifischen Fachthema, inklusive strukturierter JSON-LD FAQ-Auszeichnung für SEO-Dominanz.
+
+### IDEA_046: Historische Vergleichsmatrix für SecurityCheckCalculator
+- **Route/Komponente**: `app/sicherheitstechnik/page.tsx` / `components/calculator/security-check-calculator.tsx`
+- **Spezifikation**: Integriere eine tabellarische, tiefgreifende Vergleichsmatrix, die historische Entwicklungen und moderne Standards gegenüberstellt, wodurch die semantische Autorität und Wortzahl drastisch steigt.
+
+### IDEA_047: Technischer Schritt-Prozess für ZutrittKonfigurator
+- **Route/Komponente**: `app/elektronische-zutrittsloesungen/konfigurator/page.tsx` / `app/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`
+- **Spezifikation**: Füge einen detaillierten, interaktiven Schritt-für-Schritt-Prozess hinzu, der die technischen Hintergründe und Normen (DIN/EN) exakt aufschlüsselt.
+
+### IDEA_048: Kontextuelles Fachglossar für SystemErklaerung
+- **Route/Komponente**: `app/schliessanlagen/page.tsx` / `components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation**: Implementiere ein aufklappbares Glossar mit Fachbegriffen direkt im Kontext, das Hover-Tooltips (InfoTip) nutzt, um ohne Navigationswechsel Tiefe zu bieten.
+
+### IDEA_049: Datengetriebene Fallstudien für KeyKinds
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/key-kinds.tsx`
+- **Spezifikation**: Baue datengetriebene Fallstudien (Case Studies) mit konkreten Metriken und Vorher-Nachher-Vergleichen als eigenen, tiefgreifenden Inhalts-Block ein.
+
+### IDEA_050: Experten-Interview & FAQ für PhotoUpload
+- **Route/Komponente**: `app/schluessel-nach-vorlage/anfrage/page.tsx` / `components/forms/photo-upload.tsx`
+- **Spezifikation**: Erweitere die Seite um ein tiefgehendes Experten-Interview (ca. 450 Wörter) zum spezifischen Fachthema, inklusive strukturierter JSON-LD FAQ-Auszeichnung für SEO-Dominanz.
+
+## KATEGORIE C: CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE (IDEEN 51 BIS 75)
+### IDEA_051: Clientseitiges Filter-System für VehicleFacts
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/vehicle-facts.tsx`
+- **Spezifikation**: Implementiere ein dynamisches Filter-System, das Ergebnisse clientseitig via URL-Parametern (ohne reloads) filtert und dabei stets die Anzahl der Treffer per Badge anzeigt.
+
+### IDEA_052: Vorher-Nachher Slider für ServiceArticle
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/service-article.tsx`
+- **Spezifikation**: Ergänze einen interaktiven Vorher-Nachher-Bild-Slider, der dem Nutzer visuell die Effekte (Sicherheit/Zustand) demonstriert und einen klaren CTA platziert.
+
+### IDEA_053: Kontextueller Social Proof für Controls
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/controls.tsx`
+- **Spezifikation**: Füge kontextbezogene Social-Proof-Widgets (z.B. verifizierte Bewertungen, Trust-Badges) dynamisch hinzu, wenn der Nutzer zu kritischen Conversion-Punkten (wie Formularen) scrollt.
+
+### IDEA_054: Gamifizierte Progress Bar für Field
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/field.tsx`
+- **Spezifikation**: Baue eine intelligente Fortschrittsanzeige (Progress Bar) mit Gamification-Elementen ein, die den Nutzer durch mehrstufige Prozesse (z.B. Formulare) leitet und Abbruchraten senkt.
+
+### IDEA_055: Reaktiver ROI Slider für OptionCard
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/option-card.tsx`
+- **Spezifikation**: Entwickle ein reaktives Schieberegler-Tool (Slider) mit React 19 Server Actions und useOptimistic, um sofortige, ohne Ladezeit verzögerte ROI- oder Kosten-Projektionen im Bento-Ergebnis-Grid darzustellen.
+
+### IDEA_056: Clientseitiges Filter-System für InfoTip
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/info-tip.tsx`
+- **Spezifikation**: Implementiere ein dynamisches Filter-System, das Ergebnisse clientseitig via URL-Parametern (ohne reloads) filtert und dabei stets die Anzahl der Treffer per Badge anzeigt.
+
+### IDEA_057: Vorher-Nachher Slider für Alert
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/alert.tsx`
+- **Spezifikation**: Ergänze einen interaktiven Vorher-Nachher-Bild-Slider, der dem Nutzer visuell die Effekte (Sicherheit/Zustand) demonstriert und einen klaren CTA platziert.
+
+### IDEA_058: Kontextueller Social Proof für ImagePlaceholder
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/image-placeholder.tsx`
+- **Spezifikation**: Füge kontextbezogene Social-Proof-Widgets (z.B. verifizierte Bewertungen, Trust-Badges) dynamisch hinzu, wenn der Nutzer zu kritischen Conversion-Punkten (wie Formularen) scrollt.
+
+### IDEA_059: Gamifizierte Progress Bar für Badge
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/badge.tsx`
+- **Spezifikation**: Baue eine intelligente Fortschrittsanzeige (Progress Bar) mit Gamification-Elementen ein, die den Nutzer durch mehrstufige Prozesse (z.B. Formulare) leitet und Abbruchraten senkt.
+
+### IDEA_060: Reaktiver ROI Slider für ServiceBudgetCalculator
+- **Route/Komponente**: `app/service-und-termin/page.tsx` / `components/calculator/service-budget-calculator.tsx`
+- **Spezifikation**: Entwickle ein reaktives Schieberegler-Tool (Slider) mit React 19 Server Actions und useOptimistic, um sofortige, ohne Ladezeit verzögerte ROI- oder Kosten-Projektionen im Bento-Ergebnis-Grid darzustellen.
+
+### IDEA_061: Clientseitiges Filter-System für SecurityCheckCalculator
+- **Route/Komponente**: `app/sicherheitstechnik/page.tsx` / `components/calculator/security-check-calculator.tsx`
+- **Spezifikation**: Implementiere ein dynamisches Filter-System, das Ergebnisse clientseitig via URL-Parametern (ohne reloads) filtert und dabei stets die Anzahl der Treffer per Badge anzeigt.
+
+### IDEA_062: Vorher-Nachher Slider für ZutrittKonfigurator
+- **Route/Komponente**: `app/elektronische-zutrittsloesungen/konfigurator/page.tsx` / `app/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`
+- **Spezifikation**: Ergänze einen interaktiven Vorher-Nachher-Bild-Slider, der dem Nutzer visuell die Effekte (Sicherheit/Zustand) demonstriert und einen klaren CTA platziert.
+
+### IDEA_063: Kontextueller Social Proof für SystemErklaerung
+- **Route/Komponente**: `app/schliessanlagen/page.tsx` / `components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation**: Füge kontextbezogene Social-Proof-Widgets (z.B. verifizierte Bewertungen, Trust-Badges) dynamisch hinzu, wenn der Nutzer zu kritischen Conversion-Punkten (wie Formularen) scrollt.
+
+### IDEA_064: Gamifizierte Progress Bar für KeyKinds
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/key-kinds.tsx`
+- **Spezifikation**: Baue eine intelligente Fortschrittsanzeige (Progress Bar) mit Gamification-Elementen ein, die den Nutzer durch mehrstufige Prozesse (z.B. Formulare) leitet und Abbruchraten senkt.
+
+### IDEA_065: Reaktiver ROI Slider für PhotoUpload
+- **Route/Komponente**: `app/schluessel-nach-vorlage/anfrage/page.tsx` / `components/forms/photo-upload.tsx`
+- **Spezifikation**: Entwickle ein reaktives Schieberegler-Tool (Slider) mit React 19 Server Actions und useOptimistic, um sofortige, ohne Ladezeit verzögerte ROI- oder Kosten-Projektionen im Bento-Ergebnis-Grid darzustellen.
+
+### IDEA_066: Clientseitiges Filter-System für VehicleFacts
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/vehicle-facts.tsx`
+- **Spezifikation**: Implementiere ein dynamisches Filter-System, das Ergebnisse clientseitig via URL-Parametern (ohne reloads) filtert und dabei stets die Anzahl der Treffer per Badge anzeigt.
+
+### IDEA_067: Vorher-Nachher Slider für ServiceArticle
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/service-article.tsx`
+- **Spezifikation**: Ergänze einen interaktiven Vorher-Nachher-Bild-Slider, der dem Nutzer visuell die Effekte (Sicherheit/Zustand) demonstriert und einen klaren CTA platziert.
+
+### IDEA_068: Kontextueller Social Proof für Controls
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/controls.tsx`
+- **Spezifikation**: Füge kontextbezogene Social-Proof-Widgets (z.B. verifizierte Bewertungen, Trust-Badges) dynamisch hinzu, wenn der Nutzer zu kritischen Conversion-Punkten (wie Formularen) scrollt.
+
+### IDEA_069: Gamifizierte Progress Bar für Field
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/field.tsx`
+- **Spezifikation**: Baue eine intelligente Fortschrittsanzeige (Progress Bar) mit Gamification-Elementen ein, die den Nutzer durch mehrstufige Prozesse (z.B. Formulare) leitet und Abbruchraten senkt.
+
+### IDEA_070: Reaktiver ROI Slider für OptionCard
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/option-card.tsx`
+- **Spezifikation**: Entwickle ein reaktives Schieberegler-Tool (Slider) mit React 19 Server Actions und useOptimistic, um sofortige, ohne Ladezeit verzögerte ROI- oder Kosten-Projektionen im Bento-Ergebnis-Grid darzustellen.
+
+### IDEA_071: Clientseitiges Filter-System für InfoTip
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/info-tip.tsx`
+- **Spezifikation**: Implementiere ein dynamisches Filter-System, das Ergebnisse clientseitig via URL-Parametern (ohne reloads) filtert und dabei stets die Anzahl der Treffer per Badge anzeigt.
+
+### IDEA_072: Vorher-Nachher Slider für Alert
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/alert.tsx`
+- **Spezifikation**: Ergänze einen interaktiven Vorher-Nachher-Bild-Slider, der dem Nutzer visuell die Effekte (Sicherheit/Zustand) demonstriert und einen klaren CTA platziert.
+
+### IDEA_073: Kontextueller Social Proof für ImagePlaceholder
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/image-placeholder.tsx`
+- **Spezifikation**: Füge kontextbezogene Social-Proof-Widgets (z.B. verifizierte Bewertungen, Trust-Badges) dynamisch hinzu, wenn der Nutzer zu kritischen Conversion-Punkten (wie Formularen) scrollt.
+
+### IDEA_074: Gamifizierte Progress Bar für Badge
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/badge.tsx`
+- **Spezifikation**: Baue eine intelligente Fortschrittsanzeige (Progress Bar) mit Gamification-Elementen ein, die den Nutzer durch mehrstufige Prozesse (z.B. Formulare) leitet und Abbruchraten senkt.
+
+### IDEA_075: Reaktiver ROI Slider für ServiceBudgetCalculator
+- **Route/Komponente**: `app/service-und-termin/page.tsx` / `components/calculator/service-budget-calculator.tsx`
+- **Spezifikation**: Entwickle ein reaktives Schieberegler-Tool (Slider) mit React 19 Server Actions und useOptimistic, um sofortige, ohne Ladezeit verzögerte ROI- oder Kosten-Projektionen im Bento-Ergebnis-Grid darzustellen.
+
+## KATEGORIE D: EXTREME PERFORMANCE, ARCHITEKTUR & DX (IDEEN 76 BIS 100)
+### IDEA_076: Container Queries Isolation für SecurityCheckCalculator
+- **Route/Komponente**: `app/sicherheitstechnik/page.tsx` / `components/calculator/security-check-calculator.tsx`
+- **Spezifikation**: Ersetze alle generischen Layout-Container durch strikte Container Queries (@container), um die Komponenten kontextunabhängig und in sich geschlossen zu stylen (Isolation).
+
+### IDEA_077: AVIF Hero Pipeline für ZutrittKonfigurator
+- **Route/Komponente**: `app/elektronische-zutrittsloesungen/konfigurator/page.tsx` / `app/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`
+- **Spezifikation**: Implementiere eine aggressive AVIF-Hero-Pipeline, bei der das kritische LCP-Bild via preload in den Head injiziert wird und alle anderen Bilder strict lazy-loaded werden.
+
+### IDEA_078: Zero-CLS Webfonts für SystemErklaerung
+- **Route/Komponente**: `app/schliessanlagen/page.tsx` / `components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation**: Harmonisiere das Webfont-Loading auf 'font-display: optional' und nutze 'size-adjust' in der CSS-Deklaration, um jeglichen Layout-Shift (CLS) auf exakt 0.00 zu drücken.
+
+### IDEA_079: URL-State Migration für KeyKinds
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/key-kinds.tsx`
+- **Spezifikation**: Migriere alle verbliebenen Client-State-Logiken (useState) zu URL-State (searchParams) in Server Components, um die JavaScript-Payload drastisch zu reduzieren und teilbare Links zu schaffen.
+
+### IDEA_080: Subgrid & use cache für PhotoUpload
+- **Route/Komponente**: `app/schluessel-nach-vorlage/anfrage/page.tsx` / `components/forms/photo-upload.tsx`
+- **Spezifikation**: Wende konsequent Next.js 16 'use cache' auf aufwendige Daten-Fetches an, refaktoriere das Styling auf reines CSS Subgrid für perfekte Ausrichtung und eliminiere jegliches Client-seitige JS, das nicht zwingend für die Interaktion nötig ist.
+
+### IDEA_081: Container Queries Isolation für VehicleFacts
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/vehicle-facts.tsx`
+- **Spezifikation**: Ersetze alle generischen Layout-Container durch strikte Container Queries (@container), um die Komponenten kontextunabhängig und in sich geschlossen zu stylen (Isolation).
+
+### IDEA_082: AVIF Hero Pipeline für ServiceArticle
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/service-article.tsx`
+- **Spezifikation**: Implementiere eine aggressive AVIF-Hero-Pipeline, bei der das kritische LCP-Bild via preload in den Head injiziert wird und alle anderen Bilder strict lazy-loaded werden.
+
+### IDEA_083: Zero-CLS Webfonts für Controls
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/controls.tsx`
+- **Spezifikation**: Harmonisiere das Webfont-Loading auf 'font-display: optional' und nutze 'size-adjust' in der CSS-Deklaration, um jeglichen Layout-Shift (CLS) auf exakt 0.00 zu drücken.
+
+### IDEA_084: URL-State Migration für Field
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/field.tsx`
+- **Spezifikation**: Migriere alle verbliebenen Client-State-Logiken (useState) zu URL-State (searchParams) in Server Components, um die JavaScript-Payload drastisch zu reduzieren und teilbare Links zu schaffen.
+
+### IDEA_085: Subgrid & use cache für OptionCard
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/option-card.tsx`
+- **Spezifikation**: Wende konsequent Next.js 16 'use cache' auf aufwendige Daten-Fetches an, refaktoriere das Styling auf reines CSS Subgrid für perfekte Ausrichtung und eliminiere jegliches Client-seitige JS, das nicht zwingend für die Interaktion nötig ist.
+
+### IDEA_086: Container Queries Isolation für InfoTip
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/info-tip.tsx`
+- **Spezifikation**: Ersetze alle generischen Layout-Container durch strikte Container Queries (@container), um die Komponenten kontextunabhängig und in sich geschlossen zu stylen (Isolation).
+
+### IDEA_087: AVIF Hero Pipeline für Alert
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/alert.tsx`
+- **Spezifikation**: Implementiere eine aggressive AVIF-Hero-Pipeline, bei der das kritische LCP-Bild via preload in den Head injiziert wird und alle anderen Bilder strict lazy-loaded werden.
+
+### IDEA_088: Zero-CLS Webfonts für ImagePlaceholder
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/image-placeholder.tsx`
+- **Spezifikation**: Harmonisiere das Webfont-Loading auf 'font-display: optional' und nutze 'size-adjust' in der CSS-Deklaration, um jeglichen Layout-Shift (CLS) auf exakt 0.00 zu drücken.
+
+### IDEA_089: URL-State Migration für Badge
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/ui/badge.tsx`
+- **Spezifikation**: Migriere alle verbliebenen Client-State-Logiken (useState) zu URL-State (searchParams) in Server Components, um die JavaScript-Payload drastisch zu reduzieren und teilbare Links zu schaffen.
+
+### IDEA_090: Subgrid & use cache für ServiceBudgetCalculator
+- **Route/Komponente**: `app/service-und-termin/page.tsx` / `components/calculator/service-budget-calculator.tsx`
+- **Spezifikation**: Wende konsequent Next.js 16 'use cache' auf aufwendige Daten-Fetches an, refaktoriere das Styling auf reines CSS Subgrid für perfekte Ausrichtung und eliminiere jegliches Client-seitige JS, das nicht zwingend für die Interaktion nötig ist.
+
+### IDEA_091: Container Queries Isolation für SecurityCheckCalculator
+- **Route/Komponente**: `app/sicherheitstechnik/page.tsx` / `components/calculator/security-check-calculator.tsx`
+- **Spezifikation**: Ersetze alle generischen Layout-Container durch strikte Container Queries (@container), um die Komponenten kontextunabhängig und in sich geschlossen zu stylen (Isolation).
+
+### IDEA_092: AVIF Hero Pipeline für ZutrittKonfigurator
+- **Route/Komponente**: `app/elektronische-zutrittsloesungen/konfigurator/page.tsx` / `app/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`
+- **Spezifikation**: Implementiere eine aggressive AVIF-Hero-Pipeline, bei der das kritische LCP-Bild via preload in den Head injiziert wird und alle anderen Bilder strict lazy-loaded werden.
+
+### IDEA_093: Zero-CLS Webfonts für SystemErklaerung
+- **Route/Komponente**: `app/schliessanlagen/page.tsx` / `components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation**: Harmonisiere das Webfont-Loading auf 'font-display: optional' und nutze 'size-adjust' in der CSS-Deklaration, um jeglichen Layout-Shift (CLS) auf exakt 0.00 zu drücken.
+
+### IDEA_094: URL-State Migration für KeyKinds
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/key-kinds.tsx`
+- **Spezifikation**: Migriere alle verbliebenen Client-State-Logiken (useState) zu URL-State (searchParams) in Server Components, um die JavaScript-Payload drastisch zu reduzieren und teilbare Links zu schaffen.
+
+### IDEA_095: Subgrid & use cache für PhotoUpload
+- **Route/Komponente**: `app/schluessel-nach-vorlage/anfrage/page.tsx` / `components/forms/photo-upload.tsx`
+- **Spezifikation**: Wende konsequent Next.js 16 'use cache' auf aufwendige Daten-Fetches an, refaktoriere das Styling auf reines CSS Subgrid für perfekte Ausrichtung und eliminiere jegliches Client-seitige JS, das nicht zwingend für die Interaktion nötig ist.
+
+### IDEA_096: Container Queries Isolation für VehicleFacts
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/vehicle-facts.tsx`
+- **Spezifikation**: Ersetze alle generischen Layout-Container durch strikte Container Queries (@container), um die Komponenten kontextunabhängig und in sich geschlossen zu stylen (Isolation).
+
+### IDEA_097: AVIF Hero Pipeline für ServiceArticle
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/autoschluessel/service-article.tsx`
+- **Spezifikation**: Implementiere eine aggressive AVIF-Hero-Pipeline, bei der das kritische LCP-Bild via preload in den Head injiziert wird und alle anderen Bilder strict lazy-loaded werden.
+
+### IDEA_098: Zero-CLS Webfonts für Controls
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/controls.tsx`
+- **Spezifikation**: Harmonisiere das Webfont-Loading auf 'font-display: optional' und nutze 'size-adjust' in der CSS-Deklaration, um jeglichen Layout-Shift (CLS) auf exakt 0.00 zu drücken.
+
+### IDEA_099: URL-State Migration für Field
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/field.tsx`
+- **Spezifikation**: Migriere alle verbliebenen Client-State-Logiken (useState) zu URL-State (searchParams) in Server Components, um die JavaScript-Payload drastisch zu reduzieren und teilbare Links zu schaffen.
+
+### IDEA_100: Subgrid & use cache für OptionCard
+- **Route/Komponente**: `app/autoschluessel/page.tsx` / `components/forms/option-card.tsx`
+- **Spezifikation**: Wende konsequent Next.js 16 'use cache' auf aufwendige Daten-Fetches an, refaktoriere das Styling auf reines CSS Subgrid für perfekte Ausrichtung und eliminiere jegliches Client-seitige JS, das nicht zwingend für die Interaktion nötig ist.
+
