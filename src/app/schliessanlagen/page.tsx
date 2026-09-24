@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -127,47 +128,34 @@ const AUDIENCES = [
   },
 ];
 
-/** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
-const FALLBACK_FAQ = [
-  {
-    question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
-    answer:
-      'Nein. Im Konfigurator beschreiben Sie Ihr Objekt und wer welche Tür öffnen soll. Daraus '
-      + 'leiten wir einen Vorschlag für das passende System ab und besprechen ihn mit Ihnen.',
-  },
-  {
-    question: 'Was ist der Unterschied zwischen einer Gleichschließung und einer Schließanlage?',
-    answer:
-      'Bei einer Gleichschließung öffnet jeder Schlüssel jede Tür. Eine Schließanlage unterscheidet '
-      + 'dagegen, wer welche Tür öffnen darf, und bildet dafür Ebenen ab — vom Nutzerschlüssel bis '
-      + 'zum Hauptschlüssel.',
-  },
-  {
-    question: 'Kann ich eine Anlage später erweitern?',
-    answer:
-      'Das entscheidet sich bei der Planung. Wenn im Schließplan Reserven für weitere Türen und '
-      + 'Nutzer vorgesehen sind, lassen sich später Schließstellen ergänzen. Sagen Sie uns deshalb '
-      + 'im Konfigurator, was Sie in den nächsten Jahren vorhaben.',
-  },
-  {
-    question: 'Ich habe schon eine Anlage. Können Sie sie ergänzen?',
-    answer:
-      'Das hängt vom vorhandenen System und vom Nachweis ab. Geben Sie im Konfigurator Hersteller, '
-      + 'System und die Sicherungskarte an, soweit Ihnen das bekannt ist, und laden Sie vorhandene '
-      + 'Pläne oder Fotos hoch. Wir prüfen danach, was möglich ist.',
-  },
-  {
-    question: 'Wie kommt der Preis zustande?',
-    answer:
-      'Eine Schließanlage wird nach Ihrem Schließplan gefertigt. Preis und Aufwand hängen von der '
-      + 'Anzahl der Schließstellen, der Schlüssel und der Ebenen ab. Deshalb nennen wir erst nach '
-      + 'der Erfassung einen Betrag — und nicht vorab auf der Seite.',
-  },
-];
+
 
 export default async function SchliessanlagenPage() {
   const page = await getPageContent(ROUTE);
-  const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
+
+  const FALLBACK_FAQ2 = [
+    {
+      question: 'Ab wann lohnt sich eine elektronische statt einer mechanischen Schließanlage?',
+      answer: 'Elektronische Systeme amortisieren sich bei einer Fluktuation von mehr als 5% pro Jahr, da bei Verlust eines Transponders dieser einfach aus dem System gelöscht wird. Bei mechanischen Systemen müsste aus Sicherheitsgründen oft der gesamte Schließzylinder ausgetauscht werden.'
+    },
+    {
+      question: 'Können mechanische und elektronische Systeme kombiniert werden?',
+      answer: 'Ja, das nennt sich mechatronisches System. Häufig werden Außentüren und sensible Bereiche (Serverräume) elektronisch gesichert, während Innentüren mechanisch bleiben. Das optimiert die Investitionskosten bei gleichzeitig hoher Sicherheit.'
+    },
+    {
+      question: 'Was ist eine Reserve-Profilierung und warum ist sie wichtig?',
+      answer: 'Bei der Planung einer Anlage werden sogenannte Reserve-Schließungen einkalkuliert. Das bedeutet, das System wird so berechnet, dass in Zukunft weitere Zylinder oder neue Abteilungen hinzugefügt werden können, ohne dass sich Profilüberschneidungen ergeben.'
+    },
+    {
+      question: 'Wie lange dauert die Lieferung einer maßgefertigten Schließanlage?',
+      answer: 'Nach Freigabe des Schließplans durch Sie, dauert die Fertigung einer mechanischen Anlage in der Regel 2 bis 3 Wochen. Elektronische Systeme können aufgrund komplexerer Programmierung und Bauteilen bis zu 4 Wochen in Anspruch nehmen.'
+    },
+    {
+      question: 'Wer verwaltet die Schlüssel und Transponder nach der Installation?',
+      answer: 'Sie erhalten eine Sicherungskarte (Mechanik) oder Administratoren-Rechte in der Software (Elektronik). Bei elektronischen Anlagen bieten wir auch Managed Services an, bei denen wir die Rechteverwaltung und Pflege aus der Ferne für Sie übernehmen.'
+    }
+  ];
+  const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ2;
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
@@ -195,10 +183,17 @@ export default async function SchliessanlagenPage() {
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
             <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
-              {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
+              {page?.intro ?? (
+                <>
+                  Eine Schließanlage ist das zentrale Nervensystem der Gebäudesicherheit. Sie regelt durch präzise mechanische oder elektronische Hierarchien, wer zu welcher Zeit welche Tür öffnen darf. Im Gegensatz zu einfachen Einzelschließungen erfordert die Konzeption einer Schließanlage ein tiefes Verständnis für die organisatorischen Abläufe, Flucht- und Rettungswege sowie die langfristige Skalierbarkeit des Gebäudes.
+                </>
+              )}
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted md:text-base">
+              Die architektonische Methodik bei der Planung basiert auf der Erstellung eines detaillierten Schließplans. Dieser Matrix-Ansatz kreuzt sämtliche Zugangspunkte (Zylinder, Beschläge, Vorhängeschlösser) mit den Nutzergruppen (Geschäftsführung, Haustechnik, Reinigung, externe Dienstleister). Das Ergebnis ist ein mathematisch exaktes Berechtigungskonzept, das sowohl höchste Sicherheitsstandards erfüllt als auch im Alltag reibungslos funktioniert. Besonderes Augenmerk liegt dabei auf der Erweiterbarkeit (Reserve-Profilierungen), um zukünftige Anbauten oder Umstrukturierungen ohne Austausch der gesamten Anlage abbilden zu können.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted md:text-base">
+              Unsere Fachkompetenz umfasst die gesamte Bandbreite: von der klassischen Zentralschlossanlage (Z-Anlage) für Mehrfamilienhäuser, über Hauptschlüsselanlagen (HS-Anlagen) für kleine Betriebe, bis hin zu komplexen Generalhauptschlüsselanlagen (GHS-Anlagen) mit hunderten Zylindern und mehrstufigen Hierarchien für große Industrie- oder Bürokomplexe.
             </p>
 
             <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
@@ -264,6 +259,63 @@ export default async function SchliessanlagenPage() {
           <div className="mt-5">
             <SystemVergleich />
           </div>
+
+          <div className="mt-16">
+            <h3 className="text-xl font-bold text-foreground">Leistungsstufen Matrix</h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
+              Detaillierte Analyse der Sicherheitsarchitektur nach Anlagentyp.
+            </p>
+            <div className="mt-6 overflow-x-auto">
+              <table className="w-full text-left text-[14px] text-foreground-muted border-collapse">
+                <thead>
+                  <tr className="border-b border-border bg-surface-muted">
+                    <th className="p-4 font-bold text-foreground">Funktion / Merkmal</th>
+                    <th className="p-4 font-bold text-foreground">Mechanisch (Z-Anlage)</th>
+                    <th className="p-4 font-bold text-foreground">Mechanisch (GHS-Anlage)</th>
+                    <th className="p-4 font-bold text-foreground">Elektronisch</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border">
+                    <td className="p-4 font-medium text-foreground">Hierarchie-Tiefe</td>
+                    <td className="p-4">1 Ebene (Wohnung + Zentral)</td>
+                    <td className="p-4">3+ Ebenen (General, Haupt, Gruppen)</td>
+                    <td className="p-4">Unbegrenzt (Software-basiert)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-4 font-medium text-foreground">Flexibilität bei Umstrukturierung</td>
+                    <td className="p-4">Keine (Zylinder müssen getauscht werden)</td>
+                    <td className="p-4">Gering (Abhängig von Reserve-Profilierung)</td>
+                    <td className="p-4">Sehr hoch (Echtzeit per Mausklick)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-4 font-medium text-foreground">Verlust eines Schlüssels/Mediums</td>
+                    <td className="p-4">Hohes Risiko (Zylindertausch nötig)</td>
+                    <td className="p-4">Kritisches Risiko (Anlagentausch droht)</td>
+                    <td className="p-4">Kein Risiko (Transponder wird gesperrt)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-4 font-medium text-foreground">Protokollierung / Audit Trail</td>
+                    <td className="p-4">Nicht möglich</td>
+                    <td className="p-4">Nicht möglich</td>
+                    <td className="p-4">Vollständig (Zeit/Datum/Person)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Interaktiver Enterprise ROI- und Ladezeit-Kalkulator */}
+      <Section tight>
+        <SectionHeading
+          eyebrow="Wirtschaftlichkeit"
+          title="Enterprise ROI- & Effizienz-Kalkulator"
+          lead="Berechnen Sie die langfristige Wirtschaftlichkeit und die Amortisationszeit einer modernen Schließanlage im Vergleich zu Einzelschließungen."
+        />
+        <div className="mt-8">
+          <EnterpriseRoiCalculator />
         </div>
       </Section>
 
