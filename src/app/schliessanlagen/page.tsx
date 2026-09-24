@@ -8,9 +8,9 @@ import type { InfoHint } from '@/lib/types';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
-import { Accordion } from '@/components/ui/accordion';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
@@ -128,47 +128,17 @@ const AUDIENCES = [
 ];
 
 /** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
-const FALLBACK_FAQ = [
-  {
-    question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
-    answer:
-      'Nein. Im Konfigurator beschreiben Sie Ihr Objekt und wer welche Tür öffnen soll. Daraus '
-      + 'leiten wir einen Vorschlag für das passende System ab und besprechen ihn mit Ihnen.',
-  },
-  {
-    question: 'Was ist der Unterschied zwischen einer Gleichschließung und einer Schließanlage?',
-    answer:
-      'Bei einer Gleichschließung öffnet jeder Schlüssel jede Tür. Eine Schließanlage unterscheidet '
-      + 'dagegen, wer welche Tür öffnen darf, und bildet dafür Ebenen ab — vom Nutzerschlüssel bis '
-      + 'zum Hauptschlüssel.',
-  },
-  {
-    question: 'Kann ich eine Anlage später erweitern?',
-    answer:
-      'Das entscheidet sich bei der Planung. Wenn im Schließplan Reserven für weitere Türen und '
-      + 'Nutzer vorgesehen sind, lassen sich später Schließstellen ergänzen. Sagen Sie uns deshalb '
-      + 'im Konfigurator, was Sie in den nächsten Jahren vorhaben.',
-  },
-  {
-    question: 'Ich habe schon eine Anlage. Können Sie sie ergänzen?',
-    answer:
-      'Das hängt vom vorhandenen System und vom Nachweis ab. Geben Sie im Konfigurator Hersteller, '
-      + 'System und die Sicherungskarte an, soweit Ihnen das bekannt ist, und laden Sie vorhandene '
-      + 'Pläne oder Fotos hoch. Wir prüfen danach, was möglich ist.',
-  },
-  {
-    question: 'Wie kommt der Preis zustande?',
-    answer:
-      'Eine Schließanlage wird nach Ihrem Schließplan gefertigt. Preis und Aufwand hängen von der '
-      + 'Anzahl der Schließstellen, der Schlüssel und der Ebenen ab. Deshalb nennen wir erst nach '
-      + 'der Erfassung einen Betrag — und nicht vorab auf der Seite.',
-  },
-];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ [key: string]: string | undefined }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
-  const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
-  const process = PROCESS_LABELS.projektkonfigurator;
+    const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
     <>
@@ -189,6 +159,32 @@ export default async function SchliessanlagenPage() {
           </>
         }
       />
+
+
+      {/* Enterprise ROI and Methodology */}
+      <Section id="methodology" tight>
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14 py-16 md:py-24">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight text-[oklch(0.16_0.02_260)]">Fundierte architektonische Methodik</h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Die Planung einer mechanischen Schließanlage ist weitaus komplexer als die bloße Anordnung von Zylindern und Schlüsseln. Sie ist eine fundamentale architektonische Entscheidung, die die Sicherheit, Flexibilität und Skalierbarkeit Ihres Gebäudes auf Jahrzehnte hinaus prägt. Unsere Methodik basiert auf einer tiefgreifenden Analyse Ihrer Organisationsstruktur, der physischen Beschaffenheit Ihres Objekts und der spezifischen Sicherheitsanforderungen jeder einzelnen Zugangszone. Wir betrachten Schließanlagen nicht als statische Produkte, sondern als dynamische Sicherheitssysteme, die sich mit Ihrem Unternehmen weiterentwickeln müssen.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Ein zentraler Aspekt unserer Planung ist die sogenannte &quot;Schließplanhierarchie&quot;. Diese Hierarchie definiert die Zugriffsrechte präzise und strukturiert. An der Spitze steht der Generalhauptschlüssel, der uneingeschränkten Zugang gewährt. Darunter gliedern sich Hauptgruppenschlüssel, Gruppenschlüssel und schließlich Einzelschlüssel. Die Kunst besteht darin, diese Hierarchie so flach wie möglich, aber so differenziert wie nötig zu gestalten. Zu viele Ebenen erhöhen die Komplexität und die Anfälligkeit für Fehler, während zu wenige Ebenen die Flexibilität einschränken. Wir nutzen modernste Planungssoftware und mathematische Modelle, um die optimale Balance zwischen Sicherheit und Praktikabilität zu finden.
+            </p>
+            <h3 className="mt-8 text-xl font-semibold text-[oklch(0.16_0.02_260)]">Strukturierte Leistungsstufen und Skalierbarkeit</h3>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Jede von uns konzipierte Anlage wird mit Reserven für zukünftiges Wachstum geplant. Wir berücksichtigen bereits in der Initialphase mögliche Erweiterungen, Umbauten oder Nutzungsänderungen. Dies geschieht durch die strategische Integration von &quot;Leerschließungen&quot; in den Schließplan, die später bei Bedarf aktiviert werden können. Diese vorausschauende Planung reduziert die langfristigen Gesamtbetriebskosten (Total Cost of Ownership - TCO) signifikant, da spätere Anpassungen ohne kompletten Austausch der Anlage realisiert werden können.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Darüber hinaus differenzieren wir zwischen verschiedenen Sicherheitsniveaus innerhalb eines Objekts. Nicht jede Tür erfordert die höchste Sicherheitsstufe. Durch die intelligente Kombination von Hochsicherheitszylindern (z.B. mit Bohr- und Ziehschutz, komplexen Profilen und aktiven Kopierschutzelementen) an der Außenhülle und in sensiblen Bereichen mit Standardzylindern im Innenbereich optimieren wir das Kosten-Nutzen-Verhältnis. Diese hybride Herangehensweise, bei der mechanische Systeme zunehmend mit elektronischen Zutrittskontrollsystemen kombiniert werden (Mechatronik), bietet die maximale Sicherheit bei gleichzeitiger Kosteneffizienz. Die nahtlose Integration beider Welten ist die Königsdisziplin der modernen Schließtechnik.
+            </p>
+          </div>
+          <div>
+            <EnterpriseRoiCalculator />
+          </div>
+        </div>
+      </Section>
 
       {/* Einstieg und Begriffe */}
       <Section tight>
@@ -335,11 +331,35 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+
       {/* Fragen */}
       <Section>
-        <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
-        <div className="mt-8">
-          <Accordion items={faq} />
+        <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen (FAQ)" />
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          <div className="space-y-6">
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h4 className="text-[oklch(0.16_0.02_260)] font-bold">1. Wie unterscheidet sich eine Z-Anlage von einer HS-Anlage?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)] text-sm leading-relaxed">Eine Zentralschlossanlage (Z-Anlage) zeichnet sich dadurch aus, dass verschiedene Einzelschlüssel ein gemeinsames Schloss (z.B. die Haustür) schließen können, aber nicht die Türen der anderen (z.B. Wohnungen). Bei einer Hauptschlüsselanlage (HS-Anlage) gibt es hingegen einen übergeordneten Schlüssel (Hauptschlüssel), der alle Zylinder der Anlage schließen kann, während die Einzelschlüssel nur ihre jeweilige Tür öffnen.</p>
+            </div>
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h4 className="text-[oklch(0.16_0.02_260)] font-bold">2. Kann eine mechanische Schließanlage später erweitert werden?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)] text-sm leading-relaxed">Ja, wenn sie von Anfang an professionell geplant wurde. Durch die Berücksichtigung von sogenannten &quot;Reserven&quot; im Schließplan können später weitere Schließzylinder hinzugefügt werden, ohne die bestehende Hierarchie oder die Sicherheit zu gefährden. Dies muss zwingend in der Planungsphase berücksichtigt werden.</p>
+            </div>
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h4 className="text-[oklch(0.16_0.02_260)] font-bold">3. Was passiert, wenn ein Generalhauptschlüssel verloren geht?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)] text-sm leading-relaxed">Der Verlust eines GHS ist kritisch, da dieser alle Türen schließt. Aus Sicherheitsgründen muss in der Regel die gesamte Anlage oder zumindest große Teile davon ausgetauscht werden. Dies verdeutlicht, warum GHS besonders geschützt aufbewahrt werden müssen und elektronische Systeme als Ergänzung sinnvoll sein können.</p>
+            </div>
+          </div>
+          <div className="space-y-6">
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h4 className="text-[oklch(0.16_0.02_260)] font-bold">4. Welcher Kopierschutz ist bei Schlüsseln empfehlenswert?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)] text-sm leading-relaxed">Wir empfehlen Systeme mit einem aktiven, patentierten Kopierschutz (z.B. bewegliche Elemente im Schlüssel). Diese bieten rechtlichen Schutz gegen illegale Rohlinge und physischen Schutz, da sie von herkömmlichen Schlüsseldiensten nicht ohne Sicherungskarte kopiert werden können.</p>
+            </div>
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-sm">
+              <h4 className="text-[oklch(0.16_0.02_260)] font-bold">5. Wie oft müssen Schließzylinder gewartet werden?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)] text-sm leading-relaxed">Mechanische Schließzylinder sollten mindestens einmal jährlich mit speziellem Pflegespray (niemals Öl oder Graphit!) behandelt werden. Bei Türen mit hoher Begehungsfrequenz oder im Außenbereich empfehlen wir eine halbjährliche Wartung, um die Langlebigkeit zu garantieren.</p>
+            </div>
+          </div>
         </div>
       </Section>
 
