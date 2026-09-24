@@ -4,41 +4,43 @@
 
 /* ==========================================================================
    SCHLÜSSELMACHER24 — Designsystem
-   Ruhig, technisch, fachlich. Graphit + Stahlblau auf kühlem Off-White.
+   Hell, freundlich, farbig — und trotzdem fachlich. Klares Blau auf hellem
+   Grund, dazu je Leistungsbereich eine eigene Akzentfarbe (`--area*`, aus
+   `src/lib/visual/area-theme.ts`, gesetzt über `[data-area]`).
    Bewusst KEINE Notdienst-Optik (kein Gelb/Schwarz, keine Signalfarben
-   als Flächen).
+   als Flächen). Kontraste prüft `src/lib/visual/area-theme.test.ts`.
    ========================================================================== */
 
 @layer base {
   :root {
     /* Flächen */
-    --background: 210 20% 98%;
+    --background: 214 45% 98.6%;
     --surface: 0 0% 100%;
-    --surface-muted: 210 20% 96%;
-    --surface-sunken: 213 18% 93%;
-    --surface-ink: 215 28% 15%;
+    --surface-muted: 214 50% 96.6%;
+    --surface-sunken: 214 36% 92.5%;
+    --surface-ink: 222 36% 16%;
 
     /* Text */
-    --foreground: 215 28% 15%;
-    --foreground-muted: 215 14% 42%;
-    --foreground-subtle: 215 12% 56%;
-    --foreground-inverse: 210 20% 98%;
+    --foreground: 222 34% 15%;
+    --foreground-muted: 219 16% 37%;
+    --foreground-subtle: 217 12% 45%;
+    --foreground-inverse: 214 45% 98.6%;
 
     /* Linien */
-    --border: 214 16% 88%;
-    --border-strong: 214 14% 76%;
-    --input: 214 16% 88%;
-    --ring: 211 62% 34%;
+    --border: 214 32% 89%;
+    --border-strong: 214 22% 77%;
+    --input: 214 28% 84%;
+    --ring: 214 86% 50%;
 
-    /* Primär — Stahlblau */
-    --primary: 211 62% 34%;
-    --primary-hover: 211 62% 28%;
-    --primary-soft: 211 58% 95%;
+    /* Primär — klares Blau */
+    --primary: 214 80% 40%;
+    --primary-hover: 214 82% 33%;
+    --primary-soft: 214 100% 96.5%;
     --primary-foreground: 0 0% 100%;
 
     /* Sekundär */
-    --secondary: 213 18% 93%;
-    --secondary-foreground: 215 28% 15%;
+    --secondary: 214 50% 94%;
+    --secondary-foreground: 222 34% 15%;
 
     /* Akzent — Technisch-Teal, sparsam für Bestätigungen */
     --accent: 188 52% 30%;
@@ -48,20 +50,20 @@
     /* Funktionsfarben — nur für Status, nie als Markenfläche */
     --success: 152 48% 30%;
     --success-soft: 152 44% 94%;
-    --warning: 35 72% 38%;
+    --warning: 32 80% 33%;
     --warning-soft: 38 70% 95%;
     --danger: 0 58% 42%;
     --danger-soft: 0 60% 96%;
-    --info: 211 62% 34%;
-    --info-soft: 211 58% 95%;
+    --info: 214 80% 40%;
+    --info-soft: 214 100% 96.5%;
 
     /* Karten / Popover */
     --card: 0 0% 100%;
-    --card-foreground: 215 28% 15%;
+    --card-foreground: 222 34% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 15%;
-    --muted: 213 18% 93%;
-    --muted-foreground: 215 14% 42%;
+    --popover-foreground: 222 34% 15%;
+    --muted: 214 50% 94%;
+    --muted-foreground: 219 16% 37%;
     --destructive: 0 58% 42%;
     --destructive-foreground: 0 0% 100%;
 
@@ -141,7 +143,7 @@
 
   /* Kleine Überschrift über der Hauptüberschrift */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-area-strong;
   }
 
   /* Fließtext in redaktionellen Bereichen */
@@ -189,6 +191,80 @@
 
   .pt-safe {
     padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* ==========================================================================
+   Bewegung für Vektorgrafiken — nur CSS, kein SMIL.
+   Vertrag (siehe src/components/visual/README.md):
+   - `.sm24-draw`   Linie zeichnet sich (Element braucht pathLength="1")
+   - `.sm24-reveal` Element blendet von unten ein
+   - `.sm24-pop`    Element wächst aus seiner Mitte (Punkte, Haken, Marker)
+   - `.sm24-float`  ruhiges Schweben (Dauerbewegung, sparsam einsetzen)
+   - `.sm24-dash`   laufende Strichlinie (Signal, Funk, Datenfluss)
+   Verzögerung/Dauer über `--sm24-delay` / `--sm24-duration`.
+   `[data-motion="wait"]` hält die Einstiegs-Animationen an, bis `InView`
+   den Bereich sichtbar meldet (`data-motion="play"`). Ohne JavaScript oder
+   bei „Bewegung reduzieren“ sind alle Grafiken sofort vollständig sichtbar.
+   ========================================================================== */
+
+@keyframes sm24-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes sm24-reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes sm24-pop {
+  from { opacity: 0; transform: scale(0.6); }
+  70% { opacity: 1; transform: scale(1.06); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes sm24-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes sm24-dash {
+  to { stroke-dashoffset: -24; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sm24-draw {
+    stroke-dasharray: 1;
+    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.65, 0, 0.35, 1)
+      var(--sm24-delay, 0s) both;
+  }
+
+  .sm24-reveal {
+    animation: sm24-reveal var(--sm24-duration, 0.6s) cubic-bezier(0.16, 1, 0.3, 1)
+      var(--sm24-delay, 0s) both;
+  }
+
+  .sm24-pop {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: sm24-pop var(--sm24-duration, 0.5s) cubic-bezier(0.16, 1, 0.3, 1)
+      var(--sm24-delay, 0s) both;
+  }
+
+  .sm24-float {
+    animation: sm24-float var(--sm24-duration, 6s) ease-in-out var(--sm24-delay, 0s) infinite;
+  }
+
+  .sm24-dash {
+    stroke-dasharray: 6 6;
+    animation: sm24-dash var(--sm24-duration, 1.6s) linear infinite;
+  }
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-motion='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-pop) {
+    animation-play-state: paused;
   }
 }
 

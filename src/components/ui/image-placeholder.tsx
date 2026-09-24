@@ -1,4 +1,7 @@
+import Image from 'next/image';
 import { ImageOff } from 'lucide-react';
+
+import { renderVisual } from '@/components/visual/registry';
 import type { ImageSlot } from '@/lib/types';
 import { cn } from '@/lib/cn';
 
@@ -15,15 +18,58 @@ export interface ImagePlaceholderProps {
   className?: string;
   /** Kompakte Darstellung ohne Hinweistext. */
   compact?: boolean;
+  /** Hinweis für den Browser, wie breit das Bild dargestellt wird. */
+  sizes?: string;
 }
 
 /**
- * Neutrale, beschriftete Platzhalterfläche.
+ * Bildfläche mit fester Rangfolge:
+ * 1. Foto aus der Medienbibliothek (`slot.bild`)
+ * 2. aus Daten erzeugte Vektorgrafik (`slot.visual`)
+ * 3. neutrale, beschriftete Platzhalterfläche
  *
- * Es werden bewusst keine Stockfotos und keine erzeugten Bilder eingesetzt.
- * Der Text beschreibt, welches Motiv hier später stehen soll.
+ * Es werden bewusst keine Stockfotos und keine erzeugten Fotos eingesetzt,
+ * die eine echte Werkstatt vortäuschen.
  */
-export function ImagePlaceholder({ slot, className, compact = false }: ImagePlaceholderProps) {
+export function ImagePlaceholder({
+  slot,
+  className,
+  compact = false,
+  sizes = '(min-width: 1024px) 50vw, 100vw',
+}: ImagePlaceholderProps) {
+  if (slot.bild?.url) {
+    return (
+      <div
+        className={cn('relative w-full overflow-hidden rounded-lg bg-surface-muted', ratios[slot.ratio], className)}
+      >
+        <Image
+          src={slot.bild.url}
+          alt={slot.bild.alt || slot.motif}
+          fill
+          sizes={sizes}
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
+  const visual = slot.visual
+    ? renderVisual(slot.visual, slot.motif, 'absolute inset-0 h-full w-full')
+    : null;
+  if (visual) {
+    return (
+      <div
+        className={cn(
+          'relative w-full overflow-hidden rounded-lg bg-area-soft',
+          ratios[slot.ratio],
+          className,
+        )}
+      >
+        {visual}
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(

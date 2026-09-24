@@ -15,6 +15,31 @@ export interface ImageSlot {
   ratio: '16/9' | '4/3' | '1/1' | '3/2' | '21/9';
   /** Optionaler Hinweis für die Redaktion. */
   note?: string;
+  /**
+   * Aus Daten erzeugte Vektorgrafik, solange kein Foto hinterlegt ist.
+   * Zulässige Generatoren: `src/components/visual/registry.tsx`.
+   */
+  visual?: VisualRef;
+  /** Echtes Foto aus der Medienbibliothek — hat Vorrang vor `visual`. */
+  bild?: MediaImage;
+}
+
+/** Eingabewerte eines Grafik-Generators — nur einfache, speicherbare Werte. */
+export type VisualParamValue = string | number | boolean | string[] | number[];
+
+/** Verweis auf eine aus Daten erzeugte Vektorgrafik. */
+export interface VisualRef {
+  /** Name des Generators, z. B. `schluessel`, `zylinder-mass`, `schliessplan`. */
+  generator: string;
+  params?: Record<string, VisualParamValue>;
+}
+
+/** Bild aus der Medienbibliothek (Payload `medien`). */
+export interface MediaImage {
+  url: string;
+  alt: string;
+  width?: number;
+  height?: number;
 }
 
 /** Kurzerklärung hinter einem Info-Symbol. */

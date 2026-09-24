@@ -1,4 +1,11 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
+
+import {
+  AREA_THEMES,
+  DEFAULT_AREA_THEME,
+  areaCssVariables,
+} from './src/lib/visual/area-theme';
 
 /**
  * SCHLÜSSELMACHER24 — Tailwind-Konfiguration
@@ -82,6 +89,13 @@ const config = {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
+        area: {
+          DEFAULT: 'hsl(var(--area) / <alpha-value>)',
+          strong: 'hsl(var(--area-strong) / <alpha-value>)',
+          soft: 'hsl(var(--area-soft) / <alpha-value>)',
+          muted: 'hsl(var(--area-muted) / <alpha-value>)',
+          foreground: 'hsl(var(--area-foreground) / <alpha-value>)',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -102,7 +116,19 @@ const config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addBase }) => {
+      addBase({
+        ':root': areaCssVariables(DEFAULT_AREA_THEME),
+        ...Object.fromEntries(
+          Object.entries(AREA_THEMES).map(([key, theme]) => [
+            `[data-area="${key}"]`,
+            areaCssVariables(theme),
+          ]),
+        ),
+      });
+    }),
+  ],
 } satisfies Config;
 
 export default config;
