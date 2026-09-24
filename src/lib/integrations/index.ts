@@ -1,6 +1,7 @@
 /* ==========================================================================
    Externe Anbindungen
-   Alle drei Anbindungen sind vorbereitet, aber ohne Zugangsdaten inaktiv.
+   Zahlung und Mailversand sind vorbereitet, aber ohne Zugangsdaten inaktiv.
+   Die Dateiablage nutzt die eigene Datenbank und braucht keinen Anbieter.
    Es werden keine Zugangsdaten erfunden oder fest hinterlegt.
    Der Status ist im Backend unter „Einstellungen“ sichtbar.
    ========================================================================== */
@@ -129,43 +130,26 @@ export async function sendMail(message: MailMessage): Promise<MailResult> {
 
 /* ---------- Dateiablage für Uploads -------------------------------------- */
 
+/**
+ * Kundendateien liegen in der privaten Payload-Sammlung `kundendateien`
+ * (Datenbank plus Ordner `private-uploads/` auf dem Server). Die Ablage ist
+ * verfügbar, sobald die Seite mit der Datenbank arbeitet und der Server
+ * dauerhaft auf die Festplatte schreiben darf — auf Plattformen mit
+ * schreibgeschütztem Dateisystem (Vercel, SM24_READONLY_CONTENT=1) nicht.
+ * Hochgeladen wird über /api/kunden-upload, zugeordnet beim Absenden
+ * (src/lib/server/kundendateien.ts).
+ */
 export function storageStatus(): IntegrationStatus {
+  const readonly = Boolean(process.env.VERCEL) || process.env.SM24_READONLY_CONTENT === '1';
+  const ohneDatenbank = process.env.SM24_DATA === 'json';
   return {
     id: 'dateiablage',
     label: 'Dateiablage für Uploads',
-    configured: Boolean(process.env.STORAGE_PROVIDER && process.env.STORAGE_BUCKET),
-    requiredEnv: ['STORAGE_PROVIDER', 'STORAGE_BUCKET', 'STORAGE_ACCESS_KEY', 'STORAGE_SECRET_KEY'],
-    missingEnv: missing(['STORAGE_PROVIDER', 'STORAGE_BUCKET', 'STORAGE_ACCESS_KEY', 'STORAGE_SECRET_KEY']),
+    configured: Boolean(process.env.DATABASE_URL) && !ohneDatenbank && !readonly,
+    requiredEnv: ['DATABASE_URL'],
+    missingEnv: missing(['DATABASE_URL']),
     fallback:
-      'Hochgeladene Dateien werden nicht dauerhaft gespeichert. Am Vorgang wird nur vermerkt, '
-      + 'welche Dateien der Kunde ausgewählt hat; die Dateien werden separat angefordert.',
+      'Ohne Datenbank-Ablage werden hochgeladene Dateien nicht gespeichert. Am Vorgang wird nur '
+      + 'vermerkt, welche Dateien der Kunde ausgewählt hat; die Dateien werden separat angefordert.',
   };
-}
-
-export interface StoredFile {
-  storageKey?: string;
-  stored: boolean;
-  message: string;
-}
-
-/** Legt eine hochgeladene Datei ab. Ohne Anbindung nur vermerkt. */
-export async function storeUpload(
-  fileName: string,
-  _data: ArrayBuffer,
-  category: string,
-): Promise<StoredFile> {
-  if (!storageStatus().configured) {
-    return {
-      stored: false,
-      message:
-        `Keine Dateiablage angebunden. "${fileName}" (${category}) wurde am Vorgang vermerkt, `
-        + 'aber nicht gespeichert.',
-    };
-  }
-
-  // Anbindung des gewählten Anbieters hier ergänzen.
-  throw new Error(
-    `Dateiablage "${process.env.STORAGE_PROVIDER}" ist konfiguriert, aber noch nicht implementiert. `
-      + 'Bitte die Anbindung in src/lib/integrations/index.ts ergänzen.',
-  );
 }
