@@ -51,6 +51,21 @@ import { IconSmarteFunktionen } from './smarte-funktionen';
 import { IconPanikAlarmtaster } from './panik-alarmtaster';
 import { IconKombinierteKonzepte } from './kombinierte-konzepte';
 import { IconSicherheitscheck } from './sicherheitscheck';
+// Shop & Ablauf
+import { IconWarenkorb } from './warenkorb';
+import { IconVersandPaket } from './versand-paket';
+import { IconLieferung } from './lieferung';
+import { IconZahlung } from './zahlung';
+import { IconAnzahlung } from './anzahlung';
+import { IconTermin } from './termin';
+import { IconFotoHochladen } from './foto-hochladen';
+import { IconPruefung } from './pruefung';
+import { IconBeratungTelefon } from './beratung-telefon';
+import { IconWerkstatt } from './werkstatt';
+import { IconStandort } from './standort';
+import { IconNachweis } from './nachweis';
+import { IconRueckgabe } from './rueckgabe';
+import { IconDatenschutz } from './datenschutz';
 
 /** Dateiname (ohne Endung) → Komponente. Jede Icon-Datei im Ordner muss hier stehen. */
 const ICONS: Record<string, ComponentType<IconProps>> = {
@@ -98,6 +113,21 @@ const ICONS: Record<string, ComponentType<IconProps>> = {
   'panik-alarmtaster': IconPanikAlarmtaster,
   'kombinierte-konzepte': IconKombinierteKonzepte,
   sicherheitscheck: IconSicherheitscheck,
+  // Shop & Ablauf
+  warenkorb: IconWarenkorb,
+  'versand-paket': IconVersandPaket,
+  lieferung: IconLieferung,
+  zahlung: IconZahlung,
+  anzahlung: IconAnzahlung,
+  termin: IconTermin,
+  'foto-hochladen': IconFotoHochladen,
+  pruefung: IconPruefung,
+  'beratung-telefon': IconBeratungTelefon,
+  werkstatt: IconWerkstatt,
+  standort: IconStandort,
+  nachweis: IconNachweis,
+  rueckgabe: IconRueckgabe,
+  datenschutz: IconDatenschutz,
 };
 
 const ICON_DIR = path.dirname(fileURLToPath(import.meta.url));
