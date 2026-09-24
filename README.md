@@ -47,3 +47,5 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+- **Enterprise ROI- und Ladezeit-Kalkulator:** Integriert in die Schließanlagen-Seite zur Berechnung von Amortisationszeiten.
+- **Spatial Bento Grid:** Kinetisches Feature-Grid auf der Startseite mit dynamischen Haarlinien-Lichtreflexen.

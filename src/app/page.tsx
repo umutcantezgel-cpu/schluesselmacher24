@@ -16,6 +16,7 @@ import { getGuides, getPageContent, getSettings } from '@/lib/data';
 import { NAV_AREAS, PROCESS_LABELS, QUICK_ENTRIES } from '@/lib/navigation';
 import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
+import { SpatialBentoGrid } from '@/components/showcase/spatial-bento-grid';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -287,40 +288,30 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Projektbereiche */}
+            {/* Projekte Bento */}
       <Section>
         <SectionHeading
           eyebrow="Projekte"
-          title="Größere Vorhaben planen wir strukturiert"
+          title="Strukturierte Planung für maximale Sicherheit"
           lead="Schließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik erfassen wir über geführte Konfiguratoren. Am Ende steht eine Zusammenfassung, aus der ein belastbares Angebot wird."
         />
 
-        <ul className="mt-8 grid gap-3 md:grid-cols-3">
-          {NAV_AREAS.filter((a) =>
-            ['schliessanlagen', 'elektronische-zutrittsloesungen', 'sicherheitstechnik'].includes(a.key),
-          ).map((area) => (
-            <li key={area.key}>
-              <Card className="group relative flex h-full flex-col overflow-hidden transition-all hover:shadow-[0_0_20px_rgba(var(--primary),0.15)]">
-                <CardBody className="flex flex-1 flex-col">
-                  <p className="text-[15px] font-bold text-foreground">{area.label}</p>
-                  <p className="mt-2 flex-1 text-[14px] leading-relaxed text-foreground-muted">
-                    {area.summary}
-                  </p>
-                  <Link
-                    href={area.highlight?.href ?? area.href}
-                    className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-                  >
-                    {area.highlight?.label ?? `${area.label} entdecken`}
-                    <ArrowRight size={15} aria-hidden />
-                  </Link>
-                </CardBody>
-              </Card>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-8">
+          <SpatialBentoGrid
+            items={NAV_AREAS.filter((a) =>
+              ['schliessanlagen', 'elektronische-zutrittsloesungen', 'sicherheitstechnik'].includes(a.key)
+            ).map(area => ({
+              id: area.key,
+              title: area.label,
+              summary: area.summary,
+              href: area.highlight?.href ?? area.href,
+              highlightLabel: area.highlight?.label
+            }))}
+          />
+        </div>
       </Section>
 
-      {/* Ratgeber */}
+{/* Ratgeber */}
       <Section tone="muted" tight>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading

@@ -1,3 +1,5 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+- **Enterprise ROI- und Ladezeit-Kalkulator:** Integriert in die Schließanlagen-Seite zur Berechnung von Amortisationszeiten.
+- **Spatial Bento Grid:** Kinetisches Feature-Grid auf der Startseite mit dynamischen Haarlinien-Lichtreflexen.
