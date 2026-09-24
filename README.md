@@ -47,3 +47,6 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+### Neue Interaktive Module
+- **EnterpriseRoiCalculator**: Interaktiver ROI- und Ladezeit-Kalkulator mit React 19 Server Actions und \`useOptimistic\` State.
