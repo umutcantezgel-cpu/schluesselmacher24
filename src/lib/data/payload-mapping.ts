@@ -43,6 +43,7 @@ import type {
   PricingRule,
   SeoFields,
   ServicePage,
+  StandardArticle,
   Settings,
   VehicleMake,
 } from '@/lib/types';
@@ -218,6 +219,66 @@ export function codeLineZuPayload(line: CodeLine): RequiredDataFromCollectionSlu
     produktbild: bildZuPayload(line.productImage),
     seo: seoZuPayload(line.seo),
     _status: line.active ? 'published' : 'draft',
+  };
+}
+
+/* ---------- Artikel (Standardartikel) ----------------------------------- */
+
+export function standardartikelZuSeite(doc: Produkte): StandardArticle {
+  const priceCents = zuCent(doc.preis);
+  const bulkPrices = [...(doc.staffeln ?? [])]
+    .sort((a, b) => a.abMenge - b.abMenge)
+    .map((s) => ({ minQty: s.abMenge, priceCents: staffelPreis(priceCents, s.rabattProzent) }));
+  const example = Boolean(doc.beispiel);
+  const seo = seoZuSeite(doc.seo, doc.name);
+  if (example) seo.noindex = true;
+  const article: StandardArticle = {
+    id: kennung(doc),
+    slug: doc.slug,
+    name: doc.name,
+    description: doc.beschreibung,
+    manufacturer: doc.hersteller ?? '',
+    scope: doc.umfang ?? '',
+    properties: (doc.eigenschaften ?? []).map((e) => ({ name: e.name, value: e.wert })),
+    deliveryTime: doc.lieferzeit ?? '',
+    priceCents,
+    maxQty: doc.maxMenge,
+    shippingClass: doc.versandklasse,
+    image: bildZuSeite(doc.produktbild, doc.name, '1/1'),
+    gallery: (doc.weitereBilder ?? [])
+      .map((bild) => medienBild(bild, doc.name))
+      .filter((bild): bild is MediaImage => Boolean(bild)),
+    tags: doc.schlagworte ?? [],
+    seo,
+    example,
+  };
+  if (bulkPrices.length) article.bulkPrices = bulkPrices;
+  return article;
+}
+
+export function standardartikelZuPayload(article: StandardArticle): RequiredDataFromCollectionSlug<'produkte'> {
+  return {
+    typ: 'standard',
+    kennung: article.id,
+    slug: article.slug,
+    beispiel: article.example,
+    name: article.name,
+    beschreibung: article.description,
+    hersteller: article.manufacturer,
+    umfang: article.scope,
+    eigenschaften: article.properties.map((p) => ({ name: p.name, wert: p.value })),
+    lieferzeit: article.deliveryTime,
+    schlagworte: article.tags,
+    preis: zuEuro(article.priceCents),
+    staffeln: (article.bulkPrices ?? []).map((tier) => ({
+      abMenge: tier.minQty,
+      rabattProzent: rabattAusPreis(article.priceCents, tier.priceCents),
+    })),
+    maxMenge: article.maxQty,
+    versandklasse: article.shippingClass,
+    produktbild: bildZuPayload(article.image),
+    seo: seoZuPayload(article.seo),
+    _status: 'published',
   };
 }
 
@@ -773,6 +834,27 @@ export function vorgangZuSeite(doc: Vorgaenge): BusinessRecord {
     if (doc.zahlung.bezahltAm) record.payment.paidAt = doc.zahlung.bezahltAm;
   }
   if (doc.zugriffsHash) record.accessTokenHash = doc.zugriffsHash;
+  if (doc.positionen?.length) {
+    record.lines = doc.positionen.map((p) => ({
+      kind: p.art,
+      productId: p.kennung,
+      label: p.bezeichnung,
+      details: p.details ?? '',
+      qty: p.menge,
+      unitPriceCents: p.einzelpreisCent,
+      totalCents: p.summeCent,
+      vatPercent: p.steuersatz,
+    }));
+  }
+  if (doc.summen?.gesamtCent !== null && doc.summen?.gesamtCent !== undefined) {
+    record.totals = {
+      itemsCents: doc.summen.artikelCent ?? 0,
+      shippingCents: doc.summen.versandCent ?? 0,
+      totalCents: doc.summen.gesamtCent,
+      vatCents: doc.summen.steuerCent ?? 0,
+      shippingLabel: doc.summen.versandart ?? '',
+    };
+  }
   return record;
 }
 
@@ -823,5 +905,24 @@ export function vorgangZuPayload(record: BusinessRecord): RequiredDataFromCollec
     angebot: (record.quote ?? null) as unknown as Record<string, unknown> | null,
     uploads: record.uploads as unknown as Record<string, unknown>[],
     zugriffsHash: record.accessTokenHash,
+    positionen: (record.lines ?? []).map((l) => ({
+      art: l.kind,
+      kennung: l.productId,
+      bezeichnung: l.label,
+      details: l.details,
+      menge: l.qty,
+      einzelpreisCent: l.unitPriceCents,
+      summeCent: l.totalCents,
+      steuersatz: l.vatPercent,
+    })),
+    summen: record.totals
+      ? {
+          artikelCent: record.totals.itemsCents,
+          versandCent: record.totals.shippingCents,
+          gesamtCent: record.totals.totalCents,
+          steuerCent: record.totals.vatCents,
+          versandart: record.totals.shippingLabel,
+        }
+      : undefined,
   };
 }

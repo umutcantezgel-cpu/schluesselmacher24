@@ -17,6 +17,7 @@ import type {
   CylinderCatalog,
   CylinderOrderDraft,
   ShippingOption,
+  StandardArticle,
   SummarySection,
 } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
@@ -30,6 +31,7 @@ import { SummaryList } from '@/components/layout/summary-list';
 export interface KasseFormularProps {
   shipping: ShippingOption[];
   codeLines: CodeLine[];
+  standardArticles: StandardArticle[];
   catalog: CylinderCatalog;
   /** Vorbelegung des Lieferlands aus den Firmendaten. */
   defaultCountry: string;
@@ -131,6 +133,7 @@ function pruefen(werte: Eingaben): Fehler {
 export function KasseFormular({
   shipping,
   codeLines,
+  standardArticles,
   catalog,
   defaultCountry,
   paymentConfigured,
@@ -186,9 +189,19 @@ export function KasseFormular({
             unitPriceCents: line ? unitPriceForCodeLine(line, qty) : item.unitPriceCents,
           };
         }
+        if (item.kind === 'standard') {
+          const article = standardArticles.find((eintrag) => eintrag.id === item.productId) ?? null;
+          const qty = Math.min(Math.max(1, item.qty), Math.max(1, article?.maxQty ?? item.qty));
+          return {
+            ...item,
+            qty,
+            shippingClass: article?.shippingClass ?? item.shippingClass,
+            unitPriceCents: article ? unitPriceForCodeLine(article, qty) : item.unitPriceCents,
+          };
+        }
         return { ...item, unitPriceCents: priceCylinderOrder(item.draft, catalog).totalCents };
       }),
-    [items, codeLines, catalog],
+    [items, codeLines, standardArticles, catalog],
   );
 
   const cart: Cart = useMemo(
@@ -208,6 +221,12 @@ export function KasseFormular({
         artikel.push({
           label: line?.name ?? 'Schlüssel nach Code',
           value: `Code ${item.code} · ${item.qty} Stück · ${formatCents(item.unitPriceCents * item.qty)}`,
+        });
+      } else if (item.kind === 'standard') {
+        const article = standardArticles.find((eintrag) => eintrag.id === item.productId);
+        artikel.push({
+          label: article?.name ?? item.label,
+          value: `${item.qty} Stück · ${formatCents(item.unitPriceCents * item.qty)}`,
         });
       } else {
         const breakdown = priceCylinderOrder(item.draft, catalog);
@@ -265,7 +284,7 @@ export function KasseFormular({
       { title: 'Summe', rows: summenZeilen },
       { title: 'Kontakt und Lieferanschrift', rows: anschrift },
     ];
-  }, [positionen, codeLines, catalog, summen, versandart, werte]);
+  }, [positionen, codeLines, standardArticles, catalog, summen, versandart, werte]);
 
   async function absenden(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

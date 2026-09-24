@@ -26,9 +26,10 @@ const WEITERE_SEITEN = [
 export default async function WarenkorbPage() {
   // Die Positionen liegen im Browser; hier kommen nur die Stammdaten dazu,
   // damit im Warenkorb dieselben Preise wie beim Absenden gelten.
-  const [settings, codeLines, catalog] = await Promise.all([
+  const [settings, codeLines, standardArticles, catalog] = await Promise.all([
     getSettings(),
     getCodeLines(false),
+    getCollection('standardArticles'),
     getCollection('cylinderCatalog'),
   ]);
 
@@ -42,7 +43,12 @@ export default async function WarenkorbPage() {
       />
 
       <div className="shell py-8 md:py-12">
-        <WarenkorbAnsicht shipping={settings.shipping} codeLines={codeLines} catalog={catalog} />
+        <WarenkorbAnsicht
+          shipping={settings.shipping}
+          codeLines={codeLines}
+          standardArticles={standardArticles}
+          catalog={catalog}
+        />
       </div>
 
       <section className="border-t border-border bg-surface-muted">

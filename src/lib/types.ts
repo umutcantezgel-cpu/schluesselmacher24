@@ -278,6 +278,30 @@ export interface CodeLine {
   example?: boolean;
 }
 
+/* ---------- Standardartikel (Shop) -------------------------------------- */
+
+export interface StandardArticle {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  manufacturer: string;
+  /** Lieferumfang. */
+  scope: string;
+  properties: { name: string; value: string }[];
+  deliveryTime: string;
+  priceCents: number;
+  bulkPrices?: { minQty: number; priceCents: number }[];
+  maxQty: number;
+  shippingClass: ProductClass;
+  image: ImageSlot;
+  gallery: MediaImage[];
+  tags: string[];
+  seo: SeoFields;
+  /** Beispielartikel: sichtbar, aber nicht bestellbar und nicht in Suchmaschinen. */
+  example: boolean;
+}
+
 /* ---------- Gleichschließende Zylinder ---------------------------------- */
 
 export type CylinderForm = 'doppelzylinder' | 'knaufzylinder' | 'halbzylinder';
@@ -375,6 +399,18 @@ export type CartItem =
       unitPriceCents: number;
       qty: 1;
       note?: string;
+    }
+  | {
+      /** Standardartikel aus dem Shop (`/artikel`). */
+      kind: 'standard';
+      uid: string;
+      productId: string;
+      /** Anzeige im Warenkorb; Preis und Name prüft der Server beim Bestellen neu. */
+      label: string;
+      shippingClass: ProductClass;
+      qty: number;
+      unitPriceCents: number;
+      note?: string;
     };
 
 export interface Cart {
@@ -452,6 +488,32 @@ export interface TimelineEntry {
   message: string;
 }
 
+/**
+ * Festgeschriebene Bestellposition. Name, Preis und Konfiguration werden beim
+ * Bestellen kopiert — spätere Änderungen am Artikel ändern alte Bestellungen nicht.
+ */
+export interface OrderLine {
+  kind: CartItem['kind'];
+  /** Kennung des Artikels zum Zeitpunkt der Bestellung, z. B. "ms-01". */
+  productId: string;
+  label: string;
+  /** Code, Maße, Funktionen — für Fertigung und Rechnung. */
+  details: string;
+  qty: number;
+  unitPriceCents: number;
+  totalCents: number;
+  /** Umsatzsteuersatz in Prozent, z. B. 19. */
+  vatPercent: number;
+}
+
+export interface OrderTotals {
+  itemsCents: number;
+  shippingCents: number;
+  totalCents: number;
+  vatCents: number;
+  shippingLabel: string;
+}
+
 /** Ein Vorgang — Bestellung, Anfrage, Termin oder Projekt. */
 export interface BusinessRecord {
   id: string;
@@ -480,6 +542,9 @@ export interface BusinessRecord {
    * Der Schlüssel selbst wird nie gespeichert.
    */
   accessTokenHash?: string;
+  /** Nur bei Bestellungen: festgeschriebene Positionen und Summen. */
+  lines?: OrderLine[];
+  totals?: OrderTotals;
 }
 
 export interface SummarySection {

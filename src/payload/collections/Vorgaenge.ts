@@ -152,6 +152,69 @@ export const Vorgaenge: CollectionConfig = {
           ],
         },
         {
+          label: 'Positionen',
+          admin: { condition: (data) => data?.art === 'bestellung' },
+          description: 'Beim Bestellen festgeschrieben — spätere Preisänderungen ändern diese Angaben nicht.',
+          fields: [
+            {
+              name: 'positionen',
+              type: 'array',
+              label: 'Positionen',
+              labels: { singular: 'Position', plural: 'Positionen' },
+              admin: nurLesen,
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'bezeichnung', type: 'text', label: 'Artikel', required: true, admin: { width: '40%' } },
+                    { name: 'kennung', type: 'text', label: 'Kennung', required: true, index: true, admin: { width: '20%' } },
+                    {
+                      name: 'art',
+                      type: 'select',
+                      label: 'Art',
+                      required: true,
+                      options: [
+                        { label: 'Schlüssel nach Code', value: 'code-schluessel' },
+                        { label: 'Gleichschließende Zylinder', value: 'zylinder-schliessung' },
+                        { label: 'Standardartikel', value: 'standard' },
+                      ],
+                      admin: { width: '40%' },
+                    },
+                  ],
+                },
+                { name: 'details', type: 'textarea', label: 'Angaben' },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'menge', type: 'number', label: 'Menge', required: true, admin: { width: '20%' } },
+                    { name: 'einzelpreisCent', type: 'number', label: 'Einzelpreis (Cent)', required: true, admin: { width: '30%' } },
+                    { name: 'summeCent', type: 'number', label: 'Summe (Cent)', required: true, admin: { width: '30%' } },
+                    { name: 'steuersatz', type: 'number', label: 'USt. %', required: true, admin: { width: '20%' } },
+                  ],
+                },
+              ],
+            },
+            {
+              name: 'summen',
+              type: 'group',
+              label: 'Summen',
+              admin: nurLesen,
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'artikelCent', type: 'number', label: 'Artikel (Cent)', admin: { width: '25%' } },
+                    { name: 'versandCent', type: 'number', label: 'Versand (Cent)', admin: { width: '25%' } },
+                    { name: 'gesamtCent', type: 'number', label: 'Gesamt (Cent)', admin: { width: '25%' } },
+                    { name: 'steuerCent', type: 'number', label: 'Enthaltene USt. (Cent)', admin: { width: '25%' } },
+                  ],
+                },
+                { name: 'versandart', type: 'text', label: 'Versandart' },
+              ],
+            },
+          ],
+        },
+        {
           label: 'Kontakt',
           fields: [
             {

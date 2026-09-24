@@ -13,6 +13,7 @@ const FILE_NAMES: Record<CollectionName, string> = {
   carKeyServices: 'car-key-services.json',
   vehicleMakes: 'vehicles.json',
   codeLines: 'code-lines.json',
+  standardArticles: 'standard-articles.json',
   cylinderCatalog: 'cylinder-catalog.json',
   servicePages: 'service-pages.json',
   pages: 'seo.json',

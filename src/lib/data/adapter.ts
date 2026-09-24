@@ -12,6 +12,7 @@ import type {
   Settings,
   VehicleMake,
   CarKeyService,
+  StandardArticle,
 } from '@/lib/types';
 
 /**
@@ -25,6 +26,7 @@ export interface Collections {
   carKeyServices: CarKeyService[];
   vehicleMakes: VehicleMake[];
   codeLines: CodeLine[];
+  standardArticles: StandardArticle[];
   cylinderCatalog: CylinderCatalog;
   servicePages: ServicePage[];
   pages: PageContent[];

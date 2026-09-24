@@ -5,6 +5,7 @@ import { settings } from './settings';
 import { carKeyServices, pricingGroups, pricingRules } from './pricing';
 import { vehicleMakes } from './vehicles';
 import { codeLines } from './code-lines';
+import { standardArticles } from './standard-articles';
 import { cylinderCatalog } from './cylinders';
 import { servicePages } from './service-pages';
 import { cities, guides, pages } from './content';
@@ -25,6 +26,7 @@ export const defaults: { [K in CollectionName]: () => Collections[K] } = {
   carKeyServices,
   vehicleMakes,
   codeLines,
+  standardArticles,
   cylinderCatalog,
   servicePages,
   pages,

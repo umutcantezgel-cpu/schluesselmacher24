@@ -3,7 +3,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import type { CartItem, CylinderOrderDraft, UploadRef } from '@/lib/types';
+import type { CartItem, CylinderOrderDraft, ProductClass, UploadRef } from '@/lib/types';
 
 interface CartState {
   items: CartItem[];
@@ -17,6 +17,13 @@ interface CartState {
     note?: string;
   }) => void;
   addCylinderOrder: (draft: CylinderOrderDraft, unitPriceCents: number, note?: string) => void;
+  addStandard: (input: {
+    productId: string;
+    label: string;
+    shippingClass: ProductClass;
+    qty: number;
+    unitPriceCents: number;
+  }) => void;
   updateQty: (uid: string, qty: number, unitPriceCents?: number) => void;
   remove: (uid: string) => void;
   setShipping: (id: string) => void;
@@ -30,7 +37,7 @@ function nextUid(prefix: string): string {
   return `${prefix}-${counter}-${Math.round(performance.now())}`;
 }
 
-/** Warenkorb für „Direkt kaufen“ — Code-Schlüssel und Zylinder-Schließungen. */
+/** Warenkorb für „Direkt kaufen“ — Code-Schlüssel, Zylinder-Schließungen und Standardartikel. */
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
@@ -77,6 +84,26 @@ export const useCartStore = create<CartState>()(
           ],
         })),
 
+      addStandard: ({ productId, label, shippingClass, qty, unitPriceCents }) =>
+        set((state) => {
+          const existing = state.items.find((i) => i.kind === 'standard' && i.productId === productId);
+          if (existing) {
+            return {
+              items: state.items.map((i) =>
+                i.uid === existing.uid && i.kind === 'standard'
+                  ? { ...i, qty: i.qty + qty, unitPriceCents }
+                  : i,
+              ),
+            };
+          }
+          return {
+            items: [
+              ...state.items,
+              { kind: 'standard', uid: nextUid('st'), productId, label, shippingClass, qty, unitPriceCents },
+            ],
+          };
+        }),
+
       /**
        * Menge ändern. `unitPriceCents` wird mitgegeben, weil bei Staffelpreisen
        * ein anderer Stückpreis gilt — sonst stünde im Warenkorb ein veralteter
@@ -85,7 +112,7 @@ export const useCartStore = create<CartState>()(
       updateQty: (uid, qty, unitPriceCents) =>
         set((state) => ({
           items: state.items.map((i) =>
-            i.uid === uid && i.kind === 'code-schluessel'
+            i.uid === uid && (i.kind === 'code-schluessel' || i.kind === 'standard')
               ? {
                   ...i,
                   qty: Math.max(1, qty),

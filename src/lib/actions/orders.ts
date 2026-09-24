@@ -3,6 +3,7 @@
 import { z } from 'zod';
 
 import { getCollection, getSettings } from '@/lib/data';
+import { codePasst } from '@/lib/code-pattern';
 import { validateCylinderDraft } from '@/lib/cylinder-rules';
 import { formatCents } from '@/lib/format';
 import { availableShipping, cartTotals, priceCylinderOrder, unitPriceForCodeLine } from '@/lib/pricing';
@@ -84,6 +85,16 @@ const cartItemSchema = z.discriminatedUnion('kind', [
     qty: z.literal(1),
     note: z.string().max(1000).optional(),
   }),
+  z.object({
+    kind: z.literal('standard'),
+    uid: z.string().max(80),
+    productId: z.string().max(80),
+    label: z.string().max(200),
+    shippingClass: z.enum(['code-schluessel', 'zylinder', 'zubehoer']),
+    qty: z.number().int().min(1).max(999),
+    unitPriceCents: z.number().int().min(0),
+    note: z.string().max(1000).optional(),
+  }),
 ]);
 
 const checkoutSchema = z.object({
@@ -122,9 +133,10 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
   }
   const data = parsed.data;
 
-  const [settings, codeLines, catalog] = await Promise.all([
+  const [settings, codeLines, standardArticles, catalog] = await Promise.all([
     getSettings(),
     getCollection('codeLines'),
+    getCollection('standardArticles'),
     getCollection('cylinderCatalog'),
   ]);
 
@@ -133,17 +145,11 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
 
   for (const item of data.items) {
     if (item.kind === 'code-schluessel') {
-      const line = codeLines.find((l) => l.id === item.codeLineId && l.active);
+      const line = codeLines.find((l) => l.id === item.codeLineId && l.active && !l.example);
       if (!line) {
         return fail('Ein Artikel im Warenkorb ist nicht mehr verfügbar. Bitte prüfen Sie Ihren Warenkorb.');
       }
-      let matches = false;
-      try {
-        matches = new RegExp(line.codePattern).test(item.code);
-      } catch {
-        matches = false;
-      }
-      if (!matches) {
+      if (!codePasst(line.codePattern, item.code)) {
         return fail(`Der Code „${item.code}“ passt nicht zum erwarteten Format (${line.codeFormatLabel}).`);
       }
       if (item.qty > line.maxQty) {
@@ -155,6 +161,21 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
         label: line.name,
         value: `Code ${item.code} · ${item.qty} Stück · ${formatCents(unit * item.qty)}`,
       });
+    } else if (item.kind === 'standard') {
+      const article = standardArticles.find((a) => a.id === item.productId);
+      if (!article) {
+        return fail('Ein Artikel im Warenkorb ist nicht mehr verfügbar. Bitte prüfen Sie Ihren Warenkorb.');
+      }
+      if (article.example) {
+        return fail(`„${article.name}“ ist ein Beispielartikel und kann nicht bestellt werden.`);
+      }
+      if (item.qty > article.maxQty) {
+        return fail(`Von „${article.name}“ sind höchstens ${article.maxQty} Stück je Bestellung möglich.`);
+      }
+      const unit = unitPriceForCodeLine(article, item.qty);
+      // Name, Preis und Versandklasse kommen aus dem Artikel, nie aus dem Browser.
+      verified.push({ ...item, label: article.name, shippingClass: article.shippingClass, unitPriceCents: unit });
+      rows.push({ label: article.name, value: `${item.qty} Stück · ${formatCents(unit * item.qty)}` });
     } else {
       const problem = validateCylinderDraft(item.draft, catalog);
       if (problem) return fail(`Zylinder-Zusammenstellung: ${problem}`);

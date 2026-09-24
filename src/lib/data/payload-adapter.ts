@@ -87,6 +87,14 @@ export class PayloadAdapter implements DataAdapter {
             'id',
           )
         ).map(m.codeLineZuSeite);
+      case 'standardArticles':
+        return (
+          await alle<Produkte>(
+            'produkte',
+            { and: [VEROEFFENTLICHT, { typ: { equals: 'standard' } }] },
+            'id',
+          )
+        ).map(m.standardartikelZuSeite);
       case 'servicePages':
         return (await alle<Leistungsseiten>('leistungsseiten', VEROEFFENTLICHT, 'id')).map(
           m.leistungsseiteZuSeite,

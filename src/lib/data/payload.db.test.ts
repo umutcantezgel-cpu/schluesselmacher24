@@ -2,6 +2,7 @@ import { getPayload, type Payload } from 'payload';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import config from '@payload-config';
+import { inhalteUebernehmen } from '@/payload/seed';
 import { PayloadAdapter } from './payload-adapter';
 
 /* Gegen die Testdatenbank (siehe src/test/db-global-setup.ts): Seed ist
@@ -106,6 +107,21 @@ describe('Inhalte aus der Datenbank', () => {
     await payload.update({ collection: 'produkte', id: doc.id, data: { preis: 20 }, context });
     const line = (await adapter.read('codeLines')).find((l) => l.slug === 'test-staffel');
     expect(line?.bulkPrices).toEqual([{ minQty: 5, priceCents: 1800 }]);
+  });
+});
+
+describe('Übernahme der Inhalte (Seed)', () => {
+  it('legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an', async () => {
+    await payload.delete({ collection: 'sperrtage', where: { id: { exists: true } }, trash: true, context });
+    expect((await payload.count({ collection: 'sperrtage' })).totalDocs).toBe(0);
+    await inhalteUebernehmen(payload);
+    expect((await payload.count({ collection: 'sperrtage' })).totalDocs).toBe(0);
+  });
+
+  it('enthält die Beispielartikel — sichtbar, aber als Beispiel gekennzeichnet', async () => {
+    const articles = await adapter.read('standardArticles');
+    expect(articles.length).toBe(8);
+    expect(articles.every((a) => a.example && a.seo.noindex)).toBe(true);
   });
 });
 

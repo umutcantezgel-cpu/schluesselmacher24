@@ -22,9 +22,10 @@ const RECHTLICHES = [
 ];
 
 export default async function KassePage() {
-  const [settings, codeLines, catalog] = await Promise.all([
+  const [settings, codeLines, standardArticles, catalog] = await Promise.all([
     getSettings(),
     getCodeLines(false),
+    getCollection('standardArticles'),
     getCollection('cylinderCatalog'),
   ]);
 
@@ -48,6 +49,7 @@ export default async function KassePage() {
         <KasseFormular
           shipping={settings.shipping}
           codeLines={codeLines}
+          standardArticles={standardArticles}
           catalog={catalog}
           defaultCountry={settings.company.country}
           paymentConfigured={zahlung.configured}

@@ -176,6 +176,31 @@ describe('submitOrder', () => {
     expect(stored).toHaveLength(0);
   });
 
+  it('lehnt Beispielartikel ab, auch wenn der Browser sie in den Warenkorb legt', async () => {
+    const beispiel = defaults.standardArticles()[0];
+    const result = await submitOrder({
+      items: [
+        {
+          kind: 'standard',
+          uid: 's',
+          productId: beispiel.id,
+          label: 'gefälscht',
+          shippingClass: 'zubehoer',
+          qty: 1,
+          unitPriceCents: 1,
+        },
+      ],
+      shippingOptionId: shipping.id,
+      contact,
+      acceptedTerms: true,
+      acceptedCustomMade: true,
+      expectedTotalCents: 1,
+    });
+    expect(result.ok).toBe(false);
+    expect(result.error).toContain('Beispielartikel');
+    expect(stored).toHaveLength(0);
+  });
+
   it('rechnet mit dem Serverpreis und gibt einen Link-Schlüssel zurück', async () => {
     const total = line.priceCents + shipping.priceCents;
     const result = await order(total);

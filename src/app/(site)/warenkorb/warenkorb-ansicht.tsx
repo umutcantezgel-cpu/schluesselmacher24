@@ -15,6 +15,7 @@ import type {
   CylinderCatalog,
   CylinderOrderDraft,
   ShippingOption,
+  StandardArticle,
 } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
@@ -28,15 +29,18 @@ import { QuantityInput } from '@/components/forms/controls';
 export interface WarenkorbAnsichtProps {
   shipping: ShippingOption[];
   codeLines: CodeLine[];
+  standardArticles: StandardArticle[];
   catalog: CylinderCatalog;
 }
 
 type CodePosition = Extract<CartItem, { kind: 'code-schluessel' }>;
 type ZylinderPosition = Extract<CartItem, { kind: 'zylinder-schliessung' }>;
+type StandardPosition = Extract<CartItem, { kind: 'standard' }>;
 
 type Position =
   | { art: 'code'; item: CodePosition; line: CodeLine | null }
-  | { art: 'zylinder'; item: ZylinderPosition; breakdown: CylinderPriceBreakdown };
+  | { art: 'zylinder'; item: ZylinderPosition; breakdown: CylinderPriceBreakdown }
+  | { art: 'standard'; item: StandardPosition; article: StandardArticle | null };
 
 /** Versandarten, die zu allen Produktklassen im Warenkorb passen. */
 function passendeVersandarten(items: CartItem[], shipping: ShippingOption[]): ShippingOption[] {
@@ -96,7 +100,7 @@ function staffelHinweis(line: CodeLine): string | null {
   return `Einzelpreis ${formatCents(line.priceCents)} je Stück, ${stufen.join(', ')}.`;
 }
 
-export function WarenkorbAnsicht({ shipping, codeLines, catalog }: WarenkorbAnsichtProps) {
+export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalog }: WarenkorbAnsichtProps) {
   const items = useCartStore((state) => state.items);
   const shippingOptionId = useCartStore((state) => state.shippingOptionId);
   const updateQty = useCartStore((state) => state.updateQty);
@@ -118,6 +122,16 @@ export function WarenkorbAnsicht({ shipping, codeLines, catalog }: WarenkorbAnsi
           const unitPriceCents = line ? unitPriceForCodeLine(line, qty) : item.unitPriceCents;
           return { art: 'code', item: { ...item, qty, unitPriceCents }, line };
         }
+        if (item.kind === 'standard') {
+          const article = standardArticles.find((eintrag) => eintrag.id === item.productId) ?? null;
+          const qty = Math.min(Math.max(1, item.qty), Math.max(1, article?.maxQty ?? item.qty));
+          const unitPriceCents = article ? unitPriceForCodeLine(article, qty) : item.unitPriceCents;
+          return {
+            art: 'standard',
+            item: { ...item, qty, unitPriceCents, shippingClass: article?.shippingClass ?? item.shippingClass },
+            article,
+          };
+        }
         const breakdown = priceCylinderOrder(item.draft, catalog);
         return {
           art: 'zylinder',
@@ -125,7 +139,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, catalog }: WarenkorbAnsi
           breakdown,
         };
       }),
-    [items, codeLines, catalog],
+    [items, codeLines, standardArticles, catalog],
   );
 
   const versandarten = useMemo(() => passendeVersandarten(items, shipping), [items, shipping]);
@@ -146,7 +160,9 @@ export function WarenkorbAnsicht({ shipping, codeLines, catalog }: WarenkorbAnsi
   const summen = cartTotals(cart, shipping);
   const gewaehlteVersandart = shipping.find((option) => option.id === shippingOptionId) ?? null;
   const nichtVerfuegbar = positionen.some(
-    (position) => position.art === 'code' && (!position.line || !position.line.active),
+    (position) =>
+      (position.art === 'code' && (!position.line || !position.line.active))
+      || (position.art === 'standard' && (!position.article || position.article.example)),
   );
 
   if (!geladen) {
@@ -326,6 +342,20 @@ export function WarenkorbAnsicht({ shipping, codeLines, catalog }: WarenkorbAnsi
                     </div>
                   </CardBody>
                 </Card>
+              </li>
+            ) : position.art === 'standard' ? (
+              <li key={position.item.uid}>
+                <StandardPositionKarte
+                  position={position}
+                  onQty={(wert) =>
+                    updateQty(
+                      position.item.uid,
+                      wert,
+                      position.article ? unitPriceForCodeLine(position.article, wert) : undefined,
+                    )
+                  }
+                  onRemove={() => entfernen(position.item.uid)}
+                />
               </li>
             ) : (
               <li key={position.item.uid}>
@@ -536,5 +566,84 @@ export function WarenkorbAnsicht({ shipping, codeLines, catalog }: WarenkorbAnsi
         </p>
       </div>
     </div>
+  );
+}
+
+/** Position eines Standardartikels aus dem Shop. */
+function StandardPositionKarte({
+  position,
+  onQty,
+  onRemove,
+}: {
+  position: Extract<Position, { art: 'standard' }>;
+  onQty: (qty: number) => void;
+  onRemove: () => void;
+}) {
+  const { item, article } = position;
+  return (
+    <Card>
+      <CardBody>
+        <div className="flex gap-4">
+          {article && (
+            <div className="hidden w-24 shrink-0 sm:block">
+              <ImagePlaceholder slot={article.image} compact />
+            </div>
+          )}
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+              <h3 className="text-[15px] font-bold text-foreground">
+                {article ? (
+                  <Link href={`/artikel/${article.slug}`} className="hover:text-primary hover:underline">
+                    {article.name}
+                  </Link>
+                ) : (
+                  item.label
+                )}
+              </h3>
+              <Badge tone="outline">Artikel</Badge>
+            </div>
+
+            {!article && (
+              <p className="mt-3 text-[13px] font-semibold text-danger">
+                Diesen Artikel gibt es nicht mehr. Bitte entfernen Sie die Position.
+              </p>
+            )}
+            {article?.example && (
+              <p className="mt-3 text-[13px] font-semibold text-danger">
+                Beispielartikel können nicht bestellt werden. Bitte entfernen Sie die Position.
+              </p>
+            )}
+
+            <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <span className="text-[13px] font-semibold text-foreground-muted">Stückzahl</span>
+                <div className="mt-1.5">
+                  <QuantityInput
+                    value={item.qty}
+                    onChange={onQty}
+                    min={1}
+                    max={article?.maxQty ?? item.qty}
+                    label={`Stückzahl ${article?.name ?? item.label}`}
+                  />
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-[13px] text-foreground-muted">{formatCents(item.unitPriceCents)} je Stück</p>
+                <p className="font-display text-lg font-bold text-foreground">
+                  {formatCents(item.unitPriceCents * item.qty)}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-3">
+              <Button variant="ghost" onClick={onRemove} className="px-0">
+                <Trash2 size={16} aria-hidden />
+                Position entfernen
+              </Button>
+            </div>
+          </div>
+        </div>
+      </CardBody>
+    </Card>
   );
 }

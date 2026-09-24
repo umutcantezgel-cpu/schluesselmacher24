@@ -117,7 +117,11 @@ function clampDeposit(value: number, booking: BookingDefaults): number {
 /* ---------- Schlüssel nach Code ----------------------------------------- */
 
 /** Stückpreis unter Berücksichtigung der Staffel. */
-export function unitPriceForCodeLine(line: CodeLine, qty: number): number {
+/** Stückpreis nach Mengenstaffel — für Codelinien und Standardartikel. */
+export function unitPriceForCodeLine(
+  line: Pick<CodeLine, 'priceCents' | 'bulkPrices'>,
+  qty: number,
+): number {
   const tiers = [...(line.bulkPrices ?? [])].sort((a, b) => b.minQty - a.minQty);
   const tier = tiers.find((t) => qty >= t.minQty);
   return tier ? tier.priceCents : line.priceCents;
@@ -228,7 +232,9 @@ export function availableShipping(
   shipping: ShippingOption[],
 ): ShippingOption[] {
   const classes = new Set<ProductClass>(
-    items.map((i) => (i.kind === 'code-schluessel' ? 'code-schluessel' : 'zylinder')),
+    items.map((i) =>
+      i.kind === 'code-schluessel' ? 'code-schluessel' : i.kind === 'standard' ? i.shippingClass : 'zylinder',
+    ),
   );
   return shipping.filter((option) =>
     [...classes].every((cls) => option.productClasses.includes(cls)),

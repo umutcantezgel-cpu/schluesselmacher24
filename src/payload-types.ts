@@ -203,6 +203,26 @@ export interface Vorgaenge {
     dauerMinuten?: number | null;
     ort?: ('werkstatt' | 'vor-ort') | null;
   };
+  positionen?:
+    | {
+        bezeichnung: string;
+        kennung: string;
+        art: 'code-schluessel' | 'zylinder-schliessung' | 'standard';
+        details?: string | null;
+        menge: number;
+        einzelpreisCent: number;
+        summeCent: number;
+        steuersatz: number;
+        id?: string | null;
+      }[]
+    | null;
+  summen?: {
+    artikelCent?: number | null;
+    versandCent?: number | null;
+    gesamtCent?: number | null;
+    steuerCent?: number | null;
+    versandart?: string | null;
+  };
   kontakt: {
     anrede?: string | null;
     vorname: string;
@@ -1158,6 +1178,28 @@ export interface VorgaengeSelect<T extends boolean = true> {
         uhrzeit?: T;
         dauerMinuten?: T;
         ort?: T;
+      };
+  positionen?:
+    | T
+    | {
+        bezeichnung?: T;
+        kennung?: T;
+        art?: T;
+        details?: T;
+        menge?: T;
+        einzelpreisCent?: T;
+        summeCent?: T;
+        steuersatz?: T;
+        id?: T;
+      };
+  summen?:
+    | T
+    | {
+        artikelCent?: T;
+        versandCent?: T;
+        gesamtCent?: T;
+        steuerCent?: T;
+        versandart?: T;
       };
   kontakt?:
     | T

@@ -37,6 +37,16 @@ describe('Übersetzung Payload ↔ Seite', () => {
     });
   });
 
+  it('Standardartikel samt Beispielkennzeichen', async () => {
+    const articles = await read('standardArticles');
+    expect(articles.length).toBe(8);
+    articles.forEach((article, index) => {
+      expect(article.example).toBe(true);
+      const doc = gespeichert(m.standardartikelZuPayload(article), index + 1);
+      expect(m.standardartikelZuSeite(doc as never), article.id).toEqual(article);
+    });
+  });
+
   it('Preisgruppen, Leistungen und Preisregeln mit Verweisen', async () => {
     const [groups, services, rules] = await Promise.all([
       read('pricingGroups'),
