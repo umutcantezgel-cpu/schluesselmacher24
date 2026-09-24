@@ -27,6 +27,21 @@ import { IconSchluesselbartFraesen } from './schluesselbart-fraesen';
 import { IconFahrzeugoeffnung } from './fahrzeugoeffnung';
 import { IconSchluesselKopieren } from './schluessel-kopieren';
 import { IconFahrzeugmarke } from './fahrzeugmarke';
+// Zylinder & Tür
+import { IconProfilzylinder } from './profilzylinder';
+import { IconHalbzylinder } from './halbzylinder';
+import { IconKnaufzylinder } from './knaufzylinder';
+import { IconZylinderMass } from './zylinder-mass';
+import { IconSicherungskarte } from './sicherungskarte';
+import { IconEinsteckschloss } from './einsteckschloss';
+import { IconMehrfachverriegelung } from './mehrfachverriegelung';
+import { IconSchutzbeschlag } from './schutzbeschlag';
+import { IconTuerzusatzschloss } from './tuerzusatzschloss';
+import { IconTuerschliesser } from './tuerschliesser';
+import { IconPanikFluchttuer } from './panik-fluchttuer';
+import { IconReparaturAustausch } from './reparatur-austausch';
+import { IconTechnischeBeratung } from './technische-beratung';
+import { IconMontage } from './montage';
 
 /** Dateiname (ohne Endung) → Komponente. Jede Icon-Datei im Ordner muss hier stehen. */
 const ICONS: Record<string, ComponentType<IconProps>> = {
@@ -50,6 +65,21 @@ const ICONS: Record<string, ComponentType<IconProps>> = {
   fahrzeugoeffnung: IconFahrzeugoeffnung,
   'schluessel-kopieren': IconSchluesselKopieren,
   fahrzeugmarke: IconFahrzeugmarke,
+  // Zylinder & Tür
+  profilzylinder: IconProfilzylinder,
+  halbzylinder: IconHalbzylinder,
+  knaufzylinder: IconKnaufzylinder,
+  'zylinder-mass': IconZylinderMass,
+  sicherungskarte: IconSicherungskarte,
+  einsteckschloss: IconEinsteckschloss,
+  mehrfachverriegelung: IconMehrfachverriegelung,
+  schutzbeschlag: IconSchutzbeschlag,
+  tuerzusatzschloss: IconTuerzusatzschloss,
+  tuerschliesser: IconTuerschliesser,
+  'panik-fluchttuer': IconPanikFluchttuer,
+  'reparatur-austausch': IconReparaturAustausch,
+  'technische-beratung': IconTechnischeBeratung,
+  montage: IconMontage,
 };
 
 const ICON_DIR = path.dirname(fileURLToPath(import.meta.url));
