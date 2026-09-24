@@ -1,16 +1,17 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# Red-Team Audit & Architectural Findings
 
 ## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+- **kasse-formular.tsx**: Keine visuelle Rückmeldung während der asynchronen Zahlungsabwicklung. Führt zu potentiellen Mehrfach-Klicks und abgebrochenen Sitzungen.
+- **zutritt-konfigurator.tsx**: Der onClick-Handler für die "Zurücksetzen"-Funktion ruft `() => window.scrollTo(...)` auf, löscht aber nicht den lokalen State des Konfigurators.
 
 ## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+- **cookie-einstellungen.tsx**: Direkter Zugriff auf `window.localStorage.length` im Render-Pfad, ohne `useEffect` oder Mounting-Guards. Dies provoziert Hydration-Fehler bei SSR.
+- **client-state.ts**: Synchroner Lesezugriff auf localStorage außerhalb eines React-Lifecycles, was zu Server-Client-Diskrepanzen führt.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TypeScript-Schwächen
+- **json-ld.tsx**: Fehlende `satisfies Graph` Absicherung, was zu stillen Schema-Typfehlern führen kann, die erst von Google abgemahnt werden.
+- **scheduling.ts**: Mögliche Any-Typisierungen bei der Verarbeitung verschachtelter Zeitfenster-Objekte.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. Core Web Vitals Sünden
+- **image-placeholder.tsx**: Bilder werden ohne harte Breite/Höhe-Attribute (bzw. Aspect-Ratio) geladen, was zu Cumulative Layout Shifts (CLS) führt.
+- Generell: Verzögerter LCP durch fehlendes Preloading von kritischen SVG-Assets und Webfonts in den Head-Metadaten.
