@@ -5,7 +5,6 @@ import type { CollectionName, Collections, DataAdapter } from './adapter';
 import { defaults } from './defaults';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
-const TMP_CONTENT_DIR = path.join('/tmp', 'sm24-content');
 
 const FILE_NAMES: Record<CollectionName, string> = {
   settings: 'settings.json',
@@ -32,25 +31,18 @@ const FILE_NAMES: Record<CollectionName, string> = {
 export class JsonFileAdapter implements DataAdapter {
   readonly name = 'json-datei';
 
-  /** Auf Plattformen ohne beschreibbares Dateisystem automatisch aus. */
-  readonly writable = process.env.SM24_READONLY_CONTENT !== '1';
+  /**
+   * Auf Vercel gibt es kein dauerhaft beschreibbares Dateisystem. Statt dort
+   * still in einen flüchtigen Zwischenspeicher zu schreiben, wird ehrlich
+   * abgelehnt — dauerhaft gespeichert wird über die Datenbank (Payload).
+   */
+  readonly writable = !process.env.VERCEL && process.env.SM24_READONLY_CONTENT !== '1';
 
   private cache = new Map<CollectionName, unknown>();
 
   async read<K extends CollectionName>(name: K): Promise<Collections[K]> {
     const cached = this.cache.get(name);
     if (cached !== undefined) return cached as Collections[K];
-
-    // Zuerst prüfen, ob in dieser Instanz eine temporäre Version geschrieben wurde
-    const tmpFile = path.join(TMP_CONTENT_DIR, FILE_NAMES[name]);
-    try {
-      const raw = await fs.readFile(tmpFile, 'utf8');
-      const parsed = JSON.parse(raw) as Collections[K];
-      this.cache.set(name, parsed);
-      return parsed;
-    } catch {
-      // Nicht in TMP, fahre mit regulärem CONTENT_DIR fort
-    }
 
     const file = path.join(CONTENT_DIR, FILE_NAMES[name]);
     try {
@@ -72,34 +64,12 @@ export class JsonFileAdapter implements DataAdapter {
           'Für den Dauerbetrieb bitte einen Datenbank-Adapter hinterlegen.',
       );
     }
+    await fs.mkdir(CONTENT_DIR, { recursive: true });
+    const file = path.join(CONTENT_DIR, FILE_NAMES[name]);
+    await fs.writeFile(file, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+    // Erst nach erfolgreichem Schreiben übernehmen — sonst meldete der
+    // Zwischenspeicher Daten, die nie gespeichert wurden.
     this.cache.set(name, value);
-
-    try {
-      await fs.mkdir(CONTENT_DIR, { recursive: true });
-      const file = path.join(CONTENT_DIR, FILE_NAMES[name]);
-      await fs.writeFile(file, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
-    } catch (err: unknown) {
-      // Auf Serverless-Umgebungen (wie Vercel) ist das Dateisystem schreibgeschützt (EROFS).
-      // Hier weichen wir auf /tmp aus, damit Testanfragen und Abläufe in der Vorschau
-      // fehlerfrei durchlaufen.
-      const isReadOnlyFs =
-        err !== null &&
-        typeof err === 'object' &&
-        'code' in err &&
-        ((err as { code?: string }).code === 'EROFS' || (err as { code?: string }).code === 'EACCES');
-
-      if (isReadOnlyFs || process.env.VERCEL) {
-        try {
-          await fs.mkdir(TMP_CONTENT_DIR, { recursive: true });
-          const tmpFile = path.join(TMP_CONTENT_DIR, FILE_NAMES[name]);
-          await fs.writeFile(tmpFile, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
-        } catch {
-          // Cache in-memory bleibt aktiv
-        }
-      } else {
-        throw err;
-      }
-    }
   }
 
   /** Nach einer Änderung von außen den Zwischenspeicher leeren. */

@@ -311,6 +311,8 @@ export function KasseFormular({
       deliveryNote: werte.deliveryNote.trim() || undefined,
       acceptedTerms: agbBestaetigt,
       acceptedCustomMade: anfertigungBestaetigt,
+      // Der Server bestellt nur, wenn sein Betrag mit dem angezeigten übereinstimmt.
+      expectedTotalCents: summen.totalCents,
     });
 
     if (!ergebnis.ok) {
@@ -328,7 +330,10 @@ export function KasseFormular({
       window.location.assign(ergebnis.redirectUrl);
       return;
     }
-    router.push(`/bestellung/${ergebnis.recordId}`);
+    // Die Bestätigung ist nur mit dem geheimen Link-Schlüssel abrufbar.
+    router.push(
+      `/bestellung/${ergebnis.recordId}?t=${encodeURIComponent(ergebnis.accessToken ?? '')}`,
+    );
   }
 
   if (abgeschlossen) {

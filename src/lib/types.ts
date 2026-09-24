@@ -448,6 +448,11 @@ export interface BusinessRecord {
   /** Nur intern sichtbar. */
   internalNotes: TimelineEntry[];
   timeline: TimelineEntry[];
+  /**
+   * SHA-256 des geheimen Link-Schlüssels für die Bestellbestätigung.
+   * Der Schlüssel selbst wird nie gespeichert.
+   */
+  accessTokenHash?: string;
 }
 
 export interface SummarySection {

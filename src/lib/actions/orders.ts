@@ -1,9 +1,14 @@
 'use server';
 
+import { z } from 'zod';
+
 import { getCollection, getSettings } from '@/lib/data';
-import { cartTotals, priceCylinderOrder, unitPriceForCodeLine } from '@/lib/pricing';
-import { formatCents, formatMillimeter } from '@/lib/format';
-import { submitRecord } from './records';
+import { validateCylinderDraft } from '@/lib/cylinder-rules';
+import { formatCents } from '@/lib/format';
+import { availableShipping, cartTotals, priceCylinderOrder, unitPriceForCodeLine } from '@/lib/pricing';
+import { createRecord } from '@/lib/server/create-record';
+import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
+import { contactSchema } from '@/lib/server/record-schema';
 import type { Cart, CartItem, ContactDetails, SummarySection } from '@/lib/types';
 
 export interface CheckoutInput {
@@ -14,26 +19,108 @@ export interface CheckoutInput {
   deliveryNote?: string;
   acceptedTerms: boolean;
   acceptedCustomMade: boolean;
+  /**
+   * Der Gesamtbetrag, den der Kunde beim Absenden gesehen hat. Weicht der
+   * serverseitig berechnete Betrag ab, wird nicht bestellt (§ 312j BGB).
+   */
+  expectedTotalCents: number;
+}
+
+export interface CheckoutResult {
+  ok: boolean;
+  reference?: string;
+  recordId?: string;
+  /** Geheimer Link-Schlüssel für die Bestellbestätigung. */
+  accessToken?: string;
+  redirectUrl?: string;
+  notices: string[];
+  error?: string;
+  /** Gesetzt, wenn sich der Preis seit der Anzeige geändert hat. */
+  priceChanged?: { expectedCents: number; actualCents: number };
+}
+
+const uploadRefSchema = z.object({
+  id: z.string().max(120),
+  fileName: z.string().max(255),
+  sizeBytes: z.number().int().min(0).max(30 * 1024 * 1024),
+  mimeType: z.string().max(120),
+  category: z.enum(['schluesselfoto', 'fahrzeugschein', 'grundriss', 'dokument', 'objektfoto']),
+  storageKey: z.string().max(500).optional(),
+  uploadedAt: z.string().max(40),
+});
+
+const cartItemSchema = z.discriminatedUnion('kind', [
+  z.object({
+    kind: z.literal('code-schluessel'),
+    uid: z.string().max(80),
+    codeLineId: z.string().max(80),
+    code: z.string().trim().min(1).max(60),
+    qty: z.number().int().min(1).max(999),
+    unitPriceCents: z.number().int().min(0),
+    photoRefs: z.array(uploadRefSchema).max(6),
+    note: z.string().max(1000).optional(),
+  }),
+  z.object({
+    kind: z.literal('zylinder-schliessung'),
+    uid: z.string().max(80),
+    draft: z.object({
+      items: z
+        .array(
+          z.object({
+            uid: z.string().max(80),
+            form: z.enum(['doppelzylinder', 'knaufzylinder', 'halbzylinder']),
+            measureAMm: z.number().int().min(1).max(400),
+            measureBMm: z.number().int().min(1).max(400).optional(),
+            functionId: z.string().max(80).optional(),
+            qty: z.number().int().min(1).max(999),
+          }),
+        )
+        .max(100),
+      keyCount: z.number().int(),
+      extraIds: z.array(z.string().max(80)).max(20),
+      expandable: z.boolean(),
+    }),
+    unitPriceCents: z.number().int().min(0),
+    qty: z.literal(1),
+    note: z.string().max(1000).optional(),
+  }),
+]);
+
+const checkoutSchema = z.object({
+  items: z.array(cartItemSchema).min(1).max(50),
+  shippingOptionId: z.string().max(80),
+  contact: contactSchema,
+  deliveryNote: z.string().max(2000).optional(),
+  acceptedTerms: z.literal(true),
+  acceptedCustomMade: z.literal(true),
+  expectedTotalCents: z.number().int().min(0),
+});
+
+function fail(error: string): CheckoutResult {
+  return { ok: false, notices: [], error };
 }
 
 /**
  * Nimmt eine Bestellung aus dem Warenkorb an.
  *
- * Die Preise werden auf dem Server neu berechnet — Angaben aus dem
- * Browser werden nicht als Preisgrundlage übernommen.
+ * Preise, Versand und Zusammenstellungen werden auf dem Server neu geprüft
+ * und berechnet. Beträge aus dem Browser dienen nur dem Abgleich.
  */
-export async function submitOrder(input: CheckoutInput) {
-  if (!input.acceptedTerms || !input.acceptedCustomMade) {
-    return {
-      ok: false as const,
-      notices: [],
-      error: 'Bitte bestätigen Sie die erforderlichen Hinweise, um die Bestellung abzuschließen.',
-    };
+export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult> {
+  if (!(await allowRequest(LIMITS.bestellung))) return fail(RATE_LIMIT_MESSAGE);
+
+  if (!input?.acceptedTerms || !input?.acceptedCustomMade) {
+    return fail('Bitte bestätigen Sie die erforderlichen Hinweise, um die Bestellung abzuschließen.');
+  }
+  if (!Array.isArray(input.items) || input.items.length === 0) {
+    return fail('Ihr Warenkorb ist leer.');
   }
 
-  if (input.items.length === 0) {
-    return { ok: false as const, notices: [], error: 'Ihr Warenkorb ist leer.' };
+  const parsed = checkoutSchema.safeParse(input);
+  if (!parsed.success) {
+    return fail('Einige Angaben sind unvollständig oder ungültig. Bitte prüfen Sie das Formular.');
   }
+  const data = parsed.data;
 
   const [settings, codeLines, catalog] = await Promise.all([
     getSettings(),
@@ -41,35 +128,37 @@ export async function submitOrder(input: CheckoutInput) {
     getCollection('cylinderCatalog'),
   ]);
 
-  // Preise serverseitig neu ermitteln.
   const verified: CartItem[] = [];
   const rows: SummarySection['rows'] = [];
 
-  for (const item of input.items) {
+  for (const item of data.items) {
     if (item.kind === 'code-schluessel') {
       const line = codeLines.find((l) => l.id === item.codeLineId && l.active);
       if (!line) {
-        return {
-          ok: false as const,
-          notices: [],
-          error: 'Ein Artikel im Warenkorb ist nicht mehr verfügbar. Bitte prüfen Sie Ihren Warenkorb.',
-        };
+        return fail('Ein Artikel im Warenkorb ist nicht mehr verfügbar. Bitte prüfen Sie Ihren Warenkorb.');
       }
-      if (!new RegExp(line.codePattern).test(item.code)) {
-        return {
-          ok: false as const,
-          notices: [],
-          error: `Der Code „${item.code}“ passt nicht zum erwarteten Format (${line.codeFormatLabel}).`,
-        };
+      let matches = false;
+      try {
+        matches = new RegExp(line.codePattern).test(item.code);
+      } catch {
+        matches = false;
       }
-      const qty = Math.min(Math.max(1, item.qty), line.maxQty);
-      const unit = unitPriceForCodeLine(line, qty);
-      verified.push({ ...item, qty, unitPriceCents: unit });
+      if (!matches) {
+        return fail(`Der Code „${item.code}“ passt nicht zum erwarteten Format (${line.codeFormatLabel}).`);
+      }
+      if (item.qty > line.maxQty) {
+        return fail(`Von „${line.name}“ sind höchstens ${line.maxQty} Stück je Bestellung möglich.`);
+      }
+      const unit = unitPriceForCodeLine(line, item.qty);
+      verified.push({ ...item, unitPriceCents: unit });
       rows.push({
         label: line.name,
-        value: `Code ${item.code} · ${qty} Stück · ${formatCents(unit * qty)}`,
+        value: `Code ${item.code} · ${item.qty} Stück · ${formatCents(unit * item.qty)}`,
       });
     } else {
+      const problem = validateCylinderDraft(item.draft, catalog);
+      if (problem) return fail(`Zylinder-Zusammenstellung: ${problem}`);
+
       const breakdown = priceCylinderOrder(item.draft, catalog);
       verified.push({ ...item, unitPriceCents: breakdown.totalCents });
       rows.push({
@@ -84,13 +173,26 @@ export async function submitOrder(input: CheckoutInput) {
     }
   }
 
-  const cart: Cart = {
-    items: verified,
-    shippingOptionId: input.shippingOptionId,
-    updatedAt: new Date().toISOString(),
-  };
+  // Versandart muss existieren und zu allen Artikeln passen.
+  const shipping = availableShipping(verified, settings.shipping).find(
+    (option) => option.id === data.shippingOptionId,
+  );
+  if (!shipping) {
+    return fail('Die gewählte Versandart passt nicht zu Ihrem Warenkorb. Bitte wählen Sie erneut.');
+  }
+
+  const cart: Cart = { items: verified, shippingOptionId: shipping.id };
   const totals = cartTotals(cart, settings.shipping);
-  const shipping = settings.shipping.find((s) => s.id === input.shippingOptionId);
+
+  if (totals.totalCents !== data.expectedTotalCents) {
+    return {
+      ...fail(
+        `Der Gesamtbetrag hat sich geändert: jetzt ${formatCents(totals.totalCents)} statt `
+          + `${formatCents(data.expectedTotalCents)}. Bitte prüfen Sie die Übersicht und bestellen Sie erneut.`,
+      ),
+      priceChanged: { expectedCents: data.expectedTotalCents, actualCents: totals.totalCents },
+    };
+  }
 
   const summary: SummarySection[] = [
     { title: 'Artikel', rows },
@@ -98,7 +200,7 @@ export async function submitOrder(input: CheckoutInput) {
       title: 'Summe',
       rows: [
         { label: 'Artikel', value: formatCents(totals.itemsCents) },
-        { label: 'Versand', value: `${shipping?.label ?? 'Versand'} · ${formatCents(totals.shippingCents)}` },
+        { label: 'Versand', value: `${shipping.label} · ${formatCents(totals.shippingCents)}` },
         { label: 'Gesamtbetrag', value: formatCents(totals.totalCents) },
         {
           label: 'Enthaltene Umsatzsteuer',
@@ -108,17 +210,18 @@ export async function submitOrder(input: CheckoutInput) {
     },
   ];
 
-  return submitRecord({
+  return createRecord({
     kind: 'bestellung',
     area: verified.some((i) => i.kind === 'zylinder-schliessung')
       ? 'gleichschliessende-zylinder'
       : 'schluessel-nach-code',
     process: 'direktkauf',
-    contact: input.contact,
+    contact: data.contact,
     payload: {
       items: verified,
-      shippingOptionId: input.shippingOptionId,
-      deliveryNote: input.deliveryNote,
+      shippingOptionId: shipping.id,
+      shippingLabel: shipping.label,
+      deliveryNote: data.deliveryNote,
       totals,
     },
     summary,
@@ -129,19 +232,4 @@ export async function submitOrder(input: CheckoutInput) {
       description: `Bestellung über ${formatCents(totals.totalCents)}`,
     },
   });
-}
-
-/** Lesbare Beschreibung einer Zylinder-Position, auch im Backend verwendet. */
-export async function describeCylinderItem(draft: CheckoutInput['items'][number]) {
-  if (draft.kind !== 'zylinder-schliessung') return '';
-  const catalog = await getCollection('cylinderCatalog');
-  return draft.draft.items
-    .map((item) => {
-      const form = catalog.forms.find((f) => f.id === item.form);
-      const measure = item.measureBMm
-        ? `${formatMillimeter(item.measureAMm)}/${formatMillimeter(item.measureBMm)}`
-        : formatMillimeter(item.measureAMm);
-      return `${item.qty} × ${form?.label ?? item.form} ${measure}`;
-    })
-    .join(', ');
 }

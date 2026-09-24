@@ -1,5 +1,7 @@
 'use server';
 
+import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
+
 import { getCollection, getRecords, getSettings } from '@/lib/data';
 import { availableSlots, bookableDays, toIsoDate } from '@/lib/scheduling';
 import { quoteCarKeyService } from '@/lib/pricing';
@@ -88,6 +90,15 @@ export async function fetchSlots(
 
 /** Stand eines Vorgangs für die Terminstatus-Seite. */
 export async function fetchRecordStatus(reference: string, email: string) {
+  // Nummer + E-Mail sind die einzige Hürde vor persönlichen Daten — daher
+  // gegen massenhaftes Durchprobieren begrenzt.
+  if (!(await allowRequest(LIMITS.status))) {
+    return { ok: false as const, error: RATE_LIMIT_MESSAGE };
+  }
+  if (typeof reference !== 'string' || typeof email !== 'string' || reference.length > 40 || email.length > 254) {
+    return { ok: false as const, error: 'Bitte prüfen Sie Ihre Eingabe.' };
+  }
+
   const records = await getRecords();
   const record = records.find(
     (r) =>

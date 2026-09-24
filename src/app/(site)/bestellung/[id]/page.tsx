@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { connection } from 'next/server';
 import { ArrowRight } from 'lucide-react';
 
 import { getRecord } from '@/lib/data';
+import { verifyAccessToken } from '@/lib/server/access-token';
 import { mailStatus, storageStatus } from '@/lib/integrations';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
 import type { PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
@@ -15,6 +17,8 @@ import { SummaryList } from '@/components/layout/summary-list';
 
 interface BestellungSeiteProps {
   params: Promise<{ id: string }>;
+  /** `t` ist der geheime Link-Schlüssel aus der Bestätigung. */
+  searchParams: Promise<{ t?: string | string[] }>;
 }
 
 type Tonfall = 'neutral' | 'primary' | 'accent' | 'success' | 'warning' | 'danger' | 'outline';
@@ -69,22 +73,31 @@ const PAYMENT_SCOPE_LABELS: Record<PaymentInfo['scope'], string> = {
   gesamt: 'Gesamtbetrag',
 };
 
-export async function generateMetadata(props: BestellungSeiteProps): Promise<Metadata> {
-  const { id } = await props.params;
-  const record = await getRecord(id);
+export const metadata: Metadata = {
+  // Ohne Vorgangsnummer im Titel: Tab-Titel landen in Verläufen und Freigaben.
+  title: 'Bestätigung',
+  description:
+    'Bestätigung Ihres Vorgangs mit Vorgangsnummer, Status, Zahlungsstatus und Zusammenfassung.',
+  // Vorgangsdaten sind persönlich und gehören nicht in den Suchindex.
+  robots: { index: false, follow: false },
+  // Der Link-Schlüssel steht in der Adresse und darf nicht an andere Seiten gehen.
+  referrer: 'no-referrer',
+};
 
-  return {
-    title: record ? `${KIND_LABELS[record.kind]} ${record.reference}` : 'Vorgang',
-    description:
-      'Bestätigung Ihres Vorgangs mit Vorgangsnummer, Status, Zahlungsstatus und Zusammenfassung.',
-    // Vorgangsdaten sind persönlich und gehören nicht in den Suchindex.
-    robots: { index: false, follow: false },
-  };
+async function loadAuthorisedRecord(props: BestellungSeiteProps) {
+  const [{ id }, { t }] = await Promise.all([props.params, props.searchParams]);
+  const token = Array.isArray(t) ? t[0] : t;
+  const record = await getRecord(id);
+  // Unbekannter Vorgang und falscher Schlüssel sehen gleich aus — so lässt
+  // sich nicht herausfinden, welche Nummern existieren.
+  if (!record || !verifyAccessToken(token, record.accessTokenHash)) return null;
+  return record;
 }
 
 export default async function BestellungSeite(props: BestellungSeiteProps) {
-  const { id } = await props.params;
-  const record = await getRecord(id);
+  // Persönliche Daten: immer zur Anfragezeit rendern, nie aus einem Seiten-Cache.
+  await connection();
+  const record = await loadAuthorisedRecord(props);
 
   if (!record) notFound();
 

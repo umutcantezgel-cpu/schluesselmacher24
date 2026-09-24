@@ -12,6 +12,7 @@ import type {
   InfoHint,
   SummarySection,
 } from '@/lib/types';
+import { measureOptions } from '@/lib/cylinder-rules';
 import { priceCylinderOrder } from '@/lib/pricing';
 import { formatCents, formatMillimeter } from '@/lib/format';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
@@ -99,16 +100,6 @@ const KEY_HINT: InfoHint = {
 /* ---------- Hilfsfunktionen ---------------------------------------------- */
 
 /** Zulässige Maße: Mindestmaß, danach die Schritte aus dem Katalog. */
-function measureOptions(form: CylinderFormOption): number[] {
-  const step = Math.max(1, form.stepMm);
-  const values: number[] = [];
-  if (form.minMm % step !== 0) values.push(form.minMm);
-  for (let mm = Math.ceil(form.minMm / step) * step; mm <= form.maxMm; mm += step) {
-    values.push(mm);
-  }
-  return values;
-}
-
 function nearestOption(values: number[], target: number): number {
   return values.reduce(
     (best, value) => (Math.abs(value - target) < Math.abs(best - target) ? value : best),
