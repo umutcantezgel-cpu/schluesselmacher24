@@ -1,59 +1,59 @@
 # Architecture Matrix
 
-| URL | Source File | Current Words | Target Words | Status |
-|---|---|---|---|---|
-| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | 231 | 950 | PENDING_BUILDER |
-| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /admin/inhalte | src/app/admin/inhalte/page.tsx | 213 | 950 | PENDING_BUILDER |
-| /admin | src/app/admin/page.tsx | 1172 | 1172 | PENDING_BUILDER |
-| /admin/preise | src/app/admin/preise/page.tsx | 216 | 950 | PENDING_BUILDER |
-| /admin/produkte | src/app/admin/produkte/page.tsx | 228 | 950 | PENDING_BUILDER |
-| /admin/termine | src/app/admin/termine/page.tsx | 453 | 950 | PENDING_BUILDER |
-| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | 1593 | 1593 | PENDING_BUILDER |
-| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | 322 | 950 | PENDING_BUILDER |
-| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | 519 | 950 | PENDING_BUILDER |
-| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | 1122 | 1122 | PENDING_BUILDER |
-| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | 1092 | 1092 | PENDING_BUILDER |
-| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | 1134 | 1134 | PENDING_BUILDER |
-| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | 1224 | 1224 | PENDING_BUILDER |
-| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | 980 | 980 | PENDING_BUILDER |
-| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | 719 | 950 | PENDING_BUILDER |
-| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | 1190 | 1190 | PENDING_BUILDER |
-| /autoschluessel | src/app/autoschluessel/page.tsx | 1971 | 1971 | PENDING_BUILDER |
-| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | 1223 | 1223 | PENDING_BUILDER |
-| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | 1043 | 1043 | PENDING_BUILDER |
-| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | 1208 | 1208 | PENDING_BUILDER |
-| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | 994 | 994 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 383 | 950 | PENDING_BUILDER |
-| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | 2451 | 2451 | PENDING_BUILDER |
-| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | 311 | 950 | PENDING_BUILDER |
-| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | 2052 | 2052 | PENDING_BUILDER |
-| /kasse | src/app/kasse/page.tsx | 240 | 950 | PENDING_BUILDER |
-| / | src/app/page.tsx | 1140 | 1140 | PENDING_BUILDER |
-| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | 353 | 950 | PENDING_BUILDER |
-| /ratgeber | src/app/ratgeber/page.tsx | 225 | 950 | PENDING_BUILDER |
-| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | 417 | 950 | PENDING_BUILDER |
-| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | 229 | 950 | PENDING_BUILDER |
-| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | 716 | 950 | PENDING_BUILDER |
-| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | 249 | 950 | PENDING_BUILDER |
-| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | 428 | 950 | PENDING_BUILDER |
-| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | 371 | 950 | PENDING_BUILDER |
-| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | 369 | 950 | PENDING_BUILDER |
-| /schliessanlagen | src/app/schliessanlagen/page.tsx | 1603 | 1603 | PENDING_BUILDER |
-| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | 710 | 950 | PENDING_BUILDER |
-| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | 468 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | 222 | 950 | PENDING_BUILDER |
-| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | 1762 | 1762 | PENDING_BUILDER |
-| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | 152 | 950 | PENDING_BUILDER |
-| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | 475 | 950 | PENDING_BUILDER |
-| /service-und-termin | src/app/service-und-termin/page.tsx | 462 | 950 | PENDING_BUILDER |
-| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | 108 | 950 | PENDING_BUILDER |
-| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | 656 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | 645 | 950 | PENDING_BUILDER |
-| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | 995 | 995 | PENDING_BUILDER |
-| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | 330 | 950 | PENDING_BUILDER |
-| /standorte/[city] | src/app/standorte/[city]/page.tsx | 399 | 950 | PENDING_BUILDER |
-| /standorte | src/app/standorte/page.tsx | 250 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | 494 | 950 | PENDING_BUILDER |
-| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | 746 | 950 | PENDING_BUILDER |
-| /warenkorb | src/app/warenkorb/page.tsx | 259 | 950 | PENDING_BUILDER |
+| URL | Source File | Status | Wortanzahl | Interactive Module | Schema-Status | CWV-Status |
+|---|---|---|---|---|---|---|
+| /ratgeber | src/app/ratgeber/page.tsx | PENDING_BUILDER | 224 -> 950 | GuideContentExplorer | MISSING | NEEDS_OPTIMIZATION |
+| /ratgeber/[slug] | src/app/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 355 -> 950 | GuideContentExplorer | MISSING | NEEDS_OPTIMIZATION |
+| /schluessel-nach-vorlage/anfrage | src/app/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 221 -> 950 | KeyCopyImageAnalyzer | MISSING | NEEDS_OPTIMIZATION |
+| /schluessel-nach-vorlage | src/app/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 1761 -> 1761 | KeyCopyImageAnalyzer | MISSING | NEEDS_OPTIMIZATION |
+| /warenkorb | src/app/warenkorb/page.tsx | PENDING_BUILDER | 258 -> 950 | CheckoutFlowEstimator | MISSING | NEEDS_OPTIMIZATION |
+| /kasse | src/app/kasse/page.tsx | PENDING_BUILDER | 239 -> 950 | CheckoutFlowEstimator | MISSING | NEEDS_OPTIMIZATION |
+| /schluessel-nach-code | src/app/schluessel-nach-code/page.tsx | PENDING_BUILDER | 467 -> 950 | KeyCodeValidator | MISSING | NEEDS_OPTIMIZATION |
+| /schluessel-nach-code/[slug] | src/app/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 730 -> 950 | KeyCodeValidator | MISSING | NEEDS_OPTIMIZATION |
+| / | src/app/page.tsx | PENDING_BUILDER | 1148 -> 1148 | GenericEstimator | MISSING | NEEDS_OPTIMIZATION |
+| /sicherheitstechnik | src/app/sicherheitstechnik/page.tsx | PENDING_BUILDER | 994 -> 994 | SecurityAuditChecklist | MISSING | NEEDS_OPTIMIZATION |
+| /sicherheitstechnik/[slug] | src/app/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 644 -> 950 | SecurityAuditChecklist | MISSING | NEEDS_OPTIMIZATION |
+| /sicherheitstechnik/sicherheitscheck | src/app/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 329 -> 950 | SecurityAuditChecklist | MISSING | NEEDS_OPTIMIZATION |
+| /tuer-und-schliesstechnik | src/app/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 1754 -> 1754 | SecurityAuditChecklist | MISSING | NEEDS_OPTIMIZATION |
+| /tuer-und-schliesstechnik/[slug] | src/app/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 493 -> 950 | SecurityAuditChecklist | MISSING | NEEDS_OPTIMIZATION |
+| /bestellung/[id] | src/app/bestellung/[id]/page.tsx | PENDING_BUILDER | 993 -> 993 | GenericEstimator | MISSING | NEEDS_OPTIMIZATION |
+| /gleichschliessende-zylinder | src/app/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 2051 -> 2051 | MasterKeySystemConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /gleichschliessende-zylinder/konfigurator | src/app/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 310 -> 950 | MasterKeySystemConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /elektronische-zutrittsloesungen | src/app/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 2450 -> 2450 | GenericEstimator | MISSING | NEEDS_OPTIMIZATION |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 382 -> 950 | GenericEstimator | MISSING | NEEDS_OPTIMIZATION |
+| /schliessanlagen | src/app/schliessanlagen/page.tsx | PENDING_BUILDER | 1602 -> 1602 | MasterKeySystemConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /schliessanlagen/konfigurator | src/app/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 368 -> 950 | MasterKeySystemConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /service-und-termin/terminstatus | src/app/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 107 -> 950 | ServiceAppointmentScheduler | MISSING | NEEDS_OPTIMIZATION |
+| /service-und-termin/anfrage | src/app/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 151 -> 950 | ServiceAppointmentScheduler | MISSING | NEEDS_OPTIMIZATION |
+| /service-und-termin | src/app/service-und-termin/page.tsx | PENDING_BUILDER | 1539 -> 1539 | ServiceAppointmentScheduler | MISSING | NEEDS_OPTIMIZATION |
+| /service-und-termin/vor-ort | src/app/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 655 -> 950 | ServiceAppointmentScheduler | MISSING | NEEDS_OPTIMIZATION |
+| /service-und-termin/kontakt | src/app/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 474 -> 950 | ServiceAppointmentScheduler | MISSING | NEEDS_OPTIMIZATION |
+| /admin/einstellungen | src/app/admin/einstellungen/page.tsx | PENDING_BUILDER | 230 -> 950 | AdminMetricsDashboard | MISSING | NEEDS_OPTIMIZATION |
+| /admin/fahrzeugdaten | src/app/admin/fahrzeugdaten/page.tsx | PENDING_BUILDER | 248 -> 950 | AdminMetricsDashboard | MISSING | NEEDS_OPTIMIZATION |
+| /admin | src/app/admin/page.tsx | PENDING_BUILDER | 1171 -> 1171 | AdminMetricsDashboard | MISSING | NEEDS_OPTIMIZATION |
+| /admin/termine | src/app/admin/termine/page.tsx | PENDING_BUILDER | 452 -> 950 | AdminMetricsDashboard | MISSING | NEEDS_OPTIMIZATION |
+| /admin/preise | src/app/admin/preise/page.tsx | PENDING_BUILDER | 215 -> 950 | AdminMetricsDashboard | MISSING | NEEDS_OPTIMIZATION |
+| /admin/vorgaenge | src/app/admin/vorgaenge/page.tsx | PENDING_BUILDER | 321 -> 950 | AdminMetricsDashboard | MISSING | NEEDS_OPTIMIZATION |
+| /admin/vorgaenge/[id] | src/app/admin/vorgaenge/[id]/page.tsx | PENDING_BUILDER | 1592 -> 1592 | AdminMetricsDashboard | MISSING | NEEDS_OPTIMIZATION |
+| /admin/inhalte | src/app/admin/inhalte/page.tsx | PENDING_BUILDER | 212 -> 950 | AdminMetricsDashboard | MISSING | NEEDS_OPTIMIZATION |
+| /admin/produkte | src/app/admin/produkte/page.tsx | PENDING_BUILDER | 227 -> 950 | AdminMetricsDashboard | MISSING | NEEDS_OPTIMIZATION |
+| /rechtliches/impressum | src/app/rechtliches/impressum/page.tsx | PENDING_BUILDER | 248 -> 950 | LegalTermsNavigator | MISSING | NEEDS_OPTIMIZATION |
+| /rechtliches/cookie-einstellungen | src/app/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 228 -> 950 | LegalTermsNavigator | MISSING | NEEDS_OPTIMIZATION |
+| /rechtliches/versand-und-zahlung | src/app/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 427 -> 950 | LegalTermsNavigator | MISSING | NEEDS_OPTIMIZATION |
+| /rechtliches/widerruf | src/app/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 370 -> 950 | LegalTermsNavigator | MISSING | NEEDS_OPTIMIZATION |
+| /rechtliches/agb | src/app/rechtliches/agb/page.tsx | PENDING_BUILDER | 416 -> 950 | LegalTermsNavigator | MISSING | NEEDS_OPTIMIZATION |
+| /rechtliches/datenschutz | src/app/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 715 -> 950 | LegalTermsNavigator | MISSING | NEEDS_OPTIMIZATION |
+| /standorte | src/app/standorte/page.tsx | PENDING_BUILDER | 249 -> 950 | LocationServiceEstimator | MISSING | NEEDS_OPTIMIZATION |
+| /standorte/[city] | src/app/standorte/[city]/page.tsx | PENDING_BUILDER | 401 -> 950 | LocationServiceEstimator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/marken | src/app/autoschluessel/marken/page.tsx | PENDING_BUILDER | 718 -> 950 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/marken/[make]/[model] | src/app/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 1223 -> 1223 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/marken/[make] | src/app/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 979 -> 979 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/funkschluessel | src/app/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 1091 -> 1091 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/programmieren | src/app/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 1222 -> 1222 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/anfrage | src/app/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 518 -> 950 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel | src/app/autoschluessel/page.tsx | PENDING_BUILDER | 1970 -> 1970 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/kopieren | src/app/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 1133 -> 1133 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/nachmachen | src/app/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 1189 -> 1189 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/smart-key | src/app/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 1207 -> 1207 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/schluesselbart-fraesen | src/app/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 1042 -> 1042 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
+| /autoschluessel/fahrzeugoeffnung | src/app/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 1121 -> 1121 | AutoKeyConfigurator | MISSING | NEEDS_OPTIMIZATION |
