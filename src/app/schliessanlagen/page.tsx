@@ -1,3 +1,4 @@
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
@@ -165,7 +166,14 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -302,6 +310,100 @@ export default async function SchliessanlagenPage() {
             );
           })}
         </ul>
+      </Section>
+
+
+      {/* Enterprise Architecture & Methodology */}
+      <Section tone="muted">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-start lg:gap-14">
+          <div>
+            <SectionHeading
+              eyebrow="Architektur & Methodik"
+              title="Skalierbare Berechtigungskonzepte für Enterprise-Umgebungen"
+              lead="Eine moderne Schließanlage ist mehr als die Summe ihrer Zylinder. Sie ist das mechanische Rückgrat Ihrer Gebäudesicherheit."
+            />
+            <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-foreground-muted">
+              <p>
+                Die Konzeption einer Generalhauptschlüsselanlage (GHS) für komplexe Unternehmensstrukturen erfordert eine rigorose Methodik.
+                Wir analysieren zunächst die räumlichen und organisatorischen Schnittmengen Ihres Unternehmens.
+                Dabei betrachten wir nicht nur den Status Quo, sondern antizipieren zukünftiges Wachstum,
+                Abteilungsrestrukturierungen und Fluktuation.
+              </p>
+              <p>
+                Unsere Architekturplanung basiert auf einer strengen mathematischen Matrizenberechnung.
+                Jede Türöffnung, jede Schließgruppe und jeder Einzelschlüssel wird in einem multidimensionalen
+                Rechtesystem abgebildet. Dies verhindert sogenannte &quot;Schließüberschneidungen&quot; &ndash; unbeabsichtigte
+                Berechtigungen, die durch nachträgliche Erweiterungen in schlecht geplanten Anlagen entstehen können.
+              </p>
+              <p>
+                Ein wesentlicher Faktor bei der Planung ist die Resilienz des Systems. Wir integrieren gezielt
+                mechanische Sperrebenen und patentrechtlich geschützte Profile, um illegale Schlüsselkopien
+                technisch und rechtlich unmöglich zu machen. Darüber hinaus berücksichtigen wir die
+                Integration in bestehende Flucht- und Rettungswegkonzepte gemäß DIN EN 179 und DIN EN 1125.
+              </p>
+            </div>
+          </div>
+          <div className="mt-8 lg:mt-0">
+             <EnterpriseRoiCalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Deep-Dive FAQ */}
+      <Section>
+        <SectionHeading
+          eyebrow="Tiefenanalyse"
+          title="Experten-Antworten zu komplexen Schließarchitekturen"
+          lead="Fachspezifische Details für Sicherheitsbeauftragte und Facility Manager."
+        />
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-[16px] font-bold text-foreground">1. Wie wird die mathematische Reserve einer Schließanlage berechnet?</h4>
+              <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+                Die mathematische Reserve definiert das Erweiterungspotenzial einer Anlage ohne Austausch des Zentralzylinders.
+                Wir kalkulieren standardmäßig eine Reserve von 30% pro Schließgruppe ein. Dies wird durch die Auslassung spezifischer
+                Stiftkombinationen im initialen Schließplan erreicht, wodurch zukünftige Schließungen berechnet werden können, ohne die
+                Integrität bestehender Gruppen zu kompromittieren.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-[16px] font-bold text-foreground">2. Was unterscheidet eine mechanische Sperrwelle von einem Standardprofil?</h4>
+              <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+                Standardprofile nutzen lediglich die vertikale Stiftebene zur Codierung. Systeme mit mechanischer Sperrwelle integrieren
+                zusätzliche horizontale Abfrageelemente im Zylinderkern, die mit entsprechenden Fräsungen auf dem Schlüssel korrespondieren.
+                Dies erhöht den Manipulationswiderstand gegen Picking und Bumping drastisch und vervielfacht die möglichen Kombinationsvarianten.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-[16px] font-bold text-foreground">3. Wie verhalten sich mechanische GHS-Anlagen im Kontext von DIN EN 179?</h4>
+              <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+                Türen in Flucht- und Rettungswegen unterliegen strengen Normen. Mechanische Zylinder in diesen Türen müssen über eine
+                spezielle Freilauffunktion (FZG) verfügen. Diese stellt sicher, dass der Zylinderschließbart im abgezogenen Zustand
+                frei drehbar ist, sodass das Panikschloss bei Betätigung des Drückers nicht blockiert wird.
+              </p>
+            </div>
+          </div>
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-[16px] font-bold text-foreground">4. Welche Auswirkungen hat Schlüsselverlust auf die Anlagensicherheit?</h4>
+              <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+                Der Verlust eines übergeordneten Schlüssels (z.B. Generalhauptschlüssel) in einer rein mechanischen Anlage erfordert oft
+                den Austausch großer Anlagenteile, um die Sicherheit wiederherzustellen. Um dieses Risiko zu mindern, empfehlen wir für
+                Außenhüllen und Hochsicherheitsbereiche hybride Konzepte: Elektronische Zylinder an der Peripherie kombiniert mit
+                mechanischen Systemen im Innenbereich.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-[16px] font-bold text-foreground">5. Wie lange ist der Patentschutz für Schließsysteme relevant?</h4>
+              <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+                Ein aktiver Patentschutz (gewerblicher Rechtsschutz) auf das Zylinder- und Schlüsselprofil verbietet es Drittherstellern,
+                Rohlinge zu fertigen. Dies ist die einzige wirksame Methode, um unautorisierte Schlüsselkopien zu unterbinden.
+                Wir implementieren ausschließlich Systeme mit einem Patentschutz, der noch mindestens 10-15 Jahre in die Zukunft reicht.
+              </p>
+            </div>
+          </div>
+        </div>
       </Section>
 
       {/* Kleine Vorhaben */}
