@@ -42,6 +42,15 @@ import { IconPanikFluchttuer } from './panik-fluchttuer';
 import { IconReparaturAustausch } from './reparatur-austausch';
 import { IconTechnischeBeratung } from './technische-beratung';
 import { IconMontage } from './montage';
+// Sicherheit
+import { IconVideoueberwachung } from './videoueberwachung';
+import { IconAlarmtechnik } from './alarmtechnik';
+import { IconAussenhautsicherung } from './aussenhautsicherung';
+import { IconMechanischerSchutz } from './mechanischer-schutz';
+import { IconSmarteFunktionen } from './smarte-funktionen';
+import { IconPanikAlarmtaster } from './panik-alarmtaster';
+import { IconKombinierteKonzepte } from './kombinierte-konzepte';
+import { IconSicherheitscheck } from './sicherheitscheck';
 
 /** Dateiname (ohne Endung) → Komponente. Jede Icon-Datei im Ordner muss hier stehen. */
 const ICONS: Record<string, ComponentType<IconProps>> = {
@@ -80,6 +89,15 @@ const ICONS: Record<string, ComponentType<IconProps>> = {
   'reparatur-austausch': IconReparaturAustausch,
   'technische-beratung': IconTechnischeBeratung,
   montage: IconMontage,
+  // Sicherheit
+  videoueberwachung: IconVideoueberwachung,
+  alarmtechnik: IconAlarmtechnik,
+  aussenhautsicherung: IconAussenhautsicherung,
+  'mechanischer-schutz': IconMechanischerSchutz,
+  'smarte-funktionen': IconSmarteFunktionen,
+  'panik-alarmtaster': IconPanikAlarmtaster,
+  'kombinierte-konzepte': IconKombinierteKonzepte,
+  sicherheitscheck: IconSicherheitscheck,
 };
 
 const ICON_DIR = path.dirname(fileURLToPath(import.meta.url));
