@@ -23,7 +23,9 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
-import { JsonLd, faqSchema } from '@/components/seo/json-ld';
+import { JsonLd } from '@/components/seo/json-ld';
+import type { Graph } from 'schema-dts';
+import { getSiteUrl } from '@/lib/site-url';
 
 const ROUTE = 'tuer-und-schliesstechnik';
 
@@ -118,6 +120,46 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
     getServicePages(ROUTE),
   ]);
 
+  const siteUrl = getSiteUrl();
+  const pageUrl = `${siteUrl}/${ROUTE}`;
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteUrl}/#organization`,
+        "name": "SCHLÜSSELMACHER24",
+        "url": siteUrl,
+        "logo": `${siteUrl}/logo.png`
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        "url": siteUrl,
+        "name": "SCHLÜSSELMACHER24",
+        "publisher": { "@id": `${siteUrl}/#organization` }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}/#webpage`,
+        "url": pageUrl,
+        "name": page?.seo.title ?? 'Tür- und Schließtechnik: Sicherheit vom Zylinder bis zum Mehrfachschloss',
+        "isPartOf": { "@id": `${siteUrl}/#website` },
+        "about": { "@id": `${siteUrl}/#organization` }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}/#faq`,
+        "mainEntity": EXPERT_FAQ.map((item) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+        }))
+      }
+    ]
+  } satisfies Graph;
+
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
   return (
@@ -126,7 +168,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
       data-search={JSON.stringify(searchParams)}
       className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
     >
-      <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
+      <JsonLd data={structuredData} />
 
       <PageHeader
         eyebrow="Leistungsbereich"
@@ -236,7 +278,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
                     {service.summary}
                   </span>
                   <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[oklch(0.52_0.24_260)]">
-                    Leistungsdetails
+                    {service.title} im Detail
                     <ArrowRight
                       size={16}
                       aria-hidden
