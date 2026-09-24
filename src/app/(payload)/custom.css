@@ -8,3 +8,11 @@
   --style-radius-m: 10px;
   --style-radius-l: 14px;
 }
+
+/* Markenfarbe für Schaltflächen und Links — hell und freundlich wie die Seite. */
+:root {
+  --theme-success-500: #1d5fd1;
+  --theme-success-600: #1a54b8;
+  --theme-success-100: #eaf1ff;
+  --theme-success-150: #dce8ff;
+}

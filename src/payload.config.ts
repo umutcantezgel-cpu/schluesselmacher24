@@ -40,6 +40,12 @@ export default buildConfig({
     user: Benutzer.slug,
     importMap: { baseDir: path.resolve(dirname) },
     meta: { titleSuffix: ' – SCHLÜSSELMACHER24 Backend' },
+    components: {
+      graphics: {
+        Logo: '/payload/components/Marke#Logo',
+        Icon: '/payload/components/Marke#Icon',
+      },
+    },
     theme: 'light',
   },
   i18n: {
