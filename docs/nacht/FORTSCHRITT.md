@@ -10,17 +10,17 @@ Gate je Commit: `npm run typecheck && npm run lint && npm test` · je Paket zus�
 | 0 | Einrichtung | fertig | 64429c9 |
 | 1 | Payload-Probelauf (Entscheidung A/B) | fertig — **Pfad A** | c5cea73 |
 | 2 | Sicherheit, Aufräumen, Ernte, Design-Verträge (CP1) | fertig | 55ece02 |
-| 3 | Payload-Modell, Seed, Datenschicht (CP2) | offen | — |
+| 3 | Payload-Modell, Seed, Datenschicht (CP2) | fertig | (siehe git log) |
 | 4 | Bestellungen, Termine, Artikel, Richtwerte (CP3) | offen | — |
 | 5 | Stripe, Visual-Einbau, E2E (CP4) | offen | — |
 | 6 | Puffer und Abschluss (CP5) | offen | — |
 
 ## Nächster Schritt
-Paket 3: Payload-Collections/Globals nach Tabelle im Plan, Seed aus `content/*.json`,
-`src/lib/data/index.ts` auf Local API → CP2. DB vorher: `npm run db:start`.
-Parallel: Grafik-Agenten (Icons | Generatoren + Bewegung) in eigenen Worktrees,
-nur `src/components/visual/**`; Übernahme nach `git diff --name-only`-Prüfung,
-danach Einträge in `src/components/visual/registry.tsx`.
+Paket 4: Vorgänge in Transaktion mit Zähler (`sm24_zaehler`) und Positionen-Schnappschuss,
+Terminbuchung mit Advisory-Lock, Kundenuploads → `kundendateien`, `/artikel` + Standardartikel
+(+ 8 Beispielartikel, nicht bestellbar), Richtwerte + Rechner, Nachweise, Löschsperre bei
+Bestellbezug → CP3. DB: `npm run db:start`. Tests: `npm test` (Einheit + Datenbank).
+Grafik-Agenten laufen parallel (Worktrees unter `.claude/worktrees/`).
 
 ## Notizen
 - **Pfad A (Payload 3.90.2)** — Probelauf 17:08–17:15 bestanden:
@@ -38,3 +38,9 @@ danach Einträge in `src/components/visual/registry.tsx`.
   `ImageSlot.visual/bild`, CSS-Bewegung + `InView`, `src/components/visual/README.md`.
   Bot-Sicherheitscheck-Schema (Türart/Schlossart/Dringlichkeit) → in Paket 4 bei den Richtwerten
   übernehmen (Beträge der Bots sind erfunden und entfallen).
+- **Paket 3** (CP2): 11 Sammlungen + 2 Globals (deutsch), Migration `20260924_004222_datenmodell`,
+  Seed `src/scripts/seed.ts` (nur leere Sammlungen, läuft im Build), Datenschicht über Local API
+  (`src/lib/data/payload-adapter.ts`, Übersetzung `payload-mapping.ts` mit Hin-und-zurück-Test).
+  Preisänderung per CMS → Seite zeigt neuen Preis + Staffeln folgen (im Browser geprüft).
+  Datenbanktests `vitest.db.config.ts` (Port 5434). Payload-Falle: `delete({ trash: true })`
+  löscht endgültig; Papierkorb = `deletedAt` setzen.
