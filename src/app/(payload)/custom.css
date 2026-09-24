@@ -1,0 +1,10 @@
+/*
+ * Gestaltung des Payload-Backends im Stil von SCHLÜSSELMACHER24.
+ * Payload legt seine Stile in @layer payload-default ab; diese Regeln gewinnen.
+ */
+:root {
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --style-radius-s: 6px;
+  --style-radius-m: 10px;
+  --style-radius-l: 14px;
+}
