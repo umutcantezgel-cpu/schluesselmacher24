@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 
 import { getPageContent, getServicePages } from '@/lib/data';
+import { getRichtwerte } from '@/lib/data/richtwerte';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
@@ -22,7 +23,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
-import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
+import { TuerAbsicherungRechner } from '@/components/calculator/tuer-absicherung-rechner';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'tuer-und-schliesstechnik';
@@ -105,9 +106,10 @@ const EXPERT_FAQ = [
 ];
 
 export default async function TuerUndSchliesstechnikPage() {
-  const [page, services] = await Promise.all([
+  const [page, services, richtwerte] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
+    getRichtwerte(),
   ]);
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
@@ -192,7 +194,9 @@ export default async function TuerUndSchliesstechnikPage() {
             </div>
           </div>
 
-          <div className="sticky top-8 space-y-8">
+          {/* Nicht mitlaufend: Der Rechner ist höher als das Fenster, Ergebnis und
+              Anfrage lägen sonst außer Reichweite. */}
+          <div className="space-y-8">
             <ImagePlaceholder
               slot={{
                 motif: 'Werkstattfoto: Detailaufnahme einer massiven Mehrfachverriegelung im Querschnitt, Schwenkriegel greift in Schließblech',
@@ -200,8 +204,10 @@ export default async function TuerUndSchliesstechnikPage() {
                 note: 'Hochauflösendes Detailfoto zur Verdeutlichung der mechanischen Präzision.',
               }}
             />
-            {/* Interaktives Modul */}
-            <SecurityCheckCalculator />
+            <TuerAbsicherungRechner
+              werte={richtwerte.tuerAbsicherung}
+              anfrageHref={`/service-und-termin/anfrage?thema=${ROUTE}`}
+            />
           </div>
         </div>
       </Section>
