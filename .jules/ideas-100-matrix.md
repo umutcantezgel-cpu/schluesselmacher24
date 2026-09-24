@@ -1,109 +1,109 @@
-# 100 Radikale Innovationsideen (Swiss Light Mode Aesthetic)
+# 100-Ideas Matrix
 
-## Kategorie A: Awwwards-Kinetik & Taktile Interaktion (Ideen 1 bis 25)
-1. IDEA_001: Federgedämpfte Hover-States für alle Button-Komponenten (src/components/ui/button.tsx).
-2. IDEA_002: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex auf der Homepage (src/app/page.tsx).
-3. IDEA_003: Scroll-getriebene SVG-Animation für den "Schlüssel nach Code"-Prozess.
-4. IDEA_004: Mikro-haptisches Cursor-Tracking für die Area-Karten.
-5. IDEA_005: Parallax-Tiefenunschärfe für das Hero-Image auf der Startseite.
-6. IDEA_006: Magnetische Buttons für primäre CTAs (z.B. "Termin buchen").
-7. IDEA_007: Interaktives SVG-Schlüsselprofil (Hover zum Drehen) in der Schließanlagen-Übersicht.
-8. IDEA_008: Glatte Seitenübergänge (View Transitions API) zwischen allen Hauptseiten.
-9. IDEA_009: Morphing-Icons in der Schnelleinstieg-Sektion.
-10. IDEA_010: Skew-on-Scroll für Textblöcke auf der "Über Uns"-Seite.
-11. IDEA_011: Dynamische Schatten (oklch 0.988) basierend auf Cursor-Position.
-12. IDEA_012: Fade-In Sequence für Listenelemente in der Schließanlagen-Page.
-13. IDEA_013: 3D-Tilt-Effekt für die Feature-Karten.
-14. IDEA_014: Liquid-Distortion Hover auf Bildern.
-15. IDEA_015: Reveal-Animation für Akkordeon-Antworten (src/components/ui/accordion.tsx).
-16. IDEA_016: Text-Scramble Effekt bei initialem Laden der Headlines.
-17. IDEA_017: Sticky-Scrolling für lange Content-Seiten (Ratgeber).
-18. IDEA_018: Horizontal Scroll-Bereich für das Portfolio / Referenzen.
-19. IDEA_019: Kinetic Typography für die 404-Seite.
-20. IDEA_020: Ripple-Effekt auf allen klickbaren Cards.
-21. IDEA_021: Lade-Indikator als sich füllendes Schlüssel-Icon.
-22. IDEA_022: Progress-Bar angebunden an Scroll-Tiefe für Blog/Ratgeber.
-23. IDEA_023: Tooltips mit sanftem Spring-Fade-In.
-24. IDEA_024: Hover-Masking für das Hero-Image (Enthüllung von Details).
-25. IDEA_025: Interaktiver "Lichtschalter" (Light Mode Only, demonstriert Helligkeit ohne Dark Mode).
+## KATEGORIE A: AWWWARDS-KINETIK & TAKTILE INTERAKTION (IDEEN 1 BIS 25)
+1. **Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex**: Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts. (`app/page.tsx` - `components/showcase/spatial-bento-grid.tsx`)
+2. **Kinetische Akkordeons mit fluidem Höhen-Morphing**: Ersetze statische Akkordeons auf der FAQ-Seite durch sanfte, berechnete Höhen-Animationen basierend auf Framer Motion mit physikalischer Dämpfung. (`src/components/ui/accordion.tsx`)
+3. **Scroll-getriebene SVG-Pfadanimation für Sicherheitstechnik**: Implementiere animierte Pfade, die beim Scrollen durch die Service-Seiten den Weg eines Schlüssels visualisieren. (`app/sicherheitstechnik/page.tsx`)
+4. **Mikro-haptisches Button-Feedback**: Füge allen primären CTA-Buttons subtile Skalierungs- und Farbverschiebungen hinzu, die den Druck simulieren (OKLCH Shift). (`src/components/ui/button.tsx`)
+5. **Schwebende Info-Tips mit physikalischem Trägheitsmoment**: Tooltips, die dem Cursor mit leichter Verzögerung und einer weichen Federphysik folgen. (`src/components/ui/info-tip.tsx`)
+6. **Viskose Seiten-Übergänge (View Transitions API)**: Nahtlose, viskose Übergänge zwischen den Kategorie-Seiten ohne harten Cut. (`app/layout.tsx`)
+7. **Reaktives Badge-System mit magnetischem Hover**: Badges, die bei Mausnähe magnetisch angezogen werden und ihr Leuchten intensivieren. (`src/components/ui/badge.tsx`)
+8. **Interaktive Vorher/Nachher-Slider für Türöffnungen**: Ziehbare Slider, die den Prozess einer beschädigungsfreien Türöffnung visualisieren. (`app/autoschluessel/fahrzeugoeffnung/page.tsx`)
+9. **Fluid Typography für perfekte Lesbarkeit**: Umsetzung einer clamp-basierten, fluiden Typografie-Skala, die auf jeder Bildschirmgröße den idealen Rhythmus wahrt. (`src/app/globals.css`)
+10. **Taktiles Slider-Control für Budget-Kalkulatoren**: Ein physikalisch anmutender Schieberegler mit spürbaren Einrastpunkten und direkter Preis-Aktualisierung. (`src/components/forms/controls.tsx`)
+11. **Dreidimensionaler Zylinder-Explosions-View**: Interaktive 3D-Explosionszeichnung eines Schließzylinders auf Basis von CSS-Transforms und Maus-Tracking. (`src/app/gleichschliessende-zylinder/page.tsx`)
+12. **Federgedämpftes Scroll-Spy Navigations-Highlighting**: Ein Highlight-Balken, der sich mit weicher Feder-Animation zur aktiven Sektion bewegt. (`src/components/layout/mobile-action-bar.tsx`)
+13. **Sanft einblendende Alert-Banner**: Alerts, die nicht aufpoppen, sondern aus dem Nichts mit einem weichen OKLCH-Glow materialisieren. (`src/components/ui/alert.tsx`)
+14. **Kinetische Formular-Feld-Validierung**: Formularfelder, die bei Fehlern sanft schütteln und den Rahmen rot einfärben, anstatt hart umzuschalten. (`src/components/forms/field.tsx`)
+15. **Schwebende Foto-Upload-Karten**: Upload-Bereiche, die beim Hovern eine 3D-Drehung basierend auf der Cursor-Position ausführen. (`src/components/forms/photo-upload.tsx`)
+16. **Interaktive Marken-Logos mit Hover-Glow**: Auto-Marken-Logos, die beim Überfahren ein subtiles, markenspezifisches OKLCH-Licht ausstrahlen. (`src/app/autoschluessel/marken/page.tsx`)
+17. **Fluid Grid Layout für Standort-Karten**: Standorte, die sich fließend neu anordnen, wenn der Container die Größe ändert, ohne sprunghafte Shifts. (`src/app/standorte/page.tsx`)
+18. **Parallax-Scrolling für Hero-Bilder**: Sanftes Parallax-Scrolling für Hero-Bilder auf den Kategorie-Seiten, um räumliche Tiefe zu erzeugen. (`src/components/layout/page-header.tsx`)
+19. **Kinetische Lade-Indikatoren**: Spinner, die sich nicht einfach drehen, sondern komplexe, fließende Geometrien formen. (`src/components/ui/image-placeholder.tsx`)
+20. **Reaktive Breadcrumb-Navigation**: Breadcrumbs, die beim Hovern sanft expandieren und die Schriftstärke erhöhen. (`src/components/layout/breadcrumbs.tsx`)
+21. **Magnetische Social-Links im Footer**: Footer-Links, die sich in Richtung des Cursors neigen. (`src/components/layout/site-footer.tsx`)
+22. **Interaktive Preis-Karten mit Hover-Erweiterung**: Preistabellen, die bei Hover zusätzliche Details enthüllen und eine weiche OKLCH-Umrandung bekommen. (`src/components/autoschluessel/preis-anzeige.tsx`)
+23. **Animierte Schritt-für-Schritt-Anleitungen**: Fortschrittsbalken in Anleitungen, die sich synchron zum Scrollen füllen. (`src/app/ratgeber/page.tsx`)
+24. **Fluid Layout für Warenkorb-Einträge**: Warenkorb-Items, die beim Löschen mit einer weichen Animation zusammenschrumpfen. (`src/app/warenkorb/warenkorb-ansicht.tsx`)
+25. **Taktile Karten-Flip-Animationen**: Infokarten, die sich bei Klick um die eigene Achse drehen, um tiefere Details preiszugeben. (`src/components/ui/card.tsx`)
 
-## Kategorie B: Semantische Autorität & Content-Maximierung (Ideen 26 bis 50)
-26. IDEA_026: Erweiterung der Startseite um >800 Wörter Fachinhalt.
-27. IDEA_027: Tiefen-Glossar für Schließanlagen (src/app/schliessanlagen/page.tsx).
-28. IDEA_028: Detaillierte Fallstudien im Ratgeber-Bereich.
-29. IDEA_029: Ausbau der "Schlüssel nach Code" Seite mit technischen Details (800+ Wörter).
-30. IDEA_030: Historie der Schließtechnik-Evolution auf der Über-Uns-Seite.
-31. IDEA_031: Ausführliche Erklärung der DIN-Normen für Sicherheitszylinder.
-32. IDEA_032: Vergleich: Elektronische vs. Mechanische Schließsysteme.
-33. IDEA_033: Schritt-für-Schritt Wartungsanleitung für Zylinder.
-34. IDEA_034: Experten-Interview-Format im Ratgeber.
-35. IDEA_035: Erweiterung der FAQ auf allen Dienstleistungsseiten.
-36. IDEA_036: Technisches Datenblatt-Layout für spezifische Zylinder.
-37. IDEA_037: Erläuterung des Fräsprozesses (Maschinen, Präzision).
-38. IDEA_038: Rechtsgrundlagen für Schließanlagen (Mieter vs. Vermieter).
-39. IDEA_039: Notfall-Ratgeber: Was tun bei abgebrochenem Schlüssel?
-40. IDEA_040: Detaillierte Preis-Transparenz-Seite (Warum kostet Qualität X?).
-41. IDEA_041: Ausbau der "Gleichschließende Zylinder" Seite mit Anwendungsfällen.
-42. IDEA_042: Spatial Bento Grid in src/app/page.tsx (Fokus auf Inhalt-Dichte).
-43. IDEA_043: Strukturierte Daten (Schema.org) für alle Artikel ausbauen.
-44. IDEA_044: Glossar-Tooltips im laufenden Text.
-45. IDEA_045: Checkliste: Sicherheit für Gewerbeobjekte (als Content-Block).
-46. IDEA_046: Ratgeber: Tresor-Wahl und Verankerung.
-47. IDEA_047: Erklärung der VdS-Schutzklassen.
-48. IDEA_048: Ausführliche Anleitung zum Ausmessen von Zylindern.
-49. IDEA_049: Content-Block "Mythos vs. Wahrheit" bei Einbruchschutz.
-50. IDEA_050: Detaillierte Beschreibung der Anlieferung & Montage.
+## KATEGORIE B: SEMANTISCHE AUTORITÄT & CONTENT-MAXIMIERUNG (IDEEN 26 BIS 50)
+26. **Fach-Lexikon für Sicherheitstechnik**: Erweiterung der Ratgeber-Seite um ein tiefgehendes Glossar zu Fachbegriffen der Schließtechnik (> 800 Wörter). (`app/ratgeber/page.tsx`)
+27. **Detaillierte Schritt-für-Schritt-Anleitung für Fahrzeugöffnungen**: Ausbau der Fahrzeugöffnungs-Seite mit technischen Details zu zerstörungsfreien Öffnungsmethoden für verschiedene Automarken (> 800 Wörter). (`app/autoschluessel/fahrzeugoeffnung/page.tsx`)
+28. **Umfassender Ratgeber für elektronische Zutrittslösungen**: Erweiterung der Landingpage für elektronische Zutrittslösungen um detaillierte Vergleiche zwischen RFID, Bluetooth und Biometrie (> 800 Wörter). (`app/elektronische-zutrittsloesungen/page.tsx`)
+29. **Tiefenanalyse von Schließanlagen-Profilen**: Ergänzung der Schließanlagen-Seite um technische Spezifikationen und Sicherheitsprofile von Zylindern (> 800 Wörter). (`app/schliessanlagen/page.tsx`)
+30. **Fach-Artikel: Smart Keys vs. Traditionelle Funkschlüssel**: Ein ausführlicher Vergleichsartikel im Autoschlüssel-Bereich (> 800 Wörter). (`app/autoschluessel/smart-key/page.tsx`)
+31. **Historische Entwicklung von Schließtechnik**: Ein neuer Abschnitt auf der Startseite, der die Entwicklung von einfachen Schlössern zu komplexen Systemen beschreibt. (`app/page.tsx`)
+32. **Detaillierte FAQ-Sektion für Schlüsselnachmachung**: Erweiterung der Schlüsselnachmachung-Seite um häufige Fragen zu Dauer, Kosten und Voraussetzungen (> 800 Wörter). (`app/autoschluessel/nachmachen/page.tsx`)
+33. **Technischer Bericht über Tresor-Sicherheit**: Erweiterung der Sicherheitstechnik-Seite um detaillierte Informationen zu Tresor-Klassen und Widerstandsgraden (> 800 Wörter). (`app/sicherheitstechnik/page.tsx`)
+34. **Vergleichsmatrix: Gleichschließende Zylinder vs. Einzelschließungen**: Eine detaillierte Text-Matrix, die Vor- und Nachteile gegenüberstellt (> 800 Wörter). (`app/gleichschliessende-zylinder/page.tsx`)
+35. **Fach-Artikel: Die richtige Pflege von Schließzylindern**: Ein Ratgeber-Artikel mit Tipps zur Verlängerung der Lebensdauer von Schlössern (> 800 Wörter). (`app/ratgeber/page.tsx`)
+36. **Ausführliche Erklärung des Schlüssel-Fräsens**: Eine tiefgehende Beschreibung des CNC-Fräsprozesses bei Autoschlüsseln (> 800 Wörter). (`app/autoschluessel/schluesselbart-fraesen/page.tsx`)
+37. **Ratgeber: Einbruchschutz für Gewerbeimmobilien**: Erweiterung der Service-Seite um spezifische Tipps für Unternehmen (> 800 Wörter). (`app/service-und-termin/page.tsx`)
+38. **Detaillierte Übersicht der Wegfahrsperren-Generationen**: Ein technischer Artikel im Autoschlüssel-Bereich über Transponder-Technologien (> 800 Wörter). (`app/autoschluessel/programmieren/page.tsx`)
+39. **Fach-Artikel: Rechtliche Aspekte bei Schließanlagen**: Informationen zu Rechten und Pflichten von Mietern und Vermietern (> 800 Wörter). (`app/rechtliches/page.tsx`)
+40. **Umfassende Anleitung zur Schlüsselcode-Bestellung**: Ein detaillierter Leitfaden, wo man Schlüsselcodes findet und wie die Bestellung funktioniert (> 800 Wörter). (`app/schluessel-nach-code/page.tsx`)
+41. **Ratgeber: Smart Home Integration von Türschlössern**: Ausbau der Elektronik-Seite um Smart-Home-Szenarien (> 800 Wörter). (`app/elektronische-zutrittsloesungen/page.tsx`)
+42. **Tiefgehende Analyse von Profilzylinder-Normen**: Technische Details zu DIN- und EN-Normen für Schließzylinder (> 800 Wörter). (`app/tuer-und-schliesstechnik/page.tsx`)
+43. **Ausführliche Standort-Beschreibungen mit lokalem Bezug**: Erweiterung der Standort-Seiten um lokale Sicherheitsstatistiken und spezifische Tipps (> 800 Wörter). (`app/standorte/[city]/page.tsx`)
+44. **Fach-Artikel: Notfall-Türöffnung – Was tun?**: Ein detaillierter Ratgeber für den Ernstfall (> 800 Wörter). (`app/service-und-termin/vor-ort/page.tsx`)
+45. **Vergleich der führenden Auto-Schlosshersteller**: Ein Überblick über die Eigenheiten verschiedener Automarken beim Thema Schlüsselsicherheit (> 800 Wörter). (`app/autoschluessel/marken/page.tsx`)
+46. **Ratgeber: Erkennung und Vermeidung von Keyless-Go-Diebstählen**: Wichtige Sicherheitstipps für Besitzer von Smart Keys (> 800 Wörter). (`app/autoschluessel/funkschluessel/page.tsx`)
+47. **Ausführliche Erklärung des Schlüsselkopier-Prozesses**: Vom Rohling bis zum fertigen Schlüssel (> 800 Wörter). (`app/autoschluessel/kopieren/page.tsx`)
+48. **Fach-Artikel: Sicherheitstechnik im Wandel der Zeit**: Ein historischer und zukunftsorientierter Ausblick (> 800 Wörter). (`app/sicherheitstechnik/[slug]/page.tsx`)
+49. **Detaillierte Anleitung zur Fotobestellung von Schlüsseln**: Wie man perfekte Fotos für die Schlüssel-Reproduktion macht (> 800 Wörter). (`app/schluessel-nach-vorlage/page.tsx`)
+50. **Umfassender Ratgeber zur Türbeschlag-Auswahl**: Kriterien für Sicherheit und Design bei Türbeschlägen (> 800 Wörter). (`app/tuer-und-schliesstechnik/[slug]/page.tsx`)
 
-## Kategorie C: Conversion-Psychologie & Native Werkzeuge (Ideen 51 bis 75)
-51. IDEA_051: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator (src/app/schliessanlagen/page.tsx).
-52. IDEA_052: Interaktiver Vorher-Nachher-Slider für verschlissene vs. neue Schlüssel.
-53. IDEA_053: Konfigurator: Welches Schließsystem passt zu mir? (Quiz-Format).
-54. IDEA_054: Dynamischer Budget-Schätzer für Gleichschließungen.
-55. IDEA_055: ROI-Rechner für elektronische vs. mechanische Anlagen.
-56. IDEA_056: Visueller Zylinder-Ausmesser (interaktives Lineal).
-57. IDEA_057: "Trust-Balken": Live-Zähler geretteter Autoschlüssel (simuliert/optimistisch).
-58. IDEA_058: Interaktive Karte der abgedeckten Gebiete.
-59. IDEA_059: Dynamische Filterung für den Ratgeber (nach Thema, Dauer).
-60. IDEA_060: Personalisierter Einstiegs-Funnel für Privat vs. Gewerbe.
-61. IDEA_061: Live-Termin-Vorschau im Hero-Bereich (nächster freier Slot).
-62. IDEA_062: "Warenkorb-Ersparnis" Visualisierung bei Mengenrabatt.
-63. IDEA_063: Interaktiver Sicherheits-Score-Check für Eigenheime.
-64. IDEA_064: 3D-Konfigurator für Schlüssel-Anhänger/Markierungen.
-65. IDEA_065: Social-Proof Ticker (kürzliche anonymisierte Aufträge).
-66. IDEA_066: Gamifizierte Fortschrittsanzeige in Formularen.
-67. IDEA_067: Interaktives Organigramm für GHS-Anlagen (Drag & Drop Planung).
-68. IDEA_068: Tool: Foto-Upload-Prüfer für Schlüssel-Kopien.
-69. IDEA_069: Interaktive FAQ mit Suchfunktion und Highlighting.
-70. IDEA_070: "Smart Quote" - dynamische Angebotserstellung in Echtzeit.
-71. IDEA_071: Konfigurator-Summary als PDF-Download (Server Action).
-72. IDEA_072: A/B-Testing Integration für Haupt-CTAs.
-73. IDEA_073: Micro-Interactions bei Formularvalidierung (Shake on error).
-74. IDEA_074: Exit-Intent Modal mit passendem Ratgeber-Artikel.
-75. IDEA_075: Countdown für "Heute bestellt - Morgen versandt" (nur bis 14 Uhr).
+## KATEGORIE C: CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE (IDEEN 51 BIS 75)
+51. **Interaktiver Enterprise ROI- und Ladezeit-Kalkulator**: Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter. (`app/service-und-termin/page.tsx` - `components/calculator/service-budget-calculator.tsx`)
+52. **Dynamischer Sicherheits-Score-Kalkulator für Eigenheime**: Ein mehrstufiges Formular, das den Einbruchschutz eines Hauses bewertet und eine OKLCH-farbcodierte Empfehlung gibt. (`app/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx`)
+53. **Intelligenter Schließanlagen-Konfigurator mit Live-Vorschau**: Ein Tool, das die komplexe Planung von Zylindern und Schlüsseln visualisiert. (`app/schliessanlagen/konfigurator/projekt-konfigurator.tsx`)
+54. **Automarken-spezifischer Preis-Schätzer für Autoschlüssel**: Ein schnelles Dropdown-Tool für Sofort-Preise basierend auf Marke und Modell. (`app/autoschluessel/anfrage/assistent.tsx`)
+55. **Interaktiver Vorher-Nachher-Slider für Türreparaturen**: Visualisierung der Qualität von Reparaturen nach Einbrüchen. (`app/service-und-termin/vor-ort/page.tsx`)
+56. **Vertrauens-Badge-Matrix mit verifizierten Bewertungen**: Eine dynamisch geladene Übersicht von echten Kundenstimmen im Bento-Layout. (`app/page.tsx`)
+57. **Live-Termin-Status-Tracker im Amazon-Style**: Eine visuelle Timeline für den aktuellen Status von Bestellungen oder Terminen. (`app/service-und-termin/terminstatus/status-formular.tsx`)
+58. **Interaktive Schlüssel-Identifikations-Kamera-App**: Eine Web-App-Komponente, die per Smartphone-Kamera hilft, den Schlüsseltyp zu bestimmen. (`src/components/forms/photo-upload.tsx`)
+59. **ROI-Rechner für elektronische Zutrittskontrollen vs. Mechanik**: Ein Tool für Gewerbekunden, um Langzeitkosten zu vergleichen. (`app/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`)
+60. **Gleichschließungs-Konfigurator mit Drag-and-Drop**: Türen und Zylinder visuell per Drag-and-Drop gruppieren. (`app/gleichschliessende-zylinder/konfigurator/konfigurator.tsx`)
+61. **Dringlichkeits-Indikator für Notdienste**: Ein subtiles, aber wirksames Element, das die aktuelle Auslastung und schnelle Verfügbarkeit anzeigt. (`src/components/service/service-budget-calculator.tsx`)
+62. **Interaktive Karte mit Einsatz-Radien**: Eine Karte, die durch Hover zeigt, in welchen Postleitzahlengebieten schnelle Hilfe möglich ist. (`app/standorte/page.tsx`)
+63. **Produktfinder-Quiz für Sicherheitstechnik**: Ein kurzes Quiz, das zur perfekten Produktempfehlung führt. (`app/sicherheitstechnik/page.tsx`)
+64. **Echtzeit-Warenkorb-Validierung mit Cross-Selling-Tipps**: Intelligente Vorschläge ("Passendes Pflegespray dazu?") direkt im Warenkorb. (`app/warenkorb/warenkorb-ansicht.tsx`)
+65. **Dynamische Conversion-Banner basierend auf der Tageszeit**: "Noch heute bestellen" vs. "Gleich morgen früh verschickt". (`src/components/layout/mobile-action-bar.tsx`)
+66. **Reibungsloser Checkout-Flow mit Step-by-Step-Animation**: Ein flüssiger Checkout ohne harte Seitenwechsel. (`app/kasse/kasse-formular.tsx`)
+67. **Interaktiver Schlüsselcode-Assistent**: Ein Tool, das fragt, wo der Code steht (Fahrzeugschein, Schließzylinder) und Bilder zeigt. (`app/schluessel-nach-code/[slug]/bestell-formular.tsx`)
+68. **Visuelle Auto-Modell-Auswahl mit Silhouetten**: Statt reinem Text-Dropdown, kleine Silhouetten der Fahrzeuge (SUV, Kombi, etc.). (`src/components/autoschluessel/vehicle-facts.tsx`)
+69. **Ersparnis-Rechner: Nachmachen vs. Hersteller-Bestellung**: Ein plakativer Vergleich der Kosten. (`src/components/autoschluessel/preis-anzeige.tsx`)
+70. **Social Proof Popups ("Gerade wurde ein Schlüssel in Berlin nachgemacht")**: Subtile, vertrauensbildende Einblendungen. (`src/components/ui/alert.tsx`)
+71. **Interaktive System-Erklärung für Schließanlagen**: Eine klickbare Grafik, die General-Hauptschlüssel-Systeme erklärt. (`src/components/schliessanlagen/system-erklaerung.tsx`)
+72. **Schritt-für-Schritt Foto-Upload-Guide**: Ein interaktives Overlay, das beim Fotografieren von Schlüsseln hilft. (`src/components/forms/photo-upload.tsx`)
+73. **Dynamische Preis-Garantie-Badges**: Badges, die sich basierend auf dem Warenkorbwert aktualisieren (z.B. "Kostenloser Versand erreicht!"). (`src/components/ui/badge.tsx`)
+74. **Interaktives Kontaktformular mit Intent-Erkennung**: Ein Formular, das sich dem Grund der Anfrage anpasst. (`app/service-und-termin/anfrage/anfrage-formular.tsx`)
+75. **Gamifiziertes Onboarding für das Admin-Dashboard**: Ein Fortschrittsbalken für die Profil-Einrichtung. (`app/admin/einstellungen/einstellungen-formular.tsx`)
 
-## Kategorie D: Extreme Performance, Architektur & DX (Ideen 76 bis 100)
-76. IDEA_076: Next.js 16 "use cache" Memoisierung für alle API-Routen.
-77. IDEA_077: CSS Subgrid-Harmonisierung für Karten-Layouts.
-78. IDEA_078: Container Queries (@container) für Komponenten-Responsive.
-79. IDEA_079: AVIF-Hero-Pipelines für maximale Bildkompression.
-80. IDEA_080: Zero-Shift Webfont-Optimierung (font-display: optional/swap).
-81. IDEA_081: Aggressives Pre-Fetching für alle Navigations-Links im Viewport.
-82. IDEA_082: Edge-Caching für statische Content-Seiten.
-83. IDEA_083: Partytown-Integration für Third-Party-Scripts.
-84. IDEA_084: Bundle-Analyse und Code-Splitting für große Konfiguratoren.
-85. IDEA_085: Turbopack-Optimierungen in next.config.
-86. IDEA_086: Implementierung von React 19 `useOptimistic` in Formularen.
-87. IDEA_087: Serverseitiges Rendering für personalisierte Empfehlungen.
-88. IDEA_088: Striktes CSP (Content Security Policy) Setup.
-89. IDEA_089: Reduzierung der DOM-Tiefe in der Hauptnavigation.
-90. IDEA_090: Lazy-Loading für untere Sektionen (Intersection Observer).
-91. IDEA_091: Inline-CSS für kritische Above-the-Fold Inhalte.
-92. IDEA_092: Web Worker für komplexe Schließplan-Berechnungen.
-93. IDEA_093: Optimierung der JSON-LD Generierung (Streaming).
-94. IDEA_094: Umstellung auf native CSS Nesting statt Sass/Tailwind-Plugins (wo sinnvoll).
-95. IDEA_095: Implementierung von `serverActions` in allen Formularen.
-96. IDEA_096: Automatisierte a11y-Tests (axe-core) in CI/CD.
-97. IDEA_097: Optimierung der LCP (Largest Contentful Paint) auf <1.2s.
-98. IDEA_098: Reduzierung des JavaScript-Footprints durch RSCs.
-99. IDEA_099: Strict Type-Checking für alle API-Responses.
-100. IDEA_100: Refactoring der Tailwind-Klassen auf v4 Standards.
+## KATEGORIE D: EXTREME PERFORMANCE, ARCHITEKTUR & DX (IDEEN 76 BIS 100)
+76. **Next.js 16 "use cache" Memoisierung für Pricing-Daten**: Aggressive Serverseitige Zwischenspeicherung von statischen Preislisten. (`src/lib/pricing.ts`)
+77. **CSS Subgrid-Harmonisierung für Feature-Listen**: Perfekt ausgerichtete Raster für Listen über alle Breakpoints hinweg. (`src/components/layout/summary-list.tsx`)
+78. **Container Queries (@container) für Karten-Layouts**: Karten, die sich an ihrem Elternelement statt am Viewport ausrichten. (`src/components/ui/card.tsx`)
+79. **AVIF-Hero-Pipelines für verlustfreie Bildkompression**: Umstellung aller Hero-Bilder auf moderne Formate. (`src/components/ui/image-placeholder.tsx`)
+80. **Zero-Shift Webfont-Optimierung (next/font)**: Perfektionierung des Font-Loadings zur Eliminierung von CLS. (`app/layout.tsx`)
+81. **Strikte Type-Sicherheit für Server Actions (zod)**: Validierung aller Eingaben am Server mit Zod. (`src/actions/calculate-budget.ts`)
+82. **Optimistische UI-Updates (useOptimistic) im Warenkorb**: Sofortiges Feedback beim Ändern von Mengen, bevor der Server antwortet. (`app/warenkorb/warenkorb-ansicht.tsx`)
+83. **Entfernung von "as any" und "as unknown" Typ-Maskierungen**: Ein umfassender Refactoring-Pass für absolute Typensicherheit. (`src/lib/data/adapter.ts`)
+84. **Sichere Hydration für localStorage-Zugriffe**: Kapselung von Client-State in useEffect, um Mismatches zu verhindern. (`src/lib/client-state.ts`)
+85. **Vollständige Validierung der Schema.org-Graphen**: Sicherstellung, dass alle JSON-LD Daten streng typisiert sind. (`src/components/seo/json-ld.tsx`)
+86. **Code-Splitting für schwere Konfiguratoren**: Dynamisches Importieren von React-Komponenten für große Tools. (`app/elektronische-zutrittsloesungen/konfigurator/page.tsx`)
+87. **Reduktion des JavaScript-Payloads durch Server Components**: Verlagerung von reiner Darstellungslogik auf den Server. (`src/components/autoschluessel/service-article.tsx`)
+88. **Effizientes Caching für API-Routen**: Nutzung von Next.js Route Cache für statische Endpunkte. (`src/lib/data/json-adapter.ts`)
+89. **Beseitigung von leeren Event-Handlern (Silent Logic Death)**: Überprüfung und Entfernung von `() => {}` in Komponenten. (`src/components/forms/controls.tsx`)
+90. **Verbesserung der Barrierefreiheit (a11y)**: Hinzufügen von ARIA-Labels und Keyboard-Navigation für alle interaktiven Elemente. (`src/components/ui/button.tsx`)
+91. **Automatisierte Lighthouse-CI/CD-Checks**: Sicherstellung, dass Web Vitals bei jedem Commit gemessen werden. (`app/page.tsx`)
+92. **Optimierung der Ladezeiten für das Admin-Dashboard**: Implementierung von Skeleton-Screens. (`app/admin/vorgaenge/vorgangs-liste.tsx`)
+93. **Zentralisierung der OKLCH-Farbtokens**: Eine saubere, typisierte Theme-Konfiguration in Tailwind. (`src/app/globals.css`)
+94. **Vorladen kritischer Ressourcen (Preload)**: Schnellerer Seitenaufbau durch gezieltes Preloading von Fonts und LCP-Bildern. (`app/layout.tsx`)
+95. **Fehlergrenzen (Error Boundaries) für stabile UX**: Abfangen von React-Fehlern, ohne die ganze App crashen zu lassen. (`app/not-found.tsx`)
+96. **Effiziente Datum- und Zeit-Verarbeitung**: Nutzung von leichtgewichtigen Bibliotheken oder nativen APIs statt schwerer Abhängigkeiten. (`src/lib/format.ts`)
+97. **Verbesserte Zustandssynchronisation zwischen Tabs**: Nutzung der Broadcast Channel API für den Warenkorb. (`src/lib/store/cart.ts`)
+98. **Optimierung von regulären Ausdrücken für Performance**: Refactoring komplexer Regex für schnellere Ausführung. (`src/lib/reference.ts`)
+99. **Strikte Trennung von Client- und Server-Code (server-only)**: Verhinderung von unbeabsichtigten Leaks auf den Client. (`src/lib/actions/admin.ts`)
+100. **Implementierung von Request-Deduping**: Vermeidung doppelter API-Aufrufe innerhalb des gleichen Render-Zyklus. (`src/lib/data/adapter.ts`)

@@ -1,16 +1,21 @@
 # Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
 
 ## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+- In `src/lib/client-state.ts` haben wir ein `return () => {};` entdeckt, welches als Fallback dient. Dies ist eine potentielle Interaktions-Falle, wenn Lifecycle-Methoden nicht richtig bereinigt werden.
+- In diversen Formularen (z.B. `src/app/kasse/kasse-formular.tsx`, `src/app/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx`) finden sich fehlende oder spärlich behandelte Ladezustände bei komplexen asynchronen Interaktionen, die als "stumm" wahrgenommen werden könnten.
+- Bestimmte Buttons (z.B. in `src/app/admin/vorgaenge/[id]/vorgangs-aktionen.tsx`) nutzen `onClick={() => window.print()}`, was ohne visuelles Feedback (z.B. Loading-State) den User hängen lassen kann.
 
 ## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+- Mehrere direkte Aufrufe von `window` und `window.localStorage` (z.B. `cookie-einstellungen.tsx`, `zutritt-konfigurator.tsx`, `vorgangs-aktionen.tsx`) außerhalb von sauberen `useEffect` Hooks oder ohne `typeof window !== 'undefined'` Checks. Dies provoziert unvermeidbare React 19 Hydration Mismatches beim serverseitigen Rendering (SSR).
+- Die Client-Status-Verwaltung greift synchron auf `window.localStorage.getItem` zu. Das verursacht Unterschiede zwischen dem vom Server gesendeten HTML und der Client-Version.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TypeScript-Schwächen
+- Auch wenn explizite `as any` oder `as unknown` Casts fehlen, wird TypeScript oftmals durch implizite `any` Typen untergraben.
+- Schema.org Graphen in `json-ld.tsx` scheinen mit `satisfies Graph` gesichert zu sein, aber oft sind die übergebenen Datenstrukturen nicht hundertprozentig präzise nach Typ-Vorgabe aufgebaut, wodurch Maskierungen auftreten.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. Core Web Vitals Sünden
+- Einige Bilder und Ladeanimationen weisen keine expliziten Dimensionen oder saubere Aspect-Ratios auf, was Cumulative Layout Shift (CLS) erhöht.
+- Fehlen von `use cache` bei rechenintensiven Datenbank-Abfragen.
+
+## Fazit
+Die Schweizer Design-Doktrin wird strukturell respektiert, aber in den Bereichen interaktive Robustheit, Server/Client-Trennung (Hydration) und Performance-Optimierung existieren kritische Schwachstellen, die wir im 100-Ideen Matrix-Prozess gezielt angreifen werden.
