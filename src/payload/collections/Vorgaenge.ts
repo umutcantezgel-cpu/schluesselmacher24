@@ -124,6 +124,14 @@ export const Vorgaenge: CollectionConfig = {
               ],
             },
             {
+              name: 'dateien',
+              type: 'relationship',
+              relationTo: 'kundendateien',
+              hasMany: true,
+              label: 'Hochgeladene Dateien',
+              admin: nurLesen,
+            },
+            {
               name: 'termin',
               type: 'group',
               label: 'Termin',
@@ -290,6 +298,8 @@ export const Vorgaenge: CollectionConfig = {
                   ],
                 },
                 { name: 'anbieterRef', type: 'text', label: 'Zahlungskennung (Stripe)', admin: nurLesen },
+                { name: 'checkoutSitzung', type: 'text', label: 'Stripe-Checkout-Sitzung', index: true, admin: nurLesen },
+                { name: 'erstattetCent', type: 'number', label: 'Erstattet (Cent)', admin: nurLesen },
               ],
             },
           ],

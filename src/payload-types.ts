@@ -68,6 +68,7 @@ export interface Config {
   blocks: {};
   collections: {
     vorgaenge: Vorgaenge;
+    kundendateien: Kundendateien;
     produkte: Produkte;
     fahrzeugmarken: Fahrzeugmarken;
     'autoschluessel-leistungen': AutoschluesselLeistungen;
@@ -78,8 +79,10 @@ export interface Config {
     leistungsseiten: Leistungsseiten;
     ratgeber: Ratgeber;
     einsatzgebiete: Einsatzgebiete;
+    nachweise: Nachweise;
     medien: Medien;
     benutzer: Benutzer;
+    'webhook-ereignisse': WebhookEreignisse;
     'payload-kv': PayloadKv;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
@@ -89,6 +92,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     vorgaenge: VorgaengeSelect<false> | VorgaengeSelect<true>;
+    kundendateien: KundendateienSelect<false> | KundendateienSelect<true>;
     produkte: ProdukteSelect<false> | ProdukteSelect<true>;
     fahrzeugmarken: FahrzeugmarkenSelect<false> | FahrzeugmarkenSelect<true>;
     'autoschluessel-leistungen': AutoschluesselLeistungenSelect<false> | AutoschluesselLeistungenSelect<true>;
@@ -99,8 +103,10 @@ export interface Config {
     leistungsseiten: LeistungsseitenSelect<false> | LeistungsseitenSelect<true>;
     ratgeber: RatgeberSelect<false> | RatgeberSelect<true>;
     einsatzgebiete: EinsatzgebieteSelect<false> | EinsatzgebieteSelect<true>;
+    nachweise: NachweiseSelect<false> | NachweiseSelect<true>;
     medien: MedienSelect<false> | MedienSelect<true>;
     benutzer: BenutzerSelect<false> | BenutzerSelect<true>;
+    'webhook-ereignisse': WebhookEreignisseSelect<false> | WebhookEreignisseSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -113,10 +119,12 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     zylinderkatalog: Zylinderkatalog;
+    richtwerte: Richtwerte;
     einstellungen: Einstellungen;
   };
   globalsSelect: {
     zylinderkatalog: ZylinderkatalogSelect<false> | ZylinderkatalogSelect<true>;
+    richtwerte: RichtwerteSelect<false> | RichtwerteSelect<true>;
     einstellungen: EinstellungenSelect<false> | EinstellungenSelect<true>;
   };
   locale: null;
@@ -197,6 +205,7 @@ export interface Vorgaenge {
         id?: string | null;
       }[]
     | null;
+  dateien?: (number | Kundendateien)[] | null;
   termin?: {
     datum?: string | null;
     uhrzeit?: string | null;
@@ -241,6 +250,8 @@ export interface Vorgaenge {
     status?: ('offen' | 'bezahlt' | 'fehlgeschlagen' | 'erstattet') | null;
     bezahltAm?: string | null;
     anbieterRef?: string | null;
+    checkoutSitzung?: string | null;
+    erstattetCent?: number | null;
   };
   /**
    * Nur für das Team sichtbar.
@@ -291,6 +302,30 @@ export interface Vorgaenge {
   zugriffsHash?: string | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * Von Kunden hochgeladene Unterlagen. Werden nach Ablauf der Aufbewahrungsfrist gelöscht.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "kundendateien".
+ */
+export interface Kundendateien {
+  id: number;
+  kategorie: 'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto';
+  vorgang?: (number | null) | Vorgaenge;
+  aufbewahrenBis?: string | null;
+  uploadSchluesselHash?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * Neue Artikel als Entwurf anlegen und erst veröffentlichen, wenn alles stimmt. Nicht mehr angebotene Artikel in den Papierkorb legen — sie lassen sich wiederherstellen.
@@ -911,6 +946,40 @@ export interface Einsatzgebiete {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Jede Aussage wie „zertifiziert“ auf der Seite braucht hier einen Nachweis.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nachweise".
+ */
+export interface Nachweise {
+  id: number;
+  titel: string;
+  art: 'zertifikat' | 'norm' | 'schulung' | 'versicherung' | 'mitgliedschaft';
+  status: 'bereithalten' | 'liegt-vor' | 'abgelaufen';
+  beschreibung?: string | null;
+  aussteller?: string | null;
+  gueltigBis?: string | null;
+  bild?: {
+    /**
+     * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+     */
+    motiv?: string | null;
+    format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+    /**
+     * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+     */
+    bild?: (number | null) | Medien;
+    hinweis?: string | null;
+  };
+  /**
+   * Nur möglich, wenn der Nachweis vorliegt.
+   */
+  oeffentlich?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "benutzer".
  */
@@ -937,6 +1006,20 @@ export interface Benutzer {
     | null;
   password?: string | null;
   collection: 'benutzer';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "webhook-ereignisse".
+ */
+export interface WebhookEreignisse {
+  id: number;
+  ereignisId: string;
+  anbieter: string;
+  typ: string;
+  vorgang?: (number | null) | Vorgaenge;
+  ergebnis?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1059,6 +1142,10 @@ export interface PayloadLockedDocument {
         value: number | Vorgaenge;
       } | null)
     | ({
+        relationTo: 'kundendateien';
+        value: number | Kundendateien;
+      } | null)
+    | ({
         relationTo: 'produkte';
         value: number | Produkte;
       } | null)
@@ -1099,12 +1186,20 @@ export interface PayloadLockedDocument {
         value: number | Einsatzgebiete;
       } | null)
     | ({
+        relationTo: 'nachweise';
+        value: number | Nachweise;
+      } | null)
+    | ({
         relationTo: 'medien';
         value: number | Medien;
       } | null)
     | ({
         relationTo: 'benutzer';
         value: number | Benutzer;
+      } | null)
+    | ({
+        relationTo: 'webhook-ereignisse';
+        value: number | WebhookEreignisse;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1171,6 +1266,7 @@ export interface VorgaengeSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  dateien?: T;
   termin?:
     | T
     | {
@@ -1223,6 +1319,8 @@ export interface VorgaengeSelect<T extends boolean = true> {
         status?: T;
         bezahltAm?: T;
         anbieterRef?: T;
+        checkoutSitzung?: T;
+        erstattetCent?: T;
       };
   notizen?:
     | T
@@ -1246,6 +1344,27 @@ export interface VorgaengeSelect<T extends boolean = true> {
   zugriffsHash?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "kundendateien_select".
+ */
+export interface KundendateienSelect<T extends boolean = true> {
+  kategorie?: T;
+  vorgang?: T;
+  aufbewahrenBis?: T;
+  uploadSchluesselHash?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1650,6 +1769,30 @@ export interface EinsatzgebieteSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nachweise_select".
+ */
+export interface NachweiseSelect<T extends boolean = true> {
+  titel?: T;
+  art?: T;
+  status?: T;
+  beschreibung?: T;
+  aussteller?: T;
+  gueltigBis?: T;
+  bild?:
+    | T
+    | {
+        motiv?: T;
+        format?: T;
+        bild?: T;
+        hinweis?: T;
+      };
+  oeffentlich?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "medien_select".
  */
 export interface MedienSelect<T extends boolean = true> {
@@ -1724,6 +1867,19 @@ export interface BenutzerSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "webhook-ereignisse_select".
+ */
+export interface WebhookEreignisseSelect<T extends boolean = true> {
+  ereignisId?: T;
+  anbieter?: T;
+  typ?: T;
+  vorgang?: T;
+  ergebnis?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1939,6 +2095,57 @@ export interface Zylinderkatalog {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "richtwerte".
+ */
+export interface Richtwerte {
+  id: number;
+  /**
+   * Erst entfernen, wenn alle Spannen unten geprüft sind.
+   */
+  platzhalter?: boolean | null;
+  hinweis?: string | null;
+  tuerAbsicherung?: {
+    tuerarten?:
+      | {
+          kennung: string;
+          label: string;
+          beschreibung?: string | null;
+          preisVon?: number | null;
+          preisBis?: number | null;
+          id?: string | null;
+        }[]
+      | null;
+    massnahmen?:
+      | {
+          kennung: string;
+          label: string;
+          beschreibung?: string | null;
+          preisVon?: number | null;
+          preisBis?: number | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  serviceEinsatz?: {
+    leistungen?:
+      | {
+          kennung: string;
+          label: string;
+          einheit: 'pauschal' | 'je-tuer';
+          beschreibung?: string | null;
+          preisVon?: number | null;
+          preisBis?: number | null;
+          id?: string | null;
+        }[]
+      | null;
+    anfahrtVon?: number | null;
+    anfahrtBis?: number | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "einstellungen".
  */
 export interface Einstellungen {
@@ -2134,6 +2341,58 @@ export interface ZylinderkatalogSelect<T extends boolean = true> {
                   };
             };
         id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "richtwerte_select".
+ */
+export interface RichtwerteSelect<T extends boolean = true> {
+  platzhalter?: T;
+  hinweis?: T;
+  tuerAbsicherung?:
+    | T
+    | {
+        tuerarten?:
+          | T
+          | {
+              kennung?: T;
+              label?: T;
+              beschreibung?: T;
+              preisVon?: T;
+              preisBis?: T;
+              id?: T;
+            };
+        massnahmen?:
+          | T
+          | {
+              kennung?: T;
+              label?: T;
+              beschreibung?: T;
+              preisVon?: T;
+              preisBis?: T;
+              id?: T;
+            };
+      };
+  serviceEinsatz?:
+    | T
+    | {
+        leistungen?:
+          | T
+          | {
+              kennung?: T;
+              label?: T;
+              einheit?: T;
+              beschreibung?: T;
+              preisVon?: T;
+              preisBis?: T;
+              id?: T;
+            };
+        anfahrtVon?: T;
+        anfahrtBis?: T;
       };
   updatedAt?: T;
   createdAt?: T;

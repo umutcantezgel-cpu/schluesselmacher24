@@ -11,8 +11,10 @@ import { AutoschluesselLeistungen } from './payload/collections/AutoschluesselLe
 import { Benutzer } from './payload/collections/Benutzer';
 import { Einsatzgebiete } from './payload/collections/Einsatzgebiete';
 import { Fahrzeugmarken } from './payload/collections/Fahrzeugmarken';
+import { Kundendateien } from './payload/collections/Kundendateien';
 import { Leistungsseiten } from './payload/collections/Leistungsseiten';
 import { Medien } from './payload/collections/Medien';
+import { Nachweise } from './payload/collections/Nachweise';
 import { Preisgruppen } from './payload/collections/Preisgruppen';
 import { Preisregeln } from './payload/collections/Preisregeln';
 import { Produkte } from './payload/collections/Produkte';
@@ -20,7 +22,9 @@ import { Ratgeber } from './payload/collections/Ratgeber';
 import { Seiten } from './payload/collections/Seiten';
 import { Sperrtage } from './payload/collections/Sperrtage';
 import { Vorgaenge } from './payload/collections/Vorgaenge';
+import { WebhookEreignisse } from './payload/collections/WebhookEreignisse';
 import { Einstellungen } from './payload/globals/Einstellungen';
+import { Richtwerte } from './payload/globals/Richtwerte';
 import { Zylinderkatalog } from './payload/globals/Zylinderkatalog';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -55,6 +59,7 @@ export default buildConfig({
   collections: [
     // Aufträge
     Vorgaenge,
+    Kundendateien,
     // Shop
     Produkte,
     // Autoschlüssel
@@ -69,11 +74,13 @@ export default buildConfig({
     Leistungsseiten,
     Ratgeber,
     Einsatzgebiete,
+    Nachweise,
     Medien,
     // Verwaltung
     Benutzer,
+    WebhookEreignisse,
   ],
-  globals: [Zylinderkatalog, Einstellungen],
+  globals: [Zylinderkatalog, Richtwerte, Einstellungen],
   editor: lexicalEditor(),
   db: postgresAdapter({
     pool: { connectionString: process.env.DATABASE_URL },

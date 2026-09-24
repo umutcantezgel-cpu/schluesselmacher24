@@ -8,7 +8,8 @@ import path from 'node:path';
  * Datenverzeichnis, Migrationen und Seed wie im Build. Die Entwicklungsdaten
  * bleiben unberührt.
  */
-const PORT = '5434';
+// Eigener Port je paralleler Testlauf möglich (z. B. in Worktrees): SM24_TEST_PG_PORT.
+const PORT = process.env.SM24_TEST_PG_PORT ?? '5434';
 const DIR = path.join(os.tmpdir(), `sm24-test-pg-${process.pid}`);
 
 function run(args: string[], env: NodeJS.ProcessEnv) {

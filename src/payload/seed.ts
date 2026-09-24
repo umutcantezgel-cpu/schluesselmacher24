@@ -65,7 +65,7 @@ export async function inhalteUebernehmen(payload: Payload): Promise<void> {
   }
 
   async function globalUebernehmen(
-    slug: 'einstellungen' | 'zylinderkatalog',
+    slug: 'einstellungen' | 'zylinderkatalog' | 'richtwerte',
     gefuellt: (doc: Record<string, unknown>) => boolean,
     daten: () => Promise<Record<string, unknown>>,
   ) {
@@ -121,9 +121,61 @@ export async function inhalteUebernehmen(payload: Payload): Promise<void> {
     await uebernehmen('ratgeber', 'ratgeber', await adapter.read('guides'), m.ratgeberZuPayload);
     await uebernehmen('einsatzgebiete', 'einsatzgebiete', await adapter.read('cities'), m.einsatzgebietZuPayload);
     await uebernehmen('sperrtage', 'sperrtage', await adapter.read('blockedDays'), m.sperrtagZuPayload);
+    await uebernehmen('nachweise', 'nachweise', NACHWEISE, (n) => n);
+    await globalUebernehmen(
+      'richtwerte',
+      (d) => Boolean((d.tuerAbsicherung as { tuerarten?: unknown[] } | undefined)?.tuerarten?.length),
+      async () => RICHTWERTE,
+    );
 
     console.log('Fertig.');
   }
 
   await seed();
 }
+
+/**
+ * Nachweise, auf die sich Aussagen der Seite stützen. Der Betreiber hat die
+ * Fachkunde für Flucht- und Rettungswegtechnik bestätigt; das Dokument muss
+ * noch hinterlegt werden.
+ */
+const NACHWEISE: Record<string, unknown>[] = [
+  {
+    titel: 'Flucht- und Rettungswegtechnik nach DIN EN 179 und DIN EN 1125',
+    art: 'norm',
+    status: 'bereithalten',
+    beschreibung:
+      'Grundlage für die Aussage auf der Seite „Tür- und Schließtechnik“: Bearbeitung und '
+      + 'Instandhaltung von Notausgangs- und Paniktürverschlüssen. Bitte Zertifikat oder '
+      + 'Schulungsnachweis hochladen und den Status auf „Liegt vor“ setzen.',
+    oeffentlich: false,
+  },
+];
+
+/** Aufbau der Orientierungsrechner — Beträge trägt der Betreiber ein. */
+const RICHTWERTE: Record<string, unknown> = {
+  platzhalter: true,
+  tuerAbsicherung: {
+    tuerarten: [
+      { kennung: 'wohnungstuer', label: 'Wohnungseingangstür', beschreibung: 'Tür im Mehrfamilienhaus' },
+      { kennung: 'haustuer', label: 'Hauseingangstür', beschreibung: 'Außentür eines Hauses' },
+      { kennung: 'nebentuer', label: 'Neben- oder Kellertür', beschreibung: 'Keller, Garage, Hintereingang' },
+      { kennung: 'gewerbetuer', label: 'Tür im Gewerbe', beschreibung: 'Büro, Laden, Lager' },
+    ],
+    massnahmen: [
+      { kennung: 'zylinder', label: 'Profilzylinder mit Kopierschutz', beschreibung: 'Schutz gegen Aufbohren und Ziehen' },
+      { kennung: 'schutzbeschlag', label: 'Schutzbeschlag', beschreibung: 'deckt den Zylinder von außen ab' },
+      { kennung: 'zusatzschloss', label: 'Tür-Zusatzschloss', beschreibung: 'zweiter Verschlusspunkt' },
+      { kennung: 'mehrfachverriegelung', label: 'Mehrfachverriegelung', beschreibung: 'mehrere Riegel über die Türhöhe' },
+      { kennung: 'querriegel', label: 'Querriegelschloss', beschreibung: 'Riegel über die ganze Türbreite' },
+    ],
+  },
+  serviceEinsatz: {
+    leistungen: [
+      { kennung: 'wartung-anlage', label: 'Wartung einer Schließanlage', einheit: 'je-tuer', beschreibung: 'Zylinder prüfen und pflegen' },
+      { kennung: 'tuerschliesser', label: 'Türschließer einstellen', einheit: 'je-tuer', beschreibung: 'Schließgeschwindigkeit und Endschlag' },
+      { kennung: 'zylindertausch', label: 'Zylinder tauschen', einheit: 'je-tuer', beschreibung: 'ohne Material' },
+      { kennung: 'beratung', label: 'Beratung vor Ort', einheit: 'pauschal', beschreibung: 'Begehung und Empfehlung' },
+    ],
+  },
+};
