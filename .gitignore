@@ -45,3 +45,12 @@ next-env.d.ts
 /content/records.json
 tsbuildinfo
 dev_server.log
+
+# Lokale Datenbank (embedded-postgres) und hochgeladene Dateien — nie ins Repo
+/.data/
+/media/
+/private-uploads/
+
+# Test- und Prüfausgaben
+/test-results/
+/playwright-report/

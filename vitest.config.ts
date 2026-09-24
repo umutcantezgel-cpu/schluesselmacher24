@@ -1,5 +1,8 @@
 import { defineConfig } from 'vitest/config';
-import path from 'path';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   test: {
@@ -8,7 +11,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@payload-config': path.resolve(dirname, './src/payload.config.ts'),
+      'server-only': path.resolve(dirname, './src/test/server-only-stub.ts'),
+      '@': path.resolve(dirname, './src'),
     },
   },
 });
