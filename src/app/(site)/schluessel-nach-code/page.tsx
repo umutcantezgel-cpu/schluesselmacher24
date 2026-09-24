@@ -10,6 +10,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 
 import { ShopListe } from './shop-liste';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'schluessel-nach-code';
 
@@ -59,6 +60,15 @@ export default async function SchluesselNachCodePage() {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: '/schluessel-nach-code',
+          name: page?.headline ?? 'Schlüssel nach Code',
+          description: page?.seo.description,
+          crumbs: [{ href: '/schluessel-nach-code', label: 'Schlüssel nach Code' }],
+        })}
+      />
+
       <PageHeader
         eyebrow={PROCESS_LABELS.direktkauf.label}
         title={page?.headline ?? 'Schlüssel nach Code'}

@@ -26,6 +26,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'elektronische-zutrittsloesungen';
 
@@ -342,6 +343,16 @@ export default async function ElektronischeZutrittsloesungenPage() {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: `/${ROUTE}`,
+          name: page?.headline ?? 'Elektronische Zutrittslösungen',
+          description: page?.seo.description,
+          crumbs: [{ href: `/${ROUTE}`, label: 'Elektronische Zutrittslösungen' }],
+          faq: faq,
+        })}
+      />
+
       <PageHeader
         eyebrow={process.label}
         title={page?.headline ?? 'Elektronische Zutrittslösungen'}

@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'gleichschliessende-zylinder';
 
@@ -113,6 +114,16 @@ export default async function CylinderOverviewPage() {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: `/${ROUTE}`,
+          name: page?.headline ?? 'Gleichschließende Zylinder',
+          description: page?.seo.description,
+          crumbs: [{ href: `/${ROUTE}`, label: 'Gleichschließende Zylinder' }],
+          faq: faq,
+        })}
+      />
+
       <PageHeader
         eyebrow={PROCESS_LABELS.direktkauf.label}
         title={page?.headline ?? 'Gleichschließende Zylinder'}

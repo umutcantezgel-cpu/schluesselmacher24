@@ -1,6 +1,6 @@
 import type { CityPage, CodeLine, Guide, Settings } from '@/lib/types';
 import { getSiteUrl } from '@/lib/site-url';
-import type { Graph, DayOfWeek } from 'schema-dts';
+import type { Graph, DayOfWeek, Thing } from 'schema-dts';
 
 /**
  * Strukturierte Daten für Suchmaschinen und KI-Systeme.
@@ -304,4 +304,69 @@ export function breadcrumbSchema(crumbs: Array<{ href: string; label: string }>,
       }
     ]
   } satisfies Graph;
+}
+
+/**
+ * Graph für eine Inhaltsseite: Webseite, optional sichtbare FAQ und
+ * Brotkrumen — jeweils mit eigener `@id` je Seite, damit sich Seiten nicht
+ * gegenseitig überschreiben.
+ *
+ * Nur Inhalte übergeben, die auf der Seite auch sichtbar sind.
+ */
+export function pageGraphSchema(input: {
+  /** Pfad ab Wurzel, z. B. "/schliessanlagen". */
+  path: string;
+  name: string;
+  description?: string;
+  faq?: Array<{ question: string; answer: string }>;
+  crumbs?: Array<{ href: string; label: string }>;
+}): Graph {
+  const pageUrl = `${siteUrl}${input.path}`;
+  const graph: Thing[] = [
+    { '@type': 'Organization', '@id': `${siteUrl}/#organization` },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      publisher: { '@id': `${siteUrl}/#organization` },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: input.name,
+      ...(input.description ? { description: input.description } : {}),
+      inLanguage: 'de-DE',
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      about: { '@id': `${siteUrl}/#organization` },
+      ...(input.crumbs?.length ? { breadcrumb: { '@id': `${pageUrl}#breadcrumb` } } : {}),
+    },
+  ];
+
+  if (input.faq?.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${pageUrl}#faq`,
+      isPartOf: { '@id': `${pageUrl}#webpage` },
+      mainEntity: input.faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    });
+  }
+
+  if (input.crumbs?.length) {
+    graph.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrl}#breadcrumb`,
+      itemListElement: [{ href: '/', label: 'Start' }, ...input.crumbs].map((crumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.label,
+        item: `${siteUrl}${crumb.href}`,
+      })),
+    });
+  }
+
+  return { '@context': 'https://schema.org', '@graph': graph };
 }

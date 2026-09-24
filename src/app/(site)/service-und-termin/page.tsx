@@ -10,6 +10,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('service-und-termin');
@@ -47,6 +48,30 @@ const ENTRIES = [
   },
 ];
 
+/** Sichtbare FAQ der Seite — auch Grundlage der strukturierten Daten. */
+const SERVICE_FAQ = [
+            {
+              question: 'Wie lange dauert die Implementierung einer komplexen Schließanlage?',
+              answer: 'Die Dauer variiert stark nach Umfang und Komplexität. Nach der Bestandsaufnahme und Freigabe des Schließplans hängt die Liefer- und Fertigungszeit vom Hersteller und vom Umfang ab; den verbindlichen Zeitplan nennen wir mit dem Angebot. Die Montage vor Ort stimmen wir so ab, dass Ihr Betriebsablauf möglichst wenig gestört wird. Elektronische Systeme erfordern oft zusätzliche Vorbereitungen in der IT-Infrastruktur.'
+            },
+            {
+              question: 'Sind elektronische Zutrittssysteme sicher vor Hacker-Angriffen?',
+              answer: 'Absolute Sicherheit gibt es in der IT nicht, wir empfehlen deshalb Systeme, die aktuelle kryptografische Standards nutzen. Die Kommunikation zwischen Transponder, Leser und Steuergerät erfolgt zumeist verschlüsselt (z.B. AES-128 oder höher). Zudem achten wir auf eine sichere Netzwerkarchitektur und empfehlen regelmäßige Firmware-Updates, um das Sicherheitsniveau kontinuierlich aufrechtzuerhalten.'
+            },
+            {
+              question: 'Was passiert bei einem Stromausfall mit elektronischen Schlössern?',
+              answer: 'Viele elektronische Türkomponenten sind batteriebetrieben oder verfügen über Notstromakkus. Bei batteriebetriebenen Zylindern erhalten Sie rechtzeitig Warnungen bei niedrigem Batteriestand. Vernetzte, kabelgebundene Systeme lassen sich über eine unterbrechungsfreie Stromversorgung (USV) gegen Ausfälle absichern. Fluchtwege sind mechanisch so konstruiert, dass sie jederzeit von innen passierbar bleiben.'
+            },
+            {
+              question: 'Können bestehende mechanische Schließanlagen elektronisch aufgerüstet werden?',
+              answer: 'Ja, in vielen Fällen ist eine hybride Lösung oder eine schrittweise Migration möglich und wirtschaftlich sinnvoll. Wir können beispielsweise stark frequentierte Außentüren mit elektronischen Zylindern oder Wandlesern ausstatten, während Innentüren weiterhin mechanisch betrieben werden. Dies erfordert jedoch eine sorgfältige Analyse der vorhandenen Türen und Einsteckschlösser, um Kompatibilität und Zertifizierungen (z.B. Brandschutz) nicht zu gefährden.'
+            },
+            {
+              question: 'Welche Informationen benötigen Sie für einen fundierten Kostenvoranschlag?',
+              answer: 'Für eine präzise Kalkulation benötigen wir detaillierte Angaben zum Objekt: Anzahl und Art der Türen (Holz, Metall, Glas, Brandschutz), die gewünschte Sicherheitsstufe, eine grobe Vorstellung der Nutzerhierarchie (wer darf wohin?) und idealerweise Grundrisspläne. Je mehr Kontext wir im Vorfeld erhalten, desto genauer und zielgerichteter können wir die Architektur planen und kalkulieren. Der interaktive Kalkulator auf dieser Seite bietet lediglich einen ersten Anhaltspunkt für den Aufwand.'
+            }
+          ];
+
 export default async function ServiceUndTerminPage() {
   const [page, settings] = await Promise.all([
     getPageContent('service-und-termin'),
@@ -55,6 +80,16 @@ export default async function ServiceUndTerminPage() {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: '/service-und-termin',
+          name: page?.headline ?? 'Service und Termin',
+          description: page?.seo.description,
+          crumbs: [{ href: '/service-und-termin', label: 'Service und Termin' }],
+          faq: SERVICE_FAQ,
+        })}
+      />
+
       <PageHeader
         eyebrow="Service und Termin"
         title={page?.headline ?? 'Service und Termin'}
@@ -200,28 +235,7 @@ export default async function ServiceUndTerminPage() {
           lead="Detaillierte Antworten auf die wichtigsten Fragen rund um unsere Services, Abläufe und technischen Standards."
         />
         <Accordion
-          items={[
-            {
-              question: 'Wie lange dauert die Implementierung einer komplexen Schließanlage?',
-              answer: 'Die Dauer variiert stark nach Umfang und Komplexität. Nach der Bestandsaufnahme und Freigabe des Schließplans hängt die Liefer- und Fertigungszeit vom Hersteller und vom Umfang ab; den verbindlichen Zeitplan nennen wir mit dem Angebot. Die Montage vor Ort stimmen wir so ab, dass Ihr Betriebsablauf möglichst wenig gestört wird. Elektronische Systeme erfordern oft zusätzliche Vorbereitungen in der IT-Infrastruktur.'
-            },
-            {
-              question: 'Sind elektronische Zutrittssysteme sicher vor Hacker-Angriffen?',
-              answer: 'Absolute Sicherheit gibt es in der IT nicht, wir empfehlen deshalb Systeme, die aktuelle kryptografische Standards nutzen. Die Kommunikation zwischen Transponder, Leser und Steuergerät erfolgt zumeist verschlüsselt (z.B. AES-128 oder höher). Zudem achten wir auf eine sichere Netzwerkarchitektur und empfehlen regelmäßige Firmware-Updates, um das Sicherheitsniveau kontinuierlich aufrechtzuerhalten.'
-            },
-            {
-              question: 'Was passiert bei einem Stromausfall mit elektronischen Schlössern?',
-              answer: 'Viele elektronische Türkomponenten sind batteriebetrieben oder verfügen über Notstromakkus. Bei batteriebetriebenen Zylindern erhalten Sie rechtzeitig Warnungen bei niedrigem Batteriestand. Vernetzte, kabelgebundene Systeme lassen sich über eine unterbrechungsfreie Stromversorgung (USV) gegen Ausfälle absichern. Fluchtwege sind mechanisch so konstruiert, dass sie jederzeit von innen passierbar bleiben.'
-            },
-            {
-              question: 'Können bestehende mechanische Schließanlagen elektronisch aufgerüstet werden?',
-              answer: 'Ja, in vielen Fällen ist eine hybride Lösung oder eine schrittweise Migration möglich und wirtschaftlich sinnvoll. Wir können beispielsweise stark frequentierte Außentüren mit elektronischen Zylindern oder Wandlesern ausstatten, während Innentüren weiterhin mechanisch betrieben werden. Dies erfordert jedoch eine sorgfältige Analyse der vorhandenen Türen und Einsteckschlösser, um Kompatibilität und Zertifizierungen (z.B. Brandschutz) nicht zu gefährden.'
-            },
-            {
-              question: 'Welche Informationen benötigen Sie für einen fundierten Kostenvoranschlag?',
-              answer: 'Für eine präzise Kalkulation benötigen wir detaillierte Angaben zum Objekt: Anzahl und Art der Türen (Holz, Metall, Glas, Brandschutz), die gewünschte Sicherheitsstufe, eine grobe Vorstellung der Nutzerhierarchie (wer darf wohin?) und idealerweise Grundrisspläne. Je mehr Kontext wir im Vorfeld erhalten, desto genauer und zielgerichteter können wir die Architektur planen und kalkulieren. Der interaktive Kalkulator auf dieser Seite bietet lediglich einen ersten Anhaltspunkt für den Aufwand.'
-            }
-          ]}
+          items={SERVICE_FAQ}
           className="mt-8 max-w-4xl mx-auto"
         />
       </Section>

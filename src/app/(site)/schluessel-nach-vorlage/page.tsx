@@ -19,6 +19,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'schluessel-nach-vorlage';
 
@@ -168,6 +169,16 @@ export default async function SchluesselNachVorlagePage() {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: '/schluessel-nach-vorlage',
+          name: page?.headline ?? 'Schlüssel nach Vorlage',
+          description: page?.seo.description,
+          crumbs: [{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' }],
+          faq: faq,
+        })}
+      />
+
       <PageHeader
         eyebrow={process.label}
         title={page?.headline ?? 'Schlüssel nach Vorlage'}

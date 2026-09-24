@@ -15,6 +15,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 
 import { BestellFormular } from './bestell-formular';
+import { getSiteUrl } from '@/lib/site-url';
 
 interface CodeLinePageProps {
   /** In Next.js 16 sind Routenparameter ein Promise. */
@@ -76,7 +77,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
   return (
     <>
       <JsonLd data={productSchema(line)} />
-      <JsonLd data={breadcrumbSchema(crumbs, `${process.env.NEXT_PUBLIC_SITE_URL || 'https://schluesselmacher24.de'}/schluessel-nach-code/${line.slug}`)} />
+      <JsonLd data={breadcrumbSchema(crumbs, `${getSiteUrl()}/schluessel-nach-code/${line.slug}`)} />
       <PageHeader
         eyebrow={PROCESS_LABELS.direktkauf.label}
         title={line.name}

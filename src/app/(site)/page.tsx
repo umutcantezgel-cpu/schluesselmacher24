@@ -19,8 +19,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { Section, SectionHeading } from '@/components/layout/section';
-import { JsonLd, localBusinessSchema, faqSchema } from '@/components/seo/json-ld';
-import { getSiteUrl } from '@/lib/site-url';
+import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('');
@@ -85,7 +84,6 @@ export default async function HomePage() {
   return (
     <>
       <JsonLd data={localBusinessSchema(settings)} />
-      <JsonLd data={faqSchema(guides.map((g) => ({ question: g.title, answer: g.excerpt })), getSiteUrl())} />
 
       {/* Einstieg */}
       <section className="border-b border-border bg-surface">

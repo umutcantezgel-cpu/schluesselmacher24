@@ -19,6 +19,7 @@ import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -82,6 +83,15 @@ export default async function SicherheitstechnikPage() {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: `/${ROUTE}`,
+          name: page?.headline ?? 'Sicherheitstechnik',
+          description: page?.seo.description,
+          crumbs: [{ href: `/${ROUTE}`, label: 'Sicherheitstechnik' }],
+        })}
+      />
+
       <PageHeader
         eyebrow="Leistungsbereich"
         title={page?.headline ?? 'Sicherheitstechnik'}

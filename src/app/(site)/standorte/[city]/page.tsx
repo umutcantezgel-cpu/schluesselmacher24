@@ -11,6 +11,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, breadcrumbSchema, serviceAreaSchema } from '@/components/seo/json-ld';
+import { getSiteUrl } from '@/lib/site-url';
 
 export async function generateStaticParams() {
   const cities = await getCities();
@@ -47,7 +48,7 @@ export default async function CityPage(props: { params: Promise<{ city: string }
   return (
     <>
       <JsonLd data={serviceAreaSchema(city)} />
-      <JsonLd data={breadcrumbSchema(crumbs, `${process.env.NEXT_PUBLIC_SITE_URL || 'https://schluesselmacher24.de'}/standorte/${city.slug}`)} />
+      <JsonLd data={breadcrumbSchema(crumbs, `${getSiteUrl()}/standorte/${city.slug}`)} />
 
       <PageHeader
         eyebrow={city.state}

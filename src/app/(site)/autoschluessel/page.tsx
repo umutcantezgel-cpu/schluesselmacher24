@@ -15,6 +15,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'autoschluessel';
 
@@ -245,6 +246,16 @@ export default async function AutoschluesselHubPage() {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: '/autoschluessel',
+          name: page?.headline ?? 'Autoschlüssel',
+          description: page?.seo.description,
+          crumbs: [{ href: '/autoschluessel', label: 'Autoschlüssel' }],
+          faq: page?.faq?.length ? page.faq : FAQ,
+        })}
+      />
+
       <PageHeader
         eyebrow="Themenwelt Autoschlüssel"
         title={page?.headline ?? 'Autoschlüssel'}

@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'schliessanlagen';
 
@@ -163,6 +164,42 @@ const FALLBACK_FAQ = [
       + 'Anzahl der Schließstellen, der Schlüssel und der Ebenen ab. Deshalb nennen wir erst nach '
       + 'der Erfassung einen Betrag — und nicht vorab auf der Seite.',
   },
+  {
+    question: 'Brauchen alle Türen denselben Zylinder?',
+    answer:
+      'Nein. Innerhalb einer Anlage können Zylinder unterschiedlich ausgestattet sein — etwa '
+      + 'Außentüren mit höherem Schutz gegen Aufbohren und Ziehen, Innentüren in einfacherer '
+      + 'Ausführung. Welche Tür welche Ausstattung braucht, halten wir im Schließplan fest.',
+  },
+  {
+    question: 'Was passiert, wenn ein Hauptschlüssel verloren geht?',
+    answer:
+      'Ein übergeordneter Schlüssel öffnet viele Türen. Bei einer rein mechanischen Anlage müssen '
+      + 'deshalb meist die betroffenen Zylinder getauscht oder umgestellt werden. Für Türen mit '
+      + 'hohem Verlustrisiko kann eine elektronische Lösung sinnvoll sein, weil sich ein verlorenes '
+      + 'Medium dort sperren lässt.',
+  },
+  {
+    question: 'Wer darf Nachschlüssel bestellen?',
+    answer:
+      'Bei Anlagen mit Sicherungskarte nur, wer die Karte vorlegt. Ob ein Profil zusätzlich '
+      + 'geschützt ist und wie lange, hängt vom Hersteller und vom System ab. Bewahren Sie die '
+      + 'Karte getrennt von den Schlüsseln auf.',
+  },
+  {
+    question: 'Was gilt an Flucht- und Rettungswegen?',
+    answer:
+      'Türen in Flucht- und Rettungswegen müssen sich in Fluchtrichtung jederzeit ohne Schlüssel '
+      + 'öffnen lassen. Dafür gibt es Notausgangs- und Paniktürverschlüsse nach DIN EN 179 und '
+      + 'DIN EN 1125 sowie passende Zylinder. Kennzeichnen Sie solche Türen im Konfigurator, damit '
+      + 'wir sie im Schließplan berücksichtigen.',
+  },
+  {
+    question: 'Wie pflege ich die Zylinder?',
+    answer:
+      'Verwenden Sie kein Öl und kein Kriechöl — beides verharzt und zieht Schmutz an. Geeignet ist '
+      + 'ein Pflegespray für Schließzylinder nach Angabe des Herstellers.',
+  },
 ];
 
 export default async function SchliessanlagenPage() {
@@ -172,6 +209,16 @@ export default async function SchliessanlagenPage() {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: '/schliessanlagen',
+          name: page?.headline ?? 'Schließanlagen',
+          description: page?.seo.description,
+          crumbs: [{ href: '/schliessanlagen', label: 'Schließanlagen' }],
+          faq: faq,
+        })}
+      />
+
       <PageHeader
         eyebrow="Mechanische Schließanlagen"
         title={page?.headline ?? 'Mechanische Schließanlagen'}

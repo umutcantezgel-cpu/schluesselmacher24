@@ -23,7 +23,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
-import { JsonLd, faqSchema } from '@/components/seo/json-ld';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'tuer-und-schliesstechnik';
 
@@ -114,7 +114,16 @@ export default async function TuerUndSchliesstechnikPage() {
 
   return (
     <>
-      <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
+
+      <JsonLd
+        data={pageGraphSchema({
+          path: `/${ROUTE}`,
+          name: page?.headline ?? 'Tür- und Schließtechnik',
+          description: page?.seo.description,
+          crumbs: [{ href: `/${ROUTE}`, label: 'Tür- und Schließtechnik' }],
+          faq: EXPERT_FAQ,
+        })}
+      />
 
       <PageHeader
         eyebrow="Leistungsbereich"
