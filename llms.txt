@@ -1,3 +1,6 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+
+## Architecture Blueprint Update
+Architecture DNA and Blueprints have been generated according to the phase 0 specification.

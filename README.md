@@ -47,3 +47,6 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+## Architecture Blueprint Update
+Architecture DNA and Blueprints have been generated according to the phase 0 specification.
