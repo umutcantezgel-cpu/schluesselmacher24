@@ -10,6 +10,7 @@ import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
 import { InfoTip } from '@/components/ui/info-tip';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -190,24 +191,31 @@ export default async function SchliessanlagenPage() {
         }
       />
 
+
       {/* Einstieg und Begriffe */}
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
-            <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
-              {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
+            <h2 className="text-2xl font-bold leading-tight text-[oklch(0.16_0.02_260)] md:text-3xl">
+              Architektonische Methodik und Planung
+            </h2>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] md:text-base mt-4">
+              Eine moderne Schließanlage regelt, wer welche Tür öffnen darf, und bildet das Fundament der physischen Gebäudesicherheit. Sie ist mehr als nur eine Ansammlung von Zylindern und Schlüsseln; sie ist ein hochkomplexes, mathematisch berechnetes System aus Berechtigungen, das präzise auf die architektonischen und organisatorischen Anforderungen Ihres Gebäudes abgestimmt werden muss.
+              Wir erklären die Systeme in einfacher Sprache und planen Ihre Anlage so, dass sie nicht nur heute funktioniert, sondern auch in Zukunft flexibel erweitert werden kann. Eine vorausschauende Planung berücksichtigt von Anfang an eventuelle strukturelle Veränderungen in Ihrem Unternehmen oder Ihrer Immobilie, um teure Nachrüstungen zu vermeiden.
             </p>
 
-            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
-              Der Weg dorthin ist immer derselbe: Sie erfassen Ihr Objekt, Ihre Nutzer und Ihre
-              Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
-              danach wird gefertigt.
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Der Weg zur perfekten Schließanlage ist stets systematisch strukturiert: Im ersten Schritt erfassen Sie Ihr Objekt, definieren die verschiedenen Nutzergruppen und kategorisieren Ihre Türen nach Sicherheitsanforderungen. Daraus entsteht in enger Abstimmung ein detaillierter Schließplan. Dieser Plan ist das Herzstück der Anlage – er definiert die Hierarchie und die exakten Zugriffsrechte jedes einzelnen Schlüssels. Erst nach der finalen Freigabe dieses Plans durch Sie wird die Anlage maßgefertigt produziert.
             </p>
 
-            <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
+            <h3 className="mt-8 text-xl font-bold leading-tight text-[oklch(0.16_0.02_260)]">
+              Die Bedeutung des Schließplans
+            </h3>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Der Schließplan (oder auch Schließanlagenplan) ist ein essenzielles Dokument. Er ordnet in einer Matrix jedem Zylinder die entsprechenden Schlüssel zu. Mechanische Schließanlagen nutzen hierfür komplexe Profilfräsungen und Stiftvariationen im Zylinderkern. Je komplexer die Anlage, desto wichtiger ist die präzise Kalkulation der Schließwerte, um Überschließungen – also das ungewollte Öffnen einer Tür durch einen nicht autorisierten Schlüssel – mathematisch auszuschließen.
+              Daher arbeiten wir ausschließlich mit Herstellern zusammen, die modernste Fertigungstechnologien einsetzen und höchste Präzision garantieren. Ein gut durchdachter Schließplan berücksichtigt zudem immer eine Reserve, sodass auch bei späteren Erweiterungen, wie neuen Abteilungen oder Gebäudeteilen, die Sicherheit und Logik der Anlage erhalten bleibt.
+            </p>
+<div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
               <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
                 {process.label}
               </p>
@@ -242,6 +250,11 @@ export default async function SchliessanlagenPage() {
             }}
           />
         </div>
+      </Section>
+
+      {/* ROI Calculator */}
+      <Section tone="muted">
+        <EnterpriseRoiCalculator />
       </Section>
 
       {/* Die fünf Systeme */}
@@ -335,13 +348,42 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+
       {/* Fragen */}
       <Section>
-        <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
+        <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen (FAQ)" />
         <div className="mt-8">
-          <Accordion items={faq} />
+          <Accordion items={[
+            ...(faq || []),
+            {
+
+              question: "Was ist der Unterschied zwischen einer Z-Anlage und einer HS-Anlage?",
+              answer: "Eine Zentralschlossanlage (Z-Anlage) zeichnet sich dadurch aus, dass mehrere unterschiedliche Einzelschlüssel ein oder mehrere zentrale Schlösser (z. B. Haustür) schließen können, aber nicht die anderen Einzelschlösser. Eine Hauptschlüsselanlage (HS-Anlage) hingegen hat einen übergeordneten Hauptschlüssel, der alle Zylinder der Anlage schließt, während die Einzelschlüssel nur ihr jeweiliges Schloss öffnen."
+            },
+            {
+
+              question: "Wie zukunftssicher ist eine mechanische Schließanlage?",
+              answer: "Eine gut geplante mechanische Schließanlage ist sehr langlebig und sicher. Allerdings ist sie bei Schlüsselverlust unflexibler als ein elektronisches System, da unter Umständen Zylinder getauscht werden müssen. Um Zukunftssicherheit zu gewährleisten, planen wir standardmäßig eine Schließanlagen-Reserve ein, sodass die Anlage um weitere Türen erweitert werden kann."
+            },
+            {
+
+              question: "Was passiert, wenn ein Schlüssel einer Schließanlage verloren geht?",
+              answer: "Aus Sicherheitsgründen, besonders wenn ein Hauptschlüssel verloren geht, muss oft zumindest ein Teil der Anlage ausgetauscht werden, um unberechtigten Zutritt zu verhindern. Bei Einzelschlüsseln kann der Schaden lokal begrenzt sein. Wir empfehlen grundsätzlich die Kombination mit elektronischen Zylindern an Außentüren, um bei Verlust sofort reagieren zu können."
+            },
+            {
+
+              question: "Wie läuft die Bestellung einer Schließanlage konkret ab?",
+              answer: "Der Prozess beginnt mit der Bedarfsanalyse und Objektbegehung (oder der Nutzung unseres Konfigurators). Anschließend erstellen wir einen detaillierten Schließplan, der exakt definiert, wer welche Türen öffnen darf. Nach Ihrer Prüfung und Freigabe dieses Plans wird die Anlage individuell gefertigt. Die Lieferzeit beträgt je nach Komplexität und Hersteller meist einige Wochen."
+            },
+            {
+
+              question: "Können mechanische und elektronische Komponenten kombiniert werden?",
+              answer: "Ja, das ist sogar sehr empfehlenswert. Sogenannte mechatronische Schließanlagen kombinieren die Wirtschaftlichkeit mechanischer Zylinder im Innenbereich mit der hohen Sicherheit und Flexibilität elektronischer Zylinder an kritischen Zugangspunkten wie Außentüren. Wir planen solche hybriden Systeme maßgeschneidert für Ihr Gebäude."
+            }
+          ]} />
         </div>
       </Section>
+
 
       {/* Weiterführend */}
       <Section tone="muted" tight>
