@@ -9,6 +9,14 @@ export interface MotionVariables {
 /** `style`-Objekt mit den Bewegungsvariablen — ohne `as string`-Umwege. */
 export type MotionStyle = CSSProperties & MotionVariables;
 
+/**
+ * Strichmuster für `.sm24-draw` (mit `pathLength={1}`): Lücke länger als der
+ * Pfad. Beim Standardmuster aus `globals.css` (`1` = Strich 1, Lücke 1)
+ * beginnt im Wartezustand (Versatz 1) genau am Pfadende ein Strich der
+ * Länge 0 — mit runden Enden ein sichtbarer Punkt, bei Kreisen oben am Start.
+ */
+export const DRAW_DASHARRAY = '1 2';
+
 function sekunden(wert: number): string | undefined {
   if (typeof wert !== 'number' || !Number.isFinite(wert)) return undefined;
   return `${Math.round(Math.max(0, wert) * 1000) / 1000}s`;

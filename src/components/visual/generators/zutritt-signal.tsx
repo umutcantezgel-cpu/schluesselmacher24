@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 import type { VisualProps } from '../registry';
-import { motionStyle } from '../motion/motion-style';
+import { DRAW_DASHARRAY, motionStyle } from '../motion/motion-style';
 import {
   GrafikRahmen,
   HILFSLINIE,
@@ -331,7 +331,7 @@ export function ZutrittSignalGrafik({ params, title, className }: VisualProps) {
       <path
         className="sm24-draw stroke-surface"
         pathLength={1}
-        style={motionStyle(1.2, 0.45)}
+        style={motionStyle(1.2, 0.45, { strokeDasharray: DRAW_DASHARRAY })}
         strokeWidth={2.5}
         d={haken}
       />
