@@ -1,27 +1,53 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import type { VorgangsAnlage } from '@/lib/data';
 import { defaults } from '@/lib/data/defaults';
-import type { BusinessRecord } from '@/lib/types';
+import { zylinderDetails } from '@/lib/cylinder-summary';
+import { priceCylinderOrder } from '@/lib/pricing';
+import { buildReference } from '@/lib/reference';
+import type { BusinessRecord, CylinderOrderDraft } from '@/lib/types';
 
 /* Eingaben aus dem Browser dürfen keine Beträge, Termine oder Bestellungen
  * setzen. Diese Tests rufen die öffentlichen Aktionen so auf, wie es ein
  * manipulierter Browser per direktem POST täte. */
 
 const stored: BusinessRecord[] = [];
+/** Simuliert eine veraltete Vorabprüfung: Termine sind zwischenzeitlich vergeben worden. */
+const vorab = { veraltet: false };
 
 vi.mock('next/headers', () => ({
   headers: async () => new Headers({ 'x-forwarded-for': '203.0.113.7' }),
 }));
 
-vi.mock('@/lib/data', () => ({
-  getSettings: async () => defaults.settings(),
-  getCollection: async (name: keyof typeof defaults) => defaults[name](),
-  getRecords: async () => stored,
-  appendRecord: async (record: BusinessRecord) => {
-    stored.unshift(record);
-    return record;
-  },
-}));
+vi.mock('@/lib/data', () => {
+  class TerminVergebenFehler extends Error {}
+  const termine = (von: string, bis: string) =>
+    stored.filter(
+      (r) => r.appointment && r.appointment.date >= von && r.appointment.date <= bis && r.status !== 'storniert',
+    );
+  return {
+    TerminVergebenFehler,
+    getSettings: async () => defaults.settings(),
+    getCollection: async (name: keyof typeof defaults) => defaults[name](),
+    getAppointments: async (von: string, bis: string) => (vorab.veraltet ? [] : termine(von, bis)),
+    // Wie die Datenschicht: Termin unter Sperre frisch prüfen, dann Nummer vergeben.
+    vorgangAnlegen: async ({ art, jahr, aufbauen, termin }: VorgangsAnlage) => {
+      if (termin && !termin.istFrei(termine(termin.datum, termin.datum))) {
+        throw new TerminVergebenFehler(termin.datum);
+      }
+      const nummer = buildReference(art, jahr, stored.length + 1);
+      const record: BusinessRecord = { ...aufbauen(nummer), id: String(stored.length + 1), reference: nummer, kind: art };
+      stored.unshift(record);
+      return record;
+    },
+    updateRecord: async (id: string, patch: Partial<BusinessRecord>) => {
+      const index = stored.findIndex((r) => r.id === id);
+      if (index < 0) return null;
+      stored[index] = { ...stored[index], ...patch };
+      return stored[index];
+    },
+  };
+});
 
 const { submitRecord } = await import('./records');
 const { submitOrder } = await import('./orders');
@@ -38,6 +64,7 @@ const contact = {
 
 beforeEach(() => {
   stored.length = 0;
+  vorab.veraltet = false;
   resetRateLimits();
 });
 
@@ -112,6 +139,66 @@ describe('submitRecord', () => {
     const amount = stored[0].payment?.amountCents ?? 0;
     expect(amount).toBeGreaterThanOrEqual(settings.booking.depositMinCents);
     expect(amount).not.toBe(1);
+  });
+
+  describe('Terminvergabe', () => {
+    const verify = {
+      kind: 'autoschluessel' as const,
+      makeSlug: 'volkswagen',
+      modelSlug: 'golf',
+      serviceId: 'zweitschluessel',
+      keyKind: 'klappschluessel' as const,
+      workingKeys: 1,
+    };
+
+    async function freiesFenster() {
+      const { fetchQuote, fetchSlots } = await import('./booking');
+      const quote = await fetchQuote(verify);
+      const slots = await fetchSlots(quote.quote!.slotMinutes, quote.quote!.leadTimeDays);
+      const slot = slots.days[0].slots.find((s) => s.available)!;
+      return { date: slot.date, time: slot.time };
+    }
+
+    function buchen(appointment: { date: string; time: string }) {
+      return submitRecord({
+        kind: 'termin',
+        area: 'autoschluessel',
+        process: 'termin-mit-anzahlung',
+        contact,
+        payload: {},
+        summary: [],
+        uploads: [],
+        appointment: { ...appointment, durationMinutes: 1, location: 'werkstatt' },
+        verify,
+      });
+    }
+
+    it('übernimmt den geprüften Termin, nicht die Angaben des Browsers', async () => {
+      const wunsch = await freiesFenster();
+      const result = await buchen(wunsch);
+      expect(result.ok).toBe(true);
+      expect(stored[0].appointment?.date).toBe(wunsch.date);
+      expect(stored[0].appointment?.durationMinutes).not.toBe(1);
+    });
+
+    it('vergibt ein Zeitfenster nicht zweimal', async () => {
+      const wunsch = await freiesFenster();
+      expect((await buchen(wunsch)).ok).toBe(true);
+      const zweite = await buchen(wunsch);
+      expect(zweite.ok).toBe(false);
+      expect(zweite.error).toContain('nicht mehr frei');
+      expect(stored).toHaveLength(1);
+    });
+
+    it('prüft beim Anlegen erneut, auch wenn die Vorabprüfung veraltet ist', async () => {
+      const wunsch = await freiesFenster();
+      expect((await buchen(wunsch)).ok).toBe(true);
+      vorab.veraltet = true;
+      const zweite = await buchen(wunsch);
+      expect(zweite.ok).toBe(false);
+      expect(zweite.error).toContain('nicht mehr frei');
+      expect(stored).toHaveLength(1);
+    });
   });
 
   it('lehnt ungültige Kontaktdaten ab', async () => {
@@ -208,6 +295,66 @@ describe('submitOrder', () => {
     expect(stored[0].payment?.amountCents).toBe(total);
     expect(result.accessToken).toBeTruthy();
     expect(verifyAccessToken(result.accessToken, stored[0].accessTokenHash)).toBe(true);
+  });
+
+  it('schreibt Positionen und Summen mit den Serverpreisen fest', async () => {
+    const total = line.priceCents + shipping.priceCents;
+    const result = await order(total);
+    expect(result.ok).toBe(true);
+    expect(stored[0].lines).toEqual([
+      {
+        kind: 'code-schluessel',
+        productId: line.id,
+        label: line.name,
+        details: `Code ${line.codeExample}`,
+        qty: 1,
+        unitPriceCents: line.priceCents,
+        totalCents: line.priceCents,
+        vatPercent: 19,
+      },
+    ]);
+    expect(stored[0].totals).toEqual({
+      itemsCents: line.priceCents,
+      shippingCents: shipping.priceCents,
+      totalCents: total,
+      vatCents: Math.round(total - total / 1.19),
+      shippingLabel: shipping.label,
+    });
+  });
+
+  it('schreibt Zylinder-Zusammenstellungen mit Maßen, Funktion und Schlüsseln fest', async () => {
+    const catalog = defaults.cylinderCatalog();
+    const draft: CylinderOrderDraft = {
+      items: [
+        { uid: 'a', form: 'doppelzylinder', measureAMm: 30, measureBMm: 35, functionId: 'not-gefahr', qty: 2 },
+        { uid: 'b', form: 'halbzylinder', measureAMm: 30, qty: 1 },
+      ],
+      keyCount: 5,
+      extraIds: [],
+      expandable: true,
+    };
+    const versand = defaults.settings().shipping.find((s) => s.id === 'paket-versichert')!;
+    const preis = priceCylinderOrder(draft, catalog).totalCents;
+    const result = await submitOrder({
+      items: [{ kind: 'zylinder-schliessung', uid: 'z', qty: 1, unitPriceCents: 1, draft }],
+      shippingOptionId: versand.id,
+      contact,
+      acceptedTerms: true,
+      acceptedCustomMade: true,
+      expectedTotalCents: preis + versand.priceCents,
+    });
+    expect(result.ok).toBe(true);
+    const [position] = stored[0].lines ?? [];
+    expect(position).toMatchObject({
+      kind: 'zylinder-schliessung',
+      productId: 'zylinder-schliessung',
+      qty: 1,
+      unitPriceCents: preis,
+      totalCents: preis,
+    });
+    expect(position.details).toBe(zylinderDetails(draft, catalog));
+    expect(position.details).toContain('Gemeinsame Schlüssel: 5 Stück');
+    expect(stored[0].totals?.shippingLabel).toBe(versand.label);
   });
 
   it('lehnt unbekannte Versandarten ab statt kostenlos zu versenden', async () => {

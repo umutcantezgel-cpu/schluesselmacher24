@@ -2,8 +2,8 @@
 
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 
-import { getCollection, getRecords, getSettings } from '@/lib/data';
-import { availableSlots, bookableDays, toIsoDate } from '@/lib/scheduling';
+import { getAppointments, getCollection, getRecordByReference, getSettings } from '@/lib/data';
+import { addDays, availableSlots, bookableDays, earliestBookableDate, toIsoDate } from '@/lib/scheduling';
 import { quoteCarKeyService } from '@/lib/pricing';
 import type { KeyKind, PriceQuote, TimeSlot } from '@/lib/types';
 
@@ -62,20 +62,23 @@ export async function fetchSlots(
   leadTimeDays?: number,
   daysToScan = 28,
 ): Promise<SlotsResponse> {
-  const [settings, blocked, records] = await Promise.all([
-    getSettings(),
-    getCollection('blockedDays'),
-    getRecords(),
-  ]);
+  const [settings, blocked] = await Promise.all([getSettings(), getCollection('blockedDays')]);
+
+  // Nur die Termine des angezeigten Zeitraums lesen — derselbe Zeitraum, den
+  // `availableSlots` durchläuft.
+  const today = toIsoDate(new Date());
+  const from = earliestBookableDate(today, leadTimeDays ?? settings.booking.leadTimeDays);
+  const scanned = Math.min(daysToScan, settings.booking.bookingHorizonDays);
+  const existing = await getAppointments(from, addDays(from, Math.max(scanned - 1, 0)));
 
   const slots = availableSlots({
-    today: toIsoDate(new Date()),
+    today,
     durationMinutes,
     leadTimeDays,
     booking: settings.booking,
     openingHours: settings.openingHours,
     blockedDays: blocked,
-    existing: records,
+    existing,
     daysToScan,
   });
 
@@ -99,12 +102,9 @@ export async function fetchRecordStatus(reference: string, email: string) {
     return { ok: false as const, error: 'Bitte prüfen Sie Ihre Eingabe.' };
   }
 
-  const records = await getRecords();
-  const record = records.find(
-    (r) =>
-      r.reference.toLowerCase() === reference.trim().toLowerCase() &&
-      r.contact.email.toLowerCase() === email.trim().toLowerCase(),
-  );
+  const found = await getRecordByReference(reference);
+  const record =
+    found && found.contact.email.toLowerCase() === email.trim().toLowerCase() ? found : null;
 
   if (!record) {
     return {

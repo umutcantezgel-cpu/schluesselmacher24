@@ -5,12 +5,13 @@ import { z } from 'zod';
 import { getCollection, getSettings } from '@/lib/data';
 import { codePasst } from '@/lib/code-pattern';
 import { validateCylinderDraft } from '@/lib/cylinder-rules';
+import { zylinderDetails } from '@/lib/cylinder-summary';
 import { formatCents } from '@/lib/format';
 import { availableShipping, cartTotals, priceCylinderOrder, unitPriceForCodeLine } from '@/lib/pricing';
 import { createRecord } from '@/lib/server/create-record';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { contactSchema } from '@/lib/server/record-schema';
-import type { Cart, CartItem, ContactDetails, SummarySection } from '@/lib/types';
+import type { Cart, CartItem, ContactDetails, OrderLine, OrderTotals, SummarySection } from '@/lib/types';
 
 export interface CheckoutInput {
   items: CartItem[];
@@ -112,6 +113,12 @@ function fail(error: string): CheckoutResult {
 }
 
 /**
+ * Kennung der Position für eine Zylinder-Zusammenstellung. Sie ist kein
+ * Artikel, sondern entsteht im Konfigurator aus dem Zylinderkatalog.
+ */
+const ZYLINDER_KENNUNG = 'zylinder-schliessung';
+
+/**
  * Nimmt eine Bestellung aus dem Warenkorb an.
  *
  * Preise, Versand und Zusammenstellungen werden auf dem Server neu geprüft
@@ -142,6 +149,8 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
 
   const verified: CartItem[] = [];
   const rows: SummarySection['rows'] = [];
+  // Positionen zum Festschreiben — der Steuersatz folgt aus den Summen.
+  const positions: Array<Omit<OrderLine, 'vatPercent'>> = [];
 
   for (const item of data.items) {
     if (item.kind === 'code-schluessel') {
@@ -161,6 +170,15 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
         label: line.name,
         value: `Code ${item.code} · ${item.qty} Stück · ${formatCents(unit * item.qty)}`,
       });
+      positions.push({
+        kind: 'code-schluessel',
+        productId: line.id,
+        label: line.name,
+        details: `Code ${item.code}`,
+        qty: item.qty,
+        unitPriceCents: unit,
+        totalCents: unit * item.qty,
+      });
     } else if (item.kind === 'standard') {
       const article = standardArticles.find((a) => a.id === item.productId);
       if (!article) {
@@ -176,6 +194,15 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
       // Name, Preis und Versandklasse kommen aus dem Artikel, nie aus dem Browser.
       verified.push({ ...item, label: article.name, shippingClass: article.shippingClass, unitPriceCents: unit });
       rows.push({ label: article.name, value: `${item.qty} Stück · ${formatCents(unit * item.qty)}` });
+      positions.push({
+        kind: 'standard',
+        productId: article.id,
+        label: article.name,
+        details: '',
+        qty: item.qty,
+        unitPriceCents: unit,
+        totalCents: unit * item.qty,
+      });
     } else {
       const problem = validateCylinderDraft(item.draft, catalog);
       if (problem) return fail(`Zylinder-Zusammenstellung: ${problem}`);
@@ -191,6 +218,15 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
       for (const line of breakdown.lines) {
         rows.push({ label: `— ${line.label}`, value: `${line.qty} × ${formatCents(line.unitCents)}` });
       }
+      positions.push({
+        kind: 'zylinder-schliessung',
+        productId: ZYLINDER_KENNUNG,
+        label: 'Gleichschließende Zylinder',
+        details: zylinderDetails(item.draft, catalog),
+        qty: 1,
+        unitPriceCents: breakdown.totalCents,
+        totalCents: breakdown.totalCents,
+      });
     }
   }
 
@@ -214,6 +250,18 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
       priceChanged: { expectedCents: data.expectedTotalCents, actualCents: totals.totalCents },
     };
   }
+
+  // Festgeschrieben: spätere Preis- oder Namensänderungen am Artikel ändern
+  // diese Bestellung nicht mehr.
+  const vatPercent = Math.round(totals.vatRate * 100);
+  const lines: OrderLine[] = positions.map((position) => ({ ...position, vatPercent }));
+  const orderTotals: OrderTotals = {
+    itemsCents: totals.itemsCents,
+    shippingCents: totals.shippingCents,
+    totalCents: totals.totalCents,
+    vatCents: totals.vatCents,
+    shippingLabel: shipping.label,
+  };
 
   const summary: SummarySection[] = [
     { title: 'Artikel', rows },
@@ -247,6 +295,8 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
     },
     summary,
     uploads: [],
+    lines,
+    totals: orderTotals,
     payment: {
       scope: 'gesamt',
       amountCents: totals.totalCents,
