@@ -139,7 +139,7 @@ export default async function ServiceUndTerminPage() {
           lead="Wir verstehen Schließtechnik und Sicherheitssysteme nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Langlebigkeit erfüllen müssen."
         />
 
-        <div className="mt-8 prose prose-slate max-w-none text-[15px] leading-relaxed text-foreground-muted space-y-6">
+        <div className="mt-8 prose-sm24 max-w-none space-y-6">
           <p>
             Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
           </p>
@@ -158,10 +158,10 @@ export default async function ServiceUndTerminPage() {
 
           <h3 className="text-lg font-semibold text-foreground mt-8">2. Technologische Standards und Materialqualität</h3>
           <p>
-            Die von uns verbauten Systeme genügen höchsten Qualitätsstandards. Wir kooperieren ausschließlich mit renommierten Herstellern, deren Produkte sich durch herausragende mechanische Stabilität, Manipulationsresistenz und Langlebigkeit auszeichnen.
+            Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
           </p>
           <p>
-            Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik setzen wir auf verschlüsselte Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
+            Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
           </p>
 
           <h3 className="text-lg font-semibold text-foreground mt-8">3. Nachhaltigkeit und Lebenszyklus-Management</h3>
@@ -172,12 +172,12 @@ export default async function ServiceUndTerminPage() {
             Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">4. Spezialisierung auf kritische Infrastrukturen und Gewerbeobjekte</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-8">4. Gewerbeobjekte und öffentliche Einrichtungen</h3>
           <p>
-            Während wir selbstverständlich auch Privatkunden mit höchster Sorgfalt betreuen, liegt ein besonderer Schwerpunkt unserer Expertise in der Absicherung gewerblicher Objekte und kritischer Infrastrukturen. Hier gelten oft verschärfte regulatorische Anforderungen und komplexe organisatorische Abläufe.
+            Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
           </p>
           <p>
-            Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Unsere Lösungen für den gewerblichen Bereich zeichnen sich durch hohe Skalierbarkeit, mandantenfähige Verwaltungssoftware und robuste Hardware aus, die auch extremen Beanspruchungen im industriellen Umfeld standhält.
+            Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
           </p>
         </div>
       </Section>
@@ -203,15 +203,15 @@ export default async function ServiceUndTerminPage() {
           items={[
             {
               question: 'Wie lange dauert die Implementierung einer komplexen Schließanlage?',
-              answer: 'Die Dauer variiert stark nach Umfang und Komplexität. Nach der initialen Bestandsaufnahme und Freigabe des Schließplans rechnen wir bei mechanischen Anlagen in der Regel mit einer Liefer- und Fertigungszeit von 2 bis 4 Wochen. Die eigentliche Montage vor Ort erfolgt dann meist innerhalb weniger Tage, um Störungen in Ihrem Betriebsablauf zu minimieren. Elektronische Systeme erfordern oft zusätzliche Vorbereitungen in der IT-Infrastruktur.'
+              answer: 'Die Dauer variiert stark nach Umfang und Komplexität. Nach der Bestandsaufnahme und Freigabe des Schließplans hängt die Liefer- und Fertigungszeit vom Hersteller und vom Umfang ab; den verbindlichen Zeitplan nennen wir mit dem Angebot. Die Montage vor Ort stimmen wir so ab, dass Ihr Betriebsablauf möglichst wenig gestört wird. Elektronische Systeme erfordern oft zusätzliche Vorbereitungen in der IT-Infrastruktur.'
             },
             {
               question: 'Sind elektronische Zutrittssysteme sicher vor Hacker-Angriffen?',
-              answer: 'Absolute Sicherheit gibt es in der IT nicht, jedoch setzen wir ausschließlich Systeme ein, die modernste kryptografische Standards nutzen. Die Kommunikation zwischen Transponder, Leser und Steuergerät erfolgt zumeist verschlüsselt (z.B. AES-128 oder höher). Zudem achten wir auf eine sichere Netzwerkarchitektur und empfehlen regelmäßige Firmware-Updates, um das Sicherheitsniveau kontinuierlich aufrechtzuerhalten.'
+              answer: 'Absolute Sicherheit gibt es in der IT nicht, wir empfehlen deshalb Systeme, die aktuelle kryptografische Standards nutzen. Die Kommunikation zwischen Transponder, Leser und Steuergerät erfolgt zumeist verschlüsselt (z.B. AES-128 oder höher). Zudem achten wir auf eine sichere Netzwerkarchitektur und empfehlen regelmäßige Firmware-Updates, um das Sicherheitsniveau kontinuierlich aufrechtzuerhalten.'
             },
             {
               question: 'Was passiert bei einem Stromausfall mit elektronischen Schlössern?',
-              answer: 'Die meisten von uns geplanten elektronischen Türkomponenten sind batteriebetrieben oder verfügen über Notstromakkus. Bei batteriebetriebenen Zylindern erhalten Sie rechtzeitig Warnungen bei niedrigem Batteriestand. Bei vernetzten, kabelgebundenen Systemen stellen wir durch USV (Unterbrechungsfreie Stromversorgung) sicher, dass die Anlage auch bei Netzwerkausfällen funktionsfähig bleibt. Fluchtwege sind mechanisch so konstruiert, dass sie jederzeit von innen passierbar bleiben.'
+              answer: 'Viele elektronische Türkomponenten sind batteriebetrieben oder verfügen über Notstromakkus. Bei batteriebetriebenen Zylindern erhalten Sie rechtzeitig Warnungen bei niedrigem Batteriestand. Vernetzte, kabelgebundene Systeme lassen sich über eine unterbrechungsfreie Stromversorgung (USV) gegen Ausfälle absichern. Fluchtwege sind mechanisch so konstruiert, dass sie jederzeit von innen passierbar bleiben.'
             },
             {
               question: 'Können bestehende mechanische Schließanlagen elektronisch aufgerüstet werden?',

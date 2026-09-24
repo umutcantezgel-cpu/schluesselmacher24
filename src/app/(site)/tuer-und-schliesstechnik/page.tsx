@@ -104,15 +104,7 @@ const EXPERT_FAQ = [
   },
 ];
 
-interface Props {
-  params: Promise<{ id?: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
-export default async function TuerUndSchliesstechnikPage(props: Props) {
-  const params = await props.params;
-  const searchParams = await props.searchParams;
-
+export default async function TuerUndSchliesstechnikPage() {
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -121,11 +113,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
   return (
-    <main
-      data-params={JSON.stringify(params)}
-      data-search={JSON.stringify(searchParams)}
-      className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
-    >
+    <>
       <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
 
       <PageHeader
@@ -134,7 +122,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
         lead={page?.subline ?? 'Sicherheit erfordert Systemverständnis. Vom hochsicheren Zylinder über Mehrfachverriegelungen bis zum geprüften Schutzbeschlag.'}
         crumbs={[{ href: `/${ROUTE}`, label: 'Tür- und Schließtechnik' }]}
         actions={
-          <ButtonLink href={`/service-und-termin/anfrage?thema=${ROUTE}`} size="lg" className="bg-[oklch(0.52_0.24_260)] text-white hover:bg-[oklch(0.46_0.24_260)] shadow-md transition-all active:scale-[0.99]">
+          <ButtonLink href={`/service-und-termin/anfrage?thema=${ROUTE}`} size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover shadow-md transition-all active:scale-[0.99]">
             Beratungstermin vereinbaren
             <ArrowRight size={18} aria-hidden />
           </ButtonLink>
@@ -151,12 +139,12 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
               lead="Wirkungsvoller Einbruchschutz und reibungslose Funktion entstehen nicht durch Einzelkomponenten, sondern durch das präzise Zusammenspiel aller Elemente einer Tür."
             />
 
-            <div className="prose prose-p:text-[16px] prose-p:leading-relaxed prose-p:text-[oklch(0.32_0.02_260)] max-w-none">
+            <div className="prose-sm24 max-w-none">
               <p>
                 Die Sicherheit einer Tür wird stets durch ihr schwächstes Glied definiert. Ein hochkomplexer, aufbohrgeschützter Schließzylinder verfehlt seine Wirkung vollständig, wenn das dazugehörige Einsteckschloss einer Hebelwirkung nicht standhält oder der Schutzbeschlag von außen einfach abmontiert werden kann. <strong>Ganzheitliche Tür- und Schließtechnik</strong> bedeutet, die physikalischen Kräfte und potenziellen Angriffsvektoren zu verstehen und das Türsystem entsprechend aufzubauen.
               </p>
 
-              <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8 mb-4 tracking-tight">Mechanische Kernkomponenten im Verbund</h3>
+              <h3 className="text-xl font-bold text-foreground mt-8 mb-4 tracking-tight">Mechanische Kernkomponenten im Verbund</h3>
               <p>
                 Das Fundament jeder mechanischen Türsicherung bildet das Zusammenspiel aus <strong>Profilzylinder</strong>, <strong>Einsteckschloss</strong>, <strong>Schutzbeschlag</strong> und <strong>Schließblech</strong> im Rahmen.
                 Der Zylinder identifiziert den berechtigten Schlüssel. Das Einsteckschloss übersetzt diese Drehbewegung in die Ver- oder Entriegelung. Der Schutzbeschlag schirmt den Zylinder vor mechanischen Angriffen (Ziehen, Abbrechen) ab, und das Schließblech nimmt die Riegelkraft auf und leitet sie in das Mauerwerk ab.
@@ -168,28 +156,28 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
                   { title: 'Zieh- und Bohrschutz', desc: 'Sicherheitsrosetten und Schutzbeschläge mit Zylinderabdeckung verhindern das gewaltsame Kernziehen, eine der häufigsten Einbruchmethoden.' },
                   { title: 'Mehrfachverriegelung', desc: 'Die Verteilung der Schließpunkte über die gesamte Türhöhe verhindert ein Aufhebeln der Tür effektiv. Die Riegel greifen dabei tief in massive Schließleisten.' }
                 ].map((item, idx) => (
-                  <li key={idx} className="flex gap-4 p-4 rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)]">
-                    <CheckCircle2 className="shrink-0 text-[oklch(0.52_0.24_260)] mt-0.5" size={20} />
+                  <li key={idx} className="flex gap-4 p-4 rounded-xl border border-border bg-surface-muted">
+                    <CheckCircle2 className="shrink-0 text-primary mt-0.5" size={20} />
                     <div>
-                      <strong className="block text-[oklch(0.16_0.02_260)]">{item.title}</strong>
+                      <strong className="block text-foreground">{item.title}</strong>
                       <span className="text-sm mt-1 block">{item.desc}</span>
                     </div>
                   </li>
                 ))}
               </ul>
 
-              <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8 mb-4 tracking-tight">Elektronik trifft Mechanik</h3>
+              <h3 className="text-xl font-bold text-foreground mt-8 mb-4 tracking-tight">Elektronik trifft Mechanik</h3>
               <p>
                 Die moderne Türtechnik verschmilzt zunehmend mit elektronischen Systemen. Mechatronische Zylinder, Motorschlösser und digitale Zutrittskontrollen erfordern ein noch tieferes Systemverständnis. Ein Motorschloss muss beispielsweise so konfiguriert sein, dass es im Brandfall eine sichere Flucht ermöglicht, während es im verriegelten Zustand maximalen Widerstand gegen Einbruch bietet.
               </p>
             </div>
 
-            <div className="mt-8 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-wider text-[oklch(0.52_0.24_260)]">
+            <div className="mt-8 rounded-2xl border border-border bg-surface-muted p-6 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-wider text-primary">
                 Ablauf in diesem Bereich
               </p>
-              <p className="mt-2 text-lg font-bold text-[oklch(0.16_0.02_260)]">{process.label}</p>
-              <p className="mt-2 text-sm leading-relaxed text-[oklch(0.32_0.02_260)]">
+              <p className="mt-2 text-lg font-bold text-foreground">{process.label}</p>
+              <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
                 {process.hint} Wir analysieren die bauliche Substanz Ihrer Tür und erstellen darauf basierend ein präzises Sicherheitskonzept, bevor wir Komponenten austauschen.
               </p>
             </div>
@@ -224,18 +212,18 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
               <li key={service.id}>
                 <Link
                   href={`/${ROUTE}/${service.slug}`}
-                  className="group flex h-full flex-col rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-8 transition-all hover:border-[oklch(0.52_0.24_260/0.5)] hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.06)]"
+                  className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-8 transition-all hover:border-primary hover:shadow-md"
                 >
-                  <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-[oklch(0.52_0.24_260/0.08)] text-[oklch(0.52_0.24_260)] transition-transform group-hover:scale-110 group-hover:bg-[oklch(0.52_0.24_260/0.12)]">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-soft text-primary transition-transform group-hover:scale-110 group-hover:bg-primary-soft">
                     <Icon size={26} strokeWidth={1.5} aria-hidden />
                   </span>
-                  <span className="mt-6 block text-lg font-bold tracking-tight text-[oklch(0.16_0.02_260)] group-hover:text-[oklch(0.52_0.24_260)] transition-colors">
+                  <span className="mt-6 block text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
                     {service.title}
                   </span>
-                  <span className="mt-3 block flex-1 text-sm leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  <span className="mt-3 block flex-1 text-sm leading-relaxed text-foreground-muted">
                     {service.summary}
                   </span>
-                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[oklch(0.52_0.24_260)]">
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
                     Leistungsdetails
                     <ArrowRight
                       size={16}
@@ -252,13 +240,13 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
 
       {/* Normen und Brandschutz */}
       <Section tight>
-        <div className="rounded-3xl bg-[oklch(0.16_0.02_260)] text-[oklch(0.988_0.002_260)] p-8 md:p-12 lg:p-16 overflow-hidden relative">
+        <div className="rounded-3xl bg-surface-ink text-foreground-inverse p-8 md:p-12 lg:p-16 overflow-hidden relative">
           <div className="absolute top-0 right-0 -mr-20 -mt-20 opacity-5 pointer-events-none">
             <ShieldCheck size={400} />
           </div>
           <div className="relative z-10 max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">Regulatorik: Fluchtwege und Brandschutz</h2>
-            <div className="space-y-6 text-[oklch(0.89_0.008_260)] text-lg leading-relaxed">
+            <div className="space-y-6 text-foreground-inverse text-lg leading-relaxed">
               <p>
                 Eingriffe an Brand-, Rauchschutz- oder Fluchttüren erfordern höchste fachliche Expertise und die strikte Einhaltung bauaufsichtlicher Zulassungen. Eine nachträglich falsch montierte Mehrfachverriegelung an einer T30-Brandschutztür kann zum sofortigen Erlöschen der Zulassung führen – mit gravierenden haftungsrechtlichen Konsequenzen im Schadensfall.
               </p>
@@ -267,7 +255,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
               </p>
               <Link
                 href={`/${ROUTE}/panik-und-fluchttuertechnik`}
-                className="inline-flex items-center gap-2 mt-4 text-[oklch(0.988_0.002_260)] font-semibold hover:text-[oklch(0.52_0.24_260)] transition-colors border-b border-[oklch(0.52_0.24_260)] pb-1"
+                className="inline-flex items-center gap-2 mt-4 text-foreground-inverse font-semibold hover:text-primary transition-colors border-b border-primary pb-1"
               >
                 Spezifikationen für Paniktechnik ansehen
                 <ArrowRight size={18} />
@@ -301,15 +289,15 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
         <ul className="mt-12 grid gap-6 sm:grid-cols-2">
           {RELATED_AREAS.map((area) => (
             <li key={area.href}>
-              <Card className="h-full border-[oklch(0.89_0.008_260/0.55)] hover:border-[oklch(0.52_0.24_260/0.4)] transition-colors">
+              <Card className="h-full border-border hover:border-primary transition-colors">
                 <CardBody className="flex h-full flex-col p-8">
-                  <p className="text-xl font-bold tracking-tight text-[oklch(0.16_0.02_260)]">{area.label}</p>
-                  <p className="mt-4 flex-1 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  <p className="text-xl font-bold tracking-tight text-foreground">{area.label}</p>
+                  <p className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground-muted">
                     {area.body}
                   </p>
                   <Link
                     href={area.href}
-                    className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[oklch(0.52_0.24_260)] group"
+                    className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary group"
                   >
                     {area.label} erkunden
                     <ArrowRight size={16} aria-hidden className="transition-transform group-hover:translate-x-1" />
@@ -330,7 +318,7 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="inline-flex min-h-[48px] items-center gap-3 rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] px-6 text-sm font-semibold text-[oklch(0.16_0.02_260)] transition-all hover:border-[oklch(0.52_0.24_260/0.5)] hover:text-[oklch(0.52_0.24_260)] hover:shadow-sm"
+                  className="inline-flex min-h-[48px] items-center gap-3 rounded-xl border border-border bg-surface px-6 text-sm font-semibold text-foreground transition-all hover:border-primary hover:text-primary hover:shadow-sm"
                 >
                   {link.label}
                   <ArrowRight size={16} aria-hidden />
@@ -340,6 +328,6 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
           </ul>
         </Section>
       )}
-    </main>
+    </>
   );
 }

@@ -1,3 +1,0 @@
-Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
-
-Follow .jules/revolution-plan.json for transformation.
