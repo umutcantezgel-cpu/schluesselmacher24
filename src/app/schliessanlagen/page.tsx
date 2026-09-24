@@ -10,7 +10,8 @@ import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
 import { InfoTip } from '@/components/ui/info-tip';
-import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import {   } from '@/components/ui/image-placeholder';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
@@ -165,7 +166,15 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -190,41 +199,87 @@ export default async function SchliessanlagenPage() {
         }
       />
 
-      {/* Einstieg und Begriffe */}
+
+      {/* Einstieg, Methodik und Enterprise ROI (Expanded >800 words) */}
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
-            <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
-              {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
+            <h2 className="text-2xl font-bold leading-tight text-[oklch(0.16_0.02_260)] md:text-3xl mb-4">
+              Architektur und Konzeption von mechanischen Schließanlagen
+            </h2>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] md:text-base mb-4">
+              Eine Schließanlage regelt, wer welche Tür öffnen darf. Sie bildet die organisatorische
+              Struktur Ihres Unternehmens oder Wohngebäudes in der physischen Welt ab. Wir erklären
+              die Systeme in einfacher Sprache und planen Ihre Anlage so, dass sie später flexibel
+              erweitert werden kann. Die richtige Planung einer mechanischen Schließanlage ist ein
+              entscheidender Faktor für die langfristige Sicherheit und Wirtschaftlichkeit eines
+              Gebäudes. Ein durchdachtes Konzept minimiert nicht nur das Risiko von unberechtigtem
+              Zutritt, sondern senkt auch die laufenden Betriebskosten erheblich.
             </p>
 
-            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
-              Der Weg dorthin ist immer derselbe: Sie erfassen Ihr Objekt, Ihre Nutzer und Ihre
-              Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
-              danach wird gefertigt.
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-3">Die technische Methodik der Schließplangestaltung</h3>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] mb-4">
+              Der Weg dorthin folgt einer strengen Methodik: Im ersten Schritt erfassen Sie Ihr
+              Objekt, Ihre Nutzergruppen und alle relevanten Türen. In dieser Phase definieren wir
+              gemeinsam die sogenannten Schließhierarchien. Diese Hierarchien bestimmen, welcher
+              Schlüssel auf welcher Ebene der Anlage funktioniert. Ein Generalhauptschlüssel (GHS)
+              öffnet beispielsweise alle Türen des Systems, während ein Gruppenschlüssel (GS) nur
+              Zugang zu einem bestimmten Sektor (z.B. der IT-Abteilung oder der Verwaltung) gewährt.
+              Daraus entsteht ein detaillierter Schließplan in Form einer Matrix, den wir gemeinsam
+              mit Ihnen abstimmen, prüfen und freigeben. Erst danach wird die Anlage in der
+              Manufaktur maßgefertigt.
             </p>
 
-            <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] mb-4">
+              Besonderes Augenmerk legen wir dabei auf die zukünftige Skalierbarkeit. Unternehmen
+              wachsen, Abteilungen strukturieren sich um. Eine heute geplante Anlage muss in fünf
+              oder zehn Jahren neue Türen und Nutzer integrieren können, ohne dass die bestehende
+              Sicherheitsarchitektur kompromittiert wird. Wir integrieren daher von Beginn an
+              ausreichend &quot;Reserven&quot; in das Profilsystem, um spätere Erweiterungen nahtlos
+              anbinden zu können.
+            </p>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-3">Sicherheitsklassen und Zertifizierungen</h3>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] mb-4">
+              Moderne Schließzylinder müssen höchsten Sicherheitsstandards genügen. Sie bieten
+              standardmäßig Schutz gegen gängige Einbruchmethoden wie Picking (Nachschließen mit
+              Spezialwerkzeug), Bumping (Schlagschlüsselmethode) und Aufbohren. Hochsicherheitszylinder
+              verfügen über zusätzliche Hartmetallstifte im Zylinderkern und -gehäuse, die einen
+              massiven Bohrschutz gewährleisten. Zudem sichern patentierte Schlüsselprofile und
+              Sicherungskarten ab, dass Nachschlüssel nur gegen Vorlage der Legitimation beim
+              autorisierten Fachhändler angefertigt werden können.
+            </p>
+
+            <div className="mt-6 rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] px-5 py-4">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-[oklch(0.52_0.24_260)]">
                 {process.label}
               </p>
-              <p className="mt-1.5 text-[14px] leading-relaxed text-foreground-muted">
+              <p className="mt-1.5 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                 {process.hint}
               </p>
             </div>
 
-            <ul className="mt-6 space-y-3">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-3">Wirtschaftlichkeit und Total Cost of Ownership (TCO)</h3>
+             <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] mb-4">
+               Die Investition in eine gut geplante Schließanlage amortisiert sich oft schneller
+               als gedacht. Neben dem reinen Anschaffungspreis der Hardware (Zylinder und Schlüssel)
+               müssen die Installationskosten sowie die langfristigen Betriebskosten (Total Cost of
+               Ownership) betrachtet werden. Ein verlorener Schlüssel in einer unstrukturierten
+               Anlage kann den Austausch dutzender Zylinder nach sich ziehen, um die Sicherheit
+               wiederherzustellen. Intelligente Schließanlagen minimieren dieses Risiko. Nutzen Sie
+               unseren Enterprise ROI-Kalkulator auf der rechten Seite, um das Einsparpotenzial
+               für Ihr Objekt abzuschätzen.
+             </p>
+
+            <ul className="mt-8 space-y-3">
               {GLOSSARY.map((item) => (
                 <li
                   key={item.term}
-                  className="flex items-start gap-3 rounded-lg border border-border bg-surface px-4 py-3"
+                  className="flex items-start gap-3 rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] px-4 py-3"
                 >
                   <span className="min-w-0 flex-1">
-                    <span className="block text-[14px] font-bold text-foreground">{item.term}</span>
-                    <span className="mt-1 block text-[14px] leading-relaxed text-foreground-muted">
+                    <span className="block text-[14px] font-bold text-[oklch(0.16_0.02_260)]">{item.term}</span>
+                    <span className="mt-1 block text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                       {item.summary}
                     </span>
                   </span>
@@ -234,15 +289,12 @@ export default async function SchliessanlagenPage() {
             </ul>
           </div>
 
-          <ImagePlaceholder
-            slot={{
-              motif: 'Werkstattfoto: Schließplan auf dem Tisch neben sortierten Profilzylindern',
-              ratio: '4/3',
-              note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
-            }}
-          />
+          <div className="sticky top-24">
+            <EnterpriseRoiCalculator />
+          </div>
         </div>
       </Section>
+
 
       {/* Die fünf Systeme */}
       <Section id="systeme" tone="muted">
@@ -338,6 +390,12 @@ export default async function SchliessanlagenPage() {
       {/* Fragen */}
       <Section>
         <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
+        <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] max-w-2xl">
+          Die Planung und Umsetzung einer Schließanlage wirft oft Detailfragen auf. Im Folgenden
+          haben wir die wichtigsten technischen und organisatorischen Antworten für Sie
+          zusammengefasst, basierend auf unserer jahrzehntelangen Erfahrung in der
+          Schließtechnik-Architektur.
+        </p>
         <div className="mt-8">
           <Accordion items={faq} />
         </div>
