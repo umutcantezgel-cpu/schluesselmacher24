@@ -1,109 +1,510 @@
-# 100 Radikale Innovationsideen (Swiss Light Mode Aesthetic)
+# Die Philosophische 100-Ideen-Matrix
 
-## Kategorie A: Awwwards-Kinetik & Taktile Interaktion (Ideen 1 bis 25)
-1. IDEA_001: Federgedämpfte Hover-States für alle Button-Komponenten (src/components/ui/button.tsx).
-2. IDEA_002: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex auf der Homepage (src/app/page.tsx).
-3. IDEA_003: Scroll-getriebene SVG-Animation für den "Schlüssel nach Code"-Prozess.
-4. IDEA_004: Mikro-haptisches Cursor-Tracking für die Area-Karten.
-5. IDEA_005: Parallax-Tiefenunschärfe für das Hero-Image auf der Startseite.
-6. IDEA_006: Magnetische Buttons für primäre CTAs (z.B. "Termin buchen").
-7. IDEA_007: Interaktives SVG-Schlüsselprofil (Hover zum Drehen) in der Schließanlagen-Übersicht.
-8. IDEA_008: Glatte Seitenübergänge (View Transitions API) zwischen allen Hauptseiten.
-9. IDEA_009: Morphing-Icons in der Schnelleinstieg-Sektion.
-10. IDEA_010: Skew-on-Scroll für Textblöcke auf der "Über Uns"-Seite.
-11. IDEA_011: Dynamische Schatten (oklch 0.988) basierend auf Cursor-Position.
-12. IDEA_012: Fade-In Sequence für Listenelemente in der Schließanlagen-Page.
-13. IDEA_013: 3D-Tilt-Effekt für die Feature-Karten.
-14. IDEA_014: Liquid-Distortion Hover auf Bildern.
-15. IDEA_015: Reveal-Animation für Akkordeon-Antworten (src/components/ui/accordion.tsx).
-16. IDEA_016: Text-Scramble Effekt bei initialem Laden der Headlines.
-17. IDEA_017: Sticky-Scrolling für lange Content-Seiten (Ratgeber).
-18. IDEA_018: Horizontal Scroll-Bereich für das Portfolio / Referenzen.
-19. IDEA_019: Kinetic Typography für die 404-Seite.
-20. IDEA_020: Ripple-Effekt auf allen klickbaren Cards.
-21. IDEA_021: Lade-Indikator als sich füllendes Schlüssel-Icon.
-22. IDEA_022: Progress-Bar angebunden an Scroll-Tiefe für Blog/Ratgeber.
-23. IDEA_023: Tooltips mit sanftem Spring-Fade-In.
-24. IDEA_024: Hover-Masking für das Hero-Image (Enthüllung von Details).
-25. IDEA_025: Interaktiver "Lichtschalter" (Light Mode Only, demonstriert Helligkeit ohne Dark Mode).
+## KATEGORIE A: AWWWARDS-KINETIK & TAKTILE INTERAKTION
 
-## Kategorie B: Semantische Autorität & Content-Maximierung (Ideen 26 bis 50)
-26. IDEA_026: Erweiterung der Startseite um >800 Wörter Fachinhalt.
-27. IDEA_027: Tiefen-Glossar für Schließanlagen (src/app/schliessanlagen/page.tsx).
-28. IDEA_028: Detaillierte Fallstudien im Ratgeber-Bereich.
-29. IDEA_029: Ausbau der "Schlüssel nach Code" Seite mit technischen Details (800+ Wörter).
-30. IDEA_030: Historie der Schließtechnik-Evolution auf der Über-Uns-Seite.
-31. IDEA_031: Ausführliche Erklärung der DIN-Normen für Sicherheitszylinder.
-32. IDEA_032: Vergleich: Elektronische vs. Mechanische Schließsysteme.
-33. IDEA_033: Schritt-für-Schritt Wartungsanleitung für Zylinder.
-34. IDEA_034: Experten-Interview-Format im Ratgeber.
-35. IDEA_035: Erweiterung der FAQ auf allen Dienstleistungsseiten.
-36. IDEA_036: Technisches Datenblatt-Layout für spezifische Zylinder.
-37. IDEA_037: Erläuterung des Fräsprozesses (Maschinen, Präzision).
-38. IDEA_038: Rechtsgrundlagen für Schließanlagen (Mieter vs. Vermieter).
-39. IDEA_039: Notfall-Ratgeber: Was tun bei abgebrochenem Schlüssel?
-40. IDEA_040: Detaillierte Preis-Transparenz-Seite (Warum kostet Qualität X?).
-41. IDEA_041: Ausbau der "Gleichschließende Zylinder" Seite mit Anwendungsfällen.
-42. IDEA_042: Spatial Bento Grid in src/app/page.tsx (Fokus auf Inhalt-Dichte).
-43. IDEA_043: Strukturierte Daten (Schema.org) für alle Artikel ausbauen.
-44. IDEA_044: Glossar-Tooltips im laufenden Text.
-45. IDEA_045: Checkliste: Sicherheit für Gewerbeobjekte (als Content-Block).
-46. IDEA_046: Ratgeber: Tresor-Wahl und Verankerung.
-47. IDEA_047: Erklärung der VdS-Schutzklassen.
-48. IDEA_048: Ausführliche Anleitung zum Ausmessen von Zylindern.
-49. IDEA_049: Content-Block "Mythos vs. Wahrheit" bei Einbruchschutz.
-50. IDEA_050: Detaillierte Beschreibung der Anlieferung & Montage.
+### Idee 1: Kinetische Veredelung von key-kinds.tsx (IDEA_001)
+- **Ziel-Route:** app/autoschluessel/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/key-kinds.tsx
+- **Philosophische Spezifikation:** Einsatz von CSS Subgrid zur perfekten Ausrichtung der Haarlinien-Grenzen, gepaart mit einer gedämpften Federphysik beim Hover.
 
-## Kategorie C: Conversion-Psychologie & Native Werkzeuge (Ideen 51 bis 75)
-51. IDEA_051: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator (src/app/schliessanlagen/page.tsx).
-52. IDEA_052: Interaktiver Vorher-Nachher-Slider für verschlissene vs. neue Schlüssel.
-53. IDEA_053: Konfigurator: Welches Schließsystem passt zu mir? (Quiz-Format).
-54. IDEA_054: Dynamischer Budget-Schätzer für Gleichschließungen.
-55. IDEA_055: ROI-Rechner für elektronische vs. mechanische Anlagen.
-56. IDEA_056: Visueller Zylinder-Ausmesser (interaktives Lineal).
-57. IDEA_057: "Trust-Balken": Live-Zähler geretteter Autoschlüssel (simuliert/optimistisch).
-58. IDEA_058: Interaktive Karte der abgedeckten Gebiete.
-59. IDEA_059: Dynamische Filterung für den Ratgeber (nach Thema, Dauer).
-60. IDEA_060: Personalisierter Einstiegs-Funnel für Privat vs. Gewerbe.
-61. IDEA_061: Live-Termin-Vorschau im Hero-Bereich (nächster freier Slot).
-62. IDEA_062: "Warenkorb-Ersparnis" Visualisierung bei Mengenrabatt.
-63. IDEA_063: Interaktiver Sicherheits-Score-Check für Eigenheime.
-64. IDEA_064: 3D-Konfigurator für Schlüssel-Anhänger/Markierungen.
-65. IDEA_065: Social-Proof Ticker (kürzliche anonymisierte Aufträge).
-66. IDEA_066: Gamifizierte Fortschrittsanzeige in Formularen.
-67. IDEA_067: Interaktives Organigramm für GHS-Anlagen (Drag & Drop Planung).
-68. IDEA_068: Tool: Foto-Upload-Prüfer für Schlüssel-Kopien.
-69. IDEA_069: Interaktive FAQ mit Suchfunktion und Highlighting.
-70. IDEA_070: "Smart Quote" - dynamische Angebotserstellung in Echtzeit.
-71. IDEA_071: Konfigurator-Summary als PDF-Download (Server Action).
-72. IDEA_072: A/B-Testing Integration für Haupt-CTAs.
-73. IDEA_073: Micro-Interactions bei Formularvalidierung (Shake on error).
-74. IDEA_074: Exit-Intent Modal mit passendem Ratgeber-Artikel.
-75. IDEA_075: Countdown für "Heute bestellt - Morgen versandt" (nur bis 14 Uhr).
+### Idee 2: Kinetische Veredelung von service-article.tsx (IDEA_002)
+- **Ziel-Route:** app/schliessanlagen/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/service-article.tsx
+- **Philosophische Spezifikation:** Implementierung von Scroll-Timeline Animationen, um SVG-Pfade basierend auf der Scroll-Tiefe dynamisch zu zeichnen und die Marke zu stärken.
 
-## Kategorie D: Extreme Performance, Architektur & DX (Ideen 76 bis 100)
-76. IDEA_076: Next.js 16 "use cache" Memoisierung für alle API-Routen.
-77. IDEA_077: CSS Subgrid-Harmonisierung für Karten-Layouts.
-78. IDEA_078: Container Queries (@container) für Komponenten-Responsive.
-79. IDEA_079: AVIF-Hero-Pipelines für maximale Bildkompression.
-80. IDEA_080: Zero-Shift Webfont-Optimierung (font-display: optional/swap).
-81. IDEA_081: Aggressives Pre-Fetching für alle Navigations-Links im Viewport.
-82. IDEA_082: Edge-Caching für statische Content-Seiten.
-83. IDEA_083: Partytown-Integration für Third-Party-Scripts.
-84. IDEA_084: Bundle-Analyse und Code-Splitting für große Konfiguratoren.
-85. IDEA_085: Turbopack-Optimierungen in next.config.
-86. IDEA_086: Implementierung von React 19 `useOptimistic` in Formularen.
-87. IDEA_087: Serverseitiges Rendering für personalisierte Empfehlungen.
-88. IDEA_088: Striktes CSP (Content Security Policy) Setup.
-89. IDEA_089: Reduzierung der DOM-Tiefe in der Hauptnavigation.
-90. IDEA_090: Lazy-Loading für untere Sektionen (Intersection Observer).
-91. IDEA_091: Inline-CSS für kritische Above-the-Fold Inhalte.
-92. IDEA_092: Web Worker für komplexe Schließplan-Berechnungen.
-93. IDEA_093: Optimierung der JSON-LD Generierung (Streaming).
-94. IDEA_094: Umstellung auf native CSS Nesting statt Sass/Tailwind-Plugins (wo sinnvoll).
-95. IDEA_095: Implementierung von `serverActions` in allen Formularen.
-96. IDEA_096: Automatisierte a11y-Tests (axe-core) in CI/CD.
-97. IDEA_097: Optimierung der LCP (Largest Contentful Paint) auf <1.2s.
-98. IDEA_098: Reduzierung des JavaScript-Footprints durch RSCs.
-99. IDEA_099: Strict Type-Checking für alle API-Responses.
-100. IDEA_100: Refactoring der Tailwind-Klassen auf v4 Standards.
+### Idee 3: Kinetische Veredelung von system-erklaerung.tsx (IDEA_003)
+- **Ziel-Route:** app/sicherheitstechnik/page.tsx
+- **Ziel-Komponente:** components/schliessanlagen/system-erklaerung.tsx
+- **Philosophische Spezifikation:** Entwicklung eines fluiden Bento-Grids, das sich mittels View Transitions nahtlos zwischen verschiedenen Ansichten morpht.
+
+### Idee 4: Kinetische Veredelung von service-budget-calculator.tsx (IDEA_004)
+- **Ziel-Route:** app/service-und-termin/page.tsx
+- **Ziel-Komponente:** components/service/service-budget-calculator.tsx
+- **Philosophische Spezifikation:** Mikro-Interaktionen mit Web Animations API, die auf haptisches Feedback via subtiler Skalierungs-Effekte (0.98 zu 1) abzielen.
+
+### Idee 5: Kinetische Veredelung von accordion.tsx (IDEA_005)
+- **Ziel-Route:** app/autoschluessel/funkschluessel/page.tsx
+- **Ziel-Komponente:** components/ui/accordion.tsx
+- **Philosophische Spezifikation:** Transformation des starren Layouts in eine reaktive, haptische Schnittstelle, bei der Cursor-Bewegungen subtile oklch-Schatten triggern.
+
+### Idee 6: Kinetische Veredelung von alert.tsx (IDEA_006)
+- **Ziel-Route:** app/autoschluessel/kopieren/page.tsx
+- **Ziel-Komponente:** components/ui/alert.tsx
+- **Philosophische Spezifikation:** Einsatz von CSS Subgrid zur perfekten Ausrichtung der Haarlinien-Grenzen, gepaart mit einer gedämpften Federphysik beim Hover.
+
+### Idee 7: Kinetische Veredelung von badge.tsx (IDEA_007)
+- **Ziel-Route:** app/autoschluessel/nachmachen/page.tsx
+- **Ziel-Komponente:** components/ui/badge.tsx
+- **Philosophische Spezifikation:** Implementierung von Scroll-Timeline Animationen, um SVG-Pfade basierend auf der Scroll-Tiefe dynamisch zu zeichnen und die Marke zu stärken.
+
+### Idee 8: Kinetische Veredelung von button.tsx (IDEA_008)
+- **Ziel-Route:** app/autoschluessel/programmieren/page.tsx
+- **Ziel-Komponente:** components/ui/button.tsx
+- **Philosophische Spezifikation:** Entwicklung eines fluiden Bento-Grids, das sich mittels View Transitions nahtlos zwischen verschiedenen Ansichten morpht.
+
+### Idee 9: Kinetische Veredelung von card.tsx (IDEA_009)
+- **Ziel-Route:** app/autoschluessel/schluesselbart-fraesen/page.tsx
+- **Ziel-Komponente:** components/ui/card.tsx
+- **Philosophische Spezifikation:** Mikro-Interaktionen mit Web Animations API, die auf haptisches Feedback via subtiler Skalierungs-Effekte (0.98 zu 1) abzielen.
+
+### Idee 10: Kinetische Veredelung von preis-anzeige.tsx (IDEA_010)
+- **Ziel-Route:** app/autoschluessel/smart-key/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/preis-anzeige.tsx
+- **Philosophische Spezifikation:** Transformation des starren Layouts in eine reaktive, haptische Schnittstelle, bei der Cursor-Bewegungen subtile oklch-Schatten triggern.
+
+### Idee 11: Kinetische Veredelung von security-check-calculator.tsx (IDEA_011)
+- **Ziel-Route:** app/elektronische-zutrittsloesungen/page.tsx
+- **Ziel-Komponente:** components/calculator/security-check-calculator.tsx
+- **Philosophische Spezifikation:** Einsatz von CSS Subgrid zur perfekten Ausrichtung der Haarlinien-Grenzen, gepaart mit einer gedämpften Federphysik beim Hover.
+
+### Idee 12: Kinetische Veredelung von service-budget-calculator.tsx (IDEA_012)
+- **Ziel-Route:** app/gleichschliessende-zylinder/page.tsx
+- **Ziel-Komponente:** components/calculator/service-budget-calculator.tsx
+- **Philosophische Spezifikation:** Implementierung von Scroll-Timeline Animationen, um SVG-Pfade basierend auf der Scroll-Tiefe dynamisch zu zeichnen und die Marke zu stärken.
+
+### Idee 13: Kinetische Veredelung von spatial-bento-grid.tsx (IDEA_013)
+- **Ziel-Route:** app/schluessel-nach-code/page.tsx
+- **Ziel-Komponente:** components/showcase/spatial-bento-grid.tsx
+- **Philosophische Spezifikation:** Entwicklung eines fluiden Bento-Grids, das sich mittels View Transitions nahtlos zwischen verschiedenen Ansichten morpht.
+
+### Idee 14: Kinetische Veredelung von key-kinds.tsx (IDEA_014)
+- **Ziel-Route:** app/schluessel-nach-vorlage/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/key-kinds.tsx
+- **Philosophische Spezifikation:** Mikro-Interaktionen mit Web Animations API, die auf haptisches Feedback via subtiler Skalierungs-Effekte (0.98 zu 1) abzielen.
+
+### Idee 15: Kinetische Veredelung von service-article.tsx (IDEA_015)
+- **Ziel-Route:** app/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/service-article.tsx
+- **Philosophische Spezifikation:** Transformation des starren Layouts in eine reaktive, haptische Schnittstelle, bei der Cursor-Bewegungen subtile oklch-Schatten triggern.
+
+### Idee 16: Kinetische Veredelung von system-erklaerung.tsx (IDEA_016)
+- **Ziel-Route:** app/autoschluessel/page.tsx
+- **Ziel-Komponente:** components/schliessanlagen/system-erklaerung.tsx
+- **Philosophische Spezifikation:** Einsatz von CSS Subgrid zur perfekten Ausrichtung der Haarlinien-Grenzen, gepaart mit einer gedämpften Federphysik beim Hover.
+
+### Idee 17: Kinetische Veredelung von service-budget-calculator.tsx (IDEA_017)
+- **Ziel-Route:** app/schliessanlagen/page.tsx
+- **Ziel-Komponente:** components/service/service-budget-calculator.tsx
+- **Philosophische Spezifikation:** Implementierung von Scroll-Timeline Animationen, um SVG-Pfade basierend auf der Scroll-Tiefe dynamisch zu zeichnen und die Marke zu stärken.
+
+### Idee 18: Kinetische Veredelung von accordion.tsx (IDEA_018)
+- **Ziel-Route:** app/sicherheitstechnik/page.tsx
+- **Ziel-Komponente:** components/ui/accordion.tsx
+- **Philosophische Spezifikation:** Entwicklung eines fluiden Bento-Grids, das sich mittels View Transitions nahtlos zwischen verschiedenen Ansichten morpht.
+
+### Idee 19: Kinetische Veredelung von alert.tsx (IDEA_019)
+- **Ziel-Route:** app/service-und-termin/page.tsx
+- **Ziel-Komponente:** components/ui/alert.tsx
+- **Philosophische Spezifikation:** Mikro-Interaktionen mit Web Animations API, die auf haptisches Feedback via subtiler Skalierungs-Effekte (0.98 zu 1) abzielen.
+
+### Idee 20: Kinetische Veredelung von badge.tsx (IDEA_020)
+- **Ziel-Route:** app/autoschluessel/funkschluessel/page.tsx
+- **Ziel-Komponente:** components/ui/badge.tsx
+- **Philosophische Spezifikation:** Transformation des starren Layouts in eine reaktive, haptische Schnittstelle, bei der Cursor-Bewegungen subtile oklch-Schatten triggern.
+
+### Idee 21: Kinetische Veredelung von button.tsx (IDEA_021)
+- **Ziel-Route:** app/autoschluessel/kopieren/page.tsx
+- **Ziel-Komponente:** components/ui/button.tsx
+- **Philosophische Spezifikation:** Einsatz von CSS Subgrid zur perfekten Ausrichtung der Haarlinien-Grenzen, gepaart mit einer gedämpften Federphysik beim Hover.
+
+### Idee 22: Kinetische Veredelung von card.tsx (IDEA_022)
+- **Ziel-Route:** app/autoschluessel/nachmachen/page.tsx
+- **Ziel-Komponente:** components/ui/card.tsx
+- **Philosophische Spezifikation:** Implementierung von Scroll-Timeline Animationen, um SVG-Pfade basierend auf der Scroll-Tiefe dynamisch zu zeichnen und die Marke zu stärken.
+
+### Idee 23: Kinetische Veredelung von preis-anzeige.tsx (IDEA_023)
+- **Ziel-Route:** app/autoschluessel/programmieren/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/preis-anzeige.tsx
+- **Philosophische Spezifikation:** Entwicklung eines fluiden Bento-Grids, das sich mittels View Transitions nahtlos zwischen verschiedenen Ansichten morpht.
+
+### Idee 24: Kinetische Veredelung von security-check-calculator.tsx (IDEA_024)
+- **Ziel-Route:** app/autoschluessel/schluesselbart-fraesen/page.tsx
+- **Ziel-Komponente:** components/calculator/security-check-calculator.tsx
+- **Philosophische Spezifikation:** Mikro-Interaktionen mit Web Animations API, die auf haptisches Feedback via subtiler Skalierungs-Effekte (0.98 zu 1) abzielen.
+
+### Idee 25: Kinetische Veredelung von service-budget-calculator.tsx (IDEA_025)
+- **Ziel-Route:** app/autoschluessel/smart-key/page.tsx
+- **Ziel-Komponente:** components/calculator/service-budget-calculator.tsx
+- **Philosophische Spezifikation:** Transformation des starren Layouts in eine reaktive, haptische Schnittstelle, bei der Cursor-Bewegungen subtile oklch-Schatten triggern.
+
+## KATEGORIE B: SEMANTISCHE AUTORITÄT & CONTENT-MAXIMIERUNG
+
+### Idee 26: Semantischer Ausbau der Route page.tsx (IDEA_026)
+- **Ziel-Route:** app/elektronische-zutrittsloesungen/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Integration einer strukturierten Vergleichsmatrix zur Gegenüberstellung verschiedener Schlüssel-Technologien und ihrer historischen Evolution.
+
+### Idee 27: Semantischer Ausbau der Route page.tsx (IDEA_027)
+- **Ziel-Route:** app/gleichschliessende-zylinder/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Aufbau einer massiven, semantisch korrekten FAQ-Architektur, die jede erdenkliche Nutzerfrage mit maximaler Autorität beantwortet.
+
+### Idee 28: Semantischer Ausbau der Route page.tsx (IDEA_028)
+- **Ziel-Route:** app/schluessel-nach-code/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Anreicherung der Route mit technischen Prozessschritten, die den handwerklichen Wert der Dienstleistung transparent machen.
+
+### Idee 29: Semantischer Ausbau der Route page.tsx (IDEA_029)
+- **Ziel-Route:** app/schluessel-nach-vorlage/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Vertiefung der bestehenden Inhalte durch einbindung von Experten-Zitaten und einer narrativen Reise durch die Welt der Schließanlagen.
+
+### Idee 30: Semantischer Ausbau der Route page.tsx (IDEA_030)
+- **Ziel-Route:** app/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Erweiterung des Fließtextes auf über 800 Wörter mit einer tiefgehenden philosophischen Betrachtung der Sicherheitstechnik.
+
+### Idee 31: Semantischer Ausbau der Route page.tsx (IDEA_031)
+- **Ziel-Route:** app/autoschluessel/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Integration einer strukturierten Vergleichsmatrix zur Gegenüberstellung verschiedener Schlüssel-Technologien und ihrer historischen Evolution.
+
+### Idee 32: Semantischer Ausbau der Route page.tsx (IDEA_032)
+- **Ziel-Route:** app/schliessanlagen/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Aufbau einer massiven, semantisch korrekten FAQ-Architektur, die jede erdenkliche Nutzerfrage mit maximaler Autorität beantwortet.
+
+### Idee 33: Semantischer Ausbau der Route page.tsx (IDEA_033)
+- **Ziel-Route:** app/sicherheitstechnik/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Anreicherung der Route mit technischen Prozessschritten, die den handwerklichen Wert der Dienstleistung transparent machen.
+
+### Idee 34: Semantischer Ausbau der Route page.tsx (IDEA_034)
+- **Ziel-Route:** app/service-und-termin/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Vertiefung der bestehenden Inhalte durch einbindung von Experten-Zitaten und einer narrativen Reise durch die Welt der Schließanlagen.
+
+### Idee 35: Semantischer Ausbau der Route page.tsx (IDEA_035)
+- **Ziel-Route:** app/autoschluessel/funkschluessel/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Erweiterung des Fließtextes auf über 800 Wörter mit einer tiefgehenden philosophischen Betrachtung der Sicherheitstechnik.
+
+### Idee 36: Semantischer Ausbau der Route page.tsx (IDEA_036)
+- **Ziel-Route:** app/autoschluessel/kopieren/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Integration einer strukturierten Vergleichsmatrix zur Gegenüberstellung verschiedener Schlüssel-Technologien und ihrer historischen Evolution.
+
+### Idee 37: Semantischer Ausbau der Route page.tsx (IDEA_037)
+- **Ziel-Route:** app/autoschluessel/nachmachen/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Aufbau einer massiven, semantisch korrekten FAQ-Architektur, die jede erdenkliche Nutzerfrage mit maximaler Autorität beantwortet.
+
+### Idee 38: Semantischer Ausbau der Route page.tsx (IDEA_038)
+- **Ziel-Route:** app/autoschluessel/programmieren/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Anreicherung der Route mit technischen Prozessschritten, die den handwerklichen Wert der Dienstleistung transparent machen.
+
+### Idee 39: Semantischer Ausbau der Route page.tsx (IDEA_039)
+- **Ziel-Route:** app/autoschluessel/schluesselbart-fraesen/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Vertiefung der bestehenden Inhalte durch einbindung von Experten-Zitaten und einer narrativen Reise durch die Welt der Schließanlagen.
+
+### Idee 40: Semantischer Ausbau der Route page.tsx (IDEA_040)
+- **Ziel-Route:** app/autoschluessel/smart-key/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Erweiterung des Fließtextes auf über 800 Wörter mit einer tiefgehenden philosophischen Betrachtung der Sicherheitstechnik.
+
+### Idee 41: Semantischer Ausbau der Route page.tsx (IDEA_041)
+- **Ziel-Route:** app/elektronische-zutrittsloesungen/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Integration einer strukturierten Vergleichsmatrix zur Gegenüberstellung verschiedener Schlüssel-Technologien und ihrer historischen Evolution.
+
+### Idee 42: Semantischer Ausbau der Route page.tsx (IDEA_042)
+- **Ziel-Route:** app/gleichschliessende-zylinder/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Aufbau einer massiven, semantisch korrekten FAQ-Architektur, die jede erdenkliche Nutzerfrage mit maximaler Autorität beantwortet.
+
+### Idee 43: Semantischer Ausbau der Route page.tsx (IDEA_043)
+- **Ziel-Route:** app/schluessel-nach-code/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Anreicherung der Route mit technischen Prozessschritten, die den handwerklichen Wert der Dienstleistung transparent machen.
+
+### Idee 44: Semantischer Ausbau der Route page.tsx (IDEA_044)
+- **Ziel-Route:** app/schluessel-nach-vorlage/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Vertiefung der bestehenden Inhalte durch einbindung von Experten-Zitaten und einer narrativen Reise durch die Welt der Schließanlagen.
+
+### Idee 45: Semantischer Ausbau der Route page.tsx (IDEA_045)
+- **Ziel-Route:** app/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Erweiterung des Fließtextes auf über 800 Wörter mit einer tiefgehenden philosophischen Betrachtung der Sicherheitstechnik.
+
+### Idee 46: Semantischer Ausbau der Route page.tsx (IDEA_046)
+- **Ziel-Route:** app/autoschluessel/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Integration einer strukturierten Vergleichsmatrix zur Gegenüberstellung verschiedener Schlüssel-Technologien und ihrer historischen Evolution.
+
+### Idee 47: Semantischer Ausbau der Route page.tsx (IDEA_047)
+- **Ziel-Route:** app/schliessanlagen/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Aufbau einer massiven, semantisch korrekten FAQ-Architektur, die jede erdenkliche Nutzerfrage mit maximaler Autorität beantwortet.
+
+### Idee 48: Semantischer Ausbau der Route page.tsx (IDEA_048)
+- **Ziel-Route:** app/sicherheitstechnik/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Anreicherung der Route mit technischen Prozessschritten, die den handwerklichen Wert der Dienstleistung transparent machen.
+
+### Idee 49: Semantischer Ausbau der Route page.tsx (IDEA_049)
+- **Ziel-Route:** app/service-und-termin/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Vertiefung der bestehenden Inhalte durch einbindung von Experten-Zitaten und einer narrativen Reise durch die Welt der Schließanlagen.
+
+### Idee 50: Semantischer Ausbau der Route page.tsx (IDEA_050)
+- **Ziel-Route:** app/autoschluessel/funkschluessel/page.tsx
+- **Ziel-Komponente:** N/A (Seiten-Level)
+- **Philosophische Spezifikation:** Erweiterung des Fließtextes auf über 800 Wörter mit einer tiefgehenden philosophischen Betrachtung der Sicherheitstechnik.
+
+## KATEGORIE C: CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE
+
+### Idee 51: Native Conversion-Werkzeuge für page.tsx (IDEA_051)
+- **Ziel-Route:** app/autoschluessel/kopieren/page.tsx
+- **Ziel-Komponente:** components/calculator/service-budget-calculator.tsx
+- **Philosophische Spezifikation:** Entwicklung eines dynamischen Filter-Systems mit React 19 Server Actions zur reibungslosen Eingrenzung komplexer Produktportfolios.
+
+### Idee 52: Native Conversion-Werkzeuge für page.tsx (IDEA_052)
+- **Ziel-Route:** app/autoschluessel/nachmachen/page.tsx
+- **Ziel-Komponente:** components/showcase/spatial-bento-grid.tsx
+- **Philosophische Spezifikation:** Integration interaktiver Vorher-Nachher-Slider, um die Qualität der Dienstleistung visuell greifbar zu machen.
+
+### Idee 53: Native Conversion-Werkzeuge für page.tsx (IDEA_053)
+- **Ziel-Route:** app/autoschluessel/programmieren/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/key-kinds.tsx
+- **Philosophische Spezifikation:** Schaffung von nativen Werkzeugen zur Budget-Berechnung, die über useOptimistic sofortiges Feedback liefern.
+
+### Idee 54: Native Conversion-Werkzeuge für page.tsx (IDEA_054)
+- **Ziel-Route:** app/autoschluessel/schluesselbart-fraesen/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/service-article.tsx
+- **Philosophische Spezifikation:** Implementierung interaktiver Vertrauensbeweise, bei denen Kundenrezensionen dynamisch in das Bento-Grid eingebunden werden.
+
+### Idee 55: Native Conversion-Werkzeuge für page.tsx (IDEA_055)
+- **Ziel-Route:** app/autoschluessel/smart-key/page.tsx
+- **Ziel-Komponente:** components/schliessanlagen/system-erklaerung.tsx
+- **Philosophische Spezifikation:** Einbettung eines interaktiven ROI-Konfigurators, der Nutzern den direkten finanziellen Mehrwert in Echtzeit visualisiert.
+
+### Idee 56: Native Conversion-Werkzeuge für page.tsx (IDEA_056)
+- **Ziel-Route:** app/elektronische-zutrittsloesungen/page.tsx
+- **Ziel-Komponente:** components/service/service-budget-calculator.tsx
+- **Philosophische Spezifikation:** Entwicklung eines dynamischen Filter-Systems mit React 19 Server Actions zur reibungslosen Eingrenzung komplexer Produktportfolios.
+
+### Idee 57: Native Conversion-Werkzeuge für page.tsx (IDEA_057)
+- **Ziel-Route:** app/gleichschliessende-zylinder/page.tsx
+- **Ziel-Komponente:** components/ui/accordion.tsx
+- **Philosophische Spezifikation:** Integration interaktiver Vorher-Nachher-Slider, um die Qualität der Dienstleistung visuell greifbar zu machen.
+
+### Idee 58: Native Conversion-Werkzeuge für page.tsx (IDEA_058)
+- **Ziel-Route:** app/schluessel-nach-code/page.tsx
+- **Ziel-Komponente:** components/ui/alert.tsx
+- **Philosophische Spezifikation:** Schaffung von nativen Werkzeugen zur Budget-Berechnung, die über useOptimistic sofortiges Feedback liefern.
+
+### Idee 59: Native Conversion-Werkzeuge für page.tsx (IDEA_059)
+- **Ziel-Route:** app/schluessel-nach-vorlage/page.tsx
+- **Ziel-Komponente:** components/ui/badge.tsx
+- **Philosophische Spezifikation:** Implementierung interaktiver Vertrauensbeweise, bei denen Kundenrezensionen dynamisch in das Bento-Grid eingebunden werden.
+
+### Idee 60: Native Conversion-Werkzeuge für page.tsx (IDEA_060)
+- **Ziel-Route:** app/page.tsx
+- **Ziel-Komponente:** components/ui/button.tsx
+- **Philosophische Spezifikation:** Einbettung eines interaktiven ROI-Konfigurators, der Nutzern den direkten finanziellen Mehrwert in Echtzeit visualisiert.
+
+### Idee 61: Native Conversion-Werkzeuge für page.tsx (IDEA_061)
+- **Ziel-Route:** app/autoschluessel/page.tsx
+- **Ziel-Komponente:** components/ui/card.tsx
+- **Philosophische Spezifikation:** Entwicklung eines dynamischen Filter-Systems mit React 19 Server Actions zur reibungslosen Eingrenzung komplexer Produktportfolios.
+
+### Idee 62: Native Conversion-Werkzeuge für page.tsx (IDEA_062)
+- **Ziel-Route:** app/schliessanlagen/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/preis-anzeige.tsx
+- **Philosophische Spezifikation:** Integration interaktiver Vorher-Nachher-Slider, um die Qualität der Dienstleistung visuell greifbar zu machen.
+
+### Idee 63: Native Conversion-Werkzeuge für page.tsx (IDEA_063)
+- **Ziel-Route:** app/sicherheitstechnik/page.tsx
+- **Ziel-Komponente:** components/calculator/security-check-calculator.tsx
+- **Philosophische Spezifikation:** Schaffung von nativen Werkzeugen zur Budget-Berechnung, die über useOptimistic sofortiges Feedback liefern.
+
+### Idee 64: Native Conversion-Werkzeuge für page.tsx (IDEA_064)
+- **Ziel-Route:** app/service-und-termin/page.tsx
+- **Ziel-Komponente:** components/calculator/service-budget-calculator.tsx
+- **Philosophische Spezifikation:** Implementierung interaktiver Vertrauensbeweise, bei denen Kundenrezensionen dynamisch in das Bento-Grid eingebunden werden.
+
+### Idee 65: Native Conversion-Werkzeuge für page.tsx (IDEA_065)
+- **Ziel-Route:** app/autoschluessel/funkschluessel/page.tsx
+- **Ziel-Komponente:** components/showcase/spatial-bento-grid.tsx
+- **Philosophische Spezifikation:** Einbettung eines interaktiven ROI-Konfigurators, der Nutzern den direkten finanziellen Mehrwert in Echtzeit visualisiert.
+
+### Idee 66: Native Conversion-Werkzeuge für page.tsx (IDEA_066)
+- **Ziel-Route:** app/autoschluessel/kopieren/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/key-kinds.tsx
+- **Philosophische Spezifikation:** Entwicklung eines dynamischen Filter-Systems mit React 19 Server Actions zur reibungslosen Eingrenzung komplexer Produktportfolios.
+
+### Idee 67: Native Conversion-Werkzeuge für page.tsx (IDEA_067)
+- **Ziel-Route:** app/autoschluessel/nachmachen/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/service-article.tsx
+- **Philosophische Spezifikation:** Integration interaktiver Vorher-Nachher-Slider, um die Qualität der Dienstleistung visuell greifbar zu machen.
+
+### Idee 68: Native Conversion-Werkzeuge für page.tsx (IDEA_068)
+- **Ziel-Route:** app/autoschluessel/programmieren/page.tsx
+- **Ziel-Komponente:** components/schliessanlagen/system-erklaerung.tsx
+- **Philosophische Spezifikation:** Schaffung von nativen Werkzeugen zur Budget-Berechnung, die über useOptimistic sofortiges Feedback liefern.
+
+### Idee 69: Native Conversion-Werkzeuge für page.tsx (IDEA_069)
+- **Ziel-Route:** app/autoschluessel/schluesselbart-fraesen/page.tsx
+- **Ziel-Komponente:** components/service/service-budget-calculator.tsx
+- **Philosophische Spezifikation:** Implementierung interaktiver Vertrauensbeweise, bei denen Kundenrezensionen dynamisch in das Bento-Grid eingebunden werden.
+
+### Idee 70: Native Conversion-Werkzeuge für page.tsx (IDEA_070)
+- **Ziel-Route:** app/autoschluessel/smart-key/page.tsx
+- **Ziel-Komponente:** components/ui/accordion.tsx
+- **Philosophische Spezifikation:** Einbettung eines interaktiven ROI-Konfigurators, der Nutzern den direkten finanziellen Mehrwert in Echtzeit visualisiert.
+
+### Idee 71: Native Conversion-Werkzeuge für page.tsx (IDEA_071)
+- **Ziel-Route:** app/elektronische-zutrittsloesungen/page.tsx
+- **Ziel-Komponente:** components/ui/alert.tsx
+- **Philosophische Spezifikation:** Entwicklung eines dynamischen Filter-Systems mit React 19 Server Actions zur reibungslosen Eingrenzung komplexer Produktportfolios.
+
+### Idee 72: Native Conversion-Werkzeuge für page.tsx (IDEA_072)
+- **Ziel-Route:** app/gleichschliessende-zylinder/page.tsx
+- **Ziel-Komponente:** components/ui/badge.tsx
+- **Philosophische Spezifikation:** Integration interaktiver Vorher-Nachher-Slider, um die Qualität der Dienstleistung visuell greifbar zu machen.
+
+### Idee 73: Native Conversion-Werkzeuge für page.tsx (IDEA_073)
+- **Ziel-Route:** app/schluessel-nach-code/page.tsx
+- **Ziel-Komponente:** components/ui/button.tsx
+- **Philosophische Spezifikation:** Schaffung von nativen Werkzeugen zur Budget-Berechnung, die über useOptimistic sofortiges Feedback liefern.
+
+### Idee 74: Native Conversion-Werkzeuge für page.tsx (IDEA_074)
+- **Ziel-Route:** app/schluessel-nach-vorlage/page.tsx
+- **Ziel-Komponente:** components/ui/card.tsx
+- **Philosophische Spezifikation:** Implementierung interaktiver Vertrauensbeweise, bei denen Kundenrezensionen dynamisch in das Bento-Grid eingebunden werden.
+
+### Idee 75: Native Conversion-Werkzeuge für page.tsx (IDEA_075)
+- **Ziel-Route:** app/page.tsx
+- **Ziel-Komponente:** components/autoschluessel/preis-anzeige.tsx
+- **Philosophische Spezifikation:** Einbettung eines interaktiven ROI-Konfigurators, der Nutzern den direkten finanziellen Mehrwert in Echtzeit visualisiert.
+
+## KATEGORIE D: EXTREME PERFORMANCE, ARCHITEKTUR & DX
+
+### Idee 76: Performance-Architektur für page.tsx (IDEA_076)
+- **Ziel-Route:** app/autoschluessel/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Harmonisierung des gesamten Layouts durch konsequente Anwendung von CSS Subgrid und Container Queries (@container).
+
+### Idee 77: Performance-Architektur für page.tsx (IDEA_077)
+- **Ziel-Route:** app/schliessanlagen/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Etablierung einer extrem optimierten AVIF-Hero-Pipeline zur drastischen Reduktion der LCP (Largest Contentful Paint) Zeiten.
+
+### Idee 78: Performance-Architektur für page.tsx (IDEA_078)
+- **Ziel-Route:** app/sicherheitstechnik/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Zero-Shift Webfont-Optimierung, um jegliches CLS (Cumulative Layout Shift) bei der Typografie zu verhindern.
+
+### Idee 79: Performance-Architektur für page.tsx (IDEA_079)
+- **Ziel-Route:** app/service-und-termin/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Architektonische Härtung der bestehenden Komponenten durch strikte Typsicherheit und Isolierung schwerer Drittanbieter-Bibliotheken.
+
+### Idee 80: Performance-Architektur für page.tsx (IDEA_080)
+- **Ziel-Route:** app/autoschluessel/funkschluessel/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Rigoroser Einsatz der Next.js 16 'use cache' Memoisierung zur Eliminierung redundanter Render-Zyklen auf Server-Ebene.
+
+### Idee 81: Performance-Architektur für page.tsx (IDEA_081)
+- **Ziel-Route:** app/autoschluessel/kopieren/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Harmonisierung des gesamten Layouts durch konsequente Anwendung von CSS Subgrid und Container Queries (@container).
+
+### Idee 82: Performance-Architektur für page.tsx (IDEA_082)
+- **Ziel-Route:** app/autoschluessel/nachmachen/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Etablierung einer extrem optimierten AVIF-Hero-Pipeline zur drastischen Reduktion der LCP (Largest Contentful Paint) Zeiten.
+
+### Idee 83: Performance-Architektur für page.tsx (IDEA_083)
+- **Ziel-Route:** app/autoschluessel/programmieren/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Zero-Shift Webfont-Optimierung, um jegliches CLS (Cumulative Layout Shift) bei der Typografie zu verhindern.
+
+### Idee 84: Performance-Architektur für page.tsx (IDEA_084)
+- **Ziel-Route:** app/autoschluessel/schluesselbart-fraesen/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Architektonische Härtung der bestehenden Komponenten durch strikte Typsicherheit und Isolierung schwerer Drittanbieter-Bibliotheken.
+
+### Idee 85: Performance-Architektur für page.tsx (IDEA_085)
+- **Ziel-Route:** app/autoschluessel/smart-key/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Rigoroser Einsatz der Next.js 16 'use cache' Memoisierung zur Eliminierung redundanter Render-Zyklen auf Server-Ebene.
+
+### Idee 86: Performance-Architektur für page.tsx (IDEA_086)
+- **Ziel-Route:** app/elektronische-zutrittsloesungen/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Harmonisierung des gesamten Layouts durch konsequente Anwendung von CSS Subgrid und Container Queries (@container).
+
+### Idee 87: Performance-Architektur für page.tsx (IDEA_087)
+- **Ziel-Route:** app/gleichschliessende-zylinder/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Etablierung einer extrem optimierten AVIF-Hero-Pipeline zur drastischen Reduktion der LCP (Largest Contentful Paint) Zeiten.
+
+### Idee 88: Performance-Architektur für page.tsx (IDEA_088)
+- **Ziel-Route:** app/schluessel-nach-code/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Zero-Shift Webfont-Optimierung, um jegliches CLS (Cumulative Layout Shift) bei der Typografie zu verhindern.
+
+### Idee 89: Performance-Architektur für page.tsx (IDEA_089)
+- **Ziel-Route:** app/schluessel-nach-vorlage/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Architektonische Härtung der bestehenden Komponenten durch strikte Typsicherheit und Isolierung schwerer Drittanbieter-Bibliotheken.
+
+### Idee 90: Performance-Architektur für page.tsx (IDEA_090)
+- **Ziel-Route:** app/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Rigoroser Einsatz der Next.js 16 'use cache' Memoisierung zur Eliminierung redundanter Render-Zyklen auf Server-Ebene.
+
+### Idee 91: Performance-Architektur für page.tsx (IDEA_091)
+- **Ziel-Route:** app/autoschluessel/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Harmonisierung des gesamten Layouts durch konsequente Anwendung von CSS Subgrid und Container Queries (@container).
+
+### Idee 92: Performance-Architektur für page.tsx (IDEA_092)
+- **Ziel-Route:** app/schliessanlagen/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Etablierung einer extrem optimierten AVIF-Hero-Pipeline zur drastischen Reduktion der LCP (Largest Contentful Paint) Zeiten.
+
+### Idee 93: Performance-Architektur für page.tsx (IDEA_093)
+- **Ziel-Route:** app/sicherheitstechnik/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Zero-Shift Webfont-Optimierung, um jegliches CLS (Cumulative Layout Shift) bei der Typografie zu verhindern.
+
+### Idee 94: Performance-Architektur für page.tsx (IDEA_094)
+- **Ziel-Route:** app/service-und-termin/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Architektonische Härtung der bestehenden Komponenten durch strikte Typsicherheit und Isolierung schwerer Drittanbieter-Bibliotheken.
+
+### Idee 95: Performance-Architektur für page.tsx (IDEA_095)
+- **Ziel-Route:** app/autoschluessel/funkschluessel/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Rigoroser Einsatz der Next.js 16 'use cache' Memoisierung zur Eliminierung redundanter Render-Zyklen auf Server-Ebene.
+
+### Idee 96: Performance-Architektur für page.tsx (IDEA_096)
+- **Ziel-Route:** app/autoschluessel/kopieren/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Harmonisierung des gesamten Layouts durch konsequente Anwendung von CSS Subgrid und Container Queries (@container).
+
+### Idee 97: Performance-Architektur für page.tsx (IDEA_097)
+- **Ziel-Route:** app/autoschluessel/nachmachen/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Etablierung einer extrem optimierten AVIF-Hero-Pipeline zur drastischen Reduktion der LCP (Largest Contentful Paint) Zeiten.
+
+### Idee 98: Performance-Architektur für page.tsx (IDEA_098)
+- **Ziel-Route:** app/autoschluessel/programmieren/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Zero-Shift Webfont-Optimierung, um jegliches CLS (Cumulative Layout Shift) bei der Typografie zu verhindern.
+
+### Idee 99: Performance-Architektur für page.tsx (IDEA_099)
+- **Ziel-Route:** app/autoschluessel/schluesselbart-fraesen/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Architektonische Härtung der bestehenden Komponenten durch strikte Typsicherheit und Isolierung schwerer Drittanbieter-Bibliotheken.
+
+### Idee 100: Performance-Architektur für page.tsx (IDEA_100)
+- **Ziel-Route:** app/autoschluessel/smart-key/page.tsx
+- **Ziel-Komponente:** N/A (Architektur-Level)
+- **Philosophische Spezifikation:** Rigoroser Einsatz der Next.js 16 'use cache' Memoisierung zur Eliminierung redundanter Render-Zyklen auf Server-Ebene.
+

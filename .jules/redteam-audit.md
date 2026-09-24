@@ -1,16 +1,11 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# Red-Team Audit Report
 
 ## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
-
+- Keine onClick-Handler mit leeren Funktionen gefunden.
 ## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
-
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
-
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+- `window` und `localStorage` Zugriffe in Render-Pfaden ohne useEffect entdeckt in `src/app/rechtliches/cookie-einstellungen/cookie-einstellungen.tsx`.
+- Weitere `window` Zugriffe (vermutlich in Eventhandlern, aber riskant) in Formularen.
+## 3. TypeScript-Schwächen
+- Keine `as unknown as` Casts gefunden.
+## 4. Core Web Vitals Sünden
+- Keine offensichtlichen `<img` Tags ohne explizite Dimensionen identifiziert (Next.js Image wird vermutlich genutzt).
