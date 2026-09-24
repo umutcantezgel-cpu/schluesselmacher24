@@ -428,10 +428,15 @@ export interface UploadRef {
   /** Kategorie, damit Aufbewahrungsfristen greifen. */
   category: 'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto';
   /**
-   * Speicherort. Ohne angebundene Dateiablage bleibt dieses Feld leer und
-   * der Upload ist nur als Absicht vermerkt.
+   * Kennung der gespeicherten Kundendatei. Leer, wenn die Datei nicht
+   * hochgeladen werden konnte — dann ist sie nur als Absicht vermerkt.
    */
   storageKey?: string;
+  /**
+   * Einmal-Schlüssel aus dem Upload. Nur damit ordnet der Server die Datei
+   * beim Absenden dem Vorgang zu; gespeichert wird er nie.
+   */
+  uploadToken?: string;
   uploadedAt: string;
 }
 

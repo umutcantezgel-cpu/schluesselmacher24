@@ -2,6 +2,8 @@ import 'server-only';
 
 import { z } from 'zod';
 
+import { KUNDENDATEI_ID_MUSTER, UPLOAD_KATEGORIEN, UPLOAD_TOKEN_MUSTER } from './datei-pruefung';
+
 /* Prüfregeln für alles, was aus dem Browser in einen Vorgang gelangt. */
 
 const text = (max: number) => z.string().trim().max(max);
@@ -46,7 +48,11 @@ export const uploadMetaSchema = z
       fileName: text(255).min(1),
       sizeBytes: z.number().int().min(0).max(30 * 1024 * 1024),
       mimeType: text(120),
-      category: z.enum(['schluesselfoto', 'fahrzeugschein', 'grundriss', 'dokument', 'objektfoto']),
+      category: z.enum(UPLOAD_KATEGORIEN),
+      // Nur zusammen gültig: Kennung der Kundendatei und der Schlüssel aus dem Upload.
+      // Ob beides zusammenpasst, prüft erst die Zuordnung zum Vorgang.
+      storageKey: z.string().regex(KUNDENDATEI_ID_MUSTER).optional(),
+      uploadToken: z.string().regex(UPLOAD_TOKEN_MUSTER).optional(),
     }),
   )
   .max(30);
