@@ -47,3 +47,7 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+
+## Interaktive Module
+- **EnterpriseRoiCalculator**: Ein interaktiver Kalkulator zur Berechnung von TCO und Amortisation moderner Schließanlagen im Vergleich zu Einzelschließungen, eingebunden auf der Seite `/schliessanlagen`.

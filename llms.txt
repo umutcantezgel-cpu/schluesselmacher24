@@ -1,3 +1,7 @@
 Architecture Blueprint & System Rules for JC-REVOLUTION-BUILDER
 
 Follow .jules/revolution-plan.json for transformation.
+
+
+## Interaktive Module
+- **EnterpriseRoiCalculator**: Ein interaktiver Kalkulator zur Berechnung von TCO und Amortisation moderner Schließanlagen im Vergleich zu Einzelschließungen, eingebunden auf der Seite `/schliessanlagen`.
