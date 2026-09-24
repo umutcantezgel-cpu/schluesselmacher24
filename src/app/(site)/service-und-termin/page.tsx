@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { ArrowRight, CalendarSearch, MapPin, MessageSquare, Phone } from 'lucide-react';
 
 import { getPageContent, getSettings } from '@/lib/data';
+import { getRichtwerte } from '@/lib/data/richtwerte';
 import { NAV_AREAS, PROCESS_LABELS } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
-import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
+import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -68,14 +69,15 @@ const SERVICE_FAQ = [
             },
             {
               question: 'Welche Informationen benötigen Sie für einen fundierten Kostenvoranschlag?',
-              answer: 'Für eine präzise Kalkulation benötigen wir detaillierte Angaben zum Objekt: Anzahl und Art der Türen (Holz, Metall, Glas, Brandschutz), die gewünschte Sicherheitsstufe, eine grobe Vorstellung der Nutzerhierarchie (wer darf wohin?) und idealerweise Grundrisspläne. Je mehr Kontext wir im Vorfeld erhalten, desto genauer und zielgerichteter können wir die Architektur planen und kalkulieren. Der interaktive Kalkulator auf dieser Seite bietet lediglich einen ersten Anhaltspunkt für den Aufwand.'
+              answer: 'Für eine präzise Kalkulation benötigen wir detaillierte Angaben zum Objekt: Anzahl und Art der Türen (Holz, Metall, Glas, Brandschutz), die gewünschte Sicherheitsstufe, eine grobe Vorstellung der Nutzerhierarchie (wer darf wohin?) und idealerweise Grundrisspläne. Je mehr Kontext wir im Vorfeld erhalten, desto genauer und zielgerichteter können wir die Architektur planen und kalkulieren. Der Orientierungsrechner auf dieser Seite nennt für einzelne Serviceleistungen höchstens eine unverbindliche Spanne und ersetzt kein Angebot.'
             }
           ];
 
 export default async function ServiceUndTerminPage() {
-  const [page, settings] = await Promise.all([
+  const [page, settings, richtwerte] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
+    getRichtwerte(),
   ]);
 
   return (
@@ -217,14 +219,17 @@ export default async function ServiceUndTerminPage() {
         </div>
       </Section>
 
-      <Section tone="muted">
+      <Section tone="muted" id="orientierung">
         <SectionHeading
-          eyebrow="Kostenkalkulation"
-          title="Transparente Budgetierung für Ihr Projekt"
-          lead="Nutzen Sie unseren interaktiven Kalkulator, um eine erste, unverbindliche Einschätzung der Projektkosten basierend auf dem geschätzten zeitlichen Aufwand zu erhalten."
+          eyebrow="Orientierung"
+          title="Womit Sie bei einem Serviceeinsatz rechnen können"
+          lead="Für häufige Leistungen vor Ort erhalten Sie hier eine erste Orientierung. Den verbindlichen Preis nennen wir nach der Prüfung Ihrer Anfrage."
         />
-        <div className="mt-8 max-w-3xl mx-auto">
-          <ServiceBudgetCalculator />
+        <div className="mt-8 max-w-3xl">
+          <ServiceEinsatzRechner
+            werte={richtwerte.serviceEinsatz}
+            anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
+          />
         </div>
       </Section>
 
