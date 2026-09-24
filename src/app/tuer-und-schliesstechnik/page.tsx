@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { Graph } from 'schema-dts';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -14,6 +15,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 
+import { getSiteUrl } from "@/lib/site-url";
 import { getPageContent, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { ButtonLink } from '@/components/ui/button';
@@ -120,12 +122,44 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
+
+  const siteUrl = getSiteUrl();
+  const pageUrl = `${siteUrl}/${ROUTE}`;
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteUrl}/#organization`,
+        "name": "Coday Web",
+        "url": siteUrl,
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        "url": siteUrl,
+        "name": "Coday Web",
+        "publisher": { "@id": `${siteUrl}/#organization` }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}/#webpage`,
+        "url": pageUrl,
+        "name": page?.seo.title ?? 'Tür- und Schließtechnik: Sicherheit vom Zylinder bis zum Mehrfachschloss',
+        "isPartOf": { "@id": `${siteUrl}/#website` },
+        "about": { "@id": `${siteUrl}/#organization` }
+      }
+    ]
+  } satisfies Graph;
+
   return (
     <main
       data-params={JSON.stringify(params)}
       data-search={JSON.stringify(searchParams)}
       className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
     >
+      <JsonLd data={structuredData} />
       <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
 
       <PageHeader
