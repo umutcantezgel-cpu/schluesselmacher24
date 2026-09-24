@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,7 +166,14 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -196,15 +204,25 @@ export default async function SchliessanlagenPage() {
           <div>
             <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
               {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
+                ?? 'Eine moderne Schließanlage ist weit mehr als eine Sammlung von Zylindern und Schlüsseln – '
+                  + 'sie ist das physische Fundament Ihres Sicherheits- und Organisationskonzepts. Sie definiert präzise, '
+                  + 'wer zu welcher Zeit Zugang zu welchen hochsensiblen oder allgemeinen Bereichen Ihres Gebäudes erhält. '
+                  + 'Wir entmystifizieren die komplexe Systematik von Schließanlagen und erklären die unterschiedlichen '
+                  + 'Architekturtypen in verständlicher, klarer Fachsprache. Von der grundlegenden Gleichschließung für '
+                  + 'private Einfamilienhäuser bis hin zur hochkomplexen Generalhauptschlüsselanlage (GHS) für verteilte '
+                  + 'Campus-Liegenschaften und Enterprise-Umgebungen. Unsere Methodik zielt darauf ab, Ihre Anlage nicht nur '
+                  + 'für den aktuellen Status Quo zu konzipieren, sondern mit strategischen Reserven so auszustatten, dass '
+                  + 'zukünftiges Wachstum und organisatorische Umstrukturierungen problemlos abgebildet werden können.'}
             </p>
 
             <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
-              Der Weg dorthin ist immer derselbe: Sie erfassen Ihr Objekt, Ihre Nutzer und Ihre
-              Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
-              danach wird gefertigt.
+              {'Der Weg zu einem perfekten System folgt einem strengen, methodischen Prozess: Die Basis bildet die akribische '
+              + 'Erfassung Ihres physischen Objekts, der spezifischen Nutzergruppen und sämtlicher Türen. Aus diesen Rohdaten '
+              + 'extrahieren wir die logischen Verknüpfungen und konstruieren eine detaillierte Schließmatrix (den Schließplan). '
+              + 'Dieser Plan wird in iterativen Zyklen mit Ihnen und Ihren Sicherheitsbeauftragten abgestimmt und verifiziert. '
+              + 'Erst wenn das Berechtigungskonzept zu 100 % fehlerfrei Ihre Organisationsstruktur widerspiegelt und alle '
+              + 'Compliance-Anforderungen erfüllt sind, wird die Anlage zur hochpräzisen Fertigung im Werk freigegeben. '
+              + 'Dieser strukturierte Ansatz eliminiert Planungsfehler im Vorfeld und garantiert eine reibungslose Inbetriebnahme.'}
             </p>
 
             <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
@@ -263,6 +281,17 @@ export default async function SchliessanlagenPage() {
           </p>
           <div className="mt-5">
             <SystemVergleich />
+          </div>
+        </div>
+
+        <div className="mt-24">
+          <SectionHeading
+            eyebrow="Wirtschaftlichkeit"
+            title="ROI & Ladezeit Kalkulator"
+            lead="Berechnen Sie den Return on Investment und die Amortisationszeit einer neuen Schließanlage für Ihr Enterprise-Projekt. Die Kalkulation basiert auf Erfahrungswerten und dient als erste fundierte Schätzung für Ihre Budgetplanung."
+          />
+          <div className="mt-12">
+            <EnterpriseRoiCalculator />
           </div>
         </div>
       </Section>
