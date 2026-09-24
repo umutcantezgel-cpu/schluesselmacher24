@@ -274,6 +274,8 @@ export interface CodeLine {
   /** Frei pflegbare Filterbegriffe. */
   tags: string[];
   seo: SeoFields;
+  /** Beispielartikel: sichtbar, aber nicht bestellbar und nicht in Suchmaschinen. */
+  example?: boolean;
 }
 
 /* ---------- Gleichschließende Zylinder ---------------------------------- */

@@ -67,18 +67,42 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    benutzer: Benutzer;
+    vorgaenge: Vorgaenge;
+    produkte: Produkte;
+    fahrzeugmarken: Fahrzeugmarken;
+    'autoschluessel-leistungen': AutoschluesselLeistungen;
+    preisregeln: Preisregeln;
+    preisgruppen: Preisgruppen;
+    sperrtage: Sperrtage;
+    seiten: Seiten;
+    leistungsseiten: Leistungsseiten;
+    ratgeber: Ratgeber;
+    einsatzgebiete: Einsatzgebiete;
     medien: Medien;
+    benutzer: Benutzer;
     'payload-kv': PayloadKv;
+    'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
-    benutzer: BenutzerSelect<false> | BenutzerSelect<true>;
+    vorgaenge: VorgaengeSelect<false> | VorgaengeSelect<true>;
+    produkte: ProdukteSelect<false> | ProdukteSelect<true>;
+    fahrzeugmarken: FahrzeugmarkenSelect<false> | FahrzeugmarkenSelect<true>;
+    'autoschluessel-leistungen': AutoschluesselLeistungenSelect<false> | AutoschluesselLeistungenSelect<true>;
+    preisregeln: PreisregelnSelect<false> | PreisregelnSelect<true>;
+    preisgruppen: PreisgruppenSelect<false> | PreisgruppenSelect<true>;
+    sperrtage: SperrtageSelect<false> | SperrtageSelect<true>;
+    seiten: SeitenSelect<false> | SeitenSelect<true>;
+    leistungsseiten: LeistungsseitenSelect<false> | LeistungsseitenSelect<true>;
+    ratgeber: RatgeberSelect<false> | RatgeberSelect<true>;
+    einsatzgebiete: EinsatzgebieteSelect<false> | EinsatzgebieteSelect<true>;
     medien: MedienSelect<false> | MedienSelect<true>;
+    benutzer: BenutzerSelect<false> | BenutzerSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
+    'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -87,15 +111,27 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    zylinderkatalog: Zylinderkatalog;
+    einstellungen: Einstellungen;
+  };
+  globalsSelect: {
+    zylinderkatalog: ZylinderkatalogSelect<false> | ZylinderkatalogSelect<true>;
+    einstellungen: EinstellungenSelect<false> | EinstellungenSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
   };
   user: Benutzer;
   jobs: {
-    tasks: unknown;
+    tasks: {
+      schedulePublish: TaskSchedulePublish;
+      inline: {
+        input: unknown;
+        output: unknown;
+      };
+    };
     workflows: unknown;
   };
 }
@@ -118,32 +154,247 @@ export interface BenutzerAuthOperations {
   };
 }
 /**
+ * Alle Bestellungen, Anfragen, Termine und Projekte. Neueste oben.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "benutzer".
+ * via the `definition` "vorgaenge".
  */
-export interface Benutzer {
+export interface Vorgaenge {
   id: number;
-  name?: string | null;
-  rollen: ('inhaber' | 'mitarbeiter')[];
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  resetPasswordRequestedAt?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
+  nummer: string;
+  art: 'bestellung' | 'anfrage' | 'termin' | 'projekt';
+  bereich:
+    | 'autoschluessel'
+    | 'schluessel-nach-vorlage'
+    | 'schluessel-nach-code'
+    | 'gleichschliessende-zylinder'
+    | 'schliessanlagen'
+    | 'elektronische-zutrittsloesungen'
+    | 'tuer-und-schliesstechnik'
+    | 'sicherheitstechnik'
+    | 'service-und-termin';
+  prozess: 'direktkauf' | 'gefuehrte-anfrage' | 'projektkonfigurator' | 'termin-mit-anzahlung';
+  status:
+    | 'neu'
+    | 'in-pruefung'
+    | 'geprueft'
+    | 'wartet-auf-kunde'
+    | 'in-fertigung'
+    | 'terminiert'
+    | 'versendet'
+    | 'abgeschlossen'
+    | 'storniert';
+  zusammenfassung?:
     | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
+        titel?: string | null;
+        zeilen?:
+          | {
+              label?: string | null;
+              wert?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
       }[]
     | null;
-  password?: string | null;
-  collection: 'benutzer';
+  termin?: {
+    datum?: string | null;
+    uhrzeit?: string | null;
+    dauerMinuten?: number | null;
+    ort?: ('werkstatt' | 'vor-ort') | null;
+  };
+  kontakt: {
+    anrede?: string | null;
+    vorname: string;
+    nachname: string;
+    firma?: string | null;
+    email: string;
+    telefon: string;
+    strasse?: string | null;
+    plz?: string | null;
+    ort?: string | null;
+    land: string;
+  };
+  zahlung?: {
+    umfang?: ('anzahlung' | 'gesamt') | null;
+    betragCent?: number | null;
+    status?: ('offen' | 'bezahlt' | 'fehlgeschlagen' | 'erstattet') | null;
+    bezahltAm?: string | null;
+    anbieterRef?: string | null;
+  };
+  /**
+   * Nur für das Team sichtbar.
+   */
+  notizen?:
+    | {
+        am: string;
+        von: 'kunde' | 'team' | 'system';
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  verlauf?:
+    | {
+        am: string;
+        von: 'kunde' | 'team' | 'system';
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  daten?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  angebot?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  uploads?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  zugriffsHash?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Neue Artikel als Entwurf anlegen und erst veröffentlichen, wenn alles stimmt. Nicht mehr angebotene Artikel in den Papierkorb legen — sie lassen sich wiederherstellen.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "produkte".
+ */
+export interface Produkte {
+  id: number;
+  typ: 'code_key' | 'standard';
+  /**
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche, z. B. „ms-01“. Ändert die Adresse der Seite.
+   */
+  slug: string;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  /**
+   * Beispielartikel sind sichtbar und als „Beispiel“ gekennzeichnet, aber nicht bestellbar und nicht in Suchmaschinen.
+   */
+  beispiel?: boolean | null;
+  name: string;
+  beschreibung: string;
+  hersteller?: string | null;
+  schluesseltyp?: string | null;
+  /**
+   * z. B. „Briefkasten“ oder „Büroschrank“.
+   */
+  einsatz?: string | null;
+  umfang?: string | null;
+  eigenschaften?:
+    | {
+        name: string;
+        wert: string;
+        id?: string | null;
+      }[]
+    | null;
+  lieferzeit?: string | null;
+  schlagworte?: string[] | null;
+  /**
+   * Betrag in Euro inklusive Umsatzsteuer.
+   */
+  preis: number;
+  /**
+   * Rabatt in Prozent ab einer Stückzahl. Ändert sich der Preis, passen sich die Staffeln an.
+   */
+  staffeln?:
+    | {
+        abMenge: number;
+        rabattProzent: number;
+        id?: string | null;
+      }[]
+    | null;
+  maxMenge: number;
+  versandklasse: 'code-schluessel' | 'zylinder' | 'zubehoer';
+  /**
+   * z. B. „3 bis 4 Ziffern“.
+   */
+  codeFormat?: string | null;
+  /**
+   * Regulärer Ausdruck, z. B. ^[0-9]{3,4}$ — wird beim Speichern geprüft.
+   */
+  codeMuster?: string | null;
+  codeBeispiel?: string | null;
+  codeHinweis?: string | null;
+  codeFundstelle?: {
+    /**
+     * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+     */
+    motiv?: string | null;
+    format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+    /**
+     * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+     */
+    bild?: (number | null) | Medien;
+    hinweis?: string | null;
+  };
+  fotoUpload?: ('nein' | 'optional' | 'pflicht') | null;
+  fotoHinweis?: string | null;
+  produktbild?: {
+    /**
+     * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+     */
+    motiv?: string | null;
+    format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+    /**
+     * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+     */
+    bild?: (number | null) | Medien;
+    hinweis?: string | null;
+  };
+  weitereBilder?: (number | Medien)[] | null;
+  /**
+   * Titel und Beschreibung, wie sie bei Google erscheinen.
+   */
+  seo?: {
+    titel?: string | null;
+    beschreibung?: string | null;
+    interneLinks?:
+      | {
+          href: string;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    noindex?: boolean | null;
+    socialBild?: {
+      /**
+       * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+       */
+      motiv?: string | null;
+      format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+      /**
+       * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+       */
+      bild?: (number | null) | Medien;
+      hinweis?: string | null;
+    };
+  };
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -195,6 +446,480 @@ export interface Medien {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "fahrzeugmarken".
+ */
+export interface Fahrzeugmarken {
+  id: number;
+  name: string;
+  preisgruppe: number | Preisgruppen;
+  intro?: string | null;
+  bild?: {
+    /**
+     * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+     */
+    motiv?: string | null;
+    format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+    /**
+     * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+     */
+    bild?: (number | null) | Medien;
+    hinweis?: string | null;
+  };
+  modelle?:
+    | {
+        name: string;
+        slug: string;
+        /**
+         * Leer lassen = wie Adresse.
+         */
+        kennung?: string | null;
+        baujahrVon: number;
+        baujahrBis?: number | null;
+        schluesselarten: ('mechanisch' | 'funk' | 'klappschluessel' | 'smart-key' | 'keyless')[];
+        fahrzeugVorOrt?: boolean | null;
+        preisgruppe?: (number | null) | Preisgruppen;
+        hinweise?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche, z. B. „ms-01“. Ändert die Adresse der Seite.
+   */
+  slug: string;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "preisgruppen".
+ */
+export interface Preisgruppen {
+  id: number;
+  label: string;
+  beschreibung?: string | null;
+  /**
+   * z. B. „gruppe-a“.
+   */
+  slug: string;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "autoschluessel-leistungen".
+ */
+export interface AutoschluesselLeistungen {
+  id: number;
+  label: string;
+  beschreibung: string;
+  schluesselarten: ('mechanisch' | 'funk' | 'klappschluessel' | 'smart-key' | 'keyless')[];
+  fahrzeugVorOrt?: boolean | null;
+  aktiv?: boolean | null;
+  /**
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche, z. B. „ms-01“. Ändert die Adresse der Seite.
+   */
+  slug: string;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+}
+/**
+ * Welche Leistung in welcher Fahrzeuggruppe was kostet und wie lange der Termin dauert.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "preisregeln".
+ */
+export interface Preisregeln {
+  id: number;
+  preisgruppe: number | Preisgruppen;
+  leistung: number | AutoschluesselLeistungen;
+  schluesselart: 'alle' | 'mechanisch' | 'funk' | 'klappschluessel' | 'smart-key' | 'keyless';
+  modus: 'fest' | 'rahmen' | 'pruefung';
+  preis?: number | null;
+  preisVon?: number | null;
+  preisBis?: number | null;
+  /**
+   * Betrag in Euro inklusive Umsatzsteuer.
+   */
+  anzahlung?: number | null;
+  terminMinuten?: number | null;
+  vorlaufTage?: number | null;
+  hinweis?: string | null;
+  /**
+   * Wird automatisch vergeben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sperrtage".
+ */
+export interface Sperrtage {
+  id: number;
+  datum: string;
+  grund: string;
+  /**
+   * Leer lassen = ganzer Tag gesperrt.
+   */
+  zeitfenster?:
+    | {
+        von: string;
+        bis: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "seiten".
+ */
+export interface Seiten {
+  id: number;
+  /**
+   * Adresse ohne führenden Schrägstrich; leer = Startseite.
+   */
+  route?: string | null;
+  headline: string;
+  subline?: string | null;
+  intro?: string | null;
+  abschnitte?:
+    | {
+        ueberschrift: string;
+        text: string;
+        bild?: {
+          /**
+           * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+           */
+          motiv?: string | null;
+          format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+          /**
+           * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+           */
+          bild?: (number | null) | Medien;
+          hinweis?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Leer lassen = die Seite zeigt ihre eingebauten Fragen.
+   */
+  faq?:
+    | {
+        frage: string;
+        antwort: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Titel und Beschreibung, wie sie bei Google erscheinen.
+   */
+  seo?: {
+    titel?: string | null;
+    beschreibung?: string | null;
+    interneLinks?:
+      | {
+          href: string;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    noindex?: boolean | null;
+    socialBild?: {
+      /**
+       * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+       */
+      motiv?: string | null;
+      format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+      /**
+       * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+       */
+      bild?: (number | null) | Medien;
+      hinweis?: string | null;
+    };
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leistungsseiten".
+ */
+export interface Leistungsseiten {
+  id: number;
+  titel: string;
+  bereich:
+    | 'autoschluessel'
+    | 'schluessel-nach-vorlage'
+    | 'schluessel-nach-code'
+    | 'gleichschliessende-zylinder'
+    | 'schliessanlagen'
+    | 'elektronische-zutrittsloesungen'
+    | 'tuer-und-schliesstechnik'
+    | 'sicherheitstechnik'
+    | 'service-und-termin';
+  zusammenfassung: string;
+  stichpunkte?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  bild?: {
+    /**
+     * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+     */
+    motiv?: string | null;
+    format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+    /**
+     * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+     */
+    bild?: (number | null) | Medien;
+    hinweis?: string | null;
+  };
+  prozess: 'direktkauf' | 'gefuehrte-anfrage' | 'projektkonfigurator' | 'termin-mit-anzahlung';
+  ctaHref: string;
+  ctaLabel: string;
+  /**
+   * Titel und Beschreibung, wie sie bei Google erscheinen.
+   */
+  seo?: {
+    titel?: string | null;
+    beschreibung?: string | null;
+    interneLinks?:
+      | {
+          href: string;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    noindex?: boolean | null;
+    socialBild?: {
+      /**
+       * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+       */
+      motiv?: string | null;
+      format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+      /**
+       * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+       */
+      bild?: (number | null) | Medien;
+      hinweis?: string | null;
+    };
+  };
+  /**
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche, z. B. „ms-01“. Ändert die Adresse der Seite.
+   */
+  slug: string;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ratgeber".
+ */
+export interface Ratgeber {
+  id: number;
+  titel: string;
+  auszug: string;
+  thema:
+    | 'autoschluessel'
+    | 'schluessel-nach-vorlage'
+    | 'schluessel-nach-code'
+    | 'gleichschliessende-zylinder'
+    | 'schliessanlagen'
+    | 'elektronische-zutrittsloesungen'
+    | 'tuer-und-schliesstechnik'
+    | 'sicherheitstechnik'
+    | 'service-und-termin';
+  abschnitte?:
+    | {
+        ueberschrift: string;
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  bild?: {
+    /**
+     * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+     */
+    motiv?: string | null;
+    format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+    /**
+     * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+     */
+    bild?: (number | null) | Medien;
+    hinweis?: string | null;
+  };
+  naechsterSchritt: {
+    href: string;
+    label: string;
+  };
+  /**
+   * Titel und Beschreibung, wie sie bei Google erscheinen.
+   */
+  seo?: {
+    titel?: string | null;
+    beschreibung?: string | null;
+    interneLinks?:
+      | {
+          href: string;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    noindex?: boolean | null;
+    socialBild?: {
+      /**
+       * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+       */
+      motiv?: string | null;
+      format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+      /**
+       * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+       */
+      bild?: (number | null) | Medien;
+      hinweis?: string | null;
+    };
+  };
+  /**
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche, z. B. „ms-01“. Ändert die Adresse der Seite.
+   */
+  slug: string;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "einsatzgebiete".
+ */
+export interface Einsatzgebiete {
+  id: number;
+  stadt: string;
+  bundesland: string;
+  lokalIntro: string;
+  lokaleFakten?:
+    | {
+        label: string;
+        wert: string;
+        id?: string | null;
+      }[]
+    | null;
+  leistungen?:
+    | (
+        | 'autoschluessel'
+        | 'schluessel-nach-vorlage'
+        | 'schluessel-nach-code'
+        | 'gleichschliessende-zylinder'
+        | 'schliessanlagen'
+        | 'elektronische-zutrittsloesungen'
+        | 'tuer-und-schliesstechnik'
+        | 'sicherheitstechnik'
+        | 'service-und-termin'
+      )[]
+    | null;
+  radiusKm?: number | null;
+  /**
+   * Titel und Beschreibung, wie sie bei Google erscheinen.
+   */
+  seo?: {
+    titel?: string | null;
+    beschreibung?: string | null;
+    interneLinks?:
+      | {
+          href: string;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    noindex?: boolean | null;
+    socialBild?: {
+      /**
+       * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+       */
+      motiv?: string | null;
+      format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+      /**
+       * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+       */
+      bild?: (number | null) | Medien;
+      hinweis?: string | null;
+    };
+  };
+  /**
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche, z. B. „ms-01“. Ändert die Adresse der Seite.
+   */
+  slug: string;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "benutzer".
+ */
+export interface Benutzer {
+  id: number;
+  name?: string | null;
+  rollen: ('inhaber' | 'mitarbeiter')[];
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  resetPasswordRequestedAt?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+  collection: 'benutzer';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -212,18 +937,154 @@ export interface PayloadKv {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-jobs".
+ */
+export interface PayloadJob {
+  id: number;
+  /**
+   * Input data provided to the job
+   */
+  input?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  taskStatus?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  completedAt?: string | null;
+  totalTried?: number | null;
+  /**
+   * If hasError is true this job will not be retried
+   */
+  hasError?: boolean | null;
+  /**
+   * If hasError is true, this is the error that caused it
+   */
+  error?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Task execution log
+   */
+  log?:
+    | {
+        executedAt: string;
+        completedAt: string;
+        taskSlug: 'inline' | 'schedulePublish';
+        taskID: string;
+        input?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
+        output?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
+        state: 'failed' | 'succeeded';
+        error?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  taskSlug?: ('inline' | 'schedulePublish') | null;
+  queue?: string | null;
+  waitUntil?: string | null;
+  processing?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: 'benutzer';
-        value: number | Benutzer;
+        relationTo: 'vorgaenge';
+        value: number | Vorgaenge;
+      } | null)
+    | ({
+        relationTo: 'produkte';
+        value: number | Produkte;
+      } | null)
+    | ({
+        relationTo: 'fahrzeugmarken';
+        value: number | Fahrzeugmarken;
+      } | null)
+    | ({
+        relationTo: 'autoschluessel-leistungen';
+        value: number | AutoschluesselLeistungen;
+      } | null)
+    | ({
+        relationTo: 'preisregeln';
+        value: number | Preisregeln;
+      } | null)
+    | ({
+        relationTo: 'preisgruppen';
+        value: number | Preisgruppen;
+      } | null)
+    | ({
+        relationTo: 'sperrtage';
+        value: number | Sperrtage;
+      } | null)
+    | ({
+        relationTo: 'seiten';
+        value: number | Seiten;
+      } | null)
+    | ({
+        relationTo: 'leistungsseiten';
+        value: number | Leistungsseiten;
+      } | null)
+    | ({
+        relationTo: 'ratgeber';
+        value: number | Ratgeber;
+      } | null)
+    | ({
+        relationTo: 'einsatzgebiete';
+        value: number | Einsatzgebiete;
       } | null)
     | ({
         relationTo: 'medien';
         value: number | Medien;
+      } | null)
+    | ({
+        relationTo: 'benutzer';
+        value: number | Benutzer;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -269,28 +1130,481 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "benutzer_select".
+ * via the `definition` "vorgaenge_select".
  */
-export interface BenutzerSelect<T extends boolean = true> {
-  name?: T;
-  rollen?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  resetPasswordRequestedAt?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
-  sessions?:
+export interface VorgaengeSelect<T extends boolean = true> {
+  nummer?: T;
+  art?: T;
+  bereich?: T;
+  prozess?: T;
+  status?: T;
+  zusammenfassung?:
     | T
     | {
+        titel?: T;
+        zeilen?:
+          | T
+          | {
+              label?: T;
+              wert?: T;
+              id?: T;
+            };
         id?: T;
-        createdAt?: T;
-        expiresAt?: T;
       };
+  termin?:
+    | T
+    | {
+        datum?: T;
+        uhrzeit?: T;
+        dauerMinuten?: T;
+        ort?: T;
+      };
+  kontakt?:
+    | T
+    | {
+        anrede?: T;
+        vorname?: T;
+        nachname?: T;
+        firma?: T;
+        email?: T;
+        telefon?: T;
+        strasse?: T;
+        plz?: T;
+        ort?: T;
+        land?: T;
+      };
+  zahlung?:
+    | T
+    | {
+        umfang?: T;
+        betragCent?: T;
+        status?: T;
+        bezahltAm?: T;
+        anbieterRef?: T;
+      };
+  notizen?:
+    | T
+    | {
+        am?: T;
+        von?: T;
+        text?: T;
+        id?: T;
+      };
+  verlauf?:
+    | T
+    | {
+        am?: T;
+        von?: T;
+        text?: T;
+        id?: T;
+      };
+  daten?: T;
+  angebot?: T;
+  uploads?: T;
+  zugriffsHash?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "produkte_select".
+ */
+export interface ProdukteSelect<T extends boolean = true> {
+  typ?: T;
+  slug?: T;
+  kennung?: T;
+  beispiel?: T;
+  name?: T;
+  beschreibung?: T;
+  hersteller?: T;
+  schluesseltyp?: T;
+  einsatz?: T;
+  umfang?: T;
+  eigenschaften?:
+    | T
+    | {
+        name?: T;
+        wert?: T;
+        id?: T;
+      };
+  lieferzeit?: T;
+  schlagworte?: T;
+  preis?: T;
+  staffeln?:
+    | T
+    | {
+        abMenge?: T;
+        rabattProzent?: T;
+        id?: T;
+      };
+  maxMenge?: T;
+  versandklasse?: T;
+  codeFormat?: T;
+  codeMuster?: T;
+  codeBeispiel?: T;
+  codeHinweis?: T;
+  codeFundstelle?:
+    | T
+    | {
+        motiv?: T;
+        format?: T;
+        bild?: T;
+        hinweis?: T;
+      };
+  fotoUpload?: T;
+  fotoHinweis?: T;
+  produktbild?:
+    | T
+    | {
+        motiv?: T;
+        format?: T;
+        bild?: T;
+        hinweis?: T;
+      };
+  weitereBilder?: T;
+  seo?:
+    | T
+    | {
+        titel?: T;
+        beschreibung?: T;
+        interneLinks?:
+          | T
+          | {
+              href?: T;
+              label?: T;
+              id?: T;
+            };
+        noindex?: T;
+        socialBild?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "fahrzeugmarken_select".
+ */
+export interface FahrzeugmarkenSelect<T extends boolean = true> {
+  name?: T;
+  preisgruppe?: T;
+  intro?: T;
+  bild?:
+    | T
+    | {
+        motiv?: T;
+        format?: T;
+        bild?: T;
+        hinweis?: T;
+      };
+  modelle?:
+    | T
+    | {
+        name?: T;
+        slug?: T;
+        kennung?: T;
+        baujahrVon?: T;
+        baujahrBis?: T;
+        schluesselarten?: T;
+        fahrzeugVorOrt?: T;
+        preisgruppe?: T;
+        hinweise?: T;
+        id?: T;
+      };
+  slug?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "autoschluessel-leistungen_select".
+ */
+export interface AutoschluesselLeistungenSelect<T extends boolean = true> {
+  label?: T;
+  beschreibung?: T;
+  schluesselarten?: T;
+  fahrzeugVorOrt?: T;
+  aktiv?: T;
+  slug?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "preisregeln_select".
+ */
+export interface PreisregelnSelect<T extends boolean = true> {
+  preisgruppe?: T;
+  leistung?: T;
+  schluesselart?: T;
+  modus?: T;
+  preis?: T;
+  preisVon?: T;
+  preisBis?: T;
+  anzahlung?: T;
+  terminMinuten?: T;
+  vorlaufTage?: T;
+  hinweis?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "preisgruppen_select".
+ */
+export interface PreisgruppenSelect<T extends boolean = true> {
+  label?: T;
+  beschreibung?: T;
+  slug?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sperrtage_select".
+ */
+export interface SperrtageSelect<T extends boolean = true> {
+  datum?: T;
+  grund?: T;
+  zeitfenster?:
+    | T
+    | {
+        von?: T;
+        bis?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "seiten_select".
+ */
+export interface SeitenSelect<T extends boolean = true> {
+  route?: T;
+  headline?: T;
+  subline?: T;
+  intro?: T;
+  abschnitte?:
+    | T
+    | {
+        ueberschrift?: T;
+        text?: T;
+        bild?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+        id?: T;
+      };
+  faq?:
+    | T
+    | {
+        frage?: T;
+        antwort?: T;
+        id?: T;
+      };
+  seo?:
+    | T
+    | {
+        titel?: T;
+        beschreibung?: T;
+        interneLinks?:
+          | T
+          | {
+              href?: T;
+              label?: T;
+              id?: T;
+            };
+        noindex?: T;
+        socialBild?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leistungsseiten_select".
+ */
+export interface LeistungsseitenSelect<T extends boolean = true> {
+  titel?: T;
+  bereich?: T;
+  zusammenfassung?: T;
+  stichpunkte?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  bild?:
+    | T
+    | {
+        motiv?: T;
+        format?: T;
+        bild?: T;
+        hinweis?: T;
+      };
+  prozess?: T;
+  ctaHref?: T;
+  ctaLabel?: T;
+  seo?:
+    | T
+    | {
+        titel?: T;
+        beschreibung?: T;
+        interneLinks?:
+          | T
+          | {
+              href?: T;
+              label?: T;
+              id?: T;
+            };
+        noindex?: T;
+        socialBild?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+      };
+  slug?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ratgeber_select".
+ */
+export interface RatgeberSelect<T extends boolean = true> {
+  titel?: T;
+  auszug?: T;
+  thema?: T;
+  abschnitte?:
+    | T
+    | {
+        ueberschrift?: T;
+        text?: T;
+        id?: T;
+      };
+  bild?:
+    | T
+    | {
+        motiv?: T;
+        format?: T;
+        bild?: T;
+        hinweis?: T;
+      };
+  naechsterSchritt?:
+    | T
+    | {
+        href?: T;
+        label?: T;
+      };
+  seo?:
+    | T
+    | {
+        titel?: T;
+        beschreibung?: T;
+        interneLinks?:
+          | T
+          | {
+              href?: T;
+              label?: T;
+              id?: T;
+            };
+        noindex?: T;
+        socialBild?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+      };
+  slug?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "einsatzgebiete_select".
+ */
+export interface EinsatzgebieteSelect<T extends boolean = true> {
+  stadt?: T;
+  bundesland?: T;
+  lokalIntro?: T;
+  lokaleFakten?:
+    | T
+    | {
+        label?: T;
+        wert?: T;
+        id?: T;
+      };
+  leistungen?: T;
+  radiusKm?: T;
+  seo?:
+    | T
+    | {
+        titel?: T;
+        beschreibung?: T;
+        interneLinks?:
+          | T
+          | {
+              href?: T;
+              label?: T;
+              id?: T;
+            };
+        noindex?: T;
+        socialBild?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+      };
+  slug?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -346,11 +1660,67 @@ export interface MedienSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "benutzer_select".
+ */
+export interface BenutzerSelect<T extends boolean = true> {
+  name?: T;
+  rollen?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  resetPasswordRequestedAt?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
   key?: T;
   data?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-jobs_select".
+ */
+export interface PayloadJobsSelect<T extends boolean = true> {
+  input?: T;
+  taskStatus?: T;
+  completedAt?: T;
+  totalTried?: T;
+  hasError?: T;
+  error?: T;
+  log?:
+    | T
+    | {
+        executedAt?: T;
+        completedAt?: T;
+        taskSlug?: T;
+        taskID?: T;
+        input?: T;
+        output?: T;
+        state?: T;
+        error?: T;
+        id?: T;
+      };
+  taskSlug?: T;
+  queue?: T;
+  waitUntil?: T;
+  processing?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -386,6 +1756,426 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "zylinderkatalog".
+ */
+export interface Zylinderkatalog {
+  id: number;
+  schluesselPreis: number;
+  inklusiveSchluessel: number;
+  maxSchluessel: number;
+  maxZylinder: number;
+  messInfo: {
+    titel: string;
+    text: string;
+    grafik?: {
+      /**
+       * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+       */
+      motiv?: string | null;
+      format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+      /**
+       * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+       */
+      bild?: (number | null) | Medien;
+      hinweis?: string | null;
+    };
+  };
+  messGrafik?: {
+    /**
+     * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+     */
+    motiv?: string | null;
+    format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+    /**
+     * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+     */
+    bild?: (number | null) | Medien;
+    hinweis?: string | null;
+  };
+  bauformen?:
+    | {
+        kennung: 'doppelzylinder' | 'knaufzylinder' | 'halbzylinder';
+        label: string;
+        aktiv?: boolean | null;
+        beschreibung: string;
+        masse: 'beide' | 'eines';
+        massLabelA: string;
+        massLabelB?: string | null;
+        minMm: number;
+        maxMm: number;
+        schrittMm: number;
+        grundlaengeMm: number;
+        grundpreis: number;
+        laengenAufpreis: number;
+        info: {
+          titel: string;
+          text: string;
+          grafik?: {
+            /**
+             * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+             */
+            motiv?: string | null;
+            format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+            /**
+             * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+             */
+            bild?: (number | null) | Medien;
+            hinweis?: string | null;
+          };
+        };
+        grafik?: {
+          /**
+           * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+           */
+          motiv?: string | null;
+          format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+          /**
+           * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+           */
+          bild?: (number | null) | Medien;
+          hinweis?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  funktionen?:
+    | {
+        kennung: string;
+        label: string;
+        aktiv?: boolean | null;
+        beschreibung: string;
+        aufpreis: number;
+        bauformen: ('doppelzylinder' | 'knaufzylinder' | 'halbzylinder')[];
+        info: {
+          titel: string;
+          text: string;
+          grafik?: {
+            /**
+             * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+             */
+            motiv?: string | null;
+            format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+            /**
+             * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+             */
+            bild?: (number | null) | Medien;
+            hinweis?: string | null;
+          };
+        };
+        id?: string | null;
+      }[]
+    | null;
+  extras?:
+    | {
+        kennung: string;
+        label: string;
+        aktiv?: boolean | null;
+        beschreibung: string;
+        preis: number;
+        einheit: 'einmal' | 'stueck';
+        info: {
+          titel: string;
+          text: string;
+          grafik?: {
+            /**
+             * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+             */
+            motiv?: string | null;
+            format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+            /**
+             * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+             */
+            bild?: (number | null) | Medien;
+            hinweis?: string | null;
+          };
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "einstellungen".
+ */
+export interface Einstellungen {
+  id: number;
+  firma: {
+    /**
+     * Haken entfernen, sobald alle Angaben echt sind.
+     */
+    platzhalter?: boolean | null;
+    rechtlicherName: string;
+    marke: string;
+    strasse: string;
+    plz: string;
+    ort: string;
+    land: string;
+    telefon: string;
+    email: string;
+    ustId?: string | null;
+    registergericht?: string | null;
+    registernummer?: string | null;
+    geschaeftsfuehrung?: string | null;
+  };
+  oeffnungszeiten?:
+    | {
+        tag: '1' | '2' | '3' | '4' | '5' | '6' | '7';
+        /**
+         * Leer lassen = geschlossen.
+         */
+        zeiten?:
+          | {
+              von: string;
+              bis: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  buchung: {
+    vorlaufTage: number;
+    horizontTage: number;
+    terminMinuten: number;
+    anzahlung: number;
+    anzahlungMin: number;
+    anzahlungMax: number;
+    termineJeFenster: number;
+    fenster?:
+      | {
+          von: string;
+          bis: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  versand?:
+    | {
+        kennung: string;
+        label: string;
+        beschreibung: string;
+        preis: number;
+        verfolgt?: boolean | null;
+        versichert?: boolean | null;
+        produktklassen: ('code-schluessel' | 'zylinder' | 'zubehoer')[];
+        id?: string | null;
+      }[]
+    | null;
+  aufbewahrung: {
+    fahrzeugschein: number;
+    schluesselfotos: number;
+    grundrisse: number;
+    projektunterlagen: number;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "zylinderkatalog_select".
+ */
+export interface ZylinderkatalogSelect<T extends boolean = true> {
+  schluesselPreis?: T;
+  inklusiveSchluessel?: T;
+  maxSchluessel?: T;
+  maxZylinder?: T;
+  messInfo?:
+    | T
+    | {
+        titel?: T;
+        text?: T;
+        grafik?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+      };
+  messGrafik?:
+    | T
+    | {
+        motiv?: T;
+        format?: T;
+        bild?: T;
+        hinweis?: T;
+      };
+  bauformen?:
+    | T
+    | {
+        kennung?: T;
+        label?: T;
+        aktiv?: T;
+        beschreibung?: T;
+        masse?: T;
+        massLabelA?: T;
+        massLabelB?: T;
+        minMm?: T;
+        maxMm?: T;
+        schrittMm?: T;
+        grundlaengeMm?: T;
+        grundpreis?: T;
+        laengenAufpreis?: T;
+        info?:
+          | T
+          | {
+              titel?: T;
+              text?: T;
+              grafik?:
+                | T
+                | {
+                    motiv?: T;
+                    format?: T;
+                    bild?: T;
+                    hinweis?: T;
+                  };
+            };
+        grafik?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+        id?: T;
+      };
+  funktionen?:
+    | T
+    | {
+        kennung?: T;
+        label?: T;
+        aktiv?: T;
+        beschreibung?: T;
+        aufpreis?: T;
+        bauformen?: T;
+        info?:
+          | T
+          | {
+              titel?: T;
+              text?: T;
+              grafik?:
+                | T
+                | {
+                    motiv?: T;
+                    format?: T;
+                    bild?: T;
+                    hinweis?: T;
+                  };
+            };
+        id?: T;
+      };
+  extras?:
+    | T
+    | {
+        kennung?: T;
+        label?: T;
+        aktiv?: T;
+        beschreibung?: T;
+        preis?: T;
+        einheit?: T;
+        info?:
+          | T
+          | {
+              titel?: T;
+              text?: T;
+              grafik?:
+                | T
+                | {
+                    motiv?: T;
+                    format?: T;
+                    bild?: T;
+                    hinweis?: T;
+                  };
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "einstellungen_select".
+ */
+export interface EinstellungenSelect<T extends boolean = true> {
+  firma?:
+    | T
+    | {
+        platzhalter?: T;
+        rechtlicherName?: T;
+        marke?: T;
+        strasse?: T;
+        plz?: T;
+        ort?: T;
+        land?: T;
+        telefon?: T;
+        email?: T;
+        ustId?: T;
+        registergericht?: T;
+        registernummer?: T;
+        geschaeftsfuehrung?: T;
+      };
+  oeffnungszeiten?:
+    | T
+    | {
+        tag?: T;
+        zeiten?:
+          | T
+          | {
+              von?: T;
+              bis?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  buchung?:
+    | T
+    | {
+        vorlaufTage?: T;
+        horizontTage?: T;
+        terminMinuten?: T;
+        anzahlung?: T;
+        anzahlungMin?: T;
+        anzahlungMax?: T;
+        termineJeFenster?: T;
+        fenster?:
+          | T
+          | {
+              von?: T;
+              bis?: T;
+              id?: T;
+            };
+      };
+  versand?:
+    | T
+    | {
+        kennung?: T;
+        label?: T;
+        beschreibung?: T;
+        preis?: T;
+        verfolgt?: T;
+        versichert?: T;
+        produktklassen?: T;
+        id?: T;
+      };
+  aufbewahrung?:
+    | T
+    | {
+        fahrzeugschein?: T;
+        schluesselfotos?: T;
+        grundrisse?: T;
+        projektunterlagen?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "collections_widget".
  */
 export interface CollectionsWidget {
@@ -393,6 +2183,31 @@ export interface CollectionsWidget {
     [k: string]: unknown;
   };
   width: 'full';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskSchedulePublish".
+ */
+export interface TaskSchedulePublish {
+  input: {
+    type?: ('publish' | 'unpublish') | null;
+    locale?: string | null;
+    doc?:
+      | ({
+          relationTo: 'produkte';
+          value: number | Produkte;
+        } | null)
+      | ({
+          relationTo: 'ratgeber';
+          value: number | Ratgeber;
+        } | null);
+    global?: string | null;
+    user?: {
+      relationTo: 'benutzer';
+      value: number | Benutzer;
+    } | null;
+  };
+  output?: unknown;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

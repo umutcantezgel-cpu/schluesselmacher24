@@ -54,3 +54,6 @@ dev_server.log
 # Test- und Prüfausgaben
 /test-results/
 /playwright-report/
+
+# Worktrees der Hilfsagenten
+/.claude/worktrees/

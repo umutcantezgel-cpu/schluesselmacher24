@@ -130,7 +130,8 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
       }
     }
 
-    await appendRecord(record);
+    // Die Datenbank vergibt die endgültige Kennung des Vorgangs.
+    const saved = await appendRecord(record);
 
     const mail = await sendMail({
       to: input.contact.email,
@@ -140,7 +141,7 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
         + `wir haben Ihren Vorgang unter der Nummer ${reference} aufgenommen.\n`
         + `Sie können den Stand jederzeit unter /service-und-termin/terminstatus abrufen.\n\n`
         + `${settings.company.brandName}`,
-      recordId: id,
+      recordId: saved.id,
     });
 
     if (!mail.sent) {
@@ -150,7 +151,7 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
       );
     }
 
-    return { ok: true, reference, recordId: id, accessToken: token, redirectUrl, notices };
+    return { ok: true, reference, recordId: saved.id, accessToken: token, redirectUrl, notices };
   } catch (error) {
     console.error('[vorgang] Speichern fehlgeschlagen', error);
     return { ok: false, notices, error: GENERIC_ERROR };

@@ -91,7 +91,7 @@ const FAMILIES: Array<{ family: string; prefix: string; lines: LineSpec[] }> = [
     prefix: 'TS',
     lines: buildFamily('TS', 'Technik- und Zählerschrank', 'Technikschlüssel', [
       ['Zählerschrank und Hausanschluss', '^[0-9]{3,4}$', '3 bis 4 Ziffern', '1242', 9],
-      ['Schaltschrank Industrie', '^[A-Z]{1,2}[0-9]{2,4}$', '1 bis 2 Buchstaben, dann 2 bis 4 Ziffern', 'IND204', 10],
+      ['Schaltschrank Industrie', '^[A-Z]{1,2}[0-9]{2,4}$', '1 bis 2 Buchstaben, dann 2 bis 4 Ziffern', 'IN204', 10],
       ['Heizungs- und Technikraum', '^[0-9]{4}$', '4 Ziffern', '3188', 9],
       ['Aufzug- und Wartungsschrank', '^[A-Z][0-9]{3,4}$', '1 Buchstabe, dann 3 bis 4 Ziffern', 'A2140', 11],
       ['Verteilerkasten Außenbereich', '^[0-9]{3}[A-Z]?$', '3 Ziffern, optional 1 Buchstabe', '618B', 10],

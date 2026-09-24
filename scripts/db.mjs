@@ -100,10 +100,25 @@ function stop() {
   console.log('Postgres gestoppt.');
 }
 
+/** Zeigt DATABASE_URL auf einen anderen Server (z. B. Supabase), bleibt das lokale Postgres aus. */
+function usesExternalDatabase() {
+  const url = process.env.DATABASE_URL;
+  if (!url) return false;
+  try {
+    const { hostname, port } = new URL(url);
+    const local = ['127.0.0.1', 'localhost', '::1'].includes(hostname);
+    return !(local && Number(port || 5432) === PORT);
+  } catch {
+    return false;
+  }
+}
+
 const command = process.argv[2] ?? 'status';
 
 try {
-  if (command === 'start' || command === 'ensure') await start();
+  if (command === 'ensure' && usesExternalDatabase()) {
+    console.log('Externe Datenbank (DATABASE_URL) — lokales Postgres wird nicht gestartet.');
+  } else if (command === 'start' || command === 'ensure') await start();
   else if (command === 'stop') stop();
   else if (command === 'status') console.log(isRunning() ? `läuft (Port ${PORT})` : 'gestoppt');
   else if (command === 'reset') {

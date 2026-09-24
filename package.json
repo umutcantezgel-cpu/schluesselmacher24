@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/db.mjs ensure && next dev",
-    "build": "node scripts/db.mjs ensure && payload migrate && next build",
+    "build": "node scripts/db.mjs ensure && payload migrate && payload run src/scripts/seed.ts && next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "seed": "node scripts/seed-content.mjs",
+    "seed": "payload run src/scripts/seed.ts",
     "test": "vitest run",
     "payload": "payload",
     "db:start": "node scripts/db.mjs start",
@@ -18,7 +18,9 @@
     "db:reset": "node scripts/db.mjs reset",
     "db:migrate": "payload migrate",
     "generate:types": "payload generate:types",
-    "generate:importmap": "payload generate:importmap"
+    "generate:importmap": "payload generate:importmap",
+    "db:seed": "payload run src/scripts/seed.ts",
+    "admin:anlegen": "payload run src/scripts/admin-anlegen.ts"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^5.3.0",

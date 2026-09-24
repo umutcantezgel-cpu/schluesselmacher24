@@ -7,8 +7,21 @@ import { de } from '@payloadcms/translations/languages/de';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
 
+import { AutoschluesselLeistungen } from './payload/collections/AutoschluesselLeistungen';
 import { Benutzer } from './payload/collections/Benutzer';
+import { Einsatzgebiete } from './payload/collections/Einsatzgebiete';
+import { Fahrzeugmarken } from './payload/collections/Fahrzeugmarken';
+import { Leistungsseiten } from './payload/collections/Leistungsseiten';
 import { Medien } from './payload/collections/Medien';
+import { Preisgruppen } from './payload/collections/Preisgruppen';
+import { Preisregeln } from './payload/collections/Preisregeln';
+import { Produkte } from './payload/collections/Produkte';
+import { Ratgeber } from './payload/collections/Ratgeber';
+import { Seiten } from './payload/collections/Seiten';
+import { Sperrtage } from './payload/collections/Sperrtage';
+import { Vorgaenge } from './payload/collections/Vorgaenge';
+import { Einstellungen } from './payload/globals/Einstellungen';
+import { Zylinderkatalog } from './payload/globals/Zylinderkatalog';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -33,7 +46,28 @@ export default buildConfig({
     supportedLanguages: { de },
     fallbackLanguage: 'de',
   },
-  collections: [Benutzer, Medien],
+  collections: [
+    // Aufträge
+    Vorgaenge,
+    // Shop
+    Produkte,
+    // Autoschlüssel
+    Fahrzeugmarken,
+    AutoschluesselLeistungen,
+    Preisregeln,
+    Preisgruppen,
+    // Termine
+    Sperrtage,
+    // Inhalte
+    Seiten,
+    Leistungsseiten,
+    Ratgeber,
+    Einsatzgebiete,
+    Medien,
+    // Verwaltung
+    Benutzer,
+  ],
+  globals: [Zylinderkatalog, Einstellungen],
   editor: lexicalEditor(),
   db: postgresAdapter({
     pool: { connectionString: process.env.DATABASE_URL },

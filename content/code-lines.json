@@ -1689,7 +1689,7 @@
     "description": "Nachschlüssel für technik- und zählerschrank: schaltschrank industrie. Die Fertigung erfolgt anhand des aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung nach Ihrer Angabe erfolgt.",
     "codeFormatLabel": "1 bis 2 Buchstaben, dann 2 bis 4 Ziffern",
     "codePattern": "^[A-Z]{1,2}[0-9]{2,4}$",
-    "codeExample": "IND204",
+    "codeExample": "IN204",
     "codeHint": "Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 1 bis 2 Buchstaben, dann 2 bis 4 Ziffern.",
     "codeLocationImage": {
       "motif": "Beispielbild Codefundstelle TS-02",

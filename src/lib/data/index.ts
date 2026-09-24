@@ -1,39 +1,28 @@
 import 'server-only';
 
+import { cache } from 'react';
+
 import type { CollectionName, Collections, DataAdapter } from './adapter';
 import { JsonFileAdapter } from './json-adapter';
+import { PayloadAdapter, payloadInstanz } from './payload-adapter';
+import { vorgangZuPayload, vorgangZuSeite } from './payload-mapping';
+import type { Vorgaenge } from '@/payload-types';
 
 export type { CollectionName, Collections, DataAdapter };
 
 /**
- * Aktive Datenschicht.
- *
- * Austausch gegen eine Datenbank: hier eine andere Umsetzung des
- * `DataAdapter`-Interfaces einsetzen. Alle Aufrufer bleiben unverändert.
+ * Aktive Datenschicht: Payload (Datenbank). Mit `SM24_DATA=json` liest die
+ * Seite stattdessen die JSON-Dateien unter `content/` — nur für Notfälle und
+ * Werkzeuge ohne Datenbank.
  */
-const adapter: DataAdapter = new JsonFileAdapter();
+const useJson = process.env.SM24_DATA === 'json';
+const adapter: DataAdapter = useJson ? new JsonFileAdapter() : new PayloadAdapter();
 
-export function dataAdapter(): DataAdapter {
-  return adapter;
-}
-
-/**
- * Ob Inhalte auf dieser Umgebung gespeichert werden können.
- * Das Backend warnt damit vorab, statt erst beim ersten Speicherversuch.
- */
-export async function contentWritable(): Promise<{ writable: boolean; adapter: string }> {
-  return { writable: adapter.writable, adapter: adapter.name };
-}
+/** Je Anfrage wird jede Sammlung höchstens einmal gelesen. */
+const readCached = cache((name: CollectionName) => adapter.read(name));
 
 export function getCollection<K extends CollectionName>(name: K): Promise<Collections[K]> {
-  return adapter.read(name);
-}
-
-export function saveCollection<K extends CollectionName>(
-  name: K,
-  value: Collections[K],
-): Promise<void> {
-  return adapter.write(name, value);
+  return readCached(name) as Promise<Collections[K]>;
 }
 
 /* ---------- Häufige Abfragen ------------------------------------------- */
@@ -107,7 +96,7 @@ export async function getPageContent(route: string) {
 }
 
 export async function getRecords() {
-  return getCollection('records');
+  return readRecordsFresh();
 }
 
 export async function getRecord(id: string) {
@@ -120,18 +109,47 @@ export async function getRecordByReference(reference: string) {
   return items.find((r) => r.reference.toLowerCase() === reference.toLowerCase()) ?? null;
 }
 
+/**
+ * Vorgänge werden nicht aus dem Zwischenspeicher gelesen: Terminbelegung und
+ * Bestellstatus müssen immer aktuell sein.
+ */
+async function readRecordsFresh(): Promise<Collections['records']> {
+  return adapter.read('records');
+}
+
 export async function appendRecord(record: Collections['records'][number]) {
-  const items = await getRecords();
-  await saveCollection('records', [record, ...items]);
-  return record;
+  if (useJson) {
+    const items = await readRecordsFresh();
+    await adapter.write('records', [record, ...items]);
+    return record;
+  }
+  const payload = await payloadInstanz();
+  const doc = (await payload.create({
+    collection: 'vorgaenge',
+    data: vorgangZuPayload(record),
+    overrideAccess: true,
+  })) as Vorgaenge;
+  return vorgangZuSeite(doc);
 }
 
 export async function updateRecord(
   id: string,
   patch: Partial<Collections['records'][number]>,
 ) {
-  const items = await getRecords();
-  const next = items.map((r) => (r.id === id ? { ...r, ...patch, updatedAt: new Date().toISOString() } : r));
-  await saveCollection('records', next);
-  return next.find((r) => r.id === id) ?? null;
+  const items = await readRecordsFresh();
+  const current = items.find((r) => r.id === id);
+  if (!current) return null;
+  const next = { ...current, ...patch, updatedAt: new Date().toISOString() };
+  if (useJson) {
+    await adapter.write('records', items.map((r) => (r.id === id ? next : r)));
+    return next;
+  }
+  const payload = await payloadInstanz();
+  const doc = (await payload.update({
+    collection: 'vorgaenge',
+    id: Number(id),
+    data: vorgangZuPayload(next),
+    overrideAccess: true,
+  })) as Vorgaenge;
+  return vorgangZuSeite(doc);
 }
