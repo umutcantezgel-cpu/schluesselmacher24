@@ -1,28 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2024-03-20T12:00:00Z",
-  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "generated_at": "2026-09-24T11:10:47.719891+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten basierend auf Visueller Hebelwirkung, ROI und Machbarkeit.",
   "top_ideas": [
     {
       "rank": 1,
-      "idea_id": "IDEA_051",
-      "category": "CONVERSION_AND_TOOLS",
-      "target_existing_route": "src/app/schliessanlagen/page.tsx",
-      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
-      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
-      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
-      "score": 9.65,
+      "idea_id": "IDEA_042",
+      "category": "SEMANTIC_AUTHORITY",
+      "target_existing_route": "src/app/admin/page.tsx",
+      "target_component_file": "src/components/service/service-budget-calculator.tsx",
+      "title": "Aufbau von Experten-Interviews im Q&A-Format",
+      "specification": "Erweitere den bestehenden Content in src/app/admin/page.tsx unter Einbezug von src/components/service/service-budget-calculator.tsx auf mindestens 800 W\u00f6rter hochspezifischen Fachtext. Baue H2/H3-Hierarchien sauber auf und schlie\u00dfe mit einem tiefgreifenden 5-Fragen FAQ ab.",
+      "score": 9.88,
       "status": "READY_FOR_EXPANSION"
     },
     {
       "rank": 2,
-      "idea_id": "IDEA_002",
+      "idea_id": "IDEA_018",
       "category": "AWWWARDS_KINETICS",
-      "target_existing_route": "src/app/page.tsx",
-      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
-      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
-      "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
-      "score": 9.45,
+      "target_existing_route": "src/app/autoschluessel/marken/page.tsx",
+      "target_component_file": "src/components/autoschluessel/key-kinds.tsx",
+      "title": "Interaktive Daten-Visualisierung mit WebGL-Shadern",
+      "specification": "Verwandle die key-kinds.tsx in src/app/autoschluessel/marken/page.tsx in ein taktiles Erlebnis. Nutze OKLCH-Farb-Haarlinien und setze komplexe CSS-Subgrids ein, um Layout-Shifts zu vermeiden. Implementiere `motion-reduce:hidden` zur Sicherstellung der Barrierefreiheit.",
+      "score": 9.87,
       "status": "READY_FOR_EXPANSION"
     }
   ]

@@ -1,16 +1,18 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# RED-TEAM AUDIT BEFUNDE
 
-## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+## 1. SILENT LOGIC DEATH & INTERAKTIONS-FALLEN
+- **src/components/forms/controls.tsx**: Potenziell leere Handler oder vergessene console.logs entdeckt. Kritisch für Interaktions-Zuverlässigkeit.
+- **src/app/autoschluessel/anfrage/assistent.tsx**: Formular zeigt keinen klaren Ladezustand an, wenn Netzwerk-Latenz auftritt.
+- **src/app/kasse/kasse-formular.tsx**: Bedingte Renderings für Zahlungsoptionen könnten bei leeren State-Arrays Layout-Löcher hinterlassen.
 
-## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+## 2. HYDRATION MISMATCHES & SSR-KONFLIKTE
+- **src/app/page.tsx**: Zugriff auf `window.innerWidth` ohne Mounting-Guard im Render-Pfad entdeckt.
+- **src/components/layout/site-header.tsx**: Datums- oder zeitspezifische Rendervorgänge weichen zwischen Server und Client ab.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TYPESCRIPT-SCHWÄCHEN
+- **src/lib/data/adapter.ts**: Verwendung von `as unknown as Type` maskiert tieferliegende Typinkonsistenzen.
+- **src/components/seo/json-ld.tsx**: Schema.org Graphen sind nicht ausreichend mit `satisfies Graph` gegen `schema-dts` abgesichert.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. CORE WEB VITALS SÜNDEN
+- **src/components/ui/image-placeholder.tsx**: Bilder laden ohne explizite Dimensionen oder reservierte Aspect-Ratios, was Layout-Shifts verursacht.
+- **src/app/layout.tsx**: Schwere Drittanbieter-Bibliotheken werden blockierend im kritischen Rendering-Pfad importiert.
