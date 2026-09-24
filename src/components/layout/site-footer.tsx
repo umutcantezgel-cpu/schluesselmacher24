@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import { getSettings } from '@/lib/data';
-import { FOOTER_CONTENT, FOOTER_LEGAL, NAV_AREAS } from '@/lib/navigation';
+import { FOOTER_CONTENT, FOOTER_LEGAL, NAV_AREAS, type NavLink } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
+
+/** Shop-Seiten ohne eigenen Leistungsbereich — stehen im Anschluss an die Bereiche. */
+const FOOTER_SHOP: NavLink[] = [{ href: '/artikel', label: 'Artikel' }];
 
 export async function SiteFooter() {
   const settings = await getSettings();
@@ -60,6 +63,16 @@ export async function SiteFooter() {
                     className="text-[13px] text-foreground-muted hover:text-primary hover:underline"
                   >
                     {area.label}
+                  </Link>
+                </li>
+              ))}
+              {FOOTER_SHOP.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-[13px] text-foreground-muted hover:text-primary hover:underline"
+                  >
+                    {link.label}
                   </Link>
                 </li>
               ))}

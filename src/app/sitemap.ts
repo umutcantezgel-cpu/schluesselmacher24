@@ -1,6 +1,14 @@
 import type { MetadataRoute } from 'next';
 
-import { getCities, getCodeLines, getGuides, getServicePages, getVehicleMakes } from '@/lib/data';
+import { artikelPfad, istIndexierbar } from '@/lib/artikel';
+import {
+  getCities,
+  getCodeLines,
+  getCollection,
+  getGuides,
+  getServicePages,
+  getVehicleMakes,
+} from '@/lib/data';
 import { getSiteUrl } from '@/lib/site-url';
 
 const siteUrl = getSiteUrl();
@@ -21,6 +29,7 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/schluessel-nach-vorlage', priority: 0.8 },
   { path: '/schluessel-nach-vorlage/anfrage', priority: 0.7 },
   { path: '/schluessel-nach-code', priority: 0.8 },
+  { path: '/artikel', priority: 0.7 },
   { path: '/gleichschliessende-zylinder', priority: 0.8 },
   { path: '/gleichschliessende-zylinder/konfigurator', priority: 0.7 },
   { path: '/schliessanlagen', priority: 0.8 },
@@ -46,9 +55,10 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [makes, codeLines, servicePages, guides, cities] = await Promise.all([
+  const [makes, codeLines, articles, servicePages, guides, cities] = await Promise.all([
     getVehicleMakes(),
     getCodeLines(),
+    getCollection('standardArticles'),
     getServicePages(),
     getGuides(),
     getCities(),
@@ -80,9 +90,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  for (const line of codeLines) {
+  // Seiten mit noindex gehören nicht in die Sitemap — Beispiele nie.
+  for (const line of codeLines.filter((l) => !l.example && !l.seo.noindex)) {
     entries.push({
       url: `${siteUrl}/schluessel-nach-code/${line.slug}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    });
+  }
+
+  for (const article of articles.filter(istIndexierbar)) {
+    entries.push({
+      url: `${siteUrl}${artikelPfad(article.slug)}`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.6,
