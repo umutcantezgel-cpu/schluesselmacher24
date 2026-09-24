@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,7 +166,14 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -340,6 +348,54 @@ export default async function SchliessanlagenPage() {
         <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
         <div className="mt-8">
           <Accordion items={faq} />
+        </div>
+      </Section>
+
+            {/* ROI Calculator Section */}
+      <Section tone="muted">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
+            <div>
+                <h2 className="text-2xl font-bold leading-tight text-foreground md:text-3xl text-[oklch(0.16_0.02_260)]">
+                    Architektonische Methodik & ROI-Analyse
+                </h2>
+                <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                    Die Planung einer Enterprise-Schließanlage erfordert tiefgreifendes Verständnis der organisatorischen Dynamiken. Wir kombinieren hochsichere mechanische Grundstrukturen mit adaptiven elektronischen Systemen. Dieser hybride Ansatz garantiert maximale Sicherheit bei optimaler Wirtschaftlichkeit. Die architektonische Strukturierung erfolgt über dedizierte Sicherheitszonen, welche durch differenzierte Berechtigungsmatrizen abgebildet werden.
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                    Jedes Projekt durchläuft einen rigorosen Audit-Prozess. Wir evaluieren Bestandsstrukturen, identifizieren Schwachstellen im Schlüsselmanagement und entwickeln einen zukunftssicheren Masterplan. Die Integration von Mechatronik an neuralgischen Punkten, gepaart mit klassischen Zylindern im peripheren Bereich, senkt die Total Cost of Ownership (TCO) signifikant.
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+                   Unser iterativer Designprozess involviert alle Stakeholder frühzeitig. Von der initialen Bedarfsanalyse bis zur finalen Abnahme gewährleisten wir absolute Transparenz. Die entwickelte Topologie ist nicht nur skalierbar, sondern auch revisionssicher. Durch die Implementierung von Schlüsselverwaltungssystemen minimieren wir das Risiko von unautorisierten Duplikaten und steigern die operationale Effizienz.
+                </p>
+            </div>
+            <div>
+               <EnterpriseRoiCalculator />
+            </div>
+        </div>
+      </Section>
+      <Section>
+        <SectionHeading eyebrow="Tiefgreifendes Wissen" title="Erweiterte technische FAQ" />
+        <div className="mt-6 space-y-4">
+            <details className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] p-4">
+                <summary className="font-semibold cursor-pointer">Wie skaliert die Berechtigungsmatrix in verteilten Campus-Umgebungen?</summary>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Durch den Einsatz einer hierarchischen Generalhauptschlüsselanlage (GHS), kombiniert mit elektronischen Offline-Beschlägen, ermöglichen wir eine unbegrenzte Skalierbarkeit. Die zentrale Verwaltung über eine Web-Applikation sichert die Konsistenz der Daten über alle Standorte hinweg.</p>
+            </details>
+            <details className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] p-4">
+                <summary className="font-semibold cursor-pointer">Welche Protokolle werden für die mechatronische Integration verwendet?</summary>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Wir setzen auf standardisierte, verschlüsselte Protokolle (z.B. OSS Standard Offline, OSDP) um Interoperabilität mit bestehenden Zutrittskontrollsystemen (ZKS) und Gebäudeleittechnik (GLT) zu gewährleisten. Proprietäre Insellösungen werden vermieden.</p>
+            </details>
+            <details className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] p-4">
+                <summary className="font-semibold cursor-pointer">Wie wird der ROI bei einem Wechsel von rein mechanisch zu hybrid berechnet?</summary>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Der ROI kalkuliert sich aus den eingesparten Kosten für Zylinderwechsel bei Schlüsselverlust, reduziertem administrativen Aufwand und minimierten Ausfallzeiten. Unser Kalkulator modelliert diese Faktoren basierend auf empirischen Daten unserer Enterprise-Kunden.</p>
+            </details>
+            <details className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] p-4">
+                <summary className="font-semibold cursor-pointer">Sind die Systeme audit- und compliance-konform (z.B. ISO 27001)?</summary>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Ja, alle elektronischen Komponenten protokollieren Zutrittsversuche revisionssicher. Die Datenhaltung erfolgt GDPR-konform, und die Systeme unterstützen die Anforderungen strenger Sicherheitsaudits durch lückenloses Reporting.</p>
+            </details>
+            <details className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] p-4">
+                <summary className="font-semibold cursor-pointer">Wie wird die Resilienz bei Stromausfall sichergestellt?</summary>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Die kritische Infrastruktur (Türen der Außenhaut, Serverräume) wird mit Offline-Zylindern (Batteriebetrieb) oder mechanischen Overrides ausgestattet. Die Fail-Secure/Fail-Safe-Konfiguration wird in der Planungsphase individuell definiert.</p>
+            </details>
         </div>
       </Section>
 
