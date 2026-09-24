@@ -8,7 +8,7 @@ import { getRecord } from '@/lib/data';
 import { verifyAccessToken } from '@/lib/server/access-token';
 import { mailStatus, storageStatus } from '@/lib/integrations';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
-import type { PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
+import type { OrderLine, OrderTotals, PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
@@ -84,6 +84,60 @@ export const metadata: Metadata = {
   referrer: 'no-referrer',
 };
 
+/** Beim Bestellen festgeschriebene Positionen — unabhängig von späteren Preisänderungen. */
+function BestelltePositionen({ lines, totals }: { lines: OrderLine[]; totals?: OrderTotals }) {
+  return (
+    <Card>
+      <CardHeader>
+        <h2 className="text-[15px] font-bold text-foreground">Bestellte Artikel</h2>
+      </CardHeader>
+      <CardBody>
+        <ul className="divide-y divide-border">
+          {lines.map((line, index) => (
+            <li key={`${line.productId}-${index}`} className="py-3 first:pt-0 last:pb-0">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <p className="text-[15px] font-semibold text-foreground">{line.label}</p>
+                <p className="text-[15px] font-semibold text-foreground">{formatCents(line.totalCents)}</p>
+              </div>
+              {line.details && (
+                <p className="mt-1 whitespace-pre-line text-[13px] leading-relaxed text-foreground-muted">
+                  {line.details}
+                </p>
+              )}
+              <p className="mt-1 text-[13px] text-foreground-muted">
+                {line.qty} Stück zu je {formatCents(line.unitPriceCents)} · inkl. {line.vatPercent} % USt.
+              </p>
+            </li>
+          ))}
+        </ul>
+
+        {totals && (
+          <dl className="mt-4 space-y-2 border-t border-border pt-4 text-[14px]">
+            <div className="flex flex-wrap justify-between gap-4">
+              <dt className="text-foreground-muted">Artikel</dt>
+              <dd className="text-foreground">{formatCents(totals.itemsCents)}</dd>
+            </div>
+            <div className="flex flex-wrap justify-between gap-4">
+              <dt className="text-foreground-muted">
+                Versand{totals.shippingLabel ? ` · ${totals.shippingLabel}` : ''}
+              </dt>
+              <dd className="text-foreground">{formatCents(totals.shippingCents)}</dd>
+            </div>
+            <div className="flex flex-wrap justify-between gap-4">
+              <dt className="font-bold text-foreground">Gesamtbetrag</dt>
+              <dd className="font-bold text-foreground">{formatCents(totals.totalCents)}</dd>
+            </div>
+            <div className="flex flex-wrap justify-between gap-4">
+              <dt className="text-foreground-muted">Enthaltene Umsatzsteuer</dt>
+              <dd className="text-foreground">{formatCents(totals.vatCents)}</dd>
+            </div>
+          </dl>
+        )}
+      </CardBody>
+    </Card>
+  );
+}
+
 async function loadAuthorisedRecord(props: BestellungSeiteProps) {
   const [{ id }, { t }] = await Promise.all([props.params, props.searchParams]);
   const token = Array.isArray(t) ? t[0] : t;
@@ -145,7 +199,12 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
   }
   anschrift.push({ label: 'Land', value: record.contact.country });
 
-  const abschnitte: SummarySection[] = [...record.summary, { title: 'Kontakt und Lieferanschrift', rows: anschrift }];
+  // Bei Bestellungen fasst die Zusammenfassung nur Artikel und Summen zusammen —
+  // die festgeschriebenen Positionen ersetzen sie, sofern vorhanden.
+  const positionen = record.kind === 'bestellung' && record.lines?.length ? record.lines : null;
+  const angaben = positionen ? [] : record.summary;
+
+  const abschnitte: SummarySection[] = [...angaben, { title: 'Kontakt und Lieferanschrift', rows: anschrift }];
 
   if (record.appointment) {
     abschnitte.push({
@@ -210,6 +269,8 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                 </ul>
               </Alert>
             )}
+
+            {positionen && <BestelltePositionen lines={positionen} totals={record.totals} />}
 
             {/* Zahlung */}
             {record.payment && (

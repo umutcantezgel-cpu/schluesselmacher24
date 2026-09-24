@@ -10,6 +10,7 @@ import {
   seoFeld,
   slugFeld,
 } from '../fields/gemeinsam';
+import { loeschsperre } from '../hooks/loeschsperre';
 import { erneuernHooks } from '../hooks/revalidate';
 
 const istCodeSchluessel = (data: Record<string, unknown> | undefined) => data?.typ !== 'standard';
@@ -43,7 +44,7 @@ export const Produkte: CollectionConfig = {
   },
   versions: { drafts: { schedulePublish: true }, maxPerDoc: 50 },
   trash: true,
-  hooks: erneuernHooks,
+  hooks: { ...erneuernHooks, beforeDelete: [loeschsperre] },
   fields: [
     {
       name: 'typ',

@@ -7,13 +7,13 @@ import { ArrowRight, Trash2 } from 'lucide-react';
 import { useHydrated } from '@/lib/client-state';
 import { useCartStore } from '@/lib/store/cart';
 import { availableShipping, cartTotals, priceCylinderOrder, type CylinderPriceBreakdown, unitPriceForCodeLine } from '@/lib/pricing';
-import { formatCents, formatMillimeter } from '@/lib/format';
+import { formatCents } from '@/lib/format';
+import { zylinderZeilen } from '@/lib/cylinder-summary';
 import type {
   Cart,
   CartItem,
   CodeLine,
   CylinderCatalog,
-  CylinderOrderDraft,
   ShippingOption,
   StandardArticle,
 } from '@/lib/types';
@@ -46,49 +46,6 @@ type Position =
 function passendeVersandarten(items: CartItem[], shipping: ShippingOption[]): ShippingOption[] {
   if (items.length === 0) return shipping;
   return availableShipping(items, shipping);
-}
-
-/** Zusammenstellung einer Zylinder-Position in lesbaren Zeilen. */
-function zylinderZeilen(
-  draft: CylinderOrderDraft,
-  catalog: CylinderCatalog,
-): Array<{ label: string; value: string }> {
-  const zeilen: Array<{ label: string; value: string }> = [];
-
-  const formsMap = new Map(catalog.forms.map((f) => [f.id, f]));
-  const functionsMap = new Map(catalog.functions.map((f) => [f.id, f]));
-  const extrasMap = new Map(catalog.extras.map((e) => [e.id, e]));
-
-  for (const eintrag of draft.items) {
-    const form = formsMap.get(eintrag.form);
-    const funktion = eintrag.functionId ? functionsMap.get(eintrag.functionId) : undefined;
-    const masse =
-      eintrag.measureBMm === undefined
-        ? formatMillimeter(eintrag.measureAMm)
-        : `${formatMillimeter(eintrag.measureAMm)} / ${formatMillimeter(eintrag.measureBMm)}`;
-
-    const teile = [masse];
-    if (funktion) teile.push(funktion.label);
-    teile.push(`${eintrag.qty} Stück`);
-
-    zeilen.push({ label: form?.label ?? eintrag.form, value: teile.join(' · ') });
-  }
-
-  zeilen.push({ label: 'Gemeinsame Schlüssel', value: `${draft.keyCount} Stück` });
-
-  const zusatz = draft.extraIds
-    .map((id) => extrasMap.get(id)?.label)
-    .filter((label): label is string => Boolean(label));
-  if (zusatz.length > 0) {
-    zeilen.push({ label: 'Zusatzoptionen', value: zusatz.join(', ') });
-  }
-
-  zeilen.push({
-    label: 'Spätere Erweiterung',
-    value: draft.expandable ? 'Vorgesehen' : 'Nicht vorgesehen',
-  });
-
-  return zeilen;
 }
 
 /** Erklärung der Staffelpreise einer Codelinie — nur aus den Stammdaten. */
