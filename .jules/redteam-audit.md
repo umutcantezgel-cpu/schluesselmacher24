@@ -1,16 +1,22 @@
 # Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
 
 ## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+- `src/components/ui/button.tsx`: Potentielle Button-Hydration-Fallen, falls Server/Client-Renderings abweichen (fehlende disabled-State-Sichtbarkeit bei Ladeprozessen).
+- `src/app/autoschluessel/page.tsx`: Fehlende Error-Boundaries bei fehlgeschlagenen Formular-Submits, leere Handler in Unterkomponenten möglich.
 
 ## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+- Datumswerte in Service-Komponenten könnten zu Mismatches führen, falls Zeitzonen nicht via Server vorgerendert werden.
+- Randomisierte IDs in Custom-Komponenten ohne React `useId` verursachen Hydration-Warnungen in Next.js 16.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TypeScript-Schwächen
+- `src/components/seo/json-ld.tsx`: Props für WebSiteLeaf könnten inkompatibel sein, falls `logo` übergeben wird (schema-dts Limitation).
+- Server Action Payloads in Formularen sind teilweise nicht vollständig typisiert, wodurch Client/Server-Kontrakte brechen können.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. Core Web Vitals Sünden
+- Einige Hero-Bilder in `src/app/page.tsx` nutzen keine expliziten Dimensionen oder priority-Tags, was zu LCP-Verzögerungen führt.
+- CSS Subgrids (`grid-rows-[subgrid]`) teilweise an Containern ohne `display: grid` verwendet, was Layout-Shifts und Rendering-Ineffizienzen provoziert.
+
+## 5. Design-Kritik (Schweizer Aesthetik)
+- Chromatische Reinheit: Einige border-Farben weichen minimal vom OKLCH-Standard ab.
+- Typografische Rhythmik: Zeilenlängen überschreiten teils das 75-Zeichen-Limit auf Desktop.
+- Kinetische Disziplin: Zu viele Hover-States kämpfen um die visuelle Hierarchie.
