@@ -1,16 +1,18 @@
-# Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
+# RED-TEAM AUDIT BEFUNDE
 
 ## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+- `src/components/ui/button.tsx`: Prüfen auf onClick-Handler die lediglich ein console.log aufrufen.
+- `src/app/autoschluessel/anfrage/assistent.tsx`: Ladezustände bei Formular-Submits fehlen, was bei Netzwerklatenzen zu Interaktions-Fallen führt.
+- `src/app/kasse/kasse-formular.tsx`: Unverdrahtete Submit-Buttons ohne Error-Boundary.
 
 ## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+- `src/app/autoschluessel/bestaetigung.tsx`: Dynamische Datumsformatierungen verursachen Hydration-Mismatch-Fehler.
+- `src/components/calculator/service-budget-calculator.tsx`: Lokale Speicherzugriffe (`localStorage`) erfolgen außerhalb von `useEffect`.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TypeScript-Schwächen
+- `src/components/seo/json-ld.tsx`: Maskierte Typfehler bei Schema.org Graphen. Fehlende `satisfies Graph` Verifizierungen.
+- `src/components/forms/photo-upload.tsx`: `as unknown as Type` Casting bei File-Event-Handlern verbirgt strukturelle Schwächen.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. Core Web Vitals Sünden
+- `src/app/page.tsx`: Fehlende Aspect-Ratios bei Hero-Bildern führen zu Cumulative Layout Shifts (CLS).
+- `src/app/autoschluessel/page.tsx`: Importe schwerer Drittanbieter-Bibliotheken in Client-Komponenten reduzieren die Time to Interactive (TTI).
