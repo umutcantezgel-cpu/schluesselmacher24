@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,7 +166,14 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -194,6 +202,7 @@ export default async function SchliessanlagenPage() {
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
+
             <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
               {page?.intro
                 ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
@@ -206,6 +215,27 @@ export default async function SchliessanlagenPage() {
               Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
               danach wird gefertigt.
             </p>
+
+            <div className="mt-8 space-y-6 text-[15px] leading-relaxed text-foreground-muted">
+              <p>
+                <strong>Architektonische Methodik und Planungssicherheit:</strong> Eine professionell geplante Schließanlage ist mehr als nur eine Sammlung von Zylindern und Schlüsseln. Sie ist das architektonische Rückgrat der Gebäudesicherheit. Unsere Methodik basiert auf einer präzisen Bedarfsanalyse, bei der wir nicht nur den aktuellen Status Quo erfassen, sondern auch zukünftige Erweiterungen und organisatorische Veränderungen antizipieren. Jeder Schließplan wird so konzipiert, dass er skalierbar bleibt. Dies verhindert kostenintensive Komplettaustausche bei Umstrukturierungen.
+              </p>
+              <p>
+                <strong>Die Bedeutung der Organisationsstruktur:</strong> Die Zuordnung von Schließberechtigungen spiegelt die Hierarchie und die Arbeitsabläufe innerhalb Ihres Unternehmens wider. Wir übersetzen komplexe Organigramme in logische, sichere und nachvollziehbare Schließhierarchien. Dabei achten wir auf eine strikte Trennung von Hochsicherheitsbereichen (wie Serverräumen oder Geschäftsführungsbüros) und allgemein zugänglichen Zonen.
+              </p>
+              <p>
+                <strong>Technologische Integration und Zukunftssicherheit:</strong> In einer zunehmend vernetzten Welt verschmelzen mechanische und elektronische Systeme. Wir beraten Sie umfassend zu hybriden Lösungen, bei denen die Robustheit mechanischer Schließanlagen mit der Flexibilität elektronischer Zutrittskontrollen kombiniert wird. So können beispielsweise temporäre Zutrittsrechte für Dienstleister elektronisch verwaltet werden, während die Grundsicherung des Gebäudes mechanisch unangreifbar bleibt.
+              </p>
+              <p>
+                <strong>Nachhaltigkeit und Lebenszykluskosten:</strong> Eine Schließanlage ist eine langfristige Investition. Wir setzen auf hochwertige Materialien und bewährte Hersteller, um eine maximale Lebensdauer und minimale Wartungskosten zu garantieren. Durch die richtige Pflege und regelmäßige Inspektionen stellen wir sicher, dass Ihre Anlage auch nach Jahren noch reibungslos funktioniert. Unser Fokus liegt auf der Minimierung der Total Cost of Ownership (TCO).
+              </p>
+              <p>
+                <strong>Zertifizierung und rechtliche Rahmenbedingungen:</strong> Unsere Anlagen erfüllen höchste Sicherheitsstandards und sind nach aktuellen VdS- und DIN-Normen zertifiziert. Dies ist nicht nur für Ihren eigenen Schutz essenziell, sondern auch für die Einhaltung versicherungstechnischer Vorgaben. Wir dokumentieren jeden Schritt transparent und rechtssicher, sodass Sie im Schadensfall vollständig abgesichert sind.
+              </p>
+            </div>
+
+            <EnterpriseRoiCalculator />
+
 
             <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
               <p className="text-[11px] font-bold uppercase tracking-wider text-primary">

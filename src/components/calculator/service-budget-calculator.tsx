@@ -2,7 +2,7 @@
 
 import { useActionState, useOptimistic, startTransition } from 'react';
 import { calculateServiceBudget } from '@/actions/calculate-budget';
-import type { BudgetCalculationResult } from '@/types/budget';
+import type { BudgetCalculationResult } from '@/lib/types/budget';
 
 const initialState: BudgetCalculationResult = {
   totalEstimate: 0,
