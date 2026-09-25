@@ -14,6 +14,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
+
 
 const ROUTE = 'schliessanlagen';
 
@@ -129,6 +131,28 @@ const AUDIENCES = [
 
 /** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
 const FALLBACK_FAQ = [
+
+  {
+    question: 'Welches Schließsystem eignet sich für unser Unternehmen?',
+    answer: 'Die Wahl des Schließsystems hängt von Ihren spezifischen Anforderungen ab. Für kleine Büros reicht oft eine Zentralschlossanlage. Größere Unternehmen mit komplexen Hierarchien profitieren von einer Generalhauptschlüsselanlage (GHS).',
+  },
+  {
+    question: 'Wie schnell kann eine verlorene Schlüsselkarte ersetzt werden?',
+    answer: 'Bei mechatronischen oder elektronischen Systemen kann ein verlorenes Medium in Echtzeit gesperrt und sofort ein neues ausgestellt werden, ohne dass Zylinder getauscht werden müssen.',
+  },
+  {
+    question: 'Können mechanische und elektronische Systeme kombiniert werden?',
+    answer: 'Ja, das ist sehr üblich. Man spricht hierbei von Mechatronik. So können sensible Bereiche wie Serverräume elektronisch gesichert werden, während Standardtüren weiterhin mechanisch bleiben.',
+  },
+  {
+    question: 'Welche Sicherheitsstandards erfüllen Ihre Schließanlagen?',
+    answer: 'Unsere Systeme entsprechen den höchsten DIN- und VdS-Normen. Sie bieten je nach Modell fortschrittlichen Bohr-, Zieh- und Kopierschutz.',
+  },
+  {
+    question: 'Wie aufwändig ist die Erweiterung einer bestehenden Anlage?',
+    answer: 'Das kommt auf die initiale Planung an. Eine vorausschauend geplante Anlage hält mathematische Reserven bereit, sodass neue Türen oder Benutzer problemlos integriert werden können.',
+  },
+
   {
     question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
     answer:
@@ -165,7 +189,14 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -207,6 +238,30 @@ export default async function SchliessanlagenPage() {
               danach wird gefertigt.
             </p>
 
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Die Planung einer modernen Schließanlage ist ein architektonischer und sicherheitstechnischer Prozess von höchster Präzision. Jedes Gebäude stellt einzigartige Anforderungen an Zutrittskontrolle, Flexibilität und Skalierbarkeit. Unsere Methodik basiert auf einer tiefgehenden Analyse der physischen Gegebenheiten sowie der organisatorischen Strukturen. Wir evaluieren nicht nur die aktuellen Bedürfnisse, sondern antizipieren zukünftige Veränderungen in der Nutzung. Dies stellt sicher, dass die implementierte Lösung auch in Jahren noch optimal funktioniert und ohne strukturelle Einbußen erweitert werden kann.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Im Kern der mechanischen Zutrittskontrolle steht die präzise Zuweisung von Rechten. Durch eine sorgfältige Kombination aus Zylinderprofilen, Stiftzuhaltungen und Schlüsselgeometrien lassen sich hochkomplexe Berechtigungshierarchien abbilden. Eine durchdachte Generalhauptschlüsselanlage (GHS) beispielsweise ermöglicht es, hunderte von Räumen mit individuellen Schlüsseln auszustatten, während übergeordnete Schlüssel für bestimmte Bereiche oder das gesamte Gebäude existieren. Die mathematische Kombinatorik hinter diesen Systemen erfordert eine akribische Planung, um Überschneidungen und Sicherheitsrisiken absolut auszuschließen.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Wir begleiten Sie durch diesen gesamten Prozess. Von der initialen Bedarfsermittlung über die Erstellung eines detaillierten Schließplans bis hin zur fachgerechten Installation und späteren Wartung. Jeder Schritt wird transparent und verständlich kommuniziert. Unser Ziel ist es, Ihnen nicht nur ein Produkt zu liefern, sondern eine maßgeschneiderte Sicherheitsarchitektur, die sich nahtlos in Ihre Prozesse integriert und den Schutz Ihrer Werte auf höchstem Niveau gewährleistet. Vertrauen Sie auf unsere Expertise und Erfahrung, um eine Lösung zu finden, die exakt auf Ihre spezifischen Anforderungen zugeschnitten ist.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Die Integration von elektronischen Komponenten in mechanische Schließanlagen eröffnet zudem neue Dimensionen der Flexibilität und Sicherheit. Elektronische Zylinder und Beschläge können temporäre Berechtigungen erteilen, Zutrittsprotokolle erstellen und bei Schlüsselverlust schnell umprogrammiert werden, ohne dass Hardware ausgetauscht werden muss. Diese hybriden Systeme, oft als Mechatronik bezeichnet, kombinieren die Robustheit der Mechanik mit der Intelligenz der Elektronik. Die Planung solcher Systeme erfordert ein fundiertes Verständnis beider Welten, um eine nahtlose Integration und optimale Performance zu gewährleisten.
+            </p>
+            <h3 className="mt-8 text-lg font-bold text-foreground">Architektur- und Leistungsstufen</h3>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Um Ihnen die optimale Entscheidungsgrundlage zu bieten, haben wir unsere Lösungen in klar definierte Leistungsstufen unterteilt. Jede Stufe repräsentiert ein spezifisches Sicherheits- und Komfortniveau.
+            </p>
+            <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-foreground-muted">
+              <li><strong>Standard (Mechanik pur):</strong> Robuste und bewährte Technologie für grundlegende Sicherheitsanforderungen. Ideal für kleine bis mittlere Objekte mit statischen Berechtigungsstrukturen.</li>
+              <li><strong>Advanced (Erweiterter Kopierschutz):</strong> Systeme mit patentierten Profilen und zusätzlichen Sperrelementen. Bieten hohen Schutz gegen unberechtigte Schlüsselkopien und physische Manipulation.</li>
+              <li><strong>Premium (Hybride Mechatronik):</strong> Die perfekte Symbiose aus Mechanik und Elektronik. Erlaubt die flexible Anpassung von Zutrittsrechten und bietet umfassende Protokollierungsfunktionen für sicherheitskritische Bereiche.</li>
+              <li><strong>Enterprise (Vollintegrierte Systeme):</strong> Hochkomplexe, vernetzte Anlagen für Großobjekte. Nahtlose Integration in übergeordnete Gebäudemanagementsysteme und Echtzeit-Zutrittskontrolle.</li>
+            </ul>
+
+
             <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
               <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
                 {process.label}
@@ -241,6 +296,19 @@ export default async function SchliessanlagenPage() {
               note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
             }}
           />
+        </div>
+      </Section>
+
+
+      {/* Kalkulator */}
+      <Section id="kalkulator" tone="muted">
+        <SectionHeading
+          eyebrow="Kalkulator"
+          title="Enterprise ROI- und Investitionsplanung"
+          lead="Berechnen Sie den erwarteten ROI und den Investitionsrahmen für Ihr Schließanlagenprojekt."
+        />
+        <div className="mt-8 max-w-xl mx-auto">
+          <EnterpriseRoiCalculator />
         </div>
       </Section>
 

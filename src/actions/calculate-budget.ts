@@ -20,7 +20,10 @@ export async function calculateServiceBudget(
     tier = 'ENTERPRISE';
   }
 
+  const roi = tier === "ENTERPRISE" ? 15 : undefined;
+
   return {
+    roi,
     totalEstimate,
     breakdown: [
       { item: 'Basispauschale', cost: 150 },
