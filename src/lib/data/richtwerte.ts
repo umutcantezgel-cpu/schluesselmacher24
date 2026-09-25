@@ -16,7 +16,7 @@ import { payloadInstanz } from './payload-adapter';
  * Platzhalter-Struktur — die Rechner nennen dann keine Beträge.
  */
 export const getRichtwerte = cache(async (): Promise<RechnerRichtwerte> => {
-  if (process.env.SM24_DATA === 'json') return PLATZHALTER_RICHTWERTE;
+  if ((process.env.SM24_DATA === 'json' || !process.env.DATABASE_URL)) return PLATZHALTER_RICHTWERTE;
   const payload = await payloadInstanz();
   const doc = (await payload.findGlobal({ slug: 'richtwerte', depth: 0, overrideAccess: true })) as Richtwerte;
   return richtwerteAusPayload(doc);

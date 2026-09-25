@@ -31,15 +31,19 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const serverURL = process.env.NEXT_PUBLIC_SERVER_URL?.trim() || 'http://localhost:3000';
 
+// Ohne Geheimnis und Datenbank (z. B. erster Vercel-Build) läuft die Seite
+// aus content/*.json; das Backend ist dann nicht nutzbar. Zufallswert statt
+// eines festen Werts, damit niemand Anmeldungen fälschen kann.
+const secret = process.env.PAYLOAD_SECRET || crypto.randomUUID() + crypto.randomUUID();
 if (!process.env.PAYLOAD_SECRET) {
-  throw new Error('PAYLOAD_SECRET fehlt. Bitte in .env.local oder der Umgebung setzen.');
+  console.warn('PAYLOAD_SECRET fehlt — Backend deaktiviert, Seite läuft aus content/*.json.');
 }
 
 export default buildConfig({
   serverURL,
   // Ohne diese Liste akzeptiert Payload Anmelde-Cookies von jeder Herkunft.
   csrf: [serverURL],
-  secret: process.env.PAYLOAD_SECRET,
+  secret,
   admin: {
     user: Benutzer.slug,
     importMap: { baseDir: path.resolve(dirname) },

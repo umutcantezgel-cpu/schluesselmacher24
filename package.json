@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/db.mjs ensure && next dev",
-    "build": "node scripts/db.mjs ensure && payload migrate && payload run src/scripts/seed.ts && next build",
+    "build": "if [ -n \"$DATABASE_URL\" ] || [ -z \"$VERCEL\" ]; then node scripts/db.mjs ensure && payload migrate && payload run src/scripts/seed.ts; else echo \"Keine DATABASE_URL: Build ohne Datenbank (Inhalte aus content/*.json)\"; fi && next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",

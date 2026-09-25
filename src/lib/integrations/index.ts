@@ -141,7 +141,7 @@ export async function sendMail(message: MailMessage): Promise<MailResult> {
  */
 export function storageStatus(): IntegrationStatus {
   const readonly = Boolean(process.env.VERCEL) || process.env.SM24_READONLY_CONTENT === '1';
-  const ohneDatenbank = process.env.SM24_DATA === 'json';
+  const ohneDatenbank = (process.env.SM24_DATA === 'json' || !process.env.DATABASE_URL);
   return {
     id: 'dateiablage',
     label: 'Dateiablage für Uploads',

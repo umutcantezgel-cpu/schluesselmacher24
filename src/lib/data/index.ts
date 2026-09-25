@@ -19,7 +19,7 @@ export type { CollectionName, Collections, DataAdapter };
  * Seite stattdessen die JSON-Dateien unter `content/` — nur für Notfälle und
  * Werkzeuge ohne Datenbank.
  */
-const useJson = process.env.SM24_DATA === 'json';
+const useJson = (process.env.SM24_DATA === 'json' || !process.env.DATABASE_URL);
 const adapter: DataAdapter = useJson ? new JsonFileAdapter() : new PayloadAdapter();
 
 /** Je Anfrage wird jede Sammlung höchstens einmal gelesen. */

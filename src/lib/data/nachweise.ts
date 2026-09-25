@@ -74,7 +74,7 @@ function zuNachweis(doc: Pick<Nachweise, 'id' | 'titel' | 'art' | 'aussteller' |
 /** Öffentliche, gültige Nachweise — je Anfrage höchstens einmal gelesen. */
 export const getNachweise = cache(async (): Promise<Nachweis[]> => {
   // Ohne Datenbank (Notbetrieb mit JSON-Dateien) gibt es keine Nachweise.
-  if (process.env.SM24_DATA === 'json') return [];
+  if ((process.env.SM24_DATA === 'json' || !process.env.DATABASE_URL)) return [];
 
   const payload = await payloadInstanz();
   const result = await payload.find({
