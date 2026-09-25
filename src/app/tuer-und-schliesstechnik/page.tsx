@@ -22,7 +22,9 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
-import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
+import dynamic from 'next/dynamic';
+
+const SecurityCheckCalculator = dynamic(() => import('@/components/calculator/security-check-calculator').then(m => m.SecurityCheckCalculator), { ssr: false });
 import { JsonLd, faqSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'tuer-und-schliesstechnik';
