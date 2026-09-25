@@ -1,31 +1,27 @@
 'use server';
 
-import type { BudgetCalculationResult } from '@/types/budget';
+import type { BudgetCalculationResult } from '@/lib/types/budget';
 
 export async function calculateServiceBudget(
   prevState: BudgetCalculationResult,
   formData: FormData
 ): Promise<BudgetCalculationResult> {
   // Simulate network delay
-  await new Promise((resolve) => setTimeout(resolve, 800));
+  await new Promise(resolve => setTimeout(resolve, 500));
 
   const scopeDays = Number(formData.get('scopeDays')) || 15;
-  const totalEstimate = scopeDays * 150;
+  const doors = Number(formData.get('doors')) || 10;
 
-  let tier: BudgetCalculationResult['tier'] = 'STANDARD';
-  if (totalEstimate > 5000) {
-    tier = 'PREMIUM';
-  }
-  if (totalEstimate > 8000) {
-    tier = 'ENTERPRISE';
-  }
+  // Calculate based on standard metrics
+  const totalEstimate = (scopeDays * 150) + (doors * 85);
+  const tier = totalEstimate > 5000 ? 'ENTERPRISE' : 'STANDARD';
 
   return {
     totalEstimate,
     breakdown: [
-      { item: 'Basispauschale', cost: 150 },
-      { item: `Tagesaufwand (${scopeDays} Tage)`, cost: scopeDays * 150 }
+      { label: 'Grundsystem', value: scopeDays * 150 },
+      { label: 'Schließstellen', value: doors * 85 }
     ],
-    tier,
+    tier
   };
 }
