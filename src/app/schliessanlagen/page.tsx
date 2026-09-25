@@ -14,6 +14,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
+
 
 const ROUTE = 'schliessanlagen';
 
@@ -165,7 +167,14 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -267,7 +276,121 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+
+      {/* Enterprise ROI Kalkulator */}
+      <Section id="roi-kalkulator">
+        <SectionHeading
+          eyebrow="Wirtschaftlichkeit"
+          title="Interaktiver Enterprise ROI- und Ladezeit-Kalkulator"
+          lead="Berechnen Sie die langfristige Rentabilität und Effizienz einer maßgeschneiderten Schließanlage im Vergleich zu Standardlösungen."
+        />
+        <div className="mt-8">
+          <EnterpriseROICalculator />
+        </div>
+
+        <div className="mt-12 space-y-6 text-[15px] leading-relaxed text-foreground-muted md:text-base">
+          <h3 className="text-xl font-bold text-foreground">Mechanische Schließanlagen: Die architektonische Methodik</h3>
+          <p>
+            Die Planung einer mechanischen Schließanlage ist ein hochkomplexer Prozess, der weit über das bloße
+            Zusammenstellen von Zylindern und Schlüsseln hinausgeht. Es handelt sich um eine präzise architektonische
+            Methodik, bei der Sicherheitsanforderungen, organisatorische Hierarchien und physische Gegebenheiten
+            in einem kohärenten System vereint werden. Jede Schließanlage wird als Unikat konzipiert, das exakt
+            auf die spezifischen Bedürfnisse eines Objekts zugeschnitten ist. Die Grundlage jeder Planung bildet
+            der Schließplan. Dieses Dokument ist nicht nur eine einfache Liste von Türen und Berechtigungen, sondern
+            das strategische Herzstück des gesamten Systems. Im Schließplan wird in einer mehrdimensionalen Matrix
+            definiert, welcher Schlüssel welche Zylinder schließen darf. Dabei müssen verschiedene Ebenen und Hierarchien
+            berücksichtigt werden. Eine einfache Zentralschlossanlage für ein Mehrfamilienhaus erfordert eine grundlegend
+            andere Herangehensweise als eine komplexe Generalhauptschlüsselanlage (GHS-Anlage) für einen weitläufigen
+            Industriekomplex. Die architektonische Herausforderung besteht darin, diese Strukturen so aufzubauen,
+            dass sie nicht nur den aktuellen Anforderungen genügen, sondern auch zukünftige Entwicklungen und
+            Erweiterungen antizipieren.
+          </p>
+          <p>
+            Ein zentraler Aspekt bei der Konzeption ist die Analyse der sogenannten Schließkreise. Ein Schließkreis
+            umfasst eine Gruppe von Zylindern, die durch einen gemeinsamen Gruppenschlüssel (GS) oder Hauptschlüssel (HS)
+            bedient werden können. Die Definition dieser Kreise erfordert ein tiefes Verständnis für die Arbeitsabläufe
+            und Zutrittsberechtigungen innerhalb der Organisation. Beispielsweise könnten in einem Krankenhaus
+            verschiedene Abteilungen (wie Chirurgie, Innere Medizin, Verwaltung) jeweils eigene Schließkreise bilden.
+            Der Chefarzt der Chirurgie erhält einen Gruppenschlüssel für seinen Bereich, während der ärztliche Direktor
+            einen Generalhauptschlüssel (GHS) besitzt, der alle Bereiche schließt. Die technische Umsetzung solcher
+            Hierarchien erfolgt durch hochpräzise mechanische Codierungen im Inneren der Profilzylinder. Durch die
+            Verwendung von Sperrstiften unterschiedlicher Länge und Position sowie durch komplexe Profilvariationen
+            im Schlüsselkanal werden die verschiedenen Berechtigungsebenen physisch realisiert. Moderne Schließanlagen
+            nutzen dabei patentierte Profile und zusätzliche Sicherheitsmerkmale wie Kopierschutz und Bohr- oder
+            Ziehschutz, um ein Höchstmaß an Sicherheit zu gewährleisten. Die Berechnung dieser mechanischen Permutationen
+            ist eine anspruchsvolle Aufgabe, die heute durch spezialisierte Software unterstützt wird, um Konflikte
+            (sogenannte Schließüberschneidungen) absolut auszuschließen.
+          </p>
+          <h3 className="text-xl font-bold text-foreground">Sicherheitsarchitekturen und Systemauswahl</h3>
+          <p>
+            Die Wahl des richtigen Systems ist entscheidend für die langfristige Sicherheit und Funktionalität.
+            Die verschiedenen Anlagentypen – von der Gleichschließung über die Zentralschlossanlage (Z-Anlage)
+            und Hauptschlüsselanlage (HS-Anlage) bis hin zur Generalhauptschlüsselanlage (GHS-Anlage) – bieten
+            unterschiedliche Grade an Komplexität und Flexibilität. Eine Gleichschließung ist die einfachste Form,
+            bei der mehrere Zylinder mit demselben Schlüssel bedient werden können. Dies ist ideal für Einfamilienhäuser
+            oder kleine Büros ohne hierarchische Strukturen. Die Zentralschlossanlage ist typisch für Mehrfamilienhäuser.
+            Hier gibt es einen zentralen Zylinder (z.B. die Haustür), der von allen Parteien mit ihren jeweiligen
+            Wohnungsschlüsseln geschlossen werden kann. Die Wohnungstüren selbst können jedoch nur mit dem jeweiligen
+            Einzelschlüssel geöffnet werden. Dies erfordert eine spezielle Stiftanordnung im Zentralzylinder, die
+            die verschiedenen Schließungen der Einzelschlüssel aufnimmt.
+          </p>
+          <p>
+            Die Hauptschlüsselanlage führt eine hierarchische Ebene ein. Es gibt Einzelschlüssel für spezifische
+            Türen und einen übergeordneten Hauptschlüssel, der alle Zylinder der Anlage schließen kann. Diese
+            Struktur eignet sich für Schulen, kleine bis mittlere Unternehmen oder Hotels. Die höchste Komplexitätsstufe
+            bietet die Generalhauptschlüsselanlage. Sie kombiniert mehrere Hauptschlüsselanlagen unter einem Dach.
+            Unterhalb des Generalhauptschlüssels (GHS) gibt es Hauptgruppen- (HGS) und Gruppenschlüssel (GS),
+            die jeweils für spezifische Abteilungen oder Gebäudeteile zuständig sind. Die Planung einer GHS-Anlage
+            erfordert höchste Präzision, da die Anzahl der möglichen mechanischen Variationen begrenzt ist und
+            die Anlage oft über Jahrzehnte hinweg erweiterbar bleiben muss. Wir legen großen Wert darauf,
+            ausreichend Reserven für zukünftige Erweiterungen einzuplanen, sogenannte &quot;Reserve-Schließungen&quot;,
+            um die Lebensdauer der Anlage zu maximieren.
+          </p>
+          <h3 className="text-xl font-bold text-foreground">Strukturierte Leistungsstufen und Vergleichsmatrizen</h3>
+          <p>
+            Um unseren Kunden die bestmögliche Entscheidungsgrundlage zu bieten, arbeiten wir mit strukturierten
+            Leistungsstufen und detaillierten Vergleichsmatrizen. Diese Instrumente machen die technischen
+            Unterschiede der verschiedenen Systeme transparent und quantifizierbar. Zu den wesentlichen Bewertungskriterien
+            gehören der Patentschutz (Laufzeit und rechtliche Absicherung gegen unberechtigte Schlüsselkopien),
+            die technische Kopiersicherheit (z.B. durch bewegliche Elemente im Schlüssel, Hinterschnitte oder
+            komplexe 3D-Profile), der Manipulationsschutz (Bohr-, Zieh- und Schlagschutz) sowie die Erweiterbarkeit
+            des Systems. Eine fundierte Vergleichsmatrix stellt diese Parameter für die zur Auswahl stehenden
+            Fabrikate und Systeme gegenüber. So wird auf einen Blick ersichtlich, welches System das optimale
+            Verhältnis von Sicherheit, Flexibilität und Wirtschaftlichkeit für das spezifische Projekt bietet.
+            Darüber hinaus integrieren wir in unsere Beratung auch Lebenszykluskosten-Analysen. Eine Schließanlage
+            ist eine langfristige Investition. Daher müssen neben den initialen Anschaffungskosten auch die Kosten
+            für zukünftige Erweiterungen, Ersatzschlüssel und mögliche Systemmigrationen berücksichtigt werden.
+            Durch die Gegenüberstellung von konventionellen und hochsicheren Systemen in einer Matrix können wir
+            die langfristige Rentabilität (ROI) der verschiedenen Optionen transparent darstellen.
+          </p>
+          <h3 className="text-xl font-bold text-foreground">Zusätzliche FAQs zur Anlagenplanung</h3>
+          <div className="space-y-4 mt-6">
+            <div className="rounded-lg border border-border bg-surface px-5 py-4">
+              <h4 className="font-bold text-foreground">Wie lange ist ein patentiertes Schließsystem geschützt?</h4>
+              <p className="mt-2 text-sm text-foreground-muted">Der Patentschutz variiert je nach Hersteller und System, liegt in der Regel jedoch zwischen 10 und 20 Jahren. Nach Ablauf des Patents können Schlüsselrohlinge theoretisch von Drittherstellern frei produziert werden. Wir empfehlen Systeme mit möglichst langem Patentschutz oder zusätzlichem technischen Kopierschutz (Markenschutz), um unberechtigte Schlüsselkopien langfristig zu verhindern.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-surface px-5 py-4">
+              <h4 className="font-bold text-foreground">Was passiert, wenn ein Generalhauptschlüssel (GHS) verloren geht?</h4>
+              <p className="mt-2 text-sm text-foreground-muted">Der Verlust eines GHS ist ein gravierendes Sicherheitsrisiko, da er potenziell Zugang zu allen Bereichen gewährt. Bei konventionellen mechanischen Anlagen muss im schlimmsten Fall die gesamte Anlage oder zumindest große Teile davon ausgetauscht werden. Dies unterstreicht die Wichtigkeit eines sorgfältigen Schlüsselmanagements und macht in hochsensiblen Bereichen hybride oder vollelektronische Systeme oft zur wirtschaftlicheren Wahl, da dort Berechtigungen einfach digital entzogen werden können.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-surface px-5 py-4">
+              <h4 className="font-bold text-foreground">Können mechanische Anlagen später elektronisch erweitert werden?</h4>
+              <p className="mt-2 text-sm text-foreground-muted">Ja, viele moderne mechanische Systeme sind als sogenannte hybride Anlagen konzipiert oder können zu solchen ausgebaut werden. Dies bedeutet, dass in einer bestehenden mechanischen Anlage ausgewählte Türen (z.B. Außentüren, Serverräume) mit elektronischen Zylindern, Beschlägen oder Wandlesern nachgerüstet werden können. Die Identifikation erfolgt dann oft über einen mechatronischen Schlüssel, der sowohl den mechanischen Bart als auch einen RFID-Chip für die elektronische Zutrittskontrolle enthält.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-surface px-5 py-4">
+              <h4 className="font-bold text-foreground">Was sind Schließüberschneidungen und wie werden sie vermieden?</h4>
+              <p className="mt-2 text-sm text-foreground-muted">Eine Schließüberschneidung (auch &quot;Ghost Keying&quot; genannt) tritt auf, wenn ein Schlüssel ungewollt einen Zylinder schließt, für den er eigentlich keine Berechtigung besitzt. Dies ist ein fataler Sicherheitsmangel, der oft auf unzureichende Planung oder fehlerhafte Berechnung der Stiftvariationen zurückzuführen ist. Um dies absolut auszuschließen, nutzen wir modernste Planungssoftware, die alle mathematischen Permutationen simuliert und prüft. Jede Anlage wird zudem vor der Auslieferung durch den Hersteller strengen Qualitäts- und Funktionskontrollen unterzogen.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-surface px-5 py-4">
+              <h4 className="font-bold text-foreground">Wie wird die VdS-Anerkennung bei Schließanlagen bewertet?</h4>
+              <p className="mt-2 text-sm text-foreground-muted">Die VdS-Anerkennung ist ein wichtiges Qualitätsmerkmal für Schließzylinder in Deutschland, das von Sachversicherern gefordert werden kann. VdS-anerkannte Zylinder durchlaufen strenge Prüfungen hinsichtlich ihrer mechanischen Widerstandsfähigkeit gegen Einbruchversuche (wie Bohren, Ziehen, Nachschließen). Je nach Gefährdungsgrad des Objekts empfehlen wir Zylinder der entsprechenden VdS-Klasse (A, B oder C), um sowohl den Versicherungsschutz zu gewährleisten als auch ein hohes Maß an Einbruchschutz zu bieten.</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       {/* Für wen */}
+
       <Section>
         <SectionHeading
           eyebrow="Für wen"
