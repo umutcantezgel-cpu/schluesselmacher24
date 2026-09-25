@@ -19,7 +19,7 @@ export function SecurityCheckCalculator() {
   const [state, formAction, isPending] = useActionState(calculateDoorSecurity, initialState);
 
   // Optimistic update for immediate feedback on sliders/radios if needed
-  const [optimisticState] = useOptimistic(
+  const [optimisticState] = useOptimistic<SecurityCheckResult, Partial<SecurityCheckResult>>(
     state,
     (currentState, optimisticValue: Partial<SecurityCheckResult>) => ({
       ...currentState,
