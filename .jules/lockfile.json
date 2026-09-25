@@ -1,7 +1,7 @@
 {
   "src/components/seo/json-ld.tsx": {
     "status": "VERIFIZIERT_FROZEN",
-    "hash": "4fd433244c6201839511c55b7eeee689375ccaf876e9c195d499d53bf5b50c1c"
+    "hash": "d20beb34882a1296199cb2496cba58917998203732c5c4f08bce1309b0be063d"
   },
   "src/app/page.tsx": {
     "status": "VERIFIZIERT_FROZEN",
@@ -14,5 +14,13 @@
   "src/app/standorte/[city]/page.tsx": {
     "status": "VERIFIZIERT_FROZEN",
     "hash": "c1c409c035d53749881480d8983e5d782055ab3f40dfecbcb0cbfffe4d688819"
+  },
+  "src/app/tuer-und-schliesstechnik/page.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "7bdef107253a9f5514d6cbb7a8acedc65f2bcb02eab2e995726b0c400f6ca7ea"
+  },
+  "src/components/calculator/security-check-calculator.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "fbae5d0ea2a738ff400b8e58fc7e04627c0c0224a7ec55ee4e0f534fb03c4fa6"
   }
 }

@@ -128,6 +128,8 @@ export function productSchema(line: CodeLine): Graph {
       {
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
+        url: siteUrl,
+        name: 'Coday Web',
         publisher: { '@id': `${siteUrl}/#organization` },
       },
       {
@@ -174,6 +176,8 @@ export function articleSchema(guide: Guide): Graph {
       {
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
+        url: siteUrl,
+        name: 'Coday Web',
         publisher: { '@id': `${siteUrl}/#organization` },
       },
       {
@@ -210,6 +214,8 @@ export function faqSchema(items: Array<{ question: string; answer: string }>, pa
       {
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
+        url: siteUrl,
+        name: 'Coday Web',
         publisher: { '@id': `${siteUrl}/#organization` },
       },
       {
@@ -245,6 +251,8 @@ export function serviceAreaSchema(city: CityPage): Graph {
       {
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
+        url: siteUrl,
+        name: 'Coday Web',
         publisher: { '@id': `${siteUrl}/#organization` },
       },
       {
@@ -283,6 +291,8 @@ export function breadcrumbSchema(crumbs: Array<{ href: string; label: string }>,
       {
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
+        url: siteUrl,
+        name: 'Coday Web',
         publisher: { '@id': `${siteUrl}/#organization` },
       },
       {
