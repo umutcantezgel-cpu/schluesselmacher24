@@ -1,3 +1,4 @@
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
@@ -130,6 +131,26 @@ const AUDIENCES = [
 /** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
 const FALLBACK_FAQ = [
   {
+    question: 'Welches Schließsystem ist für einen kleinen Betrieb am besten geeignet?',
+    answer: 'Für kleinere Betriebe empfehlen wir meist eine Hauptschlüsselanlage (HS-Anlage). Sie ermöglicht es der Geschäftsführung, alle Türen zu öffnen, während Mitarbeitende nur Zugang zu ihren spezifischen Bereichen erhalten. Dies bietet eine optimale Balance aus Sicherheit und Übersichtlichkeit.'
+  },
+  {
+    question: 'Können bestehende mechanische Schließanlagen elektronisch aufgerüstet werden?',
+    answer: 'Ja, das ist ein häufiger und sehr effizienter Weg. Wir können kritische Türen, wie Außeneingänge oder Serverräume, mit elektronischen Profilzylindern oder Beschlägen ausstatten. Diese lassen sich nahtlos in die Verwaltung Ihrer mechanischen Anlage integrieren, oft sogar mit hybriden Schlüsseln.'
+  },
+  {
+    question: 'Wie lange dauert die Planung und Fertigung einer komplexen Schließanlage?',
+    answer: 'Die Planungsphase dauert je nach Komplexität und Abstimmungsbedarf zwischen 1 und 3 Wochen. Nach Freigabe des Schließplans durch Sie, kalkulieren wir für die Fertigung im Werk weitere 3 bis 5 Wochen. Bei Express-Bedarf können bestimmte Systeme priorisiert werden.'
+  },
+  {
+    question: 'Was passiert, wenn ein übergeordneter Hauptschlüssel verloren geht?',
+    answer: 'Bei rein mechanischen Anlagen ohne Versicherung bedeutet der Verlust eines Generalhauptschlüssels oft den Austausch großer Teile der Anlage, um die Sicherheit wiederherzustellen. Bei elektronischen oder hybriden Systemen wird der verlorene Schlüssel (Transponder) einfach im System gesperrt, ohne physische Komponenten tauschen zu müssen.'
+  },
+  {
+    question: 'Wie funktioniert der Nachweis der Schließberechtigung (Sicherungskarte)?',
+    answer: 'Die Sicherungskarte ist das zentrale Legitimationsdokument. Nachschlüssel oder Ersatzzylinder können ausschließlich gegen Vorlage (im Original oder als verifizierte Kopie bei registrierten Partnern) bestellt werden. Dies schützt Sie effektiv vor unautorisierten Schlüsselkopien durch Dritte.'
+  },
+  {
     question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
     answer:
       'Nein. Im Konfigurator beschreiben Sie Ihr Objekt und wer welche Tür öffnen soll. Daraus '
@@ -165,7 +186,14 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -206,6 +234,68 @@ export default async function SchliessanlagenPage() {
               Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
               danach wird gefertigt.
             </p>
+            <div className="mt-8 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <h4 className="text-md font-bold text-[oklch(0.16_0.02_260)] mb-4">Leistungsstufen im Überblick</h4>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <span className="font-semibold w-32 shrink-0">BASIC:</span>
+                  <span className="text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">Fundamentale mechanische Absicherung, ideal für kleine gewerbliche oder private Projekte. Fokus auf Kernfunktionalität und Langlebigkeit mit Standard-Profilzylindern.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="font-semibold w-32 shrink-0">STANDARD:</span>
+                  <span className="text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">Erweiterte Schließhierarchien, für KMUs und mittelgroße Einrichtungen. Integration erster Kopierschutzmaßnahmen und modularer Zylinder für Anpassungsfähigkeit.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="font-semibold w-32 shrink-0">ENTERPRISE:</span>
+                  <span className="text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">Hochkomplexe Generalhauptschlüsselanlagen für Filialisten oder weitläufige Campusse. Kombination aus höchster mechanischer Präzision (3D-Schlüsselprofile) und nahtloser Integration elektronischer Ident-Systeme (Smart-Key) für Echtzeit-Management.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-8">
+              <h4 className="text-md font-bold text-[oklch(0.16_0.02_260)] mb-4">Erweiterte Matrix: Mechanik vs. Elektronik</h4>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-[14px] border-collapse">
+                  <thead>
+                    <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                      <th className="py-2 px-3 font-semibold text-[oklch(0.16_0.02_260)]">Feature</th>
+                      <th className="py-2 px-3 font-semibold text-[oklch(0.16_0.02_260)]">Rein Mechanisch</th>
+                      <th className="py-2 px-3 font-semibold text-[oklch(0.16_0.02_260)]">Hybride Anlage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                      <td className="py-2 px-3 font-medium">Rechteänderung</td>
+                      <td className="py-2 px-3 text-[oklch(0.32_0.02_260)]">Zylindertausch nötig</td>
+                      <td className="py-2 px-3 text-[oklch(0.32_0.02_260)]">Digital in Sekunden</td>
+                    </tr>
+                    <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                      <td className="py-2 px-3 font-medium">Investitionskosten</td>
+                      <td className="py-2 px-3 text-[oklch(0.32_0.02_260)]">Wirtschaftlich (Basis)</td>
+                      <td className="py-2 px-3 text-[oklch(0.32_0.02_260)]">Mittel bis Hoch (skalierbar)</td>
+                    </tr>
+                    <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                      <td className="py-2 px-3 font-medium">Wartungsaufwand</td>
+                      <td className="py-2 px-3 text-[oklch(0.32_0.02_260)]">Gering (jährlich ölen)</td>
+                      <td className="py-2 px-3 text-[oklch(0.32_0.02_260)]">Mittel (Batteriewechsel)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h3 className="mt-8 text-lg font-semibold text-[oklch(0.16_0.02_260)]">Architektonische Methodik & Planung</h3>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Die Planung einer komplexen Schließanlage erfordert eine durchdachte architektonische Methodik. Wir betrachten Gebäude nicht nur als Ansammlung von Türen, sondern analysieren Nutzerströme, Sicherheitszonen und zukünftige Expansionsmöglichkeiten. Unsere Methodik basiert auf einem dreistufigen Prozess: Bedarfsanalyse, Systemdesign und Implementierung.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Jedes Systemdesign wird in Form einer detaillierten Schließmatrix abgebildet, die klare Berechtigungsstrukturen visuell darstellt. Dies ermöglicht es Unternehmen, sowohl interne Richtlinien als auch gesetzliche Vorgaben (z.B. Brandschutz, Fluchtwege) effizient und nachvollziehbar umzusetzen. Wir verwenden fortschrittliche Planungssoftware, um Konflikte im Vorfeld zu erkennen und die Skalierbarkeit für kommende Jahre sicherzustellen.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Zusätzlich berücksichtigen wir hybride Ansätze, bei denen mechanische Systeme nahtlos mit elektronischer Zutrittskontrolle kombiniert werden. Dies bietet maximale Flexibilität: Hochsensible Bereiche erhalten elektronische Zylinder mit protokollierbaren Zutrittsrechten, während Standardtüren wirtschaftlich mit mechanischen Zylindern der gleichen Schließanlage ausgestattet werden.
+            </p>
+
+            <EnterpriseRoiCalculator />
 
             <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
               <p className="text-[11px] font-bold uppercase tracking-wider text-primary">

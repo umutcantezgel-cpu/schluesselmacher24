@@ -6,26 +6,24 @@ export async function calculateServiceBudget(
   prevState: BudgetCalculationResult,
   formData: FormData
 ): Promise<BudgetCalculationResult> {
-  // Simulate network delay
-  await new Promise((resolve) => setTimeout(resolve, 800));
-
   const scopeDays = Number(formData.get('scopeDays')) || 15;
-  const totalEstimate = scopeDays * 150;
+  const doors = Number(formData.get('doors')) || 10;
 
-  let tier: BudgetCalculationResult['tier'] = 'STANDARD';
-  if (totalEstimate > 5000) {
-    tier = 'PREMIUM';
-  }
-  if (totalEstimate > 8000) {
-    tier = 'ENTERPRISE';
-  }
+  const basePrice = scopeDays * 150;
+  const doorPrice = doors * 80;
+
+  const total = basePrice + doorPrice;
+
+  let tier: 'BASIC' | 'STANDARD' | 'ENTERPRISE' = 'BASIC';
+  if (total > 5000) tier = 'STANDARD';
+  if (total > 15000) tier = 'ENTERPRISE';
 
   return {
-    totalEstimate,
+    totalEstimate: total,
     breakdown: [
-      { item: 'Basispauschale', cost: 150 },
-      { item: `Tagesaufwand (${scopeDays} Tage)`, cost: scopeDays * 150 }
+      { label: 'Projektplanung & Setup', cost: basePrice },
+      { label: 'Hardware & Installation', cost: doorPrice }
     ],
-    tier,
+    tier
   };
 }
