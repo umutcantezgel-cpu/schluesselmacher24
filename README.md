@@ -47,3 +47,6 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+
+<!-- LAST AUDITED: 2026-09-25T17:18:40.835322+00:00 -->
