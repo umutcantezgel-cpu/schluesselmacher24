@@ -1,109 +1,514 @@
-# 100 Radikale Innovationsideen (Swiss Light Mode Aesthetic)
+# DIE PHILOSOPHISCHE 100-IDEEN-MATRIX
 
-## Kategorie A: Awwwards-Kinetik & Taktile Interaktion (Ideen 1 bis 25)
-1. IDEA_001: Federgedämpfte Hover-States für alle Button-Komponenten (src/components/ui/button.tsx).
-2. IDEA_002: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex auf der Homepage (src/app/page.tsx).
-3. IDEA_003: Scroll-getriebene SVG-Animation für den "Schlüssel nach Code"-Prozess.
-4. IDEA_004: Mikro-haptisches Cursor-Tracking für die Area-Karten.
-5. IDEA_005: Parallax-Tiefenunschärfe für das Hero-Image auf der Startseite.
-6. IDEA_006: Magnetische Buttons für primäre CTAs (z.B. "Termin buchen").
-7. IDEA_007: Interaktives SVG-Schlüsselprofil (Hover zum Drehen) in der Schließanlagen-Übersicht.
-8. IDEA_008: Glatte Seitenübergänge (View Transitions API) zwischen allen Hauptseiten.
-9. IDEA_009: Morphing-Icons in der Schnelleinstieg-Sektion.
-10. IDEA_010: Skew-on-Scroll für Textblöcke auf der "Über Uns"-Seite.
-11. IDEA_011: Dynamische Schatten (oklch 0.988) basierend auf Cursor-Position.
-12. IDEA_012: Fade-In Sequence für Listenelemente in der Schließanlagen-Page.
-13. IDEA_013: 3D-Tilt-Effekt für die Feature-Karten.
-14. IDEA_014: Liquid-Distortion Hover auf Bildern.
-15. IDEA_015: Reveal-Animation für Akkordeon-Antworten (src/components/ui/accordion.tsx).
-16. IDEA_016: Text-Scramble Effekt bei initialem Laden der Headlines.
-17. IDEA_017: Sticky-Scrolling für lange Content-Seiten (Ratgeber).
-18. IDEA_018: Horizontal Scroll-Bereich für das Portfolio / Referenzen.
-19. IDEA_019: Kinetic Typography für die 404-Seite.
-20. IDEA_020: Ripple-Effekt auf allen klickbaren Cards.
-21. IDEA_021: Lade-Indikator als sich füllendes Schlüssel-Icon.
-22. IDEA_022: Progress-Bar angebunden an Scroll-Tiefe für Blog/Ratgeber.
-23. IDEA_023: Tooltips mit sanftem Spring-Fade-In.
-24. IDEA_024: Hover-Masking für das Hero-Image (Enthüllung von Details).
-25. IDEA_025: Interaktiver "Lichtschalter" (Light Mode Only, demonstriert Helligkeit ohne Dark Mode).
+## KATEGORIE A: AWWWARDS-KINETIK & TAKTILE INTERAKTION
+Ideen zur physikalischen Federdämpfung, fluiden Bento-Grids, Scroll-getriebenen SVG-Animationen, interaktiven Daten-Visualisierungen und mikro-haptischen Feedback-Zuständen.
 
-## Kategorie B: Semantische Autorität & Content-Maximierung (Ideen 26 bis 50)
-26. IDEA_026: Erweiterung der Startseite um >800 Wörter Fachinhalt.
-27. IDEA_027: Tiefen-Glossar für Schließanlagen (src/app/schliessanlagen/page.tsx).
-28. IDEA_028: Detaillierte Fallstudien im Ratgeber-Bereich.
-29. IDEA_029: Ausbau der "Schlüssel nach Code" Seite mit technischen Details (800+ Wörter).
-30. IDEA_030: Historie der Schließtechnik-Evolution auf der Über-Uns-Seite.
-31. IDEA_031: Ausführliche Erklärung der DIN-Normen für Sicherheitszylinder.
-32. IDEA_032: Vergleich: Elektronische vs. Mechanische Schließsysteme.
-33. IDEA_033: Schritt-für-Schritt Wartungsanleitung für Zylinder.
-34. IDEA_034: Experten-Interview-Format im Ratgeber.
-35. IDEA_035: Erweiterung der FAQ auf allen Dienstleistungsseiten.
-36. IDEA_036: Technisches Datenblatt-Layout für spezifische Zylinder.
-37. IDEA_037: Erläuterung des Fräsprozesses (Maschinen, Präzision).
-38. IDEA_038: Rechtsgrundlagen für Schließanlagen (Mieter vs. Vermieter).
-39. IDEA_039: Notfall-Ratgeber: Was tun bei abgebrochenem Schlüssel?
-40. IDEA_040: Detaillierte Preis-Transparenz-Seite (Warum kostet Qualität X?).
-41. IDEA_041: Ausbau der "Gleichschließende Zylinder" Seite mit Anwendungsfällen.
-42. IDEA_042: Spatial Bento Grid in src/app/page.tsx (Fokus auf Inhalt-Dichte).
-43. IDEA_043: Strukturierte Daten (Schema.org) für alle Artikel ausbauen.
-44. IDEA_044: Glossar-Tooltips im laufenden Text.
-45. IDEA_045: Checkliste: Sicherheit für Gewerbeobjekte (als Content-Block).
-46. IDEA_046: Ratgeber: Tresor-Wahl und Verankerung.
-47. IDEA_047: Erklärung der VdS-Schutzklassen.
-48. IDEA_048: Ausführliche Anleitung zum Ausmessen von Zylindern.
-49. IDEA_049: Content-Block "Mythos vs. Wahrheit" bei Einbruchschutz.
-50. IDEA_050: Detaillierte Beschreibung der Anlieferung & Montage.
+### IDEA_001: Cursor-Effekt für die card Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/card.tsx`
+- **Spezifikation:** Erweiterung zu einem CSS Subgrid Bento-Layout mit Haarlinien-Kanten. Ziel ist die maximale Ausschöpfung von src/components/ui/card.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.62/10.00
 
-## Kategorie C: Conversion-Psychologie & Native Werkzeuge (Ideen 51 bis 75)
-51. IDEA_051: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator (src/app/schliessanlagen/page.tsx).
-52. IDEA_052: Interaktiver Vorher-Nachher-Slider für verschlissene vs. neue Schlüssel.
-53. IDEA_053: Konfigurator: Welches Schließsystem passt zu mir? (Quiz-Format).
-54. IDEA_054: Dynamischer Budget-Schätzer für Gleichschließungen.
-55. IDEA_055: ROI-Rechner für elektronische vs. mechanische Anlagen.
-56. IDEA_056: Visueller Zylinder-Ausmesser (interaktives Lineal).
-57. IDEA_057: "Trust-Balken": Live-Zähler geretteter Autoschlüssel (simuliert/optimistisch).
-58. IDEA_058: Interaktive Karte der abgedeckten Gebiete.
-59. IDEA_059: Dynamische Filterung für den Ratgeber (nach Thema, Dauer).
-60. IDEA_060: Personalisierter Einstiegs-Funnel für Privat vs. Gewerbe.
-61. IDEA_061: Live-Termin-Vorschau im Hero-Bereich (nächster freier Slot).
-62. IDEA_062: "Warenkorb-Ersparnis" Visualisierung bei Mengenrabatt.
-63. IDEA_063: Interaktiver Sicherheits-Score-Check für Eigenheime.
-64. IDEA_064: 3D-Konfigurator für Schlüssel-Anhänger/Markierungen.
-65. IDEA_065: Social-Proof Ticker (kürzliche anonymisierte Aufträge).
-66. IDEA_066: Gamifizierte Fortschrittsanzeige in Formularen.
-67. IDEA_067: Interaktives Organigramm für GHS-Anlagen (Drag & Drop Planung).
-68. IDEA_068: Tool: Foto-Upload-Prüfer für Schlüssel-Kopien.
-69. IDEA_069: Interaktive FAQ mit Suchfunktion und Highlighting.
-70. IDEA_070: "Smart Quote" - dynamische Angebotserstellung in Echtzeit.
-71. IDEA_071: Konfigurator-Summary als PDF-Download (Server Action).
-72. IDEA_072: A/B-Testing Integration für Haupt-CTAs.
-73. IDEA_073: Micro-Interactions bei Formularvalidierung (Shake on error).
-74. IDEA_074: Exit-Intent Modal mit passendem Ratgeber-Artikel.
-75. IDEA_075: Countdown für "Heute bestellt - Morgen versandt" (nur bis 14 Uhr).
+### IDEA_002: Layout-Transition für die flow-shell Komponente
+- **Ziel-Route/-Komponente:** `src/components/flow/flow-shell.tsx`
+- **Spezifikation:** Hinzufügen einer kinetischen Scroll-Tracking-Animation mit SVG-Morphing. Ziel ist die maximale Ausschöpfung von src/components/flow/flow-shell.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.45/10.00
 
-## Kategorie D: Extreme Performance, Architektur & DX (Ideen 76 bis 100)
-76. IDEA_076: Next.js 16 "use cache" Memoisierung für alle API-Routen.
-77. IDEA_077: CSS Subgrid-Harmonisierung für Karten-Layouts.
-78. IDEA_078: Container Queries (@container) für Komponenten-Responsive.
-79. IDEA_079: AVIF-Hero-Pipelines für maximale Bildkompression.
-80. IDEA_080: Zero-Shift Webfont-Optimierung (font-display: optional/swap).
-81. IDEA_081: Aggressives Pre-Fetching für alle Navigations-Links im Viewport.
-82. IDEA_082: Edge-Caching für statische Content-Seiten.
-83. IDEA_083: Partytown-Integration für Third-Party-Scripts.
-84. IDEA_084: Bundle-Analyse und Code-Splitting für große Konfiguratoren.
-85. IDEA_085: Turbopack-Optimierungen in next.config.
-86. IDEA_086: Implementierung von React 19 `useOptimistic` in Formularen.
-87. IDEA_087: Serverseitiges Rendering für personalisierte Empfehlungen.
-88. IDEA_088: Striktes CSP (Content Security Policy) Setup.
-89. IDEA_089: Reduzierung der DOM-Tiefe in der Hauptnavigation.
-90. IDEA_090: Lazy-Loading für untere Sektionen (Intersection Observer).
-91. IDEA_091: Inline-CSS für kritische Above-the-Fold Inhalte.
-92. IDEA_092: Web Worker für komplexe Schließplan-Berechnungen.
-93. IDEA_093: Optimierung der JSON-LD Generierung (Streaming).
-94. IDEA_094: Umstellung auf native CSS Nesting statt Sass/Tailwind-Plugins (wo sinnvoll).
-95. IDEA_095: Implementierung von `serverActions` in allen Formularen.
-96. IDEA_096: Automatisierte a11y-Tests (axe-core) in CI/CD.
-97. IDEA_097: Optimierung der LCP (Largest Contentful Paint) auf <1.2s.
-98. IDEA_098: Reduzierung des JavaScript-Footprints durch RSCs.
-99. IDEA_099: Strict Type-Checking für alle API-Responses.
-100. IDEA_100: Refactoring der Tailwind-Klassen auf v4 Standards.
+### IDEA_003: Layout-Transition für die preis-anzeige Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/preis-anzeige.tsx`
+- **Spezifikation:** Integration einer federgedämpften Micro-Interaction beim Hovern. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/preis-anzeige.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.36/10.00
+
+### IDEA_004: Layout-Transition für die accordion Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/accordion.tsx`
+- **Spezifikation:** Aufbau einer 3D-Tilting-Karte für verbesserte taktile Wahrnehmung. Ziel ist die maximale Ausschöpfung von src/components/ui/accordion.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.27/10.00
+
+### IDEA_005: Bento-Layout für die photo-upload Komponente
+- **Ziel-Route/-Komponente:** `src/components/forms/photo-upload.tsx`
+- **Spezifikation:** Implementierung eines magnetischen Cursor-Effects auf interaktiven Elementen. Ziel ist die maximale Ausschöpfung von src/components/forms/photo-upload.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.71/10.00
+
+### IDEA_006: 3D-Tilting-Karte für die accordion Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/accordion.tsx`
+- **Spezifikation:** Integration einer federgedämpften Micro-Interaction beim Hovern. Ziel ist die maximale Ausschöpfung von src/components/ui/accordion.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.35/10.00
+
+### IDEA_007: Bento-Layout für die photo-upload Komponente
+- **Ziel-Route/-Komponente:** `src/components/forms/photo-upload.tsx`
+- **Spezifikation:** Ergänzung von subtilen OKLCH-Glow-Effekten bei Fokus. Ziel ist die maximale Ausschöpfung von src/components/forms/photo-upload.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.12/10.00
+
+### IDEA_008: Micro-Interaction für die security-check-calculator Komponente
+- **Ziel-Route/-Komponente:** `src/components/calculator/security-check-calculator.tsx`
+- **Spezifikation:** Erweiterung zu einem CSS Subgrid Bento-Layout mit Haarlinien-Kanten. Ziel ist die maximale Ausschöpfung von src/components/calculator/security-check-calculator.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.96/10.00
+
+### IDEA_009: Bento-Layout für die photo-upload Komponente
+- **Ziel-Route/-Komponente:** `src/components/forms/photo-upload.tsx`
+- **Spezifikation:** Integration einer federgedämpften Micro-Interaction beim Hovern. Ziel ist die maximale Ausschöpfung von src/components/forms/photo-upload.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.24/10.00
+
+### IDEA_010: Layout-Transition für die accordion Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/accordion.tsx`
+- **Spezifikation:** Integration einer federgedämpften Micro-Interaction beim Hovern. Ziel ist die maximale Ausschöpfung von src/components/ui/accordion.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.33/10.00
+
+### IDEA_011: 3D-Tilting-Karte für die termin-auswahl Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/termin-auswahl.tsx`
+- **Spezifikation:** Einführung einer flüssigen Layout-Transition bei State-Wechseln (View Transitions API). Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/termin-auswahl.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.69/10.00
+
+### IDEA_012: SVG-Morphing-Animation für die termin-auswahl Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/termin-auswahl.tsx`
+- **Spezifikation:** Einführung einer flüssigen Layout-Transition bei State-Wechseln (View Transitions API). Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/termin-auswahl.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.22/10.00
+
+### IDEA_013: OKLCH-Glow-Effekte für die photo-upload Komponente
+- **Ziel-Route/-Komponente:** `src/components/forms/photo-upload.tsx`
+- **Spezifikation:** Implementierung eines magnetischen Cursor-Effects auf interaktiven Elementen. Ziel ist die maximale Ausschöpfung von src/components/forms/photo-upload.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.48/10.00
+
+### IDEA_014: SVG-Morphing-Animation für die photo-upload Komponente
+- **Ziel-Route/-Komponente:** `src/components/forms/photo-upload.tsx`
+- **Spezifikation:** Einführung einer flüssigen Layout-Transition bei State-Wechseln (View Transitions API). Ziel ist die maximale Ausschöpfung von src/components/forms/photo-upload.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.40/10.00
+
+### IDEA_015: Bento-Layout für die controls Komponente
+- **Ziel-Route/-Komponente:** `src/components/forms/controls.tsx`
+- **Spezifikation:** Integration einer federgedämpften Micro-Interaction beim Hovern. Ziel ist die maximale Ausschöpfung von src/components/forms/controls.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.64/10.00
+
+### IDEA_016: Parallax-Container für die controls Komponente
+- **Ziel-Route/-Komponente:** `src/components/forms/controls.tsx`
+- **Spezifikation:** Hinzufügen einer kinetischen Scroll-Tracking-Animation mit SVG-Morphing. Ziel ist die maximale Ausschöpfung von src/components/forms/controls.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.02/10.00
+
+### IDEA_017: Cursor-Effekt für die termin-auswahl Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/termin-auswahl.tsx`
+- **Spezifikation:** Umstellung auf scroll-gesteuerte Parallax-Container mit 1px Borders. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/termin-auswahl.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.84/10.00
+
+### IDEA_018: OKLCH-Glow-Effekte für die preis-anzeige Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/preis-anzeige.tsx`
+- **Spezifikation:** Umstellung auf scroll-gesteuerte Parallax-Container mit 1px Borders. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/preis-anzeige.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.59/10.00
+
+### IDEA_019: Bento-Layout für die preis-anzeige Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/preis-anzeige.tsx`
+- **Spezifikation:** Umstellung auf scroll-gesteuerte Parallax-Container mit 1px Borders. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/preis-anzeige.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.84/10.00
+
+### IDEA_020: OKLCH-Glow-Effekte für die preis-anzeige Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/preis-anzeige.tsx`
+- **Spezifikation:** Integration einer federgedämpften Micro-Interaction beim Hovern. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/preis-anzeige.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.84/10.00
+
+### IDEA_021: Micro-Interaction für die accordion Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/accordion.tsx`
+- **Spezifikation:** Hinzufügen einer kinetischen Scroll-Tracking-Animation mit SVG-Morphing. Ziel ist die maximale Ausschöpfung von src/components/ui/accordion.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.83/10.00
+
+### IDEA_022: Parallax-Container für die termin-auswahl Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/termin-auswahl.tsx`
+- **Spezifikation:** Integration einer federgedämpften Micro-Interaction beim Hovern. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/termin-auswahl.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.49/10.00
+
+### IDEA_023: 3D-Tilting-Karte für die system-erklaerung Komponente
+- **Ziel-Route/-Komponente:** `src/components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation:** Einführung einer flüssigen Layout-Transition bei State-Wechseln (View Transitions API). Ziel ist die maximale Ausschöpfung von src/components/schliessanlagen/system-erklaerung.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.88/10.00
+
+### IDEA_024: Cursor-Effekt für die card Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/card.tsx`
+- **Spezifikation:** Implementierung eines magnetischen Cursor-Effects auf interaktiven Elementen. Ziel ist die maximale Ausschöpfung von src/components/ui/card.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.80/10.00
+
+### IDEA_025: Cursor-Effekt für die controls Komponente
+- **Ziel-Route/-Komponente:** `src/components/forms/controls.tsx`
+- **Spezifikation:** Aufbau einer 3D-Tilting-Karte für verbesserte taktile Wahrnehmung. Ziel ist die maximale Ausschöpfung von src/components/forms/controls.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.12/10.00
+
+## KATEGORIE B: SEMANTISCHE AUTORITÄT & CONTENT-MAXIMIERUNG
+Ideen zum inhaltlichen Ausbau bestehender Seiten auf > 800 Wörter, strukturierte Vergleichsmatrizen, technische Prozessschritte und tiefgehende Fach-FAQ-Architekturen.
+
+### IDEA_026: Glossar für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schluessel-nach-vorlage/anfrage/page.tsx`
+- **Spezifikation:** Strukturierte Aufbereitung von Sicherheitsstandards und Normen als Daten-Tabelle. Ziel ist die maximale Ausschöpfung von src/app/schluessel-nach-vorlage/anfrage/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.77/10.00
+
+### IDEA_027: Vergleichsmatrix für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schluessel-nach-vorlage/anfrage/page.tsx`
+- **Spezifikation:** Hinzufügen einer tiefgehenden Fach-FAQ-Sektion mit schema.org Annotationen. Ziel ist die maximale Ausschöpfung von src/app/schluessel-nach-vorlage/anfrage/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.15/10.00
+
+### IDEA_028: Experten-Testimonials für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schluessel-nach-code/page.tsx`
+- **Spezifikation:** Ausweitung des Hauptinhalts auf > 850 Wörter mit tiefgehender Fach-Lexik. Ziel ist die maximale Ausschöpfung von src/app/schluessel-nach-code/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.96/10.00
+
+### IDEA_029: Glossar für die page Route
+- **Ziel-Route/-Komponente:** `src/app/page.tsx`
+- **Spezifikation:** Hinzufügen einer tiefgehenden Fach-FAQ-Sektion mit schema.org Annotationen. Ziel ist die maximale Ausschöpfung von src/app/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.24/10.00
+
+### IDEA_030: Sicherheits-Tabelle für die page Route
+- **Ziel-Route/-Komponente:** `src/app/ratgeber/page.tsx`
+- **Spezifikation:** Ergänzung eines interaktiven Glossars für spezifische Fachbegriffe. Ziel ist die maximale Ausschöpfung von src/app/ratgeber/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.82/10.00
+
+### IDEA_031: Experten-Testimonials für die page Route
+- **Ziel-Route/-Komponente:** `src/app/elektronische-zutrittsloesungen/page.tsx`
+- **Spezifikation:** Ausweitung des Hauptinhalts auf > 850 Wörter mit tiefgehender Fach-Lexik. Ziel ist die maximale Ausschöpfung von src/app/elektronische-zutrittsloesungen/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.59/10.00
+
+### IDEA_032: Fach-FAQ-Sektion für die page Route
+- **Ziel-Route/-Komponente:** `src/app/page.tsx`
+- **Spezifikation:** Integration eines detaillierten, aufklappbaren 5-Schritte-Prozessdiagramms. Ziel ist die maximale Ausschöpfung von src/app/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.00/10.00
+
+### IDEA_033: Glossar für die page Route
+- **Ziel-Route/-Komponente:** `src/app/service-und-termin/page.tsx`
+- **Spezifikation:** Ergänzung eines interaktiven Glossars für spezifische Fachbegriffe. Ziel ist die maximale Ausschöpfung von src/app/service-und-termin/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.39/10.00
+
+### IDEA_034: Glossar für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schluessel-nach-code/page.tsx`
+- **Spezifikation:** Integration eines detaillierten, aufklappbaren 5-Schritte-Prozessdiagramms. Ziel ist die maximale Ausschöpfung von src/app/schluessel-nach-code/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.51/10.00
+
+### IDEA_035: Prozessdiagramm für die page Route
+- **Ziel-Route/-Komponente:** `src/app/kasse/page.tsx`
+- **Spezifikation:** Ergänzung einer interaktiven Vergleichsmatrix der technischen Parameter. Ziel ist die maximale Ausschöpfung von src/app/kasse/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.58/10.00
+
+### IDEA_036: Experten-Testimonials für die page Route
+- **Ziel-Route/-Komponente:** `src/app/autoschluessel/nachmachen/page.tsx`
+- **Spezifikation:** Aufbau einer umfassenden Historien- und Technologie-Timeline. Ziel ist die maximale Ausschöpfung von src/app/autoschluessel/nachmachen/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.78/10.00
+
+### IDEA_037: Experten-Testimonials für die page Route
+- **Ziel-Route/-Komponente:** `src/app/ratgeber/page.tsx`
+- **Spezifikation:** Ergänzung einer interaktiven Vergleichsmatrix der technischen Parameter. Ziel ist die maximale Ausschöpfung von src/app/ratgeber/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.29/10.00
+
+### IDEA_038: Experten-Testimonials für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schluessel-nach-code/page.tsx`
+- **Spezifikation:** Ausweitung des Hauptinhalts auf > 850 Wörter mit tiefgehender Fach-Lexik. Ziel ist die maximale Ausschöpfung von src/app/schluessel-nach-code/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.43/10.00
+
+### IDEA_039: Fach-Lexikon für die page Route
+- **Ziel-Route/-Komponente:** `src/app/autoschluessel/anfrage/page.tsx`
+- **Spezifikation:** Hinzufügen einer tiefgehenden Fach-FAQ-Sektion mit schema.org Annotationen. Ziel ist die maximale Ausschöpfung von src/app/autoschluessel/anfrage/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.39/10.00
+
+### IDEA_040: Historien-Timeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/gleichschliessende-zylinder/page.tsx`
+- **Spezifikation:** Ergänzung eines interaktiven Glossars für spezifische Fachbegriffe. Ziel ist die maximale Ausschöpfung von src/app/gleichschliessende-zylinder/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.72/10.00
+
+### IDEA_041: Experten-Testimonials für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schliessanlagen/page.tsx`
+- **Spezifikation:** Strukturierte Aufbereitung von Sicherheitsstandards und Normen als Daten-Tabelle. Ziel ist die maximale Ausschöpfung von src/app/schliessanlagen/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.61/10.00
+
+### IDEA_042: Historien-Timeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/ratgeber/page.tsx`
+- **Spezifikation:** Ergänzung eines interaktiven Glossars für spezifische Fachbegriffe. Ziel ist die maximale Ausschöpfung von src/app/ratgeber/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.01/10.00
+
+### IDEA_043: Glossar für die page Route
+- **Ziel-Route/-Komponente:** `src/app/elektronische-zutrittsloesungen/page.tsx`
+- **Spezifikation:** Aufbau einer umfassenden Historien- und Technologie-Timeline. Ziel ist die maximale Ausschöpfung von src/app/elektronische-zutrittsloesungen/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.93/10.00
+
+### IDEA_044: Vergleichsmatrix für die page Route
+- **Ziel-Route/-Komponente:** `src/app/autoschluessel/nachmachen/page.tsx`
+- **Spezifikation:** Ergänzung einer interaktiven Vergleichsmatrix der technischen Parameter. Ziel ist die maximale Ausschöpfung von src/app/autoschluessel/nachmachen/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.30/10.00
+
+### IDEA_045: Historien-Timeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schluessel-nach-code/page.tsx`
+- **Spezifikation:** Hinzufügen einer tiefgehenden Fach-FAQ-Sektion mit schema.org Annotationen. Ziel ist die maximale Ausschöpfung von src/app/schluessel-nach-code/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.03/10.00
+
+### IDEA_046: Glossar für die page Route
+- **Ziel-Route/-Komponente:** `src/app/sicherheitstechnik/page.tsx`
+- **Spezifikation:** Hinzufügen einer tiefgehenden Fach-FAQ-Sektion mit schema.org Annotationen. Ziel ist die maximale Ausschöpfung von src/app/sicherheitstechnik/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.85/10.00
+
+### IDEA_047: Vergleichsmatrix für die page Route
+- **Ziel-Route/-Komponente:** `src/app/sicherheitstechnik/page.tsx`
+- **Spezifikation:** Aufbau einer umfassenden Historien- und Technologie-Timeline. Ziel ist die maximale Ausschöpfung von src/app/sicherheitstechnik/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.39/10.00
+
+### IDEA_048: Experten-Testimonials für die page Route
+- **Ziel-Route/-Komponente:** `src/app/ratgeber/page.tsx`
+- **Spezifikation:** Strukturierte Aufbereitung von Sicherheitsstandards und Normen als Daten-Tabelle. Ziel ist die maximale Ausschöpfung von src/app/ratgeber/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.02/10.00
+
+### IDEA_049: Fach-FAQ-Sektion für die page Route
+- **Ziel-Route/-Komponente:** `src/app/ratgeber/page.tsx`
+- **Spezifikation:** Hinzufügen einer tiefgehenden Fach-FAQ-Sektion mit schema.org Annotationen. Ziel ist die maximale Ausschöpfung von src/app/ratgeber/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.81/10.00
+
+### IDEA_050: Prozessdiagramm für die page Route
+- **Ziel-Route/-Komponente:** `src/app/gleichschliessende-zylinder/page.tsx`
+- **Spezifikation:** Einführung von Experten-Testimonials und tiefergehenden Fallstudien-Snippets. Ziel ist die maximale Ausschöpfung von src/app/gleichschliessende-zylinder/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.02/10.00
+
+## KATEGORIE C: CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE
+Ideen für interaktive Budgetrechner, ROI-Konfiguratoren, dynamische Filter-Systeme, interaktive Vorher-Nachher-Slider und Vertrauensbeweise.
+
+### IDEA_051: Such-Erfahrung für die system-erklaerung Komponente
+- **Ziel-Route/-Komponente:** `src/components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation:** Aufbau eines interaktiven Gamification-Elements zur Bedarfsermittlung. Ziel ist die maximale Ausschöpfung von src/components/schliessanlagen/system-erklaerung.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.18/10.00
+
+### IDEA_052: Such-Erfahrung für die accordion Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/accordion.tsx`
+- **Spezifikation:** Hinzufügen eines reaktiven Filter-Systems mit Instant-Feedback. Ziel ist die maximale Ausschöpfung von src/components/ui/accordion.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.02/10.00
+
+### IDEA_053: Trust-Badges für die card Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/card.tsx`
+- **Spezifikation:** Aufbau eines interaktiven Gamification-Elements zur Bedarfsermittlung. Ziel ist die maximale Ausschöpfung von src/components/ui/card.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.74/10.00
+
+### IDEA_054: ROI-Kalkulator für die flow-shell Komponente
+- **Ziel-Route/-Komponente:** `src/components/flow/flow-shell.tsx`
+- **Spezifikation:** Integration von dynamischen Trust-Badges basierend auf lokaler Verfügbarkeit. Ziel ist die maximale Ausschöpfung von src/components/flow/flow-shell.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.21/10.00
+
+### IDEA_055: Vorher-Nachher-Slider für die preis-anzeige Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/preis-anzeige.tsx`
+- **Spezifikation:** Implementierung eines Live-Budget-Konfigurators mit Server Actions. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/preis-anzeige.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.20/10.00
+
+### IDEA_056: Vorher-Nachher-Slider für die preis-anzeige Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/preis-anzeige.tsx`
+- **Spezifikation:** Implementierung eines Live-Budget-Konfigurators mit Server Actions. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/preis-anzeige.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.57/10.00
+
+### IDEA_057: Vorher-Nachher-Slider für die termin-auswahl Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/termin-auswahl.tsx`
+- **Spezifikation:** Implementierung eines Live-Budget-Konfigurators mit Server Actions. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/termin-auswahl.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.52/10.00
+
+### IDEA_058: Live-Budget-Konfigurator für die flow-shell Komponente
+- **Ziel-Route/-Komponente:** `src/components/flow/flow-shell.tsx`
+- **Spezifikation:** Integration von dynamischen Trust-Badges basierend auf lokaler Verfügbarkeit. Ziel ist die maximale Ausschöpfung von src/components/flow/flow-shell.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.43/10.00
+
+### IDEA_059: ROI-Kalkulator für die service-budget-calculator Komponente
+- **Ziel-Route/-Komponente:** `src/components/calculator/service-budget-calculator.tsx`
+- **Spezifikation:** Hinzufügen eines reaktiven Filter-Systems mit Instant-Feedback. Ziel ist die maximale Ausschöpfung von src/components/calculator/service-budget-calculator.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.89/10.00
+
+### IDEA_060: Filter-System für die preis-anzeige Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/preis-anzeige.tsx`
+- **Spezifikation:** Integration von dynamischen Trust-Badges basierend auf lokaler Verfügbarkeit. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/preis-anzeige.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.20/10.00
+
+### IDEA_061: Vorher-Nachher-Slider für die preis-anzeige Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/preis-anzeige.tsx`
+- **Spezifikation:** Entwicklung eines dynamischen Vorher-Nachher-Sliders für Sicherheits-Upgrades. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/preis-anzeige.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.89/10.00
+
+### IDEA_062: Filter-System für die termin-auswahl Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/termin-auswahl.tsx`
+- **Spezifikation:** Entwicklung eines dynamischen Vorher-Nachher-Sliders für Sicherheits-Upgrades. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/termin-auswahl.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.32/10.00
+
+### IDEA_063: Gamification-Element für die card Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/card.tsx`
+- **Spezifikation:** Ergänzung einer intelligenten Such- und Filter-Erfahrung mit Turbopack-Vorteilen. Ziel ist die maximale Ausschöpfung von src/components/ui/card.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.25/10.00
+
+### IDEA_064: Trust-Badges für die flow-shell Komponente
+- **Ziel-Route/-Komponente:** `src/components/flow/flow-shell.tsx`
+- **Spezifikation:** Einbau eines interaktiven ROI-Kalkulators mit React 19 useOptimistic. Ziel ist die maximale Ausschöpfung von src/components/flow/flow-shell.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.24/10.00
+
+### IDEA_065: Live-Budget-Konfigurator für die preis-anzeige Komponente
+- **Ziel-Route/-Komponente:** `src/components/autoschluessel/preis-anzeige.tsx`
+- **Spezifikation:** Ergänzung einer intelligenten Such- und Filter-Erfahrung mit Turbopack-Vorteilen. Ziel ist die maximale Ausschöpfung von src/components/autoschluessel/preis-anzeige.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.97/10.00
+
+### IDEA_066: Vorher-Nachher-Slider für die card Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/card.tsx`
+- **Spezifikation:** Aufbau eines interaktiven Gamification-Elements zur Bedarfsermittlung. Ziel ist die maximale Ausschöpfung von src/components/ui/card.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.82/10.00
+
+### IDEA_067: Gamification-Element für die photo-upload Komponente
+- **Ziel-Route/-Komponente:** `src/components/forms/photo-upload.tsx`
+- **Spezifikation:** Implementierung eines Live-Budget-Konfigurators mit Server Actions. Ziel ist die maximale Ausschöpfung von src/components/forms/photo-upload.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.85/10.00
+
+### IDEA_068: Live-Budget-Konfigurator für die accordion Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/accordion.tsx`
+- **Spezifikation:** Entwicklung eines dynamischen Vorher-Nachher-Sliders für Sicherheits-Upgrades. Ziel ist die maximale Ausschöpfung von src/components/ui/accordion.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.53/10.00
+
+### IDEA_069: Schritt-für-Schritt-Assistent für die service-budget-calculator Komponente
+- **Ziel-Route/-Komponente:** `src/components/calculator/service-budget-calculator.tsx`
+- **Spezifikation:** Entwicklung eines dynamischen Vorher-Nachher-Sliders für Sicherheits-Upgrades. Ziel ist die maximale Ausschöpfung von src/components/calculator/service-budget-calculator.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.76/10.00
+
+### IDEA_070: Trust-Badges für die system-erklaerung Komponente
+- **Ziel-Route/-Komponente:** `src/components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation:** Einbau eines interaktiven ROI-Kalkulators mit React 19 useOptimistic. Ziel ist die maximale Ausschöpfung von src/components/schliessanlagen/system-erklaerung.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.28/10.00
+
+### IDEA_071: Such-Erfahrung für die flow-shell Komponente
+- **Ziel-Route/-Komponente:** `src/components/flow/flow-shell.tsx`
+- **Spezifikation:** Einbau eines interaktiven ROI-Kalkulators mit React 19 useOptimistic. Ziel ist die maximale Ausschöpfung von src/components/flow/flow-shell.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.23/10.00
+
+### IDEA_072: Vorher-Nachher-Slider für die card Komponente
+- **Ziel-Route/-Komponente:** `src/components/ui/card.tsx`
+- **Spezifikation:** Implementierung eines Live-Budget-Konfigurators mit Server Actions. Ziel ist die maximale Ausschöpfung von src/components/ui/card.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.33/10.00
+
+### IDEA_073: Such-Erfahrung für die photo-upload Komponente
+- **Ziel-Route/-Komponente:** `src/components/forms/photo-upload.tsx`
+- **Spezifikation:** Integration von dynamischen Trust-Badges basierend auf lokaler Verfügbarkeit. Ziel ist die maximale Ausschöpfung von src/components/forms/photo-upload.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.42/10.00
+
+### IDEA_074: Schritt-für-Schritt-Assistent für die flow-shell Komponente
+- **Ziel-Route/-Komponente:** `src/components/flow/flow-shell.tsx`
+- **Spezifikation:** Integration von dynamischen Trust-Badges basierend auf lokaler Verfügbarkeit. Ziel ist die maximale Ausschöpfung von src/components/flow/flow-shell.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.80/10.00
+
+### IDEA_075: Trust-Badges für die system-erklaerung Komponente
+- **Ziel-Route/-Komponente:** `src/components/schliessanlagen/system-erklaerung.tsx`
+- **Spezifikation:** Einführung eines interaktiven Schritt-für-Schritt-Assistenten (Wizard). Ziel ist die maximale Ausschöpfung von src/components/schliessanlagen/system-erklaerung.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.05/10.00
+
+## KATEGORIE D: EXTREME PERFORMANCE, ARCHITEKTUR & DX
+Ideen zu Next.js 16 use cache Memoisierung, CSS Subgrid-Harmonisierung, Container Queries (@container), AVIF-Hero-Pipelines und Zero-Shift Webfont-Optimierung.
+
+### IDEA_076: Container-Queries für die page Route
+- **Ziel-Route/-Komponente:** `src/app/tuer-und-schliesstechnik/page.tsx`
+- **Spezifikation:** Migration auf Next.js 16 'use cache' für radikale TTFB-Minimierung. Ziel ist die maximale Ausschöpfung von src/app/tuer-und-schliesstechnik/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.98/10.00
+
+### IDEA_077: OKLCH-Farb-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/page.tsx`
+- **Spezifikation:** Aufbau einer strikten OKLCH-Farb-Pipeline mit CSS-Variablen-Harmonisierung. Ziel ist die maximale Ausschöpfung von src/app/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.81/10.00
+
+### IDEA_078: OKLCH-Farb-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/ratgeber/[slug]/page.tsx`
+- **Spezifikation:** Migration auf Next.js 16 'use cache' für radikale TTFB-Minimierung. Ziel ist die maximale Ausschöpfung von src/app/ratgeber/[slug]/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.80/10.00
+
+### IDEA_079: Subgrid-Architektur für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schluessel-nach-code/page.tsx`
+- **Spezifikation:** Optimierung der Webfont-Ladezeit durch variables Font-Subset und Font-Display-Swap. Ziel ist die maximale Ausschöpfung von src/app/schluessel-nach-code/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.30/10.00
+
+### IDEA_080: OKLCH-Farb-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/autoschluessel/page.tsx`
+- **Spezifikation:** Refactoring zu CSS Container Queries (@container) für perfekte Komponenten-Modularität. Ziel ist die maximale Ausschöpfung von src/app/autoschluessel/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.60/10.00
+
+### IDEA_081: Web-Worker-Auslagerung für die page Route
+- **Ziel-Route/-Komponente:** `src/app/ratgeber/page.tsx`
+- **Spezifikation:** Reduktion des Main-Thread-Blockings durch Auslagerung schwerer Logik in Web Worker / Server. Ziel ist die maximale Ausschöpfung von src/app/ratgeber/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.00/10.00
+
+### IDEA_082: AVIF-Hero-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/tuer-und-schliesstechnik/page.tsx`
+- **Spezifikation:** Optimierung der Webfont-Ladezeit durch variables Font-Subset und Font-Display-Swap. Ziel ist die maximale Ausschöpfung von src/app/tuer-und-schliesstechnik/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.34/10.00
+
+### IDEA_083: OKLCH-Farb-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schluessel-nach-code/page.tsx`
+- **Spezifikation:** Reduktion des Main-Thread-Blockings durch Auslagerung schwerer Logik in Web Worker / Server. Ziel ist die maximale Ausschöpfung von src/app/schluessel-nach-code/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.57/10.00
+
+### IDEA_084: OKLCH-Farb-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/service-und-termin/page.tsx`
+- **Spezifikation:** Reduktion des Main-Thread-Blockings durch Auslagerung schwerer Logik in Web Worker / Server. Ziel ist die maximale Ausschöpfung von src/app/service-und-termin/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.15/10.00
+
+### IDEA_085: Container-Queries für die page Route
+- **Ziel-Route/-Komponente:** `src/app/service-und-termin/page.tsx`
+- **Spezifikation:** Aufbau einer strikten OKLCH-Farb-Pipeline mit CSS-Variablen-Harmonisierung. Ziel ist die maximale Ausschöpfung von src/app/service-und-termin/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.28/10.00
+
+### IDEA_086: Subgrid-Architektur für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schluessel-nach-code/page.tsx`
+- **Spezifikation:** Implementierung einer CSS Subgrid-Architektur für perfekte Ausrichtung über Container hinweg. Ziel ist die maximale Ausschöpfung von src/app/schluessel-nach-code/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.56/10.00
+
+### IDEA_087: TTFB-Minimierung für die page Route
+- **Ziel-Route/-Komponente:** `src/app/elektronische-zutrittsloesungen/page.tsx`
+- **Spezifikation:** Migration auf Next.js 16 'use cache' für radikale TTFB-Minimierung. Ziel ist die maximale Ausschöpfung von src/app/elektronische-zutrittsloesungen/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.43/10.00
+
+### IDEA_088: AVIF-Hero-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/autoschluessel/nachmachen/page.tsx`
+- **Spezifikation:** Umstellung der Bild-Pipeline auf native AVIF-Generierung mit Zero-Shift. Ziel ist die maximale Ausschöpfung von src/app/autoschluessel/nachmachen/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.64/10.00
+
+### IDEA_089: TTFB-Minimierung für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schliessanlagen/page.tsx`
+- **Spezifikation:** Reduktion des Main-Thread-Blockings durch Auslagerung schwerer Logik in Web Worker / Server. Ziel ist die maximale Ausschöpfung von src/app/schliessanlagen/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.16/10.00
+
+### IDEA_090: Subgrid-Architektur für die page Route
+- **Ziel-Route/-Komponente:** `src/app/service-und-termin/page.tsx`
+- **Spezifikation:** Migration auf Next.js 16 'use cache' für radikale TTFB-Minimierung. Ziel ist die maximale Ausschöpfung von src/app/service-und-termin/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.40/10.00
+
+### IDEA_091: Web-Worker-Auslagerung für die page Route
+- **Ziel-Route/-Komponente:** `src/app/autoschluessel/anfrage/page.tsx`
+- **Spezifikation:** Refactoring zu CSS Container Queries (@container) für perfekte Komponenten-Modularität. Ziel ist die maximale Ausschöpfung von src/app/autoschluessel/anfrage/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.55/10.00
+
+### IDEA_092: AVIF-Hero-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/autoschluessel/nachmachen/page.tsx`
+- **Spezifikation:** Implementierung einer CSS Subgrid-Architektur für perfekte Ausrichtung über Container hinweg. Ziel ist die maximale Ausschöpfung von src/app/autoschluessel/nachmachen/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.37/10.00
+
+### IDEA_093: Zero-JS-Fallback für die page Route
+- **Ziel-Route/-Komponente:** `src/app/kasse/page.tsx`
+- **Spezifikation:** Umstellung der Bild-Pipeline auf native AVIF-Generierung mit Zero-Shift. Ziel ist die maximale Ausschöpfung von src/app/kasse/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.29/10.00
+
+### IDEA_094: Webfont-Optimierung für die page Route
+- **Ziel-Route/-Komponente:** `src/app/kasse/page.tsx`
+- **Spezifikation:** Migration auf Next.js 16 'use cache' für radikale TTFB-Minimierung. Ziel ist die maximale Ausschöpfung von src/app/kasse/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.17/10.00
+
+### IDEA_095: OKLCH-Farb-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/autoschluessel/anfrage/page.tsx`
+- **Spezifikation:** Reduktion des Main-Thread-Blockings durch Auslagerung schwerer Logik in Web Worker / Server. Ziel ist die maximale Ausschöpfung von src/app/autoschluessel/anfrage/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 7.54/10.00
+
+### IDEA_096: AVIF-Hero-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/autoschluessel/anfrage/page.tsx`
+- **Spezifikation:** Optimierung der Webfont-Ladezeit durch variables Font-Subset und Font-Display-Swap. Ziel ist die maximale Ausschöpfung von src/app/autoschluessel/anfrage/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.12/10.00
+
+### IDEA_097: TTFB-Minimierung für die page Route
+- **Ziel-Route/-Komponente:** `src/app/schluessel-nach-code/page.tsx`
+- **Spezifikation:** Implementierung einer CSS Subgrid-Architektur für perfekte Ausrichtung über Container hinweg. Ziel ist die maximale Ausschöpfung von src/app/schluessel-nach-code/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 9.33/10.00
+
+### IDEA_098: AVIF-Hero-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/service-und-termin/page.tsx`
+- **Spezifikation:** Refactoring zu CSS Container Queries (@container) für perfekte Komponenten-Modularität. Ziel ist die maximale Ausschöpfung von src/app/service-und-termin/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.63/10.00
+
+### IDEA_099: OKLCH-Farb-Pipeline für die page Route
+- **Ziel-Route/-Komponente:** `src/app/sicherheitstechnik/page.tsx`
+- **Spezifikation:** Implementierung einer CSS Subgrid-Architektur für perfekte Ausrichtung über Container hinweg. Ziel ist die maximale Ausschöpfung von src/app/sicherheitstechnik/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.99/10.00
+
+### IDEA_100: Zero-JS-Fallback für die page Route
+- **Ziel-Route/-Komponente:** `src/app/kasse/page.tsx`
+- **Spezifikation:** Ersatz von Client-Side-Status durch Server Actions und Transitions für Zero-JS-Fallbacks. Ziel ist die maximale Ausschöpfung von src/app/kasse/page.tsx unter Einhaltung der Swiss Light Mode Doktrin.
+- **Score:** 8.13/10.00
+
