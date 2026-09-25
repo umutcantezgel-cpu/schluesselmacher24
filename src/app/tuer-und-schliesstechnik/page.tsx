@@ -110,8 +110,8 @@ interface Props {
 }
 
 export default async function TuerUndSchliesstechnikPage(props: Props) {
-  const params = await props.params;
-  const searchParams = await props.searchParams;
+  await props.params;
+  await props.searchParams;
 
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
@@ -122,8 +122,8 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
 
   return (
     <main
-      data-params={JSON.stringify(params)}
-      data-search={JSON.stringify(searchParams)}
+
+
       className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
     >
       <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
