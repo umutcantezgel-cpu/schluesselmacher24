@@ -47,3 +47,6 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+### Interaktive Module (Revolution Builder)
+- **Enterprise ROI- und Ladezeit-Kalkulator:** Rechner für Schließstellen mit dynamischer Kostenschätzung und Server Actions.
