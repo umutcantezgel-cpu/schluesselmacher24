@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -128,7 +129,7 @@ const AUDIENCES = [
 ];
 
 /** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
-const FALLBACK_FAQ = [
+export const FALLBACK_FAQ = [
   {
     question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
     answer:
@@ -165,9 +166,41 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
-  const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
+
+const EXPANDED_FAQ = [
+  {
+    question: "Wie unterscheiden sich mechanische und mechatronische Schließanlagen?",
+    answer: "Mechanische Schließanlagen basieren ausschließlich auf physischen Profilen und Stiften im Zylinder. Mechatronische Anlagen integrieren zusätzlich einen elektronischen Chip im Schlüsselkopf, der mit einer Leseeinheit im Zylinder kommuniziert. Dies erlaubt es, Berechtigungen zeitlich zu steuern oder bei Schlüsselverlust sofort zu entziehen, ohne den Zylinder physisch tauschen zu müssen."
+  },
+  {
+    question: "Was passiert, wenn ein Generalhauptschlüssel verloren geht?",
+    answer: "Der Verlust eines Generalhauptschlüssels (GHS) ist bei rein mechanischen Anlagen kritisch, da theoretisch die gesamte Anlage getauscht werden muss, um die Sicherheit wiederherzustellen. In der Praxis gibt es Versicherungen für diesen Fall. Zudem empfehlen wir, bei großen Anlagen elektronische oder mechatronische Systeme in sensiblen Bereichen einzusetzen."
+  },
+  {
+    question: "Wie berechnet sich der Enterprise ROI bei neuen Schließanlagen?",
+    answer: "Der Return on Investment (ROI) setzt sich aus den vermiedenen Kosten für Schlüsseltausch, den eingesparten Verwaltungskosten und der erhöhten Prozesseffizienz zusammen. Elektronische Systeme amortisieren sich oft bereits nach dem ersten Verlust eines Hauptschlüssels oder bei häufiger Mitarbeiterfluktuation durch den Wegfall physischer Zylinderwechsel."
+  },
+  {
+    question: "Welche Normen und Zertifizierungen sind relevant?",
+    answer: "Wichtige Normen sind die DIN 18252 (Profilzylinder für Türschlösser) und die DIN EN 1303 (Schließzylinder für Schlösser). Wir setzen auf VdS-zertifizierte Komponenten, um höchste Einbruchsicherheit und Kompatibilität mit Versicherungsvorgaben zu gewährleisten."
+  },
+  {
+    question: "Kann eine bestehende Anlage erweitert werden?",
+    answer: "Ja, wenn bei der Erstplanung eine entsprechende Reserve im Schließplan vorgesehen wurde. Ein vorausschauender Schließplan berücksichtigt zukünftige Abteilungen oder Gebäudeerweiterungen, sodass neue Zylinder nahtlos integriert werden können, ohne die bestehende Hierarchie zu kompromittieren."
+  }
+];
+
+  const faq = page?.faq?.length ? page.faq : EXPANDED_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
@@ -334,6 +367,65 @@ export default async function SchliessanlagenPage() {
           </Alert>
         </div>
       </Section>
+
+
+{/* Architektur und Methodik */}
+<Section>
+  <SectionHeading eyebrow="Architektur" title="Technische Methodik und Schließanlagen-Architektur" />
+  <div className="mt-8 grid gap-8 lg:grid-cols-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+    <div>
+      <p className="mb-4">
+        Die Architektur einer professionellen Schließanlage erfordert tiefgreifendes Verständnis der
+        organisatorischen Abläufe eines Unternehmens. Wir betrachten Schließanlagen nicht als bloße
+        Hardware, sondern als physisches Äquivalent zum Identity and Access Management (IAM) der IT.
+      </p>
+      <p className="mb-4">
+        Die technische Methodik beginnt mit der präzisen Aufnahme der Ist-Situation und der
+        Projektion zukünftiger Entwicklungen. Durch die mathematische Permutation der Stiftzuhaltungen
+        und Profilvarianzen entwerfen wir hierarchische Strukturen, die exakt Ihre
+        Unternehmensstruktur abbilden. Dies reicht vom Zentralzylinder (Z-Anlage), der von allen
+        Wohnungsschlüsseln geschlossen wird, über die Hauptschlüsselanlage (HS-Anlage) für hierarchische
+        Organisationen bis hin zur hochkomplexen Generalhauptschlüsselanlage (GHS-Anlage), die mehrere
+        Gebäude, Abteilungen und Unterabteilungen in einem durchgängigen System integriert.
+      </p>
+      <p>
+        Ein kritischer Faktor bei der Anlagenberechnung ist die Schließplankapazität. Wir nutzen
+        fortschrittliche Berechnungsverfahren, um sicherzustellen, dass ausreichende Reserven für
+        zukünftige Erweiterungen vorhanden sind, ohne die Sicherheit der aktuellen Schließungen zu
+        beeinträchtigen. Dies garantiert Investitionssicherheit und Langlebigkeit der mechanischen Systeme.
+      </p>
+    </div>
+    <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-8 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+      <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mb-4">Leistungsstufen der Schließanlagen</h3>
+      <ul className="space-y-4">
+        <li className="flex gap-4 border-b border-[oklch(0.89_0.008_260/0.55)] pb-4">
+          <span className="font-bold min-w-[80px]">Tier 1:</span>
+          <span><strong>Zentralschlossanlagen (Z-Anlagen):</strong> Ideal für Mehrfamilienhäuser. Ein Zentralschlüssel öffnet die Haustür und Gemeinschaftsräume.</span>
+        </li>
+        <li className="flex gap-4 border-b border-[oklch(0.89_0.008_260/0.55)] pb-4">
+          <span className="font-bold min-w-[80px]">Tier 2:</span>
+          <span><strong>Hauptschlüsselanlagen (HS-Anlagen):</strong> Für Gewerbebetriebe. Ein Hauptschlüssel schließt alle Zylinder, Einzelschlüssel nur bestimmte Türen.</span>
+        </li>
+        <li className="flex gap-4">
+          <span className="font-bold min-w-[80px]">Tier 3:</span>
+          <span><strong>Generalhauptschlüsselanlagen (GHS):</strong> Komplexe Hierarchien für große Unternehmen. Mehrere Hauptschlüssel und Gruppenhauptschlüssel.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</Section>
+
+{/* Interaktives Modul */}
+<Section id="roi-rechner" tone="muted">
+  <SectionHeading
+    eyebrow="Wirtschaftlichkeit"
+    title="Enterprise ROI Kalkulator"
+    lead="Berechnen Sie die langfristigen Einsparungen und den Return on Investment einer modernen Schließanlage basierend auf Ihren unternehmensspezifischen Parametern."
+  />
+  <div className="mt-8 max-w-2xl">
+    <EnterpriseRoiCalculator />
+  </div>
+</Section>
 
       {/* Fragen */}
       <Section>
