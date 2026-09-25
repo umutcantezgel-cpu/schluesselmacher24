@@ -1,28 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2024-03-20T12:00:00Z",
-  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "generated_at": "2026-09-25T21:07:18.749733Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten basierend auf der generierten Matrix.",
   "top_ideas": [
     {
       "rank": 1,
-      "idea_id": "IDEA_051",
-      "category": "CONVERSION_AND_TOOLS",
-      "target_existing_route": "src/app/schliessanlagen/page.tsx",
-      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
-      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
-      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
-      "score": 9.65,
+      "idea_id": "IDEA_007",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/page.tsx",
+      "target_component_file": "src/components/ui/card.tsx",
+      "title": "Kinetische typografie-\u00fcberg\u00e4nge on-scroll in card.tsx",
+      "specification": "Architektiere kinetische Typografie-\u00dcberg\u00e4nge on-scroll in `src/components/ui/card.tsx`, um die Awwwards-Jury-Kriterien zu \u00fcbertreffen. Dies stellt eine hochspezifische, auf die Schweizer Light Mode \u00c4sthetik abgestimmte Verbesserung des Bestandscodes dar.",
+      "score": 9.9,
       "status": "READY_FOR_EXPANSION"
     },
     {
       "rank": 2,
-      "idea_id": "IDEA_002",
-      "category": "AWWWARDS_KINETICS",
-      "target_existing_route": "src/app/page.tsx",
-      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
-      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
-      "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
-      "score": 9.45,
+      "idea_id": "IDEA_027",
+      "category": "SEMANTIC_AUTHORITY",
+      "target_existing_route": "src/app/bestellung/[id]/page.tsx",
+      "target_component_file": "src/app/bestellung/[id]/page.tsx",
+      "title": "Interaktive, strukturierte vergleichsmatrix in page.tsx",
+      "specification": "Konstruiere eine interaktive, strukturierte Vergleichsmatrix in `src/app/bestellung/[id]/page.tsx`, um die kognitive Belastung (Cognitive Load) zu minimieren. Dies stellt eine hochspezifische, auf die Schweizer Light Mode \u00c4sthetik abgestimmte Verbesserung des Bestandscodes dar.",
+      "score": 9.9,
       "status": "READY_FOR_EXPANSION"
     }
   ]
