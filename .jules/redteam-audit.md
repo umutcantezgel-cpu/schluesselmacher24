@@ -13,4 +13,3 @@
 
 ## 4. Design & Kinetik (Swiss Light Doctrine)
 - Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.

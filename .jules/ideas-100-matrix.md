@@ -1,109 +1,506 @@
-# 100 Radikale Innovationsideen (Swiss Light Mode Aesthetic)
+# Die Philosophische 100-Ideen-Matrix
 
-## Kategorie A: Awwwards-Kinetik & Taktile Interaktion (Ideen 1 bis 25)
-1. IDEA_001: Federgedämpfte Hover-States für alle Button-Komponenten (src/components/ui/button.tsx).
-2. IDEA_002: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex auf der Homepage (src/app/page.tsx).
-3. IDEA_003: Scroll-getriebene SVG-Animation für den "Schlüssel nach Code"-Prozess.
-4. IDEA_004: Mikro-haptisches Cursor-Tracking für die Area-Karten.
-5. IDEA_005: Parallax-Tiefenunschärfe für das Hero-Image auf der Startseite.
-6. IDEA_006: Magnetische Buttons für primäre CTAs (z.B. "Termin buchen").
-7. IDEA_007: Interaktives SVG-Schlüsselprofil (Hover zum Drehen) in der Schließanlagen-Übersicht.
-8. IDEA_008: Glatte Seitenübergänge (View Transitions API) zwischen allen Hauptseiten.
-9. IDEA_009: Morphing-Icons in der Schnelleinstieg-Sektion.
-10. IDEA_010: Skew-on-Scroll für Textblöcke auf der "Über Uns"-Seite.
-11. IDEA_011: Dynamische Schatten (oklch 0.988) basierend auf Cursor-Position.
-12. IDEA_012: Fade-In Sequence für Listenelemente in der Schließanlagen-Page.
-13. IDEA_013: 3D-Tilt-Effekt für die Feature-Karten.
-14. IDEA_014: Liquid-Distortion Hover auf Bildern.
-15. IDEA_015: Reveal-Animation für Akkordeon-Antworten (src/components/ui/accordion.tsx).
-16. IDEA_016: Text-Scramble Effekt bei initialem Laden der Headlines.
-17. IDEA_017: Sticky-Scrolling für lange Content-Seiten (Ratgeber).
-18. IDEA_018: Horizontal Scroll-Bereich für das Portfolio / Referenzen.
-19. IDEA_019: Kinetic Typography für die 404-Seite.
-20. IDEA_020: Ripple-Effekt auf allen klickbaren Cards.
-21. IDEA_021: Lade-Indikator als sich füllendes Schlüssel-Icon.
-22. IDEA_022: Progress-Bar angebunden an Scroll-Tiefe für Blog/Ratgeber.
-23. IDEA_023: Tooltips mit sanftem Spring-Fade-In.
-24. IDEA_024: Hover-Masking für das Hero-Image (Enthüllung von Details).
-25. IDEA_025: Interaktiver "Lichtschalter" (Light Mode Only, demonstriert Helligkeit ohne Dark Mode).
+## KATEGORIE A: AWWWARDS-KINETIK & TAKTILE INTERAKTION
+### IDEA_001: Gestaltung interaktiver Daten-Visualisierungen für option-card (Score: 8.34)
+- **Ziel-Route**: app/tuer-und-schliesstechnik/page.tsx
+- **Komponente**: components/forms/option-card.tsx
+- **Spezifikation**: Die Komponente `option-card.tsx` auf der Route `src/app/tuer-und-schliesstechnik/page.tsx` wird durch gestaltung interaktiver daten-visualisierungen radikal verbessert, zur Erhöhung der epistemischen Klarheit. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
 
-## Kategorie B: Semantische Autorität & Content-Maximierung (Ideen 26 bis 50)
-26. IDEA_026: Erweiterung der Startseite um >800 Wörter Fachinhalt.
-27. IDEA_027: Tiefen-Glossar für Schließanlagen (src/app/schliessanlagen/page.tsx).
-28. IDEA_028: Detaillierte Fallstudien im Ratgeber-Bereich.
-29. IDEA_029: Ausbau der "Schlüssel nach Code" Seite mit technischen Details (800+ Wörter).
-30. IDEA_030: Historie der Schließtechnik-Evolution auf der Über-Uns-Seite.
-31. IDEA_031: Ausführliche Erklärung der DIN-Normen für Sicherheitszylinder.
-32. IDEA_032: Vergleich: Elektronische vs. Mechanische Schließsysteme.
-33. IDEA_033: Schritt-für-Schritt Wartungsanleitung für Zylinder.
-34. IDEA_034: Experten-Interview-Format im Ratgeber.
-35. IDEA_035: Erweiterung der FAQ auf allen Dienstleistungsseiten.
-36. IDEA_036: Technisches Datenblatt-Layout für spezifische Zylinder.
-37. IDEA_037: Erläuterung des Fräsprozesses (Maschinen, Präzision).
-38. IDEA_038: Rechtsgrundlagen für Schließanlagen (Mieter vs. Vermieter).
-39. IDEA_039: Notfall-Ratgeber: Was tun bei abgebrochenem Schlüssel?
-40. IDEA_040: Detaillierte Preis-Transparenz-Seite (Warum kostet Qualität X?).
-41. IDEA_041: Ausbau der "Gleichschließende Zylinder" Seite mit Anwendungsfällen.
-42. IDEA_042: Spatial Bento Grid in src/app/page.tsx (Fokus auf Inhalt-Dichte).
-43. IDEA_043: Strukturierte Daten (Schema.org) für alle Artikel ausbauen.
-44. IDEA_044: Glossar-Tooltips im laufenden Text.
-45. IDEA_045: Checkliste: Sicherheit für Gewerbeobjekte (als Content-Block).
-46. IDEA_046: Ratgeber: Tresor-Wahl und Verankerung.
-47. IDEA_047: Erklärung der VdS-Schutzklassen.
-48. IDEA_048: Ausführliche Anleitung zum Ausmessen von Zylindern.
-49. IDEA_049: Content-Block "Mythos vs. Wahrheit" bei Einbruchschutz.
-50. IDEA_050: Detaillierte Beschreibung der Anlieferung & Montage.
+### IDEA_002: Entwicklung eines fluiden Bento-Grids für photo-upload (Score: 8.96)
+- **Ziel-Route**: app/page.tsx
+- **Komponente**: components/forms/photo-upload.tsx
+- **Spezifikation**: Die Komponente `photo-upload.tsx` auf der Route `src/app/page.tsx` wird durch entwicklung eines fluiden bento-grids radikal verbessert, um den inhaltlichen Rhythmus zu dynamisieren. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
 
-## Kategorie C: Conversion-Psychologie & Native Werkzeuge (Ideen 51 bis 75)
-51. IDEA_051: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator (src/app/schliessanlagen/page.tsx).
-52. IDEA_052: Interaktiver Vorher-Nachher-Slider für verschlissene vs. neue Schlüssel.
-53. IDEA_053: Konfigurator: Welches Schließsystem passt zu mir? (Quiz-Format).
-54. IDEA_054: Dynamischer Budget-Schätzer für Gleichschließungen.
-55. IDEA_055: ROI-Rechner für elektronische vs. mechanische Anlagen.
-56. IDEA_056: Visueller Zylinder-Ausmesser (interaktives Lineal).
-57. IDEA_057: "Trust-Balken": Live-Zähler geretteter Autoschlüssel (simuliert/optimistisch).
-58. IDEA_058: Interaktive Karte der abgedeckten Gebiete.
-59. IDEA_059: Dynamische Filterung für den Ratgeber (nach Thema, Dauer).
-60. IDEA_060: Personalisierter Einstiegs-Funnel für Privat vs. Gewerbe.
-61. IDEA_061: Live-Termin-Vorschau im Hero-Bereich (nächster freier Slot).
-62. IDEA_062: "Warenkorb-Ersparnis" Visualisierung bei Mengenrabatt.
-63. IDEA_063: Interaktiver Sicherheits-Score-Check für Eigenheime.
-64. IDEA_064: 3D-Konfigurator für Schlüssel-Anhänger/Markierungen.
-65. IDEA_065: Social-Proof Ticker (kürzliche anonymisierte Aufträge).
-66. IDEA_066: Gamifizierte Fortschrittsanzeige in Formularen.
-67. IDEA_067: Interaktives Organigramm für GHS-Anlagen (Drag & Drop Planung).
-68. IDEA_068: Tool: Foto-Upload-Prüfer für Schlüssel-Kopien.
-69. IDEA_069: Interaktive FAQ mit Suchfunktion und Highlighting.
-70. IDEA_070: "Smart Quote" - dynamische Angebotserstellung in Echtzeit.
-71. IDEA_071: Konfigurator-Summary als PDF-Download (Server Action).
-72. IDEA_072: A/B-Testing Integration für Haupt-CTAs.
-73. IDEA_073: Micro-Interactions bei Formularvalidierung (Shake on error).
-74. IDEA_074: Exit-Intent Modal mit passendem Ratgeber-Artikel.
-75. IDEA_075: Countdown für "Heute bestellt - Morgen versandt" (nur bis 14 Uhr).
+### IDEA_003: Integration Scroll-getriebener SVG-Animationen für bestaetigung (Score: 8.07)
+- **Ziel-Route**: app/service-und-termin/vor-ort/page.tsx
+- **Komponente**: components/autoschluessel/bestaetigung.tsx
+- **Spezifikation**: Die Komponente `bestaetigung.tsx` auf der Route `src/app/service-und-termin/vor-ort/page.tsx` wird durch integration scroll-getriebener svg-animationen radikal verbessert, für eine nahtlose narrative Führung. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
 
-## Kategorie D: Extreme Performance, Architektur & DX (Ideen 76 bis 100)
-76. IDEA_076: Next.js 16 "use cache" Memoisierung für alle API-Routen.
-77. IDEA_077: CSS Subgrid-Harmonisierung für Karten-Layouts.
-78. IDEA_078: Container Queries (@container) für Komponenten-Responsive.
-79. IDEA_079: AVIF-Hero-Pipelines für maximale Bildkompression.
-80. IDEA_080: Zero-Shift Webfont-Optimierung (font-display: optional/swap).
-81. IDEA_081: Aggressives Pre-Fetching für alle Navigations-Links im Viewport.
-82. IDEA_082: Edge-Caching für statische Content-Seiten.
-83. IDEA_083: Partytown-Integration für Third-Party-Scripts.
-84. IDEA_084: Bundle-Analyse und Code-Splitting für große Konfiguratoren.
-85. IDEA_085: Turbopack-Optimierungen in next.config.
-86. IDEA_086: Implementierung von React 19 `useOptimistic` in Formularen.
-87. IDEA_087: Serverseitiges Rendering für personalisierte Empfehlungen.
-88. IDEA_088: Striktes CSP (Content Security Policy) Setup.
-89. IDEA_089: Reduzierung der DOM-Tiefe in der Hauptnavigation.
-90. IDEA_090: Lazy-Loading für untere Sektionen (Intersection Observer).
-91. IDEA_091: Inline-CSS für kritische Above-the-Fold Inhalte.
-92. IDEA_092: Web Worker für komplexe Schließplan-Berechnungen.
-93. IDEA_093: Optimierung der JSON-LD Generierung (Streaming).
-94. IDEA_094: Umstellung auf native CSS Nesting statt Sass/Tailwind-Plugins (wo sinnvoll).
-95. IDEA_095: Implementierung von `serverActions` in allen Formularen.
-96. IDEA_096: Automatisierte a11y-Tests (axe-core) in CI/CD.
-97. IDEA_097: Optimierung der LCP (Largest Contentful Paint) auf <1.2s.
-98. IDEA_098: Reduzierung des JavaScript-Footprints durch RSCs.
-99. IDEA_099: Strict Type-Checking für alle API-Responses.
-100. IDEA_100: Refactoring der Tailwind-Klassen auf v4 Standards.
+### IDEA_004: Aufbau einer kinetischen Hover-Architektur für key-kinds (Score: 9.66)
+- **Ziel-Route**: app/kasse/page.tsx
+- **Komponente**: components/autoschluessel/key-kinds.tsx
+- **Spezifikation**: Die Komponente `key-kinds.tsx` auf der Route `src/app/kasse/page.tsx` wird durch aufbau einer kinetischen hover-architektur radikal verbessert, zur Reduktion kognitiver Last durch antizipatives Feedback. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_005: Gestaltung interaktiver Daten-Visualisierungen für photo-upload (Score: 8.82)
+- **Ziel-Route**: app/standorte/page.tsx
+- **Komponente**: components/forms/photo-upload.tsx
+- **Spezifikation**: Die Komponente `photo-upload.tsx` auf der Route `src/app/standorte/page.tsx` wird durch gestaltung interaktiver daten-visualisierungen radikal verbessert, zur Erhöhung der epistemischen Klarheit. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_006: Einführung mikro-haptischer Feedback-Zustände für photo-upload (Score: 9.21)
+- **Ziel-Route**: app/service-und-termin/page.tsx
+- **Komponente**: components/forms/photo-upload.tsx
+- **Spezifikation**: Die Komponente `photo-upload.tsx` auf der Route `src/app/service-und-termin/page.tsx` wird durch einführung mikro-haptischer feedback-zustände radikal verbessert, die den Nutzer unbewusst leiten. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_007: Programmierung von magnetischen Cursor-Interaktionen für service-article (Score: 6.59)
+- **Ziel-Route**: app/tuer-und-schliesstechnik/[slug]/page.tsx
+- **Komponente**: components/autoschluessel/service-article.tsx
+- **Spezifikation**: Die Komponente `service-article.tsx` auf der Route `src/app/tuer-und-schliesstechnik/[slug]/page.tsx` wird durch programmierung von magnetischen cursor-interaktionen radikal verbessert, welche die physische Begrenzung des Bildschirms auflösen. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_008: Aufbau einer kinetischen Hover-Architektur für system-erklaerung (Score: 7.32)
+- **Ziel-Route**: app/autoschluessel/nachmachen/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/autoschluessel/nachmachen/page.tsx` wird durch aufbau einer kinetischen hover-architektur radikal verbessert, zur Reduktion kognitiver Last durch antizipatives Feedback. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_009: Aufbau einer kinetischen Hover-Architektur für key-kinds (Score: 7.83)
+- **Ziel-Route**: app/kasse/page.tsx
+- **Komponente**: components/autoschluessel/key-kinds.tsx
+- **Spezifikation**: Die Komponente `key-kinds.tsx` auf der Route `src/app/kasse/page.tsx` wird durch aufbau einer kinetischen hover-architektur radikal verbessert, zur Reduktion kognitiver Last durch antizipatives Feedback. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_010: Gestaltung interaktiver Daten-Visualisierungen für flow-shell (Score: 8.18)
+- **Ziel-Route**: app/elektronische-zutrittsloesungen/page.tsx
+- **Komponente**: components/flow/flow-shell.tsx
+- **Spezifikation**: Die Komponente `flow-shell.tsx` auf der Route `src/app/elektronische-zutrittsloesungen/page.tsx` wird durch gestaltung interaktiver daten-visualisierungen radikal verbessert, zur Erhöhung der epistemischen Klarheit. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_011: Gestaltung interaktiver Daten-Visualisierungen für photo-upload (Score: 9.86)
+- **Ziel-Route**: app/service-und-termin/page.tsx
+- **Komponente**: components/forms/photo-upload.tsx
+- **Spezifikation**: Die Komponente `photo-upload.tsx` auf der Route `src/app/service-und-termin/page.tsx` wird durch gestaltung interaktiver daten-visualisierungen radikal verbessert, zur Erhöhung der epistemischen Klarheit. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_012: Einführung mikro-haptischer Feedback-Zustände für service-budget-calculator (Score: 8.02)
+- **Ziel-Route**: app/autoschluessel/marken/[make]/[model]/page.tsx
+- **Komponente**: components/service/service-budget-calculator.tsx
+- **Spezifikation**: Die Komponente `service-budget-calculator.tsx` auf der Route `src/app/autoschluessel/marken/[make]/[model]/page.tsx` wird durch einführung mikro-haptischer feedback-zustände radikal verbessert, die den Nutzer unbewusst leiten. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_013: Entwicklung eines fluiden Bento-Grids für vehicle-facts (Score: 9.81)
+- **Ziel-Route**: app/autoschluessel/marken/[make]/[model]/page.tsx
+- **Komponente**: components/autoschluessel/vehicle-facts.tsx
+- **Spezifikation**: Die Komponente `vehicle-facts.tsx` auf der Route `src/app/autoschluessel/marken/[make]/[model]/page.tsx` wird durch entwicklung eines fluiden bento-grids radikal verbessert, um den inhaltlichen Rhythmus zu dynamisieren. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_014: Integration Scroll-getriebener SVG-Animationen für system-erklaerung (Score: 9.71)
+- **Ziel-Route**: app/tuer-und-schliesstechnik/[slug]/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/tuer-und-schliesstechnik/[slug]/page.tsx` wird durch integration scroll-getriebener svg-animationen radikal verbessert, für eine nahtlose narrative Führung. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_015: Aufbau einer kinetischen Hover-Architektur für system-erklaerung (Score: 8.32)
+- **Ziel-Route**: app/autoschluessel/marken/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/autoschluessel/marken/page.tsx` wird durch aufbau einer kinetischen hover-architektur radikal verbessert, zur Reduktion kognitiver Last durch antizipatives Feedback. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_016: Entwicklung eines fluiden Bento-Grids für key-kinds (Score: 6.14)
+- **Ziel-Route**: app/sicherheitstechnik/sicherheitscheck/page.tsx
+- **Komponente**: components/autoschluessel/key-kinds.tsx
+- **Spezifikation**: Die Komponente `key-kinds.tsx` auf der Route `src/app/sicherheitstechnik/sicherheitscheck/page.tsx` wird durch entwicklung eines fluiden bento-grids radikal verbessert, um den inhaltlichen Rhythmus zu dynamisieren. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_017: Implementation einer physikalischen Federdämpfung für system-erklaerung (Score: 8.67)
+- **Ziel-Route**: app/autoschluessel/marken/[make]/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/autoschluessel/marken/[make]/page.tsx` wird durch implementation einer physikalischen federdämpfung radikal verbessert, zur Schaffung einer taktilen Tiefe. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_018: Gestaltung interaktiver Daten-Visualisierungen für service-budget-calculator (Score: 8.46)
+- **Ziel-Route**: app/standorte/[city]/page.tsx
+- **Komponente**: components/service/service-budget-calculator.tsx
+- **Spezifikation**: Die Komponente `service-budget-calculator.tsx` auf der Route `src/app/standorte/[city]/page.tsx` wird durch gestaltung interaktiver daten-visualisierungen radikal verbessert, zur Erhöhung der epistemischen Klarheit. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_019: Entwicklung eines fluiden Bento-Grids für controls (Score: 6.02)
+- **Ziel-Route**: app/autoschluessel/fahrzeugoeffnung/page.tsx
+- **Komponente**: components/forms/controls.tsx
+- **Spezifikation**: Die Komponente `controls.tsx` auf der Route `src/app/autoschluessel/fahrzeugoeffnung/page.tsx` wird durch entwicklung eines fluiden bento-grids radikal verbessert, um den inhaltlichen Rhythmus zu dynamisieren. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_020: Integration Scroll-getriebener SVG-Animationen für system-erklaerung (Score: 7.58)
+- **Ziel-Route**: app/autoschluessel/anfrage/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/autoschluessel/anfrage/page.tsx` wird durch integration scroll-getriebener svg-animationen radikal verbessert, für eine nahtlose narrative Führung. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_021: Programmierung von magnetischen Cursor-Interaktionen für flow-shell (Score: 7.73)
+- **Ziel-Route**: app/tuer-und-schliesstechnik/[slug]/page.tsx
+- **Komponente**: components/flow/flow-shell.tsx
+- **Spezifikation**: Die Komponente `flow-shell.tsx` auf der Route `src/app/tuer-und-schliesstechnik/[slug]/page.tsx` wird durch programmierung von magnetischen cursor-interaktionen radikal verbessert, welche die physische Begrenzung des Bildschirms auflösen. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_022: Einführung mikro-haptischer Feedback-Zustände für option-card (Score: 7.38)
+- **Ziel-Route**: app/page.tsx
+- **Komponente**: components/forms/option-card.tsx
+- **Spezifikation**: Die Komponente `option-card.tsx` auf der Route `src/app/page.tsx` wird durch einführung mikro-haptischer feedback-zustände radikal verbessert, die den Nutzer unbewusst leiten. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_023: Aufbau einer kinetischen Hover-Architektur für preis-anzeige (Score: 6.51)
+- **Ziel-Route**: app/schluessel-nach-vorlage/page.tsx
+- **Komponente**: components/autoschluessel/preis-anzeige.tsx
+- **Spezifikation**: Die Komponente `preis-anzeige.tsx` auf der Route `src/app/schluessel-nach-vorlage/page.tsx` wird durch aufbau einer kinetischen hover-architektur radikal verbessert, zur Reduktion kognitiver Last durch antizipatives Feedback. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_024: Programmierung von magnetischen Cursor-Interaktionen für bestaetigung (Score: 9.04)
+- **Ziel-Route**: app/autoschluessel/schluesselbart-fraesen/page.tsx
+- **Komponente**: components/autoschluessel/bestaetigung.tsx
+- **Spezifikation**: Die Komponente `bestaetigung.tsx` auf der Route `src/app/autoschluessel/schluesselbart-fraesen/page.tsx` wird durch programmierung von magnetischen cursor-interaktionen radikal verbessert, welche die physische Begrenzung des Bildschirms auflösen. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+### IDEA_025: Entwicklung eines fluiden Bento-Grids für vehicle-facts (Score: 6.49)
+- **Ziel-Route**: app/standorte/page.tsx
+- **Komponente**: components/autoschluessel/vehicle-facts.tsx
+- **Spezifikation**: Die Komponente `vehicle-facts.tsx` auf der Route `src/app/standorte/page.tsx` wird durch entwicklung eines fluiden bento-grids radikal verbessert, um den inhaltlichen Rhythmus zu dynamisieren. Dies stärkt die bestehende Struktur gemäß Schweizer Light Mode Doktrin, indem kinetische Klarheit ohne neues Rauschen etabliert wird.
+
+## KATEGORIE B: SEMANTISCHE AUTORITÄT & CONTENT-MAXIMIERUNG
+### IDEA_026: Inhaltlicher Ausbau auf > 800 Wörter für system-erklaerung (Score: 6.68)
+- **Ziel-Route**: app/elektronische-zutrittsloesungen/konfigurator/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx` wird durch inhaltlicher ausbau auf > 800 wörter radikal verbessert, durch Integration tiefgehender Domänenexpertise. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_027: Integration strukturierter Vergleichsmatrizen für option-card (Score: 9.6)
+- **Ziel-Route**: app/sicherheitstechnik/page.tsx
+- **Komponente**: components/forms/option-card.tsx
+- **Spezifikation**: Die Komponente `option-card.tsx` auf der Route `src/app/sicherheitstechnik/page.tsx` wird durch integration strukturierter vergleichsmatrizen radikal verbessert, zur Erleichterung rationaler Entscheidungsfindung. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_028: Erweiterung der semantischen Korpustiefe für field (Score: 9.11)
+- **Ziel-Route**: app/autoschluessel/funkschluessel/page.tsx
+- **Komponente**: components/forms/field.tsx
+- **Spezifikation**: Die Komponente `field.tsx` auf der Route `src/app/autoschluessel/funkschluessel/page.tsx` wird durch erweiterung der semantischen korpustiefe radikal verbessert, mittels Einbindung spezifischer Use-Cases. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_029: Integration von Experten-Wissensgraphen für controls (Score: 9.35)
+- **Ziel-Route**: app/schluessel-nach-code/[slug]/page.tsx
+- **Komponente**: components/forms/controls.tsx
+- **Spezifikation**: Die Komponente `controls.tsx` auf der Route `src/app/schluessel-nach-code/[slug]/page.tsx` wird durch integration von experten-wissensgraphen radikal verbessert, zur semantischen Vernetzung von Entitäten. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_030: Darlegung technischer Prozessschritte für system-erklaerung (Score: 7.95)
+- **Ziel-Route**: app/warenkorb/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/warenkorb/page.tsx` wird durch darlegung technischer prozessschritte radikal verbessert, als transparenter Beweis handwerklicher Exzellenz. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_031: Inhaltlicher Ausbau auf > 800 Wörter für vehicle-facts (Score: 7.32)
+- **Ziel-Route**: app/schluessel-nach-vorlage/page.tsx
+- **Komponente**: components/autoschluessel/vehicle-facts.tsx
+- **Spezifikation**: Die Komponente `vehicle-facts.tsx` auf der Route `src/app/schluessel-nach-vorlage/page.tsx` wird durch inhaltlicher ausbau auf > 800 wörter radikal verbessert, durch Integration tiefgehender Domänenexpertise. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_032: Konstruktion tiefgehender Fach-FAQ-Architekturen für option-card (Score: 9.21)
+- **Ziel-Route**: app/service-und-termin/terminstatus/page.tsx
+- **Komponente**: components/forms/option-card.tsx
+- **Spezifikation**: Die Komponente `option-card.tsx` auf der Route `src/app/service-und-termin/terminstatus/page.tsx` wird durch konstruktion tiefgehender fach-faq-architekturen radikal verbessert, die semantische Autorität im Themenfeld etablieren. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_033: Konstruktion tiefgehender Fach-FAQ-Architekturen für option-card (Score: 9.17)
+- **Ziel-Route**: app/standorte/page.tsx
+- **Komponente**: components/forms/option-card.tsx
+- **Spezifikation**: Die Komponente `option-card.tsx` auf der Route `src/app/standorte/page.tsx` wird durch konstruktion tiefgehender fach-faq-architekturen radikal verbessert, die semantische Autorität im Themenfeld etablieren. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_034: Erweiterung der semantischen Korpustiefe für service-budget-calculator (Score: 9.43)
+- **Ziel-Route**: app/sicherheitstechnik/sicherheitscheck/page.tsx
+- **Komponente**: components/service/service-budget-calculator.tsx
+- **Spezifikation**: Die Komponente `service-budget-calculator.tsx` auf der Route `src/app/sicherheitstechnik/sicherheitscheck/page.tsx` wird durch erweiterung der semantischen korpustiefe radikal verbessert, mittels Einbindung spezifischer Use-Cases. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_035: Darlegung technischer Prozessschritte für bestaetigung (Score: 9.01)
+- **Ziel-Route**: app/service-und-termin/kontakt/page.tsx
+- **Komponente**: components/autoschluessel/bestaetigung.tsx
+- **Spezifikation**: Die Komponente `bestaetigung.tsx` auf der Route `src/app/service-und-termin/kontakt/page.tsx` wird durch darlegung technischer prozessschritte radikal verbessert, als transparenter Beweis handwerklicher Exzellenz. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_036: Integration strukturierter Vergleichsmatrizen für controls (Score: 8.55)
+- **Ziel-Route**: app/bestellung/[id]/page.tsx
+- **Komponente**: components/forms/controls.tsx
+- **Spezifikation**: Die Komponente `controls.tsx` auf der Route `src/app/bestellung/[id]/page.tsx` wird durch integration strukturierter vergleichsmatrizen radikal verbessert, zur Erleichterung rationaler Entscheidungsfindung. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_037: Darlegung technischer Prozessschritte für service-budget-calculator (Score: 6.85)
+- **Ziel-Route**: app/schliessanlagen/konfigurator/page.tsx
+- **Komponente**: components/service/service-budget-calculator.tsx
+- **Spezifikation**: Die Komponente `service-budget-calculator.tsx` auf der Route `src/app/schliessanlagen/konfigurator/page.tsx` wird durch darlegung technischer prozessschritte radikal verbessert, als transparenter Beweis handwerklicher Exzellenz. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_038: Integration von Experten-Wissensgraphen für bestaetigung (Score: 7.5)
+- **Ziel-Route**: app/gleichschliessende-zylinder/page.tsx
+- **Komponente**: components/autoschluessel/bestaetigung.tsx
+- **Spezifikation**: Die Komponente `bestaetigung.tsx` auf der Route `src/app/gleichschliessende-zylinder/page.tsx` wird durch integration von experten-wissensgraphen radikal verbessert, zur semantischen Vernetzung von Entitäten. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_039: Konstruktion tiefgehender Fach-FAQ-Architekturen für termin-auswahl (Score: 9.44)
+- **Ziel-Route**: app/kasse/page.tsx
+- **Komponente**: components/autoschluessel/termin-auswahl.tsx
+- **Spezifikation**: Die Komponente `termin-auswahl.tsx` auf der Route `src/app/kasse/page.tsx` wird durch konstruktion tiefgehender fach-faq-architekturen radikal verbessert, die semantische Autorität im Themenfeld etablieren. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_040: Konstruktion tiefgehender Fach-FAQ-Architekturen für security-check-calculator (Score: 6.27)
+- **Ziel-Route**: app/gleichschliessende-zylinder/konfigurator/page.tsx
+- **Komponente**: components/calculator/security-check-calculator.tsx
+- **Spezifikation**: Die Komponente `security-check-calculator.tsx` auf der Route `src/app/gleichschliessende-zylinder/konfigurator/page.tsx` wird durch konstruktion tiefgehender fach-faq-architekturen radikal verbessert, die semantische Autorität im Themenfeld etablieren. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_041: Darlegung technischer Prozessschritte für security-check-calculator (Score: 9.07)
+- **Ziel-Route**: app/schliessanlagen/konfigurator/page.tsx
+- **Komponente**: components/calculator/security-check-calculator.tsx
+- **Spezifikation**: Die Komponente `security-check-calculator.tsx` auf der Route `src/app/schliessanlagen/konfigurator/page.tsx` wird durch darlegung technischer prozessschritte radikal verbessert, als transparenter Beweis handwerklicher Exzellenz. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_042: Erweiterung der semantischen Korpustiefe für system-erklaerung (Score: 7.68)
+- **Ziel-Route**: app/gleichschliessende-zylinder/konfigurator/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/gleichschliessende-zylinder/konfigurator/page.tsx` wird durch erweiterung der semantischen korpustiefe radikal verbessert, mittels Einbindung spezifischer Use-Cases. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_043: Darlegung technischer Prozessschritte für option-card (Score: 6.62)
+- **Ziel-Route**: app/autoschluessel/fahrzeugoeffnung/page.tsx
+- **Komponente**: components/forms/option-card.tsx
+- **Spezifikation**: Die Komponente `option-card.tsx` auf der Route `src/app/autoschluessel/fahrzeugoeffnung/page.tsx` wird durch darlegung technischer prozessschritte radikal verbessert, als transparenter Beweis handwerklicher Exzellenz. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_044: Konstruktion tiefgehender Fach-FAQ-Architekturen für service-article (Score: 9.36)
+- **Ziel-Route**: app/autoschluessel/schluesselbart-fraesen/page.tsx
+- **Komponente**: components/autoschluessel/service-article.tsx
+- **Spezifikation**: Die Komponente `service-article.tsx` auf der Route `src/app/autoschluessel/schluesselbart-fraesen/page.tsx` wird durch konstruktion tiefgehender fach-faq-architekturen radikal verbessert, die semantische Autorität im Themenfeld etablieren. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_045: Erweiterung der semantischen Korpustiefe für service-article (Score: 6.76)
+- **Ziel-Route**: app/autoschluessel/marken/page.tsx
+- **Komponente**: components/autoschluessel/service-article.tsx
+- **Spezifikation**: Die Komponente `service-article.tsx` auf der Route `src/app/autoschluessel/marken/page.tsx` wird durch erweiterung der semantischen korpustiefe radikal verbessert, mittels Einbindung spezifischer Use-Cases. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_046: Darlegung technischer Prozessschritte für security-check-calculator (Score: 7.35)
+- **Ziel-Route**: app/tuer-und-schliesstechnik/page.tsx
+- **Komponente**: components/calculator/security-check-calculator.tsx
+- **Spezifikation**: Die Komponente `security-check-calculator.tsx` auf der Route `src/app/tuer-und-schliesstechnik/page.tsx` wird durch darlegung technischer prozessschritte radikal verbessert, als transparenter Beweis handwerklicher Exzellenz. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_047: Aufbau einer lexikalischen Autoritäts-Datenbank für field (Score: 9.76)
+- **Ziel-Route**: app/elektronische-zutrittsloesungen/konfigurator/page.tsx
+- **Komponente**: components/forms/field.tsx
+- **Spezifikation**: Die Komponente `field.tsx` auf der Route `src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx` wird durch aufbau einer lexikalischen autoritäts-datenbank radikal verbessert, die Long-Tail-Suchintentionen bedient. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_048: Integration strukturierter Vergleichsmatrizen für security-check-calculator (Score: 9.08)
+- **Ziel-Route**: app/sicherheitstechnik/[slug]/page.tsx
+- **Komponente**: components/calculator/security-check-calculator.tsx
+- **Spezifikation**: Die Komponente `security-check-calculator.tsx` auf der Route `src/app/sicherheitstechnik/[slug]/page.tsx` wird durch integration strukturierter vergleichsmatrizen radikal verbessert, zur Erleichterung rationaler Entscheidungsfindung. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_049: Darlegung technischer Prozessschritte für service-article (Score: 8.9)
+- **Ziel-Route**: app/standorte/page.tsx
+- **Komponente**: components/autoschluessel/service-article.tsx
+- **Spezifikation**: Die Komponente `service-article.tsx` auf der Route `src/app/standorte/page.tsx` wird durch darlegung technischer prozessschritte radikal verbessert, als transparenter Beweis handwerklicher Exzellenz. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+### IDEA_050: Integration von Experten-Wissensgraphen für bestaetigung (Score: 7.59)
+- **Ziel-Route**: app/bestellung/[id]/page.tsx
+- **Komponente**: components/autoschluessel/bestaetigung.tsx
+- **Spezifikation**: Die Komponente `bestaetigung.tsx` auf der Route `src/app/bestellung/[id]/page.tsx` wird durch integration von experten-wissensgraphen radikal verbessert, zur semantischen Vernetzung von Entitäten. Dies verankert semantische Autorität direkt auf der bestehenden Seite, ohne den Nutzer auf neue URLs umzuleiten.
+
+## KATEGORIE C: CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE
+### IDEA_051: Einbau von Verknappungs- und Social-Proof-Mechanismen für field (Score: 6.01)
+- **Ziel-Route**: app/service-und-termin/kontakt/page.tsx
+- **Komponente**: components/forms/field.tsx
+- **Spezifikation**: Die Komponente `field.tsx` auf der Route `src/app/service-und-termin/kontakt/page.tsx` wird durch einbau von verknappungs- und social-proof-mechanismen radikal verbessert, als Katalysator für zeitnahe Konversionen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_052: Etablierung psychologischer Vertrauensbeweise für key-kinds (Score: 6.01)
+- **Ziel-Route**: app/tuer-und-schliesstechnik/page.tsx
+- **Komponente**: components/autoschluessel/key-kinds.tsx
+- **Spezifikation**: Die Komponente `key-kinds.tsx` auf der Route `src/app/tuer-und-schliesstechnik/page.tsx` wird durch etablierung psychologischer vertrauensbeweise radikal verbessert, durch Integration verifizierter Mikro-Testimonials. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_053: Implementierung dynamischer Filter-Systeme für service-article (Score: 7.99)
+- **Ziel-Route**: app/sicherheitstechnik/[slug]/page.tsx
+- **Komponente**: components/autoschluessel/service-article.tsx
+- **Spezifikation**: Die Komponente `service-article.tsx` auf der Route `src/app/sicherheitstechnik/[slug]/page.tsx` wird durch implementierung dynamischer filter-systeme radikal verbessert, welche die Entdeckbarkeit exponentiell steigern. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_054: Einbau von Verknappungs- und Social-Proof-Mechanismen für preis-anzeige (Score: 7.03)
+- **Ziel-Route**: app/tuer-und-schliesstechnik/[slug]/page.tsx
+- **Komponente**: components/autoschluessel/preis-anzeige.tsx
+- **Spezifikation**: Die Komponente `preis-anzeige.tsx` auf der Route `src/app/tuer-und-schliesstechnik/[slug]/page.tsx` wird durch einbau von verknappungs- und social-proof-mechanismen radikal verbessert, als Katalysator für zeitnahe Konversionen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_055: Einbau von Verknappungs- und Social-Proof-Mechanismen für bestaetigung (Score: 7.83)
+- **Ziel-Route**: app/standorte/page.tsx
+- **Komponente**: components/autoschluessel/bestaetigung.tsx
+- **Spezifikation**: Die Komponente `bestaetigung.tsx` auf der Route `src/app/standorte/page.tsx` wird durch einbau von verknappungs- und social-proof-mechanismen radikal verbessert, als Katalysator für zeitnahe Konversionen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_056: Etablierung psychologischer Vertrauensbeweise für service-article (Score: 8.99)
+- **Ziel-Route**: app/autoschluessel/fahrzeugoeffnung/page.tsx
+- **Komponente**: components/autoschluessel/service-article.tsx
+- **Spezifikation**: Die Komponente `service-article.tsx` auf der Route `src/app/autoschluessel/fahrzeugoeffnung/page.tsx` wird durch etablierung psychologischer vertrauensbeweise radikal verbessert, durch Integration verifizierter Mikro-Testimonials. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_057: Einbau von Verknappungs- und Social-Proof-Mechanismen für termin-auswahl (Score: 9.0)
+- **Ziel-Route**: app/autoschluessel/schluesselbart-fraesen/page.tsx
+- **Komponente**: components/autoschluessel/termin-auswahl.tsx
+- **Spezifikation**: Die Komponente `termin-auswahl.tsx` auf der Route `src/app/autoschluessel/schluesselbart-fraesen/page.tsx` wird durch einbau von verknappungs- und social-proof-mechanismen radikal verbessert, als Katalysator für zeitnahe Konversionen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_058: Aufbau von ROI-Konfiguratoren für bestaetigung (Score: 9.9)
+- **Ziel-Route**: app/ratgeber/[slug]/page.tsx
+- **Komponente**: components/autoschluessel/bestaetigung.tsx
+- **Spezifikation**: Die Komponente `bestaetigung.tsx` auf der Route `src/app/ratgeber/[slug]/page.tsx` wird durch aufbau von roi-konfiguratoren radikal verbessert, zur Quantifizierung des langfristigen Kundenwerts. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_059: Einbau von Verknappungs- und Social-Proof-Mechanismen für controls (Score: 8.26)
+- **Ziel-Route**: app/warenkorb/page.tsx
+- **Komponente**: components/forms/controls.tsx
+- **Spezifikation**: Die Komponente `controls.tsx` auf der Route `src/app/warenkorb/page.tsx` wird durch einbau von verknappungs- und social-proof-mechanismen radikal verbessert, als Katalysator für zeitnahe Konversionen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_060: Entwicklung interaktiver Budgetrechner für option-card (Score: 7.44)
+- **Ziel-Route**: app/schliessanlagen/page.tsx
+- **Komponente**: components/forms/option-card.tsx
+- **Spezifikation**: Die Komponente `option-card.tsx` auf der Route `src/app/schliessanlagen/page.tsx` wird durch entwicklung interaktiver budgetrechner radikal verbessert, die asymmetrische Informationsverteilung auflösen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_061: Etablierung psychologischer Vertrauensbeweise für service-article (Score: 8.24)
+- **Ziel-Route**: app/autoschluessel/smart-key/page.tsx
+- **Komponente**: components/autoschluessel/service-article.tsx
+- **Spezifikation**: Die Komponente `service-article.tsx` auf der Route `src/app/autoschluessel/smart-key/page.tsx` wird durch etablierung psychologischer vertrauensbeweise radikal verbessert, durch Integration verifizierter Mikro-Testimonials. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_062: Aufbau von ROI-Konfiguratoren für termin-auswahl (Score: 9.87)
+- **Ziel-Route**: app/schluessel-nach-code/page.tsx
+- **Komponente**: components/autoschluessel/termin-auswahl.tsx
+- **Spezifikation**: Die Komponente `termin-auswahl.tsx` auf der Route `src/app/schluessel-nach-code/page.tsx` wird durch aufbau von roi-konfiguratoren radikal verbessert, zur Quantifizierung des langfristigen Kundenwerts. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_063: Einbau von Verknappungs- und Social-Proof-Mechanismen für option-card (Score: 9.08)
+- **Ziel-Route**: app/service-und-termin/kontakt/page.tsx
+- **Komponente**: components/forms/option-card.tsx
+- **Spezifikation**: Die Komponente `option-card.tsx` auf der Route `src/app/service-und-termin/kontakt/page.tsx` wird durch einbau von verknappungs- und social-proof-mechanismen radikal verbessert, als Katalysator für zeitnahe Konversionen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_064: Implementierung dynamischer Filter-Systeme für preis-anzeige (Score: 6.5)
+- **Ziel-Route**: app/service-und-termin/terminstatus/page.tsx
+- **Komponente**: components/autoschluessel/preis-anzeige.tsx
+- **Spezifikation**: Die Komponente `preis-anzeige.tsx` auf der Route `src/app/service-und-termin/terminstatus/page.tsx` wird durch implementierung dynamischer filter-systeme radikal verbessert, welche die Entdeckbarkeit exponentiell steigern. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_065: Aufbau von ROI-Konfiguratoren für security-check-calculator (Score: 9.38)
+- **Ziel-Route**: app/autoschluessel/marken/page.tsx
+- **Komponente**: components/calculator/security-check-calculator.tsx
+- **Spezifikation**: Die Komponente `security-check-calculator.tsx` auf der Route `src/app/autoschluessel/marken/page.tsx` wird durch aufbau von roi-konfiguratoren radikal verbessert, zur Quantifizierung des langfristigen Kundenwerts. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_066: Konstruktion von Gamification-Elementen für bestaetigung (Score: 7.63)
+- **Ziel-Route**: app/service-und-termin/vor-ort/page.tsx
+- **Komponente**: components/autoschluessel/bestaetigung.tsx
+- **Spezifikation**: Die Komponente `bestaetigung.tsx` auf der Route `src/app/service-und-termin/vor-ort/page.tsx` wird durch konstruktion von gamification-elementen radikal verbessert, zur Steigerung der intrinsischen Motivation. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_067: Konstruktion von Gamification-Elementen für system-erklaerung (Score: 6.98)
+- **Ziel-Route**: app/service-und-termin/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/service-und-termin/page.tsx` wird durch konstruktion von gamification-elementen radikal verbessert, zur Steigerung der intrinsischen Motivation. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_068: Implementierung dynamischer Filter-Systeme für preis-anzeige (Score: 9.29)
+- **Ziel-Route**: app/autoschluessel/nachmachen/page.tsx
+- **Komponente**: components/autoschluessel/preis-anzeige.tsx
+- **Spezifikation**: Die Komponente `preis-anzeige.tsx` auf der Route `src/app/autoschluessel/nachmachen/page.tsx` wird durch implementierung dynamischer filter-systeme radikal verbessert, welche die Entdeckbarkeit exponentiell steigern. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_069: Konstruktion von Gamification-Elementen für option-card (Score: 9.22)
+- **Ziel-Route**: app/sicherheitstechnik/sicherheitscheck/page.tsx
+- **Komponente**: components/forms/option-card.tsx
+- **Spezifikation**: Die Komponente `option-card.tsx` auf der Route `src/app/sicherheitstechnik/sicherheitscheck/page.tsx` wird durch konstruktion von gamification-elementen radikal verbessert, zur Steigerung der intrinsischen Motivation. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_070: Integration interaktiver Vorher-Nachher-Slider für vehicle-facts (Score: 8.59)
+- **Ziel-Route**: app/autoschluessel/marken/[make]/page.tsx
+- **Komponente**: components/autoschluessel/vehicle-facts.tsx
+- **Spezifikation**: Die Komponente `vehicle-facts.tsx` auf der Route `src/app/autoschluessel/marken/[make]/page.tsx` wird durch integration interaktiver vorher-nachher-slider radikal verbessert, als ultimativer visueller Vertrauensbeweis. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_071: Entwicklung interaktiver Budgetrechner für key-kinds (Score: 9.89)
+- **Ziel-Route**: app/gleichschliessende-zylinder/page.tsx
+- **Komponente**: components/autoschluessel/key-kinds.tsx
+- **Spezifikation**: Die Komponente `key-kinds.tsx` auf der Route `src/app/gleichschliessende-zylinder/page.tsx` wird durch entwicklung interaktiver budgetrechner radikal verbessert, die asymmetrische Informationsverteilung auflösen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_072: Etablierung psychologischer Vertrauensbeweise für flow-shell (Score: 7.29)
+- **Ziel-Route**: app/schluessel-nach-code/[slug]/page.tsx
+- **Komponente**: components/flow/flow-shell.tsx
+- **Spezifikation**: Die Komponente `flow-shell.tsx` auf der Route `src/app/schluessel-nach-code/[slug]/page.tsx` wird durch etablierung psychologischer vertrauensbeweise radikal verbessert, durch Integration verifizierter Mikro-Testimonials. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_073: Integration interaktiver Vorher-Nachher-Slider für service-budget-calculator (Score: 8.56)
+- **Ziel-Route**: app/service-und-termin/terminstatus/page.tsx
+- **Komponente**: components/service/service-budget-calculator.tsx
+- **Spezifikation**: Die Komponente `service-budget-calculator.tsx` auf der Route `src/app/service-und-termin/terminstatus/page.tsx` wird durch integration interaktiver vorher-nachher-slider radikal verbessert, als ultimativer visueller Vertrauensbeweis. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_074: Entwicklung interaktiver Budgetrechner für vehicle-facts (Score: 7.07)
+- **Ziel-Route**: app/autoschluessel/page.tsx
+- **Komponente**: components/autoschluessel/vehicle-facts.tsx
+- **Spezifikation**: Die Komponente `vehicle-facts.tsx` auf der Route `src/app/autoschluessel/page.tsx` wird durch entwicklung interaktiver budgetrechner radikal verbessert, die asymmetrische Informationsverteilung auflösen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+### IDEA_075: Entwicklung interaktiver Budgetrechner für vehicle-facts (Score: 7.61)
+- **Ziel-Route**: app/schliessanlagen/konfigurator/page.tsx
+- **Komponente**: components/autoschluessel/vehicle-facts.tsx
+- **Spezifikation**: Die Komponente `vehicle-facts.tsx` auf der Route `src/app/schliessanlagen/konfigurator/page.tsx` wird durch entwicklung interaktiver budgetrechner radikal verbessert, die asymmetrische Informationsverteilung auflösen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.
+
+## KATEGORIE D: EXTREME PERFORMANCE, ARCHITEKTUR & DX
+### IDEA_076: Harmonisierung via CSS Subgrid für system-erklaerung (Score: 9.59)
+- **Ziel-Route**: app/autoschluessel/smart-key/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/autoschluessel/smart-key/page.tsx` wird durch harmonisierung via css subgrid radikal verbessert, für ein mathematisch perfektes visuelles Equilibrium. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_077: Aufbau von AVIF-Hero-Pipelines für flow-shell (Score: 7.34)
+- **Ziel-Route**: app/schluessel-nach-vorlage/page.tsx
+- **Komponente**: components/flow/flow-shell.tsx
+- **Spezifikation**: Die Komponente `flow-shell.tsx` auf der Route `src/app/schluessel-nach-vorlage/page.tsx` wird durch aufbau von avif-hero-pipelines radikal verbessert, zur Maximierung der initialen Rendergeschwindigkeit. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_078: Harmonisierung via CSS Subgrid für key-kinds (Score: 6.62)
+- **Ziel-Route**: app/elektronische-zutrittsloesungen/konfigurator/page.tsx
+- **Komponente**: components/autoschluessel/key-kinds.tsx
+- **Spezifikation**: Die Komponente `key-kinds.tsx` auf der Route `src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx` wird durch harmonisierung via css subgrid radikal verbessert, für ein mathematisch perfektes visuelles Equilibrium. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_079: Aufbau von AVIF-Hero-Pipelines für flow-shell (Score: 6.9)
+- **Ziel-Route**: app/standorte/page.tsx
+- **Komponente**: components/flow/flow-shell.tsx
+- **Spezifikation**: Die Komponente `flow-shell.tsx` auf der Route `src/app/standorte/page.tsx` wird durch aufbau von avif-hero-pipelines radikal verbessert, zur Maximierung der initialen Rendergeschwindigkeit. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_080: Harmonisierung via CSS Subgrid für service-budget-calculator (Score: 6.67)
+- **Ziel-Route**: app/autoschluessel/funkschluessel/page.tsx
+- **Komponente**: components/service/service-budget-calculator.tsx
+- **Spezifikation**: Die Komponente `service-budget-calculator.tsx` auf der Route `src/app/autoschluessel/funkschluessel/page.tsx` wird durch harmonisierung via css subgrid radikal verbessert, für ein mathematisch perfektes visuelles Equilibrium. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_081: Refaktorierung mit Container Queries (@container) für service-article (Score: 6.28)
+- **Ziel-Route**: app/service-und-termin/page.tsx
+- **Komponente**: components/autoschluessel/service-article.tsx
+- **Spezifikation**: Die Komponente `service-article.tsx` auf der Route `src/app/service-und-termin/page.tsx` wird durch refaktorierung mit container queries (@container) radikal verbessert, als Abkehr vom starren Viewport-Dogma. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_082: Harmonisierung via CSS Subgrid für termin-auswahl (Score: 6.68)
+- **Ziel-Route**: app/autoschluessel/kopieren/page.tsx
+- **Komponente**: components/autoschluessel/termin-auswahl.tsx
+- **Spezifikation**: Die Komponente `termin-auswahl.tsx` auf der Route `src/app/autoschluessel/kopieren/page.tsx` wird durch harmonisierung via css subgrid radikal verbessert, für ein mathematisch perfektes visuelles Equilibrium. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_083: Refaktorierung mit Container Queries (@container) für service-article (Score: 6.32)
+- **Ziel-Route**: app/autoschluessel/page.tsx
+- **Komponente**: components/autoschluessel/service-article.tsx
+- **Spezifikation**: Die Komponente `service-article.tsx` auf der Route `src/app/autoschluessel/page.tsx` wird durch refaktorierung mit container queries (@container) radikal verbessert, als Abkehr vom starren Viewport-Dogma. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_084: Implementierung iterativer Hydration-Strategien für service-budget-calculator (Score: 9.22)
+- **Ziel-Route**: app/page.tsx
+- **Komponente**: components/service/service-budget-calculator.tsx
+- **Spezifikation**: Die Komponente `service-budget-calculator.tsx` auf der Route `src/app/page.tsx` wird durch implementierung iterativer hydration-strategien radikal verbessert, für eine sofortige Time-to-Interactive. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_085: Harmonisierung via CSS Subgrid für key-kinds (Score: 6.13)
+- **Ziel-Route**: app/kasse/page.tsx
+- **Komponente**: components/autoschluessel/key-kinds.tsx
+- **Spezifikation**: Die Komponente `key-kinds.tsx` auf der Route `src/app/kasse/page.tsx` wird durch harmonisierung via css subgrid radikal verbessert, für ein mathematisch perfektes visuelles Equilibrium. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_086: Optimierung für Zero-Shift Webfonts für service-article (Score: 6.65)
+- **Ziel-Route**: app/service-und-termin/vor-ort/page.tsx
+- **Komponente**: components/autoschluessel/service-article.tsx
+- **Spezifikation**: Die Komponente `service-article.tsx` auf der Route `src/app/service-und-termin/vor-ort/page.tsx` wird durch optimierung für zero-shift webfonts radikal verbessert, die CLS-Werte auf Null reduzieren. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_087: Reduktion der Main-Thread-Blocking-Zeiten für termin-auswahl (Score: 8.4)
+- **Ziel-Route**: app/bestellung/[id]/page.tsx
+- **Komponente**: components/autoschluessel/termin-auswahl.tsx
+- **Spezifikation**: Die Komponente `termin-auswahl.tsx` auf der Route `src/app/bestellung/[id]/page.tsx` wird durch reduktion der main-thread-blocking-zeiten radikal verbessert, durch konsequentes Offloading nicht-kritischer Skripte. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_088: Reduktion der Main-Thread-Blocking-Zeiten für vehicle-facts (Score: 7.33)
+- **Ziel-Route**: app/sicherheitstechnik/[slug]/page.tsx
+- **Komponente**: components/autoschluessel/vehicle-facts.tsx
+- **Spezifikation**: Die Komponente `vehicle-facts.tsx` auf der Route `src/app/sicherheitstechnik/[slug]/page.tsx` wird durch reduktion der main-thread-blocking-zeiten radikal verbessert, durch konsequentes Offloading nicht-kritischer Skripte. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_089: Aktivierung von Next.js 16 'use cache' Memoisierung für security-check-calculator (Score: 9.16)
+- **Ziel-Route**: app/service-und-termin/terminstatus/page.tsx
+- **Komponente**: components/calculator/security-check-calculator.tsx
+- **Spezifikation**: Die Komponente `security-check-calculator.tsx` auf der Route `src/app/service-und-termin/terminstatus/page.tsx` wird durch aktivierung von next.js 16 'use cache' memoisierung radikal verbessert, zur Eliminierung redundanter Rechenzyklen. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_090: Aufbau von AVIF-Hero-Pipelines für photo-upload (Score: 6.7)
+- **Ziel-Route**: app/schliessanlagen/page.tsx
+- **Komponente**: components/forms/photo-upload.tsx
+- **Spezifikation**: Die Komponente `photo-upload.tsx` auf der Route `src/app/schliessanlagen/page.tsx` wird durch aufbau von avif-hero-pipelines radikal verbessert, zur Maximierung der initialen Rendergeschwindigkeit. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_091: Aktivierung von Next.js 16 'use cache' Memoisierung für system-erklaerung (Score: 8.51)
+- **Ziel-Route**: app/autoschluessel/funkschluessel/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/autoschluessel/funkschluessel/page.tsx` wird durch aktivierung von next.js 16 'use cache' memoisierung radikal verbessert, zur Eliminierung redundanter Rechenzyklen. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_092: Optimierung für Zero-Shift Webfonts für bestaetigung (Score: 6.9)
+- **Ziel-Route**: app/ratgeber/page.tsx
+- **Komponente**: components/autoschluessel/bestaetigung.tsx
+- **Spezifikation**: Die Komponente `bestaetigung.tsx` auf der Route `src/app/ratgeber/page.tsx` wird durch optimierung für zero-shift webfonts radikal verbessert, die CLS-Werte auf Null reduzieren. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_093: Implementierung iterativer Hydration-Strategien für termin-auswahl (Score: 9.05)
+- **Ziel-Route**: app/schluessel-nach-code/page.tsx
+- **Komponente**: components/autoschluessel/termin-auswahl.tsx
+- **Spezifikation**: Die Komponente `termin-auswahl.tsx` auf der Route `src/app/schluessel-nach-code/page.tsx` wird durch implementierung iterativer hydration-strategien radikal verbessert, für eine sofortige Time-to-Interactive. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_094: Harmonisierung via CSS Subgrid für vehicle-facts (Score: 8.86)
+- **Ziel-Route**: app/autoschluessel/marken/page.tsx
+- **Komponente**: components/autoschluessel/vehicle-facts.tsx
+- **Spezifikation**: Die Komponente `vehicle-facts.tsx` auf der Route `src/app/autoschluessel/marken/page.tsx` wird durch harmonisierung via css subgrid radikal verbessert, für ein mathematisch perfektes visuelles Equilibrium. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_095: Optimierung für Zero-Shift Webfonts für service-budget-calculator (Score: 9.42)
+- **Ziel-Route**: app/kasse/page.tsx
+- **Komponente**: components/calculator/service-budget-calculator.tsx
+- **Spezifikation**: Die Komponente `service-budget-calculator.tsx` auf der Route `src/app/kasse/page.tsx` wird durch optimierung für zero-shift webfonts radikal verbessert, die CLS-Werte auf Null reduzieren. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_096: Harmonisierung via CSS Subgrid für security-check-calculator (Score: 9.02)
+- **Ziel-Route**: app/sicherheitstechnik/[slug]/page.tsx
+- **Komponente**: components/calculator/security-check-calculator.tsx
+- **Spezifikation**: Die Komponente `security-check-calculator.tsx` auf der Route `src/app/sicherheitstechnik/[slug]/page.tsx` wird durch harmonisierung via css subgrid radikal verbessert, für ein mathematisch perfektes visuelles Equilibrium. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_097: Refaktorierung mit Container Queries (@container) für controls (Score: 8.3)
+- **Ziel-Route**: app/schliessanlagen/konfigurator/page.tsx
+- **Komponente**: components/forms/controls.tsx
+- **Spezifikation**: Die Komponente `controls.tsx` auf der Route `src/app/schliessanlagen/konfigurator/page.tsx` wird durch refaktorierung mit container queries (@container) radikal verbessert, als Abkehr vom starren Viewport-Dogma. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_098: Optimierung für Zero-Shift Webfonts für option-card (Score: 7.17)
+- **Ziel-Route**: app/ratgeber/[slug]/page.tsx
+- **Komponente**: components/forms/option-card.tsx
+- **Spezifikation**: Die Komponente `option-card.tsx` auf der Route `src/app/ratgeber/[slug]/page.tsx` wird durch optimierung für zero-shift webfonts radikal verbessert, die CLS-Werte auf Null reduzieren. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_099: Harmonisierung via CSS Subgrid für system-erklaerung (Score: 9.44)
+- **Ziel-Route**: app/ratgeber/page.tsx
+- **Komponente**: components/schliessanlagen/system-erklaerung.tsx
+- **Spezifikation**: Die Komponente `system-erklaerung.tsx` auf der Route `src/app/ratgeber/page.tsx` wird durch harmonisierung via css subgrid radikal verbessert, für ein mathematisch perfektes visuelles Equilibrium. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+
+### IDEA_100: Reduktion der Main-Thread-Blocking-Zeiten für key-kinds (Score: 7.13)
+- **Ziel-Route**: app/elektronische-zutrittsloesungen/konfigurator/page.tsx
+- **Komponente**: components/autoschluessel/key-kinds.tsx
+- **Spezifikation**: Die Komponente `key-kinds.tsx` auf der Route `src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx` wird durch reduktion der main-thread-blocking-zeiten radikal verbessert, durch konsequentes Offloading nicht-kritischer Skripte. Diese architektonische Härtung optimiert Core Web Vitals und DX, streng fokussiert auf tiefgehende Performance.
+

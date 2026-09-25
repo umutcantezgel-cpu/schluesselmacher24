@@ -1,28 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2024-03-20T12:00:00Z",
-  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "generated_at": "2026-09-25T08:39:09.315569Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten.",
   "top_ideas": [
     {
       "rank": 1,
-      "idea_id": "IDEA_051",
+      "idea_id": "IDEA_058",
       "category": "CONVERSION_AND_TOOLS",
-      "target_existing_route": "src/app/schliessanlagen/page.tsx",
-      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
-      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
-      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
-      "score": 9.65,
+      "target_existing_route": "app/ratgeber/[slug]/page.tsx",
+      "target_component_file": "components/autoschluessel/bestaetigung.tsx",
+      "title": "Aufbau von ROI-Konfiguratoren f\u00fcr bestaetigung",
+      "specification": "Die Komponente `bestaetigung.tsx` auf der Route `src/app/ratgeber/[slug]/page.tsx` wird durch aufbau von roi-konfiguratoren radikal verbessert, zur Quantifizierung des langfristigen Kundenwerts. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.",
+      "score": 9.9,
       "status": "READY_FOR_EXPANSION"
     },
     {
       "rank": 2,
-      "idea_id": "IDEA_002",
-      "category": "AWWWARDS_KINETICS",
-      "target_existing_route": "src/app/page.tsx",
-      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
-      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
-      "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
-      "score": 9.45,
+      "idea_id": "IDEA_071",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/gleichschliessende-zylinder/page.tsx",
+      "target_component_file": "components/autoschluessel/key-kinds.tsx",
+      "title": "Entwicklung interaktiver Budgetrechner f\u00fcr key-kinds",
+      "specification": "Die Komponente `key-kinds.tsx` auf der Route `src/app/gleichschliessende-zylinder/page.tsx` wird durch entwicklung interaktiver budgetrechner radikal verbessert, die asymmetrische Informationsverteilung aufl\u00f6sen. Die Integration nativer React 19 Server Actions verwandelt passive Rezeption in messbare Interaktion.",
+      "score": 9.89,
       "status": "READY_FOR_EXPANSION"
     }
   ]
