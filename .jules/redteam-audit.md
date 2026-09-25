@@ -1,16 +1,16 @@
 # Red-Team Audit Report (JC-PHILOSOPHER-REDTEAM-v1)
 
 ## 1. Silent Logic Death & Interaktions-Fallen
-- `src/app/page.tsx`: Einstiegsknöpfe rufen zwar Seiten auf, könnten aber mit Pre-Fetching / progressiver Hinführung erweitert werden. Keine offensichtlich toten Formulare.
-- Fehlende dedizierte State-Visualisierungen bei interaktiven Elementen, die Ladezeiten verursachen könnten (wird im Calculator adressiert).
-- `src/app/schliessanlagen/page.tsx`: Akkordeon lädt aus JSON, jedoch fehlt eine dedizierte ROI/Budget-Berechnung für Geschäftskunden.
+- `src/components/forms/controls.tsx`: Formular-Elemente weisen teilweise keine expliziten Loading-States auf, wodurch bei asynchronen Operationen das visuelle Feedback (Silent Logic Death) fehlt.
+- `src/app/autoschluessel/anfrage/page.tsx`: Fehlendes Error-Boundary oder Skeleton-Loading führt zu abrupten Layout-Shifts während der Datenladung.
 
 ## 2. Hydration Mismatches & SSR-Konflikte
-- Keine direkten Verstöße gegen Window/Document-Zugriffe ohne useEffect gefunden, aber Potenzial für dynamische Client-Komponenten (Rechner, Grids) die server-side gesichert werden müssen.
+- Potenzielle Hydration-Fallen in `src/components/layout/mobile-action-bar.tsx`, wenn auf `window.innerWidth` ohne Mounting-Guard zugegriffen wird.
 
-## 3. TypeScript & Data Structure
-- `satisfies Graph` für JSON-LD wird verwendet.
+## 3. TypeScript-Schwächen
+- Unvollständige Interfaces in Formularkomponenten. Typisierungen für Server Action Payloads könnten strenger formuliert werden, um maskierte Typfehler zu vermeiden.
 
-## 4. Design & Kinetik (Swiss Light Doctrine)
-- Die OKLCH-Farbräume sind etabliert, aber die kinetische Präsenz (Subgrids, mikro-haptische Animationen) auf den Start- und Serviceseiten ist ausbaubar, um Awwwards-Level zu erreichen.
-- Es gibt Raum für ein "Spatial Bento Grid" auf der Homepage.
+## 4. Core Web Vitals & Visual Design
+- Chromatische Reinheit (Swiss Light Mode): Einige UI-Komponenten nutzen harte Hex-Werte statt reiner OKLCH-Tokens.
+- LCP (Largest Contentful Paint) auf `src/app/page.tsx` kann durch AVIF-Hero-Pipelines optimiert werden.
+- Kinetische Disziplin: Zu viele unkoordinierte CSS-Transitions in Bento-Grids.
