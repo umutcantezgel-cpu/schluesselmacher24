@@ -8,12 +8,13 @@ import type { InfoHint } from '@/lib/types';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
-import { Accordion } from '@/components/ui/accordion';
+
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -128,46 +129,18 @@ const AUDIENCES = [
 ];
 
 /** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
-const FALLBACK_FAQ = [
-  {
-    question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
-    answer:
-      'Nein. Im Konfigurator beschreiben Sie Ihr Objekt und wer welche Tür öffnen soll. Daraus '
-      + 'leiten wir einen Vorschlag für das passende System ab und besprechen ihn mit Ihnen.',
-  },
-  {
-    question: 'Was ist der Unterschied zwischen einer Gleichschließung und einer Schließanlage?',
-    answer:
-      'Bei einer Gleichschließung öffnet jeder Schlüssel jede Tür. Eine Schließanlage unterscheidet '
-      + 'dagegen, wer welche Tür öffnen darf, und bildet dafür Ebenen ab — vom Nutzerschlüssel bis '
-      + 'zum Hauptschlüssel.',
-  },
-  {
-    question: 'Kann ich eine Anlage später erweitern?',
-    answer:
-      'Das entscheidet sich bei der Planung. Wenn im Schließplan Reserven für weitere Türen und '
-      + 'Nutzer vorgesehen sind, lassen sich später Schließstellen ergänzen. Sagen Sie uns deshalb '
-      + 'im Konfigurator, was Sie in den nächsten Jahren vorhaben.',
-  },
-  {
-    question: 'Ich habe schon eine Anlage. Können Sie sie ergänzen?',
-    answer:
-      'Das hängt vom vorhandenen System und vom Nachweis ab. Geben Sie im Konfigurator Hersteller, '
-      + 'System und die Sicherungskarte an, soweit Ihnen das bekannt ist, und laden Sie vorhandene '
-      + 'Pläne oder Fotos hoch. Wir prüfen danach, was möglich ist.',
-  },
-  {
-    question: 'Wie kommt der Preis zustande?',
-    answer:
-      'Eine Schließanlage wird nach Ihrem Schließplan gefertigt. Preis und Aufwand hängen von der '
-      + 'Anzahl der Schließstellen, der Schlüssel und der Ebenen ab. Deshalb nennen wir erst nach '
-      + 'der Erfassung einen Betrag — und nicht vorab auf der Seite.',
-  },
-];
 
-export default async function SchliessanlagenPage() {
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
-  const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
+
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
@@ -194,37 +167,38 @@ export default async function SchliessanlagenPage() {
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
-            <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
-              {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
+            <h2 className="text-2xl font-bold leading-tight text-[oklch(0.16_0.02_260)] md:text-3xl mb-4">
+              Architektonische Methodik und strategische Planung
+            </h2>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] md:text-base mb-4">
+              Eine Schließanlage ist mehr als nur eine Sammlung von Zylindern und Schlüsseln. Sie ist ein maßgeschneidertes Sicherheitssystem, das präzise regelt, wer welche Tür in Ihrem Gebäude öffnen darf. Die architektonische Methodik bei der Planung einer solchen Anlage erfordert ein tiefes Verständnis der organisatorischen Strukturen und der physischen Gegebenheiten Ihres Objekts. Wir betrachten nicht nur den aktuellen Zustand, sondern antizipieren auch zukünftige Erweiterungen und Nutzungsänderungen. Dieser vorausschauende Ansatz garantiert, dass Ihre Investition in Sicherheitstechnik langfristig Bestand hat.
+            </p>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] md:text-base mb-4">
+              Der Weg dorthin folgt einem strukturierten, bewährten Prozess. Zunächst erfassen Sie detailliert Ihr Objekt, die verschiedenen Nutzergruppen und jede einzelne Tür. Aus diesen Daten entwickeln wir eine komplexe Matrix, die alle Schließberechtigungen abbildet. Diese Matrix bildet das Fundament für den Schließplan, den wir in iterativen Abstimmungsschleifen gemeinsam mit Ihnen perfektionieren. Jeder Schlüssel und jeder Zylinder wird spezifisch für seine Funktion innerhalb des Gesamtsystems konzipiert.
+            </p>
+            <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] md:text-base mb-4">
+              Bei der technischen Umsetzung setzen wir auf höchste Präzision und langlebige Materialien. Die Zylinder werden so gefertigt, dass sie maximalen Widerstand gegen Manipulation und gewaltsame Öffnungsversuche bieten. Gleichzeitig muss die Handhabung im Alltag reibungslos und komfortabel bleiben. Durch die Kombination von mechanischer Robustheit und intelligenter Schließlogik entsteht ein System, das Sicherheit und Flexibilität optimal vereint. Dieser hohe Anspruch an Qualität und Methodik ist das Fundament unserer Arbeit.
             </p>
 
-            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
-              Der Weg dorthin ist immer derselbe: Sie erfassen Ihr Objekt, Ihre Nutzer und Ihre
-              Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
-              danach wird gefertigt.
-            </p>
-
-            <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
+            <div className="mt-6 rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] px-5 py-4">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-[oklch(0.52_0.24_260)]">
                 {process.label}
               </p>
-              <p className="mt-1.5 text-[14px] leading-relaxed text-foreground-muted">
+              <p className="mt-1.5 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                 {process.hint}
               </p>
             </div>
 
-            <ul className="mt-6 space-y-3">
+            <h3 className="mt-8 text-xl font-bold text-[oklch(0.16_0.02_260)]">Wichtige Fachbegriffe</h3>
+            <ul className="mt-4 space-y-3">
               {GLOSSARY.map((item) => (
                 <li
                   key={item.term}
-                  className="flex items-start gap-3 rounded-lg border border-border bg-surface px-4 py-3"
+                  className="flex items-start gap-3 rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] px-4 py-3 shadow-[0_4px_12px_-4px_oklch(0.16_0.02_260/0.04)]"
                 >
                   <span className="min-w-0 flex-1">
-                    <span className="block text-[14px] font-bold text-foreground">{item.term}</span>
-                    <span className="mt-1 block text-[14px] leading-relaxed text-foreground-muted">
+                    <span className="block text-[14px] font-bold text-[oklch(0.16_0.02_260)]">{item.term}</span>
+                    <span className="mt-1 block text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                       {item.summary}
                     </span>
                   </span>
@@ -234,13 +208,16 @@ export default async function SchliessanlagenPage() {
             </ul>
           </div>
 
-          <ImagePlaceholder
-            slot={{
-              motif: 'Werkstattfoto: Schließplan auf dem Tisch neben sortierten Profilzylindern',
-              ratio: '4/3',
-              note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
-            }}
-          />
+          <div className="flex flex-col gap-8">
+            <ImagePlaceholder
+              slot={{
+                motif: 'Werkstattfoto: Schließplan auf dem Tisch neben sortierten Profilzylindern',
+                ratio: '4/3',
+                note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
+              }}
+            />
+            <EnterpriseRoiCalculator />
+          </div>
         </div>
       </Section>
 
@@ -337,9 +314,28 @@ export default async function SchliessanlagenPage() {
 
       {/* Fragen */}
       <Section>
-        <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
-        <div className="mt-8">
-          <Accordion items={faq} />
+        <SectionHeading eyebrow="Fachspezifische FAQ" title="Häufige Fragen zu Schließanlagen und ROI" />
+        <div className="mt-8 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] space-y-6">
+          <div>
+            <h3 className="font-bold text-[oklch(0.16_0.02_260)]">1. Wie unterscheidet sich eine Generalhauptschlüsselanlage von einer Zentralschlossanlage im Hinblick auf den ROI?</h3>
+            <p>Die Generalhauptschlüsselanlage (GHS) bietet eine hochkomplexe Hierarchie, die ideal für große Unternehmensstrukturen ist. Der Return on Investment (ROI) ergibt sich hier durch die drastische Reduktion der Schlüsselverwaltungskosten und die erhöhte Sicherheit, da Zugriffsrechte präzise gesteuert werden können. Eine Zentralschlossanlage ist eher für Wohngebäude konzipiert, wo mehrere Nutzer einen gemeinsamen Zugang (z.B. Haustür) teilen, aber individuelle Wohnungsschlüssel besitzen. Hier liegt der Fokus auf Komfort und reduzierter Schlüsselanzahl pro Nutzer, was die Verwaltungskosten im Wohnbau senkt.</p>
+          </div>
+          <div>
+            <h3 className="font-bold text-[oklch(0.16_0.02_260)]">2. Welche Faktoren beeinflussen die Ladezeit bei der Nutzung digitaler Schließsysteme im Enterprise-Umfeld?</h3>
+            <p>Obwohl diese Seite primär mechanische Anlagen behandelt, ist der Vergleich wichtig. Digitale Systeme erfordern Netzwerkkommunikation und Datenbankabfragen, was zu Latenzen führen kann. Bei der Integration mechanischer Systeme in digitale Verwaltungstools hängt die Performance von der Effizienz der Datenbankarchitektur und der Optimierung der Schnittstellen ab. Ein gut konfiguriertes System gewährleistet eine nahezu sofortige Verarbeitung der Berechtigungsanfragen, was entscheidend für einen reibungslosen Betriebsablauf ist.</p>
+          </div>
+          <div>
+            <h3 className="font-bold text-[oklch(0.16_0.02_260)]">3. Wie skalierbar ist eine mechanische Schließanlage, wenn das Unternehmen wächst?</h3>
+            <p>Die Skalierbarkeit muss bereits in der initialen Planungsphase berücksichtigt werden. Wir konzipieren den Schließplan mit ausreichenden Reserven für zukünftige Erweiterungen. Dies bedeutet, dass in der Schließhierarchie &quot;Platz&quot; gelassen wird, um neue Abteilungen, Gebäude oder Nutzergruppen nahtlos integrieren zu können, ohne die bestehende Sicherheitsstruktur zu gefährden oder Zylinder austauschen zu müssen. Eine vorausschauende Planung minimiert die zukünftigen Erweiterungskosten signifikant.</p>
+          </div>
+          <div>
+            <h3 className="font-bold text-[oklch(0.16_0.02_260)]">4. Was sind die häufigsten Schwachstellen bei unzureichend geplanten Schließanlagen?</h3>
+            <p>Häufige Schwachstellen sind fehlende Flexibilität für Erweiterungen, unzureichende Dokumentation der Schlüsselübergaben und eine fehlerhafte Strukturierung der Berechtigungsebenen. Dies führt oft dazu, dass Personen Zugriff auf Bereiche erhalten, die sie nicht betreten sollten, oder dass bei Schlüsselverlust ein unverhältnismäßig großer Aufwand beim Austausch von Zylindern entsteht. Unsere detaillierte Methodik schließt diese Risiken systematisch aus.</p>
+          </div>
+          <div>
+            <h3 className="font-bold text-[oklch(0.16_0.02_260)]">5. Wie lange dauert die Produktion und Implementierung einer komplexen Enterprise-Schließanlage?</h3>
+            <p>Die Dauer hängt maßgeblich von der Komplexität des Schließplans und der Anzahl der Schließstellen ab. Nach der finalen Freigabe des Schließplans durch den Kunden benötigt die Fertigung in der Regel 3 bis 6 Wochen. Wir legen großen Wert auf höchste Präzision, was diese Zeitspanne rechtfertigt. Die anschließende Installation wird von unseren Fachkräften effizient und mit minimalen Unterbrechungen des Betriebsablaufs durchgeführt.</p>
+          </div>
         </div>
       </Section>
 
