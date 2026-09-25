@@ -14,5 +14,12 @@
   "src/app/standorte/[city]/page.tsx": {
     "status": "VERIFIZIERT_FROZEN",
     "hash": "c1c409c035d53749881480d8983e5d782055ab3f40dfecbcb0cbfffe4d688819"
-  }
+  },
+  "locked_modules": [
+    {
+      "path": "src/app/tuer-und-schliesstechnik/page.tsx",
+      "hash": "cdfe6ce388c9d893a9ac88d286a02f4f205ade836f403f2cd9d4306197a259c9",
+      "status": "VERIFIZIERT_FROZEN"
+    }
+  ]
 }
