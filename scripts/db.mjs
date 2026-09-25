@@ -116,7 +116,10 @@ function usesExternalDatabase() {
 const command = process.argv[2] ?? 'status';
 
 try {
-  if (command === 'ensure' && usesExternalDatabase()) {
+  if (command === 'ensure' && process.env.VERCEL) {
+    // Auf Vercel gibt es kein lokales Postgres (initdb läuft nicht als root).
+    console.log('Vercel: lokales Postgres wird nicht gestartet.');
+  } else if (command === 'ensure' && usesExternalDatabase()) {
     console.log('Externe Datenbank (DATABASE_URL) — lokales Postgres wird nicht gestartet.');
   } else if (command === 'start' || command === 'ensure') await start();
   else if (command === 'stop') stop();
