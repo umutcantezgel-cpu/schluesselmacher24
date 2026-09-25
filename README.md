@@ -47,3 +47,6 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+
+## Recent Updates
+- **Enterprise ROI Calculator**: Added to the Schließanlagen page to calculate long-term savings and return on investment based on company-specific parameters using React 19 Server Actions and useOptimistic.
