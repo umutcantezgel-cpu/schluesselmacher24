@@ -23,16 +23,17 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
-import { JsonLd, faqSchema } from '@/components/seo/json-ld';
+import { JsonLd, faqSchema, webpageSchema } from '@/components/seo/json-ld';
+import { getSiteUrl } from '@/lib/site-url';
 
 const ROUTE = 'tuer-und-schliesstechnik';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Tür- und Schließtechnik: Sicherheit vom Zylinder bis zum Mehrfachschloss',
+    title: page?.seo?.title ?? 'Tür- und Schließtechnik: Sicherheit vom Zylinder bis zum Mehrfachschloss',
     description:
-      page?.seo.description
+      page?.seo?.description
       ?? 'Ganzheitliche Tür- und Schließtechnik. Beratung, Montage und Reparatur von Zylindern, Einsteckschlössern, Mehrfachverriegelungen und Beschlägen. Erhöhen Sie Ihre Sicherheit durch fachgerechte Türtechnik.',
     alternates: { canonical: `/${ROUTE}` },
   };
@@ -118,6 +119,9 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
     getServicePages(ROUTE),
   ]);
 
+  const pageUrl = `${getSiteUrl()}/${ROUTE}`;
+  const pageTitle = page?.seo?.title ?? 'Tür- und Schließtechnik: Sicherheit vom Zylinder bis zum Mehrfachschloss';
+
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
   return (
@@ -127,6 +131,8 @@ export default async function TuerUndSchliesstechnikPage(props: Props) {
       className="bg-[oklch(0.988_0.002_260)] text-[oklch(0.32_0.02_260)] font-sans antialiased selection:bg-[oklch(0.52_0.24_260/0.2)] selection:text-[oklch(0.16_0.02_260)]"
     >
       <JsonLd data={faqSchema(EXPERT_FAQ.map((g) => ({ question: g.question, answer: g.answer })))} />
+      <JsonLd data={webpageSchema(pageUrl, pageTitle)} />
+
 
       <PageHeader
         eyebrow="Leistungsbereich"
