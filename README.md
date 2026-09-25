@@ -47,3 +47,4 @@ vorbereitet, aber ohne Zugangsdaten inaktiv.
 ## Architecture Matrix
 
 See `.jules/architecture-matrix.md` for the full routing architecture.
+- **Enterprise ROI-Kalkulator**: Ein interaktiver Schieberegler für Schließanlagen (React 19 Server Actions).

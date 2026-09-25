@@ -12,6 +12,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
 
@@ -165,7 +166,14 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -189,6 +197,110 @@ export default async function SchliessanlagenPage() {
           </>
         }
       />
+
+
+{/* Architektonische Methodik */}
+<Section tone="muted">
+  <div className="grid gap-8 lg:grid-cols-2">
+    <div>
+      <h2 className="text-3xl font-bold text-foreground">Architektonische Methodik</h2>
+      <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+        Die Konzeption einer modernen Schließanlage erfordert mehr als das bloße Aneinanderreihen von Schließzylindern. Sie verlangt ein tiefgreifendes Verständnis der architektonischen Gegebenheiten, der operativen Prozesse und der zukünftigen Skalierbarkeit des Gebäudes. Unsere Methodik basiert auf einem systematischen, phasengetriebenen Ansatz, der höchste Sicherheit mit administrativer Effizienz vereint.
+      </p>
+      <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+        Im Zentrum steht die Entwicklung eines redundanzfreien Schließplans. Dieser fungiert als architektonische Matrix, die räumliche Zonen, Berechtigungsebenen und physische Zugangspunkte in einem logischen Modell abbildet. Durch die Anwendung topologischer Prinzipien stellen wir sicher, dass komplexe Hierarchien – von der Generalhauptschlüsselebene bis zum Individualzugang – präzise abgebildet und verwaltet werden können.
+      </p>
+      <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+        Darüber hinaus integrieren wir zukunftssichere Erweiterungspuffer. Die Dynamik moderner Organisationen erfordert Schließsysteme, die mitwachsen können, ohne ihre strukturelle Integrität zu verlieren. Jede von uns geplante Anlage ist so konzipiert, dass räumliche Expansionen oder organisatorische Umstrukturierungen mit minimalem Hardware-Eingriff und maximaler Kosteneffizienz realisiert werden können.
+      </p>
+      <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+        Die Auswahl der Schließzylinder selbst erfolgt nach strengen Kriterien hinsichtlich Manipulationsschutz, Verschleißresistenz und Zertifizierungsstandards (z. B. VdS-Klassen, DIN EN 1303). Wir setzen konsequent auf Präzisionsmechanik, die nicht nur den aktuellen Sicherheitsanforderungen entspricht, sondern diesen oft voraus ist. Der Fokus liegt dabei stets auf einem optimalen Gleichgewicht zwischen initialer Investition und langfristigem Return on Investment (ROI), insbesondere im Enterprise-Umfeld.
+      </p>
+    </div>
+    <div>
+      <EnterpriseROICalculator />
+    </div>
+  </div>
+</Section>
+
+{/* Performance Tiers */}
+<Section>
+  <h2 className="text-3xl font-bold text-foreground mb-8">Performance Tiers und Vergleichsmatrix</h2>
+  <p className="text-[15px] leading-relaxed text-foreground-muted mb-6">
+    Die nachfolgende Matrix bietet einen fundierten Vergleich unserer Architektur-Level, von der grundlegenden Gleichschließung bis hin zur hochkomplexen Generalhauptschlüsselanlage. Sie dient als Entscheidungsgrundlage für Facility Manager, Architekten und Bauherren, um die optimale Lösung für ihr spezifisches Anforderungsprofil zu identifizieren.
+  </p>
+  <div className="overflow-x-auto">
+    <table className="w-full text-left text-sm text-foreground-muted">
+      <thead className="bg-surface-muted text-foreground">
+        <tr>
+          <th className="px-6 py-4 font-bold border-b border-border">Merkmal</th>
+          <th className="px-6 py-4 font-bold border-b border-border">Zentralschloss (Z)</th>
+          <th className="px-6 py-4 font-bold border-b border-border">Hauptschlüssel (HS)</th>
+          <th className="px-6 py-4 font-bold border-b border-border">Generalhauptschlüssel (GHS)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className="border-b border-border">
+          <td className="px-6 py-4">Hierarchische Ebenen</td>
+          <td className="px-6 py-4">Flach (Eine Ebene)</td>
+          <td className="px-6 py-4">Zweistufig</td>
+          <td className="px-6 py-4">Mehrstufig (Komplex)</td>
+        </tr>
+        <tr className="border-b border-border bg-surface-muted/50">
+          <td className="px-6 py-4">Skalierbarkeit</td>
+          <td className="px-6 py-4">Gering</td>
+          <td className="px-6 py-4">Mittel</td>
+          <td className="px-6 py-4">Hoch (Enterprise)</td>
+        </tr>
+        <tr className="border-b border-border">
+          <td className="px-6 py-4">Idealer Einsatzbereich</td>
+          <td className="px-6 py-4">Mehrfamilienhäuser</td>
+          <td className="px-6 py-4">Kleine bis mittlere Gewerbe</td>
+          <td className="px-6 py-4">Konzerne, Universitäten, Kliniken</td>
+        </tr>
+        <tr className="border-b border-border bg-surface-muted/50">
+          <td className="px-6 py-4">Administrative Komplexität</td>
+          <td className="px-6 py-4">Minimal</td>
+          <td className="px-6 py-4">Moderat</td>
+          <td className="px-6 py-4">Hoch (Softwaregestützt)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p className="mt-6 text-[15px] leading-relaxed text-foreground-muted">
+    Die Wahl des richtigen Systems ist entscheidend für die langfristige Sicherheit und Betriebseffizienz. Während eine Z-Anlage durch Einfachheit besticht, bietet eine GHS-Anlage die notwendige Granularität für komplexe Organisationsstrukturen. Unsere Experten analysieren Ihre Anforderungen detailliert und erarbeiten ein Konzept, das Ihre Sicherheitsziele wirtschaftlich optimal umsetzt.
+  </p>
+  <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+    Dabei berücksichtigen wir auch hybride Ansätze, die mechanische Grundsicherung mit elektronischer Flexibilität an neuralgischen Punkten kombinieren. Dies ermöglicht eine dynamische Rechtevergabe in hochfrequentierten Bereichen, ohne die Robustheit der mechanischen Kernarchitektur zu kompromittieren.
+  </p>
+</Section>
+
+{/* Erweitertes FAQ */}
+<Section tone="muted">
+  <h2 className="text-3xl font-bold text-foreground mb-8">Umfassender Experten-FAQ</h2>
+  <div className="space-y-6">
+    <div>
+      <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">1. Wie unterscheidet sich eine HS-Anlage technisch von einer GHS-Anlage?</h3>
+      <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">Eine Hauptschlüsselanlage (HS) operiert auf einem zweistufigen Hierarchiemodell: Ein übergeordneter Schlüssel schließt alle Zylinder, während die Einzelschlüssel nur spezifische, ihnen zugeordnete Schließzylinder betätigen können. Eine Generalhauptschlüsselanlage (GHS) hingegen implementiert eine mehrstufige Matrix. Hier gibt es neben dem GHS, der alles schließt, Gruppenhauptschlüssel (für Abteilungen oder Gebäudeabschnitte) und Einzelschlüssel. Die GHS-Anlage erfordert eine wesentlich komplexere mechanische Kodierung im Zylinderkern (oft über zusätzliche Stiftreihen oder Profilrippen) und zwingend eine präzise mathematische Schließplanberechnung, um die notwendige Kombinatorik sicher abzubilden.</p>
+    </div>
+    <div>
+      <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">2. Welche kryptografischen oder mechanischen Sicherheitsmerkmale bieten moderne Schließzylinder?</h3>
+      <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">Hochsicherheitszylinder verfügen über einen integralen Bohr-, Zieh- und Schlagschutz. Dies wird durch den Einsatz von gehärteten Stahlstiften, Hartmetallstegen und komplexen Schlüsselprofilen (parazentrische Profile) erreicht. Zylinder der VdS-Klassen BZ oder BZ+ bieten zudem einen erweiterten Abreißschutz. Darüber hinaus verwenden moderne Systeme im Enterprise-Sektor oft Kopierschutzmaßnahmen wie bewegliche Elemente (z. B. Rollen oder Kugeln) im Schlüsselreiden, die durch den Zylinder abgefragt werden. Diese multidimensionalen Abfragen machen ein unautorisiertes Kopieren durch 3D-Druck oder klassisches Fräsen nahezu unmöglich und sichern die organisatorische Hoheit über die Schließanlage.</p>
+    </div>
+    <div>
+      <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">3. Wie wird die Skalierbarkeit einer Schließanlage während der initialen Planungsphase sichergestellt?</h3>
+      <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">Die Skalierbarkeit wird durch die Allokation von sogenannten &apos;Erweiterungspuffern&apos; oder &apos;Reservegruppen&apos; im Schließplan gewährleistet. Bei der Berechnung der Matrix lassen wir bewusst Permutationen ungenutzt, die logisch an bestehende Strukturen anschließen. Dies erfordert eine vorausschauende Analyse des Gebäudes – beispielsweise die Berücksichtigung zukünftiger Anbauten oder veränderter Nutzungsstrukturen. Ein professionell geplanter Schließplan kann so um 20% bis 30% erweitert werden, ohne dass ein Austausch der bestehenden Zentralzylinder (z.B. Außentüren) notwendig wird. Dies schützt das initiale Investment maßgeblich.</p>
+    </div>
+    <div>
+      <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">4. Was sind die kritischen Risikofaktoren bei der Verwaltung komplexer Schließpläne?</h3>
+      <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">Das größte Risiko in der Administration einer Schließanlage liegt im Verlust der organisatorischen Kontrolle über ausgegebene Schlüssel (Schlüsselverlust) und der mangelhaften Dokumentation von Berechtigungsänderungen. Mechanische Anlagen besitzen keine Protokollierungsfunktion oder Revokations-Fähigkeit (Echtzeit-Sperrung). Ein verlorener GHS oder Hauptschlüssel kompromittiert potenziell die Sicherheit großer Gebäudeteile und kann einen kostenintensiven Austausch ganzer Gruppen erforderlich machen. Daher ist eine strikte, softwaregestützte Schlüsselverwaltung, die Ausgabeprotokolle, Rückgabetermine und Haftungserklärungen zentral erfasst, im Enterprise-Kontext absolut unerlässlich.</p>
+    </div>
+    <div>
+      <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">5. In welchen Szenarien ist eine hybride Architektur (Mechanik + Elektronik) ökonomisch sinnvoll?</h3>
+      <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">Eine hybride Architektur entfaltet ihren optimalen ROI in Umgebungen mit hoher Fluktuation bei gleichzeitiger Anforderung an physische Robustheit. Neuralgische Punkte – wie Haupteingänge, Serverräume oder Bereiche mit temporären Zugängen (z.B. Fremdfirmen) – werden mit mechatronischen oder rein elektronischen Komponenten (Wandleser, elektronische Zylinder) ausgestattet. Dies erlaubt eine zeitliche und räumliche Flexibilität sowie eine sofortige Sperrung bei Schlüsselverlust. Für Bereiche mit statischen Berechtigungen (z.B. Bürotüren der Stammbelegschaft, Technikräume) bleibt die mechanische Lösung aufgrund der geringeren Anschaffungs- und Wartungskosten die überlegene Wahl. Diese Dual-Architektur optimiert das Verhältnis aus Investitionskosten (CAPEX) und laufenden Betriebskosten (OPEX).</p>
+    </div>
+  </div>
+</Section>
 
       {/* Einstieg und Begriffe */}
       <Section tight>
