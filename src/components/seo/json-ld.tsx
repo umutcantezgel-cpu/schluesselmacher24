@@ -305,3 +305,35 @@ export function breadcrumbSchema(crumbs: Array<{ href: string; label: string }>,
     ]
   } satisfies Graph;
 }
+
+
+
+export function webpageSchema(pageUrl: string, pageTitle: string): Graph {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${siteUrl}/#organization`,
+        name: 'SCHLÜSSELMACHER24',
+        url: siteUrl,
+        logo: `${siteUrl}/logo.png`
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${siteUrl}/#website`,
+        url: siteUrl,
+        name: 'SCHLÜSSELMACHER24',
+        publisher: { '@id': `${siteUrl}/#organization` }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${pageUrl}/#webpage`,
+        url: pageUrl,
+        name: pageTitle,
+        isPartOf: { '@id': `${siteUrl}/#website` },
+        about: { '@id': `${siteUrl}/#organization` }
+      }
+    ]
+  } satisfies Graph;
+}
