@@ -1,0 +1,13 @@
+{
+  "timestamp": "2024-05-24T12:00:00Z",
+  "top_2_selected": [
+    {
+      "id": "CODE_BENTO_01",
+      "route": "app/(site)/schluessel-nach-code/page.tsx",
+      "focus": "Interaktiver Code-Finder Bento",
+      "theme": "Schlüssel nach Code",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ],
+  "agent": "JC-REDTEAM-AUDITOR-v1"
+}
