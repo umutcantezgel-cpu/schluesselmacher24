@@ -1,0 +1,10 @@
+{
+  "routes": [
+    {
+      "route": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "content_expansion_topics": ["architectural methodology", "performance tiers", "faq"],
+      "interactive_module": "CodeAnalysisCalculator"
+    }
+  ]
+}
