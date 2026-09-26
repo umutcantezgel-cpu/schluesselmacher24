@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "path": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "top_2_selected": [
+        "IDEA_001",
+        "IDEA_002"
+      ]
+    }
+  ]
+}

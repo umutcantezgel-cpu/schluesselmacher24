@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+- Latest Architecture Component: Service Budget Calculator introduced via Revolution Builder. Last Audited: 2026-09-26T14:14:25.648Z
