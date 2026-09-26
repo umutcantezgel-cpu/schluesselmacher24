@@ -1,0 +1,53 @@
+# Architektur-Matrix (Ist-Soll-Zustand)
+
+| URL Pfad | Source File | Status | Ist-Wortanzahl | Ziel-Wortanzahl | Interaktives Modul | Schema Status | CWV Status |
+|---|---|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | PENDING | 90 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING | 528 | 950 | ReadingProgress | Pending | Pending |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING | 363 | 950 | ReadingProgress | Pending | Pending |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING | 304 | 950 | CarModelFilter | Pending | Pending |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING | 160 | 950 | CarModelFilter | Pending | Pending |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING | 152 | 950 | CarModelFilter | Pending | Pending |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING | 182 | 950 | CarModelFilter | Pending | Pending |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING | 692 | 950 | CarModelFilter | Pending | Pending |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING | 446 | 950 | CarModelFilter | Pending | Pending |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING | 340 | 950 | CarModelFilter | Pending | Pending |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING | 78 | 950 | CarModelFilter | Pending | Pending |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING | 1322 | 1522 | CarModelFilter | Pending | Pending |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING | 190 | 950 | CarModelFilter | Pending | Pending |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING | 183 | 950 | CarModelFilter | Pending | Pending |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING | 221 | 950 | CarModelFilter | Pending | Pending |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING | 816 | 1016 | EnterpriseRoiCalculator | Pending | Pending |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING | 196 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING | 1833 | 2033 | EnterpriseRoiCalculator | Pending | Pending |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING | 152 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING | 1130 | 1330 | EnterpriseRoiCalculator | Pending | Pending |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING | 123 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| / | src/app/(site)/page.tsx | PENDING | 422 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING | 157 | 950 | ReadingProgress | Pending | Pending |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING | 91 | 950 | ReadingProgress | Pending | Pending |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING | 376 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING | 192 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING | 640 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING | 204 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING | 317 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING | 334 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING | 208 | 950 | SystemPlanner | Pending | Pending |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING | 1348 | 1548 | SystemPlanner | Pending | Pending |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING | 394 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING | 241 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING | 90 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING | 1170 | 1370 | EnterpriseRoiCalculator | Pending | Pending |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING | 70 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING | 156 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING | 1097 | 1297 | EnterpriseRoiCalculator | Pending | Pending |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING | 42 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING | 379 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING | 326 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING | 479 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING | 146 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING | 139 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING | 83 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING | 213 | 950 | EnterpriseRoiCalculator | Pending | Pending |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING | 1140 | 1340 | EnterpriseRoiCalculator | Pending | Pending |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING | 147 | 950 | EnterpriseRoiCalculator | Pending | Pending |
