@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Transformation Blueprint
+The transformation blueprint has been successfully generated and can be found in:
+- `.jules/revolution-plan.json`
+- `.jules/architecture-matrix.md`
