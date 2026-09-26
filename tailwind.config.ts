@@ -23,22 +23,22 @@ const config = {
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
-        background: 'hsl(var(--background))',
+        background: 'var(--background)',
         surface: {
-          DEFAULT: 'hsl(var(--surface))',
+          DEFAULT: 'var(--surface)',
           muted: 'hsl(var(--surface-muted))',
           sunken: 'hsl(var(--surface-sunken))',
           ink: 'hsl(var(--surface-ink))',
         },
         foreground: {
-          DEFAULT: 'hsl(var(--foreground))',
-          muted: 'hsl(var(--foreground-muted))',
+          DEFAULT: 'var(--foreground)',
+          muted: 'var(--foreground-muted)',
           subtle: 'hsl(var(--foreground-subtle))',
           inverse: 'hsl(var(--foreground-inverse))',
         },
         border: {
           DEFAULT: 'hsl(var(--border))',
-          strong: 'hsl(var(--border-strong))',
+          strong: 'var(--border-strong)',
         },
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
