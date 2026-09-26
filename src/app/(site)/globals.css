@@ -14,58 +14,58 @@
 @layer base {
   :root {
     /* Flächen */
-    --background: 214 45% 98.6%;
-    --surface: 0 0% 100%;
-    --surface-muted: 214 50% 96.6%;
-    --surface-sunken: 214 36% 92.5%;
-    --surface-ink: 222 36% 16%;
+    --background: oklch(0.988 0.002 260);
+    --surface: oklch(0.968 0.004 260);
+    --surface-muted: oklch(0.948 0.006 260);
+    --surface-sunken: oklch(0.928 0.006 260);
+    --surface-ink: oklch(0.25 0.02 260);
 
     /* Text */
-    --foreground: 222 34% 15%;
-    --foreground-muted: 219 16% 37%;
-    --foreground-subtle: 217 12% 45%;
-    --foreground-inverse: 214 45% 98.6%;
+    --foreground: oklch(0.16 0.02 260);
+    --foreground-muted: oklch(0.32 0.02 260);
+    --foreground-subtle: oklch(0.38 0.02 260);
+    --foreground-inverse: oklch(0.988 0.002 260);
 
     /* Linien */
-    --border: 214 32% 89%;
-    --border-strong: 214 22% 77%;
-    --input: 214 28% 84%;
-    --ring: 214 86% 50%;
+    --border: oklch(0.890 0.008 260 / 0.55);
+    --border-strong: oklch(0.790 0.008 260 / 0.55);
+    --input: oklch(0.890 0.008 260 / 0.55);
+    --ring: oklch(0.60 0.12 260);
 
     /* Primär — klares Blau */
-    --primary: 214 80% 40%;
-    --primary-hover: 214 82% 33%;
-    --primary-soft: 214 100% 96.5%;
-    --primary-foreground: 0 0% 100%;
+    --primary: oklch(0.51 0.14 260);
+    --primary-hover: oklch(0.44 0.14 260);
+    --primary-soft: oklch(0.96 0.02 260);
+    --primary-foreground: oklch(1 0 0);
 
     /* Sekundär */
-    --secondary: 214 50% 94%;
-    --secondary-foreground: 222 34% 15%;
+    --secondary: oklch(0.95 0.02 260);
+    --secondary-foreground: oklch(0.24 0.03 260);
 
     /* Akzent — Technisch-Teal, sparsam für Bestätigungen */
-    --accent: 188 52% 30%;
-    --accent-soft: 188 44% 94%;
-    --accent-foreground: 0 0% 100%;
+    --accent: oklch(0.43 0.08 214);
+    --accent-soft: oklch(0.94 0.02 214);
+    --accent-foreground: oklch(1 0 0);
 
     /* Funktionsfarben — nur für Status, nie als Markenfläche */
-    --success: 152 48% 30%;
-    --success-soft: 152 44% 94%;
-    --warning: 32 80% 33%;
-    --warning-soft: 38 70% 95%;
-    --danger: 0 58% 42%;
-    --danger-soft: 0 60% 96%;
-    --info: 214 80% 40%;
-    --info-soft: 214 100% 96.5%;
+    --success: oklch(0.43 0.1 154);
+    --success-soft: oklch(0.94 0.02 154);
+    --warning: oklch(0.53 0.14 54);
+    --warning-soft: oklch(0.95 0.03 84);
+    --danger: oklch(0.5 0.15 29);
+    --danger-soft: oklch(0.96 0.03 29);
+    --info: oklch(0.51 0.14 260);
+    --info-soft: oklch(0.96 0.02 260);
 
     /* Karten / Popover */
-    --card: 0 0% 100%;
-    --card-foreground: 222 34% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 34% 15%;
-    --muted: 214 50% 94%;
-    --muted-foreground: 219 16% 37%;
-    --destructive: 0 58% 42%;
-    --destructive-foreground: 0 0% 100%;
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.24 0.03 260);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.24 0.03 260);
+    --muted: oklch(0.95 0.02 260);
+    --muted-foreground: oklch(0.44 0.04 260);
+    --destructive: oklch(0.5 0.15 29);
+    --destructive-foreground: oklch(1 0 0);
 
     --radius: 0.75rem;
 
@@ -82,10 +82,12 @@
   }
 
   html {
+    overflow-x: clip;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
+    overflow-x: clip;
     @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -236,7 +238,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .sm24-draw {
     stroke-dasharray: 1;
-    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.65, 0, 0.35, 1)
+    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.16, 1, 0.3, 1)
       var(--sm24-delay, 0s) both;
   }
 
