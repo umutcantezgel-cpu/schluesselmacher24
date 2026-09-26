@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Aktuelle Erweiterungen (Builder Phase)
+- **Sicherheitstechnik Budget-Kalkulator**: Ein interaktives Tool zur Kostenabschätzung in der Sicherheitstechnik-Route (`components/calculator/sicherheit-rechner.tsx`).
