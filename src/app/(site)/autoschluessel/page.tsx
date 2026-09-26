@@ -16,6 +16,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { LexicalGlossary } from '@/components/glossary/lexical-glossary';
+
 
 const ROUTE = 'autoschluessel';
 
@@ -331,6 +333,106 @@ export default async function AutoschluesselHubPage() {
               note: 'Eigene Aufnahme aus dem Betrieb. Kein Stockfoto.',
             }}
           />
+        </div>
+      </Section>
+
+
+      {/* Architektonische Methodik und Glossar (Expansion) */}
+      <Section>
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Präzision in jedem Schritt: Autoschlüssel als Sicherheitssystem"
+          lead="Unser Ansatz zur Fertigung und Programmierung von Autoschlüsseln basiert auf einer präzisen architektonischen Methodik. Jeder Schlüssel, sei es ein mechanischer Bart oder ein komplexer Smart-Key, wird als integriertes System betrachtet."
+        />
+        <div className="mt-8 prose-sm24 max-w-none space-y-6">
+          <p>
+            Die Phasen unserer Service-Implementierung sind strikt definiert und garantieren ein Höchstmaß an Zuverlässigkeit und Funktionalität. Wir verstehen, dass ein Autoschlüssel heute nicht mehr nur ein Stück Metall ist, sondern ein hochkomplexer Zugangsberechtigungsträger, der tief in die Fahrzeugelektronik integriert ist.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">1. Die Phasen unserer Service-Implementierung</h3>
+          <ul className="list-disc pl-5 space-y-2">
+            <li><strong>Initiierung und Bedarfsanalyse:</strong> Wir analysieren die spezifischen Anforderungen Ihres Fahrzeugs. Dies beinhaltet die Identifikation des Transponder-Typs, die Bewertung der mechanischen Eigenschaften des Schließzylinders und die Prüfung der elektronischen Schnittstellen (OBD2).</li>
+            <li><strong>Projektierung und Lösungsdesign:</strong> Basierend auf der Analyse wählen wir die optimalen Rohlinge und mechatronischen Komponenten aus. Bei Wegfahrsperren planen wir den präzisen Programmierungsablauf, der je nach Fahrzeuggeneration von einfachen Klonvorgängen bis hin zu komplexen EEPROM-Manipulationen reicht.</li>
+            <li><strong>Präzise Fertigung und Vorkonfiguration:</strong> Der mechanische Bart wird mit computergesteuerten CNC-Fräsen (z.B. Silca) mit absoluter Präzision nach Originalmaßen gefertigt. Dies minimiert den Verschleiß im Schloss und garantiert eine leichtgängige Bedienung, die der eines fabrikneuen Schlüssels entspricht.</li>
+            <li><strong>Fachgerechte Montage und Integration:</strong> Elektronische Komponenten werden sicher in das Gehäuse integriert. Die Programmierung erfolgt unter Einhaltung strengster Sicherheitsstandards. Wir stellen sicher, dass die Kommunikation zwischen Transponder, Lesespule und Motorsteuergerät (ECU) fehlerfrei abläuft.</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">2. Strukturierte Leistungsstufen und Vergleichsmatrizen</h3>
+          <p>
+             Wir bieten verschiedene Leistungsstufen an, um den unterschiedlichen Anforderungen, Fahrzeuggenerationen und Budgets unserer Kunden gerecht zu werden. Unsere strukturierte Vergleichsmatrix hilft Ihnen bei der Orientierung und zeigt transparent die technologischen Unterschiede auf:
+          </p>
+          <div className="table-scroll mt-6">
+            <table className="w-full min-w-[40rem] border-collapse text-[15px]">
+              <thead>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <th className="py-2.5 pr-6 text-left font-semibold text-[oklch(0.16_0.02_260)]">Leistungsstufe</th>
+                  <th className="py-2.5 pr-6 text-left font-semibold text-[oklch(0.16_0.02_260)]">System-Beschreibung</th>
+                  <th className="py-2.5 pr-6 text-left font-semibold text-[oklch(0.16_0.02_260)]">Mechanische Präzision</th>
+                  <th className="py-2.5 pr-6 text-left font-semibold text-[oklch(0.16_0.02_260)]">Elektronische Integration</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-border/50">
+                  <td className="py-2.5 pr-6 font-medium">Standard-Kopie (Basic)</td>
+                  <td className="py-2.5 pr-6 text-foreground-muted">Präzise mechanische Kopie für einfache Schließsysteme.</td>
+                  <td className="py-2.5 pr-6 text-foreground-muted">CNC-gefräst nach Vorlage</td>
+                  <td className="py-2.5 text-foreground-muted">Keine bzw. einfacher Festcode-Klon</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2.5 pr-6 font-medium">Erweiterte Prog. (Advanced)</td>
+                  <td className="py-2.5 pr-6 text-foreground-muted">Inklusive Anlernen der Wegfahrsperre über Diagnosegeräte.</td>
+                  <td className="py-2.5 pr-6 text-foreground-muted">CNC-gefräst nach Herstellercode</td>
+                  <td className="py-2.5 text-foreground-muted">OBD2-Programmierung (Krypto-Transponder)</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2.5 pr-6 font-medium">Premium Smart-Key (Pro)</td>
+                  <td className="py-2.5 pr-6 text-foreground-muted">Vollständige Keyless-Go-Integration und Komfortfunktionen.</td>
+                  <td className="py-2.5 pr-6 text-foreground-muted">Laser-gefräst (Innenbahnprofil)</td>
+                  <td className="py-2.5 text-foreground-muted">Hochsichere Krypto-Transponder (AES-128)</td>
+                </tr>
+                <tr>
+                  <td className="py-2.5 pr-6 font-medium">All-Keys-Lost (Emergency)</td>
+                  <td className="py-2.5 pr-6 text-foreground-muted">Wiederherstellung bei komplettem Schlüsselverlust.</td>
+                  <td className="py-2.5 pr-6 text-foreground-muted">Nach Schloss-Decodierung gefräst</td>
+                  <td className="py-2.5 text-foreground-muted">Direkter EEPROM/MCU Zugriff erforderlich</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">3. Häufig gestellte Fragen (FAQ) zur Autoschlüssel-Methodik</h3>
+          <div className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-foreground">Was genau ist eine Wegfahrsperre und wie wird sie elektronisch programmiert?</h4>
+              <p className="mt-1">Die Wegfahrsperre (WFS) ist ein kritisches elektronisches Sicherheitssystem, das unbefugtes Starten des Motors verhindert. Im Schlüsselkopf befindet sich ein passiver RFID-Transponder, der bei Annäherung an das Zündschloss von der dortigen Lesespule energetisiert wird. Er sendet daraufhin einen kryptografischen Code an das Motorsteuergerät (ECU) oder das Kombiinstrument. Die Programmierung dieses Codes erfolgt in der Regel über die OBD2-Diagnoseschnittstelle des Fahrzeugs. Hierbei autorisieren wir mit speziellen Diagnosetestern den neuen Transpondercode im Steuergerät, sodass dieser fortan als berechtigt erkannt wird.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground">Warum kann ich meinen modernen Schlüssel nicht einfach im Baumarkt nachmachen lassen?</h4>
+              <p className="mt-1">Moderne Autoschlüssel sind mechatronische Hochsicherheitssysteme. Während herkömmliche Schlüsseldienste oder Baumärkte oft nur in der Lage sind, den rein mechanischen Teil (den Schlüsselbart) zu kopieren, fehlt ihnen die Ausrüstung und das Know-how für die komplexe Elektronik. Ohne die korrekte Programmierung des integrierten Krypto-Transponders (wie z.B. Megamos Crypto, Texas Crypto oder NXP Hitag) wird das Fahrzeug den Startvorgang blockieren. Das Steuergerät erwartet eine spezifische kryptografische Antwort, die ein unprogrammierter Transponder nicht liefern kann.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground">Was ist das &quot;All Keys Lost&quot; (AKL) Szenario und warum ist es so aufwendig?</h4>
+              <p className="mt-1">In einem &quot;All Keys Lost&quot;-Szenario (alle Originalschlüssel sind verloren gegangen) haben wir keinen Master-Schlüssel mehr, von dem wir Daten kopieren oder clonen könnten. Wir müssen daher &quot;von Null&quot; anfangen. Mechanisch bedeutet das, dass wir den Schließzylinder der Fahrertür decodieren müssen, um die Fräsdaten (den Bitting-Code) zu ermitteln. Elektronisch müssen wir oft direkt auf Speicherbausteine (EEPROM oder MCU) im Motorsteuergerät oder im Wegfahrsperren-Modul zugreifen. Dies erfordert das Ausbauen der Steuergeräte, mikroelektronische Eingriffe (Löten) und das Auslesen der Hex-Dumps, um daraus die nötigen Kryptodaten für die Generierung neuer Transponder zu extrahieren.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground">Wie stellen Sie die absolute Qualität und Passgenauigkeit der gefrästen Schlüsselbärte sicher?</h4>
+              <p className="mt-1">Wir verlassen uns nicht auf einfaches &quot;Abpausen&quot; verschlissener Schlüssel. Stattdessen nutzen wir das Verfahren &quot;Fräsen nach Code&quot;. Wenn ein alter Schlüssel stark abgenutzt ist, decodieren wir die noch vorhandenen Einschnitte, ermitteln den originalen Herstellercode und fräsen den neuen Schlüsselbart auf unseren hochpräzisen, computergesteuerten CNC-Maschinen (z.B. von Silca oder Keyline) exakt auf die originalen Werksmaße zurück. So erhalten Sie einen Schlüssel, der mechanisch den Spezifikationen eines fabrikneuen Schlüssels entspricht und hakeliges Schließen verhindert.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground">Welche technologischen Standards kommen bei modernen Keyless-Go Systemen zum Einsatz?</h4>
+              <p className="mt-1">Keyless-Go (Smart Keys) Systeme nutzen eine Kombination aus Niederfrequenz- (LF) und Hochfrequenz- (HF) Kommunikation. Antennen im Fahrzeug senden LF-Signale aus, die den Smart Key in der Nähe wecken. Der Key antwortet über HF (oft 433 MHz oder 868 MHz in Europa) mit einem verschlüsselten Rolling-Code (häufig basierend auf AES-128 oder proprietären Algorithmen), um das Fahrzeug zu entriegeln und den Startknopf (Push-to-Start) freizugeben. Die Programmierung dieser hochsicheren Systeme erfordert nicht nur die Anpassung der Wegfahrsperre, sondern auch die Synchronisation der Komfortelektronik-Module.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground">Gibt es Risiken für die Fahrzeugelektronik bei der Schlüsselprogrammierung?</h4>
+              <p className="mt-1">Wenn die Programmierung von ungeschultem Personal mit minderwertigen Diagnose-Tools durchgeführt wird, besteht ein erhebliches Risiko, Steuergeräte zu &quot;bricken&quot; oder Flash-Speicher zu korrumpieren. Wir verwenden ausschließlich lizensierte, hochprofessionelle Diagnose- und Programmierhardware und verfügen über tiefgreifendes Wissen der fahrzeugspezifischen Bussysteme (CAN-Bus, LIN-Bus). Zudem führen wir vor jedem tiefen Eingriff in die Elektronik Spannungsstabilisierungen durch und sichern, wo möglich, Flash- und EEPROM-Daten, um einen maximalen Sicherheitsstandard zu garantieren.</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="muted" id="glossar">
+        <div className="mx-auto max-w-4xl">
+          <LexicalGlossary />
         </div>
       </Section>
 
