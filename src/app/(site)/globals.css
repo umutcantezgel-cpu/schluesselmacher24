@@ -14,58 +14,58 @@
 @layer base {
   :root {
     /* Flächen */
-    --background: 214 45% 98.6%;
-    --surface: 0 0% 100%;
-    --surface-muted: 214 50% 96.6%;
-    --surface-sunken: 214 36% 92.5%;
-    --surface-ink: 222 36% 16%;
+    --background: oklch(0.988 0.002 260);
+    --surface: oklch(0.968 0.004 260);
+    --surface-muted: hsl(214 50% 96.6%);
+    --surface-sunken: hsl(214 36% 92.5%);
+    --surface-ink: hsl(222 36% 16%);
 
     /* Text */
-    --foreground: 222 34% 15%;
-    --foreground-muted: 219 16% 37%;
-    --foreground-subtle: 217 12% 45%;
-    --foreground-inverse: 214 45% 98.6%;
+    --foreground: oklch(0.16 0.02 260);
+    --foreground-muted: oklch(0.32 0.02 260);
+    --foreground-subtle: hsl(217 12% 45%);
+    --foreground-inverse: hsl(214 45% 98.6%);
 
     /* Linien */
-    --border: 214 32% 89%;
-    --border-strong: 214 22% 77%;
-    --input: 214 28% 84%;
-    --ring: 214 86% 50%;
+    --border: oklch(0.890 0.008 260 / 0.55);
+    --border-strong: hsl(214 22% 77%);
+    --input: hsl(214 28% 84%);
+    --ring: hsl(214 86% 50%);
 
     /* Primär — klares Blau */
-    --primary: 214 80% 40%;
-    --primary-hover: 214 82% 33%;
-    --primary-soft: 214 100% 96.5%;
-    --primary-foreground: 0 0% 100%;
+    --primary: hsl(214 80% 40%);
+    --primary-hover: hsl(214 82% 33%);
+    --primary-soft: hsl(214 100% 96.5%);
+    --primary-foreground: hsl(0 0% 100%);
 
     /* Sekundär */
-    --secondary: 214 50% 94%;
-    --secondary-foreground: 222 34% 15%;
+    --secondary: hsl(214 50% 94%);
+    --secondary-foreground: hsl(222 34% 15%);
 
     /* Akzent — Technisch-Teal, sparsam für Bestätigungen */
-    --accent: 188 52% 30%;
-    --accent-soft: 188 44% 94%;
-    --accent-foreground: 0 0% 100%;
+    --accent: hsl(188 52% 30%);
+    --accent-soft: hsl(188 44% 94%);
+    --accent-foreground: hsl(0 0% 100%);
 
     /* Funktionsfarben — nur für Status, nie als Markenfläche */
-    --success: 152 48% 30%;
-    --success-soft: 152 44% 94%;
-    --warning: 32 80% 33%;
-    --warning-soft: 38 70% 95%;
-    --danger: 0 58% 42%;
-    --danger-soft: 0 60% 96%;
-    --info: 214 80% 40%;
-    --info-soft: 214 100% 96.5%;
+    --success: hsl(152 48% 30%);
+    --success-soft: hsl(152 44% 94%);
+    --warning: hsl(32 80% 33%);
+    --warning-soft: hsl(38 70% 95%);
+    --danger: hsl(0 58% 42%);
+    --danger-soft: hsl(0 60% 96%);
+    --info: hsl(214 80% 40%);
+    --info-soft: hsl(214 100% 96.5%);
 
     /* Karten / Popover */
-    --card: 0 0% 100%;
-    --card-foreground: 222 34% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 34% 15%;
-    --muted: 214 50% 94%;
-    --muted-foreground: 219 16% 37%;
-    --destructive: 0 58% 42%;
-    --destructive-foreground: 0 0% 100%;
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(222 34% 15%);
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(222 34% 15%);
+    --muted: hsl(214 50% 94%);
+    --muted-foreground: hsl(219 16% 37%);
+    --destructive: hsl(0 58% 42%);
+    --destructive-foreground: hsl(0 0% 100%);
 
     --radius: 0.75rem;
 
@@ -86,7 +86,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased overflow-x-clip;
     text-rendering: optimizeLegibility;
   }
 
@@ -100,7 +100,7 @@
   }
 
   /* Sichtbarer Fokus — Pflicht für Tastaturbedienung */
-  :focus-visible {
+  *:focus-visible {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 
@@ -236,7 +236,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .sm24-draw {
     stroke-dasharray: 1;
-    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.65, 0, 0.35, 1)
+    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.16, 1, 0.3, 1)
       var(--sm24-delay, 0s) both;
   }
 
@@ -253,12 +253,12 @@
   }
 
   .sm24-float {
-    animation: sm24-float var(--sm24-duration, 6s) ease-in-out var(--sm24-delay, 0s) infinite;
+    animation: sm24-float var(--sm24-duration, 6s) cubic-bezier(0.16, 1, 0.3, 1) var(--sm24-delay, 0s) infinite;
   }
 
   .sm24-dash {
     stroke-dasharray: 6 6;
-    animation: sm24-dash var(--sm24-duration, 1.6s) linear infinite;
+    animation: sm24-dash var(--sm24-duration, 1.6s) cubic-bezier(0.16, 1, 0.3, 1) infinite;
   }
 }
 

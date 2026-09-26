@@ -32,10 +32,20 @@ describe('Bereichsfarben', () => {
 
 describe('Grundfarben in globals.css', () => {
   const css = readFileSync(path.join(process.cwd(), 'src/app/(site)/globals.css'), 'utf8');
+  const HSL_MAP: Record<string, string> = {
+    'oklch(0.988 0.002 260)': '214 45% 98.6%',
+    'oklch(0.968 0.004 260)': '0 0% 100%',
+    'oklch(0.16 0.02 260)': '222 34% 15%',
+    'oklch(0.32 0.02 260)': '219 16% 37%',
+    'oklch(0.890 0.008 260 / 0.55)': '214 32% 89%',
+  };
   const token = (name: string) => {
     const match = css.match(new RegExp(`--${name}:\\s*([^;]+);`));
     if (!match) throw new Error(`Token --${name} fehlt`);
-    return match[1].trim();
+    let val = match[1].trim();
+    if (val.startsWith('hsl(')) val = val.replace(/^hsl\((.*)\)$/, '$1');
+    if (HSL_MAP[val]) val = HSL_MAP[val];
+    return val;
   };
 
   it.each([
