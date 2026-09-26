@@ -1,0 +1,109 @@
+# DIE PHILOSOPHISCHE 100-IDEEN-MATRIX
+
+## KATEGORIE A: AWWWARDS-KINETIK & TAKTILE INTERAKTION (IDEEN 1 BIS 25)
+- IDEA_001: **Federgedämpfte Hover-Physik für Feature-Karten** - Angewandt auf `src/app/(site)/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_002: **Cursor-Tracking Spotlight für Hero-Sektion** - Angewandt auf `src/app/(site)/sicherheitstechnik/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_003: **Scroll-getriebene SVG-Pfade für Navigations-Links** - Angewandt auf `src/app/(site)/autoschluessel/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_004: **Magnetische Button-Ränder für CTA-Buttons** - Angewandt auf `src/app/(site)/schluessel-nach-code/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_005: **3D-Tilt Parallax für Bild-Platzhalter** - Angewandt auf `src/app/(site)/elektronische-zutrittsloesungen/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_006: **Subtile Blur-Fades für Feature-Karten** - Angewandt auf `src/app/(site)/sicherheitstechnik/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_007: **Mikro-Haptik via CSS für Hero-Sektion** - Angewandt auf `src/app/(site)/autoschluessel/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_008: **Kinetische Typografie für Navigations-Links** - Angewandt auf `src/app/(site)/schluessel-nach-code/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_009: **Fluid-Grid Morphing für CTA-Buttons** - Angewandt auf `src/app/(site)/elektronische-zutrittsloesungen/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_010: **Eingabe-Feedback Ringe für Bild-Platzhalter** - Angewandt auf `src/app/(site)/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_011: **Federgedämpfte Hover-Physik für Hero-Sektion** - Angewandt auf `src/app/(site)/autoschluessel/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_012: **Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex** - Überführung der bestehenden Feature-Karten auf der Startseite (`src/app/(site)/page.tsx`) in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.
+- IDEA_013: **Scroll-getriebene SVG-Pfade für CTA-Buttons** - Angewandt auf `src/app/(site)/elektronische-zutrittsloesungen/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_014: **Magnetische Button-Ränder für Bild-Platzhalter** - Angewandt auf `src/app/(site)/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_015: **3D-Tilt Parallax für Feature-Karten** - Angewandt auf `src/app/(site)/sicherheitstechnik/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_016: **Subtile Blur-Fades für Hero-Sektion** - Angewandt auf `src/app/(site)/schluessel-nach-code/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_017: **Mikro-Haptik via CSS für Navigations-Links** - Angewandt auf `src/app/(site)/elektronische-zutrittsloesungen/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_018: **Kinetische Typografie für CTA-Buttons** - Angewandt auf `src/app/(site)/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_019: **Fluid-Grid Morphing für Bild-Platzhalter** - Angewandt auf `src/app/(site)/sicherheitstechnik/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_020: **Eingabe-Feedback Ringe für Feature-Karten** - Angewandt auf `src/app/(site)/autoschluessel/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_021: **Federgedämpfte Hover-Physik für Navigations-Links** - Angewandt auf `src/app/(site)/elektronische-zutrittsloesungen/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_022: **Cursor-Tracking Spotlight für CTA-Buttons** - Angewandt auf `src/app/(site)/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_023: **Scroll-getriebene SVG-Pfade für Bild-Platzhalter** - Angewandt auf `src/app/(site)/sicherheitstechnik/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_024: **Magnetische Button-Ränder für Feature-Karten** - Angewandt auf `src/app/(site)/autoschluessel/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+- IDEA_025: **3D-Tilt Parallax für Hero-Sektion** - Angewandt auf `src/app/(site)/schluessel-nach-code/page.tsx`. Implementiere reaktive OKLCH-Zustände.
+
+## KATEGORIE B: SEMANTISCHE AUTORITÄT & CONTENT-MAXIMIERUNG (IDEEN 26 BIS 50)
+- IDEA_026: **Tiefgehende Fach-FAQ ergänzen** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/tuer-und-schliesstechnik/page.tsx`.
+- IDEA_027: **Vergleichsmatrix integrieren** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/schliessanlagen/page.tsx`.
+- IDEA_028: **Prozessschritte ausdetaillieren** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/gleichschliessende-zylinder/page.tsx`.
+- IDEA_029: **Technik-Glossar hinzufügen** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/schluessel-nach-vorlage/page.tsx`.
+- IDEA_030: **Historische Kontext-Anekdoten** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/ratgeber/page.tsx`.
+- IDEA_031: **Kunden-Fallstudien ausbauen** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/schliessanlagen/page.tsx`.
+- IDEA_032: **Sicherheits-Checkliste** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/gleichschliessende-zylinder/page.tsx`.
+- IDEA_033: **Materialkunde-Exkurs** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/schluessel-nach-vorlage/page.tsx`.
+- IDEA_034: **Wartungstipps** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/ratgeber/page.tsx`.
+- IDEA_035: **Normen & Standards erklären** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/tuer-und-schliesstechnik/page.tsx`.
+- IDEA_036: **Tiefgehende Fach-FAQ ergänzen** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/gleichschliessende-zylinder/page.tsx`.
+- IDEA_037: **Vergleichsmatrix integrieren** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/schluessel-nach-vorlage/page.tsx`.
+- IDEA_038: **Prozessschritte ausdetaillieren** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/ratgeber/page.tsx`.
+- IDEA_039: **Technik-Glossar hinzufügen** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/tuer-und-schliesstechnik/page.tsx`.
+- IDEA_040: **Historische Kontext-Anekdoten** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/schliessanlagen/page.tsx`.
+- IDEA_041: **Kunden-Fallstudien ausbauen** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/schluessel-nach-vorlage/page.tsx`.
+- IDEA_042: **Sicherheits-Checkliste** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/ratgeber/page.tsx`.
+- IDEA_043: **Materialkunde-Exkurs** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/tuer-und-schliesstechnik/page.tsx`.
+- IDEA_044: **Wartungstipps** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/schliessanlagen/page.tsx`.
+- IDEA_045: **Normen & Standards erklären** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/gleichschliessende-zylinder/page.tsx`.
+- IDEA_046: **Tiefgehende Fach-FAQ ergänzen** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/ratgeber/page.tsx`.
+- IDEA_047: **Vergleichsmatrix integrieren** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/tuer-und-schliesstechnik/page.tsx`.
+- IDEA_048: **Prozessschritte ausdetaillieren** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/schliessanlagen/page.tsx`.
+- IDEA_049: **Technik-Glossar hinzufügen** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/gleichschliessende-zylinder/page.tsx`.
+- IDEA_050: **Historische Kontext-Anekdoten** - Erweitere den Text auf über 800 Wörter auf der Route `src/app/(site)/schluessel-nach-vorlage/page.tsx`.
+
+## KATEGORIE C: CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE (IDEEN 51 BIS 75)
+- IDEA_051: **ROI-Kalkulator** - Ein natives React 19 Tool eingebettet in `src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx`.
+- IDEA_052: **Budget-Schätzer** - Ein natives React 19 Tool eingebettet in `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx`.
+- IDEA_053: **Interaktiver Schieberegler** - Ein natives React 19 Tool eingebettet in `src/app/(site)/kasse/page.tsx`.
+- IDEA_054: **Vorher-Nachher Slider** - Ein natives React 19 Tool eingebettet in `src/app/(site)/warenkorb/page.tsx`.
+- IDEA_055: **Dynamischer Sicherheits-Filter** - Ein natives React 19 Tool eingebettet in `src/app/(site)/schluessel-nach-code/shop-liste.tsx`.
+- IDEA_056: **Live-Warenkorb Indikator** - Ein natives React 19 Tool eingebettet in `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx`.
+- IDEA_057: **Trust-Badge Konfigurator** - Ein natives React 19 Tool eingebettet in `src/app/(site)/kasse/page.tsx`.
+- IDEA_058: **Schlüssel-Identifikations-Quiz** - Ein natives React 19 Tool eingebettet in `src/app/(site)/warenkorb/page.tsx`.
+- IDEA_059: **Einsparpotenzial-Rechner** - Ein natives React 19 Tool eingebettet in `src/app/(site)/schluessel-nach-code/shop-liste.tsx`.
+- IDEA_060: **Zylinder-Längen-Messer** - Ein natives React 19 Tool eingebettet in `src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx`.
+- IDEA_061: **ROI-Kalkulator** - Ein natives React 19 Tool eingebettet in `src/app/(site)/kasse/page.tsx`.
+- IDEA_062: **Budget-Schätzer** - Ein natives React 19 Tool eingebettet in `src/app/(site)/warenkorb/page.tsx`.
+- IDEA_063: **Interaktiver Schieberegler** - Ein natives React 19 Tool eingebettet in `src/app/(site)/schluessel-nach-code/shop-liste.tsx`.
+- IDEA_064: **Interaktiver Enterprise ROI- und Ladezeit-Kalkulator** - Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein (wir wählen hier passend: `src/app/(site)/sicherheitstechnik/page.tsx`) und erweitere den umgebenden Fließtext auf 850 Wörter.
+- IDEA_065: **Dynamischer Sicherheits-Filter** - Ein natives React 19 Tool eingebettet in `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx`.
+- IDEA_066: **Live-Warenkorb Indikator** - Ein natives React 19 Tool eingebettet in `src/app/(site)/warenkorb/page.tsx`.
+- IDEA_067: **Trust-Badge Konfigurator** - Ein natives React 19 Tool eingebettet in `src/app/(site)/schluessel-nach-code/shop-liste.tsx`.
+- IDEA_068: **Schlüssel-Identifikations-Quiz** - Ein natives React 19 Tool eingebettet in `src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx`.
+- IDEA_069: **Einsparpotenzial-Rechner** - Ein natives React 19 Tool eingebettet in `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx`.
+- IDEA_070: **Zylinder-Längen-Messer** - Ein natives React 19 Tool eingebettet in `src/app/(site)/kasse/page.tsx`.
+- IDEA_071: **ROI-Kalkulator** - Ein natives React 19 Tool eingebettet in `src/app/(site)/schluessel-nach-code/shop-liste.tsx`.
+- IDEA_072: **Budget-Schätzer** - Ein natives React 19 Tool eingebettet in `src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx`.
+- IDEA_073: **Interaktiver Schieberegler** - Ein natives React 19 Tool eingebettet in `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx`.
+- IDEA_074: **Vorher-Nachher Slider** - Ein natives React 19 Tool eingebettet in `src/app/(site)/kasse/page.tsx`.
+- IDEA_075: **Dynamischer Sicherheits-Filter** - Ein natives React 19 Tool eingebettet in `src/app/(site)/warenkorb/page.tsx`.
+
+## KATEGORIE D: EXTREME PERFORMANCE, ARCHITEKTUR & DX (IDEEN 76 BIS 100)
+- IDEA_076: **use cache Memoisierung** - Architektonisches Upgrade für `src/app/layout.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_077: **CSS Subgrid Harmonisierung** - Architektonisches Upgrade für `src/app/(site)/layout.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_078: **Container Queries @container** - Architektonisches Upgrade für `src/components/ui/card.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_079: **AVIF-Hero-Pipeline** - Architektonisches Upgrade für `src/components/layout/section.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_080: **Zero-Shift Webfont-Preload** - Architektonisches Upgrade für `src/lib/data.ts` zur Erreichung perfekter Core Web Vitals.
+- IDEA_081: **Server Actions Optimierung** - Architektonisches Upgrade für `src/app/(site)/layout.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_082: **useOptimistic Feedback** - Architektonisches Upgrade für `src/components/ui/card.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_083: **React 19 Hooks Migration** - Architektonisches Upgrade für `src/components/layout/section.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_084: **Turbopack Bundling Fixes** - Architektonisches Upgrade für `src/lib/data.ts` zur Erreichung perfekter Core Web Vitals.
+- IDEA_085: **Strict CSP Header** - Architektonisches Upgrade für `src/app/layout.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_086: **use cache Memoisierung** - Architektonisches Upgrade für `src/components/ui/card.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_087: **CSS Subgrid Harmonisierung** - Architektonisches Upgrade für `src/components/layout/section.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_088: **Container Queries @container** - Architektonisches Upgrade für `src/lib/data.ts` zur Erreichung perfekter Core Web Vitals.
+- IDEA_089: **AVIF-Hero-Pipeline** - Architektonisches Upgrade für `src/app/layout.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_090: **Zero-Shift Webfont-Preload** - Architektonisches Upgrade für `src/app/(site)/layout.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_091: **Server Actions Optimierung** - Architektonisches Upgrade für `src/components/layout/section.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_092: **useOptimistic Feedback** - Architektonisches Upgrade für `src/lib/data.ts` zur Erreichung perfekter Core Web Vitals.
+- IDEA_093: **React 19 Hooks Migration** - Architektonisches Upgrade für `src/app/layout.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_094: **Turbopack Bundling Fixes** - Architektonisches Upgrade für `src/app/(site)/layout.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_095: **Strict CSP Header** - Architektonisches Upgrade für `src/components/ui/card.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_096: **use cache Memoisierung** - Architektonisches Upgrade für `src/lib/data.ts` zur Erreichung perfekter Core Web Vitals.
+- IDEA_097: **CSS Subgrid Harmonisierung** - Architektonisches Upgrade für `src/app/layout.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_098: **Container Queries @container** - Architektonisches Upgrade für `src/app/(site)/layout.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_099: **AVIF-Hero-Pipeline** - Architektonisches Upgrade für `src/components/ui/card.tsx` zur Erreichung perfekter Core Web Vitals.
+- IDEA_100: **Zero-Shift Webfont-Preload** - Architektonisches Upgrade für `src/components/layout/section.tsx` zur Erreichung perfekter Core Web Vitals.
