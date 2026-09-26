@@ -114,10 +114,45 @@ export function areaCssVariables(theme: AreaTheme): Record<string, string> {
 
 /* ---------- Kontrast (WCAG 2.2) ----------------------------------------- */
 
+
+function oklchToRgb(l: number, c: number, h: number): [number, number, number] {
+  const hRad = h * Math.PI / 180;
+
+  const L = l;
+  const a = c * Math.cos(hRad);
+  const b = c * Math.sin(hRad);
+
+  const l_ = L + 0.3963377774 * a + 0.2158037573 * b;
+  const m_ = L - 0.1055613458 * a - 0.0638541728 * b;
+  const s_ = L - 0.0894841775 * a - 1.2914855480 * b;
+
+  const l3 = l_ * l_ * l_;
+  const m3 = m_ * m_ * m_;
+  const s3 = s_ * s_ * s_;
+
+  const rLin =  4.0767416621 * l3 - 3.3077115913 * m3 + 0.2309699292 * s3;
+  const gLin = -1.2684380046 * l3 + 2.6097574011 * m3 - 0.3413193965 * s3;
+  const bLin = -0.0041960863 * l3 - 0.7034186147 * m3 + 1.7076147010 * s3;
+
+  const toStandard = (c: number) => {
+    let abs = Math.abs(c);
+    let val = abs > 0.0031308 ? 1.055 * Math.pow(abs, 1 / 2.4) - 0.055 : 12.92 * abs;
+    return c < 0 ? -val : val;
+  };
+
+  return [toStandard(rLin), toStandard(gLin), toStandard(bLin)];
+}
+
 function parseHsl(value: string): [number, number, number] {
-  const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
-  if (!match) throw new Error(`Kein HSL-Tripel: "${value}"`);
-  return [Number(match[1]), Number(match[2]), Number(match[3])];
+  const matchHsl = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
+  if (matchHsl) return [Number(matchHsl[1]), Number(matchHsl[2]), Number(matchHsl[3])];
+  throw new Error(`Kein HSL-Tripel: "${value}"`);
+}
+
+function parseOklch(value: string): [number, number, number] {
+  const matchOklch = value.trim().match(/^oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*[\d.]+)?\)$/);
+  if (matchOklch) return [Number(matchOklch[1]), Number(matchOklch[2]), Number(matchOklch[3])];
+  throw new Error(`Kein OKLCH-Tripel: "${value}"`);
 }
 
 function hslToRgb([h, s, l]: [number, number, number]): [number, number, number] {
@@ -135,9 +170,23 @@ function relativeLuminance(rgb: [number, number, number]): number {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-/** Kontrastverhältnis zweier HSL-Tripel, z. B. `contrastRatio('0 0% 100%', theme.strong)`. */
 export function contrastRatio(a: string, b: string): number {
-  const la = relativeLuminance(hslToRgb(parseHsl(a)));
-  const lb = relativeLuminance(hslToRgb(parseHsl(b)));
+  let rgbA: [number, number, number];
+  let rgbB: [number, number, number];
+
+  if (a.startsWith('oklch')) {
+    rgbA = oklchToRgb(...parseOklch(a));
+  } else {
+    rgbA = hslToRgb(parseHsl(a));
+  }
+
+  if (b.startsWith('oklch')) {
+    rgbB = oklchToRgb(...parseOklch(b));
+  } else {
+    rgbB = hslToRgb(parseHsl(b));
+  }
+
+  const la = relativeLuminance(rgbA);
+  const lb = relativeLuminance(rgbB);
   return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
 }
