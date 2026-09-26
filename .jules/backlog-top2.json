@@ -1,0 +1,12 @@
+{
+  "timestamp": "2024-05-24T12:00:00Z",
+  "top_ideas": [
+    {
+      "id": "IDEA_023",
+      "route": "app/(site)/sicherheitstechnik/page.tsx",
+      "concept": "Sicherheitstechnik Deep Dive",
+      "word_count_target": 850,
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}
