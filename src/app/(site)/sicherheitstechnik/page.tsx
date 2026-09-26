@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +74,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -82,6 +90,7 @@ export default async function SicherheitstechnikPage() {
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
   return (
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
     <>
       <JsonLd
         data={pageGraphSchema({
@@ -160,6 +169,134 @@ export default async function SicherheitstechnikPage() {
           </div>
         </div>
       </Section>
+
+
+      {/* Fachliche Erweiterung zur architektonischen Methodik der Sicherheitstechnik */}
+      <Section tight>
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Tiefgehende Analyse und Konzeption"
+          lead="Unsere Methodik basiert auf einem strengen, mehrstufigen Ansatz, der über einfache Produktinstallationen hinausgeht."
+        />
+        <div className="mt-8 prose prose-lg prose-gray max-w-none text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <p>
+            Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist.
+          </p>
+          <p>
+            Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
+          </p>
+          <p>
+            Dabei betrachten wir das Gebäude ganzheitlich. Die mechanische Absicherung der Gebäudehülle bildet das unerschütterliche Fundament. Darauf aufbauend implementieren wir elektronische Zutrittskontrollsysteme, die Flexibilität mit höchster Sicherheit vereinen. Moderne Melde- und Überwachungstechnik bildet die sensorische Ebene, die Anomalien detektiert und entsprechende Alarmierungsketten auslöst.
+          </p>
+          <p>
+            Ein zentraler Aspekt unserer Methodik ist die Integration dieser verschiedenen Ebenen zu einem kohärenten System. Ein elektronischer Schließzylinder ist nur so sicher wie die Tür, in die er eingebaut ist. Eine Videoüberwachung ist nur dann effektiv, wenn sie im Einklang mit den geltenden Datenschutzrichtlinien betrieben wird und die aufgezeichneten Daten sicher und manipulationsgeschützt gespeichert werden.
+          </p>
+          <p>
+            Unsere Planungsprozesse sind transparent und nachvollziehbar. Wir dokumentieren jeden Schritt, von der initialen Bestandsaufnahme bis zur finalen Abnahme, und stellen sicher, dass Sie jederzeit den vollen Überblick über den Projektfortschritt und die getroffenen architektonischen Entscheidungen haben.
+          </p>
+        </div>
+      </Section>
+
+      {/* Interaktives Modul */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Investitionsplanung"
+          title="Interaktiver Budget-Kalkulator"
+          lead="Planen Sie Ihr Budget für die Implementierung maßgeschneiderter Sicherheitstechnik transparent und verlässlich."
+        />
+        <div className="mt-8 max-w-2xl mx-auto">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
+      {/* Leistungsstufen & Vergleichsmatrix */}
+      <Section>
+        <SectionHeading
+          eyebrow="Leistungsstufen"
+          title="Strukturierte Performance-Tiers"
+          lead="Wählen Sie die Leistungsstufe, die exakt zu Ihren Sicherheitsanforderungen und architektonischen Gegebenheiten passt."
+        />
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full text-left border-collapse border border-[oklch(0.89_0.008_260/0.55)]">
+            <thead>
+              <tr className="bg-[oklch(0.968_0.004_260)]">
+                <th className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)] font-semibold text-[oklch(0.16_0.02_260)]">Feature</th>
+                <th className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)] font-semibold text-[oklch(0.16_0.02_260)]">Tier 1 (Basis)</th>
+                <th className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)] font-semibold text-[oklch(0.16_0.02_260)]">Tier 2 (Erweitert)</th>
+                <th className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)] font-semibold text-[oklch(0.16_0.02_260)]">Tier 3 (Enterprise)</th>
+              </tr>
+            </thead>
+            <tbody className="text-[oklch(0.32_0.02_260)]">
+              <tr>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)] font-medium">Mechanischer Grundschutz</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Standard (VdS Klasse A)</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Erhöht (VdS Klasse B)</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Maximum (VdS Klasse C)</td>
+              </tr>
+              <tr>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)] font-medium">Zutrittskontrolle</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Mechanische Schließanlage</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Elektronische Offline-Zylinder</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Online-Vernetzte Terminals</td>
+              </tr>
+              <tr>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)] font-medium">Alarmierung</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Lokal (Sirene)</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Aufschaltung (App/SMS)</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Wachdienst-Aufschaltung (NSL)</td>
+              </tr>
+              <tr>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)] font-medium">Videoüberwachung</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Nicht inklusive</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Eingangsbereich (Lokal)</td>
+                <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Vollflächig (Cloud-Backup)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      {/* Domain-Specific FAQ Block */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Häufige Fragen"
+          title="Experten-Antworten zur Sicherheitstechnik"
+          lead="Klären Sie offene Punkte rund um Planung, Installation und Betrieb moderner Sicherheitssysteme."
+        />
+        <div className="mt-8 space-y-6 max-w-3xl">
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">1. Wie unterscheidet sich eine VdS-zertifizierte Anlage von herkömmlichen Systemen?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              VdS-zertifizierte Anlagen entsprechen strengen Richtlinien hinsichtlich Komponentenqualität, Ausfallsicherheit und Sabotageschutz. Sie werden von Versicherern anerkannt und gewährleisten eine hohe Verlässlichkeit in kritischen Szenarien. Der Zertifizierungsprozess stellt sicher, dass sowohl die Hardware als auch die fachgerechte Installation höchsten Standards genügen. Dies minimiert das Risiko von Falschalarmen und Systemausfällen erheblich.
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">2. Ist die Nachrüstung elektronischer Zylinder in Bestandstüren problemlos möglich?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              In den meisten Fällen ja. Moderne elektronische Zylinder nutzen das Standard-Europrofilmaß und können ohne aufwändige Verkabelung oder strukturelle Änderungen an der Tür eingesetzt werden. Wir prüfen jedoch vorab die Beschaffenheit des Einsteckschlosses, das Dornmaß und die Fluchtwegeigenschaften der Tür, um eine normgerechte und funktionssichere Installation zu gewährleisten.
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">3. Welche datenschutzrechtlichen Aspekte sind bei Videoüberwachung zu beachten?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Beim Betrieb von Videotechnik müssen die Grundsätze der DSGVO beachtet werden. Dazu gehören die Zweckbindung (z.B. Eigentumsschutz), die Datenminimierung (Beschränkung auf das Nötigste) und die Transparenz (Hinweisschilder). Öffentlicher Raum oder Nachbargrundstücke dürfen nicht erfasst werden. Wir beraten Sie bei der datenschutzkonformen Planung und Einrichtung von Privacy-Masken (Bildverpixelung sensibler Bereiche).
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">4. Was passiert mit meiner elektronischen Zutrittskontrolle bei einem Stromausfall?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Offline-Komponenten (wie batteriebetriebene Zylinder oder Beschläge) arbeiten autark und sind von einem Netzstromausfall nicht betroffen. Bei online-vernetzten Systemen sorgen wir durch unterbrechungsfreie Stromversorgungen (USV) und gepufferte Netzteile dafür, dass die Funktion für einen definierten Zeitraum aufrechterhalten bleibt. Flucht- und Rettungswege müssen zudem mechanisch (z.B. durch Panikschlösser) jederzeit passierbar sein.
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">5. Wie oft muss eine Einbruchmeldeanlage (EMA) gewartet werden?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Für gewerblich genutzte oder VdS-anerkannte Anlagen ist eine jährliche Wartung durch einen zertifizierten Fachbetrieb zwingend vorgeschrieben, um den Versicherungsschutz aufrechtzuerhalten. Bei privaten Anlagen empfehlen wir ebenfalls einen jährlichen Turnus. Dabei werden Batterien geprüft, Sensoren justiert, die Alarmübertragung getestet und die Firmware aktualisiert, um dauerhafte Zuverlässigkeit zu garantieren.
+            </p>
+          </div>
+        </div>
+      </Section>
+
 
       {/* Bereiche */}
       <Section tone="muted">
@@ -319,5 +456,6 @@ export default async function SicherheitstechnikPage() {
         </Section>
       )}
     </>
+    </main>
   );
 }
