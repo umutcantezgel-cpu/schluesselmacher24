@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| URL | Source File | Status | Wortanzahl | Interactive Module | Schema-Status | CWV-Status |
+|---|---|---|---|---|---|---|
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING_BUILDER | 1434 | ServiceCostCalculator | Pending | Pending |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING_BUILDER | 1156 | ServiceCostCalculator | Pending | Pending |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 1018 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 1621 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 1591 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 1633 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 1723 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 1479 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING_BUILDER | 1218 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 1689 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING_BUILDER | 2502 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 1722 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 1542 | AutoKeyConfigurator | Pending | Pending |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 1707 | AutoKeyConfigurator | Pending | Pending |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING_BUILDER | 1799 | ServiceCostCalculator | Pending | Pending |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 882 | ServiceCostCalculator | Pending | Pending |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 2980 | ServiceCostCalculator | Pending | Pending |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 850 | ServiceCostCalculator | Pending | Pending |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 2581 | ServiceCostCalculator | Pending | Pending |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING_BUILDER | 850 | ServiceCostCalculator | Pending | Pending |
+| / | src/app/(site)/page.tsx | PENDING_BUILDER | 1630 | ServiceCostCalculator | Pending | Pending |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 859 | ServiceCostCalculator | Pending | Pending |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING_BUILDER | 850 | ServiceCostCalculator | Pending | Pending |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING_BUILDER | 916 | LegalFAQAccordion | Pending | Pending |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 850 | LegalFAQAccordion | Pending | Pending |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 1215 | LegalFAQAccordion | Pending | Pending |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING_BUILDER | 850 | LegalFAQAccordion | Pending | Pending |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 927 | LegalFAQAccordion | Pending | Pending |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 870 | LegalFAQAccordion | Pending | Pending |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 868 | SecurityCheckFilter | Pending | Pending |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING_BUILDER | 2373 | SecurityCheckFilter | Pending | Pending |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 1234 | ServiceCostCalculator | Pending | Pending |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING_BUILDER | 997 | ServiceCostCalculator | Pending | Pending |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 850 | ServiceCostCalculator | Pending | Pending |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 2293 | ServiceCostCalculator | Pending | Pending |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 850 | ServiceCostCalculator | Pending | Pending |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 974 | ServiceCostCalculator | Pending | Pending |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING_BUILDER | 2078 | ServiceCostCalculator | Pending | Pending |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 850 | ServiceCostCalculator | Pending | Pending |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 1155 | ServiceCostCalculator | Pending | Pending |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 1144 | SecurityCheckFilter | Pending | Pending |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING_BUILDER | 1520 | SecurityCheckFilter | Pending | Pending |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 850 | SecurityCheckFilter | Pending | Pending |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING_BUILDER | 905 | ServiceCostCalculator | Pending | Pending |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING_BUILDER | 850 | ServiceCostCalculator | Pending | Pending |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 993 | SecurityCheckFilter | Pending | Pending |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 2284 | SecurityCheckFilter | Pending | Pending |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING_BUILDER | 850 | ServiceCostCalculator | Pending | Pending |
+| /llms.txt | src/app/llms.txt/route.ts | PENDING_BUILDER | 850 | ServiceCostCalculator | Pending | Pending |
