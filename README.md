@@ -13,6 +13,9 @@ npm run lint
 npm run typecheck
 ```
 
+## Neue interaktive Module
+- **ServiceBudgetCalculator**: Ein interaktiver Budgetrechner für Autoschlüssel-Leistungen (`src/components/autoschluessel/calculator/service-budget-calculator.tsx`).
+
 ## Technischer Aufbau
 
 - **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript** (strict)

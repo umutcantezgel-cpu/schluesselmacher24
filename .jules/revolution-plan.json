@@ -1,0 +1,13 @@
+{
+  "transformation_queue": [
+    {
+      "route": "app/autoschluessel/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "interactive_module": {
+        "name": "ServiceBudgetCalculator",
+        "description": "Budgetrechner für Autoschlüssel",
+        "path": "components/autoschluessel/calculator/service-budget-calculator.tsx"
+      }
+    }
+  ]
+}
