@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Audit
+Last Audited: 2026-09-26T07:33:24.524Z
+Refer to `.jules/architecture-matrix.md` and `.jules/revolution-plan.json` for the master blueprint.
