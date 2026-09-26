@@ -1,0 +1,52 @@
+# Architektur-Matrix (Ist- vs. Soll-Zustand)
+
+| Route | Current Words | Target Words | Topics | Interactive Module |
+|---|---|---|---|---|
+| /artikel/[slug] | 935 | 1535 | 3 topics | GenericCalculator |
+| /artikel | 657 | 1257 | 3 topics | GenericCalculator |
+| /autoschluessel/anfrage | 519 | 1119 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel/fahrzeugoeffnung | 1122 | 1722 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel/funkschluessel | 1092 | 1692 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel/kopieren | 1134 | 1734 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel/marken/[make]/[model] | 1224 | 1824 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel/marken/[make] | 980 | 1580 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel/marken | 719 | 1319 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel/nachmachen | 1190 | 1790 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel | 2003 | 2603 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel/programmieren | 1223 | 1823 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel/schluesselbart-fraesen | 1043 | 1643 | 3 topics | CarKeyCompatibilityFilter |
+| /autoschluessel/smart-key | 1208 | 1808 | 3 topics | CarKeyCompatibilityFilter |
+| /bestellung/[id] | 1300 | 1900 | 3 topics | GenericCalculator |
+| /elektronische-zutrittsloesungen/konfigurator | 383 | 983 | 3 topics | GenericCalculator |
+| /elektronische-zutrittsloesungen | 2481 | 3081 | 3 topics | GenericCalculator |
+| /gleichschliessende-zylinder/konfigurator | 311 | 911 | 3 topics | GenericCalculator |
+| /gleichschliessende-zylinder | 2082 | 2682 | 3 topics | GenericCalculator |
+| /kasse | 243 | 850 | 3 topics | GenericCalculator |
+| / | 1131 | 1731 | 3 topics | GenericCalculator |
+| /ratgeber/[slug] | 360 | 960 | 3 topics | GenericCalculator |
+| /ratgeber | 225 | 850 | 3 topics | GenericCalculator |
+| /rechtliches/agb | 417 | 1017 | 3 topics | GenericCalculator |
+| /rechtliches/cookie-einstellungen | 229 | 850 | 3 topics | GenericCalculator |
+| /rechtliches/datenschutz | 716 | 1316 | 3 topics | GenericCalculator |
+| /rechtliches/impressum | 249 | 850 | 3 topics | GenericCalculator |
+| /rechtliches/versand-und-zahlung | 428 | 1028 | 3 topics | GenericCalculator |
+| /rechtliches/widerruf | 371 | 971 | 3 topics | GenericCalculator |
+| /schliessanlagen/konfigurator | 369 | 969 | 3 topics | GenericCalculator |
+| /schliessanlagen | 1874 | 2474 | 3 topics | GenericCalculator |
+| /schluessel-nach-code/[slug] | 735 | 1335 | 3 topics | GenericCalculator |
+| /schluessel-nach-code | 498 | 1098 | 3 topics | GenericCalculator |
+| /schluessel-nach-vorlage/anfrage | 222 | 850 | 3 topics | GenericCalculator |
+| /schluessel-nach-vorlage | 1794 | 2394 | 3 topics | GenericCalculator |
+| /service-und-termin/anfrage | 152 | 850 | 3 topics | GenericCalculator |
+| /service-und-termin/kontakt | 475 | 1075 | 3 topics | GenericCalculator |
+| /service-und-termin | 1579 | 2179 | 3 topics | GenericCalculator |
+| /service-und-termin/terminstatus | 108 | 850 | 3 topics | GenericCalculator |
+| /service-und-termin/vor-ort | 656 | 1256 | 3 topics | GenericCalculator |
+| /sicherheitstechnik/[slug] | 645 | 1245 | 3 topics | SecurityCheckCalculator |
+| /sicherheitstechnik | 1021 | 1621 | 3 topics | SecurityCheckCalculator |
+| /sicherheitstechnik/sicherheitscheck | 330 | 930 | 3 topics | SecurityCheckCalculator |
+| /standorte/[city] | 406 | 1006 | 3 topics | GenericCalculator |
+| /standorte | 250 | 850 | 3 topics | GenericCalculator |
+| /tuer-und-schliesstechnik/[slug] | 494 | 1094 | 3 topics | GenericCalculator |
+| /tuer-und-schliesstechnik | 1785 | 2385 | 3 topics | GenericCalculator |
+| /warenkorb | 262 | 862 | 3 topics | GenericCalculator |
