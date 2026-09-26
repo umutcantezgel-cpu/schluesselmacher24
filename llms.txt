@@ -1,0 +1,9 @@
+# SCHLÜSSELMACHER24
+
+> Fachbetrieb für Autoschlüssel (nachmachen, programmieren, reparieren), Schlüssel nach
+> Code und nach Vorlage, gleichschließende Zylinder, Schließanlagen, elektronische
+> Zutrittslösungen, Tür- und Schließtechnik sowie Sicherheitstechnik. Bestellungen und
+> Anfragen deutschlandweit, Termine mit Fahrzeug vor Ort.
+
+## Neue interaktive Module
+- **ServiceBudgetCalculator**: Ein interaktiver Budgetrechner für Autoschlüssel-Leistungen (\`src/components/autoschluessel/calculator/service-budget-calculator.tsx\`).

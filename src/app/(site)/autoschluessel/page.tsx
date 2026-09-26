@@ -15,6 +15,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
+import { ServiceBudgetCalculator } from '@/components/autoschluessel/calculator/service-budget-calculator';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'autoschluessel';
@@ -209,7 +210,15 @@ const FAQ = [
   },
 ];
 
-export default async function AutoschluesselHubPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function AutoschluesselHubPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+
   const [page, settings, makes] = await Promise.all([
     getPageContent(ROUTE),
     getSettings(),
@@ -245,7 +254,7 @@ export default async function AutoschluesselHubPage() {
   ];
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <JsonLd
         data={pageGraphSchema({
           path: '/autoschluessel',
@@ -333,6 +342,195 @@ export default async function AutoschluesselHubPage() {
           />
         </div>
       </Section>
+
+      {/* Architektonische Methodik */}
+      <Section id="architektur" tone="muted">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
+          <div>
+            <SectionHeading title="Architektonische Methodik und Fachexpertise" />
+            <div className="prose-sm24 mt-5 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              <p>
+                Die moderne Sicherheitstechnik, insbesondere im Bereich der Autoschlüssel, ist ein hochkomplexes
+                und technologisches Meisterwerk. Wenn wir über die Bearbeitung oder Neuerstellung von
+                Autoschlüsseln sprechen, tauchen wir in eine Welt ein, in der Feinmechanik auf fortschrittlichste
+                Mikroelektronik trifft. Dies ist nicht mehr der einfache Vorgang des Nachschleifens eines
+                simplen Metallstücks, wie es noch vor wenigen Jahrzehnten der Fall war. Vielmehr handelt es sich
+                um einen präzisen, computergestützten Prozess, der ein tiefes Verständnis für verschiedene
+                Fahrzeughersteller und deren proprietäre Sicherheitssysteme erfordert.
+              </p>
+              <p>
+                Im Zentrum dieser Entwicklung steht die Wegfahrsperre, ein System, das darauf ausgelegt ist,
+                Fahrzeugdiebstähle drastisch zu reduzieren. Der Schlüsselbart mag noch immer die mechanische
+                Barriere des Türschlosses überwinden, doch das eigentliche Herzstück der Berechtigung ist der
+                Transponder-Chip, der im Schlüsselgehäuse eingebettet ist. Wenn der Schlüssel ins Zündschloss
+                gesteckt oder in die Nähe des Startknopfes gebracht wird, findet ein komplexer, kryptografischer
+                Austausch zwischen dem Schlüssel und dem Steuergerät des Fahrzeugs statt. Nur wenn dieser
+                Handshake erfolgreich ist, wird die Kraftstoffzufuhr und Zündung freigegeben. Das bedeutet, dass
+                ein Ersatzschlüssel nicht nur mechanisch perfekt passen muss, sondern auch elektronisch exakt
+                auf das spezifische Fahrzeug codiert werden muss.
+              </p>
+              <p>
+                Diese Codierung ist ein Prozess, der als Schlüsselprogrammierung bekannt ist. Hierfür setzen wir
+                hochspezialisierte Diagnosegeräte ein, die über die OBD-Schnittstelle (On-Board Diagnostics) mit
+                dem Fahrzeug kommunizieren. Es ist eine anspruchsvolle Aufgabe, da jeder Fahrzeughersteller, sei
+                es Volkswagen, BMW, Mercedes-Benz oder Toyota, seine eigenen Sicherheitsprotokolle und
+                Verschlüsselungsalgorithmen verwendet. Unsere Experten müssen daher kontinuierlich geschult
+                werden und die neuesten Software-Updates für unsere Diagnosegeräte nutzen, um mit der rasanten
+                Entwicklung der Fahrzeugtechnologie Schritt zu halten.
+              </p>
+              <p>
+                Darüber hinaus gibt es verschiedene Generationen von Schlüsselsystemen. Frühere Systeme nutzten
+                einfache Festcodes, während moderne Fahrzeuge Rollcodes oder Krypto-Transponder verwenden, bei
+                denen sich der Code bei jedem Startvorgang ändert, um das Abfangen oder Kopieren des Signals zu
+                verhindern (sogenannte Replay-Angriffe). Hinzu kommen die Keyless-Go oder Smart-Key-Systeme, die
+                auf Nahfeldkommunikation basieren und es ermöglichen, das Fahrzeug zu entriegeln und zu starten,
+                ohne den Schlüssel jemals aus der Tasche zu nehmen. Diese Systeme bieten höchsten Komfort,
+                stellen aber auch besondere Herausforderungen an die Sicherheit und damit an die Neuprogrammierung
+                oder das Kopieren von Schlüsseln.
+              </p>
+              <p>
+                Unsere Vorgehensweise ist strikt prozessorientiert und auf höchste Sicherheit sowie Kundenzufriedenheit
+                ausgerichtet. Wenn ein Kunde zu uns kommt, ist der erste Schritt immer eine gründliche Diagnose.
+                Wir müssen exakt feststellen, welches System im Fahrzeug verbaut ist und welche Art von Schlüssel
+                benötigt wird. Ist es ein einfacher Bartschlüssel mit Transponder? Ein Funkschlüssel? Oder ein
+                moderner Smart-Key? Jede dieser Kategorien erfordert eine andere Herangehensweise und
+                unterschiedliche Rohlinge sowie Programmierverfahren.
+              </p>
+              <p>
+                Wir legen großen Wert auf Transparenz und Aufklärung. Viele Kunden sind überrascht von der
+                Komplexität eines modernen Autoschlüssels und den damit verbundenen Kosten. Wir erklären den
+                Prozess im Detail und zeigen auf, warum ein hochwertiger Ersatzschlüssel eine Investition in die
+                Sicherheit ihres Fahrzeugs ist. Die Verwendung billiger, nicht zertifizierter Nachbauten kann zu
+                Fehlfunktionen der Elektronik führen und im schlimmsten Fall das Steuergerät des Fahrzeugs
+                beschädigen, was zu immensen Folgekosten führt.
+              </p>
+              <p>
+                Neben der Neuprogrammierung bieten wir auch die Reparatur von defekten Schlüsseln an. Oft sind es
+                nur gebrochene Gehäuse, verschlissene Tasten oder leere Batterien, die einen Schlüssel
+                unbrauchbar machen. In vielen Fällen können wir die empfindliche Elektronik aus dem alten Gehäuse
+                retten und in ein neues einbauen, was eine kostengünstigere und ressourcenschonendere Alternative
+                zum kompletten Neukauf darstellt. Auch das Erneuern von Mikroschaltern auf der Platine gehört zu
+                unseren Standardleistungen.
+              </p>
+              <p>
+                Ein weiteres kritisches Szenario ist der vollständige Schlüsselverlust, das &quot;All Keys Lost&quot;-Szenario.
+                Dies ist der denkbar ungünstigste Fall, da keine Vorlage für den mechanischen Bart und kein
+                funktionierender Transponder für die Codierung vorhanden ist. In diesen Fällen müssen wir oft
+                anhand der Fahrgestellnummer (VIN) den mechanischen Code des Schlosses ermitteln oder die
+                Türschlösser decodieren, um den Bart zu fräsen. Anschließend muss das Steuergerät des Fahrzeugs
+                in einen Lernmodus versetzt werden, was bei modernen Fahrzeugen eine Online-Verbindung zu den
+                Servern des Herstellers und spezielle Berechtigungsnachweise erfordert. Dieser Prozess ist
+                zeitaufwendig und erfordert höchste Expertise.
+              </p>
+              <p>
+                Um unseren Kunden den besten Service zu bieten, investieren wir kontinuierlich in die neueste
+                Fräs- und Diagnosetechnik. Unsere computergesteuerten CNC-Schlüsselfräsmaschinen arbeiten mit
+                mikrometergenauer Präzision, um sicherzustellen, dass jeder neu gefertigte Schlüssel absolut
+                reibungslos im Schloss schließt. Wir pflegen zudem enge Partnerschaften mit führenden
+                Herstellern von Sicherheitstechnik und Diagnose-Hardware, um stets auf dem neuesten Stand der
+                Technik zu sein.
+              </p>
+              <p>
+                Zusammenfassend lässt sich sagen, dass unser Service rund um Autoschlüssel weit mehr ist als
+                nur das Duplizieren von Metall. Es ist ein hochspezialisiertes Handwerk, das tiefgreifendes Wissen
+                über Fahrzeugelektronik, Kryptografie und Feinmechanik erfordert. Wir verstehen uns als Partner
+                unserer Kunden, wenn es um die Sicherheit und Mobilität ihrer Fahrzeuge geht, und bieten
+                maßgeschneiderte Lösungen, die höchste Qualitäts- und Sicherheitsstandards erfüllen.
+              </p>
+            </div>
+          </div>
+          <div>
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Leistungsstufen und Vergleichsmatrix */}
+      <Section id="matrix">
+        <SectionHeading
+          title="Strukturierte Leistungsstufen im Überblick"
+          lead="Eine klare Einordnung unserer Services von der Basis-Kopie bis zur Premium-Neuprogrammierung."
+        />
+        <div className="mt-8 overflow-x-auto rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] shadow-sm">
+          <table className="w-full text-left text-sm text-[oklch(0.32_0.02_260)]">
+            <thead className="bg-[oklch(0.968_0.004_260)] text-[oklch(0.16_0.02_260)]">
+              <tr>
+                <th className="px-6 py-4 font-semibold border-b border-[oklch(0.89_0.008_260/0.55)]">Leistungsstufe</th>
+                <th className="px-6 py-4 font-semibold border-b border-[oklch(0.89_0.008_260/0.55)]">Beschreibung</th>
+                <th className="px-6 py-4 font-semibold border-b border-[oklch(0.89_0.008_260/0.55)]">Technischer Aufwand</th>
+                <th className="px-6 py-4 font-semibold border-b border-[oklch(0.89_0.008_260/0.55)]">Vorlaufzeit</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)]">
+              <tr>
+                <td className="px-6 py-4 font-medium text-[oklch(0.16_0.02_260)]">Basic (Reparatur)</td>
+                <td className="px-6 py-4">Gehäusetausch, Tastenwechsel, Batteriewechsel unter Erhalt der Elektronik.</td>
+                <td className="px-6 py-4">Gering - Mechanische Feinarbeit</td>
+                <td className="px-6 py-4">Sofort möglich</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 font-medium text-[oklch(0.16_0.02_260)]">Standard (Zweitschlüssel)</td>
+                <td className="px-6 py-4">Fräsen des Barts und Klonen/Anlernen des Transponders mit vorhandenem Masterschlüssel.</td>
+                <td className="px-6 py-4">Mittel - OBD-Zugang erforderlich</td>
+                <td className="px-6 py-4">Nach Terminvereinbarung (ca. 30 Min)</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 font-medium text-[oklch(0.16_0.02_260)]">Advanced (Smart Key)</td>
+                <td className="px-6 py-4">Programmierung von Keyless-Go Systemen und adaptiven Fernbedienungen.</td>
+                <td className="px-6 py-4">Hoch - Herstellerspezifische Protokolle</td>
+                <td className="px-6 py-4">Mit Termin (ca. 60 Min)</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 font-medium text-[oklch(0.16_0.02_260)]">Premium (All Keys Lost)</td>
+                <td className="px-6 py-4">Komplette Neugenerierung inkl. Schlossdecodierung und Steuergeräte-Reset ohne Vorlage.</td>
+                <td className="px-6 py-4">Sehr Hoch - Online-Anbindung & PIN-Ermittlung</td>
+                <td className="px-6 py-4">Individuell (ab 1 Werktag)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      {/* Fachspezifischer FAQ */}
+      <Section id="deep-faq" tone="muted">
+        <SectionHeading
+          title="Tiefgehende Fragen zur Fahrzeugsicherheit"
+          lead="Detaillierte Antworten zu komplexen Szenarien und technischen Herausforderungen."
+        />
+        <div className="mt-8 space-y-6">
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h3 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">1. Warum kann ein Baumarkt meinen neuen Autoschlüssel nicht kopieren?</h3>
+            <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Während traditionelle Schlüsseldienste oder Baumärkte in der Lage sind, den mechanischen Bart eines Autoschlüssels nachzufräsen, fehlt ihnen meist das teure Spezialequipment für die Wegfahrsperre. Fast alle Fahrzeuge ab Baujahr 1995 besitzen einen Transponder-Chip im Schlüsselkopf. Ohne eine korrekte elektronische Programmierung dieses Chips über die OBD-Schnittstelle des Fahrzeugs wird der Wagen nicht anspringen. Unser Betrieb investiert kontinuierlich in diese Diagnose-Hard- und Software, um auch modernste Krypto-Transponder codieren zu können.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h3 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">2. Was passiert technisch, wenn alle Autoschlüssel verloren wurden (&quot;All Keys Lost&quot;)?</h3>
+            <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Ein &quot;All Keys Lost&quot;-Szenario ist die anspruchsvollste Aufgabe in unserem Bereich. Da kein Musterschlüssel vorliegt, müssen wir den mechanischen Schließcode entweder über die Fahrgestellnummer (VIN) vom Hersteller anfordern (falls verfügbar) oder ein Türschloss mit Spezialwerkzeug decodieren. Anschließend fräsen wir den Schlüssel auf einer CNC-Maschine. Für die Elektronik müssen wir in das Motorsteuergerät oder die Wegfahrsperreneinheit eingreifen, oft einen PIN-Code extrahieren oder das System komplett zurücksetzen, bevor neue Schlüssel angelernt werden können. Dies erfordert höchste Fachkompetenz und oft eine Online-Verbindung zu den Herstellerservern.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h3 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">3. Sind Aftermarket-Schlüssel genauso sicher wie Originalschlüssel vom Vertragshändler?</h3>
+            <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Wir verwenden ausschließlich zertifizierte Aftermarket-Schlüssel in Erstausrüsterqualität (OEM-Qualität) oder originale Ersatzteile. Ein hochwertiger Aftermarket-Schlüssel nutzt denselben oder einen kompatiblen Transponder-Chip wie das Original und bietet exakt dieselbe kryptografische Sicherheit. Er kommuniziert auf demselben verschlüsselten Weg mit der Wegfahrsperre. Der Hauptunterschied liegt oft nur im fehlenden Markenlogo auf dem Gehäuse, während die Funktionalität und Sicherheit zu 100 % gewährleistet sind, bei oft deutlich geringeren Kosten.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h3 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">4. Wie funktioniert der Diebstahlschutz bei Keyless-Go-Systemen und wie sichern Sie Ersatzschlüssel ab?</h3>
+            <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Keyless-Go-Systeme senden kontinuierlich ein schwaches Funksignal, das vom Fahrzeug im Nahbereich erkannt wird. Kriminelle versuchen oft, dieses Signal mit &quot;Reichweitenverlängerern&quot; abzufangen. Wenn wir einen neuen Smart Key anlernen, nutzen wir die aktuellsten Verschlüsselungsprotokolle des Herstellers, die oft Ultra-Wideband (UWB) Technologie oder Bewegungssensoren im Schlüssel umfassen, um solche &quot;Relay Attacks&quot; zu verhindern. Zudem löschen wir bei Verlustfällen die alten, verlorenen Schlüssel aus dem Speicher der Wegfahrsperre, sodass diese das Fahrzeug nicht mehr öffnen oder starten können.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h3 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">5. Welche Risiken bestehen bei der selbstständigen Programmierung mit günstigen OBD-Dongles aus dem Internet?</h3>
+            <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Wir raten dringend von DIY-Programmierversuchen ab. Moderne Wegfahrsperren sind hochsensibel. Der Einsatz von nicht verifizierter Software oder billigen OBD-Dongles kann das EEPROM (den Speicher) des Motorsteuergeräts (ECU) oder der zentralen Elektronikeinheit (BSI/BCM) unwiderruflich beschädigen oder das Fahrzeug in einen &quot;Lockout&quot;-Modus versetzen. Im schlimmsten Fall muss dann das gesamte Steuergerät kostenintensiv ausgetauscht werden. Professionelle Werkzeuge haben Schutzmechanismen (wie automatische Backups der Codierung) integriert, die bei günstigen Endkunden-Geräten fehlen.
+            </p>
+          </div>
+        </div>
+      </Section>
+
 
       {/* Leistungsbegriffe */}
       <Section tone="muted" id="leistungen">
@@ -509,6 +707,6 @@ export default async function AutoschluesselHubPage() {
           ))}
         </ul>
       </Section>
-    </>
+    </main>
   );
 }
