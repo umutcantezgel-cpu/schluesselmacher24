@@ -1,0 +1,1289 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-09-26T17:14:30.363Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/(payload)/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgehende Hintergrundinformationen",
+        "Praktische Tipps und Tricks für den Alltag",
+        "Vergleichstabellen und Checklisten",
+        "Schritt-für-Schritt Anleitungen",
+        "Experten-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ContentBentoGrid",
+        "target_file": "components/visual/content-bento-grid.tsx",
+        "action_file": "actions/load-bento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgehende Hintergrundinformationen",
+        "Praktische Tipps und Tricks für den Alltag",
+        "Vergleichstabellen und Checklisten",
+        "Schritt-für-Schritt Anleitungen",
+        "Experten-FAQ"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ContentBentoGrid",
+        "target_file": "components/visual/content-bento-grid.tsx",
+        "action_file": "actions/load-bento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 1993,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 1330,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1220,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 1984,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1499,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2281,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 2680,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2073,
+      "content_expansion_topics": [
+        "Systemarchitektur Schließanlagen",
+        "Mechanische und elektronische Komponenten",
+        "Planung und Projektierung von Objekten",
+        "Sicherheitszertifikate und DIN-Normen",
+        "Häufig gestellte Fragen (FAQ zur Planung, Nachbestellung)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ProjectConfigurator",
+        "target_file": "components/schliessanlagen/project-configurator.tsx",
+        "action_file": "actions/configure-project.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Systemarchitektur Schließanlagen",
+        "Mechanische und elektronische Komponenten",
+        "Planung und Projektierung von Objekten",
+        "Sicherheitszertifikate und DIN-Normen",
+        "Häufig gestellte Fragen (FAQ zur Planung, Nachbestellung)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ProjectConfigurator",
+        "target_file": "components/schliessanlagen/project-configurator.tsx",
+        "action_file": "actions/configure-project.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 1778,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1134,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unternehmensmission und Werte",
+        "Detaillierte Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier Phasen",
+        "Kundenreferenzen und Fallstudien",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GeneralServiceCalculator",
+        "target_file": "components/calculator/general-service-calculator.tsx",
+        "action_file": "actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1423,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1179,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1291,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1422,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2202,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1333,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1389,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1407,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1242,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1321,
+      "content_expansion_topics": [
+        "Spezifikationen der Automodelle und Programmierung",
+        "Prozess der Schlüsselherstellung",
+        "Häufige Probleme und Lösungen",
+        "Preise und Garantien",
+        "FAQ zum Thema Autoschlüssel (Wie läuft das anlernen ab?, Dauer der Herstellung?)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyFilter",
+        "target_file": "components/calculator/vehicle-key-filter.tsx",
+        "action_file": "actions/filter-keys.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

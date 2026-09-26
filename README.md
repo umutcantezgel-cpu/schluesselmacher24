@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Blueprint
+
+Last Audited: 2026-09-26
+This repository is under a transformation towards Next.js 16+, React 19.2+, and a strict Swiss Light Mode Design Doctrine using OKLCH color spaces. Please refer to `.jules/architecture-matrix.md` for the master blueprint.
