@@ -1,0 +1,53 @@
+# Architektur-Matrix
+
+| URL | Source File | Status | Target Words | Schema | Interactive Module |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | PENDING_BUILDER | 950 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING_BUILDER | 1735 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING_BUILDER | 1457 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 1319 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 1922 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 1892 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 1934 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 2024 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 1780 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING_BUILDER | 1519 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 1990 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING_BUILDER | 2803 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 2023 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 1843 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 2008 | Organization, WebSite, FAQPage | CarKeyConfigurator |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING_BUILDER | 2100 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 1183 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 3281 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 1111 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 2882 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING_BUILDER | 1043 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| / | src/app/(site)/page.tsx | PENDING_BUILDER | 1931 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 1160 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING_BUILDER | 1025 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING_BUILDER | 1217 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 1029 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 1516 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING_BUILDER | 1049 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 1228 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 1171 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 1169 | Organization, WebSite, FAQPage | LockSystemPlanner |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING_BUILDER | 2674 | Organization, WebSite, FAQPage | LockSystemPlanner |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 1535 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING_BUILDER | 1298 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 1022 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 2594 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 952 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 1275 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING_BUILDER | 2379 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 950 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 1456 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 1445 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING_BUILDER | 1821 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 1130 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING_BUILDER | 1206 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING_BUILDER | 1050 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 1294 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 2585 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING_BUILDER | 1062 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
