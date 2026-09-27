@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| URL | Source File | Status | Word Count | Schema Status | CWV Status | Interactive Module | Awwwards Signature |
+|---|---|---|---|---|---|---|---|
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING | 935 -> 1435 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING | 657 -> 1157 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING | 519 -> 1019 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING | 1122 -> 1622 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING | 1092 -> 1592 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING | 1134 -> 1634 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING | 1224 -> 1724 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING | 980 -> 1480 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING | 719 -> 1219 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING | 1190 -> 1690 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING | 2003 -> 2503 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING | 1223 -> 1723 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING | 1043 -> 1543 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING | 1208 -> 1708 | TODO | TODO | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING | 1300 -> 1800 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING | 383 -> 950 | TODO | TODO | AccessControlROI | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING | 2481 -> 2981 | TODO | TODO | AccessControlROI | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING | 311 -> 950 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING | 2082 -> 2582 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING | 243 -> 950 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| / | src/app/(site)/page.tsx | PENDING | 1131 -> 1631 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING | 360 -> 950 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING | 225 -> 950 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING | 417 -> 950 | TODO | TODO | LegalDocumentNavigator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING | 229 -> 950 | TODO | TODO | LegalDocumentNavigator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING | 716 -> 1216 | TODO | TODO | LegalDocumentNavigator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING | 249 -> 950 | TODO | TODO | LegalDocumentNavigator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING | 428 -> 950 | TODO | TODO | LegalDocumentNavigator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING | 371 -> 950 | TODO | TODO | LegalDocumentNavigator | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING | 369 -> 950 | TODO | TODO | LockingSystemRequirementsAnalyzer | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING | 1874 -> 2374 | TODO | TODO | LockingSystemRequirementsAnalyzer | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING | 735 -> 1235 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING | 498 -> 998 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING | 222 -> 950 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING | 1794 -> 2294 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING | 152 -> 950 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING | 475 -> 975 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING | 1579 -> 2079 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING | 108 -> 950 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING | 656 -> 1156 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING | 645 -> 1145 | TODO | TODO | SecurityCheckScore | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING | 1021 -> 1521 | TODO | TODO | SecurityCheckScore | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING | 330 -> 950 | TODO | TODO | SecurityCheckScore | BENTO_HOVER_GLOW_LIGHT |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING | 406 -> 950 | TODO | TODO | LocalAvailabilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING | 250 -> 950 | TODO | TODO | LocalAvailabilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING | 494 -> 994 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING | 1785 -> 2285 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING | 262 -> 950 | TODO | TODO | ServicePriceEstimator | BENTO_HOVER_GLOW_LIGHT |
