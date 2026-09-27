@@ -1,0 +1,13 @@
+{
+  "transformation_queue": [
+    {
+      "route": "src/app/(site)/autoschluessel/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "interactive_module": {
+        "name": "AutoKeyConfigurator",
+        "type": "calculator",
+        "description": "Interactive calculator for car key types, services, and pricing based on brand and key features."
+      }
+    }
+  ]
+}
