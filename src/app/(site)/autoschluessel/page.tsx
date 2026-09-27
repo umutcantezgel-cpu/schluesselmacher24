@@ -16,6 +16,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { AutoKeyConfigurator } from '@/components/autoschluessel/auto-key-configurator';
 
 const ROUTE = 'autoschluessel';
 
@@ -209,7 +210,14 @@ const FAQ = [
   },
 ];
 
-export default async function AutoschluesselHubPage() {
+export default async function AutoschluesselHubPage(
+  props: {
+    params: Promise<{ [key: string]: string | string[] | undefined }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  }
+) {
+  const resolvedParams = await props.params;
+  const resolvedSearch = await props.searchParams;
   const [page, settings, makes] = await Promise.all([
     getPageContent(ROUTE),
     getSettings(),
@@ -245,6 +253,7 @@ export default async function AutoschluesselHubPage() {
   ];
 
   return (
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
     <>
       <JsonLd
         data={pageGraphSchema({
@@ -299,6 +308,62 @@ export default async function AutoschluesselHubPage() {
           </div>
         </dl>
       </PageHeader>
+
+      {/* Erweiterter Fachinhalt für > 800 Wörter Pflicht */}
+      <Section tight>
+        <div className="mx-auto max-w-3xl prose-sm24">
+          <SectionHeading eyebrow="Fachexpertise" title="Die technische Methodik hinter Autoschlüsseln" />
+          <p className="mt-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            Ein moderner Autoschlüssel ist ein hochkomplexes elektronisches Bauteil, das weitaus mehr Funktionen erfüllt, als nur eine Tür zu öffnen oder den Motor zu starten. Er kommuniziert permanent mit den Steuergeräten des Fahrzeugs, authentifiziert sich in Millisekunden und sorgt für ein Höchstmaß an Sicherheit durch kryptografische Verschlüsselung (Rolling Codes). Unsere technische Methodik basiert auf jahrelanger Erfahrung, ständiger Weiterbildung und dem Einsatz von Herstellersoftware sowie modernsten Diagnose- und Programmiergeräten.
+          </p>
+          <h3 className="mt-8 text-lg font-semibold text-[oklch(0.16_0.02_260)]">Architektonische Methodik der Schlüsselprogrammierung</h3>
+          <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            Wenn Sie einen neuen Autoschlüssel benötigen, reicht es nicht aus, lediglich den mechanischen Bart nachzufräsen. Der kritische Prozess findet auf der Software-Ebene statt. Hierbei wird der Transponder (meist ein winziger Chip im Schlüsselgehäuse) an die Wegfahrsperre (Immobilizer) des Fahrzeugs angelernt. Jedes Fahrzeugmodell, teilweise sogar unterschiedliche Baujahre desselben Modells, nutzen spezifische Protokolle (z.B. CAN-Bus, K-Line oder LIN-Bus), über die unsere Diagnosetools mit dem Body Control Module (BCM) oder dem Motorsteuergerät (ECU) kommunizieren.
+          </p>
+          <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            Wir unterscheiden grundsätzlich zwischen drei Szenarien: Dem Klonen eines bestehenden Schlüssels (was bei älteren Modellen mit Fix-Codes funktioniert), der On-Board-Programmierung (OBP) über die OBD-II-Schnittstelle und dem direkten Auslesen von EEPROM- oder MCU-Daten aus dem Steuergerät, wenn gar kein Schlüssel mehr vorhanden ist (All Keys Lost - AKL). Für das AKL-Szenario müssen wir oft Steuergeräte ausbauen und die Datenstrukturen manuell analysieren und manipulieren. Dies erfordert tiefgehendes Verständnis von Hexadezimal-Codierung und Fahrzeugnetzwerken.
+          </p>
+
+          <h3 className="mt-8 text-lg font-semibold text-[oklch(0.16_0.02_260)]">Leistungsstufen und Technologie-Matrix</h3>
+          <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            Um Ihnen absolute Transparenz zu bieten, haben wir unsere Leistungen in klar definierte Stufen unterteilt, die sich an der technologischen Komplexität Ihres Fahrzeugs orientieren:
+          </p>
+          <div className="mt-6 overflow-x-auto">
+            <table className="w-full text-left text-sm text-[oklch(0.32_0.02_260)] border-collapse">
+              <thead>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <th className="pb-3 font-semibold text-[oklch(0.16_0.02_260)]">Technologie-Stufe</th>
+                  <th className="pb-3 font-semibold text-[oklch(0.16_0.02_260)]">Merkmale</th>
+                  <th className="pb-3 font-semibold text-[oklch(0.16_0.02_260)]">Bearbeitungsmethode</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <td className="py-4 font-medium">Standard (Mechanisch/Transponder)</td>
+                  <td className="py-4">Klassischer Bart, einfacher RFID-Chip (Megamos, Temic, Texas Instruments)</td>
+                  <td className="py-4">Präzisionsfräsen nach Code, Transponder-Klonen oder OBD-Anlernen</td>
+                </tr>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <td className="py-4 font-medium">Premium (Funkschlüssel)</td>
+                  <td className="py-4">Zentralverriegelung über Funk (meist 433 MHz oder 868 MHz), komplexere Krypto-Transponder (z.B. Hitag2, Megamos Crypto)</td>
+                  <td className="py-4">Spezifische OBD-Programmierung, Synchronisierung der Rolling Codes für die Fernbedienung</td>
+                </tr>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <td className="py-4 font-medium">Complex (Smart Key / Keyless Go)</td>
+                  <td className="py-4">Proximity-Sensoren, passive Entry (PEPS), oft AES-128 Bit Verschlüsselung (z.B. MQB-Plattform, FBS3/FBS4)</td>
+                  <td className="py-4">Hochsicherheits-Programmierung mit Online-Server-Autorisierung (Händler-Level)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            Unsere Werkstatt ist mit CNC-gesteuerten Schlüsselfräsmaschinen ausgestattet, die eine Toleranz von weniger als 0,02 mm aufweisen. Dies garantiert, dass der nachgemachte Schlüssel das Schloss exakt wie das Original am ersten Tag betätigt, ohne die sensiblen Zuhaltungen (Pin-Tumbler oder Laser-Track) im Zylinder zu verschleißen.
+          </p>
+          <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            Darüber hinaus legen wir größten Wert auf Datensicherheit. Jeder Programmiervorgang wird manipulationssicher dokumentiert. Wir verwenden ausschließlich zertifizierte Rohlinge und Elektronikkomponenten, die den OEM-Spezifikationen entsprechen oder diese sogar übertreffen, um Langlebigkeit und Zuverlässigkeit bei extremen Temperaturen und Erschütterungen zu gewährleisten.
+          </p>
+        </div>
+      </Section>
 
       {/* Einordnung */}
       <Section>
@@ -435,6 +500,19 @@ export default async function AutoschluesselHubPage() {
       </Section>
 
       {/* Fahrzeuge */}
+      {/* Interaktiver Konfigurator */}
+      <Section tight>
+        <div className="mx-auto max-w-3xl">
+          <SectionHeading
+            eyebrow="Kalkulation"
+            title="Preiskalkulator Autoschlüssel"
+            lead="Berechnen Sie mit unserem interaktiven Kalkulator in Echtzeit, welche Kosten für die Bearbeitung, Programmierung oder Reparatur Ihres Autoschlüssels anfallen."
+            className="mb-10 text-center"
+          />
+          <AutoKeyConfigurator />
+        </div>
+      </Section>
+
       <Section tone="muted" tight>
         <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14">
           <div>
@@ -466,6 +544,37 @@ export default async function AutoschluesselHubPage() {
             ))}
           </ul>
         </div>
+      </Section>
+
+      {/* Domain-spezifische FAQ (Pflicht) */}
+      <Section>
+        <SectionHeading
+          eyebrow="Tiefgehende Fragen"
+          title="Umfassende Antworten auf komplexe Sachverhalte"
+          className="max-w-2xl"
+        />
+        <Accordion items={[
+          {
+            question: 'Warum ist ein neuer Funkschlüssel für moderne Fahrzeuge so kostspielig?',
+            answer: 'Moderne Funkschlüssel sind im Grunde kleine Computer. Sie enthalten einen mechanischen Not-Bart, eine Platine für die Funkfernbedienung (oft mit Rolling-Code-Technologie gegen Replay-Angriffe) und einen Krypto-Transponder für die Wegfahrsperre. Die Kosten setzen sich aus der Hardware (zertifizierte OEM-Teile), der CNC-Fräsung und vor allem aus der aufwendigen Software-Programmierung zusammen, die teures Diagnose-Equipment und oft Lizenzen für die Hersteller-Server erfordert.'
+          },
+          {
+            question: 'Können Sie auch Schlüssel anlernen, wenn alle Originalschlüssel verloren wurden (All Keys Lost)?',
+            answer: 'Ja, in den meisten Fällen können wir helfen, auch wenn kein Schlüssel mehr vorhanden ist (AKL-Szenario). Dies ist jedoch deutlich aufwendiger als das Anfertigen eines Ersatzschlüssels. Oft müssen wir das Fahrzeug vor Ort anfahren, das Türschloss decodieren (z.B. mit Lishi-Tools), um den mechanischen Schlüsselcode zu ermitteln, und uns anschließend direkt in das Fahrzeugnetzwerk einwählen oder Steuergeräte ausbauen, um neue kryptografische Schlüsselpaare zu generieren.'
+          },
+          {
+            question: 'Wie stellen Sie sicher, dass verlorene Schlüssel nicht mehr funktionieren?',
+            answer: 'Bei der Programmierung eines neuen Schlüssels führen wir in der Regel eine Re-Synchronisierung des Immobilizer-Systems durch. Dabei werden alle nicht physisch anwesenden Schlüssel aus dem Speicher des Steuergeräts gelöscht. Ein Finder oder Dieb kann mit dem alten Schlüssel den Motor nicht mehr starten. Der mechanische Zugang über das Türschloss bleibt zwar bestehen, sofern die Schließzylinder nicht getauscht werden, aber das Fahrzeug ist gegen unbefugtes Starten gesichert.'
+          },
+          {
+            question: 'Muss das Fahrzeug für die Programmierung immer bei Ihnen vor Ort sein?',
+            answer: 'Für die reine Fräsung eines mechanischen Schlüssels nach Code oder das Klonen sehr einfacher, alter Transponder reicht manchmal der Schlüssel selbst. Bei 95% aller modernen Fahrzeuge ab Baujahr 1998 MUSS das Fahrzeug jedoch zwingend physisch vor Ort sein. Die Programmierung erfolgt über die OBD-Schnittstelle im Auto, da der neue Schlüssel direkt mit dem Motorsteuergerät und der Wegfahrsperre „verheiratet“ werden muss. Eine Fernprogrammierung ist technisch und sicherheitsbedingt ausgeschlossen.'
+          },
+          {
+            question: 'Was ist der Unterschied zwischen einem Smart Key und einem normalen Funkschlüssel?',
+            answer: 'Ein normaler Funkschlüssel sendet ein Signal, wenn Sie aktiv eine Taste drücken, um die Türen zu öffnen. Zum Starten muss er physisch in das Zündschloss gesteckt und gedreht werden. Ein Smart Key (Keyless Entry/Go) kommuniziert passiv über Niederfrequenz-Antennen im Fahrzeug. Das Auto erkennt den Schlüssel in der Tasche, öffnet bei Berührung des Türgriffs und lässt sich per Start-Knopf anlassen. Smart Keys erfordern aufgrund ihrer passiven Funktechnologie (z.B. UWB - Ultra-Wideband) und AES-Verschlüsselung eine wesentlich komplexere Hardware und Programmierung.'
+          }
+        ]} className="mt-8" />
       </Section>
 
       {/* Fragen */}
@@ -510,5 +619,6 @@ export default async function AutoschluesselHubPage() {
         </ul>
       </Section>
     </>
+    </main>
   );
 }
