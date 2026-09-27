@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+- **Enterprise ROI Calculator**: Added interactive ROI calculator for master key systems (`src/components/calculator/enterprise-roi-calculator.tsx`).
+
+- **Enterprise ROI Calculator**: Added interactive ROI calculator for master key systems (`src/components/calculator/enterprise-roi-calculator.tsx`).

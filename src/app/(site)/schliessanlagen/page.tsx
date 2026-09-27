@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'schliessanlagen';
@@ -202,7 +203,13 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage(props: Props) {
+  const searchParams = await props.searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -238,6 +245,112 @@ export default async function SchliessanlagenPage() {
       />
 
       {/* Einstieg und Begriffe */}
+
+      <Section id="architektur">
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Präzision in der Schließplanung"
+          lead="Unsere mechanischen Schließanlagen folgen einer strikten architektonischen Logik, die Sicherheit, Skalierbarkeit und Langlebigkeit garantiert."
+        />
+        <div className="mt-8 prose-sm24 max-w-none text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <p>
+            Die Konzeption einer Schließanlage ist mehr als nur die Vergabe von Schlüsseln. Sie ist die Abbildung komplexer Organisationsstrukturen in ein physisches Zugangssystem. Wir analysieren tiefgehend die Gebäudetopologie und die betrieblichen Abläufe, um eine Schließhierarchie zu entwerfen, die sowohl heutigen als auch zukünftigen Anforderungen gerecht wird.
+          </p>
+          <h3 className="mt-8 text-xl font-semibold text-[oklch(0.16_0.02_260)]">1. Strukturelle Analyse und Profilierung</h3>
+          <p>
+            Im ersten Schritt erfassen wir die räumlichen Gegebenheiten und die funktionalen Anforderungen jeder einzelnen Tür. Dabei berücksichtigen wir Brandschutzvorschriften, Fluchtwege und die spezifischen Sicherheitsbedürfnisse (z.B. IT-Räume, Archive). Diese Daten bilden das Fundament für den Schließplan, das architektonische Kernstück jeder Anlage.
+          </p>
+          <h3 className="mt-8 text-xl font-semibold text-[oklch(0.16_0.02_260)]">2. Zylinder-Architektur und Materialwahl</h3>
+          <p>
+            Die Auswahl der Zylindersysteme erfolgt nicht generisch, sondern spezifisch für jede Tür. Außenhautabsicherungen erfordern hochfeste Materialien mit VdS-Anerkennung, Bohrschutz und Ziehschutz. Innentüren hingegen können mit modular aufgebauten Zylindern ausgestattet werden, die eine flexible Längenanpassung bei zukünftigen Umbauten ermöglichen.
+          </p>
+          <h3 className="mt-8 text-xl font-semibold text-[oklch(0.16_0.02_260)]">3. Leistungsstufen und Systemvergleich</h3>
+          <p>
+            Wir bieten Systeme in unterschiedlichen Leistungsklassen an, um das optimale Verhältnis aus Sicherheit, Komfort und Budget zu gewährleisten:
+          </p>
+          <div className="table-scroll mt-6 overflow-x-auto">
+            <table className="w-full min-w-[32rem] border-collapse text-[15px]">
+              <thead>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <th className="py-3 pr-4 text-left font-semibold text-[oklch(0.16_0.02_260)]">Kriterium</th>
+                  <th className="py-3 px-4 text-left font-semibold text-[oklch(0.16_0.02_260)]">Standard-Profil</th>
+                  <th className="py-3 px-4 text-left font-semibold text-[oklch(0.16_0.02_260)]">Wendeschlüssel-System</th>
+                  <th className="py-3 pl-4 text-left font-semibold text-[oklch(0.16_0.02_260)]">Mechatronik-Integration</th>
+                </tr>
+              </thead>
+              <tbody className="text-[oklch(0.32_0.02_260)]">
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <td className="py-3 pr-4 font-medium">Sicherheitsniveau</td>
+                  <td className="py-3 px-4">Basis-Kopierschutz</td>
+                  <td className="py-3 px-4">Hoher Manipulationsschutz</td>
+                  <td className="py-3 pl-4">Maximal (elektronisch protokollierbar)</td>
+                </tr>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <td className="py-3 pr-4 font-medium">Schließkomfort</td>
+                  <td className="py-3 px-4">Vertikale Einführung</td>
+                  <td className="py-3 px-4">Beidseitig schließbar</td>
+                  <td className="py-3 pl-4">Zusätzlicher Transponder-Komfort</td>
+                </tr>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <td className="py-3 pr-4 font-medium">Einsatzgebiet</td>
+                  <td className="py-3 px-4">Kleine Gewerbeobjekte</td>
+                  <td className="py-3 px-4">Komplexe Gebäude / Kliniken</td>
+                  <td className="py-3 pl-4">Hochsicherheitsbereiche</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 className="mt-8 text-xl font-semibold text-[oklch(0.16_0.02_260)]">4. Skalierbarkeit und Lebenszyklus</h3>
+          <p>
+            Eine professionelle Schließanlage wächst mit dem Unternehmen. Durch den Einsatz patentierter Profile und reservierter Schließungen in der Matrix können wir Erweiterungen über Jahre hinweg garantieren, ohne die Integrität der Anlage zu gefährden.
+          </p>
+        </div>
+      </Section>
+
+      <Section tight id="roi-calculator">
+        <SectionHeading
+          eyebrow="Kosten-Nutzen-Analyse"
+          title="Enterprise ROI Kalkulator"
+          lead="Berechnen Sie die langfristige Rentabilität und Einsparungen einer modernen, skalierbaren Schließanlage für Ihr Unternehmen."
+        />
+        <div className="mt-12">
+          <EnterpriseRoiCalculator />
+        </div>
+      </Section>
+
+      <Section id="faq">
+        <SectionHeading
+          eyebrow="Fachwissen"
+          title="Häufig gestellte Fragen (FAQ)"
+          lead="Detaillierte Antworten auf komplexe Fragestellungen rund um Konzeption und Betrieb."
+        />
+        <div className="mt-8 max-w-4xl mx-auto">
+          <Accordion items={[
+            {
+              question: "Wie wird die Sicherheit bei Schlüsselverlust in einer Anlage gewährleistet?",
+              answer: "Bei rein mechanischen Anlagen erfordert der Verlust eines übergeordneten Schlüssels oft den kostenintensiven Austausch großer Anlagenteile, um die Sicherheit wiederherzustellen. Wir empfehlen daher in kritischen Bereichen mechatronische Zylinder, bei denen verlorene Schlüssel sofort elektronisch gesperrt werden können, ohne die Mechanik zu tauschen."
+            },
+            {
+              question: "Was bedeutet rechtlicher Kopierschutz bei Schlüsseln?",
+              answer: "Rechtlicher Kopierschutz basiert auf einem Patentschutz des Schlüsselprofils. Nur gegen Vorlage der Sicherungskarte und ausschließlich durch autorisierte Fachpartner (oder den Hersteller selbst) dürfen Nachschlüssel gefertigt werden. Dies schützt Sie vor illegalen Rohlingen und unautorisierten Kopien."
+            },
+            {
+              question: "Können bestehende Türen nachträglich in die Anlage integriert werden?",
+              answer: "Ja, durch unsere vorausschauende Planung reservieren wir Erweiterungskapazitäten (sogenannte Reserveschließungen) in der Schließmatrix. Dies ermöglicht es, neue Türen oder Gebäudeabschnitte nahtlos und ohne Beeinträchtigung der bestehenden Hierarchie nachträglich einzubinden."
+            },
+            {
+              question: "Wie berechnet sich der ROI bei hochwertigen Wendeschlüsselsystemen?",
+              answer: "Der Return on Investment ergibt sich aus der deutlich längeren Lebensdauer durch verschleißarme Bauteile, den reduzierten Wartungskosten und der Vermeidung von Komplettaustauschen bei kleinen Organisationsänderungen. Die modulare Bauweise erlaubt zudem eine Anpassung der Zylinder bei Türwechseln."
+            },
+            {
+              question: "Welche Normen und Zertifizierungen sind für Gewerbeobjekte relevant?",
+              answer: "Für gewerbliche Schließanlagen sind primär die DIN 18252 (Profilzylinder für Türschlösser) und die DIN EN 1303 (Anforderungen an Schließzylinder) maßgeblich. Für Außenhautabsicherungen achten wir zusätzlich auf entsprechende VdS-Klassen (z.B. VdS BZ+) bezüglich Bohr- und Ziehschutz."
+            }
+          ]} />
+        </div>
+      </Section>
+
+
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
