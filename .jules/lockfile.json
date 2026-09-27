@@ -1,0 +1,18 @@
+{
+  "src/components/seo/json-ld.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "4fd433244c6201839511c55b7eeee689375ccaf876e9c195d499d53bf5b50c1c"
+  },
+  "src/app/page.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "2cf3ef31499b308eeee7cb45eb0ee1441a578b4966061841ea42db74c35bdd9b"
+  },
+  "src/app/ratgeber/[slug]/page.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "5b433b91607bbe137b5efbb5ae5db2922a016e163134d07348bd4e9b0b21d340"
+  },
+  "src/app/standorte/[city]/page.tsx": {
+    "status": "VERIFIZIERT_FROZEN",
+    "hash": "c1c409c035d53749881480d8983e5d782055ab3f40dfecbcb0cbfffe4d688819"
+  }
+}

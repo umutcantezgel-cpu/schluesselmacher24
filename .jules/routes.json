@@ -1,0 +1,524 @@
+[
+  {
+    "file": "src/app/page.tsx",
+    "url": "/",
+    "type": "page.tsx",
+    "words": 463,
+    "has_priority_image": false,
+    "has_json_ld": true,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/layout.tsx",
+    "url": "/",
+    "type": "layout.tsx",
+    "words": 182,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/ratgeber/page.tsx",
+    "url": "/ratgeber",
+    "type": "page.tsx",
+    "words": 120,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/ratgeber/[slug]/page.tsx",
+    "url": "/ratgeber/[slug]",
+    "type": "page.tsx",
+    "words": 209,
+    "has_priority_image": false,
+    "has_json_ld": true,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/schluessel-nach-vorlage/page.tsx",
+    "url": "/schluessel-nach-vorlage",
+    "type": "page.tsx",
+    "words": 1119,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/schluessel-nach-vorlage/anfrage/page.tsx",
+    "url": "/schluessel-nach-vorlage/anfrage",
+    "type": "page.tsx",
+    "words": 116,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/warenkorb/page.tsx",
+    "url": "/warenkorb",
+    "type": "page.tsx",
+    "words": 164,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/kasse/page.tsx",
+    "url": "/kasse",
+    "type": "page.tsx",
+    "words": 138,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/schluessel-nach-code/page.tsx",
+    "url": "/schluessel-nach-code",
+    "type": "page.tsx",
+    "words": 283,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/schluessel-nach-code/[slug]/page.tsx",
+    "url": "/schluessel-nach-code/[slug]",
+    "type": "page.tsx",
+    "words": 422,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/sicherheitstechnik/page.tsx",
+    "url": "/sicherheitstechnik",
+    "type": "page.tsx",
+    "words": 507,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/sicherheitstechnik/[slug]/page.tsx",
+    "url": "/sicherheitstechnik/[slug]",
+    "type": "page.tsx",
+    "words": 375,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/sicherheitstechnik/sicherheitscheck/page.tsx",
+    "url": "/sicherheitstechnik/sicherheitscheck",
+    "type": "page.tsx",
+    "words": 174,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/tuer-und-schliesstechnik/page.tsx",
+    "url": "/tuer-und-schliesstechnik",
+    "type": "page.tsx",
+    "words": 374,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/tuer-und-schliesstechnik/[slug]/page.tsx",
+    "url": "/tuer-und-schliesstechnik/[slug]",
+    "type": "page.tsx",
+    "words": 261,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/bestellung/[id]/page.tsx",
+    "url": "/bestellung/[id]",
+    "type": "page.tsx",
+    "words": 671,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/gleichschliessende-zylinder/page.tsx",
+    "url": "/gleichschliessende-zylinder",
+    "type": "page.tsx",
+    "words": 1145,
+    "has_priority_image": false,
+    "has_json_ld": true,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/gleichschliessende-zylinder/konfigurator/page.tsx",
+    "url": "/gleichschliessende-zylinder/konfigurator",
+    "type": "page.tsx",
+    "words": 180,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/elektronische-zutrittsloesungen/page.tsx",
+    "url": "/elektronische-zutrittsloesungen",
+    "type": "page.tsx",
+    "words": 1697,
+    "has_priority_image": false,
+    "has_json_ld": true,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+    "url": "/elektronische-zutrittsloesungen/konfigurator",
+    "type": "page.tsx",
+    "words": 221,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/schliessanlagen/page.tsx",
+    "url": "/schliessanlagen",
+    "type": "page.tsx",
+    "words": 1075,
+    "has_priority_image": false,
+    "has_json_ld": true,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/schliessanlagen/konfigurator/page.tsx",
+    "url": "/schliessanlagen/konfigurator",
+    "type": "page.tsx",
+    "words": 246,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/service-und-termin/page.tsx",
+    "url": "/service-und-termin",
+    "type": "page.tsx",
+    "words": 252,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/service-und-termin/terminstatus/page.tsx",
+    "url": "/service-und-termin/terminstatus",
+    "type": "page.tsx",
+    "words": 53,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/service-und-termin/anfrage/page.tsx",
+    "url": "/service-und-termin/anfrage",
+    "type": "page.tsx",
+    "words": 82,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/service-und-termin/vor-ort/page.tsx",
+    "url": "/service-und-termin/vor-ort",
+    "type": "page.tsx",
+    "words": 425,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/service-und-termin/kontakt/page.tsx",
+    "url": "/service-und-termin/kontakt",
+    "type": "page.tsx",
+    "words": 214,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/admin/page.tsx",
+    "url": "/admin",
+    "type": "page.tsx",
+    "words": 733,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/admin/layout.tsx",
+    "url": "/admin",
+    "type": "layout.tsx",
+    "words": 114,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/admin/einstellungen/page.tsx",
+    "url": "/admin/einstellungen",
+    "type": "page.tsx",
+    "words": 161,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/admin/fahrzeugdaten/page.tsx",
+    "url": "/admin/fahrzeugdaten",
+    "type": "page.tsx",
+    "words": 181,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/admin/termine/page.tsx",
+    "url": "/admin/termine",
+    "type": "page.tsx",
+    "words": 401,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/admin/preise/page.tsx",
+    "url": "/admin/preise",
+    "type": "page.tsx",
+    "words": 152,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/admin/vorgaenge/page.tsx",
+    "url": "/admin/vorgaenge",
+    "type": "page.tsx",
+    "words": 277,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/admin/vorgaenge/[id]/page.tsx",
+    "url": "/admin/vorgaenge/[id]",
+    "type": "page.tsx",
+    "words": 982,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/admin/inhalte/page.tsx",
+    "url": "/admin/inhalte",
+    "type": "page.tsx",
+    "words": 133,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/admin/produkte/page.tsx",
+    "url": "/admin/produkte",
+    "type": "page.tsx",
+    "words": 150,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/rechtliches/layout.tsx",
+    "url": "/rechtliches",
+    "type": "layout.tsx",
+    "words": 80,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/rechtliches/impressum/page.tsx",
+    "url": "/rechtliches/impressum",
+    "type": "page.tsx",
+    "words": 216,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/rechtliches/cookie-einstellungen/page.tsx",
+    "url": "/rechtliches/cookie-einstellungen",
+    "type": "page.tsx",
+    "words": 191,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/rechtliches/versand-und-zahlung/page.tsx",
+    "url": "/rechtliches/versand-und-zahlung",
+    "type": "page.tsx",
+    "words": 331,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/rechtliches/widerruf/page.tsx",
+    "url": "/rechtliches/widerruf",
+    "type": "page.tsx",
+    "words": 330,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/rechtliches/agb/page.tsx",
+    "url": "/rechtliches/agb",
+    "type": "page.tsx",
+    "words": 371,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/rechtliches/datenschutz/page.tsx",
+    "url": "/rechtliches/datenschutz",
+    "type": "page.tsx",
+    "words": 661,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/standorte/page.tsx",
+    "url": "/standorte",
+    "type": "page.tsx",
+    "words": 114,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/standorte/[city]/page.tsx",
+    "url": "/standorte/[city]",
+    "type": "page.tsx",
+    "words": 203,
+    "has_priority_image": false,
+    "has_json_ld": true,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/page.tsx",
+    "url": "/autoschluessel",
+    "type": "page.tsx",
+    "words": 1300,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/marken/page.tsx",
+    "url": "/autoschluessel/marken",
+    "type": "page.tsx",
+    "words": 414,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/marken/[make]/page.tsx",
+    "url": "/autoschluessel/marken/[make]",
+    "type": "page.tsx",
+    "words": 523,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/marken/[make]/[model]/page.tsx",
+    "url": "/autoschluessel/marken/[make]/[model]",
+    "type": "page.tsx",
+    "words": 739,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/funkschluessel/page.tsx",
+    "url": "/autoschluessel/funkschluessel",
+    "type": "page.tsx",
+    "words": 165,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/programmieren/page.tsx",
+    "url": "/autoschluessel/programmieren",
+    "type": "page.tsx",
+    "words": 204,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/anfrage/page.tsx",
+    "url": "/autoschluessel/anfrage",
+    "type": "page.tsx",
+    "words": 336,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/kopieren/page.tsx",
+    "url": "/autoschluessel/kopieren",
+    "type": "page.tsx",
+    "words": 198,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/nachmachen/page.tsx",
+    "url": "/autoschluessel/nachmachen",
+    "type": "page.tsx",
+    "words": 102,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/smart-key/page.tsx",
+    "url": "/autoschluessel/smart-key",
+    "type": "page.tsx",
+    "words": 235,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/schluesselbart-fraesen/page.tsx",
+    "url": "/autoschluessel/schluesselbart-fraesen",
+    "type": "page.tsx",
+    "words": 183,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  },
+  {
+    "file": "src/app/autoschluessel/fahrzeugoeffnung/page.tsx",
+    "url": "/autoschluessel/fahrzeugoeffnung",
+    "type": "page.tsx",
+    "words": 179,
+    "has_priority_image": false,
+    "has_json_ld": false,
+    "multiple_h1": false
+  }
+]
