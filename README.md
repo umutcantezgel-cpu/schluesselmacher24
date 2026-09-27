@@ -43,3 +43,9 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## System Architecture Blueprint
+Generated at: 2026-09-27T07:17:09.864Z
+Target framework: Next.js 16+
+Total routes to transform: 49
