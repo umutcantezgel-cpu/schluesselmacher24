@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-09-27T10:44:54+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_055",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_component_file": "components/showcase/spatial-bento-grid.tsx",
+      "title": "Vorher-Nachher-Vergleich basierend auf React 19",
+      "specification": "Implementierung von Vorher-Nachher-Vergleich basierend auf React 19 in components/showcase/spatial-bento-grid.tsx auf app/(site)/tuer-und-schliesstechnik/page.tsx zur Maximierung.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_015",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_component_file": "components/calculator/service-einsatz-rechner.tsx",
+      "title": "Scroll-Animation bei Datenvisualisierung",
+      "specification": "Implementierung von Scroll-Animation bei Datenvisualisierung in components/calculator/service-einsatz-rechner.tsx auf app/(site)/tuer-und-schliesstechnik/page.tsx zur Maximierung.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
