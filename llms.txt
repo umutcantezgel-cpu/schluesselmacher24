@@ -1,0 +1,6 @@
+# LLMs Context
+
+This project is built with Next.js 16+ App Router, React 19.2+, and Tailwind CSS v4 in OKLCH Light Mode.
+
+## Architecture Blueprint
+See `.jules/revolution-plan.json`.
