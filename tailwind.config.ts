@@ -22,22 +22,25 @@ const config = {
         display: ['var(--font-display)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
+      transitionTimingFunction: {
+        DEFAULT: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
       colors: {
-        background: 'hsl(var(--background))',
+        background: 'var(--background)',
         surface: {
-          DEFAULT: 'hsl(var(--surface))',
+          DEFAULT: 'var(--surface)',
           muted: 'hsl(var(--surface-muted))',
           sunken: 'hsl(var(--surface-sunken))',
           ink: 'hsl(var(--surface-ink))',
         },
         foreground: {
-          DEFAULT: 'hsl(var(--foreground))',
-          muted: 'hsl(var(--foreground-muted))',
+          DEFAULT: 'var(--foreground)',
+          muted: 'var(--foreground-muted)',
           subtle: 'hsl(var(--foreground-subtle))',
           inverse: 'hsl(var(--foreground-inverse))',
         },
         border: {
-          DEFAULT: 'hsl(var(--border))',
+          DEFAULT: 'var(--border)',
           strong: 'hsl(var(--border-strong))',
         },
         input: 'hsl(var(--input))',
@@ -74,7 +77,7 @@ const config = {
           soft: 'hsl(var(--info-soft))',
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
+          DEFAULT: 'var(--card)',
           foreground: 'hsl(var(--card-foreground))',
         },
         popover: {
