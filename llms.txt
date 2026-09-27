@@ -1,0 +1,3 @@
+# Architecture Blueprint & DNA Sync
+
+Synchronized metadata and current state of the application architecture.
