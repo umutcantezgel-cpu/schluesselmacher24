@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Master Blueprint
+
+This project is managed under the JC-AUDITOR-ARCHITECT-v1 master blueprint. See `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for the fully determinized architecture matrix and execution plan.

@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Status | Word Count | Schema | CWV |
+|---|---|---|---|---|
+| /admin/[[...segments]] | PENDING | 100 | None | Needs Layout Shift Fix |
+| /artikel/[slug] | PENDING | 935 | None | Needs Layout Shift Fix |
+| /artikel | PENDING | 657 | None | Needs Layout Shift Fix |
+| /autoschluessel/anfrage | PENDING | 519 | None | Needs Layout Shift Fix |
+| /autoschluessel/fahrzeugoeffnung | PENDING | 1122 | None | Needs Layout Shift Fix |
+| /autoschluessel/funkschluessel | PENDING | 1092 | None | Needs Layout Shift Fix |
+| /autoschluessel/kopieren | PENDING | 1134 | None | Needs Layout Shift Fix |
+| /autoschluessel/marken/[make]/[model] | PENDING | 1224 | None | Needs Layout Shift Fix |
+| /autoschluessel/marken/[make] | PENDING | 980 | None | Needs Layout Shift Fix |
+| /autoschluessel/marken | PENDING | 719 | None | Needs Layout Shift Fix |
+| /autoschluessel/nachmachen | PENDING | 1190 | None | Needs Layout Shift Fix |
+| /autoschluessel | PENDING | 2003 | None | Needs Layout Shift Fix |
+| /autoschluessel/programmieren | PENDING | 1223 | None | Needs Layout Shift Fix |
+| /autoschluessel/schluesselbart-fraesen | PENDING | 1043 | None | Needs Layout Shift Fix |
+| /autoschluessel/smart-key | PENDING | 1208 | None | Needs Layout Shift Fix |
+| /bestellung/[id] | PENDING | 1300 | None | Needs Layout Shift Fix |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING | 383 | None | Needs Layout Shift Fix |
+| /elektronische-zutrittsloesungen | PENDING | 2481 | None | Needs Layout Shift Fix |
+| /gleichschliessende-zylinder/konfigurator | PENDING | 311 | None | Needs Layout Shift Fix |
+| /gleichschliessende-zylinder | PENDING | 2082 | None | Needs Layout Shift Fix |
+| /kasse | PENDING | 243 | None | Needs Layout Shift Fix |
+| / | PENDING | 1131 | None | Needs Layout Shift Fix |
+| /ratgeber/[slug] | PENDING | 360 | None | Needs Layout Shift Fix |
+| /ratgeber | PENDING | 225 | None | Needs Layout Shift Fix |
+| /rechtliches/agb | PENDING | 417 | None | Needs Layout Shift Fix |
+| /rechtliches/cookie-einstellungen | PENDING | 229 | None | Needs Layout Shift Fix |
+| /rechtliches/datenschutz | PENDING | 716 | None | Needs Layout Shift Fix |
+| /rechtliches/impressum | PENDING | 249 | None | Needs Layout Shift Fix |
+| /rechtliches/versand-und-zahlung | PENDING | 428 | None | Needs Layout Shift Fix |
+| /rechtliches/widerruf | PENDING | 371 | None | Needs Layout Shift Fix |
+| /schliessanlagen/konfigurator | PENDING | 369 | None | Needs Layout Shift Fix |
+| /schliessanlagen | PENDING | 1874 | None | Needs Layout Shift Fix |
+| /schluessel-nach-code/[slug] | PENDING | 735 | None | Needs Layout Shift Fix |
+| /schluessel-nach-code | PENDING | 498 | None | Needs Layout Shift Fix |
+| /schluessel-nach-vorlage/anfrage | PENDING | 222 | None | Needs Layout Shift Fix |
+| /schluessel-nach-vorlage | PENDING | 1794 | None | Needs Layout Shift Fix |
+| /service-und-termin/anfrage | PENDING | 152 | None | Needs Layout Shift Fix |
+| /service-und-termin/kontakt | PENDING | 475 | None | Needs Layout Shift Fix |
+| /service-und-termin | PENDING | 1579 | None | Needs Layout Shift Fix |
+| /service-und-termin/terminstatus | PENDING | 108 | None | Needs Layout Shift Fix |
+| /service-und-termin/vor-ort | PENDING | 656 | None | Needs Layout Shift Fix |
+| /sicherheitstechnik/[slug] | PENDING | 645 | None | Needs Layout Shift Fix |
+| /sicherheitstechnik | PENDING | 1021 | None | Needs Layout Shift Fix |
+| /sicherheitstechnik/sicherheitscheck | PENDING | 330 | None | Needs Layout Shift Fix |
+| /standorte/[city] | PENDING | 406 | None | Needs Layout Shift Fix |
+| /standorte | PENDING | 250 | None | Needs Layout Shift Fix |
+| /tuer-und-schliesstechnik/[slug] | PENDING | 494 | None | Needs Layout Shift Fix |
+| /tuer-und-schliesstechnik | PENDING | 1785 | None | Needs Layout Shift Fix |
+| /warenkorb | PENDING | 262 | None | Needs Layout Shift Fix |
