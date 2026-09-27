@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture
+
+This project follows the architecture blueprint and transformation queue defined in `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`. All routes adhere to the zero-new-routes constraint and strict UI guidelines using OKLCH light mode color spacing.

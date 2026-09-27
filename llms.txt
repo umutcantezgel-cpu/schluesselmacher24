@@ -1,0 +1,8 @@
+# SCHLÜSSELMACHER24 Architecture Blueprint
+
+This document outlines the architectural objectives and constraints for the codebase auditing and blueprinting phase.
+
+- Zero-New-Routes constraint is strictly enforced.
+- The UI system uses Tailwind CSS v4 and the OKLCH Light Mode design doctrine.
+- Interactive modules are implemented as Next.js Server Components.
+- Refer to `.jules/architecture-matrix.md` and `.jules/revolution-plan.json` for specific route transformation plans.
