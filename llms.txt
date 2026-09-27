@@ -1,0 +1,7 @@
+# LLMs.txt
+
+Existing text here.
+
+## Architecture Blueprint Updates
+
+The site's architecture blueprint has been updated to reflect an audit and transformation plan toward a high-end Swiss Light Mode design. Refer to `.jules/revolution-plan.json` for details on content expansion and interactive module upgrades.

@@ -1,0 +1,52 @@
+# Architektur Matrix
+
+| Route | Status | Current Words | Target Words | Interactive Module |
+|---|---|---|---|---|
+| /artikel/[slug] | PENDING_BUILDER | 935 | 1435 | EnterpriseRoiCalculator |
+| /artikel | PENDING_BUILDER | 657 | 1157 | EnterpriseRoiCalculator |
+| /autoschluessel/anfrage | PENDING_BUILDER | 519 | 1019 | CarKeyCompatibilityFilter |
+| /autoschluessel/fahrzeugoeffnung | PENDING_BUILDER | 1122 | 1622 | CarKeyCompatibilityFilter |
+| /autoschluessel/funkschluessel | PENDING_BUILDER | 1092 | 1592 | CarKeyCompatibilityFilter |
+| /autoschluessel/kopieren | PENDING_BUILDER | 1134 | 1634 | CarKeyCompatibilityFilter |
+| /autoschluessel/marken/[make]/[model] | PENDING_BUILDER | 1224 | 1724 | CarKeyCompatibilityFilter |
+| /autoschluessel/marken/[make] | PENDING_BUILDER | 980 | 1480 | CarKeyCompatibilityFilter |
+| /autoschluessel/marken | PENDING_BUILDER | 719 | 1219 | CarKeyCompatibilityFilter |
+| /autoschluessel/nachmachen | PENDING_BUILDER | 1190 | 1690 | CarKeyCompatibilityFilter |
+| /autoschluessel | PENDING_BUILDER | 2003 | 2503 | CarKeyCompatibilityFilter |
+| /autoschluessel/programmieren | PENDING_BUILDER | 1223 | 1723 | CarKeyCompatibilityFilter |
+| /autoschluessel/schluesselbart-fraesen | PENDING_BUILDER | 1043 | 1543 | CarKeyCompatibilityFilter |
+| /autoschluessel/smart-key | PENDING_BUILDER | 1208 | 1708 | CarKeyCompatibilityFilter |
+| /bestellung/[id] | PENDING_BUILDER | 1300 | 1800 | EnterpriseRoiCalculator |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING_BUILDER | 383 | 883 | EnterpriseRoiCalculator |
+| /elektronische-zutrittsloesungen | PENDING_BUILDER | 2481 | 2981 | EnterpriseRoiCalculator |
+| /gleichschliessende-zylinder/konfigurator | PENDING_BUILDER | 350 | 850 | EnterpriseRoiCalculator |
+| /gleichschliessende-zylinder | PENDING_BUILDER | 2082 | 2582 | EnterpriseRoiCalculator |
+| /kasse | PENDING_BUILDER | 350 | 850 | EnterpriseRoiCalculator |
+| / | PENDING_BUILDER | 1131 | 1631 | EnterpriseRoiCalculator |
+| /ratgeber/[slug] | PENDING_BUILDER | 360 | 860 | EnterpriseRoiCalculator |
+| /ratgeber | PENDING_BUILDER | 350 | 850 | EnterpriseRoiCalculator |
+| /rechtliches/agb | PENDING_BUILDER | 417 | 917 | EnterpriseRoiCalculator |
+| /rechtliches/cookie-einstellungen | PENDING_BUILDER | 350 | 850 | EnterpriseRoiCalculator |
+| /rechtliches/datenschutz | PENDING_BUILDER | 716 | 1216 | EnterpriseRoiCalculator |
+| /rechtliches/impressum | PENDING_BUILDER | 350 | 850 | EnterpriseRoiCalculator |
+| /rechtliches/versand-und-zahlung | PENDING_BUILDER | 428 | 928 | EnterpriseRoiCalculator |
+| /rechtliches/widerruf | PENDING_BUILDER | 371 | 871 | EnterpriseRoiCalculator |
+| /schliessanlagen/konfigurator | PENDING_BUILDER | 369 | 869 | EnterpriseRoiCalculator |
+| /schliessanlagen | PENDING_BUILDER | 1874 | 2374 | EnterpriseRoiCalculator |
+| /schluessel-nach-code/[slug] | PENDING_BUILDER | 735 | 1235 | EnterpriseRoiCalculator |
+| /schluessel-nach-code | PENDING_BUILDER | 498 | 998 | EnterpriseRoiCalculator |
+| /schluessel-nach-vorlage/anfrage | PENDING_BUILDER | 350 | 850 | EnterpriseRoiCalculator |
+| /schluessel-nach-vorlage | PENDING_BUILDER | 1794 | 2294 | EnterpriseRoiCalculator |
+| /service-und-termin/anfrage | PENDING_BUILDER | 350 | 850 | EnterpriseRoiCalculator |
+| /service-und-termin/kontakt | PENDING_BUILDER | 475 | 975 | EnterpriseRoiCalculator |
+| /service-und-termin | PENDING_BUILDER | 1579 | 2079 | EnterpriseRoiCalculator |
+| /service-und-termin/terminstatus | PENDING_BUILDER | 350 | 850 | EnterpriseRoiCalculator |
+| /service-und-termin/vor-ort | PENDING_BUILDER | 656 | 1156 | EnterpriseRoiCalculator |
+| /sicherheitstechnik/[slug] | PENDING_BUILDER | 645 | 1145 | SecurityAuditCalculator |
+| /sicherheitstechnik | PENDING_BUILDER | 1021 | 1521 | SecurityAuditCalculator |
+| /sicherheitstechnik/sicherheitscheck | PENDING_BUILDER | 350 | 850 | SecurityAuditCalculator |
+| /standorte/[city] | PENDING_BUILDER | 406 | 906 | EnterpriseRoiCalculator |
+| /standorte | PENDING_BUILDER | 350 | 850 | EnterpriseRoiCalculator |
+| /tuer-und-schliesstechnik/[slug] | PENDING_BUILDER | 494 | 994 | EnterpriseRoiCalculator |
+| /tuer-und-schliesstechnik | PENDING_BUILDER | 1785 | 2285 | EnterpriseRoiCalculator |
+| /warenkorb | PENDING_BUILDER | 350 | 850 | EnterpriseRoiCalculator |
