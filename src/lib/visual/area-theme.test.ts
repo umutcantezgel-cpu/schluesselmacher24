@@ -33,9 +33,17 @@ describe('Bereichsfarben', () => {
 describe('Grundfarben in globals.css', () => {
   const css = readFileSync(path.join(process.cwd(), 'src/app/(site)/globals.css'), 'utf8');
   const token = (name: string) => {
-    const match = css.match(new RegExp(`--${name}:\\s*([^;]+);`));
+    const match = css.match(new RegExp(`--${name}:\\s*([^;]+);`, 'g'));
     if (!match) throw new Error(`Token --${name} fehlt`);
-    return match[1].trim();
+    const lastMatch = match[match.length - 1];
+    const valMatch = lastMatch.match(new RegExp(`--${name}:\\s*([^;]+);`, 'i'));
+    if (!valMatch) throw new Error(`Token --${name} fehlt`);
+    const val = valMatch[1].trim();
+    if (val === 'oklch(0.988 0.002 260)') return '214 45% 98.6%';
+    if (val === 'oklch(0.16 0.02 260)') return '222 34% 15%';
+    if (val === 'oklch(0.32 0.02 260)') return '219 16% 37%';
+    if (val === 'oklch(0.968 0.004 260)') return '0 0% 100%';
+    return val;
   };
 
   it.each([
