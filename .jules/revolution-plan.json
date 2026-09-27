@@ -1,0 +1,13 @@
+{
+  "transformation_queue": [
+    {
+      "route": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "interactive_module": {
+         "name": "security-audit-calculator",
+         "type": "calculator",
+         "description": "A security audit interactive calculator estimating costs."
+      }
+    }
+  ]
+}

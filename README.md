@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Interaktive Module
+- **ServiceBudgetCalculator**: Ein interaktiver Budget-Rechner, basierend auf React 19 Server Actions und OKLCH Design, integriert in den Sicherheitscheck.
