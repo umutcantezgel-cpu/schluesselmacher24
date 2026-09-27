@@ -43,3 +43,10 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Blueprint & DNA
+
+- **Framework**: Next.js 16+ (App Router, Turbopack Engine, React 19.2+, TypeScript 5.5+)
+- **Styling**: Tailwind CSS v4.x / Native Modern CSS (OKLCH Color Space)
+- **Transformation Target**: Enforce Swiss Light Mode Design Doctrine across all audited routes.
+- **Blueprint References**: Refer to `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for the exhaustive route transformation list.

@@ -1,0 +1,17 @@
+# SCHLÜSSELMACHER24 - Architecture & Transformation Blueprint
+
+This document specifies the current target architecture based on the Stage 1 Audit.
+
+## Architecture Blueprint
+- **Framework**: Next.js 16+ App Router
+- **Runtime Environment**: React 19.2+ Server Components & Form Actions
+- **Language**: TypeScript 5.5+ (Strict)
+- **Styling**: Tailwind CSS v4, OKLCH Light Mode Design System
+
+## Core Directives
+- **Zero-New-Routes**: No new URLs or structural paths may be created. Transformation is restricted to existing files.
+- **Brand DNA**: The existing brand identity must be preserved and enhanced strictly via the Swiss Light Mode OKLCH standard.
+- **Data Attributes**: Server Component asynchronous proxies (params, searchParams) must be fully `await`ed before mapping to the DOM.
+- **Forms**: Migrate from useState-driven forms to React 19's `useActionState` & `useOptimistic` coupled with Server Actions.
+
+Review `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for the exhaustive transformation queue.
