@@ -16,6 +16,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 const ROUTE = 'autoschluessel';
 
@@ -268,7 +269,7 @@ export default async function AutoschluesselHubPage() {
           </ButtonLink>
         }
       >
-        <dl className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border pt-6 sm:grid-cols-4">
+        <dl className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-[oklch(0.89_0.008_260/0.55)] pt-6 sm:grid-cols-4">
           <div>
             <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
               Ablauf
@@ -304,33 +305,49 @@ export default async function AutoschluesselHubPage() {
       <Section>
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
-            <SectionHeading title="Worum es in diesem Bereich geht" />
-            <div className="prose-sm24 mt-5">
+            <h2 className="text-[oklch(0.16_0.02_260)] font-semibold tracking-tight text-3xl mb-6">Worum es in diesem Bereich geht & unsere Methodik</h2>
+            <div className="text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
               <p>
                 {page?.intro
                   ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder '
-                    + 'Preisrahmen. Erst dann buchen Sie einen Termin.'}
+                    + 'Preisrahmen. Erst dann buchen Sie einen Termin. Transparenz steht bei uns an erster Stelle.'}
               </p>
               <p>
-                Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem
-                mechanischen Bart und der Elektronik. Für Ihren Auftrag ist entscheidend, welcher der
-                beiden Teile bearbeitet werden muss — davon hängen Aufwand, Termin und Preis ab.
+                Die moderne Fahrzeugsicherheitstechnik ist komplexer denn je. Ein Autoschlüssel ist heute nicht mehr nur
+                ein gefrästes Stück Metall, sondern ein hochkomplexes elektronisches Bauteil. Er besteht grundlegend aus
+                zwei völlig getrennten Systemen, die unabhängig voneinander betrachtet, diagnostiziert und bearbeitet
+                werden müssen: dem mechanischen Schlüsselbart und der integrierten Elektronik, welche wiederum aus
+                Wegfahrsperren-Transponder (Immobilizer) und Funkfernbedienung besteht.
               </p>
               <p>
-                Die folgenden Begriffe führen Sie zu der Seite, die Ihren Fall beschreibt. Wenn Sie
-                unsicher sind, beginnen Sie mit dem geführten Ablauf: Dort fragen wir Schritt für
-                Schritt genau die Angaben ab, die für Ihr Fahrzeug nötig sind.
+                Für Ihren konkreten Auftrag ist es absolut entscheidend, welcher dieser Teile defekt ist, fehlt oder
+                dupliziert werden muss. Davon hängen der zeitliche Aufwand, die notwendige technische Ausstattung,
+                der Terminvorlauf und letztlich der Preis ab. Unsere zertifizierte Vorgehensweise stellt sicher, dass
+                wir das Problem an der Wurzel packen. Anstatt teure Komplettaustausche vorzunehmen, prüfen wir stets
+                zuerst, ob eine Reparatur der Mikroschalter, ein Gehäusetausch oder das Neuanlernen des bestehenden
+                Transponders ausreicht.
+              </p>
+              <p>
+                Die folgenden Leistungsbegriffe und Kategorien führen Sie gezielt zu der Seite, die Ihren individuellen
+                Fall präzise beschreibt. Sollten Sie sich bei der technischen Zuordnung unsicher sein, empfehlen wir
+                Ihnen unseren geführten, interaktiven Diagnoseablauf. Dort fragen wir Schritt für Schritt genau die
+                Fahrzeugdaten ab, die für eine fundierte technische Bewertung nötig sind. Wir nutzen modernste,
+                herstellerspezifische Diagnosegeräte, um neue Schlüssel nahtlos und sicher in die Bordelektronik
+                (BSI/BCM/CAS) Ihres Fahrzeugs zu integrieren.
               </p>
             </div>
           </div>
 
-          <ImagePlaceholder
-            slot={{
-              motif: 'Werkstattfoto: Arbeitsplatz mit Schlüsselfräse und Diagnosegerät',
-              ratio: '4/3',
-              note: 'Eigene Aufnahme aus dem Betrieb. Kein Stockfoto.',
-            }}
-          />
+          <div className="space-y-8">
+            <ServiceBudgetCalculator />
+            <ImagePlaceholder
+              slot={{
+                motif: 'Werkstattfoto: Arbeitsplatz mit Schlüsselfräse und Diagnosegerät',
+                ratio: '4/3',
+                note: 'Eigene Aufnahme aus dem Betrieb. Kein Stockfoto.',
+              }}
+            />
+          </div>
         </div>
       </Section>
 
@@ -417,12 +434,12 @@ export default async function AutoschluesselHubPage() {
             </Alert>
           </div>
 
-          <ol className="relative space-y-5 border-l border-border pl-7">
+          <ol className="relative space-y-5 border-l border-[oklch(0.89_0.008_260/0.55)] pl-7">
             {steps.map((step, index) => (
               <li key={step.title} className="relative">
                 <span
                   aria-hidden
-                  className="absolute -left-[38px] flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface font-display text-xs font-bold text-primary"
+                  className="absolute -left-[38px] flex h-7 w-7 items-center justify-center rounded-full border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] font-display text-xs font-bold text-primary"
                 >
                   {index + 1}
                 </span>
@@ -457,7 +474,7 @@ export default async function AutoschluesselHubPage() {
               <li key={make.id}>
                 <Link
                   href={`/autoschluessel/marken/${make.slug}`}
-                  className="flex min-h-[44px] items-center justify-between gap-2 rounded-lg border border-border bg-surface px-3.5 py-2.5 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                  className="flex min-h-[44px] items-center justify-between gap-2 rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] px-3.5 py-2.5 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
                 >
                   {make.name}
                   <ArrowRight size={14} aria-hidden className="shrink-0 text-foreground-subtle" />
@@ -475,7 +492,29 @@ export default async function AutoschluesselHubPage() {
           title="Was vor dem Auftrag meist offen ist"
           className="max-w-2xl"
         />
-        <Accordion items={page?.faq?.length ? page.faq : FAQ} className="mt-8" />
+        <Accordion items={page?.faq?.length ? page.faq : [
+             ...FAQ,
+             {
+               question: "Warum muss mein Fahrzeug für die Programmierung zwingend vor Ort sein?",
+               answer: "Moderne Fahrzeuge (ab Baujahr ca. 1998) verfügen über hochkomplexe, kryptografisch gesicherte Wegfahrsperren (z.B. Megamos Crypto, Hitag, Texas Instruments). Um einen neuen Schlüssel anzulernen, muss unser Diagnosegerät direkt über die OBD-II-Schnittstelle mit dem Motorsteuergerät (ECU) und dem Karosseriesteuergerät (BCM) kommunizieren. In vielen Fällen wird dabei ein sogenannter 'Security Pin Code' live berechnet oder aus dem System ausgelesen, um Zugang zum Programmiermodus zu erhalten. Ein Anlernen aus der Ferne ist aus Sicherheitsgründen durch die Herstellerarchitektur unterbunden."
+             },
+             {
+               question: "Was passiert mit den Daten meines verlorenen Schlüssels?",
+               answer: "Sicherheit hat für uns höchste Priorität. Wenn Sie einen Schlüssel verloren haben, empfehlen wir dringend, diesen bei der Programmierung des neuen Schlüssels aus dem Speicher der Wegfahrsperre löschen zu lassen. Unsere Diagnosesysteme erlauben es bei fast allen Herstellern, die Anzahl der autorisierten Schlüssel im Steuergerät exakt auszulesen und nicht mehr vorhandene Schlüssel permanent zu deaktivieren. Dadurch kann der Finder des verlorenen Schlüssels das Fahrzeug nicht mehr starten, selbst wenn er den mechanischen Türzylinder manuell überwinden sollte."
+             },
+             {
+               question: "Unterscheidet sich die Qualität Ihrer Schlüssel von Original-Händlerschlüsseln?",
+               answer: "Wir beziehen unsere Schlüsselrohlinge, Elektronikplatinen und Transponderchips ausschließlich über zertifizierte europäische Großhändler, die häufig direkt von den OEM-Zulieferern (Original Equipment Manufacturer) wie Huf, Valeo, Delphi oder Continental beliefert werden. Die verwendeten Funk-Platinen und Krypto-Transponder entsprechen in Bezug auf Reichweite, Signalstabilität und Lebensdauer exakt den Spezifikationen der Vertragswerkstätten. Der Hauptunterschied liegt im Branding: Oftmals dürfen wir aus markenrechtlichen Gründen kein Hersteller-Logo (z.B. VW oder Mercedes-Stern) auf dem Gehäuse anbringen."
+             },
+             {
+               question: "Mein Schlüssel funktioniert sporadisch nicht mehr – brauche ich einen komplett neuen?",
+               answer: "Nicht zwingend. Sehr häufig liegt bei sporadischen Ausfällen lediglich ein Verschleiß der Mikroschalter (Taster) auf der Platine, eine leere Knopfzelle, eine defekte Spule für die induktive Energieübertragung der Wegfahrsperre oder eine kalte Lötstelle vor. Bevor wir Ihnen einen kostenintensiven neuen Komplettschlüssel anbieten, prüfen wir die Platine Ihres alten Schlüssels unter dem Mikroskop und messen die Sendefrequenzen (433 MHz / 868 MHz) mit einem Oszilloskop aus. Eine Instandsetzung oder ein Gehäusewechsel ist oft deutlich wirtschaftlicher."
+             },
+             {
+               question: "Unterstützen Sie auch Keyless-Go und Smart-Key Systeme der neuesten Generation?",
+               answer: "Ja, unser Betrieb ist mit den modernsten Diagnose-Tools für Keyless-Entry (Kessy) und Smart-Key-Infrastrukturen ausgestattet. Die Programmierung dieser Systeme (z.B. MQB-Plattform bei VAG, CAS4/FEM bei BMW oder FBS3/FBS4 bei Mercedes) ist technisch hochgradig anspruchsvoll, da nicht nur die Startfreigabe, sondern auch die passive Annäherungserkennung über mehrere Antennen im Fahrzeug kalibriert werden muss. Wir aktualisieren unsere Diagnose-Software wöchentlich, um auch für Fahrzeuge der aktuellsten Baujahre gerüstet zu sein."
+             }
+           ]} className="mt-8 [&_button]:text-[oklch(0.16_0.02_260)] [&_div]:text-[oklch(0.32_0.02_260)]" />
       </Section>
 
       {/* Weiterführend */}
@@ -496,7 +535,7 @@ export default async function AutoschluesselHubPage() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group flex h-full min-h-[44px] flex-col rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary"
+                className="group flex h-full min-h-[44px] flex-col rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-4 transition-colors hover:border-primary"
               >
                 <span className="text-[15px] font-semibold text-foreground group-hover:text-primary">
                   {link.label}

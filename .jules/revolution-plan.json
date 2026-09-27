@@ -1,0 +1,12 @@
+{
+  "transformation_queue": [
+    {
+      "route": "src/app/(site)/autoschluessel/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "interactive_module": {
+        "name": "CarKeyCostCalculator",
+        "description": "Ein interaktiver Rechner zur Kostenkalkulation für Autoschlüssel-Kopien (Marke, Modell, Smart-Key-Optionen)."
+      }
+    }
+  ]
+}
