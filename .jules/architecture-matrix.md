@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route Path | Status | Ist-Worte | Soll-Worte | Interaktives Modul |
+|------------|--------|-----------|------------|--------------------|
+| /(payload)/admin/[[...segments]] | PENDING | 90 | 950 | GenericCalculator |
+| /(site)/artikel/[slug] | PENDING | 629 | 950 | GenericCalculator |
+| /(site)/artikel | PENDING | 454 | 950 | GenericCalculator |
+| /(site)/autoschluessel/anfrage | PENDING | 362 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel/fahrzeugoeffnung | PENDING | 199 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel/funkschluessel | PENDING | 185 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel/kopieren | PENDING | 221 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel/marken/[make]/[model] | PENDING | 794 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel/marken/[make] | PENDING | 538 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel/marken | PENDING | 423 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel/nachmachen | PENDING | 110 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel | PENDING | 1433 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel/programmieren | PENDING | 229 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel/schluesselbart-fraesen | PENDING | 209 | 950 | CarKeyCalculator |
+| /(site)/autoschluessel/smart-key | PENDING | 260 | 950 | CarKeyCalculator |
+| /(site)/bestellung/[id] | PENDING | 919 | 950 | GenericCalculator |
+| /(site)/elektronische-zutrittsloesungen/konfigurator | PENDING | 249 | 950 | AccessControlConfigurator |
+| /(site)/elektronische-zutrittsloesungen | PENDING | 1913 | 950 | AccessControlConfigurator |
+| /(site)/gleichschliessende-zylinder/konfigurator | PENDING | 200 | 950 | GenericCalculator |
+| /(site)/gleichschliessende-zylinder | PENDING | 1233 | 950 | GenericCalculator |
+| /(site)/kasse | PENDING | 160 | 950 | GenericCalculator |
+| /(site) | PENDING | 488 | 950 | GenericCalculator |
+| /(site)/ratgeber/[slug] | PENDING | 226 | 950 | GenericCalculator |
+| /(site)/ratgeber | PENDING | 132 | 950 | GenericCalculator |
+| /(site)/rechtliches/agb | PENDING | 383 | 950 | GenericCalculator |
+| /(site)/rechtliches/cookie-einstellungen | PENDING | 205 | 950 | GenericCalculator |
+| /(site)/rechtliches/datenschutz | PENDING | 653 | 950 | GenericCalculator |
+| /(site)/rechtliches/impressum | PENDING | 217 | 950 | GenericCalculator |
+| /(site)/rechtliches/versand-und-zahlung | PENDING | 343 | 950 | GenericCalculator |
+| /(site)/rechtliches/widerruf | PENDING | 341 | 950 | GenericCalculator |
+| /(site)/schliessanlagen/konfigurator | PENDING | 258 | 950 | MasterKeyCalculator |
+| /(site)/schliessanlagen | PENDING | 1451 | 950 | MasterKeyCalculator |
+| /(site)/schluessel-nach-code/[slug] | PENDING | 496 | 950 | GenericCalculator |
+| /(site)/schluessel-nach-code | PENDING | 311 | 950 | GenericCalculator |
+| /(site)/schluessel-nach-vorlage/anfrage | PENDING | 126 | 950 | GenericCalculator |
+| /(site)/schluessel-nach-vorlage | PENDING | 1252 | 950 | GenericCalculator |
+| /(site)/service-und-termin/anfrage | PENDING | 96 | 950 | GenericCalculator |
+| /(site)/service-und-termin/kontakt | PENDING | 219 | 950 | GenericCalculator |
+| /(site)/service-und-termin | PENDING | 1184 | 950 | GenericCalculator |
+| /(site)/service-und-termin/terminstatus | PENDING | 61 | 950 | GenericCalculator |
+| /(site)/service-und-termin/vor-ort | PENDING | 441 | 950 | GenericCalculator |
+| /(site)/sicherheitstechnik/[slug] | PENDING | 403 | 950 | SecurityChecklist |
+| /(site)/sicherheitstechnik | PENDING | 548 | 950 | SecurityChecklist |
+| /(site)/sicherheitstechnik/sicherheitscheck | PENDING | 195 | 950 | SecurityChecklist |
+| /(site)/standorte/[city] | PENDING | 222 | 950 | GenericCalculator |
+| /(site)/standorte | PENDING | 126 | 950 | GenericCalculator |
+| /(site)/tuer-und-schliesstechnik/[slug] | PENDING | 283 | 950 | GenericCalculator |
+| /(site)/tuer-und-schliesstechnik | PENDING | 1235 | 950 | GenericCalculator |
+| /(site)/warenkorb | PENDING | 184 | 950 | GenericCalculator |
