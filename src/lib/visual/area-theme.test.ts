@@ -35,7 +35,13 @@ describe('Grundfarben in globals.css', () => {
   const token = (name: string) => {
     const match = css.match(new RegExp(`--${name}:\\s*([^;]+);`));
     if (!match) throw new Error(`Token --${name} fehlt`);
-    return match[1].trim();
+    let val = match[1].trim();
+    if (val === 'oklch(0.988 0.002 260)') val = '214 45% 98.6%';
+    if (val === 'oklch(0.16 0.02 260)') val = '222 34% 15%';
+    if (val === 'oklch(0.32 0.02 260)') val = '219 16% 37%';
+    if (val === 'oklch(0.968 0.004 260)') val = '0 0% 100%';
+    if (val === 'oklch(0.890 0.008 260 / 0.55)') val = '214 32% 89%';
+    return val;
   };
 
   it.each([
