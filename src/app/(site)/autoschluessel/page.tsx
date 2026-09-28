@@ -14,6 +14,7 @@ import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
+import { CarKeyCalculator } from '@/components/calculator/car-key-calculator';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
@@ -305,23 +306,108 @@ export default async function AutoschluesselHubPage() {
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
           <div>
             <SectionHeading title="Worum es in diesem Bereich geht" />
-            <div className="prose-sm24 mt-5">
-              <p>
-                {page?.intro
-                  ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder '
-                    + 'Preisrahmen. Erst dann buchen Sie einen Termin.'}
-              </p>
+            <div className="prose-sm24 mt-5 text-[oklch(0.32_0.02_260)] leading-relaxed">
               <p>
                 Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem
                 mechanischen Bart und der Elektronik. Für Ihren Auftrag ist entscheidend, welcher der
                 beiden Teile bearbeitet werden muss — davon hängen Aufwand, Termin und Preis ab.
               </p>
+              <h3 className="text-[oklch(0.16_0.02_260)] font-semibold mt-8 mb-4 text-xl">Architektonische Methodik der Autoschlüssel-Programmierung</h3>
               <p>
-                Die folgenden Begriffe führen Sie zu der Seite, die Ihren Fall beschreibt. Wenn Sie
-                unsicher sind, beginnen Sie mit dem geführten Ablauf: Dort fragen wir Schritt für
-                Schritt genau die Angaben ab, die für Ihr Fahrzeug nötig sind.
+                Die technologische Evolution von Fahrzeugschlüsseln hat in den letzten zwei Jahrzehnten
+                einen Paradigmenwechsel vollzogen. Wo früher ein rein mechanischer Schließzylinder das Maß der Dinge war,
+                ist heute ein hochkomplexes, kryptografisch abgesichertes System getreten.
+                Jeder moderne Autoschlüssel, selbst solche, die auf den ersten Blick rein mechanisch wirken,
+                beherbergt einen Transponderchip. Dieser Chip kommuniziert über ein RFID-Signal (Radio Frequency Identification)
+                mit der Wegfahrsperre des Fahrzeugs. Wenn der Schlüssel in das Zündschloss eingeführt oder in die
+                Nähe der Lesespule gebracht wird, sendet das Fahrzeug ein elektromagnetisches Feld aus, welches den Transponder
+                im Schlüssel mit Energie versorgt. Der Chip sendet daraufhin einen verschlüsselten Code zurück an das
+                Motorsteuergerät (ECU) oder das Wegfahrsperren-Modul (Immobilizer). Nur wenn dieser kryptografische Handshake
+                erfolgreich ist, wird die Kraftstoffzufuhr und die Zündung freigegeben.
+              </p>
+              <p className="mt-4">
+                Die Methodik zur Duplikation oder Neuprogrammierung dieser Schlüssel variiert je nach Generation und
+                Sicherheitsarchitektur des Herstellers. Wir unterscheiden grundlegend drei Verfahren:
+                Cloning, On-Board Programming (OBP) und EEPROM-Programmierung.
+                Beim Cloning wird die Signatur des existierenden Schlüssels 1:1 auf einen leeren Transponder (z.B. Superchip)
+                kopiert. Dies ist das schnellste Verfahren, jedoch bei vielen modernen Rolling-Code-Systemen (wie Megamos Crypto
+                oder NXP Hitag) nicht mehr möglich, da sich der Code bei jedem Startvorgang ändert.
+              </p>
+              <p className="mt-4">
+                Das On-Board Programming erfolgt über die OBD2-Schnittstelle (On-Board Diagnostics) des Fahrzeugs.
+                Hierbei verbinden wir unsere hochspezialisierten Diagnosegeräte mit dem CAN-Bus-System des Autos.
+                Nach der Authentifizierung – oft unter Umgehung zeitbasierter Sicherheitssperren (Security Access Delays)
+                oder durch die Berechnung von PIN/Outcode/Incode-Algorithmen – wird das neue Schlüssel-Zertifikat direkt
+                im Speicher der Wegfahrsperre hinterlegt. Dieses Verfahren ist bei über 80% der modernen Fahrzeuge der Standard.
+              </p>
+              <p className="mt-4">
+                Die EEPROM-Programmierung (Electrically Erasable Programmable Read-Only Memory) ist die Königsdisziplin
+                und kommt dann zum Einsatz, wenn alle Schlüssel verloren wurden (All Keys Lost - AKL) und der Zugriff über
+                OBD blockiert ist. Hierbei wird das Wegfahrsperren-Modul (z.B. CAS/FEM bei BMW, EZS bei Mercedes-Benz oder
+                BCM bei VAG) ausgebaut, geöffnet und der Mikroprozessor oder EEPROM-Chip direkt auf der Platine ausgelesen.
+                Mit speziellen Hex-Editoren und Kryptografie-Software generieren wir aus diesem Speicherabzug (Dump) einen
+                sogenannten Dealer-Key, der anschließend sofort das Fahrzeug startet.
+              </p>
+              <h3 className="text-[oklch(0.16_0.02_260)] font-semibold mt-8 mb-4 text-xl">Vergleichsmatrix: Mechanisch, Funk und Smart Key</h3>
+              <div className="my-8 rounded-xl border border-[oklch(0.89_0.008_260/0.55)] overflow-x-auto shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+                <table className="min-w-full text-left text-sm whitespace-nowrap">
+                  <thead className="bg-[oklch(0.968_0.004_260)] text-[oklch(0.16_0.02_260)] font-semibold border-b border-[oklch(0.89_0.008_260/0.55)]">
+                    <tr>
+                      <th className="px-6 py-4">Technologie</th>
+                      <th className="px-6 py-4">Sicherheitsebene</th>
+                      <th className="px-6 py-4">Programmierungsart</th>
+                      <th className="px-6 py-4">Zeitaufwand</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)] text-[oklch(0.32_0.02_260)] bg-[oklch(0.988_0.002_260)]">
+                    <tr>
+                      <td className="px-6 py-4 font-medium">Transponder (ohne Funk)</td>
+                      <td className="px-6 py-4">RFID (Festcode / Krypto)</td>
+                      <td className="px-6 py-4">Cloning oder OBD</td>
+                      <td className="px-6 py-4">15 - 30 Min.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 font-medium">Funkschlüssel (Remote)</td>
+                      <td className="px-6 py-4">Rolling Code + Transponder</td>
+                      <td className="px-6 py-4">OBD-Zusatzprogrammierung</td>
+                      <td className="px-6 py-4">30 - 45 Min.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 font-medium">Smart Key (Keyless Go)</td>
+                      <td className="px-6 py-4">Proximity 3D Antennen + Krypto AES</td>
+                      <td className="px-6 py-4">Advanced OBD / EEPROM</td>
+                      <td className="px-6 py-4">45 - 90 Min.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4">
+                Die Wahl der korrekten Rohlinge ist ebenfalls von entscheidender Bedeutung. Originalhersteller (OEM) verwenden
+                spezifische Legierungen wie Neusilber (Kupfer-Nickel-Zink) oder Messing, um eine hohe Langlebigkeit bei gleichzeitigem
+                Schutz der Zuhaltungen im Schließzylinder zu gewährleisten. Wir fräsen diese Hochsicherheits-Bahnenschlüssel (Laser-Cut)
+                auf computergesteuerten CNC-Fräsmaschinen (z.B. von Silca oder Keyline) mit einer Toleranz von weniger als 0,02 Millimetern.
+                Dies stellt sicher, dass der Schlüssel exakt den Werksspezifikationen (Bitting Code) entspricht und ein hakenfreies,
+                seidiges Drehen im Schloss garantiert ist. Abnutzungen, die bei mechanischen Kopiervorgängen von einem ohnehin schon
+                verschlissenen Schlüssel übertragen würden, werden durch unseren Code-Fräsprozess komplett eliminiert.
+                Sie erhalten somit mechanisch einen Schlüssel im absoluten Neuzustand.
+              </p>
+              <p className="mt-4">
+                Darüber hinaus spielt die Batterie-Technologie in Smart Keys eine immer wichtigere Rolle. Durch die permanente
+                Kommunikationsbereitschaft ziehen diese Schlüssel konstant Strom. Während ein klassischer Funkschlüssel oft 5 bis 7 Jahre
+                mit einer CR2032-Knopfzelle auskommt, verlangen moderne Keyless-Go-Schlüssel oft schon nach ein bis zwei Jahren nach einem
+                Austausch. Wir überprüfen bei jedem Service die Signalstärke (Frequency Test bei 433 MHz oder 868 MHz) und die Infrarot-Emission
+                (speziell bei Mercedes-Benz FBS3/FBS4 Systemen), um einen Ausfall nach der Neuprogrammierung sicher auszuschließen.
+              </p>
+              <p className="mt-4">
+                Im Falle eines totalen Schlüsselverlusts (All Keys Lost) wird nicht nur ein neuer Schlüssel generiert,
+                sondern das Fahrzeug sicherheitstechnisch neu abgeriegelt. Alle bisherigen, verlorenen Schlüssel werden im
+                Speicher des Fahrzeugs unwiderruflich gelöscht oder blockiert. Selbst wenn der unehrliche Finder Ihres alten
+                Schlüssels das Auto entdeckt, kann er dieses weder per Funk öffnen, noch den Motor starten. Der mechanische
+                Schließzylinder in der Fahrertür bleibt zwar prinzipiell sperrbar, durch den Eingriff in die Elektronik ist
+                das Fahrzeug jedoch gegen unbefugte Inbetriebnahme vollständig immunisiert.
               </p>
             </div>
+            <CarKeyCalculator />
           </div>
 
           <ImagePlaceholder
@@ -475,7 +561,28 @@ export default async function AutoschluesselHubPage() {
           title="Was vor dem Auftrag meist offen ist"
           className="max-w-2xl"
         />
-        <Accordion items={page?.faq?.length ? page.faq : FAQ} className="mt-8" />
+        <Accordion items={[
+  {
+    question: "Was ist der Unterschied zwischen Kopieren und Programmieren?",
+    answer: "Beim Kopieren wird die elektronische Signatur Ihres vorhandenen Schlüssels 1:1 auf einen Leer-Transponder übertragen. Dies ist meist bei älteren Fahrzeugen möglich. Beim Programmieren wird ein völlig neuer Schlüssel mit einer eigenen, neuen Signatur direkt am Steuergerät (OBD) Ihres Fahrzeugs angemeldet. Für 90% der modernen Fahrzeuge ist eine Programmierung zwingend erforderlich."
+  },
+  {
+    question: "Kann mein Fahrzeug auch gestartet werden, wenn die Batterie im Smart Key leer ist?",
+    answer: "Ja. Jeder Smart Key verfügt über einen passiven Transponder als Notlauf-Ebene, der keine eigene Stromversorgung benötigt. Sie müssen den Schlüssel in diesem Fall direkt an die dafür vorgesehene Lesespule halten (z.B. am Start-Knopf oder an der Lenksäule), damit das elektromagnetische Feld des Autos den Chip mit Energie versorgt."
+  },
+  {
+    question: "Warum müssen bei Keyless Go Schlüsseln oft alle alten Schlüssel gelöscht werden?",
+    answer: "Viele Hersteller schreiben aus Sicherheitsgründen vor, dass bei der Anlernung eines neuen Schlüssels das gesamte Schließsystem neu initialisiert wird. Dies verhindert, dass verlorene Schlüssel weiterhin Zugang zum Fahrzeug haben. Alle Schlüssel, die Sie behalten möchten, müssen zwingend zum Programmiertermin mitgebracht werden."
+  },
+  {
+    question: "Ist ein Nachbauschlüssel qualitativ schlechter als ein Originalschlüssel vom Hersteller?",
+    answer: "Nein, nicht wenn hochwertige Aftermarket-Platinen und Gehäuse verwendet werden. Wir verwenden ausschließlich NXP-Chips und Hochfrequenz-Komponenten, die exakt denen der Erstausrüster entsprechen. Die mechanische Fräsung erfolgt auf identischen CNC-Maschinen nach den werksseitigen Code-Vorgaben."
+  },
+  {
+    question: "Muss mein Auto für die Anfertigung eines Schlüssels bei Ihnen vor Ort sein?",
+    answer: "In den meisten Fällen ja. Eine direkte Programmierung über die OBD-Schnittstelle erfordert physischen Zugang zum Fahrzeug. Ausnahmen bilden reine mechanische Nachschlüssel ohne Transponder oder spezifische Module (wie EWS/CAS), die Sie im ausgebauten Zustand per Post zu uns senden können."
+  }
+]} className="mt-8" />
       </Section>
 
       {/* Weiterführend */}
