@@ -1,0 +1,16 @@
+# SCHLÜSSELMACHER24
+
+Website und Shop für Autoschlüssel, Schlüssel, Schließtechnik, elektronische
+Zutrittslösungen und Sicherheitstechnik. Domain: `schluesselmacher24.de`
+
+## Technischer Aufbau
+
+- **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript** (strict)
+- **Tailwind CSS 3** mit semantischen CSS-Variablen (`src/app/globals.css`)
+- **Formulare**: react-hook-form + zod
+- **Zwischenspeicherung** langer Konfiguratoren: `src/lib/flow/`
+- **Datenschicht**: `src/lib/data/` — austauschbarer Adapter, Standard ist der JSON-Adapter auf `content/`
+
+## Interaktive Module
+
+- **Security Needs Analyzer** (`src/components/calculator/security-needs-analyzer.tsx`): Interaktives Tool zur Analyse des Sicherheitsbedarfs auf der Ratgeber-Seite.

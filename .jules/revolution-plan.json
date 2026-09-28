@@ -1,0 +1,10 @@
+{
+  "plan": [
+    {
+      "target_route": "src/app/(site)/ratgeber/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "interactive_module": "components/calculator/security-needs-analyzer.tsx",
+      "word_count_target": 850
+    }
+  ]
+}
