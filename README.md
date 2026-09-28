@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Blueprint
+Das Projekt verwendet Next.js 16+ mit React 19 und folgt der Swiss Light Design Doctrine (OKLCH Color Space). Transformation-Ziele sind in `.jules/revolution-plan.json` definiert.
