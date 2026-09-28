@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-09-28T18:34:11+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten (Score: Machbarkeit, ROI, Visuelle Wirkung).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_063",
+      "category": "CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_component_file": "src/components/sicherheitstechnik/schluessel-identifikator.tsx",
+      "title": "Personalisierend Schlüssel-Identifikator",
+      "specification": "Entwicklung eines personalisierenden Schlüssel-Identifikator für `src/app/(site)/sicherheitstechnik/[slug]/page.tsx` mit React 19 Server Actions und `useOptimistic` für verzögerungsfreie Interaktion ohne Hydration-Probleme.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_001",
+      "category": "AWWWARDS-KINETIK & TAKTILE INTERAKTION",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/layout/page-header.tsx",
+      "title": "Fluid Bento-Grid",
+      "specification": "Implementierung von bento-grid in `src/components/layout/page-header.tsx`. Ziel ist eine fluide Nutzererfahrung durch strikte Einhaltung von `cubic-bezier(0.16, 1, 0.3, 1)` und OKLCH-Farbräumen ohne Layout-Shifts.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
