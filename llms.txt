@@ -1,0 +1,6 @@
+
+
+## Architecture Goals
+- Migrating to Swiss Light Mode (OKLCH)
+- Enhancing Interactivity and SEO
+- No new routes, modifying existing ones.
