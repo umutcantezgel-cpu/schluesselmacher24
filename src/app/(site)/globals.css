@@ -14,20 +14,20 @@
 @layer base {
   :root {
     /* Flächen */
-    --background: 214 45% 98.6%;
-    --surface: 0 0% 100%;
+    --background: oklch(0.988 0.002 260);
+    --surface: oklch(0.968 0.004 260);
     --surface-muted: 214 50% 96.6%;
     --surface-sunken: 214 36% 92.5%;
     --surface-ink: 222 36% 16%;
 
     /* Text */
-    --foreground: 222 34% 15%;
-    --foreground-muted: 219 16% 37%;
+    --foreground: oklch(0.16 0.02 260);
+    --foreground-muted: oklch(0.32 0.02 260);
     --foreground-subtle: 217 12% 45%;
     --foreground-inverse: 214 45% 98.6%;
 
     /* Linien */
-    --border: 214 32% 89%;
+    --border: oklch(0.890 0.008 260 / 0.55);
     --border-strong: 214 22% 77%;
     --input: 214 28% 84%;
     --ring: 214 86% 50%;
@@ -58,9 +58,9 @@
     --info-soft: 214 100% 96.5%;
 
     /* Karten / Popover */
-    --card: 0 0% 100%;
+    --card: oklch(0.968 0.004 260);
     --card-foreground: 222 34% 15%;
-    --popover: 0 0% 100%;
+    --popover: oklch(0.968 0.004 260);
     --popover-foreground: 222 34% 15%;
     --muted: 214 50% 94%;
     --muted-foreground: 219 16% 37%;
@@ -86,6 +86,7 @@
   }
 
   body {
+    overflow-x: clip;
     @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -100,7 +101,7 @@
   }
 
   /* Sichtbarer Fokus — Pflicht für Tastaturbedienung */
-  :focus-visible {
+  *:focus-visible {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 
@@ -236,7 +237,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .sm24-draw {
     stroke-dasharray: 1;
-    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.65, 0, 0.35, 1)
+    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.16, 1, 0.3, 1)
       var(--sm24-delay, 0s) both;
   }
 
