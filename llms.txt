@@ -1,0 +1,6 @@
+# AI Context File
+
+This is the core context file for the LLM.
+
+## Architecture Blueprint Sync
+Architecture synced to target OKLCH layout, strictly typed RSC architecture, and React 19 server actions without introducing new routes.
