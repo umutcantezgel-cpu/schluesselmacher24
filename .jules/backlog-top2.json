@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-09-28T08:42:10+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel fuer bestehende Seiten, basierend auf visuellem Impact und ROI.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_A04",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "components/layout/summary-list.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "Ueberfuehrung bestehender Karten oder Listen in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedaempfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
+      "score": 9.85,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_C04",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/(site)/schliessanlagen/page.tsx",
+      "target_component_file": "components/calculator/budget-rechner.tsx",
+      "title": "Interaktiver Budgetrechner für Schließanlagen",
+      "specification": "Einbindung eines nativen useActionState Werkzeugs zur sofortigen Kostenschaetzung von mechanischen vs elektronischen Schliessanlagen. Binde das Tool direkt in die bestehende Seite ein.",
+      "score": 9.55,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
