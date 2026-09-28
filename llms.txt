@@ -1,0 +1,4 @@
+
+
+## Architecture Audit
+State updated in .jules/revolution-plan.json and .jules/architecture-matrix.md
