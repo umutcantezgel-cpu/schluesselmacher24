@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { SecurityAuditCalculator } from '@/components/sicherheitstechnik/security-audit-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +74,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -299,7 +307,120 @@ export default async function SicherheitstechnikPage() {
         </div>
       </Section>
 
-      {/* Weiterführende Seiten */}
+      {/* TIEFEN-ANALYSE & INTERAKTIVES MODUL: SICHERHEITSTECHNIK */}
+  <Section id="tiefen-analyse">
+    <SectionHeading
+      eyebrow="Architektur & Methodik"
+      title="Ganzheitliche Sicherheitsarchitektur: Von der Physis zur digitalen Resilienz"
+      lead="Sicherheit ist kein Zustand, sondern ein dynamischer Prozess. Eine wirksame Sicherheitsarchitektur erfordert die lückenlose Integration mechanischer Barrieren, präziser Meldetechnik und ausfallsicherer Alarmierungssysteme."
+    />
+
+    <div className="mt-12 grid gap-16 lg:grid-cols-[1fr_1.2fr]">
+      <div className="space-y-8 text-[oklch(0.32_0.02_260)] leading-relaxed text-[16px]">
+        <p>
+          Moderne Sicherheitstechnik basiert auf dem Prinzip des <strong>Zwiebelschalenmodells (Defense in Depth)</strong>.
+          Jede Ebene der Absicherung &ndash; von der Grundstücksgrenze über die Außenhaut des Gebäudes bis hin zur
+          inneren Kernzone &ndash; muss spezifische Widerstandswerte aufweisen. Der fundamentale Irrtum vieler
+          Sicherheitskonzepte besteht darin, elektronische Überwachung als Ersatz für physischen Widerstand
+          zu betrachten. Tatsächlich gilt: <em>Elektronik meldet, Mechanik hält auf.</em>
+        </p>
+        <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Mechanische Grundsicherung (Die Physische Barriere)</h3>
+        <p>
+          Die mechanische Absicherung bildet das unerschütterliche Fundament jeder Sicherheitsstrategie.
+          Einbrecher arbeiten unter extremem Zeitdruck. Dauert die Überwindung einer Barriere (z.B. einer
+          Eingangstür oder eines Fensters im Erdgeschoss) länger als drei bis fünf Minuten, wird der Versuch
+          in über 80% der Fälle abgebrochen. Hier kommen hochresistente Materialien zum Einsatz:
+        </p>
+        <ul className="list-disc pl-6 space-y-2 mt-4">
+          <li><strong>Profilzylinder mit Zieh- und Bohrschutz:</strong> Gehärtete Stahlstifte verhindern das Aufbohren, während die Zylinderkonstruktion ein Abbrechen oder Herausziehen durch Spezialwerkzeuge unmöglich macht.</li>
+          <li><strong>Schutzbeschläge (ES1 bis ES3):</strong> Massive Stahlschilder, die den Zylinder komplett abdecken und von innen unsichtbar verschraubt sind.</li>
+          <li><strong>Pilzkopfverriegelungen an Fenstern:</strong> Diese greifen beim Verschließen tief in massive Stahlschließbleche ein und verhindern das sekundenschnelle Aufhebeln des Fensterflügels, der häufigsten Einbruchsmethode.</li>
+        </ul>
+
+        <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Elektronische Detektion (Die Sensorik)</h3>
+        <p>
+          Erst wenn der mechanische Grundschutz gewährleistet ist, entfaltet die elektronische Meldetechnik
+          ihre volle Wirkung. Einbruchmeldeanlagen (EMA) und Videoüberwachungssysteme dienen nicht der
+          Verhinderung des Eindringens, sondern der sofortigen Erkennung und Dokumentation.
+        </p>
+        <p className="mt-4">
+          Wir unterscheiden zwischen der <strong>Außenhautüberwachung</strong> (Magnetkontakte an Fenstern und Türen,
+          die anschlagen, bevor der Täter im Gebäude ist) und der <strong>Fallenüberwachung</strong> (Infrarot- und
+          Mikrowellen-Bewegungsmelder im Inneren). Moderne Anlagen nutzen Dual-Melder-Technologie, um
+          Fehlalarme durch Haustiere oder thermische Schwankungen drastisch zu reduzieren.
+        </p>
+
+        <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Ausfallsicherheit und Redundanz</h3>
+        <p>
+          Eine professionelle Sicherheitsarchitektur darf keinen Single Point of Failure aufweisen.
+          Alarmzentralen müssen über redundante Übertragungswege (z.B. IP/LAN gekoppelt mit LTE/GSM-Mobilfunk)
+          verfügen. Bei einem Stromausfall oder der gezielten Manipulation der Zuleitung muss das System
+          durch Notstromakkumulatoren (USV) für mindestens 12 bis 60 Stunden (je nach VdS-Klasse) vollständig
+          betriebsbereit bleiben.
+        </p>
+      </div>
+
+      <div className="lg:sticky lg:top-24 h-fit">
+        <SecurityAuditCalculator />
+      </div>
+    </div>
+  </Section>
+
+  {/* FAQ SEKTION */}
+  <Section tone="muted">
+    <SectionHeading
+      eyebrow="Fachwissen"
+      title="Häufige Fragen zur Sicherheitsarchitektur"
+      lead="Fundierte Antworten auf die wichtigsten technischen und konzeptionellen Fragen."
+    />
+    <div className="mt-10 grid gap-6 md:grid-cols-2">
+      <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+        <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Was bedeutet VdS-Zertifizierung und warum ist sie wichtig?</h4>
+        <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          Die VdS Schadenverhütung GmbH ist Europas führendes Institut für Unternehmenssicherheit.
+          Eine VdS-Anerkennung bedeutet, dass Komponenten und Errichter strengste Qualitäts- und
+          Sabotageschutz-Kriterien erfüllen. Für gewerbliche Objekte fordern Versicherer häufig
+          eine Anlage nach VdS Klasse B oder C.
+        </p>
+      </div>
+      <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+        <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Kann eine Alarmanlage kabellos (Funk) installiert werden?</h4>
+        <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          Ja. Moderne professionelle Funksysteme arbeiten auf geschützten Frequenzen (z.B. 868 MHz)
+          und nutzen Rolling-Code-Verschlüsselung sowie bidirektionale Kommunikation. Sie sind resistent
+          gegen &quot;Jamming&quot; (Störsender). Bei Neubauten oder Kernsanierungen raten wir dennoch zur
+          verkabelten Bus-Technologie (höchste Ausfallsicherheit, keine Batteriewechsel).
+        </p>
+      </div>
+      <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+        <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Was ist der Unterschied zwischen Außenhaut- und Fallenüberwachung?</h4>
+        <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          Die Außenhautüberwachung detektiert den Täter bereits am Fenster oder der Tür (bevor er im Objekt ist),
+          was eine frühe Alarmierung ermöglicht und ideal für Anwesenheitsschutz ist (Sie können sich im Haus frei bewegen).
+          Die Fallenüberwachung sichert Innenräume (Bewegungsmelder) und löst aus, wenn der Täter bereits eingedrungen ist.
+        </p>
+      </div>
+      <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+        <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Darf ich Überwachungskameras beliebig aufhängen?</h4>
+        <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          Nein. Aus Datenschutzgründen (DSGVO) dürfen Kameras ausschließlich das eigene Grundstück erfassen.
+          Öffentliche Wege (Gehwege, Straßen) oder das Nachbargrundstück müssen zwingend durch Privacy-Masking
+          (digitale Schwärzung im Kamerabild) oder physische Blenden ausgeblendet werden.
+        </p>
+      </div>
+      <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 md:col-span-2">
+        <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Wie funktioniert eine Aufschaltung auf eine Notruf- und Serviceleitstelle (NSL)?</h4>
+        <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          Eine bloße Sirene am Haus wird oft ignoriert. Bei einer Aufschaltung sendet die Zentrale im Alarmfall ein
+          verschlüsseltes Protokoll an eine 24/7 besetzte, hochsichere Leitstelle. Dort wird der vereinbarte
+          Interventionsplan abgearbeitet: Objekt anrufen, Bildverifizierung prüfen (falls Kameras gekoppelt sind),
+          Interventionsdienst (Wachschutz) oder direkt die Polizei alarmieren.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  {/* Weiterführende Seiten */}
       {page && page.seo.internalLinks.length > 0 && (
         <Section tight>
           <SectionHeading eyebrow="Weiterlesen" title="Passende Seiten" />
