@@ -1,0 +1,14 @@
+{
+  "transformation_queue": [
+    {
+      "route": "src/app/(site)/autoschluessel/page.tsx",
+      "status": "PENDING_BUILDER",
+      "word_count_target": 850,
+      "interactive_module": {
+        "name": "ServiceBudgetCalculator",
+        "path": "src/components/calculator/service-budget-calculator.tsx",
+        "action": "src/actions/calculate-budget.ts"
+      }
+    }
+  ]
+}
