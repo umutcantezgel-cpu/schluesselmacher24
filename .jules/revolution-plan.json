@@ -1,0 +1,1551 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-09-28T09:28:36.940Z",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: GENERATED",
+        "Expansion for: AUTOMATICALLY",
+        "Expansion for: PAYLOAD"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "...segmentsInteractiveModule",
+        "target_file": "components/interactive/...segments-interactive-module.tsx",
+        "action_file": "actions/...segments-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/api/[...slug]",
+      "source_file": "src/app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: GENERATED",
+        "Expansion for: AUTOMATICALLY",
+        "Expansion for: PAYLOAD"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "...slugInteractiveModule",
+        "target_file": "components/interactive/...slug-interactive-module.tsx",
+        "action_file": "actions/...slug-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/",
+      "source_file": "src/app/(payload)/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: GENERATED",
+        "Expansion for: AUTOMATICALLY",
+        "Expansion for: PAYLOAD"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeInteractiveModule",
+        "target_file": "components/interactive/home-interactive-module.tsx",
+        "action_file": "actions/home-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/api/kunden-upload",
+      "source_file": "src/app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 1204,
+      "content_expansion_topics": [
+        "Expansion for: MAX_PDF_BYTES",
+        "Expansion for: MELDUNG_ZU_GROSS",
+        "Expansion for: UPLOAD_KATEGORIEN"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KundenuploadInteractiveModule",
+        "target_file": "components/interactive/kundenupload-interactive-module.tsx",
+        "action_file": "actions/kundenupload-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1434,
+      "content_expansion_topics": [
+        "Expansion for: Beschreibung",
+        "Expansion for: Eigenschaften",
+        "Expansion for: Lieferumfang"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugInteractiveModule",
+        "target_file": "components/interactive/slug-interactive-module.tsx",
+        "action_file": "actions/slug-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1156,
+      "content_expansion_topics": [
+        "Expansion for: ArtikelPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelInteractiveModule",
+        "target_file": "components/interactive/artikel-interactive-module.tsx",
+        "action_file": "actions/artikel-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1018,
+      "content_expansion_topics": [
+        "Expansion for: AutoschluesselAnfragePage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageInteractiveModule",
+        "target_file": "components/interactive/anfrage-interactive-module.tsx",
+        "action_file": "actions/anfrage-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1621,
+      "content_expansion_topics": [
+        "Expansion for: FahrzeugoeffnungPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: InfoHint"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugoeffnungInteractiveModule",
+        "target_file": "components/interactive/fahrzeugoeffnung-interactive-module.tsx",
+        "action_file": "actions/fahrzeugoeffnung-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1591,
+      "content_expansion_topics": [
+        "Expansion for: FunkschluesselPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: InfoHint"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FunkschluesselInteractiveModule",
+        "target_file": "components/interactive/funkschluessel-interactive-module.tsx",
+        "action_file": "actions/funkschluessel-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1633,
+      "content_expansion_topics": [
+        "Expansion for: KopierenPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: InfoHint"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KopierenInteractiveModule",
+        "target_file": "components/interactive/kopieren-interactive-module.tsx",
+        "action_file": "actions/kopieren-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: BereichLayout Overview",
+        "Expansion for: ReactNode",
+        "Expansion for: AreaScope"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselInteractiveModule",
+        "target_file": "components/interactive/autoschluessel-interactive-module.tsx",
+        "action_file": "actions/autoschluessel-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1723,
+      "content_expansion_topics": [
+        "Expansion for: Baujahr entscheidet mit",
+        "Expansion for: Anzahlung und Vorlauf",
+        "Expansion for: ModelPage Overview"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModelInteractiveModule",
+        "target_file": "components/interactive/model-interactive-module.tsx",
+        "action_file": "actions/model-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1479,
+      "content_expansion_topics": [
+        "Expansion for: MakePage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MakeInteractiveModule",
+        "target_file": "components/interactive/make-interactive-module.tsx",
+        "action_file": "actions/make-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1218,
+      "content_expansion_topics": [
+        "Expansion for: MarkenPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenInteractiveModule",
+        "target_file": "components/interactive/marken-interactive-module.tsx",
+        "action_file": "actions/marken-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1689,
+      "content_expansion_topics": [
+        "Expansion for: NachmachenPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ServiceArticle"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "NachmachenInteractiveModule",
+        "target_file": "components/interactive/nachmachen-interactive-module.tsx",
+        "action_file": "actions/nachmachen-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2502,
+      "content_expansion_topics": [
+        "Expansion for: {group.title}",
+        "Expansion for: {step.title}",
+        "Expansion for: AutoschluesselHubPage Overview"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselInteractiveModule",
+        "target_file": "components/interactive/autoschluessel-interactive-module.tsx",
+        "action_file": "actions/autoschluessel-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1722,
+      "content_expansion_topics": [
+        "Expansion for: ProgrammierenPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: InfoHint"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ProgrammierenInteractiveModule",
+        "target_file": "components/interactive/programmieren-interactive-module.tsx",
+        "action_file": "actions/programmieren-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1542,
+      "content_expansion_topics": [
+        "Expansion for: SchluesselbartFraesenPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: InfoHint"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselbartfraesenInteractiveModule",
+        "target_file": "components/interactive/schluesselbartfraesen-interactive-module.tsx",
+        "action_file": "actions/schluesselbartfraesen-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1707,
+      "content_expansion_topics": [
+        "Expansion for: SmartKeyPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: InfoHint"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartkeyInteractiveModule",
+        "target_file": "components/interactive/smartkey-interactive-module.tsx",
+        "action_file": "actions/smartkey-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1799,
+      "content_expansion_topics": [
+        "Expansion for: Bestellte Artikel",
+        "Expansion for: Zahlung",
+        "Expansion for: Ihre Angaben"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "IdInteractiveModule",
+        "target_file": "components/interactive/id-interactive-module.tsx",
+        "action_file": "actions/id-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: Passende Seiten",
+        "Expansion for: ZutrittKonfiguratorPage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorInteractiveModule",
+        "target_file": "components/interactive/konfigurator-interactive-module.tsx",
+        "action_file": "actions/konfigurator-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: BereichLayout Overview",
+        "Expansion for: ReactNode",
+        "Expansion for: AreaScope"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischezutrittsloesungenInteractiveModule",
+        "target_file": "components/interactive/elektronischezutrittsloesungen-interactive-module.tsx",
+        "action_file": "actions/elektronischezutrittsloesungen-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 2980,
+      "content_expansion_topics": [
+        "Expansion for: {block.title}",
+        "Expansion for: ElektronischeZutrittsloesungenPage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischezutrittsloesungenInteractiveModule",
+        "target_file": "components/interactive/elektronischezutrittsloesungen-interactive-module.tsx",
+        "action_file": "actions/elektronischezutrittsloesungen-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: Wenn Sie vorher etwas nachlesen möchten",
+        "Expansion for: CylinderConfiguratorPage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorInteractiveModule",
+        "target_file": "components/interactive/konfigurator-interactive-module.tsx",
+        "action_file": "actions/konfigurator-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: BereichLayout Overview",
+        "Expansion for: ReactNode",
+        "Expansion for: AreaScope"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendezylinderInteractiveModule",
+        "target_file": "components/interactive/gleichschliessendezylinder-interactive-module.tsx",
+        "action_file": "actions/gleichschliessendezylinder-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2581,
+      "content_expansion_topics": [
+        "Expansion for: {form.label}",
+        "Expansion for: Funktion des Zylinders",
+        "Expansion for: Gleichschließung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendezylinderInteractiveModule",
+        "target_file": "components/interactive/gleichschliessendezylinder-interactive-module.tsx",
+        "action_file": "actions/gleichschliessendezylinder-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: Rechtliche Hinweise",
+        "Expansion for: KassePage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseInteractiveModule",
+        "target_file": "components/interactive/kasse-interactive-module.tsx",
+        "action_file": "actions/kasse-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/",
+      "source_file": "src/app/(site)/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: RootLayout Overview",
+        "Expansion for: Metadata",
+        "Expansion for: Viewport"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeInteractiveModule",
+        "target_file": "components/interactive/home-interactive-module.tsx",
+        "action_file": "actions/home-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 1630,
+      "content_expansion_topics": [
+        "Expansion for: HomePage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeInteractiveModule",
+        "target_file": "components/interactive/home-interactive-module.tsx",
+        "action_file": "actions/home-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: {block.heading}",
+        "Expansion for: GuidePage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugInteractiveModule",
+        "target_file": "components/interactive/slug-interactive-module.tsx",
+        "action_file": "actions/slug-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: {group.area.label}",
+        "Expansion for: RatgeberPage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberInteractiveModule",
+        "target_file": "components/interactive/ratgeber-interactive-module.tsx",
+        "action_file": "actions/ratgeber-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: 1. Geltungsbereich und Vertragspartner",
+        "Expansion for: 2. Vertragsschluss",
+        "Expansion for: 3. Preise, Preisrahmen und Prüfvorbehalt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AgbInteractiveModule",
+        "target_file": "components/interactive/agb-interactive-module.tsx",
+        "action_file": "actions/agb-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: Cookie-Einstellungen",
+        "Expansion for: Was genau gespeichert wird",
+        "Expansion for: Sobald weitere Dienste hinzukommen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CookieeinstellungenInteractiveModule",
+        "target_file": "components/interactive/cookieeinstellungen-interactive-module.tsx",
+        "action_file": "actions/cookieeinstellungen-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1215,
+      "content_expansion_topics": [
+        "Expansion for: Datenschutzerklärung",
+        "Expansion for: 1. Verantwortliche Stelle",
+        "Expansion for: 2. Datenschutzbeauftragte Person"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DatenschutzInteractiveModule",
+        "target_file": "components/interactive/datenschutz-interactive-module.tsx",
+        "action_file": "actions/datenschutz-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: Impressum",
+        "Expansion for: Anbieter",
+        "Expansion for: Vertreten durch"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ImpressumInteractiveModule",
+        "target_file": "components/interactive/impressum-interactive-module.tsx",
+        "action_file": "actions/impressum-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/rechtliches",
+      "source_file": "src/app/(site)/rechtliches/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: RechtlichesLayout Overview",
+        "Expansion for: ReactNode",
+        "Expansion for: FOOTER_LEGAL"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesInteractiveModule",
+        "target_file": "components/interactive/rechtliches-interactive-module.tsx",
+        "action_file": "actions/rechtliches-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: Zahlung und Versand",
+        "Expansion for: Versandarten",
+        "Expansion for: Lieferzeiten"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VersandundzahlungInteractiveModule",
+        "target_file": "components/interactive/versandundzahlung-interactive-module.tsx",
+        "action_file": "actions/versandundzahlung-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: Widerruf und Rückgabe",
+        "Expansion for: 1. Widerrufsbelehrung für Verbraucherinnen und Verbraucher",
+        "Expansion for: 2. Muster-Widerrufsformular"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WiderrufInteractiveModule",
+        "target_file": "components/interactive/widerruf-interactive-module.tsx",
+        "action_file": "actions/widerruf-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: Noch unsicher?",
+        "Expansion for: SchliessanlagenKonfiguratorPage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorInteractiveModule",
+        "target_file": "components/interactive/konfigurator-interactive-module.tsx",
+        "action_file": "actions/konfigurator-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: BereichLayout Overview",
+        "Expansion for: ReactNode",
+        "Expansion for: AreaScope"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenInteractiveModule",
+        "target_file": "components/interactive/schliessanlagen-interactive-module.tsx",
+        "action_file": "actions/schliessanlagen-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2373,
+      "content_expansion_topics": [
+        "Expansion for: Die Systeme im Vergleich",
+        "Expansion for: {item.title}",
+        "Expansion for: Passend dazu"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenInteractiveModule",
+        "target_file": "components/interactive/schliessanlagen-interactive-module.tsx",
+        "action_file": "actions/schliessanlagen-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1234,
+      "content_expansion_topics": [
+        "Expansion for: Technische Angaben",
+        "Expansion for: CodeLinePage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugInteractiveModule",
+        "target_file": "components/interactive/slug-interactive-module.tsx",
+        "action_file": "actions/slug-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: BereichLayout Overview",
+        "Expansion for: ReactNode",
+        "Expansion for: AreaScope"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselnachcodeInteractiveModule",
+        "target_file": "components/interactive/schluesselnachcode-interactive-module.tsx",
+        "action_file": "actions/schluesselnachcode-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 997,
+      "content_expansion_topics": [
+        "Expansion for: SchluesselNachCodePage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselnachcodeInteractiveModule",
+        "target_file": "components/interactive/schluesselnachcode-interactive-module.tsx",
+        "action_file": "actions/schluesselnachcode-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: SchluesselNachVorlageAnfragePage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: PROCESS_LABELS"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageInteractiveModule",
+        "target_file": "components/interactive/anfrage-interactive-module.tsx",
+        "action_file": "actions/anfrage-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: BereichLayout Overview",
+        "Expansion for: ReactNode",
+        "Expansion for: AreaScope"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselnachvorlageInteractiveModule",
+        "target_file": "components/interactive/schluesselnachvorlage-interactive-module.tsx",
+        "action_file": "actions/schluesselnachvorlage-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2293,
+      "content_expansion_topics": [
+        "Expansion for: Was der Sendung beiliegen soll",
+        "Expansion for: SchluesselNachVorlagePage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselnachvorlageInteractiveModule",
+        "target_file": "components/interactive/schluesselnachvorlage-interactive-module.tsx",
+        "action_file": "actions/schluesselnachvorlage-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: AnfragePage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: NAV_AREAS"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageInteractiveModule",
+        "target_file": "components/interactive/anfrage-interactive-module.tsx",
+        "action_file": "actions/anfrage-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 974,
+      "content_expansion_topics": [
+        "Expansion for: Öffnungszeiten",
+        "Expansion for: KontaktPage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KontaktInteractiveModule",
+        "target_file": "components/interactive/kontakt-interactive-module.tsx",
+        "action_file": "actions/kontakt-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: BereichLayout Overview",
+        "Expansion for: ReactNode",
+        "Expansion for: AreaScope"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceundterminInteractiveModule",
+        "target_file": "components/interactive/serviceundtermin-interactive-module.tsx",
+        "action_file": "actions/serviceundtermin-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2078,
+      "content_expansion_topics": [
+        "Expansion for: 1. Die Phasen unserer Service-Implementierung",
+        "Expansion for: 2. Technologische Standards und Materialqualität",
+        "Expansion for: 3. Nachhaltigkeit und Lebenszyklus-Management"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceundterminInteractiveModule",
+        "target_file": "components/interactive/serviceundtermin-interactive-module.tsx",
+        "action_file": "actions/serviceundtermin-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: TerminStatusPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: PageHeader"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminstatusInteractiveModule",
+        "target_file": "components/interactive/terminstatus-interactive-module.tsx",
+        "action_file": "actions/terminstatus-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1155,
+      "content_expansion_topics": [
+        "Expansion for: VorOrtPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VorortInteractiveModule",
+        "target_file": "components/interactive/vorort-interactive-module.tsx",
+        "action_file": "actions/vorort-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1144,
+      "content_expansion_topics": [
+        "Expansion for: SecurityDetailPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugInteractiveModule",
+        "target_file": "components/interactive/slug-interactive-module.tsx",
+        "action_file": "actions/slug-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: BereichLayout Overview",
+        "Expansion for: ReactNode",
+        "Expansion for: AreaScope"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikInteractiveModule",
+        "target_file": "components/interactive/sicherheitstechnik-interactive-module.tsx",
+        "action_file": "actions/sicherheitstechnik-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 56,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1520,
+      "content_expansion_topics": [
+        "Expansion for: SicherheitstechnikPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikInteractiveModule",
+        "target_file": "components/interactive/sicherheitstechnik-interactive-module.tsx",
+        "action_file": "actions/sicherheitstechnik-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 57,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: SicherheitscheckPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitscheckInteractiveModule",
+        "target_file": "components/interactive/sicherheitscheck-interactive-module.tsx",
+        "action_file": "actions/sicherheitscheck-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 58,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: CityPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CityInteractiveModule",
+        "target_file": "components/interactive/city-interactive-module.tsx",
+        "action_file": "actions/city-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 59,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: StandortePage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteInteractiveModule",
+        "target_file": "components/interactive/standorte-interactive-module.tsx",
+        "action_file": "actions/standorte-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 60,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 993,
+      "content_expansion_topics": [
+        "Expansion for: ServiceDetailPage Overview",
+        "Expansion for: Metadata",
+        "Expansion for: ArrowRight"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugInteractiveModule",
+        "target_file": "components/interactive/slug-interactive-module.tsx",
+        "action_file": "actions/slug-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 61,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: BereichLayout Overview",
+        "Expansion for: ReactNode",
+        "Expansion for: AreaScope"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerundschliesstechnikInteractiveModule",
+        "target_file": "components/interactive/tuerundschliesstechnik-interactive-module.tsx",
+        "action_file": "actions/tuerundschliesstechnik-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 62,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2284,
+      "content_expansion_topics": [
+        "Expansion for: Mechanische Kernkomponenten im Verbund",
+        "Expansion for: Elektronik trifft Mechanik",
+        "Expansion for: Regulatorik: Fluchtwege und Brandschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerundschliesstechnikInteractiveModule",
+        "target_file": "components/interactive/tuerundschliesstechnik-interactive-module.tsx",
+        "action_file": "actions/tuerundschliesstechnik-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 63,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: Passend dazu",
+        "Expansion for: WarenkorbPage Overview",
+        "Expansion for: Metadata"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbInteractiveModule",
+        "target_file": "components/interactive/warenkorb-interactive-module.tsx",
+        "action_file": "actions/warenkorb-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 64,
+      "route_path": "/llms.txt",
+      "source_file": "src/app/llms.txt/route.ts",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Expansion for: NAV_AREAS",
+        "Expansion for: Sprachmodelle",
+        "Expansion for: Suchen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Llms.txtInteractiveModule",
+        "target_file": "components/interactive/llms.txt-interactive-module.tsx",
+        "action_file": "actions/llms.txt-interactive-module-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

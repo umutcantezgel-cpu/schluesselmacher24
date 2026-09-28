@@ -1,0 +1,5 @@
+# LLMS Instructions
+
+
+## Architecture Sync
+Architecture blueprint and DNA profiling synchronized.
