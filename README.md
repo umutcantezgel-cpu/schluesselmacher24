@@ -39,7 +39,6 @@ Backend unter `/admin` bearbeitet:
 | `content/guides.json` · `content/cities.json` | Ratgeber- und Stadtseiten |
 | `content/records.json` | Vorgänge: Bestellungen, Anfragen, Termine, Projekte |
 
-## Offene Anbindungen
+## Interaktive Module
 
-Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
-vorbereitet, aber ohne Zugangsdaten inaktiv.
+- **Security Needs Analyzer** (`src/components/calculator/security-needs-analyzer.tsx`): Interaktives Tool zur Analyse des Sicherheitsbedarfs auf der Ratgeber-Seite.
