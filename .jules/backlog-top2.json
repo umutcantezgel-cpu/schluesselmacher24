@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-09-28T16:45:33+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_063",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "components/calculator/tuer-absicherung-rechner.tsx",
+      "title": "Interaktiver Tür-Absicherungskalkulator mit Echtzeit-Budgetschätzung",
+      "specification": "Entwicklung eines reaktiven Budget-Kalkulators für Türsicherheit mit React 19 Server Actions und useOptimistic. Binde das Tool direkt in die bestehende Sicherheitstechnik-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_042",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/(site)/page.tsx",
+      "target_component_file": "components/layout/section.tsx",
+      "title": "Bento Grid Section mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "Überführung der Sections auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
+      "score": 9.55,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
