@@ -1,0 +1,84 @@
+JC-AUDITOR-ARCHITECT-v1 Master Blueprint
+
+## Codebase DNA
+
+```json
+{
+  "scanned_at": "2026-09-28T17:30:31.170Z",
+  "runtime_environment": "Next.js 16+ App Router",
+  "language_standard": "TypeScript 5.5+ Strict",
+  "ui_engine": "Tailwind CSS v4",
+  "color_space": "OKLCH Light Mode",
+  "active_routes_count": 64,
+  "active_components_count": 116
+}
+```
+
+# Architecture Matrix
+
+| URL Path | Type | Word Count | Target Word Count | Interactive Module | Awwwards Interaction |
+|---|---|---|---|---|---|
+| /(payload)/admin/[[...segments]] | Page | 100 | 950 | PayloadAdminSegmentsModule | BENTO_HOVER_GLOW_LIGHT |
+| /(payload)/api/[...slug] | Route | 71 | 950 | PayloadApiSlugModule | BENTO_HOVER_GLOW_LIGHT |
+| /(payload) | Layout | 99 | 950 | PayloadModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/api/kunden-upload | Route | 705 | 1505 | SiteApiKundenUploadModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/artikel/[slug] | Page | 935 | 1735 | SiteArtikelSlugModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/artikel | Page | 657 | 1457 | SiteArtikelModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/anfrage | Page | 519 | 1319 | SiteAutoschluesselAnfrageModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/fahrzeugoeffnung | Page | 1122 | 1922 | SiteAutoschluesselFahrzeugoeffnungModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/funkschluessel | Page | 1092 | 1892 | SiteAutoschluesselFunkschluesselModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/kopieren | Page | 1134 | 1934 | SiteAutoschluesselKopierenModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel | Layout | 37 | 950 | SiteAutoschluesselModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/marken/[make]/[model] | Page | 1224 | 2024 | SiteAutoschluesselMarkenMakeModelModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/marken/[make] | Page | 980 | 1780 | SiteAutoschluesselMarkenMakeModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/marken | Page | 719 | 1519 | SiteAutoschluesselMarkenModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/nachmachen | Page | 1190 | 1990 | SiteAutoschluesselNachmachenModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel | Page | 2003 | 2803 | SiteAutoschluesselModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/programmieren | Page | 1223 | 2023 | SiteAutoschluesselProgrammierenModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/schluesselbart-fraesen | Page | 1043 | 1843 | SiteAutoschluesselSchluesselbartFraesenModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/smart-key | Page | 1208 | 2008 | SiteAutoschluesselSmartKeyModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/bestellung/[id] | Page | 1300 | 2100 | SiteBestellungIdModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/elektronische-zutrittsloesungen/konfigurator | Page | 383 | 1183 | SiteElektronischeZutrittsloesungenKonfiguratorModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/elektronische-zutrittsloesungen | Layout | 37 | 950 | SiteElektronischeZutrittsloesungenModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/elektronische-zutrittsloesungen | Page | 2481 | 3281 | SiteElektronischeZutrittsloesungenModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/gleichschliessende-zylinder/konfigurator | Page | 311 | 1111 | SiteGleichschliessendeZylinderKonfiguratorModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/gleichschliessende-zylinder | Layout | 37 | 950 | SiteGleichschliessendeZylinderModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/gleichschliessende-zylinder | Page | 2082 | 2882 | SiteGleichschliessendeZylinderModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/kasse | Page | 243 | 1043 | SiteKasseModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site) | Layout | 259 | 1059 | SiteModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site) | Page | 1131 | 1931 | SiteModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/ratgeber/[slug] | Page | 360 | 1160 | SiteRatgeberSlugModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/ratgeber | Page | 225 | 1025 | SiteRatgeberModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/agb | Page | 417 | 1217 | SiteRechtlichesAgbModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/cookie-einstellungen | Page | 229 | 1029 | SiteRechtlichesCookieEinstellungenModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/datenschutz | Page | 716 | 1516 | SiteRechtlichesDatenschutzModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/impressum | Page | 249 | 1049 | SiteRechtlichesImpressumModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches | Layout | 150 | 950 | SiteRechtlichesModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/versand-und-zahlung | Page | 428 | 1228 | SiteRechtlichesVersandUndZahlungModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/widerruf | Page | 371 | 1171 | SiteRechtlichesWiderrufModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schliessanlagen/konfigurator | Page | 369 | 1169 | SiteSchliessanlagenKonfiguratorModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schliessanlagen | Layout | 37 | 950 | SiteSchliessanlagenModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schliessanlagen | Page | 1874 | 2674 | SiteSchliessanlagenModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schluessel-nach-code/[slug] | Page | 735 | 1535 | SiteSchluesselNachCodeSlugModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schluessel-nach-code | Layout | 37 | 950 | SiteSchluesselNachCodeModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schluessel-nach-code | Page | 498 | 1298 | SiteSchluesselNachCodeModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schluessel-nach-vorlage/anfrage | Page | 222 | 1022 | SiteSchluesselNachVorlageAnfrageModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schluessel-nach-vorlage | Layout | 37 | 950 | SiteSchluesselNachVorlageModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schluessel-nach-vorlage | Page | 1794 | 2594 | SiteSchluesselNachVorlageModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin/anfrage | Page | 152 | 952 | SiteServiceUndTerminAnfrageModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin/kontakt | Page | 475 | 1275 | SiteServiceUndTerminKontaktModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin | Layout | 37 | 950 | SiteServiceUndTerminModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin | Page | 1579 | 2379 | SiteServiceUndTerminModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin/terminstatus | Page | 108 | 950 | SiteServiceUndTerminTerminstatusModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin/vor-ort | Page | 656 | 1456 | SiteServiceUndTerminVorOrtModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/sicherheitstechnik/[slug] | Page | 645 | 1445 | SiteSicherheitstechnikSlugModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/sicherheitstechnik | Layout | 37 | 950 | SiteSicherheitstechnikModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/sicherheitstechnik | Page | 1021 | 1821 | SiteSicherheitstechnikModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/sicherheitstechnik/sicherheitscheck | Page | 330 | 1130 | SiteSicherheitstechnikSicherheitscheckModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/standorte/[city] | Page | 406 | 1206 | SiteStandorteCityModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/standorte | Page | 250 | 1050 | SiteStandorteModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/tuer-und-schliesstechnik/[slug] | Page | 494 | 1294 | SiteTuerUndSchliesstechnikSlugModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/tuer-und-schliesstechnik | Layout | 37 | 950 | SiteTuerUndSchliesstechnikModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/tuer-und-schliesstechnik | Page | 1785 | 2585 | SiteTuerUndSchliesstechnikModule | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/warenkorb | Page | 262 | 1062 | SiteWarenkorbModule | BENTO_HOVER_GLOW_LIGHT |
+| /llms.txt | Route | 146 | 950 | LlmsTxtModule | BENTO_HOVER_GLOW_LIGHT |

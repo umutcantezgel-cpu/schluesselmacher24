@@ -1,0 +1,1487 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-09-28T17:30:31.251Z",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/(payload)/admin/[[...segments]]",
+      "source_file": "app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(payload)/admin/[[...segments]]",
+        "Detail-FAQ für den Bereich (payload)",
+        "Spezifische Prozessabläufe und Integrationen für PayloadAdminSegmentsModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PayloadAdminSegmentsModule",
+        "target_file": "components/interactive/payloadadminsegmentsmodule.tsx",
+        "action_file": "actions/payloadadminsegmentsmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(payload)/api/[...slug]",
+      "source_file": "app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(payload)/api/[...slug]",
+        "Detail-FAQ für den Bereich (payload)",
+        "Spezifische Prozessabläufe und Integrationen für PayloadApiSlugModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PayloadApiSlugModule",
+        "target_file": "components/interactive/payloadapislugmodule.tsx",
+        "action_file": "actions/payloadapislugmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(payload)",
+      "source_file": "app/(payload)/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(payload)",
+        "Detail-FAQ für den Bereich (payload)",
+        "Spezifische Prozessabläufe und Integrationen für PayloadModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PayloadModule",
+        "target_file": "components/interactive/payloadmodule.tsx",
+        "action_file": "actions/payloadmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/api/kunden-upload",
+      "source_file": "app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 1505,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/api/kunden-upload",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteApiKundenUploadModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteApiKundenUploadModule",
+        "target_file": "components/interactive/siteapikundenuploadmodule.tsx",
+        "action_file": "actions/siteapikundenuploadmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1735,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/artikel/[slug]",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteArtikelSlugModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteArtikelSlugModule",
+        "target_file": "components/interactive/siteartikelslugmodule.tsx",
+        "action_file": "actions/siteartikelslugmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1457,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/artikel",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteArtikelModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteArtikelModule",
+        "target_file": "components/interactive/siteartikelmodule.tsx",
+        "action_file": "actions/siteartikelmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1319,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/anfrage",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselAnfrageModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselAnfrageModule",
+        "target_file": "components/interactive/siteautoschluesselanfragemodule.tsx",
+        "action_file": "actions/siteautoschluesselanfragemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1922,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/fahrzeugoeffnung",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselFahrzeugoeffnungModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselFahrzeugoeffnungModule",
+        "target_file": "components/interactive/siteautoschluesselfahrzeugoeffnungmodule.tsx",
+        "action_file": "actions/siteautoschluesselfahrzeugoeffnungmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1892,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/funkschluessel",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselFunkschluesselModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselFunkschluesselModule",
+        "target_file": "components/interactive/siteautoschluesselfunkschluesselmodule.tsx",
+        "action_file": "actions/siteautoschluesselfunkschluesselmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1934,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/kopieren",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselKopierenModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselKopierenModule",
+        "target_file": "components/interactive/siteautoschluesselkopierenmodule.tsx",
+        "action_file": "actions/siteautoschluesselkopierenmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselModule",
+        "target_file": "components/interactive/siteautoschluesselmodule.tsx",
+        "action_file": "actions/siteautoschluesselmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2024,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/marken/[make]/[model]",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselMarkenMakeModelModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselMarkenMakeModelModule",
+        "target_file": "components/interactive/siteautoschluesselmarkenmakemodelmodule.tsx",
+        "action_file": "actions/siteautoschluesselmarkenmakemodelmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1780,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/marken/[make]",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselMarkenMakeModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselMarkenMakeModule",
+        "target_file": "components/interactive/siteautoschluesselmarkenmakemodule.tsx",
+        "action_file": "actions/siteautoschluesselmarkenmakemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1519,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/marken",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselMarkenModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselMarkenModule",
+        "target_file": "components/interactive/siteautoschluesselmarkenmodule.tsx",
+        "action_file": "actions/siteautoschluesselmarkenmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1990,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/nachmachen",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselNachmachenModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselNachmachenModule",
+        "target_file": "components/interactive/siteautoschluesselnachmachenmodule.tsx",
+        "action_file": "actions/siteautoschluesselnachmachenmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2803,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselModule",
+        "target_file": "components/interactive/siteautoschluesselmodule.tsx",
+        "action_file": "actions/siteautoschluesselmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 2023,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/programmieren",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselProgrammierenModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselProgrammierenModule",
+        "target_file": "components/interactive/siteautoschluesselprogrammierenmodule.tsx",
+        "action_file": "actions/siteautoschluesselprogrammierenmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1843,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/schluesselbart-fraesen",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselSchluesselbartFraesenModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselSchluesselbartFraesenModule",
+        "target_file": "components/interactive/siteautoschluesselschluesselbartfraesenmodule.tsx",
+        "action_file": "actions/siteautoschluesselschluesselbartfraesenmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 2008,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/autoschluessel/smart-key",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteAutoschluesselSmartKeyModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteAutoschluesselSmartKeyModule",
+        "target_file": "components/interactive/siteautoschluesselsmartkeymodule.tsx",
+        "action_file": "actions/siteautoschluesselsmartkeymodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2100,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/bestellung/[id]",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteBestellungIdModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteBestellungIdModule",
+        "target_file": "components/interactive/sitebestellungidmodule.tsx",
+        "action_file": "actions/sitebestellungidmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1183,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/elektronische-zutrittsloesungen/konfigurator",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteElektronischeZutrittsloesungenKonfiguratorModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteElektronischeZutrittsloesungenKonfiguratorModule",
+        "target_file": "components/interactive/siteelektronischezutrittsloesungenkonfiguratormodule.tsx",
+        "action_file": "actions/siteelektronischezutrittsloesungenkonfiguratormodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/elektronische-zutrittsloesungen",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteElektronischeZutrittsloesungenModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteElektronischeZutrittsloesungenModule",
+        "target_file": "components/interactive/siteelektronischezutrittsloesungenmodule.tsx",
+        "action_file": "actions/siteelektronischezutrittsloesungenmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3281,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/elektronische-zutrittsloesungen",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteElektronischeZutrittsloesungenModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteElektronischeZutrittsloesungenModule",
+        "target_file": "components/interactive/siteelektronischezutrittsloesungenmodule.tsx",
+        "action_file": "actions/siteelektronischezutrittsloesungenmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 1111,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/gleichschliessende-zylinder/konfigurator",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteGleichschliessendeZylinderKonfiguratorModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteGleichschliessendeZylinderKonfiguratorModule",
+        "target_file": "components/interactive/sitegleichschliessendezylinderkonfiguratormodule.tsx",
+        "action_file": "actions/sitegleichschliessendezylinderkonfiguratormodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/gleichschliessende-zylinder",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteGleichschliessendeZylinderModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteGleichschliessendeZylinderModule",
+        "target_file": "components/interactive/sitegleichschliessendezylindermodule.tsx",
+        "action_file": "actions/sitegleichschliessendezylindermodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2882,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/gleichschliessende-zylinder",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteGleichschliessendeZylinderModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteGleichschliessendeZylinderModule",
+        "target_file": "components/interactive/sitegleichschliessendezylindermodule.tsx",
+        "action_file": "actions/sitegleichschliessendezylindermodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 1043,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/kasse",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteKasseModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteKasseModule",
+        "target_file": "components/interactive/sitekassemodule.tsx",
+        "action_file": "actions/sitekassemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)",
+      "source_file": "app/(site)/layout.tsx",
+      "target_word_count": 1059,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteModule",
+        "target_file": "components/interactive/sitemodule.tsx",
+        "action_file": "actions/sitemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 1931,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteModule",
+        "target_file": "components/interactive/sitemodule.tsx",
+        "action_file": "actions/sitemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1160,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/ratgeber/[slug]",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteRatgeberSlugModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteRatgeberSlugModule",
+        "target_file": "components/interactive/siteratgeberslugmodule.tsx",
+        "action_file": "actions/siteratgeberslugmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 1025,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/ratgeber",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteRatgeberModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteRatgeberModule",
+        "target_file": "components/interactive/siteratgebermodule.tsx",
+        "action_file": "actions/siteratgebermodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 1217,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/rechtliches/agb",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteRechtlichesAgbModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteRechtlichesAgbModule",
+        "target_file": "components/interactive/siterechtlichesagbmodule.tsx",
+        "action_file": "actions/siterechtlichesagbmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 1029,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/rechtliches/cookie-einstellungen",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteRechtlichesCookieEinstellungenModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteRechtlichesCookieEinstellungenModule",
+        "target_file": "components/interactive/siterechtlichescookieeinstellungenmodule.tsx",
+        "action_file": "actions/siterechtlichescookieeinstellungenmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1516,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/rechtliches/datenschutz",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteRechtlichesDatenschutzModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteRechtlichesDatenschutzModule",
+        "target_file": "components/interactive/siterechtlichesdatenschutzmodule.tsx",
+        "action_file": "actions/siterechtlichesdatenschutzmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 1049,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/rechtliches/impressum",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteRechtlichesImpressumModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteRechtlichesImpressumModule",
+        "target_file": "components/interactive/siterechtlichesimpressummodule.tsx",
+        "action_file": "actions/siterechtlichesimpressummodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/rechtliches",
+      "source_file": "app/(site)/rechtliches/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/rechtliches",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteRechtlichesModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteRechtlichesModule",
+        "target_file": "components/interactive/siterechtlichesmodule.tsx",
+        "action_file": "actions/siterechtlichesmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1228,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/rechtliches/versand-und-zahlung",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteRechtlichesVersandUndZahlungModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteRechtlichesVersandUndZahlungModule",
+        "target_file": "components/interactive/siterechtlichesversandundzahlungmodule.tsx",
+        "action_file": "actions/siterechtlichesversandundzahlungmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1171,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/rechtliches/widerruf",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteRechtlichesWiderrufModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteRechtlichesWiderrufModule",
+        "target_file": "components/interactive/siterechtlicheswiderrufmodule.tsx",
+        "action_file": "actions/siterechtlicheswiderrufmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1169,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/schliessanlagen/konfigurator",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSchliessanlagenKonfiguratorModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSchliessanlagenKonfiguratorModule",
+        "target_file": "components/interactive/siteschliessanlagenkonfiguratormodule.tsx",
+        "action_file": "actions/siteschliessanlagenkonfiguratormodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/schliessanlagen",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSchliessanlagenModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSchliessanlagenModule",
+        "target_file": "components/interactive/siteschliessanlagenmodule.tsx",
+        "action_file": "actions/siteschliessanlagenmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2674,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/schliessanlagen",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSchliessanlagenModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSchliessanlagenModule",
+        "target_file": "components/interactive/siteschliessanlagenmodule.tsx",
+        "action_file": "actions/siteschliessanlagenmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1535,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/schluessel-nach-code/[slug]",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSchluesselNachCodeSlugModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSchluesselNachCodeSlugModule",
+        "target_file": "components/interactive/siteschluesselnachcodeslugmodule.tsx",
+        "action_file": "actions/siteschluesselnachcodeslugmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/schluessel-nach-code",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSchluesselNachCodeModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSchluesselNachCodeModule",
+        "target_file": "components/interactive/siteschluesselnachcodemodule.tsx",
+        "action_file": "actions/siteschluesselnachcodemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1298,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/schluessel-nach-code",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSchluesselNachCodeModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSchluesselNachCodeModule",
+        "target_file": "components/interactive/siteschluesselnachcodemodule.tsx",
+        "action_file": "actions/siteschluesselnachcodemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 1022,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/schluessel-nach-vorlage/anfrage",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSchluesselNachVorlageAnfrageModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSchluesselNachVorlageAnfrageModule",
+        "target_file": "components/interactive/siteschluesselnachvorlageanfragemodule.tsx",
+        "action_file": "actions/siteschluesselnachvorlageanfragemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/schluessel-nach-vorlage",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSchluesselNachVorlageModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSchluesselNachVorlageModule",
+        "target_file": "components/interactive/siteschluesselnachvorlagemodule.tsx",
+        "action_file": "actions/siteschluesselnachvorlagemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2594,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/schluessel-nach-vorlage",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSchluesselNachVorlageModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSchluesselNachVorlageModule",
+        "target_file": "components/interactive/siteschluesselnachvorlagemodule.tsx",
+        "action_file": "actions/siteschluesselnachvorlagemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 952,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/service-und-termin/anfrage",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteServiceUndTerminAnfrageModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteServiceUndTerminAnfrageModule",
+        "target_file": "components/interactive/siteserviceundterminanfragemodule.tsx",
+        "action_file": "actions/siteserviceundterminanfragemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1275,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/service-und-termin/kontakt",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteServiceUndTerminKontaktModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteServiceUndTerminKontaktModule",
+        "target_file": "components/interactive/siteserviceundterminkontaktmodule.tsx",
+        "action_file": "actions/siteserviceundterminkontaktmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/service-und-termin",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteServiceUndTerminModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteServiceUndTerminModule",
+        "target_file": "components/interactive/siteserviceundterminmodule.tsx",
+        "action_file": "actions/siteserviceundterminmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2379,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/service-und-termin",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteServiceUndTerminModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteServiceUndTerminModule",
+        "target_file": "components/interactive/siteserviceundterminmodule.tsx",
+        "action_file": "actions/siteserviceundterminmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/service-und-termin/terminstatus",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteServiceUndTerminTerminstatusModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteServiceUndTerminTerminstatusModule",
+        "target_file": "components/interactive/siteserviceundterminterminstatusmodule.tsx",
+        "action_file": "actions/siteserviceundterminterminstatusmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1456,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/service-und-termin/vor-ort",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteServiceUndTerminVorOrtModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteServiceUndTerminVorOrtModule",
+        "target_file": "components/interactive/siteserviceundterminvorortmodule.tsx",
+        "action_file": "actions/siteserviceundterminvorortmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1445,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/sicherheitstechnik/[slug]",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSicherheitstechnikSlugModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSicherheitstechnikSlugModule",
+        "target_file": "components/interactive/sitesicherheitstechnikslugmodule.tsx",
+        "action_file": "actions/sitesicherheitstechnikslugmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/sicherheitstechnik",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSicherheitstechnikModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSicherheitstechnikModule",
+        "target_file": "components/interactive/sitesicherheitstechnikmodule.tsx",
+        "action_file": "actions/sitesicherheitstechnikmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1821,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/sicherheitstechnik",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSicherheitstechnikModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSicherheitstechnikModule",
+        "target_file": "components/interactive/sitesicherheitstechnikmodule.tsx",
+        "action_file": "actions/sitesicherheitstechnikmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 1130,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/sicherheitstechnik/sicherheitscheck",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteSicherheitstechnikSicherheitscheckModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteSicherheitstechnikSicherheitscheckModule",
+        "target_file": "components/interactive/sitesicherheitstechniksicherheitscheckmodule.tsx",
+        "action_file": "actions/sitesicherheitstechniksicherheitscheckmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1206,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/standorte/[city]",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteStandorteCityModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteStandorteCityModule",
+        "target_file": "components/interactive/sitestandortecitymodule.tsx",
+        "action_file": "actions/sitestandortecitymodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 1050,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/standorte",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteStandorteModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteStandorteModule",
+        "target_file": "components/interactive/sitestandortemodule.tsx",
+        "action_file": "actions/sitestandortemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1294,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/tuer-und-schliesstechnik/[slug]",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteTuerUndSchliesstechnikSlugModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteTuerUndSchliesstechnikSlugModule",
+        "target_file": "components/interactive/sitetuerundschliesstechnikslugmodule.tsx",
+        "action_file": "actions/sitetuerundschliesstechnikslugmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/tuer-und-schliesstechnik",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteTuerUndSchliesstechnikModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteTuerUndSchliesstechnikModule",
+        "target_file": "components/interactive/sitetuerundschliesstechnikmodule.tsx",
+        "action_file": "actions/sitetuerundschliesstechnikmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2585,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/tuer-und-schliesstechnik",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteTuerUndSchliesstechnikModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteTuerUndSchliesstechnikModule",
+        "target_file": "components/interactive/sitetuerundschliesstechnikmodule.tsx",
+        "action_file": "actions/sitetuerundschliesstechnikmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/(site)/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 1062,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /(site)/warenkorb",
+        "Detail-FAQ für den Bereich (site)",
+        "Spezifische Prozessabläufe und Integrationen für SiteWarenkorbModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SiteWarenkorbModule",
+        "target_file": "components/interactive/sitewarenkorbmodule.tsx",
+        "action_file": "actions/sitewarenkorbmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/llms.txt",
+      "source_file": "app/llms.txt/route.ts",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte Analyse für /llms.txt",
+        "Detail-FAQ für den Bereich llms.txt",
+        "Spezifische Prozessabläufe und Integrationen für LlmsTxtModule"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LlmsTxtModule",
+        "target_file": "components/interactive/llmstxtmodule.tsx",
+        "action_file": "actions/llmstxtmodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
