@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Blueprint Sync
+Architecture synced to target OKLCH layout, strictly typed RSC architecture, and React 19 server actions without introducing new routes.
