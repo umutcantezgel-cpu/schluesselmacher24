@@ -15,6 +15,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
+import { AutoKeyPricingMatrix } from '@/components/autoschluessel/auto-key-pricing-matrix';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'autoschluessel';
@@ -209,7 +210,14 @@ const FAQ = [
   },
 ];
 
-export default async function AutoschluesselHubPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function AutoschluesselHubPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, settings, makes] = await Promise.all([
     getPageContent(ROUTE),
     getSettings(),
@@ -245,7 +253,7 @@ export default async function AutoschluesselHubPage() {
   ];
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <JsonLd
         data={pageGraphSchema({
           path: '/autoschluessel',
@@ -306,6 +314,32 @@ export default async function AutoschluesselHubPage() {
           <div>
             <SectionHeading title="Worum es in diesem Bereich geht" />
             <div className="prose-sm24 mt-5">
+              <p>
+                Unsere langjährige Erfahrung in der Automobilschlüssel-Technik zeigt, dass jeder Fall individuell betrachtet werden muss.
+                Die Architektur moderner Schließsysteme ist komplex und erfordert tiefgreifendes Fachwissen.
+                Wir klären nicht nur, ob Sie einen einfachen mechanischen Schlüssel oder einen komplexen Smart Key benötigen,
+                sondern analysieren auch die spezifischen Wegfahrsperren-Generationen Ihres Fahrzeugs.
+              </p>
+              <p>
+                Die Methodik unserer Arbeit basiert auf modernsten Diagnose- und Fräsmaschinen, die auf den zehntel Millimeter genau arbeiten.
+                Dabei greifen wir auf eine umfangreiche Datenbank an Original- und OEM-Schlüsselrohlingen zurück.
+                Wir vergleichen die Transponder-Typen, evaluieren die Kryptographie der Fernbedienung und bestimmen den optimalen Weg
+                für die Programmierung – ob über die OBD-Schnittstelle, direkt am EEPROM oder durch Klonen des Schlüssels.
+              </p>
+              <p>
+                In der folgenden Matrix finden Sie eine detaillierte Gegenüberstellung der verschiedenen Schlüsselarten,
+                inklusive der jeweiligen Vor- und Nachteile sowie der technischen Voraussetzungen für eine erfolgreiche Anfertigung.
+                Wir legen größten Wert auf Transparenz bei Preis und Leistung.
+              </p>
+              <p>
+                Darüber hinaus bieten wir Ihnen eine umfassende Beratung zu den Themen Sicherheit und Diebstahlschutz.
+                Die moderne Fahrzeugtechnik entwickelt sich rasant weiter, und wir halten Schritt, um Ihnen stets die sichersten
+                und zuverlässigsten Lösungen anbieten zu können.
+              </p>
+              <p>
+                Bitte beachten Sie, dass für bestimmte Programmierungen das Fahrzeug zwingend vor Ort sein muss,
+                da eine Online-Verbindung zum Herstellerserver (z.B. bei Component Protection oder SEC-Block) erforderlich ist.
+              </p>
               <p>
                 {page?.intro
                   ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder '
@@ -387,6 +421,18 @@ export default async function AutoschluesselHubPage() {
               </div>
             );
           })}
+        </div>
+      </Section>
+
+      {/* Interaktives Modul */}
+      <Section id="pricing-matrix" tone="muted">
+        <SectionHeading
+          eyebrow="Preismatrix"
+          title="Kalkulieren Sie die Kosten für Ihren Autoschlüssel"
+          lead="Nutzen Sie unsere interaktive Matrix, um eine präzise Kostenschätzung für Ihr Fahrzeugmodell zu erhalten."
+        />
+        <div className="mt-8">
+          <AutoKeyPricingMatrix />
         </div>
       </Section>
 
@@ -509,6 +555,6 @@ export default async function AutoschluesselHubPage() {
           ))}
         </ul>
       </Section>
-    </>
+    </main>
   );
 }
