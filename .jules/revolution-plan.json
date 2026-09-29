@@ -1,0 +1,1142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-09-29T07:07:43.899Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/api/kunden-upload/route.ts",
+      "source_file": "app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 1504,
+      "content_expansion_topics": [
+        "Deep dive into api kunden upload route ts architecture",
+        "Methodological details of api kunden upload route ts services",
+        "Comprehensive FAQ for api kunden upload route ts"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ApiKundenUploadRouteTsInteractiveWidget",
+        "target_file": "src/components/ui/api-kunden-upload-route-ts-widget.tsx",
+        "action_file": "src/app/actions/api-kunden-upload-route-ts-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1734,
+      "content_expansion_topics": [
+        "Deep dive into artikel  slug architecture",
+        "Methodological details of artikel  slug services",
+        "Comprehensive FAQ for artikel  slug"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelSlugInteractiveWidget",
+        "target_file": "src/components/ui/artikel-slug-widget.tsx",
+        "action_file": "src/app/actions/artikel-slug-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1456,
+      "content_expansion_topics": [
+        "Deep dive into artikel architecture",
+        "Methodological details of artikel services",
+        "Comprehensive FAQ for artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelInteractiveWidget",
+        "target_file": "src/components/ui/artikel-widget.tsx",
+        "action_file": "src/app/actions/artikel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1318,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel anfrage architecture",
+        "Methodological details of autoschluessel anfrage services",
+        "Comprehensive FAQ for autoschluessel anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselAnfrageInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-anfrage-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1921,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel fahrzeugoeffnung architecture",
+        "Methodological details of autoschluessel fahrzeugoeffnung services",
+        "Comprehensive FAQ for autoschluessel fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFahrzeugoeffnungInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-fahrzeugoeffnung-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-fahrzeugoeffnung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1891,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel funkschluessel architecture",
+        "Methodological details of autoschluessel funkschluessel services",
+        "Comprehensive FAQ for autoschluessel funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFunkschluesselInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-funkschluessel-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-funkschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1933,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel kopieren architecture",
+        "Methodological details of autoschluessel kopieren services",
+        "Comprehensive FAQ for autoschluessel kopieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselKopierenInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-kopieren-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-kopieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2023,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel marken  make   model architecture",
+        "Methodological details of autoschluessel marken  make   model services",
+        "Comprehensive FAQ for autoschluessel marken  make   model"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenMakeModelInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-marken-make-model-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-marken-make-model-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1779,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel marken  make architecture",
+        "Methodological details of autoschluessel marken  make services",
+        "Comprehensive FAQ for autoschluessel marken  make"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenMakeInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-marken-make-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-marken-make-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1518,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel marken architecture",
+        "Methodological details of autoschluessel marken services",
+        "Comprehensive FAQ for autoschluessel marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-marken-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-marken-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1989,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel nachmachen architecture",
+        "Methodological details of autoschluessel nachmachen services",
+        "Comprehensive FAQ for autoschluessel nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselNachmachenInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-nachmachen-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-nachmachen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2802,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel architecture",
+        "Methodological details of autoschluessel services",
+        "Comprehensive FAQ for autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 2022,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel programmieren architecture",
+        "Methodological details of autoschluessel programmieren services",
+        "Comprehensive FAQ for autoschluessel programmieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselProgrammierenInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-programmieren-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-programmieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1842,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel schluesselbart fraesen architecture",
+        "Methodological details of autoschluessel schluesselbart fraesen services",
+        "Comprehensive FAQ for autoschluessel schluesselbart fraesen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSchluesselbartFraesenInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-schluesselbart-fraesen-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-schluesselbart-fraesen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 2007,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel smart key architecture",
+        "Methodological details of autoschluessel smart key services",
+        "Comprehensive FAQ for autoschluessel smart key"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSmartKeyInteractiveWidget",
+        "target_file": "src/components/ui/autoschluessel-smart-key-widget.tsx",
+        "action_file": "src/app/actions/autoschluessel-smart-key-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2099,
+      "content_expansion_topics": [
+        "Deep dive into bestellung  id architecture",
+        "Methodological details of bestellung  id services",
+        "Comprehensive FAQ for bestellung  id"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "BestellungIdInteractiveWidget",
+        "target_file": "src/components/ui/bestellung-id-widget.tsx",
+        "action_file": "src/app/actions/bestellung-id-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1182,
+      "content_expansion_topics": [
+        "Deep dive into elektronische zutrittsloesungen konfigurator architecture",
+        "Methodological details of elektronische zutrittsloesungen konfigurator services",
+        "Comprehensive FAQ for elektronische zutrittsloesungen konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenKonfiguratorInteractiveWidget",
+        "target_file": "src/components/ui/elektronische-zutrittsloesungen-konfigurator-widget.tsx",
+        "action_file": "src/app/actions/elektronische-zutrittsloesungen-konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3280,
+      "content_expansion_topics": [
+        "Deep dive into elektronische zutrittsloesungen architecture",
+        "Methodological details of elektronische zutrittsloesungen services",
+        "Comprehensive FAQ for elektronische zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenInteractiveWidget",
+        "target_file": "src/components/ui/elektronische-zutrittsloesungen-widget.tsx",
+        "action_file": "src/app/actions/elektronische-zutrittsloesungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 1110,
+      "content_expansion_topics": [
+        "Deep dive into gleichschliessende zylinder konfigurator architecture",
+        "Methodological details of gleichschliessende zylinder konfigurator services",
+        "Comprehensive FAQ for gleichschliessende zylinder konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderKonfiguratorInteractiveWidget",
+        "target_file": "src/components/ui/gleichschliessende-zylinder-konfigurator-widget.tsx",
+        "action_file": "src/app/actions/gleichschliessende-zylinder-konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2881,
+      "content_expansion_topics": [
+        "Deep dive into gleichschliessende zylinder architecture",
+        "Methodological details of gleichschliessende zylinder services",
+        "Comprehensive FAQ for gleichschliessende zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderInteractiveWidget",
+        "target_file": "src/components/ui/gleichschliessende-zylinder-widget.tsx",
+        "action_file": "src/app/actions/gleichschliessende-zylinder-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 1042,
+      "content_expansion_topics": [
+        "Deep dive into kasse architecture",
+        "Methodological details of kasse services",
+        "Comprehensive FAQ for kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseInteractiveWidget",
+        "target_file": "src/components/ui/kasse-widget.tsx",
+        "action_file": "src/app/actions/kasse-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 1930,
+      "content_expansion_topics": [
+        "Deep dive into home architecture",
+        "Methodological details of home services",
+        "Comprehensive FAQ for home"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeInteractiveWidget",
+        "target_file": "src/components/ui/home-widget.tsx",
+        "action_file": "src/app/actions/home-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1159,
+      "content_expansion_topics": [
+        "Deep dive into ratgeber  slug architecture",
+        "Methodological details of ratgeber  slug services",
+        "Comprehensive FAQ for ratgeber  slug"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberSlugInteractiveWidget",
+        "target_file": "src/components/ui/ratgeber-slug-widget.tsx",
+        "action_file": "src/app/actions/ratgeber-slug-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 1024,
+      "content_expansion_topics": [
+        "Deep dive into ratgeber architecture",
+        "Methodological details of ratgeber services",
+        "Comprehensive FAQ for ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberInteractiveWidget",
+        "target_file": "src/components/ui/ratgeber-widget.tsx",
+        "action_file": "src/app/actions/ratgeber-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 1216,
+      "content_expansion_topics": [
+        "Deep dive into rechtliches agb architecture",
+        "Methodological details of rechtliches agb services",
+        "Comprehensive FAQ for rechtliches agb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesAgbInteractiveWidget",
+        "target_file": "src/components/ui/rechtliches-agb-widget.tsx",
+        "action_file": "src/app/actions/rechtliches-agb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 1028,
+      "content_expansion_topics": [
+        "Deep dive into rechtliches cookie einstellungen architecture",
+        "Methodological details of rechtliches cookie einstellungen services",
+        "Comprehensive FAQ for rechtliches cookie einstellungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesCookieEinstellungenInteractiveWidget",
+        "target_file": "src/components/ui/rechtliches-cookie-einstellungen-widget.tsx",
+        "action_file": "src/app/actions/rechtliches-cookie-einstellungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1515,
+      "content_expansion_topics": [
+        "Deep dive into rechtliches datenschutz architecture",
+        "Methodological details of rechtliches datenschutz services",
+        "Comprehensive FAQ for rechtliches datenschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesDatenschutzInteractiveWidget",
+        "target_file": "src/components/ui/rechtliches-datenschutz-widget.tsx",
+        "action_file": "src/app/actions/rechtliches-datenschutz-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 1048,
+      "content_expansion_topics": [
+        "Deep dive into rechtliches impressum architecture",
+        "Methodological details of rechtliches impressum services",
+        "Comprehensive FAQ for rechtliches impressum"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesImpressumInteractiveWidget",
+        "target_file": "src/components/ui/rechtliches-impressum-widget.tsx",
+        "action_file": "src/app/actions/rechtliches-impressum-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1227,
+      "content_expansion_topics": [
+        "Deep dive into rechtliches versand und zahlung architecture",
+        "Methodological details of rechtliches versand und zahlung services",
+        "Comprehensive FAQ for rechtliches versand und zahlung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesVersandUndZahlungInteractiveWidget",
+        "target_file": "src/components/ui/rechtliches-versand-und-zahlung-widget.tsx",
+        "action_file": "src/app/actions/rechtliches-versand-und-zahlung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1170,
+      "content_expansion_topics": [
+        "Deep dive into rechtliches widerruf architecture",
+        "Methodological details of rechtliches widerruf services",
+        "Comprehensive FAQ for rechtliches widerruf"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesWiderrufInteractiveWidget",
+        "target_file": "src/components/ui/rechtliches-widerruf-widget.tsx",
+        "action_file": "src/app/actions/rechtliches-widerruf-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1168,
+      "content_expansion_topics": [
+        "Deep dive into schliessanlagen konfigurator architecture",
+        "Methodological details of schliessanlagen konfigurator services",
+        "Comprehensive FAQ for schliessanlagen konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenKonfiguratorInteractiveWidget",
+        "target_file": "src/components/ui/schliessanlagen-konfigurator-widget.tsx",
+        "action_file": "src/app/actions/schliessanlagen-konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2673,
+      "content_expansion_topics": [
+        "Deep dive into schliessanlagen architecture",
+        "Methodological details of schliessanlagen services",
+        "Comprehensive FAQ for schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenInteractiveWidget",
+        "target_file": "src/components/ui/schliessanlagen-widget.tsx",
+        "action_file": "src/app/actions/schliessanlagen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1534,
+      "content_expansion_topics": [
+        "Deep dive into schluessel nach code  slug architecture",
+        "Methodological details of schluessel nach code  slug services",
+        "Comprehensive FAQ for schluessel nach code  slug"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeSlugInteractiveWidget",
+        "target_file": "src/components/ui/schluessel-nach-code-slug-widget.tsx",
+        "action_file": "src/app/actions/schluessel-nach-code-slug-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1297,
+      "content_expansion_topics": [
+        "Deep dive into schluessel nach code architecture",
+        "Methodological details of schluessel nach code services",
+        "Comprehensive FAQ for schluessel nach code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeInteractiveWidget",
+        "target_file": "src/components/ui/schluessel-nach-code-widget.tsx",
+        "action_file": "src/app/actions/schluessel-nach-code-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 1021,
+      "content_expansion_topics": [
+        "Deep dive into schluessel nach vorlage anfrage architecture",
+        "Methodological details of schluessel nach vorlage anfrage services",
+        "Comprehensive FAQ for schluessel nach vorlage anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageAnfrageInteractiveWidget",
+        "target_file": "src/components/ui/schluessel-nach-vorlage-anfrage-widget.tsx",
+        "action_file": "src/app/actions/schluessel-nach-vorlage-anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2593,
+      "content_expansion_topics": [
+        "Deep dive into schluessel nach vorlage architecture",
+        "Methodological details of schluessel nach vorlage services",
+        "Comprehensive FAQ for schluessel nach vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageInteractiveWidget",
+        "target_file": "src/components/ui/schluessel-nach-vorlage-widget.tsx",
+        "action_file": "src/app/actions/schluessel-nach-vorlage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 951,
+      "content_expansion_topics": [
+        "Deep dive into service und termin anfrage architecture",
+        "Methodological details of service und termin anfrage services",
+        "Comprehensive FAQ for service und termin anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminAnfrageInteractiveWidget",
+        "target_file": "src/components/ui/service-und-termin-anfrage-widget.tsx",
+        "action_file": "src/app/actions/service-und-termin-anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1274,
+      "content_expansion_topics": [
+        "Deep dive into service und termin kontakt architecture",
+        "Methodological details of service und termin kontakt services",
+        "Comprehensive FAQ for service und termin kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminKontaktInteractiveWidget",
+        "target_file": "src/components/ui/service-und-termin-kontakt-widget.tsx",
+        "action_file": "src/app/actions/service-und-termin-kontakt-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2378,
+      "content_expansion_topics": [
+        "Deep dive into service und termin architecture",
+        "Methodological details of service und termin services",
+        "Comprehensive FAQ for service und termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminInteractiveWidget",
+        "target_file": "src/components/ui/service-und-termin-widget.tsx",
+        "action_file": "src/app/actions/service-und-termin-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Deep dive into service und termin terminstatus architecture",
+        "Methodological details of service und termin terminstatus services",
+        "Comprehensive FAQ for service und termin terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminTerminstatusInteractiveWidget",
+        "target_file": "src/components/ui/service-und-termin-terminstatus-widget.tsx",
+        "action_file": "src/app/actions/service-und-termin-terminstatus-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1455,
+      "content_expansion_topics": [
+        "Deep dive into service und termin vor ort architecture",
+        "Methodological details of service und termin vor ort services",
+        "Comprehensive FAQ for service und termin vor ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminVorOrtInteractiveWidget",
+        "target_file": "src/components/ui/service-und-termin-vor-ort-widget.tsx",
+        "action_file": "src/app/actions/service-und-termin-vor-ort-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1444,
+      "content_expansion_topics": [
+        "Deep dive into sicherheitstechnik  slug architecture",
+        "Methodological details of sicherheitstechnik  slug services",
+        "Comprehensive FAQ for sicherheitstechnik  slug"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikSlugInteractiveWidget",
+        "target_file": "src/components/ui/sicherheitstechnik-slug-widget.tsx",
+        "action_file": "src/app/actions/sicherheitstechnik-slug-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1820,
+      "content_expansion_topics": [
+        "Deep dive into sicherheitstechnik architecture",
+        "Methodological details of sicherheitstechnik services",
+        "Comprehensive FAQ for sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikInteractiveWidget",
+        "target_file": "src/components/ui/sicherheitstechnik-widget.tsx",
+        "action_file": "src/app/actions/sicherheitstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 1129,
+      "content_expansion_topics": [
+        "Deep dive into sicherheitstechnik sicherheitscheck architecture",
+        "Methodological details of sicherheitstechnik sicherheitscheck services",
+        "Comprehensive FAQ for sicherheitstechnik sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikSicherheitscheckInteractiveWidget",
+        "target_file": "src/components/ui/sicherheitstechnik-sicherheitscheck-widget.tsx",
+        "action_file": "src/app/actions/sicherheitstechnik-sicherheitscheck-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1205,
+      "content_expansion_topics": [
+        "Deep dive into standorte  city architecture",
+        "Methodological details of standorte  city services",
+        "Comprehensive FAQ for standorte  city"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteCityInteractiveWidget",
+        "target_file": "src/components/ui/standorte-city-widget.tsx",
+        "action_file": "src/app/actions/standorte-city-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 1049,
+      "content_expansion_topics": [
+        "Deep dive into standorte architecture",
+        "Methodological details of standorte services",
+        "Comprehensive FAQ for standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteInteractiveWidget",
+        "target_file": "src/components/ui/standorte-widget.tsx",
+        "action_file": "src/app/actions/standorte-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1293,
+      "content_expansion_topics": [
+        "Deep dive into tuer und schliesstechnik  slug architecture",
+        "Methodological details of tuer und schliesstechnik  slug services",
+        "Comprehensive FAQ for tuer und schliesstechnik  slug"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikSlugInteractiveWidget",
+        "target_file": "src/components/ui/tuer-und-schliesstechnik-slug-widget.tsx",
+        "action_file": "src/app/actions/tuer-und-schliesstechnik-slug-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2584,
+      "content_expansion_topics": [
+        "Deep dive into tuer und schliesstechnik architecture",
+        "Methodological details of tuer und schliesstechnik services",
+        "Comprehensive FAQ for tuer und schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikInteractiveWidget",
+        "target_file": "src/components/ui/tuer-und-schliesstechnik-widget.tsx",
+        "action_file": "src/app/actions/tuer-und-schliesstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 1061,
+      "content_expansion_topics": [
+        "Deep dive into warenkorb architecture",
+        "Methodological details of warenkorb services",
+        "Comprehensive FAQ for warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbInteractiveWidget",
+        "target_file": "src/components/ui/warenkorb-widget.tsx",
+        "action_file": "src/app/actions/warenkorb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

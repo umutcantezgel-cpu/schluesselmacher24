@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Word Count | Status |
+|---|---|---|
+| /api/kunden-upload/route.ts | 704 | PENDING_BUILDER |
+| /artikel/[slug] | 934 | PENDING_BUILDER |
+| /artikel | 656 | PENDING_BUILDER |
+| /autoschluessel/anfrage | 518 | PENDING_BUILDER |
+| /autoschluessel/fahrzeugoeffnung | 1121 | PENDING_BUILDER |
+| /autoschluessel/funkschluessel | 1091 | PENDING_BUILDER |
+| /autoschluessel/kopieren | 1133 | PENDING_BUILDER |
+| /autoschluessel/marken/[make]/[model] | 1223 | PENDING_BUILDER |
+| /autoschluessel/marken/[make] | 979 | PENDING_BUILDER |
+| /autoschluessel/marken | 718 | PENDING_BUILDER |
+| /autoschluessel/nachmachen | 1189 | PENDING_BUILDER |
+| /autoschluessel | 2002 | PENDING_BUILDER |
+| /autoschluessel/programmieren | 1222 | PENDING_BUILDER |
+| /autoschluessel/schluesselbart-fraesen | 1042 | PENDING_BUILDER |
+| /autoschluessel/smart-key | 1207 | PENDING_BUILDER |
+| /bestellung/[id] | 1299 | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen/konfigurator | 382 | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen | 2480 | PENDING_BUILDER |
+| /gleichschliessende-zylinder/konfigurator | 310 | PENDING_BUILDER |
+| /gleichschliessende-zylinder | 2081 | PENDING_BUILDER |
+| /kasse | 242 | PENDING_BUILDER |
+| / | 1130 | PENDING_BUILDER |
+| /ratgeber/[slug] | 359 | PENDING_BUILDER |
+| /ratgeber | 224 | PENDING_BUILDER |
+| /rechtliches/agb | 416 | PENDING_BUILDER |
+| /rechtliches/cookie-einstellungen | 228 | PENDING_BUILDER |
+| /rechtliches/datenschutz | 715 | PENDING_BUILDER |
+| /rechtliches/impressum | 248 | PENDING_BUILDER |
+| /rechtliches/versand-und-zahlung | 427 | PENDING_BUILDER |
+| /rechtliches/widerruf | 370 | PENDING_BUILDER |
+| /schliessanlagen/konfigurator | 368 | PENDING_BUILDER |
+| /schliessanlagen | 1873 | PENDING_BUILDER |
+| /schluessel-nach-code/[slug] | 734 | PENDING_BUILDER |
+| /schluessel-nach-code | 497 | PENDING_BUILDER |
+| /schluessel-nach-vorlage/anfrage | 221 | PENDING_BUILDER |
+| /schluessel-nach-vorlage | 1793 | PENDING_BUILDER |
+| /service-und-termin/anfrage | 151 | PENDING_BUILDER |
+| /service-und-termin/kontakt | 474 | PENDING_BUILDER |
+| /service-und-termin | 1578 | PENDING_BUILDER |
+| /service-und-termin/terminstatus | 107 | PENDING_BUILDER |
+| /service-und-termin/vor-ort | 655 | PENDING_BUILDER |
+| /sicherheitstechnik/[slug] | 644 | PENDING_BUILDER |
+| /sicherheitstechnik | 1020 | PENDING_BUILDER |
+| /sicherheitstechnik/sicherheitscheck | 329 | PENDING_BUILDER |
+| /standorte/[city] | 405 | PENDING_BUILDER |
+| /standorte | 249 | PENDING_BUILDER |
+| /tuer-und-schliesstechnik/[slug] | 493 | PENDING_BUILDER |
+| /tuer-und-schliesstechnik | 1784 | PENDING_BUILDER |
+| /warenkorb | 261 | PENDING_BUILDER |
