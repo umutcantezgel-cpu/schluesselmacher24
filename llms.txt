@@ -1,0 +1,13 @@
+# SCHLÜSSELMACHER24 - Architecture & Metadata
+
+## Architecture Blueprint (JC-AUDITOR-ARCHITECT-v1)
+
+This project strictly adheres to the following architectural guidelines:
+- Next.js 16+ App Router, React 19.2+, TypeScript 5.5+
+- Server Component Supremacy & Async Request APIs (await params/searchParams)
+- React 19 Server Actions (useActionState, useOptimistic, useTransition)
+- TypeScript Strictness: No enums, strict typing
+- Styling: Tailwind CSS v4 / Native Modern CSS with OKLCH Color Space
+- Swiss High-End Light Mode Design System
+
+For more details, see the `.jules` directory containing the `revolution-plan.json` and `architecture-matrix.md`.
