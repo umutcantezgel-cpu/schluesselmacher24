@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-09-29T12:37:28.339Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "components/calculator/interactive-roi-calculator.tsx",
+      "title": "Interactive ROI Calculator in src/app/(site)/page.tsx",
+      "specification": "Integration eines Interactive ROI Calculator in `src/app/(site)/page.tsx` mittels React 19 Server Actions und `useOptimistic`. Dies transformiert passiven Content in handlungsorientierte Erlebnisse.",
+      "score": 9.85,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_001",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "components/showcase/fluid-bento-grid.tsx",
+      "title": "Fluid Bento Grid Re-Architecture in src/app/(site)/page.tsx",
+      "specification": "Implementierung von Fluid Bento Grid Re-Architecture in `src/app/(site)/page.tsx`. Dies ersetzt statische Layouts durch interaktive, federgedämpfte Animationen, um ein immersives Erlebnis nach Awwwards-Kriterien zu schaffen.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
