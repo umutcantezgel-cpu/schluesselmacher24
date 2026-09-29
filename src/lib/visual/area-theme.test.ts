@@ -1,3 +1,4 @@
+import * as culori from 'culori';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -38,6 +39,16 @@ describe('Grundfarben in globals.css', () => {
     return match[1].trim();
   };
 
+  const mapToHsl = (val: string) => {
+    const m = val.match(/oklch\(([\d.]+) ([\d.]+) ([\d.]+)(?: \/ [\d.]+)?\)/);
+    if (m) {
+      const c: culori.Oklch = { mode: 'oklch', l: parseFloat(m[1]), c: parseFloat(m[2]), h: parseFloat(m[3]) };
+      const hsl = culori.converter('hsl')(c) as culori.Hsl;
+      return `${(hsl.h || 0)} ${hsl.s * 100}% ${hsl.l * 100}%`;
+    }
+    return val;
+  };
+
   it.each([
     ['foreground', 'background'],
     ['foreground-muted', 'background'],
@@ -50,6 +61,6 @@ describe('Grundfarben in globals.css', () => {
     ['warning', 'warning-soft'],
     ['danger', 'danger-soft'],
   ])('%s auf %s ist lesbar (≥ 4,5:1)', (fg, bg) => {
-    expect(contrastRatio(token(fg), token(bg))).toBeGreaterThanOrEqual(4.5);
+    expect(contrastRatio(mapToHsl(token(fg)), mapToHsl(token(bg)))).toBeGreaterThanOrEqual(4.5);
   });
 });
