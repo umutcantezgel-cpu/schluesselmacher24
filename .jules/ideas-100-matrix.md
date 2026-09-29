@@ -1,0 +1,109 @@
+# 100-Ideen-Matrix
+
+## KATEGORIE A: AWWWARDS-KINETIK & TAKTILE INTERAKTION (IDEEN 1 BIS 25)
+- IDEA_042: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex - Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts. [Target: app/page.tsx]
+- IDEA_A_0: Haptisches Scroll-Snapping in app/(site)/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_1: Glassmorphism-Navigationsleiste in components/layout/site-header.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_2: Schwebende 3D-Sicherheitselemente in app/(site)/sicherheitstechnik/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_3: Interaktive Hover-Glow-Buttons in components/ui/button.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_4: Fließendes SVG-Morphing in app/(site)/tuer-und-schliesstechnik/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_5: Komplexe Stagger-Effekte in components/visual/motion/reveal.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_6: Kinetik-Hover-Effekt in app/(site)/autoschluessel/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_7: Elastisches Pull-to-Refresh-Gefühl in components/layout/mobile-action-bar.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_8: Lese-Fortschrittsleiste in app/(site)/ratgeber/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_9: Physik-basiertes Accordion in components/ui/accordion.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_10: Interaktive Karte in app/(site)/standorte/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_11: SVG-Striche in components/visual/bereich-icon.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_12: Magnetischer Parallax-Effekt in app/(site)/schluessel-nach-code/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_13: Pulsierende Grenzlinien in components/forms/photo-upload.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_14: Scroll-gebundener Farbübergang in app/(site)/service-und-termin/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_15: Flüssig animierte Listbox in components/forms/controls.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_16: Sticky-Scroll-Sektion in app/(site)/gleichschliessende-zylinder/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_17: Hover-Welle auf Links in components/layout/site-footer.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_18: Glühende RFID-Wellen-SVGs in app/(site)/elektronische-zutrittsloesungen/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_19: Horizontale Scroll-Sektion in app/(site)/schliessanlagen/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_20: Leuchtender Funken-Effekt in components/visual/motion/check-draw.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_21: Fluid-Layout-Animation in app/(site)/artikel/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_22: Weiche Skalierungs-Animation in components/ui/info-tip.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+- IDEA_A_23: Dezente Text-Enthüllungs-Animation in app/(site)/rechtliches/impressum/page.tsx für optimale taktile Interaktion und Awwwards-Level Kinetik.
+
+## KATEGORIE B: SEMANTISCHE AUTORITÄT & CONTENT-MAXIMIERUNG (IDEEN 26 BIS 50)
+- IDEA_B_0: Ausbau der Historie auf app/(site)/autoschluessel/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_1: Strukturierte Vergleichsmatrix auf app/(site)/sicherheitstechnik/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_2: Tiefgehende Fach-FAQ-Architektur auf app/(site)/schliessanlagen/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_3: Technische Prozessbeschreibung auf app/(site)/gleichschliessende-zylinder/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_4: Verschlüsselungsstandards Content auf app/(site)/elektronische-zutrittsloesungen/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_5: Fallstudie über Türabsicherung auf app/(site)/tuer-und-schliesstechnik/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_6: Auflistung der OBD2-Protokolle auf app/(site)/autoschluessel/programmieren/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_7: Fachspezifischer Ausbau über Fräsalgorithmen auf app/(site)/schluessel-nach-code/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_8: Semantische Anreicherung über Frequenzbänder auf app/(site)/autoschluessel/funkschluessel/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_9: Keyless-Go-Relay-Angriffe auf app/(site)/autoschluessel/smart-key/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_10: Erklärungen zerstörungsfreier Öffnungstechniken auf app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_11: Dokumentation über Kopierschutz-Karten auf app/(site)/schluessel-nach-vorlage/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_12: Leitfaden über die Wartung auf app/(site)/ratgeber/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_13: Erläuterung der DIN 18252 auf app/(site)/sicherheitstechnik/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_14: Biometrie-Integration Content auf app/(site)/elektronische-zutrittsloesungen/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_15: Historie der Schließtechnik auf app/(site)/artikel/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_16: Notwendigkeit regelmäßiger Sicherheitschecks auf app/(site)/service-und-termin/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_17: Darstellung der VdS-Klassen auf app/(site)/sicherheitstechnik/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_18: CNC-Frästechniken Content auf app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_19: Markenspezifische Besonderheiten auf app/(site)/schluessel-nach-code/[slug]/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_20: Mehrfachverriegelungen Details auf app/(site)/tuer-und-schliesstechnik/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_21: Datenschutz bei Foto-Uploads auf app/(site)/rechtliches/datenschutz/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_22: Standortspezifische Sicherheitsanalysen auf app/(site)/standorte/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_23: Glossar schließtechnischer Fachbegriffe auf app/(site)/ratgeber/page.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+- IDEA_B_24: Content-Erweiterung zu Smart-Home Integration auf app/(site)/sicherheitstechnik/layout.tsx zur Content-Maximierung und Semantischen Autorität (> 800 Wörter).
+
+## KATEGORIE C: CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE (IDEEN 51 BIS 75)
+- IDEA_014: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator - Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter. [Target: app/services/page.tsx, Component: components/calculator/enterprise-roi-calculator.tsx]
+- IDEA_C_0: Interaktiver Budgetrechner in app/(site)/sicherheitstechnik/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_1: ROI-Konfigurator in app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_2: Dynamisches Filter-System in app/(site)/autoschluessel/marken/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_3: Interaktiver Vorher-Nachher-Slider in app/(site)/tuer-und-schliesstechnik/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_4: Live-Vertrauensbeweise in app/(site)/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_5: Konfigurator für Schließpläne in app/(site)/schliessanlagen/konfigurator/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_6: Dynamische Preis-Vorschau in app/(site)/autoschluessel/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_7: Schritt-für-Schritt Foto-Assistent in app/(site)/schluessel-nach-vorlage/anfrage/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_8: Interaktives Quiz zur Ermittlung des Sicherheitsbedarfs in app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_9: Gamifizierte Fortschrittsanzeige in app/(site)/service-und-termin/anfrage/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_10: Live-Verfügbarkeits-Indikator in app/(site)/service-und-termin/vor-ort/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_11: Dynamische Dringlichkeits-Banner in app/(site)/service-und-termin/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_12: Interaktive Karte zur Visualisierung von Einbruchstatistiken in app/(site)/sicherheitstechnik/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_13: Rechner für die Ersparnis bei Schlüssel-Kopien in app/(site)/gleichschliessende-zylinder/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_14: Visueller Zylinder-Konfigurator in app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_15: Fahrzeug-Finder via Nummernschild in app/(site)/autoschluessel/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_16: Interaktives 3D-Modell eines Schließzylinders in app/(site)/tuer-und-schliesstechnik/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_17: Conversion-optimiertes Sticky-Checkout-Panel in app/(site)/kasse/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_18: Dynamische Empfehlungs-Engine für Zubehör in app/(site)/warenkorb/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_19: Interaktives Tool zur Erkennung des Schlüsselprofils in app/(site)/schluessel-nach-vorlage/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_20: Live-Chat-Simulation in app/(site)/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_21: Rechner für Schließanlagen-Kosten in app/(site)/schliessanlagen/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_22: Visualisierung der Funk-Reichweite in app/(site)/autoschluessel/smart-key/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+- IDEA_C_23: Dynamisches Dashboard zur Auftragsverfolgung in app/(site)/service-und-termin/terminstatus/page.tsx zur Conversion-Psychologie und Nutzung nativer React 19 Server Actions.
+
+## KATEGORIE D: EXTREME PERFORMANCE, ARCHITEKTUR & DX (IDEEN 76 BIS 100)
+- IDEA_D_0: use cache Memoisierung für app/(site)/autoschluessel/marken/page.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_1: CSS Subgrid-Harmonisierung für components/layout/summary-list.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_2: Container Queries für components/ui/card.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_3: AVIF-Hero-Pipeline für app/(site)/page.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_4: Zero-Shift Webfont-Optimierung für src/app/layout.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_5: Migration zu useOptimistic für src/lib/flow/use-flow.ts zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_6: SVG-Sprite-Architektur für components/visual/icons/ zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_7: React Server Components für app/(site)/ratgeber/[slug]/page.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_8: Dynamisches Streaming für app/(site)/kasse/page.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_9: Bild-Lade-Strategie Optimierung für app/(site)/autoschluessel/page.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_10: Native Formular-Validierung für app/(site)/kasse/kasse-formular.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_11: Turbopack Optimierungen für next.config.ts zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_12: Tree-Shaking für package.json zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_13: Service Worker Implementierung für app/(site)/layout.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_14: Reduktion der DOM-Tiefe für components/layout/site-header.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_15: CSS :has() Pseudo-Klassen für globals.css zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_16: LCP Optimierung für app/(site)/sicherheitstechnik/page.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_17: Dynamische Imports für schwere Komponenten für components/calculator/ zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_18: Reduktion von Client-Side JavaScript für app/(site)/rechtliches/agb/page.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_19: React 19 useFormStatus Hook für components/forms/ zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_20: Schema.org Daten Architektur-Upgrade für components/seo/json-ld.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_21: oklch Variablen in Tailwind für tailwind.config.ts zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_22: native Form-Actions statt useEffect für app/(site)/autoschluessel/anfrage/assistent.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_23: Static Site Generation für app/(site)/artikel/[slug]/page.tsx zur Erreichung extremer Performance, Architektur & DX.
+- IDEA_D_24: Strict Content Security Policy (CSP) für next.config.ts zur Erreichung extremer Performance, Architektur & DX.
