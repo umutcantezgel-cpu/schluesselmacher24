@@ -5,6 +5,28 @@ import { describe, expect, it } from 'vitest';
 import { AREA_KEYS } from '@/lib/server/record-schema';
 import { AREA_THEMES, DEFAULT_AREA_THEME, contrastRatio, type AreaTheme } from './area-theme';
 
+import * as culori from "culori";
+
+function parseOklch(value: string) {
+  const match = value.match(/oklch\(([^\s]+)\s+([^\s]+)\s+([^\s]+)/);
+  if (!match) return value;
+  const l = parseFloat(match[1]);
+  const c = parseFloat(match[2]);
+  const h = parseFloat(match[3]);
+  const color = culori.converter('hsl')({ mode: 'oklch', l, c, h });
+  if (!color) return value;
+
+  // Format to original HSL style: 214 45% 98.6%
+  const fh = Math.round((color.h || 0) * 10) / 10;
+  const fs = Math.round(color.s * 1000) / 10;
+  const fl = Math.round(color.l * 1000) / 10;
+
+  return `${fh} ${fs}% ${fl}%`;
+}
+function mapToHsl(oklchStr: string) {
+  return parseOklch(oklchStr);
+}
+
 const WHITE = '0 0% 100%';
 
 function checkTheme(name: string, theme: AreaTheme) {
@@ -50,6 +72,6 @@ describe('Grundfarben in globals.css', () => {
     ['warning', 'warning-soft'],
     ['danger', 'danger-soft'],
   ])('%s auf %s ist lesbar (≥ 4,5:1)', (fg, bg) => {
-    expect(contrastRatio(token(fg), token(bg))).toBeGreaterThanOrEqual(4.5);
+    expect(contrastRatio(mapToHsl(token(fg)), mapToHsl(token(bg)))).toBeGreaterThanOrEqual(4.5);
   });
 });
