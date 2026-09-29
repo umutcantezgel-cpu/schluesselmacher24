@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Blueprint Synchronized
+
+- Blueprint generated successfully with OKLCH Light Mode and Next.js 16+ standards.
