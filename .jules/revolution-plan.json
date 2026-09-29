@@ -1,0 +1,1551 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-09-29T09:24:31.576Z",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/api/[...slug]",
+      "source_file": "src/app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /api/[...slug]",
+        "Häufige Fragen zu /api/[...slug]",
+        "Performance-Optimierung für /api/[...slug]"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_apislug",
+        "target_file": "components/faq/context-faq-apislug.tsx",
+        "action_file": "actions/faq-apislug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /admin/[[...segments]]",
+        "Häufige Fragen zu /admin/[[...segments]]",
+        "Performance-Optimierung für /admin/[[...segments]]"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_adminsegments",
+        "target_file": "components/faq/context-faq-adminsegments.tsx",
+        "action_file": "actions/faq-adminsegments.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/",
+      "source_file": "src/app/(payload)/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /",
+        "Häufige Fragen zu /",
+        "Performance-Optimierung für /"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_",
+        "target_file": "components/faq/context-faq-.tsx",
+        "action_file": "actions/faq-.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 1075,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /ratgeber",
+        "Häufige Fragen zu /ratgeber",
+        "Performance-Optimierung für /ratgeber"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_ratgeber",
+        "target_file": "components/faq/context-faq-ratgeber.tsx",
+        "action_file": "actions/faq-ratgeber.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1210,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /ratgeber/[slug]",
+        "Häufige Fragen zu /ratgeber/[slug]",
+        "Performance-Optimierung für /ratgeber/[slug]"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_ratgeberslug",
+        "target_file": "components/faq/context-faq-ratgeberslug.tsx",
+        "action_file": "actions/faq-ratgeberslug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 1072,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_schluesselnachvorlageanfrage",
+        "target_file": "components/faq/context-faq-schluesselnachvorlageanfrage.tsx",
+        "action_file": "actions/faq-schluesselnachvorlageanfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2644,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_schluesselnachvorlage",
+        "target_file": "components/faq/context-faq-schluesselnachvorlage.tsx",
+        "action_file": "actions/faq-schluesselnachvorlage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_schluesselnachvorlage",
+        "target_file": "components/faq/context-faq-schluesselnachvorlage.tsx",
+        "action_file": "actions/faq-schluesselnachvorlage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 1112,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /warenkorb",
+        "Häufige Fragen zu /warenkorb",
+        "Performance-Optimierung für /warenkorb"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_warenkorb",
+        "target_file": "components/faq/context-faq-warenkorb.tsx",
+        "action_file": "actions/faq-warenkorb.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 1093,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /kasse",
+        "Häufige Fragen zu /kasse",
+        "Performance-Optimierung für /kasse"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_kasse",
+        "target_file": "components/faq/context-faq-kasse.tsx",
+        "action_file": "actions/faq-kasse.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/api/kunden-upload",
+      "source_file": "src/app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 1555,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /api/kunden-upload",
+        "Häufige Fragen zu /api/kunden-upload",
+        "Performance-Optimierung für /api/kunden-upload"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_apikundenupload",
+        "target_file": "components/faq/context-faq-apikundenupload.tsx",
+        "action_file": "actions/faq-apikundenupload.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1348,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_schluesselnachcode",
+        "target_file": "components/faq/context-faq-schluesselnachcode.tsx",
+        "action_file": "actions/faq-schluesselnachcode.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1585,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_schluesselnachcodeslug",
+        "target_file": "components/faq/context-faq-schluesselnachcodeslug.tsx",
+        "action_file": "actions/faq-schluesselnachcodeslug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_schluesselnachcode",
+        "target_file": "components/faq/context-faq-schluesselnachcode.tsx",
+        "action_file": "actions/faq-schluesselnachcode.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 1981,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /",
+        "Häufige Fragen zu /",
+        "Performance-Optimierung für /"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_",
+        "target_file": "components/faq/context-faq-.tsx",
+        "action_file": "actions/faq-.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1871,
+      "content_expansion_topics": [
+        "Moderne Einbruchschutz-Technologien",
+        "Smart-Home Integration für Sicherheitssysteme",
+        "Wartung und Pflege von Sicherheitsanlagen"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_sicherheitstechnik",
+        "target_file": "components/faq/context-faq-sicherheitstechnik.tsx",
+        "action_file": "actions/faq-sicherheitstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1495,
+      "content_expansion_topics": [
+        "Moderne Einbruchschutz-Technologien",
+        "Smart-Home Integration für Sicherheitssysteme",
+        "Wartung und Pflege von Sicherheitsanlagen"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_sicherheitstechnikslug",
+        "target_file": "components/faq/context-faq-sicherheitstechnikslug.tsx",
+        "action_file": "actions/faq-sicherheitstechnikslug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 1180,
+      "content_expansion_topics": [
+        "Moderne Einbruchschutz-Technologien",
+        "Smart-Home Integration für Sicherheitssysteme",
+        "Wartung und Pflege von Sicherheitsanlagen"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_sicherheitstechniksicherheitscheck",
+        "target_file": "components/faq/context-faq-sicherheitstechniksicherheitscheck.tsx",
+        "action_file": "actions/faq-sicherheitstechniksicherheitscheck.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Moderne Einbruchschutz-Technologien",
+        "Smart-Home Integration für Sicherheitssysteme",
+        "Wartung und Pflege von Sicherheitsanlagen"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_sicherheitstechnik",
+        "target_file": "components/faq/context-faq-sicherheitstechnik.tsx",
+        "action_file": "actions/faq-sicherheitstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2635,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /tuer-und-schliesstechnik",
+        "Häufige Fragen zu /tuer-und-schliesstechnik",
+        "Performance-Optimierung für /tuer-und-schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_tuerundschliesstechnik",
+        "target_file": "components/faq/context-faq-tuerundschliesstechnik.tsx",
+        "action_file": "actions/faq-tuerundschliesstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1344,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /tuer-und-schliesstechnik/[slug]",
+        "Häufige Fragen zu /tuer-und-schliesstechnik/[slug]",
+        "Performance-Optimierung für /tuer-und-schliesstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_tuerundschliesstechnikslug",
+        "target_file": "components/faq/context-faq-tuerundschliesstechnikslug.tsx",
+        "action_file": "actions/faq-tuerundschliesstechnikslug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /tuer-und-schliesstechnik",
+        "Häufige Fragen zu /tuer-und-schliesstechnik",
+        "Performance-Optimierung für /tuer-und-schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_tuerundschliesstechnik",
+        "target_file": "components/faq/context-faq-tuerundschliesstechnik.tsx",
+        "action_file": "actions/faq-tuerundschliesstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2150,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /bestellung/[id]",
+        "Häufige Fragen zu /bestellung/[id]",
+        "Performance-Optimierung für /bestellung/[id]"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_bestellungid",
+        "target_file": "components/faq/context-faq-bestellungid.tsx",
+        "action_file": "actions/faq-bestellungid.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2932,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /gleichschliessende-zylinder",
+        "Häufige Fragen zu /gleichschliessende-zylinder",
+        "Performance-Optimierung für /gleichschliessende-zylinder"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_gleichschliessendezylinder",
+        "target_file": "components/faq/context-faq-gleichschliessendezylinder.tsx",
+        "action_file": "actions/faq-gleichschliessendezylinder.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 1161,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /gleichschliessende-zylinder/konfigurator",
+        "Häufige Fragen zu /gleichschliessende-zylinder/konfigurator",
+        "Performance-Optimierung für /gleichschliessende-zylinder/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_gleichschliessendezylinderkonfigurator",
+        "target_file": "components/faq/context-faq-gleichschliessendezylinderkonfigurator.tsx",
+        "action_file": "actions/faq-gleichschliessendezylinderkonfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /gleichschliessende-zylinder",
+        "Häufige Fragen zu /gleichschliessende-zylinder",
+        "Performance-Optimierung für /gleichschliessende-zylinder"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_gleichschliessendezylinder",
+        "target_file": "components/faq/context-faq-gleichschliessendezylinder.tsx",
+        "action_file": "actions/faq-gleichschliessendezylinder.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3331,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /elektronische-zutrittsloesungen",
+        "Häufige Fragen zu /elektronische-zutrittsloesungen",
+        "Performance-Optimierung für /elektronische-zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_elektronischezutrittsloesungen",
+        "target_file": "components/faq/context-faq-elektronischezutrittsloesungen.tsx",
+        "action_file": "actions/faq-elektronischezutrittsloesungen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1233,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /elektronische-zutrittsloesungen/konfigurator",
+        "Häufige Fragen zu /elektronische-zutrittsloesungen/konfigurator",
+        "Performance-Optimierung für /elektronische-zutrittsloesungen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_elektronischezutrittsloesungenkonfigurator",
+        "target_file": "components/faq/context-faq-elektronischezutrittsloesungenkonfigurator.tsx",
+        "action_file": "actions/faq-elektronischezutrittsloesungenkonfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /elektronische-zutrittsloesungen",
+        "Häufige Fragen zu /elektronische-zutrittsloesungen",
+        "Performance-Optimierung für /elektronische-zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_elektronischezutrittsloesungen",
+        "target_file": "components/faq/context-faq-elektronischezutrittsloesungen.tsx",
+        "action_file": "actions/faq-elektronischezutrittsloesungen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2724,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /schliessanlagen",
+        "Häufige Fragen zu /schliessanlagen",
+        "Performance-Optimierung für /schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "SchliessanlagenPlaner_schliessanlagen",
+        "target_file": "components/calculator/planer-schliessanlagen.tsx",
+        "action_file": "actions/planer-schliessanlagen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1219,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /schliessanlagen/konfigurator",
+        "Häufige Fragen zu /schliessanlagen/konfigurator",
+        "Performance-Optimierung für /schliessanlagen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "SchliessanlagenPlaner_schliessanlagenkonfigurator",
+        "target_file": "components/calculator/planer-schliessanlagenkonfigurator.tsx",
+        "action_file": "actions/planer-schliessanlagenkonfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /schliessanlagen",
+        "Häufige Fragen zu /schliessanlagen",
+        "Performance-Optimierung für /schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "SchliessanlagenPlaner_schliessanlagen",
+        "target_file": "components/calculator/planer-schliessanlagen.tsx",
+        "action_file": "actions/planer-schliessanlagen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 958,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /service-und-termin/terminstatus",
+        "Häufige Fragen zu /service-und-termin/terminstatus",
+        "Performance-Optimierung für /service-und-termin/terminstatus"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_serviceundterminterminstatus",
+        "target_file": "components/faq/context-faq-serviceundterminterminstatus.tsx",
+        "action_file": "actions/faq-serviceundterminterminstatus.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 1002,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /service-und-termin/anfrage",
+        "Häufige Fragen zu /service-und-termin/anfrage",
+        "Performance-Optimierung für /service-und-termin/anfrage"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_serviceundterminanfrage",
+        "target_file": "components/faq/context-faq-serviceundterminanfrage.tsx",
+        "action_file": "actions/faq-serviceundterminanfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2429,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /service-und-termin",
+        "Häufige Fragen zu /service-und-termin",
+        "Performance-Optimierung für /service-und-termin"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_serviceundtermin",
+        "target_file": "components/faq/context-faq-serviceundtermin.tsx",
+        "action_file": "actions/faq-serviceundtermin.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1506,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /service-und-termin/vor-ort",
+        "Häufige Fragen zu /service-und-termin/vor-ort",
+        "Performance-Optimierung für /service-und-termin/vor-ort"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_serviceundterminvorort",
+        "target_file": "components/faq/context-faq-serviceundterminvorort.tsx",
+        "action_file": "actions/faq-serviceundterminvorort.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /service-und-termin",
+        "Häufige Fragen zu /service-und-termin",
+        "Performance-Optimierung für /service-und-termin"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_serviceundtermin",
+        "target_file": "components/faq/context-faq-serviceundtermin.tsx",
+        "action_file": "actions/faq-serviceundtermin.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1325,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /service-und-termin/kontakt",
+        "Häufige Fragen zu /service-und-termin/kontakt",
+        "Performance-Optimierung für /service-und-termin/kontakt"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_serviceundterminkontakt",
+        "target_file": "components/faq/context-faq-serviceundterminkontakt.tsx",
+        "action_file": "actions/faq-serviceundterminkontakt.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 1099,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /rechtliches/impressum",
+        "Häufige Fragen zu /rechtliches/impressum",
+        "Performance-Optimierung für /rechtliches/impressum"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_rechtlichesimpressum",
+        "target_file": "components/faq/context-faq-rechtlichesimpressum.tsx",
+        "action_file": "actions/faq-rechtlichesimpressum.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 1079,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /rechtliches/cookie-einstellungen",
+        "Häufige Fragen zu /rechtliches/cookie-einstellungen",
+        "Performance-Optimierung für /rechtliches/cookie-einstellungen"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_rechtlichescookieeinstellungen",
+        "target_file": "components/faq/context-faq-rechtlichescookieeinstellungen.tsx",
+        "action_file": "actions/faq-rechtlichescookieeinstellungen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1278,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /rechtliches/versand-und-zahlung",
+        "Häufige Fragen zu /rechtliches/versand-und-zahlung",
+        "Performance-Optimierung für /rechtliches/versand-und-zahlung"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_rechtlichesversandundzahlung",
+        "target_file": "components/faq/context-faq-rechtlichesversandundzahlung.tsx",
+        "action_file": "actions/faq-rechtlichesversandundzahlung.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1221,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /rechtliches/widerruf",
+        "Häufige Fragen zu /rechtliches/widerruf",
+        "Performance-Optimierung für /rechtliches/widerruf"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_rechtlicheswiderruf",
+        "target_file": "components/faq/context-faq-rechtlicheswiderruf.tsx",
+        "action_file": "actions/faq-rechtlicheswiderruf.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/rechtliches",
+      "source_file": "src/app/(site)/rechtliches/layout.tsx",
+      "target_word_count": 1000,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /rechtliches",
+        "Häufige Fragen zu /rechtliches",
+        "Performance-Optimierung für /rechtliches"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_rechtliches",
+        "target_file": "components/faq/context-faq-rechtliches.tsx",
+        "action_file": "actions/faq-rechtliches.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 1267,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /rechtliches/agb",
+        "Häufige Fragen zu /rechtliches/agb",
+        "Performance-Optimierung für /rechtliches/agb"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_rechtlichesagb",
+        "target_file": "components/faq/context-faq-rechtlichesagb.tsx",
+        "action_file": "actions/faq-rechtlichesagb.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1566,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /rechtliches/datenschutz",
+        "Häufige Fragen zu /rechtliches/datenschutz",
+        "Performance-Optimierung für /rechtliches/datenschutz"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_rechtlichesdatenschutz",
+        "target_file": "components/faq/context-faq-rechtlichesdatenschutz.tsx",
+        "action_file": "actions/faq-rechtlichesdatenschutz.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1507,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /artikel",
+        "Häufige Fragen zu /artikel",
+        "Performance-Optimierung für /artikel"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_artikel",
+        "target_file": "components/faq/context-faq-artikel.tsx",
+        "action_file": "actions/faq-artikel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1785,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /artikel/[slug]",
+        "Häufige Fragen zu /artikel/[slug]",
+        "Performance-Optimierung für /artikel/[slug]"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_artikelslug",
+        "target_file": "components/faq/context-faq-artikelslug.tsx",
+        "action_file": "actions/faq-artikelslug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/",
+      "source_file": "src/app/(site)/layout.tsx",
+      "target_word_count": 1109,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /",
+        "Häufige Fragen zu /",
+        "Performance-Optimierung für /"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_",
+        "target_file": "components/faq/context-faq-.tsx",
+        "action_file": "actions/faq-.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 1100,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /standorte",
+        "Häufige Fragen zu /standorte",
+        "Performance-Optimierung für /standorte"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_standorte",
+        "target_file": "components/faq/context-faq-standorte.tsx",
+        "action_file": "actions/faq-standorte.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1256,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /standorte/[city]",
+        "Häufige Fragen zu /standorte/[city]",
+        "Performance-Optimierung für /standorte/[city]"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_standortecity",
+        "target_file": "components/faq/context-faq-standortecity.tsx",
+        "action_file": "actions/faq-standortecity.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1569,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselmarken",
+        "target_file": "components/filter/automarken-filter-autoschluesselmarken.tsx",
+        "action_file": "actions/filter-autos-autoschluesselmarken.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2074,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselmarkenmakemodel",
+        "target_file": "components/filter/automarken-filter-autoschluesselmarkenmakemodel.tsx",
+        "action_file": "actions/filter-autos-autoschluesselmarkenmakemodel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1830,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselmarkenmake",
+        "target_file": "components/filter/automarken-filter-autoschluesselmarkenmake.tsx",
+        "action_file": "actions/filter-autos-autoschluesselmarkenmake.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1942,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselfunkschluessel",
+        "target_file": "components/filter/automarken-filter-autoschluesselfunkschluessel.tsx",
+        "action_file": "actions/filter-autos-autoschluesselfunkschluessel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 2073,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselprogrammieren",
+        "target_file": "components/filter/automarken-filter-autoschluesselprogrammieren.tsx",
+        "action_file": "actions/filter-autos-autoschluesselprogrammieren.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 56,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1369,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselanfrage",
+        "target_file": "components/filter/automarken-filter-autoschluesselanfrage.tsx",
+        "action_file": "actions/filter-autos-autoschluesselanfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 57,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2853,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluessel",
+        "target_file": "components/filter/automarken-filter-autoschluessel.tsx",
+        "action_file": "actions/filter-autos-autoschluessel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 58,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1984,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselkopieren",
+        "target_file": "components/filter/automarken-filter-autoschluesselkopieren.tsx",
+        "action_file": "actions/filter-autos-autoschluesselkopieren.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 59,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 2040,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselnachmachen",
+        "target_file": "components/filter/automarken-filter-autoschluesselnachmachen.tsx",
+        "action_file": "actions/filter-autos-autoschluesselnachmachen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 60,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 2058,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselsmartkey",
+        "target_file": "components/filter/automarken-filter-autoschluesselsmartkey.tsx",
+        "action_file": "actions/filter-autos-autoschluesselsmartkey.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 61,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1893,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselschluesselbartfraesen",
+        "target_file": "components/filter/automarken-filter-autoschluesselschluesselbartfraesen.tsx",
+        "action_file": "actions/filter-autos-autoschluesselschluesselbartfraesen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 62,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1972,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluesselfahrzeugoeffnung",
+        "target_file": "components/filter/automarken-filter-autoschluesselfahrzeugoeffnung.tsx",
+        "action_file": "actions/filter-autos-autoschluesselfahrzeugoeffnung.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 63,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/layout.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Fachliche Hintergründe zur Schlüsselfertigung",
+        "Sicherheitsaspekte von Nachschlüsseln",
+        "Zertifizierungen und Normen bei Schlüsseln"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "AutoMarkenFilter_autoschluessel",
+        "target_file": "components/filter/automarken-filter-autoschluessel.tsx",
+        "action_file": "actions/filter-autos-autoschluessel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 64,
+      "route_path": "/llms.txt",
+      "source_file": "src/app/llms.txt/route.ts",
+      "target_word_count": 996,
+      "content_expansion_topics": [
+        "Detaillierte Analyse der /llms.txt",
+        "Häufige Fragen zu /llms.txt",
+        "Performance-Optimierung für /llms.txt"
+      ],
+      "interactive_module": {
+        "type": "FAQ",
+        "component_name": "ContextFAQ_llmstxt",
+        "target_file": "components/faq/context-faq-llmstxt.tsx",
+        "action_file": "actions/faq-llmstxt.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
