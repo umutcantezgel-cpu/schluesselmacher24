@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-09-29T18:49:54.646Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_012",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/(site)/page.tsx",
+      "target_component_file": "components/showcase/spatial-bento-grid.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "Implementierung: Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex auf der Route app/(site)/page.tsx, fokussiert auf components/showcase/spatial-bento-grid.tsx. Extreme Vertiefung des Bestands ohne neue Routen zu erzeugen.",
+      "score": 9.95,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_063",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_component_file": "components/calculator/enterprise-roi-calculator.tsx",
+      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
+      "specification": "Implementierung: Interaktiver Enterprise ROI- und Ladezeit-Kalkulator auf der Route app/(site)/schluessel-nach-vorlage/anfrage/page.tsx, fokussiert auf components/calculator/enterprise-roi-calculator.tsx. Extreme Vertiefung des Bestands ohne neue Routen zu erzeugen.",
+      "score": 9.85,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
