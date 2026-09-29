@@ -92,7 +92,7 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
                   <li key={item.id}>
                     <Link
                       href={`/ratgeber/${item.slug}`}
-                      className="block rounded-lg border border-border bg-surface p-4 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                      className="block rounded-lg border border-border bg-surface p-4 text-[14px] font-semibold text-foreground transition-colors motion-reduce:transition-none hover:border-primary hover:text-primary"
                     >
                       {item.title}
                     </Link>

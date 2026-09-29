@@ -82,7 +82,7 @@ export function SiteHeader() {
                 onClick={() => setOpenArea(openArea === 'mehr' ? null : 'mehr')}
                 onMouseEnter={() => setOpenArea('mehr')}
                 aria-expanded={openArea === 'mehr'}
-                className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-[13px] font-semibold text-foreground-muted transition-colors hover:bg-surface-muted hover:text-foreground"
+                className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-[13px] font-semibold text-foreground-muted transition-colors motion-reduce:transition-none hover:bg-surface-muted hover:text-foreground"
               >
                 Mehr
                 <ChevronDown size={13} aria-hidden />

@@ -200,7 +200,7 @@ export default async function SecurityDetailPage(props: PageProps) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-border bg-surface px-4 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-border bg-surface px-4 text-[14px] font-semibold text-foreground transition-colors motion-reduce:transition-none hover:border-primary hover:text-primary"
               >
                 {link.label}
                 <ArrowRight size={15} aria-hidden />

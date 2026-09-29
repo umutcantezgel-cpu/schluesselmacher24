@@ -88,7 +88,8 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
-  }
+    overflow-x: clip;
+}
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight text-foreground;
@@ -236,7 +237,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .sm24-draw {
     stroke-dasharray: 1;
-    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.65, 0, 0.35, 1)
+    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.16, 1, 0.3, 1)
       var(--sm24-delay, 0s) both;
   }
 
@@ -253,7 +254,7 @@
   }
 
   .sm24-float {
-    animation: sm24-float var(--sm24-duration, 6s) ease-in-out var(--sm24-delay, 0s) infinite;
+    animation: sm24-float var(--sm24-duration, 6s) cubic-bezier(0.16, 1, 0.3, 1) var(--sm24-delay, 0s) infinite;
   }
 
   .sm24-dash {

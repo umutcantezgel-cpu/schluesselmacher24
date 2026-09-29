@@ -198,7 +198,7 @@ function ArtikelKarte({ article }: { article: ListenArtikel }) {
   return (
     <Link
       href={artikelPfad(article.slug)}
-      className="group flex h-full flex-col rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary"
+      className="group flex h-full flex-col rounded-lg border border-border bg-surface p-4 transition-colors motion-reduce:transition-none hover:border-primary"
     >
       <ImagePlaceholder
         slot={article.image}
@@ -232,7 +232,7 @@ function ArtikelKarte({ article }: { article: ListenArtikel }) {
         </div>
         <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
           Ansehen
-          <ArrowRight size={14} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight size={14} aria-hidden className="transition-transform motion-reduce:transition-none group-hover:translate-x-0.5" />
         </span>
       </div>
     </Link>

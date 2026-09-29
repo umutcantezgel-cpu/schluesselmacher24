@@ -167,7 +167,7 @@ export default async function ArtikelPage() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group flex h-full items-start gap-3 rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                className="group flex h-full items-start gap-3 rounded-lg border border-border bg-surface p-5 transition-colors motion-reduce:transition-none hover:border-primary"
               >
                 <PackageOpen size={18} aria-hidden className="mt-0.5 shrink-0 text-primary" />
                 <span className="min-w-0 flex-1">
@@ -183,7 +183,7 @@ export default async function ArtikelPage() {
                 <ArrowRight
                   size={16}
                   aria-hidden
-                  className="mt-0.5 shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                  className="mt-0.5 shrink-0 text-foreground-subtle transition-transform motion-reduce:transition-none group-hover:translate-x-0.5"
                 />
               </Link>
             </li>

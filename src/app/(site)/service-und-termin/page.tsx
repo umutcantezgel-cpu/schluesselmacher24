@@ -109,7 +109,7 @@ export default async function ServiceUndTerminPage() {
               <li key={entry.href}>
                 <Link
                   href={entry.href}
-                  className="group flex h-full gap-4 rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                  className="group flex h-full gap-4 rounded-lg border border-border bg-surface p-5 transition-colors motion-reduce:transition-none hover:border-primary"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary">
                     <Icon size={19} aria-hidden />
