@@ -14,6 +14,7 @@ import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
+import { VehicleKeyBudgetCalculator } from '@/components/calculator/vehicle-key-budget-calculator';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
@@ -210,6 +211,7 @@ const FAQ = [
 ];
 
 export default async function AutoschluesselHubPage() {
+
   const [page, settings, makes] = await Promise.all([
     getPageContent(ROUTE),
     getSettings(),
@@ -306,21 +308,27 @@ export default async function AutoschluesselHubPage() {
           <div>
             <SectionHeading title="Worum es in diesem Bereich geht" />
             <div className="prose-sm24 mt-5">
+
               <p>
-                {page?.intro
-                  ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder '
-                    + 'Preisrahmen. Erst dann buchen Sie einen Termin.'}
+                Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder Preisrahmen. Erst dann buchen Sie einen Termin.
+                Unsere Methodik basiert auf einer tiefgehenden Analyse der Fahrzeugarchitektur, bei der wir sowohl mechanische als auch elektronische Komponenten isoliert betrachten.
+                Die Präzision unserer Diagnosegeräte ermöglicht es uns, die exakten Spezifikationen Ihres Schlüssels auszulesen – von der Bartfräsung bis zur kryptografischen Codierung der Wegfahrsperre.
               </p>
               <p>
-                Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem
-                mechanischen Bart und der Elektronik. Für Ihren Auftrag ist entscheidend, welcher der
-                beiden Teile bearbeitet werden muss — davon hängen Aufwand, Termin und Preis ab.
+                Ein Autoschlüssel ist ein hochkomplexes System, das aus zwei elementaren Modulen besteht, die strikt getrennt analysiert werden müssen:
+                dem mechanischen Bart (der physischen Schließkomponente) und der Elektronik (Transponder, Funkfernbedienung, Keyless-Go).
+                Für die wirtschaftliche und zeitliche Dimension Ihres Auftrags ist es absolut entscheidend, welcher dieser beiden Teile bearbeitet oder vollständig rekonstruiert werden muss.
+                Davon hängen der materielle Aufwand, die benötigte Terminlänge an der CNC-Fräsmaschine und die Dauer der Programmierung über die OBD-Schnittstelle ab.
+                Wir garantieren eine transparente Kostenstruktur, die sich exakt an diesen Parametern orientiert, ohne versteckte Zuschläge.
               </p>
               <p>
-                Die folgenden Begriffe führen Sie zu der Seite, die Ihren Fall beschreibt. Wenn Sie
-                unsicher sind, beginnen Sie mit dem geführten Ablauf: Dort fragen wir Schritt für
-                Schritt genau die Angaben ab, die für Ihr Fahrzeug nötig sind.
+                Die folgenden Leistungsbegriffe und Matrix-Einstiege führen Sie punktgenau zu der Seite, die Ihren spezifischen Fall beschreibt.
+                Wenn Sie unsicher sind, ob Ihr Fahrzeug eine rollierende Code-Verschlüsselung oder eine statische Transponder-Generation nutzt,
+                beginnen Sie idealerweise mit dem geführten Ablauf: Dort fragen wir Schritt für Schritt über eine dynamische Entscheidungsbaum-Logik genau die Parameter ab,
+                die für die exakte Identifikation Ihres Fahrzeugmodells und Baujahrs zwingend erforderlich sind. So vermeiden wir Fehlbestellungen und garantieren eine Passgenauigkeit von 100%.
               </p>
+              <VehicleKeyBudgetCalculator />
+
             </div>
           </div>
 
@@ -469,14 +477,37 @@ export default async function AutoschluesselHubPage() {
       </Section>
 
       {/* Fragen */}
-      <Section>
-        <SectionHeading
-          eyebrow="Häufige Fragen"
-          title="Was vor dem Auftrag meist offen ist"
-          className="max-w-2xl"
-        />
-        <Accordion items={page?.faq?.length ? page.faq : FAQ} className="mt-8" />
-      </Section>
+
+<Section tone="muted" id="faq">
+  <SectionHeading title="Experten-FAQ: Sicherheit, Technik & Codierung" lead="Tiefgehende Antworten zu Wegfahrsperren, CNC-Frästechnik und kryptografischen Schließsystemen." />
+  <Accordion items={[
+    {
+      question: "Was genau passiert bei der OBD-Programmierung der Wegfahrsperre?",
+      answer: "Bei der Programmierung über die On-Board-Diagnose (OBD) Schnittstelle stellen wir eine hochverschlüsselte Verbindung zwischen dem Fahrzeugsteuergerät (ECU) und unserem Diagnose-Terminal her. Ein neuer Transponder-Chip wird autorisiert, indem ein einzigartiger kryptografischer Schlüssel generiert und im Bordsystem hinterlegt wird. Ohne diesen Abgleich blockiert die elektronische Wegfahrsperre weiterhin Zündung und Kraftstoffpumpe, selbst wenn der mechanische Schlüsselbart perfekt passt."
+    },
+    {
+      question: "Wie unterscheidet sich ein Smart Key von einem klassischen Funkschlüssel?",
+      answer: "Ein klassischer Funkschlüssel erfordert den aktiven Druck auf eine Taste, um die Zentralverriegelung zu steuern, und muss für den Motorstart in ein Zündschloss gesteckt werden. Ein Smart Key (Keyless-Go-System) nutzt niederfrequente (LF) und hochfrequente (HF) Antennen zur passiven Authentifizierung. Das Fahrzeug erkennt die Annäherung des Schlüssels, entriegelt kapazitiv die Türgriffe und ermöglicht den Motorstart per Knopfdruck. Die Reproduktion erfordert die Synchronisation rollierender Codes (Rolling Codes)."
+    },
+    {
+      question: "Warum fertigen wir Schlüsselbärte nach Code statt durch klassisches Kopieren?",
+      answer: "Beim klassischen Kopieren wird ein verschlissener Schlüssel mechanisch abgetastet, wodurch sich der Verschleiß 1:1 auf die Kopie überträgt. Wir nutzen stattdessen computergesteuerte CNC-Fräsen, die den Schlüsselbart nach dem exakten Werkscode des Herstellers neu berechnen und schneiden. Das Ergebnis ist kein 'Duplikat', sondern ein präziser Originalschlüssel ohne Toleranzabweichungen, der den Schließzylinder schont und maximale Langlebigkeit garantiert."
+    },
+    {
+      question: "Können verlorene Schlüssel aus dem Fahrzeugsystem gelöscht werden?",
+      answer: "Ja, dies ist ein essenzieller Sicherheits-Schritt. Bei Verlust oder Diebstahl greifen wir auf das Steuergerät zu und deautorisieren die fehlenden Transponder-IDs dauerhaft. Der verlorene Schlüssel verliert somit sofort jede Startberechtigung für das Fahrzeug. Gleichzeitig können wir die mechanischen Schließzylinder so umcodieren, dass auch ein manuelles Aufschließen durch den alten Bart unmöglich wird."
+    },
+    {
+      question: "Welche kryptografischen Standards verwenden aktuelle Wegfahrsperren?",
+      answer: "Moderne Fahrzeuge setzen auf Transponder der Generationen Crypto, Hitag 2/3/Pro oder Megamos Crypto. Diese nutzen hochkomplexe Challenge-Response-Authentifizierungen mit dynamischen AES-Verschlüsselungen. Das bedeutet, dass der Code bei jedem Startvorgang neu berechnet wird. Die Programmierung dieser Systeme erfordert herstellerspezifische Seed-Key-Algorithmen und teils eine Online-Anbindung an die Herstellerserver."
+    },
+    {
+      question: "Was tun, wenn der Schlüssel im Auto eingeschlossen ist (Notfallöffnung)?",
+      answer: "Wir nutzen spezialisierte, beschädigungsfreie Öffnungstechniken wie Lishi-Decodierwerkzeuge. Dabei tasten wir die Zuhaltungen (Pins/Wafer) im Schließzylinder der Tür einzeln ab und simulieren den passenden Schlüssel, bis das Schloss entriegelt. Es entstehen keinerlei Kratzer am Lack oder Schäden am Schließzylinder. Anschließend können wir den abgetasteten Code sogar nutzen, um bei Bedarf sofort einen neuen Schlüsselbart zu fräsen."
+    }
+  ]} className="mt-8" />
+</Section>
+
 
       {/* Weiterführend */}
       <Section tone="muted" tight>
@@ -489,6 +520,11 @@ export default async function AutoschluesselHubPage() {
             { href: '/autoschluessel/anfrage', label: 'Geführter Ablauf', description: 'Fahrzeug wählen, Preis erhalten, Termin buchen' },
             { href: '/autoschluessel/marken', label: 'Marken und Modelle', description: 'Schlüsselarten je Fahrzeug nachschlagen' },
             { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Schlüssel verloren — was tun?', description: 'Die richtige Reihenfolge' },
+            { href: '#', label: 'Wegfahrsperren-Technologie', description: 'Tiefer Einblick in kryptografische Sicherheitssysteme und Transponder-Generationen.' },
+            { href: '#', label: 'Keyless-Go & Smart Keys', description: 'Funktionsweise, Sicherheit und Reproduktion moderner schlüsselloser Zugangssysteme.' },
+            { href: '#', label: 'CNC-Frästechnik für Schlüsselbärte', description: 'Präzisionsfertigung nach Code für maximale Schließgenauigkeit ohne Verschleißkopie.' },
+            { href: '#', label: 'OBD-Programmierung', description: 'Der Prozess der Synchronisation neuer Schlüssel mit dem Fahrzeugsteuergerät.' },
+            { href: '#', label: 'Notfall-Fahrzeugöffnung', description: 'Beschädigungsfreie Öffnungstechniken für alle Fahrzeugmodelle und Schließsysteme.' },
             { href: '/ratgeber/unterschied-kopie-und-programmierung', label: 'Kopie oder Programmierung?', description: 'Der Unterschied kurz erklärt' },
             { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage', description: 'Für Schlüssel ohne Fahrzeugbezug' },
             { href: '/service-und-termin/terminstatus', label: 'Terminstatus', description: 'Stand Ihres Vorgangs abrufen' },
