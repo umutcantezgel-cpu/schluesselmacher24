@@ -43,3 +43,12 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Blueprint
+
+This repository is strictly governed by the JC-AUDITOR-ARCHITECT-v1 guidelines:
+- Next.js 16+ App Router
+- React 19+ Server Components & Server Actions
+- TypeScript 5.5+ Strict Type Safety
+- Tailwind CSS v4 & OKLCH Color Space (Swiss Light Mode Design System)
+- Read the generated `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for specific route transformations.
