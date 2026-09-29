@@ -11,6 +11,7 @@ import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
@@ -129,82 +130,39 @@ const AUDIENCES = [
 ];
 
 /** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
-const FALLBACK_FAQ = [
-  {
-    question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
-    answer:
-      'Nein. Im Konfigurator beschreiben Sie Ihr Objekt und wer welche Tür öffnen soll. Daraus '
-      + 'leiten wir einen Vorschlag für das passende System ab und besprechen ihn mit Ihnen.',
-  },
-  {
-    question: 'Was ist der Unterschied zwischen einer Gleichschließung und einer Schließanlage?',
-    answer:
-      'Bei einer Gleichschließung öffnet jeder Schlüssel jede Tür. Eine Schließanlage unterscheidet '
-      + 'dagegen, wer welche Tür öffnen darf, und bildet dafür Ebenen ab — vom Nutzerschlüssel bis '
-      + 'zum Hauptschlüssel.',
-  },
-  {
-    question: 'Kann ich eine Anlage später erweitern?',
-    answer:
-      'Das entscheidet sich bei der Planung. Wenn im Schließplan Reserven für weitere Türen und '
-      + 'Nutzer vorgesehen sind, lassen sich später Schließstellen ergänzen. Sagen Sie uns deshalb '
-      + 'im Konfigurator, was Sie in den nächsten Jahren vorhaben.',
-  },
-  {
-    question: 'Ich habe schon eine Anlage. Können Sie sie ergänzen?',
-    answer:
-      'Das hängt vom vorhandenen System und vom Nachweis ab. Geben Sie im Konfigurator Hersteller, '
-      + 'System und die Sicherungskarte an, soweit Ihnen das bekannt ist, und laden Sie vorhandene '
-      + 'Pläne oder Fotos hoch. Wir prüfen danach, was möglich ist.',
-  },
-  {
-    question: 'Wie kommt der Preis zustande?',
-    answer:
-      'Eine Schließanlage wird nach Ihrem Schließplan gefertigt. Preis und Aufwand hängen von der '
-      + 'Anzahl der Schließstellen, der Schlüssel und der Ebenen ab. Deshalb nennen wir erst nach '
-      + 'der Erfassung einen Betrag — und nicht vorab auf der Seite.',
-  },
-  {
-    question: 'Brauchen alle Türen denselben Zylinder?',
-    answer:
-      'Nein. Innerhalb einer Anlage können Zylinder unterschiedlich ausgestattet sein — etwa '
-      + 'Außentüren mit höherem Schutz gegen Aufbohren und Ziehen, Innentüren in einfacherer '
-      + 'Ausführung. Welche Tür welche Ausstattung braucht, halten wir im Schließplan fest.',
-  },
-  {
-    question: 'Was passiert, wenn ein Hauptschlüssel verloren geht?',
-    answer:
-      'Ein übergeordneter Schlüssel öffnet viele Türen. Bei einer rein mechanischen Anlage müssen '
-      + 'deshalb meist die betroffenen Zylinder getauscht oder umgestellt werden. Für Türen mit '
-      + 'hohem Verlustrisiko kann eine elektronische Lösung sinnvoll sein, weil sich ein verlorenes '
-      + 'Medium dort sperren lässt.',
-  },
-  {
-    question: 'Wer darf Nachschlüssel bestellen?',
-    answer:
-      'Bei Anlagen mit Sicherungskarte nur, wer die Karte vorlegt. Ob ein Profil zusätzlich '
-      + 'geschützt ist und wie lange, hängt vom Hersteller und vom System ab. Bewahren Sie die '
-      + 'Karte getrennt von den Schlüsseln auf.',
-  },
-  {
-    question: 'Was gilt an Flucht- und Rettungswegen?',
-    answer:
-      'Türen in Flucht- und Rettungswegen müssen sich in Fluchtrichtung jederzeit ohne Schlüssel '
-      + 'öffnen lassen. Dafür gibt es Notausgangs- und Paniktürverschlüsse nach DIN EN 179 und '
-      + 'DIN EN 1125 sowie passende Zylinder. Kennzeichnen Sie solche Türen im Konfigurator, damit '
-      + 'wir sie im Schließplan berücksichtigen.',
-  },
-  {
-    question: 'Wie pflege ich die Zylinder?',
-    answer:
-      'Verwenden Sie kein Öl und kein Kriechöl — beides verharzt und zieht Schmutz an. Geeignet ist '
-      + 'ein Pflegespray für Schließzylinder nach Angabe des Herstellers.',
-  },
-];
 
-export default async function SchliessanlagenPage() {
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
-  const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
+  const faq = page?.faq?.length ? page.faq : [
+  {
+    question: "Was ist der Unterschied zwischen einer Gleichschließung und einer Schließanlage?",
+    answer: "Bei einer Gleichschließung haben alle Schlösser dieselbe Schließung (denselben Code). Ein Schlüssel passt überall. Es gibt keine Hierarchie. Bei einer Schließanlage (z.B. Zentralschlossanlage oder Hauptschlüsselanlage) gibt es über- und untergeordnete Schlüssel. Ein Mieter kann nur seine Wohnung und die Haustür öffnen, der Hausmeister mit seinem Schlüssel aber alle Haustüren und Technikräume."
+  },
+  {
+    question: "Was passiert, wenn ein Schlüssel einer Schließanlage verloren geht?",
+    answer: "Das hängt vom System und vom verlorenen Schlüssel ab. Verliert ein Mieter seinen Wohnungsschlüssel (Einzelschlüssel), muss meist nur der Wohnungszylinder und ggf. der Zentralzylinder getauscht werden. Verliert jemand den Generalhauptschlüssel (GHS), der überall schließt, muss aus Sicherheitsgründen oft die gesamte Anlage ausgetauscht werden. Daher empfiehlt sich hierfür ein elektronisches System oder eine strenge Schlüsselverwaltung."
+  },
+  {
+    question: "Kann ich meine Schließanlage später erweitern?",
+    answer: "Ja, wenn dies bei der Erstplanung berücksichtigt wurde. Wir planen Anlagen standardmäßig mit sogenannten 'Ausbaureserven'. Dabei werden mathematische Schließmöglichkeiten für zukünftige Türen im Schließplan freigehalten, ohne sie sofort zu fertigen. So können später problemlos neue Zylinder hinzugefügt werden, die sich nahtlos in die bestehende Hierarchie einfügen."
+  },
+  {
+    question: "Was ist eine Sicherungskarte und warum ist sie wichtig?",
+    answer: "Die Sicherungskarte (auch Servicekarte genannt) ist der 'Fahrzeugbrief' Ihrer Schließanlage. Nur wer diese Karte im Original vorlegt, ist berechtigt, Nachschlüssel oder zusätzliche Zylinder für die Anlage fertigen zu lassen. Sie schützt das System effektiv vor illegalen Schlüsselkopien und garantiert, dass Sie jederzeit die volle Kontrolle über die ausgegebenen Schlüssel behalten."
+  },
+  {
+    question: "Wie lange dauert die Lieferung einer neuen Schließanlage?",
+    answer: "Nach der finalen Freigabe des Schließplans durch Sie, dauert die werkseitige Fertigung einer mechanischen Schließanlage bei unseren Partnern in der Regel 10 bis 15 Werktage. Die anschließende fachgerechte Montage vor Ort erfolgt dann zu einem vereinbarten Termin und nimmt je nach Anlagengröße wenige Stunden bis mehrere Tage in Anspruch."
+  }
+];
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
@@ -243,9 +201,9 @@ export default async function SchliessanlagenPage() {
           <div>
             <p className="text-[15px] leading-relaxed text-foreground-muted md:text-base">
               {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
+                ?? 'Eine Schließanlage ist das zentrale physische Berechtigungsmanagement-System eines Gebäudes. Sie regelt mit höchster Präzision, wer welche Tür öffnen darf, und bildet damit das sicherheitstechnische Rückgrat moderner Immobilien – von der privaten Wohnanlage bis zum komplexen Industriekomplex. Wir erklären die zugrundeliegende architektonische Methodik, die verschiedenen Systemklassen und planen Ihre Anlage zukunftssicher. \n\n' +
+              'Die architektonische Methodik bei der Planung einer Schließanlage basiert auf der Definition von Nutzergruppen und deren Bewegungsradien. Anstatt jeder Tür ein separates Schloss und jedem Nutzer ein Bund voller Schlüssel zuzuordnen, wird ein mathematisch-mechanisches Beziehungsgeflecht erschaffen. Zylinder und Schlüssel werden ab Werk so codiert, dass ein einzelner Schlüssel hunderte unterschiedliche Türen öffnen kann, während ein anderer Schlüssel in derselben Anlage nur für eine einzige Tür passt. \n\n' +
+              'Dieser modulare Ansatz garantiert nicht nur maximalen Komfort für die Anwender, sondern ermöglicht es auch, das System bei organisatorischen Veränderungen oder baulichen Erweiterungen nachträglich anzupassen und zu skalieren. Die Sicherheit wird dabei durch geschützte Schlüsselprofile und strenge Legitimation bei Nachbestellungen (Sicherungskarte) auf höchstem Niveau gewährleistet.'}
             </p>
 
             <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
@@ -310,6 +268,35 @@ export default async function SchliessanlagenPage() {
           </p>
           <div className="mt-5">
             <SystemVergleich />
+          </div>
+        </div>
+      </Section>
+
+
+      {/* Enterprise ROI und Planung */}
+      <Section id="roi-kalkulator" tone="muted">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Wirtschaftlichkeit"
+              title="Enterprise ROI und Systemeffizienz"
+              lead="Eine moderne Schließanlage ist mehr als ein Sicherheitsmerkmal. Sie ist ein Instrument zur betriebswirtschaftlichen Prozessoptimierung."
+            />
+            <div className="mt-8 space-y-6 text-[15px] leading-relaxed text-foreground-muted">
+              <p>
+                In der architektonischen und betriebswirtschaftlichen Bewertung von Schließsystemen wird häufig unterschätzt, welche laufenden Kosten durch ineffizientes Schlüsselmanagement entstehen. Die Administration von Berechtigungen, der physische Austausch bei Verlusten und die Dokumentation von Ausgabe-Prozessen binden erhebliche Ressourcen in der Gebäudeverwaltung.
+              </p>
+              <p>
+                Mechanische Schließanlagen der Enterprise-Klasse, insbesondere Generalhauptschlüsselanlagen (GHS), minimieren diesen Aufwand durch präzise hierarchische Strukturierung. Jeder Nutzer trägt genau einen Schlüssel, der exakt die Türen öffnet, für die eine Autorisierung vorliegt. Dieses Prinzip der &quot;Minimierung der Schlüsselanzahl&quot; (Least Privilege Access auf physischer Ebene) senkt nicht nur das Verlustrisiko, sondern reduziert auch den administrativen Overhead massiv.
+              </p>
+              <p>
+                Unser interaktiver ROI-Kalkulator demonstriert die potenziellen Einsparungen. Er vergleicht den Aufwand dezentraler, unstrukturierter Schließsysteme mit einer zentral geplanten GHS- oder HS-Anlage. Berücksichtigt werden dabei typische Opportunitätskosten für Hausmeisterdienste, Neuanschaffungen bei Schlüsselverlust und die Verwaltung von Ausgabeprotokollen.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative">
+            <EnterpriseRoiCalculator />
           </div>
         </div>
       </Section>
