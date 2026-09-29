@@ -1,0 +1,11 @@
+{
+  "target_routes": [
+    {
+      "path": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "word_count_target": 850,
+      "interactive_module": "components/calculator/security-check-calculator.tsx",
+      "action_module": "src/actions/calculate-security.ts"
+    }
+  ]
+}

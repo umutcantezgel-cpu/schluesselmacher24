@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +74,10 @@ const PRINCIPLE = [
   },
 ];
 
+
+
 export default async function SicherheitstechnikPage() {
+
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -296,6 +300,152 @@ export default async function SicherheitstechnikPage() {
               </Link>
             </CardBody>
           </Card>
+        </div>
+      </Section>
+
+      {/* Interactive Module & Deep Expertise Section */}
+      <Section id="architektur-und-methodik" tone="muted">
+        <div className="grid gap-8 lg:grid-cols-[1fr_400px] lg:items-start lg:gap-12">
+
+          <div className="space-y-8">
+            <div>
+              <SectionHeading
+                eyebrow="Architektur & Methodik"
+                title="Sicherheit als ganzheitliches System"
+                lead="Ein sicheres Gebäude entsteht nicht durch das wahllose Aneinanderreihen von Technik. Es erfordert eine methodische Herangehensweise, bei der Mechanik, Elektronik und organisatorische Maßnahmen ineinandergreifen."
+              />
+
+              <div className="mt-8 space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                <p>
+                  Die Basis jedes fundierten Sicherheitskonzepts ist die physische Hülle eines Objekts.
+                  Mechanische Sicherungen wie Hochsicherheitszylinder, Panzerriegel und einbruchhemmende
+                  Türen bilden den primären Widerstand. Ihre Aufgabe ist es, einen Eindringling physisch
+                  aufzuhalten und den Zeitaufwand für einen Einbruch so drastisch zu erhöhen, dass der
+                  Versuch abgebrochen wird. Die Täterpsychologie zeigt deutlich: Je länger ein Einbruchsversuch
+                  dauert, desto höher ist das Risiko der Entdeckung und desto wahrscheinlicher der Abbruch.
+                </p>
+                <p>
+                  Auf diesem soliden mechanischen Fundament baut die elektronische Sicherheitstechnik auf.
+                  Hierbei unterscheiden wir streng zwischen Meldetechnik und Überwachungstechnik.
+                  Meldetechnik – wie VdS-zertifizierte Einbruchmeldeanlagen – detektiert den Versuch der
+                  Überwindung der mechanischen Barrieren. Sie alarmiert interne oder externe Stellen (wie
+                  einen Wachschutz oder die Polizei), bevor der Täter überhaupt in das Objekt eingedrungen ist.
+                </p>
+                <p>
+                  Die Überwachungstechnik, insbesondere die hochauflösende IP-Videoüberwachung, dient der
+                  Verifikation von Alarmen und der späteren Beweissicherung. Moderne Systeme nutzen
+                  Künstliche Intelligenz, um zwischen relevanten Bewegungen (Personen, Fahrzeuge) und
+                  Fehlalarmen (Tiere, Witterungseinflüsse) zu unterscheiden. Dies reduziert die Belastung
+                  für Betreiber und Interventionskräfte massiv.
+                </p>
+                <h3 className="text-xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] mt-8 mb-4">Das Zwiebelschalen-Prinzip</h3>
+                <p>
+                  Wir projektieren Sicherheitssysteme nach dem bewährten Zwiebelschalen-Prinzip.
+                  Die äußerste Schale bildet die Perimetersicherung – also die Einfriedung des Grundstücks
+                  und die Überwachung der Grundstücksgrenzen. Die nächste Schale ist die Außenhaut des
+                  Gebäudes: Fenster, Türen, Lichtschächte. Die innerste Schale konzentriert sich auf die
+                  Fallenüberwachung im Gebäudeinneren, oft fokussiert auf Bereiche mit besonders wertvollen
+                  Gütern oder sensiblen Daten.
+                </p>
+                <p>
+                  Jede Schale muss unabhängig voneinander funktionieren, aber im Ereignisfall synergetisch
+                  zusammenwirken. Ein ausgelöster Bewegungsmelder an der Außenhaut sollte beispielsweise
+                  nicht nur einen Voralarm generieren, sondern auch sofort die nächstgelegene PTZ-Kamera
+                  (Pan-Tilt-Zoom) auf den Sektor ausrichten.
+                </p>
+                <h3 className="text-xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] mt-8 mb-4">Die Rolle der Zutrittskontrolle</h3>
+                <p>
+                  Elektronische Zutrittskontrollsysteme (ZKS) bilden das Bindeglied zwischen Organisation und Technik.
+                  Sie ersetzen starre, mechanische Schließanlagen durch flexible, zeitlich und räumlich
+                  steuerbare Berechtigungskonzepte. Der Verlust eines Transponders führt nicht mehr zum
+                  kostspieligen Austausch von Zylindern, sondern lediglich zum sofortigen Sperren des
+                  Identmediums im System.
+                </p>
+                <p>
+                  Darüber hinaus ermöglichen moderne ZKS die lückenlose Protokollierung von Zutrittsereignissen
+                  und die Integration in übergeordnete Gebäudeleittechnik. So kann beispielsweise beim Betreten
+                  des letzten Mitarbeiters automatisch die Einbruchmeldeanlage scharfgeschaltet und die
+                  Beleuchtung reduziert werden. Dies erhöht nicht nur die Sicherheit, sondern senkt auch die
+                  Betriebskosten des Objekts spürbar.
+                </p>
+                <h3 className="text-xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] mt-8 mb-4">Zertifizierung und Normen</h3>
+                <p>
+                  Wir arbeiten konsequent nach den Richtlinien des VdS (Verband der Sachversicherer) und
+                  entsprechend der geltenden DIN-Normen (z.B. DIN EN 50131 für Einbruchmeldeanlagen).
+                  Dies ist nicht nur ein Qualitätsversprechen an unsere Kunden, sondern oftmals auch eine
+                  zwingende Voraussetzung für den Versicherungsschutz gewerblicher Risiken. Anlagen, die nicht
+                  nach diesen strengen Vorgaben errichtet werden, können im Schadensfall zum Verlust des
+                  Versicherungsschutzes führen.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-12 border-t border-[oklch(0.89_0.008_260/0.55)]">
+              <h2 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] mb-8">Häufig gestellte Fragen (FAQ)</h2>
+              <dl className="space-y-6">
+
+                <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)] shadow-sm">
+                  <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">Warum reicht eine mechanische Sicherung allein oft nicht aus?</dt>
+                  <dd className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                    Mechanik leistet exzellenten Widerstand, ist aber stumm. Ein professioneller Täter mit ausreichend
+                    Zeit und schwerem Werkzeug kann nahezu jede mechanische Barriere überwinden. Eine Kombination mit
+                    Meldetechnik sorgt dafür, dass dieser Versuch detektiert und gemeldet wird, bevor der Durchbruch
+                    gelingt.
+                  </dd>
+                </div>
+
+                <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)] shadow-sm">
+                  <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">Wie fehlalarmsicher sind moderne Alarmanlagen?</dt>
+                  <dd className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                    Bei fachgerechter Projektierung, Installation und regelmäßiger Wartung geht die Fehlalarmquote
+                    gegen Null. Moderne Dual-Melder nutzen beispielsweise eine Kombination aus Passiv-Infrarot
+                    und Mikrowelle. Nur wenn beide physikalischen Prinzipien gleichzeitig eine Auslösung
+                    registrieren, wird ein Alarm generiert. Haustiere können durch spezielle Algorithmen
+                    zuverlässig ausgeblendet werden.
+                  </dd>
+                </div>
+
+                <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)] shadow-sm">
+                  <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">Sind Funkanlagen genauso sicher wie verkabelte Systeme?</dt>
+                  <dd className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                    Professionelle Funk-Alarmanlagen nutzen bidirektionale, verschlüsselte Kommunikation und
+                    wechseln bei Störungen (Jamming) automatisch die Frequenz. Für den privaten und
+                    kleingewerblichen Bereich sind sie oft die beste Wahl, da sie ohne aufwendige
+                    Kabelverlegung nachgerüstet werden können. Im Hochsicherheitsbereich oder bei sehr großen
+                    Objekten bleibt das verdrahtete System jedoch der Goldstandard.
+                  </dd>
+                </div>
+
+                <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)] shadow-sm">
+                  <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">Was passiert bei einem Stromausfall?</dt>
+                  <dd className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                    Jede fachgerecht errichtete Gefahrenmeldeanlage verfügt über eine Notstromversorgung mittels
+                    leistungsstarker Akkumulatoren. Diese überbrücken Netzausfälle je nach Auslegung für
+                    mindestens 12 bis über 60 Stunden. Auch die Übertragungswege (GSM/LTE-Module) bleiben
+                    in dieser Zeit vollständig funktionsfähig, sodass Alarme weiterhin abgesetzt werden können.
+                  </dd>
+                </div>
+
+                <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)] shadow-sm">
+                  <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">Kann ich eine Anlage später erweitern?</dt>
+                  <dd className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                    Ja. Moderne Sicherheitsarchitekturen sind hochgradig modular aufgebaut. Eine als
+                    reine Einbruchmeldeanlage gestartete Installation kann später problemlos um
+                    Brandmelder, Wassersensoren, Videoüberwachungskomponenten oder eine elektronische
+                    Zutrittskontrolle erweitert werden. Wichtig ist lediglich die initial richtige
+                    Dimensionierung der Zentraleinheit.
+                  </dd>
+                </div>
+
+              </dl>
+            </div>
+
+          </div>
+
+          <div className="lg:sticky lg:top-8">
+             <SecurityCheckCalculator />
+          </div>
+
         </div>
       </Section>
 
