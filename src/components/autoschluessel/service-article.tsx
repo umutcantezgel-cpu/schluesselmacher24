@@ -267,7 +267,7 @@ export function ServiceArticle({
                       <ArrowRight
                         size={16}
                         aria-hidden
-                        className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                        className="shrink-0 text-foreground-subtle transition-transform motion-reduce:transition-none group-hover:translate-x-0.5"
                       />
                     </Link>
                   </li>

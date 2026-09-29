@@ -445,7 +445,7 @@ export default async function SchluesselNachVorlagePage() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors motion-reduce:transition-none hover:border-primary"
               >
                 <span className="text-[15px] font-bold text-foreground group-hover:text-primary">
                   {item.label}

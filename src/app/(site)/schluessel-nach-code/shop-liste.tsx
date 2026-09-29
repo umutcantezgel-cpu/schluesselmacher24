@@ -224,7 +224,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
               <li key={line.id}>
                 <Link
                   href={`/schluessel-nach-code/${line.slug}`}
-                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary"
+                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-4 transition-colors motion-reduce:transition-none hover:border-primary"
                 >
                   <ImagePlaceholder slot={line.productImage} compact className="mb-4" />
 
@@ -262,7 +262,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
                       <ArrowRight
                         size={14}
                         aria-hidden
-                        className="transition-transform group-hover:translate-x-0.5"
+                        className="transition-transform motion-reduce:transition-none group-hover:translate-x-0.5"
                       />
                     </span>
                   </div>

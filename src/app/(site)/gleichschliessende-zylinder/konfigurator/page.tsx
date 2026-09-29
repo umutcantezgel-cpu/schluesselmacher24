@@ -67,7 +67,7 @@ export default async function CylinderConfiguratorPage() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group flex h-full items-center justify-between gap-3 rounded-lg border border-border bg-surface px-5 py-4 transition-colors hover:border-primary"
+                className="group flex h-full items-center justify-between gap-3 rounded-lg border border-border bg-surface px-5 py-4 transition-colors motion-reduce:transition-none hover:border-primary"
               >
                 <span className="text-[14px] font-semibold text-foreground group-hover:text-primary">
                   {link.label}
@@ -75,7 +75,7 @@ export default async function CylinderConfiguratorPage() {
                 <ArrowRight
                   size={15}
                   aria-hidden
-                  className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                  className="shrink-0 text-foreground-subtle transition-transform motion-reduce:transition-none group-hover:translate-x-0.5"
                 />
               </Link>
             </li>

@@ -121,7 +121,7 @@ export default async function MarkenPage() {
               <li key={make.id}>
                 <Link
                   href={`/autoschluessel/marken/${make.slug}`}
-                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors motion-reduce:transition-none hover:border-primary"
                 >
                   <span className="flex items-start justify-between gap-3">
                     <span className="text-[17px] font-bold text-foreground group-hover:text-primary">
@@ -130,7 +130,7 @@ export default async function MarkenPage() {
                     <ArrowRight
                       size={16}
                       aria-hidden
-                      className="mt-1 shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                      className="mt-1 shrink-0 text-foreground-subtle transition-transform motion-reduce:transition-none group-hover:translate-x-0.5"
                     />
                   </span>
 
@@ -193,7 +193,7 @@ export default async function MarkenPage() {
                     <ArrowRight
                       size={16}
                       aria-hidden
-                      className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                      className="shrink-0 text-foreground-subtle transition-transform motion-reduce:transition-none group-hover:translate-x-0.5"
                     />
                   </Link>
                 </li>

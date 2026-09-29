@@ -136,7 +136,7 @@ export default async function TuerUndSchliesstechnikPage() {
         lead={page?.subline ?? 'Sicherheit erfordert Systemverständnis. Vom hochsicheren Zylinder über Mehrfachverriegelungen bis zum geprüften Schutzbeschlag.'}
         crumbs={[{ href: `/${ROUTE}`, label: 'Tür- und Schließtechnik' }]}
         actions={
-          <ButtonLink href={`/service-und-termin/anfrage?thema=${ROUTE}`} size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover shadow-md transition-all active:scale-[0.99]">
+          <ButtonLink href={`/service-und-termin/anfrage?thema=${ROUTE}`} size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover shadow-md transition-all motion-reduce:transition-none active:scale-[0.99]">
             Beratungstermin vereinbaren
             <ArrowRight size={18} aria-hidden />
           </ButtonLink>
@@ -230,12 +230,12 @@ export default async function TuerUndSchliesstechnikPage() {
               <li key={service.id}>
                 <Link
                   href={`/${ROUTE}/${service.slug}`}
-                  className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-8 transition-all hover:border-primary hover:shadow-md"
+                  className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-8 transition-all motion-reduce:transition-none hover:border-primary hover:shadow-md"
                 >
-                  <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-soft text-primary transition-transform group-hover:scale-110 group-hover:bg-primary-soft">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-soft text-primary transition-transform motion-reduce:transition-none group-hover:scale-110 group-hover:bg-primary-soft">
                     <Icon size={26} strokeWidth={1.5} aria-hidden />
                   </span>
-                  <span className="mt-6 block text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                  <span className="mt-6 block text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors motion-reduce:transition-none">
                     {service.title}
                   </span>
                   <span className="mt-3 block flex-1 text-sm leading-relaxed text-foreground-muted">
@@ -246,7 +246,7 @@ export default async function TuerUndSchliesstechnikPage() {
                     <ArrowRight
                       size={16}
                       aria-hidden
-                      className="transition-transform group-hover:translate-x-1"
+                      className="transition-transform motion-reduce:transition-none group-hover:translate-x-1"
                     />
                   </span>
                 </Link>
@@ -273,7 +273,7 @@ export default async function TuerUndSchliesstechnikPage() {
               </p>
               <Link
                 href={`/${ROUTE}/panik-und-fluchttuertechnik`}
-                className="inline-flex items-center gap-2 mt-4 text-foreground-inverse font-semibold hover:text-primary transition-colors border-b border-primary pb-1"
+                className="inline-flex items-center gap-2 mt-4 text-foreground-inverse font-semibold hover:text-primary transition-colors motion-reduce:transition-none border-b border-primary pb-1"
               >
                 Spezifikationen für Paniktechnik ansehen
                 <ArrowRight size={18} />
@@ -309,7 +309,7 @@ export default async function TuerUndSchliesstechnikPage() {
         <ul className="mt-12 grid gap-6 sm:grid-cols-2">
           {RELATED_AREAS.map((area) => (
             <li key={area.href}>
-              <Card className="h-full border-border hover:border-primary transition-colors">
+              <Card className="h-full border-border hover:border-primary transition-colors motion-reduce:transition-none">
                 <CardBody className="flex h-full flex-col p-8">
                   <p className="text-xl font-bold tracking-tight text-foreground">{area.label}</p>
                   <p className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground-muted">
@@ -320,7 +320,7 @@ export default async function TuerUndSchliesstechnikPage() {
                     className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary group"
                   >
                     {area.label} erkunden
-                    <ArrowRight size={16} aria-hidden className="transition-transform group-hover:translate-x-1" />
+                    <ArrowRight size={16} aria-hidden className="transition-transform motion-reduce:transition-none group-hover:translate-x-1" />
                   </Link>
                 </CardBody>
               </Card>
@@ -338,7 +338,7 @@ export default async function TuerUndSchliesstechnikPage() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="inline-flex min-h-[48px] items-center gap-3 rounded-xl border border-border bg-surface px-6 text-sm font-semibold text-foreground transition-all hover:border-primary hover:text-primary hover:shadow-sm"
+                  className="inline-flex min-h-[48px] items-center gap-3 rounded-xl border border-border bg-surface px-6 text-sm font-semibold text-foreground transition-all motion-reduce:transition-none hover:border-primary hover:text-primary hover:shadow-sm"
                 >
                   {link.label}
                   <ArrowRight size={16} aria-hidden />

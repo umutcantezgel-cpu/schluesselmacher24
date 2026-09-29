@@ -2,6 +2,17 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
+import { converter } from 'culori';
+const toHsl = converter('hsl');
+function mapToHsl(oklchStr: string): string {
+  const match = oklchStr.trim().match(/^oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)\)?/);
+  if (!match) return oklchStr; // fallback
+  const c = { mode: 'oklch' as const, l: Number(match[1]), c: Number(match[2]), h: Number(match[3]) };
+  const hsl = toHsl(c);
+  return `${hsl?.h || 0} ${(hsl?.s || 0)*100}% ${(hsl?.l || 0)*100}%`;
+}
+
+
 import { AREA_KEYS } from '@/lib/server/record-schema';
 import { AREA_THEMES, DEFAULT_AREA_THEME, contrastRatio, type AreaTheme } from './area-theme';
 
@@ -50,6 +61,6 @@ describe('Grundfarben in globals.css', () => {
     ['warning', 'warning-soft'],
     ['danger', 'danger-soft'],
   ])('%s auf %s ist lesbar (≥ 4,5:1)', (fg, bg) => {
-    expect(contrastRatio(token(fg), token(bg))).toBeGreaterThanOrEqual(4.5);
+    expect(contrastRatio(mapToHsl(token(fg)), mapToHsl(token(bg)))).toBeGreaterThanOrEqual(4.5);
   });
 });
