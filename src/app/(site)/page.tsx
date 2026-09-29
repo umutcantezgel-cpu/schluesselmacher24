@@ -20,6 +20,7 @@ import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
+import { SpatialBentoGrid } from '@/components/showcase/spatial-bento-grid';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('');
@@ -63,7 +64,14 @@ const TRUST_POINTS = [
   },
 ];
 
-export default async function HomePage() {
+interface Props {
+  params: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function HomePage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const [page, settings, guides] = await Promise.all([
     getPageContent(''),
     getSettings(),
@@ -356,6 +364,105 @@ export default async function HomePage() {
             </li>
           ))}
         </ul>
+      </Section>
+
+      {/* Erweiterte Expertise und Fachmethodik */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Tiefgreifende Sicherheitstechnologie"
+          title="Unsere architektonische Methodik für kompromisslose Sicherheit"
+          lead="Erfahren Sie im Detail, wie wir komplexe Sicherheitsanforderungen analysieren, konzipieren und mit modernster Schließ- und Zutrittstechnik realisieren."
+        />
+
+        <div className="mt-12 text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6 max-w-4xl">
+          <p>
+            Die Konzeption einer modernen Schließanlage oder eines elektronischen Zutrittskontrollsystems geht weit über die bloße Installation von Hardware hinaus. Es erfordert eine tiefgehende architektonische Methodik, die physische Sicherheitsaspekte mit organisatorischen Abläufen und modernster Technologie nahtlos verbindet. Unsere Vorgehensweise basiert auf jahrzehntelanger Expertise und einer strengen Orientierung an aktuellen Sicherheitsnormen wie der DIN EN 1627. Wir verstehen uns nicht nur als Errichter, sondern als Systemarchitekten für Ihre Sicherheit.
+          </p>
+          <p>
+            Der erste Schritt unserer Methodik ist stets eine umfassende Schwachstellenanalyse vor Ort. Hierbei evaluieren wir nicht nur die offensichtlichen Zugänge, sondern auch potenzielle sekundäre Angriffsvektoren. Diese holistische Betrachtungsweise ermöglicht es uns, ein maßgeschneidertes Sicherheitskonzept zu entwickeln, das genau auf die spezifischen Risikoprofile Ihres Objekts abgestimmt ist. Dabei berücksichtigen wir sowohl mechanische Grundabsicherungen als auch mechatronische und volllelektronische Erweiterungen.
+          </p>
+          <p>
+            Ein Kernaspekt unserer Philosophie ist die Herstellerunabhängigkeit. Anstatt uns auf ein einzelnes System zu beschränken, greifen wir auf ein breites Portfolio an Spitzenprodukten der führenden Hersteller zurück. Dies erlaubt es uns, für jede spezifische Anforderung – sei es maximale Skalierbarkeit für ein wachsendes Unternehmen, höchste Widerstandsklassen für sensible Bereiche oder nahtlose Integration in bestehende Smart-Building-Infrastrukturen – die exakt passende Lösung zu implementieren. Wir evaluieren kontinuierlich neue Technologien am Markt und integrieren diese in unsere Planungen, sofern sie unseren strengen Qualitäts- und Sicherheitskriterien entsprechen.
+          </p>
+
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-12 mb-4">Strukturierte Leistungsstufen und Integration</h3>
+          <p>
+            Unsere Implementierungsprojekte sind in klar definierte Leistungsstufen unterteilt, um maximale Transparenz und Effizienz zu gewährleisten.
+          </p>
+          <ul className="list-disc pl-6 space-y-2 mt-4">
+            <li><strong>Phase 1: Audit & Bedarfsermittlung:</strong> Detaillierte Aufnahme des Ist-Zustandes, Definition der Schutzziele und Erstellung eines ersten Anforderungsprofils.</li>
+            <li><strong>Phase 2: Konzeption & Schließplangestaltung:</strong> Entwicklung der logischen Schließhierarchien, Auswahl der passenden Technologien (mechanisch, mechatronisch, elektronisch) und Erstellung des detaillierten Schließplans.</li>
+            <li><strong>Phase 3: Installation & Parametrierung:</strong> Fachgerechte Montage durch zertifizierte Techniker, Konfiguration der elektronischen Komponenten und Integration in übergeordnete Managementsysteme.</li>
+            <li><strong>Phase 4: Schulung & Übergabe:</strong> Umfassende Einweisung der Administratoren und Nutzer sowie Übergabe der vollständigen Anlagendokumentation.</li>
+            <li><strong>Phase 5: Lifecycle Management:</strong> Kontinuierliche Wartung, regelmäßige Updates und schnelle Anpassungen bei organisatorischen Veränderungen.</li>
+          </ul>
+
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-12 mb-4">Vergleichsmatrix: Mechanik vs. Elektronik</h3>
+          <div className="overflow-x-auto mt-6 border border-[oklch(0.89_0.008_260/0.55)] rounded-xl">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-[oklch(0.968_0.004_260)] border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <tr>
+                  <th className="p-4 font-semibold text-[oklch(0.16_0.02_260)]">Kriterium</th>
+                  <th className="p-4 font-semibold text-[oklch(0.16_0.02_260)]">Mechanische Anlagen</th>
+                  <th className="p-4 font-semibold text-[oklch(0.16_0.02_260)]">Elektronische Zutrittskontrolle</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)]">
+                <tr>
+                  <td className="p-4 font-medium">Flexibilität bei Schlüsselverlust</td>
+                  <td className="p-4">Gering (Zylindertausch oft nötig)</td>
+                  <td className="p-4">Sehr hoch (Einfaches Sperren des Mediums)</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium">Zeitliche Zutrittssteuerung</td>
+                  <td className="p-4">Nicht möglich</td>
+                  <td className="p-4">Uneingeschränkt möglich</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium">Protokollierung</td>
+                  <td className="p-4">Nicht möglich</td>
+                  <td className="p-4">Umfassend (Wer, wann, wo)</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium">Initialkosten</td>
+                  <td className="p-4">Geringer</td>
+                  <td className="p-4">Höher</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium">Skalierbarkeit</td>
+                  <td className="p-4">Begrenzt durch Profilberechnungen</td>
+                  <td className="p-4">Nahezu unbegrenzt</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-12 mb-4">Häufig gestellte Fragen (FAQ) zur Sicherheitstechnik</h3>
+          <div className="space-y-6 mt-6">
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie lange dauert die Planung und Installation einer neuen Schließanlage?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">Die Dauer hängt stark von der Komplexität und Größe des Objekts ab. Eine grundlegende mechanische Anlage für ein Mehrfamilienhaus kann oft innerhalb von 2-3 Wochen nach Auftragserklärung realisiert werden. Komplexe elektronische Systeme für Unternehmensstandorte benötigen in der Regel 4-8 Wochen für eine sorgfältige Planung, Komponentenbeschaffung und Installation.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Können bestehende mechanische Türen mit elektronischen Komponenten nachgerüstet werden?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">Ja, in den allermeisten Fällen ist eine Nachrüstung problemlos möglich. Wir nutzen hierfür häufig mechatronische Schließzylinder oder elektronische Türbeschläge, die ohne aufwändige Verkabelung direkt gegen die bestehenden mechanischen Komponenten ausgetauscht werden können. Dies ist besonders bei Bestandsgebäuden oder denkmalgeschützten Immobilien eine sehr effiziente Lösung.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Was passiert bei einem Stromausfall mit meiner elektronischen Zutrittskontrolle?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">Moderne elektronische Zylinder und Beschläge sind in der Regel batteriebetrieben und funktionieren völlig unabhängig vom Stromnetz des Gebäudes. Bei vernetzten Online-Systemen mit Wandlesern sorgen integrierte Notstromakkus dafür, dass die Funktion auch bei einem Stromausfall für einen definierten Zeitraum aufrechterhalten bleibt. Flucht- und Rettungswege sind durch entsprechende Panikschlösser ohnehin jederzeit mechanisch von innen zu öffnen.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie sicher sind elektronische Transponder gegen Kopieren?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">Wir setzen ausschließlich auf hochsichere, verschlüsselte RFID-Technologien (wie MIFARE DESFire EV2/EV3 oder LEGIC Advant). Diese Systeme nutzen komplexe kryptografische Verfahren, die ein einfaches Auslesen oder Kopieren, wie es bei älteren 125kHz-Systemen möglich war, effektiv verhindern. Die Sicherheit entspricht modernsten IT-Standards.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Übernehmen Sie auch die Wartung von Fremdanlagen?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">Nach einer vorherigen technischen Prüfung und Systemaufnahme übernehmen wir häufig auch den Service und die Wartung für Anlagen, die nicht ursprünglich von uns installiert wurden. Voraussetzung ist, dass die Systeme unseren Qualitäts- und Sicherheitsstandards entsprechen und wir als Fachpartner vom jeweiligen Hersteller autorisiert sind, Ersatzteile zu beziehen und tiefgreifende Konfigurationen vorzunehmen.</p>
+            </div>
+          </div>
+        </div>
+
+        <SpatialBentoGrid />
       </Section>
     </>
   );

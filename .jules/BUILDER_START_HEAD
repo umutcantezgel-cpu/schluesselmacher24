@@ -1,0 +1,1 @@
+BUILDER_START_HEAD=$(git rev-parse HEAD)
