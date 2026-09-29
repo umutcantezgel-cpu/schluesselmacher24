@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Recent Updates
+* **Enterprise ROI Calculator**: Added an interactive calculator to the Schließanlagen page to estimate savings of electronic vs. mechanical systems.

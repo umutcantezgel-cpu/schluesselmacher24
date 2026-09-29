@@ -1,3 +1,4 @@
+import { Accordion } from '@/components/ui/accordion';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
@@ -8,13 +9,14 @@ import type { InfoHint } from '@/lib/types';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
-import { Accordion } from '@/components/ui/accordion';
+
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'schliessanlagen';
 
@@ -202,9 +204,18 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const page = await getPageContent(ROUTE);
-  const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
+  const faqItems = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
@@ -215,7 +226,7 @@ export default async function SchliessanlagenPage() {
           name: page?.headline ?? 'Schließanlagen',
           description: page?.seo.description,
           crumbs: [{ href: '/schliessanlagen', label: 'Schließanlagen' }],
-          faq: faq,
+          faq: faqItems,
         })}
       />
 
@@ -254,6 +265,7 @@ export default async function SchliessanlagenPage() {
               danach wird gefertigt.
             </p>
 
+
             <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
               <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
                 {process.label}
@@ -263,7 +275,27 @@ export default async function SchliessanlagenPage() {
               </p>
             </div>
 
+            <div className="mt-8">
+              <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mb-4">Architektonische Methodik & Skalierbarkeit</h3>
+              <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] mb-4">
+                Die Planung einer Schließanlage ist weit mehr als das bloße Verteilen von Schlüsseln. Es handelt sich um die
+                grundlegende architektonische Strukturierung von Berechtigungen innerhalb eines Gebäudes oder Gebäudeensembles.
+                Unsere Methodik basiert auf der strikten Trennung von physischen Zylindern und logischen Zugangsgruppen.
+                Dies stellt sicher, dass Ihre Anlage auch in Zukunft skalierbar bleibt. Wenn Ihre Organisation wächst oder
+                Abteilungen umstrukturiert werden, muss der Schließplan diese Dynamik abbilden können, ohne dass sofort ein
+                komplett neues System erforderlich wird.
+              </p>
+              <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] mb-4">
+                Wir berücksichtigen dabei stets die neuesten Sicherheitsstandards und kombinieren bei Bedarf mechanische
+                Grundstrukturen mit elektronischen Erweiterungen. So entsteht eine hybride Architektur, die wirtschaftliche
+                Effizienz mit maximaler Flexibilität vereint. Jeder Schließplan wird in mehreren Iterationen geprüft, um
+                Kreuzschließungen zu vermeiden und eine saubere Hierarchie – von der Generalhauptschlüsselanlage (GHS) bis zum
+                Einzelschlüssel – zu garantieren.
+              </p>
+            </div>
+
             <ul className="mt-6 space-y-3">
+
               {GLOSSARY.map((item) => (
                 <li
                   key={item.term}
@@ -382,13 +414,66 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+
+      {/* Interaktiver Kalkulator */}
+      <Section tight>
+         <EnterpriseROICalculator />
+      </Section>
+
       {/* Fragen */}
       <Section>
         <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
         <div className="mt-8">
-          <Accordion items={faq} />
+           <Accordion items={faqItems} />
+
+           <div className="mt-8 pt-8 border-t border-[oklch(0.89_0.008_260/0.55)]">
+             <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mb-6">Erweiterte FAQs zur Anlagenplanung</h3>
+             <div className="grid gap-6 lg:grid-cols-2">
+               <div className="space-y-6">
+                  <div>
+                     <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Wie lange dauert die Planung und Fertigung einer Schließanlage?</h4>
+                     <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                       Die reine Fertigung durch den Hersteller nimmt in der Regel 2-4 Wochen in Anspruch. Der Planungsprozess davor hängt stark von der Komplexität Ihres Objekts ab. Bei sauberen Vorgaben und unserem Projektkonfigurator lässt sich der Schließplan oft in wenigen Tagen abstimmen.
+                     </p>
+                  </div>
+                  <div>
+                     <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Was passiert, wenn ein Schlüssel einer Schließanlage verloren geht?</h4>
+                     <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                       Bei rein mechanischen Anlagen müssen bei Verlust eines übergeordneten Schlüssels (z.B. Generalhauptschlüssel) aus Sicherheitsgründen oft viele Zylinder getauscht werden, was hohe Kosten verursacht. Deshalb empfehlen wir für Bereiche mit hoher Fluktuation elektronische Komponenten, bei denen verlorene Medien (Transponder, Karten) einfach ausprogrammiert werden können, ohne Zylinder zu tauschen.
+                     </p>
+                  </div>
+                  <div>
+                     <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Kann eine bestehende mechanische Anlage später erweitert werden?</h4>
+                     <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                       Ja, sofern bei der initialen Erstellung des Schließplans ausreichend Reserven berücksichtigt wurden. Wir planen Anlagen standardmäßig mit Erweiterungsreserven. Ist die Anlage jedoch &quot;ausgereizt&quot;, können elektronische Zylinder eine nachträgliche Erweiterung ermöglichen.
+                     </p>
+                  </div>
+               </div>
+               <div className="space-y-6">
+                  <div>
+                     <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Welches Profilsystem ist das sicherste?</h4>
+                     <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                       Moderne Wendeschlüsselsysteme mit Patentschutz und Sicherungskarte bieten höchsten Kopierschutz. Wir setzen zudem auf Systeme mit technischem Kopierschutz (z.B. bewegliche Elemente im Schlüssel), die einen unerlaubten 3D-Druck unmöglich machen. Der Patentschutz verhindert zudem die kommerzielle Herstellung von Rohlingen durch Dritte.
+                     </p>
+                  </div>
+                  <div>
+                     <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Wie verwalte ich als Unternehmen meine Schließanlage rechtssicher?</h4>
+                     <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                       Die Schlüsselverwaltung muss lückenlos dokumentiert werden. Die Ausgabe und Rücknahme von Schlüsseln sollte stets gegen Unterschrift erfolgen. Wir stellen Ihnen entsprechende Vorlagen für Schlüsselübergabeprotokolle zur Verfügung und beraten Sie bei der Einführung von digitalen Schlüsselverwaltungssystemen.
+                     </p>
+                  </div>
+                   <div>
+                     <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Ab wann lohnt sich eine mechatronische Schließanlage?</h4>
+                     <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                       Mechatronische Anlagen, die mechanische und elektronische Schließzylinder kombinieren, lohnen sich bereits ab ca. 20 Türen oder einer hohen Fluktuation bei den Mitarbeitern. Der initial höhere Investitionsaufwand amortisiert sich schnell durch die eingesparten Kosten bei Schlüsselverlusten (siehe unseren ROI-Kalkulator).
+                     </p>
+                  </div>
+               </div>
+             </div>
+           </div>
         </div>
       </Section>
+
 
       {/* Weiterführend */}
       <Section tone="muted" tight>
