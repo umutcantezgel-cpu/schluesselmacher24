@@ -1,0 +1,7 @@
+
+Architecture goals:
+- Expand existing pages with >800 words of domain-specific content.
+- Introduce interactive modules (calculators, filters) to existing pages.
+- Ensure 'use client' is only used where necessary.
+- Adopt Next.js 16 async APIs (e.g. for `params`, `searchParams`).
+- Strictly maintain existing routes without creating new ones.
