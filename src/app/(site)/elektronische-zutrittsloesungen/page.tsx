@@ -19,7 +19,7 @@ import {
 import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
+
 import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
@@ -27,8 +27,11 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { KineticsModule14, KineticsCard } from '@/components/kinetics/kinetics-module-14';
 
 const ROUTE = 'elektronische-zutrittsloesungen';
+
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
@@ -403,6 +406,89 @@ export default async function ElektronischeZutrittsloesungenPage() {
         </div>
       </Section>
 
+
+      {/* Architektonische Methodik und Planung (Expanded Content) */}
+      <Section id="architektur" tone="default">
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Tiefgreifende Konzeption komplexer Zutrittssysteme"
+          lead="Eine elektronische Schließanlage ist mehr als die Summe ihrer Bauteile. Sie erfordert eine stringente, skalierbare Systemarchitektur, die Sicherheitsanforderungen, organisatorische Dynamik und physische Gegebenheiten präzise aufeinander abstimmt."
+        />
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <div className="prose-sm24 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <h3 className="text-[17px] font-semibold text-[oklch(0.16_0.02_260)] tracking-tight">Die dreistufige Planungsmatrix</h3>
+            <p>
+              Die Integration elektronischer Zutrittssysteme verlangt nach einer methodischen Herangehensweise, die weit über das bloße Austauschen von Schließzylindern hinausgeht. Wir arbeiten nach einer etablierten dreistufigen Planungsmatrix, die in der ersten Phase die organisatorischen Prozesse des Kunden analysiert. Wer darf wann, wie lange und in welche Bereiche? Welche Fluktuation herrscht im Personalstamm? Diese Parameter determinieren die Wahl der zugrundeliegenden Technologie – ob Offline, Data-on-Card (virtuelles Netzwerk) oder Online-Zutrittskontrolle.
+            </p>
+            <p className="mt-4">
+              In der zweiten Phase erfolgt die physische Evaluierung. Brandschutzvorgaben, Flucht- und Rettungswege sowie die mechanische Beschaffenheit der Türen müssen kompromisslos mit der elektronischen Lösung harmonieren. Ein elektronischer Zylinder an einer Feuerschutztür bedarf spezieller Zulassungen; ein Motorschloss in einem Fluchtweg erfordert zwingend eine Panikfunktion nach EN 179 oder EN 1125. Hier entscheidet sich die funktionale Betriebssicherheit des gesamten Gebäudekomplexes.
+            </p>
+            <p className="mt-4">
+              Die dritte Phase widmet sich der systemischen Integration. Moderne Zutrittslösungen existieren selten autark. Sie müssen nahtlos in bestehende IT-Infrastrukturen, Zeiterfassungssysteme, Alarmanlagen und Gebäudeleittechnik eingebunden werden. Offene Schnittstellen (APIs), sichere Protokolle (wie OSDP) und eine verschlüsselte Datenübertragung (AES-128/256) sind hierbei das Fundament für ein resilientes Gesamtsystem.
+            </p>
+            <h3 className="mt-8 text-[17px] font-semibold text-[oklch(0.16_0.02_260)] tracking-tight">Kryptographische Sicherheit und Identifikationsmedien</h3>
+            <p>
+              Das Herzstück jeder elektronischen Anlage ist die sichere Authentifizierung. Veraltete Technologien wie 125-kHz-Transponder (z. B. EM4102) weisen erhebliche Sicherheitslücken auf und sind leicht klonbar. Wir implementieren ausschließlich hochsichere, MIFARE DESFire EV2/EV3 oder LEGIC Advant basierte Systeme. Diese Smartcards nutzen komplexe kryptographische Algorithmen und Mutual Authentication, um Replay-Attacken und Datensniffing effektiv zu unterbinden.
+            </p>
+            <p className="mt-4">
+              Zusätzlich gewinnt Mobile Access mittels Bluetooth Low Energy (BLE) und Near Field Communication (NFC) zunehmend an Bedeutung. Hierbei dient das Smartphone als digitaler Schlüssel. Um die Sicherheit auf Enterprise-Niveau zu heben, kommen bei der Schlüsselverteilung asymmetrische Kryptographie-Verfahren (Public-Key-Infrastruktur) zum Einsatz, oft gepaart mit den Secure Elements der mobilen Endgeräte.
+            </p>
+          </div>
+          <div className="prose-sm24 text-[oklch(0.32_0.02_260)] leading-relaxed">
+             <h3 className="text-[17px] font-semibold text-[oklch(0.16_0.02_260)] tracking-tight">Offline, Data-on-Card und Online-Systeme im Vergleich</h3>
+            <p>
+              Ein fundamentales Verständnis der unterschiedlichen Topologien ist essenziell für die Langlebigkeit der Investition. <strong>Offline-Systeme</strong> sind die einfachste Form. Hier werden Berechtigungen direkt im Zylinder oder Beschlag gespeichert. Änderungen erfordern, dass ein Administrator physisch mit einem Programmiergerät an die Tür geht. Dies eignet sich für kleine Anlagen mit geringer Fluktuation.
+            </p>
+            <p className="mt-4">
+              <strong>Data-on-Card (Virtuelles Netzwerk)</strong> stellt den goldenen Mittelweg dar. Die Zutrittsrechte werden nicht in den Türen, sondern verschlüsselt auf dem Ausweis des Nutzers gespeichert. Die Türen selbst funktionieren offline. Sobald der Nutzer seinen Ausweis an einem zentralen, online-angebundenen Update-Terminal (z. B. am Haupteingang) präsentiert, werden neue Rechte auf die Karte geschrieben, und gleichzeitig Batteriestatus sowie Zutrittsprotokolle der abgelaufenen Türen in das System übertragen. Dies ermöglicht eine dynamische Verwaltung ohne aufwendige Verkabelung jeder einzelnen Tür.
+            </p>
+            <p className="mt-4">
+              <strong>Voll-Online-Systeme</strong> bieten Echtzeitkontrolle. Jede Tür ist entweder kabelgebunden (RS485, PoE) oder via gesichertem Funknetzwerk (z. B. über dedizierte Hubs) direkt mit dem Server verbunden. Rechteentzug, Fernöffnungen und Alarme in Echtzeit sind nur in dieser Topologie möglich. Aufgrund der hohen Infrastrukturkosten werden Online-Türen häufig auf die Gebäudeaußenhaut und Hochsicherheitsbereiche beschränkt, während Innentüren über das Data-on-Card Prinzip in das gleiche System integriert werden.
+            </p>
+            <h3 className="mt-8 text-[17px] font-semibold text-[oklch(0.16_0.02_260)] tracking-tight">Wartungszyklen und Lifecycle-Management</h3>
+            <p>
+              Elektronische Zylinder sind elektromechanische Präzisionsbauteile. Neben der softwareseitigen Pflege ist ein proaktives Lifecycle-Management unumgänglich. Batteriewechsel müssen vor dem Eintreten kritischer Spannungsabfälle (Low-Battery-Warnungen im System) durchgeführt werden. Zudem bedürfen stark frequentierte Türen einer regelmäßigen Inspektion der mechanischen Kupplungselemente, um Funktionsausfälle im Alltag präventiv zu vermeiden.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-16 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-8 lg:p-12 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+          <h3 className="text-[20px] font-semibold text-[oklch(0.16_0.02_260)] tracking-tight mb-6">Expertise & Tiefe: Erweiterte Fragen zur elektronischen Zutrittskontrolle</h3>
+          <dl className="space-y-8">
+            <div>
+              <dt className="text-[16px] font-semibold text-[oklch(0.16_0.02_260)]">Wie verhält sich die Anlage bei einem flächendeckenden Stromausfall?</dt>
+              <dd className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Batteriebetriebene Offline- und Data-on-Card-Komponenten wie Elektronikzylinder und Beschläge funktionieren völlig autark und sind von einem Netzstromausfall nicht betroffen. Die Türen lassen sich weiterhin von berechtigten Personen öffnen. Bei Online-Zutrittskontrollern und Motorschlössern ist die Installation einer unterbrechungsfreien Stromversorgung (USV) zwingend erforderlich, um die Funktion für einen definierten Zeitraum aufrechtzuerhalten. Zusätzlich verfügen Fluchtwegtüren über mechanische Panikfunktionen, die eine Evakuierung jederzeit gewährleisten.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[16px] font-semibold text-[oklch(0.16_0.02_260)]">Können bestehende RFID-Ausweise (z.B. aus der Zeiterfassung) weiterverwendet werden?</dt>
+              <dd className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                In den meisten Fällen ja, sofern es sich um moderne, sichere RFID-Standards wie MIFARE DESFire oder LEGIC handelt. Wir analysieren im Vorfeld die Struktur der vorhandenen Medien. Durch das Konzept der Multi-Applikationskarten können auf einem einzigen Chip verschiedene gesicherte Sektoren für Zeiterfassung, Kantinenabrechnung und die neue Schließanlage angelegt werden, ohne dass sich diese gegenseitig beeinträchtigen. Veraltete Formate (wie reine Seriennummern-Leser ohne Verschlüsselung) lehnen wir aus Sicherheitsgründen jedoch ab.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[16px] font-semibold text-[oklch(0.16_0.02_260)]">Welche Anforderungen stellt die Systemsoftware an die IT-Infrastruktur?</dt>
+              <dd className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Die Anforderungen variieren je nach Bereitstellungsmodell. Moderne Systeme bieten Cloud-Lösungen (SaaS), bei denen lediglich eine sichere Internetverbindung für die Verwaltungsterminals benötigt wird; die gesamte Serverinfrastruktur und Datensicherung wird vom Hersteller DSGVO-konform in Europa gehostet. Bei On-Premises-Lösungen wird typischerweise ein virtueller Windows-Server (VM) mit einer SQL-Datenbank benötigt. Hier übernimmt die hauseigene IT die Verantwortung für Patch-Management, Netzwerksicherheit und Backups.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[16px] font-semibold text-[oklch(0.16_0.02_260)]">Was passiert, wenn ein Administrator versehentlich alle Zugriffsrechte löscht?</dt>
+              <dd className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Professionelle Managementsysteme verfügen über granulare Rollen- und Rechtekonzepte sowie ein revisionssicheres Audit-Log. Aktionen werden detailliert protokolliert. Zudem zwingen wir in der Konzeptionsphase die Einrichtung regelmäßiger, automatisierter Datenbank-Backups. Im schlimmsten Fall kann der Zustand vor der Fehlbedienung aus dem letzten Backup wiederhergestellt werden. Bei Offline-Türen bleiben die bisherigen Rechte bis zum nächsten aktiven Programmiervorgang intakt, was einen systemweiten Totalausfall durch Fehlbedienung de facto unmöglich macht.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[16px] font-semibold text-[oklch(0.16_0.02_260)]">Wie sicher ist Mobile Access über das Smartphone wirklich?</dt>
+              <dd className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Mobile Access ist hochsicher, wenn die Implementierung korrekt erfolgt. Die digitalen Schlüssel (Credentials) werden asymmetrisch verschlüsselt over-the-air auf das Smartphone übertragen und dort im Secure Element oder einer Sandbox isoliert gespeichert. Die Kommunikation zwischen Smartphone und Türkomponente via Bluetooth ist durch AES-Verschlüsselung, Session-Keys und Zeitstempel gegen Replay- und Relay-Attacken gesichert. Zudem profitiert Mobile Access von den biometrischen Sicherheitsfeatures des Smartphones (FaceID, Fingerabdruck), was einen massiven Sicherheitsgewinn gegenüber einer passiven Plastikkarte darstellt.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </Section>
+
       {/* Die elf Bausteine */}
       <Section tone="muted" id="bausteine">
         <SectionHeading
@@ -411,60 +497,54 @@ export default async function ElektronischeZutrittsloesungenPage() {
           lead="Jeder Baustein löst eine bestimmte Aufgabe. Erst die Kombination ergibt die Lösung für Ihr Objekt."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <KineticsModule14>
           {BLOCKS.map((block, index) => {
             const Icon = block.icon;
             return (
-              <li
-                key={block.id}
-                id={block.id}
-                className={block.wide ? 'sm:col-span-2 lg:col-span-3' : undefined}
-              >
-                <Card className="h-full">
-                  <CardBody className="flex h-full flex-col">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary">
-                        <Icon size={19} aria-hidden />
-                      </span>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                        Baustein {index + 1}
-                      </span>
-                      {block.id === 'rfid' && <InfoTip hint={MEDIA_HINT} />}
-                      {block.id === 'sperren' && <InfoTip hint={ADMIN_HINT} />}
-                    </div>
+              <KineticsCard key={block.id} wide={block.wide}>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[oklch(0.52_0.24_260/0.15)] text-[oklch(0.52_0.24_260)]">
+                    <Icon size={19} aria-hidden />
+                  </span>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[oklch(0.52_0.015_260)]">
+                    Baustein {index + 1}
+                  </span>
+                  {block.id === 'rfid' && <InfoTip hint={MEDIA_HINT} />}
+                  {block.id === 'sperren' && <InfoTip hint={ADMIN_HINT} />}
+                </div>
 
-                    <h3 className="mt-4 text-[15px] font-bold text-foreground">{block.title}</h3>
-                    <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                      {block.body}
-                    </p>
+                <h3 className="mt-4 text-[17px] font-semibold text-[oklch(0.16_0.02_260)] tracking-tight">{block.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  {block.body}
+                </p>
 
-                    <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[13px] leading-relaxed text-foreground-muted">
-                      {block.points.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
+                <ul className="mt-4 list-disc space-y-1.5 pl-5 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  {block.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
 
-                    {block.id === 'protokoll' && (
-                      <Alert tone="legal" title={PROTOCOL_HINT.title} className="mt-4">
-                        <p>{PROTOCOL_HINT.body}</p>
-                        <p className="mt-2">
-                          Wie wir mit personenbezogenen Daten umgehen, steht in unserer{' '}
-                          <Link
-                            href="/rechtliches/datenschutz"
-                            className="font-semibold text-primary hover:underline"
-                          >
-                            Datenschutzerklärung
-                          </Link>
-                          .
-                        </p>
-                      </Alert>
-                    )}
-                  </CardBody>
-                </Card>
-              </li>
+                {block.id === 'protokoll' && (
+                  <div className="mt-auto pt-6">
+                    <Alert tone="legal" title={PROTOCOL_HINT.title}>
+                      <p className="text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">{PROTOCOL_HINT.body}</p>
+                      <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                        Wie wir mit personenbezogenen Daten umgehen, steht in unserer{' '}
+                        <Link
+                          href="/rechtliches/datenschutz"
+                          className="font-semibold text-[oklch(0.52_0.24_260)] hover:underline"
+                        >
+                          Datenschutzerklärung
+                        </Link>
+                        .
+                      </p>
+                    </Alert>
+                  </div>
+                )}
+              </KineticsCard>
             );
           })}
-        </ul>
+        </KineticsModule14>
       </Section>
 
       {/* Mechanisch oder elektronisch */}
