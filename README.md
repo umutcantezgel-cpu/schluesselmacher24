@@ -43,3 +43,5 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+## Auditor Architecture Metadata
+This repository is audited by JC-AUDITOR-ARCHITECT-v1. See .jules/ for reports.

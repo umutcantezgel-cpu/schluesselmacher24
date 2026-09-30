@@ -1,0 +1,5 @@
+# Codebase Audited by JC-AUDITOR-ARCHITECT-v1
+- Next.js 16+ App Router
+- React 19.2+
+- TypeScript 5.5+
+- Tailwind CSS v4 (OKLCH Light Mode)
