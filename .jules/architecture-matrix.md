@@ -1,0 +1,56 @@
+# Architecture Matrix
+
+| URL | Source File | Type | Word Count | Status |
+|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | page | 99 | Audited |
+| /api/[...slug] | src/app/(payload)/api/[...slug]/route.ts | route | 70 | Audited |
+| /api/kunden-upload | src/app/(site)/api/kunden-upload/route.ts | route | 704 | Audited |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | page | 934 | Audited |
+| /artikel | src/app/(site)/artikel/page.tsx | page | 656 | Audited |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | page | 518 | Audited |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | page | 1121 | Audited |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | page | 1091 | Audited |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | page | 1133 | Audited |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | page | 1223 | Audited |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | page | 979 | Audited |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | page | 718 | Audited |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | page | 1189 | Audited |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | page | 2002 | Audited |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | page | 1222 | Audited |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | page | 1042 | Audited |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | page | 1207 | Audited |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | page | 1299 | Audited |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | page | 382 | Audited |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | page | 2480 | Audited |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | page | 310 | Audited |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | page | 2081 | Audited |
+| /kasse | src/app/(site)/kasse/page.tsx | page | 242 | Audited |
+| / | src/app/(site)/page.tsx | page | 1130 | Audited |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | page | 359 | Audited |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | page | 224 | Audited |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | page | 416 | Audited |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | page | 228 | Audited |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | page | 715 | Audited |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | page | 248 | Audited |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | page | 427 | Audited |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | page | 370 | Audited |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | page | 368 | Audited |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | page | 1873 | Audited |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | page | 734 | Audited |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | page | 497 | Audited |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | page | 221 | Audited |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | page | 1793 | Audited |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | page | 151 | Audited |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | page | 474 | Audited |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | page | 1578 | Audited |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | page | 107 | Audited |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | page | 655 | Audited |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | page | 644 | Audited |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | page | 1020 | Audited |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | page | 329 | Audited |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | page | 405 | Audited |
+| /standorte | src/app/(site)/standorte/page.tsx | page | 249 | Audited |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | page | 493 | Audited |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | page | 1784 | Audited |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | page | 261 | Audited |
+| /llms.txt | src/app/llms.txt/route.ts | route | 145 | Audited |
