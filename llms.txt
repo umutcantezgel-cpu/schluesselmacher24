@@ -1,0 +1,3 @@
+# LLMs Instructions
+
+Architecture audited. See `.jules/architecture-matrix.md` and `.jules/revolution-plan.json` for the master implementation plan.
