@@ -1,0 +1,56 @@
+# Architecture Matrix
+
+| URL | Source File | Status | Target Words | Schema | CWV Status | Interactive Component |
+|---|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule2 |
+| /api/[...slug] | src/app/(payload)/api/[...slug]/route.ts | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule3 |
+| /api/kunden-upload | src/app/(site)/api/kunden-upload/route.ts | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule4 |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule5 |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule6 |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule7 |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule8 |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule9 |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule10 |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule11 |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule12 |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule13 |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule14 |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule15 |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule16 |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule17 |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule18 |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule19 |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule20 |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule21 |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule22 |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule23 |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule24 |
+| / | src/app/(site)/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule25 |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule26 |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule27 |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule28 |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule29 |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule30 |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule31 |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule32 |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule33 |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule34 |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule35 |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule36 |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule37 |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule38 |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule39 |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule40 |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule41 |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule42 |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule43 |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule44 |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule45 |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule46 |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule47 |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule48 |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule49 |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule50 |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule51 |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule52 |
+| /llms.txt | src/app/llms.txt/route.ts | PENDING_BUILDER | 950 | WebPage, FAQPage | Pending | DynamicInteractiveModule53 |
