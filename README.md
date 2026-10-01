@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Core Expansion
+- Elevated `src/app/(site)/service-und-termin/page.tsx` with a new interactive calculator (`ServiceBudgetCalculator`).
