@@ -1,0 +1,2 @@
+Architecture Audit and Revolution Plan
+See .jules/architecture-matrix.md and .jules/revolution-plan.json for details.
