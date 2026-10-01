@@ -1,0 +1,56 @@
+# Architecture Matrix
+
+| URL | Source File | Current Words | Target Words | Component |
+|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 100 | 900 | InteractiveModule |
+| /api/[...slug] | src/app/(payload)/api/[...slug]/route.ts | 71 | 900 | InteractiveModule |
+| /api/kunden-upload | src/app/(site)/api/kunden-upload/route.ts | 705 | 1305 | InteractiveModule |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 935 | 1535 | InteractiveModule |
+| /artikel | src/app/(site)/artikel/page.tsx | 657 | 1257 | InteractiveModule |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 519 | 1119 | AutoKeyConfigurator |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1122 | 1722 | AutoKeyConfigurator |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 1092 | 1692 | AutoKeyConfigurator |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1134 | 1734 | AutoKeyConfigurator |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1224 | 1824 | AutoKeyConfigurator |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 980 | 1580 | AutoKeyConfigurator |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 719 | 1319 | AutoKeyConfigurator |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1190 | 1790 | AutoKeyConfigurator |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2003 | 2603 | AutoKeyConfigurator |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1223 | 1823 | AutoKeyConfigurator |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1043 | 1643 | AutoKeyConfigurator |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1208 | 1808 | AutoKeyConfigurator |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1300 | 1900 | InteractiveModule |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 383 | 983 | AdvancedConfigurator |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2481 | 3081 | InteractiveModule |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 311 | 911 | AdvancedConfigurator |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 2082 | 2682 | InteractiveModule |
+| /kasse | src/app/(site)/kasse/page.tsx | 243 | 900 | InteractiveModule |
+| / | src/app/(site)/page.tsx | 1131 | 1731 | InteractiveModule |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 360 | 960 | InteractiveModule |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 225 | 900 | InteractiveModule |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 417 | 1017 | InteractiveModule |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 229 | 900 | InteractiveModule |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 716 | 1316 | InteractiveModule |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 249 | 900 | InteractiveModule |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 428 | 1028 | InteractiveModule |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 371 | 971 | InteractiveModule |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 369 | 969 | SystemVisualizer |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 1874 | 2474 | SystemVisualizer |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 735 | 1335 | InteractiveModule |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 498 | 1098 | InteractiveModule |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 222 | 900 | InteractiveModule |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 1794 | 2394 | InteractiveModule |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 152 | 900 | InteractiveModule |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 475 | 1075 | InteractiveModule |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 1579 | 2179 | InteractiveModule |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 108 | 900 | InteractiveModule |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 656 | 1256 | InteractiveModule |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 645 | 1245 | InteractiveModule |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1021 | 1621 | InteractiveModule |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 330 | 930 | InteractiveModule |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 406 | 1006 | InteractiveModule |
+| /standorte | src/app/(site)/standorte/page.tsx | 250 | 900 | InteractiveModule |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 494 | 1094 | InteractiveModule |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 1785 | 2385 | InteractiveModule |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 262 | 900 | InteractiveModule |
+| /llms.txt | src/app/llms.txt/route.ts | 146 | 900 | InteractiveModule |
