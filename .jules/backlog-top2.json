@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-01T17:02:55.824Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/(site)/kasse/page.tsx",
+      "target_component_file": "components/tools/conversion-tool-51.tsx",
+      "title": "IDEA_051 - Nativer Rechner auf app/(site)/kasse/page.tsx",
+      "specification": "Implementierung eines dynamischen Budgetrechners für Schließanlagen mit Schiebereglern und sofortigem visuellem Feedback. Implementierung mit `useOptimistic` für nahtlose Nutzererfahrung.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_002",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_component_file": "components/ui/tactile-kinetics-2.tsx",
+      "title": "IDEA_002 - Taktile Kinetik auf app/(site)/autoschluessel/anfrage/page.tsx",
+      "specification": "Einführung von mikro-haptischem Feedback bei Button-Hovers durch physikalisch gedämpfte Federphysik. Integration von CSS Subgrid Layouts mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)) und AAA-Kontrasten.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
