@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## JC-AUDITOR-ARCHITECT-v1 Sync
+The architecture blueprint has been generated. See `.jules/` for details.
