@@ -1,0 +1,10 @@
+{
+  "src/components/calculator/enterprise-roi-calculator.tsx": {
+    "hash": "77f1ec02a555b09a0aba0a5a7b86b181758a5a7694f4d9b4510c03edf083e631",
+    "status": "VERIFIZIERT_FROZEN"
+  },
+  "src/app/(site)/service-und-termin/page.tsx": {
+    "hash": "f86b84872f7a89c8c0f1dc8fe9c01b67e6e5f170e1f255654af21c07bd3321aa",
+    "status": "VERIFIZIERT_FROZEN"
+  }
+}

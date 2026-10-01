@@ -81,7 +81,7 @@ export default async function ServiceUndTerminPage() {
   ]);
 
   return (
-    <>
+    <div className="overflow-x-clip">
       <JsonLd
         data={pageGraphSchema({
           path: '/service-und-termin',
@@ -279,6 +279,6 @@ export default async function ServiceUndTerminPage() {
           ))}
         </div>
       </Section>
-    </>
+    </div>
   );
 }
