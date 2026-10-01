@@ -1,0 +1,3 @@
+# AI Documentation and Guidelines
+- **Zero-New-Routes**: Only existing routes in `src/app` are documented.
+- **Brand DNA**: Next.js 16+, React 19+, Tailwind v4 OKLCH Light Mode.
