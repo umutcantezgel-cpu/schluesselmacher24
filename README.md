@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Recent Updates
+- Expanded `src/app/(site)/sicherheitstechnik/page.tsx` to include detailed FAQ on security architecture and ROI rationale (> 800 words).
+- Added an interactive Enterprise ROI- und Ladezeit-Kalkulator component using React 19 `useActionState` and `useOptimistic` in `src/components/calculator/enterprise-roi-calculator.tsx`.
+- Added server action for ROI calculation in `src/actions/calculate-enterprise-roi.ts`.

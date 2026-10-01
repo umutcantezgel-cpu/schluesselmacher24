@@ -20,8 +20,15 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'sicherheitstechnik';
+
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
@@ -73,7 +80,12 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  // Consume to prevent unused errors
+  void resolvedParams;
+  void resolvedSearch;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -160,6 +172,76 @@ export default async function SicherheitstechnikPage() {
           </div>
         </div>
       </Section>
+
+
+      {/* Fachkompetenz und ROI */}
+      <Section>
+        <SectionHeading
+          eyebrow="Wirtschaftlichkeit & ROI"
+          title="Prävention als messbarer Wirtschaftsfaktor"
+          lead="Sicherheitstechnik ist nicht nur ein reiner Kostenblock. Durch gezielte Prävention lassen sich materielle Schäden, Betriebsunterbrechungen und Vertrauensverluste effektiv minimieren."
+        />
+        <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+          <div className="prose prose-sm prose-slate max-w-none text-[oklch(0.32_0.02_260)]">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Die Architektur moderner Prävention</h3>
+            <p>
+              Unsere Methodik beruht auf dem Prinzip der konzentrischen Sicherheitsringe. Anstatt isolierte Maßnahmen zu ergreifen, betrachten wir Ihr Objekt ganzheitlich. Die mechanische Sicherung der Außenhaut bildet dabei das physische Fundament. Sie verzögert den unbefugten Zutritt so lange, bis die elektronische Meldetechnik einen Einbruchversuch sicher detektiert und an eine hilfeleistende Stelle (z.B. Wachdienst oder Polizei) weiterleitet.
+            </p>
+            <h3 className="mt-8 text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wirtschaftliche Betrachtung</h3>
+            <p>
+              Die direkten Kosten eines Einbruchs (Diebstahl, Vandalismus) machen oft nur den geringsten Teil des wirtschaftlichen Schadens aus. Weitaus schwerwiegender sind Betriebsunterbrechungen, der Verlust sensibler Daten und die daraus resultierenden Reputationsschäden bei Kunden und Partnern.
+            </p>
+            <p className="mt-4">
+              Eine professionell geplante Sicherheitsarchitektur amortisiert sich in der Regel deutlich schneller als angenommen. Nutzen Sie unseren Enterprise ROI-Kalkulator, um eine erste, unverbindliche Schätzung der Amortisationszeit für Ihr spezifisches Risikoprofil zu erhalten.
+            </p>
+          </div>
+          <div>
+            <EnterpriseROICalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Detaillierte Fach-FAQ */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Fachwissen"
+          title="Häufig gestellte Fragen zur Sicherheitsarchitektur"
+          lead="Detaillierte Antworten auf die wichtigsten architektonischen und technischen Fragestellungen."
+        />
+        <div className="mt-8 grid gap-4 lg:grid-cols-2">
+          <div className="rounded-xl border border-border bg-surface p-6">
+            <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Was bedeutet der Zwangsläufigkeitsgrundsatz in der Alarmtechnik?</h4>
+            <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+              Der Zwangsläufigkeitsgrundsatz ist ein elementares Prinzip der Einbruchmeldetechnik (VdS). Er besagt, dass eine Alarmanlage nur dann scharfgeschaltet werden kann, wenn alle überwachten Öffnungen (Türen, Fenster) physisch verschlossen sind. Gleichzeitig verhindert er das Betreten des gesicherten Bereichs bei scharfgeschalteter Anlage, ohne dass zuvor zwangsläufig eine Unscharfschaltung erfolgt. Dies minimiert das Risiko von Falschalarmen durch Fehlbedienung drastisch.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-surface p-6">
+            <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Welchen Stellenwert hat die Mechanik bei elektronischer Überwachung?</h4>
+            <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+              Mechanik und Elektronik schließen sich nicht aus, sie bedingen einander. Eine Einbruchmeldeanlage verhindert keinen Einbruch, sie meldet ihn nur. Ohne ausreichenden mechanischen Widerstandswert (RC2/RC3) der Türen und Fenster steht der Täter im Objekt, bevor die hilfeleistende Stelle reagieren kann. Die Mechanik kauft Zeit, die Elektronik nutzt diese Zeit zur Alarmierung.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-surface p-6">
+            <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Wie wird die Sabotagesicherheit bei vernetzten Systemen gewährleistet?</h4>
+            <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+              Professionelle Systeme verfügen über ein mehrstufiges Sabotageschutzkonzept. Dies umfasst die Überwachung aller Gehäusedeckel auf Öffnung, die Überwachung der Leitungsnetze auf Kurzschluss, Unterbrechung und Fremdspannung sowie redundante Übertragungswege (z.B. IP/LAN gekoppelt mit LTE/5G) zur Alarmempfangsstelle (AES).
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-surface p-6">
+            <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Was versteht man unter einer &apos;verdeckten Alarmierung&apos;?</h4>
+            <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+              Bei einem Überfall (im Gegensatz zum Einbruch) erfolgt die Alarmierung meist &apos;still&apos;, also ohne akustische oder optische Signalisierung vor Ort, um eine Eskalation durch den Täter zu vermeiden. Dies geschieht über diskret angebrachte Paniktaster, Geldscheinkontakte oder spezielle Bedrohungscodes an der Schalteinrichtung. Der Alarm wird lautlos an eine hilfeleistende Stelle übertragen.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-surface p-6">
+            <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Ist eine Notstromversorgung zwingend erforderlich?</h4>
+            <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+              Ja, eine VdS-konforme Einbruchmeldeanlage muss bei einem Netzausfall ihre volle Funktionsfähigkeit für eine definierte Zeit (i.d.R. 12 oder 60 Stunden, je nach Klasse) aufrechterhalten können. Dies wird durch kapazitätsüberwachte Blei-Gel-Akkumulatoren in der Zentrale und den abgesetzten Energieversorgungen sichergestellt.
+            </p>
+          </div>
+        </div>
+      </Section>
+
 
       {/* Bereiche */}
       <Section tone="muted">
