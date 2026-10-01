@@ -18,6 +18,7 @@ import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
 
@@ -241,6 +242,120 @@ export default async function HomePage() {
         </ul>
       </Section>
 
+      {/* Methodik und Architektur */}
+      <Section tight>
+        <div className="mx-auto max-w-4xl space-y-12 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-8 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)] md:p-12">
+          <header className="space-y-4">
+            <h2 className="text-3xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] md:text-4xl">
+              Architektonische Methodik & Technologische Infrastruktur
+            </h2>
+            <p className="text-lg leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Unsere Sicherheitslösungen basieren auf einer modularen, zukunftssicheren Architektur,
+              die es uns ermöglicht, von der einfachen Schließanlage bis zum komplexen, vernetzten
+              Zutrittssystem alles präzise abzubilden. Wir betrachten Gebäude nicht als eine Ansammlung
+              von Türen, sondern als dynamische Ökosysteme.
+            </p>
+          </header>
+
+          <div className="space-y-8">
+            <section className="space-y-4">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">
+                Das Prinzip der tiefen Integration
+              </h3>
+              <p className="leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Ein physischer Schlüssel oder ein RFID-Transponder ist lediglich das Interface zu einem
+                hochkomplexen Berechtigungssystem. Bei der Planung einer Schließanlage beginnen wir mit
+                einer umfassenden Bedrohungs- und Nutzungsanalyse. Wir definieren Sicherheitszonen,
+                Zugriffsebenen und Eskalationspfade. Durch die Kombination von mechanischen Hochsicherheitszylindern
+                für die Außenhülle und mechatronischen Komponenten für interne Barrieren erreichen wir ein
+                optimum an Sicherheit und Flexibilität.
+              </p>
+              <p className="leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Jedes Projekt wird durchgängig digital dokumentiert. Dies beginnt beim Aufmaß mit digitalen
+                Tools und endet bei der verschlüsselten Hinterlegung der Schließpläne in unseren sicheren
+                Datenbanken. Sollte eine Erweiterung der Anlage notwendig werden, können wir jederzeit auf
+                die exakten Parameter der Erstinstallation zurückgreifen und nahtlos anknüpfen.
+              </p>
+            </section>
+
+            <section className="space-y-4">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">
+                Leistungsstufen und Skalierbarkeit
+              </h3>
+              <p className="leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Wir differenzieren unsere Lösungen in drei primäre Leistungsstufen, die sich nach dem
+                individuellen Risikoprofil und den betrieblichen Anforderungen richten:
+              </p>
+              <ul className="list-inside list-disc space-y-2 text-[oklch(0.32_0.02_260)]">
+                <li>
+                  <strong className="font-semibold text-[oklch(0.16_0.02_260)]">Level 1 - Mechanische Grundsicherung:</strong>{' '}
+                  Einsatz zertifizierter Wendeschlüsselsysteme mit technischem und rechtlichem Kopierschutz.
+                  Ideal für kleine bis mittlere Wohnkomplexe und grundlegende gewerbliche Anforderungen.
+                </li>
+                <li>
+                  <strong className="font-semibold text-[oklch(0.16_0.02_260)]">Level 2 - Mechatronische Hybridsysteme:</strong>{' '}
+                  Kombination aus mechanischer Verriegelung und elektronischer Verifikation. Ermöglicht die
+                  zeitliche Befristung von Zutrittsrechten und die lückenlose Protokollierung von Zutrittsereignissen.
+                </li>
+                <li>
+                  <strong className="font-semibold text-[oklch(0.16_0.02_260)]">Level 3 - Enterprise Access Management:</strong>{' '}
+                  Vollständig vernetzte Online-Systeme mit Echtzeit-Kontrolle. Integration in bestehende
+                  IT-Infrastrukturen, Active Directory Anbindung und dynamisches Berechtigungsmanagement über
+                  verschlüsselte Cloud-Plattformen.
+                </li>
+              </ul>
+              <p className="leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Unsere Systeme sind inhärent skalierbar konzipiert. Ein mechanisches Basis-System kann
+                zu einem späteren Zeitpunkt problemlos durch elektronische Komponenten ergänzt werden,
+                ohne dass die gesamte Anlage ausgetauscht werden muss (Retrofitting).
+              </p>
+            </section>
+
+            <section className="space-y-4">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">
+                Vergleichsmatrix: Sicherheitstechnologien im Überblick
+              </h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead className="border-b border-[oklch(0.89_0.008_260/0.55)] text-[oklch(0.16_0.02_260)]">
+                    <tr>
+                      <th className="pb-3 pr-4 font-semibold">Technologie</th>
+                      <th className="pb-3 pr-4 font-semibold">Rechteentzug</th>
+                      <th className="pb-3 pr-4 font-semibold">Protokollierung</th>
+                      <th className="pb-3 pr-4 font-semibold">Wartungsaufwand</th>
+                      <th className="pb-3 font-semibold">Initiale Kosten</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)] text-[oklch(0.32_0.02_260)]">
+                    <tr>
+                      <td className="py-3 pr-4 font-medium text-[oklch(0.16_0.02_260)]">Rein mechanisch</td>
+                      <td className="py-3 pr-4">Zylindertausch nötig</td>
+                      <td className="py-3 pr-4">Nicht möglich</td>
+                      <td className="py-3 pr-4">Sehr gering</td>
+                      <td className="py-3">Niedrig</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 pr-4 font-medium text-[oklch(0.16_0.02_260)]">Offline elektronisch</td>
+                      <td className="py-3 pr-4">Mit Masterkarte vor Ort</td>
+                      <td className="py-3 pr-4">Lokal auslesbar</td>
+                      <td className="py-3 pr-4">Mittel (Batterien)</td>
+                      <td className="py-3">Mittel</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 pr-4 font-medium text-[oklch(0.16_0.02_260)]">Online / Cloud</td>
+                      <td className="py-3 pr-4">Echtzeit (Remote)</td>
+                      <td className="py-3 pr-4">Echtzeit-Dashboard</td>
+                      <td className="py-3 pr-4">Mittel</td>
+                      <td className="py-3">Hoch</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+      </Section>
+
       {/* Shop-Teaser */}
       <Section tone="muted" tight>
         <div className="grid gap-4 md:grid-cols-2">
@@ -285,6 +400,13 @@ export default async function HomePage() {
         </div>
       </Section>
 
+      {/* Interaktiver Kalkulator */}
+      <Section>
+        <div className="mx-auto max-w-4xl">
+          <EnterpriseRoiCalculator />
+        </div>
+      </Section>
+
       {/* Projektbereiche */}
       <Section>
         <SectionHeading
@@ -316,6 +438,105 @@ export default async function HomePage() {
             </li>
           ))}
         </ul>
+      </Section>
+
+      {/* Fachspezifischer FAQ-Abschnitt */}
+      <Section>
+        <SectionHeading
+          eyebrow="Häufig gestellte Fragen"
+          title="Expertenantworten zu unseren Sicherheitslösungen"
+          lead="Detaillierte Einblicke in technische Details, Prozesse und Sicherheitsstandards."
+        />
+
+        <div className="mt-8 space-y-4">
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h3 className="text-[17px] font-semibold text-[oklch(0.16_0.02_260)]">
+              1. Welche Zertifizierungen müssen mechanische Hochsicherheitszylinder erfüllen?
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Hochsicherheitszylinder in unseren Enterprise-Anlagen entsprechen zwingend der DIN EN 1303 sowie
+              der DIN 18252. Diese Normen definieren strenge Anforderungen an den Verschlusssicherheitszylinder,
+              insbesondere im Hinblick auf den Widerstand gegen Aufbohren, Ziehen und Picking. Darüber hinaus
+              setzen wir auf Systeme mit VdS-Anerkennung, oft in der Klasse B oder C. Dies gewährleistet einen
+              geprüften Einbruchschutz, der auch den strengen Richtlinien von Sachversicherern standhält.
+              Zusätzlich implementieren wir einen patentrechtlichen Schlüsselschutz, der das unautorisierte
+              Kopieren von Schlüsseln mittels 3D-Druck oder herkömmlichen Fräsmaschinen technologisch und
+              rechtlich unterbindet.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h3 className="text-[17px] font-semibold text-[oklch(0.16_0.02_260)]">
+              2. Wie wird der Ausfall elektronischer Schließsysteme bei Stromverlust verhindert?
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Elektronische Zutrittskontrollsysteme sind auf maximale Resilienz ausgelegt. Bei offline- und
+              mechatronischen Systemen (z. B. elektronische Zylinder oder smarte Türbeschläge) erfolgt die
+              Energieversorgung über dezentrale, hochleistungsfähige Lithium-Batterien direkt in der Komponente,
+              sodass die Schließfunktion vollkommen unabhängig vom Gebäudestromnetz bleibt. Die Batterielaufzeiten
+              betragen oft mehrere Jahre (bis zu 100.000 Schließzyklen). Online-Systeme (Wandleser) verfügen über
+              integrierte USV-Anlagen (Unterbrechungsfreie Stromversorgung) im Steuergerät. Bei einem totalen
+              Netzausfall wird die Funktionalität für mehrere Stunden aufrechterhalten. Zudem lassen sich
+              Fail-Secure (im stromlosen Zustand verriegelt, für Außentüren) und Fail-Safe (im stromlosen
+              Zustand entriegelt, für Fluchtwege) Szenarien präzise nach den Vorgaben des Brandschutzkonzepts
+              konfigurieren.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h3 className="text-[17px] font-semibold text-[oklch(0.16_0.02_260)]">
+              3. Lassen sich bestehende mechanische Anlagen in smarte Systeme integrieren?
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Ja, die schrittweise Migration (Retrofitting) ist ein zentraler Bestandteil unserer Methodik.
+              Wir nutzen mechatronische Schließzylinder, die exakt in die bestehenden Europrofil-Aussparungen
+              mechanischer Schlösser passen. Der Austausch erfolgt ohne Bohrungen oder Änderungen an der Türsubstanz.
+              Dadurch können hochfrequentierte Zonen (z. B. Haupteingang, Serverraum) elektronisch mit
+              Echtzeit-Protokollierung und temporären Zugangsrechten aufgerüstet werden, während weniger
+              kritische Innentüren im selben Gebäude weiterhin über das etablierte mechanische
+              Wendeschlüsselsystem bedient werden. Wir können sogar Hybrid-Schlüssel programmieren, die
+              sowohl eine mechanische Fräsung für die Bestandsanlage als auch einen integrierten RFID-Chip
+              für die neuen elektronischen Zylinder enthalten.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h3 className="text-[17px] font-semibold text-[oklch(0.16_0.02_260)]">
+              4. Wie läuft der Prozess von der Analyse bis zur Inbetriebnahme einer Enterprise-Anlage ab?
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Der Prozess gliedert sich in fünf deterministische Phasen.
+              <strong>Phase 1: Auditing.</strong> Wir analysieren die baulichen Gegebenheiten, das bestehende
+              Brandschutzkonzept und die organisatorische Struktur des Unternehmens.
+              <strong>Phase 2: Architektur-Design.</strong> Entwicklung eines hierarchischen Schließplans und
+              eines Zonen-Modells.
+              <strong>Phase 3: Digitales Aufmaß.</strong> Präzise Vermessung aller Türstärken, Dornmaße und
+              Beschlagsarten.
+              <strong>Phase 4: Fertigung & Bereitstellung.</strong> Die Komponenten werden bestellt, codiert
+              und in unserer Werkstatt vorkonfiguriert.
+              <strong>Phase 5: Rollout & Schulung.</strong> Die physische Installation erfolgt durch unser
+              zertifiziertes Personal. Abschließend integrieren wir die Software in Ihre IT und schulen die
+              zuständigen Administratoren im Umgang mit der Verwaltungssoftware und der Rechtevergabe.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h3 className="text-[17px] font-semibold text-[oklch(0.16_0.02_260)]">
+              5. Welche Daten werden bei Cloud-basierten Schließanlagen erfasst und wo werden diese gespeichert?
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Cloud-basierte Zutrittskontrollsysteme protokollieren standardmäßig die UUID des Transponders,
+              den Zeitstempel des Zugriffs und den spezifischen Zugangspunkt (Zylinder/Leser). Bei
+              Fehlversuchen (z. B. unautorisierter Transponder) wird zudem der Grund der Abweisung protokolliert.
+              Wir setzen ausschließlich auf Enterprise-Lösungen (wie z.B. von Salto, SimonsVoss oder Assa Abloy),
+              welche eine End-to-End-Verschlüsselung (AES-256) der Übertragungswege nutzen. Die Daten werden
+              in ISO-27001-zertifizierten Rechenzentren innerhalb der Europäischen Union gehostet, um eine
+              strikte DSGVO-Konformität zu gewährleisten. Administratoren können Rollen- und Rechtekonzepte
+              so konfigurieren, dass Protokolle automatisch nach einer definierten Frist überschrieben werden
+              und sensible Daten im Einklang mit betrieblichen Datenschutzvereinbarungen verarbeitet werden.
+            </p>
+          </div>
+        </div>
       </Section>
 
       {/* Ratgeber */}
