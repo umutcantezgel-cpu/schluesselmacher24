@@ -1,0 +1,3 @@
+# Codebase Architecture Blueprint
+This repository follows the JC-AUDITOR-ARCHITECT-v1 guidelines.
+See `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for the current transformation plan.
