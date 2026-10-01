@@ -1,0 +1,5 @@
+
+
+## Blueprint Status
+- Generated 64 routes.
+Das Projekt wurde durch den Revolution Builder um die Enterprise ROI Calculator Komponente im Ratgeber erweitert, um den Nutzern eine interaktive Kalkulation der Amortisationszeit von Sicherheitsinvestitionen zu ermöglichen.

@@ -43,3 +43,10 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Blueprint Updates
+
+- Revolution plan generated with 64 routes.
+- Architecture matrix generated.
+Das Projekt wurde durch den Revolution Builder um die Enterprise ROI Calculator Komponente im Ratgeber erweitert, um den Nutzern eine interaktive Kalkulation der Amortisationszeit von Sicherheitsinvestitionen zu ermöglichen.
