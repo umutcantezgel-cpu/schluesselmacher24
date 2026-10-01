@@ -1,0 +1,4 @@
+Schluesselmacher24 LLM info
+
+
+Architecture updated via `.jules/revolution-plan.json`
