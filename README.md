@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architectural Goals
+- Adopt Next.js 16 App Router strict async access paradigms.
+- Transition to React 19 Server Actions and optimistic UI.
+- Integrate Swiss Light Mode aesthetic via OKLCH color space.
