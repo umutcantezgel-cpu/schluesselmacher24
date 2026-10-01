@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2024-10-01T18:45:00Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_014",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
+      "title": "Fluid Kinetic Animation 14 for -autoschluessel-programmieren",
+      "specification": "Implement CSS subgrid physics and spring-based kinetic feedback strictly on /autoschluessel/programmieren within components/calculator/enterprise-roi-calculator.tsx to achieve a hyper-tactile Awwwards-level feel.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_042",
+      "category": "SEMANTIC_AUTHORITY",
+      "target_existing_route": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
+      "title": "Semantic Expansion 42 on -gleichschliessende-zylinder",
+      "specification": "Inject deep technical domain authority matrix with >800 words into /gleichschliessende-zylinder avoiding visual noise, focusing purely on content supremacy.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
