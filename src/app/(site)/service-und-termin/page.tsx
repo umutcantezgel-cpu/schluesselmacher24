@@ -1,3 +1,4 @@
+import { ServiceBudgetCalculator } from "@/components/calculator/service-budget-calculator";
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, CalendarSearch, MapPin, MessageSquare, Phone } from 'lucide-react';
@@ -217,6 +218,66 @@ export default async function ServiceUndTerminPage() {
             Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
           </p>
         </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">5. Detaillierte Vergleichsmatrix: Mechanische vs. Elektronische Schließsysteme</h3>
+          <p>
+            Um Ihnen die Entscheidung für die richtige Technologie zu erleichtern, haben wir die wesentlichen Merkmale mechanischer und elektronischer Systeme in einer detaillierten Vergleichsmatrix gegenübergestellt. Beide Ansätze haben spezifische Vor- und Nachteile, die je nach Anwendungsfall und Sicherheitsanforderung abgewogen werden müssen.
+          </p>
+          <div className="mt-6 overflow-x-auto rounded-xl border border-border">
+            <table className="w-full min-w-[600px] text-left text-sm">
+              <thead className="bg-surface">
+                <tr>
+                  <th className="border-b border-border px-4 py-3 font-semibold text-foreground">Kriterium</th>
+                  <th className="border-b border-border border-l px-4 py-3 font-semibold text-foreground">Mechanische Systeme</th>
+                  <th className="border-b border-border border-l px-4 py-3 font-semibold text-foreground">Elektronische Systeme</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr>
+                  <td className="px-4 py-3 font-medium text-foreground">Sicherheit bei Schlüsselverlust</td>
+                  <td className="border-l border-border px-4 py-3 text-foreground-muted">Zylindertausch oft zwingend erforderlich, hohe Folgekosten.</td>
+                  <td className="border-l border-border px-4 py-3 text-foreground-muted">Einfache Deaktivierung des Transponders im System, minimale Kosten.</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium text-foreground">Zugangskontrolle & Protokollierung</td>
+                  <td className="border-l border-border px-4 py-3 text-foreground-muted">Keine Historie oder temporäre Einschränkungen möglich.</td>
+                  <td className="border-l border-border px-4 py-3 text-foreground-muted">Detaillierte Protokollierung und zeitgesteuerte Zugangsberechtigungen.</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium text-foreground">Infrastruktur & Installation</td>
+                  <td className="border-l border-border px-4 py-3 text-foreground-muted">Autark, keine Stromversorgung oder Netzwerk erforderlich.</td>
+                  <td className="border-l border-border px-4 py-3 text-foreground-muted">Benötigt Batterien oder Verkabelung sowie ggf. Netzwerk-Infrastruktur.</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium text-foreground">Skalierbarkeit</td>
+                  <td className="border-l border-border px-4 py-3 text-foreground-muted">Begrenzt durch mechanische Schließplanhierarchien.</td>
+                  <td className="border-l border-border px-4 py-3 text-foreground-muted">Nahezu unbegrenzt erweiterbar und flexibel anpassbar.</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium text-foreground">Wartungsaufwand</td>
+                  <td className="border-l border-border px-4 py-3 text-foreground-muted">Geringer Aufwand (gelegentliches Schmieren).</td>
+                  <td className="border-l border-border px-4 py-3 text-foreground-muted">Regelmäßige Batteriewechsel und Software-Updates erforderlich.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">6. Kosten-Nutzen-Analyse und Return on Investment (ROI)</h3>
+          <p>
+            Die initialen Investitionskosten für elektronische Zutrittssysteme liegen naturgemäß über denen rein mechanischer Lösungen. Jedoch verschiebt sich die Wirtschaftlichkeitsbetrachtung erheblich, wenn man die Total Cost of Ownership (TCO) über einen Zeitraum von 5 bis 10 Jahren analysiert. Insbesondere in Objekten mit hoher Fluktuation (wie Bürogebäuden, Krankenhäusern oder Bildungseinrichtungen) amortisiert sich ein elektronisches System oft bereits nach dem ersten Verlust eines Generalschlüssels, da der kostspielige Komplettaustausch der mechanischen Zylinder entfällt.
+          </p>
+          <p>
+            Zusätzliche Einsparpotenziale ergeben sich durch optimierte Verwaltungsprozesse. Die zentrale Verwaltung von Berechtigungen über eine Software-Oberfläche spart signifikant Arbeitszeit im Facility Management. Zudem können durch die Integration in die Gebäudeleittechnik (z.B. automatische Licht- oder Heizungssteuerung bei Zutritt) die Energiekosten gesenkt werden. Unsere Berater erstellen für Ihr Projekt gerne eine individuelle ROI-Kalkulation, die diese Faktoren transparent aufschlüsselt und Ihnen eine fundierte Entscheidungsgrundlage bietet.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">7. Compliance, Datenschutz und Normen</h3>
+          <p>
+            Besonders im gewerblichen und öffentlichen Bereich müssen bei der Implementierung von Zutrittslösungen komplexe rechtliche und normative Anforderungen erfüllt werden. Die Protokollierung von Zutrittsdaten berührt unweigerlich datenschutzrechtliche Belange (DSGVO). Wir unterstützen Sie bei der datenschutzkonformen Konfiguration der Systeme (z.B. durch Pseudonymisierung von Daten oder die Definition strenger Löschfristen).
+          </p>
+          <p>
+            Darüber hinaus gewährleisten wir, dass alle installierten Komponenten den geltenden DIN- und EN-Normen entsprechen. Dies betrifft insbesondere Flucht- und Rettungswege (DIN EN 179 für Notausgänge, DIN EN 1125 für Paniktüren) sowie Vorgaben des Brandschutzes. Eine unsachgemäße Installation kann im Schadensfall nicht nur zum Verlust des Versicherungsschutzes führen, sondern auch strafrechtliche Konsequenzen nach sich ziehen. Mit unserer zertifizierten Fachexpertise sind Sie rechtlich stets auf der sicheren Seite.
+          </p>
+
       </Section>
 
       <Section tone="muted" id="orientierung">
@@ -226,6 +287,7 @@ export default async function ServiceUndTerminPage() {
           lead="Für häufige Leistungen vor Ort erhalten Sie hier eine erste Orientierung. Den verbindlichen Preis nennen wir nach der Prüfung Ihrer Anfrage."
         />
         <div className="mt-8 max-w-3xl">
+          <ServiceBudgetCalculator />
           <ServiceEinsatzRechner
             werte={richtwerte.serviceEinsatz}
             anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
