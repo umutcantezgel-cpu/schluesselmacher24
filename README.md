@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architektur Ziele
+- Systemarchitektur auf Next.js 16+ App Router, React 19.2+ und Tailwind CSS v4 aktualisiert.
+- Neue Blueprint-Architektur generiert in `.jules/revolution-plan.json`.

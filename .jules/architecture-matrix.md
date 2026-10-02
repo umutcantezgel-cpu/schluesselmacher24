@@ -1,0 +1,52 @@
+# Architektur-Matrix
+
+| Pfad | Datei | Status | Ziel-Wörter | Neues interaktives Modul | Interaktion |
+|------|-------|--------|-------------|--------------------------|-------------|
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| / | src/app/(site)/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
