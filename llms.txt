@@ -1,0 +1,4 @@
+# LLMs Instructions
+
+- Architecture Blueprint: .jules/revolution-plan.json
+- Design System: OKLCH Light Mode

@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| Route | Source File | Current Words | Target Words |
+|-------|-------------|---------------|--------------|
+| /artikel/:slug | src/app/(site)/artikel/[slug]/page.tsx | 281 | 881 |
+| /artikel | src/app/(site)/artikel/page.tsx | 172 | 850 |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 122 | 850 |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 46 | 850 |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 40 | 850 |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 94 | 850 |
+| /autoschluessel/marken/:make/:model | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 444 | 1044 |
+| /autoschluessel/marken/:make | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 358 | 958 |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 256 | 856 |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 38 | 850 |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 291 | 891 |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 49 | 850 |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 40 | 850 |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 50 | 850 |
+| /bestellung/:id | src/app/(site)/bestellung/[id]/page.tsx | 380 | 980 |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 116 | 850 |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 302 | 902 |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 94 | 850 |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 545 | 1145 |
+| /kasse | src/app/(site)/kasse/page.tsx | 38 | 850 |
+| /(site) | src/app/(site)/page.tsx | 157 | 850 |
+| /ratgeber/:slug | src/app/(site)/ratgeber/[slug]/page.tsx | 128 | 850 |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 49 | 850 |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 12 | 850 |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 16 | 850 |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 683 | 1283 |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 195 | 850 |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 213 | 850 |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 12 | 850 |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 60 | 850 |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 276 | 876 |
+| /schluessel-nach-code/:slug | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 289 | 889 |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 91 | 850 |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 43 | 850 |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 388 | 988 |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 37 | 850 |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 129 | 850 |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 727 | 1327 |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 23 | 850 |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 144 | 850 |
+| /sicherheitstechnik/:slug | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 198 | 850 |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 313 | 913 |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 75 | 850 |
+| /standorte/:city | src/app/(site)/standorte/[city]/page.tsx | 123 | 850 |
+| /standorte | src/app/(site)/standorte/page.tsx | 78 | 850 |
+| /tuer-und-schliesstechnik/:slug | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 174 | 850 |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 422 | 1022 |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 38 | 850 |
