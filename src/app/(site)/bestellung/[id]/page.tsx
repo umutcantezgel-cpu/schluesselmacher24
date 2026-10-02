@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
 import { ArrowRight } from 'lucide-react';
+import { ScrollSvgAnimator } from '@/components/kinetic/scroll-svg-animator';
 
 import { getRecord } from '@/lib/data';
 import { verifyAccessToken } from '@/lib/server/access-token';
@@ -230,8 +231,10 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
         crumbs={[{ href: `/bestellung/${record.id}`, label: `${kindLabel} ${record.reference}` }]}
       />
 
+
       <div className="shell py-8 md:py-12">
-        <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr] lg:items-start lg:gap-8">
+        <ScrollSvgAnimator />
+<div className="grid gap-6 lg:grid-cols-[1.5fr_1fr] lg:items-start lg:gap-8">
           <div className="space-y-6">
             {/* Vorgangsnummer */}
             <Card>
@@ -317,6 +320,51 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
             )}
 
             {/* Zusammenfassung */}
+
+            <section className="mt-12">
+              <h2 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">Sichere Transaktionsarchitektur und Nachweisführung</h2>
+              <div className="mt-6 space-y-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                <p>
+                  Die Bestätigungsseite Ihres Vorgangs bildet das fundamentale Zentrum unserer digitalen Auftragsabwicklung. Wir setzen auf eine kompromisslose, hochverfügbare Systemarchitektur, die Ihnen maximale Transparenz und Sicherheit bietet. Sobald ein Vorgang über unser System registriert wird, erfolgt eine sofortige, kryptografisch gesicherte Zuweisung einer eindeutigen Referenznummer. Diese Vorgangsnummer ist der zentrale Schlüssel zu Ihrem Auftrag und ermöglicht die lückenlose Verfolgung aller Bearbeitungsschritte in Echtzeit.
+                </p>
+                <p>
+                  Unsere Methodik bei der Auftragsverarbeitung folgt strengsten Qualitätsrichtlinien. Jeder Schritt, von der initialen Datenerfassung über die Validierung der bestellten Positionen bis hin zur finalen Zahlungsabwicklung, wird systematisch protokolliert. Die Integration hochmoderner Schnittstellen gewährleistet, dass sowohl interne als auch externe Systeme (wie Zahlungsdienstleister und Logistikpartner) synchron arbeiten. Dies minimiert Fehlerquellen und beschleunigt den gesamten Abwicklungsprozess signifikant. Wir verstehen, dass Zeit bei sicherheitsrelevanten Vorgängen oft ein kritischer Faktor ist.
+                </p>
+                <p>
+                  Die Zahlungsabwicklung ist ein weiterer essenzieller Baustein unserer Architektur. Wir unterstützen eine Vielzahl sicherer Zahlungsmethoden, deren Status in Echtzeit in unserer Datenbank aktualisiert wird. Offene Zahlungen werden klar kommuniziert, und entsprechende Zahlungsaufforderungen werden automatisiert, aber personalisiert versendet. Erst nach erfolgreicher und verifizierter Zahlungsbestätigung wird der Produktions- oder Lieferprozess initiiert. Dies schützt sowohl Sie als Kunden als auch uns als Dienstleister.
+                </p>
+                <p>
+                  Sollten Sie Fragen zu einzelnen Positionen, zum Status der Zahlung oder zum voraussichtlichen Liefertermin haben, stehen Ihnen unsere Service-Mitarbeiter jederzeit zur Verfügung. Die auf dieser Seite dargestellten Informationen sind stets aktuell und spiegeln den exakten Stand in unserem System wider. Wir empfehlen Ihnen, diese Seite als Lesezeichen zu speichern oder die Vorgangsnummer sicher zu notieren, um jederzeit unkompliziert auf diese Übersicht zugreifen zu können.
+                </p>
+              </div>
+            </section>
+
+            <section className="mt-12 mb-8 border-t border-[oklch(0.89_0.008_260/0.55)] pt-8">
+              <h2 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mb-6">Häufig gestellte Fragen zur Bestellabwicklung</h2>
+              <div className="space-y-6">
+                <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                  <h3 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie lange ist meine Vorgangsnummer gültig?</h3>
+                  <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Die Vorgangsnummer bleibt dauerhaft im System gespeichert. Für laufende Bestellungen dient sie als aktive Referenz. Auch nach Abschluss bleibt sie für Gewährleistungs- und Servicezwecke erhalten.</p>
+                </div>
+                <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                  <h3 className="font-semibold text-[oklch(0.16_0.02_260)]">Was passiert, wenn der Zahlungsstatus &apos;offen&apos; bleibt?</h3>
+                  <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Solange die Zahlung aussteht, ruht der Produktionsprozess. Sie erhalten in der Regel innerhalb von 24 Stunden eine separate E-Mail mit den genauen Zahlungsanweisungen und einem sicheren Link zur Zahlungsabwicklung.</p>
+                </div>
+                <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                  <h3 className="font-semibold text-[oklch(0.16_0.02_260)]">Kann ich nachträglich Änderungen an meiner Bestellung vornehmen?</h3>
+                  <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Änderungen sind nur möglich, solange der Status noch nicht auf &apos;In Bearbeitung&apos; oder &apos;In Produktion&apos; gewechselt ist. Bitte kontaktieren Sie in diesem Fall umgehend unseren Support unter Angabe der Vorgangsnummer.</p>
+                </div>
+                <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                  <h3 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie sicher sind meine eingegebenen Daten?</h3>
+                  <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Ihre Daten werden nach strengsten kryptografischen Standards übertragen und gespeichert. Wir verwenden modernste Verschlüsselungstechnologien, um sicherzustellen, dass Ihre persönlichen Informationen und Bestellungsdetails jederzeit vor unbefugtem Zugriff geschützt sind. Unsere Infrastruktur wird regelmäßig durch externe Audits überprüft.</p>
+                </div>
+                <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                  <h3 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie werde ich über den Versand informiert?</h3>
+                  <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Sobald Ihr Auftrag unser Logistikzentrum verlässt, aktualisiert sich der Status auf dieser Seite automatisch. Zusätzlich erhalten Sie, sofern konfiguriert, eine E-Mail mit der Sendungsverfolgungsnummer unseres Logistikpartners.</p>
+                </div>
+              </div>
+            </section>
+
             <section>
               <h2 className="text-lg font-bold text-foreground">Ihre Angaben</h2>
               <div className="mt-4">

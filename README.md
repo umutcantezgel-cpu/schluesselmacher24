@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Neue interaktive Module
+- **ScrollSvgAnimator** (in `src/components/kinetic/scroll-svg-animator.tsx`): Kinetisches Modul für Scroll-getriebene SVG-Animationen, integriert in der Bestellübersicht.
