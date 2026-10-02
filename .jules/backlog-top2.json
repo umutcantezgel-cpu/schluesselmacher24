@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-02T20:33:09.567Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf visueller Hebelwirkung, ROI und Machbarkeit.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_093",
+      "category": "PERFORMANCE_AND_DX",
+      "target_existing_route": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_component_file": "global/layout",
+      "title": "Container Queries (@container) anwenden - Route: page (92)",
+      "specification": "Technische Optimierung durch container queries (@container) für extreme Performance und verbesserte DX (Developer Experience). Spezifischer Anwendungsfall: src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "score": 9.52,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_100",
+      "category": "PERFORMANCE_AND_DX",
+      "target_existing_route": "app/(site)/rechtliches/agb/page.tsx",
+      "target_component_file": "global/layout",
+      "title": "Container Queries (@container) anwenden - Route: page (99)",
+      "specification": "Technische Optimierung durch avif-hero-pipelines für extreme Performance und verbesserte DX (Developer Experience). Spezifischer Anwendungsfall: src/app/(site)/rechtliches/agb/page.tsx",
+      "score": 9.39,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
