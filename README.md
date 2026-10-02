@@ -16,11 +16,12 @@ npm run typecheck
 ## Technischer Aufbau
 
 - **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript** (strict)
-- **Tailwind CSS 3** mit semantischen CSS-Variablen (`src/app/globals.css`)
+- **Tailwind CSS 3/4** mit semantischen CSS-Variablen (`src/app/globals.css`)
 - **Formulare**: react-hook-form + zod
 - **Zwischenspeicherung** langer Konfiguratoren: `src/lib/flow/`
 - **Datenschicht**: `src/lib/data/` — austauschbarer Adapter,
   Standard ist der JSON-Adapter auf `content/`
+- **Architektur Blueprint**: Siehe `.jules/revolution-plan.json` und `.jules/architecture-matrix.md` für geplante Transformationen.
 
 ## Inhaltspflege ohne Entwickler
 
