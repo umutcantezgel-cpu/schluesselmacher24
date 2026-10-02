@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { EnterpriseROICalculator } from '@/components/calculator/enterprise-roi-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +74,16 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  void resolvedParams;
+  void resolvedSearch;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -203,6 +213,41 @@ export default async function SicherheitstechnikPage() {
       </Section>
 
       {/* Recht und Verantwortung */}
+
+      <Section id="roi-calculator" className="py-16 md:py-24 lg:py-32 bg-[oklch(0.988_0.002_260)]">
+        <div className="shell">
+          <SectionHeading title="Investition in Sicherheit" lead="Berechnen Sie den ROI Ihrer Sicherheitsmaßnahmen." />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
+            <div>
+              <h3 className="text-2xl font-bold text-[oklch(0.16_0.02_260)] mb-6">Wirtschaftliche Betrachtung</h3>
+              <div className="prose prose-lg text-[oklch(0.32_0.02_260)]">
+                <p>
+                  Sicherheitstechnik wird oft ausschließlich als Kostenfaktor betrachtet. Dabei übersehen viele Unternehmen, dass professionelle Sicherheitskonzepte eine messbare Rendite erwirtschaften können. Der Return on Investment (ROI) setzt sich hierbei aus verschiedenen direkten und indirekten Faktoren zusammen.
+                </p>
+                <p>
+                  Zu den direkten finanziellen Vorteilen zählen beispielsweise reduzierte Versicherungsprämien. Viele Versicherer gewähren Nachlässe, wenn nachweislich VdS-anerkannte Alarmsysteme oder mechanische Zusatzsicherungen installiert sind. Darüber hinaus entfallen Kosten für die Wiederbeschaffung von gestohlenen Gütern oder die Reparatur von Einbruchschäden.
+                </p>
+                <p>
+                  Noch schwerwiegender sind oft die indirekten Kosten eines Sicherheitsvorfalls. Betriebsunterbrechungen durch Vandalismus, der Verlust von sensiblen Kundendaten oder gestohlene Prototypen können massive wirtschaftliche Schäden verursachen, die den Wert der entwendeten Gegenstände weit übersteigen. Reputationsverluste und abwandernde Kunden sind langfristige Folgen, die durch präventive Maßnahmen verhindert werden können.
+                </p>
+                <h4 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Methodik der ROI-Berechnung</h4>
+                <p>
+                  Unser ROI-Kalkulator basiert auf empirischen Daten und Branchenstandards. Er berücksichtigt die zu schützende Fläche, das gewählte Sicherheitsniveau und die statistische Wahrscheinlichkeit von Vorfällen.
+                </p>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                  <li><strong>Standard-Schutz:</strong> Fokus auf physische Barrieren und Basis-Absicherung der Außenhaut. Reduziert Gelegenheitsdiebstähle signifikant.</li>
+                  <li><strong>Erweiterter Schutz:</strong> Kombination aus mechanischer Sicherung und elektronischer Überwachung. Ideal für Gewerbeobjekte mit erhöhtem Risiko.</li>
+                  <li><strong>Enterprise:</strong> Vollintegrierte Systeme mit KI-gestützter Videoanalyse und direkter Aufschaltung zu Interventionskräften. Für kritische Infrastrukturen und Hochsicherheitsbereiche.</li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <EnterpriseROICalculator />
+            </div>
+          </div>
+        </div>
+      </Section>
+
       <Section id="recht-und-verantwortung">
         <SectionHeading
           eyebrow="Recht und Verantwortung"
