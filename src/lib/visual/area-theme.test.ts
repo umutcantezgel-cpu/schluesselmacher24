@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { AREA_KEYS } from '@/lib/server/record-schema';
 import { AREA_THEMES, DEFAULT_AREA_THEME, contrastRatio, type AreaTheme } from './area-theme';
 
-const WHITE = '0 0% 100%';
+const WHITE = '1 0 0';
 
 function checkTheme(name: string, theme: AreaTheme) {
   it(`${name}: Text in Akzentfarbe ist lesbar (≥ 4,5:1)`, () => {
@@ -39,17 +39,17 @@ describe('Grundfarben in globals.css', () => {
   };
 
   it.each([
-    ['foreground', 'background'],
-    ['foreground-muted', 'background'],
-    ['foreground-muted', 'surface-muted'],
-    ['foreground-subtle', 'surface'],
-    ['primary', 'surface'],
-    ['primary', 'primary-soft'],
-    ['primary-foreground', 'primary'],
-    ['success', 'success-soft'],
-    ['warning', 'warning-soft'],
-    ['danger', 'danger-soft'],
-  ])('%s auf %s ist lesbar (≥ 4,5:1)', (fg, bg) => {
-    expect(contrastRatio(token(fg), token(bg))).toBeGreaterThanOrEqual(4.5);
+    ['foreground', 'background', 13], // Headline Text (13:1 on Background)
+    ['foreground-muted', 'background', 7], // Fließtext (7:1 on Background)
+    ['foreground-muted', 'surface-muted', 7],
+    ['foreground-subtle', 'surface', 4.5],
+    ['primary', 'surface', 4.5],
+    ['primary', 'primary-soft', 4.5],
+    ['primary-foreground', 'primary', 4.5],
+    ['success', 'success-soft', 4.5],
+    ['warning', 'warning-soft', 4.5],
+    ['danger', 'danger-soft', 4.5],
+  ])('%s auf %s ist lesbar (≥ %s:1)', (fg, bg, expectedContrast) => {
+    expect(contrastRatio(token(fg), token(bg))).toBeGreaterThanOrEqual(Number(expectedContrast));
   });
 });
