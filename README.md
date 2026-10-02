@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Interaktive Module
+- **Enterprise ROI Kalkulator**: Berechnet die Amortisation von Sicherheitsinvestitionen in der Sicherheitstechnik-Seite (src/app/(site)/sicherheitstechnik/page.tsx).

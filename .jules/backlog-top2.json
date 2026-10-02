@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-02T08:51:36.009Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_096",
+      "category": "EXTREME_PERFORMANCE",
+      "target_existing_route": "src/app/(site)/kasse/page.tsx",
+      "target_component_file": "src/components/performance/optimize-96.tsx",
+      "title": "Idea 96: Extreme Performance 21 for /kasse",
+      "specification": "Implement Next.js 16 'use cache' memoization, CSS Subgrid harmonization, and Container Queries (@container) for the /kasse route components. Optimize AVIF hero pipelines and ensure zero-shift Webfont loading to hit maximum Core Web Vitals scores.",
+      "score": 9.74,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_014",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
+      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
+      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
+      "score": 9.7,
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}
