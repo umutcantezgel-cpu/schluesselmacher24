@@ -139,6 +139,7 @@ export default async function HomePage() {
           </div>
 
           <ImagePlaceholder
+            priority={true}
             slot={{
               motif: 'Werkstattfoto: Schlüsselfräse mit Autoschlüssel in Bearbeitung',
               ratio: '4/3',

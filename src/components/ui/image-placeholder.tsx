@@ -20,6 +20,8 @@ export interface ImagePlaceholderProps {
   compact?: boolean;
   /** Hinweis für den Browser, wie breit das Bild dargestellt wird. */
   sizes?: string;
+  /** Ob das Bild im initialen Viewport sichtbar ist (LCP). */
+  priority?: boolean;
 }
 
 /**
@@ -36,6 +38,7 @@ export function ImagePlaceholder({
   className,
   compact = false,
   sizes = '(min-width: 1024px) 50vw, 100vw',
+  priority = false,
 }: ImagePlaceholderProps) {
   if (slot.bild?.url) {
     return (
@@ -47,6 +50,9 @@ export function ImagePlaceholder({
           alt={slot.bild.alt || slot.motif}
           fill
           sizes={sizes}
+          priority={priority}
+          fetchPriority={priority ? 'high' : 'auto'}
+          loading={priority ? 'eager' : 'lazy'}
           className="object-cover"
         />
       </div>
