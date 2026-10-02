@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| Route Path | Source File | Status | Target Word Count | Interactive Module | Signature Interaction |
+|---|---|---|---|---|---|
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING_BUILDER | 970 | RatgeberOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 980 | SlugOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 990 | AnfrageOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 1000 | SchluesselNachVorlageOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING_BUILDER | 1010 | WarenkorbOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING_BUILDER | 1020 | KasseOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING_BUILDER | 1030 | SchluesselNachCodeOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 1040 | SlugOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| / | src/app/(site)/page.tsx | PENDING_BUILDER | 1050 | HomeOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING_BUILDER | 1060 | SicherheitstechnikOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 1070 | SlugOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 1080 | SicherheitscheckOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 1090 | TuerUndSchliesstechnikOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 1100 | SlugOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING_BUILDER | 1110 | IdOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 1120 | GleichschliessendeZylinderOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 1130 | KonfiguratorOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 1140 | ElektronischeZutrittsloesungenOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 1150 | KonfiguratorOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING_BUILDER | 1160 | SchliessanlagenOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 1170 | KonfiguratorOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 1180 | TerminstatusOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 1190 | AnfrageOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING_BUILDER | 1200 | ServiceUndTerminOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 1210 | VorOrtOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 1220 | KontaktOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING_BUILDER | 1230 | ImpressumOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 1240 | CookieEinstellungenOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 1250 | VersandUndZahlungOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 1260 | WiderrufOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING_BUILDER | 1270 | AgbOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 1280 | DatenschutzOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING_BUILDER | 1290 | ArtikelOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING_BUILDER | 1300 | SlugOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING_BUILDER | 1310 | StandorteOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING_BUILDER | 1320 | CityOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING_BUILDER | 1330 | MarkenOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 1340 | ModelOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 1350 | MakeOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 1360 | FunkschluesselOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 1370 | ProgrammierenOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 1380 | AnfrageOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING_BUILDER | 1390 | AutoschluesselOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 1400 | KopierenOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 1410 | NachmachenOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 1420 | SmartKeyOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 1430 | SchluesselbartFraesenOptimizer | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 1440 | FahrzeugoeffnungOptimizer | BENTO_HOVER_GLOW_LIGHT |

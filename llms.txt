@@ -1,0 +1,6 @@
+
+
+## Architecture Objectives
+- Zero-New-Routes Invariant strictly applied.
+- Swiss Light Mode Design Doctrine (OKLCH) established.
+- Refer to .jules/revolution-plan.json for deterministic route transformation queues.
