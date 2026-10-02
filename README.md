@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Neue Module
+- **SecurityROICalculator**: Interaktiver ROI- und Budget-Kalkulator für die Sicherheitstechnik-Seite (inkl. React 19 useOptimistic).

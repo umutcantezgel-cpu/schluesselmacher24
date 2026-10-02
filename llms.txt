@@ -1,0 +1,4 @@
+
+
+## Neue Module
+- **SecurityROICalculator**: Interaktiver ROI- und Budget-Kalkulator für die Sicherheitstechnik-Seite (inkl. React 19 useOptimistic).

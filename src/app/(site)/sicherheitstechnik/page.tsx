@@ -1,3 +1,4 @@
+import { SecurityROICalculator } from '@/components/calculator/security-roi-calculator';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
@@ -298,6 +299,98 @@ export default async function SicherheitstechnikPage() {
           </Card>
         </div>
       </Section>
+
+
+      {/* Deep Architecture Content & Calculator */}
+      <Section id="architektur" tone="muted">
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Mehrschichtige Sicherheitsarchitektur nach dem Zwiebelprinzip"
+          lead="Moderne Sicherheitstechnik ist kein einzelnes Produkt, sondern ein orchestriertes System aus ineinandergreifenden Maßnahmen."
+        />
+
+        <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-start">
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold text-foreground">
+              Vom Perimeter zum Kern: Die drei Verteidigungslinien
+            </h3>
+
+            <p className="text-[15px] leading-relaxed text-foreground-muted">
+              Wirkungsvolle Sicherheitstechnik basiert auf dem klassischen <strong>Zwiebelprinzip (Defense in Depth)</strong>. Anstatt sich auf eine einzige, möglicherweise überwindbare Barriere zu verlassen, konzipieren wir ein mehrschichtiges Abwehrsystem, bei dem jede nachfolgende Schicht den Widerstandswert (Resistance Factor) erhöht.
+            </p>
+
+            <p className="text-[15px] leading-relaxed text-foreground-muted">
+              Die erste Schicht bildet die <strong>Perimetersicherung</strong>: Videoüberwachung mit intelligenter Motion-Detection und perimeterbegrenzende Freilandüberwachung. Ziel ist die frühzeitige Detektion, noch bevor ein potenzieller Täter das eigentliche Objekt erreicht.
+            </p>
+
+            <p className="text-[15px] leading-relaxed text-foreground-muted">
+              Die zweite Schicht ist die <strong>Außenhautsicherung</strong>. Hier greift die massive Mechanik: Hochsicherheitszylinder, Panzerriegel und massive Schließbleche, kombiniert mit elektronischen Öffnungs- und Glasbruchmeldern. Diese Schicht verzögert das Eindringen massiv und löst gleichzeitig bei Manipulationsversuchen einen Voralarm aus, lange bevor der Täter im Gebäude ist.
+            </p>
+
+             <p className="text-[15px] leading-relaxed text-foreground-muted">
+              Die dritte Schicht ist die <strong>Innenraumüberwachung (Fallenüberwachung)</strong> mittels Dual-Meldern (Infrarot & Mikrowelle), aktiven Nebelsystemen und hochverfügbarer Aufschaltung (Redundanz via IP und LTE) an eine zertifizierte Notruf- und Serviceleitstelle (NSL). Diese greift sofort, sollte die Außenhaut wider Erwarten überwunden werden, und limitiert die Aktionszeit auf ein absolutes Minimum.
+            </p>
+
+            <h3 className="text-xl font-semibold text-foreground mt-8">
+              Systemintegration und Interoperabilität
+            </h3>
+            <p className="text-[15px] leading-relaxed text-foreground-muted">
+              Der wahre Mehrwert entsteht erst durch die tiefe <strong>Integration (Interoperabilität)</strong>. Eine Gefahrenwarnanlage (GWA) entfaltet ihr volles Potenzial nur dann, wenn das Zutrittskontrollsystem (ZKS) nahtlos mit der Einbruchmeldeanlage (EMA) kommuniziert – beispielsweise durch Zwangsläufigkeit beim Scharfschalten. Dadurch werden Fehlalarme drastisch minimiert und die Bedienung bleibt intuitiv, ohne Kompromisse bei der Sicherheit einzugehen.
+            </p>
+          </div>
+
+          <div className="sticky top-24">
+            <SecurityROICalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Fach-FAQ Sektion (> 800 Wörter Requirement) */}
+      <Section>
+        <SectionHeading
+          eyebrow="Expertenwissen"
+          title="Tiefgehende Antworten auf architektonische Fragen"
+          lead="Wir beantworten komplexe Fragestellungen aus unserer täglichen Praxis der Sicherheitsplanung."
+        />
+
+        <div className="mt-8 space-y-6">
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-lg font-bold text-foreground">Wie unterscheidet sich die VdS-Klasse B von Klasse C in der Praxis?</h4>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Die VdS-Klasse B ist für Haushalte und Gewerbe mit erhöhter Gefährdung konzipiert (z.B. Juweliere, Elektronikmärkte). Sie zeichnet sich durch einen mittleren Überwindungsschutz aus. Klasse C hingegen richtet sich an Objekte mit besonders hoher Gefährdung (Banken, Museen, hochsensible IT-Zentren). Der entscheidende Unterschied in der Praxis liegt in der <strong>Bohrschutz-Klassifizierung</strong> der mechanischen Komponenten, der vorgeschriebenen Flächenüberwachung und vor allem in der zwingend geforderten <strong>Leitungsüberwachung</strong> gegen Sabotage. Während bei Klasse B eine differenzierte Überwachung ausreicht, fordert Klasse C eine nahezu lückenlose Überwachung aller Zugangspunkte mit extrem hohen Standzeiten im Sabotagefall.
+            </p>
+          </div>
+
+           <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-lg font-bold text-foreground">Warum ist die &quot;Zwangsläufigkeit&quot; ein kritisches Konzept?</h4>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Zwangsläufigkeit bedeutet architektonisch, dass ein System so konzipiert ist, dass der Betreiber Fehlbedienungen gar nicht erst vornehmen kann. Das klassische Beispiel: Die Einbruchmeldeanlage lässt sich nur dann scharfschalten (Scharfschalteinrichtung / SSE), wenn alle überwachten Türen und Fenster physisch geschlossen und verriegelt sind. Gleichzeitig lässt sich die gesicherte Tür von außen erst öffnen, wenn die Anlage vorher erfolgreich unscharf geschaltet wurde. Dies eliminiert den Hauptgrund für polizeiliche Falschalarme: das versehentliche Betreten eines scharfgeschalteten Bereichs. Mechanik und Elektronik müssen hierfür in einer Sperrelement-Architektur verschmolzen werden.
+            </p>
+          </div>
+
+           <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-lg font-bold text-foreground">Welche Rolle spielen EN 50131 Normen bei der Komponentenauswahl?</h4>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Die europäische Norm EN 50131 (Einbruch- und Überfallmeldeanlagen) ist unser Leitfaden für die Zertifizierung der Widerstandsfähigkeit. Wir verbauen ausschließlich Komponenten ab Grad 2 (für Haushalte mit normalem Risiko) oder Grad 3/4 für kommerzielle Hochrisikobereiche. Die Norm definiert präzise Anforderungen an die Zuverlässigkeit von Meldern, die Störfestigkeit gegen elektromagnetische Felder (EMV) und die Energie-Notversorgung. Ein System ist immer nur so stark wie sein schwächstes Glied; daher verbieten wir uns die Mischung von EN 50131 zertifizierten Anlagen mit nicht-zertifizierten Smart-Home-Gadgets, da diese das Gesamt-Sicherheitsniveau korrumpieren würden.
+            </p>
+          </div>
+
+           <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-lg font-bold text-foreground">Was bedeutet &quot;Alarmverifikation&quot; und warum ist sie heute essenziell?</h4>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Die reine Auslösung eines Bewegungsmelders generiert einen &quot;blinden&quot; Alarm. Polizei und Interventionskräfte priorisieren jedoch verifizierte Alarme. Bei der Alarmverifikation (meist Video-Verifikation) sendet das System im Alarmfall nicht nur ein Signal, sondern sofort einen kurzen, hochverschlüsselten Videoclip an die Notrufleitstelle. Der Operator kann in Sekundenbruchteilen verifizieren, ob es sich um einen echten Einbruch, einen streunenden Hund oder einen heruntergefallenen Karton handelt. Dies führt zu einer drastisch reduzierten Interventionszeit (SLA-Zeiten) der Behörden, da die Gefahrenlage visuell bestätigt ist.
+            </p>
+          </div>
+
+           <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-lg font-bold text-foreground">Wie gewährleisten Sie die Ausfallsicherheit (Redundanz) der Signalübertragung?</h4>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Die Übertragungseinrichtung (ÜE) ist das Nadelöhr jeder Anlage. Wir setzen architektonisch zwingend auf Dual-Path-Kommunikation nach EN 50136. Der primäre Kommunikationsweg erfolgt via verschlüsseltem IP-Tunnel über das Festnetz. Wird dieser Weg manipuliert oder fällt durch providerseitige Störungen aus, übernimmt der sekundäre Weg (LTE/4G-Modem mit Roaming-M2M-SIM-Karte) in Millisekunden. Die Leitstelle führt zudem ein kontinuierliches Polling (Alive-Check) durch. Bleibt das Ping-Signal aus, wird dies als Sabotageversuch oder Totalausfall gewertet und löst den definierten Maßnahmeplan aus.
+            </p>
+          </div>
+        </div>
+      </Section>
+
 
       {/* Weiterführende Seiten */}
       {page && page.seo.internalLinks.length > 0 && (
