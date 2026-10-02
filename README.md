@@ -43,3 +43,9 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture
+
+The project has undergone an extensive architectural audit. A comprehensive master blueprint has been generated, ensuring that all existing user-facing UI routes adhere to strict content depth requirements (> 800 words) and are assigned Awwwards-style interactive modules.
+
+See `.jules/architecture-matrix.md` and `.jules/revolution-plan.json` for the transformation queue.
