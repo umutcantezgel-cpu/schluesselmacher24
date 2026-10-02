@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| Route Path | Source File | Current Words | Target Words | Component |
+|---|---|---|---|---|
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 0 | 1734 | ArticleContentFilter |
+| /artikel | src/app/(site)/artikel/page.tsx | 0 | 1456 | ArticleContentFilter |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 0 | 1318 | AutoKeyPriceCalculator |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 0 | 1921 | AutoKeyPriceCalculator |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 0 | 1891 | AutoKeyPriceCalculator |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 0 | 1933 | AutoKeyPriceCalculator |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 0 | 2023 | AutoKeyPriceCalculator |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 0 | 1779 | AutoKeyPriceCalculator |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 0 | 1518 | AutoKeyPriceCalculator |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 0 | 1989 | AutoKeyPriceCalculator |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 0 | 2802 | AutoKeyPriceCalculator |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 0 | 2022 | AutoKeyPriceCalculator |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 0 | 1842 | AutoKeyPriceCalculator |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 0 | 2007 | AutoKeyPriceCalculator |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 0 | 2099 | ServicePricingCalculator |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 0 | 1182 | ServicePricingCalculator |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 0 | 3280 | ServicePricingCalculator |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 0 | 1110 | ServicePricingCalculator |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 0 | 2881 | ServicePricingCalculator |
+| /kasse | src/app/(site)/kasse/page.tsx | 0 | 1042 | ServicePricingCalculator |
+| / | src/app/(site)/page.tsx | 0 | 1930 | ServicePricingCalculator |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 0 | 1159 | ArticleContentFilter |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 0 | 1024 | ArticleContentFilter |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 0 | 1216 | ServicePricingCalculator |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 0 | 1028 | ServicePricingCalculator |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 0 | 1515 | ServicePricingCalculator |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 0 | 1048 | ServicePricingCalculator |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 0 | 1227 | ServicePricingCalculator |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 0 | 1170 | ServicePricingCalculator |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 0 | 1168 | SchliessplanConfigurator |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 0 | 2673 | SchliessplanConfigurator |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 0 | 1534 | ServicePricingCalculator |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 0 | 1297 | ServicePricingCalculator |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 0 | 1021 | ServicePricingCalculator |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 0 | 2593 | ServicePricingCalculator |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 0 | 951 | ServicePricingCalculator |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 0 | 1274 | ServicePricingCalculator |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 0 | 2378 | ServicePricingCalculator |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 0 | 950 | ServicePricingCalculator |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 0 | 1455 | ServicePricingCalculator |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 0 | 1444 | SecurityCheckFilter |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 0 | 1820 | SecurityCheckFilter |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 0 | 1129 | SecurityCheckFilter |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 0 | 1205 | ServicePricingCalculator |
+| /standorte | src/app/(site)/standorte/page.tsx | 0 | 1049 | ServicePricingCalculator |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 0 | 1293 | ServicePricingCalculator |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 0 | 2584 | ServicePricingCalculator |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 0 | 1061 | ServicePricingCalculator |
