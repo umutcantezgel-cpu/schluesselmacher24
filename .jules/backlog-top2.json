@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2023-10-25T12:00:00Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten basierend auf der 100-Ideen Matrix.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_component_file": "components/tools/budget-calculator.tsx",
+      "title": "Entwicklung eines interaktiven Budgetrechners in schluesselbart-fraesen",
+      "specification": "Entwickle ein n\u00fctzliches, auf src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx zugeschnittenes Werkzeug: Entwicklung eines interaktiven Budgetrechners. Nutze React 19 Server Actions und binde das Tool nahtlos und performant direkt auf der Bestandsseite ein, um die Conversion-Rate zu erh\u00f6hen.",
+      "score": 9.8,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_002",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_component_file": "components/ui/bento-grid.tsx",
+      "title": "Einf\u00fchrung von fluiden Bento-Grids mit OKLCH-Schatten f\u00fcr anfrage",
+      "specification": "Implementiere einf\u00fchrung von fluiden bento-grids mit oklch-schatten spezifisch f\u00fcr die Hauptkomponente auf src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx. Stelle sicher, dass die Schweizer Light Mode Marken-DNA durch strikte Verwendung von OKLCH-Farben und Verzicht auf Dark-Mode-Elemente erhalten bleibt. Keine neuen Routen erzeugen.",
+      "score": 9.5,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
