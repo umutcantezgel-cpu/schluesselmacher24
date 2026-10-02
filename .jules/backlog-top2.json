@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-02T13:03:18.978Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "id": 14,
+      "idea_id": "IDEA_014",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/bestellung/[id]/page.tsx",
+      "title": "Idee 014 [Kat A]: Scroll-getriebene SVG-Animationen auf page.tsx",
+      "specification": "Implementierung von Scroll-getriebene SVG-Animationen auf der Route src/app/(site)/bestellung/[id]/page.tsx, um das Nutzererlebnis extrem zu verbessern und die Schweizer Light Mode Marken-DNA zu festigen. Keine neuen Routen.",
+      "score": 9.85,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "id": 42,
+      "idea_id": "IDEA_042",
+      "category": "SEMANTIC_AUTHORITY",
+      "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+      "title": "Idee 042 [Kat B]: ausführliche Wartungs- und Pflege-Anleitungen auf page.tsx",
+      "specification": "Implementierung von ausführliche Wartungs- und Pflege-Anleitungen auf der Route src/app/(site)/autoschluessel/page.tsx, um das Nutzererlebnis extrem zu verbessern und die Schweizer Light Mode Marken-DNA zu festigen. Keine neuen Routen.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
