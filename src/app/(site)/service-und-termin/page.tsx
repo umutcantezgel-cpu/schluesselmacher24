@@ -8,6 +8,7 @@ import { NAV_AREAS, PROCESS_LABELS } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
+import { ReactionTimeCalculator } from '@/components/calculator/reaction-time-calculator';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -169,11 +170,12 @@ export default async function ServiceUndTerminPage() {
       </Section>
 
 
-      <Section>
+
+      <Section id="sla">
         <SectionHeading
-          eyebrow="Architektonische Methodik"
-          title="Präzision in jedem Schritt: Unsere Service-Architektur"
-          lead="Wir verstehen Schließtechnik und Sicherheitssysteme nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Langlebigkeit erfüllen müssen."
+          eyebrow="Architektonische Methodik & SLA"
+          title="Präzision, garantierte Reaktionszeiten und Service Level Agreements (SLA)"
+          lead="Wir verstehen Schließtechnik und Sicherheitssysteme nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Langlebigkeit erfüllen müssen. Dies spiegelt sich in unseren strengen Service Level Agreements wider."
         />
 
         <div className="mt-8 prose-sm24 max-w-none space-y-6">
@@ -181,7 +183,17 @@ export default async function ServiceUndTerminPage() {
             Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">1. Die Phasen unserer Service-Implementierung</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-8">1. Verbindliche Reaktionszeiten (Service Level Agreements)</h3>
+          <p>
+            Sicherheitstechnik verzeiht keine Ausfallzeiten. Deshalb haben wir für Gewerbe-, Industrie- und Privatkunden hochspezialisierte Service Level Agreements (SLA) definiert. Diese regeln nicht nur die garantierte Einsatzzeit unserer Techniker, sondern auch die sofortige Verfügbarkeit von kritischen Ersatzteilen (wie patentierte Zylindersysteme oder Hochsicherheits-Elektronik) aus unserem dezentralen Logistiknetzwerk.
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li><strong>SLA Tier 1 (Kritische Infrastruktur & Industrie):</strong> Garantierte Reaktionszeit vor Ort von maximal 2 Stunden, 24/7-Verfügbarkeit, priorisierte Ersatzteilbereitstellung und dedizierter Projektleiter. Typische Anwendung: Serverräume, Produktionsanlagen, Finanzinstitute.</li>
+            <li><strong>SLA Tier 2 (Gewerbe & Hausverwaltungen):</strong> Garantierte Reaktionszeit vor Ort von maximal 4 Stunden während der regulären Geschäftszeiten, erweiterte telefonische Fehlerdiagnose (Remote-Triage) zur Minimierung von Einsatzkosten. Typische Anwendung: Bürogebäude, Filialisten, Wohnanlagen.</li>
+            <li><strong>SLA Tier 3 (Premium Privatkunden & Kleinbetriebe):</strong> Garantierte Terminvergabe innerhalb von 24 Stunden, transparente Vorab-Kostenkalkulation und schnelle Soforthilfe bei akuten Notfällen wie mechanischen Defekten an Haupteingangstüren.</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">2. Die Phasen unserer Service-Implementierung</h3>
           <p>
             Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
           </p>
@@ -193,7 +205,7 @@ export default async function ServiceUndTerminPage() {
             <li><strong>Dokumentation und Systemübergabe:</strong> Jedes Projekt schließt mit einer umfassenden Dokumentation ab. Sie erhalten Sicherungskarten, detaillierte Schließpläne, Bedienungsanleitungen und Protokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.</li>
           </ul>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">2. Technologische Standards und Materialqualität</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-8">3. Technologische Standards und Materialqualität</h3>
           <p>
             Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
           </p>
@@ -201,7 +213,7 @@ export default async function ServiceUndTerminPage() {
             Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">3. Nachhaltigkeit und Lebenszyklus-Management</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-8">4. Nachhaltigkeit und Lebenszyklus-Management</h3>
           <p>
             Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen.
           </p>
@@ -209,15 +221,60 @@ export default async function ServiceUndTerminPage() {
             Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">4. Gewerbeobjekte und öffentliche Einrichtungen</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-8">5. Gewerbeobjekte und öffentliche Einrichtungen</h3>
           <p>
             Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
           </p>
           <p>
             Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
           </p>
+
+          <div className="my-12 overflow-x-auto rounded-lg border border-border shadow-sm">
+             <table className="min-w-full divide-y divide-border text-sm">
+                <thead className="bg-surface-muted">
+                   <tr>
+                      <th scope="col" className="px-6 py-4 text-left font-semibold text-foreground uppercase tracking-wider text-xs">SLA Level</th>
+                      <th scope="col" className="px-6 py-4 text-left font-semibold text-foreground uppercase tracking-wider text-xs">Reaktionszeit (On-Site)</th>
+                      <th scope="col" className="px-6 py-4 text-left font-semibold text-foreground uppercase tracking-wider text-xs">Ersatzteil-Logistik</th>
+                      <th scope="col" className="px-6 py-4 text-left font-semibold text-foreground uppercase tracking-wider text-xs">Typisches Einsatzfeld</th>
+                   </tr>
+                </thead>
+                <tbody className="bg-surface divide-y divide-border">
+                   <tr>
+                      <td className="px-6 py-4 whitespace-nowrap font-medium text-foreground">Tier 1 (Critical)</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-foreground-muted">&lt; 2 Stunden (24/7)</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-foreground-muted">Priorisiert (Hub-Bestand)</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-foreground-muted">Industrieanlagen, KRITIS, Banken</td>
+                   </tr>
+                   <tr>
+                      <td className="px-6 py-4 whitespace-nowrap font-medium text-foreground">Tier 2 (Commercial)</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-foreground-muted">&lt; 4 Stunden (8-18 Uhr)</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-foreground-muted">Standard (Regionale Depots)</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-foreground-muted">Bürokomplexe, Einzelhandel, Kanzleien</td>
+                   </tr>
+                   <tr>
+                      <td className="px-6 py-4 whitespace-nowrap font-medium text-foreground">Tier 3 (Residential)</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-foreground-muted">&lt; 24 Stunden</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-foreground-muted">Standard-Versorgung</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-foreground-muted">Privathaushalte, Wohnbaugesellschaften</td>
+                   </tr>
+                </tbody>
+             </table>
+          </div>
         </div>
       </Section>
+
+      <Section tone="muted" id="anfahrtszeit">
+        <SectionHeading
+          eyebrow="Einsatzlogistik"
+          title="Lokale Präsenz für minimale Ausfallzeiten"
+          lead="Berechnen Sie hier unsere unverbindliche, voraussichtliche Anfahrtszeit zu Ihrem Objekt. Die intelligente Disposition unserer Techniker erfolgt basierend auf Ihrem Standort."
+        />
+        <div className="mt-8 max-w-xl mx-auto">
+          <ReactionTimeCalculator />
+        </div>
+      </Section>
+
 
       <Section tone="muted" id="orientierung">
         <SectionHeading

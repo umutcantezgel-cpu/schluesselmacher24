@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-02T19:02:57.911Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten nach OKLCH/Swiss-Light-Design.",
+  "top_ideas": [
+    {
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/service-und-termin/page.tsx",
+      "title": "Interaktiver Reaktionszeit-Rechner",
+      "specification": "Ein natives React 19 Tool, bei dem Kunden ihre PLZ eingeben und via Server Actions eine Live-Schätzung der Anfahrtszeit (mit OKLCH-Heatmap) erhalten.",
+      "rank": 1,
+      "score": 9.85,
+      "status": "COMPLETED_BY_BUILDER"
+    },
+    {
+      "idea_id": "IDEA_001",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "Überführung der Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
+      "rank": 2,
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
