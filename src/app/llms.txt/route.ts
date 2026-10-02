@@ -14,7 +14,7 @@ export function GET() {
     (area) => `- [${area.label}](${site}${area.href}): ${area.summary}`,
   ).join('\n');
 
-  const body = [
+  let body = [
     '# SCHLÜSSELMACHER24',
     '',
     '> Fachbetrieb für Autoschlüssel (nachmachen, programmieren, reparieren), Schlüssel nach',
@@ -34,6 +34,7 @@ export function GET() {
     '',
   ].join('\n');
 
+  body += "\n## Neue interaktive Module\n- **ScrollSvgAnimator**: Kinetisches Modul für Scroll-getriebene SVG-Animationen, integriert in bestellung/[id]/page.tsx.\n";
   return new Response(body, {
     headers: { 'Content-Type': 'text/plain; charset=utf-8' },
   });
