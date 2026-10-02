@@ -1,0 +1,3 @@
+# Project Schluesselmacher24
+
+DNA: Next.js 16+, Tailwind v4, OKLCH Light Mode
