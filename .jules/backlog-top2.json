@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2024-05-18T12:00:00Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf der 100-Ideen-Matrix.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_055",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/warenkorb/page.tsx",
+      "interactive_module": {
+        "component_name": "WarenkorbOptimierer",
+        "action_file": "src/actions/warenkorb-action.ts"
+      },
+      "title": "Native Konverter für app/(site)/warenkorb/page.tsx",
+      "specification": "Integration eines interaktiven ROI-Rechners oder dynamischen Filtersystems mittels React 19 Server Actions und useOptimistic, tief in die bestehende Seite eingebettet, um Conversion zu maximieren.",
+      "score": 9.75,
+      "status": "COMPLETED_BY_BUILDER"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_012",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/schluessel-nach-code/layout.tsx",
+      "interactive_module": {
+        "component_name": "TaktileKinetikLayout",
+        "action_file": "src/actions/kinetik-action.ts"
+      },
+      "title": "Taktile Kinetik für app/(site)/schluessel-nach-code/layout.tsx",
+      "specification": "Implementierung von physikalischer Federdämpfung und fluiden Bento-Grids mit OKLCH-basierten Schatten und 1px Kanten zur visuellen Aufwertung der Hauptinteraktionsebene. Erfordert strict AAA-Kontrast.",
+      "score": 9.55,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
