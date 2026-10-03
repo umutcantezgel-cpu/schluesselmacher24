@@ -43,3 +43,11 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architektur-Audit
+
+Die Codebasis wurde von JC-AUDITOR-ARCHITECT-v1 analysiert.
+Eine vollständige Matrix aller Routen und geplanten Erweiterungen (Zero-New-Routes Invariante)
+findet sich in `.jules/architecture-matrix.md`. Die Ausführung der Transformation
+wird durch `.jules/revolution-plan.json` gesteuert.
