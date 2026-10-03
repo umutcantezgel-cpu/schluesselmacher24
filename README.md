@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Interaktive Module
+
+* **ServiceBudgetCalculator:** Ein React 19 Server Action gesteuerter Kalkulator für die Autoschlüssel-Marken/Modell Seiten, implementiert mit Swiss Light Mode Design (OKLCH).
