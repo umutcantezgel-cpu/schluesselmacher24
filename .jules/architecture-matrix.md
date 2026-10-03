@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| Route | Source File | Status | Ist-Zustand (Wörter) | Soll-Zustand (Wörter) | Interaktives Modul |
+|---|---|---|---|---|---|
+| `/artikel` | `src/app/(site)/artikel/[slug]/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_0 |
+| `/artikel` | `src/app/(site)/artikel/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_1 |
+| `/autoschluessel/anfrage` | `src/app/(site)/autoschluessel/anfrage/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_2 |
+| `/autoschluessel/fahrzeugoeffnung` | `src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_3 |
+| `/autoschluessel/funkschluessel` | `src/app/(site)/autoschluessel/funkschluessel/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_4 |
+| `/autoschluessel/kopieren` | `src/app/(site)/autoschluessel/kopieren/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_5 |
+| `/autoschluessel/marken` | `src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_6 |
+| `/autoschluessel/marken` | `src/app/(site)/autoschluessel/marken/[make]/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_7 |
+| `/autoschluessel/marken` | `src/app/(site)/autoschluessel/marken/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_8 |
+| `/autoschluessel/nachmachen` | `src/app/(site)/autoschluessel/nachmachen/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_9 |
+| `/autoschluessel` | `src/app/(site)/autoschluessel/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_10 |
+| `/autoschluessel/programmieren` | `src/app/(site)/autoschluessel/programmieren/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_11 |
+| `/autoschluessel/schluesselbart-fraesen` | `src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_12 |
+| `/autoschluessel/smart-key` | `src/app/(site)/autoschluessel/smart-key/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_13 |
+| `/bestellung` | `src/app/(site)/bestellung/[id]/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_14 |
+| `/elektronische-zutrittsloesungen/konfigurator` | `src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_15 |
+| `/elektronische-zutrittsloesungen` | `src/app/(site)/elektronische-zutrittsloesungen/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_16 |
+| `/gleichschliessende-zylinder/konfigurator` | `src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_17 |
+| `/gleichschliessende-zylinder` | `src/app/(site)/gleichschliessende-zylinder/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_18 |
+| `/kasse` | `src/app/(site)/kasse/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_19 |
+| `/` | `src/app/(site)/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_20 |
+| `/ratgeber` | `src/app/(site)/ratgeber/[slug]/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_21 |
+| `/ratgeber` | `src/app/(site)/ratgeber/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_22 |
+| `/rechtliches/agb` | `src/app/(site)/rechtliches/agb/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_23 |
+| `/rechtliches/cookie-einstellungen` | `src/app/(site)/rechtliches/cookie-einstellungen/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_24 |
+| `/rechtliches/datenschutz` | `src/app/(site)/rechtliches/datenschutz/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_25 |
+| `/rechtliches/impressum` | `src/app/(site)/rechtliches/impressum/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_26 |
+| `/rechtliches/versand-und-zahlung` | `src/app/(site)/rechtliches/versand-und-zahlung/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_27 |
+| `/rechtliches/widerruf` | `src/app/(site)/rechtliches/widerruf/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_28 |
+| `/schliessanlagen/konfigurator` | `src/app/(site)/schliessanlagen/konfigurator/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_29 |
+| `/schliessanlagen` | `src/app/(site)/schliessanlagen/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_30 |
+| `/schluessel-nach-code` | `src/app/(site)/schluessel-nach-code/[slug]/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_31 |
+| `/schluessel-nach-code` | `src/app/(site)/schluessel-nach-code/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_32 |
+| `/schluessel-nach-vorlage/anfrage` | `src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_33 |
+| `/schluessel-nach-vorlage` | `src/app/(site)/schluessel-nach-vorlage/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_34 |
+| `/service-und-termin/anfrage` | `src/app/(site)/service-und-termin/anfrage/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_35 |
+| `/service-und-termin/kontakt` | `src/app/(site)/service-und-termin/kontakt/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_36 |
+| `/service-und-termin` | `src/app/(site)/service-und-termin/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_37 |
+| `/service-und-termin/terminstatus` | `src/app/(site)/service-und-termin/terminstatus/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_38 |
+| `/service-und-termin/vor-ort` | `src/app/(site)/service-und-termin/vor-ort/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_39 |
+| `/sicherheitstechnik` | `src/app/(site)/sicherheitstechnik/[slug]/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_40 |
+| `/sicherheitstechnik` | `src/app/(site)/sicherheitstechnik/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_41 |
+| `/sicherheitstechnik/sicherheitscheck` | `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_42 |
+| `/standorte` | `src/app/(site)/standorte/[city]/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_43 |
+| `/standorte` | `src/app/(site)/standorte/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_44 |
+| `/tuer-und-schliesstechnik` | `src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_45 |
+| `/tuer-und-schliesstechnik` | `src/app/(site)/tuer-und-schliesstechnik/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_46 |
+| `/warenkorb` | `src/app/(site)/warenkorb/page.tsx` | PENDING_BUILDER | < 800 | > 950 | InteractiveModule_47 |
