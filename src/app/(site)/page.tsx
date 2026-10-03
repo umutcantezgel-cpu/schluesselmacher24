@@ -18,6 +18,7 @@ import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
 
@@ -282,6 +283,83 @@ export default async function HomePage() {
               <ArrowRight size={15} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
             </span>
           </Link>
+        </div>
+      </Section>
+
+
+      {/* Fachlicher Schwerpunkt & Service Budget Kalkulator */}
+      <Section>
+        <SectionHeading
+          eyebrow="Architektur & Planung"
+          title="Präzise Budgetierung für komplexe Schließsysteme und Sicherheitstechnik"
+          lead="Moderne Schließanlagen und elektronische Zutrittslösungen erfordern eine fundierte Planung. Wir bieten Ihnen volle Transparenz in jeder Projektphase."
+        />
+
+        <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="prose prose-sm prose-slate lg:prose-base max-w-none text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+            <h3 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)]">Fundierte Sicherheitskonzepte für den modernen Objektbau</h3>
+            <p>
+              Die Planung und Implementierung moderner Schließanlagen und Sicherheitstechnik ist ein komplexer Prozess, der weit über die einfache Montage von Profilzylindern hinausgeht.
+              In der heutigen Zeit, in der physische und digitale Sicherheit zunehmend verschmelzen, erfordert die Konzeption von Zutrittslösungen ein tiefes Verständnis für architektonische Gegebenheiten,
+              nutzerspezifische Anforderungen und rechtliche Rahmenbedingungen.
+            </p>
+            <p>
+              Unser Ansatz bei der Projektierung von Sicherheitstechnik basiert auf einer ganzheitlichen Risikoanalyse.
+              Wir betrachten jedes Objekt – sei es ein Einfamilienhaus, eine gewerbliche Liegenschaft oder ein komplexer Industriekomplex – als individuelles Ökosystem.
+              Der erste Schritt unserer Methodik ist stets die Bestandsaufnahme vor Ort. Hierbei werden nicht nur die mechanischen Eigenschaften der vorhandenen Türen und Fenster geprüft,
+              sondern auch die organisatorischen Abläufe im Gebäude analysiert. Wie bewegen sich Mitarbeiter, Kunden oder Bewohner durch das Gebäude? Welche Bereiche erfordern besondere Schutzmaßnahmen?
+              Wie kann im Notfall eine schnelle Evakuierung gewährleistet werden, ohne die Grundsicherheit zu kompromittieren?
+            </p>
+
+            <h3 className="text-xl font-bold tracking-tight text-[oklch(0.16_0.02_260)]">Mechanische vs. Elektronische Schließanlagen</h3>
+            <p>
+              Bei der Auswahl des passenden Schließsystems stehen Bauherren und Facility Manager häufig vor der Entscheidung zwischen rein mechanischen, mechatronischen oder vollelktronischen Systemen.
+            </p>
+            <p>
+              <strong>Mechanische Schließanlagen</strong> bilden nach wie vor das Rückgrat vieler Sicherheitskonzepte. Sie zeichnen sich durch hohe Zuverlässigkeit, Langlebigkeit und Unabhängigkeit von Stromquellen aus.
+              Moderne Wendeschlüsselsysteme mit Patentschutz und komplexen Profilfräsungen bieten einen extrem hohen Kopierschutz. Der Nachteil: Bei Schlüsselverlust muss aus Sicherheitsgründen oft der gesamte betroffene Schließzylinder, im schlimmsten Fall sogar große Teile der Anlage, ausgetauscht werden.
+            </p>
+            <p>
+              <strong>Elektronische Zutrittslösungen</strong> bieten hier einen entscheidenden Vorteil: Verliert ein Nutzer sein Identmedium (Transponder, Smartcard oder Smartphone), kann dieses mit wenigen Klicks im System gesperrt werden.
+              Zudem ermöglichen elektronische Systeme die zeitliche und räumliche Einschränkung von Zutrittsrechten sowie die lückenlose Protokollierung von Schließereignissen. Dies ist besonders im gewerblichen Bereich von unschätzbarem Wert.
+            </p>
+
+            <h3 className="text-xl font-bold tracking-tight text-[oklch(0.16_0.02_260)]">Die Bedeutung von DIN-Normen und VdS-Klassen</h3>
+            <p>
+              Ein weiterer kritischer Aspekt bei der Planung von Sicherheitstechnik ist die Einhaltung relevantner Normen und Richtlinien.
+              Die DIN EN 1303 beispielsweise klassifiziert Schließzylinder hinsichtlich ihrer Verschlusssicherheit, ihres Feuerwiderstands und ihres Angriffswiderstands.
+              Ebenso wichtig sind die Richtlinien der VdS Schadenverhütung GmbH. Für den Versicherungsschutz im gewerblichen Bereich ist der Einsatz VdS-zertifizierter Komponenten oft zwingend vorgeschrieben.
+              Wir begleiten Sie durch diesen Normendschungel und stellen sicher, dass Ihre Anlage nicht nur sicher ist, sondern auch allen versicherungstechnischen Anforderungen entspricht.
+            </p>
+
+            <h3 className="text-xl font-bold tracking-tight text-[oklch(0.16_0.02_260)]">Häufig gestellte Fragen (FAQ)</h3>
+            <dl className="mt-6 space-y-6 divide-y divide-[oklch(0.89_0.008_260/0.55)]">
+              <div className="pt-6">
+                <dt className="text-base font-semibold leading-7 text-[oklch(0.16_0.02_260)]">Wie lange dauert die Planung und Installation einer mittleren Schließanlage?</dt>
+                <dd className="mt-2 text-base leading-7 text-[oklch(0.32_0.02_260)]">Für eine gewerbliche Schließanlage mit 50 bis 100 Zylindern sollten Sie von der ersten Begehung bis zur finalen Abnahme etwa 4 bis 6 Wochen einplanen. Die eigentliche Installation vor Ort ist meist in 1 bis 2 Tagen abgeschlossen.</dd>
+              </div>
+              <div className="pt-6">
+                <dt className="text-base font-semibold leading-7 text-[oklch(0.16_0.02_260)]">Können bestehende mechanische Zylinder durch elektronische ersetzt werden?</dt>
+                <dd className="mt-2 text-base leading-7 text-[oklch(0.32_0.02_260)]">Ja, in den meisten Fällen ist dies problemlos möglich. Moderne elektronische Doppelknaufzylinder haben die gleichen Einbaumaße wie mechanische Europrofilzylinder und können ohne Änderungen am Türblatt oder Einsteckschloss nachgerüstet werden.</dd>
+              </div>
+              <div className="pt-6">
+                <dt className="text-base font-semibold leading-7 text-[oklch(0.16_0.02_260)]">Was passiert bei einem Stromausfall mit elektronischen Zutrittssystemen?</dt>
+                <dd className="mt-2 text-base leading-7 text-[oklch(0.32_0.02_260)]">Batteriebetriebene Zylinder und Beschläge funktionieren unabhängig vom Stromnetz. Bei kabelgebundenen Systemen (z.B. Motorschlösser oder Wandleser) wird die Funktion durch eine unterbrechungsfreie Stromversorgung (USV) oder entsprechende Fluchttürsteuerungen (Fail-Safe / Fail-Secure) gewährleistet.</dd>
+              </div>
+              <div className="pt-6">
+                <dt className="text-base font-semibold leading-7 text-[oklch(0.16_0.02_260)]">Wie sicher sind elektronische Schließanlagen gegen Hackerangriffe?</dt>
+                <dd className="mt-2 text-base leading-7 text-[oklch(0.32_0.02_260)]">Moderne Systeme nutzen hochsichere Verschlüsselungsstandards (wie AES-128 oder AES-256) für die Kommunikation zwischen Identmedium und Zylinder. Eine Kompromittierung auf digitalem Weg ist bei aktuellen VdS-zertifizierten Systemen theoretisch nahezu ausgeschlossen.</dd>
+              </div>
+              <div className="pt-6">
+                <dt className="text-base font-semibold leading-7 text-[oklch(0.16_0.02_260)]">Bieten Sie auch Wartungsverträge für installierte Anlagen an?</dt>
+                <dd className="mt-2 text-base leading-7 text-[oklch(0.32_0.02_260)]">Ja. Um die Langlebigkeit und Zuverlässigkeit, insbesondere von elektronischen und komplexen mechanischen Anlagen zu gewährleisten, bieten wir maßgeschneiderte Service- und Wartungsverträge an. Diese beinhalten regelmäßige Funktionsprüfungen, Software-Updates und Batteriewechsel.</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div className="lg:sticky lg:top-8 h-fit">
+            <ServiceBudgetCalculator />
+          </div>
         </div>
       </Section>
 
