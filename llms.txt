@@ -1,0 +1,4 @@
+
+## Interaktive Module
+
+* **ServiceBudgetCalculator:** Ein React 19 Server Action gesteuerter Kalkulator für die Autoschlüssel-Marken/Modell Seiten, implementiert mit Swiss Light Mode Design (OKLCH).
