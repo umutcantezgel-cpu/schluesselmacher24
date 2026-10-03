@@ -9,6 +9,7 @@ import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -216,6 +217,36 @@ export default async function ServiceUndTerminPage() {
           <p>
             Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
           </p>
+        </div>
+      </Section>
+
+
+      <Section id="enterprise-roi">
+        <SectionHeading
+          eyebrow="Wirtschaftlichkeit"
+          title="Return on Investment (ROI) bei modernen Schließsystemen"
+          lead="Eine Investition in Sicherheit ist auch eine Investition in operative Effizienz. Berechnen Sie das Einsparpotenzial für Ihr Unternehmen."
+        />
+
+        <div className="mt-8 grid gap-12 lg:grid-cols-2">
+          <div className="prose-sm max-w-none space-y-6 text-foreground-muted">
+            <p>
+              Moderne elektronische Schließanlagen bieten nicht nur ein höheres Sicherheitsniveau, sondern auch erhebliche operative Vorteile. Durch den Wegfall von mechanischen Schlüsselübergaben, dem manuellen Führen von Schließplänen und den Kosten für Zylindertausch bei Schlüsselverlust, amortisieren sich diese Systeme oft überraschend schnell.
+            </p>
+            <p>
+              Insbesondere in dynamischen Unternehmensumgebungen mit hoher Fluktuation, externen Dienstleistern oder flexiblen Arbeitsmodellen spielt die zentrale, elektronische Verwaltung ihre Stärken aus. Berechtigungen können in Echtzeit und ortsunabhängig per Software oder App entzogen oder erteilt werden. Dies eliminiert organisatorische Engpässe und reduziert den administrativen Aufwand auf ein Minimum.
+            </p>
+            <p>
+              Darüber hinaus ermöglicht die lückenlose Protokollierung von Schließereignissen eine präzise Nachvollziehbarkeit bei Sicherheitsvorfällen. Dieses Feature ist nicht nur im Schadensfall relevant, sondern oft auch eine Grundvoraussetzung für Zertifizierungen (wie z.B. ISO 27001) oder spezielle Versicherungspolicen, die bei entsprechender Sicherheitsausstattung Rabatte gewähren.
+            </p>
+            <p>
+              Ein weiterer oft unterschätzter Faktor ist die Skalierbarkeit. Wenn Ihr Unternehmen wächst, wächst das System mit. Neue Türen, Standorte oder Nutzer lassen sich nahtlos integrieren, ohne dass das bestehende System komplett ausgetauscht werden muss. Dies bietet eine hohe Investitionssicherheit für die Zukunft.
+            </p>
+          </div>
+
+          <div>
+            <EnterpriseRoiCalculator />
+          </div>
         </div>
       </Section>
 
