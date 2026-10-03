@@ -1,0 +1,4 @@
+
+
+## Architecture Constraints
+Follow the Swiss Light Mode OKLCH standard and strictly adhere to Next.js 16 RSC patterns as defined in the Auditor blueprint.

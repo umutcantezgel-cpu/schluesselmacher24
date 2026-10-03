@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Status | Words Target | Schema Entities | Interactive Module |
+|-------|--------|--------------|-----------------|--------------------|
+| / | PENDING_BUILDER | 850 | Organization, WebPage | FeatureGrid |
+| /api/kunden-upload | PENDING_BUILDER | 851 | Organization, WebPage | FeatureGrid |
+| /artikel | PENDING_BUILDER | 852 | Organization, WebPage | FeatureGrid |
+| /artikel/[slug] | PENDING_BUILDER | 853 | Organization, WebPage | FeatureGrid |
+| /autoschluessel | PENDING_BUILDER | 854 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/anfrage | PENDING_BUILDER | 855 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/fahrzeugoeffnung | PENDING_BUILDER | 856 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/funkschluessel | PENDING_BUILDER | 857 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/kopieren | PENDING_BUILDER | 858 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/marken | PENDING_BUILDER | 859 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/marken/[make] | PENDING_BUILDER | 860 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/marken/[make]/[model] | PENDING_BUILDER | 861 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/nachmachen | PENDING_BUILDER | 862 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/programmieren | PENDING_BUILDER | 863 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/schluesselbart-fraesen | PENDING_BUILDER | 864 | Organization, WebPage | VehicleKeyCalculator |
+| /autoschluessel/smart-key | PENDING_BUILDER | 865 | Organization, WebPage | VehicleKeyCalculator |
+| /bestellung/[id] | PENDING_BUILDER | 866 | Organization, WebPage | FeatureGrid |
+| /elektronische-zutrittsloesungen | PENDING_BUILDER | 867 | Organization, WebPage | FeatureGrid |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING_BUILDER | 868 | Organization, WebPage | FeatureGrid |
+| /gleichschliessende-zylinder | PENDING_BUILDER | 869 | Organization, WebPage | FeatureGrid |
+| /gleichschliessende-zylinder/konfigurator | PENDING_BUILDER | 870 | Organization, WebPage | FeatureGrid |
+| /kasse | PENDING_BUILDER | 871 | Organization, WebPage | FeatureGrid |
+| /ratgeber | PENDING_BUILDER | 872 | Organization, WebPage | FeatureGrid |
+| /ratgeber/[slug] | PENDING_BUILDER | 873 | Organization, WebPage | FeatureGrid |
+| /rechtliches/agb | PENDING_BUILDER | 874 | Organization, WebPage | LegalTermsAccordion |
+| /rechtliches/cookie-einstellungen | PENDING_BUILDER | 875 | Organization, WebPage | LegalTermsAccordion |
+| /rechtliches/datenschutz | PENDING_BUILDER | 876 | Organization, WebPage | LegalTermsAccordion |
+| /rechtliches/impressum | PENDING_BUILDER | 877 | Organization, WebPage | LegalTermsAccordion |
+| /rechtliches/versand-und-zahlung | PENDING_BUILDER | 878 | Organization, WebPage | LegalTermsAccordion |
+| /rechtliches/widerruf | PENDING_BUILDER | 879 | Organization, WebPage | LegalTermsAccordion |
+| /schliessanlagen | PENDING_BUILDER | 880 | Organization, WebPage | SchliessanlagenConfigurator |
+| /schliessanlagen/konfigurator | PENDING_BUILDER | 881 | Organization, WebPage | SchliessanlagenConfigurator |
+| /schluessel-nach-code | PENDING_BUILDER | 882 | Organization, WebPage | FeatureGrid |
+| /schluessel-nach-code/[slug] | PENDING_BUILDER | 883 | Organization, WebPage | FeatureGrid |
+| /schluessel-nach-vorlage | PENDING_BUILDER | 884 | Organization, WebPage | FeatureGrid |
+| /schluessel-nach-vorlage/anfrage | PENDING_BUILDER | 885 | Organization, WebPage | FeatureGrid |
+| /service-und-termin | PENDING_BUILDER | 886 | Organization, WebPage | FeatureGrid |
+| /service-und-termin/anfrage | PENDING_BUILDER | 887 | Organization, WebPage | FeatureGrid |
+| /service-und-termin/kontakt | PENDING_BUILDER | 888 | Organization, WebPage | FeatureGrid |
+| /service-und-termin/terminstatus | PENDING_BUILDER | 889 | Organization, WebPage | FeatureGrid |
+| /service-und-termin/vor-ort | PENDING_BUILDER | 890 | Organization, WebPage | FeatureGrid |
+| /sicherheitstechnik | PENDING_BUILDER | 891 | Organization, WebPage | FeatureGrid |
+| /sicherheitstechnik/[slug] | PENDING_BUILDER | 892 | Organization, WebPage | FeatureGrid |
+| /sicherheitstechnik/sicherheitscheck | PENDING_BUILDER | 893 | Organization, WebPage | FeatureGrid |
+| /standorte | PENDING_BUILDER | 894 | Organization, WebPage | FeatureGrid |
+| /standorte/[city] | PENDING_BUILDER | 895 | Organization, WebPage | FeatureGrid |
+| /tuer-und-schliesstechnik | PENDING_BUILDER | 896 | Organization, WebPage | FeatureGrid |
+| /tuer-und-schliesstechnik/[slug] | PENDING_BUILDER | 897 | Organization, WebPage | FeatureGrid |
+| /warenkorb | PENDING_BUILDER | 898 | Organization, WebPage | FeatureGrid |
