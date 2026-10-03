@@ -1,0 +1,10 @@
+# System Architecture Blueprint
+
+This repository is currently undergoing Stage 1 of the Transformation Pipeline (Auditor Architect v1).
+
+## Constraints
+- ZERO-NEW-ROUTES INVARIANT: No new routes may be created. We exclusively refine existing routes.
+- SWISS LIGHT MODE DOCTRINE: We use the OKLCH color space for maximum light and clarity. No dark mode.
+- NEXT.JS 16+ PARADIGMS: Server Component supremacy, asynchronous params/searchParams, use cache, React 19 form actions.
+
+All architectural modifications are strictly guided by the generated `.jules/revolution-plan.json`.
