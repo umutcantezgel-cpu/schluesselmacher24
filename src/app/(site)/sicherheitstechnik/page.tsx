@@ -18,6 +18,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
+import { SecurityConfigurator } from '@/components/calculator/security-configurator';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
@@ -73,7 +74,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -157,6 +165,64 @@ export default async function SicherheitstechnikPage() {
                 </ButtonLink>
               </div>
             </div>
+          </div>
+        </div>
+      </Section>
+
+
+      {/* Interaktiver Kalkulator & Detaillierte Fachinformationen */}
+      <Section id="kalkulator" className="py-16 md:py-24 lg:py-32">
+        <SectionHeading
+          eyebrow="Bedarfsermittlung"
+          title="Transparente Kostenplanung für Ihr Sicherheitsprojekt"
+          lead="Eine seriöse Sicherheitsberatung beginnt mit einer ehrlichen Einschätzung der Investitionshöhe."
+        />
+        <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_1.15fr] items-start">
+          <div className="space-y-8 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <h3 className="text-2xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)]">
+              Architektonische Methodik der Einbruchprävention
+            </h3>
+            <p>
+              Moderne Sicherheitstechnik ist kein Produkt von der Stange, sondern ein präzise abgestimmtes Zusammenspiel aus physischen Barrieren und intelligenter Sensorik. Unsere Methodik basiert auf dem Prinzip der konzentrischen Sicherheitsringe (Zwiebelschalenprinzip). Der erste Ring bildet die Grundstücksgrenze, der zweite die Gebäudehülle (Außenhaut) und der dritte die kritischen Innenbereiche.
+            </p>
+            <p>
+              <strong>Mechanische vs. Elektronische Schließsysteme:</strong> Während mechanische Systeme (Profilzylinder, Sicherheitsbeschläge nach DIN 18257, Mehrfachverriegelungen nach DIN 18251) einen hohen Widerstandswert (Resistance Class, RC) aufbauen, um den Täter physisch am Eindringen zu hindern, übernimmt die elektronische Sensorik (Glasbruchmelder, Bewegungsmelder, Magnetkontakte) die unmittelbare Detektion und Alarmierung. Ein elektronisches Schließsystem bietet zudem den Vorteil der flexiblen Rechteverwaltung — verlorene Schlüssel stellen kein Sicherheitsrisiko mehr dar, da Transponder sofort gesperrt werden können.
+            </p>
+            <h3 className="text-xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mt-8">
+              Einbruchschutz nach DIN-Normen
+            </h3>
+            <p>
+              Wir planen und installieren konsequent nach den Vorgaben der DIN EN 1627 für einbruchhemmende Bauteile. Für private Wohnobjekte empfehlen wir mindestens die Widerstandsklasse RC 2 (bzw. RC 2 N), besser noch RC 3 für besonders gefährdete Bereiche (z.B. rückwärtig gelegene Terrassentüren).
+            </p>
+
+            <div className="mt-8">
+              <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-4">Häufig gestellte Fragen (FAQ)</h4>
+              <dl className="space-y-6">
+                <div>
+                  <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Ab wann lohnt sich eine Alarmanlage?</dt>
+                  <dd className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Eine Alarmanlage (Gefahrenwarnanlage) ist die sinnvolle Ergänzung zum mechanischen Grundschutz. Sie lohnt sich immer dann, wenn schnelle Interventionszeiten gefordert sind oder abgelegene Gebäudeteile überwacht werden müssen.</dd>
+                </div>
+                <div>
+                  <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Förderungen für Sicherheitstechnik?</dt>
+                  <dd className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Ja, die KfW (Kreditanstalt für Wiederaufbau) fördert einbruchhemmende Maßnahmen im Rahmen des Programms 455-E. Voraussetzung ist, dass die Installation durch einen Fachbetrieb durchgeführt wird und die Produkte bestimmte Normen erfüllen.</dd>
+                </div>
+                <div>
+                  <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Wie oft muss Sicherheitstechnik gewartet werden?</dt>
+                  <dd className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Elektronische Anlagen (Einbruchmeldeanlagen, Videoüberwachung) sollten gemäß DIN VDE 0833 einmal jährlich von einer Fachkraft geprüft werden, um die Funktionsfähigkeit sicherzustellen und Batterien in Funk-Komponenten rechtzeitig zu tauschen.</dd>
+                </div>
+                 <div>
+                  <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Sind smarte Türschlösser sicher?</dt>
+                  <dd className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Hochwertige smarte Schlösser namhafter Hersteller (z.B. mit AES-128-Verschlüsselung) sind hinsichtlich der digitalen Sicherheit sehr robust. Wichtig ist jedoch, dass der mechanische Kern (Zylinder) ebenfalls höchsten Ansprüchen (z.B. VdS-Anerkennung) genügt.</dd>
+                </div>
+                <div>
+                  <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Kann ich Videoüberwachung selbst installieren?</dt>
+                  <dd className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Eine fachgerechte Installation ist essentiell. Nicht nur die technische Einbindung (Netzwerk, PoE, Ausleuchtung), sondern vor allem die Beachtung datenschutzrechtlicher Rahmenbedingungen (DSGVO, Erfassung öffentlichen Raums) erfordert professionelles Know-how.</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          <div className="sticky top-24">
+             <SecurityConfigurator />
           </div>
         </div>
       </Section>

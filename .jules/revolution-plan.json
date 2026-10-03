@@ -1,0 +1,17 @@
+{
+  "transformation_queue": [
+    {
+      "route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "content_expansion_topics": [
+        "Umfassende Sicherheitsanalyse",
+        "Mechanische vs. Elektronische Schließsysteme",
+        "Einbruchschutz nach DIN-Normen"
+      ],
+      "interactive_module": {
+        "name": "Sicherheits-Konfigurator",
+        "type": "calculator"
+      }
+    }
+  ]
+}

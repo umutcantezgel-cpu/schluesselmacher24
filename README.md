@@ -39,6 +39,9 @@ Backend unter `/admin` bearbeitet:
 | `content/guides.json` · `content/cities.json` | Ratgeber- und Stadtseiten |
 | `content/records.json` | Vorgänge: Bestellungen, Anfragen, Termine, Projekte |
 
+## Neue Features
+- **Sicherheits-Konfigurator**: Interaktives Tool zur transparenten Bedarfsermittlung (Mechanik, Alarm, Video) integriert in der Sicherheitstechnik-Landingpage.
+
 ## Offene Anbindungen
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
