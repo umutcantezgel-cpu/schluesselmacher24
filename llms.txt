@@ -1,0 +1,8 @@
+# SCHLÜSSELMACHER24 - Architecture Sync
+
+
+## Architektur-Ziele
+- Next.js 16+ App Router
+- React 19.2+ Strict
+- Tailwind CSS v4 (OKLCH Color Space)
+- Awwwards Kinetik & Swiss Light Mode Marken-DNA

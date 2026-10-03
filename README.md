@@ -43,3 +43,10 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architektur-Ziele
+- Next.js 16+ App Router
+- React 19.2+ Strict
+- Tailwind CSS v4 (OKLCH Color Space)
+- Awwwards Kinetik & Swiss Light Mode Marken-DNA
