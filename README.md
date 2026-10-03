@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Blueprint
+
+The architectural evolution and transformation matrix is tracked in the `.jules/` directory. We strictly adhere to a ZERO-NEW-ROUTES policy, focusing on deep content enhancement and visual elevation of existing structures using OKLCH color spaces and Next.js 16+ paradigms.
