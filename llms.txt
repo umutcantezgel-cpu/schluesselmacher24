@@ -1,0 +1,7 @@
+
+## Architecture Goals
+
+- Zero new routes (Strict preservation of existing routes).
+- Elevate existing pages with deep content (>800 words).
+- Swiss High-End Light Mode Design System (OKLCH, strict grid, modern typography).
+- Hypermodern Next.js 16+ & React 19.2+ standards (Server Actions, RSCs).

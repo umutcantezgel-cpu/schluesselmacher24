@@ -1,0 +1,52 @@
+# Architecture Transformation Matrix
+
+| Route Path | Source File | Status | Current Words | Target Words | CWV / Schema Status | Interactive Component |
+|---|---|---|---|---|---|---|
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING | 426 | 950 | Needs JSON-LD | GuideFilterModule_0 |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING | 342 | 950 | Needs JSON-LD | GuideFilterModule_1 |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING | 272 | 950 | Needs JSON-LD | CarKeyModule_2 |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING | 162 | 950 | Needs JSON-LD | CarKeyModule_3 |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING | 145 | 950 | Needs JSON-LD | CarKeyModule_4 |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING | 180 | 950 | Needs JSON-LD | CarKeyModule_5 |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING | 606 | 1006 | Needs JSON-LD | CarKeyModule_6 |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING | 421 | 950 | Needs JSON-LD | CarKeyModule_7 |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING | 336 | 950 | Needs JSON-LD | CarKeyModule_8 |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING | 79 | 950 | Needs JSON-LD | CarKeyModule_9 |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING | 1201 | 1401 | Needs JSON-LD | CarKeyModule_10 |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING | 181 | 950 | Needs JSON-LD | CarKeyModule_11 |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING | 167 | 950 | Needs JSON-LD | CarKeyModule_12 |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING | 208 | 950 | Needs JSON-LD | CarKeyModule_13 |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING | 690 | 1090 | Needs JSON-LD | ServiceWidget_14 |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING | 186 | 950 | Needs JSON-LD | ServiceWidget_15 |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING | 1631 | 1831 | Needs JSON-LD | ServiceWidget_16 |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING | 148 | 950 | Needs JSON-LD | ServiceWidget_17 |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING | 1011 | 1211 | Needs JSON-LD | ServiceWidget_18 |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING | 121 | 950 | Needs JSON-LD | ServiceWidget_19 |
+| / | src/app/(site)/page.tsx | PENDING | 382 | 950 | Needs JSON-LD | ServiceWidget_20 |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING | 149 | 950 | Needs JSON-LD | GuideFilterModule_21 |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING | 93 | 950 | Needs JSON-LD | GuideFilterModule_22 |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING | 371 | 950 | Needs JSON-LD | LegalAccordionModule_23 |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING | 188 | 950 | Needs JSON-LD | LegalAccordionModule_24 |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING | 633 | 1033 | Needs JSON-LD | LegalAccordionModule_25 |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING | 201 | 950 | Needs JSON-LD | LegalAccordionModule_26 |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING | 300 | 950 | Needs JSON-LD | LegalAccordionModule_27 |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING | 327 | 950 | Needs JSON-LD | LegalAccordionModule_28 |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING | 201 | 950 | Needs JSON-LD | ServiceWidget_29 |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING | 1217 | 1417 | Needs JSON-LD | ServiceWidget_30 |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING | 366 | 950 | Needs JSON-LD | ServiceWidget_31 |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING | 246 | 950 | Needs JSON-LD | ServiceWidget_32 |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING | 98 | 950 | Needs JSON-LD | ServiceWidget_33 |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING | 1052 | 1252 | Needs JSON-LD | ServiceWidget_34 |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING | 67 | 950 | Needs JSON-LD | ServiceWidget_35 |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING | 169 | 950 | Needs JSON-LD | ServiceWidget_36 |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING | 1086 | 1286 | Needs JSON-LD | ServiceWidget_37 |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING | 44 | 950 | Needs JSON-LD | ServiceWidget_38 |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING | 374 | 950 | Needs JSON-LD | ServiceWidget_39 |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING | 293 | 950 | Needs JSON-LD | ServiceWidget_40 |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING | 452 | 950 | Needs JSON-LD | ServiceWidget_41 |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING | 145 | 950 | Needs JSON-LD | ServiceWidget_42 |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING | 147 | 950 | Needs JSON-LD | ServiceWidget_43 |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING | 95 | 950 | Needs JSON-LD | ServiceWidget_44 |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING | 191 | 950 | Needs JSON-LD | ServiceWidget_45 |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING | 1102 | 1302 | Needs JSON-LD | ServiceWidget_46 |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING | 142 | 950 | Needs JSON-LD | ServiceWidget_47 |

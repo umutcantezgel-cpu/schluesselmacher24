@@ -1,0 +1,1113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-03T17:27:21.351Z",
+  "total_existing_routes": 48,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Tiefgehende FAQ und Expertenwissen zu /artikel/[slug]",
+        "Vergleichstabellen aktueller Schließsysteme",
+        "Interaktives Glossar für Sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "ARTICLE_FILTER",
+        "component_name": "GuideFilterModule_0",
+        "target_file": "components/interactive/guidefiltermodule_0.tsx",
+        "action_file": "actions/guidefiltermodule_0-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Tiefgehende FAQ und Expertenwissen zu /artikel",
+        "Vergleichstabellen aktueller Schließsysteme",
+        "Interaktives Glossar für Sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "ARTICLE_FILTER",
+        "component_name": "GuideFilterModule_1",
+        "target_file": "components/interactive/guidefiltermodule_1.tsx",
+        "action_file": "actions/guidefiltermodule_1-action.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_LIGHT",
+      "schema_entities": [
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des anfrage Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/anfrage",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_2",
+        "target_file": "components/interactive/carkeymodule_2.tsx",
+        "action_file": "actions/carkeymodule_2-action.ts"
+      },
+      "signature_interaction": "SUBGRID_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des fahrzeugoeffnung Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/fahrzeugoeffnung",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_3",
+        "target_file": "components/interactive/carkeymodule_3.tsx",
+        "action_file": "actions/carkeymodule_3-action.ts"
+      },
+      "signature_interaction": "SMOOTH_SCROLL_PARALLAX_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des funkschluessel Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/funkschluessel",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_4",
+        "target_file": "components/interactive/carkeymodule_4.tsx",
+        "action_file": "actions/carkeymodule_4-action.ts"
+      },
+      "signature_interaction": "KINETIC_TEXT_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des kopieren Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/kopieren",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/kopieren"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_5",
+        "target_file": "components/interactive/carkeymodule_5.tsx",
+        "action_file": "actions/carkeymodule_5-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1006,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des [model] Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/marken/[make]/[model]",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/marken/[make]/[model]"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_6",
+        "target_file": "components/interactive/carkeymodule_6.tsx",
+        "action_file": "actions/carkeymodule_6-action.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des [make] Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/marken/[make]",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/marken/[make]"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_7",
+        "target_file": "components/interactive/carkeymodule_7.tsx",
+        "action_file": "actions/carkeymodule_7-action.ts"
+      },
+      "signature_interaction": "SUBGRID_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des marken Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/marken",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/marken"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_8",
+        "target_file": "components/interactive/carkeymodule_8.tsx",
+        "action_file": "actions/carkeymodule_8-action.ts"
+      },
+      "signature_interaction": "SMOOTH_SCROLL_PARALLAX_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des nachmachen Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/nachmachen",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_9",
+        "target_file": "components/interactive/carkeymodule_9.tsx",
+        "action_file": "actions/carkeymodule_9-action.ts"
+      },
+      "signature_interaction": "KINETIC_TEXT_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 1401,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des autoschluessel Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_10",
+        "target_file": "components/interactive/carkeymodule_10.tsx",
+        "action_file": "actions/carkeymodule_10-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des programmieren Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/programmieren",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/programmieren"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_11",
+        "target_file": "components/interactive/carkeymodule_11.tsx",
+        "action_file": "actions/carkeymodule_11-action.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des schluesselbart-fraesen Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/schluesselbart-fraesen",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/schluesselbart-fraesen"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_12",
+        "target_file": "components/interactive/carkeymodule_12.tsx",
+        "action_file": "actions/carkeymodule_12-action.ts"
+      },
+      "signature_interaction": "SUBGRID_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Analyse des smart-key Prozesses",
+        "Spezifische Anforderungen für Fahrzeugsicherheit bei /autoschluessel/smart-key",
+        "Preisstrukturen und Vor-Ort-Service für /autoschluessel/smart-key"
+      ],
+      "interactive_module": {
+        "type": "CAR_KEY_CONFIGURATOR",
+        "component_name": "CarKeyModule_13",
+        "target_file": "components/interactive/carkeymodule_13.tsx",
+        "action_file": "actions/carkeymodule_13-action.ts"
+      },
+      "signature_interaction": "SMOOTH_SCROLL_PARALLAX_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1090,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /bestellung/[id]",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /bestellung/[id]"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_14",
+        "target_file": "components/interactive/servicewidget_14.tsx",
+        "action_file": "actions/servicewidget_14-action.ts"
+      },
+      "signature_interaction": "KINETIC_TEXT_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /elektronische-zutrittsloesungen/konfigurator",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /elektronische-zutrittsloesungen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_15",
+        "target_file": "components/interactive/servicewidget_15.tsx",
+        "action_file": "actions/servicewidget_15-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 1831,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /elektronische-zutrittsloesungen",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /elektronische-zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_16",
+        "target_file": "components/interactive/servicewidget_16.tsx",
+        "action_file": "actions/servicewidget_16-action.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /gleichschliessende-zylinder/konfigurator",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /gleichschliessende-zylinder/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_17",
+        "target_file": "components/interactive/servicewidget_17.tsx",
+        "action_file": "actions/servicewidget_17-action.ts"
+      },
+      "signature_interaction": "SUBGRID_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 1211,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /gleichschliessende-zylinder",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /gleichschliessende-zylinder"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_18",
+        "target_file": "components/interactive/servicewidget_18.tsx",
+        "action_file": "actions/servicewidget_18-action.ts"
+      },
+      "signature_interaction": "SMOOTH_SCROLL_PARALLAX_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /kasse",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /kasse"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_19",
+        "target_file": "components/interactive/servicewidget_19.tsx",
+        "action_file": "actions/servicewidget_19-action.ts"
+      },
+      "signature_interaction": "KINETIC_TEXT_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_20",
+        "target_file": "components/interactive/servicewidget_20.tsx",
+        "action_file": "actions/servicewidget_20-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Tiefgehende FAQ und Expertenwissen zu /ratgeber/[slug]",
+        "Vergleichstabellen aktueller Schließsysteme",
+        "Interaktives Glossar für Sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "ARTICLE_FILTER",
+        "component_name": "GuideFilterModule_21",
+        "target_file": "components/interactive/guidefiltermodule_21.tsx",
+        "action_file": "actions/guidefiltermodule_21-action.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_LIGHT",
+      "schema_entities": [
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Tiefgehende FAQ und Expertenwissen zu /ratgeber",
+        "Vergleichstabellen aktueller Schließsysteme",
+        "Interaktives Glossar für Sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "ARTICLE_FILTER",
+        "component_name": "GuideFilterModule_22",
+        "target_file": "components/interactive/guidefiltermodule_22.tsx",
+        "action_file": "actions/guidefiltermodule_22-action.ts"
+      },
+      "signature_interaction": "SUBGRID_REVEAL_LIGHT",
+      "schema_entities": [
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte juristische Erläuterungen für /rechtliches/agb",
+        "Prozessablauf-Diagramme für rechtliche Ansprüche",
+        "Einfache Checklisten für Verbraucher"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordionModule_23",
+        "target_file": "components/interactive/legalaccordionmodule_23.tsx",
+        "action_file": "actions/legalaccordionmodule_23-action.ts"
+      },
+      "signature_interaction": "SMOOTH_SCROLL_PARALLAX_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte juristische Erläuterungen für /rechtliches/cookie-einstellungen",
+        "Prozessablauf-Diagramme für rechtliche Ansprüche",
+        "Einfache Checklisten für Verbraucher"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordionModule_24",
+        "target_file": "components/interactive/legalaccordionmodule_24.tsx",
+        "action_file": "actions/legalaccordionmodule_24-action.ts"
+      },
+      "signature_interaction": "KINETIC_TEXT_REVEAL_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1033,
+      "content_expansion_topics": [
+        "Erweiterte juristische Erläuterungen für /rechtliches/datenschutz",
+        "Prozessablauf-Diagramme für rechtliche Ansprüche",
+        "Einfache Checklisten für Verbraucher"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordionModule_25",
+        "target_file": "components/interactive/legalaccordionmodule_25.tsx",
+        "action_file": "actions/legalaccordionmodule_25-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte juristische Erläuterungen für /rechtliches/impressum",
+        "Prozessablauf-Diagramme für rechtliche Ansprüche",
+        "Einfache Checklisten für Verbraucher"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordionModule_26",
+        "target_file": "components/interactive/legalaccordionmodule_26.tsx",
+        "action_file": "actions/legalaccordionmodule_26-action.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte juristische Erläuterungen für /rechtliches/versand-und-zahlung",
+        "Prozessablauf-Diagramme für rechtliche Ansprüche",
+        "Einfache Checklisten für Verbraucher"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordionModule_27",
+        "target_file": "components/interactive/legalaccordionmodule_27.tsx",
+        "action_file": "actions/legalaccordionmodule_27-action.ts"
+      },
+      "signature_interaction": "SUBGRID_REVEAL_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterte juristische Erläuterungen für /rechtliches/widerruf",
+        "Prozessablauf-Diagramme für rechtliche Ansprüche",
+        "Einfache Checklisten für Verbraucher"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordionModule_28",
+        "target_file": "components/interactive/legalaccordionmodule_28.tsx",
+        "action_file": "actions/legalaccordionmodule_28-action.ts"
+      },
+      "signature_interaction": "SMOOTH_SCROLL_PARALLAX_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schliessanlagen/konfigurator",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /schliessanlagen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_29",
+        "target_file": "components/interactive/servicewidget_29.tsx",
+        "action_file": "actions/servicewidget_29-action.ts"
+      },
+      "signature_interaction": "KINETIC_TEXT_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 1417,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schliessanlagen",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_30",
+        "target_file": "components/interactive/servicewidget_30.tsx",
+        "action_file": "actions/servicewidget_30-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schluessel-nach-code/[slug]",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /schluessel-nach-code/[slug]"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_31",
+        "target_file": "components/interactive/servicewidget_31.tsx",
+        "action_file": "actions/servicewidget_31-action.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schluessel-nach-code",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /schluessel-nach-code"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_32",
+        "target_file": "components/interactive/servicewidget_32.tsx",
+        "action_file": "actions/servicewidget_32-action.ts"
+      },
+      "signature_interaction": "SUBGRID_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schluessel-nach-vorlage/anfrage",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /schluessel-nach-vorlage/anfrage"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_33",
+        "target_file": "components/interactive/servicewidget_33.tsx",
+        "action_file": "actions/servicewidget_33-action.ts"
+      },
+      "signature_interaction": "SMOOTH_SCROLL_PARALLAX_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 1252,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schluessel-nach-vorlage",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /schluessel-nach-vorlage"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_34",
+        "target_file": "components/interactive/servicewidget_34.tsx",
+        "action_file": "actions/servicewidget_34-action.ts"
+      },
+      "signature_interaction": "KINETIC_TEXT_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /service-und-termin/anfrage",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /service-und-termin/anfrage"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_35",
+        "target_file": "components/interactive/servicewidget_35.tsx",
+        "action_file": "actions/servicewidget_35-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /service-und-termin/kontakt",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /service-und-termin/kontakt"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_36",
+        "target_file": "components/interactive/servicewidget_36.tsx",
+        "action_file": "actions/servicewidget_36-action.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 1286,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /service-und-termin",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /service-und-termin"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_37",
+        "target_file": "components/interactive/servicewidget_37.tsx",
+        "action_file": "actions/servicewidget_37-action.ts"
+      },
+      "signature_interaction": "SUBGRID_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /service-und-termin/terminstatus",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /service-und-termin/terminstatus"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_38",
+        "target_file": "components/interactive/servicewidget_38.tsx",
+        "action_file": "actions/servicewidget_38-action.ts"
+      },
+      "signature_interaction": "SMOOTH_SCROLL_PARALLAX_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /service-und-termin/vor-ort",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /service-und-termin/vor-ort"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_39",
+        "target_file": "components/interactive/servicewidget_39.tsx",
+        "action_file": "actions/servicewidget_39-action.ts"
+      },
+      "signature_interaction": "KINETIC_TEXT_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /sicherheitstechnik/[slug]",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /sicherheitstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_40",
+        "target_file": "components/interactive/servicewidget_40.tsx",
+        "action_file": "actions/servicewidget_40-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /sicherheitstechnik",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_41",
+        "target_file": "components/interactive/servicewidget_41.tsx",
+        "action_file": "actions/servicewidget_41-action.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /sicherheitstechnik/sicherheitscheck",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /sicherheitstechnik/sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_42",
+        "target_file": "components/interactive/servicewidget_42.tsx",
+        "action_file": "actions/servicewidget_42-action.ts"
+      },
+      "signature_interaction": "SUBGRID_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /standorte/[city]",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /standorte/[city]"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_43",
+        "target_file": "components/interactive/servicewidget_43.tsx",
+        "action_file": "actions/servicewidget_43-action.ts"
+      },
+      "signature_interaction": "SMOOTH_SCROLL_PARALLAX_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /standorte",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /standorte"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_44",
+        "target_file": "components/interactive/servicewidget_44.tsx",
+        "action_file": "actions/servicewidget_44-action.ts"
+      },
+      "signature_interaction": "KINETIC_TEXT_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /tuer-und-schliesstechnik/[slug]",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /tuer-und-schliesstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_45",
+        "target_file": "components/interactive/servicewidget_45.tsx",
+        "action_file": "actions/servicewidget_45-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 1302,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /tuer-und-schliesstechnik",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /tuer-und-schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_46",
+        "target_file": "components/interactive/servicewidget_46.tsx",
+        "action_file": "actions/servicewidget_46-action.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /warenkorb",
+        "Methodischer Ansatz und Sicherheitsstandards",
+        "Detaillierte Fach-FAQ für /warenkorb"
+      ],
+      "interactive_module": {
+        "type": "GENERAL_INTERACTIVE_WIDGET",
+        "component_name": "ServiceWidget_47",
+        "target_file": "components/interactive/servicewidget_47.tsx",
+        "action_file": "actions/servicewidget_47-action.ts"
+      },
+      "signature_interaction": "SUBGRID_REVEAL_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
