@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Interaktive Module
+- **Enterprise ROI Calculator**: Interaktives React 19 Tool mit Server Actions und optimistic Updates unter `/service-und-termin`.
