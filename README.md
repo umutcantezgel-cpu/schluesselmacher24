@@ -43,3 +43,11 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## System Architecture Blueprint
+
+- The application runs on Next.js 16+ App Router, React 19.2+, and strictly typed TypeScript 5.5+.
+- Tailwind CSS v4 styling utilizing OKLCH color space with strict adherence to Swiss High-End Light Mode Design.
+- Transformation plans are synchronized via `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`.
+- All future iterations and optimizations strictly adhere to the ZERO-NEW-ROUTES INVARIANT.
