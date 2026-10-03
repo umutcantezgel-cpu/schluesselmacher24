@@ -15,15 +15,21 @@ import { getPageContent, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { InteractiveSecurityMatrix } from '@/components/sicherheitstechnik/interactive-security-matrix';
 
 const ROUTE = 'sicherheitstechnik';
 
-export async function generateMetadata(): Promise<Metadata> {
+interface Props {
+  params: Promise<Record<string, never>>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  await searchParams;
   const page = await getPageContent(ROUTE);
   return {
     title: page?.seo.title ?? 'Sicherheitstechnik',
@@ -34,59 +40,35 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-/** Symbole je Bereich — rein dekorativ, die Inhalte kommen aus der Datenschicht. */
-const SERVICE_ICONS: Record<string, typeof ShieldCheck> = {
+
+
+const SERVICE_ICONS: Record<string, React.ElementType> = {
   videoueberwachung: Camera,
-  alarmtechnik: Siren,
-  aussenhautsicherung: ShieldCheck,
-  'mechanischer-schutz': Lock,
-  'smarte-funktionen': Smartphone,
-  'panik-und-alarmtaster': BellRing,
-  'kombinierte-konzepte': Layers,
+  alarmanlagen: Siren,
+  zutrittskontrolle: Smartphone,
+  gebaeudehuelle: Layers,
+  gelaendeabsicherung: Lock,
+  'smarte-gebaeude': BellRing,
 };
 
-/** Der Grundsatz, nach dem wir die Bereiche zusammenstellen. */
-const PRINCIPLE = [
-  {
-    term: 'Mechanik hält auf',
-    body:
-      'Zylinder, Schlösser, Beschläge und Zusatzsicherungen kosten Zeit und Kraft. Ohne diesen '
-      + 'Grundschutz meldet jede Elektronik nur, dass bereits etwas passiert ist.',
-    href: '/tuer-und-schliesstechnik',
-    linkLabel: 'Zur Tür- und Schließtechnik',
-  },
-  {
-    term: 'Meldetechnik erkennt',
-    body:
-      'Melder, Kontakte und Kameras erkennen, dass an einer Stelle etwas geschieht — an der Tür, '
-      + 'am Fenster, an der Scheibe oder im Raum.',
-    href: `/${ROUTE}/alarmtechnik`,
-    linkLabel: 'Zur Alarmtechnik',
-  },
-  {
-    term: 'Alarmierung informiert',
-    body:
-      'Signalgeber und Benachrichtigungen bringen die Information dorthin, wo jemand darauf '
-      + 'reagieren kann. Der Weg wird vorab festgelegt.',
-    href: `/${ROUTE}/panik-und-alarmtaster`,
-    linkLabel: 'Zu Panik- und Alarmtastern',
-  },
-];
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  void (await params);
+  void (await searchParams);
 
-export default async function SicherheitstechnikPage() {
-  const [page, services] = await Promise.all([
-    getPageContent(ROUTE),
-    getServicePages(ROUTE),
-  ]);
+  const page = await getPageContent(ROUTE);
+  const services = await getServicePages(ROUTE);
 
-  const process = PROCESS_LABELS['gefuehrte-anfrage'];
+  const process = {
+    label: (PROCESS_LABELS as unknown as Record<string, { label: string }>)["sicherheitscheck"]?.label || "Bestandsaufnahme & Umsetzung",
+    hint: 'Ablauf: Bestandsaufnahme → Konzept → Installation → Übergabe',
+  };
 
   return (
     <>
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
-          name: page?.headline ?? 'Sicherheitstechnik',
+          name: page?.seo.title ?? 'Sicherheitstechnik',
           description: page?.seo.description,
           crumbs: [{ href: `/${ROUTE}`, label: 'Sicherheitstechnik' }],
         })}
@@ -94,8 +76,8 @@ export default async function SicherheitstechnikPage() {
 
       <PageHeader
         eyebrow="Leistungsbereich"
-        title={page?.headline ?? 'Sicherheitstechnik'}
-        lead={page?.subline}
+        title={page?.seo.title ?? 'Umfassende Sicherheitstechnik'}
+        lead={page?.seo.description ?? 'Ganzheitliche Absicherung für private und gewerbliche Objekte.'}
         crumbs={[{ href: `/${ROUTE}`, label: 'Sicherheitstechnik' }]}
         actions={
           <ButtonLink href={`/${ROUTE}/sicherheitscheck`} size="lg">
@@ -105,55 +87,72 @@ export default async function SicherheitstechnikPage() {
         }
       />
 
-      {/* Grundsatz */}
+      {/* Fundierte Fachkompetenz und Einordnung */}
       <Section tight>
         <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-12">
           <div>
             <SectionHeading
-              eyebrow="Einordnung"
-              title="Mechanik hält auf, Meldetechnik erkennt, Alarmierung informiert"
-              lead={page?.intro}
+              eyebrow="Architektur der Sicherheit"
+              title="Ein ganzheitliches Sicherheitskonzept folgt klaren Prinzipien"
+              lead="Sicherheit ist kein Zustand, der durch den Kauf einzelner Komponenten erreicht wird. Es ist ein prozessuales Zusammenspiel aus physischer Barriere, intelligenter Meldetechnik und organisatorischen Abläufen."
             />
 
-            <dl className="mt-6 space-y-4">
-              {PRINCIPLE.map((item) => (
-                <div key={item.term} className="rounded-lg border border-border bg-surface p-5">
-                  <dt className="text-[15px] font-bold text-foreground">{item.term}</dt>
-                  <dd className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                    {item.body}
-                    <Link
-                      href={item.href}
-                      className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-                    >
-                      {item.linkLabel}
-                      <ArrowRight size={15} aria-hidden />
-                    </Link>
-                  </dd>
-                </div>
-              ))}
+            <div className="mt-8 space-y-6 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              <p>
+                Der Grundpfeiler jedes soliden Sicherheitskonzepts ist die mechanische Absicherung. Eine Einbruchmeldeanlage (Alarmanlage) verhindert keinen Einbruch – sie meldet ihn lediglich. Ohne einen massiven physischen Widerstand, der den Täter aufhält (Türen, Fenster, Beschläge, Schließzylinder), verpufft der Effekt elektronischer Systeme. Erst wenn die Mechanik den Eindringling signifikant verzögert, kann die Meldetechnik ihren Zweck erfüllen: Die Zeitspanne bis zum Eintreffen von Interventionskräften (z. B. Polizei oder Wachschutz) effektiv zu überbrücken.
+              </p>
+              <p>
+                Darauf aufbauend integrieren wir elektronische Zutrittslösungen und Videoüberwachung. Moderne Zutrittskontrollen lösen das klassische Schlüsselmanagement ab, indem sie temporäre Berechtigungen, Protokollierungen und den sofortigen Entzug von Zugangsrechten bei Schlüsselverlust ermöglichen. Videoüberwachung dient als forensisches Mittel zur Täteridentifikation und als starkes psychologisches Präventionsinstrument.
+              </p>
+              <p>
+                Unsere Methodik basiert auf einer rigorosen Risiko- und Schwachstellenanalyse vor Ort. Wir betrachten Ihr Objekt nicht isoliert, sondern bewerten Umgebungsfaktoren, Täterprofile und bauliche Gegebenheiten. Das Ergebnis ist eine maßgeschneiderte Sicherheitsarchitektur, die den strengen Richtlinien des VdS und den DIN-Normen (insbesondere DIN EN 1627 für Einbruchhemmung) entspricht.
+              </p>
+            </div>
+
+            <dl className="mt-8 space-y-4">
+              <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-5">
+                <dt className="flex items-center gap-2 text-[15px] font-bold text-[oklch(0.16_0.02_260)]">
+                  <Lock size={18} className="text-[oklch(0.52_0.24_260)]" aria-hidden />
+                  Mechanischer Widerstand
+                </dt>
+                <dd className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  Verstärkung der Gebäudehülle durch zertifizierte Schließzylinder, Schutzbeschläge und Mehrfachverriegelungen. Ziel ist die maximale Verzögerung des Eindringens.
+                </dd>
+              </div>
+              <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-5">
+                <dt className="flex items-center gap-2 text-[15px] font-bold text-[oklch(0.16_0.02_260)]">
+                  <BellRing size={18} className="text-[oklch(0.52_0.24_260)]" aria-hidden />
+                  Elektronische Detektion
+                </dt>
+                <dd className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  Frühzeitige Erkennung von Manipulationsversuchen durch Außenhautüberwachung (Magnetkontakte) und Raumüberwachung (Bewegungsmelder), gekoppelt an Alarmierungsketten.
+                </dd>
+              </div>
             </dl>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 lg:sticky lg:top-8">
             <ImagePlaceholder
               slot={{
-                motif: 'Objektfoto: Hauseingang mit Außenkamera, Türkontakt und Sicherheitsbeschlag',
+                motif: 'Objektfoto: Hauseingang mit IP-Außenkamera, verdecktem Türkontakt und VdS-zertifiziertem Sicherheitsbeschlag',
                 ratio: '4/3',
-                note: 'Eigene Aufnahme aus einem abgeschlossenen Projekt. Kein Stockfoto.',
+                note: 'Reales Projektbeispiel zur Illustration integrierter Sicherheit.',
               }}
             />
 
-            <div className="rounded-lg border border-border bg-surface-muted p-5">
-              <p className="text-[13px] font-bold uppercase tracking-wider text-foreground-subtle">
+            <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-5 shadow-[0_4px_12px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <p className="text-[13px] font-bold uppercase tracking-wider text-[oklch(0.52_0.015_260)]">
                 Ablauf in diesem Bereich
               </p>
-              <p className="mt-2 text-[15px] font-bold text-foreground">{process.label}</p>
-              <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
+              <p className="mt-2 text-[15px] font-bold text-[oklch(0.16_0.02_260)]">
+                {process.label}
+              </p>
+              <p className="mt-1 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                 {process.hint}
               </p>
               <div className="mt-5">
-                <ButtonLink href={`/${ROUTE}/sicherheitscheck`} variant="outline">
-                  Bestandsaufnahme starten
+                <ButtonLink href={`/${ROUTE}/sicherheitscheck`} variant="outline" className="w-full justify-center">
+                  Sicherheitscheck starten
                 </ButtonLink>
               </div>
             </div>
@@ -161,142 +160,173 @@ export default async function SicherheitstechnikPage() {
         </div>
       </Section>
 
-      {/* Bereiche */}
+      {/* Interactive Matrix Section */}
+      <Section className="py-16 md:py-24">
+        <div className="mx-auto max-w-4xl">
+          <SectionHeading
+            eyebrow="Evaluation"
+            title="Ermitteln Sie Ihren Schutzbedarf"
+            lead="Nutzen Sie unsere interaktive Matrix, um eine erste Einschätzung Ihres aktuellen Sicherheitsniveaus zu erhalten. Das Tool simuliert potenzielle Schwachstellen und generiert erste Empfehlungen."
+            align="center"
+          />
+          <div className="mt-12">
+            <InteractiveSecurityMatrix />
+          </div>
+        </div>
+      </Section>
+
+      {/* Leistungsmatrix / Vergleich */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Klassifizierung"
+          title="Schutzklassen und Ausstattungsstufen im Vergleich"
+          lead="Unsere Konzepte orientieren sich an den etablierten DIN-Normen und VdS-Klassen. Die folgende Matrix veranschaulicht die Skalierung der Sicherheitsmaßnahmen vom Basisschutz bis zur Hochsicherheit."
+        />
+
+        <div className="mt-8 overflow-x-auto rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-white shadow-sm">
+          <table className="w-full text-left text-[14px] text-[oklch(0.32_0.02_260)]">
+            <thead className="bg-[oklch(0.968_0.004_260)] text-[13px] font-bold uppercase tracking-wider text-[oklch(0.16_0.02_260)]">
+              <tr>
+                <th className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Schutzstufe</th>
+                <th className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Mechanik (Türen/Fenster)</th>
+                <th className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Elektronik & Detektion</th>
+                <th className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Zutrittsverwaltung</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)]">
+              <tr>
+                <td className="p-4 font-semibold text-[oklch(0.16_0.02_260)]">Basis (RC2 Äquivalent)</td>
+                <td className="p-4">Pilzkopfverriegelungen, Profilzylinder mit Bohr- und Ziehschutz</td>
+                <td className="p-4">Lokale Rauchmelder, Basis-Alarmsystem (optisch/akustisch)</td>
+                <td className="p-4">Mechanische Einzelschließung mit Sicherungskarte</td>
+              </tr>
+              <tr>
+                <td className="p-4 font-semibold text-[oklch(0.16_0.02_260)]">Erweitert (RC3 Äquivalent)</td>
+                <td className="p-4">Mehrfachverriegelungen, einbruchhemmende Verglasung, Querriegel</td>
+                <td className="p-4">Aufgeschaltete EMA (Einbruchmeldeanlage), Außenhautüberwachung</td>
+                <td className="p-4">Elektronische Schließzylinder (Standalone), Transponder</td>
+              </tr>
+              <tr>
+                <td className="p-4 font-semibold text-[oklch(0.16_0.02_260)]">Hochsicherheit (RC4+)</td>
+                <td className="p-4">Massive Stahltüren, durchwurfhemmende Verglasung (P6B)</td>
+                <td className="p-4">Video-Verifikation (IP), VdS-zertifizierte EMA, Sabotageschutz</td>
+                <td className="p-4">Vernetzte Zutrittskontrolle, biometrische Erfassung, Protokollierung</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      {/* Fachspezifischer FAQ */}
+      <Section>
+        <SectionHeading
+          eyebrow="Häufige Fragen"
+          title="Technische & Organisatorische Expertise"
+          lead="Wir beantworten die wichtigsten Fragen zur architektonischen Planung von Sicherheitssystemen."
+        />
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-[15px] font-bold text-[oklch(0.16_0.02_260)]">Ersetzt eine Kamera die Alarmanlage?</h4>
+            <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Nein. Eine Kamera dient primär der Verifikation und der nachträglichen Aufklärung. Sie meldet im Regelfall nicht aktiv einen Einbruch an eine Notruf- und Serviceleitstelle (NSL). Die Alarmanlage (EMA) ist für die verlässliche Detektion und Alarmierung zuständig, die Videotechnik liefert das visuelle Beweismaterial.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-[15px] font-bold text-[oklch(0.16_0.02_260)]">Was bedeutet Außenhautüberwachung?</h4>
+            <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Bei der Außenhautüberwachung werden alle Fenster und Türen der Gebäudehülle mit Magnetkontakten oder Glasbruchmeldern ausgestattet. Der große Vorteil: Die Alarmanlage kann scharfgeschaltet werden, während sich Personen im Gebäude aufhalten (sog. Internschärfung).
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-[15px] font-bold text-[oklch(0.16_0.02_260)]">Wie sicher sind smarte (elektronische) Türschlösser?</h4>
+            <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Professionelle Systeme nutzen AES-128 oder AES-256 Verschlüsselung für die Funkübertragung. Entscheidend ist jedoch, dass die mechanische Basis – der Profilzylinder, in dem der elektronische Knauf sitzt – über einen zertifizierten Bohr- und Ziehschutz verfügt.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-[15px] font-bold text-[oklch(0.16_0.02_260)]">Wann ist eine Aufschaltung auf einen Wachdienst sinnvoll?</h4>
+            <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Besonders bei gewerblichen Objekten oder abgelegenen Privatgebäuden. Eine reine lokale Alarmierung (Sirene) wird heute oft ignoriert. Eine Aufschaltung stellt sicher, dass bei einem Alarm (oder auch bei technischen Störungen wie Sabotage oder Stromausfall) sofort ein definierter Interventionsplan abläuft.
+            </p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 md:col-span-2">
+            <h4 className="text-[15px] font-bold text-[oklch(0.16_0.02_260)]">Was muss ich rechtlich bei der Videoüberwachung beachten?</h4>
+            <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Der Betrieb von Kameras unterliegt strengen Datenschutzvorgaben (DSGVO). Es dürfen grundsätzlich nur das eigene Grundstück erfasst werden – öffentliche Bereiche (Gehwege) oder Nachbargrundstücke sind tabu. Zudem besteht eine Hinweispflicht (Beschilderung) und es müssen Löschfristen für die Aufzeichnungen definiert und eingehalten werden. Bei gewerblicher Nutzung ist zudem die Mitbestimmung des Betriebsrats zu beachten.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Bereiche und Module */}
       <Section tone="muted">
         <SectionHeading
           eyebrow="Bereiche"
-          title="Sieben Bereiche, die zusammen gedacht werden"
+          title="Modulare Systeme, die nahtlos ineinandergreifen"
           lead="Einzeln betrachtet bleibt jeder Bereich Stückwerk. Welche Kombination zu Ihrem Objekt passt, klären wir in der Bestandsaufnahme."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => {
-            const Icon = SERVICE_ICONS[service.slug] ?? ShieldCheck;
-            return (
-              <li key={service.id}>
-                <Link
-                  href={`/${ROUTE}/${service.slug}`}
-                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
-                >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary">
-                    <Icon size={19} aria-hidden />
-                  </span>
-                  <span className="mt-4 block text-[15px] font-bold text-foreground group-hover:text-primary">
-                    {service.title}
-                  </span>
-                  <span className="mt-1.5 block flex-1 text-[13px] leading-relaxed text-foreground-muted">
-                    {service.summary}
-                  </span>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-[12px] font-semibold text-foreground-subtle">
-                    Zum Bereich
-                    <ArrowRight
-                      size={13}
-                      aria-hidden
-                      className="transition-transform group-hover:translate-x-0.5"
-                    />
-                  </span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        {services.length > 0 && (
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => {
+              const Icon = SERVICE_ICONS[service.slug] ?? ShieldCheck;
+              return (
+                <li key={service.id}>
+                  <Link
+                    href={`/${ROUTE}/${service.slug}`}
+                    className="group flex h-full flex-col rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-white p-5 transition-colors hover:border-[oklch(0.52_0.24_260)] shadow-[0_2px_8px_0_oklch(0.16_0.02_260/0.02)] hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.06)]"
+                  >
+                    <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[oklch(0.968_0.004_260)] text-[oklch(0.52_0.24_260)]">
+                      <Icon size={19} aria-hidden />
+                    </span>
+                    <span className="mt-4 block text-[15px] font-bold text-[oklch(0.16_0.02_260)] group-hover:text-[oklch(0.52_0.24_260)] transition-colors">
+                      {service.title}
+                    </span>
+                    <span className="mt-1.5 block flex-1 text-[13px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                      {service.summary}
+                    </span>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[oklch(0.52_0.015_260)]">
+                      Details ansehen
+                      <ArrowRight
+                        size={13}
+                        aria-hidden
+                        className="transition-transform group-hover:translate-x-0.5"
+                      />
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </Section>
 
-      {/* Recht und Verantwortung */}
-      <Section id="recht-und-verantwortung">
-        <SectionHeading
-          eyebrow="Recht und Verantwortung"
-          title="Was Sie beim Betrieb von Video, Audio und Protokollen beachten müssen"
-          lead="Diese Punkte klären wir vor der Planung, damit die Technik so aufgebaut wird, wie Sie sie später auch betreiben dürfen."
-        />
-
+      {/* Recht und Verantwortung Alert */}
+      <Section id="recht-und-verantwortung" tight>
         <Alert
           tone="legal"
           title="Verantwortlich für die Nutzung ist die Betreiberin oder der Betreiber der Anlage"
-          className="mt-8"
+          className="mt-4 border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] text-[oklch(0.16_0.02_260)]"
         >
-          <ul className="space-y-2">
+          <ul className="space-y-2 text-[14px] leading-relaxed">
             <li>
-              Wer eine Anlage mit Video-, Audio- oder Protokollfunktion betreibt, verantwortet deren
-              rechtmäßige Nutzung — also Zweck, Umfang, Speicherdauer, Zugriff und Kennzeichnung.
-              Wir liefern und montieren die Technik und beraten technisch; eine Rechtsberatung ist
-              das ausdrücklich nicht.
+              Wer eine Anlage mit Video-, Audio- oder Protokollfunktion betreibt, verantwortet deren rechtmäßige Nutzung — also Zweck, Umfang, Speicherdauer, Zugriff und Kennzeichnung. Wir liefern und montieren die Technik und beraten technisch; eine Rechtsberatung ist das ausdrücklich nicht.
             </li>
             <li>
-              Kameras dürfen öffentliche Flächen wie Gehwege und Straßen sowie Nachbargrundstücke
-              nicht erfassen. Wir planen Aufstellort, Blickfeld und Begrenzung des Bildausschnitts
-              entsprechend und halten das Ergebnis bei der Übergabe fest.
-            </li>
-            <li>
-              Verdeckte Audioüberwachung bieten wir nicht als Standardprodukt an. Mikrofone und
-              Aufzeichnung von Ton sind im Regelfall abgeschaltet.
-            </li>
-            <li>
-              Gegensprech- und Alarmfunktionen richten wir nur für zulässige Einsatzzwecke ein,
-              etwa für die Kommunikation an der eigenen Tür oder für eine vereinbarte Alarmierung.
-            </li>
-            <li>
-              Protokollfunktionen — etwa Zutritts-, Ereignis- oder Bedienprotokolle — erfassen
-              personenbezogene Daten. Zweck, Speicherdauer und Zugriffsberechtigung legen Sie vorab
-              fest; im Beschäftigtenkontext ist zusätzlich die betriebliche Mitbestimmung zu
-              beachten.
+              Kameras dürfen öffentliche Flächen wie Gehwege und Straßen sowie Nachbargrundstücke nicht erfassen. Wir planen Aufstellort, Blickfeld und Begrenzung des Bildausschnitts entsprechend.
             </li>
           </ul>
 
           <p className="mt-3">
             <Link
               href="/rechtliches/datenschutz"
-              className="font-semibold text-primary hover:underline"
+              className="text-[14px] font-semibold text-[oklch(0.52_0.24_260)] hover:underline"
             >
               Hinweise zum Datenschutz
             </Link>
           </p>
         </Alert>
-      </Section>
-
-      {/* Verbindung zur Mechanik */}
-      <Section tone="muted" tight>
-        <div className="grid gap-4 md:grid-cols-2">
-          <Card className="h-full">
-            <CardBody className="flex h-full flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
-                Grundschutz zuerst
-              </p>
-              <p className="mt-2 text-lg font-bold text-foreground">Tür- und Schließtechnik</p>
-              <p className="mt-2 flex-1 text-[14px] leading-relaxed text-foreground-muted">
-                Zylinder, Schlösser, Beschläge und Zusatzsicherungen sind die Grundlage. Erst darauf
-                setzen wir Melde- und Alarmtechnik auf.
-              </p>
-              <Link
-                href="/tuer-und-schliesstechnik"
-                className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-              >
-                Zur Tür- und Schließtechnik
-                <ArrowRight size={15} aria-hidden />
-              </Link>
-            </CardBody>
-          </Card>
-
-          <Card className="h-full">
-            <CardBody className="flex h-full flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
-                Bestandsaufnahme
-              </p>
-              <p className="mt-2 text-lg font-bold text-foreground">Sicherheitscheck</p>
-              <p className="mt-2 flex-1 text-[14px] leading-relaxed text-foreground-muted">
-                Zehn Schritte zu Objekt, Zugängen, vorhandener Technik, Schwerpunkten und
-                Unterlagen. Ihr Zwischenstand bleibt erhalten.
-              </p>
-              <Link
-                href={`/${ROUTE}/sicherheitscheck`}
-                className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-              >
-                Sicherheitscheck starten
-                <ArrowRight size={15} aria-hidden />
-              </Link>
-            </CardBody>
-          </Card>
-        </div>
       </Section>
 
       {/* Weiterführende Seiten */}
@@ -308,7 +338,7 @@ export default async function SicherheitstechnikPage() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-border bg-surface px-4 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-white px-4 text-[14px] font-semibold text-[oklch(0.16_0.02_260)] transition-colors hover:border-[oklch(0.52_0.24_260)] hover:text-[oklch(0.52_0.24_260)]"
                 >
                   {link.label}
                   <ArrowRight size={15} aria-hidden />

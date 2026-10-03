@@ -1,0 +1,21 @@
+{
+  "timestamp": "2024-10-24T12:00:00Z",
+  "top_ideas": [
+    {
+      "idea_id": "IDEA-001",
+      "title": "Interactive Security Audit Matrix",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/components/sicherheitstechnik/interactive-security-matrix.tsx",
+      "specification": "A comprehensive interactive matrix allowing users to assess their current security posture against industry standards. Features dynamic feedback and personalized recommendations.",
+      "status": "COMPLETED_BY_BUILDER"
+    },
+    {
+      "idea_id": "IDEA-002",
+      "title": "Smart Lock Savings Calculator",
+      "target_existing_route": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_component_file": "src/components/elektronische-zutrittsloesungen/smart-lock-savings-calculator.tsx",
+      "specification": "An interactive calculator demonstrating the long-term ROI of smart locks over traditional systems, factoring in key replacement costs, access management time, and enhanced security.",
+      "status": "PENDING"
+    }
+  ]
+}
