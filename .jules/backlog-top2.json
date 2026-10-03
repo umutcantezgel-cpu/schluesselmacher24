@@ -1,0 +1,12 @@
+{
+  "ideas": [
+    {
+      "idea_id": "EXP-001",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/calculator/service-budget-calculator.tsx",
+      "title": "Service Budget Calculator Integration",
+      "specification": "Add a dynamic service budget calculator with Next.js 19 useActionState and useOptimistic to the main landing page, expanding text to > 800 words.",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}
