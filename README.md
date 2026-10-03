@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+Update README
+
+
+## Architekturziele (Auditor-Architect v1)
+Die Codebasis wird konsequent auf die "Swiss Light Mode Marken-DNA" (OKLCH, Tailwind v4, Subgrid) und Next.js 16 Server Components mit React 19 Actions (useActionState) migriert. Neue Routen sind strikt untersagt (Zero-New-Routes-Invariante).
