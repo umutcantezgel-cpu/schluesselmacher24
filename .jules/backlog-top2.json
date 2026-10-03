@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-03T10:38:20.916Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten (Fokus auf Conversion & Awwwards-Kinetik in der Schweizer Light Mode DNA).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_054",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/components/calculator/security-score-calculator.tsx",
+      "title": "Interaktiver Sicherheits-Score-Kalkulator für Eigenheime",
+      "specification": "Entwicklung eines reaktiven Tools mit React 19 Server Actions und useOptimistic. Nutzer bewerten ihre Hausabsicherung, erhalten einen Score und Empfehlungen. Binde das Tool in die bestehende Sicherheitstechnik-Seite ein und erweitere den umgebenden Fach-Text auf >800 Wörter.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_002",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
