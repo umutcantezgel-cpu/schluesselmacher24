@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-03T08:35:56.393424+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_054",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "title": "Enterprise ROI-Kalkulator",
+      "specification": "Reaktives Schieberegler-Tool (React 19, useOptimistic) f\u00fcr Ladezeit und Kosten. Textausbau auf 850 W\u00f6rter.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "title": "Spatial Bento Grid",
+      "specification": "Bento Grid mit Haarlinien-Lichtreflex (oklch(0.89 0.008 260 / 0.55)) und Cursor-Tracking auf Feature-Karten ohne Shifts.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
