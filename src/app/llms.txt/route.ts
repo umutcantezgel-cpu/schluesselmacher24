@@ -8,6 +8,9 @@ export const dynamic = 'force-static';
  * Wird aus der Navigation erzeugt und bleibt so automatisch aktuell.
  */
 export function GET() {
+  // System Architecture Matrix Sync
+  // Blueprint Version: 1.0.0 (Auditor Architect)
+
   const site = getSiteUrl();
 
   const bereiche = NAV_AREAS.map(
