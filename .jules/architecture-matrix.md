@@ -1,0 +1,52 @@
+# Architektur-Matrix & Transformations-Audit
+
+| Route | Datei | Ist-Wortanzahl | Soll-Wortanzahl | Geplante Komponente | CWV / Schema Status |
+|---|---|---|---|---|---|
+| `/artikel/[slug]` | `src/app/(site)/artikel/[slug]/page.tsx` | ~935 | 1135 | TopicDeepDive | Defizit / Geplant |
+| `/artikel` | `src/app/(site)/artikel/page.tsx` | ~657 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/autoschluessel/anfrage` | `src/app/(site)/autoschluessel/anfrage/page.tsx` | ~519 | 950 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel/fahrzeugoeffnung` | `src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx` | ~1122 | 1322 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel/funkschluessel` | `src/app/(site)/autoschluessel/funkschluessel/page.tsx` | ~1092 | 1292 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel/kopieren` | `src/app/(site)/autoschluessel/kopieren/page.tsx` | ~1134 | 1334 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel/marken/[make]/[model]` | `src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx` | ~1224 | 1424 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel/marken/[make]` | `src/app/(site)/autoschluessel/marken/[make]/page.tsx` | ~980 | 1180 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel/marken` | `src/app/(site)/autoschluessel/marken/page.tsx` | ~719 | 950 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel/nachmachen` | `src/app/(site)/autoschluessel/nachmachen/page.tsx` | ~1190 | 1390 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel` | `src/app/(site)/autoschluessel/page.tsx` | ~2003 | 2203 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel/programmieren` | `src/app/(site)/autoschluessel/programmieren/page.tsx` | ~1223 | 1423 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel/schluesselbart-fraesen` | `src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx` | ~1043 | 1243 | CarKeySelector | Defizit / Geplant |
+| `/autoschluessel/smart-key` | `src/app/(site)/autoschluessel/smart-key/page.tsx` | ~1208 | 1408 | CarKeySelector | Defizit / Geplant |
+| `/bestellung/[id]` | `src/app/(site)/bestellung/[id]/page.tsx` | ~1300 | 1500 | TopicDeepDive | Defizit / Geplant |
+| `/elektronische-zutrittsloesungen/konfigurator` | `src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx` | ~383 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/elektronische-zutrittsloesungen` | `src/app/(site)/elektronische-zutrittsloesungen/page.tsx` | ~2481 | 2681 | TopicDeepDive | Defizit / Geplant |
+| `/gleichschliessende-zylinder/konfigurator` | `src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx` | ~311 | 950 | CylinderMeasurementTool | Defizit / Geplant |
+| `/gleichschliessende-zylinder` | `src/app/(site)/gleichschliessende-zylinder/page.tsx` | ~2082 | 2282 | CylinderMeasurementTool | Defizit / Geplant |
+| `/kasse` | `src/app/(site)/kasse/page.tsx` | ~243 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/` | `src/app/(site)/page.tsx` | ~1131 | 1331 | TopicDeepDive | Defizit / Geplant |
+| `/ratgeber/[slug]` | `src/app/(site)/ratgeber/[slug]/page.tsx` | ~360 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/ratgeber` | `src/app/(site)/ratgeber/page.tsx` | ~225 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/rechtliches/agb` | `src/app/(site)/rechtliches/agb/page.tsx` | ~417 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/rechtliches/cookie-einstellungen` | `src/app/(site)/rechtliches/cookie-einstellungen/page.tsx` | ~229 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/rechtliches/datenschutz` | `src/app/(site)/rechtliches/datenschutz/page.tsx` | ~716 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/rechtliches/impressum` | `src/app/(site)/rechtliches/impressum/page.tsx` | ~249 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/rechtliches/versand-und-zahlung` | `src/app/(site)/rechtliches/versand-und-zahlung/page.tsx` | ~428 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/rechtliches/widerruf` | `src/app/(site)/rechtliches/widerruf/page.tsx` | ~371 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/schliessanlagen/konfigurator` | `src/app/(site)/schliessanlagen/konfigurator/page.tsx` | ~369 | 950 | LockingSystemConfigurator | Defizit / Geplant |
+| `/schliessanlagen` | `src/app/(site)/schliessanlagen/page.tsx` | ~1874 | 2074 | LockingSystemConfigurator | Defizit / Geplant |
+| `/schluessel-nach-code/[slug]` | `src/app/(site)/schluessel-nach-code/[slug]/page.tsx` | ~735 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/schluessel-nach-code` | `src/app/(site)/schluessel-nach-code/page.tsx` | ~498 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/schluessel-nach-vorlage/anfrage` | `src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx` | ~222 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/schluessel-nach-vorlage` | `src/app/(site)/schluessel-nach-vorlage/page.tsx` | ~1794 | 1994 | TopicDeepDive | Defizit / Geplant |
+| `/service-und-termin/anfrage` | `src/app/(site)/service-und-termin/anfrage/page.tsx` | ~152 | 950 | BookingCalendar | Defizit / Geplant |
+| `/service-und-termin/kontakt` | `src/app/(site)/service-und-termin/kontakt/page.tsx` | ~475 | 950 | BookingCalendar | Defizit / Geplant |
+| `/service-und-termin` | `src/app/(site)/service-und-termin/page.tsx` | ~1579 | 1779 | BookingCalendar | Defizit / Geplant |
+| `/service-und-termin/terminstatus` | `src/app/(site)/service-und-termin/terminstatus/page.tsx` | ~108 | 950 | BookingCalendar | Defizit / Geplant |
+| `/service-und-termin/vor-ort` | `src/app/(site)/service-und-termin/vor-ort/page.tsx` | ~656 | 950 | BookingCalendar | Defizit / Geplant |
+| `/sicherheitstechnik/[slug]` | `src/app/(site)/sicherheitstechnik/[slug]/page.tsx` | ~645 | 950 | SecurityChecklist | Defizit / Geplant |
+| `/sicherheitstechnik` | `src/app/(site)/sicherheitstechnik/page.tsx` | ~1021 | 1221 | SecurityChecklist | Defizit / Geplant |
+| `/sicherheitstechnik/sicherheitscheck` | `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx` | ~330 | 950 | SecurityChecklist | Defizit / Geplant |
+| `/standorte/[city]` | `src/app/(site)/standorte/[city]/page.tsx` | ~406 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/standorte` | `src/app/(site)/standorte/page.tsx` | ~250 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/tuer-und-schliesstechnik/[slug]` | `src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx` | ~494 | 950 | TopicDeepDive | Defizit / Geplant |
+| `/tuer-und-schliesstechnik` | `src/app/(site)/tuer-und-schliesstechnik/page.tsx` | ~1785 | 1985 | TopicDeepDive | Defizit / Geplant |
+| `/warenkorb` | `src/app/(site)/warenkorb/page.tsx` | ~262 | 950 | TopicDeepDive | Defizit / Geplant |
