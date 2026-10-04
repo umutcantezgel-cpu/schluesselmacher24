@@ -1,0 +1,5 @@
+This is a Next.js 16+ project using React 19.2+ and Tailwind CSS v4.
+Targeting hypermodern Swiss Light Mode Design (OKLCH).
+
+Architecture Blueprint generated and stored in .jules/revolution-plan.json.
+Check .jules/architecture-matrix.md for the transformation plans.

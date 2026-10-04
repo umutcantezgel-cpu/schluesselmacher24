@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| URL Path | File | Current Status (Words) | Target Word Count | Planned Module | Schema Entities |
+|---|---|---|---|---|---|
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | Thin (225) | 950 | GuideFilterSystem | Article, FAQPage |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | Thin (360) | 950 | GuideFilterSystem | Article, FAQPage |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | Thin (222) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | Thin (1794) | 1994 | EnterpriseRoiCalculator | Organization, WebSite |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | Thin (262) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /kasse | src/app/(site)/kasse/page.tsx | Thin (243) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /api/kunden-upload | src/app/(site)/api/kunden-upload/route.ts | Thin (705) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | Thin (498) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | Thin (735) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| / | src/app/(site)/page.tsx | Thin (1131) | 1331 | EnterpriseRoiCalculator | Organization, WebSite |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | Thin (1021) | 1221 | SecurityRiskAnalyzer | Service, Product |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | Thin (645) | 950 | SecurityRiskAnalyzer | Service, Product |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | Thin (330) | 950 | SecurityRiskAnalyzer | Service, Product |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | Thin (1785) | 1985 | EnterpriseRoiCalculator | Organization, WebSite |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | Thin (494) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | Thin (1300) | 1500 | EnterpriseRoiCalculator | Organization, WebSite |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | Thin (2082) | 2282 | EnterpriseRoiCalculator | Organization, WebSite |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | Thin (311) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | Thin (2481) | 2681 | EnterpriseRoiCalculator | Organization, WebSite |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | Thin (383) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | Thin (1874) | 2074 | EnterpriseRoiCalculator | Organization, WebSite |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | Thin (369) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | Thin (108) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | Thin (152) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | Thin (1579) | 1779 | EnterpriseRoiCalculator | Organization, WebSite |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | Thin (656) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | Thin (475) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | Thin (249) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | Thin (229) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | Thin (428) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | Thin (371) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | Thin (417) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | Thin (716) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /artikel | src/app/(site)/artikel/page.tsx | Thin (657) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | Thin (935) | 1135 | EnterpriseRoiCalculator | Organization, WebSite |
+| /standorte | src/app/(site)/standorte/page.tsx | Thin (250) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | Thin (406) | 950 | EnterpriseRoiCalculator | Organization, WebSite |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | Thin (719) | 950 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | Thin (1224) | 1424 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | Thin (980) | 1180 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | Thin (1092) | 1292 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | Thin (1223) | 1423 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | Thin (519) | 950 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | Thin (2003) | 2203 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | Thin (1134) | 1334 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | Thin (1190) | 1390 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | Thin (1208) | 1408 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | Thin (1043) | 1243 | CarKeyCompatibilityChecker | Service, FAQPage |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | Thin (1122) | 1322 | CarKeyCompatibilityChecker | Service, FAQPage |
