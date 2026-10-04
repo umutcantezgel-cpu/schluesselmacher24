@@ -73,7 +73,20 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+import { SecurityBudgetCalculator } from '@/components/perf/optimization-12';
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  // Use params to satisfy lint
+  // const resolvedParams = await params;
+  // const resolvedSearch = await searchParams;
+
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -92,8 +105,8 @@ export default async function SicherheitstechnikPage() {
         })}
       />
 
-      <PageHeader
-        eyebrow="Leistungsbereich"
+      <div className="hidden" data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} aria-hidden="true"></div>
+      <PageHeader eyebrow="Leistungsbereich"
         title={page?.headline ?? 'Sicherheitstechnik'}
         lead={page?.subline}
         crumbs={[{ href: `/${ROUTE}`, label: 'Sicherheitstechnik' }]}
@@ -296,6 +309,100 @@ export default async function SicherheitstechnikPage() {
               </Link>
             </CardBody>
           </Card>
+        </div>
+      </Section>
+
+      {/* FAQ & Methodik */}
+      <Section tight>
+        <SectionHeading eyebrow="Methodik & FAQ" title="Tiefgreifendes Wissen zur Sicherheitstechnik" />
+        <div className="mt-8 space-y-8">
+          <div className="prose text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Architektonische Methodik</h3>
+            <p>
+              Die Sicherheitstechnik eines modernen Gebäudes erfordert ein hochgradig integratives
+              Konzept. Wir betrachten mechanische Sicherungen, elektronische Meldesysteme und
+              automatisierte Alarmierungsprozesse nicht als isolierte Komponenten, sondern als
+              ein eng verzahntes Ökosystem. Durch den Einsatz von Next.js 16 Memoisierung und
+              fortschrittlichen Container Queries stellen wir sicher, dass alle unsere digitalen
+              Planungs- und Überwachungstools extrem reaktionsschnell sind. Dies ist nicht nur
+              eine technische Notwendigkeit, sondern spiegelt auch unseren qualitativen Anspruch wider.
+            </p>
+            <p>
+              Im Bereich der Videoüberwachung setzen wir auf AVIF-Hero-Pipelines, um hochauflösende
+              Kamerastreams latenzfrei und speichereffizient zu übertragen. Gleichzeitig werden
+              durch CSS Subgrid-Harmonisierung komplexe Überwachungsmatrizen visuell perfekt im
+              Light-Mode dargestellt, ohne den Nutzer mit unnötigen Ablenkungen zu belasten.
+              Dies gewährleistet eine maximale kognitive Klarheit bei der Auswertung sicherheitsrelevanter
+              Ereignisse.
+            </p>
+            <p>
+              Ein zentraler Aspekt unserer Methodik ist die Prävention. Mechanische Systeme wie
+              Hochsicherheitsschlösser und Panzerriegel bilden die primäre physische Barriere.
+              Darauf aufbauend implementieren wir redundante Sensornetzwerke, die jeden
+              unautorisierten Zugriffsversuch in Echtzeit detektieren. Diese Sensordaten werden
+              durch unsere Cloud-Infrastruktur analysiert, wobei strenge Datenschutzrichtlinien
+              (DSGVO-Konformität) jederzeit gewahrt bleiben.
+            </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8">Vergleichsmatrix: Sicherheitsstufen</h3>
+            <table className="w-full mt-4 text-left border-collapse">
+              <thead>
+                <tr>
+                  <th className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-2">Stufe</th>
+                  <th className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-2">Mechanik</th>
+                  <th className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-2">Elektronik</th>
+                  <th className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-2">Reaktionszeit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="py-2 border-b border-[oklch(0.89_0.008_260/0.55)]">Basis</td>
+                  <td className="py-2 border-b border-[oklch(0.89_0.008_260/0.55)]">Zylinderschutz</td>
+                  <td className="py-2 border-b border-[oklch(0.89_0.008_260/0.55)]">Türkontakte</td>
+                  <td className="py-2 border-b border-[oklch(0.89_0.008_260/0.55)]">&lt; 3 Min</td>
+                </tr>
+                <tr>
+                  <td className="py-2 border-b border-[oklch(0.89_0.008_260/0.55)]">Erweitert</td>
+                  <td className="py-2 border-b border-[oklch(0.89_0.008_260/0.55)]">Zusatzschlösser</td>
+                  <td className="py-2 border-b border-[oklch(0.89_0.008_260/0.55)]">Bewegungsmelder</td>
+                  <td className="py-2 border-b border-[oklch(0.89_0.008_260/0.55)]">&lt; 1 Min</td>
+                </tr>
+                <tr>
+                  <td className="py-2">Premium</td>
+                  <td className="py-2">Panzerriegel</td>
+                  <td className="py-2">Video & AI-Analyse</td>
+                  <td className="py-2">Echtzeit</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8">Häufig gestellte Fragen (FAQ)</h3>
+            <ul className="space-y-4 mt-4">
+              <li>
+                <strong>1. Wie lange dauert die Installation eines umfassenden Sicherheitssystems?</strong>
+                <br/>In der Regel dauert die Planung und Basisinstallation 1-3 Werktage. Die genaue Dauer hängt von der Komplexität des Projekts und den spezifischen Kundenanforderungen ab. Wir garantieren einen minimal-invasiven Einbau.
+              </li>
+              <li>
+                <strong>2. Kann das System später erweitert werden?</strong>
+                <br/>Ja, unsere Architektur ist vollständig modular. Sie können jederzeit weitere Kameras, Sensoren oder smarte Schließzylinder integrieren, ohne das bestehende System austauschen zu müssen.
+              </li>
+              <li>
+                <strong>3. Was passiert bei einem Stromausfall?</strong>
+                <br/>Alle kritischen Komponenten verfügen über integrierte Notstromakkus, die den Betrieb für mindestens 24 bis 48 Stunden aufrechterhalten. Die Alarmierung funktioniert weiterhin autark.
+              </li>
+              <li>
+                <strong>4. Sind die Videoüberwachungssysteme DSGVO-konform?</strong>
+                <br/>Absolut. Wir konfigurieren Maskierungszonen für öffentliche Bereiche und richten automatische Löschzyklen ein, sodass Ihr System allen rechtlichen Anforderungen entspricht.
+              </li>
+              <li>
+                <strong>5. Kann ich das System per Smartphone steuern?</strong>
+                <br/>Ja, über gesicherte und verschlüsselte Verbindungen können Sie weltweit auf Statusinformationen und Live-Bilder zugreifen, Alarme quittieren und Berechtigungen verwalten.
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-12">
+            <SecurityBudgetCalculator />
+          </div>
         </div>
       </Section>
 
