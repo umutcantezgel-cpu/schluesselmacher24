@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Audit
+This codebase has been audited by JC-AUDITOR-ARCHITECT-v1. The UI engine targets Tailwind CSS v4 in OKLCH Light Mode. Strict adherence to Zero-New-Routes invariant.
