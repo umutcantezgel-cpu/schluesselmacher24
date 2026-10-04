@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-04T12:56:38.989Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf der 100-Ideen-Matrix.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_055",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/(site)/service-und-termin/page.tsx",
+      "target_component_file": "src/components/calculator/service-einsatz-rechner.tsx",
+      "title": "Interaktiver Service-Einsatz-Rechner",
+      "specification": "Integration eines interaktiven Budget- und ROI-Rechners (React 19 useActionState) auf app/(site)/service-und-termin/page.tsx, inklusive dynamischem Vorher-Nachher-Slider.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_012",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_component_file": "src/components/ui/card.tsx",
+      "title": "Kinetisches Update für gleichschliessende-zylinder",
+      "specification": "Einführung eines dynamischen Bento-Grids mit Haarlinien-Kanten und Cursor-Glow (oklch(0.95 0.05 260)) auf app/(site)/gleichschliessende-zylinder/page.tsx zur haptischen Aufwertung ohne Layout-Shifts.",
+      "score": 9.6,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
