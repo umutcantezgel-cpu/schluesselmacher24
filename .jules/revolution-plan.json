@@ -1,0 +1,1162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-04T11:03:37.505Z",
+  "total_existing_routes": 48,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1328,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /artikel/[slug]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /artikel/[slug])",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /artikel/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /artikel",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /artikel)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/anfrage",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/anfrage)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1291,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/fahrzeugoeffnung",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/fahrzeugoeffnung)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1257,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/funkschluessel",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/funkschluessel)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1310,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/kopieren",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/kopieren)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/kopieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1633,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/marken/[make]/[model]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/marken/[make]/[model])",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/marken/[make]/[model]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1481,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/marken/[make]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/marken/[make])",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/marken/[make]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1082,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/marken",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/marken)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1354,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/nachmachen",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/nachmachen)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2553,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1376,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/programmieren",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/programmieren)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/programmieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1217,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/schluesselbart-fraesen",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/schluesselbart-fraesen)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/schluesselbart-fraesen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1365,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /autoschluessel/smart-key",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /autoschluessel/smart-key)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /autoschluessel/smart-key"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1816,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /bestellung/[id]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /bestellung/[id])",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /bestellung/[id]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /elektronische-zutrittsloesungen/konfigurator",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /elektronische-zutrittsloesungen/konfigurator)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /elektronische-zutrittsloesungen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 2968,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /elektronische-zutrittsloesungen",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /elektronische-zutrittsloesungen)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /elektronische-zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /gleichschliessende-zylinder/konfigurator",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /gleichschliessende-zylinder/konfigurator)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /gleichschliessende-zylinder/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2944,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /gleichschliessende-zylinder",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /gleichschliessende-zylinder)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /gleichschliessende-zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /kasse",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /kasse)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 1826,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /ratgeber/[slug]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /ratgeber/[slug])",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /ratgeber/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ReadingTimeFilter",
+        "target_file": "components/filter/reading-time-filter.tsx",
+        "action_file": "lib/actions/filter-reading.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /ratgeber",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /ratgeber)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ReadingTimeFilter",
+        "target_file": "components/filter/reading-time-filter.tsx",
+        "action_file": "lib/actions/filter-reading.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /rechtliches/agb",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /rechtliches/agb)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /rechtliches/agb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /rechtliches/cookie-einstellungen",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /rechtliches/cookie-einstellungen)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /rechtliches/cookie-einstellungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1067,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /rechtliches/datenschutz",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /rechtliches/datenschutz)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /rechtliches/datenschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /rechtliches/impressum",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /rechtliches/impressum)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /rechtliches/impressum"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /rechtliches/versand-und-zahlung",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /rechtliches/versand-und-zahlung)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /rechtliches/versand-und-zahlung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /rechtliches/widerruf",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /rechtliches/widerruf)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /rechtliches/widerruf"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schliessanlagen/konfigurator",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /schliessanlagen/konfigurator)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /schliessanlagen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2331,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schliessanlagen",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /schliessanlagen)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1126,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schluessel-nach-code/[slug]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /schluessel-nach-code/[slug])",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /schluessel-nach-code/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schluessel-nach-code",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /schluessel-nach-code)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /schluessel-nach-code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schluessel-nach-vorlage/anfrage",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /schluessel-nach-vorlage/anfrage)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /schluessel-nach-vorlage/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2302,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /schluessel-nach-vorlage",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /schluessel-nach-vorlage)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /schluessel-nach-vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /service-und-termin/anfrage",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /service-und-termin/anfrage)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /service-und-termin/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceCostCalculator",
+        "target_file": "components/calculator/service-cost-calculator.tsx",
+        "action_file": "lib/actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /service-und-termin/kontakt",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /service-und-termin/kontakt)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /service-und-termin/kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceCostCalculator",
+        "target_file": "components/calculator/service-cost-calculator.tsx",
+        "action_file": "lib/actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2153,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /service-und-termin",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /service-und-termin)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /service-und-termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceCostCalculator",
+        "target_file": "components/calculator/service-cost-calculator.tsx",
+        "action_file": "lib/actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /service-und-termin/terminstatus",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /service-und-termin/terminstatus)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /service-und-termin/terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceCostCalculator",
+        "target_file": "components/calculator/service-cost-calculator.tsx",
+        "action_file": "lib/actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1004,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /service-und-termin/vor-ort",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /service-und-termin/vor-ort)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /service-und-termin/vor-ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceCostCalculator",
+        "target_file": "components/calculator/service-cost-calculator.tsx",
+        "action_file": "lib/actions/calculate-service.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /sicherheitstechnik/[slug]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /sicherheitstechnik/[slug])",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /sicherheitstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1507,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /sicherheitstechnik",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /sicherheitstechnik)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /sicherheitstechnik/sicherheitscheck",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /sicherheitstechnik/sicherheitscheck)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /sicherheitstechnik/sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /standorte/[city]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /standorte/[city])",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /standorte/[city]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /standorte",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /standorte)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /tuer-und-schliesstechnik/[slug]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /tuer-und-schliesstechnik/[slug])",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /tuer-und-schliesstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2457,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /tuer-und-schliesstechnik",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /tuer-und-schliesstechnik)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /tuer-und-schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht für /warenkorb",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen (angepasst auf /warenkorb)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für /warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "lib/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
