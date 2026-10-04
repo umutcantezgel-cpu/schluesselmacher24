@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-04T20:49:48.102315+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten (Kinetik & Conversion).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_042",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/ui/card.tsx",
+      "title": "Fluid Bento-Grid Layout mit ged\u00e4mpfter Federphysik und seidenweichem OKLCH Hover",
+      "specification": "Ersetze starre Layouts durch ein CSS Subgrid Bento-Layout auf der Startseite. Integriere ein 1px Kanten-Lichtreflex-System (oklch(0.9 0.01 260)) und taktile Federphysik (Framer Motion) f\u00fcr die bestehenden Feature-Karten, komplett ohne Layout-Shifts.",
+      "score": 9.95,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_014",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/components/calculator/tuer-absicherung-rechner.tsx",
+      "title": "Interaktiver Sicherheits-Score-Rechner mit React 19 Server Actions",
+      "specification": "Aufwertung des bestehenden T\u00fcr-Absicherungs-Rechners zu einem Live-Konfigurator mit useOptimistic und Server Actions. Der Rechner bewertet dynamisch den Sicherheits-Score des Nutzers anhand von 5 visuellen Checkbox-Phasen im Schweizer Light Mode.",
+      "score": 9.85,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
