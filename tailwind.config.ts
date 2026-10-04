@@ -23,21 +23,21 @@ const config = {
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
-        background: 'hsl(var(--background))',
+        background: 'oklch(var(--background))',
         surface: {
-          DEFAULT: 'hsl(var(--surface))',
+          DEFAULT: 'oklch(var(--surface))',
           muted: 'hsl(var(--surface-muted))',
           sunken: 'hsl(var(--surface-sunken))',
           ink: 'hsl(var(--surface-ink))',
         },
         foreground: {
-          DEFAULT: 'hsl(var(--foreground))',
-          muted: 'hsl(var(--foreground-muted))',
+          DEFAULT: 'oklch(var(--foreground))',
+          muted: 'oklch(var(--foreground-muted))',
           subtle: 'hsl(var(--foreground-subtle))',
           inverse: 'hsl(var(--foreground-inverse))',
         },
         border: {
-          DEFAULT: 'hsl(var(--border))',
+          DEFAULT: 'oklch(var(--border))',
           strong: 'hsl(var(--border-strong))',
         },
         input: 'hsl(var(--input))',
@@ -50,7 +50,7 @@ const config = {
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          foreground: 'oklch(var(--secondary-foreground))',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
@@ -75,15 +75,15 @@ const config = {
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+          foreground: 'oklch(var(--card-foreground))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          foreground: 'oklch(var(--popover-foreground))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          foreground: 'oklch(var(--muted-foreground))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
