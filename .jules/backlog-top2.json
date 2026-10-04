@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-03T20:50:22.069Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf Visueller Hebelwirkung (35%), Nutzer-Mehrwert/ROI (35%) und Machbarkeit (30%).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_015",
+      "category": "AWWWARDS_KINETIK",
+      "target_existing_route": "app/(site)/bestellung/[id]/page.tsx",
+      "target_component_file": "components/navigation/site-header.tsx",
+      "title": "Kinetische Veredelung für site-header auf /bestellung/[id]",
+      "specification": "Implementiere gedämpfte Federphysik und mikro-haptisches Feedback für die Komponente. Nutze CSS Subgrid für perfekte Ausrichtung und OKLCH-Farb-Tokens (oklch(0.988 0.002 260)) für höchste chromatische Reinheit. Eliminierung von Layout-Shifts während der Animation.",
+      "score": 9.28,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_018",
+      "category": "AWWWARDS_KINETIK",
+      "target_existing_route": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_component_file": "components/product/product-gallery.tsx",
+      "title": "Kinetische Veredelung für product-gallery auf /elektronische-zutrittsloesungen",
+      "specification": "Implementiere gedämpfte Federphysik und mikro-haptisches Feedback für die Komponente. Nutze CSS Subgrid für perfekte Ausrichtung und OKLCH-Farb-Tokens (oklch(0.988 0.002 260)) für höchste chromatische Reinheit. Eliminierung von Layout-Shifts während der Animation.",
+      "score": 9.2,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
