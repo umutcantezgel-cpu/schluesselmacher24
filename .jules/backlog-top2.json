@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-04T10:54:37.872Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf Visueller Hebelwirkung, Nutzer-Mehrwert und Machbarkeit.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_060",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/(site)/page.tsx",
+      "target_component_file": "components/visual/motion/in-view.tsx",
+      "title": "Interaktiver ROI-Konfigurator mit React 19",
+      "specification": "Integration eines interaktiven ROI-Konfigurators mit React 19 Server Actions und useOptimistic, nahtlos eingebettet im AAA-Kontrast Design.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_082",
+      "category": "EXTREME_PERFORMANCE",
+      "target_existing_route": "app/(site)/warenkorb/page.tsx",
+      "target_component_file": "app/(site)/warenkorb/warenkorb-ansicht.tsx",
+      "title": "Next.js 16 Caching & CSS Subgrid-Harmonisierung",
+      "specification": "Next.js 16 \"use cache\" Memoisierung, CSS Subgrid-Harmonisierung und AVIF-Hero-Pipelines für extrem schnelle Ladezeiten.",
+      "score": 9.6,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
