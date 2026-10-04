@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Targets
+Updated by JC-AUDITOR-ARCHITECT-v1 to reflect Swiss Modernist Light Mode OKLCH aesthetics and Next.js 16+ RSC architectural purity.
