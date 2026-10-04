@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Goals
+
+This project follows the strict Swiss Light Mode Marken-DNA and relies on Next.js 16+ Server Components, React 19.2+ form actions, and strict TypeScript 5.5+ standards. See `llms.txt` and `.jules/architecture-matrix.md` for more details.

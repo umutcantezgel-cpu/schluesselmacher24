@@ -1,0 +1,19 @@
+# SCHLÜSSELMACHER24 - Architecture and Guidelines
+
+This document outlines the architectural goals and Next.js 16+ best practices for the SCHLÜSSELMACHER24 codebase.
+
+## Frameworks & Tools
+- Next.js 16+ App Router
+- React 19.2+ Server Components & Server Actions
+- Tailwind CSS v4 (OKLCH Light Mode)
+- TypeScript 5.5+ Strict
+
+## Design Doctrine (Swiss Light Mode Marken-DNA)
+- **Base Canvas:** `oklch(0.988 0.002 260)`
+- **Elevated Surface:** `oklch(0.968 0.004 260)`
+- **Text Primary:** `oklch(0.16 0.02 260)`
+- **Text Secondary:** `oklch(0.32 0.02 260)`
+- **Focal Accent:** `oklch(0.52 0.24 260)` (International Klein Blue)
+
+## Zero-New-Routes Invariant
+Modifications must only enhance physically existing routes. Creating new routes or speculative dynamic slugs is strictly forbidden.
