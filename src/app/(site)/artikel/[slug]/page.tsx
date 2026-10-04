@@ -21,6 +21,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
+
 
 import { ArtikelKauf } from './artikel-kauf';
 
@@ -206,6 +208,67 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
                 </Card>
               </div>
             )}
+
+
+            <div className="mt-16 border-t border-[oklch(0.89_0.008_260/0.55)] pt-12">
+              <h2 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] md:text-3xl">Institutionelle Leistungsübersicht</h2>
+              <p className="prose-sm24 mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Unsere standardisierten Artikel rund um Schlüssel, Schloss und Tür bilden das Fundament für sichere und skalierbare Schließlösungen in privaten, gewerblichen und institutionellen Umgebungen. Jede Komponente – vom präzisionsgefertigten Nachschlüssel bis zum hochsicheren Schließzylinder – wird nach strengen Qualitätskriterien gefertigt und geprüft. Diese Leistungsübersicht detailliert die architektonische Methodik hinter unserem Sortiment und verdeutlicht, warum kompromisslose Qualität bei der mechanischen und elektronischen Absicherung unverzichtbar ist.
+              </p>
+              <p className="prose-sm24 mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Die Anforderungen an moderne Schließtechnik haben sich in den letzten Jahren dramatisch gewandelt. Während früher rein mechanische Barrieren im Vordergrund standen, erfordern heutige Sicherheitskonzepte eine intelligente Integration von physischem Widerstand, organisatorischer Kontrolle und nahtloser Nachverfolgbarkeit. Unsere Produkte sind so konzipiert, dass sie diese multidimensionalen Anforderungen erfüllen, ohne die tägliche Handhabung für die Endnutzer zu verkomplizieren.
+              </p>
+
+              <h3 className="text-xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mt-8">Methodischer Transformationsprozess</h3>
+              <p className="prose-sm24 mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Der Weg von einem einzelnen Zylinder zu einer ganzheitlichen, auditierbaren Schließanlage erfolgt bei uns in einem strukturierten, vierstufigen Transformationsprozess. Zunächst erfolgt die <strong>Bedarfsanalyse und Risikobewertung</strong>, bei der wir die spezifischen Sicherheitsanforderungen Ihrer Liegenschaft detailliert erfassen. Im zweiten Schritt, der <strong>Topologischen Planung</strong>, entwerfen wir einen passgenauen Schließplan, der Zugriffsrechte logisch strukturiert und zukünftige Erweiterungen antizipiert.
+              </p>
+              <p className="prose-sm24 mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Die dritte Phase umfasst die <strong>Präzisionsfertigung und Qualitätssicherung</strong>. Hier kommen modernste CNC-Maschinen und strenge Toleranzprüfungen zum Einsatz, um sicherzustellen, dass jeder Schlüssel und jeder Zylinder exakt den Vorgaben entspricht. Den Abschluss bildet die <strong>Implementierung und Dokumentation</strong>. Eine saubere Übergabe, inklusive detaillierter Sicherungskarten und Pflegeanleitungen, garantiert die langfristige Integrität und Erweiterbarkeit Ihres Systems.
+              </p>
+
+              <EnterpriseRoiCalculator />
+
+              <h2 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] md:text-3xl mt-16">Detaillierte Fach-FAQ</h2>
+              <div className="mt-8 space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Welche Zertifizierungen weisen die Zylinder auf?</h3>
+                  <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Unsere Hochsicherheitszylinder sind standardmäßig nach DIN EN 1303, DIN 18252 sowie VdS (Klasse B oder höher) zertifiziert. Diese Normen garantieren einen definierten Widerstand gegen gewaltfreie Öffnungsmethoden (wie Picking oder Schlagschlüssel) sowie gegen physische Angriffe (Aufbohren, Kernziehen). Für kritische Infrastrukturen bieten wir zudem Zylinder mit modularer Bauweise und integriertem Ziehschutz an, die selbst massiven mechanischen Einwirkungen standhalten.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wie wird die Nachschlüsselsicherheit gewährleistet?</h3>
+                  <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Die Integrität einer Schließanlage steht und fällt mit der Kontrolle über Schlüsselkopien. Wir setzen konsequent auf Systeme mit patentiertem Kopierschutz (oft bis 2030 oder länger gültig) und geschützten Schlüsselprofilen. Nachschlüssel und Erweiterungszylinder werden ausschließlich gegen Vorlage der originalen, registrierten Sicherungskarte gefertigt. Dieser prozessuale Schutz verhindert unautorisierte Duplikate durch Dritte effektiv.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Ist eine nachträgliche Erweiterung zur elektronischen Zutrittskontrolle möglich?</h3>
+                  <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Ja, unser Portfolio ist auf Skalierbarkeit ausgelegt. Viele unserer mechanischen Wendeschlüsselsysteme lassen sich nahtlos mit mechatronischen Komponenten kombinieren. Ein sogenannter Kombischlüssel enthält neben den mechanischen Fräsungen einen RFID-Transponder. Damit können Sie hochfrequentierte Außentüren elektronisch (mit Protokollierung und temporären Rechten) und Innentüren wirtschaftlich mechanisch absichern.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Welche Wartungsintervalle werden empfohlen?</h3>
+                  <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Für eine optimale Lebensdauer und reibungslose Funktion empfehlen wir, Schließzylinder halbjährlich – bei starker Beanspruchung oder Witterungseinflüssen vierteljährlich – mit einem speziellen, harz- und säurefreien Pflegespray zu behandeln. Die Verwendung von Öl oder Grafit ist strikt zu vermeiden, da diese Substanzen verharzen oder verklumpen und die feine Mechanik der Stiftzuhaltungen blockieren können.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Was passiert bei Schlüsselverlust in einer Anlage?</h3>
+                  <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Der Verlust eines übergeordneten Gruppenschlüssels oder Generalhauptschlüssels erfordert eine sofortige Risikobewertung. Mechanisch bedeutet dies oft den kostspieligen Austausch der betroffenen Zylinder, um die Sicherheit wiederherzustellen. Um dieses Risiko zu minimieren, raten wir bei größeren Anlagen zur Hybrid-Strategie: Äußere Gebäudehüllen elektronisch absichern (wo verlorene Transponder sofort gelöscht werden können) und nur innere Bereiche mechanisch schließen.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wie unterscheiden sich Wendeschlüssel von konventionellen Zackenschlüsseln?</h3>
+                  <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Wendeschlüsselbieten einen signifikanten Bedienkomfort, da sie beidseitig (horizontal) eingeführt werden können. Konstruktiv verfügen sie oft über Muldenbohrungen anstelle von Einschnitten, was eine höhere Anzahl von Zuhaltungsstiften auf mehreren Ebenen ermöglicht. Dies resultiert nicht nur in einer deutlich höheren Verschlusssicherheit und komplexeren Schließanlagen-Berechnungen, sondern auch in einem verminderten Verschleiß, da die Kraftübertragung flächiger erfolgt.
+                  </p>
+                </div>
+              </div>
+            </div>
 
             {article.scope.trim() && (
               <div className="mt-8">
