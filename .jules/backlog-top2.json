@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-04T18:43:30.120Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf Visueller Hebelwirkung, Nutzer-Mehrwert und Machbarkeit.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_PSYCHOLOGIE",
+      "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+      "target_component_file": "src/components/autoschluessel/termin-auswahl.tsx",
+      "title": "Interaktiver ROI- und Budgetrechner",
+      "specification": "Implementiere ein interaktives Budgetrechner-Tool (React 19 Server Actions, useOptimistic) zur Vorabkalkulation der Autoschlüssel-Nachmachkosten in Echtzeit, mit direktem Vorher-Nachher-Vergleich zum Original-Herstellerpreis. Erweitere den Text auf über 800 Wörter.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_001",
+      "category": "AWWWARDS_KINETIK",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/ui/card.tsx",
+      "title": "Kinetisches Bento-Grid mit Federdämpfung",
+      "specification": "Implementiere ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik (framer-motion spring) und Cursor-Positions-Tracking ohne Layout-Shifts, passend zur Schweizer Light Mode Ästhetik.",
+      "score": 9.55,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
