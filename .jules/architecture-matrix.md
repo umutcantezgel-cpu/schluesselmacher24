@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| Route Path | Source File | Status | Current Words | Target Words | CWV / Interactivity Target |
+|---|---|---|---|---|---|
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING_BUILDER | 935 | 1535 | DynamicServiceFilter (Awwwards) |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING_BUILDER | 657 | 1257 | DynamicServiceFilter (Awwwards) |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 519 | 1119 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 1122 | 1722 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 1092 | 1692 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 1134 | 1734 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 1224 | 1824 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 980 | 1580 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING_BUILDER | 719 | 1319 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 1190 | 1790 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING_BUILDER | 2003 | 2603 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 1223 | 1823 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 1043 | 1643 | CarKeyCompatibilityFilter (Awwwards) |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 1208 | 1808 | CarKeyCompatibilityFilter (Awwwards) |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING_BUILDER | 1300 | 1900 | DynamicServiceFilter (Awwwards) |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 383 | 983 | AccessControlConfigurator (Awwwards) |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 2481 | 3081 | AccessControlConfigurator (Awwwards) |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 311 | 911 | DynamicServiceFilter (Awwwards) |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 2082 | 2682 | DynamicServiceFilter (Awwwards) |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING_BUILDER | 243 | 850 | CheckoutProcessSteps (Awwwards) |
+| / | src/app/(site)/page.tsx | PENDING_BUILDER | 1131 | 1731 | DynamicServiceFilter (Awwwards) |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 360 | 960 | DynamicServiceFilter (Awwwards) |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING_BUILDER | 225 | 850 | DynamicServiceFilter (Awwwards) |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING_BUILDER | 417 | 1017 | DynamicServiceFilter (Awwwards) |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 229 | 850 | DynamicServiceFilter (Awwwards) |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 716 | 1316 | DynamicServiceFilter (Awwwards) |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING_BUILDER | 249 | 850 | DynamicServiceFilter (Awwwards) |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 428 | 1028 | DynamicServiceFilter (Awwwards) |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 371 | 971 | DynamicServiceFilter (Awwwards) |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 369 | 969 | MasterKeySystemPlanner (Awwwards) |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING_BUILDER | 1874 | 2474 | MasterKeySystemPlanner (Awwwards) |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 735 | 1335 | DynamicServiceFilter (Awwwards) |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING_BUILDER | 498 | 1098 | DynamicServiceFilter (Awwwards) |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 222 | 850 | DynamicServiceFilter (Awwwards) |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 1794 | 2394 | DynamicServiceFilter (Awwwards) |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 152 | 850 | DynamicServiceFilter (Awwwards) |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 475 | 1075 | DynamicServiceFilter (Awwwards) |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING_BUILDER | 1579 | 2179 | DynamicServiceFilter (Awwwards) |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 108 | 850 | DynamicServiceFilter (Awwwards) |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 656 | 1256 | DynamicServiceFilter (Awwwards) |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 645 | 1245 | DynamicServiceFilter (Awwwards) |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING_BUILDER | 1021 | 1621 | DynamicServiceFilter (Awwwards) |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 330 | 930 | DynamicServiceFilter (Awwwards) |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING_BUILDER | 406 | 1006 | DynamicServiceFilter (Awwwards) |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING_BUILDER | 250 | 850 | DynamicServiceFilter (Awwwards) |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 494 | 1094 | DynamicServiceFilter (Awwwards) |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 1785 | 2385 | DynamicServiceFilter (Awwwards) |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING_BUILDER | 262 | 862 | CheckoutProcessSteps (Awwwards) |
