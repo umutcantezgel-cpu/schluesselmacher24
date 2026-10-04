@@ -216,6 +216,9 @@ export default async function ServiceUndTerminPage() {
           <p>
             Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
           </p>
+          <p>
+            Im Rahmen unserer fortlaufenden technologischen Entwicklung evaluieren wir zudem stetig neue Standards für die Vernetzung von Schließsystemen, insbesondere im Hinblick auf Cloud-Integration und dezentrale Berechtigungsverwaltung über mobile Endgeräte.
+          </p>
         </div>
       </Section>
 
