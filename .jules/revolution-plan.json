@@ -1,0 +1,1565 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-05T17:38:19.383Z",
+  "total_existing_routes": 50,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/api/kunden-upload",
+      "source_file": "app/(site)/api/kunden-upload/route.ts",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "API Spezifikation",
+        "Endpoint Dokumentation",
+        "Rate Limiting und Sicherheit"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ApiPlayground",
+        "target_file": "components/visual/apiplayground.tsx",
+        "action_file": "actions/apiplayground.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Tiefgehende Fachartikel",
+        "Vergleichstabellen aktueller Standards",
+        "Experten-Tipps"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArticleKnowledgeGraph",
+        "target_file": "components/visual/articleknowledgegraph.tsx",
+        "action_file": "actions/articleknowledgegraph.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Tiefgehende Fachartikel",
+        "Vergleichstabellen aktueller Standards",
+        "Experten-Tipps"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArticleKnowledgeGraph",
+        "target_file": "components/visual/articleknowledgegraph.tsx",
+        "action_file": "actions/articleknowledgegraph.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Spezifische Wegfahrsperren-Technologie",
+        "Ablauf der Nachmachung",
+        "FAQ zu Codierung und Fräsung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoKeyCompatibilityFilter",
+        "target_file": "components/visual/autokeycompatibilityfilter.tsx",
+        "action_file": "actions/autokeycompatibilityfilter.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Sicherer Checkout-Prozess",
+        "Zahlungsarten im Detail",
+        "FAQ zum Versand"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecureCheckoutSteps",
+        "target_file": "components/visual/securecheckoutsteps.tsx",
+        "action_file": "actions/securecheckoutsteps.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "RFID vs. Smart-Key",
+        "Integration in bestehende Türen",
+        "FAQ zur Batterielaufzeit"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartAccessConfigurator",
+        "target_file": "components/visual/smartaccessconfigurator.tsx",
+        "action_file": "actions/smartaccessconfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "RFID vs. Smart-Key",
+        "Integration in bestehende Türen",
+        "FAQ zur Batterielaufzeit"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartAccessConfigurator",
+        "target_file": "components/visual/smartaccessconfigurator.tsx",
+        "action_file": "actions/smartaccessconfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Sicherer Checkout-Prozess",
+        "Zahlungsarten im Detail",
+        "FAQ zum Versand"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecureCheckoutSteps",
+        "target_file": "components/visual/securecheckoutsteps.tsx",
+        "action_file": "actions/securecheckoutsteps.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Tiefgehende Fachartikel",
+        "Vergleichstabellen aktueller Standards",
+        "Experten-Tipps"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArticleKnowledgeGraph",
+        "target_file": "components/visual/articleknowledgegraph.tsx",
+        "action_file": "actions/articleknowledgegraph.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Tiefgehende Fachartikel",
+        "Vergleichstabellen aktueller Standards",
+        "Experten-Tipps"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArticleKnowledgeGraph",
+        "target_file": "components/visual/articleknowledgegraph.tsx",
+        "action_file": "actions/articleknowledgegraph.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte rechtliche Erläuterungen",
+        "Verbraucherhinweise",
+        "Datenschutz-Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LegalGlossaryBento",
+        "target_file": "components/visual/legalglossarybento.tsx",
+        "action_file": "actions/legalglossarybento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte rechtliche Erläuterungen",
+        "Verbraucherhinweise",
+        "Datenschutz-Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LegalGlossaryBento",
+        "target_file": "components/visual/legalglossarybento.tsx",
+        "action_file": "actions/legalglossarybento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte rechtliche Erläuterungen",
+        "Verbraucherhinweise",
+        "Datenschutz-Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LegalGlossaryBento",
+        "target_file": "components/visual/legalglossarybento.tsx",
+        "action_file": "actions/legalglossarybento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte rechtliche Erläuterungen",
+        "Verbraucherhinweise",
+        "Datenschutz-Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LegalGlossaryBento",
+        "target_file": "components/visual/legalglossarybento.tsx",
+        "action_file": "actions/legalglossarybento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte rechtliche Erläuterungen",
+        "Verbraucherhinweise",
+        "Datenschutz-Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LegalGlossaryBento",
+        "target_file": "components/visual/legalglossarybento.tsx",
+        "action_file": "actions/legalglossarybento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte rechtliche Erläuterungen",
+        "Verbraucherhinweise",
+        "Datenschutz-Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LegalGlossaryBento",
+        "target_file": "components/visual/legalglossarybento.tsx",
+        "action_file": "actions/legalglossarybento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Planung von Schließanlagen",
+        "Sicherheitsklassen nach DIN",
+        "Wartung und Pflege"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenPlaner",
+        "target_file": "components/visual/schliessanlagenplaner.tsx",
+        "action_file": "actions/schliessanlagenplaner.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Planung von Schließanlagen",
+        "Sicherheitsklassen nach DIN",
+        "Wartung und Pflege"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenPlaner",
+        "target_file": "components/visual/schliessanlagenplaner.tsx",
+        "action_file": "actions/schliessanlagenplaner.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Vorbereitung auf den Termin",
+        "Ablauf vor Ort",
+        "FAQ zur Terminverschiebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminPreparationBento",
+        "target_file": "components/visual/terminpreparationbento.tsx",
+        "action_file": "actions/terminpreparationbento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Vorbereitung auf den Termin",
+        "Ablauf vor Ort",
+        "FAQ zur Terminverschiebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminPreparationBento",
+        "target_file": "components/visual/terminpreparationbento.tsx",
+        "action_file": "actions/terminpreparationbento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Vorbereitung auf den Termin",
+        "Ablauf vor Ort",
+        "FAQ zur Terminverschiebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminPreparationBento",
+        "target_file": "components/visual/terminpreparationbento.tsx",
+        "action_file": "actions/terminpreparationbento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Vorbereitung auf den Termin",
+        "Ablauf vor Ort",
+        "FAQ zur Terminverschiebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminPreparationBento",
+        "target_file": "components/visual/terminpreparationbento.tsx",
+        "action_file": "actions/terminpreparationbento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Vorbereitung auf den Termin",
+        "Ablauf vor Ort",
+        "FAQ zur Terminverschiebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminPreparationBento",
+        "target_file": "components/visual/terminpreparationbento.tsx",
+        "action_file": "actions/terminpreparationbento.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Lokale Servicegebiete",
+        "Anfahrtsbeschreibungen",
+        "FAQ für den Notdienst vor Ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LocalServiceRadiusMap",
+        "target_file": "components/visual/localserviceradiusmap.tsx",
+        "action_file": "actions/localserviceradiusmap.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Lokale Servicegebiete",
+        "Anfahrtsbeschreibungen",
+        "FAQ für den Notdienst vor Ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LocalServiceRadiusMap",
+        "target_file": "components/visual/localserviceradiusmap.tsx",
+        "action_file": "actions/localserviceradiusmap.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Leistungsübersicht",
+        "Qualitätsstandards",
+        "Häufig gestellte Fragen (FAQ)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFinderMatrix",
+        "target_file": "components/visual/servicefindermatrix.tsx",
+        "action_file": "actions/servicefindermatrix.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Sicherer Checkout-Prozess",
+        "Zahlungsarten im Detail",
+        "FAQ zum Versand"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecureCheckoutSteps",
+        "target_file": "components/visual/securecheckoutsteps.tsx",
+        "action_file": "actions/securecheckoutsteps.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/llms.txt",
+      "source_file": "app/llms.txt/route.ts",
+      "current_state": {
+        "word_count": 350,
+        "identified_weaknesses": [
+          "Thin Content",
+          "Fehlende Schema.org Daten",
+          "Geringe Interaktivität"
+        ]
+      },
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "API Spezifikation",
+        "Endpoint Dokumentation",
+        "Rate Limiting und Sicherheit"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ApiPlayground",
+        "target_file": "components/visual/apiplayground.tsx",
+        "action_file": "actions/apiplayground.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architektur-Ziele
+Die bestehende Codebasis wird nach den "Swiss Light Mode Design Doctrine" Prinzipien auf Awwwards-Jury-Niveau transformiert. Siehe \`.jules/architecture-matrix.md\` für Details.
