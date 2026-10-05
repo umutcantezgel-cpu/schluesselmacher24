@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-05T14:53:38.328Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten (Visuelle Hebelwirkung + Nutzer-Mehrwert/ROI + Machbarkeit).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_component_file": "src/components/visual/generators/schluessel.test.tsx",
+      "title": "Interaktive OKLCH-Heatmap für Schließanlagen-Komplexität",
+      "specification": "Entwicklung von 'Interaktive OKLCH-Heatmap für Schließanlagen-Komplexität' unter strikter Nutzung von React 19 Server Actions und nativen Formularen. Keine useState-Ladezustände, stattdessen useActionState für absolute Reibungslosigkeit.",
+      "score": 9.85,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_001",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_component_file": "src/components/calculator/rechner-bausteine.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "Integration von Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex zur maximalen visuellen Aufwertung ohne Layout Shifts. Implementiert mit nativen CSS-Transitions und Tailwind-Variablen unter Wahrung der Schweizer Light Mode Doktrin.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
