@@ -19,6 +19,8 @@ import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { EnterpriseRoiCalculator } from '@/components/calculator/enterprise-roi-calculator';
+
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'sicherheitstechnik';
@@ -252,6 +254,63 @@ export default async function SicherheitstechnikPage() {
             </Link>
           </p>
         </Alert>
+
+          <div className="mt-12 space-y-8">
+            <h2 className="text-3xl font-bold text-[oklch(0.16_0.02_260)]">Ganzheitliche Sicherheitsarchitektur für Enterprise-Ansprüche</h2>
+            <p className="text-lg text-[oklch(0.32_0.02_260)] leading-relaxed">
+              In einer zunehmend komplexen Bedrohungslandschaft reicht punktuelle Absicherung nicht mehr aus.
+              Eine moderne Sicherheitsarchitektur erfordert ein tiefgreifendes Verständnis der vektoriellen
+              Angriffsflächen sowie eine nahtlose Integration von Mechanik, Sensorik und intelligenter Datenverarbeitung.
+              Wir entwickeln für unsere Mandanten maßgeschneiderte, mehrschichtige Verteidigungslinien (Defense-in-Depth),
+              die sowohl physische als auch logische Peripherien effektiv abschirmen.
+            </p>
+            <p className="text-lg text-[oklch(0.32_0.02_260)] leading-relaxed">
+               Unsere Methodik basiert auf strengen Risikoanalysen und der Implementierung redundanter Systeme.
+               Jede Komponente, von der biometrischen Zugangskontrolle bis hin zur KI-gestützten Videoanalyse,
+               wird präzise kalibriert und in das übergeordnete Gefahrenmanagementsystem integriert.
+               Dies gewährleistet nicht nur maximale Resilienz gegen unbefugtes Eindringen, sondern auch
+               eine optimierte forensische Auswertbarkeit im Ereignisfall. Die Investition in präventive Sicherheit
+               reduziert Ausfallzeiten signifikant und schützt sowohl immaterielle Werte als auch physisches Kapital.
+            </p>
+             <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-8">Strukturierte Leistungsstufen & Systemintegration</h3>
+            <p className="text-lg text-[oklch(0.32_0.02_260)] leading-relaxed">
+               Wir gliedern unsere Integrationsprozesse in klar definierte Leistungsstufen.
+               Die Basis bildet eine umfassende Vulnerabilitätsbewertung, gefolgt vom Architekturdesign,
+               der physischen Implementierung und der abschließenden Systemhärtung. Durch kontinuierliche
+               Wartung und Firmware-Updates stellen wir sicher, dass die Anlagen auch gegen zukünftige
+               Angriffsvektoren resilient bleiben. Ein besonderer Fokus liegt dabei auf der Integration
+               heterogener Subsysteme in eine zentrale, hochverfügbare Leitstelle, die eine intuitive
+               Steuerung und Überwachung aller sicherheitsrelevanten Prozesse ermöglicht.
+            </p>
+
+            <div className="my-16">
+              <EnterpriseRoiCalculator />
+            </div>
+
+            <h2 className="text-3xl font-bold text-[oklch(0.16_0.02_260)] mt-12 mb-6">Häufig gestellte Fragen (FAQ) zur Sicherheitstechnik</h2>
+            <div className="space-y-6">
+              <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 bg-[oklch(0.968_0.004_260)]">
+                <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">1. Wie lange dauert die Implementierung eines umfassenden Sicherheitssystems?</h4>
+                <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">Die Dauer hängt stark von der Komplexität des Objekts und den gewählten Leistungsstufen ab. Nach Abschluss der detaillierten Risikoanalyse und Systemplanung rechnen wir bei mittelständischen Projekten mit einer Implementierungsphase von ca. 4 bis 8 Wochen, inklusive aller Funktionstests und der Abnahme.</p>
+              </div>
+              <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 bg-[oklch(0.968_0.004_260)]">
+                <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">2. Ist eine Integration bestehender, älterer Systeme in die neue Architektur möglich?</h4>
+                <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">Ja, in den meisten Fällen können wir über dedizierte Gateways und standardisierte Schnittstellen (z.B. OPC UA, ONVIF) Legacy-Systeme in das neue zentrale Gefahrenmanagementsystem einbinden. Wir prüfen die technische Machbarkeit stets in der Bestandsaufnahme.</p>
+              </div>
+              <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 bg-[oklch(0.968_0.004_260)]">
+                <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">3. Welche Datenschutzauflagen (DSGVO) müssen bei der Videoüberwachung beachtet werden?</h4>
+                <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">Der Betrieb von Videoanlagen erfordert ein strenges Datenschutzkonzept. Die Erfassung öffentlicher Räume ist strikt limitiert, und es gelten strenge Vorgaben für Löschfristen, Zweckbindung und Hinweispflichten. Wir unterstützen bei der datenschutzkonformen Konfiguration und empfehlen zusätzlich eine juristische Begleitung.</p>
+              </div>
+               <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 bg-[oklch(0.968_0.004_260)]">
+                <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">4. Wie erfolgt die Alarmverifizierung und -aufschaltung?</h4>
+                <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">Wir empfehlen eine Aufschaltung auf eine VdS-anerkannte Notruf- und Serviceleitstelle (NSL). Die Alarmverifizierung erfolgt mehrstufig (z.B. durch Videobildverifizierung), um Falschalarme zu minimieren und eine priorisierte Intervention der Einsatzkräfte zu gewährleisten.</p>
+              </div>
+               <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 bg-[oklch(0.968_0.004_260)]">
+                <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">5. Wie stellen Sie die Ausfallsicherheit der Systeme bei Stromausfall sicher?</h4>
+                <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">Kritische Komponenten werden über dimensionierte unterbrechungsfreie Stromversorgungen (USV) gepuffert. Zudem nutzen wir redundante Übertragungswege (z.B. IP/LTE-Dual-Path) für die Alarmierung, um selbst bei Sabotage der primären Infrastruktur die Handlungsfähigkeit aufrechtzuerhalten.</p>
+              </div>
+            </div>
+          </div>
       </Section>
 
       {/* Verbindung zur Mechanik */}
