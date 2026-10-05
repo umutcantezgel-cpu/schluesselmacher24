@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| Route | Source File | Words | Target Words | Interactive Module | Status |
+|---|---|---|---|---|---|
+| /artikel/[slug] | app/(site)/artikel/[slug]/page.tsx | 0 | 1435 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /artikel | app/(site)/artikel/page.tsx | 0 | 1157 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /autoschluessel/anfrage | app/(site)/autoschluessel/anfrage/page.tsx | 0 | 1019 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel/fahrzeugoeffnung | app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 0 | 1622 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel/funkschluessel | app/(site)/autoschluessel/funkschluessel/page.tsx | 0 | 1592 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel/kopieren | app/(site)/autoschluessel/kopieren/page.tsx | 0 | 1634 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel/marken/[make]/[model] | app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 0 | 1724 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel/marken/[make] | app/(site)/autoschluessel/marken/[make]/page.tsx | 0 | 1480 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel/marken | app/(site)/autoschluessel/marken/page.tsx | 0 | 1219 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel/nachmachen | app/(site)/autoschluessel/nachmachen/page.tsx | 0 | 1690 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel | app/(site)/autoschluessel/page.tsx | 0 | 2503 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel/programmieren | app/(site)/autoschluessel/programmieren/page.tsx | 0 | 1723 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel/schluesselbart-fraesen | app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 0 | 1543 | AutoSchluesselSelector | PENDING_BUILDER |
+| /autoschluessel/smart-key | app/(site)/autoschluessel/smart-key/page.tsx | 0 | 1708 | AutoSchluesselSelector | PENDING_BUILDER |
+| /bestellung/[id] | app/(site)/bestellung/[id]/page.tsx | 0 | 1800 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen/konfigurator | app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen | app/(site)/elektronische-zutrittsloesungen/page.tsx | 0 | 2981 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /gleichschliessende-zylinder/konfigurator | app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /gleichschliessende-zylinder | app/(site)/gleichschliessende-zylinder/page.tsx | 0 | 2582 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /kasse | app/(site)/kasse/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| / | app/(site)/page.tsx | 0 | 1631 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /ratgeber/[slug] | app/(site)/ratgeber/[slug]/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /ratgeber | app/(site)/ratgeber/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /rechtliches/agb | app/(site)/rechtliches/agb/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /rechtliches/cookie-einstellungen | app/(site)/rechtliches/cookie-einstellungen/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /rechtliches/datenschutz | app/(site)/rechtliches/datenschutz/page.tsx | 0 | 1216 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /rechtliches/impressum | app/(site)/rechtliches/impressum/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /rechtliches/versand-und-zahlung | app/(site)/rechtliches/versand-und-zahlung/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /rechtliches/widerruf | app/(site)/rechtliches/widerruf/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /schliessanlagen/konfigurator | app/(site)/schliessanlagen/konfigurator/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /schliessanlagen | app/(site)/schliessanlagen/page.tsx | 0 | 2374 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /schluessel-nach-code/[slug] | app/(site)/schluessel-nach-code/[slug]/page.tsx | 0 | 1235 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /schluessel-nach-code | app/(site)/schluessel-nach-code/page.tsx | 0 | 998 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /schluessel-nach-vorlage/anfrage | app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /schluessel-nach-vorlage | app/(site)/schluessel-nach-vorlage/page.tsx | 0 | 2294 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /service-und-termin/anfrage | app/(site)/service-und-termin/anfrage/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /service-und-termin/kontakt | app/(site)/service-und-termin/kontakt/page.tsx | 0 | 975 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /service-und-termin | app/(site)/service-und-termin/page.tsx | 0 | 2079 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /service-und-termin/terminstatus | app/(site)/service-und-termin/terminstatus/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /service-und-termin/vor-ort | app/(site)/service-und-termin/vor-ort/page.tsx | 0 | 1156 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /sicherheitstechnik/[slug] | app/(site)/sicherheitstechnik/[slug]/page.tsx | 0 | 1145 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /sicherheitstechnik | app/(site)/sicherheitstechnik/page.tsx | 0 | 1521 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /sicherheitstechnik/sicherheitscheck | app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /standorte/[city] | app/(site)/standorte/[city]/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /standorte | app/(site)/standorte/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /tuer-und-schliesstechnik/[slug] | app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 0 | 994 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /tuer-und-schliesstechnik | app/(site)/tuer-und-schliesstechnik/page.tsx | 0 | 2285 | EnterpriseRoiCalculator | PENDING_BUILDER |
+| /warenkorb | app/(site)/warenkorb/page.tsx | 0 | 950 | EnterpriseRoiCalculator | PENDING_BUILDER |

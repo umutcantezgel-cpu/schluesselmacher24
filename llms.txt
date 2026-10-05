@@ -1,0 +1,4 @@
+Schlüsselmacher24
+Brand Color Primary: oklch(0.52 0.24 260)
+Framework: Next.js 16+
+Styling: Tailwind CSS v4 (OKLCH)
