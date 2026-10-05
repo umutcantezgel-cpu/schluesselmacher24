@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { Graph } from 'schema-dts';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -12,6 +13,7 @@ import {
 } from 'lucide-react';
 
 import { getPageContent, getServicePages } from '@/lib/data';
+import { getSiteUrl } from '@/lib/site-url';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
@@ -19,7 +21,7 @@ import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
-import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { JsonLd } from '@/components/seo/json-ld';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -81,16 +83,40 @@ export default async function SicherheitstechnikPage() {
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
+  const pageUrl = `${getSiteUrl()}/${ROUTE}`;
+  const pageTitle = page?.headline ?? 'Sicherheitstechnik';
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://codayweb.de/#organization",
+        "name": "Coday Web",
+        "url": "https://codayweb.de",
+        "logo": "https://codayweb.de/logo.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://codayweb.de/#website",
+        "url": "https://codayweb.de",
+        "name": "Coday Web",
+        "publisher": { "@id": "https://codayweb.de/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}/#webpage`,
+        "url": pageUrl,
+        "name": pageTitle,
+        "isPartOf": { "@id": "https://codayweb.de/#website" },
+        "about": { "@id": "https://codayweb.de/#organization" }
+      }
+    ]
+  } satisfies Graph;
+
   return (
     <>
-      <JsonLd
-        data={pageGraphSchema({
-          path: `/${ROUTE}`,
-          name: page?.headline ?? 'Sicherheitstechnik',
-          description: page?.seo.description,
-          crumbs: [{ href: `/${ROUTE}`, label: 'Sicherheitstechnik' }],
-        })}
-      />
+      <JsonLd data={structuredData} />
 
       <PageHeader
         eyebrow="Leistungsbereich"
@@ -147,7 +173,7 @@ export default async function SicherheitstechnikPage() {
               <p className="text-[13px] font-bold uppercase tracking-wider text-foreground-subtle">
                 Ablauf in diesem Bereich
               </p>
-              <p className="mt-2 text-[15px] font-bold text-foreground">{process.label}</p>
+              <h3 className="mt-2 text-[15px] font-bold text-foreground">{process.label}</h3>
               <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
                 {process.hint}
               </p>
@@ -188,7 +214,7 @@ export default async function SicherheitstechnikPage() {
                     {service.summary}
                   </span>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-[12px] font-semibold text-foreground-subtle">
-                    Zum Bereich
+                    Mehr zu {service.title}
                     <ArrowRight
                       size={13}
                       aria-hidden
@@ -302,7 +328,7 @@ export default async function SicherheitstechnikPage() {
       {/* Weiterführende Seiten */}
       {page && page.seo.internalLinks.length > 0 && (
         <Section tight>
-          <SectionHeading eyebrow="Weiterlesen" title="Passende Seiten" />
+          <SectionHeading eyebrow="Ergänzende Themen" title="Passende Seiten" />
           <ul className="mt-6 flex flex-wrap gap-3">
             {page.seo.internalLinks.map((link) => (
               <li key={link.href}>
