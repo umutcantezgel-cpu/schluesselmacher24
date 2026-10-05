@@ -17,6 +17,8 @@ import { NAV_AREAS, PROCESS_LABELS, QUICK_ENTRIES } from '@/lib/navigation';
 import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
+import { BentoCard, BentoCardBody } from '@/components/visual/bento-card';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
@@ -63,7 +65,8 @@ const TRUST_POINTS = [
   },
 ];
 
-export default async function HomePage() {
+export default async function HomePage({ params, searchParams }: { params: Promise<{ id?: string }>; searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  await Promise.all([params, searchParams]);
   const [page, settings, guides] = await Promise.all([
     getPageContent(''),
     getSettings(),
@@ -227,18 +230,116 @@ export default async function HomePage() {
           lead="Wir arbeiten wie ein Fachbetrieb, nicht wie ein Vermittler."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {TRUST_POINTS.map((point) => (
-            <li key={point.title}>
-              <Card className="h-full">
-                <CardBody>
-                  <p className="text-[15px] font-bold text-foreground">{point.title}</p>
-                  <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">{point.body}</p>
-                </CardBody>
-              </Card>
-            </li>
+            <div key={point.title}>
+              <BentoCard className="h-full">
+                <BentoCardBody className="flex flex-col h-full">
+                  <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mb-4">{point.title}</h3>
+                  <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">{point.body}</p>
+                  <div className="mt-4 flex-1 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)] space-y-4">
+                    <p>
+                      Unsere Fachkompetenz spiegelt sich in jedem Projekt wider. Wir setzen auf modernste Technologien und bewährte handwerkliche Methoden, um Ihnen die besten Sicherheitslösungen zu bieten. Ob es sich um eine kleine Reparatur oder die Planung und Installation einer komplexen Schließanlage handelt, wir gehen jede Aufgabe mit der gleichen Sorgfalt und Professionalität an.
+                    </p>
+                    <p>
+                      Die Zufriedenheit unserer Kunden steht für uns an erster Stelle. Wir beraten Sie umfassend und individuell, um die für Sie optimale Lösung zu finden. Dabei berücksichtigen Ihre spezifischen Anforderungen und Ihr Budget. Unsere transparenten Angebote geben Ihnen Planungssicherheit und schützen Sie vor bösen Überraschungen. Vertrauen Sie auf unsere langjährige Erfahrung und unser Engagement für Ihre Sicherheit.
+                    </p>
+                  </div>
+                </BentoCardBody>
+              </BentoCard>
+            </div>
           ))}
-        </ul>
+        </div>
+
+        <div className="mt-24 grid gap-12 lg:grid-cols-2 items-start">
+          <div>
+            <SectionHeading
+              eyebrow="Methodik & Fachwissen"
+              title="Architektonische Methodik für Ihre Sicherheit"
+              lead="Unser Ansatz kombiniert bewährte Verfahren mit modernster Technologie, um ein Höchstmaß an Sicherheit zu gewährleisten. Jedes Gebäude, jede Tür und jeder Raum erfordert eine individuelle Betrachtung. Wir arbeiten systematisch, präzise und zukunftsorientiert."
+            />
+            <div className="mt-12 grid gap-8">
+              <BentoCard>
+                <BentoCardBody>
+                  <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">1. Detaillierte Bestandsaufnahme & Analyse</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                    Jedes Projekt beginnt mit einer umfassenden Analyse der bestehenden Situation. Wir prüfen Ihre aktuellen Sicherheitsvorkehrungen, identifizieren Schwachstellen und bewerten potenzielle Risiken. Diese gründliche Bestandsaufnahme bildet das Fundament für alle weiteren Planungsschritte.
+                  </p>
+                  <h3 className="mt-8 text-xl font-bold text-[oklch(0.16_0.02_260)]">2. Individuelle Konzeptentwicklung & Architektur</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                    Basierend auf der Bestandsaufnahme entwickeln wir ein maßgeschneidertes Sicherheitskonzept. Wir kombinieren mechanische, elektronische und organisatorische Maßnahmen zu einem kohärenten Gesamtsystem.
+                  </p>
+                </BentoCardBody>
+              </BentoCard>
+              <BentoCard>
+                <BentoCardBody>
+                  <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">3. Fachgerechte Installation & Integration</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                    Unsere qualifizierten Techniker übernehmen die fachgerechte Installation aller Komponenten. Wir verwenden ausschließlich hochwertige Produkte renommierter Hersteller. Die Installation erfolgt sauber, termingerecht und unter Einhaltung aller relevanten Normen.
+                  </p>
+                  <h3 className="mt-8 text-xl font-bold text-[oklch(0.16_0.02_260)]">4. Übergabe, Einweisung & Lifecycle-Management</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                    Nach Abschluss der Installation übergeben wir Ihnen die funktionsfähige Anlage. Wir weisen Sie ausführlich in die Bedienung ein und übergeben Ihnen alle relevanten Dokumentationen. Auch nach der Inbetriebnahme stehen wir Ihnen für Wartung und Service zur Verfügung.
+                  </p>
+                </BentoCardBody>
+              </BentoCard>
+            </div>
+          </div>
+
+          <div className="sticky top-8">
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+
+        <div className="mt-24">
+          <SectionHeading
+            eyebrow="Häufige Fragen"
+            title="Umfassende Antworten auf Experten-Niveau (FAQ)"
+            lead="Transparenz ist uns wichtig. Hier beantworten wir die häufigsten und wichtigsten Fragen detailliert und fundiert."
+          />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6" style={{ gridTemplateRows: 'subgrid' }}>
+            <BentoCard>
+              <BentoCardBody>
+                <h4 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">Wie unterscheiden sich die Sicherheitsklassen von Schließzylindern?</h4>
+                <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  Schließzylinder werden in verschiedene Widerstandsklassen eingeteilt. Sie definieren den Schutz gegen Aufbohren, Kernziehen und Picking. Für Außentüren empfehlen wir mindestens VdS-Klasse B oder Bz (mit Ziehschutz).
+                </p>
+              </BentoCardBody>
+            </BentoCard>
+            <BentoCard>
+              <BentoCardBody>
+                <h4 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">Was bedeutet &quot;gleichschließende Anlage&quot; im Detail?</h4>
+                <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  Bei einer gleichschließenden Anlage können Sie mehrere unterschiedliche Türen mit ein und demselben Schlüssel bedienen. Dies reduziert den Umfang Ihres Schlüsselbundes drastisch.
+                </p>
+              </BentoCardBody>
+            </BentoCard>
+            <BentoCard>
+              <BentoCardBody>
+                <h4 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">Ab wann rechnet sich ein elektronisches Zutrittssystem?</h4>
+                <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  Ein elektronisches System rechnet sich häufig schon bei mittleren Unternehmen oder bei Gebäuden mit hoher Fluktuation. Bei Schlüsselverlust müssen keine mechanischen Zylinder mehr getauscht werden.
+                </p>
+              </BentoCardBody>
+            </BentoCard>
+            <BentoCard>
+              <BentoCardBody>
+                <h4 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">Welche Möglichkeiten der Nachrüstung gibt es für bestehende Haustüren?</h4>
+                <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  Bestehende Türen können signifikant aufgewertet werden, ohne die komplette Tür zu tauschen. Zur Basis-Nachrüstung gehören Panzerriegel oder Stangenschlösser, die die Tür über die gesamte Breite sichern.
+                </p>
+              </BentoCardBody>
+            </BentoCard>
+            <BentoCard className="md:col-span-2">
+              <BentoCardBody>
+                <h4 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">Wie verhält es sich mit dem Datenschutz bei Video- oder Zutrittsprotokollierung?</h4>
+                <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                  Datenschutz ist ein zentraler Aspekt jeder Sicherheitsplanung. Die Erfassung von Zutrittsdaten oder Videomaterial unterliegt strengen gesetzlichen Auflagen (DSGVO). Videokameras dürfen beispielsweise keinen öffentlichen Raum oder fremde Grundstücke erfassen. Wir beraten Sie bei der technischen Auslegung rechtssicher.
+                </p>
+              </BentoCardBody>
+            </BentoCard>
+          </div>
+        </div>
       </Section>
 
       {/* Shop-Teaser */}
