@@ -1,0 +1,12 @@
+# Architecture Blueprint Summary
+
+Framework: Next.js 16+ App Router, React 19.2+, TypeScript 5.5+
+Styling: Tailwind CSS v4 (OKLCH Light Mode)
+Typography: Swiss Modernist
+Brand Primary: oklch(0.52 0.24 260)
+Total Routes Audited: 48
+
+Detailed blueprints can be found in:
+- .jules/revolution-plan.json
+- .jules/architecture-matrix.md
+- .jules/codebase-dna.json
