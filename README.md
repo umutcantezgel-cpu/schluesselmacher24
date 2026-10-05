@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architektur-Blueprint
+Das Repository wurde durch JC-AUDITOR-ARCHITECT-v1 analysiert.
+Eine vollständige Architektur-Matrix befindet sich in `.jules/architecture-matrix.md` und der
+Transformationsplan in `.jules/revolution-plan.json`.
