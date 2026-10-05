@@ -1,0 +1,9 @@
+# SCHLÜSSELMACHER24 - Architecture Sync
+
+This repository contains the Next.js 16+, React 19.2+, TypeScript 5.5+ application for Schlüsselmacher24.
+
+Current phase: Stage 1 Auditor Architect Master Blueprinting
+
+Check `.jules/architecture-matrix.md` for the current state of the architecture matrix.
+Check `.jules/revolution-plan.json` for the master transformation queue.
+Check `.jules/codebase-dna.json` for the codebase DNA profiling.
