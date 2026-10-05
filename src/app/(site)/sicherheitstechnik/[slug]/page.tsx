@@ -11,6 +11,7 @@ import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const AREA = 'sicherheitstechnik';
 const AREA_LABEL = 'Sicherheitstechnik';
@@ -75,6 +76,17 @@ export default async function SecurityDetailPage(props: PageProps) {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: `/${AREA}/${page.slug}`,
+          name: page.title,
+          description: page.summary,
+          crumbs: [
+            { href: `/${AREA}`, label: AREA_LABEL },
+            { href: `/${AREA}/${page.slug}`, label: page.title },
+          ],
+        })}
+      />
       <PageHeader
         eyebrow={AREA_LABEL}
         title={page.title}
