@@ -1,0 +1,2 @@
+This project follows the Swiss Light Mode Design Doctrine, powered by Next.js 16+, Turbopack, and Tailwind CSS v4 in the OKLCH color space.
+Total active routes: 52
