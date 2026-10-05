@@ -1,0 +1,11 @@
+# SCHLÜSSELMACHER24 - Architecture & Codebase Context
+
+Dies ist die statische KI-Dokumentation.
+
+## Architektur
+- Next.js 16+ App Router, React 19.2+, TypeScript 5.5+
+- UI: Tailwind CSS v4, OKLCH Light Mode Design System
+- Formulare: React 19 Server Actions, useActionState, useOptimistic
+- Status: Stage 1 Audited
+
+Siehe .jules/architecture-matrix.md und .jules/revolution-plan.json für Details zur Transformation.

@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| Route | File | Current Words | Target Words | Schema | CWV | Module |
+|---|---|---|---|---|---|---|
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 225 | 900 | PENDING | PENDING | DynamicFilter_1 |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 360 | 900 | PENDING | PENDING | DynamicFilter_2 |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 222 | 900 | PENDING | PENDING | DynamicFilter_3 |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 1794 | 2294 | PENDING | PENDING | DynamicFilter_4 |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 262 | 900 | PENDING | PENDING | SecureCheckoutPipeline_5 |
+| /kasse | src/app/(site)/kasse/page.tsx | 243 | 900 | PENDING | PENDING | SecureCheckoutPipeline_6 |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 498 | 998 | PENDING | PENDING | DynamicFilter_7 |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 735 | 1235 | PENDING | PENDING | DynamicFilter_8 |
+| / | src/app/(site)/page.tsx | 1131 | 1631 | PENDING | PENDING | DynamicFilter_9 |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1021 | 1521 | PENDING | PENDING | DynamicFilter_10 |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 645 | 1145 | PENDING | PENDING | DynamicFilter_11 |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 330 | 900 | PENDING | PENDING | DynamicFilter_12 |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 1785 | 2285 | PENDING | PENDING | DynamicFilter_13 |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 494 | 994 | PENDING | PENDING | DynamicFilter_14 |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1300 | 1800 | PENDING | PENDING | SecureCheckoutPipeline_15 |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 2082 | 2582 | PENDING | PENDING | DynamicFilter_16 |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 311 | 900 | PENDING | PENDING | AdvancedConfigurator_17 |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2481 | 2981 | PENDING | PENDING | DynamicFilter_18 |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 383 | 900 | PENDING | PENDING | AdvancedConfigurator_19 |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 1874 | 2374 | PENDING | PENDING | DynamicFilter_20 |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 369 | 900 | PENDING | PENDING | AdvancedConfigurator_21 |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 108 | 900 | PENDING | PENDING | DynamicFilter_22 |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 152 | 900 | PENDING | PENDING | DynamicFilter_23 |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 1579 | 2079 | PENDING | PENDING | DynamicFilter_24 |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 656 | 1156 | PENDING | PENDING | DynamicFilter_25 |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 475 | 975 | PENDING | PENDING | DynamicFilter_26 |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 249 | 900 | PENDING | PENDING | DynamicFilter_27 |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 229 | 900 | PENDING | PENDING | DynamicFilter_28 |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 428 | 928 | PENDING | PENDING | DynamicFilter_29 |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 371 | 900 | PENDING | PENDING | DynamicFilter_30 |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 417 | 917 | PENDING | PENDING | DynamicFilter_31 |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 716 | 1216 | PENDING | PENDING | DynamicFilter_32 |
+| /artikel | src/app/(site)/artikel/page.tsx | 657 | 1157 | PENDING | PENDING | DynamicFilter_33 |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 935 | 1435 | PENDING | PENDING | DynamicFilter_34 |
+| /standorte | src/app/(site)/standorte/page.tsx | 250 | 900 | PENDING | PENDING | DynamicFilter_35 |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 406 | 906 | PENDING | PENDING | DynamicFilter_36 |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 719 | 1219 | PENDING | PENDING | VehicleSelector_37 |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1224 | 1724 | PENDING | PENDING | VehicleSelector_38 |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 980 | 1480 | PENDING | PENDING | VehicleSelector_39 |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 1092 | 1592 | PENDING | PENDING | VehicleSelector_40 |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1223 | 1723 | PENDING | PENDING | VehicleSelector_41 |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 519 | 1019 | PENDING | PENDING | VehicleSelector_42 |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2003 | 2503 | PENDING | PENDING | VehicleSelector_43 |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1134 | 1634 | PENDING | PENDING | VehicleSelector_44 |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1190 | 1690 | PENDING | PENDING | VehicleSelector_45 |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1208 | 1708 | PENDING | PENDING | VehicleSelector_46 |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1043 | 1543 | PENDING | PENDING | VehicleSelector_47 |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1122 | 1622 | PENDING | PENDING | VehicleSelector_48 |
