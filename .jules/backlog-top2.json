@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-05T13:00:00.000Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf Visueller Hebelwirkung (0.35), Nutzer-Mehrwert/ROI (0.35) und Machbarkeit (0.30).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_014",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/visual/component-var-14.tsx",
+      "title": "Elastische Drag-Indikatoren für horizontale Slider",
+      "specification": "Integration von kinetischer Interaktion für 'Elastische Drag-Indikatoren für horizontale Slider' unter Wahrung der Schweizer Marken-DNA, Nutzung von oklch-Farbpalette und Beachtung von motion-reduce Fallbacks.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_042",
+      "category": "SEMANTIC_AUTHORITY",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/layout/component-var-42.tsx",
+      "title": "Detaillierte Materialkunde: Messing vs. Neusilber",
+      "specification": "Inhaltliche und semantische Erweiterung der Route für 'Detaillierte Materialkunde: Messing vs. Neusilber' auf über 800 Wörter, strukturierte H-Tags, Vermeidung von Fülltext, Integration von Schema.org Daten.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
