@@ -1,0 +1,1187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-06T19:18:25.343Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /admin/[[...segments]] um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /admin/[[...segments]]",
+        "Umfassende Fach-FAQ mit technischen Details zu /admin/[[...segments]]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /ratgeber um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /ratgeber",
+        "Umfassende Fach-FAQ mit technischen Details zu /ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /ratgeber/[slug] um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /ratgeber/[slug]",
+        "Umfassende Fach-FAQ mit technischen Details zu /ratgeber/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /schluessel-nach-vorlage/anfrage um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /schluessel-nach-vorlage/anfrage",
+        "Umfassende Fach-FAQ mit technischen Details zu /schluessel-nach-vorlage/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseCalculator",
+        "target_file": "src/components/calculator/enterprisecalculator.tsx",
+        "action_file": "src/actions/enterprisecalculator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /schluessel-nach-vorlage um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /schluessel-nach-vorlage",
+        "Umfassende Fach-FAQ mit technischen Details zu /schluessel-nach-vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /warenkorb um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /warenkorb",
+        "Umfassende Fach-FAQ mit technischen Details zu /warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /kasse um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /kasse",
+        "Umfassende Fach-FAQ mit technischen Details zu /kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /schluessel-nach-code um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /schluessel-nach-code",
+        "Umfassende Fach-FAQ mit technischen Details zu /schluessel-nach-code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /schluessel-nach-code/[slug] um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /schluessel-nach-code/[slug]",
+        "Umfassende Fach-FAQ mit technischen Details zu /schluessel-nach-code/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs Startseite um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für unsere Kunden",
+        "Umfassende Fach-FAQ mit technischen Details zu Schließtechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /sicherheitstechnik um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /sicherheitstechnik",
+        "Umfassende Fach-FAQ mit technischen Details zu /sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /sicherheitstechnik/[slug] um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /sicherheitstechnik/[slug]",
+        "Umfassende Fach-FAQ mit technischen Details zu /sicherheitstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /sicherheitstechnik/sicherheitscheck um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /sicherheitstechnik/sicherheitscheck",
+        "Umfassende Fach-FAQ mit technischen Details zu /sicherheitstechnik/sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /tuer-und-schliesstechnik um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /tuer-und-schliesstechnik",
+        "Umfassende Fach-FAQ mit technischen Details zu /tuer-und-schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /tuer-und-schliesstechnik/[slug] um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /tuer-und-schliesstechnik/[slug]",
+        "Umfassende Fach-FAQ mit technischen Details zu /tuer-und-schliesstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /bestellung/[id] um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /bestellung/[id]",
+        "Umfassende Fach-FAQ mit technischen Details zu /bestellung/[id]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /gleichschliessende-zylinder um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /gleichschliessende-zylinder",
+        "Umfassende Fach-FAQ mit technischen Details zu /gleichschliessende-zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /gleichschliessende-zylinder/konfigurator um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /gleichschliessende-zylinder/konfigurator",
+        "Umfassende Fach-FAQ mit technischen Details zu /gleichschliessende-zylinder/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseCalculator",
+        "target_file": "src/components/calculator/enterprisecalculator.tsx",
+        "action_file": "src/actions/enterprisecalculator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /elektronische-zutrittsloesungen um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /elektronische-zutrittsloesungen",
+        "Umfassende Fach-FAQ mit technischen Details zu /elektronische-zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /elektronische-zutrittsloesungen/konfigurator um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /elektronische-zutrittsloesungen/konfigurator",
+        "Umfassende Fach-FAQ mit technischen Details zu /elektronische-zutrittsloesungen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseCalculator",
+        "target_file": "src/components/calculator/enterprisecalculator.tsx",
+        "action_file": "src/actions/enterprisecalculator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /schliessanlagen um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /schliessanlagen",
+        "Umfassende Fach-FAQ mit technischen Details zu /schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /schliessanlagen/konfigurator um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /schliessanlagen/konfigurator",
+        "Umfassende Fach-FAQ mit technischen Details zu /schliessanlagen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseCalculator",
+        "target_file": "src/components/calculator/enterprisecalculator.tsx",
+        "action_file": "src/actions/enterprisecalculator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /service-und-termin/terminstatus um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /service-und-termin/terminstatus",
+        "Umfassende Fach-FAQ mit technischen Details zu /service-und-termin/terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /service-und-termin/anfrage um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /service-und-termin/anfrage",
+        "Umfassende Fach-FAQ mit technischen Details zu /service-und-termin/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseCalculator",
+        "target_file": "src/components/calculator/enterprisecalculator.tsx",
+        "action_file": "src/actions/enterprisecalculator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /service-und-termin um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /service-und-termin",
+        "Umfassende Fach-FAQ mit technischen Details zu /service-und-termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /service-und-termin/vor-ort um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /service-und-termin/vor-ort",
+        "Umfassende Fach-FAQ mit technischen Details zu /service-und-termin/vor-ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /service-und-termin/kontakt um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /service-und-termin/kontakt",
+        "Umfassende Fach-FAQ mit technischen Details zu /service-und-termin/kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /rechtliches/impressum um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /rechtliches/impressum",
+        "Umfassende Fach-FAQ mit technischen Details zu /rechtliches/impressum"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /rechtliches/cookie-einstellungen um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /rechtliches/cookie-einstellungen",
+        "Umfassende Fach-FAQ mit technischen Details zu /rechtliches/cookie-einstellungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /rechtliches/versand-und-zahlung um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /rechtliches/versand-und-zahlung",
+        "Umfassende Fach-FAQ mit technischen Details zu /rechtliches/versand-und-zahlung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /rechtliches/widerruf um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /rechtliches/widerruf",
+        "Umfassende Fach-FAQ mit technischen Details zu /rechtliches/widerruf"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /rechtliches/agb um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /rechtliches/agb",
+        "Umfassende Fach-FAQ mit technischen Details zu /rechtliches/agb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /rechtliches/datenschutz um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /rechtliches/datenschutz",
+        "Umfassende Fach-FAQ mit technischen Details zu /rechtliches/datenschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /artikel um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /artikel",
+        "Umfassende Fach-FAQ mit technischen Details zu /artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /artikel/[slug] um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /artikel/[slug]",
+        "Umfassende Fach-FAQ mit technischen Details zu /artikel/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /standorte um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /standorte",
+        "Umfassende Fach-FAQ mit technischen Details zu /standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /standorte/[city] um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /standorte/[city]",
+        "Umfassende Fach-FAQ mit technischen Details zu /standorte/[city]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/marken um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/marken",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/marken/[make]/[model] um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/marken/[make]/[model]",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/marken/[make]/[model]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/marken/[make] um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/marken/[make]",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/marken/[make]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/funkschluessel um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/funkschluessel",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/programmieren um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/programmieren",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/programmieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/anfrage um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/anfrage",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseCalculator",
+        "target_file": "src/components/calculator/enterprisecalculator.tsx",
+        "action_file": "src/actions/enterprisecalculator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/kopieren um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/kopieren",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/kopieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/nachmachen um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/nachmachen",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/smart-key um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/smart-key",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/smart-key"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/schluesselbart-fraesen um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/schluesselbart-fraesen",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/schluesselbart-fraesen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs /autoschluessel/fahrzeugoeffnung um detaillierte Leistungsbeschreibung",
+        "Institutionelle Prozessabläufe und Sicherheitsstandards für /autoschluessel/fahrzeugoeffnung",
+        "Umfassende Fach-FAQ mit technischen Details zu /autoschluessel/fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveBentoFilter",
+        "target_file": "src/components/calculator/interactivebentofilter.tsx",
+        "action_file": "src/actions/interactivebentofilter-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
