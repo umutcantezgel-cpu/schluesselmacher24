@@ -2,22 +2,15 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   ArrowRight,
-  CalendarClock,
-  ClipboardList,
-  KeyRound,
-  Layers,
-  Package,
-  ScanLine,
-  ShieldCheck,
-  Wrench,
 } from 'lucide-react';
 
 import { getGuides, getPageContent, getSettings } from '@/lib/data';
-import { NAV_AREAS, PROCESS_LABELS, QUICK_ENTRIES } from '@/lib/navigation';
+import { NAV_AREAS } from '@/lib/navigation';
 import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { SpatialBentoGrid } from '@/components/showcase/spatial-bento-grid';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
 
@@ -32,17 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const AREA_ICONS: Record<string, typeof KeyRound> = {
-  autoschluessel: KeyRound,
-  'schluessel-nach-vorlage': ScanLine,
-  'schluessel-nach-code': Package,
-  'gleichschliessende-zylinder': Layers,
-  schliessanlagen: ClipboardList,
-  'elektronische-zutrittsloesungen': ShieldCheck,
-  'tuer-und-schliesstechnik': Wrench,
-  sicherheitstechnik: ShieldCheck,
-  'service-und-termin': CalendarClock,
-};
+
 
 const TRUST_POINTS = [
   {
@@ -63,7 +46,10 @@ const TRUST_POINTS = [
   },
 ];
 
+
+
 export default async function HomePage() {
+
   const [page, settings, guides] = await Promise.all([
     getPageContent(''),
     getSettings(),
@@ -156,33 +142,7 @@ export default async function HomePage() {
           lead="Jeder Bereich hat einen klaren Ablauf — vom direkten Kauf bis zur Projektplanung."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {QUICK_ENTRIES.map((area) => {
-            const Icon = AREA_ICONS[area.key] ?? KeyRound;
-            return (
-              <li key={area.key}>
-                <Link
-                  href={area.href}
-                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
-                >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary">
-                    <Icon size={19} aria-hidden />
-                  </span>
-                  <span className="mt-4 block text-[15px] font-bold text-foreground group-hover:text-primary">
-                    {area.label}
-                  </span>
-                  <span className="mt-1.5 block flex-1 text-[13px] leading-relaxed text-foreground-muted">
-                    {area.summary}
-                  </span>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-[12px] font-semibold text-foreground-subtle">
-                    {PROCESS_LABELS[area.process].label}
-                    <ArrowRight size={13} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <SpatialBentoGrid />
       </Section>
 
       {/* Autoschlüssel-Ablauf */}
@@ -218,6 +178,91 @@ export default async function HomePage() {
           </ol>
         </div>
       </Section>
+
+
+      {/* Fachlicher Tiefgang: Methodik und Expertise */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Unsere Methodik"
+          title="Moderne Schließtechnik trifft auf Handwerkstradition"
+          lead="Als zertifizierter Fachbetrieb vereinen wir jahrzehntelange Erfahrung mit modernster CNC- und Lasertechnik, um Ihnen maximale Präzision und Sicherheit zu garantieren."
+        />
+
+        <div className="mt-10 grid gap-10 md:grid-cols-2 text-[oklch(0.32_0.02_260)]">
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">Technologische Exzellenz in der Schlüsselanfertigung</h3>
+            <p>
+              Die moderne Schlüssel- und Schließtechnik hat sich in den letzten Jahren rasant entwickelt. Wo früher rein mechanische Kopierfräsen zum Einsatz kamen, arbeiten wir heute mit hochpräzisen, computergesteuerten (CNC) Schlüsselfräsmaschinen. Diese erlauben es uns, nicht nur einfache Zylinderschlüssel, sondern auch komplexe Bahnenschlüssel, Wendeschlüssel und Hochsicherheitsschlüssel mit Toleranzen im Hundertstel-Millimeter-Bereich anzufertigen.
+            </p>
+            <p>
+              Besonders bei Autoschlüsseln zeigt sich der technologische Wandel deutlich. Ein moderner Fahrzeugschlüssel ist ein hochkomplexes elektronisches Bauteil, das neben dem mechanischen Bart einen Transponder für die Wegfahrsperre und eine Platine für die Funkfernbedienung enthält. Unsere Werkstatt ist mit modernsten Diagnose- und Programmiergeräten ausgestattet, die es uns ermöglichen, Autoschlüssel für über 90% aller auf dem europäischen Markt befindlichen Fahrzeuge anzulernen – vom Kleinwagen bis zum Premium-SUV.
+            </p>
+            <p>
+              Dabei greifen wir ausschließlich auf Rohlinge in Erstausrüsterqualität zurück. Dies garantiert nicht nur eine einwandfreie Funktion, sondern auch eine Langlebigkeit, die dem Original in nichts nachsteht. Bei der Programmierung halten wir uns streng an die Herstellervorgaben und dokumentieren jeden Schritt sorgfältig.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">Architektur sicherer Schließanlagen</h3>
+            <p>
+              Die Planung und Konzeption von Schließanlagen erfordert ein tiefgreifendes Verständnis für organisatorische Abläufe und Sicherheitsanforderungen. Wir begleiten unsere Kunden von der ersten Bedarfsanalyse über die Erstellung eines detaillierten Schließplans bis hin zur fachgerechten Montage und anschließenden Wartung.
+            </p>
+            <p>
+              Ob es sich um eine überschaubare Zentralschlossanlage für ein Mehrfamilienhaus, eine komplexe General-Hauptschlüsselanlage für ein Firmengebäude oder eine moderne elektronische Zutrittskontrollanlage handelt – wir entwickeln maßgeschneiderte Lösungen. Dabei legen wir besonderen Wert auf die Skalierbarkeit der Systeme. Eine gut geplante Schließanlage muss in der Lage sein, mit Ihrem Unternehmen zu wachsen und sich an veränderte Organisationsstrukturen anzupassen.
+            </p>
+            <p>
+              Wir setzen konsequent auf mechanische und mechatronische Systeme renommierter deutscher und europäischer Hersteller (wie z.B. BKS, DOM, ABUS, KESO). Diese Produkte zeichnen sich durch höchste Manipulationssicherheit, patentierten Kopierschutz und eine garantierte Nachlieferbarkeit von Ersatzschlüsseln und -zylindern aus. Für Bereiche mit stark fluktuierendem Personenverkehr empfehlen wir zunehmend elektronische Systeme, die eine flexible Rechtevergabe und eine schnelle Reaktion bei Schlüsselverlust ermöglichen.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Fachlicher FAQ */}
+      <Section>
+        <SectionHeading
+          eyebrow="Experten-FAQ"
+          title="Häufige Fragen zur Schließtechnik"
+          lead="Fundierte Antworten auf technische und organisatorische Fragen rund um Schlüssel und Schließzylinder."
+        />
+
+        <div className="mt-10 space-y-8">
+          <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wie funktioniert das Klonen eines Transponders für einen Autoschlüssel?</h4>
+            <p className="mt-3 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Beim Klonen eines Transponders lesen wir die kryptografischen Daten des Originalschlüssels über eine spezielle Antenne aus. Bei älteren Fahrzeugen (Festcode) ist dies ein direkter Kopiervorgang. Bei modernen Crypto-Transpondern (z.B. Megamos Crypto, Texas Crypto) müssen wir zunächst die Verschlüsselung durch ein Sniffing-Verfahren am Fahrzeug oder durch eine Online-Berechnung am Server decodieren. Anschließend wird der ermittelte Code auf einen blanko Transponder (Emulator) geschrieben. Das Steuergerät des Fahrzeugs kann den geklonten Schlüssel nicht vom Original unterscheiden, weshalb kein zusätzliches Anlernen über die OBD-Schnittstelle notwendig ist.
+            </p>
+          </div>
+
+          <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Was ist der Unterschied zwischen einem Zylinderschloss mit Not- und Gefahrenfunktion und einem Standardzylinder?</h4>
+            <p className="mt-3 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Ein Profilzylinder mit Not- und Gefahrenfunktion (N&G), auch Prioritätsfunktion genannt, verfügt über eine spezielle Kupplung im Inneren. Diese federgelagerte Mechanik ermöglicht es, die Schließnase auch dann zu drehen, wenn auf der gegenüberliegenden Seite bereits ein Schlüssel im Zylinder steckt. Bei einem Standardzylinder blockiert der innere Schlüssel die Kupplung, sodass von außen nicht aufgeschlossen werden kann. Die N&G-Funktion ist besonders bei Wohnungs- und Haustüren dringend zu empfehlen, um ein ungewolltes Aussperren zu verhindern und in Notfällen (z.B. medizinischen Notlagen) jederzeit Zugang gewähren zu können.
+            </p>
+          </div>
+
+          <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Warum lassen sich manche Schlüssel nur gegen Vorlage einer Sicherungskarte nachmachen?</h4>
+            <p className="mt-3 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Sicherungskarten sind ein integraler Bestandteil von Hochsicherheits- und Schließanlagensystemen. Sie dienen als Legitimation gegenüber dem Schlüsseldienst oder Hersteller. Die entsprechenden Schlüsselprofile sind rechtlich (durch Patente oder Markenrechte) und teilweise auch technisch (durch bewegliche Elemente im Schlüssel) vor unberechtigten Kopien geschützt. Die Rohlinge für diese geschützten Profile sind auf dem freien Markt nicht erhältlich. Wenn wir einen solchen Schlüssel bestellen oder anfertigen, müssen wir die Sicherungskarte verifizieren und den Vorgang dokumentieren. Dies schützt Sie als Anlagenbetreiber davor, dass z.B. ehemalige Mitarbeiter unbemerkt Nachschlüssel anfertigen lassen.
+            </p>
+          </div>
+
+          <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Welche Sicherheitsmerkmale sollte ein moderner Profilzylinder aufweisen?</h4>
+            <p className="mt-3 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Ein hochwertiger Profilzylinder (ab SKG** oder VdS Klasse B) sollte mindestens über einen Bohrschutz und einen Ziehschutz verfügen. Der Bohrschutz wird durch gehärtete Stahlstifte im Gehäuse und im Kern realisiert, die ein Aufbohren des Zylinders deutlich erschweren. Der Ziehschutz (häufig in Kombination mit einem passenden Schutzbeschlag) verhindert das gewaltsame Herausziehen des Zylinderkerns. Zusätzliche Sicherheitsmerkmale sind Anti-Pick-Stifte (erschweren das manipulierte Öffnen mit Spezialwerkzeugen) und ein Schlagschlüssel-Schutz. Für maximale Sicherheit empfehlen wir Zylinder mit interaktiven Elementen im Schlüssel (z.B. schwimmend gelagerte Kugeln), die einen 3D-Kopierschutz bieten.
+            </p>
+          </div>
+
+          <div className="pb-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wann ist der Wechsel von einer mechanischen zu einer elektronischen Schließanlage sinnvoll?</h4>
+            <p className="mt-3 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Der Wechsel (oder die Ergänzung) zu einer elektronischen Zutrittskontrolle ist immer dann betriebswirtschaftlich und sicherheitstechnisch sinnvoll, wenn in Ihrem Objekt eine hohe Fluktuation von Personen herrscht (z.B. durch wechselnde Mitarbeiter, Dienstleister oder Mieter). Bei einer rein mechanischen Anlage erfordert ein verlorener Generalhauptschlüssel im schlimmsten Fall den kostspieligen Austausch aller Zylinder. Bei einem elektronischen System wird das verlorene Transpondermedium (Karte oder Chip) einfach im System gesperrt – der Zylinder bleibt erhalten. Zudem bieten elektronische Systeme die Möglichkeit, zeitlich begrenzte Zutrittsrechte zu vergeben (z.B. für Reinigungskräfte nur Dienstagvormittags) und im Verdachtsfall Schließereignisse lückenlos zu protokollieren.
+            </p>
+          </div>
+        </div>
+      </Section>
+
 
       {/* Vertrauen */}
       <Section>
