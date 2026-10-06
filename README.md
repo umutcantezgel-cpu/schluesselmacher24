@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Recent Expansions
+- **Service und Termin**: Enhanced content with deep architectural and technological methodology (>800 words), comparison matrix, and an interactive **Enterprise ROI- und Ladezeit-Kalkulator**. The module is fully isolated and utilizes modern Next.js 16 APIs (Server Actions, useOptimistic).
