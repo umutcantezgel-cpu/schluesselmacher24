@@ -69,7 +69,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       className={`${display.variable} ${body.variable} ${mono.variable} h-full`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col overflow-x-clip">
         <a
           href="#inhalt"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-primary-foreground"
