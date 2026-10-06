@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import {
   ArrowRight,
   BellRing,
@@ -13,15 +14,19 @@ import {
 
 import { getPageContent, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
-import { Alert } from '@/components/ui/alert';
+
 import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
+
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'sicherheitstechnik';
+const Alert = dynamic(() => import('@/components/ui/alert').then((mod) => mod.Alert));
+const Card = dynamic(() => import('@/components/ui/card').then((mod) => mod.Card));
+const CardBody = dynamic(() => import('@/components/ui/card').then((mod) => mod.CardBody));
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
@@ -74,6 +79,7 @@ const PRINCIPLE = [
 ];
 
 export default async function SicherheitstechnikPage() {
+
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -136,6 +142,7 @@ export default async function SicherheitstechnikPage() {
 
           <div className="space-y-6">
             <ImagePlaceholder
+              priority={true}
               slot={{
                 motif: 'Objektfoto: Hauseingang mit Außenkamera, Türkontakt und Sicherheitsbeschlag',
                 ratio: '4/3',
