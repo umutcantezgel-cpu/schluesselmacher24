@@ -1,24 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  ArrowRight,
-  CalendarClock,
-  ClipboardList,
-  KeyRound,
-  Layers,
-  Package,
-  ScanLine,
-  ShieldCheck,
-  Wrench,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 import { getGuides, getPageContent, getSettings } from '@/lib/data';
-import { NAV_AREAS, PROCESS_LABELS, QUICK_ENTRIES } from '@/lib/navigation';
+import { NAV_AREAS } from '@/lib/navigation';
 import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { SpatialBentoGrid } from '@/components/showcase/spatial-bento-grid';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -32,17 +23,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const AREA_ICONS: Record<string, typeof KeyRound> = {
-  autoschluessel: KeyRound,
-  'schluessel-nach-vorlage': ScanLine,
-  'schluessel-nach-code': Package,
-  'gleichschliessende-zylinder': Layers,
-  schliessanlagen: ClipboardList,
-  'elektronische-zutrittsloesungen': ShieldCheck,
-  'tuer-und-schliesstechnik': Wrench,
-  sicherheitstechnik: ShieldCheck,
-  'service-und-termin': CalendarClock,
-};
 
 const TRUST_POINTS = [
   {
@@ -148,41 +128,27 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Schnelleinstiege */}
+      {/* Leistungsspektrum mit Spatial Bento Grid */}
       <Section tight>
         <SectionHeading
-          eyebrow="Schnelleinstieg"
-          title="Wobei können wir helfen?"
-          lead="Jeder Bereich hat einen klaren Ablauf — vom direkten Kauf bis zur Projektplanung."
+          eyebrow="Leistungsspektrum"
+          title="Präzisionsarbeit in Mechanik und Elektronik"
+          lead="Wir beherrschen die gesamte Bandbreite moderner Schließ- und Sicherheitstechnik. Von der feinteiligen Fräsung nach Code bis zur Architektur komplexer Zutrittskonzepte."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {QUICK_ENTRIES.map((area) => {
-            const Icon = AREA_ICONS[area.key] ?? KeyRound;
-            return (
-              <li key={area.key}>
-                <Link
-                  href={area.href}
-                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
-                >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary">
-                    <Icon size={19} aria-hidden />
-                  </span>
-                  <span className="mt-4 block text-[15px] font-bold text-foreground group-hover:text-primary">
-                    {area.label}
-                  </span>
-                  <span className="mt-1.5 block flex-1 text-[13px] leading-relaxed text-foreground-muted">
-                    {area.summary}
-                  </span>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-[12px] font-semibold text-foreground-subtle">
-                    {PROCESS_LABELS[area.process].label}
-                    <ArrowRight size={13} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="prose prose-slate max-w-none text-[oklch(0.32_0.02_260)] leading-relaxed mt-10 mb-6">
+          <p>
+            Die moderne Sicherheitstechnik durchläuft einen fundamentalen Paradigmenwechsel. Die historische Trennung zwischen rein mechanischen Sperren und elektronischer Detektion löst sich auf. Wir als Fachbetrieb positionieren uns exakt an dieser Schnittstelle. Unsere Expertise umfasst nicht nur die klassische Metallverarbeitung – etwa das hochpräzise Fräsen von Zylinderschlüsseln oder die Rekonstruktion verlorener Fahrzeugschlüssel – sondern in gleichem Maße die digitale Architektur vernetzter Zutrittsökosysteme.
+          </p>
+          <p>
+            Ob es um den temporären Entzug digitaler Schließberechtigungen in Echtzeit via Smartphone geht, um die Integration kryptografisch gesicherter Transponder (AES-128) oder um die mechanische Kernaufgabe, eine physische Türhülle gemäß DIN EN 1627 RC3 gegen massive Gewalteinwirkung zu härten: Wir liefern keine isolierten Fragmente, sondern in sich geschlossene, kompromisslose Sicherheitsarchitekturen. Jeder Eingriff, von der einfachen Schließanlage bis zur komplexen Gefahrenmeldeanlage, wird durch unsere detaillierte Methodik evaluiert, strukturiert geplant und handwerklich präzise ausgeführt.
+          </p>
+          <p>
+            Entdecken Sie unsere Schwerpunkte, die wir als hochspezialisierte Domänen betrachten. Jede dieser Domänen verfügt über eigene dedizierte Prozesse, die Sie direkt über die untenstehenden Module initiieren können.
+          </p>
+        </div>
+
+        <SpatialBentoGrid />
       </Section>
 
       {/* Autoschlüssel-Ablauf */}
