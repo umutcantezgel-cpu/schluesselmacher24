@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-06T08:47:54.118Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_054",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_component_file": "src/components/calculator/security-roi-calculator.tsx",
+      "title": "Interaktiver Sicherheits-ROI und Budget-Kalkulator",
+      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Sicherheitscheck-Seite ein und erweitere den umgebenden Fließtext auf >800 Wörter.",
+      "score": 9.85,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_012",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts. Erweitere den Text auf >800 Wörter.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
