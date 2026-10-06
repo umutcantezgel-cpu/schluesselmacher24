@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-06T11:01:47.835Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel (Visuelle Wirkung, ROI, Machbarkeit) zur Maximierung bestehender Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_PSYCHOLOGIE_UND_NATIVE_WERKZEUGE",
+      "target_existing_route": "app/(site)/schliessanlagen/page.tsx",
+      "target_component_file": "components/calculator/enterprise-roi-calculator.tsx",
+      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
+      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Schließanlagen-Seite ein und erweitere den umgebenden Fließtext auf >800 Wörter.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_004",
+      "category": "AWWWARDS_KINETIK_UND_TAKTILE_INTERAKTION",
+      "target_existing_route": "app/(site)/schliessanlagen/page.tsx",
+      "target_component_file": "components/schliessanlagen/spatial-bento-grid.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "Überführung der bestehenden Feature-Karten auf der Schließanlagen-Seite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
