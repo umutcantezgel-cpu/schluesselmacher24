@@ -1,0 +1,1829 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-06T13:09:26.595Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "current_state": {
+        "word_count": 250,
+        "weaknesses": [
+          "Unused params",
+          "Missing Suspense for Dashboard"
+        ]
+      },
+      "target_state": {
+        "word_count": 900,
+        "content_expansion_topics": [
+          "Payload CMS Entity Overview",
+          "Admin Action Guidelines",
+          "System Status Dashboard"
+        ],
+        "interactive_module": {
+          "type": "DATA_TABLE",
+          "component_name": "AdminEntityDashboard",
+          "target_file": "src/components/interactive/adminentitydashboard.tsx",
+          "action_file": "src/actions/adminentitydashboard-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 900,
+      "content_expansion_topics": [
+        "Payload CMS Entity Overview",
+        "Admin Action Guidelines",
+        "System Status Dashboard"
+      ]
+    },
+    {
+      "priority": 2,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "weaknesses": [
+          "Thin Content",
+          "No structured Schema"
+        ]
+      },
+      "target_state": {
+        "word_count": 1200,
+        "content_expansion_topics": [
+          "Security Best Practices",
+          "Overview of Lock Types",
+          "Burglary Prevention Tips"
+        ],
+        "interactive_module": {
+          "type": "FILTER",
+          "component_name": "RatgeberCategoryFilter",
+          "target_file": "src/components/interactive/ratgebercategoryfilter.tsx",
+          "action_file": "src/actions/ratgebercategoryfilter-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1200,
+      "content_expansion_topics": [
+        "Security Best Practices",
+        "Overview of Lock Types",
+        "Burglary Prevention Tips"
+      ]
+    },
+    {
+      "priority": 3,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "current_state": {
+        "word_count": 600,
+        "weaknesses": [
+          "Synchronous params access",
+          "Missing canonical URL"
+        ]
+      },
+      "target_state": {
+        "word_count": 1500,
+        "content_expansion_topics": [
+          "Deep Dive into Specific Security Topic",
+          "Step-by-Step Implementation Guide",
+          "Expert Opinions & FAQ"
+        ],
+        "interactive_module": {
+          "type": "INTERACTIVE_TOC",
+          "component_name": "ArticleReadingProgress",
+          "target_file": "src/components/interactive/articlereadingprogress.tsx",
+          "action_file": "src/actions/articlereadingprogress-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1500,
+      "content_expansion_topics": [
+        "Deep Dive into Specific Security Topic",
+        "Step-by-Step Implementation Guide",
+        "Expert Opinions & FAQ"
+      ]
+    },
+    {
+      "priority": 4,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "current_state": {
+        "word_count": 150,
+        "weaknesses": [
+          "Basic form without validation",
+          "No file upload progress"
+        ]
+      },
+      "target_state": {
+        "word_count": 850,
+        "content_expansion_topics": [
+          "How to take a good picture of your key",
+          "Security aspects of key copying",
+          "Process timeline"
+        ],
+        "interactive_module": {
+          "type": "WIDGET",
+          "component_name": "KeyPhotoUploadDropzone",
+          "target_file": "src/components/interactive/keyphotouploaddropzone.tsx",
+          "action_file": "src/actions/keyphotouploaddropzone-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "How to take a good picture of your key",
+        "Security aspects of key copying",
+        "Process timeline"
+      ]
+    },
+    {
+      "priority": 5,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "current_state": {
+        "word_count": 400,
+        "weaknesses": [
+          "Missing LCP Priority",
+          "Thin text content"
+        ]
+      },
+      "target_state": {
+        "word_count": 1000,
+        "content_expansion_topics": [
+          "Difference between profile and security keys",
+          "Required identification documents",
+          "Quality guarantee"
+        ],
+        "interactive_module": {
+          "type": "SELECTOR",
+          "component_name": "KeyTypeSelector",
+          "target_file": "src/components/interactive/keytypeselector.tsx",
+          "action_file": "src/actions/keytypeselector-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1000,
+      "content_expansion_topics": [
+        "Difference between profile and security keys",
+        "Required identification documents",
+        "Quality guarantee"
+      ]
+    },
+    {
+      "priority": 6,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "current_state": {
+        "word_count": 200,
+        "weaknesses": [
+          "No upselling items",
+          "Missing trust badges"
+        ]
+      },
+      "target_state": {
+        "word_count": 850,
+        "content_expansion_topics": [
+          "Cart Summary Explanation",
+          "Shipping Costs Calculation",
+          "Secure Payment Assurances"
+        ],
+        "interactive_module": {
+          "type": "CAROUSEL",
+          "component_name": "CartUpsellCarousel",
+          "target_file": "src/components/interactive/cartupsellcarousel.tsx",
+          "action_file": "src/actions/cartupsellcarousel-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Cart Summary Explanation",
+        "Shipping Costs Calculation",
+        "Secure Payment Assurances"
+      ]
+    },
+    {
+      "priority": 7,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "current_state": {
+        "word_count": 300,
+        "weaknesses": [
+          "Synchronous state",
+          "Missing Stripe Elements integration"
+        ]
+      },
+      "target_state": {
+        "word_count": 900,
+        "content_expansion_topics": [
+          "Checkout Process Steps",
+          "Data Privacy in Transactions",
+          "Terms acceptance details"
+        ],
+        "interactive_module": {
+          "type": "MULTI_STEP_FORM",
+          "component_name": "CheckoutPaymentFlow",
+          "target_file": "src/components/interactive/checkoutpaymentflow.tsx",
+          "action_file": "src/actions/checkoutpaymentflow-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 900,
+      "content_expansion_topics": [
+        "Checkout Process Steps",
+        "Data Privacy in Transactions",
+        "Terms acceptance details"
+      ]
+    },
+    {
+      "priority": 8,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "current_state": {
+        "word_count": 450,
+        "weaknesses": [
+          "Thin Content",
+          "No Schema.org Data"
+        ]
+      },
+      "target_state": {
+        "word_count": 1100,
+        "content_expansion_topics": [
+          "Where to find your key code",
+          "Supported lock manufacturers",
+          "Security card vs. Code"
+        ],
+        "interactive_module": {
+          "type": "VALIDATOR",
+          "component_name": "CodeFormatValidator",
+          "target_file": "src/components/interactive/codeformatvalidator.tsx",
+          "action_file": "src/actions/codeformatvalidator-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1100,
+      "content_expansion_topics": [
+        "Where to find your key code",
+        "Supported lock manufacturers",
+        "Security card vs. Code"
+      ]
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "current_state": {
+        "word_count": 300,
+        "weaknesses": [
+          "Missing async params",
+          "Duplicate H1"
+        ]
+      },
+      "target_state": {
+        "word_count": 1000,
+        "content_expansion_topics": [
+          "Manufacturer specific details",
+          "History of the lock system",
+          "Ordering process for this brand"
+        ],
+        "interactive_module": {
+          "type": "FORM",
+          "component_name": "ManufacturerCodeInput",
+          "target_file": "src/components/interactive/manufacturercodeinput.tsx",
+          "action_file": "src/actions/manufacturercodeinput-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1000,
+      "content_expansion_topics": [
+        "Manufacturer specific details",
+        "History of the lock system",
+        "Ordering process for this brand"
+      ]
+    },
+    {
+      "priority": 10,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "current_state": {
+        "word_count": 500,
+        "weaknesses": [
+          "LCP Shift",
+          "Missing Subgrid",
+          "Thin Content on Home"
+        ]
+      },
+      "target_state": {
+        "word_count": 1500,
+        "content_expansion_topics": [
+          "Company Mission & Values",
+          "Overview of Core Services",
+          "Customer Testimonials & Trust"
+        ],
+        "interactive_module": {
+          "type": "SEARCH",
+          "component_name": "HeroServiceFinder",
+          "target_file": "src/components/interactive/heroservicefinder.tsx",
+          "action_file": "src/actions/heroservicefinder-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1500,
+      "content_expansion_topics": [
+        "Company Mission & Values",
+        "Overview of Core Services",
+        "Customer Testimonials & Trust"
+      ]
+    },
+    {
+      "priority": 11,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "weaknesses": [
+          "No internal linking structure",
+          "Low word count"
+        ]
+      },
+      "target_state": {
+        "word_count": 1100,
+        "content_expansion_topics": [
+          "Alarm Systems Overview",
+          "Video Surveillance Basics",
+          "Smart Home Security Integration"
+        ],
+        "interactive_module": {
+          "type": "QUIZ",
+          "component_name": "SecurityNeedsAssessor",
+          "target_file": "src/components/interactive/securityneedsassessor.tsx",
+          "action_file": "src/actions/securityneedsassessor-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1100,
+      "content_expansion_topics": [
+        "Alarm Systems Overview",
+        "Video Surveillance Basics",
+        "Smart Home Security Integration"
+      ]
+    },
+    {
+      "priority": 12,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "current_state": {
+        "word_count": 400,
+        "weaknesses": [
+          "Missing Schema.org Product",
+          "Params not awaited"
+        ]
+      },
+      "target_state": {
+        "word_count": 1200,
+        "content_expansion_topics": [
+          "Detailed technical specifications",
+          "Installation requirements",
+          "Maintenance guide"
+        ],
+        "interactive_module": {
+          "type": "TABLE",
+          "component_name": "ProductFeatureComparison",
+          "target_file": "src/components/interactive/productfeaturecomparison.tsx",
+          "action_file": "src/actions/productfeaturecomparison-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1200,
+      "content_expansion_topics": [
+        "Detailed technical specifications",
+        "Installation requirements",
+        "Maintenance guide"
+      ]
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "current_state": {
+        "word_count": 200,
+        "weaknesses": [
+          "Form state not using useActionState",
+          "No client-side validation"
+        ]
+      },
+      "target_state": {
+        "word_count": 950,
+        "content_expansion_topics": [
+          "Importance of regular checks",
+          "What our experts look for",
+          "Self-assessment guide"
+        ],
+        "interactive_module": {
+          "type": "MULTI_STEP_FORM",
+          "component_name": "InteractiveSecurityAudit",
+          "target_file": "src/components/interactive/interactivesecurityaudit.tsx",
+          "action_file": "src/actions/interactivesecurityaudit-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Importance of regular checks",
+        "What our experts look for",
+        "Self-assessment guide"
+      ]
+    },
+    {
+      "priority": 14,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "current_state": {
+        "word_count": 450,
+        "weaknesses": [
+          "Thin content",
+          "Missing semantic HTML"
+        ]
+      },
+      "target_state": {
+        "word_count": 1050,
+        "content_expansion_topics": [
+          "Types of door locks",
+          "DIN standards explained",
+          "Mechanical vs Electronic"
+        ],
+        "interactive_module": {
+          "type": "VISUALIZER",
+          "component_name": "DoorHardwareVisualizer",
+          "target_file": "src/components/interactive/doorhardwarevisualizer.tsx",
+          "action_file": "src/actions/doorhardwarevisualizer-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1050,
+      "content_expansion_topics": [
+        "Types of door locks",
+        "DIN standards explained",
+        "Mechanical vs Electronic"
+      ]
+    },
+    {
+      "priority": 15,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "weaknesses": [
+          "Unused params",
+          "Missing Breadcrumbs"
+        ]
+      },
+      "target_state": {
+        "word_count": 1000,
+        "content_expansion_topics": [
+          "Specific hardware details",
+          "Compatibility checker",
+          "Mounting instructions"
+        ],
+        "interactive_module": {
+          "type": "CALCULATOR",
+          "component_name": "CompatibilityChecker",
+          "target_file": "src/components/interactive/compatibilitychecker.tsx",
+          "action_file": "src/actions/compatibilitychecker-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1000,
+      "content_expansion_topics": [
+        "Specific hardware details",
+        "Compatibility checker",
+        "Mounting instructions"
+      ]
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "current_state": {
+        "word_count": 150,
+        "weaknesses": [
+          "No live tracking",
+          "Missing auth check"
+        ]
+      },
+      "target_state": {
+        "word_count": 800,
+        "content_expansion_topics": [
+          "Order status explanation",
+          "Return policy summary",
+          "Contact support for this order"
+        ],
+        "interactive_module": {
+          "type": "TIMELINE",
+          "component_name": "OrderTrackingTimeline",
+          "target_file": "src/components/interactive/ordertrackingtimeline.tsx",
+          "action_file": "src/actions/ordertrackingtimeline-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 800,
+      "content_expansion_topics": [
+        "Order status explanation",
+        "Return policy summary",
+        "Contact support for this order"
+      ]
+    },
+    {
+      "priority": 17,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "current_state": {
+        "word_count": 300,
+        "weaknesses": [
+          "Thin Content",
+          "No Schema.org Data"
+        ]
+      },
+      "target_state": {
+        "word_count": 1150,
+        "content_expansion_topics": [
+          "Benefits of keyed-alike systems",
+          "Measurement instructions",
+          "Security levels explained"
+        ],
+        "interactive_module": {
+          "type": "CALCULATOR",
+          "component_name": "CylinderLengthCalculator",
+          "target_file": "src/components/interactive/cylinderlengthcalculator.tsx",
+          "action_file": "src/actions/cylinderlengthcalculator-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1150,
+      "content_expansion_topics": [
+        "Benefits of keyed-alike systems",
+        "Measurement instructions",
+        "Security levels explained"
+      ]
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "current_state": {
+        "word_count": 250,
+        "weaknesses": [
+          "Complex state not using useOptimistic",
+          "Missing loading states"
+        ]
+      },
+      "target_state": {
+        "word_count": 900,
+        "content_expansion_topics": [
+          "Configuration steps explained",
+          "Price calculation logic",
+          "Delivery times"
+        ],
+        "interactive_module": {
+          "type": "CONFIGURATOR",
+          "component_name": "KeyedAlikeConfigurator",
+          "target_file": "src/components/interactive/keyedalikeconfigurator.tsx",
+          "action_file": "src/actions/keyedalikeconfigurator-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 900,
+      "content_expansion_topics": [
+        "Configuration steps explained",
+        "Price calculation logic",
+        "Delivery times"
+      ]
+    },
+    {
+      "priority": 19,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "current_state": {
+        "word_count": 400,
+        "weaknesses": [
+          "Thin Content",
+          "Missing priority LCP"
+        ]
+      },
+      "target_state": {
+        "word_count": 1300,
+        "content_expansion_topics": [
+          "RFID vs Biometrics",
+          "Integration with Smart Home",
+          "Battery life and maintenance"
+        ],
+        "interactive_module": {
+          "type": "SELECTOR",
+          "component_name": "AccessControlSelector",
+          "target_file": "src/components/interactive/accesscontrolselector.tsx",
+          "action_file": "src/actions/accesscontrolselector-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1300,
+      "content_expansion_topics": [
+        "RFID vs Biometrics",
+        "Integration with Smart Home",
+        "Battery life and maintenance"
+      ]
+    },
+    {
+      "priority": 20,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "current_state": {
+        "word_count": 300,
+        "weaknesses": [
+          "No Server Actions used",
+          "Heavy client bundle"
+        ]
+      },
+      "target_state": {
+        "word_count": 950,
+        "content_expansion_topics": [
+          "System sizing guide",
+          "Software requirements",
+          "Cloud vs Local hosting"
+        ],
+        "interactive_module": {
+          "type": "CONFIGURATOR",
+          "component_name": "SmartLockConfigurator",
+          "target_file": "src/components/interactive/smartlockconfigurator.tsx",
+          "action_file": "src/actions/smartlockconfigurator-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "System sizing guide",
+        "Software requirements",
+        "Cloud vs Local hosting"
+      ]
+    },
+    {
+      "priority": 21,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "current_state": {
+        "word_count": 500,
+        "weaknesses": [
+          "Thin Content",
+          "No Subgrid layout"
+        ]
+      },
+      "target_state": {
+        "word_count": 1600,
+        "content_expansion_topics": [
+          "Master key vs Grand master key",
+          "Planning your hierarchy",
+          "Patent protection"
+        ],
+        "interactive_module": {
+          "type": "VISUALIZER",
+          "component_name": "MasterKeySystemVisualizer",
+          "target_file": "src/components/interactive/masterkeysystemvisualizer.tsx",
+          "action_file": "src/actions/masterkeysystemvisualizer-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1600,
+      "content_expansion_topics": [
+        "Master key vs Grand master key",
+        "Planning your hierarchy",
+        "Patent protection"
+      ]
+    },
+    {
+      "priority": 22,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "current_state": {
+        "word_count": 250,
+        "weaknesses": [
+          "Missing optimistic UI",
+          "State management messy"
+        ]
+      },
+      "target_state": {
+        "word_count": 1000,
+        "content_expansion_topics": [
+          "How to build a locking matrix",
+          "Key distribution strategy",
+          "Future expansion planning"
+        ],
+        "interactive_module": {
+          "type": "EDITOR",
+          "component_name": "LockingMatrixEditor",
+          "target_file": "src/components/interactive/lockingmatrixeditor.tsx",
+          "action_file": "src/actions/lockingmatrixeditor-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1000,
+      "content_expansion_topics": [
+        "How to build a locking matrix",
+        "Key distribution strategy",
+        "Future expansion planning"
+      ]
+    },
+    {
+      "priority": 23,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "current_state": {
+        "word_count": 200,
+        "weaknesses": [
+          "Polling instead of WebSockets",
+          "Thin content"
+        ]
+      },
+      "target_state": {
+        "word_count": 850,
+        "content_expansion_topics": [
+          "What to expect on arrival",
+          "Preparation for the technician",
+          "Cancellation policy"
+        ],
+        "interactive_module": {
+          "type": "TRACKER",
+          "component_name": "TechnicianArrivalTracker",
+          "target_file": "src/components/interactive/technicianarrivaltracker.tsx",
+          "action_file": "src/actions/technicianarrivaltracker-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "What to expect on arrival",
+        "Preparation for the technician",
+        "Cancellation policy"
+      ]
+    },
+    {
+      "priority": 24,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "current_state": {
+        "word_count": 250,
+        "weaknesses": [
+          "Form without useActionState",
+          "Missing reCAPTCHA"
+        ]
+      },
+      "target_state": {
+        "word_count": 950,
+        "content_expansion_topics": [
+          "Emergency vs Standard appointment",
+          "Pricing transparency",
+          "Coverage areas"
+        ],
+        "interactive_module": {
+          "type": "CALENDAR",
+          "component_name": "ServiceBookingCalendar",
+          "target_file": "src/components/interactive/servicebookingcalendar.tsx",
+          "action_file": "src/actions/servicebookingcalendar-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Emergency vs Standard appointment",
+        "Pricing transparency",
+        "Coverage areas"
+      ]
+    },
+    {
+      "priority": 25,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "weaknesses": [
+          "Thin Content",
+          "Missing Schema.org LocalBusiness"
+        ]
+      },
+      "target_state": {
+        "word_count": 1100,
+        "content_expansion_topics": [
+          "Our service philosophy",
+          "Qualifications of our team",
+          "Response time guarantees"
+        ],
+        "interactive_module": {
+          "type": "SELECTOR",
+          "component_name": "ServiceTypeSelector",
+          "target_file": "src/components/interactive/servicetypeselector.tsx",
+          "action_file": "src/actions/servicetypeselector-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1100,
+      "content_expansion_topics": [
+        "Our service philosophy",
+        "Qualifications of our team",
+        "Response time guarantees"
+      ]
+    },
+    {
+      "priority": 26,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "current_state": {
+        "word_count": 400,
+        "weaknesses": [
+          "Thin Content",
+          "No Map integration"
+        ]
+      },
+      "target_state": {
+        "word_count": 1200,
+        "content_expansion_topics": [
+          "Detailed coverage map",
+          "Call-out fees explained",
+          "Mobile workshop capabilities"
+        ],
+        "interactive_module": {
+          "type": "MAP",
+          "component_name": "CoverageAreaMap",
+          "target_file": "src/components/interactive/coverageareamap.tsx",
+          "action_file": "src/actions/coverageareamap-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1200,
+      "content_expansion_topics": [
+        "Detailed coverage map",
+        "Call-out fees explained",
+        "Mobile workshop capabilities"
+      ]
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "current_state": {
+        "word_count": 200,
+        "weaknesses": [
+          "Unused client state",
+          "Missing proper semantics"
+        ]
+      },
+      "target_state": {
+        "word_count": 900,
+        "content_expansion_topics": [
+          "Different ways to reach us",
+          "Response time expectations",
+          "Department routing"
+        ],
+        "interactive_module": {
+          "type": "FORM",
+          "component_name": "DynamicContactForm",
+          "target_file": "src/components/interactive/dynamiccontactform.tsx",
+          "action_file": "src/actions/dynamiccontactform-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 900,
+      "content_expansion_topics": [
+        "Different ways to reach us",
+        "Response time expectations",
+        "Department routing"
+      ]
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "current_state": {
+        "word_count": 150,
+        "weaknesses": [
+          "Missing structured data",
+          "Thin content"
+        ]
+      },
+      "target_state": {
+        "word_count": 850,
+        "content_expansion_topics": [
+          "Company legal structure",
+          "Regulatory authorities",
+          "Dispute resolution"
+        ],
+        "interactive_module": {
+          "type": "DATA_DISPLAY",
+          "component_name": "LegalEntityDetails",
+          "target_file": "src/components/interactive/legalentitydetails.tsx",
+          "action_file": "src/actions/legalentitydetails-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Company legal structure",
+        "Regulatory authorities",
+        "Dispute resolution"
+      ]
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "current_state": {
+        "word_count": 200,
+        "weaknesses": [
+          "No strict type checking",
+          "Thin content"
+        ]
+      },
+      "target_state": {
+        "word_count": 850,
+        "content_expansion_topics": [
+          "Explanation of cookie types",
+          "Your privacy rights",
+          "How we use analytics"
+        ],
+        "interactive_module": {
+          "type": "MANAGER",
+          "component_name": "CookieConsentManager",
+          "target_file": "src/components/interactive/cookieconsentmanager.tsx",
+          "action_file": "src/actions/cookieconsentmanager-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Explanation of cookie types",
+        "Your privacy rights",
+        "How we use analytics"
+      ]
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "weaknesses": [
+          "Thin content",
+          "Missing table markup"
+        ]
+      },
+      "target_state": {
+        "word_count": 1000,
+        "content_expansion_topics": [
+          "Shipping zones and rates",
+          "Accepted payment methods",
+          "Handling of international orders"
+        ],
+        "interactive_module": {
+          "type": "CALCULATOR",
+          "component_name": "ShippingCalculatorWidget",
+          "target_file": "src/components/interactive/shippingcalculatorwidget.tsx",
+          "action_file": "src/actions/shippingcalculatorwidget-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1000,
+      "content_expansion_topics": [
+        "Shipping zones and rates",
+        "Accepted payment methods",
+        "Handling of international orders"
+      ]
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "current_state": {
+        "word_count": 400,
+        "weaknesses": [
+          "Thin content",
+          "No interactive form"
+        ]
+      },
+      "target_state": {
+        "word_count": 1100,
+        "content_expansion_topics": [
+          "Legal right of withdrawal",
+          "Exceptions for custom products",
+          "Step-by-step return process"
+        ],
+        "interactive_module": {
+          "type": "GENERATOR",
+          "component_name": "WithdrawalFormGenerator",
+          "target_file": "src/components/interactive/withdrawalformgenerator.tsx",
+          "action_file": "src/actions/withdrawalformgenerator-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1100,
+      "content_expansion_topics": [
+        "Legal right of withdrawal",
+        "Exceptions for custom products",
+        "Step-by-step return process"
+      ]
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "current_state": {
+        "word_count": 800,
+        "weaknesses": [
+          "No Table of Contents",
+          "Missing semantic structure"
+        ]
+      },
+      "target_state": {
+        "word_count": 2000,
+        "content_expansion_topics": [
+          "General Terms",
+          "Liability limitations",
+          "Warranty conditions"
+        ],
+        "interactive_module": {
+          "type": "NAVIGATOR",
+          "component_name": "TOCNavigator",
+          "target_file": "src/components/interactive/tocnavigator.tsx",
+          "action_file": "src/actions/tocnavigator-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 2000,
+      "content_expansion_topics": [
+        "General Terms",
+        "Liability limitations",
+        "Warranty conditions"
+      ]
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "current_state": {
+        "word_count": 1000,
+        "weaknesses": [
+          "No Table of Contents",
+          "Missing semantic structure"
+        ]
+      },
+      "target_state": {
+        "word_count": 2500,
+        "content_expansion_topics": [
+          "Data collection practices",
+          "Third-party processors",
+          "User data rights"
+        ],
+        "interactive_module": {
+          "type": "NAVIGATOR",
+          "component_name": "TOCNavigator",
+          "target_file": "src/components/interactive/tocnavigator.tsx",
+          "action_file": "src/actions/tocnavigator-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 2500,
+      "content_expansion_topics": [
+        "Data collection practices",
+        "Third-party processors",
+        "User data rights"
+      ]
+    },
+    {
+      "priority": 34,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "current_state": {
+        "word_count": 300,
+        "weaknesses": [
+          "Missing pagination state",
+          "No Schema.org Collection"
+        ]
+      },
+      "target_state": {
+        "word_count": 1000,
+        "content_expansion_topics": [
+          "Latest security trends",
+          "Company news",
+          "How-to guides overview"
+        ],
+        "interactive_module": {
+          "type": "FILTER",
+          "component_name": "BlogArticleFilter",
+          "target_file": "src/components/interactive/blogarticlefilter.tsx",
+          "action_file": "src/actions/blogarticlefilter-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1000,
+      "content_expansion_topics": [
+        "Latest security trends",
+        "Company news",
+        "How-to guides overview"
+      ]
+    },
+    {
+      "priority": 35,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "current_state": {
+        "word_count": 600,
+        "weaknesses": [
+          "Synchronous params access",
+          "Missing Author Schema"
+        ]
+      },
+      "target_state": {
+        "word_count": 1800,
+        "content_expansion_topics": [
+          "In-depth article content",
+          "Author biography",
+          "Related articles"
+        ],
+        "interactive_module": {
+          "type": "RATING",
+          "component_name": "ArticleRatingWidget",
+          "target_file": "src/components/interactive/articleratingwidget.tsx",
+          "action_file": "src/actions/articleratingwidget-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1800,
+      "content_expansion_topics": [
+        "In-depth article content",
+        "Author biography",
+        "Related articles"
+      ]
+    },
+    {
+      "priority": 36,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "current_state": {
+        "word_count": 300,
+        "weaknesses": [
+          "Thin Content",
+          "Missing Map"
+        ]
+      },
+      "target_state": {
+        "word_count": 1200,
+        "content_expansion_topics": [
+          "Overview of all branches",
+          "Central warehouse location",
+          "Expansion plans"
+        ],
+        "interactive_module": {
+          "type": "LOCATOR",
+          "component_name": "StoreLocatorMap",
+          "target_file": "src/components/interactive/storelocatormap.tsx",
+          "action_file": "src/actions/storelocatormap-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1200,
+      "content_expansion_topics": [
+        "Overview of all branches",
+        "Central warehouse location",
+        "Expansion plans"
+      ]
+    },
+    {
+      "priority": 37,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "current_state": {
+        "word_count": 400,
+        "weaknesses": [
+          "Unused params",
+          "Missing LocalBusiness Schema"
+        ]
+      },
+      "target_state": {
+        "word_count": 1300,
+        "content_expansion_topics": [
+          "Local store services",
+          "Team in this city",
+          "Local parking & directions"
+        ],
+        "interactive_module": {
+          "type": "BOOKING",
+          "component_name": "LocalStoreBooking",
+          "target_file": "src/components/interactive/localstorebooking.tsx",
+          "action_file": "src/actions/localstorebooking-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1300,
+      "content_expansion_topics": [
+        "Local store services",
+        "Team in this city",
+        "Local parking & directions"
+      ]
+    },
+    {
+      "priority": 38,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "current_state": {
+        "word_count": 300,
+        "weaknesses": [
+          "Thin content",
+          "Missing grid layout"
+        ]
+      },
+      "target_state": {
+        "word_count": 1100,
+        "content_expansion_topics": [
+          "Supported car brands",
+          "OEM vs Aftermarket keys",
+          "Transponder types"
+        ],
+        "interactive_module": {
+          "type": "SELECTOR",
+          "component_name": "CarBrandSelector",
+          "target_file": "src/components/interactive/carbrandselector.tsx",
+          "action_file": "src/actions/carbrandselector-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1100,
+      "content_expansion_topics": [
+        "Supported car brands",
+        "OEM vs Aftermarket keys",
+        "Transponder types"
+      ]
+    },
+    {
+      "priority": 39,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "weaknesses": [
+          "Synchronous params",
+          "Missing specific schemas"
+        ]
+      },
+      "target_state": {
+        "word_count": 1200,
+        "content_expansion_topics": [
+          "Specific model key features",
+          "Programming requirements",
+          "Common issues with this model"
+        ],
+        "interactive_module": {
+          "type": "CONFIGURATOR",
+          "component_name": "CarModelKeyConfigurator",
+          "target_file": "src/components/interactive/carmodelkeyconfigurator.tsx",
+          "action_file": "src/actions/carmodelkeyconfigurator-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1200,
+      "content_expansion_topics": [
+        "Specific model key features",
+        "Programming requirements",
+        "Common issues with this model"
+      ]
+    },
+    {
+      "priority": 40,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "weaknesses": [
+          "Synchronous params",
+          "Thin content"
+        ]
+      },
+      "target_state": {
+        "word_count": 1150,
+        "content_expansion_topics": [
+          "Brand specific immobilizers",
+          "History of keys for this brand",
+          "Available models list"
+        ],
+        "interactive_module": {
+          "type": "FILTER",
+          "component_name": "CarModelFilter",
+          "target_file": "src/components/interactive/carmodelfilter.tsx",
+          "action_file": "src/actions/carmodelfilter-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1150,
+      "content_expansion_topics": [
+        "Brand specific immobilizers",
+        "History of keys for this brand",
+        "Available models list"
+      ]
+    },
+    {
+      "priority": 41,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "current_state": {
+        "word_count": 400,
+        "weaknesses": [
+          "Thin content",
+          "No diagnostic tool"
+        ]
+      },
+      "target_state": {
+        "word_count": 1250,
+        "content_expansion_topics": [
+          "Battery replacement guide",
+          "Re-syncing remote keys",
+          "Water damage repair"
+        ],
+        "interactive_module": {
+          "type": "DIAGNOSTIC",
+          "component_name": "RemoteDiagnosticTool",
+          "target_file": "src/components/interactive/remotediagnostictool.tsx",
+          "action_file": "src/actions/remotediagnostictool-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1250,
+      "content_expansion_topics": [
+        "Battery replacement guide",
+        "Re-syncing remote keys",
+        "Water damage repair"
+      ]
+    },
+    {
+      "priority": 42,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "current_state": {
+        "word_count": 500,
+        "weaknesses": [
+          "Thin content",
+          "Missing FAQ Schema"
+        ]
+      },
+      "target_state": {
+        "word_count": 1400,
+        "content_expansion_topics": [
+          "OBD2 programming process",
+          "EEPROM reading explanation",
+          "Lost all keys scenario"
+        ],
+        "interactive_module": {
+          "type": "CALCULATOR",
+          "component_name": "ProgrammingFeasibilityCheck",
+          "target_file": "src/components/interactive/programmingfeasibilitycheck.tsx",
+          "action_file": "src/actions/programmingfeasibilitycheck-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1400,
+      "content_expansion_topics": [
+        "OBD2 programming process",
+        "EEPROM reading explanation",
+        "Lost all keys scenario"
+      ]
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "current_state": {
+        "word_count": 250,
+        "weaknesses": [
+          "No useActionState",
+          "Missing upload preview"
+        ]
+      },
+      "target_state": {
+        "word_count": 950,
+        "content_expansion_topics": [
+          "Required vehicle documents",
+          "How to find VIN",
+          "Service timeline"
+        ],
+        "interactive_module": {
+          "type": "MULTI_STEP_FORM",
+          "component_name": "CarKeyRequestForm",
+          "target_file": "src/components/interactive/carkeyrequestform.tsx",
+          "action_file": "src/actions/carkeyrequestform-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Required vehicle documents",
+        "How to find VIN",
+        "Service timeline"
+      ]
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "current_state": {
+        "word_count": 450,
+        "weaknesses": [
+          "Thin Content",
+          "LCP optimization needed"
+        ]
+      },
+      "target_state": {
+        "word_count": 1350,
+        "content_expansion_topics": [
+          "Overview of automotive services",
+          "Difference between key types",
+          "Emergency services"
+        ],
+        "interactive_module": {
+          "type": "SEARCH",
+          "component_name": "AutoServiceFinder",
+          "target_file": "src/components/interactive/autoservicefinder.tsx",
+          "action_file": "src/actions/autoservicefinder-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1350,
+      "content_expansion_topics": [
+        "Overview of automotive services",
+        "Difference between key types",
+        "Emergency services"
+      ]
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "weaknesses": [
+          "Thin content",
+          "No pricing calculator"
+        ]
+      },
+      "target_state": {
+        "word_count": 1100,
+        "content_expansion_topics": [
+          "Mechanical copying process",
+          "Key blank materials",
+          "Precision guarantee"
+        ],
+        "interactive_module": {
+          "type": "CALCULATOR",
+          "component_name": "CopyPricingCalculator",
+          "target_file": "src/components/interactive/copypricingcalculator.tsx",
+          "action_file": "src/actions/copypricingcalculator-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1100,
+      "content_expansion_topics": [
+        "Mechanical copying process",
+        "Key blank materials",
+        "Precision guarantee"
+      ]
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "current_state": {
+        "word_count": 400,
+        "weaknesses": [
+          "Thin content",
+          "Missing urgency indicator"
+        ]
+      },
+      "target_state": {
+        "word_count": 1200,
+        "content_expansion_topics": [
+          "What to do when keys are lost",
+          "Insurance claims advice",
+          "Preventative measures"
+        ],
+        "interactive_module": {
+          "type": "WIDGET",
+          "component_name": "LostKeyActionPlan",
+          "target_file": "src/components/interactive/lostkeyactionplan.tsx",
+          "action_file": "src/actions/lostkeyactionplan-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1200,
+      "content_expansion_topics": [
+        "What to do when keys are lost",
+        "Insurance claims advice",
+        "Preventative measures"
+      ]
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "current_state": {
+        "word_count": 450,
+        "weaknesses": [
+          "Thin content",
+          "Missing video integration"
+        ]
+      },
+      "target_state": {
+        "word_count": 1300,
+        "content_expansion_topics": [
+          "How Keyless Go works",
+          "Security risks and prevention",
+          "Faraday pouches"
+        ],
+        "interactive_module": {
+          "type": "CHECKER",
+          "component_name": "SmartKeyCompatibility",
+          "target_file": "src/components/interactive/smartkeycompatibility.tsx",
+          "action_file": "src/actions/smartkeycompatibility-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1300,
+      "content_expansion_topics": [
+        "How Keyless Go works",
+        "Security risks and prevention",
+        "Faraday pouches"
+      ]
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "current_state": {
+        "word_count": 350,
+        "weaknesses": [
+          "Thin content",
+          "Missing technical diagrams"
+        ]
+      },
+      "target_state": {
+        "word_count": 1050,
+        "content_expansion_topics": [
+          "CNC milling process",
+          "Decoding a lock cylinder",
+          "High security laser cut keys"
+        ],
+        "interactive_module": {
+          "type": "VISUALIZER",
+          "component_name": "MillingProcessVisualizer",
+          "target_file": "src/components/interactive/millingprocessvisualizer.tsx",
+          "action_file": "src/actions/millingprocessvisualizer-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1050,
+      "content_expansion_topics": [
+        "CNC milling process",
+        "Decoding a lock cylinder",
+        "High security laser cut keys"
+      ]
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "current_state": {
+        "word_count": 500,
+        "weaknesses": [
+          "Thin content",
+          "Missing LocalBusiness Schema"
+        ]
+      },
+      "target_state": {
+        "word_count": 1500,
+        "content_expansion_topics": [
+          "Damage-free opening techniques",
+          "Proof of ownership requirements",
+          "24/7 availability"
+        ],
+        "interactive_module": {
+          "type": "FORM",
+          "component_name": "EmergencyUnlockRequest",
+          "target_file": "src/components/interactive/emergencyunlockrequest.tsx",
+          "action_file": "src/actions/emergencyunlockrequest-action.ts"
+        }
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER",
+      "target_word_count": 1500,
+      "content_expansion_topics": [
+        "Damage-free opening techniques",
+        "Proof of ownership requirements",
+        "24/7 availability"
+      ]
+    }
+  ]
+}
