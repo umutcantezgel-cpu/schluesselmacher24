@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-06T12:44:23.452408+00:00Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten basierend auf Visueller Hebelwirkung (0.35), ROI (0.35) und Machbarkeit (0.30).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_052",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_component_file": "src/components/calculator/rechner-bausteine.tsx",
+      "title": "Interaktiver Zylinder-Konfigurator mit dynamischem Bento-Grid und OKLCH-Feedback",
+      "specification": "Entwicklung eines reaktiven Konfigurator-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Gleichschlie\u00dfende-Zylinder Seite ein und erweitere den umgebenden Flie\u00dftext auf 850 W\u00f6rter (Swiss Light Mode).",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_002",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/ui/card.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex f\u00fcr Startseiten-Features",
+      "specification": "\u00dcberf\u00fchrung der Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), ged\u00e4mpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
