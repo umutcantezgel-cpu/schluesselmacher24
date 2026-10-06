@@ -1,0 +1,3 @@
+# Architecture Blueprint
+
+Synchronized architecture blueprints according to JC-AUDITOR-ARCHITECT-v1.
