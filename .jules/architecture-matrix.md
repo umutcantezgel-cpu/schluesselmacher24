@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route Path | Source File | Current Words | Target Words | Schema Entities | Interactive Module | Status |
+|---|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 77 | 950 | Organization, WebSite, FAQPage | InteractiveModule0 | PENDING_BUILDER |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 1128 | 1728 | Organization, WebSite, FAQPage | InteractiveModule1 | PENDING_BUILDER |
+| /artikel | src/app/(site)/artikel/page.tsx | 738 | 1338 | Organization, WebSite, FAQPage | InteractiveModule2 | PENDING_BUILDER |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 555 | 1155 | Organization, WebSite, FAQPage | InteractiveModule3 | PENDING_BUILDER |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1091 | 1691 | Organization, WebSite, FAQPage | InteractiveModule4 | PENDING_BUILDER |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 1057 | 1657 | Organization, WebSite, FAQPage | InteractiveModule5 | PENDING_BUILDER |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1110 | 1710 | Organization, WebSite, FAQPage | InteractiveModule6 | PENDING_BUILDER |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1433 | 2033 | Organization, WebSite, FAQPage | InteractiveModule7 | PENDING_BUILDER |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 1281 | 1881 | Organization, WebSite, FAQPage | InteractiveModule8 | PENDING_BUILDER |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 882 | 1482 | Organization, WebSite, FAQPage | InteractiveModule9 | PENDING_BUILDER |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1154 | 1754 | Organization, WebSite, FAQPage | InteractiveModule10 | PENDING_BUILDER |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2353 | 2953 | Organization, WebSite, FAQPage | InteractiveModule11 | PENDING_BUILDER |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1176 | 1776 | Organization, WebSite, FAQPage | InteractiveModule12 | PENDING_BUILDER |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1017 | 1617 | Organization, WebSite, FAQPage | InteractiveModule13 | PENDING_BUILDER |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1165 | 1765 | Organization, WebSite, FAQPage | InteractiveModule14 | PENDING_BUILDER |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1616 | 2216 | Organization, WebSite, FAQPage | InteractiveModule15 | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 419 | 1019 | Organization, WebSite, FAQPage | InteractiveModule16 | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2768 | 3368 | Organization, WebSite, FAQPage | InteractiveModule17 | PENDING_BUILDER |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 355 | 955 | Organization, WebSite, FAQPage | InteractiveModule18 | PENDING_BUILDER |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 2744 | 3344 | Organization, WebSite, FAQPage | InteractiveModule19 | PENDING_BUILDER |
+| /kasse | src/app/(site)/kasse/page.tsx | 276 | 950 | Organization, WebSite, FAQPage | InteractiveModule20 | PENDING_BUILDER |
+| / | src/app/(site)/page.tsx | 1626 | 2226 | Organization, WebSite, FAQPage | InteractiveModule21 | PENDING_BUILDER |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 466 | 1066 | Organization, WebSite, FAQPage | InteractiveModule22 | PENDING_BUILDER |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 277 | 950 | Organization, WebSite, FAQPage | InteractiveModule23 | PENDING_BUILDER |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 490 | 1090 | Organization, WebSite, FAQPage | InteractiveModule24 | PENDING_BUILDER |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 246 | 950 | Organization, WebSite, FAQPage | InteractiveModule25 | PENDING_BUILDER |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 867 | 1467 | Organization, WebSite, FAQPage | InteractiveModule26 | PENDING_BUILDER |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 300 | 950 | Organization, WebSite, FAQPage | InteractiveModule27 | PENDING_BUILDER |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 532 | 1132 | Organization, WebSite, FAQPage | InteractiveModule28 | PENDING_BUILDER |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 434 | 1034 | Organization, WebSite, FAQPage | InteractiveModule29 | PENDING_BUILDER |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 425 | 1025 | Organization, WebSite, FAQPage | InteractiveModule30 | PENDING_BUILDER |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 2131 | 2731 | Organization, WebSite, FAQPage | InteractiveModule31 | PENDING_BUILDER |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 926 | 1526 | Organization, WebSite, FAQPage | InteractiveModule32 | PENDING_BUILDER |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 588 | 1188 | Organization, WebSite, FAQPage | InteractiveModule33 | PENDING_BUILDER |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 274 | 950 | Organization, WebSite, FAQPage | InteractiveModule34 | PENDING_BUILDER |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 2102 | 2702 | Organization, WebSite, FAQPage | InteractiveModule35 | PENDING_BUILDER |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 145 | 950 | Organization, WebSite, FAQPage | InteractiveModule36 | PENDING_BUILDER |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 622 | 1222 | Organization, WebSite, FAQPage | InteractiveModule37 | PENDING_BUILDER |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 1953 | 2553 | Organization, WebSite, FAQPage | InteractiveModule38 | PENDING_BUILDER |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 104 | 950 | Organization, WebSite, FAQPage | InteractiveModule39 | PENDING_BUILDER |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 804 | 1404 | Organization, WebSite, FAQPage | InteractiveModule40 | PENDING_BUILDER |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 798 | 1398 | Organization, WebSite, FAQPage | InteractiveModule41 | PENDING_BUILDER |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1307 | 1907 | Organization, WebSite, FAQPage | InteractiveModule42 | PENDING_BUILDER |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 369 | 969 | Organization, WebSite, FAQPage | InteractiveModule43 | PENDING_BUILDER |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 507 | 1107 | Organization, WebSite, FAQPage | InteractiveModule44 | PENDING_BUILDER |
+| /standorte | src/app/(site)/standorte/page.tsx | 318 | 950 | Organization, WebSite, FAQPage | InteractiveModule45 | PENDING_BUILDER |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 621 | 1221 | Organization, WebSite, FAQPage | InteractiveModule46 | PENDING_BUILDER |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 2257 | 2857 | Organization, WebSite, FAQPage | InteractiveModule47 | PENDING_BUILDER |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 304 | 950 | Organization, WebSite, FAQPage | InteractiveModule48 | PENDING_BUILDER |

@@ -1,0 +1,5 @@
+# JC-AUDITOR-ARCHITECT-v1 Blueprint
+This repository is undergoing a transformation towards the Swiss High-End Light Mode Design System.
+- **Framework:** Next.js 16+, React 19.2+, TypeScript 5.5+
+- **UI Engine:** Tailwind CSS v4 with OKLCH Color Space
+- **Directives:** No new routes are created. All existing routes will be expanded with >800 words of technical content and 1 interactive module.
