@@ -43,3 +43,12 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architectural Goals & Swiss Light Mode (JC-AUDITOR-ARCHITECT-v1)
+- **Framework:** Next.js 16+ (App Router, Turbopack), React 19.2+, TypeScript 5.5+
+- **Styling:** Tailwind CSS v4 (OKLCH Light Mode)
+- **Brand Colors:**
+  - Base Canvas: `oklch(0.988 0.002 260)`
+  - Focal Accent: International Klein Blue `oklch(0.52 0.24 260)`
+- **Typography:** Swiss Modernist, strict 8px rhythm
+- **Goal:** Comprehensive route expansion with >800 words and interactive modules.
