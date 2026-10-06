@@ -1,0 +1,1191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-06T15:29:46.122Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Deep dive into [[...segments]] processes and capabilities",
+        "Methodological approach to [[...segments]] integration",
+        "Expert FAQ specific to [[...segments]] operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SegmentsCalculator",
+        "target_file": "src/components/calculator/segmentscalculator.tsx",
+        "action_file": "src/actions/calculate-segmentscalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1928,
+      "content_expansion_topics": [
+        "Deep dive into [slug] processes and capabilities",
+        "Methodological approach to [slug] integration",
+        "Expert FAQ specific to [slug] operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugCalculator",
+        "target_file": "src/components/calculator/slugcalculator.tsx",
+        "action_file": "src/actions/calculate-slugcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1538,
+      "content_expansion_topics": [
+        "Deep dive into artikel processes and capabilities",
+        "Methodological approach to artikel integration",
+        "Expert FAQ specific to artikel operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelCalculator",
+        "target_file": "src/components/calculator/artikelcalculator.tsx",
+        "action_file": "src/actions/calculate-artikelcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1355,
+      "content_expansion_topics": [
+        "Deep dive into anfrage processes and capabilities",
+        "Methodological approach to anfrage integration",
+        "Expert FAQ specific to anfrage operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageCalculator",
+        "target_file": "src/components/calculator/anfragecalculator.tsx",
+        "action_file": "src/actions/calculate-anfragecalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1891,
+      "content_expansion_topics": [
+        "Deep dive into fahrzeugoeffnung processes and capabilities",
+        "Methodological approach to fahrzeugoeffnung integration",
+        "Expert FAQ specific to fahrzeugoeffnung operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugoeffnungCalculator",
+        "target_file": "src/components/calculator/fahrzeugoeffnungcalculator.tsx",
+        "action_file": "src/actions/calculate-fahrzeugoeffnungcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1857,
+      "content_expansion_topics": [
+        "Deep dive into funkschluessel processes and capabilities",
+        "Methodological approach to funkschluessel integration",
+        "Expert FAQ specific to funkschluessel operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FunkschluesselCalculator",
+        "target_file": "src/components/calculator/funkschluesselcalculator.tsx",
+        "action_file": "src/actions/calculate-funkschluesselcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1910,
+      "content_expansion_topics": [
+        "Deep dive into kopieren processes and capabilities",
+        "Methodological approach to kopieren integration",
+        "Expert FAQ specific to kopieren operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KopierenCalculator",
+        "target_file": "src/components/calculator/kopierencalculator.tsx",
+        "action_file": "src/actions/calculate-kopierencalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2233,
+      "content_expansion_topics": [
+        "Deep dive into [model] processes and capabilities",
+        "Methodological approach to [model] integration",
+        "Expert FAQ specific to [model] operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModelCalculator",
+        "target_file": "src/components/calculator/modelcalculator.tsx",
+        "action_file": "src/actions/calculate-modelcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 2081,
+      "content_expansion_topics": [
+        "Deep dive into [make] processes and capabilities",
+        "Methodological approach to [make] integration",
+        "Expert FAQ specific to [make] operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MakeCalculator",
+        "target_file": "src/components/calculator/makecalculator.tsx",
+        "action_file": "src/actions/calculate-makecalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1682,
+      "content_expansion_topics": [
+        "Deep dive into marken processes and capabilities",
+        "Methodological approach to marken integration",
+        "Expert FAQ specific to marken operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenCalculator",
+        "target_file": "src/components/calculator/markencalculator.tsx",
+        "action_file": "src/actions/calculate-markencalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1954,
+      "content_expansion_topics": [
+        "Deep dive into nachmachen processes and capabilities",
+        "Methodological approach to nachmachen integration",
+        "Expert FAQ specific to nachmachen operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "NachmachenCalculator",
+        "target_file": "src/components/calculator/nachmachencalculator.tsx",
+        "action_file": "src/actions/calculate-nachmachencalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 3153,
+      "content_expansion_topics": [
+        "Deep dive into autoschluessel processes and capabilities",
+        "Methodological approach to autoschluessel integration",
+        "Expert FAQ specific to autoschluessel operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselCalculator",
+        "target_file": "src/components/calculator/autoschluesselcalculator.tsx",
+        "action_file": "src/actions/calculate-autoschluesselcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1976,
+      "content_expansion_topics": [
+        "Deep dive into programmieren processes and capabilities",
+        "Methodological approach to programmieren integration",
+        "Expert FAQ specific to programmieren operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ProgrammierenCalculator",
+        "target_file": "src/components/calculator/programmierencalculator.tsx",
+        "action_file": "src/actions/calculate-programmierencalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1817,
+      "content_expansion_topics": [
+        "Deep dive into schluesselbart-fraesen processes and capabilities",
+        "Methodological approach to schluesselbart-fraesen integration",
+        "Expert FAQ specific to schluesselbart-fraesen operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselbartFraesenCalculator",
+        "target_file": "src/components/calculator/schluesselbartfraesencalculator.tsx",
+        "action_file": "src/actions/calculate-schluesselbartfraesencalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1965,
+      "content_expansion_topics": [
+        "Deep dive into smart-key processes and capabilities",
+        "Methodological approach to smart-key integration",
+        "Expert FAQ specific to smart-key operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartKeyCalculator",
+        "target_file": "src/components/calculator/smartkeycalculator.tsx",
+        "action_file": "src/actions/calculate-smartkeycalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2416,
+      "content_expansion_topics": [
+        "Deep dive into [id] processes and capabilities",
+        "Methodological approach to [id] integration",
+        "Expert FAQ specific to [id] operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "IdCalculator",
+        "target_file": "src/components/calculator/idcalculator.tsx",
+        "action_file": "src/actions/calculate-idcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1219,
+      "content_expansion_topics": [
+        "Deep dive into konfigurator processes and capabilities",
+        "Methodological approach to konfigurator integration",
+        "Expert FAQ specific to konfigurator operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorCalculator",
+        "target_file": "src/components/calculator/konfiguratorcalculator.tsx",
+        "action_file": "src/actions/calculate-konfiguratorcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3568,
+      "content_expansion_topics": [
+        "Deep dive into elektronische-zutrittsloesungen processes and capabilities",
+        "Methodological approach to elektronische-zutrittsloesungen integration",
+        "Expert FAQ specific to elektronische-zutrittsloesungen operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenCalculator",
+        "target_file": "src/components/calculator/elektronischezutrittsloesungencalculator.tsx",
+        "action_file": "src/actions/calculate-elektronischezutrittsloesungencalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 1155,
+      "content_expansion_topics": [
+        "Deep dive into konfigurator processes and capabilities",
+        "Methodological approach to konfigurator integration",
+        "Expert FAQ specific to konfigurator operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorCalculator",
+        "target_file": "src/components/calculator/konfiguratorcalculator.tsx",
+        "action_file": "src/actions/calculate-konfiguratorcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3544,
+      "content_expansion_topics": [
+        "Deep dive into gleichschliessende-zylinder processes and capabilities",
+        "Methodological approach to gleichschliessende-zylinder integration",
+        "Expert FAQ specific to gleichschliessende-zylinder operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderCalculator",
+        "target_file": "src/components/calculator/gleichschliessendezylindercalculator.tsx",
+        "action_file": "src/actions/calculate-gleichschliessendezylindercalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 1076,
+      "content_expansion_topics": [
+        "Deep dive into kasse processes and capabilities",
+        "Methodological approach to kasse integration",
+        "Expert FAQ specific to kasse operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseCalculator",
+        "target_file": "src/components/calculator/kassecalculator.tsx",
+        "action_file": "src/actions/calculate-kassecalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 2426,
+      "content_expansion_topics": [
+        "Deep dive into home processes and capabilities",
+        "Methodological approach to home integration",
+        "Expert FAQ specific to home operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeCalculator",
+        "target_file": "src/components/calculator/homecalculator.tsx",
+        "action_file": "src/actions/calculate-homecalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1266,
+      "content_expansion_topics": [
+        "Deep dive into [slug] processes and capabilities",
+        "Methodological approach to [slug] integration",
+        "Expert FAQ specific to [slug] operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugCalculator",
+        "target_file": "src/components/calculator/slugcalculator.tsx",
+        "action_file": "src/actions/calculate-slugcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 1077,
+      "content_expansion_topics": [
+        "Deep dive into ratgeber processes and capabilities",
+        "Methodological approach to ratgeber integration",
+        "Expert FAQ specific to ratgeber operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberCalculator",
+        "target_file": "src/components/calculator/ratgebercalculator.tsx",
+        "action_file": "src/actions/calculate-ratgebercalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 1290,
+      "content_expansion_topics": [
+        "Deep dive into agb processes and capabilities",
+        "Methodological approach to agb integration",
+        "Expert FAQ specific to agb operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AgbCalculator",
+        "target_file": "src/components/calculator/agbcalculator.tsx",
+        "action_file": "src/actions/calculate-agbcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 1046,
+      "content_expansion_topics": [
+        "Deep dive into cookie-einstellungen processes and capabilities",
+        "Methodological approach to cookie-einstellungen integration",
+        "Expert FAQ specific to cookie-einstellungen operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CookieEinstellungenCalculator",
+        "target_file": "src/components/calculator/cookieeinstellungencalculator.tsx",
+        "action_file": "src/actions/calculate-cookieeinstellungencalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1667,
+      "content_expansion_topics": [
+        "Deep dive into datenschutz processes and capabilities",
+        "Methodological approach to datenschutz integration",
+        "Expert FAQ specific to datenschutz operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DatenschutzCalculator",
+        "target_file": "src/components/calculator/datenschutzcalculator.tsx",
+        "action_file": "src/actions/calculate-datenschutzcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 1100,
+      "content_expansion_topics": [
+        "Deep dive into impressum processes and capabilities",
+        "Methodological approach to impressum integration",
+        "Expert FAQ specific to impressum operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ImpressumCalculator",
+        "target_file": "src/components/calculator/impressumcalculator.tsx",
+        "action_file": "src/actions/calculate-impressumcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1332,
+      "content_expansion_topics": [
+        "Deep dive into versand-und-zahlung processes and capabilities",
+        "Methodological approach to versand-und-zahlung integration",
+        "Expert FAQ specific to versand-und-zahlung operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VersandUndZahlungCalculator",
+        "target_file": "src/components/calculator/versandundzahlungcalculator.tsx",
+        "action_file": "src/actions/calculate-versandundzahlungcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1234,
+      "content_expansion_topics": [
+        "Deep dive into widerruf processes and capabilities",
+        "Methodological approach to widerruf integration",
+        "Expert FAQ specific to widerruf operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WiderrufCalculator",
+        "target_file": "src/components/calculator/widerrufcalculator.tsx",
+        "action_file": "src/actions/calculate-widerrufcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1225,
+      "content_expansion_topics": [
+        "Deep dive into konfigurator processes and capabilities",
+        "Methodological approach to konfigurator integration",
+        "Expert FAQ specific to konfigurator operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorCalculator",
+        "target_file": "src/components/calculator/konfiguratorcalculator.tsx",
+        "action_file": "src/actions/calculate-konfiguratorcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2931,
+      "content_expansion_topics": [
+        "Deep dive into schliessanlagen processes and capabilities",
+        "Methodological approach to schliessanlagen integration",
+        "Expert FAQ specific to schliessanlagen operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenCalculator",
+        "target_file": "src/components/calculator/schliessanlagencalculator.tsx",
+        "action_file": "src/actions/calculate-schliessanlagencalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1726,
+      "content_expansion_topics": [
+        "Deep dive into [slug] processes and capabilities",
+        "Methodological approach to [slug] integration",
+        "Expert FAQ specific to [slug] operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugCalculator",
+        "target_file": "src/components/calculator/slugcalculator.tsx",
+        "action_file": "src/actions/calculate-slugcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1388,
+      "content_expansion_topics": [
+        "Deep dive into schluessel-nach-code processes and capabilities",
+        "Methodological approach to schluessel-nach-code integration",
+        "Expert FAQ specific to schluessel-nach-code operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeCalculator",
+        "target_file": "src/components/calculator/schluesselnachcodecalculator.tsx",
+        "action_file": "src/actions/calculate-schluesselnachcodecalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 1074,
+      "content_expansion_topics": [
+        "Deep dive into anfrage processes and capabilities",
+        "Methodological approach to anfrage integration",
+        "Expert FAQ specific to anfrage operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageCalculator",
+        "target_file": "src/components/calculator/anfragecalculator.tsx",
+        "action_file": "src/actions/calculate-anfragecalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2902,
+      "content_expansion_topics": [
+        "Deep dive into schluessel-nach-vorlage processes and capabilities",
+        "Methodological approach to schluessel-nach-vorlage integration",
+        "Expert FAQ specific to schluessel-nach-vorlage operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageCalculator",
+        "target_file": "src/components/calculator/schluesselnachvorlagecalculator.tsx",
+        "action_file": "src/actions/calculate-schluesselnachvorlagecalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Deep dive into anfrage processes and capabilities",
+        "Methodological approach to anfrage integration",
+        "Expert FAQ specific to anfrage operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageCalculator",
+        "target_file": "src/components/calculator/anfragecalculator.tsx",
+        "action_file": "src/actions/calculate-anfragecalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1422,
+      "content_expansion_topics": [
+        "Deep dive into kontakt processes and capabilities",
+        "Methodological approach to kontakt integration",
+        "Expert FAQ specific to kontakt operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KontaktCalculator",
+        "target_file": "src/components/calculator/kontaktcalculator.tsx",
+        "action_file": "src/actions/calculate-kontaktcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2753,
+      "content_expansion_topics": [
+        "Deep dive into service-und-termin processes and capabilities",
+        "Methodological approach to service-und-termin integration",
+        "Expert FAQ specific to service-und-termin operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminCalculator",
+        "target_file": "src/components/calculator/serviceundtermincalculator.tsx",
+        "action_file": "src/actions/calculate-serviceundtermincalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Deep dive into terminstatus processes and capabilities",
+        "Methodological approach to terminstatus integration",
+        "Expert FAQ specific to terminstatus operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminstatusCalculator",
+        "target_file": "src/components/calculator/terminstatuscalculator.tsx",
+        "action_file": "src/actions/calculate-terminstatuscalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1604,
+      "content_expansion_topics": [
+        "Deep dive into vor-ort processes and capabilities",
+        "Methodological approach to vor-ort integration",
+        "Expert FAQ specific to vor-ort operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VorOrtCalculator",
+        "target_file": "src/components/calculator/vorortcalculator.tsx",
+        "action_file": "src/actions/calculate-vorortcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1598,
+      "content_expansion_topics": [
+        "Deep dive into [slug] processes and capabilities",
+        "Methodological approach to [slug] integration",
+        "Expert FAQ specific to [slug] operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugCalculator",
+        "target_file": "src/components/calculator/slugcalculator.tsx",
+        "action_file": "src/actions/calculate-slugcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 2107,
+      "content_expansion_topics": [
+        "Deep dive into sicherheitstechnik processes and capabilities",
+        "Methodological approach to sicherheitstechnik integration",
+        "Expert FAQ specific to sicherheitstechnik operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikCalculator",
+        "target_file": "src/components/calculator/sicherheitstechnikcalculator.tsx",
+        "action_file": "src/actions/calculate-sicherheitstechnikcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 1169,
+      "content_expansion_topics": [
+        "Deep dive into sicherheitscheck processes and capabilities",
+        "Methodological approach to sicherheitscheck integration",
+        "Expert FAQ specific to sicherheitscheck operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitscheckCalculator",
+        "target_file": "src/components/calculator/sicherheitscheckcalculator.tsx",
+        "action_file": "src/actions/calculate-sicherheitscheckcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1307,
+      "content_expansion_topics": [
+        "Deep dive into [city] processes and capabilities",
+        "Methodological approach to [city] integration",
+        "Expert FAQ specific to [city] operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CityCalculator",
+        "target_file": "src/components/calculator/citycalculator.tsx",
+        "action_file": "src/actions/calculate-citycalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 1118,
+      "content_expansion_topics": [
+        "Deep dive into standorte processes and capabilities",
+        "Methodological approach to standorte integration",
+        "Expert FAQ specific to standorte operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteCalculator",
+        "target_file": "src/components/calculator/standortecalculator.tsx",
+        "action_file": "src/actions/calculate-standortecalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1421,
+      "content_expansion_topics": [
+        "Deep dive into [slug] processes and capabilities",
+        "Methodological approach to [slug] integration",
+        "Expert FAQ specific to [slug] operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugCalculator",
+        "target_file": "src/components/calculator/slugcalculator.tsx",
+        "action_file": "src/actions/calculate-slugcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 3057,
+      "content_expansion_topics": [
+        "Deep dive into tuer-und-schliesstechnik processes and capabilities",
+        "Methodological approach to tuer-und-schliesstechnik integration",
+        "Expert FAQ specific to tuer-und-schliesstechnik operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikCalculator",
+        "target_file": "src/components/calculator/tuerundschliesstechnikcalculator.tsx",
+        "action_file": "src/actions/calculate-tuerundschliesstechnikcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 1104,
+      "content_expansion_topics": [
+        "Deep dive into warenkorb processes and capabilities",
+        "Methodological approach to warenkorb integration",
+        "Expert FAQ specific to warenkorb operations"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbCalculator",
+        "target_file": "src/components/calculator/warenkorbcalculator.tsx",
+        "action_file": "src/actions/calculate-warenkorbcalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

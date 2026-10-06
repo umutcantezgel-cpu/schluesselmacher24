@@ -43,3 +43,5 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+Updated architecture blueprint objectives
+- Added comprehensive architecture blueprint, including architecture matrix and revolution plan, providing a detailed roadmap for component transformations and content expansion (Swiss Light Mode + OKLCH enforced).
