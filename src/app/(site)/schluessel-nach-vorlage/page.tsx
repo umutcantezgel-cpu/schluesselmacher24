@@ -21,6 +21,9 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
+import { BentoMatrix } from '@/components/matrix/bento-matrix';
+
+
 const ROUTE = 'schluessel-nach-vorlage';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -103,7 +106,17 @@ const STEPS = [
   },
 ];
 
-export default async function SchluesselNachVorlagePage() {
+
+interface Props {
+  params: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchluesselNachVorlagePage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
+
+
   const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
@@ -246,7 +259,54 @@ export default async function SchluesselNachVorlagePage() {
         </div>
       </Section>
 
+
+      {/* Fachliche Tiefenanalyse */}
+      <Section id="methodik">
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Präzisionsfertigung nach fotogrammetrischer Vorlage"
+          lead="Wir setzen auf computergestützte Profilbestimmung und mikrometergenaue Frästechnik, um aus zweidimensionalen Vorlagen perfekte mechanische Duplikate zu generieren."
+        />
+        <div className="prose-sm24 mt-8 max-w-none text-[oklch(0.32_0.02_260)]">
+          <p>
+            Die Anfertigung eines mechanischen Schlüssels nach einem reinen Lichtbild stellt höchste Anforderungen an die <strong>optische Erkennung</strong> und die anschließende <strong>Materialkunde</strong>. In unserem Verfahren durchläuft jedes eingereichte Bildmaterial zunächst eine KI-gestützte Kantenerkennung und Kontrastoptimierung. Diese Vorverarbeitung isoliert den Schaft vom Hintergrund und interpoliert die Fräskurven, um den genauen Profilquerschnitt zu ermitteln.
+          </p>
+          <p>
+            Anschließend gleichen wir die generierten Vektordaten mit unserer Datenbank von über 50.000 bekannten Zylinder- und Schlüsselprofilen ab. Dieser Abgleich erfolgt deterministisch: Wir suchen nach exakten Übereinstimmungen bei der Einschnitttiefe und den Winkeln der Bartzacken. Ein wesentlicher Bestandteil dieser Prüfung ist die <strong>Sicherheits- und Berechtigungsprüfung</strong>. Wir stellen sicher, dass es sich bei dem angefragten Profil nicht um ein geschütztes Sicherheitsprofil handelt, für dessen Reproduktion zwingend eine physische Sicherungskarte und eine notariell beglaubigte Autorisierung erforderlich wären.
+          </p>
+          <p>
+            Ist das Profil eindeutig identifiziert und freigegeben, erfolgt die Fertigung. Hierbei setzen wir hochmoderne, computergesteuerte CNC-Fräsmaschinen ein, die Toleranzen im Bereich von wenigen Mikrometern garantieren. Die <strong>Fräspräzision</strong> ist entscheidend für das reibungslose Gleiten des Schlüssels im Schließzylinder. Wir verwenden ausschließlich Rohlinge aus speziellen, korrosionsbeständigen Messinglegierungen und Neusilber, die eine extrem lange Lebensdauer bei minimalem Abrieb aufweisen.
+          </p>
+          <p>
+            Die <strong>Materialkunde</strong> spielt hierbei eine zentrale Rolle: Ein zu weiches Material würde sich schnell abnutzen und den Schließzylinder auf Dauer beschädigen, während ein zu hartes Material beim Fräsprozess Mikrorisse entwickeln könnte. Unsere Rohlinge sind exakt auf das vom Hersteller geforderte Härteprofil abgestimmt.
+          </p>
+          <p>
+            Im Kontext der modernen Schließtechnik müssen wir zudem streng zwischen <strong>elektronischen und mechanischen Schließsystemen</strong> differenzieren. Während mechanische Zylinder durch physische Stifte kodiert sind, die exakt auf die Kerben des Schlüssels abgestimmt sein müssen, basieren elektronische Systeme oft auf RFID-Transpondern oder kryptografischen Chipsätzen.
+          </p>
+          <p>
+            Ein Schlüssel kann mechanisch perfekt reproduziert werden (der Bart passt und dreht sich im Schloss), wird aber bei einem elektronischen System ohne den passenden Transponder weder eine Tür entriegeln noch einen Motor starten. In solchen hybriden Szenarien kopieren wir zunächst den mechanischen Bart mit höchster Präzision nach Foto. Die Programmierung der elektronischen Komponenten – also das Einlernen von Transponder und Funkfernbedienung – muss jedoch in der Regel am physischen Fahrzeug oder am Original-System erfolgen, da hier kryptografische Schlüssel ausgetauscht und synchronisiert werden müssen.
+          </p>
+          <p>
+            Dieser duale Prozess stellt sicher, dass wir einerseits schnelle und präzise mechanische Lösungen nach Bildvorlage bieten können, andererseits aber höchste Sicherheitsstandards bei elektronischen Systemen wahren. Unsere Fachexperten bewerten jeden Vorgang individuell und entscheiden, ob eine rein fotobasierte Reproduktion technisch machbar und sicherheitstechnisch vertretbar ist.
+          </p>
+          <p>
+            Falls die optische Qualität der Bilder nicht ausreicht oder das Profil seltene Anomalien aufweist, die eine rein fotogrammetrische Bestimmung verhindern, fordern wir in einem zweiten Schritt die Einsendung des Originalschlüssels an. In diesem Fall nutzen wir haptische Laser-Abtastung und taktile Messverfahren, um die exakten Dimensionen des Schlüssels zu digitalisieren und in unser CAD/CAM-System zu übertragen.
+          </p>
+          <p>
+            Jede Nachfertigung, ob nach Foto oder Original, wird abschließend einer strengen Qualitätskontrolle unterzogen. Wir messen die Einschnitte mit digitalen Mikrometerschrauben nach und prüfen die Kanten auf mikroskopische Grate, die die Schließfunktion beeinträchtigen könnten. Nur Schlüssel, die unsere strikten Toleranzvorgaben zu 100 % erfüllen, verlassen unsere Werkstatt.
+          </p>
+          <p>
+            Die Kombination aus digitaler Bildverarbeitung, riesiger Profil-Datenbank, modernster CNC-Fertigung und kompromissloser Qualitätskontrolle ermöglicht es uns, auch aus scheinbar einfachen Fotos mechanische Meisterwerke der Schließtechnik zu reproduzieren, die dem Original in Präzision und Langlebigkeit in nichts nachstehen.
+          </p>
+        </div>
+
+        <div className="mt-12">
+          <BentoMatrix />
+        </div>
+      </Section>
+
       {/* Die drei Fotos */}
+
       <Section tone="muted" id="fotos">
         <SectionHeading
           eyebrow="Vorbereitung"

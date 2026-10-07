@@ -1,0 +1,16 @@
+{
+  "transformation_queue": [
+    {
+      "route": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Technische Methodik der Schlüsselkopie nach Foto",
+        "Sicherheitsaspekte und Berechtigungsprüfung",
+        "Materialkunde und Fräspräzision",
+        "Elektronische vs. mechanische Schließsysteme"
+      ],
+      "interactive_module": "Bento-Matrix zur Profilbestimmung"
+    }
+  ]
+}
