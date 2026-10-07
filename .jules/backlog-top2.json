@@ -1,0 +1,10 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_001",
+      "target_component_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "description": "Expand Sicherheitstechnik page with a service budget calculator",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}
