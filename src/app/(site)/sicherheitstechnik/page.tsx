@@ -10,6 +10,7 @@ import {
   Siren,
   Smartphone,
 } from 'lucide-react';
+import { SecurityAuditCalculator } from '@/components/calculator/security-audit-calculator';
 
 import { getPageContent, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -73,7 +74,10 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+export default async function SicherheitstechnikPage({ params, searchParams }: { params: Promise<{ id?: string }>; searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -104,6 +108,77 @@ export default async function SicherheitstechnikPage() {
           </ButtonLink>
         }
       />
+
+      {/* Grundsatz */}
+      <Section tight>
+        <div className="grid gap-8 lg:grid-cols-1">
+          <div>
+            <SectionHeading
+              eyebrow="Sicherheits-Audit"
+              title="Mechanischer Einbruchschutz und Zutrittskontrollen"
+              lead="Berechnen Sie den Aufwand für eine umfassende Sicherheitsarchitektur in Ihrem Objekt."
+            />
+            <div className="mt-8">
+              <SecurityAuditCalculator />
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Detaillierte Fachinformationen - Sicherheitsarchitektur */}
+      <Section tight>
+        <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-12 grid-template-rows: subgrid" style={{ viewTransitionName: 'sicherheitsarchitektur' }}>
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Umfassende Sicherheitsarchitektur</h2>
+            <div className="prose prose-slate max-w-none text-foreground-muted">
+              <p className="mb-4">
+                Die moderne Sicherheitsarchitektur in gewerblichen und privaten Objekten erfordert ein ganzheitliches Verständnis der potenziellen Bedrohungsszenarien. Es geht längst nicht mehr nur um das einfache Abschließen einer Tür. Vielmehr handelt es sich um ein komplexes Zusammenspiel aus mechanischen, mechatronischen und rein elektronischen Systemen, die in ihrer Gesamtheit einen effektiven Widerstand gegen unbefugten Zutritt bilden.
+              </p>
+              <p className="mb-4">
+                Eine fundierte Risikoanalyse steht am Beginn jeder professionellen Planung. Hierbei werden nicht nur die baulichen Gegebenheiten, sondern auch die Nutzungsprofile und die Schutzziele detailliert erfasst. Mechanischer Einbruchschutz bildet dabei das unabdingbare Fundament. Ohne solide Grundsicherung sind auch die fortschrittlichsten elektronischen Systeme weitgehend wirkungslos, da sie einen physischen Angriff nicht verhindern, sondern lediglich melden können.
+              </p>
+              <p className="mb-4">
+                Zu den Kernkomponenten der mechanischen Absicherung zählen einbruchhemmende Türen und Fenster nach DIN EN 1627, hochwertige Schließzylinder mit Bohr- und Ziehschutz sowie massive Sicherheitsbeschläge. Diese Elemente definieren die Widerstandszeit – die Zeit, die ein Täter benötigt, um in das Objekt einzudringen. Ziel ist es, diese Zeitspanne so zu maximieren, dass der Täter sein Vorhaben abbricht oder durch parallel alarmierte Interventionskräfte gefasst werden kann.
+              </p>
+
+              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Intelligente Zutrittskontrollen</h3>
+              <p className="mb-4">
+                Aufbauend auf der mechanischen Grundsicherung ermöglichen moderne Zutrittskontrollsysteme eine differenzierte Steuerung und Überwachung der Personenströme. Sie beantworten die essenzielle Frage: &quot;Wer darf wann wohin?&quot; Im Gegensatz zu mechanischen Schließanlagen bieten elektronische Systeme ein Höchstmaß an Flexibilität. Bei Schlüsselverlust muss nicht mehr kostenintensiv die gesamte Anlage oder Teile davon ausgetauscht werden; stattdessen wird das betreffende Identmedium (z. B. Transponder, Smartcard oder Smartphone) einfach im System gesperrt.
+              </p>
+              <p className="mb-4">
+                Darüber hinaus erlauben diese Systeme die Protokollierung von Zutrittsereignissen, was insbesondere in kritischen Infrastrukturen oder bei der Aufklärung von Vorfällen von entscheidender Bedeutung sein kann. Die Integration in übergeordnete Gebäudeleitsysteme oder die Kopplung mit Zeiterfassungssystemen verdeutlicht das Synergiepotenzial vernetzter Sicherheitstechnik.
+              </p>
+            </div>
+          </div>
+          <div>
+            <div className="rounded-lg border border-border bg-surface-muted p-6 sticky top-8">
+               <h3 className="text-lg font-bold text-foreground mb-4">FAQ: Mechanischer Einbruchschutz & Audit</h3>
+               <dl className="space-y-6">
+                 <div>
+                   <dt className="text-[15px] font-bold text-foreground">1. Was ist der Unterschied zwischen mechanischer und elektronischer Sicherheit?</dt>
+                   <dd className="mt-2 text-[14px] leading-relaxed text-foreground-muted">Mechanische Sicherheitstechnik (z.B. Panzerriegel, Sicherheitsbeschläge) leistet physischen Widerstand und verhindert oder verzögert den Einbruch aktiv. Elektronische Systeme (z.B. Alarmanlagen, Videoüberwachung) melden einen Vorfall oder zeichnen ihn auf, können das physische Eindringen aber allein nicht stoppen.</dd>
+                 </div>
+                 <div>
+                   <dt className="text-[15px] font-bold text-foreground">2. Wie läuft ein professionelles Sicherheits-Audit ab?</dt>
+                   <dd className="mt-2 text-[14px] leading-relaxed text-foreground-muted">Ein Audit beginnt mit einer detaillierten Schwachstellenanalyse vor Ort. Wir prüfen alle Gebäudeöffnungen (Türen, Fenster, Lichtschächte), bewerten die vorhandene Sicherungstechnik und definieren gemeinsam mit Ihnen die Schutzziele, um ein maßgeschneidertes Maßnahmenpaket zu entwickeln.</dd>
+                 </div>
+                 <div>
+                   <dt className="text-[15px] font-bold text-foreground">3. Welche Widerstandsklassen (RC) sind für Privathaushalte empfehlenswert?</dt>
+                   <dd className="mt-2 text-[14px] leading-relaxed text-foreground-muted">Für den privaten Bereich empfiehlt die Polizei in der Regel Bauteile der Widerstandsklasse RC 2 oder RC 3. Diese bieten einen guten Grundschutz gegen Gelegenheitstäter, die mit einfachen Werkzeugen vorgehen.</dd>
+                 </div>
+                 <div>
+                   <dt className="text-[15px] font-bold text-foreground">4. Lassen sich bestehende Türen und Fenster nachrüsten?</dt>
+                   <dd className="mt-2 text-[14px] leading-relaxed text-foreground-muted">Ja, in den meisten Fällen ist eine Nachrüstung nach DIN 18104 (Teil 1 für aufgeschraubte, Teil 2 für innenliegende Nachrüstprodukte) möglich und sinnvoll. Dies ist oft wirtschaftlicher als ein kompletter Austausch, muss jedoch fachgerecht ausgeführt werden.</dd>
+                 </div>
+                 <div>
+                   <dt className="text-[15px] font-bold text-foreground">5. Warum ist ein Ziehschutz beim Schließzylinder so wichtig?</dt>
+                   <dd className="mt-2 text-[14px] leading-relaxed text-foreground-muted">Der Kernziehschutz verhindert eine gängige Einbruchsmethode, bei der eine Spezialschraube in den Schließkanal gedreht und der Zylinderkern samt Stiften gewaltsam herausgezogen wird. Ein Schutzbeschlag mit Zylinderabdeckung ist hierbei der effektivste Schutz.</dd>
+                 </div>
+               </dl>
+            </div>
+          </div>
+        </div>
+      </Section>
 
       {/* Grundsatz */}
       <Section tight>
