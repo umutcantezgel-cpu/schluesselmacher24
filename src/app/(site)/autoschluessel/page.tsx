@@ -13,6 +13,7 @@ import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -209,7 +210,16 @@ const FAQ = [
   },
 ];
 
-export default async function AutoschluesselHubPage() {
+interface Props {
+  params: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function AutoschluesselHubPage({ params, searchParams }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedParams = await params;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedSearch = await searchParams;
   const [page, settings, makes] = await Promise.all([
     getPageContent(ROUTE),
     getSettings(),
@@ -299,6 +309,71 @@ export default async function AutoschluesselHubPage() {
           </div>
         </dl>
       </PageHeader>
+
+
+      {/* Fachkompetenz und Methodik (Erweiterung) */}
+      <Section id="methodik">
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Präzision in der Schlüsselfertigung"
+          lead="Wie wir moderne Schließsysteme und Fahrzeugschlüssel mit höchster Zuverlässigkeit bearbeiten."
+        />
+        <div className="mt-8 prose prose-lg max-w-none text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <p>
+            Die Anfertigung und Programmierung von Autoschlüsseln hat sich in den letzten Jahrzehnten von einer rein mechanischen Handwerkskunst zu einer hochkomplexen elektronischen Disziplin entwickelt.
+            Während früher ein einfacher Metallbart ausreichte, um ein Fahrzeug zu starten, kommunizieren moderne Schlüssel über verschlüsselte RFID-Transponder mit der Wegfahrsperre (Immobilizer) des Fahrzeugs.
+            Dieser Fortschritt erfordert nicht nur tiefgreifendes Wissen über die mechanischen Toleranzen von Schließzylindern, sondern auch eine präzise Kenntnis der elektronischen Steuergeräte (ECU) verschiedener Hersteller.
+          </p>
+          <h3 className="text-[oklch(0.16_0.02_260)] font-semibold mt-6 mb-3 text-xl">Mechanische Fräsung: Die Basis jedes Schlüssels</h3>
+          <p>
+            Selbst im Zeitalter von Smart Keys und Keyless-Go-Systemen bleibt der mechanische Schlüsselbart (Notschlüssel) eine essenzielle Komponente.
+            Er dient nicht nur als Rückfallebene bei elektronischen Ausfällen, sondern ist oft Voraussetzung für die Programmierung.
+            Wir fräsen Schlüsselbärte mithilfe computergesteuerter (CNC) Maschinen.
+            Dabei kopieren wir nicht einfach den abgenutzten Zustand eines alten Schlüssels, sondern decodieren den Schlüsselcode, um den neuen Schlüssel auf die ursprünglichen Werksmaße (Werksfräsung) zurückzusetzen.
+            Dies schont die Zuhaltungen im Tür- und Zündschloss und gewährleistet eine einwandfreie Funktion ohne Haken und Klemmen.
+          </p>
+          <h3 className="text-[oklch(0.16_0.02_260)] font-semibold mt-6 mb-3 text-xl">Elektronische Programmierung und Transponder-Integration</h3>
+          <p>
+            Der Kern eines modernen Autoschlüssels ist der Transponder. Ohne die korrekte Authentifizierung dieses Chips bleibt das Fahrzeug stumm.
+            Wir unterscheiden hierbei zwischen dem Klonen (Kopieren der Signatur eines bestehenden Transponders) und dem Programmieren über die OBD-Schnittstelle (On-Board Diagnostics).
+            Beim Klonen liest unser Gerät die Daten des Originalschlüssels und überträgt sie auf einen programmierbaren Rohchip.
+            Bei Systemen mit Rolling-Code oder Crypto-Transpondern (wie Megamos Crypto, Texas Crypto oder NXP Hitag) ist ein direkter Eingriff in das Fahrzeugsteuergerät erforderlich.
+            Hier kommuniziert unser Diagnosegerät direkt mit der Wegfahrsperre, um einen neuen Schlüssel anzumelden oder verlorene Schlüssel aus dem Speicher zu löschen, damit sie keinen Schaden mehr anrichten können.
+          </p>
+          <h3 className="text-[oklch(0.16_0.02_260)] font-semibold mt-6 mb-3 text-xl">Smart Keys und Keyless-Go-Systeme (Proximity)</h3>
+          <p>
+            Die höchste Stufe der Schlüsseltechnologie stellen Smart Keys dar. Diese kommunizieren aktiv mit den Antennen des Fahrzeugs, sobald sich der Fahrer nähert.
+            Die Programmierung dieser Proximity-Schlüssel erfordert oft eine Online-Verbindung zu den Servern des Fahrzeugherstellers, um Sicherheitscodes und Token abzurufen.
+            Wir verfügen über die nötige Ausrüstung und die Zugangsberechtigungen, um diese komplexen Vorgänge für eine Vielzahl von Fahrzeugmarken sicher und herstellerkonform durchzuführen.
+            Die Sicherheit unserer Kunden steht dabei an erster Stelle: Jeder Programmiervorgang wird dokumentiert und wir überprüfen stets die Berechtigung (Fahrzeugschein und Ausweis), bevor wir einen neuen Schlüssel anfertigen.
+          </p>
+          <h3 className="text-[oklch(0.16_0.02_260)] font-semibold mt-6 mb-3 text-xl">Reparatur statt Neuanschaffung</h3>
+          <p>
+            Nicht immer ist ein komplett neuer Schlüssel notwendig. Oft sind es nur gebrochene Gehäuse, abgenutzte Mikrotaster oder leere Akkus (wie sie z.B. bei einigen BMW-Modellen fest verlötet sind), die den Dienst verweigern.
+            In unserer Werkstatt führen wir mikrotechnische Lötungen durch, erneuern Taster und transferieren intakte Platinen in neue, passgenaue Gehäuse.
+            Dies ist nicht nur eine wirtschaftliche Alternative zum Neuschlüssel, sondern auch ein ressourcenschonender Ansatz.
+            Nach jeder Reparatur wird die Sendeleistung (Frequenzprüfung auf 433 MHz oder 868 MHz) getestet, um eine zuverlässige Reichweite der Funkfernbedienung zu garantieren.
+          </p>
+          <p className="mt-4">
+            Unsere transparente Arbeitsweise und unser Qualitätsanspruch gewährleisten, dass Sie nicht nur einen funktionierenden Schlüssel erhalten, sondern auch die Sicherheit und das Vertrauen, das mit Ihrem Fahrzeug verbunden ist.
+            Wir nehmen uns die Zeit, um Ihnen die genauen Anforderungen für Ihr spezifisches Fahrzeugmodell zu erläutern und den optimalen Lösungsweg zu finden.
+            Egal ob Sie einen Ersatzschlüssel präventiv anfertigen lassen möchten oder in einer Notsituation schnelle Hilfe benötigen &ndash; wir stehen Ihnen mit Expertise und moderner Technik zur Seite.
+          </p>
+        </div>
+      </Section>
+
+      {/* Rechner */}
+      <Section id="rechner" tone="muted">
+        <SectionHeading
+          eyebrow="Kostenkalkulation"
+          title="Interaktiver Preisrechner"
+          lead="Berechnen Sie vorab einen Richtwert für die Kosten Ihres neuen Autoschlüssels basierend auf Leistungsart und Komplexität."
+        />
+        <div className="mt-8 max-w-2xl">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
 
       {/* Einordnung */}
       <Section>
