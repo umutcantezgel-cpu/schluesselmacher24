@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Next.js Architecture Blueprint & Target State
+- **Current Routes:** 49 audited
+- **Blueprint Generation:** Architecture successfully extracted to `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`
