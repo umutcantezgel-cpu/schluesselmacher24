@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Goals
+
+This project embraces the Swiss Light Design Doctrine with OKLCH styling. We are optimizing our codebase according to the Master Blueprint to transition components to Next.js 16+, strictly typing our system, enforcing Server Components supremacy, implementing Server Actions for data mutations, and ensuring zero layout shifts while enriching content to achieve institutional scale (>800 words per route).
