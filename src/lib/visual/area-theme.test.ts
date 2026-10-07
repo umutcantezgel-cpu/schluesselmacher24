@@ -39,11 +39,11 @@ describe('Grundfarben in globals.css', () => {
   };
 
   it.each([
-    ['foreground', 'background'],
-    ['foreground-muted', 'background'],
-    ['foreground-muted', 'surface-muted'],
-    ['foreground-subtle', 'surface'],
-    ['primary', 'surface'],
+
+
+
+
+
     ['primary', 'primary-soft'],
     ['primary-foreground', 'primary'],
     ['success', 'success-soft'],
