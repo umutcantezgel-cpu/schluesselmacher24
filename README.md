@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Interaktive Module
+- **Bento-Matrix zur Profilbestimmung**: Ein hochmodernes interaktives Tool zur Ersteinschätzung der Fräspräzision und Machbarkeit, integriert in der Schlüssel-nach-Vorlage Seite.
