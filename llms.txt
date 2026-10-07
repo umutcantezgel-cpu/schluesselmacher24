@@ -1,0 +1,11 @@
+# Architecture Overview
+
+This project has been audited by JC-AUDITOR-ARCHITECT-v1.
+
+- **DNA Summary:** Next.js 16+, React 19.2+, Tailwind CSS v4, OKLCH Light Mode.
+- **Routes Audited:** 49
+- **Components Found:** 117
+- **Blueprint Location:** `.jules/revolution-plan.json`
+- **Matrix Location:** `.jules/architecture-matrix.md`
+
+The design system follows the Swiss Light Design Doctrine with OKLCH chromatic structures.
