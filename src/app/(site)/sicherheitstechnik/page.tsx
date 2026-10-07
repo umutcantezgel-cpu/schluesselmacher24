@@ -19,6 +19,7 @@ import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'sicherheitstechnik';
@@ -160,6 +161,88 @@ export default async function SicherheitstechnikPage() {
           </div>
         </div>
       </Section>
+
+
+      {/* Fachlicher Deep Dive - > 800 WÖRTER */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Ganzheitliche Sicherheitskonzepte für private und gewerbliche Objekte"
+          lead="Moderne Sicherheitstechnik ist kein Produkt aus dem Regal, sondern eine maßgeschneiderte Architektur, die Mechanik, Elektronik und digitale Prozesse in einem durchdachten Konzept vereint. Wir entwickeln Lösungen, die präventiv schützen, im Ernstfall zuverlässig alarmieren und gleichzeitig den täglichen Betriebsablauf nicht behindern."
+        />
+
+        <div className="mt-8 grid gap-8 lg:grid-cols-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Mechanischer Grundschutz als Fundament</h3>
+            <p>
+              Jedes professionelle Sicherheitskonzept beginnt mit dem physischen Grundschutz. Elektronik kann melden und dokumentieren, aber nur solide Mechanik kann einen Einbruchsversuch physisch stoppen oder entscheidend verzögern. In der Praxis bedeutet das:
+            </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li><strong>Hochsicherheitszylinder:</strong> Einsatz von patentierten Schließzylindern mit Bohrschutz, Ziehschutz und Schlagschlüsselsicherheit nach höchsten VdS-Klassen.</li>
+              <li><strong>Sicherheitsbeschläge:</strong> Massive Schutzbeschläge (ES1, ES2, ES3), die den Zylinder vollständig umschließen und das gewaltsame Abdrehen oder Ziehen verhindern.</li>
+              <li><strong>Mehrfachverriegelungen:</strong> Türschlösser, die nicht nur an einer Stelle, sondern an drei bis fünf Punkten gleichzeitig im Schließblech verankern.</li>
+              <li><strong>Zusatzsicherungen:</strong> Panzerriegel, Stangenschlösser und Scharnierseitensicherungen, die die mechanische Widerstandskraft einer Tür exponentiell erhöhen.</li>
+            </ul>
+            <p>
+              Unsere Experten analysieren die Bausubstanz und empfehlen mechanische Nachrüstungen, die exakt auf das Risikoprofil Ihres Objekts abgestimmt sind. Wir arbeiten ausschließlich mit Herstellern, die sich in unabhängigen Tests und in der harten Realität bewährt haben.
+            </p>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8">Elektronische Zutrittskontrolle & Schließanlagen</h3>
+            <p>
+              Wo früher der mechanische Schlüssel regierte, dominieren heute intelligente, elektronische Zutrittslösungen. Diese Systeme bieten nicht nur ein Höchstmaß an Sicherheit, sondern auch beispiellosen Komfort und maximale Flexibilität in der Verwaltung.
+            </p>
+            <p>
+              Die Vorteile einer elektronischen Anlage liegen auf der Hand: Bei Schlüsselverlust muss nicht mehr der Zylinder ausgetauscht werden &ndash; der verlorene Transponder wird einfach per Mausklick gesperrt. Zutrittsrechte können temporär vergeben werden (z.B. für Reinigungskräfte oder Handwerker) und lückenlos protokolliert werden.
+            </p>
+          </div>
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Alarmierung & Meldetechnik</h3>
+            <p>
+              Eine Einbruchmeldeanlage (EMA) ist die perfekte Ergänzung zur mechanischen Absicherung. Sie überwacht das Objekt lückenlos und meldet jeden unbefugten Eindringversuch sofort. Wir konzipieren Anlagen, die exakt auf Ihre Bedürfnisse zugeschnitten sind &ndash; von der einfachen Funk-Alarmanlage für die Privatwohnung bis zum komplexen, VdS-zertifizierten System für Gewerbeobjekte.
+            </p>
+            <p>
+              Moderne Systeme integrieren sich nahtlos in Smart-Home-Umgebungen und ermöglichen die Steuerung per App von überall auf der Welt. Im Alarmfall erfolgt die Benachrichtigung wahlweise auf Ihr Smartphone, an eine zertifizierte Notruf- und Serviceleitstelle (NSL) oder durch laute akustische und optische Signalgeber vor Ort.
+            </p>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8">Häufig gestellte Fragen (FAQ)</h3>
+            <div className="space-y-4">
+              <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-5">
+                <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Welche Sicherheitsklasse (Widerstandsklasse) empfehlen Sie?</h4>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Für den privaten Bereich empfehlen wir mindestens RC2 (Resistance Class 2) nach DIN EN 1627. Bei höherem Gefährdungspotenzial oder gewerblichen Objekten raten wir zu RC3 oder RC4.</p>
+              </div>
+              <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-5">
+                <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Können mechanische und elektronische Systeme kombiniert werden?</h4>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Ja, absolut. Diese Kombination (Mechatronik) bietet das höchste Sicherheitsniveau. Ein mechatronischer Zylinder vereint die mechanische Aufsperrsicherheit mit der intelligenten Zutrittskontrolle.</p>
+              </div>
+              <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-5">
+                <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Was tun bei Schlüsselverlust?</h4>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Bei mechanischen Systemen raten wir zum sofortigen Zylindertausch. Bei elektronischen Systemen sperren wir den verlorenen Transponder umgehend im System &ndash; die Sicherheit ist sofort wiederhergestellt.</p>
+              </div>
+              <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-5">
+                <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Gibt es Fördermittel für Einbruchschutz?</h4>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Ja, die KfW (Kreditanstalt für Wiederaufbau) bezuschusst Maßnahmen zum Einbruchschutz. Wir beraten Sie gerne zu den aktuellen Förderprogrammen und den technischen Voraussetzungen.</p>
+              </div>
+              <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-5">
+                <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Wie lange dauert die Installation einer Alarmanlage?</h4>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Dank moderner Funktechnik können wir Alarmsysteme im Privatbereich oft an einem einzigen Tag staub- und schmutzfrei installieren. Bei kabelgebundenen Systemen hängt der Aufwand von der Gebäudegröße ab.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Interaktiver Rechner */}
+      <Section>
+        <SectionHeading
+          eyebrow="Budgetplanung"
+          title="Kalkulieren Sie Ihr Sicherheitsbudget"
+          lead="Nutzen Sie unseren interaktiven Rechner, um einen ersten Richtwert für die Absicherung Ihres Objekts zu erhalten."
+        />
+        <div className="mt-12 max-w-2xl mx-auto">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
 
       {/* Bereiche */}
       <Section tone="muted">
