@@ -1,0 +1,20 @@
+{
+  "top_ideas": [
+    {
+      "id": "1",
+      "route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Sicherheitskonzepte",
+        "Moderne Schließanlagen",
+        "Einbruchschutz",
+        "Elektronische Systeme"
+      ],
+      "interactive_module": {
+        "name": "security-budget-calculator",
+        "description": "Ein interaktiver Budgetrechner für Sicherheitstechnik"
+      }
+    }
+  ]
+}
