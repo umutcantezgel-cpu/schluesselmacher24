@@ -17,31 +17,34 @@ const config = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      transitionTimingFunction: {
+        DEFAULT: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
       fontFamily: {
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
-        background: 'hsl(var(--background))',
+        background: 'oklch(var(--background))',
         surface: {
-          DEFAULT: 'hsl(var(--surface))',
-          muted: 'hsl(var(--surface-muted))',
-          sunken: 'hsl(var(--surface-sunken))',
-          ink: 'hsl(var(--surface-ink))',
+          DEFAULT: 'oklch(var(--surface))',
+          muted: 'oklch(var(--surface-muted))',
+          sunken: 'oklch(var(--surface-sunken))',
+          ink: 'oklch(var(--surface-ink))',
         },
         foreground: {
-          DEFAULT: 'hsl(var(--foreground))',
-          muted: 'hsl(var(--foreground-muted))',
-          subtle: 'hsl(var(--foreground-subtle))',
-          inverse: 'hsl(var(--foreground-inverse))',
+          DEFAULT: 'oklch(var(--foreground))',
+          muted: 'oklch(var(--foreground-muted))',
+          subtle: 'oklch(var(--foreground-subtle))',
+          inverse: 'oklch(var(--foreground-inverse))',
         },
         border: {
-          DEFAULT: 'hsl(var(--border))',
-          strong: 'hsl(var(--border-strong))',
+          DEFAULT: 'oklch(var(--border) / 0.55)',
+          strong: 'oklch(var(--border-strong))',
         },
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
+        input: 'oklch(var(--input))',
+        ring: 'oklch(var(--ring))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           hover: 'hsl(var(--primary-hover))',
@@ -74,16 +77,16 @@ const config = {
           soft: 'hsl(var(--info-soft))',
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+          DEFAULT: 'oklch(var(--card))',
+          foreground: 'oklch(var(--card-foreground))',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          DEFAULT: 'oklch(var(--popover))',
+          foreground: 'oklch(var(--popover-foreground))',
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          DEFAULT: 'oklch(var(--muted))',
+          foreground: 'oklch(var(--muted-foreground))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
