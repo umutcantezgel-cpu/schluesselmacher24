@@ -17,13 +17,16 @@ const config = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      transitionTimingFunction: {
+        DEFAULT: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
       fontFamily: {
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
-        background: 'hsl(var(--background))',
+        background: 'oklch(var(--background))',
         surface: {
           DEFAULT: 'hsl(var(--surface))',
           muted: 'hsl(var(--surface-muted))',
@@ -31,8 +34,8 @@ const config = {
           ink: 'hsl(var(--surface-ink))',
         },
         foreground: {
-          DEFAULT: 'hsl(var(--foreground))',
-          muted: 'hsl(var(--foreground-muted))',
+          DEFAULT: 'oklch(var(--foreground))',
+          muted: 'oklch(var(--foreground-muted))',
           subtle: 'hsl(var(--foreground-subtle))',
           inverse: 'hsl(var(--foreground-inverse))',
         },
