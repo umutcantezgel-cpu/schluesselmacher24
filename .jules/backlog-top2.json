@@ -1,0 +1,12 @@
+{
+  "top_ideas": [
+    {
+      "id": "idea-001",
+      "target_route": "src/app/(site)/autoschluessel/page.tsx",
+      "target_component_file": "src/app/(site)/autoschluessel/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "title": "Interactive Budget Calculator for Car Keys",
+      "description": "Add an interactive budget calculator and expand content to >800 words."
+    }
+  ]
+}
