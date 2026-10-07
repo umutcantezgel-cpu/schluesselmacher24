@@ -1,0 +1,2 @@
+
+Architecture Blueprint: The codebase is undergoing a comprehensive UI/UX and content transformation. A strict transformation plan for all routes is documented in `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`.

@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Transformation Plan
+
+A detailed transformation blueprint has been generated to elevate all existing routes to high-end Swiss Light Mode design with over 800 words of content and interactive modules. See `.jules/architecture-matrix.md` and `.jules/revolution-plan.json` for details.
