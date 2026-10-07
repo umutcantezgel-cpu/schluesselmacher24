@@ -1,0 +1,17 @@
+{
+  "transformation_queue": [
+    {
+      "target_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "target_word_count": 850,
+      "content_expansion_topics": ["Sicherheitsarchitektur", "Zutrittskontrollen", "Mechanischer Einbruchschutz", "Sicherheits-Audit"],
+      "interactive_modules": [
+        {
+          "name": "SecurityAuditCalculator",
+          "component_path": "src/components/calculator/security-audit-calculator.tsx",
+          "action_path": "src/actions/calculate-security-audit.ts"
+        }
+      ]
+    }
+  ]
+}
