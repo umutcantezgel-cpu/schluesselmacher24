@@ -1,0 +1,1191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-07T07:26:34.860Z",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 2,
+      "route_path": "/(payload)/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(payload)/admin/[[...segments]]",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(payload)/admin/[[...segments]]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(payload)/admin/[[...segments]]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule1",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-1.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/(site)/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/ratgeber",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/ratgeber",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule3",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-3.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/(site)/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/ratgeber/[slug]",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/ratgeber/[slug]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/ratgeber/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule4",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-4.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/(site)/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/schluessel-nach-vorlage/anfrage",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/schluessel-nach-vorlage/anfrage",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/schluessel-nach-vorlage/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule5",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-5.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/(site)/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2093,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/schluessel-nach-vorlage",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/schluessel-nach-vorlage",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/schluessel-nach-vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule6",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-6.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/(site)/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/warenkorb",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/warenkorb",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule8",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-8.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/(site)/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/kasse",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/kasse",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule9",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-9.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/(site)/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/schluessel-nach-code",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/schluessel-nach-code",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/schluessel-nach-code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule11",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-11.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/(site)/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1034,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/schluessel-nach-code/[slug]",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/schluessel-nach-code/[slug]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/schluessel-nach-code/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule12",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-12.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/(site)",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 1430,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule14",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-14.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/(site)/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1320,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/sicherheitstechnik",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/sicherheitstechnik",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule15",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-15.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/(site)/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 944,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/sicherheitstechnik/[slug]",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/sicherheitstechnik/[slug]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/sicherheitstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule16",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-16.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/(site)/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/sicherheitstechnik/sicherheitscheck",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/sicherheitstechnik/sicherheitscheck",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/sicherheitstechnik/sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule17",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-17.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/(site)/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2084,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/tuer-und-schliesstechnik",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/tuer-und-schliesstechnik",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/tuer-und-schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule19",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-19.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/(site)/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/tuer-und-schliesstechnik/[slug]",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/tuer-und-schliesstechnik/[slug]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/tuer-und-schliesstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule20",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-20.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/(site)/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1599,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/bestellung/[id]",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/bestellung/[id]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/bestellung/[id]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule22",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-22.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/(site)/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2381,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/gleichschliessende-zylinder",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/gleichschliessende-zylinder",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/gleichschliessende-zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule23",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-23.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/(site)/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/gleichschliessende-zylinder/konfigurator",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/gleichschliessende-zylinder/konfigurator",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/gleichschliessende-zylinder/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule24",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-24.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/(site)/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 2780,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/elektronische-zutrittsloesungen",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/elektronische-zutrittsloesungen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/elektronische-zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule26",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-26.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/(site)/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/elektronische-zutrittsloesungen/konfigurator",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/elektronische-zutrittsloesungen/konfigurator",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/elektronische-zutrittsloesungen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule27",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-27.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/(site)/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2173,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/schliessanlagen",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/schliessanlagen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule29",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-29.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/(site)/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/schliessanlagen/konfigurator",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/schliessanlagen/konfigurator",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/schliessanlagen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule30",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-30.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/(site)/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/service-und-termin/terminstatus",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/service-und-termin/terminstatus",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/service-und-termin/terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule32",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-32.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/(site)/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/service-und-termin/anfrage",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/service-und-termin/anfrage",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/service-und-termin/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule33",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-33.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/(site)/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 1878,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/service-und-termin",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/service-und-termin",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/service-und-termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule34",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-34.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/(site)/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 955,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/service-und-termin/vor-ort",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/service-und-termin/vor-ort",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/service-und-termin/vor-ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule35",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-35.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/(site)/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/service-und-termin/kontakt",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/service-und-termin/kontakt",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/service-und-termin/kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule37",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-37.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/(site)/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/rechtliches/impressum",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/rechtliches/impressum",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/rechtliches/impressum"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule38",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-38.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/(site)/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/rechtliches/cookie-einstellungen",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/rechtliches/cookie-einstellungen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/rechtliches/cookie-einstellungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule39",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-39.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/(site)/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/rechtliches/versand-und-zahlung",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/rechtliches/versand-und-zahlung",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/rechtliches/versand-und-zahlung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule40",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-40.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/(site)/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/rechtliches/widerruf",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/rechtliches/widerruf",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/rechtliches/widerruf"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule41",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-41.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/(site)/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/rechtliches/agb",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/rechtliches/agb",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/rechtliches/agb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule43",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-43.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/(site)/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1015,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/rechtliches/datenschutz",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/rechtliches/datenschutz",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/rechtliches/datenschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule44",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-44.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/(site)/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 956,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/artikel",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/artikel",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule45",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-45.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/(site)/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1234,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/artikel/[slug]",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/artikel/[slug]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/artikel/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule46",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-46.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/(site)/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/standorte",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/standorte",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule48",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-48.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/(site)/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/standorte/[city]",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/standorte/[city]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/standorte/[city]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule49",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-49.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/(site)/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1018,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/marken",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/marken",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule50",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-50.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/(site)/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1523,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/marken/[make]/[model]",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/marken/[make]/[model]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/marken/[make]/[model]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule51",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-51.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/(site)/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1279,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/marken/[make]",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/marken/[make]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/marken/[make]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule52",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-52.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/(site)/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1391,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/funkschluessel",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/funkschluessel",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule53",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-53.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "/(site)/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1522,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/programmieren",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/programmieren",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/programmieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule54",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-54.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 56,
+      "route_path": "/(site)/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 900,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/anfrage",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/anfrage",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule55",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-55.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 57,
+      "route_path": "/(site)/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2302,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule56",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-56.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 58,
+      "route_path": "/(site)/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1433,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/kopieren",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/kopieren",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/kopieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule57",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-57.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 59,
+      "route_path": "/(site)/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1489,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/nachmachen",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/nachmachen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule58",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-58.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 60,
+      "route_path": "/(site)/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1507,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/smart-key",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/smart-key",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/smart-key"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule59",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-59.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 61,
+      "route_path": "/(site)/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1342,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/schluesselbart-fraesen",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/schluesselbart-fraesen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/schluesselbart-fraesen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule60",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-60.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 62,
+      "route_path": "/(site)/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1421,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für /(site)/autoschluessel/fahrzeugoeffnung",
+        "Methodischer Prozess in vier auditierbaren Phasen für den Bereich /(site)/autoschluessel/fahrzeugoeffnung",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen zu /(site)/autoschluessel/fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveModule61",
+        "target_file": "src/components/visual/bento-card.tsx",
+        "action_file": "src/actions/action-61.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# Codebase Architecture and Metadate
+
+## Architecture Blueprint Synchronized
+
+This codebase uses Next.js 16+, React 19.2+, and strictly follows the Swiss Light Mode design.
