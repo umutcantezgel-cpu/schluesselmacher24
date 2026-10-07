@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Aktuelle Architektur-Ziele
+Die Codebasis durchläuft eine Transformation zur Schweizer High-End-Ästhetik. Alle Routen werden auf > 800 Wörter erweitert und mit Awwwards-Signature-Interaktionen ausgestattet. Tailwind CSS v4 wird für das OKLCH-Designsystem genutzt.

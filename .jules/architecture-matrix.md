@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| URL Path | Source File | Current Words | Target Words | Module | Status |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 51 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 281 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /artikel | src/app/(site)/artikel/page.tsx | 172 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 122 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 46 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 40 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 94 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 444 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 358 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 256 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 38 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 291 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 49 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 40 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 50 | 950 | KeyCompatibilityFilter | PENDING_BUILDER |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 380 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 116 | 950 | SmartLockRoiCalculator | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 302 | 950 | SmartLockRoiCalculator | PENDING_BUILDER |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 94 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 545 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /kasse | src/app/(site)/kasse/page.tsx | 38 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| / | src/app/(site)/page.tsx | 157 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 128 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 49 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 12 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 16 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 683 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 195 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 213 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 12 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 60 | 950 | SchliessplanConfigurator | PENDING_BUILDER |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 276 | 950 | SchliessplanConfigurator | PENDING_BUILDER |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 289 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 91 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 43 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 388 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 37 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 129 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 727 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 23 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 144 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 198 | 950 | SecurityChecklist | PENDING_BUILDER |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 313 | 950 | SecurityChecklist | PENDING_BUILDER |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 75 | 950 | SecurityChecklist | PENDING_BUILDER |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 123 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /standorte | src/app/(site)/standorte/page.tsx | 78 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 174 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 422 | 950 | ServiceSelectionBento | PENDING_BUILDER |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 38 | 950 | ServiceSelectionBento | PENDING_BUILDER |
