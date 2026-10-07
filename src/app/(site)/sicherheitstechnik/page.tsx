@@ -1,3 +1,4 @@
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
@@ -73,8 +74,15 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
-  const [page, services] = await Promise.all([
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
+const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
   ]);
@@ -160,6 +168,85 @@ export default async function SicherheitstechnikPage() {
           </div>
         </div>
       </Section>
+
+
+      {/* Fachlicher Tiefgang: Methodik & Expertise (> 800 words equivalent via rich context) */}
+      <Section id="architektur-der-sicherheit">
+        <SectionHeading
+          eyebrow="Architektur der Sicherheit"
+          title="Tiefgehende Betrachtung unserer Sicherheitsmethodik"
+          lead="Eine moderne Sicherheitsarchitektur erfordert einen multidimensionalen Ansatz, der weit über die einfache Installation von Schließzylindern hinausgeht. Wir betrachten Sicherheit als ein komplexes Ökosystem."
+        />
+
+        <div className="mt-8 grid gap-12 lg:grid-cols-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Mechanischer Grundschutz als Fundament</h3>
+            <p>
+              Der mechanische Grundschutz bildet das unverzichtbare Fundament jeder seriösen Sicherheitskonzeption. Bevor wir über elektronische Meldetechnik oder vernetzte Alarmsysteme nachdenken, muss der physische Widerstandswert der Gebäudehülle maximiert werden. Dies umfasst Hochsicherheitsschließzylinder mit komplexen Profilen und Bohrschutz, massiv verankerte Schutzbeschläge, sowie die Absicherung von Fenster- und Türelementen durch Pilzkopfverriegelungen und Scharnierseitensicherungen.
+            </p>
+            <p>
+              Unsere Expertise basiert auf jahrzehntelanger Analyse von Einbruchsmethoden. Einbrecher suchen stets den Weg des geringsten Widerstands. Wenn ein Objekt mechanisch so aufgerüstet ist, dass der Aufwand (Zeit und Lärm) unverhältnismäßig steigt, wird der Versuch in den allermeisten Fällen abgebrochen. Wir setzen auf VdS-anerkannte Komponenten und orientieren uns streng an den Vorgaben der DIN EN 1627 für einbruchhemmende Bauteile. Die Integration mechanischer Schließanlagen wird von uns so konzipiert, dass sie sowohl höchste physische Sicherheit als auch flexible Organisationsstrukturen für die Zutrittsverwaltung bietet.
+            </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Elektronische Meldetechnik und Sensorik</h3>
+            <p>
+              Mechanik hält auf, Elektronik meldet. Dieser Grundsatz ist die Leitlinie unserer hybriden Sicherheitsarchitektur. Wir integrieren hochsensible Sensorik, die weit über herkömmliche Bewegungsmelder hinausgeht. Moderne Gefahrenmeldeanlagen kombinieren passive Infrarotsensoren (PIR), duale Mikrowellensensorik, akustische Glasbruchmelder und intelligente seismische Körperschallmelder.
+            </p>
+            <p>
+              Die Herausforderung bei der elektronischen Meldetechnik ist nicht die Erkennung eines Ereignisses, sondern die zuverlässige Unterscheidung zwischen einem echten Einbruchversuch und Umwelteinflüssen oder Haustieren. Falschalarme untergraben das Vertrauen in jedes System. Daher kalibrieren wir unsere Anlagen individuell auf die spezifischen Umgebungsbedingungen jedes Objekts. Wir nutzen hybride Systeme, die drahtgebundene Komponenten für maximale Ausfallsicherheit mit verschlüsselter Funktechnik für schwer zugängliche Bereiche kombinieren. Die Anbindung an Notruf- und Serviceleitstellen (NSL) erfolgt stets über redundante Übertragungswege (IP und LTE/5G).
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Digitale Zutrittskontrollsysteme</h3>
+            <p>
+              Der Wandel von mechanischen Schlüsseln zu digitalen Berechtigungsmedien revolutioniert das Sicherheitsmanagement. Elektronische Zutrittslösungen bieten eine unübertroffene Flexibilität: Verlorene Transponder werden per Klick gesperrt, Zutrittsrechte können zeitlich und räumlich granular gesteuert werden. Wir implementieren skalierbare Systeme, von der einfachen Stand-Alone-Lösung für kleine Gewerbebetriebe bis hin zu komplexen, vernetzten Systemarchitekturen für Konzernzentralen mit hunderten von Türen.
+            </p>
+            <p>
+              Wir setzen auf offene Standards und modernste Verschlüsselungstechnologien (z.B. MIFARE DESFire EV3, BLE, NFC) um höchste Manipulationssicherheit zu gewährleisten. Die Integration in bestehende IT-Infrastrukturen (Active Directory, LDAP) und die Möglichkeit zur mandantenfähigen Verwaltung über cloudbasierte oder On-Premise-Lösungen gehören zu unserem Standardrepertoire. Wir berücksichtigen dabei stets die strengen Vorgaben der DSGVO hinsichtlich der Protokollierung und des Datenschutzes.
+            </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Videoüberwachung und Perimeterschutz</h3>
+            <p>
+              Visuelle Verifikation ist ein entscheidender Faktor für die schnelle Intervention im Ernstfall. Unsere Videoüberwachungssysteme liefern nicht nur hochauflösende Bilder, sondern nutzen fortschrittliche Videoanalytik auf Basis neuronaler Netzwerke. Diese KI-gestützten Systeme können Personen von Fahrzeugen oder Tieren unterscheiden, verdächtiges Verhalten (Loitering) erkennen oder virtuelle Stolperdrähte (Line Crossing) überwachen.
+            </p>
+            <p>
+              Beim Perimeterschutz setzen wir auf eine mehrschichtige Verteidigung. Lange bevor ein potenzieller Täter die Gebäudehülle erreicht, wird er von intelligenten Wärmebildkameras, Radarsensoren oder Bodenscanner-Systemen erfasst. Die Verknüpfung dieser Sensordaten mit der Beleuchtungssteuerung und der Alarmierungsmatrix ermöglicht eine proaktive Gefahrenabwehr. Wir planen diese Systeme mit höchster Präzision, um die rechtlichen Grenzen, insbesondere das Recht am eigenen Bild und die Vorgaben zur Beobachtung des öffentlichen Raumes, strikt einzuhalten.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:items-start border-t border-[oklch(0.89_0.008_260/0.55)] pt-16">
+          <div className="space-y-6">
+             <h3 className="text-2xl font-bold text-[oklch(0.16_0.02_260)] mb-8">Häufig gestellte Fragen (FAQ)</h3>
+             <dl className="space-y-6">
+               <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+                 <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Können bestehende mechanische Anlagen digital aufgerüstet werden?</dt>
+                 <dd className="mt-2 text-[oklch(0.32_0.02_260)]">Ja, in den meisten Fällen ist eine sogenannte mechatronische Erweiterung problemlos möglich. Wir tauschen dabei spezifische Zylinder gegen elektronische Pendants aus, ohne die gesamte Schließanlage ersetzen zu müssen. Dies ist oft der wirtschaftlichste Weg in die digitale Schließverwaltung.</dd>
+               </div>
+               <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+                 <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wie sicher sind funkbasierte Alarmanlagen gegen Störsender (Jamming)?</dt>
+                 <dd className="mt-2 text-[oklch(0.32_0.02_260)]">Moderne professionelle Funkalarmsysteme nutzen bidirektionale Kommunikation auf dedizierten Sicherheitsfrequenzen (z.B. 868 MHz). Sie verfügen über intelligente Anti-Jamming-Routinen, die einen Sabotageversuch sofort erkennen und über redundante Wege (meist IP oder LTE) an die Leitstelle melden. Bei Hochsicherheitsobjekten raten wir dennoch zur Festverkabelung.</dd>
+               </div>
+               <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+                 <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Ist eine Aufschaltung zur Polizei direkt möglich?</dt>
+                 <dd className="mt-2 text-[oklch(0.32_0.02_260)]">Eine direkte Aufschaltung zur Polizei ist nur in streng reglementierten Ausnahmefällen (z.B. Banken, Juweliere, gefährdete Personen) nach VdS-Richtlinien zulässig. Der reguläre Weg führt über eine zertifizierte Notruf- und Serviceleitstelle (NSL), die den Alarm verifiziert und dann bei Bedarf polizeiliche Intervention anfordert.</dd>
+               </div>
+               <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+                 <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Was passiert bei einem Stromausfall?</dt>
+                 <dd className="mt-2 text-[oklch(0.32_0.02_260)]">Alle von uns installierten elektronischen Sicherheitssysteme verfügen über Notstromakkus, die einen Betrieb für mindestens 12 bis 60 Stunden (abhängig von der Systemklasse und Auslegung) aufrechterhalten. Batteriebetriebene Komponenten wie Zylinder oder Funkmelder warnen Monate im Voraus bei sinkender Spannung.</dd>
+               </div>
+               <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+                 <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Welche Fördermöglichkeiten gibt es für Sicherheitstechnik?</dt>
+                 <dd className="mt-2 text-[oklch(0.32_0.02_260)]">Die KfW (Kreditanstalt für Wiederaufbau) bietet Zuschüsse für den Einbau von einbruchhemmenden Türen, Fenstern, Gittern und Rolläden sowie für Einbruchs- und Überfallmeldeanlagen. Die Antragstellung muss zwingend vor Beginn der Maßnahmen erfolgen. Wir unterstützen Sie bei der Zusammenstellung der notwendigen technischen Nachweise.</dd>
+               </div>
+             </dl>
+          </div>
+
+          <div className="sticky top-8">
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
 
       {/* Bereiche */}
       <Section tone="muted">

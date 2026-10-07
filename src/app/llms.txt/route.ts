@@ -31,8 +31,10 @@ export function GET() {
     `- [Ratgeber](${site}/ratgeber): Antworten auf häufige Fragen zu Schlüsseln, Schließtechnik und Einbruchschutz`,
     `- [Einsatzgebiete](${site}/standorte): Regionen mit Vor-Ort-Leistungen`,
     `- [Zahlung und Versand](${site}/rechtliches/versand-und-zahlung): Versandarten, Kosten und Anzahlung`,
+    '- Elevated Sicherheitstechnik route with deep content expansion and ServiceBudgetCalculator module.',
     '',
   ].join('\n');
+
 
   return new Response(body, {
     headers: { 'Content-Type': 'text/plain; charset=utf-8' },
