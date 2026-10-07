@@ -1,0 +1,4 @@
+# AI Architecture Context
+This application follows the Swiss Light Design Doctrine with OKLCH variables and adheres strictly to a Next.js 16+ Turbopack engine architecture.
+The `.jules/revolution-plan.json` master blueprint guides the transformation of physical routes.
+All updates enforce strict zero-new-routes compliance and semantic enrichment.
