@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-07T18:37:53.819Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten (Score: (Visuelle Hebelwirkung * 0.35) + (Nutzer-Mehrwert/ROI * 0.35) + (Machbarkeit * 0.30)).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_052",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/components/calculator/tuer-absicherung-rechner.tsx",
+      "title": "Conversion-Tooling: ROI-Rechner für Unternehmen",
+      "specification": "Entwicklung eines nativen React 19 Tools (ROI-Rechner für Unternehmen) in src/app/(site)/sicherheitstechnik/page.tsx. Nutzung von useActionState für flüssige Übergänge ohne Seiten-Reloads. Fokus auf oklch-Tokens und AAA-Kontrast.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_014",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+      "target_component_file": "src/components/autoschluessel/preis-anzeige.tsx",
+      "title": "Kinetische Veredelung: Kinetische Typografie",
+      "specification": "Integration von Kinetische Typografie in die Komponente src/components/autoschluessel/preis-anzeige.tsx auf der Route src/app/(site)/autoschluessel/page.tsx. Fokus auf oklch-Farbtreue und 1px Kanten gemäß Swiss Light Mode.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
