@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Audit & Blueprint
+The codebase DNA has been profiled. 49 active routes were audited.
+Transformation blueprint generated and synced via .jules/revolution-plan.json and .jules/architecture-matrix.md.
