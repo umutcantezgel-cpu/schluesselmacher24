@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -296,6 +297,78 @@ export default async function SicherheitstechnikPage() {
               </Link>
             </CardBody>
           </Card>
+        </div>
+      </Section>
+
+
+      {/* Fachliche Vertiefung und Kalkulator */}
+      <Section id="methodik-und-kalkulator">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-12">
+          <div>
+            <SectionHeading
+              eyebrow="Architektur & Methodik"
+              title="Ganzheitliche Sicherheitskonzepte für höchste Ansprüche"
+              lead="Die effektive Absicherung von Objekten erfordert mehr als die bloße Aneinanderreihung von Einzelkomponenten. Es bedarf einer architektonischen Methodik, die Mechanik, Elektronik und Organisation nahtlos verwebt."
+            />
+
+            <div className="mt-8 space-y-6 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              <p>
+                Unsere Methodik basiert auf dem Prinzip der konzentrischen Sicherheitsringe. Die physische Peripherie bildet die erste und wichtigste Verteidigungslinie. Hochwertige mechanische Sicherungselemente wie Sicherheitszylinder der VdS-Klassen B und C, einbruchhemmende Türen nach DIN EN 1627 (RC2 bis RC6) sowie zertifizierte Fensterbeschläge leisten den primären Widerstand gegen unbefugtes Eindringen. Sie erzwingen einen signifikanten Zeitverlust beim Angreifer und bilden das unverzichtbare Fundament.
+              </p>
+              <p>
+                Auf diesem mechanischen Grundschutz setzen elektronische Überwachungs- und Meldetechnologien auf. Moderne Einbruchmeldeanlagen (EMA) und Videoüberwachungssysteme dienen der Detektion und Verifikation von Gefahrensituationen in Echtzeit. Wir integrieren intelligente Sensortechnik wie Dual-Melder, die Passiv-Infrarot (PIR) mit Mikrowellentechnologie kombinieren, um Fehlalarme zu minimieren und höchste Detektionssicherheit zu gewährleisten. Zutrittskontrollsysteme mit kryptografisch gesicherten Transpondern (Mifare DESFire EV2/EV3) oder biometrischen Verfahren steuern und protokollieren Bewegungen im Objekt.
+              </p>
+              <p>
+                Die Vernetzung dieser Systeme erfolgt über hochsichere, bus-basierte Protokolle, die gegen Manipulationen von außen gehärtet sind. Durch die Integration in übergeordnete Gefahrenmanagementsysteme entsteht eine einheitliche Bedienoberfläche, die es dem Betreiber ermöglicht, komplexe Szenarien intuitiv zu beherrschen. Wir legen größten Wert auf offene Standards und Schnittstellen (z.B. nach ONVIF für IP-Video), um eine langfristige Investitionssicherheit und Erweiterbarkeit der Anlagen zu garantieren.
+              </p>
+            </div>
+
+            <div className="mt-12">
+              <h3 className="text-xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] mb-6">
+                Häufig gestellte Fragen (FAQ) zur Sicherheitstechnik
+              </h3>
+              <dl className="space-y-6">
+                <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] p-5 bg-[oklch(0.988_0.002_260)]">
+                  <dt className="font-bold text-[oklch(0.16_0.02_260)]">1. Wie hoch ist der minimale mechanische Schutzbedarf?</dt>
+                  <dd className="mt-2 text-sm text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Der Mindeststandard für private Haushalte wird polizeilich mit der Widerstandsklasse RC2 (Resistance Class 2) nach DIN EN 1627 definiert. Dies beinhaltet einbruchhemmende Fensterbeschläge (z.B. Pilzkopfzapfenverriegelung) und Türen, die Gelegenheitstätern mit einfachen Werkzeugen mindestens 3 Minuten standhalten. Im gewerblichen Bereich oder bei erhöhtem Risiko (z.B. Juweliere, Apotheken) projektieren wir Systeme der Klassen RC3 bis RC6, kombiniert mit VdS-zertifizierter Alarmtechnik.
+                  </dd>
+                </div>
+
+                <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] p-5 bg-[oklch(0.988_0.002_260)]">
+                  <dt className="font-bold text-[oklch(0.16_0.02_260)]">2. Kann ich Videoüberwachung und Alarmanlage verknüpfen?</dt>
+                  <dd className="mt-2 text-sm text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Ja, dies ist die effektivste Form der Gefahrenverifikation. Wenn ein Sensor (z.B. ein Tür-Kontakt oder ein Bewegungsmelder) auslöst, steuert das System die zugehörige Kamera an. Diese übermittelt sofort eine Videosequenz an das Smartphone des Betreibers oder eine angeschlossene Notruf- und Serviceleitstelle (NSL). So kann umgehend unterschieden werden, ob es sich um einen Echtalarm durch Einbrecher oder einen Falschalarm durch Tiere oder Umwelteinflüsse handelt.
+                  </dd>
+                </div>
+
+                <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] p-5 bg-[oklch(0.988_0.002_260)]">
+                  <dt className="font-bold text-[oklch(0.16_0.02_260)]">3. Sind elektronische Schließanlagen sicher gegen Hacking?</dt>
+                  <dd className="mt-2 text-sm text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Moderne elektronische Zutrittslösungen arbeiten mit hochsicheren Verschlüsselungsverfahren (AES 128-Bit oder höher) und verwenden Challenge-Response-Authentifizierungen. Es werden keine unverschlüsselten Daten übertragen. Im Gegensatz zu mechanischen Schlüsseln können verlorene Medien (Transponder, Karten) zudem in Sekundenbruchteilen aus dem System gelöscht werden, ohne dass Zylinder ausgetauscht werden müssen. Dies bietet langfristig einen erheblichen Sicherheits- und Kostenvorteil.
+                  </dd>
+                </div>
+
+                <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] p-5 bg-[oklch(0.988_0.002_260)]">
+                  <dt className="font-bold text-[oklch(0.16_0.02_260)]">4. Was ist bei Stromausfall oder Netzwerksabotage?</dt>
+                  <dd className="mt-2 text-sm text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Professionelle Sicherheitssysteme verfügen über redundante Notstromversorgungen (Akkumulatoren), die den Betrieb bei Netzausfall für mehrere Stunden bis Tage aufrechterhalten. Die Kommunikationstechnik nutzt oft parallele Übertragungswege (Dual-Path), z.B. IP/Ethernet und ein redundantes Mobilfunkmodul (LTE/5G). Wird die kabelgebundene Verbindung sabotiert, schaltet die Anlage automatisch um und meldet die Störung an die Leitstelle. Elektronische Zylinder arbeiten autark mit Batterien.
+                  </dd>
+                </div>
+
+                <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] p-5 bg-[oklch(0.988_0.002_260)]">
+                  <dt className="font-bold text-[oklch(0.16_0.02_260)]">5. Benötige ich Wartungsverträge für diese Anlagen?</dt>
+                  <dd className="mt-2 text-sm text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Eine regelmäßige Wartung ist essenziell für die Zuverlässigkeit und Langlebigkeit der Systeme. Batterien in Funkmeldern müssen getauscht, Software-Updates eingespielt (Cybersecurity) und die mechanische Gängigkeit geprüft werden. Bei gewerblichen Anlagen oder VdS-zertifizierten Systemen fordern Versicherer häufig einen jährlichen Wartungsnachweis durch einen anerkannten Fachbetrieb. Wir bieten skalierbare Service-Level-Agreements (SLA) an, die genau auf Ihr Risikoprofil abgestimmt sind.
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <div className="lg:sticky lg:top-8 motion-reduce:transition-none transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,0,0,0.05)]">
+            <ServiceBudgetCalculator />
+          </div>
         </div>
       </Section>
 

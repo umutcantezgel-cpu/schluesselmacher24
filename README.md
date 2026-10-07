@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Neue interaktive Module
+- **ServiceBudgetCalculator**: Integriert in `src/app/(site)/sicherheitstechnik/page.tsx` (Richtwert-Kalkulator für Sicherheitstechnik).
