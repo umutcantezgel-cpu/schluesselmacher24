@@ -14,23 +14,23 @@
 @layer base {
   :root {
     /* Flächen */
-    --background: 214 45% 98.6%;
-    --surface: 0 0% 100%;
-    --surface-muted: 214 50% 96.6%;
-    --surface-sunken: 214 36% 92.5%;
-    --surface-ink: 222 36% 16%;
+    --background: 0.988 0.002 260;
+    --surface: 0.968 0.004 260;
+    --surface-muted: 0.94 0.006 260;
+    --surface-sunken: 0.92 0.008 260;
+    --surface-ink: 0.20 0.02 260;
 
     /* Text */
-    --foreground: 222 34% 15%;
-    --foreground-muted: 219 16% 37%;
-    --foreground-subtle: 217 12% 45%;
-    --foreground-inverse: 214 45% 98.6%;
+    --foreground: 0.16 0.02 260;
+    --foreground-muted: 0.32 0.02 260;
+    --foreground-subtle: 0.45 0.015 260;
+    --foreground-inverse: 0.988 0.002 260;
 
     /* Linien */
-    --border: 214 32% 89%;
-    --border-strong: 214 22% 77%;
-    --input: 214 28% 84%;
-    --ring: 214 86% 50%;
+    --border: 0.890 0.008 260;
+    --border-strong: 0.850 0.010 260;
+    --input: 0.890 0.008 260;
+    --ring: 0.55 0.15 260;
 
     /* Primär — klares Blau */
     --primary: 214 80% 40%;
@@ -58,12 +58,12 @@
     --info-soft: 214 100% 96.5%;
 
     /* Karten / Popover */
-    --card: 0 0% 100%;
-    --card-foreground: 222 34% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 34% 15%;
-    --muted: 214 50% 94%;
-    --muted-foreground: 219 16% 37%;
+    --card: 0.968 0.004 260;
+    --card-foreground: 0.16 0.02 260;
+    --popover: 0.968 0.004 260;
+    --popover-foreground: 0.16 0.02 260;
+    --muted: 0.94 0.006 260;
+    --muted-foreground: 0.32 0.02 260;
     --destructive: 0 58% 42%;
     --destructive-foreground: 0 0% 100%;
 
@@ -88,6 +88,7 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 
   h1, h2, h3, h4, h5, h6 {
