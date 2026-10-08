@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +74,16 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedParams = await params;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -201,6 +211,124 @@ export default async function SicherheitstechnikPage() {
           })}
         </ul>
       </Section>
+
+
+      {/* Fachliche Methodik & Architektur */}
+      <Section tight>
+        <SectionHeading
+          eyebrow="Methodik"
+          title="Unsere architektonische Herangehensweise an Sicherheit"
+          lead="Eine solide Sicherheitsarchitektur basiert nicht auf isolierten Einzelmaßnahmen, sondern auf einem durchdachten Gesamtkonzept, das Mechanik, Elektronik und Organisation nahtlos integriert."
+        />
+        <div className="mt-8 space-y-6 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          <p>
+            Die Konzeption einer modernen Sicherheitsarchitektur beginnt stets mit einer fundierten Schwachstellenanalyse. Wir betrachten jedes Objekt als individuelles System mit spezifischen Risikoprofilen und Nutzungsanforderungen. Mechanische Sicherungen bilden dabei das fundamentale Bollwerk gegen physische Eindringversuche. Sie verlangsamen den Angriff und fordern dem Täter Zeit und Werkzeug ab.
+          </p>
+          <p>
+            Auf diesem mechanischen Grundschutz bauen wir die elektronische Detektionsebene auf. Alarmanlagen und Sensorik dienen nicht primär der Verhinderung eines Einbruchs, sondern der frühzeitigen Erkennung und unmittelbaren Meldung. Jeder gewonnene Moment durch die Mechanik wird durch die Elektronik genutzt, um Interventionskräfte zu alarmieren.
+          </p>
+          <p>
+            Eine oft unterschätzte Komponente ist die Videotechnik, die in unserem Konzept eine doppelte Funktion erfüllt: Sie dient sowohl der präventiven Abschreckung als auch der nachgelagerten forensischen Analyse. Die intelligente Vernetzung dieser drei Ebenen — Mechanik, Alarmierung und Videoüberwachung — führt zu einem synergetischen Sicherheitssystem, das deutlich resistenter ist als die Summe seiner Einzelteile.
+          </p>
+          <p>
+            Darüber hinaus integrieren wir fortschrittliche Zutrittskontrollsysteme, die eine granulare Verwaltung von Berechtigungen ermöglichen. Dies bedeutet nicht nur erhöhte Sicherheit, sondern auch signifikante organisatorische Erleichterungen im Alltag. Verlorene Schlüssel stellen kein Sicherheitsrisiko mehr dar, da elektronische Berechtigungen in Echtzeit entzogen werden können.
+          </p>
+        </div>
+      </Section>
+
+      {/* Leistungsstufen & Matrix */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Leistungsstufen"
+          title="Transparente Sicherheitskonzepte für unterschiedliche Anforderungen"
+          lead="Wir bieten gestufte Sicherheitskonzepte, die sich an der tatsächlichen Gefährdungslage und Ihren spezifischen Schutzbedürfnissen orientieren."
+        />
+        <div className="mt-8 grid gap-6 md:grid-cols-3 md:grid-rows-[subgrid]">
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)] md:row-span-3 grid grid-rows-[subgrid]">
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">Basis-Schutz</h3>
+            <p className="mt-2 text-[14px] text-[oklch(0.32_0.02_260)]">Mechanische Grundsicherung für Wohnungen und kleinere Gewerbeobjekte.</p>
+            <ul className="mt-4 space-y-2 text-[14px] text-[oklch(0.32_0.02_260)]">
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> VdS-anerkannte Profilzylinder</li>
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> Sicherheitsbeschläge mit Ziehschutz</li>
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> Massive Schließbleche</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.52_0.24_260)] bg-[oklch(0.988_0.002_260)] p-6 shadow-[0_12px_32px_-4px_oklch(0.52_0.24_260/0.15)] relative md:row-span-3 grid grid-rows-[subgrid]">
+            <div className="absolute -top-3 right-4 rounded-full bg-[oklch(0.52_0.24_260)] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">Empfohlen</div>
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">Erweiterter Schutz</h3>
+            <p className="mt-2 text-[14px] text-[oklch(0.32_0.02_260)]">Kombination aus Mechanik und elektronischer Überwachung für Einfamilienhäuser und kritische Gewerbeflächen.</p>
+            <ul className="mt-4 space-y-2 text-[14px] text-[oklch(0.32_0.02_260)]">
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> Alle Basis-Leistungen</li>
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> Funk-Alarmanlage (EN 50131 Grad 2)</li>
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> Perimetrischer Außenschutz</li>
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> Aufschaltung zur Notrufleitstelle</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)] md:row-span-3 grid grid-rows-[subgrid]">
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">Hochsicherheit</h3>
+            <p className="mt-2 text-[14px] text-[oklch(0.32_0.02_260)]">Vollintegrierte Systeme für hochsensible Anlagen und Industrieobjekte.</p>
+            <ul className="mt-4 space-y-2 text-[14px] text-[oklch(0.32_0.02_260)]">
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> Elektronische Zutrittskontrolle</li>
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> KI-gestützte Videoanalyse</li>
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> Redundante Alarmübertragung</li>
+              <li className="flex items-center gap-2"><ArrowRight size={14} className="text-[oklch(0.52_0.24_260)]"/> Integration ins Gebäudemanagement</li>
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      {/* Interaktives Modul Platzhalter */}
+      <Section tight>
+        <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-8 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
+      {/* FAQ Abschnitt */}
+      <Section>
+        <SectionHeading
+          eyebrow="Häufige Fragen"
+          title="Fachspezifische Antworten zur Sicherheitstechnik"
+          lead="Klären Sie erste Fragen direkt. Für eine detaillierte Beurteilung Ihres Objekts empfehlen wir den persönlichen Sicherheitscheck."
+        />
+        <div className="mt-8 space-y-4">
+          {[
+            {
+              q: "Wie lange dauert die Installation einer Funk-Alarmanlage?",
+              a: "Die Installation einer modernen Funk-Alarmanlage in einem durchschnittlichen Einfamilienhaus ist in der Regel an einem Arbeitstag abgeschlossen. Da keine Kabel verlegt werden müssen, erfolgt die Montage nahezu schmutzfrei und ohne größere Eingriffe in die Bausubstanz."
+            },
+            {
+              q: "Sind elektronische Zylinder sicher gegen Hacking?",
+              a: "Hochwertige elektronische Zylinder nutzen verschlüsselte Kommunikation (z.B. AES-128 Bit oder höher) und sind gegen typische digitale Angriffsvektoren abgesichert. Zudem entfällt das Risiko unbemerkt kopierter mechanischer Schlüssel, da Zutrittsrechte zentral verwaltet und bei Verlust sofort gesperrt werden können."
+            },
+            {
+              q: "Was passiert bei einem Stromausfall mit meiner Alarmanlage?",
+              a: "Professionelle Einbruchmeldeanlagen verfügen über eine integrierte Notstromversorgung durch Akkus. Diese überbrücken Stromausfälle, je nach Anlagengröße und Norm, für 12 bis 72 Stunden zuverlässig, sodass der Schutz lückenlos aufrechterhalten bleibt."
+            },
+            {
+              q: "Kann ich meine bestehende Schließanlage mit elektronischen Komponenten erweitern?",
+              a: "Ja, in den meisten Fällen lassen sich mechatronische Systeme oder rein elektronische Zylinder nahtlos in bestehende mechanische Schließanlagen integrieren. So können hochfrequentierte Türen elektronisch und weniger kritische Bereiche weiterhin mechanisch gesichert werden (hybrides System)."
+            },
+            {
+              q: "Wann ist eine Aufschaltung auf eine Notrufleitstelle sinnvoll?",
+              a: "Eine Aufschaltung empfehlen wir generell, wenn im Alarmfall eine sofortige, garantierte Intervention erforderlich ist. Während lokale Sirenen primär abschrecken, stellt die Leitstelle sicher, dass 24/7 gemäß einem vereinbarten Maßnahmenplan reagiert wird (z.B. Benachrichtigung des Wachdienstes oder der Polizei)."
+            }
+          ].map((faq, idx) => (
+            <details key={idx} className="group rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-5 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer items-center justify-between font-bold text-[oklch(0.16_0.02_260)]">
+                {faq.q}
+                <span className="transition duration-300 group-open:-rotate-180">
+                  <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p className="mt-4 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                {faq.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </Section>
+
 
       {/* Recht und Verantwortung */}
       <Section id="recht-und-verantwortung">
