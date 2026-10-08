@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Integrierte interaktive Module
+- **ServiceBudgetCalculator**: Ein interaktives Kalkulator-Modul für die Sicherheitstechnik-Seite (inklusive React 19 Server Actions, `useActionState`, und `useOptimistic`), das einen Richtwert für Sicherheitsprojekte berechnet.
