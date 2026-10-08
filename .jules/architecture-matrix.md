@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Status | Word Count (Current) | Target Word Count | Interactive Module | CWV / Schema |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | PENDING | 99 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /artikel/[slug] | PENDING | 934 | 1134 | ArticleReadingProgressAndTOC | OPTIMIZE |
+| /artikel | PENDING | 656 | 950 | ArticleReadingProgressAndTOC | OPTIMIZE |
+| /autoschluessel/anfrage | PENDING | 518 | 950 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel/fahrzeugoeffnung | PENDING | 1121 | 1321 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel/funkschluessel | PENDING | 1091 | 1291 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel/kopieren | PENDING | 1133 | 1333 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel/marken/[make]/[model] | PENDING | 1223 | 1423 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel/marken/[make] | PENDING | 979 | 1179 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel/marken | PENDING | 718 | 950 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel/nachmachen | PENDING | 1189 | 1389 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel | PENDING | 2002 | 2202 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel/programmieren | PENDING | 1222 | 1422 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel/schluesselbart-fraesen | PENDING | 1042 | 1242 | AutoKeyCostEstimator | OPTIMIZE |
+| /autoschluessel/smart-key | PENDING | 1207 | 1407 | AutoKeyCostEstimator | OPTIMIZE |
+| /bestellung/[id] | PENDING | 1299 | 1499 | DynamicServiceFilter | OPTIMIZE |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING | 382 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /elektronische-zutrittsloesungen | PENDING | 2480 | 2680 | DynamicServiceFilter | OPTIMIZE |
+| /gleichschliessende-zylinder/konfigurator | PENDING | 310 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /gleichschliessende-zylinder | PENDING | 2081 | 2281 | DynamicServiceFilter | OPTIMIZE |
+| /kasse | PENDING | 242 | 950 | DynamicServiceFilter | OPTIMIZE |
+| / | PENDING | 1130 | 1330 | EnterpriseRoiCalculator | OPTIMIZE |
+| /ratgeber/[slug] | PENDING | 359 | 950 | ArticleReadingProgressAndTOC | OPTIMIZE |
+| /ratgeber | PENDING | 224 | 950 | ArticleReadingProgressAndTOC | OPTIMIZE |
+| /rechtliches/agb | PENDING | 416 | 950 | LegalDocumentNavigator | OPTIMIZE |
+| /rechtliches/cookie-einstellungen | PENDING | 228 | 950 | LegalDocumentNavigator | OPTIMIZE |
+| /rechtliches/datenschutz | PENDING | 715 | 950 | LegalDocumentNavigator | OPTIMIZE |
+| /rechtliches/impressum | PENDING | 248 | 950 | LegalDocumentNavigator | OPTIMIZE |
+| /rechtliches/versand-und-zahlung | PENDING | 427 | 950 | LegalDocumentNavigator | OPTIMIZE |
+| /rechtliches/widerruf | PENDING | 370 | 950 | LegalDocumentNavigator | OPTIMIZE |
+| /schliessanlagen/konfigurator | PENDING | 368 | 950 | SchliessanlagenConfigurator | OPTIMIZE |
+| /schliessanlagen | PENDING | 1873 | 2073 | SchliessanlagenConfigurator | OPTIMIZE |
+| /schluessel-nach-code/[slug] | PENDING | 734 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /schluessel-nach-code | PENDING | 497 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /schluessel-nach-vorlage/anfrage | PENDING | 221 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /schluessel-nach-vorlage | PENDING | 1793 | 1993 | DynamicServiceFilter | OPTIMIZE |
+| /service-und-termin/anfrage | PENDING | 151 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /service-und-termin/kontakt | PENDING | 474 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /service-und-termin | PENDING | 1578 | 1778 | DynamicServiceFilter | OPTIMIZE |
+| /service-und-termin/terminstatus | PENDING | 107 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /service-und-termin/vor-ort | PENDING | 655 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /sicherheitstechnik/[slug] | PENDING | 644 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /sicherheitstechnik | PENDING | 1020 | 1220 | DynamicServiceFilter | OPTIMIZE |
+| /sicherheitstechnik/sicherheitscheck | PENDING | 329 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /standorte/[city] | PENDING | 405 | 950 | LocalServiceRadiusMap | OPTIMIZE |
+| /standorte | PENDING | 249 | 950 | LocalServiceRadiusMap | OPTIMIZE |
+| /tuer-und-schliesstechnik/[slug] | PENDING | 493 | 950 | DynamicServiceFilter | OPTIMIZE |
+| /tuer-und-schliesstechnik | PENDING | 1784 | 1984 | DynamicServiceFilter | OPTIMIZE |
+| /warenkorb | PENDING | 261 | 950 | DynamicServiceFilter | OPTIMIZE |

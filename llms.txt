@@ -1,0 +1,7 @@
+
+
+## Architecture Blueprint
+
+The project follows a strict master blueprint located at `.jules/revolution-plan.json`.
+This blueprint outlines a target state for 49 routes, ensuring zero new routes are created.
+It details content expansion to over 800 words per route, Next.js 16 App Router updates (async params, Server Actions), and Swiss Light Design compliance (OKLCH).
