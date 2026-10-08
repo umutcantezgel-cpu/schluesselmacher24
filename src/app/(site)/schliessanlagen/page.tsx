@@ -9,6 +9,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
@@ -202,7 +203,16 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedParams = await params;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedSearch = await searchParams;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -254,7 +264,18 @@ export default async function SchliessanlagenPage() {
               danach wird gefertigt.
             </p>
 
-            <div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
+
+            <div className="mt-8 rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_4px_12px_-2px_oklch(0.16_0.02_260/0.03)]">
+              <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)] mb-3">Die architektonische Methodik</h3>
+              <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Die architektonische Methodik hinter unserer Planung basiert auf der strikten Trennung von physischen Zugangspunkten und logischen Berechtigungsrollen. Wir strukturieren Ihr Objekt nach dem Prinzip der minimalen Rechtevergabe (Principle of Least Privilege). Dies bedeutet, dass jeder Nutzer nur exakt die Schlüssel oder Transponder erhält, die er für seine täglichen Aufgaben zwingend benötigt.
+              </p>
+              <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Durch diese Methodik gewährleisten wir höchste Sicherheit und minimieren das Risiko bei Schlüsselverlusten. Wir analysieren dabei nicht nur den Status Quo, sondern berücksichtigen von Beginn an zukünftige Erweiterungen und Nutzungsänderungen Ihres Gebäudes. Jede mechanische oder elektronische Anlage wird als dynamisches System betrachtet, das mit Ihrem Unternehmen oder Ihrer Immobilie mitwachsen kann, ohne dass ein vollständiger Austausch der Grundkomponenten erforderlich wird.
+              </p>
+            </div>
+
+<div className="mt-6 rounded-lg border border-border bg-surface-muted px-5 py-4">
               <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
                 {process.label}
               </p>
@@ -288,6 +309,27 @@ export default async function SchliessanlagenPage() {
               note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
             }}
           />
+        </div>
+      </Section>
+
+      {/* Interaktiver Budgetrechner */}
+      <Section id="kalkulator" tone="muted">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-center">
+          <div>
+            <h2 className="text-2xl font-bold leading-tight text-foreground md:text-3xl">
+              Was kostet eine Schließanlage?
+            </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Der Preis einer Schließanlage hängt von der gewählten Technologie, der Anzahl der Türen (Zylinder) und der benötigten Schlüssel oder Transponder ab.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground-muted">
+              Zusätzliche Kosten können für besondere Zylinderausführungen (z.B. Bohr- und Ziehschutz, VdS-Zertifizierung) oder bei komplexen Berechtigungsstrukturen entstehen.
+              Nutzen Sie unseren Kalkulator, um ein erstes Gefühl für die Investitionssumme zu erhalten.
+            </p>
+          </div>
+          <div>
+             <ServiceBudgetCalculator />
+          </div>
         </div>
       </Section>
 
@@ -382,13 +424,36 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+
       {/* Fragen */}
       <Section>
-        <SectionHeading eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
+        <SectionHeading eyebrow="Fachspezifische Fragen" title="Detaillierte FAQ zu architektonischen Schließanlagen" />
         <div className="mt-8">
-          <Accordion items={faq} />
+          <Accordion items={[
+            {
+              question: 'Wie unterscheidet sich eine Zentralschlossanlage (Z-Anlage) von einer Hauptschlüsselanlage (HS-Anlage)?',
+              answer: 'Eine Zentralschlossanlage ermöglicht es, dass verschiedene Einzelschlüssel (z.B. Wohnungsschlüssel) zusätzlich einen oder mehrere Zentralzylinder (z.B. Hauseingangstür, Kellertür) schließen können, aber nicht die Türen der anderen Wohnungen. Eine Hauptschlüsselanlage (HS-Anlage) hingegen ist hierarchisch aufgebaut: Jeder Nutzer hat einen eigenen Schlüssel für seinen Bereich, aber es gibt einen übergeordneten Hauptschlüssel, der alle Zylinder der Anlage sperren kann.'
+            },
+            {
+              question: 'Was bedeutet Generalhauptschlüsselanlage (GHS-Anlage)?',
+              answer: 'Eine GHS-Anlage (Generalhauptschlüsselanlage) ist die komplexeste Form der mechanischen Schließanlagen. Sie verbindet mehrere Hauptschlüsselanlagen miteinander. An der Spitze steht der Generalhauptschlüssel, der alles schließt. Darunter gibt es Hauptschlüssel für verschiedene Gebäudeteile oder Abteilungen, darunter Gruppenschlüssel für einzelne Bereiche und ganz unten die Einzelschlüssel. Sie wird häufig in großen Unternehmen, Krankenhäusern oder Universitäten eingesetzt.'
+            },
+            {
+              question: 'Welche Rolle spielt der Sicherungsschein (Sicherungskarte)?',
+              answer: 'Der Sicherungsschein ist das absolute Kernelement Ihrer Sicherheit. Nur gegen Vorlage dieses Original-Dokuments dürfen autorisierte Fachbetriebe Ersatzschlüssel oder weitere Zylinder für Ihre Anlage anfertigen. Er schützt Sie effektiv vor illegalen Schlüsselkopien und unberechtigten Erweiterungen Ihrer Schließanlage. Bewahren Sie diesen Schein daher immer an einem extrem sicheren, zugriffsgeschützten Ort auf.'
+            },
+            {
+              question: 'Lassen sich mechanische Anlagen nachträglich um elektronische Komponenten erweitern?',
+              answer: 'Ja, absolut. Diese Form nennt man hybride Schließanlagen. Es ist gängige Praxis, stark frequentierte Außentüren oder Hochsicherheitsbereiche elektronisch auszustatten (um Zutrittsrechte flexibel entziehen zu können) und die restlichen Innentüren mechanisch zu belassen. Beide Systeme lassen sich kombinieren, sodass ein Mechatronik-Schlüssel sowohl mechanische Zylinder als auch elektronische Leser bedienen kann.'
+            },
+            {
+              question: 'Wie lange ist eine mechanische Schließanlage geschützt (Patentschutz)?',
+              answer: 'Hochwertige Schließanlagen sind marken- und patentrechtlich geschützt. Der Patentschutz (oft 15-20 Jahre) garantiert, dass keine Rohlinge frei auf dem Markt verfügbar sind, was das unautorisierte Kopieren von Schlüsseln technisch extrem erschwert bis unmöglich macht. Nach Ablauf des Patentschutzes greift oft noch der zeitlich unbegrenzte Markenschutz. Wir empfehlen beim Neukauf immer Systeme mit maximaler verbleibender Patentlaufzeit.'
+            }
+          ]} />
         </div>
       </Section>
+
 
       {/* Weiterführend */}
       <Section tone="muted" tight>
