@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Source File | Status | Target Words | Interactive Module | Schema |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | PENDING_BUILDER | 900 | InteractiveFaqAccordion | WebPage, Article |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING_BUILDER | 1535 | InteractiveFaqAccordion | WebPage, Article |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING_BUILDER | 1257 | InteractiveFaqAccordion | WebPage, Article |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 1119 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 1722 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 1692 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 1734 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 1824 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 1580 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING_BUILDER | 1319 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 1790 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING_BUILDER | 2603 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 1823 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 1643 | KeyDuplicationEstimator | WebPage, Service |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 1808 | KeyDuplicationEstimator | WebPage, Service |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING_BUILDER | 1900 | InteractiveFaqAccordion | WebPage, Article |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 983 | InteractiveFaqAccordion | WebPage, Article |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 3081 | InteractiveFaqAccordion | WebPage, Article |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 911 | InteractiveFaqAccordion | WebPage, Article |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 2682 | InteractiveFaqAccordion | WebPage, Article |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING_BUILDER | 900 | InteractiveFaqAccordion | WebPage, Article |
+| / | src/app/(site)/page.tsx | PENDING_BUILDER | 1731 | InteractiveFaqAccordion | WebPage, Article |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 960 | InteractiveFaqAccordion | WebPage, Article |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING_BUILDER | 900 | InteractiveFaqAccordion | WebPage, Article |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING_BUILDER | 1017 | InteractiveFaqAccordion | WebPage, Article |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 900 | InteractiveFaqAccordion | WebPage, Article |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 1316 | InteractiveFaqAccordion | WebPage, Article |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING_BUILDER | 900 | InteractiveFaqAccordion | WebPage, Article |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 1028 | InteractiveFaqAccordion | WebPage, Article |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 971 | InteractiveFaqAccordion | WebPage, Article |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 969 | InteractiveFaqAccordion | WebPage, Article |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING_BUILDER | 2474 | InteractiveFaqAccordion | WebPage, Article |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 1335 | KeyDuplicationEstimator | WebPage, Service |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING_BUILDER | 1098 | KeyDuplicationEstimator | WebPage, Service |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 900 | KeyDuplicationEstimator | WebPage, Service |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 2394 | KeyDuplicationEstimator | WebPage, Service |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 900 | InteractiveFaqAccordion | WebPage, Article |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 1075 | InteractiveFaqAccordion | WebPage, Article |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING_BUILDER | 2179 | InteractiveFaqAccordion | WebPage, Article |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 900 | InteractiveFaqAccordion | WebPage, Article |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 1256 | InteractiveFaqAccordion | WebPage, Article |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 1245 | SecurityVulnerabilityScanner | WebPage, FAQPage |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING_BUILDER | 1621 | SecurityVulnerabilityScanner | WebPage, FAQPage |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 930 | SecurityVulnerabilityScanner | WebPage, FAQPage |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING_BUILDER | 1006 | LocationAvailabilityMap | WebPage, LocalBusiness |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING_BUILDER | 900 | LocationAvailabilityMap | WebPage, LocalBusiness |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 1094 | InteractiveFaqAccordion | WebPage, Article |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 2385 | InteractiveFaqAccordion | WebPage, Article |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING_BUILDER | 900 | InteractiveFaqAccordion | WebPage, Article |
