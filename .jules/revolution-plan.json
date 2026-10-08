@@ -1,0 +1,1211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-08T15:08:53.873707Z",
+  "total_existing_routes": 52,
+  "dna_summary": {
+    "framework": "Next.js ^16.3.5",
+    "react_version": "19.2.4",
+    "styling": "Tailwind CSS ^3.4.19 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu ServiceUndTerminTerminstatus",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "ServiceUndTerminTerminstatusInfoPanel",
+        "target_file": "components/interactive/serviceundterminterminstatusinfopanel.tsx",
+        "action_file": "actions/serviceundterminterminstatusinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/payload/api/[...slug]",
+      "source_file": "src/app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu PayloadApi...Slug",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "PayloadApi...SlugInfoPanel",
+        "target_file": "components/interactive/payloadapi...sluginfopanel.tsx",
+        "action_file": "actions/payloadapi...sluginfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/payload/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu PayloadAdmin...Segments",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "PayloadAdmin...SegmentsInfoPanel",
+        "target_file": "components/interactive/payloadadmin...segmentsinfopanel.tsx",
+        "action_file": "actions/payloadadmin...segmentsinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu ServiceUndTerminAnfrage",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "ServiceUndTerminAnfrageInfoPanel",
+        "target_file": "components/interactive/serviceundterminanfrageinfopanel.tsx",
+        "action_file": "actions/serviceundterminanfrageinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselNachmachen-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselNachmachenKonfigurator",
+        "target_file": "components/interactive/autoschluesselnachmachenkonfigurator.tsx",
+        "action_file": "actions/autoschluesselnachmachenkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu Standorte",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "StandorteInfoPanel",
+        "target_file": "components/interactive/standorteinfopanel.tsx",
+        "action_file": "actions/standorteinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive SchluesselNachVorlageAnfrage-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageAnfrageKonfigurator",
+        "target_file": "components/interactive/schluesselnachvorlageanfragekonfigurator.tsx",
+        "action_file": "actions/schluesselnachvorlageanfragekonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu Ratgeber",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "RatgeberInfoPanel",
+        "target_file": "components/interactive/ratgeberinfopanel.tsx",
+        "action_file": "actions/ratgeberinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/llms.txt",
+      "source_file": "src/app/llms.txt/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu Llms.Txt",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "Llms.TxtInfoPanel",
+        "target_file": "components/interactive/llms.txtinfopanel.tsx",
+        "action_file": "actions/llms.txtinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Sicherer, reibungsloser Checkout-Prozess",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "KasseCheckoutFlow",
+        "target_file": "components/interactive/kassecheckoutflow.tsx",
+        "action_file": "actions/kassecheckoutflow-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselFunkschluessel-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFunkschluesselKonfigurator",
+        "target_file": "components/interactive/autoschluesselfunkschluesselkonfigurator.tsx",
+        "action_file": "actions/autoschluesselfunkschluesselkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Sicherer, reibungsloser Checkout-Prozess",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "WarenkorbCheckoutFlow",
+        "target_file": "components/interactive/warenkorbcheckoutflow.tsx",
+        "action_file": "actions/warenkorbcheckoutflow-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu SicherheitstechnikSicherheitscheck",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "SicherheitstechnikSicherheitscheckInfoPanel",
+        "target_file": "components/interactive/sicherheitstechniksicherheitscheckinfopanel.tsx",
+        "action_file": "actions/sicherheitstechniksicherheitscheckinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselFahrzeugoeffnung-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFahrzeugoeffnungKonfigurator",
+        "target_file": "components/interactive/autoschluesselfahrzeugoeffnungkonfigurator.tsx",
+        "action_file": "actions/autoschluesselfahrzeugoeffnungkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive GleichschliessendeZylinderKonfigurator-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderKonfiguratorKonfigurator",
+        "target_file": "components/interactive/gleichschliessendezylinderkonfiguratorkonfigurator.tsx",
+        "action_file": "actions/gleichschliessendezylinderkonfiguratorkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselSchluesselbartFraesen-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSchluesselbartFraesenKonfigurator",
+        "target_file": "components/interactive/autoschluesselschluesselbartfraesenkonfigurator.tsx",
+        "action_file": "actions/autoschluesselschluesselbartfraesenkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Transparente juristische Bestimmungen und FAQ",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "ACCORDION_FAQ",
+        "component_name": "RechtlichesCookieEinstellungenLegalViewer",
+        "target_file": "components/interactive/rechtlichescookieeinstellungenlegalviewer.tsx",
+        "action_file": "actions/rechtlichescookieeinstellungenlegalviewer-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselKopieren-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselKopierenKonfigurator",
+        "target_file": "components/interactive/autoschluesselkopierenkonfigurator.tsx",
+        "action_file": "actions/autoschluesselkopierenkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselProgrammieren-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselProgrammierenKonfigurator",
+        "target_file": "components/interactive/autoschluesselprogrammierenkonfigurator.tsx",
+        "action_file": "actions/autoschluesselprogrammierenkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu StandorteCity",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "StandorteCityInfoPanel",
+        "target_file": "components/interactive/standortecityinfopanel.tsx",
+        "action_file": "actions/standortecityinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu ServiceUndTerminKontakt",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "ServiceUndTerminKontaktInfoPanel",
+        "target_file": "components/interactive/serviceundterminkontaktinfopanel.tsx",
+        "action_file": "actions/serviceundterminkontaktinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu RatgeberSlug",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "RatgeberSlugInfoPanel",
+        "target_file": "components/interactive/ratgebersluginfopanel.tsx",
+        "action_file": "actions/ratgebersluginfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Transparente juristische Bestimmungen und FAQ",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "ACCORDION_FAQ",
+        "component_name": "RechtlichesImpressumLegalViewer",
+        "target_file": "components/interactive/rechtlichesimpressumlegalviewer.tsx",
+        "action_file": "actions/rechtlichesimpressumlegalviewer-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu ElektronischeZutrittsloesungenKonfigurator",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "ElektronischeZutrittsloesungenKonfiguratorInfoPanel",
+        "target_file": "components/interactive/elektronischezutrittsloesungenkonfiguratorinfopanel.tsx",
+        "action_file": "actions/elektronischezutrittsloesungenkonfiguratorinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselSmartKey-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSmartKeyKonfigurator",
+        "target_file": "components/interactive/autoschluesselsmartkeykonfigurator.tsx",
+        "action_file": "actions/autoschluesselsmartkeykonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu SchliessanlagenKonfigurator",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "SchliessanlagenKonfiguratorInfoPanel",
+        "target_file": "components/interactive/schliessanlagenkonfiguratorinfopanel.tsx",
+        "action_file": "actions/schliessanlagenkonfiguratorinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu TuerUndSchliesstechnikSlug",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "TuerUndSchliesstechnikSlugInfoPanel",
+        "target_file": "components/interactive/tuerundschliesstechniksluginfopanel.tsx",
+        "action_file": "actions/tuerundschliesstechniksluginfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive SchluesselNachCode-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeKonfigurator",
+        "target_file": "components/interactive/schluesselnachcodekonfigurator.tsx",
+        "action_file": "actions/schluesselnachcodekonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Transparente juristische Bestimmungen und FAQ",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "ACCORDION_FAQ",
+        "component_name": "RechtlichesWiderrufLegalViewer",
+        "target_file": "components/interactive/rechtlicheswiderruflegalviewer.tsx",
+        "action_file": "actions/rechtlicheswiderruflegalviewer-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Transparente juristische Bestimmungen und FAQ",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "ACCORDION_FAQ",
+        "component_name": "RechtlichesVersandUndZahlungLegalViewer",
+        "target_file": "components/interactive/rechtlichesversandundzahlunglegalviewer.tsx",
+        "action_file": "actions/rechtlichesversandundzahlunglegalviewer-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselAnfrage-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselAnfrageKonfigurator",
+        "target_file": "components/interactive/autoschluesselanfragekonfigurator.tsx",
+        "action_file": "actions/autoschluesselanfragekonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Transparente juristische Bestimmungen und FAQ",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "ACCORDION_FAQ",
+        "component_name": "RechtlichesAgbLegalViewer",
+        "target_file": "components/interactive/rechtlichesagblegalviewer.tsx",
+        "action_file": "actions/rechtlichesagblegalviewer-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu SicherheitstechnikSlug",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "SicherheitstechnikSlugInfoPanel",
+        "target_file": "components/interactive/sicherheitstechniksluginfopanel.tsx",
+        "action_file": "actions/sicherheitstechniksluginfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu Artikel",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "ArtikelInfoPanel",
+        "target_file": "components/interactive/artikelinfopanel.tsx",
+        "action_file": "actions/artikelinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselMarken-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenKonfigurator",
+        "target_file": "components/interactive/autoschluesselmarkenkonfigurator.tsx",
+        "action_file": "actions/autoschluesselmarkenkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu ServiceUndTerminVorOrt",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "ServiceUndTerminVorOrtInfoPanel",
+        "target_file": "components/interactive/serviceundterminvorortinfopanel.tsx",
+        "action_file": "actions/serviceundterminvorortinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive SchluesselNachCodeSlug-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeSlugKonfigurator",
+        "target_file": "components/interactive/schluesselnachcodeslugkonfigurator.tsx",
+        "action_file": "actions/schluesselnachcodeslugkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu Home",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "HomeInfoPanel",
+        "target_file": "components/interactive/homeinfopanel.tsx",
+        "action_file": "actions/homeinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu Sicherheitstechnik",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "SicherheitstechnikInfoPanel",
+        "target_file": "components/interactive/sicherheitstechnikinfopanel.tsx",
+        "action_file": "actions/sicherheitstechnikinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselMarkenMake-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenMakeKonfigurator",
+        "target_file": "components/interactive/autoschluesselmarkenmakekonfigurator.tsx",
+        "action_file": "actions/autoschluesselmarkenmakekonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 853,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu ArtikelSlug",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "ArtikelSlugInfoPanel",
+        "target_file": "components/interactive/artikelsluginfopanel.tsx",
+        "action_file": "actions/artikelsluginfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 961,
+      "content_expansion_topics": [
+        "Transparente juristische Bestimmungen und FAQ",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "ACCORDION_FAQ",
+        "component_name": "RechtlichesDatenschutzLegalViewer",
+        "target_file": "components/interactive/rechtlichesdatenschutzlegalviewer.tsx",
+        "action_file": "actions/rechtlichesdatenschutzlegalviewer-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/api/kunden-upload",
+      "source_file": "src/app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 985,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu ApiKundenUpload",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "ApiKundenUploadInfoPanel",
+        "target_file": "components/interactive/apikundenuploadinfopanel.tsx",
+        "action_file": "actions/apikundenuploadinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1039,
+      "content_expansion_topics": [
+        "Interaktive AutoschluesselMarkenMakeModel-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenMakeModelKonfigurator",
+        "target_file": "components/interactive/autoschluesselmarkenmakemodelkonfigurator.tsx",
+        "action_file": "actions/autoschluesselmarkenmakemodelkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 965,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu BestellungId",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "BestellungIdInfoPanel",
+        "target_file": "components/interactive/bestellungidinfopanel.tsx",
+        "action_file": "actions/bestellungidinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 1227,
+      "content_expansion_topics": [
+        "Interaktive SchluesselNachVorlage-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageKonfigurator",
+        "target_file": "components/interactive/schluesselnachvorlagekonfigurator.tsx",
+        "action_file": "actions/schluesselnachvorlagekonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 1253,
+      "content_expansion_topics": [
+        "Interaktive GleichschliessendeZylinder-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderKonfigurator",
+        "target_file": "components/interactive/gleichschliessendezylinderkonfigurator.tsx",
+        "action_file": "actions/gleichschliessendezylinderkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 1284,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu TuerUndSchliesstechnik",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "TuerUndSchliesstechnikInfoPanel",
+        "target_file": "components/interactive/tuerundschliesstechnikinfopanel.tsx",
+        "action_file": "actions/tuerundschliesstechnikinfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 1301,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu ServiceUndTermin",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "ServiceUndTerminInfoPanel",
+        "target_file": "components/interactive/serviceundtermininfopanel.tsx",
+        "action_file": "actions/serviceundtermininfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 1392,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu Schliessanlagen",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "SchliessanlagenInfoPanel",
+        "target_file": "components/interactive/schliessanlageninfopanel.tsx",
+        "action_file": "actions/schliessanlageninfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Interaktive Autoschluessel-Konfiguration und technische Auswahl",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselKonfigurator",
+        "target_file": "components/interactive/autoschluesselkonfigurator.tsx",
+        "action_file": "actions/autoschluesselkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 1805,
+      "content_expansion_topics": [
+        "Vertiefende Informationen zu ElektronischeZutrittsloesungen",
+        "Ausf\u00fchrliche Prozessbeschreibung und Schweizer Standards",
+        "Spezifische FAQ und tiefgr\u00fcndige Anwendungsbeispiele"
+      ],
+      "interactive_module": {
+        "type": "BENTO_GRID",
+        "component_name": "ElektronischeZutrittsloesungenInfoPanel",
+        "target_file": "components/interactive/elektronischezutrittsloesungeninfopanel.tsx",
+        "action_file": "actions/elektronischezutrittsloesungeninfopanel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

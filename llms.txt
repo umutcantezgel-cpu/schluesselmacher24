@@ -1,0 +1,4 @@
+# LLM Documentation
+
+## Architecture Blueprint
+See `.jules/architecture-matrix.md` for details.
