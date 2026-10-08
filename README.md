@@ -43,3 +43,9 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Blueprint
+
+- `.jules/revolution-plan.json`: Contains the strategic targets and interactive modules intended for each of our existing 49 routes.
+- `.jules/architecture-matrix.md`: A human-readable matrix detailing the current and target state for content density and interaction on every route.
