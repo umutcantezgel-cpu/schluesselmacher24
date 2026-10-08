@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Interactive Modules Added
+- **Schließanlagen Budget Calculator:** An interactive tool built with React 19 Server Actions and useOptimistic to provide users with a quick cost estimate for their mechanical locking systems.

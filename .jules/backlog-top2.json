@@ -1,0 +1,24 @@
+{
+  "status": "active",
+  "transformation_queue": [
+    {
+      "target_component_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "target_word_count": 880,
+      "content_expansion_topics": [
+        "Detailierte architektonische Methodik zur Schließanlagenplanung",
+        "Vor- und Nachteile von Generalhauptschlüsselanlagen",
+        "Wirtschaftlichkeitsbetrachtung und Investitionssicherheit",
+        "Wartungszyklen und Instandhaltung"
+      ],
+      "interactive_modules": [
+        {
+          "name": "SchliessanlagenCalculator",
+          "path": "src/components/calculator/schliessanlagen-calculator.tsx",
+          "action": "src/actions/calculate-schliessanlage.ts",
+          "description": "Interaktiver Budgetrechner für Schließanlagen mit useActionState"
+        }
+      ]
+    }
+  ]
+}
