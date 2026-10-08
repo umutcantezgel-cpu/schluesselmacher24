@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +74,16 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedParams = await params;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -201,6 +211,118 @@ export default async function SicherheitstechnikPage() {
           })}
         </ul>
       </Section>
+
+
+      {/* Fachkompetenz und Methodik */}
+      <Section tight>
+        <SectionHeading
+          eyebrow="Architektur der Sicherheit"
+          title="Eine tiefergehende Betrachtung unserer Methodik"
+        />
+
+        <div className="mt-8 prose prose-gray max-w-none text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          <p>
+            Moderne Sicherheitstechnik ist weit mehr als die bloße Installation von Kameras und Alarmgebern. Sie ist eine architektonische Meisterleistung, die tiefgreifendes technisches Verständnis, juristische Expertise und ein feines Gespür für die spezifischen Anforderungen eines jeden Objekts erfordert. In einer Welt, in der die Bedrohungsszenarien stetig komplexer werden, reicht ein rudimentärer Schutz schon lange nicht mehr aus. Wir betrachten Sicherheit als ganzheitliches Konzept, bei dem jede Komponente nahtlos in die andere greift.
+          </p>
+          <p>
+            Der Grundpfeiler unserer Philosophie ist die <strong>präventive Risikoarchitektur</strong>. Dies bedeutet, dass wir nicht erst dann reagieren, wenn ein Vorfall bereits eingetreten ist, sondern Schwachstellen proaktiv identifizieren und neutralisieren, bevor sie von potenziellen Angreifern ausgenutzt werden können. Dieser Ansatz erfordert eine detaillierte Analyse der physischen Gegebenheiten Ihres Objekts, von den Zugangswegen über die Gebäudestruktur bis hin zur umliegenden Topografie.
+          </p>
+
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Die Symbiose aus Mechanik und Elektronik</h3>
+          <p>
+            Ein häufiger Irrtum in der Planung von Sicherheitskonzepten ist die isolierte Betrachtung von mechanischen und elektronischen Systemen. Eine hochmoderne Videoüberwachung nützt wenig, wenn die Eingangstür mit einem simplen Brecheisen innerhalb von Sekunden überwunden werden kann. Umgekehrt bietet selbst der massivste Tresorraum keinen absoluten Schutz, wenn unbefugte Zutritte nicht zuverlässig detektiert und gemeldet werden.
+          </p>
+          <p>
+            Unsere Lösungsansätze basieren auf dem Prinzip der <strong>Zwiebelschalen-Sicherheit</strong> (Defense in Depth). Dies bedeutet, dass wir mehrere voneinander unabhängige Sicherheitsebenen etablieren. Fällt eine Schicht aus oder wird überwunden, greift sofort die nächste. Die äußere Schicht bildet zumeist die Perimeterüberwachung, unterstützt durch robuste mechanische Barrieren. Die nächste Schicht umfasst elektronische Zutrittskontrollsysteme und fortschrittliche Einbruchmeldeanlagen. Die innerste Schicht schließlich konzentriert sich auf den Schutz der sensibelsten Bereiche und Daten.
+          </p>
+
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Technologische Exzellenz in der Praxis</h3>
+          <p>
+            Wir setzen ausschließlich auf hochqualitative, praxiserprobte Komponenten von führenden Herstellern. Doch die beste Hardware ist nur so gut wie ihre Konfiguration und Integration. Unsere Techniker sind hochspezialisiert und werden kontinuierlich auf die neuesten Systeme und Angriffsmethoden geschult. Wir implementieren komplexe Netzwerke, in denen Kameras, Bewegungsmelder, Zutrittsleser und Alarmsysteme in Echtzeit miteinander kommunizieren.
+          </p>
+          <p>
+            Ein entscheidender Faktor ist dabei die <strong>Datenintegrität und Verschlüsselung</strong>. Die Kommunikation zwischen den einzelnen Komponenten sowie die Übertragung der Daten an Leitstellen oder mobile Endgeräte erfolgt über hochsichere, mehrfach verschlüsselte Kanäle. Wir stellen sicher, dass Ihre Sicherheitssysteme nicht selbst zum Einfallstor für Cyberangriffe werden.
+          </p>
+
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Vergleichsmatrix: Leistungsstufen der Sicherheitstechnik</h3>
+          <div className="overflow-x-auto mt-6 mb-8">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <th className="py-4 font-semibold text-[oklch(0.16_0.02_260)]">Kriterium</th>
+                  <th className="py-4 font-semibold text-[oklch(0.16_0.02_260)]">Basis-Schutz</th>
+                  <th className="py-4 font-semibold text-[oklch(0.16_0.02_260)]">Premium-Integration</th>
+                  <th className="py-4 font-semibold text-[oklch(0.16_0.02_260)]">Enterprise-Architektur</th>
+                </tr>
+              </thead>
+              <tbody className="text-sm">
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <td className="py-4 font-medium">Reaktionszeit</td>
+                  <td className="py-4">Lokal (Sirene)</td>
+                  <td className="py-4">Aufschaltung Leitstelle</td>
+                  <td className="py-4">Echtzeit-Intervention</td>
+                </tr>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <td className="py-4 font-medium">Systemintegration</td>
+                  <td className="py-4">Isolierte Systeme</td>
+                  <td className="py-4">Teilintegriert (Smart Home)</td>
+                  <td className="py-4">Vollständige BMS-Integration</td>
+                </tr>
+                <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                  <td className="py-4 font-medium">Redundanz</td>
+                  <td className="py-4">Einfach</td>
+                  <td className="py-4">Dual (Strom/Netzwerk)</td>
+                  <td className="py-4">Hochverfügbarkeit (N+1)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Häufig gestellte Fragen (FAQ)</h3>
+          <div className="space-y-6">
+            <div>
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">1. Wie lange dauert die Installation eines umfassenden Systems?</h4>
+              <p className="mt-2">Die Dauer hängt stark von der Komplexität und der Größe des Objekts ab. Eine grundlegende Installation kann in 1-2 Tagen abgeschlossen sein, während komplexe Enterprise-Lösungen mit weitreichender Vernetzung mehrere Wochen in Anspruch nehmen können. Die genaue Planung erfolgt im Rahmen des Sicherheitschecks.</p>
+            </div>
+            <div>
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">2. Können bestehende mechanische Systeme integriert werden?</h4>
+              <p className="mt-2">In den meisten Fällen ja. Wir prüfen Ihre vorhandenen Zylinder, Schlösser und Beschläge auf Kompatibilität und Sicherheitsniveau. Oftmals lassen sich hochwertige mechanische Komponenten nahtlos mit mechatronischen Zylindern und elektronischen Auswerteeinheiten aufrüsten, was eine kosteneffiziente Modernisierung ermöglicht.</p>
+            </div>
+            <div>
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">3. Was passiert bei einem Strom- oder Netzwerkausfall?</h4>
+              <p className="mt-2">Professionelle Systeme verfügen über Notstromakkus, die den Betrieb über mehrere Stunden, bei Bedarf auch Tage, aufrechterhalten. Die Kommunikation wird über redundante Übertragungswege (z.B. primär LAN, sekundär LTE/5G) sichergestellt. Ein Ausfall der Hauptversorgung führt nicht zu einem Ausfall der Sicherheit.</p>
+            </div>
+            <div>
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">4. Wie ist der rechtliche Rahmen bei Videoüberwachung?</h4>
+              <p className="mt-2">Der Betrieb von Videoüberwachungsanlagen unterliegt strengen datenschutzrechtlichen Bestimmungen (DSGVO). Öffentliche Bereiche oder Nachbargrundstücke dürfen nicht erfasst werden. Wir beraten Sie hinsichtlich der korrekten Kamerapositionierung, der notwendigen Beschilderung und der rechtskonformen Speicherdauer der Aufzeichnungen.</p>
+            </div>
+            <div>
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">5. Welche Wartungsintervalle sind erforderlich?</h4>
+              <p className="mt-2">Für einen zuverlässigen Betrieb empfehlen wir eine jährliche Inspektion und Wartung aller Komponenten. Dabei werden Batterien geprüft oder ausgetauscht, Firmware-Updates eingespielt, Kameras gereinigt und die Funktionalität der Sensoren getestet. Für kritische Infrastrukturen können kürzere Intervalle erforderlich sein.</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Interactive Module */}
+      <Section tight tone="muted">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Budgetplanung"
+              title="Transparenz von Anfang an"
+              lead="Nutzen Sie unseren interaktiven Kalkulator, um einen ersten Richtwert für Ihr Sicherheitsprojekt zu erhalten. Die finale Kostenaufstellung erfolgt nach einer detaillierten Vor-Ort-Analyse."
+            />
+            <ul className="mt-6 space-y-4 text-[15px] text-[oklch(0.32_0.02_260)]">
+              <li className="flex gap-3"><ShieldCheck className="text-[oklch(0.52_0.24_260)] shrink-0" size={20} /> Inklusive Hardware-Kalkulation</li>
+              <li className="flex gap-3"><ShieldCheck className="text-[oklch(0.52_0.24_260)] shrink-0" size={20} /> Berücksichtigung von Installationsaufwand</li>
+              <li className="flex gap-3"><ShieldCheck className="text-[oklch(0.52_0.24_260)] shrink-0" size={20} /> Anpassbar an verschiedene Projektgrößen</li>
+            </ul>
+          </div>
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
 
       {/* Recht und Verantwortung */}
       <Section id="recht-und-verantwortung">
