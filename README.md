@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Neue Module
+- **Schlüsselcode Format-Prüfer**: Vorabprüfung von Hersteller-Codes auf Gültigkeit (implementiert auf `/schluessel-nach-code`).
