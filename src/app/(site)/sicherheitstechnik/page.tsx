@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { SecuritySystemCalculator } from '@/components/calculator/security-system-calculator';
+
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -200,6 +202,98 @@ export default async function SicherheitstechnikPage() {
             );
           })}
         </ul>
+      </Section>
+
+
+      {/* Architektonische Methodik & Tiefergehende Erklärung */}
+      <Section id="architektonische-methodik">
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Sicherheit als ganzheitliches Konzept"
+          lead="Wir betrachten Sicherheitstechnik nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Ästhetik erfüllen."
+        />
+
+        <div className="mt-8 prose-sm24 max-w-none space-y-6">
+          <p>
+            Die Konzeption und Implementierung moderner Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Beratungsansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Standardisierte &#34;Out-of-the-box&#34;-Lösungen lehnen wir ab, wenn maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">1. Phasen der Systemintegration</h3>
+          <p>
+            Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
+          </p>
+          <ul className="list-disc pl-5 space-y-2 text-[oklch(0.32_0.02_260)]">
+            <li><strong>Initiierung und Bedarfsanalyse:</strong> Im ersten Schritt erfassen wir nicht nur offensichtliche Anforderungen, sondern analysieren auch verborgene Risikofaktoren. Dies beinhaltet die Bewertung von Türbeschaffenheiten, Zylindermaßen, elektronischen Schnittstellen und den allgemeinen architektonischen Gegebenheiten vor Ort.</li>
+            <li><strong>Projektierung und Lösungsdesign:</strong> Basierend auf der Analyse entwickeln wir ein fundiertes Konzept. Bei Alarmanlagen bedeutet dies die Erstellung präziser Alarmpläne unter Berücksichtigung von Zonen und Scharfschaltbereichen. Bei Videoüberwachung planen wir die Ausleuchtung, den Datenschutz und die Netzwerkintegration.</li>
+            <li><strong>Präzise Fertigung und Vorkonfiguration:</strong> Bevor wir vor Ort tätig werden, bereiten wir alle Komponenten vor. Melder werden adressiert, Kameras vorkonfiguriert und Aufzeichnungssysteme getestet, um die Ausfallzeiten vor Ort auf ein absolutes Minimum zu reduzieren.</li>
+            <li><strong>Fachgerechte Montage und Integration:</strong> Unsere Techniker installieren die Systeme mit höchster handwerklicher Präzision. Dies umfasst die fachgerechte Montage mechanischer Sicherungen ebenso wie die Verkabelung und Inbetriebnahme komplexer elektronischer Anlagen, stets unter Einhaltung geltender Normen (z.B. VdS, DIN EN 50131 für Gefahrenmeldeanlagen).</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">2. Technologische Standards und Materialqualität</h3>
+          <p>
+            Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
+          </p>
+          <p>
+            Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. AES-256) und ausfallsichere Systeme, die auch bei Stromausfall und Netzwerkunterbrechungen eine definierte Grundsicherheit gewährleisten.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">3. Nachhaltigkeit und Lebenszyklus-Management</h3>
+          <p>
+            Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen und erweitern, ohne das gesamte System austauschen zu müssen.
+          </p>
+        </div>
+      </Section>
+
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Interaktive Planung"
+          title="Sicherheits-Kalkulator"
+          lead="Ermitteln Sie unverbindlich einen ersten Investitionsrahmen für Ihr individuelles Sicherheitskonzept. Die Berechnung berücksichtigt Mechanik und ausgewählte Elektronik-Komponenten."
+        />
+        <div className="mt-8 max-w-4xl mx-auto">
+          <SecuritySystemCalculator />
+        </div>
+      </Section>
+
+      {/* Fachwissen / FAQ */}
+      <Section>
+        <SectionHeading
+          eyebrow="Fachwissen"
+          title="Häufig gestellte Fragen (FAQ)"
+          lead="Detaillierte Antworten auf die wichtigsten Fragen rund um unsere Sicherheitssysteme, Abläufe und technischen Standards."
+        />
+        <div className="mt-8 max-w-3xl space-y-4">
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-5">
+            <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Welche Normen werden bei der Installation von Alarmanlagen berücksichtigt?</h4>
+            <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">
+              Wir richten uns primär nach der europäischen Normenreihe DIN EN 50131 für Einbruch- und Überfallmeldeanlagen. Für Gewerbeobjekte und bei spezifischen Versicherungsanforderungen installieren wir zudem Systeme, die den strengen VdS-Richtlinien entsprechen. Die genaue Ausprägung (Klasse 1 bis 4 bzw. VdS A, B, C) wird im Rahmen der Projektierung basierend auf dem Gefährdungspotenzial festgelegt.
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-5">
+            <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie verhält sich die Anlage bei einem Strom- oder Internetausfall?</h4>
+            <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">
+              Alle von uns installierten professionellen Gefahrenwarnanlagen verfügen über eine integrierte Notstromversorgung (Akkupack), die den Betrieb bei Stromausfall für mindestens 12 bis 24 Stunden sicherstellt. Fällt das primäre Netzwerk aus, stellen redundante Übertragungswege (z.B. GSM/LTE-Module) sicher, dass Alarmmeldungen weiterhin zuverlässig an die Leitstelle oder Ihre mobilen Endgeräte übertragen werden.
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-5">
+            <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Können bestehende mechanische Sicherungen in ein neues elektronisches System integriert werden?</h4>
+            <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">
+              Ja, in den meisten Fällen ist dies möglich und sogar empfehlenswert. Mechanik (wie Riegel- oder Schließblechkontakte) kann nahtlos als Sensorik in elektronische Gefahrenmeldesysteme integriert werden. Wir prüfen im Vorfeld die Kompatibilität Ihrer Bestandsmechanik und integrieren diese über entsprechende Schnittstellenmodule in das Gesamtkonzept.
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-5">
+            <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie wird der Datenschutz bei der Videoüberwachung gewährleistet?</h4>
+            <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">
+              Datenschutz &#34;by Design&#34; ist ein Kernaspekt unserer Projektierung. Wir konfigurieren Kameras so, dass öffentliche Bereiche (z.B. Gehwege) oder Nachbargrundstücke durch sogenannte Privacy-Masking-Zonen dauerhaft und irreversibel aus dem Bildbereich ausgeblendet (geschwärzt) werden. Die Speicherdauer der Aufzeichnungen wird auf das rechtlich zulässige Minimum konfiguriert, und der Zugriff ist kryptografisch sowie durch ein striktes Rollenkonzept abgesichert.
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-5">
+            <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie oft muss eine Sicherheitstechnische Anlage gewartet werden?</h4>
+            <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">
+              Für elektronische Anlagen (wie Alarmanlagen und Videoüberwachung) empfehlen wir, abhängig von den Versicherungsauflagen, eine jährliche Wartung. Bei mechanischen hochbeanspruchten Schließanlagen kann, je nach Publikumsverkehr, eine häufigere Inspektion sinnvoll sein. Unsere Wartungsverträge umfassen neben der Funktionsprüfung auch Firmware-Updates zur Schließung von Sicherheitslücken.
+            </p>
+          </div>
+        </div>
       </Section>
 
       {/* Recht und Verantwortung */}

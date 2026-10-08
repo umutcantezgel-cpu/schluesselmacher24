@@ -1,0 +1,17 @@
+[
+  {
+    "id": "IDEA_001",
+    "route": "app/(site)/sicherheitstechnik/page.tsx",
+    "target_component_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+    "status": "COMPLETED_BY_BUILDER",
+    "description": "Expand Sicherheitstechnik route with deep content and interactive module",
+    "transformation_queue": [
+      {
+        "route": "app/(site)/sicherheitstechnik/page.tsx",
+        "target_word_count": 850,
+        "content_expansion_topics": ["Methodology", "Comparison", "FAQ"],
+        "interactive_module": "SecuritySystemCalculator"
+      }
+    ]
+  }
+]

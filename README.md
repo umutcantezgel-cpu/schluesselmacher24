@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Interactive Modules Added
+- **SecuritySystemCalculator**: Interaktiver Kalkulator für Sicherheitssysteme in `app/(site)/sicherheitstechnik/page.tsx` hinzugefügt.
