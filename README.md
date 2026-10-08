@@ -43,3 +43,4 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+\n\n## Interaktive Module\n- **Service Budget Calculator**: Integriert in `src/app/(site)/schliessanlagen/page.tsx` zur Kostenschätzung mechanischer und elektronischer Schließanlagen.
