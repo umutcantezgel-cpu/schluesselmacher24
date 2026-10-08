@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Matrix & Revolution Plan
+
+The latest architecture matrix, detailing route semantic transformations and target plans, is maintained by the automated auditor agent (JC-AUDITOR-ARCHITECT-v1).
+Please refer to the `.jules/architecture-matrix.md` and `.jules/revolution-plan.json` for details regarding route semantic enhancement.

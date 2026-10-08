@@ -1,0 +1,14 @@
+# Schlüsselmacher24 - Automated Auditing & Architecture Matrix
+
+This project employs a systematic, 4-phase transformation process driven by specialized agents.
+Currently, the codebase has been audited by `JC-AUDITOR-ARCHITECT-v1`.
+
+### Auditing Summary:
+- Existing Routes: 49
+- All audited routes have been mapped in `.jules/architecture-matrix.md`.
+- Deep integration rules have been formulated into `.jules/revolution-plan.json`.
+
+**Blueprint Goals:**
+- Eliminating Thin Content: Enforcing >800 word counts across all routes.
+- Elevating Interactions: Planning specific widgets like ROI calculators and bento-boxes.
+- Strict Swiss Light Mode design adherence.
