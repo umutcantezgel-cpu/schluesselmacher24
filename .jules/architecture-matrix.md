@@ -1,0 +1,56 @@
+# Architecture Matrix
+
+| Route | URL | Semantic H1 | Current Words | Target Words | CWV Priority | Schema Status | Planned Module | Status |
+|---|---|---|---|---|---|---|---|---|
+| src/app/(site)/service-und-termin/terminstatus/page.tsx | /service-und-termin/terminstatus | No H1 | 53 | 850 | Needs priority=true | Missing Schema | ServiceUndTerminTerminstatusInfoPanel | PENDING_BUILDER |
+| src/app/(payload)/api/[...slug]/route.ts | /payload/api/[...slug] | No H1 | 69 | 850 | Needs priority=true | Missing Schema | PayloadApi...SlugInfoPanel | PENDING_BUILDER |
+| src/app/(payload)/admin/[[...segments]]/page.tsx | /payload/admin/[[...segments]] | No H1 | 70 | 850 | Needs priority=true | Missing Schema | PayloadAdmin...SegmentsInfoPanel | PENDING_BUILDER |
+| src/app/(site)/service-und-termin/anfrage/page.tsx | /service-und-termin/anfrage | No H1 | 82 | 850 | Needs priority=true | Missing Schema | ServiceUndTerminAnfrageInfoPanel | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/nachmachen/page.tsx | /autoschluessel/nachmachen | No H1 | 102 | 850 | Needs priority=true | Missing Schema | AutoschluesselNachmachenKonfigurator | PENDING_BUILDER |
+| src/app/(site)/standorte/page.tsx | /standorte | No H1 | 114 | 850 | Needs priority=true | Missing Schema | StandorteInfoPanel | PENDING_BUILDER |
+| src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | /schluessel-nach-vorlage/anfrage | No H1 | 116 | 850 | Needs priority=true | Missing Schema | SchluesselNachVorlageAnfrageKonfigurator | PENDING_BUILDER |
+| src/app/(site)/ratgeber/page.tsx | /ratgeber | No H1 | 120 | 850 | Needs priority=true | Missing Schema | RatgeberInfoPanel | PENDING_BUILDER |
+| src/app/llms.txt/route.ts | /llms.txt | No H1 | 139 | 850 | Needs priority=true | Missing Schema | Llms.TxtInfoPanel | PENDING_BUILDER |
+| src/app/(site)/kasse/page.tsx | /kasse | No H1 | 141 | 850 | Needs priority=true | Missing Schema | KasseCheckoutFlow | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/funkschluessel/page.tsx | /autoschluessel/funkschluessel | No H1 | 165 | 850 | Needs priority=true | Missing Schema | AutoschluesselFunkschluesselKonfigurator | PENDING_BUILDER |
+| src/app/(site)/warenkorb/page.tsx | /warenkorb | No H1 | 167 | 850 | Needs priority=true | Missing Schema | WarenkorbCheckoutFlow | PENDING_BUILDER |
+| src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | /sicherheitstechnik/sicherheitscheck | No H1 | 174 | 850 | Needs priority=true | Missing Schema | SicherheitstechnikSicherheitscheckInfoPanel | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | /autoschluessel/fahrzeugoeffnung | No H1 | 179 | 850 | Needs priority=true | Missing Schema | AutoschluesselFahrzeugoeffnungKonfigurator | PENDING_BUILDER |
+| src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | /gleichschliessende-zylinder/konfigurator | No H1 | 180 | 850 | Needs priority=true | Missing Schema | GleichschliessendeZylinderKonfiguratorKonfigurator | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | /autoschluessel/schluesselbart-fraesen | No H1 | 183 | 850 | Needs priority=true | Missing Schema | AutoschluesselSchluesselbartFraesenKonfigurator | PENDING_BUILDER |
+| src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | /rechtliches/cookie-einstellungen | Cookie-Einstellungen | 191 | 850 | Needs priority=true | Missing Schema | RechtlichesCookieEinstellungenLegalViewer | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/kopieren/page.tsx | /autoschluessel/kopieren | No H1 | 198 | 850 | Needs priority=true | Missing Schema | AutoschluesselKopierenKonfigurator | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/programmieren/page.tsx | /autoschluessel/programmieren | No H1 | 204 | 850 | Needs priority=true | Missing Schema | AutoschluesselProgrammierenKonfigurator | PENDING_BUILDER |
+| src/app/(site)/standorte/[city]/page.tsx | /standorte/[city] | No H1 | 209 | 850 | Needs priority=true | Schema Present | StandorteCityInfoPanel | PENDING_BUILDER |
+| src/app/(site)/service-und-termin/kontakt/page.tsx | /service-und-termin/kontakt | No H1 | 214 | 850 | Needs priority=true | Missing Schema | ServiceUndTerminKontaktInfoPanel | PENDING_BUILDER |
+| src/app/(site)/ratgeber/[slug]/page.tsx | /ratgeber/[slug] | No H1 | 215 | 850 | Needs priority=true | Schema Present | RatgeberSlugInfoPanel | PENDING_BUILDER |
+| src/app/(site)/rechtliches/impressum/page.tsx | /rechtliches/impressum | Impressum | 216 | 850 | Needs priority=true | Missing Schema | RechtlichesImpressumLegalViewer | PENDING_BUILDER |
+| src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | /elektronische-zutrittsloesungen/konfigurator | No H1 | 221 | 850 | Needs priority=true | Missing Schema | ElektronischeZutrittsloesungenKonfiguratorInfoPanel | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/smart-key/page.tsx | /autoschluessel/smart-key | No H1 | 235 | 850 | Needs priority=true | Missing Schema | AutoschluesselSmartKeyKonfigurator | PENDING_BUILDER |
+| src/app/(site)/schliessanlagen/konfigurator/page.tsx | /schliessanlagen/konfigurator | No H1 | 246 | 850 | Needs priority=true | Missing Schema | SchliessanlagenKonfiguratorInfoPanel | PENDING_BUILDER |
+| src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | /tuer-und-schliesstechnik/[slug] | No H1 | 261 | 850 | Needs priority=true | Missing Schema | TuerUndSchliesstechnikSlugInfoPanel | PENDING_BUILDER |
+| src/app/(site)/schluessel-nach-code/page.tsx | /schluessel-nach-code | No H1 | 291 | 850 | Needs priority=true | Schema Present | SchluesselNachCodeKonfigurator | PENDING_BUILDER |
+| src/app/(site)/rechtliches/widerruf/page.tsx | /rechtliches/widerruf | Widerruf und Rückgabe | 330 | 850 | Needs priority=true | Missing Schema | RechtlichesWiderrufLegalViewer | PENDING_BUILDER |
+| src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | /rechtliches/versand-und-zahlung | Zahlung und Versand | 331 | 850 | Needs priority=true | Missing Schema | RechtlichesVersandUndZahlungLegalViewer | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/anfrage/page.tsx | /autoschluessel/anfrage | No H1 | 336 | 850 | Needs priority=true | Missing Schema | AutoschluesselAnfrageKonfigurator | PENDING_BUILDER |
+| src/app/(site)/rechtliches/agb/page.tsx | /rechtliches/agb | Allgemeine Geschäftsbedingunge | 371 | 850 | Needs priority=true | Missing Schema | RechtlichesAgbLegalViewer | PENDING_BUILDER |
+| src/app/(site)/sicherheitstechnik/[slug]/page.tsx | /sicherheitstechnik/[slug] | No H1 | 375 | 850 | Needs priority=true | Missing Schema | SicherheitstechnikSlugInfoPanel | PENDING_BUILDER |
+| src/app/(site)/artikel/page.tsx | /artikel | No H1 | 413 | 850 | Needs priority=true | Schema Present | ArtikelInfoPanel | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/marken/page.tsx | /autoschluessel/marken | No H1 | 414 | 850 | Needs priority=true | Missing Schema | AutoschluesselMarkenKonfigurator | PENDING_BUILDER |
+| src/app/(site)/service-und-termin/vor-ort/page.tsx | /service-und-termin/vor-ort | No H1 | 425 | 850 | Needs priority=true | Missing Schema | ServiceUndTerminVorOrtInfoPanel | PENDING_BUILDER |
+| src/app/(site)/schluessel-nach-code/[slug]/page.tsx | /schluessel-nach-code/[slug] | No H1 | 456 | 850 | Needs priority=true | Schema Present | SchluesselNachCodeSlugKonfigurator | PENDING_BUILDER |
+| src/app/(site)/page.tsx | / | {page?.headline ?? 'Autoschlüs | 459 | 850 | Needs priority=true | Schema Present | HomeInfoPanel | PENDING_BUILDER |
+| src/app/(site)/sicherheitstechnik/page.tsx | /sicherheitstechnik | No H1 | 515 | 850 | Needs priority=true | Schema Present | SicherheitstechnikInfoPanel | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/marken/[make]/page.tsx | /autoschluessel/marken/[make] | No H1 | 523 | 850 | Needs priority=true | Missing Schema | AutoschluesselMarkenMakeKonfigurator | PENDING_BUILDER |
+| src/app/(site)/artikel/[slug]/page.tsx | /artikel/[slug] | No H1 | 553 | 853 | Needs priority=true | Schema Present | ArtikelSlugInfoPanel | PENDING_BUILDER |
+| src/app/(site)/rechtliches/datenschutz/page.tsx | /rechtliches/datenschutz | Datenschutzerklärung | 661 | 961 | Needs priority=true | Missing Schema | RechtlichesDatenschutzLegalViewer | PENDING_BUILDER |
+| src/app/(site)/api/kunden-upload/route.ts | /api/kunden-upload | No H1 | 685 | 985 | Needs priority=true | Schema Present | ApiKundenUploadInfoPanel | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | /autoschluessel/marken/[make]/[model] | No H1 | 739 | 1039 | Needs priority=true | Missing Schema | AutoschluesselMarkenMakeModelKonfigurator | PENDING_BUILDER |
+| src/app/(site)/bestellung/[id]/page.tsx | /bestellung/[id] | No H1 | 865 | 965 | Needs priority=true | Missing Schema | BestellungIdInfoPanel | PENDING_BUILDER |
+| src/app/(site)/schluessel-nach-vorlage/page.tsx | /schluessel-nach-vorlage | No H1 | 1127 | 1227 | Needs priority=true | Schema Present | SchluesselNachVorlageKonfigurator | PENDING_BUILDER |
+| src/app/(site)/gleichschliessende-zylinder/page.tsx | /gleichschliessende-zylinder | No H1 | 1153 | 1253 | Needs priority=true | Schema Present | GleichschliessendeZylinderKonfigurator | PENDING_BUILDER |
+| src/app/(site)/tuer-und-schliesstechnik/page.tsx | /tuer-und-schliesstechnik | No H1 | 1184 | 1284 | Needs priority=true | Schema Present | TuerUndSchliesstechnikInfoPanel | PENDING_BUILDER |
+| src/app/(site)/service-und-termin/page.tsx | /service-und-termin | No H1 | 1201 | 1301 | Needs priority=true | Schema Present | ServiceUndTerminInfoPanel | PENDING_BUILDER |
+| src/app/(site)/schliessanlagen/page.tsx | /schliessanlagen | No H1 | 1292 | 1392 | Needs priority=true | Schema Present | SchliessanlagenInfoPanel | PENDING_BUILDER |
+| src/app/(site)/autoschluessel/page.tsx | /autoschluessel | No H1 | 1308 | 1408 | Needs priority=true | Schema Present | AutoschluesselKonfigurator | PENDING_BUILDER |
+| src/app/(site)/elektronische-zutrittsloesungen/page.tsx | /elektronische-zutrittsloesungen | No H1 | 1705 | 1805 | Needs priority=true | Schema Present | ElektronischeZutrittsloesungenInfoPanel | PENDING_BUILDER |
