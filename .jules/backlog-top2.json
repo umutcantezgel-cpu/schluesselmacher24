@@ -1,0 +1,10 @@
+{
+  "timestamp": "2024-03-24T12:00:00Z",
+  "top_2_selected": [
+    {
+      "id": "1",
+      "route": "app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}

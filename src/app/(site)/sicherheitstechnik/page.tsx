@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { SecurityBudgetCalculator } from '@/components/calculator/security-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +74,16 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedParams = await params;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -296,6 +306,146 @@ export default async function SicherheitstechnikPage() {
               </Link>
             </CardBody>
           </Card>
+        </div>
+      </Section>
+
+
+      {/* Architektonische Methodik & Calculator */}
+      <Section id="methodik" tone="muted">
+        <SectionHeading
+          eyebrow="Methodik & Budget"
+          title="Unsere architektonische Herangehensweise an Sicherheit"
+          lead="Wir betrachten Gebäude als komplexe Systeme. Sicherheitstechnik ist nicht nur die Installation von Kameras, sondern die ganzheitliche Integration in die bestehende Architektur."
+        />
+
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <div className="space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <p>
+              Die Basis unserer Methodik bildet das Zwiebelprinzip: Wir definieren verschiedene Sicherheitszonen,
+              die wie Schichten aufgebaut sind. Beginnend an der Grundstücksgrenze, über die Gebäudeaußenhaut,
+              bis hin zu den innersten Hochsicherheitsbereichen.
+            </p>
+            <p>
+              <strong>1. Perimeterschutz:</strong> Frühzeitige Erkennung von Annäherungen. Wir setzen auf intelligente
+              Videoanalytik, die zwischen Tieren, Wetterphänomenen und tatsächlichen Bedrohungen unterscheidet.
+            </p>
+            <p>
+              <strong>2. Außenhautabsicherung:</strong> Physische Barrieren kombiniert mit moderner Sensortechnik.
+              Jeder mögliche Zugangspunkt (Türen, Fenster, Lichtschächte) wird elektronisch überwacht.
+            </p>
+            <p>
+              <strong>3. Innenraumüberwachung:</strong> Volumetrische Sensorik, die nur dann aktiv ist, wenn
+              der Bereich scharfgeschaltet wurde. Hierbei nutzen wir Dual-Tec-Melder zur Minimierung von Fehlalarmen.
+            </p>
+            <p>
+              Unsere Systeme kommunizieren über verschlüsselte Protokolle (z.B. AES-256) und bieten
+              redundante Übertragungswege (IP & LTE) zur Leitstelle.
+            </p>
+          </div>
+          <div>
+            <SecurityBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Leistungsstufen & Matrix */}
+      <Section id="leistungsstufen">
+        <SectionHeading
+          eyebrow="Vergleichsmatrix"
+          title="Strukturierte Sicherheitskonzepte"
+          lead="Abhängig von Ihrem spezifischen Risikoprofil und den Anforderungen Ihrer Versicherung bieten wir verschiedene Leistungsstufen an."
+        />
+
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <th className="py-4 px-6 text-[oklch(0.16_0.02_260)] font-semibold">Leistung / Feature</th>
+                <th className="py-4 px-6 text-[oklch(0.16_0.02_260)] font-semibold bg-[oklch(0.988_0.002_260)]">Basis-Schutz</th>
+                <th className="py-4 px-6 text-white font-semibold bg-[oklch(0.52_0.24_260)] rounded-t-lg">Premium (Empfohlen)</th>
+                <th className="py-4 px-6 text-[oklch(0.16_0.02_260)] font-semibold bg-[oklch(0.988_0.002_260)]">High-Security</th>
+              </tr>
+            </thead>
+            <tbody className="text-[14px] text-[oklch(0.32_0.02_260)]">
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 px-6 font-medium">Außenhautüberwachung</td>
+                <td className="py-4 px-6">Erdgeschoss</td>
+                <td className="py-4 px-6 font-semibold bg-[oklch(0.968_0.004_260)]">Alle zugänglichen Bereiche</td>
+                <td className="py-4 px-6">Lückenlos + Glasbruch</td>
+              </tr>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 px-6 font-medium">Videoanalytik</td>
+                <td className="py-4 px-6">-</td>
+                <td className="py-4 px-6 font-semibold bg-[oklch(0.968_0.004_260)]">KI-basierte Erkennung</td>
+                <td className="py-4 px-6">Wärmebild & PTZ</td>
+              </tr>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 px-6 font-medium">Aufschaltung (Leitstelle)</td>
+                <td className="py-4 px-6">Optional</td>
+                <td className="py-4 px-6 font-semibold bg-[oklch(0.968_0.004_260)]">Redundant (IP + LTE)</td>
+                <td className="py-4 px-6">VdS-zertifiziert (Klasse C)</td>
+              </tr>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 px-6 font-medium">Wartungsintervall</td>
+                <td className="py-4 px-6">Jährlich</td>
+                <td className="py-4 px-6 font-semibold bg-[oklch(0.968_0.004_260)]">Halbjährlich + Remote</td>
+                <td className="py-4 px-6">Quartalsweise</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      {/* Fachspezifische FAQs */}
+      <Section id="faq" tone="muted">
+        <SectionHeading
+          eyebrow="Häufige Fragen"
+          title="Expertenwissen auf den Punkt gebracht"
+          lead="Die wichtigsten technischen und organisatorischen Fragen rund um professionelle Sicherheitstechnik."
+        />
+
+        <div className="mt-8 space-y-6 max-w-3xl">
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">1. Was passiert bei einem Stromausfall?</h4>
+            <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Unsere professionellen Alarmsysteme sind grundsätzlich mit einer redundanten Energieversorgung
+              (Notstromakkus) ausgestattet. Diese überbrücken Stromausfälle je nach Systemgröße für 12 bis
+              72 Stunden, sodass Ihr Objekt weiterhin vollumfänglich geschützt bleibt.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">2. Ist die Anlage anfällig für Sabotage oder Jamming?</h4>
+            <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Nein. Wir verwenden Mehrfrequenz-Funktechnik und überwachen kontinuierlich das Funkband auf
+              Störsignale (Anti-Jamming). Alle verdrahteten Komponenten besitzen Sabotagekontakte, die bei
+              Manipulationsversuchen (z.B. Gehäuseöffnung oder Kabeldurchtrennung) sofort Alarm auslösen,
+              selbst im unscharfen Zustand.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">3. Kann ich Haustiere im Haus lassen, wenn die Anlage scharf ist?</h4>
+            <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Ja, durch den Einsatz von tierimmunen Bewegungsmeldern. Diese Melder nutzen komplexe Algorithmen
+              zur Analyse von Masse, Geschwindigkeit und Infrarot-Signatur. Ein Hund bis ca. 30 kg oder mehrere
+              Katzen können sich so frei bewegen, ohne Fehlalarme zu verursachen.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">4. Welche Netzwerkvoraussetzungen gibt es für Kamerasysteme?</h4>
+            <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Wir empfehlen PoE (Power over Ethernet), um Daten und Strom über ein einziges Cat.7-Kabel zu übertragen.
+              Für Cloud-basierte Fernzugriffe benötigen Sie eine stabile Internetverbindung mit ausreichendem
+              Upload (mindestens 10 Mbit/s für HD-Streams). Alternativ arbeiten unsere Systeme komplett lokal (On-Premises).
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h4 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">5. Benötige ich zwingend eine Anbindung an einen Wachdienst?</h4>
+            <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Eine Aufschaltung ist optional, wird aber im gewerblichen Bereich und für hochwertige Privatanwesen
+              dringend empfohlen. Während eine Push-Nachricht auf Ihr Smartphone übersehen werden kann, reagiert
+              die 24/7-Leitstelle garantiert und leitet gemäß Maßnahmenplan (z.B. Intervention durch Wachschutz oder Polizei) alles Nötige ein.
+            </p>
+          </div>
         </div>
       </Section>
 
