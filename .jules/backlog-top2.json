@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-08T16:51:40.914259Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten (Score: 9.65 und 9.45).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/service-und-termin/page.tsx",
+      "target_component_file": "src/components/calculator/service-einsatz-rechner.tsx",
+      "title": "Interaktiver Budgetrechner mit React 19 Actions",
+      "specification": "Implementierung eines interaktiven Budgetrechners mit React 19 Actions und useOptimistic. Das Tool wird nativ als React 19 Client Component in src/components/calculator/service-einsatz-rechner.tsx integriert und in src/app/(site)/service-und-termin/page.tsx eingebettet.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_001",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+      "target_component_file": "src/components/autoschluessel/bestaetigung.tsx",
+      "title": "Bento-Layout mit CSS Subgrid",
+      "specification": "\u00dcberf\u00fchrung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten. Zielkomponente ist src/components/autoschluessel/bestaetigung.tsx. Diese Modifikation st\u00e4rkt die Schweizer Light Mode \u00c4sthetik durch pr\u00e4zise, ruckelfreie Animationen ohne visuelles Rauschen.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
