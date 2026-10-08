@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-08T18:57:06Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_055",
+      "category": "CONVERSION_PSYCHOLOGY_AND_NATIVE_TOOLS",
+      "target_existing_route": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_component_file": "src/components/schliessanlagen/system-erklaerung.tsx",
+      "title": "Interaktiver Schlie\u00dfanlagen-Planer mit React 19 Server Actions",
+      "specification": "Entwicklung eines interaktiven Kalkulators mit useOptimistic f\u00fcr Schlie\u00dfanlagen-Budgets, eingebettet in die bestehende Seite. Erweitert den Text auf \u00fcber 800 W\u00f6rter.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_012",
+      "category": "AWWWARDS_KINETICS_AND_TACTILE_INTERACTION",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/visual/registry.tsx",
+      "title": "Kinetische Registry-Visualisierung mit CSS Subgrid",
+      "specification": "Erweiterung des Visual Registry Grids um CSS Subgrid, oklch() basierte Haarlinien-Kanten und physikalisch korrekte Cursor-Hover-Effekte ohne Layout-Shifts.",
+      "score": 9.6,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
