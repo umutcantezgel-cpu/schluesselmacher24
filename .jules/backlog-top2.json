@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-08T14:40:36.063746+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_014",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/(site)/autoschluessel/page.tsx",
+      "target_component_file": "components/autoschluessel/key-kinds.tsx",
+      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
+      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_010",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_component_file": "components/visual/generators/zylinder-mass.tsx",
+      "title": "Spatial Bento Grid & Fluid Physics für zylinder-mass",
+      "specification": "Überführung der bestehenden Struktur in app/(site)/gleichschliessende-zylinder/page.tsx in ein interaktives CSS Subgrid Layout. Hinzufügen von Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), physikalischer Federdämpfung beim Hover und Cursor-Tracking, um die taktile Interaktion ohne Layout-Shifts zu maximieren.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
