@@ -1,0 +1,5 @@
+
+# SCHLÜSSELMACHER24 - LLM Kontext
+Die Anwendung verwendet Next.js 16+, React 19.2+ und Tailwind CSS (OKLCH).
+Aktuelle Architektur-Ziele: Überführung aller Routen in interaktive, content-tiefe Module.
+Weitere Details: siehe .jules/architecture-matrix.md

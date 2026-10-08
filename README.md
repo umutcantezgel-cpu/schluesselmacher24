@@ -43,3 +43,9 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architektur-Ziele & Systemstatus
+Die Codebasis wurde von JC-AUDITOR-ARCHITECT-v1 analysiert.
+Es existieren 49 Routen, die im nächsten Schritt mit vertiefendem Content und
+interaktiven Modulen erweitert werden. Der Blueprint befindet sich in `.jules/revolution-plan.json`.
