@@ -112,11 +112,18 @@ export function areaCssVariables(theme: AreaTheme): Record<string, string> {
   };
 }
 
+
 /* ---------- Kontrast (WCAG 2.2) ----------------------------------------- */
 
 function parseHsl(value: string): [number, number, number] {
   const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
   if (!match) throw new Error(`Kein HSL-Tripel: "${value}"`);
+  return [Number(match[1]), Number(match[2]), Number(match[3])];
+}
+
+function parseOklch(value: string): [number, number, number] {
+  const match = value.trim().match(/^([\d.]+)\s+([\d.]+)\s+([\d.]+)$/);
+  if (!match) throw new Error(`Kein OKLCH-Tripel: "${value}"`);
   return [Number(match[1]), Number(match[2]), Number(match[3])];
 }
 
@@ -129,15 +136,47 @@ function hslToRgb([h, s, l]: [number, number, number]): [number, number, number]
   return [f(0), f(8), f(4)];
 }
 
-function relativeLuminance(rgb: [number, number, number]): number {
+function oklchToLinearSrgb([l, c, h]: [number, number, number]): [number, number, number] {
+  const hRad = (h * Math.PI) / 180;
+  const a = c * Math.cos(hRad);
+  const b = c * Math.sin(hRad);
+
+  const l_ = l + 0.3963377774 * a + 0.2158037573 * b;
+  const m_ = l - 0.1055613458 * a - 0.0638541728 * b;
+  const s_ = l - 0.0894841775 * a - 1.2914855480 * b;
+
+  const l__ = l_ * l_ * l_;
+  const m__ = m_ * m_ * m_;
+  const s__ = s_ * s_ * s_;
+
+  const r = 4.0767416621 * l__ - 3.3077115913 * m__ + 0.2309699292 * s__;
+  const g = -1.2684380046 * l__ + 2.6097574011 * m__ - 0.3413193965 * s__;
+  const b_val = -0.0041960863 * l__ - 0.7034186147 * m__ + 1.7076147010 * s__;
+
+  return [r, g, b_val];
+}
+
+function relativeLuminanceLinear(rgb: [number, number, number]): number {
+  const [r, g, b] = rgb;
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+function relativeLuminanceSrgb(rgb: [number, number, number]): number {
   const channel = (v: number) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
   const [r, g, b] = rgb.map(channel) as [number, number, number];
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-/** Kontrastverhältnis zweier HSL-Tripel, z. B. `contrastRatio('0 0% 100%', theme.strong)`. */
+export function relativeLuminance(value: string): number {
+  if (value.includes('%')) {
+    return relativeLuminanceSrgb(hslToRgb(parseHsl(value)));
+  }
+  return relativeLuminanceLinear(oklchToLinearSrgb(parseOklch(value)));
+}
+
+/** Kontrastverhältnis zweier HSL- oder OKLCH-Tripel. */
 export function contrastRatio(a: string, b: string): number {
-  const la = relativeLuminance(hslToRgb(parseHsl(a)));
-  const lb = relativeLuminance(hslToRgb(parseHsl(b)));
+  const la = relativeLuminance(a);
+  const lb = relativeLuminance(b);
   return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
 }
