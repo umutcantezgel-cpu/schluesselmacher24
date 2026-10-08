@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| Route | Source | Current Words | Target Words | Interactive Module | Status |
+|---|---|---|---|---|---|
+| /artikel/[slug] | app/(site)/artikel/[slug]/page.tsx | 934 | 1134 | ContextualContentFilter | Pending |
+| /artikel | app/(site)/artikel/page.tsx | 656 | 950 | ContextualContentFilter | Pending |
+| /autoschluessel/anfrage | app/(site)/autoschluessel/anfrage/page.tsx | 518 | 950 | VehicleCompatibilityFilter | Pending |
+| /autoschluessel/fahrzeugoeffnung | app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1121 | 1321 | VehicleCompatibilityFilter | Pending |
+| /autoschluessel/funkschluessel | app/(site)/autoschluessel/funkschluessel/page.tsx | 1091 | 1291 | VehicleCompatibilityFilter | Pending |
+| /autoschluessel/kopieren | app/(site)/autoschluessel/kopieren/page.tsx | 1133 | 1333 | KeyCopyCostEstimator | Pending |
+| /autoschluessel/marken/[make]/[model] | app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1223 | 1423 | VehicleCompatibilityFilter | Pending |
+| /autoschluessel/marken/[make] | app/(site)/autoschluessel/marken/[make]/page.tsx | 979 | 1179 | VehicleCompatibilityFilter | Pending |
+| /autoschluessel/marken | app/(site)/autoschluessel/marken/page.tsx | 718 | 950 | VehicleCompatibilityFilter | Pending |
+| /autoschluessel/nachmachen | app/(site)/autoschluessel/nachmachen/page.tsx | 1189 | 1389 | VehicleCompatibilityFilter | Pending |
+| /autoschluessel | app/(site)/autoschluessel/page.tsx | 2002 | 2202 | VehicleCompatibilityFilter | Pending |
+| /autoschluessel/programmieren | app/(site)/autoschluessel/programmieren/page.tsx | 1222 | 1422 | ObdCompatibilityChecker | Pending |
+| /autoschluessel/schluesselbart-fraesen | app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1042 | 1242 | VehicleCompatibilityFilter | Pending |
+| /autoschluessel/smart-key | app/(site)/autoschluessel/smart-key/page.tsx | 1207 | 1407 | SmartKeySecurityAnalyzer | Pending |
+| /bestellung/[id] | app/(site)/bestellung/[id]/page.tsx | 1299 | 1499 | ContextualContentFilter | Pending |
+| /elektronische-zutrittsloesungen/konfigurator | app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 382 | 950 | AccessControlConfigurator | Pending |
+| /elektronische-zutrittsloesungen | app/(site)/elektronische-zutrittsloesungen/page.tsx | 2480 | 2680 | AccessControlConfigurator | Pending |
+| /gleichschliessende-zylinder/konfigurator | app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 310 | 950 | CylinderMeasurementTool | Pending |
+| /gleichschliessende-zylinder | app/(site)/gleichschliessende-zylinder/page.tsx | 2081 | 2281 | CylinderMeasurementTool | Pending |
+| /kasse | app/(site)/kasse/page.tsx | 242 | 950 | ContextualContentFilter | Pending |
+| / | app/(site)/page.tsx | 1130 | 1330 | ServiceOverviewNavigator | Pending |
+| /ratgeber/[slug] | app/(site)/ratgeber/[slug]/page.tsx | 359 | 950 | ContextualContentFilter | Pending |
+| /ratgeber | app/(site)/ratgeber/page.tsx | 224 | 950 | ContextualContentFilter | Pending |
+| /rechtliches/agb | app/(site)/rechtliches/agb/page.tsx | 416 | 950 | LegalDocumentNavigator | Pending |
+| /rechtliches/cookie-einstellungen | app/(site)/rechtliches/cookie-einstellungen/page.tsx | 228 | 950 | LegalDocumentNavigator | Pending |
+| /rechtliches/datenschutz | app/(site)/rechtliches/datenschutz/page.tsx | 715 | 950 | LegalDocumentNavigator | Pending |
+| /rechtliches/impressum | app/(site)/rechtliches/impressum/page.tsx | 248 | 950 | LegalDocumentNavigator | Pending |
+| /rechtliches/versand-und-zahlung | app/(site)/rechtliches/versand-und-zahlung/page.tsx | 427 | 950 | LegalDocumentNavigator | Pending |
+| /rechtliches/widerruf | app/(site)/rechtliches/widerruf/page.tsx | 370 | 950 | LegalDocumentNavigator | Pending |
+| /schliessanlagen/konfigurator | app/(site)/schliessanlagen/konfigurator/page.tsx | 368 | 950 | HierarchyBuilderTool | Pending |
+| /schliessanlagen | app/(site)/schliessanlagen/page.tsx | 1873 | 2073 | HierarchyBuilderTool | Pending |
+| /schluessel-nach-code/[slug] | app/(site)/schluessel-nach-code/[slug]/page.tsx | 734 | 950 | ContextualContentFilter | Pending |
+| /schluessel-nach-code | app/(site)/schluessel-nach-code/page.tsx | 497 | 950 | ContextualContentFilter | Pending |
+| /schluessel-nach-vorlage/anfrage | app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 221 | 950 | ContextualContentFilter | Pending |
+| /schluessel-nach-vorlage | app/(site)/schluessel-nach-vorlage/page.tsx | 1793 | 1993 | ContextualContentFilter | Pending |
+| /service-und-termin/anfrage | app/(site)/service-und-termin/anfrage/page.tsx | 151 | 950 | ServiceAppointmentScheduler | Pending |
+| /service-und-termin/kontakt | app/(site)/service-und-termin/kontakt/page.tsx | 474 | 950 | ServiceAppointmentScheduler | Pending |
+| /service-und-termin | app/(site)/service-und-termin/page.tsx | 1578 | 1778 | ServiceAppointmentScheduler | Pending |
+| /service-und-termin/terminstatus | app/(site)/service-und-termin/terminstatus/page.tsx | 107 | 950 | ServiceAppointmentScheduler | Pending |
+| /service-und-termin/vor-ort | app/(site)/service-und-termin/vor-ort/page.tsx | 655 | 950 | ServiceAppointmentScheduler | Pending |
+| /sicherheitstechnik/[slug] | app/(site)/sicherheitstechnik/[slug]/page.tsx | 644 | 950 | SecurityVulnerabilityScanner | Pending |
+| /sicherheitstechnik | app/(site)/sicherheitstechnik/page.tsx | 1020 | 1220 | SecurityVulnerabilityScanner | Pending |
+| /sicherheitstechnik/sicherheitscheck | app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 329 | 950 | SecurityVulnerabilityScanner | Pending |
+| /standorte/[city] | app/(site)/standorte/[city]/page.tsx | 405 | 950 | ContextualContentFilter | Pending |
+| /standorte | app/(site)/standorte/page.tsx | 249 | 950 | ContextualContentFilter | Pending |
+| /tuer-und-schliesstechnik/[slug] | app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 493 | 950 | ContextualContentFilter | Pending |
+| /tuer-und-schliesstechnik | app/(site)/tuer-und-schliesstechnik/page.tsx | 1784 | 1984 | ContextualContentFilter | Pending |
+| /warenkorb | app/(site)/warenkorb/page.tsx | 261 | 950 | ContextualContentFilter | Pending |
