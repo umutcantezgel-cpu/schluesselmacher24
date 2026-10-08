@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
+import { SchliessanlagenCalculator } from '@/components/calculator/schliessanlagen-calculator';
 
 import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -290,6 +291,49 @@ export default async function SchliessanlagenPage() {
           />
         </div>
       </Section>
+
+
+      {/* Detaillierte architektonische Methodik zur Schließanlagenplanung */}
+      <Section tight>
+        <div className="mx-auto max-w-3xl space-y-6 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          <h2 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)]">Detaillierte architektonische Methodik zur Schließanlagenplanung</h2>
+          <p>
+            Die Planung einer Schließanlage ist ein hochkomplexer, architektonischer Prozess, der weit über das einfache Zusammenstellen von Zylindern hinausgeht. Er erfordert ein tiefes Verständnis für die organisatorischen Abläufe eines Gebäudes, die sicherheitstechnischen Anforderungen und die potenziellen zukünftigen Entwicklungen. Unsere Methodik basiert auf einem strukturierten, mehrstufigen Ansatz, der höchste Präzision und absolute Sicherheit garantiert.
+          </p>
+          <p>
+            Zu Beginn steht die detaillierte Bedarfsanalyse. Hierbei erfassen wir nicht nur den aktuellen Status Quo der Gebäudestruktur, sondern antizipieren auch zukünftige Erweiterungen oder Nutzungsänderungen. Die Erstellung eines Schließplans ist vergleichbar mit der Programmierung eines physischen Rechtesystems. Jede Tür, jeder Raum und jede berechtigte Person wird in einer komplexen Matrix erfasst, die sicherstellt, dass niemand unbefugt Zugang erhält.
+          </p>
+
+          <h2 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] mt-12">Vor- und Nachteile von Generalhauptschlüsselanlagen (GHS)</h2>
+          <p>
+            Generalhauptschlüsselanlagen repräsentieren die Königsklasse der mechanischen Zutrittskontrolle, insbesondere in großen Unternehmensstrukturen oder öffentlichen Einrichtungen. Ein einzelner Generalhauptschlüssel (GHS) kann alle Türen innerhalb des Systems öffnen. Dies bietet immense Vorteile in puncto Organisation und Notfallmanagement. Führungskräfte oder Sicherheitsdienste benötigen lediglich einen Schlüssel für das gesamte Areal.
+          </p>
+          <p>
+            Gleichzeitig birgt diese enorme Machtkonzentration auch Risiken. Der Verlust eines Generalhauptschlüssels ist ein sicherheitstechnischer Supergau, der den Austausch der gesamten Anlage erforderlich machen kann. Daher ist die strikte Dokumentation und sichere Verwahrung dieser Schlüssel von absoluter Priorität. Wir beraten Sie umfassend zu Risikominimierung und der sinnvollen Kombination von mechanischen und elektronischen Elementen.
+          </p>
+
+          <h2 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] mt-12">Wirtschaftlichkeitsbetrachtung und Investitionssicherheit</h2>
+          <p>
+            Die Entscheidung für eine Schließanlage ist eine langfristige Investition in die Sicherheit und Organisation Ihrer Immobilie. Die initiale Wirtschaftlichkeitsbetrachtung muss daher über die reinen Anschaffungskosten hinausgehen. Hochwertige mechanische Systeme bieten eine jahrzehntelange Lebensdauer und eine enorme Robustheit gegenüber physischen Angriffen.
+          </p>
+          <p>
+            Um Ihre Investition abzusichern, achten wir bei der Planung strikt auf Erweiterbarkeit. Ein gut durchdachter Schließplan lässt Reserven für zukünftige Abteilungen oder neue Gebäude. Zudem setzen wir auf Systeme mit langem Patentschutz, sodass die Nachbestellung von Schlüsseln und Zylindern über viele Jahre rechtlich und technisch abgesichert ist.
+          </p>
+
+          <h2 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] mt-12">Wartungszyklen und Instandhaltung</h2>
+          <p>
+            Selbst die hochwertigste Schließanlage unterliegt einem mechanischen Verschleiß. Regelmäßige Wartung ist daher unerlässlich, um die einwandfreie Funktion und den vollumfänglichen Versicherungsschutz zu gewährleisten. Wir empfehlen feste Wartungszyklen, bei denen die Zylinder mit speziellem Pflegespray gereinigt und auf Gängigkeit geprüft werden.
+          </p>
+          <p>
+            Besondere Aufmerksamkeit bedürfen Zylinder an stark frequentierten Außentüren, da sie Witterungseinflüssen und einer hohen mechanischen Belastung ausgesetzt sind. Eine proaktive Instandhaltungsstrategie beugt unerwarteten Ausfällen vor und verlängert den Lebenszyklus Ihrer gesamten Schließanlage signifikant. Wir bieten Ihnen hierzu maßgeschneiderte Serviceverträge an.
+          </p>
+
+          <div className="mt-16 mb-8">
+            <SchliessanlagenCalculator />
+          </div>
+        </div>
+      </Section>
+
 
       {/* Die fünf Systeme */}
       <Section id="systeme" tone="muted">
