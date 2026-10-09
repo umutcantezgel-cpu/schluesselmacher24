@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-09T16:47:21.258Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf Red-Team Audit Score-Evaluierung (Heuristik).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_058",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_component_file": "components/calculator/tuer-absicherung-rechner.tsx",
+      "title": "Interaktiver Tür-Absicherungs-Kalkulator mit 3D-Bento Grid",
+      "specification": "Entwicklung eines reaktiven Live-Kalkulators für Türabsicherungen mit React 19 Server Actions und useOptimistic. Visuelle Aufwertung durch ein CSS Subgrid Bento-Layout mit OKLCH-Schatten und Erweiterung des redaktionellen Inhalts der Konfigurator-Seite auf >800 Wörter.",
+      "score": 9.85,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_012",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/service-und-termin/anfrage/page.tsx",
+      "target_component_file": "components/visual/motion/check-draw.tsx",
+      "title": "Fluid Motion Check-Draw SVG Animation mit Federphysik",
+      "specification": "Integration einer physikalisch-basierten Federdämpfung (cubic-bezier(0.16, 1, 0.3, 1)) für die SVG-Pfade im Check-Draw. Optimierung der Anfrage-Seite mit mikro-haptischem Feedback und Beseitigung jeglicher Layout-Shifts für perfekte Core Web Vitals.",
+      "score": 9.72,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
