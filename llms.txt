@@ -1,0 +1,5 @@
+# SCHLÜSSELMACHER24 Architecture Goals
+
+* **Next.js 16 App Router & Turbopack:** Full adoption of RSC, React 19, TS 5.5.
+* **Tailwind CSS v4 & OKLCH Light Mode:** Swiss High-End Aesthetic (Awwwards level).
+* **Direct-to-Main Pipeline:** `sentinel/auto` fast-forward engine.
