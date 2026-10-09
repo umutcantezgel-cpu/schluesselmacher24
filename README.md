@@ -43,3 +43,15 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Targets
+- Next.js 16+ App Router
+- Turbopack Engine
+- React 19.2+
+- TypeScript 5.5+
+- Tailwind CSS v4.x
+- OKLCH Color Space (Swiss Light Mode)
+
+## Master Blueprint
+Reference `.jules/revolution-plan.json` for deterministic transformation paths.
