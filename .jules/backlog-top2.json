@@ -1,0 +1,13 @@
+{
+  "timestamp": "2024-05-18T10:00:00Z",
+  "target_existing_route": "app/service-und-termin/vor-ort/page.tsx",
+  "target_component_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+  "transformation_queue": [
+    {
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "action": "expand_content_and_add_interactive_module",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}
