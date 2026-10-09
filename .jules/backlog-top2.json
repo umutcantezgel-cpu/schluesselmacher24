@@ -1,0 +1,6 @@
+{
+  "timestamp": "2024-05-10T12:00:00Z",
+  "status": "COMPLETED_BY_BUILDER",
+  "target_existing_route": "app/service-und-termin/page.tsx",
+  "interactive_module": "ServiceBudgetCalculator"
+}
