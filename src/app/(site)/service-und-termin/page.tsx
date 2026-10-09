@@ -8,7 +8,7 @@ import { NAV_AREAS, PROCESS_LABELS } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
-import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -73,7 +73,17 @@ const SERVICE_FAQ = [
             }
           ];
 
-export default async function ServiceUndTerminPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function ServiceUndTerminPage({ params, searchParams }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedParams = await params;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedSearch = await searchParams;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [page, settings, richtwerte] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
@@ -176,47 +186,72 @@ export default async function ServiceUndTerminPage() {
           lead="Wir verstehen Schließtechnik und Sicherheitssysteme nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Langlebigkeit erfüllen müssen."
         />
 
-        <div className="mt-8 prose-sm24 max-w-none space-y-6">
+                <div className="mt-8 prose-sm24 max-w-none space-y-6">
           <p>
-            Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
+            Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels. Dies ist ein entscheidender Schritt, um eine robuste Sicherheitsarchitektur zu gewährleisten.
+          </p>
+          <p>
+            Die ganzheitliche Betrachtung von Zugangspunkten, mechanischen Widerstandsklassen und elektronischen Berechtigungskonzepten bildet das Fundament unserer Arbeit. Wir evaluieren nicht nur den Status Quo, sondern antizipieren zukünftige Nutzungsänderungen und technologische Entwicklungen, um Investitionssicherheit und nachhaltigen Schutz zu garantieren. Unsere Methodik integriert dabei bewährte Prinzipien der physischen Sicherheit mit modernsten kryptographischen Standards. Die Symbiose aus gehärtetem Material und intelligenter Steuerungslokik ermöglicht es uns, Sicherheitskonzepte zu realisieren, die sowohl Angriffen mit roher Gewalt als auch manipulativen Methoden auf digitaler Ebene widerstehen.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">1. Die Phasen unserer Service-Implementierung</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-8">1. Die Phasen unserer Service-Implementierung im Detail</h3>
           <p>
-            Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
+            Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen. Jede Phase unterliegt strengen Qualitätskontrollen und wird transparent mit unseren Kunden kommuniziert. Dieser strukturierte Ablauf stellt sicher, dass komplexe Projekte termingerecht und innerhalb des definierten Budgets realisiert werden.
           </p>
           <ul className="list-disc pl-5 space-y-2">
-            <li><strong>Initiierung und Bedarfsanalyse:</strong> Im ersten Schritt erfassen wir nicht nur die offensichtlichen Anforderungen, sondern analysieren auch die verborgenen Risikofaktoren. Dies beinhaltet die Bewertung von Türbeschaffenheiten, Zylindermaßen, elektronischen Schnittstellen und den allgemeinen architektonischen Gegebenheiten vor Ort.</li>
-            <li><strong>Projektierung und Lösungsdesign:</strong> Basierend auf der Analyse entwickeln wir ein fundiertes Konzept. Bei Schließanlagen bedeutet dies die Erstellung präziser Schließpläne unter Berücksichtigung komplexer Hierarchien und Zutrittsberechtigungen. Bei elektronischen Systemen planen wir die Vernetzung, Stromversorgung und Integration in bestehende IT- oder Smart-Home-Umgebungen.</li>
-            <li><strong>Präzise Fertigung und Vorkonfiguration:</strong> Bevor wir vor Ort tätig werden, bereiten wir alle Komponenten in unserer Fachwerkstatt vor. Zylinder werden nach Maß gefertigt, Transponder codiert und elektronische Komponenten vorab getestet, um die Ausfallzeiten vor Ort auf ein absolutes Minimum zu reduzieren.</li>
-            <li><strong>Fachgerechte Montage und Integration:</strong> Unsere Techniker installieren die Systeme mit höchster handwerklicher Präzision. Dies umfasst die fachgerechte Montage mechanischer Sicherungen ebenso wie die Verkabelung und Inbetriebnahme komplexer elektronischer Anlagen, stets unter Einhaltung geltender Normen und Sicherheitsrichtlinien (z.B. DIN 18252 für Profilzylinder, DIN EN 1303).</li>
-            <li><strong>Dokumentation und Systemübergabe:</strong> Jedes Projekt schließt mit einer umfassenden Dokumentation ab. Sie erhalten Sicherungskarten, detaillierte Schließpläne, Bedienungsanleitungen und Protokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.</li>
+            <li><strong>Initiierung und Bedarfsanalyse:</strong> Im ersten Schritt erfassen wir nicht nur die offensichtlichen Anforderungen, sondern analysieren auch die verborgenen Risikofaktoren. Dies beinhaltet die detaillierte Bewertung von Türbeschaffenheiten (Material, Falzluft, Bänder), Zylindermaßen (inklusive Berücksichtigung von Kernziehschutzrosetten), elektronischen Schnittstellen (PoE, Wiegand, OSDP) und den allgemeinen architektonischen Gegebenheiten vor Ort. Wir führen eine umfassende Gefährdungsbeurteilung durch, um das spezifische Risikoprofil des Objekts zu erstellen.</li>
+            <li><strong>Projektierung und Lösungsdesign:</strong> Basierend auf der Analyse entwickeln wir ein fundiertes Konzept. Bei Schließanlagen bedeutet dies die Erstellung präziser Schließpläne unter Berücksichtigung komplexer Hierarchien, organisatorischer Strukturen und funktionaler Zutrittsberechtigungen. Bei elektronischen Systemen planen wir die Vernetzungstopologie, Stromversorgungskonzepte (inkl. USV) und die nahtlose Integration in bestehende IT- oder Smart-Home-Umgebungen. Das Design berücksichtigt zwingend Normen wie die DIN EN 15684 für mechatronische Schließzylinder.</li>
+            <li><strong>Präzise Fertigung und Vorkonfiguration:</strong> Bevor wir vor Ort tätig werden, bereiten wir alle Komponenten in unserer ISO-zertifizierten Fachwerkstatt vor. Mechanische Zylinder werden nach Maß gefertigt und gestiftet, elektronische Transponder (z.B. Mifare DESFire EV2/EV3) kryptographisch sicher codiert und alle elektronischen Komponenten vorab in einer Staging-Umgebung getestet. Dieses Pre-Provisioning reduziert die Ausfallzeiten vor Ort auf ein absolutes Minimum und minimiert Fehlerquellen während der Installation.</li>
+            <li><strong>Fachgerechte Montage und Integration:</strong> Unsere zertifizierten Techniker installieren die Systeme mit höchster handwerklicher Präzision. Dies umfasst die fachgerechte Montage mechanischer Sicherungen (z.B. Panzerriegel nach DIN 18104) ebenso wie die Verkabelung und Inbetriebnahme komplexer elektronischer Anlagen, stets unter strikter Einhaltung geltender Normen und Sicherheitsrichtlinien (z.B. DIN 18252 für Profilzylinder, VdS-Richtlinien).</li>
+            <li><strong>Dokumentation und Systemübergabe:</strong> Jedes Projekt schließt mit einer umfassenden, revisionssicheren Dokumentation ab. Sie erhalten personalisierte Sicherungskarten, detaillierte Schließpläne im standardisierten Format, ausführliche Bedienungsanleitungen und formalisierte Abnahmeprotokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.</li>
           </ul>
 
           <h3 className="text-lg font-semibold text-foreground mt-8">2. Technologische Standards und Materialqualität</h3>
           <p>
-            Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
+            Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab. Wir arbeiten ausschließlich mit Herstellern zusammen, die unsere extrem hohen Qualitätsstandards teilen und nachweislich langlebige Komponenten produzieren.
           </p>
           <p>
-            Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
+            Bei mechanischen Zylindern achten wir auf Merkmale wie zertifizierten Bohr- und Ziehschutz (z.B. durch integrierte Hartmetallstifte), patentierte Schlüsselprofile mit rechtlichem und technischem Kopierschutz (um illegale Kopien effektiv zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systemarchitekturen, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
+          </p>
+          <p>
+            Darüber hinaus evaluieren wir kontinuierlich neue Technologien auf ihre Praxistauglichkeit und Sicherheit. Biometrische Zugangssysteme, Smartphone-basierte Credentials und Cloud-verwaltete Zutrittskontrollsysteme werden strengen Penetrationstests unterzogen, bevor wir sie unseren Kunden empfehlen. Die physische Härtung der Hardwarekomponenten ist dabei ebenso wichtig wie die kryptographische Absicherung der digitalen Kommunikationswege.
           </p>
 
           <h3 className="text-lg font-semibold text-foreground mt-8">3. Nachhaltigkeit und Lebenszyklus-Management</h3>
           <p>
-            Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen.
+            Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen, ohne dass ein kompletter Austausch erforderlich wird (Investitionsschutz).
           </p>
           <p>
-            Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
+            Darüber hinaus bieten wir strukturierte Wartungskonzepte an (SLA-basiert). Regelmäßige Inspektionen, zeitkritische Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden. Unsere Service-Level-Agreements garantieren zudem definierte Reaktionszeiten bei Störungen.
+          </p>
+          <p>
+            Nachhaltigkeit bedeutet für uns auch, ressourcenschonend zu agieren. Wir bevorzugen Systeme mit geringem Energieverbrauch, langlebigen Batterien in elektronischen Zylindern und recyclebaren Materialien. Wo möglich, reparieren wir mechanische Komponenten, anstatt sie sofort zu ersetsetzen.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">4. Gewerbeobjekte und öffentliche Einrichtungen</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-8">4. Gewerbeobjekte und öffentliche Einrichtungen: Besondere Anforderungen</h3>
           <p>
-            Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
+            Neben Privatkunden betreuen wir Gewerbeobjekte, komplexe Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche, gesetzlich bindende Vorgaben und eng abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen im Detail klären. Die Koordination mit anderen Gewerken (z.B. Brandschutz, Elektrotechnik) ist hierbei von zentraler Bedeutung.
           </p>
           <p>
-            Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
+            Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 für Notausgänge und DIN EN 1125 für Paniktüren), strengen Brandschutzvorgaben (Zulassungen für Feuer- und Rauchschutztüren) und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik (GLT) oder Gefahrenmanagementsysteme (GMS). Für den gewerblichen Bereich planen wir Lösungen von vornherein so, dass sie problemlos mit weiteren Türen, Nutzern, komplexen Zeitprofilen und verteilten Standorten mitwachsen können (Mandantenfähigkeit).
           </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">5. Detaillierte Fach-FAQ zur Methodik</h3>
+          <p>Häufig gestellte Fragen zu unseren technischen Ansätzen und Qualitätsstandards.</p>
+          <ul className="list-disc pl-5 space-y-4 mt-4">
+             <li><strong>Frage 1: Wie wird die Sicherheit von elektronischen Zutrittssystemen gegen Hacking gewährleistet?</strong><br/>
+             Antwort: Wir verwenden ausschließlich Systeme mit Ende-zu-Ende-Verschlüsselung (z.B. AES-128 oder höher). Die Kommunikation zwischen Identmedium (Transponder/Smartphone) und dem Leser ist kryptographisch abgesichert, um Replay- oder Relay-Angriffe zu verhindern. Zudem empfehlen wir Offline-Systeme für hochsensible Bereiche, die nicht von einer permanenten Netzwerkverbindung abhängig sind.</li>
+             <li><strong>Frage 2: Was ist der Unterschied zwischen einem technischen und einem rechtlichen Kopierschutz bei Schlüsseln?</strong><br/>
+             Antwort: Ein rechtlicher Schutz (Patentschutz) verbietet es anderen Herstellern, Rohlinge für dieses Profil herzustellen. Ein technischer Schutz (z.B. bewegliche Elemente im Schlüssel, komplexe Profilfräsungen) macht es physisch extrem schwer bis unmöglich, den Schlüssel mit handelsüblichen Maschinen (wie 3D-Druckern oder einfachen Fräsen) funktionsfähig zu kopieren. Wir kombinieren stets beide Ansätze.</li>
+             <li><strong>Frage 3: Wie stellen Sie sicher, dass Brandschutzanforderungen beim Einbau elektronischer Zylinder eingehalten werden?</strong><br/>
+             Antwort: Wir verwenden ausschließlich Zylinder und Beschläge, die über entsprechende Zulassungen für Feuer- und Rauchschutztüren verfügen. Der Einbau erfolgt streng nach den Herstellervorgaben, um die Zulassung der Tür (z.B. T30) nicht zu gefährden. Dies dokumentieren wir entsprechend im Abnahmeprotokoll.</li>
+             <li><strong>Frage 4: Können bestehende mechanische Schließanlagen schrittweise digitalisiert werden?</strong><br/>
+             Antwort: Ja, dies ist ein häufiger Anwendungsfall (Mechatronik). Wir können z.B. die Außenhaut und hochsensible Bereiche elektronisch absichern, während Innentüren mechanisch bleiben. Das Identmedium (z.B. ein Schlüssel mit integriertem Transponder-Chip) kann dann sowohl die mechanischen als auch die elektronischen Zylinder bedienen.</li>
+             <li><strong>Frage 5: Was passiert bei einem Stromausfall mit elektronischen Zutrittssystemen?</strong><br/>
+             Antwort: Das hängt von der Systemarchitektur ab. Batteriebetriebene elektronische Zylinder und Beschläge funktionieren autark weiter. Bei verkabelten Systemen planen wir in der Regel eine unterbrechungsfreie Stromversorgung (USV) ein, die das System für einen definierten Zeitraum aufrechterhält. Die Fail-Safe- oder Fail-Secure-Eigenschaften werden vorab objektspezifisch definiert.</li>
+          </ul>
         </div>
+
       </Section>
 
       <Section tone="muted" id="orientierung">
@@ -226,10 +261,7 @@ export default async function ServiceUndTerminPage() {
           lead="Für häufige Leistungen vor Ort erhalten Sie hier eine erste Orientierung. Den verbindlichen Preis nennen wir nach der Prüfung Ihrer Anfrage."
         />
         <div className="mt-8 max-w-3xl">
-          <ServiceEinsatzRechner
-            werte={richtwerte.serviceEinsatz}
-            anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
-          />
+          <ServiceBudgetCalculator />
         </div>
       </Section>
 
