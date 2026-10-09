@@ -33,6 +33,7 @@
     "@payloadcms/richtext-lexical": "^3.90.2",
     "@payloadcms/translations": "^3.90.2",
     "@payloadcms/ui": "^3.90.2",
+    "culori": "^4.0.2",
     "framer-motion": "^12.40.0",
     "graphql": "^16.14.2",
     "lucide-react": "^1.17.0",
