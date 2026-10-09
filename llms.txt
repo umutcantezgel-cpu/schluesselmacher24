@@ -1,0 +1,5 @@
+# SCHLÜSSELMACHER24 - Architecture Matrix & Master Blueprint
+
+Architecture audited and blueprint generated for hypermodern OKLCH Swiss Light Design and React 19 / Next.js 16 optimization.
+The target runtime is Next.js 16+ App Router, Turbopack, React 19.2+, and TypeScript 5.5+.
+The complete plan is available in .jules/revolution-plan.json and the visual matrix in .jules/architecture-matrix.md.

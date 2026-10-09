@@ -1,5 +1,7 @@
 # SCHLÜSSELMACHER24
 
+Architecture audited and blueprint generated for hypermodern OKLCH Swiss Light Design and React 19 / Next.js 16 optimization.
+
 Website und Shop für Autoschlüssel, Schlüssel, Schließtechnik, elektronische
 Zutrittslösungen und Sicherheitstechnik. Domain: `schluesselmacher24.de`
 
