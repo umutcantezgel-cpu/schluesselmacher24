@@ -15,6 +15,7 @@ import {
 import { getGuides, getPageContent, getSettings } from '@/lib/data';
 import { NAV_AREAS, PROCESS_LABELS, QUICK_ENTRIES } from '@/lib/navigation';
 import { formatCents } from '@/lib/format';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
@@ -239,6 +240,147 @@ export default async function HomePage() {
             </li>
           ))}
         </ul>
+      </Section>
+
+
+      {/* Fachliche Methodik und Architektonischer Ansatz */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Präzision in jedem Schritt: Unsere Sicherheitsarchitektur"
+          lead="Wir verstehen Sicherheit nicht als Produkt, sondern als fortlaufenden Prozess. Unsere Methodik basiert auf jahrzehntelanger Erfahrung und modernster Schließtechnik."
+        />
+        <div className="mt-8 grid gap-8 md:grid-cols-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <div>
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mb-4">Umfassende Risikoanalyse</h3>
+            <p className="mb-4">
+              Jedes Projekt beginnt mit einer tiefgehenden Analyse der bestehenden Infrastruktur. Wir betrachten Gebäude nicht isoliert, sondern als komplexe Ökosysteme, in denen physische und digitale Sicherheitsmaßnahmen ineinandergreifen müssen.
+            </p>
+            <p className="mb-4">
+              Dabei evaluieren wir potenzielle Schwachstellen, von der Außenhaut des Gebäudes bis zu den sensibelsten Innenbereichen, und entwickeln daraus ein mehrschichtiges Sicherheitskonzept.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mb-4">Zukunftsfähige Schließsysteme</h3>
+            <p className="mb-4">
+              Wir integrieren moderne, hybride Schließanlagen, die mechanische Zuverlässigkeit mit elektronischer Flexibilität vereinen. Unsere Systeme sind skalierbar und wachsen mit den Anforderungen Ihres Unternehmens.
+            </p>
+            <p>
+              Von der klassischen Schlüsselverwaltung bis zu vernetzten Zutrittskontrollsystemen mit Echtzeit-Monitoring setzen wir auf höchste Standards in der Verschlüsselungstechnik und Manipulationssicherheit.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Leistungsstufen und Vergleich */}
+      <Section>
+        <SectionHeading
+          eyebrow="Leistungsstufen"
+          title="Transparente Sicherheitskonzepte für jeden Bedarf"
+          lead="Egal ob Privathaushalt oder Industrieanlage – wir bieten die passende Sicherheitsarchitektur. Vergleichen Sie unsere Leistungsstufen."
+        />
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full text-left border-collapse min-w-[600px]">
+            <thead>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <th className="py-4 px-6 text-sm font-bold text-[oklch(0.16_0.02_260)]">Feature</th>
+                <th className="py-4 px-6 text-sm font-bold text-[oklch(0.16_0.02_260)]">Standard (Privat)</th>
+                <th className="py-4 px-6 text-sm font-bold text-[oklch(0.16_0.02_260)]">Professional (Gewerbe)</th>
+                <th className="py-4 px-6 text-sm font-bold text-[oklch(0.16_0.02_260)]">Enterprise (Industrie)</th>
+              </tr>
+            </thead>
+            <tbody className="text-sm text-[oklch(0.32_0.02_260)]">
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 px-6 font-medium">Zutrittsverwaltung</td>
+                <td className="py-4 px-6">Mechanisch / Einzelzylinder</td>
+                <td className="py-4 px-6">Hybrid / Schließanlage</td>
+                <td className="py-4 px-6">Voll elektronisch / Vernetzt</td>
+              </tr>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 px-6 font-medium">Sicherheitskarte</td>
+                <td className="py-4 px-6">Inklusive</td>
+                <td className="py-4 px-6">Erweitert (Organisatorisch)</td>
+                <td className="py-4 px-6">Kryptografisch gesichert</td>
+              </tr>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 px-6 font-medium">Reaktionszeit Service</td>
+                <td className="py-4 px-6">Innerhalb von 48 Stunden</td>
+                <td className="py-4 px-6">Next-Business-Day</td>
+                <td className="py-4 px-6">24/7 Notfall-Support</td>
+              </tr>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 px-6 font-medium">Systemskalierung</td>
+                <td className="py-4 px-6">Begrenzt</td>
+                <td className="py-4 px-6">Hoch (bis 500 Türen)</td>
+                <td className="py-4 px-6">Unlimitiert</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      {/* Interaktiver Kalkulator */}
+      <Section tone="muted">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Kalkulation"
+              title="Planungssicherheit von Anfang an"
+              lead="Verwenden Sie unseren interaktiven Budgetrechner, um eine fundierte Ersteinschätzung für Ihr Sicherheitsprojekt zu erhalten. Die Berechnung basiert auf unseren aktuellen Tagessätzen und Erfahrungswerten."
+            />
+            <p className="mt-4 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Bitte beachten Sie, dass dies ein Richtwert ist. Für ein detailliertes, bindendes Angebot führen wir nach der ersten Einschätzung eine Vor-Ort-Analyse durch, um alle baulichen und technischen Gegebenheiten exakt zu erfassen.
+            </p>
+          </div>
+          <div className="relative z-10">
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Ausführliche FAQ Sektion */}
+      <Section>
+        <SectionHeading
+          eyebrow="Fachspezifische Fragen & Antworten"
+          title="Häufig gestellte Fragen zu Sicherheitstechnik und Schließanlagen"
+          lead="Wir legen Wert auf maximale Transparenz. Hier beantworten wir die wichtigsten technischen und organisatorischen Fragen zu unseren Systemen."
+        />
+        <div className="mt-8 space-y-6 max-w-3xl">
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-surface p-6">
+            <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)] mb-2">Wie hoch ist die Kopiersicherheit bei modernen mechanischen Systemen?</h3>
+            <p className="text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Unsere Hochsicherheitssysteme nutzen patentierte Profile und mehrdimensionale Abtastungen (z.B. durch zusätzliche Stiftebenen oder bewegliche Elemente im Schlüssel). Diese Systeme sind durch Patente geschützt und eine Nachschlüsselfertigung ist ausschließlich gegen Vorlage der Sicherungskarte bei uns als autorisiertem Fachhändler möglich.
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-surface p-6">
+            <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)] mb-2">Was passiert bei einem Stromausfall mit elektronischen Zutrittslösungen?</h3>
+            <p className="text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Alle unsere elektronischen Schließkomponenten verfügen über integrierte Batterie-Puffer oder sind autark batteriebetrieben (Offline-Systeme). Im Falle eines Stromausfalls bleibt die Funktionalität für Zutrittsberechtigte voll erhalten. Bei vernetzten Online-Systemen ist das Netzwerkverhalten fehlertolerant konfiguriert (Fail-Secure oder Fail-Safe, je nach Brandschutzanforderung).
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-surface p-6">
+            <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)] mb-2">Kann eine bestehende mechanische Schließanlage später elektronisch aufgerüstet werden?</h3>
+            <p className="text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Ja, wir konzipieren unsere Anlagen nach dem Prinzip der Abwärtskompatibilität. Mechanische Anlagen können schrittweise durch den Einsatz von mechatronischen Zylindern oder elektronischen Beschlägen an besonders sicherheitskritischen Türen (Außenhaut) erweitert werden, während Innentüren mechanisch bleiben (Hybrid-Anlage).
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-surface p-6">
+            <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)] mb-2">Wie gewährleisten Sie die Datensicherheit bei cloudbasierten Zutrittssystemen?</h3>
+            <p className="text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Wir arbeiten ausschließlich mit zertifizierten Partnern zusammen, deren Rechenzentren in der EU (oftmals in Deutschland) stehen und ISO 27001 zertifiziert sind. Die Kommunikation zwischen den Verwaltungssystemen und den Schließkomponenten erfolgt durchgängig Ende-zu-Ende verschlüsselt (AES-128 oder höher).
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-surface p-6">
+            <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)] mb-2">Wie sieht der Prozess bei Verlust eines elektronischen Transponders aus?</h3>
+            <p className="text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Ein wesentlicher Vorteil elektronischer Systeme ist die sofortige Deaktivierung. Ein verlorener Transponder kann binnen Sekunden aus dem System gelöscht werden. Im Gegensatz zur mechanischen Anlage, wo bei Schlüsselverlust im schlimmsten Fall Zylinder getauscht werden müssen, entstehen hier keine Folgekosten durch den Austausch von Hardware.
+            </p>
+          </div>
+        </div>
       </Section>
 
       {/* Shop-Teaser */}
