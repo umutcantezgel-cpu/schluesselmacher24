@@ -1,0 +1,12 @@
+{
+  "matrix": [
+    {
+      "id": "IDEA-001",
+      "target_existing_route": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "title": "Sicherheitstechnik Expansion",
+      "description": "Expand Sicherheitstechnik route"
+    }
+  ]
+}
