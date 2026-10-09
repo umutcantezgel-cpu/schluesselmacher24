@@ -1,0 +1,10 @@
+{
+  "ideas": [
+    {
+      "id": "1",
+      "status": "COMPLETED_BY_BUILDER",
+      "target_component_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "description": "Expand content and add an interactive module."
+    }
+  ]
+}
