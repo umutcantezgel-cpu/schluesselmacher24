@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | File | Current Words | Target Words | Missing Schema | Interactive Module | Kinetic Signature |
+|-------|------|---------------|--------------|----------------|--------------------|-------------------|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 90 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| / | src/app/(site)/page.tsx | 489 | 989 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 133 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 228 | 850 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 1253 | 1753 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 127 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 185 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /kasse | src/app/(site)/kasse/page.tsx | 161 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 312 | 850 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 497 | 997 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 549 | 1049 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 404 | 904 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 196 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 1236 | 1736 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 284 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 920 | 1420 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 1234 | 1734 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 201 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 1914 | 2414 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 250 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 1452 | 1952 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 259 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 1185 | 1685 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 62 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 97 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 442 | 942 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 220 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 218 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 206 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 344 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 342 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 384 | 884 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 654 | 1154 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /artikel | src/app/(site)/artikel/page.tsx | 456 | 956 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 630 | 1130 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /standorte | src/app/(site)/standorte/page.tsx | 127 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 223 | 850 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 1434 | 1934 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 424 | 924 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 539 | 1039 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 795 | 1295 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 185 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 229 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 363 | 863 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 221 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 110 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 260 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 209 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 199 | 850 | No | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
