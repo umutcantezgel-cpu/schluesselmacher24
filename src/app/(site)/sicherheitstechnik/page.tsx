@@ -15,6 +15,7 @@ import { getPageContent, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
+import { SecurityMatrix } from '@/components/sicherheitstechnik/security-matrix';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
@@ -73,7 +74,11 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+export default async function SicherheitstechnikPage(props: { params: Promise<{ id?: string }>; searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedParams = await props.params;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedSearch = await props.searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -160,6 +165,92 @@ export default async function SicherheitstechnikPage() {
           </div>
         </div>
       </Section>
+
+      {/* Interaktive Matrix */}
+      <Section tight>
+        <SecurityMatrix />
+      </Section>
+
+
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Tiefgreifende Analyse"
+          title="Methodik der modernen Sicherheitstechnik: Ein Architektur-Ansatz"
+          lead="Wahre Sicherheit entsteht nicht durch das Aneinanderreihen von Einzelkomponenten, sondern durch eine orchestrierte, kohärente Sicherheitsarchitektur."
+        />
+
+        <div className="mt-8 prose-sm24 max-w-none space-y-6">
+          <p>
+            Die professionelle Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Architektur-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">1. Die Phasen unserer Service-Implementierung</h3>
+          <p>
+            Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li><strong>Initiierung und Bedarfsanalyse:</strong> Im ersten Schritt erfassen wir nicht nur die offensichtlichen Anforderungen, sondern analysieren auch die verborgenen Risikofaktoren. Dies beinhaltet die Bewertung von Türbeschaffenheiten, Zylindermaßen, elektronischen Schnittstellen und den allgemeinen architektonischen Gegebenheiten vor Ort.</li>
+            <li><strong>Projektierung und Lösungsdesign:</strong> Basierend auf der Analyse entwickeln wir ein fundiertes Konzept. Bei Schließanlagen bedeutet dies die Erstellung präziser Schließpläne unter Berücksichtigung komplexer Hierarchien und Zutrittsberechtigungen. Bei elektronischen Systemen planen wir die Vernetzung, Stromversorgung und Integration in bestehende IT- oder Smart-Home-Umgebungen.</li>
+            <li><strong>Präzise Fertigung und Vorkonfiguration:</strong> Bevor wir vor Ort tätig werden, bereiten wir alle Komponenten in unserer Fachwerkstatt vor. Zylinder werden nach Maß gefertigt, Transponder codiert und elektronische Komponenten vorab getestet.</li>
+            <li><strong>Fachgerechte Montage und Integration:</strong> Unsere Techniker installieren die Systeme mit höchster handwerklicher Präzision. Dies umfasst die fachgerechte Montage mechanischer Sicherungen ebenso wie die Verkabelung und Inbetriebnahme komplexer elektronischer Anlagen, stets unter Einhaltung geltender Normen (DIN 18252, DIN EN 1303).</li>
+            <li><strong>Dokumentation und Systemübergabe:</strong> Jedes Projekt schließt mit einer umfassenden Dokumentation ab. Sie erhalten Sicherungskarten, detaillierte Schließpläne, Bedienungsanleitungen und Protokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">2. Technologische Standards und Materialqualität</h3>
+          <p>
+            Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
+          </p>
+          <p>
+            Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">3. Nachhaltigkeit und Lebenszyklus-Management</h3>
+          <p>
+            Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen.
+          </p>
+          <p>
+            Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">4. Gewerbeobjekte und öffentliche Einrichtungen</h3>
+          <p>
+            Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
+          </p>
+          <p>
+            Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">5. Häufig gestellte Fragen (FAQ) zur Sicherheitstechnik</h3>
+          <ul className="list-none space-y-4">
+            <li>
+              <strong>Wie lange dauert die Installation einer modernen Schließanlage?</strong>
+              <br />
+              Die Dauer der Installation hängt stark von der Größe des Objekts und der Art der Anlage ab. Eine einfache mechanische Schließanlage für ein Einfamilienhaus kann oft in wenigen Stunden montiert werden. Bei komplexen elektronischen oder mechatronischen Systemen für Gewerbeobjekte, die eine Vernetzung und Programmierung erfordern, kann die Installation mehrere Tage in Anspruch nehmen. Wir planen jeden Einsatz sorgfältig, um die Beeinträchtigungen für Sie so gering wie möglich zu halten.
+            </li>
+            <li>
+              <strong>Sind elektronische Schließsysteme anfällig für Hacking?</strong>
+              <br />
+              Moderne elektronische Schließsysteme verwenden fortschrittliche Verschlüsselungstechnologien (wie AES-128 oder AES-256), um die Kommunikation zwischen Transponder, Lesegerät und Steuereinheit zu sichern. Dies macht sie äußerst resistent gegen typische Hacking-Angriffe. Zudem bieten viele Systeme zusätzliche Sicherheitsmechanismen, wie beispielsweise zeitlich begrenzte Zutrittsrechte oder die sofortige Sperrung verlorener Transponder, was die Sicherheit insgesamt deutlich erhöht im Vergleich zu herkömmlichen mechanischen Schlüsseln.
+            </li>
+            <li>
+              <strong>Was passiert bei einem Stromausfall mit meiner elektronischen Zutrittskontrolle?</strong>
+              <br />
+              Die meisten professionellen elektronischen Zutrittskontrollsysteme sind mit Notstromakkus ausgestattet oder so konzipiert, dass sie bei einem Stromausfall in einen definierten, sicheren Zustand übergehen. Das bedeutet in der Regel, dass Fluchtwege weiterhin problemlos von innen geöffnet werden können (gemäß den geltenden Fluchtwegnormen), während der Zugang von außen gesperrt bleibt, sofern keine spezielle Notöffnung vorgesehen ist. Viele Systeme verfügen zudem über eine mechanische Notöffnungsmöglichkeit, beispielsweise über einen verdeckten Profilzylinder.
+            </li>
+            <li>
+              <strong>Wie oft sollte eine Schließanlage gewartet werden?</strong>
+              <br />
+              Für mechanische Schließanlagen empfehlen wir eine jährliche Inspektion und Wartung, bei der die Zylinder auf Verschleiß geprüft und bei Bedarf mit speziellem Pflegespray behandelt werden. Elektronische Systeme sollten ebenfalls regelmäßig gewartet werden, um Firmware-Updates einzuspielen, die Funktion der Lesegeräte zu überprüfen und die Batterien rechtzeitig auszutauschen. Eine regelmäßige Wartung sichert die Langlebigkeit der Anlage und minimiert das Ausfallrisiko.
+            </li>
+            <li>
+              <strong>Kann ich meine bestehende mechanische Anlage mit elektronischen Komponenten nachrüsten?</strong>
+              <br />
+              Ja, in vielen Fällen ist eine Nachrüstung problemlos möglich. Dies wird als mechatronische Lösung bezeichnet. Dabei werden beispielsweise elektronische Zylinder anstelle der herkömmlichen mechanischen Zylinder eingesetzt, oder bestehende Türen werden mit elektronischen Beschlägen ausgestattet. Diese hybriden Systeme bieten eine hohe Flexibilität und ermöglichen es, die Sicherheit schrittweise zu erhöhen, ohne die gesamte Infrastruktur austauschen zu müssen.
+            </li>
+          </ul>
+        </div>
+      </Section>
+
 
       {/* Bereiche */}
       <Section tone="muted">
