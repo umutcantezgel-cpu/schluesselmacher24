@@ -1,0 +1,6 @@
+{
+  "timestamp": "$(date -Iseconds)",
+  "target_route": "src/app/(site)/service-und-termin/page.tsx",
+  "status": "COMPLETED_BY_BUILDER",
+  "interactive_module_idea": "ServiceBudgetCalculator"
+}
