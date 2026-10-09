@@ -1,0 +1,11 @@
+# Schlüsselmacher24 - Enterprise Architecture
+
+This document contains the LLM context and architecture overview.
+
+## Current Architecture
+Next.js 16+, App Router, React 19.2+, Tailwind CSS v4.x (OKLCH Color Space)
+
+## Blueprints
+The master implementation plan and architecture matrix are available in:
+- `.jules/revolution-plan.json`
+- `.jules/architecture-matrix.md`
