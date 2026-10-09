@@ -1,0 +1,1 @@
+Architecture goals and targets for JC-AUDITOR-ARCHITECT-v1 have been logged in .jules/.

@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-09T15:07:09.705Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1156,
+      "content_expansion_topics": [
+        "Erweiterung der Themen: Artikel auswählen",
+        "Integration von tieferen fachlichen Erklärungen gemäß Schweizer Light Mode Doctrine",
+        "Aufbau von strukturierten FAQ-Sektionen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerAbsicherungRechner",
+        "target_file": "src/components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "src/app/(site)/api/kunden-upload/route.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1018,
+      "content_expansion_topics": [
+        "Erweiterung der Themen: Passende Seiten zu diesem Ablauf",
+        "Integration von tieferen fachlichen Erklärungen gemäß Schweizer Light Mode Doctrine",
+        "Aufbau von strukturierten FAQ-Sektionen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SystemErklaerung",
+        "target_file": "src/components/schliessanlagen/system-erklaerung.tsx",
+        "action_file": "src/app/(site)/api/kunden-upload/route.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1218,
+      "content_expansion_topics": [
+        "Erweiterung der Themen: Was Sie hier finden",
+        "Integration von tieferen fachlichen Erklärungen gemäß Schweizer Light Mode Doctrine",
+        "Aufbau von strukturierten FAQ-Sektionen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PreisAnzeige",
+        "target_file": "src/components/autoschluessel/preis-anzeige.tsx",
+        "action_file": "src/app/(site)/api/kunden-upload/route.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung der Themen: Was Sie hier bekommen — und was nicht",
+        "Integration von tieferen fachlichen Erklärungen gemäß Schweizer Light Mode Doctrine",
+        "Aufbau von strukturierten FAQ-Sektionen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "NachweiseListe",
+        "target_file": "src/components/vertrauen/nachweise-liste.tsx",
+        "action_file": "src/app/(site)/api/kunden-upload/route.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung der Themen: Allgemein",
+        "Integration von tieferen fachlichen Erklärungen gemäß Schweizer Light Mode Doctrine",
+        "Aufbau von strukturierten FAQ-Sektionen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceEinsatzRechner",
+        "target_file": "src/components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "src/app/(site)/api/kunden-upload/route.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
