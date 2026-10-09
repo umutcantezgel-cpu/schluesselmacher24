@@ -43,3 +43,11 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Audit & Blueprinting
+
+This project adheres to the strict **Swiss Light Mode** design doctrine and utilizes hypermodern Next.js 16+ and React 19.2+ architectures.
+
+A complete architectural scan has been performed, auditing 49 existing routes. The master implementation blueprint can be found in:
+- `.jules/revolution-plan.json`
+- `.jules/architecture-matrix.md`
