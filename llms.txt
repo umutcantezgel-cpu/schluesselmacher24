@@ -1,0 +1,4 @@
+# LLMs Übersicht
+
+## Interaktive Module
+- **Security Threat Modeler**: Integriert in `sicherheitstechnik` für eine dynamische Gefahrenanalyse.
