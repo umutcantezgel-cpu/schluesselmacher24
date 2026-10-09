@@ -1,0 +1,20 @@
+# Codebase Architecture & DNA
+
+**Framework**: Next.js 16+ App Router
+**React Version**: 19.2+
+**Language Standard**: TypeScript 5.5+ Strict
+**UI Engine**: Tailwind CSS v4
+**Color Space**: OKLCH Light Mode
+**Active Routes Audited**: 49
+
+## Guidelines & Architecture
+
+- **Server Component Supremacy**: By default, components must be React Server Components. Avoid 'use client' where unnecessary.
+- **Asynchronous Request APIs**: Ensure params and searchParams are accessed asynchronously using `await`.
+- **Form Actions**: Migrate to React 19 Server Actions with `useActionState`, `useOptimistic`, and `useTransition`.
+- **Typing**: Use strict TypeScript definitions. Avoid `any` and `unknown` without type guards. Use satisfies with `schema-dts`.
+- **Design System**: Apply "Swiss Light Mode" using OKLCH colors, 8px grid, smooth shadows, and precise typography.
+- **Content Expansion**: All routes should target > 800 words of rich content.
+- **Interactive Modules**: Specific interactive components are slated for integration across routes to enhance utility.
+
+Refer to `.jules/architecture-matrix.md` and `.jules/revolution-plan.json` for detailed transformation roadmaps.
