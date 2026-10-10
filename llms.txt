@@ -1,0 +1,3 @@
+## Architecture Audit
+
+The codebase has been audited and the Master Blueprint generated. See `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`.
