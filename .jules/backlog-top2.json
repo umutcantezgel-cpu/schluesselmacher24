@@ -1,0 +1,12 @@
+{
+  "route_path": "app/standorte/page.tsx",
+  "target_word_count": 850,
+  "content_expansion_topics": [
+    "Detaillierte Analyse der Einsatzgebiete",
+    "Regionale Sicherheitsanforderungen",
+    "Vergleichsmatrix für Vor-Ort- vs. Fernleistungen",
+    "Umfangreicher FAQ-Bereich zu Standorten"
+  ],
+  "interactive_module": "RegionalServiceCalculator",
+  "status": "COMPLETED_BY_BUILDER"
+}
