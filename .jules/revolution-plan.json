@@ -1,0 +1,1143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-10T15:17:03.037229+00:00",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /admin/[[...segments]]",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 2181,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 870,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /ratgeber",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1065,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /ratgeber/[slug]",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2579,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /schluessel-nach-vorlage",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 860,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /schluessel-nach-vorlage/anfrage",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 890,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /warenkorb",
+        "Detaillierter Ausbau des Abschnitts: Passend dazu",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 867,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /kasse",
+        "Detaillierter Ausbau des Abschnitts: Rechtliche Hinweise",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1157,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /schluessel-nach-code",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1508,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /schluessel-nach-code/[slug]",
+        "Detaillierter Ausbau des Abschnitts: Was Sie erhalten",
+        "Detaillierter Ausbau des Abschnitts: Technische Angaben"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1867,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /sicherheitstechnik",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1383,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /sicherheitstechnik/[slug]",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 961,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /sicherheitstechnik/sicherheitscheck",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2696,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /tuer-und-schliesstechnik",
+        "Detaillierter Ausbau des Abschnitts: Regulatorik: Fluchtwege und Brandschutz",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1215,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /tuer-und-schliesstechnik/[slug]",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2186,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /bestellung/[id]",
+        "Detaillierter Ausbau des Abschnitts: Bestellte Artikel",
+        "Detaillierter Ausbau des Abschnitts: Ihre Vorgangsnummer"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3189,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /gleichschliessende-zylinder",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 939,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /gleichschliessende-zylinder/konfigurator",
+        "Detaillierter Ausbau des Abschnitts: Wenn Sie vorher etwas nachlesen m\u00f6chten",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3211,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /elektronische-zutrittsloesungen",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1008,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /elektronische-zutrittsloesungen/konfigurator",
+        "Detaillierter Ausbau des Abschnitts: Passende Seiten",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2560,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /schliessanlagen",
+        "Detaillierter Ausbau des Abschnitts: Wenige T\u00fcren, ein Schl\u00fcssel f\u00fcr alles?",
+        "Detaillierter Ausbau des Abschnitts: Passend dazu"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SystemErklaerungInteractiveModule",
+        "target_file": "src/components/schliessanlagen/system-erklaerung.tsx",
+        "action_file": "src/components/schliessanlagen/system-erklaerung.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1005,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /schliessanlagen/konfigurator",
+        "Detaillierter Ausbau des Abschnitts: Noch unsicher?",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SystemErklaerungInteractiveModule",
+        "target_file": "src/components/schliessanlagen/system-erklaerung.tsx",
+        "action_file": "src/components/schliessanlagen/system-erklaerung.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2441,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /service-und-termin",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /service-und-termin/terminstatus",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /service-und-termin/anfrage",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1366,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /service-und-termin/vor-ort",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1208,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /service-und-termin/kontakt",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 883,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Tiefe und fundierte Erkl\u00e4rungen zum Thema: Impressum",
+        "Detaillierter Ausbau des Abschnitts: Anbieter",
+        "Detaillierter Ausbau des Abschnitts: Vertreten durch"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Tiefe und fundierte Erkl\u00e4rungen zum Thema: Cookie-Einstellungen",
+        "Detaillierter Ausbau des Abschnitts: Was genau gespeichert wird",
+        "Detaillierter Ausbau des Abschnitts: Sobald weitere Dienste hinzukommen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1112,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Tiefe und fundierte Erkl\u00e4rungen zum Thema: Zahlung und Versand",
+        "Detaillierter Ausbau des Abschnitts: Versandarten",
+        "Detaillierter Ausbau des Abschnitts: Lieferzeiten"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 990,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Tiefe und fundierte Erkl\u00e4rungen zum Thema: Widerruf und R\u00fcckgabe",
+        "Detaillierter Ausbau des Abschnitts: 1. Widerrufsbelehrung f\u00fcr Verbraucherinnen und Verbraucher",
+        "Detaillierter Ausbau des Abschnitts: 2. Muster-Widerrufsformular"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 1049,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Tiefe und fundierte Erkl\u00e4rungen zum Thema: Allgemeine Gesch\u00e4ftsbedingungen",
+        "Detaillierter Ausbau des Abschnitts: 1. Geltungsbereich und Vertragspartner",
+        "Detaillierter Ausbau des Abschnitts: 2. Vertragsschluss"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1397,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Tiefe und fundierte Erkl\u00e4rungen zum Thema: Datenschutzerkl\u00e4rung",
+        "Detaillierter Ausbau des Abschnitts: 1. Verantwortliche Stelle",
+        "Detaillierter Ausbau des Abschnitts: 2. Datenschutzbeauftragte Person"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1316,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /artikel",
+        "Detaillierter Ausbau des Abschnitts: Derzeit sind hier keine Artikel eingestellt.",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1723,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /artikel/[slug]",
+        "Detaillierter Ausbau des Abschnitts: Beschreibung",
+        "Detaillierter Ausbau des Abschnitts: Eigenschaften"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 909,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /standorte",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1104,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /standorte/[city]",
+        "Implementierung einer umfangreichen, fachspezifischen FAQ-Sektion",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2824,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1452,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/marken",
+        "Detaillierter Ausbau des Abschnitts: Passend dazu",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1844,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/marken/[make]",
+        "Detaillierter Ausbau des Abschnitts: Passend dazu",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1963,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/marken/[make]/[model]",
+        "Detaillierter Ausbau des Abschnitts: Passend dazu",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1551,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/funkschluessel",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1671,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/programmieren",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1142,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/anfrage",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1606,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/kopieren",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1647,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/nachmachen",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1660,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/smart-key",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1508,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/schluesselbart-fraesen",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1594,
+      "content_expansion_topics": [
+        "Erweiterte fachliche Einordnung der Route /autoschluessel/fahrzeugoeffnung",
+        "Technische Spezifikationen zu Fr\u00e4sprozessen und Materialien",
+        "Integration von praxisnahen Fallstudien und Anwendungsbeispielen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ButtonInteractiveModule",
+        "target_file": "src/components/ui/button.tsx",
+        "action_file": "src/components/ui/button.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

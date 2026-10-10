@@ -43,3 +43,5 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+## Architecture Update
+The architecture blueprint has been updated to reflect the new requirements.
