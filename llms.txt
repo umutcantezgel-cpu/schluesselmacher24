@@ -1,0 +1,5 @@
+# Architecture Goals
+
+- Transform UI to OKLCH Light Mode
+- Expand thin content pages to >800 words
+- Implement Next.js 16+ Server Components
