@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-10T10:42:40.536171+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_014",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/schliessanlagen/page.tsx",
+      "target_component_file": "components/schliessanlagen/system-erklaerung.tsx",
+      "title": "System-Erkl\u00e4rung mit interaktiver OKLCH Haarlinien-Kinetik",
+      "specification": "Verwandle die System-Erkl\u00e4rung in ein fl\u00fcssiges CSS-Subgrid Layout mit ged\u00e4mpfter Federphysik (oklch(0.89 0.008 260 / 0.55)). Die Route wird inhaltlich auf >800 W\u00f6rter erweitert, wobei die interaktive Komponente die Conversion extrem steigert.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_055",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/page.tsx",
+      "target_component_file": "components/flow/flow-shell.tsx",
+      "title": "Reaktiver Multi-Step Flow mit useOptimistic und Server Actions",
+      "specification": "Erweitere die Startseite durch Einbindung dieses reaktiven Flow-Shell-Tools. Implementiere dynamische Ladezust\u00e4nde ohne Layout-Shifts und verst\u00e4rke die umgebende semantische Struktur durch detaillierte Experten-Insights.",
+      "score": 9.6,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
