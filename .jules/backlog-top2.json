@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2024-06-25T14:30:00Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_058",
+      "category": "CONVERSION_PSYCHOLOGY_AND_NATIVE_TOOLS",
+      "target_existing_route": "app/service-und-termin/page.tsx",
+      "target_component_file": "components/calculator/service-einsatz-rechner.tsx",
+      "title": "Interaktiver Service-Einsatz Rechner mit React 19 Actions",
+      "specification": "Ausbau des bestehenden ServiceEinsatzRechners mit optimierten React 19 Server Actions und useOptimistic, tiefere Integration in die Seite mit erweiterten 850 Wörtern.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_001",
+      "category": "AWWWARDS_KINETICS_AND_TACTILE_INTERACTION",
+      "target_existing_route": "app/page.tsx",
+      "target_component_file": "components/layout/hero-section.tsx",
+      "title": "Kinetische Hero-Section mit Spatial Bento Grid und Federphysik",
+      "specification": "Überführung der Startseiten-Hero in ein Spatial Bento Grid mit CSS Subgrid, Haarlinien-Kanten (OKLCH) und physikalischer Federdämpfung für Interaktionen.",
+      "score": 9.55,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
