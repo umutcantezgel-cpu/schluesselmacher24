@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Neue interaktive Module
+- **CodeKeyCalculator**: Interaktive Validierung und Preiskalkulation für Schlüssel nach Code.
