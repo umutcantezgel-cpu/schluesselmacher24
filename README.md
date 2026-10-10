@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architektur-Ziele
+Die Codebasis wird aktuell auditiert und auf die Schweizer High-End-Ästhetik sowie Next.js 16+ Standards migriert. Siehe `.jules/revolution-plan.json` für Details.

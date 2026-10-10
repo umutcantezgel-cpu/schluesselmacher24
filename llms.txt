@@ -1,0 +1,4 @@
+
+
+## Architektur-Ziele
+Die Codebasis wird aktuell auditiert und auf die Schweizer High-End-Ästhetik sowie Next.js 16+ Standards migriert. Siehe `.jules/revolution-plan.json` für Details.
