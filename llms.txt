@@ -1,0 +1,8 @@
+# SCHLÜSSELMACHER24 - Architecture Blueprint
+
+This repository is under transformation according to the JC-AUDITOR-ARCHITECT-v1 master blueprint.
+Total existing routes: 52
+Framework: Next.js 16+
+Styling: Tailwind CSS v4 (OKLCH)
+
+Check .jules/architecture-matrix.md for details.
