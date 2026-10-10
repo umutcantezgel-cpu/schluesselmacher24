@@ -1,0 +1,56 @@
+# Architecture Matrix
+
+| URL | Status | Wortanzahl | Schema-Status | CWV-Status | Interaktive Komponente |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /artikel/[slug] | PENDING_BUILDER | 1535 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /artikel | PENDING_BUILDER | 1257 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /autoschluessel/anfrage | PENDING_BUILDER | 1119 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /autoschluessel/fahrzeugoeffnung | PENDING_BUILDER | 1722 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /autoschluessel/funkschluessel | PENDING_BUILDER | 1692 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /autoschluessel/kopieren | PENDING_BUILDER | 1734 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /autoschluessel/marken/[make]/[model] | PENDING_BUILDER | 1824 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /autoschluessel/marken/[make] | PENDING_BUILDER | 1580 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /autoschluessel/marken | PENDING_BUILDER | 1319 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /autoschluessel/nachmachen | PENDING_BUILDER | 1790 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /autoschluessel | PENDING_BUILDER | 2603 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /autoschluessel/programmieren | PENDING_BUILDER | 1823 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /autoschluessel/schluesselbart-fraesen | PENDING_BUILDER | 1643 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /autoschluessel/smart-key | PENDING_BUILDER | 1808 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /bestellung/[id] | PENDING_BUILDER | 1900 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING_BUILDER | 983 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /elektronische-zutrittsloesungen | PENDING_BUILDER | 3081 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /gleichschliessende-zylinder/konfigurator | PENDING_BUILDER | 911 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /gleichschliessende-zylinder | PENDING_BUILDER | 2682 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /kasse | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| / | PENDING_BUILDER | 1731 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /ratgeber/[slug] | PENDING_BUILDER | 960 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /ratgeber | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /rechtliches/agb | PENDING_BUILDER | 1017 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /rechtliches/cookie-einstellungen | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /rechtliches/datenschutz | PENDING_BUILDER | 1316 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /rechtliches/impressum | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /rechtliches/versand-und-zahlung | PENDING_BUILDER | 1028 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /rechtliches/widerruf | PENDING_BUILDER | 971 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /schliessanlagen/konfigurator | PENDING_BUILDER | 969 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /schliessanlagen | PENDING_BUILDER | 2474 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /schluessel-nach-code/[slug] | PENDING_BUILDER | 1335 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /schluessel-nach-code | PENDING_BUILDER | 1098 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /schluessel-nach-vorlage/anfrage | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /schluessel-nach-vorlage | PENDING_BUILDER | 2394 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /service-und-termin/anfrage | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /service-und-termin/kontakt | PENDING_BUILDER | 1075 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /service-und-termin | PENDING_BUILDER | 2179 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /service-und-termin/terminstatus | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /service-und-termin/vor-ort | PENDING_BUILDER | 1256 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /sicherheitstechnik/[slug] | PENDING_BUILDER | 1245 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /sicherheitstechnik | PENDING_BUILDER | 1621 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /sicherheitstechnik/sicherheitscheck | PENDING_BUILDER | 930 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /standorte/[city] | PENDING_BUILDER | 1006 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /standorte | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /tuer-und-schliesstechnik/[slug] | PENDING_BUILDER | 1094 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /tuer-und-schliesstechnik | PENDING_BUILDER | 2385 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |
+| /warenkorb | PENDING_BUILDER | 862 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner-bausteine.tsx |
+| /api/[...slug] | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/rechner.test.tsx |
+| /api/kunden-upload | PENDING_BUILDER | 1305 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/service-einsatz-rechner.tsx |
+| /llms.txt | PENDING_BUILDER | 850 | Organization, WebSite, FAQPage | PENDING_AUDIT | components/calculator/tuer-absicherung-rechner.tsx |

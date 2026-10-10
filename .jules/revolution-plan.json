@@ -1,0 +1,1263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-10T09:28:20.968Z",
+  "total_existing_routes": 52,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /admin/[[...segments]]",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /admin/[[...segments]]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(payload)/admin/[[...segments]]/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1535,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /artikel/[slug]",
+        "Detaillierung der Unterkategorie: Beschreibung",
+        "Integration einer ausführlichen FAQ-Sektion für /artikel/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/artikel/[slug]/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1257,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /artikel",
+        "Detaillierung der Unterkategorie: Derzeit sind hier keine Artikel eingestellt.",
+        "Integration einer ausführlichen FAQ-Sektion für /artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/artikel/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1119,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/anfrage",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/autoschluessel/anfrage/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1722,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/fahrzeugoeffnung",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1692,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/funkschluessel",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/autoschluessel/funkschluessel/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1734,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/kopieren",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/kopieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/autoschluessel/kopieren/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1824,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/marken/[make]/[model]",
+        "Detaillierung der Unterkategorie: Passend dazu",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/marken/[make]/[model]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1580,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/marken/[make]",
+        "Detaillierung der Unterkategorie: Passend dazu",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/marken/[make]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/autoschluessel/marken/[make]/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1319,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/marken",
+        "Detaillierung der Unterkategorie: Passend dazu",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/autoschluessel/marken/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1790,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/nachmachen",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/autoschluessel/nachmachen/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2603,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/autoschluessel/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1823,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/programmieren",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/programmieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/autoschluessel/programmieren/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1643,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/schluesselbart-fraesen",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/schluesselbart-fraesen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1808,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /autoschluessel/smart-key",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /autoschluessel/smart-key"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/autoschluessel/smart-key/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1900,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /bestellung/[id]",
+        "Detaillierung der Unterkategorie: Bestellte Artikel",
+        "Integration einer ausführlichen FAQ-Sektion für /bestellung/[id]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/bestellung/[id]/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 983,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /elektronische-zutrittsloesungen/konfigurator",
+        "Detaillierung der Unterkategorie: Passende Seiten",
+        "Integration einer ausführlichen FAQ-Sektion für /elektronische-zutrittsloesungen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3081,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /elektronische-zutrittsloesungen",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /elektronische-zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 911,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /gleichschliessende-zylinder/konfigurator",
+        "Detaillierung der Unterkategorie: Wenn Sie vorher etwas nachlesen möchten",
+        "Integration einer ausführlichen FAQ-Sektion für /gleichschliessende-zylinder/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2682,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /gleichschliessende-zylinder",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /gleichschliessende-zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/gleichschliessende-zylinder/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /kasse",
+        "Detaillierung der Unterkategorie: Rechtliche Hinweise",
+        "Integration einer ausführlichen FAQ-Sektion für /kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/kasse/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 1731,
+      "content_expansion_topics": [
+        "Erweiterung des Hauptthemas: {page?.headline ?? 'Autoschlüssel nachmachen und programmieren'}",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 960,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /ratgeber/[slug]",
+        "Detaillierung der Unterkategorie: {block.heading}",
+        "Integration einer ausführlichen FAQ-Sektion für /ratgeber/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/ratgeber/[slug]/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /ratgeber",
+        "Detaillierung der Unterkategorie: {group.area.label}",
+        "Integration einer ausführlichen FAQ-Sektion für /ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/ratgeber/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 1017,
+      "content_expansion_topics": [
+        "Erweiterung des Hauptthemas: Allgemeine Geschäftsbedingungen",
+        "Detaillierung der Unterkategorie: 1. Geltungsbereich und Vertragspartner",
+        "Integration einer ausführlichen FAQ-Sektion für /rechtliches/agb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/rechtliches/agb/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Hauptthemas: Cookie-Einstellungen",
+        "Detaillierung der Unterkategorie: Was genau gespeichert wird",
+        "Integration einer ausführlichen FAQ-Sektion für /rechtliches/cookie-einstellungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1316,
+      "content_expansion_topics": [
+        "Erweiterung des Hauptthemas: Datenschutzerklärung",
+        "Detaillierung der Unterkategorie: 1. Verantwortliche Stelle",
+        "Integration einer ausführlichen FAQ-Sektion für /rechtliches/datenschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/rechtliches/datenschutz/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Hauptthemas: Impressum",
+        "Detaillierung der Unterkategorie: Anbieter",
+        "Integration einer ausführlichen FAQ-Sektion für /rechtliches/impressum"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/rechtliches/impressum/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1028,
+      "content_expansion_topics": [
+        "Erweiterung des Hauptthemas: Zahlung und Versand",
+        "Detaillierung der Unterkategorie: Versandarten",
+        "Integration einer ausführlichen FAQ-Sektion für /rechtliches/versand-und-zahlung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 971,
+      "content_expansion_topics": [
+        "Erweiterung des Hauptthemas: Widerruf und Rückgabe",
+        "Detaillierung der Unterkategorie: 1. Widerrufsbelehrung für Verbraucherinnen und Verbraucher",
+        "Integration einer ausführlichen FAQ-Sektion für /rechtliches/widerruf"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/rechtliches/widerruf/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 969,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /schliessanlagen/konfigurator",
+        "Detaillierung der Unterkategorie: Noch unsicher?",
+        "Integration einer ausführlichen FAQ-Sektion für /schliessanlagen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/schliessanlagen/konfigurator/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2474,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /schliessanlagen",
+        "Detaillierung der Unterkategorie: Wenige Türen, ein Schlüssel für alles?",
+        "Integration einer ausführlichen FAQ-Sektion für /schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/schliessanlagen/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1335,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /schluessel-nach-code/[slug]",
+        "Detaillierung der Unterkategorie: Was Sie erhalten",
+        "Integration einer ausführlichen FAQ-Sektion für /schluessel-nach-code/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1098,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /schluessel-nach-code",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /schluessel-nach-code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/schluessel-nach-code/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /schluessel-nach-vorlage/anfrage",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /schluessel-nach-vorlage/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2394,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /schluessel-nach-vorlage",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /schluessel-nach-vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/schluessel-nach-vorlage/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /service-und-termin/anfrage",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /service-und-termin/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/service-und-termin/anfrage/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1075,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /service-und-termin/kontakt",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /service-und-termin/kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/service-und-termin/kontakt/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2179,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /service-und-termin",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /service-und-termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/service-und-termin/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /service-und-termin/terminstatus",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /service-und-termin/terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/service-und-termin/terminstatus/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1256,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /service-und-termin/vor-ort",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /service-und-termin/vor-ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/service-und-termin/vor-ort/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1245,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /sicherheitstechnik/[slug]",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /sicherheitstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1621,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /sicherheitstechnik",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/sicherheitstechnik/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 930,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /sicherheitstechnik/sicherheitscheck",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /sicherheitstechnik/sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1006,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /standorte/[city]",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /standorte/[city]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/standorte/[city]/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /standorte",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(site)/standorte/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1094,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /tuer-und-schliesstechnik/[slug]",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /tuer-und-schliesstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2385,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /tuer-und-schliesstechnik",
+        "Detaillierung der Unterkategorie: Regulatorik: Fluchtwege und Brandschutz",
+        "Integration einer ausführlichen FAQ-Sektion für /tuer-und-schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/(site)/tuer-und-schliesstechnik/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 862,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /warenkorb",
+        "Detaillierung der Unterkategorie: Passend dazu",
+        "Integration einer ausführlichen FAQ-Sektion für /warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner-bausteine.tsx",
+        "action_file": "app/(site)/warenkorb/page.tsx"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/api/[...slug]",
+      "source_file": "app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /api/[...slug]",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /api/[...slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/rechner.test.tsx",
+        "action_file": "app/(payload)/api/[...slug]/route.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/api/kunden-upload",
+      "source_file": "app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 1305,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /api/kunden-upload",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /api/kunden-upload"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/service-einsatz-rechner.tsx",
+        "action_file": "app/(site)/api/kunden-upload/route.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/llms.txt",
+      "source_file": "app/llms.txt/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Einführung eines semantischen H1-Hauptthemas für /llms.txt",
+        "Aufbau einer H2-Struktur für SEO und Lesbarkeit",
+        "Integration einer ausführlichen FAQ-Sektion für /llms.txt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechnerBausteine",
+        "target_file": "components/calculator/tuer-absicherung-rechner.tsx",
+        "action_file": "app/llms.txt/route.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
