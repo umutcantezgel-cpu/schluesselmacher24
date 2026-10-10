@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Service and Appointment Page Update
+The Service and Appointment page has been elevated to > 800 words, integrating deep technical expertise regarding mechanical precision, electronic integration, and architectural frameworks. An interactive Service Budget Calculator module has been added using React 19 Server Actions and optimistic updates.
