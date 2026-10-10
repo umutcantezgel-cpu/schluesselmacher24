@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Interaktive Module
+- **CodeValidatorInteractive**: Ermöglicht die interaktive Validierung von Schlüsselcodes auf der Seite "Schlüssel nach Code".
