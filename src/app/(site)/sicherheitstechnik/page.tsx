@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 
 import { getPageContent, getServicePages } from '@/lib/data';
+import { SicherheitsMatrix } from '@/components/sicherheitstechnik/sicherheits-matrix';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
@@ -73,7 +74,17 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedParams = await params;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resolvedSearch = await searchParams;
+
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -256,6 +267,42 @@ export default async function SicherheitstechnikPage() {
 
       {/* Verbindung zur Mechanik */}
       <Section tone="muted" tight>
+        <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-12 mt-12 mb-12">
+          <div>
+             <SectionHeading
+                eyebrow="Risikoanalyse"
+                title="Sicherheits-Matrix: Gefährdungspotenzial erkennen und bewerten"
+                lead="Ein fundiertes Sicherheitskonzept beginnt mit der präzisen Analyse des Gefährdungspotenzials. Berechnen Sie hier den Risiko-Score basierend auf objektiven Faktoren, um die passenden Schutzmaßnahmen abzuleiten. Von der mechanischen Grundsicherung bis zur vernetzten Alarmtechnik – die Matrix hilft bei der Priorisierung."
+              />
+              <div className="mt-8 space-y-4 text-[15px] leading-relaxed text-foreground-muted">
+                <p>
+                  Die Bewertung der Gebäudesicherheit ist kein Ratespiel, sondern folgt einer klaren Methodik.
+                  Unser Ansatz basiert auf der systematischen Erfassung von Schwachstellen und der Definition
+                  geeigneter Widerstandsklassen (RC). Dabei betrachten wir nicht nur die offensichtlichen
+                  Einstiegswege wie Türen und Fenster, sondern auch Lichtschächte, Nebeneingänge und die
+                  Fassadenstruktur.
+                </p>
+                <p>
+                  Ein oft unterschätzter Aspekt ist die <strong>kombinierte Sicherheit</strong>. Ein
+                  hochwertiges Schließsystem verliert an Wirkung, wenn das Schließblech nicht tief genug im
+                  Mauerwerk verankert ist oder die Türbänder leicht auszuhebeln sind. Ebenso ist eine
+                  Alarmanlage nur dann wirklich effektiv, wenn die Mechanik dem Angreifer so lange
+                  Widerstand leistet, bis eine Intervention (z. B. durch einen Sicherheitsdienst) erfolgen kann.
+                </p>
+                 <p>
+                  <strong>Leistungsstufen im Überblick:</strong><br />
+                  - <strong>Stufe 1 (Grundschutz):</strong> Solide Zylinder, Schutzbeschläge und Kernziehschutz.<br />
+                  - <strong>Stufe 2 (Erweitert):</strong> Zusätzliche mechanische Sicherungen (Querriegel, Fenstersicherungen).<br />
+                  - <strong>Stufe 3 (Elektronik):</strong> Integration von Zutrittskontrollsystemen und Basis-Alarmierung.<br />
+                  - <strong>Stufe 4 (Vollschutz):</strong> Vernetzte Systeme mit Videoüberwachung, Aufschaltung und Protokollierung.
+                </p>
+              </div>
+          </div>
+          <div className="mt-8 lg:mt-0">
+             <SicherheitsMatrix />
+          </div>
+        </div>
+
         <div className="grid gap-4 md:grid-cols-2">
           <Card className="h-full">
             <CardBody className="flex h-full flex-col">
@@ -296,6 +343,47 @@ export default async function SicherheitstechnikPage() {
               </Link>
             </CardBody>
           </Card>
+        </div>
+      </Section>
+
+      {/* Häufig gestellte Fragen (FAQ) */}
+      <Section id="faq" tone="muted">
+        <SectionHeading
+          eyebrow="Wissen"
+          title="Häufig gestellte Fragen zur Sicherheitstechnik"
+          lead="Fundierte Antworten auf die wichtigsten Fragen bei der Planung und Umsetzung von Sicherheitskonzepten."
+        />
+        <div className="mt-8 space-y-4">
+          <div className="rounded-lg border border-border bg-surface p-6">
+            <h3 className="text-[17px] font-bold text-foreground">1. Wie hoch sind die Kosten für eine professionelle Alarmanlage?</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Die Investition hängt stark vom Umfang und der gewünschten Schutzklasse ab. Ein drahtloses Basis-System für eine Wohnung beginnt bei etwa 800 Euro. Für ein vollvernetztes System in einem Einfamilienhaus, inklusive Außensicherung, Videoüberwachung und Aufschaltung zu einem Sicherheitsdienst, kalkulieren wir in der Regel ab 3.500 Euro. Wichtig ist: Zuverlässigkeit kostet Geld – von günstigen Baumarkt-Sets raten wir dringend ab, da Fehlalarme und Sicherheitslücken vorprogrammiert sind.
+            </p>
+          </div>
+          <div className="rounded-lg border border-border bg-surface p-6">
+            <h3 className="text-[17px] font-bold text-foreground">2. Was bedeutet RC (Resistance Class) und welche Klasse brauche ich?</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Die Resistance Class (RC) gibt an, wie lange ein Bauteil (z. B. Fenster oder Tür) einem Einbruchsversuch mit bestimmten Werkzeugen standhält. RC 1 bietet nur einen sehr geringen Grundschutz. Für private Wohnhäuser empfiehlt die Kriminalpolizei mindestens RC 2. Bei erhöhtem Gefährdungspotenzial oder im gewerblichen Bereich planen wir standardmäßig mit RC 3. Jede Klasse wurde unter genormten Bedingungen getestet und zertifiziert.
+            </p>
+          </div>
+          <div className="rounded-lg border border-border bg-surface p-6">
+            <h3 className="text-[17px] font-bold text-foreground">3. Kann ich eine Alarmanlage selbst installieren oder brauche ich einen Fachbetrieb?</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Wir raten dringend von der Selbstmontage ab. Eine moderne Gefahrenmeldeanlage ist hochkomplex. Falsch platzierte Melder, nicht fachgerecht verlegte Leitungen oder eine inkorrekte Parametrierung der Zentrale führen unweigerlich zu Fehlalarmen. Zudem wird eine Aufschaltung auf eine Notruf- und Serviceleitstelle (NSL) in der Regel nur bei Anlagen akzeptiert, die von einem zertifizierten Fachbetrieb nach DIN EN 50131 geplant und errichtet wurden.
+            </p>
+          </div>
+          <div className="rounded-lg border border-border bg-surface p-6">
+            <h3 className="text-[17px] font-bold text-foreground">4. Welche Förderung gibt es für den Einbau von Sicherheitstechnik?</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Die KfW (Kreditanstalt für Wiederaufbau) bezuschusst den Einbau von einbruchhemmenden Türen, Gittern und Alarmanlagen. Die Förderung (Zuschuss 455-E) kann bis zu 20 % der förderfähigen Kosten betragen, abhängig von der Investitionssumme. Voraussetzung ist zwingend, dass die Maßnahmen von einem Fachunternehmen durchgeführt werden und der Antrag vor Beginn der Arbeiten gestellt wird. Wir unterstützen Sie gerne bei der Zusammenstellung der erforderlichen technischen Unterlagen.
+            </p>
+          </div>
+          <div className="rounded-lg border border-border bg-surface p-6">
+            <h3 className="text-[17px] font-bold text-foreground">5. Ist eine Videoüberwachung immer sinnvoll?</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Nicht immer. Kameras verhindern keinen Einbruch, sie dokumentieren ihn lediglich. Videoüberwachung ist dann sinnvoll, wenn sie als Teil eines Gesamtkonzepts eingesetzt wird – beispielsweise um bei einer Alarmauslösung (durch Bewegungsmelder oder Türkontakte) eine sofortige visuelle Verifikation zu ermöglichen. Eine Aufschaltung zur Leitstelle wird dadurch wesentlich effizienter, da Fehlalarme ausgeschlossen werden können.
+            </p>
+          </div>
         </div>
       </Section>
 

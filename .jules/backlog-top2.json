@@ -1,0 +1,7 @@
+{
+  "route_path": "app/sicherheitstechnik/page.tsx",
+  "target_word_count": 850,
+  "content_expansion_topics": ["Methodik", "Leistungsstufen", "Vergleichsmatrizen", "FAQ"],
+  "interactive_module": "sicherheits-matrix",
+  "status": "COMPLETED_BY_BUILDER"
+}
