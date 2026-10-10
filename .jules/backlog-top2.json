@@ -1,0 +1,6 @@
+{
+  "target_existing_route": "app/service-und-termin/page.tsx",
+  "status": "COMPLETED_BY_BUILDER",
+  "target_word_count": 850,
+  "interactive_module": "ServiceBudgetCalculator"
+}
