@@ -1,0 +1,5 @@
+{
+  "src/app/(site)/globals.css": "VERIFIZIERT_FROZEN",
+  "src/lib/visual/area-theme.ts": "VERIFIZIERT_FROZEN",
+  "tailwind.config.ts": "VERIFIZIERT_FROZEN"
+}
