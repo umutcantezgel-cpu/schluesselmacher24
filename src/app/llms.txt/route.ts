@@ -28,6 +28,7 @@ export function GET() {
     '',
     '## Hilfreiche Seiten',
     '',
+    `- [Code Analyzer](/schluessel-nach-code): Interactive module to check keycodes`,
     `- [Ratgeber](${site}/ratgeber): Antworten auf häufige Fragen zu Schlüsseln, Schließtechnik und Einbruchschutz`,
     `- [Einsatzgebiete](${site}/standorte): Regionen mit Vor-Ort-Leistungen`,
     `- [Zahlung und Versand](${site}/rechtliches/versand-und-zahlung): Versandarten, Kosten und Anzahlung`,

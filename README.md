@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Interactive Modules Added
+- **Code Analyzer (`src/components/calculator/code-analyzer.tsx`)**: An interactive tool for checking keycodes and providing immediate feedback and estimated costs, integrated into `src/app/(site)/schluessel-nach-code/page.tsx`.
