@@ -32,6 +32,10 @@ export function GET() {
     `- [Einsatzgebiete](${site}/standorte): Regionen mit Vor-Ort-Leistungen`,
     `- [Zahlung und Versand](${site}/rechtliches/versand-und-zahlung): Versandarten, Kosten und Anzahlung`,
     '',
+    '## Interaktive Module',
+    '',
+    '- CodeValidatorInteractive: Interaktive Validierung von Schlüsselcodes auf der Seite Schlüssel nach Code.',
+    '',
   ].join('\n');
 
   return new Response(body, {

@@ -1,0 +1,6 @@
+{
+  "target_existing_route": "app/schluessel-nach-code/page.tsx",
+  "status": "COMPLETED_BY_BUILDER",
+  "interactive_module_planned": "CodeValidatorInteractive",
+  "module_path": "components/schluessel-nach-code/code-validator.tsx"
+}
