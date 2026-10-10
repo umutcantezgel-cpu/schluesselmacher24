@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Word Count | Status | Schema | CWV | Action |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | 99 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /artikel/[slug] | 934 | PENDING | TODO | TODO | Expand to 1134 words, add ServiceEinsatzRechner |
+| /artikel | 656 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /autoschluessel/anfrage | 518 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /autoschluessel/fahrzeugoeffnung | 1121 | PENDING | TODO | TODO | Expand to 1321 words, add ServiceEinsatzRechner |
+| /autoschluessel/funkschluessel | 1091 | PENDING | TODO | TODO | Expand to 1291 words, add ServiceEinsatzRechner |
+| /autoschluessel/kopieren | 1133 | PENDING | TODO | TODO | Expand to 1333 words, add ServiceEinsatzRechner |
+| /autoschluessel/marken/[make]/[model] | 1223 | PENDING | TODO | TODO | Expand to 1423 words, add ServiceEinsatzRechner |
+| /autoschluessel/marken/[make] | 979 | PENDING | TODO | TODO | Expand to 1179 words, add ServiceEinsatzRechner |
+| /autoschluessel/marken | 718 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /autoschluessel/nachmachen | 1189 | PENDING | TODO | TODO | Expand to 1389 words, add ServiceEinsatzRechner |
+| /autoschluessel | 2002 | PENDING | TODO | TODO | Expand to 2202 words, add ServiceEinsatzRechner |
+| /autoschluessel/programmieren | 1222 | PENDING | TODO | TODO | Expand to 1422 words, add ServiceEinsatzRechner |
+| /autoschluessel/schluesselbart-fraesen | 1042 | PENDING | TODO | TODO | Expand to 1242 words, add ServiceEinsatzRechner |
+| /autoschluessel/smart-key | 1207 | PENDING | TODO | TODO | Expand to 1407 words, add ServiceEinsatzRechner |
+| /bestellung/[id] | 1299 | PENDING | TODO | TODO | Expand to 1499 words, add ServiceEinsatzRechner |
+| /elektronische-zutrittsloesungen/konfigurator | 382 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /elektronische-zutrittsloesungen | 2480 | PENDING | TODO | TODO | Expand to 2680 words, add ServiceEinsatzRechner |
+| /gleichschliessende-zylinder/konfigurator | 310 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /gleichschliessende-zylinder | 2081 | PENDING | TODO | TODO | Expand to 2281 words, add ServiceEinsatzRechner |
+| /kasse | 242 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| / | 1130 | PENDING | TODO | TODO | Expand to 1330 words, add ServiceEinsatzRechner |
+| /ratgeber/[slug] | 359 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /ratgeber | 224 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /rechtliches/agb | 416 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /rechtliches/cookie-einstellungen | 228 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /rechtliches/datenschutz | 715 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /rechtliches/impressum | 248 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /rechtliches/versand-und-zahlung | 427 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /rechtliches/widerruf | 370 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /schliessanlagen/konfigurator | 368 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /schliessanlagen | 1873 | PENDING | TODO | TODO | Expand to 2073 words, add ServiceEinsatzRechner |
+| /schluessel-nach-code/[slug] | 734 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /schluessel-nach-code | 497 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /schluessel-nach-vorlage/anfrage | 221 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /schluessel-nach-vorlage | 1793 | PENDING | TODO | TODO | Expand to 1993 words, add ServiceEinsatzRechner |
+| /service-und-termin/anfrage | 151 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /service-und-termin/kontakt | 474 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /service-und-termin | 1578 | PENDING | TODO | TODO | Expand to 1778 words, add ServiceEinsatzRechner |
+| /service-und-termin/terminstatus | 107 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /service-und-termin/vor-ort | 655 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /sicherheitstechnik/[slug] | 644 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /sicherheitstechnik | 1020 | PENDING | TODO | TODO | Expand to 1220 words, add ServiceEinsatzRechner |
+| /sicherheitstechnik/sicherheitscheck | 329 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /standorte/[city] | 405 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /standorte | 249 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /tuer-und-schliesstechnik/[slug] | 493 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
+| /tuer-und-schliesstechnik | 1784 | PENDING | TODO | TODO | Expand to 1984 words, add ServiceEinsatzRechner |
+| /warenkorb | 261 | PENDING | TODO | TODO | Expand to 950 words, add ServiceEinsatzRechner |
