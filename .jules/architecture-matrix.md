@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Source File | Current Words | Target Words | Interactive Module | Status |
+|-------|-------------|---------------|--------------|--------------------|--------|
+| / | src/app/(site)/page.tsx | 1581 | 1581 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 77 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 270 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 1979 | 1979 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 290 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /kasse | src/app/(site)/kasse/page.tsx | 267 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 557 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1267 | 1267 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 2096 | 2096 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 2589 | 2589 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2611 | 2611 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 1960 | 1960 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 1841 | 1841 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /artikel | src/app/(site)/artikel/page.tsx | 716 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /standorte | src/app/(site)/standorte/page.tsx | 309 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2224 | 2224 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 465 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 260 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 908 | 908 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 783 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 361 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 615 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1586 | 1586 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 339 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 408 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 405 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 104 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 142 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 766 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 608 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 283 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 232 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 512 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 390 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 449 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 797 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 1123 | 1123 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 504 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 852 | 852 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 951 | 951 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1071 | 1071 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 542 | 950 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1006 | 1006 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1047 | 1047 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1060 | 1060 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 908 | 908 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 994 | 994 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 1244 | 1244 | ServiceEinsatzRechner | PENDING_BUILDER |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1363 | 1363 | ServiceEinsatzRechner | PENDING_BUILDER |
