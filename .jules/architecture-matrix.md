@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Source File | Existing Words | Target Words | Interactive Module | Signature Interaction | CWV/Schema |
+|---|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 99 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| / | src/app/(site)/page.tsx | 1130 | 1630 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 224 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 359 | 859 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 1793 | 2293 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 221 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 261 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /kasse | src/app/(site)/kasse/page.tsx | 242 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 497 | 997 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 734 | 1234 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1020 | 1520 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 644 | 1144 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 329 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 1784 | 2284 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 493 | 993 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1299 | 1799 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 2081 | 2581 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 310 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2480 | 2980 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 382 | 882 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 1873 | 2373 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 368 | 868 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 1578 | 2078 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 107 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 151 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 655 | 1155 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 474 | 974 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 248 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 228 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 427 | 927 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 370 | 870 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 416 | 916 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 715 | 1215 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /artikel | src/app/(site)/artikel/page.tsx | 656 | 1156 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 934 | 1434 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /standorte | src/app/(site)/standorte/page.tsx | 249 | 850 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 405 | 905 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2002 | 2502 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 718 | 1218 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 979 | 1479 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1223 | 1723 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 1091 | 1591 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1222 | 1722 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 518 | 1018 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1133 | 1633 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1189 | 1689 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1207 | 1707 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1042 | 1542 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1121 | 1621 | FlowShell | BENTO_HOVER_GLOW_LIGHT | OK |
