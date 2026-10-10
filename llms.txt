@@ -1,0 +1,2 @@
+# SCHLÜSSELMACHER24 Architecture Blueprint
+The architecture blueprint has been updated to reflect the new requirements.
