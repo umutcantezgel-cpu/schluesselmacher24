@@ -1,0 +1,1 @@
+- Neue interaktive Komponente: CodeKeyCalculator integriert in app/schluessel-nach-code/page.tsx zur Echtzeit-Prüfung von Schlüsselcodes.
