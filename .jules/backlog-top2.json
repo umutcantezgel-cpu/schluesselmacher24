@@ -1,0 +1,6 @@
+{
+  "target_route": "app/service-und-termin/page.tsx",
+  "word_count_target": 850,
+  "interactive_module": "components/calculator/service-budget-calculator.tsx",
+  "status": "COMPLETED_BY_BUILDER"
+}

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import Link from 'next/link';
 import { ArrowRight, CalendarSearch, MapPin, MessageSquare, Phone } from 'lucide-react';
 
@@ -278,7 +279,109 @@ export default async function ServiceUndTerminPage() {
             </Link>
           ))}
         </div>
-      </Section>
+
+      <section className="mx-auto max-w-4xl py-16 md:py-24 lg:py-32">
+        <h2 className="text-3xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] md:text-4xl mb-8">
+          Unsere Methodik: Präzision, Sicherheit und Schweizer Licht-Doktrin
+        </h2>
+
+        <div className="prose prose-lg text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+          <p>
+            Ein Schüsseldienst ist längst nicht mehr nur das Aufsperren von Türen. In der heutigen, vernetzten und sicherheitssensiblen Welt erfordert professionelle Schließtechnik ein tiefes Verständnis für Mechanik, Elektronik und intelligente Zutrittskontrollsysteme. Unsere Herangehensweise bei Schluesselmacher24 basiert auf absoluter Präzision, fundiertem Fachwissen und der kompromisslosen Anwendung modernster Sicherheitsstandards. Jede Beratung, jede Installation und jede Notöffnung wird mit der gleichen methodischen Strenge durchgeführt, um Ihnen nicht nur kurzfristig zu helfen, sondern langfristige Sicherheit zu garantieren.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-4">
+            Stufe 1: Die detaillierte Sicherheitsanalyse
+          </h3>
+          <p>
+            Bevor wir eine Schließanlage konzipieren oder eine Tür absichern, führen wir eine tiefgehende Schwachstellenanalyse durch. Wir betrachten Ihr Objekt aus der Perspektive potenzieller Angreifer. Wo sind die kritischen Punkte? Entsprechen die aktuellen Zylinder den neuesten DIN-Normen und VdS-Klassen? Wie verhält es sich mit dem Bohr- und Ziehschutz? Diese Analysephase ist entscheidend, um maßgeschneiderte Sicherheitsarchitekturen zu entwickeln, die genau dort ansetzen, wo das Risiko am höchsten ist. Wir setzen dabei auf hochpräzise Messinstrumente und digitale Planungstools, um jeden Winkel Ihrer Immobilie zu erfassen.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-4">
+            Stufe 2: Hochsicherheits-Schließsysteme und ihre Architektur
+          </h3>
+          <p>
+            Die Wahl des richtigen Schließsystems ist eine komplexe Entscheidung. Wir implementieren ausschließlich Systeme renommierter Hersteller, die höchste Sicherheitsstufen garantieren. Dabei unterscheiden wir zwischen rein mechanischen Anlagen, mechatronischen Zylindern und vollständig elektronischen Zutrittskontrollsystemen. Eine moderne Schließanlage zeichnet sich durch komplexe Profilstrukturen, patentrechtlich geschützte Schlüsselprofile und hochsichere Magnetcodierungen aus. Die Architektur dieser Anlagen wird so geplant, dass sie flexibel erweiterbar bleibt. Das bedeutet, dass Sie bei Personalwechseln oder strukturellen Veränderungen im Gebäude nicht die gesamte Anlage austauschen müssen, sondern Zugriffsrechte dynamisch über Software-Schnittstellen anpassen können.
+          </p>
+
+          <div className="my-12 p-8 rounded-2xl bg-[oklch(0.988_0.002_260)] border border-[oklch(0.89_0.008_260/0.55)]">
+            <h4 className="font-semibold text-lg text-[oklch(0.16_0.02_260)] mb-4">Technologischer Vergleich: Mechanik vs. Elektronik</h4>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                    <th className="pb-3 font-semibold text-[oklch(0.16_0.02_260)]">Kriterium</th>
+                    <th className="pb-3 font-semibold text-[oklch(0.16_0.02_260)]">Mechanische Anlagen</th>
+                    <th className="pb-3 font-semibold text-[oklch(0.16_0.02_260)]">Elektronische Systeme</th>
+                  </tr>
+                </thead>
+                <tbody className="text-[oklch(0.32_0.02_260)]">
+                  <tr className="border-b border-[oklch(0.89_0.008_260/0.3)]">
+                    <td className="py-3 font-medium">Schlüsselverlust</td>
+                    <td className="py-3">Zylindertausch oft zwingend</td>
+                    <td className="py-3">Transponder sofort sperrbar</td>
+                  </tr>
+                  <tr className="border-b border-[oklch(0.89_0.008_260/0.3)]">
+                    <td className="py-3 font-medium">Flexibilität</td>
+                    <td className="py-3">Starr, Änderungen aufwendig</td>
+                    <td className="py-3">Hochflexibel, Echtzeit-Updates</td>
+                  </tr>
+                  <tr className="border-b border-[oklch(0.89_0.008_260/0.3)]">
+                    <td className="py-3 font-medium">Protokollierung</td>
+                    <td className="py-3">Nicht möglich</td>
+                    <td className="py-3">Lückenlose Zutrittshistorie</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-medium">Initialkosten</td>
+                    <td className="py-3">Niedriger bis moderat</td>
+                    <td className="py-3">Höheres Investment</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-4">
+            Stufe 3: Die Installation – Zerstörungsfrei und Normgerecht
+          </h3>
+          <p>
+            Die beste Sicherheitstechnik ist wertlos, wenn sie fehlerhaft installiert wird. Unsere Techniker sind speziell geschult, um Montagen strikt nach den geltenden DIN-EN-Normen durchzuführen. Besonderes Augenmerk liegt dabei auf dem bündigen Abschluss des Zylinders mit dem Schutzbeschlag, um Angriffsflächen für Zangen oder Brechwerkzeuge zu minimieren. Bei Notöffnungen wenden wir ausnahmslos zerstörungsfreie Techniken an, wann immer dies physikalisch möglich ist. Mittels Lockpicking, Schlagschlüsseltechniken oder hochspezialisierten Fräsern manipulieren wir die Stifte im Zylinder so, dass die Tür ohne Beschädigung von Schloss, Beschlag oder Türblatt geöffnet wird. Diese handwerkliche Exzellenz unterscheidet den professionellen Dienstleister vom Amateur.
+          </p>
+
+          <ServiceBudgetCalculator />
+
+          <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-16 mb-6">
+            Umfassende FAQ: Expertenwissen zur Sicherheitstechnik
+          </h3>
+          <div className="space-y-6">
+            <div className="p-6 bg-[oklch(0.968_0.004_260)] rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">1. Was bedeutet der VdS-Standard bei Schließzylindern?</h4>
+              <p className="text-sm">VdS (Vertrauen durch Sicherheit) ist ein unabhängiges Prüfinstitut. VdS-zertifizierte Zylinder bieten nachweislich einen hohen Widerstand gegen Einbruchsversuche wie Aufbohren, Kernziehen oder Nachschließen. Für private Haushalte empfehlen wir mindestens VdS-Klasse A, für Gewerbe Klasse B oder höher.</p>
+            </div>
+
+            <div className="p-6 bg-[oklch(0.968_0.004_260)] rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">2. Kann eine zugefallene Tür immer zerstörungsfrei geöffnet werden?</h4>
+              <p className="text-sm">In über 95% der Fälle ja. Wenn die Tür nur ins Schloss gefallen (nicht abgeschlossen) ist, verwenden wir spezielle Öffnungsnadeln, Türfallengleiter oder Spachtel. Ausnahmen bilden Türen mit extrem engen Spaltmaßen oder speziellen Doppelfallen-Schlössern, bei denen unter Umständen der Zylinder gefräst werden muss.</p>
+            </div>
+
+            <div className="p-6 bg-[oklch(0.968_0.004_260)] rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">3. Ab wann rechnet sich ein elektronisches Schließsystem?</h4>
+              <p className="text-sm">Elektronische Systeme amortisieren sich oft schneller als gedacht, besonders in Unternehmen mit Fluktuation. Der Verlust eines mechanischen Hauptschlüssels kann den Austausch der gesamten Anlage im fünfstelligen Bereich erfordern. Bei Elektronik wird lediglich der verlorene Transponder im System gesperrt – Kostenpunkt oft unter 20 Euro.</p>
+            </div>
+
+            <div className="p-6 bg-[oklch(0.968_0.004_260)] rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">4. Was ist ein Schutzbeschlag mit Zylinderabdeckung?</h4>
+              <p className="text-sm">Ein Schutzbeschlag schützt den Schließzylinder und das Einsteckschloss vor gewaltsamen Angriffen. Eine Zylinderabdeckung (auch Kernziehschutz genannt) verhindert das Herausziehen des Zylinderkerns mit Spezialschrauben. Dieser Schutz ist heute für Haus- und Wohnungseingangstüren absolut essenziell.</p>
+            </div>
+
+            <div className="p-6 bg-[oklch(0.968_0.004_260)] rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">5. Wie oft sollte eine mechanische Schließanlage gewartet werden?</h4>
+              <p className="text-sm">Mechanische Zylinder sollten einmal jährlich mit einem speziellen, nicht harzenden Pflegespray (kein Öl oder Graphit!) behandelt werden. Bei stark beanspruchten Anlagen im gewerblichen Bereich empfehlen wir eine professionelle Wartung alle 12 Monate, um Verschleiß frühzeitig zu erkennen und Ausfälle zu vermeiden.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+</Section>
     </>
   );
 }
