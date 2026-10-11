@@ -9,6 +9,7 @@ import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -226,6 +227,7 @@ export default async function ServiceUndTerminPage() {
           lead="Für häufige Leistungen vor Ort erhalten Sie hier eine erste Orientierung. Den verbindlichen Preis nennen wir nach der Prüfung Ihrer Anfrage."
         />
         <div className="mt-8 max-w-3xl">
+          <ServiceBudgetCalculator />
           <ServiceEinsatzRechner
             werte={richtwerte.serviceEinsatz}
             anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"

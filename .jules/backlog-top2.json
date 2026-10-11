@@ -1,0 +1,10 @@
+{
+  "queue": [
+    {
+      "route_path": "app/service-und-termin/page.tsx",
+      "target_word_count": 850,
+      "interactive_module": "ServiceBudgetCalculator",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}
