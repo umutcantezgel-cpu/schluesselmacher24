@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Interaktive Module
+- **ServiceBudgetCalculator**: Ein interaktiver Budget-Rechner unter `app/service-und-termin/page.tsx`, um Kunden einen schnellen Kosten-Richtwert für Service-Einsätze zu geben.

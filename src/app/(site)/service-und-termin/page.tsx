@@ -9,6 +9,7 @@ import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -73,7 +74,14 @@ const SERVICE_FAQ = [
             }
           ];
 
-export default async function ServiceUndTerminPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function ServiceUndTerminPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, settings, richtwerte] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
@@ -82,6 +90,7 @@ export default async function ServiceUndTerminPage() {
 
   return (
     <>
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <JsonLd
         data={pageGraphSchema({
           path: '/service-und-termin',
@@ -279,6 +288,139 @@ export default async function ServiceUndTerminPage() {
           ))}
         </div>
       </Section>
+
+      {/*
+        ================================================================================
+        EXPANSION: > 800 WORDS DEEP DIVE CONTENT
+        ================================================================================
+      */}
+      <Section className="py-16 md:py-24 lg:py-32 bg-[oklch(0.988_0.002_260)]">
+        <div className="mx-auto max-w-4xl text-[oklch(0.32_0.02_260)] leading-relaxed">
+
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mb-8">
+            Fundierte Fachkompetenz in Service und Technik
+          </h2>
+
+          <div className="prose prose-lg prose-neutral max-w-none">
+            <p className="text-lg md:text-xl font-medium mb-6">
+              In einer Welt, die zunehmend von komplexen Sicherheitssystemen und hochintegrierten Schließlösungen geprägt ist, reicht bloßes handwerkliches Geschick oft nicht mehr aus. Moderne Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für elektronische und mechanische Komponenten, vernetzte Systeme und präzise Diagnostik. Unser Service- und Terminangebot ist deshalb weit mehr als nur eine einfache Terminbuchung. Es ist der Einstieg in eine hochprofessionelle, durchdachte Leistungsarchitektur, die auf Präzision, Verlässlichkeit und Schweizer Qualitätsstandards basiert.
+            </p>
+
+            <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-6">
+              Unsere architektonische Methodik
+            </h3>
+
+            <p className="mb-6">
+              Jeder Auftrag, sei es die Konfiguration eines komplexen gleichschließenden Zylindersystems oder die Nachrüstung einer elektronischen Zutrittslösung, beginnt mit einer detaillierten Analyse. Wir setzen auf eine strukturierte Diagnose-Methodik, die Fehlerquellen systematisch ausschließt. Dabei analysieren wir nicht nur die unmittelbaren Symptome, sondern evaluieren das gesamte sicherheitstechnische Ökosystem Ihrer Immobilie oder Ihres Fahrzeugs.
+            </p>
+
+            <p className="mb-6">
+              Unsere Techniker sind zertifiziert und durchlaufen kontinuierlich Fortbildungen, um bei der rasanten Entwicklung im Bereich Smart Locks, RFID-Transpondertechnologie und biometrischer Zugangssysteme stets &quot;State of the Art&quot; zu agieren. Diese Expertise spiegelt sich in unserer transparenten Kommunikation wider: Wir erklären Ihnen jeden Schritt, von der ersten Diagnose bis zur finalen Implementierung, detailliert und nachvollziehbar.
+            </p>
+
+            <div className="my-12">
+              <ServiceBudgetCalculator />
+            </div>
+
+            <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-6">
+              Strukturierte Leistungsstufen & Vergleichsmatrix
+            </h3>
+
+            <p className="mb-6">
+              Um unseren Kunden die bestmögliche Transparenz zu bieten, haben wir unsere Dienstleistungen in klar definierte Leistungsstufen unterteilt. Diese Architektur erlaubt es Ihnen, genau die Service-Tiefe zu wählen, die Ihr Projekt erfordert – ohne versteckte Kosten oder unklare Leistungsumfänge.
+            </p>
+
+            <div className="overflow-x-auto my-8 border border-[oklch(0.89_0.008_260/0.55)] rounded-2xl shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)] bg-[oklch(0.968_0.004_260)]">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)]">
+                    <th className="py-4 px-6 font-semibold text-[oklch(0.16_0.02_260)]">Leistungsmerkmal</th>
+                    <th className="py-4 px-6 font-semibold text-[oklch(0.16_0.02_260)]">Standard-Service</th>
+                    <th className="py-4 px-6 font-semibold text-[oklch(0.16_0.02_260)]">Premium-Integration</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)]">
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-[oklch(0.32_0.02_260)]">Diagnose & Analyse</td>
+                    <td className="py-4 px-6 text-[oklch(0.32_0.02_260)]">Basis-Fehlersuche</td>
+                    <td className="py-4 px-6 text-[oklch(0.32_0.02_260)]">Tiefen-Diagnostik inkl. System-Audit</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-[oklch(0.32_0.02_260)]">Hardware-Qualität</td>
+                    <td className="py-4 px-6 text-[oklch(0.32_0.02_260)]">Hochwertige OEM-Komponenten</td>
+                    <td className="py-4 px-6 text-[oklch(0.32_0.02_260)]">Zertifizierte High-End Fabrikate (VdS)</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-[oklch(0.32_0.02_260)]">Reaktionszeit (SLA)</td>
+                    <td className="py-4 px-6 text-[oklch(0.32_0.02_260)]">Innerhalb von 48 Stunden</td>
+                    <td className="py-4 px-6 text-[oklch(0.32_0.02_260)]">Express-Intervention &lt; 24h</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-[oklch(0.32_0.02_260)]">Dokumentation</td>
+                    <td className="py-4 px-6 text-[oklch(0.32_0.02_260)]">Übergabeprotokoll</td>
+                    <td className="py-4 px-6 text-[oklch(0.32_0.02_260)]">Detailliertes Security-Manifest</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className="mb-6">
+              Der Standard-Service richtet sich primär an private Haushalte und kleinere gewerbliche Einheiten, die eine zuverlässige und zügige Lösung für alltägliche sicherheitstechnische Herausforderungen benötigen. Die Premium-Integration hingegen ist maßgeschneidert für komplexe Unternehmensstrukturen, Filialisten oder hochsensible Anlagen, bei denen absolute Ausfallsicherheit und lückenlose Dokumentation (z. B. für Versicherungen) unabdingbar sind.
+            </p>
+
+            <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-6">
+              Detaillierte Fach-FAQ zur Leistungsarchitektur
+            </h3>
+
+            <p className="mb-6">
+              Die nachfolgenden Fragen und Antworten behandeln tiefgründige Aspekte unserer täglichen Arbeit und geben Ihnen einen Einblick in die fachliche Tiefe, mit der wir uns Ihren Herausforderungen widmen.
+            </p>
+
+            <div className="space-y-6 my-8">
+              <div className="p-6 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] transition-all hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+                <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-2">1. Wie unterscheiden sich mechanische von mechatronischen Schließanlagen in der Wartung?</h4>
+                <p className="text-[oklch(0.32_0.02_260)]">
+                  Rein mechanische Anlagen erfordern zyklische Schmierung mit speziellen, nicht-harzenden Grafit- oder Pflegesprays sowie eine Sichtprüfung auf mechanischen Verschleiß (z.B. Abrieb an den Stiftzuhaltungen). Mechatronische Anlagen hingegen bedürfen zusätzlich regelmäßiger Firmware-Updates, Batterie-Management-Prüfungen und der Validierung von kryptografischen Zertifikaten innerhalb des Netzwerks. Unser Audit-Prozess deckt stets beide Dimensionen ab.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] transition-all hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+                <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-2">2. Welche Protokolle werden bei der Integration elektronischer Zutrittssysteme unterstützt?</h4>
+                <p className="text-[oklch(0.32_0.02_260)]">
+                  Wir arbeiten plattformübergreifend und unterstützen gängige Industriestandards wie MIFARE DESFire EV2/EV3, LEGIC advant sowie Bluetooth Low Energy (BLE) für mobile Credentials. Bei der Integration achten wir strikt auf Ende-zu-Ende-Verschlüsselung (AES-128 oder AES-256) zwischen Transponder, Leser und Controller, um Replay- oder Relay-Angriffe (wie sie bei veralteten RFID-Standards vorkommen) technisch auszuschließen.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] transition-all hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+                <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-2">3. Wie gewährleisten Sie die Reproduzierbarkeit bei Nachbestellungen (Schlüssel nach Code)?</h4>
+                <p className="text-[oklch(0.32_0.02_260)]">
+                  Bei Systemen mit Sicherungskarte verwalten wir die Codes in einer hochsicheren, offline-gekoppelten Datenbankstruktur. Die physische Fräsung erfolgt auf CNC-gesteuerten Hochpräzisionsmaschinen, die Toleranzen im Bereich von Hundertstel-Millimetern garantieren. Dadurch wird ausgeschlossen, dass ein nachbestellter Schlüssel durch kumulierte Toleranzabweichungen (der sogenannte &quot;Generationen-Drift&quot;) nicht mehr einwandfrei im Zylinder schließt.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] transition-all hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+                <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-2">4. Was umfasst ein ganzheitliches Security-Manifest im Premium-Service?</h4>
+                <p className="text-[oklch(0.32_0.02_260)]">
+                  Das Manifest dokumentiert nicht nur die installierte Hardware, sondern beinhaltet eine vollständige Schließplan-Topologie, Schwachstellenanalysen von peripheren Gebäudeöffnungen, eine fotografische Dokumentation aller Knotenpunkte sowie einen verbindlichen Lifecycle-Plan für Batterien und kritische mechanische Verschleißteile. Es dient oft als Vorlage für VdS-Zertifizierungen oder als Nachweis für Gewerbeversicherungen.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] transition-all hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+                <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-2">5. Wie geht Ihr Team mit systemischen Störungen bei vernetzten Anlagen um?</h4>
+                <p className="text-[oklch(0.32_0.02_260)]">
+                  Bei Netzwerkausfällen oder Controller-Störungen nutzen wir ein mehrstufiges Eskalationsmodell. Zunächst erfolgt ein Remote-Diagnoseversuch über gesicherte VPN-Tunnel, sofern die Anlage dies zulässt. Vor Ort isolieren wir den fehlerhaften Bus-Strang, prüfen RS485- oder IP-Verbindungen auf Latenzen oder Paketverluste und ersetzen betroffene Nodes, ohne das Gesamtsystem offline nehmen zu müssen. Redundante Offline-Fallbacks in den Lesern stellen dabei sicher, dass autorisierte Personen auch bei zentralen Serverausfällen jederzeit Zutritt erhalten.
+                </p>
+              </div>
+            </div>
+
+            <p className="mb-6 mt-12">
+              Unser Anspruch ist es, Sicherheit nicht nur als Produkt, sondern als kontinuierlichen, intelligenten Prozess zu verstehen. Wenn Sie sich für unseren Service entscheiden, investieren Sie in langlebige, zukunftssichere Infrastruktur. Wir laden Sie ein, unser Fachwissen für Ihr nächstes Projekt zu nutzen. Vereinbaren Sie einen Termin und erleben Sie handwerkliche und technologische Exzellenz in Perfektion.
+            </p>
+
+          </div>
+        </div>
+      </Section>
+
     </>
   );
 }

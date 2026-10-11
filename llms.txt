@@ -1,0 +1,4 @@
+# llms.txt
+
+## Kürzlich hinzugefügte interaktive Module
+- **ServiceBudgetCalculator**: Integriert in `app/service-und-termin/page.tsx`. Nutzt `useActionState` und `useOptimistic` für Echtzeit-Kalkulationen.
