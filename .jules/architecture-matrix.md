@@ -1,0 +1,56 @@
+# Architecture Matrix
+
+| Route | Status | Current Words | Target Words | Schema | CWV |
+|---|---|---|---|---|---|
+| api/[...slug] | PENDING | 70 | 850 | Planned | Planned |
+| admin/[[...segments]] | PENDING | 99 | 850 | Planned | Planned |
+| / | PENDING | 1130 | 1730 | Planned | Planned |
+| ratgeber | PENDING | 224 | 850 | Planned | Planned |
+| ratgeber/[slug] | PENDING | 359 | 959 | Planned | Planned |
+| schluessel-nach-vorlage | PENDING | 1793 | 2393 | Planned | Planned |
+| schluessel-nach-vorlage/anfrage | PENDING | 221 | 850 | Planned | Planned |
+| warenkorb | PENDING | 261 | 861 | Planned | Planned |
+| kasse | PENDING | 242 | 850 | Planned | Planned |
+| api/kunden-upload | PENDING | 704 | 1304 | Planned | Planned |
+| schluessel-nach-code | PENDING | 497 | 1097 | Planned | Planned |
+| schluessel-nach-code/[slug] | PENDING | 734 | 1334 | Planned | Planned |
+| sicherheitstechnik | PENDING | 1020 | 1620 | Planned | Planned |
+| sicherheitstechnik/[slug] | PENDING | 644 | 1244 | Planned | Planned |
+| sicherheitstechnik/sicherheitscheck | PENDING | 329 | 929 | Planned | Planned |
+| tuer-und-schliesstechnik | PENDING | 1784 | 2384 | Planned | Planned |
+| tuer-und-schliesstechnik/[slug] | PENDING | 493 | 1093 | Planned | Planned |
+| bestellung/[id] | PENDING | 1299 | 1899 | Planned | Planned |
+| gleichschliessende-zylinder | PENDING | 2081 | 2681 | Planned | Planned |
+| gleichschliessende-zylinder/konfigurator | PENDING | 310 | 910 | Planned | Planned |
+| elektronische-zutrittsloesungen | PENDING | 2480 | 3080 | Planned | Planned |
+| elektronische-zutrittsloesungen/konfigurator | PENDING | 382 | 982 | Planned | Planned |
+| schliessanlagen | PENDING | 1873 | 2473 | Planned | Planned |
+| schliessanlagen/konfigurator | PENDING | 368 | 968 | Planned | Planned |
+| service-und-termin | PENDING | 1578 | 2178 | Planned | Planned |
+| service-und-termin/terminstatus | PENDING | 107 | 850 | Planned | Planned |
+| service-und-termin/anfrage | PENDING | 151 | 850 | Planned | Planned |
+| service-und-termin/vor-ort | PENDING | 655 | 1255 | Planned | Planned |
+| service-und-termin/kontakt | PENDING | 474 | 1074 | Planned | Planned |
+| rechtliches/impressum | PENDING | 248 | 850 | Planned | Planned |
+| rechtliches/cookie-einstellungen | PENDING | 228 | 850 | Planned | Planned |
+| rechtliches/versand-und-zahlung | PENDING | 427 | 1027 | Planned | Planned |
+| rechtliches/widerruf | PENDING | 370 | 970 | Planned | Planned |
+| rechtliches/agb | PENDING | 416 | 1016 | Planned | Planned |
+| rechtliches/datenschutz | PENDING | 715 | 1315 | Planned | Planned |
+| artikel | PENDING | 656 | 1256 | Planned | Planned |
+| artikel/[slug] | PENDING | 934 | 1534 | Planned | Planned |
+| standorte | PENDING | 249 | 850 | Planned | Planned |
+| standorte/[city] | PENDING | 405 | 1005 | Planned | Planned |
+| autoschluessel | PENDING | 2002 | 2602 | Planned | Planned |
+| autoschluessel/marken | PENDING | 718 | 1318 | Planned | Planned |
+| autoschluessel/marken/[make] | PENDING | 979 | 1579 | Planned | Planned |
+| autoschluessel/marken/[make]/[model] | PENDING | 1223 | 1823 | Planned | Planned |
+| autoschluessel/funkschluessel | PENDING | 1091 | 1691 | Planned | Planned |
+| autoschluessel/programmieren | PENDING | 1222 | 1822 | Planned | Planned |
+| autoschluessel/anfrage | PENDING | 518 | 1118 | Planned | Planned |
+| autoschluessel/kopieren | PENDING | 1133 | 1733 | Planned | Planned |
+| autoschluessel/nachmachen | PENDING | 1189 | 1789 | Planned | Planned |
+| autoschluessel/smart-key | PENDING | 1207 | 1807 | Planned | Planned |
+| autoschluessel/schluesselbart-fraesen | PENDING | 1042 | 1642 | Planned | Planned |
+| autoschluessel/fahrzeugoeffnung | PENDING | 1121 | 1721 | Planned | Planned |
+| llms.txt | PENDING | 145 | 850 | Planned | Planned |

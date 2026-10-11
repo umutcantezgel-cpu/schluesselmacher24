@@ -1,0 +1,1263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-11T13:28:33.815735",
+  "total_existing_routes": 52,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "api/[...slug]",
+      "source_file": "src/app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Api' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Api",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Api"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ApiInteractiveWidget",
+        "target_file": "src/components/interactive/api-widget.tsx",
+        "action_file": "src/actions/api-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Admin' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Admin",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Admin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminInteractiveWidget",
+        "target_file": "src/components/interactive/admin-widget.tsx",
+        "action_file": "src/actions/admin-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 1730,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: '{page?.headline ?? 'Autoschlüssel nachmachen und programmieren'}'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Home",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Home"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeInteractiveWidget",
+        "target_file": "src/components/interactive/home-widget.tsx",
+        "action_file": "src/actions/home-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Ratgeber' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: '{group.area.label}'",
+        "FAQ und semantische Erweiterung im Kontext Ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberInteractiveWidget",
+        "target_file": "src/components/interactive/ratgeber-widget.tsx",
+        "action_file": "src/actions/ratgeber-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 959,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Ratgeber' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: '{block.heading}'",
+        "FAQ und semantische Erweiterung im Kontext Ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberInteractiveWidget",
+        "target_file": "src/components/interactive/ratgeber-widget.tsx",
+        "action_file": "src/actions/ratgeber-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2393,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Schluessel Nach Vorlage'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Schluessel Nach Vorlage",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Schluessel Nach Vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageInteractiveWidget",
+        "target_file": "src/components/interactive/schluessel-nach-vorlage-widget.tsx",
+        "action_file": "src/actions/schluessel-nach-vorlage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Anfrage' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Anfrage",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageInteractiveWidget",
+        "target_file": "src/components/interactive/anfrage-widget.tsx",
+        "action_file": "src/actions/anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 861,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Warenkorb' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Passend dazu'",
+        "FAQ und semantische Erweiterung im Kontext Warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbInteractiveWidget",
+        "target_file": "src/components/interactive/warenkorb-widget.tsx",
+        "action_file": "src/actions/warenkorb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Kasse' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Rechtliche Hinweise'",
+        "FAQ und semantische Erweiterung im Kontext Kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseInteractiveWidget",
+        "target_file": "src/components/interactive/kasse-widget.tsx",
+        "action_file": "src/actions/kasse-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "api/kunden-upload",
+      "source_file": "src/app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 1304,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Kunden Upload' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Kunden Upload",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Kunden Upload"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KundenUploadInteractiveWidget",
+        "target_file": "src/components/interactive/kunden-upload-widget.tsx",
+        "action_file": "src/actions/kunden-upload-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1097,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Schluessel Nach Code' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Schluessel Nach Code",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Schluessel Nach Code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeInteractiveWidget",
+        "target_file": "src/components/interactive/schluessel-nach-code-widget.tsx",
+        "action_file": "src/actions/schluessel-nach-code-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1334,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Schluessel Nach Code' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Was Sie erhalten'",
+        "FAQ und semantische Erweiterung zu: 'Technische Angaben'"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeInteractiveWidget",
+        "target_file": "src/components/interactive/schluessel-nach-code-widget.tsx",
+        "action_file": "src/actions/schluessel-nach-code-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1620,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Sicherheitstechnik'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Sicherheitstechnik",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikInteractiveWidget",
+        "target_file": "src/components/interactive/sicherheitstechnik-widget.tsx",
+        "action_file": "src/actions/sicherheitstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1244,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Sicherheitstechnik' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Sicherheitstechnik",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikInteractiveWidget",
+        "target_file": "src/components/interactive/sicherheitstechnik-widget.tsx",
+        "action_file": "src/actions/sicherheitstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 929,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Sicherheitscheck' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Sicherheitscheck",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitscheckInteractiveWidget",
+        "target_file": "src/components/interactive/sicherheitscheck-widget.tsx",
+        "action_file": "src/actions/sicherheitscheck-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2384,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Regulatorik: Fluchtwege und Brandschutz'",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Regulatorik: Fluchtwege und Brandschutz'",
+        "FAQ und semantische Erweiterung im Kontext Tuer Und Schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikInteractiveWidget",
+        "target_file": "src/components/interactive/tuer-und-schliesstechnik-widget.tsx",
+        "action_file": "src/actions/tuer-und-schliesstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1093,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Tuer Und Schliesstechnik' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Tuer Und Schliesstechnik",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Tuer Und Schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikInteractiveWidget",
+        "target_file": "src/components/interactive/tuer-und-schliesstechnik-widget.tsx",
+        "action_file": "src/actions/tuer-und-schliesstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1899,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Bestellung'",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Bestellte Artikel'",
+        "FAQ und semantische Erweiterung zu: 'Ihre Vorgangsnummer'"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "BestellungInteractiveWidget",
+        "target_file": "src/components/interactive/bestellung-widget.tsx",
+        "action_file": "src/actions/bestellung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2681,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Gleichschliessende Zylinder'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Gleichschliessende Zylinder",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Gleichschliessende Zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderInteractiveWidget",
+        "target_file": "src/components/interactive/gleichschliessende-zylinder-widget.tsx",
+        "action_file": "src/actions/gleichschliessende-zylinder-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 910,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Konfigurator' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Wenn Sie vorher etwas nachlesen möchten'",
+        "FAQ und semantische Erweiterung im Kontext Konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorInteractiveWidget",
+        "target_file": "src/components/interactive/konfigurator-widget.tsx",
+        "action_file": "src/actions/konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3080,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Elektronische Zutrittsloesungen'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Elektronische Zutrittsloesungen",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Elektronische Zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenInteractiveWidget",
+        "target_file": "src/components/interactive/elektronische-zutrittsloesungen-widget.tsx",
+        "action_file": "src/actions/elektronische-zutrittsloesungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 982,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Konfigurator' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Passende Seiten'",
+        "FAQ und semantische Erweiterung im Kontext Konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorInteractiveWidget",
+        "target_file": "src/components/interactive/konfigurator-widget.tsx",
+        "action_file": "src/actions/konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2473,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Schliessanlagen'",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Wenige Türen, ein Schlüssel für alles?'",
+        "FAQ und semantische Erweiterung zu: 'Passend dazu'"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenInteractiveWidget",
+        "target_file": "src/components/interactive/schliessanlagen-widget.tsx",
+        "action_file": "src/actions/schliessanlagen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 968,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Konfigurator' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Noch unsicher?'",
+        "FAQ und semantische Erweiterung im Kontext Konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorInteractiveWidget",
+        "target_file": "src/components/interactive/konfigurator-widget.tsx",
+        "action_file": "src/actions/konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2178,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Service Und Termin'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Service Und Termin",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Service Und Termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminInteractiveWidget",
+        "target_file": "src/components/interactive/service-und-termin-widget.tsx",
+        "action_file": "src/actions/service-und-termin-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Terminstatus' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Terminstatus",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminstatusInteractiveWidget",
+        "target_file": "src/components/interactive/terminstatus-widget.tsx",
+        "action_file": "src/actions/terminstatus-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Anfrage' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Anfrage",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageInteractiveWidget",
+        "target_file": "src/components/interactive/anfrage-widget.tsx",
+        "action_file": "src/actions/anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1255,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Vor Ort' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Vor Ort",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Vor Ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VorOrtInteractiveWidget",
+        "target_file": "src/components/interactive/vor-ort-widget.tsx",
+        "action_file": "src/actions/vor-ort-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1074,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Kontakt' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Kontakt",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KontaktInteractiveWidget",
+        "target_file": "src/components/interactive/kontakt-widget.tsx",
+        "action_file": "src/actions/kontakt-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Impressum' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Anbieter'",
+        "FAQ und semantische Erweiterung zu: 'Vertreten durch'"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ImpressumInteractiveWidget",
+        "target_file": "src/components/interactive/impressum-widget.tsx",
+        "action_file": "src/actions/impressum-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Cookie-Einstellungen' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Was genau gespeichert wird'",
+        "FAQ und semantische Erweiterung zu: 'Sobald weitere Dienste hinzukommen'"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CookieEinstellungenInteractiveWidget",
+        "target_file": "src/components/interactive/cookie-einstellungen-widget.tsx",
+        "action_file": "src/actions/cookie-einstellungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1027,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Zahlung und Versand' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Versandarten'",
+        "FAQ und semantische Erweiterung zu: 'Lieferzeiten'"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VersandUndZahlungInteractiveWidget",
+        "target_file": "src/components/interactive/versand-und-zahlung-widget.tsx",
+        "action_file": "src/actions/versand-und-zahlung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 970,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Widerruf und Rückgabe' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: '1. Widerrufsbelehrung für Verbraucherinnen und Verbraucher'",
+        "FAQ und semantische Erweiterung zu: '2. Muster-Widerrufsformular'"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WiderrufInteractiveWidget",
+        "target_file": "src/components/interactive/widerruf-widget.tsx",
+        "action_file": "src/actions/widerruf-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 1016,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Allgemeine Geschäftsbedingungen' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: '1. Geltungsbereich und Vertragspartner'",
+        "FAQ und semantische Erweiterung zu: '2. Vertragsschluss'"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AgbInteractiveWidget",
+        "target_file": "src/components/interactive/agb-widget.tsx",
+        "action_file": "src/actions/agb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1315,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Datenschutzerklärung' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: '1. Verantwortliche Stelle'",
+        "FAQ und semantische Erweiterung zu: '2. Datenschutzbeauftragte Person'"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DatenschutzInteractiveWidget",
+        "target_file": "src/components/interactive/datenschutz-widget.tsx",
+        "action_file": "src/actions/datenschutz-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1256,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Artikel' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Derzeit sind hier keine Artikel eingestellt.'",
+        "FAQ und semantische Erweiterung im Kontext Artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelInteractiveWidget",
+        "target_file": "src/components/interactive/artikel-widget.tsx",
+        "action_file": "src/actions/artikel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1534,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Artikel'",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Beschreibung'",
+        "FAQ und semantische Erweiterung zu: 'Eigenschaften'"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelInteractiveWidget",
+        "target_file": "src/components/interactive/artikel-widget.tsx",
+        "action_file": "src/actions/artikel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Standorte' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Standorte",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteInteractiveWidget",
+        "target_file": "src/components/interactive/standorte-widget.tsx",
+        "action_file": "src/actions/standorte-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1005,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Standorte' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Standorte",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteInteractiveWidget",
+        "target_file": "src/components/interactive/standorte-widget.tsx",
+        "action_file": "src/actions/standorte-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2602,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Autoschluessel'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Autoschluessel",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselInteractiveWidget",
+        "target_file": "src/components/interactive/autoschluessel-widget.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1318,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Marken' auf Awwwards-Niveau",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Passend dazu'",
+        "FAQ und semantische Erweiterung im Kontext Marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenInteractiveWidget",
+        "target_file": "src/components/interactive/marken-widget.tsx",
+        "action_file": "src/actions/marken-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1579,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Marken'",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Passend dazu'",
+        "FAQ und semantische Erweiterung im Kontext Marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenInteractiveWidget",
+        "target_file": "src/components/interactive/marken-widget.tsx",
+        "action_file": "src/actions/marken-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1823,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Marken'",
+        "Detaillierte Ausarbeitung des Abschnitts: 'Passend dazu'",
+        "FAQ und semantische Erweiterung im Kontext Marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenInteractiveWidget",
+        "target_file": "src/components/interactive/marken-widget.tsx",
+        "action_file": "src/actions/marken-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1691,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Funkschluessel'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Funkschluessel",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FunkschluesselInteractiveWidget",
+        "target_file": "src/components/interactive/funkschluessel-widget.tsx",
+        "action_file": "src/actions/funkschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1822,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Programmieren'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Programmieren",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Programmieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ProgrammierenInteractiveWidget",
+        "target_file": "src/components/interactive/programmieren-widget.tsx",
+        "action_file": "src/actions/programmieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1118,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Anfrage' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Anfrage",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageInteractiveWidget",
+        "target_file": "src/components/interactive/anfrage-widget.tsx",
+        "action_file": "src/actions/anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1733,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Kopieren'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Kopieren",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Kopieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KopierenInteractiveWidget",
+        "target_file": "src/components/interactive/kopieren-widget.tsx",
+        "action_file": "src/actions/kopieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1789,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Nachmachen'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Nachmachen",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "NachmachenInteractiveWidget",
+        "target_file": "src/components/interactive/nachmachen-widget.tsx",
+        "action_file": "src/actions/nachmachen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1807,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Smart Key'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Smart Key",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Smart Key"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartKeyInteractiveWidget",
+        "target_file": "src/components/interactive/smart-key-widget.tsx",
+        "action_file": "src/actions/smart-key-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1642,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Schluesselbart Fraesen'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Schluesselbart Fraesen",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Schluesselbart Fraesen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselbartFraesenInteractiveWidget",
+        "target_file": "src/components/interactive/schluesselbart-fraesen-widget.tsx",
+        "action_file": "src/actions/schluesselbart-fraesen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1721,
+      "content_expansion_topics": [
+        "Strukturierte Vertiefung der Hauptthematik: 'Fahrzeugoeffnung'",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Fahrzeugoeffnung",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugoeffnungInteractiveWidget",
+        "target_file": "src/components/interactive/fahrzeugoeffnung-widget.tsx",
+        "action_file": "src/actions/fahrzeugoeffnung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "llms.txt",
+      "source_file": "src/app/llms.txt/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Thin Content: 'Llms.Txt' auf Awwwards-Niveau",
+        "Implementierung von Kern-Sektionen (z.B. Leistungen) für Llms.Txt",
+        "Aufbau einer SEO-optimierten FAQ-Sektion für Llms.Txt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Llms.TxtInteractiveWidget",
+        "target_file": "src/components/interactive/llms.txt-widget.tsx",
+        "action_file": "src/actions/llms.txt-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
