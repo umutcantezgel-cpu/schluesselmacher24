@@ -1,0 +1,6 @@
+# SCHLÜSSELMACHER24
+
+> Fachbetrieb für Autoschlüssel, Schlüssel nach Code, Schließanlagen, etc.
+
+## Architektur Blueprint
+Siehe `.jules/architecture-matrix.md` und `.jules/revolution-plan.json` für Details zur Transformation.
