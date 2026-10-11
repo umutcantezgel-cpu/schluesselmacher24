@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Audit
+
+The codebase has been audited for compliance with Next.js 16+, React 19.2+, and Swiss Light Design DOCTRINE. Check `.jules/architecture-matrix.md` for details.
