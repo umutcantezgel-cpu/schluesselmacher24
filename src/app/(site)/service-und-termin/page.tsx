@@ -9,9 +9,16 @@ import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('service-und-termin');
@@ -73,7 +80,11 @@ const SERVICE_FAQ = [
             }
           ];
 
-export default async function ServiceUndTerminPage() {
+export default async function ServiceUndTerminPage({ params, searchParams }: Props) {
+
+  const resolvedParams = await params;
+
+  const resolvedSearch = await searchParams;
   const [page, settings, richtwerte] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
@@ -81,7 +92,7 @@ export default async function ServiceUndTerminPage() {
   ]);
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <JsonLd
         data={pageGraphSchema({
           path: '/service-und-termin',
@@ -169,6 +180,8 @@ export default async function ServiceUndTerminPage() {
       </Section>
 
 
+
+
       <Section>
         <SectionHeading
           eyebrow="Architektonische Methodik"
@@ -176,48 +189,107 @@ export default async function ServiceUndTerminPage() {
           lead="Wir verstehen Schließtechnik und Sicherheitssysteme nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Langlebigkeit erfüllen müssen."
         />
 
-        <div className="mt-8 prose-sm24 max-w-none space-y-6">
-          <p>
-            Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
-          </p>
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-7 prose-sm24 max-w-none text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <p className="text-lg text-[oklch(0.16_0.02_260)] font-medium mb-6">
+              Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen.
+            </p>
+            <p>
+              Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
+            </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">1. Die Phasen unserer Service-Implementierung</h3>
-          <p>
-            Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li><strong>Initiierung und Bedarfsanalyse:</strong> Im ersten Schritt erfassen wir nicht nur die offensichtlichen Anforderungen, sondern analysieren auch die verborgenen Risikofaktoren. Dies beinhaltet die Bewertung von Türbeschaffenheiten, Zylindermaßen, elektronischen Schnittstellen und den allgemeinen architektonischen Gegebenheiten vor Ort.</li>
-            <li><strong>Projektierung und Lösungsdesign:</strong> Basierend auf der Analyse entwickeln wir ein fundiertes Konzept. Bei Schließanlagen bedeutet dies die Erstellung präziser Schließpläne unter Berücksichtigung komplexer Hierarchien und Zutrittsberechtigungen. Bei elektronischen Systemen planen wir die Vernetzung, Stromversorgung und Integration in bestehende IT- oder Smart-Home-Umgebungen.</li>
-            <li><strong>Präzise Fertigung und Vorkonfiguration:</strong> Bevor wir vor Ort tätig werden, bereiten wir alle Komponenten in unserer Fachwerkstatt vor. Zylinder werden nach Maß gefertigt, Transponder codiert und elektronische Komponenten vorab getestet, um die Ausfallzeiten vor Ort auf ein absolutes Minimum zu reduzieren.</li>
-            <li><strong>Fachgerechte Montage und Integration:</strong> Unsere Techniker installieren die Systeme mit höchster handwerklicher Präzision. Dies umfasst die fachgerechte Montage mechanischer Sicherungen ebenso wie die Verkabelung und Inbetriebnahme komplexer elektronischer Anlagen, stets unter Einhaltung geltender Normen und Sicherheitsrichtlinien (z.B. DIN 18252 für Profilzylinder, DIN EN 1303).</li>
-            <li><strong>Dokumentation und Systemübergabe:</strong> Jedes Projekt schließt mit einer umfassenden Dokumentation ab. Sie erhalten Sicherungskarten, detaillierte Schließpläne, Bedienungsanleitungen und Protokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.</li>
-          </ul>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-10 mb-4">1. Die Phasen unserer Service-Implementierung</h3>
+            <p className="mb-4">
+              Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
+            </p>
+            <ul className="list-disc pl-5 space-y-3 mb-8">
+              <li><strong>Initiierung und Bedarfsanalyse:</strong> Im ersten Schritt erfassen wir nicht nur die offensichtlichen Anforderungen, sondern analysieren auch die verborgenen Risikofaktoren. Dies beinhaltet die Bewertung von Türbeschaffenheiten, Zylindermaßen, elektronischen Schnittstellen und den allgemeinen architektonischen Gegebenheiten vor Ort.</li>
+              <li><strong>Projektierung und Lösungsdesign:</strong> Basierend auf der Analyse entwickeln wir ein fundiertes Konzept. Bei Schließanlagen bedeutet dies die Erstellung präziser Schließpläne unter Berücksichtigung komplexer Hierarchien und Zutrittsberechtigungen. Bei elektronischen Systemen planen wir die Vernetzung, Stromversorgung und Integration in bestehende IT- oder Smart-Home-Umgebungen.</li>
+              <li><strong>Präzise Fertigung und Vorkonfiguration:</strong> Bevor wir vor Ort tätig werden, bereiten wir alle Komponenten in unserer Fachwerkstatt vor. Zylinder werden nach Maß gefertigt, Transponder codiert und elektronische Komponenten vorab getestet, um die Ausfallzeiten vor Ort auf ein absolutes Minimum zu reduzieren.</li>
+              <li><strong>Fachgerechte Montage und Integration:</strong> Unsere Techniker installieren die Systeme mit höchster handwerklicher Präzision. Dies umfasst die fachgerechte Montage mechanischer Sicherungen ebenso wie die Verkabelung und Inbetriebnahme komplexer elektronischer Anlagen, stets unter Einhaltung geltender Normen und Sicherheitsrichtlinien (z.B. DIN 18252 für Profilzylinder, DIN EN 1303).</li>
+              <li><strong>Dokumentation und Systemübergabe:</strong> Jedes Projekt schließt mit einer umfassenden Dokumentation ab. Sie erhalten Sicherungskarten, detaillierte Schließpläne, Bedienungsanleitungen und Protokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.</li>
+            </ul>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">2. Technologische Standards und Materialqualität</h3>
-          <p>
-            Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
-          </p>
-          <p>
-            Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
-          </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-10 mb-4">2. Technologische Standards und Materialqualität</h3>
+            <p className="mb-4">
+              Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer &mdash; die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
+            </p>
+            <p className="mb-8">
+              Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
+            </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">3. Nachhaltigkeit und Lebenszyklus-Management</h3>
-          <p>
-            Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen.
-          </p>
-          <p>
-            Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
-          </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-10 mb-4">3. Nachhaltigkeit und Lebenszyklus-Management</h3>
+            <p className="mb-4">
+              Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern &mdash; sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen &mdash; lassen sich unsere Systeme effizient anpassen.
+            </p>
+            <p className="mb-8">
+              Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
+            </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">4. Gewerbeobjekte und öffentliche Einrichtungen</h3>
-          <p>
-            Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
-          </p>
-          <p>
-            Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
-          </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-10 mb-4">4. Gewerbeobjekte und öffentliche Einrichtungen</h3>
+            <p className="mb-4">
+              Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
+            </p>
+            <p>
+              Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
+            </p>
+          </div>
+          <div className="lg:col-span-5 relative">
+            <div className="sticky top-24">
+              <ServiceBudgetCalculator />
+            </div>
+          </div>
         </div>
       </Section>
+
+      <Section className="bg-[oklch(0.988_0.002_260)] py-16 md:py-24 border-y border-[oklch(0.89_0.008_260/0.55)]">
+        <SectionHeading
+          eyebrow="Leistungsstufen"
+          title="Strukturierte Service-Tiers für jede Anforderung"
+          lead="Wir bieten transparente und anpassbare Leistungspakete, die genau auf die Größe und Komplexität Ihres Projekts zugeschnitten sind. Jedes Tier garantiert unseren hohen Qualitätsstandard, skaliert jedoch in Umfang und Reaktionszeit."
+        />
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+          {[
+            {
+              tier: 'Standard',
+              target: 'Privathaushalte & kleine Gewerbe',
+              features: ['Bedarfsanalyse vor Ort', 'Mechanische Grundsicherung', 'Standard-Dokumentation', 'Reaktionszeit: 48h'],
+              isPopular: false
+            },
+            {
+              tier: 'Professional',
+              target: 'Mittelständische Unternehmen',
+              features: ['Detaillierte Sicherheitsarchitektur', 'Mechatronische Integration', 'Erweiterte Schließpläne & Protokolle', 'Wartungsintervalle (jährlich)', 'Reaktionszeit: 24h'],
+              isPopular: true
+            },
+            {
+              tier: 'Enterprise',
+              target: 'Industrie & öffentliche Einrichtungen',
+              features: ['Ganzheitliches Lifecycle-Management', 'Vollintegrierte Gebäudeleittechnik', 'Fluchtweg- & Brandschutzplanung', '24/7 SLA-Support', 'Reaktionszeit: < 4h'],
+              isPopular: false
+            }
+          ].map((plan, idx) => (
+            <div key={idx} className={`relative rounded-2xl p-8 grid grid-rows-[auto_auto_1fr] border ${plan.isPopular ? 'border-[oklch(0.52_0.24_260)] bg-white shadow-[0_12px_32px_-4px_oklch(0.16_0.02_260/0.08)]' : 'border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] shadow-sm'}`}>
+              {plan.isPopular && <div className="absolute top-0 right-8 -translate-y-1/2 bg-[oklch(0.52_0.24_260)] text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Meistgewählt</div>}
+              <h4 className="text-2xl font-bold tracking-tight text-[oklch(0.16_0.02_260)] mb-2">{plan.tier}</h4>
+              <p className="text-sm text-[oklch(0.52_0.015_260)] mb-8">{plan.target}</p>
+              <ul className="space-y-4">
+                {plan.features.map((feature, fIdx) => (
+                  <li key={fIdx} className="flex items-start text-sm text-[oklch(0.32_0.02_260)] leading-tight">
+                    <svg className="w-5 h-5 text-[oklch(0.52_0.24_260)] mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+
+
 
       <Section tone="muted" id="orientierung">
         <SectionHeading
@@ -279,6 +351,6 @@ export default async function ServiceUndTerminPage() {
           ))}
         </div>
       </Section>
-    </>
+    </main>
   );
 }

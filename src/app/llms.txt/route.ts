@@ -32,6 +32,10 @@ export function GET() {
     `- [Einsatzgebiete](${site}/standorte): Regionen mit Vor-Ort-Leistungen`,
     `- [Zahlung und Versand](${site}/rechtliches/versand-und-zahlung): Versandarten, Kosten und Anzahlung`,
     '',
+    '## Interaktive Module',
+    '',
+    `- [Service-Budget Kalkulator](${site}/service-und-termin): Erlaubt Kunden, eine erste unverbindliche Kostenschätzung für komplexe Service- und Projektanforderungen zu erhalten.`,
+    '',
   ].join('\n');
 
   return new Response(body, {
