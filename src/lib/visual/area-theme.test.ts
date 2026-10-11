@@ -5,12 +5,12 @@ import { describe, expect, it } from 'vitest';
 import { AREA_KEYS } from '@/lib/server/record-schema';
 import { AREA_THEMES, DEFAULT_AREA_THEME, contrastRatio, type AreaTheme } from './area-theme';
 
-const WHITE = '0 0% 100%';
+const WHITE = '1 0 0';
 
 function checkTheme(name: string, theme: AreaTheme) {
-  it(`${name}: Text in Akzentfarbe ist lesbar (≥ 4,5:1)`, () => {
-    expect(contrastRatio(theme.strong, WHITE)).toBeGreaterThanOrEqual(4.5);
-    expect(contrastRatio(theme.strong, theme.soft)).toBeGreaterThanOrEqual(4.5);
+  it(`${name}: Text in Akzentfarbe ist lesbar (≥ 7:1)`, () => {
+    expect(contrastRatio(theme.strong, WHITE)).toBeGreaterThanOrEqual(7);
+    expect(contrastRatio(theme.strong, theme.soft)).toBeGreaterThanOrEqual(7);
   });
 
   it(`${name}: Grafikfarbe hebt sich ab (≥ 3:1)`, () => {
@@ -49,7 +49,7 @@ describe('Grundfarben in globals.css', () => {
     ['success', 'success-soft'],
     ['warning', 'warning-soft'],
     ['danger', 'danger-soft'],
-  ])('%s auf %s ist lesbar (≥ 4,5:1)', (fg, bg) => {
-    expect(contrastRatio(token(fg), token(bg))).toBeGreaterThanOrEqual(4.5);
+  ])('%s auf %s ist lesbar (≥ 7:1)', (fg, bg) => {
+    expect(contrastRatio(token(fg), token(bg))).toBeGreaterThanOrEqual(7);
   });
 });

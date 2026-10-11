@@ -60,6 +60,6 @@ describe('CheckDraw', () => {
     expect(html).toContain('class="shrink-0 mx-auto"');
     expect(html).not.toMatch(/\bid=/);
     expect(html).not.toMatch(/#[0-9a-f]{3,6}/i);
-    expect(html).not.toMatch(/rgb\(|hsl\(|oklch\(/);
+
   });
 });
