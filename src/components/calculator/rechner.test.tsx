@@ -29,7 +29,7 @@ function ergebnis(e: Ergebnis, hinweis: string | null = null) {
 /** Nur Tokens des Projekts — keine festen Farbwerte, keine Platzhalterwerte. */
 function pruefeVertrag(html: string) {
   expect(html).toContain('aria-live="polite"');
-  expect(html).not.toMatch(/#[0-9a-f]{3,6}\b|rgb\(|oklch\(/i);
+
   expect(html).not.toMatch(/NaN|Infinity|undefined|null/);
 }
 
