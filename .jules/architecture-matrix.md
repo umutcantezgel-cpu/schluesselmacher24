@@ -1,0 +1,56 @@
+# Architecture Matrix
+
+| URL | Source File (Stripped) | Current Words | Target Words | Interactive Module | Status | Schema |
+|---|---|---|---|---|---|---|
+| / | app/page.tsx | 1130 | 1980 | EnhancedModule1 | PENDING | FAQPage |
+| /llms.txt | app/llms.txt/route.ts | 145 | 995 | EnhancedModule2 | PENDING | FAQPage |
+| /api/[...slug] | app/api/[...slug]/route.ts | 70 | 920 | EnhancedModule3 | PENDING | FAQPage |
+| /admin/segments | app/admin/[[...segments]]/page.tsx | 99 | 949 | EnhancedModule4 | PENDING | FAQPage |
+| /ratgeber | app/ratgeber/page.tsx | 224 | 1074 | EnhancedModule5 | PENDING | FAQPage |
+| /schluessel-nach-vorlage | app/schluessel-nach-vorlage/page.tsx | 1793 | 2643 | EnhancedModule6 | PENDING | FAQPage |
+| /warenkorb | app/warenkorb/page.tsx | 261 | 1111 | EnhancedModule7 | PENDING | FAQPage |
+| /kasse | app/kasse/page.tsx | 242 | 1092 | EnhancedModule8 | PENDING | FAQPage |
+| /schluessel-nach-code | app/schluessel-nach-code/page.tsx | 497 | 1347 | EnhancedModule9 | PENDING | FAQPage |
+| /sicherheitstechnik | app/sicherheitstechnik/page.tsx | 1020 | 1870 | EnhancedModule10 | PENDING | FAQPage |
+| /tuer-und-schliesstechnik | app/tuer-und-schliesstechnik/page.tsx | 1784 | 2634 | EnhancedModule11 | PENDING | FAQPage |
+| /gleichschliessende-zylinder | app/gleichschliessende-zylinder/page.tsx | 2081 | 2931 | EnhancedModule12 | PENDING | FAQPage |
+| /elektronische-zutrittsloesungen | app/elektronische-zutrittsloesungen/page.tsx | 2480 | 3330 | EnhancedModule13 | PENDING | FAQPage |
+| /schliessanlagen | app/schliessanlagen/page.tsx | 1873 | 2723 | EnhancedModule14 | PENDING | FAQPage |
+| /service-und-termin | app/service-und-termin/page.tsx | 1578 | 2428 | EnhancedModule15 | PENDING | FAQPage |
+| /artikel | app/artikel/page.tsx | 656 | 1506 | EnhancedModule16 | PENDING | FAQPage |
+| /standorte | app/standorte/page.tsx | 249 | 1099 | EnhancedModule17 | PENDING | FAQPage |
+| /autoschluessel | app/autoschluessel/page.tsx | 2002 | 2852 | EnhancedModule18 | PENDING | FAQPage |
+| /ratgeber/[slug] | app/ratgeber/[slug]/page.tsx | 359 | 1209 | EnhancedModule19 | PENDING | FAQPage |
+| /schluessel-nach-vorlage/anfrage | app/schluessel-nach-vorlage/anfrage/page.tsx | 221 | 1071 | EnhancedModule20 | PENDING | FAQPage |
+| /api/kunden-upload | app/api/kunden-upload/route.ts | 704 | 1554 | EnhancedModule21 | PENDING | FAQPage |
+| /schluessel-nach-code/[slug] | app/schluessel-nach-code/[slug]/page.tsx | 734 | 1584 | EnhancedModule22 | PENDING | FAQPage |
+| /sicherheitstechnik/[slug] | app/sicherheitstechnik/[slug]/page.tsx | 644 | 1494 | EnhancedModule23 | PENDING | FAQPage |
+| /sicherheitstechnik/sicherheitscheck | app/sicherheitstechnik/sicherheitscheck/page.tsx | 329 | 1179 | EnhancedModule24 | PENDING | FAQPage |
+| /tuer-und-schliesstechnik/[slug] | app/tuer-und-schliesstechnik/[slug]/page.tsx | 493 | 1343 | EnhancedModule25 | PENDING | FAQPage |
+| /bestellung/[id] | app/bestellung/[id]/page.tsx | 1299 | 2149 | EnhancedModule26 | PENDING | FAQPage |
+| /gleichschliessende-zylinder/konfigurator | app/gleichschliessende-zylinder/konfigurator/page.tsx | 310 | 1160 | EnhancedModule27 | PENDING | FAQPage |
+| /elektronische-zutrittsloesungen/konfigurator | app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 382 | 1232 | EnhancedModule28 | PENDING | FAQPage |
+| /schliessanlagen/konfigurator | app/schliessanlagen/konfigurator/page.tsx | 368 | 1218 | EnhancedModule29 | PENDING | FAQPage |
+| /service-und-termin/terminstatus | app/service-und-termin/terminstatus/page.tsx | 107 | 957 | EnhancedModule30 | PENDING | FAQPage |
+| /service-und-termin/anfrage | app/service-und-termin/anfrage/page.tsx | 151 | 1001 | EnhancedModule31 | PENDING | FAQPage |
+| /service-und-termin/vor-ort | app/service-und-termin/vor-ort/page.tsx | 655 | 1505 | EnhancedModule32 | PENDING | FAQPage |
+| /service-und-termin/kontakt | app/service-und-termin/kontakt/page.tsx | 474 | 1324 | EnhancedModule33 | PENDING | FAQPage |
+| /rechtliches/impressum | app/rechtliches/impressum/page.tsx | 248 | 1098 | EnhancedModule34 | PENDING | FAQPage |
+| /rechtliches/cookie-einstellungen | app/rechtliches/cookie-einstellungen/page.tsx | 228 | 1078 | EnhancedModule35 | PENDING | FAQPage |
+| /rechtliches/versand-und-zahlung | app/rechtliches/versand-und-zahlung/page.tsx | 427 | 1277 | EnhancedModule36 | PENDING | FAQPage |
+| /rechtliches/widerruf | app/rechtliches/widerruf/page.tsx | 370 | 1220 | EnhancedModule37 | PENDING | FAQPage |
+| /rechtliches/agb | app/rechtliches/agb/page.tsx | 416 | 1266 | EnhancedModule38 | PENDING | FAQPage |
+| /rechtliches/datenschutz | app/rechtliches/datenschutz/page.tsx | 715 | 1565 | EnhancedModule39 | PENDING | FAQPage |
+| /artikel/[slug] | app/artikel/[slug]/page.tsx | 934 | 1784 | EnhancedModule40 | PENDING | FAQPage |
+| /standorte/[city] | app/standorte/[city]/page.tsx | 405 | 1255 | EnhancedModule41 | PENDING | FAQPage |
+| /autoschluessel/marken | app/autoschluessel/marken/page.tsx | 718 | 1568 | EnhancedModule42 | PENDING | FAQPage |
+| /autoschluessel/funkschluessel | app/autoschluessel/funkschluessel/page.tsx | 1091 | 1941 | EnhancedModule43 | PENDING | FAQPage |
+| /autoschluessel/programmieren | app/autoschluessel/programmieren/page.tsx | 1222 | 2072 | EnhancedModule44 | PENDING | FAQPage |
+| /autoschluessel/anfrage | app/autoschluessel/anfrage/page.tsx | 518 | 1368 | EnhancedModule45 | PENDING | FAQPage |
+| /autoschluessel/kopieren | app/autoschluessel/kopieren/page.tsx | 1133 | 1983 | EnhancedModule46 | PENDING | FAQPage |
+| /autoschluessel/nachmachen | app/autoschluessel/nachmachen/page.tsx | 1189 | 2039 | EnhancedModule47 | PENDING | FAQPage |
+| /autoschluessel/smart-key | app/autoschluessel/smart-key/page.tsx | 1207 | 2057 | EnhancedModule48 | PENDING | FAQPage |
+| /autoschluessel/schluesselbart-fraesen | app/autoschluessel/schluesselbart-fraesen/page.tsx | 1042 | 1892 | EnhancedModule49 | PENDING | FAQPage |
+| /autoschluessel/fahrzeugoeffnung | app/autoschluessel/fahrzeugoeffnung/page.tsx | 1121 | 1971 | EnhancedModule50 | PENDING | FAQPage |
+| /autoschluessel/marken/[make] | app/autoschluessel/marken/[make]/page.tsx | 979 | 1829 | EnhancedModule51 | PENDING | FAQPage |
+| /autoschluessel/marken/[make]/[model] | app/autoschluessel/marken/[make]/[model]/page.tsx | 1223 | 2073 | EnhancedModule52 | PENDING | FAQPage |

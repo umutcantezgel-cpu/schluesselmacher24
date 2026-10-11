@@ -1,0 +1,1263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-11T17:09:00.722456Z",
+  "total_existing_routes": 52,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "app/page.tsx",
+      "target_word_count": 1980,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule1",
+        "target_file": "src/components/interactive/enhancedmodule1.tsx",
+        "action_file": "src/actions/enhancedmodule1-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/llms.txt",
+      "source_file": "app/llms.txt/route.ts",
+      "target_word_count": 995,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule2",
+        "target_file": "src/components/interactive/enhancedmodule2.tsx",
+        "action_file": "src/actions/enhancedmodule2-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/api/[...slug]",
+      "source_file": "app/api/[...slug]/route.ts",
+      "target_word_count": 920,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule3",
+        "target_file": "src/components/interactive/enhancedmodule3.tsx",
+        "action_file": "src/actions/enhancedmodule3-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/admin/segments",
+      "source_file": "app/admin/[[...segments]]/page.tsx",
+      "target_word_count": 949,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule4",
+        "target_file": "src/components/interactive/enhancedmodule4.tsx",
+        "action_file": "src/actions/enhancedmodule4-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/ratgeber",
+      "source_file": "app/ratgeber/page.tsx",
+      "target_word_count": 1074,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule5",
+        "target_file": "src/components/interactive/enhancedmodule5.tsx",
+        "action_file": "src/actions/enhancedmodule5-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2643,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule6",
+        "target_file": "src/components/interactive/enhancedmodule6.tsx",
+        "action_file": "src/actions/enhancedmodule6-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/warenkorb",
+      "source_file": "app/warenkorb/page.tsx",
+      "target_word_count": 1111,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule7",
+        "target_file": "src/components/interactive/enhancedmodule7.tsx",
+        "action_file": "src/actions/enhancedmodule7-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/kasse",
+      "source_file": "app/kasse/page.tsx",
+      "target_word_count": 1092,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule8",
+        "target_file": "src/components/interactive/enhancedmodule8.tsx",
+        "action_file": "src/actions/enhancedmodule8-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/schluessel-nach-code/page.tsx",
+      "target_word_count": 1347,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule9",
+        "target_file": "src/components/interactive/enhancedmodule9.tsx",
+        "action_file": "src/actions/enhancedmodule9-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/sicherheitstechnik/page.tsx",
+      "target_word_count": 1870,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule10",
+        "target_file": "src/components/interactive/enhancedmodule10.tsx",
+        "action_file": "src/actions/enhancedmodule10-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2634,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule11",
+        "target_file": "src/components/interactive/enhancedmodule11.tsx",
+        "action_file": "src/actions/enhancedmodule11-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2931,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule12",
+        "target_file": "src/components/interactive/enhancedmodule12.tsx",
+        "action_file": "src/actions/enhancedmodule12-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3330,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule13",
+        "target_file": "src/components/interactive/enhancedmodule13.tsx",
+        "action_file": "src/actions/enhancedmodule13-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/schliessanlagen/page.tsx",
+      "target_word_count": 2723,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule14",
+        "target_file": "src/components/interactive/enhancedmodule14.tsx",
+        "action_file": "src/actions/enhancedmodule14-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/service-und-termin",
+      "source_file": "app/service-und-termin/page.tsx",
+      "target_word_count": 2428,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule15",
+        "target_file": "src/components/interactive/enhancedmodule15.tsx",
+        "action_file": "src/actions/enhancedmodule15-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/artikel",
+      "source_file": "app/artikel/page.tsx",
+      "target_word_count": 1506,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule16",
+        "target_file": "src/components/interactive/enhancedmodule16.tsx",
+        "action_file": "src/actions/enhancedmodule16-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/standorte",
+      "source_file": "app/standorte/page.tsx",
+      "target_word_count": 1099,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule17",
+        "target_file": "src/components/interactive/enhancedmodule17.tsx",
+        "action_file": "src/actions/enhancedmodule17-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/autoschluessel",
+      "source_file": "app/autoschluessel/page.tsx",
+      "target_word_count": 2852,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule18",
+        "target_file": "src/components/interactive/enhancedmodule18.tsx",
+        "action_file": "src/actions/enhancedmodule18-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1209,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule19",
+        "target_file": "src/components/interactive/enhancedmodule19.tsx",
+        "action_file": "src/actions/enhancedmodule19-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 1071,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule20",
+        "target_file": "src/components/interactive/enhancedmodule20.tsx",
+        "action_file": "src/actions/enhancedmodule20-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/api/kunden-upload",
+      "source_file": "app/api/kunden-upload/route.ts",
+      "target_word_count": 1554,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule21",
+        "target_file": "src/components/interactive/enhancedmodule21.tsx",
+        "action_file": "src/actions/enhancedmodule21-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1584,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule22",
+        "target_file": "src/components/interactive/enhancedmodule22.tsx",
+        "action_file": "src/actions/enhancedmodule22-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1494,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule23",
+        "target_file": "src/components/interactive/enhancedmodule23.tsx",
+        "action_file": "src/actions/enhancedmodule23-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 1179,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule24",
+        "target_file": "src/components/interactive/enhancedmodule24.tsx",
+        "action_file": "src/actions/enhancedmodule24-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1343,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule25",
+        "target_file": "src/components/interactive/enhancedmodule25.tsx",
+        "action_file": "src/actions/enhancedmodule25-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/bestellung/[id]/page.tsx",
+      "target_word_count": 2149,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule26",
+        "target_file": "src/components/interactive/enhancedmodule26.tsx",
+        "action_file": "src/actions/enhancedmodule26-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 1160,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule27",
+        "target_file": "src/components/interactive/enhancedmodule27.tsx",
+        "action_file": "src/actions/enhancedmodule27-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1232,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule28",
+        "target_file": "src/components/interactive/enhancedmodule28.tsx",
+        "action_file": "src/actions/enhancedmodule28-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1218,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule29",
+        "target_file": "src/components/interactive/enhancedmodule29.tsx",
+        "action_file": "src/actions/enhancedmodule29-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 957,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule30",
+        "target_file": "src/components/interactive/enhancedmodule30.tsx",
+        "action_file": "src/actions/enhancedmodule30-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 1001,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule31",
+        "target_file": "src/components/interactive/enhancedmodule31.tsx",
+        "action_file": "src/actions/enhancedmodule31-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1505,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule32",
+        "target_file": "src/components/interactive/enhancedmodule32.tsx",
+        "action_file": "src/actions/enhancedmodule32-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1324,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule33",
+        "target_file": "src/components/interactive/enhancedmodule33.tsx",
+        "action_file": "src/actions/enhancedmodule33-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/rechtliches/impressum/page.tsx",
+      "target_word_count": 1098,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule34",
+        "target_file": "src/components/interactive/enhancedmodule34.tsx",
+        "action_file": "src/actions/enhancedmodule34-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 1078,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule35",
+        "target_file": "src/components/interactive/enhancedmodule35.tsx",
+        "action_file": "src/actions/enhancedmodule35-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1277,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule36",
+        "target_file": "src/components/interactive/enhancedmodule36.tsx",
+        "action_file": "src/actions/enhancedmodule36-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1220,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule37",
+        "target_file": "src/components/interactive/enhancedmodule37.tsx",
+        "action_file": "src/actions/enhancedmodule37-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/rechtliches/agb/page.tsx",
+      "target_word_count": 1266,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule38",
+        "target_file": "src/components/interactive/enhancedmodule38.tsx",
+        "action_file": "src/actions/enhancedmodule38-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1565,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule39",
+        "target_file": "src/components/interactive/enhancedmodule39.tsx",
+        "action_file": "src/actions/enhancedmodule39-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/artikel/[slug]/page.tsx",
+      "target_word_count": 1784,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule40",
+        "target_file": "src/components/interactive/enhancedmodule40.tsx",
+        "action_file": "src/actions/enhancedmodule40-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/standorte/[city]/page.tsx",
+      "target_word_count": 1255,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule41",
+        "target_file": "src/components/interactive/enhancedmodule41.tsx",
+        "action_file": "src/actions/enhancedmodule41-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/autoschluessel/marken/page.tsx",
+      "target_word_count": 1568,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule42",
+        "target_file": "src/components/interactive/enhancedmodule42.tsx",
+        "action_file": "src/actions/enhancedmodule42-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1941,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule43",
+        "target_file": "src/components/interactive/enhancedmodule43.tsx",
+        "action_file": "src/actions/enhancedmodule43-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 2072,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule44",
+        "target_file": "src/components/interactive/enhancedmodule44.tsx",
+        "action_file": "src/actions/enhancedmodule44-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1368,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule45",
+        "target_file": "src/components/interactive/enhancedmodule45.tsx",
+        "action_file": "src/actions/enhancedmodule45-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1983,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule46",
+        "target_file": "src/components/interactive/enhancedmodule46.tsx",
+        "action_file": "src/actions/enhancedmodule46-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 2039,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule47",
+        "target_file": "src/components/interactive/enhancedmodule47.tsx",
+        "action_file": "src/actions/enhancedmodule47-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 2057,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule48",
+        "target_file": "src/components/interactive/enhancedmodule48.tsx",
+        "action_file": "src/actions/enhancedmodule48-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1892,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule49",
+        "target_file": "src/components/interactive/enhancedmodule49.tsx",
+        "action_file": "src/actions/enhancedmodule49-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1971,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule50",
+        "target_file": "src/components/interactive/enhancedmodule50.tsx",
+        "action_file": "src/actions/enhancedmodule50-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1829,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule51",
+        "target_file": "src/components/interactive/enhancedmodule51.tsx",
+        "action_file": "src/actions/enhancedmodule51-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2073,
+      "content_expansion_topics": [
+        "Tiefgehende Erl\u00e4uterung der Systemarchitektur und Leistungs\u00fcbersicht",
+        "Detaillierte Fach-FAQ mit tiefgreifenden Erl\u00e4uterungen",
+        "Methodischer Transformationsprozess und Best Practices"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnhancedModule52",
+        "target_file": "src/components/interactive/enhancedmodule52.tsx",
+        "action_file": "src/actions/enhancedmodule52-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
