@@ -1,0 +1,12 @@
+{
+  "target_existing_route": "app/service-und-termin/page.tsx",
+  "status": "COMPLETED_BY_BUILDER",
+  "interactive_module": "ServiceBudgetCalculator",
+  "content_expansion_topics": [
+    "Detaillierte Erklärungen zur architektonischen Methodik",
+    "Strukturierte Leistungsstufen",
+    "Vergleichsmatrizen",
+    "Umfangreicher FAQ-Abschnitt"
+  ],
+  "target_word_count": 850
+}
