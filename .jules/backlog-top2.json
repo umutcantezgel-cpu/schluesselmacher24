@@ -1,0 +1,12 @@
+{
+  "target_existing_route": "app/ratgeber/page.tsx",
+  "route_path": "app/ratgeber/page.tsx",
+  "target_word_count": 850,
+  "content_expansion_topics": [
+    "Schließanlagen Planung",
+    "Sicherheitstechnik Ratgeber",
+    "Elektronische Zutrittskontrolle"
+  ],
+  "interactive_module": "Ratgeber-Filter",
+  "status": "COMPLETED_BY_BUILDER"
+}
