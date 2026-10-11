@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Status | Current Words | Target Words | CWV / Schema Status | Interactive Component |
+|---|---|---|---|---|---|
+| `/admin/[[...segments]]` | PENDING_BUILDER | 99 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/` | PENDING_BUILDER | 1130 | 1630 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/ratgeber` | PENDING_BUILDER | 224 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/ratgeber/[slug]` | PENDING_BUILDER | 359 | 859 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/schluessel-nach-vorlage` | PENDING_BUILDER | 1793 | 2293 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/schluessel-nach-vorlage/anfrage` | PENDING_BUILDER | 221 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/warenkorb` | PENDING_BUILDER | 261 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/kasse` | PENDING_BUILDER | 242 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/schluessel-nach-code` | PENDING_BUILDER | 497 | 997 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/schluessel-nach-code/[slug]` | PENDING_BUILDER | 734 | 1234 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/sicherheitstechnik` | PENDING_BUILDER | 1020 | 1520 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/sicherheitstechnik/[slug]` | PENDING_BUILDER | 644 | 1144 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/sicherheitstechnik/sicherheitscheck` | PENDING_BUILDER | 329 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/tuer-und-schliesstechnik` | PENDING_BUILDER | 1784 | 2284 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/tuer-und-schliesstechnik/[slug]` | PENDING_BUILDER | 493 | 993 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/bestellung/[id]` | PENDING_BUILDER | 1299 | 1799 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/gleichschliessende-zylinder` | PENDING_BUILDER | 2081 | 2581 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/gleichschliessende-zylinder/konfigurator` | PENDING_BUILDER | 310 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/elektronische-zutrittsloesungen` | PENDING_BUILDER | 2480 | 2980 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/elektronische-zutrittsloesungen/konfigurator` | PENDING_BUILDER | 382 | 882 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/schliessanlagen` | PENDING_BUILDER | 1873 | 2373 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/schliessanlagen/konfigurator` | PENDING_BUILDER | 368 | 868 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/service-und-termin` | PENDING_BUILDER | 1578 | 2078 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/service-und-termin/terminstatus` | PENDING_BUILDER | 107 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/service-und-termin/anfrage` | PENDING_BUILDER | 151 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/service-und-termin/vor-ort` | PENDING_BUILDER | 655 | 1155 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/service-und-termin/kontakt` | PENDING_BUILDER | 474 | 974 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/rechtliches/impressum` | PENDING_BUILDER | 248 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/rechtliches/cookie-einstellungen` | PENDING_BUILDER | 228 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/rechtliches/versand-und-zahlung` | PENDING_BUILDER | 427 | 927 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/rechtliches/widerruf` | PENDING_BUILDER | 370 | 870 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/rechtliches/agb` | PENDING_BUILDER | 416 | 916 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/rechtliches/datenschutz` | PENDING_BUILDER | 715 | 1215 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/artikel` | PENDING_BUILDER | 656 | 1156 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/artikel/[slug]` | PENDING_BUILDER | 934 | 1434 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/standorte` | PENDING_BUILDER | 249 | 850 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/standorte/[city]` | PENDING_BUILDER | 405 | 905 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel` | PENDING_BUILDER | 2002 | 2502 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/marken` | PENDING_BUILDER | 718 | 1218 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/marken/[make]` | PENDING_BUILDER | 979 | 1479 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/marken/[make]/[model]` | PENDING_BUILDER | 1223 | 1723 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/funkschluessel` | PENDING_BUILDER | 1091 | 1591 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/programmieren` | PENDING_BUILDER | 1222 | 1722 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/anfrage` | PENDING_BUILDER | 518 | 1018 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/kopieren` | PENDING_BUILDER | 1133 | 1633 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/nachmachen` | PENDING_BUILDER | 1189 | 1689 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/smart-key` | PENDING_BUILDER | 1207 | 1707 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/schluesselbart-fraesen` | PENDING_BUILDER | 1042 | 1542 | NEEDS_AUDIT | ServiceEinsatzRechner |
+| `/autoschluessel/fahrzeugoeffnung` | PENDING_BUILDER | 1121 | 1621 | NEEDS_AUDIT | ServiceEinsatzRechner |

@@ -1,0 +1,8 @@
+# SCHLÜSSELMACHER24 - AI Architecture Blueprint
+
+This repository contains the source code for the schluesselmacher24 website.
+The architecture has been audited and the master blueprint for modernization is generated.
+
+Current DNA: Next.js 16+, React 19.2+, Tailwind CSS v4, OKLCH Light Mode.
+
+See `.jules/revolution-plan.json` for the transformation queue and `.jules/architecture-matrix.md` for the route overview.
