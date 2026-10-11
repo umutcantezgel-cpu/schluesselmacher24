@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Source File | Status | Target Words | Schema | Target Module |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | app/(payload)/admin/[[...segments]]/page.tsx | PENDING_BUILDER | 899 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /ratgeber | app/(site)/ratgeber/page.tsx | PENDING_BUILDER | 1024 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /ratgeber/[slug] | app/(site)/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 1159 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /schluessel-nach-vorlage/anfrage | app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 1021 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /schluessel-nach-vorlage | app/(site)/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 2593 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /warenkorb | app/(site)/warenkorb/page.tsx | PENDING_BUILDER | 1061 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /kasse | app/(site)/kasse/page.tsx | PENDING_BUILDER | 1042 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /schluessel-nach-code | app/(site)/schluessel-nach-code/page.tsx | PENDING_BUILDER | 1297 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /schluessel-nach-code/[slug] | app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 1534 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /(site) | app/(site)/page.tsx | PENDING_BUILDER | 1930 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /sicherheitstechnik | app/(site)/sicherheitstechnik/page.tsx | PENDING_BUILDER | 1820 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /sicherheitstechnik/[slug] | app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 1444 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /sicherheitstechnik/sicherheitscheck | app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 1129 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /tuer-und-schliesstechnik | app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 2584 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /tuer-und-schliesstechnik/[slug] | app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 1293 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /bestellung/[id] | app/(site)/bestellung/[id]/page.tsx | PENDING_BUILDER | 2099 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /gleichschliessende-zylinder | app/(site)/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 2881 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /gleichschliessende-zylinder/konfigurator | app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 1110 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /elektronische-zutrittsloesungen | app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 3280 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /elektronische-zutrittsloesungen/konfigurator | app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 1182 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /schliessanlagen | app/(site)/schliessanlagen/page.tsx | PENDING_BUILDER | 2673 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /schliessanlagen/konfigurator | app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 1168 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /service-und-termin/terminstatus | app/(site)/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 907 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /service-und-termin/anfrage | app/(site)/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 951 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /service-und-termin | app/(site)/service-und-termin/page.tsx | PENDING_BUILDER | 2378 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /service-und-termin/vor-ort | app/(site)/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 1455 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /service-und-termin/kontakt | app/(site)/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 1274 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /rechtliches/impressum | app/(site)/rechtliches/impressum/page.tsx | PENDING_BUILDER | 1048 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /rechtliches/cookie-einstellungen | app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 1028 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /rechtliches/versand-und-zahlung | app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 1227 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /rechtliches/widerruf | app/(site)/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 1170 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /rechtliches/agb | app/(site)/rechtliches/agb/page.tsx | PENDING_BUILDER | 1216 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /rechtliches/datenschutz | app/(site)/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 1515 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /artikel | app/(site)/artikel/page.tsx | PENDING_BUILDER | 1456 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /artikel/[slug] | app/(site)/artikel/[slug]/page.tsx | PENDING_BUILDER | 1734 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /standorte | app/(site)/standorte/page.tsx | PENDING_BUILDER | 1049 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /standorte/[city] | app/(site)/standorte/[city]/page.tsx | PENDING_BUILDER | 1205 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /autoschluessel/marken | app/(site)/autoschluessel/marken/page.tsx | PENDING_BUILDER | 1518 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /autoschluessel/marken/[make]/[model] | app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 2023 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /autoschluessel/marken/[make] | app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 1779 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /autoschluessel/funkschluessel | app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 1891 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /autoschluessel/programmieren | app/(site)/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 2022 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /autoschluessel/anfrage | app/(site)/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 1318 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /autoschluessel | app/(site)/autoschluessel/page.tsx | PENDING_BUILDER | 2802 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /autoschluessel/kopieren | app/(site)/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 1933 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /autoschluessel/nachmachen | app/(site)/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 1989 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |
+| /autoschluessel/smart-key | app/(site)/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 2007 | Organization, WebSite, FAQPage | ServiceBentoGrid |
+| /autoschluessel/schluesselbart-fraesen | app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 1842 | Organization, WebSite, FAQPage | DeepFaqAccordion |
+| /autoschluessel/fahrzeugoeffnung | app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 1921 | Organization, WebSite, FAQPage | EnterpriseRoiCalculator |

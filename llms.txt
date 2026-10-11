@@ -1,0 +1,4 @@
+# LLMs Context
+
+This project uses Next.js 16+, React 19.2+, and Tailwind CSS v4 (OKLCH).
+The architecture blueprint ensures strict zero-new-routes constraint, targeting exactly the physical routes for content expansion and transformation.
