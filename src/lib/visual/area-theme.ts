@@ -114,13 +114,50 @@ export function areaCssVariables(theme: AreaTheme): Record<string, string> {
 
 /* ---------- Kontrast (WCAG 2.2) ----------------------------------------- */
 
-function parseHsl(value: string): [number, number, number] {
-  const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
-  if (!match) throw new Error(`Kein HSL-Tripel: "${value}"`);
-  return [Number(match[1]), Number(match[2]), Number(match[3])];
-}
+function parseColor(value: string): [number, number, number] {
+  const oklchMatch = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)\s+([\d.]+)$/);
+  if (oklchMatch) {
+    const l = Number(oklchMatch[1]);
+    const c = Number(oklchMatch[2]);
+    const h = Number(oklchMatch[3]);
 
-function hslToRgb([h, s, l]: [number, number, number]): [number, number, number] {
+    // Convert oklch to srgb
+    const hRad = (h * Math.PI) / 180;
+    const a = c * Math.cos(hRad);
+    const b = c * Math.sin(hRad);
+
+    const l_ = l + 0.3963377774 * a + 0.2158037573 * b;
+    const m_ = l - 0.1055613458 * a - 0.0638541728 * b;
+    const s_ = l - 0.0894841775 * a - 1.2914855480 * b;
+
+    const l__ = l_ ** 3;
+    const m__ = m_ ** 3;
+    const s__ = s_ ** 3;
+
+    const rL =  4.0767416621 * l__ - 3.3077115913 * m__ + 0.2309699292 * s__;
+    const gL = -1.2684380046 * l__ + 2.6097574011 * m__ - 0.3413193965 * s__;
+    const bL = -0.0041960863 * l__ - 0.7034186147 * m__ + 1.7076147010 * s__;
+
+    // Apply standard sRGB companding to linear RGB values before returning them
+    const compand = (v: number) => {
+      const abs = Math.abs(v);
+      const val = abs <= 0.0031308 ? 12.92 * abs : 1.055 * Math.pow(abs, 1 / 2.4) - 0.055;
+      return v < 0 ? -val : val;
+    };
+
+    return [
+      Math.max(0, Math.min(1, compand(rL))),
+      Math.max(0, Math.min(1, compand(gL))),
+      Math.max(0, Math.min(1, compand(bL)))
+    ];
+  }
+
+  const hslMatch = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
+  if (!hslMatch) throw new Error(`Unbekanntes Farbformat: "${value}"`);
+
+  const h = Number(hslMatch[1]);
+  const s = Number(hslMatch[2]);
+  const l = Number(hslMatch[3]);
   const sat = s / 100;
   const light = l / 100;
   const k = (n: number) => (n + h / 30) % 12;
@@ -137,7 +174,7 @@ function relativeLuminance(rgb: [number, number, number]): number {
 
 /** Kontrastverhältnis zweier HSL-Tripel, z. B. `contrastRatio('0 0% 100%', theme.strong)`. */
 export function contrastRatio(a: string, b: string): number {
-  const la = relativeLuminance(hslToRgb(parseHsl(a)));
-  const lb = relativeLuminance(hslToRgb(parseHsl(b)));
+  const la = relativeLuminance(parseColor(a));
+  const lb = relativeLuminance(parseColor(b));
   return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
 }
