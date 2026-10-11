@@ -1,0 +1,1158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-11T15:10:19.083006+00:00",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /admin/[[...segments]]",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 2081,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /",
+        "Institutionelle Leistungs\u00fcbersicht zu {page?.headline ?? 'Autoschl\u00fcssel nachmachen und programmieren'}",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: {group.area.label} mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /ratgeber",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 965,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: {block.heading} mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /ratgeber/[slug]",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2479,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /schluessel-nach-vorlage",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /schluessel-nach-vorlage/anfrage",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Passend dazu mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /warenkorb",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "CostCalculator",
+        "target_file": "components/calculator/cost-calculator.tsx",
+        "action_file": "actions/calculate-cost.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Rechtliche Hinweise mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /kasse",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "CostCalculator",
+        "target_file": "components/calculator/cost-calculator.tsx",
+        "action_file": "actions/calculate-cost.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1057,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /schluessel-nach-code",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Was Sie erhalten mit Expertenwissen",
+        "Erweiterung des Bereichs: Technische Angaben mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /schluessel-nach-code/[slug]"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1767,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /sicherheitstechnik",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1283,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /sicherheitstechnik/[slug]",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 861,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /sicherheitstechnik/sicherheitscheck",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2596,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Regulatorik: Fluchtwege und Brandschutz mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /tuer-und-schliesstechnik",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1115,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /tuer-und-schliesstechnik/[slug]",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2086,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Bestellte Artikel mit Expertenwissen",
+        "Erweiterung des Bereichs: Ihre Vorgangsnummer mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /bestellung/[id]"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3089,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /gleichschliessende-zylinder",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Wenn Sie vorher etwas nachlesen m\u00f6chten mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /gleichschliessende-zylinder/konfigurator",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "CONFIGURATOR",
+        "component_name": "ProductConfigurator",
+        "target_file": "components/configurator/product-configurator.tsx",
+        "action_file": "actions/save-configuration.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3111,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /elektronische-zutrittsloesungen",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 908,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Passende Seiten mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /elektronische-zutrittsloesungen/konfigurator",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "CONFIGURATOR",
+        "component_name": "ProductConfigurator",
+        "target_file": "components/configurator/product-configurator.tsx",
+        "action_file": "actions/save-configuration.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2460,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Wenige T\u00fcren, ein Schl\u00fcssel f\u00fcr alles? mit Expertenwissen",
+        "Erweiterung des Bereichs: Passend dazu mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 905,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Noch unsicher? mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /schliessanlagen/konfigurator",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "CONFIGURATOR",
+        "component_name": "ProductConfigurator",
+        "target_file": "components/configurator/product-configurator.tsx",
+        "action_file": "actions/save-configuration.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2341,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin/terminstatus",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin/anfrage",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1266,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin/vor-ort",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1108,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin/kontakt",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Anbieter mit Expertenwissen",
+        "Erweiterung des Bereichs: Vertreten durch mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/impressum"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Was genau gespeichert wird mit Expertenwissen",
+        "Erweiterung des Bereichs: Sobald weitere Dienste hinzukommen mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/cookie-einstellungen"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1012,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Versandarten mit Expertenwissen",
+        "Erweiterung des Bereichs: Lieferzeiten mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/versand-und-zahlung"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 890,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: 1. Widerrufsbelehrung f\u00fcr Verbraucherinnen und Verbraucher mit Expertenwissen",
+        "Erweiterung des Bereichs: 2. Muster-Widerrufsformular mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/widerruf"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 949,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: 1. Geltungsbereich und Vertragspartner mit Expertenwissen",
+        "Erweiterung des Bereichs: 2. Vertragsschluss mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/agb"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1297,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: 1. Verantwortliche Stelle mit Expertenwissen",
+        "Erweiterung des Bereichs: 2. Datenschutzbeauftragte Person mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/datenschutz"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1216,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Derzeit sind hier keine Artikel eingestellt. mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /artikel",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1623,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Beschreibung mit Expertenwissen",
+        "Erweiterung des Bereichs: Eigenschaften mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /artikel/[slug]"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /standorte",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "MAP_FILTER",
+        "component_name": "LocationFilter",
+        "target_file": "components/location/location-filter.tsx",
+        "action_file": "actions/find-location.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1004,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /standorte/[city]",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "MAP_FILTER",
+        "component_name": "LocationFilter",
+        "target_file": "components/location/location-filter.tsx",
+        "action_file": "actions/find-location.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2724,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1352,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Passend dazu mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/marken",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1744,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Passend dazu mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/marken/[make]",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1863,
+      "content_expansion_topics": [
+        "Erweiterung des Bereichs: Passend dazu mit Expertenwissen",
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/marken/[make]/[model]",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1451,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/funkschluessel",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1571,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/programmieren",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1042,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/anfrage",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1506,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/kopieren",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1547,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/nachmachen",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1560,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/smart-key",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/schluesselbart-fraesen",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1494,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ f\u00fcr /autoschluessel/fahrzeugoeffnung",
+        "Institutionelle Leistungs\u00fcbersicht zu Haupt\u00fcberschrift fehlt",
+        "Technische Spezifikationen und Schweizer Qualit\u00e4tsstandards"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/filter/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "KINETIC_SCROLL_REVEAL",
+      "schema_entities": [
+        "Organization",
+        "WebSite"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
