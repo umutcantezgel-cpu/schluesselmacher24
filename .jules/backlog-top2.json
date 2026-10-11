@@ -1,0 +1,16 @@
+{
+  "queue": [
+    {
+      "route_path": "app/service-und-termin/page.tsx",
+      "target_word_count": 880,
+      "content_expansion_topics": [
+        "Methodik der Service-Architektur",
+        "Materialauswahl und Qualitaet",
+        "Nachhaltigkeit und Lebenszyklus",
+        "Anforderungen Gewerbeobjekte"
+      ],
+      "interactive_module": "ServiceBudgetCalculator",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}
