@@ -1,0 +1,53 @@
+# System Architecture Matrix
+
+| Route | Source File | Current Words | Target Words | Signature Interaction | Schema Entities |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | app/(payload)/admin/[[...segments]]/page.tsx | 99 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| / | app/(site)/page.tsx | 1130 | 1630 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /ratgeber | app/(site)/ratgeber/page.tsx | 224 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /ratgeber/[slug] | app/(site)/ratgeber/[slug]/page.tsx | 359 | 859 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schluessel-nach-vorlage | app/(site)/schluessel-nach-vorlage/page.tsx | 1793 | 2293 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schluessel-nach-vorlage/anfrage | app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 221 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /warenkorb | app/(site)/warenkorb/page.tsx | 261 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /kasse | app/(site)/kasse/page.tsx | 242 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schluessel-nach-code | app/(site)/schluessel-nach-code/page.tsx | 497 | 997 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schluessel-nach-code/[slug] | app/(site)/schluessel-nach-code/[slug]/page.tsx | 734 | 1234 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /sicherheitstechnik | app/(site)/sicherheitstechnik/page.tsx | 1020 | 1520 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /sicherheitstechnik/[slug] | app/(site)/sicherheitstechnik/[slug]/page.tsx | 644 | 1144 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /sicherheitstechnik/sicherheitscheck | app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 329 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /tuer-und-schliesstechnik | app/(site)/tuer-und-schliesstechnik/page.tsx | 1784 | 2284 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /tuer-und-schliesstechnik/[slug] | app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 493 | 993 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /bestellung/[id] | app/(site)/bestellung/[id]/page.tsx | 1299 | 1799 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /gleichschliessende-zylinder | app/(site)/gleichschliessende-zylinder/page.tsx | 2081 | 2581 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /gleichschliessende-zylinder/konfigurator | app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 310 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /elektronische-zutrittsloesungen | app/(site)/elektronische-zutrittsloesungen/page.tsx | 2480 | 2980 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /elektronische-zutrittsloesungen/konfigurator | app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 382 | 882 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schliessanlagen | app/(site)/schliessanlagen/page.tsx | 1873 | 2373 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schliessanlagen/konfigurator | app/(site)/schliessanlagen/konfigurator/page.tsx | 368 | 868 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /service-und-termin | app/(site)/service-und-termin/page.tsx | 1578 | 2078 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /service-und-termin/terminstatus | app/(site)/service-und-termin/terminstatus/page.tsx | 107 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /service-und-termin/anfrage | app/(site)/service-und-termin/anfrage/page.tsx | 151 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /service-und-termin/vor-ort | app/(site)/service-und-termin/vor-ort/page.tsx | 655 | 1155 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /service-und-termin/kontakt | app/(site)/service-und-termin/kontakt/page.tsx | 474 | 974 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/impressum | app/(site)/rechtliches/impressum/page.tsx | 248 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/cookie-einstellungen | app/(site)/rechtliches/cookie-einstellungen/page.tsx | 228 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/versand-und-zahlung | app/(site)/rechtliches/versand-und-zahlung/page.tsx | 427 | 927 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/widerruf | app/(site)/rechtliches/widerruf/page.tsx | 370 | 870 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/agb | app/(site)/rechtliches/agb/page.tsx | 416 | 916 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/datenschutz | app/(site)/rechtliches/datenschutz/page.tsx | 715 | 1215 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /artikel | app/(site)/artikel/page.tsx | 656 | 1156 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /artikel/[slug] | app/(site)/artikel/[slug]/page.tsx | 934 | 1434 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /standorte | app/(site)/standorte/page.tsx | 249 | 850 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /standorte/[city] | app/(site)/standorte/[city]/page.tsx | 405 | 905 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel | app/(site)/autoschluessel/page.tsx | 2002 | 2502 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/marken | app/(site)/autoschluessel/marken/page.tsx | 718 | 1218 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/marken/[make] | app/(site)/autoschluessel/marken/[make]/page.tsx | 979 | 1479 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/marken/[make]/[model] | app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1223 | 1723 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/funkschluessel | app/(site)/autoschluessel/funkschluessel/page.tsx | 1091 | 1591 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/programmieren | app/(site)/autoschluessel/programmieren/page.tsx | 1222 | 1722 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/anfrage | app/(site)/autoschluessel/anfrage/page.tsx | 518 | 1018 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/kopieren | app/(site)/autoschluessel/kopieren/page.tsx | 1133 | 1633 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/nachmachen | app/(site)/autoschluessel/nachmachen/page.tsx | 1189 | 1689 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/smart-key | app/(site)/autoschluessel/smart-key/page.tsx | 1207 | 1707 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/schluesselbart-fraesen | app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1042 | 1542 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/fahrzeugoeffnung | app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1121 | 1621 | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
