@@ -1,0 +1,1487 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-12T11:07:01.437579Z",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "app/layout.tsx",
+      "source_file": "app/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "app/api/[...slug]/route.ts",
+      "source_file": "app/api/[...slug]/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "app/admin/[[...segments]]/page.tsx",
+      "source_file": "app/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "app/page.tsx",
+      "source_file": "app/page.tsx",
+      "target_word_count": 2081,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "app/layout.tsx",
+      "source_file": "app/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "app/ratgeber/page.tsx",
+      "source_file": "app/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ReadingProgressTracker",
+        "target_file": "components/article/reading-progress-tracker.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "app/ratgeber/[slug]/page.tsx",
+      "source_file": "app/ratgeber/[slug]/page.tsx",
+      "target_word_count": 965,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ReadingProgressTracker",
+        "target_file": "components/article/reading-progress-tracker.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "app/schluessel-nach-vorlage/page.tsx",
+      "source_file": "app/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2479,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "app/schluessel-nach-vorlage/layout.tsx",
+      "source_file": "app/schluessel-nach-vorlage/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "app/schluessel-nach-vorlage/anfrage/page.tsx",
+      "source_file": "app/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartBookingWidget",
+        "target_file": "components/booking/smart-booking-widget.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "app/warenkorb/page.tsx",
+      "source_file": "app/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "app/kasse/page.tsx",
+      "source_file": "app/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "app/api/kunden-upload/route.ts",
+      "source_file": "app/api/kunden-upload/route.ts",
+      "target_word_count": 1190,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "app/schluessel-nach-code/page.tsx",
+      "source_file": "app/schluessel-nach-code/page.tsx",
+      "target_word_count": 1057,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "app/schluessel-nach-code/layout.tsx",
+      "source_file": "app/schluessel-nach-code/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "app/schluessel-nach-code/[slug]/page.tsx",
+      "source_file": "app/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "app/sicherheitstechnik/page.tsx",
+      "source_file": "app/sicherheitstechnik/page.tsx",
+      "target_word_count": 1767,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "app/sicherheitstechnik/layout.tsx",
+      "source_file": "app/sicherheitstechnik/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "app/sicherheitstechnik/[slug]/page.tsx",
+      "source_file": "app/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1283,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "app/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "source_file": "app/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 861,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "app/tuer-und-schliesstechnik/page.tsx",
+      "source_file": "app/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2596,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "app/tuer-und-schliesstechnik/layout.tsx",
+      "source_file": "app/tuer-und-schliesstechnik/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "app/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "source_file": "app/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1115,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "app/bestellung/[id]/page.tsx",
+      "source_file": "app/bestellung/[id]/page.tsx",
+      "target_word_count": 2086,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "app/gleichschliessende-zylinder/page.tsx",
+      "source_file": "app/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3089,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "app/gleichschliessende-zylinder/layout.tsx",
+      "source_file": "app/gleichschliessende-zylinder/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "app/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "source_file": "app/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PricingCalculator",
+        "target_file": "components/calculator/pricing-calculator.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "app/elektronische-zutrittsloesungen/page.tsx",
+      "source_file": "app/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3111,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "app/elektronische-zutrittsloesungen/layout.tsx",
+      "source_file": "app/elektronische-zutrittsloesungen/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "app/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "source_file": "app/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 908,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PricingCalculator",
+        "target_file": "components/calculator/pricing-calculator.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "app/schliessanlagen/page.tsx",
+      "source_file": "app/schliessanlagen/page.tsx",
+      "target_word_count": 2460,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "app/schliessanlagen/layout.tsx",
+      "source_file": "app/schliessanlagen/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "app/schliessanlagen/konfigurator/page.tsx",
+      "source_file": "app/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 905,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PricingCalculator",
+        "target_file": "components/calculator/pricing-calculator.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "app/service-und-termin/page.tsx",
+      "source_file": "app/service-und-termin/page.tsx",
+      "target_word_count": 2341,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartBookingWidget",
+        "target_file": "components/booking/smart-booking-widget.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "app/service-und-termin/layout.tsx",
+      "source_file": "app/service-und-termin/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartBookingWidget",
+        "target_file": "components/booking/smart-booking-widget.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "app/service-und-termin/terminstatus/page.tsx",
+      "source_file": "app/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartBookingWidget",
+        "target_file": "components/booking/smart-booking-widget.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "app/service-und-termin/anfrage/page.tsx",
+      "source_file": "app/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartBookingWidget",
+        "target_file": "components/booking/smart-booking-widget.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "app/service-und-termin/vor-ort/page.tsx",
+      "source_file": "app/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1266,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartBookingWidget",
+        "target_file": "components/booking/smart-booking-widget.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "app/service-und-termin/kontakt/page.tsx",
+      "source_file": "app/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1108,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartBookingWidget",
+        "target_file": "components/booking/smart-booking-widget.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "app/rechtliches/layout.tsx",
+      "source_file": "app/rechtliches/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "app/rechtliches/impressum/page.tsx",
+      "source_file": "app/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "app/rechtliches/cookie-einstellungen/page.tsx",
+      "source_file": "app/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "app/rechtliches/versand-und-zahlung/page.tsx",
+      "source_file": "app/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1012,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "app/rechtliches/widerruf/page.tsx",
+      "source_file": "app/rechtliches/widerruf/page.tsx",
+      "target_word_count": 890,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "app/rechtliches/agb/page.tsx",
+      "source_file": "app/rechtliches/agb/page.tsx",
+      "target_word_count": 949,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "app/rechtliches/datenschutz/page.tsx",
+      "source_file": "app/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1297,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "app/artikel/page.tsx",
+      "source_file": "app/artikel/page.tsx",
+      "target_word_count": 1216,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ReadingProgressTracker",
+        "target_file": "components/article/reading-progress-tracker.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "app/artikel/[slug]/page.tsx",
+      "source_file": "app/artikel/[slug]/page.tsx",
+      "target_word_count": 1623,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ReadingProgressTracker",
+        "target_file": "components/article/reading-progress-tracker.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "app/standorte/page.tsx",
+      "source_file": "app/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "app/standorte/[city]/page.tsx",
+      "source_file": "app/standorte/[city]/page.tsx",
+      "target_word_count": 1004,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "app/autoschluessel/page.tsx",
+      "source_file": "app/autoschluessel/page.tsx",
+      "target_word_count": 2724,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "app/autoschluessel/layout.tsx",
+      "source_file": "app/autoschluessel/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "app/autoschluessel/marken/page.tsx",
+      "source_file": "app/autoschluessel/marken/page.tsx",
+      "target_word_count": 1352,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "app/autoschluessel/marken/[make]/page.tsx",
+      "source_file": "app/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1744,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "app/autoschluessel/marken/[make]/[model]/page.tsx",
+      "source_file": "app/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1863,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 56,
+      "route_path": "app/autoschluessel/funkschluessel/page.tsx",
+      "source_file": "app/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1451,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 57,
+      "route_path": "app/autoschluessel/programmieren/page.tsx",
+      "source_file": "app/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1571,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 58,
+      "route_path": "app/autoschluessel/anfrage/page.tsx",
+      "source_file": "app/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1042,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartBookingWidget",
+        "target_file": "components/booking/smart-booking-widget.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 59,
+      "route_path": "app/autoschluessel/kopieren/page.tsx",
+      "source_file": "app/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1506,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 60,
+      "route_path": "app/autoschluessel/nachmachen/page.tsx",
+      "source_file": "app/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1547,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 61,
+      "route_path": "app/autoschluessel/smart-key/page.tsx",
+      "source_file": "app/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1560,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 62,
+      "route_path": "app/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "source_file": "app/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 63,
+      "route_path": "app/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "source_file": "app/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1494,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 64,
+      "route_path": "app/llms.txt/route.ts",
+      "source_file": "app/llms.txt/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detailed technical deep dive and integration specifications",
+        "Advanced Swiss-style semantic layouts",
+        "Interactive data-driven visual components"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicBentoGrid",
+        "target_file": "components/ui/dynamic-bento-grid.tsx",
+        "action_file": "actions/interact.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "Organization"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
