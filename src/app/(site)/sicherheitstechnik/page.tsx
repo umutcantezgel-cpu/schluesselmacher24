@@ -16,6 +16,7 @@ import { PROCESS_LABELS } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -73,7 +74,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -92,6 +100,7 @@ export default async function SicherheitstechnikPage() {
         })}
       />
 
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <PageHeader
         eyebrow="Leistungsbereich"
         title={page?.headline ?? 'Sicherheitstechnik'}
@@ -156,6 +165,95 @@ export default async function SicherheitstechnikPage() {
                   Bestandsaufnahme starten
                 </ButtonLink>
               </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+
+      {/* Fachliche Methodik & Architektur - NEW CONTENT */}
+      <Section id="architektur-methodik">
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Ganzheitliche Sicherheitsarchitektur für moderne Objekte"
+          lead="Unsere Methodik beruht auf einem strukturierten, tiefgreifenden Ansatz, der über einfache Produktinstallationen weit hinausgeht."
+        />
+
+        <div className="mt-8 space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <p>
+            Eine wirksame Sicherheitsarchitektur ist niemals ein reines Standardprodukt, sondern das Ergebnis präziser
+            Planung und einer methodischen Bestandsaufnahme. Wir betrachten Gebäude als komplexe Organismen, in denen
+            mechanische, mechatronische und elektronische Systeme ineinandergreifen müssen, um einen echten Mehrwert zu
+            bieten. Dieser Prozess beginnt mit der Risikoanalyse. Hierbei evaluieren wir nicht nur die offensichtlichen
+            Schwachstellen wie veraltete Schließzylinder oder unzureichend gesicherte Fenster, sondern auch die
+            organisatorischen Abläufe: Wer hat wann Zutritt? Wie werden Schlüssel verwaltet? Welche Protokollierung ist
+            notwendig und rechtlich zulässig?
+          </p>
+          <p>
+            Im Fokus unserer Planung steht stets der Leitgedanke: &quot;Mechanik hält auf, Meldetechnik erkennt, Alarmierung informiert&quot;.
+            Dieser Grundsatz ist entscheidend. Eine Alarmanlage verhindert keinen Einbruch; sie meldet ihn lediglich.
+            Ohne ausreichenden mechanischen Widerstand, der dem Täter wertvolle Zeit raubt, nützt die schnellste
+            Meldung wenig. Daher setzen wir konsequent auf eine massive Grundsicherung, bevor elektronische Komponenten
+            integriert werden. Die richtige Kombination aus hochwertigen Schließzylindern, robusten Beschlägen und
+            massiven Zusatzsicherungen bildet das Fundament, auf dem wir aufbauen.
+          </p>
+          <p>
+            Sobald der mechanische Grundschutz gewährleistet ist, integrieren wir modernste Sicherheitstechnik, die auf
+            offenen Standards basiert. Elektronische Zutrittskontrollsysteme ermöglichen eine hochflexible Verwaltung von
+            Berechtigungen. Verlorene Transponder können in Sekunden gesperrt werden – ein unschätzbarer Vorteil gegenüber
+            mechanischen Schlüsseln, deren Verlust oft den Austausch kompletter Schließanlagen nach sich zieht.
+            Die nahtlose Integration von Videoüberwachung und Alarmtechnik schafft ein umfassendes Sicherheitsnetz, das
+            nicht nur präventiv wirkt, sondern auch im Ernstfall eine schnelle, zielgerichtete Reaktion ermöglicht.
+          </p>
+
+          <ServiceBudgetCalculator />
+
+          <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-4">
+            Die vier Säulen unserer Sicherheitsarchitektur
+          </h3>
+
+          <div className="grid md:grid-cols-2 gap-6 mt-6">
+            <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)] mb-2">1. Risiko- und Schwachstellenanalyse</h4>
+              <p className="text-sm">Jedes Projekt beginnt mit einer schonungslosen Analyse der Ist-Situation. Wir identifizieren architektonische und prozessuale Schwachstellen und bewerten das spezifische Gefährdungspotenzial Ihres Objekts.</p>
+            </div>
+            <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)] mb-2">2. Mechanischer Grundschutz</h4>
+              <p className="text-sm">Die physikalische Barriere ist die wichtigste Verteidigungslinie. Wir ertüchtigen Türen und Fenster nach modernsten DIN-Normen und schaffen so den notwendigen Zeitpuffer.</p>
+            </div>
+            <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)] mb-2">3. Elektronische Detektion und Alarmierung</h4>
+              <p className="text-sm">Wo die Mechanik aufhört, übernimmt die Elektronik. Smarte Sensoren, Bewegungsmelder und vernetzte Gefahrenmeldeanlagen sorgen für eine sofortige und zuverlässige Alarmierung.</p>
+            </div>
+            <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)] mb-2">4. Wartung und Lifecycle-Management</h4>
+              <p className="text-sm">Sicherheit ist ein dynamischer Prozess. Durch regelmäßige Wartungsintervalle, Firmware-Updates und Systemprüfungen garantieren wir eine langfristige und ausfallsichere Funktion.</p>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-4">
+            Häufig gestellte Fragen (FAQ)
+          </h3>
+          <div className="space-y-4">
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] rounded-lg p-5 bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Wie lange dauert eine umfassende Sicherheitsanalyse?</h4>
+              <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Für ein typisches Wohnhaus oder ein kleineres Gewerbeobjekt kalkulieren wir etwa 1-2 Stunden vor Ort, gefolgt von einer detaillierten Auswertung und Konzepterstellung in unserem Büro, die in der Regel innerhalb von 3-5 Werktagen abgeschlossen ist.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] rounded-lg p-5 bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Können bestehende mechanische Systeme mit neuer Elektronik kombiniert werden?</h4>
+              <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">In vielen Fällen ja. Wir bevorzugen hybride Ansätze, bei denen gut funktionierende Mechanik erhalten bleibt und durch smarte mechatronische Komponenten (wie elektronische Zylinder) ergänzt wird, um Kosten zu optimieren und gleichzeitig die Sicherheit zu erhöhen.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] rounded-lg p-5 bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Sind Ihre elektronischen Systeme vor Hackerangriffen geschützt?</h4>
+              <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Wir setzen ausschließlich auf Systeme, die modernste Verschlüsselungsstandards (wie AES-128 oder AES-256) verwenden und keine unnötigen Cloud-Zwangsanbindungen erfordern. Die Cyber-Resilienz ist ein zentraler Bestandteil unserer Systemauswahl.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] rounded-lg p-5 bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Wie verhält es sich mit dem Datenschutz bei Videoüberwachung?</h4>
+              <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Wir konfigurieren alle Kamerasysteme strikt nach der DSGVO. Das bedeutet: exakte Maskierung von öffentlichen Bereichen (wie Gehwegen oder Nachbargrundstücken), automatisches Löschen der Aufnahmen nach einer definierten Frist (z.B. 48 Stunden) und restriktives Rechtemanagement.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] rounded-lg p-5 bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">Bieten Sie auch Notdienste oder Wartungsverträge an?</h4>
+              <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Ja, für unsere Installationskunden bieten wir maßgeschneiderte Service-Level-Agreements (SLA) an, die regelmäßige Inspektionen, bevorzugten Support und garantierte Reaktionszeiten umfassen, um die Langlebigkeit und Zuverlässigkeit Ihrer Investition zu sichern.</p>
             </div>
           </div>
         </div>
