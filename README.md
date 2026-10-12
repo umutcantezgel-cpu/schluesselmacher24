@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Neue Interaktive Module
+- **SicherheitsCheckCalculator:** Ein interaktives Tool zur Kalkulation von Projektbudgets für Sicherheitstechnik.
