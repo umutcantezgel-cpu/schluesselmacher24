@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { SecurityBudgetCalculator } from '@/components/calculator/security-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +74,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -83,6 +91,7 @@ export default async function SicherheitstechnikPage() {
 
   return (
     <>
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
@@ -203,6 +212,135 @@ export default async function SicherheitstechnikPage() {
       </Section>
 
       {/* Recht und Verantwortung */}
+
+      {/* Fachlicher Tiefgang und Erweiterter Inhalt */}
+      <Section id="architektonische-methodik" className="bg-[oklch(0.988_0.002_260)] py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-5xl px-4 md:px-8">
+          <div className="mb-12">
+            <h2 className="text-[oklch(0.16_0.02_260)] font-semibold tracking-tight text-3xl md:text-4xl lg:text-5xl">Architektonische Methodik und ganzheitliche Sicherheitskonzepte</h2>
+            <p className="mt-6 text-[oklch(0.32_0.02_260)] leading-relaxed text-lg md:text-xl max-w-3xl">
+              In einer zunehmend komplexen Bedrohungslandschaft erfordert moderne Sicherheitstechnik eine fundierte, methodische Herangehensweise. Unsere architektonische Methodik basiert auf der präzisen Verschmelzung von mechanischen Widerstandskomponenten und intelligenter elektronischer Detektion. Dieser hybride Ansatz gewährleistet nicht nur eine signifikante Erhöhung der Einbruchhemmung (gemäß DIN EN 1627), sondern etabliert auch ein proaktives Abwehrsystem, das Vorfälle erkennt, bevor sie sich manifestieren.
+            </p>
+          </div>
+
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] border-b border-[oklch(0.890_0.008_260/0.55)] pb-4">Die Säulen der physischen Sicherheit</h3>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Der erste Schritt in unserer Konzeption ist die absolute Härtung der Gebäudehülle. Durch den Einsatz von massiven Panzerriegeln, Hochsicherheits-Profilzylindern mit komplexen, mehrdimensionalen Schließprofilen und verstärkten Schließblechen schaffen wir physische Barrieren, die gewaltsamen Manipulationsversuchen (wie Picking, Bumping oder Bohren) massiven Widerstand entgegensetzen. Diese mechanische Basisverzögerung ist essenziell, um die Reaktionszeit der nachgelagerten Systeme zu maximieren.
+              </p>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Darüber hinaus integrieren wir zertifizierte Fenstersicherungen und Pilzkopfverriegelungen, die das Aushebeln von Fenstern und Terrassentüren verhindern. Jedes mechanische Element wird nach strengen Kriterien ausgewählt und fachgerecht montiert, um eine lückenlose Außenhautsicherung zu garantieren, die den höchsten VdS-Klassen entspricht.
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] border-b border-[oklch(0.890_0.008_260/0.55)] pb-4">Elektronische Überwachung &amp; Detektion</h3>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Die zweite Säule unserer Methodik ist die intelligente Sensorik. Moderne Einbruchmeldeanlagen (EMA) und Videoüberwachungssysteme bilden ein neuronales Netz um und in Ihrem Objekt. Durch die Implementierung von Dual-Meldern (Passiv-Infrarot und Mikrowelle) wird eine nahezu fehlerfreie Detektion erreicht, während smarte Algorithmen in der Videoanalyse zwischen menschlichen Bewegungen, Tieren und Witterungseinflüssen unterscheiden können.
+              </p>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Die Integration dieser Systeme in eine zentrale Smart-Home- oder Gebäudeautomationsplattform ermöglicht eine hochverschlüsselte, dezentrale Steuerung in Echtzeit. Bei einer Detektion wird sofort eine eskalierende Alarmierungskette ausgelöst – von der lokalen Sirenenaktivierung bis hin zur stillen Alarmierung von Wachdiensten oder der Polizei, flankiert von gestochen scharfen Beweisbildern.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-24">
+            <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mb-10 text-center">Vergleichsmatrix der Sicherheitsarchitekturen</h3>
+            <div className="overflow-x-auto rounded-xl border border-[oklch(0.890_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-[oklch(0.988_0.002_260)] border-b border-[oklch(0.890_0.008_260/0.55)]">
+                    <th className="p-5 font-semibold text-[oklch(0.16_0.02_260)]">Architekturstufe</th>
+                    <th className="p-5 font-semibold text-[oklch(0.16_0.02_260)]">Mechanischer Widerstand</th>
+                    <th className="p-5 font-semibold text-[oklch(0.16_0.02_260)]">Elektronische Detektion</th>
+                    <th className="p-5 font-semibold text-[oklch(0.16_0.02_260)]">Zielgruppe / Einsatzszenario</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[oklch(0.890_0.008_260/0.55)]">
+                  <tr>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)] font-medium">Basis-Resilienz</td>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)]">Standard-Profilzylinder, Nachrüstsicherungen</td>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)]">Lokale Alarmgeber, isolierte Sensoren</td>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)]">Wohnungen, Basisschutz für Einfamilienhäuser</td>
+                  </tr>
+                  <tr>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)] font-medium">Erweiterte Integration</td>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)]">VdS-zertifizierte Schlösser, Panzerriegel</td>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)]">Vernetzte EMA, App-Steuerung, Außenhautüberwachung</td>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)]">Gehobene Privathaushalte, kleine Gewerbeobjekte</td>
+                  </tr>
+                  <tr>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)] font-medium">High-End-Synthese</td>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)]">Mechatronische Zylinder, RC3/RC4 Türen, Tresortechnik</td>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)]">AI-Videoanalyse, redundante Aufschaltung (NSL), biometrischer Zutritt</td>
+                    <td className="p-5 text-[oklch(0.32_0.02_260)]">Villen, Industrieanlagen, Hochrisiko-Bereiche</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="sicherheitsbudget-kalkulator" className="bg-[oklch(0.988_0.002_260)] py-16">
+        <div className="mx-auto max-w-3xl px-4 md:px-8">
+          <div className="mb-12">
+            <h2 className="text-[oklch(0.16_0.02_260)] font-semibold tracking-tight text-3xl md:text-4xl">Interaktiver Sicherheits-Kalkulator</h2>
+            <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed text-lg">
+              Ermitteln Sie mit unserem dynamischen Kalkulator eine fundierte Ersteinschätzung für Ihr maßgeschneidertes Sicherheitskonzept.
+            </p>
+          </div>
+          <div className="mt-12">
+            <SecurityBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      <Section id="fachspezifische-faqs" className="bg-[oklch(0.988_0.002_260)] py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-4 md:px-8">
+          <div className="mb-12">
+            <h2 className="text-[oklch(0.16_0.02_260)] font-semibold tracking-tight text-3xl md:text-4xl">Fachspezifische FAQ &amp; Expertenwissen</h2>
+            <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed text-lg">
+              Kompakte Antworten auf die komplexesten Fragen der modernen Sicherheitstechnik.
+            </p>
+          </div>
+
+          <div className="mt-12 space-y-6">
+            <div className="rounded-2xl border border-[oklch(0.890_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Wie differenziert sich eine VdS-zertifizierte Anlage von herkömmlichen Smart-Home-Lösungen?</h3>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                VdS-zertifizierte Systeme unterliegen rigorosen Testverfahren hinsichtlich Sabotagesicherheit, Ausfallsicherheit (Notstrom) und Frequenzband-Redundanz. Während reguläre Smart-Home-Systeme oft anfällig für Jamming (Störsender) sind und bei WLAN-Ausfall versagen, operieren zertifizierte Anlagen autonom und kommunizieren verschlüsselt über dedizierte, redundante Kanäle, was sie für Versicherungen und polizeiliche Aufschaltungen qualifiziert.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-[oklch(0.890_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Was versteht man unter dem Prinzip der &quot;Zwiebelschalen-Sicherheit&quot; (Onion Routing Model of Security)?</h3>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Dieses Konzept strukturiert die Sicherheit in konzentrische Ringe: Perimeter (Grundstücksgrenze), Außenhaut (Fassade/Türen/Fenster), Innenraum (Bewegungsmelder) und Objektschutz (Tresor). Ein Angreifer muss konsekutiv mehrere, völlig unterschiedliche Hürden (mechanisch und elektronisch) überwinden. Dies potenziert den Zeitaufwand und das Entdeckungsrisiko exponentiell.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-[oklch(0.890_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Wie hoch ist der reale Mehrwert von mechatronischen Schließsystemen?</h3>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Mechatronik vereint physische Robustheit mit digitaler Flexibilität. Der höchste Mehrwert liegt im Berechtigungsmanagement: Verlorene Schlüssel müssen nicht mehr zum teuren Austausch der gesamten Schließanlage führen, sondern werden einfach ausprogrammiert. Zudem ermöglicht das Audit-Trail eine genaue Nachverfolgung, welcher Schlüssel wann an welchem Zylinder operiert hat, was für Gewerbeobjekte von kritischer Bedeutung ist.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-[oklch(0.890_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Welche Rolle spielt die Netzwerksicherheit bei IP-basierten Videoanlagen?</h3>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Sie ist der absolute Kernpunkt. Eine ungeschützte IP-Kamera ist ein potenzielles Einfallstor (Botnetze, Spionage). Wir implementieren Kameras strikt in separierte VLANs, erzwingen End-to-End-Verschlüsselung (TLS 1.3), deaktivieren ungenutzte Protokolle (P2P, Telnet) und setzen starke Authentifizierungsmechanismen (802.1X) ein. Die physische Sicherheit darf niemals zu Lasten der Cybersicherheit gehen.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-[oklch(0.890_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Inwiefern beeinflussen moderne Sicherheitsgläser die Sensorauswahl?</h3>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Sicherheitsgläser (wie P4A oder höher) zersplittern nicht charakteristisch wie Standardglas. Herkömmliche akustische Glasbruchmelder, die auf die Frequenz von brechendem Floatglas kalibriert sind, lösen hier oft nicht zuverlässig aus. Daher erfordert Architektur mit Sicherheitsverglasung den Einsatz von aktiven Flächenüberwachungssystemen, seismischen Meldern oder hochspezialisierten passiven Meldern, die auf das Reißen von Verbundfolien abgestimmt sind.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       <Section id="recht-und-verantwortung">
         <SectionHeading
           eyebrow="Recht und Verantwortung"
