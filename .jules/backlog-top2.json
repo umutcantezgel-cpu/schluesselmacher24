@@ -1,0 +1,6 @@
+{
+  "target_route": "app/sicherheitstechnik/page.tsx",
+  "status": "COMPLETED_BY_BUILDER",
+  "interactive_module": "SicherheitsCheckCalculator",
+  "target_word_count": 850
+}

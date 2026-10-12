@@ -21,6 +21,8 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
+import { SicherheitsCheckCalculator } from '@/components/sicherheitstechnik/sicherheits-check-calculator';
+
 const ROUTE = 'sicherheitstechnik';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -254,7 +256,117 @@ export default async function SicherheitstechnikPage() {
         </Alert>
       </Section>
 
-      {/* Verbindung zur Mechanik */}
+
+      {/* Fachlicher Tiefgang & Methodik */}
+      <Section tone="muted" tight>
+        <SectionHeading
+          eyebrow="Methodik & Fachkompetenz"
+          title="Ganzheitliche Sicherheitsarchitektur für moderne Objekte"
+          lead="Unsere Methodik basiert auf jahrzehntelanger Erfahrung und modernsten Standards."
+        />
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Präventive Abwehrstrukturen</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Die Grundlage jeder fundierten Sicherheitsstrategie beginnt weit vor dem eigentlichen Gebäude.
+              Wir analysieren die Peripherie, identifizieren potenzielle Schwachstellen und konzipieren
+              mehrstufige Barrieren. Mechanische Schließsysteme der höchsten Widerstandsklasse bilden den
+              unverzichtbaren Kern. Ohne robuste Mechanik verkommt jede elektronische Meldeanlage zu einem
+              bloßen Dokumentationswerkzeug des Einbruchs. Wir setzen auf hochlegierte Stähle,
+              aufbohrgeschützte Zylinder und massiv verankerte Schließbleche.
+            </p>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Darauf aufbauend implementieren wir vernetzte Detektionssysteme. Intelligente Sensorik
+              unterscheidet zwischen harmlosen Umwelteinflüssen und tatsächlichen Bedrohungen.
+              Diese hybride Architektur aus physischem Widerstand und digitaler Intelligenz maximiert
+              die Interventionszeit für Einsatzkräfte und minimiert das Risiko von Fehlaralarmen auf ein
+              absolutes Minimum.
+            </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Integration & Skalierbarkeit</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Sicherheitssysteme dürfen keine isolierten Silos sein. Moderne Zutrittskontrollen interagieren
+              nahtlos mit der Videoüberwachung und dem Gefahrenmanagementsystem. Wenn ein unautorisierter
+              Zutrittsversuch registriert wird, fokussiert sich die PTZ-Kamera automatisch auf den Bereich
+              und das Sicherheitspersonal erhält ein Echtzeit-Lagebild. Diese Synergieeffekte sind
+              entscheidend für komplexe Gewerbeobjekte und anspruchsvolle Privatanwesen.
+            </p>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Unsere Systemdesigns sind inhärent skalierbar. Was heute als überschaubares System beginnt,
+              kann morgen um weitere Gebäude, vernetzte Standorte oder neue Bedrohungsszenarien erweitert
+              werden. Offene Schnittstellen (wie ONVIF) und standardisierte Protokolle (wie OSDP)
+              gewährleisten Investitionssicherheit und Unabhängigkeit von proprietären Insellösungen.
+            </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Normative Compliance & Zertifizierung</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Jede Installation erfolgt strikt nach den Vorgaben der VdS (Vertrauen durch Sicherheit) und
+              den relevanten DIN EN Normen. Wir garantieren nicht nur das geforderte Schutzniveau, sondern
+              auch die Konformität mit versicherungsrechtlichen Anforderungen. Dies reduziert Haftungsrisiken
+              und führt oft zu signifikanten Einsparungen bei den Versicherungsprämien.
+            </p>
+          </div>
+          <div>
+            <SicherheitsCheckCalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Ausführlicher FAQ-Bereich */}
+      <Section id="faq">
+        <SectionHeading
+          eyebrow="Häufige Fragen"
+          title="Expertenantworten zu Sicherheitstechnik"
+          lead="Detaillierte Einblicke in Planung, Umsetzung und Betrieb komplexer Sicherheitssysteme."
+        />
+        <div className="mt-8 space-y-6">
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wie verhält sich das System bei einem Stromausfall?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Alle kritischen Komponenten unserer Einbruchmeldeanlagen sind mit redundanten Energiequellen ausgestattet.
+              Hochleistungsakkumulatoren gewährleisten einen autonomen Betrieb von mindestens 60 Stunden gem. VdS-Richtlinien.
+              Zusätzlich erfolgt eine sofortige, verschlüsselte Sabotagemeldung an die aufgeschaltete Notruf- und Serviceleitstelle (NSL)
+              über einen redundanten Übertragungsweg (z.B. GSM/LTE als Fallback zum IP-Netz).
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Können bestehende analoge Kameras in ein neues IP-System integriert werden?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Ja, die Migration kann fließend erfolgen. Wir nutzen professionelle Video-Encoder, die das analoge BNC-Signal
+              in hochauflösende H.265-Streams wandeln. So können Sie Ihre bestehenden Investitionen schützen und nach und nach
+              auf moderne IP-Kameras mit KI-basierter Videoanalytik aufrüsten, während alles über ein zentrales VMS
+              (Video Management System) verwaltet wird.
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Was bedeutet &quot;Zwangsläufigkeit&quot; bei einer Einbruchmeldeanlage?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Die Zwangsläufigkeit ist ein essenzielles Konstruktionsprinzip zur Vermeidung von Falschalarmen.
+              Sie stellt technisch sicher, dass die Anlage nur scharfgeschaltet werden kann, wenn alle überwachten
+              Bereiche ordnungsgemäß verschlossen sind (z.B. keine offenen Fenster). Umgekehrt kann der Bereich
+              erst betreten werden, wenn die Anlage unscharf geschaltet wurde (z.B. durch ein Sperrelement in der Tür).
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wie sicher sind funkbasierte Sicherheitssysteme gegen Störsender (Jamming)?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Moderne professionelle Funksysteme nutzen bidirektionale Kommunikation auf dedizierten Sicherheitsfrequenzen
+              (868 MHz) mit dynamischem Frequenzwechsel (Frequency Hopping) und AES-128 Bit Verschlüsselung.
+              Die Zentrale überwacht permanent das Funkspektrum. Wird ein Jamming-Versuch detektiert, löst das System
+              unverzüglich einen Sabotagealarm aus. Für VdS Klasse B/C empfehlen wir dennoch konsequent drahtgebundene Systeme.
+            </p>
+          </div>
+          <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Sind biometrische Zutrittskontrollen DSGVO-konform realisierbar?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Absolut. Wir setzen auf das Prinzip &quot;Template on Card&quot; (ToC) oder dezentrale Speicherung der Hash-Werte.
+              Dabei wird der biometrische Fingerabdruck nicht als Bild, sondern als mathematischer Algorithmus (Minutien)
+              lokal auf dem RFID-Transponder des Nutzers gespeichert. Die Zutrittsentscheidung findet direkt im Leser statt,
+              ohne dass zentrale biometrische Datenbanken aufgebaut werden müssen. Dies erfüllt die höchsten
+              Datenschutzanforderungen (Privacy by Design).
+            </p>
+          </div>
+        </div>
+      </Section>
+{/* Verbindung zur Mechanik */}
       <Section tone="muted" tight>
         <div className="grid gap-4 md:grid-cols-2">
           <Card className="h-full">

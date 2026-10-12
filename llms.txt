@@ -1,0 +1,4 @@
+# Schluesselmacher24 Architecture
+
+## Neue Interaktive Module
+- **SicherheitsCheckCalculator:** Ein interaktives Tool zur Kalkulation von Projektbudgets für Sicherheitstechnik.
