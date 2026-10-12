@@ -26,7 +26,11 @@ export function GET() {
     '',
     bereiche,
     '',
-    '## Hilfreiche Seiten',
+    `## Interaktive Module
+
+- [Sicherheitstechnik Budget-Kalkulator](${site}/sicherheitstechnik#kalkulator): Ein interaktives Tool zur Kostenabschätzung eines Sicherheitssystems.
+
+## Hilfreiche Seiten`,
     '',
     `- [Ratgeber](${site}/ratgeber): Antworten auf häufige Fragen zu Schlüsseln, Schließtechnik und Einbruchschutz`,
     `- [Einsatzgebiete](${site}/standorte): Regionen mit Vor-Ort-Leistungen`,
