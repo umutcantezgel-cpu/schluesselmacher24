@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-12T14:36:58.360380+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten basierend auf der Score-Formel (Visuelle Hebelwirkung, Nutzer-Mehrwert, Machbarkeit).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_055",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_component_file": "components/calculator/security-roi-calculator.tsx",
+      "title": "Interaktiver Sicherheits-ROI und Budget-Kalkulator",
+      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende T\u00fcr- und Schlie\u00dftechnik-Seite ein und erweitere den umgebenden Flie\u00dftext auf >800 W\u00f6rter.",
+      "score": 9.85,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_012",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "components/showcase/spatial-bento-grid.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "\u00dcberf\u00fchrung der bestehenden Feature-Karten auf der Sicherheitstechnik-Seite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), ged\u00e4mpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
