@@ -1,0 +1,3 @@
+# JC-AUDITOR-ARCHITECT Blueprint
+Target Architecture: Next.js 16+, React 19.2+, Tailwind v4 OKLCH Light Mode.
+Please refer to the .jules/revolution-plan.json for the master blueprint of the transformations.

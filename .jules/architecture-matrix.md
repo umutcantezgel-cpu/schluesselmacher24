@@ -1,0 +1,56 @@
+# Architecture Matrix
+
+| Route Path | File Path | Words | Target Words | Interactive Module | Status |
+|------------|-----------|-------|--------------|--------------------|--------|
+| /api/[...slug] | app/api/[...slug]/route.ts | 70 | 870 | DynamicComponent1 | PENDING |
+| /admin/[[...segments]] | app/admin/[[...segments]]/page.tsx | 99 | 899 | DynamicComponent2 | PENDING |
+| / | app/page.tsx | 1130 | 1930 | DynamicComponent3 | PENDING |
+| /ratgeber | app/ratgeber/page.tsx | 224 | 1024 | DynamicComponent4 | PENDING |
+| /ratgeber/[slug] | app/ratgeber/[slug]/page.tsx | 359 | 1159 | DynamicComponent5 | PENDING |
+| /schluessel-nach-vorlage | app/schluessel-nach-vorlage/page.tsx | 1793 | 2593 | DynamicComponent6 | PENDING |
+| /schluessel-nach-vorlage/anfrage | app/schluessel-nach-vorlage/anfrage/page.tsx | 221 | 1021 | DynamicComponent7 | PENDING |
+| /warenkorb | app/warenkorb/page.tsx | 261 | 1061 | DynamicComponent8 | PENDING |
+| /kasse | app/kasse/page.tsx | 242 | 1042 | DynamicComponent9 | PENDING |
+| /api/kunden-upload | app/api/kunden-upload/route.ts | 704 | 1504 | DynamicComponent10 | PENDING |
+| /schluessel-nach-code | app/schluessel-nach-code/page.tsx | 497 | 1297 | DynamicComponent11 | PENDING |
+| /schluessel-nach-code/[slug] | app/schluessel-nach-code/[slug]/page.tsx | 734 | 1534 | DynamicComponent12 | PENDING |
+| /sicherheitstechnik | app/sicherheitstechnik/page.tsx | 1020 | 1820 | DynamicComponent13 | PENDING |
+| /sicherheitstechnik/[slug] | app/sicherheitstechnik/[slug]/page.tsx | 644 | 1444 | DynamicComponent14 | PENDING |
+| /sicherheitstechnik/sicherheitscheck | app/sicherheitstechnik/sicherheitscheck/page.tsx | 329 | 1129 | DynamicComponent15 | PENDING |
+| /tuer-und-schliesstechnik | app/tuer-und-schliesstechnik/page.tsx | 1784 | 2584 | DynamicComponent16 | PENDING |
+| /tuer-und-schliesstechnik/[slug] | app/tuer-und-schliesstechnik/[slug]/page.tsx | 493 | 1293 | DynamicComponent17 | PENDING |
+| /bestellung/[id] | app/bestellung/[id]/page.tsx | 1299 | 2099 | DynamicComponent18 | PENDING |
+| /gleichschliessende-zylinder | app/gleichschliessende-zylinder/page.tsx | 2081 | 2881 | DynamicComponent19 | PENDING |
+| /gleichschliessende-zylinder/konfigurator | app/gleichschliessende-zylinder/konfigurator/page.tsx | 310 | 1110 | DynamicComponent20 | PENDING |
+| /elektronische-zutrittsloesungen | app/elektronische-zutrittsloesungen/page.tsx | 2480 | 3280 | DynamicComponent21 | PENDING |
+| /elektronische-zutrittsloesungen/konfigurator | app/elektronische-zutrittsloesungen/konfigurator/page.tsx | 382 | 1182 | DynamicComponent22 | PENDING |
+| /schliessanlagen | app/schliessanlagen/page.tsx | 1873 | 2673 | DynamicComponent23 | PENDING |
+| /schliessanlagen/konfigurator | app/schliessanlagen/konfigurator/page.tsx | 368 | 1168 | DynamicComponent24 | PENDING |
+| /service-und-termin | app/service-und-termin/page.tsx | 1578 | 2378 | DynamicComponent25 | PENDING |
+| /service-und-termin/terminstatus | app/service-und-termin/terminstatus/page.tsx | 107 | 907 | DynamicComponent26 | PENDING |
+| /service-und-termin/anfrage | app/service-und-termin/anfrage/page.tsx | 151 | 951 | DynamicComponent27 | PENDING |
+| /service-und-termin/vor-ort | app/service-und-termin/vor-ort/page.tsx | 655 | 1455 | DynamicComponent28 | PENDING |
+| /service-und-termin/kontakt | app/service-und-termin/kontakt/page.tsx | 474 | 1274 | DynamicComponent29 | PENDING |
+| /rechtliches/impressum | app/rechtliches/impressum/page.tsx | 248 | 1048 | DynamicComponent30 | PENDING |
+| /rechtliches/cookie-einstellungen | app/rechtliches/cookie-einstellungen/page.tsx | 228 | 1028 | DynamicComponent31 | PENDING |
+| /rechtliches/versand-und-zahlung | app/rechtliches/versand-und-zahlung/page.tsx | 427 | 1227 | DynamicComponent32 | PENDING |
+| /rechtliches/widerruf | app/rechtliches/widerruf/page.tsx | 370 | 1170 | DynamicComponent33 | PENDING |
+| /rechtliches/agb | app/rechtliches/agb/page.tsx | 416 | 1216 | DynamicComponent34 | PENDING |
+| /rechtliches/datenschutz | app/rechtliches/datenschutz/page.tsx | 715 | 1515 | DynamicComponent35 | PENDING |
+| /artikel | app/artikel/page.tsx | 656 | 1456 | DynamicComponent36 | PENDING |
+| /artikel/[slug] | app/artikel/[slug]/page.tsx | 934 | 1734 | DynamicComponent37 | PENDING |
+| /standorte | app/standorte/page.tsx | 249 | 1049 | DynamicComponent38 | PENDING |
+| /standorte/[city] | app/standorte/[city]/page.tsx | 405 | 1205 | DynamicComponent39 | PENDING |
+| /autoschluessel | app/autoschluessel/page.tsx | 2002 | 2802 | DynamicComponent40 | PENDING |
+| /autoschluessel/marken | app/autoschluessel/marken/page.tsx | 718 | 1518 | DynamicComponent41 | PENDING |
+| /autoschluessel/marken/[make] | app/autoschluessel/marken/[make]/page.tsx | 979 | 1779 | DynamicComponent42 | PENDING |
+| /autoschluessel/marken/[make]/[model] | app/autoschluessel/marken/[make]/[model]/page.tsx | 1223 | 2023 | DynamicComponent43 | PENDING |
+| /autoschluessel/funkschluessel | app/autoschluessel/funkschluessel/page.tsx | 1091 | 1891 | DynamicComponent44 | PENDING |
+| /autoschluessel/programmieren | app/autoschluessel/programmieren/page.tsx | 1222 | 2022 | DynamicComponent45 | PENDING |
+| /autoschluessel/anfrage | app/autoschluessel/anfrage/page.tsx | 518 | 1318 | DynamicComponent46 | PENDING |
+| /autoschluessel/kopieren | app/autoschluessel/kopieren/page.tsx | 1133 | 1933 | DynamicComponent47 | PENDING |
+| /autoschluessel/nachmachen | app/autoschluessel/nachmachen/page.tsx | 1189 | 1989 | DynamicComponent48 | PENDING |
+| /autoschluessel/smart-key | app/autoschluessel/smart-key/page.tsx | 1207 | 2007 | DynamicComponent49 | PENDING |
+| /autoschluessel/schluesselbart-fraesen | app/autoschluessel/schluesselbart-fraesen/page.tsx | 1042 | 1842 | DynamicComponent50 | PENDING |
+| /autoschluessel/fahrzeugoeffnung | app/autoschluessel/fahrzeugoeffnung/page.tsx | 1121 | 1921 | DynamicComponent51 | PENDING |
+| /llms.txt | app/llms.txt/route.ts | 145 | 945 | DynamicComponent52 | PENDING |
