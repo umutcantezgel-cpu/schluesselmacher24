@@ -1,0 +1,70 @@
+# Architecture Matrix & Routen-Transformation
+
+Dieses Dokument beinhaltet den Ist-/Soll-Abgleich für das System-Update.
+
+| Route | Datei | Ist-Worte | Soll-Worte | Status | Schema-Entitäten |
+|---|---|---|---|---|---|
+| `/` | `src/app/(payload)/layout.tsx` | 69 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/` | `src/app/(site)/page.tsx` | 154 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/` | `src/app/(site)/layout.tsx` | 106 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/admin/[[...segments]]` | `src/app/(payload)/admin/[[...segments]]/page.tsx` | 63 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/api/[...slug]` | `src/app/(payload)/api/[...slug]/route.ts` | 62 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/api/kunden-upload` | `src/app/(site)/api/kunden-upload/route.ts` | 363 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/artikel` | `src/app/(site)/artikel/page.tsx` | 185 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/artikel/[slug]` | `src/app/(site)/artikel/[slug]/page.tsx` | 299 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel` | `src/app/(site)/autoschluessel/page.tsx` | 313 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel` | `src/app/(site)/autoschluessel/layout.tsx` | 23 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/anfrage` | `src/app/(site)/autoschluessel/anfrage/page.tsx` | 136 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/fahrzeugoeffnung` | `src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx` | 42 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/funkschluessel` | `src/app/(site)/autoschluessel/funkschluessel/page.tsx` | 40 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/kopieren` | `src/app/(site)/autoschluessel/kopieren/page.tsx` | 87 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/marken` | `src/app/(site)/autoschluessel/marken/page.tsx` | 240 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/marken/[make]` | `src/app/(site)/autoschluessel/marken/[make]/page.tsx` | 336 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/marken/[make]/[model]` | `src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx` | 447 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/nachmachen` | `src/app/(site)/autoschluessel/nachmachen/page.tsx` | 33 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/programmieren` | `src/app/(site)/autoschluessel/programmieren/page.tsx` | 48 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/schluesselbart-fraesen` | `src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx` | 42 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/autoschluessel/smart-key` | `src/app/(site)/autoschluessel/smart-key/page.tsx` | 48 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/bestellung/[id]` | `src/app/(site)/bestellung/[id]/page.tsx` | 415 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/elektronische-zutrittsloesungen` | `src/app/(site)/elektronische-zutrittsloesungen/page.tsx` | 323 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/elektronische-zutrittsloesungen` | `src/app/(site)/elektronische-zutrittsloesungen/layout.tsx` | 23 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/elektronische-zutrittsloesungen/konfigurator` | `src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx` | 121 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/gleichschliessende-zylinder` | `src/app/(site)/gleichschliessende-zylinder/page.tsx` | 519 | 919 | PENDING_BUILDER | Organization, FAQPage |
+| `/gleichschliessende-zylinder` | `src/app/(site)/gleichschliessende-zylinder/layout.tsx` | 23 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/gleichschliessende-zylinder/konfigurator` | `src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx` | 96 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/kasse` | `src/app/(site)/kasse/page.tsx` | 44 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/llms.txt` | `src/app/llms.txt/route.ts` | 127 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/ratgeber` | `src/app/(site)/ratgeber/page.tsx` | 48 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/ratgeber/[slug]` | `src/app/(site)/ratgeber/[slug]/page.tsx` | 123 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/rechtliches` | `src/app/(site)/rechtliches/layout.tsx` | 67 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/rechtliches/agb` | `src/app/(site)/rechtliches/agb/page.tsx` | 15 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/rechtliches/cookie-einstellungen` | `src/app/(site)/rechtliches/cookie-einstellungen/page.tsx` | 18 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/rechtliches/datenschutz` | `src/app/(site)/rechtliches/datenschutz/page.tsx` | 610 | 1010 | PENDING_BUILDER | Organization, FAQPage |
+| `/rechtliches/impressum` | `src/app/(site)/rechtliches/impressum/page.tsx` | 183 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/rechtliches/versand-und-zahlung` | `src/app/(site)/rechtliches/versand-und-zahlung/page.tsx` | 202 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/rechtliches/widerruf` | `src/app/(site)/rechtliches/widerruf/page.tsx` | 15 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/schliessanlagen` | `src/app/(site)/schliessanlagen/page.tsx` | 290 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/schliessanlagen` | `src/app/(site)/schliessanlagen/layout.tsx` | 23 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/schliessanlagen/konfigurator` | `src/app/(site)/schliessanlagen/konfigurator/page.tsx` | 66 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/schluessel-nach-code` | `src/app/(site)/schluessel-nach-code/page.tsx` | 91 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/schluessel-nach-code` | `src/app/(site)/schluessel-nach-code/layout.tsx` | 23 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/schluessel-nach-code/[slug]` | `src/app/(site)/schluessel-nach-code/[slug]/page.tsx` | 286 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/schluessel-nach-vorlage` | `src/app/(site)/schluessel-nach-vorlage/page.tsx` | 392 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/schluessel-nach-vorlage` | `src/app/(site)/schluessel-nach-vorlage/layout.tsx` | 23 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/schluessel-nach-vorlage/anfrage` | `src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx` | 38 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/service-und-termin` | `src/app/(site)/service-und-termin/page.tsx` | 666 | 1066 | PENDING_BUILDER | Organization, FAQPage |
+| `/service-und-termin` | `src/app/(site)/service-und-termin/layout.tsx` | 23 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/service-und-termin/anfrage` | `src/app/(site)/service-und-termin/anfrage/page.tsx` | 41 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/service-und-termin/kontakt` | `src/app/(site)/service-und-termin/kontakt/page.tsx` | 120 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/service-und-termin/terminstatus` | `src/app/(site)/service-und-termin/terminstatus/page.tsx` | 23 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/service-und-termin/vor-ort` | `src/app/(site)/service-und-termin/vor-ort/page.tsx` | 133 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/sicherheitstechnik` | `src/app/(site)/sicherheitstechnik/page.tsx` | 298 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/sicherheitstechnik` | `src/app/(site)/sicherheitstechnik/layout.tsx` | 23 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/sicherheitstechnik/[slug]` | `src/app/(site)/sicherheitstechnik/[slug]/page.tsx` | 197 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/sicherheitstechnik/sicherheitscheck` | `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx` | 81 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/standorte` | `src/app/(site)/standorte/page.tsx` | 69 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/standorte/[city]` | `src/app/(site)/standorte/[city]/page.tsx` | 116 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/tuer-und-schliesstechnik` | `src/app/(site)/tuer-und-schliesstechnik/page.tsx` | 396 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/tuer-und-schliesstechnik` | `src/app/(site)/tuer-und-schliesstechnik/layout.tsx` | 23 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/tuer-und-schliesstechnik/[slug]` | `src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx` | 167 | 850 | PENDING_BUILDER | Organization, FAQPage |
+| `/warenkorb` | `src/app/(site)/warenkorb/page.tsx` | 45 | 850 | PENDING_BUILDER | Organization, FAQPage |
