@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Interaktive Module (Revolution Builder)
+- **Sicherheitstechnik-Budget-Kalkulator:** Eingebunden in `src/app/(site)/sicherheitstechnik/page.tsx`, implementiert als React 19 Server Action Modul zur dynamischen Kostenabschätzung.
