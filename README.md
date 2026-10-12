@@ -43,3 +43,4 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+Updated by JC-AUDITOR-ARCHITECT-v1 to reflect Next.js 16+, React 19.2+, Tailwind v4 OKLCH Light Mode architecture.

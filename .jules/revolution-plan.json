@@ -1,0 +1,1263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-12T09:30:06.222467Z",
+  "total_existing_routes": 52,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/api/[...slug]",
+      "source_file": "app/api/[...slug]/route.ts",
+      "target_word_count": 870,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent1",
+        "target_file": "components/interactive/dynamiccomponent1.tsx",
+        "action_file": "actions/dynamiccomponent1.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "app/admin/[[...segments]]/page.tsx",
+      "target_word_count": 899,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent2",
+        "target_file": "components/interactive/dynamiccomponent2.tsx",
+        "action_file": "actions/dynamiccomponent2.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/",
+      "source_file": "app/page.tsx",
+      "target_word_count": 1930,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent3",
+        "target_file": "components/interactive/dynamiccomponent3.tsx",
+        "action_file": "actions/dynamiccomponent3.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/ratgeber",
+      "source_file": "app/ratgeber/page.tsx",
+      "target_word_count": 1024,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent4",
+        "target_file": "components/interactive/dynamiccomponent4.tsx",
+        "action_file": "actions/dynamiccomponent4.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1159,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent5",
+        "target_file": "components/interactive/dynamiccomponent5.tsx",
+        "action_file": "actions/dynamiccomponent5.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2593,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent6",
+        "target_file": "components/interactive/dynamiccomponent6.tsx",
+        "action_file": "actions/dynamiccomponent6.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 1021,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent7",
+        "target_file": "components/interactive/dynamiccomponent7.tsx",
+        "action_file": "actions/dynamiccomponent7.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/warenkorb",
+      "source_file": "app/warenkorb/page.tsx",
+      "target_word_count": 1061,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent8",
+        "target_file": "components/interactive/dynamiccomponent8.tsx",
+        "action_file": "actions/dynamiccomponent8.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/kasse",
+      "source_file": "app/kasse/page.tsx",
+      "target_word_count": 1042,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent9",
+        "target_file": "components/interactive/dynamiccomponent9.tsx",
+        "action_file": "actions/dynamiccomponent9.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/api/kunden-upload",
+      "source_file": "app/api/kunden-upload/route.ts",
+      "target_word_count": 1504,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent10",
+        "target_file": "components/interactive/dynamiccomponent10.tsx",
+        "action_file": "actions/dynamiccomponent10.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/schluessel-nach-code/page.tsx",
+      "target_word_count": 1297,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent11",
+        "target_file": "components/interactive/dynamiccomponent11.tsx",
+        "action_file": "actions/dynamiccomponent11.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1534,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent12",
+        "target_file": "components/interactive/dynamiccomponent12.tsx",
+        "action_file": "actions/dynamiccomponent12.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/sicherheitstechnik/page.tsx",
+      "target_word_count": 1820,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent13",
+        "target_file": "components/interactive/dynamiccomponent13.tsx",
+        "action_file": "actions/dynamiccomponent13.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1444,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent14",
+        "target_file": "components/interactive/dynamiccomponent14.tsx",
+        "action_file": "actions/dynamiccomponent14.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 1129,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent15",
+        "target_file": "components/interactive/dynamiccomponent15.tsx",
+        "action_file": "actions/dynamiccomponent15.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2584,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent16",
+        "target_file": "components/interactive/dynamiccomponent16.tsx",
+        "action_file": "actions/dynamiccomponent16.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1293,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent17",
+        "target_file": "components/interactive/dynamiccomponent17.tsx",
+        "action_file": "actions/dynamiccomponent17.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/bestellung/[id]/page.tsx",
+      "target_word_count": 2099,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent18",
+        "target_file": "components/interactive/dynamiccomponent18.tsx",
+        "action_file": "actions/dynamiccomponent18.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2881,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent19",
+        "target_file": "components/interactive/dynamiccomponent19.tsx",
+        "action_file": "actions/dynamiccomponent19.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 1110,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent20",
+        "target_file": "components/interactive/dynamiccomponent20.tsx",
+        "action_file": "actions/dynamiccomponent20.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3280,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent21",
+        "target_file": "components/interactive/dynamiccomponent21.tsx",
+        "action_file": "actions/dynamiccomponent21.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1182,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent22",
+        "target_file": "components/interactive/dynamiccomponent22.tsx",
+        "action_file": "actions/dynamiccomponent22.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/schliessanlagen/page.tsx",
+      "target_word_count": 2673,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent23",
+        "target_file": "components/interactive/dynamiccomponent23.tsx",
+        "action_file": "actions/dynamiccomponent23.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1168,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent24",
+        "target_file": "components/interactive/dynamiccomponent24.tsx",
+        "action_file": "actions/dynamiccomponent24.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/service-und-termin",
+      "source_file": "app/service-und-termin/page.tsx",
+      "target_word_count": 2378,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent25",
+        "target_file": "components/interactive/dynamiccomponent25.tsx",
+        "action_file": "actions/dynamiccomponent25.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 907,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent26",
+        "target_file": "components/interactive/dynamiccomponent26.tsx",
+        "action_file": "actions/dynamiccomponent26.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 951,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent27",
+        "target_file": "components/interactive/dynamiccomponent27.tsx",
+        "action_file": "actions/dynamiccomponent27.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1455,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent28",
+        "target_file": "components/interactive/dynamiccomponent28.tsx",
+        "action_file": "actions/dynamiccomponent28.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1274,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent29",
+        "target_file": "components/interactive/dynamiccomponent29.tsx",
+        "action_file": "actions/dynamiccomponent29.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/rechtliches/impressum/page.tsx",
+      "target_word_count": 1048,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent30",
+        "target_file": "components/interactive/dynamiccomponent30.tsx",
+        "action_file": "actions/dynamiccomponent30.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 1028,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent31",
+        "target_file": "components/interactive/dynamiccomponent31.tsx",
+        "action_file": "actions/dynamiccomponent31.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1227,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent32",
+        "target_file": "components/interactive/dynamiccomponent32.tsx",
+        "action_file": "actions/dynamiccomponent32.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1170,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent33",
+        "target_file": "components/interactive/dynamiccomponent33.tsx",
+        "action_file": "actions/dynamiccomponent33.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/rechtliches/agb/page.tsx",
+      "target_word_count": 1216,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent34",
+        "target_file": "components/interactive/dynamiccomponent34.tsx",
+        "action_file": "actions/dynamiccomponent34.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1515,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent35",
+        "target_file": "components/interactive/dynamiccomponent35.tsx",
+        "action_file": "actions/dynamiccomponent35.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/artikel",
+      "source_file": "app/artikel/page.tsx",
+      "target_word_count": 1456,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent36",
+        "target_file": "components/interactive/dynamiccomponent36.tsx",
+        "action_file": "actions/dynamiccomponent36.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/artikel/[slug]/page.tsx",
+      "target_word_count": 1734,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent37",
+        "target_file": "components/interactive/dynamiccomponent37.tsx",
+        "action_file": "actions/dynamiccomponent37.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/standorte",
+      "source_file": "app/standorte/page.tsx",
+      "target_word_count": 1049,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent38",
+        "target_file": "components/interactive/dynamiccomponent38.tsx",
+        "action_file": "actions/dynamiccomponent38.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/standorte/[city]/page.tsx",
+      "target_word_count": 1205,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent39",
+        "target_file": "components/interactive/dynamiccomponent39.tsx",
+        "action_file": "actions/dynamiccomponent39.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/autoschluessel",
+      "source_file": "app/autoschluessel/page.tsx",
+      "target_word_count": 2802,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent40",
+        "target_file": "components/interactive/dynamiccomponent40.tsx",
+        "action_file": "actions/dynamiccomponent40.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/autoschluessel/marken/page.tsx",
+      "target_word_count": 1518,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent41",
+        "target_file": "components/interactive/dynamiccomponent41.tsx",
+        "action_file": "actions/dynamiccomponent41.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1779,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent42",
+        "target_file": "components/interactive/dynamiccomponent42.tsx",
+        "action_file": "actions/dynamiccomponent42.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2023,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent43",
+        "target_file": "components/interactive/dynamiccomponent43.tsx",
+        "action_file": "actions/dynamiccomponent43.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1891,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent44",
+        "target_file": "components/interactive/dynamiccomponent44.tsx",
+        "action_file": "actions/dynamiccomponent44.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 2022,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent45",
+        "target_file": "components/interactive/dynamiccomponent45.tsx",
+        "action_file": "actions/dynamiccomponent45.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1318,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent46",
+        "target_file": "components/interactive/dynamiccomponent46.tsx",
+        "action_file": "actions/dynamiccomponent46.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1933,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent47",
+        "target_file": "components/interactive/dynamiccomponent47.tsx",
+        "action_file": "actions/dynamiccomponent47.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1989,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent48",
+        "target_file": "components/interactive/dynamiccomponent48.tsx",
+        "action_file": "actions/dynamiccomponent48.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 2007,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent49",
+        "target_file": "components/interactive/dynamiccomponent49.tsx",
+        "action_file": "actions/dynamiccomponent49.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1842,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent50",
+        "target_file": "components/interactive/dynamiccomponent50.tsx",
+        "action_file": "actions/dynamiccomponent50.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1921,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent51",
+        "target_file": "components/interactive/dynamiccomponent51.tsx",
+        "action_file": "actions/dynamiccomponent51.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/llms.txt",
+      "source_file": "app/llms.txt/route.ts",
+      "target_word_count": 945,
+      "content_expansion_topics": [
+        "Erweiterte detaillierte Leistungs\u00fcbersicht",
+        "Transparente Prozessdarstellung in 4 Phasen",
+        "Erweiterter FAQ-Bereich mit tiefgehenden technischen Erkl\u00e4rungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicComponent52",
+        "target_file": "components/interactive/dynamiccomponent52.tsx",
+        "action_file": "actions/dynamiccomponent52.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
