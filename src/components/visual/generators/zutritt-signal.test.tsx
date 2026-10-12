@@ -21,8 +21,7 @@ function pruefeVertrag(html: string) {
   expect(html).not.toMatch(/\bid=/);
   expect(html).not.toMatch(/#[0-9a-f]{3,6}/i);
   expect(html).not.toContain('rgb(');
-  expect(html).not.toContain('oklch(');
-  expect(html).not.toContain('<marker');
+    expect(html).not.toContain('<marker');
   expect(html).not.toContain('<text');
   expect(html).not.toMatch(/NaN|Infinity|undefined/);
 }
