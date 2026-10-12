@@ -14,58 +14,58 @@
 @layer base {
   :root {
     /* Flächen */
-    --background: 214 45% 98.6%;
-    --surface: 0 0% 100%;
-    --surface-muted: 214 50% 96.6%;
-    --surface-sunken: 214 36% 92.5%;
-    --surface-ink: 222 36% 16%;
+    --background: 0.988 0.002 260;
+    --surface: 0.968 0.004 260;
+    --surface-muted: 0.95 0.006 260;
+    --surface-sunken: 0.9 0.008 260;
+    --surface-ink: 0.25 0.02 260;
 
     /* Text */
-    --foreground: 222 34% 15%;
-    --foreground-muted: 219 16% 37%;
-    --foreground-subtle: 217 12% 45%;
-    --foreground-inverse: 214 45% 98.6%;
+    --foreground: 0.16 0.02 260;
+    --foreground-muted: 0.32 0.02 260;
+    --foreground-subtle: 0.45 0.02 260;
+    --foreground-inverse: 0.988 0.002 260;
 
     /* Linien */
-    --border: 214 32% 89%;
-    --border-strong: 214 22% 77%;
-    --input: 214 28% 84%;
-    --ring: 214 86% 50%;
+    --border: 0.890 0.008 260;
+    --border-strong: 0.75 0.01 260;
+    --input: 0.85 0.01 260;
+    --ring: 0.5 0.1 214;
 
     /* Primär — klares Blau */
-    --primary: 214 80% 40%;
-    --primary-hover: 214 82% 33%;
-    --primary-soft: 214 100% 96.5%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0.4 0.1 260;
+    --primary-hover: 0.3 0.1 260;
+    --primary-soft: 0.9 0.02 260;
+    --primary-foreground: 0.999 0.001 260;
 
     /* Sekundär */
-    --secondary: 214 50% 94%;
-    --secondary-foreground: 222 34% 15%;
+    --secondary: 0.8 0.02 260;
+    --secondary-foreground: 0.16 0.02 260;
 
     /* Akzent — Technisch-Teal, sparsam für Bestätigungen */
-    --accent: 188 52% 30%;
-    --accent-soft: 188 44% 94%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0.5 0.08 190;
+    --accent-soft: 0.9 0.02 190;
+    --accent-foreground: 0.999 0.001 260;
 
     /* Funktionsfarben — nur für Status, nie als Markenfläche */
-    --success: 152 48% 30%;
-    --success-soft: 152 44% 94%;
-    --warning: 32 80% 33%;
-    --warning-soft: 38 70% 95%;
-    --danger: 0 58% 42%;
-    --danger-soft: 0 60% 96%;
-    --info: 214 80% 40%;
-    --info-soft: 214 100% 96.5%;
+    --success: 0.45 0.1 150;
+    --success-soft: 0.9 0.04 150;
+    --warning: 0.45 0.15 40;
+    --warning-soft: 0.9 0.05 40;
+    --danger: 0.5 0.18 20;
+    --danger-soft: 0.9 0.05 20;
+    --info: 0.4 0.1 260;
+    --info-soft: 0.9 0.02 260;
 
     /* Karten / Popover */
-    --card: 0 0% 100%;
-    --card-foreground: 222 34% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 34% 15%;
-    --muted: 214 50% 94%;
-    --muted-foreground: 219 16% 37%;
-    --destructive: 0 58% 42%;
-    --destructive-foreground: 0 0% 100%;
+    --card: 0.968 0.004 260;
+    --card-foreground: 0.16 0.02 260;
+    --popover: 0.968 0.004 260;
+    --popover-foreground: 0.16 0.02 260;
+    --muted: 0.9 0.008 260;
+    --muted-foreground: 0.32 0.02 260;
+    --destructive: 0.5 0.18 20;
+    --destructive-foreground: 0.999 0.001 260;
 
     --radius: 0.75rem;
 
@@ -79,6 +79,7 @@
 @layer base {
   * {
     @apply border-border;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   html {
@@ -86,6 +87,7 @@
   }
 
   body {
+    overflow-x: clip;
     @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -270,12 +272,10 @@
 
 /* Bewegung reduzieren — Layout darf dadurch nicht brechen */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
