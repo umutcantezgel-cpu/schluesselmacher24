@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## System Update: JC-AUDITOR-ARCHITECT-v1
+Die Systemarchitektur wurde auditiert und der Master-Blueprint für Phase 2 (Revolution Builder) vorbereitet. Alle Daten sind in `.jules/` hinterlegt.
