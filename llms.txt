@@ -1,0 +1,9 @@
+# SCHLÜSSELMACHER24
+
+> Fachbetrieb für Autoschlüssel, Schlüssel nach Code, Schließtechnik und Sicherheitstechnik.
+
+## Architektur
+
+- Dieses Projekt nutzt Next.js 16+, React 19.2+, TypeScript 5.5+ und Tailwind CSS v4.
+- Das Styling basiert auf dem OKLCH Color Space (Swiss Modernist Design, High-End Light Mode).
+- Master-Blueprint: `.jules/revolution-plan.json`

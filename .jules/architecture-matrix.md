@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | File | Current Words | Target Words | Status |
+|---|---|---|---|---|
+| / | src/app/(site)/page.tsx | 1130 | 1130 | PENDING_BUILDER |
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 99 | 850 | PENDING_BUILDER |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 224 | 850 | PENDING_BUILDER |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 1793 | 1793 | PENDING_BUILDER |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 261 | 850 | PENDING_BUILDER |
+| /kasse | src/app/(site)/kasse/page.tsx | 242 | 850 | PENDING_BUILDER |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 497 | 850 | PENDING_BUILDER |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1020 | 1020 | PENDING_BUILDER |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 1784 | 1784 | PENDING_BUILDER |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 2081 | 2081 | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2480 | 2480 | PENDING_BUILDER |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 1873 | 1873 | PENDING_BUILDER |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 1578 | 1578 | PENDING_BUILDER |
+| /artikel | src/app/(site)/artikel/page.tsx | 656 | 850 | PENDING_BUILDER |
+| /standorte | src/app/(site)/standorte/page.tsx | 249 | 850 | PENDING_BUILDER |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2002 | 2002 | PENDING_BUILDER |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 359 | 850 | PENDING_BUILDER |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 221 | 850 | PENDING_BUILDER |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 734 | 850 | PENDING_BUILDER |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 644 | 850 | PENDING_BUILDER |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 329 | 850 | PENDING_BUILDER |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 493 | 850 | PENDING_BUILDER |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1299 | 1299 | PENDING_BUILDER |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 310 | 850 | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 382 | 850 | PENDING_BUILDER |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 368 | 850 | PENDING_BUILDER |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 107 | 850 | PENDING_BUILDER |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 151 | 850 | PENDING_BUILDER |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 655 | 850 | PENDING_BUILDER |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 474 | 850 | PENDING_BUILDER |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 248 | 850 | PENDING_BUILDER |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 228 | 850 | PENDING_BUILDER |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 427 | 850 | PENDING_BUILDER |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 370 | 850 | PENDING_BUILDER |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 416 | 850 | PENDING_BUILDER |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 715 | 850 | PENDING_BUILDER |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 934 | 934 | PENDING_BUILDER |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 405 | 850 | PENDING_BUILDER |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 718 | 850 | PENDING_BUILDER |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 1091 | 1091 | PENDING_BUILDER |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1222 | 1222 | PENDING_BUILDER |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 518 | 850 | PENDING_BUILDER |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1133 | 1133 | PENDING_BUILDER |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1189 | 1189 | PENDING_BUILDER |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1207 | 1207 | PENDING_BUILDER |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1042 | 1042 | PENDING_BUILDER |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1121 | 1121 | PENDING_BUILDER |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 979 | 979 | PENDING_BUILDER |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1223 | 1223 | PENDING_BUILDER |
