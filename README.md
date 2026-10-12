@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Sicherheitstechnik Erweiterungen
+Die Seite zur Sicherheitstechnik wurde substanziell überarbeitet und um einen interaktiven `SecurityRiskCalculator` (Risiko-Score-Rechner) erweitert.

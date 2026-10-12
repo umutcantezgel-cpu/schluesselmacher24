@@ -20,6 +20,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { SecurityRiskCalculator } from '@/components/sicherheitstechnik/security-risk-calculator';
+
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +75,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -83,6 +92,7 @@ export default async function SicherheitstechnikPage() {
 
   return (
     <>
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
@@ -203,6 +213,91 @@ export default async function SicherheitstechnikPage() {
       </Section>
 
       {/* Recht und Verantwortung */}
+
+      {/* Interactive Risk Calculator */}
+      <Section id="sicherheitsrechner">
+        <SectionHeading
+          eyebrow="Interaktive Analyse"
+          title="Objekt-Sicherheitsrechner"
+          lead="Berechnen Sie das individuelle Risikoprofil Ihres Objekts und erhalten Sie erste Empfehlungen für eine optimale Absicherung."
+        />
+        <div className="mt-8">
+          <SecurityRiskCalculator />
+        </div>
+      </Section>
+
+
+      <Section id="methodik-und-architektur">
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Tiefgehende Sicherheitsarchitektur nach Schweizer Präzision"
+          lead="Unsere Methodik basiert auf strengen Normen und einer kompromisslosen Qualitätskontrolle."
+        />
+        <div className="mt-8 grid gap-8 md:grid-cols-2 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+          <div>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-4">Ganzheitliche Gefahrenabwehr</h3>
+            <p className="mb-4">
+              Eine effektive Sicherheitsarchitektur betrachtet nicht nur isolierte Komponenten, sondern das perfekte Zusammenspiel aller Systeme. Mechanik, Elektronik und digitale Protokollierung müssen nahtlos ineinandergreifen, um eine lückenlose Sicherheitskette zu gewährleisten. Jeder Schwachpunkt in der Außenhaut oder im Zutrittskonzept kann fatale Folgen haben. Daher setzen wir auf eine mehrstufige Verteidigungsstrategie.
+            </p>
+            <p className="mb-4">
+              Unsere Expertisen umfassen die detaillierte Risikoanalyse, die Planung von maßgeschneiderten Sicherheitslösungen und die fachgerechte Implementierung. Wir berücksichtigen dabei aktuelle Kriminalitätsstatistiken, spezifische Objektgegebenheiten und individuelle Schutzbedürfnisse. Durch die Kombination von physischen Barrieren und modernster Sensortechnik maximieren wir den Widerstandswert Ihres Objekts erheblich.
+            </p>
+            <p>
+              Die ständige Weiterentwicklung von Einbruchsmethoden erfordert eine proaktive Herangehensweise. Wir evaluieren kontinuierlich neue Technologien und integrieren sie in unsere Konzepte. Von hochauflösenden IP-Kamerasystemen mit intelligenter Videoanalyse bis hin zu vernetzten Alarmanlagen mit Cloud-Anbindung bieten wir Lösungen, die dem neuesten Stand der Technik entsprechen.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-4">Zertifizierte Standards</h3>
+            <p className="mb-4">
+              Qualität und Zuverlässigkeit stehen bei uns an erster Stelle. Alle von uns verbauten Komponenten entsprechen den strengsten europäischen Normen (z.B. EN 50131 für Einbruchmeldeanlagen, DIN EN 1627 für einbruchhemmende Bauteile). Diese Zertifizierungen garantieren nicht nur höchste Sicherheit, sondern sind oft auch Voraussetzung für den Versicherungsschutz.
+            </p>
+            <p className="mb-4">
+              Unsere Techniker werden regelmäßig geschult und sind Experten auf ihrem Gebiet. Die Installation erfolgt unter strenger Einhaltung der Herstellervorgaben und branchenspezifischen Richtlinien. Nach Abschluss der Arbeiten führen wir eine umfassende Funktionsprüfung durch und übergeben Ihnen eine detaillierte Dokumentation des Systems.
+            </p>
+            <p>
+              Ein weiterer wichtiger Aspekt ist die regelmäßige Wartung der Anlagen. Nur so kann die dauerhafte Funktionstüchtigkeit und Sicherheit gewährleistet werden. Wir bieten maßgeschneiderte Wartungsverträge, die Inspektionen, Updates und im Bedarfsfall einen schnellen Reparaturservice umfassen. So haben Sie die Gewissheit, dass Ihr Sicherheitssystem immer einsatzbereit ist.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="faq-sicherheitstechnik">
+        <SectionHeading
+          eyebrow="Häufige Fragen"
+          title="Expertenantworten zur Sicherheitstechnik"
+          lead="Detaillierte Antworten auf die wichtigsten Fragen rund um den Schutz Ihres Eigentums."
+        />
+        <dl className="mt-8 space-y-6">
+          {[
+            {
+              q: "Welche Komponenten gehören zur Grundausstattung eines modernen Sicherheitssystems?",
+              a: "Die Grundausstattung beginnt immer mit solider mechanischer Sicherung: Zertifizierte Schließzylinder, einbruchhemmende Beschläge und Zusatzschlösser für Türen und Fenster. Darauf aufbauend empfehlen wir eine elektronische Einbruchmeldeanlage (Alarmanlage) mit Öffnungs- und Bewegungsmeldern. Für den Außenbereich kann eine Videoüberwachung sinnvoll sein. Eine Gegensprechanlage, idealerweise mit Videofunktion, rundet das Basis-Paket ab."
+            },
+            {
+              q: "Wie unterscheidet sich die Absicherung eines Gewerbeobjekts von der eines Privathauses?",
+              a: "Gewerbeobjekte erfordern oft komplexere Lösungen. Hier stehen neben dem Einbruchschutz auch Zutrittskontrolle, Zeit- und Anwesenheitserfassung sowie die Integration in übergeordnete Gebäudeleitsysteme im Fokus. Die Risikoklassen sind meist höher, was den Einsatz von Systemen nach strengeren Normen (z.B. VdS) erforderlich macht. Zudem müssen oft spezielle Anforderungen wie Fluchtwegsteuerung oder die Absicherung von sensiblen IT-Bereichen berücksichtigt werden."
+            },
+            {
+              q: "Können bestehende mechanische Schließanlagen mit elektronischen Systemen nachgerüstet werden?",
+              a: "Ja, in den meisten Fällen ist das problemlos möglich. Wir können vorhandene Türen mit mechatronischen Schließzylindern oder elektronischen Beschlägen ausstatten. Diese lassen sich dann in eine zentrale Zutrittssteuerung integrieren. So erhalten Sie die Vorteile einer elektronischen Anlage (z.B. einfache Verwaltung von Rechten, Protokollierung) ohne die gesamte Mechanik austauschen zu müssen. Dies ist eine kosteneffiziente Methode, um die Sicherheit deutlich zu erhöhen."
+            },
+            {
+              q: "Was passiert bei einem Stromausfall? Ist das Sicherheitssystem dann noch aktiv?",
+              a: "Professionelle Sicherheitssysteme verfügen immer über eine Notstromversorgung. Eine integrierte Batterie (Akku) übernimmt bei einem Stromausfall sofort die Energieversorgung, sodass die Anlage weiterhin voll funktionsfähig bleibt. Die Kapazität dieser Notstromversorgung ist so bemessen, dass sie typischerweise mehrere Stunden bis zu einem Tag überbrücken kann. Sobald der Netzstrom wieder verfügbar ist, wird der Akku automatisch wieder aufgeladen."
+            },
+            {
+              q: "Sind Smart-Home-Lösungen aus dem Baumarkt genauso sicher wie professionelle Anlagen?",
+              a: "Nein, es gibt fundamentale Unterschiede. Baumarkt-Systeme nutzen oft ungesicherte Funkverbindungen, die manipuliert (Jamming) oder abgehört werden können. Sie verfügen meist nicht über die erforderlichen Zertifizierungen und Zertifikate (wie VdS) für einen echten Versicherungsschutz. Zudem fehlt die Aufschaltung auf eine professionelle Notrufleitstelle. Professionelle Systeme nutzen verschlüsselte Kommunikation, sabotagegeschützte Komponenten und garantieren höchste Ausfallsicherheit."
+            }
+          ].map((faq, i) => (
+            <div key={i} className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <dt className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">{faq.q}</dt>
+              <dd className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">{faq.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+
       <Section id="recht-und-verantwortung">
         <SectionHeading
           eyebrow="Recht und Verantwortung"

@@ -1,0 +1,2 @@
+
+- **Sicherheitstechnik:** Interaktiver `SecurityRiskCalculator` zur Risikoanalyse von Objekten wurde unter `app/sicherheitstechnik/page.tsx` integriert.
