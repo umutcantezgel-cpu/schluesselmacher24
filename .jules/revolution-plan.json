@@ -1,0 +1,1324 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-12T17:03:37.410270+00:00Z",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "src/app/(payload)/layout.tsx",
+      "target_word_count": 98,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/api/[...slug]",
+      "source_file": "src/app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 70,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Admin",
+        "Methodischer Prozessablauf f\u00fcr Admin",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Admin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminInteractiveGuide",
+        "target_file": "src/components/calculator/admininteractiveguide.tsx",
+        "action_file": "src/actions/admininteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 1630,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu ",
+        "Methodischer Prozessablauf f\u00fcr ",
+        "Vergleichstabellen und Leistungs\u00fcbersicht "
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveGuide",
+        "target_file": "src/components/calculator/interactiveguide.tsx",
+        "action_file": "src/actions/interactiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/",
+      "source_file": "src/app/(site)/layout.tsx",
+      "target_word_count": 258,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Ratgeber",
+        "Methodischer Prozessablauf f\u00fcr Ratgeber",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberInteractiveGuide",
+        "target_file": "src/components/calculator/ratgeberinteractiveguide.tsx",
+        "action_file": "src/actions/ratgeberinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 859,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Ratgeber",
+        "Methodischer Prozessablauf f\u00fcr Ratgeber",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberInteractiveGuide",
+        "target_file": "src/components/calculator/ratgeberinteractiveguide.tsx",
+        "action_file": "src/actions/ratgeberinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2293,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Schluessel Nach Vorlage",
+        "Methodischer Prozessablauf f\u00fcr Schluessel Nach Vorlage",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Schluessel Nach Vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageInteractiveGuide",
+        "target_file": "src/components/calculator/schluesselnachvorlageinteractiveguide.tsx",
+        "action_file": "src/actions/schluesselnachvorlageinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/layout.tsx",
+      "target_word_count": 36,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Schluessel Nach Vorlage Anfrage",
+        "Methodischer Prozessablauf f\u00fcr Schluessel Nach Vorlage Anfrage",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Schluessel Nach Vorlage Anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageAnfrageInteractiveGuide",
+        "target_file": "src/components/calculator/schluesselnachvorlageanfrageinteractiveguide.tsx",
+        "action_file": "src/actions/schluesselnachvorlageanfrageinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Warenkorb",
+        "Methodischer Prozessablauf f\u00fcr Warenkorb",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbInteractiveGuide",
+        "target_file": "src/components/calculator/warenkorbinteractiveguide.tsx",
+        "action_file": "src/actions/warenkorbinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Kasse",
+        "Methodischer Prozessablauf f\u00fcr Kasse",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseInteractiveGuide",
+        "target_file": "src/components/calculator/kasseinteractiveguide.tsx",
+        "action_file": "src/actions/kasseinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/api/kunden-upload",
+      "source_file": "src/app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 704,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 997,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Schluessel Nach Code",
+        "Methodischer Prozessablauf f\u00fcr Schluessel Nach Code",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Schluessel Nach Code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeInteractiveGuide",
+        "target_file": "src/components/calculator/schluesselnachcodeinteractiveguide.tsx",
+        "action_file": "src/actions/schluesselnachcodeinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/layout.tsx",
+      "target_word_count": 36,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1234,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Schluessel Nach Code",
+        "Methodischer Prozessablauf f\u00fcr Schluessel Nach Code",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Schluessel Nach Code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeInteractiveGuide",
+        "target_file": "src/components/calculator/schluesselnachcodeinteractiveguide.tsx",
+        "action_file": "src/actions/schluesselnachcodeinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1520,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Sicherheitstechnik",
+        "Methodischer Prozessablauf f\u00fcr Sicherheitstechnik",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecurityChecklist",
+        "target_file": "src/components/calculator/securitychecklist.tsx",
+        "action_file": "src/actions/securitychecklist-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/layout.tsx",
+      "target_word_count": 36,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1144,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Sicherheitstechnik",
+        "Methodischer Prozessablauf f\u00fcr Sicherheitstechnik",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecurityChecklist",
+        "target_file": "src/components/calculator/securitychecklist.tsx",
+        "action_file": "src/actions/securitychecklist-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Sicherheitstechnik Sicherheitscheck",
+        "Methodischer Prozessablauf f\u00fcr Sicherheitstechnik Sicherheitscheck",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Sicherheitstechnik Sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecurityChecklist",
+        "target_file": "src/components/calculator/securitychecklist.tsx",
+        "action_file": "src/actions/securitychecklist-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Article",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2284,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Tuer Und Schliesstechnik",
+        "Methodischer Prozessablauf f\u00fcr Tuer Und Schliesstechnik",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Tuer Und Schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikInteractiveGuide",
+        "target_file": "src/components/calculator/tuerundschliesstechnikinteractiveguide.tsx",
+        "action_file": "src/actions/tuerundschliesstechnikinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/layout.tsx",
+      "target_word_count": 36,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 993,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Tuer Und Schliesstechnik",
+        "Methodischer Prozessablauf f\u00fcr Tuer Und Schliesstechnik",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Tuer Und Schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikInteractiveGuide",
+        "target_file": "src/components/calculator/tuerundschliesstechnikinteractiveguide.tsx",
+        "action_file": "src/actions/tuerundschliesstechnikinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1799,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Bestellung",
+        "Methodischer Prozessablauf f\u00fcr Bestellung",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Bestellung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "BestellungInteractiveGuide",
+        "target_file": "src/components/calculator/bestellunginteractiveguide.tsx",
+        "action_file": "src/actions/bestellunginteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2581,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Gleichschliessende Zylinder",
+        "Methodischer Prozessablauf f\u00fcr Gleichschliessende Zylinder",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Gleichschliessende Zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderInteractiveGuide",
+        "target_file": "src/components/calculator/gleichschliessendezylinderinteractiveguide.tsx",
+        "action_file": "src/actions/gleichschliessendezylinderinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/layout.tsx",
+      "target_word_count": 36,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Gleichschliessende Zylinder Konfigurator",
+        "Methodischer Prozessablauf f\u00fcr Gleichschliessende Zylinder Konfigurator",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Gleichschliessende Zylinder Konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderKonfiguratorInteractiveGuide",
+        "target_file": "src/components/calculator/gleichschliessendezylinderkonfiguratorinteractiveguide.tsx",
+        "action_file": "src/actions/gleichschliessendezylinderkonfiguratorinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 2980,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Elektronische Zutrittsloesungen",
+        "Methodischer Prozessablauf f\u00fcr Elektronische Zutrittsloesungen",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Elektronische Zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenInteractiveGuide",
+        "target_file": "src/components/calculator/elektronischezutrittsloesungeninteractiveguide.tsx",
+        "action_file": "src/actions/elektronischezutrittsloesungeninteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/layout.tsx",
+      "target_word_count": 36,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 882,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Elektronische Zutrittsloesungen Konfigurator",
+        "Methodischer Prozessablauf f\u00fcr Elektronische Zutrittsloesungen Konfigurator",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Elektronische Zutrittsloesungen Konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenKonfiguratorInteractiveGuide",
+        "target_file": "src/components/calculator/elektronischezutrittsloesungenkonfiguratorinteractiveguide.tsx",
+        "action_file": "src/actions/elektronischezutrittsloesungenkonfiguratorinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2373,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Schliessanlagen",
+        "Methodischer Prozessablauf f\u00fcr Schliessanlagen",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LockSystemPlanner",
+        "target_file": "src/components/calculator/locksystemplanner.tsx",
+        "action_file": "src/actions/locksystemplanner-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/layout.tsx",
+      "target_word_count": 36,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 868,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Schliessanlagen Konfigurator",
+        "Methodischer Prozessablauf f\u00fcr Schliessanlagen Konfigurator",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Schliessanlagen Konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LockSystemPlanner",
+        "target_file": "src/components/calculator/locksystemplanner.tsx",
+        "action_file": "src/actions/locksystemplanner-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2078,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Service Und Termin",
+        "Methodischer Prozessablauf f\u00fcr Service Und Termin",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Service Und Termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminInteractiveGuide",
+        "target_file": "src/components/calculator/serviceundtermininteractiveguide.tsx",
+        "action_file": "src/actions/serviceundtermininteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/layout.tsx",
+      "target_word_count": 36,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Service Und Termin Terminstatus",
+        "Methodischer Prozessablauf f\u00fcr Service Und Termin Terminstatus",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Service Und Termin Terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminTerminstatusInteractiveGuide",
+        "target_file": "src/components/calculator/serviceundterminterminstatusinteractiveguide.tsx",
+        "action_file": "src/actions/serviceundterminterminstatusinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Service Und Termin Anfrage",
+        "Methodischer Prozessablauf f\u00fcr Service Und Termin Anfrage",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Service Und Termin Anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminAnfrageInteractiveGuide",
+        "target_file": "src/components/calculator/serviceundterminanfrageinteractiveguide.tsx",
+        "action_file": "src/actions/serviceundterminanfrageinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1155,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Service Und Termin Vor Ort",
+        "Methodischer Prozessablauf f\u00fcr Service Und Termin Vor Ort",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Service Und Termin Vor Ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminVorOrtInteractiveGuide",
+        "target_file": "src/components/calculator/serviceundterminvorortinteractiveguide.tsx",
+        "action_file": "src/actions/serviceundterminvorortinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 974,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Service Und Termin Kontakt",
+        "Methodischer Prozessablauf f\u00fcr Service Und Termin Kontakt",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Service Und Termin Kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminKontaktInteractiveGuide",
+        "target_file": "src/components/calculator/serviceundterminkontaktinteractiveguide.tsx",
+        "action_file": "src/actions/serviceundterminkontaktinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/rechtliches",
+      "source_file": "src/app/(site)/rechtliches/layout.tsx",
+      "target_word_count": 149,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Rechtliches Impressum",
+        "Methodischer Prozessablauf f\u00fcr Rechtliches Impressum",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Rechtliches Impressum"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesImpressumInteractiveGuide",
+        "target_file": "src/components/calculator/rechtlichesimpressuminteractiveguide.tsx",
+        "action_file": "src/actions/rechtlichesimpressuminteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Rechtliches Cookie Einstellungen",
+        "Methodischer Prozessablauf f\u00fcr Rechtliches Cookie Einstellungen",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Rechtliches Cookie Einstellungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesCookieEinstellungenInteractiveGuide",
+        "target_file": "src/components/calculator/rechtlichescookieeinstellungeninteractiveguide.tsx",
+        "action_file": "src/actions/rechtlichescookieeinstellungeninteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 927,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Rechtliches Versand Und Zahlung",
+        "Methodischer Prozessablauf f\u00fcr Rechtliches Versand Und Zahlung",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Rechtliches Versand Und Zahlung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesVersandUndZahlungInteractiveGuide",
+        "target_file": "src/components/calculator/rechtlichesversandundzahlunginteractiveguide.tsx",
+        "action_file": "src/actions/rechtlichesversandundzahlunginteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 870,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Rechtliches Widerruf",
+        "Methodischer Prozessablauf f\u00fcr Rechtliches Widerruf",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Rechtliches Widerruf"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesWiderrufInteractiveGuide",
+        "target_file": "src/components/calculator/rechtlicheswiderrufinteractiveguide.tsx",
+        "action_file": "src/actions/rechtlicheswiderrufinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 916,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Rechtliches Agb",
+        "Methodischer Prozessablauf f\u00fcr Rechtliches Agb",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Rechtliches Agb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesAgbInteractiveGuide",
+        "target_file": "src/components/calculator/rechtlichesagbinteractiveguide.tsx",
+        "action_file": "src/actions/rechtlichesagbinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1215,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Rechtliches Datenschutz",
+        "Methodischer Prozessablauf f\u00fcr Rechtliches Datenschutz",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Rechtliches Datenschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesDatenschutzInteractiveGuide",
+        "target_file": "src/components/calculator/rechtlichesdatenschutzinteractiveguide.tsx",
+        "action_file": "src/actions/rechtlichesdatenschutzinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1156,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Artikel",
+        "Methodischer Prozessablauf f\u00fcr Artikel",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelInteractiveGuide",
+        "target_file": "src/components/calculator/artikelinteractiveguide.tsx",
+        "action_file": "src/actions/artikelinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1434,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Artikel",
+        "Methodischer Prozessablauf f\u00fcr Artikel",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelInteractiveGuide",
+        "target_file": "src/components/calculator/artikelinteractiveguide.tsx",
+        "action_file": "src/actions/artikelinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Standorte",
+        "Methodischer Prozessablauf f\u00fcr Standorte",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteInteractiveGuide",
+        "target_file": "src/components/calculator/standorteinteractiveguide.tsx",
+        "action_file": "src/actions/standorteinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 905,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Standorte",
+        "Methodischer Prozessablauf f\u00fcr Standorte",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteInteractiveGuide",
+        "target_file": "src/components/calculator/standorteinteractiveguide.tsx",
+        "action_file": "src/actions/standorteinteractiveguide-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2502,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/layout.tsx",
+      "target_word_count": 36,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1218,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Marken",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Marken",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1479,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Marken",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Marken",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1723,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Marken",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Marken",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 56,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1591,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Funkschluessel",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Funkschluessel",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 57,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1722,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Programmieren",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Programmieren",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Programmieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 58,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1018,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Anfrage",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Anfrage",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 59,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1633,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Kopieren",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Kopieren",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Kopieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 60,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1689,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Nachmachen",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Nachmachen",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 61,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1707,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Smart Key",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Smart Key",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Smart Key"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 62,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1542,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Schluesselbart Fraesen",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Schluesselbart Fraesen",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Schluesselbart Fraesen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 63,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1621,
+      "content_expansion_topics": [
+        "Detaillierte Fach-FAQ zu Autoschluessel Fahrzeugoeffnung",
+        "Methodischer Prozessablauf f\u00fcr Autoschluessel Fahrzeugoeffnung",
+        "Vergleichstabellen und Leistungs\u00fcbersicht Autoschluessel Fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyConfigurator",
+        "target_file": "src/components/calculator/carkeyconfigurator.tsx",
+        "action_file": "src/actions/carkeyconfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Product",
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 64,
+      "route_path": "/llms.txt",
+      "source_file": "src/app/llms.txt/route.ts",
+      "target_word_count": 149,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": null,
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
