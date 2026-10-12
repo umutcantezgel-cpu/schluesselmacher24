@@ -15,8 +15,9 @@ npm run typecheck
 
 ## Technischer Aufbau
 
-- **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript** (strict)
-- **Tailwind CSS 3** mit semantischen CSS-Variablen (`src/app/globals.css`)
+- **Next.js 16** (App Router, Turbopack) · **React 19.2+** · **TypeScript 5.5+** (strict)
+- **Tailwind CSS 4** mit OKLCH-Farbraum (Swiss High-End Light Mode Design)
+- **Architektur-Blueprint**: Der aktuelle Master-Plan liegt in `.jules/revolution-plan.json`.
 - **Formulare**: react-hook-form + zod
 - **Zwischenspeicherung** langer Konfiguratoren: `src/lib/flow/`
 - **Datenschicht**: `src/lib/data/` — austauschbarer Adapter,

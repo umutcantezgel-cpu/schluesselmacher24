@@ -1,0 +1,1142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-12T15:13:56.651871+00:00Z",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "current_word_count": 1130,
+      "target_word_count": 1130,
+      "content_expansion_topics": [
+        "Tiefgreifende / Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  ",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StartseiteWidget",
+        "target_file": "src/components/calculator/startseite-widget.tsx",
+        "action_file": "src/actions/startseite-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "current_word_count": 99,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /admin/[[...segments]] Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  admin [[...segments]]",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Admin[[...segments]]Widget",
+        "target_file": "src/components/calculator/admin[[...segments]]-widget.tsx",
+        "action_file": "src/actions/admin[[...segments]]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "current_word_count": 224,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /ratgeber Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  ratgeber",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberWidget",
+        "target_file": "src/components/calculator/ratgeber-widget.tsx",
+        "action_file": "src/actions/ratgeber-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Article"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "current_word_count": 1793,
+      "target_word_count": 1793,
+      "content_expansion_topics": [
+        "Tiefgreifende /schluessel-nach-vorlage Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  schluessel-nach-vorlage",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Schluessel-nach-vorlageWidget",
+        "target_file": "src/components/calculator/schluessel-nach-vorlage-widget.tsx",
+        "action_file": "src/actions/schluessel-nach-vorlage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "current_word_count": 261,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /warenkorb Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  warenkorb",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbWidget",
+        "target_file": "src/components/calculator/warenkorb-widget.tsx",
+        "action_file": "src/actions/warenkorb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "current_word_count": 242,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /kasse Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  kasse",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseWidget",
+        "target_file": "src/components/calculator/kasse-widget.tsx",
+        "action_file": "src/actions/kasse-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "current_word_count": 497,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /schluessel-nach-code Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  schluessel-nach-code",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Schluessel-nach-codeWidget",
+        "target_file": "src/components/calculator/schluessel-nach-code-widget.tsx",
+        "action_file": "src/actions/schluessel-nach-code-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "current_word_count": 1020,
+      "target_word_count": 1020,
+      "content_expansion_topics": [
+        "Tiefgreifende /sicherheitstechnik Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  sicherheitstechnik",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikWidget",
+        "target_file": "src/components/calculator/sicherheitstechnik-widget.tsx",
+        "action_file": "src/actions/sicherheitstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "current_word_count": 1784,
+      "target_word_count": 1784,
+      "content_expansion_topics": [
+        "Tiefgreifende /tuer-und-schliesstechnik Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  tuer-und-schliesstechnik",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Tuer-und-schliesstechnikWidget",
+        "target_file": "src/components/calculator/tuer-und-schliesstechnik-widget.tsx",
+        "action_file": "src/actions/tuer-und-schliesstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "current_word_count": 2081,
+      "target_word_count": 2081,
+      "content_expansion_topics": [
+        "Tiefgreifende /gleichschliessende-zylinder Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  gleichschliessende-zylinder",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Gleichschliessende-zylinderWidget",
+        "target_file": "src/components/calculator/gleichschliessende-zylinder-widget.tsx",
+        "action_file": "src/actions/gleichschliessende-zylinder-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "current_word_count": 2480,
+      "target_word_count": 2480,
+      "content_expansion_topics": [
+        "Tiefgreifende /elektronische-zutrittsloesungen Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  elektronische-zutrittsloesungen",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Elektronische-zutrittsloesungenWidget",
+        "target_file": "src/components/calculator/elektronische-zutrittsloesungen-widget.tsx",
+        "action_file": "src/actions/elektronische-zutrittsloesungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "current_word_count": 1873,
+      "target_word_count": 1873,
+      "content_expansion_topics": [
+        "Tiefgreifende /schliessanlagen Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  schliessanlagen",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenWidget",
+        "target_file": "src/components/calculator/schliessanlagen-widget.tsx",
+        "action_file": "src/actions/schliessanlagen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "current_word_count": 1578,
+      "target_word_count": 1578,
+      "content_expansion_topics": [
+        "Tiefgreifende /service-und-termin Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  service-und-termin",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-und-terminWidget",
+        "target_file": "src/components/calculator/service-und-termin-widget.tsx",
+        "action_file": "src/actions/service-und-termin-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "current_word_count": 656,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /artikel Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  artikel",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelWidget",
+        "target_file": "src/components/calculator/artikel-widget.tsx",
+        "action_file": "src/actions/artikel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Article"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "current_word_count": 249,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /standorte Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  standorte",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteWidget",
+        "target_file": "src/components/calculator/standorte-widget.tsx",
+        "action_file": "src/actions/standorte-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "current_word_count": 2002,
+      "target_word_count": 2002,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselWidget",
+        "target_file": "src/components/calculator/autoschluessel-widget.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "current_word_count": 359,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /ratgeber/[slug] Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  ratgeber [slug]",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Ratgeber[slug]Widget",
+        "target_file": "src/components/calculator/ratgeber[slug]-widget.tsx",
+        "action_file": "src/actions/ratgeber[slug]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Article"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "current_word_count": 221,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /schluessel-nach-vorlage/anfrage Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  schluessel-nach-vorlage anfrage",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Schluessel-nach-vorlageAnfrageWidget",
+        "target_file": "src/components/calculator/schluessel-nach-vorlageanfrage-widget.tsx",
+        "action_file": "src/actions/schluessel-nach-vorlageanfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "current_word_count": 734,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /schluessel-nach-code/[slug] Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  schluessel-nach-code [slug]",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Schluessel-nach-code[slug]Widget",
+        "target_file": "src/components/calculator/schluessel-nach-code[slug]-widget.tsx",
+        "action_file": "src/actions/schluessel-nach-code[slug]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "current_word_count": 644,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /sicherheitstechnik/[slug] Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  sicherheitstechnik [slug]",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Sicherheitstechnik[slug]Widget",
+        "target_file": "src/components/calculator/sicherheitstechnik[slug]-widget.tsx",
+        "action_file": "src/actions/sicherheitstechnik[slug]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "current_word_count": 329,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /sicherheitstechnik/sicherheitscheck Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  sicherheitstechnik sicherheitscheck",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikSicherheitscheckWidget",
+        "target_file": "src/components/calculator/sicherheitstechniksicherheitscheck-widget.tsx",
+        "action_file": "src/actions/sicherheitstechniksicherheitscheck-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "current_word_count": 493,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /tuer-und-schliesstechnik/[slug] Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  tuer-und-schliesstechnik [slug]",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Tuer-und-schliesstechnik[slug]Widget",
+        "target_file": "src/components/calculator/tuer-und-schliesstechnik[slug]-widget.tsx",
+        "action_file": "src/actions/tuer-und-schliesstechnik[slug]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "current_word_count": 1299,
+      "target_word_count": 1299,
+      "content_expansion_topics": [
+        "Tiefgreifende /bestellung/[id] Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  bestellung [id]",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Bestellung[id]Widget",
+        "target_file": "src/components/calculator/bestellung[id]-widget.tsx",
+        "action_file": "src/actions/bestellung[id]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "current_word_count": 310,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /gleichschliessende-zylinder/konfigurator Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  gleichschliessende-zylinder konfigurator",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Gleichschliessende-zylinderKonfiguratorWidget",
+        "target_file": "src/components/calculator/gleichschliessende-zylinderkonfigurator-widget.tsx",
+        "action_file": "src/actions/gleichschliessende-zylinderkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "current_word_count": 382,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /elektronische-zutrittsloesungen/konfigurator Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  elektronische-zutrittsloesungen konfigurator",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Elektronische-zutrittsloesungenKonfiguratorWidget",
+        "target_file": "src/components/calculator/elektronische-zutrittsloesungenkonfigurator-widget.tsx",
+        "action_file": "src/actions/elektronische-zutrittsloesungenkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "current_word_count": 368,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /schliessanlagen/konfigurator Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  schliessanlagen konfigurator",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenKonfiguratorWidget",
+        "target_file": "src/components/calculator/schliessanlagenkonfigurator-widget.tsx",
+        "action_file": "src/actions/schliessanlagenkonfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "current_word_count": 107,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /service-und-termin/terminstatus Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  service-und-termin terminstatus",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-und-terminTerminstatusWidget",
+        "target_file": "src/components/calculator/service-und-terminterminstatus-widget.tsx",
+        "action_file": "src/actions/service-und-terminterminstatus-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "current_word_count": 151,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /service-und-termin/anfrage Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  service-und-termin anfrage",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-und-terminAnfrageWidget",
+        "target_file": "src/components/calculator/service-und-terminanfrage-widget.tsx",
+        "action_file": "src/actions/service-und-terminanfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "current_word_count": 655,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /service-und-termin/vor-ort Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  service-und-termin vor-ort",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-und-terminVor-ortWidget",
+        "target_file": "src/components/calculator/service-und-terminvor-ort-widget.tsx",
+        "action_file": "src/actions/service-und-terminvor-ort-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "current_word_count": 474,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /service-und-termin/kontakt Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  service-und-termin kontakt",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-und-terminKontaktWidget",
+        "target_file": "src/components/calculator/service-und-terminkontakt-widget.tsx",
+        "action_file": "src/actions/service-und-terminkontakt-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "current_word_count": 248,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /rechtliches/impressum Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  rechtliches impressum",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesImpressumWidget",
+        "target_file": "src/components/calculator/rechtlichesimpressum-widget.tsx",
+        "action_file": "src/actions/rechtlichesimpressum-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "AboutPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "current_word_count": 228,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /rechtliches/cookie-einstellungen Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  rechtliches cookie-einstellungen",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesCookie-einstellungenWidget",
+        "target_file": "src/components/calculator/rechtlichescookie-einstellungen-widget.tsx",
+        "action_file": "src/actions/rechtlichescookie-einstellungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "AboutPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "current_word_count": 427,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /rechtliches/versand-und-zahlung Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  rechtliches versand-und-zahlung",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesVersand-und-zahlungWidget",
+        "target_file": "src/components/calculator/rechtlichesversand-und-zahlung-widget.tsx",
+        "action_file": "src/actions/rechtlichesversand-und-zahlung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "AboutPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "current_word_count": 370,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /rechtliches/widerruf Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  rechtliches widerruf",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesWiderrufWidget",
+        "target_file": "src/components/calculator/rechtlicheswiderruf-widget.tsx",
+        "action_file": "src/actions/rechtlicheswiderruf-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "AboutPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "current_word_count": 416,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /rechtliches/agb Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  rechtliches agb",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesAgbWidget",
+        "target_file": "src/components/calculator/rechtlichesagb-widget.tsx",
+        "action_file": "src/actions/rechtlichesagb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "AboutPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "current_word_count": 715,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /rechtliches/datenschutz Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  rechtliches datenschutz",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesDatenschutzWidget",
+        "target_file": "src/components/calculator/rechtlichesdatenschutz-widget.tsx",
+        "action_file": "src/actions/rechtlichesdatenschutz-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "AboutPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "current_word_count": 934,
+      "target_word_count": 934,
+      "content_expansion_topics": [
+        "Tiefgreifende /artikel/[slug] Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  artikel [slug]",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Artikel[slug]Widget",
+        "target_file": "src/components/calculator/artikel[slug]-widget.tsx",
+        "action_file": "src/actions/artikel[slug]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Article"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "current_word_count": 405,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /standorte/[city] Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  standorte [city]",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Standorte[city]Widget",
+        "target_file": "src/components/calculator/standorte[city]-widget.tsx",
+        "action_file": "src/actions/standorte[city]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "current_word_count": 718,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/marken Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel marken",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenWidget",
+        "target_file": "src/components/calculator/autoschluesselmarken-widget.tsx",
+        "action_file": "src/actions/autoschluesselmarken-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "current_word_count": 1091,
+      "target_word_count": 1091,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/funkschluessel Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel funkschluessel",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFunkschluesselWidget",
+        "target_file": "src/components/calculator/autoschluesselfunkschluessel-widget.tsx",
+        "action_file": "src/actions/autoschluesselfunkschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "current_word_count": 1222,
+      "target_word_count": 1222,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/programmieren Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel programmieren",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselProgrammierenWidget",
+        "target_file": "src/components/calculator/autoschluesselprogrammieren-widget.tsx",
+        "action_file": "src/actions/autoschluesselprogrammieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "current_word_count": 518,
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/anfrage Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel anfrage",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselAnfrageWidget",
+        "target_file": "src/components/calculator/autoschluesselanfrage-widget.tsx",
+        "action_file": "src/actions/autoschluesselanfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "current_word_count": 1133,
+      "target_word_count": 1133,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/kopieren Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel kopieren",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselKopierenWidget",
+        "target_file": "src/components/calculator/autoschluesselkopieren-widget.tsx",
+        "action_file": "src/actions/autoschluesselkopieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "current_word_count": 1189,
+      "target_word_count": 1189,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/nachmachen Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel nachmachen",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselNachmachenWidget",
+        "target_file": "src/components/calculator/autoschluesselnachmachen-widget.tsx",
+        "action_file": "src/actions/autoschluesselnachmachen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "current_word_count": 1207,
+      "target_word_count": 1207,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/smart-key Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel smart-key",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSmart-keyWidget",
+        "target_file": "src/components/calculator/autoschluesselsmart-key-widget.tsx",
+        "action_file": "src/actions/autoschluesselsmart-key-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "current_word_count": 1042,
+      "target_word_count": 1042,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/schluesselbart-fraesen Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel schluesselbart-fraesen",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSchluesselbart-fraesenWidget",
+        "target_file": "src/components/calculator/autoschluesselschluesselbart-fraesen-widget.tsx",
+        "action_file": "src/actions/autoschluesselschluesselbart-fraesen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "current_word_count": 1121,
+      "target_word_count": 1121,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/fahrzeugoeffnung Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel fahrzeugoeffnung",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFahrzeugoeffnungWidget",
+        "target_file": "src/components/calculator/autoschluesselfahrzeugoeffnung-widget.tsx",
+        "action_file": "src/actions/autoschluesselfahrzeugoeffnung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "current_word_count": 979,
+      "target_word_count": 979,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/marken/[make] Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel marken [make]",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarken[make]Widget",
+        "target_file": "src/components/calculator/autoschluesselmarken[make]-widget.tsx",
+        "action_file": "src/actions/autoschluesselmarken[make]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "current_word_count": 1223,
+      "target_word_count": 1223,
+      "content_expansion_topics": [
+        "Tiefgreifende /autoschluessel/marken/[make]/[model] Prozessanalyse",
+        "Kosten-Nutzen-Vergleich f\u00fcr  autoschluessel marken [make] [model]",
+        "Fachliche FAQ mit 6 detaillierten Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarken[make][model]Widget",
+        "target_file": "src/components/calculator/autoschluesselmarken[make][model]-widget.tsx",
+        "action_file": "src/actions/autoschluesselmarken[make][model]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
