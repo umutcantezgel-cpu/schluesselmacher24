@@ -1,3 +1,4 @@
+import * as culori from 'culori';
 import type { AreaKey } from '@/lib/types';
 
 /**
@@ -27,75 +28,75 @@ export interface AreaTheme {
 /** Grundfarbe außerhalb der Bereiche (Startseite, Warenkorb, Kasse …). */
 export const DEFAULT_AREA_THEME: AreaTheme = {
   label: 'Allgemein',
-  accent: '214 86% 50%',
-  strong: '214 80% 40%',
-  soft: '214 100% 96.5%',
-  muted: '214 90% 86%',
+  accent: '0.6 0.1 260',
+  strong: '0.4 0.1 260',
+  soft: '0.98 0.01 260',
+  muted: '0.92 0.02 260',
 };
 
 export const AREA_THEMES: Record<AreaKey, AreaTheme> = {
   autoschluessel: {
     label: 'Autoschlüssel',
-    accent: '217 91% 53%',
-    strong: '217 76% 42%',
-    soft: '214 100% 96.5%',
-    muted: '217 90% 86%',
+    accent: '0.6 0.12 260',
+    strong: '0.4 0.12 260',
+    soft: '0.98 0.01 260',
+    muted: '0.92 0.02 260',
   },
   'schluessel-nach-vorlage': {
     label: 'Schlüssel nach Vorlage',
-    accent: '172 76% 34%',
-    strong: '174 84% 25%',
-    soft: '168 64% 94.5%',
-    muted: '170 60% 80%',
+    accent: '0.55 0.08 170',
+    strong: '0.35 0.08 170',
+    soft: '0.97 0.01 170',
+    muted: '0.90 0.02 170',
   },
   'schluessel-nach-code': {
     label: 'Schlüssel nach Code',
-    accent: '245 78% 62%',
-    strong: '245 58% 50%',
-    soft: '245 100% 97%',
-    muted: '245 90% 88%',
+    accent: '0.6 0.1 280',
+    strong: '0.4 0.1 280',
+    soft: '0.98 0.01 280',
+    muted: '0.92 0.02 280',
   },
   'gleichschliessende-zylinder': {
     label: 'Gleichschließende Zylinder',
-    accent: '20 88% 48%',
-    strong: '18 84% 37%',
-    soft: '24 100% 95.5%',
-    muted: '22 95% 84%',
+    accent: '0.6 0.12 40',
+    strong: '0.4 0.12 40',
+    soft: '0.98 0.02 40',
+    muted: '0.92 0.04 40',
   },
   schliessanlagen: {
     label: 'Schließanlagen',
-    accent: '266 72% 60%',
-    strong: '266 52% 48%',
-    soft: '266 100% 97%',
-    muted: '266 80% 88%',
+    accent: '0.6 0.1 300',
+    strong: '0.4 0.1 300',
+    soft: '0.98 0.01 300',
+    muted: '0.92 0.02 300',
   },
   'elektronische-zutrittsloesungen': {
     label: 'Elektronische Zutrittslösungen',
-    accent: '195 90% 37%',
-    strong: '196 90% 28%',
-    soft: '190 90% 94.5%',
-    muted: '192 75% 80%',
+    accent: '0.6 0.1 210',
+    strong: '0.4 0.1 210',
+    soft: '0.97 0.02 210',
+    muted: '0.91 0.03 210',
   },
   'tuer-und-schliesstechnik': {
     label: 'Tür- und Schließtechnik',
-    accent: '152 64% 34%',
-    strong: '153 68% 25%',
-    soft: '148 56% 94.5%',
-    muted: '150 50% 80%',
+    accent: '0.55 0.1 150',
+    strong: '0.35 0.1 150',
+    soft: '0.97 0.01 150',
+    muted: '0.90 0.02 150',
   },
   sicherheitstechnik: {
     label: 'Sicherheitstechnik',
-    accent: '350 78% 54%',
-    strong: '350 68% 43%',
-    soft: '350 100% 97%',
-    muted: '350 85% 88%',
+    accent: '0.6 0.12 10',
+    strong: '0.4 0.12 10',
+    soft: '0.98 0.02 10',
+    muted: '0.92 0.03 10',
   },
   'service-und-termin': {
     label: 'Service und Termin',
-    accent: '326 68% 52%',
-    strong: '326 62% 41%',
-    soft: '326 100% 97%',
-    muted: '326 75% 88%',
+    accent: '0.6 0.12 330',
+    strong: '0.4 0.12 330',
+    soft: '0.98 0.02 330',
+    muted: '0.92 0.03 330',
   },
 };
 
@@ -112,32 +113,24 @@ export function areaCssVariables(theme: AreaTheme): Record<string, string> {
   };
 }
 
+
 /* ---------- Kontrast (WCAG 2.2) ----------------------------------------- */
 
-function parseHsl(value: string): [number, number, number] {
-  const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
-  if (!match) throw new Error(`Kein HSL-Tripel: "${value}"`);
-  return [Number(match[1]), Number(match[2]), Number(match[3])];
-}
-
-function hslToRgb([h, s, l]: [number, number, number]): [number, number, number] {
-  const sat = s / 100;
-  const light = l / 100;
-  const k = (n: number) => (n + h / 30) % 12;
-  const a = sat * Math.min(light, 1 - light);
-  const f = (n: number) => light - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-  return [f(0), f(8), f(4)];
+function oklchToSrgb(value: string): [number, number, number] {
+    const parsed = culori.parse('oklch(' + value + ')');
+  if (!parsed) return [0, 0, 0];
+    const rgb = culori.converter('rgb')(parsed);
+  return [Math.max(0, Math.min(1, rgb.r)), Math.max(0, Math.min(1, rgb.g)), Math.max(0, Math.min(1, rgb.b))];
 }
 
 function relativeLuminance(rgb: [number, number, number]): number {
-  const channel = (v: number) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+  const channel = (v: number) => (v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
   const [r, g, b] = rgb.map(channel) as [number, number, number];
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-/** Kontrastverhältnis zweier HSL-Tripel, z. B. `contrastRatio('0 0% 100%', theme.strong)`. */
 export function contrastRatio(a: string, b: string): number {
-  const la = relativeLuminance(hslToRgb(parseHsl(a)));
-  const lb = relativeLuminance(hslToRgb(parseHsl(b)));
+  const la = relativeLuminance(oklchToSrgb(a));
+  const lb = relativeLuminance(oklchToSrgb(b));
   return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
 }
