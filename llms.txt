@@ -1,0 +1,7 @@
+# SCHLÜSSELMACHER24 Context
+
+This repository is for the SCHLÜSSELMACHER24 website.
+It includes interactive features to help customers.
+
+## Neue Interaktive Module
+- **ServiceBudgetCalculator**: Ein interaktiver Budget-Kalkulator (`src/components/calculator/service-budget-calculator.tsx`) in der Sicherheitstechnik-Seite, der Next.js Server Actions (`src/actions/calculate-budget.ts`) und `useOptimistic` nutzt, um Projektkosten basierend auf Umfang und Komplexität sofort zu schätzen.

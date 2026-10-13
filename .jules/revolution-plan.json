@@ -1,0 +1,16 @@
+{
+  "transformation_queue": [
+    {
+      "target_route": "app/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Mechanik vs. Elektronik (Tiefgang)",
+        "Planung und Konzeptionierung von Sicherheitsanlagen",
+        "Wartung und Lebenszyklus von Sicherheitssystemen",
+        "Detaillierter FAQ-Bereich zur Sicherheitstechnik"
+      ],
+      "interactive_module": "SecurityBudgetCalculator"
+    }
+  ]
+}

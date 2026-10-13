@@ -13,6 +13,10 @@ npm run lint
 npm run typecheck
 ```
 
+## Neue Interaktive Module
+
+- **ServiceBudgetCalculator**: Ein interaktiver Budget-Kalkulator (`src/components/calculator/service-budget-calculator.tsx`) in der Sicherheitstechnik-Seite, der Next.js Server Actions (`src/actions/calculate-budget.ts`) und `useOptimistic` nutzt, um Projektkosten basierend auf Umfang und Komplexität sofort zu schätzen.
+
 ## Technischer Aufbau
 
 - **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript** (strict)
