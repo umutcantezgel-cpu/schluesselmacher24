@@ -19,6 +19,7 @@ import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { SecurityBudgetCalculator } from '@/components/calculator/security-budget-calculator';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'sicherheitstechnik';
@@ -73,7 +74,15 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+export default async function SicherheitstechnikPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -83,6 +92,7 @@ export default async function SicherheitstechnikPage() {
 
   return (
     <>
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
@@ -160,6 +170,95 @@ export default async function SicherheitstechnikPage() {
           </div>
         </div>
       </Section>
+
+
+      {/* Interactive Budget Calculator */}
+      <Section id="budget-calculator" tight>
+        <div className="mx-auto max-w-4xl">
+          <SectionHeading
+            eyebrow="Kalkulation"
+            title="Transparente Kostenplanung für Ihre Sicherheit"
+            lead="Planen Sie Ihr Budget für mechanische und elektronische Absicherungen vorab. Der Rechner gibt Ihnen eine erste Orientierung basierend auf unserer langjährigen Erfahrung."
+          />
+          <div className="mt-8">
+            <SecurityBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Tiefgreifende Fachkompetenz und Methodik */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Ganzheitliche Sicherheitsarchitektur auf Enterprise-Niveau"
+          lead="Wir betrachten Sicherheit nicht als isoliertes Produkt, sondern als durchdachtes System ineinandergreifender Ebenen, die sich nahtlos in Ihre Prozesse integrieren."
+        />
+
+        <div className="mt-12 grid gap-12 lg:grid-cols-2">
+          <div className="space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Das Zwiebelschalenprinzip moderner Objektsicherheit</h3>
+            <p>
+              Moderne Sicherheitstechnik basiert auf dem Zwiebelschalenprinzip, das mehrere Verteidigungslinien (Perimeter, Gebäudehülle, Innenraum, Wertschutz) aufbaut. Dieses mehrstufige Konzept stellt sicher, dass selbst bei Überwindung einer Barriere das Gesamtsystem weiterhin Schutz bietet und ausreichend Reaktionszeit für Interventionskräfte schafft.
+            </p>
+            <p>
+              Die erste Linie bildet der <strong>Perimeterschutz</strong>, der bereits das Grundstück absichert. Hier kommen hochauflösende Videoüberwachungssysteme mit intelligenter Videoanalytik (IVA) zum Einsatz, die zwischen relevanten Bedrohungen und Störgrößen (wie Tieren oder Witterung) unterscheiden können. Flankiert wird dies durch mechanische Barrieren und Zutrittskontrollsysteme an den Außengrenzen.
+            </p>
+            <p>
+              Die <strong>Gebäudehülle</strong> als zweite Schicht fokussiert sich auf die mechanische Widerstandsfähigkeit von Türen, Fenstern und Toren. Hier setzen wir auf zertifizierte Sicherheitselemente nach DIN EN 1627 (Resistance Class - RC), kombiniert mit mechatronischen Schließkomponenten und elektronischer Verschlussüberwachung. Eine Alarmanlage (Einbruchmeldeanlage - EMA) detektiert Einbruchsversuche an der Hülle, bevor diese physisch durchdrungen wird.
+            </p>
+          </div>
+
+          <div className="space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Integration von Mechanik und Mechatronik</h3>
+            <p>
+              Ein häufiger Fehler in der Sicherheitsplanung ist die Trennung von Mechanik und Elektronik. Wir konzipieren Systeme, bei denen elektronische Zylinder und smarte Türdrücker nahtlos mit der Alarmtechnik kommunizieren. Eine Zwangsläufigkeit stellt dabei sicher, dass ein Gebäude nur bei unscharf geschalteter Alarmanlage betreten werden kann, was Falschalarme (sogenannte Falschalarme durch Betreiberfehler) drastisch reduziert.
+            </p>
+            <p>
+              Zudem integrieren wir moderne <strong>Zutrittskontrollsysteme (ZKS)</strong>, die nicht nur den physischen Zugang regulieren, sondern auch Raumzonenkonzepte abbilden. Biometrische Merkmale, RFID-Transponder oder mobile Credentials via Smartphone (BLE/NFC) bieten skalierbare Lösungen für Unternehmen jeder Größe. Die nahtlose Protokollierung erfüllt dabei stets die strengsten Anforderungen des Datenschutzes (DSGVO) und der betrieblichen Mitbestimmung.
+            </p>
+             <p>
+              Die <strong>Gefahrenmanagement-Ebene</strong> führt schließlich alle Subsysteme – Video, Alarm, Zutritt und Brandschutz – in einer zentralen Benutzeroberfläche zusammen. Dies ermöglicht dem Sicherheitspersonal oder der externen Notruf- und Serviceleitstelle (NSL) eine sofortige Lagebeurteilung und zielgerichtete Intervention im Ereignisfall.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-16 bg-[oklch(0.988_0.002_260)] rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] p-8 lg:p-12 shadow-sm">
+          <h3 className="text-2xl font-bold text-[oklch(0.16_0.02_260)] mb-8">Häufig gestellte Fragen (FAQ) zur Sicherheitstechnik</h3>
+          <div className="space-y-8">
+            <div>
+              <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wie lange dauert die Installation einer modernen Alarmanlage?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Dank moderner Funktechnologie (z.B. nach EN 50131 Grad 2) können wir drahtlose Alarmsysteme in Wohngebäuden oder kleinen Gewerbeobjekten oft innerhalb eines Tages staub- und schmutzfrei installieren. Bei verdrahteten Systemen oder komplexen Gebäudeleittechnik-Integrationen in großen Objekten planen wir in der Regel mehrere Tage ein. Der genaue Zeitplan wird nach der detaillierten Bestandsaufnahme festgelegt.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Ist eine Aufschaltung auf einen Sicherheitsdienst zwingend erforderlich?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Sie ist nicht zwingend, wird aber von uns dringend empfohlen. Eine lokale Alarmierung (Sirene) schreckt zwar ab, garantiert aber keine professionelle Reaktion. Die Aufschaltung auf eine VdS-anerkannte Notruf- und Serviceleitstelle (NSL) stellt sicher, dass Alarme 24/7 von geschultem Personal bewertet und entsprechende Interventionsmaßnahmen (Wachdienst, Polizei) nach einem fest definierten Maßnahmeplan eingeleitet werden.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wie verhält es sich mit dem Datenschutz bei Videoüberwachungssystemen?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Der Einsatz von Videotechnik unterliegt strengen DSGVO-Auflagen. Öffentliche Bereiche (wie Gehwege) oder Nachbargrundstücke dürfen nicht erfasst werden (sogenanntes &quot;Schwärzen&quot; oder &quot;Privacy Masking&quot;). Wir beraten Sie nicht nur technisch, sondern implementieren Systeme, die durch automatische Löschroutinen nach x Stunden und strikte rollenbasierte Zugriffskontrollen den datenschutzrechtlichen Anforderungen technisch (Privacy by Design) gerecht werden.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Welche Resistance Class (RC) wird für mein Gebäude empfohlen?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Für Privathaushalte empfiehlt die Kriminalpolizei mindestens Fenster und Türen der Widerstandsklasse RC 2 (besser RC 3). Diese leisten Gelegenheitstätern, die einfache Werkzeuge verwenden, ausreichend lange Widerstand (mindestens 3 bzw. 5 Minuten). Im gewerblichen Bereich mit hohen Werten oder kritischer Infrastruktur planen wir je nach Risikobewertung mit RC 4 bis RC 6 Elementen, die auch massiven Angriffen mit Elektrowerkzeugen standhalten.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Kann ich mein Smartphone als digitalen Schlüssel nutzen?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Ja, moderne mechatronische Schließanlagen und Zutrittskontrollsysteme ermöglichen die sichere Authentifizierung via Smartphone (Mobile Credentials) über Bluetooth Low Energy (BLE) oder NFC. Diese Lösung bietet enormen Komfort und Flexibilität, da Berechtigungen aus der Ferne vergeben und entzogen werden können (&quot;Over the Air&quot;). Die Kommunikation ist durch starke asymmetrische Verschlüsselungsverfahren abgesichert.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
 
       {/* Bereiche */}
       <Section tone="muted">
