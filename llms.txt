@@ -1,0 +1,2 @@
+Interactive modules added:
+- ServiceBudgetCalculator in app/sicherheitstechnik/page.tsx

@@ -19,6 +19,7 @@ import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'sicherheitstechnik';
@@ -73,7 +74,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -83,6 +91,7 @@ export default async function SicherheitstechnikPage() {
 
   return (
     <>
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
@@ -160,6 +169,86 @@ export default async function SicherheitstechnikPage() {
           </div>
         </div>
       </Section>
+
+
+      {/* Fachliche Methodik und Leistungsstufen */}
+      <Section id="architektur-und-methodik" tight>
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Tiefgehende Integration von Sensorik und Aktorik"
+          lead="Wir betrachten Sicherheit nicht als Summe von Einzelkomponenten, sondern als geschlossenes Ökosystem. Ein wirksames Sicherheitskonzept erfordert die nahtlose Integration von mechanischen Barrieren, elektronischer Sensorik und reaktionsschneller Aktorik."
+        />
+        <div className="mt-8 space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <p>
+            Moderne Sicherheitstechnik basiert auf dem Prinzip der Redundanz und der mehrstufigen Verifikation. Ein klassischer Einbruchversuch beginnt meist an der schwächsten Stelle der Außenhülle. Hier greift die erste Stufe: Die mechanische Barriere. Hochfeste Schließzylinder, Pilzkopfverriegelungen und verstärkte Schließbleche verzögern das Eindringen signifikant. Doch Mechanik allein reicht nicht aus.
+          </p>
+          <p>
+            Die zweite Stufe bildet die Sensorik. Magnetkontakte an Türen und Fenstern (Perimeterschutz) sowie passive Infrarot-Bewegungsmelder (Fallenüberwachung) im Innenbereich erkennen jeden unautorisierten Zugriff. Diese Sensoren sind nicht isoliert, sondern über verschlüsselte Bus-Systeme oder bidirektionalen Funk mit der zentralen Einbruchmeldeanlage (EMA) verbunden.
+          </p>
+          <p>
+            Die dritte Stufe ist die Aktorik und Alarmierung. Bei einer Detektion löst das System nicht nur lokale optisch-akustische Signalgeber (Sirenen) aus, sondern überträgt die Alarmmeldung verzögerungsfrei an eine VdS-zertifizierte Notruf- und Serviceleitstelle (NSL). Parallel können Smart-Home-Integrationen aktiviert werden, um beispielsweise die gesamte Beleuchtung einzuschalten und Rollläden herunterzufahren – ein massiver psychologischer Effekt gegen den Täter.
+          </p>
+          <p>
+            Darüber hinaus spielt die Videoüberwachung eine entscheidende Rolle für die Verifikation. KI-gestützte Kamerasysteme analysieren das Bildmaterial in Echtzeit, unterscheiden zwischen Personen, Tieren und Fahrzeugen und reduzieren so die Falschalarmquote auf ein Minimum. Die Videoanalyse ermöglicht es der Leitstelle, die Situation sofort einzuschätzen und zielgerichtete Interventionsmaßnahmen einzuleiten, noch bevor der Täter in das Objekt eindringen kann.
+          </p>
+          <p>
+            Unsere Methodik umfasst eine strukturierte Schwachstellenanalyse, die Erstellung eines individuellen Zonenkonzepts und die professionelle Projektierung gemäß den geltenden DIN EN und VdS Richtlinien. Wir begleiten Sie von der ersten Beratung über die fachgerechte Installation bis hin zur regelmäßigen Wartung und Instandhaltung Ihres Systems, um eine dauerhafte Funktionstüchtigkeit und maximale Ausfallsicherheit zu gewährleisten. Die Integration modernster Zutrittskontrollsysteme rundet das Portfolio ab und ermöglicht ein flexibles, sicheres Berechtigungsmanagement für alle Nutzergruppen.
+          </p>
+          <p>
+            Ein weiterer essenzieller Aspekt unserer Architektur ist die Ausfallsicherheit. Sämtliche kritischen Komponenten sind notstromgepuffert. Selbst bei einem kompletten Netzausfall oder einer gezielten Sabotage der Stromversorgung bleibt die Anlage voll funktionsfähig und meldet den Störfall umgehend an die Leitstelle. Die Übertragungswege sind redundant ausgelegt – meist durch eine Kombination aus IP-basierter Kommunikation und einem Mobilfunk-Backup (LTE/5G).
+          </p>
+          <p>
+            Wir legen größten Wert auf eine intuitive Bedienbarkeit. Komplexe Technik darf den Nutzer im Alltag nicht einschränken. Die Scharf-/Unscharfschaltung erfolgt wahlweise über RFID-Transponder, biometrische Leser, gesicherte Smartphone-Apps oder PIN-Code-Tastaturen. Das System gibt klares, optisches und akustisches Feedback und verhindert durch Zwangsläufigkeit Fehlbedienungen – beispielsweise lässt sich die Anlage nicht scharfschalten, solange noch ein Fenster geöffnet ist.
+          </p>
+          <p>
+            Die regelmäßige Wartung nach DIN VDE 0833 ist nicht nur eine Empfehlung, sondern essenziell für den Erhalt des Versicherungsschutzes. Wir führen umfassende Funktionsprüfungen durch, aktualisieren Firmware-Stände zur Schließung potenzieller IT-Sicherheitslücken und tauschen Akkus präventiv aus, bevor sie ihre Kapazitätsgrenze erreichen. Ihre Sicherheit ist ein kontinuierlicher Prozess, den wir mit höchster Präzision und Verlässlichkeit steuern.
+          </p>
+          <p>
+            Zusammenfassend lässt sich sagen: Effektive Sicherheitstechnik ist ein orchestriertes Zusammenspiel von Prävention, Detektion, Verifikation und Intervention. Vertrauen Sie auf unsere Expertise, um Ihr Objekt, Ihre Werte und vor allem die Menschen darin kompromisslos zu schützen.
+          </p>
+        </div>
+      </Section>
+
+      {/* FAQ */}
+      <Section id="faq" tone="muted">
+        <SectionHeading
+          eyebrow="Häufige Fragen"
+          title="Antworten zu Planung und Betrieb"
+        />
+        <div className="mt-8 space-y-4">
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wie unterscheidet sich eine funkbasierte von einer kabelgebundenen Einbruchmeldeanlage?</h3>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Kabelgebundene Anlagen bieten maximale Stabilität und Unabhängigkeit von Batterien, erfordern jedoch bei Nachrüstung einen höheren Installationsaufwand. Funkanlagen (wie z.B. von Daitem) nutzen spezielle, sichere Frequenzen (TwinBand-Verfahren), sind schnell installiert und flexibel erweiterbar, benötigen aber regelmäßige Batteriewechsel.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Ist eine Aufschaltung zur Notruf- und Serviceleitstelle (NSL) zwingend erforderlich?</h3>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Nicht zwingend, aber dringend empfohlen. Ein lokaler Alarm allein reicht oft nicht aus, da Nachbarn häufig nicht oder falsch reagieren. Eine NSL gewährleistet an 365 Tagen im Jahr eine sofortige, professionelle Intervention nach einem vorher festgelegten Maßnahmenplan (z.B. Verständigung der Polizei, Entsendung eines Wachdienstes).
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Welche Anforderungen stellt meine Versicherung an die Sicherheitstechnik?</h3>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Gewerbliche und hochwertige private Risiken erfordern oft VdS-zertifizierte Anlagen. Der VdS (Vertrauen durch Sicherheit) definiert strenge Richtlinien für Komponenten und Installation (VdS-Klassen A, B, C). Wir planen und errichten konform zu diesen Anforderungen, um Ihren vollen Versicherungsschutz zu gewährleisten.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Darf ich meinen Eingangsbereich mit Kameras überwachen?</h3>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Ja, auf Ihrem Privatgrundstück. Sie dürfen jedoch keinesfalls öffentliche Flächen (Gehwege, Straßen) oder das Nachbargrundstück erfassen. Wir richten Kamerasysteme datenschutzkonform ein, nutzen Privatzonenmaskierung zur Ausblendung sensibler Bereiche und weisen Sie auf die nötigen Kennzeichnungspflichten hin.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Was bedeutet Zwangsläufigkeit bei einer Alarmanlage?</h3>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Zwangsläufigkeit verhindert Falschalarme durch menschliches Fehlverhalten. Sie stellt sicher, dass die Anlage erst scharfgeschaltet werden kann, wenn alle Fenster und Türen geschlossen sind. Ebenso verhindert sie das Betreten des gesicherten Bereichs (z.B. durch ein blockierendes Sperrelement in der Tür), bevor die Anlage unscharf geschaltet wurde.
+            </p>
+          </div>
+        </div>
+      </Section>
+
 
       {/* Bereiche */}
       <Section tone="muted">
@@ -252,6 +341,18 @@ export default async function SicherheitstechnikPage() {
             </Link>
           </p>
         </Alert>
+      </Section>
+
+      {/* Budget Calculator */}
+      <Section tight>
+        <SectionHeading
+          eyebrow="Kalkulation"
+          title="Transparente Investitionsplanung"
+          lead="Ermitteln Sie einen ersten Richtwert für Ihre Sicherheitslösung. Die finale Planung erfolgt nach einer Vor-Ort-Besichtigung."
+        />
+        <div className="mt-8 max-w-2xl mx-auto">
+          <ServiceBudgetCalculator />
+        </div>
       </Section>
 
       {/* Verbindung zur Mechanik */}
