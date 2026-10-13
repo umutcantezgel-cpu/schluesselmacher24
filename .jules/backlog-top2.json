@@ -1,0 +1,13 @@
+{
+  "target_route": "app/(site)/sicherheitstechnik/page.tsx",
+  "status": "COMPLETED_BY_BUILDER",
+  "plan": {
+    "target_word_count": 850,
+    "interactive_module": "ServiceBudgetCalculator",
+    "content_expansion_topics": [
+      "Architektonische Methodik der Sicherheitstechnik",
+      "Leistungsstufen und Vergleichsmatrizen",
+      "Fachspezifischer FAQ-Abschnitt"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+
+
+Interactive Modules Summary:
+- `ServiceBudgetCalculator` added to Sicherheitstechnik page for budget estimation.
