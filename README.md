@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Recent Updates (Builder)
+- Expanded the `sicherheitstechnik` page with an interactive `SecurityBudgetCalculator`.
