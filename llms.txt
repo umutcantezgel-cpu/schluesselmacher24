@@ -1,0 +1,3 @@
+
+## Recent Updates (Builder)
+- Expanded the `sicherheitstechnik` page with an interactive `SecurityBudgetCalculator`.
