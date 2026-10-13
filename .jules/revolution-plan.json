@@ -1,0 +1,1487 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-13T15:27:45.147660+00:00",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "app/(payload)/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeLayoutController",
+        "target_file": "components/interactive/homelayoutcontroller.tsx",
+        "action_file": "actions/homelayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/api/[...slug]",
+      "source_file": "app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "API-Endpoint-Dokumentation f\u00fcr /api/[...slug]",
+        "Fehlerbehandlung und Rate-Limiting",
+        "Performance-Metriken und Caching-Strategien"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ApiSlugApiMetricsVisualizer",
+        "target_file": "components/interactive/apislugapimetricsvisualizer.tsx",
+        "action_file": "actions/apislugapimetricsvisualizer-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /admin/[[...segments]]",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminSegmentsInteractiveModule",
+        "target_file": "components/interactive/adminsegmentsinteractivemodule.tsx",
+        "action_file": "actions/adminsegmentsinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 1630,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeInteractiveModule",
+        "target_file": "components/interactive/homeinteractivemodule.tsx",
+        "action_file": "actions/homeinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/",
+      "source_file": "app/(site)/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeLayoutController",
+        "target_file": "components/interactive/homelayoutcontroller.tsx",
+        "action_file": "actions/homelayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /ratgeber",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberInteractiveModule",
+        "target_file": "components/interactive/ratgeberinteractivemodule.tsx",
+        "action_file": "actions/ratgeberinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 859,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /ratgeber/[slug]",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberSlugInteractiveModule",
+        "target_file": "components/interactive/ratgebersluginteractivemodule.tsx",
+        "action_file": "actions/ratgebersluginteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2293,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /schluessel-nach-vorlage",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageInteractiveModule",
+        "target_file": "components/interactive/schluesselnachvorlageinteractivemodule.tsx",
+        "action_file": "actions/schluesselnachvorlageinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /schluessel-nach-vorlage",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageLayoutController",
+        "target_file": "components/interactive/schluesselnachvorlagelayoutcontroller.tsx",
+        "action_file": "actions/schluesselnachvorlagelayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /schluessel-nach-vorlage/anfrage",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageAnfrageInteractiveModule",
+        "target_file": "components/interactive/schluesselnachvorlageanfrageinteractivemodule.tsx",
+        "action_file": "actions/schluesselnachvorlageanfrageinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /warenkorb",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbInteractiveModule",
+        "target_file": "components/interactive/warenkorbinteractivemodule.tsx",
+        "action_file": "actions/warenkorbinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /kasse",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseInteractiveModule",
+        "target_file": "components/interactive/kasseinteractivemodule.tsx",
+        "action_file": "actions/kasseinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/api/kunden-upload",
+      "source_file": "app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 1204,
+      "content_expansion_topics": [
+        "API-Endpoint-Dokumentation f\u00fcr /api/kunden-upload",
+        "Fehlerbehandlung und Rate-Limiting",
+        "Performance-Metriken und Caching-Strategien"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ApiKundenUploadApiMetricsVisualizer",
+        "target_file": "components/interactive/apikundenuploadapimetricsvisualizer.tsx",
+        "action_file": "actions/apikundenuploadapimetricsvisualizer-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 997,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /schluessel-nach-code",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeInteractiveModule",
+        "target_file": "components/interactive/schluesselnachcodeinteractivemodule.tsx",
+        "action_file": "actions/schluesselnachcodeinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /schluessel-nach-code",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeLayoutController",
+        "target_file": "components/interactive/schluesselnachcodelayoutcontroller.tsx",
+        "action_file": "actions/schluesselnachcodelayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1234,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /schluessel-nach-code/[slug]",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeSlugInteractiveModule",
+        "target_file": "components/interactive/schluesselnachcodesluginteractivemodule.tsx",
+        "action_file": "actions/schluesselnachcodesluginteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1520,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /sicherheitstechnik",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikInteractiveModule",
+        "target_file": "components/interactive/sicherheitstechnikinteractivemodule.tsx",
+        "action_file": "actions/sicherheitstechnikinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /sicherheitstechnik",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikLayoutController",
+        "target_file": "components/interactive/sicherheitstechniklayoutcontroller.tsx",
+        "action_file": "actions/sicherheitstechniklayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1144,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /sicherheitstechnik/[slug]",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikSlugInteractiveModule",
+        "target_file": "components/interactive/sicherheitstechniksluginteractivemodule.tsx",
+        "action_file": "actions/sicherheitstechniksluginteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /sicherheitstechnik/sicherheitscheck",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikSicherheitscheckInteractiveModule",
+        "target_file": "components/interactive/sicherheitstechniksicherheitscheckinteractivemodule.tsx",
+        "action_file": "actions/sicherheitstechniksicherheitscheckinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2284,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /tuer-und-schliesstechnik",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikInteractiveModule",
+        "target_file": "components/interactive/tuerundschliesstechnikinteractivemodule.tsx",
+        "action_file": "actions/tuerundschliesstechnikinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /tuer-und-schliesstechnik",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikLayoutController",
+        "target_file": "components/interactive/tuerundschliesstechniklayoutcontroller.tsx",
+        "action_file": "actions/tuerundschliesstechniklayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 993,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /tuer-und-schliesstechnik/[slug]",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikSlugInteractiveModule",
+        "target_file": "components/interactive/tuerundschliesstechniksluginteractivemodule.tsx",
+        "action_file": "actions/tuerundschliesstechniksluginteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1799,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /bestellung/[id]",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "BestellungIdInteractiveModule",
+        "target_file": "components/interactive/bestellungidinteractivemodule.tsx",
+        "action_file": "actions/bestellungidinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2581,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /gleichschliessende-zylinder",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderInteractiveModule",
+        "target_file": "components/interactive/gleichschliessendezylinderinteractivemodule.tsx",
+        "action_file": "actions/gleichschliessendezylinderinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /gleichschliessende-zylinder",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderLayoutController",
+        "target_file": "components/interactive/gleichschliessendezylinderlayoutcontroller.tsx",
+        "action_file": "actions/gleichschliessendezylinderlayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /gleichschliessende-zylinder/konfigurator",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderKonfiguratorInteractiveModule",
+        "target_file": "components/interactive/gleichschliessendezylinderkonfiguratorinteractivemodule.tsx",
+        "action_file": "actions/gleichschliessendezylinderkonfiguratorinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 2980,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /elektronische-zutrittsloesungen",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenInteractiveModule",
+        "target_file": "components/interactive/elektronischezutrittsloesungeninteractivemodule.tsx",
+        "action_file": "actions/elektronischezutrittsloesungeninteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /elektronische-zutrittsloesungen",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenLayoutController",
+        "target_file": "components/interactive/elektronischezutrittsloesungenlayoutcontroller.tsx",
+        "action_file": "actions/elektronischezutrittsloesungenlayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 882,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /elektronische-zutrittsloesungen/konfigurator",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenKonfiguratorInteractiveModule",
+        "target_file": "components/interactive/elektronischezutrittsloesungenkonfiguratorinteractivemodule.tsx",
+        "action_file": "actions/elektronischezutrittsloesungenkonfiguratorinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2373,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /schliessanlagen",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenInteractiveModule",
+        "target_file": "components/interactive/schliessanlageninteractivemodule.tsx",
+        "action_file": "actions/schliessanlageninteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /schliessanlagen",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenLayoutController",
+        "target_file": "components/interactive/schliessanlagenlayoutcontroller.tsx",
+        "action_file": "actions/schliessanlagenlayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 868,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /schliessanlagen/konfigurator",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenKonfiguratorInteractiveModule",
+        "target_file": "components/interactive/schliessanlagenkonfiguratorinteractivemodule.tsx",
+        "action_file": "actions/schliessanlagenkonfiguratorinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2078,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /service-und-termin",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminInteractiveModule",
+        "target_file": "components/interactive/serviceundtermininteractivemodule.tsx",
+        "action_file": "actions/serviceundtermininteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /service-und-termin",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminLayoutController",
+        "target_file": "components/interactive/serviceundterminlayoutcontroller.tsx",
+        "action_file": "actions/serviceundterminlayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /service-und-termin/terminstatus",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminTerminstatusInteractiveModule",
+        "target_file": "components/interactive/serviceundterminterminstatusinteractivemodule.tsx",
+        "action_file": "actions/serviceundterminterminstatusinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /service-und-termin/anfrage",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminAnfrageInteractiveModule",
+        "target_file": "components/interactive/serviceundterminanfrageinteractivemodule.tsx",
+        "action_file": "actions/serviceundterminanfrageinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1155,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /service-und-termin/vor-ort",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminVorOrtInteractiveModule",
+        "target_file": "components/interactive/serviceundterminvorortinteractivemodule.tsx",
+        "action_file": "actions/serviceundterminvorortinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 974,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /service-und-termin/kontakt",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminKontaktInteractiveModule",
+        "target_file": "components/interactive/serviceundterminkontaktinteractivemodule.tsx",
+        "action_file": "actions/serviceundterminkontaktinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/rechtliches",
+      "source_file": "app/(site)/rechtliches/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /rechtliches",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesLayoutController",
+        "target_file": "components/interactive/rechtlicheslayoutcontroller.tsx",
+        "action_file": "actions/rechtlicheslayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /rechtliches/impressum",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesImpressumInteractiveModule",
+        "target_file": "components/interactive/rechtlichesimpressuminteractivemodule.tsx",
+        "action_file": "actions/rechtlichesimpressuminteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /rechtliches/cookie-einstellungen",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesCookieEinstellungenInteractiveModule",
+        "target_file": "components/interactive/rechtlichescookieeinstellungeninteractivemodule.tsx",
+        "action_file": "actions/rechtlichescookieeinstellungeninteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 927,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /rechtliches/versand-und-zahlung",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesVersandUndZahlungInteractiveModule",
+        "target_file": "components/interactive/rechtlichesversandundzahlunginteractivemodule.tsx",
+        "action_file": "actions/rechtlichesversandundzahlunginteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 870,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /rechtliches/widerruf",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesWiderrufInteractiveModule",
+        "target_file": "components/interactive/rechtlicheswiderrufinteractivemodule.tsx",
+        "action_file": "actions/rechtlicheswiderrufinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 916,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /rechtliches/agb",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesAgbInteractiveModule",
+        "target_file": "components/interactive/rechtlichesagbinteractivemodule.tsx",
+        "action_file": "actions/rechtlichesagbinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1215,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /rechtliches/datenschutz",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesDatenschutzInteractiveModule",
+        "target_file": "components/interactive/rechtlichesdatenschutzinteractivemodule.tsx",
+        "action_file": "actions/rechtlichesdatenschutzinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1156,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /artikel",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelInteractiveModule",
+        "target_file": "components/interactive/artikelinteractivemodule.tsx",
+        "action_file": "actions/artikelinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1434,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /artikel/[slug]",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelSlugInteractiveModule",
+        "target_file": "components/interactive/artikelsluginteractivemodule.tsx",
+        "action_file": "actions/artikelsluginteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /standorte",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteInteractiveModule",
+        "target_file": "components/interactive/standorteinteractivemodule.tsx",
+        "action_file": "actions/standorteinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 905,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /standorte/[city]",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteCityInteractiveModule",
+        "target_file": "components/interactive/standortecityinteractivemodule.tsx",
+        "action_file": "actions/standortecityinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2502,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselInteractiveModule",
+        "target_file": "components/interactive/autoschluesselinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Strukturelles Layout-Management f\u00fcr /autoschluessel",
+        "Performance-optimierte LCP-Struktur",
+        "Zentrale Navigations- und Footer-Integration"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselLayoutController",
+        "target_file": "components/interactive/autoschluessellayoutcontroller.tsx",
+        "action_file": "actions/autoschluessellayoutcontroller-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1218,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/marken",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenInteractiveModule",
+        "target_file": "components/interactive/autoschluesselmarkeninteractivemodule.tsx",
+        "action_file": "actions/autoschluesselmarkeninteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1479,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/marken/[make]",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenMakeInteractiveModule",
+        "target_file": "components/interactive/autoschluesselmarkenmakeinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselmarkenmakeinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1723,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/marken/[make]/[model]",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenMakeModelInteractiveModule",
+        "target_file": "components/interactive/autoschluesselmarkenmakemodelinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselmarkenmakemodelinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 56,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1591,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/funkschluessel",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFunkschluesselInteractiveModule",
+        "target_file": "components/interactive/autoschluesselfunkschluesselinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselfunkschluesselinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 57,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1722,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/programmieren",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselProgrammierenInteractiveModule",
+        "target_file": "components/interactive/autoschluesselprogrammiereninteractivemodule.tsx",
+        "action_file": "actions/autoschluesselprogrammiereninteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 58,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1018,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/anfrage",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselAnfrageInteractiveModule",
+        "target_file": "components/interactive/autoschluesselanfrageinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselanfrageinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 59,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1633,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/kopieren",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselKopierenInteractiveModule",
+        "target_file": "components/interactive/autoschluesselkopiereninteractivemodule.tsx",
+        "action_file": "actions/autoschluesselkopiereninteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 60,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1689,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/nachmachen",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselNachmachenInteractiveModule",
+        "target_file": "components/interactive/autoschluesselnachmacheninteractivemodule.tsx",
+        "action_file": "actions/autoschluesselnachmacheninteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 61,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1707,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/smart-key",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSmartKeyInteractiveModule",
+        "target_file": "components/interactive/autoschluesselsmartkeyinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselsmartkeyinteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 62,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1542,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/schluesselbart-fraesen",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSchluesselbartFraesenInteractiveModule",
+        "target_file": "components/interactive/autoschluesselschluesselbartfraeseninteractivemodule.tsx",
+        "action_file": "actions/autoschluesselschluesselbartfraeseninteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 63,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1621,
+      "content_expansion_topics": [
+        "Spezifische Use-Cases und Anwendungsbeispiele f\u00fcr /autoschluessel/fahrzeugoeffnung",
+        "Prozessabl\u00e4ufe, Kostensch\u00e4tzungen und ROI",
+        "Umfassende FAQ und Vergleichstabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFahrzeugoeffnungInteractiveModule",
+        "target_file": "components/interactive/autoschluesselfahrzeugoeffnunginteractivemodule.tsx",
+        "action_file": "actions/autoschluesselfahrzeugoeffnunginteractivemodule-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 64,
+      "route_path": "/llms.txt",
+      "source_file": "app/llms.txt/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "API-Endpoint-Dokumentation f\u00fcr /llms.txt",
+        "Fehlerbehandlung und Rate-Limiting",
+        "Performance-Metriken und Caching-Strategien"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LlmsTxtApiMetricsVisualizer",
+        "target_file": "components/interactive/llmstxtapimetricsvisualizer.tsx",
+        "action_file": "actions/llmstxtapimetricsvisualizer-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
