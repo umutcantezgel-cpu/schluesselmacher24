@@ -14,58 +14,58 @@
 @layer base {
   :root {
     /* Flächen */
-    --background: 214 45% 98.6%;
-    --surface: 0 0% 100%;
-    --surface-muted: 214 50% 96.6%;
-    --surface-sunken: 214 36% 92.5%;
-    --surface-ink: 222 36% 16%;
+    --background: 0.988 0.002 260;
+    --surface: 0.968 0.004 260;
+    --surface-muted: 0.971 0.008 255.0;
+    --surface-sunken: 0.938 0.012 255.0;
+    --surface-ink: 0.258 0.041 265.9;
 
     /* Text */
-    --foreground: 222 34% 15%;
-    --foreground-muted: 219 16% 37%;
-    --foreground-subtle: 217 12% 45%;
-    --foreground-inverse: 214 45% 98.6%;
+    --foreground: 0.32 0.02 260;
+    --foreground-muted: 0.465 0.035 262.8;
+    --foreground-subtle: 0.541 0.030 259.9;
+    --foreground-inverse: 0.988 0.003 255.0;
 
     /* Linien */
-    --border: 214 32% 89%;
-    --border-strong: 214 22% 77%;
-    --input: 214 28% 84%;
-    --ring: 214 86% 50%;
+    --border: 0.890 0.008 260;
+    --border-strong: 0.812 0.024 255.1;
+    --input: 0.868 0.021 255.1;
+    --ring: 0.572 0.205 258.3;
 
     /* Primär — klares Blau */
-    --primary: 214 80% 40%;
-    --primary-hover: 214 82% 33%;
-    --primary-soft: 214 100% 96.5%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0.485 0.161 257.6;
+    --primary-hover: 0.424 0.141 257.6;
+    --primary-soft: 0.967 0.016 255.0;
+    --primary-foreground: 1.000 0.000 0;
 
     /* Sekundär */
-    --secondary: 214 50% 94%;
-    --secondary-foreground: 222 34% 15%;
+    --secondary: 0.949 0.014 255.0;
+    --secondary-foreground: 0.250 0.037 266.0;
 
     /* Akzent — Technisch-Teal, sparsam für Bestätigungen */
-    --accent: 188 52% 30%;
-    --accent-soft: 188 44% 94%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0.485 0.069 209.4;
+    --accent-soft: 0.961 0.013 207.9;
+    --accent-foreground: 1.000 0.000 0;
 
     /* Funktionsfarben — nur für Status, nie als Markenfläche */
-    --success: 152 48% 30%;
-    --success-soft: 152 44% 94%;
-    --warning: 32 80% 33%;
-    --warning-soft: 38 70% 95%;
-    --danger: 0 58% 42%;
-    --danger-soft: 0 60% 96%;
-    --info: 214 80% 40%;
-    --info-soft: 214 100% 96.5%;
+    --success: 0.494 0.092 159.8;
+    --success-soft: 0.963 0.016 166.4;
+    --warning: 0.524 0.114 62.2;
+    --warning-soft: 0.971 0.017 81.5;
+    --danger: 0.491 0.161 25.4;
+    --danger-soft: 0.961 0.013 17.4;
+    --info: 0.485 0.161 257.6;
+    --info-soft: 0.967 0.016 255.0;
 
     /* Karten / Popover */
-    --card: 0 0% 100%;
-    --card-foreground: 222 34% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 34% 15%;
-    --muted: 214 50% 94%;
-    --muted-foreground: 219 16% 37%;
-    --destructive: 0 58% 42%;
-    --destructive-foreground: 0 0% 100%;
+    --card: 1.000 0.000 0;
+    --card-foreground: 0.250 0.037 266.0;
+    --popover: 1.000 0.000 0;
+    --popover-foreground: 0.250 0.037 266.0;
+    --muted: 0.949 0.014 255.0;
+    --muted-foreground: 0.465 0.035 262.8;
+    --destructive: 0.491 0.161 25.4;
+    --destructive-foreground: 1.000 0.000 0;
 
     --radius: 0.75rem;
 
@@ -86,7 +86,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply overflow-x-clip bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
 
