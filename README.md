@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture
+
+This codebase is managed under the strict Swiss Light Mode Design System. Refer to `.jules/architecture-matrix.md` for a comprehensive overview of existing routes and planned transformations.
