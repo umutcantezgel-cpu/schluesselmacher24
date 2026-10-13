@@ -1,0 +1,682 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-13T07:04:46.602Z",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "src/app/(payload)/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich src/app/(payload)/admin/[[...segments]]",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu src/app/(payload)/admin/[[...segments]]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractivesrcapppayloadadminsegmentsModule",
+        "target_file": "src/components/calculator/interactive-src-app--payload--admin------segments---module.tsx",
+        "action_file": "src/actions/interactive-src-app--payload--admin------segments---module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1457,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /artikel",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveartikelModule",
+        "target_file": "src/components/calculator/interactive--artikel-module.tsx",
+        "action_file": "src/actions/interactive--artikel-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1319,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /autoschluessel/anfrage",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /autoschluessel/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveautoschluesselanfrageModule",
+        "target_file": "src/components/calculator/interactive--autoschluessel-anfrage-module.tsx",
+        "action_file": "src/actions/interactive--autoschluessel-anfrage-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1519,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /autoschluessel/marken",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /autoschluessel/marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveautoschluesselmarkenModule",
+        "target_file": "src/components/calculator/interactive--autoschluessel-marken-module.tsx",
+        "action_file": "src/actions/interactive--autoschluessel-marken-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1183,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /elektronische-zutrittsloesungen/konfigurator",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /elektronische-zutrittsloesungen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveelektronischezutrittsloesungenkonfiguratorModule",
+        "target_file": "src/components/calculator/interactive--elektronische-zutrittsloesungen-konfigurator-module.tsx",
+        "action_file": "src/actions/interactive--elektronische-zutrittsloesungen-konfigurator-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 1111,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /gleichschliessende-zylinder/konfigurator",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /gleichschliessende-zylinder/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractivegleichschliessendezylinderkonfiguratorModule",
+        "target_file": "src/components/calculator/interactive--gleichschliessende-zylinder-konfigurator-module.tsx",
+        "action_file": "src/actions/interactive--gleichschliessende-zylinder-konfigurator-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 1043,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /kasse",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractivekasseModule",
+        "target_file": "src/components/calculator/interactive--kasse-module.tsx",
+        "action_file": "src/actions/interactive--kasse-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1160,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /ratgeber/[slug]",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /ratgeber/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveratgeberslugModule",
+        "target_file": "src/components/calculator/interactive--ratgeber--slug--module.tsx",
+        "action_file": "src/actions/interactive--ratgeber--slug--module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 1025,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /ratgeber",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveratgeberModule",
+        "target_file": "src/components/calculator/interactive--ratgeber-module.tsx",
+        "action_file": "src/actions/interactive--ratgeber-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 1217,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /rechtliches/agb",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /rechtliches/agb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiverechtlichesagbModule",
+        "target_file": "src/components/calculator/interactive--rechtliches-agb-module.tsx",
+        "action_file": "src/actions/interactive--rechtliches-agb-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 1029,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /rechtliches/cookie-einstellungen",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /rechtliches/cookie-einstellungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiverechtlichescookieeinstellungenModule",
+        "target_file": "src/components/calculator/interactive--rechtliches-cookie-einstellungen-module.tsx",
+        "action_file": "src/actions/interactive--rechtliches-cookie-einstellungen-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1516,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /rechtliches/datenschutz",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /rechtliches/datenschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiverechtlichesdatenschutzModule",
+        "target_file": "src/components/calculator/interactive--rechtliches-datenschutz-module.tsx",
+        "action_file": "src/actions/interactive--rechtliches-datenschutz-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 1049,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /rechtliches/impressum",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /rechtliches/impressum"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiverechtlichesimpressumModule",
+        "target_file": "src/components/calculator/interactive--rechtliches-impressum-module.tsx",
+        "action_file": "src/actions/interactive--rechtliches-impressum-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1228,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /rechtliches/versand-und-zahlung",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /rechtliches/versand-und-zahlung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiverechtlichesversandundzahlungModule",
+        "target_file": "src/components/calculator/interactive--rechtliches-versand-und-zahlung-module.tsx",
+        "action_file": "src/actions/interactive--rechtliches-versand-und-zahlung-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1171,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /rechtliches/widerruf",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /rechtliches/widerruf"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiverechtlicheswiderrufModule",
+        "target_file": "src/components/calculator/interactive--rechtliches-widerruf-module.tsx",
+        "action_file": "src/actions/interactive--rechtliches-widerruf-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1169,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /schliessanlagen/konfigurator",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /schliessanlagen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveschliessanlagenkonfiguratorModule",
+        "target_file": "src/components/calculator/interactive--schliessanlagen-konfigurator-module.tsx",
+        "action_file": "src/actions/interactive--schliessanlagen-konfigurator-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1535,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /schluessel-nach-code/[slug]",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /schluessel-nach-code/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveschluesselnachcodeslugModule",
+        "target_file": "src/components/calculator/interactive--schluessel-nach-code--slug--module.tsx",
+        "action_file": "src/actions/interactive--schluessel-nach-code--slug--module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1298,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /schluessel-nach-code",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /schluessel-nach-code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveschluesselnachcodeModule",
+        "target_file": "src/components/calculator/interactive--schluessel-nach-code-module.tsx",
+        "action_file": "src/actions/interactive--schluessel-nach-code-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 1022,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /schluessel-nach-vorlage/anfrage",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /schluessel-nach-vorlage/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveschluesselnachvorlageanfrageModule",
+        "target_file": "src/components/calculator/interactive--schluessel-nach-vorlage-anfrage-module.tsx",
+        "action_file": "src/actions/interactive--schluessel-nach-vorlage-anfrage-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 952,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /service-und-termin/anfrage",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /service-und-termin/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveserviceundterminanfrageModule",
+        "target_file": "src/components/calculator/interactive--service-und-termin-anfrage-module.tsx",
+        "action_file": "src/actions/interactive--service-und-termin-anfrage-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1275,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /service-und-termin/kontakt",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /service-und-termin/kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveserviceundterminkontaktModule",
+        "target_file": "src/components/calculator/interactive--service-und-termin-kontakt-module.tsx",
+        "action_file": "src/actions/interactive--service-und-termin-kontakt-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /service-und-termin/terminstatus",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /service-und-termin/terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveserviceundterminterminstatusModule",
+        "target_file": "src/components/calculator/interactive--service-und-termin-terminstatus-module.tsx",
+        "action_file": "src/actions/interactive--service-und-termin-terminstatus-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1456,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /service-und-termin/vor-ort",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /service-und-termin/vor-ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveserviceundterminvorortModule",
+        "target_file": "src/components/calculator/interactive--service-und-termin-vor-ort-module.tsx",
+        "action_file": "src/actions/interactive--service-und-termin-vor-ort-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1445,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /sicherheitstechnik/[slug]",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /sicherheitstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractivesicherheitstechnikslugModule",
+        "target_file": "src/components/calculator/interactive--sicherheitstechnik--slug--module.tsx",
+        "action_file": "src/actions/interactive--sicherheitstechnik--slug--module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 1130,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /sicherheitstechnik/sicherheitscheck",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /sicherheitstechnik/sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractivesicherheitstechniksicherheitscheckModule",
+        "target_file": "src/components/calculator/interactive--sicherheitstechnik-sicherheitscheck-module.tsx",
+        "action_file": "src/actions/interactive--sicherheitstechnik-sicherheitscheck-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1206,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /standorte/[city]",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /standorte/[city]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractivestandortecityModule",
+        "target_file": "src/components/calculator/interactive--standorte--city--module.tsx",
+        "action_file": "src/actions/interactive--standorte--city--module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 1050,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /standorte",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractivestandorteModule",
+        "target_file": "src/components/calculator/interactive--standorte-module.tsx",
+        "action_file": "src/actions/interactive--standorte-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1294,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /tuer-und-schliesstechnik/[slug]",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /tuer-und-schliesstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractivetuerundschliesstechnikslugModule",
+        "target_file": "src/components/calculator/interactive--tuer-und-schliesstechnik--slug--module.tsx",
+        "action_file": "src/actions/interactive--tuer-und-schliesstechnik--slug--module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 1062,
+      "content_expansion_topics": [
+        "Umfassende Erläuterung der Prozesse im Bereich /warenkorb",
+        "Integration von Best Practices und Awwwards-Level Design",
+        "Detail-FAQ für Fachfragen zu /warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractivewarenkorbModule",
+        "target_file": "src/components/calculator/interactive--warenkorb-module.tsx",
+        "action_file": "src/actions/interactive--warenkorb-module.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

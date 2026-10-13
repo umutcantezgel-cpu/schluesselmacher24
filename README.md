@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architektur-Ziele (Blueprint)
+
+Das System wird gemäss dem JC-AUDITOR-ARCHITECT-v1 Blueprint auf Next.js 16+, React 19.2+ und TypeScript 5.5+ mit strikter Typensicherheit und RSC-Fokus aktualisiert. Das Styling nutzt Tailwind CSS v4 im OKLCH-Farbraum. Die "Zero-New-Routes"-Invariante ist aktiv.
