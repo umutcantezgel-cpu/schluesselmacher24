@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Blueprint
+
+The .jules/revolution-plan.json and .jules/architecture-matrix.md have been updated to reflect the latest architecture audit targets for the Swiss High-End Light Mode Design System.

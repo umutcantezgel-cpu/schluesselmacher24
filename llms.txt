@@ -1,0 +1,4 @@
+# Architecture Metadata
+
+The application architecture follows Next.js 16+ Server Component Supremacy and OKLCH color space for Swiss Light Design Doctrine.
+See .jules/revolution-plan.json for the master implementation plan.
