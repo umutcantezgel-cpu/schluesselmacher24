@@ -14,58 +14,58 @@
 @layer base {
   :root {
     /* Flächen */
-    --background: 214 45% 98.6%;
-    --surface: 0 0% 100%;
-    --surface-muted: 214 50% 96.6%;
-    --surface-sunken: 214 36% 92.5%;
-    --surface-ink: 222 36% 16%;
+    --background: 0.988 0.002 260;
+    --surface: 0.968 0.004 260;
+    --surface-muted: 0.971 0.0077 254.9963;
+    --surface-sunken: 0.9377 0.0123 255.0224;
+    --surface-ink: 0.2581 0.041 265.8986;
 
     /* Text */
-    --foreground: 222 34% 15%;
-    --foreground-muted: 219 16% 37%;
-    --foreground-subtle: 217 12% 45%;
-    --foreground-inverse: 214 45% 98.6%;
+    --foreground: 0.16 0.02 260;
+    --foreground-muted: 0.32 0.02 260;
+    --foreground-subtle: 0.5408 0.0295 259.9094;
+    --foreground-inverse: 0.9882 0.0028 254.9694;
 
     /* Linien */
-    --border: 214 32% 89%;
-    --border-strong: 214 22% 77%;
-    --input: 214 28% 84%;
-    --ring: 214 86% 50%;
+    --border: 0.890 0.008 260 / 0.55;
+    --border-strong: 0.8119 0.024 255.0942;
+    --input: 0.8684 0.0209 255.0716;
+    --ring: 0.572 0.2047 258.319;
 
     /* Primär — klares Blau */
-    --primary: 214 80% 40%;
-    --primary-hover: 214 82% 33%;
-    --primary-soft: 214 100% 96.5%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0.4852 0.1611 257.6336;
+    --primary-hover: 0.4245 0.1409 257.6297;
+    --primary-soft: 0.9669 0.0159 255.0378;
+    --primary-foreground: 1 0 0;
 
     /* Sekundär */
-    --secondary: 214 50% 94%;
-    --secondary-foreground: 222 34% 15%;
+    --secondary: 0.9487 0.0137 255.0284;
+    --secondary-foreground: 0.2497 0.0366 266.0427;
 
     /* Akzent — Technisch-Teal, sparsam für Bestätigungen */
-    --accent: 188 52% 30%;
-    --accent-soft: 188 44% 94%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0.4849 0.0694 209.38;
+    --accent-soft: 0.9609 0.0126 207.8816;
+    --accent-foreground: 1 0 0;
 
     /* Funktionsfarben — nur für Status, nie als Markenfläche */
-    --success: 152 48% 30%;
-    --success-soft: 152 44% 94%;
-    --warning: 32 80% 33%;
-    --warning-soft: 38 70% 95%;
-    --danger: 0 58% 42%;
-    --danger-soft: 0 60% 96%;
-    --info: 214 80% 40%;
-    --info-soft: 214 100% 96.5%;
+    --success: 0.4939 0.0917 159.7763;
+    --success-soft: 0.9627 0.0164 166.4355;
+    --warning: 0.5238 0.1138 62.2053;
+    --warning-soft: 0.971 0.0165 81.5013;
+    --danger: 0.4915 0.161 25.3758;
+    --danger-soft: 0.9608 0.0132 17.387;
+    --info: 0.4852 0.1611 257.6336;
+    --info-soft: 0.9669 0.0159 255.0378;
 
     /* Karten / Popover */
-    --card: 0 0% 100%;
-    --card-foreground: 222 34% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 34% 15%;
-    --muted: 214 50% 94%;
-    --muted-foreground: 219 16% 37%;
-    --destructive: 0 58% 42%;
-    --destructive-foreground: 0 0% 100%;
+    --card: 1 0 0;
+    --card-foreground: 0.2497 0.0366 266.0427;
+    --popover: 1 0 0;
+    --popover-foreground: 0.2497 0.0366 266.0427;
+    --muted: 0.9487 0.0137 255.0284;
+    --muted-foreground: 0.4654 0.0347 262.7632;
+    --destructive: 0.4915 0.161 25.3758;
+    --destructive-foreground: 1 0 0;
 
     --radius: 0.75rem;
 
@@ -79,13 +79,18 @@
 @layer base {
   * {
     @apply border-border;
+
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   html {
+    overflow-x: clip;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
+    overflow-x: clip;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -100,6 +105,10 @@
   }
 
   /* Sichtbarer Fokus — Pflicht für Tastaturbedienung */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
   :focus-visible {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
@@ -270,6 +279,10 @@
 
 /* Bewegung reduzieren — Layout darf dadurch nicht brechen */
 @media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+  }
+
   *,
   *::before,
   *::after {
