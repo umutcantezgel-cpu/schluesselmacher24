@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Added Interactive Modules
+- `ServiceBudgetCalculator`: A Next.js 19 Server Actions powered interactive budget calculator.
