@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +74,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -82,7 +90,7 @@ export default async function SicherheitstechnikPage() {
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
@@ -254,6 +262,125 @@ export default async function SicherheitstechnikPage() {
         </Alert>
       </Section>
 
+
+      {/* Fachliche Methodik & Leistungsarchitektur */}
+      <Section id="architektur" tone="muted">
+        <SectionHeading
+          eyebrow="Methodik & Architektur"
+          title="Ganzheitliche Sicherheitskonzepte statt Insellösungen"
+          lead="Unsere Herangehensweise an die Sicherheitstechnik basiert auf einem mehrschichtigen Architekturmodell, das präventive, detektierende und reaktive Maßnahmen nahtlos ineinandergreifen lässt."
+        />
+
+        <div className="mt-12 grid gap-12 lg:grid-cols-2">
+          <div className="space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed text-[16px]">
+            <p>
+              Moderne Sicherheitstechnik ist weitaus komplexer als die bloße Installation einer Kamera oder eines Bewegungsmelders. Ein robustes System erfordert eine <strong>tiefgehende Risikoanalyse</strong> und eine darauf abgestimmte <strong>Sicherheitsarchitektur</strong>. Wir differenzieren dabei systematisch zwischen dem <em>mechanischen Grundschutz</em> (der physischen Barriere), der <em>elektronischen Detektion</em> (der sensorischen Erfassung von Abweichungen) und der <em>vernetzten Alarmierung</em> (der gesteuerten Informationsweitergabe).
+            </p>
+            <p>
+              Besonderes Augenmerk legen wir auf die <strong>Ausfallsicherheit und Redundanz</strong>. Sabotageversuche, Stromausfälle oder Netzwerkstörungen dürfen nicht zum Totalausfall der Überwachung führen. Daher setzen wir auf duale Übertragungswege (z.B. IP und LTE), notstromgepufferte Zentralen und manipulationsgeschützte Bus-Systeme. Jeder Sensor, jede Kamera und jeder Signalgeber wird so platziert und konfiguriert, dass er nicht nur seine primäre Aufgabe erfüllt, sondern auch den Status des Gesamtsystems überwacht.
+            </p>
+            <p>
+              In der Praxis bedeutet dies: Bevor wir eine Lösung empfehlen, analysieren wir die <em>Schwachstellen des Objekts</em>, bewerten die <em>Wahrscheinlichkeit spezifischer Bedrohungsszenarien</em> und definieren gemeinsam mit Ihnen das <em>gewünschte Schutzziel</em>. Erst auf dieser Grundlage entsteht ein maßgeschneidertes, skalierbares Konzept, das mit Ihren Anforderungen wachsen kann.
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-[oklch(0.968_0.004_260)] p-8 border border-[oklch(0.89_0.008_260/0.55)] shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+            <h3 className="text-xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mb-6">Vergleichsmatrix: Sicherheitsstufen</h3>
+
+            <div className="space-y-4">
+              <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-4">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-semibold text-[oklch(0.16_0.02_260)]">Basis-Schutz (Grad 1)</span>
+                  <span className="text-xs bg-[oklch(0.988_0.002_260)] px-2 py-1 rounded border border-[oklch(0.89_0.008_260/0.55)]">Wohnbereich</span>
+                </div>
+                <p className="text-sm text-[oklch(0.32_0.02_260)]">Mechanische Grundsicherung kombiniert mit autarken Meldern. Fokus auf Abschreckung und lokale Alarmierung.</p>
+              </div>
+
+              <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-4">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-semibold text-[oklch(0.16_0.02_260)]">Erweiterter Schutz (Grad 2)</span>
+                  <span className="text-xs bg-[oklch(0.988_0.002_260)] px-2 py-1 rounded border border-[oklch(0.89_0.008_260/0.55)]">Gewerbe / Hochwertig</span>
+                </div>
+                <p className="text-sm text-[oklch(0.32_0.02_260)]">Vernetztes System mit Aufschaltung auf eine Leitstelle. Notstromversorgung und redundante Übertragungswege.</p>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-semibold text-[oklch(0.16_0.02_260)]">Hochsicherheit (Grad 3/4)</span>
+                  <span className="text-xs bg-[oklch(0.988_0.002_260)] px-2 py-1 rounded border border-[oklch(0.89_0.008_260/0.55)]">Kritische Infr.</span>
+                </div>
+                <p className="text-sm text-[oklch(0.32_0.02_260)]">Zertifizierte Anlagen nach strengsten VdS-Richtlinien. Lückenlose Flächenüberwachung und biometrische Zutrittskontrolle.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Interaktiver Rechner */}
+      <Section id="kalkulator">
+        <div className="grid gap-12 lg:grid-cols-2 items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Budgetplanung"
+              title="Transparente Investition in Ihre Sicherheit"
+              lead="Sicherheit ist eine Investition, keine bloße Ausgabe. Mit unserem interaktiven Kalkulator erhalten Sie eine erste, unverbindliche Indikation über das benötigte Budget."
+            />
+            <div className="mt-6 space-y-4 text-[oklch(0.32_0.02_260)] leading-relaxed text-[16px]">
+              <p>
+                Die tatsächlichen Kosten eines Sicherheitssystems hängen von vielen Faktoren ab: Der Größe des Objekts, der Anzahl der Zugänge (Türen, Fenster, Lichtschächte), den gewünschten Funktionalitäten (Video, Alarm, Zutritt) und nicht zuletzt den baulichen Gegebenheiten vor Ort.
+              </p>
+              <p>
+                Unser Tool nutzt Durchschnittswerte aus Hunderten realisierter Projekte, um Ihnen einen realistischen Korridor aufzuzeigen. Bitte beachten Sie, dass dies eine erste Schätzung darstellt und eine detaillierte Vor-Ort-Analyse nicht ersetzt.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-tr from-[oklch(0.52_0.24_260/0.05)] to-transparent rounded-3xl -z-10 blur-2xl transform scale-105" />
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Ausführliche FAQ */}
+      <Section id="faq" tone="muted">
+        <SectionHeading
+          eyebrow="Häufige Fragen"
+          title="Fachwissen kompakt erklärt"
+          lead="Die wichtigsten Antworten rund um Konzeption, Installation und Betrieb von Sicherheitstechnik."
+        />
+
+        <div className="mt-12 grid gap-6 max-w-3xl mx-auto">
+          {[
+            {
+              q: "Warum ist mechanischer Schutz die Voraussetzung für Elektronik?",
+              a: "Elektronik (wie eine Alarmanlage) meldet lediglich, dass ein Ereignis stattfindet. Sie verhindert den Einbruch nicht aktiv. Ein mechanisch gut gesichertes Fenster leistet physischen Widerstand und kostet den Täter Zeit. Idealerweise ist der mechanische Widerstand so hoch, dass der Täter aufgibt, bevor er eindringt, während die Elektronik bereits den Alarm ausgelöst hat."
+            },
+            {
+              q: "Was unterscheidet eine Funk-Alarmanlage von einem kabelgebundenen System?",
+              a: "Kabelgebundene Systeme sind in der Regel wartungsärmer (keine Batteriewechsel), extrem störsicher und bei Neubauten oder Kernsanierungen die erste Wahl. Funk-Systeme (häufig hybride Systeme) eignen sich hervorragend für die Nachrüstung in bestehenden Objekten, da keine Wände aufgestemmt werden müssen. Moderne Funk-Protokolle arbeiten heute stark verschlüsselt und sind gegen 'Jamming' (Störsender) geschützt."
+            },
+            {
+              q: "Ist eine Aufschaltung auf einen Wachdienst zwingend erforderlich?",
+              a: "Technisch nicht zwingend, aber konzeptionell hochgradig empfehlenswert. Ein lokaler Sirenenalarm verschreckt Täter und alarmiert Nachbarn, aber niemand ist verpflichtet, einzugreifen. Eine Aufschaltung an eine zertifizierte Notruf- und Serviceleitstelle (NSL) stellt sicher, dass Alarme 24/7 von Profis bewertet und vereinbarte Maßnahmen (z.B. Polizei rufen, Wachdienst schicken) sofort eingeleitet werden."
+            },
+            {
+              q: "Wie lange werden Videoaufzeichnungen gespeichert?",
+              a: "Dies hängt von den datenschutzrechtlichen Vorgaben (DSGVO) und dem konkreten Zweck ab. Im Regelfall ist eine Speicherung von 48 bis 72 Stunden zulässig und ausreichend, um Vorfälle, die über das Wochenende passiert sind, zu dokumentieren. Eine längere Speicherung bedarf einer besonderen Begründung. Wir konfigurieren die Rekorder so, dass ältere Aufnahmen automatisch überschrieben werden (Ringpuffer)."
+            },
+            {
+              q: "Können bestehende Systeme (z.B. Smart Home) integriert werden?",
+              a: "Oftmals ja, allerdings raten wir zur Vorsicht. Eine Alarmanlage ist ein zertifiziertes Sicherheitssystem, ein Smart Home in erster Linie ein Komfortsystem. Wir empfehlen, die Gewerke logisch zu trennen: Die Alarmanlage kann den Status ('scharf'/'unscharf') an das Smart Home übermitteln (z.B. um Lichter auszuschalten), aber das Smart Home sollte niemals die Alarmanlage deaktivieren können."
+            }
+          ].map((faq, idx) => (
+            <div key={idx} className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+              <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">{faq.q}</h4>
+              <p className="text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
       {/* Verbindung zur Mechanik */}
       <Section tone="muted" tight>
         <div className="grid gap-4 md:grid-cols-2">
@@ -318,6 +445,6 @@ export default async function SicherheitstechnikPage() {
           </ul>
         </Section>
       )}
-    </>
+    </main>
   );
 }
