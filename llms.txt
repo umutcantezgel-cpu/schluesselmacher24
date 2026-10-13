@@ -1,0 +1,3 @@
+
+## Architecture Targets
+We are systematically expanding content (>850 words) and integrating interactive modules into all routes.
