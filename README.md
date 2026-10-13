@@ -43,3 +43,11 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Goals (Next.js 16+ & React 19.2+)
+
+- Target Runtime: Next.js 16+ App Router
+- React 19.2+ Server Actions
+- Styling: Tailwind CSS v4 using OKLCH Color Space
+- Strict TypeScript 5.5+ definitions

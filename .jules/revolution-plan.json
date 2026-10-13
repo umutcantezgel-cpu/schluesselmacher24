@@ -1,0 +1,1480 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-13T09:12:16.023Z",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu admin",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich admin",
+        "Detaillierte Kosten- und Leistungsübersicht für admin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminConfigurator",
+        "target_file": "components/calculator/admin-interactive.tsx",
+        "action_file": "actions/admin-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 2,
+      "route_path": "/api/[...slug]",
+      "source_file": "app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 3,
+      "route_path": "/",
+      "source_file": "app/(payload)/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 4,
+      "route_path": "/api/kunden-upload",
+      "source_file": "app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 5,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1434,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu artikel",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich artikel",
+        "Detaillierte Kosten- und Leistungsübersicht für artikel"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_FILTER",
+        "component_name": "ArtikelFilterSystem",
+        "target_file": "components/calculator/artikel-interactive.tsx",
+        "action_file": "actions/artikel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Article"
+      ]
+    },
+    {
+      "priority": 6,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1156,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu artikel",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich artikel",
+        "Detaillierte Kosten- und Leistungsübersicht für artikel"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_FILTER",
+        "component_name": "ArtikelFilterSystem",
+        "target_file": "components/calculator/artikel-interactive.tsx",
+        "action_file": "actions/artikel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Article"
+      ]
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1018,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu anfrage",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich anfrage",
+        "Detaillierte Kosten- und Leistungsübersicht für anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageConfigurator",
+        "target_file": "components/calculator/anfrage-interactive.tsx",
+        "action_file": "actions/anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1621,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu fahrzeugoeffnung",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich fahrzeugoeffnung",
+        "Detaillierte Kosten- und Leistungsübersicht für fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugoeffnungConfigurator",
+        "target_file": "components/calculator/fahrzeugoeffnung-interactive.tsx",
+        "action_file": "actions/fahrzeugoeffnung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1591,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu funkschluessel",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich funkschluessel",
+        "Detaillierte Kosten- und Leistungsübersicht für funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FunkschluesselConfigurator",
+        "target_file": "components/calculator/funkschluessel-interactive.tsx",
+        "action_file": "actions/funkschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1633,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu kopieren",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich kopieren",
+        "Detaillierte Kosten- und Leistungsübersicht für kopieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KopierenConfigurator",
+        "target_file": "components/calculator/kopieren-interactive.tsx",
+        "action_file": "actions/kopieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1723,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu [make]",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich [make]",
+        "Detaillierte Kosten- und Leistungsübersicht für [make]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "[make]Configurator",
+        "target_file": "components/calculator/[make]-interactive.tsx",
+        "action_file": "actions/[make]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1479,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu marken",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich marken",
+        "Detaillierte Kosten- und Leistungsübersicht für marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenConfigurator",
+        "target_file": "components/calculator/marken-interactive.tsx",
+        "action_file": "actions/marken-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1218,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu marken",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich marken",
+        "Detaillierte Kosten- und Leistungsübersicht für marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenConfigurator",
+        "target_file": "components/calculator/marken-interactive.tsx",
+        "action_file": "actions/marken-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 15,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1689,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu nachmachen",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich nachmachen",
+        "Detaillierte Kosten- und Leistungsübersicht für nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "NachmachenConfigurator",
+        "target_file": "components/calculator/nachmachen-interactive.tsx",
+        "action_file": "actions/nachmachen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 16,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2502,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu autoschluessel",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich autoschluessel",
+        "Detaillierte Kosten- und Leistungsübersicht für autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeyMatcher",
+        "target_file": "components/calculator/autoschluessel-interactive.tsx",
+        "action_file": "actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 17,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1722,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu programmieren",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich programmieren",
+        "Detaillierte Kosten- und Leistungsübersicht für programmieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ProgrammierenConfigurator",
+        "target_file": "components/calculator/programmieren-interactive.tsx",
+        "action_file": "actions/programmieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 18,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1542,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu schluesselbart fraesen",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich schluesselbart fraesen",
+        "Detaillierte Kosten- und Leistungsübersicht für schluesselbart fraesen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselbartFraesenConfigurator",
+        "target_file": "components/calculator/schluesselbart-fraesen-interactive.tsx",
+        "action_file": "actions/schluesselbart-fraesen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 19,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1707,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu smart key",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich smart key",
+        "Detaillierte Kosten- und Leistungsübersicht für smart key"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartKeyConfigurator",
+        "target_file": "components/calculator/smart-key-interactive.tsx",
+        "action_file": "actions/smart-key-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 20,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1799,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu bestellung",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich bestellung",
+        "Detaillierte Kosten- und Leistungsübersicht für bestellung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "BestellungConfigurator",
+        "target_file": "components/calculator/bestellung-interactive.tsx",
+        "action_file": "actions/bestellung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 21,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 882,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu konfigurator",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich konfigurator",
+        "Detaillierte Kosten- und Leistungsübersicht für konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorConfigurator",
+        "target_file": "components/calculator/konfigurator-interactive.tsx",
+        "action_file": "actions/konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 22,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 23,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 2980,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu elektronische zutrittsloesungen",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich elektronische zutrittsloesungen",
+        "Detaillierte Kosten- und Leistungsübersicht für elektronische zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenConfigurator",
+        "target_file": "components/calculator/elektronische-zutrittsloesungen-interactive.tsx",
+        "action_file": "actions/elektronische-zutrittsloesungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 24,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu konfigurator",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich konfigurator",
+        "Detaillierte Kosten- und Leistungsübersicht für konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorConfigurator",
+        "target_file": "components/calculator/konfigurator-interactive.tsx",
+        "action_file": "actions/konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 25,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 26,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2581,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu gleichschliessende zylinder",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich gleichschliessende zylinder",
+        "Detaillierte Kosten- und Leistungsübersicht für gleichschliessende zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderConfigurator",
+        "target_file": "components/calculator/gleichschliessende-zylinder-interactive.tsx",
+        "action_file": "actions/gleichschliessende-zylinder-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 27,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu kasse",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich kasse",
+        "Detaillierte Kosten- und Leistungsübersicht für kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseConfigurator",
+        "target_file": "components/calculator/kasse-interactive.tsx",
+        "action_file": "actions/kasse-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 28,
+      "route_path": "/",
+      "source_file": "app/(site)/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 29,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 1630,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/home-interactive.tsx",
+        "action_file": "actions/home-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 30,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 859,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu ratgeber",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich ratgeber",
+        "Detaillierte Kosten- und Leistungsübersicht für ratgeber"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_FILTER",
+        "component_name": "RatgeberFilterSystem",
+        "target_file": "components/calculator/ratgeber-interactive.tsx",
+        "action_file": "actions/ratgeber-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Article"
+      ]
+    },
+    {
+      "priority": 31,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu ratgeber",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich ratgeber",
+        "Detaillierte Kosten- und Leistungsübersicht für ratgeber"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_FILTER",
+        "component_name": "RatgeberFilterSystem",
+        "target_file": "components/calculator/ratgeber-interactive.tsx",
+        "action_file": "actions/ratgeber-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Article"
+      ]
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 916,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu agb",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich agb",
+        "Detaillierte Kosten- und Leistungsübersicht für agb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AgbConfigurator",
+        "target_file": "components/calculator/agb-interactive.tsx",
+        "action_file": "actions/agb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu cookie einstellungen",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich cookie einstellungen",
+        "Detaillierte Kosten- und Leistungsübersicht für cookie einstellungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CookieEinstellungenConfigurator",
+        "target_file": "components/calculator/cookie-einstellungen-interactive.tsx",
+        "action_file": "actions/cookie-einstellungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 34,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1215,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu datenschutz",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich datenschutz",
+        "Detaillierte Kosten- und Leistungsübersicht für datenschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DatenschutzConfigurator",
+        "target_file": "components/calculator/datenschutz-interactive.tsx",
+        "action_file": "actions/datenschutz-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 35,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu impressum",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich impressum",
+        "Detaillierte Kosten- und Leistungsübersicht für impressum"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ImpressumConfigurator",
+        "target_file": "components/calculator/impressum-interactive.tsx",
+        "action_file": "actions/impressum-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 36,
+      "route_path": "/rechtliches",
+      "source_file": "app/(site)/rechtliches/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 37,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 927,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu versand und zahlung",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich versand und zahlung",
+        "Detaillierte Kosten- und Leistungsübersicht für versand und zahlung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VersandUndZahlungConfigurator",
+        "target_file": "components/calculator/versand-und-zahlung-interactive.tsx",
+        "action_file": "actions/versand-und-zahlung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 38,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 870,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu widerruf",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich widerruf",
+        "Detaillierte Kosten- und Leistungsübersicht für widerruf"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WiderrufConfigurator",
+        "target_file": "components/calculator/widerruf-interactive.tsx",
+        "action_file": "actions/widerruf-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 39,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 868,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu konfigurator",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich konfigurator",
+        "Detaillierte Kosten- und Leistungsübersicht für konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorConfigurator",
+        "target_file": "components/calculator/konfigurator-interactive.tsx",
+        "action_file": "actions/konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 40,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 41,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2373,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu schliessanlagen",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich schliessanlagen",
+        "Detaillierte Kosten- und Leistungsübersicht für schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenConfigurator",
+        "target_file": "components/calculator/schliessanlagen-interactive.tsx",
+        "action_file": "actions/schliessanlagen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 42,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1234,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu schluessel nach code",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich schluessel nach code",
+        "Detaillierte Kosten- und Leistungsübersicht für schluessel nach code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeConfigurator",
+        "target_file": "components/calculator/schluessel-nach-code-interactive.tsx",
+        "action_file": "actions/schluessel-nach-code-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 43,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 44,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 997,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu schluessel nach code",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich schluessel nach code",
+        "Detaillierte Kosten- und Leistungsübersicht für schluessel nach code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeConfigurator",
+        "target_file": "components/calculator/schluessel-nach-code-interactive.tsx",
+        "action_file": "actions/schluessel-nach-code-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 45,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu anfrage",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich anfrage",
+        "Detaillierte Kosten- und Leistungsübersicht für anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageConfigurator",
+        "target_file": "components/calculator/anfrage-interactive.tsx",
+        "action_file": "actions/anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 46,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 47,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2293,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu schluessel nach vorlage",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich schluessel nach vorlage",
+        "Detaillierte Kosten- und Leistungsübersicht für schluessel nach vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageConfigurator",
+        "target_file": "components/calculator/schluessel-nach-vorlage-interactive.tsx",
+        "action_file": "actions/schluessel-nach-vorlage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 48,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu anfrage",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich anfrage",
+        "Detaillierte Kosten- und Leistungsübersicht für anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageConfigurator",
+        "target_file": "components/calculator/anfrage-interactive.tsx",
+        "action_file": "actions/anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 49,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 974,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu kontakt",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich kontakt",
+        "Detaillierte Kosten- und Leistungsübersicht für kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KontaktConfigurator",
+        "target_file": "components/calculator/kontakt-interactive.tsx",
+        "action_file": "actions/kontakt-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 50,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 51,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2078,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu service und termin",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich service und termin",
+        "Detaillierte Kosten- und Leistungsübersicht für service und termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminConfigurator",
+        "target_file": "components/calculator/service-und-termin-interactive.tsx",
+        "action_file": "actions/service-und-termin-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 52,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu terminstatus",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich terminstatus",
+        "Detaillierte Kosten- und Leistungsübersicht für terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminstatusConfigurator",
+        "target_file": "components/calculator/terminstatus-interactive.tsx",
+        "action_file": "actions/terminstatus-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 53,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1155,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu vor ort",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich vor ort",
+        "Detaillierte Kosten- und Leistungsübersicht für vor ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VorOrtConfigurator",
+        "target_file": "components/calculator/vor-ort-interactive.tsx",
+        "action_file": "actions/vor-ort-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 54,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1144,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu sicherheitstechnik",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich sicherheitstechnik",
+        "Detaillierte Kosten- und Leistungsübersicht für sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikConfigurator",
+        "target_file": "components/calculator/sicherheitstechnik-interactive.tsx",
+        "action_file": "actions/sicherheitstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 55,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 56,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1520,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu sicherheitstechnik",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich sicherheitstechnik",
+        "Detaillierte Kosten- und Leistungsübersicht für sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikConfigurator",
+        "target_file": "components/calculator/sicherheitstechnik-interactive.tsx",
+        "action_file": "actions/sicherheitstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 57,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu sicherheitscheck",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich sicherheitscheck",
+        "Detaillierte Kosten- und Leistungsübersicht für sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitscheckConfigurator",
+        "target_file": "components/calculator/sicherheitscheck-interactive.tsx",
+        "action_file": "actions/sicherheitscheck-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ]
+    },
+    {
+      "priority": 58,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 905,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu standorte",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich standorte",
+        "Detaillierte Kosten- und Leistungsübersicht für standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteConfigurator",
+        "target_file": "components/calculator/standorte-interactive.tsx",
+        "action_file": "actions/standorte-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 59,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu standorte",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich standorte",
+        "Detaillierte Kosten- und Leistungsübersicht für standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteConfigurator",
+        "target_file": "components/calculator/standorte-interactive.tsx",
+        "action_file": "actions/standorte-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 60,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 993,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu tuer und schliesstechnik",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich tuer und schliesstechnik",
+        "Detaillierte Kosten- und Leistungsübersicht für tuer und schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikConfigurator",
+        "target_file": "components/calculator/tuer-und-schliesstechnik-interactive.tsx",
+        "action_file": "actions/tuer-und-schliesstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 61,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/layout.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    },
+    {
+      "priority": 62,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2284,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu tuer und schliesstechnik",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich tuer und schliesstechnik",
+        "Detaillierte Kosten- und Leistungsübersicht für tuer und schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikConfigurator",
+        "target_file": "components/calculator/tuer-und-schliesstechnik-interactive.tsx",
+        "action_file": "actions/tuer-und-schliesstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 63,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Vertiefende Erklärung und technischer Hintergrund zu warenkorb",
+        "Typische Anwendungsfälle und Kundenfragen im Bereich warenkorb",
+        "Detaillierte Kosten- und Leistungsübersicht für warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbConfigurator",
+        "target_file": "components/calculator/warenkorb-interactive.tsx",
+        "action_file": "actions/warenkorb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ]
+    },
+    {
+      "priority": 64,
+      "route_path": "/llms.txt",
+      "source_file": "app/llms.txt/route.ts",
+      "target_word_count": 850,
+      "status": "PENDING_BUILDER",
+      "content_expansion_topics": [
+        "Zusätzliche Erläuterungen und technische Dokumentation",
+        "Häufig gestellte Fragen (FAQ)",
+        "Leistungsübersicht und Systemarchitektur"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GenericInteractiveModule",
+        "target_file": "components/calculator/generic-interactive.tsx",
+        "action_file": "actions/generic-action.ts"
+      }
+    }
+  ]
+}
