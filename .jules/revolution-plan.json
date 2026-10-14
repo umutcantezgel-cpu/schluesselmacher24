@@ -1,0 +1,1423 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-14T09:11:42.151609+00:00",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "app/(payload)/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /",
+        "Methodischer Prozessablauf f\u00fcr /",
+        "Detaillierte Fach-FAQ f\u00fcr /"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeInteractiveModule",
+        "target_file": "components/interactive/homeinteractivemodule.tsx",
+        "action_file": "actions/homeinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/api/[...slug]",
+      "source_file": "app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /api/[...slug]",
+        "Methodischer Prozessablauf f\u00fcr /api/[...slug]",
+        "Detaillierte Fach-FAQ f\u00fcr /api/[...slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Api[...Slug]InteractiveModule",
+        "target_file": "components/interactive/api[...slug]interactivemodule.tsx",
+        "action_file": "actions/api[...slug]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /admin/[[...segments]]",
+        "Methodischer Prozessablauf f\u00fcr /admin/[[...segments]]",
+        "Detaillierte Fach-FAQ f\u00fcr /admin/[[...segments]]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Admin[[...Segments]]InteractiveModule",
+        "target_file": "components/interactive/admin[[...segments]]interactivemodule.tsx",
+        "action_file": "actions/admin[[...segments]]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 2081,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /",
+        "Methodischer Prozessablauf f\u00fcr /",
+        "Detaillierte Fach-FAQ f\u00fcr /"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeInteractiveModule",
+        "target_file": "components/interactive/homeinteractivemodule.tsx",
+        "action_file": "actions/homeinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/",
+      "source_file": "app/(site)/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /",
+        "Methodischer Prozessablauf f\u00fcr /",
+        "Detaillierte Fach-FAQ f\u00fcr /"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "HomeInteractiveModule",
+        "target_file": "components/interactive/homeinteractivemodule.tsx",
+        "action_file": "actions/homeinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /ratgeber",
+        "Methodischer Prozessablauf f\u00fcr /ratgeber",
+        "Detaillierte Fach-FAQ f\u00fcr /ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberInteractiveModule",
+        "target_file": "components/interactive/ratgeberinteractivemodule.tsx",
+        "action_file": "actions/ratgeberinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 965,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /ratgeber/[slug]",
+        "Methodischer Prozessablauf f\u00fcr /ratgeber/[slug]",
+        "Detaillierte Fach-FAQ f\u00fcr /ratgeber/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Ratgeber[Slug]InteractiveModule",
+        "target_file": "components/interactive/ratgeber[slug]interactivemodule.tsx",
+        "action_file": "actions/ratgeber[slug]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2479,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /schluessel-nach-vorlage",
+        "Methodischer Prozessablauf f\u00fcr /schluessel-nach-vorlage",
+        "Detaillierte Fach-FAQ f\u00fcr /schluessel-nach-vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Schluessel-Nach-VorlageInteractiveModule",
+        "target_file": "components/interactive/schluessel-nach-vorlageinteractivemodule.tsx",
+        "action_file": "actions/schluessel-nach-vorlageinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /schluessel-nach-vorlage",
+        "Methodischer Prozessablauf f\u00fcr /schluessel-nach-vorlage",
+        "Detaillierte Fach-FAQ f\u00fcr /schluessel-nach-vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Schluessel-Nach-VorlageInteractiveModule",
+        "target_file": "components/interactive/schluessel-nach-vorlageinteractivemodule.tsx",
+        "action_file": "actions/schluessel-nach-vorlageinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /schluessel-nach-vorlage/anfrage",
+        "Methodischer Prozessablauf f\u00fcr /schluessel-nach-vorlage/anfrage",
+        "Detaillierte Fach-FAQ f\u00fcr /schluessel-nach-vorlage/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Schluessel-Nach-VorlageAnfrageInteractiveModule",
+        "target_file": "components/interactive/schluessel-nach-vorlageanfrageinteractivemodule.tsx",
+        "action_file": "actions/schluessel-nach-vorlageanfrageinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /warenkorb",
+        "Methodischer Prozessablauf f\u00fcr /warenkorb",
+        "Detaillierte Fach-FAQ f\u00fcr /warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbInteractiveModule",
+        "target_file": "components/interactive/warenkorbinteractivemodule.tsx",
+        "action_file": "actions/warenkorbinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /kasse",
+        "Methodischer Prozessablauf f\u00fcr /kasse",
+        "Detaillierte Fach-FAQ f\u00fcr /kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseInteractiveModule",
+        "target_file": "components/interactive/kasseinteractivemodule.tsx",
+        "action_file": "actions/kasseinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/api/kunden-upload",
+      "source_file": "app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 1190,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /api/kunden-upload",
+        "Methodischer Prozessablauf f\u00fcr /api/kunden-upload",
+        "Detaillierte Fach-FAQ f\u00fcr /api/kunden-upload"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ApiKunden-UploadInteractiveModule",
+        "target_file": "components/interactive/apikunden-uploadinteractivemodule.tsx",
+        "action_file": "actions/apikunden-uploadinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1057,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /schluessel-nach-code",
+        "Methodischer Prozessablauf f\u00fcr /schluessel-nach-code",
+        "Detaillierte Fach-FAQ f\u00fcr /schluessel-nach-code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Schluessel-Nach-CodeInteractiveModule",
+        "target_file": "components/interactive/schluessel-nach-codeinteractivemodule.tsx",
+        "action_file": "actions/schluessel-nach-codeinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /schluessel-nach-code",
+        "Methodischer Prozessablauf f\u00fcr /schluessel-nach-code",
+        "Detaillierte Fach-FAQ f\u00fcr /schluessel-nach-code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Schluessel-Nach-CodeInteractiveModule",
+        "target_file": "components/interactive/schluessel-nach-codeinteractivemodule.tsx",
+        "action_file": "actions/schluessel-nach-codeinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /schluessel-nach-code/[slug]",
+        "Methodischer Prozessablauf f\u00fcr /schluessel-nach-code/[slug]",
+        "Detaillierte Fach-FAQ f\u00fcr /schluessel-nach-code/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Schluessel-Nach-Code[Slug]InteractiveModule",
+        "target_file": "components/interactive/schluessel-nach-code[slug]interactivemodule.tsx",
+        "action_file": "actions/schluessel-nach-code[slug]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1767,
+      "content_expansion_topics": [
+        "Umfassende Sicherheitsberatung f\u00fcr /sicherheitstechnik",
+        "Normen und Zertifizierungen bei /sicherheitstechnik",
+        "Integration mit Smart Home bei /sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikInteractiveModule",
+        "target_file": "components/interactive/sicherheitstechnikinteractivemodule.tsx",
+        "action_file": "actions/sicherheitstechnikinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Umfassende Sicherheitsberatung f\u00fcr /sicherheitstechnik",
+        "Normen und Zertifizierungen bei /sicherheitstechnik",
+        "Integration mit Smart Home bei /sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikInteractiveModule",
+        "target_file": "components/interactive/sicherheitstechnikinteractivemodule.tsx",
+        "action_file": "actions/sicherheitstechnikinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1283,
+      "content_expansion_topics": [
+        "Umfassende Sicherheitsberatung f\u00fcr /sicherheitstechnik/[slug]",
+        "Normen und Zertifizierungen bei /sicherheitstechnik/[slug]",
+        "Integration mit Smart Home bei /sicherheitstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Sicherheitstechnik[Slug]InteractiveModule",
+        "target_file": "components/interactive/sicherheitstechnik[slug]interactivemodule.tsx",
+        "action_file": "actions/sicherheitstechnik[slug]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 861,
+      "content_expansion_topics": [
+        "Umfassende Sicherheitsberatung f\u00fcr /sicherheitstechnik/sicherheitscheck",
+        "Normen und Zertifizierungen bei /sicherheitstechnik/sicherheitscheck",
+        "Integration mit Smart Home bei /sicherheitstechnik/sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikSicherheitscheckInteractiveModule",
+        "target_file": "components/interactive/sicherheitstechniksicherheitscheckinteractivemodule.tsx",
+        "action_file": "actions/sicherheitstechniksicherheitscheckinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2596,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /tuer-und-schliesstechnik",
+        "Methodischer Prozessablauf f\u00fcr /tuer-und-schliesstechnik",
+        "Detaillierte Fach-FAQ f\u00fcr /tuer-und-schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Tuer-Und-SchliesstechnikInteractiveModule",
+        "target_file": "components/interactive/tuer-und-schliesstechnikinteractivemodule.tsx",
+        "action_file": "actions/tuer-und-schliesstechnikinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /tuer-und-schliesstechnik",
+        "Methodischer Prozessablauf f\u00fcr /tuer-und-schliesstechnik",
+        "Detaillierte Fach-FAQ f\u00fcr /tuer-und-schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Tuer-Und-SchliesstechnikInteractiveModule",
+        "target_file": "components/interactive/tuer-und-schliesstechnikinteractivemodule.tsx",
+        "action_file": "actions/tuer-und-schliesstechnikinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1115,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /tuer-und-schliesstechnik/[slug]",
+        "Methodischer Prozessablauf f\u00fcr /tuer-und-schliesstechnik/[slug]",
+        "Detaillierte Fach-FAQ f\u00fcr /tuer-und-schliesstechnik/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Tuer-Und-Schliesstechnik[Slug]InteractiveModule",
+        "target_file": "components/interactive/tuer-und-schliesstechnik[slug]interactivemodule.tsx",
+        "action_file": "actions/tuer-und-schliesstechnik[slug]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2086,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /bestellung/[id]",
+        "Methodischer Prozessablauf f\u00fcr /bestellung/[id]",
+        "Detaillierte Fach-FAQ f\u00fcr /bestellung/[id]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Bestellung[Id]InteractiveModule",
+        "target_file": "components/interactive/bestellung[id]interactivemodule.tsx",
+        "action_file": "actions/bestellung[id]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3089,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /gleichschliessende-zylinder",
+        "Methodischer Prozessablauf f\u00fcr /gleichschliessende-zylinder",
+        "Detaillierte Fach-FAQ f\u00fcr /gleichschliessende-zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Gleichschliessende-ZylinderInteractiveModule",
+        "target_file": "components/interactive/gleichschliessende-zylinderinteractivemodule.tsx",
+        "action_file": "actions/gleichschliessende-zylinderinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /gleichschliessende-zylinder",
+        "Methodischer Prozessablauf f\u00fcr /gleichschliessende-zylinder",
+        "Detaillierte Fach-FAQ f\u00fcr /gleichschliessende-zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Gleichschliessende-ZylinderInteractiveModule",
+        "target_file": "components/interactive/gleichschliessende-zylinderinteractivemodule.tsx",
+        "action_file": "actions/gleichschliessende-zylinderinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /gleichschliessende-zylinder/konfigurator",
+        "Methodischer Prozessablauf f\u00fcr /gleichschliessende-zylinder/konfigurator",
+        "Detaillierte Fach-FAQ f\u00fcr /gleichschliessende-zylinder/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Gleichschliessende-ZylinderKonfiguratorInteractiveModule",
+        "target_file": "components/interactive/gleichschliessende-zylinderkonfiguratorinteractivemodule.tsx",
+        "action_file": "actions/gleichschliessende-zylinderkonfiguratorinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3111,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /elektronische-zutrittsloesungen",
+        "Methodischer Prozessablauf f\u00fcr /elektronische-zutrittsloesungen",
+        "Detaillierte Fach-FAQ f\u00fcr /elektronische-zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Elektronische-ZutrittsloesungenInteractiveModule",
+        "target_file": "components/interactive/elektronische-zutrittsloesungeninteractivemodule.tsx",
+        "action_file": "actions/elektronische-zutrittsloesungeninteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /elektronische-zutrittsloesungen",
+        "Methodischer Prozessablauf f\u00fcr /elektronische-zutrittsloesungen",
+        "Detaillierte Fach-FAQ f\u00fcr /elektronische-zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Elektronische-ZutrittsloesungenInteractiveModule",
+        "target_file": "components/interactive/elektronische-zutrittsloesungeninteractivemodule.tsx",
+        "action_file": "actions/elektronische-zutrittsloesungeninteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 908,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /elektronische-zutrittsloesungen/konfigurator",
+        "Methodischer Prozessablauf f\u00fcr /elektronische-zutrittsloesungen/konfigurator",
+        "Detaillierte Fach-FAQ f\u00fcr /elektronische-zutrittsloesungen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Elektronische-ZutrittsloesungenKonfiguratorInteractiveModule",
+        "target_file": "components/interactive/elektronische-zutrittsloesungenkonfiguratorinteractivemodule.tsx",
+        "action_file": "actions/elektronische-zutrittsloesungenkonfiguratorinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2460,
+      "content_expansion_topics": [
+        "Planung von Schlie\u00dfanlagen f\u00fcr /schliessanlagen",
+        "Sicherheitsstufen und Zylinderarten bei /schliessanlagen",
+        "Wartung und Erweiterung von /schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenInteractiveModule",
+        "target_file": "components/interactive/schliessanlageninteractivemodule.tsx",
+        "action_file": "actions/schliessanlageninteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Planung von Schlie\u00dfanlagen f\u00fcr /schliessanlagen",
+        "Sicherheitsstufen und Zylinderarten bei /schliessanlagen",
+        "Wartung und Erweiterung von /schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenInteractiveModule",
+        "target_file": "components/interactive/schliessanlageninteractivemodule.tsx",
+        "action_file": "actions/schliessanlageninteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 905,
+      "content_expansion_topics": [
+        "Planung von Schlie\u00dfanlagen f\u00fcr /schliessanlagen/konfigurator",
+        "Sicherheitsstufen und Zylinderarten bei /schliessanlagen/konfigurator",
+        "Wartung und Erweiterung von /schliessanlagen/konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenKonfiguratorInteractiveModule",
+        "target_file": "components/interactive/schliessanlagenkonfiguratorinteractivemodule.tsx",
+        "action_file": "actions/schliessanlagenkonfiguratorinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2341,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /service-und-termin",
+        "Methodischer Prozessablauf f\u00fcr /service-und-termin",
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-Und-TerminInteractiveModule",
+        "target_file": "components/interactive/service-und-termininteractivemodule.tsx",
+        "action_file": "actions/service-und-termininteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /service-und-termin",
+        "Methodischer Prozessablauf f\u00fcr /service-und-termin",
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-Und-TerminInteractiveModule",
+        "target_file": "components/interactive/service-und-termininteractivemodule.tsx",
+        "action_file": "actions/service-und-termininteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /service-und-termin/terminstatus",
+        "Methodischer Prozessablauf f\u00fcr /service-und-termin/terminstatus",
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin/terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-Und-TerminTerminstatusInteractiveModule",
+        "target_file": "components/interactive/service-und-terminterminstatusinteractivemodule.tsx",
+        "action_file": "actions/service-und-terminterminstatusinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /service-und-termin/anfrage",
+        "Methodischer Prozessablauf f\u00fcr /service-und-termin/anfrage",
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-Und-TerminAnfrageInteractiveModule",
+        "target_file": "components/interactive/service-und-terminanfrageinteractivemodule.tsx",
+        "action_file": "actions/service-und-terminanfrageinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1266,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /service-und-termin/vor-ort",
+        "Methodischer Prozessablauf f\u00fcr /service-und-termin/vor-ort",
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin/vor-ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-Und-TerminVor-OrtInteractiveModule",
+        "target_file": "components/interactive/service-und-terminvor-ortinteractivemodule.tsx",
+        "action_file": "actions/service-und-terminvor-ortinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1108,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /service-und-termin/kontakt",
+        "Methodischer Prozessablauf f\u00fcr /service-und-termin/kontakt",
+        "Detaillierte Fach-FAQ f\u00fcr /service-und-termin/kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Service-Und-TerminKontaktInteractiveModule",
+        "target_file": "components/interactive/service-und-terminkontaktinteractivemodule.tsx",
+        "action_file": "actions/service-und-terminkontaktinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/rechtliches",
+      "source_file": "app/(site)/rechtliches/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /rechtliches",
+        "Methodischer Prozessablauf f\u00fcr /rechtliches",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesInteractiveModule",
+        "target_file": "components/interactive/rechtlichesinteractivemodule.tsx",
+        "action_file": "actions/rechtlichesinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /rechtliches/impressum",
+        "Methodischer Prozessablauf f\u00fcr /rechtliches/impressum",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/impressum"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesImpressumInteractiveModule",
+        "target_file": "components/interactive/rechtlichesimpressuminteractivemodule.tsx",
+        "action_file": "actions/rechtlichesimpressuminteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /rechtliches/cookie-einstellungen",
+        "Methodischer Prozessablauf f\u00fcr /rechtliches/cookie-einstellungen",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/cookie-einstellungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesCookie-EinstellungenInteractiveModule",
+        "target_file": "components/interactive/rechtlichescookie-einstellungeninteractivemodule.tsx",
+        "action_file": "actions/rechtlichescookie-einstellungeninteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1012,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /rechtliches/versand-und-zahlung",
+        "Methodischer Prozessablauf f\u00fcr /rechtliches/versand-und-zahlung",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/versand-und-zahlung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesVersand-Und-ZahlungInteractiveModule",
+        "target_file": "components/interactive/rechtlichesversand-und-zahlunginteractivemodule.tsx",
+        "action_file": "actions/rechtlichesversand-und-zahlunginteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 890,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /rechtliches/widerruf",
+        "Methodischer Prozessablauf f\u00fcr /rechtliches/widerruf",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/widerruf"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesWiderrufInteractiveModule",
+        "target_file": "components/interactive/rechtlicheswiderrufinteractivemodule.tsx",
+        "action_file": "actions/rechtlicheswiderrufinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 949,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /rechtliches/agb",
+        "Methodischer Prozessablauf f\u00fcr /rechtliches/agb",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/agb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesAgbInteractiveModule",
+        "target_file": "components/interactive/rechtlichesagbinteractivemodule.tsx",
+        "action_file": "actions/rechtlichesagbinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1297,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /rechtliches/datenschutz",
+        "Methodischer Prozessablauf f\u00fcr /rechtliches/datenschutz",
+        "Detaillierte Fach-FAQ f\u00fcr /rechtliches/datenschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RechtlichesDatenschutzInteractiveModule",
+        "target_file": "components/interactive/rechtlichesdatenschutzinteractivemodule.tsx",
+        "action_file": "actions/rechtlichesdatenschutzinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1216,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /artikel",
+        "Methodischer Prozessablauf f\u00fcr /artikel",
+        "Detaillierte Fach-FAQ f\u00fcr /artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelInteractiveModule",
+        "target_file": "components/interactive/artikelinteractivemodule.tsx",
+        "action_file": "actions/artikelinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1623,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /artikel/[slug]",
+        "Methodischer Prozessablauf f\u00fcr /artikel/[slug]",
+        "Detaillierte Fach-FAQ f\u00fcr /artikel/[slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Artikel[Slug]InteractiveModule",
+        "target_file": "components/interactive/artikel[slug]interactivemodule.tsx",
+        "action_file": "actions/artikel[slug]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /standorte",
+        "Methodischer Prozessablauf f\u00fcr /standorte",
+        "Detaillierte Fach-FAQ f\u00fcr /standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteInteractiveModule",
+        "target_file": "components/interactive/standorteinteractivemodule.tsx",
+        "action_file": "actions/standorteinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1004,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /standorte/[city]",
+        "Methodischer Prozessablauf f\u00fcr /standorte/[city]",
+        "Detaillierte Fach-FAQ f\u00fcr /standorte/[city]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Standorte[City]InteractiveModule",
+        "target_file": "components/interactive/standorte[city]interactivemodule.tsx",
+        "action_file": "actions/standorte[city]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2724,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselInteractiveModule",
+        "target_file": "components/interactive/autoschluesselinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/layout.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselInteractiveModule",
+        "target_file": "components/interactive/autoschluesselinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1352,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/marken",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/marken",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarkenInteractiveModule",
+        "target_file": "components/interactive/autoschluesselmarkeninteractivemodule.tsx",
+        "action_file": "actions/autoschluesselmarkeninteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1744,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/marken/[make]",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/marken/[make]",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/marken/[make]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarken[Make]InteractiveModule",
+        "target_file": "components/interactive/autoschluesselmarken[make]interactivemodule.tsx",
+        "action_file": "actions/autoschluesselmarken[make]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1863,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/marken/[make]/[model]",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/marken/[make]/[model]",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/marken/[make]/[model]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselMarken[Make][Model]InteractiveModule",
+        "target_file": "components/interactive/autoschluesselmarken[make][model]interactivemodule.tsx",
+        "action_file": "actions/autoschluesselmarken[make][model]interactivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 56,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1451,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/funkschluessel",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/funkschluessel",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFunkschluesselInteractiveModule",
+        "target_file": "components/interactive/autoschluesselfunkschluesselinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselfunkschluesselinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 57,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1571,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/programmieren",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/programmieren",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/programmieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselProgrammierenInteractiveModule",
+        "target_file": "components/interactive/autoschluesselprogrammiereninteractivemodule.tsx",
+        "action_file": "actions/autoschluesselprogrammiereninteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 58,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1042,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/anfrage",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/anfrage",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselAnfrageInteractiveModule",
+        "target_file": "components/interactive/autoschluesselanfrageinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselanfrageinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 59,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1506,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/kopieren",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/kopieren",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/kopieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselKopierenInteractiveModule",
+        "target_file": "components/interactive/autoschluesselkopiereninteractivemodule.tsx",
+        "action_file": "actions/autoschluesselkopiereninteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 60,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1547,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/nachmachen",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/nachmachen",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselNachmachenInteractiveModule",
+        "target_file": "components/interactive/autoschluesselnachmacheninteractivemodule.tsx",
+        "action_file": "actions/autoschluesselnachmacheninteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 61,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1560,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/smart-key",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/smart-key",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/smart-key"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSmart-KeyInteractiveModule",
+        "target_file": "components/interactive/autoschluesselsmart-keyinteractivemodule.tsx",
+        "action_file": "actions/autoschluesselsmart-keyinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 62,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/schluesselbart-fraesen",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/schluesselbart-fraesen",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/schluesselbart-fraesen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselSchluesselbart-FraesenInteractiveModule",
+        "target_file": "components/interactive/autoschluesselschluesselbart-fraeseninteractivemodule.tsx",
+        "action_file": "actions/autoschluesselschluesselbart-fraeseninteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 63,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1494,
+      "content_expansion_topics": [
+        "Modellspezifische Informationen f\u00fcr /autoschluessel/fahrzeugoeffnung",
+        "Programmierung und Anlernen im Detail f\u00fcr /autoschluessel/fahrzeugoeffnung",
+        "Sicherheits-FAQ und Wegfahrsperren bei /autoschluessel/fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselFahrzeugoeffnungInteractiveModule",
+        "target_file": "components/interactive/autoschluesselfahrzeugoeffnunginteractivemodule.tsx",
+        "action_file": "actions/autoschluesselfahrzeugoeffnunginteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 64,
+      "route_path": "/llms.txt",
+      "source_file": "app/llms.txt/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Institutionelle Leistungs\u00fcbersicht f\u00fcr /llms.txt",
+        "Methodischer Prozessablauf f\u00fcr /llms.txt",
+        "Detaillierte Fach-FAQ f\u00fcr /llms.txt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Llms.TxtInteractiveModule",
+        "target_file": "components/interactive/llms.txtinteractivemodule.tsx",
+        "action_file": "actions/llms.txtinteractivemodule.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

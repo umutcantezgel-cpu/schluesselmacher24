@@ -1,0 +1,6 @@
+LLMs context:
+
+
+## Architektur-Ziele
+Die Codebasis wird aktuell in die Schweizer High-End-Ästhetik überführt.
+Alle Routen erhalten dedizierte interaktive Module und tiefgreifenden Content (>800 Wörter).
