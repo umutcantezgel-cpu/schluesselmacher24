@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import {
   ArrowRight,
   CalendarClock,
@@ -216,6 +217,77 @@ export default async function HomePage() {
               </li>
             ))}
           </ol>
+        </div>
+      </Section>
+
+
+      {/* Budget-Kalkulator (Interaktives Modul) */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Planung"
+          title="Kosten transparent kalkulieren"
+          lead="Nutzen Sie unseren interaktiven Rechner, um einen ersten Richtwert für Ihr Projekt zu erhalten."
+        />
+        <div className="mt-8 max-w-xl mx-auto">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
+      {/* Fachlicher Deep Dive */}
+      <Section tight>
+        <SectionHeading
+          eyebrow="Methodik und Technologie"
+          title="Unsere architektonische Herangehensweise"
+          lead="Wir betrachten Sicherheit nicht isoliert, sondern als ganzheitliches System."
+        />
+        <div className="prose-sm24 mt-8">
+          <h2>1. Fundamentale Sicherheitsprinzipien in der modernen Schließtechnik</h2>
+          <p>
+            In einer Zeit, in der physische und digitale Sicherheit zunehmend verschmelzen, ist ein rein mechanischer Ansatz oftmals nicht mehr ausreichend. Die moderne Schließtechnik erfordert ein tiefes Verständnis für komplexe architektonische Zusammenhänge, Materialwissenschaften und bei elektronischen Systemen auch für Kryptografie und Netzwerksicherheit. Unser Ansatz basiert auf der strikten Einhaltung der &quot;Defense in Depth&quot;-Strategie, bei der mehrere Sicherheitsebenen so kombiniert werden, dass der Ausfall oder die Überwindung einer einzelnen Ebene nicht zum vollständigen Systemversagen führt.
+            Ein mechanischer Schließzylinder der höchsten Sicherheitsklasse bietet exzellenten Widerstand gegen zerstörende (Bohren, Ziehen, Fräsen) und zerstörungsfreie (Picking, Schlagschlüssel) Angriffsmethoden. Doch erst durch die Kombination mit einem soliden Schutzbeschlag, der den Zylinder bündig abdeckt, einem widerstandsfähigen Einsteckschloss und einem Schließblech, das fest im Mauerwerk verankert ist, entsteht eine echte Sicherheitsbarriere. Wir analysieren jede Komponente auf ihre spezifischen Schwachstellen und wählen Materialien und Bauformen, die optimal aufeinander abgestimmt sind.
+          </p>
+
+          <h2>2. Elektronische Zutrittskontrollsysteme (EAC) und Kryptografische Standards</h2>
+          <p>
+            Die Migration von rein mechanischen zu mechatronischen oder vollelktronischen Zutrittslösungen (Electronic Access Control - EAC) stellt völlig neue Anforderungen an die Sicherheitsarchitektur. Wir implementieren Systeme, die auf modernsten kryptografischen Verfahren basieren, insbesondere AES-128 oder AES-256 (Advanced Encryption Standard) für die sichere Datenübertragung zwischen Identmedium (z.B. RFID-Transponder, Smartphone via BLE/NFC) und Leseeinheit.
+            Besondere Aufmerksamkeit widmen wir der Verhinderung von Replay-Attacken und Relay-Station-Angriffen (oft bei passiven Entry-Systemen in Fahrzeugen beobachtet). Durch den Einsatz von Challenge-Response-Authentifizierungsverfahren stellen wir sicher, dass jedes Funksignal einzigartig ist und ein abgefangener Code für einen Angreifer wertlos bleibt. Bei vernetzten Offline-Systemen (Data-on-Card) stellen wir durch kryptografisch gesicherte Zertifikatsketten sicher, dass Berechtigungsänderungen und Blacklists fälschungssicher und zeitnah an die Endgeräte (Zylinder, Beschläge) verteilt werden.
+          </p>
+
+          <h2>3. Integration und Skalierbarkeit von Schließanlagen</h2>
+          <p>
+            Die Planung einer komplexen Schließanlage – sei es ein Zentralschlosssystem für Mehrfamilienhäuser (Z-Anlage), eine Hauptschlüsselanlage (HS) für Schulen oder eine Generalhauptschlüsselanlage (GHS) für große Unternehmensstrukturen – erfordert eine präzise mathematische Modellierung des Schließplans. Wir nutzen hochentwickelte Algorithmen, um die Permutationen der Schließungen so zu berechnen, dass Überschneidungen (Ghost Keys) mathematisch ausgeschlossen sind.
+            Zudem planen wir von Beginn an eine Skalierbarkeitsreserve ein. Jedes Unternehmen wächst, Abteilungen werden umstrukturiert, neue Gebäude kommen hinzu. Eine schlecht geplante Anlage ist nach wenigen Jahren &quot;voll&quot; und erfordert einen teuren Komplettaustausch. Unsere Architekturmatrizen stellen sicher, dass auch in zehn Jahren noch Zylinder und Schlüssel mit neuen, logisch getrennten Berechtigungen in das bestehende System integriert werden können, ohne die Integrität der Anlage zu gefährden.
+          </p>
+
+          <h2>4. Materialwissenschaftliche Aspekte in der Schlüsselfertigung</h2>
+          <p>
+            Die Lebensdauer und Zuverlässigkeit eines Schlüssels und des zugehörigen Zylinders hängen maßgeblich von den verwendeten Materialien ab. Wir setzen bei hochwertigen Kopien und Neuanfertigungen bevorzugt auf Neusilber (eine Legierung aus Kupfer, Nickel und Zink). Neusilber bietet gegenüber herkömmlichem Messing signifikante Vorteile: Es ist deutlich verschleißfester, bietet eine höhere Torsionsfestigkeit (wichtig gegen das Abbrechen im Schloss) und besitzt ausgezeichnete Gleiteigenschaften, was den Verschleiß der Stiftzuhaltungen im Zylinder minimiert.
+            Beim Fräsen von Schlüsseln nach Code oder Vorlage arbeiten wir mit computergesteuerten CNC-Maschinen, die Toleranzen im Bereich von Hundertstelmillimetern einhalten. Ein zu tief gefräster Einschnitt kann dazu führen, dass der Stift nicht exakt an der Scherlinie positioniert wird, was das Schloss hakelig macht oder im schlimmsten Fall zum Blockieren führt. Unsere Kalibrierungsprozesse und die anschließende optische Inspektion garantieren, dass jede von uns gefertigte Kopie exakt den Spezifikationen des Originalherstellers entspricht.
+          </p>
+
+          <h2>5. Detaillierte FAQ zur Sicherheitstechnik</h2>
+          <div className="space-y-4">
+            <div>
+              <h3 className="font-bold">Warum reicht ein Standardzylinder oft nicht aus?</h3>
+              <p>Standardzylinder bieten oft nur rudimentären Schutz gegen Manipulationen. Kriminelle können diese mit einfachen Werkzeugen (Lockpicking) oder roher Gewalt in Sekunden überwinden. Ein Hochsicherheitszylinder integriert Bohr- und Ziehschutz sowie komplexe Profile, die illegale Kopien verhindern.</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Wie sicher sind elektronische Türschlösser im Vergleich zu mechanischen?</h3>
+              <p>Beide Systeme haben spezifische Stärken. Elektronische Schlösser bieten Flexibilität (einfaches Sperren verlorener Schlüssel, Protokollierung), erfordern aber Absicherung gegen Cyber-Angriffe und eine verlässliche Stromversorgung. Mechanik ist unabhängig von Strom und Elektronik, aber bei Schlüsselverlust unflexibel. Oft ist ein hybrider Ansatz optimal.</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Was bedeutet VdS-Zertifizierung und warum ist sie wichtig?</h3>
+              <p>Die VdS (Vertrauen durch Sicherheit) ist ein unabhängiges Prüfinstitut. VdS-zertifizierte Komponenten wurden unter realistischen Bedingungen auf ihre Widerstandsfähigkeit gegen Einbruchversuche getestet. Versicherungen verlangen oft VdS-zertifizierte Schließtechnik, um im Schadensfall vollen Versicherungsschutz zu gewähren.</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Wie oft sollte eine Schließanlage gewartet werden?</h3>
+              <p>Für stark frequentierte Türen (z.B. Hauseingänge, Gewerbe) empfehlen wir eine jährliche Inspektion und Wartung mit speziellen, harzfreien Pflegesprays. Graphit oder herkömmliche Öle (wie WD-40) dürfen keinesfalls verwendet werden, da sie verkleben und den Zylinder dauerhaft beschädigen können.</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Was ist der Unterschied zwischen Einbruchhemmung und Einbruchsicherheit?</h3>
+              <p>Absolute &quot;Sicherheit&quot; gibt es nicht, nur Zeit. Einbruchhemmende Komponenten sind nach Widerstandsklassen (RC - Resistance Class) genormt. Eine Tür der Klasse RC2 widersteht einem Gelegenheitstäter mit einfachen Werkzeugen für mindestens 3 Minuten. RC3 bietet Schutz für 5 Minuten gegen Täter mit Hebelwerkzeugen. Unser Ziel ist es, den Aufwand für den Täter so zu maximieren, dass er den Versuch abbricht.</p>
+            </div>
+          </div>
         </div>
       </Section>
 
