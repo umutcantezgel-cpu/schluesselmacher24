@@ -1,0 +1,2 @@
+## Interaktive Module
+- **ServiceBudgetCalculator**: Interaktiver Budgetrechner mit React 19 Server Actions (`useActionState`, `useOptimistic`).

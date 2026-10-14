@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Interaktive Module
+- **ServiceBudgetCalculator**: Interaktiver Budgetrechner mit React 19 Server Actions (`useActionState`, `useOptimistic`).
