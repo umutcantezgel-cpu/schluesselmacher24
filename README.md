@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Interaktive Module
+- **Sicherheitstechnik Investitionsrechner:** Ein in die `sicherheitstechnik` Route integriertes interaktives Modul zur schnellen Richtwert-Ermittlung.
