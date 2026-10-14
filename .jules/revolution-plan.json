@@ -1,0 +1,1487 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-14T07:10:43.077475+00:00",
+  "total_existing_routes": 64,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "app/(payload)/layout.tsx",
+      "target_word_count": 810,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /",
+        "Responsive Sidebar and Header Integration",
+        "Detaillierte Informationen und Services f\u00fcr Startseite"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenu(payload)ServiceWidget",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 811,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr Startseite",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "(site)ServiceWidget",
+        "target_file": "components/calculator/(site)-widget.tsx",
+        "action_file": "actions/(site)-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/",
+      "source_file": "app/(site)/layout.tsx",
+      "target_word_count": 812,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /",
+        "Responsive Sidebar and Header Integration",
+        "Detaillierte Informationen und Services f\u00fcr Startseite"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenu(site)ServiceWidget",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/llms.txt",
+      "source_file": "app/llms.txt/route.ts",
+      "target_word_count": 813,
+      "content_expansion_topics": [
+        "Technical Documentation for API Route /llms.txt",
+        "Payload Validation and Response Structures",
+        "Detaillierte Informationen und Services f\u00fcr llms.txt"
+      ],
+      "interactive_module": {
+        "type": "API_DEBUG_MODULE",
+        "component_name": "ApiDebuggerLlms.txtServiceWidget",
+        "target_file": "components/api-monitors/route-debugger.tsx",
+        "action_file": "actions/route-monitor.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/api/[...slug]",
+      "source_file": "app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 814,
+      "content_expansion_topics": [
+        "Technical Documentation for API Route /api/[...slug]",
+        "Payload Validation and Response Structures",
+        "Detaillierte Informationen und Services f\u00fcr api/[...slug]"
+      ],
+      "interactive_module": {
+        "type": "API_DEBUG_MODULE",
+        "component_name": "ApiDebugger[...slug]ServiceWidget",
+        "target_file": "components/api-monitors/route-debugger.tsx",
+        "action_file": "actions/route-monitor.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 815,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr admin/[[...segments]]",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "[[...segments]]ServiceWidget",
+        "target_file": "components/calculator/[[...segments]]-widget.tsx",
+        "action_file": "actions/[[...segments]]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 816,
+      "content_expansion_topics": [
+        "Fachwissen, Tipps und Ratgeber zur Sicherheit",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "GuideTopicExplorer",
+        "target_file": "components/calculator/ratgeber-widget.tsx",
+        "action_file": "actions/ratgeber-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 817,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr schluessel-nach-vorlage",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageServiceWidget",
+        "target_file": "components/calculator/schluessel-nach-vorlage-widget.tsx",
+        "action_file": "actions/schluessel-nach-vorlage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/layout.tsx",
+      "target_word_count": 818,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /schluessel-nach-vorlage",
+        "Responsive Sidebar and Header Integration",
+        "Detaillierte Informationen und Services f\u00fcr schluessel-nach-vorlage"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenuSchluesselNachVorlageServiceWidget",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 819,
+      "content_expansion_topics": [
+        "Sicherer Checkout und Warenkorb-\u00dcbersicht",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CheckoutTotalEstimator",
+        "target_file": "components/calculator/warenkorb-widget.tsx",
+        "action_file": "actions/warenkorb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 820,
+      "content_expansion_topics": [
+        "Sicherer Checkout und Warenkorb-\u00dcbersicht",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CheckoutTotalEstimator",
+        "target_file": "components/calculator/kasse-widget.tsx",
+        "action_file": "actions/kasse-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 821,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr schluessel-nach-code",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeServiceWidget",
+        "target_file": "components/calculator/schluessel-nach-code-widget.tsx",
+        "action_file": "actions/schluessel-nach-code-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/layout.tsx",
+      "target_word_count": 822,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /schluessel-nach-code",
+        "Responsive Sidebar and Header Integration",
+        "Detaillierte Informationen und Services f\u00fcr schluessel-nach-code"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenuSchluesselNachCodeServiceWidget",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 823,
+      "content_expansion_topics": [
+        "Sicherheitstechnik und Einbruchschutz Analyse",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "SecurityRiskCalculator",
+        "target_file": "components/calculator/sicherheitstechnik-widget.tsx",
+        "action_file": "actions/sicherheitstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/layout.tsx",
+      "target_word_count": 824,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /sicherheitstechnik",
+        "Responsive Sidebar and Header Integration",
+        "Sicherheitstechnik und Einbruchschutz Analyse"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenuSecurityRiskCalculator",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 825,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr tuer-und-schliesstechnik",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikServiceWidget",
+        "target_file": "components/calculator/tuer-und-schliesstechnik-widget.tsx",
+        "action_file": "actions/tuer-und-schliesstechnik-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/layout.tsx",
+      "target_word_count": 826,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /tuer-und-schliesstechnik",
+        "Responsive Sidebar and Header Integration",
+        "Detaillierte Informationen und Services f\u00fcr tuer-und-schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenuTuerUndSchliesstechnikServiceWidget",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 827,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr gleichschliessende-zylinder",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderServiceWidget",
+        "target_file": "components/calculator/gleichschliessende-zylinder-widget.tsx",
+        "action_file": "actions/gleichschliessende-zylinder-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/layout.tsx",
+      "target_word_count": 828,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /gleichschliessende-zylinder",
+        "Responsive Sidebar and Header Integration",
+        "Detaillierte Informationen und Services f\u00fcr gleichschliessende-zylinder"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenuGleichschliessendeZylinderServiceWidget",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 829,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr elektronische-zutrittsloesungen",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenServiceWidget",
+        "target_file": "components/calculator/elektronische-zutrittsloesungen-widget.tsx",
+        "action_file": "actions/elektronische-zutrittsloesungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/layout.tsx",
+      "target_word_count": 830,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /elektronische-zutrittsloesungen",
+        "Responsive Sidebar and Header Integration",
+        "Detaillierte Informationen und Services f\u00fcr elektronische-zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenuElektronischeZutrittsloesungenServiceWidget",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 831,
+      "content_expansion_topics": [
+        "Schlie\u00dfanlagen Planung und Zylinderarten",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "MasterKeySystemConfigurator",
+        "target_file": "components/calculator/schliessanlagen-widget.tsx",
+        "action_file": "actions/schliessanlagen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/layout.tsx",
+      "target_word_count": 832,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /schliessanlagen",
+        "Responsive Sidebar and Header Integration",
+        "Schlie\u00dfanlagen Planung und Zylinderarten"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenuMasterKeySystemConfigurator",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 833,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr service-und-termin",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminServiceWidget",
+        "target_file": "components/calculator/service-und-termin-widget.tsx",
+        "action_file": "actions/service-und-termin-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/layout.tsx",
+      "target_word_count": 834,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /service-und-termin",
+        "Responsive Sidebar and Header Integration",
+        "Detaillierte Informationen und Services f\u00fcr service-und-termin"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenuServiceUndTerminServiceWidget",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches",
+      "source_file": "app/(site)/rechtliches/layout.tsx",
+      "target_word_count": 835,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /rechtliches",
+        "Responsive Sidebar and Header Integration",
+        "Detaillierte Informationen und Services f\u00fcr rechtliches"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenuRechtlichesServiceWidget",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 836,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr artikel",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelServiceWidget",
+        "target_file": "components/calculator/artikel-widget.tsx",
+        "action_file": "actions/artikel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 837,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr standorte",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "StandorteServiceWidget",
+        "target_file": "components/calculator/standorte-widget.tsx",
+        "action_file": "actions/standorte-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 838,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/autoschluessel-widget.tsx",
+        "action_file": "actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/layout.tsx",
+      "target_word_count": 839,
+      "content_expansion_topics": [
+        "Layout Navigation and Accessibility for /autoschluessel",
+        "Responsive Sidebar and Header Integration",
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken"
+      ],
+      "interactive_module": {
+        "type": "LAYOUT_NAVIGATION_MODULE",
+        "component_name": "LayoutMenuCarKeyPricingFilter",
+        "target_file": "components/layout/layout-menu.tsx",
+        "action_file": "actions/layout-nav.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 840,
+      "content_expansion_topics": [
+        "Fachwissen, Tipps und Ratgeber zur Sicherheit",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "GuideTopicExplorer",
+        "target_file": "components/calculator/[slug]-widget.tsx",
+        "action_file": "actions/[slug]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 841,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr schluessel-nach-vorlage/anfrage",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageServiceWidget",
+        "target_file": "components/calculator/anfrage-widget.tsx",
+        "action_file": "actions/anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/api/kunden-upload",
+      "source_file": "app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 842,
+      "content_expansion_topics": [
+        "Technical Documentation for API Route /api/kunden-upload",
+        "Payload Validation and Response Structures",
+        "Detaillierte Informationen und Services f\u00fcr api/kunden-upload"
+      ],
+      "interactive_module": {
+        "type": "API_DEBUG_MODULE",
+        "component_name": "ApiDebuggerKundenUploadServiceWidget",
+        "target_file": "components/api-monitors/route-debugger.tsx",
+        "action_file": "actions/route-monitor.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 843,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr schluessel-nach-code/[slug]",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "[slug]ServiceWidget",
+        "target_file": "components/calculator/[slug]-widget.tsx",
+        "action_file": "actions/[slug]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 844,
+      "content_expansion_topics": [
+        "Sicherheitstechnik und Einbruchschutz Analyse",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "SecurityRiskCalculator",
+        "target_file": "components/calculator/[slug]-widget.tsx",
+        "action_file": "actions/[slug]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 845,
+      "content_expansion_topics": [
+        "Sicherheitstechnik und Einbruchschutz Analyse",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "SecurityRiskCalculator",
+        "target_file": "components/calculator/sicherheitscheck-widget.tsx",
+        "action_file": "actions/sicherheitscheck-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 846,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr tuer-und-schliesstechnik/[slug]",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "[slug]ServiceWidget",
+        "target_file": "components/calculator/[slug]-widget.tsx",
+        "action_file": "actions/[slug]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 847,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr bestellung/[id]",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "[id]ServiceWidget",
+        "target_file": "components/calculator/[id]-widget.tsx",
+        "action_file": "actions/[id]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 848,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr gleichschliessende-zylinder/konfigurator",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorServiceWidget",
+        "target_file": "components/calculator/konfigurator-widget.tsx",
+        "action_file": "actions/konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 849,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr elektronische-zutrittsloesungen/konfigurator",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorServiceWidget",
+        "target_file": "components/calculator/konfigurator-widget.tsx",
+        "action_file": "actions/konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Schlie\u00dfanlagen Planung und Zylinderarten",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "MasterKeySystemConfigurator",
+        "target_file": "components/calculator/konfigurator-widget.tsx",
+        "action_file": "actions/konfigurator-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 851,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr service-und-termin/terminstatus",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "TerminstatusServiceWidget",
+        "target_file": "components/calculator/terminstatus-widget.tsx",
+        "action_file": "actions/terminstatus-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 852,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr service-und-termin/anfrage",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageServiceWidget",
+        "target_file": "components/calculator/anfrage-widget.tsx",
+        "action_file": "actions/anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 853,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr service-und-termin/vor-ort",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "VorOrtServiceWidget",
+        "target_file": "components/calculator/vor-ort-widget.tsx",
+        "action_file": "actions/vor-ort-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 854,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr service-und-termin/kontakt",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "KontaktServiceWidget",
+        "target_file": "components/calculator/kontakt-widget.tsx",
+        "action_file": "actions/kontakt-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 855,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr rechtliches/impressum",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "ImpressumServiceWidget",
+        "target_file": "components/calculator/impressum-widget.tsx",
+        "action_file": "actions/impressum-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 856,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr rechtliches/cookie-einstellungen",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CookieEinstellungenServiceWidget",
+        "target_file": "components/calculator/cookie-einstellungen-widget.tsx",
+        "action_file": "actions/cookie-einstellungen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 857,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr rechtliches/versand-und-zahlung",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "VersandUndZahlungServiceWidget",
+        "target_file": "components/calculator/versand-und-zahlung-widget.tsx",
+        "action_file": "actions/versand-und-zahlung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 858,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr rechtliches/widerruf",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "WiderrufServiceWidget",
+        "target_file": "components/calculator/widerruf-widget.tsx",
+        "action_file": "actions/widerruf-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 859,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr rechtliches/agb",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "AgbServiceWidget",
+        "target_file": "components/calculator/agb-widget.tsx",
+        "action_file": "actions/agb-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 860,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr rechtliches/datenschutz",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "DatenschutzServiceWidget",
+        "target_file": "components/calculator/datenschutz-widget.tsx",
+        "action_file": "actions/datenschutz-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 861,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr artikel/[slug]",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "[slug]ServiceWidget",
+        "target_file": "components/calculator/[slug]-widget.tsx",
+        "action_file": "actions/[slug]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 862,
+      "content_expansion_topics": [
+        "Detaillierte Informationen und Services f\u00fcr standorte/[city]",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "[city]ServiceWidget",
+        "target_file": "components/calculator/[city]-widget.tsx",
+        "action_file": "actions/[city]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 863,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/marken-widget.tsx",
+        "action_file": "actions/marken-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 864,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/funkschluessel-widget.tsx",
+        "action_file": "actions/funkschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 56,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 865,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/programmieren-widget.tsx",
+        "action_file": "actions/programmieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 57,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 866,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/anfrage-widget.tsx",
+        "action_file": "actions/anfrage-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 58,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 867,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/kopieren-widget.tsx",
+        "action_file": "actions/kopieren-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 59,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 868,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/nachmachen-widget.tsx",
+        "action_file": "actions/nachmachen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 60,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 869,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/smart-key-widget.tsx",
+        "action_file": "actions/smart-key-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 61,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 870,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/schluesselbart-fraesen-widget.tsx",
+        "action_file": "actions/schluesselbart-fraesen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 62,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 871,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/fahrzeugoeffnung-widget.tsx",
+        "action_file": "actions/fahrzeugoeffnung-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 63,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 872,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/[make]-widget.tsx",
+        "action_file": "actions/[make]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 64,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 873,
+      "content_expansion_topics": [
+        "Autoschl\u00fcssel Nachmachen und Codierung f\u00fcr verschiedene Fahrzeugmarken",
+        "Kunden-FAQ und spezifische Anwendungsf\u00e4lle",
+        "Vergleichstabellen und Vor-Ort Service Leistungen"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_CALCULATOR_OR_FILTER",
+        "component_name": "CarKeyPricingFilter",
+        "target_file": "components/calculator/[model]-widget.tsx",
+        "action_file": "actions/[model]-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

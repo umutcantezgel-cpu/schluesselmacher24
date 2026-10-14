@@ -1,0 +1,1 @@
+System mapped and audited by JC-AUDITOR-ARCHITECT-v1. See `.jules/revolution-plan.json` for full architectural transformation blueprint.
