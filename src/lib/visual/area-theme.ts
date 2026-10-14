@@ -1,4 +1,5 @@
 import type { AreaKey } from '@/lib/types';
+import { converter } from 'culori';
 
 /**
  * Bereichsfarben — einzige Quelle für die Akzentfarbe je Leistungsbereich.
@@ -115,12 +116,26 @@ export function areaCssVariables(theme: AreaTheme): Record<string, string> {
 /* ---------- Kontrast (WCAG 2.2) ----------------------------------------- */
 
 function parseHsl(value: string): [number, number, number] {
-  const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
+  // Check for OKLCH format (e.g. 0.988 0.002 260)
+  const oklchMatch = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)\s+([\d.]+)$/);
+  if (oklchMatch) {
+    return [Number(oklchMatch[1]), Number(oklchMatch[2]), Number(oklchMatch[3])];
+  }
+
+  const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%?\s+([\d.]+)%?$/);
   if (!match) throw new Error(`Kein HSL-Tripel: "${value}"`);
   return [Number(match[1]), Number(match[2]), Number(match[3])];
 }
 
+const toRgb = converter('rgb');
+
 function hslToRgb([h, s, l]: [number, number, number]): [number, number, number] {
+  // Check if it's already an oklch tuple (l, c, h format from globals.css)
+  if (l > 100) { // OKLCH hue can be > 100, while l is < 1
+    const rgb = toRgb({ mode: 'oklch' as const, l: h, c: s, h: l });
+    return [rgb?.r || 0, rgb?.g || 0, rgb?.b || 0];
+  }
+
   const sat = s / 100;
   const light = l / 100;
   const k = (n: number) => (n + h / 30) % 12;
