@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SicherheitstechnikBudgetCalculator } from '@/components/calculator/sicherheitstechnik-budget-calculator';
+import { Accordion } from '@/components/ui/accordion';
 import {
   ArrowRight,
   BellRing,
@@ -73,7 +75,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -83,6 +92,7 @@ export default async function SicherheitstechnikPage() {
 
   return (
     <>
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
@@ -201,6 +211,111 @@ export default async function SicherheitstechnikPage() {
           })}
         </ul>
       </Section>
+
+
+      {/* 800 Word Content Expansion: Deep Dive in Sicherheitstechnik */}
+      <Section>
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Mechanische vs. Elektronische Sicherheitssysteme: Eine fundamentale Gegenüberstellung"
+          lead="Der Schlüssel zu einer wirksamen Gebäudeabsicherung liegt in der synergetischen Verschmelzung von Mechanik und Elektronik. Doch was unterscheidet diese beiden Disziplinen und wie ergänzen sie sich in der Praxis?"
+        />
+
+        <div className="mt-8 grid gap-12 lg:grid-cols-2">
+          <div className="space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">Die unerschütterliche Basis: Mechanische Sicherheit</h3>
+            <p>
+              Mechanische Sicherheitssysteme bilden das physische Fundament jedes Sicherheitskonzepts. Sie sind die erste und wichtigste Barriere gegen unbefugtes Eindringen. Ein hochwertiger Schließzylinder, massive Sicherheitsbeschläge und robuste Zusatzschlösser leisten aktiven Widerstand gegen Aufbruchsversuche. Die physikalische Kraft, die ein Täter aufwenden muss, gepaart mit dem benötigten Werkzeug und der Zeit, wirkt hochgradig abschreckend.
+            </p>
+            <p>
+              Die primäre Funktion der Mechanik ist es, den Zeitaufwand für einen Einbruch signifikant zu erhöhen. Statistiken belegen, dass die meisten Täter aufgeben, wenn sie nicht innerhalb von wenigen Minuten in ein Gebäude eindringen können. Daher investieren wir bei SCHLÜSSELMACHER24 vorrangig in erstklassige mechanische Komponenten, bevor wir elektronische Systeme implementieren. Zertifizierte Sicherheitstüren, Querriegel und Fensterzusatzsicherungen nach DIN-Normen sind das Rückgrat Ihrer Sicherheit. Sie funktionieren stromunabhängig, wartungsarm und absolut zuverlässig unter allen Bedingungen.
+            </p>
+          </div>
+          <div className="space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">Die intelligente Erweiterung: Elektronische Systeme</h3>
+            <p>
+              Während die Mechanik den Einbruchsversuch physisch aufhält, übernimmt die Elektronik die Erkennung, Dokumentation und Alarmierung. Elektronische Sicherheitstechnik – wie Alarmanlagen, Videoüberwachung und elektronische Zutrittskontrollen – bietet eine aktive Rückmeldung über den Sicherheitsstatus Ihres Objekts. Sie detektiert Bewegungen, Glasbruch oder unbefugte Öffnungen sofort und kann in Echtzeit Sicherheitsdienste oder Sie persönlich informieren.
+            </p>
+            <p>
+              Der wahre Wert elektronischer Systeme liegt in ihrer präventiven und reaktiven Fähigkeit. Sichtbare Kameras und Sirenen schrecken potenzielle Täter bereits im Vorfeld ab. Im Ernstfall ermöglichen vernetzte Systeme eine schnelle Intervention und liefern gerichtsverwertbare Beweismittel. Elektronische Zutrittslösungen erlauben zudem ein flexibles Rechtemanagement: Schlüsselverluste bedeuten keinen teuren Zylindertausch mehr, sondern lediglich das Sperren eines Transponders per Software. Die Kombination aus mechanischem Widerstand und elektronischer Intelligenz schafft ein lückenloses Sicherheitsnetz.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="muted">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Innovation"
+              title="Moderne Alarmanlagen und Videoüberwachung"
+              lead="Technologischer Fortschritt für maximale Transparenz und Kontrolle über Ihr Eigentum."
+            />
+            <div className="mt-6 space-y-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              <p>
+                Heutige Gefahrenmeldeanlagen sind hochkomplexe Netzwerke aus Sensoren, die kontinuierlich den Zustand Ihres Gebäudes überwachen. Die klassische &quot;Alarmanlage&quot; hat sich zu einem intelligenten Gebäude-Monitoring-System entwickelt. Hochauflösende IP-Kameras mit Infrarot-Nachtsicht und KI-gestützter Objekterkennung können heute zwischen Menschen, Tieren und Fahrzeugen unterscheiden. Dies minimiert Fehlalarme drastisch und stellt sicher, dass Sie nur bei echten Bedrohungen benachrichtigt werden.
+              </p>
+              <p>
+                Videoüberwachungssysteme dienen nicht nur der Nachverfolgung von Vorfällen, sondern auch der Prozessoptimierung in gewerblichen Umfeldern. Die DSGVO-konforme Implementierung, bei der Datenschutzbereiche geschwärzt und Speicherdauern automatisiert geregelt werden, ist dabei für uns von höchster Priorität. Unsere Systeme lassen sich nahtlos in bestehende IT-Infrastrukturen integrieren und bieten verschlüsselte Remote-Zugriffe für berechtigte Personen.
+              </p>
+            </div>
+          </div>
+          <div>
+             <SicherheitstechnikBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading
+          eyebrow="Zukunftssicherheit"
+          title="Nahtlose Integration in Smart Home und Building Management Systeme"
+          lead="Sicherheit als integraler Bestandteil moderner Gebäudeautomation."
+        />
+        <div className="mt-8 max-w-4xl space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <p>
+            In der Ära der Digitalisierung darf Sicherheitstechnik keine Insellösung mehr sein. Die Integration in Smart Home-Systeme (für den privaten Bereich) oder Building Management Systeme (BMS, für gewerbliche Immobilien) bietet signifikante Komfort- und Sicherheitsgewinne. Ein vernetztes System ermöglicht komplexe Wenn-Dann-Szenarien: Im Falle eines Brandalarms fahren beispielsweise automatisch die Rollläden hoch, die Fluchtwege werden beleuchtet und die Schließanlagen entriegeln alle relevanten Türen.
+          </p>
+          <p>
+            Umgekehrt führt die Aktivierung der Alarmanlage beim Verlassen des Hauses zur automatischen Abschaltung unnötiger Verbraucher und zur Absenkung der Heiztemperatur. Diese Symbiose aus Sicherheit und Gebäudeautomation erfordert offene Schnittstellen und sichere Protokolle. Wir setzen auf etablierte Standards (wie KNX, IP-basierte REST-APIs), um sicherzustellen, dass Ihre Investition in Sicherheitstechnik zukunftssicher ist und mit den wachsenden Anforderungen Ihres Gebäudes skalieren kann. Cybersicherheit ist dabei ein elementarer Bestandteil unserer Planung – denn ein vernetztes System ist nur so sicher wie sein schwächstes Glied im Netzwerk.
+          </p>
+        </div>
+      </Section>
+
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Fachkompetenz"
+          title="Häufig gestellte Fragen zur Sicherheitstechnik"
+          lead="Detaillierte Antworten auf die wichtigsten Fragen bei der Planung von Sicherheitskonzepten."
+        />
+        <div className="mt-8 mx-auto max-w-3xl">
+          <Accordion
+            items={[
+              {
+                question: 'Reicht eine elektronische Alarmanlage als alleiniger Schutz aus?',
+                answer: 'Nein, eine Alarmanlage kann den Einbruch nicht physisch verhindern, sondern nur melden. Sie ersetzt niemals einen soliden mechanischen Grundschutz. Erst wenn Fenster und Türen durch einbruchhemmende Beschläge, Zusatzschlösser und Pilzkopfverriegelungen mechanisch gesichert sind, entfaltet die elektronische Meldetechnik ihre volle Wirkung, indem sie den Täter meldet, während dieser noch an der Mechanik scheitert.'
+              },
+              {
+                question: 'Wie verhält sich elektronische Sicherheitstechnik bei einem Stromausfall?',
+                answer: 'Professionelle Gefahrenmeldeanlagen verfügen über eine Notstromversorgung mittels Akkumulatoren. Diese überbrücken Stromausfälle je nach Dimensionierung für 12 bis 48 Stunden. Auch die Alarmübertragung via Mobilfunk (GSM/LTE-Modul) funktioniert in dieser Zeit autonom weiter. Ihre Sicherheit bleibt somit auch bei einem totalen Netzausfall vollumfänglich gewährleistet.'
+              },
+              {
+                question: 'Sind Smart-Home-Sicherheitslösungen aus dem Baumarkt ausreichend?',
+                answer: 'Für grundlegende Komfortfunktionen mögen Do-it-yourself-Lösungen genügen. Für einen verlässlichen Einbruchschutz sind sie jedoch oft ungeeignet. Sie verwenden häufig unverschlüsselte Funkprotokolle (Sabotagerisiko durch Jamming), sind nicht nach VdS oder DIN EN 50131 zertifiziert und können im Schadensfall von Versicherungen abgelehnt werden. Eine fachgerechte Projektierung und Installation durch einen zertifizierten Errichter ist unabdingbar.'
+              },
+              {
+                question: 'Was bedeutet die Aufschaltung auf eine Notruf- und Serviceleitstelle (NSL)?',
+                answer: 'Bei einer Aufschaltung wird Ihre Alarmanlage direkt mit einer 24/7 besetzten Sicherheitszentrale verbunden. Löst der Alarm aus, verifizieren die Mitarbeiter den Alarm (z. B. durch Videoüberprüfung oder Rückruf) und leiten gemäß einem vereinbarten Maßnahmenplan sofort Interventionen ein – sei es die Entsendung eines privaten Wachdienstes oder die Alarmierung der Polizei. Dies garantiert eine professionelle Reaktion auch dann, wenn Sie selbst nicht erreichbar sind.'
+              },
+              {
+                question: 'Wie oft muss eine Alarmanlage gewartet werden?',
+                answer: 'Gemäß der DIN VDE 0833 ist eine jährliche Wartung durch eine Elektrofachkraft vorgeschrieben. Bei Anlagen mit Aufschaltung auf die Polizei oder bei VdS-anerkannten Anlagen können die Intervalle kürzer sein. Bei der Wartung werden die Notstromakkus geprüft, Sensoren auf Funktion getestet und Software-Updates aufgespielt, um die Anlage vor Cyberangriffen zu schützen und Fehlalarme zu minimieren.'
+              }
+            ]}
+          />
+        </div>
+      </Section>
+
 
       {/* Recht und Verantwortung */}
       <Section id="recht-und-verantwortung">

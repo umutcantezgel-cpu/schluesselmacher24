@@ -1,0 +1,15 @@
+{
+  "transformation_queue": [
+    {
+      "target_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Mechanische vs. Elektronische Sicherheitssysteme",
+        "Moderne Alarmanlagen und Videoüberwachung",
+        "Integration in Smart Home Systeme"
+      ],
+      "interactive_module": "Sicherheitstechnik-Budgetrechner"
+    }
+  ]
+}
