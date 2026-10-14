@@ -1,0 +1,5 @@
+# LLM Project Context
+
+This is the central context file for LLM integration.
+
+- Added interactive ServiceBudgetCalculator to enhance content engagement in the Sicherheitstechnik section.
