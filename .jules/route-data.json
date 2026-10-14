@@ -1,0 +1,386 @@
+[
+  {
+    "file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+    "url": "(payload)/admin/[[...segments]]/",
+    "wordCount": 100,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(payload)/api/[...slug]/route.ts",
+    "url": "(payload)/api/[...slug]/",
+    "wordCount": 71,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(payload)/layout.tsx",
+    "url": "(payload)/",
+    "wordCount": 99,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/api/kunden-upload/route.ts",
+    "url": "api/kunden-upload/",
+    "wordCount": 705,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/artikel/[slug]/page.tsx",
+    "url": "artikel/[slug]/",
+    "wordCount": 935,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/artikel/page.tsx",
+    "url": "artikel/",
+    "wordCount": 657,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+    "url": "autoschluessel/anfrage/",
+    "wordCount": 519,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+    "url": "autoschluessel/fahrzeugoeffnung/",
+    "wordCount": 1122,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+    "url": "autoschluessel/funkschluessel/",
+    "wordCount": 1092,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+    "url": "autoschluessel/kopieren/",
+    "wordCount": 1134,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/layout.tsx",
+    "url": "autoschluessel/",
+    "wordCount": 37,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+    "url": "autoschluessel/marken/[make]/[model]/",
+    "wordCount": 1224,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+    "url": "autoschluessel/marken/[make]/",
+    "wordCount": 980,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/marken/page.tsx",
+    "url": "autoschluessel/marken/",
+    "wordCount": 719,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+    "url": "autoschluessel/nachmachen/",
+    "wordCount": 1190,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/page.tsx",
+    "url": "autoschluessel/",
+    "wordCount": 2003,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+    "url": "autoschluessel/programmieren/",
+    "wordCount": 1223,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+    "url": "autoschluessel/schluesselbart-fraesen/",
+    "wordCount": 1043,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+    "url": "autoschluessel/smart-key/",
+    "wordCount": 1208,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/bestellung/[id]/page.tsx",
+    "url": "bestellung/[id]/",
+    "wordCount": 1300,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+    "url": "elektronische-zutrittsloesungen/konfigurator/",
+    "wordCount": 383,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/elektronische-zutrittsloesungen/layout.tsx",
+    "url": "elektronische-zutrittsloesungen/",
+    "wordCount": 37,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+    "url": "elektronische-zutrittsloesungen/",
+    "wordCount": 2481,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+    "url": "gleichschliessende-zylinder/konfigurator/",
+    "wordCount": 311,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/gleichschliessende-zylinder/layout.tsx",
+    "url": "gleichschliessende-zylinder/",
+    "wordCount": 37,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+    "url": "gleichschliessende-zylinder/",
+    "wordCount": 2082,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/kasse/page.tsx",
+    "url": "kasse/",
+    "wordCount": 243,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/layout.tsx",
+    "url": "/ (layout)",
+    "wordCount": 259,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/page.tsx",
+    "url": "/",
+    "wordCount": 1131,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+    "url": "ratgeber/[slug]/",
+    "wordCount": 360,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/ratgeber/page.tsx",
+    "url": "ratgeber/",
+    "wordCount": 225,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/rechtliches/agb/page.tsx",
+    "url": "rechtliches/agb/",
+    "wordCount": 417,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+    "url": "rechtliches/cookie-einstellungen/",
+    "wordCount": 229,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+    "url": "rechtliches/datenschutz/",
+    "wordCount": 716,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/rechtliches/impressum/page.tsx",
+    "url": "rechtliches/impressum/",
+    "wordCount": 249,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/rechtliches/layout.tsx",
+    "url": "rechtliches/",
+    "wordCount": 150,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+    "url": "rechtliches/versand-und-zahlung/",
+    "wordCount": 428,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+    "url": "rechtliches/widerruf/",
+    "wordCount": 371,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+    "url": "schliessanlagen/konfigurator/",
+    "wordCount": 369,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/schliessanlagen/layout.tsx",
+    "url": "schliessanlagen/",
+    "wordCount": 37,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/schliessanlagen/page.tsx",
+    "url": "schliessanlagen/",
+    "wordCount": 1874,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+    "url": "schluessel-nach-code/[slug]/",
+    "wordCount": 735,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/schluessel-nach-code/layout.tsx",
+    "url": "schluessel-nach-code/",
+    "wordCount": 37,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/schluessel-nach-code/page.tsx",
+    "url": "schluessel-nach-code/",
+    "wordCount": 498,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+    "url": "schluessel-nach-vorlage/anfrage/",
+    "wordCount": 222,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/schluessel-nach-vorlage/layout.tsx",
+    "url": "schluessel-nach-vorlage/",
+    "wordCount": 37,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+    "url": "schluessel-nach-vorlage/",
+    "wordCount": 1794,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+    "url": "service-und-termin/anfrage/",
+    "wordCount": 152,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+    "url": "service-und-termin/kontakt/",
+    "wordCount": 475,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/service-und-termin/layout.tsx",
+    "url": "service-und-termin/",
+    "wordCount": 37,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/service-und-termin/page.tsx",
+    "url": "service-und-termin/",
+    "wordCount": 1579,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+    "url": "service-und-termin/terminstatus/",
+    "wordCount": 108,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+    "url": "service-und-termin/vor-ort/",
+    "wordCount": 656,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+    "url": "sicherheitstechnik/[slug]/",
+    "wordCount": 645,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/sicherheitstechnik/layout.tsx",
+    "url": "sicherheitstechnik/",
+    "wordCount": 37,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/sicherheitstechnik/page.tsx",
+    "url": "sicherheitstechnik/",
+    "wordCount": 1021,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+    "url": "sicherheitstechnik/sicherheitscheck/",
+    "wordCount": 330,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/standorte/[city]/page.tsx",
+    "url": "standorte/[city]/",
+    "wordCount": 406,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/standorte/page.tsx",
+    "url": "standorte/",
+    "wordCount": 250,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+    "url": "tuer-und-schliesstechnik/[slug]/",
+    "wordCount": 494,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/tuer-und-schliesstechnik/layout.tsx",
+    "url": "tuer-und-schliesstechnik/",
+    "wordCount": 37,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+    "url": "tuer-und-schliesstechnik/",
+    "wordCount": 1785,
+    "isClient": false
+  },
+  {
+    "file": "src/app/(site)/warenkorb/page.tsx",
+    "url": "warenkorb/",
+    "wordCount": 262,
+    "isClient": false
+  },
+  {
+    "file": "src/app/llms.txt/route.ts",
+    "url": "llms.txt/",
+    "wordCount": 146,
+    "isClient": false
+  }
+]

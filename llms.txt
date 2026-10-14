@@ -1,0 +1,4 @@
+# LLMS Knowledge Base
+
+- **Architektur-Ziele**: Alle Routen auf > 800 Wörter, Interaktive Module, Next.js 16 Server Components, React 19 Actions.
+- **Design**: Swiss Modernist, OKLCH Light Mode.
