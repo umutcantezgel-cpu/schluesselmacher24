@@ -1,0 +1,7 @@
+# SCHLÜSSELMACHER24 - KI-Dokumentation
+
+Dieses Projekt ist eine hypermoderne Next.js 16 Webanwendung für Sicherheitstechnik.
+
+## Aktuelle Erweiterungen
+- `app/(site)/sicherheitstechnik/page.tsx`: Umfangreiche Erweiterung um über 800 Wörter zur architektonischen Methodik.
+- `components/calculator/security-budget-calculator.tsx`: Neues interaktives Modul für die Budgetkalkulation.

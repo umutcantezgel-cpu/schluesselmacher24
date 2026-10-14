@@ -1,0 +1,11 @@
+{
+  "timestamp": "2024-10-14T12:00:00Z",
+  "top_ideas": [
+    {
+      "id": "IDEA_014",
+      "target_route": "app/(site)/sicherheitstechnik/page.tsx",
+      "interactive_module": "components/calculator/security-budget-calculator.tsx",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}

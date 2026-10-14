@@ -19,6 +19,8 @@ import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { SecurityBudgetCalculator } from '@/components/calculator/security-budget-calculator';
+
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'sicherheitstechnik';
@@ -73,7 +75,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -83,6 +92,7 @@ export default async function SicherheitstechnikPage() {
 
   return (
     <>
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
@@ -201,6 +211,121 @@ export default async function SicherheitstechnikPage() {
           })}
         </ul>
       </Section>
+
+
+      {/* Architektonische Methodik & Erweiterte Inhalte */}
+      <Section id="architektur-und-methodik">
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Präzision in jedem Schritt: Unsere Sicherheits-Architektur"
+          lead="Wir verstehen Sicherheitstechnik nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Langlebigkeit erfüllen."
+        />
+
+        <div className="mt-8 grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-12">
+            <div className="prose-sm24 max-w-none text-[oklch(0.32_0.02_260)] space-y-6">
+            <p>
+                Die Konzeption und Implementierung moderner Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist.
+            </p>
+            <p>
+                Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
+            </p>
+
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">1. Mechanik vs. Elektronik: Die Kernphilosophie</h3>
+            <p>
+                Eine der wichtigsten Erkenntnisse in der modernen Sicherheitstechnik ist das Zusammenspiel aus physischer Barriere und elektronischer Überwachung. Elektronische Meldesysteme, so fortschrittlich sie auch sein mögen, verhindern keinen Einbruch physisch. Sie registrieren den Vorfall, zeichnen ihn auf und leiten Alarme weiter. Ohne ausreichenden mechanischen Grundschutz haben Täter oft genug Zeit, ihr Vorhaben abzuschließen, bevor Hilfe eintrifft.
+            </p>
+            <p>
+                Daher gilt in unserer Architekturplanung der Grundsatz: <strong>Mechanik hält auf, Elektronik meldet.</strong> Wir beginnen stets mit der Härtung der Gebäudehülle. Hochwertige Schließzylinder, einbruchhemmende Beschläge, massive Schließbleche und zertifizierte Zusatzschlösser bilden das Fundament. Erst auf diesem robusten mechanischen Grundgerüst setzen wir elektronische Systeme auf.
+            </p>
+
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">2. Die Phasen unserer Service-Implementierung</h3>
+            <p>
+                Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
+            </p>
+            <ul className="list-disc pl-5 space-y-2">
+                <li><strong>Initiierung und Bedarfsanalyse:</strong> Wir bewerten Türbeschaffenheiten, Zylindermaßen, bestehende elektronische Anlagen und architektonische Gegebenheiten.</li>
+                <li><strong>Projektierung und Lösungsdesign:</strong> Entwicklung eines fundierten Konzepts unter Berücksichtigung von Schließplänen, Netzwerkinfrastruktur und Brandschutzvorgaben.</li>
+                <li><strong>Präzise Fertigung und Vorkonfiguration:</strong> Vorbereitung aller Komponenten in unserer Fachwerkstatt zur Reduzierung der Ausfallzeiten vor Ort.</li>
+                <li><strong>Fachgerechte Montage und Integration:</strong> Installation durch zertifizierte Techniker gemäß DIN 18252 und VdS-Richtlinien.</li>
+                <li><strong>Dokumentation und Systemübergabe:</strong> Übergabe von Sicherungskarten, Schließplänen, IP-Konfigurationen und Bedienungsprotokollen.</li>
+            </ul>
+
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">3. Technologische Standards und Materialqualität</h3>
+            <p>
+                Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer. Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz sowie patentierte Schlüsselprofile.
+            </p>
+            <p>
+                Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. AES-128) und ausfallsichere Systeme, die auch bei Stromausfall über Notstromakkus eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
+            </p>
+
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">4. Nachhaltigkeit und Lebenszyklus-Management</h3>
+            <p>
+                Sicherheitstechnik ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management. Dies beginnt bei der Planung durch die Wahl skalierbarer Architekturen. Wenn sich Ihre Anforderungen ändern, lassen sich unsere Systeme effizient anpassen. Wir bieten zudem strukturierte Wartungskonzepte an, um Software-Updates und präventive mechanische Wartungen regelmäßig durchzuführen.
+            </p>
+
+
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">5. Vergleichsmatrix: System-Architekturen</h3>
+            <div className="mt-4 overflow-x-auto rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                <table className="w-full text-left text-sm text-[oklch(0.32_0.02_260)]">
+                    <thead className="bg-[oklch(0.968_0.004_260)] text-[oklch(0.16_0.02_260)]">
+                        <tr>
+                            <th className="px-4 py-3 border-b border-[oklch(0.89_0.008_260/0.55)]">System-Typ</th>
+                            <th className="px-4 py-3 border-b border-[oklch(0.89_0.008_260/0.55)]">Vorteile</th>
+                            <th className="px-4 py-3 border-b border-[oklch(0.89_0.008_260/0.55)]">Einsatzbereich</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                            <td className="px-4 py-3 font-semibold">Autarkes Einzelsystem</td>
+                            <td className="px-4 py-3">Unabhängig, keine Netzwerkstruktur nötig, hohe Ausfallsicherheit</td>
+                            <td className="px-4 py-3">Kleine Gewerbeobjekte, isolierte Räume</td>
+                        </tr>
+                        <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                            <td className="px-4 py-3 font-semibold">Vernetzte Funk-Systeme</td>
+                            <td className="px-4 py-3">Schnelle Installation, keine Kabelverlegung, flexibel erweiterbar</td>
+                            <td className="px-4 py-3">Bestehende Wohnimmobilien, temporäre Sicherung</td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-3 font-semibold">Vollintegrierte Bus-Systeme</td>
+                            <td className="px-4 py-3">Zentrale Steuerung, höchste Manipulationssicherheit, VdS-konform</td>
+                            <td className="px-4 py-3">Neubauten, KRITIS, Banken, Industrie</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">6. Häufig gestellte Fragen (FAQ)</h3>
+            <dl className="mt-4 space-y-4">
+                <div className="rounded-lg bg-[oklch(0.968_0.004_260)] p-4 border border-[oklch(0.89_0.008_260/0.55)]">
+                    <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Können bestehende Fenster elektronisch gesichert werden?</dt>
+                    <dd className="mt-2">Ja, über nachrüstbare Funk- oder Magnetkontakte können bestehende Elemente überwacht werden, ohne dass Kabel verlegt werden müssen.</dd>
+                </div>
+                <div className="rounded-lg bg-[oklch(0.968_0.004_260)] p-4 border border-[oklch(0.89_0.008_260/0.55)]">
+                    <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Was passiert bei einem Stromausfall?</dt>
+                    <dd className="mt-2">Professionelle Alarmanlagen verfügen über integrierte Notstromakkus, die den Betrieb je nach Dimensionierung für 12 bis 48 Stunden sicherstellen.</dd>
+                </div>
+                <div className="rounded-lg bg-[oklch(0.968_0.004_260)] p-4 border border-[oklch(0.89_0.008_260/0.55)]">
+                    <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Sind Ihre Anlagen VdS-zertifiziert?</dt>
+                    <dd className="mt-2">Wir verbauen Komponenten mit VdS-Anerkennung. Die Zertifizierung der gesamten Anlage bieten wir nach Anforderung für den gewerblichen Bereich an.</dd>
+                </div>
+                <div className="rounded-lg bg-[oklch(0.968_0.004_260)] p-4 border border-[oklch(0.89_0.008_260/0.55)]">
+                    <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Darf ich eine Außenkamera zur Straße hin ausrichten?</dt>
+                    <dd className="mt-2">Nein. Öffentlicher Grund und Nachbargrundstücke dürfen nicht erfasst werden. Wir planen den Bildausschnitt durch Maskierung oder physische Begrenzung entsprechend.</dd>
+                </div>
+                <div className="rounded-lg bg-[oklch(0.968_0.004_260)] p-4 border border-[oklch(0.89_0.008_260/0.55)]">
+                    <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Wie oft muss eine Alarmanlage gewartet werden?</dt>
+                    <dd className="mt-2">Wir empfehlen eine jährliche Inspektion, bei der Sensoren geprüft und Pufferbatterien turnusmäßig gewechselt werden.</dd>
+                </div>
+            </dl>
+
+            </div>
+
+            <div className="sticky top-24">
+                <SecurityBudgetCalculator />
+            </div>
+        </div>
+      </Section>
+
 
       {/* Recht und Verantwortung */}
       <Section id="recht-und-verantwortung">
