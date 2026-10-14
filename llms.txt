@@ -1,0 +1,1 @@
+This is the llms.txt. Architecture Blueprint updated. Current routes: 64.
