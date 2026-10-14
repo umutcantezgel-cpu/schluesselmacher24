@@ -1,0 +1,6 @@
+# LLM Context for SCHLÜSSELMACHER24
+
+
+
+## Current Blueprint
+Blueprint generated on 2026-10-14T13:11:01+00:00. We are transforming existing routes to include deep 850+ words content and semantic interactive modules. See `.jules/revolution-plan.json`.
