@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Interaktive Module
+- **Service Budget Kalkulator**: Ein interaktiver Schätzer für Schließtechnik-Projekte auf Basis von React 19 Server Actions, integriert auf der service-und-termin Route.

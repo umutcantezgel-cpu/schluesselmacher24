@@ -9,6 +9,7 @@ import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -216,6 +217,37 @@ export default async function ServiceUndTerminPage() {
           <p>
             Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
           </p>
+        <h3 className="text-lg font-semibold text-foreground mt-8">5. Intelligente Schließsysteme im Smart Building Kontext</h3>
+          <p>
+            Mit der zunehmenden Digitalisierung von Gebäuden (Smart Buildings) verändern sich auch die Anforderungen an Schließ- und Sicherheitstechnik radikal. Physische Schlüssel weichen zunehmend digitalen Credentials – vom Smartphone über biometrische Merkmale bis hin zu RFID-Tokens. Wir integrieren diese modernen Technologien nahtlos in bestehende und neue Infrastrukturen. Dabei achten wir besonders auf Interoperabilität und offene Standards (wie OSDP - Open Supervised Device Protocol), um sicherzustellen, dass Ihr Schließsystem auch in Zukunft mit anderen Gebäudemanagement-Systemen kommunizieren kann.
+          </p>
+          <p>
+            Ein zentraler Aspekt intelligenter Schließsysteme ist das dynamische Berechtigungsmanagement. Über Cloud-basierte oder On-Premise Softwarelösungen können Zugriffsrechte in Echtzeit erteilt, entzogen oder zeitlich begrenzt werden. Dies ist besonders vorteilhaft für Unternehmen mit hoher Fluktuation, Co-Working-Spaces oder Einrichtungen mit wechselndem Publikumsverkehr. Die systemseitige Protokollierung von Zutrittsereignissen bietet zudem eine lückenlose Nachvollziehbarkeit, die oft für Compliance- und Revisionszwecke zwingend erforderlich ist.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">6. Mechanische Grundlagen: Der Kern jeder Sicherheitslösung</h3>
+          <p>
+            Trotz aller elektronischen Innovationen bleibt die mechanische Basis das Fundament der Gebäudesicherheit. Selbst das modernste elektronische Zutrittssystem ist wirkungslos, wenn der Schließzylinder oder die Türbeschläge durch einfache mechanische Angriffe überwunden werden können. Daher legen wir bei der Auswahl unserer mechanischen Komponenten höchste Maßstäbe an.
+          </p>
+          <p>
+            Unsere Profilzylinder verfügen über mehrstufige Sicherheitsmechanismen. Dazu gehören Hartmetallstifte im Zylindergehäuse und -kern, die einen effektiven Bohrschutz bieten (VdS-Klassen B, BZ oder höher). Sperrleisten-Systeme und magnetische Codierungen auf dem Schlüssel erschweren die Manipulation durch Picking oder Schlagschlüssel-Methoden erheblich. Zudem arbeiten wir ausschließlich mit Zylindern, deren Schlüsselprofile patentrechtlich geschützt sind, was die illegale Anfertigung von Nachschlüsseln durch unautorisierte Personen rechtlich und technisch unterbindet.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">7. Prävention und Risikominimierung durch Einbruchschutz</h3>
+          <p>
+            Der beste Einbruch ist der, der nicht stattfindet. Unsere präventiven Konzepte zielen darauf ab, den Widerstandswert (Resistance Class - RC) von Türen und Fenstern signifikant zu erhöhen. Bei der Nachrüstung bestehender Elemente (gemäß DIN 18104) setzen wir auf zertifizierte Zusatzschlösser, Panzerriegel und Scharnierseitensicherungen.
+          </p>
+          <p>
+            Das Ziel ist es, den potenziellen Täter durch einen hohen mechanischen Widerstand zur Aufgabe zu zwingen, bevor er ins Gebäude eindringen kann. Oft entscheiden Minuten oder gar Sekunden über den Erfolg oder Misserfolg eines Einbruchversuchs. Durch die Kombination von robuster Mechanik, elektronischer Überwachung (wie Alarmanlagen und Videoüberwachung) und organisatorischen Maßnahmen schaffen wir ein mehrschichtiges Sicherheitsnetz, das Risiken effektiv minimiert.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">8. Spezifische Lösungen für das Gesundheitswesen und sensible Bereiche</h3>
+          <p>
+            Einrichtungen wie Krankenhäuser, Pflegeheime oder Labore stellen einzigartige Anforderungen an die Schließtechnik. Hier geht es nicht nur um Sicherheit, sondern oft auch um den Schutz sensibler Daten, die Kontrolle von Infektionsrisiken (durch antimikrobielle Beschichtungen oder berührungslose Systeme) und die Gewährleistung reibungsloser Arbeitsabläufe in Notfallsituationen.
+          </p>
+          <p>
+            Wir konzipieren für diese Sektoren maßgeschneiderte Lösungen. Dazu gehören beispielsweise elektronische Medikamentenschränke, die nur von autorisiertem Personal geöffnet werden können, oder komplexe Schließhierarchien, die sicherstellen, dass Ärzte, Pflegepersonal und technischer Dienst nur Zugang zu den für sie relevanten Bereichen haben. Bei der Planung berücksichtigen wir selbstverständlich auch die strengen hygienischen und regulatorischen Vorgaben, die in diesen Umgebungen gelten.
+          </p>
         </div>
       </Section>
 
@@ -225,11 +257,16 @@ export default async function ServiceUndTerminPage() {
           title="Womit Sie bei einem Serviceeinsatz rechnen können"
           lead="Für häufige Leistungen vor Ort erhalten Sie hier eine erste Orientierung. Den verbindlichen Preis nennen wir nach der Prüfung Ihrer Anfrage."
         />
-        <div className="mt-8 max-w-3xl">
-          <ServiceEinsatzRechner
-            werte={richtwerte.serviceEinsatz}
-            anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
-          />
+        <div className="mt-8 max-w-3xl grid gap-8 md:grid-cols-2">
+          <div>
+            <ServiceEinsatzRechner
+              werte={richtwerte.serviceEinsatz}
+              anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
+            />
+          </div>
+          <div>
+            <ServiceBudgetCalculator />
+          </div>
         </div>
       </Section>
 

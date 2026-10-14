@@ -1,0 +1,14 @@
+{
+  "matrix_version": "1.0",
+  "created_at": "2026-10-14T20:01:00Z",
+  "ideas": [
+    {
+      "id": "IDEA_014",
+      "status": "COMPLETED_BY_BUILDER",
+      "route": "app/(site)/service-und-termin/page.tsx",
+      "word_count_target": 850,
+      "module_name": "ServiceBudgetCalculator",
+      "design": "Swiss Light Mode OKLCH"
+    }
+  ]
+}

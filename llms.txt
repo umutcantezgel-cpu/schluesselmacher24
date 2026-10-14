@@ -1,0 +1,1 @@
+- **Service Budget Kalkulator**: Ein interaktiver Schätzer für Schließtechnik-Projekte (app/(site)/service-und-termin/page.tsx) mit Next.js 16 Server Actions.
