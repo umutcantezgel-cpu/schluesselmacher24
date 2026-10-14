@@ -21,6 +21,9 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
+
+
 const ROUTE = 'sicherheitstechnik';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -73,7 +76,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ slug?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -82,7 +92,7 @@ export default async function SicherheitstechnikPage() {
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
@@ -157,6 +167,137 @@ export default async function SicherheitstechnikPage() {
                 </ButtonLink>
               </div>
             </div>
+          </div>
+        </div>
+      </Section>
+
+
+
+      {/* Fachlicher Tiefen-Content */}
+      <Section tight>
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Ganzheitliche Sicherheitskonzepte für höchste Ansprüche"
+          lead="Unsere Methodik beruht auf einem mehrschichtigen Sicherheitsmodell, das präventive Mechanik mit reaktiver Sensorik und intelligenter Steuerung verbindet."
+        />
+        <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:gap-12 text-[oklch(0.32_0.02_260)] leading-relaxed text-[15px]">
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Prävention durch Mechanik</h3>
+            <p>
+              Der Kern eines jeden effektiven Sicherheitskonzepts ist die mechanische Grundsicherung. Ohne widerstandsfähige
+              Türen, Fenster und Schließsysteme ist selbst die modernste Überwachungstechnik wirkungslos. Hochwertige Zylinder,
+              stabile Schutzbeschläge und massive Schließbleche bilden die physische Barriere, die potenzielle Eindringlinge
+              aufhält. Wir setzen auf VdS-anerkannte Komponenten, die nicht nur durch ihre Materialgüte überzeugen, sondern
+              auch durch präzise Verarbeitung und Manipulationsschutz.
+            </p>
+            <p>
+              Unsere Experten analysieren die Schwachstellen Ihrer Gebäudehülle und entwickeln maßgeschneiderte Lösungen.
+              Dabei berücksichtigen wir sowohl den Widerstandszeitwert (Resistance Time) als auch die architektonischen
+              Gegebenheiten. Ein durchdachtes mechanisches Konzept zwingt Täter zu mehr Zeitaufwand und verursacht Lärm,
+              was das Risiko der Entdeckung signifikant erhöht und somit eine starke abschreckende Wirkung entfaltet.
+            </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] pt-4">Reaktion durch elektronische Sensorik</h3>
+            <p>
+              Ergänzend zur mechanischen Absicherung implementieren wir fortschrittliche elektronische Meldesysteme.
+              Diese Systeme fungieren als das Nervensystem Ihres Sicherheitskonzepts. Sie detektieren unbefugte
+              Eindringversuche frühzeitig, oft bevor die mechanische Barriere überwunden ist. Glasbruchmelder,
+              Magnetkontakte und Infrarot-Bewegungsmelder bilden ein lückenloses Netz, das jede Anomalie registriert
+              und an die zentrale Steuerungseinheit meldet.
+            </p>
+          </div>
+          <div className="space-y-4">
+            <p>
+              Die Sensibilität dieser Systeme passen wir präzise an Ihr Nutzungsprofil an, um Falschalarme zu minimieren
+              und gleichzeitig höchste Detektionssicherheit zu gewährleisten. Durch die Integration moderner Bus-Systeme
+              und verschlüsselter Funktechnologien lassen sich die Sensoren unauffällig in die bestehende Infrastruktur
+              integrieren, ohne die Ästhetik der Räumlichkeiten zu beeinträchtigen.
+            </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] pt-4">Intelligente Steuerung und Alarmierung</h3>
+            <p>
+              Die gesammelten Informationen der Sensoren laufen in einer intelligenten Alarmzentrale zusammen. Diese
+              analysiert die Daten in Echtzeit und leitet bei Bedarf die vordefinierten Maßnahmen ein. Ob lokale
+              optisch-akustische Alarmierung, stille Benachrichtigung an einen Wachdienst oder Push-Nachrichten auf
+              Ihr Smartphone – die Reaktionskette wird individuell auf Ihre Bedürfnisse abgestimmt.
+            </p>
+            <p>
+              Wir integrieren die Sicherheitstechnik nahtlos in bestehende Gebäudeautomationssysteme. So lassen sich
+              Synergien nutzen, beispielsweise durch die Kopplung von Zutrittskontrollsystemen mit der Beleuchtungssteuerung
+              oder der Videoüberwachung. Das Ergebnis ist ein kohärentes, hochverfügbares Sicherheitssystem, das sich intuitiv
+              bedienen lässt und Ihnen zu jeder Zeit die volle Kontrolle und Transparenz über den Sicherheitsstatus Ihres
+              Objekts bietet.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="muted">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Kalkulation"
+              title="Transparente Kostenplanung für Ihr Sicherheitsprojekt"
+              lead="Nutzen Sie unseren interaktiven Kalkulator, um einen ersten Richtwert für Ihr Projekt zu erhalten. Die genaue Konfiguration erfolgt nach einem Vor-Ort-Termin."
+            />
+            <div className="mt-8 prose prose-sm text-foreground-muted">
+              <p>
+                Die Investition in Sicherheitstechnik ist eine Investition in den Schutz von Werten und Menschenleben.
+                Die Kostenstruktur setzt sich dabei aus verschiedenen Komponenten zusammen: der Hardware, der fachgerechten
+                Installation sowie der sorgfältigen Konfiguration und Einweisung.
+              </p>
+              <p>
+                Unser Ansatz basiert auf absoluter Transparenz. Wir vermeiden versteckte Kosten und setzen auf
+                qualitativ hochwertige, langlebige Systeme, die sich durch geringe Wartungskosten und hohe
+                Zuverlässigkeit auszeichnen. Der Kalkulator auf der rechten Seite bietet Ihnen eine schnelle
+                Einschätzung basierend auf dem Umfang Ihres Projekts.
+              </p>
+              <ul className="mt-4 space-y-2 list-disc pl-5">
+                <li><strong className="text-foreground">Hardware:</strong> VdS-zertifizierte Komponenten namhafter Hersteller.</li>
+                <li><strong className="text-foreground">Installation:</strong> Fachgerechte Montage nach DIN-Normen durch zertifizierte Techniker.</li>
+                <li><strong className="text-foreground">Konfiguration:</strong> Individuelle Anpassung der Software und detaillierte Einweisung.</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading
+          eyebrow="FAQ"
+          title="Häufig gestellte Fragen zur Sicherheitstechnik"
+        />
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-surface p-6">
+            <h4 className="text-lg font-bold text-foreground mb-2">Wie oft muss eine Alarmanlage gewartet werden?</h4>
+            <p className="text-[14px] leading-relaxed text-foreground-muted">
+              Wir empfehlen eine jährliche Wartung durch unsere zertifizierten Techniker. Bei gewerblich genutzten oder VdS-zertifizierten Anlagen ist dies oft sogar vorgeschrieben. Die Wartung umfasst die Prüfung aller Sensoren, den Austausch von Batterien und die Überprüfung der Signalübertragung, um eine 100%ige Funktionsbereitschaft sicherzustellen.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-surface p-6">
+            <h4 className="text-lg font-bold text-foreground mb-2">Können bestehende Systeme nachgerüstet werden?</h4>
+            <p className="text-[14px] leading-relaxed text-foreground-muted">
+              Ja, in den meisten Fällen ist eine Nachrüstung problemlos möglich. Wir analysieren Ihr bestehendes System und erarbeiten ein Konzept, wie wir moderne Komponenten wie Videoüberwachung oder smarte Zutrittskontrollen integrieren können, ohne dass eine komplette Neuinstallation erforderlich ist.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-surface p-6">
+            <h4 className="text-lg font-bold text-foreground mb-2">Was passiert bei einem Stromausfall?</h4>
+            <p className="text-[14px] leading-relaxed text-foreground-muted">
+              Unsere professionellen Sicherheitssysteme sind mit leistungsstarken Notstromakkus ausgestattet. Diese gewährleisten den reibungslosen Betrieb der Anlage für mindestens 12 bis 24 Stunden, abhängig von der Anlagengröße. Sobald der Strom ausfällt, erhalten Sie zudem sofort eine Benachrichtigung.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-surface p-6">
+            <h4 className="text-lg font-bold text-foreground mb-2">Sind drahtlose Funksysteme sicher?</h4>
+            <p className="text-[14px] leading-relaxed text-foreground-muted">
+              Moderne Funk-Sicherheitssysteme nutzen verschlüsselte Mehrfrequenzverfahren, die extrem resistent gegen Störungen und Manipulationsversuche (sog. Jamming) sind. Sie bieten eine sehr hohe Sicherheit und eignen sich besonders für die Nachrüstung, da keine aufwendigen Kabelverlegungen nötig sind.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-surface p-6">
+            <h4 className="text-lg font-bold text-foreground mb-2">Werden Kameras bei Dunkelheit noch scharfe Bilder liefern?</h4>
+            <p className="text-[14px] leading-relaxed text-foreground-muted">
+              Wir verbauen modernste Überwachungskameras mit leistungsstarken Infrarot-Strahlern und Restlichtverstärkern. Diese Technologien garantieren selbst bei völliger Dunkelheit hochauflösende, detailreiche Bilder. Intelligente Algorithmen sorgen zudem dafür, dass Fehlalarme durch Tiere oder Witterungseinflüsse minimiert werden.
+            </p>
           </div>
         </div>
       </Section>
@@ -318,6 +459,6 @@ export default async function SicherheitstechnikPage() {
           </ul>
         </Section>
       )}
-    </>
+    </main>
   );
 }
