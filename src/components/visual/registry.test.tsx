@@ -22,6 +22,7 @@ const NAMEN = [
   'zutritt-signal',
   'profilschnitt',
   'tuer-schutz',
+  'stiftzuhaltung',
 ];
 
 const GENERATOR_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'generators');

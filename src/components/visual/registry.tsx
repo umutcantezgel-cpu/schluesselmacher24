@@ -6,6 +6,7 @@ import { CodeFundstelleGrafik } from './generators/code-fundstelle';
 import { ProfilschnittGrafik } from './generators/profilschnitt';
 import { SchliessplanGrafik } from './generators/schliessplan';
 import { SchluesselGrafik } from './generators/schluessel';
+import { StiftzuhaltungGrafik } from './generators/stiftzuhaltung';
 import { TuerSchutzGrafik } from './generators/tuer-schutz';
 import { ZutrittSignalGrafik } from './generators/zutritt-signal';
 import { ZylinderMassGrafik } from './generators/zylinder-mass';
@@ -35,6 +36,7 @@ const REGISTRY: Record<string, VisualComponent> = {
   profilschnitt: ProfilschnittGrafik,
   schliessplan: SchliessplanGrafik,
   schluessel: SchluesselGrafik,
+  stiftzuhaltung: StiftzuhaltungGrafik,
   'tuer-schutz': TuerSchutzGrafik,
   'zutritt-signal': ZutrittSignalGrafik,
   'zylinder-mass': ZylinderMassGrafik,
