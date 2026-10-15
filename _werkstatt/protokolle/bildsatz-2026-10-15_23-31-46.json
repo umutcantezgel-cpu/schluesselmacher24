@@ -1,0 +1,853 @@
+{
+  "skript": "bildsatz",
+  "zeit": "2026-10-15T21:31:46.251Z",
+  "argumente": {
+    "_": [],
+    "ziel": "_werkstatt/bilder/e0"
+  },
+  "max": 15,
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "geraet": "mobil",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 10,
+      "seitenausschnitte": 10,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H01-start__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H01-start__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H01-start__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H01-start__mobil__03.jpg",
+        "_werkstatt/bilder/e0/H01-start__mobil__04.jpg",
+        "_werkstatt/bilder/e0/H01-start__mobil__05.jpg",
+        "_werkstatt/bilder/e0/H01-start__mobil__06.jpg",
+        "_werkstatt/bilder/e0/H01-start__mobil__07.jpg",
+        "_werkstatt/bilder/e0/H01-start__mobil__08.jpg",
+        "_werkstatt/bilder/e0/H01-start__mobil__09.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "tablet",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H01-start__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H01-start__tablet__01.jpg",
+        "_werkstatt/bilder/e0/H01-start__tablet__02.jpg",
+        "_werkstatt/bilder/e0/H01-start__tablet__03.jpg",
+        "_werkstatt/bilder/e0/H01-start__tablet__04.jpg",
+        "_werkstatt/bilder/e0/H01-start__tablet__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "desktop",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H01-start__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H01-start__desktop__01.jpg",
+        "_werkstatt/bilder/e0/H01-start__desktop__02.jpg",
+        "_werkstatt/bilder/e0/H01-start__desktop__03.jpg",
+        "_werkstatt/bilder/e0/H01-start__desktop__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "mobil",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 12,
+      "seitenausschnitte": 12,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__03.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__04.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__05.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__06.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__07.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__08.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__09.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__10.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__mobil__11.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "tablet",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H02-autoschluessel__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__tablet__01.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__tablet__02.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__tablet__03.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__tablet__04.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__tablet__05.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__tablet__06.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__tablet__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "desktop",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H02-autoschluessel__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__desktop__01.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__desktop__02.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__desktop__03.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__desktop__04.jpg",
+        "_werkstatt/bilder/e0/H02-autoschluessel__desktop__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "mobil",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H03-modell-golf__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__mobil__03.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__mobil__04.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__mobil__05.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__mobil__06.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__mobil__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "tablet",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H03-modell-golf__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__tablet__01.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__tablet__02.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__tablet__03.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__tablet__04.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__tablet__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "desktop",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H03-modell-golf__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__desktop__01.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__desktop__02.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__desktop__03.jpg",
+        "_werkstatt/bilder/e0/H03-modell-golf__desktop__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-assistent",
+      "geraet": "mobil",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H04-assistent__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H04-assistent__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H04-assistent__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H04-assistent__mobil__03.jpg",
+        "_werkstatt/bilder/e0/H04-assistent__mobil__04.jpg",
+        "_werkstatt/bilder/e0/H04-assistent__mobil__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-assistent",
+      "geraet": "tablet",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H04-assistent__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H04-assistent__tablet__01.jpg",
+        "_werkstatt/bilder/e0/H04-assistent__tablet__02.jpg",
+        "_werkstatt/bilder/e0/H04-assistent__tablet__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-assistent",
+      "geraet": "desktop",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H04-assistent__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H04-assistent__desktop__01.jpg",
+        "_werkstatt/bilder/e0/H04-assistent__desktop__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code-shop",
+      "geraet": "mobil",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 41,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__03.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__04.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__05.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__06.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__07.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__08.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__09.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__10.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__11.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__12.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__13.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__mobil__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code-shop",
+      "geraet": "tablet",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 18,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__01.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__02.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__03.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__04.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__05.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__06.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__07.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__08.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__09.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__10.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__11.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__12.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__13.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__tablet__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code-shop",
+      "geraet": "desktop",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 15,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__01.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__02.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__03.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__04.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__05.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__06.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__07.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__08.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__09.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__10.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__11.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__12.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__13.jpg",
+        "_werkstatt/bilder/e0/H05-code-shop__desktop__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "mobil",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H06-code-produkt__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__mobil__03.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__mobil__04.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__mobil__05.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__mobil__06.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__mobil__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "tablet",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H06-code-produkt__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__tablet__01.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__tablet__02.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__tablet__03.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__tablet__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "desktop",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H06-code-produkt__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__desktop__01.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__desktop__02.jpg",
+        "_werkstatt/bilder/e0/H06-code-produkt__desktop__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-zylinder-konfigurator",
+      "geraet": "mobil",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 7,
+      "seitenausschnitte": 7,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__mobil__03.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__mobil__04.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__mobil__05.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__mobil__06.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-zylinder-konfigurator",
+      "geraet": "tablet",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__tablet__01.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__tablet__02.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__tablet__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-zylinder-konfigurator",
+      "geraet": "desktop",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__desktop__01.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__desktop__02.jpg",
+        "_werkstatt/bilder/e0/H07-zylinder-konfigurator__desktop__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-schliessanlagen",
+      "geraet": "mobil",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 16,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 27,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.mt-12 > div.mt-5 > div.table-scroll > table.w-full"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.mt-5 > div.table-scroll > table.w-full > thead"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.table-scroll > table.w-full > thead > tr.border-b"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "table.w-full > thead > tr.border-b > th.px-4"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "table.w-full > thead > tr.border-b > th.px-4"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "table.w-full > thead > tr.border-b > th.px-4"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.mt-5 > div.table-scroll > table.w-full > tbody.divide-y"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.table-scroll > table.w-full > tbody.divide-y > tr.align-top"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "table.w-full > tbody.divide-y > tr.align-top > td.px-4"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "table.w-full > tbody.divide-y > tr.align-top > td.px-4"
+        }
+      ],
+      "befundText": "27: über den rechten Rand div.mt-12 > div.mt-5 > div.table-scroll > table.w-full; über den rechten Rand div.mt-5 > div.table-scroll > table.w-full > thead; über den rechten Rand div.table-scroll > table.w-full > thead > tr.border-b",
+      "dateien": [
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__03.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__04.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__05.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__06.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__07.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__08.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__09.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__10.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__11.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__12.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__13.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__mobil__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-schliessanlagen",
+      "geraet": "tablet",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 12,
+      "seitenausschnitte": 12,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__01.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__02.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__03.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__04.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__05.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__06.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__07.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__08.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__09.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__10.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__tablet__11.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-schliessanlagen",
+      "geraet": "desktop",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H08-schliessanlagen__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__desktop__01.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__desktop__02.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__desktop__03.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__desktop__04.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__desktop__05.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__desktop__06.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__desktop__07.jpg",
+        "_werkstatt/bilder/e0/H08-schliessanlagen__desktop__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-tuertechnik",
+      "geraet": "mobil",
+      "pfad": "/tuer-und-schliesstechnik",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 16,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "section.section-tight > div.shell > div.rounded-3xl > div.absolute"
+        }
+      ],
+      "befundText": "1: über den rechten Rand section.section-tight > div.shell > div.rounded-3xl > div.absolute",
+      "dateien": [
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__03.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__04.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__05.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__06.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__07.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__08.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__09.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__10.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__11.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__12.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__13.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__mobil__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-tuertechnik",
+      "geraet": "tablet",
+      "pfad": "/tuer-und-schliesstechnik",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "section.section-tight > div.shell > div.rounded-3xl > div.absolute"
+        }
+      ],
+      "befundText": "1: über den rechten Rand section.section-tight > div.shell > div.rounded-3xl > div.absolute",
+      "dateien": [
+        "_werkstatt/bilder/e0/H09-tuertechnik__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__tablet__01.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__tablet__02.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__tablet__03.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__tablet__04.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__tablet__05.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__tablet__06.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__tablet__07.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__tablet__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-tuertechnik",
+      "geraet": "desktop",
+      "pfad": "/tuer-und-schliesstechnik",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H09-tuertechnik__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__desktop__01.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__desktop__02.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__desktop__03.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__desktop__04.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__desktop__05.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__desktop__06.jpg",
+        "_werkstatt/bilder/e0/H09-tuertechnik__desktop__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-warenkorb",
+      "geraet": "mobil",
+      "pfad": "/warenkorb",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H10-warenkorb__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H10-warenkorb__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H10-warenkorb__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H10-warenkorb__mobil__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-warenkorb",
+      "geraet": "tablet",
+      "pfad": "/warenkorb",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H10-warenkorb__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H10-warenkorb__tablet__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-warenkorb",
+      "geraet": "desktop",
+      "pfad": "/warenkorb",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H10-warenkorb__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H10-warenkorb__desktop__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "mobil",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H11-kasse__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H11-kasse__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H11-kasse__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H11-kasse__mobil__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "tablet",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H11-kasse__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H11-kasse__tablet__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "desktop",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H11-kasse__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H11-kasse__desktop__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-ratgeber",
+      "geraet": "mobil",
+      "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H12-ratgeber__mobil__00.jpg",
+        "_werkstatt/bilder/e0/H12-ratgeber__mobil__01.jpg",
+        "_werkstatt/bilder/e0/H12-ratgeber__mobil__02.jpg",
+        "_werkstatt/bilder/e0/H12-ratgeber__mobil__03.jpg",
+        "_werkstatt/bilder/e0/H12-ratgeber__mobil__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-ratgeber",
+      "geraet": "tablet",
+      "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H12-ratgeber__tablet__00.jpg",
+        "_werkstatt/bilder/e0/H12-ratgeber__tablet__01.jpg",
+        "_werkstatt/bilder/e0/H12-ratgeber__tablet__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-ratgeber",
+      "geraet": "desktop",
+      "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "_werkstatt/bilder/e0/H12-ratgeber__desktop__00.jpg",
+        "_werkstatt/bilder/e0/H12-ratgeber__desktop__01.jpg",
+        "_werkstatt/bilder/e0/H12-ratgeber__desktop__02.jpg"
+      ]
+    }
+  ]
+}
