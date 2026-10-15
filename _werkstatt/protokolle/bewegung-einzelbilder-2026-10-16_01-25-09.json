@@ -1,0 +1,50 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-15T23:25:09.535Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/"
+    ],
+    "selektor": "[data-fraesbahn]",
+    "dauer": "1400",
+    "geraet": "mobil",
+    "ziel": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz/b01-fraesbahn-mobil"
+  },
+  "pfad": "/",
+  "selektor": "[data-fraesbahn]",
+  "dauer": 1400,
+  "geraet": "mobil",
+  "bilder": [
+    {
+      "k": 0,
+      "soll": 0,
+      "ist": 0,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz/b01-fraesbahn-mobil/start__mobil__data-fraesbahn__0.jpg"
+    },
+    {
+      "k": 1,
+      "soll": 350,
+      "ist": 350,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz/b01-fraesbahn-mobil/start__mobil__data-fraesbahn__1.jpg"
+    },
+    {
+      "k": 2,
+      "soll": 700,
+      "ist": 701,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz/b01-fraesbahn-mobil/start__mobil__data-fraesbahn__2.jpg"
+    },
+    {
+      "k": 3,
+      "soll": 1050,
+      "ist": 1050,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz/b01-fraesbahn-mobil/start__mobil__data-fraesbahn__3.jpg"
+    },
+    {
+      "k": 4,
+      "soll": 1400,
+      "ist": 1401,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz/b01-fraesbahn-mobil/start__mobil__data-fraesbahn__4.jpg"
+    }
+  ]
+}

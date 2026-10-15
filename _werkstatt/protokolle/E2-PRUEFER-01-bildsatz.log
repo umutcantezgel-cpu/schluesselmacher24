@@ -1,0 +1,41 @@
+| Ansicht | Gerät | Ausschnitte | Überlauf | Befunde |
+|---|---|---|---|---|
+| H01-start | mobil | 11 von 11 | nein | 4: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40 |
+| H01-start | tablet | 7 von 7 | nein | 3: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40; über den rechten Rand div.contents > div.order-2 > svg.block > path.stroke-area-muted40 |
+| H01-start | desktop | 7 von 7 | nein | 2: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40 |
+| H02-autoschluessel | mobil | 12 von 12 | nein | 1: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40 |
+| H02-autoschluessel | tablet | 7 von 7 | nein | 1: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40 |
+| H02-autoschluessel | desktop | 7 von 7 | nein | 1: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40 |
+| H03-modell-golf | mobil | 8 von 8 | nein | 1: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40 |
+| H03-modell-golf | tablet | 5 von 5 | nein | 1: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40 |
+| H03-modell-golf | desktop | 5 von 5 | nein | 1: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40 |
+| H04-assistent | mobil | 6 von 6 | nein | – |
+| H04-assistent | tablet | 3 von 3 | nein | – |
+| H04-assistent | desktop | 4 von 4 | nein | – |
+| H05-code-shop | mobil | 15 von 41 (gekappt) | nein | – |
+| H05-code-shop | tablet | 15 von 18 (gekappt) | nein | – |
+| H05-code-shop | desktop | 15 von 15 | nein | – |
+| H06-code-produkt | mobil | 8 von 8 | nein | 1: über den rechten Rand figure.m-0 > div.relative > svg.block > path.stroke-area-muted40 |
+| H06-code-produkt | tablet | 5 von 5 | nein | – |
+| H06-code-produkt | desktop | 4 von 4 | nein | – |
+| H07-zylinder-konfigurator | mobil | 7 von 7 | nein | 1: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40 |
+| H07-zylinder-konfigurator | tablet | 4 von 4 | nein | 1: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40 |
+| H07-zylinder-konfigurator | desktop | 4 von 4 | nein | – |
+| H08-schliessanlagen | mobil | 15 von 16 (gekappt) | nein | 33: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.px-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.px-5 > div.relative > svg.block > path.stroke-area-muted40 |
+| H08-schliessanlagen | tablet | 12 von 12 | nein | 6: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.px-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.px-5 > div.relative > svg.block > path.stroke-area-muted40 |
+| H08-schliessanlagen | desktop | 9 von 9 | nein | 3: über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.px-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.px-5 > div.relative > svg.block > path.stroke-area-muted40 |
+| H09-tuertechnik | mobil | 15 von 17 (gekappt) | nein | 2: über den rechten Rand div.space-y-8 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand section.section-tight > div.shell > div.rounded-3xl > div.absolute |
+| H09-tuertechnik | tablet | 9 von 9 | nein | 2: über den rechten Rand div.space-y-8 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand section.section-tight > div.shell > div.rounded-3xl > div.absolute |
+| H09-tuertechnik | desktop | 8 von 8 | nein | 1: über den rechten Rand div.space-y-8 > div.relative > svg.block > path.stroke-area-muted40 |
+| H10-warenkorb | mobil | 4 von 4 | nein | – |
+| H10-warenkorb | tablet | 2 von 2 | nein | – |
+| H10-warenkorb | desktop | 2 von 2 | nein | – |
+| H11-kasse | mobil | 4 von 4 | nein | – |
+| H11-kasse | tablet | 2 von 2 | nein | – |
+| H11-kasse | desktop | 2 von 2 | nein | – |
+| H12-ratgeber | mobil | 5 von 5 | nein | 1: über den rechten Rand article.min-w-0 > div.relative > svg.block > path.stroke-area-muted40 |
+| H12-ratgeber | tablet | 3 von 3 | nein | 1: über den rechten Rand article.min-w-0 > div.relative > svg.block > path.stroke-area-muted40 |
+| H12-ratgeber | desktop | 3 von 3 | nein | – |
+
+Bilder: 254 in /root/sm24-bilder/E2-bildsatz
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/bildsatz-2026-10-16_01-23-32.json
