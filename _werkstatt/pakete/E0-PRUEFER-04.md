@@ -22,6 +22,7 @@ Aufbau wie die übrigen Skripte in `_werkstatt/werkzeuge` (lies `lib.mjs`, `bild
 - Keine echten Sendungen: Prüfe im Bericht, dass die Attrappen-Liste das Absenden enthält.
 
 ## Schritte
+0. **Messfenster beachten:** Solange `/tmp/sm24-messfenster.lock` existiert, misst ein anderer Prüfer die Ausgangswerte. Starte dann **keine** Browserläufe. Lies Quelltexte und schreibe das Skript; prüfe alle 2 Minuten, ob die Sperre weg ist (höchstens 40 Minuten warten, sonst OFFENE FRAGE).
 1. Lies `_werkstatt/LAGEBILD.md` (Funktionsliste), `_werkstatt/werkzeuge/lib.mjs` und für jede Funktion die zugehörige Seite im Quelltext. So findest du die echten Beschriftungen von Knöpfen und Feldern und die Pflichtfelder. Für F-04 brauchst du die 13 Schritte in `src/app/(site)/autoschluessel/anfrage/assistent.tsx`, für F-02 die Pflichtfelder in `src/app/(site)/kasse/kasse-formular.tsx`.
 2. Implementiere F-01 bis F-14 genau so, wie die Spalte „Prüfschritt“ es verlangt:
    - F-01: auf `/schluessel-nach-code/ms-01` einen gültigen Code eingeben (Format aus `content/code-lines.json`, Feld für das Codemuster, zum Beispiel `codePattern`), Menge 2 wählen und in den Warenkorb legen. Auf `/warenkorb` stimmen Eintrag und Summe. Danach Menge ändern, Versandart wählen, Eintrag entfernen; „leer“ muss erscheinen.

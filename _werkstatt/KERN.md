@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.0
+# KERN · SCHLÜSSELMACHER24 · Version 1.1
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -53,7 +53,14 @@ SCHLÜSSELMACHER24 ist Website und Shop eines Fachbetriebs für Autoschlüssel, 
   - Keine Sammeldateien (`index.ts`) in `components/visual`.
   - Generatoren deterministisch und mit Test.
   - Tests liegen neben der Quelle (`*.test.ts(x)`, `renderToStaticMarkup`).
-- **Next-16-Besonderheiten:** `params` und `searchParams` sind Promises. Es gibt keine `proxy.ts` und keine experimentellen Flags. Details zu ViewTransition, Fehlerseiten und Schriften: K-004a (wird nach E0-KUNDSCHAFTER-06 ergänzt).
+- **Next-16-Besonderheiten:** `params` und `searchParams` sind Promises. Es gibt keine `proxy.ts` und keine experimentellen Flags.
+
+### K-004a Belegte Technikfakten (E0-KUNDSCHAFTER-06, `_werkstatt/berichte/E0-KUNDSCHAFTER-06-next16.md`)
+- **ViewTransition:**
+  - Der App Router braucht keinen Schalter. Import über `import { ViewTransition } from 'react'`: Next bindet sein eigenes React-Canary ein, das `ViewTransition` exportiert. Typen nur über `react/canary`; dafür gibt es eine Typreferenz in einer `.d.ts`.
+  - Reduzierte Bewegung regelt CSS (`::view-transition-*` unter `prefers-reduced-motion`).
+- **Fehlerseiten:** `error.tsx` und `global-error.tsx` sind Client-Komponenten mit den Props `error` und `retry` (stabil seit 16.3). `not-found.tsx` hat keine Props.
+- **tailwind-merge 3.6:** Eine unbekannte `text-<wort>`-Klasse gilt als Textfarbe. Erweiterung über `extendTailwindMerge({ extend: { theme: { text: […], shadow: […] }, classGroups: { z: […], 'min-h': […], duration: […], ease: […] } } })`, immer `extend`, nie `override`.
 - **Prüfweg:** Build-Gate `SM24_DATA=json npx next build`, Server `_werkstatt/werkzeuge/server.sh start` (D-001).
 
 ## K-005 Designsystem mit Erweiterungen
@@ -92,6 +99,34 @@ Werte als CSS-Variablen in `src/app/(site)/globals.css`, als Tailwind-Klassen in
 - **Touch-Ziele:** `min-h-touch`/`min-w-touch` 44 px, `min-h-touch-lg` 52 px. Knopfgrößen: `sm` 40 px nur am Desktop neben anderen Bedienelementen, `md` 44 px, `lg` 52 px.
 - **Dauern und Kurven:** siehe K-007.
 - **Kein Dunkelmodus:** Das Projekt hat keinen (D-003). `darkMode` bleibt wirkungslos.
+- **Sperrung:** `tracking-label` (0,12em) für Großbuchstaben-Zeilen; sonst Tailwind-Standard (`tracking-tight` usw.).
+
+### K-005a Umrechnungstabelle freie Werte → Tokens (für alle Pakete)
+| Frei | Token | Hinweis |
+|---|---|---|
+| `text-[10px]`, `text-[11px]`, `text-[12px]` | `text-caption` | mindestens 12 px; Großbuchstaben-Zeilen zusätzlich `uppercase tracking-label` |
+| `text-[13px]`, `text-[14px]` | `text-small` | |
+| `text-[15px]`, `text-[16px]` | `text-body` | |
+| `text-[17px]`, `text-lg` als Titel | `text-title-sm` | Fließtext-Einleitung stattdessen `text-lead` |
+| `text-xl` als Abschnitts- oder Kartentitel | `text-title` | |
+| h2 `text-2xl md:text-3xl` | `text-headline` | |
+| h1 `text-[1.75rem]`, `text-[2rem] md:text-5xl` | `text-display` (Erzählansicht) oder `text-headline` (Arbeitsansicht) | |
+| Eingabefelder `text-[15px]` | `text-input` | 16 px, kein Zoom auf iOS |
+| `tracking-[0.14em]`, `tracking-wider` bei Großbuchstaben | `tracking-label` | |
+| `min-h-[40px]` … `min-h-[48px]` | `min-h-touch` | |
+| `min-h-[52px]`, `min-h-[56px]` | `min-h-touch-lg` | |
+| `min-w-[1rem]` u. ä. | Tailwind-Skala (`min-w-4`) | |
+| `w-[min(24rem,100%)]` | `w-full max-w-sm` | |
+| `shadow-[…]`, `shadow-lg` | `shadow-raised` (Karte) oder `shadow-overlay` (Menü, Drawer) | |
+| `z-[60]`, `z-50`, `z-40` | `z-skip`, `z-overlay`/`z-drawer`, `z-header` | |
+| `grid-cols-[1.1fr_1fr]` u. ä. | Zwölfer-Raster `lg:grid-cols-12` + `lg:col-span-*` | |
+| Positionen wie `-left-[38px]` | Aufbau mit Flex/Grid und Tailwind-Skala | |
+| `transition-[width]` | `transition-transform` + `scaleX` | |
+| `duration-300`, `duration-150` | `duration-base`, `duration-quick` | |
+| `#hex`, `rgb()`, `rgba(var(--…))` | Farbtoken (`text-*`, `bg-*`, `border-*`) | |
+| `py-14 md:py-20` (Abschnitt) | `py-section`; eng: `py-section-tight` | |
+
+Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben, nie frei lassen.
 - **`cn()`:** `extendTailwindMerge` kennt alle neuen Gruppen (Größe, Schatten, Ebene, Dauer, Kurve, Mindesthöhe), damit `cn('text-small', 'text-foreground-muted')` beide Klassen behält.
 
 ## K-006 Typografie und Komposition
@@ -157,7 +192,47 @@ Werte als CSS-Variablen in `src/app/(site)/globals.css`, als Tailwind-Klassen in
 - **Eine Familie** über die gemeinsame `IconBase`:
   - Fach-Icons (`visual/icons/`, 48er-Raster, Zweitonfläche `fill-area-muted`) für Leistungen, Kacheln und Abschnitte ab 24 px.
   - UI-Glyphen (`visual/glyphen/`, 48er-Raster, einfarbig, ohne Zweiton) für Text, Knöpfe, Status und Steuerung von 14 bis 24 px.
-  - lucide-react entfällt vollständig (L-12). Die Zuordnung steht in K-008a (nach dem lucide-Inventar).
+  - lucide-react entfällt vollständig (L-12). Die Zuordnung steht in K-008a.
+
+### K-008a Zuordnung lucide → SM24 (aus E0-KUNDSCHAFTER-07)
+- **Grundregel nach Zusammenhang:**
+  - Text, Knopf, Status und Steuerung (14–24 px) → **Glyph** aus `visual/glyphen/`.
+  - Kachel, Leistung oder Abschnitt → **Fach-Icon** aus `visual/icons/` in Kachelgröße (32–48 px, Zweiton, ohne farbigen Kasten). Steht die Kachel für einen ganzen Bereich, gilt `BereichIcon area="…"`.
+  - Ohne passendes Fach-Icon → Glyph.
+
+| lucide | Glyph (Text/Knopf/Status/Steuerung) | Kachel → Fach-Icon (nach Bedeutung) |
+|---|---|---|
+| ArrowRight / ArrowLeft | `GlyphPfeilRechts` / `GlyphPfeilLinks` | – |
+| Check / CheckCircle2 | `GlyphHaken` / `GlyphHakenKreis` | Bestätigung groß: `CheckDraw` |
+| ChevronDown / ChevronRight | `GlyphWinkelUnten` / `GlyphWinkelRechts` | – |
+| X · Plus · Minus · Menu | `GlyphKreuz` · `GlyphPlus` · `GlyphMinus` · `GlyphMenue` | – |
+| Search | `GlyphSuche` | `pruefung` |
+| Info · AlertTriangle | `GlyphInfo` · `GlyphWarnung` | – |
+| Loader2 | `GlyphLaden` (B-19) | – |
+| RotateCcw · Trash2 · SlidersHorizontal · Save | `GlyphZuruecksetzen` · `GlyphPapierkorb` · `GlyphFilter` · `GlyphSpeichern` | – |
+| ImageOff · ImageUp · Camera | `GlyphBildFehlt` · `GlyphBildHochladen` · `GlyphKamera` | Kamera als Leistung: `videoueberwachung`; Fotos aufnehmen: `foto-hochladen` |
+| BadgeCheck · ShieldCheck | `GlyphPruefsiegel` | Bereich Sicherheit: `BereichIcon sicherheitstechnik`; geprüft: `pruefung`; Nachweis: `nachweis` |
+| Scale | `GlyphWaage` | – |
+| KeyRound | `GlyphSchluessel` | Bereich: `BereichIcon autoschluessel`; Kopie: `schluessel-kopieren`; Zylinder: `profilzylinder` |
+| MapPin | `GlyphOrt` | `standort` |
+| CalendarClock / CalendarCheck / CalendarSearch | `GlyphKalender` | `termin` |
+| Clock | `GlyphUhr` | – (Glyph) |
+| Building2 · UserCog · Users | `GlyphGebaeude` · `GlyphPersonen` · `GlyphPersonen` | Bereich Schließanlagen: `BereichIcon schliessanlagen` |
+| Ruler | `GlyphLineal` | `zylinder-mass` |
+| LifeBuoy | `GlyphHilfe` | `technische-beratung` |
+| ShoppingBag / ShoppingCart | `GlyphWarenkorb` | `warenkorb` |
+| Phone · Mail · MessageSquare | `GlyphTelefon` · `GlyphMail` · `GlyphNachricht` | Telefon: `beratung-telefon` |
+| FileText · Hash · Calculator · Ban | `GlyphDokument` · `GlyphRaute` · `GlyphRechner` · `GlyphVerbot` | – (Glyph) |
+| Layers | – | Bereich Zylinder: `BereichIcon gleichschliessende-zylinder`; Verriegelung: `mehrfachverriegelung` |
+| Lock · DoorClosed · PanelTop | – | `einsteckschloss` · Bereich `tuer-und-schliesstechnik` oder `tuerschliesser` · `tuerzusatzschloss` |
+| Car | – | `fahrzeugmarke` oder Bereich `autoschluessel` |
+| ClipboardList | – | `sicherheitscheck`; Bereich Schließanlagen: `BereichIcon schliessanlagen` |
+| CreditCard | – | Zahlung: `zahlung`; Zutrittskarte: `transponder` |
+| Package / PackageOpen · Truck | – | Bereich Code: `BereichIcon schluessel-nach-code`; Versand: `versand-paket` · `lieferung` |
+| Siren / BellRing | – | `alarmtechnik` / `panik-alarmtaster` |
+| Smartphone · ScanLine · Blend · Wrench | – | `smarte-funktionen` · Bereich Vorlage oder `technische-beratung` · `kombinierte-konzepte` · `montage`/`reparatur-austausch`/`werkstatt` |
+
+Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.tsx:263`) entfällt; dort steht künftig der Generator `tuer-schutz`.
 - **Farben** nur über Tailwind-Klassen (`text-*`, `stroke-*`, `fill-*` der Tokens), nie `fill="var(--…)"` oder `#hex`.
 - **Zugänglichkeit:** dekorativ → `aria-hidden`; bedeutungstragend → `role="img"` + `<title>`. Keine `id` in Icons, Glyphen und Generatoren. Masken nur in Generatoren.
 - **Leitelement Profillinie** (`visual/profillinie.tsx`): gestufte Linie aus Schlüsselrücken, Einschnitten und Spitze, deterministisch aus einem Text; Höhe 12–24 px, Strich `LINIE`, Farbe `stroke-area` oder `stroke-primary`. Sie zeichnet sich einmal (B-02).
@@ -200,3 +275,4 @@ Werte als CSS-Variablen in `src/app/(site)/globals.css`, als Tailwind-Klassen in
 
 ## Änderungen
 - 1.0 · E1 · Erstfassung aus Erkundung, L0 und Plan.
+- 1.1 · E1 · K-004a (Technikfakten Next 16 und tailwind-merge), K-005a (Umrechnungstabelle), K-008a (Zuordnung lucide → SM24), Sperrung `tracking-label`. Grund: Berichte E0-KUNDSCHAFTER-06 und -07.

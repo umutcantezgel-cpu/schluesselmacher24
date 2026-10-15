@@ -21,16 +21,21 @@ Protokollform wie `_werkstatt/protokolle/E0-PRUEFER-01-ergebnis.md`.
 Nur lesen und messen; keine Projektdatei ändern. Rechenintensive Läufe nacheinander (Build, Tests, Bildsatz, Messung nie gleichzeitig).
 
 ## Schritte
-1. `SM24_DATA=json npx next build` (Protokoll `E0-PRUEFER-05-build.log`), danach `./_werkstatt/werkzeuge/server.sh neu`.
-2. `npx tsc --noEmit`, `npx eslint .`, `npx vitest run`, jeweils als Protokoll. Die Zahlen müssen mit E0-PRUEFER-01 übereinstimmen, plus die neuen Tests in `src/lib/store/cart.test.ts`.
+0. **Wichtig – E0-Stand einfrieren:**
+   - Der Orchestrator ändert ab jetzt Dateien unter `src/`. Deshalb wird **nicht neu gebaut**.
+   - Der laufende Server liefert den Build aus E0-PRUEFER-01 aus (`.next`, gebaut aus dem unveränderten Ausgangscode). Prüfe mit `./_werkstatt/werkzeuge/server.sh status`, dass er läuft; falls nicht, starte ihn mit `server.sh start` **ohne** vorherigen Build.
+   - Notiere `cat .next/BUILD_ID` und das Änderungsdatum von `.next/BUILD_ID`. Führe **kein** `next build`, kein `npx tsc`, kein `npx eslint` und kein `npx vitest run` über das ganze Projekt aus; diese Ausgangszahlen stammen aus E0-PRUEFER-01 (Typprüfung 0, Linter 0/0, Unit 680/680) und werden nur übernommen.
+1. (entfällt, siehe 0)
+2. (entfällt, siehe 0)
 3. DB-Tests über den Nutzer `ubuntu`:
    - `mkdir -p private-uploads && chown ubuntu private-uploads`. Prüfe vorher, dass `private-uploads/` in `.gitignore` steht.
    - Ist der Vitest-Cache nicht schreibbar, setze dem Wrapper `/home/ubuntu/sm24-pg/vitest-wrapper/vitest.db.wrapper.mjs` ein `cacheDir` unter `/home/ubuntu/sm24-pg/` (die Datei liegt außerhalb des Repos).
-   - Dann den Wrapper-Lauf aus E0-PRUEFER-01 wiederholen (Protokoll `E0-PRUEFER-05-test-db.log`). Notiere die Zahlen. Der Lauf darf nichts im Repository anlegen außer in `private-uploads/` (ignoriert).
+   - Dann den Wrapper-Lauf aus E0-PRUEFER-01 wiederholen (Protokoll `E0-PRUEFER-05-test-db.log`) und die Zahlen notieren. Die DB-Tests betreffen nur `src/lib/*` und bleiben von den Gestaltungsänderungen unberührt.
+3a. **Messfenster sperren:** Lege vor Schritt 4 die Datei `/tmp/sm24-messfenster.lock` an (`echo E0-PRUEFER-05 > /tmp/sm24-messfenster.lock`) und lösche sie nach Schritt 8 wieder. Solange sie existiert, starten andere Pakete keine Browser- oder Testläufe. Lösche sie auch, wenn du abbrichst.
 4. `node _werkstatt/werkzeuge/konsole.mjs` (alle Hauptansichten).
 5. `node _werkstatt/werkzeuge/bildsatz.mjs --ziel _werkstatt/bilder/e0` (12 × 3). Danach `du -sh _werkstatt/bilder/e0` und Zahl der Dateien. Wird der Ordner größer als 25 MB, wiederhole mit `--max 10` und notiere das.
 6. `node _werkstatt/werkzeuge/a11y.mjs --geraet beide`.
-7. `node _werkstatt/werkzeuge/messung.mjs --laeufe 3 --profil beide` (Median, Minimum, Maximum je Ansicht und Profil).
+7. `node _werkstatt/werkzeuge/messung.mjs --laeufe 3 --profil beide` (dauert 8–10 Minuten: im Hintergrund mit `nohup … > _werkstatt/protokolle/E0-PRUEFER-05-messung.log 2>&1 &` starten und das Ende abwarten) (Median, Minimum, Maximum je Ansicht und Profil).
 8. `node _werkstatt/werkzeuge/bewegung.mjs reduziert`.
 9. `node _werkstatt/werkzeuge/werte-suche.mjs` über **alle** Dateien unter `src/app/(site)` und `src/components` (nicht nur geänderte), als Ausgangszählung je Datei.
 10. Schreibe `_werkstatt/protokolle/E0-PRUEFER-05-ausgangswerte.md`:
@@ -41,7 +46,8 @@ Nur lesen und messen; keine Projektdatei ändern. Rechenintensive Läufe nachein
 
 ## Schnellprüfung und Selbstprüfung
 - 12 Hauptansichten in jeder Tabelle; Messung mit 3 Läufen je Profil (Zahl der Läufe angeben).
-- `git status --short` zeigt nur neue Dateien unter `_werkstatt/protokolle/` und `_werkstatt/bilder/e0/`.
+- `git status --short`: Von dir stammen nur neue Dateien unter `_werkstatt/protokolle/` und `_werkstatt/bilder/e0/`. Andere geänderte Dateien unter `src/` stammen vom Orchestrator oder anderen Paketen; erwähne sie, fasse sie aber nicht an.
+- `.next/BUILD_ID` ist am Ende unverändert (Beleg, dass alle Messungen am E0-Build liefen).
 
 ## Ausgabeformular
 GEÄNDERTE DATEIEN · WAS UND WARUM · GEMEINSAME DATEIEN · PRÜFUNG UND ERGEBNIS · BILDBELEGE · OFFENE FRAGEN
