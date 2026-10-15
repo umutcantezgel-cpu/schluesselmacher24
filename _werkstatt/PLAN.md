@@ -129,4 +129,5 @@ Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabna
 - **Kapazität:** 55 Haiku-Pakete ÷ (4 Plätze × 8 Wellen am Tag) × 1,2 ≈ 2,1 Tage reine Haiku-Arbeit. Mit Opus-Engpass, Prüfstufen und Sichtabnahmen ergeben sich etwa 4 Tage.
 
 ## Offene Punkte
-(keine)
+- **E5-B-23 Sicherheitscheck:** Im Schritt „Bestand“ landete ein Zeigerklick auf eine Auswahlkarte auf „/“ (E0-PRUEFER-04). Vermutete Ursache: Der feste Kopf deckt die Karte nach dem Scrollen ab, und der Klick trifft das Logo. Gegenmaßnahme seit E2: `scroll-padding-top` in `globals.css`. B-23 prüft den Fall mit echtem Zeigerklick erneut.
+- **Funktionsliste:** Die Erkennung der Schritte in F-04 und F-07 (Überschrift, Weiter-Knopf) ist empfindlich. Nach B-16 (Assistent) und B-22 (Vorlage-Anfrage) läuft sie erneut.

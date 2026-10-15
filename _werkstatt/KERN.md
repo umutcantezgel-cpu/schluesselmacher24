@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.1
+# KERN · SCHLÜSSELMACHER24 · Version 1.2
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -188,7 +188,8 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 - **Grundgeometrie:** Schlüsselprofil (Rücken, Bart mit Einschnitten), Kreis (Zylinderkern, Knoten), Rechteck mit kleinem Radius (Tür, Körper), Bemaßungslinie mit Pfeilspitzen als Pfad. Raster: Fach-Icons und Glyphen 48 × 48, Generatoren 480 × 270 (16:9) bzw. 480 × 300; Zeichenpapier-Raster im Abstand 30.
 - **Striche:** Enden und Ecken immer rund.
   - **Icons und Glyphen:** gleiche Bildschirmstrichstärke in jeder Größe über `vector-effect: non-scaling-stroke`. Die Regel steht in `globals.css` für `[data-sm24-icon]`; der Wert wird in L-02 am Bild festgelegt (1,75–2 px).
-  - **Generatoren:** `KONTUR` 2,25 · `LINIE` 1,5 · `HILFSLINIE` 1 (aus `grafik-basis.tsx`); weitere Literale werden auf diese Stufen zurückgeführt.
+  - **Generatoren:** Strichskala aus `grafik-basis.tsx`: `DETAIL` 0,75 · `HILFSLINIE` 1 · `LINIE` 1,5 · `LINIE_STARK` 2 · `KONTUR` 2,25 · `AKZENT` 3 · `MARKE` 4. In `strokeWidth={…}` stehen nur diese Namen.
+  - **Ausnahmen (D-010):** Flächen aus breiten Strichen sind keine Linien und stehen als Zahl mit Kommentar: Doppelstrich-Halos (Außen- und Innenstrich, z. B. Griff 13/8) und Spurbänder (z. B. 10). Werte, die zugleich die Geometrie steuern, bleiben ebenfalls stehen.
 - **Eine Familie** über die gemeinsame `IconBase`:
   - Fach-Icons (`visual/icons/`, 48er-Raster, Zweitonfläche `fill-area-muted`) für Leistungen, Kacheln und Abschnitte ab 24 px.
   - UI-Glyphen (`visual/glyphen/`, 48er-Raster, einfarbig, ohne Zweiton) für Text, Knöpfe, Status und Steuerung von 14 bis 24 px.
@@ -276,3 +277,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 ## Änderungen
 - 1.0 · E1 · Erstfassung aus Erkundung, L0 und Plan.
 - 1.1 · E1 · K-004a (Technikfakten Next 16 und tailwind-merge), K-005a (Umrechnungstabelle), K-008a (Zuordnung lucide → SM24), Sperrung `tracking-label`. Grund: Berichte E0-KUNDSCHAFTER-06 und -07.
+- 1.2 · E2 · K-008 Strichskala um DETAIL, LINIE_STARK, AKZENT und MARKE erweitert, Ausnahmen benannt. Grund: Bericht E2-GRAFIKER-05.

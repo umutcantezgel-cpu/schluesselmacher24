@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 2/6 · Welle E2-a · Pflicht 14/70 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Typprüfung 0, Linter 0, Unit-Tests grün; Build ausstehend) · Nächster Schritt: Ausgangswerte und Funktionsliste abnehmen, dann Build und Prüfstufe A/B der Referenz
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 2/6 · Welle E2-b · Pflicht 19/70 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Build 198/198, Typprüfung 0, Linter 0, Komponenten-Tests 717/717, Funktionsliste 14/14) · Nächster Schritt: Prüfstufe A/B der Referenz (E2-PRUEFER-01), dann Etappentor
 
 # Status des Gestaltungslaufs
 
@@ -32,3 +32,4 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 2/6 · W
 - 15.10.2026 23:08 · E0 begonnen: _werkstatt angelegt, Auftrag wörtlich gespeichert, Erkundung (5 Kundschafter + Lückenprüfung) und L0-Vorprüfung des Plans aus der Planphase übernommen.
 - 15.10.2026 23:17 · E0-PRUEFER-01 abgenommen: Build-Gate JSON grün, Bestand dokumentiert; Welle E0-b läuft (Werkzeuge, Next-16-Doku, lucide-Inventar).
 - 15.10.2026 23:48 · E1 abgeschlossen (KERN 1.1, PLAN 1.0). E2: Designsystem, Bewegung, Formsystem mit 39 Glyphen, Profillinie, Generatoren profilschnitt/tuer-schutz, Schließplan-Markierung, Hülle und Referenz-Startseite als ZWISCHENSTAND gepusht (9e51eff).
+- 16.10.2026 00:06 · E0-Ausgangswerte und Funktionsliste abgenommen (14/14; F-05 geschärft, D-013). Attrappen fangen jede nicht lesende Action ab (D-011). Strichskala der Generatoren (D-010, KERN 1.2), Generator `stiftzuhaltung`, Seitenkopf und Client-Hüllen der großen Momente committet. Build grün, Server neu.

@@ -66,3 +66,28 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - ab 1536 px auch Bereich 4 („Gleichschließende Zylinder“)
   - der Rest unter „Mehr“
 - Kein Zeilenumbruch in den Einträgen.
+
+## D-010 · Strichskala der Generatoren
+- Die Skala hat sieben Stufen von `DETAIL` bis `MARKE` (KERN 1.2, K-008). Es gibt keine Ausdrücke wie `LINIE + 0.5` mehr; `profilschnitt` nutzt jetzt `AKZENT` und `LINIE_STARK`.
+- Drei Wertänderungen durch Rundung sind kaum sichtbar: 1,75 → 2 (Schließplan-Kanten, Code-Fundstelle) und 2,5 → 2,25 (Schlüssel, Zutritt).
+- Elf Werte bleiben als Zahl stehen:
+  - Doppelstrich-Halos wie Griff, Lupe und Drücker sind gezeichnete Flächen, keine Linien. Eine Rundung ließe die Kontur verschwinden.
+  - Das Spurband im Schlüssel ist ebenfalls eine Fläche.
+  - Die `striche()`-Platzhalter steuern mit ihrem Wert zugleich die Geometrie.
+- **Umkehrprobe:** Mit einer eigenen Halo-Stufe kämen drei weitere Namen hinzu, die nur je einmal vorkommen. Das bringt keinen Gewinn an Einheitlichkeit.
+
+## D-011 · Attrappen: alles abfangen, was nicht nachweislich liest
+- Bisher lief eine Server Action ohne Prüf-E-Mail bis zum echten Server (Befund E0-PRUEFER-04). Ein schreibender Aufruf ohne diese Adresse wäre echt ausgeführt worden. Das widerspricht G5.
+- Jetzt erreichen nur die lesenden Actions den Server: `fetchQuote`, `fetchSlots` und `fetchRecordStatus`, deren Kennungen aus dem Build-Manifest gelesen werden. Alle anderen werden als Attrappe beantwortet und protokolliert.
+- Die Prüf-E-Mail wird als ganzer Wert erkannt, nicht mehr als Teil einer Adresse wie `status-pruefung@…`.
+
+## D-012 · Generator `stiftzuhaltung` abgenommen
+- Der Generator zeigt drei Zustände: passt, passt nicht und abgebrochen. Die Bildprüfung ist bestanden.
+- Die Beschriftung „Trennlinie“ steht links, weil rechts der Platz fehlt. Die Trennlinie besteht aus 15 einzelnen Strichen, die sich nacheinander zeichnen. Die Maße weichen leicht von der Vorlage ab, damit die Stiftspitzen Platz haben.
+- Einsatz: auf den Seiten 404 und Fehler (E3-L-09), später als Kür-Szene auf `/gleichschliessende-zylinder`.
+
+
+## D-013 · Funktionsliste F-05 prüft den gespeicherten Warenkorb
+- F-05 suchte den Text „Gleichschließende Zylinder“ und nahm den ersten Treffer. Dieser Text steht auch in Kopf, Fuß und leerem Warenkorb. Am E0-Stand war daher schon der Kopf-Link ein Beleg, auch ohne Eintrag im Warenkorb. Am neuen Stand ist der erste Treffer ein bis 1536 px verborgener Kopf-Link (D-009), deshalb schlug die Prüfung fehl.
+- Jetzt gilt als Beleg der gespeicherte Warenkorb (`sm24-warenkorb` mit mindestens einem Eintrag) und eine nicht leere Warenkorbseite. Das ist eine Schärfung, keine Lockerung.
+- Mit der geschärften Prüfung bestehen E0 (Port 3100) und der neue Stand (Port 3000). Protokolle: `funktionsliste-2026-10-16_00-03-09` (neu) und `funktionsliste-2026-10-16_00-03-15` (E0). Der Ausgangswert bleibt 14 von 14.
