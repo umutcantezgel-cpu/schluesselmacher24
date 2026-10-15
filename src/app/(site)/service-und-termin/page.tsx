@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { ArrowRight, CalendarSearch, MapPin, MessageSquare, Phone } from 'lucide-react';
 
 import { getPageContent, getSettings } from '@/lib/data';
-import { getRichtwerte } from '@/lib/data/richtwerte';
 import { NAV_AREAS, PROCESS_LABELS } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
-import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
+
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -59,7 +59,16 @@ const SERVICE_FAQ = [
               question: 'Sind elektronische Zutrittssysteme sicher vor Hacker-Angriffen?',
               answer: 'Absolute Sicherheit gibt es in der IT nicht, wir empfehlen deshalb Systeme, die aktuelle kryptografische Standards nutzen. Die Kommunikation zwischen Transponder, Leser und Steuergerät erfolgt zumeist verschlüsselt (z.B. AES-128 oder höher). Zudem achten wir auf eine sichere Netzwerkarchitektur und empfehlen regelmäßige Firmware-Updates, um das Sicherheitsniveau kontinuierlich aufrechtzuerhalten.'
             },
+
             {
+              question: 'Können bestehende mechanische Schließanlagen nachträglich elektrifiziert werden?',
+              answer: 'Ja, das ist oft problemlos möglich. Wir nutzen sogenannte mechatronische Zylinder oder elektronische Beschläge, die sich ohne bauliche Veränderungen an der Tür anstelle der mechanischen Komponenten installieren lassen. So profitieren Sie von den Vorteilen der Elektronik (z.B. schnelles Sperren bei Verlust), ohne die gesamte Schließanlage austauschen zu müssen.'
+            },
+            {
+              question: 'Bieten Sie auch Wartungsverträge für elektronische Systeme an?',
+              answer: 'Selbstverständlich. Für eine dauerhafte und ausfallsichere Funktion empfehlen wir dringend regelmäßige Wartungen. Diese beinhalten Firmware-Updates, die Überprüfung der mechanischen Komponenten in den elektronischen Schlössern sowie den rechtzeitigen Batteriewechsel, um Ausfälle vorab zu vermeiden.'
+            },
+                        {
               question: 'Was passiert bei einem Stromausfall mit elektronischen Schlössern?',
               answer: 'Viele elektronische Türkomponenten sind batteriebetrieben oder verfügen über Notstromakkus. Bei batteriebetriebenen Zylindern erhalten Sie rechtzeitig Warnungen bei niedrigem Batteriestand. Vernetzte, kabelgebundene Systeme lassen sich über eine unterbrechungsfreie Stromversorgung (USV) gegen Ausfälle absichern. Fluchtwege sind mechanisch so konstruiert, dass sie jederzeit von innen passierbar bleiben.'
             },
@@ -73,15 +82,23 @@ const SERVICE_FAQ = [
             }
           ];
 
-export default async function ServiceUndTerminPage() {
-  const [page, settings, richtwerte] = await Promise.all([
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function ServiceUndTerminPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+
+  const [page, settings] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
-    getRichtwerte(),
   ]);
 
   return (
     <>
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <JsonLd
         data={pageGraphSchema({
           path: '/service-und-termin',
@@ -209,6 +226,30 @@ export default async function ServiceUndTerminPage() {
             Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
           </p>
 
+
+
+          <h3 className="text-lg font-semibold text-foreground mt-8">5. Detaillierte Systemintegration und Kompatibilität</h3>
+          <p>
+            In der modernen Gebäudeautomation reicht es nicht mehr aus, Schließsysteme als isolierte Komponenten zu betrachten. Vielmehr müssen sie als integraler Bestandteil eines umfassenden Sicherheits- und Gebäudemanagementkonzepts verstanden werden. Unsere Expertise erstreckt sich daher über die reine Mechanik und grundlegende Elektronik hinaus auf die tiefe Integration komplexer Systemlandschaften. Wir analysieren detailliert die bestehenden Schnittstellen und Protokolle, seien es offene Standards wie KNX, BACnet oder proprietäre Systeme etablierter Hersteller. Ziel ist eine nahtlose Kommunikation zwischen der Zutrittskontrolle, der Einbruchmeldeanlage (EMA), der Brandmeldeanlage (BMA) und gegebenenfalls dem Zeiterfassungssystem.
+          </p>
+          <p>
+            Besonderes Augenmerk legen wir dabei auf die Ausfallsicherheit und Redundanz der Systeme. Ein mehrstufiges Sicherheitskonzept stellt sicher, dass selbst bei Teilausfällen der Infrastruktur, beispielsweise durch Netzwerkunterbrechungen oder temporäre Stromausfälle, die Kernfunktionen der Zutrittskontrolle uneingeschränkt aufrechterhalten bleiben. Dies erreichen wir durch den gezielten Einsatz von batteriegepufferten Offline-Komponenten (wie elektronische Schließzylinder oder Beschläge) in Kombination mit intelligenten Online-Lesern an hochfrequentierten Zugangspunkten. Die Datenübertragung erfolgt dabei stets verschlüsselt und manipulationssicher, um höchsten Anforderungen an den Datenschutz und die Informationssicherheit (gemäß ISO 27001 oder BSI-Grundschutz) gerecht zu werden.
+          </p>
+          <h3 className="text-lg font-semibold text-foreground mt-8">6. Risikomanagement und Schwachstellenanalyse</h3>
+          <p>
+            Ein zentraler Baustein unserer architektonischen Methodik ist das proaktive Risikomanagement. Bevor wir ein System empfehlen oder gar installieren, führen wir eine tiefgehende Schwachstellenanalyse (Vulnerability Assessment) durch. Wir simulieren unterschiedliche Angriffsszenarien – von mechanischen Einbruchsversuchen über Manipulationen der elektronischen Steuerung bis hin zu Social-Engineering-Angriffen auf die Schlüsselverwaltung. Basierend auf den Ergebnissen dieser Analyse entwickeln wir ein maßgeschneidertes Maßnahmenpaket, das die identifizierten Risiken effektiv minimiert.
+          </p>
+          <p>
+            Dieses Paket umfasst nicht nur technische Härtungsmaßnahmen, sondern auch organisatorische Empfehlungen für den sicheren Umgang mit Schlüsseln, Transpondern und Berechtigungskonzepten. Wir unterstützen Sie bei der Erstellung von Sicherheitsrichtlinien und der Schulung Ihres Personals, denn das sicherste System ist nur so stark wie sein schwächstes Glied. Die Kombination aus hochmoderner Technik, präziser handwerklicher Umsetzung und einem geschärften Sicherheitsbewusstsein der Nutzer bildet das Fundament für einen nachhaltigen und robusten Schutz Ihrer Werte und Anlagen.
+          </p>
+          <h3 className="text-lg font-semibold text-foreground mt-8">7. Zertifizierungen und Normkonformität</h3>
+          <p>
+            Qualität und Sicherheit sind für uns keine leeren Versprechen, sondern messbare Parameter. Daher legen wir größten Wert auf die Einhaltung einschlägiger Normen und die Verwendung zertifizierter Komponenten. Unsere mechanischen Schließzylinder entsprechen mindestens der DIN 18252 (Klasse 82 oder höher) sowie der europäischen Norm DIN EN 1303. Sie verfügen serienmäßig über einen ausgeprägten Bohr- und Ziehschutz, der selbst professionellen Aufbruchsversuchen standhält. Im elektronischen Bereich setzen wir auf Systeme, die die Vorgaben der VdS Schadenverhütung GmbH erfüllen und somit auch den strengen Anforderungen der Sachversicherer genügen.
+          </p>
+          <p>
+            Die normgerechte Planung und Installation, insbesondere im Bereich der Flucht- und Rettungswege (DIN EN 179 / DIN EN 1125), ist für uns selbstverständlich. Wir dokumentieren jeden Schritt des Installationsprozesses lückenlos und stellen Ihnen im Rahmen der Systemübergabe alle relevanten Prüf- und Abnahmeprotokolle zur Verfügung. Dies gibt Ihnen nicht nur die Gewissheit, ein technisch einwandfreies System erworben zu haben, sondern sichert Sie auch im Schadensfall gegenüber Versicherungen und Behörden rechtlich ab.
+          </p>
+
           <h3 className="text-lg font-semibold text-foreground mt-8">4. Gewerbeobjekte und öffentliche Einrichtungen</h3>
           <p>
             Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
@@ -226,10 +267,7 @@ export default async function ServiceUndTerminPage() {
           lead="Für häufige Leistungen vor Ort erhalten Sie hier eine erste Orientierung. Den verbindlichen Preis nennen wir nach der Prüfung Ihrer Anfrage."
         />
         <div className="mt-8 max-w-3xl">
-          <ServiceEinsatzRechner
-            werte={richtwerte.serviceEinsatz}
-            anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
-          />
+          <ServiceBudgetCalculator />
         </div>
       </Section>
 
