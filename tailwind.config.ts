@@ -15,6 +15,8 @@ import {
 const config = {
   darkMode: ['class'],
   content: ['./src/**/*.{ts,tsx}'],
+  /* `hover:` und `group-hover:` nur bei feinem Zeiger (KERN K-007): kein Kleben nach Antippen. */
+  future: { hoverOnlyWhenSupported: true },
   theme: {
     extend: {
       fontFamily: {
@@ -192,6 +194,8 @@ const config = {
         'menue-ein': 'menue-ein var(--dauer-base) var(--kurve-enter) both',
         'schublade-ein': 'schublade-ein var(--dauer-base) var(--kurve-enter) both',
         'schleier-ein': 'schleier-ein var(--dauer-quick) var(--kurve-standard) both',
+        /* Ladeanzeige (B-19): 900 ms je Umdrehung */
+        spin: 'spin var(--dauer-scene) linear infinite',
       },
       transitionTimingFunction: {
         standard: 'var(--kurve-standard)',
@@ -205,6 +209,8 @@ const config = {
     /* Zeiger-Details nur bei feinen Zeigegeräten (KERN K-007, B-06): `zeiger:group-hover:…` */
     plugin(({ addVariant }) => {
       addVariant('zeiger', '@media (hover: hover) and (pointer: fine)');
+      /* Sichtbarer Tastaturfokus für Karten mit verstecktem Eingabefeld (KERN K-009) */
+      addVariant('fokus-innen', '&:has(:focus-visible)');
     }),
     plugin(({ addBase }) => {
       addBase({

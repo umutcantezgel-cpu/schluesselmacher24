@@ -290,6 +290,18 @@
   .pb-safe-area {
     padding-bottom: env(safe-area-inset-bottom);
   }
+
+  /* Zahlenfeld ohne Pfeile des Browsers (eigene Minus/Plus-Knöpfe daneben) */
+  .zahl-ohne-pfeile {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+
+  .zahl-ohne-pfeile::-webkit-inner-spin-button,
+  .zahl-ohne-pfeile::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 /* ==========================================================================
@@ -335,6 +347,17 @@
   to { stroke-dashoffset: -24; }
 }
 
+/* Schrittwechsel im Ablauf (B-11): 8 px in Laufrichtung */
+@keyframes sm24-schritt-vor {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes sm24-schritt-zurueck {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: none; }
+}
+
 @keyframes sm24-scrub-y {
   from { transform: scaleY(0); }
   to { transform: scaleY(1); }
@@ -377,6 +400,14 @@
   .sm24-dash {
     stroke-dasharray: 6 6;
     animation: sm24-dash var(--sm24-duration, 1.6s) linear var(--sm24-delay, 0s) 3;
+  }
+
+  .sm24-schritt-vor {
+    animation: sm24-schritt-vor var(--dauer-base) var(--kurve-enter) both;
+  }
+
+  .sm24-schritt-zurueck {
+    animation: sm24-schritt-zurueck var(--dauer-base) var(--kurve-enter) both;
   }
 }
 
