@@ -17,7 +17,7 @@ SCHLÜSSELMACHER24 ist Website und Shop eines Fachbetriebs für Autoschlüssel, 
   - Port 3001 ist frei.
 - Budgets (K-011): LCP ≤ 2500 ms, CLS ≤ 0,1, INP ≤ 200 ms; große Momente mobil bei 4-facher Drosselung ≤ 5 % verworfene Bilder.
 - Großer Moment B-01 (Fräsbahn im Hero der Startseite): Selektor `[data-fraesbahn]`, Dauer 1.400 ms ab dem Laden (Verzögerung 0,3 s + Zeichnung 1,1 s).
-- Zwei Grafiker-Pakete ändern gleichzeitig Dateien unter `src/components/visual/generators/`. Melde einen Rotfall in `registry.test.tsx` zu `stiftzuhaltung` als „erwartet (Paket läuft)“, nicht als Fehler.
+- Der Build auf Port 3000 entspricht Commit f1f0bf9. Kein anderes Paket ändert während deiner Prüfung Projektdateien.
 - Ein Entwicklungsserver kann `AGENTS.md` verändern; das ist nicht Teil der Prüfung.
 
 ## Maßstab
@@ -35,12 +35,13 @@ Keine Projektdatei ändern; nicht neu bauen. Rechenintensive Läufe nacheinander
 6. `node _werkstatt/werkzeuge/bildsatz.mjs --routen / --ziel _werkstatt/bilder/referenz` (Startseite, 3 Geräte, ins Repo) und `node _werkstatt/werkzeuge/bildsatz.mjs --ziel /root/sm24-bilder/E2-bildsatz` (alle 12 Hauptansichten, außerhalb des Repos) → Überlaufbefunde je Ansicht und Gerät.
 7. `node _werkstatt/werkzeuge/a11y.mjs --geraet beide` → Befunde nach Schwere je Ansicht, Regeln mit Zielen.
 8. `node _werkstatt/werkzeuge/messung.mjs --laeufe 3 --profil beide` (im Hintergrund mit Protokoll, Ende abwarten) → Median, Minimum, Maximum je Ansicht und Profil.
-9. Bewegung:
+9. Bewegung (danach die Sperre löschen):
    - `node _werkstatt/werkzeuge/bewegung.mjs reduziert` (alle 12).
    - `node _werkstatt/werkzeuge/bewegung.mjs einzelbilder / --selektor "[data-fraesbahn]" --dauer 1400 --geraet desktop --ziel _werkstatt/bilder/referenz/b01-fraesbahn`: 5 Einzelbilder. Falls das Werkzeug den Ausschnitt an der Fräser-Gruppe zu klein schneidet, nimm als Selektor `main section:first-of-type [role="img"]`.
    - `node _werkstatt/werkzeuge/bewegung.mjs bildrate / --selektor "[data-fraesbahn]" --dauer 1400`.
-10. `node _werkstatt/werkzeuge/werte-suche.mjs --seit fcbcfb2` → Funde je geänderter Datei (Ausnahmen getrennt).
-11. Lösche die Sperre. Schreibe `_werkstatt/protokolle/E2-PRUEFER-01-ergebnis.md`:
+10. `SM24_BASIS_URL=http://localhost:3000 node _werkstatt/werkzeuge/funktionsliste.mjs` (nach dem Löschen der Sperre; das Skript wartet sonst) → F-01 bis F-14 bestanden/nicht bestanden, Vergleich mit E0 (14/14, `funktionsliste-2026-10-15_23-58-16.md`). Bei NICHT BESTANDEN einmal mit `--nur F-xx` wiederholen und beide Ergebnisse melden.
+11. `node _werkstatt/werkzeuge/werte-suche.mjs --seit fcbcfb2` → Funde je geänderter Datei (Ausnahmen getrennt).
+12. Schreibe `_werkstatt/protokolle/E2-PRUEFER-01-ergebnis.md`:
     - Tabelle „Prüfung · E0 · jetzt · Differenz · Beleg“.
     - Leistungs- und Zugänglichkeitstabelle je Hauptansicht im Format der E0-Ausgangswerte, mit Spalte „E0-Median“ und „E0-Spanne“ und der Bewertung „innerhalb der E0-Spanne / besser / schlechter“.
     - Liste aller Funde der Wertesuche.

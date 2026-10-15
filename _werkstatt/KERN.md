@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.2
+# KERN · SCHLÜSSELMACHER24 · Version 1.3
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -154,7 +154,8 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
   - Zeiger-Effekte nur bei `(hover: hover) and (pointer: fine)`.
   - Scroll-Szenen über CSS `animation-timeline: view()` in `@supports`, mit nativem Scrollen und rückwärts stimmig; ohne Unterstützung zeigen sie den Endzustand.
   - Nichts startet automatisch und läuft länger als 5 s; `sm24-dash` läuft höchstens 3 Durchgänge.
-- **Reduzierte Bewegung:** Bewegungen werden zu Sofortzuständen oder Überblendungen ≤ `quick`; Inhalte sind immer sichtbar. JavaScript-Scrollen nutzt `scrollVerhalten()` aus `src/lib/bewegung.ts`.
+- **Reduzierte Bewegung:** Bewegungen werden zu Sofortzuständen; die globale Regel in `globals.css` verkürzt jede Animation und jeden Übergang auf 0,01 ms. Die Spalte „Reduziert“ nennt das Höchstmaß, „sofort“ ist immer zulässig. Inhalte sind immer sichtbar. JavaScript-Scrollen nutzt `scrollVerhalten()` aus `src/lib/bewegung.ts`.
+- **Bausteine in `globals.css` und `tailwind.config.ts`:** `sm24-draw`, `sm24-reveal`, `sm24-fade`, `sm24-pop`, `sm24-dash`, `sm24-scrub-*`, `sm24-schritt-vor`/`-zurueck` (B-11), `.sm24-ruhig` (keine Einstiegsbewegung nach dem ersten Wechsel), `animate-spin` mit `--dauer-scene` (B-19). Varianten: `hover:`/`group-hover:` wirken projektweit nur bei feinem Zeiger (`future.hoverOnlyWhenSupported`), `zeiger:` für übrige Zeiger-Effekte, `fokus-innen:` (enthält sichtbaren Tastaturfokus). Hilfsklasse `zahl-ohne-pfeile` für Zahlenfelder mit eigenen Knöpfen.
 - **Ohne JavaScript:** Alle Einstiegsbewegungen spielen sofort ab oder entfallen; nichts bleibt unsichtbar.
 
 | ID | Bewegung | Zweck | Auslöser | Stufen | Reduziert |
@@ -278,3 +279,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.0 · E1 · Erstfassung aus Erkundung, L0 und Plan.
 - 1.1 · E1 · K-004a (Technikfakten Next 16 und tailwind-merge), K-005a (Umrechnungstabelle), K-008a (Zuordnung lucide → SM24), Sperrung `tracking-label`. Grund: Berichte E0-KUNDSCHAFTER-06 und -07.
 - 1.2 · E2 · K-008 Strichskala um DETAIL, LINIE_STARK, AKZENT und MARKE erweitert, Ausnahmen benannt. Grund: Bericht E2-GRAFIKER-05.
+- 1.3 · E3 · K-007: reduzierte Bewegung = sofort (globale Regel), Bausteinliste mit `sm24-schritt-*`, `fokus-innen:`, `zahl-ohne-pfeile`, Spinner 900 ms, `hover:` nur bei feinem Zeiger. Grund: Vorbereitung Welle E3-A.

@@ -36,35 +36,35 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 |---|---|---|---|---|---|---|
 | E0-L-01 | Werkstatt, Auftrag, CLAUDE.md-Block, Ausschlüsse | L/Opus | `_werkstatt/`, CLAUDE.md, Konfigurationen | – | Z-10 | fcbcfb2 |
 | E0-P-01 | Prüfstand: drei Build-Wege, Ausgangsstand | P/Haiku | `_werkstatt/protokolle` | E0-L-01 | Z-02 | b49fe04 |
-| E0-P-02 | Werkzeuge Bild, Bildsatz, Messung, a11y, Konsole, Bewegung, Wertesuche | P/Haiku | `_werkstatt/werkzeuge/*` (7 Skripte) | E0-P-01 | Z-02, Z-04 bis Z-09 | |
-| E0-P-03 | Logikwächter, Textabzug, Warenkorb-Test | P/Haiku | `_werkstatt/werkzeuge/*` (3), `src/lib/store/cart.test.ts` | E0-P-01 | Z-02 | |
-| E0-K-06 | Next-16-Doku (ViewTransition, Fehlerseiten, Schriften, tailwind-merge) | K/Haiku | Bericht | E0-P-01 | Z-05, Z-03 | |
-| E0-K-07 | lucide-Inventar mit Größe und Zusammenhang | K/Haiku | Bericht | – | Z-06 | |
-| E0-P-04 | Funktionsliste als Skript und Durchlauf (Ausgangswert) | P/Haiku | `_werkstatt/werkzeuge/funktionsliste.mjs` | E0-P-02 | Z-02 | |
-| E0-P-05 | Ausgangswerte Prüfstufe B, Bildsatz E0 ins Repo, DB-Tests über `ubuntu` | P/Haiku | `_werkstatt/protokolle`, `_werkstatt/bilder/e0/` | E0-P-02, E0-P-03 | Z-02, Z-04, Z-07, Z-08, Z-09 | |
-| E1-L-01 | KERN, PLAN, ABNAHME | L/Opus | `_werkstatt/*.md` | E0 | Z-01, Z-10 | |
-| E1-P-01 | Planprüfung L0 (Checkliste) | P/Haiku | Bericht | E1-L-01 | Z-01 | |
-| E2-L-01 | Designsystem-Erweiterung, `cn` mit Test | L/Opus | `globals.css`, `tailwind.config.ts`, `src/lib/cn.ts`, `src/lib/cn.test.ts` | E0-K-06 | Z-03 | |
-| E2-L-02 | Formsystem: IconBase-Strich, Glyphen-Vertrag, 12 Muster-Glyphen, K-008a | L/Opus | `icons/icon-base.tsx`, `visual/glyphen/*` (12 + Test) | E0-K-07 | Z-06 | |
-| E2-G-01 | Glyphen Teil 1 (etwa 12) | G/Haiku | neue Dateien in `visual/glyphen/` (Liste im Paket) | E2-L-02 | Z-06 | |
-| E2-G-02 | Glyphen Teil 2 (etwa 12) | G/Haiku | neue Dateien in `visual/glyphen/` | E2-L-02 | Z-06 | |
-| E2-G-03 | Generator `tuer-schutz` | G/Haiku | `generators/tuer-schutz.tsx` + Test | – | Z-04, Z-06 | |
-| E2-G-04 | `schliessplan` mit `markiert`/`tuer`, `schliessplanSchluessel()` | G/Haiku | `generators/schliessplan.tsx` + Test | – | Z-04 | |
-| E2-L-03 | Bewegungssystem: Tokens, Primitive, `scrollVerhalten` mit Test, Scroll-Timeline, ViewTransition-Grundlage | L/Opus | `globals.css`, `visual/motion/*`, `src/lib/bewegung.ts` + Test, `src/lib/flow/use-flow.ts`, `next.config.ts` | E2-L-01, E0-K-06 | Z-05 | |
-| E2-G-05 | Strichskala in `grafik-basis` und allen Generatoren (Exporte bleiben) | G/Haiku | `generators/*.tsx` außer neuen | E2-G-04 | Z-06 | |
-| E2-G-06 | Generator `fehlschluessel` (404/500) | G/Haiku | `generators/fehlschluessel.tsx` + Test | E2-L-02 | Z-04 | |
-| E2-L-04 | Profillinie und Generator `profilschnitt` | L/Opus | `visual/profillinie.tsx` + Test, `generators/profilschnitt.tsx` + Test, Registry | E2-L-03 | Z-04, Z-05 | |
-| E2-L-05 | Hülle: Layout, Kopf, Fuß, Aktionsleiste (`istAktiv` mit Test), Button, Card, Section | L/Opus | `(site)/layout.tsx`, `layout/site-header.tsx`, `site-footer.tsx`, `mobile-action-bar.tsx`, `ui/button.tsx`, `ui/card.tsx`, `layout/section.tsx`, `src/lib/navigation.ts` + Test | E2-L-01 bis E2-L-03 | Z-03, Z-04, Z-07 | |
-| E2-L-06 | Referenz Startseite (B-01, B-02, B-03) | L/Opus | `(site)/page.tsx` | E2-L-04, E2-L-05 | Z-04, Z-05 | |
+| E0-P-02 | Werkzeuge Bild, Bildsatz, Messung, a11y, Konsole, Bewegung, Wertesuche | P/Haiku | `_werkstatt/werkzeuge/*` (7 Skripte) | E0-P-01 | Z-02, Z-04 bis Z-09 | 30bf6a3 |
+| E0-P-03 | Logikwächter, Textabzug, Warenkorb-Test | P/Haiku | `_werkstatt/werkzeuge/*` (3), `src/lib/store/cart.test.ts` | E0-P-01 | Z-02 | 876ca19 |
+| E0-K-06 | Next-16-Doku (ViewTransition, Fehlerseiten, Schriften, tailwind-merge) | K/Haiku | Bericht | E0-P-01 | Z-05, Z-03 | 30bf6a3 |
+| E0-K-07 | lucide-Inventar mit Größe und Zusammenhang | K/Haiku | Bericht | – | Z-06 | 30bf6a3 |
+| E0-P-04 | Funktionsliste als Skript und Durchlauf (Ausgangswert) | P/Haiku | `_werkstatt/werkzeuge/funktionsliste.mjs` | E0-P-02 | Z-02 | 2831f3d, 4e9c17b |
+| E0-P-05 | Ausgangswerte Prüfstufe B, Bildsatz E0 ins Repo, DB-Tests über `ubuntu` | P/Haiku | `_werkstatt/protokolle`, `_werkstatt/bilder/e0/` | E0-P-02, E0-P-03 | Z-02, Z-04, Z-07, Z-08, Z-09 | 82a9341 |
+| E1-L-01 | KERN, PLAN, ABNAHME | L/Opus | `_werkstatt/*.md` | E0 | Z-01, Z-10 | 876ca19, 30bf6a3, 82a9341 |
+| E1-P-01 | Planprüfung L0 (Checkliste) | P/Haiku | Bericht | E1-L-01 | Z-01 | fcbcfb2 (Planphase) |
+| E2-L-01 | Designsystem-Erweiterung, `cn` mit Test | L/Opus | `globals.css`, `tailwind.config.ts`, `src/lib/cn.ts`, `src/lib/cn.test.ts` | E0-K-06 | Z-03 | def0f94 |
+| E2-L-02 | Formsystem: IconBase-Strich, Glyphen-Vertrag, 12 Muster-Glyphen, K-008a | L/Opus | `icons/icon-base.tsx`, `visual/glyphen/*` (12 + Test) | E0-K-07 | Z-06 | f8dde75 |
+| E2-G-01 | Glyphen Teil 1 (etwa 12) | G/Haiku | neue Dateien in `visual/glyphen/` (Liste im Paket) | E2-L-02 | Z-06 | f8dde75 |
+| E2-G-02 | Glyphen Teil 2 (etwa 12) | G/Haiku | neue Dateien in `visual/glyphen/` | E2-L-02 | Z-06 | f8dde75 |
+| E2-G-03 | Generator `tuer-schutz` | G/Haiku | `generators/tuer-schutz.tsx` + Test | – | Z-04, Z-06 | f8dde75 |
+| E2-G-04 | `schliessplan` mit `markiert`/`tuer`, `schliessplanSchluessel()` | G/Haiku | `generators/schliessplan.tsx` + Test | – | Z-04 | 65aa9ce |
+| E2-L-03 | Bewegungssystem: Tokens, Primitive, `scrollVerhalten` mit Test, Scroll-Timeline, ViewTransition-Grundlage | L/Opus | `globals.css`, `visual/motion/*`, `src/lib/bewegung.ts` + Test, `src/lib/flow/use-flow.ts`, `next.config.ts` | E2-L-01, E0-K-06 | Z-05 | def0f94 |
+| E2-G-05 | Strichskala in `grafik-basis` und allen Generatoren (Exporte bleiben) | G/Haiku | `generators/*.tsx` außer neuen | E2-G-04 | Z-06 | 929de35 |
+| E2-G-06 | Generator `stiftzuhaltung` (404/500, später Kür K-01) | G/Haiku | `generators/stiftzuhaltung.tsx` + Test | E2-L-02 | Z-04 | 2cd41f0 (als `stiftzuhaltung`, D-012) |
+| E2-L-04 | Profillinie und Generator `profilschnitt` | L/Opus | `visual/profillinie.tsx` + Test, `generators/profilschnitt.tsx` + Test, Registry | E2-L-03 | Z-04, Z-05 | f8dde75 |
+| E2-L-05 | Hülle: Layout, Kopf, Fuß, Aktionsleiste (`istAktiv` mit Test), Button, Card, Section | L/Opus | `(site)/layout.tsx`, `layout/site-header.tsx`, `site-footer.tsx`, `mobile-action-bar.tsx`, `ui/button.tsx`, `ui/card.tsx`, `layout/section.tsx`, `src/lib/navigation.ts` + Test | E2-L-01 bis E2-L-03 | Z-03, Z-04, Z-07 | 9e51eff |
+| E2-L-06 | Referenz Startseite (B-01, B-02, B-03) | L/Opus | `(site)/page.tsx` | E2-L-04, E2-L-05 | Z-04, Z-05 | 9e51eff |
 | E2-P-01 | Prüfstufe A je L-Paket; Prüfstufe B Referenz | P/Haiku | Protokolle | je L | Z-02 | |
 | E2-L-07 | Etappentor: Sichtabnahme durch frischen Opus-Unteragenten (≥ 8) | L/Opus | Bericht | E2-P-01 | Z-04 | |
 | E3-B-01 | Formular-Bausteine (`controls`, `field`, `option-card`, `alert`, `badge`, `info-tip`, `accordion`) | B/Haiku | 7 Dateien | E2 | Z-03, Z-07 | |
 | E3-B-02 | Ablauf-Hülle (`flow-shell`, `summary-list`, `breadcrumbs`) | B/Haiku | 3 Dateien | E2 | Z-03, Z-05 | |
 | E3-B-03 | `photo-upload` | B/Haiku | 1 Datei (Logikwächter) | E2 | Z-03, Z-06 | |
 | E3-G-07 | `visual/README.md` an Formsystem, Glyphen, neue Generatoren | G/Haiku | README | E2 | Z-10 | |
-| E3-L-08 | `PageHeader` (erweitert, 35 Nutzerseiten), `ImagePlaceholder` (Ersatzgrafik, Test) | L/Opus | `layout/page-header.tsx`, `ui/image-placeholder.tsx` + Test | E2 | Z-04, Z-06 | |
-| E3-L-09 | `.prose-sm24`, `not-found.tsx`, `error.tsx` | L/Opus | `globals.css`, `(site)/not-found.tsx`, `(site)/error.tsx` | E2-G-06 | Z-04 | |
-| E3-L-10 | Client-Hüllen: Schließplan, Live-Schlüssel, Code-Fundstelle | L/Opus | `visual/interaktiv/*` (3 neu) | E2-G-04 | Z-04, Z-05 | |
+| E3-L-08 | `PageHeader` (erweitert, 35 Nutzerseiten), `ImagePlaceholder` (Ersatzgrafik, Test) | L/Opus | `layout/page-header.tsx`, `ui/image-placeholder.tsx` + Test | E2 | Z-04, Z-06 | b56bcfb (ZWISCHENSTAND) |
+| E3-L-09 | `.prose-sm24`, `not-found.tsx`, `error.tsx` | L/Opus | `globals.css`, `(site)/not-found.tsx`, `(site)/error.tsx`, `layout/fehler-ansicht.tsx` | E2-G-06 | Z-04 | |
+| E3-L-10 | Client-Hüllen: Schließplan, Live-Schlüssel, Code-Fundstelle | L/Opus | `visual/interaktiv/*` (3 neu) | E2-G-04 | Z-04, Z-05 | 4a985f3 |
 | E3-B-04 | Autoschlüssel-Vorlage (`service-article`, `key-kinds`, `vehicle-facts`) | B/Haiku | 3 Dateien | E3-B-01 | Z-03, Z-04 | |
 | E3-B-05 | `preis-anzeige`, `termin-auswahl`, `bestaetigung` | B/Haiku | 3 Dateien | E3-B-01 | Z-03, Z-05 | |
 | E3-B-06 | Rechner und Nachweise (+ Tests Alt-Neu) | B/Haiku | 5 Dateien | E3-B-01 | Z-03 | |

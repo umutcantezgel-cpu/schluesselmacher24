@@ -91,3 +91,8 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
 - F-05 suchte den Text „Gleichschließende Zylinder“ und nahm den ersten Treffer. Dieser Text steht auch in Kopf, Fuß und leerem Warenkorb. Am E0-Stand war daher schon der Kopf-Link ein Beleg, auch ohne Eintrag im Warenkorb. Am neuen Stand ist der erste Treffer ein bis 1536 px verborgener Kopf-Link (D-009), deshalb schlug die Prüfung fehl.
 - Jetzt gilt als Beleg der gespeicherte Warenkorb (`sm24-warenkorb` mit mindestens einem Eintrag) und eine nicht leere Warenkorbseite. Das ist eine Schärfung, keine Lockerung.
 - Mit der geschärften Prüfung bestehen E0 (Port 3100) und der neue Stand (Port 3000). Protokolle: `funktionsliste-2026-10-16_00-03-09` (neu) und `funktionsliste-2026-10-16_00-03-15` (E0). Der Ausgangswert bleibt 14 von 14.
+
+## D-014 · Hover nur bei feinem Zeiger, projektweit
+- K-007 verlangt Zeiger-Effekte nur bei `(hover: hover) and (pointer: fine)`. Im Bestand und in der Hülle standen jedoch Dutzende `hover:`-Klassen ohne diese Bedingung. Auf Touch-Geräten bleibt ein solcher Zustand nach dem Antippen stehen.
+- Lösung: Tailwind-Option `future.hoverOnlyWhenSupported`. Sie setzt jede `hover:`- und `group-hover:`-Klasse in genau diese Medienabfrage, ohne dass eine Datei geändert werden muss.
+- **Umkehrprobe:** Alternativ müsste jedes Paket `zeiger:hover:` schreiben. Das ist fehleranfällig und ergäbe dasselbe Ergebnis in mehr Code. Fokus- und Druckzustände bleiben unabhängig davon für alle Geräte sichtbar.
