@@ -32,6 +32,8 @@ Muster für Tokens, Glyphen und Zustände: `src/components/ui/button.tsx` (Druck
 - Vor `tsc`, `vitest` und Bildern: Besteht `/tmp/sm24-messfenster.lock`, läuft gerade eine Messung. Arbeite dann an den Dateien weiter und prüfe später; nie während der Sperre bauen, testen oder fotografieren.
 - `AGENTS.md` kann sich durch den Entwicklungsserver ändern; ignoriere das.
 
+- **Nie Dateien löschen** (`rm`, Überschreiben fremder Dateien): Löschbefehle warten auf eine Freigabe, die in diesem Lauf niemand erteilt, und halten das Paket an. Falsche eigene Ausgaben bleiben liegen; schreibe neue in einen neuen Ordner und nenne beide im Bericht.
+
 ## Schritte
 1. Lies `photo-upload.tsx` ganz, dann die Muster. Notiere jede Stelle mit lucide oder freiem Wert.
 2. Ersetze die Icons nach der Zuordnung; übernimm die Größe (`size`) sinnvoll (14–20); entferne `strokeWidth`-Props an Icons (Glyphen haben keine).

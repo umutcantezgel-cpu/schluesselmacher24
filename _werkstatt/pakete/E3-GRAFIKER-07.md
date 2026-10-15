@@ -26,6 +26,8 @@ Die bestehende README (Aufbau, Ton, Tabellenform) ist das Muster. Bestehende Abs
 - Kürze, wo die alte README Regeln nennt, die nicht mehr gelten (z. B. andere Strichwerte, „Bild folgt“); nenne jede Streichung im Bericht.
 - Keine Code-Änderungen.
 
+- **Nie Dateien löschen** (`rm`, Überschreiben fremder Dateien): Löschbefehle warten auf eine Freigabe, die in diesem Lauf niemand erteilt, und halten das Paket an. Falsche eigene Ausgaben bleiben liegen; schreibe neue in einen neuen Ordner und nenne beide im Bericht.
+
 ## Schritte
 1. Lies die README ganz, dann `registry.tsx`, `generators/grafik-basis.tsx`, `generators/profilschnitt.tsx`, `generators/tuer-schutz.tsx`, `generators/stiftzuhaltung.tsx`, `generators/schliessplan.tsx` (Parameter `markiert`, `tuer`, Export `schliessplanSchluessel`), `profillinie.tsx`, `glyphen/glyphen.test.tsx` (Vertrag), `icons/icon-base.tsx`, `interaktiv/*.tsx`, `src/components/ui/image-placeholder.tsx`, `src/lib/visual/motiv.ts`.
 2. Ergänze bzw. ersetze Abschnitte:

@@ -32,6 +32,8 @@ Muster für Tokens, Glyphen und Zustände: `src/components/ui/button.tsx` (Druck
 - `AGENTS.md` kann sich durch den Entwicklungsserver ändern; ignoriere das.
 - `flow-shell.tsx` wird von 9 Abläufen genutzt (Assistent, Konfiguratoren, Anfragen, Sicherheitscheck). Props und Verhalten (Weiter, Zurück, Schrittliste nur rückwärts klickbar, Zwischenstand-Hinweis, Absenden mit `loading`) bleiben exakt gleich.
 
+- **Nie Dateien löschen** (`rm`, Überschreiben fremder Dateien): Löschbefehle warten auf eine Freigabe, die in diesem Lauf niemand erteilt, und halten das Paket an. Falsche eigene Ausgaben bleiben liegen; schreibe neue in einen neuen Ordner und nenne beide im Bericht.
+
 ## Schritte
 1. Lies beide Dateien, `src/lib/flow/use-flow.ts` (nur lesen) und die Muster.
 2. Kopfzeile: Ablauf-Titel als `text-caption font-mono uppercase tracking-label`; „Schritt X von Y“ als `text-caption font-mono tabular-nums`. Klebende Leiste `sticky top-header z-sticky` statt `top-16 md:top-20 z-30` (Spacing-Token `header` = Höhe des Kopfs).

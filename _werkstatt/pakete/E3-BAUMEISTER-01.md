@@ -32,6 +32,8 @@ Muster für Tokens, Glyphen und Zustände: `src/components/ui/button.tsx` (Druck
 - `AGENTS.md` kann sich durch den Entwicklungsserver ändern; ignoriere das.
 - Erlaubte Ergänzung des Vertrags: `Alert` bekommt den Ton `danger` (Fläche `bg-danger-soft`, Rand `border-danger/30`, Glyph `GlyphWarnung`). `role="note"` bleibt für alle Töne.
 
+- **Nie Dateien löschen** (`rm`, Überschreiben fremder Dateien): Löschbefehle warten auf eine Freigabe, die in diesem Lauf niemand erteilt, und halten das Paket an. Falsche eigene Ausgaben bleiben liegen; schreibe neue in einen neuen Ordner und nenne beide im Bericht.
+
 ## Schritte
 1. Lies alle sieben Dateien und die Muster.
 2. `controls.tsx`: Basisklasse `text-input` statt `text-[15px]`; `min-h-[46px]` → `min-h-touch`; die Zahl im Mengenfeld `font-mono tabular-nums text-input`; Knöpfe „−“/„+“ zeigen `GlyphMinus`/`GlyphPlus` (size 18), der unsichtbare Text „… verringern/erhöhen“ bleibt; `min-w-touch` für beide Knöpfe; Hover mit `hover:`; gedrückt `active:bg-surface-sunken`. Die Klassen `[appearance:textfield] [&::-webkit-…]` ersetzt du durch die Klasse `zahl-ohne-pfeile` (in `globals.css` vom Orchestrator bereitgestellt).
@@ -41,7 +43,7 @@ Muster für Tokens, Glyphen und Zustände: `src/components/ui/button.tsx` (Druck
 6. `badge.tsx`: `text-xs` → `text-caption`; Rest unverändert.
 7. `info-tip.tsx`: lucide → `GlyphInfo` (Auslöser) und `GlyphKreuz` (Schließen); der Auslöser hat mindestens 24 × 24 px Zielfläche (`min-h-6 min-w-6`), der Schließen-Knopf ebenfalls; Popover `shadow-overlay`, Text `text-small`, Titel `text-small font-bold`; keine Animation.
 8. `accordion.tsx`: `ChevronDown` → `GlyphWinkelUnten`; Frage `text-body font-semibold`, Antwort `text-body`; Knopf `min-h-touch`, Hover `hover:bg-surface-muted`; B-09 wie oben; `aria-controls` am Knopf und `id` am Inhalt über `useId()` (neu, nur Zugänglichkeit).
-9. Schnellprüfung. Bilder: `/kontakt` (Felder), `/gleichschliessende-zylinder/konfigurator` (Auswahlkarten, Mengenfeld), `/autoschluessel` (Akkordeon unten auf der Seite: mit `--ganz`). Zusätzlich ein Bild mit Tastaturfokus auf einer Auswahlkarte: Schreibe dafür ein kurzes Skript nach `/root/sm24-bilder/E3-BAUMEISTER-01/fokus.mjs`, das `_werkstatt/werkzeuge/lib.mjs` importiert (`browserStarten`, `kontextFuer`, `laden` – lies die Exporte), `/gleichschliessende-zylinder/konfigurator` lädt, `Tab` drückt, bis eine Auswahlkarte den Fokus hat, und ein Bild speichert.
+9. Schnellprüfung. Bilder: `/service-und-termin/terminstatus` (Felder), `/gleichschliessende-zylinder/konfigurator` (Auswahlkarten, Mengenfeld), `/schliessanlagen` (Akkordeon unten auf der Seite: mit `--ganz`). Zusätzlich ein Bild mit Tastaturfokus auf einer Auswahlkarte: Schreibe dafür ein kurzes Skript nach `/root/sm24-bilder/E3-BAUMEISTER-01/fokus.mjs`, das `_werkstatt/werkzeuge/lib.mjs` importiert (`browserStarten`, `kontextFuer`, `laden` – lies die Exporte), `/gleichschliessende-zylinder/konfigurator` lädt, `Tab` drückt, bis eine Auswahlkarte den Fokus hat, und ein Bild speichert.
 
 ## Schnellprüfung (Prüfstufe A) und Selbstprüfung
 - `npx tsc --noEmit` ohne Fehler; `npx eslint <deine Dateien>` ohne Befund.
