@@ -1,10 +1,12 @@
 import type { VisualProps } from '../registry';
 import { DRAW_DASHARRAY, motionStyle } from '../motion/motion-style';
 import {
+  AKZENT,
   GrafikRahmen,
   HILFSLINIE,
   KONTUR,
   LINIE,
+  LINIE_STARK,
   Raster,
   SCHRIFT_KLEIN,
   hash,
@@ -158,7 +160,7 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
         className="sm24-draw stroke-area-strong"
         data-fraesprofil=""
         pathLength={1}
-        strokeWidth={KONTUR + 0.75}
+        strokeWidth={AKZENT}
         style={motionStyle(FRAESBAHN.verzoegerung, FRAESBAHN.dauer, { strokeDasharray: DRAW_DASHARRAY })}
         d={pfad(punkte)}
       />
@@ -166,11 +168,11 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
       {/* Fräser: ruht am Ende der Bahn; die Client-Hülle führt ihn die Bahn entlang */}
       <g data-fraesbahn={fraesbahn(punkte)}>
         <g data-fraesrad="" transform={`translate(${endeX} ${r(endeY - FRAESER_R - 1)})`}>
-          <circle className="fill-surface stroke-foreground" strokeWidth={LINIE + 0.5} r={FRAESER_R} />
+          <circle className="fill-surface stroke-foreground" strokeWidth={LINIE_STARK} r={FRAESER_R} />
           <circle className="stroke-foreground-muted" strokeWidth={LINIE} r={4} />
           <path
             className="stroke-foreground"
-            strokeWidth={LINIE + 0.5}
+            strokeWidth={LINIE_STARK}
             d={[0, 45, 90, 135, 180, 225, 270, 315]
               .map((w) => {
                 const a = (w * Math.PI) / 180;
@@ -222,7 +224,7 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
             <text className="fill-foreground-muted font-mono" fontSize={SCHRIFT_KLEIN} x={38} y={4}>
               Rohling
             </text>
-            <path className="stroke-area-strong" strokeWidth={KONTUR + 0.75} d="M120 0H148" />
+            <path className="stroke-area-strong" strokeWidth={AKZENT} d="M120 0H148" />
             <text className="fill-foreground-muted font-mono" fontSize={SCHRIFT_KLEIN} x={158} y={4}>
               gefrästes Profil
             </text>

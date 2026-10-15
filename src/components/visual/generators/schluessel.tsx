@@ -472,7 +472,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
             className="sm24-draw stroke-area"
             pathLength={1}
             style={motionStyle(0.45 + i * 0.1, 1.2)}
-            strokeWidth={2.5}
+            strokeWidth={KONTUR}
             d={d}
           />
         ))}

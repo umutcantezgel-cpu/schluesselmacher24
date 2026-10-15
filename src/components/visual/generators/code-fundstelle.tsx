@@ -3,10 +3,13 @@ import type { ReactNode } from 'react';
 import type { VisualProps } from '../registry';
 import { motionStyle } from '../motion/motion-style';
 import {
+  AKZENT,
   GrafikRahmen,
   HILFSLINIE,
   KONTUR,
   LINIE,
+  LINIE_STARK,
+  MARKE,
   Raster,
   aussenTangenten,
   auswahl,
@@ -91,7 +94,7 @@ function schluesselkopf(): Fundstelle {
           fillRule="evenodd"
           d={kopf}
         />
-        {striche(128, 160, 5, 7, 3, 3, 'stroke-foreground-muted')}
+        {striche(128, 160, 5, 7, 3, AKZENT, 'stroke-foreground-muted')}
       </>
     ),
     marke: { x: 128, y: 160, r: 30 },
@@ -127,12 +130,12 @@ function sicherungskarte(): Fundstelle {
           height={136}
           rx={12}
         />
-        <g className="stroke-area-strong" strokeWidth={LINIE + 0.25}>
+        <g className="stroke-area-strong" strokeWidth={LINIE_STARK}>
           <circle cx={58} cy={82} r={5} />
           <path d="M63 82H75M70.5 82v4M74 82v4" />
         </g>
-        <path className="stroke-foreground-muted" strokeWidth={4} d="M88 82H158" />
-        <path className="stroke-border-strong" strokeWidth={4} d="M56 120H176M56 136H140M56 170H120" />
+        <path className="stroke-foreground-muted" strokeWidth={MARKE} d="M88 82H158" />
+        <path className="stroke-border-strong" strokeWidth={MARKE} d="M56 120H176M56 136H140M56 170H120" />
         <rect
           className="fill-area-soft stroke-area-strong"
           strokeWidth={LINIE}
@@ -219,7 +222,7 @@ function zylinderstirn(): Fundstelle {
           r={33}
         />
         <path className="fill-foreground-muted" d={`${kanal}Z`} />
-        {striche(cx, stempelY, 4, 7, 3, 3, 'stroke-foreground-muted')}
+        {striche(cx, stempelY, 4, 7, 3, AKZENT, 'stroke-foreground-muted')}
       </>
     ),
     marke: { x: cx, y: stempelY, r: 26 },
@@ -301,7 +304,7 @@ export function CodeFundstelleGrafik({ params, title, className }: VisualProps) 
       <circle
         className="sm24-pop stroke-area-strong"
         style={motionStyle(0.5)}
-        strokeWidth={LINIE + 0.5}
+        strokeWidth={LINIE_STARK}
         strokeDasharray="5 5"
         cx={marke.x}
         cy={marke.y}

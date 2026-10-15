@@ -4,6 +4,7 @@ import {
   GrafikRahmen,
   KONTUR,
   LINIE,
+  LINIE_STARK,
   Raster,
   SCHRIFT,
   auswahl,
@@ -350,7 +351,7 @@ function kantenAttribute(stand: Stand): { className: string; strokeWidth: number
       strokeWidth: LINIE,
     };
   }
-  return { className: 'sm24-draw stroke-area', strokeWidth: 2 };
+  return { className: 'sm24-draw stroke-area', strokeWidth: LINIE_STARK };
 }
 
 /**
@@ -386,14 +387,14 @@ function SchluesselKnoten({ k, oben, stand }: { k: Knoten; oben: boolean; stand:
     <g className={gruppenKlasse(stand)} style={motionStyle(0.05 + k.ebene * TAKT)}>
       <rect
         className={oben ? 'fill-area-muted stroke-area-strong' : 'fill-surface stroke-area-strong'}
-        strokeWidth={oben ? KONTUR : LINIE + 0.25}
+        strokeWidth={oben ? KONTUR : LINIE_STARK}
         x={r(x0)}
         y={r(cy - SCHLUESSEL_HOEHE / 2)}
         width={r(breite)}
         height={SCHLUESSEL_HOEHE}
         rx={8}
       />
-      <g className="stroke-area-strong" strokeWidth={LINIE + 0.25}>
+      <g className="stroke-area-strong" strokeWidth={LINIE_STARK}>
         <circle cx={r(symbolX + 3.5)} cy={r(cy)} r={3.5} />
         <path
           d={`M${r(symbolX + 7)} ${r(cy)}H${r(symbolX + 16)}M${r(symbolX + 12.5)} ${r(cy)}v3.5M${r(symbolX + 15.5)} ${r(cy)}v3.5`}
@@ -422,7 +423,7 @@ function TuerKnoten({ k, stand }: { k: Knoten; stand: Stand }) {
     <g className={gruppenKlasse(stand)} style={motionStyle(0.05 + k.ebene * TAKT)}>
       <rect
         className={tuerFlaeche(zentral, stand)}
-        strokeWidth={LINIE + 0.5}
+        strokeWidth={LINIE_STARK}
         x={r(links)}
         y={r(oben)}
         width={TUER_BREITE}

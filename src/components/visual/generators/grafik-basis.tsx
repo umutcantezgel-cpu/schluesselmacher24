@@ -16,6 +16,14 @@ export const KONTUR = 2.25;
 export const LINIE = 1.5;
 /** Hilfslinien, Raster, Mittellinien. */
 export const HILFSLINIE = 1;
+/** Feine Details (Kerben im Raster). */
+export const DETAIL = 0.75;
+/** Kräftigere Linie (ersetzt `LINIE + 0.25`, `LINIE + 0.5` und `2`). */
+export const LINIE_STARK = 2;
+/** Akzent: Statusmarken, Kanten mit Hervorhebung (ersetzt `KONTUR + 0.75` und `3`). */
+export const AKZENT = 3;
+/** Sehr kräftige Marke (ersetzt `4`). */
+export const MARKE = 4;
 /** Beschriftung in viewBox-Einheiten. */
 export const SCHRIFT = 13;
 export const SCHRIFT_KLEIN = 12;
