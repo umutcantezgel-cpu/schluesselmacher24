@@ -1,0 +1,2 @@
+Interactive modules included:
+- ServiceBudgetCalculator: Interactive budget estimator (useActionState + useOptimistic)
