@@ -1,0 +1,7 @@
+# SCHLÜSSELMACHER24 Architektur & Blueprint
+
+Dies ist ein Überblick über die aktuellen Architektur-Ziele der Plattform.
+- Framework: Next.js 16+, React 19.2+
+- UI Engine: Tailwind CSS v4, OKLCH Light Mode
+- Zustand: 64 Routen inventarisiert.
+- Kernziel: Anhebung von Thin Content auf > 800 Wörter, Integration von interaktiven Modulen und strenges Typisierungs-System.

@@ -43,3 +43,12 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architektur-Ziele & Blueprint
+
+Die aktuellen Architektur-Ziele basieren auf dem neuesten Audit:
+- **Framework:** Next.js 16+
+- **Styling:** Tailwind CSS v4 (OKLCH)
+- **Gesamte analysierte Routen:** 64
+- **Priorität:** Erweiterung von Thin Content, Modernisierung auf React 19.2+ Form Actions, Strict Typisierung und Implementierung des "Swiss Light Mode" OKLCH Farbschemas.
