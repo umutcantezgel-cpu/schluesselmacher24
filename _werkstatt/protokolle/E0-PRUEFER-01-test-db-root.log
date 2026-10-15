@@ -1,0 +1,38 @@
+
+ RUN  v2.1.9 /home/user/schluesselmacher24
+
+
+ Test Files  no tests
+      Tests  no tests
+   Start at  21:14:13
+   Duration  344ms (transform 42ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 0ms)
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: node scripts/db.mjs start fehlgeschlagen:
+
+initdb fehlgeschlagen:
+initdb: error: cannot be run as root
+initdb: hint: Please log in (using, e.g., "su") as the (unprivileged) user that will own the server process.
+
+
+ ❯ run src/test/db-global-setup.ts:14:11
+     13| const DIR = path.join(os.tmpdir(), `sm24-test-pg-${process.pid}`);
+     14| 
+     15| function run(args: string[], env: NodeJS.ProcessEnv) {
+       |          ^
+     16|   const result = spawnSync(args[0], args.slice(1), { env, encoding: 'u…
+     17|   if (result.status !== 0) {
+ ❯ Object.setup src/test/db-global-setup.ts:29:3
+ ❯ WorkspaceProject.initializeGlobalSetup node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:9926:53
+ ❯ Vitest.initializeGlobalSetup node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:10794:7
+ ❯ node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:10816:7
+ ❯ Vitest.runFiles node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:10840:12
+ ❯ Vitest.start node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:10682:7
+ ❯ startVitest node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:11848:7
+ ❯ start node_modules/vitest/dist/chunks/cac.CB_9Zo9Q.js:1506:17
+ ❯ CAC.run node_modules/vitest/dist/chunks/cac.CB_9Zo9Q.js:1486:3
+
+
+
+

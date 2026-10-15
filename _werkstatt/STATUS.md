@@ -14,8 +14,20 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 0/6 · W
 - HAIKU-PLÄTZE: 4 · GERÄTEGRÖSSEN: 390×844, 768×1024, 1440×900 · BUDGETS: Standard (LCP ≤ 2,5 s, CLS ≤ 0,1, INP ≤ 200 ms, Bewegungscode ≤ 60 KB komprimiert)
 - ARBEITSBRANCH: claude/projekt-gestaltung-entwicklung-tofodh (von der Cloud-Sitzung angelegt)
 
-## Einrichtung
-(folgt aus E0-PRUEFER-01)
+## Einrichtung (E0-PRUEFER-01, Belege in `_werkstatt/protokolle/E0-PRUEFER-01-*`)
+- Nach neu aufgesetzter Umgebung in dieser Reihenfolge wiederholen:
+  1. `npm ci`
+  2. Build-Gate: `SM24_DATA=json npx next build` (198 Seiten, etwa 50 s). `npm run build` scheitert als root an `initdb` und taugt nicht als Gate.
+  3. Server: `_werkstatt/werkzeuge/server.sh start` (`next start` im JSON-Modus, Port 3000).
+  4. Werkzeuge: siehe `_werkstatt/werkzeuge/LIESMICH.md` (Abhängigkeiten nach `/root/sm24-werkzeuge`, Symlink `node_modules`).
+  5. DB-Tests nur als Nutzer `ubuntu`: Postgres-Daten unter `/home/ubuntu/sm24-pg/`, Vitest über den Wrapper `/home/ubuntu/sm24-pg/vitest-wrapper/vitest.db.wrapper.mjs`. Das Repo gehört root, daher braucht `ubuntu` Schreibrecht auf `private-uploads/` (vom Repo ignoriert).
+- Ausgangsstand des Bestands:
+  - Typprüfung: 0 Fehler
+  - Linter: 0 Fehler, 0 Warnungen
+  - Unit-Tests: 31 Dateien, 680/680 grün
+  - DB-Tests: als root nicht lauffähig, als `ubuntu` 39/52, die 13 Fehler sind Schreibrechte
+  - HTTP: 15/15 Adressen liefern 200
 
 ## Verlauf (eine Zeile je Stunde oder Welle)
 - 15.10.2026 23:08 · E0 begonnen: _werkstatt angelegt, Auftrag wörtlich gespeichert, Erkundung (5 Kundschafter + Lückenprüfung) und L0-Vorprüfung des Plans aus der Planphase übernommen.
+- 15.10.2026 23:17 · E0-PRUEFER-01 abgenommen: Build-Gate JSON grün, Bestand dokumentiert; Welle E0-b läuft (Werkzeuge, Next-16-Doku, lucide-Inventar).

@@ -1,0 +1,335 @@
+
+ RUN  v2.1.9 /home/user/schluesselmacher24
+
+[21:14:48] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ✓ src/lib/data/vorgaenge.db.test.ts (11 tests) 1335ms
+[21:14:51] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ❯ src/lib/server/kundendateien.db.test.ts (10 tests | 10 failed) 363ms
+   × Kundendateien speichern > legt die Datei privat an — mit Hash statt Schlüssel und mit Frist 50ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × Kundendateien speichern > vergibt eindeutige Namen, auch wenn jedes Foto „image.png“ heißt 4ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × Kundendateien speichern > ist ohne Anmeldung weder lesbar noch anlegbar; den Hash sieht auch das Team nicht 196ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × verknuepfeKundendateien > ordnet nur mit dem richtigen Schlüssel zu und löscht danach den Hash 3ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × verknuepfeKundendateien > ordnet eine bereits zugeordnete Datei nicht erneut zu 3ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × verknuepfeKundendateien > übergeht unbekannte, ungültige und doppelte Angaben 3ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × verknuepfeKundendateien > lässt bei gleichzeitigen Versuchen genau einen gewinnen 3ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × verknuepfeKundendateien > läuft in der Transaktion des Aufrufers mit 3ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × Aufbewahrung > wählt abgelaufene Fristen und nie zugeordnete Uploads nach 24 Stunden 2ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × Aufbewahrung > löscht Eintrag und Datei — im Probelauf nichts 2ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+[21:14:53] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+(node:2320) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+Inhalte übernehmen …
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  einstellungen: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  zylinderkatalog: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  preisgruppen: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  autoschluessel-leistungen: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  preisregeln: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  fahrzeugmarken: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  codelinien: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  beispielartikel: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  leistungsseiten: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  seiten: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  ratgeber: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  einsatzgebiete: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  sperrtage: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  nachweise: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  richtwerte: bereits übernommen — übersprungen
+Fertig.
+
+ ✓ src/lib/data/payload.db.test.ts (14 tests) 1062ms
+[21:14:56] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ✓ src/lib/data/nachweise.db.test.ts (6 tests) 328ms
+[21:14:58] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ✓ src/lib/data/richtwerte.db.test.ts (4 tests) 312ms
+[21:15:01] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ❯ src/lib/server/create-record.db.test.ts (3 tests | 3 failed) 217ms
+   × Hochgeladene Dateien am Vorgang > ordnet die Datei mit gültigem Schlüssel zu und speichert den Schlüssel nie 62ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × Hochgeladene Dateien am Vorgang > übernimmt keine fremde Datei mit falschem Schlüssel 8ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+   × Hochgeladene Dateien am Vorgang > eine bereits zugeordnete Datei wandert nicht in einen zweiten Vorgang 2ms
+     → EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+[21:15:03] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ✓ src/lib/server/rate-limit.db.test.ts (4 tests) 248ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/server/create-record.db.test.ts > Hochgeladene Dateien am Vorgang > ordnet die Datei mit gültigem Schlüssel zu und speichert den Schlüssel nie
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/create-record.db.test.ts:30:17
+ ❯ src/lib/server/create-record.db.test.ts:78:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  src/lib/server/create-record.db.test.ts > Hochgeladene Dateien am Vorgang > übernimmt keine fremde Datei mit falschem Schlüssel
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/create-record.db.test.ts:30:17
+ ❯ src/lib/server/create-record.db.test.ts:92:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  src/lib/server/create-record.db.test.ts > Hochgeladene Dateien am Vorgang > eine bereits zugeordnete Datei wandert nicht in einen zweiten Vorgang
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/create-record.db.test.ts:30:17
+ ❯ src/lib/server/create-record.db.test.ts:103:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL  src/lib/server/kundendateien.db.test.ts > Kundendateien speichern > legt die Datei privat an — mit Hash statt Schlüssel und mit Frist
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/kundendateien.db.test.ts:47:17
+ ❯ src/lib/server/kundendateien.db.test.ts:97:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  src/lib/server/kundendateien.db.test.ts > Kundendateien speichern > vergibt eindeutige Namen, auch wenn jedes Foto „image.png“ heißt
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/kundendateien.db.test.ts:47:17
+ ❯ src/lib/server/kundendateien.db.test.ts:112:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+ FAIL  src/lib/server/kundendateien.db.test.ts > Kundendateien speichern > ist ohne Anmeldung weder lesbar noch anlegbar; den Hash sieht auch das Team nicht
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/kundendateien.db.test.ts:47:17
+ ❯ src/lib/server/kundendateien.db.test.ts:132:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+
+ FAIL  src/lib/server/kundendateien.db.test.ts > verknuepfeKundendateien > ordnet nur mit dem richtigen Schlüssel zu und löscht danach den Hash
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/kundendateien.db.test.ts:47:17
+ ❯ src/lib/server/kundendateien.db.test.ts:146:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+
+ FAIL  src/lib/server/kundendateien.db.test.ts > verknuepfeKundendateien > ordnet eine bereits zugeordnete Datei nicht erneut zu
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/kundendateien.db.test.ts:47:17
+ ❯ src/lib/server/kundendateien.db.test.ts:169:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+
+ FAIL  src/lib/server/kundendateien.db.test.ts > verknuepfeKundendateien > übergeht unbekannte, ungültige und doppelte Angaben
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/kundendateien.db.test.ts:47:17
+ ❯ src/lib/server/kundendateien.db.test.ts:184:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+ FAIL  src/lib/server/kundendateien.db.test.ts > verknuepfeKundendateien > lässt bei gleichzeitigen Versuchen genau einen gewinnen
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/kundendateien.db.test.ts:47:17
+ ❯ src/lib/server/kundendateien.db.test.ts:207:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+
+ FAIL  src/lib/server/kundendateien.db.test.ts > verknuepfeKundendateien > läuft in der Transaktion des Aufrufers mit
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/kundendateien.db.test.ts:47:17
+ ❯ src/lib/server/kundendateien.db.test.ts:218:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/13]⎯
+
+ FAIL  src/lib/server/kundendateien.db.test.ts > Aufbewahrung > wählt abgelaufene Fristen und nie zugeordnete Uploads nach 24 Stunden
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/kundendateien.db.test.ts:47:17
+ ❯ src/lib/server/kundendateien.db.test.ts:244:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/13]⎯
+
+ FAIL  src/lib/server/kundendateien.db.test.ts > Aufbewahrung > löscht Eintrag und Datei — im Probelauf nichts
+Error: EACCES: permission denied, mkdir '/home/user/schluesselmacher24/private-uploads'
+ ❯ generateFileData node_modules/payload/src/uploads/generateFileData.ts:200:5
+ ❯ createOperation node_modules/payload/src/collections/operations/create.ts:238:57
+ ❯ Module.speichereKundendatei src/lib/server/kundendateien.ts:116:15
+    114| 
+    115|   // Die Sammlung erlaubt kein Anlegen über Backend oder API — nur auf…
+    116|   const doc = await payload.create({
+       |               ^
+    117|     collection: 'kundendateien',
+    118|     data: {
+ ❯ hochladen src/lib/server/kundendateien.db.test.ts:47:17
+ ❯ src/lib/server/kundendateien.db.test.ts:277:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/13]⎯
+
+ Test Files  2 failed | 5 passed (7)
+      Tests  13 failed | 39 passed (52)
+   Start at  21:14:35
+   Duration  28.19s (transform 699ms, setup 0ms, collect 11.07s, tests 3.86s, environment 1ms, prepare 665ms)
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: EACCES: permission denied, open '/home/user/schluesselmacher24/node_modules/.vite/vitest/results.json'
+ ❯ open node:internal/fs/promises:636:25
+ ❯ Object.writeFile node:internal/fs/promises:1205:14
+ ❯ ResultsCache.writeToCache node_modules/vitest/dist/chunks/resolveConfig.rBxzbVsl.js:4280:5
+ ❯ node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:10827:7
+ ❯ Vitest.runFiles node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:10840:12
+ ❯ Vitest.start node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:10682:7
+ ❯ startVitest node_modules/vitest/dist/chunks/cli-api.DqsSTaIi.js:11848:7
+ ❯ start node_modules/vitest/dist/chunks/cac.CB_9Zo9Q.js:1506:17
+ ❯ CAC.run node_modules/vitest/dist/chunks/cac.CB_9Zo9Q.js:1486:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -13, code: 'EACCES', syscall: 'open', path: '/home/user/schluesselmacher24/node_modules/.vite/vitest/results.json' }
+
+
+
