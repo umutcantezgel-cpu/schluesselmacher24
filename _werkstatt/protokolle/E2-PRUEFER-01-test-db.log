@@ -1,16 +1,15 @@
 
  RUN  v2.1.9 /home/user/schluesselmacher24
 
-[22:07:06] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[23:17:50] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
 Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
- ✓ src/lib/data/vorgaenge.db.test.ts (11 tests) 1409ms
-   ✓ Termine > bucht bei zwei gleichzeitigen Anfragen dasselbe Zeitfenster genau einmal 304ms
-[22:07:09] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/data/vorgaenge.db.test.ts (11 tests) 1275ms
+[23:17:53] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
 Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
- ✓ src/lib/server/kundendateien.db.test.ts (10 tests) 950ms
-[22:07:11] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/server/kundendateien.db.test.ts (10 tests) 1061ms
+[23:17:56] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
 Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
-(node:4037) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(node:9406) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
 Inhalte übernehmen …
@@ -61,23 +60,22 @@ stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt 
   richtwerte: bereits übernommen — übersprungen
 Fertig.
 
- ✓ src/lib/data/payload.db.test.ts (14 tests) 982ms
-[22:07:13] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/data/payload.db.test.ts (14 tests) 1249ms
+[23:17:59] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
 Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
- ✓ src/lib/data/nachweise.db.test.ts (6 tests) 284ms
-[22:07:16] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/data/nachweise.db.test.ts (6 tests) 299ms
+[23:18:01] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
 Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
- ✓ src/lib/data/richtwerte.db.test.ts (4 tests) 324ms
-[22:07:18] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/data/richtwerte.db.test.ts (4 tests) 444ms
+[23:18:03] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
 Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
- ✓ src/lib/server/create-record.db.test.ts (3 tests) 539ms
-[22:07:20] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/server/create-record.db.test.ts (3 tests) 494ms
+[23:18:06] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
 Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
- ✓ src/lib/server/rate-limit.db.test.ts (4 tests) 221ms
+ ✓ src/lib/server/rate-limit.db.test.ts (4 tests) 234ms
 
  Test Files  7 passed (7)
       Tests  52 passed (52)
-   Start at  22:06:53
-   Duration  26.62s (transform 602ms, setup 0ms, collect 9.48s, tests 4.71s, environment 1ms, prepare 529ms)
+   Start at  23:17:37
+   Duration  28.67s (transform 689ms, setup 0ms, collect 10.89s, tests 5.06s, environment 1ms, prepare 474ms)
 
-EXIT=0

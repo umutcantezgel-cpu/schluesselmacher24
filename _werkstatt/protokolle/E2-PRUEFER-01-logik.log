@@ -20,4 +20,3 @@ Basis: `b49fe04bf70a67390029216bac7f3606569de3c5` · Dateien: 15 · abweichend: 
 | `src/app/(site)/rechtliches/cookie-einstellungen/cookie-einstellungen.tsx` | gleich | – |
 | `src/components/forms/photo-upload.tsx` | gleich | – |
 
-EXIT=0

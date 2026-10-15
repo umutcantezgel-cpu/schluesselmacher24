@@ -1,13 +1,13 @@
 {
   "skript": "werte-suche",
-  "zeit": "2026-10-15T22:07:37.997Z",
+  "zeit": "2026-10-15T23:18:18.691Z",
   "argumente": {
     "_": [],
     "seit": "fcbcfb2",
-    "json": "_werkstatt/protokolle/E2-PRUEFER-01-werte.json"
+    "json": "/home/user/schluesselmacher24/_werkstatt/protokolle/E2-PRUEFER-01-werte.json"
   },
   "seit": "fcbcfb2",
-  "dateien": 88,
+  "dateien": 91,
   "summeOhneAusnahmen": 1,
   "summeAusnahmen": 8,
   "funde": [
