@@ -2,7 +2,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { SchliessplanGrafik } from './schliessplan';
+import { SchliessplanGrafik, schliessplanSchluessel } from './schliessplan';
 
 function zeichne(params: unknown, title: unknown = 'Schließplan'): string {
   return renderToStaticMarkup(
@@ -134,5 +134,121 @@ describe('SchliessplanGrafik', () => {
     );
     const params = { system: 'generalhaupt', gruppen: 3, tueren: 6 };
     expect(zeichne(params)).toBe(zeichne({ ...params }));
+  });
+});
+
+/** Hervorgehobene Kanten: Pfade mit der Klasse der Markierung. */
+const hervorgehobeneKanten = (html: string) =>
+  (html.match(/<path class="sm24-draw stroke-area-strong /g) ?? []).length;
+/** Knoten (Schlüssel und Türen) ohne Dimmung. */
+const ungedimmt = (html: string) =>
+  (html.match(/<g class="sm24-pop[^"]*"/g) ?? []).filter((g) => !g.includes('opacity-30')).length;
+/** Türen von links nach rechts: hervorgehoben oder nicht. */
+function tuerenVonLinks(html: string): boolean[] {
+  return [...html.matchAll(/<rect class="([^"]*)"[^>]*?\bx="([\d.-]+)"[^>]*rx="2\.5"/g)]
+    .map((t) => ({ hervor: t[1].includes('fill-area-soft'), x: Number(t[2]) }))
+    .sort((a, b) => a.x - b.x)
+    .map((t) => t.hervor);
+}
+/** Klassen der Gruppen, die ein Türsymbol umschließen. */
+function tuerGruppen(html: string): string[] {
+  return [...html.matchAll(/<g class="([^"]*)"[^>]*><rect class="[^"]*"[^>]*rx="2\.5"/g)].map(
+    (t) => t[1],
+  );
+}
+
+describe('SchliessplanGrafik – Markierung', () => {
+  it('markiert e2 mit seiner Tür und dem Weg von oben', () => {
+    const html = zeichne({ system: 'haupt', markiert: 'e2' });
+    pruefeVertrag(html);
+    expect(tueren(html)).toBe(4);
+    expect((html.match(/fill-area-soft/g) ?? []).length).toBe(1);
+    expect(hervorgehobeneKanten(html)).toBe(2);
+    expect(tuerenVonLinks(html)).toEqual([false, true, false, false]);
+  });
+
+  it('markiert die Wurzel mit allen Türen, ohne Dimmung an Türen', () => {
+    const html = zeichne({ system: 'haupt', markiert: 'wurzel' });
+    pruefeVertrag(html);
+    expect(tuerenVonLinks(html)).toEqual([true, true, true, true]);
+    expect(tuerGruppen(html).some((c) => c.includes('opacity-30'))).toBe(false);
+    expect(hervorgehobeneKanten(html)).toBe(8);
+  });
+
+  it('markiert bei der Generalhauptschlüsselanlage nur die Türen der ersten Hauptgruppe', () => {
+    const html = zeichne({ system: 'generalhaupt', gruppen: 2, tueren: 4, markiert: 'g1' });
+    pruefeVertrag(html);
+    expect(tuerenVonLinks(html)).toEqual([true, true, false, false]);
+    expect(hervorgehobeneKanten(html)).toBe(7);
+  });
+
+  it('markiert bei einer Tür die Tür, ihre Schlüssel und die Kanten dazwischen', () => {
+    const html = zeichne({ system: 'haupt', tuer: 't3' });
+    pruefeVertrag(html);
+    expect(tuerenVonLinks(html)).toEqual([false, false, true, false]);
+    expect(ungedimmt(html)).toBe(3);
+    expect(hervorgehobeneKanten(html)).toBe(2);
+  });
+
+  it('markiert bei der Zentralschlossanlage ES 1 samt beider Zentraltüren', () => {
+    const html = zeichne({ system: 'zentral', tueren: 3, markiert: 'e1' });
+    pruefeVertrag(html);
+    expect(tuerenVonLinks(html).filter(Boolean)).toHaveLength(3);
+    expect(ungedimmt(html)).toBe(4);
+  });
+
+  it('ignoriert unbekannte Werte wie keine Markierung', () => {
+    for (const extra of [{ markiert: 'x9' }, { markiert: 'e9' }, { tuer: 42 }, { markiert: ['e1'] }]) {
+      expect(zeichne({ system: 'haupt', ...extra })).toBe(zeichne({ system: 'haupt' }));
+    }
+  });
+
+  it('zeichnet ohne neue Parameter weder Dimmung noch Hervorhebung', () => {
+    for (const params of [{}, { system: 'generalhaupt' }, { system: 'zentral' }]) {
+      const html = zeichne(params);
+      expect(html).not.toContain('opacity-30');
+      expect(html).not.toContain('fill-area-soft');
+    }
+  });
+
+  it('setzt den Titel mit Markierung nur bei fehlendem Titel', () => {
+    expect(zeichne({ system: 'haupt', markiert: 'e3' }, '')).toContain(
+      '<title>Schließplan Hauptschlüsselanlage – markiert: ES 3</title>',
+    );
+    expect(zeichne({ system: 'haupt', tuer: 't2' }, '')).toContain(
+      '<title>Schließplan Hauptschlüsselanlage – markiert: Tür 2</title>',
+    );
+    expect(zeichne({ system: 'haupt', markiert: 'e3' }, 'Eigener Titel')).toContain(
+      '<title>Eigener Titel</title>',
+    );
+  });
+
+  it('bleibt bei gleicher Eingabe mit Markierung deterministisch', () => {
+    const params = { system: 'generalhaupt', gruppen: 3, tueren: 6, markiert: 'g2' };
+    expect(zeichne(params, '')).toBe(zeichne({ ...params }, ''));
+  });
+
+  it('liefert die Schlüsselliste der Generalhauptschlüsselanlage von oben nach unten', () => {
+    const liste = schliessplanSchluessel({ system: 'generalhaupt', gruppen: 2, tueren: 4 });
+    const kuerzel = liste.map((k) => k.kuerzel);
+    expect(kuerzel[0]).toBe('GHS');
+    expect(kuerzel).toContain('HGS 1');
+    expect(kuerzel).toContain('HGS 2');
+    const esse = liste.filter((k) => k.kuerzel.startsWith('ES '));
+    expect(esse).toHaveLength(4);
+    expect(esse.flatMap((k) => k.tueren).sort()).toEqual(['t1', 't2', 't3', 't4']);
+    expect(liste[0].tueren.sort()).toEqual(['t1', 't2', 't3', 't4']);
+  });
+
+  it('liefert bei der Gleichschließung genau einen Schlüssel mit allen Türen', () => {
+    expect(schliessplanSchluessel({ system: 'gleichschliessung', tueren: 5 })).toEqual([
+      { kennung: 'wurzel', kuerzel: 'Schlüssel', tueren: ['t1', 't2', 't3', 't4', 't5'] },
+    ]);
+  });
+
+  it('nennt bei der Zentralschlossanlage ES mit eigener Tür und beiden Zentraltüren', () => {
+    const liste = schliessplanSchluessel({ system: 'zentral', tueren: 3 });
+    expect(liste.map((k) => k.kuerzel)).toEqual(['ES 1', 'ES 2', 'ES 3']);
+    expect(liste[0]).toEqual({ kennung: 'e1', kuerzel: 'ES 1', tueren: ['t1', 'z1', 'z2'] });
   });
 });
