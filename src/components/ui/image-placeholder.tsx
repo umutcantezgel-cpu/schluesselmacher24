@@ -1,100 +1,97 @@
 import Image from 'next/image';
-import { ImageOff } from 'lucide-react';
+import type { ComponentType } from 'react';
 
+import type { IconProps } from '@/components/visual/icons/icon-base';
+import { IconAlarmtechnik } from '@/components/visual/icons/alarmtechnik';
+import { IconAutoschluessel } from '@/components/visual/icons/autoschluessel';
+import { IconFotoHochladen } from '@/components/visual/icons/foto-hochladen';
+import { IconProfilzylinder } from '@/components/visual/icons/profilzylinder';
+import { IconSchluesselKopieren } from '@/components/visual/icons/schluessel-kopieren';
+import { IconTuerUndSchliesstechnik } from '@/components/visual/icons/tuer-und-schliesstechnik';
+import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
+import { IconVideoueberwachung } from '@/components/visual/icons/videoueberwachung';
+import { IconWerkstatt } from '@/components/visual/icons/werkstatt';
 import { renderVisual } from '@/components/visual/registry';
 import type { ImageSlot } from '@/lib/types';
+import { fachIconFuerMotiv, visualFuerMotiv, type FachIconName } from '@/lib/visual/motiv';
 import { cn } from '@/lib/cn';
 
 const ratios: Record<ImageSlot['ratio'], string> = {
-  '16/9': 'aspect-[16/9]',
-  '4/3': 'aspect-[4/3]',
+  '16/9': 'aspect-video',
+  '4/3': 'aspect-4/3',
   '1/1': 'aspect-square',
-  '3/2': 'aspect-[3/2]',
-  '21/9': 'aspect-[21/9]',
+  '3/2': 'aspect-3/2',
+  '21/9': 'aspect-21/9',
+};
+
+const FACH_ICONS: Record<FachIconName, ComponentType<IconProps>> = {
+  videoueberwachung: IconVideoueberwachung,
+  alarmtechnik: IconAlarmtechnik,
+  'foto-hochladen': IconFotoHochladen,
+  profilzylinder: IconProfilzylinder,
+  'tuer-und-schliesstechnik': IconTuerUndSchliesstechnik,
+  'versand-paket': IconVersandPaket,
+  autoschluessel: IconAutoschluessel,
+  'schluessel-kopieren': IconSchluesselKopieren,
+  werkstatt: IconWerkstatt,
 };
 
 export interface ImagePlaceholderProps {
   slot: ImageSlot;
   className?: string;
-  /** Kompakte Darstellung ohne Hinweistext. */
+  /** Kleine Fläche (Vorschaubild, Liste): Fach-Icon statt Zeichnung. */
   compact?: boolean;
   /** Hinweis für den Browser, wie breit das Bild dargestellt wird. */
   sizes?: string;
+  /** Ohne Fläche und Rahmen – die Zeichnung steht frei (etwa im Seitenkopf). */
+  frei?: boolean;
 }
 
 /**
- * Bildfläche mit fester Rangfolge:
+ * Bildfläche mit fester Rangfolge (KERN K-008):
  * 1. Foto aus der Medienbibliothek (`slot.bild`)
- * 2. aus Daten erzeugte Vektorgrafik (`slot.visual`)
- * 3. neutrale, beschriftete Platzhalterfläche
+ * 2. Fachgrafik aus Daten – `slot.visual` oder passend zum Motiv (`visualFuerMotiv`)
+ * 3. Fach-Icon passend zum Motiv
  *
- * Es werden bewusst keine Stockfotos und keine erzeugten Fotos eingesetzt,
- * die eine echte Werkstatt vortäuschen.
+ * Es gibt keine sichtbaren Platzhalter und keine erzeugten Fotos: Die Grafiken
+ * erklären die Sache und geben sich nicht als Foto aus. Welche Fotos fehlen,
+ * steht für die Redaktion in `_werkstatt/MENSCHEN.md`.
  */
 export function ImagePlaceholder({
   slot,
   className,
   compact = false,
   sizes = '(min-width: 1024px) 50vw, 100vw',
+  frei = false,
 }: ImagePlaceholderProps) {
   if (slot.bild?.url) {
     return (
-      <div
-        className={cn('relative w-full overflow-hidden rounded-lg bg-surface-muted', ratios[slot.ratio], className)}
-      >
-        <Image
-          src={slot.bild.url}
-          alt={slot.bild.alt || slot.motif}
-          fill
-          sizes={sizes}
-          className="object-cover"
-        />
+      <div className={cn('relative w-full overflow-hidden rounded-lg bg-surface-muted', ratios[slot.ratio], className)}>
+        <Image src={slot.bild.url} alt={slot.bild.alt || slot.motif} fill sizes={sizes} className="object-cover" />
       </div>
     );
   }
 
-  const visual = slot.visual
-    ? renderVisual(slot.visual, slot.motif, 'absolute inset-0 h-full w-full')
-    : null;
+  const flaeche = frei ? '' : 'rounded-lg border border-border bg-surface';
+  const ref = compact ? null : (slot.visual ?? visualFuerMotiv(slot.motif));
+  /* Der Titel kommt vom Generator selbst (sachlich), nicht aus dem Fotomotiv. */
+  const visual = ref ? renderVisual(ref, '', 'absolute inset-0 h-full w-full') : null;
   if (visual) {
-    return (
-      <div
-        className={cn(
-          'relative w-full overflow-hidden rounded-lg bg-area-soft',
-          ratios[slot.ratio],
-          className,
-        )}
-      >
-        {visual}
-      </div>
-    );
+    return <div className={cn('relative w-full overflow-hidden', flaeche, ratios[slot.ratio], className)}>{visual}</div>;
   }
 
+  const Icon = FACH_ICONS[fachIconFuerMotiv(slot.motif)];
   return (
     <div
+      aria-hidden
       className={cn(
-        'flex w-full flex-col items-center justify-center gap-2 rounded-lg',
-        'border border-dashed border-border-strong bg-surface-muted p-4 text-center',
+        'flex w-full items-center justify-center overflow-hidden text-area-strong',
+        frei ? '' : 'rounded-lg border border-border bg-surface-muted',
         ratios[slot.ratio],
         className,
       )}
-      role="img"
-      aria-label={`Bildplatzhalter: ${slot.motif}`}
     >
-      <ImageOff className="text-foreground-subtle" size={compact ? 16 : 20} aria-hidden />
-      <span className="max-w-[28ch] text-xs font-semibold leading-snug text-foreground-muted">
-        {slot.motif}
-      </span>
-      {!compact && slot.note && (
-        <span className="max-w-[34ch] text-[11px] leading-snug text-foreground-subtle">
-          {slot.note}
-        </span>
-      )}
-      {!compact && (
-        <span className="text-[10px] font-medium uppercase tracking-wider text-foreground-subtle">
-          Bild folgt
-        </span>
-      )}
+      <Icon size={compact ? 32 : 72} />
     </div>
   );
 }

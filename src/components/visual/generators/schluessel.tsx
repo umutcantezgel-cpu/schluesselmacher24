@@ -11,8 +11,10 @@ import {
   SCHRIFT_KLEIN,
   auswahl,
   hash,
+  kerben,
   kurztext,
   parameter,
+  positionen,
   r,
   titel,
   wert,
@@ -52,42 +54,6 @@ function profilAusCode(code: string): number[] {
     folge.push(tiefe);
   }
   return folge;
-}
-
-/** Gleichmäßig verteilte Positionen zwischen `von` und `bis`. */
-function positionen(anzahl: number, von: number, bis: number): number[] {
-  if (anzahl <= 1) return [(von + bis) / 2];
-  const schritt = (bis - von) / (anzahl - 1);
-  return Array.from({ length: anzahl }, (_, i) => von + i * schritt);
-}
-
-/**
- * Kantenverlauf mit V-Einschnitten (flacher Grund, schräge Flanken) als
- * Punkte `[x, tiefe]`; Tiefe 0 liegt auf der unberührten Kante.
- */
-function kerben(pos: number[], tiefen: number[], flach: number, steigung: number): [number, number][] {
-  const punkte: [number, number][] = [];
-  const n = pos.length;
-  punkte.push([pos[0] - flach / 2 - tiefen[0] / steigung, 0]);
-  for (let i = 0; i < n; i += 1) {
-    punkte.push([pos[i] - flach / 2, tiefen[i]]);
-    punkte.push([pos[i] + flach / 2, tiefen[i]]);
-    if (i < n - 1) {
-      const a = pos[i] + flach / 2;
-      const b = pos[i + 1] - flach / 2;
-      const linksOben = a + tiefen[i] / steigung;
-      const rechtsOben = b - tiefen[i + 1] / steigung;
-      if (linksOben <= rechtsOben) {
-        punkte.push([linksOben, 0], [rechtsOben, 0]);
-      } else {
-        const x = Math.min(b, Math.max(a, (tiefen[i] - tiefen[i + 1]) / (2 * steigung) + (a + b) / 2));
-        const t = Math.max(tiefen[i] - (x - a) * steigung, tiefen[i + 1] - (b - x) * steigung, 0);
-        punkte.push([x, t]);
-      }
-    }
-  }
-  punkte.push([pos[n - 1] + flach / 2 + tiefen[n - 1] / steigung, 0]);
-  return punkte;
 }
 
 function linie(punkte: [number, number][]): string {

@@ -14,7 +14,15 @@ import { ZutrittSignalGrafik } from './generators/zutritt-signal';
 import { ZylinderMassGrafik } from './generators/zylinder-mass';
 import { getVisual, renderVisual, visualNames } from './registry';
 
-const NAMEN = ['schluessel', 'zylinder-mass', 'schliessplan', 'code-fundstelle', 'zutritt-signal'];
+const NAMEN = [
+  'schluessel',
+  'zylinder-mass',
+  'schliessplan',
+  'code-fundstelle',
+  'zutritt-signal',
+  'profilschnitt',
+  'tuer-schutz',
+];
 
 const GENERATOR_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'generators');
 
