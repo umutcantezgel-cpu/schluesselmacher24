@@ -1,19 +1,35 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, ChevronRight, Menu, ShoppingBag, X } from 'lucide-react';
-import { NAV_AREAS } from '@/lib/navigation';
+import { AreaScope } from '@/components/visual/area-scope';
+import { BereichIcon } from '@/components/visual/bereich-icon';
+import { GlyphKreuz } from '@/components/visual/glyphen/kreuz';
+import { GlyphMenue } from '@/components/visual/glyphen/menue';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GlyphWarenkorb } from '@/components/visual/glyphen/warenkorb';
+import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
+import { NAV_AREAS, istAktiv } from '@/lib/navigation';
 import { useHydrated } from '@/lib/client-state';
 import { useCartStore } from '@/lib/store/cart';
 import { cn } from '@/lib/cn';
+
+/** Fokussierbare Elemente innerhalb eines Containers (für die Fokusfalle des Drawers). */
+function fokussierbare(container: HTMLElement | null): HTMLElement[] {
+  if (!container) return [];
+  return Array.from(
+    container.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
+  );
+}
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [openArea, setOpenArea] = useState<string | null>(null);
   const [openMobileArea, setOpenMobileArea] = useState<string | null>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   // Der Warenkorb liegt nur im Browser; vor dem Hydrieren zeigen wir keine Zahl.
   const mounted = useHydrated();
   const cartCount = useCartStore((state) =>
@@ -38,69 +54,131 @@ export function SiteHeader() {
     };
   }, [drawerOpen]);
 
-  // Die ersten fünf Bereiche im Balken, der Rest unter „Mehr“.
+  // Drawer: Fokus hinein beim Öffnen, zurück auf den Menüknopf nach dem Schließen
+  // (nicht beim ersten Laden – dort bleibt der Fokus, wo der Browser ihn setzt).
+  const warOffen = useRef(false);
+  useEffect(() => {
+    if (drawerOpen) {
+      warOffen.current = true;
+      fokussierbare(drawerRef.current)[0]?.focus();
+      return;
+    }
+    if (warOffen.current && document.activeElement === document.body) {
+      menuButtonRef.current?.focus({ preventScroll: true });
+    }
+    warOffen.current = false;
+  }, [drawerOpen]);
+
+  // Escape schließt Megamenü und Drawer.
+  useEffect(() => {
+    if (!drawerOpen && !openArea) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      if (drawerOpen) {
+        setDrawerOpen(false);
+        menuButtonRef.current?.focus();
+      }
+      setOpenArea(null);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [drawerOpen, openArea]);
+
+  // Fokusfalle: Tab bleibt im geöffneten Drawer.
+  const fokusFalle = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'Tab') return;
+    const elemente = fokussierbare(drawerRef.current);
+    if (elemente.length === 0) return;
+    const erstes = elemente[0];
+    const letztes = elemente[elemente.length - 1];
+    if (event.shiftKey && document.activeElement === erstes) {
+      event.preventDefault();
+      letztes.focus();
+    } else if (!event.shiftKey && document.activeElement === letztes) {
+      event.preventDefault();
+      erstes.focus();
+    }
+  };
+
+  // Im Balken ab 1024 px die ersten drei Bereiche, ab 1280 px zusätzlich Bereich 5,
+  // ab 1536 px auch Bereich 4; alles andere steht unter „Mehr“.
   const primary = NAV_AREAS.slice(0, 5);
-  const secondary = NAV_AREAS.slice(5);
+  const secondary = NAV_AREAS.slice(3);
+  const mehrAktiv = NAV_AREAS.slice(5).some((area) => istAktiv(pathname, area.href));
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
-      <div className="shell-wide flex h-16 items-center gap-4 md:h-20">
-        {/* Wortmarke — bewusst ohne Bilddatei */}
+    <header className="fixed inset-x-0 top-0 z-header border-b border-border bg-surface">
+      <div className="shell-wide flex h-header items-center gap-4">
+        {/* Wortmarke — bewusst ohne Bilddatei (Logo, unverändert) */}
         <Link href="/" className="flex shrink-0 items-baseline gap-1.5" aria-label="SCHLÜSSELMACHER24 — Startseite">
-          <span className="font-display text-[17px] font-bold tracking-tight text-foreground md:text-xl">
+          <span className="font-display text-title-sm font-bold tracking-tight text-foreground md:text-title">
             SCHLÜSSELMACHER
           </span>
-          <span className="font-display text-[17px] font-bold tracking-tight text-primary md:text-xl">24</span>
+          <span className="font-display text-title-sm font-bold tracking-tight text-primary md:text-title">24</span>
         </Link>
 
         {/* Hauptnavigation ab Desktop */}
         <nav className="ml-auto hidden lg:block" aria-label="Hauptnavigation">
           <ul className="flex items-center gap-0.5">
-            {primary.map((area) => (
-              <li key={area.key} className="relative">
-                <button
-                  type="button"
-                  onClick={() => setOpenArea(openArea === area.key ? null : area.key)}
-                  onMouseEnter={() => setOpenArea(area.key)}
-                  aria-expanded={openArea === area.key}
-                  className={cn(
-                    'inline-flex items-center gap-1 rounded-md px-3 py-2 text-[13px] font-semibold transition-colors',
-                    pathname.startsWith(area.href)
-                      ? 'text-primary'
-                      : 'text-foreground-muted hover:bg-surface-muted hover:text-foreground',
-                  )}
-                >
-                  {area.label}
-                  <ChevronDown size={13} aria-hidden />
-                </button>
-              </li>
-            ))}
-
-            <li className="relative">
-              <button
-                type="button"
-                onClick={() => setOpenArea(openArea === 'mehr' ? null : 'mehr')}
-                onMouseEnter={() => setOpenArea('mehr')}
-                aria-expanded={openArea === 'mehr'}
-                className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-[13px] font-semibold text-foreground-muted transition-colors hover:bg-surface-muted hover:text-foreground"
-              >
-                Mehr
-                <ChevronDown size={13} aria-hidden />
-              </button>
-            </li>
+            {[
+              ...primary.map((area, index) => ({
+                key: area.key,
+                label: area.label,
+                aktiv: istAktiv(pathname, area.href),
+                /* Bereich 4 (langer Name) erst ab 1536 px, Bereich 5 ab 1280 px im Balken */
+                sichtbar: index === 3 ? 'hidden 2xl:block' : index === 4 ? 'hidden xl:block' : '',
+              })),
+              { key: 'mehr', label: 'Mehr', aktiv: mehrAktiv, sichtbar: '' },
+            ].map(
+              (eintrag) => (
+                <li key={eintrag.key} className={cn('relative', eintrag.sichtbar)}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenArea(openArea === eintrag.key ? null : eintrag.key)}
+                    onMouseEnter={() => setOpenArea(eintrag.key)}
+                    aria-expanded={openArea === eintrag.key}
+                    aria-controls="megamenue"
+                    className={cn(
+                      'relative inline-flex min-h-touch items-center gap-1 whitespace-nowrap rounded-md px-3 text-small font-semibold transition-colors duration-quick',
+                      eintrag.aktiv || openArea === eintrag.key
+                        ? 'text-primary'
+                        : 'text-foreground-muted hover:bg-surface-muted hover:text-foreground',
+                    )}
+                  >
+                    {eintrag.label}
+                    <GlyphWinkelUnten
+                      size={14}
+                      className={cn(
+                        'transition-transform duration-base ease-standard',
+                        openArea === eintrag.key && 'rotate-180',
+                      )}
+                    />
+                    {/* Bemaßungsstrich unter dem aktiven Bereich */}
+                    <span
+                      aria-hidden
+                      className={cn(
+                        'absolute inset-x-3 -bottom-px h-0.5 bg-primary transition-transform duration-base ease-standard',
+                        eintrag.aktiv ? 'scale-x-100' : 'scale-x-0',
+                      )}
+                    />
+                  </button>
+                </li>
+              ),
+            )}
           </ul>
         </nav>
 
         <div className="ml-auto flex items-center gap-1 lg:ml-0">
           <Link
             href="/warenkorb"
-            className="relative inline-flex h-11 w-11 items-center justify-center rounded-md text-foreground-muted hover:bg-surface-muted hover:text-foreground"
+            className="relative inline-flex min-h-touch min-w-touch items-center justify-center rounded-md text-foreground-muted transition-colors duration-quick hover:bg-surface-muted hover:text-foreground"
           >
-            <ShoppingBag size={19} aria-hidden />
+            <GlyphWarenkorb size={22} />
             {mounted && cartCount > 0 && (
               <span
+                key={cartCount}
                 aria-hidden
-                className="absolute right-1.5 top-1.5 flex h-4 min-w-[1rem] items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground"
+                className="sm24-pop absolute right-0.5 top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 font-mono text-caption font-semibold tabular-nums text-primary-foreground"
               >
                 {cartCount > 99 ? '99+' : cartCount}
               </span>
@@ -112,41 +190,48 @@ export function SiteHeader() {
 
           <Link
             href="/autoschluessel/anfrage"
-            className="hidden min-h-[44px] items-center rounded-lg bg-primary px-4 text-[13px] font-semibold text-primary-foreground hover:bg-primary-hover sm:inline-flex"
+            className="hidden min-h-touch items-center whitespace-nowrap rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground transition-colors duration-quick hover:bg-primary-hover active:scale-druck motion-reduce:transform-none sm:inline-flex"
           >
             Termin starten
           </Link>
 
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setDrawerOpen(true)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-foreground hover:bg-surface-muted lg:hidden"
+            aria-expanded={drawerOpen}
+            aria-controls="hauptmenue-mobil"
+            className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-md text-foreground hover:bg-surface-muted lg:hidden"
           >
-            <Menu size={21} aria-hidden />
+            <GlyphMenue size={24} />
             <span className="sr-only">Menü öffnen</span>
           </button>
         </div>
       </div>
 
-      {/* Aufklappmenü Desktop */}
+      {/* Megamenü Desktop (B-08) */}
       {openArea && (
         <div
-          className="hidden border-t border-border bg-surface shadow-lg lg:block"
+          id="megamenue"
+          className="hidden animate-menue-ein border-t border-border bg-surface shadow-overlay lg:block"
           onMouseLeave={() => setOpenArea(null)}
         >
-          <div className="shell-wide py-7">
+          <div className="shell-wide py-8">
             {openArea === 'mehr' ? (
               <ul className="grid grid-cols-4 gap-6">
-                {secondary.map((area) => (
-                  <li key={area.key}>
-                    <Link href={area.href} className="group block">
-                      <span className="block text-sm font-bold text-foreground group-hover:text-primary">
-                        {area.label}
-                      </span>
-                      <span className="mt-1 block text-[13px] leading-snug text-foreground-muted">
-                        {area.summary}
-                      </span>
-                    </Link>
+                {secondary.map((area, index) => (
+                  <li key={area.key} className={cn(index === 0 && '2xl:hidden', index === 1 && 'xl:hidden')}>
+                    <AreaScope area={area.key}>
+                      <Link href={area.href} className="group flex gap-3 rounded-md p-2 -m-2 hover:bg-surface-muted">
+                        <BereichIcon area={area.key} size={36} className="text-area-strong" />
+                        <span>
+                          <span className="block text-body font-semibold text-foreground group-hover:text-primary">
+                            {area.label}
+                          </span>
+                          <span className="mt-1 block text-small text-foreground-muted">{area.summary}</span>
+                        </span>
+                      </Link>
+                    </AreaScope>
                   </li>
                 ))}
               </ul>
@@ -155,53 +240,66 @@ export function SiteHeader() {
                 const area = NAV_AREAS.find((a) => a.key === openArea);
                 if (!area) return null;
                 return (
-                  <div className="grid grid-cols-4 gap-8">
-                    {area.columns.map((column) => (
-                      <div key={column.title}>
-                        <p className="mb-3 text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                          {column.title}
-                        </p>
-                        <ul className="space-y-2.5">
-                          {column.links.map((link) => (
-                            <li key={link.href}>
-                              <Link href={link.href} className="group block">
-                                <span className="block text-[13px] font-semibold text-foreground group-hover:text-primary">
-                                  {link.label}
-                                </span>
-                                {link.description && (
-                                  <span className="mt-0.5 block text-[12px] leading-snug text-foreground-subtle">
-                                    {link.description}
-                                  </span>
-                                )}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-
-                    {area.highlight && (
-                      <div className="col-start-4 rounded-lg border border-border bg-surface-muted p-5">
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                          Nächster Schritt
-                        </p>
+                  <AreaScope area={area.key}>
+                    <div className="grid grid-cols-12 gap-8">
+                      <div className="col-span-3 border-r border-border pr-8">
+                        <BereichIcon area={area.key} size={48} className="text-area-strong" />
                         <Link
-                          href={area.highlight.href}
-                          className="mt-2 block text-[15px] font-bold text-foreground hover:text-primary"
+                          href={area.href}
+                          className="mt-4 block text-title font-bold text-foreground hover:text-primary"
                         >
-                          {area.highlight.label}
+                          {area.label}
                         </Link>
-                        {area.highlight.description && (
-                          <p className="mt-1.5 text-[13px] leading-snug text-foreground-muted">
-                            {area.highlight.description}
-                          </p>
-                        )}
-                        <span className="mt-3 inline-flex items-center gap-1 text-[13px] font-semibold text-primary">
-                          Starten <ChevronRight size={14} aria-hidden />
-                        </span>
+                        <p className="mt-2 text-small text-foreground-muted">{area.summary}</p>
                       </div>
-                    )}
-                  </div>
+                      <div className="col-span-6 grid grid-cols-2 gap-8">
+                        {area.columns.map((column) => (
+                          <div key={column.title}>
+                            <p className="mb-3 font-mono text-caption uppercase tracking-label text-foreground-subtle">
+                              {column.title}
+                            </p>
+                            <ul className="space-y-3">
+                              {column.links.map((link) => (
+                                <li key={link.href}>
+                                  <Link href={link.href} className="group block">
+                                    <span className="block text-small font-semibold text-foreground group-hover:text-primary">
+                                      {link.label}
+                                    </span>
+                                    {link.description && (
+                                      <span className="mt-0.5 block text-small text-foreground-subtle">
+                                        {link.description}
+                                      </span>
+                                    )}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+
+                      {area.highlight && (
+                        <div className="col-span-3 rounded-lg border border-border bg-area-soft p-5">
+                          <p className="font-mono text-caption uppercase tracking-label text-area-strong">
+                            Nächster Schritt
+                          </p>
+                          <Link
+                            href={area.highlight.href}
+                            className="group mt-2 block text-title-sm font-bold text-foreground hover:text-primary"
+                          >
+                            {area.highlight.label}
+                            <GlyphPfeilRechts
+                              size={18}
+                              className="ml-1 inline-block align-text-bottom text-primary transition-transform duration-quick zeiger:group-hover:translate-x-1"
+                            />
+                          </Link>
+                          {area.highlight.description && (
+                            <p className="mt-1.5 text-small text-foreground-muted">{area.highlight.description}</p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </AreaScope>
                 );
               })()
             )}
@@ -209,24 +307,33 @@ export function SiteHeader() {
         </div>
       )}
 
-      {/* Schublade für Smartphone und Tablet */}
+      {/* Schublade für Smartphone und Tablet (B-07) */}
       {drawerOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-drawer lg:hidden">
           <button
             type="button"
-            className="absolute inset-0 bg-foreground/40"
+            tabIndex={-1}
+            className="absolute inset-0 animate-schleier-ein bg-surface-ink/40"
             onClick={() => setDrawerOpen(false)}
             aria-label="Menü schließen"
           />
-          <div className="absolute inset-y-0 right-0 flex w-[min(24rem,100%)] flex-col bg-surface">
-            <div className="flex h-16 shrink-0 items-center justify-between border-b border-border px-5">
-              <span className="font-display text-base font-bold">Menü</span>
+          <div
+            id="hauptmenue-mobil"
+            ref={drawerRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menü"
+            onKeyDown={fokusFalle}
+            className="absolute inset-y-0 right-0 flex w-full max-w-sm animate-schublade-ein flex-col bg-surface shadow-overlay"
+          >
+            <div className="flex h-header shrink-0 items-center justify-between border-b border-border px-5">
+              <span className="font-mono text-caption uppercase tracking-label text-foreground-subtle">Menü</span>
               <button
                 type="button"
                 onClick={() => setDrawerOpen(false)}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-md hover:bg-surface-muted"
+                className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-md hover:bg-surface-muted"
               >
-                <X size={20} aria-hidden />
+                <GlyphKreuz size={22} />
                 <span className="sr-only">Menü schließen</span>
               </button>
             </div>
@@ -235,59 +342,65 @@ export function SiteHeader() {
               <ul className="divide-y divide-border">
                 {NAV_AREAS.map((area) => (
                   <li key={area.key}>
-                    <div className="flex items-stretch">
-                      <Link
-                        href={area.href}
-                        className="flex-1 px-5 py-4 text-[15px] font-semibold text-foreground"
-                      >
-                        {area.label}
-                      </Link>
-                      <button
-                        type="button"
-                        onClick={() => setOpenMobileArea(openMobileArea === area.key ? null : area.key)}
-                        aria-expanded={openMobileArea === area.key}
-                        className="w-14 shrink-0 border-l border-border text-foreground-subtle"
-                      >
-                        <ChevronDown
-                          size={18}
-                          aria-hidden
-                          className={cn('mx-auto transition-transform', openMobileArea === area.key && 'rotate-180')}
-                        />
-                        <span className="sr-only">Unterpunkte von {area.label} anzeigen</span>
-                      </button>
-                    </div>
-
-                    {openMobileArea === area.key && (
-                      <div className="bg-surface-muted px-5 pb-4 pt-1">
-                        {area.highlight && (
-                          <Link
-                            href={area.highlight.href}
-                            className="mb-3 block rounded-lg bg-primary px-4 py-3 text-[14px] font-semibold text-primary-foreground"
-                          >
-                            {area.highlight.label}
-                          </Link>
-                        )}
-                        {area.columns.map((column) => (
-                          <div key={column.title} className="mb-3 last:mb-0">
-                            <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                              {column.title}
-                            </p>
-                            <ul className="space-y-0.5">
-                              {column.links.map((link) => (
-                                <li key={link.href}>
-                                  <Link
-                                    href={link.href}
-                                    className="block py-2 text-[14px] text-foreground-muted"
-                                  >
-                                    {link.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
+                    <AreaScope area={area.key}>
+                      <div className="flex items-stretch">
+                        <Link
+                          href={area.href}
+                          aria-current={istAktiv(pathname, area.href) ? 'page' : undefined}
+                          className="flex min-h-touch-lg flex-1 items-center gap-3 px-5 py-3 text-body font-semibold text-foreground"
+                        >
+                          <BereichIcon area={area.key} size={28} className="text-area-strong" />
+                          {area.label}
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => setOpenMobileArea(openMobileArea === area.key ? null : area.key)}
+                          aria-expanded={openMobileArea === area.key}
+                          className="w-14 shrink-0 border-l border-border text-foreground-subtle"
+                        >
+                          <GlyphWinkelUnten
+                            size={20}
+                            className={cn(
+                              'mx-auto transition-transform duration-base ease-standard',
+                              openMobileArea === area.key && 'rotate-180',
+                            )}
+                          />
+                          <span className="sr-only">Unterpunkte von {area.label} anzeigen</span>
+                        </button>
                       </div>
-                    )}
+
+                      {openMobileArea === area.key && (
+                        <div className="animate-menue-ein bg-surface-muted px-5 pb-4 pt-1">
+                          {area.highlight && (
+                            <Link
+                              href={area.highlight.href}
+                              className="mb-3 flex min-h-touch items-center rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground"
+                            >
+                              {area.highlight.label}
+                            </Link>
+                          )}
+                          {area.columns.map((column) => (
+                            <div key={column.title} className="mb-3 last:mb-0">
+                              <p className="mb-1.5 font-mono text-caption uppercase tracking-label text-foreground-subtle">
+                                {column.title}
+                              </p>
+                              <ul>
+                                {column.links.map((link) => (
+                                  <li key={link.href}>
+                                    <Link
+                                      href={link.href}
+                                      className="flex min-h-touch items-center text-small text-foreground-muted"
+                                    >
+                                      {link.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </AreaScope>
                   </li>
                 ))}
               </ul>
@@ -296,7 +409,7 @@ export function SiteHeader() {
             <div className="shrink-0 border-t border-border p-5">
               <Link
                 href="/autoschluessel/anfrage"
-                className="flex min-h-[48px] items-center justify-center rounded-lg bg-primary px-4 text-[15px] font-semibold text-primary-foreground"
+                className="flex min-h-touch-lg items-center justify-center rounded-md bg-primary px-4 text-body font-semibold text-primary-foreground"
               >
                 Autoschlüssel-Termin starten
               </Link>
