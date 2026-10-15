@@ -1,0 +1,29 @@
+{
+  "skript": "funktionsliste",
+  "zeit": "2026-10-15T22:03:04.108Z",
+  "argumente": {
+    "_": [],
+    "nur": "F-05"
+  },
+  "server": "http://localhost:3000",
+  "records": {
+    "vorher": false,
+    "nachher": false
+  },
+  "serverlog": {
+    "neuZeichen": 0,
+    "treffer": 0
+  },
+  "ergebnisse": [
+    {
+      "id": "F-05",
+      "funktion": "Zylinder-Konfigurator in den Warenkorb",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Warenkorb gespeichert mit 1 Eintrag/Einträgen, Seite nicht leer; Schritte: Zylinder zusammenstellen: weiter → Gemeinsame Schlüssel: weiter → Schutz und Optionen: weiter → Spätere Erweiterung: weiter → Prüfen und in den Warenkorb legen: letzter",
+      "messwert": "Attrappen: 0",
+      "dauer_ms": 5397,
+      "attrappen": []
+    }
+  ]
+}

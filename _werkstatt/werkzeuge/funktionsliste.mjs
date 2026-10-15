@@ -483,13 +483,26 @@ async function f05({ page, ziel }) {
   if (!w.absende) return { ok: false, begruendung: w.grund ?? 'kein Übernahme-Knopf', messwert: zusammenfassung(w) };
   await w.absende.click();
   await pause(1200);
+  // Beleg ist der gespeicherte Warenkorb, nicht ein Text: „Gleichschließende Zylinder“ steht auch
+  // in Kopf, Fuß und leerem Warenkorb und wäre ohne Eintrag sichtbar.
+  const eintraege = () =>
+    page.evaluate(() => {
+      try {
+        const roh = JSON.parse(window.localStorage.getItem('sm24-warenkorb') ?? 'null');
+        return (roh?.state?.items ?? []).length;
+      } catch {
+        return -1;
+      }
+    });
+  const gespeichert = await warteBis(async () => (await eintraege()) > 0, 8000);
   await laden(page, '/warenkorb');
-  const da = await warteBis(() => page.getByText('Gleichschließende Zylinder', { exact: true }).first().isVisible(), 8000);
+  const leer = await page.locator('main').getByText(/Warenkorb ist leer/i).first().isVisible().catch(() => false);
+  const da = gespeichert && !leer;
   return {
     ok: da,
     begruendung: da
-      ? `Eintrag „Gleichschließende Zylinder“ im Warenkorb; Schritte: ${zusammenfassung(w)}`
-      : `kein Eintrag im Warenkorb; Schritte: ${zusammenfassung(w)}`,
+      ? `Warenkorb gespeichert mit ${await eintraege()} Eintrag/Einträgen, Seite nicht leer; Schritte: ${zusammenfassung(w)}`
+      : `Warenkorb gespeichert: ${gespeichert ? 'ja' : 'nein'}, Seite leer: ${leer ? 'ja' : 'nein'}; Schritte: ${zusammenfassung(w)}`,
     messwert: `Attrappen: ${ziel.liste().length}`,
   };
 }
