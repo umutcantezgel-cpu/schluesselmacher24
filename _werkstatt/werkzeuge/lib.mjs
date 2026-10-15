@@ -1,6 +1,6 @@
 // Gemeinsame Grundlage aller Prüfwerkzeuge des Gestaltungslaufs.
 // Wird nur vom Orchestrator geändert; Pakete importieren daraus.
-import { mkdirSync, existsSync } from 'node:fs';
+import { mkdirSync, existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
@@ -85,16 +85,46 @@ export async function kontextFuer(browser, geraet, { reduziert = false } = {}) {
 }
 
 /**
+ * Kennungen der lesenden Server Actions (`fetch*` aus `src/lib/actions/booking.ts`),
+ * aus den Manifesten der Builds gelesen (aktueller Build und eingefrorener E0-Build).
+ * Alles andere gilt als schreibend und wird abgefangen – auch ohne Prüf-E-Mail.
+ */
+function leseActions() {
+  const ordner = [process.env.SM24_NEXT_DIR, path.join(REPO, '.next'), '/root/sm24-e0/.next'].filter(Boolean);
+  const ids = new Set();
+  for (const o of ordner) {
+    const datei = path.join(o, 'server', 'server-reference-manifest.json');
+    if (!existsSync(datei)) continue;
+    try {
+      const m = JSON.parse(readFileSync(datei, 'utf8'));
+      for (const [id, eintrag] of Object.entries(m.node ?? {})) {
+        if (eintrag.filename === 'src/lib/actions/booking.ts' && /^fetch[A-Z]/.test(eintrag.exportedName)) ids.add(id);
+      }
+    } catch {
+      // Unlesbares Manifest: keine Lese-Kennungen, also wird jede Action abgefangen.
+    }
+  }
+  return ids;
+}
+
+/** Enthält der Inhalt die Prüf-E-Mail als ganzen Wert (nicht als Teil einer anderen Adresse)? */
+function enthaeltPruefEmail(inhalt) {
+  const muster = PRUEF_EMAIL.replace(/[.@]/g, (z) => `\\${z}`);
+  return new RegExp(`(^|[^A-Za-z0-9._%+-])${muster}($|[^A-Za-z0-9._%+-])`).test(inhalt);
+}
+
+/**
  * Attrappen nach G5: Jede schreibende Anfrage wird abgefangen.
  * - `/api/kunden-upload` → immer Attrappe.
- * - Server Actions (POST mit Kopf `next-action`) → Attrappe, sobald der Inhalt die Prüf-E-Mail
- *   enthält (Absenden von Bestellung, Anfrage, Termin). Lesende Actions (Preis, Zeitfenster,
- *   Status) laufen unverändert.
- * - Alle übrigen POST/PUT/PATCH/DELETE an fremde Ursprünge → abgebrochen.
+ * - Server Actions (POST mit Kopf `next-action`): nur die lesenden Actions aus `leseActions()`
+ *   (Preis, Zeitfenster, Status) erreichen den Server; jede andere wird als Attrappe beantwortet
+ *   und als `action-schreibend` (Prüf-E-Mail im Inhalt) oder `action-unbekannt` vermerkt.
+ * - Alle übrigen POST/PUT/PATCH/DELETE → Attrappe; Anfragen an fremde Ursprünge → abgebrochen.
  * Gibt eine Liste zurück, in der jede abgefangene Anfrage vermerkt wird.
  */
 export async function attrappenSetzen(context) {
   const abgefangen = [];
+  const lesend = leseActions();
   await context.route('**/*', async (route) => {
     const req = route.request();
     const url = new URL(req.url());
@@ -114,13 +144,19 @@ export async function attrappenSetzen(context) {
         body: JSON.stringify({ ok: true, id: 'attrappe-upload', schluessel: 'attrappe' }),
       });
     }
-    const istAction = Boolean(req.headers()['next-action']);
+    const action = req.headers()['next-action'];
     const inhalt = req.postData() ?? '';
-    if (istAction && inhalt.includes(PRUEF_EMAIL)) {
-      abgefangen.push({ art: 'action-schreibend', methode, url: url.pathname, laenge: inhalt.length });
+    // Nur bekannte lesende Actions erreichen den Server; jede andere wird als Attrappe beantwortet.
+    if (action && lesend.has(action)) return route.continue();
+    if (action) {
+      abgefangen.push({
+        art: enthaeltPruefEmail(inhalt) ? 'action-schreibend' : 'action-unbekannt',
+        methode,
+        url: url.pathname,
+        laenge: inhalt.length,
+      });
       return route.fulfill({ status: 200, contentType: 'text/x-component', body: '0:{"a":"$@1","f":"","b":"attrappe"}\n1:null\n' });
     }
-    if (istAction) return route.continue();
     abgefangen.push({ art: 'post-sonstig', methode, url: url.pathname });
     return route.fulfill({ status: 204, body: '' });
   });

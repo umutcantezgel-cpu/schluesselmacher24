@@ -29,10 +29,13 @@ start() {
   return 1
 }
 
+# Beendet nur den Server auf dem eigenen Port – andere Next-Prozesse (Entwicklungsserver,
+# E0-Vergleichsserver) bleiben unberührt.
 stop() {
   if [ -f "$PIDDATEI" ]; then kill "$(cat "$PIDDATEI")" 2>/dev/null || true; rm -f "$PIDDATEI"; fi
   pkill -f "next start -p ${PORT}" 2>/dev/null || true
-  pkill -f "next-server" 2>/dev/null || true
+  # `fuser` liefert die Prozesse, die den Port halten (ss und lsof sind hier nicht nutzbar).
+  fuser -k "${PORT}/tcp" >/dev/null 2>&1 || true
   echo "gestoppt"
 }
 
