@@ -1,4 +1,8 @@
 import type { ReactNode } from 'react';
+import { BereichIcon } from '@/components/visual/bereich-icon';
+import { Profillinie } from '@/components/visual/profillinie';
+import type { AreaKey } from '@/lib/types';
+import { cn } from '@/lib/cn';
 import { Breadcrumbs, type Crumb } from './breadcrumbs';
 
 export interface PageHeaderProps {
@@ -10,32 +14,61 @@ export interface PageHeaderProps {
   actions?: ReactNode;
   /** Zusatzinhalt unter dem Text, z. B. Kennzahlen. */
   children?: ReactNode;
+  /** Leistungsbereich: zeigt sein Fach-Icon groß als Anker des Kopfes (Bereichsfarbe aus `data-area`). */
+  bereich?: AreaKey;
+  /**
+   * Ansichtsart (KERN K-009): `erzaehl` (Standard) mit großer Überschrift und
+   * sich zeichnender Profillinie; `arbeit` ruhig und kompakt für Abläufe,
+   * Warenkorb, Kasse und Rechtstexte.
+   */
+  art?: 'erzaehl' | 'arbeit';
+  /** Fachgrafik rechts neben dem Text (ersetzt das Fach-Icon des Bereichs). */
+  visual?: ReactNode;
 }
 
-/** Einheitlicher Seitenkopf für alle Bereiche. */
-export function PageHeader({ eyebrow, title, lead, crumbs, actions, children }: PageHeaderProps) {
+/** Einheitlicher Seitenkopf für alle Bereiche – als Kopf einer Werkstattzeichnung. */
+export function PageHeader({
+  eyebrow,
+  title,
+  lead,
+  crumbs,
+  actions,
+  children,
+  bereich,
+  art = 'erzaehl',
+  visual,
+}: PageHeaderProps) {
+  const erzaehl = art === 'erzaehl';
+  const anker = visual ?? (bereich && erzaehl ? <BereichIcon area={bereich} size={112} className="text-area-strong" /> : null);
+
   return (
     <header className="border-b border-border bg-surface">
-      <div className="shell py-8 md:py-12">
-        {crumbs && crumbs.length > 0 && <Breadcrumbs crumbs={crumbs} className="mb-5" />}
+      <div className={cn('shell', erzaehl ? 'py-section-tight' : 'py-8 md:py-10')}>
+        {crumbs && crumbs.length > 0 && <Breadcrumbs crumbs={crumbs} className="mb-6" />}
 
-        {eyebrow && (
-          <p className="eyebrow">
-            <span className="h-px w-6 bg-current" aria-hidden />
-            {eyebrow}
-          </p>
-        )}
+        <div className={cn('grid gap-8', anker && 'lg:grid-cols-12 lg:items-center lg:gap-gutter')}>
+          <div className={cn(anker && 'lg:col-span-8')}>
+            {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+            {erzaehl && <Profillinie text={title} className="mt-3 text-area" />}
 
-        <div className="mt-3 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <h1 className="text-[1.75rem] font-bold leading-tight md:text-4xl">{title}</h1>
+            <h1
+              className={cn(
+                'font-bold text-foreground',
+                erzaehl ? 'mt-4 text-display' : 'mt-3 text-headline',
+                !eyebrow && 'mt-0',
+              )}
+            >
+              {title}
+            </h1>
             {lead && (
-              <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted md:text-lg">
-                {lead}
-              </p>
+              <p className={cn('mt-4 max-w-measure text-foreground-muted', erzaehl ? 'text-lead' : 'text-body')}>{lead}</p>
             )}
+            {actions && <div className="mt-7 flex flex-wrap items-center gap-3">{actions}</div>}
           </div>
-          {actions && <div className="flex shrink-0 flex-wrap gap-3">{actions}</div>}
+
+          {anker && (
+            <div className={cn('lg:col-span-4', visual ? '' : 'hidden justify-self-end lg:block')}>{anker}</div>
+          )}
         </div>
 
         {children && <div className="mt-8">{children}</div>}

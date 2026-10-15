@@ -34,8 +34,10 @@ export interface ProfillinieProps {
 const STRICH = 1.5;
 
 const MASSE = {
-  klein: { hoehe: 10, abstand: 11, flach: 2.5, steigung: 1.25, tiefe: 5.5, rand: 1.5 },
-  gross: { hoehe: 16, abstand: 17, flach: 4, steigung: 1.2, tiefe: 9.5, rand: 2 },
+  /* Abstand deutlich größer als die Kerbe, damit flache Stücke zwischen den Einschnitten
+     stehen – sonst liest sich die Linie als Welle statt als Schlüsselbart. */
+  klein: { hoehe: 10, abstand: 14, flach: 3, steigung: 2.2, tiefe: 5.5, rand: 1.5 },
+  gross: { hoehe: 16, abstand: 20, flach: 4, steigung: 2, tiefe: 9, rand: 2 },
 } as const;
 
 /** Punkte des Profils: Rücken links, Einschnitte, Spitze rechts (y wächst nach unten). */
