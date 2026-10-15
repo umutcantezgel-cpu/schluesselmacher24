@@ -57,3 +57,6 @@ dev_server.log
 
 # Worktrees der Hilfsagenten
 /.claude/worktrees/
+
+# Gestaltungslauf: installierte Abhängigkeiten der Prüfwerkzeuge liegen außerhalb des Repos
+/_werkstatt/werkzeuge/node_modules
