@@ -1,0 +1,34 @@
+Geprüfte Dateien: 88 (seit fcbcfb2)
+
+### Funde
+
+| Datei | Zeile | Kategorie | Fund |
+|---|---|---|---|
+| src/app/(site)/layout.tsx | 63 | Hex-Farbe | #f7f9fb |
+
+### Ausnahmen (Bildinhalte, mitgezählt)
+
+| Datei | Zeile | Kategorie | Fund |
+|---|---|---|---|
+| src/components/visual/generators/profilschnitt.test.tsx | 20 | Farbfunktion | rgb( |
+| src/components/visual/generators/profilschnitt.test.tsx | 21 | Farbfunktion | oklch( |
+| src/components/visual/generators/schliessplan.test.tsx | 23 | Farbfunktion | rgb( |
+| src/components/visual/generators/schliessplan.test.tsx | 24 | Farbfunktion | oklch( |
+| src/components/visual/generators/stiftzuhaltung.test.tsx | 20 | Farbfunktion | rgb( |
+| src/components/visual/generators/stiftzuhaltung.test.tsx | 21 | Farbfunktion | oklch( |
+| src/components/visual/generators/tuer-schutz.test.tsx | 23 | Farbfunktion | rgb( |
+| src/components/visual/generators/tuer-schutz.test.tsx | 24 | Farbfunktion | oklch( |
+
+### Summe je Datei
+
+| Datei | Treffer | Ausnahme |
+|---|---|---|
+| src/app/(site)/layout.tsx | 1 | nein |
+| src/components/visual/generators/profilschnitt.test.tsx | 2 | ja |
+| src/components/visual/generators/schliessplan.test.tsx | 2 | ja |
+| src/components/visual/generators/stiftzuhaltung.test.tsx | 2 | ja |
+| src/components/visual/generators/tuer-schutz.test.tsx | 2 | ja |
+
+Summe ohne Ausnahmen: 1 · Ausnahmen: 8
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/E2-PRUEFER-01-werte.json
+EXIT=0
