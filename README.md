@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## System Architecture Audit
+JC-AUDITOR-ARCHITECT-v1 has run. Revolution plan and architecture matrix are available in `.jules/`.
