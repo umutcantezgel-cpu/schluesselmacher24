@@ -126,6 +126,8 @@
 
   html {
     -webkit-text-size-adjust: 100%;
+    /* Fokus und Sprungziele nie unter dem festen Kopf (WCAG 2.4.11). */
+    scroll-padding-top: calc(var(--header-height) + 1rem);
   }
 
   body {
@@ -208,16 +210,39 @@
     @apply mt-4;
   }
 
+  .prose-sm24 ul,
+  .prose-sm24 ol {
+    @apply mt-4 space-y-2 pl-5;
+  }
+
   .prose-sm24 ul {
-    @apply mt-4 space-y-2 list-disc pl-5;
+    @apply list-disc;
+  }
+
+  .prose-sm24 ol {
+    @apply list-decimal;
+  }
+
+  .prose-sm24 li::marker {
+    @apply text-area;
   }
 
   .prose-sm24 h2 {
-    @apply mt-10 mb-3 text-xl font-bold text-foreground;
+    @apply mb-3 mt-12 text-title font-bold text-foreground;
+    hyphens: manual;
   }
 
   .prose-sm24 h3 {
-    @apply mt-8 mb-2 text-base font-bold text-foreground;
+    @apply mb-2 mt-8 text-title-sm font-bold text-foreground;
+    hyphens: manual;
+  }
+
+  .prose-sm24 a {
+    @apply font-semibold text-primary underline decoration-primary/40 underline-offset-2 transition-colors duration-quick hover:decoration-primary;
+  }
+
+  .prose-sm24 strong {
+    @apply font-semibold text-foreground;
   }
 
   /* Tabellen auf schmalen Geräten horizontal scrollbar halten */
@@ -353,6 +378,14 @@
     stroke-dasharray: 6 6;
     animation: sm24-dash var(--sm24-duration, 1.6s) linear var(--sm24-delay, 0s) 3;
   }
+}
+
+/*
+ * Interaktive Grafiken nach dem ersten Wechsel: Einstiegsbewegungen spielen
+ * nicht erneut, die Zeichnung steht sofort (Rückmeldung statt Auftritt).
+ */
+.sm24-ruhig :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop) {
+  animation: none;
 }
 
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
