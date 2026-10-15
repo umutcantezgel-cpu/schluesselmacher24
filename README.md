@@ -39,7 +39,8 @@ Backend unter `/admin` bearbeitet:
 | `content/guides.json` · `content/cities.json` | Ratgeber- und Stadtseiten |
 | `content/records.json` | Vorgänge: Bestellungen, Anfragen, Termine, Projekte |
 
-## Offene Anbindungen
-
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Interactive Modules Added
+- **ServiceBudgetCalculator**: Added to the `service-und-termin` page to allow transparent calculation for complex projects.

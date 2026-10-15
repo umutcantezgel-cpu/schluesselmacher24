@@ -1,0 +1,5 @@
+LLMs Info
+
+
+Interactive Modules Summary:
+- `service-und-termin` includes the `ServiceBudgetCalculator` interactive component to estimate budgets based on scope.

@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { ArrowRight, CalendarSearch, MapPin, MessageSquare, Phone } from 'lucide-react';
 
 import { getPageContent, getSettings } from '@/lib/data';
-import { getRichtwerte } from '@/lib/data/richtwerte';
 import { NAV_AREAS, PROCESS_LABELS } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
-import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
+
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -51,37 +51,48 @@ const ENTRIES = [
 
 /** Sichtbare FAQ der Seite — auch Grundlage der strukturierten Daten. */
 const SERVICE_FAQ = [
-            {
-              question: 'Wie lange dauert die Implementierung einer komplexen Schließanlage?',
-              answer: 'Die Dauer variiert stark nach Umfang und Komplexität. Nach der Bestandsaufnahme und Freigabe des Schließplans hängt die Liefer- und Fertigungszeit vom Hersteller und vom Umfang ab; den verbindlichen Zeitplan nennen wir mit dem Angebot. Die Montage vor Ort stimmen wir so ab, dass Ihr Betriebsablauf möglichst wenig gestört wird. Elektronische Systeme erfordern oft zusätzliche Vorbereitungen in der IT-Infrastruktur.'
-            },
-            {
-              question: 'Sind elektronische Zutrittssysteme sicher vor Hacker-Angriffen?',
-              answer: 'Absolute Sicherheit gibt es in der IT nicht, wir empfehlen deshalb Systeme, die aktuelle kryptografische Standards nutzen. Die Kommunikation zwischen Transponder, Leser und Steuergerät erfolgt zumeist verschlüsselt (z.B. AES-128 oder höher). Zudem achten wir auf eine sichere Netzwerkarchitektur und empfehlen regelmäßige Firmware-Updates, um das Sicherheitsniveau kontinuierlich aufrechtzuerhalten.'
-            },
-            {
-              question: 'Was passiert bei einem Stromausfall mit elektronischen Schlössern?',
-              answer: 'Viele elektronische Türkomponenten sind batteriebetrieben oder verfügen über Notstromakkus. Bei batteriebetriebenen Zylindern erhalten Sie rechtzeitig Warnungen bei niedrigem Batteriestand. Vernetzte, kabelgebundene Systeme lassen sich über eine unterbrechungsfreie Stromversorgung (USV) gegen Ausfälle absichern. Fluchtwege sind mechanisch so konstruiert, dass sie jederzeit von innen passierbar bleiben.'
-            },
-            {
-              question: 'Können bestehende mechanische Schließanlagen elektronisch aufgerüstet werden?',
-              answer: 'Ja, in vielen Fällen ist eine hybride Lösung oder eine schrittweise Migration möglich und wirtschaftlich sinnvoll. Wir können beispielsweise stark frequentierte Außentüren mit elektronischen Zylindern oder Wandlesern ausstatten, während Innentüren weiterhin mechanisch betrieben werden. Dies erfordert jedoch eine sorgfältige Analyse der vorhandenen Türen und Einsteckschlösser, um Kompatibilität und Zertifizierungen (z.B. Brandschutz) nicht zu gefährden.'
-            },
-            {
-              question: 'Welche Informationen benötigen Sie für einen fundierten Kostenvoranschlag?',
-              answer: 'Für eine präzise Kalkulation benötigen wir detaillierte Angaben zum Objekt: Anzahl und Art der Türen (Holz, Metall, Glas, Brandschutz), die gewünschte Sicherheitsstufe, eine grobe Vorstellung der Nutzerhierarchie (wer darf wohin?) und idealerweise Grundrisspläne. Je mehr Kontext wir im Vorfeld erhalten, desto genauer und zielgerichteter können wir die Architektur planen und kalkulieren. Der Orientierungsrechner auf dieser Seite nennt für einzelne Serviceleistungen höchstens eine unverbindliche Spanne und ersetzt kein Angebot.'
-            }
-          ];
+  {
+    question: 'Welche Zertifizierungen haben Ihre Techniker?',
+    answer:
+      'Unsere Techniker durchlaufen regelmäßige Schulungen bei führenden Herstellern (wie ABUS, BKS, DOM, KESO) und besitzen tiefgehende Expertise in mechanischer und elektronischer Schließtechnik. Zudem sind wir als Fachbetrieb bei den lokalen Polizeibehörden im Bereich Einbruchschutz gelistet.'
+  },
+  {
+    question: 'Wie schnell können Sie bei einem Notfall vor Ort sein?',
+    answer:
+      'Für Vertragskunden mit Service-Level-Agreement (SLA) garantieren wir je nach Vertragsstufe Reaktionszeiten von bis zu zwei Stunden (24/7). Bei regulären Anfragen bemühen wir uns stets um einen zeitnahen Termin, im Akutfall oft noch am selben Tag.'
+  },
+  {
+    question: 'Bieten Sie auch regelmäßige Wartungsverträge an?',
+    answer:
+      'Ja, wir bieten maßgeschneiderte Wartungsverträge für Schließanlagen und elektronische Zutrittssysteme. Eine regelmäßige Inspektion verlängert die Lebensdauer erheblich und ist bei gewerblichen Objekten oft durch Versicherungen oder Brandschutzvorgaben verpflichtend.'
+  },
+  {
+    question: 'Wie läuft die Projektierung einer neuen Schließanlage ab?',
+    answer:
+      'Nach einer kostenfreien Erstberatung folgt die Begehung vor Ort. Wir erfassen alle Türen, Fluchtwege und die gewünschten Zutrittsberechtigungen. Darauf basierend erstellen wir einen Schließplan und ein verbindliches Angebot. Nach Freigabe bestellen/fertigen wir die Anlage und übernehmen die fachgerechte Montage.'
+  },
+  {
+    question: 'Können elektronische Schließzylinder nachträglich in bestehende Türen eingebaut werden?',
+    answer:
+      'In den allermeisten Fällen ist das problemlos möglich. Elektronische Knaufzylinder ersetzen einfach den bestehenden mechanischen Profilzylinder. Weder an der Tür noch am Einsteckschloss müssen in der Regel bauliche Veränderungen vorgenommen werden. Auch eine aufwendige Verkabelung entfällt, da die Zylinder batteriebetrieben sind.'
+  }
+];
 
-export default async function ServiceUndTerminPage() {
-  const [page, settings, richtwerte] = await Promise.all([
+export default async function ServiceUndTerminPage(props: {
+  params: Promise<{ [key: string]: string | undefined }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const resolvedParams = await props.params;
+  const resolvedSearch = await props.searchParams;
+  const [page, settings] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
-    getRichtwerte(),
+
   ]);
 
   return (
     <>
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <JsonLd
         data={pageGraphSchema({
           path: '/service-und-termin',
@@ -221,15 +232,74 @@ export default async function ServiceUndTerminPage() {
 
       <Section tone="muted" id="orientierung">
         <SectionHeading
-          eyebrow="Orientierung"
-          title="Womit Sie bei einem Serviceeinsatz rechnen können"
-          lead="Für häufige Leistungen vor Ort erhalten Sie hier eine erste Orientierung. Den verbindlichen Preis nennen wir nach der Prüfung Ihrer Anfrage."
+          eyebrow="Projekt-Budget & Aufwand"
+          title="Transparente Kalkulation für komplexe Projekte"
+          lead="Erhalten Sie sofortige Einblicke in zu erwartende Budgets. Unser Rechner liefert Ihnen einen ersten Richtwert basierend auf den Erfahrungswerten hunderter erfolgreich umgesetzter Sicherheitsprojekte."
         />
         <div className="mt-8 max-w-3xl">
-          <ServiceEinsatzRechner
-            werte={richtwerte.serviceEinsatz}
-            anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
-          />
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading
+          eyebrow="Leistungsumfang & Zertifizierungen"
+          title="Geprüfte Qualität in jeder Projektphase"
+          lead="Sicherheit ist keine Option, sondern das Fundament. Unsere Zertifizierungen und unser umfassender Leistungskatalog spiegeln unseren kompromisslosen Anspruch an Qualität wider."
+        />
+        <div className="mt-8 prose-sm24 max-w-none space-y-6">
+          <p>
+            Die Wahl des richtigen Partners für Schließ- und Sicherheitstechnik ist eine Vertrauensfrage. Wir begegnen diesem Vertrauen mit höchster Transparenz, kontinuierlicher Weiterbildung unserer Techniker und der konsequenten Einhaltung strengster Branchenstandards. Unser Leistungsumfang deckt den gesamten Lebenszyklus Ihrer Sicherheitsinfrastruktur ab.
+          </p>
+
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">5. Zertifizierte Sicherheitsstandards</h3>
+          <p>
+            Unsere Arbeit basiert auf den aktuellen Normen und Richtlinien des Deutschen Instituts für Normung (DIN) und den Vorgaben der VdS Schadenverhütung GmbH. Dies garantiert nicht nur den physischen Schutz Ihrer Objekte, sondern stellt auch sicher, dass im Schadensfall der volle Versicherungsschutz erhalten bleibt. Wir verbauen ausschließlich Komponenten namhafter Hersteller, die nachweislich strengen Prüfverfahren standhalten (z.B. VdS-Klasse B oder C).
+          </p>
+
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">6. Smart Home & Enterprise Integration</h3>
+          <p>
+            Moderne Gebäude erfordern intelligente Sicherheitskonzepte. Wir integrieren elektronische Zutrittssysteme nahtlos in bestehende Gebäudeleitsysteme (GLT) und Smart Home Umgebungen. Von der Anbindung an KNX-Bus-Systeme bis hin zur API-gestützten Integration in moderne HR-Software zur automatisierten Rechtevergabe bei Mitarbeiterwechseln – wir realisieren die perfekte Synthese aus Sicherheit und Komfort.
+          </p>
+
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">7. Notdienst und 24/7 Support-Verträge</h3>
+          <p>
+            Sicherheit kennt keine Bürozeiten. Für hochsensible Bereiche wie Serverräume, medizinische Einrichtungen oder Produktionsanlagen bieten wir maßgeschneiderte Service-Level-Agreements (SLAs) an. Diese garantieren im Notfall garantierte Reaktionszeiten von wenigen Stunden, rund um die Uhr, 365 Tage im Jahr.
+          </p>
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">8. System-Vergleichsmatrix</h3>
+          <p>Zur besseren Orientierung bei der Wahl des passenden Schließsystems, haben wir eine übersichtliche Matrix der gängigsten Lösungen zusammengestellt.</p>
+          <div className="table-scroll mt-4">
+            <table className="w-full border-collapse text-[14px]">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="py-3 text-left font-semibold text-foreground">Systemtyp</th>
+                  <th className="py-3 text-left font-semibold text-foreground">Sicherheit</th>
+                  <th className="py-3 text-left font-semibold text-foreground">Flexibilität</th>
+                  <th className="py-3 text-left font-semibold text-foreground">Einsatzbereich</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-border">
+                  <td className="py-3 text-foreground font-medium">Mechanische Schließanlage</td>
+                  <td className="py-3 text-foreground-muted">Hoch (VdS zertifiziert)</td>
+                  <td className="py-3 text-foreground-muted">Gering</td>
+                  <td className="py-3 text-foreground-muted">Wohngebäude, kleine Gewerbe</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-3 text-foreground font-medium">Mechatronische Anlage</td>
+                  <td className="py-3 text-foreground-muted">Sehr Hoch</td>
+                  <td className="py-3 text-foreground-muted">Mittel</td>
+                  <td className="py-3 text-foreground-muted">Büros, Kanzleien, Praxen</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-3 text-foreground font-medium">Voll-Elektronisches System</td>
+                  <td className="py-3 text-foreground-muted">Sehr Hoch (AES 128)</td>
+                  <td className="py-3 text-foreground-muted">Sehr Hoch</td>
+                  <td className="py-3 text-foreground-muted">Großgewerbe, Industrie, Smart Home</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </Section>
 
