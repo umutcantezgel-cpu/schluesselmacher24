@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 0/6 · Welle – · Pflicht 0/– · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand ungeprüft · Nächster Schritt: E0-PRUEFER-01 Einrichtung (npm ci, drei Build-Wege, Werkzeuge)
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 2/6 · Welle E2-a · Pflicht 14/70 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Typprüfung 0, Linter 0, Unit-Tests grün; Build ausstehend) · Nächster Schritt: Ausgangswerte und Funktionsliste abnehmen, dann Build und Prüfstufe A/B der Referenz
 
 # Status des Gestaltungslaufs
 
@@ -31,3 +31,4 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 0/6 · W
 ## Verlauf (eine Zeile je Stunde oder Welle)
 - 15.10.2026 23:08 · E0 begonnen: _werkstatt angelegt, Auftrag wörtlich gespeichert, Erkundung (5 Kundschafter + Lückenprüfung) und L0-Vorprüfung des Plans aus der Planphase übernommen.
 - 15.10.2026 23:17 · E0-PRUEFER-01 abgenommen: Build-Gate JSON grün, Bestand dokumentiert; Welle E0-b läuft (Werkzeuge, Next-16-Doku, lucide-Inventar).
+- 15.10.2026 23:48 · E1 abgeschlossen (KERN 1.1, PLAN 1.0). E2: Designsystem, Bewegung, Formsystem mit 39 Glyphen, Profillinie, Generatoren profilschnitt/tuer-schutz, Schließplan-Markierung, Hülle und Referenz-Startseite als ZWISCHENSTAND gepusht (9e51eff).
