@@ -113,31 +113,20 @@ export function areaCssVariables(theme: AreaTheme): Record<string, string> {
 }
 
 /* ---------- Kontrast (WCAG 2.2) ----------------------------------------- */
+import { wcagContrast, parse } from 'culori';
 
-function parseHsl(value: string): [number, number, number] {
-  const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
-  if (!match) throw new Error(`Kein HSL-Tripel: "${value}"`);
-  return [Number(match[1]), Number(match[2]), Number(match[3])];
-}
-
-function hslToRgb([h, s, l]: [number, number, number]): [number, number, number] {
-  const sat = s / 100;
-  const light = l / 100;
-  const k = (n: number) => (n + h / 30) % 12;
-  const a = sat * Math.min(light, 1 - light);
-  const f = (n: number) => light - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-  return [f(0), f(8), f(4)];
-}
-
-function relativeLuminance(rgb: [number, number, number]): number {
-  const channel = (v: number) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
-  const [r, g, b] = rgb.map(channel) as [number, number, number];
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-}
-
-/** Kontrastverhältnis zweier HSL-Tripel, z. B. `contrastRatio('0 0% 100%', theme.strong)`. */
 export function contrastRatio(a: string, b: string): number {
-  const la = relativeLuminance(hslToRgb(parseHsl(a)));
-  const lb = relativeLuminance(hslToRgb(parseHsl(b)));
-  return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+  const parseColor = (val: string) => {
+    if (val.includes('%')) {
+      const match = val.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
+      if (match) return `hsl(${match[1]}, ${match[2]}%, ${match[3]}%)`;
+    }
+    const oklchMatch = val.trim().match(/^([\d.]+)\s+([\d.]+)\s+([\d.]+)$/);
+    if (oklchMatch) return `oklch(${oklchMatch[1]} ${oklchMatch[2]} ${oklchMatch[3]})`;
+    return val;
+  };
+  const ca = parse(parseColor(a));
+  const cb = parse(parseColor(b));
+  if (!ca || !cb) return 1;
+  return wcagContrast(ca, cb);
 }
