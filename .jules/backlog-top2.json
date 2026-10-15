@@ -1,0 +1,13 @@
+{
+  "tasks": [
+    {
+      "id": "IDEA_014",
+      "target_route": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "expansion_plan": {
+        "word_count_target": 850,
+        "interactive_module": "SecurityCheckCalculator"
+      }
+    }
+  ]
+}
