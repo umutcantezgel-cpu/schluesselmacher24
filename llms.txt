@@ -1,0 +1,2 @@
+
+* Service und Termin Page Expansion: Added detailed architectural methodology and structured faq sections to the `service-und-termin` page, as well as an interactive `service-einsatz-rechner.tsx` calculator component with OKLCH styling.

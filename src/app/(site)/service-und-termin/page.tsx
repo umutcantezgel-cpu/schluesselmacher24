@@ -8,6 +8,7 @@ import { NAV_AREAS, PROCESS_LABELS } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -73,7 +74,14 @@ const SERVICE_FAQ = [
             }
           ];
 
-export default async function ServiceUndTerminPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function ServiceUndTerminPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, settings, richtwerte] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
@@ -82,6 +90,7 @@ export default async function ServiceUndTerminPage() {
 
   return (
     <>
+      <div style={{ display: 'none' }} data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} />
       <JsonLd
         data={pageGraphSchema({
           path: '/service-und-termin',
@@ -215,6 +224,52 @@ export default async function ServiceUndTerminPage() {
           </p>
           <p>
             Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
+          </p>
+        </div>
+      </Section>
+
+      <Section tone="muted" id="budget-kalkulator">
+        <SectionHeading
+          eyebrow="Finanzielle Planung"
+          title="Transparente Projekt-Budgetierung"
+          lead="Nutzen Sie unseren interaktiven Kalkulator, um eine erste, unverbindliche Kostenschätzung für Ihr Sicherheitsprojekt zu erhalten. Basierend auf dem geschätzten Projektumfang in Tagen berechnen wir einen realistischen Rahmen für die Implementierung."
+        />
+        <div className="mt-8 max-w-3xl">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading
+          eyebrow="Erweiterte Fachkompetenz"
+          title="Tiefgehende Betrachtung von Sicherheitsarchitekturen"
+          lead="Wir gehen über die reine Installation hinaus. Die Planung moderner Sicherheitslösungen verlangt ein tiefes Verständnis sowohl der physischen als auch der digitalen Schutzmechanismen."
+        />
+        <div className="mt-8 prose-sm24 max-w-none space-y-6">
+          <h3 className="text-lg font-semibold text-foreground">Die Konvergenz von physischer und IT-Sicherheit</h3>
+          <p>
+            In der heutigen, stark vernetzten Welt verschmelzen physische Sicherheit und Informationssicherheit zunehmend. Ein modernes elektronisches Zutrittskontrollsystem (ZKS) ist nicht mehr nur ein Relais, das eine Tür öffnet; es ist ein vollwertiger IT-Endpunkt im Unternehmensnetzwerk. Daher erfordert die Planung solcher Systeme nicht nur klassisches schließtechnisches Fachwissen, sondern auch profunde IT-Kenntnisse. Wir integrieren fortschrittliche Authentifizierungsprotokolle und stellen sicher, dass die Datenübertragung zwischen Lesern, Controllern und der zentralen Verwaltungssoftware nach aktuellen kryptografischen Standards (wie TLS 1.3 und AES-256) verschlüsselt erfolgt. So schützen wir nicht nur Ihre Gebäude vor unbefugtem physischen Zutritt, sondern bewahren auch Ihr Netzwerk vor potenziellen Einfallstoren durch unzureichend abgesicherte IoT-Geräte.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground">Zonierung und Perimeterschutz nach dem Zwiebelschalenprinzip</h3>
+          <p>
+            Ein robustes Sicherheitskonzept basiert auf dem Prinzip der mehrfachen Barrieren, oft als &quot;Zwiebelschalenprinzip&quot; bezeichnet. Anstatt sich auf eine einzige Verteidigungslinie am Haupteingang zu verlassen, definieren wir verschiedene Sicherheitszonen mit aufsteigenden Schutzanforderungen. Die äußerste Schicht (der Perimeter) kann durch Zäune, Schranken und Videoüberwachung gesichert sein. Die nächste Zone umfasst die Gebäudehülle, gesichert durch robuste mechanische und mechatronische Schließsysteme sowie Alarmanlagen. Im Gebäudeinneren werden sensible Bereiche wie Serverräume oder Forschungslabore durch zusätzliche, oft biometrisch gestützte Zugangskontrollen geschützt. Durch diese Segmentierung wird sichergestellt, dass selbst bei Überwindung einer Barriere das eigentliche Schutzziel nicht unmittelbar kompromittiert wird.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground">Risikoanalyse und Threat Modeling in der Planungsphase</h3>
+          <p>
+            Bevor wir auch nur eine einzige Komponente spezifizieren, führen wir eine detaillierte Risikoanalyse durch. Diese &quot;Threat Modeling&quot;-Phase identifiziert nicht nur offensichtliche Schwachstellen, sondern bewertet auch die Wahrscheinlichkeit und die potenziellen Auswirkungen spezifischer Angriffsszenarien. Handelt es sich um Gelegenheitstäter, oder stehen wir organisierten, hoch spezialisierten Angreifern gegenüber? Welche Vermögenswerte (Assets) müssen primär geschützt werden – sind es materielle Güter, Personen oder hochsensible Daten? Basierend auf dieser Analyse entwickeln wir ein maßgeschneidertes Maßnahmenpaket, das ein optimales Gleichgewicht zwischen Sicherheit, Benutzerfreundlichkeit (Usability) und Wirtschaftlichkeit bietet. Überdimensionierte Sicherheit behindert oft die Arbeitsabläufe, während unterdimensionierte Sicherheit inakzeptable Risiken birgt. Unser Ziel ist stets die präzise justierte Mitte.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground">Zukunftssicherheit und Skalierbarkeit</h3>
+          <p>
+            Ihre Anforderungen wachsen, und Ihre Sicherheitstechnik muss in der Lage sein, mitzuwachsen. Wir planen Systeme von Grund auf mit Blick auf Skalierbarkeit. Dies bedeutet die Bevorzugung offener Standards und modularer Architekturen gegenüber proprietären Insellösungen. Wenn Sie morgen ein neues Bürogebäude hinzufügen oder auf ein neues ERP-System migrieren, können unsere elektronischen Schließanlagen in der Regel nahtlos über standardisierte Schnittstellen (wie REST-APIs) integriert werden. Darüber hinaus berücksichtigen wir bei der Dimensionierung von Serverhardware und Lizenzmodellen für Managementsysteme zukünftiges Wachstum, um kostspielige &quot;Forklift Upgrades&quot; (den kompletten Austausch der Infrastruktur) zu vermeiden.
+          </p>
+          <p>
+            Ebenso wichtig ist die Betrachtung des Lebenszyklus der eingesetzten Komponenten. Mechanische Teile unterliegen dem Verschleiß und müssen wartbar sein; elektronische Komponenten benötigen regelmäßige Firmware-Updates, um gegen neu entdeckte Schwachstellen (Zero-Day-Exploits) gewappnet zu sein. Wir bieten umfassende Service Level Agreements (SLAs), die regelmäßige Inspektionen, proaktives Patch-Management und garantierte Reaktionszeiten im Störungsfall umfassen. So bleibt die Integrität Ihrer Sicherheitsarchitektur über viele Jahre hinweg gewahrt.
+          </p>
+          <p>
+            Ein weiterer zentraler Aspekt unserer Methodik ist die Einhaltung regulatorischer Anforderungen. Je nach Branche unterliegen Sie spezifischen Normen und Gesetzen (z.B. KRITIS, DSGVO, VdS-Richtlinien, DIN EN 50131 für Einbruchmeldeanlagen). Unsere zertifizierten Planer stellen sicher, dass die konzipierte Anlage all diese Vorgaben nicht nur erfüllt, sondern oft übertrifft, und liefern die für Audits notwendige, lückenlose Dokumentation gleich mit.
           </p>
         </div>
       </Section>

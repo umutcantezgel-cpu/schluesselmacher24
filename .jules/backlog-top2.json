@@ -1,0 +1,10 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_MOCK_1",
+      "status": "COMPLETED_BY_BUILDER",
+      "target_route": "src/app/(site)/service-und-termin/page.tsx",
+      "interactive_module": "components/calculator/service-einsatz-rechner.tsx"
+    }
+  ]
+}
