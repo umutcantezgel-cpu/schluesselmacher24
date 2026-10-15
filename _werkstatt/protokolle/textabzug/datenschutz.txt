@@ -1,0 +1,66 @@
+RECHTLICHES
+Impressum
+Datenschutz
+Widerruf und Rückgabe
+Zahlung und Versand
+AGB
+Cookie-Einstellungen
+Hinweis zum Stand dieser Seite
+Die folgenden Texte sind als vollständig aufgebautes Gerüst angelegt. Die mit [Platzhalter: …] gekennzeichneten Stellen müssen ausgefüllt und der gesamte Text muss vor dem Livegang juristisch geprüft werden. Besonders zu prüfen sind kundenspezifische Sonderanfertigungen, Anzahlungen, Datei-Uploads und Überwachungstechnik. Hier steht bewusst kein erfundener Rechtstext.
+Datenschutzerklärung
+Diese Seite beschreibt, welche personenbezogenen Daten wir erheben, wozu wir sie verwenden und wie lange wir sie aufbewahren.
+1. Verantwortliche Stelle
+[Platzhalter: vollständige Firmierung]
+[Platzhalter: Straße und Hausnummer]
+[PLZ] [Ort]
+E-Mail: [Platzhalter: E-Mail-Adresse]
+Telefon: [Platzhalter: Telefonnummer]
+2. Datenschutzbeauftragte Person
+[Platzhalter: Name und Kontaktdaten der oder des Datenschutzbeauftragten eintragen, sofern eine Benennungspflicht besteht. Andernfalls hier vermerken, dass keine Benennungspflicht besteht.]
+3. Welche Daten wir verarbeiten
+3.1 Beim Aufruf der Website
+[Platzhalter: Server-Logdaten beschreiben — IP-Adresse, Zeitpunkt, abgerufene Seite, übertragene Datenmenge, Browsertyp. Rechtsgrundlage, Zweck und Speicherdauer sind vom eingesetzten Hosting abhängig und müssen mit dem Hoster abgestimmt werden.]
+3.2 Bei Anfragen, Bestellungen und Terminbuchungen
+Wenn Sie ein Formular, einen Konfigurator oder die Terminbuchung nutzen, verarbeiten wir die dort angegebenen Daten, um Ihren Vorgang zu bearbeiten. Dazu gehören insbesondere:
+Kontaktdaten: Anrede, Name, Firma, E-Mail-Adresse, Telefonnummer, Anschrift
+Angaben zum Auftrag: Fahrzeugdaten, Schlüsselart, gewünschte Leistung, Schlüsselcode
+Angaben zum Objekt: Türen, Nutzer, Berechtigungen, bestehende Anlagen
+Termin- und Zahlungsangaben zum jeweiligen Vorgang
+[Platzhalter: Rechtsgrundlagen ergänzen — in der Regel Vertragserfüllung und vorvertragliche Maßnahmen für die Auftragsbearbeitung sowie rechtliche Verpflichtungen für die Aufbewahrung. Bitte juristisch prüfen lassen.]
+3.3 Hochgeladene Dateien
+Für die Bearbeitung laden Sie je nach Vorgang Fotos Ihres Schlüssels, Ihren Fahrzeugschein, Grundrisse, Türlisten oder Objektfotos hoch. Diese Unterlagen sind sensibel. Wir verwenden sie ausschließlich zur Prüfung und Ausführung Ihres Auftrags und geben sie nicht zu anderen Zwecken weiter.
+Zugriff: Auf Ihre Unterlagen greifen ausschließlich die intern dafür berechtigten Personen zu.
+3.4 Aufbewahrungsfristen
+Wir haben folgende Fristen für die genannten Unterlagen festgelegt:
+Fahrzeugschein: 90 Tage
+Schlüsselfotos: 180 Tage
+Grundrisse und Objektpläne: 365 Tage
+Projektunterlagen: 365 Tage
+[Platzhalter: Gesetzliche Aufbewahrungspflichten für Geschäftsunterlagen und Belege ergänzen. Die oben genannten Fristen betreffen nur die hochgeladenen Unterlagen und sind juristisch zu bestätigen.]
+4. Empfänger und Auftragsverarbeiter
+[Platzhalter: Alle eingesetzten Dienstleister auflisten — Hosting, Zahlungsdienstleister, E-Mail-Versand, Dateiablage, Buchhaltung. Je Dienstleister Zweck, Sitz und Grundlage der Übermittlung angeben. Zum jetzigen Zeitpunkt sind Zahlung, Mailversand und Dateiablage noch nicht angebunden; sobald ein Dienstleister eingesetzt wird, ist diese Liste zu ergänzen und ein Auftragsverarbeitungsvertrag zu schließen.]
+5. Übermittlung in Drittländer
+[Platzhalter: Angeben, ob Daten außerhalb des Europäischen Wirtschaftsraums verarbeitet werden und auf welcher Grundlage.]
+6. Cookies und Reichweitenmessung
+Wir setzen nur die Speichermechanismen ein, die für den Betrieb der Website nötig sind. Ihr Zwischenstand in Formularen und Konfiguratoren sowie Ihr Warenkorb werden ausschließlich in Ihrem Browser gespeichert und nicht an uns übertragen, solange Sie den Vorgang nicht absenden. Sie können diese Daten jederzeit über Ihren Browser löschen.
+[Platzhalter: Sobald Analyse-, Karten- oder Marketingdienste eingesetzt werden, sind sie hier aufzuführen und über die Cookie-Einwilligung zu steuern. Siehe auch die Seite Cookie-Einstellungen.]
+7. Videoüberwachung, Aufzeichnung und Zutrittsprotokollierung
+Wenn wir für Sie Videoüberwachung, Alarmtechnik oder elektronische Zutrittskontrolle planen und einrichten, sind Sie als Betreiberin oder Betreiber für die rechtmäßige Nutzung dieser Anlagen verantwortlich. Das betrifft insbesondere die Ausrichtung von Kameras, die Aufzeichnungsdauer, die Kennzeichnung überwachter Bereiche, die Information betroffener Personen sowie die Auswertung von Zutrittsprotokollen.
+Verdeckte Audioüberwachung bieten wir nicht als Standardprodukt an. Gegensprech- und Alarmfunktionen richten wir ausschließlich für zulässige Einsatzzwecke ein.
+[Platzhalter: Konkrete Hinweise zur Beteiligung von Beschäftigtenvertretungen und zur Durchführung einer Datenschutz-Folgenabschätzung ergänzen lassen.]
+8. Ihre Rechte
+Sie haben im gesetzlichen Rahmen folgende Rechte:
+Auskunft über die zu Ihnen gespeicherten Daten
+Berichtigung unrichtiger Daten
+Löschung
+Einschränkung der Verarbeitung
+Datenübertragbarkeit
+Widerspruch gegen bestimmte Verarbeitungen
+Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft
+Beschwerde bei einer Datenschutz-Aufsichtsbehörde
+Zur Ausübung Ihrer Rechte genügt eine Nachricht an [Platzhalter: E-Mail-Adresse].
+[Platzhalter: Zuständige Aufsichtsbehörde mit Anschrift eintragen.]
+9. Sicherheit der Übertragung
+Die Website wird über eine verschlüsselte Verbindung ausgeliefert. Datei-Uploads erfolgen über dieselbe geschützte Verbindung.
+10. Änderungen dieser Erklärung
+[Platzhalter: Hinweis auf Aktualisierungen und den Stand der Erklärung mit Datum ergänzen.]

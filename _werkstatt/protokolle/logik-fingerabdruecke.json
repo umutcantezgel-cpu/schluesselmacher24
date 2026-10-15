@@ -1,0 +1,20 @@
+{
+  "basis": "b49fe04bf70a67390029216bac7f3606569de3c5",
+  "dateien": {
+    "src/app/(site)/kasse/kasse-formular.tsx": "f15b51637b72029961731c4f2b1053e4a48f0dfba1df1bf6d621c700cc3dc5cb",
+    "src/app/(site)/warenkorb/warenkorb-ansicht.tsx": "0ebb86d647434fe0c05904b764fdee31d1d95a7ac56edda64da14df20d59ca7b",
+    "src/app/(site)/bestellung/[id]/page.tsx": "12519e20f5d67ef0131ed0b8dd1818ad3b08a46abad2db9a607df81f04dd4acc",
+    "src/app/(site)/autoschluessel/anfrage/assistent.tsx": "7115588c9d2f991fb5782c7f8d192deaf8edff226254eb958298c0e32d74bceb",
+    "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx": "4769e7cb82ffb81a1fc8a2e78bae5ade37ee9620fe58213f3b44f7e473a89053",
+    "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx": "d7e89c34582ceaa2208238baca46f92fa24d177b208979db0ad615ec6a9bce51",
+    "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx": "0c75d02f9b3120b264d4a36e27e11cc7ecfd09f86063d5e2096eee4bb6b868ca",
+    "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx": "5bd1190ae44c041ba7fc8ec27b9172833e0194a6b2e14f31ead668ece30fed0e",
+    "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx": "0f365d1e3a3b8b2b6268fa12b74a03914b37258f414267207c3d1fdf963fd0f6",
+    "src/app/(site)/service-und-termin/anfrage/anfrage-formular.tsx": "758036b2773cab8d09ffb097de4e1f21ac55c6d18e8565525acae960d3b5ac16",
+    "src/app/(site)/service-und-termin/terminstatus/status-formular.tsx": "0f82c11ed63ccd7ab09c5fdfa56aafe87b3f74f52363f6699a5a261fd8606fdc",
+    "src/app/(site)/schluessel-nach-code/[slug]/bestell-formular.tsx": "6860c6355fb074231b6a97c4cf93c83ba369b518f8867230093e92189ddd33b0",
+    "src/app/(site)/artikel/[slug]/artikel-kauf.tsx": "5c6da48352987f3d3ddb0c85c90a40ea13bceb82127089a6c1044a31babe3166",
+    "src/app/(site)/rechtliches/cookie-einstellungen/cookie-einstellungen.tsx": "762c5af16ecabc7b8fd14b787e914eb782a69ad88f78aed798538c8c228096f0",
+    "src/components/forms/photo-upload.tsx": "6fad3b08645c17585e9186fa4487b2643c7d1a40bc7c9b8a3608883c656e1fa0"
+  }
+}

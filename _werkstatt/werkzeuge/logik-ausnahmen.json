@@ -1,0 +1,16 @@
+{
+  "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx": [
+    {
+      "grund": "Scrollverhalten folgt reduzierter Bewegung (L-03)",
+      "suchen": "behavior:\\s*(?:'smooth'|scrollVerhalten\\(\\))",
+      "ersetzen": "behavior: __SCROLL__"
+    }
+  ],
+  "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx": [
+    {
+      "grund": "Scrollverhalten folgt reduzierter Bewegung (L-03)",
+      "suchen": "behavior:\\s*(?:'smooth'|scrollVerhalten\\(\\))",
+      "ersetzen": "behavior: __SCROLL__"
+    }
+  ]
+}
