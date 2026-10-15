@@ -8,6 +8,10 @@ export const dynamic = 'force-static';
  * Wird aus der Navigation erzeugt und bleibt so automatisch aktuell.
  */
 export function GET() {
+  const additionalModulesInfo = `
+- Interaktive Module: Ein neuer SecurityCheckCalculator wurde auf /sicherheitstechnik/sicherheitscheck hinzugefügt, um Investitionen in Sicherheitstechnik direkt auf der Seite zu berechnen.
+`;
+
   const site = getSiteUrl();
 
   const bereiche = NAV_AREAS.map(
@@ -34,7 +38,7 @@ export function GET() {
     '',
   ].join('\n');
 
-  return new Response(body, {
+  return new Response(body + additionalModulesInfo, {
     headers: { 'Content-Type': 'text/plain; charset=utf-8' },
   });
 }
