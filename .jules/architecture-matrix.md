@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| Route | Datei | Ist-Zustand (Wortanzahl) | Soll-Zustand (Wörter) | CWV-Status | Schema-Status | Geplantes Modul |
+|---|---|---|---|---|---|---|
+| /artikel/[slug] | app/(site)/artikel/[slug]/page.tsx | 629 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /artikel | app/(site)/artikel/page.tsx | 454 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /autoschluessel/anfrage | app/(site)/autoschluessel/anfrage/page.tsx | 362 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel/fahrzeugoeffnung | app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 199 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel/funkschluessel | app/(site)/autoschluessel/funkschluessel/page.tsx | 185 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel/kopieren | app/(site)/autoschluessel/kopieren/page.tsx | 221 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel/marken/[slug]/[slug] | app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 794 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel/marken/[slug] | app/(site)/autoschluessel/marken/[make]/page.tsx | 538 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel/marken | app/(site)/autoschluessel/marken/page.tsx | 423 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel/nachmachen | app/(site)/autoschluessel/nachmachen/page.tsx | 110 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel | app/(site)/autoschluessel/page.tsx | 1433 | 1633 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel/programmieren | app/(site)/autoschluessel/programmieren/page.tsx | 229 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel/schluesselbart-fraesen | app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 209 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /autoschluessel/smart-key | app/(site)/autoschluessel/smart-key/page.tsx | 260 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | CarKeyCompatibilityChecker |
+| /bestellung/[slug] | app/(site)/bestellung/[id]/page.tsx | 919 | 1119 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /elektronische-zutrittsloesungen/konfigurator | app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 249 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /elektronische-zutrittsloesungen | app/(site)/elektronische-zutrittsloesungen/page.tsx | 1913 | 2113 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /gleichschliessende-zylinder/konfigurator | app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 200 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /gleichschliessende-zylinder | app/(site)/gleichschliessende-zylinder/page.tsx | 1233 | 1433 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /kasse | app/(site)/kasse/page.tsx | 160 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| / | app/(site)/page.tsx | 488 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /ratgeber/[slug] | app/(site)/ratgeber/[slug]/page.tsx | 226 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /ratgeber | app/(site)/ratgeber/page.tsx | 132 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /rechtliches/agb | app/(site)/rechtliches/agb/page.tsx | 383 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /rechtliches/cookie-einstellungen | app/(site)/rechtliches/cookie-einstellungen/page.tsx | 205 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /rechtliches/datenschutz | app/(site)/rechtliches/datenschutz/page.tsx | 653 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /rechtliches/impressum | app/(site)/rechtliches/impressum/page.tsx | 217 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /rechtliches/versand-und-zahlung | app/(site)/rechtliches/versand-und-zahlung/page.tsx | 343 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /rechtliches/widerruf | app/(site)/rechtliches/widerruf/page.tsx | 341 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /schliessanlagen/konfigurator | app/(site)/schliessanlagen/konfigurator/page.tsx | 258 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /schliessanlagen | app/(site)/schliessanlagen/page.tsx | 1451 | 1651 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /schluessel-nach-code/[slug] | app/(site)/schluessel-nach-code/[slug]/page.tsx | 496 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /schluessel-nach-code | app/(site)/schluessel-nach-code/page.tsx | 311 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /schluessel-nach-vorlage/anfrage | app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 126 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /schluessel-nach-vorlage | app/(site)/schluessel-nach-vorlage/page.tsx | 1252 | 1452 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /service-und-termin/anfrage | app/(site)/service-und-termin/anfrage/page.tsx | 96 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /service-und-termin/kontakt | app/(site)/service-und-termin/kontakt/page.tsx | 219 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /service-und-termin | app/(site)/service-und-termin/page.tsx | 1184 | 1384 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /service-und-termin/terminstatus | app/(site)/service-und-termin/terminstatus/page.tsx | 61 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /service-und-termin/vor-ort | app/(site)/service-und-termin/vor-ort/page.tsx | 441 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /sicherheitstechnik/[slug] | app/(site)/sicherheitstechnik/[slug]/page.tsx | 403 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | SecurityAuditCalculator |
+| /sicherheitstechnik | app/(site)/sicherheitstechnik/page.tsx | 548 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | SecurityAuditCalculator |
+| /sicherheitstechnik/sicherheitscheck | app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 195 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | SecurityAuditCalculator |
+| /standorte/[slug] | app/(site)/standorte/[city]/page.tsx | 222 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /standorte | app/(site)/standorte/page.tsx | 126 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /tuer-und-schliesstechnik/[slug] | app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 283 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /tuer-und-schliesstechnik | app/(site)/tuer-und-schliesstechnik/page.tsx | 1235 | 1435 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
+| /warenkorb | app/(site)/warenkorb/page.tsx | 184 | 950 | NEEDS_OPTIMIZATION | INCOMPLETE | EnterpriseRoiCalculator |
