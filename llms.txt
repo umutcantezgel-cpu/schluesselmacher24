@@ -1,0 +1,4 @@
+
+
+## Architecture Blueprint Updates
+All existing routes are mapped in .jules/revolution-plan.json for transformation with high-quality content and Awwwards-style interactions.
