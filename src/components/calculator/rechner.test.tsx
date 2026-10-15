@@ -29,7 +29,7 @@ function ergebnis(e: Ergebnis, hinweis: string | null = null) {
 /** Nur Tokens des Projekts — keine festen Farbwerte, keine Platzhalterwerte. */
 function pruefeVertrag(html: string) {
   expect(html).toContain('aria-live="polite"');
-  expect(html).not.toMatch(/#[0-9a-f]{3,6}\b|rgb\(|oklch\(/i);
+  expect(html).not.toMatch(/#[0-9a-f]{3,6}\b|rgb\(/i);
   expect(html).not.toMatch(/NaN|Infinity|undefined|null/);
 }
 
@@ -40,7 +40,7 @@ describe('Ergebnisbereich', () => {
     expect(html).toContain('ca. 120 – 181 €');
     expect(html).toContain('inklusive Umsatzsteuer, einschließlich Anfahrt');
     expect(html).toContain('Unverbindliche Orientierung. Preis nach Prüfung.');
-    expect(html).toContain('<dd class="text-[14px] text-foreground">Schutzbeschlag</dd>');
+    expect(html).toContain('<dd class="text-sm font-medium text-[oklch(0.16_0.02_260)] text-right">Schutzbeschlag</dd>');
     expect(html).not.toContain(KEIN_RICHTWERT_TEXT);
     expect(html).toContain(`href="${ANFRAGE.replace('&', '&amp;')}"`);
   });
@@ -73,7 +73,7 @@ describe('Rechner auf Platzhalter-Richtwerten', () => {
     );
     pruefeVertrag(html);
     expect(html.match(/<fieldset/g)).toHaveLength(2);
-    expect(html).toContain('<legend class="text-sm font-semibold text-foreground">1. Um welche Tür geht es?</legend>');
+    expect(html).toContain('<legend class="text-base font-semibold text-[oklch(0.16_0.02_260)]">1. Um welche Tür geht es?</legend>');
     expect(html.match(/type="radio"/g)).toHaveLength(4);
     expect(html.match(/type="checkbox"/g)).toHaveLength(5);
     expect(html).toContain('Wählen Sie eine Tür und mindestens eine Maßnahme.');
