@@ -1,0 +1,5 @@
+
+
+## Architecture Blueprint
+
+All existing routes mapped and audited. Strict adherence to Zero-New-Routes invariant and OKLCH Light Mode design doctrine.
