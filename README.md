@@ -3,6 +3,9 @@
 Website und Shop für Autoschlüssel, Schlüssel, Schließtechnik, elektronische
 Zutrittslösungen und Sicherheitstechnik. Domain: `schluesselmacher24.de`
 
+## Architekturziele
+Die Codebasis durchläuft aktuell einen umfassenden Red-Team-Audit und ein Architektur-Upgrade nach der Swiss Light Design Doctrine (OKLCH Color Space) unter der ZERO-NEW-ROUTES Invariante. Die aktuellen Master-Implementierungspläne befinden sich im `.jules/` Verzeichnis.
+
 ## Entwicklung
 
 ```bash
