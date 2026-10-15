@@ -102,21 +102,110 @@ const config = {
         md: 'calc(var(--radius) - 4px)',
         sm: 'calc(var(--radius) - 6px)',
       },
+      /* Seitenverhältnisse der Bildstellen (ImageSlot.ratio) */
+      aspectRatio: {
+        '4/3': '4 / 3',
+        '3/2': '3 / 2',
+        '21/9': '21 / 9',
+      },
+      /* Typoskala (KERN K-005): fließend zwischen 390 und 1440 px. */
+      fontSize: {
+        caption: ['var(--text-caption)', { lineHeight: '1.4' }],
+        small: ['var(--text-small)', { lineHeight: '1.5' }],
+        body: ['var(--text-body)', { lineHeight: '1.6' }],
+        input: ['var(--text-input)', { lineHeight: '1.5' }],
+        lead: ['var(--text-lead)', { lineHeight: '1.55' }],
+        'title-sm': ['var(--text-title-sm)', { lineHeight: '1.35' }],
+        title: ['var(--text-title)', { lineHeight: '1.3' }],
+        headline: ['var(--text-headline)', { lineHeight: '1.15', letterSpacing: '-0.015em' }],
+        display: ['var(--text-display)', { lineHeight: '1.04', letterSpacing: '-0.025em' }],
+      },
+      borderWidth: {
+        /* Haarlinie der Bemaßung */
+        strich: 'var(--strich)',
+      },
+      letterSpacing: {
+        /* Großbuchstaben-Zeilen (Augenbraue, Bemaßung) */
+        label: '0.12em',
+      },
+      spacing: {
+        section: 'var(--space-section)',
+        'section-tight': 'var(--space-section-tight)',
+        gutter: 'var(--space-gutter)',
+        header: 'var(--header-height)',
+      },
+      minHeight: {
+        /* Kleine Knöpfe nur am Desktop neben anderen Bedienelementen */
+        'touch-sm': '2.5rem',
+        touch: '2.75rem',
+        'touch-lg': '3.25rem',
+      },
+      minWidth: {
+        touch: '2.75rem',
+      },
       maxWidth: {
         shell: 'var(--shell-max)',
+        /* Messbreite für Fließtext: 60–75 Zeichen je Zeile */
+        measure: '68ch',
+      },
+      boxShadow: {
+        raised: '0 1px 2px hsl(var(--shadow-color) / 0.06), 0 10px 24px -12px hsl(var(--shadow-color) / 0.22)',
+        overlay: '0 2px 6px hsl(var(--shadow-color) / 0.08), 0 20px 44px -14px hsl(var(--shadow-color) / 0.3)',
+      },
+      zIndex: {
+        raised: '10',
+        sticky: '30',
+        header: '40',
+        overlay: '50',
+        drawer: '60',
+        skip: '70',
+      },
+      /* Bewegung (KERN K-007) */
+      transitionDuration: {
+        instant: 'var(--dauer-instant)',
+        quick: 'var(--dauer-quick)',
+        base: 'var(--dauer-base)',
+        slow: 'var(--dauer-slow)',
+        enter: 'var(--dauer-enter)',
+        scene: 'var(--dauer-scene)',
+      },
+      scale: {
+        /* Knopfdruck (B-05) */
+        druck: '0.98',
       },
       keyframes: {
-        'fade-in': {
-          from: { opacity: '0', transform: 'translateY(4px)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
+        /* Zustandswechsel des Megamenüs (B-08) und des Drawers (B-07) */
+        'menue-ein': {
+          from: { opacity: '0', transform: 'translateY(-4px)' },
+          to: { opacity: '1', transform: 'none' },
+        },
+        'schublade-ein': {
+          from: { transform: 'translateX(100%)' },
+          to: { transform: 'none' },
+        },
+        'schleier-ein': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
       },
       animation: {
-        'fade-in': 'fade-in 200ms ease-out',
+        'menue-ein': 'menue-ein var(--dauer-base) var(--kurve-enter) both',
+        'schublade-ein': 'schublade-ein var(--dauer-base) var(--kurve-enter) both',
+        'schleier-ein': 'schleier-ein var(--dauer-quick) var(--kurve-standard) both',
+      },
+      transitionTimingFunction: {
+        standard: 'var(--kurve-standard)',
+        enter: 'var(--kurve-enter)',
+        exit: 'var(--kurve-exit)',
+        draw: 'var(--kurve-draw)',
       },
     },
   },
   plugins: [
+    /* Zeiger-Details nur bei feinen Zeigegeräten (KERN K-007, B-06): `zeiger:group-hover:…` */
+    plugin(({ addVariant }) => {
+      addVariant('zeiger', '@media (hover: hover) and (pointer: fine)');
+    }),
     plugin(({ addBase }) => {
       addBase({
         ':root': areaCssVariables(DEFAULT_AREA_THEME),

@@ -2,6 +2,7 @@
 
 import { useCallback, useMemo, useState } from 'react';
 
+import { scrollVerhalten } from '@/lib/bewegung';
 import {
   removeStoredValue,
   useStoredValue,
@@ -150,7 +151,7 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     (target: string) => {
       if (!steps.some((s) => s.id === target)) return;
       persist({ ...current, stepId: target });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: scrollVerhalten() });
     },
     [steps, current, persist],
   );
