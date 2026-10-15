@@ -29,7 +29,7 @@ export default function NotFound() {
           <li key={area.key}>
             <Link
               href={area.href}
-              className="block rounded-lg border border-border bg-surface p-4 transition-colors hover:border-border-strong"
+              className="block rounded-lg border border-border bg-surface p-4 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-border-strong"
             >
               <span className="block text-[15px] font-semibold text-foreground">{area.label}</span>
               <span className="mt-1 block text-[13px] leading-snug text-foreground-muted">

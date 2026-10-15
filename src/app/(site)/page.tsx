@@ -163,7 +163,7 @@ export default async function HomePage() {
               <li key={area.key}>
                 <Link
                   href={area.href}
-                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary">
                     <Icon size={19} aria-hidden />
@@ -176,7 +176,7 @@ export default async function HomePage() {
                   </span>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-[12px] font-semibold text-foreground-subtle">
                     {PROCESS_LABELS[area.process].label}
-                    <ArrowRight size={13} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+                    <ArrowRight size={13} aria-hidden className="transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5" />
                   </span>
                 </Link>
               </li>
@@ -246,7 +246,7 @@ export default async function HomePage() {
         <div className="grid gap-4 md:grid-cols-2">
           <Link
             href="/schluessel-nach-code"
-            className="group flex flex-col justify-between rounded-lg border border-border bg-surface p-6 transition-colors hover:border-primary"
+            className="group flex flex-col justify-between rounded-lg border border-border bg-surface p-6 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary"
           >
             <div>
               <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
@@ -259,13 +259,13 @@ export default async function HomePage() {
             </div>
             <span className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary">
               Codelinien ansehen
-              <ArrowRight size={15} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight size={15} aria-hidden className="transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5" />
             </span>
           </Link>
 
           <Link
             href="/gleichschliessende-zylinder/konfigurator"
-            className="group flex flex-col justify-between rounded-lg border border-border bg-surface p-6 transition-colors hover:border-primary"
+            className="group flex flex-col justify-between rounded-lg border border-border bg-surface p-6 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary"
           >
             <div>
               <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
@@ -279,7 +279,7 @@ export default async function HomePage() {
             </div>
             <span className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary">
               Zum Konfigurator
-              <ArrowRight size={15} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight size={15} aria-hidden className="transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5" />
             </span>
           </Link>
         </div>
@@ -298,7 +298,7 @@ export default async function HomePage() {
             ['schliessanlagen', 'elektronische-zutrittsloesungen', 'sicherheitstechnik'].includes(a.key),
           ).map((area) => (
             <li key={area.key}>
-              <Card className="group relative flex h-full flex-col overflow-hidden transition-all hover:shadow-[0_0_20px_rgba(var(--primary),0.15)]">
+              <Card className="group relative flex h-full flex-col overflow-hidden transition-all ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_0_20px_rgba(var(--primary),0.15)]">
                 <CardBody className="flex flex-1 flex-col">
                   <p className="text-[15px] font-bold text-foreground">{area.label}</p>
                   <p className="mt-2 flex-1 text-[14px] leading-relaxed text-foreground-muted">
@@ -340,7 +340,7 @@ export default async function HomePage() {
             <li key={guide.id}>
               <Link
                 href={`/ratgeber/${guide.slug}`}
-                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary"
               >
                 <span className="text-[15px] font-bold text-foreground group-hover:text-primary">
                   {guide.title}

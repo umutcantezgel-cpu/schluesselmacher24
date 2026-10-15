@@ -176,7 +176,7 @@ export default async function SicherheitstechnikPage() {
               <li key={service.id}>
                 <Link
                   href={`/${ROUTE}/${service.slug}`}
-                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary">
                     <Icon size={19} aria-hidden />
@@ -192,7 +192,7 @@ export default async function SicherheitstechnikPage() {
                     <ArrowRight
                       size={13}
                       aria-hidden
-                      className="transition-transform group-hover:translate-x-0.5"
+                      className="transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5"
                     />
                   </span>
                 </Link>
@@ -308,7 +308,7 @@ export default async function SicherheitstechnikPage() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-border bg-surface px-4 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-border bg-surface px-4 text-[14px] font-semibold text-foreground transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary hover:text-primary"
                 >
                   {link.label}
                   <ArrowRight size={15} aria-hidden />

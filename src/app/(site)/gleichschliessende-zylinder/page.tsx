@@ -553,7 +553,7 @@ export default async function CylinderOverviewPage() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group flex h-full items-center justify-between gap-3 rounded-lg border border-border bg-surface px-5 py-4 transition-colors hover:border-primary"
+                className="group flex h-full items-center justify-between gap-3 rounded-lg border border-border bg-surface px-5 py-4 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary"
               >
                 <span className="text-[14px] font-semibold text-foreground group-hover:text-primary">
                   {link.label}
@@ -561,7 +561,7 @@ export default async function CylinderOverviewPage() {
                 <ArrowRight
                   size={15}
                   aria-hidden
-                  className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                  className="shrink-0 text-foreground-subtle transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5"
                 />
               </Link>
             </li>

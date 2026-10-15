@@ -127,7 +127,7 @@ export function ArtikelListe({ articles, className }: ArtikelListeProps) {
                           />
                           <span
                             className={cn(
-                              'inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border px-3.5 text-[14px] font-semibold transition-colors',
+                              'inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border px-3.5 text-[14px] font-semibold transition-colors ease-[cubic-bezier(0.16,1,0.3,1)]',
                               'peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background',
                               an
                                 ? 'border-primary bg-primary-soft text-primary'
@@ -198,7 +198,7 @@ function ArtikelKarte({ article }: { article: ListenArtikel }) {
   return (
     <Link
       href={artikelPfad(article.slug)}
-      className="group flex h-full flex-col rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary"
+      className="group flex h-full flex-col rounded-lg border border-border bg-surface p-4 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary"
     >
       <ImagePlaceholder
         slot={article.image}
@@ -232,7 +232,7 @@ function ArtikelKarte({ article }: { article: ListenArtikel }) {
         </div>
         <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
           Ansehen
-          <ArrowRight size={14} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight size={14} aria-hidden className="transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5" />
         </span>
       </div>
     </Link>
