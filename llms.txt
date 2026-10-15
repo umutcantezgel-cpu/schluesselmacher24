@@ -1,0 +1,10 @@
+# SCHLÜSSELMACHER24 LLM Context
+
+Website und Shop für Autoschlüssel, Schlüssel, Schließtechnik, elektronische
+Zutrittslösungen und Sicherheitstechnik. Domain: `schluesselmacher24.de`
+
+## Architecture Targets
+- Next.js 16+ App Router, Turbopack, React 19.2+, TypeScript 5.5+
+- Style Engine: Tailwind CSS v4.x / Native Modern CSS (OKLCH Color Space)
+- Brand DNA: Swiss Light Design (Base Canvas: oklch(0.988 0.002 260))
+- Blueprint generated for codebase augmentation with deep content > 800 words per route.
