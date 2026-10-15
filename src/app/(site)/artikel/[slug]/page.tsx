@@ -269,13 +269,13 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group flex h-full min-h-[44px] items-center justify-between gap-3 rounded-lg border border-border bg-surface px-5 py-4 text-[15px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                className="group flex h-full min-h-[44px] items-center justify-between gap-3 rounded-lg border border-border bg-surface px-5 py-4 text-[15px] font-semibold text-foreground transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary hover:text-primary"
               >
                 {link.label}
                 <ArrowRight
                   size={16}
                   aria-hidden
-                  className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                  className="shrink-0 text-foreground-subtle transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5"
                 />
               </Link>
             </li>

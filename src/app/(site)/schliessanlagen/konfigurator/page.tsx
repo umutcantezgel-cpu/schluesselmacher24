@@ -102,7 +102,7 @@ export default async function SchliessanlagenKonfiguratorPage() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary"
               >
                 <span className="text-[15px] font-bold text-foreground group-hover:text-primary">
                   {link.label}

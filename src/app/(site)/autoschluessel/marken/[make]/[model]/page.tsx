@@ -322,7 +322,7 @@ export default async function ModelPage(props: PageProps) {
                     <ArrowRight
                       size={16}
                       aria-hidden
-                      className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                      className="shrink-0 text-foreground-subtle transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5"
                     />
                   </Link>
                 </li>

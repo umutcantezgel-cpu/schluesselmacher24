@@ -116,7 +116,7 @@ export function CookieSettings() {
                   setConsent((prev) => ({ ...prev, [category.id]: !prev[category.id] }))
                 }
                 className={[
-                  'mt-0.5 flex h-6 w-11 shrink-0 items-center rounded-full p-0.5 transition-colors',
+                  'mt-0.5 flex h-6 w-11 shrink-0 items-center rounded-full p-0.5 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)]',
                   checked ? 'bg-primary' : 'bg-surface-sunken',
                   category.locked || !category.active ? 'cursor-not-allowed opacity-60' : '',
                 ].join(' ')}
@@ -124,7 +124,7 @@ export function CookieSettings() {
                 <span
                   aria-hidden
                   className={[
-                    'flex h-5 w-5 items-center justify-center rounded-full bg-white transition-transform',
+                    'flex h-5 w-5 items-center justify-center rounded-full bg-white transition-transform ease-[cubic-bezier(0.16,1,0.3,1)]',
                     checked ? 'translate-x-5' : 'translate-x-0',
                   ].join(' ')}
                 >

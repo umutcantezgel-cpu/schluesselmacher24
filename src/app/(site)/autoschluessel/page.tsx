@@ -457,7 +457,7 @@ export default async function AutoschluesselHubPage() {
               <li key={make.id}>
                 <Link
                   href={`/autoschluessel/marken/${make.slug}`}
-                  className="flex min-h-[44px] items-center justify-between gap-2 rounded-lg border border-border bg-surface px-3.5 py-2.5 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                  className="flex min-h-[44px] items-center justify-between gap-2 rounded-lg border border-border bg-surface px-3.5 py-2.5 text-[14px] font-semibold text-foreground transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary hover:text-primary"
                 >
                   {make.name}
                   <ArrowRight size={14} aria-hidden className="shrink-0 text-foreground-subtle" />
@@ -496,7 +496,7 @@ export default async function AutoschluesselHubPage() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group flex h-full min-h-[44px] flex-col rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary"
+                className="group flex h-full min-h-[44px] flex-col rounded-lg border border-border bg-surface p-4 transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary"
               >
                 <span className="text-[15px] font-semibold text-foreground group-hover:text-primary">
                   {link.label}
