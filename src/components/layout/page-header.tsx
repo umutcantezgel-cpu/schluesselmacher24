@@ -68,7 +68,7 @@ export function PageHeader({
 
       <h1
         className={cn(
-          'font-bold text-foreground',
+          'text-balance font-bold text-foreground',
           erzaehl ? 'mt-4 text-display' : 'mt-3 text-headline',
           !eyebrow && !icon && 'mt-0',
         )}

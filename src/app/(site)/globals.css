@@ -258,6 +258,12 @@
     hyphens: manual;
   }
 
+  /* Beginnt die Lesespalte mit einer Überschrift (auch im ersten Abschnitt), steht sie oben bündig. */
+  .prose-sm24 > :first-child:is(h2, h3),
+  .prose-sm24 > :first-child > :first-child:is(h2, h3) {
+    @apply mt-0;
+  }
+
   .prose-sm24 a {
     @apply font-semibold text-primary underline decoration-primary/40 underline-offset-2 transition-colors duration-quick hover:decoration-primary;
   }
