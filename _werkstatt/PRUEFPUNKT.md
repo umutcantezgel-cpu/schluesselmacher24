@@ -2,8 +2,9 @@
 
 - **Etappe:** E5 (übrige Ansichten und Befundpakete). Alle 12 Befundpakete der Sichtabnahme E4-L-23 sind abgenommen (H01, H02, H03, H06, H10, H11 nach L3 mit Nacharbeit des Orchestrators). KERN 1.13.
 - **Laufend:**
-  - Prüfstufe B E5 mit Sichtabnahme E5-L-29: Workflow `wf_38dc5eaf-f8b` (Task `w7m23erhx`), Skript `workflows/scripts/pruefstufe-b-e5-wf_38dc5eaf-f8b.js`. Teile 1+2 parallel, dann Teil 3→4 neben vier Sichtabnahmen (Opus, nacheinander), dann Teil 5. Bilder `/root/sm24-bilder/e5-b/`.
-  - Server: Port 3000 mit dem Build von d0e4784 (208/208), Port 3001 Entwicklung. Port 3100 (E0) erst für Prüfstufe C.
+  - Prüfstufe B E5, Fortsetzung nach Container-Neustart: Workflow `wf_38dc5eaf-f8b` (Task `wk4hel7ok`, `resumeFromRunId` desselben Laufs); Teile 1–4 und Sichtabnahme erzaehl-1 (6,8) und erzaehl-2 (7,0) fertig, offen: arbeit, uebrige, Teil 5.
+  - Entwürfe der Befundpakete Runde 2 für H01, H02, H03, H05, H06, H08, H09, H12: Workflow `wf_e9710b7f-3ab` (Task `wb4hm6zh0`, Skript `workflows/scripts/befund2-entwuerfe-erzaehl-wf_e9710b7f-3ab.js`), Entwurf und adversariale Gegenprüfung je Ansicht.
+  - Server: Port 3000 mit dem Build von d0e4784 (208/208), Port 3001 Entwicklung. Bei Abbruch beide Workflows mit `resumeFromRunId` fortsetzen.
 - **Fertig seit dem letzten Prüfpunkt:** Welle H nach Nacharbeit abgenommen (B-28 bacb687 mit CSS-Zähler `.sm24-zaehlung`, B-29 2a1fb8c, Textabzug gleich), E5-L-12 lucide entfernt (f10b677, D-043). Alle Pflichtpakete der Etappen E0 bis E5 sind gebaut.
 - **Als Nächstes:**
   1. Ergebnis Prüfstufe B und Sichtabnahme auswerten (ENTSCHEIDUNGEN, PLAN, ABNAHME); Befundpakete Runde 2 nur für Ansichten unter 8 (höchstens 2 je Ansicht und Kategorie), in Wellen zu ≤ 4 Plätzen.
