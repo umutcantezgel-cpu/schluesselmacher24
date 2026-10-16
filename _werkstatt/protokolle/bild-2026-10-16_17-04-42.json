@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-16T15:04:42.041Z",
+  "argumente": {
+    "_": [
+      "/artikel/beispiel-schluesselkasten"
+    ],
+    "geraet": "mobil",
+    "ganz": true,
+    "ziel": "/root/sm24-bilder/L-B26-27"
+  },
+  "pfad": "/artikel/beispiel-schluesselkasten",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/L-B26-27/artikel-beispiel-schluesselkasten__mobil__ganz.jpg",
+      "status": 200,
+      "bytes": 150942,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": true
+    }
+  ]
+}
