@@ -1,0 +1,10 @@
+# SCHLÜSSELMACHER24
+
+> Fachbetrieb für Autoschlüssel (nachmachen, programmieren, reparieren), Schlüssel nach
+> Code und nach Vorlage, gleichschließende Zylinder, Schließanlagen, elektronische
+> Zutrittslösungen, Tür- und Schließtechnik sowie Sicherheitstechnik. Bestellungen und
+> Anfragen deutschlandweit, Termine mit Fahrzeug vor Ort.
+
+## Architektur Blueprint
+Die Architektur wurde durch JC-AUDITOR-ARCHITECT-v1 auf das Schweizer High-End-Light Mode Design-System und Next.js 16+ App Router Standards auditiert.
+Details siehe `.jules/architecture-matrix.md` und `.jules/revolution-plan.json`.

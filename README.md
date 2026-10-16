@@ -43,3 +43,11 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architektur Blueprint (JC-AUDITOR-ARCHITECT-v1)
+
+Die Architektur wurde systematisch geprüft und ein deterministischer 5-Phasen Blueprint erstellt:
+- **Zero-New-Routes Invariante**: Keine neuen Routen wurden erstellt.
+- **Erhalt der Marken-DNA**: Farbsystem und Design-Metriken wurden als OKLCH dokumentiert.
+- **Direct-to-Main Pipeline**: Blueprint-Status ist aktiv in `.jules/`.
+Siehe `.jules/revolution-plan.json` und `.jules/architecture-matrix.md` für vollständige Pläne.
