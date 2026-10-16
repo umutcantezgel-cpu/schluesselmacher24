@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { BereichIcon } from '@/components/visual/bereich-icon';
+import { Seitenwechsel, bereichsName } from '@/components/visual/motion/seitenwechsel';
 import { Profillinie } from '@/components/visual/profillinie';
 import type { AreaKey } from '@/lib/types';
 import { cn } from '@/lib/cn';
@@ -39,7 +40,14 @@ export function PageHeader({
   visual,
 }: PageHeaderProps) {
   const erzaehl = art === 'erzaehl';
-  const anker = visual ?? (bereich && erzaehl ? <BereichIcon area={bereich} size={112} className="text-area-strong" /> : null);
+  // Das Fach-Icon ist Ziel des Seitenwechsels aus dem Schnelleinstieg der Startseite (B-13).
+  const anker =
+    visual ??
+    (bereich && erzaehl ? (
+      <Seitenwechsel name={bereichsName(bereich)}>
+        <BereichIcon area={bereich} size={112} className="text-area-strong" />
+      </Seitenwechsel>
+    ) : null);
 
   return (
     <header className="border-b border-border bg-surface">

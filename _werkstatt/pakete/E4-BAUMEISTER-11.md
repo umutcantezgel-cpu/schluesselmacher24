@@ -50,7 +50,7 @@ Muster: die Startseite `src/app/(site)/page.tsx` (Referenz: Schriftfeld, Stückl
 
 ## Schritte
 1. Lies deinen Abschnitt in `_werkstatt/berichte/E4-KUNDSCHAFT-welle-c.md` (E4-B-11), beide Seiten, `src/components/visual/generators/tuer-schutz.tsx` (Parameter) und die Startseite (Muster).
-2. Kopf: Primärknopf mit `pfeil`, ohne eigenes `active:scale-[…]` und `shadow-md` (der Knopf bringt Druck und Hover mit).
+2. Kopf: `PageHeader` mit `bereich="tuer-und-schliesstechnik"` (zeigt das Fach-Icon groß als Anker des Kopfes, wie `/autoschluessel`; Ziel des Seitenwechsels B-13); Primärknopf mit `pfeil`, ohne eigenes `active:scale-[…]` und `shadow-md` (der Knopf bringt Druck und Hover mit).
 3. Abschnitt „Die Tür als geschlossenes Sicherheitssystem“: Raster 7/5; die drei Punkte als Haarlinienliste mit `GlyphHakenKreis`; Kasten „Ablauf in diesem Bereich“ als Schriftfeld-Zeile; rechts großer Moment und Rechner.
 4. Leistungsportfolio wie oben.
 5. Regulatorik-Kasten wie oben, `NachweiseListe` unverändert darunter.

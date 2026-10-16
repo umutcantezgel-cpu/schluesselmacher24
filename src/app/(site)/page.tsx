@@ -16,6 +16,7 @@ import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { ZylinderMassGrafik } from '@/components/visual/generators/zylinder-mass';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { FraesbahnBewegung } from '@/components/visual/interaktiv/fraesbahn-bewegung';
+import { Seitenwechsel, bereichsName } from '@/components/visual/motion/seitenwechsel';
 import { cn } from '@/lib/cn';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -212,7 +213,10 @@ export default async function HomePage() {
                     <span className="hidden w-6 shrink-0 pt-1 font-mono text-caption tabular-nums text-foreground-subtle sm:block">
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <BereichIcon area={area.key} size={40} className="shrink-0 text-area-strong" />
+                    {/* Geht beim Seitenwechsel in das Fach-Icon des Bereichskopfs über (B-13) */}
+                    <Seitenwechsel name={bereichsName(area.key)}>
+                      <BereichIcon area={area.key} size={40} className="shrink-0 text-area-strong" />
+                    </Seitenwechsel>
                     <span className="min-w-0 flex-1">
                       <span className="block text-small font-semibold text-foreground group-hover:text-area-strong sm:text-title-sm">
                         {area.label}

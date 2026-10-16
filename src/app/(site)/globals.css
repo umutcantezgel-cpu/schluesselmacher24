@@ -475,6 +475,11 @@
   animation-timing-function: var(--kurve-standard);
 }
 
+/* Klicks während des Wechsels erreichen die neue Seite statt der Überlagerung. */
+::view-transition {
+  pointer-events: none;
+}
+
 /* Bewegung reduzieren — Layout darf dadurch nicht brechen */
 @media (prefers-reduced-motion: reduce) {
   *,

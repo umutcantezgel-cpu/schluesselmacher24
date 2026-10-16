@@ -138,6 +138,14 @@ Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabna
 - **Bestätigung des Autoschlüssel-Ablaufs:** nur per Rendertest belegt, nicht im Bild (ohne echte Sendung nicht erreichbar).
 - **Wiederherstellungs-Hinweis in Abläufen (Bestand):** „Ihr Zwischenstand von zuletzt wurde geladen“ erscheint schon nach der ersten eigenen Eingabe, ohne Neuladen. Ursache ist `src/lib/flow/use-flow.ts`, Z. 194 (`restored = Boolean(stored) && !dismissed`); das war schon in E0 so (Befund aus der Prüfung E3-BAUMEISTER-02). Mögliche Lösung: „restored“ nur, wenn beim Einhängen schon ein Stand vorlag. Die Datei ist geteilte Ablauflogik, daher ein eigenes Paket mit Test vor E5 (Abläufe).
 - **JS-Menge mobil (E2-PRUEFER-01-ergebnis):** über E0 in allen 12 Ansichten, zum Beispiel H01 293 statt 246 KB. Die Budgets LCP, CLS und INP sind eingehalten. Ursachen sind zu prüfen (Glyphen, `tailwind-merge`-Erweiterung, Client-Hüllen); gehört zu Paket E4-L-07 (Leistung absichern).
+  - **Analyse 16.10. (H01, mobil, Port 3000 gegen 3100):**
+    - Eigenes Seiten-JS (Skripte im HTML): 204 statt 195 KB komprimiert (+9 KB). Die Framework-Teile sind gleich.
+    - Der Rest der Differenz entsteht nach dem Laden: `<Link>`-Prefetch der sichtbaren Ziele lädt deren Chunks. Weil die Startseite mehr sichtbare Links hat (Schnelleinstieg, Ratgeber-Zellen), wächst die gemessene Menge.
+    - Ein gemeinsamer Chunk (etwa 14 KB komprimiert) enthält alle Generatoren der Registry. Er kommt über Client-Komponenten, die `ImagePlaceholder` importieren (`info-tip`, `photo-upload`, `shop-liste`, `warenkorb-ansicht`, `artikel-liste`, `konfigurator`) und damit `visualFuerMotiv` und die ganze Registry in den Client ziehen.
+  - **Maßnahmen für L-07 (nach Welle E, wenn die Seiten stehen):**
+    1. Ein `ImagePlaceholder` für Client-Komponenten ohne Registry: Generator nur über `slot.visual` mit dynamischem Import, oder Grafik als Server-Kind hereinreichen.
+    2. `prefetch` nur für die Hauptwege; Linklisten in Ratgeber und Fuß bekommen `prefetch={false}`. Wirkung im Bild und in der Messung prüfen.
+    3. Danach neu messen (Median aus 3, mobil, 4-fach gedrosselt).
 - **Überlauf-Befunde im Bildsatz** (67 statt 29 in E0): zum Teil gewollte Anschnitte im Hero und in den Projekten. Im Etappentor, Anlauf 2, je Ansicht prüfen.
 - **Kleine Beschriftungen in den Karten „Direkt kaufen“** mobil (D-018): Kür-Kandidat, falls die Sichtabnahme es verlangt.
 - **E5-B-23 Sicherheitscheck:** Im Schritt „Bestand“ landete ein Zeigerklick auf eine Auswahlkarte auf „/“ (E0-PRUEFER-04). Vermutete Ursache: Der feste Kopf deckt die Karte nach dem Scrollen ab, und der Klick trifft das Logo. Gegenmaßnahme seit E2: `scroll-padding-top` in `globals.css`. B-23 prüft den Fall mit echtem Zeigerklick erneut.
