@@ -1,0 +1,15 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T05:29:09.944Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/schliessanlagen/page.tsx",
+      "src/components/schliessanlagen/system-erklaerung.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 2,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}
