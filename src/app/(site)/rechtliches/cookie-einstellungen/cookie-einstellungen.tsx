@@ -1,11 +1,12 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Check, Trash2 } from 'lucide-react';
 
 import { removeStoredValue, useStoredValue, writeStoredValue } from '@/lib/client-state';
 import { Button } from '@/components/ui/button';
 import { Alert } from '@/components/ui/alert';
+import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 
 const STORAGE_KEY = 'sm24-cookie-einwilligung';
 
@@ -116,38 +117,48 @@ export function CookieSettings() {
                   setConsent((prev) => ({ ...prev, [category.id]: !prev[category.id] }))
                 }
                 className={[
-                  'mt-0.5 flex h-6 w-11 shrink-0 items-center rounded-full p-0.5 transition-colors',
-                  checked ? 'bg-primary' : 'bg-surface-sunken',
-                  category.locked || !category.active ? 'cursor-not-allowed opacity-60' : '',
+                  'group -my-2.5 flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-full',
+                  category.locked || !category.active ? 'cursor-not-allowed' : '',
                 ].join(' ')}
               >
                 <span
                   aria-hidden
                   className={[
-                    'flex h-5 w-5 items-center justify-center rounded-full bg-white transition-transform',
-                    checked ? 'translate-x-5' : 'translate-x-0',
+                    'flex h-6 w-11 items-center rounded-full p-0.5 transition-colors duration-quick ease-standard',
+                    checked ? 'bg-primary' : 'bg-surface-sunken',
+                    category.locked || !category.active ? 'opacity-60' : '',
+                    !category.locked && category.active && checked ? 'group-hover:bg-primary-hover' : '',
+                    !category.locked && category.active && !checked ? 'group-hover:bg-surface-muted' : '',
                   ].join(' ')}
                 >
-                  {checked && <Check size={11} className="text-primary" strokeWidth={3} />}
+                  <span
+                    aria-hidden
+                    className={[
+                      'flex h-5 w-5 items-center justify-center rounded-full bg-surface transition-transform duration-quick ease-standard',
+                      checked ? 'translate-x-5' : 'translate-x-0',
+                    ].join(' ')}
+                  >
+                    {checked && <GlyphHaken size={14} className="text-primary" />}
+                  </span>
                 </span>
                 <span className="sr-only">{category.label} aktivieren</span>
               </button>
 
               <div className="min-w-0">
-                <p className="text-[15px] font-semibold text-foreground">
+                <p className="text-body font-semibold text-foreground">
                   {category.label}
                   {category.locked && (
-                    <span className="ml-2 text-[12px] font-medium text-foreground-subtle">
+                    <span className="ml-2 text-caption font-medium text-foreground-muted">
                       (immer aktiv)
                     </span>
                   )}
                   {!category.locked && !category.active && (
-                    <span className="ml-2 text-[12px] font-medium text-foreground-subtle">
+                    <span className="ml-2 text-caption font-medium text-foreground-muted">
                       (derzeit kein Dienst eingebunden)
                     </span>
                   )}
                 </p>
-                <p className="mt-1 text-[13px] leading-relaxed text-foreground-muted">
+                <p className="mt-1 max-w-measure text-small leading-relaxed text-foreground-muted">
                   {category.description}
                 </p>
               </div>
@@ -159,19 +170,19 @@ export function CookieSettings() {
       <div className="mt-5 flex flex-col gap-3 sm:flex-row">
         <Button onClick={save}>Auswahl speichern</Button>
         <Button variant="outline" onClick={clearAll}>
-          <Trash2 size={16} aria-hidden />
+          <GlyphPapierkorb size={16} />
           Gespeicherte Daten löschen
         </Button>
       </div>
 
       {message && (
-        <Alert tone="success" className="mt-4">
+        <Alert tone="info" role="status" className="mt-4">
           {message}
         </Alert>
       )}
 
       {consent.updatedAt && (
-        <p className="mt-3 text-[12px] text-foreground-subtle">
+        <p className="mt-3 font-mono text-caption tabular-nums text-foreground-muted">
           Zuletzt gespeichert: {new Date(consent.updatedAt).toLocaleString('de-DE')}
         </p>
       )}
