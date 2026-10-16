@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Trash2 } from 'lucide-react';
 
 import { useHydrated } from '@/lib/client-state';
 import { useCartStore } from '@/lib/store/cart';
@@ -25,6 +24,9 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { OptionCard } from '@/components/forms/option-card';
 import { QuantityInput } from '@/components/forms/controls';
+import { GlyphLaden } from '@/components/visual/glyphen/laden';
+import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
+import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
 
 export interface WarenkorbAnsichtProps {
   shipping: ShippingOption[];
@@ -126,7 +128,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
     return (
       <Card>
         <CardBody>
-          <p className="text-[15px] text-foreground-muted" role="status">
+          <p className="flex items-center gap-3 text-body text-foreground-muted" role="status">
+            <GlyphLaden size={18} className="animate-spin motion-reduce:animate-none" />
             Warenkorb wird geladen.
           </p>
         </CardBody>
@@ -138,8 +141,9 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
     return (
       <Card>
         <CardBody className="max-w-xl">
-          <h2 className="text-lg font-bold text-foreground">Ihr Warenkorb ist leer</h2>
-          <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
+          <IconWarenkorb size={48} className="text-primary" />
+          <h2 className="mt-4 text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
+          <p className="mt-2 text-body text-foreground-muted">
             Sie können Schlüssel über den Schlüsselcode bestellen oder eine Gleichschließung
             selbst zusammenstellen.
           </p>
@@ -155,10 +159,10 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-start lg:gap-8">
-      <div className="space-y-4">
-        <h2 className="text-lg font-bold text-foreground">
-          Positionen <span className="font-normal text-foreground-muted">({positionen.length})</span>
+    <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+      <div className="space-y-4 lg:col-span-8">
+        <h2 className="text-title-sm font-semibold text-foreground">
+          Positionen <span className="font-mono text-small font-normal tabular-nums text-foreground-muted">({positionen.length})</span>
         </h2>
 
         {nichtVerfuegbar && (
@@ -168,140 +172,134 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
           </Alert>
         )}
 
-        <ul className="space-y-4">
+        {/* Positionen als Stückliste: Haarlinien statt Kartenstapel; ab sm im Zwölfer-Raster. */}
+        <ul className="border-t border-border">
           {positionen.map((position) =>
             position.art === 'code' ? (
-              <li key={position.item.uid}>
-                <Card>
-                  <CardBody>
-                    <div className="flex gap-4">
-                      {position.line && (
-                        <div className="hidden w-24 shrink-0 sm:block">
-                          <ImagePlaceholder slot={position.line.productImage} compact />
+              <li key={position.item.uid} className="border-b border-border py-6">
+                <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-gutter">
+                  {position.line && (
+                    <div className="hidden sm:col-span-2 sm:block">
+                      <ImagePlaceholder slot={position.line.productImage} compact />
+                    </div>
+                  )}
+
+                  <div className="min-w-0 sm:col-span-6 sm:col-start-3">
+                    <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                      <div className="min-w-0">
+                        <h3 className="text-title-sm font-semibold text-foreground">
+                          {position.line ? (
+                            <Link
+                              href={`/schluessel-nach-code/${position.line.slug}`}
+                              className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
+                            >
+                              {position.line.name}
+                            </Link>
+                          ) : (
+                            'Schlüssel nach Code'
+                          )}
+                        </h3>
+                        {position.line && (
+                          <p className="text-small text-foreground-muted">
+                            {position.line.manufacturer} · {position.line.application} ·{' '}
+                            {position.line.keyType}
+                          </p>
+                        )}
+                      </div>
+                      <Badge tone="outline">Schlüssel nach Code</Badge>
+                    </div>
+
+                    <dl className="mt-3 space-y-1 text-small">
+                      <div className="flex flex-wrap gap-x-2">
+                        <dt className="font-semibold text-foreground-muted">Code:</dt>
+                        <dd className="font-mono font-semibold tabular-nums text-foreground">
+                          {position.item.code}
+                        </dd>
+                      </div>
+                      {position.item.photoRefs.length > 0 && (
+                        <div className="flex flex-wrap gap-x-2">
+                          <dt className="font-semibold text-foreground-muted">Fotos:</dt>
+                          <dd className="text-foreground">
+                            {position.item.photoRefs.length} Datei
+                            {position.item.photoRefs.length === 1 ? '' : 'en'} vermerkt
+                          </dd>
                         </div>
                       )}
-
-                      <div className="min-w-0 flex-1">
-                        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
-                          <div className="min-w-0">
-                            <h3 className="text-[15px] font-bold text-foreground">
-                              {position.line ? (
-                                <Link
-                                  href={`/schluessel-nach-code/${position.line.slug}`}
-                                  className="hover:text-primary hover:underline"
-                                >
-                                  {position.line.name}
-                                </Link>
-                              ) : (
-                                'Schlüssel nach Code'
-                              )}
-                            </h3>
-                            {position.line && (
-                              <p className="mt-1 text-[13px] text-foreground-muted">
-                                {position.line.manufacturer} · {position.line.application} ·{' '}
-                                {position.line.keyType}
-                              </p>
-                            )}
-                          </div>
-                          <Badge tone="outline">Schlüssel nach Code</Badge>
+                      {position.item.note && (
+                        <div className="flex flex-wrap gap-x-2">
+                          <dt className="font-semibold text-foreground-muted">Anmerkung:</dt>
+                          <dd className="text-foreground">{position.item.note}</dd>
                         </div>
+                      )}
+                    </dl>
 
-                        <dl className="mt-3 space-y-1 text-[13px]">
-                          <div className="flex flex-wrap gap-x-2">
-                            <dt className="font-semibold text-foreground-muted">Code:</dt>
-                            <dd className="font-mono font-semibold text-foreground">
-                              {position.item.code}
-                            </dd>
-                          </div>
-                          {position.item.photoRefs.length > 0 && (
-                            <div className="flex flex-wrap gap-x-2">
-                              <dt className="font-semibold text-foreground-muted">Fotos:</dt>
-                              <dd className="text-foreground">
-                                {position.item.photoRefs.length} Datei
-                                {position.item.photoRefs.length === 1 ? '' : 'en'} vermerkt
-                              </dd>
-                            </div>
-                          )}
-                          {position.item.note && (
-                            <div className="flex flex-wrap gap-x-2">
-                              <dt className="font-semibold text-foreground-muted">Anmerkung:</dt>
-                              <dd className="text-foreground">{position.item.note}</dd>
-                            </div>
-                          )}
-                        </dl>
+                    {position.line && !position.line.active && (
+                      <p className="mt-3 text-small font-semibold text-danger">
+                        Diese Codelinie ist derzeit nicht bestellbar.
+                      </p>
+                    )}
+                    {!position.line && (
+                      <p className="mt-3 text-small font-semibold text-danger">
+                        Diese Codelinie gibt es nicht mehr. Bitte entfernen Sie die Position.
+                      </p>
+                    )}
 
-                        {position.line && !position.line.active && (
-                          <p className="mt-3 text-[13px] font-semibold text-danger">
-                            Diese Codelinie ist derzeit nicht bestellbar.
-                          </p>
-                        )}
-                        {!position.line && (
-                          <p className="mt-3 text-[13px] font-semibold text-danger">
-                            Diese Codelinie gibt es nicht mehr. Bitte entfernen Sie die Position.
-                          </p>
-                        )}
-
-                        <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-[13px] font-semibold text-foreground-muted">
-                                Stückzahl
-                              </span>
-                              {position.line && staffelHinweis(position.line) && (
-                                <InfoTip
-                                  hint={{
-                                    title: 'Preis nach Stückzahl',
-                                    body: staffelHinweis(position.line) ?? '',
-                                  }}
-                                />
-                              )}
-                            </div>
-                            <div className="mt-1.5">
-                              <QuantityInput
-                                value={position.item.qty}
-                                onChange={(wert) =>
-                                  updateQty(
-                                    position.item.uid,
-                                    wert,
-                                    position.line
-                                      ? unitPriceForCodeLine(position.line, wert)
-                                      : undefined,
-                                  )
-                                }
-                                min={1}
-                                max={position.line?.maxQty ?? position.item.qty}
-                                label={`Stückzahl ${position.line?.name ?? 'Schlüssel nach Code'}`}
-                              />
-                            </div>
-                          </div>
-
-                          <div className="text-right">
-                            <p className="text-[13px] text-foreground-muted">
-                              {formatCents(position.item.unitPriceCents)} je Stück
-                            </p>
-                            <p className="font-display text-lg font-bold text-foreground">
-                              {formatCents(position.item.unitPriceCents * position.item.qty)}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="mt-3">
-                          <Button
-                            variant="ghost"
-                            onClick={() => entfernen(position.item.uid)}
-                            className="px-0"
-                          >
-                            <Trash2 size={16} aria-hidden />
-                            Position entfernen
-                          </Button>
-                        </div>
-                      </div>
+                    <div className="mt-3">
+                      <Button
+                        variant="ghost"
+                        onClick={() => entfernen(position.item.uid)}
+                        className="px-0"
+                      >
+                        <GlyphPapierkorb size={16} />
+                        Position entfernen
+                        <span className="sr-only">: {position.line?.name ?? 'Schlüssel nach Code'}</span>
+                      </Button>
                     </div>
-                  </CardBody>
-                </Card>
+                  </div>
+
+                  <div className="sm:col-span-2 sm:col-start-9">
+                    <div className="flex items-center gap-2">
+                      <span className="text-small font-semibold text-foreground-muted">Stückzahl</span>
+                      {position.line && staffelHinweis(position.line) && (
+                        <InfoTip
+                          hint={{
+                            title: 'Preis nach Stückzahl',
+                            body: staffelHinweis(position.line) ?? '',
+                          }}
+                        />
+                      )}
+                    </div>
+                    <div className="mt-1.5">
+                      <QuantityInput
+                        value={position.item.qty}
+                        onChange={(wert) =>
+                          updateQty(
+                            position.item.uid,
+                            wert,
+                            position.line
+                              ? unitPriceForCodeLine(position.line, wert)
+                              : undefined,
+                          )
+                        }
+                        min={1}
+                        max={position.line?.maxQty ?? position.item.qty}
+                        label={`Stückzahl ${position.line?.name ?? 'Schlüssel nach Code'}`}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="font-mono text-small tabular-nums sm:col-span-2 sm:text-right">
+                    <p className="text-foreground-muted">
+                      {formatCents(position.item.unitPriceCents)} je Stück
+                    </p>
+                    <p className="mt-1 text-title-sm font-semibold text-foreground">
+                      {formatCents(position.item.unitPriceCents * position.item.qty)}
+                    </p>
+                  </div>
+                </div>
               </li>
             ) : position.art === 'standard' ? (
-              <li key={position.item.uid}>
+              <li key={position.item.uid} className="border-b border-border py-6">
                 <StandardPositionKarte
                   position={position}
                   onQty={(wert) =>
@@ -315,82 +313,78 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                 />
               </li>
             ) : (
-              <li key={position.item.uid}>
-                <Card>
-                  <CardBody>
-                    <div className="flex gap-4">
-                      <div className="hidden w-24 shrink-0 sm:block">
-                        <ImagePlaceholder
-                          slot={{
-                            motif: 'Produktfoto: Satz gleichschließender Zylinder mit gemeinsamen Schlüsseln',
-                            ratio: '1/1',
-                          }}
-                          compact
-                        />
-                      </div>
+              <li key={position.item.uid} className="border-b border-border py-6">
+                <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-gutter">
+                  <div className="hidden sm:col-span-2 sm:block">
+                    <ImagePlaceholder
+                      slot={{
+                        motif: 'Produktfoto: Satz gleichschließender Zylinder mit gemeinsamen Schlüsseln',
+                        ratio: '1/1',
+                      }}
+                      compact
+                    />
+                  </div>
 
-                      <div className="min-w-0 flex-1">
-                        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
-                          <h3 className="text-[15px] font-bold text-foreground">
-                            Gleichschließende Zylinder
-                          </h3>
-                          <Badge tone="outline">Zusammenstellung</Badge>
-                        </div>
-
-                        <p className="mt-1 text-[13px] text-foreground-muted">
-                          {position.breakdown.cylinderCount} Zylinder · eine gemeinsame Schließung
-                        </p>
-
-                        <dl className="mt-3 divide-y divide-border border-y border-border">
-                          {zylinderZeilen(position.item.draft, catalog).map((zeile, index) => (
-                            <div
-                              key={`${zeile.label}-${index}`}
-                              className="grid gap-0.5 py-2 sm:grid-cols-[minmax(0,12rem)_1fr] sm:gap-4"
-                            >
-                              <dt className="text-[13px] font-semibold text-foreground-muted">
-                                {zeile.label}
-                              </dt>
-                              <dd className="text-[14px] text-foreground">{zeile.value}</dd>
-                            </div>
-                          ))}
-                        </dl>
-
-                        {position.item.note && (
-                          <p className="mt-3 text-[13px] text-foreground-muted">
-                            <span className="font-semibold">Anmerkung:</span> {position.item.note}
-                          </p>
-                        )}
-
-                        <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
-                          <p className="text-[13px] text-foreground-muted">
-                            Stückzahl 1 — eine Zusammenstellung. Weitere Zylinder ändern Sie im
-                            Konfigurator.
-                          </p>
-                          <p className="font-display text-lg font-bold text-foreground">
-                            {formatCents(position.item.unitPriceCents)}
-                          </p>
-                        </div>
-
-                        <div className="mt-3 flex flex-wrap gap-2">
-                          <Button
-                            variant="ghost"
-                            onClick={() => entfernen(position.item.uid)}
-                            className="px-0"
-                          >
-                            <Trash2 size={16} aria-hidden />
-                            Position entfernen
-                          </Button>
-                          <Link
-                            href="/gleichschliessende-zylinder/konfigurator"
-                            className="inline-flex min-h-[44px] items-center text-[14px] font-semibold text-primary hover:underline"
-                          >
-                            Zusammenstellung ändern
-                          </Link>
-                        </div>
-                      </div>
+                  <div className="min-w-0 sm:col-span-6 sm:col-start-3">
+                    <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                      <h3 className="text-title-sm font-semibold text-foreground">
+                        Gleichschließende Zylinder
+                      </h3>
+                      <Badge tone="outline">Zusammenstellung</Badge>
                     </div>
-                  </CardBody>
-                </Card>
+
+                    <p className="mt-1 text-small text-foreground-muted">
+                      {position.breakdown.cylinderCount} Zylinder · eine gemeinsame Schließung
+                    </p>
+
+                    <dl className="mt-3 divide-y divide-border border-y border-border">
+                      {zylinderZeilen(position.item.draft, catalog).map((zeile, index) => (
+                        <div
+                          key={`${zeile.label}-${index}`}
+                          className="grid gap-0.5 py-2 sm:grid-cols-12 sm:gap-x-gutter"
+                        >
+                          <dt className="text-small font-semibold text-foreground-muted sm:col-span-4">
+                            {zeile.label}
+                          </dt>
+                          <dd className="text-small text-foreground sm:col-span-8">{zeile.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+
+                    {position.item.note && (
+                      <p className="mt-3 text-small text-foreground-muted">
+                        <span className="font-semibold">Anmerkung:</span> {position.item.note}
+                      </p>
+                    )}
+
+                    <p className="mt-3 text-small text-foreground-muted">
+                      Stückzahl 1 — eine Zusammenstellung. Weitere Zylinder ändern Sie im
+                      Konfigurator.
+                    </p>
+
+                    <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1">
+                      <Button
+                        variant="ghost"
+                        onClick={() => entfernen(position.item.uid)}
+                        className="px-0"
+                      >
+                        <GlyphPapierkorb size={16} />
+                        Position entfernen
+                        <span className="sr-only">: Gleichschließende Zylinder</span>
+                      </Button>
+                      <Link
+                        href="/gleichschliessende-zylinder/konfigurator"
+                        className="inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline"
+                      >
+                        Zusammenstellung ändern
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="font-mono text-title-sm font-semibold tabular-nums text-foreground sm:col-span-2 sm:col-start-11 sm:text-right">
+                    {formatCents(position.item.unitPriceCents)}
+                  </div>
+                </div>
               </li>
             ),
           )}
@@ -398,11 +392,11 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
       </div>
 
       {/* Versand und Summe */}
-      <div className="space-y-4 lg:sticky lg:top-24">
+      <div className="space-y-4 lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <h2 className="text-[15px] font-bold text-foreground">Versandart</h2>
+              <h2 className="text-title-sm font-semibold text-foreground">Versandart</h2>
               <InfoTip
                 hint={{
                   title: 'Versandarten',
@@ -450,49 +444,53 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
 
         <Card>
           <CardHeader>
-            <h2 className="text-[15px] font-bold text-foreground">Summe</h2>
+            <h2 className="text-title-sm font-semibold text-foreground">Summe</h2>
           </CardHeader>
           <CardBody>
-            <dl className="space-y-2 text-[14px]">
-              <div className="flex justify-between gap-4">
-                <dt className="text-foreground-muted">Zwischensumme</dt>
-                <dd className="font-semibold text-foreground">{formatCents(summen.itemsCents)}</dd>
+            {/* Schriftfeld: Beträge in Mono, Haarlinien zwischen den Zeilen. */}
+            <dl className="border-y border-border">
+              <div className="flex items-baseline justify-between gap-4 py-3">
+                <dt className="text-small text-foreground-muted">Zwischensumme</dt>
+                <dd className="font-mono text-small font-semibold tabular-nums text-foreground">
+                  {formatCents(summen.itemsCents)}
+                </dd>
               </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-foreground-muted">
+              <div className="flex items-baseline justify-between gap-4 border-t border-border py-3">
+                <dt className="text-small text-foreground-muted">
                   Versand{gewaehlteVersandart ? ` (${gewaehlteVersandart.label})` : ''}
                 </dt>
-                <dd className="font-semibold text-foreground">
+                <dd className="font-mono text-small font-semibold tabular-nums text-foreground">
                   {formatCents(summen.shippingCents)}
                 </dd>
               </div>
-              <div className="flex justify-between gap-4 border-t border-border pt-3">
-                <dt className="font-bold text-foreground">Gesamtsumme</dt>
-                <dd className="font-display text-xl font-bold text-foreground">
+              <div className="flex items-baseline justify-between gap-4 border-t border-border py-4">
+                <dt className="font-semibold text-foreground">Gesamtsumme</dt>
+                <dd className="font-mono text-title font-semibold tabular-nums text-foreground">
                   {formatCents(summen.totalCents)}
                 </dd>
               </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-foreground-subtle">
+              <div className="flex items-baseline justify-between gap-4 border-t border-border py-3">
+                <dt className="text-caption text-foreground-muted">
                   darin enthaltene Umsatzsteuer ({Math.round(summen.vatRate * 100)} %)
                 </dt>
-                <dd className="text-foreground-subtle">{formatCents(summen.vatCents)}</dd>
+                <dd className="font-mono text-caption tabular-nums text-foreground-muted">
+                  {formatCents(summen.vatCents)}
+                </dd>
               </div>
             </dl>
 
             <div className="mt-5">
               {gewaehlteVersandart && !nichtVerfuegbar ? (
-                <ButtonLink href="/kasse" size="lg" fullWidth>
+                <ButtonLink href="/kasse" size="lg" fullWidth pfeil>
                   Zur Kasse
-                  <ArrowRight size={17} aria-hidden />
                 </ButtonLink>
               ) : (
-                <Button size="lg" fullWidth disabled>
+                <Button size="lg" fullWidth disabled pfeil>
                   Zur Kasse
                 </Button>
               )}
               {!gewaehlteVersandart && versandarten.length > 0 && (
-                <p className="mt-2 text-[13px] text-foreground-subtle">
+                <p className="mt-2 text-small text-foreground-muted">
                   Bitte wählen Sie zuerst eine Versandart.
                 </p>
               )}
@@ -507,15 +505,18 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
           </CardBody>
         </Card>
 
-        <p className="text-[13px] leading-relaxed text-foreground-muted">
+        <p className="text-small leading-relaxed text-foreground-muted">
           Weiter einkaufen:{' '}
-          <Link href="/schluessel-nach-code" className="font-semibold text-primary hover:underline">
+          <Link
+            href="/schluessel-nach-code"
+            className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
+          >
             Schlüssel nach Code
           </Link>{' '}
           oder{' '}
           <Link
             href="/gleichschliessende-zylinder/konfigurator"
-            className="font-semibold text-primary hover:underline"
+            className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
           >
             Zylinder-Konfigurator
           </Link>
@@ -538,69 +539,69 @@ function StandardPositionKarte({
 }) {
   const { item, article } = position;
   return (
-    <Card>
-      <CardBody>
-        <div className="flex gap-4">
-          {article && (
-            <div className="hidden w-24 shrink-0 sm:block">
-              <ImagePlaceholder slot={article.image} compact />
-            </div>
-          )}
-          <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
-              <h3 className="text-[15px] font-bold text-foreground">
-                {article ? (
-                  <Link href={`/artikel/${article.slug}`} className="hover:text-primary hover:underline">
-                    {article.name}
-                  </Link>
-                ) : (
-                  item.label
-                )}
-              </h3>
-              <Badge tone="outline">Artikel</Badge>
-            </div>
-
-            {!article && (
-              <p className="mt-3 text-[13px] font-semibold text-danger">
-                Diesen Artikel gibt es nicht mehr. Bitte entfernen Sie die Position.
-              </p>
-            )}
-            {article?.example && (
-              <p className="mt-3 text-[13px] font-semibold text-danger">
-                Beispielartikel können nicht bestellt werden. Bitte entfernen Sie die Position.
-              </p>
-            )}
-
-            <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <span className="text-[13px] font-semibold text-foreground-muted">Stückzahl</span>
-                <div className="mt-1.5">
-                  <QuantityInput
-                    value={item.qty}
-                    onChange={onQty}
-                    min={1}
-                    max={article?.maxQty ?? item.qty}
-                    label={`Stückzahl ${article?.name ?? item.label}`}
-                  />
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="text-[13px] text-foreground-muted">{formatCents(item.unitPriceCents)} je Stück</p>
-                <p className="font-display text-lg font-bold text-foreground">
-                  {formatCents(item.unitPriceCents * item.qty)}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-3">
-              <Button variant="ghost" onClick={onRemove} className="px-0">
-                <Trash2 size={16} aria-hidden />
-                Position entfernen
-              </Button>
-            </div>
-          </div>
+    <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-gutter">
+      {article && (
+        <div className="hidden sm:col-span-2 sm:block">
+          <ImagePlaceholder slot={article.image} compact />
         </div>
-      </CardBody>
-    </Card>
+      )}
+
+      <div className="min-w-0 sm:col-span-6 sm:col-start-3">
+        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+          <h3 className="text-title-sm font-semibold text-foreground">
+            {article ? (
+              <Link
+                href={`/artikel/${article.slug}`}
+                className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
+              >
+                {article.name}
+              </Link>
+            ) : (
+              item.label
+            )}
+          </h3>
+          <Badge tone="outline">Artikel</Badge>
+        </div>
+
+        {!article && (
+          <p className="mt-3 text-small font-semibold text-danger">
+            Diesen Artikel gibt es nicht mehr. Bitte entfernen Sie die Position.
+          </p>
+        )}
+        {article?.example && (
+          <p className="mt-3 text-small font-semibold text-danger">
+            Beispielartikel können nicht bestellt werden. Bitte entfernen Sie die Position.
+          </p>
+        )}
+
+        <div className="mt-3">
+          <Button variant="ghost" onClick={onRemove} className="px-0">
+            <GlyphPapierkorb size={16} />
+            Position entfernen
+            <span className="sr-only">: {article?.name ?? item.label}</span>
+          </Button>
+        </div>
+      </div>
+
+      <div className="sm:col-span-2 sm:col-start-9">
+        <span className="text-small font-semibold text-foreground-muted">Stückzahl</span>
+        <div className="mt-1.5">
+          <QuantityInput
+            value={item.qty}
+            onChange={onQty}
+            min={1}
+            max={article?.maxQty ?? item.qty}
+            label={`Stückzahl ${article?.name ?? item.label}`}
+          />
+        </div>
+      </div>
+
+      <div className="font-mono text-small tabular-nums sm:col-span-2 sm:text-right">
+        <p className="text-foreground-muted">{formatCents(item.unitPriceCents)} je Stück</p>
+        <p className="mt-1 text-title-sm font-semibold text-foreground">
+          {formatCents(item.unitPriceCents * item.qty)}
+        </p>
+      </div>
+    </div>
   );
 }

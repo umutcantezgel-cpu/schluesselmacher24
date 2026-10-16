@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 import { getCodeLines, getCollection, getSettings } from '@/lib/data';
 import { PageHeader } from '@/components/layout/page-header';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { WarenkorbAnsicht } from './warenkorb-ansicht';
 
 export const metadata: Metadata = {
@@ -36,6 +36,7 @@ export default async function WarenkorbPage() {
   return (
     <>
       <PageHeader
+        art="arbeit"
         eyebrow="Direkt kaufen"
         title="Warenkorb"
         lead="Prüfen Sie Ihre Positionen, wählen Sie die Versandart und gehen Sie anschließend zur Kasse."
@@ -53,16 +54,20 @@ export default async function WarenkorbPage() {
 
       <section className="border-t border-border bg-surface-muted">
         <div className="shell py-8 md:py-10">
-          <h2 className="text-lg font-bold text-foreground">Passend dazu</h2>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          <h2 className="text-title-sm font-semibold text-foreground">Passend dazu</h2>
+          {/* Haarlinienliste: die ganze Zeile ist der Link, der Pfeil rückt bei feinem Zeiger vor (B-06). */}
+          <ul className="mt-4 grid border-t border-border sm:grid-cols-2 sm:gap-x-gutter lg:grid-cols-3">
             {WEITERE_SEITEN.map((link) => (
-              <li key={link.href}>
+              <li key={link.href} className="border-b border-border">
                 <Link
                   href={link.href}
-                  className="inline-flex min-h-[44px] items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
+                  className="group flex min-h-touch items-center justify-between gap-3 py-3 text-small font-semibold text-primary hover:underline"
                 >
                   {link.label}
-                  <ArrowRight size={15} aria-hidden />
+                  <GlyphPfeilRechts
+                    size={16}
+                    className="shrink-0 transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
+                  />
                 </Link>
               </li>
             ))}
