@@ -18,6 +18,7 @@ import { Badge } from '@/components/ui/badge';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { monoTeile } from '@/components/layout/summary-list';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { IconLieferung } from '@/components/visual/icons/lieferung';
@@ -221,8 +222,8 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
                       <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng sm:col-span-4">
                         {eintrag.name}
                       </dt>
-                      <dd className="font-mono text-body tabular-nums text-foreground sm:col-span-8">
-                        {eintrag.value}
+                      <dd className="text-body text-foreground sm:col-span-8">
+                        <EigenschaftWert wert={eintrag.value} />
                       </dd>
                     </div>
                   ))}
@@ -315,6 +316,24 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
           ))}
         </ol>
       </Section>
+    </>
+  );
+}
+
+/** Wert einer Eigenschaft: reine Zahlen ganz in Mono, sonst Zahlen mit Einheit in Mono und Text in der Grundschrift (K-006). */
+function EigenschaftWert({ wert }: { wert: string }) {
+  if (/^[\d.,\s×x/–-]+$/.test(wert)) return <span className="font-mono tabular-nums">{wert}</span>;
+  return (
+    <>
+      {monoTeile(wert).map((teil, index) =>
+        teil.mono ? (
+          <span key={index} className="whitespace-nowrap font-mono tabular-nums">
+            {teil.text}
+          </span>
+        ) : (
+          teil.text
+        ),
+      )}
     </>
   );
 }
