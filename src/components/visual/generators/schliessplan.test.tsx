@@ -13,10 +13,10 @@ function zeichne(params: unknown, title: unknown = 'Schließplan'): string {
   );
 }
 
-function pruefeVertrag(html: string) {
+function pruefeVertrag(html: string, breite = 480, hoehe = 300) {
   expect(html).toMatch(/^<svg[^>]*\brole="img"/);
   expect(html).toMatch(/^<svg[^>]*><title>[^<]+<\/title>/);
-  expect(html).toContain('viewBox="0 0 480 300"');
+  expect(html).toContain(`viewBox="0 0 ${breite} ${hoehe}"`);
   expect(html).toContain('preserveAspectRatio="xMidYMid meet"');
   expect(html).not.toMatch(/\bid=/);
   expect(html).not.toMatch(/#[0-9a-f]{3,6}/i);
@@ -278,5 +278,190 @@ describe('SchliessplanGrafik – Markierung', () => {
     expect(a.x + a.breite).toBeGreaterThanOrEqual(366 + 25);
     expect(a.y).toBeLessThanOrEqual(62 - 13);
     expect(a.y + a.hoehe).toBeGreaterThanOrEqual(238 + 16);
+  });
+});
+
+/** Reservetüren in Reihenfolge von links nach rechts: `true` für gestrichelt (frei). */
+function tuerenNachFrei(html: string): boolean[] {
+  return [...html.matchAll(/<rect class="([^"]*)"[^>]*?\bx="([\d.-]+)"[^>]*rx="2\.5"/g)]
+    .map((t) => ({ frei: t[1].includes('stroke-border-strong'), x: Number(t[2]) }))
+    .sort((a, b) => a.x - b.x)
+    .map((t) => t.frei);
+}
+
+/** Alle gestrichelten Rechtecke (Reserveschlüssel und Reservetüren). */
+const gestrichelteRechtecke = (html: string) => html.match(/<rect[^>]*stroke-dasharray="4 3"[^>]*>/g) ?? [];
+/** Alle gestrichelten Leitungen. */
+const gestrichelteLeitungen = (html: string) => html.match(/<path[^>]*stroke-dasharray="4 3"[^>]*>/g) ?? [];
+
+/** Schriftgrößen in der Grafik. */
+const schriftgroessen = (html: string) => [...html.matchAll(/font-size="([\d.]+)"/g)].map((t) => Number(t[1]));
+
+/** Rechtecke (Schlüssel und Türen) mit Lage und Maßen. */
+function rechtecke(html: string) {
+  return [...html.matchAll(/<rect[^>]*?\bx="([\d.-]+)" y="([\d.-]+)" width="([\d.]+)" height="([\d.]+)"/g)].map(
+    (t) => ({ x: Number(t[1]), y: Number(t[2]), breite: Number(t[3]), hoehe: Number(t[4]) }),
+  );
+}
+
+describe('SchliessplanGrafik – Reserve', () => {
+  it('zeichnet Reserveplätze gestrichelt: Schlüssel, Tür und Leitung', () => {
+    const html = zeichne({ system: 'haupt', tueren: 4, reserve: 2 });
+    pruefeVertrag(html);
+    // je Reserveplatz ein gestrichelter Schlüssel und eine gestrichelte Tür
+    expect(gestrichelteRechtecke(html)).toHaveLength(4);
+    // Leitung von der Wurzel und Leitung zur Tür je Reserveplatz
+    expect(gestrichelteLeitungen(html)).toHaveLength(4);
+    expect(tuerenNachFrei(html)).toEqual([false, false, false, false, true, true]);
+    for (const rechteck of gestrichelteRechtecke(html)) {
+      expect(rechteck).toContain('stroke-border-strong');
+      expect(rechteck).not.toContain('fill-area');
+    }
+    // keine Bewegung der Reserve außer der Ebenen-Verzögerung
+    expect(html).not.toMatch(/sm24-draw[^>]*stroke-dasharray/);
+    expect(html.match(/>frei</g)).toHaveLength(2);
+    expect(html).toContain('fill-foreground-muted font-mono');
+  });
+
+  it('zeichnet bei generalhaupt die Reserve an der letzten Gruppe', () => {
+    const html = zeichne({ system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2 });
+    pruefeVertrag(html);
+    expect(tuerenNachFrei(html)).toEqual([false, false, false, false, false, false, true, true]);
+    expect(gestrichelteRechtecke(html)).toHaveLength(4);
+    const k = kuerzel(html);
+    expect(anzahl(k, 'HGS')).toBe(2);
+    expect(anzahl(k, 'GS')).toBe(4);
+    expect(anzahl(k, 'ES')).toBe(6);
+  });
+
+  it('zählt Reserveplätze nicht als wählbar', () => {
+    const basis = zeichne({ system: 'haupt', tueren: 4, reserve: 2 });
+    expect(zeichne({ system: 'haupt', tueren: 4, reserve: 2, markiert: 'r1' })).toBe(basis);
+    expect(zeichne({ system: 'haupt', tueren: 4, reserve: 2, tuer: 'rt2' })).toBe(basis);
+    expect(zeichne({ system: 'haupt', tueren: 4, reserve: 2, tuer: 'rt2', markiert: 'rt1' })).toBe(basis);
+    // Markierung einer Hauptgruppe lässt die Reserve gedimmt und hebt nur echte Türen hervor
+    const gruppe = zeichne({ system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2, markiert: 'g2' });
+    expect(tuerenVonLinks(gruppe).filter(Boolean)).toHaveLength(2);
+    expect(tuerenVonLinks(gruppe)).toHaveLength(8);
+    const wurzel = zeichne({ system: 'haupt', tueren: 4, reserve: 2, markiert: 'wurzel' });
+    expect(tuerenVonLinks(wurzel).filter(Boolean)).toHaveLength(4);
+    // Die Schlüsselliste enthält keine Reserveplätze.
+    expect(schliessplanSchluessel({ system: 'haupt', tueren: 4, reserve: 2 })).toEqual(
+      schliessplanSchluessel({ system: 'haupt', tueren: 4 }),
+    );
+    expect(schliessplanSchluessel({ system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2 })).toEqual(
+      schliessplanSchluessel({ system: 'generalhaupt', gruppen: 2, tueren: 6 }),
+    );
+  });
+
+  it('ohne Reserve (0) bleibt die Grafik unverändert; ohne Wirkung bei Zentral und Gleichschließung', () => {
+    for (const system of ['haupt', 'generalhaupt']) {
+      expect(zeichne({ system, reserve: 0 })).toBe(zeichne({ system }));
+      expect(zeichne({ system, reserve: 'viele' })).toBe(zeichne({ system }));
+    }
+    expect(zeichne({ system: 'zentral', tueren: 3, reserve: 2 })).toBe(zeichne({ system: 'zentral', tueren: 3 }));
+    expect(zeichne({ system: 'gleichschliessung', tueren: 5, reserve: 2 })).toBe(
+      zeichne({ system: 'gleichschliessung', tueren: 5 }),
+    );
+    // Werte außerhalb 0–2 werden begrenzt
+    expect(zeichne({ system: 'haupt', reserve: 9 })).toBe(zeichne({ system: 'haupt', reserve: 2 }));
+    expect(zeichne({ system: 'haupt', reserve: -1 })).toBe(zeichne({ system: 'haupt' }));
+  });
+
+  it('passt mit Reserve in die Fläche', () => {
+    const html = zeichne({ system: 'generalhaupt', gruppen: 4, tueren: 8, reserve: 2 });
+    pruefeVertrag(html);
+    expect(html).not.toMatch(/NaN|Infinity|undefined/);
+  });
+});
+
+describe('SchliessplanGrafik – schmales Format', () => {
+  it('hat eine eigene Fläche mit 360 Einheiten, Höhe nach Tiefe der Anlage', () => {
+    pruefeVertrag(zeichne({ system: 'haupt', format: 'schmal' }), 360, 162);
+    pruefeVertrag(zeichne({ system: 'gleichschliessung', tueren: 4, format: 'schmal' }), 360, 116);
+    pruefeVertrag(zeichne({ system: 'zentral', tueren: 3, format: 'schmal' }), 360, 162);
+    pruefeVertrag(zeichne({ system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2, format: 'schmal' }), 360, 254);
+  });
+
+  it('zeigt alle Beschriftungen mindestens 11,5 px groß bei 358 px Darstellungsbreite', () => {
+    const faelle = [
+      { system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2 },
+      { system: 'generalhaupt', gruppen: 4, tueren: 8, reserve: 2 },
+      { system: 'generalhaupt', gruppen: 1, tueren: 8, reserve: 2 },
+      { system: 'haupt', tueren: 8, reserve: 2 },
+      { system: 'haupt', tueren: 2 },
+      { system: 'zentral', tueren: 8 },
+      { system: 'gleichschliessung', tueren: 8 },
+    ];
+    for (const params of faelle) {
+      const html = zeichne({ ...params, format: 'schmal' });
+      pruefeVertrag(html, 360, Number(/viewBox="0 0 360 (\d+)"/.exec(html)?.[1]));
+      const kleinste = Math.min(...schriftgroessen(html));
+      expect(kleinste * 358 / 360).toBeGreaterThanOrEqual(11.5);
+      // ohne Verkleinerung des Plans: die Schrift bleibt wie gezeichnet
+      expect(html).not.toContain('transform=');
+    }
+  });
+
+  it('hält alle Knoten innerhalb der Fläche und ohne Überlappung', () => {
+    const faelle = [
+      { system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2 },
+      { system: 'generalhaupt', gruppen: 4, tueren: 8, reserve: 2 },
+      { system: 'haupt', tueren: 8, reserve: 2 },
+      { system: 'zentral', tueren: 8 },
+    ];
+    for (const params of faelle) {
+      const html = zeichne({ ...params, format: 'schmal' });
+      const hoehe = Number(/viewBox="0 0 360 (\d+)"/.exec(html)?.[1]);
+      const alle = rechtecke(html);
+      for (const k of alle) {
+        expect(k.x).toBeGreaterThanOrEqual(0);
+        expect(k.x + k.breite).toBeLessThanOrEqual(360);
+        expect(k.y).toBeGreaterThanOrEqual(0);
+        expect(k.y + k.hoehe).toBeLessThanOrEqual(hoehe);
+      }
+      for (const text of html.matchAll(/<text[^>]*?x="([\d.-]+)" y="([\d.-]+)"/g)) {
+        expect(Number(text[1])).toBeGreaterThanOrEqual(0);
+        expect(Number(text[1])).toBeLessThanOrEqual(360);
+        expect(Number(text[2])).toBeLessThanOrEqual(hoehe);
+      }
+      // Knoten in einer Reihe überlappen nicht
+      const reihen = new Map<number, { x: number; breite: number }[]>();
+      for (const k of alle) reihen.set(k.y, [...(reihen.get(k.y) ?? []), { x: k.x, breite: k.breite }]);
+      for (const reihe of reihen.values()) {
+        const sortiert = [...reihe].sort((a, b) => a.x - b.x);
+        for (let i = 1; i < sortiert.length; i += 1) {
+          expect(sortiert[i - 1].x + sortiert[i - 1].breite).toBeLessThanOrEqual(sortiert[i].x + 0.01);
+        }
+      }
+    }
+  });
+
+  it('setzt „frei“ unter die schmale Reservetür und markiert wie das breite Format', () => {
+    const html = zeichne({ system: 'haupt', tueren: 4, reserve: 2, format: 'schmal' });
+    pruefeVertrag(html, 360, 162);
+    expect(html.match(/>frei</g)).toHaveLength(2);
+    expect(gestrichelteRechtecke(html)).toHaveLength(4);
+    const markiert = zeichne({ system: 'haupt', tueren: 4, format: 'schmal', markiert: 'e2' });
+    expect(tuerenVonLinks(markiert)).toEqual([false, true, false, false]);
+    expect(hervorgehobeneKanten(markiert)).toBe(2);
+  });
+
+  it('lässt den Ausschnitt auch im schmalen Format die Reserve mit einschließen', () => {
+    const a = schliessplanAusschnitt({ system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2, format: 'schmal' });
+    expect(a.vollBreite).toBe(360);
+    expect(a.vollHoehe).toBe(254);
+    expect(a.x).toBeGreaterThanOrEqual(0);
+    expect(a.x + a.breite).toBeLessThanOrEqual(360);
+    expect(a.y + a.hoehe).toBeLessThanOrEqual(254);
+    // unterste Tür liegt bei 27 + 4 · 46 = 211; „frei“ reicht bis 239
+    expect(a.y + a.hoehe).toBeGreaterThanOrEqual(239);
+  });
+
+  it('fällt bei unbekanntem Format auf breit zurück und ist deterministisch', () => {
+    expect(zeichne({ format: 'quer' })).toBe(zeichne({}));
+    expect(zeichne({ format: ' Schmal ' })).toBe(zeichne({ format: 'schmal' }));
+    const params = { system: 'generalhaupt', gruppen: 3, tueren: 7, reserve: 1, format: 'schmal' };
+    expect(zeichne(params)).toBe(zeichne({ ...params }));
   });
 });
