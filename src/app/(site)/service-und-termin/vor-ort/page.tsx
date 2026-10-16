@@ -103,7 +103,9 @@ export default async function VorOrtPage() {
               {SERVICES.map((service, index) => (
                 <li key={service.title} className="group relative border-b border-border">
                   <Link href={service.href} className="absolute inset-0 rounded-lg">
-                    <span className="sr-only">{service.cta}</span>
+                    <span className="sr-only">
+                      {service.title}: {service.cta}
+                    </span>
                   </Link>
                   <div className="pointer-events-none grid grid-cols-12 gap-x-4 py-6">
                     <span className="col-span-2 font-mono text-title font-semibold tabular-nums text-area-strong sm:col-span-1">
