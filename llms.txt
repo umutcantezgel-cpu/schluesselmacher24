@@ -1,0 +1,5 @@
+
+---
+Aktualisierte System Architektur Blueprint (JC-AUDITOR-ARCHITECT-v1):
+- Next.js 16+ App Router, TypeScript 5.5+, Tailwind CSS v4 (OKLCH).
+- Verpflichtung auf Swiss Light Design Doctrine und Zero-New-Routes Invariante.
