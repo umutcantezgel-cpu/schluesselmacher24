@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · Prüfstufe B E5 mit Sichtabnahme läuft · Pflicht 85/88 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (d0e4784: Build 208/208, Logikwächter 0, Wertesuche 0, Textabzug gleich, 1138 Tests) · Nächster Schritt: Ergebnis Prüfstufe B und Sichtabnahme auswerten, Befundpakete Runde 2 nur unter 8, dann Prüfstufe C
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · Prüfstufe B E5 fertig, Entwürfe Befundpakete Runde 2 laufen · Pflicht 85/88 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Build 208/208, 1141+ Tests, Linter 0, Logikwächter 0, Funktionsliste 14/14, Budgets eingehalten, axe 0) · Nächster Schritt: Entwürfe prüfen, gemeinsame Befunde umsetzen, Befundpakete Runde 2 bauen
 
 # Status des Gestaltungslaufs
 
@@ -43,3 +43,4 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · P
 - 16.10.2026 16:56 · Alle 12 Befundpakete der Sichtabnahme E4-L-23 abgenommen; H01, H02, H03, H06, H10, H11 nach L3 mit Nacharbeit des Orchestrators (Kopfgrafik und Ordnung der Codelinien-Seite, Schlüsselzeichnung mit Profilen nach den Körpern ≤ 1,6 s, Schriftfeld mit Kennungen ohne Umbruch und Betrag in eigener Zeile, Variante `korb-leer:`; KERN 1.13). B-24 und B-25 abgenommen (Plan im Vorschlag auf Telefonen lesbar). Laufend: B-26, B-27, E6-GRAFIKER-11, E5-DOKUMENTAR-01.
 
 - 16.10.2026 20:48 · Welle G und H abgenommen (B-26 bis B-29, DOKUMENTAR-01 mit sicherem Probe-Befehl, GRAFIKER-11), Kür K-01 eingebaut (Stiftzuhaltung am Scrollen; Rahmen mit `clip`), lucide-react entfernt (Build 208/208). Prüfstufe B E5 mit Sichtabnahme gestartet.
+- 16.10.2026 22:08 · Nach Container-Neustart Prüfstufe B E5 fortgesetzt und abgeschlossen (D-044): Bestand grün, keine Budget-Verstöße, axe 0; Sichtabnahme Mittel 6,4–7,1, keine Hauptansicht ≥ 8. Bildrate der Startseite mobil durch spätes Vorladen der festen Ziele behoben (E5-L-30). Entwürfe für Befundpakete Runde 2 laufen.
