@@ -63,7 +63,7 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
   ];
 
   // Der Gedankenstrich hängt am Ende der ersten Zeile, nicht vorn in der zweiten (Befund D00/M00).
-  const anzeigeTitel = guide.title.replace(' — ', ' — ');
+  const anzeigeTitel = guide.title.replace(' — ', '\u00a0— ');
 
   // Weiterlesen: verwandte Beiträge zuerst, dann die internen Links – ohne den Schritt-Knopf
   // und ohne doppelte Ziele.
@@ -141,8 +141,7 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
         </nav>
 
         <article className="sm24-lesen-artikel min-w-0 lg:col-span-8">
-          {/* Der Text beginnt am Artikelanfang: der Abstand der ersten Überschrift hebt sich auf. */}
-          <div className="prose-sm24 -mt-12">
+          <div className="prose-sm24">
             {guide.body.map((block, index) => (
               <Fragment key={block.heading}>
                 {/* Trenner zwischen zwei Abschnitten: die Profillinie (B-02), gleicher Abstand oben und unten. */}

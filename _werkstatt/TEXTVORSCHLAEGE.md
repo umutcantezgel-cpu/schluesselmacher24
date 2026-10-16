@@ -52,3 +52,6 @@ Floskeln und Superlative (K-003); Vorschläge streichen nur, Fachaussagen bleibe
 
 ## Projekt-Konfigurator Schließanlagen (`/schliessanlagen/konfigurator`, aus der Kundschaft E5)
 - **Zahl der Blöcke:** Metadaten und Unterzeile sagen „zehn Blöcke“, der Ablauf hat zehn Abfrage-Schritte und den Abschluss als elften. Vorschlag: „Zehn kurze Abschnitte, danach prüfen Sie alles auf einen Blick.“ – oder unverändert lassen, wenn der Abschluss nicht als Block zählt.
+
+## Ratgeber (`/ratgeber/[slug]`, aus E5-BEFUND-H12)
+- **Knopf „Ihr nächster Schritt“:** „Anfrage für Ersatzschlüssel starten“ (`content/guides.json`, `nextStep.label`) bricht auf Telefonen zweizeilig. Vorschlag: „Ersatzschlüssel anfragen“.
