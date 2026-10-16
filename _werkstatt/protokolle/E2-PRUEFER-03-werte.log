@@ -1,0 +1,41 @@
+Geprüfte Dateien: 106 (seit fcbcfb2)
+
+### Funde
+
+| Datei | Zeile | Kategorie | Fund |
+|---|---|---|---|
+| src/app/(site)/layout.tsx | 63 | Hex-Farbe | #f7f9fb |
+| src/components/flow/flow-shell.tsx | 165 | style mit Zahl + px/rem | style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }} |
+| src/components/forms/controls.tsx | 66 | style mit Zahl + px/rem | style={{ backgroundImage: "url(\"data:image/svg+xml;charset=ut |
+| src/components/forms/photo-upload.tsx | 102 | Hex-Farbe | #fff |
+| src/components/ui/info-tip.tsx | 48 | Tailwind-Klasse mit [] | w-[min(20rem,calc(100vw-3rem))] |
+
+### Ausnahmen (Bildinhalte, mitgezählt)
+
+| Datei | Zeile | Kategorie | Fund |
+|---|---|---|---|
+| src/components/visual/generators/profilschnitt.test.tsx | 20 | Farbfunktion | rgb( |
+| src/components/visual/generators/profilschnitt.test.tsx | 21 | Farbfunktion | oklch( |
+| src/components/visual/generators/schliessplan.test.tsx | 23 | Farbfunktion | rgb( |
+| src/components/visual/generators/schliessplan.test.tsx | 24 | Farbfunktion | oklch( |
+| src/components/visual/generators/stiftzuhaltung.test.tsx | 20 | Farbfunktion | rgb( |
+| src/components/visual/generators/stiftzuhaltung.test.tsx | 21 | Farbfunktion | oklch( |
+| src/components/visual/generators/tuer-schutz.test.tsx | 23 | Farbfunktion | rgb( |
+| src/components/visual/generators/tuer-schutz.test.tsx | 24 | Farbfunktion | oklch( |
+
+### Summe je Datei
+
+| Datei | Treffer | Ausnahme |
+|---|---|---|
+| src/app/(site)/layout.tsx | 1 | nein |
+| src/components/flow/flow-shell.tsx | 1 | nein |
+| src/components/forms/controls.tsx | 1 | nein |
+| src/components/forms/photo-upload.tsx | 1 | nein |
+| src/components/ui/info-tip.tsx | 1 | nein |
+| src/components/visual/generators/profilschnitt.test.tsx | 2 | ja |
+| src/components/visual/generators/schliessplan.test.tsx | 2 | ja |
+| src/components/visual/generators/stiftzuhaltung.test.tsx | 2 | ja |
+| src/components/visual/generators/tuer-schutz.test.tsx | 2 | ja |
+
+Summe ohne Ausnahmen: 5 · Ausnahmen: 8
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/E2-PRUEFER-03-werte.json

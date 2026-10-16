@@ -186,3 +186,9 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
 - Im Browser geprüft: Weiter → `sm24-schritt-vor`, Zurück → `sm24-schritt-zurueck`, nach Neuladen mit gespeichertem Schritt keine Klasse. Keine Seitenfehler.
 - **Prozessbefund:** Der Baumeister hat in Runde 2 eigene Bildausgaben mit `rm -f` gelöscht, entgegen der Paketgrenze. Projektdateien waren nicht betroffen. Die Regel bleibt in allen Paketen stehen.
 
+
+## D-021 · /dev/null wiederhergestellt; Regel gegen Eingriffe unter /dev
+- Seit etwa 04:05 UTC war `/dev/null` eine gewöhnliche Datei (root, 644) statt eines Zeichengeräts. Darum scheiterten Umleitungen für den Nutzer `ubuntu`, und die DB-Tests brachen bei `initdb` ab (E2-PRUEFER-03, Schritte 1–3; schon vorher bemerkt im Bericht E3-BAUMEISTER-02, Runde 2). Die Ursache war vermutlich ein Lösch- oder Verschiebebefehl eines Agenten.
+- **Wiederherstellung durch den Orchestrator:** `mknod -m 666 /dev/null.neu c 1 3` und `mv -f` auf `/dev/null`. Das Gerät 1,3 mit Modus 666 ist der Standard, schreiben funktioniert für root und `ubuntu`. Das ist eine Reparatur des Containers, keine Änderung am Projekt.
+- **Regel ab jetzt (in allen Workflow-Aufträgen):** Dateien unter `/dev` werden nie gelöscht, verschoben, angelegt oder überschrieben, sondern nur als Umleitungsziel benutzt.
+- Workflow B wurde neu gestartet (`wf_9e03120d-1e3`). Die übrigen Prüfungen der Schritte 1–3 lagen am selben Stand grün vor; nachgeholt werden nur die DB-Tests.
