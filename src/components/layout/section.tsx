@@ -74,7 +74,7 @@ export function SectionHeading({
     <div className={cn('max-w-2xl', align === 'center' && 'mx-auto text-center', className)}>
       {eyebrow && (
         <p className={cn('eyebrow', inverse && 'text-primary-soft')}>
-          {nummer && <span className="text-foreground-subtle tabular-nums">{nummer}</span>}
+          {nummer && <span className="text-foreground-muted tabular-nums">{nummer}</span>}
           {eyebrow}
         </p>
       )}
