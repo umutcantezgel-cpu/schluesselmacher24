@@ -2,7 +2,6 @@
 
 import { useMemo, useState, type ReactNode } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Plus, Trash2 } from 'lucide-react';
 
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { submitRecord } from '@/lib/actions/records';
@@ -18,6 +17,11 @@ import { Alert } from '@/components/ui/alert';
 import { Button, ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { InfoTip } from '@/components/ui/info-tip';
+import { SchliessplanGrafik } from '@/components/visual/generators/schliessplan';
+import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GlyphPlus } from '@/components/visual/glyphen/plus';
+import { CheckDraw } from '@/components/visual/motion/check-draw';
 
 /* ==========================================================================
    Datenmodell des Konfigurators
@@ -654,7 +658,7 @@ function Question({
     <fieldset className="min-w-0">
       <legend className="mb-1">
         <span className="inline-flex flex-wrap items-center gap-2 align-middle">
-          <span className="text-sm font-semibold text-foreground">
+          <span className="text-small font-semibold text-foreground">
             {title}
             {required && (
               <span className="ml-1 text-danger" aria-hidden>
@@ -666,7 +670,7 @@ function Question({
           {info && <InfoTip hint={info} />}
         </span>
       </legend>
-      {hint && <p className="mb-3 text-[13px] leading-snug text-foreground-subtle">{hint}</p>}
+      {hint && <p className="mb-3 text-small leading-snug text-foreground-muted">{hint}</p>}
       <div className="mt-2 grid gap-2.5">{children}</div>
     </fieldset>
   );
@@ -687,18 +691,18 @@ function ListRow({
   children: ReactNode;
 }) {
   return (
-    <li className="rounded-lg border border-border bg-surface p-4">
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <p className="text-[13px] font-bold uppercase tracking-wider text-foreground-subtle">
+    <li className="border-t border-border pt-4">
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
           {title}
         </p>
         {canRemove && (
           <button
             type="button"
             onClick={onRemove}
-            className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg px-3 text-[13px] font-semibold text-foreground-muted hover:text-danger"
+            className="inline-flex min-h-touch items-center gap-1.5 rounded-lg px-3 text-small font-semibold text-foreground-muted transition-colors duration-quick hover:bg-surface-muted hover:text-danger"
           >
-            <Trash2 size={15} aria-hidden />
+            <GlyphPapierkorb size={16} />
             Entfernen
             <span className="sr-only"> — {removeLabel}</span>
           </button>
@@ -935,26 +939,25 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
 
   if (result) {
     return (
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-3xl" role="status">
+        <CheckDraw title="Ihr Projekt ist eingegangen" size={56} className="mb-5" />
         <Alert tone="success" title="Ihr Projekt ist bei uns eingegangen">
           Wir haben Ihre Angaben aufgenommen und melden uns mit Rückfragen oder einem Vorschlag
           für den Schließplan.
         </Alert>
 
-        <Card className="mt-5">
-          <CardBody>
-            <p className="text-[13px] font-semibold uppercase tracking-wider text-foreground-subtle">
-              Ihre Vorgangsnummer
-            </p>
-            <p className="mt-1 font-display text-2xl font-bold text-foreground">
-              {result.reference}
-            </p>
-            <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-              Bitte notieren Sie sich diese Nummer. Mit ihr können Sie den Stand Ihres Vorgangs
-              jederzeit abrufen.
-            </p>
-          </CardBody>
-        </Card>
+        <div className="mt-6 border-y border-border py-5">
+          <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+            Ihre Vorgangsnummer
+          </p>
+          <p className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
+            {result.reference}
+          </p>
+          <p className="mt-2 text-small leading-relaxed text-foreground-muted">
+            Bitte notieren Sie sich diese Nummer. Mit ihr können Sie den Stand Ihres Vorgangs
+            jederzeit abrufen.
+          </p>
+        </div>
 
         {result.notices.length > 0 && (
           <div className="mt-4 space-y-3">
@@ -966,29 +969,29 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
           </div>
         )}
 
-        <h2 className="mt-8 text-xl font-bold text-foreground">Wie es weitergeht</h2>
-        <ol className="mt-4 space-y-3">
+        <h2 className="mt-8 text-title font-bold text-foreground">Wie es weitergeht</h2>
+        <ol className="mt-4 border-t border-border">
           {[
             'Wir prüfen Ihre Angaben und melden uns bei offenen Punkten.',
             'Gemeinsam legen wir fest, welches System zu Ihrem Objekt passt.',
             'Sie erhalten einen Entwurf des Schließplans zur Abstimmung.',
             'Erst nach Ihrer Freigabe wird die Anlage gefertigt.',
           ].map((text, index) => (
-            <li key={text} className="flex gap-3 rounded-lg border border-border bg-surface p-4">
+            <li key={text} className="flex gap-4 border-b border-border py-4">
               <span
                 aria-hidden
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border font-display text-xs font-bold text-primary"
+                className="w-6 shrink-0 pt-0.5 font-mono text-small font-semibold tabular-nums text-foreground-muted"
               >
                 {index + 1}
               </span>
-              <span className="text-[14px] leading-relaxed text-foreground-muted">{text}</span>
+              <span className="text-small leading-relaxed text-foreground-muted">{text}</span>
             </li>
           ))}
         </ol>
 
         <div className="mt-8">
-          <h2 className="text-xl font-bold text-foreground">Ihre Angaben</h2>
-          <SummaryList sections={summary} className="mt-4" />
+          <h2 className="text-title font-bold text-foreground">Ihre Angaben</h2>
+          <SummaryList sections={summary} variante="schriftfeld" className="mt-4" />
         </div>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -1015,7 +1018,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
       blockedHint="Bitte füllen Sie die mit Stern gekennzeichneten Angaben aus."
     >
       {error && (
-        <Alert tone="warning" title="Das Absenden hat nicht geklappt" className="mb-6">
+        <Alert tone="warning" title="Das Absenden hat nicht geklappt" className="mb-6" role="alert">
           {error}
         </Alert>
       )}
@@ -1246,7 +1249,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
           </Question>
 
           {d.hasExisting === 'ja' && (
-            <div className="grid gap-6 rounded-lg border border-border bg-surface-muted p-4 md:p-5">
+            <div className="grid gap-6 border-t border-border pt-6">
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field
                   label="Hersteller"
@@ -1517,7 +1520,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
 
           <div>
             <Button variant="outline" size="lg" onClick={addDoor}>
-              <Plus size={17} aria-hidden />
+              <GlyphPlus size={17} />
               Weitere Tür hinzufügen
             </Button>
           </div>
@@ -1546,10 +1549,10 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
 
           <div>
             <div className="mb-3 flex flex-wrap items-center gap-2">
-              <h3 className="text-sm font-semibold text-foreground">Berechtigungsgruppen</h3>
+              <h3 className="text-small font-semibold text-foreground">Berechtigungsgruppen</h3>
               <InfoTip hint={HINT_GROUPS} />
             </div>
-            <p className="mb-4 text-[13px] leading-snug text-foreground-subtle">
+            <p className="mb-4 text-small leading-snug text-foreground-muted">
               Legen Sie je Gruppe fest, welche Türen sie öffnen soll. Die Bezeichnungen der Türen
               aus dem vorherigen Schritt dürfen Sie hier einfach übernehmen.
             </p>
@@ -1612,7 +1615,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
 
             <div className="mt-4">
               <Button variant="outline" size="lg" onClick={addGroup}>
-                <Plus size={17} aria-hidden />
+                <GlyphPlus size={17} />
                 Weitere Gruppe hinzufügen
               </Button>
             </div>
@@ -1638,7 +1641,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
       {stepId === 'schluessel' && (
         <div className="grid gap-5">
           <div className="flex flex-wrap items-center gap-2">
-            <p className="text-sm font-semibold text-foreground">
+            <p className="text-small font-semibold text-foreground">
               Wie viele Schlüssel werden gebraucht?
             </p>
             <InfoTip hint={HINT_KEYS} />
@@ -1686,16 +1689,16 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
 
           <div>
             <Button variant="outline" size="lg" onClick={addKey}>
-              <Plus size={17} aria-hidden />
+              <GlyphPlus size={17} />
               Weitere Zeile hinzufügen
             </Button>
           </div>
 
-          <p className="text-[14px] text-foreground-muted">
+          <p className="text-small text-foreground-muted">
             Geplante Schlüssel insgesamt:{' '}
-            <strong className="font-bold text-foreground">
+            <strong className="font-mono font-semibold tabular-nums text-foreground">
               {formatNumber(d.keys.reduce((sum, entry) => sum + entry.count, 0))}
-            </strong>
+            </strong> Stück
           </p>
 
           <Field
@@ -1718,7 +1721,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
       {stepId === 'dokumente' && (
         <div className="grid gap-6">
           <div className="flex flex-wrap items-center gap-2">
-            <p className="text-sm font-semibold text-foreground">Unterlagen zu Ihrem Objekt</p>
+            <p className="text-small font-semibold text-foreground">Unterlagen zu Ihrem Objekt</p>
             <InfoTip hint={HINT_DOCUMENTS} />
           </div>
 
@@ -1829,40 +1832,61 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
         <div className="grid gap-8">
           <Card variant="muted">
             <CardBody>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
-                Vorschlag aus Ihren Angaben
-              </p>
-              <p className="mt-2 text-lg font-bold text-foreground">
-                Ihre Angaben sprechen für eine {recommendation.system}.
-              </p>
-              <ul className="mt-3 space-y-1.5">
-                {recommendation.reasons.map((reason) => (
-                  <li
-                    key={reason}
-                    className="flex gap-2 text-[14px] leading-relaxed text-foreground-muted"
+              {/* Ab lg Text und Plan nebeneinander; darunter steht der Plan in voller Breite, damit seine Beschriftung lesbar bleibt (KERN 1.8) */}
+              <div className="grid gap-6 lg:grid-cols-12 lg:items-center lg:gap-8">
+                <div className="max-w-measure lg:col-span-7">
+                  <p className="eyebrow">Vorschlag aus Ihren Angaben</p>
+                  <p className="mt-2 text-title-sm font-bold text-foreground">
+                    Ihre Angaben sprechen für eine {recommendation.system}.
+                  </p>
+                  <ul className="mt-3 space-y-1.5">
+                    {recommendation.reasons.map((reason) => (
+                      <li
+                        key={reason}
+                        className="flex gap-2 text-small leading-relaxed text-foreground-muted"
+                      >
+                        <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                        {reason}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 text-small leading-relaxed text-foreground-muted">
+                    Das ist ein Vorschlag, keine Festlegung. Wir prüfen ihn im Beratungsgespräch
+                    gemeinsam mit Ihnen und ändern ihn, wenn Ihre Türen etwas anderes verlangen.
+                  </p>
+                  <Link
+                    href="/schliessanlagen#systeme"
+                    className="mt-4 inline-flex items-center gap-1.5 text-small font-semibold text-primary hover:underline"
                   >
-                    <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                    {reason}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 text-[13px] leading-relaxed text-foreground-subtle">
-                Das ist ein Vorschlag, keine Festlegung. Wir prüfen ihn im Beratungsgespräch
-                gemeinsam mit Ihnen und ändern ihn, wenn Ihre Türen etwas anderes verlangen.
-              </p>
-              <Link
-                href="/schliessanlagen#systeme"
-                className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-              >
-                Systeme noch einmal nachlesen
-                <ArrowRight size={15} aria-hidden />
-              </Link>
+                    Systeme noch einmal nachlesen
+                    <GlyphPfeilRechts size={15} />
+                  </Link>
+                </div>
+                <div className="-mx-5 border-y border-border bg-surface px-2 py-4 sm:mx-0 sm:rounded-lg sm:border sm:p-5 lg:col-span-5">
+                  {/* Unter 640 px die schmale Fassung (Schrift 12) bis an den Kartenrand, darüber die breite */}
+                  <div className="sm:hidden">
+                    <SchliessplanGrafik
+                      params={{ system: ({ [SYSTEM_NAMES.gleichschliessung]: 'gleichschliessung', [SYSTEM_NAMES.z]: 'zentral', [SYSTEM_NAMES.hs]: 'haupt', [SYSTEM_NAMES.ghs]: 'generalhaupt' } as Record<string, string>)[recommendation.system], format: 'schmal' }}
+                      title="Schematische Darstellung des vorgeschlagenen Systems"
+                    />
+                  </div>
+                  <div className="mx-auto hidden max-w-lg sm:block lg:max-w-none">
+                    <SchliessplanGrafik
+                      params={{ system: ({ [SYSTEM_NAMES.gleichschliessung]: 'gleichschliessung', [SYSTEM_NAMES.z]: 'zentral', [SYSTEM_NAMES.hs]: 'haupt', [SYSTEM_NAMES.ghs]: 'generalhaupt' } as Record<string, string>)[recommendation.system] }}
+                      title="Schematische Darstellung des vorgeschlagenen Systems"
+                    />
+                  </div>
+                  <p className="mt-3 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                    Schema des Systems – nicht Ihr Schließplan
+                  </p>
+                </div>
+              </div>
             </CardBody>
           </Card>
 
           <div>
-            <h3 className="text-lg font-bold text-foreground">Ihre Kontaktdaten</h3>
-            <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
+            <h3 className="text-title-sm font-bold text-foreground">Ihre Kontaktdaten</h3>
+            <p className="mt-1 text-small leading-relaxed text-foreground-muted">
               Wir brauchen sie, um Ihnen den Entwurf des Schließplans zu schicken.
             </p>
 
@@ -1992,22 +2016,22 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-foreground">Ihre Angaben im Überblick</h3>
-            <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
+            <h3 className="text-title-sm font-bold text-foreground">Ihre Angaben im Überblick</h3>
+            <p className="mt-1 text-small leading-relaxed text-foreground-muted">
               Bitte prüfen Sie alles in Ruhe. Über die Schrittanzeige oben kommen Sie zu jedem
               Block zurück.
             </p>
-            <SummaryList sections={summary} className="mt-5" />
+            <SummaryList sections={summary} variante="schriftfeld" className="mt-5" />
           </div>
 
-          <label className="flex min-h-[44px] cursor-pointer items-start gap-3 rounded-lg border border-border bg-surface p-4">
+          <label className="flex min-h-touch cursor-pointer items-start gap-3 rounded-lg border border-border bg-surface p-4">
             <input
               type="checkbox"
               checked={d.consent}
               onChange={(e) => flow.set('consent', e.target.checked)}
               className="mt-0.5 h-5 w-5 shrink-0 rounded border-border-strong"
             />
-            <span className="text-[14px] leading-relaxed text-foreground-muted">
+            <span className="text-small leading-relaxed text-foreground-muted">
               Ich habe die{' '}
               <Link href="/rechtliches/datenschutz" className="font-semibold text-primary hover:underline">
                 Datenschutzerklärung

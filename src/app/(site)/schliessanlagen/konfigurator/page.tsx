@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 import { getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
-import { Section } from '@/components/layout/section';
+import { Section, SectionHeading } from '@/components/layout/section';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { ProjektKonfigurator, type DoorTypeOption } from './projekt-konfigurator';
 
 const ROUTE = 'schliessanlagen/konfigurator';
@@ -45,6 +45,8 @@ export default async function SchliessanlagenKonfiguratorPage() {
     <>
       <PageHeader
         eyebrow={process.label}
+        bereich="schliessanlagen"
+        art="arbeit"
         title={page?.headline ?? 'Projektkonfigurator Schließanlage'}
         lead={
           page?.subline
@@ -65,8 +67,8 @@ export default async function SchliessanlagenKonfiguratorPage() {
       </Section>
 
       <Section tone="muted" tight>
-        <h2 className="text-xl font-bold text-foreground">Noch unsicher?</h2>
-        <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <SectionHeading nummer="01" eyebrow="Fragen" title="Noch unsicher?" />
+        <ul className="mt-8 grid border-t border-border md:grid-cols-2">
           {[
             {
               href: '/schliessanlagen#systeme',
@@ -99,21 +101,23 @@ export default async function SchliessanlagenKonfiguratorPage() {
               body: 'Wenn Sie eine Frage vorab klären möchten.',
             },
           ].map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="border-b border-border md:pr-10">
               <Link
                 href={link.href}
-                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                className="group flex min-h-touch items-start justify-between gap-6 py-6 focus-visible:rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                <span className="text-[15px] font-bold text-foreground group-hover:text-primary">
-                  {link.label}
+                <span className="min-w-0">
+                  <span className="block text-body font-semibold text-foreground transition-colors duration-quick group-hover:text-primary">
+                    {link.label}
+                  </span>
+                  <span className="mt-2 block max-w-measure text-small text-foreground-muted">
+                    {link.body}
+                  </span>
                 </span>
-                <span className="mt-1.5 flex-1 text-[14px] leading-relaxed text-foreground-muted">
-                  {link.body}
-                </span>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
-                  Ansehen
-                  <ArrowRight size={14} aria-hidden />
-                </span>
+                <GlyphPfeilRechts
+                  size={18}
+                  className="mt-1 shrink-0 text-primary transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                />
               </Link>
             </li>
           ))}

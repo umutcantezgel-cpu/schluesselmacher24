@@ -99,5 +99,12 @@
       "suchen": "\\s*aria-label=\\{allowDocuments \\? 'Datei auswählen' : 'Aus Galerie wählen'\\}|\\s*tabIndex=\\{-1\\}",
       "ersetzen": ""
     }
+  ],
+  "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx": [
+    {
+      "grund": "Vorschlag mit Schließplan-Zeichnung: ordnet den vorgeschlagenen Systemnamen (SYSTEM_NAMES) dem Generator-Parameter zu; liest nur recommendation.system, recommend() liefert stets einen der vier Namen, unbekannte Werte fallen im Generator auf „haupt“ ; zweimal: schmale Fassung unter 640 px, breite darüber (E5-BAUMEISTER-25, Abnahme)",
+      "suchen": "\\s*params=\\{\\{ system: \\(\\{\\ \\[SYSTEM_NAMES\\.gleichschliessung\\]:\\ 'gleichschliessung',\\ \\[SYSTEM_NAMES\\.z\\]:\\ 'zentral',\\ \\[SYSTEM_NAMES\\.hs\\]:\\ 'haupt',\\ \\[SYSTEM_NAMES\\.ghs\\]:\\ 'generalhaupt'\\ \\}\\ as\\ Record<string,\\ string>\\)\\[recommendation\\.system\\](?:, format: 'schmal')? \\}\\}",
+      "ersetzen": ""
+    }
   ]
 }
