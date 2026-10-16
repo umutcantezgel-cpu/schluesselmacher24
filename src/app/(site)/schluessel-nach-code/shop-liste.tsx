@@ -180,7 +180,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
               inputMode="search"
               autoComplete="off"
               value={query}
-              placeholder="Anwendung, Schlüsseltyp oder Hersteller"
+              placeholder="Anwendung, Typ oder Hersteller"
               onChange={(event) => setQuery(event.target.value)}
             />
           )}
@@ -332,12 +332,12 @@ export function ShopListe({ lines, className }: ShopListeProps) {
                           </span>
                           <GlyphPfeilRechts
                             size={16}
-                            className="col-span-1 row-span-2 justify-self-end text-foreground-subtle transition-transform duration-base ease-standard group-hover:translate-x-0.5 group-hover:text-primary md:order-last md:row-span-1"
+                            className="col-span-1 row-span-2 justify-self-end text-foreground-subtle transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary md:order-last md:row-span-1"
                           />
-                          <span className="col-span-9 col-start-3 font-mono text-small text-foreground-muted md:col-span-3 md:col-start-auto">
+                          <span className="col-span-9 col-start-3 font-mono text-small text-foreground-muted md:col-span-3 md:col-start-auto lg:col-span-4">
                             {line.codeFormatLabel}
                           </span>
-                          <span className="col-span-9 col-start-3 flex flex-wrap items-baseline gap-x-3 md:col-span-3 md:col-start-auto md:block md:text-right">
+                          <span className="col-span-9 col-start-3 flex flex-wrap items-baseline gap-x-3 md:col-span-3 md:col-start-auto md:block md:text-right lg:col-span-2">
                             <span className="block font-mono text-body font-semibold tabular-nums text-foreground">
                               {formatCents(line.priceCents)}
                             </span>
