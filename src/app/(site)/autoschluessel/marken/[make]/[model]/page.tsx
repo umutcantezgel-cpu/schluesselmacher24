@@ -20,7 +20,6 @@ import { SCHLUESSELARTEN_REIHE } from '@/components/autoschluessel/schluesselart
 import {
   KeyKindBadges,
   KEY_KIND_HINT,
-  ON_SITE_HINT,
   keyKindDescription,
   keyKindLabel,
 } from '@/components/autoschluessel/key-kinds';
@@ -45,19 +44,24 @@ interface DetailFeld {
   keyless?: boolean;
 }
 
-/** Rasterspalten für bis zu drei Zeichnungen; ab vier Zeichnungen gilt die Leiste. */
+/** Rasterspalten für zwei Zeichnungen oder eine; ab drei Zeichnungen gilt die Leiste. */
 const RASTER: Record<number, string> = {
   1: '',
   2: 'sm:grid-cols-2',
-  3: 'sm:grid-cols-3',
 };
 
 /**
- * Mobil eine Leiste mit Anschnitt (KERN K-006), ab `md` ein Raster aus vier Spalten.
+ * Mobil eine Leiste mit Anschnitt (KERN K-006), ab `md` ein Raster ohne Anschnitt.
  */
 const LEISTE =
   '-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-2 ' +
-  'sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:grid-cols-4 md:overflow-visible md:scroll-px-0 md:px-0 md:pb-0';
+  'sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:overflow-visible md:scroll-px-0 md:px-0 md:pb-0';
+
+/** Spaltenzahl der Leiste ab `md`, passend zur Zahl der Zeichnungen. */
+const LEISTE_SPALTEN: Record<number, string> = {
+  3: 'md:grid-cols-3',
+  4: 'md:grid-cols-4',
+};
 
 /**
  * Erfasste Schlüsselarten als Felder: zuerst die Bauformen mit Zeichnung in der
@@ -131,16 +135,17 @@ export default async function ModelPage(props: PageProps) {
     ...felder.filter((feld) => feld.keyless).map(() => ({ art: 'keyless' as const })),
   ];
   const hatZeichnung = gezeichnet.length > 0;
-  const leiste = gezeichnet.length > 3;
+  const leiste = gezeichnet.length >= 3;
 
   // Vorbelegung des Assistenten über Suchparameter.
   const assistantHref = `/autoschluessel/anfrage?marke=${make.slug}&modell=${model.slug}`;
 
-  // Nur Angaben, die tatsächlich im Datensatz stehen. `mono`: Kennung oder kurzer Wert.
-  const angaben: { label: string; value: string; mono?: boolean }[] = [
-    { label: 'Marke', value: make.name, mono: true },
-    { label: 'Modell', value: model.name, mono: true },
-    { label: 'Baujahre', value: years, mono: true },
+  // Nur Angaben, die tatsächlich im Datensatz stehen. Die Wertespalte steht durchgehend in Mono;
+  // `prosa`: freier Redaktionstext bleibt in Fließschrift.
+  const angaben: { label: string; value: string; prosa?: boolean }[] = [
+    { label: 'Marke', value: make.name },
+    { label: 'Modell', value: model.name },
+    { label: 'Baujahre', value: years },
     {
       label: 'Erfasste Schlüsselarten',
       value:
@@ -151,9 +156,8 @@ export default async function ModelPage(props: PageProps) {
     {
       label: 'Fahrzeug zum Anlernen vor Ort',
       value: model.requiresVehicleOnSite ? 'Ja' : 'Nein',
-      mono: true,
     },
-    ...(model.notes ? [{ label: 'Hinweis', value: model.notes }] : []),
+    ...(model.notes ? [{ label: 'Hinweis', value: model.notes, prosa: true }] : []),
   ];
 
   // Bildstelle: die Bauform der ersten erfassten Art, bis zu drei Exemplare.
@@ -191,7 +195,6 @@ export default async function ModelPage(props: PageProps) {
         : 'Für dieses Modell ist im Datensatz kein Zugriff auf das Fahrzeug vermerkt. '
           + 'Ob das für Ihren konkreten Auftrag gilt, hängt von der Leistung ab — rein '
           + 'mechanische Arbeiten sind ohnehin ohne Fahrzeug möglich.',
-      hinweis: <InfoTip hint={ON_SITE_HINT} className="shrink-0" />,
     },
     {
       titel: 'Baujahr entscheidet mit',
@@ -238,8 +241,10 @@ export default async function ModelPage(props: PageProps) {
         }
       >
         <div className="flex flex-wrap items-center gap-3 border-t border-border pt-6">
-          <KeyKindBadges kinds={model.keyKinds} />
-          <InfoTip hint={KEY_KIND_HINT} />
+          <div className="flex flex-wrap items-center gap-1.5">
+            <KeyKindBadges kinds={model.keyKinds} />
+            <InfoTip hint={KEY_KIND_HINT} />
+          </div>
           {erfasst && <BaujahrFeld years={years} />}
           <OnSiteBadge required={model.requiresVehicleOnSite} />
         </div>
@@ -271,7 +276,7 @@ export default async function ModelPage(props: PageProps) {
                     <dd
                       className={cn(
                         'text-body text-foreground sm:col-span-7',
-                        zeile.mono && 'font-mono tabular-nums sm:text-right',
+                        !zeile.prosa && 'font-mono tabular-nums sm:text-right',
                       )}
                     >
                       {zeile.value}
@@ -295,7 +300,14 @@ export default async function ModelPage(props: PageProps) {
           />
 
           {hatZeichnung && (
-            <ol className={cn('mt-8 gap-3', leiste ? LEISTE : cn('grid', RASTER[gezeichnet.length]))}>
+            <ol
+              className={cn(
+                'mt-8 gap-3',
+                leiste
+                  ? cn(LEISTE, LEISTE_SPALTEN[gezeichnet.length])
+                  : cn('grid', RASTER[gezeichnet.length]),
+              )}
+            >
               {gezeichnet.map((feld, index) => (
                 <li
                   key={feld.art}
@@ -357,10 +369,7 @@ export default async function ModelPage(props: PageProps) {
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <div className="col-span-10 sm:col-span-11">
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="text-title-sm font-semibold text-foreground">{punkt.titel}</p>
-                    {punkt.hinweis}
-                  </div>
+                  <p className="text-title-sm font-semibold text-foreground">{punkt.titel}</p>
                   <p className="mt-2 max-w-measure text-small text-foreground-muted">{punkt.text}</p>
                 </div>
               </li>
