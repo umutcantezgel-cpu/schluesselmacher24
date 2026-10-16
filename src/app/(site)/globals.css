@@ -545,6 +545,12 @@
       view-timeline-name: --szene;
     }
 
+    /* Ein Rahmen mit `overflow: hidden` (etwa `ImagePlaceholder`) wäre Scrollcontainer der Szene
+       und hielte ihre Zeitleiste an; `clip` schneidet gleich ab, ohne Scrollcontainer zu sein. */
+    :is(.overflow-hidden, .overflow-x-hidden, .overflow-y-hidden):has(.sm24-szene) {
+      overflow: clip;
+    }
+
     :is(.sm24-scrub-schluessel, .sm24-scrub-stift, .sm24-scrub-feder, .sm24-scrub-pruefung) {
       animation-timing-function: linear;
       animation-fill-mode: both;

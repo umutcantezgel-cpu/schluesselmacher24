@@ -23,6 +23,9 @@ import { IconHalbzylinder } from '@/components/visual/icons/halbzylinder';
 import { IconKnaufzylinder } from '@/components/visual/icons/knaufzylinder';
 import { IconProfilzylinder } from '@/components/visual/icons/profilzylinder';
 
+/** Telefon-Ausschnitt der Stiftzuhaltung (viewBox 480 × 270): Beschriftung „Trennlinie“, Gehäuse und alle fünf Stifte. */
+const STIFTZUHALTUNG_AUSSCHNITT = { x: 58, y: 30, breite: 370, hoehe: 200, vollBreite: 480, vollHoehe: 270 } as const;
+
 const ROUTE = 'gleichschliessende-zylinder';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -240,6 +243,23 @@ export default async function CylinderOverviewPage() {
                 visual: { generator: 'schliessplan', params: { system: 'gleichschliessung', tueren: 3 } },
               }}
             />
+
+            {/* Kür K-01 (B-25): Beim Scrollen fährt der Schlüssel ein, die Stifte richten sich an der Trennlinie aus.
+                Mobil der Ausschnitt mit Trennlinie und Stiften bis an den Rand, damit die Beschriftung lesbar bleibt (KERN 1.8). */}
+            <figure className="-mx-5 mt-10 sm:mx-0">
+              <ImagePlaceholder
+                frei
+                ausschnitt={STIFTZUHALTUNG_AUSSCHNITT}
+                slot={{
+                  motif: 'Schnitt durch den Zylinder: der passende Schlüssel richtet die Stifte aus',
+                  ratio: '16/9',
+                  visual: { generator: 'stiftzuhaltung', params: { szene: 'scroll' } },
+                }}
+              />
+              <figcaption className="mt-2 px-5 font-mono text-caption uppercase tracking-label text-foreground-muted sm:px-0">
+                Im Zylinder: Der passende Schlüssel hebt jeden Stift bis an die Trennlinie
+              </figcaption>
+            </figure>
           </div>
         </div>
       </Section>

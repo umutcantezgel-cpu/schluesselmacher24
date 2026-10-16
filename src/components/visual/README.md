@@ -232,13 +232,14 @@ Tür von innen mit fünf nummerierten Schutzpunkten, von oben nach unten: 1 Zusa
 ### `stiftzuhaltung` — Schnitt durch einen Schließzylinder (viewBox 0 0 480 270)
 
 Schnitt durch einen Schließzylinder mit fünf Stiftpaaren und eingestecktem Schlüssel. Einsatz nach D-012:
-Seiten 404 und Fehler, später Kür-Szene auf `/gleichschliessende-zylinder`.
+Seiten 404 und Fehler sowie die Kür-Szene auf `/gleichschliessende-zylinder` (Abschnitt 01, mit `szene: 'scroll'`).
 
 | Parameter | Werte | Standard |
 |---|---|---|
 | `zustand` | `passt` · `passt-nicht` · `abgebrochen` | `passt` |
 | `einschnitte` | 5 Ziffern 0–9 als Liste oder Text (`'37264'`); die Stifte sind auf diese Tiefen ausgelegt; ohne gültige Angabe | `[3, 6, 2, 7, 4]` |
 | `code` | bis 4 Ziffern (Text oder Zahl), erscheinen auf der Reide; sonst entfällt die Angabe | – |
+| `szene` | `scroll`: nur bei `passt` – Schlüssel fährt beim Scrollen ein, die Stifte richten sich aus (B-25, Klassen `sm24-szene` und `sm24-scrub-*`, Variablen als reine Zahlen); ohne Unterstützung oder bei reduzierter Bewegung die Endlage. Ein Rahmen mit `overflow: hidden` darum schneidet in unterstützenden Browsern mit `clip` (sonst hielte er die Zeitleiste an). | – |
 
 - Bei `passt` liegen alle Fugen auf der Trennlinie.
 - Bei `passt-nicht` trägt der Schlüssel andere Tiefen; die falschen Fugen werden mit Pfeil und roter Linie
