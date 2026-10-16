@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
@@ -17,7 +18,7 @@ describe('PageHeader', () => {
         eyebrow="Geführte Anfrage"
         bereich="schluessel-nach-vorlage"
         visual={<figure data-test="grafik" />}
-        actions={<a href="/x">Starten</a>}
+        actions={<Link href="/x">Starten</Link>}
       >
         <dl data-test="schriftfeld" />
       </PageHeader>,
