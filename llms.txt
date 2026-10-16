@@ -1,0 +1,4 @@
+# Swiss Modernist Transformation
+
+The architecture matrix and revolution plan have been generated.
+See .jules/revolution-plan.json for the master blueprint.
