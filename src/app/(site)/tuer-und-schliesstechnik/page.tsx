@@ -8,7 +8,7 @@ import { getRichtwerte } from '@/lib/data/richtwerte';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { PageHeader } from '@/components/layout/page-header';
@@ -86,7 +86,7 @@ const EXPERT_FAQ = [
   {
     question: 'Wann reicht ein Zylindertausch und wann muss die gesamte Türtechnik erneuert werden?',
     answer:
-      'Ein einfacher Zylindertausch reicht oft aus, wenn Sie lediglich die Schließhoheit nach einem Schlüsselverlust oder Mieterwechsel wiederherstellen möchten, vorausgesetzt das Einsteckschloss und der Beschlag sind noch intakt und bieten ausreichend Schutz. Wenn die Tür jedoch veraltet ist, das Schloss hakt, der Beschlag keinen Ziehschutz bietet oder Sie den Einbruchschutz substanziell erhöhen wollen (z.B. auf Widerstandsklasse RC2 oder RC3), muss die Tür als Gesamtsystem betrachtet werden. Oft empfiehlt sich dann die Nachrüstung einer Mehrfachverriegelung oder eines Querriegelschlosses in Kombination mit einem Schutzbeschlag.',
+      'Ein einfacher Zylindertausch reicht oft aus, wenn Sie lediglich die Schließhoheit nach einem Schlüsselverlust oder Mieterwechsel wiederherstellen möchten, vorausgesetzt das Einsteckschloss und der Beschlag sind noch intakt und bieten ausreichend Schutz. Wenn die Tür jedoch veraltet ist, das Schloss hakt, der Beschlag keinen Ziehschutz bietet oder Sie den Einbruchschutz substanziell erhöhen wollen (z. B. auf Widerstandsklasse RC2 oder RC3), muss die Tür als Gesamtsystem betrachtet werden. Oft empfiehlt sich dann die Nachrüstung einer Mehrfachverriegelung oder eines Querriegelschlosses in Kombination mit einem Schutzbeschlag.',
   },
   {
     question: 'Was ist der Unterschied zwischen einem Einsteckschloss und einer Mehrfachverriegelung?',
@@ -106,7 +106,7 @@ const EXPERT_FAQ = [
   {
     question: 'Wie pflege ich meine Schließzylinder und Türschlösser richtig?',
     answer:
-      'Verwenden Sie für Schließzylinder niemals herkömmliches Öl oder harzende Schmiermittel, da diese den feinen Mechanismus im Inneren verkleben können. Nutzen Sie stattdessen spezielles Pflegespray für Schließzylinder (nicht fettend, z.B. auf Teflon- oder Graphitbasis). Einsteckschlösser und Mehrfachverriegelungen können hingegen an den beweglichen Teilen (Falle, Riegel) sparsam mit einem geeigneten Schmierfett behandelt werden. Schließbleche sollten regelmäßig auf festen Sitz geprüft und justiert werden, damit die Tür leichtgängig ins Schloss fällt und kein unnötiger Druck auf den Schlüssel ausgeübt wird.',
+      'Verwenden Sie für Schließzylinder niemals herkömmliches Öl oder harzende Schmiermittel, da diese den feinen Mechanismus im Inneren verkleben können. Nutzen Sie stattdessen spezielles Pflegespray für Schließzylinder (nicht fettend, z. B. auf Teflon- oder Graphitbasis). Einsteckschlösser und Mehrfachverriegelungen können hingegen an den beweglichen Teilen (Falle, Riegel) sparsam mit einem geeigneten Schmierfett behandelt werden. Schließbleche sollten regelmäßig auf festen Sitz geprüft und justiert werden, damit die Tür leichtgängig ins Schloss fällt und kein unnötiger Druck auf den Schlüssel ausgeübt wird.',
   },
 ];
 
@@ -139,6 +139,19 @@ export default async function TuerUndSchliesstechnikPage() {
         lead={page?.subline ?? 'Sicherheit erfordert Systemverständnis. Vom hochsicheren Zylinder über Mehrfachverriegelungen bis zum geprüften Schutzbeschlag.'}
         crumbs={[{ href: `/${ROUTE}`, label: 'Tür- und Schließtechnik' }]}
         bereich={ROUTE}
+        /* Blickfang im Kopf (E4-L-23): die nummerierte Tür, auf Papier ohne Rahmen. */
+        visual={
+          <ImagePlaceholder
+            slot={{
+              motif: 'Werkstattfoto: Detailaufnahme einer massiven Mehrfachverriegelung im Querschnitt, Schwenkriegel greift in Schließblech',
+              ratio: '4/3',
+              note: 'Hochauflösendes Detailfoto zur Verdeutlichung der mechanischen Präzision.',
+              visual: { generator: 'tuer-schutz', params: {} },
+            }}
+            ausschnitt={TUER_SCHUTZ_AUSSCHNITT}
+            frei
+          />
+        }
         actions={
           <ButtonLink href={`/service-und-termin/anfrage?thema=${ROUTE}`} size="lg" pfeil>
             Beratungstermin vereinbaren
@@ -177,7 +190,7 @@ export default async function TuerUndSchliesstechnikPage() {
                 { title: 'Mehrfachverriegelung', desc: 'Die Verteilung der Schließpunkte über die gesamte Türhöhe verhindert ein Aufhebeln der Tür effektiv. Die Riegel greifen dabei tief in massive Schließleisten.' }
               ].map((item, idx) => (
                 <li key={idx} className="flex gap-4 border-b border-border py-6">
-                  <GlyphHakenKreis size={22} className="mt-0.5 shrink-0 text-primary" />
+                  <GlyphHakenKreis size={22} className="mt-0.5 shrink-0 text-area-strong" />
                   <div className="min-w-0">
                     <strong className="block text-title-sm font-semibold text-foreground">{item.title}</strong>
                     <span className="mt-1 block max-w-measure text-small text-foreground-muted">{item.desc}</span>
@@ -185,16 +198,29 @@ export default async function TuerUndSchliesstechnikPage() {
                 </li>
               ))}
             </ul>
+          </div>
 
-            <div className="prose-sm24 max-w-none">
-              <h3 className="mt-8 mb-4 text-title font-bold text-foreground tracking-tight">Elektronik trifft Mechanik</h3>
-              <p>
-                Die moderne Türtechnik verschmilzt zunehmend mit elektronischen Systemen. Mechatronische Zylinder, Motorschlösser und digitale Zutrittskontrollen erfordern ein noch tieferes Systemverständnis. Ein Motorschloss muss beispielsweise so konfiguriert sein, dass es im Brandfall eine sichere Flucht ermöglicht, während es im verriegelten Zustand maximalen Widerstand gegen Einbruch bietet.
-              </p>
+          {/* Nicht mitlaufend: Der Rechner ist höher als das Fenster, Ergebnis und Anfrage lägen sonst außer Reichweite. */}
+          <div className="lg:col-span-5 lg:col-start-8">
+            <TuerAbsicherungRechner
+              werte={richtwerte.tuerAbsicherung}
+              anfrageHref={`/service-und-termin/anfrage?thema=${ROUTE}`}
+            />
+          </div>
+
+          {/* Schriftfeld unter beiden Spalten über die volle Breite; ab md zweispaltig: Einordnung links, Ablauf rechts. */}
+          <div className="grid border-y border-border md:grid-cols-2 md:gap-gutter lg:col-span-12">
+            <div className="py-6 md:pr-gutter">
+              <div className="prose-sm24 max-w-none">
+                <h3 className="mb-4 text-title font-bold text-foreground tracking-tight">Elektronik trifft Mechanik</h3>
+                <p>
+                  Die moderne Türtechnik verschmilzt zunehmend mit elektronischen Systemen. Mechatronische Zylinder, Motorschlösser und digitale Zutrittskontrollen erfordern ein noch tieferes Systemverständnis. Ein Motorschloss muss beispielsweise so konfiguriert sein, dass es im Brandfall eine sichere Flucht ermöglicht, während es im verriegelten Zustand maximalen Widerstand gegen Einbruch bietet.
+                </p>
+              </div>
             </div>
 
             {/* Schriftfeld: der Ablauf in diesem Bereich wie eine Zeile der Bemaßung */}
-            <dl className="border-y border-border py-6">
+            <dl className="border-t border-border py-6 md:border-l md:border-t-0 md:pl-gutter">
               <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 Ablauf in diesem Bereich
               </dt>
@@ -203,25 +229,6 @@ export default async function TuerUndSchliesstechnikPage() {
                 {process.hint} Wir analysieren die bauliche Substanz Ihrer Tür und erstellen darauf basierend ein präzises Sicherheitskonzept, bevor wir Komponenten austauschen.
               </dd>
             </dl>
-          </div>
-
-          {/* Nicht mitlaufend: Der Rechner ist höher als das Fenster, Ergebnis und
-              Anfrage lägen sonst außer Reichweite. */}
-          <div className="space-y-8 lg:col-span-5">
-            {/* Großer Moment (B-18): Die Schutzpunkte stehen auf Papier über dem Rechner. */}
-            <ImagePlaceholder
-              slot={{
-                motif: 'Werkstattfoto: Detailaufnahme einer massiven Mehrfachverriegelung im Querschnitt, Schwenkriegel greift in Schließblech',
-                ratio: '4/3',
-                note: 'Hochauflösendes Detailfoto zur Verdeutlichung der mechanischen Präzision.',
-                visual: { generator: 'tuer-schutz', params: {} },
-              }}
-              ausschnitt={TUER_SCHUTZ_AUSSCHNITT}
-            />
-            <TuerAbsicherungRechner
-              werte={richtwerte.tuerAbsicherung}
-              anfrageHref={`/service-und-termin/anfrage?thema=${ROUTE}`}
-            />
           </div>
         </div>
       </Section>
@@ -235,42 +242,40 @@ export default async function TuerUndSchliesstechnikPage() {
           lead="Unsere Kernkompetenzen in der Tür- und Schließtechnik. Präzise Handwerkskunst trifft auf modernste Sicherheitstechnik."
         />
 
-        <ul className="mt-12 grid border-t border-border sm:grid-cols-2 lg:grid-cols-3">
+        {/* Zweispaltige Haarlinienliste ab lg: zehn Leistungen ergeben fünf volle Zeilen ohne Waise.
+            Mobil: Icon, Titel, Pfeil; die Beschreibung erscheint ab 640 px. Die ganze Zeile ist der Link. */}
+        <ul className="mt-12 grid border-t border-border lg:grid-cols-2">
           {services.map((service, index) => {
             const Icon = SERVICE_ICONS[service.slug];
             return (
               <li
                 key={service.id}
-                className={cn(
-                  'border-b border-border',
-                  index % 2 === 1 ? 'sm:border-l' : 'sm:border-l-0',
-                  index % 3 === 0 ? 'lg:border-l-0' : 'lg:border-l',
-                )}
+                className={cn('border-b border-border', index % 2 === 1 && 'lg:border-l')}
               >
                 <Link
                   href={`/${ROUTE}/${service.slug}`}
-                  className="group flex h-full flex-col p-6 transition-colors duration-quick hover:bg-area-soft sm:p-8"
+                  className={cn(
+                    'group flex min-h-touch-lg items-center gap-4 py-5 transition-colors duration-quick sm:gap-6 sm:py-6',
+                    index % 2 === 1 ? 'lg:pl-gutter' : 'lg:pr-gutter',
+                  )}
                 >
                   {Icon ? (
-                    <Icon size={40} className="shrink-0 text-area-strong" />
+                    <Icon size={24} className="shrink-0 text-area-strong sm:h-8 sm:w-8" />
                   ) : (
-                    <BereichIcon area={ROUTE} size={40} className="shrink-0 text-area-strong" />
+                    <BereichIcon area={ROUTE} size={24} className="shrink-0 text-area-strong sm:h-8 sm:w-8" />
                   )}
-                  <span className="mt-6 block text-title-sm font-semibold text-foreground transition-colors duration-quick group-hover:text-area-strong">
-                    {service.title}
-                  </span>
-                  <span className="mt-2 block flex-1 text-small text-foreground-muted">
-                    {service.summary}
-                  </span>
-                  <span className="mt-6 flex items-center justify-between gap-3">
-                    <span className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                      Leistungsdetails
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-title-sm font-semibold text-foreground transition-colors duration-quick group-hover:text-area-strong">
+                      {service.title}
                     </span>
-                    <GlyphPfeilRechts
-                      size={18}
-                      className="shrink-0 text-foreground-muted transition-transform duration-quick group-hover:translate-x-1"
-                    />
+                    <span className="mt-1 hidden max-w-measure text-small text-foreground-muted sm:block">
+                      {service.summary}
+                    </span>
                   </span>
+                  <GlyphPfeilRechts
+                    size={18}
+                    className="shrink-0 text-foreground-muted transition-transform duration-quick group-hover:translate-x-1"
+                  />
                 </Link>
               </li>
             );
@@ -280,23 +285,34 @@ export default async function TuerUndSchliesstechnikPage() {
 
       {/* Normen und Brandschutz */}
       <Section tight>
-        <div className="relative overflow-hidden rounded-3xl bg-surface-ink p-8 text-foreground-inverse md:p-12 lg:p-16">
-          <div className="relative z-raised max-w-3xl">
-            <h2 className="mb-6 text-headline font-bold text-foreground-inverse">Regulatorik: Fluchtwege und Brandschutz</h2>
-            <div className="space-y-6 text-foreground-inverse/80 text-lead leading-relaxed">
-              <p>
-                Eingriffe an Brand-, Rauchschutz- oder Fluchttüren erfordern höchste fachliche Expertise und die strikte Einhaltung bauaufsichtlicher Zulassungen. Eine nachträglich falsch montierte Mehrfachverriegelung an einer T30-Brandschutztür kann zum sofortigen Erlöschen der Zulassung führen – mit gravierenden haftungsrechtlichen Konsequenzen im Schadensfall.
+        <div className="relative overflow-hidden rounded-lg bg-surface-ink p-8 text-foreground-inverse md:p-12 lg:p-16">
+          <div className="relative z-raised grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-gutter">
+            <div className="lg:col-span-8">
+              <p className="eyebrow text-foreground-inverse">
+                <span className="tabular-nums text-foreground-inverse/70">03</span>
+                Normen und Brandschutz
               </p>
-              <p>
-                Wir sind zertifiziert für die Bearbeitung und Instandhaltung von Flucht- und Rettungswegtechnik nach DIN EN 179 und DIN EN 1125. Jede technische Modifikation wird vorab auf Zulässigkeit geprüft und fachgerecht dokumentiert.
-              </p>
-              <Link
-                href={`/${ROUTE}/panik-und-fluchttuertechnik`}
-                className="group inline-flex min-h-touch items-center gap-2 border-b border-primary pb-1 font-semibold text-foreground-inverse transition-colors duration-quick hover:text-primary-soft focus-visible:ring-offset-surface-ink"
-              >
-                Spezifikationen für Paniktechnik ansehen
-                <GlyphPfeilRechts size={18} className="transition-transform duration-quick group-hover:translate-x-1" />
-              </Link>
+              <h2 className="mt-3 mb-6 text-headline font-bold text-foreground-inverse">Regulatorik: Fluchtwege und Brandschutz</h2>
+              <div className="space-y-6 text-foreground-inverse/80 text-lead leading-relaxed">
+                <p>
+                  Eingriffe an Brand-, Rauchschutz- oder Fluchttüren erfordern höchste fachliche Expertise und die strikte Einhaltung bauaufsichtlicher Zulassungen. Eine nachträglich falsch montierte Mehrfachverriegelung an einer T30-Brandschutztür kann zum sofortigen Erlöschen der Zulassung führen – mit gravierenden haftungsrechtlichen Konsequenzen im Schadensfall.
+                </p>
+                <p>
+                  Wir sind zertifiziert für die Bearbeitung und Instandhaltung von Flucht- und Rettungswegtechnik nach DIN EN 179 und DIN EN 1125. Jede technische Modifikation wird vorab auf Zulässigkeit geprüft und fachgerecht dokumentiert.
+                </p>
+                <Link
+                  href={`/${ROUTE}/panik-und-fluchttuertechnik`}
+                  className="group inline-flex min-h-touch items-center gap-2 border-b border-primary pb-1 font-semibold text-foreground-inverse transition-colors duration-quick hover:text-primary-soft focus-visible:ring-offset-surface-ink"
+                >
+                  Spezifikationen für Paniktechnik
+                  <GlyphPfeilRechts size={18} className="transition-transform duration-quick group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Rechte Spalte: die Fachgrafik der Kachel Panik- und Fluchttürtechnik, Strich auf dunklem Grund */}
+            <div className="flex justify-center lg:col-span-4 lg:justify-end">
+              <IconPanikFluchttuer size={96} className="stroke-foreground-inverse" />
             </div>
           </div>
         </div>
@@ -307,66 +323,49 @@ export default async function TuerUndSchliesstechnikPage() {
       {/* FAQ Sektion */}
       <Section id="fachwissen">
         <SectionHeading
+          nummer="04"
           eyebrow="Fachwissen & Beratung"
           title="Häufig gestellte Fragen zur Türtechnik"
           lead="Wir legen Wert auf transparente Aufklärung. Hier beantworten wir die komplexesten Fragen rund um Zylinder, Schlösser und mechanische Sicherheit."
           className="max-w-3xl"
         />
-        <div className="mt-12 max-w-4xl mx-auto">
+        <div className="mt-12">
           <Accordion items={EXPERT_FAQ} />
         </div>
       </Section>
 
-      {/* Angrenzende Bereiche */}
+      {/* Angrenzende Bereiche: die ganze Karte ist der Link, unten rechts nur der Pfeil */}
       <Section tone="muted" tight>
         <SectionHeading
+          nummer="05"
           eyebrow="Systemerweiterungen"
           title="Gewerkeübergreifende Lösungen"
           lead="Tür- und Schließtechnik ist oft der erste Schritt. Erweitern Sie Ihr System um vernetzte oder komplexe Hierarchien."
         />
 
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2">
+        {/* Mobil eine Leiste mit Anschnitt, ab 768 px zwei Spalten (Muster Startseite „Bestellen ohne Termin“). */}
+        <ul className="-mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-gutter md:overflow-visible md:px-0 md:pb-0 scroll-px-5 sm:scroll-px-6 md:scroll-px-0">
           {RELATED_AREAS.map((area) => (
-            <li key={area.href}>
-              <Card className="h-full border-border hover:border-primary transition-colors">
-                <CardBody className="flex h-full flex-col p-8">
-                  <p className="text-title font-bold tracking-tight text-foreground">{area.label}</p>
-                  <p className="mt-4 flex-1 text-body leading-relaxed text-foreground-muted">
+            <li key={area.href} className="shrink-0 basis-3/4 snap-start md:basis-auto">
+              <Card className="h-full border-border transition-colors hover:border-primary">
+                <Link
+                  href={area.href}
+                  className="group flex h-full flex-col rounded-lg p-6 transition-colors duration-quick md:p-8"
+                >
+                  <span className="text-title font-bold tracking-tight text-foreground">{area.label}</span>
+                  <span className="mt-4 flex-1 text-body leading-relaxed text-foreground-muted">
                     {area.body}
-                  </p>
-                  <Link
-                    href={area.href}
-                    className="group mt-8 inline-flex min-h-touch items-center gap-2 text-small font-semibold text-primary"
-                  >
-                    {area.label} erkunden
-                    <GlyphPfeilRechts size={16} className="transition-transform duration-quick group-hover:translate-x-1" />
-                  </Link>
-                </CardBody>
+                  </span>
+                  <GlyphPfeilRechts
+                    size={18}
+                    className="mt-6 self-end text-primary transition-transform duration-quick group-hover:translate-x-1"
+                  />
+                </Link>
               </Card>
             </li>
           ))}
         </ul>
       </Section>
-
-      {/* Weiterführende Seiten */}
-      {page && page.seo.internalLinks.length > 0 && (
-        <Section tight>
-          <SectionHeading eyebrow="Wissensdatenbank" title="Verwandte Fachthemen" />
-          <ul className="mt-8 flex flex-wrap gap-4">
-            {page.seo.internalLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="inline-flex min-h-touch items-center gap-3 rounded-xl border border-border bg-surface px-6 text-small font-semibold text-foreground transition-all hover:border-primary hover:text-primary"
-                >
-                  {link.label}
-                  <GlyphPfeilRechts size={16} />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Section>
-      )}
     </>
   );
 }

@@ -113,9 +113,11 @@ export default async function AutoschluesselAnfragePage(props: {
 
       <Section tone="muted" tight>
         <SectionHeading
+          nummer="01"
           eyebrow="Weiterführend"
           title="Passende Seiten zu diesem Ablauf"
           lead="Falls Sie vor dem Absenden noch etwas nachlesen möchten."
+          className="[&_h2]:text-title [&_h2]:tracking-normal"
         />
         <ul className="mt-8 border-t border-border">
           {RELATED_LINKS.map((link) => (
@@ -132,13 +134,10 @@ export default async function AutoschluesselAnfragePage(props: {
                     {link.description}
                   </span>
                 </span>
-                <span className="flex shrink-0 items-center gap-2 text-small font-semibold text-primary">
-                  Ansehen
-                  <GlyphPfeilRechts
-                    size={18}
-                    className="transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
-                  />
-                </span>
+                <GlyphPfeilRechts
+                  size={18}
+                  className="shrink-0 text-primary transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                />
               </Link>
             </li>
           ))}

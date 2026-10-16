@@ -13,7 +13,7 @@ import { IconGleichschliessendeZylinder } from '@/components/visual/icons/gleich
 import { IconSicherungskarte } from '@/components/visual/icons/sicherungskarte';
 import { IconSchluesselNachVorlage } from '@/components/visual/icons/schluessel-nach-vorlage';
 import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
-import { CodeFundstelleInteraktiv } from '@/components/visual/interaktiv/code-fundstelle-interaktiv';
+import { CodeFundstelleGrafik } from '@/components/visual/generators/code-fundstelle';
 
 import { ShopListe } from './shop-liste';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -96,6 +96,17 @@ export default async function SchluesselNachCodePage() {
         title={page?.headline ?? 'Schlüssel nach Code'}
         lead={page?.subline ?? 'Code eingeben, Stückzahl wählen, bestellen.'}
         crumbs={[{ href: '/schluessel-nach-code', label: 'Schlüssel nach Code' }]}
+        bereich="schluessel-nach-code"
+        visual={
+          /* Blickfang im Kopf (E4-L-23): die Fundstelle auf Papier, ohne Kartenrahmen */
+          <div className="grid gap-4">
+            <div>
+              <p className="eyebrow">Codefundstelle</p>
+              <h2 className="mt-3 text-title-sm font-semibold text-foreground">Wo steht der Code?</h2>
+            </div>
+            <CodeFundstelleGrafik params={{ ort: 'schluesselkopf' }} title="" className="w-full" />
+          </div>
+        }
       >
         <Alert tone="info" title="Ihr Originalschlüssel bleibt bei Ihnen">
           <p>
@@ -120,7 +131,7 @@ export default async function SchluesselNachCodePage() {
         <SectionHeading
           id="trefferliste-titel"
           nummer="01"
-          eyebrow={`${lines.length} Codelinien`}
+          eyebrow="Codelinien"
           title="Passende Codelinie finden"
           lead={
             page?.intro
@@ -132,24 +143,11 @@ export default async function SchluesselNachCodePage() {
         <ShopListe lines={lines} className="mt-8" />
       </Section>
 
-      {/* Großer Moment (B-16): die Codefundstelle als Zeichnung, Kopf links, Zeichnung rechts */}
-      <Section tone="muted" labelledBy="fundstelle-titel">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
-          <SectionHeading
-            id="fundstelle-titel"
-            className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start"
-            nummer="02"
-            eyebrow="Codefundstelle"
-            title="Wo steht der Code?"
-          />
-          <CodeFundstelleInteraktiv className="lg:col-span-7" />
-        </div>
-      </Section>
-
-      <Section tight labelledBy="weiter-titel">
+      {/* Ton wechselt zur Liste darüber (K-006); die Fundstelle steht im Kopf */}
+      <Section tone="muted" tight labelledBy="weiter-titel">
         <SectionHeading
           id="weiter-titel"
-          nummer="03"
+          nummer="02"
           eyebrow="Weiterlesen"
           title="Passende Bereiche und Erklärungen"
           lead="Wenn der Code fehlt oder mehrere Türen zusammengehören, führen diese Wege weiter."

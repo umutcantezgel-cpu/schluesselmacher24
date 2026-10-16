@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
+
 import type { TimeSlot } from '@/lib/types';
+import { cn } from '@/lib/cn';
 import { formatDate, formatDuration } from '@/lib/format';
 import { Alert } from '@/components/ui/alert';
-import { OptionCard } from '@/components/forms/option-card';
 import { GlyphKalender } from '@/components/visual/glyphen/kalender';
 import { GlyphLaden } from '@/components/visual/glyphen/laden';
 
@@ -24,7 +26,31 @@ export interface TerminAuswahlProps {
   onSelect: (date: string, time: string) => void;
 }
 
-/** Zeitfenster nach Tagen gruppiert — mobil als große, antippbare Flächen. */
+/** Ein Tag, an dem mindestens eine Zeit frei ist. */
+interface FreierTag {
+  date: string;
+  slots: TimeSlot[];
+}
+
+/**
+ * Wochentag kurz und Tag mit Monat ohne Jahr, etwa „Mo.“ und „06. Okt.“. Die
+ * Form ohne Ziffernpaar mit Doppelpunkt oder Punkt hält Uhrzeiten und Tage
+ * im Text getrennt.
+ */
+function tagKurz(iso: string): { wochentag: string; datum: string } {
+  const date = new Date(`${iso}T12:00:00`);
+  if (Number.isNaN(date.getTime())) return { wochentag: '', datum: iso };
+  return {
+    wochentag: new Intl.DateTimeFormat('de-DE', { weekday: 'short' }).format(date),
+    datum: new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: 'short' }).format(date),
+  };
+}
+
+/**
+ * Zeitfenster als Tagesleiste: oben die Tage mit freien Zeiten, darunter nur
+ * die Uhrzeiten des offenen Tages. Die Leiste hält den Ablauf kurz; eine
+ * Terminliste über Wochen würde den Schritt endlos lang machen.
+ */
 export function TerminAuswahl({
   days,
   loading,
@@ -37,6 +63,19 @@ export function TerminAuswahl({
   selectedTime,
   onSelect,
 }: TerminAuswahlProps) {
+  /* Anzeige-Zustand: welcher Tag gerade offen ist. Ohne Angabe gilt der Tag des
+     gewählten Termins, sonst der erste Tag mit freien Zeiten. Gewählt wird erst
+     beim Antippen einer Uhrzeit (onSelect). */
+  const [offenerTag, setOffenerTag] = useState('');
+
+  const tage: FreierTag[] = days
+    .map((day) => ({ date: day.date, slots: day.slots.filter((slot) => slot.available) }))
+    .filter((tag) => tag.slots.length > 0);
+  const aktiv =
+    tage.find((tag) => tag.date === offenerTag) ??
+    tage.find((tag) => tag.date === selectedDate) ??
+    tage[0];
+
   return (
     <div className="space-y-5">
       <Alert tone="info" title={`Frühester Termin nach etwa ${leadTimeDays} Tagen`}>
@@ -103,34 +142,78 @@ export function TerminAuswahl({
         </Alert>
       )}
 
-      {!loading &&
-        !error &&
-        days.map((day) => {
-          const free = day.slots.filter((slot) => slot.available);
-          if (free.length === 0) return null;
+      {!loading && !error && aktiv && (
+        <section className="space-y-4">
+          <div
+            role="group"
+            aria-label="Tag wählen"
+            className="-mx-5 flex snap-x snap-mandatory gap-2 overflow-x-auto px-5 pb-2 scroll-px-5 sm:-mx-6 sm:px-6 sm:scroll-px-6 md:mx-0 md:flex-wrap md:overflow-visible md:px-0 md:scroll-px-0"
+          >
+            {tage.map((tag) => {
+              const { wochentag, datum } = tagKurz(tag.date);
+              const offen = tag.date === aktiv.date;
+              return (
+                <button
+                  key={tag.date}
+                  type="button"
+                  aria-pressed={offen}
+                  onClick={() => setOffenerTag(tag.date)}
+                  className={cn(
+                    'min-h-touch w-24 shrink-0 snap-start rounded-lg border px-3 py-2.5 text-left transition-colors duration-quick',
+                    offen
+                      ? 'border-primary bg-primary-soft'
+                      : 'border-border bg-surface hover:border-border-strong',
+                  )}
+                >
+                  <span className="block font-mono text-caption uppercase tracking-label text-foreground-muted">
+                    {wochentag}
+                  </span>
+                  <span className="mt-0.5 block font-mono text-small font-semibold tabular-nums text-foreground">
+                    {datum}
+                  </span>
+                  <span className="mt-0.5 block font-mono text-caption tabular-nums text-foreground-muted">
+                    {`${tag.slots.length} frei`}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
 
-          return (
-            <section key={day.date} aria-label={formatDate(day.date)}>
-              <h3 className="flex items-center gap-2 text-title-sm font-semibold text-foreground">
-                <GlyphKalender size={18} className="text-foreground-subtle" />
-                <span className="font-mono tabular-nums">{formatDate(day.date)}</span>
-              </h3>
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                {free.map((slot) => (
-                  <OptionCard
+          <div>
+            <h3 className="flex items-center gap-2 text-title-sm font-semibold text-foreground">
+              <GlyphKalender size={18} className="text-foreground-subtle" />
+              <span>{formatDate(aktiv.date)}</span>
+            </h3>
+            <div role="group" aria-label="Uhrzeit wählen" className="mt-3 grid grid-cols-3 gap-2 lg:grid-cols-6">
+              {aktiv.slots.map((slot) => {
+                const gewaehlt = selectedDate === slot.date && selectedTime === slot.time;
+                return (
+                  <button
                     key={`${slot.date}-${slot.time}`}
-                    name="termin"
-                    value={`${slot.date}T${slot.time}`}
-                    checked={selectedDate === slot.date && selectedTime === slot.time}
-                    onSelect={() => onSelect(slot.date, slot.time)}
-                    title={<><span className="font-mono tabular-nums">{slot.time}</span> Uhr</>}
-                    description={<>Dauer <span className="font-mono tabular-nums">{formatDuration(slot.durationMinutes)}</span></>}
-                  />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+                    type="button"
+                    aria-pressed={gewaehlt}
+                    onClick={() => onSelect(slot.date, slot.time)}
+                    className={cn(
+                      'min-h-touch rounded-lg border px-3 py-2.5 text-left transition-colors duration-quick',
+                      gewaehlt
+                        ? 'border-primary bg-primary-soft'
+                        : 'border-border bg-surface hover:border-border-strong',
+                    )}
+                  >
+                    <span className="block font-mono text-small font-semibold tabular-nums text-foreground">
+                      {`${slot.time} Uhr`}
+                    </span>
+                    <span className="mt-0.5 block text-caption text-foreground-muted">
+                      Dauer{' '}
+                      <span className="font-mono tabular-nums">{formatDuration(slot.durationMinutes)}</span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
