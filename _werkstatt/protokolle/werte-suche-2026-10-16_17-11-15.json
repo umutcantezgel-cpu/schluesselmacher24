@@ -1,0 +1,14 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T15:11:15.516Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/gleichschliessende-zylinder/page.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 1,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}
