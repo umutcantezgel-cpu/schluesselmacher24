@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Blueprint Sync
+This repository is managed by JC-AUDITOR-ARCHITECT-v1. Check `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for the active transformation queues and metrics.
