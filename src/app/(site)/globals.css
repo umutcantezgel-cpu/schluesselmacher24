@@ -519,4 +519,9 @@
   .sm24-ausschnitt [data-bemassung] {
     display: none;
   }
+
+  /* Legenden, deren Generator den Ausschnitt dafür bemisst (tuer-schutz). */
+  .sm24-ausschnitt [data-legende] {
+    font-size: 16px;
+  }
 }

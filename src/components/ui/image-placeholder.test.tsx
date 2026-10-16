@@ -33,6 +33,14 @@ describe('ImagePlaceholder – Rangfolge ohne Foto', () => {
     expect(html).toContain('data-sm24-icon=""');
   });
 
+  it('lässt das Fach-Icon mit der Fläche wachsen, in kleinen Flächen nicht', () => {
+    const gross = zeichne({ motif: 'Anwendungsfoto: Alarmtechnik', ratio: '4/3' });
+    expect(gross).toContain('w-1/4');
+    expect(gross).toContain('max-w-40');
+    const klein = zeichne({ motif: 'Anwendungsfoto: Alarmtechnik', ratio: '4/3' }, true);
+    expect(klein).not.toContain('w-1/4');
+  });
+
   it('zeigt in kleinen Flächen immer ein Fach-Icon', () => {
     const html = zeichne({ motif: 'Schemazeichnung Zentralschlossanlage', ratio: '1/1' }, true);
     expect(html).not.toContain('role="img"');

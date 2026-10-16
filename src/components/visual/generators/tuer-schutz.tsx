@@ -71,6 +71,20 @@ const LINIE_ENDE = 296;
 const LEGENDE_X = 300;
 const NAME_X = 320;
 
+/**
+ * Ausschnitt für Telefonbreiten (`ImagePlaceholder`, Prop `ausschnitt`): Tür und
+ * Legende ohne Rand. Im Ausschnitt setzt globals.css die Legende auf 16 Einheiten
+ * (`data-legende`); der Ausschnitt ist dafür bemessen, sie wird so rund 12 px groß.
+ */
+export const TUER_SCHUTZ_AUSSCHNITT = {
+  x: 26,
+  y: 20,
+  breite: 444,
+  hoehe: 258,
+  vollBreite: BREITE,
+  vollHoehe: HOEHE,
+} as const;
+
 const HERVOR = 'fill-area-soft stroke-area-strong';
 
 /** Ein Schalter aus Wahrheitswert oder Text; sonst der Standardwert. */
@@ -256,6 +270,7 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
                   Fläche aus breitem Strich, daher Zahl statt Strichstufe (D-010). */}
               <text
                 className="fill-area-strong stroke-surface font-mono"
+                data-legende
                 fontSize={SCHRIFT}
                 fontWeight={600}
                 paintOrder="stroke"
@@ -268,6 +283,7 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
               </text>
               <text
                 className="fill-foreground-muted stroke-surface font-mono"
+                data-legende
                 fontSize={SCHRIFT}
                 paintOrder="stroke"
                 strokeLinejoin="round"

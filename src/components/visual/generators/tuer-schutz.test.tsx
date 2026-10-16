@@ -2,7 +2,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { TuerSchutzGrafik } from './tuer-schutz';
+import { TUER_SCHUTZ_AUSSCHNITT, TuerSchutzGrafik } from './tuer-schutz';
 
 function zeichne(params: unknown, title: unknown = 'Tür mit Schutzpunkten'): string {
   return renderToStaticMarkup(
@@ -155,5 +155,23 @@ describe('TuerSchutzGrafik', () => {
     const html = zeichne(params);
     expect(html).toBe(zeichne({ ...params }));
     expect(html.match(/sm24-pop/g)?.length ?? 0).toBeLessThanOrEqual(5);
+  });
+
+  it('bemisst den Telefon-Ausschnitt für Tür und die vergrößerte Legende', () => {
+    const a = TUER_SCHUTZ_AUSSCHNITT;
+    const html = zeichne({});
+    expect(html.match(/data-legende="true"/g)).toHaveLength(10);
+    expect([a.vollBreite, a.vollHoehe]).toEqual([480, 300]);
+    expect(a.x).toBeGreaterThanOrEqual(0);
+    expect(a.y).toBeGreaterThanOrEqual(0);
+    expect(a.x + a.breite).toBeLessThanOrEqual(a.vollBreite);
+    expect(a.y + a.hoehe).toBeLessThanOrEqual(a.vollHoehe);
+    // Zarge links (x 48, Bolzen ab 40) und Boden (y 272) liegen im Ausschnitt.
+    expect(a.x).toBeLessThanOrEqual(30);
+    expect(a.y + a.hoehe).toBeGreaterThanOrEqual(276);
+    // Längster Name „Schließzylinder“ ab x 320 in 16 Einheiten Mono (≈ 0,6 em je Zeichen).
+    expect(a.x + a.breite).toBeGreaterThanOrEqual(320 + 15 * 16 * 0.6 + 2);
+    // Gewinn gegenüber der vollen Breite: Faktor ≥ 1,08 bei 16/13 größerer Legende.
+    expect(a.vollBreite / a.breite).toBeGreaterThanOrEqual(1.08);
   });
 });

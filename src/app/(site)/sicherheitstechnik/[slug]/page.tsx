@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight, Check } from 'lucide-react';
 
 import { getServicePage, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
-import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 const AREA = 'sicherheitstechnik';
 const AREA_LABEL = 'Sicherheitstechnik';
@@ -84,17 +84,16 @@ export default async function SecurityDetailPage(props: PageProps) {
           { href: `/${AREA}/${page.slug}`, label: page.title },
         ]}
         actions={
-          <ButtonLink href={page.ctaHref} size="lg">
+          <ButtonLink href={page.ctaHref} size="lg" pfeil>
             {page.ctaLabel}
-            <ArrowRight size={18} aria-hidden />
           </ButtonLink>
         }
       />
 
-      {/* Leistungsumfang */}
+      {/* Leistungsumfang: Raster 7/5 mit Punkten im Kreis */}
       <Section tight>
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-12">
-          <div>
+        <div className="grid gap-8 md:grid-cols-12 md:items-start md:gap-gutter">
+          <div className="md:col-span-7">
             <SectionHeading eyebrow="Leistungsumfang" title="Das gehört dazu" />
 
             <ul className="mt-6 space-y-3">
@@ -102,21 +101,22 @@ export default async function SecurityDetailPage(props: PageProps) {
                 <li key={bullet} className="flex gap-3">
                   <span
                     aria-hidden
-                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary"
+                    className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-area-soft text-area-strong"
                   >
-                    <Check size={13} strokeWidth={3} />
+                    <GlyphHaken size={14} />
                   </span>
-                  <span className="text-[15px] leading-relaxed text-foreground-muted">{bullet}</span>
+                  <span className="text-body leading-relaxed text-foreground-muted">{bullet}</span>
                 </li>
               ))}
             </ul>
 
+            {/* Kasten im Etikett-Stil: Ablauf wie ein Schriftfeld */}
             <div className="mt-8 rounded-lg border border-border bg-surface-muted p-5">
-              <p className="text-[13px] font-bold uppercase tracking-wider text-foreground-subtle">
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 So läuft es ab
               </p>
-              <p className="mt-2 text-[15px] font-bold text-foreground">{process.label}</p>
-              <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
+              <p className="mt-2 text-body font-semibold text-foreground">{process.label}</p>
+              <p className="mt-1 text-small leading-relaxed text-foreground-muted">
                 {process.hint}
               </p>
               <div className="mt-5">
@@ -127,40 +127,50 @@ export default async function SecurityDetailPage(props: PageProps) {
             </div>
           </div>
 
-          <ImagePlaceholder slot={page.image} />
+          <div className="md:col-span-5">
+            {/* Rangfolge aus ImagePlaceholder: Foto, sonst Fachgrafik, sonst Fach-Icon zum Motiv */}
+            <ImagePlaceholder slot={page.image} />
+          </div>
         </div>
       </Section>
 
-      {/* Recht und Verantwortung, wenn die Leistung es berührt */}
+      {/* Recht und Verantwortung, wenn die Leistung es berührt: Kasten mit Haarlinien */}
       {showLegal && (
         <Section tight>
-          <Alert tone="legal" title="Recht und Verantwortung">
-            <p>
-              Für die rechtmäßige Nutzung von Video-, Audio- und Protokollfunktionen ist die
-              Betreiberin oder der Betreiber der Anlage verantwortlich. Kameras dürfen öffentliche
-              Flächen und Nachbargrundstücke nicht erfassen. Verdeckte Audioüberwachung bieten wir
-              nicht als Standardprodukt an; Gegensprech- und Alarmfunktionen richten wir nur für
-              zulässige Einsatzzwecke ein. Wir beraten technisch und leisten keine Rechtsberatung.
-            </p>
-            <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
-              <Link
-                href={`/${AREA}#recht-und-verantwortung`}
-                className="font-semibold text-primary hover:underline"
-              >
-                Alle Punkte im Überblick
-              </Link>
-              <Link
-                href="/rechtliches/datenschutz"
-                className="font-semibold text-primary hover:underline"
-              >
-                Hinweise zum Datenschutz
-              </Link>
-            </p>
-          </Alert>
+          <div
+            role="note"
+            className="flex gap-4 rounded-lg border border-border bg-surface p-5 sm:p-6"
+          >
+            <GlyphInfo size={22} className="mt-1 shrink-0 text-primary" />
+            <div className="min-w-0">
+              <p className="text-title-sm font-semibold text-foreground">Recht und Verantwortung</p>
+              <p className="mt-3 max-w-measure text-small leading-relaxed text-foreground-muted">
+                Für die rechtmäßige Nutzung von Video-, Audio- und Protokollfunktionen ist die
+                Betreiberin oder der Betreiber der Anlage verantwortlich. Kameras dürfen öffentliche
+                Flächen und Nachbargrundstücke nicht erfassen. Verdeckte Audioüberwachung bieten wir
+                nicht als Standardprodukt an; Gegensprech- und Alarmfunktionen richten wir nur für
+                zulässige Einsatzzwecke ein. Wir beraten technisch und leisten keine Rechtsberatung.
+              </p>
+              <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+                <Link
+                  href={`/${AREA}#recht-und-verantwortung`}
+                  className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
+                >
+                  Alle Punkte im Überblick
+                </Link>
+                <Link
+                  href="/rechtliches/datenschutz"
+                  className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
+                >
+                  Hinweise zum Datenschutz
+                </Link>
+              </p>
+            </div>
+          </div>
         </Section>
       )}
 
-      {/* Weitere Bereiche */}
+      {/* Weitere Leistungen des Bereichs: Haarlinienliste, ganze Zeile ist der Link */}
       {others.length > 0 && (
         <Section tone="muted" tight>
           <SectionHeading
@@ -168,24 +178,29 @@ export default async function SecurityDetailPage(props: PageProps) {
             title={`Weitere Bereiche der ${AREA_LABEL}`}
           />
 
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-8 border-t border-border">
             {others.map((item) => (
-              <li key={item.id}>
-                <Card className="h-full">
-                  <CardBody className="flex h-full flex-col">
-                    <p className="text-[15px] font-bold text-foreground">{item.title}</p>
-                    <p className="mt-2 flex-1 text-[14px] leading-relaxed text-foreground-muted">
+              <li key={item.id} className="border-b border-border">
+                <Link
+                  href={`/${AREA}/${item.slug}`}
+                  className="group flex min-h-touch flex-col gap-3 py-6 transition-colors duration-quick hover:text-area-strong sm:flex-row sm:items-start sm:justify-between sm:gap-8"
+                >
+                  <span className="min-w-0">
+                    <span className="block text-title-sm font-semibold text-foreground group-hover:text-area-strong">
+                      {item.title}
+                    </span>
+                    <span className="mt-2 block max-w-measure text-small leading-relaxed text-foreground-muted">
                       {item.summary}
-                    </p>
-                    <Link
-                      href={`/${AREA}/${item.slug}`}
-                      className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-                    >
-                      Ansehen
-                      <ArrowRight size={15} aria-hidden />
-                    </Link>
-                  </CardBody>
-                </Card>
+                    </span>
+                  </span>
+                  <span className="inline-flex shrink-0 items-center gap-1.5 text-small font-semibold text-primary">
+                    Ansehen
+                    <GlyphPfeilRechts
+                      size={16}
+                      className="transition-transform duration-quick group-hover:translate-x-1"
+                    />
+                  </span>
+                </Link>
               </li>
             ))}
           </ul>
@@ -200,10 +215,10 @@ export default async function SecurityDetailPage(props: PageProps) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-border bg-surface px-4 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                className="inline-flex min-h-touch items-center gap-2 rounded-lg border border-border bg-surface px-4 text-small font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
               >
                 {link.label}
-                <ArrowRight size={15} aria-hidden />
+                <GlyphPfeilRechts size={16} />
               </Link>
             </li>
           ))}

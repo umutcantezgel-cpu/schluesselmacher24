@@ -10,6 +10,7 @@ import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
@@ -215,6 +216,7 @@ export default async function TuerUndSchliesstechnikPage() {
                 note: 'Hochauflösendes Detailfoto zur Verdeutlichung der mechanischen Präzision.',
                 visual: { generator: 'tuer-schutz', params: {} },
               }}
+              ausschnitt={TUER_SCHUTZ_AUSSCHNITT}
             />
             <TuerAbsicherungRechner
               werte={richtwerte.tuerAbsicherung}

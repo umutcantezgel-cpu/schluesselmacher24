@@ -138,7 +138,8 @@ export function ImagePlaceholder({
         className,
       )}
     >
-      <Icon size={compact ? 32 : 72} />
+      {/* Mit der Fläche wachsend (¼ der Breite, 64–160 px), damit breite Flächen nicht leer wirken */}
+      {compact ? <Icon size={32} /> : <Icon size={72} className="h-auto w-1/4 min-w-16 max-w-40" />}
     </div>
   );
 }
