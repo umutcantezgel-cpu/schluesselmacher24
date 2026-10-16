@@ -3,17 +3,17 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { getSettings, getVehicleMakes, getVehicleModel } from '@/lib/data';
-import type { ImageSlot, KeyKind, SummarySection } from '@/lib/types';
+import type { ImageSlot, KeyKind } from '@/lib/types';
 import { formatCents } from '@/lib/format';
 import { cn } from '@/lib/cn';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
-import { SummaryList } from '@/components/layout/summary-list';
 import { ButtonLink } from '@/components/ui/button';
-import { Alert } from '@/components/ui/alert';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GlyphWarnung } from '@/components/visual/glyphen/warnung';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { motionStyle } from '@/components/visual/motion/motion-style';
 import { SCHLUESSELARTEN_REIHE } from '@/components/autoschluessel/schluesselarten-reihe';
@@ -25,6 +25,7 @@ import {
   keyKindLabel,
 } from '@/components/autoschluessel/key-kinds';
 import {
+  BaujahrFeld,
   OnSiteBadge,
   formatModelYears,
   hatBaujahre,
@@ -40,17 +41,23 @@ type Typ = (typeof SCHLUESSELARTEN_REIHE)[number]['typ'];
 interface DetailFeld {
   art: KeyKind;
   typ?: Typ;
-  /** Keyless steht als Zusatzzeile beim Smart Key. */
+  /** Keyless steht als Hinweiszeile unter den Zeichnungen. */
   keyless?: boolean;
 }
 
-/** Rasterspalten je Anzahl der Felder; mit vier Feldern wie in der Bauformen-Reihe. */
+/** Rasterspalten für bis zu drei Zeichnungen; ab vier Zeichnungen gilt die Leiste. */
 const RASTER: Record<number, string> = {
   1: '',
   2: 'sm:grid-cols-2',
   3: 'sm:grid-cols-3',
-  4: 'sm:grid-cols-2 lg:grid-cols-4',
 };
+
+/**
+ * Mobil eine Leiste mit Anschnitt (KERN K-006), ab `md` ein Raster aus vier Spalten.
+ */
+const LEISTE =
+  '-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-2 ' +
+  'sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:grid-cols-4 md:overflow-visible md:scroll-px-0 md:px-0 md:pb-0';
 
 /**
  * Erfasste Schlüsselarten als Felder: zuerst die Bauformen mit Zeichnung in der
@@ -117,36 +124,36 @@ export default async function ModelPage(props: PageProps) {
   const deposit = formatCents(settings.booking.depositCents);
   const leadDays = settings.booking.leadTimeDays;
   const felder = detailFelder(model.keyKinds);
-  // Arten ohne eigene Bauform (etwa Keyless ohne Smart Key) stehen als Zusatz unter den Zeichnungen.
+  // Keyless steht immer als Hinweiszeile unter den Zeichnungen, auch wenn es am Smart Key hängt.
   const gezeichnet = felder.filter((feld) => feld.typ !== undefined);
-  const zusaetze = felder.filter((feld) => feld.typ === undefined);
+  const hinweise: DetailFeld[] = [
+    ...felder.filter((feld) => feld.typ === undefined),
+    ...felder.filter((feld) => feld.keyless).map(() => ({ art: 'keyless' as const })),
+  ];
   const hatZeichnung = gezeichnet.length > 0;
+  const leiste = gezeichnet.length > 3;
 
   // Vorbelegung des Assistenten über Suchparameter.
   const assistantHref = `/autoschluessel/anfrage?marke=${make.slug}&modell=${model.slug}`;
 
-  // Nur Angaben, die tatsächlich im Datensatz stehen.
-  const facts: SummarySection[] = [
+  // Nur Angaben, die tatsächlich im Datensatz stehen. `mono`: Kennung oder kurzer Wert.
+  const angaben: { label: string; value: string; mono?: boolean }[] = [
+    { label: 'Marke', value: make.name, mono: true },
+    { label: 'Modell', value: model.name, mono: true },
+    { label: 'Baujahre', value: years, mono: true },
     {
-      title: 'Hinterlegte Fahrzeugangaben',
-      rows: [
-        { label: 'Marke', value: make.name },
-        { label: 'Modell', value: model.name },
-        { label: 'Baujahre', value: years },
-        {
-          label: 'Erfasste Schlüsselarten',
-          value:
-            model.keyKinds.length > 0
-              ? model.keyKinds.map((kind) => keyKindLabel(kind)).join(', ')
-              : 'nicht erfasst — wir klären das anhand Ihrer Schlüsselfotos',
-        },
-        {
-          label: 'Fahrzeug zum Anlernen vor Ort',
-          value: model.requiresVehicleOnSite ? 'Ja' : 'Nein',
-        },
-        ...(model.notes ? [{ label: 'Hinweis', value: model.notes }] : []),
-      ],
+      label: 'Erfasste Schlüsselarten',
+      value:
+        model.keyKinds.length > 0
+          ? model.keyKinds.map((kind) => keyKindLabel(kind)).join(', ')
+          : 'nicht erfasst — wir klären das anhand Ihrer Schlüsselfotos',
     },
+    {
+      label: 'Fahrzeug zum Anlernen vor Ort',
+      value: model.requiresVehicleOnSite ? 'Ja' : 'Nein',
+      mono: true,
+    },
+    ...(model.notes ? [{ label: 'Hinweis', value: model.notes }] : []),
   ];
 
   // Bildstelle: die Bauform der ersten erfassten Art, bis zu drei Exemplare.
@@ -212,7 +219,7 @@ export default async function ModelPage(props: PageProps) {
       <PageHeader
         eyebrow={`${make.name} · Modell`}
         title={`Autoschlüssel für ${make.name} ${model.name}`}
-        lead={`Was für dieses Modell hinterlegt ist und was das für Ihren Auftrag bedeutet.${erfasst ? ` Baujahre: ${years}.` : ''}`}
+        lead="Was für dieses Modell hinterlegt ist und was das für Ihren Auftrag bedeutet."
         crumbs={[
           { href: '/autoschluessel', label: 'Autoschlüssel' },
           { href: '/autoschluessel/marken', label: 'Marken' },
@@ -224,27 +231,55 @@ export default async function ModelPage(props: PageProps) {
             Mit diesem Fahrzeug starten
           </ButtonLink>
         }
+        visual={
+          <div className="rounded-lg bg-area-soft/40 p-4 sm:p-6">
+            <ImagePlaceholder slot={bildstelle} frei />
+          </div>
+        }
       >
         <div className="flex flex-wrap items-center gap-3 border-t border-border pt-6">
           <KeyKindBadges kinds={model.keyKinds} />
-          <OnSiteBadge required={model.requiresVehicleOnSite} />
           <InfoTip hint={KEY_KIND_HINT} />
+          {erfasst && <BaujahrFeld years={years} />}
+          <OnSiteBadge required={model.requiresVehicleOnSite} />
         </div>
       </PageHeader>
 
       {/* Hinterlegte Angaben */}
       <Section>
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-          <div className="lg:col-span-7">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-8">
             <SectionHeading
+              nummer="01"
+              eyebrow="Datensatz"
               title="Das ist zu diesem Modell hinterlegt"
               lead="Diese Angaben stammen aus unserem Fahrzeugdatensatz. Was darin nicht steht, erfinden wir nicht — das klären wir anhand Ihrer Schlüsselfotos."
             />
-            <SummaryList sections={facts} className="mt-8" />
-          </div>
-
-          <div className="lg:col-span-5">
-            <ImagePlaceholder slot={bildstelle} />
+            <div className="mt-8">
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                Hinterlegte Fahrzeugangaben
+              </p>
+              <dl className="mt-2 border-t border-border">
+                {angaben.map((zeile) => (
+                  <div
+                    key={zeile.label}
+                    className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4"
+                  >
+                    <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">
+                      {zeile.label}
+                    </dt>
+                    <dd
+                      className={cn(
+                        'text-body text-foreground sm:col-span-7',
+                        zeile.mono && 'font-mono tabular-nums sm:text-right',
+                      )}
+                    >
+                      {zeile.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
         </div>
       </Section>
@@ -253,22 +288,21 @@ export default async function ModelPage(props: PageProps) {
       {model.keyKinds.length > 0 && (
         <Section id="schluesselarten-detail">
           <SectionHeading
+            nummer="02"
             eyebrow="Schlüsselarten"
             title={`Diese Bauformen kommen beim ${make.name} ${model.name} vor`}
             lead="Welche davon Ihr Fahrzeug hat, erkennen wir an Ihren Schlüsselfotos."
           />
 
           {hatZeichnung && (
-            <ol
-              className={cn(
-                'mt-8 grid gap-px overflow-hidden rounded-lg border border-border bg-border',
-                RASTER[Math.min(gezeichnet.length, 4)],
-              )}
-            >
+            <ol className={cn('mt-8 gap-3', leiste ? LEISTE : cn('grid', RASTER[gezeichnet.length]))}>
               {gezeichnet.map((feld, index) => (
                 <li
                   key={feld.art}
-                  className="sm24-reveal flex flex-col bg-surface p-4 sm:p-5"
+                  className={cn(
+                    'sm24-reveal flex flex-col rounded-lg border border-border bg-surface p-4 sm:p-5',
+                    leiste && 'shrink-0 basis-3/4 snap-start md:basis-auto',
+                  )}
                   style={motionStyle(index * 0.12)}
                 >
                   {feld.typ && (
@@ -280,12 +314,6 @@ export default async function ModelPage(props: PageProps) {
                   )}
                   <h3 className="mt-3 text-title-sm font-semibold text-foreground">{keyKindLabel(feld.art)}</h3>
                   <p className="mt-1 text-small text-foreground-muted">{keyKindDescription(feld.art)}</p>
-                  {feld.keyless && (
-                    <p className="mt-2 text-small text-foreground-muted">
-                      <span className="font-semibold text-foreground">{keyKindLabel('keyless')}:</span>{' '}
-                      {keyKindDescription('keyless')}
-                    </p>
-                  )}
                 </li>
               ))}
             </ol>
@@ -295,15 +323,18 @@ export default async function ModelPage(props: PageProps) {
               Schematische Darstellung, nicht maßstäblich.
             </p>
           )}
-          {zusaetze.length > 0 && (
-            <dl className={cn('max-w-measure border-t border-border', hatZeichnung ? 'mt-6' : 'mt-8')}>
-              {zusaetze.map((feld) => (
-                <div key={feld.art} className="border-b border-border py-4">
-                  <dt className="text-title-sm font-semibold text-foreground">{keyKindLabel(feld.art)}</dt>
-                  <dd className="mt-1 text-small text-foreground-muted">{keyKindDescription(feld.art)}</dd>
-                </div>
+          {hinweise.length > 0 && (
+            <ul className={cn('max-w-measure border-t border-border', hatZeichnung ? 'mt-6' : 'mt-8')}>
+              {hinweise.map((feld) => (
+                <li key={feld.art} className="flex items-start gap-3 border-b border-border py-4">
+                  <GlyphInfo size={16} className="mt-0.5 shrink-0 text-foreground-subtle" />
+                  <p className="text-small text-foreground-muted">
+                    <span className="font-semibold text-foreground">{keyKindLabel(feld.art)}:</span>{' '}
+                    {keyKindDescription(feld.art)}
+                  </p>
+                </li>
               ))}
-            </dl>
+            </ul>
           )}
         </Section>
       )}
@@ -313,6 +344,7 @@ export default async function ModelPage(props: PageProps) {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <SectionHeading
             className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start"
+            nummer="03"
             eyebrow="Einordnung"
             title="Was das für Ihren Auftrag bedeutet"
             lead="Die technischen Angaben allein helfen wenig. Hier steht, was daraus für Ablauf, Termin und Aufwand folgt."
@@ -338,15 +370,31 @@ export default async function ModelPage(props: PageProps) {
       </Section>
 
       {/* Was wir nicht wissen */}
-      <Section tone="muted" tight>
-        <SectionHeading title="Was wir ohne Ihre Unterlagen nicht sagen können" />
-        <Alert tone="warning" title="Angaben ohne Gewähr für Ihr konkretes Fahrzeug" className="mt-6">
-          Der Datensatz beschreibt die Baureihe, nicht Ihr einzelnes Fahrzeug. Ausstattung,
-          Sonderausstattung, Umbauten und das genaue Baujahr können abweichen. Wir legen uns erst
-          fest, wenn uns Ihre Schlüsselfotos und der Fahrzeugschein vorliegen. Angaben, die hier
-          nicht stehen — etwa Rohlingstyp oder Elektronikvariante —, klären wir in der Prüfung und
-          nennen sie Ihnen vor der Terminbestätigung.
-        </Alert>
+      <Section tone="sunken" tight>
+        <div className="lg:grid lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-8">
+            <SectionHeading
+              nummer="04"
+              eyebrow="Vorbehalt"
+              title="Was wir ohne Ihre Unterlagen nicht sagen können"
+            />
+            <div
+              role="note"
+              className="relative mt-6 flex gap-3 overflow-hidden rounded-lg border border-border bg-surface p-4 pl-5"
+            >
+              <span aria-hidden className="absolute inset-y-0 left-0 w-0.5 bg-warning" />
+              <GlyphWarnung size={18} className="mt-0.5 shrink-0 text-warning" />
+              <div className="min-w-0 text-small leading-relaxed">
+                <p className="mb-1 font-bold">Angaben ohne Gewähr für Ihr konkretes Fahrzeug</p>
+                Der Datensatz beschreibt die Baureihe, nicht Ihr einzelnes Fahrzeug. Ausstattung,
+                Sonderausstattung, Umbauten und das genaue Baujahr können abweichen. Wir legen uns erst
+                fest, wenn uns Ihre Schlüsselfotos und der Fahrzeugschein vorliegen. Angaben, die hier
+                nicht stehen — etwa Rohlingstyp oder Elektronikvariante —, klären wir in der Prüfung und
+                nennen sie Ihnen vor der Terminbestätigung.
+              </div>
+            </div>
+          </div>
+        </div>
       </Section>
 
       {/* Nächster Schritt */}
@@ -354,12 +402,14 @@ export default async function ModelPage(props: PageProps) {
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:col-span-7">
             <SectionHeading
+              nummer="05"
+              eyebrow="Termin"
               title="Der nächste Schritt"
               lead="Marke und Modell sind im Ablauf schon vorbelegt. Sie ergänzen Baujahr, Schlüsselart und Ihre Fotos."
             />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={assistantHref} size="lg" pfeil>
-                {make.name} {model.name} auswählen
+                Mit diesem Fahrzeug starten
               </ButtonLink>
               <ButtonLink
                 href={`/autoschluessel/marken/${make.slug}`}

@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { getCodeLine, getCodeLines } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
-import { formatCents, formatNumber } from '@/lib/format';
+import { formatNumber } from '@/lib/format';
 import { cn } from '@/lib/cn';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
@@ -65,7 +65,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
 
   // Pflichtlinks laut Leitfaden, ergänzt um die gepflegten Ziele der Codelinie.
   const baseLinks = [
-    { href: '/schluessel-nach-code', label: 'Alle Codelinien ansehen' },
+    { href: '/schluessel-nach-code', label: 'Alle Codelinien' },
     { href: '/schluessel-nach-vorlage', label: 'Kein Code? Schlüssel nach Vorlage' },
     { href: '/ratgeber/schluesselcode-finden', label: 'Ratgeber: Wo finde ich den Code?' },
   ];
@@ -97,18 +97,9 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
 
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-          {/* Produktangaben */}
+          {/* Erklärung und Angaben; die Bestellung steht mobil davor (Live-Schlüssel = Produktbild) */}
           <div className="lg:col-span-7">
-            <div className="grid gap-4 sm:grid-cols-12">
-              <figure className="m-0 sm:col-span-6">
-                <ImagePlaceholder slot={line.productImage} />
-                <figcaption className="mt-2 text-caption leading-snug text-foreground-muted">
-                  Produktansicht der Codelinie.
-                </figcaption>
-              </figure>
-            </div>
-
-            <div className="mt-8">
+            <div>
               <h2 className="text-title font-semibold text-foreground">
                 Was Sie erhalten
               </h2>
@@ -164,14 +155,14 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
                 Sie finden den Code nicht?{' '}
                 <Link
                   href="/ratgeber/schluesselcode-finden"
-                  className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
+                  className="inline py-1 -my-1 font-semibold text-primary hover:underline"
                 >
                   Der Ratgeber zeigt die üblichen Fundstellen.
                 </Link>{' '}
                 Ohne Code ist{' '}
                 <Link
                   href="/schluessel-nach-vorlage"
-                  className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
+                  className="inline py-1 -my-1 font-semibold text-primary hover:underline"
                 >
                   Schlüssel nach Vorlage
                 </Link>{' '}
@@ -190,7 +181,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
                 eingeschränkt sein. Was im Einzelnen gilt, steht unter{' '}
                 <Link
                   href="/rechtliches/widerruf"
-                  className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
+                  className="inline py-1 -my-1 font-semibold text-primary hover:underline"
                 >
                   Widerruf und Rückgabe
                 </Link>
@@ -199,8 +190,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
             </Alert>
           </div>
 
-          {/* Bestellung */}
-          <div className="lg:sticky lg:top-24 lg:col-span-5">
+          {/* Bestellung: mobil zuerst (order-first), ab lg rechts neben der Erklärung */}
+          <div className="order-first lg:order-none lg:sticky lg:top-24 lg:col-span-5">
             <BestellFormular line={line} />
           </div>
         </div>
@@ -239,11 +230,6 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
           </ol>
         </div>
 
-        <p className="mt-6 text-small text-foreground-muted">
-          Preis je Stück:{' '}
-          <span className="font-mono tabular-nums text-foreground">{formatCents(line.priceCents)}</span>.
-          Die Versandart und die Versandkosten wählen Sie im Warenkorb.
-        </p>
       </Section>
     </>
   );

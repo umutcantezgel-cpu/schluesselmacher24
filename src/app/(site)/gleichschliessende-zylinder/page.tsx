@@ -1,20 +1,27 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, KeyRound, Layers, Ruler } from 'lucide-react';
 
 import { getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { formatCents, formatMillimeter } from '@/lib/format';
+import { cn } from '@/lib/cn';
 import { Accordion } from '@/components/ui/accordion';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { BereichIcon } from '@/components/visual/bereich-icon';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
+import { GlyphLineal } from '@/components/visual/glyphen/lineal';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GlyphSchluessel } from '@/components/visual/glyphen/schluessel';
+import { IconHalbzylinder } from '@/components/visual/icons/halbzylinder';
+import { IconKnaufzylinder } from '@/components/visual/icons/knaufzylinder';
+import { IconProfilzylinder } from '@/components/visual/icons/profilzylinder';
 
 const ROUTE = 'gleichschliessende-zylinder';
 
@@ -77,10 +84,17 @@ const FALLBACK_FAQ = [
 
 /** Beispiel aus der Beratungspraxis — keine Preis- oder Produktangabe. */
 const ORDER_EXAMPLE = [
-  { position: 'Haustür', form: 'Doppelzylinder', measure: '30/35' },
-  { position: 'Wohnungstür', form: 'Doppelzylinder', measure: '40/40' },
-  { position: 'Kellertür', form: 'Doppelzylinder', measure: '55/30' },
+  { position: 'Haustür', form: 'Doppelzylinder', measure: '30 / 35' },
+  { position: 'Wohnungstür', form: 'Doppelzylinder', measure: '40 / 40' },
+  { position: 'Kellertür', form: 'Doppelzylinder', measure: '55 / 30' },
 ];
+
+/** Fach-Icon je Bauform (Schlüssel: `forms[].id`). Unbekannte Bauformen zeigen das Bereichs-Icon. */
+const BAUFORM_ICONS: Partial<Record<string, typeof IconProfilzylinder>> = {
+  doppelzylinder: IconProfilzylinder,
+  knaufzylinder: IconKnaufzylinder,
+  halbzylinder: IconHalbzylinder,
+};
 
 export default async function CylinderOverviewPage() {
   const [page, catalog] = await Promise.all([
@@ -129,30 +143,53 @@ export default async function CylinderOverviewPage() {
         title={page?.headline ?? 'Gleichschließende Zylinder'}
         lead={page?.subline ?? 'Mehrere Türen, ein Schlüssel. Direkt konfigurierbar.'}
         crumbs={[{ href: `/${ROUTE}`, label: 'Gleichschließende Zylinder' }]}
+        bereich={ROUTE}
+        /* Blickfang im Kopf (E4-L-23): die bemaßte Zeichnung des Profilzylinders, auf Papier ohne Rahmen. */
+        visual={
+          <ImagePlaceholder
+            slot={{
+              motif: 'Messzeichnung Profilzylinder mit Maß A und Maß B',
+              ratio: '16/9',
+              visual: { generator: 'zylinder-mass', params: { bauform: 'profil-doppel', aussen: 30, innen: 40 } },
+            }}
+            frei
+          />
+        }
         actions={
-          <ButtonLink href={`/${ROUTE}/konfigurator`} size="lg">
+          <ButtonLink href={`/${ROUTE}/konfigurator`} size="lg" pfeil>
             Zylinder zusammenstellen
-            <ArrowRight size={18} aria-hidden />
           </ButtonLink>
         }
       >
-        <dl className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border pt-6 sm:grid-cols-4">
-          {facts.map((fact) => (
-            <div key={fact.label}>
-              <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+        {/* Schriftfeld: die Eckdaten wie auf einer Zeichnung bemaßt; mobil zweispaltig */}
+        <dl className="grid grid-cols-2 border-y border-border sm:grid-cols-4">
+          {facts.map((fact, index) => (
+            <div
+              key={fact.label}
+              className={cn(
+                'py-4 pr-3 sm:pr-4',
+                index % 2 === 1 && 'border-l border-border pl-3 sm:pl-4',
+                index >= 2 && 'border-t border-border sm:border-t-0',
+                index === 2 && 'sm:border-l sm:border-border sm:pl-4',
+              )}
+            >
+              <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 {fact.label}
               </dt>
-              <dd className="mt-1 font-display text-lg font-bold text-foreground">{fact.value}</dd>
+              <dd className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
+                {fact.value}
+              </dd>
             </div>
           ))}
         </dl>
       </PageHeader>
 
-      {/* Grundprinzip */}
+      {/* 01 Grundprinzip: Text links, Schließplan rechts */}
       <Section tight>
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-14">
-          <div>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+          <div className="lg:col-span-5">
             <SectionHeading
+              nummer="01"
               eyebrow="Einfach erklärt"
               title="Mehrere Zylinder, ein Schlüssel"
               lead={page?.intro}
@@ -176,7 +213,7 @@ export default async function CylinderOverviewPage() {
               </p>
             </div>
 
-            <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+            <ul className="mt-6 border-t border-border">
               {[
                 'Haus- und Wohnungstür mit demselben Schlüssel',
                 'Keller, Dachboden und Nebeneingang einbinden',
@@ -185,52 +222,64 @@ export default async function CylinderOverviewPage() {
               ].map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-2 rounded-lg border border-border bg-surface px-4 py-3 text-[14px] leading-relaxed text-foreground-muted"
+                  className="flex items-start gap-3 border-b border-border py-4 text-small text-foreground-muted"
                 >
-                  <KeyRound size={16} aria-hidden className="mt-0.5 shrink-0 text-primary" />
+                  <GlyphSchluessel size={18} className="mt-0.5 shrink-0 text-area-strong" />
                   {item}
                 </li>
               ))}
             </ul>
           </div>
 
-          <ImagePlaceholder
-            slot={{
-              motif: 'Schemazeichnung: drei Türen mit Zylindern, ein gemeinsamer Schlüssel',
-              ratio: '4/3',
-              note: 'Einfache technische Zeichnung, beschriftet. Kein Stockfoto.',
-            }}
-          />
+          <div className="lg:col-span-7">
+            <ImagePlaceholder
+              slot={{
+                motif: 'Schemazeichnung: drei Türen mit Zylindern, ein gemeinsamer Schlüssel',
+                ratio: '3/2',
+                note: 'Einfache technische Zeichnung, beschriftet. Kein Stockfoto.',
+                visual: { generator: 'schliessplan', params: { system: 'gleichschliessung', tueren: 3 } },
+              }}
+            />
+          </div>
         </div>
       </Section>
 
-      {/* Bauformen */}
+      {/* 02 Bauformen: Stückliste mit Fach-Icons */}
       <Section id="bauformen" tone="muted">
         <SectionHeading
+          nummer="02"
           eyebrow="Bauformen"
           title="Welche Bauform passt an welche Tür?"
           lead="Die Bauform bestimmt, wie der Zylinder bedient wird. Sie wählen sie im Konfigurator für jede Tür einzeln."
         />
 
-        <ul className="mt-8 grid gap-4 md:grid-cols-3">
-          {forms.map((form) => (
-            <li key={form.id}>
-              <Card className="flex h-full flex-col">
-                <CardBody className="flex flex-1 flex-col">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-[17px] font-bold text-foreground">{form.label}</h3>
-                    <InfoTip hint={form.info} />
+        <ul className="mt-10 border-t border-border">
+          {forms.map((form) => {
+            const Icon = BAUFORM_ICONS[form.id];
+            return (
+              <li
+                key={form.id}
+                className="grid gap-5 border-b border-border py-6 md:grid-cols-12 md:gap-gutter"
+              >
+                <div className="flex items-start gap-4 md:col-span-5">
+                  {Icon ? (
+                    <Icon size={40} className="mt-0.5 shrink-0 text-area-strong" />
+                  ) : (
+                    <BereichIcon area={ROUTE} size={40} className="mt-0.5 shrink-0 text-area-strong" />
+                  )}
+                  <div className="min-w-0">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="text-title-sm font-semibold text-foreground">{form.label}</h3>
+                      <InfoTip hint={form.info} />
+                    </div>
+                    <p className="mt-2 max-w-measure text-small text-foreground-muted">
+                      {form.description}
+                    </p>
                   </div>
+                </div>
 
-                  <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                    {form.description}
-                  </p>
-
-                  <div className="mt-4">
-                    <ImagePlaceholder slot={form.figure} />
-                  </div>
-
-                  <dl className="mt-4 space-y-2 border-t border-border pt-4 text-[13px]">
+                <div className="md:col-span-7">
+                  <dl className="space-y-2 text-small">
                     <div className="flex flex-wrap justify-between gap-x-4 gap-y-1">
                       <dt className="font-semibold text-foreground-muted">Abgefragte Maße</dt>
                       <dd className="text-right text-foreground">
@@ -241,83 +290,90 @@ export default async function CylinderOverviewPage() {
                     </div>
                     <div className="flex flex-wrap justify-between gap-x-4 gap-y-1">
                       <dt className="font-semibold text-foreground-muted">Möglicher Bereich</dt>
-                      <dd className="text-right text-foreground">
+                      <dd className="text-right font-mono tabular-nums text-foreground">
                         {formatMillimeter(form.minMm)} bis {formatMillimeter(form.maxMm)}
                       </dd>
                     </div>
                     <div className="flex flex-wrap justify-between gap-x-4 gap-y-1">
                       <dt className="font-semibold text-foreground-muted">Grundpreis</dt>
-                      <dd className="text-right text-foreground">
+                      <dd className="text-right font-mono tabular-nums text-foreground">
                         {formatCents(form.basePriceCents)}
                       </dd>
                     </div>
                   </dl>
 
-                  <p className="mt-3 text-[12px] leading-relaxed text-foreground-subtle">
+                  <p className="mt-4 max-w-measure text-caption text-foreground-muted">
                     Der Grundpreis gilt bis {formatMillimeter(form.baseLengthMm)} Gesamtlänge.
                     Darüber kommen {formatCents(form.lengthSurchargeCents)} je angefangene 5 mm
                     hinzu.
                   </p>
-                </CardBody>
-              </Card>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </Section>
+
+      {/* 03 Funktion: zwei Spalten durch eine Haarlinie ab md */}
+      <Section>
+        <SectionHeading
+          nummer="03"
+          eyebrow="Funktion"
+          title="Funktion des Zylinders"
+          lead="Zusätzlich zur Bauform legen Sie je Tür fest, wie sich der Zylinder verhält, wenn innen ein Schlüssel steckt. Nicht jede Funktion ist für jede Bauform verfügbar."
+        />
+
+        <ul className="mt-10 grid border-t border-border md:grid-cols-2">
+          {functions.map((fn, index) => (
+            <li
+              key={fn.id}
+              className={cn(
+                'border-b border-border py-6 md:py-8',
+                index % 2 === 0 ? 'md:pr-gutter' : 'md:border-l md:border-border md:pl-gutter',
+              )}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <p className="text-title-sm font-semibold text-foreground">{fn.label}</p>
+                <InfoTip hint={fn.info} />
+              </div>
+              <p className="mt-2 max-w-measure text-small text-foreground-muted">
+                {fn.description}
+              </p>
+              <p className="mt-3 flex flex-wrap gap-2">
+                {fn.forms.map((formId) => {
+                  const match = catalog.forms.find((f) => f.id === formId);
+                  return match ? (
+                    <Badge key={formId} tone="outline">
+                      {match.label}
+                    </Badge>
+                  ) : null;
+                })}
+              </p>
+              {fn.surchargeCents > 0 && (
+                <p className="mt-3 text-small text-foreground-muted">
+                  Aufpreis je Zylinder:{' '}
+                  <span className="font-mono tabular-nums text-foreground">
+                    {formatCents(fn.surchargeCents)}
+                  </span>
+                </p>
+              )}
             </li>
           ))}
         </ul>
-
-        {/* Funktionen */}
-        <div className="mt-10">
-          <h3 className="text-lg font-bold text-foreground">Funktion des Zylinders</h3>
-          <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-foreground-muted">
-            Zusätzlich zur Bauform legen Sie je Tür fest, wie sich der Zylinder verhält, wenn innen
-            ein Schlüssel steckt. Nicht jede Funktion ist für jede Bauform verfügbar.
-          </p>
-
-          <ul className="mt-5 grid gap-3 md:grid-cols-2">
-            {functions.map((fn) => (
-              <li key={fn.id}>
-                <Card className="h-full">
-                  <CardBody>
-                    <div className="flex items-start justify-between gap-3">
-                      <p className="text-[15px] font-bold text-foreground">{fn.label}</p>
-                      <InfoTip hint={fn.info} />
-                    </div>
-                    <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                      {fn.description}
-                    </p>
-                    <p className="mt-3 flex flex-wrap gap-2">
-                      {fn.forms.map((formId) => {
-                        const match = catalog.forms.find((f) => f.id === formId);
-                        return match ? (
-                          <Badge key={formId} tone="outline">
-                            {match.label}
-                          </Badge>
-                        ) : null;
-                      })}
-                    </p>
-                    {fn.surchargeCents > 0 && (
-                      <p className="mt-3 text-[13px] text-foreground-muted">
-                        Aufpreis je Zylinder: {formatCents(fn.surchargeCents)}
-                      </p>
-                    )}
-                  </CardBody>
-                </Card>
-              </li>
-            ))}
-          </ul>
-        </div>
       </Section>
 
-      {/* Messhilfe */}
-      <Section id="messen">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-14">
-          <div>
+      {/* 04 Messhilfe: nummerierte Schritte links, Messzeichnung rechts */}
+      <Section id="messen" tone="muted">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+          <div className="lg:col-span-5">
             <SectionHeading
+              nummer="04"
               eyebrow="Messhilfe"
               title={catalog.measuringInfo.title}
               lead={catalog.measuringInfo.body}
             />
 
-            <ol className="mt-7 space-y-4 border-l border-border pl-7">
+            <ol className="mt-7 border-t border-border">
               {[
                 {
                   title: 'Stulpschraube suchen',
@@ -336,17 +392,19 @@ export default async function CylinderOverviewPage() {
                   body: 'Türen desselben Gebäudes haben oft verschiedene Maße. Notieren Sie sie getrennt, bevor Sie den Konfigurator öffnen.',
                 },
               ].map((step, index) => (
-                <li key={step.title} className="relative">
+                <li key={step.title} className="flex items-start gap-4 border-b border-border py-5">
                   <span
                     aria-hidden
-                    className="absolute -left-[38px] flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface font-display text-xs font-bold text-primary"
+                    className="w-6 shrink-0 font-mono text-caption tabular-nums text-foreground-muted"
                   >
                     {index + 1}
                   </span>
-                  <p className="text-[15px] font-bold text-foreground">{step.title}</p>
-                  <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
-                    {step.body}
-                  </p>
+                  <div className="min-w-0">
+                    <p className="text-title-sm font-semibold text-foreground">{step.title}</p>
+                    <p className="mt-1 text-small text-foreground-muted">
+                      {step.body}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ol>
@@ -357,77 +415,101 @@ export default async function CylinderOverviewPage() {
               prüfen Sie die Maße deshalb vor dem Absenden noch einmal.
             </Alert>
 
-            <p className="mt-5 text-[14px]">
-              <Link
-                href="/ratgeber/zylinder-richtig-ausmessen"
-                className="inline-flex items-center gap-1.5 font-semibold text-primary hover:underline"
-              >
-                <Ruler size={15} aria-hidden />
-                Ausführliche Anleitung zum Ausmessen
-              </Link>
-            </p>
-          </div>
-
-          <div>
-            <ImagePlaceholder slot={catalog.measuringFigure} />
-            <div className="mt-4 flex items-start gap-3 rounded-lg border border-border bg-surface-muted p-4">
-              <Layers size={18} aria-hidden className="mt-0.5 shrink-0 text-primary" />
-              <p className="text-[13px] leading-relaxed text-foreground-muted">
+            <p className="mt-5 flex items-start gap-3 text-small text-foreground-muted">
+              <GlyphInfo size={18} className="mt-0.5 shrink-0 text-foreground-muted" />
+              <span>
                 Im Konfigurator wählen Sie Maß A und Maß B in Fünf-Millimeter-Schritten aus. Die
                 Zeichnung und der Messhinweis stehen dort direkt neben der Auswahl.
-              </p>
-            </div>
+              </span>
+            </p>
+
+            <Link
+              href="/ratgeber/zylinder-richtig-ausmessen"
+              className="mt-4 inline-flex min-h-touch items-center gap-2 text-small font-semibold text-primary hover:underline"
+            >
+              <GlyphLineal size={16} />
+              Ausführliche Anleitung zum Ausmessen
+            </Link>
+          </div>
+
+          <div className="lg:col-span-7">
+            <ImagePlaceholder slot={catalog.measuringFigure} />
           </div>
         </div>
       </Section>
 
-      {/* Bestellbeispiel */}
-      <Section id="bestellbeispiel" tone="muted" tight>
+      {/* 05 Bestellbeispiel: ab md Tabelle, darunter dieselben Daten als gestapelte Zeilen */}
+      <Section id="bestellbeispiel" tight>
         <SectionHeading
+          nummer="05"
           eyebrow="Beispiel"
           title="So sieht eine typische Bestellung aus"
           lead="Drei Türen, drei verschiedene Maße, eine gemeinsame Schließung. Die Anzahl der gemeinsamen Schlüssel legen Sie selbst fest."
         />
 
-        <div className="table-scroll mt-8">
-          <table className="w-full min-w-[34rem] border-collapse overflow-hidden rounded-lg border border-border bg-surface text-left">
-            <caption className="sr-only">
-              Beispiel für eine Bestellung mit drei gleichschließenden Zylindern
-            </caption>
-            <thead>
-              <tr className="border-b border-border bg-surface-muted">
-                <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-wider text-foreground-muted">
-                  Tür
-                </th>
-                <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-wider text-foreground-muted">
-                  Bauform
-                </th>
-                <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-wider text-foreground-muted">
-                  Maß A / Maß B
-                </th>
-                <th scope="col" className="px-4 py-3 text-xs font-bold uppercase tracking-wider text-foreground-muted">
-                  Schließung
-                </th>
+        <table className="mt-8 hidden w-full border-collapse overflow-hidden rounded-lg border border-border bg-surface text-left md:table">
+          <caption className="sr-only">
+            Beispiel für eine Bestellung mit drei gleichschließenden Zylindern
+          </caption>
+          <thead>
+            <tr className="border-b border-border bg-surface-muted">
+              <th scope="col" className="px-4 py-3 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                Tür
+              </th>
+              <th scope="col" className="px-4 py-3 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                Bauform
+              </th>
+              <th scope="col" className="px-4 py-3 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                Maß A / Maß B
+              </th>
+              <th scope="col" className="px-4 py-3 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                Schließung
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border">
+            {ORDER_EXAMPLE.map((row) => (
+              <tr key={row.position}>
+                <td className="px-4 py-3 text-body font-semibold text-foreground">
+                  {row.position}
+                </td>
+                <td className="px-4 py-3 text-body text-foreground-muted">{row.form}</td>
+                <td className="px-4 py-3 font-mono text-body tabular-nums text-foreground">
+                  {row.measure} mm
+                </td>
+                <td className="px-4 py-3 text-body text-foreground-muted">gleichschließend</td>
               </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {ORDER_EXAMPLE.map((row) => (
-                <tr key={row.position}>
-                  <td className="px-4 py-3 text-[15px] font-semibold text-foreground">
-                    {row.position}
-                  </td>
-                  <td className="px-4 py-3 text-[15px] text-foreground-muted">{row.form}</td>
-                  <td className="px-4 py-3 font-mono text-[15px] text-foreground">
-                    {row.measure} mm
-                  </td>
-                  <td className="px-4 py-3 text-[15px] text-foreground-muted">gleichschließend</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
 
-        <p className="mt-4 max-w-2xl text-[14px] leading-relaxed text-foreground-muted">
+        <dl className="mt-8 border-t border-border md:hidden">
+          {ORDER_EXAMPLE.map((row) => (
+            <div key={row.position} className="border-b border-border py-5">
+              <dt className="text-title-sm font-semibold text-foreground">{row.position}</dt>
+              <dd className="mt-3 text-small text-foreground-muted">
+                <span className="block font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Bauform
+                </span>
+                {row.form}
+              </dd>
+              <dd className="mt-2 font-mono text-small tabular-nums text-foreground">
+                <span className="block font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Maß A / Maß B
+                </span>
+                {row.measure} mm
+              </dd>
+              <dd className="mt-2 text-small text-foreground-muted">
+                <span className="block font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Schließung
+                </span>
+                gleichschließend
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <p className="mt-5 max-w-measure text-small text-foreground-muted">
           Alle drei Zylinder erhalten dieselbe Schließung. Dazu kommt die von Ihnen gewählte Anzahl
           gemeinsamer Schlüssel — {catalog.includedKeys} Schlüssel sind im Grundpreis enthalten,
           jeder weitere kostet {formatCents(catalog.keyPriceCents)}. Insgesamt sind bis zu{' '}
@@ -436,132 +518,141 @@ export default async function CylinderOverviewPage() {
         </p>
 
         <div className="mt-7">
-          <ButtonLink href={`/${ROUTE}/konfigurator`} size="lg">
+          <ButtonLink
+            href={`/${ROUTE}/konfigurator`}
+            size="lg"
+            pfeil
+            className="w-full justify-between text-left sm:w-auto"
+          >
             Eigene Zusammenstellung starten
-            <ArrowRight size={18} aria-hidden />
           </ButtonLink>
         </div>
       </Section>
 
-      {/* Schutz und Optionen */}
-      <Section tight>
+      {/* 06 Schutz und Optionen: Stückliste mit Preisen */}
+      <Section tone="muted" tight>
         <SectionHeading
+          nummer="06"
           eyebrow="Schutz und Optionen"
           title="Was Sie zusätzlich festlegen können"
           lead="Diese Optionen wählen Sie im dritten Schritt des Konfigurators aus. Jede Option ist einzeln abwählbar."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+        <ul className="mt-10 border-t border-border">
           {extras.map((extra) => (
-            <li key={extra.id}>
-              <Card className="h-full">
-                <CardBody>
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="text-[15px] font-bold text-foreground">{extra.label}</p>
-                    <InfoTip hint={extra.info} />
-                  </div>
-                  <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                    {extra.description}
-                  </p>
-                  <p className="mt-3 text-[13px] font-semibold text-foreground-muted">
-                    {formatCents(extra.priceCents)}{' '}
-                    {extra.unit === 'stueck' ? 'je Zylinder' : 'einmalig je Bestellung'}
-                  </p>
-                </CardBody>
-              </Card>
+            <li
+              key={extra.id}
+              className="grid gap-3 border-b border-border py-6 md:grid-cols-12 md:gap-gutter"
+            >
+              <div className="flex items-start justify-between gap-3 md:col-span-5">
+                <p className="text-title-sm font-semibold text-foreground">{extra.label}</p>
+                <InfoTip hint={extra.info} />
+              </div>
+              <p className="max-w-measure text-small text-foreground-muted md:col-span-4">
+                {extra.description}
+              </p>
+              <p className="text-small font-semibold text-foreground-muted md:col-span-3 md:text-right">
+                <span className="font-mono tabular-nums text-foreground">
+                  {formatCents(extra.priceCents)}
+                </span>{' '}
+                {extra.unit === 'stueck' ? 'je Zylinder' : 'einmalig je Bestellung'}
+              </p>
             </li>
           ))}
         </ul>
       </Section>
 
-      {/* Abgrenzung zur Schließanlage */}
-      <Section id="abgrenzung" tone="muted">
+      {/* 07 Abgrenzung: zwei Spalten durch eine Haarlinie */}
+      <Section id="abgrenzung">
         <SectionHeading
+          nummer="07"
           eyebrow="Abgrenzung"
           title="Gleichschließung oder Schließanlage?"
           lead="Beide Wege führen zu weniger Schlüsseln. Der Unterschied liegt darin, ob zwischen Personen unterschieden werden muss."
         />
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <Card>
-            <CardBody>
-              <h3 className="text-[17px] font-bold text-foreground">Gleichschließung</h3>
-              <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                Alle Zylinder haben dieselbe Schließung, alle Schlüssel öffnen alles. Passend für
-                Einfamilienhäuser, Wohnungen mit Nebenräumen, Garagen und kleine Betriebe, in denen
-                jede Person überall hinein darf.
-              </p>
-              <ul className="prose-sm24 mt-4">
-                <li>Ein Berechtigungsgrad für alle</li>
-                <li>Direkt im Konfigurator bestellbar</li>
-                <li>Erweiterbar nur, wenn die Schließung hinterlegt wird</li>
-              </ul>
-              <p className="mt-5">
-                <Link
-                  href={`/${ROUTE}/konfigurator`}
-                  className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-                >
-                  Zum Konfigurator
-                  <ArrowRight size={15} aria-hidden />
-                </Link>
-              </p>
-            </CardBody>
-          </Card>
+        <div className="mt-10 grid border-t border-border md:grid-cols-2">
+          <div className="border-b border-border py-8 md:border-b-0 md:pr-gutter">
+            <h3 className="text-title-sm font-semibold text-foreground">Gleichschließung</h3>
+            <p className="mt-2 max-w-measure text-small text-foreground-muted">
+              Alle Zylinder haben dieselbe Schließung, alle Schlüssel öffnen alles. Passend für
+              Einfamilienhäuser, Wohnungen mit Nebenräumen, Garagen und kleine Betriebe, in denen
+              jede Person überall hinein darf.
+            </p>
+            <ul className="prose-sm24 mt-4">
+              <li>Ein Berechtigungsgrad für alle</li>
+              <li>Direkt im Konfigurator bestellbar</li>
+              <li>Erweiterbar nur, wenn die Schließung hinterlegt wird</li>
+            </ul>
+            <Link
+              href={`/${ROUTE}/konfigurator`}
+              className="group mt-5 inline-flex min-h-touch items-center gap-2 text-small font-semibold text-primary hover:underline"
+            >
+              Zum Konfigurator
+              <GlyphPfeilRechts
+                size={16}
+                className="transition-transform duration-quick zeiger:group-hover:translate-x-1"
+              />
+            </Link>
+          </div>
 
-          <Card>
-            <CardBody>
-              <h3 className="text-[17px] font-bold text-foreground">Schließanlage</h3>
-              <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                Türen und Personen werden getrennt geplant: Wer darf welche Tür öffnen? Passend für
-                Mehrfamilienhäuser, Verwaltungen, Praxen und Betriebe mit mehreren Bereichen.
-              </p>
-              <ul className="prose-sm24 mt-4">
-                <li>Mehrere Berechtigungsgrade, zum Beispiel mit Hauptschlüssel</li>
-                <li>Erfassung über den Projektkonfigurator statt Direktkauf</li>
-                <li>Planung mit Schließplan und Angebot</li>
-              </ul>
-              <p className="mt-5">
-                <Link
-                  href="/schliessanlagen"
-                  className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-                >
-                  Zu den Schließanlagen
-                  <ArrowRight size={15} aria-hidden />
-                </Link>
-              </p>
-            </CardBody>
-          </Card>
+          <div className="py-8 md:border-l md:border-border md:pl-gutter">
+            <h3 className="text-title-sm font-semibold text-foreground">Schließanlage</h3>
+            <p className="mt-2 max-w-measure text-small text-foreground-muted">
+              Türen und Personen werden getrennt geplant: Wer darf welche Tür öffnen? Passend für
+              Mehrfamilienhäuser, Verwaltungen, Praxen und Betriebe mit mehreren Bereichen.
+            </p>
+            <ul className="prose-sm24 mt-4">
+              <li>Mehrere Berechtigungsgrade, zum Beispiel mit Hauptschlüssel</li>
+              <li>Erfassung über den Projektkonfigurator statt Direktkauf</li>
+              <li>Planung mit Schließplan und Angebot</li>
+            </ul>
+            <Link
+              href="/schliessanlagen"
+              className="group mt-5 inline-flex min-h-touch items-center gap-2 text-small font-semibold text-primary hover:underline"
+            >
+              Zu den Schließanlagen
+              <GlyphPfeilRechts
+                size={16}
+                className="transition-transform duration-quick zeiger:group-hover:translate-x-1"
+              />
+            </Link>
+          </div>
         </div>
       </Section>
 
-      {/* Fragen */}
-      <Section tight>
-        <SectionHeading eyebrow="Fragen und Antworten" title="Häufige Fragen zur Gleichschließung" />
+      {/* 08 Fragen */}
+      <Section tone="muted" tight>
+        <SectionHeading
+          nummer="08"
+          eyebrow="Fragen und Antworten"
+          title="Häufige Fragen zur Gleichschließung"
+        />
         <Accordion items={faq} className="mt-8" />
       </Section>
 
-      {/* Interne Verlinkung */}
-      <Section tone="muted" tight>
+      {/* 09 Weiterlesen: Stückliste, die ganze Zeile ist der Link */}
+      <Section tight>
         <SectionHeading
+          nummer="09"
           eyebrow="Weiterlesen"
           title="Passende Bereiche"
           lead="Wenn eine Gleichschließung nicht das Richtige ist, führen diese Wege weiter."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 border-t border-border">
           {relatedLinks.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
-                className="group flex h-full items-center justify-between gap-3 rounded-lg border border-border bg-surface px-5 py-4 transition-colors hover:border-primary"
+                className="group flex min-h-touch-lg items-center justify-between gap-4 py-5"
               >
-                <span className="text-[14px] font-semibold text-foreground group-hover:text-primary">
+                <span className="text-title-sm font-semibold text-foreground group-hover:text-primary">
                   {link.label}
                 </span>
-                <ArrowRight
-                  size={15}
-                  aria-hidden
-                  className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                <GlyphPfeilRechts
+                  size={18}
+                  className="shrink-0 text-foreground-muted transition-transform duration-quick zeiger:group-hover:translate-x-1"
                 />
               </Link>
             </li>

@@ -3,24 +3,23 @@ import Link from 'next/link';
 import type { ReactElement } from 'react';
 
 import { getPageContent, getSettings, getVehicleMakes } from '@/lib/data';
-import type { InfoHint } from '@/lib/types';
+import type { InfoHint, KeyKind } from '@/lib/types';
 import { formatCents } from '@/lib/format';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
-import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
-import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
-import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
-import { SchluesselartenReihe } from '@/components/autoschluessel/schluesselarten-reihe';
+import { KEY_KIND_HINT, ON_SITE_HINT, keyKindDescription, keyKindLabel } from '@/components/autoschluessel/key-kinds';
+import { SCHLUESSELARTEN_REIHE, SchluesselartenReihe } from '@/components/autoschluessel/schluesselarten-reihe';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconReparaturAustausch } from '@/components/visual/icons/reparatur-austausch';
 import { IconSchluesselKopieren } from '@/components/visual/icons/schluessel-kopieren';
 import { IconSchluesselProgrammieren } from '@/components/visual/icons/schluessel-programmieren';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 const ROUTE = 'autoschluessel';
@@ -216,6 +215,9 @@ const FAQ = [
   },
 ];
 
+/** Begriffe der Schlüsselarten-Liste: die vier Bauformen, danach Keyless als Zusatz des Smart Key. */
+const SCHLUESSELARTEN_BEGRIFFE: KeyKind[] = [...SCHLUESSELARTEN_REIHE.map(({ art }) => art), 'keyless'];
+
 /** Pfeil, der bei feinem Zeiger auf Hover der Gruppe nach rechts rückt (B-06). */
 function Weiter({ size = 18, className }: { size?: number; className?: string }) {
   return (
@@ -273,16 +275,19 @@ export default async function AutoschluesselHubPage() {
         })}
       />
 
-      {/* Kopf: Schriftfeld mit den Eckdaten, in zwei Spalten auf dem Telefon, vier ab 640 px */}
+      {/* Kopf mit Blickfang (7/5): die vier Schlüsselarten als Zeichnungen, Schriftfeld mit den Eckdaten */}
       <PageHeader
         bereich="autoschluessel"
         eyebrow="Themenwelt Autoschlüssel"
         title={page?.headline ?? 'Autoschlüssel'}
         lead={page?.subline ?? 'Nachmachen, programmieren, reparieren — mit klarem Ablauf und festem Termin.'}
         crumbs={[{ href: '/autoschluessel', label: 'Autoschlüssel' }]}
+        visual={<SchluesselartenReihe variante="kopf" />}
         actions={
           <ButtonLink href="/autoschluessel/anfrage" pfeil>
-            Fahrzeug auswählen und Termin starten
+            {/* Telefon: Kurzlaut, damit der Knopf einzeilig bleibt */}
+            <span className="sm:hidden">Termin starten</span>
+            <span className="hidden sm:inline">Fahrzeug auswählen und Termin starten</span>
           </ButtonLink>
         }
       >
@@ -301,7 +306,7 @@ export default async function AutoschluesselHubPage() {
                 index > 0 && 'sm:border-l sm:pl-4',
               )}
             >
-              <dt className="font-mono text-caption uppercase tracking-label text-foreground-subtle max-sm:tracking-label-eng">
+              <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng">
                 {feld.label}
               </dt>
               <dd className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
@@ -312,55 +317,64 @@ export default async function AutoschluesselHubPage() {
         </dl>
       </PageHeader>
 
-      {/* Schlüsselarten: großer Moment (B-21), ein Zeichnungsblatt mit vier Ansichten */}
+      {/* Abschnitt 01: Einleitung zu den Schlüsselarten, danach die Begriffsliste ohne zweite Zeichnung */}
       <Section id="schluesselarten" labelledBy="schluesselarten-titel">
         <SectionHeading
           id="schluesselarten-titel"
           nummer="01"
           eyebrow="Schlüsselarten"
-          title={KEY_KIND_HINT.title}
-          lead={KEY_KIND_HINT.body}
+          title="Worum es in diesem Bereich geht"
         />
-        <SchluesselartenReihe className="mt-8" />
-      </Section>
+        <div className="prose-sm24 mt-6 max-w-measure">
+          <p>
+            {page?.intro
+              ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder '
+                + 'Preisrahmen. Erst dann buchen Sie einen Termin.'}
+          </p>
+          <p>
+            Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem
+            mechanischen Bart und der Elektronik. Für Ihren Auftrag ist entscheidend, welcher der
+            beiden Teile bearbeitet werden muss — davon hängen Aufwand, Termin und Preis ab.
+          </p>
+          <p>
+            Die folgenden Begriffe führen Sie zu der Seite, die Ihren Fall beschreibt. Wenn Sie
+            unsicher sind, beginnen Sie mit dem geführten Ablauf: Dort fragen wir Schritt für
+            Schritt genau die Angaben ab, die für Ihr Fahrzeug nötig sind.
+          </p>
+        </div>
 
-      {/* Einordnung */}
-      <Section>
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-          <div className="lg:col-span-7">
-            <SectionHeading title="Worum es in diesem Bereich geht" />
-            <div className="prose-sm24 mt-5">
-              <p>
-                {page?.intro
-                  ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder '
-                    + 'Preisrahmen. Erst dann buchen Sie einen Termin.'}
-              </p>
-              <p>
-                Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem
-                mechanischen Bart und der Elektronik. Für Ihren Auftrag ist entscheidend, welcher der
-                beiden Teile bearbeitet werden muss — davon hängen Aufwand, Termin und Preis ab.
-              </p>
-              <p>
-                Die folgenden Begriffe führen Sie zu der Seite, die Ihren Fall beschreibt. Wenn Sie
-                unsicher sind, beginnen Sie mit dem geführten Ablauf: Dort fragen wir Schritt für
-                Schritt genau die Angaben ab, die für Ihr Fahrzeug nötig sind.
-              </p>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5">
-            <ImagePlaceholder
-              slot={{
-                motif: 'Werkstattfoto: Arbeitsplatz mit Schlüsselfräse und Diagnosegerät',
-                ratio: '4/3',
-                note: 'Eigene Aufnahme aus dem Betrieb. Kein Stockfoto.',
-              }}
-            />
-          </div>
+        <div className="mt-14">
+          <h3 className="text-title-sm font-semibold text-foreground">{KEY_KIND_HINT.title}</h3>
+          <p className="mt-2 max-w-measure text-body text-foreground-muted">{KEY_KIND_HINT.body}</p>
+          <dl className="mt-6 border-t border-border">
+            {SCHLUESSELARTEN_BEGRIFFE.map((art) => (
+              <div
+                key={art}
+                className="grid gap-x-6 gap-y-1 border-b border-border py-5 sm:grid-cols-12"
+              >
+                <dt
+                  className={cn(
+                    'font-semibold text-foreground',
+                    art === 'keyless' ? 'text-body sm:col-span-8 sm:col-start-5' : 'text-title-sm sm:col-span-4',
+                  )}
+                >
+                  {keyKindLabel(art)}
+                </dt>
+                <dd
+                  className={cn(
+                    'max-w-measure text-small text-foreground-muted',
+                    art === 'keyless' ? 'sm:col-span-8 sm:col-start-5' : 'sm:col-span-8',
+                  )}
+                >
+                  {keyKindDescription(art)}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </Section>
 
-      {/* Leistungsbegriffe als Begriffsliste mit Haarlinien, je Zeile ein Zwölfer-Raster */}
+      {/* Leistungsbegriffe als Begriffsliste mit Haarlinien; die ganze Zeile ist der Link */}
       <Section tone="muted" id="leistungen">
         <SectionHeading
           nummer="02"
@@ -384,25 +398,28 @@ export default async function AutoschluesselHubPage() {
 
                 <ul className="mt-5 border-t border-border">
                   {group.topics.map((topic) => (
-                    <li key={topic.term} className="border-b border-border">
-                      {/* Telefon: Pfeil rechts neben Begriff und Erklärung statt eigener Zeile; ab md drei Spalten */}
+                    <li
+                      key={topic.term}
+                      className="group relative border-b border-border transition-colors duration-quick hover:border-primary"
+                    >
+                      {/* Telefon: Pfeil rechts neben Begriff und Erklärung; ab md drei Spalten */}
                       <div className="grid grid-cols-12 gap-x-3 gap-y-2 py-4 md:items-start md:gap-4 md:py-5">
-                        <div className="col-span-10 col-start-1 row-start-1 flex items-start justify-between gap-3 md:col-span-4">
+                        <div className="col-span-10 col-start-1 row-start-1 flex items-center md:col-span-4">
                           <h4 className="text-body font-semibold text-foreground">{topic.term}</h4>
-                          {topic.hint && <InfoTip hint={topic.hint} className="shrink-0" />}
+                          {topic.hint && <InfoTip hint={topic.hint} className="relative z-raised ml-1.5" />}
                         </div>
                         <p className="col-span-10 col-start-1 row-start-2 text-small text-foreground-muted md:col-span-6 md:col-start-5 md:row-start-1">
                           {topic.body}
                         </p>
-                        <Link
-                          href={topic.href}
-                          className="group col-span-2 col-start-11 row-span-2 row-start-1 inline-flex min-h-touch min-w-touch items-center justify-center gap-1.5 self-center justify-self-end text-small font-semibold text-primary md:row-span-1 md:-mt-2.5 md:min-w-0 md:self-start"
-                        >
-                          <span className="sr-only md:not-sr-only">Zur Seite</span>
-                          <Weiter size={16} />
-                          <span className="sr-only">{topic.term}</span>
-                        </Link>
+                        <Weiter
+                          size={18}
+                          className="col-span-2 col-start-11 row-span-2 row-start-1 self-center justify-self-end md:col-span-1 md:col-start-12 md:row-span-1 md:row-start-1 md:self-start md:pt-1"
+                        />
                       </div>
+                      {/* Die ganze Zeile ist der Link; der Begriff trägt die Bedeutung. */}
+                      <Link href={topic.href} className="absolute inset-0">
+                        <span className="sr-only">{topic.term}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -415,7 +432,7 @@ export default async function AutoschluesselHubPage() {
       {/* Ablauf in fünf Schritten: Fortschritt läuft mit dem Scrollen (B-03) */}
       <Section tone="sunken" id="ablauf">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
-          <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
+          <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-start">
             <SectionHeading
               nummer="03"
               eyebrow="Ablauf"
@@ -430,16 +447,9 @@ export default async function AutoschluesselHubPage() {
                 Erst Fahrzeug nachschlagen
               </ButtonLink>
             </div>
-
-            <Alert tone="info" title="Anzahlung und Vorlauf" className="mt-7">
-              Die Anzahlung beträgt standardmäßig {deposit} und wird vollständig auf den Gesamtpreis
-              angerechnet. Der Vorlauf von etwa {leadDays} Tagen entsteht durch die Beschaffung des
-              passenden Schlüssels. Für einzelne Fahrzeuge und Leistungen können abweichende Werte
-              gelten — diese sehen Sie im Ablauf, bevor Sie etwas verbindlich buchen.
-            </Alert>
           </div>
 
-          <ol className="relative lg:col-span-7">
+          <ol className="relative lg:col-span-7 lg:col-start-6 lg:row-start-1">
             {/* Schiene und Fortschritt: der Strich füllt sich, während die Schritte vorbeiziehen */}
             <span aria-hidden className="absolute bottom-6 left-5 top-6 w-px bg-border-strong" />
             <span aria-hidden className="sm24-scrub-y absolute bottom-6 left-5 top-6 w-px bg-area" />
@@ -458,6 +468,22 @@ export default async function AutoschluesselHubPage() {
               </li>
             ))}
           </ol>
+
+          {/* Anzahlung und Vorlauf: Fläche mit Haarlinie, unter den Schritten (mobil nach Schritt 5) */}
+          <div className="flex gap-3 rounded-lg border border-border bg-surface p-5 lg:col-span-7 lg:col-start-6 lg:row-start-2">
+            <GlyphInfo size={18} className="mt-0.5 shrink-0 text-foreground-muted" />
+            <div className="min-w-0 text-small leading-relaxed">
+              <p className="mb-1 font-semibold text-foreground">Anzahlung und Vorlauf</p>
+              <p className="text-foreground-muted">
+                Die Anzahlung beträgt standardmäßig{' '}
+                <span className="font-mono font-semibold tabular-nums text-foreground">{deposit}</span> und wird
+                vollständig auf den Gesamtpreis angerechnet. Der Vorlauf von etwa{' '}
+                <span className="font-mono font-semibold tabular-nums text-foreground">{leadDays} Tagen</span>{' '}
+                entsteht durch die Beschaffung des passenden Schlüssels. Für einzelne Fahrzeuge und Leistungen
+                können abweichende Werte gelten — diese sehen Sie im Ablauf, bevor Sie etwas verbindlich buchen.
+              </p>
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -473,7 +499,7 @@ export default async function AutoschluesselHubPage() {
             />
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <ButtonLink href="/autoschluessel/marken" pfeil>
-                Alle Marken ansehen
+                Alle Marken
               </ButtonLink>
             </div>
           </div>
@@ -483,7 +509,7 @@ export default async function AutoschluesselHubPage() {
               <li key={make.id}>
                 <Link
                   href={`/autoschluessel/marken/${make.slug}`}
-                  className="flex min-h-touch items-center justify-between gap-2 rounded-lg border border-border bg-surface px-3.5 py-2.5 text-small font-semibold text-foreground transition-colors duration-quick hover:border-primary hover:text-primary"
+                  className="flex min-h-touch items-center justify-between gap-2 whitespace-nowrap rounded-lg border border-border bg-surface px-3.5 py-2.5 text-small font-semibold text-foreground transition-colors duration-quick hover:border-primary hover:text-primary"
                 >
                   {make.name}
                   <GlyphPfeilRechts size={16} className="shrink-0 text-foreground-subtle" />
@@ -505,13 +531,15 @@ export default async function AutoschluesselHubPage() {
         <Accordion items={page?.faq?.length ? page.faq : FAQ} className="mt-8" />
       </Section>
 
-      {/* Weiterführend */}
+      {/* Weiterführend als Stückliste mit Haarlinien; die ganze Zeile ist der Link */}
       <Section tone="muted" tight>
         <SectionHeading
+          nummer="06"
+          eyebrow="Weiterlesen"
           title="Weiterführende Seiten"
           lead="Passend zum Thema Autoschlüssel."
         />
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-6 grid border-t border-border md:grid-cols-2 md:gap-x-gutter">
           {[
             { href: '/autoschluessel/anfrage', label: 'Geführter Ablauf', description: 'Fahrzeug wählen, Preis erhalten, Termin buchen' },
             { href: '/autoschluessel/marken', label: 'Marken und Modelle', description: 'Schlüsselarten je Fahrzeug nachschlagen' },
@@ -520,17 +548,17 @@ export default async function AutoschluesselHubPage() {
             { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage', description: 'Für Schlüssel ohne Fahrzeugbezug' },
             { href: '/service-und-termin/terminstatus', label: 'Terminstatus', description: 'Stand Ihres Vorgangs abrufen' },
           ].map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="group flex h-full min-h-touch flex-col rounded-lg border border-border bg-surface p-4 transition-colors duration-quick hover:border-primary"
-              >
-                <span className="text-body font-semibold text-foreground group-hover:text-primary">
-                  {link.label}
-                </span>
-                <span className="mt-1 text-small text-foreground-muted">
-                  {link.description}
-                </span>
+            <li
+              key={link.href}
+              className="group relative flex items-center justify-between gap-4 border-b border-border py-5 transition-colors duration-quick hover:border-primary"
+            >
+              <div className="min-w-0">
+                <h3 className="text-body font-semibold text-foreground">{link.label}</h3>
+                <p className="mt-1 text-small text-foreground-muted">{link.description}</p>
+              </div>
+              <Weiter size={18} />
+              <Link href={link.href} className="absolute inset-0">
+                <span className="sr-only">{link.label}</span>
               </Link>
             </li>
           ))}

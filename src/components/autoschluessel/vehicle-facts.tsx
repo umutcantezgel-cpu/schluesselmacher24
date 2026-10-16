@@ -1,5 +1,7 @@
 import type { VehicleModel } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
+import { InfoTip } from '@/components/ui/info-tip';
+import { ON_SITE_HINT } from './key-kinds';
 
 /* ==========================================================================
    Darstellung der Fahrzeugangaben aus dem Datensatz.
@@ -18,12 +20,24 @@ export function formatModelYears(model: Pick<VehicleModel, 'yearFrom' | 'yearTo'
   return model.yearTo ? `${model.yearFrom}–${model.yearTo}` : `ab ${model.yearFrom}`;
 }
 
-/** Kennzeichnung, ob das Fahrzeug zum Anlernen vor Ort sein muss. */
+/** Kennzeichnung, ob das Fahrzeug zum Anlernen vor Ort sein muss; die Erklärung sitzt im Chip. */
 export function OnSiteBadge({ required }: { required: boolean }) {
   return required ? (
-    <Badge tone="primary">Fahrzeug vor Ort nötig</Badge>
+    <Badge tone="primary">
+      Fahrzeug vor Ort nötig
+      <InfoTip hint={ON_SITE_HINT} className="-my-1 -mr-1" />
+    </Badge>
   ) : (
     <Badge tone="neutral">Ohne Fahrzeug möglich</Badge>
+  );
+}
+
+/** Baujahre als Mono-Feld in der Chipzeile des Kopfes. */
+export function BaujahrFeld({ years }: { years: string }) {
+  return (
+    <span className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+      Baujahre · <span className="normal-case tabular-nums text-foreground">{years}</span>
+    </span>
   );
 }
 

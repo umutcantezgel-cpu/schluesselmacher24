@@ -15,6 +15,7 @@ import { Field } from '@/components/forms/field';
 import { QuantityInput, TextInput } from '@/components/forms/controls';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphWarenkorb } from '@/components/visual/glyphen/warenkorb';
 import { LiveSchluessel } from '@/components/visual/interaktiv/live-schluessel';
 
@@ -329,18 +330,21 @@ export function BestellFormular({ line }: BestellFormularProps) {
         </div>
 
         <div>
+          {!canSubmit && (
+            <p className="mb-3 flex items-start gap-2 text-small leading-snug text-foreground-muted">
+              <GlyphInfo size={16} className="mt-0.5 shrink-0" />
+              <span>
+                {!codeValid
+                  ? 'Bitte tragen Sie zuerst den Schlüsselcode ein.'
+                  : 'Bitte fügen Sie das erforderliche Foto hinzu.'}
+              </span>
+            </p>
+          )}
+
           <Button type="button" size="lg" fullWidth onClick={handleAdd} disabled={!canSubmit}>
             <GlyphWarenkorb size={18} />
             In den Warenkorb
           </Button>
-
-          {!canSubmit && (
-            <p className="mt-2 text-center text-small text-foreground-muted">
-              {!codeValid
-                ? 'Bitte tragen Sie zuerst den Schlüsselcode ein.'
-                : 'Bitte fügen Sie das erforderliche Foto hinzu.'}
-            </p>
-          )}
         </div>
 
         {/* Bestätigung */}
@@ -369,7 +373,7 @@ export function BestellFormular({ line }: BestellFormularProps) {
           Widerrufsrecht eingeschränkt sein — Einzelheiten stehen unter{' '}
           <Link
             href="/rechtliches/widerruf"
-            className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
+            className="inline py-1 -my-1 font-semibold text-primary hover:underline"
           >
             Widerruf und Rückgabe
           </Link>
