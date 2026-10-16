@@ -626,3 +626,64 @@
   background-position: right 0.75rem center;
   background-repeat: no-repeat;
 }
+
+/* ==========================================================================
+   Druckansicht (Kür K-05): Bestellbestätigung, Vorgangsnummern und
+   Zusammenfassungen drucken ohne Kopf, Fuß, Aktionsleisten und Bewegung –
+   auf weißem Papier, ohne klebende Spalten, Abschnitte nicht zerrissen.
+   `data-nicht-drucken` blendet einzelne Bedienelemente aus.
+   ========================================================================== */
+@media print {
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  body > header,
+  body > footer,
+  [data-aktionsleiste],
+  .sm24-ablauf-leiste,
+  nav[aria-label='Brotkrumennavigation'],
+  [data-nicht-drucken] {
+    display: none !important;
+  }
+
+  body {
+    background: hsl(var(--surface));
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
+
+  .shell {
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  .sticky,
+  [class*='lg:sticky'] {
+    position: static !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  section,
+  dl > div,
+  li,
+  tr,
+  figure {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+}

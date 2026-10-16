@@ -435,3 +435,9 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - Live-Schlüssel vor der Eingabe als Rohling.
   - Einheitliche Summenfarbe und ein Warenkorbzeichen.
 - **Texte:** Floskeln und Abschnittstitel, die die Prüfer bemängeln („Wobei können wir helfen?“, „Präzise Handwerkskunst …“), sind Inhalt. Sie kommen als Vorschläge in TEXTVORSCHLAEGE.md. Mikrotexte („Zur Seite“, „Ansehen“, „Leistungsdetails“, „… erkunden“) ändern die Befundpakete direkt.
+
+## D-038 · E5-L-28: Lesefortschritt und Ablaufzeichnung im Ratgeber, Druckansicht nur über CSS
+- **Anlass:** Sichtabnahme E4-L-23, H12 Ratgeber (5,7): Kopfgrafik ohne Bezug, keine Orientierung beim Lesen. Kür K-04 (Lesefortschritt) und K-05 (Druckansicht) stehen ohnehin im Plan.
+- **Lesefortschritt (B-24, K-04):** reine CSS-Szene über benannte Scroll-Timelines (`timeline-scope`, `view-timeline-name`, `view-timeline-inset: 40% 59.9%` als Leselinie). Im Browser geprüft: genau eine Nummer ist hervorgehoben, die Leiste wächst mit dem Artikel (0 → 1). Ohne Unterstützung oder bei reduzierter Bewegung gibt es weder Leiste noch Hervorhebung. Kein JavaScript, höchstens sechs Abschnitte.
+- **Ablaufzeichnung (B-23):** neuer Generator `ablauf` (E4-GRAFIKER-10). Die Schritte kommen nur aus vorhandenem Text: `ablaufAusText` liest „erst …, dann …“ mit zwei bis vier einzelnen Wörtern, sonst bleibt die Fachgrafik zum Motiv. So zeichnet die Seite nichts, was der Text nicht sagt.
+- **Druckansicht (K-05):** nur `@media print` in `globals.css` (Kopf, Fuß, Aktions- und Ablaufleiste, Brotkrumen und `[data-nicht-drucken]` entfallen; keine klebenden Spalten, keine Bewegung, Abschnitte ungeteilt). Kein eigener Druckknopf: Bestellseite und Bestätigungen stehen unter dem Logikwächter, und ein Knopf bräuchte einen Import außerhalb von `@/components/visual/` und neues Client-JavaScript. Drucken geht über den Browser. Geprüft mit Druckdarstellung in Chromium (Ratgeber, Warenkorb).

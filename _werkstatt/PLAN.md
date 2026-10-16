@@ -122,8 +122,8 @@ Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabna
 | K-01 | Stiftzuhaltungs-Szene (neuer Generator, Stifte richten sich beim Scrollen aus) auf `/gleichschliessende-zylinder` | G/Haiku + L | `generators/stiftzuhaltung.tsx` + Test, Seite | Nordstern |
 | K-02 | `zutritt-signal` im Kopf von `/elektronische-zutrittsloesungen` | B/Haiku | Seite | Nordstern |
 | K-03 | Restliche Bildstellen mit Fachgrafik | B/Haiku | betroffene Seiten | Nordstern |
-| K-04 | Ratgeber-Lesefortschritt (nur CSS, Scroll-Timeline) | B/Haiku | Ratgeber-Seite | Nordstern |
-| K-05 | Druckansicht Bestell- und Vorgangsbestätigung | B/Haiku | `globals.css` (über Orchestrator), Seiten | Nordstern |
+| K-04 | Ratgeber-Lesefortschritt (nur CSS, Scroll-Timeline) | B/Haiku | Ratgeber-Seite | Nordstern | E5-L-28 (Klassen), Einbau E5-BEFUND-H12 |
+| K-05 | Druckansicht Bestell- und Vorgangsbestätigung | B/Haiku | `globals.css` (über Orchestrator), Seiten | Nordstern | E5-L-28 (CSS) |
 | K-06 | OG-Bilder je Bereich über `next/og` mit lokaler Schrift | L/Opus | `opengraph-image.tsx` je Bereich | Nordstern |
 
 ## Etappen, Wellen, kritischer Pfad
