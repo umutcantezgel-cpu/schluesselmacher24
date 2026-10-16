@@ -1,0 +1,11 @@
+# llms.txt - Codebase DNA & Architecture
+
+**Framework**: Next.js 16+
+**React**: 19.2+
+**Styling**: Tailwind CSS v4 (OKLCH)
+**Typography**: Swiss Modernist
+
+## Audit Goals
+- Transform all pages to >800 words if they are thin content.
+- Ensure semantic headings, strict typing, modern RSC patterns, etc.
+- See .jules/revolution-plan.json for blueprint details.
