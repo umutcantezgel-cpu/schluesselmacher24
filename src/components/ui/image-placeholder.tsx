@@ -114,16 +114,18 @@ export function ImagePlaceholder({
 
   const flaeche = frei ? '' : 'rounded-lg border border-border bg-surface';
   const ref = compact ? null : (slot.visual ?? visualFuerMotiv(slot.motif));
-  /* Unter 640 px die schmale Fassung mit größerer Schrift, wo der Generator eine hat
-     (nicht zusammen mit einem Ausschnitt, der genau ein SVG beschneidet). */
-  const schmal = ref && !ausschnitt ? schmaleFassung(ref) : null;
+  /* Unter 640 px die schmale Fassung mit größerer Schrift, wo der Generator eine hat. Sie hat
+     Vorrang vor einem Ausschnitt: Ein Ausschnitt hilft breiten Bäumen nicht, die schmale
+     Fassung setzt die Schrift sicher lesbar. Der Ausschnitt gilt dann nicht. */
+  const schmal = ref ? schmaleFassung(ref) : null;
+  const zuschnitt = schmal ? undefined : ausschnitt;
   /* Der Titel kommt vom Generator selbst (sachlich), nicht aus dem Fotomotiv. */
   const visual = ref ? renderVisual(ref, '', cn('absolute inset-0 h-full w-full', schmal && 'hidden sm:block')) : null;
   if (visual) {
     return (
       <div
-        className={cn('relative w-full overflow-hidden', flaeche, ratios[slot.ratio], ausschnitt && 'sm24-ausschnitt', className)}
-        style={ausschnitt ? ausschnittStil(ausschnitt) : undefined}
+        className={cn('relative w-full overflow-hidden', flaeche, ratios[slot.ratio], zuschnitt && 'sm24-ausschnitt', className)}
+        style={zuschnitt ? ausschnittStil(zuschnitt) : undefined}
       >
         {schmal && renderVisual(schmal, '', 'absolute inset-0 h-full w-full sm:hidden')}
         {visual}

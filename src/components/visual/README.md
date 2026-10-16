@@ -157,9 +157,9 @@ Beim `smart-key` gibt es keinen Bart; `funk` und `smart-key` zeigen Funkbögen.
 | `knaufseite` | `innen` · `aussen` (nur bei `knauf`) | `innen` |
 | `format` | `breit` (480 × 270) · `schmal` (300 × 220, Schrift 16/15 für Telefone) | `breit` |
 
-Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende, maßstäblich. `zylinder-mass` steht in `SCHMALES_FORMAT` der Registry; `schmaleFassung(ref)` liefert den Verweis mit `format: 'schmal'`.
+Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende, maßstäblich. `zylinder-mass` und `schliessplan` stehen in `SCHMALES_FORMAT` der Registry (die schmale Fassung hat in `ImagePlaceholder` Vorrang vor einem `ausschnitt`); `schmaleFassung(ref)` liefert den Verweis mit `format: 'schmal'`.
 
-### `schliessplan` — Hierarchie einer Schließanlage (`viewBox 0 0 480 300`)
+### `schliessplan` — Hierarchie einer Schließanlage (`viewBox 0 0 480 300`; schmal `0 0 360 h`, Höhe nach Ebenen)
 
 | Parameter | Werte | Standard |
 |---|---|---|
@@ -168,6 +168,8 @@ Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende, maßstäblic
 | `tueren` | 2–8 Türen (bei `zentral`: Wohnungstüren) | `4` |
 | `markiert` | Kennung eines Schlüssels: `wurzel` · `g1`…`g4` (HGS) · `g1.1`… (GS) · `e1`…`e8` (ES); Groß-/Kleinschreibung egal | ohne Markierung |
 | `tuer` | Kennung einer Tür: `t1`…`t8`, Zentraltüren `z1` · `z2` | ohne Markierung |
+| `reserve` | 0–2 freie Plätze (gestrichelter ES mit Tür, Beschriftung „frei“; nur `haupt` und `generalhaupt`, an der letzten Gruppe); nicht wählbar | `0` |
+| `format` | `breit` · `schmal` (360 Einheiten breit, Schrift 12, Kürzel ohne Symbol; nie verkleinert) | `breit` |
 
 - `markiert` hat Vorrang vor `tuer`. Unbekannte Kennungen bleiben ohne Wirkung.
 - Markierter Schlüssel: dieser Schlüssel, die Türen, die er schließt, und die Kanten seines Weges

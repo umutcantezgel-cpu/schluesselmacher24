@@ -38,7 +38,8 @@ describe('ImagePlaceholder – Rangfolge ohne Foto', () => {
     expect(html.match(/<svg/g)).toHaveLength(2);
     expect(html).toMatch(/<svg[^>]*viewBox="0 0 300 220"[^>]*class="[^"]*sm:hidden/);
     expect(html).toMatch(/<svg[^>]*viewBox="0 0 480 270"[^>]*class="[^"]*hidden sm:block/);
-    const ohne = zeichne({ motif: 'Beliebig', ratio: '4/3', visual: { generator: 'schliessplan', params: {} } });
+    // Alt: Schließplan als Beispiel ohne schmales Format; seit E4-GRAFIKER-09 hat er eines.
+    const ohne = zeichne({ motif: 'Beliebig', ratio: '4/3', visual: { generator: 'profilschnitt', params: {} } });
     expect(ohne.match(/<svg/g)).toHaveLength(1);
   });
 
@@ -81,6 +82,14 @@ describe('ImagePlaceholder – Ausschnitt für kleine Breiten', () => {
     );
     expect(icon).not.toContain('sm24-ausschnitt');
     expect(icon).not.toContain('--aus-x');
+  });
+
+  it('nimmt für Generatoren mit schmalem Format die schmale Fassung statt des Ausschnitts', () => {
+    const plan: ImageSlot = { motif: 'Beliebig', ratio: '4/3', visual: { generator: 'schliessplan', params: { system: 'generalhaupt' } } };
+    const html = renderToStaticMarkup(<ImagePlaceholder slot={plan} ausschnitt={ausschnitt} />);
+    expect(html).not.toContain('sm24-ausschnitt');
+    expect(html.match(/<svg/g)).toHaveLength(2);
+    expect(html).toMatch(/<svg[^>]*class="[^"]*sm:hidden/);
   });
 
   it('ändert ohne Ausschnitt nichts am Markup', () => {

@@ -46,7 +46,7 @@ const REGISTRY: Record<string, VisualComponent> = {
  * Generatoren mit dem Parameter `format: 'schmal'`: eigene, kleinere Fläche mit
  * größerer Schrift für Telefonbreiten. Bildflächen zeigen sie unter 640 px.
  */
-const SCHMALES_FORMAT: ReadonlySet<string> = new Set(['zylinder-mass']);
+const SCHMALES_FORMAT: ReadonlySet<string> = new Set(['schliessplan', 'zylinder-mass']);
 
 /** Die schmale Fassung zu `ref`, sofern der Generator eine hat; sonst `null`. */
 export function schmaleFassung(ref: VisualRef): VisualRef | null {

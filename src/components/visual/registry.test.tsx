@@ -97,7 +97,8 @@ describe('Registry', () => {
       params: { aussen: 35, format: 'schmal' },
     });
     expect(schmaleFassung({ generator: 'zylinder-mass' })?.params).toEqual({ format: 'schmal' });
-    expect(schmaleFassung({ generator: 'schliessplan', params: {} })).toBeNull();
+    expect(schmaleFassung({ generator: 'schliessplan', params: { system: 'haupt' } })?.params).toEqual({ system: 'haupt', format: 'schmal' });
+    expect(schmaleFassung({ generator: 'profilschnitt', params: {} })).toBeNull();
     expect(schmaleFassung({ generator: 'gibt-es-nicht' })).toBeNull();
   });
 
