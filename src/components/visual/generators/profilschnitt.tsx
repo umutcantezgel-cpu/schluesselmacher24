@@ -59,7 +59,8 @@ export const FRAESER_ABHEBEN = { x: 12, y: -16 } as const;
 
 /** Volle Zeichenfläche und schmaler Ausschnitt (Halm mit Einschnitten) für kleine Breiten. */
 export const PROFILSCHNITT_GROESSE = { breite: BREITE, hoehe: HOEHE } as const;
-export const PROFILSCHNITT_AUSSCHNITT = { x: 140, y: 98, breite: 320, hoehe: 140 } as const;
+/** Halm mit Schulter, Einschnitten, Spitze und Fräser; bei 350 px Breite genau Maßstab 1 (Schrift 12 px). */
+export const PROFILSCHNITT_AUSSCHNITT = { x: 112, y: 98, breite: 350, hoehe: 140 } as const;
 
 function profilAusText(text: string): number[] {
   const naechste = zahlenfolge(hash(text.toUpperCase().replace(/\s+/g, '')));
@@ -141,7 +142,13 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
 
       {/* Halm mit fertigem Profil (Fläche) und abgetragenes Material */}
       <path className="fill-surface" stroke="none" d={koerper} />
-      <path className="sm24-fade fill-area-soft" stroke="none" style={motionStyle(1.15, 0.45)} d={material} />
+      {/* Abgetragenes Material: deckt sich im Takt der Profillinie auf, hängt also am Fräser */}
+      <path
+        className="sm24-aufdecken fill-area-soft"
+        stroke="none"
+        style={motionStyle(FRAESBAHN.verzoegerung, FRAESBAHN.dauer)}
+        d={material}
+      />
 
       {/* Reide mit Loch */}
       <rect

@@ -5,7 +5,7 @@ import { getGuides, getPageContent, getSettings } from '@/lib/data';
 import { NAV_AREAS, PROCESS_LABELS, QUICK_ENTRIES } from '@/lib/navigation';
 import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
-import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { ImagePlaceholder, ausschnittStil, type GrafikAusschnitt } from '@/components/ui/image-placeholder';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
 import { AreaScope } from '@/components/visual/area-scope';
@@ -15,9 +15,7 @@ import { SchliessplanGrafik } from '@/components/visual/generators/schliessplan'
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { ZylinderMassGrafik } from '@/components/visual/generators/zylinder-mass';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
-import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
 import { FraesbahnBewegung } from '@/components/visual/interaktiv/fraesbahn-bewegung';
-import { motionStyle } from '@/components/visual/motion/motion-style';
 import { cn } from '@/lib/cn';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,6 +28,13 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: { canonical: '/' },
   };
 }
+
+/**
+ * Telefon-Ausschnitt des Hauptschlüsselplans (vier Türen) in viewBox-Einheiten:
+ * nur Schlüssel und Türen, ohne leeren Rand, damit die Kürzel lesbar groß sind.
+ * Abgeleitet aus dem Raster des Generators (Blätter 84 breit, Zeilen 62/150/238).
+ */
+const PLAN_AUSSCHNITT_MOBIL: GrafikAusschnitt = { x: 80, y: 40, breite: 320, hoehe: 224, vollBreite: 480, vollHoehe: 300 };
 
 const TRUST_POINTS = [
   {
@@ -100,7 +105,7 @@ export default async function HomePage() {
             </h1>
           </div>
 
-          <div className="lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:-mr-8 lg:self-start xl:-mr-12">
+          <div className="sm:mx-auto sm:w-full sm:max-w-xl lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:-mr-8 lg:max-w-none lg:self-start xl:-mr-12">
             <FraesbahnBewegung>
               <ImagePlaceholder
                 frei
@@ -118,6 +123,17 @@ export default async function HomePage() {
                 }}
               />
             </FraesbahnBewegung>
+            {/* Im Telefon-Ausschnitt fehlt die Legende der Zeichnung; sie steht darunter */}
+            <p aria-hidden className="mt-2 flex items-center gap-5 font-mono text-caption text-foreground-muted sm:hidden">
+              <span className="inline-flex items-center gap-2">
+                <span className="w-5 border-t-2 border-dashed border-foreground-muted" />
+                Rohling
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <span className="h-0.5 w-5 bg-area-strong" />
+                gefrästes Profil
+              </span>
+            </p>
           </div>
 
           <div className="flex flex-col lg:col-span-6">
@@ -138,18 +154,26 @@ export default async function HomePage() {
               <p className="mt-6 max-w-measure text-lead text-foreground-muted lg:order-first lg:mt-5">{page.subline}</p>
             )}
 
-            {/* Schriftfeld: die Eckdaten wie auf einer Zeichnung bemaßt, in jeder Breite einzeilig */}
-            <dl className="mt-8 grid grid-cols-3 border-y border-border lg:mt-10">
+            {/* Schriftfeld: die Eckdaten wie auf einer Zeichnung bemaßt; mobil die Anzahlung als eigene Zeile */}
+            <dl className="mt-8 grid grid-cols-2 border-y border-border sm:grid-cols-3 lg:mt-10">
               {[
                 { label: 'Anzahlung', wert: deposit },
                 { label: 'Vorlauf', wert: `ca. ${leadDays} Tage` },
                 { label: 'Versand', wert: 'bundesweit' },
               ].map((feld, index) => (
-                <div key={feld.label} className={cn('py-4 pr-3 sm:pr-4', index > 0 && 'border-l border-border pl-3 sm:pl-4')}>
+                <div
+                  key={feld.label}
+                  className={cn(
+                    'py-4 pr-3 sm:pr-4',
+                    index === 0 && 'col-span-2 border-b border-border sm:col-span-1 sm:border-b-0',
+                    index === 1 && 'sm:border-l sm:border-border sm:pl-4',
+                    index === 2 && 'border-l border-border pl-3 sm:pl-4',
+                  )}
+                >
                   <dt className="font-mono text-caption uppercase tracking-label text-foreground-subtle max-sm:tracking-label-eng">
                     {feld.label}
                   </dt>
-                  <dd className="mt-1 font-mono text-small font-semibold tabular-nums text-foreground sm:text-title-sm">
+                  <dd className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
                     {feld.wert}
                   </dd>
                 </div>
@@ -164,7 +188,7 @@ export default async function HomePage() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <SectionHeading
             id="einstieg-titel"
-            className="lg:col-span-4"
+            className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start"
             nummer="01"
             eyebrow="Schnelleinstieg"
             title="Wobei können wir helfen?"
@@ -194,7 +218,7 @@ export default async function HomePage() {
                         {area.label}
                       </span>
                       <span className="mt-1 hidden text-small text-foreground-muted sm:block">{area.summary}</span>
-                      <span className="mt-3 hidden font-mono text-caption uppercase tracking-label text-area-strong sm:block">
+                      <span className="mt-3 hidden font-mono text-caption uppercase tracking-label text-foreground-muted sm:block">
                         {PROCESS_LABELS[area.process].label}
                       </span>
                     </span>
@@ -228,7 +252,7 @@ export default async function HomePage() {
                   Alle Leistungen ansehen
                 </ButtonLink>
               </div>
-              <div className="mt-10 hidden max-w-sm lg:block">
+              <div className="mt-10 hidden rounded-lg border border-border bg-surface p-6 lg:block">
                 <SchluesselGrafik params={{ typ: 'funk' }} title="Funkschlüssel in Seitenansicht" />
               </div>
             </div>
@@ -253,42 +277,39 @@ export default async function HomePage() {
         </AreaScope>
       </Section>
 
-      {/* Vertrauen als Prüfprotokoll */}
+      {/* Vertrauen als Prüfprotokoll: Kopf links läuft mit, rechts die nummerierten Prüfpunkte */}
       <Section labelledBy="vertrauen-titel">
-        <SectionHeading
-          id="vertrauen-titel"
-          nummer="03"
-          eyebrow="Warum wir"
-          title="Sachlich, nachvollziehbar, ohne Überraschungen"
-          lead="Wir arbeiten wie ein Fachbetrieb, nicht wie ein Vermittler."
-        />
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <SectionHeading
+            id="vertrauen-titel"
+            className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start"
+            nummer="03"
+            eyebrow="Warum wir"
+            title="Sachlich, nachvollziehbar, ohne Überraschungen"
+            lead="Wir arbeiten wie ein Fachbetrieb, nicht wie ein Vermittler."
+          />
 
-        <ul className="mt-10 grid border-t border-border md:grid-cols-2">
-          {TRUST_POINTS.map((point, index) => (
-            <li
-              key={point.title}
-              className={cn(
-                'flex gap-4 border-b border-border py-6 md:py-8',
-                index % 2 === 0 ? 'md:border-r md:pr-8' : 'md:pl-8',
-              )}
-            >
-              <GlyphPruefsiegel size={28} className="sm24-pop shrink-0 text-primary" style={motionStyle(0.1 + index * 0.12)} />
-              <div>
-                <p className="font-mono text-caption uppercase tracking-label text-foreground-subtle">
-                  Prüfpunkt {index + 1}
-                </p>
-                <p className="mt-1 text-title-sm font-semibold text-foreground">{point.title}</p>
-                <p className="mt-2 max-w-measure text-body text-foreground-muted">{point.body}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+          <ol className="border-t border-border lg:col-span-7">
+            {TRUST_POINTS.map((point, index) => (
+              <li key={point.title} className="grid grid-cols-12 gap-x-4 border-b border-border py-6">
+                <span className="col-span-2 font-mono text-title font-semibold tabular-nums text-primary sm:col-span-1">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div className="col-span-10 sm:col-span-11">
+                  <p className="text-title-sm font-semibold text-foreground">{point.title}</p>
+                  <p className="mt-2 max-w-measure text-body text-foreground-muted">{point.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </Section>
 
       {/* Direkt kaufen: zwei Zeichnungsblätter */}
       <Section tone="muted" labelledBy="direktkauf-titel">
         <SectionHeading id="direktkauf-titel" nummer="04" eyebrow="Direkt kaufen" title="Bestellen ohne Termin" />
-        <div className="mt-10 grid gap-gutter md:grid-cols-2">
+        {/* Mobil eine Leiste mit sichtbarem Anschnitt, ab 768 px zwei Spalten */}
+        <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-gutter md:overflow-visible md:px-0 md:pb-0 scroll-px-5 sm:scroll-px-6 md:scroll-px-0">
           {[
             {
               area: 'schluessel-nach-code' as const,
@@ -310,11 +331,11 @@ export default async function HomePage() {
             <AreaScope key={angebot.href} area={angebot.area}>
               <Link
                 href={angebot.href}
-                className="group flex flex-col overflow-hidden rounded-lg border border-border bg-surface transition duration-quick ease-standard focus-visible:border-primary zeiger:hover:border-border-strong zeiger:hover:shadow-raised"
+                className="group flex shrink-0 basis-4/5 snap-start flex-col overflow-hidden rounded-lg border border-border bg-surface transition duration-quick ease-standard focus-visible:border-primary md:basis-auto zeiger:hover:border-border-strong zeiger:hover:shadow-raised"
               >
                 <div className="border-b border-border bg-area-soft/40 px-6 pt-6">{angebot.grafik}</div>
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="font-mono text-caption uppercase tracking-label text-area-strong">Direkt kaufen</p>
+                  <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Direkt kaufen</p>
                   <p className="mt-2 text-title font-bold text-foreground">{angebot.titel}</p>
                   <p className="mt-2 max-w-measure flex-1 text-body text-foreground-muted">{angebot.text}</p>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-body font-semibold text-primary">
@@ -332,14 +353,15 @@ export default async function HomePage() {
       <Section labelledBy="projekte-titel">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           <AreaScope area="schliessanlagen">
-            {/* Unter 560 px scrollt der Plan seitlich, damit die Beschriftung lesbar groß bleibt */}
-            <div
-              role="region"
-              aria-label="Schließplan, seitlich verschiebbar"
-              tabIndex={0}
-              className="order-2 overflow-x-auto rounded-lg border border-border bg-surface lg:sticky lg:top-28 lg:order-1 lg:col-span-7 lg:-mt-12"
-            >
-              <div className="min-w-zeichnung p-4 sm:p-6">
+            {/* Telefon: kleinerer Plan in voller Breite, lesbar groß; sonst die ganze Anlage */}
+            <div className="order-2 rounded-lg border border-border bg-surface p-4 sm:p-6 lg:sticky lg:top-28 lg:order-1 lg:col-span-7 lg:-mt-12">
+              <div className="sm24-ausschnitt overflow-hidden sm:hidden" style={ausschnittStil(PLAN_AUSSCHNITT_MOBIL)}>
+                <SchliessplanGrafik
+                  params={{ system: 'haupt', tueren: 4 }}
+                  title="Schließplan einer Hauptschlüsselanlage mit vier Türen"
+                />
+              </div>
+              <div className="hidden sm:block">
                 <SchliessplanGrafik
                   params={{ system: 'generalhaupt', gruppen: 2, tueren: 6 }}
                   title="Schließplan einer Generalhauptschlüsselanlage mit zwei Gruppen und sechs Türen"
@@ -396,15 +418,15 @@ export default async function HomePage() {
               className={cn('border-b border-border md:border-b-0', index > 0 && 'md:border-l md:pl-6', index < 2 && 'md:pr-6')}
             >
               <Link href={`/ratgeber/${guide.slug}`} className="group flex h-full flex-col gap-3 py-6">
-                <span className="font-mono text-caption tabular-nums text-foreground-subtle">
-                  {String(index + 1).padStart(2, '0')}
+                <span className="flex items-baseline gap-3 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  <span className="tabular-nums">{String(index + 1).padStart(2, '0')}</span>
+                  {NAV_AREAS.find((a) => a.key === guide.topic)?.label}
                 </span>
-                <span className="text-title-sm font-semibold text-foreground group-hover:text-primary">{guide.title}</span>
-                <span className="max-w-measure flex-1 text-small text-foreground-muted">{guide.excerpt}</span>
-                <span className="inline-flex items-center gap-1.5 text-small font-semibold text-primary">
-                  Lesen
-                  <Weiter />
+                <span className="flex items-start justify-between gap-3">
+                  <span className="text-title-sm font-semibold text-foreground group-hover:text-primary">{guide.title}</span>
+                  <Weiter className="mt-1 text-primary" />
                 </span>
+                <span className="max-w-measure text-small text-foreground-muted">{guide.excerpt}</span>
               </Link>
             </li>
           ))}

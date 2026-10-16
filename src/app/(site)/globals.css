@@ -369,8 +369,15 @@
 }
 
 @keyframes sm24-scrub-marke {
-  from { opacity: 0.5; transform: scale(0.85); }
-  to { opacity: 1; transform: none; }
+  from { transform: scale(0.85); }
+  to { transform: none; }
+}
+
+/* Fläche wird von links nach rechts aufgedeckt, im Takt einer sich zeichnenden Linie
+   (nur Malen über clip-path: inset(), ohne Kennung und ohne Layout) */
+@keyframes sm24-aufdecken {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -402,6 +409,10 @@
     animation: sm24-dash var(--sm24-duration, 1.6s) linear var(--sm24-delay, 0s) 3;
   }
 
+  .sm24-aufdecken {
+    animation: sm24-aufdecken var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw) var(--sm24-delay, 0s) both;
+  }
+
   .sm24-schritt-vor {
     animation: sm24-schritt-vor var(--dauer-base) var(--kurve-enter) both;
   }
@@ -415,12 +426,12 @@
  * Interaktive Grafiken nach dem ersten Wechsel: Einstiegsbewegungen spielen
  * nicht erneut, die Zeichnung steht sofort (Rückmeldung statt Auftritt).
  */
-.sm24-ruhig :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop) {
+.sm24-ruhig :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-aufdecken) {
   animation: none;
 }
 
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  [data-motion='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-dash) {
+  [data-motion='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
     animation-play-state: paused;
   }
 }
@@ -483,13 +494,13 @@
 }
 
 /* ==========================================================================
-   Ausschnitt einer Fachgrafik für kleine Breiten (Startseite, B-01): Ein
+   Ausschnitt einer Fachgrafik für Telefonbreiten (unter 640 px; Startseite, B-01): Ein
    einziges SVG wird beschnitten statt doppelt gezeichnet, damit Bewegung und
    Beschriftung erhalten bleiben und die Schrift lesbar groß wird. Werte setzt
    `ImagePlaceholder` (Prop `ausschnitt`) als Variablen. Steht nach den
    Hilfsklassen, damit `aspect-ratio` hier Vorrang hat.
    ========================================================================== */
-@media (max-width: 1023.98px) {
+@media (max-width: 639.98px) {
   .sm24-ausschnitt {
     aspect-ratio: var(--aus-w) / var(--aus-h);
   }

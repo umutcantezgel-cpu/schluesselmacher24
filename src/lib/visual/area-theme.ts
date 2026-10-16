@@ -80,10 +80,10 @@ export const AREA_THEMES: Record<AreaKey, AreaTheme> = {
   },
   'tuer-und-schliesstechnik': {
     label: 'Tür- und Schließtechnik',
-    accent: '125 62% 33%',
-    strong: '125 66% 25%',
-    soft: '125 50% 94.5%',
-    muted: '125 48% 80%',
+    accent: '90 56% 30%',
+    strong: '90 62% 22%',
+    soft: '90 46% 94%',
+    muted: '90 42% 78%',
   },
   sicherheitstechnik: {
     label: 'Sicherheitstechnik',

@@ -224,3 +224,25 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - `rechner.test.tsx:76`: `<legend class="text-sm font-semibold …">` → `<legend class="text-title-sm font-semibold …">`
   - Die Zahl der Prüfungen ist unverändert.
 
+
+## D-024 · E4-L-16: Startseite nach Anlauf 2 überarbeitet (letztes Paket je Kategorie für H01)
+- **Grundlage:** Befunde aus `_werkstatt/berichte/E2-L-07-sichtabnahme-2.md`. Nach der Rubrik ist das das zweite und letzte Befundpaket je Kategorie für die Startseite.
+- **Komposition:**
+  - „Warum wir“ ist jetzt eine 5/7-Teilung: Kopf links läuft mit, rechts eine Haarlinienliste mit Mono-Nummern 01–04 in `primary`. Die Schild-Glyphen entfallen, weil die Wiederholung bemängelt war.
+  - Direktkauf mobil als Leiste mit Anschnitt (`snap-x`, `scroll-px` wie die `shell`), ab 768 px zwei Spalten.
+  - Projekte ohne seitlich scrollende Region: Telefon zeigt einen Hauptschlüsselplan mit vier Türen im Ausschnitt (Kürzel 17 px hoch), sonst die ganze Generalhauptschlüsselanlage.
+  - Ratgeber: die ganze Zelle ist der Link, Pfeil neben dem Titel, Thema statt „Lesen“.
+  - Ablauf-Grafik auf eigenem Zeichenpapier; Kopf des Schnelleinstiegs läuft auf `lg` mit.
+- **Typografie und Details:**
+  - Schriftfeld des Hero mobil in zwei Spalten mit der Anzahlung als eigener Zeile; die Werte stehen überall in `text-title-sm`.
+  - Mobile Legende unter der Hero-Grafik, weil der Ausschnitt die Legende der Zeichnung abschneidet.
+  - Ausschnitt jetzt unter 640 px (vorher 1024 px); auf dem Tablet steht die ganze Zeichnung, begrenzt auf `max-w-xl`.
+  - Schließplan-Kürzel in Schriftgewicht 500.
+- **Farbe:**
+  - Etiketten der Ablaufart und „Direkt kaufen“ in `foreground-muted` statt Bereichsfarbe; damit ist der „Regenbogen“ aufgelöst.
+  - Tür-Farbton 125 → 90 (Moos/Oliv). Vorlage (160) und Tür lagen beide im Grün. 90 liegt mittig zwischen Zylinder (20) und Vorlage (160), je 70° Abstand. Kontrasttests grün (33/33).
+  - Fuß auf `surface-sunken`, Fußtexte in `foreground-muted`.
+- **Bewegung:** Die gefräste Fläche deckt sich im Takt des Profils auf (`sm24-aufdecken`, `clip-path`, angehalten bis zur Sichtbarkeit, bei reduzierter Bewegung sofort). Die Schrittmarken von B-03 wachsen nur noch über `scale`, damit die Ziffern immer lesbar sind.
+- **KERN 1.6** hält die neuen Regeln fest.
+- **Prüfung:** Typprüfung 0, Linter 0, 1008/1008 Tests, Logikwächter 0 abweichend. Eigene Bildkontrolle mobil, Tablet und Desktop über Port 3001; die Bilder liegen unter `/root/sm24-bilder/E4-L-16/`.
+- **Hinweis zu Ganzseitenbildern:** Ganzseitenaufnahmen zeigen Zeichnungen teils mitten in der Animation (blass oder leer). Die Einzelprüfung im Ansichtsfenster zeigt den Endzustand korrekt. Die Sichtabnahme nutzt deshalb weiter den Bildsatz je Bildschirmhöhe.

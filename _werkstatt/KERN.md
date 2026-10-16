@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.5
+# KERN · SCHLÜSSELMACHER24 · Version 1.6
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -74,6 +74,8 @@ Werte als CSS-Variablen in `src/app/(site)/globals.css`, als Tailwind-Klassen in
   - Status: `success`, `warning`, `danger`, `info`, jeweils mit `-soft`.
   - Bereich: `area`, `area-strong`, `area-soft`, `area-muted`, `area-foreground`, gesetzt über `[data-area]`.
   - Kontraste prüft `src/lib/visual/area-theme.test.ts`.
+  - `foreground-subtle` nie auf `surface-sunken` (dort unter 4,5:1); Nummern, Etiketten und Fußtexte stehen dort in `foreground-muted`.
+  - Etiketten unter Karten- und Listentiteln (Ablaufart, „Direkt kaufen“, Themen) stehen in `foreground-muted`. Die Bereichsfarbe bleibt Augenbraue, Marke und Grafik vorbehalten.
 - **Typoskala (neu, fließend 390 → 1440 px), Tailwind `fontSize`:**
 
 | Token | Mobil → Desktop | Zeilenhöhe | Einsatz |
@@ -139,6 +141,10 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
   - Benachbarte Abschnitte wechseln Struktur und Dichte (Liste ↔ Grafik ↔ Text).
 - **Blickfang:** je Bildschirmhöhe einer (eine Grafik, eine Zahl oder eine Überschrift).
 - **Mobil:** eigene Reihenfolge (Handlung vor Erklärung), horizontale Scroll-Leisten mit sichtbarem Anschnitt statt langer Kachelstapel, Aktionsleiste unten.
+  - Scroll-Leisten mit `snap-x` brauchen `scroll-px-*` passend zum Rand der `shell` (`scroll-px-5 sm:scroll-px-6`), sonst rastet die erste Karte am Bildschirmrand ein.
+  - Große Zeichnungen zeigen unter 640 px einen Ausschnitt (`.sm24-ausschnitt` über `ImagePlaceholder ausschnitt` oder `ausschnittStil()` an einer Hülle, deren direktes Kind das SVG ist). Ziel: Beschriftungen ab 12 px, keine seitlich scrollenden Grafiken.
+  - Kennzahlen im Schriftfeld behalten auch mobil `text-title-sm`; passt die Zeile nicht, bekommt das wichtigste Feld eine eigene Zeile.
+- **Fuß:** Schriftfeld auf `surface-sunken`; der Abstand für die mobile Aktionsleiste (`pb-safe-nav`) sitzt im Fuß, nicht in `main`.
 
 ## K-007 Bewegungssystem und Register
 - **Dauern** (CSS-Variablen `--dauer-*`, Tailwind `duration-*`): `instant` 120 ms · `quick` 180 ms · `base` 280 ms · `slow` 400 ms · `enter` 600 ms · `scene` 900 ms. Ein großer Moment dauert höchstens 1,6 s gesamt.
@@ -147,7 +153,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
   - `enter` cubic-bezier(0.16, 1, 0.3, 1)
   - `exit` cubic-bezier(0.4, 0, 1, 1)
   - `draw` cubic-bezier(0.65, 0, 0.35, 1)
-- **Animiert werden nur** `transform` und `opacity`. Erlaubt sind außerdem `stroke-dashoffset` und Masken für Linien, die sich zeichnen (nur Malen, kein Layout). Nie `width`, `height`, `top`, `left` oder `margin`.
+- **Animiert werden nur** `transform` und `opacity`. Erlaubt sind außerdem `stroke-dashoffset`, Masken und `clip-path` (`sm24-aufdecken`) für Linien und Flächen, die sich zeichnen (nur Malen, kein Layout). Nie `width`, `height`, `top`, `left` oder `margin`.
 - **Regeln:**
   - Ausgänge sind kürzer als Eingänge; Staffeln umfassen höchstens 8 Elemente.
   - Arbeitsansichten bekommen nur Rückmeldung und Zustandswechsel.
@@ -155,14 +161,14 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
   - Scroll-Szenen über CSS `animation-timeline: view()` in `@supports`, mit nativem Scrollen und rückwärts stimmig; ohne Unterstützung zeigen sie den Endzustand.
   - Nichts startet automatisch und läuft länger als 5 s; `sm24-dash` läuft höchstens 3 Durchgänge.
 - **Reduzierte Bewegung:** Bewegungen werden zu Sofortzuständen; die globale Regel in `globals.css` verkürzt jede Animation und jeden Übergang auf 0,01 ms. Die Spalte „Reduziert“ nennt das Höchstmaß, „sofort“ ist immer zulässig. Inhalte sind immer sichtbar. JavaScript-Scrollen nutzt `scrollVerhalten()` aus `src/lib/bewegung.ts`.
-- **Bausteine in `globals.css` und `tailwind.config.ts`:** `sm24-draw`, `sm24-reveal`, `sm24-fade`, `sm24-pop`, `sm24-dash`, `sm24-scrub-*`, `sm24-schritt-vor`/`-zurueck` (B-11), `.sm24-ruhig` (keine Einstiegsbewegung nach dem ersten Wechsel), `animate-spin` mit `--dauer-scene` (B-19). Varianten: `hover:`/`group-hover:` wirken projektweit nur bei feinem Zeiger (`future.hoverOnlyWhenSupported`), `zeiger:` für übrige Zeiger-Effekte, `fokus-innen:` (enthält sichtbaren Tastaturfokus). Hilfsklasse `zahl-ohne-pfeile` für Zahlenfelder mit eigenen Knöpfen.
+- **Bausteine in `globals.css` und `tailwind.config.ts`:** `sm24-draw`, `sm24-reveal`, `sm24-fade`, `sm24-pop`, `sm24-dash`, `sm24-aufdecken` (Fläche deckt sich von links auf, `clip-path`), `sm24-scrub-*`, `sm24-schritt-vor`/`-zurueck` (B-11), `.sm24-ruhig` (keine Einstiegsbewegung nach dem ersten Wechsel), `animate-spin` mit `--dauer-scene` (B-19). Varianten: `hover:`/`group-hover:` wirken projektweit nur bei feinem Zeiger (`future.hoverOnlyWhenSupported`), `zeiger:` für übrige Zeiger-Effekte, `fokus-innen:` (enthält sichtbaren Tastaturfokus). Hilfsklasse `zahl-ohne-pfeile` für Zahlenfelder mit eigenen Knöpfen.
 - **Ohne JavaScript:** Alle Einstiegsbewegungen spielen sofort ab oder entfallen; nichts bleibt unsichtbar.
 
 | ID | Bewegung | Zweck | Auslöser | Stufen | Reduziert |
 |---|---|---|---|---|---|
-| B-01 | Fräsbahn im Hero (Startseite) | Charakter | Grafik zur Hälfte sichtbar (Hülle `FraesbahnBewegung`, `data-motion`) | Fräser blendet ein (Verzögerung 0,3 s), Profil zeichnet `draw` 1,1 s, Fräser folgt im selben Takt per `transform`, hebt danach `quick`/`exit` ab | Profil sofort vollständig, Fräser ruht gehoben frei von der Spitze |
+| B-01 | Fräsbahn im Hero (Startseite) | Charakter | Grafik zur Hälfte sichtbar (Hülle `FraesbahnBewegung`, `data-motion`) | Fräser blendet ein (Verzögerung 0,3 s), Profil zeichnet `draw` 1,1 s, die gefräste Fläche deckt sich im selben Takt auf (`sm24-aufdecken`), Fräser folgt per `transform`, hebt danach `quick`/`exit` ab | Profil sofort vollständig, Fräser ruht gehoben frei von der Spitze |
 | B-02 | Profillinie zeichnet sich | Hierarchie | Abschnitt sichtbar (InView) | `enter` 600 ms, `draw` | sofort vollständig |
-| B-03 | Ablauf am Scrollen (Startseite, Autoschlüssel-Ablauf) | Orientierung | Scrollposition (`view()`) | Fortschrittslinie `scaleY` 0 → 1, Schrittmarken füllen sich | Endzustand statisch |
+| B-03 | Ablauf am Scrollen (Startseite, Autoschlüssel-Ablauf) | Orientierung | Scrollposition (`view()`) | Fortschrittslinie `scaleY` 0 → 1, Schrittmarken wachsen nur über `scale` (keine Deckkraft, damit die Ziffern lesbar bleiben) | Endzustand statisch |
 | B-04 | Abschnittsauftritt (`sm24-reveal`) | Hierarchie | InView, höchstens einer je Bildschirmhöhe | `enter` 600 ms, 8 px | sofort sichtbar |
 | B-05 | Knopfdruck | Rückmeldung | `:active` | `scale(0.98)` `instant` | keine Skalierung, Farbwechsel bleibt |
 | B-06 | Karten- und Link-Hover | Rückmeldung | Hover (feiner Zeiger), Fokus | Pfeil `translateX(4px)`, Rahmenfarbe, `shadow-raised`; `quick` | nur Farbe |
@@ -282,3 +288,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.3 · E3 · K-007: reduzierte Bewegung = sofort (globale Regel), Bausteinliste mit `sm24-schritt-*`, `fokus-innen:`, `zahl-ohne-pfeile`, Spinner 900 ms, `hover:` nur bei feinem Zeiger. Grund: Vorbereitung Welle E3-A.
 - 1.4 · E2 · B-01 startet bei Sichtbarkeit und hebt ab; Bereichsfarbtöne mit mindestens 30° Abstand (D-017); `Section`-Ton `sunken` mit Haarlinien; Tokens `min-w-zeichnung`, `grid-rows-kopf`, `tracking-label-eng`; Ausschnitt `.sm24-ausschnitt`. Grund: Sichtabnahme E2-L-07, Anlauf 1.
 - 1.5 · E3 · K-008: Raster 480 × 360 für Szenen mit Bemaßung zugelassen, Ort der Generator-Helfer festgelegt, Profillinie 10–24 px. Grund: Prüfung E3-GRAFIKER-07 (README entsprach dem Code, KERN nicht).
+- 1.6 · E4 · K-005: `foreground-subtle` nie auf `surface-sunken`, Etiketten in `foreground-muted`; K-006: Ausschnitt unter 640 px, `scroll-px` für Leisten, Schriftfeld mobil, Fuß auf `surface-sunken`; K-007: `clip-path` für `sm24-aufdecken`, B-01 mit aufdeckender Fläche, B-03-Marken nur `scale`; Farbton Tür 125 → 90 (D-024). Grund: Sichtabnahme E2-L-07, Anlauf 2 (Paket E4-L-16).

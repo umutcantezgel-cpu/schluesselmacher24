@@ -404,7 +404,7 @@ function SchluesselKnoten({ k, oben, stand }: { k: Knoten; oben: boolean; stand:
         <text
           className="fill-foreground-muted font-mono"
           fontSize={SCHRIFT}
-          fontWeight={600}
+          fontWeight={500}
           x={r(x0 + 27)}
           y={r(cy + 4.5)}
         >
@@ -435,7 +435,7 @@ function TuerKnoten({ k, stand }: { k: Knoten; stand: Stand }) {
         <text
           className="fill-foreground-muted font-mono"
           fontSize={SCHRIFT}
-          fontWeight={600}
+          fontWeight={500}
           textAnchor={k.x < BREITE / 2 ? 'end' : 'start'}
           x={r(k.x < BREITE / 2 ? links - 7 : links + TUER_BREITE + 7)}
           y={r(k.y + 4.5)}

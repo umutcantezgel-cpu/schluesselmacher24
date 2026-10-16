@@ -80,7 +80,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
 
         <SiteHeader />
 
-        <main id="inhalt" className="flex-1 pb-safe-nav pt-header">
+        <main id="inhalt" className="flex-1 pt-header">
           {children}
         </main>
 

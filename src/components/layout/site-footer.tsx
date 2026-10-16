@@ -9,7 +9,7 @@ const FOOTER_SHOP: NavLink[] = [{ href: '/artikel', label: 'Artikel' }];
 
 /** Feldbeschriftung im Schriftfeld (Mono, Großbuchstaben). */
 function Feldtitel({ children }: { children: string }) {
-  return <p className="mb-3 font-mono text-caption uppercase tracking-label text-foreground-subtle">{children}</p>;
+  return <p className="mb-3 font-mono text-caption uppercase tracking-label text-foreground-muted">{children}</p>;
 }
 
 const linkKlasse =
@@ -24,7 +24,7 @@ export async function SiteFooter() {
   const { company } = settings;
 
   return (
-    <footer className="bg-surface-muted">
+    <footer className="bg-surface-sunken pb-safe-nav">
       <div className="shell pt-section-tight">
         <Profillinie text="SCHLÜSSELMACHER24" groesse="gross" voll ruhig className="text-border-strong" />
       </div>
@@ -77,7 +77,7 @@ export async function SiteFooter() {
           {/* Bereiche und Öffnungszeiten */}
           <div className="border-b border-border py-8 md:pl-8 lg:col-span-5 lg:border-b-0 lg:border-r lg:pr-8">
             <Feldtitel>Bereiche</Feldtitel>
-            <ul className="grid gap-x-6 sm:grid-cols-2">
+            <ul className="grid grid-cols-2 gap-x-6">
               {[...NAV_AREAS.map((area) => ({ href: area.href, label: area.label })), ...FOOTER_SHOP].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={linkKlasse}>
@@ -134,7 +134,7 @@ export async function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 pt-6 font-mono text-caption text-foreground-subtle sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 pt-6 font-mono text-caption text-foreground-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} SCHLÜSSELMACHER24</p>
           <p>Preise inklusive gesetzlicher Umsatzsteuer, zuzüglich Versandkosten.</p>
         </div>

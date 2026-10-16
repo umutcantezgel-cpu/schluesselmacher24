@@ -108,7 +108,9 @@ describe('ProfilschnittGrafik', () => {
       expect(nummernX.every((x) => innen(x, 122))).toBe(true);
       expect(innen(456, 198)).toBe(true);
       expect(innen(ruhe.x - aussen, ruhe.y - aussen) && innen(ruhe.x + aussen, ruhe.y + aussen)).toBe(true);
-      expect(a.breite).toBeLessThanOrEqual(320);
+      // Bei 350 px Inhaltsbreite (390 px Telefon) bleibt die Schrift mindestens 12 px groß.
+      expect(a.breite).toBeLessThanOrEqual(350);
+      expect(innen(134 - 6, 190)).toBe(true);
       expect(PROFILSCHNITT_GROESSE).toEqual({ breite: 480, hoehe: 360 });
     });
 

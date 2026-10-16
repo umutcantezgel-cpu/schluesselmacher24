@@ -46,7 +46,7 @@ export interface ImagePlaceholderProps {
   /** Ohne Fläche und Rahmen – die Zeichnung steht frei (etwa im Seitenkopf). */
   frei?: boolean;
   /**
-   * Nur für Fachgrafiken: Unter 1024 px zeigt die Fläche nur diesen Ausschnitt der
+   * Nur für Fachgrafiken: Unter 640 px zeigt die Fläche nur diesen Ausschnitt der
    * Zeichnung (viewBox-Einheiten), damit Beschriftungen lesbar groß bleiben.
    */
   ausschnitt?: GrafikAusschnitt;
