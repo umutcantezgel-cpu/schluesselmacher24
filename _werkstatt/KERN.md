@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.6
+# KERN · SCHLÜSSELMACHER24 · Version 1.7
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -186,7 +186,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 | B-18 | Tür-Schutzpunkte | Hierarchie | InView | Marken `sm24-pop`, gestaffelt ≤ 5 × 120 ms | sofort |
 | B-19 | Ladeanzeige | Rückmeldung | Laden | Glyph `laden` dreht (`transform`), 900 ms/Umdrehung | ruht, Text „lädt …“ bleibt |
 | B-20 | Warenkorb-Zähler | Rückmeldung | Menge ändert sich | `sm24-pop` `quick` | sofort |
-| B-21 | Reihe der Schlüsselarten (Autoschlüssel) | Hierarchie | InView | Schlüssel nacheinander `sm24-reveal`, Staffel ≤ 4 × 120 ms, Profile zeichnen | sofort |
+| B-21 | Reihe der Schlüsselarten (Autoschlüssel; Modellseite H03 mit den erfassten Arten) | Hierarchie | InView | Schlüssel nacheinander `sm24-reveal`, Staffel ≤ 4 × 120 ms, Profile zeichnen | sofort |
 | B-22 | Code-Fundstelle (Generator-Einstieg) | Orientierung | InView | Bestand `sm24-draw`/`sm24-pop` | sofort |
 
 - Neue Einträge gibt es nur durch den Orchestrator. Bewegung ohne Eintrag wird entfernt.
@@ -289,3 +289,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.4 · E2 · B-01 startet bei Sichtbarkeit und hebt ab; Bereichsfarbtöne mit mindestens 30° Abstand (D-017); `Section`-Ton `sunken` mit Haarlinien; Tokens `min-w-zeichnung`, `grid-rows-kopf`, `tracking-label-eng`; Ausschnitt `.sm24-ausschnitt`. Grund: Sichtabnahme E2-L-07, Anlauf 1.
 - 1.5 · E3 · K-008: Raster 480 × 360 für Szenen mit Bemaßung zugelassen, Ort der Generator-Helfer festgelegt, Profillinie 10–24 px. Grund: Prüfung E3-GRAFIKER-07 (README entsprach dem Code, KERN nicht).
 - 1.6 · E4 · K-005: `foreground-subtle` nie auf `surface-sunken`, Etiketten in `foreground-muted`; K-006: Ausschnitt unter 640 px, `scroll-px` für Leisten, Schriftfeld mobil, Fuß auf `surface-sunken`; K-007: `clip-path` für `sm24-aufdecken`, B-01 mit aufdeckender Fläche, B-03-Marken nur `scale`; Farbton Tür 125 → 90 (D-024). Grund: Sichtabnahme E2-L-07, Anlauf 2 (Paket E4-L-16).
+- 1.7 · E4 · B-21 gilt auch für die Modellseite (erfasste Schlüsselarten als Zeichnungen). Grund: Pakete der Welle C (E4-BAUMEISTER-08).
