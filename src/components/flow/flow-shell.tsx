@@ -63,7 +63,7 @@ export function FlowShell<T extends object>({
   return (
     <div className="pb-40 md:pb-8">
       {/* Fortschritt */}
-      <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background/95 px-5 py-3 backdrop-blur sm:-mx-6 sm:px-6 md:mx-0 md:rounded-lg md:border md:px-5">
+      <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background px-5 py-3 sm:-mx-6 sm:px-6 md:mx-0 md:rounded-lg md:border md:px-5">
         <div className="flex items-baseline justify-between gap-3">
           <p className="text-caption font-mono uppercase tracking-label text-foreground-subtle">
             {title}
@@ -159,8 +159,8 @@ export function FlowShell<T extends object>({
       {/* Navigation — am Smartphone fest am unteren Rand */}
       <div
         className={cn(
-          'sm24-ablauf-leiste fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface/95 p-4 backdrop-blur',
-          'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:pb-4 md:backdrop-blur-none',
+          'sm24-ablauf-leiste fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface p-4',
+          'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:pb-4',
         )}
       >
         {blockedHint && !flow.canContinue && (

@@ -4,6 +4,11 @@
       "grund": "Scrollverhalten folgt reduzierter Bewegung (L-03)",
       "suchen": "behavior:\\s*(?:'smooth'|scrollVerhalten\\(\\))",
       "ersetzen": "behavior: __SCROLL__"
+    },
+    {
+      "grund": "Import für scrollVerhalten (zugelassene Logikänderung L-03; Pakete E5-BAUMEISTER-22 und -24)",
+      "suchen": "import \\{ scrollVerhalten \\} from '@/lib/bewegung';\\n",
+      "ersetzen": ""
     }
   ],
   "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx": [
@@ -11,6 +16,11 @@
       "grund": "Scrollverhalten folgt reduzierter Bewegung (L-03)",
       "suchen": "behavior:\\s*(?:'smooth'|scrollVerhalten\\(\\))",
       "ersetzen": "behavior: __SCROLL__"
+    },
+    {
+      "grund": "Import für scrollVerhalten (zugelassene Logikänderung L-03; Pakete E5-BAUMEISTER-22 und -24)",
+      "suchen": "import \\{ scrollVerhalten \\} from '@/lib/bewegung';\\n",
+      "ersetzen": ""
     }
   ],
   "src/app/(site)/schluessel-nach-code/[slug]/bestell-formular.tsx": [

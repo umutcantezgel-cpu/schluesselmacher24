@@ -20,13 +20,19 @@ export interface AlertProps {
   title?: string;
   children: ReactNode;
   className?: string;
+  /**
+   * Rolle für Hilfsmittel. Standard `note` (ruhiger Hinweis). `alert` für Fehler,
+   * die nach einer Aktion erscheinen (wird sofort angesagt), `status` für
+   * Rückmeldungen wie „gespeichert“ (höflich angesagt).
+   */
+  role?: 'note' | 'alert' | 'status';
 }
 
-export function Alert({ tone = 'info', title, children, className }: AlertProps) {
+export function Alert({ tone = 'info', title, children, className, role = 'note' }: AlertProps) {
   const { box, icon: Icon } = tones[tone];
 
   return (
-    <div className={cn('flex gap-3 rounded-lg border p-4', box, className)} role="note">
+    <div className={cn('flex gap-3 rounded-lg border p-4', box, className)} role={role}>
       <Icon size={18} className="mt-0.5 shrink-0 opacity-80" />
       <div className="min-w-0 text-small leading-relaxed">
         {title && <p className="mb-1 font-bold">{title}</p>}
