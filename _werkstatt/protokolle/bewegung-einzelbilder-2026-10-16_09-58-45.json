@@ -1,0 +1,89 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-16T07:58:45.602Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/autoschluessel"
+    ],
+    "selektor": "main ol:has(svg[role=img])",
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/e4-b/einzelbilder/H02",
+    "echtzeit": false
+  },
+  "pfad": "/autoschluessel",
+  "selektor": "main ol:has(svg[role=img])",
+  "dauer": null,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": "div.shell",
+    "zustand": "play",
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 53,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 6000
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/root/sm24-bilder/e4-b/einzelbilder/H02/autoschluessel__desktop__main-ol-has-svg-role-img__0.jpg",
+      "clip": {
+        "x": 108,
+        "y": 260.875,
+        "width": 1224,
+        "height": 473.265625
+      }
+    },
+    {
+      "k": 1,
+      "t": 1500,
+      "datei": "/root/sm24-bilder/e4-b/einzelbilder/H02/autoschluessel__desktop__main-ol-has-svg-role-img__1.jpg",
+      "clip": {
+        "x": 108,
+        "y": 260.875,
+        "width": 1224,
+        "height": 473.265625
+      }
+    },
+    {
+      "k": 2,
+      "t": 3000,
+      "datei": "/root/sm24-bilder/e4-b/einzelbilder/H02/autoschluessel__desktop__main-ol-has-svg-role-img__2.jpg",
+      "clip": {
+        "x": 108,
+        "y": 260.875,
+        "width": 1224,
+        "height": 473.265625
+      }
+    },
+    {
+      "k": 3,
+      "t": 4500,
+      "datei": "/root/sm24-bilder/e4-b/einzelbilder/H02/autoschluessel__desktop__main-ol-has-svg-role-img__3.jpg",
+      "clip": {
+        "x": 108,
+        "y": 260.875,
+        "width": 1224,
+        "height": 473.265625
+      }
+    },
+    {
+      "k": 4,
+      "t": 6000,
+      "datei": "/root/sm24-bilder/e4-b/einzelbilder/H02/autoschluessel__desktop__main-ol-has-svg-role-img__4.jpg",
+      "clip": {
+        "x": 108,
+        "y": 260.875,
+        "width": 1224,
+        "height": 473.265625
+      }
+    }
+  ]
+}

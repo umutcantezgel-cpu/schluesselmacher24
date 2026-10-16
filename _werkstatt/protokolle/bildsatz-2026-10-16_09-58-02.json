@@ -1,0 +1,1082 @@
+{
+  "skript": "bildsatz",
+  "zeit": "2026-10-16T07:58:02.517Z",
+  "argumente": {
+    "_": [],
+    "ziel": "/root/sm24-bilder/e4-b",
+    "max": "12"
+  },
+  "max": 12,
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "geraet": "mobil",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 31,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shell > div.-mx-5 > div.contents > a.group"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.-mx-5 > div.contents > a.group > div.border-b"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.contents > a.group > div.border-b > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > g.sm24-reveal"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.border-b > svg.block > g.sm24-reveal > path.fill-surface"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.border-b > svg.block > g.sm24-reveal > path.fill-area-muted60"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.border-b > svg.block > g.sm24-reveal > path.stroke-foreground"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.border-b > svg.block > g.sm24-reveal > path.fill-area"
+        }
+      ],
+      "befundText": "31: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.-mx-5 > div.contents > a.group; über den rechten Rand div.-mx-5 > div.contents > a.group > div.border-b",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H01-start__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__mobil__02.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__mobil__03.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__mobil__04.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__mobil__05.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__mobil__06.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__mobil__07.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__mobil__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "tablet",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 7,
+      "seitenausschnitte": 7,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.order-2 > div.hidden > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40; über den rechten Rand div.order-2 > div.hidden > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H01-start__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__tablet__01.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__tablet__02.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__tablet__03.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__tablet__04.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__tablet__05.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__tablet__06.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "desktop",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 7,
+      "seitenausschnitte": 7,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H01-start__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__desktop__01.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__desktop__02.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__desktop__03.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__desktop__04.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__desktop__05.jpg",
+        "/root/sm24-bilder/e4-b/H01-start__desktop__06.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "mobil",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 12,
+      "seitenausschnitte": 12,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__02.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__03.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__04.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__05.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__06.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__07.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__08.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__09.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__10.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__mobil__11.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "tablet",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__tablet__01.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__tablet__02.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__tablet__03.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__tablet__04.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__tablet__05.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__tablet__06.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__tablet__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "desktop",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__desktop__01.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__desktop__02.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__desktop__03.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__desktop__04.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__desktop__05.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__desktop__06.jpg",
+        "/root/sm24-bilder/e4-b/H02-autoschluessel__desktop__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "mobil",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 4,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "4: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H03-modell-golf__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__mobil__02.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__mobil__03.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__mobil__04.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__mobil__05.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__mobil__06.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__mobil__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "tablet",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H03-modell-golf__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__tablet__01.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__tablet__02.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__tablet__03.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__tablet__04.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__tablet__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "desktop",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H03-modell-golf__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__desktop__01.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__desktop__02.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__desktop__03.jpg",
+        "/root/sm24-bilder/e4-b/H03-modell-golf__desktop__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-assistent",
+      "geraet": "mobil",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H04-assistent__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H04-assistent__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H04-assistent__mobil__02.jpg",
+        "/root/sm24-bilder/e4-b/H04-assistent__mobil__03.jpg",
+        "/root/sm24-bilder/e4-b/H04-assistent__mobil__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-assistent",
+      "geraet": "tablet",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H04-assistent__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H04-assistent__tablet__01.jpg",
+        "/root/sm24-bilder/e4-b/H04-assistent__tablet__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-assistent",
+      "geraet": "desktop",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H04-assistent__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H04-assistent__desktop__01.jpg",
+        "/root/sm24-bilder/e4-b/H04-assistent__desktop__02.jpg",
+        "/root/sm24-bilder/e4-b/H04-assistent__desktop__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code-shop",
+      "geraet": "mobil",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 12,
+      "seitenausschnitte": 42,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_18lubrivb_-panel > div > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div#_R_18lubrivb_-panel > div > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__02.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__03.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__04.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__05.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__06.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__07.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__08.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__09.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__10.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__mobil__11.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code-shop",
+      "geraet": "tablet",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 12,
+      "seitenausschnitte": 19,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_18lubrivb_-panel > div > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div#_R_18lubrivb_-panel > div > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__01.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__02.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__03.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__04.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__05.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__06.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__07.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__08.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__09.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__10.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__tablet__11.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code-shop",
+      "geraet": "desktop",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 12,
+      "seitenausschnitte": 17,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_18lubrivb_-panel > div > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div#_R_18lubrivb_-panel > div > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__01.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__02.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__03.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__04.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__05.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__06.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__07.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__08.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__09.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__10.jpg",
+        "/root/sm24-bilder/e4-b/H05-code-shop__desktop__11.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "mobil",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.m-0 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_scav5ubrivb_-panel > div > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.rounded-lg > div > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand figure.m-0 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div#_R_scav5ubrivb_-panel > div > svg.block > path.stroke-area-muted40; über den rechten Rand figure.rounded-lg > div > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H06-code-produkt__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__mobil__02.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__mobil__03.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__mobil__04.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__mobil__05.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__mobil__06.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__mobil__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "tablet",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_scav5ubrivb_-panel > div > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.rounded-lg > div > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div#_R_scav5ubrivb_-panel > div > svg.block > path.stroke-area-muted40; über den rechten Rand figure.rounded-lg > div > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H06-code-produkt__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__tablet__01.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__tablet__02.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__tablet__03.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__tablet__04.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__tablet__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "desktop",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H06-code-produkt__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__desktop__01.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__desktop__02.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__desktop__03.jpg",
+        "/root/sm24-bilder/e4-b/H06-code-produkt__desktop__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-zylinder-konfigurator",
+      "geraet": "mobil",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 7,
+      "seitenausschnitte": 7,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.rounded-lg > div.animate-schleier-ein > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand figure.rounded-lg > div.animate-schleier-ein > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__mobil__02.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__mobil__03.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__mobil__04.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__mobil__05.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__mobil__06.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-zylinder-konfigurator",
+      "geraet": "tablet",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__tablet__01.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__tablet__02.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__tablet__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-zylinder-konfigurator",
+      "geraet": "desktop",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__desktop__01.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__desktop__02.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__desktop__03.jpg",
+        "/root/sm24-bilder/e4-b/H07-zylinder-konfigurator__desktop__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-schliessanlagen",
+      "geraet": "mobil",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 12,
+      "seitenausschnitte": 17,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 12,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_98lubrivb_-plan > div.sm24-ausschnitt > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_98lubrivb_-plan > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.rounded-t-lg > div.relative > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.rounded-t-lg > div.relative > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.rounded-t-lg > div.relative > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.rounded-t-lg > div.relative > svg.block"
+        }
+      ],
+      "befundText": "12: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div#_R_98lubrivb_-plan > div.sm24-ausschnitt > svg.block; über den rechten Rand div#_R_98lubrivb_-plan > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__02.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__03.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__04.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__05.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__06.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__07.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__08.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__09.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__10.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__mobil__11.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-schliessanlagen",
+      "geraet": "tablet",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 12,
+      "seitenausschnitte": 13,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 7,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_98lubrivb_-plan > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "7: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div#_R_98lubrivb_-plan > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40; über den rechten Rand div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__01.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__02.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__03.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__04.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__05.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__06.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__07.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__08.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__09.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__10.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__tablet__11.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-schliessanlagen",
+      "geraet": "desktop",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 10,
+      "seitenausschnitte": 10,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 4,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_98lubrivb_-plan > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "4: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div#_R_98lubrivb_-plan > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40; über den rechten Rand div.rounded-t-lg > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__desktop__01.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__desktop__02.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__desktop__03.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__desktop__04.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__desktop__05.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__desktop__06.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__desktop__07.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__desktop__08.jpg",
+        "/root/sm24-bilder/e4-b/H08-schliessanlagen__desktop__09.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-tuertechnik",
+      "geraet": "mobil",
+      "pfad": "/tuer-und-schliesstechnik",
+      "status": 200,
+      "ausschnitte": 12,
+      "seitenausschnitte": 15,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.space-y-8 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.space-y-8 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__02.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__03.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__04.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__05.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__06.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__07.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__08.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__09.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__10.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__mobil__11.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-tuertechnik",
+      "geraet": "tablet",
+      "pfad": "/tuer-und-schliesstechnik",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.space-y-8 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.space-y-8 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__tablet__01.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__tablet__02.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__tablet__03.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__tablet__04.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__tablet__05.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__tablet__06.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__tablet__07.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__tablet__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-tuertechnik",
+      "geraet": "desktop",
+      "pfad": "/tuer-und-schliesstechnik",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.space-y-8 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.space-y-8 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__desktop__01.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__desktop__02.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__desktop__03.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__desktop__04.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__desktop__05.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__desktop__06.jpg",
+        "/root/sm24-bilder/e4-b/H09-tuertechnik__desktop__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-warenkorb",
+      "geraet": "mobil",
+      "pfad": "/warenkorb",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H10-warenkorb__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H10-warenkorb__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H10-warenkorb__mobil__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-warenkorb",
+      "geraet": "tablet",
+      "pfad": "/warenkorb",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H10-warenkorb__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H10-warenkorb__tablet__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-warenkorb",
+      "geraet": "desktop",
+      "pfad": "/warenkorb",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H10-warenkorb__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H10-warenkorb__desktop__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "mobil",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H11-kasse__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H11-kasse__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H11-kasse__mobil__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "tablet",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H11-kasse__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H11-kasse__tablet__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "desktop",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H11-kasse__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H11-kasse__desktop__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-ratgeber",
+      "geraet": "mobil",
+      "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "article.min-w-0 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand article.min-w-0 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H12-ratgeber__mobil__00.jpg",
+        "/root/sm24-bilder/e4-b/H12-ratgeber__mobil__01.jpg",
+        "/root/sm24-bilder/e4-b/H12-ratgeber__mobil__02.jpg",
+        "/root/sm24-bilder/e4-b/H12-ratgeber__mobil__03.jpg",
+        "/root/sm24-bilder/e4-b/H12-ratgeber__mobil__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-ratgeber",
+      "geraet": "tablet",
+      "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "article.min-w-0 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand article.min-w-0 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H12-ratgeber__tablet__00.jpg",
+        "/root/sm24-bilder/e4-b/H12-ratgeber__tablet__01.jpg",
+        "/root/sm24-bilder/e4-b/H12-ratgeber__tablet__02.jpg",
+        "/root/sm24-bilder/e4-b/H12-ratgeber__tablet__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-ratgeber",
+      "geraet": "desktop",
+      "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e4-b/H12-ratgeber__desktop__00.jpg",
+        "/root/sm24-bilder/e4-b/H12-ratgeber__desktop__01.jpg",
+        "/root/sm24-bilder/e4-b/H12-ratgeber__desktop__02.jpg"
+      ]
+    }
+  ]
+}

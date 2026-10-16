@@ -1,0 +1,487 @@
+{
+  "skript": "a11y",
+  "zeit": "2026-10-16T08:00:24.946Z",
+  "argumente": {
+    "_": [],
+    "geraet": "beide"
+  },
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H04-assistent",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 1,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "button-name",
+          "impact": "critical",
+          "hilfe": "Buttons must have discernible text",
+          "ziele": [
+            ".hover\\:border-foreground-subtle"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "help": "Buttons must have discernible text",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/button-name?application=playwright",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:border-foreground-subtle"
+              ],
+              "html": "<button disabled=\"\" class=\"group inline-flex items-center justify-center gap-2 rounded-md font-semibold select-none text-center transition duration-quick ease-standard active:scale-druck motion-reduce:transform-none disabled:cursor-not-allowed disabled:opacity-55 disabled:active:scale-100 aria-disab"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H04-assistent",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H05-code-shop",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H05-code-shop",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 1,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 2,
+      "details": [
+        {
+          "regel": "label",
+          "impact": "critical",
+          "hilfe": "Form elements must have labels",
+          "ziele": [
+            "#foto-ms-01-camera",
+            "#foto-ms-01-gallery"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "label",
+          "impact": "critical",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=playwright",
+          "nodes": [
+            {
+              "target": [
+                "#foto-ms-01-camera"
+              ],
+              "html": "<input id=\"foto-ms-01-camera\" type=\"file\" accept=\"image/*\" capture=\"environment\" class=\"sr-only\">"
+            },
+            {
+              "target": [
+                "#foto-ms-01-gallery"
+              ],
+              "html": "<input id=\"foto-ms-01-gallery\" type=\"file\" accept=\"image/*\" class=\"sr-only\">"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 1,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 2,
+      "details": [
+        {
+          "regel": "label",
+          "impact": "critical",
+          "hilfe": "Form elements must have labels",
+          "ziele": [
+            "#foto-ms-01-camera",
+            "#foto-ms-01-gallery"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "label",
+          "impact": "critical",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=playwright",
+          "nodes": [
+            {
+              "target": [
+                "#foto-ms-01-camera"
+              ],
+              "html": "<input id=\"foto-ms-01-camera\" type=\"file\" accept=\"image/*\" capture=\"environment\" class=\"sr-only\">"
+            },
+            {
+              "target": [
+                "#foto-ms-01-gallery"
+              ],
+              "html": "<input id=\"foto-ms-01-gallery\" type=\"file\" accept=\"image/*\" class=\"sr-only\">"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H07-zylinder-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 1,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "button-name",
+          "impact": "critical",
+          "hilfe": "Buttons must have discernible text",
+          "ziele": [
+            ".mx-auto > .hover\\:border-foreground-subtle.select-none.transition"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "help": "Buttons must have discernible text",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/button-name?application=playwright",
+          "nodes": [
+            {
+              "target": [
+                ".mx-auto > .hover\\:border-foreground-subtle.select-none.transition"
+              ],
+              "html": "<button disabled=\"\" class=\"group inline-flex items-center justify-center gap-2 rounded-md font-semibold select-none text-center transition duration-quick ease-standard active:scale-druck motion-reduce:transform-none disabled:cursor-not-allowed disabled:opacity-55 disabled:active:scale-100 aria-disab"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H07-zylinder-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H08-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H08-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H09-tuertechnik",
+      "pfad": "/tuer-und-schliesstechnik",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H09-tuertechnik",
+      "pfad": "/tuer-und-schliesstechnik",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H10-warenkorb",
+      "pfad": "/warenkorb",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H10-warenkorb",
+      "pfad": "/warenkorb",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H11-kasse",
+      "pfad": "/kasse",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H11-kasse",
+      "pfad": "/kasse",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H12-ratgeber",
+      "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H12-ratgeber",
+      "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    }
+  ]
+}

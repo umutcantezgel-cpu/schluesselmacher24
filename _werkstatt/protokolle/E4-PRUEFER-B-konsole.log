@@ -1,0 +1,59 @@
+| Ansicht | Konsolenfehler | Warnungen | Seitenfehler | Fehlgeschlagene Anfragen | Attrappen-Abbrüche (kein Befund) | Ladefehler |
+|---|---|---|---|---|---|---|
+| H01-start | 0 | 0 | 0 | 2 | 0 | – |
+| H02-autoschluessel | 0 | 0 | 0 | 0 | 0 | – |
+| H03-modell-golf | 0 | 0 | 0 | 1 | 0 | – |
+| H04-assistent | 0 | 0 | 0 | 1 | 0 | – |
+| H05-code-shop | 0 | 0 | 0 | 1 | 0 | – |
+| H06-code-produkt | 0 | 0 | 0 | 2 | 0 | – |
+| H07-zylinder-konfigurator | 0 | 0 | 0 | 1 | 0 | – |
+| H08-schliessanlagen | 0 | 0 | 0 | 2 | 0 | – |
+| H09-tuertechnik | 0 | 0 | 0 | 3 | 0 | – |
+| H10-warenkorb | 0 | 0 | 0 | 2 | 0 | – |
+| H11-kasse | 0 | 0 | 0 | 1 | 0 | – |
+| H12-ratgeber | 0 | 0 | 0 | 2 | 0 | – |
+
+### Einzelmeldungen (erste 10 je Art)
+
+**H01-start**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=5CB68i4pnAekjehf
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=tXyZJ52UQVBCVsD3
+
+**H03-modell-golf**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=0R2n0-klZUT4Si_p
+
+**H04-assistent**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=FSvW84RoVCGnVFWP
+
+**H05-code-shop**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=wdYzTAa-H_FTGZ_J
+
+**H06-code-produkt**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=pN1_3f_ThuChjmWR
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=BaeexqTUjbFF8PeR
+
+**H07-zylinder-konfigurator**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=OlImuM2Jlqj8jWkb
+
+**H08-schliessanlagen**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=sfeFuyeCPpBF4FyE
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=gFpAPeOfg4MQvdYY
+
+**H09-tuertechnik**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=qH6nn8kJwPikDu7g
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=9yKgiuW_03To0AcE
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/service-und-termin/anfrage?thema=tuer-und-schliesstechnik&_rsc=9yKgiuW_03To0AcE
+
+**H10-warenkorb**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=QaKZh9eWx-7bUfYk
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=OP5fG0cD2d1AduyH
+
+**H11-kasse**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=8Hu3i0Y9DhYfvdgA
+
+**H12-ratgeber**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=CIHTM0MgeNHunIgv
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=nww6HKkCURv8yJYc
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/konsole-2026-10-16_09-54-50.json
+EXIT 0
