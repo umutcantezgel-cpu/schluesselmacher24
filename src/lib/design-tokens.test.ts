@@ -1,3 +1,5 @@
+import { readFileSync, readdirSync, statSync } from 'node:fs';
+import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import config from '../../tailwind.config';
 
@@ -19,5 +21,20 @@ describe('Design-Tokens', () => {
 
   it('vergibt keinen Namen zugleich als Schriftgröße und als Farbe', () => {
     expect(groessen.filter((name) => farben.includes(name))).toEqual([]);
+  });
+
+  it('nutzt die Rahmenfarbe nie als Schriftfarbe (text-input)', () => {
+    const funde: string[] = [];
+    const durchsuchen = (ordner: string) => {
+      for (const name of readdirSync(ordner)) {
+        const pfad = path.join(ordner, name);
+        if (statSync(pfad).isDirectory()) durchsuchen(pfad);
+        else if (/\.(tsx?|css)$/.test(name) && !name.includes('.test.')) {
+          if (/\btext-input\b/.test(readFileSync(pfad, 'utf8'))) funde.push(pfad);
+        }
+      }
+    };
+    durchsuchen(path.resolve(__dirname, '..'));
+    expect(funde).toEqual([]);
   });
 });
