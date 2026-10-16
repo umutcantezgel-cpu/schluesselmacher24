@@ -71,6 +71,15 @@ interface Snapshot<T> {
 }
 
 /**
+ * Ob der Hinweis „Zwischenstand geladen“ gilt: nur solange die Anzeige aus dem
+ * gespeicherten Stand kommt. Nach der ersten eigenen Eingabe steht der Stand
+ * zwar auch im Speicher, ist dann aber kein geladener mehr.
+ */
+export function zeigtGeladenenStand(gespeichert: boolean, eigeneEingabe: boolean, verworfen: boolean): boolean {
+  return gespeichert && !eigeneEingabe && !verworfen;
+}
+
+/**
  * Zustand für mehrstufige Formulare und Konfiguratoren.
  *
  * Der Zwischenstand wird im Browser gespeichert, damit ein langer
@@ -191,7 +200,7 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     isLast: stepIndex === relevantSteps.length - 1,
     canContinue: validate ? validate(current.data, step?.id ?? '') : true,
     reset,
-    restored: Boolean(stored) && !dismissed,
+    restored: zeigtGeladenenStand(Boolean(stored), local !== null, dismissed),
     dismissRestored: () => setDismissed(true),
     saved,
   };
