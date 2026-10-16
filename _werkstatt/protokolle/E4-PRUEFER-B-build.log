@@ -1,0 +1,120 @@
+▲ Next.js 16.3.5 (Turbopack)
+✓ Running next.config.ts took 72ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 6.5s
+  Running TypeScript ...
+  Finished TypeScript in 14.9s ...
+  Collecting page data using 3 workers ...
+PAYLOAD_SECRET fehlt — Backend deaktiviert, Seite läuft aus content/*.json.
+PAYLOAD_SECRET fehlt — Backend deaktiviert, Seite läuft aus content/*.json.
+PAYLOAD_SECRET fehlt — Backend deaktiviert, Seite läuft aus content/*.json.
+PAYLOAD_SECRET fehlt — Backend deaktiviert, Seite läuft aus content/*.json.
+PAYLOAD_SECRET fehlt — Backend deaktiviert, Seite läuft aus content/*.json.
+  Generating static pages using 3 workers (0/198) ...
+PAYLOAD_SECRET fehlt — Backend deaktiviert, Seite läuft aus content/*.json.
+  Generating static pages using 3 workers (49/198) 
+  Generating static pages using 3 workers (98/198) 
+  Generating static pages using 3 workers (148/198) 
+✓ Generating static pages using 3 workers (198/198) in 5.0s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /[...unbekannt]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /api/kunden-upload
+├ ○ /artikel
+├   /artikel/[slug]
+│ ├ ● /artikel/beispiel-schluesselkasten
+│ ├ ● /artikel/beispiel-schluesselsafe-zahlencode
+│ ├ ● /artikel/beispiel-schluesselkappen-set
+│ └ ● [+5 more paths]
+├ ○ /autoschluessel
+├ ƒ /autoschluessel/anfrage
+├ ○ /autoschluessel/fahrzeugoeffnung
+├ ○ /autoschluessel/funkschluessel
+├ ○ /autoschluessel/kopieren
+├ ○ /autoschluessel/marken
+├   /autoschluessel/marken/[make]
+│ ├ ● /autoschluessel/marken/volkswagen
+│ ├ ● /autoschluessel/marken/bmw
+│ ├ ● /autoschluessel/marken/mercedes-benz
+│ └ ● [+9 more paths]
+├   /autoschluessel/marken/[make]/[model]
+│ ├ ● /autoschluessel/marken/volkswagen/golf
+│ ├ ● /autoschluessel/marken/volkswagen/polo
+│ ├ ● /autoschluessel/marken/volkswagen/passat
+│ └ ● [+46 more paths]
+├ ○ /autoschluessel/nachmachen
+├ ○ /autoschluessel/programmieren
+├ ○ /autoschluessel/schluesselbart-fraesen
+├ ○ /autoschluessel/smart-key
+├ ƒ /bestellung/[id]
+├ ○ /elektronische-zutrittsloesungen
+├ ○ /elektronische-zutrittsloesungen/konfigurator
+├ ○ /gleichschliessende-zylinder
+├ ○ /gleichschliessende-zylinder/konfigurator
+├ ○ /icon-12o0cb.svg
+├ ○ /kasse
+├ ○ /llms.txt
+├ ○ /ratgeber
+├   /ratgeber/[slug]
+│ ├ ● /ratgeber/autoschluessel-verloren-was-tun
+│ ├ ● /ratgeber/unterschied-kopie-und-programmierung
+│ ├ ● /ratgeber/zylinder-richtig-ausmessen
+│ └ ● [+5 more paths]
+├ ○ /rechtliches/agb
+├ ○ /rechtliches/cookie-einstellungen
+├ ○ /rechtliches/datenschutz
+├ ○ /rechtliches/impressum
+├ ○ /rechtliches/versand-und-zahlung
+├ ○ /rechtliches/widerruf
+├ ○ /robots.txt
+├ ○ /schliessanlagen
+├ ○ /schliessanlagen/konfigurator
+├ ○ /schluessel-nach-code
+├   /schluessel-nach-code/[slug]
+│ ├ ● /schluessel-nach-code/ms-01
+│ ├ ● /schluessel-nach-code/ms-02
+│ ├ ● /schluessel-nach-code/ms-03
+│ └ ● [+49 more paths]
+├ ○ /schluessel-nach-vorlage
+├ ○ /schluessel-nach-vorlage/anfrage
+├ ○ /service-und-termin
+├ ƒ /service-und-termin/anfrage
+├ ○ /service-und-termin/kontakt
+├ ○ /service-und-termin/terminstatus
+├ ○ /service-und-termin/vor-ort
+├ ○ /sicherheitstechnik
+├   /sicherheitstechnik/[slug]
+│ ├ ● /sicherheitstechnik/videoueberwachung
+│ ├ ● /sicherheitstechnik/alarmtechnik
+│ ├ ● /sicherheitstechnik/aussenhautsicherung
+│ └ ● [+4 more paths]
+├ ○ /sicherheitstechnik/sicherheitscheck
+├ ○ /sitemap.xml
+├ ○ /standorte
+├   /standorte/[city]
+│ ├ ● /standorte/berlin
+│ ├ ● /standorte/hamburg
+│ ├ ● /standorte/muenchen
+│ └ ● [+3 more paths]
+├ ○ /tuer-und-schliesstechnik
+├   /tuer-und-schliesstechnik/[slug]
+│ ├ ● /tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder
+│ ├ ● /tuer-und-schliesstechnik/einsteckschloesser
+│ ├ ● /tuer-und-schliesstechnik/mehrfachverriegelungen
+│ └ ● [+7 more paths]
+└ ○ /warenkorb
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+EXIT 0
