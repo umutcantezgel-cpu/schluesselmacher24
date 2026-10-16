@@ -117,7 +117,10 @@ export default async function ModelPage(props: PageProps) {
   const deposit = formatCents(settings.booking.depositCents);
   const leadDays = settings.booking.leadTimeDays;
   const felder = detailFelder(model.keyKinds);
-  const hatZeichnung = felder.some((feld) => feld.typ !== undefined);
+  // Arten ohne eigene Bauform (etwa Keyless ohne Smart Key) stehen als Zusatz unter den Zeichnungen.
+  const gezeichnet = felder.filter((feld) => feld.typ !== undefined);
+  const zusaetze = felder.filter((feld) => feld.typ === undefined);
+  const hatZeichnung = gezeichnet.length > 0;
 
   // Vorbelegung des Assistenten über Suchparameter.
   const assistantHref = `/autoschluessel/anfrage?marke=${make.slug}&modell=${model.slug}`;
@@ -255,42 +258,52 @@ export default async function ModelPage(props: PageProps) {
             lead="Welche davon Ihr Fahrzeug hat, erkennen wir an Ihren Schlüsselfotos."
           />
 
-          <ol
-            className={cn(
-              'mt-8 grid gap-px overflow-hidden rounded-lg border border-border bg-border',
-              RASTER[Math.min(felder.length, 4)],
-            )}
-          >
-            {felder.map((feld, index) => (
-              <li
-                key={feld.art}
-                className="sm24-reveal flex flex-col bg-surface p-4 sm:p-5"
-                style={motionStyle(index * 0.12)}
-              >
-                {feld.typ && (
-                  <SchluesselGrafik
-                    params={{ typ: feld.typ, code: feld.art }}
-                    title={`Zeichnung: ${keyKindLabel(feld.art)}`}
-                    className="w-full"
-                  />
-                )}
-                <h3 className={cn('text-title-sm font-semibold text-foreground', feld.typ && 'mt-3')}>
-                  {keyKindLabel(feld.art)}
-                </h3>
-                <p className="mt-1 text-small text-foreground-muted">{keyKindDescription(feld.art)}</p>
-                {feld.keyless && (
-                  <p className="mt-2 text-small text-foreground-muted">
-                    <span className="font-semibold text-foreground">{keyKindLabel('keyless')}:</span>{' '}
-                    {keyKindDescription('keyless')}
-                  </p>
-                )}
-              </li>
-            ))}
-          </ol>
+          {hatZeichnung && (
+            <ol
+              className={cn(
+                'mt-8 grid gap-px overflow-hidden rounded-lg border border-border bg-border',
+                RASTER[Math.min(gezeichnet.length, 4)],
+              )}
+            >
+              {gezeichnet.map((feld, index) => (
+                <li
+                  key={feld.art}
+                  className="sm24-reveal flex flex-col bg-surface p-4 sm:p-5"
+                  style={motionStyle(index * 0.12)}
+                >
+                  {feld.typ && (
+                    <SchluesselGrafik
+                      params={{ typ: feld.typ, code: feld.art }}
+                      title={`Zeichnung: ${keyKindLabel(feld.art)}`}
+                      className="w-full"
+                    />
+                  )}
+                  <h3 className="mt-3 text-title-sm font-semibold text-foreground">{keyKindLabel(feld.art)}</h3>
+                  <p className="mt-1 text-small text-foreground-muted">{keyKindDescription(feld.art)}</p>
+                  {feld.keyless && (
+                    <p className="mt-2 text-small text-foreground-muted">
+                      <span className="font-semibold text-foreground">{keyKindLabel('keyless')}:</span>{' '}
+                      {keyKindDescription('keyless')}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ol>
+          )}
           {hatZeichnung && (
             <p className="mt-3 font-mono text-caption text-foreground-muted">
               Schematische Darstellung, nicht maßstäblich.
             </p>
+          )}
+          {zusaetze.length > 0 && (
+            <dl className={cn('max-w-measure border-t border-border', hatZeichnung ? 'mt-6' : 'mt-8')}>
+              {zusaetze.map((feld) => (
+                <div key={feld.art} className="border-b border-border py-4">
+                  <dt className="text-title-sm font-semibold text-foreground">{keyKindLabel(feld.art)}</dt>
+                  <dd className="mt-1 text-small text-foreground-muted">{keyKindDescription(feld.art)}</dd>
+                </div>
+              ))}
+            </dl>
           )}
         </Section>
       )}

@@ -259,3 +259,14 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   4. Bildstellen mit „Eigene Aufnahme“: Die Notiztexte sind Redaktionshinweise und werden nicht angezeigt; ohne Foto steht eine Fachzeichnung (M-01).
 - **Hinweis des Prüfers zum Fuß:** Der Redaktionshinweis zu Platzhalter-Firmendaten erscheint nur im Entwicklungsserver, nie im Produktionsbuild (D-016).
 - **Regelverstoß:** Der Prüfer der Runde 1 hat eine selbst angelegte Hilfsdatei `_werkstatt/tmp-x` mit `rm -f` gelöscht. Fremde Dateien waren nicht betroffen. Das ist der dritte Löschfall (D-020, D-023). Die Regel steht weiter in jedem Auftrag.
+
+## D-026 · E4-BAUMEISTER-08 (Marken, Marke, Modell H03) abgenommen, mit Nacharbeit
+- **Ergebnis:** Prüfung Runde 1 bestanden. Bericht: `_werkstatt/berichte/E4-BAUMEISTER-08.md`. Eigene Prüfung des ganzen Unterschieds gegen `d8e2312` (Welle C lief mit Zwischenständen): Texte unverändert bis auf Einzahl und Mehrzahl und den Wegfall der eckigen Platzhalter-Klammern („nicht erfasst — wir klären das anhand Ihrer Schlüsselfotos“). Daten, Abfragen, Links und Vorbelegung unverändert.
+- **Nacharbeit des Orchestrators:** Keyless stand beim Golf (kein Smart Key) als Zelle ohne Zeichnung in der Reihe der Bauformen; die Reihe wirkte unfertig. Jetzt zeigt die Reihe nur Bauformen mit Zeichnung (Spalten nach Anzahl), Arten ohne eigene Bauform stehen als Haarlinien-Zusatz darunter, der Hinweis „Schematische Darstellung“ direkt unter den Zeichnungen.
+- **Offene Fragen des Baumeisters, entschieden:**
+  - Abschnitt „Schlüsselarten im Detail“ direkt nach den Fahrzeugangaben: bleibt (großer Moment früh auf der Seite).
+  - Bildstelle zählt nur Bauformen mit Zeichnung: richtig.
+  - Satz „Bei allen hier erfassten Modellen …“ bei 0 Modellen: kommt in den Daten nicht vor (jede Marke hat Modelle); Vermerk, keine Änderung.
+  - Doppelter Verweis auf die Markenseite: Textvorschlag liegt in TEXTVORSCHLAEGE.md.
+  - Tabelle ohne seitliches Scrollen braucht keinen Scrollbereich mehr: bestätigt.
+  - Markenbildstelle zeigt drei Transponderschlüssel statt eines Regalfotos: gewollt, bis ein Foto da ist (M-01).
