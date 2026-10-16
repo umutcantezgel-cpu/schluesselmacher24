@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 4/6 · Welle C (E4-B-08 bis -11) im Bau, E3-B-07 in Prüfung · Pflicht 35/72 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (8dc1538: Typprüfung 0, Linter 0, 1008/1008 Tests, Logikwächter gleich) · Nächster Schritt: B-07 und Welle C abnehmen, Pakete Welle D schreiben
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 4/6 · Welle C (B-08 fertig, B-09 bis -11 in Prüfung/Bau), Welle D Teil 1 (B-12) im Bau · Pflicht 37/72 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün bis e3ad5bb · Nächster Schritt: Welle C abnehmen, Welle D Teil 2 starten
 
 # Status des Gestaltungslaufs
 
