@@ -153,3 +153,5 @@ Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabna
 - **Code-Shop, Bestellformular (Bestand, Logikwächter):** `handleAdd` wartet auf `uploadsAbwarten()` ohne Sperrzustand; zwei schnelle Klicks könnten zwei Warenkorbeinträge erzeugen. Bei ungültigem `codePattern` ist jede Eingabe gültig (bewusst, Kommentar Z. 44; Daten durch `code-pattern.test.ts` abgesichert). Beides ist Logik und bleibt im Lauf unverändert; Vorschlag für ein eigenes Paket mit Test nach dem Lauf.
 - **Leistungsseiten Türtechnik (Bestand):** `PROCESS_LABELS[page.process]` ohne Null-Prüfung in `tuer-und-schliesstechnik/[slug]/page.tsx` Z. 48. Alle Daten haben heute einen gültigen Wert; Absturzrisiko nur bei neuen CMS-Werten. Logik, daher nur Vermerk.
 - **Modellseite:** zwei Links auf dieselbe Markenseite („Andere …-Modelle“, „Alle …-Modelle“). Inhalt, daher Vorschlag in TEXTVORSCHLAEGE.md.
+- **Maßzeichnung schmal (E4-B-13, D-029):** `ZylinderMassLive` zeigt auf 390 px Beschriftungen von etwa 8–9 px (Zeichnung skaliert über die volle Breite). Lösung: Generator-Variante mit größerer Schrift und weniger Beschriftung für schmale Flächen; Paket nach Welle E.
+

@@ -12,5 +12,19 @@
       "suchen": "behavior:\\s*(?:'smooth'|scrollVerhalten\\(\\))",
       "ersetzen": "behavior: __SCROLL__"
     }
+  ],
+  "src/app/(site)/schluessel-nach-code/[slug]/bestell-formular.tsx": [
+    {
+      "grund": "Live-Schlüssel (B-15) zeigt den geprüften Code; reine Anzeige, liest nur codeValid und normalized (E4-BAUMEISTER-09, D-029)",
+      "suchen": "\\s*<LiveSchluessel code=\\{codeValid \\? normalized : ''\\} className=\"mt-4\" />",
+      "ersetzen": ""
+    }
+  ],
+  "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx": [
+    {
+      "grund": "Zylindermaß live (B-17): ohne Messfoto zeigt die Position die Maßzeichnung; reine Anzeige, liest nur item und form (E4-BAUMEISTER-13, D-029)",
+      "suchen": "\\{measureFigure\\.bild \\? \\(\\s*<ImagePlaceholder slot=\\{measureFigure\\} compact />\\s*\\) : \\(\\s*<ZylinderMassLive\\s+form=\\{item\\.form\\}\\s+aussen=\\{item\\.measureAMm\\}\\s+innen=\\{item\\.measureBMm\\}\\s+name=\\{form\\.label\\}\\s*/>\\s*\\)\\}",
+      "ersetzen": "<ImagePlaceholder slot={measureFigure} compact />"
+    }
   ]
 }

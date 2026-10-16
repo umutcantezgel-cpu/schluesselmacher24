@@ -11,7 +11,7 @@ import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
 import { AreaScope } from '@/components/visual/area-scope';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { PROFILSCHNITT_AUSSCHNITT, PROFILSCHNITT_GROESSE } from '@/components/visual/generators/profilschnitt';
-import { SchliessplanGrafik } from '@/components/visual/generators/schliessplan';
+import { SchliessplanGrafik, schliessplanAusschnitt } from '@/components/visual/generators/schliessplan';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { ZylinderMassGrafik } from '@/components/visual/generators/zylinder-mass';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
@@ -30,12 +30,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-/**
- * Telefon-Ausschnitt des Hauptschlüsselplans (vier Türen) in viewBox-Einheiten:
- * nur Schlüssel und Türen, ohne leeren Rand, damit die Kürzel lesbar groß sind.
- * Abgeleitet aus dem Raster des Generators (Blätter 84 breit, Zeilen 62/150/238).
- */
-const PLAN_AUSSCHNITT_MOBIL: GrafikAusschnitt = { x: 80, y: 40, breite: 320, hoehe: 224, vollBreite: 480, vollHoehe: 300 };
+/** Telefon-Ausschnitt des Hauptschlüsselplans (vier Türen): nur Schlüssel und Türen, ohne leeren Rand. */
+const PLAN_MOBIL = { system: 'haupt', tueren: 4 } as const;
+const PLAN_AUSSCHNITT_MOBIL: GrafikAusschnitt = schliessplanAusschnitt(PLAN_MOBIL);
 
 const TRUST_POINTS = [
   {
@@ -361,7 +358,7 @@ export default async function HomePage() {
             <div className="order-2 rounded-lg border border-border bg-surface p-4 sm:p-6 lg:sticky lg:top-28 lg:order-1 lg:col-span-7 lg:-mt-12">
               <div className="sm24-ausschnitt overflow-hidden sm:hidden" style={ausschnittStil(PLAN_AUSSCHNITT_MOBIL)}>
                 <SchliessplanGrafik
-                  params={{ system: 'haupt', tueren: 4 }}
+                  params={PLAN_MOBIL}
                   title="Schließplan einer Hauptschlüsselanlage mit vier Türen"
                 />
               </div>

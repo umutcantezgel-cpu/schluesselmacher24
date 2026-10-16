@@ -55,6 +55,8 @@ export function OptionCard({
       <label
         className={cn(
           'flex min-h-touch cursor-pointer items-start gap-3 p-4',
+          // Das Info-Symbol steht oben rechts über der Karte; Titel und Preis halten Abstand (Befund E4-B-13)
+          info && 'pr-12',
           disabled && 'cursor-not-allowed',
         )}
       >

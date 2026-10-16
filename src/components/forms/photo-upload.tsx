@@ -297,10 +297,11 @@ export function PhotoUpload({
         <p className="mt-1 text-small leading-relaxed text-foreground-muted">{description}</p>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      {/* Spalten nach verfügbarer Breite: in schmalen Formularspalten untereinander (Befund E4-B-09) */}
+      <div className="grid grid-cols-kacheln gap-3">
         {/* Beispielbild direkt am Uploadfeld */}
         <div>
-          <p className="mb-1.5 font-mono text-caption font-semibold uppercase tracking-label text-foreground-subtle">
+          <p className="mb-1.5 font-mono text-caption font-semibold uppercase tracking-label text-foreground-muted">
             So sollte das Foto aussehen
           </p>
           <ImagePlaceholder slot={example} compact />
@@ -328,7 +329,7 @@ export function PhotoUpload({
             <GlyphBildHochladen size={18} aria-hidden />
             {allowDocuments ? 'Datei auswählen' : 'Aus Galerie wählen'}
           </button>
-          <p className="text-center font-mono tabular-nums text-caption text-foreground-subtle">
+          <p className="text-center font-mono tabular-nums text-caption text-foreground-muted">
             Max. {formatFileSize(MAX_BYTES)} je Datei
             {multiple ? ` · bis zu ${maxFiles} Dateien` : ''}
           </p>

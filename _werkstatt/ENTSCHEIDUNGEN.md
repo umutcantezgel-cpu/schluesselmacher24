@@ -282,3 +282,21 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
 - **Eingabefelder mit heller Schrift (seit E2-L-01):** Die Schriftgröße `text-input` und die Farbe `input` (Rahmenfarbe) trugen denselben Namen. Tailwind erzeugt für `text-input` dann beide Regeln, und die Rahmenfarbe gewann als Schriftfarbe (rgb 203 213 226 auf Weiß, weit unter 4,5:1). Betroffen waren alle Text-, Auswahl- und Mengenfelder. Die Schriftgröße heißt jetzt `text-eingabe`. Der neue Test `src/lib/design-tokens.test.ts` verhindert gleiche Namen in Schriftgrößen und Farben. Gemessen danach: rgb 25 33 51, 16 px. Gefunden von E4-BAUMEISTER-13.
 - **Abschnitte über vier Bildschirmhöhen blieben unsichtbar (seit E2):** `InView` startete erst, wenn 25 % des Abschnitts sichtbar waren. Bei `/schliessanlagen` (#systeme, 6512 px mobil) wurde das nie erreicht, und alle Karten blieben bei Deckkraft 0. Jetzt reicht es auch, wenn der sichtbare Teil ein Viertel der Bildschirmhöhe füllt (Meldestufen in 2-%-Schritten). Neue Hilfsfunktion `istSichtbarGenug` mit Test. Gemessen danach: `data-motion="play"`, 0 pausierte Elemente. Gefunden von E4-BAUMEISTER-10.
 - **Alt-Neu im Test:** `cn.test.ts` Zeile 10, Liste der Schriftgrößen: `'input'` → `'eingabe'`. Die Zahl der Prüfungen ist unverändert.
+
+## D-029 · Welle C (E4-B-09, -10, -11) und E4-B-13 vom Orchestrator fertiggestellt
+- **Lage:** Nach drei Runden blieben bei vier Paketen Muss-Befunde, die außerhalb der Schreibrechte lagen (gemeinsame Bausteine, Generatoren, Logikwächter). Die eigene Prüfung des ganzen Unterschieds (Welle C gegen `d8e2312`, B-13 gegen `e3ad5bb`) zeigt: Texte unverändert bis auf erlaubte Mikrotexte, Daten, Abfragen und Logik unverändert.
+- **Logikwächter, Teil B:** Teil B zählt jeden Ausdruck in JSX. Reine Anzeige-Ausdrücke stehen jetzt als benannte Ausnahmen in `_werkstatt/werkzeuge/logik-ausnahmen.json` (wie die Scroll-Ausnahme aus L-03); jede Ausnahme nennt Grund und Paket:
+  - `bestell-formular.tsx`: `<LiveSchluessel code={codeValid ? normalized : ''} …/>` (B-15, liest nur den geprüften Code).
+  - `konfigurator.tsx`: Foto vor Zeichnung – mit Messfoto die Bildstelle, sonst `ZylinderMassLive` (B-17). So bleibt `measureFigure` in Gebrauch, Teil A ist unverändert.
+  - Ergebnis: beide Dateien „gleich“ mit je 1 angewandter Ausnahme. Die Pakete E4-B-13 bis -15 kennen die Regel seit `5c8ee69`.
+- **Gemeinsame Bausteine (E4-L-18):**
+  - Neues Token `grid-cols-kacheln` (Spalten nach verfügbarer Breite, ab 15rem nebeneinander). Eingesetzt im Foto-Feld (Knöpfe brachen in der schmalen Formularspalte um, B-09) und in den Rechner-Optionen (Beschriftungen liefen in der 5/12-Spalte über die Karte, B-11). `cn` kennt das Token, mit Test.
+  - `OptionCard`: Mit Info-Symbol hält die Zeile rechts 3 rem frei; das Symbol überdeckte den Preis (B-13, mobil).
+  - Schließplan: `schliessplanAusschnitt(params)` liefert die Inhaltsfläche; unter 640 px zeigen Systemkarten, interaktiver Plan und Startseite nur diesen Ausschnitt. Kleinste Kürzel mobil 13 px statt 8,6 px (B-10); die Startseite nutzt die Funktion statt fester Zahlen. Ein Ausschnitt auch am Desktop wurde verworfen, weil die Zeichnungen dort ungleich groß wurden.
+  - Legenden des interaktiven Schließplans in `foreground-muted` (auf `surface-sunken`, KERN 1.6).
+  - `tuer-schutz`: papierfarbener Rand um die Legendenschrift, damit Rasterlinien nicht durch die Schrift laufen (Strichbreite 4 als Fläche, D-010).
+- **Entscheidungen zu offenen Fragen:**
+  - H06 (`[slug]/page.tsx`): „Was Sie erhalten“, „Technische Angaben“ und „Wo steht der Code?“ sind Unterüberschriften innerhalb eines Abschnitts, keine Abschnittsköpfe; sie bleiben `h2` ohne Nummer.
+  - Türtechnik: Raster 7/5 bleibt; der Rechner passt jetzt in die Spalte. Mikrotext „Ansehen“ → „Leistungsdetails“ übernommen.
+  - Fußhinweis „Firmendaten sind noch Platzhalter“: erscheint nur im Entwicklungsserver (D-016), kein Befund im Produktionsbuild.
+- **Offen (PLAN):** Maßzeichnung `ZylinderMassLive` auf dem Telefon mit etwa 8–9 px Beschriftung; braucht eine Generator-Variante für schmale Breiten. JS-Menge des interaktiven Schließplans wird im Build-Gate gemessen.

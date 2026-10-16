@@ -43,6 +43,11 @@ describe('cn – eigene Skalen des Designsystems', () => {
     );
   });
 
+  it('führt Spaltenraster nach verfügbarer Breite mit festen Spalten zusammen', () => {
+    expect(cn('grid-cols-2', 'grid-cols-kacheln')).toBe('grid-cols-kacheln');
+    expect(cn('grid-cols-kacheln', 'gap-3')).toBe('grid-cols-kacheln gap-3');
+  });
+
   it('verhält sich für bekannte Tailwind-Klassen wie bisher', () => {
     expect(cn('px-2 py-1', 'p-3')).toBe('p-3');
     expect(cn('bg-primary', false, undefined, 'hover:bg-primary-hover')).toBe('bg-primary hover:bg-primary-hover');

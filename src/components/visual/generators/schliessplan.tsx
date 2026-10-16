@@ -536,6 +536,37 @@ export function SchliessplanGrafik({ params, title, className }: VisualProps) {
 }
 
 /**
+ * Inhaltsfläche des Plans in viewBox-Einheiten (Schlüssel, Türen, Z-Beschriftung) mit
+ * Rand – für einen Ausschnitt ohne leere Ränder (`.sm24-ausschnitt`), damit die
+ * Kürzel auf schmalen Flächen lesbar groß bleiben. Passt der Plan nicht in die
+ * viewBox (Sicherheitsnetz der Grafik), gilt die volle Fläche.
+ */
+export function schliessplanAusschnitt(
+  params: unknown,
+  rand = 12,
+): { x: number; y: number; breite: number; hoehe: number; vollBreite: number; vollHoehe: number } {
+  const { knoten } = lesePlan(parameter(params));
+  const halbeBreite = (k: Knoten) => (k.art === 'tuer' ? TUER_BREITE : schluesselBreite(k.label)) / 2;
+  const zText = (k: Knoten) => (k.label === 'Z' ? 7 + ZEICHEN + 2 : 0);
+  const links = Math.min(...knoten.map((k) => k.x - halbeBreite(k) - (k.x < BREITE / 2 ? zText(k) : 0)));
+  const rechts = Math.max(...knoten.map((k) => k.x + halbeBreite(k) + (k.x >= BREITE / 2 ? zText(k) : 0)));
+  const oben = Math.min(...knoten.map((k) => k.y - halbeHoehe(k)));
+  const unten = Math.max(...knoten.map((k) => k.y + halbeHoehe(k)));
+  const voll = { x: 0, y: 0, breite: BREITE, hoehe: HOEHE, vollBreite: BREITE, vollHoehe: HOEHE };
+  if (rechts - links > BREITE - 2 * RAND) return voll;
+  const x = Math.max(0, links - rand);
+  const y = Math.max(0, oben - rand);
+  return {
+    x: r(x),
+    y: r(y),
+    breite: r(Math.min(BREITE, rechts + rand) - x),
+    hoehe: r(Math.min(HOEHE, unten + rand) - y),
+    vollBreite: BREITE,
+    vollHoehe: HOEHE,
+  };
+}
+
+/**
  * Alle Schlüssel des Plans, oben nach unten und links nach rechts, mit Kürzel und den
  * Kennungen der Türen, die sie schließen. Liest dieselben Parameter wie die Grafik.
  */

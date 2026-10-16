@@ -252,18 +252,26 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
           {/* Legende: Ziffer in Mono, Name in Mono, ohne Kreis */}
           {BAUTEILE.map((b, i) => (
             <g key={b.key} className={gedimmt(b.key) ? 'opacity-30' : undefined}>
+              {/* Papierfarbener Rand um die Schrift: Rasterlinien laufen nicht durch die Legende.
+                  Fläche aus breitem Strich, daher Zahl statt Strichstufe (D-010). */}
               <text
-                className="fill-area-strong font-mono"
+                className="fill-area-strong stroke-surface font-mono"
                 fontSize={SCHRIFT}
                 fontWeight={600}
+                paintOrder="stroke"
+                strokeLinejoin="round"
+                strokeWidth={4}
                 x={LEGENDE_X}
                 y={b.row + 4.5}
               >
                 {i + 1}
               </text>
               <text
-                className="fill-foreground-muted font-mono"
+                className="fill-foreground-muted stroke-surface font-mono"
                 fontSize={SCHRIFT}
+                paintOrder="stroke"
+                strokeLinejoin="round"
+                strokeWidth={4}
                 x={NAME_X}
                 y={b.row + 4.5}
               >

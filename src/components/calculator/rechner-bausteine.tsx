@@ -44,7 +44,7 @@ export function Auswahlgruppe({
     <fieldset>
       <legend className="text-title-sm font-semibold text-foreground">{legende}</legend>
       {hinweis && <p className="mt-1 text-small text-foreground-subtle">{hinweis}</p>}
-      <div className="mt-3 grid gap-3 sm:grid-cols-2">{children}</div>
+      <div className="mt-3 grid grid-cols-kacheln gap-3">{children}</div>
     </fieldset>
   );
 }

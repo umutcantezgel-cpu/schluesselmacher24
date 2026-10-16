@@ -2,7 +2,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { SchliessplanGrafik, schliessplanSchluessel } from './schliessplan';
+import { SchliessplanGrafik, schliessplanAusschnitt, schliessplanSchluessel } from './schliessplan';
 
 function zeichne(params: unknown, title: unknown = 'Schließplan'): string {
   return renderToStaticMarkup(
@@ -250,5 +250,33 @@ describe('SchliessplanGrafik – Markierung', () => {
     const liste = schliessplanSchluessel({ system: 'zentral', tueren: 3 });
     expect(liste.map((k) => k.kuerzel)).toEqual(['ES 1', 'ES 2', 'ES 3']);
     expect(liste[0]).toEqual({ kennung: 'e1', kuerzel: 'ES 1', tueren: ['t1', 'z1', 'z2'] });
+  });
+
+  it('liefert den Ausschnitt ohne leeren Rand, innerhalb der Zeichenfläche', () => {
+    for (const params of [
+      { system: 'gleichschliessung', tueren: 3 },
+      { system: 'zentral', tueren: 4 },
+      { system: 'haupt', tueren: 4 },
+      { system: 'generalhaupt', gruppen: 2, tueren: 4 },
+    ]) {
+      const a = schliessplanAusschnitt(params);
+      expect(a.vollBreite).toBe(480);
+      expect(a.vollHoehe).toBe(300);
+      expect(a.x).toBeGreaterThanOrEqual(0);
+      expect(a.y).toBeGreaterThanOrEqual(0);
+      expect(a.x + a.breite).toBeLessThanOrEqual(480);
+      expect(a.y + a.hoehe).toBeLessThanOrEqual(300);
+      // schmaler als die volle Fläche: die Kürzel werden größer dargestellt
+      expect(a.breite).toBeLessThan(480);
+    }
+  });
+
+  it('umschließt beim Hauptschlüsselplan alle Schlüssel und Türen', () => {
+    const a = schliessplanAusschnitt({ system: 'haupt', tueren: 4 });
+    // Türen bei 114 … 366 (Raster 84), ES-Schlüssel rund 50 breit, Zeilen 62 … 238
+    expect(a.x).toBeLessThanOrEqual(114 - 25);
+    expect(a.x + a.breite).toBeGreaterThanOrEqual(366 + 25);
+    expect(a.y).toBeLessThanOrEqual(62 - 13);
+    expect(a.y + a.hoehe).toBeGreaterThanOrEqual(238 + 16);
   });
 });

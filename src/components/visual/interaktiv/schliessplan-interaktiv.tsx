@@ -2,7 +2,8 @@
 
 import { useId, useMemo, useState, type KeyboardEvent } from 'react';
 
-import { SchliessplanGrafik, schliessplanSchluessel } from '@/components/visual/generators/schliessplan';
+import { ausschnittStil } from '@/components/ui/image-placeholder';
+import { SchliessplanGrafik, schliessplanAusschnitt, schliessplanSchluessel } from '@/components/visual/generators/schliessplan';
 import { cn } from '@/lib/cn';
 
 import { alleTueren, naechsterIndex, schliessBeschreibung, tuerBeschreibung, tuerName } from './auswahl';
@@ -51,6 +52,7 @@ export function SchliessplanInteraktiv({
 
   const basis = useMemo(() => ({ system, tueren, gruppen }), [system, tueren, gruppen]);
   const schluessel = useMemo(() => schliessplanSchluessel(basis), [basis]);
+  const ausschnitt = useMemo(() => schliessplanAusschnitt(basis), [basis]);
   const tuerListe = useMemo(() => alleTueren(schluessel), [schluessel]);
 
   const params = {
@@ -108,12 +110,15 @@ export function SchliessplanInteraktiv({
         aria-labelledby={systeme.length > 1 ? `${id}-system-${system}` : undefined}
         className="rounded-lg border border-border bg-surface p-4 sm:p-6"
       >
-        <SchliessplanGrafik key={system} params={params} title="" />
+        {/* Telefon: ohne leeren Rand, damit die Kürzel lesbar groß sind */}
+        <div className="sm24-ausschnitt overflow-hidden" style={ausschnittStil(ausschnitt)}>
+          <SchliessplanGrafik key={system} params={params} title="" />
+        </div>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <fieldset>
-          <legend className="font-mono text-caption uppercase tracking-label text-foreground-subtle">Schlüssel wählen</legend>
+          <legend className="font-mono text-caption uppercase tracking-label text-foreground-muted">Schlüssel wählen</legend>
           <div className="mt-3 flex flex-wrap gap-2">
             {schluessel.map((s) => {
               const an = auswahl?.art === 'schluessel' && auswahl.kennung === s.kennung;
@@ -132,7 +137,7 @@ export function SchliessplanInteraktiv({
           </div>
         </fieldset>
         <fieldset>
-          <legend className="font-mono text-caption uppercase tracking-label text-foreground-subtle">Tür wählen</legend>
+          <legend className="font-mono text-caption uppercase tracking-label text-foreground-muted">Tür wählen</legend>
           <div className="mt-3 flex flex-wrap gap-2">
             {tuerListe.map((t) => {
               const an = auswahl?.art === 'tuer' && auswahl.kennung === t;

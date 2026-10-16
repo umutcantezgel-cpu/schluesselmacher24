@@ -148,6 +148,10 @@ const config = {
         /* Fachgrafik mit Beschriftung: darunter scrollt sie seitlich statt zu schrumpfen */
         zeichnung: '35rem',
       },
+      /* Spalten nach verfügbarer Breite (ohne Container-Abfragen): ab 15rem je Spalte nebeneinander. */
+      gridTemplateColumns: {
+        kacheln: 'repeat(auto-fit, minmax(min(100%, 15rem), 1fr))',
+      },
       gridTemplateRows: {
         /* Kopfzeile so hoch wie ihr Inhalt, der Rest nimmt den übrigen Platz (Startseiten-Kopf) */
         kopf: 'min-content 1fr',
