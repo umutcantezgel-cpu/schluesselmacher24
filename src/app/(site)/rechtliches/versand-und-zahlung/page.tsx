@@ -22,7 +22,25 @@ export default async function VersandUndZahlungPage() {
       </p>
 
       <h2>Versandarten</h2>
-      <div className="table-scroll mt-4">
+      {/* Mobil gestapelte Zeilen mit denselben Angaben (KERN 1.6); die Tabelle erscheint ab md */}
+      <dl className="mt-4 border-t border-border md:hidden">
+        {settings.shipping.map((option) => (
+          <div key={option.id} className="border-b border-border py-3">
+            <dt className="flex items-baseline justify-between gap-4 font-semibold text-foreground">
+              <span>{option.label}</span>
+              <span className="whitespace-nowrap font-mono tabular-nums">
+                {option.priceCents === 0 ? 'kostenfrei' : formatCents(option.priceCents)}
+              </span>
+            </dt>
+            <dd className="mt-1 text-small text-foreground-muted">{option.description}</dd>
+            <dd className="mt-1 text-small text-foreground-muted">
+              Sendungsverfolgung: {option.tracked ? 'ja' : 'nein'}
+              {option.insured ? ', versichert' : ''}
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <div className="table-scroll mt-4 hidden md:block">
         <table className="w-full border-collapse text-small">
           <thead>
             <tr className="border-b border-border text-left">
