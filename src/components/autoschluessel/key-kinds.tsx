@@ -1,4 +1,5 @@
 import type { InfoHint, KeyKind } from '@/lib/types';
+import { cn } from '@/lib/cn';
 import { Badge } from '@/components/ui/badge';
 
 /* ==========================================================================
@@ -85,14 +86,12 @@ export function KeyKindBadges({
 }) {
   if (kinds.length === 0) {
     return (
-      <span className="text-[13px] text-foreground-muted">
-        [Platzhalter: Schlüsselarten noch nicht erfasst]
-      </span>
+      <span className="text-small text-foreground-muted">Schlüsselarten noch nicht hinterlegt</span>
     );
   }
 
   return (
-    <ul className={className ? `flex flex-wrap gap-1.5 ${className}` : 'flex flex-wrap gap-1.5'}>
+    <ul className={cn('flex flex-wrap gap-1.5', className)}>
       {kinds.map((kind) => (
         <li key={kind}>
           <Badge tone="outline">{keyKindShortLabel(kind)}</Badge>
