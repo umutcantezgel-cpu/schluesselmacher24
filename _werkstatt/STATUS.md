@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · Nachprüfung H01/H02/H03/H06/H07, H10 und H11 laufen · Pflicht 65/79 · Kür 4/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (0ff7e48: Logikwächter 0 außer laufendem H11, Wertesuche 0) · Nächster Schritt: Nachprüfung und H10/H11 abnehmen, dann Welle G
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · Welle G/H: B-26, B-27, E6-GRAFIKER-11, E5-DOKUMENTAR-01 laufen · Pflicht 79/88 · Kür 4/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (5105872: Logikwächter 0 außer laufendem B-26, Wertesuche 0, 1135 Tests) · Nächster Schritt: laufende Pakete abnehmen, Welle H (B-28, B-29), K-01 einbauen, lucide entfernen, Prüfstufe B E5
 
 # Status des Gestaltungslaufs
 
