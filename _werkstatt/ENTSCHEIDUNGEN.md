@@ -353,3 +353,27 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
     - `themeColor` `#f7f9fb` (D-015)
     - `#fff` als Canvas-Grund bei der JPEG-Umwandlung in `photo-upload.tsx` (Bildverarbeitung in einer geschützten Datei, kein Gestaltungswert)
 - **Ergebnis:** 0 Funde ohne Ausnahme, 10 Ausnahmen (8 Farbproben in Generatortests, 2 Einzelausnahmen).
+
+## D-035 · E4-L-24: Hinweis „Zwischenstand geladen“ nur für geladene Stände
+- **Befund (Bestand seit E0, PLAN):** In jedem Ablauf erschien „Ihr Zwischenstand von zuletzt wurde geladen“ ab dem zweiten Schritt, auch in einem frischen Browser. `use-flow.ts` wertete jeden gespeicherten Stand als geladen, auch den, den die eigene erste Eingabe gerade geschrieben hatte.
+- **Lösung:** Neue reine Regel `zeigtGeladenenStand(gespeichert, eigeneEingabe, verworfen)`, mit Test. Geladen ist ein Stand nur, solange keine eigene Eingabe die Anzeige bestimmt. Speichern, Lesen, Schlüssel `sm24:flow:*`, „Neu beginnen“ und Schrittlogik bleiben unverändert. Einziger Nutzer ist `FlowShell`.
+- **Wirkung:** Nach dem Neuladen eines begonnenen Ablaufs erscheint der Hinweis weiterhin, bis zur ersten neuen Eingabe; diese bestätigt das Weitermachen.
+
+## D-036 · E4-L-25: Maßzeichnung im schmalen Format
+- **Befund:** `ZylinderMassLive` zeigte im Konfigurator mobil 6,7 px und auf dem Tablet 6,0 px Schrift (Zeichnung 222 bis 248 px breit, Fläche 480 Einheiten). Die Karte „Gleichschließende Zylinder“ der Startseite zeigte mobil etwa 6 px (D-018).
+- **Lösung:**
+  - Der Generator `zylinder-mass` bekommt den Parameter `format: 'schmal'`: Fläche 300 × 220, Schrift 16/15, Seitenrand 62. Ohne den Parameter bleibt das Format 480 × 270 mit unverändertem Vertrag.
+  - Die Registry führt `SCHMALES_FORMAT` und `schmaleFassung()`. `ImagePlaceholder` zeigt unter 640 px die schmale Fassung, wenn der Generator eine hat und kein Ausschnitt gesetzt ist. `ZylinderMassLive` macht es ebenso.
+  - Im Konfigurator stehen Felder und Zeichnung erst ab `lg` nebeneinander, darunter liegt die Zeichnung in voller Breite. Das ist nur `className`, der Logikwächter meldet „gleich“.
+  - Die Startseiten-Karte nutzt bis `lg` das schmale Format.
+- **Gemessen:**
+
+  | Stelle | vorher | nachher |
+  |---|---|---|
+  | Konfigurator mobil | 6,7 px | 13,2/12,4 px |
+  | Konfigurator Tablet | 6,0 px | 16,3/15,1 px |
+  | Startseite mobil | etwa 6 px | 12,3/11,5 px |
+  | Startseite Tablet | – | 14,9 px |
+  | Desktop | unverändert | unverändert |
+
+  Zwei SVGs je Stelle, eines ist per `display: none` verborgen und damit auch für Hilfsmittel unsichtbar.

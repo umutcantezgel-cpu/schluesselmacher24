@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.7
+# KERN · SCHLÜSSELMACHER24 · Version 1.8
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -192,7 +192,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 - Neue Einträge gibt es nur durch den Orchestrator. Bewegung ohne Eintrag wird entfernt.
 
 ## K-008 SVG-Formsystem
-- **Grundgeometrie:** Schlüsselprofil (Rücken, Bart mit Einschnitten), Kreis (Zylinderkern, Knoten), Rechteck mit kleinem Radius (Tür, Körper), Bemaßungslinie mit Pfeilspitzen als Pfad. Raster: Fach-Icons und Glyphen 48 × 48, Generatoren 480 × 270 (16:9), 480 × 300 oder für Szenen mit Bemaßung und Legende 480 × 360 (4:3, `profilschnitt`); Zeichenpapier-Raster im Abstand 30. Gemeinsame Helfer der Generatoren stehen nur in `generators/grafik-basis.tsx`; weitere Hilfsdateien liegen außerhalb von `generators/`.
+- **Grundgeometrie:** Schlüsselprofil (Rücken, Bart mit Einschnitten), Kreis (Zylinderkern, Knoten), Rechteck mit kleinem Radius (Tür, Körper), Bemaßungslinie mit Pfeilspitzen als Pfad. Raster: Fach-Icons und Glyphen 48 × 48, Generatoren 480 × 270 (16:9), 480 × 300 oder für Szenen mit Bemaßung und Legende 480 × 360 (4:3, `profilschnitt`); Zeichenpapier-Raster im Abstand 30. Gemeinsame Helfer der Generatoren stehen nur in `generators/grafik-basis.tsx`; weitere Hilfsdateien liegen außerhalb von `generators/`. **Telefonbreiten:** Beschriftungen im Bild mindestens etwa 11,5 px. Erreicht wird das über einen Ausschnitt (`ausschnitt`, `.sm24-ausschnitt`; Legenden mit `data-legende` werden darin größer gesetzt) oder über ein schmales Format (`format: 'schmal'`, eingetragen in `SCHMALES_FORMAT` der Registry, von `ImagePlaceholder` unter 640 px gezeigt).
 - **Striche:** Enden und Ecken immer rund.
   - **Icons und Glyphen:** gleiche Bildschirmstrichstärke in jeder Größe über `vector-effect: non-scaling-stroke`. Die Regel steht in `globals.css` für `[data-sm24-icon]`; der Wert wird in L-02 am Bild festgelegt (1,75–2 px).
   - **Generatoren:** Strichskala aus `grafik-basis.tsx`: `DETAIL` 0,75 · `HILFSLINIE` 1 · `LINIE` 1,5 · `LINIE_STARK` 2 · `KONTUR` 2,25 · `AKZENT` 3 · `MARKE` 4. In `strokeWidth={…}` stehen nur diese Namen.
@@ -290,3 +290,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.5 · E3 · K-008: Raster 480 × 360 für Szenen mit Bemaßung zugelassen, Ort der Generator-Helfer festgelegt, Profillinie 10–24 px. Grund: Prüfung E3-GRAFIKER-07 (README entsprach dem Code, KERN nicht).
 - 1.6 · E4 · K-005: `foreground-subtle` nie auf `surface-sunken`, Etiketten in `foreground-muted`; K-006: Ausschnitt unter 640 px, `scroll-px` für Leisten, Schriftfeld mobil, Fuß auf `surface-sunken`; K-007: `clip-path` für `sm24-aufdecken`, B-01 mit aufdeckender Fläche, B-03-Marken nur `scale`; Farbton Tür 125 → 90 (D-024). Grund: Sichtabnahme E2-L-07, Anlauf 2 (Paket E4-L-16).
 - 1.7 · E4 · B-21 gilt auch für die Modellseite (erfasste Schlüsselarten als Zeichnungen). Grund: Pakete der Welle C (E4-BAUMEISTER-08).
+- 1.8 · E4 · K-008: Mindestgröße der Beschriftung in Zeichnungen auf Telefonen; Ausschnitt mit vergrößerter Legende (`tuer-schutz`, D-033) und schmales Format (`zylinder-mass`, D-036). Grund: Abnahme Welle E und offener Punkt Maßzeichnung schmal.

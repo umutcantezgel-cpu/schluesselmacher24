@@ -154,8 +154,9 @@ Beim `smart-key` gibt es keinen Bart; `funk` und `smart-key` zeigen Funkbögen.
 | `aussen` | Maß A in mm, 25–100 | `30` |
 | `innen` | Maß I in mm, 25–100 (bei `profil-halb` ohne Wirkung) | `30` |
 | `knaufseite` | `innen` · `aussen` (nur bei `knauf`) | `innen` |
+| `format` | `breit` (480 × 270) · `schmal` (300 × 220, Schrift 16/15 für Telefone) | `breit` |
 
-Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende, maßstäblich.
+Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende, maßstäblich. `zylinder-mass` steht in `SCHMALES_FORMAT` der Registry; `schmaleFassung(ref)` liefert den Verweis mit `format: 'schmal'`.
 
 ### `schliessplan` — Hierarchie einer Schließanlage (`viewBox 0 0 480 300`)
 
@@ -329,7 +330,8 @@ Hauptschlüssel, Zentralschloss → `schliessplan`; Sicherungskarte, Zylindersti
 `code-fundstelle`; Zutritt, Leser, Karte → `zutritt-signal`; Zylinder, Messen → `zylinder-mass`;
 Tür, Beschlag, Schloss → `tuer-schutz` (`nummern: false`); Schlüsselbegriffe → `schluessel`.
 
-- Nie Platzhaltertext, nie „Bild folgt“, nie erzeugte Fotos. `ausschnitt` (unter 1024 px nur ein Teil der Zeichnung) gilt für Fachgrafiken; `frei` lässt Fläche und Rahmen weg.
+- Nie Platzhaltertext, nie „Bild folgt“, nie erzeugte Fotos. `ausschnitt` (unter 640 px nur ein Teil der Zeichnung; Legenden mit `data-legende` werden darin größer) gilt für Fachgrafiken; `frei` lässt Fläche und Rahmen weg.
+- Generatoren mit schmalem Format (`SCHMALES_FORMAT`) zeigt die Fläche unter 640 px in dieser Fassung, sofern kein `ausschnitt` gesetzt ist. Beschriftungen sollen auf Telefonen mindestens etwa 11,5 px groß sein (KERN K-008).
 
 ## Bewegung
 

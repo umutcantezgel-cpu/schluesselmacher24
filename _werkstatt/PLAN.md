@@ -90,6 +90,8 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E4-L-20 | SummaryList als Schriftfeld, gemeinsame Platzhalter-Prüfung (D-031) | L/Opus | `summary-list`, `platzhalter.ts`, Ausnahmen | – | Z-04 | 3f05396 |
 | E4-L-21 | Motiv-Zuordnung nach der Sache, fünf Fach-Icons Sicherheitstechnik (D-032) | L/Opus | `motiv.ts`, `image-placeholder`, Icons + Tests | – | Z-06 | 4189b5d |
 | E4-L-22 | Wertesuche ohne offene Funde: `w-tipp`, `.sm24-auswahl`, `.sm24-ablauf-leiste`, Einzelausnahmen (D-034) | L/Opus | `tailwind.config.ts`, `cn.ts`, `globals.css`, `info-tip`, `controls`, `flow-shell`, `werte-suche.mjs` | – | Z-03 | 63eac59 |
+| E4-L-24 | Hinweis „Zwischenstand geladen“ nur für geladene Stände (D-035) | L/Opus | `use-flow.ts` + Test | – | Z-02, Z-07 | 5d97117 |
+| E4-L-25 | Maßzeichnung im schmalen Format für Telefone (D-036) | L/Opus | `zylinder-mass`, Registry, `image-placeholder`, `zylinder-mass-live`, Konfigurator (`className`), Startseite + Tests | – | Z-04, Z-06 | 5632498 |
 | E4-L-07 | Leistung absichern (nach der ersten Etappenmessung) | L/Opus | je Befund | E3-P-B | Z-08 | |
 | E5-B-20 | Service, Kontakt, Vor Ort | B/Haiku | 3 Dateien | E3 | Z-06 | |
 | E5-B-21 | `/gleichschliessende-zylinder` | B/Haiku | 1 Datei | E3 | Z-06 | |
@@ -142,7 +144,7 @@ Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabna
 - **Paniktechnik-Kasten auf `/tuer-und-schliesstechnik`:** dunkle Überschrift auf dunklem Grund (Befund E3-B-06; Kontrastbefund H09 schon in E0). Gehört zum Paket E4-B-11.
 - ~~**Zeitfenster im Terminschritt:**~~ erledigt mit E4-B-16 (e37ace1): Uhrzeit und Dauer in Mono.
 - **Bestätigung des Autoschlüssel-Ablaufs:** nur per Rendertest belegt, nicht im Bild (ohne echte Sendung nicht erreichbar).
-- **Wiederherstellungs-Hinweis in Abläufen (Bestand):** „Ihr Zwischenstand von zuletzt wurde geladen“ erscheint schon nach der ersten eigenen Eingabe, ohne Neuladen. Ursache ist `src/lib/flow/use-flow.ts`, Z. 194 (`restored = Boolean(stored) && !dismissed`); das war schon in E0 so (Befund aus der Prüfung E3-BAUMEISTER-02). Mögliche Lösung: „restored“ nur, wenn beim Einhängen schon ein Stand vorlag. Die Datei ist geteilte Ablauflogik, daher ein eigenes Paket mit Test vor E5 (Abläufe).
+- ~~**Wiederherstellungs-Hinweis in Abläufen (Bestand):**~~ erledigt mit E4-L-24 (5d97117, D-035).
 - **JS-Menge mobil (E2-PRUEFER-01-ergebnis):** über E0 in allen 12 Ansichten, zum Beispiel H01 293 statt 246 KB. Die Budgets LCP, CLS und INP sind eingehalten. Ursachen sind zu prüfen (Glyphen, `tailwind-merge`-Erweiterung, Client-Hüllen); gehört zu Paket E4-L-07 (Leistung absichern).
   - **Analyse 16.10. (H01, mobil, Port 3000 gegen 3100):**
     - Eigenes Seiten-JS (Skripte im HTML): 204 statt 195 KB komprimiert (+9 KB). Die Framework-Teile sind gleich.
@@ -159,6 +161,6 @@ Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabna
 - **Code-Shop, Bestellformular (Bestand, Logikwächter):** `handleAdd` wartet auf `uploadsAbwarten()` ohne Sperrzustand; zwei schnelle Klicks könnten zwei Warenkorbeinträge erzeugen. Bei ungültigem `codePattern` ist jede Eingabe gültig (bewusst, Kommentar Z. 44; Daten durch `code-pattern.test.ts` abgesichert). Beides ist Logik und bleibt im Lauf unverändert; Vorschlag für ein eigenes Paket mit Test nach dem Lauf.
 - **Leistungsseiten Türtechnik (Bestand):** `PROCESS_LABELS[page.process]` ohne Null-Prüfung in `tuer-und-schliesstechnik/[slug]/page.tsx` Z. 48. Alle Daten haben heute einen gültigen Wert; Absturzrisiko nur bei neuen CMS-Werten. Logik, daher nur Vermerk.
 - **Modellseite:** zwei Links auf dieselbe Markenseite („Andere …-Modelle“, „Alle …-Modelle“). Inhalt, daher Vorschlag in TEXTVORSCHLAEGE.md.
-- **Maßzeichnung schmal (E4-B-13, D-029):** `ZylinderMassLive` zeigt auf 390 px Beschriftungen von etwa 8–9 px (Zeichnung skaliert über die volle Breite). Lösung: Generator-Variante mit größerer Schrift und weniger Beschriftung für schmale Flächen; Paket nach Welle E.
+- ~~**Maßzeichnung schmal (E4-B-13, D-029):**~~ erledigt mit E4-L-25 (5632498, D-036): mobil 13,2 px statt 6,7 px.
 - **Warenkorb und Kasse (Bestand, Logik, D-031):** automatische Wahl der ersten Versandart beim Laden (der Hinweis „Bitte wählen Sie zuerst eine Versandart“ erscheint dadurch fast nie), Mengenklemmung nur in der Anzeige (der Store kennt keine Obergrenze), `QuantityInput` setzt ein leeres Feld sofort auf das Minimum (Tippen einer neuen Zahl wird schwer), Formularfehler der Kasse über `Alert` mit `role="note"` statt einer Ansage. Vorschlag: eigenes Paket mit Tests nach dem Lauf.
 
