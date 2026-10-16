@@ -43,3 +43,9 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architektur-Audit (JC-AUDITOR-ARCHITECT-v1)
+
+Die Codebasis wurde erfolgreich durch den *Enterprise Systems Architect & Codebase DNA Profiler* (JC-AUDITOR-ARCHITECT-v1) geprüft.
+Eine vollständige Architektur-Matrix befindet sich in `.jules/architecture-matrix.md`.
+Der determinierten Master-Implementierungsplan ist in `.jules/revolution-plan.json` abgelegt.
