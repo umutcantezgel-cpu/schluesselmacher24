@@ -661,6 +661,7 @@ function PositionCard({
   if (!form) return null;
 
   const values = measureOptions(form);
+  const measureFigure = catalog.measuringInfo.figure ?? catalog.measuringFigure;
   const positionTotal = positionTotalCents(catalog, item);
   // Nach einem Bauformwechsel oder aus einem alten Zwischenstand kann ein Maß
   // außerhalb des erlaubten Bereichs liegen — dann bleibt die Auswahl leer.
@@ -734,6 +735,7 @@ function PositionCard({
                     id={id}
                     aria-describedby={describedBy}
                     invalid={!hasA}
+                    className="font-mono font-semibold tabular-nums text-foreground"
                     value={hasA ? item.measureAMm : ''}
                     onChange={(event) => onUpdate({ measureAMm: Number(event.target.value) })}
                   >
@@ -758,6 +760,7 @@ function PositionCard({
                       id={id}
                       aria-describedby={describedBy}
                       invalid={!hasB}
+                      className="font-mono font-semibold tabular-nums text-foreground"
                       value={hasB ? item.measureBMm : ''}
                       onChange={(event) => onUpdate({ measureBMm: Number(event.target.value) })}
                     >
@@ -773,13 +776,18 @@ function PositionCard({
               )}
             </div>
 
+            {/* Foto vor Zeichnung (K-008): ohne Messfoto folgt die Maßzeichnung live den Maßen (B-17) */}
             <div className="md:col-span-5">
-              <ZylinderMassLive
-                form={item.form}
-                aussen={item.measureAMm}
-                innen={item.measureBMm}
-                name={form.label}
-              />
+              {measureFigure.bild ? (
+                <ImagePlaceholder slot={measureFigure} compact />
+              ) : (
+                <ZylinderMassLive
+                  form={item.form}
+                  aussen={item.measureAMm}
+                  innen={item.measureBMm}
+                  name={form.label}
+                />
+              )}
             </div>
           </div>
 
@@ -847,7 +855,7 @@ function PositionCard({
             )}
           </Field>
 
-          <p className="text-right">
+          <p className="ml-auto text-right">
             <span className="block font-mono text-caption uppercase tracking-label text-foreground-muted">
               Zwischensumme
             </span>
