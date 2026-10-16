@@ -1,15 +1,20 @@
 # Prüfpunkt
 
-- **Etappe:** E4 (Hauptansichten). Das Etappentor E2 ist nach zwei Anläufen nicht bestanden (7,0, D-022); die Befunde sind mit E4-L-16 umgesetzt (8dc1538, D-024).
-- **Laufend:** nichts.
-- **Fertig seit dem letzten Prüfpunkt:** Welle E abgenommen und committet (B-16 e37ace1, B-17 d7a0541, B-18 fe069ba, B-19 b6ec4a4; D-033). E4-L-22 Wertesuche ohne offene Funde (63eac59, D-034). Funktionsliste: Bild je Schritt (`SM24_SCHRITTBILDER`), Lese-Actions auch aus `.next/dev`.
+- **Etappe:** E5 (übrige Ansichten und Befundpakete). Prüfstufe B für E4 ist grün; die Sichtabnahme E4-L-23 ergab 6,2 (D-037). Die gemeinsamen Befunde sind mit E4-L-27 umgesetzt, KERN 1.11.
+- **Laufend:**
+  - Befundwelle 1 (E5-BEFUND-H05, -H09, -H04): Workflow `wf_5006ebc4-e4c` (Task `wt7fmju7i`), Basis `1171973`.
+  - E4-GRAFIKER-10 (Generator `ablauf`): Workflow `wf_5555f066-5e0` (Task `wot1j62t4`), Basis `ae51d9b`.
+- **Fertig seit dem letzten Prüfpunkt:** Prüfstufe B E4 (6798995, 0468a38), L-07a Warenkorb mobil (21d8833), Sichtabnahme E4-L-23, E4-L-24 bis -27, E4-GRAFIKER-09 (385bcf2), E5-L-28 Lesefortschritt B-24 und `ablaufAusText`; Pakete E5-BEFUND-H01 bis -H12, E5-BAUMEISTER-20 bis -29, E4-GRAFIKER-10.
 - **Als Nächstes:**
-  1. Prüfstufe B der Etappe E4: Build-Gate, Neustart von Port 3000, Typprüfung, Linter, Unit- und DB-Tests, Logikwächter, Textabzug, Wertesuche, Konsole, Bildsatz der 12 Hauptansichten, a11y, Messung (Median aus 3), Bewegung (reduziert), Funktionsliste 14/14.
-  2. Danach E5: Wellen F bis H (B-20 bis B-29), L-07 Leistung, L-12 lucide entfernen, Maßzeichnung schmal, Wiederherstellungs-Hinweis (use-flow).
+  1. Welle 1 und GRAFIKER-10 abnehmen: ganzer Unterschied, Logikwächter, Wertesuche, Bilder, Berichte; GRAFIKER-10 in Registry (`SCHMALES_FORMAT`), README, Registry-Test eintragen.
+  2. Befundwelle 2: H02, H03, H06, H08. Danach Welle 3: H01, H07, H10, H11, dann H12 (braucht `ablauf`).
+  3. E5 Wellen F (B-20 bis -23), G (B-24 bis -27), H (B-28, B-29, D-01); dann L-12 lucide entfernen.
+  4. Prüfstufe B E5 mit Sichtabnahme (Runde 2 der Befunde nur, wo < 8), Kür K-01 bis K-06, Prüfstufe C, Endprüfung.
 - **Bei Abbruch:**
-  - `Workflow({scriptPath, resumeFromRunId})` für den jeweiligen Lauf.
+  - `Workflow({scriptPath: <pakete-kette-Skript>, resumeFromRunId})` für den jeweiligen Lauf; Skript: `/root/.claude/projects/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/workflows/scripts/pakete-kette-wf_be39e9e0-a87.js`, args `{pakete:[{id,basis}], andere}`.
+  - Paketerzeuger im Scratchpad `e5/` (`befund_pakete.py [H..]`, `welle_f.py`, `welle_gh.py [Kennung..]`); die erzeugten Pakete liegen im Repo.
   - Server: `server.sh start` (Port 3000); Port 3100 mit `cd /root/sm24-e0 && SM24_DATA=json nohup npx next start -p 3100`; Port 3001 mit `SM24_DATA=json nohup npx next dev -p 3001`.
   - `/tmp/sm24-messfenster.lock` ist verwaist, wenn kein Prüfer läuft.
-- **Zwischenstände:** Laufende Baumeister-Dateien werden als ZWISCHENSTAND committet (Stopp-Haken verlangt saubere Arbeitskopie). Die Abnahme prüft deshalb den ganzen Unterschied gegen den Stand vor der Welle (Welle C `d8e2312`, D `e3ad5bb`, E `fab24ac`).
+- **Zwischenstände:** Laufende Baumeister-Dateien werden als ZWISCHENSTAND committet (Stopp-Haken). Die Abnahme prüft den ganzen Unterschied gegen die Basis der Welle.
 - **Hinweis:** AGENTS.md vor jedem Commit zurücknehmen (D-007). Nie Dateien unter /dev anfassen (D-021). Agenten auf Port 3001 brauchen `SM24_BASIS_URL=http://localhost:3001`.
-- **Letzter grüner Stand:** 63eac59. Typprüfung 0, Linter 0, 54 Testdateien mit 1039 Tests grün, Logikwächter 0 abweichend, Wertesuche 0 ohne Ausnahme. Port 3000 zeigt noch den Build vor Welle C; der Neubau folgt in Prüfstufe B.
+- **Letzter grüner Stand:** 99d805c. Typprüfung 0, Linter 0, Komponenten- und Lib-Tests grün, Logikwächter 0 abweichend, Wertesuche 0 ohne Ausnahme. Port 3000 zeigt den Build der L-07a-Prüfung.

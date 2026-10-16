@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 4/6 · Wellen C, D und E fertig, Prüfstufe B für E4 offen · Pflicht 56/78 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (63eac59: 1039 Tests, Logikwächter 0 abweichend, Wertesuche 0) · Nächster Schritt: Prüfstufe B für E4 (Build, Bildsatz, a11y, Messung, Funktionsliste)
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · Befundwelle 1 (H05, H09, H04) und Generator ablauf laufen · Pflicht 60/79 · Kür 0/6 (K-04 vorbereitet) · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (99d805c: Logikwächter 0, Wertesuche 0) · Nächster Schritt: Welle 1 und GRAFIKER-10 abnehmen, Befundwelle 2 starten
 
 # Status des Gestaltungslaufs
 
@@ -38,3 +38,4 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 4/6 · W
 - 16.10.2026 08:40 · Welle C abgenommen (B-08 Marken, B-09 Code-Shop, B-10 Schließanlagen, B-11 Türtechnik) mit Nacharbeit: Eingabeschrift und InView (L-17, D-028), gemeinsame Bausteine (L-18, D-029). Welle D: B-12 Ratgeber, B-13 Zylinder-Konfigurator.
 - 16.10.2026 09:00 · Welle D vollständig (B-14 Warenkorb, B-15 Kasse, D-031), Seitenwechsel springt wieder nach oben (L-19, D-030), SummaryList als Schriftfeld (L-20), Motiv-Zuordnung nach der Sache (L-21, D-032). Welle E gestartet. Morgenbericht 07:00 in BERICHT.md.
 - 16.10.2026 09:50 · Welle E abgenommen (B-16 Assistent, B-17 Vorlage, B-18 Zutritt, B-19 Sicherheitstechnik, D-033) mit Nacharbeit: Hauseingang mobil lesbar (12,5 px), Fach-Icon wächst mit der Fläche, keine Lücke auf dem Tablet. Wertesuche 0 ohne Ausnahme (L-22, D-034). F-04 auf Port 3001 durch alle 13 Schritte.
+- 16.10.2026 11:10 · Prüfstufe B E4 grün, Warenkorb mobil im Budget (L-07a). Sichtabnahme E4-L-23: 6,2 (D-037); gemeinsame Befunde umgesetzt (E4-L-24 bis -27, KERN 1.10/1.11), Schließplan mit Reserve und Telefonformat (GRAFIKER-09), Lesefortschritt im Ratgeber als reine CSS-Szene (L-28). Befundpakete H01–H12 und Pakete der Wellen F–H geschrieben; Befundwelle 1 und Generator `ablauf` laufen.

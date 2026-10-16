@@ -56,19 +56,19 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E2-L-04 | Profillinie und Generator `profilschnitt` | L/Opus | `visual/profillinie.tsx` + Test, `generators/profilschnitt.tsx` + Test, Registry | E2-L-03 | Z-04, Z-05 | f8dde75 |
 | E2-L-05 | Hülle: Layout, Kopf, Fuß, Aktionsleiste (`istAktiv` mit Test), Button, Card, Section | L/Opus | `(site)/layout.tsx`, `layout/site-header.tsx`, `site-footer.tsx`, `mobile-action-bar.tsx`, `ui/button.tsx`, `ui/card.tsx`, `layout/section.tsx`, `src/lib/navigation.ts` + Test | E2-L-01 bis E2-L-03 | Z-03, Z-04, Z-07 | 9e51eff |
 | E2-L-06 | Referenz Startseite (B-01, B-02, B-03) | L/Opus | `(site)/page.tsx` | E2-L-04, E2-L-05 | Z-04, Z-05 | 9e51eff |
-| E2-P-01 | Prüfstufe A je L-Paket; Prüfstufe B Referenz | P/Haiku | Protokolle | je L | Z-02 | |
-| E2-L-07 | Etappentor: Sichtabnahme durch frischen Opus-Unteragenten (≥ 8) | L/Opus | Bericht | E2-P-01 | Z-04 | |
-| E3-B-01 | Formular-Bausteine (`controls`, `field`, `option-card`, `alert`, `badge`, `info-tip`, `accordion`) | B/Haiku | 7 Dateien | E2 | Z-03, Z-07 | |
-| E3-B-02 | Ablauf-Hülle (`flow-shell`, `summary-list`, `breadcrumbs`) | B/Haiku | 3 Dateien | E2 | Z-03, Z-05 | |
-| E3-B-03 | `photo-upload` | B/Haiku | 1 Datei (Logikwächter) | E2 | Z-03, Z-06 | |
-| E3-G-07 | `visual/README.md` an Formsystem, Glyphen, neue Generatoren | G/Haiku | README | E2 | Z-10 | |
+| E2-P-01 | Prüfstufe A je L-Paket; Prüfstufe B Referenz | P/Haiku | Protokolle | je L | Z-02 | 9638c34, d9e7b3e |
+| E2-L-07 | Etappentor: Sichtabnahme durch frischen Opus-Unteragenten (≥ 8) | L/Opus | Bericht | E2-P-01 | Z-04 | 5426717 (nicht bestanden, D-022; Befunde in E4-L-16) |
+| E3-B-01 | Formular-Bausteine (`controls`, `field`, `option-card`, `alert`, `badge`, `info-tip`, `accordion`) | B/Haiku | 7 Dateien | E2 | Z-03, Z-07 | 1b4447c, 2ab9c74 |
+| E3-B-02 | Ablauf-Hülle (`flow-shell`, `summary-list`, `breadcrumbs`) | B/Haiku | 3 Dateien | E2 | Z-03, Z-05 | 1b4447c, 3264b7a |
+| E3-B-03 | `photo-upload` | B/Haiku | 1 Datei (Logikwächter) | E2 | Z-03, Z-06 | 1b4447c, 2ab9c74 |
+| E3-G-07 | `visual/README.md` an Formsystem, Glyphen, neue Generatoren | G/Haiku | README | E2 | Z-10 | 1b4447c, e5c831d |
 | E3-L-08 | `PageHeader` (erweitert, 35 Nutzerseiten), `ImagePlaceholder` (Ersatzgrafik, Test) | L/Opus | `layout/page-header.tsx`, `ui/image-placeholder.tsx` + Test | E2 | Z-04, Z-06 | b56bcfb (ZWISCHENSTAND) |
-| E3-L-09 | `.prose-sm24`, `not-found.tsx`, `error.tsx` | L/Opus | `globals.css`, `(site)/not-found.tsx`, `(site)/error.tsx`, `layout/fehler-ansicht.tsx` | E2-G-06 | Z-04 | |
+| E3-L-09 | `.prose-sm24`, `not-found.tsx`, `error.tsx` | L/Opus | `globals.css`, `(site)/not-found.tsx`, `(site)/error.tsx`, `layout/fehler-ansicht.tsx` | E2-G-06 | Z-04 | 33ff6aa, e6550f3 |
 | E3-L-10 | Client-Hüllen: Schließplan, Live-Schlüssel, Code-Fundstelle | L/Opus | `visual/interaktiv/*` (3 neu) | E2-G-04 | Z-04, Z-05 | 4a985f3 |
 | E3-L-14 | Großer Moment B-21: Zeichnungsblatt der Schlüsselarten (für E3-B-07) | L/Opus | `autoschluessel/schluesselarten-reihe.tsx` + Test | E2 | Z-04, Z-05 | 4abf697 (ZWISCHENSTAND) |
-| E3-B-04 | Autoschlüssel-Vorlage (`service-article`, `key-kinds`, `vehicle-facts`) | B/Haiku | 3 Dateien | E3-B-01 | Z-03, Z-04 | |
-| E3-B-05 | `preis-anzeige`, `termin-auswahl`, `bestaetigung` | B/Haiku | 3 Dateien | E3-B-01 | Z-03, Z-05 | |
-| E3-B-06 | Rechner und Nachweise (+ Tests Alt-Neu) | B/Haiku | 5 Dateien | E3-B-01 | Z-03 | |
+| E3-B-04 | Autoschlüssel-Vorlage (`service-article`, `key-kinds`, `vehicle-facts`) | B/Haiku | 3 Dateien | E3-B-01 | Z-03, Z-04 | a75c6b2, f00e351 |
+| E3-B-05 | `preis-anzeige`, `termin-auswahl`, `bestaetigung` | B/Haiku | 3 Dateien | E3-B-01 | Z-03, Z-05 | 7a3d6cd |
+| E3-B-06 | Rechner und Nachweise (+ Tests Alt-Neu) | B/Haiku | 5 Dateien | E3-B-01 | Z-03 | 29f1628 |
 | E3-B-07 | H02 `/autoschluessel` (B-21) | B/Haiku | `autoschluessel/page.tsx` | E3-L-08 | Z-04 || d5059fb |
 | E4-B-08 | H03 Marken und Modelle (3 Seiten) | B/Haiku | 3 Dateien | E3-L-08 | Z-04 || 7f5653c |
 | E4-B-09 | H05/H06 Code-Shop und Produkt | B/Haiku | 4 Dateien (`bestell-formular` mit Logikwächter) | E3-L-10 | Z-04 || 853bc9a |
@@ -97,7 +97,7 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E4-GRAFIKER-10 | Generator `ablauf` (Ablaufzeichnung, breit und schmal, B-23) | G/Haiku | `ablauf` + Test | E4-L-23 | Z-06 | |
 | E5-L-28 | Lesefortschritt (B-24, Kür K-04) als Klassen, `ablaufAusText`, KERN 1.11 | L/Opus | `globals.css`, `motiv.ts` + Test, KERN | E4-L-23 | Z-05 | |
 | E5-BEFUND-H01…H12 | Befundpakete der Sichtabnahme E4-L-23, je Hauptansicht (Runde 1 von höchstens 2) | B/Haiku | je Ansicht | E4-L-27 | Z-04 | |
-| E4-L-07 | Leistung absichern (nach der ersten Etappenmessung) | L/Opus | je Befund | E3-P-B | Z-08 | |
+| E4-L-07 | Leistung absichern (nach der ersten Etappenmessung) | L/Opus | je Befund | E3-P-B | Z-08 | 21d8833 (L-07a) |
 | E5-B-20 | Service, Kontakt, Vor Ort | B/Haiku | 3 Dateien | E3 | Z-06 | |
 | E5-B-21 | `/gleichschliessende-zylinder` | B/Haiku | 1 Datei | E3 | Z-06 | |
 | E5-B-22 | Vorlage-Anfrage (Logikwächter, Scroll-Ausnahme) | B/Haiku | 2 Dateien | E3-B-02 | Z-06, Z-05 | |
