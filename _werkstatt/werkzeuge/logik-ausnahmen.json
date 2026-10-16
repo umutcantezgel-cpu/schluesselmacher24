@@ -72,5 +72,12 @@
       "suchen": "description=\\{<><span className=\"font\\-mono tabular\\-nums\">\\{entry\\.models\\.length\\}</span> Modelle hinterlegt</>\\}",
       "ersetzen": "description={`${entry.models.length} Modelle hinterlegt`}"
     }
+  ],
+  "src/components/forms/photo-upload.tsx": [
+    {
+      "grund": "Unsichtbare Datei-Eingaben bekommen einen Namen und verlassen die Tab-Reihenfolge (axe label critical; die sichtbaren Knöpfe öffnen sie). Gleicher Text wie die Knöpfe (E4-L-27)",
+      "suchen": "\\s*aria-label=\\{allowDocuments \\? 'Datei auswählen' : 'Aus Galerie wählen'\\}|\\s*tabIndex=\\{-1\\}",
+      "ersetzen": ""
+    }
   ]
 }

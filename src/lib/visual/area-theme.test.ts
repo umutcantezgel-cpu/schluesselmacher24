@@ -34,6 +34,11 @@ describe('Bereichsfarben', () => {
     });
   });
 
+  it('Code und Schließanlagen (beide Blau-Violett) liegen mindestens 40° auseinander', () => {
+    const ton = (key: keyof typeof AREA_THEMES) => Number(AREA_THEMES[key].accent.split(' ')[0]);
+    expect(ton('schliessanlagen') - ton('schluessel-nach-code')).toBeGreaterThanOrEqual(40);
+  });
+
   it('Fläche, Text und Linie eines Bereichs teilen seinen Farbton', () => {
     for (const theme of Object.values(AREA_THEMES)) {
       const ton = theme.accent.split(' ')[0];

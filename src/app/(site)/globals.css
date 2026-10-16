@@ -131,8 +131,8 @@
   }
 
   /* In Abläufen (FlowShell, `data-ablauf`) zusätzlich unter der klebenden Fortschrittsleiste
-     (mobil 56 px, ab md bis 126 px mit Schrittliste) und über der festen Aktionsleiste
-     (mobil 113 px). Sonst landet eine fokussierte Karte darunter (Befund E5-B-23). */
+     (mobil etwa 56 px, ab md etwa 60 px; die Schrittliste klebt nicht mit) und über der festen
+     Aktionsleiste (mobil 113 px). Sonst landet eine fokussierte Karte darunter (Befund E5-B-23). */
   html:has([data-ablauf]) {
     scroll-padding-top: calc(var(--header-height) + 4.5rem);
     scroll-padding-bottom: 8rem;
@@ -140,7 +140,7 @@
 
   @media (min-width: 768px) {
     html:has([data-ablauf]) {
-      scroll-padding-top: calc(var(--header-height) + 9rem);
+      scroll-padding-top: calc(var(--header-height) + 5rem);
       scroll-padding-bottom: 1rem;
     }
   }
@@ -328,8 +328,8 @@
    - `.sm24-reveal` Element blendet von unten ein
    - `.sm24-fade`   Element blendet ein, ohne sich zu bewegen
    - `.sm24-pop`    Element wächst aus seiner Mitte (Punkte, Haken, Marker)
-   - `.sm24-dash`   laufende Strichlinie (Signal, Funk) — höchstens 3 Durchgänge,
-                    damit nichts länger als 5 s von selbst läuft
+   - `.sm24-dash`   laufende Strichlinie (Signal, Funk) — ein Durchgang: das Signal
+                    geht einmal hinaus (Sichtabnahme E4-L-23, WCAG 2.2.2)
    - `.sm24-scrub-*` an das Scrollen gebundene Szenen (B-03)
    Verzögerung/Dauer einzeln über `--sm24-delay` / `--sm24-duration`.
    `[data-motion="wait"]` hält die Einstiegs-Animationen an, bis `InView`
@@ -421,7 +421,7 @@
 
   .sm24-dash {
     stroke-dasharray: 6 6;
-    animation: sm24-dash var(--sm24-duration, 1.6s) linear var(--sm24-delay, 0s) 3;
+    animation: sm24-dash var(--sm24-duration, 1.6s) linear var(--sm24-delay, 0s) 1;
   }
 
   .sm24-aufdecken {

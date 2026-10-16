@@ -135,7 +135,7 @@ function funkboegen(x: number, y: number, von: number, bis: number, radien: numb
       <path
         key={radius}
         className="sm24-dash stroke-area"
-        style={motionStyle(0, 1.6 + i * 0.2)}
+        style={motionStyle(0.3, 1 + i * 0.1)}
         strokeWidth={LINIE}
         d={d}
       />
@@ -311,7 +311,7 @@ function klapp(tiefenZiffern: number[], f: Farben): Zeichnung {
       <path
         className="sm24-draw stroke-area-strong"
         pathLength={1}
-        style={motionStyle(1.2, 0.8)}
+        style={motionStyle(0.8, 0.6)}
         strokeWidth={LINIE}
         d={`M${r(sx)} ${r(sy)}A${bogenR} ${bogenR} 0 0 0 ${r(ex)} ${r(ey)}${pfeil}`}
       />
@@ -329,6 +329,13 @@ function smartKey(f: Farben): Zeichnung {
       <>
         <path className={f.kopf} strokeWidth={KONTUR} fillRule="evenodd" d={fob} />
         <path className={f.detail} strokeWidth={HILFSLINIE} d="M9 64H115" />
+        {/* Notschlüssel im Gehäuse, gestrichelt wie ein verdecktes Teil (Sichtabnahme E4-L-23) */}
+        <path
+          className={f.detail}
+          strokeWidth={HILFSLINIE}
+          strokeDasharray="4 3"
+          d="M14 -60H28V40L21 50L14 40Z"
+        />
         {taste(62, -30, 15, f, 'zu')}
         {taste(62, 10, 15, f, 'auf')}
         <circle className={f.knopf} strokeWidth={LINIE} cx={62} cy={44} r={8} />
@@ -472,7 +479,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
             key={d}
             className="sm24-draw stroke-area"
             pathLength={1}
-            style={motionStyle(0.45 + i * 0.1, 1.2)}
+            style={motionStyle(0.3 + i * 0.1, 1)}
             strokeWidth={KONTUR}
             d={d}
           />
@@ -482,7 +489,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
           <circle
             key={`${r(m.x)}-${r(m.y)}`}
             className="sm24-pop fill-area-strong"
-            style={motionStyle(0.9 + i * 0.06)}
+            style={motionStyle(0.7 + i * 0.05)}
             cx={r(m.x)}
             cy={r(m.y)}
             r={2.6}
@@ -493,7 +500,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
           <path
             className="sm24-draw stroke-foreground-muted"
             pathLength={1}
-            style={motionStyle(0.6, 1)}
+            style={motionStyle(0.4, 0.9)}
             strokeWidth={HILFSLINIE}
             d={lineal}
           />
@@ -505,7 +512,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
             <text
               key={x}
               className="sm24-reveal fill-foreground-muted font-mono"
-              style={motionStyle(1.1 + i * 0.05)}
+              style={motionStyle(0.9 + i * 0.04)}
               fontSize={schrift}
               textAnchor="middle"
               x={x}

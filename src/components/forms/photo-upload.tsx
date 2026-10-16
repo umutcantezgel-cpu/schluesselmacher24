@@ -341,6 +341,8 @@ export function PhotoUpload({
         ref={cameraRef}
         id={`${id}-camera`}
         type="file"
+        aria-label="Foto aufnehmen"
+        tabIndex={-1}
         accept="image/*"
         capture="environment"
         multiple={multiple}
@@ -351,6 +353,8 @@ export function PhotoUpload({
         ref={galleryRef}
         id={`${id}-gallery`}
         type="file"
+        aria-label={allowDocuments ? 'Datei auswählen' : 'Aus Galerie wählen'}
+        tabIndex={-1}
         accept={accept}
         multiple={multiple}
         className="sr-only"

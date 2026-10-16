@@ -286,25 +286,26 @@ export function CodeFundstelleGrafik({ params, title, className }: VisualProps) 
     >
       <Raster breite={BREITE} hoehe={HOEHE} />
 
-      <g className="sm24-reveal" style={motionStyle(0)}>
-        {f.objekt}
-      </g>
-
-      {/* Verbindung Fundstelle → Lupe (äußere Tangenten, wie ein Detailausschnitt) */}
+      {/* Verbindung Fundstelle → Lupe (äußere Tangenten, wie ein Detailausschnitt). Unter dem
+          Gegenstand gezeichnet: Seine Fläche deckt die Linien, sie laufen nie über Halm oder Bart. */}
       {tangenten.map(([x1, y1, x2, y2], i) => (
         <path
           key={i}
           className="sm24-draw stroke-area"
           pathLength={1}
-          style={motionStyle(0.7 + i * 0.1, 0.6)}
+          style={motionStyle(0.3 + i * 0.1, 0.6)}
           strokeWidth={HILFSLINIE}
           d={`M${x1} ${y1}L${x2} ${y2}`}
         />
       ))}
 
+      {/* Der Gegenstand ist Inhalt und steht sofort; bewegt werden nur Markierung, Linien und Lupe
+          (zusammen unter 1,2 s, Sichtabnahme E4-L-23). */}
+      <g>{f.objekt}</g>
+
       <circle
         className="sm24-pop stroke-area-strong"
-        style={motionStyle(0.5)}
+        style={motionStyle(0.1)}
         strokeWidth={LINIE_STARK}
         strokeDasharray="5 5"
         cx={marke.x}
@@ -313,11 +314,11 @@ export function CodeFundstelleGrafik({ params, title, className }: VisualProps) 
       />
 
       {/* Griff und Lupe als Doppelstrich-Halo: breite Striche sind hier Flächen, keine Linien (D-010) */}
-      <g className="sm24-pop" style={motionStyle(0.95)}>
+      <g className="sm24-pop" style={motionStyle(0.55)}>
         <path className="stroke-foreground" strokeWidth={13} d={griffPfad} />
         <path className="stroke-area" strokeWidth={8} d={griffPfad} />
         <circle className={f.lupenGrund} cx={lupe.x} cy={lupe.y} r={lupe.r} />
-        <g transform={`translate(${lupe.x} ${lupe.y})`}>{f.lupenInhalt(1.25)}</g>
+        <g transform={`translate(${lupe.x} ${lupe.y})`}>{f.lupenInhalt(0.7)}</g>
         <circle className="stroke-foreground" strokeWidth={9} cx={lupe.x} cy={lupe.y} r={lupe.r} />
         <circle className="stroke-area" strokeWidth={4.5} cx={lupe.x} cy={lupe.y} r={lupe.r} />
       </g>

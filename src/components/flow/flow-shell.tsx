@@ -64,12 +64,14 @@ export function FlowShell<T extends object>({
     <div data-ablauf className="pb-40 md:pb-8">
       {/* Fortschritt */}
       <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background px-5 py-3 sm:-mx-6 sm:px-6 md:mx-0 md:rounded-lg md:border md:px-5">
+        {/* Mobil eine Zeile: Der Ablauftitel steht schon in der h1, dafür der Name des Schritts. */}
         <div className="flex items-baseline justify-between gap-3">
-          <p className="text-caption font-mono uppercase tracking-label text-foreground-subtle">
+          <p className="hidden text-caption font-mono uppercase tracking-label text-foreground-muted md:block">
             {title}
           </p>
-          <p className="text-caption font-mono tabular-nums text-foreground-muted">
+          <p className="min-w-0 truncate whitespace-nowrap text-caption font-mono tabular-nums text-foreground-muted">
             Schritt {flow.stepIndex + 1} von {flow.stepCount}
+            {flow.step?.short && <span className="md:hidden"> · {flow.step.short}</span>}
           </p>
         </div>
 
@@ -86,40 +88,41 @@ export function FlowShell<T extends object>({
             style={{ transform: `scaleX(${Math.max(flow.progress, 0.04)})` }}
           />
         </div>
-
-        {/* Schrittliste ab Tablet */}
-        <ol className="mt-3 hidden flex-wrap gap-x-4 gap-y-1 md:flex">
-          {flow.steps.map((s, i) => (
-            <li key={s.id}>
-              <button
-                type="button"
-                onClick={() => {
-                  if (i > flow.stepIndex) return;
-                  if (i < flow.stepIndex) setAbsicht('zurueck');
-                  flow.goTo(s.id);
-                }}
-                disabled={i > flow.stepIndex}
-                aria-current={i === flow.stepIndex ? 'step' : undefined}
-                className={cn(
-                  'inline-flex min-h-6 items-center gap-1.5 text-caption font-semibold transition-colors',
-                  i === flow.stepIndex && 'text-primary',
-                  i < flow.stepIndex && 'text-foreground-muted hover:text-primary',
-                  i > flow.stepIndex && 'cursor-default text-foreground-subtle',
-                )}
-              >
-                {i < flow.stepIndex ? (
-                  <GlyphHaken size={14} />
-                ) : (
-                  <span aria-hidden className="font-mono tabular-nums">
-                    {i + 1}.
-                  </span>
-                )}
-                {s.short}
-              </button>
-            </li>
-          ))}
-        </ol>
       </div>
+
+      {/* Schrittliste ab Tablet: unter der klebenden Leiste, damit angeheftet nur Titel und
+          Balken stehen (eine Zeile statt rund 125 px). */}
+      <ol className="mt-3 hidden flex-wrap gap-x-4 gap-y-1 md:flex md:px-5">
+        {flow.steps.map((s, i) => (
+          <li key={s.id}>
+            <button
+              type="button"
+              onClick={() => {
+                if (i > flow.stepIndex) return;
+                if (i < flow.stepIndex) setAbsicht('zurueck');
+                flow.goTo(s.id);
+              }}
+              disabled={i > flow.stepIndex}
+              aria-current={i === flow.stepIndex ? 'step' : undefined}
+              className={cn(
+                'inline-flex min-h-6 items-center gap-1.5 text-caption font-semibold transition-colors',
+                i === flow.stepIndex && 'text-primary',
+                i < flow.stepIndex && 'text-foreground-muted hover:text-primary',
+                i > flow.stepIndex && 'cursor-default text-foreground-subtle',
+              )}
+            >
+              {i < flow.stepIndex ? (
+                <GlyphHaken size={14} />
+              ) : (
+                <span aria-hidden className="font-mono tabular-nums">
+                  {i + 1}.
+                </span>
+              )}
+              {s.short}
+            </button>
+          </li>
+        ))}
+      </ol>
 
       {/* Hinweis auf wiederhergestellten Stand */}
       {flow.restored && (
@@ -169,10 +172,13 @@ export function FlowShell<T extends object>({
           </p>
         )}
         <div className="mx-auto flex max-w-shell gap-3 md:mx-0">
-          <Button variant="outline" size="lg" onClick={zurueck} disabled={flow.isFirst}>
-            <GlyphPfeilLinks size={18} />
-            <span className="hidden sm:inline">Zurück</span>
-          </Button>
+          {/* Auf Schritt 1 gibt es kein Zurück; mobil bleibt der Name für Hilfsmittel lesbar. */}
+          {!flow.isFirst && (
+            <Button variant="outline" size="lg" onClick={zurueck}>
+              <GlyphPfeilLinks size={18} />
+              <span className="sr-only sm:not-sr-only">Zurück</span>
+            </Button>
+          )}
 
           {flow.isLast ? (
             <Button

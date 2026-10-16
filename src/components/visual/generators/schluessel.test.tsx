@@ -56,6 +56,12 @@ describe('SchluesselGrafik', () => {
     expect(html).not.toContain('<text');
   });
 
+  it('zeigt beim Smart-Key den Notschlüssel im Gehäuse gestrichelt', () => {
+    const html = zeichne({ typ: 'smart-key' });
+    expect(html).toContain('stroke-dasharray="4 3"');
+    expect(zeichne({ typ: 'funk' })).not.toContain('stroke-dasharray="4 3"');
+  });
+
   it('leitet aus gleichem Code dasselbe Profil ab, aus anderem ein anderes', () => {
     expect(zeichne({ code: 'AB 4711' })).toBe(zeichne({ code: 'AB 4711' }));
     expect(zeichne({ code: 'ab4711' })).toBe(zeichne({ code: 'AB 4711' }));

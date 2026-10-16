@@ -142,7 +142,9 @@ describe('format utilities', () => {
     });
 
     it('formats megabytes', () => {
-      expect(formatFileSize(1024 * 1024 * 2.5)).toBe('2.5 MB');
+      // Alt: '2.5 MB' (englischer Dezimalpunkt). Neu: deutsche Schreibweise nach K-010.
+      expect(formatFileSize(1024 * 1024 * 2.5)).toBe('2,5 MB');
+      expect(formatFileSize(1024 * 1024 * 12)).toBe('12 MB');
     });
   });
 });

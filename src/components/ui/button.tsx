@@ -19,6 +19,15 @@ const base =
   'disabled:cursor-not-allowed disabled:opacity-55 disabled:active:scale-100 ' +
   'aria-disabled:cursor-not-allowed aria-disabled:opacity-55';
 
+/*
+ * Gesperrt (nicht lädt): ruhige Fläche mit Haarlinie statt eines blassen Hauptknopfs,
+ * der wie defekt wirkt (Sichtabnahme E4-L-23). Lädt: Farbe bleibt, Spinner zeigt den Zustand.
+ */
+const gesperrt =
+  'border border-border bg-surface-muted text-foreground-muted shadow-none disabled:opacity-100 ' +
+  'hover:border-border hover:bg-surface-muted hover:text-foreground-muted';
+const laedt = 'disabled:cursor-wait disabled:opacity-100';
+
 const variants: Record<Variant, string> = {
   primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
   secondary: 'bg-secondary text-secondary-foreground hover:bg-surface-sunken',
@@ -63,7 +72,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       ref={ref}
       disabled={disabled || loading}
       aria-busy={loading || undefined}
-      className={cn(base, variants[variant], sizes[size], fullWidth && 'w-full', className)}
+      className={cn(
+        base,
+        variants[variant],
+        sizes[size],
+        fullWidth && 'w-full',
+        disabled && !loading && gesperrt,
+        loading && laedt,
+        className,
+      )}
       {...props}
     >
       {loading && <GlyphLaden size={18} className="animate-spin motion-reduce:animate-none" />}

@@ -26,7 +26,7 @@ const BAUTEILE = [
   { key: 'zusatzschloss', name: 'Zusatzschloss', mx: 189, my: 62, row: 62 },
   { key: 'beschlag', name: 'Schutzbeschlag', mx: 201, my: 112, row: 106 },
   { key: 'zylinder', name: 'Schließzylinder', mx: 217, my: 150, row: 150 },
-  { key: 'schliessblech', name: 'Schließblech', mx: 226, my: 168, row: 194 },
+  { key: 'schliessblech', name: 'Schließblech', mx: 226, my: 178, row: 194 },
   { key: 'bandseite', name: 'Bandseite', mx: 55, my: 210, row: 238 },
 ] as const;
 
@@ -80,10 +80,26 @@ export const TUER_SCHUTZ_AUSSCHNITT = {
   x: 26,
   y: 20,
   breite: 444,
-  hoehe: 258,
+  hoehe: 264,
   vollBreite: BREITE,
   vollHoehe: HOEHE,
 } as const;
+
+/** Führung der Bandseite: links außen an der Zarge vorbei (nicht über die Bänder), dann unter der Tür. */
+const AUSSEN_LINKS = ZARGE.x - 14;
+const UNTER_TUER = BODEN + 7;
+
+/**
+ * Führungslinie einer Marke zur Legende: waagerecht, ein Knick, waagerecht. Die Bandseite
+ * sitzt links; ihre Linie läuft außen an der Zarge und unter der Tür entlang statt quer
+ * durch das Türblatt (Sichtabnahme E4-L-23).
+ */
+function fuehrung(b: (typeof BAUTEILE)[number]): string {
+  if (b.key === 'bandseite') {
+    return `M${b.mx - MARKE_R} ${b.my}H${AUSSEN_LINKS}V${UNTER_TUER}H${KNICK_X}V${b.row + 8}L${KNICK_X + 8} ${b.row}H${LINIE_ENDE}`;
+  }
+  return `M${b.mx + MARKE_R} ${b.my}H${KNICK_X}L${KNICK_X + 8} ${b.row}H${LINIE_ENDE}`;
+}
 
 const HERVOR = 'fill-area-soft stroke-area-strong';
 
@@ -259,7 +275,7 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
               pathLength={1}
               style={motionStyle(0.3 + i * 0.12, 0.8, { strokeDasharray: DRAW_DASHARRAY })}
               strokeWidth={LINIE}
-              d={`M${b.mx + MARKE_R} ${b.my}H${KNICK_X}L${KNICK_X + 8} ${b.row}H${LINIE_ENDE}`}
+              d={fuehrung(b)}
             />
           ))}
 
