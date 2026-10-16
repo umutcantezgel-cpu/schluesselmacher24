@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, PackageOpen } from 'lucide-react';
 
 import { getCodeLines, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -8,6 +7,14 @@ import type { NavLink } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { AreaScope } from '@/components/visual/area-scope';
+import { BereichIcon } from '@/components/visual/bereich-icon';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { IconGleichschliessendeZylinder } from '@/components/visual/icons/gleichschliessende-zylinder';
+import { IconSicherungskarte } from '@/components/visual/icons/sicherungskarte';
+import { IconSchluesselNachVorlage } from '@/components/visual/icons/schluessel-nach-vorlage';
+import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
+import { CodeFundstelleInteraktiv } from '@/components/visual/interaktiv/code-fundstelle-interaktiv';
 
 import { ShopListe } from './shop-liste';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -38,6 +45,22 @@ const BASE_LINKS: NavLink[] = [
   },
 ];
 
+/** Fach-Icon je Ziel der Weiterlesen-Liste; ohne eigenes Motiv der Bereich. */
+function WeiterIcon({ href }: { href: string }) {
+  switch (href) {
+    case '/schluessel-nach-vorlage':
+      return <IconSchluesselNachVorlage size={32} />;
+    case '/ratgeber/schluesselcode-finden':
+      return <IconSicherungskarte size={32} />;
+    case '/gleichschliessende-zylinder':
+      return <IconGleichschliessendeZylinder size={32} />;
+    case '/rechtliches/versand-und-zahlung':
+      return <IconVersandPaket size={32} />;
+    default:
+      return <BereichIcon area="schluessel-nach-code" size={32} />;
+  }
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
@@ -59,7 +82,7 @@ export default async function SchluesselNachCodePage() {
   const links = [...BASE_LINKS, ...extraLinks];
 
   return (
-    <>
+    <AreaScope area="schluessel-nach-code">
       <JsonLd
         data={pageGraphSchema({
           path: '/schluessel-nach-code',
@@ -84,15 +107,20 @@ export default async function SchluesselNachCodePage() {
           </p>
           <p className="mt-2">
             Kein Code vorhanden?{' '}
-            <Link href="/schluessel-nach-vorlage" className="font-semibold text-primary hover:underline">
+            <Link
+              href="/schluessel-nach-vorlage"
+              className="font-semibold text-primary hover:underline"
+            >
               Dann geht es über Schlüssel nach Vorlage weiter.
             </Link>
           </p>
         </Alert>
       </PageHeader>
 
-      <Section tight>
+      <Section tight labelledBy="trefferliste-titel">
         <SectionHeading
+          id="trefferliste-titel"
+          nummer="01"
           eyebrow={`${lines.length} Codelinien`}
           title="Passende Codelinie finden"
           lead={
@@ -105,41 +133,62 @@ export default async function SchluesselNachCodePage() {
         <ShopListe lines={lines} className="mt-8" />
       </Section>
 
-      <Section tone="muted" tight>
+      {/* Großer Moment (B-16): die Codefundstelle als Zeichnung, Kopf links, Zeichnung rechts */}
+      <Section tone="muted" labelledBy="fundstelle-titel">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <SectionHeading
+            id="fundstelle-titel"
+            className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start"
+            nummer="02"
+            eyebrow="Codefundstelle"
+            title="Wo steht der Code?"
+          />
+          <CodeFundstelleInteraktiv className="lg:col-span-7" />
+        </div>
+      </Section>
+
+      <Section tight labelledBy="weiter-titel">
         <SectionHeading
+          id="weiter-titel"
+          nummer="03"
           eyebrow="Weiterlesen"
           title="Passende Bereiche und Erklärungen"
           lead="Wenn der Code fehlt oder mehrere Türen zusammengehören, führen diese Wege weiter."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-          {links.map((link) => (
-            <li key={link.href}>
+        {/* Stückliste mit Fach-Icons: die ganze Zeile ist der Link */}
+        <ol className="mt-8 border-t border-border">
+          {links.map((link, index) => (
+            <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
-                className="group flex h-full items-start gap-3 rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                className="group flex min-h-touch items-center gap-4 py-6 transition-colors duration-quick ease-standard sm:gap-6"
               >
-                <PackageOpen size={18} aria-hidden className="mt-0.5 shrink-0 text-primary" />
+                <span className="w-6 shrink-0 font-mono text-caption tabular-nums text-foreground-muted sm:w-8">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="shrink-0 text-area-strong">
+                  <WeiterIcon href={link.href} />
+                </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block text-[15px] font-bold text-foreground group-hover:text-primary">
+                  <span className="block text-title-sm font-semibold text-foreground group-hover:text-area-strong">
                     {link.label}
                   </span>
                   {link.description && (
-                    <span className="mt-1 block text-[13px] leading-relaxed text-foreground-muted">
+                    <span className="mt-1 block max-w-measure text-small text-foreground-muted">
                       {link.description}
                     </span>
                   )}
                 </span>
-                <ArrowRight
-                  size={16}
-                  aria-hidden
-                  className="mt-0.5 shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                <GlyphPfeilRechts
+                  size={18}
+                  className="shrink-0 text-foreground-subtle transition-transform duration-base ease-standard group-hover:translate-x-1 group-hover:text-area-strong"
                 />
               </Link>
             </li>
           ))}
-        </ul>
+        </ol>
       </Section>
-    </>
+    </AreaScope>
   );
 }
