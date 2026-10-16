@@ -39,18 +39,26 @@ export function FlowShell<T extends object>({
 }: FlowShellProps<T>) {
   const percent = Math.round(flow.progress * 100);
 
-  // Richtung des Schrittwechsels (B-11): Information aus vorigem Render.
-  // Ein einziger Zustand; beim ersten Render ist die Richtung null, also keine Animation.
+  // Schrittwechsel (B-11): Nur ein Wechsel über die eigenen Knöpfe bewegt sich, in seiner
+  // Richtung. Das Wiederherstellen eines Zwischenstands und der erste Render stehen still.
+  // Muster „Information aus vorigem Render“, ohne Ref und ohne Effekt.
+  const [absicht, setAbsicht] = useState<'vor' | 'zurueck' | null>(null);
   const [wechsel, setWechsel] = useState<{ vorher: number; richtung: 'vor' | 'zurueck' | null }>({
     vorher: flow.stepIndex,
     richtung: null,
   });
   if (wechsel.vorher !== flow.stepIndex) {
-    setWechsel({
-      vorher: flow.stepIndex,
-      richtung: flow.stepIndex > wechsel.vorher ? 'vor' : 'zurueck',
-    });
+    setWechsel({ vorher: flow.stepIndex, richtung: absicht });
+    setAbsicht(null);
   }
+  const weiter = () => {
+    setAbsicht('vor');
+    flow.next();
+  };
+  const zurueck = () => {
+    setAbsicht('zurueck');
+    flow.back();
+  };
 
   return (
     <div className="pb-40 md:pb-8">
@@ -85,7 +93,11 @@ export function FlowShell<T extends object>({
             <li key={s.id}>
               <button
                 type="button"
-                onClick={() => i <= flow.stepIndex && flow.goTo(s.id)}
+                onClick={() => {
+                  if (i > flow.stepIndex) return;
+                  if (i < flow.stepIndex) setAbsicht('zurueck');
+                  flow.goTo(s.id);
+                }}
                 disabled={i > flow.stepIndex}
                 aria-current={i === flow.stepIndex ? 'step' : undefined}
                 className={cn(
@@ -158,7 +170,7 @@ export function FlowShell<T extends object>({
           </p>
         )}
         <div className="mx-auto flex max-w-shell gap-3 md:mx-0">
-          <Button variant="outline" size="lg" onClick={flow.back} disabled={flow.isFirst}>
+          <Button variant="outline" size="lg" onClick={zurueck} disabled={flow.isFirst}>
             <GlyphPfeilLinks size={18} />
             <span className="hidden sm:inline">Zurück</span>
           </Button>
@@ -174,7 +186,7 @@ export function FlowShell<T extends object>({
               {submitLabel}
             </Button>
           ) : (
-            <Button size="lg" fullWidth onClick={flow.next} disabled={!flow.canContinue}>
+            <Button size="lg" fullWidth onClick={weiter} disabled={!flow.canContinue}>
               Weiter
               <GlyphPfeilRechts size={18} />
             </Button>
