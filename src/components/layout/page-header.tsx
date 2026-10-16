@@ -23,7 +23,10 @@ export interface PageHeaderProps {
    * Warenkorb, Kasse und Rechtstexte.
    */
   art?: 'erzaehl' | 'arbeit';
-  /** Fachgrafik rechts neben dem Text (ersetzt das Fach-Icon des Bereichs). */
+  /**
+   * Fachgrafik des Kopfes: 7/5 neben dem Text, über Text und Aktionen. Das Fach-Icon des
+   * Bereichs steht dann klein neben der Augenbraue (bleibt Ziel des Seitenwechsels B-13).
+   */
   visual?: ReactNode;
 }
 
@@ -40,46 +43,76 @@ export function PageHeader({
   visual,
 }: PageHeaderProps) {
   const erzaehl = art === 'erzaehl';
-  // Das Fach-Icon ist Ziel des Seitenwechsels aus dem Schnelleinstieg der Startseite (B-13).
-  const anker =
-    visual ??
-    (bereich && erzaehl ? (
+  const mitGrafik = Boolean(visual);
+  // Das Fach-Icon ist Ziel des Seitenwechsels aus dem Schnelleinstieg der Startseite (B-13):
+  // groß rechts, oder – wenn der Kopf eine Fachgrafik trägt – klein neben der Augenbraue.
+  const icon =
+    bereich && erzaehl ? (
       <Seitenwechsel name={bereichsName(bereich)}>
-        <BereichIcon area={bereich} size={112} className="text-area-strong" />
+        <BereichIcon area={bereich} size={mitGrafik ? 40 : 112} className="text-area-strong" />
       </Seitenwechsel>
-    ) : null);
+    ) : null;
+  const anker = mitGrafik ? null : icon;
+
+  const kopf = (
+    <>
+      {mitGrafik && icon ? (
+        <div className="flex items-center gap-3">
+          {icon}
+          {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+        </div>
+      ) : (
+        eyebrow && <p className="eyebrow">{eyebrow}</p>
+      )}
+      {erzaehl && <Profillinie text={title} className="mt-3 text-area" />}
+
+      <h1
+        className={cn(
+          'font-bold text-foreground',
+          erzaehl ? 'mt-4 text-display' : 'mt-3 text-headline',
+          !eyebrow && !icon && 'mt-0',
+        )}
+      >
+        {title}
+      </h1>
+      {lead && (
+        <p className={cn('mt-4 max-w-measure text-foreground-muted', erzaehl ? 'text-lead' : 'text-body')}>{lead}</p>
+      )}
+    </>
+  );
 
   return (
     <header className="border-b border-border bg-surface">
       <div className={cn('shell', erzaehl ? 'py-section-tight' : 'py-8 md:py-10')}>
         {crumbs && crumbs.length > 0 && <Breadcrumbs crumbs={crumbs} className="mb-6" />}
 
-        <div className={cn('grid gap-8', anker && 'lg:grid-cols-12 lg:items-center lg:gap-gutter')}>
-          <div className={cn(anker && 'lg:col-span-8')}>
-            {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-            {erzaehl && <Profillinie text={title} className="mt-3 text-area" />}
-
-            <h1
-              className={cn(
-                'font-bold text-foreground',
-                erzaehl ? 'mt-4 text-display' : 'mt-3 text-headline',
-                !eyebrow && 'mt-0',
-              )}
-            >
-              {title}
-            </h1>
-            {lead && (
-              <p className={cn('mt-4 max-w-measure text-foreground-muted', erzaehl ? 'text-lead' : 'text-body')}>{lead}</p>
+        {mitGrafik ? (
+          /* Kopf mit Fachgrafik (Muster Startseite): 7/5, die Grafik rechts über beide Zeilen.
+             Mobil: Kopf → Grafik → Aktionen und Schriftfeld (Bild vor Handlung, Handlung vor Erklärung). */
+          <div className="grid gap-8 lg:grid-cols-12 lg:grid-rows-kopf lg:gap-x-gutter lg:gap-y-0">
+            <div className="lg:col-span-7 lg:self-end">{kopf}</div>
+            <div className="lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:self-center">{visual}</div>
+            {(actions || children) && (
+              <div className="lg:col-span-7 lg:self-start lg:pt-7">
+                {actions && <div className="flex flex-wrap items-center gap-3">{actions}</div>}
+                {children && <div className={cn(actions && 'mt-8')}>{children}</div>}
+              </div>
             )}
-            {actions && <div className="mt-7 flex flex-wrap items-center gap-3">{actions}</div>}
           </div>
+        ) : (
+          <>
+            <div className={cn('grid gap-8', anker && 'lg:grid-cols-12 lg:items-center lg:gap-gutter')}>
+              <div className={cn(anker && 'lg:col-span-8')}>
+                {kopf}
+                {actions && <div className="mt-7 flex flex-wrap items-center gap-3">{actions}</div>}
+              </div>
 
-          {anker && (
-            <div className={cn('lg:col-span-4', visual ? '' : 'hidden justify-self-end lg:block')}>{anker}</div>
-          )}
-        </div>
+              {anker && <div className="hidden justify-self-end lg:col-span-4 lg:block">{anker}</div>}
+            </div>
 
-        {children && <div className="mt-8">{children}</div>}
+            {children && <div className="mt-8">{children}</div>}
+          </>
+        )}
       </div>
     </header>
   );
