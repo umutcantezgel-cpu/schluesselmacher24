@@ -7,6 +7,7 @@ import type { CodeLine } from '@/lib/types';
 import { formatCents } from '@/lib/format';
 import { cn } from '@/lib/cn';
 import { istPlatzhalter } from '@/lib/platzhalter';
+import { codelinienKennung } from '@/lib/codelinie';
 import { Badge } from '@/components/ui/badge';
 import { Button, ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
@@ -42,12 +43,6 @@ function sortedUnique(values: string[]): string[] {
   return [...new Set(values)].sort((a, b) => a.localeCompare(b, 'de'));
 }
 
-/** Kennung der Codelinie („MS-01“): aus „… — Serie MS-01“, sonst aus dem Slug. Nur Anzeige. */
-function kennungOf(line: CodeLine): string {
-  const treffer = /Serie\s+([A-Za-z0-9-]+)\s*$/.exec(line.name);
-  return (treffer ? treffer[1] : line.slug).toUpperCase();
-}
-
 /** Titel ohne die angehängte Serienkennung („— Serie MS-01“). Nur Anzeige. */
 function titelOf(line: CodeLine): string {
   return line.name.replace(/\s*[—–-]\s*Serie\s+[A-Za-z0-9-]+\s*$/, '');
@@ -70,7 +65,7 @@ function gruppenVon(lines: CodeLine[]): Gruppe[] {
     const schluessel = familyOf(line);
     let gruppe = gruppen.get(schluessel);
     if (!gruppe) {
-      const praefix = kennungOf(line).split('-')[0];
+      const praefix = codelinienKennung(line).split('-')[0];
       const anwendung = line.application.split(':')[0].trim();
       gruppe = { kopf: `${praefix} · ${anwendung}`, typen: new Set<string>(), lines: [] };
       gruppen.set(schluessel, gruppe);
@@ -325,7 +320,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
                           className="group grid min-h-touch-lg grid-cols-12 items-center gap-x-3 gap-y-1 py-4 transition-colors duration-quick ease-standard md:gap-x-6"
                         >
                           <span className="col-span-2 font-mono text-small font-semibold tabular-nums text-foreground">
-                            {kennungOf(line)}
+                            {codelinienKennung(line)}
                           </span>
                           <span className="col-span-9 text-balance text-body font-semibold leading-snug text-foreground transition-colors duration-quick ease-standard group-hover:text-primary md:col-span-3">
                             {titelOf(line)}

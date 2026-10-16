@@ -55,3 +55,6 @@ Floskeln und Superlative (K-003); Vorschläge streichen nur, Fachaussagen bleibe
 
 ## Ratgeber (`/ratgeber/[slug]`, aus E5-BEFUND-H12)
 - **Knopf „Ihr nächster Schritt“:** „Anfrage für Ersatzschlüssel starten“ (`content/guides.json`, `nextStep.label`) bricht auf Telefonen zweizeilig. Vorschlag: „Ersatzschlüssel anfragen“.
+
+## Codelinien (`/schluessel-nach-code/[slug]`, aus E5-BEFUND-H06)
+- **Erster Satz der Beschreibung:** In allen 51 Einträgen von `content/code-lines.json` beginnt `description` (und damit Meta-Beschreibung und JSON-LD) mit der kleingeschriebenen Anwendung, z. B. „Nachschlüssel für möbel- und büroschloss: büroschrank und rollcontainer.“ Die Seite zeigt diesen Satz schon als „Nachschlüssel für die Codelinie MS-01.“ (nur Anzeige). Vorschlag für die Daten: denselben Satz eintragen oder die Anwendung in Originalschreibung („… für Möbel- und Büroschloss: Büroschrank und Rollcontainer.“); `seo.description` entsprechend.

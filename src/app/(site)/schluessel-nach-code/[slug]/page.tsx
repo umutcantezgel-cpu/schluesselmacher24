@@ -15,10 +15,12 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { CodeFundstelleInteraktiv } from '@/components/visual/interaktiv/code-fundstelle-interaktiv';
+import { PROFILSCHNITT_AUSSCHNITT, PROFILSCHNITT_GROESSE } from '@/components/visual/generators/profilschnitt';
 
 import { BestellFormular } from './bestell-formular';
 import { getSiteUrl } from '@/lib/site-url';
 import { istPlatzhalter } from '@/lib/platzhalter';
+import { beschreibungFuerAnzeige } from '@/lib/codelinie';
 
 interface CodeLinePageProps {
   /** In Next.js 16 sind Routenparameter ein Promise. */
@@ -87,6 +89,28 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
         title={line.name}
         lead={line.application}
         crumbs={crumbs}
+        visual={
+          /* Blickfang im Kopf (K-006): die Fräsbahn zum Beispielcode der Codelinie, ohne Kartenrahmen */
+          <figure className="m-0">
+            <ImagePlaceholder
+              frei
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              ausschnitt={{
+                ...PROFILSCHNITT_AUSSCHNITT,
+                vollBreite: PROFILSCHNITT_GROESSE.breite,
+                vollHoehe: PROFILSCHNITT_GROESSE.hoehe,
+              }}
+              slot={{
+                motif: `Fräsbahn zum Beispielcode ${line.codeExample}`,
+                ratio: '4/3',
+                visual: { generator: 'profilschnitt', params: { code: line.codeExample } },
+              }}
+            />
+            <figcaption className="mt-2 font-mono text-caption uppercase tracking-label text-foreground-muted">
+              Darstellung zum Beispielcode {line.codeExample} – keine echte Schließung
+            </figcaption>
+          </figure>
+        }
       >
         <div className="flex flex-wrap items-center gap-2">
           <Badge tone="primary">Ohne Einsendung des Originalschlüssels</Badge>
@@ -98,23 +122,57 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           {/* Bestellung steht im DOM zuerst: mobil oben, ab lg rechts. Lese- und Fokusfolge entsprechen der Sichtfolge. */}
-          <div className="lg:sticky lg:top-24 lg:col-span-5 lg:col-start-8 lg:row-start-1">
+          <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-start-1">
             <BestellFormular line={line} />
           </div>
 
           {/* Erklärung, Angaben und Passende Seiten: ab lg links, füllen die Spalte unter dem Kopf */}
           <div className="lg:col-span-7 lg:col-start-1 lg:row-start-1">
             <div>
-              <h2 className="text-title font-semibold text-foreground">
-                Was Sie erhalten
-              </h2>
-              <p className="prose-sm24 mt-3">{line.description}</p>
+              <SectionHeading nummer="01" eyebrow="Lieferumfang" title="Was Sie erhalten" />
+              <p className="prose-sm24 mt-4">{beschreibungFuerAnzeige(line)}</p>
+            </div>
+
+            {/* Großer Moment (B-16): Fundstelle als Zeichnung, solange kein Foto hinterlegt ist */}
+            <div className="mt-12">
+              <SectionHeading nummer="02" eyebrow="Codefundstelle" title="Wo steht der Code?" />
+              <p className="prose-sm24 mt-4">{line.codeHint}</p>
+
+              {line.codeLocationImage.bild ? (
+                <figure className="m-0 mt-6 sm:max-w-md">
+                  <ImagePlaceholder slot={line.codeLocationImage} />
+                  <figcaption className="mt-2 flex items-start gap-1.5 text-caption leading-snug text-foreground-muted">
+                    <GlyphOrt size={16} className="mt-0.5 shrink-0" />
+                    <span>So finden Sie den Code an Schloss und Schlüssel.</span>
+                  </figcaption>
+                </figure>
+              ) : (
+                <CodeFundstelleInteraktiv className="mt-6" />
+              )}
+
+              <p className="prose-sm24 mt-4">
+                Sie finden den Code nicht?{' '}
+                <Link
+                  href="/ratgeber/schluesselcode-finden"
+                  className="inline py-1 -my-1 font-semibold text-primary hover:underline"
+                >
+                  Der Ratgeber zeigt die üblichen Fundstellen.
+                </Link>{' '}
+                Ohne Code ist{' '}
+                <Link
+                  href="/schluessel-nach-vorlage"
+                  className="inline py-1 -my-1 font-semibold text-primary hover:underline"
+                >
+                  Schlüssel nach Vorlage
+                </Link>{' '}
+                der passende Weg.
+              </p>
             </div>
 
             {/* Schriftfeld-Liste: Haarlinien statt Karte, Codeformat und Stückzahl in Mono */}
-            <div className="mt-8">
-              <h2 className="text-title font-semibold text-foreground">Technische Angaben</h2>
-              <dl className="mt-4 border-t border-border">
+            <div className="mt-12">
+              <SectionHeading nummer="03" eyebrow="Angaben" title="Technische Angaben" />
+              <dl className="mt-6 border-t border-border">
                 {technik.map((fact) => (
                   <div
                     key={fact.label}
@@ -137,45 +195,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               </dl>
             </div>
 
-            {/* Großer Moment (B-15/B-16): Fundstelle als Zeichnung, solange kein Foto hinterlegt ist */}
-            <div className="mt-8">
-              <h2 className="text-title font-semibold text-foreground">
-                Wo steht der Code?
-              </h2>
-              <p className="prose-sm24 mt-3">{line.codeHint}</p>
-
-              {line.codeLocationImage.bild ? (
-                <figure className="m-0 mt-4 sm:max-w-md">
-                  <ImagePlaceholder slot={line.codeLocationImage} />
-                  <figcaption className="mt-2 flex items-start gap-1.5 text-caption leading-snug text-foreground-muted">
-                    <GlyphOrt size={16} className="mt-0.5 shrink-0" />
-                    <span>So finden Sie den Code an Schloss und Schlüssel.</span>
-                  </figcaption>
-                </figure>
-              ) : (
-                <CodeFundstelleInteraktiv className="mt-4" />
-              )}
-
-              <p className="prose-sm24 mt-4">
-                Sie finden den Code nicht?{' '}
-                <Link
-                  href="/ratgeber/schluesselcode-finden"
-                  className="inline py-1 -my-1 font-semibold text-primary hover:underline"
-                >
-                  Der Ratgeber zeigt die üblichen Fundstellen.
-                </Link>{' '}
-                Ohne Code ist{' '}
-                <Link
-                  href="/schluessel-nach-vorlage"
-                  className="inline py-1 -my-1 font-semibold text-primary hover:underline"
-                >
-                  Schlüssel nach Vorlage
-                </Link>{' '}
-                der passende Weg.
-              </p>
-            </div>
-
-            <Alert tone="legal" title="Anfertigung nach Ihrer Codeangabe" className="mt-8">
+            <Alert tone="legal" title="Anfertigung nach Ihrer Codeangabe" className="mt-10">
               <p>
                 Dieser Schlüssel wird eigens für Sie nach dem Code gefertigt, den Sie angeben. Ein
                 falsch eingegebener Code führt zu einem nicht passenden Schlüssel. Bitte prüfen Sie
@@ -197,7 +217,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
             {/* Stückliste mit Haarlinien: die ganze Zeile ist der Link */}
             <div className="mt-12">
               <SectionHeading
-                nummer="01"
+                nummer="04"
                 eyebrow="Weiter im Bereich"
                 title="Passende Seiten zu dieser Codelinie"
               />
