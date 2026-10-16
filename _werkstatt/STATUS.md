@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · Befundwelle 1 (H05, H09, H04) und Generator ablauf laufen · Pflicht 60/79 · Kür 0/6 (K-04 vorbereitet) · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (99d805c: Logikwächter 0, Wertesuche 0) · Nächster Schritt: Welle 1 und GRAFIKER-10 abnehmen, Befundwelle 2 starten
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · Nachprüfung H01/H02/H03/H06/H07, H10 und H11 laufen · Pflicht 65/79 · Kür 4/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (0ff7e48: Logikwächter 0 außer laufendem H11, Wertesuche 0) · Nächster Schritt: Nachprüfung und H10/H11 abnehmen, dann Welle G
 
 # Status des Gestaltungslaufs
 
@@ -39,3 +39,4 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · B
 - 16.10.2026 09:00 · Welle D vollständig (B-14 Warenkorb, B-15 Kasse, D-031), Seitenwechsel springt wieder nach oben (L-19, D-030), SummaryList als Schriftfeld (L-20), Motiv-Zuordnung nach der Sache (L-21, D-032). Welle E gestartet. Morgenbericht 07:00 in BERICHT.md.
 - 16.10.2026 09:50 · Welle E abgenommen (B-16 Assistent, B-17 Vorlage, B-18 Zutritt, B-19 Sicherheitstechnik, D-033) mit Nacharbeit: Hauseingang mobil lesbar (12,5 px), Fach-Icon wächst mit der Fläche, keine Lücke auf dem Tablet. Wertesuche 0 ohne Ausnahme (L-22, D-034). F-04 auf Port 3001 durch alle 13 Schritte.
 - 16.10.2026 11:10 · Prüfstufe B E4 grün, Warenkorb mobil im Budget (L-07a). Sichtabnahme E4-L-23: 6,2 (D-037); gemeinsame Befunde umgesetzt (E4-L-24 bis -27, KERN 1.10/1.11), Schließplan mit Reserve und Telefonformat (GRAFIKER-09), Lesefortschritt im Ratgeber als reine CSS-Szene (L-28). Befundpakete H01–H12 und Pakete der Wellen F–H geschrieben; Befundwelle 1 und Generator `ablauf` laufen.
+- 16.10.2026 16:15 · Neustart des Arbeitsprozesses (Server neu gestartet). Abgenommen: Befundwelle 1 (H04, H05, H09), H08, H12, B-20 bis B-23; Kür K-02, K-04, K-05, K-06; Hinweiskästen ruhig (D-041); H04 Runde 2 mit Schlüsselart-Zeichnungen (D-042). Nachprüfung der vom Sitzungslimit unterbrochenen Pakete läuft.

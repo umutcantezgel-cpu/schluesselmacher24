@@ -2,11 +2,10 @@
 
 - **Etappe:** E5 (übrige Ansichten und Befundpakete). Prüfstufe B für E4 ist grün; die Sichtabnahme E4-L-23 ergab 6,2 (D-037). Die gemeinsamen Befunde sind mit E4-L-27 umgesetzt, KERN 1.11.
 - **Laufend:**
-  - Befundwelle 2 (E5-BEFUND-H02, -H03, -H06, -H08): Workflow `wf_1ef8aaeb-f76` (Task `wpjmeur56`), Basis `9e592a6`.
-  - E5-BAUMEISTER-21 (gleichschließende Zylinder): Workflow `wf_c6f77fec-024` (Task `ws57ntnao`), Basis `bd18826`.
-  - E5-BAUMEISTER-22 (Vorlage-Anfrage): Workflow `wf_232ea99c-38e` (Task `w6x1k5d5q`), Basis `9e592a6`.
-  - Je Workflow höchstens zwei Agenten gleichzeitig; zusammen vier Haiku-Plätze.
-- **Fertig seit dem letzten Prüfpunkt:** Befundwelle 1 abgenommen (H05 d8b3e26, H09 5b7bb11, H04 d53b63d; D-040), E5-BAUMEISTER-20 (8a71d31), E5-BEFUND-H12 mit Kür K-04 (6cb4c93), E4-GRAFIKER-10 abgenommen (ec7db44, b929023), Kür K-02 (fe069ba), K-05 Druckansicht, K-06 Vorschaubilder (D-039), B-25 Stiftzuhaltung als CSS vorbereitet (Paket E6-GRAFIKER-11), Paket E5-DOKUMENTAR-01. Davor: Prüfstufe B E4 (6798995, 0468a38), L-07a Warenkorb mobil (21d8833), Sichtabnahme E4-L-23, E4-L-24 bis -27, E4-GRAFIKER-09 (385bcf2), E5-L-28 Lesefortschritt B-24 und `ablaufAusText`; Pakete E5-BEFUND-H01 bis -H12, E5-BAUMEISTER-20 bis -29, E4-GRAFIKER-10.
+  - Nachprüfung H01, H02, H03, H06, H07: Workflow `wf_2488bef5-c12` (Task `wkz0avdgp`), Skript `workflows/scripts/pruefen-kette-wf_2488bef5-c12.js`, Berichte unter `/root/sm24-bilder/nachpruefung/`.
+  - E5-BEFUND-H10 und -H11 (Warenkorb, Kasse): Workflow `wf_6c7837a6-619` (Task `wk93plq9c`), Basis `d043fef`.
+  - Server nach Neustart des Arbeitsprozesses neu gestartet: Port 3001 (`SM24_DATA=json setsid nohup npx next dev -p 3001`), Port 3000 (`server.sh start`). Port 3100 (E0) erst für Prüfstufe C.
+- **Fertig seit dem letzten Prüfpunkt:** H08 (46f98e6), H04 Runde 2 mit Schlüsselart-Zeichnung und Werkzeugkorrektur (0ff7e48, D-042), B-21 bis B-23, Alert ruhig (D-041), Befundwelle 1 abgenommen (H05 d8b3e26, H09 5b7bb11, H04 d53b63d; D-040), E5-BAUMEISTER-20 (8a71d31), E5-BEFUND-H12 mit Kür K-04 (6cb4c93), E4-GRAFIKER-10 abgenommen (ec7db44, b929023), Kür K-02 (fe069ba), K-05 Druckansicht, K-06 Vorschaubilder (D-039), B-25 Stiftzuhaltung als CSS vorbereitet (Paket E6-GRAFIKER-11), Paket E5-DOKUMENTAR-01. Davor: Prüfstufe B E4 (6798995, 0468a38), L-07a Warenkorb mobil (21d8833), Sichtabnahme E4-L-23, E4-L-24 bis -27, E4-GRAFIKER-09 (385bcf2), E5-L-28 Lesefortschritt B-24 und `ablaufAusText`; Pakete E5-BEFUND-H01 bis -H12, E5-BAUMEISTER-20 bis -29, E4-GRAFIKER-10.
 - **Als Nächstes:**
   1. Welle 1 und GRAFIKER-10 abnehmen: ganzer Unterschied, Logikwächter, Wertesuche, Bilder, Berichte; GRAFIKER-10 in Registry (`SCHMALES_FORMAT`), README, Registry-Test eintragen.
   2. Welle 3: H01, H07, H10, H11; Befundpaket 2 für H04 (Schlüsselart-Zeichnungen, Modellzähler) nach H02. Danach E5 Wellen G und H, E6-GRAFIKER-11 (K-01), E5-DOKUMENTAR-01.
