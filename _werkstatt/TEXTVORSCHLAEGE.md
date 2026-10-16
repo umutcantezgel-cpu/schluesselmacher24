@@ -11,3 +11,10 @@ Vorschläge für Texte außerhalb der Mikrotexte. Nichts davon ist eingebaut; du
 ## Modellseite (`/autoschluessel/marken/[make]/[model]`)
 - **Doppelte Verweise:** „Andere {Marke}-Modelle“ (Abschluss) und „Alle {Marke}-Modelle“ (Passend dazu) führen auf dieselbe Seite. Vorschlag: den zweiten Verweis streichen oder durch „Autoschlüssel-Leistungen im Überblick“ (`/autoschluessel`) ersetzen.
 
+## Schlüssel nach Vorlage (`/schluessel-nach-vorlage`)
+- **Schrittzahl:** Abschnittsüberschrift „Vier Abschnitte“, Fließtext „Der Ablauf hat acht Schritte“, Navigation „Acht Schritte, mobil bedienbar“. Vorschlag: einheitlich „Acht Schritte in vier Abschnitten“ oder die Abschnittsüberschrift „In vier Etappen“.
+
+## Autoschlüssel-Assistent (`/autoschluessel/anfrage`)
+- **Absenden oder buchen:** Der Schritt „Termin“ sagt „Danach senden Sie Ihre Anfrage ab“, der Schritt „Anzahlung“ „Erst danach senden Sie die Anfrage ab“, der Knopf heißt „Zahlungspflichtig buchen“. Vorschlag nach rechtlicher Prüfung: einheitlich „Danach buchen Sie den Termin zahlungspflichtig“.
+- **Doppelter Hinweis im Terminschritt:** Bei einem nicht mehr freien Zeitfenster erscheinen zwei Warnungen mit ähnlichem Inhalt. Vorschlag: nur „Ihr zuletzt gewähltes Zeitfenster ist nicht mehr frei. Bitte wählen Sie einen anderen Termin.“
+

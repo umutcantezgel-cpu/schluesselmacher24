@@ -2,12 +2,12 @@
 
 - **Etappe:** E4 (Hauptansichten). Das Etappentor E2 ist nach zwei Anläufen nicht bestanden (7,0, D-022); die Befunde sind mit E4-L-16 umgesetzt (8dc1538, D-024).
 - **Laufend:**
-  1. Workflow `wf_e1d06205-b24` (Welle D, Teil 3): E4-BAUMEISTER-14 Warenkorb und -15 Kasse (Prüfer-Basis `e3ad5bb`; Teil-B-Ausdrücke als gemeldete Ausnahmen, D-029).
-- **Fertig seit dem letzten Prüfpunkt:** Welle C (B-08 bis -11), B-12, B-13, L-11 (Seitenwechsel), L-17 (Eingabeschrift, InView), L-18 (gemeinsame Bausteine), L-19 (Scrollen nach Seitenwechsel). Build 198/198 auf Port 3000 neu gestartet.
+  1. Workflow `wf_8c908891-137` (Welle E): E4-BAUMEISTER-16 Assistent, -17 Vorlage, -18 Zutritt, -19 Sicherheitstechnik (4 Plätze, Prüfer-Basis `fab24ac`).
+- **Fertig seit dem letzten Prüfpunkt:** Welle D vollständig (B-14, B-15 mit Nacharbeit D-031), L-20 (SummaryList als Schriftfeld, `istPlatzhalter`), L-21 (Motiv-Zuordnung nach der Sache, D-032), `OptionCard` mit ReactNode-Titel.
 - **Danach:**
-  - B-14 und B-15 abnehmen (Ausnahmen für Teil B prüfen und eintragen, ganzer Unterschied gegen `e3ad5bb`).
-  - Kundschaft und Pakete Welle E: B-16 Assistent, B-17 Schlüssel nach Vorlage, B-18 Zutritt, B-19 Sicherheitstechnik.
-  - Danach L-07 (Leistung) und Prüfstufe B der Etappe E4.
+  - Welle E abnehmen (ganzer Unterschied gegen `fab24ac`, Ausnahmen Logikwächter für `assistent.tsx` prüfen).
+  - Prüfstufe B der Etappe E4: Build, alle Prüfungen, Bildsatz der 12 Hauptansichten, a11y, Messung, Funktionsliste.
+  - Danach E5 (übrige Ansichten B-20 bis B-29, L-07 Leistung, L-12 lucide entfernen).
 - **Bei Abbruch:**
   - `Workflow({scriptPath, resumeFromRunId})` für den jeweiligen Lauf.
   - Server: `server.sh start` (Port 3000); Port 3100 mit `cd /root/sm24-e0 && SM24_DATA=json nohup npx next start -p 3100`; Port 3001 mit `SM24_DATA=json nohup npx next dev -p 3001`.
