@@ -18,8 +18,12 @@ describe('SchluesselartenReihe', () => {
       expect(html).toContain(`<title>Zeichnung: ${titel}`);
     }
     expect(html.match(/<div class="sm24-reveal"/g)).toHaveLength(4);
-    expect(html).toContain('--sm24-delay:0.36s');
-    expect(html).not.toContain('--sm24-delay:0.48s');
+    // Alt: Suche nach „--sm24-delay:0.36s“ und Fehlen von „0.48s“ im ganzen HTML. Neu: dieselben Werte nur an
+    // den Kartenhüllen gelesen – die Zeichnung selbst nutzt seit KERN 1.13 eigene Verzögerungen (B-21).
+    const staffel = [...html.matchAll(/<div class="sm24-reveal" style="--sm24-delay:([\d.]+)s"/g)].map((m) => Number(m[1]));
+    expect(staffel).toContain(0.36);
+    expect(staffel).not.toContain(0.48);
+    expect(Math.max(...staffel)).toBeLessThanOrEqual(0.36);
   });
 
   it('kennzeichnet die Zeichnungen als schematisch', () => {
@@ -58,8 +62,12 @@ describe('SchluesselartenReihe in der Kopf-Variante', () => {
 
   it('behält Kennung je Zeichnung und staffelt höchstens vier Auftritte zu je 120 ms', () => {
     expect(html.match(/<div class="sm24-reveal"/g)).toHaveLength(4);
-    expect(html).toContain('--sm24-delay:0.36s');
-    expect(html).not.toContain('--sm24-delay:0.48s');
+    // Alt: Suche nach „--sm24-delay:0.36s“ und Fehlen von „0.48s“ im ganzen HTML. Neu: dieselben Werte nur an
+    // den Kartenhüllen gelesen – die Zeichnung selbst nutzt seit KERN 1.13 eigene Verzögerungen (B-21).
+    const staffel = [...html.matchAll(/<div class="sm24-reveal" style="--sm24-delay:([\d.]+)s"/g)].map((m) => Number(m[1]));
+    expect(staffel).toContain(0.36);
+    expect(staffel).not.toContain(0.48);
+    expect(Math.max(...staffel)).toBeLessThanOrEqual(0.36);
     expect(html).toContain('Ansicht');
   });
 
