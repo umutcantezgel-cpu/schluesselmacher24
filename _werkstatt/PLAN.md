@@ -79,15 +79,17 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E4-B-13 | H07 Zylinder-Konfigurator (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02 | Z-04 || 46bd429 |
 | E4-B-14 | H10 Warenkorb (Logikwächter) | B/Haiku | 2 Dateien | E3-B-01 | Z-04 || ee71d8c |
 | E4-B-15 | H11 Kasse (Logikwächter) | B/Haiku | 2 Dateien | E3-B-01 | Z-04 || e807b4a |
-| E4-B-16 | H04 Assistent (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02, E3-B-05 | Z-04 | |
-| E4-B-17 | `/schluessel-nach-vorlage` | B/Haiku | 1 Datei | E3-L-08 | Z-06 | |
-| E4-B-18 | `/elektronische-zutrittsloesungen` | B/Haiku | 1 Datei | E3-L-08 | Z-06 | |
-| E4-B-19 | `/sicherheitstechnik` und `[slug]` | B/Haiku | 2 Dateien | E3-L-08 | Z-06 | |
+| E4-B-16 | H04 Assistent (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02, E3-B-05 | Z-04 | e37ace1 |
+| E4-B-17 | `/schluessel-nach-vorlage` | B/Haiku | 1 Datei | E3-L-08 | Z-06 | d7a0541 |
+| E4-B-18 | `/elektronische-zutrittsloesungen` | B/Haiku | 1 Datei | E3-L-08 | Z-06 | fe069ba |
+| E4-B-19 | `/sicherheitstechnik` und `[slug]` | B/Haiku | 2 Dateien | E3-L-08 | Z-06 | b6ec4a4 |
 | E4-L-11 | Seitenwechsel mit gemeinsamem Element (B-13) | L/Opus | `page-header`, Startseite, `seitenwechsel.tsx` (kein `next.config.ts` nötig) | E3-L-08 | Z-05 | 99d2ba9, e523e49 |
 | E4-L-17 | Bestandsfehler: Eingabeschrift mit Rahmenfarbe, InView bei hohen Abschnitten (D-028) | L/Opus | `tailwind.config.ts`, `cn.ts`, `controls.tsx`, `in-view.tsx` + Tests | – | Z-02, Z-07 | 9bcf603 |
 | E4-L-18 | Gemeinsame Bausteine nach Welle C (D-029) | L/Opus | Raster-Token, `option-card`, `photo-upload`, `rechner-bausteine`, Schließplan-Ausschnitt, `tuer-schutz`, Ausnahmen Logikwächter | – | Z-04, Z-07 | 098c3cb |
 | E4-L-19 | Seitenwechsel springt nach oben (D-030) | L/Opus | 3 Seiten, `seitenstruktur.test.ts` | – | Z-02 | e523e49 |
 | E4-L-20 | SummaryList als Schriftfeld, gemeinsame Platzhalter-Prüfung (D-031) | L/Opus | `summary-list`, `platzhalter.ts`, Ausnahmen | – | Z-04 | 3f05396 |
+| E4-L-21 | Motiv-Zuordnung nach der Sache, fünf Fach-Icons Sicherheitstechnik (D-032) | L/Opus | `motiv.ts`, `image-placeholder`, Icons + Tests | – | Z-06 | 4189b5d |
+| E4-L-22 | Wertesuche ohne offene Funde: `w-tipp`, `.sm24-auswahl`, `.sm24-ablauf-leiste`, Einzelausnahmen (D-034) | L/Opus | `tailwind.config.ts`, `cn.ts`, `globals.css`, `info-tip`, `controls`, `flow-shell`, `werte-suche.mjs` | – | Z-03 | 63eac59 |
 | E4-L-07 | Leistung absichern (nach der ersten Etappenmessung) | L/Opus | je Befund | E3-P-B | Z-08 | |
 | E5-B-20 | Service, Kontakt, Vor Ort | B/Haiku | 3 Dateien | E3 | Z-06 | |
 | E5-B-21 | `/gleichschliessende-zylinder` | B/Haiku | 1 Datei | E3 | Z-06 | |
@@ -138,7 +140,7 @@ Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabna
 - **Etappentor E2 nicht bestanden** (D-022): Ansichtswert 7,0 nach zwei Anläufen. Die Befunde aus Anlauf 2 sind mit E4-L-16 umgesetzt (8dc1538, D-024). Das Kriterium Z-04 prüft die Endprüfung erneut.
 - **Sichtbarer Platzhalter für Baujahre:** `formatModelYears` in `src/components/autoschluessel/vehicle-facts.tsx` liefert „[Platzhalter: Baujahre noch nicht erfasst]“. Der Text erscheint in Tabellen und im Seitentitel der Marken- und Modellseiten. Das Paket E4-B-08 zeigt Baujahre nur, wenn sie erfasst sind, ohne Platzhalter im Titel (harter Katalog).
 - **Paniktechnik-Kasten auf `/tuer-und-schliesstechnik`:** dunkle Überschrift auf dunklem Grund (Befund E3-B-06; Kontrastbefund H09 schon in E0). Gehört zum Paket E4-B-11.
-- **Zeitfenster im Terminschritt:** Uhrzeit und Dauer der Auswahlkarten nicht in Mono (Befund E3-B-05). Gehört zum Paket E4-B-16 (Assistent).
+- ~~**Zeitfenster im Terminschritt:**~~ erledigt mit E4-B-16 (e37ace1): Uhrzeit und Dauer in Mono.
 - **Bestätigung des Autoschlüssel-Ablaufs:** nur per Rendertest belegt, nicht im Bild (ohne echte Sendung nicht erreichbar).
 - **Wiederherstellungs-Hinweis in Abläufen (Bestand):** „Ihr Zwischenstand von zuletzt wurde geladen“ erscheint schon nach der ersten eigenen Eingabe, ohne Neuladen. Ursache ist `src/lib/flow/use-flow.ts`, Z. 194 (`restored = Boolean(stored) && !dismissed`); das war schon in E0 so (Befund aus der Prüfung E3-BAUMEISTER-02). Mögliche Lösung: „restored“ nur, wenn beim Einhängen schon ein Stand vorlag. Die Datei ist geteilte Ablauflogik, daher ein eigenes Paket mit Test vor E5 (Abläufe).
 - **JS-Menge mobil (E2-PRUEFER-01-ergebnis):** über E0 in allen 12 Ansichten, zum Beispiel H01 293 statt 246 KB. Die Budgets LCP, CLS und INP sind eingehalten. Ursachen sind zu prüfen (Glyphen, `tailwind-merge`-Erweiterung, Client-Hüllen); gehört zu Paket E4-L-07 (Leistung absichern).
@@ -153,7 +155,7 @@ Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabna
 - **Überlauf-Befunde im Bildsatz** (67 statt 29 in E0): zum Teil gewollte Anschnitte im Hero und in den Projekten. Im Etappentor, Anlauf 2, je Ansicht prüfen.
 - **Kleine Beschriftungen in den Karten „Direkt kaufen“** mobil (D-018): Kür-Kandidat, falls die Sichtabnahme es verlangt.
 - **E5-B-23 Sicherheitscheck:** Im Schritt „Bestand“ landete ein Zeigerklick auf eine Auswahlkarte auf „/“ (E0-PRUEFER-04). Vermutete Ursache: Der feste Kopf deckt die Karte nach dem Scrollen ab, und der Klick trifft das Logo. Gegenmaßnahme seit E2: `scroll-padding-top` in `globals.css`. B-23 prüft den Fall mit echtem Zeigerklick erneut.
-- **Funktionsliste:** Die Erkennung der Schritte in F-04 und F-07 (Überschrift, Weiter-Knopf) ist empfindlich. Nach B-16 (Assistent) und B-22 (Vorlage-Anfrage) läuft sie erneut.
+- **Funktionsliste:** Die Erkennung der Schritte in F-04 und F-07 (Überschrift, Weiter-Knopf) ist empfindlich. Nach B-16 (Assistent) und B-22 (Vorlage-Anfrage) läuft sie erneut. Stand 16.10.: F-04 läuft nach B-16 durch alle 13 Schritte, auf Port 3000 und 3001 (Lese-Actions jetzt auch aus `.next/dev`). Mit `SM24_SCHRITTBILDER=<Ordner>` entsteht ein Bild je Schritt.
 - **Code-Shop, Bestellformular (Bestand, Logikwächter):** `handleAdd` wartet auf `uploadsAbwarten()` ohne Sperrzustand; zwei schnelle Klicks könnten zwei Warenkorbeinträge erzeugen. Bei ungültigem `codePattern` ist jede Eingabe gültig (bewusst, Kommentar Z. 44; Daten durch `code-pattern.test.ts` abgesichert). Beides ist Logik und bleibt im Lauf unverändert; Vorschlag für ein eigenes Paket mit Test nach dem Lauf.
 - **Leistungsseiten Türtechnik (Bestand):** `PROCESS_LABELS[page.process]` ohne Null-Prüfung in `tuer-und-schliesstechnik/[slug]/page.tsx` Z. 48. Alle Daten haben heute einen gültigen Wert; Absturzrisiko nur bei neuen CMS-Werten. Logik, daher nur Vermerk.
 - **Modellseite:** zwei Links auf dieselbe Markenseite („Andere …-Modelle“, „Alle …-Modelle“). Inhalt, daher Vorschlag in TEXTVORSCHLAEGE.md.

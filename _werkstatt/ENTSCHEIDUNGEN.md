@@ -330,3 +330,26 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - Tür-Schutzpunkte für Mehrfachverriegelung und Paniktechnik
   - eigene Fach-Icons für die Sicherheitsleistungen
   Beispielfotos an Upload-Feldern behalten das Foto-Symbol. Neue Tests in `motiv.test.ts`, die bisherigen Fälle sind unverändert.
+
+## D-033 · Welle E (E4-BAUMEISTER-16 bis -19) abgenommen, mit Nacharbeit
+- **Ergebnis:** Alle vier Pakete haben bestanden (B-16 und B-17 in Runde 1, B-18 und B-19 in Runde 2), offen waren nur Soll-Befunde. Eigene Prüfung des ganzen Unterschieds gegen `fab24ac`: Alle Texte sind erhalten, Logikwächter 15 Dateien, 0 abweichend. Berichte: `_werkstatt/berichte/E4-BAUMEISTER-16.md` bis `-19.md`.
+- **Nacharbeit des Orchestrators zu den Soll-Befunden:**
+  - B-16: Modellzähler der Markenwahl in Mono-Ziffern (benannte Ausnahme). Die Schritte 11 bis 13 sind über die Funktionsliste bildlich belegt (`SM24_SCHRITTBILDER`). Das Werkzeug kennt jetzt die Lese-Actions des Entwicklungsservers (`.next/dev`); vorher scheiterte F-04 auf Port 3001 am Preis, weil `fetchQuote` als schreibend abgefangen wurde.
+  - B-17: Fotoblätter mit Subgrid, damit die Titel auf einer Linie stehen; das Bildformat aus den Daten bleibt.
+  - B-18: Der Datenschutz-Hinweis zu Baustein 10 steht unter der Liste, dadurch gibt es keine Lücke auf dem Tablet. Abschnitt 03 zeigt das Bild links und die Schritte als Stückliste; der freie Wert `align-[-2px]` ist durch einen Flex-Satz ersetzt.
+  - B-19: Die Leistungsseiten nutzen wieder `ImagePlaceholder` ohne eigene Icon-Tabelle, ab `md` im Zwölferraster. Die Schlussabschnitte werden „04 · Weiterlesen“ ohne doppelte Ziele.
+  - B-19, zugleich Türtechnik: Unter 640 px zeigt die Zeichnung `tuer-schutz` nur Tür und Legende (`TUER_SCHUTZ_AUSSCHNITT`), die Legende hat 16 Einheiten (`data-legende`, Regel in globals.css). Gemessen sind 12,5 px statt 9,4 px.
+  - Gemeinsam: Das Fach-Icon in `ImagePlaceholder` wächst mit der Fläche (¼ der Breite, 64–160 px); kompakte Flächen behalten 32 px.
+- **Bestätigt:** Das neue Schriftfeld im Kopf von „Schlüssel nach Vorlage“ nimmt nur Werte aus vorhandenen Texten. FAQ-Antworten mit Platzhalter werden auch in JSON-LD ausgeblendet (M-19).
+- **Kein Befund:** Der Redaktionshinweis im Fuß erscheint nur im Entwicklungsmodus (D-016).
+
+## D-034 · Wertesuche ohne offene Funde: Tokens statt Einzelwerte, zwei benannte Einzelausnahmen
+- **Befund:** Die Wertesuche (seit `fcbcfb2`) meldete fünf Funde ohne Ausnahme. Alle lagen im Ausgangsstand vor E0 in Dateien, die E3 berührt hat.
+- **Lösung:**
+  - `info-tip`: `w-[min(20rem,calc(100vw-3rem))]` wird zum Token `w-tipp` (`tailwind.config.ts`, in `cn.ts` eingetragen, Test).
+  - `controls` (Select): Der Pfeil als `style`-Hintergrund wird zur Klasse `.sm24-auswahl` in globals.css, mit gleichem Bild, gleicher Lage und ohne Wiederholung.
+  - `flow-shell`: Der Abstand der festen Leiste (`1rem` plus Home-Leiste) wird zur Klasse `.sm24-ablauf-leiste`; `md:pb-4` hält den bisherigen Desktop-Abstand. Gemessen: mobil 16 px plus sicherer Bereich, Desktop 16 px, wie vorher.
+  - Benannte Einzelausnahmen im Werkzeug (`EINZELNE_AUSNAHMEN`, Datei und genauer Fund, getrennt ausgewiesen):
+    - `themeColor` `#f7f9fb` (D-015)
+    - `#fff` als Canvas-Grund bei der JPEG-Umwandlung in `photo-upload.tsx` (Bildverarbeitung in einer geschützten Datei, kein Gestaltungswert)
+- **Ergebnis:** 0 Funde ohne Ausnahme, 10 Ausnahmen (8 Farbproben in Generatortests, 2 Einzelausnahmen).

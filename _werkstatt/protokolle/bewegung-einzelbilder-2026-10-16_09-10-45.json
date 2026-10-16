@@ -1,0 +1,97 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-16T07:10:45.155Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/elektronische-zutrittsloesungen"
+    ],
+    "selektor": "header svg",
+    "dauer": "1200",
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/E4-BAUMEISTER-18/signal",
+    "echtzeit": false
+  },
+  "pfad": "/elektronische-zutrittsloesungen",
+  "selektor": "header svg",
+  "dauer": 1200,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": null,
+    "zustand": null,
+    "wartezeit_ms": 0
+  },
+  "erweitert": {
+    "von": "svg.shrink-0",
+    "groesse": [
+      14,
+      14
+    ],
+    "auf": null
+  },
+  "animationen": 0,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 1200
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-18/signal/elektronische-zutrittsloesungen__desktop__header-svg__0.jpg",
+      "clip": {
+        "x": 547.78125,
+        "y": 9,
+        "width": 62,
+        "height": 62
+      }
+    },
+    {
+      "k": 1,
+      "t": 300,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-18/signal/elektronische-zutrittsloesungen__desktop__header-svg__1.jpg",
+      "clip": {
+        "x": 547.78125,
+        "y": 9,
+        "width": 62,
+        "height": 62
+      }
+    },
+    {
+      "k": 2,
+      "t": 600,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-18/signal/elektronische-zutrittsloesungen__desktop__header-svg__2.jpg",
+      "clip": {
+        "x": 547.78125,
+        "y": 9,
+        "width": 62,
+        "height": 62
+      }
+    },
+    {
+      "k": 3,
+      "t": 900,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-18/signal/elektronische-zutrittsloesungen__desktop__header-svg__3.jpg",
+      "clip": {
+        "x": 547.78125,
+        "y": 9,
+        "width": 62,
+        "height": 62
+      }
+    },
+    {
+      "k": 4,
+      "t": 1200,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-18/signal/elektronische-zutrittsloesungen__desktop__header-svg__4.jpg",
+      "clip": {
+        "x": 547.78125,
+        "y": 9,
+        "width": 62,
+        "height": 62
+      }
+    }
+  ]
+}

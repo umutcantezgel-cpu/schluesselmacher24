@@ -1,0 +1,22 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T07:16:26.785Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/elektronische-zutrittsloesungen/page.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 1,
+  "summeOhneAusnahmen": 1,
+  "summeAusnahmen": 0,
+  "funde": [
+    {
+      "datei": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "zeile": 709,
+      "kategorie": "Tailwind-Klasse mit []",
+      "fund": "align-[-2px]",
+      "ausnahme": false
+    }
+  ]
+}

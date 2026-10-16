@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 4/6 · Welle C und D fertig, Welle E (B-16 bis -19) im Bau · Pflicht 51/78 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (fab24ac: 1037 Tests, Logikwächter 0 abweichend, Build 198/198) · Nächster Schritt: Welle E abnehmen, Prüfstufe B für E4
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 4/6 · Wellen C, D und E fertig, Prüfstufe B für E4 offen · Pflicht 56/78 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (63eac59: 1039 Tests, Logikwächter 0 abweichend, Wertesuche 0) · Nächster Schritt: Prüfstufe B für E4 (Build, Bildsatz, a11y, Messung, Funktionsliste)
 
 # Status des Gestaltungslaufs
 
@@ -35,3 +35,6 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 4/6 · W
 - 16.10.2026 00:06 · E0-Ausgangswerte und Funktionsliste abgenommen (14/14; F-05 geschärft, D-013). Attrappen fangen jede nicht lesende Action ab (D-011). Strichskala der Generatoren (D-010, KERN 1.2), Generator `stiftzuhaltung`, Seitenkopf und Client-Hüllen der großen Momente committet. Build grün, Server neu.
 - 16.10.2026 01:55 · Container-Neustart. Workflow und Server verloren, Platte erhalten. Sichtabnahme Anlauf 1: 6,8, nicht bestanden (D-016). Prüfstufe B sonst grün (Budgets, 14/14, a11y 6 statt 30).
 - 16.10.2026 05:30 · Startseite Anlauf 2 (E2-L-06b, D-018): Hero mobil, B-01 bei Sichtbarkeit mit Abheben, Easing-Fehler behoben, Bereichsfarben ≥ 30° (D-017). Welle E3-A abgenommen (Formular-Bausteine, Ablauf-Hülle, Foto-Upload, README); 404 auch für unbekannte Adressen (D-019). Etappentor Anlauf 2 und Welle E3-B gestartet.
+- 16.10.2026 08:40 · Welle C abgenommen (B-08 Marken, B-09 Code-Shop, B-10 Schließanlagen, B-11 Türtechnik) mit Nacharbeit: Eingabeschrift und InView (L-17, D-028), gemeinsame Bausteine (L-18, D-029). Welle D: B-12 Ratgeber, B-13 Zylinder-Konfigurator.
+- 16.10.2026 09:00 · Welle D vollständig (B-14 Warenkorb, B-15 Kasse, D-031), Seitenwechsel springt wieder nach oben (L-19, D-030), SummaryList als Schriftfeld (L-20), Motiv-Zuordnung nach der Sache (L-21, D-032). Welle E gestartet. Morgenbericht 07:00 in BERICHT.md.
+- 16.10.2026 09:50 · Welle E abgenommen (B-16 Assistent, B-17 Vorlage, B-18 Zutritt, B-19 Sicherheitstechnik, D-033) mit Nacharbeit: Hauseingang mobil lesbar (12,5 px), Fach-Icon wächst mit der Fläche, keine Lücke auf dem Tablet. Wertesuche 0 ohne Ausnahme (L-22, D-034). F-04 auf Port 3001 durch alle 13 Schritte.
