@@ -1,6 +1,7 @@
 import type { InfoHint, LockSystemExplainer } from '@/lib/types';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { schliessplanAusschnitt } from '@/components/visual/generators/schliessplan';
 import { GlyphHaken } from '@/components/visual/glyphen/haken';
 import { Reveal } from '@/components/visual/motion/reveal';
 import { cn } from '@/lib/cn';
@@ -248,7 +249,15 @@ export function SystemErklaerung() {
                   breit && 'lg:w-1/2 lg:shrink-0 lg:rounded-none lg:rounded-l-lg',
                 )}
               >
-                <ImagePlaceholder slot={entry.figure} frei />
+                <ImagePlaceholder
+                  slot={entry.figure}
+                  frei
+                  ausschnitt={
+                    entry.figure.visual?.generator === 'schliessplan'
+                      ? schliessplanAusschnitt(entry.figure.visual.params)
+                      : undefined
+                  }
+                />
               </div>
 
               <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
