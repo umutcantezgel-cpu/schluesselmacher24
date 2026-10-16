@@ -1,10 +1,9 @@
 import type { InfoHint, LockSystemExplainer } from '@/lib/types';
+import type { SchliessDetail, SchliessSystem } from '@/components/visual/interaktiv/schliessplan-interaktiv';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
-import { schliessplanAusschnitt } from '@/components/visual/generators/schliessplan';
 import { GlyphHaken } from '@/components/visual/glyphen/haken';
 import { Reveal } from '@/components/visual/motion/reveal';
-import { cn } from '@/lib/cn';
 
 /**
  * Ein Schließsystem in Kundensprache.
@@ -216,7 +215,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung erweiterbare Anlage: Schließplan-Raster mit belegten und freien Feldern',
       ratio: '4/3',
-      visual: { generator: 'schliessplan', params: { system: 'generalhaupt', gruppen: 2, tueren: 6 } },
+      visual: { generator: 'schliessplan', params: { system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -227,67 +226,68 @@ export function systemName(entry: LockSystemEntry): string {
   return entry.short ? `${entry.label} (${entry.short})` : entry.label;
 }
 
-/** Die fünf Systeme als Zeichnungsblätter: Zeichnung oben, Erklärung darunter. */
-export function SystemErklaerung() {
+/**
+ * Die vier Schließsysteme als Reiter des interaktiven Plans (B-14): Beschreibung, Merkpunkte,
+ * Eignung und Info-Symbol kommen aus den Systemeinträgen. Die Erweiterbare Anlage hat keinen
+ * Reiter, sie ist eine Planungsentscheidung (siehe `ErweiterbareAnlage`).
+ */
+const REITER: [SchliessSystem, string][] = [
+  ['gleichschliessung', 'gleichschliessung'],
+  ['zentral', 'z'],
+  ['haupt', 'hs'],
+  ['generalhaupt', 'ghs'],
+];
+
+export function systemReiter(): Partial<Record<SchliessSystem, SchliessDetail>> {
+  const reiter: Partial<Record<SchliessSystem, SchliessDetail>> = {};
+  for (const [system, id] of REITER) {
+    const entry = LOCK_SYSTEMS.find((e) => e.id === id);
+    if (!entry) continue;
+    reiter[system] = {
+      name: systemName(entry),
+      beschreibung: entry.explanation,
+      haken: entry.bullets,
+      geeignetFuer: entry.suitableFor,
+      infoTip: <InfoTip hint={entry.info} />,
+    };
+  }
+  return reiter;
+}
+
+/** Die erweiterbare Anlage: keine Schließart, sondern eine Entscheidung bei der Planung – ein Blatt mit Reserve. */
+export function ErweiterbareAnlage() {
+  const entry = LOCK_SYSTEMS.find((e) => e.id === 'erweiterbar');
+  if (!entry) return null;
   return (
     <Reveal>
-      <ul className="grid gap-6 lg:grid-cols-2">
-        {LOCK_SYSTEMS.map((entry, index) => {
-          /* Bei ungerader Anzahl steht das letzte Blatt über beide Spalten, Zeichnung links. */
-          const breit = LOCK_SYSTEMS.length % 2 === 1 && index === LOCK_SYSTEMS.length - 1;
-          return (
-            <li
-              key={entry.id}
-              className={cn(
-                'flex h-full flex-col rounded-lg border border-border bg-surface',
-                breit && 'lg:col-span-2 lg:flex-row',
-              )}
-            >
-              <div
-                className={cn(
-                  'rounded-t-lg bg-area-soft/40 p-4 sm:p-6',
-                  breit && 'lg:w-1/2 lg:shrink-0 lg:rounded-none lg:rounded-l-lg',
-                )}
-              >
-                <ImagePlaceholder
-                  slot={entry.figure}
-                  frei
-                  ausschnitt={
-                    entry.figure.visual?.generator === 'schliessplan'
-                      ? schliessplanAusschnitt(entry.figure.visual.params)
-                      : undefined
-                  }
-                />
-              </div>
+      <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-gutter">
+        <div className="rounded-lg border border-border bg-surface p-4 sm:p-6 lg:col-span-5">
+          <ImagePlaceholder slot={entry.figure} frei />
+        </div>
 
-              <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-title-sm font-bold text-foreground">{systemName(entry)}</h3>
-                  <InfoTip hint={entry.info} />
-                </div>
+        <div className="lg:col-span-7">
+          <div className="flex items-start justify-between gap-3">
+            <h3 className="text-title-sm font-bold text-foreground">{systemName(entry)}</h3>
+            <InfoTip hint={entry.info} />
+          </div>
 
-                <p className="text-body leading-relaxed text-foreground-muted">{entry.explanation}</p>
+          <p className="mt-3 max-w-measure text-body leading-relaxed text-foreground-muted">{entry.explanation}</p>
 
-                <ul className="space-y-2">
-                  {entry.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-2.5 text-small leading-relaxed text-foreground-muted">
-                      <GlyphHaken size={16} className="mt-0.5 shrink-0 text-area-strong" />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
+          <ul className="mt-5 grid max-w-measure gap-2.5">
+            {entry.bullets.map((bullet) => (
+              <li key={bullet} className="flex gap-2.5 text-small leading-relaxed text-foreground-muted">
+                <GlyphHaken size={16} className="mt-0.5 shrink-0 text-area-strong" />
+                {bullet}
+              </li>
+            ))}
+          </ul>
 
-                <div className="mt-auto border-t border-border pt-4">
-                  <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                    Geeignet für
-                  </p>
-                  <p className="mt-1.5 text-small leading-relaxed text-foreground">{entry.suitableFor}</p>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+          <div className="mt-6 max-w-measure border-t border-border pt-4">
+            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Geeignet für</p>
+            <p className="mt-1.5 text-small leading-relaxed text-foreground">{entry.suitableFor}</p>
+          </div>
+        </div>
+      </div>
     </Reveal>
   );
 }

@@ -18,7 +18,7 @@ import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { SummaryList } from '@/components/layout/summary-list';
-import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { CheckDraw } from '@/components/visual/motion/check-draw';
 
 const FLOW_ID = 'schluessel-nach-vorlage-anfrage';
@@ -942,7 +942,7 @@ function FotoSchritt({
       <ul className="space-y-2">
         {AUFNAHME_HINWEISE.map((tipp) => (
           <li key={tipp} className="flex gap-2.5">
-            <GlyphHaken size={15} className="mt-0.5 shrink-0 text-primary" />
+            <GlyphHakenKreis size={15} className="mt-0.5 shrink-0 text-primary" />
             <span className="text-small leading-relaxed text-foreground-muted">{tipp}</span>
           </li>
         ))}

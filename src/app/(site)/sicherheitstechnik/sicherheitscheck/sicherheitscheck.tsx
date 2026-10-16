@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { CheckCircle2 } from 'lucide-react';
 
 import { submitRecord, type SubmitResult } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
@@ -16,6 +15,7 @@ import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { SummaryList } from '@/components/layout/summary-list';
+import { CheckDraw } from '@/components/visual/motion/check-draw';
 
 const FLOW_ID = 'sicherheitscheck';
 
@@ -602,26 +602,24 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
     return (
       <div className="mx-auto max-w-2xl">
         <div className="rounded-lg border border-border bg-surface p-6 md:p-8">
-          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-success-soft text-success">
-            <CheckCircle2 size={22} aria-hidden />
-          </span>
+          <CheckDraw size={56} />
 
-          <h2 className="mt-5 text-xl font-bold text-foreground md:text-2xl">
+          <h2 className="mt-5 text-headline text-foreground">
             Ihre Anfrage ist bei uns eingegangen
           </h2>
-          <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
+          <p className="mt-2 text-body leading-relaxed text-foreground-muted">
             Wir prüfen Ihre Angaben und melden uns mit einer Einschätzung sowie den nächsten
             Schritten.
           </p>
 
           <div className="mt-6 rounded-lg border border-border bg-surface-muted p-5">
-            <p className="text-[13px] font-bold uppercase tracking-wider text-foreground-subtle">
+            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
               Ihre Vorgangsnummer
             </p>
-            <p className="mt-1 font-display text-2xl font-bold text-foreground">
+            <p className="mt-1 break-words font-mono text-headline tabular-nums text-foreground">
               {result.reference}
             </p>
-            <p className="mt-2 text-[13px] leading-relaxed text-foreground-muted">
+            <p className="mt-2 text-small leading-relaxed text-foreground-muted">
               Bitte notieren Sie sich diese Nummer. Damit können Sie den Stand Ihres Vorgangs
               abrufen.
             </p>
@@ -664,7 +662,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
       blockedHint="Bitte füllen Sie die Pflichtangaben dieses Schrittes aus."
     >
       {error && (
-        <Alert tone="warning" title="Senden nicht möglich" className="mb-5">
+        <Alert tone="warning" title="Senden nicht möglich" className="mb-5" role="alert">
           {error}
         </Alert>
       )}
@@ -673,7 +671,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
       {flow.step?.id === 'objekt' && (
         <div className="space-y-5">
           <fieldset>
-            <legend className="mb-3 text-sm font-semibold text-foreground">
+            <legend className="mb-3 text-small font-semibold text-foreground">
               Objektart (Pflichtangabe)
             </legend>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -752,7 +750,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
       {flow.step?.id === 'aussen' && (
         <div className="space-y-5">
           <fieldset>
-            <legend className="mb-3 text-sm font-semibold text-foreground">
+            <legend className="mb-3 text-small font-semibold text-foreground">
               Was gehört zum Objekt? Mehrfachauswahl möglich.
             </legend>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -795,7 +793,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
       {flow.step?.id === 'bestand' && (
         <div className="space-y-5">
           <fieldset>
-            <legend className="mb-3 text-sm font-semibold text-foreground">
+            <legend className="mb-3 text-small font-semibold text-foreground">
               Was ist bereits vorhanden? Mehrfachauswahl möglich. (Pflichtangabe)
             </legend>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -839,7 +837,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
       {flow.step?.id === 'schwerpunkte' && (
         <div className="space-y-5">
           <fieldset>
-            <legend className="mb-3 text-sm font-semibold text-foreground">
+            <legend className="mb-3 text-small font-semibold text-foreground">
               Schwerpunkte — mindestens einer (Pflichtangabe)
             </legend>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -1008,7 +1006,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
           </Field>
 
           <fieldset>
-            <legend className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
+            <legend className="mb-3 flex items-center gap-2 text-small font-semibold text-foreground">
               Vor-Ort-Termin anfragen? (Pflichtangabe)
               <InfoTip hint={HINT_ON_SITE} />
             </legend>
@@ -1137,8 +1135,8 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
             </Field>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-[2fr_1fr]">
-            <Field label="Straße und Hausnummer des Objekts">
+          <div className="grid gap-5 sm:grid-cols-12">
+            <Field className="sm:col-span-8" label="Straße und Hausnummer des Objekts">
               {({ id, describedBy }) => (
                 <TextInput
                   id={id}
@@ -1150,7 +1148,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
               )}
             </Field>
 
-            <Field label="Postleitzahl">
+            <Field className="sm:col-span-4" label="Postleitzahl">
               {({ id, describedBy }) => (
                 <TextInput
                   id={id}
@@ -1163,7 +1161,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
               )}
             </Field>
 
-            <Field label="Ort">
+            <Field className="sm:col-span-8" label="Ort">
               {({ id, describedBy }) => (
                 <TextInput
                   id={id}
@@ -1175,7 +1173,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
               )}
             </Field>
 
-            <Field label="Land" required>
+            <Field className="sm:col-span-4" label="Land" required>
               {({ id, describedBy }) => (
                 <TextInput
                   id={id}
@@ -1208,7 +1206,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
                 onChange={(event) => flow.set('privacy', event.target.checked)}
                 className="mt-0.5 h-5 w-5 shrink-0 rounded border-border-strong text-primary"
               />
-              <span className="text-[14px] leading-relaxed text-foreground-muted">
+              <span className="text-small leading-relaxed text-foreground-muted">
                 Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung dieser Anfrage
                 gespeichert und verarbeitet werden.{' '}
                 <Link
@@ -1229,7 +1227,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
       {/* 10 Zusammenfassung */}
       {flow.step?.id === 'zusammenfassung' && (
         <div className="space-y-6">
-          <SummaryList sections={summary} />
+          <SummaryList sections={summary} variante="schriftfeld" />
 
           {legalRelevant && <LegalNotice />}
 

@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 import { getPageContent, getSettings } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { PageHeader } from '@/components/layout/page-header';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { IconSicherheitscheck } from '@/components/visual/icons/sicherheitscheck';
 import { Sicherheitscheck } from './sicherheitscheck';
 
 const ROUTE = 'sicherheitstechnik/sicherheitscheck';
@@ -37,7 +38,10 @@ export default async function SicherheitscheckPage() {
 
   return (
     <>
+      {/* Arbeitskopf (Muster Assistent und Kasse): Fach-Icon als Anker, Ablauf als Schriftfeld.
+          PageHeader zeigt das Bereichs-Icon nur in der Erzählansicht; deshalb steht das Fach-Icon hier. */}
       <PageHeader
+        art="arbeit"
         eyebrow="Sicherheitstechnik"
         title={page?.headline ?? 'Sicherheitscheck'}
         lead={
@@ -50,15 +54,18 @@ export default async function SicherheitscheckPage() {
           { href: `/${ROUTE}`, label: 'Sicherheitscheck' },
         ]}
       >
-        <div className="rounded-lg border border-border bg-surface-muted p-5">
-          <p className="text-[13px] font-bold uppercase tracking-wider text-foreground-subtle">
-            Ablauf
-          </p>
-          <p className="mt-2 text-[15px] font-bold text-foreground">{process.label}</p>
-          <p className="mt-1 max-w-2xl text-[14px] leading-relaxed text-foreground-muted">
-            {process.hint} Ihr Zwischenstand wird im Browser gespeichert, damit Sie den Check
-            unterbrechen und später fortsetzen können.
-          </p>
+        <div className="flex items-start gap-4 border-y border-border py-6">
+          <IconSicherheitscheck size={40} className="mt-0.5 shrink-0 text-area-strong" />
+          <div className="min-w-0">
+            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+              Ablauf
+            </p>
+            <p className="mt-2 text-title-sm font-semibold text-foreground">{process.label}</p>
+            <p className="mt-2 max-w-measure text-small leading-relaxed text-foreground-muted">
+              {process.hint} Ihr Zwischenstand wird im Browser gespeichert, damit Sie den Check
+              unterbrechen und später fortsetzen können.
+            </p>
+          </div>
         </div>
       </PageHeader>
 
@@ -72,16 +79,21 @@ export default async function SicherheitscheckPage() {
       </div>
 
       <Section tone="muted" tight>
-        <SectionHeading eyebrow="Weiterlesen" title="Passende Seiten" />
-        <ul className="mt-6 flex flex-wrap gap-3">
+        <SectionHeading nummer="01" eyebrow="Weiterlesen" title="Passende Seiten" />
+        <ul className="mt-8 border-t border-border">
           {RELATED_LINKS.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
-                className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-border bg-surface px-4 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                className="group flex min-h-touch items-center justify-between gap-4 py-5"
               >
-                {link.label}
-                <ArrowRight size={15} aria-hidden />
+                <span className="text-title-sm font-semibold text-foreground group-hover:text-primary">
+                  {link.label}
+                </span>
+                <GlyphPfeilRechts
+                  size={18}
+                  className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                />
               </Link>
             </li>
           ))}

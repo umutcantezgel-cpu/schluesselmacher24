@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import type { ComponentType } from 'react';
 
 import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -11,11 +12,14 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
-import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { ErweiterbareAnlage, SystemVergleich, systemReiter } from '@/components/schliessanlagen/system-erklaerung';
+import { BereichIcon } from '@/components/visual/bereich-icon';
+import { IconEinsteckschloss } from '@/components/visual/icons/einsteckschloss';
+import type { IconProps } from '@/components/visual/icons/icon-base';
+import { IconPruefung } from '@/components/visual/icons/pruefung';
 import { GlyphGebaeude } from '@/components/visual/glyphen/gebaeude';
 import { GlyphPersonen } from '@/components/visual/glyphen/personen';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
-import { GlyphSchluessel } from '@/components/visual/glyphen/schluessel';
 import { SchliessplanInteraktiv } from '@/components/visual/interaktiv/schliessplan-interaktiv';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
@@ -83,9 +87,14 @@ const GLOSSARY: { term: string; summary: string; hint: InfoHint }[] = [
   },
 ];
 
-const AUDIENCES = [
+/** Zeichen des Bereichs Schließanlagen für die Zeile „Mehrere Gebäude“. */
+function BereichsZeichen(props: IconProps) {
+  return <BereichIcon area="schliessanlagen" {...props} />;
+}
+
+const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; href: string; linkLabel: string }[] = [
   {
-    icon: GlyphSchluessel,
+    icon: IconEinsteckschloss,
     title: 'Privat',
     body:
       'Haus oder Wohnung mit Nebentüren: Keller, Garage, Gartentor, Briefkasten. Meist genügt '
@@ -112,7 +121,7 @@ const AUDIENCES = [
     linkLabel: 'Objekt erfassen',
   },
   {
-    icon: GlyphGebaeude,
+    icon: IconPruefung,
     title: 'Öffentliche Einrichtung',
     body:
       'Schule, Verwaltung, Einrichtung mit Publikumsverkehr: viele Bereiche, klar getrennte '
@@ -121,13 +130,47 @@ const AUDIENCES = [
     linkLabel: 'Bedarf erfassen',
   },
   {
-    icon: GlyphSchluessel,
+    icon: BereichsZeichen,
     title: 'Mehrere Gebäude',
     body:
       'Verteilte Standorte oder eine größere Liegenschaft: Eine Generalhauptschlüsselanlage '
       + '(GHS) fasst mehrere Gebäude unter einer gemeinsamen Ebene zusammen.',
     href: '/schliessanlagen/konfigurator',
     linkLabel: 'Liegenschaft erfassen',
+  },
+];
+
+/** Weiterführende Seiten: Stückliste mit Haarlinien, die ganze Zeile ist der Link. */
+const WEITERFUEHREND = [
+  {
+    href: '/schliessanlagen/konfigurator',
+    label: 'Projektkonfigurator',
+    body: 'Zehn Frageblöcke zu Objekt, Nutzern, Türen und Berechtigungen.',
+  },
+  {
+    href: '/gleichschliessende-zylinder',
+    label: 'Gleichschließende Zylinder',
+    body: 'Für kleine Vorhaben ohne Berechtigungsstufen.',
+  },
+  {
+    href: '/elektronische-zutrittsloesungen',
+    label: 'Elektronische Zutrittslösungen',
+    body: 'Wenn Rechte änderbar sein sollen, ohne Zylinder zu tauschen.',
+  },
+  {
+    href: '/tuer-und-schliesstechnik',
+    label: 'Tür- und Schließtechnik',
+    body: 'Zylinder, Schlösser und Beschläge rund um die Tür.',
+  },
+  {
+    href: '/ratgeber/welche-schliessanlage-passt',
+    label: 'Welche Anlage passt?',
+    body: 'Entscheidungshilfe im Ratgeber.',
+  },
+  {
+    href: '/service-und-termin/kontakt',
+    label: 'Kontakt',
+    body: 'Wenn Sie vor der Erfassung eine Frage klären möchten.',
   },
 ];
 
@@ -227,19 +270,31 @@ export default async function SchliessanlagenPage() {
         title={page?.headline ?? 'Mechanische Schließanlagen'}
         lead={page?.subline ?? 'Von der Gleichschließung bis zur Generalhauptschlüsselanlage.'}
         crumbs={[{ href: '/schliessanlagen', label: 'Schließanlagen' }]}
+        /* Blickfang im Kopf (E4-L-23): der Schlüsselstapel, auf Papier ohne Rahmen. */
+        visual={
+          <ImagePlaceholder
+            slot={{
+              motif: 'Werkstattfoto: Schließplan auf dem Tisch neben sortierten Profilzylindern',
+              ratio: '4/3',
+              note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
+              visual: { generator: 'schluessel', params: { typ: 'zylinder', anzahl: 3 } },
+            }}
+            frei
+          />
+        }
         actions={
           <>
             <ButtonLink href="/schliessanlagen/konfigurator" size="lg" pfeil>
               Projekt erfassen
             </ButtonLink>
             <ButtonLink href="#systeme" size="lg" variant="outline">
-              Systeme ansehen
+              Zu den Systemen
             </ButtonLink>
           </>
         }
       />
 
-      {/* Einstieg: Text und Ablauf links, Begriffe als Haarlinienliste, Werkstattzeichnung rechts */}
+      {/* Einstieg: Text und Ablauf links, Begriffe als Haarlinienliste rechts */}
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           <div className="lg:col-span-7">
@@ -264,36 +319,25 @@ export default async function SchliessanlagenPage() {
                 {process.hint}
               </dd>
             </dl>
-
-            <dl className="mt-8 border-t border-border">
-              {GLOSSARY.map((item) => (
-                <div key={item.term} className="border-b border-border py-5">
-                  <dt className="flex items-start justify-between gap-3">
-                    <span className="text-title-sm font-semibold text-foreground">{item.term}</span>
-                    <InfoTip hint={item.hint} />
-                  </dt>
-                  <dd className="mt-1.5 max-w-measure text-small leading-relaxed text-foreground-muted">
-                    {item.summary}
-                  </dd>
-                </div>
-              ))}
-            </dl>
           </div>
 
-          <div className="lg:col-span-5">
-            <ImagePlaceholder
-              slot={{
-                motif: 'Werkstattfoto: Schließplan auf dem Tisch neben sortierten Profilzylindern',
-                ratio: '4/3',
-                note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
-                visual: { generator: 'schluessel', params: { typ: 'zylinder', anzahl: 3 } },
-              }}
-            />
-          </div>
+          <dl className="border-t border-border lg:col-span-5">
+            {GLOSSARY.map((item) => (
+              <div key={item.term} className="border-b border-border py-5">
+                <dt className="flex items-start justify-between gap-3">
+                  <span className="text-title-sm font-semibold text-foreground">{item.term}</span>
+                  <InfoTip hint={item.hint} />
+                </dt>
+                <dd className="mt-1.5 max-w-measure text-small leading-relaxed text-foreground-muted">
+                  {item.summary}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </Section>
 
-      {/* Die fünf Systeme: großer Moment mit Kopf links, danach Zeichnungen und Vergleich */}
+      {/* Die fünf Systeme einmal erzählt: der interaktive Plan mit den Texten als Reiterinhalt */}
       <Section id="systeme" labelledBy="systeme-titel" tone="sunken">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           <SectionHeading
@@ -305,12 +349,12 @@ export default async function SchliessanlagenPage() {
             lead="Die vollständige Bezeichnung steht immer zuerst, die übliche Abkürzung folgt in Klammern. Vorwissen brauchen Sie nicht."
           />
           <div className="lg:col-span-7">
-            <SchliessplanInteraktiv anfang="haupt" tueren={4} gruppen={2} />
+            <SchliessplanInteraktiv anfang="haupt" tueren={4} gruppen={2} details={systemReiter()} />
           </div>
         </div>
 
         <div className="mt-16">
-          <SystemErklaerung />
+          <ErweiterbareAnlage />
         </div>
 
         <div className="mt-16">
@@ -374,9 +418,7 @@ export default async function SchliessanlagenPage() {
       <Section tone="muted" tight>
         <div className="grid gap-6 lg:grid-cols-12 lg:items-center lg:gap-gutter">
           <div className="lg:col-span-7">
-            <h2 className="text-headline font-bold text-foreground">
-              Wenige Türen, ein Schlüssel für alles?
-            </h2>
+            <SectionHeading nummer="04" eyebrow="Gleichschließung" title="Wenige Türen, ein Schlüssel für alles?" />
             <p className="mt-3 text-body leading-relaxed text-foreground-muted">
               Dann brauchen Sie keinen Schließplan. Gleichschließende Zylinder stellen Sie selbst
               zusammen — Bauform, Maße und Anzahl der gemeinsamen Schlüssel — und bestellen direkt.
@@ -409,64 +451,38 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
-      {/* Weiterführend */}
+      {/* Weiterführend: nummerierte Stückliste mit Haarlinien */}
       <Section tone="muted" tight>
-        <h2 className="text-title font-bold text-foreground">Passend dazu</h2>
-        <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              href: '/schliessanlagen/konfigurator',
-              label: 'Projektkonfigurator',
-              body: 'Zehn Frageblöcke zu Objekt, Nutzern, Türen und Berechtigungen.',
-            },
-            {
-              href: '/gleichschliessende-zylinder',
-              label: 'Gleichschließende Zylinder',
-              body: 'Für kleine Vorhaben ohne Berechtigungsstufen.',
-            },
-            {
-              href: '/elektronische-zutrittsloesungen',
-              label: 'Elektronische Zutrittslösungen',
-              body: 'Wenn Rechte änderbar sein sollen, ohne Zylinder zu tauschen.',
-            },
-            {
-              href: '/tuer-und-schliesstechnik',
-              label: 'Tür- und Schließtechnik',
-              body: 'Zylinder, Schlösser und Beschläge rund um die Tür.',
-            },
-            {
-              href: '/ratgeber/welche-schliessanlage-passt',
-              label: 'Welche Anlage passt?',
-              body: 'Entscheidungshilfe im Ratgeber.',
-            },
-            {
-              href: '/service-und-termin/kontakt',
-              label: 'Kontakt',
-              body: 'Wenn Sie vor der Erfassung eine Frage klären möchten.',
-            },
-          ].map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="group flex h-full min-h-touch flex-col rounded-lg border border-border bg-surface p-5 transition-colors duration-quick hover:border-primary hover:shadow-raised"
-              >
-                <span className="text-body font-bold text-foreground group-hover:text-primary">
-                  {link.label}
-                </span>
-                <span className="mt-1.5 flex-1 text-small leading-relaxed text-foreground-muted">
-                  {link.body}
-                </span>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-small font-semibold text-primary">
-                  Ansehen
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <SectionHeading nummer="05" eyebrow="Passend dazu" title="Passend dazu" className="lg:col-span-4" />
+
+          <ol className="border-t border-border lg:col-span-8">
+            {WEITERFUEHREND.map((link, index) => (
+              <li key={link.href} className="border-b border-border">
+                <Link
+                  href={link.href}
+                  className="group flex min-h-touch items-center gap-4 py-5 transition-colors duration-quick ease-standard sm:gap-6"
+                >
+                  <span className="w-6 shrink-0 self-start pt-1 font-mono text-caption tabular-nums text-foreground-muted sm:w-8">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-title-sm font-semibold text-foreground group-hover:text-primary">
+                      {link.label}
+                    </span>
+                    <span className="mt-1 block max-w-measure text-small leading-relaxed text-foreground-muted">
+                      {link.body}
+                    </span>
+                  </span>
                   <GlyphPfeilRechts
-                    size={14}
-                    className="transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
+                    size={18}
+                    className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-hover:translate-x-1 group-hover:text-primary"
                   />
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </div>
       </Section>
     </>
   );
