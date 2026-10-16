@@ -447,3 +447,10 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
 - **Keine fremden Quellen:** Schrift aus dem vorhandenen Paket `@fontsource/ibm-plex-sans` (WOFF 400/600, `next/og` liest kein WOFF2), Farben aus `globals.css` (`tokensAusCss`) und `area-theme.ts`. Keine neue Abhängigkeit, kein Logo-Nachbau (der Name steht nur als Text in der Augenbraue).
 - **Wertesuche:** `next/og` kennt keine CSS-Variablen, deshalb steht genau ein `hsl(` im Helfer (und eines im Test); beide sind benannte Einzelausnahmen.
 - **Geprüft:** Bilder auf Port 3001 angesehen (Startseite, Autoschlüssel, Code, Sicherheitstechnik), `og:image` mit Größe und Alternativtext im Kopf der Bereichsseiten; 4 Tests für Token-Lesen, Farbwert und Inhalt.
+
+## D-040 · Abnahme Befundwelle 1 (H04, H05, H09) und E5-BAUMEISTER-20
+- **H05 Code-Shop:** bestanden in Runde 2. Die Reiter der Code-Fundstelle stehen auf der Produktseite (H06), wo die Codelinie feststeht; die Übersicht zeigt die Zeichnung ruhig im Kopf. Nacharbeit: Spaltenaufteilung ab `lg`, Pfeil nach B-06, kürzerer Platzhalter der Suche.
+- **H09 Türtechnik:** nach Runde 3 nicht bestanden, mit Nacharbeit abgenommen. Ein klebender Rechner ist bei 1 353 px Höhe nicht bedienbar und entfällt; die Leerfläche links verschwindet, weil das Schriftfeld ab `lg` unter dem Text in der linken Spalte steht (Rechner über zwei Rasterzeilen).
+- **H04 Assistent:** nach Runde 3 nicht bestanden, mit Nacharbeit abgenommen. Der F-04-Fehler des Prüfers kam aus einer Werkzeugkopie ohne Lese-Aktionen (zweimal bestanden aus `_werkstatt/werkzeuge/`). Tagesleiste und Zeitraster sind belegt; der Preisschritt zeigt ein Schriftfeld statt getönter Kästen (`preis-anzeige.tsx`, Orchestrator). Schlüsselart-Zeichnungen und Modellzähler gehen in Befundpaket 2 für H04.
+- **E5-BAUMEISTER-20 Service:** bestanden in Runde 1. Neue Mikrotexte der Abschnittsordnung bestätigt; öffentlicher Hinweis bei fehlenden Firmendaten statt Platzhaltern (bis M-02); Linknamen der Vor-Ort-Liste mit Leistungstitel.
+- **Werkzeuge:** Die Funktionsliste wird nur aus `_werkstatt/werkzeuge/` gestartet; der Hinweis steht in den laufenden und künftigen Paketen.

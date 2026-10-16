@@ -1,0 +1,15 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T09:36:13.657Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/autoschluessel/page.tsx",
+      "src/components/autoschluessel/schluesselarten-reihe.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 2,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}
