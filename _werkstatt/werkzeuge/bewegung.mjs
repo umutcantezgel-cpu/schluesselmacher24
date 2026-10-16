@@ -2,13 +2,17 @@
 // bewegung.mjs – Bewegungsprüfungen in drei Modi.
 // Aufrufe:
 //   node bewegung.mjs reduziert [--routen <pfad,pfad>] [--json <datei>]
-//   node bewegung.mjs einzelbilder <pfad> --selektor <css> --dauer <ms> [--geraet mobil|desktop] [--ziel <ordner>] [--json <datei>]
+//   node bewegung.mjs einzelbilder <pfad> --selektor <css> [--dauer <ms>] [--echtzeit] [--rand <px>] [--geraet mobil|desktop] [--ziel <ordner>] [--json <datei>]
 //   node bewegung.mjs bildrate <pfad> --selektor <css> --dauer <ms> [--json <datei>]
 // reduziert: Kontext mit „Bewegung reduzieren“ (Desktop), laden, durchscrollen. Befunde: laufende Animationen,
 //   deren Keyframes transform, translate, scale, rotate, top, left, width oder height ändern; sichtbare
 //   Textelemente mit Deckkraft < 0,1 (Vorfahren eingerechnet) oder visibility:hidden („Inhalt verborgen“).
-// einzelbilder: lädt ohne Durchscrollen (damit der Auftritt beim Scrollen ausgelöst wird), scrollt das Element
-//   in den Blick und nimmt 5 Bilder bei 0, ¼, ½, ¾ und 1 der --dauer auf, zugeschnitten auf das Element.
+// einzelbilder: lädt ohne Durchscrollen, scrollt das Element in den Blick, wartet auf das nächste [data-motion] mit
+//   „play“ (höchstens 5 s) und nimmt 5 Bilder bei 0, ¼, ½, ¾, 1 der ANIMATIONSZEIT auf: alle endlichen Animationen des
+//   Elements (und seiner Hülle) werden pausiert und auf dieselbe absolute Zeit gesetzt (currentTime, inkl. Verzögerung).
+//   Zeitfenster: kleinste Verzögerung bis größte endliche Endzeit; --dauer überschreibt die Länge. --echtzeit: alter
+//   Wanduhr-Ablauf (Soll/Ist in ms ab dem Scrollen, --dauer nötig). --rand <px> (Standard 24) erweitert den Ausschnitt;
+//   ein Element kleiner als 200 × 120 px wird auf den nächsten Vorfahren mit role="img" oder <svg> erweitert.
 //   Standard --geraet desktop; Ziel Standard BILDER_EXTERN. Dateiname <pfad>__<geraet>__<selektor>__<k>.jpg, k = 0…4.
 // bildrate: mobil 390×844, Prozessor 4-fach gedrosselt. Sammelt rAF-Zeitstempel über --dauer + 200 ms, während das
 //   Element in den Blick scrollt. Verworfene Bilder = Summe max(0; round(Abstand / 16,67) − 1); Anteil = verworfen ÷
@@ -167,11 +171,133 @@ async function reduziert(args) {
   console.log(`\nJSON-Protokoll: ${protokoll}`);
 }
 
+/** Rand um den Ausschnitt in CSS-Pixeln (Option --rand). */
+const RAND_STANDARD = 24;
+
+/**
+ * Läuft im Browser (auf dem Element). Bereitet eine Aufnahme vor:
+ * 1. wartet (höchstens maxWarten) auf das nächste [data-motion], bis es „play“ zeigt;
+ * 2. wählt den Ausschnitt (zu kleines Element → nächster vorfahr mit role=img oder svg);
+ * 3. nur im Modus animationszeit: Animationen bereit abwarten, zwei Frames, alle pausieren,
+ *    Zeitfenster bestimmen. Ergebnis: window.__sm24Bewegung = { erfassung, rand, anims }.
+ */
+async function bereitstellen(el, { modus, rand, dauerVorgabe, maxWarten }) {
+  const beschreibe = (e) => {
+    const klasse = String(e.getAttribute('class') ?? '').split(/\s+/).find(Boolean);
+    return `${e.tagName.toLowerCase()}${e.id ? `#${e.id}` : ''}${klasse ? `.${klasse.replace(/[^\w-]/g, '')}` : ''}`;
+  };
+  const warte = (ms) => new Promise((r) => { setTimeout(r, ms); });
+  const zweiFrames = () => new Promise((r) => { requestAnimationFrame(() => requestAnimationFrame(() => r())); });
+  const info = { motion: null, erweitert: null, animationen: 0, unendlich: 0, fenster: null };
+  let anims = [];
+
+  let motion = null;
+  if (modus === 'animationszeit') {
+    // Zugehörige Hülle: Vorfahre oder Nachfahre mit [data-motion]. Ein Element in der Dokumentreihenfolge
+    // danach gehört nicht dazu; dessen Wartezeit würde das Ergebnis verfälschen.
+    motion = el.closest('[data-motion]') ?? el.querySelector('[data-motion]');
+    if (motion) {
+      const t0 = performance.now();
+      while (motion.getAttribute('data-motion') !== 'play' && performance.now() - t0 < maxWarten) await warte(50);
+      info.motion = {
+        element: beschreibe(motion),
+        zustand: motion.getAttribute('data-motion'),
+        wartezeit_ms: Math.round(performance.now() - t0),
+      };
+    } else {
+      info.motion = { element: null, zustand: null, wartezeit_ms: 0 };
+    }
+  }
+
+  let erfassung = el;
+  const r0 = el.getBoundingClientRect();
+  if (r0.width < 200 || r0.height < 120) {
+    let v = el.parentElement;
+    while (v && !v.matches('[role="img"], svg')) v = v.parentElement;
+    info.erweitert = {
+      von: beschreibe(el),
+      groesse: [Math.round(r0.width), Math.round(r0.height)],
+      auf: v ? beschreibe(v) : null,
+    };
+    if (v) erfassung = v;
+  }
+
+  if (modus === 'animationszeit') {
+    const wurzeln = [erfassung];
+    if (motion && (motion.contains(el) || el.contains(motion))) wurzeln.push(motion);
+    const sammeln = () => {
+      const menge = new Set();
+      for (const w of wurzeln) {
+        for (const a of w.getAnimations({ subtree: true })) {
+          if (typeof CSSTransition !== 'undefined' && a instanceof CSSTransition) continue;
+          menge.add(a);
+        }
+      }
+      return [...menge];
+    };
+    // Die Hülle legt ihre WAAPI-Animationen nach dem Umschalten an: zwei Frames abwarten, dann sammeln.
+    await zweiFrames();
+    anims = sammeln();
+    await Promise.all(anims
+      .filter((a) => a.playState !== 'idle')
+      .map((a) => Promise.race([a.ready.catch(() => {}), warte(3000)])));
+    // Zwei Frames nach „ready“: die Hülle setzt startTime erst dann; danach erst einfrieren.
+    await zweiFrames();
+    anims = sammeln();
+    for (const a of anims) a.pause();
+
+    let start = Infinity;
+    let ende = -Infinity;
+    for (const a of anims) {
+      if (!a.effect) continue;
+      const ct = a.effect.getComputedTiming();
+      if (!Number.isFinite(ct.endTime)) { info.unendlich += 1; continue; }
+      start = Math.min(start, ct.delay);
+      ende = Math.max(ende, ct.endTime);
+    }
+    if (dauerVorgabe !== undefined) {
+      start = Number.isFinite(start) ? start : 0;
+      ende = start + dauerVorgabe;
+    }
+    info.animationen = anims.length;
+    info.fenster = Number.isFinite(start) && Number.isFinite(ende) && ende > start ? { start, ende } : null;
+  }
+
+  window.__sm24Bewegung = { erfassung, rand, anims };
+  return info;
+}
+
+/** Läuft im Browser. Ausschnitt des vorbereiteten Elements mit Rand, auf den Sichtbereich begrenzt. */
+function ausschnittAktuell(rand) {
+  const s = window.__sm24Bewegung;
+  const r = s.erfassung.getBoundingClientRect();
+  const x0 = Math.max(0, r.left - rand);
+  const y0 = Math.max(0, r.top - rand);
+  const x1 = Math.min(window.innerWidth, r.right + rand);
+  const y1 = Math.min(window.innerHeight, r.bottom + rand);
+  if (x1 <= x0 || y1 <= y0) return null;
+  return { x: x0, y: y0, width: x1 - x0, height: y1 - y0 };
+}
+
+/** Läuft im Browser. Setzt die absolute Zeit aller erfassten Animationen (currentTime enthält die Verzögerung). */
+function zeitSetzen(t) {
+  for (const a of window.__sm24Bewegung.anims) a.currentTime = t;
+}
+
+/** Läuft im Browser. Zwei Bildschirmframes abwarten. */
+function zweiFramesBrowser() {
+  return new Promise((r) => { requestAnimationFrame(() => requestAnimationFrame(() => r())); });
+}
+
 async function einzelbilder(args, pfad, dauer) {
   const g = geraetWahl(args.geraet ?? 'desktop');
   const ziel = ordner(args.ziel ?? BILDER_EXTERN);
   const name = `${slug(pfad)}__${g.id}__${slug(args.selektor)}`;
+  const echtzeit = args.echtzeit === true;
+  const rand = args.rand === undefined ? RAND_STANDARD : Number(args.rand);
+  if (!(rand >= 0)) bedienfehler('--rand <px> ist keine Zahl ≥ 0');
   const bilder = [];
+  let info = null;
   const browser = await browserStarten();
   try {
     const context = await kontextFuer(browser, g);
@@ -182,17 +308,38 @@ async function einzelbilder(args, pfad, dauer) {
       const el = page.locator(args.selektor).first();
       if ((await el.count()) === 0) bedienfehler(`Selektor „${args.selektor}“ auf ${pfad} nicht gefunden`);
       await el.evaluate((e) => e.scrollIntoView({ behavior: 'instant', block: 'center' }));
-      const t0 = Date.now();
-      for (let k = 0; k < 5; k += 1) {
-        const soll = Math.round((dauer * k) / 4);
-        const warten = soll - (Date.now() - t0);
-        if (warten > 0) await page.waitForTimeout(warten);
-        const ist = Date.now() - t0;
-        const box = await el.boundingBox();
-        if (!box) bedienfehler(`Element ohne Fläche bei Bild ${k}`);
-        const datei = path.join(ziel, `${name}__${k}.jpg`);
-        await page.screenshot({ path: datei, type: 'jpeg', quality: 60, scale: 'css', caret: 'initial', clip: box });
-        bilder.push({ k, soll, ist, datei });
+      info = await el.evaluate(bereitstellen, {
+        modus: echtzeit ? 'echtzeit' : 'animationszeit',
+        rand,
+        dauerVorgabe: dauer,
+        maxWarten: 5000,
+      });
+      if (echtzeit) {
+        const t0 = Date.now();
+        for (let k = 0; k < 5; k += 1) {
+          const soll = Math.round((dauer * k) / 4);
+          const warten = soll - (Date.now() - t0);
+          if (warten > 0) await page.waitForTimeout(warten);
+          const ist = Date.now() - t0;
+          const clip = await page.evaluate(ausschnittAktuell, rand);
+          if (!clip) bedienfehler(`Element ohne Fläche bei Bild ${k}`);
+          const datei = path.join(ziel, `${name}__${k}.jpg`);
+          await page.screenshot({ path: datei, type: 'jpeg', quality: 60, scale: 'css', caret: 'initial', clip });
+          bilder.push({ k, soll, ist, datei, clip });
+        }
+      } else {
+        const fenster = info.fenster;
+        if (!fenster) bedienfehler('keine endliche Animation mit Dauer am Element gefunden; mit --dauer <ms> angeben oder --echtzeit nutzen');
+        for (let k = 0; k < 5; k += 1) {
+          const t = fenster.start + ((fenster.ende - fenster.start) * k) / 4;
+          await page.evaluate(zeitSetzen, t);
+          await page.evaluate(zweiFramesBrowser);
+          const clip = await page.evaluate(ausschnittAktuell, rand);
+          if (!clip) bedienfehler(`Element ohne Fläche bei Bild ${k}`);
+          const datei = path.join(ziel, `${name}__${k}.jpg`);
+          await page.screenshot({ path: datei, type: 'jpeg', quality: 60, scale: 'css', caret: 'initial', clip });
+          bilder.push({ k, t: Math.round(t * 10) / 10, datei, clip });
+        }
       }
     } finally {
       await context.close();
@@ -200,11 +347,34 @@ async function einzelbilder(args, pfad, dauer) {
   } finally {
     await browser.close();
   }
-  const protokoll = jsonSchreiben('bewegung-einzelbilder', args, { pfad, selektor: args.selektor, dauer, geraet: g.id, bilder });
-  console.log(tabelle(
-    ['Bild', 'Soll ms', 'Ist ms', 'Datei'],
-    bilder.map((b) => [b.k, b.soll, b.ist, b.datei]),
-  ));
+  const modus = echtzeit ? 'echtzeit' : 'animationszeit';
+  const protokoll = jsonSchreiben('bewegung-einzelbilder', args, {
+    pfad, selektor: args.selektor, dauer: dauer ?? null, geraet: g.id, modus, rand, ...info, bilder,
+  });
+  if (echtzeit) {
+    console.log(tabelle(
+      ['Bild', 'Soll ms', 'Ist ms', 'Datei'],
+      bilder.map((b) => [b.k, b.soll, b.ist, b.datei]),
+    ));
+  } else {
+    console.log(tabelle(
+      ['Bild', 't ms (Animationszeit)', 'Datei'],
+      bilder.map((b) => [b.k, b.t, b.datei]),
+    ));
+    const f = info.fenster;
+    const r1 = (z) => Math.round(z * 10) / 10;
+    console.log(`\nAnimationszeit-Fenster: ${r1(f.start)} ms bis ${r1(f.ende)} ms · Animationen: ${info.animationen} · unendliche übersprungen: ${info.unendlich}`);
+    if (info.motion.element) {
+      const hinweis = info.motion.zustand === 'play' ? '' : ' · HINWEIS: nach Wartezeit nicht auf „play“';
+      console.log(`[data-motion]: ${info.motion.element}, Zustand ${info.motion.zustand}, Wartezeit ${info.motion.wartezeit_ms} ms${hinweis}`);
+    } else {
+      console.log('[data-motion]: keines gefunden, sofort weiter');
+    }
+  }
+  if (info.erweitert) {
+    const [w, h] = info.erweitert.groesse;
+    console.log(`Ausschnitt erweitert: ${info.erweitert.von} (${w} × ${h} px) → ${info.erweitert.auf ?? 'kein Vorfahre mit role=img oder svg, Element bleibt'}`);
+  }
   console.log(`\nJSON-Protokoll: ${protokoll}`);
 }
 
@@ -246,21 +416,29 @@ async function bildrate(args, pfad, dauer) {
 }
 
 async function main() {
-  const args = argumente();
+  // --echtzeit ist ein Schalter ohne Wert: aus der Liste nehmen, damit er keinen Pfad verschluckt.
+  const roh = process.argv.slice(2);
+  const args = argumente(roh.filter((t) => t !== '--echtzeit'));
+  args.echtzeit = roh.includes('--echtzeit');
   const modus = args._[0];
   if (!['reduziert', 'einzelbilder', 'bildrate'].includes(modus)) {
     bedienfehler('Aufruf: node bewegung.mjs reduziert|einzelbilder|bildrate … (siehe Kopfkommentar)');
   }
-  for (const k of ['routen', 'selektor', 'dauer', 'geraet', 'ziel', 'json']) {
+  for (const k of ['routen', 'selektor', 'dauer', 'geraet', 'ziel', 'json', 'rand']) {
     if (args[k] === true) bedienfehler(`--${k} braucht einen Wert`);
   }
   if (modus === 'reduziert') return reduziert(args);
   const pfad = args._[1];
   if (!pfad || !pfad.startsWith('/')) bedienfehler('Pfad fehlt oder beginnt nicht mit „/“');
   if (typeof args.selektor !== 'string') bedienfehler('--selektor <css> fehlt');
-  const dauer = Number(args.dauer);
-  if (!(dauer > 0)) bedienfehler('--dauer <ms> fehlt oder ist keine positive Zahl');
-  return modus === 'einzelbilder' ? einzelbilder(args, pfad, dauer) : bildrate(args, pfad, dauer);
+  const dauer = args.dauer === undefined ? undefined : Number(args.dauer);
+  if (dauer !== undefined && !(dauer > 0)) bedienfehler('--dauer <ms> ist keine positive Zahl');
+  if (modus === 'bildrate') {
+    if (dauer === undefined) bedienfehler('--dauer <ms> fehlt oder ist keine positive Zahl');
+    return bildrate(args, pfad, dauer);
+  }
+  if (args.echtzeit && dauer === undefined) bedienfehler('--echtzeit braucht --dauer <ms>');
+  return einzelbilder(args, pfad, dauer);
 }
 
 main().catch((e) => {

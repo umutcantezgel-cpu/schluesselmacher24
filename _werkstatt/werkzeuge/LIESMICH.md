@@ -22,7 +22,7 @@ Die Abhängigkeiten liegen außerhalb des Repositorys. Der Symlink ist in `.giti
 - `node a11y.mjs [--routen p,p] [--geraet mobil|desktop|beide]` – axe-core, WCAG 2.0/2.1/2.2 Stufen A und AA.
 - `node konsole.mjs [--routen p,p]` – Konsolenfehler, Warnungen, Seitenfehler und Netzfehler (Desktop).
 - `node bewegung.mjs reduziert [--routen p,p]` – laufende Animationen und verborgene Textelemente bei „Bewegung reduzieren“.
-- `node bewegung.mjs einzelbilder <pfad> --selektor <css> --dauer <ms> [--geraet mobil|desktop] [--ziel ordner]` – 5 Bilder eines Auftritts bei 0, ¼, ½, ¾, 1 der Dauer.
+- `node bewegung.mjs einzelbilder <pfad> --selektor <css> [--dauer <ms>] [--echtzeit] [--rand <px>] [--geraet mobil|desktop] [--ziel ordner]` – 5 Bilder bei 0, ¼, ½, ¾, 1 der Animationszeit des Moments (Standard); `--echtzeit` = alter Wanduhr-Ablauf (braucht `--dauer`); `--rand` Standard 24 px.
 - `node bewegung.mjs bildrate <pfad> --selektor <css> --dauer <ms>` – verworfene Bilder in % (mobil, CPU 4-fach gedrosselt), Schwelle 5 %.
 - `node werte-suche.mjs [--seit commit] [dateien…]` – feste Werte im Quelltext: Tailwind-Klassen mit `[…]`, Hex-Farben, `rgb(`/`hsl(`/`oklch(`, `style` mit px/rem; Bildinhalte getrennt ausgewiesen.
 
@@ -33,4 +33,4 @@ Die Abhängigkeiten liegen außerhalb des Repositorys. Der Symlink ist in `.giti
 - Bilder landen standardmäßig außerhalb des Repositorys (`/root/sm24-bilder`, `SM24_BILDER`), nur mit `--ziel` anders.
 - Schreibende Anfragen fängt `attrappenSetzen()` aus `lib.mjs` ab. Fremde Anfragen außer Google-Schriften werden abgebrochen; dadurch fehlen Netzmengen externer Quellen in `messung.mjs`, und `konsole.mjs` zählt sie getrennt als Attrappen-Abbrüche.
 - `messung.mjs`: Der Klick trifft den ersten sichtbaren Knopf, der nicht im Formular liegt und kein Absende-Knopf ist. TBT = Summe (Dauer − 50 ms) der Long Tasks bis 5 s nach Ladebeginn. INP 0 bedeutet kein Ereignis über 16 ms.
-- `bewegung.mjs einzelbilder` lädt ohne Durchscrollen, damit der Auftritt beim Scrollen zum Element ausgelöst wird.
+- `bewegung.mjs einzelbilder` lädt ohne Durchscrollen, scrollt das Element in den Blick und wartet auf die zugehörige Hülle (Vorfahre oder Nachfahre mit `data-motion`, höchstens 5 s, bis „play“). Danach werden alle endlichen Animationen des Elements und seiner Hülle (ohne CSS-Übergänge) nach `ready` gesetzt, zwei Frames gewartet, pausiert und je Bild auf dieselbe absolute Zeit gesetzt (`currentTime`, inkl. Verzögerung). Zeitfenster: kleinste Verzögerung bis größte endliche Endzeit; unendliche Animationen werden übersprungen. Ein Element kleiner als 200 × 120 px (eine Seite) wird auf den nächsten Vorfahren mit `role="img"` oder `<svg>` erweitert; das steht im Protokoll.

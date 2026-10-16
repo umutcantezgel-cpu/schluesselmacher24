@@ -1,0 +1,96 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-16T03:43:19.733Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/syn.html"
+    ],
+    "selektor": "[data-fraesbahn]",
+    "geraet": "desktop",
+    "ziel": "/tmp/claude-0/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/scratchpad/synth/bilder",
+    "echtzeit": false
+  },
+  "pfad": "/syn.html",
+  "selektor": "[data-fraesbahn]",
+  "dauer": null,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": "div#huelle",
+    "zustand": "play",
+    "wartezeit_ms": 0
+  },
+  "erweitert": {
+    "von": "g",
+    "groesse": [
+      16,
+      16
+    ],
+    "auf": "svg"
+  },
+  "animationen": 4,
+  "unendlich": 1,
+  "fenster": {
+    "start": 400,
+    "ende": 1700
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 400,
+      "datei": "/tmp/claude-0/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/scratchpad/synth/bilder/syn-html__desktop__data-fraesbahn__0.jpg",
+      "clip": {
+        "x": 346,
+        "y": 226,
+        "width": 668,
+        "height": 513
+      }
+    },
+    {
+      "k": 1,
+      "t": 725,
+      "datei": "/tmp/claude-0/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/scratchpad/synth/bilder/syn-html__desktop__data-fraesbahn__1.jpg",
+      "clip": {
+        "x": 346,
+        "y": 226,
+        "width": 668,
+        "height": 513
+      }
+    },
+    {
+      "k": 2,
+      "t": 1050,
+      "datei": "/tmp/claude-0/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/scratchpad/synth/bilder/syn-html__desktop__data-fraesbahn__2.jpg",
+      "clip": {
+        "x": 346,
+        "y": 226,
+        "width": 668,
+        "height": 513
+      }
+    },
+    {
+      "k": 3,
+      "t": 1375,
+      "datei": "/tmp/claude-0/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/scratchpad/synth/bilder/syn-html__desktop__data-fraesbahn__3.jpg",
+      "clip": {
+        "x": 346,
+        "y": 226,
+        "width": 668,
+        "height": 513
+      }
+    },
+    {
+      "k": 4,
+      "t": 1700,
+      "datei": "/tmp/claude-0/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/scratchpad/synth/bilder/syn-html__desktop__data-fraesbahn__4.jpg",
+      "clip": {
+        "x": 346,
+        "y": 226,
+        "width": 668,
+        "height": 513
+      }
+    }
+  ]
+}
