@@ -1,16 +1,16 @@
 # Prüfpunkt
 
-- **Etappe:** E5 (übrige Ansichten und Befundpakete). Prüfstufe B für E4 ist grün; die Sichtabnahme E4-L-23 ergab 6,2 (D-037). Die gemeinsamen Befunde sind mit E4-L-27 umgesetzt, KERN 1.11.
+- **Etappe:** E5 (übrige Ansichten und Befundpakete). Alle 12 Befundpakete der Sichtabnahme E4-L-23 sind abgenommen (H01, H02, H03, H06, H10, H11 nach L3 mit Nacharbeit des Orchestrators). KERN 1.13.
 - **Laufend:**
-  - Nachprüfung H01, H02, H03, H06, H07: Workflow `wf_2488bef5-c12` (Task `wkz0avdgp`), Skript `workflows/scripts/pruefen-kette-wf_2488bef5-c12.js`, Berichte unter `/root/sm24-bilder/nachpruefung/`.
-  - E5-BEFUND-H10 und -H11 (Warenkorb, Kasse): Workflow `wf_6c7837a6-619` (Task `wk93plq9c`), Basis `d043fef`.
-  - Server nach Neustart des Arbeitsprozesses neu gestartet: Port 3001 (`SM24_DATA=json setsid nohup npx next dev -p 3001`), Port 3000 (`server.sh start`). Port 3100 (E0) erst für Prüfstufe C.
-- **Fertig seit dem letzten Prüfpunkt:** H08 (46f98e6), H04 Runde 2 mit Schlüsselart-Zeichnung und Werkzeugkorrektur (0ff7e48, D-042), B-21 bis B-23, Alert ruhig (D-041), Befundwelle 1 abgenommen (H05 d8b3e26, H09 5b7bb11, H04 d53b63d; D-040), E5-BAUMEISTER-20 (8a71d31), E5-BEFUND-H12 mit Kür K-04 (6cb4c93), E4-GRAFIKER-10 abgenommen (ec7db44, b929023), Kür K-02 (fe069ba), K-05 Druckansicht, K-06 Vorschaubilder (D-039), B-25 Stiftzuhaltung als CSS vorbereitet (Paket E6-GRAFIKER-11), Paket E5-DOKUMENTAR-01. Davor: Prüfstufe B E4 (6798995, 0468a38), L-07a Warenkorb mobil (21d8833), Sichtabnahme E4-L-23, E4-L-24 bis -27, E4-GRAFIKER-09 (385bcf2), E5-L-28 Lesefortschritt B-24 und `ablaufAusText`; Pakete E5-BEFUND-H01 bis -H12, E5-BAUMEISTER-20 bis -29, E4-GRAFIKER-10.
+  - E5-BAUMEISTER-26 (Service-Anfrage, Terminstatus) und -27 (Artikel): Workflow `wf_b1db5a2b-e07` (Task `w65a0r0x5`), Basis `f0e1382`.
+  - E6-GRAFIKER-11 (Stiftzuhaltung `szene: 'scroll'`, K-01) und E5-DOKUMENTAR-01 (README): Workflow `wf_d95a29d7-2df` (Task `wz4dm1sav`), Basis `f0e1382`.
+  - Server: Port 3001 (Entwicklung), Port 3000 (`server.sh start`, alter Build – Funktionsliste und Werkzeuge ohne `SM24_BASIS_URL` messen dort!). Port 3100 (E0) erst für Prüfstufe C.
+- **Fertig seit dem letzten Prüfpunkt:** Nacharbeit und Abnahme H01 (5d8cf00), H02 (f741427), H03 (60705ce), H06 (0fca06c, neue Anzeigehilfe `src/lib/codelinie.ts`), H07 (3ca7232), H10 (31d5f33, Variante `korb-leer:`), H11 (46ced8f, `SummaryList` mit `betragAmEnde`); Zeitplan der Schlüsselzeichnung E5-L-28 (84f14d8, KERN 1.13); E5-BAUMEISTER-24 (8022fc1) und -25 (12bd2cd) abgenommen.
 - **Als Nächstes:**
-  1. Welle 1 und GRAFIKER-10 abnehmen: ganzer Unterschied, Logikwächter, Wertesuche, Bilder, Berichte; GRAFIKER-10 in Registry (`SCHMALES_FORMAT`), README, Registry-Test eintragen.
-  2. Welle 3: H01, H07, H10, H11; Befundpaket 2 für H04 (Schlüsselart-Zeichnungen, Modellzähler) nach H02. Danach E5 Wellen G und H, E6-GRAFIKER-11 (K-01), E5-DOKUMENTAR-01.
-  3. E5 Wellen F (B-20 bis -23), G (B-24 bis -27), H (B-28, B-29, D-01); dann L-12 lucide entfernen.
-  4. Prüfstufe B E5 mit Sichtabnahme (Runde 2 der Befunde nur, wo < 8), Kür K-01 bis K-06, Prüfstufe C, Endprüfung.
+  1. B-26, B-27, E6-GRAFIKER-11, E5-DOKUMENTAR-01 abnehmen; danach Welle H (B-28, B-29) starten.
+  2. K-01 einbauen: Stiftzuhaltung mit `szene: 'scroll'` auf `/gleichschliessende-zylinder` (Orchestrator), Registry/README.
+  3. E5-L-12 lucide entfernen (Nutzungssuche, `npm uninstall`, Build).
+  4. Prüfstufe B E5 mit Sichtabnahme (frischer Opus-Agent; Befundpakete Runde 2 nur, wo < 8), dann Kür-Rest, Prüfstufe C, Endprüfung, ABSCHLUSS.
 - **Bei Abbruch:**
   - `Workflow({scriptPath: <pakete-kette-Skript>, resumeFromRunId})` für den jeweiligen Lauf; Skript: `/root/.claude/projects/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/workflows/scripts/pakete-kette-wf_be39e9e0-a87.js`, args `{pakete:[{id,basis}], andere}`.
   - Paketerzeuger im Scratchpad `e5/` (`befund_pakete.py [H..]`, `welle_f.py`, `welle_gh.py [Kennung..]`); die erzeugten Pakete liegen im Repo.
@@ -18,4 +18,4 @@
   - `/tmp/sm24-messfenster.lock` ist verwaist, wenn kein Prüfer läuft.
 - **Zwischenstände:** Laufende Baumeister-Dateien werden als ZWISCHENSTAND committet (Stopp-Haken). Die Abnahme prüft den ganzen Unterschied gegen die Basis der Welle.
 - **Hinweis:** AGENTS.md vor jedem Commit zurücknehmen (D-007). Nie Dateien unter /dev anfassen (D-021). Agenten auf Port 3001 brauchen `SM24_BASIS_URL=http://localhost:3001`.
-- **Letzter grüner Stand:** 99d805c. Typprüfung 0, Linter 0, Komponenten- und Lib-Tests grün, Logikwächter 0 abweichend, Wertesuche 0 ohne Ausnahme. Port 3000 zeigt den Build der L-07a-Prüfung.
+- **Letzter grüner Stand:** 5105872. Typprüfung 0, Linter 0, Komponenten- und Lib-Tests grün, Logikwächter 0 abweichend, Wertesuche 0 ohne Ausnahme. Port 3000 zeigt den Build der L-07a-Prüfung.

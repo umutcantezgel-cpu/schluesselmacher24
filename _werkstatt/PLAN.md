@@ -95,15 +95,15 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E4-L-27 | Gemeinsame Befunde der Sichtabnahme (Kopf 7/5, FlowShell, Knöpfe, Datei-Eingaben, Schliessplan schmal), Text- und Fachfragen (D-037) | L/Opus | gemeinsame Bausteine + Tests, TEXTVORSCHLAEGE, MENSCHEN | E4-L-23 | Z-04, Z-07 | 32bc377 … ae51d9b |
 | E4-GRAFIKER-09 | Schließplan mit Reserveplätzen und schmalem Format | G/Haiku | `schliessplan` + Test | E4-L-23 | Z-06 | 385bcf2 |
 | E4-GRAFIKER-10 | Generator `ablauf` (Ablaufzeichnung, breit und schmal, B-23) | G/Haiku | `ablauf` + Test | E4-L-23 | Z-06 | ec7db44 |
-| E5-L-28 | Lesefortschritt (B-24, Kür K-04) als Klassen, `ablaufAusText`, KERN 1.11 | L/Opus | `globals.css`, `motiv.ts` + Test, KERN | E4-L-23 | Z-05 | |
-| E5-BEFUND-H01…H12 | Befundpakete der Sichtabnahme E4-L-23, je Hauptansicht (Runde 1 von höchstens 2) | B/Haiku | je Ansicht | E4-L-27 | Z-04 | |
+| E5-L-28 | Lesefortschritt (B-24, Kür K-04) als Klassen, `ablaufAusText`, KERN 1.11; Zeitplan der Schlüsselzeichnung (KERN 1.13) | L/Opus | `globals.css`, `motiv.ts` + Test, `schluessel.tsx` + Test, KERN | E4-L-23 | Z-05 | 84f14d8 |
+| E5-BEFUND-H01…H12 | Befundpakete der Sichtabnahme E4-L-23, je Hauptansicht (Runde 1 von höchstens 2) | B/Haiku | je Ansicht | E4-L-27 | Z-04 | alle 12 abgenommen: H01 5d8cf00, H02 f741427, H03 60705ce, H04 0ff7e48, H05 d8b3e26, H06 0fca06c, H07 3ca7232, H08 46f98e6, H09 5b7bb11, H10 31d5f33, H11 46ced8f, H12 6cb4c93 |
 | E4-L-07 | Leistung absichern (nach der ersten Etappenmessung) | L/Opus | je Befund | E3-P-B | Z-08 | 21d8833 (L-07a) |
 | E5-B-20 | Service, Kontakt, Vor Ort | B/Haiku | 3 Dateien | E3 | Z-06 | 8a71d31 |
 | E5-B-21 | `/gleichschliessende-zylinder` | B/Haiku | 1 Datei | E3 | Z-06 | 523b558 |
 | E5-B-22 | Vorlage-Anfrage (Logikwächter, Scroll-Ausnahme) | B/Haiku | 2 Dateien | E3-B-02 | Z-06, Z-05 | c6636eb |
 | E5-B-23 | Sicherheitscheck (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02 | Z-06 | ccf7bc8 |
-| E5-B-24 | Zutritts-Konfigurator (Logikwächter, Scroll-Ausnahme) | B/Haiku | 2 Dateien | E3-B-02 | Z-06, Z-05 | |
-| E5-B-25 | Projekt-Konfigurator (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02 | Z-06 | |
+| E5-B-24 | Zutritts-Konfigurator (Logikwächter, Scroll-Ausnahme) | B/Haiku | 2 Dateien | E3-B-02 | Z-06, Z-05 | 8022fc1 |
+| E5-B-25 | Projekt-Konfigurator (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02 | Z-06 | 12bd2cd |
 | E5-B-26 | Service-Anfrage und Terminstatus (Logikwächter) | B/Haiku | 4 Dateien | E3-B-02 | Z-06 | |
 | E5-B-27 | Artikel (Logikwächter für `artikel-kauf`) | B/Haiku | 4 Dateien | E3 | Z-06 | |
 | E5-B-28 | Standorte, Bestellung (Logikwächter) | B/Haiku | 3 Dateien | E3 | Z-06 | |
