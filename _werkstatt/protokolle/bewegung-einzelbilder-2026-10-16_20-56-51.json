@@ -1,0 +1,89 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-16T18:56:51.871Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/schliessanlagen"
+    ],
+    "selektor": "main svg[viewBox='0 0 480 300']",
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/e5-b/einzelbilder/H08",
+    "echtzeit": false
+  },
+  "pfad": "/schliessanlagen",
+  "selektor": "main svg[viewBox='0 0 480 300']",
+  "dauer": null,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": "div.shell",
+    "zustand": "play",
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 63,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 1930.0000000000002
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/root/sm24-bilder/e5-b/einzelbilder/H08/schliessanlagen__desktop__main-svg-viewbox-0-0-480-300__0.jpg",
+      "clip": {
+        "x": 636.328125,
+        "y": 279.4375,
+        "width": 670.65625,
+        "height": 437.15625
+      }
+    },
+    {
+      "k": 1,
+      "t": 482.5,
+      "datei": "/root/sm24-bilder/e5-b/einzelbilder/H08/schliessanlagen__desktop__main-svg-viewbox-0-0-480-300__1.jpg",
+      "clip": {
+        "x": 636.328125,
+        "y": 279.4375,
+        "width": 670.65625,
+        "height": 437.15625
+      }
+    },
+    {
+      "k": 2,
+      "t": 965,
+      "datei": "/root/sm24-bilder/e5-b/einzelbilder/H08/schliessanlagen__desktop__main-svg-viewbox-0-0-480-300__2.jpg",
+      "clip": {
+        "x": 636.328125,
+        "y": 279.4375,
+        "width": 670.65625,
+        "height": 437.15625
+      }
+    },
+    {
+      "k": 3,
+      "t": 1447.5,
+      "datei": "/root/sm24-bilder/e5-b/einzelbilder/H08/schliessanlagen__desktop__main-svg-viewbox-0-0-480-300__3.jpg",
+      "clip": {
+        "x": 636.328125,
+        "y": 279.4375,
+        "width": 670.65625,
+        "height": 437.15625
+      }
+    },
+    {
+      "k": 4,
+      "t": 1930,
+      "datei": "/root/sm24-bilder/e5-b/einzelbilder/H08/schliessanlagen__desktop__main-svg-viewbox-0-0-480-300__4.jpg",
+      "clip": {
+        "x": 636.328125,
+        "y": 279.4375,
+        "width": 670.65625,
+        "height": 437.15625
+      }
+    }
+  ]
+}

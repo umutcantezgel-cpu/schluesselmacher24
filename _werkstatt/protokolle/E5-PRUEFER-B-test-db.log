@@ -1,0 +1,83 @@
+
+ RUN  v2.1.9 /home/user/schluesselmacher24
+
+[18:50:16] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ✓ src/lib/data/vorgaenge.db.test.ts (11 tests) 1479ms
+[18:50:19] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ✓ src/lib/server/kundendateien.db.test.ts (10 tests) 1172ms
+   ✓ Aufbewahrung > löscht Eintrag und Datei — im Probelauf nichts 320ms
+[18:50:22] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+(node:5523) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+Inhalte übernehmen …
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  einstellungen: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  zylinderkatalog: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  preisgruppen: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  autoschluessel-leistungen: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  preisregeln: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  fahrzeugmarken: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  codelinien: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  beispielartikel: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  leistungsseiten: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  seiten: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  ratgeber: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  einsatzgebiete: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  sperrtage: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  nachweise: bereits übernommen — übersprungen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  richtwerte: bereits übernommen — übersprungen
+Fertig.
+
+ ✓ src/lib/data/payload.db.test.ts (14 tests) 1237ms
+[18:50:25] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ✓ src/lib/data/nachweise.db.test.ts (6 tests) 276ms
+[18:50:28] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ✓ src/lib/data/richtwerte.db.test.ts (4 tests) 289ms
+[18:50:30] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ✓ src/lib/server/create-record.db.test.ts (3 tests) 618ms
+[18:50:33] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Warning: Ignoring extra certs from `/root/.ccr/ca-bundle.crt`, load failed: error:8000000D:system library::Permission denied
+ ✓ src/lib/server/rate-limit.db.test.ts (4 tests) 213ms
+
+ Test Files  7 passed (7)
+      Tests  52 passed (52)
+   Start at  18:50:01
+   Duration  32.14s (transform 772ms, setup 0ms, collect 11.54s, tests 5.28s, environment 1ms, prepare 575ms)
+
+EXIT 0

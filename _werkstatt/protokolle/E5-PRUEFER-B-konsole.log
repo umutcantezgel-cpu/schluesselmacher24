@@ -56,3 +56,78 @@
 - Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=CIHTM0MgeNHunIgv
 
 JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/konsole-2026-10-16_20-49-19.json
+| Ansicht | Konsolenfehler | Warnungen | Seitenfehler | Fehlgeschlagene Anfragen | Attrappen-Abbrüche (kein Befund) | Ladefehler |
+|---|---|---|---|---|---|---|
+| gleichschliessende-zylinder | 0 | 0 | 0 | 0 | 0 | – |
+| service-und-termin | 0 | 0 | 0 | 3 | 0 | – |
+| service-und-termin-kontakt | 0 | 0 | 0 | 3 | 0 | – |
+| service-und-termin-vor-ort | 0 | 0 | 0 | 2 | 0 | – |
+| service-und-termin-anfrage | 0 | 0 | 0 | 2 | 0 | – |
+| service-und-termin-terminstatus | 0 | 0 | 0 | 2 | 0 | – |
+| schluessel-nach-vorlage-anfrage | 0 | 0 | 0 | 1 | 0 | – |
+| sicherheitstechnik-sicherheitscheck | 0 | 0 | 0 | 2 | 0 | – |
+| elektronische-zutrittsloesungen-konfigurator | 0 | 0 | 0 | 2 | 0 | – |
+| schliessanlagen-konfigurator | 0 | 0 | 0 | 1 | 0 | – |
+| artikel | 0 | 0 | 0 | 0 | 0 | – |
+| artikel-beispiel-schluesselkasten | 0 | 0 | 0 | 2 | 0 | – |
+| standorte | 0 | 0 | 0 | 4 | 0 | – |
+| standorte-berlin | 0 | 0 | 0 | 2 | 0 | – |
+| rechtliches-agb | 0 | 0 | 0 | 1 | 0 | – |
+| rechtliches-cookie-einstellungen | 0 | 0 | 0 | 0 | 0 | – |
+
+### Einzelmeldungen (erste 10 je Art)
+
+**service-und-termin**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=gwXxKOHaIT4sgxaD
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=04sZipw8NrT5J3zm
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/service-und-termin/anfrage?_rsc=04sZipw8NrT5J3zm
+
+**service-und-termin-kontakt**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=8OYdfX4GNJkyVCba
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/service-und-termin/anfrage?_rsc=8OYdfX4GNJkyVCba
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/service-und-termin/anfrage?_rsc=v9BTbDEMBdY7_R0z
+
+**service-und-termin-vor-ort**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=KrUBNKi8hYyxXl2a
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/service-und-termin/anfrage?_rsc=KrUBNKi8hYyxXl2a
+
+**service-und-termin-anfrage**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=0O4p2EqS4i2HYWm-
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=ByckrD6hahrFz2vf
+
+**service-und-termin-terminstatus**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=wbnJ5eBTzj4FK9E8
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=e5TK8tfJSs8OU5oe
+
+**schluessel-nach-vorlage-anfrage**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=GdWmI2Wfark6XgTb
+
+**sicherheitstechnik-sicherheitscheck**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=cImJCNzab8XFKb6J
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=U8B81PpR02E7pp2M
+
+**elektronische-zutrittsloesungen-konfigurator**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=PR1sb0Y7tLJ0ZO5b
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=xgFESww-YBWVRox9
+
+**schliessanlagen-konfigurator**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=nOpDNswMwrueuAQZ
+
+**artikel-beispiel-schluesselkasten**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=amW9dvZWG6qauy3J
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=fIfar_WemS3pTx-4
+
+**standorte**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=eZveY7Ilf6XYeWud
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=ucEDm-iHe6A4ypZT
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/service-und-termin/anfrage?_rsc=eZveY7Ilf6XYeWud
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/service-und-termin/anfrage?_rsc=ucEDm-iHe6A4ypZT
+
+**standorte-berlin**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=qB74ZAU8TPbXWwCr
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=F69fc5pfjLIBt6xI
+
+**rechtliches-agb**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=D64GPzcxt_dWeIwr
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/konsole-2026-10-16_20-50-05.json

@@ -1,0 +1,48 @@
+Geprüfte Dateien: 217 (seit fcbcfb2)
+
+### Funde
+
+Keine Funde.
+
+### Ausnahmen (Bildinhalte, mitgezählt)
+
+| Datei | Zeile | Kategorie | Fund |
+|---|---|---|---|
+| src/app/(site)/layout.tsx | 63 | Hex-Farbe | #f7f9fb |
+| src/components/forms/photo-upload.tsx | 102 | Hex-Farbe | #fff |
+| src/components/visual/generators/ablauf.test.tsx | 20 | Farbfunktion | rgb( |
+| src/components/visual/generators/ablauf.test.tsx | 21 | Farbfunktion | oklch( |
+| src/components/visual/generators/profilschnitt.test.tsx | 20 | Farbfunktion | rgb( |
+| src/components/visual/generators/profilschnitt.test.tsx | 21 | Farbfunktion | oklch( |
+| src/components/visual/generators/schliessplan.test.tsx | 23 | Farbfunktion | rgb( |
+| src/components/visual/generators/schliessplan.test.tsx | 24 | Farbfunktion | oklch( |
+| src/components/visual/generators/schluessel.test.tsx | 23 | Farbfunktion | rgb( |
+| src/components/visual/generators/schluessel.test.tsx | 24 | Farbfunktion | oklch( |
+| src/components/visual/generators/stiftzuhaltung.test.tsx | 21 | Farbfunktion | rgb( |
+| src/components/visual/generators/stiftzuhaltung.test.tsx | 22 | Farbfunktion | oklch( |
+| src/components/visual/generators/tuer-schutz.test.tsx | 23 | Farbfunktion | rgb( |
+| src/components/visual/generators/tuer-schutz.test.tsx | 24 | Farbfunktion | oklch( |
+| src/components/visual/generators/zylinder-mass.test.tsx | 23 | Farbfunktion | rgb( |
+| src/components/visual/generators/zylinder-mass.test.tsx | 24 | Farbfunktion | oklch( |
+| src/lib/og/bereichsbild.test.ts | 26 | Farbfunktion | hsl( |
+| src/lib/og/bereichsbild.tsx | 38 | Farbfunktion | hsl( |
+
+### Summe je Datei
+
+| Datei | Treffer | Ausnahme |
+|---|---|---|
+| src/app/(site)/layout.tsx | 1 | einzeln benannt |
+| src/components/forms/photo-upload.tsx | 1 | einzeln benannt |
+| src/components/visual/generators/ablauf.test.tsx | 2 | ja |
+| src/components/visual/generators/profilschnitt.test.tsx | 2 | ja |
+| src/components/visual/generators/schliessplan.test.tsx | 2 | ja |
+| src/components/visual/generators/schluessel.test.tsx | 2 | ja |
+| src/components/visual/generators/stiftzuhaltung.test.tsx | 2 | ja |
+| src/components/visual/generators/tuer-schutz.test.tsx | 2 | ja |
+| src/components/visual/generators/zylinder-mass.test.tsx | 2 | ja |
+| src/lib/og/bereichsbild.test.ts | 1 | einzeln benannt |
+| src/lib/og/bereichsbild.tsx | 1 | einzeln benannt |
+
+Summe ohne Ausnahmen: 0 · Ausnahmen: 18
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/E5-PRUEFER-B-werte.json
+EXIT 0

@@ -1,0 +1,89 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-16T18:56:49.715Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/schluessel-nach-code"
+    ],
+    "selektor": "main svg[role=img]",
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/e5-b/einzelbilder/H05",
+    "echtzeit": false
+  },
+  "pfad": "/schluessel-nach-code",
+  "selektor": "main svg[role=img]",
+  "dauer": null,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": null,
+    "zustand": null,
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 9,
+  "unendlich": 0,
+  "fenster": {
+    "start": 100,
+    "ende": 1370
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 100,
+      "datei": "/root/sm24-bilder/e5-b/einzelbilder/H05/schluessel-nach-code__desktop__main-svg-role-img__0.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 257.171875,
+        "width": 519.328125,
+        "height": 313.109375
+      }
+    },
+    {
+      "k": 1,
+      "t": 417.5,
+      "datei": "/root/sm24-bilder/e5-b/einzelbilder/H05/schluessel-nach-code__desktop__main-svg-role-img__1.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 257.171875,
+        "width": 519.328125,
+        "height": 313.109375
+      }
+    },
+    {
+      "k": 2,
+      "t": 735,
+      "datei": "/root/sm24-bilder/e5-b/einzelbilder/H05/schluessel-nach-code__desktop__main-svg-role-img__2.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 257.171875,
+        "width": 519.328125,
+        "height": 313.109375
+      }
+    },
+    {
+      "k": 3,
+      "t": 1052.5,
+      "datei": "/root/sm24-bilder/e5-b/einzelbilder/H05/schluessel-nach-code__desktop__main-svg-role-img__3.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 257.171875,
+        "width": 519.328125,
+        "height": 313.109375
+      }
+    },
+    {
+      "k": 4,
+      "t": 1370,
+      "datei": "/root/sm24-bilder/e5-b/einzelbilder/H05/schluessel-nach-code__desktop__main-svg-role-img__4.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 257.171875,
+        "width": 519.328125,
+        "height": 313.109375
+      }
+    }
+  ]
+}

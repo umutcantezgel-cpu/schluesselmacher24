@@ -1,0 +1,10 @@
+# E5-PRUEFER-B Teil 1 · HTTP-Prüfung Port 3000
+Zeit: 2026-10-16T18:50:57Z
+--- / (Status, Bytes)
+HTTP 200 · 281485 Byte
+--- /gibt-es-nicht-pruefung (Status)
+HTTP 404
+--- Suche 'Hinweis für die Redaktion' im HTML von /
+Treffer (UTF-8, exakt): 0
+Treffer (Variante 'Hinweis f&uuml;r'): 0
+Treffer (Stichwort 'Redaktion', Kontrolle): 0

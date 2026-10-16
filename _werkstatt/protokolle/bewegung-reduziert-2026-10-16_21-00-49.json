@@ -1,0 +1,141 @@
+{
+  "skript": "bewegung-reduziert",
+  "zeit": "2026-10-16T19:00:49.844Z",
+  "argumente": {
+    "_": [
+      "reduziert"
+    ],
+    "routen": "/gleichschliessende-zylinder,/service-und-termin,/service-und-termin/kontakt,/service-und-termin/vor-ort,/service-und-termin/anfrage,/service-und-termin/terminstatus,/schluessel-nach-vorlage/anfrage,/sicherheitstechnik/sicherheitscheck,/elektronische-zutrittsloesungen/konfigurator,/schliessanlagen/konfigurator,/artikel,/artikel/beispiel-schluesselkasten,/standorte,/standorte/berlin,/rechtliches/agb,/rechtliches/cookie-einstellungen",
+    "echtzeit": false
+  },
+  "zeilen": [
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "pfad": "/gleichschliessende-zylinder",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 226
+    },
+    {
+      "ansicht": "service-und-termin",
+      "pfad": "/service-und-termin",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 176
+    },
+    {
+      "ansicht": "service-und-termin-kontakt",
+      "pfad": "/service-und-termin/kontakt",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 81
+    },
+    {
+      "ansicht": "service-und-termin-vor-ort",
+      "pfad": "/service-und-termin/vor-ort",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 127
+    },
+    {
+      "ansicht": "service-und-termin-anfrage",
+      "pfad": "/service-und-termin/anfrage",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 87
+    },
+    {
+      "ansicht": "service-und-termin-terminstatus",
+      "pfad": "/service-und-termin/terminstatus",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 62
+    },
+    {
+      "ansicht": "schluessel-nach-vorlage-anfrage",
+      "pfad": "/schluessel-nach-vorlage/anfrage",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 88
+    },
+    {
+      "ansicht": "sicherheitstechnik-sicherheitscheck",
+      "pfad": "/sicherheitstechnik/sicherheitscheck",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 98
+    },
+    {
+      "ansicht": "elektronische-zutrittsloesungen-konfigurator",
+      "pfad": "/elektronische-zutrittsloesungen/konfigurator",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 110
+    },
+    {
+      "ansicht": "schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 102
+    },
+    {
+      "ansicht": "artikel",
+      "pfad": "/artikel",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 135
+    },
+    {
+      "ansicht": "artikel-beispiel-schluesselkasten",
+      "pfad": "/artikel/beispiel-schluesselkasten",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 114
+    },
+    {
+      "ansicht": "standorte",
+      "pfad": "/standorte",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 81
+    },
+    {
+      "ansicht": "standorte-berlin",
+      "pfad": "/standorte/berlin",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 80
+    },
+    {
+      "ansicht": "rechtliches-agb",
+      "pfad": "/rechtliches/agb",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 94
+    },
+    {
+      "ansicht": "rechtliches-cookie-einstellungen",
+      "pfad": "/rechtliches/cookie-einstellungen",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 85
+    }
+  ]
+}

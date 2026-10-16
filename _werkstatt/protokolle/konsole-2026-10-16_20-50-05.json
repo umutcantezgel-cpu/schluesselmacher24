@@ -1,0 +1,308 @@
+{
+  "skript": "konsole",
+  "zeit": "2026-10-16T18:50:05.097Z",
+  "argumente": {
+    "_": [],
+    "routen": "/gleichschliessende-zylinder,/service-und-termin,/service-und-termin/kontakt,/service-und-termin/vor-ort,/service-und-termin/anfrage,/service-und-termin/terminstatus,/schluessel-nach-vorlage/anfrage,/sicherheitstechnik/sicherheitscheck,/elektronische-zutrittsloesungen/konfigurator,/schliessanlagen/konfigurator,/artikel,/artikel/beispiel-schluesselkasten,/standorte,/standorte/berlin,/rechtliches/agb,/rechtliches/cookie-einstellungen"
+  },
+  "geraet": "desktop",
+  "ergebnisse": [
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "pfad": "/gleichschliessende-zylinder",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "service-und-termin",
+      "pfad": "/service-und-termin",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=gwXxKOHaIT4sgxaD",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=04sZipw8NrT5J3zm",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?_rsc=04sZipw8NrT5J3zm",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "service-und-termin-kontakt",
+      "pfad": "/service-und-termin/kontakt",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=8OYdfX4GNJkyVCba",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?_rsc=8OYdfX4GNJkyVCba",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?_rsc=v9BTbDEMBdY7_R0z",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "service-und-termin-vor-ort",
+      "pfad": "/service-und-termin/vor-ort",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=KrUBNKi8hYyxXl2a",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?_rsc=KrUBNKi8hYyxXl2a",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "service-und-termin-anfrage",
+      "pfad": "/service-und-termin/anfrage",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=0O4p2EqS4i2HYWm-",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=ByckrD6hahrFz2vf",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "service-und-termin-terminstatus",
+      "pfad": "/service-und-termin/terminstatus",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=wbnJ5eBTzj4FK9E8",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=e5TK8tfJSs8OU5oe",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "schluessel-nach-vorlage-anfrage",
+      "pfad": "/schluessel-nach-vorlage/anfrage",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=GdWmI2Wfark6XgTb",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "sicherheitstechnik-sicherheitscheck",
+      "pfad": "/sicherheitstechnik/sicherheitscheck",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=cImJCNzab8XFKb6J",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=U8B81PpR02E7pp2M",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "elektronische-zutrittsloesungen-konfigurator",
+      "pfad": "/elektronische-zutrittsloesungen/konfigurator",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=PR1sb0Y7tLJ0ZO5b",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=xgFESww-YBWVRox9",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=nOpDNswMwrueuAQZ",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "artikel",
+      "pfad": "/artikel",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "artikel-beispiel-schluesselkasten",
+      "pfad": "/artikel/beispiel-schluesselkasten",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=amW9dvZWG6qauy3J",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=fIfar_WemS3pTx-4",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "standorte",
+      "pfad": "/standorte",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=eZveY7Ilf6XYeWud",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=ucEDm-iHe6A4ypZT",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?_rsc=eZveY7Ilf6XYeWud",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?_rsc=ucEDm-iHe6A4ypZT",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "standorte-berlin",
+      "pfad": "/standorte/berlin",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=qB74ZAU8TPbXWwCr",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=F69fc5pfjLIBt6xI",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "rechtliches-agb",
+      "pfad": "/rechtliches/agb",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=D64GPzcxt_dWeIwr",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "rechtliches-cookie-einstellungen",
+      "pfad": "/rechtliches/cookie-einstellungen",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    }
+  ]
+}
