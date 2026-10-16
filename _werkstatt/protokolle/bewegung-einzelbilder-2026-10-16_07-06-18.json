@@ -1,0 +1,90 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-16T05:06:18.014Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/autoschluessel"
+    ],
+    "selektor": "#schluesselarten figure",
+    "dauer": "900",
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/E3-BAUMEISTER-07/b21",
+    "echtzeit": false
+  },
+  "pfad": "/autoschluessel",
+  "selektor": "#schluesselarten figure",
+  "dauer": 900,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": "div.shell",
+    "zustand": "play",
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 53,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 900
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/root/sm24-bilder/E3-BAUMEISTER-07/b21/autoschluessel__desktop__schluesselarten-figure__0.jpg",
+      "clip": {
+        "x": 108,
+        "y": 246.875,
+        "width": 1224,
+        "height": 502.0625
+      }
+    },
+    {
+      "k": 1,
+      "t": 225,
+      "datei": "/root/sm24-bilder/E3-BAUMEISTER-07/b21/autoschluessel__desktop__schluesselarten-figure__1.jpg",
+      "clip": {
+        "x": 108,
+        "y": 246.875,
+        "width": 1224,
+        "height": 502.0625
+      }
+    },
+    {
+      "k": 2,
+      "t": 450,
+      "datei": "/root/sm24-bilder/E3-BAUMEISTER-07/b21/autoschluessel__desktop__schluesselarten-figure__2.jpg",
+      "clip": {
+        "x": 108,
+        "y": 246.875,
+        "width": 1224,
+        "height": 502.0625
+      }
+    },
+    {
+      "k": 3,
+      "t": 675,
+      "datei": "/root/sm24-bilder/E3-BAUMEISTER-07/b21/autoschluessel__desktop__schluesselarten-figure__3.jpg",
+      "clip": {
+        "x": 108,
+        "y": 246.875,
+        "width": 1224,
+        "height": 502.0625
+      }
+    },
+    {
+      "k": 4,
+      "t": 900,
+      "datei": "/root/sm24-bilder/E3-BAUMEISTER-07/b21/autoschluessel__desktop__schluesselarten-figure__4.jpg",
+      "clip": {
+        "x": 108,
+        "y": 246.875,
+        "width": 1224,
+        "height": 502.0625
+      }
+    }
+  ]
+}
