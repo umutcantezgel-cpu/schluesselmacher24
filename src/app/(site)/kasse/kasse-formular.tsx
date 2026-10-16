@@ -326,7 +326,8 @@ export function KasseFormular({
 
   if (!geladen) {
     return (
-      <Card>
+      /* Gleiche Mindesthöhe wie der Leerzustand: Nach dem Laden springt nichts (CLS). */
+      <Card className="min-h-60 sm:min-h-44">
         <CardBody>
           <p className="text-body text-foreground-muted" role="status">
             Bestelldaten werden geladen.
@@ -338,7 +339,7 @@ export function KasseFormular({
 
   if (positionen.length === 0) {
     return (
-      <Card>
+      <Card className="min-h-60 sm:min-h-44">
         <CardBody className="max-w-xl">
           <h2 className="text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
           <p className="mt-2 text-body leading-relaxed text-foreground-muted">

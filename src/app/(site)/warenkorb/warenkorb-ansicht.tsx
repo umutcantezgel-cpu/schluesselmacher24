@@ -127,7 +127,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
 
   if (!geladen) {
     return (
-      <Card>
+      /* Gleiche Mindesthöhe wie der Leerzustand: Nach dem Laden springt nichts (CLS). */
+      <Card className="min-h-80 sm:min-h-64">
         <CardBody>
           <p className="flex items-center gap-3 text-body text-foreground-muted" role="status">
             <GlyphLaden size={18} className="animate-spin motion-reduce:animate-none" />
@@ -140,11 +141,11 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
 
   if (positionen.length === 0) {
     return (
-      <Card>
+      <Card className="min-h-80 sm:min-h-64">
         <CardBody className="max-w-xl">
           <IconWarenkorb size={48} className="text-primary" />
           <h2 className="mt-4 text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
-          <p className="mt-2 text-body text-foreground-muted">
+          <p className="mt-2 text-small text-foreground-muted">
             Sie können Schlüssel über den Schlüsselcode bestellen oder eine Gleichschließung
             selbst zusammenstellen.
           </p>
