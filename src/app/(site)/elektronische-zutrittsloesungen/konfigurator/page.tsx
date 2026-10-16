@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
 import { PageHeader } from '@/components/layout/page-header';
-import { Section } from '@/components/layout/section';
+import { Section, SectionHeading } from '@/components/layout/section';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 import { ZutrittKonfigurator } from './zutritt-konfigurator';
 
@@ -52,6 +52,8 @@ export default async function ZutrittKonfiguratorPage() {
   return (
     <>
       <PageHeader
+        art="arbeit"
+        bereich="elektronische-zutrittsloesungen"
         eyebrow={process.label}
         title={page?.headline ?? 'Zutrittskonfigurator'}
         lead={
@@ -64,17 +66,15 @@ export default async function ZutrittKonfiguratorPage() {
           { href: `/${ROUTE}`, label: 'Konfigurator' },
         ]}
       >
-        <ol className="flex flex-wrap gap-x-4 gap-y-2">
+        {/* Die acht Abfragen als Stückliste: Mono-Nummer und Name, Haarlinien statt Kreise */}
+        <ol className="grid gap-x-8 border-b border-border sm:grid-cols-2">
           {QUESTIONS.map((question, index) => (
             <li
               key={question}
-              className="inline-flex items-center gap-1.5 text-[13px] text-foreground-muted"
+              className="flex items-baseline gap-4 border-t border-border py-2.5 text-small text-foreground"
             >
-              <span
-                aria-hidden
-                className="flex h-6 w-6 items-center justify-center rounded-full border border-border bg-surface-muted font-display text-[11px] font-bold text-primary"
-              >
-                {index + 1}
+              <span className="font-mono text-caption tabular-nums text-foreground-muted">
+                {String(index + 1).padStart(2, '0')}
               </span>
               {question}
             </li>
@@ -97,16 +97,19 @@ export default async function ZutrittKonfiguratorPage() {
       </Section>
 
       <Section tone="muted" tight>
-        <h2 className="text-lg font-bold text-foreground">Passende Seiten</h2>
-        <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+        <SectionHeading nummer="01" eyebrow="Weiterlesen" title="Passende Seiten" />
+        <ul className="mt-8 grid border-t border-border sm:grid-cols-2 sm:gap-x-8">
           {RELATED_LINKS.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
-                className="inline-flex items-center gap-1.5 py-2 text-[14px] font-semibold text-primary hover:underline"
+                className="group flex min-h-touch items-center justify-between gap-4 py-4 text-body font-semibold text-foreground hover:text-primary"
               >
                 {link.label}
-                <ArrowRight size={14} aria-hidden />
+                <GlyphPfeilRechts
+                  size={16}
+                  className="shrink-0 text-primary transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                />
               </Link>
             </li>
           ))}

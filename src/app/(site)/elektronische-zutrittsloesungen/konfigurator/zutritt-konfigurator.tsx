@@ -2,10 +2,10 @@
 
 import { useCallback, useState } from 'react';
 import Link from 'next/link';
-import { CheckCircle2 } from 'lucide-react';
 
 import { submitRecord } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
+import { scrollVerhalten } from '@/lib/bewegung';
 import type { InfoHint, SummarySection } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
@@ -15,6 +15,7 @@ import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
 import { SummaryList } from '@/components/layout/summary-list';
+import { CheckDraw } from '@/components/visual/motion/check-draw';
 
 /* ==========================================================================
    Zutrittskonfigurator — acht Abfragen, danach Zusammenfassung.
@@ -672,7 +673,7 @@ export function ZutrittKonfigurator() {
     if (response.ok && response.reference) {
       clearFlow(FLOW_ID);
       setResult({ reference: response.reference, notices: response.notices });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: scrollVerhalten() });
       return;
     }
 
@@ -686,25 +687,23 @@ export function ZutrittKonfigurator() {
 
   if (result) {
     return (
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-2xl" role="status">
         <Card>
           <CardBody>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" aria-hidden />
-              <div className="min-w-0">
-                <h2 className="text-xl font-bold text-foreground">Ihr Projekt ist eingegangen</h2>
-                <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
-                  Wir prüfen Ihre Angaben und melden uns mit den nächsten Schritten. Bitte notieren
-                  Sie sich Ihre Vorgangsnummer.
-                </p>
-              </div>
+            <CheckDraw title="Projekt eingegangen" />
+            <div className="mt-4 min-w-0">
+              <h2 className="text-title font-bold text-foreground">Ihr Projekt ist eingegangen</h2>
+              <p className="mt-2 text-body text-foreground-muted">
+                Wir prüfen Ihre Angaben und melden uns mit den nächsten Schritten. Bitte notieren
+                Sie sich Ihre Vorgangsnummer.
+              </p>
             </div>
 
             <div className="mt-5 rounded-lg border border-border bg-surface-muted p-4">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 Vorgangsnummer
               </p>
-              <p className="mt-1 font-mono text-lg font-bold text-foreground">{result.reference}</p>
+              <p className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">{result.reference}</p>
             </div>
 
             {result.notices.length > 0 && (
@@ -741,7 +740,7 @@ export function ZutrittKonfigurator() {
       blockedHint={BLOCKED_HINTS[flow.step?.id ?? '']}
     >
       {error && (
-        <Alert tone="warning" title="Übermittlung nicht möglich" className="mb-6">
+        <Alert tone="warning" title="Übermittlung nicht möglich" className="mb-6" role="alert">
           {error}
         </Alert>
       )}
@@ -771,7 +770,7 @@ export function ZutrittKonfigurator() {
       {flow.step?.id === 'umfang' && (
         <div className="space-y-8">
           <fieldset>
-            <legend className="mb-3 flex items-center gap-2 text-sm font-bold text-foreground">
+            <legend className="mb-3 flex items-center gap-2 text-small font-bold text-foreground">
               Wie viele Türen sollen elektronisch werden?
             </legend>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -790,7 +789,7 @@ export function ZutrittKonfigurator() {
           </fieldset>
 
           <fieldset>
-            <legend className="mb-3 text-sm font-bold text-foreground">
+            <legend className="mb-3 text-small font-bold text-foreground">
               Wie viele Personen sollen eine Berechtigung erhalten?
             </legend>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -844,7 +843,7 @@ export function ZutrittKonfigurator() {
               />
             ))}
           </div>
-          <p className="mt-4 text-[13px] leading-relaxed text-foreground-subtle">
+          <p className="mt-4 text-small text-foreground-subtle">
             Werden mehrere Medien gewählt, führen wir sie in derselben Anlage. In der Praxis ist die
             Kombination aus einem festen Medium und PIN häufig.
           </p>
@@ -972,7 +971,7 @@ export function ZutrittKonfigurator() {
             </Field>
           )}
 
-          <p className="text-[13px] leading-relaxed text-foreground-subtle">
+          <p className="text-small text-foreground-subtle">
             Wie Sie mechanische und elektronische Türen sinnvoll aufteilen, erklären wir im{' '}
             <Link
               href="/ratgeber/mechanisch-oder-elektronisch"
@@ -1027,16 +1026,16 @@ export function ZutrittKonfigurator() {
       {/* 9 Zusammenfassung und Kontakt */}
       {flow.step?.id === 'zusammenfassung' && (
         <div className="space-y-8">
-          <div>
-            <h3 className="text-base font-bold text-foreground">Ihre Angaben</h3>
-            <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
+          <section className="border-t border-border pt-6">
+            <h3 className="text-title-sm font-semibold text-foreground">Ihre Angaben</h3>
+            <p className="mt-1 text-small text-foreground-muted">
               Über die Schrittleiste oben kommen Sie zu jedem Punkt zurück.
             </p>
-            <SummaryList sections={answerSummary} className="mt-4" />
-          </div>
+            <SummaryList sections={answerSummary} variante="schriftfeld" leer="Keine Angabe" className="mt-4" />
+          </section>
 
-          <div>
-            <h3 className="text-base font-bold text-foreground">Wie erreichen wir Sie?</h3>
+          <section className="border-t border-border pt-6">
+            <h3 className="text-title-sm font-semibold text-foreground">Wie erreichen wir Sie?</h3>
 
             <div className="mt-4 grid gap-5 sm:grid-cols-2">
               <Field label="Anrede">
@@ -1171,7 +1170,7 @@ export function ZutrittKonfigurator() {
                 />
               )}
             </Field>
-          </div>
+          </section>
 
           <Alert tone="legal" title="Zu Ihren Angaben">
             <p>
