@@ -308,4 +308,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.10 · E4 · K-006 Muster aus der Sichtabnahme (Kopf mit Blickfang, Leiste statt Stapel, Ordnung, keine Linkwörter, Links im Satz, Werte, Flächen); B-20 auch für Summen; `PageHeader visual` als 7/5-Kopf. Grund: Sichtabnahme E4-L-23 (D-037).
 - 1.11 · E5 · B-23 Ablaufzeichnung und B-24 Lesefortschritt (Kür K-04). Grund: Sichtabnahme E4-L-23, H12 Ratgeber.
 - 1.12 · E6 · B-25 Stiftzuhaltung am Scrollen (Kür K-01). Grund: Kür nach Plan.
-- 1.13 · E5 · B-21 Reihenfolge in der Schlüsselzeichnung (Profile erst, wenn alle Körper stehen) und Obergrenze 1,6 s je Zeichnung. Grund: Nachprüfung H02/H03 (Paket E5-L-28).
+- 1.13 · E5 · B-21 Reihenfolge in der Schlüsselzeichnung (Profile erst, wenn alle Körper stehen) und Obergrenze 1,6 s je Zeichnung. Grund: Nachprüfung H02/H03 (Paket E5-L-28). Dazu: `SummaryList` im Schriftfeld setzt Kennungen auch in der Beschriftung ohne Umbruch und Angaben mit Betrag zweizeilig (Angaben klein, Betrag in Mono); Variante `korb-leer:` für die Geschwister der Leerkarte im Warenkorb. Grund: Nachprüfung H10/H11.

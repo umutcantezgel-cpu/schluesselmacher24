@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
-import { SummaryList, monoTeile } from './summary-list';
+import { SummaryList, betragAmEnde, monoTeile } from './summary-list';
 
 const abschnitte = [
   {
@@ -27,6 +27,21 @@ describe('monoTeile', () => {
       { text: 'Büroschrank — Serie ', mono: false },
       { text: 'MS-01', mono: true },
     ]);
+  });
+});
+
+describe('betragAmEnde', () => {
+  it('trennt die Angaben vom Betrag am Ende', () => {
+    expect(betragAmEnde('Code 0812 · 2 Stück · 16,00 €')).toEqual({ angaben: 'Code 0812 · 2 Stück', betrag: '16,00 €' });
+    expect(betragAmEnde('Versand verfolgbar · 4,95\u00a0€')).toEqual({ angaben: 'Versand verfolgbar', betrag: '4,95\u00a0€' });
+    expect(betragAmEnde('Mehrere Posten · 1.234,50 €')).toEqual({ angaben: 'Mehrere Posten', betrag: '1.234,50 €' });
+  });
+
+  it('lässt Werte ohne Betrag am Ende oder ohne Angaben davor stehen', () => {
+    expect(betragAmEnde('16,00 €')).toBeNull();
+    expect(betragAmEnde('Doppelzylinder 30 mm / 35 mm')).toBeNull();
+    expect(betragAmEnde('16,00 € · Code 0812')).toBeNull();
+    expect(betragAmEnde('Objekt · Privates Wohnobjekt')).toBeNull();
   });
 });
 
@@ -59,5 +74,17 @@ describe('SummaryList', () => {
       />,
     );
     expect(html).toMatch(/text-small text-foreground-muted">Noch nicht ausgefüllt</);
+  });
+
+  it('setzt im Schriftfeld Angaben und Betrag in zwei Zeilen und Kennungen der Beschriftung ohne Umbruch', () => {
+    const html = renderToStaticMarkup(
+      <SummaryList
+        sections={[{ title: 'Artikel', rows: [{ label: 'Büroschrank und Rollcontainer — Serie MS-01', value: 'Code 0812 · 2 Stück · 16,00 €' }] }]}
+        variante="schriftfeld"
+      />,
+    );
+    expect(html).toContain('<span class="whitespace-nowrap font-mono tabular-nums">MS-01</span>');
+    expect(html).toMatch(/<span class="block text-small text-foreground-muted">Code 0812 · <span class="whitespace-nowrap font-mono tabular-nums">2 Stück<\/span><\/span>/);
+    expect(html).toContain('<span class="block whitespace-nowrap font-mono tabular-nums">16,00 €</span>');
   });
 });

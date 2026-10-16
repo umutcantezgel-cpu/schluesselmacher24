@@ -36,13 +36,46 @@ function MonoText({ text }: { text: string }) {
   );
 }
 
+/** Ein Betrag allein („16,00 €“, „1.234,50 €“). */
+const BETRAG = /^\d{1,3}(?:\.\d{3})*,\d{2}\s€$/;
+
+/**
+ * Trennt einen Wert „Code 0812 · 2 Stück · 16,00 €“ in die Angaben vor dem Betrag und den
+ * Betrag am Ende. Ohne Betrag als letzten Teil oder ohne Angaben davor: `null`.
+ */
+export function betragAmEnde(text: string): { angaben: string; betrag: string } | null {
+  const teile = text.split(' · ');
+  if (teile.length < 2) return null;
+  const betrag = teile[teile.length - 1].trim();
+  if (!BETRAG.test(betrag)) return null;
+  return { angaben: teile.slice(0, -1).join(' · '), betrag };
+}
+
+/**
+ * Wert im Schriftfeld: Angaben mit Text und Betrag stehen in zwei Zeilen – die Angaben klein
+ * und gedämpft, darunter der Betrag in Mono –, damit Inter und Mono nicht in einer Zeile mischen.
+ */
+function SchriftfeldWert({ text }: { text: string }) {
+  const geteilt = betragAmEnde(text);
+  if (!geteilt) return <MonoText text={text} />;
+  return (
+    <>
+      <span className="block text-small text-foreground-muted">
+        <MonoText text={geteilt.angaben} />
+      </span>
+      <span className="block whitespace-nowrap font-mono tabular-nums">{geteilt.betrag}</span>
+    </>
+  );
+}
+
 /**
  * Strukturierte Zusammenfassung — identisch im Kundenformular und im
  * Backend, damit beide Seiten dieselbe Sicht auf den Vorgang haben.
  *
  * - `karte` (Standard): Abschnitte als Karten.
  * - `schriftfeld`: Haarlinien wie ein Schriftfeld; Werte ab `sm` rechtsbündig, Zahlen mit
- *   Einheit und Kennungen in Mono, die Zeile mit der Beschriftung `hervorheben` (etwa
+ *   Einheit und Kennungen in Mono und ohne Umbruch (auch in der Beschriftung), Angaben mit
+ *   Betrag in zwei Zeilen (`betragAmEnde`), die Zeile mit der Beschriftung `hervorheben` (etwa
  *   „Gesamtbetrag“) groß in Mono. Werte gleich `leer` (etwa „Noch nicht ausgefüllt“) stehen
  *   klein und gedämpft, damit sie die echten Angaben nicht übertönen.
  */
@@ -73,7 +106,9 @@ export function SummaryList({
                   key={`${row.label}-${index}`}
                   className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4"
                 >
-                  <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">{row.label}</dt>
+                  <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">
+                    <MonoText text={row.label} />
+                  </dt>
                   <dd
                     className={cn(
                       'sm:col-span-7 sm:text-right',
@@ -84,7 +119,7 @@ export function SummaryList({
                           : 'text-body text-foreground',
                     )}
                   >
-                    {row.label === hervorheben ? row.value : <MonoText text={row.value} />}
+                    {row.label === hervorheben ? row.value : <SchriftfeldWert text={row.value} />}
                   </dd>
                 </div>
               ))}

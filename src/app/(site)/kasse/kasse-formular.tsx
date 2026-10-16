@@ -674,7 +674,7 @@ export function KasseFormular({
         )}
 
         {formularFehler && (
-          <Alert tone="warning" title="Bestellung noch nicht abgeschickt">
+          <Alert tone="warning" title="Bestellung noch nicht abgeschickt" role="alert">
             {formularFehler}
           </Alert>
         )}

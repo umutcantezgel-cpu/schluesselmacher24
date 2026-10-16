@@ -57,6 +57,21 @@
       "grund": "Kartenköpfe der Formularabschnitte wurden zu nummerierten Abschnittsköpfen; der Import CardHeader entfällt (nur Darstellung, E4-BAUMEISTER-15, D-031)",
       "suchen": "import \\{ Card, CardBody \\} from '@/components/ui/card';",
       "ersetzen": "import { Card, CardBody, CardHeader } from '@/components/ui/card';"
+    },
+    {
+      "grund": "Mobil: Gesamtbetrag im Kopf der einklappbaren Bestellübersicht, derselbe Ausdruck wie in der Übersicht (E5-BEFUND-H11, Abnahme)",
+      "suchen": "\\{formatCents\\(summen\\.totalCents\\)\\}(?=</span>\\s*</span>\\s*<GlyphWinkelUnten)",
+      "ersetzen": ""
+    },
+    {
+      "grund": "Mobil: dieselbe Bestellübersicht ein zweites Mal im einklappbaren Kopf (B-09), gleiche Abschnitte (E5-BEFUND-H11, Abnahme)",
+      "suchen": "sections=\\{uebersicht\\}(?= variante=\\\"schriftfeld\\\" hervorheben=\\\"Gesamtbetrag\\\" leer=\\\"Noch nicht ausgefüllt\\\" />\\s*</div>\\s*</details>)",
+      "ersetzen": ""
+    },
+    {
+      "grund": "Mobil: Gesamtbetrag direkt über dem Absendeknopf, derselbe Ausdruck wie in der Übersicht (E5-BEFUND-H11, Abnahme)",
+      "suchen": "\\{formatCents\\(summen\\.totalCents\\)\\}(?=\\s*</span>\\s*</div>\\s*<Button type=\\\"submit\\\")",
+      "ersetzen": ""
     }
   ],
   "src/app/(site)/warenkorb/warenkorb-ansicht.tsx": [
@@ -78,6 +93,21 @@
     {
       "grund": "Import der Platzhalter-Prüfung für die Anzeige oben (D-031)",
       "suchen": "import \\{ istPlatzhalter \\} from '@/lib/platzhalter';\\n",
+      "ersetzen": ""
+    },
+    {
+      "grund": "Positionsbild der Codeposition: Schlüsselprofil zum eingegebenen Code statt des allgemeinen Produktbilds (liest nur position.item.code; Generator „schluessel“) (E5-BEFUND-H10, Abnahme)",
+      "suchen": "slot=\\{\\{\\s*motif: 'Schlüsselprofil zum Code',\\s*ratio: '1/1',\\s*visual: \\{ generator: 'schluessel', params: \\{ typ: 'zylinder', code: position\\.item\\.code \\} \\},\\s*\\}\\}",
+      "ersetzen": "slot={position.line.productImage}"
+    },
+    {
+      "grund": "Mobile Leiste: Gesamtsumme als Anzeige, derselbe Ausdruck wie in der Summe rechts (E5-BEFUND-H10, Abnahme)",
+      "suchen": "\\{formatCents\\(summen\\.totalCents\\)\\}(?=\\s*</span>\\s*</p>)",
+      "ersetzen": ""
+    },
+    {
+      "grund": "Mobile Leiste: „Zur Kasse“ mit derselben bestehenden Bedingung wie der Knopf rechts, nur die Darstellung in der Leiste (E5-BEFUND-H10, Abnahme)",
+      "suchen": "\\{gewaehlteVersandart && !nichtVerfuegbar \\? \\(\\s*<ButtonLink href=\\\"/kasse\\\" size=\\\"lg\\\" pfeil>\\s*Zur Kasse\\s*</ButtonLink>\\s*\\) : \\(\\s*<Button size=\\\"lg\\\" disabled pfeil>\\s*Zur Kasse\\s*</Button>\\s*\\)\\}",
       "ersetzen": ""
     }
   ],
