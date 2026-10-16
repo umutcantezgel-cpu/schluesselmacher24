@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## New Interactive Modules (Revolution Builder Phase)
+- **SchliessanlagenPlaner**: Interaktiver Kalkulator für mechanische Schließanlagen (Budget & Komplexität).
