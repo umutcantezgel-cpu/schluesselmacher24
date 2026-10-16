@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.10
+# KERN · SCHLÜSSELMACHER24 · Version 1.11
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -198,6 +198,8 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 | B-20 | Warenkorb-Zähler, Summen | Rückmeldung | Menge oder Summe ändert sich | Zähler `sm24-pop` `quick`; Summen (Warenkorb, Kasse, laufende Summe im Konfigurator) blenden über einen wechselnden `key` mit `animate-schleier-ein` ein | sofort |
 | B-21 | Reihe der Schlüsselarten (Autoschlüssel; Modellseite H03 mit den erfassten Arten) | Hierarchie | InView | Schlüssel nacheinander `sm24-reveal`, Staffel ≤ 4 × 120 ms, Profile zeichnen | sofort |
 | B-22 | Code-Fundstelle (Generator-Einstieg) | Orientierung | InView | Bestand `sm24-draw`/`sm24-pop` | sofort |
+| B-23 | Ablaufzeichnung (Generator `ablauf`, Ratgeber-Kopf) | Reihenfolge | InView | Bemaßungslinie `sm24-draw` ≈ 0,6 s, Stationen `sm24-pop` Staffel ≤ 4 × 120 ms, Beschriftung `sm24-fade` mit ihrer Station; gesamt < 1,6 s | sofort |
+| B-24 | Lesefortschritt (Ratgeber) | Orientierung | Scrollen (`animation-timeline`, nur wo unterstützt) | Leiste am Verzeichnis `scaleY` mit dem Artikel; Nummer des Abschnitts an der Leselinie (40 %) in Primärfarbe; Klassen `sm24-lesen*` | ruht (keine Leiste, keine Hervorhebung) |
 
 - Neue Einträge gibt es nur durch den Orchestrator. Bewegung ohne Eintrag wird entfernt.
 
@@ -303,3 +305,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.8 · E4 · K-008: Mindestgröße der Beschriftung in Zeichnungen auf Telefonen; Ausschnitt mit vergrößerter Legende (`tuer-schutz`, D-033) und schmales Format (`zylinder-mass`, D-036). Grund: Abnahme Welle E und offener Punkt Maßzeichnung schmal.
 - 1.9 · E4 · B-15 mit Rohling und gezeichnetem ersten Profil; `sm24-dash` ein Durchgang; gesperrte Knöpfe als ruhige Fläche; Bereichstöne Code 250°/Schließanlagen 292° (42°). Grund: Sichtabnahme E4-L-23 (Paket E4-L-27).
 - 1.10 · E4 · K-006 Muster aus der Sichtabnahme (Kopf mit Blickfang, Leiste statt Stapel, Ordnung, keine Linkwörter, Links im Satz, Werte, Flächen); B-20 auch für Summen; `PageHeader visual` als 7/5-Kopf. Grund: Sichtabnahme E4-L-23 (D-037).
+- 1.11 · E5 · B-23 Ablaufzeichnung und B-24 Lesefortschritt (Kür K-04). Grund: Sichtabnahme E4-L-23, H12 Ratgeber.

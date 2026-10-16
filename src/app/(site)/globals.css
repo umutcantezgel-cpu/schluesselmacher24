@@ -462,6 +462,11 @@
   }
 }
 
+/* Ohne Scroll-Timeline oder bei reduzierter Bewegung ruht die Anzeige: keine Leiste (B-24; die Regel unten blendet sie ein). */
+.sm24-lesen-leiste {
+  visibility: hidden;
+}
+
 /*
  * An das Scrollen gebundene Szenen (B-03): nur, wo der Browser
  * `animation-timeline: view()` kennt und Bewegung erwünscht ist. Ohne
@@ -492,6 +497,60 @@
       animation-name: sm24-scrub-marke;
       animation-range: entry 60% cover 45%;
     }
+
+    /*
+     * Lesefortschritt im Ratgeber (B-24): `.sm24-lesen` umschließt Artikel und
+     * Verzeichnis. Die Leiste am Verzeichnis wächst, während der Artikel
+     * (`.sm24-lesen-artikel`) durch den Bildschirm läuft; die Nummer des
+     * Abschnitts (`data-abschnitt`), der die Leselinie bei 40 % kreuzt, wird
+     * Primärfarbe (`.sm24-lesen-nummer` mit `data-zu`). Höchstens sechs Abschnitte.
+     */
+    .sm24-lesen {
+      timeline-scope: --artikel, --abschnitt-1, --abschnitt-2, --abschnitt-3, --abschnitt-4, --abschnitt-5,
+        --abschnitt-6;
+    }
+
+    .sm24-lesen-artikel {
+      view-timeline-name: --artikel;
+    }
+
+    .sm24-lesen-leiste {
+      visibility: visible;
+      transform-origin: top;
+      animation: sm24-scrub-y linear both;
+      animation-timeline: --artikel;
+      animation-range: contain 0% contain 100%;
+    }
+
+    .sm24-lesen [data-abschnitt] {
+      view-timeline-inset: 40% 59.9%;
+    }
+
+    .sm24-lesen [data-abschnitt='1'] { view-timeline-name: --abschnitt-1; }
+    .sm24-lesen [data-abschnitt='2'] { view-timeline-name: --abschnitt-2; }
+    .sm24-lesen [data-abschnitt='3'] { view-timeline-name: --abschnitt-3; }
+    .sm24-lesen [data-abschnitt='4'] { view-timeline-name: --abschnitt-4; }
+    .sm24-lesen [data-abschnitt='5'] { view-timeline-name: --abschnitt-5; }
+    .sm24-lesen [data-abschnitt='6'] { view-timeline-name: --abschnitt-6; }
+
+    .sm24-lesen-nummer {
+      animation: sm24-lesen-aktiv linear none;
+      animation-range: cover 0% cover 100%;
+    }
+
+    .sm24-lesen-nummer[data-zu='1'] { animation-timeline: --abschnitt-1; }
+    .sm24-lesen-nummer[data-zu='2'] { animation-timeline: --abschnitt-2; }
+    .sm24-lesen-nummer[data-zu='3'] { animation-timeline: --abschnitt-3; }
+    .sm24-lesen-nummer[data-zu='4'] { animation-timeline: --abschnitt-4; }
+    .sm24-lesen-nummer[data-zu='5'] { animation-timeline: --abschnitt-5; }
+    .sm24-lesen-nummer[data-zu='6'] { animation-timeline: --abschnitt-6; }
+  }
+}
+
+@keyframes sm24-lesen-aktiv {
+  from,
+  to {
+    color: hsl(var(--primary));
   }
 }
 

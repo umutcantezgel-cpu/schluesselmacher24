@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { fachIconFuerMotiv, visualFuerMotiv } from './motiv';
+import { ablaufAusText, fachIconFuerMotiv, visualFuerMotiv } from './motiv';
 
 describe('visualFuerMotiv', () => {
   it('zeigt für die Werkstatt den Profilschnitt ohne Beschriftung', () => {
@@ -93,5 +93,29 @@ describe('Motiv ohne Bildart', () => {
       params: { ort: 'schluesselkopf' },
     });
     expect(visualFuerMotiv('Beispielfoto: Schlüssel flach von oben, Kopf und Bart vollständig im Bild')?.generator).toBe('schluessel');
+  });
+});
+
+describe('ablaufAusText', () => {
+  it('liest den Dreischritt aus der Unterzeile des Ratgebers', () => {
+    expect(
+      ablaufAusText('Die richtige Reihenfolge spart Zeit und Geld: erst sichern, dann prüfen, dann bestellen.'),
+    ).toEqual({ generator: 'ablauf', params: { schritte: 'sichern|prüfen|bestellen' } });
+  });
+
+  it('nimmt zwei Schritte und „und dann“', () => {
+    expect(ablaufAusText('Erst messen und dann bestellen.')?.params).toEqual({ schritte: 'messen|bestellen' });
+  });
+
+  it('liefert null ohne Reihenfolge aus einzelnen Wörtern', () => {
+    expect(ablaufAusText('Erst die erreichbaren Stellen, dann die Meldetechnik.')).toBeNull();
+    expect(ablaufAusText('Beides hat seinen Platz.')).toBeNull();
+    expect(ablaufAusText('')).toBeNull();
+    expect(ablaufAusText(undefined)).toBeNull();
+  });
+
+  it('übernimmt höchstens vier Schritte und keine überlangen Wörter', () => {
+    expect(ablaufAusText('erst a, dann b, dann c, dann d, dann e')?.params).toEqual({ schritte: 'a|b|c|d' });
+    expect(ablaufAusText('erst sichern, dann Fahrzeugschlüsselnummer')).toBeNull();
   });
 });

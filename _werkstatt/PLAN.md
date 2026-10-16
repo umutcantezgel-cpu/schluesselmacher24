@@ -92,6 +92,11 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E4-L-22 | Wertesuche ohne offene Funde: `w-tipp`, `.sm24-auswahl`, `.sm24-ablauf-leiste`, Einzelausnahmen (D-034) | L/Opus | `tailwind.config.ts`, `cn.ts`, `globals.css`, `info-tip`, `controls`, `flow-shell`, `werte-suche.mjs` | – | Z-03 | 63eac59 |
 | E4-L-24 | Hinweis „Zwischenstand geladen“ nur für geladene Stände (D-035) | L/Opus | `use-flow.ts` + Test | – | Z-02, Z-07 | 5d97117 |
 | E4-L-25 | Maßzeichnung im schmalen Format für Telefone (D-036) | L/Opus | `zylinder-mass`, Registry, `image-placeholder`, `zylinder-mass-live`, Konfigurator (`className`), Startseite + Tests | – | Z-04, Z-06 | 5632498 |
+| E4-L-27 | Gemeinsame Befunde der Sichtabnahme (Kopf 7/5, FlowShell, Knöpfe, Datei-Eingaben, Schliessplan schmal), Text- und Fachfragen (D-037) | L/Opus | gemeinsame Bausteine + Tests, TEXTVORSCHLAEGE, MENSCHEN | E4-L-23 | Z-04, Z-07 | 32bc377 … ae51d9b |
+| E4-GRAFIKER-09 | Schließplan mit Reserveplätzen und schmalem Format | G/Haiku | `schliessplan` + Test | E4-L-23 | Z-06 | 385bcf2 |
+| E4-GRAFIKER-10 | Generator `ablauf` (Ablaufzeichnung, breit und schmal, B-23) | G/Haiku | `ablauf` + Test | E4-L-23 | Z-06 | |
+| E5-L-28 | Lesefortschritt (B-24, Kür K-04) als Klassen, `ablaufAusText`, KERN 1.11 | L/Opus | `globals.css`, `motiv.ts` + Test, KERN | E4-L-23 | Z-05 | |
+| E5-BEFUND-H01…H12 | Befundpakete der Sichtabnahme E4-L-23, je Hauptansicht (Runde 1 von höchstens 2) | B/Haiku | je Ansicht | E4-L-27 | Z-04 | |
 | E4-L-07 | Leistung absichern (nach der ersten Etappenmessung) | L/Opus | je Befund | E3-P-B | Z-08 | |
 | E5-B-20 | Service, Kontakt, Vor Ort | B/Haiku | 3 Dateien | E3 | Z-06 | |
 | E5-B-21 | `/gleichschliessende-zylinder` | B/Haiku | 1 Datei | E3 | Z-06 | |

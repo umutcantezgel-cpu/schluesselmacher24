@@ -54,6 +54,21 @@ export function visualFuerMotiv(motif: string | undefined | null): VisualRef | n
   return null;
 }
 
+/**
+ * Liest eine Reihenfolge aus vorhandenem Text („erst sichern, dann prüfen, dann
+ * bestellen“) und macht daraus die Ablaufzeichnung. Nur einzelne Wörter zählen,
+ * zwei bis vier Schritte, sonst `null` – die Zeichnung zeigt nie mehr, als der Text sagt.
+ */
+export function ablaufAusText(text: string | undefined | null): VisualRef | null {
+  if (typeof text !== 'string') return null;
+  const treffer = /\berst (\p{L}+)((?:,? (?:und )?dann \p{L}+){1,3})(?=[\s.,;:!?]|$)/iu.exec(text);
+  if (!treffer) return null;
+  const weitere = [...treffer[2].matchAll(/dann (\p{L}+)/gu)].map((t) => t[1]);
+  const schritte = [treffer[1], ...weitere].map((w) => w.toLowerCase());
+  if (schritte.some((w) => w.length > 14)) return null;
+  return { generator: 'ablauf', params: { schritte: schritte.join('|') } };
+}
+
 /** Name eines passenden Fach-Icons (Datei in `visual/icons/`) für kleine Flächen oder als Ersatz. */
 export function fachIconFuerMotiv(motif: string | undefined | null): FachIconName {
   const voll = normalisieren(motif);
