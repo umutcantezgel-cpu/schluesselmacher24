@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-16T18:43:36.064Z",
+  "argumente": {
+    "_": [
+      "/standorte/berlin"
+    ],
+    "geraet": "mobil",
+    "ganz": true,
+    "ziel": "/root/sm24-bilder/L-B28-29/bilder"
+  },
+  "pfad": "/standorte/berlin",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/L-B28-29/bilder/standorte-berlin__mobil__ganz.jpg",
+      "status": 200,
+      "bytes": 100276,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": true
+    }
+  ]
+}

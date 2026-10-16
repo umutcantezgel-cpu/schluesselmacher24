@@ -1,0 +1,21 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T18:43:07.916Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/standorte/page.tsx",
+      "src/app/(site)/standorte/[city]/page.tsx",
+      "src/app/(site)/bestellung/[id]/page.tsx",
+      "src/app/(site)/rechtliches/layout.tsx",
+      "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "src/app/(site)/rechtliches/cookie-einstellungen/cookie-einstellungen.tsx",
+      "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "src/app/(site)/rechtliches/agb/page.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 8,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}

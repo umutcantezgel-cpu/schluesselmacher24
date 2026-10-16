@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-16T18:43:39.602Z",
+  "argumente": {
+    "_": [
+      "/rechtliches/versand-und-zahlung"
+    ],
+    "geraet": "mobil",
+    "ganz": true,
+    "ziel": "/root/sm24-bilder/L-B28-29/bilder"
+  },
+  "pfad": "/rechtliches/versand-und-zahlung",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/L-B28-29/bilder/rechtliches-versand-und-zahlung__mobil__ganz.jpg",
+      "status": 200,
+      "bytes": 164299,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": true
+    }
+  ]
+}
