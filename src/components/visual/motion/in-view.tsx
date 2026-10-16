@@ -13,6 +13,25 @@ export interface InViewProps {
   threshold?: number;
 }
 
+/** Meldestufen in 2-%-Schritten, damit auch sehr hohe Bereiche fortlaufend gemeldet werden. */
+const STUFEN = Array.from({ length: 51 }, (_, i) => i / 50);
+
+/**
+ * Sichtbar genug: Der Anteil des Bereichs erreicht die Schwelle – oder, bei
+ * Bereichen, die höher sind als der Bildschirm, der sichtbare Teil füllt
+ * mindestens diesen Anteil der Bildschirmhöhe. Ohne die zweite Regel startet ein
+ * Bereich mit mehr als vier Bildschirmhöhen nie (Befund E4-BAUMEISTER-10).
+ */
+export function istSichtbarGenug(
+  entry: Pick<IntersectionObserverEntry, 'isIntersecting' | 'intersectionRatio' | 'intersectionRect' | 'rootBounds'>,
+  threshold: number,
+): boolean {
+  if (!entry.isIntersecting) return false;
+  if (entry.intersectionRatio >= threshold) return true;
+  const hoehe = entry.rootBounds?.height ?? 0;
+  return hoehe > 0 && entry.intersectionRect.height >= hoehe * threshold;
+}
+
 /**
  * Startet die CSS-Einstiegsanimationen (`.sm24-draw`, `.sm24-reveal`,
  * `.sm24-pop`) erst, wenn der Bereich ins Bild kommt.
@@ -33,12 +52,12 @@ export function InView({ children, className, as: Tag = 'div', threshold = 0.25 
     }
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
+        if (entries.some((entry) => istSichtbarGenug(entry, threshold))) {
           setState('play');
           observer.disconnect();
         }
       },
-      { threshold },
+      { threshold: STUFEN },
     );
     observer.observe(element);
     return () => observer.disconnect();

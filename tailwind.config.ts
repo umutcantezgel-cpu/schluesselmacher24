@@ -115,7 +115,7 @@ const config = {
         caption: ['var(--text-caption)', { lineHeight: '1.4' }],
         small: ['var(--text-small)', { lineHeight: '1.5' }],
         body: ['var(--text-body)', { lineHeight: '1.6' }],
-        input: ['var(--text-input)', { lineHeight: '1.5' }],
+        eingabe: ['var(--text-eingabe)', { lineHeight: '1.5' }],
         lead: ['var(--text-lead)', { lineHeight: '1.55' }],
         'title-sm': ['var(--text-title-sm)', { lineHeight: '1.35' }],
         title: ['var(--text-title)', { lineHeight: '1.3' }],

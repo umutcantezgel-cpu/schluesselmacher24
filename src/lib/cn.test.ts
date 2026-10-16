@@ -7,7 +7,7 @@ const klassen = (wert: string) => new Set(wert.split(/\s+/).filter(Boolean));
 
 describe('cn – eigene Skalen des Designsystems', () => {
   it('behält Schriftgröße und Textfarbe nebeneinander', () => {
-    for (const groesse of ['caption', 'small', 'body', 'input', 'lead', 'title-sm', 'title', 'headline', 'display']) {
+    for (const groesse of ['caption', 'small', 'body', 'eingabe', 'lead', 'title-sm', 'title', 'headline', 'display']) {
       const ergebnis = klassen(cn(`text-${groesse}`, 'text-foreground-muted'));
       expect(ergebnis, groesse).toEqual(new Set([`text-${groesse}`, 'text-foreground-muted']));
     }

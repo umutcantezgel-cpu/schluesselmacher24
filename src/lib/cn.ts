@@ -11,7 +11,7 @@ import { extendTailwindMerge } from "tailwind-merge";
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {
-      text: ["caption", "small", "body", "input", "lead", "title-sm", "title", "headline", "display"],
+      text: ["caption", "small", "body", "eingabe", "lead", "title-sm", "title", "headline", "display"],
       tracking: ["label", "label-eng"],
       shadow: ["raised", "overlay"],
       spacing: ["section", "section-tight", "gutter", "header"],

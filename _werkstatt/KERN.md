@@ -83,7 +83,7 @@ Werte als CSS-Variablen in `src/app/(site)/globals.css`, als Tailwind-Klassen in
 | `text-caption` | 12 px | 1,4 | Bemaßung, Meta, Augenbrauen-Zeile (Großbuchstaben, Sperrung 0,12em) |
 | `text-small` | 13 → 14 px | 1,5 | Hilfstexte, Kartenmeta, Tabellen |
 | `text-body` | 15 → 16 px | 1,6 | Fließtext |
-| `text-input` | 16 px | 1,5 | Eingabefelder (kein Zoom auf iOS) |
+| `text-eingabe` | 16 px | 1,5 | Eingabefelder (kein Zoom auf iOS; nicht `text-input`, das ist die Rahmenfarbe) |
 | `text-lead` | 17 → 19 px | 1,55 | Einleitungen |
 | `text-title-sm` | 16 → 18 px | 1,35 | Karten- und Feldtitel |
 | `text-title` | 19 → 22 px | 1,3 | h3 |
@@ -113,7 +113,7 @@ Werte als CSS-Variablen in `src/app/(site)/globals.css`, als Tailwind-Klassen in
 | `text-xl` als Abschnitts- oder Kartentitel | `text-title` | |
 | h2 `text-2xl md:text-3xl` | `text-headline` | |
 | h1 `text-[1.75rem]`, `text-[2rem] md:text-5xl` | `text-display` (Erzählansicht) oder `text-headline` (Arbeitsansicht) | |
-| Eingabefelder `text-[15px]` | `text-input` | 16 px, kein Zoom auf iOS |
+| Eingabefelder `text-[15px]` | `text-eingabe` | 16 px, kein Zoom auf iOS |
 | `tracking-[0.14em]`, `tracking-wider` bei Großbuchstaben | `tracking-label` | |
 | `min-h-[40px]` … `min-h-[48px]` | `min-h-touch` | |
 | `min-h-[52px]`, `min-h-[56px]` | `min-h-touch-lg` | |

@@ -6,7 +6,7 @@ import { GlyphMinus } from '@/components/visual/glyphen/minus';
 import { GlyphPlus } from '@/components/visual/glyphen/plus';
 
 const control =
-  'w-full rounded-lg border bg-surface px-3.5 py-3 text-input text-foreground ' +
+  'w-full rounded-lg border bg-surface px-3.5 py-3 text-eingabe text-foreground ' +
   'placeholder:text-foreground-subtle transition-colors duration-quick ' +
   'disabled:cursor-not-allowed disabled:bg-surface-muted disabled:opacity-60';
 
@@ -112,7 +112,7 @@ export function QuantityInput({ value, onChange, min = 1, max = 99, label, id }:
         max={max}
         aria-label={label}
         onChange={(e) => onChange(clamp(Number(e.target.value) || min))}
-        className="zahl-ohne-pfeile w-16 border-x border-input bg-surface text-center font-mono text-input font-semibold tabular-nums text-foreground"
+        className="zahl-ohne-pfeile w-16 border-x border-input bg-surface text-center font-mono text-eingabe font-semibold tabular-nums text-foreground"
       />
       <button
         type="button"
