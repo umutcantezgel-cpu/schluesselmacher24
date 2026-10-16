@@ -22,10 +22,11 @@ import type {
 } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
 import { Button, ButtonLink } from '@/components/ui/button';
-import { Card, CardBody, CardHeader } from '@/components/ui/card';
+import { Card, CardBody } from '@/components/ui/card';
 import { InfoTip } from '@/components/ui/info-tip';
 import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
+import { SummaryList } from '@/components/layout/summary-list';
 
 export interface KasseFormularProps {
   shipping: ShippingOption[];
@@ -628,48 +629,8 @@ export function KasseFormular({
       <div className="space-y-6 lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
         <h2 className="text-title-sm font-semibold text-foreground">Bestellübersicht</h2>
 
-        {/* Schriftfeld mit Haarlinien: Artikel und Summe in Mono, Gesamtsumme groß, Kontaktdaten im Fließtext. */}
-        <div className="space-y-6">
-          {uebersicht.map((abschnitt) => (
-            <div key={abschnitt.title}>
-              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                {abschnitt.title}
-              </p>
-              <dl className="mt-2 border-t border-border">
-                {abschnitt.rows.map((zeile, zeilenIndex) => (
-                  <div
-                    key={`${zeile.label}-${zeilenIndex}`}
-                    className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4"
-                  >
-                    <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">
-                      {zeile.label}
-                    </dt>
-                    <dd
-                      className={
-                        zeile.label === 'Gesamtbetrag'
-                          ? 'font-mono text-title font-semibold tabular-nums text-foreground sm:col-span-7'
-                          : 'text-body text-foreground sm:col-span-7'
-                      }
-                    >
-                      {/* Beträge, Stückzahlen und Maße stehen in Mono, der Text daneben nicht. */}
-                      {zeile.value
-                        .split(/(\d+(?:,\d+)?\s(?:mm|Stück)|\d{1,3}(?:\.\d{3})*,\d{2}\s€)/)
-                        .map((teil, teilIndex) =>
-                          teilIndex % 2 === 1 ? (
-                            <span key={teilIndex} className="font-mono tabular-nums">
-                              {teil}
-                            </span>
-                          ) : (
-                            teil
-                          ),
-                        )}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          ))}
-        </div>
+        {/* Schriftfeld mit Haarlinien: Zahlen in Mono, Gesamtsumme groß */}
+        <SummaryList sections={uebersicht} variante="schriftfeld" hervorheben="Gesamtbetrag" />
 
         {!versandart && (
           <Alert tone="warning" title="Versandart fehlt">

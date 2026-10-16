@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { getCodeLines, getCollection, getSettings } from '@/lib/data';
 import { paymentStatus } from '@/lib/integrations';
 import { PageHeader } from '@/components/layout/page-header';
+import { Section } from '@/components/layout/section';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { KasseFormular } from './kasse-formular';
 
 export const metadata: Metadata = {
@@ -57,23 +59,27 @@ export default async function KassePage() {
         />
       </div>
 
-      <section className="border-t border-border bg-surface-muted">
-        <div className="shell py-8 md:py-10">
-          <h2 className="text-title-sm font-semibold text-foreground">Rechtliche Hinweise</h2>
-          <ul className="mt-4 grid border-t border-border sm:grid-cols-2 lg:grid-cols-4">
-            {RECHTLICHES.map((link) => (
-              <li key={link.href} className="border-b border-border">
-                <Link
-                  href={link.href}
-                  className="inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <Section tone="muted" tight labelledBy="kasse-rechtliches">
+        <h2 id="kasse-rechtliches" className="text-title-sm font-semibold text-foreground">
+          Rechtliche Hinweise
+        </h2>
+        <ul className="mt-4 grid border-t border-border sm:grid-cols-2 lg:grid-cols-4">
+          {RECHTLICHES.map((link) => (
+            <li key={link.href} className="border-b border-border">
+              <Link
+                href={link.href}
+                className="group inline-flex min-h-touch w-full items-center justify-between gap-3 pr-4 text-small font-semibold text-foreground transition-colors duration-quick hover:text-primary"
+              >
+                {link.label}
+                <GlyphPfeilRechts
+                  size={16}
+                  className="shrink-0 text-primary transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Section>
     </>
   );
 }
