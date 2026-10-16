@@ -1,0 +1,11 @@
+
+ RUN  v2.1.9 /home/user/schluesselmacher24
+
+ ✓ src/components/autoschluessel/schluesselarten-reihe.test.tsx (3 tests) 4ms
+ ✓ src/components/visual/generators/stiftzuhaltung.test.tsx (10 tests) 101ms
+
+ Test Files  2 passed (2)
+      Tests  13 passed (13)
+   Start at  03:44:54
+   Duration  728ms (transform 219ms, setup 0ms, collect 359ms, tests 105ms, environment 0ms, prepare 128ms)
+

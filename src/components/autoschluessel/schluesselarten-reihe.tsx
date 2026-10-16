@@ -1,7 +1,6 @@
 import type { KeyKind } from '@/lib/types';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { motionStyle } from '@/components/visual/motion/motion-style';
-import { cn } from '@/lib/cn';
 import { keyKindDescription, keyKindLabel } from './key-kinds';
 
 /**

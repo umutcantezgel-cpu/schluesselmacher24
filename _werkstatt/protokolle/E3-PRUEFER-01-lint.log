@@ -1,0 +1,6 @@
+
+/home/user/schluesselmacher24/src/components/autoschluessel/schluesselarten-reihe.tsx
+  4:10  warning  'cn' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
