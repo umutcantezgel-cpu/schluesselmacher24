@@ -70,7 +70,7 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E3-B-05 | `preis-anzeige`, `termin-auswahl`, `bestaetigung` | B/Haiku | 3 Dateien | E3-B-01 | Z-03, Z-05 | |
 | E3-B-06 | Rechner und Nachweise (+ Tests Alt-Neu) | B/Haiku | 5 Dateien | E3-B-01 | Z-03 | |
 | E3-B-07 | H02 `/autoschluessel` (B-21) | B/Haiku | `autoschluessel/page.tsx` | E3-L-08 | Z-04 || d5059fb |
-| E4-B-08 | H03 Marken und Modelle (3 Seiten) | B/Haiku | 3 Dateien | E3-L-08 | Z-04 | |
+| E4-B-08 | H03 Marken und Modelle (3 Seiten) | B/Haiku | 3 Dateien | E3-L-08 | Z-04 || 7f5653c |
 | E4-B-09 | H05/H06 Code-Shop und Produkt | B/Haiku | 4 Dateien (`bestell-formular` mit Logikwächter) | E3-L-10 | Z-04 | |
 | E4-B-10 | H08 Schließanlagen und `system-erklaerung` | B/Haiku | 2 Dateien | E3-L-10 | Z-04 | |
 | E4-B-11 | H09 Türtechnik und `[slug]` | B/Haiku | 2 Dateien | E2-G-03, E3-B-06 | Z-04 | |

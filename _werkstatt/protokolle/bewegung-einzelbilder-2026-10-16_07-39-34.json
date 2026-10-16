@@ -1,0 +1,90 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-16T05:39:34.875Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/autoschluessel/marken/volkswagen/golf"
+    ],
+    "selektor": "#schluesselarten-detail",
+    "dauer": "900",
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/E4-BAUMEISTER-08-pruefung-r1-lauf2/b21",
+    "echtzeit": false
+  },
+  "pfad": "/autoschluessel/marken/volkswagen/golf",
+  "selektor": "#schluesselarten-detail",
+  "dauer": 900,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": "div.shell",
+    "zustand": "play",
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 48,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 900
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-08-pruefung-r1-lauf2/b21/autoschluessel-marken-volkswagen-golf__desktop__schluesselarten-detail__0.jpg",
+      "clip": {
+        "x": 0,
+        "y": 51.984375,
+        "width": 1440,
+        "height": 848.015625
+      }
+    },
+    {
+      "k": 1,
+      "t": 225,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-08-pruefung-r1-lauf2/b21/autoschluessel-marken-volkswagen-golf__desktop__schluesselarten-detail__1.jpg",
+      "clip": {
+        "x": 0,
+        "y": 51.984375,
+        "width": 1440,
+        "height": 848.015625
+      }
+    },
+    {
+      "k": 2,
+      "t": 450,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-08-pruefung-r1-lauf2/b21/autoschluessel-marken-volkswagen-golf__desktop__schluesselarten-detail__2.jpg",
+      "clip": {
+        "x": 0,
+        "y": 51.984375,
+        "width": 1440,
+        "height": 848.015625
+      }
+    },
+    {
+      "k": 3,
+      "t": 675,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-08-pruefung-r1-lauf2/b21/autoschluessel-marken-volkswagen-golf__desktop__schluesselarten-detail__3.jpg",
+      "clip": {
+        "x": 0,
+        "y": 51.984375,
+        "width": 1440,
+        "height": 848.015625
+      }
+    },
+    {
+      "k": 4,
+      "t": 900,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-08-pruefung-r1-lauf2/b21/autoschluessel-marken-volkswagen-golf__desktop__schluesselarten-detail__4.jpg",
+      "clip": {
+        "x": 0,
+        "y": 51.984375,
+        "width": 1440,
+        "height": 848.015625
+      }
+    }
+  ]
+}
