@@ -1,0 +1,11 @@
+{
+  "tasks": [
+    {
+      "id": "IDEA_014",
+      "route": "src/app/(site)/schliessanlagen/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "module_name": "schliessanlagen-configurator",
+      "description": "Interactive configurator for Schließanlagen."
+    }
+  ]
+}
