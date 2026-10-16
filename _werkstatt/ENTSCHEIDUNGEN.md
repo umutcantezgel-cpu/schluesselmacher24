@@ -96,3 +96,35 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
 - K-007 verlangt Zeiger-Effekte nur bei `(hover: hover) and (pointer: fine)`. Im Bestand und in der Hülle standen jedoch Dutzende `hover:`-Klassen ohne diese Bedingung. Auf Touch-Geräten bleibt ein solcher Zustand nach dem Antippen stehen.
 - Lösung: Tailwind-Option `future.hoverOnlyWhenSupported`. Sie setzt jede `hover:`- und `group-hover:`-Klasse in genau diese Medienabfrage, ohne dass eine Datei geändert werden muss.
 - **Umkehrprobe:** Alternativ müsste jedes Paket `zeiger:hover:` schreiben. Das ist fehleranfällig und ergäbe dasselbe Ergebnis in mehr Code. Fokus- und Druckzustände bleiben unabhängig davon für alle Geräte sichtbar.
+
+## D-015 · `themeColor` als benannte Ausnahme der Wertesuche
+- Die Wertesuche meldet in `src/app/(site)/layout.tsx` einen einzigen Fund: den Hex-Wert `#f7f9fb` für `viewport.themeColor`.
+- Viewport-Metadaten verlangen einen Farbwert und lesen keine CSS-Variablen. Der Wert entspricht `--background` und ist dort kommentiert.
+- Er gilt als benannte Ausnahme. Ändert sich `--background`, muss er mitgezogen werden.
+
+## D-016 · Etappentor E2, Anlauf 1: nicht bestanden (6,8)
+- Ein frischer Opus-Unteragent hat bewertet (`_werkstatt/berichte/E2-L-07-sichtabnahme.md`):
+
+  | Kategorie | Wert |
+  |---|---|
+  | Typografie | 7 |
+  | Komposition | 6 |
+  | Farbe und Bild | 7 |
+  | Bewegung | 7 |
+  | Grafik | 8 |
+  | Details | 6 |
+
+- Dazu kommt ein harter Katalogtreffer: der sichtbare Redaktionshinweis im Fuß.
+- Prüfstufe B ist sonst grün:
+
+  | Prüfung | Ergebnis |
+  |---|---|
+  | Budgets | alle Ansichten eingehalten |
+  | a11y | 6 statt 30 Befunden in E0 |
+  | Funktionsliste | 14/14 |
+  | Konsole | 0 Fehler |
+  | Reduzierte Bewegung | 0 Befunde |
+  | Bildrate B-01 | 0 % verworfen |
+
+- Die Befunde werden zum Paket E2-L-06b (Orchestrator, Startseite und gemeinsame Bausteine). Danach folgt Anlauf 2, der letzte nach L3.
+- Der Container wurde während des Workflows neu gestartet. Das Ergebnisprotokoll und Welle E3-A werden neu angesetzt.
