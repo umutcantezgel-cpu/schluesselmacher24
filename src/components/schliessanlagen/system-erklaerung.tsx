@@ -3,6 +3,7 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { GlyphHaken } from '@/components/visual/glyphen/haken';
 import { Reveal } from '@/components/visual/motion/reveal';
+import { cn } from '@/lib/cn';
 
 /**
  * Ein Schließsystem in Kundensprache.
@@ -230,38 +231,53 @@ export function SystemErklaerung() {
   return (
     <Reveal>
       <ul className="grid gap-6 lg:grid-cols-2">
-        {LOCK_SYSTEMS.map((entry) => (
-          <li key={entry.id} className="flex h-full flex-col rounded-lg border border-border bg-surface">
-            <div className="rounded-t-lg bg-area-soft/40 p-4 sm:p-6">
-              <ImagePlaceholder slot={entry.figure} frei />
-            </div>
-
-            <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="text-title-sm font-bold text-foreground">{systemName(entry)}</h3>
-                <InfoTip hint={entry.info} />
+        {LOCK_SYSTEMS.map((entry, index) => {
+          /* Bei ungerader Anzahl steht das letzte Blatt über beide Spalten, Zeichnung links. */
+          const breit = LOCK_SYSTEMS.length % 2 === 1 && index === LOCK_SYSTEMS.length - 1;
+          return (
+            <li
+              key={entry.id}
+              className={cn(
+                'flex h-full flex-col rounded-lg border border-border bg-surface',
+                breit && 'lg:col-span-2 lg:flex-row',
+              )}
+            >
+              <div
+                className={cn(
+                  'rounded-t-lg bg-area-soft/40 p-4 sm:p-6',
+                  breit && 'lg:w-1/2 lg:shrink-0 lg:rounded-none lg:rounded-l-lg',
+                )}
+              >
+                <ImagePlaceholder slot={entry.figure} frei />
               </div>
 
-              <p className="text-body leading-relaxed text-foreground-muted">{entry.explanation}</p>
+              <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-title-sm font-bold text-foreground">{systemName(entry)}</h3>
+                  <InfoTip hint={entry.info} />
+                </div>
 
-              <ul className="space-y-2">
-                {entry.bullets.map((bullet) => (
-                  <li key={bullet} className="flex gap-2.5 text-small leading-relaxed text-foreground-muted">
-                    <GlyphHaken size={16} className="mt-0.5 shrink-0 text-area-strong" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
+                <p className="text-body leading-relaxed text-foreground-muted">{entry.explanation}</p>
 
-              <div className="mt-auto border-t border-border pt-4">
-                <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                  Geeignet für
-                </p>
-                <p className="mt-1.5 text-small leading-relaxed text-foreground">{entry.suitableFor}</p>
+                <ul className="space-y-2">
+                  {entry.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-2.5 text-small leading-relaxed text-foreground-muted">
+                      <GlyphHaken size={16} className="mt-0.5 shrink-0 text-area-strong" />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-auto border-t border-border pt-4">
+                  <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                    Geeignet für
+                  </p>
+                  <p className="mt-1.5 text-small leading-relaxed text-foreground">{entry.suitableFor}</p>
+                </div>
               </div>
-            </div>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
     </Reveal>
   );
