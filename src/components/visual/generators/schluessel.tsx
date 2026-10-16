@@ -128,6 +128,33 @@ function taste(x: number, y: number, radius: number, f: Farben, glyphe?: 'zu' | 
   );
 }
 
+/**
+ * Bewegung der Schlüsselzeichnung (B-15, B-21): erst die Körper, dann – wenn der letzte Körper
+ * steht – zeichnen sich die Profile, zuletzt erscheinen Marken und Ziffern. Alles zusammen
+ * höchstens 1,6 s (Sichtabnahme E4-L-23, Nachprüfung H02/H03); Test in `schluessel.test.tsx`.
+ * Marken, Lineal und Ziffern beziehen sich auf den Profilbeginn (`profilBeginn`).
+ */
+const ZEIT = {
+  koerperStaffel: 0.08,
+  koerperDauer: 0.4,
+  profilStaffel: 0.08,
+  profilDauer: 0.6,
+  markeNach: 0.35,
+  markeStaffel: 0.03,
+  markeSpanne: 0.3,
+  markeDauer: 0.3,
+  linealDauer: 0.6,
+  zifferNach: 0.4,
+  zifferStaffel: 0.03,
+  zifferSpanne: 0.3,
+  zifferDauer: 0.3,
+} as const;
+
+/** Die Profile beginnen, wenn der letzte (vorderste) Körper ganz erschienen ist. */
+function profilBeginn(anzahl: number): number {
+  return ZEIT.koerperStaffel * (anzahl - 1) + ZEIT.koerperDauer;
+}
+
 function funkboegen(x: number, y: number, von: number, bis: number, radien: number[]) {
   return radien.map((radius, i) => {
     const a1 = (von * Math.PI) / 180;
@@ -433,6 +460,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
 
   const vorn = zeichnung(typ, tiefen, VORN, rohling);
   const hinten = anzahl > 1 ? zeichnung(typ, tiefen, HINTEN, rohling) : undefined;
+  const beginn = profilBeginn(anzahl);
 
   const linealY = vorn.linealY;
   const teilung = [...new Set(vorn.marken.map((m) => r(m.x)))];
@@ -470,13 +498,13 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
               key={stelle}
               transform={`translate(${stelle * KOPIE_DX} ${stelle * KOPIE_DY})`}
             >
-              <g className="sm24-reveal" style={motionStyle(0.1 * (anzahl - 1 - stelle))}>
+              <g className="sm24-reveal" style={motionStyle(ZEIT.koerperStaffel * (anzahl - 1 - stelle), ZEIT.koerperDauer)}>
                 {hinten.koerper}
               </g>
             </g>
           ))}
 
-        <g className="sm24-reveal" style={motionStyle(0.1 * (anzahl - 1))}>
+        <g className="sm24-reveal" style={motionStyle(ZEIT.koerperStaffel * (anzahl - 1), ZEIT.koerperDauer)}>
           {vorn.koerper}
         </g>
 
@@ -491,7 +519,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
             key={d}
             className="sm24-draw stroke-area"
             pathLength={1}
-            style={motionStyle(0.3 + i * 0.1, 1)}
+            style={motionStyle(beginn + i * ZEIT.profilStaffel, ZEIT.profilDauer)}
             strokeWidth={KONTUR}
             d={d}
           />
@@ -501,7 +529,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
           <circle
             key={`${r(m.x)}-${r(m.y)}`}
             className="sm24-pop fill-area-strong"
-            style={motionStyle(0.7 + i * 0.05)}
+            style={motionStyle(beginn + Math.min(ZEIT.markeNach + i * ZEIT.markeStaffel, ZEIT.markeNach + ZEIT.markeSpanne), ZEIT.markeDauer)}
             cx={r(m.x)}
             cy={r(m.y)}
             r={2.6}
@@ -512,7 +540,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
           <path
             className="sm24-draw stroke-foreground-muted"
             pathLength={1}
-            style={motionStyle(0.4, 0.9)}
+            style={motionStyle(beginn, ZEIT.linealDauer)}
             strokeWidth={HILFSLINIE}
             d={lineal}
           />
@@ -524,7 +552,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
             <text
               key={x}
               className="sm24-reveal fill-foreground-muted font-mono"
-              style={motionStyle(0.9 + i * 0.04)}
+              style={motionStyle(beginn + Math.min(ZEIT.zifferNach + i * ZEIT.zifferStaffel, ZEIT.zifferNach + ZEIT.zifferSpanne), ZEIT.zifferDauer)}
               fontSize={schrift}
               textAnchor="middle"
               x={x}

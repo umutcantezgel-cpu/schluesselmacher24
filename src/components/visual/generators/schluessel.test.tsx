@@ -132,3 +132,44 @@ describe('SchluesselGrafik', () => {
     expect(zeichne({}, null)).toContain('<title>Zylinderschlüssel, Seitenansicht</title>');
   });
 });
+
+describe('Bewegung der Schlüsselzeichnung', () => {
+  /** Standarddauern der Bausteine (globals.css): draw `scene` 0,9 s, sonst `enter` 0,6 s. */
+  const STANDARD: Record<string, number> = { 'sm24-draw': 0.9, 'sm24-reveal': 0.6, 'sm24-pop': 0.6, 'sm24-fade': 0.6, 'sm24-dash': 0.9 };
+
+  function ende(html: string): number {
+    let max = 0;
+    for (const [, klasse, stil] of html.matchAll(/class="(sm24-(?:draw|reveal|pop|fade|dash))[^"]*"[^>]*?style="([^"]*)"/g)) {
+      const delay = Number(/--sm24-delay:\s*([\d.]+)s/.exec(stil)?.[1] ?? 0);
+      const dauer = Number(/--sm24-duration:\s*([\d.]+)s/.exec(stil)?.[1] ?? STANDARD[klasse]);
+      max = Math.max(max, delay + dauer);
+    }
+    return max;
+  }
+
+  it('endet für jede Bauform und Anzahl spätestens nach 1,6 s', () => {
+    for (const typ of ['zylinder', 'buntbart', 'klapp', 'funk', 'smart-key', 'transponder']) {
+      for (const anzahl of [1, 3]) {
+        const html = renderToStaticMarkup(<SchluesselGrafik params={{ typ, anzahl, beschriftung: true }} title="t" />);
+        const t = ende(html);
+        expect(t, `${typ} × ${anzahl}`).toBeLessThanOrEqual(1.6);
+        expect(t, `${typ} × ${anzahl} hat Bewegung`).toBeGreaterThan(1);
+      }
+    }
+  });
+
+  it('zeichnet die Profile erst, wenn alle Körper ganz erschienen sind', () => {
+    for (const anzahl of [1, 2, 3]) {
+      const html = renderToStaticMarkup(<SchluesselGrafik params={{ typ: 'zylinder', anzahl }} title="t" />);
+      const koerperEnden = [...html.matchAll(/<g class="sm24-reveal" style="([^"]*)"/g)].map(([, stil]) => {
+        const delay = Number(/--sm24-delay:\s*([\d.]+)s/.exec(stil)?.[1] ?? 0);
+        const dauer = Number(/--sm24-duration:\s*([\d.]+)s/.exec(stil)?.[1] ?? 0.6);
+        return delay + dauer;
+      });
+      const profilStarts = [...html.matchAll(/class="sm24-draw stroke-area"[^>]*style="--sm24-delay:([\d.]+)s/g)].map((m) => Number(m[1]));
+      expect(koerperEnden, `${anzahl} Körper`).toHaveLength(anzahl);
+      expect(profilStarts.length).toBeGreaterThan(0);
+      expect(Math.min(...profilStarts), `${anzahl} Schlüssel`).toBeGreaterThanOrEqual(Math.max(...koerperEnden) - 1e-9);
+    }
+  });
+});

@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.12
+# KERN · SCHLÜSSELMACHER24 · Version 1.13
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -196,7 +196,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 | B-18 | Tür-Schutzpunkte | Hierarchie | InView | Marken `sm24-pop`, gestaffelt ≤ 5 × 120 ms | sofort |
 | B-19 | Ladeanzeige | Rückmeldung | Laden | Glyph `laden` dreht (`transform`), 900 ms/Umdrehung | ruht, Text „lädt …“ bleibt |
 | B-20 | Warenkorb-Zähler, Summen | Rückmeldung | Menge oder Summe ändert sich | Zähler `sm24-pop` `quick`; Summen (Warenkorb, Kasse, laufende Summe im Konfigurator) blenden über einen wechselnden `key` mit `animate-schleier-ein` ein | sofort |
-| B-21 | Reihe der Schlüsselarten (Autoschlüssel; Modellseite H03 mit den erfassten Arten) | Hierarchie | InView | Schlüssel nacheinander `sm24-reveal`, Staffel ≤ 4 × 120 ms, Profile zeichnen | sofort |
+| B-21 | Reihe der Schlüsselarten (Autoschlüssel; Modellseite H03 mit den erfassten Arten) | Hierarchie | InView | Schlüssel nacheinander `sm24-reveal`, Staffel ≤ 4 × 120 ms; in jeder Zeichnung erst die Körper (0,4 s, Kopien 80 ms gestaffelt), dann zeichnen die Profile, zuletzt Marken und Ziffern; je Zeichnung höchstens 1,6 s | sofort |
 | B-22 | Code-Fundstelle (Generator-Einstieg) | Orientierung | InView | Bestand `sm24-draw`/`sm24-pop` | sofort |
 | B-23 | Ablaufzeichnung (Generator `ablauf`, Ratgeber-Kopf) | Reihenfolge | InView | Bemaßungslinie `sm24-draw` ≈ 0,6 s, Stationen `sm24-pop` Staffel ≤ 4 × 120 ms, Beschriftung `sm24-fade` mit ihrer Station; gesamt < 1,6 s | sofort |
 | B-24 | Lesefortschritt (Ratgeber) | Orientierung | Scrollen (`animation-timeline`, nur wo unterstützt) | Leiste am Verzeichnis `scaleY` mit dem Artikel; Nummer des Abschnitts an der Leselinie (40 %) in Primärfarbe; Klassen `sm24-lesen*` | ruht (keine Leiste, keine Hervorhebung) |
@@ -308,3 +308,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.10 · E4 · K-006 Muster aus der Sichtabnahme (Kopf mit Blickfang, Leiste statt Stapel, Ordnung, keine Linkwörter, Links im Satz, Werte, Flächen); B-20 auch für Summen; `PageHeader visual` als 7/5-Kopf. Grund: Sichtabnahme E4-L-23 (D-037).
 - 1.11 · E5 · B-23 Ablaufzeichnung und B-24 Lesefortschritt (Kür K-04). Grund: Sichtabnahme E4-L-23, H12 Ratgeber.
 - 1.12 · E6 · B-25 Stiftzuhaltung am Scrollen (Kür K-01). Grund: Kür nach Plan.
+- 1.13 · E5 · B-21 Reihenfolge in der Schlüsselzeichnung (Profile erst, wenn alle Körper stehen) und Obergrenze 1,6 s je Zeichnung. Grund: Nachprüfung H02/H03 (Paket E5-L-28).
