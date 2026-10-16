@@ -1,0 +1,22 @@
+{
+  "skript": "bewegung-bildrate",
+  "zeit": "2026-10-16T19:58:36.080Z",
+  "argumente": {
+    "_": [
+      "bildrate",
+      "/"
+    ],
+    "selektor": "main section:first-of-type [role=img]",
+    "dauer": "1600",
+    "echtzeit": false
+  },
+  "pfad": "/",
+  "selektor": "main section:first-of-type [role=img]",
+  "dauer": 1600,
+  "geraet": "mobil",
+  "gezeichnet": 83,
+  "verworfen": 26,
+  "anteil": 23.853211009174313,
+  "schwelle": 5,
+  "ueber": true
+}

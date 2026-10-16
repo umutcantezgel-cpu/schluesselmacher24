@@ -470,3 +470,21 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
 - **Abschnitte, die nur mit Daten erscheinen:** laufende Nummern über einen CSS-Zähler (`.sm24-zaehlung`), nicht über neue JSX-Ausdrücke.
 - **Szenen am Scrollen:** Ein Rahmen mit `overflow: hidden` ist Scrollcontainer und hält eine `view()`-Zeitleiste an. Rahmen um `.sm24-szene` schneiden in unterstützenden Browsern mit `clip` (KERN 1.13, B-25).
 - **lucide-react:** Nutzungssuche ohne Treffer (nur ein Test prüft das Fehlen), `npm uninstall lucide-react` entfernt nur dieses Paket aus Paketdatei und Lock; Build 208/208 grün. Damit nutzt die Seite eine Icon-Familie (Z-06).
+
+## D-044 · Prüfstufe B E5: Ergebnis, spätes Vorladen der festen Ziele, Bildrate als Median
+- **Ergebnis Prüfstufe B E5** (`_werkstatt/protokolle/E5-PRUEFER-B-ergebnis.md`):
+  - Bestand grün: Typprüfung 0, Build 208/208, 66 Testdateien mit 1150 Tests, DB 52/52, Logikwächter 0, Textabzug gleich, Wertesuche 0 ohne Ausnahme. Der Linterfehler im Seitenkopf-Test ist behoben (eb5cda6).
+  - Funktionsliste 14/14, keine Budget-Verstöße (E4: H10 mobil), axe ohne Befund in 56 Zeilen (E4: 4 kritische).
+- **Sichtabnahme E5-L-29** (Ansichtswerte, Ziel ≥ 8):
+  - erzaehl-1 6,8: H01 7,7, H02 6,7, H03 6,0, H12 7,0.
+  - erzaehl-2 7,0 (E4 5,9): H05 6,7, H06 7,3, H08 7,2, H09 6,8.
+  - arbeit 7,1: H04 6,8, H07 7,0, H10 7,3, H11 7,2.
+  - uebrige 6,4: Gleichschließung 7,5, Service 5,3, Artikel 5,8, Standorte Berlin 6,0, Sicherheitscheck 7,0, AGB 6,7.
+  - Harte Katalogtreffer nur bei Platzhalter-Inhalten, die Gestaltung nicht lösen darf: Beispielartikel (M-25) und Platzhalter im Wortlaut der AGB (unantastbar, M-05). Keine Hauptansicht hat einen harten Treffer.
+  - Folge: Befundpakete Runde 2 (letzte Runde, L3) für alle Hauptansichten unter 8, dazu für Service und Standorte.
+- **Bildrate B-01 (Startseite mobil, 4-fach gedrosselt):** Der Einzellauf zeigte 26,6 % verworfene Bilder. Ursache laut Messung der langen Bilder: Gleich nach der Hydrierung lud Next.js alle sichtbaren Links vor (Logo, Warenkorb, Termin, vier Ziele der Aktionsleiste, zwei Knöpfe im Kopf). Die RSC-Antworten wurden parallel verarbeitet, mit Bildern von 100–145 ms.
+  - Abhilfe (E5-L-30): Diese festen Ziele haben `prefetch={false}` und werden über `useSpaetVorladen` erst nach 2,5 s im Leerlauf vorgeladen, bei „Daten sparen“ gar nicht (`src/lib/spaet-vorladen.ts`, mit Test). `ButtonLink` bekommt dafür die optionale Prop `prefetch`.
+  - Ergebnis: keine Anfragen mehr im Messfenster. Übrig bleibt die Hydrierung, wenn die Messung vor ihrem Ende beginnt; die Fräsbahn startet erst danach (`data-motion`).
+- **Messung:** `bewegung.mjs bildrate` hat die Option `--laeufe n`; das Ergebnis ist der Median, alle Einzelwerte stehen in Tabelle und JSON. Der Standard bleibt 1 Lauf, die Schwelle unverändert 5 %.
+  - Denkprotokoll: Ein Einzellauf hängt am Zeitpunkt der Hydrierung (0 % bis 7 % bei unverändertem Stand); `messung.mjs` misst aus demselben Grund im Median. Prüfstufe C misst die Bildrate mit 5 Läufen.
+  - Stand nach der Abhilfe: Median 0,0 %, Einzelwerte 0 / 0 / 6,4 / 0 / 2,8 % (vorher 23,9–28,4 %).

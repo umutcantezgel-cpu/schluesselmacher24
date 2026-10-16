@@ -3,7 +3,7 @@
 // Aufrufe:
 //   node bewegung.mjs reduziert [--routen <pfad,pfad>] [--json <datei>]
 //   node bewegung.mjs einzelbilder <pfad> --selektor <css> [--dauer <ms>] [--echtzeit] [--rand <px>] [--geraet mobil|desktop] [--ziel <ordner>] [--json <datei>]
-//   node bewegung.mjs bildrate <pfad> --selektor <css> --dauer <ms> [--json <datei>]
+//   node bewegung.mjs bildrate <pfad> --selektor <css> --dauer <ms> [--laeufe <n>] [--json <datei>]
 // reduziert: Kontext mit „Bewegung reduzieren“ (Desktop), laden, durchscrollen. Befunde: laufende Animationen,
 //   deren Keyframes transform, translate, scale, rotate, top, left, width oder height ändern; sichtbare
 //   Textelemente mit Deckkraft < 0,1 (Vorfahren eingerechnet) oder visibility:hidden („Inhalt verborgen“).
@@ -16,7 +16,8 @@
 //   Standard --geraet desktop; Ziel Standard BILDER_EXTERN. Dateiname <pfad>__<geraet>__<selektor>__<k>.jpg, k = 0…4.
 // bildrate: mobil 390×844, Prozessor 4-fach gedrosselt. Sammelt rAF-Zeitstempel über --dauer + 200 ms, während das
 //   Element in den Blick scrollt. Verworfene Bilder = Summe max(0; round(Abstand / 16,67) − 1); Anteil = verworfen ÷
-//   (gezeichnet + verworfen); Schwelle 5 %.
+//   (gezeichnet + verworfen); Schwelle 5 %. --laeufe <n> (Standard 1): n frische Läufe, Ergebnis ist der Median der
+//   Anteile; alle Einzelwerte stehen in Tabelle und JSON (wie messung.mjs, robust gegen Zeitpunkt der Hydrierung).
 // Exit: 0 fertig (auch mit Befunden), 2 Bedienfehler, 1 technischer Fehler.
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -378,7 +379,7 @@ async function einzelbilder(args, pfad, dauer) {
   console.log(`\nJSON-Protokoll: ${protokoll}`);
 }
 
-async function bildrate(args, pfad, dauer) {
+async function bildrateLauf(args, pfad, dauer) {
   const g = GERAETE[0];
   let zeiten = null;
   const browser = await browserStarten();
@@ -403,11 +404,28 @@ async function bildrate(args, pfad, dauer) {
     verworfen += Math.max(0, Math.round((zeiten[i] - zeiten[i - 1]) / 16.67) - 1);
   }
   const gezeichnet = zeiten.length;
-  const anteil = (verworfen / Math.max(1, gezeichnet + verworfen)) * 100;
+  return { gezeichnet, verworfen, anteil: (verworfen / Math.max(1, gezeichnet + verworfen)) * 100 };
+}
+
+async function bildrate(args, pfad, dauer, laeufe = 1) {
+  const g = GERAETE[0];
+  const einzel = [];
+  for (let i = 0; i < laeufe; i += 1) einzel.push(await bildrateLauf(args, pfad, dauer));
+  const sortiert = [...einzel].sort((a, b) => a.anteil - b.anteil);
+  const median = sortiert[Math.floor((sortiert.length - 1) / 2)];
+  const { gezeichnet, verworfen, anteil } = median;
   const ueber = anteil > 5;
   const protokoll = jsonSchreiben('bewegung-bildrate', args, {
-    pfad, selektor: args.selektor, dauer, geraet: g.id, gezeichnet, verworfen, anteil, schwelle: 5, ueber,
+    pfad, selektor: args.selektor, dauer, geraet: g.id, laeufe, gezeichnet, verworfen, anteil, schwelle: 5, ueber,
+    einzel,
   });
+  if (laeufe > 1) {
+    console.log(tabelle(
+      ['Lauf', 'Bilder (gezeichnet)', 'Verworfen', 'Anteil'],
+      einzel.map((e, i) => [i + 1, e.gezeichnet, e.verworfen, `${fmt(e.anteil, 1)} %`]),
+    ));
+    console.log(`\nMedian aus ${laeufe} Läufen:\n`);
+  }
   console.log(tabelle(
     ['Bilder (gezeichnet)', 'Verworfen', 'Anteil', 'Schwelle', 'Ergebnis'],
     [[gezeichnet, verworfen, `${fmt(anteil, 1)} %`, '5 %', ueber ? 'über Schwelle' : 'innerhalb Schwelle']],
@@ -424,7 +442,7 @@ async function main() {
   if (!['reduziert', 'einzelbilder', 'bildrate'].includes(modus)) {
     bedienfehler('Aufruf: node bewegung.mjs reduziert|einzelbilder|bildrate … (siehe Kopfkommentar)');
   }
-  for (const k of ['routen', 'selektor', 'dauer', 'geraet', 'ziel', 'json', 'rand']) {
+  for (const k of ['routen', 'selektor', 'dauer', 'geraet', 'ziel', 'json', 'rand', 'laeufe']) {
     if (args[k] === true) bedienfehler(`--${k} braucht einen Wert`);
   }
   if (modus === 'reduziert') return reduziert(args);
@@ -435,7 +453,9 @@ async function main() {
   if (dauer !== undefined && !(dauer > 0)) bedienfehler('--dauer <ms> ist keine positive Zahl');
   if (modus === 'bildrate') {
     if (dauer === undefined) bedienfehler('--dauer <ms> fehlt oder ist keine positive Zahl');
-    return bildrate(args, pfad, dauer);
+    const laeufe = args.laeufe === undefined ? 1 : Number(args.laeufe);
+    if (!Number.isInteger(laeufe) || laeufe < 1 || laeufe > 15) bedienfehler('--laeufe <n> muss eine ganze Zahl von 1 bis 15 sein');
+    return bildrate(args, pfad, dauer, laeufe);
   }
   if (args.echtzeit && dauer === undefined) bedienfehler('--echtzeit braucht --dauer <ms>');
   return einzelbilder(args, pfad, dauer);

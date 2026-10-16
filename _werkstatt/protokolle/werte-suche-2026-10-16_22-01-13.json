@@ -1,0 +1,16 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T20:01:13.887Z",
+  "argumente": {
+    "_": [
+      "src/lib/spaet-vorladen.ts",
+      "src/components/layout/mobile-action-bar.tsx",
+      "src/components/layout/site-header.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 3,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}
