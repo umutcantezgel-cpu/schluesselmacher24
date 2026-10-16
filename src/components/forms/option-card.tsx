@@ -11,8 +11,9 @@ export interface OptionCardProps {
   value: string;
   checked: boolean;
   onSelect: (value: string) => void;
-  title: string;
-  description?: string;
+  /** Titel; Zahlen darin dürfen als Mono-Span kommen (etwa Uhrzeiten im Terminschritt). */
+  title: ReactNode;
+  description?: ReactNode;
   info?: InfoHint;
   /** Mehrfachauswahl statt Einfachauswahl. */
   multiple?: boolean;
