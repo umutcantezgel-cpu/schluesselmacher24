@@ -1,29 +1,18 @@
 # Prüfpunkt
 
-- **Etappe:** E2 Referenz (Startseite), Etappentor Anlauf 2 (letzter nach L3); parallel Welle E3-A.
-- **Stand:**
-  - Prüfstufe B ist grün: Budgets, Funktionsliste 14/14, a11y 6 statt 30 in E0.
-  - Die Sichtabnahme in Anlauf 1 ergab 6,8 und ist nicht bestanden (D-016, `_werkstatt/berichte/E2-L-07-sichtabnahme.md`).
-- **Laufend:** Workflow `wf_a39c6e70-8a1` (Skript `~/.claude/projects/…/workflows/scripts/neustart-welle-e3a-wf_a39c6e70-8a1.js`, höchstens 4 Haiku gleichzeitig):
-  - Welle E3-A: Baumeister 01, 02 und 03 sowie Grafiker 07, je mit Prüfstufe A und bis zu 2 Reparaturen.
-  - E2-PRUEFER-01: Ergebnisprotokoll.
-  - E2-PRUEFER-02: Einzelbilder zeitgenau.
-  - E3-PRUEFER-01: Prüfstufe A für L-09 und L-14.
-- **Orchestrator parallel, E2-L-06b Startseite nach den Befunden:**
-  - Der Redaktionshinweis im Fuß erscheint nur außerhalb der Produktion.
-  - Hero-Raster mit mobilem Halmstreifen (CSS-Ausschnitt).
-  - B-01: Start bei Sichtbarkeit, Easing behoben, Fräser hebt ab.
-  - Bereichsfarbtöne mit mindestens 30° Abstand.
-  - `Section`-Ton `sunken` mit Haarlinien.
-  - Typo-Stufen, mobiles Zweierraster und Ratgeber-Komposition.
-  - Details stehen im Plan unter „Aktueller Abschnitt“.
-- **Danach:** Workflow B, Etappentor Anlauf 2:
-  1. Bestand und Build.
-  2. Messfenster für `/` (Bildsatz `referenz-2`, Einzelbilder) und die Funktionsliste.
-  3. Frischer Opus-Agent für die Sichtabnahme.
-  4. Dann Welle E3-B: B-04 bis B-06 sofort, B-07 nach dem Tor.
+- **Etappe:** E2 Etappentor, Anlauf 2 (letzter nach L3); parallel Welle E3-B.
+- **Laufend:** Workflow `wf_350555d8-5f0` (Skript `~/.claude/projects/…/workflows/scripts/e2-tor-anlauf-2-und-welle-e3b-wf_350555d8-5f0.js`):
+  1. E2-PRUEFER-03, Schritte 1–3: Bestand und Build-Gate, danach Neustart von Port 3000.
+  2. Schritte 4–7: Messfenster für `/`, Bildsatz `_werkstatt/bilder/referenz-2/`, Einzelbilder B-01 nach Animationszeit.
+  3. Sichtabnahme E2-L-07b durch einen frischen Opus-Agenten, Bericht `_werkstatt/berichte/E2-L-07-sichtabnahme-2.md`.
+  4. Parallel E3-BAUMEISTER-04, -05 und -06, je mit Prüfung und bis zu 2 Reparaturen, sowie E2-PRUEFER-03, Schritte 8–9 (Funktionsliste und Ergebnis).
+- **Danach:**
+  - Tor bestanden (≥ 8): Welle E3-B abnehmen, dann E3-BAUMEISTER-07 (`/autoschluessel`) mit der Referenz als Muster.
+  - Tor nicht bestanden: Lücke als offener Punkt in PLAN.md (L3), Befunde als Pakete in E4; die Arbeit geht weiter.
+  - Danach E4 (Hauptansichten).
 - **Bei Abbruch:**
-  - `Workflow({scriptPath, resumeFromRunId: "wf_a39c6e70-8a1"})`.
+  - `Workflow({scriptPath, resumeFromRunId: "wf_350555d8-5f0"})`.
   - Server: `server.sh start` (Port 3000); Port 3100 mit `cd /root/sm24-e0 && SM24_DATA=json nohup npx next start -p 3100`; Port 3001 mit `SM24_DATA=json nohup npx next dev -p 3001`.
+  - `/tmp/sm24-messfenster.lock` ist verwaist, wenn kein Prüfer läuft.
 - **Hinweis:** AGENTS.md vor jedem Commit zurücknehmen (D-007).
-- **Letzter grüner Stand:** Prüfstufe A an e6550f3 grün (Typprüfung 0, 983 Unit- und 52 DB-Tests, Build 198/198). E3-L-14 (4abf697) wird in E3-PRUEFER-01 geprüft.
+- **Letzter grüner Stand:** 2b69987. Typprüfung 0, Linter sauber, 45 Testdateien mit 1002 Tests grün, Logikwächter 0 abweichend.

@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 2/6 · Welle E2-b · Pflicht 19/70 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Build 198/198, Typprüfung 0, Linter 0, Komponenten-Tests 717/717, Funktionsliste 14/14) · Nächster Schritt: Prüfstufe A/B der Referenz (E2-PRUEFER-01), dann Etappentor
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 2/6 · Etappentor Anlauf 2 läuft, Welle E3-B im Bau · Pflicht 30/71 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Typprüfung 0, Linter 0, 1002/1002 Tests, Logikwächter gleich, Build 198/198 in Anlauf 1) · Nächster Schritt: Ergebnis von Anlauf 2 und Welle E3-B abnehmen, dann E3-BAUMEISTER-07
 
 # Status des Gestaltungslaufs
 
@@ -33,3 +33,5 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 2/6 · W
 - 15.10.2026 23:17 · E0-PRUEFER-01 abgenommen: Build-Gate JSON grün, Bestand dokumentiert; Welle E0-b läuft (Werkzeuge, Next-16-Doku, lucide-Inventar).
 - 15.10.2026 23:48 · E1 abgeschlossen (KERN 1.1, PLAN 1.0). E2: Designsystem, Bewegung, Formsystem mit 39 Glyphen, Profillinie, Generatoren profilschnitt/tuer-schutz, Schließplan-Markierung, Hülle und Referenz-Startseite als ZWISCHENSTAND gepusht (9e51eff).
 - 16.10.2026 00:06 · E0-Ausgangswerte und Funktionsliste abgenommen (14/14; F-05 geschärft, D-013). Attrappen fangen jede nicht lesende Action ab (D-011). Strichskala der Generatoren (D-010, KERN 1.2), Generator `stiftzuhaltung`, Seitenkopf und Client-Hüllen der großen Momente committet. Build grün, Server neu.
+- 16.10.2026 01:55 · Container-Neustart. Workflow und Server verloren, Platte erhalten. Sichtabnahme Anlauf 1: 6,8, nicht bestanden (D-016). Prüfstufe B sonst grün (Budgets, 14/14, a11y 6 statt 30).
+- 16.10.2026 05:30 · Startseite Anlauf 2 (E2-L-06b, D-018): Hero mobil, B-01 bei Sichtbarkeit mit Abheben, Easing-Fehler behoben, Bereichsfarben ≥ 30° (D-017). Welle E3-A abgenommen (Formular-Bausteine, Ablauf-Hülle, Foto-Upload, README); 404 auch für unbekannte Adressen (D-019). Etappentor Anlauf 2 und Welle E3-B gestartet.
