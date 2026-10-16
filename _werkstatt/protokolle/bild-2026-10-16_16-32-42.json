@@ -1,0 +1,24 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-16T14:32:42.747Z",
+  "argumente": {
+    "_": [
+      "/schluessel-nach-code/ms-01"
+    ],
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/L-H06/nachher2"
+  },
+  "pfad": "/schluessel-nach-code/ms-01",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "desktop",
+      "datei": "/root/sm24-bilder/L-H06/nachher2/schluessel-nach-code-ms-01__desktop.jpg",
+      "status": 200,
+      "bytes": 85238,
+      "breite": 1440,
+      "hoehe": 900,
+      "ganz": false
+    }
+  ]
+}

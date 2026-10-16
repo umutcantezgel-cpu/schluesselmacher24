@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-16T14:39:15.604Z",
+  "argumente": {
+    "_": [
+      "/"
+    ],
+    "geraet": "desktop",
+    "ganz": true,
+    "ziel": "/root/sm24-bilder/L-nacharbeit"
+  },
+  "pfad": "/",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "desktop",
+      "datei": "/root/sm24-bilder/L-nacharbeit/start__desktop__ganz.jpg",
+      "status": 200,
+      "bytes": 400937,
+      "breite": 1440,
+      "hoehe": 900,
+      "ganz": true
+    }
+  ]
+}
