@@ -221,6 +221,17 @@
     background: linear-gradient(currentColor, currentColor) center / 100% var(--strich) no-repeat;
   }
 
+  /* Laufende Abschnittsnummer („01“), die nur gerenderte Abschnitte zählt – für Seiten, deren
+     Abschnitte je nach Daten fehlen (Bestellseite). Zähler am Behälter, Nummer in der Augenbraue. */
+  .sm24-zaehlung {
+    counter-reset: sm24-abschnitt;
+  }
+
+  .sm24-zaehlung .sm24-nummer::before {
+    counter-increment: sm24-abschnitt;
+    content: counter(sm24-abschnitt, decimal-leading-zero);
+  }
+
   /* Fließtext in redaktionellen Bereichen */
   .prose-sm24 {
     @apply max-w-measure text-body text-foreground-muted;

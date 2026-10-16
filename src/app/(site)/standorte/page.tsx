@@ -61,7 +61,7 @@ export default async function StandortePage() {
                   </span>
                   <span className="mt-1 block text-small text-foreground-muted">
                     {city.state} · Einsatzradius etwa{' '}
-                    <span className="font-mono tabular-nums text-foreground">{city.onSiteRadiusKm} km</span>
+                    <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{city.onSiteRadiusKm} km</span>
                   </span>
                 </span>
                 <GlyphPfeilRechts

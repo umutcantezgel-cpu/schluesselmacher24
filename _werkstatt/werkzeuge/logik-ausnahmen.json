@@ -143,5 +143,12 @@
       "suchen": "import \\{ Button \\} from '@/components/ui/button';\\n(?=import \\{ Field \\})",
       "ersetzen": "import { Button } from '@/components/ui/button';\nimport { Card, CardBody, CardHeader } from '@/components/ui/card';\n"
     }
+  ],
+  "src/app/(site)/bestellung/[id]/page.tsx": [
+    {
+      "grund": "Bestellseite: Abschnitte mit Haarlinien statt Karten; der Import der Kartenbausteine entfällt. Der neue Stand wird vor dem Fingerabdruck um den alten Import ergänzt, die Basis bleibt unberührt (E5-BAUMEISTER-28, Abnahme; Muster wie Terminstatus)",
+      "suchen": "import \\{ Badge \\} from '@/components/ui/badge';\\n(?=import \\{ PageHeader \\})",
+      "ersetzen": "import { Badge } from '@/components/ui/badge';\nimport { Card, CardBody, CardHeader } from '@/components/ui/card';\n"
+    }
   ]
 }

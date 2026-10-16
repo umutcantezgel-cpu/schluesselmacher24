@@ -87,7 +87,8 @@ export const metadata: Metadata = {
 function BestelltePositionen({ lines, totals }: { lines: OrderLine[]; totals?: OrderTotals }) {
   return (
     <section className="border-t border-border pt-8">
-      <h2 className="text-title font-semibold text-foreground">Bestellte Artikel</h2>
+      <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" />Positionen</p>
+      <h2 className="mt-1 text-title font-semibold text-foreground">Bestellte Artikel</h2>
 
       <ul className="mt-6 divide-y divide-border border-y border-border">
         {lines.map((line, index) => (
@@ -227,10 +228,11 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
 
       <div className="shell py-8 md:py-12">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-          <div className="space-y-12 lg:col-span-7">
-            {/* 01 Vorgangsnummer und Stand */}
+          {/* Abschnittsnummern zählt CSS (.sm24-zaehlung): Artikel und Zahlung erscheinen nur mit Daten */}
+          <div className="sm24-zaehlung space-y-12 lg:col-span-7">
+            {/* Vorgangsnummer und Stand */}
             <section className="border-t border-border pt-8">
-              <p className="eyebrow"><span className="tabular-nums text-foreground-muted">01</span></p>
+              <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" />Bestätigung</p>
               <h2 className="mt-1 text-title font-semibold text-foreground">Ihre Vorgangsnummer</h2>
               <p className="mt-4 select-all break-all font-mono text-headline font-bold tabular-nums text-foreground">
                 {record.reference}
@@ -267,7 +269,8 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
             {/* Zahlung */}
             {record.payment && (
               <section className="border-t border-border pt-8">
-                <h2 className="text-title font-semibold text-foreground">Zahlung</h2>
+                <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" />Abrechnung</p>
+                <h2 className="mt-1 text-title font-semibold text-foreground">Zahlung</h2>
 
                 <dl className="mt-6 divide-y divide-border border-y border-border text-small">
                   <div className="flex flex-wrap items-baseline justify-between gap-4 py-3">
@@ -305,9 +308,9 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
               </section>
             )}
 
-            {/* 02 Angaben */}
+            {/* Angaben */}
             <section className="border-t border-border pt-8">
-              <p className="eyebrow"><span className="tabular-nums text-foreground-muted">02</span></p>
+              <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" />Übersicht</p>
               <h2 className="mt-1 text-title font-semibold text-foreground">Ihre Angaben</h2>
               <div className="mt-6">
                 <SummaryList sections={abschnitte} variante="schriftfeld" hervorheben="Gesamtbetrag" />
