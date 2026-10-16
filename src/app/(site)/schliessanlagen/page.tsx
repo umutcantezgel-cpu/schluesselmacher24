@@ -294,36 +294,44 @@ export default async function SchliessanlagenPage() {
       </Section>
 
       {/* Die fünf Systeme: großer Moment mit Kopf links, danach Zeichnungen und Vergleich */}
-      <Section id="systeme" tone="sunken" labelledBy="systeme-titel">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-          <SectionHeading
-            id="systeme-titel"
-            className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start"
-            nummer="01"
-            eyebrow="Systeme"
-            title="Die fünf Systeme in einfacher Sprache"
-            lead="Die vollständige Bezeichnung steht immer zuerst, die übliche Abkürzung folgt in Klammern. Vorwissen brauchen Sie nicht."
-          />
-          <div className="lg:col-span-7">
-            <SchliessplanInteraktiv anfang="haupt" tueren={4} gruppen={2} />
+      {/* Eigene Hülle statt Section: Der Auftritt von Section startet erst bei 25 % Sichtanteil. Dieser
+          Abschnitt ist höher als der Bildschirm und bliebe sonst verdeckt (siehe GEMEINSAME DATEIEN). */}
+      <section
+        id="systeme"
+        aria-labelledby="systeme-titel"
+        className="section -mt-px border-y border-border bg-surface-sunken"
+      >
+        <div className="shell">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+            <SectionHeading
+              id="systeme-titel"
+              className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start"
+              nummer="01"
+              eyebrow="Systeme"
+              title="Die fünf Systeme in einfacher Sprache"
+              lead="Die vollständige Bezeichnung steht immer zuerst, die übliche Abkürzung folgt in Klammern. Vorwissen brauchen Sie nicht."
+            />
+            <div className="lg:col-span-7">
+              <SchliessplanInteraktiv anfang="haupt" tueren={4} gruppen={2} />
+            </div>
+          </div>
+
+          <div className="mt-16">
+            <SystemErklaerung />
+          </div>
+
+          <div className="mt-16">
+            <h3 className="text-title font-bold text-foreground">Die Systeme im Vergleich</h3>
+            <p className="mt-2 max-w-2xl text-body leading-relaxed text-foreground-muted">
+              Wenn Sie unsicher sind, welches System zu Ihnen passt: Die Tabelle zeigt die
+              Unterschiede nebeneinander. Im Konfigurator leiten wir daraus einen Vorschlag ab.
+            </p>
+            <div className="mt-6">
+              <SystemVergleich />
+            </div>
           </div>
         </div>
-
-        <div className="mt-16">
-          <SystemErklaerung />
-        </div>
-
-        <div className="mt-16">
-          <h3 className="text-title font-bold text-foreground">Die Systeme im Vergleich</h3>
-          <p className="mt-2 max-w-2xl text-body leading-relaxed text-foreground-muted">
-            Wenn Sie unsicher sind, welches System zu Ihnen passt: Die Tabelle zeigt die
-            Unterschiede nebeneinander. Im Konfigurator leiten wir daraus einen Vorschlag ab.
-          </p>
-          <div className="mt-6">
-            <SystemVergleich />
-          </div>
-        </div>
-      </Section>
+      </section>
 
       {/* Für wen: Stückliste, ganze Zeile ist der Link */}
       <Section labelledBy="fuer-wen-titel">
