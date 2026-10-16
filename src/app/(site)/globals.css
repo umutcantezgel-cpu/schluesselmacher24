@@ -130,6 +130,21 @@
     scroll-padding-top: calc(var(--header-height) + 1rem);
   }
 
+  /* In Abläufen (FlowShell, `data-ablauf`) zusätzlich unter der klebenden Fortschrittsleiste
+     (mobil 56 px, ab md bis 126 px mit Schrittliste) und über der festen Aktionsleiste
+     (mobil 113 px). Sonst landet eine fokussierte Karte darunter (Befund E5-B-23). */
+  html:has([data-ablauf]) {
+    scroll-padding-top: calc(var(--header-height) + 4.5rem);
+    scroll-padding-bottom: 8rem;
+  }
+
+  @media (min-width: 768px) {
+    html:has([data-ablauf]) {
+      scroll-padding-top: calc(var(--header-height) + 9rem);
+      scroll-padding-bottom: 1rem;
+    }
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;

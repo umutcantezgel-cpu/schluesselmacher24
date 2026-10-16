@@ -61,7 +61,7 @@ export function FlowShell<T extends object>({
   };
 
   return (
-    <div className="pb-40 md:pb-8">
+    <div data-ablauf className="pb-40 md:pb-8">
       {/* Fortschritt */}
       <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background px-5 py-3 sm:-mx-6 sm:px-6 md:mx-0 md:rounded-lg md:border md:px-5">
         <div className="flex items-baseline justify-between gap-3">
