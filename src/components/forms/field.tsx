@@ -4,6 +4,7 @@ import { useId, type ReactNode } from 'react';
 import type { InfoHint } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import { InfoTip } from '@/components/ui/info-tip';
+import { GlyphWarnung } from '@/components/visual/glyphen/warnung';
 
 export interface FieldProps {
   label: string;
@@ -27,7 +28,7 @@ export function Field({ label, hint, info, error, required, children, className 
   return (
     <div className={cn('flex flex-col gap-1.5', className)}>
       <div className="flex items-center gap-2">
-        <label htmlFor={id} className="text-sm font-semibold text-foreground">
+        <label htmlFor={id} className="text-small font-semibold text-foreground">
           {label}
           {required && (
             <span className="ml-1 text-danger" aria-hidden>
@@ -42,13 +43,14 @@ export function Field({ label, hint, info, error, required, children, className 
       {children({ id, describedBy, invalid: Boolean(error) })}
 
       {hint && (
-        <p id={hintId} className="text-[13px] leading-snug text-foreground-subtle">
+        <p id={hintId} className="text-small leading-snug text-foreground-subtle">
           {hint}
         </p>
       )}
       {error && (
-        <p id={errorId} className="text-[13px] font-semibold text-danger" role="alert">
-          {error}
+        <p id={errorId} className="flex items-start gap-1.5 text-small font-semibold text-danger" role="alert">
+          <GlyphWarnung size={16} className="mt-0.5 shrink-0" />
+          <span className="min-w-0">{error}</span>
         </p>
       )}
     </div>

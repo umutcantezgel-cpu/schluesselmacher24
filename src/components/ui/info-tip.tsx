@@ -1,10 +1,11 @@
 'use client';
 
 import { useId, useState } from 'react';
-import { Info, X } from 'lucide-react';
 import type { InfoHint } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import { ImagePlaceholder } from './image-placeholder';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
+import { GlyphKreuz } from '@/components/visual/glyphen/kreuz';
 
 export interface InfoTipProps {
   hint: InfoHint;
@@ -31,11 +32,11 @@ export function InfoTip({ hint, className, label }: InfoTipProps) {
         aria-expanded={open}
         aria-controls={panelId}
         className={cn(
-          'inline-flex h-7 w-7 items-center justify-center rounded-full border border-border',
-          'bg-surface text-foreground-muted transition-colors hover:bg-surface-muted hover:text-primary',
+          'inline-flex min-h-6 min-w-6 items-center justify-center rounded-full border border-border',
+          'bg-surface text-foreground-muted transition-colors duration-quick hover:bg-surface-muted hover:text-primary',
         )}
       >
-        <Info size={15} aria-hidden />
+        <GlyphInfo size={15} />
         <span className="sr-only">{label ?? `Erklärung zu ${hint.title}`}</span>
       </button>
 
@@ -44,23 +45,23 @@ export function InfoTip({ hint, className, label }: InfoTipProps) {
           id={panelId}
           role="note"
           className={cn(
-            'absolute left-0 top-9 z-40 block w-[min(20rem,calc(100vw-3rem))]',
-            'rounded-lg border border-border bg-surface p-4 shadow-lg',
+            'absolute left-0 top-9 z-header block w-[min(20rem,calc(100vw-3rem))]',
+            'rounded-lg border border-border bg-surface p-4 shadow-overlay',
           )}
         >
           <span className="mb-2 flex items-start justify-between gap-3">
-            <strong className="text-sm font-bold text-foreground">{hint.title}</strong>
+            <strong className="text-small font-bold text-foreground">{hint.title}</strong>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="-mr-1 -mt-1 rounded p-1 text-foreground-subtle hover:text-foreground"
+              className="-mr-1 -mt-1 inline-flex min-h-6 min-w-6 items-center justify-center rounded text-foreground-subtle transition-colors duration-quick hover:text-foreground"
             >
-              <X size={15} aria-hidden />
+              <GlyphKreuz size={15} />
               <span className="sr-only">Erklärung schließen</span>
             </button>
           </span>
 
-          <span className="block text-[13px] leading-relaxed text-foreground-muted">
+          <span className="block text-small leading-relaxed text-foreground-muted">
             {hint.body}
           </span>
 

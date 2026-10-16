@@ -1,10 +1,14 @@
 'use client';
 
-import { type ReactNode } from 'react';
-import { ArrowLeft, ArrowRight, Check, RotateCcw, Save } from 'lucide-react';
+import { useState, type ReactNode } from 'react';
 import type { FlowState } from '@/lib/flow/use-flow';
 import { cn } from '@/lib/cn';
 import { Button } from '@/components/ui/button';
+import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { GlyphPfeilLinks } from '@/components/visual/glyphen/pfeil-links';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GlyphSpeichern } from '@/components/visual/glyphen/speichern';
+import { GlyphZuruecksetzen } from '@/components/visual/glyphen/zuruecksetzen';
 
 export interface FlowShellProps<T extends object> {
   flow: FlowState<T>;
@@ -35,15 +39,28 @@ export function FlowShell<T extends object>({
 }: FlowShellProps<T>) {
   const percent = Math.round(flow.progress * 100);
 
+  // Richtung des Schrittwechsels (B-11): Information aus vorigem Render.
+  // Ein einziger Zustand; beim ersten Render ist die Richtung null, also keine Animation.
+  const [wechsel, setWechsel] = useState<{ vorher: number; richtung: 'vor' | 'zurueck' | null }>({
+    vorher: flow.stepIndex,
+    richtung: null,
+  });
+  if (wechsel.vorher !== flow.stepIndex) {
+    setWechsel({
+      vorher: flow.stepIndex,
+      richtung: flow.stepIndex > wechsel.vorher ? 'vor' : 'zurueck',
+    });
+  }
+
   return (
     <div className="pb-40 md:pb-8">
       {/* Fortschritt */}
-      <div className="sticky top-16 z-30 -mx-5 border-b border-border bg-background/95 px-5 py-3 backdrop-blur sm:-mx-6 sm:px-6 md:top-20 md:mx-0 md:rounded-lg md:border md:px-5">
+      <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background/95 px-5 py-3 backdrop-blur sm:-mx-6 sm:px-6 md:mx-0 md:rounded-lg md:border md:px-5">
         <div className="flex items-baseline justify-between gap-3">
-          <p className="text-xs font-semibold uppercase tracking-wider text-foreground-subtle">
+          <p className="text-caption font-mono uppercase tracking-label text-foreground-subtle">
             {title}
           </p>
-          <p className="text-xs font-semibold text-foreground-muted">
+          <p className="text-caption font-mono tabular-nums text-foreground-muted">
             Schritt {flow.stepIndex + 1} von {flow.stepCount}
           </p>
         </div>
@@ -57,8 +74,8 @@ export function FlowShell<T extends object>({
           aria-label={`Fortschritt: ${percent} Prozent`}
         >
           <div
-            className="h-full rounded-full bg-primary transition-[width] duration-300"
-            style={{ width: `${Math.max(percent, 4)}%` }}
+            className="h-full origin-left rounded-full bg-primary transition-transform duration-slow ease-standard"
+            style={{ transform: `scaleX(${Math.max(flow.progress, 0.04)})` }}
           />
         </div>
 
@@ -70,17 +87,20 @@ export function FlowShell<T extends object>({
                 type="button"
                 onClick={() => i <= flow.stepIndex && flow.goTo(s.id)}
                 disabled={i > flow.stepIndex}
+                aria-current={i === flow.stepIndex ? 'step' : undefined}
                 className={cn(
-                  'inline-flex items-center gap-1.5 text-xs font-semibold transition-colors',
+                  'inline-flex min-h-6 items-center gap-1.5 text-caption font-semibold transition-colors',
                   i === flow.stepIndex && 'text-primary',
                   i < flow.stepIndex && 'text-foreground-muted hover:text-primary',
                   i > flow.stepIndex && 'cursor-default text-foreground-subtle',
                 )}
               >
                 {i < flow.stepIndex ? (
-                  <Check size={12} aria-hidden />
+                  <GlyphHaken size={14} />
                 ) : (
-                  <span aria-hidden>{i + 1}.</span>
+                  <span aria-hidden className="font-mono tabular-nums">
+                    {i + 1}.
+                  </span>
                 )}
                 {s.short}
               </button>
@@ -92,8 +112,8 @@ export function FlowShell<T extends object>({
       {/* Hinweis auf wiederhergestellten Stand */}
       {flow.restored && (
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-surface-muted px-4 py-3">
-          <p className="text-[13px] text-foreground-muted">
-            <Save size={14} className="mr-1.5 inline align-[-2px]" aria-hidden />
+          <p className="flex items-center gap-2 text-small text-foreground-muted">
+            <GlyphSpeichern size={16} />
             Ihr Zwischenstand von zuletzt wurde geladen.
           </p>
           <div className="flex gap-2">
@@ -101,20 +121,25 @@ export function FlowShell<T extends object>({
               Weitermachen
             </Button>
             <Button variant="outline" size="sm" onClick={flow.reset}>
-              <RotateCcw size={14} aria-hidden />
+              <GlyphZuruecksetzen size={14} />
               Neu beginnen
             </Button>
           </div>
         </div>
       )}
 
-      {/* Schritt */}
-      <div className="mt-6">
-        <h2 className="text-xl font-bold text-foreground md:text-2xl">{flow.step?.title}</h2>
+      {/* Schritt: Überschrift, Hinweis und Inhalt wechseln gemeinsam (B-11) */}
+      <div
+        key={flow.step?.id}
+        className={cn(
+          'mt-6',
+          wechsel.richtung === 'vor' && 'sm24-schritt-vor',
+          wechsel.richtung === 'zurueck' && 'sm24-schritt-zurueck',
+        )}
+      >
+        <h2 className="text-title font-bold text-foreground">{flow.step?.title}</h2>
         {flow.step?.hint && (
-          <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-foreground-muted">
-            {flow.step.hint}
-          </p>
+          <p className="mt-2 max-w-measure text-body text-foreground-muted">{flow.step.hint}</p>
         )}
         <div className="mt-6">{children}</div>
       </div>
@@ -122,19 +147,19 @@ export function FlowShell<T extends object>({
       {/* Navigation — am Smartphone fest am unteren Rand */}
       <div
         className={cn(
-          'fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 p-4 backdrop-blur',
+          'fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface/95 p-4 backdrop-blur',
           'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none',
         )}
         style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
       >
         {blockedHint && !flow.canContinue && (
-          <p className="mb-2 text-center text-[13px] text-foreground-subtle md:text-left">
+          <p className="mb-2 text-center text-small text-foreground-subtle md:text-left">
             {blockedHint}
           </p>
         )}
         <div className="mx-auto flex max-w-shell gap-3 md:mx-0">
           <Button variant="outline" size="lg" onClick={flow.back} disabled={flow.isFirst}>
-            <ArrowLeft size={17} aria-hidden />
+            <GlyphPfeilLinks size={18} />
             <span className="hidden sm:inline">Zurück</span>
           </Button>
 
@@ -151,7 +176,7 @@ export function FlowShell<T extends object>({
           ) : (
             <Button size="lg" fullWidth onClick={flow.next} disabled={!flow.canContinue}>
               Weiter
-              <ArrowRight size={17} aria-hidden />
+              <GlyphPfeilRechts size={18} />
             </Button>
           )}
         </div>
