@@ -9,7 +9,6 @@ import type { AppointmentInfo, PaymentInfo, RecordStatus, SummarySection } from 
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { Field } from '@/components/forms/field';
 import { TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';

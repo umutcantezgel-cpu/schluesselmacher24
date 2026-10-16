@@ -136,5 +136,12 @@
       "suchen": "\\s*params=\\{\\{ system: \\(\\{\\ \\[SYSTEM_NAMES\\.gleichschliessung\\]:\\ 'gleichschliessung',\\ \\[SYSTEM_NAMES\\.z\\]:\\ 'zentral',\\ \\[SYSTEM_NAMES\\.hs\\]:\\ 'haupt',\\ \\[SYSTEM_NAMES\\.ghs\\]:\\ 'generalhaupt'\\ \\}\\ as\\ Record<string,\\ string>\\)\\[recommendation\\.system\\](?:, format: 'schmal')? \\}\\}",
       "ersetzen": ""
     }
+  ],
+  "src/app/(site)/service-und-termin/terminstatus/status-formular.tsx": [
+    {
+      "grund": "Ergebnis und Verlauf stehen als Schriftfeld mit Haarlinien statt in Karten; der Import der Kartenbausteine entfällt (E5-BAUMEISTER-26, Abnahme; Muster wie Kasse)",
+      "suchen": "import \\{ Button \\} from '@/components/ui/button';\\n(?=import \\{ Field \\})",
+      "ersetzen": "import { Button } from '@/components/ui/button';\nimport { Card, CardBody, CardHeader } from '@/components/ui/card';\n"
+    }
   ]
 }
