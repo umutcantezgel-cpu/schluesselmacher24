@@ -1,0 +1,15 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T06:26:23.834Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/kasse/kasse-formular.tsx",
+      "src/app/(site)/kasse/page.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 2,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}

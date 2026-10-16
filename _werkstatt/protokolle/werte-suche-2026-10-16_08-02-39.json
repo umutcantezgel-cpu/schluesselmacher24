@@ -1,0 +1,15 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T06:02:39.315Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 2,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}

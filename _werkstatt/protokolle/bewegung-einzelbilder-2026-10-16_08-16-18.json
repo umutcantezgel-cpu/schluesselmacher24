@@ -1,0 +1,90 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-16T06:16:18.833Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/tuer-und-schliesstechnik"
+    ],
+    "selektor": "svg[aria-label^=\"Schutzpunkte einer Tür\"]",
+    "dauer": "900",
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/E4-BAUMEISTER-11-runde3/b18",
+    "echtzeit": false
+  },
+  "pfad": "/tuer-und-schliesstechnik",
+  "selektor": "svg[aria-label^=\"Schutzpunkte einer Tür\"]",
+  "dauer": 900,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": "div.shell",
+    "zustand": "play",
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 10,
+  "unendlich": 0,
+  "fenster": {
+    "start": 300,
+    "ende": 1200
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 300,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-11-runde3/b18/tuer-und-schliesstechnik__desktop__svg-aria-label-schutzpunkte-einer-t-r__0.jpg",
+      "clip": {
+        "x": 813.65625,
+        "y": 298.21875,
+        "width": 517.328125,
+        "height": 399.484375
+      }
+    },
+    {
+      "k": 1,
+      "t": 525,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-11-runde3/b18/tuer-und-schliesstechnik__desktop__svg-aria-label-schutzpunkte-einer-t-r__1.jpg",
+      "clip": {
+        "x": 813.65625,
+        "y": 298.21875,
+        "width": 517.328125,
+        "height": 399.484375
+      }
+    },
+    {
+      "k": 2,
+      "t": 750,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-11-runde3/b18/tuer-und-schliesstechnik__desktop__svg-aria-label-schutzpunkte-einer-t-r__2.jpg",
+      "clip": {
+        "x": 813.65625,
+        "y": 298.21875,
+        "width": 517.328125,
+        "height": 399.484375
+      }
+    },
+    {
+      "k": 3,
+      "t": 975,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-11-runde3/b18/tuer-und-schliesstechnik__desktop__svg-aria-label-schutzpunkte-einer-t-r__3.jpg",
+      "clip": {
+        "x": 813.65625,
+        "y": 298.21875,
+        "width": 517.328125,
+        "height": 399.484375
+      }
+    },
+    {
+      "k": 4,
+      "t": 1200,
+      "datei": "/root/sm24-bilder/E4-BAUMEISTER-11-runde3/b18/tuer-und-schliesstechnik__desktop__svg-aria-label-schutzpunkte-einer-t-r__4.jpg",
+      "clip": {
+        "x": 813.65625,
+        "y": 298.21875,
+        "width": 517.328125,
+        "height": 399.484375
+      }
+    }
+  ]
+}
