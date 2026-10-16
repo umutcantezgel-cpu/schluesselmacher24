@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useSpaetVorladen } from '@/lib/spaet-vorladen';
 import { AreaScope } from '@/components/visual/area-scope';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { GlyphKreuz } from '@/components/visual/glyphen/kreuz';
@@ -23,8 +24,12 @@ function fokussierbare(container: HTMLElement | null): HTMLElement[] {
   );
 }
 
+/** Feste Ziele im Kopf: erst nach dem großen Moment vorladen (D-044). */
+const KOPF_ZIELE = ['/', '/warenkorb', '/autoschluessel/anfrage'] as const;
+
 export function SiteHeader() {
   const pathname = usePathname();
+  useSpaetVorladen(KOPF_ZIELE, pathname);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [openArea, setOpenArea] = useState<string | null>(null);
   const [openMobileArea, setOpenMobileArea] = useState<string | null>(null);
@@ -110,7 +115,7 @@ export function SiteHeader() {
     <header className="fixed inset-x-0 top-0 z-header border-b border-border bg-surface">
       <div className="shell-wide flex h-header items-center gap-4">
         {/* Wortmarke — bewusst ohne Bilddatei (Logo, unverändert) */}
-        <Link href="/" className="flex shrink-0 items-baseline gap-1.5" aria-label="SCHLÜSSELMACHER24 — Startseite">
+        <Link href="/" prefetch={false} className="flex shrink-0 items-baseline gap-1.5" aria-label="SCHLÜSSELMACHER24 — Startseite">
           <span className="font-display text-title-sm font-bold tracking-tight text-foreground md:text-title">
             SCHLÜSSELMACHER
           </span>
@@ -171,6 +176,7 @@ export function SiteHeader() {
         <div className="ml-auto flex items-center gap-1 lg:ml-0">
           <Link
             href="/warenkorb"
+            prefetch={false}
             className="relative inline-flex min-h-touch min-w-touch items-center justify-center rounded-md text-foreground-muted transition-colors duration-quick hover:bg-surface-muted hover:text-foreground"
           >
             <GlyphWarenkorb size={22} />
@@ -190,6 +196,7 @@ export function SiteHeader() {
 
           <Link
             href="/autoschluessel/anfrage"
+            prefetch={false}
             className="hidden min-h-touch items-center whitespace-nowrap rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground transition-colors duration-quick hover:bg-primary-hover active:scale-druck motion-reduce:transform-none sm:inline-flex"
           >
             Termin starten

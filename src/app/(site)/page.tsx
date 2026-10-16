@@ -5,6 +5,7 @@ import { getGuides, getPageContent, getSettings } from '@/lib/data';
 import { NAV_AREAS, PROCESS_LABELS, QUICK_ENTRIES } from '@/lib/navigation';
 import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
+import { SpaetVorladen } from '@/lib/spaet-vorladen';
 import { ImagePlaceholder, ausschnittStil, type GrafikAusschnitt } from '@/components/ui/image-placeholder';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
@@ -62,6 +63,9 @@ function Weiter({ className }: { className?: string }) {
     />
   );
 }
+
+/** Ziele der Knöpfe im ersten Bildschirm, spät vorgeladen (D-044). */
+const HERO_ZIELE = ['/autoschluessel/anfrage', '/schluessel-nach-code'] as const;
 
 export default async function HomePage() {
   const [page, settings, guides] = await Promise.all([
@@ -136,11 +140,14 @@ export default async function HomePage() {
 
           <div className="flex flex-col lg:col-span-6">
             <div className="flex flex-col items-start gap-x-6 gap-y-3 sm:flex-row sm:flex-wrap sm:items-center lg:mt-8">
-              <ButtonLink href="/autoschluessel/anfrage" size="lg" pfeil className="w-full sm:w-auto">
+              {/* Ziele des ersten Bildschirms erst nach der Fräsbahn vorladen (D-044) */}
+              <SpaetVorladen ziele={HERO_ZIELE} />
+              <ButtonLink href="/autoschluessel/anfrage" prefetch={false} size="lg" pfeil className="w-full sm:w-auto">
                 Autoschlüssel-Termin starten
               </ButtonLink>
               <Link
                 href="/schluessel-nach-code"
+                prefetch={false}
                 className="group inline-flex min-h-touch items-center gap-1.5 text-body font-semibold text-primary"
               >
                 Schlüssel nach Code bestellen

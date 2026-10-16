@@ -97,6 +97,8 @@ export interface ButtonLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement>
   fullWidth?: boolean;
   /** Pfeil nach rechts hinter dem Text: „weiter zu …“. */
   pfeil?: boolean;
+  /** Vorladen beim Erscheinen (`next/link`); `false` mit `SpaetVorladen` für Ziele im ersten Bildschirm (D-044). */
+  prefetch?: boolean | null;
   children?: ReactNode;
 }
 
@@ -106,6 +108,7 @@ export function ButtonLink({
   size = 'md',
   fullWidth,
   pfeil,
+  prefetch,
   className,
   children,
   ...props
@@ -123,7 +126,7 @@ export function ButtonLink({
   }
 
   return (
-    <Link href={href} className={classes} {...props}>
+    <Link href={href} prefetch={prefetch} className={classes} {...props}>
       {children}
       {pfeil && <Pfeil />}
     </Link>

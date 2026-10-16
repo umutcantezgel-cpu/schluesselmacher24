@@ -8,6 +8,7 @@ import { GlyphSchluessel } from '@/components/visual/glyphen/schluessel';
 import { GlyphSuche } from '@/components/visual/glyphen/suche';
 import { aktiverEintrag } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
+import { useSpaetVorladen } from '@/lib/spaet-vorladen';
 
 const ITEMS = [
   { href: '/autoschluessel', label: 'Autoschlüssel', icon: GlyphSchluessel },
@@ -21,6 +22,8 @@ const HREFS = ITEMS.map((item) => item.href);
 /** Feste Aktionsleiste am unteren Rand — nur auf schmalen Geräten (Daumenzone). */
 export function MobileActionBar() {
   const pathname = usePathname();
+  // Ziele erst nach dem großen Moment vorladen, nicht beim Erscheinen (D-044)
+  useSpaetVorladen(HREFS, pathname);
 
   // In den Abläufen stört die Leiste, dort führt die Ablauf-Navigation.
   const hidden =
@@ -49,6 +52,7 @@ export function MobileActionBar() {
             <li key={item.href}>
               <Link
                 href={item.href}
+                prefetch={false}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
                   'relative flex min-h-touch-lg flex-col items-center justify-center gap-1 px-1 py-2 text-caption font-semibold transition-colors duration-quick',
