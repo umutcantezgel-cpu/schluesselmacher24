@@ -101,7 +101,7 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E5-B-20 | Service, Kontakt, Vor Ort | B/Haiku | 3 Dateien | E3 | Z-06 | 8a71d31 |
 | E5-B-21 | `/gleichschliessende-zylinder` | B/Haiku | 1 Datei | E3 | Z-06 | 523b558 |
 | E5-B-22 | Vorlage-Anfrage (Logikwächter, Scroll-Ausnahme) | B/Haiku | 2 Dateien | E3-B-02 | Z-06, Z-05 | c6636eb |
-| E5-B-23 | Sicherheitscheck (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02 | Z-06 | |
+| E5-B-23 | Sicherheitscheck (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02 | Z-06 | ccf7bc8 |
 | E5-B-24 | Zutritts-Konfigurator (Logikwächter, Scroll-Ausnahme) | B/Haiku | 2 Dateien | E3-B-02 | Z-06, Z-05 | |
 | E5-B-25 | Projekt-Konfigurator (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02 | Z-06 | |
 | E5-B-26 | Service-Anfrage und Terminstatus (Logikwächter) | B/Haiku | 4 Dateien | E3-B-02 | Z-06 | |

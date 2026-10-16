@@ -1,0 +1,14 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T09:57:02.852Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/page.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 1,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}

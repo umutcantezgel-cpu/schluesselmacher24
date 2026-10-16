@@ -1,0 +1,15 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T10:02:09.149Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "src/app/(site)/schluessel-nach-code/[slug]/bestell-formular.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 2,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}
