@@ -148,7 +148,7 @@ export default async function TuerUndSchliesstechnikPage() {
       {/* Tiefgreifende Fachliche Einführung */}
       <Section tight>
         <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-          <div className="space-y-8 lg:col-span-5">
+          <div className="space-y-8 lg:col-span-7">
             <SectionHeading
               nummer="01"
               eyebrow="Architektur der Sicherheit"
@@ -206,7 +206,7 @@ export default async function TuerUndSchliesstechnikPage() {
 
           {/* Nicht mitlaufend: Der Rechner ist höher als das Fenster, Ergebnis und
               Anfrage lägen sonst außer Reichweite. */}
-          <div className="space-y-8 lg:col-span-7">
+          <div className="space-y-8 lg:col-span-5">
             {/* Großer Moment (B-18): Die Schutzpunkte stehen auf Papier über dem Rechner. */}
             <ImagePlaceholder
               slot={{
