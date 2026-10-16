@@ -1,0 +1,31 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T09:13:01.248Z",
+  "argumente": {
+    "_": [
+      "src/lib/og/bereichsbild.tsx",
+      "src/lib/og/bereichsbild.test.ts",
+      "src/app/(site)/opengraph-image.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 3,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 2,
+  "funde": [
+    {
+      "datei": "src/lib/og/bereichsbild.tsx",
+      "zeile": 38,
+      "kategorie": "Farbfunktion",
+      "fund": "hsl(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/og/bereichsbild.test.ts",
+      "zeile": 26,
+      "kategorie": "Farbfunktion",
+      "fund": "hsl(",
+      "ausnahme": true
+    }
+  ]
+}

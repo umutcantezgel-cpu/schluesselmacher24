@@ -94,7 +94,7 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E4-L-25 | Maßzeichnung im schmalen Format für Telefone (D-036) | L/Opus | `zylinder-mass`, Registry, `image-placeholder`, `zylinder-mass-live`, Konfigurator (`className`), Startseite + Tests | – | Z-04, Z-06 | 5632498 |
 | E4-L-27 | Gemeinsame Befunde der Sichtabnahme (Kopf 7/5, FlowShell, Knöpfe, Datei-Eingaben, Schliessplan schmal), Text- und Fachfragen (D-037) | L/Opus | gemeinsame Bausteine + Tests, TEXTVORSCHLAEGE, MENSCHEN | E4-L-23 | Z-04, Z-07 | 32bc377 … ae51d9b |
 | E4-GRAFIKER-09 | Schließplan mit Reserveplätzen und schmalem Format | G/Haiku | `schliessplan` + Test | E4-L-23 | Z-06 | 385bcf2 |
-| E4-GRAFIKER-10 | Generator `ablauf` (Ablaufzeichnung, breit und schmal, B-23) | G/Haiku | `ablauf` + Test | E4-L-23 | Z-06 | |
+| E4-GRAFIKER-10 | Generator `ablauf` (Ablaufzeichnung, breit und schmal, B-23) | G/Haiku | `ablauf` + Test | E4-L-23 | Z-06 | ec7db44 |
 | E5-L-28 | Lesefortschritt (B-24, Kür K-04) als Klassen, `ablaufAusText`, KERN 1.11 | L/Opus | `globals.css`, `motiv.ts` + Test, KERN | E4-L-23 | Z-05 | |
 | E5-BEFUND-H01…H12 | Befundpakete der Sichtabnahme E4-L-23, je Hauptansicht (Runde 1 von höchstens 2) | B/Haiku | je Ansicht | E4-L-27 | Z-04 | |
 | E4-L-07 | Leistung absichern (nach der ersten Etappenmessung) | L/Opus | je Befund | E3-P-B | Z-08 | 21d8833 (L-07a) |

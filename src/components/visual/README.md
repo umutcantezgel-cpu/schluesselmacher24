@@ -157,7 +157,7 @@ Beim `smart-key` gibt es keinen Bart; `funk` und `smart-key` zeigen Funkbögen.
 | `knaufseite` | `innen` · `aussen` (nur bei `knauf`) | `innen` |
 | `format` | `breit` (480 × 270) · `schmal` (300 × 220, Schrift 16/15 für Telefone) | `breit` |
 
-Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende, maßstäblich. `zylinder-mass` und `schliessplan` stehen in `SCHMALES_FORMAT` der Registry (die schmale Fassung hat in `ImagePlaceholder` Vorrang vor einem `ausschnitt`); `schmaleFassung(ref)` liefert den Verweis mit `format: 'schmal'`.
+Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende, maßstäblich. `ablauf`, `zylinder-mass` und `schliessplan` stehen in `SCHMALES_FORMAT` der Registry (die schmale Fassung hat in `ImagePlaceholder` Vorrang vor einem `ausschnitt`); `schmaleFassung(ref)` liefert den Verweis mit `format: 'schmal'`.
 
 ### `schliessplan` — Hierarchie einer Schließanlage (`viewBox 0 0 480 300`; schmal `0 0 360 h`, Höhe nach Ebenen)
 
@@ -250,6 +250,23 @@ Seiten 404 und Fehler, später Kür-Szene auf `/gleichschliessende-zylinder`.
 - Zugänglichkeit: Titel je Zustand — „Stiftzuhaltung: Der Schlüssel passt“, „… passt nicht“,
   „Abgebrochener Schlüssel im Zylinder“.
 
+### `ablauf` — Reihenfolge als bemaßte Stationen (`viewBox 0 0 480 270`; schmal `0 0 300 h`, Höhe nach Anzahl)
+
+Zwei bis vier nummerierte Stationen auf einer Bemaßungslinie (Kettenmaß mit Endstrichen),
+Pfeilspitzen in Laufrichtung, kurze Mono-Beschriftung. Einsatz: Kopf des Ratgebers, wenn
+der vorhandene Text eine Reihenfolge nennt (`ablaufAusText` in `src/lib/visual/motiv.ts`).
+
+| Parameter | Werte | Standard |
+|---|---|---|
+| `schritte` | Text, durch `\|` getrennt; 2–4 Einträge, je höchstens 14 Zeichen; leere Einträge entfallen; sonst gilt der Standard | drei Stationen nur mit Nummern |
+| `aktiv` | 0 (keine) oder 1–4: diese Station hinterlegt (`fill-area-soft`, `stroke-area-strong`) | `0` |
+| `format` | `breit` (Schrift 16) · `schmal` (300 breit, senkrecht, Schrift 12) | `breit` |
+
+- Stationen in der Bereichsfarbe (`stroke-area`), Bemaßungslinie `stroke-border-strong`.
+- Passen vier lange Beschriftungen nicht nebeneinander, stehen die geraden Stationen eine Zeile tiefer.
+- Bewegung (B-23): die Linie zeichnet (0,6 s), dann die Stationen nacheinander (`sm24-pop`, Staffel
+  0,12 s), Beschriftung und Pfeil mit ihrer Station; gesamt 1,36 s.
+
 ## BereichIcon
 
 ```tsx
@@ -272,7 +289,7 @@ Inhalte verweisen mit `ImageSlot.visual = { generator, params }` auf eine Grafik
 Unbekannte Namen oder unvollständige Verweise ergeben `null` (dann greift der
 Fach-Icon-Ersatz). `visualNames()` liefert die Namen sortiert.
 
-Die Registry umfasst acht Generatoren: `code-fundstelle`, `profilschnitt`, `schliessplan`,
+Die Registry umfasst neun Generatoren: `ablauf`, `code-fundstelle`, `profilschnitt`, `schliessplan`,
 `schluessel`, `stiftzuhaltung`, `tuer-schutz`, `zutritt-signal`, `zylinder-mass`.
 
 ```ts

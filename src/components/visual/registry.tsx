@@ -2,6 +2,7 @@ import { createElement, type ComponentType, type ReactElement } from 'react';
 
 import type { VisualParamValue, VisualRef } from '@/lib/types';
 
+import { AblaufGrafik } from './generators/ablauf';
 import { CodeFundstelleGrafik } from './generators/code-fundstelle';
 import { ProfilschnittGrafik } from './generators/profilschnitt';
 import { SchliessplanGrafik } from './generators/schliessplan';
@@ -32,6 +33,7 @@ export type VisualComponent = ComponentType<VisualProps>;
  * sind stabil, weil sie in Inhalten gespeichert werden (Name = Dateiname).
  */
 const REGISTRY: Record<string, VisualComponent> = {
+  ablauf: AblaufGrafik,
   'code-fundstelle': CodeFundstelleGrafik,
   profilschnitt: ProfilschnittGrafik,
   schliessplan: SchliessplanGrafik,
@@ -46,7 +48,7 @@ const REGISTRY: Record<string, VisualComponent> = {
  * Generatoren mit dem Parameter `format: 'schmal'`: eigene, kleinere Fläche mit
  * größerer Schrift für Telefonbreiten. Bildflächen zeigen sie unter 640 px.
  */
-const SCHMALES_FORMAT: ReadonlySet<string> = new Set(['schliessplan', 'zylinder-mass']);
+const SCHMALES_FORMAT: ReadonlySet<string> = new Set(['ablauf', 'schliessplan', 'zylinder-mass']);
 
 /** Die schmale Fassung zu `ref`, sofern der Generator eine hat; sonst `null`. */
 export function schmaleFassung(ref: VisualRef): VisualRef | null {

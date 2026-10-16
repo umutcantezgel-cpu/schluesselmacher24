@@ -1,0 +1,30 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T09:08:54.183Z",
+  "argumente": {
+    "_": [
+      "src/components/visual/generators/ablauf.tsx",
+      "src/components/visual/generators/ablauf.test.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 2,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 2,
+  "funde": [
+    {
+      "datei": "src/components/visual/generators/ablauf.test.tsx",
+      "zeile": 20,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/ablauf.test.tsx",
+      "zeile": 21,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    }
+  ]
+}
