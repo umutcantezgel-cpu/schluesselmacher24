@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## System Architektur Zielen
+Aktualisierte Zielarchitektur nach JC-AUDITOR-ARCHITECT-v1 Audit:
+- Fokus auf Server Component Supremacy und asynchrone Request-APIs.
+- Übergang zu React 19 Form Actions und OKLCH Design Doctrine.
