@@ -7,7 +7,6 @@ import type { NavLink } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
-import { AreaScope } from '@/components/visual/area-scope';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { IconGleichschliessendeZylinder } from '@/components/visual/icons/gleichschliessende-zylinder';
@@ -82,7 +81,7 @@ export default async function SchluesselNachCodePage() {
   const links = [...BASE_LINKS, ...extraLinks];
 
   return (
-    <AreaScope area="schluessel-nach-code">
+    <>
       <JsonLd
         data={pageGraphSchema({
           path: '/schluessel-nach-code',
@@ -189,6 +188,6 @@ export default async function SchluesselNachCodePage() {
           ))}
         </ol>
       </Section>
-    </AreaScope>
+    </>
   );
 }

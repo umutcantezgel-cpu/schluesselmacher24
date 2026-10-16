@@ -17,7 +17,6 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
 import { SchluesselartenReihe } from '@/components/autoschluessel/schluesselarten-reihe';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
-import { AreaScope } from '@/components/visual/area-scope';
 import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconReparaturAustausch } from '@/components/visual/icons/reparatur-austausch';
 import { IconSchluesselKopieren } from '@/components/visual/icons/schluessel-kopieren';
@@ -263,7 +262,7 @@ export default async function AutoschluesselHubPage() {
   ];
 
   return (
-    <AreaScope area="autoschluessel">
+    <>
       <JsonLd
         data={pageGraphSchema({
           path: '/autoschluessel',
@@ -537,6 +536,6 @@ export default async function AutoschluesselHubPage() {
           ))}
         </ul>
       </Section>
-    </AreaScope>
+    </>
   );
 }

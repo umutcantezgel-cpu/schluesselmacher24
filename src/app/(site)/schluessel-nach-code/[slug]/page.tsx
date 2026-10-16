@@ -12,7 +12,6 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { JsonLd, productSchema, breadcrumbSchema } from '@/components/seo/json-ld';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
-import { AreaScope } from '@/components/visual/area-scope';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { CodeFundstelleInteraktiv } from '@/components/visual/interaktiv/code-fundstelle-interaktiv';
@@ -85,7 +84,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
   ];
 
   return (
-    <AreaScope area="schluessel-nach-code">
+    <>
       <JsonLd data={productSchema(line)} />
       <JsonLd data={breadcrumbSchema(crumbs, `${getSiteUrl()}/schluessel-nach-code/${line.slug}`)} />
       <PageHeader
@@ -251,6 +250,6 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
           Die Versandart und die Versandkosten wählen Sie im Warenkorb.
         </p>
       </Section>
-    </AreaScope>
+    </>
   );
 }
