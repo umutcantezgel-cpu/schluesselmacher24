@@ -20,6 +20,8 @@ export interface OptionCardProps {
   disabled?: boolean;
   /** Zusatz rechts, z. B. ein Preis. */
   meta?: ReactNode;
+  /** Kleine Zeichnung rechts in der Karte (dekorativ, etwa die Bauform eines Schlüssels). */
+  bild?: ReactNode;
   children?: ReactNode;
 }
 
@@ -42,6 +44,7 @@ export function OptionCard({
   multiple = false,
   disabled = false,
   meta,
+  bild,
   children,
 }: OptionCardProps) {
   return (
@@ -92,6 +95,8 @@ export function OptionCard({
             </span>
           )}
         </span>
+
+        {bild && <span className="w-24 shrink-0 self-center sm:w-28">{bild}</span>}
       </label>
 
       {info && (

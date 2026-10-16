@@ -38,6 +38,7 @@ import { TerminAuswahl } from '@/components/autoschluessel/termin-auswahl';
 import { Bestaetigung } from '@/components/autoschluessel/bestaetigung';
 import { GlyphLaden } from '@/components/visual/glyphen/laden';
 import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
+import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
 
 /* ==========================================================================
    Autoschlüssel — geführter Ablauf in 13 Schritten
@@ -1046,6 +1047,7 @@ export function Assistent({
                 title={KEY_KIND_OPTIONS[kind].label}
                 description={KEY_KIND_OPTIONS[kind].description}
                 info={KEY_KIND_OPTIONS[kind].info}
+                bild={<SchluesselartZeichnung art={kind} />}
               />
             ))}
           </div>

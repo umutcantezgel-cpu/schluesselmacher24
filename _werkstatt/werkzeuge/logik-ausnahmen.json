@@ -35,6 +35,21 @@
       "grund": "Zylindermaß live (B-17): ohne Messfoto zeigt die Position die Maßzeichnung; reine Anzeige, liest nur item und form (E4-BAUMEISTER-13, D-029)",
       "suchen": "\\{measureFigure\\.bild \\? \\(\\s*<ImagePlaceholder slot=\\{measureFigure\\} compact />\\s*\\) : \\(\\s*<ZylinderMassLive\\s+form=\\{item\\.form\\}\\s+aussen=\\{item\\.measureAMm\\}\\s+innen=\\{item\\.measureBMm\\}\\s+name=\\{form\\.label\\}\\s*/>\\s*\\)\\}",
       "ersetzen": "<ImagePlaceholder slot={measureFigure} compact />"
+    },
+    {
+      "grund": "Prüfschritt: je Position die Maßzeichnung (ZylinderMassLive) mit Positionsnummer; liest nur data.items und den Katalognamen, die Zahlen stehen unverändert im Schriftfeld (E5-BEFUND-H07, D-042)",
+      "suchen": "\\{/\\* Je Position die Maßzeichnung[\\s\\S]*?</ul>\\s*</div>",
+      "ersetzen": ""
+    },
+    {
+      "grund": "Warnung „Anfertigung nach Ihren Maßen“ als Haarlinienzeile statt Alert: Leerzeichen zwischen Titel und Text (E5-BEFUND-H07, D-042)",
+      "suchen": "Anfertigung nach Ihren Maßen\\.</span>\\{' '\\}",
+      "ersetzen": "Anfertigung nach Ihren Maßen.</span>"
+    },
+    {
+      "grund": "Musterzeichnung im Kasten „So messen Sie richtig“ entfällt (eine Zeichnung statt zwei; die Live-Zeichnung steht daneben), Text unverändert (E5-BEFUND-H07, D-042)",
+      "suchen": "\\{catalog\\.measuringInfo\\.title\\}\\s*</h3>",
+      "ersetzen": "{catalog.measuringInfo.title}</h3><ImagePlaceholder slot={catalog.measuringFigure} />"
     }
   ],
   "src/app/(site)/kasse/kasse-formular.tsx": [
@@ -71,6 +86,11 @@
       "grund": "Modellzähler der Markenwahl in Mono-Ziffern (KERN 1.7: Zähler in font-mono tabular-nums); gleicher Text, nur umschlossen (E4-BAUMEISTER-16, D-033)",
       "suchen": "description=\\{<><span className=\"font\\-mono tabular\\-nums\">\\{entry\\.models\\.length\\}</span> Modelle hinterlegt</>\\}",
       "ersetzen": "description={`${entry.models.length} Modelle hinterlegt`}"
+    },
+    {
+      "grund": "Schritt „Schlüsselart“: kleine Zeichnung der Bauform in der Auswahlkarte (SchluesselartZeichnung, liest nur die Schlüsselart der Karte; rein dekorativ) (E5-BEFUND-H04 Runde 2, D-042)",
+      "suchen": "\\s*bild=\\{<SchluesselartZeichnung art=\\{kind\\} />\\}",
+      "ersetzen": ""
     }
   ],
   "src/components/forms/photo-upload.tsx": [

@@ -125,7 +125,7 @@ function enthaeltPruefEmail(inhalt) {
  */
 export async function attrappenSetzen(context) {
   const abgefangen = [];
-  const lesend = leseActions();
+  let lesend = leseActions();
   await context.route('**/*', async (route) => {
     const req = route.request();
     const url = new URL(req.url());
@@ -148,6 +148,9 @@ export async function attrappenSetzen(context) {
     const action = req.headers()['next-action'];
     const inhalt = req.postData() ?? '';
     // Nur bekannte lesende Actions erreichen den Server; jede andere wird als Attrappe beantwortet.
+    // Der Entwicklungsserver trägt Actions erst nach dem Kompilieren der Seite ins Manifest ein:
+    // bei einer unbekannten Kennung das Manifest einmal neu lesen (es bleiben nur fetch* aus booking.ts).
+    if (action && !lesend.has(action)) lesend = leseActions();
     if (action && lesend.has(action)) return route.continue();
     if (action) {
       abgefangen.push({

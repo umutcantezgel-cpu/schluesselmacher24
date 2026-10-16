@@ -1,0 +1,61 @@
+{
+  "skript": "funktionsliste",
+  "zeit": "2026-10-16T14:03:11.188Z",
+  "argumente": {
+    "_": [],
+    "nur": "F-04"
+  },
+  "server": "http://localhost:3001",
+  "records": {
+    "vorher": false,
+    "nachher": false
+  },
+  "serverlog": {
+    "neuZeichen": 0,
+    "treffer": 0
+  },
+  "ergebnisse": [
+    {
+      "id": "F-04",
+      "funktion": "Autoschlüssel-Assistent: Schritte, Fotos, Preis, Termin, Absenden",
+      "geraet": "mobil",
+      "ergebnis": "NICHT BESTANDEN",
+      "begruendung": "„Weiter“ gesperrt im Schritt „Preis für Ihren Fall“ [Felder: ]; Schritte: Welche Marke hat Ihr Fahrzeug?: weiter → Welches Modell fahren Sie?: weiter → Baujahr beziehungsweise Erstzulassung: weiter → Weitere Fahrzeugdaten (freiwillig): weiter → Welche Schlüsselart haben Sie?: weiter → Wie viele funktionierende Schlüssel haben Sie noch?: weiter → Was sollen wir für Sie tun?: weiter → Fotos Ihres Schlüssels: weiter → Zulassungsbescheinigung Teil I: weiter → Wie erreichen wir Sie?: weiter → Preis für Ihren Fall: gesperrt",
+      "messwert": null,
+      "dauer_ms": 58242,
+      "attrappen": [
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/autoschluessel/anfrage",
+          "laenge": 115
+        }
+      ]
+    }
+  ]
+}
