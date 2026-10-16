@@ -1,0 +1,17 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T14:47:10.529Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx",
+      "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx",
+      "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 4,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}
