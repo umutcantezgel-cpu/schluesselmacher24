@@ -1,0 +1,109 @@
+# 100-Ideen Matrix zur Maximierung des Bestands
+
+## KATEGORIE A: AWWWARDS-KINETIK & TAKTILE INTERAKTION (IDEEN 1 BIS 25)
+- **IDEA_001** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 1).
+- **IDEA_002** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 2).
+- **IDEA_003** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 3).
+- **IDEA_004** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 4).
+- **IDEA_005** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 5).
+- **IDEA_006** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 6).
+- **IDEA_007** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 7).
+- **IDEA_008** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 8).
+- **IDEA_009** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 9).
+- **IDEA_010** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 10).
+- **IDEA_011** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 11).
+- **IDEA_012** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 12).
+- **IDEA_013** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 13).
+- **IDEA_014** [CONVERSION_AND_TOOLS] - app/services/page.tsx (components/calculator/enterprise-roi-calculator.tsx): **Interaktiver Enterprise ROI- und Ladezeit-Kalkulator** - Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Services-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.
+- **IDEA_015** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 15).
+- **IDEA_016** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 16).
+- **IDEA_017** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 17).
+- **IDEA_018** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 18).
+- **IDEA_019** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 19).
+- **IDEA_020** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 20).
+- **IDEA_021** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 21).
+- **IDEA_022** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 22).
+- **IDEA_023** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 23).
+- **IDEA_024** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 24).
+- **IDEA_025** [AWWWARDS_KINETICS] - app/(site)/autoschluessel/page.tsx: Implementierung einer Scroll-getriebenen SVG-Animation für den Autoschlüssel-Pfad mit physikalischer Federdämpfung (Variante 25).
+
+## KATEGORIE B: SEMANTISCHE AUTORITÄT & CONTENT-MAXIMIERUNG (IDEEN 26 BIS 50)
+- **IDEA_026** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 26).
+- **IDEA_027** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 27).
+- **IDEA_028** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 28).
+- **IDEA_029** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 29).
+- **IDEA_030** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 30).
+- **IDEA_031** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 31).
+- **IDEA_032** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 32).
+- **IDEA_033** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 33).
+- **IDEA_034** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 34).
+- **IDEA_035** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 35).
+- **IDEA_036** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 36).
+- **IDEA_037** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 37).
+- **IDEA_038** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 38).
+- **IDEA_039** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 39).
+- **IDEA_040** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 40).
+- **IDEA_041** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 41).
+- **IDEA_042** [AWWWARDS_KINETICS] - app/page.tsx (components/showcase/spatial-bento-grid.tsx): **Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex** - Überführung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.
+- **IDEA_043** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 43).
+- **IDEA_044** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 44).
+- **IDEA_045** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 45).
+- **IDEA_046** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 46).
+- **IDEA_047** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 47).
+- **IDEA_048** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 48).
+- **IDEA_049** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 49).
+- **IDEA_050** [CONTENT_MAXIMIZATION] - app/(site)/schliessanlagen/page.tsx: Ausbau des Inhalts auf > 800 Wörter mit einer strukturierten Vergleichsmatrix für Zylindersysteme (Fokusbereich 50).
+
+## KATEGORIE C: CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE (IDEEN 51 BIS 75)
+- **IDEA_051** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 51).
+- **IDEA_052** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 52).
+- **IDEA_053** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 53).
+- **IDEA_054** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 54).
+- **IDEA_055** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 55).
+- **IDEA_056** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 56).
+- **IDEA_057** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 57).
+- **IDEA_058** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 58).
+- **IDEA_059** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 59).
+- **IDEA_060** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 60).
+- **IDEA_061** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 61).
+- **IDEA_062** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 62).
+- **IDEA_063** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 63).
+- **IDEA_064** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 64).
+- **IDEA_065** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 65).
+- **IDEA_066** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 66).
+- **IDEA_067** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 67).
+- **IDEA_068** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 68).
+- **IDEA_069** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 69).
+- **IDEA_070** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 70).
+- **IDEA_071** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 71).
+- **IDEA_072** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 72).
+- **IDEA_073** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 73).
+- **IDEA_074** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 74).
+- **IDEA_075** [CONVERSION_AND_TOOLS] - app/(site)/service-und-termin/page.tsx: Dynamisches Filter-System und interaktiver Vorher-Nachher-Slider für Service-Fälle (Integration 75).
+
+## KATEGORIE D: EXTREME PERFORMANCE, ARCHITEKTUR & DX (IDEEN 76 BIS 100)
+- **IDEA_076** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 76).
+- **IDEA_077** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 77).
+- **IDEA_078** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 78).
+- **IDEA_079** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 79).
+- **IDEA_080** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 80).
+- **IDEA_081** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 81).
+- **IDEA_082** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 82).
+- **IDEA_083** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 83).
+- **IDEA_084** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 84).
+- **IDEA_085** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 85).
+- **IDEA_086** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 86).
+- **IDEA_087** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 87).
+- **IDEA_088** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 88).
+- **IDEA_089** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 89).
+- **IDEA_090** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 90).
+- **IDEA_091** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 91).
+- **IDEA_092** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 92).
+- **IDEA_093** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 93).
+- **IDEA_094** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 94).
+- **IDEA_095** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 95).
+- **IDEA_096** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 96).
+- **IDEA_097** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 97).
+- **IDEA_098** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 98).
+- **IDEA_099** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 99).
+- **IDEA_100** [PERFORMANCE_ARCHITECTURE] - app/(site)/elektronische-zutrittsloesungen/page.tsx: CSS Subgrid-Harmonisierung und Container Queries (@container) für reaktive Produkt-Cards (Optimierung 100).
