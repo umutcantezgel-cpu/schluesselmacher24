@@ -1,0 +1,4 @@
+# SCHLÜSSELMACHER24
+Dies ist die Master-Dokumentation für KI-Agenten, die diese Codebasis lesen.
+Wir folgen der Swiss Light Mode Design Doctrine mit strict Next.js 16 App Router.
+Zero-New-Routes Invariante aktiv.
