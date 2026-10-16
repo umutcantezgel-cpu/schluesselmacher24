@@ -136,7 +136,7 @@ export default async function ModelPage(props: PageProps) {
     ...felder.filter((feld) => feld.keyless).map(() => ({ art: 'keyless' as const })),
   ];
   const hatZeichnung = gezeichnet.length > 0;
-  const leiste = gezeichnet.length >= 3;
+  const leiste = gezeichnet.length > 3;
 
   // Vorbelegung des Assistenten über Suchparameter.
   const assistantHref = `/autoschluessel/anfrage?marke=${make.slug}&modell=${model.slug}`;
