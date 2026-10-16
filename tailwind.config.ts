@@ -226,6 +226,8 @@ const config = {
       addVariant('zeiger', '@media (hover: hover) and (pointer: fine)');
       /* Sichtbarer Tastaturfokus für Karten mit verstecktem Eingabefeld (KERN K-009) */
       addVariant('fokus-innen', '&:has(:focus-visible)');
+      /* Warenkorb-Seite: Geschwister der Leerkarte, solange der Korb leer ist (Gruppe `group/warenkorb`) */
+      addVariant('korb-leer', '.group\\/warenkorb:has([data-leerzustand]) &');
     }),
     plugin(({ addBase }) => {
       addBase({

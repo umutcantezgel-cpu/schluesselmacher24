@@ -129,7 +129,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
   if (!geladen) {
     return (
       /* Gleiche Mindesthöhe wie der Leerzustand: Nach dem Laden springt nichts (CLS). */
-      <Card className="min-h-80 sm:min-h-64">
+      <Card className="min-h-80 sm:min-h-64 lg:col-span-8" data-leerzustand>
         <CardBody>
           <p className="flex items-center gap-3 text-body text-foreground-muted" role="status">
             <GlyphLaden size={18} className="animate-spin motion-reduce:animate-none" />
@@ -142,7 +142,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
 
   if (positionen.length === 0) {
     return (
-      <Card className="min-h-80 sm:min-h-64">
+      <Card className="min-h-80 sm:min-h-64 lg:col-span-8" data-leerzustand>
         <CardBody className="max-w-xl">
           <IconWarenkorb size={48} className="text-primary" />
           <h2 className="mt-4 text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
@@ -162,7 +162,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
   }
 
   return (
-    <div className="grid gap-10 pb-28 md:pb-0 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+    <div className="grid gap-10 lg:col-span-12 lg:grid-cols-12 lg:items-start lg:gap-gutter">
       <div className="space-y-6 lg:col-span-8">
         <h2 className="text-title-sm font-semibold text-foreground">
           Positionen <span className="font-mono text-small font-normal tabular-nums text-foreground-muted">({positionen.length})</span>
@@ -183,16 +183,18 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                 <div className="flex flex-col gap-4 sm:grid sm:grid-cols-12 sm:gap-x-4">
                   <div className="flex gap-4 sm:contents">
                     {/* Schlüsselprofil des Codes auf Sunken-Fläche; mobil 64 px breit links vom Titel. */}
-                    <div className="w-16 shrink-0 overflow-hidden rounded-lg bg-surface-sunken sm:col-span-2 sm:w-auto">
-                      <ImagePlaceholder
-                        slot={{
-                          motif: 'Schlüsselprofil zum Code',
-                          ratio: '1/1',
-                          visual: { generator: 'schluessel', params: { typ: 'zylinder', code: position.item.code } },
-                        }}
-                        frei
-                      />
-                    </div>
+                    {position.line && (
+                      <div className="w-16 shrink-0 self-start overflow-hidden rounded-lg bg-surface-sunken sm:col-span-2 sm:w-auto">
+                        <ImagePlaceholder
+                          slot={{
+                            motif: 'Schlüsselprofil zum Code',
+                            ratio: '1/1',
+                            visual: { generator: 'schluessel', params: { typ: 'zylinder', code: position.item.code } },
+                          }}
+                          frei
+                        />
+                      </div>
+                    )}
 
                     <div className="min-w-0 flex-1 sm:col-span-4 sm:col-start-3">
                       <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
@@ -539,8 +541,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
             <p className="mt-4 flex items-start gap-2 text-small text-foreground-muted">
               <GlyphInfo size={16} className="mt-0.5 shrink-0" />
               <span>
-                <span className="font-semibold text-foreground">Hinweis zur Preisberechnung:</span>{' '}
-                Der endgültige Preis wird beim Absenden der Bestellung noch einmal auf unserem
+                <span className="font-semibold text-foreground">Hinweis zur Preisberechnung:</span> Der endgültige Preis wird beim Absenden der Bestellung noch einmal auf unserem
                 Server berechnet. Maßgeblich sind die dort hinterlegten Preise.
               </span>
             </p>
@@ -555,8 +556,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
       >
         <div className="shell flex min-h-touch-lg items-center justify-between gap-4 py-2">
           <p className="text-small text-foreground-muted">
-            Gesamtsumme{' '}
-            <span
+            Gesamtsumme <span
               key={summen.totalCents}
               className="animate-schleier-ein font-mono text-body font-semibold tabular-nums text-foreground"
             >
@@ -593,7 +593,7 @@ function StandardPositionKarte({
     <div className="flex flex-col gap-4 sm:grid sm:grid-cols-12 sm:gap-x-4">
       <div className="flex gap-4 sm:contents">
         {article && (
-          <div className="w-16 shrink-0 sm:col-span-2 sm:w-auto">
+          <div className="hidden sm:col-span-2 sm:block">
             <ImagePlaceholder slot={article.image} compact />
           </div>
         )}
