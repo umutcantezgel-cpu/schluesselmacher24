@@ -127,8 +127,9 @@ const config = {
         strich: 'var(--strich)',
       },
       letterSpacing: {
-        /* Großbuchstaben-Zeilen (Augenbraue, Bemaßung) */
+        /* Großbuchstaben-Zeilen (Augenbraue, Bemaßung); schmal: unter 640 px, damit sie einzeilig bleiben */
         label: '0.12em',
+        'label-eng': '0.06em',
       },
       spacing: {
         section: 'var(--space-section)',
@@ -144,6 +145,12 @@ const config = {
       },
       minWidth: {
         touch: '2.75rem',
+        /* Fachgrafik mit Beschriftung: darunter scrollt sie seitlich statt zu schrumpfen */
+        zeichnung: '35rem',
+      },
+      gridTemplateRows: {
+        /* Kopfzeile so hoch wie ihr Inhalt, der Rest nimmt den übrigen Platz (Startseiten-Kopf) */
+        kopf: 'min-content 1fr',
       },
       maxWidth: {
         shell: 'var(--shell-max)',

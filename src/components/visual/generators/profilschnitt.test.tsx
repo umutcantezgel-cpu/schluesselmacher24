@@ -2,7 +2,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { ProfilschnittGrafik } from './profilschnitt';
+import { FRAESER_ABHEBEN, PROFILSCHNITT_AUSSCHNITT, PROFILSCHNITT_GROESSE, ProfilschnittGrafik } from './profilschnitt';
 
 function zeichne(params: unknown, title: unknown = ''): string {
   return renderToStaticMarkup(
@@ -77,5 +77,44 @@ describe('ProfilschnittGrafik', () => {
 
   it('übernimmt einen eigenen Titel', () => {
     expect(zeichne({}, 'Fräsen in der Werkstatt')).toContain('<title>Fräsen in der Werkstatt</title>');
+  });
+
+  describe('Fräser in Ruhelage und Ausschnitt für kleine Breiten', () => {
+    const html = zeichne({});
+    const rad = html.match(/data-fraesrad="" transform="translate\(([\d.]+) ([\d.]+)\)"/);
+    const ruhe = { x: Number(rad?.[1]) + FRAESER_ABHEBEN.x, y: Number(rad?.[2]) + FRAESER_ABHEBEN.y };
+    /** Radius des Fräsers mit Zähnen (14 + 3,5). */
+    const aussen = 17.5;
+
+    it('hebt den Fräser in der Ruhelage ab und blendet ihn zum Start ein', () => {
+      expect(html).toContain(`data-fraesabheben="${FRAESER_ABHEBEN.x},${FRAESER_ABHEBEN.y}"`);
+      expect(html).toContain(`transform="translate(${FRAESER_ABHEBEN.x} ${FRAESER_ABHEBEN.y})"`);
+      expect(html).toMatch(/class="sm24-fade" data-fraesbahn="/);
+      expect(html.match(/data-fraesbahn=/g)).toHaveLength(1);
+    });
+
+    it('lässt den ruhenden Fräser frei von Spitze und Rohlingkante', () => {
+      // Spitze: Strecke (426,168) → (456,198); Rohlingkante bei y = 168.
+      const abstandSpitze = Math.abs(ruhe.x - ruhe.y - (426 - 168)) / Math.SQRT2;
+      expect(abstandSpitze).toBeGreaterThan(aussen + 3.5);
+      expect(168 - ruhe.y).toBeGreaterThan(aussen + 3.5);
+    });
+
+    it('fasst im Ausschnitt Nummern, Einschnitte, Spitze und Fräser', () => {
+      const a = PROFILSCHNITT_AUSSCHNITT;
+      const innen = (x: number, y: number) => x >= a.x && x <= a.x + a.breite && y >= a.y && y <= a.y + a.hoehe;
+      const nummernX = [...html.matchAll(/<text[^>]*text-anchor="middle" x="([\d.]+)" y="122"/g)].map((t) => Number(t[1]));
+      expect(nummernX).toHaveLength(6);
+      expect(nummernX.every((x) => innen(x, 122))).toBe(true);
+      expect(innen(456, 198)).toBe(true);
+      expect(innen(ruhe.x - aussen, ruhe.y - aussen) && innen(ruhe.x + aussen, ruhe.y + aussen)).toBe(true);
+      expect(a.breite).toBeLessThanOrEqual(320);
+      expect(PROFILSCHNITT_GROESSE).toEqual({ breite: 480, hoehe: 360 });
+    });
+
+    it('markiert die Bemaßung, damit der Ausschnitt sie ausblenden kann', () => {
+      expect(html.match(/data-bemassung=""/g)).toHaveLength(1);
+      expect(html).toMatch(/data-bemassung="">[\s\S]*Halm · 6 Einschnitte/);
+    });
   });
 });

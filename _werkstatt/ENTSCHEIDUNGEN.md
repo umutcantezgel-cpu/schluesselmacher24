@@ -128,3 +128,45 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
 
 - Die Befunde werden zum Paket E2-L-06b (Orchestrator, Startseite und gemeinsame Bausteine). Danach folgt Anlauf 2, der letzte nach L3.
 - Der Container wurde während des Workflows neu gestartet. Das Ergebnisprotokoll und Welle E3-A werden neu angesetzt.
+
+## D-017 · Bereichsfarben mit mindestens 30° Farbtonabstand
+- Die Sichtabnahme fand zwei Bereichspaare, die nebeneinander gleich wirken: Code und Schließanlagen lagen 21° auseinander, Vorlage und Tür 20°. Auch die übrigen Bereiche lagen im blauen Bereich eng beieinander.
+- Neue Farbtöne:
+
+  | Bereich | Farbton |
+  |---|---|
+  | Tür | 125 |
+  | Vorlage | 160 |
+  | Zutritt | 191 |
+  | Autoschlüssel | 222 |
+  | Code | 252 |
+  | Schließanlagen | 282 |
+  | Service | 318 |
+  | Sicherheit | 350 |
+  | Zylinder | 20 |
+
+  Sättigung und Helligkeit sind so gewählt, dass alle Kontrastprüfungen bestehen: Text ≥ 4,5:1, Grafik ≥ 3:1 auf Weiß und auf der Bereichsfläche.
+- Neue Tests sichern den Abstand von mindestens 30° und einen gemeinsamen Farbton von Fläche, Text und Linie.
+- **Umkehrprobe:** Weniger Bereichsfarben würden die Kennzeichnung der Bereiche aufgeben. Mehr Abstand im Farbton ist billiger und bleibt im System.
+
+## D-018 · Startseite, Anlauf 2 (E2-L-06b): Antworten auf die Sichtabnahme
+- **Hart:** Der Redaktionshinweis im Fuß erscheint nur außerhalb der Produktion. Besucher sehen keine Anschrift, bis die Firmendaten vorliegen (M-01). Das schreibt D-008 fort.
+- **Komposition:**
+  - Der Hero besteht aus drei Teilen. Mobil stehen h1, Halmstreifen, Knopf, Unterzeile und Schriftfeld untereinander. Das Schriftfeld ist in jeder Breite einzeilig, mit dem Mikrotext „bundesweit“ statt „deutschlandweit“.
+  - Der Schnelleinstieg ist mobil ein kompaktes Zweierraster.
+  - Die Projekte-Grafik ist oben ausgerichtet, ragt hinaus und bleibt am Desktop stehen (`sticky`).
+  - Der Ratgeber hat den Kopf oben und drei Spalten.
+- **Typografie:**
+  - Die Haarlinienlisten nutzen eine einzige Titelstufe, `title-sm`.
+  - Die Augenbrauen-Zeile ist unter 640 px enger gesperrt; Mikrotext „Schlüssel- und Schließtechnik“ statt „Fachbetrieb für Schlüssel- und Schließtechnik“, damit er einzeilig bleibt.
+  - Der Schließplan scrollt mobil seitlich, in einer fokussierbaren Region mit Namen.
+- **Farbe:**
+  - Der Ablauf liegt auf der abgesenkten Fläche (`sunken`), und getönte Abschnitte haben Haarlinien.
+  - Die Prüfpunkte tragen das Prüfsiegel in der Markenfarbe statt Erfolgsgrün.
+- **Bewegung B-01:**
+  - Start bei Sichtbarkeit.
+  - Der Fräser blendet ein, fährt im Takt der Zeichnung und hebt am Ende ab. Bisher lief er linear, während die Linie mit `--kurve-draw` zeichnete.
+  - Die Ruhelage liegt frei von der Spitze.
+  - Mobil zeigt ein CSS-Ausschnitt nur den Halm mit Einschnitten; die Beschriftung ist dort etwa 13 px groß.
+- **Bewusst offen:** Die Beschriftungen der kleinen Grafiken in den Karten „Direkt kaufen“ bleiben mobil klein (etwa 8 px). Eine Lösung bräuchte eine Schriftstufe in den Generatoren und ist ein eigenes Paket, falls die Sichtabnahme es verlangt.
+

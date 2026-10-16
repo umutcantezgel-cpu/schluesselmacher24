@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.3
+# KERN · SCHLÜSSELMACHER24 · Version 1.4
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -160,7 +160,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 
 | ID | Bewegung | Zweck | Auslöser | Stufen | Reduziert |
 |---|---|---|---|---|---|
-| B-01 | Fräsbahn im Hero (Startseite) | Charakter | erster Bildschirm geladen | Profil zeichnet `enter` + `draw` 1,1 s; Fräskopf folgt per `transform` | Profil sofort vollständig, Fräskopf ruht am Ende |
+| B-01 | Fräsbahn im Hero (Startseite) | Charakter | Grafik zur Hälfte sichtbar (Hülle `FraesbahnBewegung`, `data-motion`) | Fräser blendet ein (Verzögerung 0,3 s), Profil zeichnet `draw` 1,1 s, Fräser folgt im selben Takt per `transform`, hebt danach `quick`/`exit` ab | Profil sofort vollständig, Fräser ruht gehoben frei von der Spitze |
 | B-02 | Profillinie zeichnet sich | Hierarchie | Abschnitt sichtbar (InView) | `enter` 600 ms, `draw` | sofort vollständig |
 | B-03 | Ablauf am Scrollen (Startseite, Autoschlüssel-Ablauf) | Orientierung | Scrollposition (`view()`) | Fortschrittslinie `scaleY` 0 → 1, Schrittmarken füllen sich | Endzustand statisch |
 | B-04 | Abschnittsauftritt (`sm24-reveal`) | Hierarchie | InView, höchstens einer je Bildschirmhöhe | `enter` 600 ms, 8 px | sofort sichtbar |
@@ -280,3 +280,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.1 · E1 · K-004a (Technikfakten Next 16 und tailwind-merge), K-005a (Umrechnungstabelle), K-008a (Zuordnung lucide → SM24), Sperrung `tracking-label`. Grund: Berichte E0-KUNDSCHAFTER-06 und -07.
 - 1.2 · E2 · K-008 Strichskala um DETAIL, LINIE_STARK, AKZENT und MARKE erweitert, Ausnahmen benannt. Grund: Bericht E2-GRAFIKER-05.
 - 1.3 · E3 · K-007: reduzierte Bewegung = sofort (globale Regel), Bausteinliste mit `sm24-schritt-*`, `fokus-innen:`, `zahl-ohne-pfeile`, Spinner 900 ms, `hover:` nur bei feinem Zeiger. Grund: Vorbereitung Welle E3-A.
+- 1.4 · E2 · B-01 startet bei Sichtbarkeit und hebt ab; Bereichsfarbtöne mit mindestens 30° Abstand (D-017); `Section`-Ton `sunken` mit Haarlinien; Tokens `min-w-zeichnung`, `grid-rows-kopf`, `tracking-label-eng`; Ausschnitt `.sm24-ausschnitt`. Grund: Sichtabnahme E2-L-07, Anlauf 1.

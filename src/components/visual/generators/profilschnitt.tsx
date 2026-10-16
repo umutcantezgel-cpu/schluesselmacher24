@@ -51,6 +51,16 @@ const MAX_SPRUNG = 6;
 /** Zeitplan des großen Moments B-01 (Sekunden). */
 export const FRAESBAHN = { verzoegerung: 0.3, dauer: 1.1 } as const;
 
+/**
+ * Nach dem letzten Einschnitt hebt der Fräser vom Werkstück ab (viewBox-Einheiten).
+ * Die Ruhelage ist schon gehoben, damit er auch ohne Bewegung frei von der Spitze steht.
+ */
+export const FRAESER_ABHEBEN = { x: 12, y: -16 } as const;
+
+/** Volle Zeichenfläche und schmaler Ausschnitt (Halm mit Einschnitten) für kleine Breiten. */
+export const PROFILSCHNITT_GROESSE = { breite: BREITE, hoehe: HOEHE } as const;
+export const PROFILSCHNITT_AUSSCHNITT = { x: 140, y: 98, breite: 320, hoehe: 140 } as const;
+
 function profilAusText(text: string): number[] {
   const naechste = zahlenfolge(hash(text.toUpperCase().replace(/\s+/g, '')));
   const folge: number[] = [];
@@ -165,21 +175,34 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
         d={pfad(punkte)}
       />
 
-      {/* Fräser: ruht am Ende der Bahn; die Client-Hülle führt ihn die Bahn entlang */}
-      <g data-fraesbahn={fraesbahn(punkte)}>
-        <g data-fraesrad="" transform={`translate(${endeX} ${r(endeY - FRAESER_R - 1)})`}>
-          <circle className="fill-surface stroke-foreground" strokeWidth={LINIE_STARK} r={FRAESER_R} />
-          <circle className="stroke-foreground-muted" strokeWidth={LINIE} r={4} />
-          <path
-            className="stroke-foreground"
-            strokeWidth={LINIE_STARK}
-            d={[0, 45, 90, 135, 180, 225, 270, 315]
-              .map((w) => {
-                const a = (w * Math.PI) / 180;
-                return `M${r(Math.cos(a) * FRAESER_R)} ${r(Math.sin(a) * FRAESER_R)}L${r(Math.cos(a) * (FRAESER_R + 3.5))} ${r(Math.sin(a) * (FRAESER_R + 3.5))}`;
-              })
-              .join('')}
-          />
+      {/*
+        Fräser: ruht gehoben über dem Ende der Bahn. Die Client-Hülle führt ihn die Bahn
+        entlang (innere Gruppe) und lässt ihn danach abheben (äußere Gruppe). Er blendet
+        während der Startverzögerung ein, damit er nicht von der Ruhelage springt.
+      */}
+      <g
+        data-fraesabheben={`${FRAESER_ABHEBEN.x},${FRAESER_ABHEBEN.y}`}
+        transform={`translate(${FRAESER_ABHEBEN.x} ${FRAESER_ABHEBEN.y})`}
+      >
+        <g
+          className="sm24-fade"
+          data-fraesbahn={fraesbahn(punkte)}
+          style={motionStyle(0, FRAESBAHN.verzoegerung)}
+        >
+          <g data-fraesrad="" transform={`translate(${endeX} ${r(endeY - FRAESER_R - 1)})`}>
+            <circle className="fill-surface stroke-foreground" strokeWidth={LINIE_STARK} r={FRAESER_R} />
+            <circle className="stroke-foreground-muted" strokeWidth={LINIE} r={4} />
+            <path
+              className="stroke-foreground"
+              strokeWidth={LINIE_STARK}
+              d={[0, 45, 90, 135, 180, 225, 270, 315]
+                .map((w) => {
+                  const a = (w * Math.PI) / 180;
+                  return `M${r(Math.cos(a) * FRAESER_R)} ${r(Math.sin(a) * FRAESER_R)}L${r(Math.cos(a) * (FRAESER_R + 3.5))} ${r(Math.sin(a) * (FRAESER_R + 3.5))}`;
+                })
+                .join('')}
+            />
+          </g>
         </g>
       </g>
 
@@ -201,22 +224,24 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
             </g>
           ))}
 
-          {/* Bemaßung des Halms */}
-          <g className="stroke-foreground-muted" strokeWidth={HILFSLINIE}>
-            <path d={`M${HALM_START} ${SCHULTER.unten + 6}V${masslinieY + 8}M${SPITZE.x} ${SPITZE.y + 10}V${masslinieY + 8}`} />
+          {/* Bemaßung des Halms (im schmalen Ausschnitt ausgeblendet) */}
+          <g data-bemassung="">
+            <g className="stroke-foreground-muted" strokeWidth={HILFSLINIE}>
+              <path d={`M${HALM_START} ${SCHULTER.unten + 6}V${masslinieY + 8}M${SPITZE.x} ${SPITZE.y + 10}V${masslinieY + 8}`} />
+            </g>
+            <path className="stroke-foreground-muted" strokeWidth={LINIE} d={`M${HALM_START + 8} ${masslinieY}H${SPITZE.x - 8}`} />
+            <path className="fill-foreground-muted" stroke="none" d={pfeilspitze(HALM_START, masslinieY, 180)} />
+            <path className="fill-foreground-muted" stroke="none" d={pfeilspitze(SPITZE.x, masslinieY, 0)} />
+            <text
+              className="fill-foreground-muted font-mono"
+              fontSize={SCHRIFT_KLEIN}
+              textAnchor="middle"
+              x={(HALM_START + SPITZE.x) / 2}
+              y={masslinieY - 8}
+            >
+              {`Halm · ${stufen.length} Einschnitte`}
+            </text>
           </g>
-          <path className="stroke-foreground-muted" strokeWidth={LINIE} d={`M${HALM_START + 8} ${masslinieY}H${SPITZE.x - 8}`} />
-          <path className="fill-foreground-muted" stroke="none" d={pfeilspitze(HALM_START, masslinieY, 180)} />
-          <path className="fill-foreground-muted" stroke="none" d={pfeilspitze(SPITZE.x, masslinieY, 0)} />
-          <text
-            className="fill-foreground-muted font-mono"
-            fontSize={SCHRIFT_KLEIN}
-            textAnchor="middle"
-            x={(HALM_START + SPITZE.x) / 2}
-            y={masslinieY - 8}
-          >
-            {`Halm · ${stufen.length} Einschnitte`}
-          </text>
 
           {/* Legende */}
           <g transform="translate(24 318)">

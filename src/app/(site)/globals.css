@@ -191,7 +191,7 @@
    * Bemaßungsmarke (|—|) wie auf einer Werkstattzeichnung (KERN K-006).
    */
   .eyebrow {
-    @apply inline-flex items-center gap-2.5 font-mono text-caption font-medium uppercase tracking-label text-area-strong;
+    @apply inline-flex items-center gap-2.5 font-mono text-caption font-medium uppercase tracking-label text-area-strong max-sm:tracking-label-eng;
   }
 
   .eyebrow::before {
@@ -479,5 +479,28 @@
   ::view-transition-old(*),
   ::view-transition-new(*) {
     animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Ausschnitt einer Fachgrafik für kleine Breiten (Startseite, B-01): Ein
+   einziges SVG wird beschnitten statt doppelt gezeichnet, damit Bewegung und
+   Beschriftung erhalten bleiben und die Schrift lesbar groß wird. Werte setzt
+   `ImagePlaceholder` (Prop `ausschnitt`) als Variablen. Steht nach den
+   Hilfsklassen, damit `aspect-ratio` hier Vorrang hat.
+   ========================================================================== */
+@media (max-width: 1023.98px) {
+  .sm24-ausschnitt {
+    aspect-ratio: var(--aus-w) / var(--aus-h);
+  }
+
+  .sm24-ausschnitt > svg {
+    width: calc(100% * var(--voll-w) / var(--aus-w));
+    height: calc(100% * var(--voll-h) / var(--aus-h));
+    transform: translate(calc(-100% * var(--aus-x) / var(--voll-w)), calc(-100% * var(--aus-y) / var(--voll-h)));
+  }
+
+  .sm24-ausschnitt [data-bemassung] {
+    display: none;
   }
 }

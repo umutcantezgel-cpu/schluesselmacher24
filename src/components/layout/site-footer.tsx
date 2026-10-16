@@ -42,11 +42,16 @@ export async function SiteFooter() {
               Zutrittslösungen und Sicherheitstechnik.
             </p>
 
-            {/* Solange die Firmendaten Platzhalter sind, sehen Besucher nur den Hinweis. */}
+            {/*
+              Solange die Firmendaten Platzhalter sind, entfällt die Anschrift. Den Hinweis
+              sieht nur die Redaktion beim Entwickeln, nie ein Besucher (D-016, MENSCHEN M-01).
+            */}
             {company.isPlaceholder ? (
-              <p className="mt-6 rounded-sm border border-warning/30 bg-warning-soft px-3 py-2 text-caption font-semibold text-foreground">
-                Hinweis für die Redaktion: Firmendaten sind noch Platzhalter.
-              </p>
+              process.env.NODE_ENV !== 'production' && (
+                <p className="mt-6 rounded-sm border border-warning/30 bg-warning-soft px-3 py-2 text-caption font-semibold text-foreground">
+                  Hinweis für die Redaktion: Firmendaten sind noch Platzhalter.
+                </p>
+              )
             ) : (
               <address className="mt-6 text-small not-italic text-foreground-muted">
                 {company.legalName}

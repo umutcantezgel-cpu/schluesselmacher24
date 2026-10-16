@@ -6,8 +6,11 @@ import { cn } from '@/lib/cn';
 export interface SectionProps {
   children: ReactNode;
   className?: string;
-  /** Hintergrundvariante. */
-  tone?: 'default' | 'muted' | 'ink';
+  /**
+   * Hintergrundvariante. Getönte Flächen (`muted`, `sunken`) setzen sich mit
+   * Haarlinien ab: Tiefe durch Flächenstufen, nicht durch Schatten (KERN K-003.5).
+   */
+  tone?: 'default' | 'muted' | 'sunken' | 'ink';
   /** Weniger vertikaler Abstand. */
   tight?: boolean;
   id?: string;
@@ -27,7 +30,10 @@ export function Section({ children, className, tone = 'default', tight, id, labe
       aria-labelledby={labelledBy}
       className={cn(
         tight ? 'section-tight' : 'section',
+        /* `-mt-px`: Trifft die Haarlinie auf eine Kante davor, liegt sie darauf statt daneben. */
+        (tone === 'muted' || tone === 'sunken') && '-mt-px border-y border-border',
         tone === 'muted' && 'bg-surface-muted',
+        tone === 'sunken' && 'bg-surface-sunken',
         tone === 'ink' && 'bg-surface-ink text-foreground-inverse',
         className,
       )}

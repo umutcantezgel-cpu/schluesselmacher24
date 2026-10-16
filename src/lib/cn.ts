@@ -12,7 +12,7 @@ const twMerge = extendTailwindMerge({
   extend: {
     theme: {
       text: ["caption", "small", "body", "input", "lead", "title-sm", "title", "headline", "display"],
-      tracking: ["label"],
+      tracking: ["label", "label-eng"],
       shadow: ["raised", "overlay"],
       spacing: ["section", "section-tight", "gutter", "header"],
       container: ["shell", "measure"],
@@ -23,7 +23,8 @@ const twMerge = extendTailwindMerge({
       z: [{ z: ["raised", "sticky", "header", "overlay", "drawer", "skip"] }],
       duration: [{ duration: ["instant", "quick", "base", "slow", "enter", "scene"] }],
       "min-h": [{ "min-h": ["touch-sm", "touch", "touch-lg"] }],
-      "min-w": [{ "min-w": ["touch"] }],
+      "min-w": [{ "min-w": ["touch", "zeichnung"] }],
+      "grid-rows": [{ "grid-rows": ["kopf"] }],
       scale: [{ scale: ["druck"] }],
       "border-w": [{ border: ["strich"] }],
       "border-w-x": [{ "border-x": ["strich"] }],

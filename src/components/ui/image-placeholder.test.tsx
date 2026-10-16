@@ -46,3 +46,30 @@ describe('ImagePlaceholder – Rangfolge ohne Foto', () => {
     }
   });
 });
+
+describe('ImagePlaceholder – Ausschnitt für kleine Breiten', () => {
+  const ausschnitt = { x: 140, y: 98, breite: 320, hoehe: 140, vollBreite: 480, vollHoehe: 360 };
+  const grafik: ImageSlot = { motif: 'Beliebig', ratio: '4/3', visual: { generator: 'profilschnitt', params: {} } };
+
+  it('setzt Klasse und Variablen und behält das Seitenverhältnis für breite Flächen', () => {
+    const html = renderToStaticMarkup(<ImagePlaceholder slot={grafik} ausschnitt={ausschnitt} />);
+    expect(html).toContain('sm24-ausschnitt');
+    expect(html).toContain('aspect-4/3');
+    expect(html).toContain('--aus-x:140;--aus-y:98;--aus-w:320;--aus-h:140;--voll-w:480;--voll-h:360');
+  });
+
+  it('wirkt nur auf Fachgrafiken, nicht auf Fach-Icons', () => {
+    const icon = renderToStaticMarkup(
+      <ImagePlaceholder slot={{ motif: 'Teamfoto', ratio: '4/3' }} compact ausschnitt={ausschnitt} />,
+    );
+    expect(icon).not.toContain('sm24-ausschnitt');
+    expect(icon).not.toContain('--aus-x');
+  });
+
+  it('ändert ohne Ausschnitt nichts am Markup', () => {
+    const html = renderToStaticMarkup(<ImagePlaceholder slot={grafik} />);
+    expect(html).not.toContain('sm24-ausschnitt');
+    expect(html).not.toContain('--aus-x');
+    expect(html).toMatch(/^<div class="[^"]*"><svg/);
+  });
+});

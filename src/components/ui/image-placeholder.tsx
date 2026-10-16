@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { ComponentType } from 'react';
+import type { ComponentType, CSSProperties } from 'react';
 
 import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconAlarmtechnik } from '@/components/visual/icons/alarmtechnik';
@@ -45,6 +45,35 @@ export interface ImagePlaceholderProps {
   sizes?: string;
   /** Ohne Fläche und Rahmen – die Zeichnung steht frei (etwa im Seitenkopf). */
   frei?: boolean;
+  /**
+   * Nur für Fachgrafiken: Unter 1024 px zeigt die Fläche nur diesen Ausschnitt der
+   * Zeichnung (viewBox-Einheiten), damit Beschriftungen lesbar groß bleiben.
+   */
+  ausschnitt?: GrafikAusschnitt;
+}
+
+export interface GrafikAusschnitt {
+  x: number;
+  y: number;
+  breite: number;
+  hoehe: number;
+  /** Volle Größe der Zeichenfläche (viewBox). */
+  vollBreite: number;
+  vollHoehe: number;
+}
+
+type AusschnittStil = CSSProperties & Record<'--aus-x' | '--aus-y' | '--aus-w' | '--aus-h' | '--voll-w' | '--voll-h', number>;
+
+/** CSS-Variablen für `.sm24-ausschnitt` (globals.css). */
+export function ausschnittStil(a: GrafikAusschnitt): AusschnittStil {
+  return {
+    '--aus-x': a.x,
+    '--aus-y': a.y,
+    '--aus-w': a.breite,
+    '--aus-h': a.hoehe,
+    '--voll-w': a.vollBreite,
+    '--voll-h': a.vollHoehe,
+  };
 }
 
 /**
@@ -63,6 +92,7 @@ export function ImagePlaceholder({
   compact = false,
   sizes = '(min-width: 1024px) 50vw, 100vw',
   frei = false,
+  ausschnitt,
 }: ImagePlaceholderProps) {
   if (slot.bild?.url) {
     return (
@@ -77,7 +107,14 @@ export function ImagePlaceholder({
   /* Der Titel kommt vom Generator selbst (sachlich), nicht aus dem Fotomotiv. */
   const visual = ref ? renderVisual(ref, '', 'absolute inset-0 h-full w-full') : null;
   if (visual) {
-    return <div className={cn('relative w-full overflow-hidden', flaeche, ratios[slot.ratio], className)}>{visual}</div>;
+    return (
+      <div
+        className={cn('relative w-full overflow-hidden', flaeche, ratios[slot.ratio], ausschnitt && 'sm24-ausschnitt', className)}
+        style={ausschnitt ? ausschnittStil(ausschnitt) : undefined}
+      >
+        {visual}
+      </div>
+    );
   }
 
   const Icon = FACH_ICONS[fachIconFuerMotiv(slot.motif)];
