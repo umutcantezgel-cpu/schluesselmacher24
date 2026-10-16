@@ -1,7 +1,8 @@
 import type { InfoHint, LockSystemExplainer } from '@/lib/types';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
-import { Card, CardBody } from '@/components/ui/card';
+import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { Reveal } from '@/components/visual/motion/reveal';
 
 /**
  * Ein Schließsystem in Kundensprache.
@@ -61,6 +62,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung Gleichschließung: ein Schlüsselsymbol, Pfeile zu vier gleichen Türen',
       ratio: '4/3',
+      visual: { generator: 'schliessplan', params: { system: 'gleichschliessung', tueren: 3 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -98,6 +100,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung Zentralschlossanlage: Wohnungstüren getrennt, Haustür und Keller gemeinsam',
       ratio: '4/3',
+      visual: { generator: 'schliessplan', params: { system: 'zentral', tueren: 4 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -135,6 +138,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung Hauptschlüsselanlage: zwei Ebenen, Hauptschlüssel oben, Nutzerschlüssel unten',
       ratio: '4/3',
+      visual: { generator: 'schliessplan', params: { system: 'haupt', tueren: 4 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -173,6 +177,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung Generalhauptschlüsselanlage: Baumstruktur über zwei Gebäude',
       ratio: '4/3',
+      visual: { generator: 'schliessplan', params: { system: 'generalhaupt', gruppen: 2, tueren: 4 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -209,6 +214,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung erweiterbare Anlage: Schließplan-Raster mit belegten und freien Feldern',
       ratio: '4/3',
+      visual: { generator: 'schliessplan', params: { system: 'generalhaupt', gruppen: 2, tueren: 6 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -219,74 +225,97 @@ export function systemName(entry: LockSystemEntry): string {
   return entry.short ? `${entry.label} (${entry.short})` : entry.label;
 }
 
-/** Die fünf Systeme als erklärende Karten — je System eine Überschrift. */
+/** Die fünf Systeme als Zeichnungsblätter: Zeichnung oben, Erklärung darunter. */
 export function SystemErklaerung() {
   return (
-    <ul className="grid gap-4 lg:grid-cols-2">
-      {LOCK_SYSTEMS.map((entry) => (
-        <li key={entry.id}>
-          <Card className="h-full">
-            <CardBody className="flex h-full flex-col gap-4">
+    <Reveal>
+      <ul className="grid gap-6 lg:grid-cols-2">
+        {LOCK_SYSTEMS.map((entry) => (
+          <li key={entry.id} className="flex h-full flex-col rounded-lg border border-border bg-surface">
+            <div className="rounded-t-lg bg-area-soft/40 p-4 sm:p-6">
+              <ImagePlaceholder slot={entry.figure} frei />
+            </div>
+
+            <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
               <div className="flex items-start justify-between gap-3">
-                <h3 className="text-lg font-bold text-foreground">{systemName(entry)}</h3>
+                <h3 className="text-title-sm font-bold text-foreground">{systemName(entry)}</h3>
                 <InfoTip hint={entry.info} />
               </div>
 
-              <ImagePlaceholder slot={entry.figure} />
+              <p className="text-body leading-relaxed text-foreground-muted">{entry.explanation}</p>
 
-              <p className="text-[15px] leading-relaxed text-foreground-muted">
-                {entry.explanation}
-              </p>
-
-              <ul className="space-y-1.5">
+              <ul className="space-y-2">
                 {entry.bullets.map((bullet) => (
-                  <li
-                    key={bullet}
-                    className="flex gap-2 text-[14px] leading-relaxed text-foreground-muted"
-                  >
-                    <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                  <li key={bullet} className="flex gap-2.5 text-small leading-relaxed text-foreground-muted">
+                    <GlyphHaken size={16} className="mt-0.5 shrink-0 text-area-strong" />
                     {bullet}
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-auto rounded-lg bg-surface-muted px-4 py-3">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+              <div className="mt-auto border-t border-border pt-4">
+                <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                   Geeignet für
                 </p>
-                <p className="mt-1 text-[14px] leading-relaxed text-foreground">
-                  {entry.suitableFor}
-                </p>
+                <p className="mt-1.5 text-small leading-relaxed text-foreground">{entry.suitableFor}</p>
               </div>
-            </CardBody>
-          </Card>
-        </li>
-      ))}
-    </ul>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </Reveal>
   );
 }
 
-/** Vergleichstabelle der fünf Systeme — auf schmalen Geräten scrollbar. */
+/** Vergleich der fünf Systeme: ab lg als Tabelle, darunter als gestapelte Angaben je System. */
 export function SystemVergleich() {
   return (
-    <div className="table-scroll">
-      <table className="w-full min-w-[46rem] border-collapse text-left">
+    <div>
+      <div className="border-b border-border lg:hidden">
+        {LOCK_SYSTEMS.map((entry) => (
+          <div key={entry.id} className="border-t border-border py-5">
+            <p className="text-title-sm font-semibold text-foreground">{systemName(entry)}</p>
+            <dl className="mt-3 divide-y divide-border">
+              <div className="py-3 first:pt-0">
+                <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Wer öffnet was
+                </dt>
+                <dd className="mt-1 text-small leading-relaxed text-foreground-muted">{entry.opensWhat}</dd>
+              </div>
+              <div className="py-3">
+                <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Typisch für
+                </dt>
+                <dd className="mt-1 text-small leading-relaxed text-foreground-muted">{entry.typicalFor}</dd>
+              </div>
+              <div className="py-3 last:pb-0">
+                <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Erweiterbar
+                </dt>
+                <dd className="mt-1 text-small leading-relaxed text-foreground-muted">{entry.expandable}</dd>
+              </div>
+            </dl>
+          </div>
+        ))}
+      </div>
+
+      <table className="hidden w-full border-collapse text-left lg:table">
         <caption className="sr-only">
           Die fünf Schließsysteme im Vergleich: wer welche Tür öffnet, typische Einsatzfälle und
           Erweiterbarkeit.
         </caption>
         <thead>
           <tr className="border-b border-border-strong">
-            <th scope="col" className="px-4 py-3 text-[13px] font-bold text-foreground">
+            <th scope="col" className="px-4 py-3 text-small font-bold text-foreground">
               System
             </th>
-            <th scope="col" className="px-4 py-3 text-[13px] font-bold text-foreground">
+            <th scope="col" className="px-4 py-3 text-small font-bold text-foreground">
               Wer öffnet was
             </th>
-            <th scope="col" className="px-4 py-3 text-[13px] font-bold text-foreground">
+            <th scope="col" className="px-4 py-3 text-small font-bold text-foreground">
               Typisch für
             </th>
-            <th scope="col" className="px-4 py-3 text-[13px] font-bold text-foreground">
+            <th scope="col" className="px-4 py-3 text-small font-bold text-foreground">
               Erweiterbar
             </th>
           </tr>
@@ -294,16 +323,16 @@ export function SystemVergleich() {
         <tbody className="divide-y divide-border">
           {LOCK_SYSTEMS.map((entry) => (
             <tr key={entry.id} className="align-top">
-              <th scope="row" className="px-4 py-3 text-[14px] font-bold text-foreground">
+              <th scope="row" className="px-4 py-3 text-small font-bold text-foreground">
                 {systemName(entry)}
               </th>
-              <td className="px-4 py-3 text-[14px] leading-relaxed text-foreground-muted">
+              <td className="px-4 py-3 text-small leading-relaxed text-foreground-muted">
                 {entry.opensWhat}
               </td>
-              <td className="px-4 py-3 text-[14px] leading-relaxed text-foreground-muted">
+              <td className="px-4 py-3 text-small leading-relaxed text-foreground-muted">
                 {entry.typicalFor}
               </td>
-              <td className="px-4 py-3 text-[14px] leading-relaxed text-foreground-muted">
+              <td className="px-4 py-3 text-small leading-relaxed text-foreground-muted">
                 {entry.expandable}
               </td>
             </tr>
