@@ -3,7 +3,6 @@
 import type { PriceQuote } from '@/lib/types';
 import { formatCents, formatDuration } from '@/lib/format';
 import { Alert } from '@/components/ui/alert';
-import { Card, CardBody } from '@/components/ui/card';
 import { InfoTip } from '@/components/ui/info-tip';
 import { IconFahrzeugmarke } from '@/components/visual/icons/fahrzeugmarke';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
@@ -115,47 +114,40 @@ export function PreisAnzeige({ quote }: PreisAnzeigeProps) {
         </Alert>
       )}
 
-      <div className="grid gap-3 sm:grid-cols-2">
-        <Card variant="muted">
-          <CardBody className="flex items-start gap-3">
-            <GlyphUhr size={18} className="mt-0.5 text-foreground-subtle" />
-            <div>
-              <p className="font-mono text-caption uppercase tracking-label text-foreground">
-                Eingeplante Terminlänge
-              </p>
-              <p className="mt-1 text-small leading-relaxed text-foreground-muted">
-                <span className="font-mono tabular-nums text-foreground">{formatDuration(quote.slotMinutes)}</span>{' '}
-                — so viel Zeit reservieren wir für Ihren Vorgang.
-              </p>
-            </div>
-          </CardBody>
-        </Card>
+      {/* Schriftfeld mit Haarlinien statt getönter Kästen (Sichtabnahme E4-L-23, H04 Preisschritt) */}
+      <dl className="grid border-y border-border sm:grid-cols-2">
+        <div className="py-4 sm:pr-gutter">
+          <dt className="flex items-center gap-2 font-mono text-caption uppercase tracking-label text-foreground">
+            <GlyphUhr size={18} className="shrink-0 text-foreground-subtle" />
+            Eingeplante Terminlänge
+          </dt>
+          <dd className="mt-2 text-small leading-relaxed text-foreground-muted">
+            <span className="font-mono tabular-nums text-foreground">{formatDuration(quote.slotMinutes)}</span>{' '}
+            — so viel Zeit reservieren wir für Ihren Vorgang.
+          </dd>
+        </div>
 
-        <Card variant="muted">
-          <CardBody className="flex items-start gap-3">
-            <IconFahrzeugmarke size={24} className="mt-0.5 text-area-strong" />
-            <div>
-              <p className="flex items-center gap-2 font-mono text-caption uppercase tracking-label text-foreground">
-                Fahrzeug beim Termin
-                <InfoTip
-                  hint={{
-                    title: 'Warum das Fahrzeug gebraucht wird',
-                    body:
-                      'Elektronische Schlüssel werden am Fahrzeug angelernt. Ohne Zugriff auf das '
-                      + 'Fahrzeug lässt sich dieser Schritt nicht ausführen. Rein mechanische '
-                      + 'Arbeiten sind davon nicht betroffen.',
-                  }}
-                />
-              </p>
-              <p className="mt-1 text-small leading-relaxed text-foreground-muted">
-                {quote.requiresVehicleOnSite
-                  ? 'Wird benötigt. Der Termin wird als Vor-Ort-Termin mit Fahrzeug geführt.'
-                  : 'Wird für diese Leistung nicht zwingend benötigt.'}
-              </p>
-            </div>
-          </CardBody>
-        </Card>
-      </div>
+        <div className="border-t border-border py-4 sm:border-l sm:border-t-0 sm:pl-gutter">
+          <dt className="flex items-center gap-2 font-mono text-caption uppercase tracking-label text-foreground">
+            <IconFahrzeugmarke size={24} className="shrink-0 text-area-strong" />
+            Fahrzeug beim Termin
+            <InfoTip
+              hint={{
+                title: 'Warum das Fahrzeug gebraucht wird',
+                body:
+                  'Elektronische Schlüssel werden am Fahrzeug angelernt. Ohne Zugriff auf das '
+                  + 'Fahrzeug lässt sich dieser Schritt nicht ausführen. Rein mechanische '
+                  + 'Arbeiten sind davon nicht betroffen.',
+              }}
+            />
+          </dt>
+          <dd className="mt-2 text-small leading-relaxed text-foreground-muted">
+            {quote.requiresVehicleOnSite
+              ? 'Wird benötigt. Der Termin wird als Vor-Ort-Termin mit Fahrzeug geführt.'
+              : 'Wird für diese Leistung nicht zwingend benötigt.'}
+          </dd>
+        </div>
+      </dl>
 
       <p className="flex items-start gap-2 text-small leading-relaxed text-foreground-subtle">
         <GlyphInfo size={16} className="mt-0.5 shrink-0" />
