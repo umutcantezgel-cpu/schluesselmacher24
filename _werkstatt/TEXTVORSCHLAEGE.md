@@ -49,3 +49,6 @@ Floskeln und Superlative (K-003); Vorschläge streichen nur, Fachaussagen bleibe
 ## Gleichschließende Zylinder (`/gleichschliessende-zylinder`, aus der Kundschaft E5)
 - **Bestellbeispiel:** Die Tabelle „Beispiel aus der Beratungspraxis“ (Haustür 30/35, Wohnungstür 40/40, Kellertür 55/30) hat keine Quelle in `content/`. Ist es kein echter Fall, Vorschlag: „Musterbestellung“ (siehe M-22).
 - **Maßschritt im Text:** „je angefangene 5 mm“ und „Fünf-Millimeter-Schritten“ stehen fest im Text, der Preis rechnet mit dem gepflegten Schritt (`stepMm`). Vorschlag: den Text aus den Daten bilden, sobald M-23 geklärt ist.
+
+## Projekt-Konfigurator Schließanlagen (`/schliessanlagen/konfigurator`, aus der Kundschaft E5)
+- **Zahl der Blöcke:** Metadaten und Unterzeile sagen „zehn Blöcke“, der Ablauf hat zehn Abfrage-Schritte und den Abschluss als elften. Vorschlag: „Zehn kurze Abschnitte, danach prüfen Sie alles auf einen Blick.“ – oder unverändert lassen, wenn der Abschluss nicht als Block zählt.
