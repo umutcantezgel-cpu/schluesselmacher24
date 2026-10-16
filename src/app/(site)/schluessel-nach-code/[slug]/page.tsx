@@ -18,15 +18,11 @@ import { CodeFundstelleInteraktiv } from '@/components/visual/interaktiv/code-fu
 
 import { BestellFormular } from './bestell-formular';
 import { getSiteUrl } from '@/lib/site-url';
+import { istPlatzhalter } from '@/lib/platzhalter';
 
 interface CodeLinePageProps {
   /** In Next.js 16 sind Routenparameter ein Promise. */
   params: Promise<{ slug: string }>;
-}
-
-/** Hersteller-Platzhalter aus den Inhalten (`[Hersteller eintragen]`) sind kein Fakt. */
-function istPlatzhalter(wert: string): boolean {
-  return wert.trim().startsWith('[');
 }
 
 export async function generateStaticParams() {
@@ -37,7 +33,6 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: CodeLinePageProps): Promise<Metadata> {
   const { slug } = await props.params;
   const line = await getCodeLine(slug);
-
 
   if (!line || !line.active) {
     return { title: 'Codelinie nicht gefunden', robots: { index: false, follow: true } };

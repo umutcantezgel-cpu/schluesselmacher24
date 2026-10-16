@@ -6,6 +6,7 @@ import Link from 'next/link';
 import type { CodeLine } from '@/lib/types';
 import { formatCents } from '@/lib/format';
 import { cn } from '@/lib/cn';
+import { istPlatzhalter } from '@/lib/platzhalter';
 import { Badge } from '@/components/ui/badge';
 import { Button, ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
@@ -37,11 +38,6 @@ function haystackOf(line: CodeLine): string {
 
 function sortedUnique(values: string[]): string[] {
   return [...new Set(values)].sort((a, b) => a.localeCompare(b, 'de'));
-}
-
-/** Hersteller-Platzhalter aus den Inhalten (`[Hersteller eintragen]`) sind kein Fakt. */
-function istPlatzhalter(wert: string): boolean {
-  return wert.trim().startsWith('[');
 }
 
 export interface ShopListeProps {

@@ -26,5 +26,34 @@
       "suchen": "\\{measureFigure\\.bild \\? \\(\\s*<ImagePlaceholder slot=\\{measureFigure\\} compact />\\s*\\) : \\(\\s*<ZylinderMassLive\\s+form=\\{item\\.form\\}\\s+aussen=\\{item\\.measureAMm\\}\\s+innen=\\{item\\.measureBMm\\}\\s+name=\\{form\\.label\\}\\s*/>\\s*\\)\\}",
       "ersetzen": "<ImagePlaceholder slot={measureFigure} compact />"
     }
+  ],
+  "src/app/(site)/kasse/kasse-formular.tsx": [
+    {
+      "grund": "Kartenköpfe der Formularabschnitte wurden zu nummerierten Abschnittsköpfen; der Import CardHeader entfällt (nur Darstellung, E4-BAUMEISTER-15, D-031)",
+      "suchen": "import \\{ Card, CardBody \\} from '@/components/ui/card';",
+      "ersetzen": "import { Card, CardBody, CardHeader } from '@/components/ui/card';"
+    }
+  ],
+  "src/app/(site)/warenkorb/warenkorb-ansicht.tsx": [
+    {
+      "grund": "Name der Codeposition im unsichtbaren Text von „Position entfernen“ für Bildschirmleser (nur Lesen, E4-BAUMEISTER-14, D-031)",
+      "suchen": "<span className=\"sr-only\">: \\{position\\.line\\?\\.name \\?\\? 'Schlüssel nach Code'\\}</span>",
+      "ersetzen": ""
+    },
+    {
+      "grund": "Name der Standardposition im unsichtbaren Text von „Position entfernen“ für Bildschirmleser (nur Lesen, E4-BAUMEISTER-14, D-031)",
+      "suchen": "<span className=\"sr-only\">: \\{article\\?\\.name \\?\\? item\\.label\\}</span>",
+      "ersetzen": ""
+    },
+    {
+      "grund": "Hersteller-Platzhalter der Codelinie nicht als Fakt im Warenkorb anzeigen (nur Anzeige, M-03, D-031)",
+      "suchen": "\\{istPlatzhalter\\(position\\.line\\.manufacturer\\) \\? null : `\\$\\{position\\.line\\.manufacturer\\} · `\\}\\s*",
+      "ersetzen": "{position.line.manufacturer} · "
+    },
+    {
+      "grund": "Import der Platzhalter-Prüfung für die Anzeige oben (D-031)",
+      "suchen": "import \\{ istPlatzhalter \\} from '@/lib/platzhalter';\\n",
+      "ersetzen": ""
+    }
   ]
 }
