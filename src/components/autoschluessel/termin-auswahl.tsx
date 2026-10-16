@@ -1,10 +1,11 @@
 'use client';
 
-import { CalendarClock, Loader2 } from 'lucide-react';
 import type { TimeSlot } from '@/lib/types';
 import { formatDate, formatDuration } from '@/lib/format';
 import { Alert } from '@/components/ui/alert';
 import { OptionCard } from '@/components/forms/option-card';
+import { GlyphKalender } from '@/components/visual/glyphen/kalender';
+import { GlyphLaden } from '@/components/visual/glyphen/laden';
 
 export interface TerminAuswahlProps {
   days: Array<{ date: string; slots: TimeSlot[] }>;
@@ -42,7 +43,8 @@ export function TerminAuswahl({
         <p>
           Der Vorlauf entsteht durch die Prüfung Ihrer Unterlagen und die Beschaffung des passenden
           Rohlings beziehungsweise Schlüsselgehäuses. Deshalb bieten wir erst Termine ab diesem
-          Zeitpunkt an. Jeder Termin ist mit {formatDuration(slotMinutes)} eingeplant.
+          Zeitpunkt an. Jeder Termin ist mit{' '}
+          <span className="font-mono tabular-nums">{formatDuration(slotMinutes)}</span> eingeplant.
         </p>
       </Alert>
 
@@ -80,8 +82,8 @@ export function TerminAuswahl({
       )}
 
       {loading && (
-        <p className="flex items-center gap-2 text-[15px] text-foreground-muted" role="status">
-          <Loader2 size={17} className="animate-spin" aria-hidden />
+        <p className="flex items-center gap-2 text-body text-foreground-muted" role="status">
+          <GlyphLaden size={17} className="animate-spin" />
           Freie Termine werden geladen …
         </p>
       )}
@@ -109,9 +111,9 @@ export function TerminAuswahl({
 
           return (
             <section key={day.date} aria-label={formatDate(day.date)}>
-              <h3 className="flex items-center gap-2 text-[15px] font-bold text-foreground">
-                <CalendarClock size={17} className="text-foreground-subtle" aria-hidden />
-                {formatDate(day.date)}
+              <h3 className="flex items-center gap-2 text-title-sm font-semibold text-foreground">
+                <GlyphKalender size={18} className="text-foreground-subtle" />
+                <span className="font-mono tabular-nums">{formatDate(day.date)}</span>
               </h3>
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
                 {free.map((slot) => (
