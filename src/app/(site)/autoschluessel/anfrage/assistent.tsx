@@ -38,7 +38,6 @@ import { TerminAuswahl } from '@/components/autoschluessel/termin-auswahl';
 import { Bestaetigung } from '@/components/autoschluessel/bestaetigung';
 import { GlyphLaden } from '@/components/visual/glyphen/laden';
 import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
-import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 
 /* ==========================================================================
    Autoschlüssel — geführter Ablauf in 13 Schritten
@@ -855,7 +854,7 @@ export function Assistent({
               checked={data.makeSlug === entry.slug}
               onSelect={selectMake}
               title={entry.name}
-              description={<span className="text-caption text-foreground-muted"><span className="font-mono tabular-nums">{entry.models.length}</span> Modelle hinterlegt</span>}
+              description={<><span className="font-mono tabular-nums">{entry.models.length}</span> Modelle hinterlegt</>}
             />
           ))}
         </div>
@@ -1044,23 +1043,7 @@ export function Assistent({
                 value={kind}
                 checked={data.keyKind === kind}
                 onSelect={selectKeyKind}
-                title={
-                  <span className="flex items-center gap-3">
-                    <span
-                      aria-hidden="true"
-                      className={`flex w-16 shrink-0 justify-center${data.keyKind === kind ? ' [&_.sm24-draw.stroke-area]:stroke-primary' : ''}`}
-                    >
-                      {kind !== 'keyless' && (
-                        <SchluesselGrafik
-                          params={{ typ: kind === 'mechanisch' ? 'transponder' : kind === 'klappschluessel' ? 'klapp' : kind, code: kind }}
-                          title="Zeichnung"
-                          className="w-full"
-                        />
-                      )}
-                    </span>
-                    {KEY_KIND_OPTIONS[kind].label}
-                  </span>
-                }
+                title={KEY_KIND_OPTIONS[kind].label}
                 description={KEY_KIND_OPTIONS[kind].description}
                 info={KEY_KIND_OPTIONS[kind].info}
               />

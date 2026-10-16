@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 import { getCities, getSettings } from '@/lib/data';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 export const metadata: Metadata = {
   title: 'Vor-Ort-Leistungen',
@@ -81,7 +81,9 @@ export default async function VorOrtPage() {
 
   return (
     <>
+      {/* Kopf: Fach-Icon als Anker und Ziel des Seitenwechsels (B-13) */}
       <PageHeader
+        bereich="service-und-termin"
         eyebrow="Vor Ort"
         title="Was wir direkt bei Ihnen erledigen"
         lead="Nicht jede Arbeit lässt sich per Versand lösen. Hier steht, was vor Ort passiert und was dafür vorbereitet sein sollte."
@@ -92,49 +94,61 @@ export default async function VorOrtPage() {
       />
 
       <Section>
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-14">
-          <div>
-            <SectionHeading title="Leistungen im Überblick" />
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {SERVICES.map((service) => (
-                <li key={service.title}>
-                  <Card className="h-full">
-                    <CardBody className="flex h-full flex-col">
-                      <p className="text-[15px] font-bold text-foreground">{service.title}</p>
-                      <p className="mt-2 text-[13px] leading-relaxed text-foreground-muted">
-                        {service.body}
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-7">
+            <SectionHeading nummer="01" eyebrow="Vor Ort" title="Leistungen im Überblick" />
+
+            {/* Stückliste statt Karten: die ganze Zeile ist der Link zum Ablauf */}
+            <ol className="mt-12 border-t border-border">
+              {SERVICES.map((service, index) => (
+                <li key={service.title} className="group relative border-b border-border">
+                  <Link href={service.href} className="absolute inset-0 rounded-lg">
+                    <span className="sr-only">{service.cta}</span>
+                  </Link>
+                  <div className="pointer-events-none grid grid-cols-12 gap-x-4 py-6">
+                    <span className="col-span-2 font-mono text-title font-semibold tabular-nums text-area-strong sm:col-span-1">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div className="col-span-10 sm:col-span-11">
+                      <p className="text-title-sm font-semibold text-foreground transition-colors duration-quick group-hover:text-area-strong">
+                        {service.title}
                       </p>
-                      <p className="mt-4 text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+                      <p className="mt-2 max-w-measure text-small text-foreground-muted">{service.body}</p>
+                      <p className="mt-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
                         Bitte vorbereiten
                       </p>
-                      <ul className="mt-1.5 flex-1 space-y-1">
+                      <ul className="mt-2 space-y-1 text-small text-foreground-muted">
                         {service.needs.map((need) => (
-                          <li key={need} className="text-[13px] text-foreground-muted">
-                            · {need}
-                          </li>
+                          <li key={need}>· {need}</li>
                         ))}
                       </ul>
-                      <Link
-                        href={service.href}
-                        className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary hover:underline"
+                      <span
+                        aria-hidden
+                        className="mt-4 inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary"
                       >
                         {service.cta}
-                        <ArrowRight size={14} aria-hidden />
-                      </Link>
-                    </CardBody>
-                  </Card>
+                        <GlyphPfeilRechts
+                          size={16}
+                          className="transition-transform duration-quick zeiger:group-hover:translate-x-1"
+                        />
+                      </span>
+                    </div>
+                  </div>
                 </li>
               ))}
-            </ul>
+            </ol>
           </div>
 
-          <div>
+          <div className="lg:col-span-5">
+            {/* Fachzeichnung nach Motiv; der Ausschnitt hält die Legende unter 640 px lesbar (KERN 1.8) */}
             <ImagePlaceholder
               slot={{
                 motif: 'Montagesituation: Zylindertausch an einer Wohnungstür',
                 ratio: '4/3',
                 note: 'Echtes Foto aus einem abgeschlossenen Auftrag, Persönlichkeitsrechte beachten.',
+                visual: { generator: 'tuer-schutz', params: { fokus: 'zylinder' } },
               }}
+              ausschnitt={TUER_SCHUTZ_AUSSCHNITT}
             />
 
             <Alert tone="legal" title="Nachweis der Verfügungsberechtigung" className="mt-6">
@@ -143,20 +157,20 @@ export default async function VorOrtPage() {
               benötigen, sagen wir Ihnen bei der Terminbestätigung.
             </Alert>
 
-            <div className="mt-6 rounded-lg border border-border bg-surface p-5">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+            <div className="mt-12 border-t border-border pt-6">
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 Einsatzgebiete
               </p>
-              <p className="mt-2 text-[13px] leading-relaxed text-foreground-muted">
+              <p className="mt-2 max-w-measure text-small text-foreground-muted">
                 Vor-Ort-Leistungen erbringen wir in folgenden Regionen. Bestellungen aus dem Shop
                 liefern wir deutschlandweit.
               </p>
-              <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+              <ul className="mt-3 flex flex-wrap gap-x-4">
                 {cities.map((city) => (
                   <li key={city.id}>
                     <Link
                       href={`/standorte/${city.slug}`}
-                      className="text-[13px] font-semibold text-primary hover:underline"
+                      className="inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline"
                     >
                       {city.city}
                     </Link>
@@ -165,9 +179,9 @@ export default async function VorOrtPage() {
               </ul>
             </div>
 
-            <div className="mt-6 rounded-lg border border-border bg-surface-muted p-5">
-              <p className="text-[15px] font-bold text-foreground">Terminvorlauf</p>
-              <p className="mt-2 text-[13px] leading-relaxed text-foreground-muted">
+            <div className="mt-8 border-y border-border py-6">
+              <p className="text-title-sm font-semibold text-foreground">Terminvorlauf</p>
+              <p className="mt-2 max-w-measure text-small text-foreground-muted">
                 Termine für Autoschlüssel bieten wir in der Regel ab etwa{' '}
                 {settings.booking.leadTimeDays} Tagen an, damit fahrzeugspezifisches Material sicher
                 beschafft und vorbereitet werden kann.

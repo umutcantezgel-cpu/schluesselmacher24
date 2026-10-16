@@ -1,14 +1,18 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Mail, MapPin, Phone } from 'lucide-react';
 
 import { getSettings } from '@/lib/data';
 import { formatWeekday } from '@/lib/format';
+import { enthaeltPlatzhalter } from '@/lib/platzhalter';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
+import { GlyphMail } from '@/components/visual/glyphen/mail';
+import { GlyphOrt } from '@/components/visual/glyphen/ort';
+import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 
 export const metadata: Metadata = {
   title: 'Kontakt',
@@ -16,13 +20,19 @@ export const metadata: Metadata = {
   alternates: { canonical: '/service-und-termin/kontakt' },
 };
 
+/** Hinweis zur Anfahrt aus der Redaktion. Solange er einen Platzhalter enthält, bleibt er ungezeigt. */
+const ANFAHRT_HINWEIS =
+  '[Platzhalter: Hinweise zur Anfahrt, zu Parkmöglichkeiten und zur Erreichbarkeit mit öffentlichen Verkehrsmitteln eintragen. Eine eingebettete Karte eines externen Anbieters ist erst nach Einwilligung zulässig und muss über die Cookie-Einstellungen gesteuert werden.]';
+
 export default async function KontaktPage() {
   const settings = await getSettings();
   const { company } = settings;
 
   return (
     <>
+      {/* Kopf: Fach-Icon als Anker und Ziel des Seitenwechsels (B-13) */}
       <PageHeader
+        bereich="service-und-termin"
         eyebrow="Kontakt"
         title="So erreichen Sie uns"
         lead="Für konkrete Aufträge nutzen Sie bitte die geführten Abläufe — dort erfassen wir gleich alles, was wir brauchen."
@@ -34,83 +44,101 @@ export default async function KontaktPage() {
       />
 
       <Section>
-        {company.isPlaceholder && (
+        {/* Redaktionshinweis nur im Entwicklungsmodus (D-016), wie im Fuß */}
+        {company.isPlaceholder && process.env.NODE_ENV !== 'production' && (
           <Alert tone="warning" title="Kontaktdaten noch nicht hinterlegt" className="mb-8">
             Anschrift, Telefonnummer und E-Mail-Adresse sind derzeit Platzhalter. Sie werden im
             Backend unter „Einstellungen“ gepflegt und müssen vor dem Livegang ersetzt werden.
           </Alert>
         )}
 
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
-          <div>
-            <SectionHeading title="Fachbetrieb" />
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-7">
+            <SectionHeading nummer="01" eyebrow="Erreichbarkeit" title="Fachbetrieb" />
 
-            <dl className="mt-6 space-y-5">
-              <div className="flex gap-4">
-                <MapPin size={19} aria-hidden className="mt-0.5 shrink-0 text-primary" />
-                <div>
-                  <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                    Anschrift
-                  </dt>
-                  <dd className="mt-1 text-[15px] leading-relaxed text-foreground">
-                    {company.legalName}
-                    <br />
-                    {company.street}
-                    <br />
-                    {company.postalCode} {company.city}
+            {company.isPlaceholder ? (
+              /* Ohne hinterlegte Daten keine Anschrift, kein tel:- oder mailto:-Link mit Platzhalter */
+              <p className="mt-6 flex max-w-measure gap-3 text-small text-foreground-muted">
+                <GlyphInfo size={18} className="mt-0.5 shrink-0 text-primary" />
+                <span>
+                  Anschrift, Telefon und E-Mail sind noch nicht hinterlegt. Für Ihr Anliegen stellen Sie
+                  bitte eine{' '}
+                  <Link href="/service-und-termin/anfrage" className="font-semibold underline">
+                    Anfrage
+                  </Link>
+                  .
+                </span>
+              </p>
+            ) : (
+              <dl className="mt-6 border-t border-border">
+                <div className="flex gap-4 border-b border-border py-5">
+                  <GlyphOrt size={20} className="mt-1 shrink-0 text-primary" />
+                  <div className="min-w-0">
+                    <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                      Anschrift
+                    </dt>
+                    <dd className="mt-2 text-body text-foreground">
+                      {company.legalName}
+                      <br />
+                      {company.street}
+                      <br />
+                      {company.postalCode} {company.city}
+                    </dd>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 border-b border-border py-5">
+                  <GlyphTelefon size={20} className="mt-1 shrink-0 text-primary" />
+                  <div className="min-w-0">
+                    <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                      Telefon
+                    </dt>
+                    <dd className="mt-2 font-mono tabular-nums text-body text-foreground">
+                      <a
+                        href={`tel:${company.phone}`}
+                        className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
+                      >
+                        {company.phone}
+                      </a>
+                    </dd>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 border-b border-border py-5">
+                  <GlyphMail size={20} className="mt-1 shrink-0 text-primary" />
+                  <div className="min-w-0">
+                    <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                      E-Mail
+                    </dt>
+                    <dd className="mt-2 break-words text-body text-foreground">
+                      <a
+                        href={`mailto:${company.email}`}
+                        className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
+                      >
+                        {company.email}
+                      </a>
+                    </dd>
+                  </div>
+                </div>
+              </dl>
+            )}
+
+            <h3 className="mt-12 text-title-sm font-semibold text-foreground">Öffnungszeiten</h3>
+            <dl className="mt-6 border-t border-border">
+              {settings.openingHours.map((entry) => (
+                <div
+                  key={entry.day}
+                  className="grid gap-1 border-b border-border py-3 sm:grid-cols-3 sm:gap-x-4"
+                >
+                  <dt className="text-foreground-muted">{formatWeekday(entry.day)}</dt>
+                  <dd className="font-mono tabular-nums text-foreground sm:col-span-2">
+                    {entry.spans.length === 0
+                      ? 'geschlossen'
+                      : entry.spans.map((s) => `${s.from}–${s.to}`).join(' · ')}
                   </dd>
                 </div>
-              </div>
-
-              <div className="flex gap-4">
-                <Phone size={19} aria-hidden className="mt-0.5 shrink-0 text-primary" />
-                <div>
-                  <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                    Telefon
-                  </dt>
-                  <dd className="mt-1 text-[15px] text-foreground">
-                    <a href={`tel:${company.phone}`} className="hover:text-primary hover:underline">
-                      {company.phone}
-                    </a>
-                  </dd>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <Mail size={19} aria-hidden className="mt-0.5 shrink-0 text-primary" />
-                <div>
-                  <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                    E-Mail
-                  </dt>
-                  <dd className="mt-1 text-[15px] text-foreground">
-                    <a
-                      href={`mailto:${company.email}`}
-                      className="hover:text-primary hover:underline"
-                    >
-                      {company.email}
-                    </a>
-                  </dd>
-                </div>
-              </div>
+              ))}
             </dl>
-
-            <h3 className="mt-10 text-[15px] font-bold text-foreground">Öffnungszeiten</h3>
-            <table className="mt-3 w-full max-w-sm border-collapse text-[14px]">
-              <tbody>
-                {settings.openingHours.map((entry) => (
-                  <tr key={entry.day} className="border-b border-border">
-                    <th scope="row" className="py-2 pr-6 text-left font-semibold text-foreground">
-                      {formatWeekday(entry.day)}
-                    </th>
-                    <td className="py-2 text-foreground-muted">
-                      {entry.spans.length === 0
-                        ? 'geschlossen'
-                        : entry.spans.map((s) => `${s.from}–${s.to}`).join(' · ')}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
 
             <Alert tone="info" className="mt-8">
               Arbeiten an Fahrzeugen und Schließanlagen finden ausschließlich nach Terminvereinbarung
@@ -126,7 +154,7 @@ export default async function KontaktPage() {
             </Alert>
           </div>
 
-          <div>
+          <div className="lg:col-span-5">
             <ImagePlaceholder
               slot={{
                 motif: 'Foto des Betriebs: Eingang und Fassade mit Hausnummer',
@@ -142,12 +170,9 @@ export default async function KontaktPage() {
               }}
               className="mt-4"
             />
-            <p className="mt-4 text-[13px] leading-relaxed text-foreground-subtle">
-              [Platzhalter: Hinweise zur Anfahrt, zu Parkmöglichkeiten und zur Erreichbarkeit mit
-              öffentlichen Verkehrsmitteln eintragen. Eine eingebettete Karte eines externen
-              Anbieters ist erst nach Einwilligung zulässig und muss über die Cookie-Einstellungen
-              gesteuert werden.]
-            </p>
+            {!enthaeltPlatzhalter(ANFAHRT_HINWEIS) && (
+              <p className="mt-4 text-small text-foreground-muted">{ANFAHRT_HINWEIS}</p>
+            )}
           </div>
         </div>
       </Section>
