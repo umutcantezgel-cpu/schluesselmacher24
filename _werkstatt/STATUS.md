@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · Welle G/H: B-26, B-27, E6-GRAFIKER-11, E5-DOKUMENTAR-01 laufen · Pflicht 79/88 · Kür 4/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (5105872: Logikwächter 0 außer laufendem B-26, Wertesuche 0, 1135 Tests) · Nächster Schritt: laufende Pakete abnehmen, Welle H (B-28, B-29), K-01 einbauen, lucide entfernen, Prüfstufe B E5
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · Prüfstufe B E5 mit Sichtabnahme läuft · Pflicht 85/88 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (d0e4784: Build 208/208, Logikwächter 0, Wertesuche 0, Textabzug gleich, 1138 Tests) · Nächster Schritt: Ergebnis Prüfstufe B und Sichtabnahme auswerten, Befundpakete Runde 2 nur unter 8, dann Prüfstufe C
 
 # Status des Gestaltungslaufs
 
@@ -41,3 +41,5 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · W
 - 16.10.2026 11:10 · Prüfstufe B E4 grün, Warenkorb mobil im Budget (L-07a). Sichtabnahme E4-L-23: 6,2 (D-037); gemeinsame Befunde umgesetzt (E4-L-24 bis -27, KERN 1.10/1.11), Schließplan mit Reserve und Telefonformat (GRAFIKER-09), Lesefortschritt im Ratgeber als reine CSS-Szene (L-28). Befundpakete H01–H12 und Pakete der Wellen F–H geschrieben; Befundwelle 1 und Generator `ablauf` laufen.
 - 16.10.2026 16:15 · Neustart des Arbeitsprozesses (Server neu gestartet). Abgenommen: Befundwelle 1 (H04, H05, H09), H08, H12, B-20 bis B-23; Kür K-02, K-04, K-05, K-06; Hinweiskästen ruhig (D-041); H04 Runde 2 mit Schlüsselart-Zeichnungen (D-042). Nachprüfung der vom Sitzungslimit unterbrochenen Pakete läuft.
 - 16.10.2026 16:56 · Alle 12 Befundpakete der Sichtabnahme E4-L-23 abgenommen; H01, H02, H03, H06, H10, H11 nach L3 mit Nacharbeit des Orchestrators (Kopfgrafik und Ordnung der Codelinien-Seite, Schlüsselzeichnung mit Profilen nach den Körpern ≤ 1,6 s, Schriftfeld mit Kennungen ohne Umbruch und Betrag in eigener Zeile, Variante `korb-leer:`; KERN 1.13). B-24 und B-25 abgenommen (Plan im Vorschlag auf Telefonen lesbar). Laufend: B-26, B-27, E6-GRAFIKER-11, E5-DOKUMENTAR-01.
+
+- 16.10.2026 20:48 · Welle G und H abgenommen (B-26 bis B-29, DOKUMENTAR-01 mit sicherem Probe-Befehl, GRAFIKER-11), Kür K-01 eingebaut (Stiftzuhaltung am Scrollen; Rahmen mit `clip`), lucide-react entfernt (Build 208/208). Prüfstufe B E5 mit Sichtabnahme gestartet.
