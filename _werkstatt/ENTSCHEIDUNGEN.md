@@ -316,3 +316,17 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - **Hersteller-Platzhalter im Warenkorb:** Die Codeposition zeigte „[Hersteller eintragen] · …“ als Unterzeile. Neue gemeinsame Hilfsfunktion `istPlatzhalter` (`src/lib/platzhalter.ts`, Test) ersetzt die zwei gleichen lokalen Funktionen im Code-Shop und blendet den Platzhalter im Warenkorb aus (benannte Ausnahme).
 - **Benannte Ausnahmen (Logikwächter):** Warenkorb – zwei Namen im unsichtbaren Text von „Position entfernen“, Hersteller-Ausblendung samt Import; Kasse – Import `CardHeader`. Ergebnis: 15 Dateien, abweichend 0.
 - **Offen (PLAN, Logik, unverändert):** Warenkorb wählt beim Laden automatisch die erste Versandart, Mengenklemmung nur in der Anzeige, `QuantityInput` setzt ein leeres Feld sofort auf das Minimum; Kasse meldet den Formularfehler über `Alert` mit `role="note"`.
+
+## D-032 · E4-L-21: Zuordnung Motiv → Fachgrafik nach der Sache, nicht nach der Bildart
+- **Befund (Kundschaft Welle E):** Die Bildart vor dem Doppelpunkt entschied über die Zeichnung. „Werkstattfoto: …“ ergab immer den Profilschnitt, auch für Schließplan, Funkschlüssel oder Mehrfachverriegelung. „Anwendungsfoto: …“ ergab das Foto-Symbol. Außerdem traf „funk“ das Wort „Funktionen“ (Smarte Funktionen zeigte einen Funkschlüssel).
+- **Lösung (`src/lib/visual/motiv.ts`):**
+  - Die Bildart („Werkstattfoto:“, „Anwendungsfoto:“, „Produktfoto:“ …) wird vor der Zuordnung entfernt.
+  - „Werkstatt“ ist nur noch Rückfall (Profilschnitt), wenn kein Werkstück erkannt wird; „Foto“ ist nur noch Rückfall für das Foto-Symbol.
+  - „Funk“ zählt als Wort oder Wortanfang, nicht in „Funktion“; „Fahrertür“ zeichnet keine Haustür.
+  - Fünf Fach-Icons kommen für die Sicherheitstechnik dazu: Außenhaut, mechanischer Schutz, kombinierte Konzepte, smarte Funktionen, Panik-/Alarmtaster.
+- **Wirkung, geprüft über alle 264 Motive in Code und Inhalten:** 27 Zuordnungen ändern sich, alle zur Sache hin, zum Beispiel:
+  - Schließplan statt Profilschnitt
+  - Funkschlüssel bzw. Transponder und Smart Key statt Profilschnitt
+  - Tür-Schutzpunkte für Mehrfachverriegelung und Paniktechnik
+  - eigene Fach-Icons für die Sicherheitsleistungen
+  Beispielfotos an Upload-Feldern behalten das Foto-Symbol. Neue Tests in `motiv.test.ts`, die bisherigen Fälle sind unverändert.

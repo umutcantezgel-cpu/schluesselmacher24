@@ -3,6 +3,11 @@ import type { ComponentType, CSSProperties } from 'react';
 
 import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconAlarmtechnik } from '@/components/visual/icons/alarmtechnik';
+import { IconAussenhautsicherung } from '@/components/visual/icons/aussenhautsicherung';
+import { IconKombinierteKonzepte } from '@/components/visual/icons/kombinierte-konzepte';
+import { IconMechanischerSchutz } from '@/components/visual/icons/mechanischer-schutz';
+import { IconPanikAlarmtaster } from '@/components/visual/icons/panik-alarmtaster';
+import { IconSmarteFunktionen } from '@/components/visual/icons/smarte-funktionen';
 import { IconAutoschluessel } from '@/components/visual/icons/autoschluessel';
 import { IconFotoHochladen } from '@/components/visual/icons/foto-hochladen';
 import { IconProfilzylinder } from '@/components/visual/icons/profilzylinder';
@@ -27,6 +32,11 @@ const ratios: Record<ImageSlot['ratio'], string> = {
 const FACH_ICONS: Record<FachIconName, ComponentType<IconProps>> = {
   videoueberwachung: IconVideoueberwachung,
   alarmtechnik: IconAlarmtechnik,
+  'panik-alarmtaster': IconPanikAlarmtaster,
+  aussenhautsicherung: IconAussenhautsicherung,
+  'mechanischer-schutz': IconMechanischerSchutz,
+  'kombinierte-konzepte': IconKombinierteKonzepte,
+  'smarte-funktionen': IconSmarteFunktionen,
   'foto-hochladen': IconFotoHochladen,
   profilzylinder: IconProfilzylinder,
   'tuer-und-schliesstechnik': IconTuerUndSchliesstechnik,

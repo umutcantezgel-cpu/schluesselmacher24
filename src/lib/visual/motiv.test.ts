@@ -53,3 +53,38 @@ describe('fachIconFuerMotiv', () => {
     expect(fachIconFuerMotiv(null)).toBe('werkstatt');
   });
 });
+
+describe('Motiv ohne Bildart', () => {
+  it('entscheidet nach der Sache, nicht nach „Werkstattfoto:“ oder „Anwendungsfoto:“', () => {
+    expect(visualFuerMotiv('Werkstattfoto: Schließplan auf dem Tisch neben sortierten Profilzylindern')?.generator).toBe(
+      'schliessplan',
+    );
+    expect(
+      visualFuerMotiv('Werkstattfoto: mechanischer Fahrzeugschlüssel neben aufgeklapptem Schlüsselkopf mit Transponder'),
+    ).toEqual({ generator: 'schluessel', params: { typ: 'transponder' } });
+    expect(visualFuerMotiv('Werkstattfoto: Regal mit Ordnern')).toEqual({
+      generator: 'profilschnitt',
+      params: { beschriftung: false },
+    });
+    expect(fachIconFuerMotiv('Anwendungsfoto: Sicherung der Außenhaut')).toBe('aussenhautsicherung');
+    expect(fachIconFuerMotiv('Anwendungsfoto: Mechanischer Schutz')).toBe('mechanischer-schutz');
+    expect(fachIconFuerMotiv('Anwendungsfoto: Kombinierte Sicherheitskonzepte')).toBe('kombinierte-konzepte');
+    expect(fachIconFuerMotiv('Anwendungsfoto: Panik- und Alarmtaster')).toBe('panik-alarmtaster');
+  });
+
+  it('behält das Foto-Symbol für Beispielfotos und zeichnet keine Haustür für die Fahrertür', () => {
+    expect(fachIconFuerMotiv('Beispielfoto: Zulassungsbescheinigung Teil I, vollständig im Bild und lesbar')).toBe(
+      'foto-hochladen',
+    );
+    expect(visualFuerMotiv('Werkstattfoto: Öffnungswerkzeug an der Fahrertür, Lackschutz angelegt')?.generator).toBe(
+      'profilschnitt',
+    );
+  });
+
+  it('liest „Funktionen“ nicht als Funkschlüssel', () => {
+    expect(visualFuerMotiv('Anwendungsfoto: Smarte Funktionen')).toBeNull();
+    expect(fachIconFuerMotiv('Anwendungsfoto: Smarte Funktionen')).toBe('smarte-funktionen');
+    expect(visualFuerMotiv('Produktfoto Funkschlüssel')?.params).toEqual({ typ: 'funk' });
+  });
+});
+

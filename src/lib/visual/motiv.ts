@@ -8,10 +8,11 @@ import type { VisualRef } from '@/lib/types';
  * wenn kein Generator passt – dann zeigt die Fläche ein Fach-Icon.
  */
 export function visualFuerMotiv(motif: string | undefined | null): VisualRef | null {
-  const t = normalisieren(motif);
-  if (!t) return null;
+  const voll = normalisieren(motif);
+  if (!voll) return null;
+  const t = ohneArt(voll);
 
-  if (hat(t, 'fraes', 'werkstatt', 'bearbeitung')) {
+  if (hat(t, 'fraes', 'bearbeitung')) {
     return { generator: 'profilschnitt', params: { beschriftung: false } };
   }
   if (hat(t, 'schliessanlage', 'schliessplan', 'hauptschluessel', 'zentralschloss', 'gruppenschluessel')) {
@@ -36,38 +37,52 @@ export function visualFuerMotiv(motif: string | undefined | null): VisualRef | n
     const bauform = hat(t, 'knauf') ? 'knauf' : hat(t, 'halb') ? 'profil-halb' : 'profil-doppel';
     return { generator: 'zylinder-mass', params: { bauform } };
   }
-  if (hat(t, 'tuer', 'beschlag', 'schloss', 'riegel', 'band')) {
+  if (hat(t, 'tuer', 'beschlag', 'schloss', 'riegel', 'band') && !hat(t, 'fahrertuer', 'autotuer')) {
     return { generator: 'tuer-schutz', params: { nummern: false } };
   }
   if (hat(t, 'smart key', 'smart-key', 'keyless')) return { generator: 'schluessel', params: { typ: 'smart-key' } };
-  if (hat(t, 'funk', 'fernbedienung')) return { generator: 'schluessel', params: { typ: 'funk' } };
+  if (hatFunk(t) || hat(t, 'fernbedienung')) return { generator: 'schluessel', params: { typ: 'funk' } };
   if (hat(t, 'klappschluessel')) return { generator: 'schluessel', params: { typ: 'klapp' } };
   if (hat(t, 'transponder')) return { generator: 'schluessel', params: { typ: 'transponder' } };
   if (hat(t, 'autoschluessel', 'fahrzeugschluessel')) return { generator: 'schluessel', params: { typ: 'funk' } };
   if (hat(t, 'schluessel', 'kopie', 'vorlage', 'rohling')) {
     return { generator: 'schluessel', params: { typ: 'zylinder', anzahl: hat(t, 'kopie', 'vorlage', 'zweit') ? 2 : 1 } };
   }
+  /* Werkstatt ohne erkennbares Werkstück: der Profilschnitt als Zeichen der Werkstatt. */
+  if (hat(voll, 'werkstatt')) return { generator: 'profilschnitt', params: { beschriftung: false } };
   return null;
 }
 
 /** Name eines passenden Fach-Icons (Datei in `visual/icons/`) für kleine Flächen oder als Ersatz. */
 export function fachIconFuerMotiv(motif: string | undefined | null): FachIconName {
-  const t = normalisieren(motif);
+  const voll = normalisieren(motif);
+  const t = ohneArt(voll);
   if (hat(t, 'video', 'kamera')) return 'videoueberwachung';
+  if (hat(t, 'panik')) return 'panik-alarmtaster';
   if (hat(t, 'alarm', 'melder')) return 'alarmtechnik';
+  if (hat(t, 'aussenhaut')) return 'aussenhautsicherung';
+  if (hat(t, 'mechanischer schutz', 'mechanische sicherung')) return 'mechanischer-schutz';
+  if (hat(t, 'kombin')) return 'kombinierte-konzepte';
+  if (hat(t, 'smart', 'funktionen')) return 'smarte-funktionen';
   if (hat(t, 'fahrzeugschein')) return 'foto-hochladen';
   if (hat(t, 'zylinder')) return 'profilzylinder';
   if (hat(t, 'tuer', 'beschlag', 'schloss')) return 'tuer-und-schliesstechnik';
   if (hat(t, 'paket', 'versand', 'artikel', 'produkt')) return 'versand-paket';
-  if (hat(t, 'auto', 'fahrzeug', 'funk')) return 'autoschluessel';
+  if (hat(t, 'auto', 'fahrzeug') || hatFunk(t)) return 'autoschluessel';
   if (hat(t, 'schluessel', 'code')) return 'schluessel-kopieren';
-  if (hat(t, 'foto', 'aufnahme')) return 'foto-hochladen';
+  /* Ohne erkennbare Sache: Beispiel- und Anwendungsfotos zeigen das Foto-Symbol. */
+  if (hat(voll, 'foto', 'aufnahme')) return 'foto-hochladen';
   return 'werkstatt';
 }
 
 export type FachIconName =
   | 'videoueberwachung'
   | 'alarmtechnik'
+  | 'panik-alarmtaster'
+  | 'aussenhautsicherung'
+  | 'mechanischer-schutz'
+  | 'kombinierte-konzepte'
+  | 'smarte-funktionen'
   | 'foto-hochladen'
   | 'profilzylinder'
   | 'tuer-und-schliesstechnik'
@@ -86,6 +101,20 @@ function normalisieren(text: string | undefined | null): string {
     .replace(/ß/g, 'ss')
     .replace(/\s+/g, ' ')
     .trim()} `;
+}
+
+/**
+ * Entfernt die vorangestellte Art der Bildstelle („Werkstattfoto:“, „Anwendungsfoto:“ …).
+ * Sie beschreibt das spätere Foto, nicht die Sache; sonst entschiede „Werkstatt“ oder
+ * „Foto“ über die Zeichnung statt des Motivs (Befund Kundschaft Welle E).
+ */
+function ohneArt(text: string): string {
+  return text.replace(/^ [a-z]*(?:foto|bild|zeichnung|aufnahme) ?: ?/, ' ');
+}
+
+/** „Funk“ als Wort oder Wortanfang („Funkschlüssel“), aber nicht „Funktion“. */
+function hatFunk(text: string): boolean {
+  return /funk(?!tion)/.test(text);
 }
 
 function hat(text: string, ...woerter: string[]): boolean {
