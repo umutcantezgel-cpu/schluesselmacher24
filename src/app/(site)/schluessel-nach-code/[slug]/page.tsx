@@ -216,6 +216,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <SectionHeading
             className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start"
+            nummer="01"
             eyebrow="Weiter im Bereich"
             title="Passende Seiten zu dieser Codelinie"
           />
@@ -236,7 +237,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
                   </span>
                   <GlyphPfeilRechts
                     size={18}
-                    className="shrink-0 text-foreground-subtle transition-transform duration-base ease-standard group-hover:translate-x-1 group-hover:text-primary"
+                    className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-hover:translate-x-1 group-hover:text-primary"
                   />
                 </Link>
               </li>
