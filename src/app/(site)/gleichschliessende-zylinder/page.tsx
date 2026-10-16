@@ -392,12 +392,12 @@ export default async function CylinderOverviewPage() {
                   body: 'Türen desselben Gebäudes haben oft verschiedene Maße. Notieren Sie sie getrennt, bevor Sie den Konfigurator öffnen.',
                 },
               ].map((step, index) => (
-                <li key={step.title} className="flex items-start gap-4 border-b border-border py-5">
+                <li key={step.title} className="flex items-baseline gap-4 border-b border-border py-5">
                   <span
                     aria-hidden
-                    className="w-6 shrink-0 font-mono text-caption tabular-nums text-foreground-muted"
+                    className="w-8 shrink-0 font-mono text-small font-semibold tabular-nums text-area-strong"
                   >
-                    {index + 1}
+                    {String(index + 1).padStart(2, '0')}
                   </span>
                   <div className="min-w-0">
                     <p className="text-title-sm font-semibold text-foreground">{step.title}</p>
@@ -579,7 +579,7 @@ export default async function CylinderOverviewPage() {
               Einfamilienhäuser, Wohnungen mit Nebenräumen, Garagen und kleine Betriebe, in denen
               jede Person überall hinein darf.
             </p>
-            <ul className="prose-sm24 mt-4">
+            <ul className="mt-4 list-disc space-y-2 pl-5 text-small text-foreground-muted marker:text-area">
               <li>Ein Berechtigungsgrad für alle</li>
               <li>Direkt im Konfigurator bestellbar</li>
               <li>Erweiterbar nur, wenn die Schließung hinterlegt wird</li>
@@ -602,7 +602,7 @@ export default async function CylinderOverviewPage() {
               Türen und Personen werden getrennt geplant: Wer darf welche Tür öffnen? Passend für
               Mehrfamilienhäuser, Verwaltungen, Praxen und Betriebe mit mehreren Bereichen.
             </p>
-            <ul className="prose-sm24 mt-4">
+            <ul className="mt-4 list-disc space-y-2 pl-5 text-small text-foreground-muted marker:text-area">
               <li>Mehrere Berechtigungsgrade, zum Beispiel mit Hauptschlüssel</li>
               <li>Erfassung über den Projektkonfigurator statt Direktkauf</li>
               <li>Planung mit Schließplan und Angebot</li>
