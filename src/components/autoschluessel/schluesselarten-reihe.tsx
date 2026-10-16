@@ -45,6 +45,9 @@ export function SchluesselartenReihe({
   return (
     <figure className={className}>
       <ol
+        // Mobil scrollt die Leiste seitlich: dann per Tastatur erreichbar und benannt (WCAG 2.1.1)
+        tabIndex={kopf ? 0 : undefined}
+        aria-label={kopf ? 'Schlüsselarten' : undefined}
         className={cn(
           kopf
             ? '-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 scroll-px-5 contain-inline-size sm:-mx-6 sm:px-6 sm:scroll-px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:scroll-px-0'

@@ -325,28 +325,34 @@ export default async function AutoschluesselHubPage() {
           eyebrow="Schlüsselarten"
           title="Worum es in diesem Bereich geht"
         />
-        <div className="prose-sm24 mt-6 max-w-measure">
-          <p>
-            {page?.intro
-              ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder '
-                + 'Preisrahmen. Erst dann buchen Sie einen Termin.'}
-          </p>
-          <p>
-            Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem
-            mechanischen Bart und der Elektronik. Für Ihren Auftrag ist entscheidend, welcher der
-            beiden Teile bearbeitet werden muss — davon hängen Aufwand, Termin und Preis ab.
-          </p>
-          <p>
-            Die folgenden Begriffe führen Sie zu der Seite, die Ihren Fall beschreibt. Wenn Sie
-            unsicher sind, beginnen Sie mit dem geführten Ablauf: Dort fragen wir Schritt für
-            Schritt genau die Angaben ab, die für Ihr Fahrzeug nötig sind.
-          </p>
+        <div className="mt-6 lg:grid lg:grid-cols-12 lg:gap-gutter">
+          <div className="prose-sm24 max-w-measure lg:col-span-7">
+            <p>
+              {page?.intro
+                ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder '
+                  + 'Preisrahmen. Erst dann buchen Sie einen Termin.'}
+            </p>
+            <p>
+              Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem
+              mechanischen Bart und der Elektronik. Für Ihren Auftrag ist entscheidend, welcher der
+              beiden Teile bearbeitet werden muss — davon hängen Aufwand, Termin und Preis ab.
+            </p>
+            <p>
+              Die folgenden Begriffe führen Sie zu der Seite, die Ihren Fall beschreibt. Wenn Sie
+              unsicher sind, beginnen Sie mit dem geführten Ablauf: Dort fragen wir Schritt für
+              Schritt genau die Angaben ab, die für Ihr Fahrzeug nötig sind.
+            </p>
+          </div>
+
+          {/* Randnotiz rechts neben der Einleitung, unten bündig: führt in die Begriffsliste darunter */}
+          <div className="mt-10 lg:col-span-5 lg:col-start-8 lg:mt-0 lg:self-end lg:border-t lg:border-border lg:pt-5">
+            <h3 className="text-title-sm font-semibold text-foreground">{KEY_KIND_HINT.title}</h3>
+            <p className="mt-2 max-w-measure text-body text-foreground-muted">{KEY_KIND_HINT.body}</p>
+          </div>
         </div>
 
-        <div className="mt-14">
-          <h3 className="text-title-sm font-semibold text-foreground">{KEY_KIND_HINT.title}</h3>
-          <p className="mt-2 max-w-measure text-body text-foreground-muted">{KEY_KIND_HINT.body}</p>
-          <dl className="mt-6 border-t border-border">
+        <div className="mt-8">
+          <dl className="border-t border-border">
             {SCHLUESSELARTEN_BEGRIFFE.map((art) => (
               <div
                 key={art}

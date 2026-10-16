@@ -25,6 +25,11 @@ describe('SchluesselartenReihe', () => {
   it('kennzeichnet die Zeichnungen als schematisch', () => {
     expect(html).toContain('Schematische Darstellung, nicht maßstäblich.');
   });
+
+  it('hat in der Standard-Variante keinen Scrollbereich und keinen Tab-Stopp', () => {
+    expect(html).not.toContain('tabindex');
+    expect(html).not.toContain('aria-label="Schlüsselarten"');
+  });
 });
 
 describe('SchluesselartenReihe in der Kopf-Variante', () => {
@@ -37,6 +42,11 @@ describe('SchluesselartenReihe in der Kopf-Variante', () => {
     expect(html).not.toContain('Keyless:');
     expect(html).not.toContain('Schlüssel mit Bart und ohne Tasten am Griff');
     expect(html).not.toContain('border-border');
+  });
+
+  it('macht die mobile Leiste per Tastatur erreichbar und benennt sie', () => {
+    expect(html).toContain('tabindex="0"');
+    expect(html).toContain('aria-label="Schlüsselarten"');
   });
 
   it('setzt die Namen als Absatz, nicht als Überschrift, und bricht die Gliederung nicht', () => {
