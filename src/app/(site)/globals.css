@@ -14,58 +14,58 @@
 @layer base {
   :root {
     /* Flächen */
-    --background: 214 45% 98.6%;
-    --surface: 0 0% 100%;
-    --surface-muted: 214 50% 96.6%;
-    --surface-sunken: 214 36% 92.5%;
-    --surface-ink: 222 36% 16%;
+    --background: 0.988 0.002 260;
+    --surface: 0.968 0.004 260;
+    --surface-muted: 0.971 0.008 254.996;
+    --surface-sunken: 0.938 0.012 255.022;
+    --surface-ink: 0.258 0.041 265.899;
 
     /* Text */
-    --foreground: 222 34% 15%;
-    --foreground-muted: 219 16% 37%;
-    --foreground-subtle: 217 12% 45%;
-    --foreground-inverse: 214 45% 98.6%;
+    --foreground: 0.16 0.02 260;
+    --foreground-muted: 0.32 0.02 260;
+    --foreground-subtle: 0.461 0.03 259.909;
+    --foreground-inverse: 0.988 0.003 254.969;
 
     /* Linien */
-    --border: 214 32% 89%;
-    --border-strong: 214 22% 77%;
-    --input: 214 28% 84%;
-    --ring: 214 86% 50%;
+    --border: 0.890 0.008 260;
+    --border-strong: 0.812 0.024 255.094;
+    --input: 0.868 0.021 255.072;
+    --ring: 0.572 0.205 258.319;
 
     /* Primär — klares Blau */
-    --primary: 214 80% 40%;
-    --primary-hover: 214 82% 33%;
-    --primary-soft: 214 100% 96.5%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0.405 0.161 257.634;
+    --primary-hover: 0.424 0.141 257.63;
+    --primary-soft: 0.967 0.016 255.038;
+    --primary-foreground: 1 0 0;
 
     /* Sekundär */
-    --secondary: 214 50% 94%;
-    --secondary-foreground: 222 34% 15%;
+    --secondary: 0.949 0.014 255.028;
+    --secondary-foreground: 0.25 0.037 266.043;
 
     /* Akzent — Technisch-Teal, sparsam für Bestätigungen */
-    --accent: 188 52% 30%;
-    --accent-soft: 188 44% 94%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0.485 0.069 209.38;
+    --accent-soft: 0.961 0.013 207.882;
+    --accent-foreground: 1 0 0;
 
     /* Funktionsfarben — nur für Status, nie als Markenfläche */
-    --success: 152 48% 30%;
-    --success-soft: 152 44% 94%;
-    --warning: 32 80% 33%;
-    --warning-soft: 38 70% 95%;
-    --danger: 0 58% 42%;
-    --danger-soft: 0 60% 96%;
-    --info: 214 80% 40%;
-    --info-soft: 214 100% 96.5%;
+    --success: 0.414 0.092 159.776;
+    --success-soft: 0.963 0.016 166.436;
+    --warning: 0.444 0.114 62.205;
+    --warning-soft: 0.971 0.017 81.501;
+    --danger: 0.411 0.161 25.376;
+    --danger-soft: 0.961 0.013 17.387;
+    --info: 0.485 0.161 257.634;
+    --info-soft: 0.967 0.016 255.038;
 
     /* Karten / Popover */
-    --card: 0 0% 100%;
-    --card-foreground: 222 34% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 34% 15%;
-    --muted: 214 50% 94%;
-    --muted-foreground: 219 16% 37%;
-    --destructive: 0 58% 42%;
-    --destructive-foreground: 0 0% 100%;
+    --card: 0.968 0.004 260;
+    --card-foreground: 0.16 0.02 260;
+    --popover: 0.968 0.004 260;
+    --popover-foreground: 0.16 0.02 260;
+    --muted: 0.949 0.014 255.028;
+    --muted-foreground: 0.465 0.035 262.763;
+    --destructive: 0.491 0.161 25.376;
+    --destructive-foreground: 1 0 0;
 
     --radius: 0.75rem;
 
@@ -82,10 +82,12 @@
   }
 
   html {
+    overflow-x: clip;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
+    overflow-x: clip;
     @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -236,7 +238,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .sm24-draw {
     stroke-dasharray: 1;
-    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.65, 0, 0.35, 1)
+    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.16, 1, 0.3, 1)
       var(--sm24-delay, 0s) both;
   }
 
@@ -253,12 +255,12 @@
   }
 
   .sm24-float {
-    animation: sm24-float var(--sm24-duration, 6s) ease-in-out var(--sm24-delay, 0s) infinite;
+    animation: sm24-float var(--sm24-duration, 6s) cubic-bezier(0.16, 1, 0.3, 1) var(--sm24-delay, 0s) infinite;
   }
 
   .sm24-dash {
     stroke-dasharray: 6 6;
-    animation: sm24-dash var(--sm24-duration, 1.6s) linear infinite;
+    animation: sm24-dash var(--sm24-duration, 1.6s) cubic-bezier(0.16, 1, 0.3, 1) infinite;
   }
 }
 
