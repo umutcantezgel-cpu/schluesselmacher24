@@ -26,4 +26,11 @@ describe('ZylinderMassLive', () => {
     expect(a).toContain('animate-schleier-ein');
     expect(a).toContain('Schematisch');
   });
+
+  it('zeichnet unter 640 px die schmale Fassung, darüber die breite', () => {
+    const html = renderToStaticMarkup(<ZylinderMassLive form="doppelzylinder" aussen={35} innen={40} name="Doppelzylinder" />);
+    expect(html).toMatch(/<svg[^>]*viewBox="0 0 300 220"[^>]*class="[^"]*sm:hidden/);
+    expect(html).toMatch(/<svg[^>]*viewBox="0 0 480 270"[^>]*class="[^"]*hidden sm:block/);
+    expect(html.match(/<title>Maßzeichnung Doppelzylinder: Maß A 35 mm, Maß B 40 mm/g)).toHaveLength(2);
+  });
 });

@@ -42,6 +42,18 @@ const REGISTRY: Record<string, VisualComponent> = {
   'zylinder-mass': ZylinderMassGrafik,
 };
 
+/**
+ * Generatoren mit dem Parameter `format: 'schmal'`: eigene, kleinere Fläche mit
+ * größerer Schrift für Telefonbreiten. Bildflächen zeigen sie unter 640 px.
+ */
+const SCHMALES_FORMAT: ReadonlySet<string> = new Set(['zylinder-mass']);
+
+/** Die schmale Fassung zu `ref`, sofern der Generator eine hat; sonst `null`. */
+export function schmaleFassung(ref: VisualRef): VisualRef | null {
+  if (!ref || typeof ref.generator !== 'string' || !SCHMALES_FORMAT.has(ref.generator)) return null;
+  return { ...ref, params: { ...(ref.params ?? {}), format: 'schmal' } };
+}
+
 export function getVisual(name: string): VisualComponent | undefined {
   return Object.prototype.hasOwnProperty.call(REGISTRY, name) ? REGISTRY[name] : undefined;
 }

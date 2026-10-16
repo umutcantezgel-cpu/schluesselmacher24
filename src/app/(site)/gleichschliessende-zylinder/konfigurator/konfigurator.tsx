@@ -723,8 +723,8 @@ function PositionCard({
             <InfoTip hint={catalog.measuringInfo} />
           </div>
 
-          <div className="mt-3 grid gap-4 md:grid-cols-12 md:items-start">
-            <div className="grid gap-4 sm:grid-cols-2 md:col-span-7">
+          <div className="mt-3 grid gap-4 lg:grid-cols-12 lg:items-start">
+            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
               <Field
                 label={form.measureLabels.a}
                 hint={`${formatMillimeter(form.minMm)} bis ${formatMillimeter(form.maxMm)}`}
@@ -776,8 +776,9 @@ function PositionCard({
               )}
             </div>
 
-            {/* Foto vor Zeichnung (K-008): ohne Messfoto folgt die Maßzeichnung live den Maßen (B-17) */}
-            <div className="md:col-span-5">
+            {/* Foto vor Zeichnung (K-008): ohne Messfoto folgt die Maßzeichnung live den Maßen (B-17).
+                Neben den Feldern erst ab lg; darunter in voller Breite, sonst wird die Schrift zu klein. */}
+            <div className="lg:col-span-5">
               {measureFigure.bild ? (
                 <ImagePlaceholder slot={measureFigure} compact />
               ) : (

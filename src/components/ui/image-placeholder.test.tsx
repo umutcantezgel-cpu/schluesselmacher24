@@ -33,6 +33,15 @@ describe('ImagePlaceholder – Rangfolge ohne Foto', () => {
     expect(html).toContain('data-sm24-icon=""');
   });
 
+  it('zeigt unter 640 px die schmale Fassung, wo der Generator eine hat', () => {
+    const html = zeichne({ motif: 'Beliebig', ratio: '4/3', visual: { generator: 'zylinder-mass', params: { aussen: 35 } } });
+    expect(html.match(/<svg/g)).toHaveLength(2);
+    expect(html).toMatch(/<svg[^>]*viewBox="0 0 300 220"[^>]*class="[^"]*sm:hidden/);
+    expect(html).toMatch(/<svg[^>]*viewBox="0 0 480 270"[^>]*class="[^"]*hidden sm:block/);
+    const ohne = zeichne({ motif: 'Beliebig', ratio: '4/3', visual: { generator: 'schliessplan', params: {} } });
+    expect(ohne.match(/<svg/g)).toHaveLength(1);
+  });
+
   it('lässt das Fach-Icon mit der Fläche wachsen, in kleinen Flächen nicht', () => {
     const gross = zeichne({ motif: 'Anwendungsfoto: Alarmtechnik', ratio: '4/3' });
     expect(gross).toContain('w-1/4');

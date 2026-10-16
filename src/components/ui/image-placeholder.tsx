@@ -16,7 +16,7 @@ import { IconTuerUndSchliesstechnik } from '@/components/visual/icons/tuer-und-s
 import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
 import { IconVideoueberwachung } from '@/components/visual/icons/videoueberwachung';
 import { IconWerkstatt } from '@/components/visual/icons/werkstatt';
-import { renderVisual } from '@/components/visual/registry';
+import { renderVisual, schmaleFassung } from '@/components/visual/registry';
 import type { ImageSlot } from '@/lib/types';
 import { fachIconFuerMotiv, visualFuerMotiv, type FachIconName } from '@/lib/visual/motiv';
 import { cn } from '@/lib/cn';
@@ -114,14 +114,18 @@ export function ImagePlaceholder({
 
   const flaeche = frei ? '' : 'rounded-lg border border-border bg-surface';
   const ref = compact ? null : (slot.visual ?? visualFuerMotiv(slot.motif));
+  /* Unter 640 px die schmale Fassung mit größerer Schrift, wo der Generator eine hat
+     (nicht zusammen mit einem Ausschnitt, der genau ein SVG beschneidet). */
+  const schmal = ref && !ausschnitt ? schmaleFassung(ref) : null;
   /* Der Titel kommt vom Generator selbst (sachlich), nicht aus dem Fotomotiv. */
-  const visual = ref ? renderVisual(ref, '', 'absolute inset-0 h-full w-full') : null;
+  const visual = ref ? renderVisual(ref, '', cn('absolute inset-0 h-full w-full', schmal && 'hidden sm:block')) : null;
   if (visual) {
     return (
       <div
         className={cn('relative w-full overflow-hidden', flaeche, ratios[slot.ratio], ausschnitt && 'sm24-ausschnitt', className)}
         style={ausschnitt ? ausschnittStil(ausschnitt) : undefined}
       >
+        {schmal && renderVisual(schmal, '', 'absolute inset-0 h-full w-full sm:hidden')}
         {visual}
       </div>
     );

@@ -326,7 +326,13 @@ export default async function HomePage() {
               titel: 'Gleichschließende Zylinder',
               text: 'Mehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.',
               link: 'Zum Konfigurator',
-              grafik: <ZylinderMassGrafik params={{ bauform: 'profil-doppel', aussen: 30, innen: 40 }} title="Maßzeichnung eines Profilzylinders" />,
+              /* Bis lg ist die Kartenfläche schmal (230–300 px): dort das schmale Format mit größerer Schrift. */
+              grafik: (
+                <>
+                  <ZylinderMassGrafik params={{ bauform: 'profil-doppel', aussen: 30, innen: 40, format: 'schmal' }} title="Maßzeichnung eines Profilzylinders" className="lg:hidden" />
+                  <ZylinderMassGrafik params={{ bauform: 'profil-doppel', aussen: 30, innen: 40 }} title="Maßzeichnung eines Profilzylinders" className="hidden lg:block" />
+                </>
+              ),
             },
           ].map((angebot) => (
             <AreaScope key={angebot.href} area={angebot.area}>

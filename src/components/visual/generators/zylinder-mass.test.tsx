@@ -116,4 +116,32 @@ describe('ZylinderMassGrafik', () => {
     const params = { bauform: 'knauf', aussen: 45, innen: 35, knaufseite: 'aussen' };
     expect(zeichne(params)).toBe(zeichne({ ...params }));
   });
+
+  it('zeichnet im schmalen Format eine kleinere Fläche mit größerer Schrift', () => {
+    const schmal = zeichne({ bauform: 'profil-doppel', aussen: 35, innen: 45, format: 'schmal' });
+    expect(schmal).toContain('viewBox="0 0 300 220"');
+    expect(schmal).toContain('font-size="16"');
+    expect(schmal).toContain('font-size="15"');
+    expect(schmal).not.toMatch(/NaN|Infinity|undefined/);
+    // Gleiche Maße, gleiches Verhältnis A:I wie im breiten Format.
+    const [a, i] = masslinien(schmal);
+    expect(a / i).toBeCloseTo(35 / 45, 1);
+    // Unbekanntes Format fällt auf das breite zurück.
+    pruefeVertrag(zeichne({ format: 'quer' }));
+  });
+
+  it('lässt im schmalen Format „außen“ und „innen“ in der Fläche', () => {
+    for (const params of [
+      { bauform: 'profil-doppel', aussen: 25, innen: 25 },
+      { bauform: 'knauf', aussen: 100, innen: 100, knaufseite: 'aussen' },
+      { bauform: 'profil-halb', aussen: 60 },
+    ]) {
+      const html = zeichne({ ...params, format: 'schmal' });
+      const aussenX = Number(/text-anchor="end" x="([\d.]+)"[^>]*>außen</.exec(html)?.[1]);
+      const innenX = Number(/text-anchor="start" x="([\d.]+)"[^>]*>innen</.exec(html)?.[1]);
+      // Fünf Zeichen Mono in 16 Einheiten sind etwa 48 Einheiten breit.
+      expect(aussenX - 5 * 16 * 0.6).toBeGreaterThanOrEqual(0);
+      expect(innenX + 5 * 16 * 0.6).toBeLessThanOrEqual(300);
+    }
+  });
 });

@@ -18,8 +18,17 @@ import {
   zahl,
 } from './grafik-basis';
 
-const BREITE = 480;
-const HOEHE = 270;
+const FORMATE = ['breit', 'schmal'] as const;
+
+/**
+ * Zeichenfläche je Format. „schmal“ ist für Telefonbreiten (unter 640 px): kleinere
+ * Fläche, größere Schrift; bei 250 px Breite wird die Beschriftung rund 13 px groß.
+ */
+const FLAECHE = {
+  /* `rand`: Platz links und rechts für „außen“/„innen“. */
+  breit: { breite: 480, hoehe: 270, rand: 66, schrift: SCHRIFT, klein: SCHRIFT_KLEIN },
+  schmal: { breite: 300, hoehe: 220, rand: 62, schrift: 16, klein: 15 },
+} as const;
 
 const BAUFORMEN = ['profil-doppel', 'profil-halb', 'knauf'] as const;
 const KNAUFSEITEN = ['innen', 'aussen'] as const;
@@ -38,8 +47,6 @@ const KNAUF_LAENGE = 13;
 const KNAUF_RADIUS = 14;
 const HALS_RADIUS = 5;
 
-/** Platz links und rechts für „außen“/„innen“. */
-const SEITENRAND = 66;
 const MAX_SKALA = 4;
 
 /** 30 → „30“, 32.5 → „32,5“. */
@@ -56,6 +63,7 @@ function mass(wert: number): string {
  * - `aussen`: Maß A in mm, 25–100 (Standard 30)
  * - `innen`: Maß I in mm, 25–100 (Standard 30; bei `profil-halb` ohne Wirkung)
  * - `knaufseite`: `innen` (Standard) | `aussen` — nur bei `knauf`
+ * - `format`: `breit` (Standard, 480 × 270) | `schmal` (300 × 220, größere Schrift für Telefone)
  *
  * Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende.
  */
@@ -67,6 +75,7 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
   const innen = zahl(wert(p, 'innen'), 25, 100, 30);
   const knaufseite =
     bauform === 'knauf' ? auswahl(wert(p, 'knaufseite'), KNAUFSEITEN, 'innen') : undefined;
+  const f = FLAECHE[auswahl(wert(p, 'format'), FORMATE, 'breit')];
 
   /* Waagerecht in mm: außen links (negativ), innen rechts (positiv). */
   const links = -aussen;
@@ -75,9 +84,9 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
   const minMm = links - (knaufseite === 'aussen' ? knaufMass : 0);
   const maxMm = rechts + (knaufseite === 'innen' ? knaufMass : 0);
 
-  const s = Math.min((BREITE - 2 * SEITENRAND) / (maxMm - minMm), MAX_SKALA);
-  const nullX = BREITE / 2 - ((minMm + maxMm) / 2) * s;
-  const oben = (HOEHE - (PROFIL_HOEHE * s + 70)) / 2 + 42;
+  const s = Math.min((f.breite - 2 * f.rand) / (maxMm - minMm), MAX_SKALA);
+  const nullX = f.breite / 2 - ((minMm + maxMm) / 2) * s;
+  const oben = (f.hoehe - (PROFIL_HOEHE * s + 70)) / 2 + 42;
   const X = (mm: number) => r(nullX + mm * s);
   const Y = (mm: number) => r(oben + mm * s);
 
@@ -150,19 +159,19 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
 
   const beschriftungY = r(oben + (PROFIL_HOEHE * s) / 2 + 4.5);
   const mitteText = 'Mitte Stulpschraube';
-  const mitteBreite = mitteText.length * SCHRIFT_KLEIN * 0.6;
+  const mitteBreite = mitteText.length * f.klein * 0.6;
   const mitteX = r(
-    Math.min(BREITE - 12 - mitteBreite / 2, Math.max(12 + mitteBreite / 2, X(0))),
+    Math.min(f.breite - 12 - mitteBreite / 2, Math.max(12 + mitteBreite / 2, X(0))),
   );
 
   return (
     <GrafikRahmen
-      breite={BREITE}
-      hoehe={HOEHE}
+      breite={f.breite}
+      hoehe={f.hoehe}
       title={titel(title, 'Maßzeichnung eines Schließzylinders')}
       className={className}
     >
-      <Raster breite={BREITE} hoehe={HOEHE} />
+      <Raster breite={f.breite} hoehe={f.hoehe} />
 
       {/* Zylinderkörper */}
       <g className="sm24-reveal" style={motionStyle(0)}>
@@ -266,7 +275,7 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
             <text
               className="sm24-reveal fill-foreground-muted font-mono"
               style={motionStyle(start + 0.9)}
-              fontSize={SCHRIFT}
+              fontSize={f.schrift}
               fontWeight={600}
               textAnchor="middle"
               x={r((x1 + x2) / 2)}
@@ -282,7 +291,7 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
       <g className="sm24-reveal" style={motionStyle(1.4)}>
         <text
           className="fill-foreground-muted font-mono"
-          fontSize={SCHRIFT}
+          fontSize={f.schrift}
           textAnchor="end"
           x={r(X(minMm) - 12)}
           y={beschriftungY}
@@ -291,7 +300,7 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
         </text>
         <text
           className="fill-foreground-muted font-mono"
-          fontSize={SCHRIFT}
+          fontSize={f.schrift}
           textAnchor="start"
           x={r(X(maxMm) + 12)}
           y={beschriftungY}
@@ -300,7 +309,7 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
         </text>
         <text
           className="fill-foreground-muted font-mono"
-          fontSize={SCHRIFT_KLEIN}
+          fontSize={f.klein}
           textAnchor="middle"
           x={mitteX}
           y={r(unten + 28)}

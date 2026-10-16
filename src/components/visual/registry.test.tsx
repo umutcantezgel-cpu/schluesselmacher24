@@ -12,7 +12,7 @@ import { SchliessplanGrafik } from './generators/schliessplan';
 import { SchluesselGrafik } from './generators/schluessel';
 import { ZutrittSignalGrafik } from './generators/zutritt-signal';
 import { ZylinderMassGrafik } from './generators/zylinder-mass';
-import { getVisual, renderVisual, visualNames } from './registry';
+import { getVisual, renderVisual, schmaleFassung, visualNames } from './registry';
 
 const NAMEN = [
   'schluessel',
@@ -89,6 +89,16 @@ describe('Registry', () => {
     expect(getVisual('schliessplan')).toBe(SchliessplanGrafik);
     expect(getVisual('code-fundstelle')).toBe(CodeFundstelleGrafik);
     expect(getVisual('zutritt-signal')).toBe(ZutrittSignalGrafik);
+  });
+
+  it('liefert eine schmale Fassung nur für Generatoren mit schmalem Format', () => {
+    expect(schmaleFassung({ generator: 'zylinder-mass', params: { aussen: 35 } })).toEqual({
+      generator: 'zylinder-mass',
+      params: { aussen: 35, format: 'schmal' },
+    });
+    expect(schmaleFassung({ generator: 'zylinder-mass' })?.params).toEqual({ format: 'schmal' });
+    expect(schmaleFassung({ generator: 'schliessplan', params: {} })).toBeNull();
+    expect(schmaleFassung({ generator: 'gibt-es-nicht' })).toBeNull();
   });
 
   it('liefert für unbekannte Namen nichts — auch nicht aus dem Prototyp', () => {
