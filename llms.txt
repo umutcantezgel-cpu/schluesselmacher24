@@ -1,0 +1,2 @@
+# LLM Context
+- Interactive Configurator for Schließanlagen added in `src/components/schliessanlagen/schliessanlagen-configurator.tsx`.

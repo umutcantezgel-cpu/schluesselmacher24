@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SystemErklaerung, SystemVergleich } from '@/components/schliessanlagen/system-erklaerung';
+import { SchliessanlagenConfigurator } from '@/components/schliessanlagen/schliessanlagen-configurator';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'schliessanlagen';
@@ -129,82 +130,34 @@ const AUDIENCES = [
 ];
 
 /** Fällt nur ein, solange in der Datenschicht keine Fragen gepflegt sind. */
-const FALLBACK_FAQ = [
-  {
-    question: 'Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?',
-    answer:
-      'Nein. Im Konfigurator beschreiben Sie Ihr Objekt und wer welche Tür öffnen soll. Daraus '
-      + 'leiten wir einen Vorschlag für das passende System ab und besprechen ihn mit Ihnen.',
-  },
-  {
-    question: 'Was ist der Unterschied zwischen einer Gleichschließung und einer Schließanlage?',
-    answer:
-      'Bei einer Gleichschließung öffnet jeder Schlüssel jede Tür. Eine Schließanlage unterscheidet '
-      + 'dagegen, wer welche Tür öffnen darf, und bildet dafür Ebenen ab — vom Nutzerschlüssel bis '
-      + 'zum Hauptschlüssel.',
-  },
-  {
-    question: 'Kann ich eine Anlage später erweitern?',
-    answer:
-      'Das entscheidet sich bei der Planung. Wenn im Schließplan Reserven für weitere Türen und '
-      + 'Nutzer vorgesehen sind, lassen sich später Schließstellen ergänzen. Sagen Sie uns deshalb '
-      + 'im Konfigurator, was Sie in den nächsten Jahren vorhaben.',
-  },
-  {
-    question: 'Ich habe schon eine Anlage. Können Sie sie ergänzen?',
-    answer:
-      'Das hängt vom vorhandenen System und vom Nachweis ab. Geben Sie im Konfigurator Hersteller, '
-      + 'System und die Sicherungskarte an, soweit Ihnen das bekannt ist, und laden Sie vorhandene '
-      + 'Pläne oder Fotos hoch. Wir prüfen danach, was möglich ist.',
-  },
-  {
-    question: 'Wie kommt der Preis zustande?',
-    answer:
-      'Eine Schließanlage wird nach Ihrem Schließplan gefertigt. Preis und Aufwand hängen von der '
-      + 'Anzahl der Schließstellen, der Schlüssel und der Ebenen ab. Deshalb nennen wir erst nach '
-      + 'der Erfassung einen Betrag — und nicht vorab auf der Seite.',
-  },
-  {
-    question: 'Brauchen alle Türen denselben Zylinder?',
-    answer:
-      'Nein. Innerhalb einer Anlage können Zylinder unterschiedlich ausgestattet sein — etwa '
-      + 'Außentüren mit höherem Schutz gegen Aufbohren und Ziehen, Innentüren in einfacherer '
-      + 'Ausführung. Welche Tür welche Ausstattung braucht, halten wir im Schließplan fest.',
-  },
-  {
-    question: 'Was passiert, wenn ein Hauptschlüssel verloren geht?',
-    answer:
-      'Ein übergeordneter Schlüssel öffnet viele Türen. Bei einer rein mechanischen Anlage müssen '
-      + 'deshalb meist die betroffenen Zylinder getauscht oder umgestellt werden. Für Türen mit '
-      + 'hohem Verlustrisiko kann eine elektronische Lösung sinnvoll sein, weil sich ein verlorenes '
-      + 'Medium dort sperren lässt.',
-  },
-  {
-    question: 'Wer darf Nachschlüssel bestellen?',
-    answer:
-      'Bei Anlagen mit Sicherungskarte nur, wer die Karte vorlegt. Ob ein Profil zusätzlich '
-      + 'geschützt ist und wie lange, hängt vom Hersteller und vom System ab. Bewahren Sie die '
-      + 'Karte getrennt von den Schlüsseln auf.',
-  },
-  {
-    question: 'Was gilt an Flucht- und Rettungswegen?',
-    answer:
-      'Türen in Flucht- und Rettungswegen müssen sich in Fluchtrichtung jederzeit ohne Schlüssel '
-      + 'öffnen lassen. Dafür gibt es Notausgangs- und Paniktürverschlüsse nach DIN EN 179 und '
-      + 'DIN EN 1125 sowie passende Zylinder. Kennzeichnen Sie solche Türen im Konfigurator, damit '
-      + 'wir sie im Schließplan berücksichtigen.',
-  },
-  {
-    question: 'Wie pflege ich die Zylinder?',
-    answer:
-      'Verwenden Sie kein Öl und kein Kriechöl — beides verharzt und zieht Schmutz an. Geeignet ist '
-      + 'ein Pflegespray für Schließzylinder nach Angabe des Herstellers.',
-  },
-];
+
 
 export default async function SchliessanlagenPage() {
   const page = await getPageContent(ROUTE);
-  const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
+  const faq = page?.faq?.length ? page.faq : [
+
+            {
+              question: 'Wie unterscheidet sich eine Hauptschlüsselanlage von einer Generalhauptschlüsselanlage?',
+              answer: 'Eine Hauptschlüsselanlage (HS) hat genau zwei Hierarchieebenen: Ein übergeordneter Hauptschlüssel schließt alle Türen, die untergeordneten Einzelschlüssel schließen nur jeweils ihre spezifische Tür. Eine Generalhauptschlüsselanlage (GHS) verfügt über mindestens drei Ebenen. Neben dem Generalhauptschlüssel gibt es Gruppenschlüssel, die nur bestimmte Bereiche (z.B. Abteilungen oder Gebäude) schließen, und darunterliegende Einzelschlüssel. GHS-Anlagen eignen sich für komplexe Organisationsstrukturen.',
+            },
+            {
+              question: 'Was passiert, wenn ein Schlüssel einer Schließanlage verloren geht?',
+              answer: 'Der Verlust eines Schlüssels stellt ein Sicherheitsrisiko dar. Bei einem mechanischen Einzelschlüssel muss in der Regel nur der betroffene Zylinder getauscht werden. Geht jedoch ein Haupt- oder Gruppenschlüssel verloren, kann der Austausch der gesamten Anlage oder großer Teile davon notwendig sein, was mit erheblichen Kosten verbunden ist. Mechanische Anlagen bieten hier keine Möglichkeit, einzelne Schlüssel auszuprogrammieren. Deshalb empfehlen wir für Bereiche mit hohem Fluktuations- oder Verlustrisiko den Einsatz mechatronischer oder rein elektronischer Komponenten, bei denen verlorene Identmedien einfach gesperrt werden können.',
+            },
+            {
+              question: 'Können Schließanlagen nachträglich erweitert werden?',
+              answer: 'Ja, professionelle Schließanlagen sind grundsätzlich erweiterbar. Es ist jedoch essenziell, dies bereits bei der initialen Planung (Bedarfsanalyse) zu berücksichtigen. Es werden sogenannte "Reserven" in den Schließplan eingebaut, die es ermöglichen, später zusätzliche Türen oder Nutzergruppen zu integrieren, ohne die bestehende Sicherheitsstruktur zu gefährden. Ohne diese geplanten Reserven ist eine spätere Erweiterung oft nicht oder nur eingeschränkt möglich.',
+            },
+            {
+              question: 'Was bedeutet technischer Patentschutz bei Zylindern?',
+              answer: 'Ein technischer Patentschutz bedeutet, dass die Konstruktion des Zylinders und des Schlüssels (z.B. spezielle Profile, bewegliche Elemente) rechtlich geschützt ist. Dies verhindert, dass Dritthersteller kompatible Schlüsselrohlinge auf den Markt bringen. Zusammen mit der Sicherungskarte bietet dies den höchsten Schutz vor illegalen Schlüsselkopien. Nach Ablauf des Patentschutzes können jedoch prinzipiell kompatible Rohlinge hergestellt werden. Daher setzen wir auf Systeme mit langer Patentlaufzeit oder zusätzlichem Markenschutz.',
+            },
+            {
+              question: 'Was ist eine Sicherungskarte und wofür wird sie benötigt?',
+              answer: 'Die Sicherungskarte ist das zentrale Legitimationsdokument Ihrer Schließanlage. Sie funktioniert ähnlich wie der Fahrzeugbrief bei einem Auto. Nur gegen Vorlage (im Original oder als autorisierte Kopie/PIN, je nach Hersteller) dieser Karte können Nachschlüssel oder zusätzliche Zylinder beim Fachhändler oder Hersteller bestellt werden. Sie schützt Sie somit effektiv davor, dass unberechtigte Personen ohne Ihr Wissen Schlüssel nachmachen lassen.',
+            }
+
+];
   const process = PROCESS_LABELS.projektkonfigurator;
 
   return (
@@ -291,6 +244,11 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+      {/* Interaktiver Kalkulator */}
+      <Section>
+        <SchliessanlagenConfigurator />
+      </Section>
+
       {/* Die fünf Systeme */}
       <Section id="systeme" tone="muted">
         <SectionHeading
@@ -310,6 +268,86 @@ export default async function SchliessanlagenPage() {
           </p>
           <div className="mt-5">
             <SystemVergleich />
+          </div>
+        </div>
+      </Section>
+
+
+      {/* Architektonische Methodik */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Architektur & Methodik"
+          title="Technische Konzeption von Schließanlagen"
+          lead="Präzise Planung für Sicherheit, Skalierbarkeit und Langlebigkeit."
+        />
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <div>
+            <h3 className="text-[18px] font-bold text-foreground">1. Bedarfsanalyse und Ist-Zustand</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Am Anfang jeder erfolgreichen Schließanlage steht eine fundierte Analyse. Wir erfassen nicht nur die
+              aktuellen Türen und Nutzergruppen, sondern berücksichtigen auch zukünftige Erweiterungen.
+              Die Strukturierung in unterschiedliche Sicherheitszonen und Berechtigungsebenen bildet das
+              Fundament für die anschließende mathematische Schließplanberechnung. Eine präzise Bedarfsanalyse
+              verhindert spätere Sicherheitslücken und teure Nachrüstungen. Die Kombination aus mechanischer
+              und mechatronischer Absicherung kann dabei ebenfalls evaluiert werden.
+            </p>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Hierbei spielen Aspekte wie Flucht- und Rettungswege, Brandschutzanforderungen sowie
+              organisatorische Abläufe innerhalb des Gebäudes eine entscheidende Rolle. Der Schließplan
+              muss exakt auf die tatsächlichen Arbeitsprozesse der Organisation zugeschnitten sein,
+              ohne unnötige Komplexität zu erzeugen. Die Dokumentation des Ist-Zustandes liefert die
+              notwendigen Kennzahlen für eine effiziente Konzeptionierung.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-[18px] font-bold text-foreground">2. Mathematische Schließplanberechnung</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Die Übersetzung der organisatorischen Anforderungen in einen technischen Schließplan erfordert
+              höchste Präzision. Jede Hierarchieebene und jede Querschließung muss mathematisch abgebildet
+              werden. Dabei achten wir besonders auf die Vermeidung von ungewollten Schließungen (sogenannten
+              Mit- oder Fehlschließungen). Durch den Einsatz modernster Berechnungssoftware stellen wir
+              sicher, dass die theoretische Permutation der Stiftzuhaltungen im Zylinder optimal
+              ausgenutzt wird, ohne die Sicherheit zu kompromittieren.
+            </p>
+             <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Die Berechnung definiert die Einschnitte auf dem Schlüssel und die entsprechende Bestiftung
+              der Zylinderkerne. Bei komplexen Generalhauptschlüsselanlagen (GHS) werden zudem Profilvariationen
+              eingesetzt, um die Anzahl der möglichen Schließungen zu vervielfachen und die Anlagensicherheit
+              zu maximieren. Jeder berechnete Schließplan durchläuft strenge Qualitätskontrollen, bevor
+              er in die Fertigung übergeben wird.
+            </p>
+          </div>
+           <div>
+            <h3 className="text-[18px] font-bold text-foreground">3. Profilsicherheit und Patentschutz</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Ein wesentlicher Faktor für die Langzeitsicherheit einer Schließanlage ist der Schutz vor
+              illegalen Schlüsselkopien. Wir setzen ausschließlich auf Zylindersysteme mit gültigem
+              technischen Patentschutz und integriertem Kopierschutz. Spezielle Profilierungen,
+              bewegliche Elemente im Schlüssel oder komplexe Fräsbilder machen es nahezu unmöglich,
+              Nachschlüssel mit konventionellen 3D-Druckern oder Fräsmaschinen herzustellen.
+            </p>
+             <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Zusätzlich sorgt die obligatorische Sicherungskarte dafür, dass legitime Nachbestellungen
+              nur von autorisierten Personen durchgeführt werden können. Der Patentschutz garantiert zudem,
+              dass Rohlinge auf dem freien Markt nicht verfügbar sind. Diese Kombination aus technischem
+              und organisatorischem Schutz gewährleistet die Integrität Ihrer Anlage über viele Jahre hinweg.
+            </p>
+          </div>
+           <div>
+            <h3 className="text-[18px] font-bold text-foreground">4. Fertigung und Montage</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Nach der Freigabe des Schließplans erfolgt die präzise Fertigung der Komponenten. Hochmoderne
+              CNC-Maschinen fräsen die Schlüssel und bestiften die Zylinder mit mikrometergenauer Toleranz.
+              Dies garantiert nicht nur höchste Sicherheit gegen Manipulationsversuche wie Picking oder
+              Schlagschlüssel, sondern sorgt auch für einen seidenweichen Lauf und eine lange Lebensdauer
+              der Mechanik.
+            </p>
+            <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+              Die anschließende Montage wird durch zertifizierte Techniker durchgeführt. Jeder Zylinder
+              wird auf korrekte Funktion und Passgenauigkeit geprüft. Abschließend erhalten Sie eine
+              umfassende Dokumentation inklusive des Schließplans und aller relevanten Sicherheitszertifikate.
+              Diese Dokumentation bildet die Grundlage für spätere Erweiterungen und Wartungsarbeiten.
+            </p>
           </div>
         </div>
       </Section>
