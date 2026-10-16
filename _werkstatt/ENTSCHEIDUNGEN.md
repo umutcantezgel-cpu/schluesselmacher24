@@ -377,3 +377,61 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   | Desktop | unverändert | unverändert |
 
   Zwei SVGs je Stelle, eines ist per `display: none` verborgen und damit auch für Hilfsmittel unsichtbar.
+
+## D-037 · Prüfstufe B der Etappe E4: technisch grün bis auf H10 mobil, Sichtabnahme 6,2 im Mittel
+- **Technik (`_werkstatt/protokolle/E4-PRUEFER-B-ergebnis.md`):**
+
+  | Prüfung | Ergebnis |
+  |---|---|
+  | Typprüfung, Linter | 0 |
+  | Unit-Tests | 1039/1039 |
+  | DB-Tests | 52/52 |
+  | Logikwächter | 0 abweichend |
+  | Textabzug | 6/6 gleich |
+  | Wertesuche | 0 ohne Ausnahme |
+  | Build | 198/198 |
+  | Funktionsliste | 14/14 |
+  | Konsole | 0 Fehler |
+  | Bewegung reduziert | 0 Befunde |
+  | Bildrate B-01 | 0 % verworfen |
+  | Überlauf | in 36 von 36 Ansicht-Gerät-Paaren keiner |
+
+  - **axe:** 4 critical. Je zweimal fehlt der Name des Zurück-Knopfs in Abläufen (H04, H07 mobil) bzw. das Label der Datei-Eingaben im Foto-Upload (H06 mobil und desktop). Serious: keine.
+  - **Budgets:** 23 von 24 Serien eingehalten. **H10 Warenkorb mobil verletzt LCP (2776 ms) und CLS (0,146)**. In E2 lag die Ansicht im Budget (896 ms, 0,100), der Rückschritt kam mit E4-B-14. Der Fix kommt vor E5 (Teil von L-07).
+- **Sichtabnahme (`_werkstatt/berichte/E4-L-23-sichtabnahme-*.md`, drei frische Prüfer):**
+
+  | Gruppe | Ansicht | Wert |
+  |---|---|---|
+  | Erzählansichten 1 | H01 Start | 7,3 |
+  | | H02 Autoschlüssel | 6,2 |
+  | | H03 Modell | 6,0 |
+  | | H12 Ratgeber | 5,7 |
+  | Erzählansichten 2 | H05 Code-Shop | 5,2 |
+  | | H06 Code-Produkt | 5,8 |
+  | | H08 Schließanlagen | 6,8 |
+  | | H09 Türtechnik | 5,8 |
+  | Arbeitsansichten | H04 Assistent | 6,2 |
+  | | H07 Zylinder-Konfigurator | 6,8 |
+  | | H10 Warenkorb | 6,0 |
+  | | H11 Kasse | 6,5 |
+  | **Mittel** | | **6,2** |
+
+  Harte Katalogtreffer: H05 (52 leere Kartenbildflächen) und H06 (leere Fläche „So sollte das Foto aussehen“).
+- **Entscheidung:** Z-04 verlangt in der Endprüfung mindestens 8. Deshalb kommen die Befunde vor die übrigen Ansichten (E5):
+  1. Ein Paket des Orchestrators für alle gemeinsamen Bausteine (E4-L-27, siehe unten).
+  2. Je Hauptansicht ein Befundpaket (E5-BEFUND-H01 bis H12), Haiku in Wellen zu vier. Je Ansicht und Kategorie gibt es höchstens zwei Befundpakete; dies ist das erste.
+  3. Danach die Wellen F bis H mit den geschärften Mustern.
+- **Gemeinsame Bausteine (E4-L-27):**
+  - Gesperrter Knopf als ruhige Fläche.
+  - Abläufe: Zurück-Knopf mit Namen und auf Schritt 1 ausgeblendet; mobil eine kompakte Ablaufleiste mit Schrittname.
+  - Labels für die Datei-Eingaben.
+  - Bereichstöne Code und Schließanlagen weiter auseinander.
+  - Inline-Links ohne aufgerissene Zeilen.
+  - Generatorfehler beheben:
+    - Fundstelle: Leitlinien über dem Schlüssel
+    - Tür: Marken 3 und 4, Leitlinie 5
+    - Schlüssel: Signalbögen nur einmal, Notschlüssel im Smart Key
+    - Schließplan: Reserve gestrichelt
+  - Live-Schlüssel vor der Eingabe als Rohling.
+  - Einheitliche Summenfarbe und ein Warenkorbzeichen.
+- **Texte:** Floskeln und Abschnittstitel, die die Prüfer bemängeln („Wobei können wir helfen?“, „Präzise Handwerkskunst …“), sind Inhalt. Sie kommen als Vorschläge in TEXTVORSCHLAEGE.md. Mikrotexte („Zur Seite“, „Ansehen“, „Leistungsdetails“, „… erkunden“) ändern die Befundpakete direkt.
