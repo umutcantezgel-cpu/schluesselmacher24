@@ -243,8 +243,9 @@ export default async function HomePage() {
       <Section tone="sunken" labelledBy="ablauf-titel">
         <AreaScope area="autoschluessel">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
+            {/* Linke Spalte als Einheit (ohne Klebung): Kopf, Knöpfe, darunter der Funkschlüssel; die Schritte rechts teilen ihre Höhe */}
             <div className="flex flex-col lg:col-span-5">
-              <div className="lg:sticky lg:top-28">
+              <div>
                 <SectionHeading
                   id="ablauf-titel"
                   nummer="02"
@@ -271,7 +272,7 @@ export default async function HomePage() {
                 </div>
               </div>
               {/* Funkschlüssel direkt auf der Fläche, bis an den Rand ragend; Unterkante bündig mit dem letzten Schritt */}
-              <div className="-ml-8 mt-auto hidden pt-10 lg:block">
+              <div className="-ml-8 hidden pt-10 lg:block">
                 <SchluesselGrafik params={{ typ: 'funk' }} title="Funkschlüssel in Seitenansicht" />
               </div>
             </div>
