@@ -1,0 +1,8 @@
+| Ansicht | Profil | Läufe | LCP ms | CLS | INP ms | TBT ms | JS KB | Gesamt KB | Budget (Median) |
+|---|---|---|---|---|---|---|---|---|---|
+| H01-start | mobil | 3 von 3 | 1020 (1016–1056) | 0,000 (0,000–0,000) | 96 (80–112) | 258 (234–285) | 298,1 (291,0–298,1) | 632,4 (620,9–632,4) | eingehalten |
+| H01-start | desktop | 3 von 3 | 148 (132–148) | 0,000 (0,000–0,000) | 32 (32–32) | 0 (0–1) | 329,7 (329,7–329,7) | 778,3 (778,3–778,3) | eingehalten |
+
+Budgets: LCP ≤ 2500 ms, CLS ≤ 0,1, INP ≤ 200 ms (am Median). Das Bewegungscode-Budget (60 KB) wird nicht gesondert gemessen; „JS KB“ ist die Gesamtmenge aller Skript-Ressourcen.
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/messung-2026-10-16_06-19-51.json

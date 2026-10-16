@@ -1,0 +1,21 @@
+{
+  "skript": "bewegung-reduziert",
+  "zeit": "2026-10-16T04:18:49.291Z",
+  "argumente": {
+    "_": [
+      "reduziert"
+    ],
+    "routen": "/",
+    "echtzeit": false
+  },
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 203
+    }
+  ]
+}

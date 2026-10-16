@@ -1,0 +1,11 @@
+| Ansicht | Konsolenfehler | Warnungen | Seitenfehler | Fehlgeschlagene Anfragen | Attrappen-Abbrüche (kein Befund) | Ladefehler |
+|---|---|---|---|---|---|---|
+| H01-start | 0 | 0 | 0 | 2 | 0 | – |
+
+### Einzelmeldungen (erste 10 je Art)
+
+**H01-start**
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=5CB68i4pnAekjehf
+- Fehlgeschlagen: net::ERR_ABORTED http://localhost:3000/autoschluessel/anfrage?_rsc=tXyZJ52UQVBCVsD3
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/konsole-2026-10-16_06-17-49.json

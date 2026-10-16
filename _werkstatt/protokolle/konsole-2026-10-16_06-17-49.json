@@ -1,0 +1,31 @@
+{
+  "skript": "konsole",
+  "zeit": "2026-10-16T04:17:49.040Z",
+  "argumente": {
+    "_": [],
+    "routen": "/"
+  },
+  "geraet": "desktop",
+  "ergebnisse": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=5CB68i4pnAekjehf",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=tXyZJ52UQVBCVsD3",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    }
+  ]
+}

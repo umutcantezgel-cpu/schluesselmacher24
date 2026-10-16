@@ -1,0 +1,89 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-16T04:18:22.075Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/"
+    ],
+    "selektor": "main section:first-of-type [role=img]",
+    "geraet": "mobil",
+    "ziel": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/b01-mobil",
+    "echtzeit": false
+  },
+  "pfad": "/",
+  "selektor": "main section:first-of-type [role=img]",
+  "dauer": null,
+  "geraet": "mobil",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": "div",
+    "zustand": "play",
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 6,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 1599.9999999999998
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/b01-mobil/start__mobil__main-section-first-of-type-role-img__0.jpg",
+      "clip": {
+        "x": 0,
+        "y": 141.890625,
+        "width": 390,
+        "height": 441.75
+      }
+    },
+    {
+      "k": 1,
+      "t": 400,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/b01-mobil/start__mobil__main-section-first-of-type-role-img__1.jpg",
+      "clip": {
+        "x": 0,
+        "y": 141.890625,
+        "width": 390,
+        "height": 441.75
+      }
+    },
+    {
+      "k": 2,
+      "t": 800,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/b01-mobil/start__mobil__main-section-first-of-type-role-img__2.jpg",
+      "clip": {
+        "x": 0,
+        "y": 141.890625,
+        "width": 390,
+        "height": 441.75
+      }
+    },
+    {
+      "k": 3,
+      "t": 1200,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/b01-mobil/start__mobil__main-section-first-of-type-role-img__3.jpg",
+      "clip": {
+        "x": 0,
+        "y": 141.890625,
+        "width": 390,
+        "height": 441.75
+      }
+    },
+    {
+      "k": 4,
+      "t": 1600,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/b01-mobil/start__mobil__main-section-first-of-type-role-img__4.jpg",
+      "clip": {
+        "x": 0,
+        "y": 141.890625,
+        "width": 390,
+        "height": 441.75
+      }
+    }
+  ]
+}

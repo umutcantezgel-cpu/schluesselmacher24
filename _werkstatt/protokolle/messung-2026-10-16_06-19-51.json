@@ -1,0 +1,128 @@
+{
+  "skript": "messung",
+  "zeit": "2026-10-16T04:19:51.869Z",
+  "argumente": {
+    "_": [],
+    "routen": "/",
+    "laeufe": "3",
+    "profil": "beide"
+  },
+  "budget": {
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "hinweis": "Werte: Median (Minimum–Maximum) je Ansicht und Profil; INP 0 = kein Ereignis über 16 ms",
+  "serien": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 1056,
+          "cls": 0,
+          "inp": 96,
+          "tbt": 234,
+          "jsKB": 298.0615234375,
+          "gesamtKB": 632.3662109375,
+          "ressourcen": 78,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 1020,
+          "cls": 0,
+          "inp": 112,
+          "tbt": 285,
+          "jsKB": 298.0615234375,
+          "gesamtKB": 632.365234375,
+          "ressourcen": 78,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 1016,
+          "cls": 0,
+          "inp": 80,
+          "tbt": 258,
+          "jsKB": 290.994140625,
+          "gesamtKB": 620.8857421875,
+          "ressourcen": 77,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 148,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 329.7197265625,
+          "gesamtKB": 778.2900390625,
+          "ressourcen": 115,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 148,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 1,
+          "jsKB": 329.7197265625,
+          "gesamtKB": 778.2890625,
+          "ressourcen": 115,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 132,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 329.7197265625,
+          "gesamtKB": 778.2900390625,
+          "ressourcen": 115,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    }
+  ],
+  "zusammenfassung": [
+    {
+      "ansicht": "H01-start",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "1020 (1016–1056)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "96 (80–112)",
+      "tbt": "258 (234–285)",
+      "jsKB": "298,1 (291,0–298,1)",
+      "gesamtKB": "632,4 (620,9–632,4)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H01-start",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "148 (132–148)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "0 (0–1)",
+      "jsKB": "329,7 (329,7–329,7)",
+      "gesamtKB": "778,3 (778,3–778,3)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    }
+  ]
+}

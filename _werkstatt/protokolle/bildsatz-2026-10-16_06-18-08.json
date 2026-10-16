@@ -1,0 +1,148 @@
+{
+  "skript": "bildsatz",
+  "zeit": "2026-10-16T04:18:08.939Z",
+  "argumente": {
+    "_": [],
+    "routen": "/",
+    "ziel": "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2"
+  },
+  "max": 15,
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "geraet": "mobil",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 10,
+      "seitenausschnitte": 10,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 47,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-6 > div > div.relative > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > div.contents > div.order-2 > div.min-w-zeichnung"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.contents > div.order-2 > div.min-w-zeichnung > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.order-2 > div.min-w-zeichnung > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.order-2 > div.min-w-zeichnung > svg.block > g"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.min-w-zeichnung > svg.block > g > path.sm24-draw"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.min-w-zeichnung > svg.block > g > path.sm24-draw"
+        }
+      ],
+      "befundText": "47: über den rechten Rand div.lgcol-span-6 > div > div.relative > svg.block; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__mobil__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__mobil__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__mobil__09.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "tablet",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 7,
+      "seitenausschnitte": 7,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 4,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-6 > div > div.relative > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.order-2 > div.min-w-zeichnung > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "4: über den rechten Rand div.lgcol-span-6 > div > div.relative > svg.block; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__tablet__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__tablet__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__tablet__06.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "desktop",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 7,
+      "seitenausschnitte": 7,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__desktop__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__desktop__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/bilder/referenz-2/H01-start__desktop__06.jpg"
+      ]
+    }
+  ]
+}
