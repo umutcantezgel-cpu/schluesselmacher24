@@ -26,7 +26,7 @@ Weitere Skripte aus `package.json`:
 | `npm run admin:anlegen` | legt den ersten Backend-Zugang an |
 | `npm run db:start` · `db:stop` · `db:status` · `db:reset` | lokale Entwicklungsdatenbank (`scripts/db.mjs`) |
 | `npm run db:migrate` · `generate:types` · `generate:importmap` | Payload: Migrationen, Typen, Importmap |
-| `npm run aufbewahrung:bereinigen` | löscht Kundendateien mit abgelaufener Frist. Nur anzeigen: `npm run aufbewahrung:bereinigen -- --probe` (`--probe` steht hinter `--`, damit npm es an das Skript weitergibt; Beleg `src/scripts/aufbewahrung-bereinigen.ts:6`) |
+| `npm run aufbewahrung:bereinigen` | löscht Kundendateien mit abgelaufener Frist und Uploads, die nie einem Vorgang zugeordnet wurden und älter als 24 Stunden sind. Nur anzeigen: `npm run aufbewahrung:bereinigen -- -- --probe` – das erste `--` nimmt npm, das zweite `payload run`; mit nur einem `--` verschluckt `payload run` das Flag, und das Skript löscht (`src/scripts/aufbewahrung-bereinigen.ts`, `node_modules/payload/dist/bin/index.js`) |
 
 Die Vorlage `.env.example` nach `.env.local` kopieren und ausfüllen. Sie enthält keine Zugangsdaten; vorbelegt ist nur `NEXT_PUBLIC_SITE_URL`. Im Code gelesen werden unter anderem `DATABASE_URL`, `PAYLOAD_SECRET`, `SM24_DATA`, `SM24_READONLY_CONTENT`, `NEXT_PUBLIC_SERVER_URL`, `NEXT_PUBLIC_SITE_URL`, `SEED_ADMIN_EMAIL` und `SEED_ADMIN_PASSWORD`.
 
@@ -62,14 +62,14 @@ SM24_DATA=json npx next build
   - Dauern: `--dauer-instant` (120 ms) bis `--dauer-scene` (900 ms). Kurven: `--kurve-standard`, `--kurve-enter`, `--kurve-exit`, `--kurve-draw`.
   - Schatten: `shadow-raised`, `shadow-overlay`.
   - Farben: semantische Tokens wie `surface`, `primary` oder `foreground-muted`. Der Bereichsakzent wird über `data-area` gesetzt (Werte in `src/lib/visual/area-theme.ts`).
-- **Icons** (`src/components/visual/`): 54 Fach-Icons in `icons/` auf einem gemeinsamen Rahmen (`icon-base.tsx`), 39 einfarbige UI-Glyphen in `glyphen/`. Offen: `lucide-react` (`^1.17.0`) wird noch in 4 Dateien importiert (Zählung im Arbeitsbaum mit `grep -rl lucide-react src`: `bestellung/[id]/page.tsx`, `rechtliches/cookie-einstellungen/cookie-einstellungen.tsx`, `standorte/[city]/page.tsx`, `standorte/page.tsx`; am Basisstand f0e1382 waren es 14).
+- **Icons** (`src/components/visual/`): 54 Fach-Icons in `icons/` auf einem gemeinsamen Rahmen (`icon-base.tsx`), 39 einfarbige UI-Glyphen in `glyphen/`. Offen: `lucide-react` (`^1.17.0`) wird noch in 4 Dateien importiert (`bestellung/[id]/page.tsx`, `rechtliches/cookie-einstellungen/cookie-einstellungen.tsx`, `standorte/[city]/page.tsx`, `standorte/page.tsx`; Zählung mit `grep -rl lucide-react src`).
 - **Grafik-Generatoren:** 9 Generatoren in `generators/` (`ablauf`, `code-fundstelle`, `profilschnitt`, `schliessplan`, `schluessel`, `stiftzuhaltung`, `tuer-schutz`, `zutritt-signal`, `zylinder-mass`), eingetragen in `registry.tsx`. Sie erzeugen reines, deterministisches SVG; jeder hat einen Test. Gemeinsame Strichskala und Raster stehen in `grafik-basis.tsx`.
 - **Bewegung** (K-007): CSS-Klassen `sm24-*` in `globals.css`, Bausteine in `motion/` (`InView`, `Reveal`, `DrawOn`, `CheckDraw`). Animiert werden laut Regel nur `transform` und `opacity` sowie Strich- und Maskenbewegungen.
 - **Reduzierte Bewegung:** `@media (prefers-reduced-motion: reduce)` in `globals.css` verkürzt Animationen und Übergänge. JavaScript-Scrollen nutzt `scrollVerhalten()` aus `src/lib/bewegung.ts`.
 
 ## Tests
 
-- **Unit-Tests:** `npm run test:unit` (Vitest 2, Umgebung `node`, ohne DOM; `vitest.config.ts`). 66 Unit-Testdateien im Arbeitsbaum dieser Fassung (`find src -name '*.test.ts*' ! -name '*.db.test.ts' | wc -l`). Am Basisstand f0e1382 sind es 64. Die Differenz sind zwei Dateien, die nach f0e1382 hinzugekommen sind und im Verlauf von HEAD liegen (Commit 0fca06c): `src/lib/codelinie.test.ts` und `src/components/visual/interaktiv/code-fundstelle-interaktiv.test.tsx`.
+- **Unit-Tests:** `npm run test:unit` (Vitest 2, Umgebung `node`, ohne DOM; `vitest.config.ts`). 66 Unit-Testdateien (`find src -name '*.test.ts*' ! -name '*.db.test.ts' | wc -l`).
 - **DB-Tests:** `npm run test:db` (`vitest.db.config.ts`), 7 Dateien `*.db.test.ts`. Die Datei `src/test/db-global-setup.ts` startet eine eigene Postgres-Instanz (Port 5434, änderbar mit `SM24_TEST_PG_PORT`) und spielt Migrationen und Seed ein.
 - Laut `_werkstatt/STATUS.md` (Abschnitt Einrichtung) sind die DB-Tests als root nicht lauffähig.
 - **Prüfungen:** `npm run typecheck` und `npm run lint`.
