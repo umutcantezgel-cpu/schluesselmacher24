@@ -77,8 +77,8 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E4-L-16 | H01 Befunde der Sichtabnahme, Anlauf 2 (letztes Paket je Kategorie) | L/Opus | `(site)/page.tsx`, `globals.css`, Fuß, Layout, Generatoren `profilschnitt`/`schliessplan`, `area-theme.ts`, `image-placeholder.tsx` | E2 | Z-04 | 8dc1538 |
 | E4-B-12 | H12 Ratgeber und Liste | B/Haiku | 2 Dateien | E3-L-09 | Z-04 || a22965a |
 | E4-B-13 | H07 Zylinder-Konfigurator (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02 | Z-04 || 46bd429 |
-| E4-B-14 | H10 Warenkorb (Logikwächter) | B/Haiku | 2 Dateien | E3-B-01 | Z-04 | |
-| E4-B-15 | H11 Kasse (Logikwächter) | B/Haiku | 2 Dateien | E3-B-01 | Z-04 | |
+| E4-B-14 | H10 Warenkorb (Logikwächter) | B/Haiku | 2 Dateien | E3-B-01 | Z-04 || ee71d8c |
+| E4-B-15 | H11 Kasse (Logikwächter) | B/Haiku | 2 Dateien | E3-B-01 | Z-04 || e807b4a |
 | E4-B-16 | H04 Assistent (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02, E3-B-05 | Z-04 | |
 | E4-B-17 | `/schluessel-nach-vorlage` | B/Haiku | 1 Datei | E3-L-08 | Z-06 | |
 | E4-B-18 | `/elektronische-zutrittsloesungen` | B/Haiku | 1 Datei | E3-L-08 | Z-06 | |
@@ -87,6 +87,7 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E4-L-17 | Bestandsfehler: Eingabeschrift mit Rahmenfarbe, InView bei hohen Abschnitten (D-028) | L/Opus | `tailwind.config.ts`, `cn.ts`, `controls.tsx`, `in-view.tsx` + Tests | – | Z-02, Z-07 | 9bcf603 |
 | E4-L-18 | Gemeinsame Bausteine nach Welle C (D-029) | L/Opus | Raster-Token, `option-card`, `photo-upload`, `rechner-bausteine`, Schließplan-Ausschnitt, `tuer-schutz`, Ausnahmen Logikwächter | – | Z-04, Z-07 | 098c3cb |
 | E4-L-19 | Seitenwechsel springt nach oben (D-030) | L/Opus | 3 Seiten, `seitenstruktur.test.ts` | – | Z-02 | e523e49 |
+| E4-L-20 | SummaryList als Schriftfeld, gemeinsame Platzhalter-Prüfung (D-031) | L/Opus | `summary-list`, `platzhalter.ts`, Ausnahmen | – | Z-04 | 3f05396 |
 | E4-L-07 | Leistung absichern (nach der ersten Etappenmessung) | L/Opus | je Befund | E3-P-B | Z-08 | |
 | E5-B-20 | Service, Kontakt, Vor Ort | B/Haiku | 3 Dateien | E3 | Z-06 | |
 | E5-B-21 | `/gleichschliessende-zylinder` | B/Haiku | 1 Datei | E3 | Z-06 | |
