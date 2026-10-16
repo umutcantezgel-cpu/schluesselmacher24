@@ -1,3 +1,6 @@
+import { Fragment, type CSSProperties } from 'react';
+
+import { cn } from '@/lib/cn';
 import type { VisualProps } from '../registry';
 import { DRAW_DASHARRAY, motionStyle } from '../motion/motion-style';
 import {
@@ -69,6 +72,28 @@ const TIEFE_STUFE = 4;
 const VERSATZ_STUFEN = [3, 7, 4, 0, 5] as const;
 const STANDARD_EINSCHNITTE = [3, 6, 2, 7, 4] as const;
 
+/**
+ * Szene `scroll` (B-25): Der Schlüssel beginnt so weit links, dass seine Spitze
+ * 20 Einheiten vor der Mitte der ersten Bohrung steht; die Reide liegt dann außerhalb.
+ */
+const SCHLUESSEL_EINFAHRT = -(SPITZE.x - BOHRUNGEN[0]) - 20;
+/** Szene `scroll`: Stiftweg in der Ausgangslage, begrenzt auf diese Spanne (Einheiten). */
+const SZENE_WEG = { min: 8, max: 30 } as const;
+
+/** Eine Bohrung mit Stift, Fuge und den Werten der Szene `scroll`. */
+type Bohrungsdaten = {
+  x: number;
+  i: number;
+  traegt: boolean;
+  spitze: number;
+  fuge: number;
+  richtig: boolean;
+  /** Stiftweg der Ausgangslage (nur Szene): Abstand zur Endlage, positiv = tiefer. */
+  weg: number;
+  /** Federfaktor der Ausgangslage (nur Szene): Länge Ausgangslage / Länge Endlage. */
+  federVon: number;
+};
+
 /** Tiefe einer Einschnitt-Stufe in viewBox-Einheiten. */
 function tiefe(stufe: number): number {
   return TIEFE_GRUND + stufe * TIEFE_STUFE;
@@ -117,6 +142,31 @@ function kernstiftPfad(x: number, fuge: number, tip: number): string {
   return `M${x - STIFT_HALB} ${r(fuge)}H${x + STIFT_HALB}V${schulter}L${x} ${r(tip)}L${x - STIFT_HALB} ${schulter}Z`;
 }
 
+/** Gehäusestift einer Bohrung: Unterkante liegt auf der Fuge. */
+function gehaeusestift(b: Bohrungsdaten) {
+  return (
+    <rect
+      className="fill-area-muted stroke-foreground"
+      strokeWidth={LINIE}
+      x={b.x - STIFT_HALB}
+      y={b.fuge - GEHAEUSESTIFT_LAENGE}
+      width={STIFT_HALB * 2}
+      height={GEHAEUSESTIFT_LAENGE}
+    />
+  );
+}
+
+/** Kernstift einer Bohrung, Spitze auf `spitze`. */
+function kernstift(b: Bohrungsdaten) {
+  return (
+    <path
+      className="fill-surface stroke-area-strong"
+      strokeWidth={LINIE}
+      d={kernstiftPfad(b.x, b.fuge, b.spitze)}
+    />
+  );
+}
+
 /**
  * Schnitt durch einen Schließzylinder mit fünf Stiftpaaren und eingestecktem
  * Schlüssel. Drei Zustände: passt · passt-nicht · abgebrochen.
@@ -126,6 +176,8 @@ function kernstiftPfad(x: number, fuge: number, tip: number): string {
  * - `einschnitte`: 5 Ziffern 0–9 (Liste oder Text, z. B. `'37264'`); die Stifte sind
  *   auf diese Tiefen ausgelegt. Ohne gültige Angabe Standard `[3, 6, 2, 7, 4]`.
  * - `code`: bis 4 Ziffern (Text oder Zahl), erscheinen auf der Reide; alles andere entfällt
+ * - `szene`: `scroll` (nur bei `passt`) fährt den Schlüssel ein und richtet die Stifte am
+ *   Scrollen aus (B-25); die Endlage ist dasselbe Bild. Sonst ohne Wirkung.
  *
  * Die Fugen liegen bei `passt` auf der Trennlinie. Bei `passt-nicht` trägt der Schlüssel
  * andere Tiefen, und die Fugen wandern. Bei `abgebrochen` trägt nur der Halm bis zur
@@ -138,18 +190,24 @@ export function StiftzuhaltungGrafik({ params, title, className }: VisualProps) 
   const code = codeAus(wert(p, 'code'));
   const falsch = zustand === 'passt-nicht';
   const abgebrochen = zustand === 'abgebrochen';
+  const szeneWunsch = wert(p, 'szene');
+  const szeneAktiv =
+    zustand === 'passt' && typeof szeneWunsch === 'string' && szeneWunsch.trim().toLowerCase() === 'scroll';
 
   /* Tiefen, die im Schlüssel stecken: bei `passt-nicht` deterministisch verschoben. */
   const schluessel = falsch ? stufen.map((s, i) => (s + (VERSATZ_STUFEN[i] ?? 0)) % 10) : stufen;
   const tragend = abgebrochen ? TRAGENDE_BOHRUNGEN_ABGEBROCHEN : BOHRUNGEN.length;
 
-  /* Pro Bohrung: Stiftlänge (aus der Auslegung), Spitze, Fuge. */
-  const bohrungen = BOHRUNGEN.map((x, i) => {
+  /* Pro Bohrung: Stiftlänge (aus der Auslegung), Spitze, Fuge, Werte der Szene. */
+  const bohrungen: Bohrungsdaten[] = BOHRUNGEN.map((x, i) => {
     const traegt = i < tragend;
     const spitze = traegt ? HALM_OBEN + tiefe(schluessel[i] ?? 0) : STIFT_BODEN;
     const kernLaenge = HALM_OBEN - KERN_OBEN + tiefe(stufen[i] ?? 0);
     const fuge = spitze - kernLaenge;
-    return { x, i, traegt, spitze, fuge, richtig: Math.abs(fuge - KERN_OBEN) < 0.5 };
+    const weg = Math.min(SZENE_WEG.max, Math.max(SZENE_WEG.min, STIFT_BODEN - spitze));
+    const bis = fuge - GEHAEUSESTIFT_LAENGE;
+    const federVon = r((bis + weg - FEDER_OBEN) / (bis - FEDER_OBEN));
+    return { x, i, traegt, spitze, fuge, weg, federVon, richtig: Math.abs(fuge - KERN_OBEN) < 0.5 };
   });
 
   const stuetzen = bohrungen.filter((b) => b.traegt);
@@ -167,12 +225,64 @@ export function StiftzuhaltungGrafik({ params, title, className }: VisualProps) 
     trennStriche.push({ von, bis: Math.min(von + TRENNLINIE.strich, TRENNLINIE.bis) });
   }
 
+  /* Schlüsselteile: Halm, Bruchkante, Reide, Reidenloch, Code. In der Szene eine Gruppe. */
+  const schluesselTeile = (
+    <>
+      <path className="fill-surface" stroke="none" d={halm} />
+      <path className="stroke-foreground" strokeWidth={KONTUR} d={halm} />
+      {abgebrochen && (
+        <path data-bruch="" className="stroke-foreground" strokeWidth={KONTUR} d={`M${BRUCH_X} ${HALM_OBEN}${bruchZacken()}`} />
+      )}
+      <rect
+        className="fill-area-muted stroke-foreground"
+        strokeWidth={KONTUR}
+        x={reideX}
+        y={REIDE.y}
+        width={REIDE.b}
+        height={REIDE.h}
+        rx={REIDE.radius}
+      />
+      <circle
+        className="fill-surface stroke-foreground"
+        strokeWidth={LINIE}
+        cx={r(reideX + REIDE.b / 2)}
+        cy={REIDE.y + 22}
+        r={8}
+      />
+      {code && (
+        <text
+          className="fill-foreground-muted font-mono"
+          fontSize={SCHRIFT}
+          fontWeight={600}
+          textAnchor="middle"
+          x={r(reideX + REIDE.b / 2)}
+          y={REIDE.y + 58}
+        >
+          {code}
+        </text>
+      )}
+    </>
+  );
+
+  /* Marken an den Fugen: in der Szene eine Gruppe, die zuletzt erscheint. */
+  const marken = bohrungen.map((b) => (
+    <circle
+      key={`marke-${b.x}`}
+      className={`sm24-pop fill-surface ${b.richtig ? 'stroke-success' : 'stroke-danger'}`}
+      style={motionStyle(0.3 + b.i * 0.12)}
+      strokeWidth={LINIE}
+      cx={b.x}
+      cy={r(b.fuge)}
+      r={4}
+    />
+  ));
+
   return (
     <GrafikRahmen
       breite={BREITE}
       hoehe={HOEHE}
       title={titel(title, TITEL[zustand])}
-      className={className}
+      className={szeneAktiv ? cn(className, 'sm24-szene') : className}
     >
       <Raster breite={BREITE} hoehe={HOEHE} />
 
@@ -213,70 +323,42 @@ export function StiftzuhaltungGrafik({ params, title, className }: VisualProps) 
         />
       ))}
 
-      {/* Federn, Gehäusestifte, Kernstifte */}
+      {/* Federn (in der Szene je Feder ein Faktor zum Strecken) */}
       {bohrungen.map((b) => (
         <path
           key={`feder-${b.x}`}
-          className="stroke-foreground-muted"
+          className={szeneAktiv ? 'stroke-foreground-muted sm24-scrub-feder' : 'stroke-foreground-muted'}
+          style={szeneAktiv ? ({ '--feder-von': b.federVon, '--stift-nr': b.i } as CSSProperties) : undefined}
           strokeWidth={LINIE}
           d={federPfad(b.x, b.fuge - GEHAEUSESTIFT_LAENGE)}
         />
       ))}
-      {bohrungen.map((b) => (
-        <rect
-          key={`gehaeusestift-${b.x}`}
-          className="fill-area-muted stroke-foreground"
-          strokeWidth={LINIE}
-          x={b.x - STIFT_HALB}
-          y={b.fuge - GEHAEUSESTIFT_LAENGE}
-          width={STIFT_HALB * 2}
-          height={GEHAEUSESTIFT_LAENGE}
-        />
-      ))}
+      {/* Gehäusestifte: in der Szene mit dem Kernstift in einer Gruppe (siehe unten) */}
+      {!szeneAktiv &&
+        bohrungen.map((b) => <Fragment key={`gehaeusestift-${b.x}`}>{gehaeusestift(b)}</Fragment>)}
 
       {/* Schlüssel: Reide, Halm mit Einschnitten, gegebenenfalls Bruchkante */}
-      <path className="fill-surface" stroke="none" d={halm} />
-      <path className="stroke-foreground" strokeWidth={KONTUR} d={halm} />
-      {abgebrochen && (
-        <path data-bruch="" className="stroke-foreground" strokeWidth={KONTUR} d={`M${BRUCH_X} ${HALM_OBEN}${bruchZacken()}`} />
-      )}
-      <rect
-        className="fill-area-muted stroke-foreground"
-        strokeWidth={KONTUR}
-        x={reideX}
-        y={REIDE.y}
-        width={REIDE.b}
-        height={REIDE.h}
-        rx={REIDE.radius}
-      />
-      <circle
-        className="fill-surface stroke-foreground"
-        strokeWidth={LINIE}
-        cx={r(reideX + REIDE.b / 2)}
-        cy={REIDE.y + 22}
-        r={8}
-      />
-      {code && (
-        <text
-          className="fill-foreground-muted font-mono"
-          fontSize={SCHRIFT}
-          fontWeight={600}
-          textAnchor="middle"
-          x={r(reideX + REIDE.b / 2)}
-          y={REIDE.y + 58}
-        >
-          {code}
-        </text>
+      {szeneAktiv ? (
+        <g className="sm24-scrub-schluessel" style={{ '--schluessel-von': SCHLUESSEL_EINFAHRT } as CSSProperties}>
+          {schluesselTeile}
+        </g>
+      ) : (
+        schluesselTeile
       )}
 
-      {bohrungen.map((b) => (
-        <path
-          key={`kernstift-${b.x}`}
-          className="fill-surface stroke-area-strong"
-          strokeWidth={LINIE}
-          d={kernstiftPfad(b.x, b.fuge, b.spitze)}
-        />
-      ))}
+      {/* Kernstifte über dem Halm; in der Szene je Bohrung Gehäusestift und Kernstift zusammen */}
+      {szeneAktiv
+        ? bohrungen.map((b) => (
+            <g
+              key={`stift-${b.x}`}
+              className="sm24-scrub-stift"
+              style={{ '--stift-von': b.weg, '--stift-nr': b.i } as CSSProperties}
+            >
+              {gehaeusestift(b)}
+              {kernstift(b)}
+            </g>
+          ))
+        : bohrungen.map((b) => <Fragment key={`kernstift-${b.x}`}>{kernstift(b)}</Fragment>)}
 
       {/* Bruchstück liegt im Kern unter den Bohrungen 3–5 und verdeckt die Stiftspitzen */}
       {abgebrochen && (
@@ -328,17 +410,7 @@ export function StiftzuhaltungGrafik({ params, title, className }: VisualProps) 
         })}
 
       {/* Marken an den Fugen: gestaffelt, höchstens fünf */}
-      {bohrungen.map((b) => (
-        <circle
-          key={`marke-${b.x}`}
-          className={`sm24-pop fill-surface ${b.richtig ? 'stroke-success' : 'stroke-danger'}`}
-          style={motionStyle(0.3 + b.i * 0.12)}
-          strokeWidth={LINIE}
-          cx={b.x}
-          cy={r(b.fuge)}
-          r={4}
-        />
-      ))}
+      {szeneAktiv ? <g className="sm24-scrub-pruefung">{marken}</g> : marken}
     </GrafikRahmen>
   );
 }

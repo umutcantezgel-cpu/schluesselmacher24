@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
 import { StiftzuhaltungGrafik } from './stiftzuhaltung';
+import { hash } from './grafik-basis';
 
 function zeichne(params: unknown, title: unknown = ''): string {
   return renderToStaticMarkup(
@@ -106,5 +107,87 @@ describe('StiftzuhaltungGrafik', () => {
     expect(zeichne({}, 'Schließzylinder in der Werkstatt')).toContain(
       '<title>Schließzylinder in der Werkstatt</title>',
     );
+  });
+
+  it('ohne szene bleibt die Ausgabe unverändert (Fingerabdruck vor E6-GRAFIKER-11)', () => {
+    const fingerabdruecke: [unknown, number, number][] = [
+      [{}, 1176611037, 7362],
+      [{ zustand: 'passt-nicht' }, 3985722158, 8132],
+      [{ zustand: 'abgebrochen', code: '500' }, 401139204, 8179],
+      [{ zustand: 'passt-nicht', einschnitte: '37264', code: '4711' }, 2567637817, 8258],
+      [{ zustand: 'passt', einschnitte: '37264' }, 1703972281, 7362],
+      [{ zustand: 'passt', code: '404' }, 2720279030, 7487],
+      [{ zustand: 'passt', einschnitte: [9, 0, 9, 0, 9], code: '9' }, 641981156, 7485],
+      [{ zustand: 'abgebrochen' }, 1300335833, 8054],
+      [{ einschnitte: [1, 2, 3, 4, 5], code: 12 }, 2353545066, 7474],
+      [{ code: 7 }, 3177861991, 7485],
+    ];
+    for (const [params, fingerabdruck, laenge] of fingerabdruecke) {
+      const html = zeichne(params);
+      expect(html).toHaveLength(laenge);
+      expect(hash(html)).toBe(fingerabdruck);
+    }
+  });
+
+  it('zeigt die Szene nur mit szene: scroll und nur bei passt', () => {
+    expect(zeichne({ szene: 'scroll' })).toMatch(/<svg[^>]*class="[^"]*\bsm24-szene\b/);
+    expect(zeichne({})).not.toContain('sm24-szene');
+    expect(zeichne({ szene: 'nein' })).toBe(zeichne({}));
+    expect(zeichne({ szene: 7 })).toBe(zeichne({}));
+    for (const zustand of ['passt-nicht', 'abgebrochen']) {
+      const ohne = zeichne({ zustand, code: '4711' });
+      expect(zeichne({ zustand, code: '4711', szene: 'scroll' })).toBe(ohne);
+      expect(ohne).not.toContain('sm24-scrub');
+      expect(ohne).not.toContain('sm24-szene');
+    }
+  });
+
+  it('hat in der Szene einen einfahrenden Schlüssel, fünf Stifte und fünf Federn', () => {
+    const html = zeichne({ szene: 'scroll', code: '4711' });
+    pruefeVertrag(html);
+    expect(html.match(/<g class="sm24-scrub-schluessel" style="--schluessel-von:-\d+"/g)).toHaveLength(1);
+    expect(html.match(/<g class="sm24-scrub-stift"/g)).toHaveLength(5);
+    expect(html.match(/<path class="stroke-foreground-muted sm24-scrub-feder"/g)).toHaveLength(5);
+    expect(html.match(/<g class="sm24-scrub-pruefung"/g)).toHaveLength(1);
+
+    const stifte = [...html.matchAll(/class="sm24-scrub-stift" style="--stift-von:(-?[\d.]+);--stift-nr:(\d+)"/g)];
+    expect(stifte.map((m) => Number(m[2]))).toEqual([0, 1, 2, 3, 4]);
+    for (const m of stifte) expect(Number(m[1])).toBeGreaterThanOrEqual(8);
+    for (const m of stifte) expect(Number(m[1])).toBeLessThanOrEqual(30);
+
+    const federn = [...html.matchAll(/sm24-scrub-feder" style="--feder-von:([\d.]+);--stift-nr:(\d+)"/g)];
+    expect(federn.map((m) => Number(m[2]))).toEqual([0, 1, 2, 3, 4]);
+    for (const m of federn) expect(Number(m[1])).toBeGreaterThan(1);
+  });
+
+  it('verändert in der Szene nur Klassen und Variablen, nicht die Zeichenelemente', () => {
+    const ohne = zeichne({ code: '4711' });
+    const mit = zeichne({ code: '4711', szene: 'scroll' });
+    for (const element of ['<path', '<rect', '<circle', '<text']) {
+      expect(mit.split(element)).toHaveLength(ohne.split(element).length);
+    }
+  });
+
+  it('setzt in der Szene nur Zahlen ohne Einheit als Variablen', () => {
+    const html = zeichne({ szene: 'scroll' });
+    const stile = [...html.matchAll(/<(?:g|path) class="[^"]*sm24-scrub[^"]*" style="([^"]*)"/g)].map((m) => m[1]);
+    expect(stile).toHaveLength(11);
+    for (const stil of stile) expect(stil).toMatch(/^(?:--(?:stift|feder|schluessel)-\w+:-?\d+(?:\.\d+)?;?)+$/);
+  });
+
+  it('ist in der Szene deterministisch', () => {
+    const params = { szene: 'scroll', einschnitte: '37264', code: '4711' };
+    expect(zeichne(params)).toBe(zeichne(params));
+  });
+
+  it('behält eine übergebene className und hängt sm24-szene hinten an', () => {
+    const mit = renderToStaticMarkup(
+      <StiftzuhaltungGrafik params={{ szene: 'scroll' } as VisualProps['params']} title="" className="mt-4" />,
+    );
+    expect(mit).toMatch(/^<svg[^>]*class="block h-auto w-full mt-4 sm24-szene"/);
+    const ohne = renderToStaticMarkup(
+      <StiftzuhaltungGrafik params={{} as VisualProps['params']} title="" className="mt-4" />,
+    );
+    expect(ohne).toMatch(/^<svg[^>]*class="block h-auto w-full mt-4"/);
   });
 });
