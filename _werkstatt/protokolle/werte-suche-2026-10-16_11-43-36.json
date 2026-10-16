@@ -1,0 +1,23 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T09:43:36.985Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 2,
+  "summeOhneAusnahmen": 1,
+  "summeAusnahmen": 0,
+  "funde": [
+    {
+      "datei": "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx",
+      "zeile": 456,
+      "kategorie": "Tailwind-Klasse mit []",
+      "fund": "-left-[37px]",
+      "ausnahme": false
+    }
+  ]
+}

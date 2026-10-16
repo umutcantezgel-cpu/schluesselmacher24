@@ -1,0 +1,15 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T09:43:34.930Z",
+  "argumente": {
+    "_": [
+      "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 2,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}
