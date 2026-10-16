@@ -17,7 +17,7 @@ describe('SchluesselartenReihe', () => {
     for (const titel of ['Mechanischer Schlüssel', 'Funkschlüssel', 'Klappschlüssel', 'Smart Key']) {
       expect(html).toContain(`<title>Zeichnung: ${titel}`);
     }
-    expect(html.match(/sm24-reveal/g)).toHaveLength(4);
+    expect(html.match(/<div class="sm24-reveal"/g)).toHaveLength(4);
     expect(html).toContain('--sm24-delay:0.36s');
     expect(html).not.toContain('--sm24-delay:0.48s');
   });
