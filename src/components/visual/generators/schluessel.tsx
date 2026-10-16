@@ -288,6 +288,7 @@ function klapp(tiefenZiffern: number[], f: Farben): Zeichnung {
           strokeWidth={KONTUR}
           d={`M176 ${oben}H${spitze - 10}L${spitze} -8V8L${spitze - 10} ${unten}H176Z`}
         />
+        {/* Spurband: ein breiter Strich als Fläche, keine Linie der Strichskala (D-010) */}
         <path
           className={f.spur}
           strokeWidth={10}

@@ -273,7 +273,7 @@ export function ZutrittSignalGrafik({ params, title, className }: VisualProps) {
           height={SCHILD.h}
           rx={SCHILD.w / 2}
         />
-        {/* Drücker als Doppelstrich: Kontur, darin die helle Fläche */}
+        {/* Drücker als Doppelstrich: Kontur, darin die helle Fläche (Halo, Ausnahme nach D-010) */}
         <path className="stroke-foreground" strokeWidth={11} d={druecker} />
         <path className="stroke-surface" strokeWidth={6} d={druecker} />
         <circle

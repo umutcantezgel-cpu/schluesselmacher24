@@ -46,7 +46,8 @@ interface Fundstelle {
 
 /**
  * Neutrale Platzhalter-Striche statt einer Nummer — bewusst keine Ziffern,
- * damit keine echte Schließungsnummer vorgetäuscht wird.
+ * damit keine echte Schließungsnummer vorgetäuscht wird. Die Strichdicke steuert
+ * zugleich die Lage der Striche; sie steht deshalb als Zahl (Ausnahme nach D-010).
  */
 function striche(
   cx: number,
@@ -311,6 +312,7 @@ export function CodeFundstelleGrafik({ params, title, className }: VisualProps) 
         r={marke.r}
       />
 
+      {/* Griff und Lupe als Doppelstrich-Halo: breite Striche sind hier Flächen, keine Linien (D-010) */}
       <g className="sm24-pop" style={motionStyle(0.95)}>
         <path className="stroke-foreground" strokeWidth={13} d={griffPfad} />
         <path className="stroke-area" strokeWidth={8} d={griffPfad} />

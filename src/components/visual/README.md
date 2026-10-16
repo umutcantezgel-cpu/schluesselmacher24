@@ -1,8 +1,7 @@
 # Visuelles System — Icons, Grafik-Generatoren, Bewegung
 
-Alle Grafiken der Seite sind **Vektorgrafiken aus Code und Daten**. Keine Stockfotos,
-keine erzeugten Fotos, die eine echte Werkstatt vortäuschen. Echte Fotos kommen nur
-aus der Medienbibliothek (`ImageSlot.bild`).
+Alle Grafiken der Seite sind **Vektorgrafiken aus Code und Daten**. Keine Stockfotos, keine erzeugten Fotos, die eine echte Werkstatt vortäuschen.
+Echte Fotos kommen nur aus der Medienbibliothek (`ImageSlot.bild`).
 
 ## Ordner
 
@@ -99,7 +98,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) { �
   (`interaktiv/`); Generatoren bleiben reine Funktionen von `params`.
 - Eingaben selbst prüfen: unbekannte Werte → Standardwerte, Zahlen begrenzen; ein Generator darf nie werfen.
 - `role="img"`, `<title>{title}</title>` als erstes Kind (`GrafikRahmen`), `preserveAspectRatio="xMidYMid meet"`,
-  `viewBox` fest: `0 0 480 270` (16:9), `0 0 480 300` (Schließplan, Tür), `0 0 480 360` (Profilschnitt).
+  `viewBox` fest: `0 0 480 270` (16:9), `0 0 480 300` (Schließplan, Tür), `0 0 480 360` (Profilschnitt, **Ausnahme zu K-008**, siehe `profilschnitt`).
 - Keine `id`s (mehrfach auf einer Seite), Pfeilspitzen als eigene Pfade statt `<marker>` (`pfeilspitze`).
 - Beschriftungen als `<text>` mit `className="fill-foreground-muted font-mono"` und fester `fontSize`
   in viewBox-Einheiten (`SCHRIFT` 13, `SCHRIFT_KLEIN` 12); nur sachliche Angaben aus `params`.
@@ -134,7 +133,7 @@ Flächen aus breiten Strichen sind oder die Geometrie steuern.
 - Spurband im Schlüssel: `schluessel` 10.
 - Platzhalter-Striche `striche()`, deren Dicke zugleich die Geometrie steuert: `code-fundstelle` 6, 3,5, 5, 5.
 
-Neue Zahlen statt eines Namens brauchen einen Kommentar und eine Begründung nach D-010.
+Ausnahmen nach D-010 stehen als Zahl mit Kommentar im Quelltext (K-008); neue Zahlen statt eines Namens brauchen Kommentar und Begründung nach D-010. Stand: nur `zutritt-signal` ist kommentiert; an neun der elf Zahlen fehlt der Kommentar (offen, Code außerhalb dieses Pakets).
 
 ### `schluessel` — Schlüssel in Seitenansicht (`viewBox 0 0 480 270`)
 
@@ -205,6 +204,7 @@ Fräser fährt die Bahn ab. Die Grafik ist ohne Bewegung vollständig.
 
 Ohne gültige Angabe: Standardprofil `[2, 6, 3, 7, 1, 5]`.
 
+- **Ausnahme zu K-008:** K-008 nennt für Generatoren 480 × 270 bzw. 480 × 300; die Höhe 360 ist dort nicht benannt. Offen: KERN-Änderung mit Versionsnummer oder Angleichung des Generators (Entscheidung Orchestrator).
 - Bewegung: das gefräste Profil (`sm24-draw`) ab 0,3 s über 1,1 s (`FRAESBAHN`); das Material blendet
   (`sm24-fade`) danach ein. Der Fräser blendet ein und wird von der Client-Hülle `FraesbahnBewegung` entlang
   der Bahn geführt, im Takt der Zeichnung. Ohne Hülle steht er gehoben am Bahnende (`FRAESER_ABHEBEN`).
@@ -294,8 +294,8 @@ Leitelement der Erzählansichten (K-008, B-02). Kein Generator und nicht in der 
 | `delay`, `ruhig` | Verzögerung in Sekunden; `ruhig` ohne Einstiegsbewegung | `0`, `false` |
 
 - Farbe über `currentColor` (z. B. `text-area`), Strich 1,5 px (`--strich` in `globals.css`), dekorativ (`aria-hidden`).
-- Die Linie zeichnet sich einmal (`sm24-draw`, 0,6 s); die Haarlinie folgt 0,45 s später.
-  Ohne JavaScript oder bei „Bewegung reduzieren“ steht sie sofort vollständig da.
+- **Ausnahme zu K-008** (Höhe 12–24 px): `klein` ist 10 px hoch. Offen: KERN-Änderung oder Angleichung des Generators (Entscheidung Orchestrator).
+- Die Linie zeichnet sich einmal (`sm24-draw`, 0,6 s); die Haarlinie folgt 0,45 s später. Ohne JavaScript läuft diese Zeichnung ab; bei „Bewegung reduzieren“ steht sie sofort vollständig da. Mit `ruhig` entfällt die Zeichnung.
 - `profillinienPunkte(text, einschnitte, groesse)` liefert Punkte und Maße (für Tests).
 
 ## Client-Hüllen (`interaktiv/`)
@@ -311,8 +311,8 @@ Hüllen sind Client-Komponenten (`'use client'`) und importieren Generatoren; Ge
 | `fraesbahn-bewegung.tsx` | `FraesbahnBewegung` | fährt den Fräser der Grafik `profilschnitt` im Takt der Zeichnung ab; startet, wenn die Hälfte sichtbar ist; bei „Bewegung reduzieren“ kein Lauf | `profilschnitt` (als Kind) |
 
 - `auswahl.ts` enthält reine Helfer (Texte für Screenreader, Tastaturwechsel) ohne React.
-- Nach dem ersten Wechsel einer interaktiven Grafik trägt die Hülle `sm24-ruhig`: die Einstiegsbewegungen
-  spielen nicht erneut.
+- `code-fundstelle-interaktiv` trägt nach dem ersten Wechsel, `live-schluessel` sobald sich das Profil ändert,
+  `sm24-ruhig`: die Einstiegsbewegungen spielen nicht erneut. `schliessplan-interaktiv` und `fraesbahn-bewegung` tragen es nicht.
 - `motion/in-view.tsx` (`InView`) ist ebenfalls eine Client-Hülle; sie steuert nur `data-motion`.
 
 ## Bildstellen (`ImagePlaceholder`)
@@ -344,7 +344,7 @@ CSS zuerst, kein SMIL, keine Dauerbewegung ohne Grund. Klassen aus `globals.css`
 | `sm24-dash` | laufende Strichlinie | Funk, Signal, Datenfluss; höchstens 3 Durchgänge |
 | `sm24-schritt-vor` · `-zurueck` | Schrittwechsel im Ablauf (B-11) | `flow-shell` |
 | `sm24-scrub-y` · `-x` · `-marke` | an das Scrollen gebunden (B-03) | nur mit `view()`-Timeline; Startseite |
-| `sm24-ruhig` | Einstiegsbewegungen aus | interaktive Grafik nach dem ersten Wechsel |
+| `sm24-ruhig` | Einstiegsbewegungen aus | `code-fundstelle-interaktiv`, `live-schluessel` nach dem ersten Wechsel |
 
 Verzögerung/Dauer typsicher mit `motionStyle(delay, duration?, style?)` aus
 `motion/motion-style.ts` (Sekunden; ungültige Werte entfallen):

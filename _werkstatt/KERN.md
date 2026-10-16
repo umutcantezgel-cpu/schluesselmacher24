@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.4
+# KERN · SCHLÜSSELMACHER24 · Version 1.5
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -186,7 +186,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 - Neue Einträge gibt es nur durch den Orchestrator. Bewegung ohne Eintrag wird entfernt.
 
 ## K-008 SVG-Formsystem
-- **Grundgeometrie:** Schlüsselprofil (Rücken, Bart mit Einschnitten), Kreis (Zylinderkern, Knoten), Rechteck mit kleinem Radius (Tür, Körper), Bemaßungslinie mit Pfeilspitzen als Pfad. Raster: Fach-Icons und Glyphen 48 × 48, Generatoren 480 × 270 (16:9) bzw. 480 × 300; Zeichenpapier-Raster im Abstand 30.
+- **Grundgeometrie:** Schlüsselprofil (Rücken, Bart mit Einschnitten), Kreis (Zylinderkern, Knoten), Rechteck mit kleinem Radius (Tür, Körper), Bemaßungslinie mit Pfeilspitzen als Pfad. Raster: Fach-Icons und Glyphen 48 × 48, Generatoren 480 × 270 (16:9), 480 × 300 oder für Szenen mit Bemaßung und Legende 480 × 360 (4:3, `profilschnitt`); Zeichenpapier-Raster im Abstand 30. Gemeinsame Helfer der Generatoren stehen nur in `generators/grafik-basis.tsx`; weitere Hilfsdateien liegen außerhalb von `generators/`.
 - **Striche:** Enden und Ecken immer rund.
   - **Icons und Glyphen:** gleiche Bildschirmstrichstärke in jeder Größe über `vector-effect: non-scaling-stroke`. Die Regel steht in `globals.css` für `[data-sm24-icon]`; der Wert wird in L-02 am Bild festgelegt (1,75–2 px).
   - **Generatoren:** Strichskala aus `grafik-basis.tsx`: `DETAIL` 0,75 · `HILFSLINIE` 1 · `LINIE` 1,5 · `LINIE_STARK` 2 · `KONTUR` 2,25 · `AKZENT` 3 · `MARKE` 4. In `strokeWidth={…}` stehen nur diese Namen.
@@ -237,7 +237,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.tsx:263`) entfällt; dort steht künftig der Generator `tuer-schutz`.
 - **Farben** nur über Tailwind-Klassen (`text-*`, `stroke-*`, `fill-*` der Tokens), nie `fill="var(--…)"` oder `#hex`.
 - **Zugänglichkeit:** dekorativ → `aria-hidden`; bedeutungstragend → `role="img"` + `<title>`. Keine `id` in Icons, Glyphen und Generatoren. Masken nur in Generatoren.
-- **Leitelement Profillinie** (`visual/profillinie.tsx`): gestufte Linie aus Schlüsselrücken, Einschnitten und Spitze, deterministisch aus einem Text; Höhe 12–24 px, Strich `LINIE`, Farbe `stroke-area` oder `stroke-primary`. Sie zeichnet sich einmal (B-02).
+- **Leitelement Profillinie** (`visual/profillinie.tsx`): gestufte Linie aus Schlüsselrücken, Einschnitten und Spitze, deterministisch aus einem Text; Höhe 10–24 px (klein 10 px unter Augenbrauen-Zeilen, groß 16 px in Köpfen), Strich `LINIE`, Farbe `stroke-area` oder `stroke-primary`. Sie zeichnet sich einmal (B-02).
 - **Grafiken statt Platzhalter:** Fehlt ein Foto, zeigt `ImagePlaceholder` eine passende Fachgrafik (Generator) statt „Bild folgt“. `bild` hat Vorrang. Fotos werden nie erzeugt.
 
 ## K-009 Komponenten, Zustände, Ansichtsarten
@@ -281,3 +281,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.2 · E2 · K-008 Strichskala um DETAIL, LINIE_STARK, AKZENT und MARKE erweitert, Ausnahmen benannt. Grund: Bericht E2-GRAFIKER-05.
 - 1.3 · E3 · K-007: reduzierte Bewegung = sofort (globale Regel), Bausteinliste mit `sm24-schritt-*`, `fokus-innen:`, `zahl-ohne-pfeile`, Spinner 900 ms, `hover:` nur bei feinem Zeiger. Grund: Vorbereitung Welle E3-A.
 - 1.4 · E2 · B-01 startet bei Sichtbarkeit und hebt ab; Bereichsfarbtöne mit mindestens 30° Abstand (D-017); `Section`-Ton `sunken` mit Haarlinien; Tokens `min-w-zeichnung`, `grid-rows-kopf`, `tracking-label-eng`; Ausschnitt `.sm24-ausschnitt`. Grund: Sichtabnahme E2-L-07, Anlauf 1.
+- 1.5 · E3 · K-008: Raster 480 × 360 für Szenen mit Bemaßung zugelassen, Ort der Generator-Helfer festgelegt, Profillinie 10–24 px. Grund: Prüfung E3-GRAFIKER-07 (README entsprach dem Code, KERN nicht).
