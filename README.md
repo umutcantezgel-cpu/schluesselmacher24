@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Interaktive Module (Revolution Builder)
+- **Service Budget Calculator**: In `src/app/(site)/autoschluessel/page.tsx` integriert, um eine vorläufige Kosteneinschätzung für Autoschlüssel-Services basierend auf Projektumfang (Tage) zu geben.
