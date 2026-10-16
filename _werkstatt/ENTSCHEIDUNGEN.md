@@ -246,3 +246,16 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
 - **KERN 1.6** hält die neuen Regeln fest.
 - **Prüfung:** Typprüfung 0, Linter 0, 1008/1008 Tests, Logikwächter 0 abweichend. Eigene Bildkontrolle mobil, Tablet und Desktop über Port 3001; die Bilder liegen unter `/root/sm24-bilder/E4-L-16/`.
 - **Hinweis zu Ganzseitenbildern:** Ganzseitenaufnahmen zeigen Zeichnungen teils mitten in der Animation (blass oder leer). Die Einzelprüfung im Ansichtsfenster zeigt den Endzustand korrekt. Die Sichtabnahme nutzt deshalb weiter den Bildsatz je Bildschirmhöhe.
+
+## D-025 · E3-BAUMEISTER-07 (`/autoschluessel`) abgenommen, mit Nacharbeit
+- **Ergebnis:** Prüfung Runde 2 bestanden (Runde 1: Kennzahlen nicht im Paketwortlaut, Tablet-Beleg fehlte). Bericht: `_werkstatt/berichte/E3-BAUMEISTER-07.md`.
+- **Nacharbeit des Orchestrators nach eigener Bildkontrolle:**
+  - Begriffsliste mobil: Der Link „Zur Seite“ stand als eigene Zeile unter jedem der 12 Begriffe. Jetzt steht ein Pfeil (44 × 44 px, Name „Zur Seite {Begriff}“ für Bildschirmleser) rechts neben Begriff und Erklärung. Ab `md` bleibt die dreispaltige Zeile; der Link sitzt jetzt auf der Höhe des Begriffs. Die Spaltenlage ist fest gesetzt, weil die automatische Platzierung die Erklärung vor den Begriff stellte.
+  - `hover:underline` am Link entfällt (B-06: nur Farbe und Pfeil), `leading-relaxed` entfällt (kein Token, `text-small` bringt die Zeilenhöhe mit).
+- **Offene Fragen des Baumeisters:**
+  1. Icon der Gruppe „Reparatur und Sonderfälle“: `IconReparaturAustausch` ist richtig; `IconFahrzeugmarke` passt zu keiner Gruppe.
+  2. Kurve „linear“: Bei CSS-Animationen meldet `getTiming().easing` immer „linear“; die Kurve wirkt je Schlüsselbild aus `animation-timing-function`. Kein Fehler.
+  3. Fuß, Öffnungszeiten: vom Prüfer nicht reproduziert (scrollWidth gleich clientWidth).
+  4. Bildstellen mit „Eigene Aufnahme“: Die Notiztexte sind Redaktionshinweise und werden nicht angezeigt; ohne Foto steht eine Fachzeichnung (M-01).
+- **Hinweis des Prüfers zum Fuß:** Der Redaktionshinweis zu Platzhalter-Firmendaten erscheint nur im Entwicklungsserver, nie im Produktionsbuild (D-016).
+- **Regelverstoß:** Der Prüfer der Runde 1 hat eine selbst angelegte Hilfsdatei `_werkstatt/tmp-x` mit `rm -f` gelöscht. Fremde Dateien waren nicht betroffen. Das ist der dritte Löschfall (D-020, D-023). Die Regel steht weiter in jedem Auftrag.

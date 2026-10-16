@@ -1,21 +1,28 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Car, KeyRound, Wrench } from 'lucide-react';
+import type { ReactElement } from 'react';
 
 import { getPageContent, getSettings, getVehicleMakes } from '@/lib/data';
 import type { InfoHint } from '@/lib/types';
 import { formatCents } from '@/lib/format';
 import { PROCESS_LABELS } from '@/lib/navigation';
+import { cn } from '@/lib/cn';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
+import { SchluesselartenReihe } from '@/components/autoschluessel/schluesselarten-reihe';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { AreaScope } from '@/components/visual/area-scope';
+import type { IconProps } from '@/components/visual/icons/icon-base';
+import { IconReparaturAustausch } from '@/components/visual/icons/reparatur-austausch';
+import { IconSchluesselKopieren } from '@/components/visual/icons/schluessel-kopieren';
+import { IconSchluesselProgrammieren } from '@/components/visual/icons/schluessel-programmieren';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 const ROUTE = 'autoschluessel';
 
@@ -74,7 +81,8 @@ interface Topic {
 interface TopicGroup {
   title: string;
   lead: string;
-  icon: typeof KeyRound;
+  /** Fach-Icon des Leistungsfelds (Zweiton, ab 24 px). */
+  icon: (props: IconProps) => ReactElement;
   topics: Topic[];
 }
 
@@ -82,7 +90,7 @@ const TOPIC_GROUPS: TopicGroup[] = [
   {
     title: 'Schlüssel anfertigen',
     lead: 'Alles, was einen zusätzlichen oder neuen Schlüssel für Ihr Fahrzeug betrifft.',
-    icon: KeyRound,
+    icon: IconSchluesselKopieren,
     topics: [
       {
         term: 'Autoschlüssel nachmachen',
@@ -115,7 +123,7 @@ const TOPIC_GROUPS: TopicGroup[] = [
   {
     title: 'Elektronik und Programmierung',
     lead: 'Damit das Fahrzeug den Schlüssel erkennt und annimmt.',
-    icon: Wrench,
+    icon: IconSchluesselProgrammieren,
     topics: [
       {
         term: 'Programmieren und anlernen',
@@ -145,7 +153,7 @@ const TOPIC_GROUPS: TopicGroup[] = [
   {
     title: 'Reparatur und Sonderfälle',
     lead: 'Wenn der vorhandene Schlüssel nicht mehr richtig arbeitet oder gar nicht greifbar ist.',
-    icon: Car,
+    icon: IconReparaturAustausch,
     topics: [
       {
         term: 'Gehäuse, Tasten und Batterie',
@@ -209,6 +217,16 @@ const FAQ = [
   },
 ];
 
+/** Pfeil, der bei feinem Zeiger auf Hover der Gruppe nach rechts rückt (B-06). */
+function Weiter({ size = 18, className }: { size?: number; className?: string }) {
+  return (
+    <GlyphPfeilRechts
+      size={size}
+      className={cn('shrink-0 transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1', className)}
+    />
+  );
+}
+
 export default async function AutoschluesselHubPage() {
   const [page, settings, makes] = await Promise.all([
     getPageContent(ROUTE),
@@ -245,7 +263,7 @@ export default async function AutoschluesselHubPage() {
   ];
 
   return (
-    <>
+    <AreaScope area="autoschluessel">
       <JsonLd
         data={pageGraphSchema({
           path: '/autoschluessel',
@@ -256,54 +274,61 @@ export default async function AutoschluesselHubPage() {
         })}
       />
 
+      {/* Kopf: Schriftfeld mit den Eckdaten, in zwei Spalten auf dem Telefon, vier ab 640 px */}
       <PageHeader
+        bereich="autoschluessel"
         eyebrow="Themenwelt Autoschlüssel"
         title={page?.headline ?? 'Autoschlüssel'}
         lead={page?.subline ?? 'Nachmachen, programmieren, reparieren — mit klarem Ablauf und festem Termin.'}
         crumbs={[{ href: '/autoschluessel', label: 'Autoschlüssel' }]}
         actions={
-          <ButtonLink href="/autoschluessel/anfrage">
+          <ButtonLink href="/autoschluessel/anfrage" pfeil>
             Fahrzeug auswählen und Termin starten
-            <ArrowRight size={17} aria-hidden />
           </ButtonLink>
         }
       >
-        <dl className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border pt-6 sm:grid-cols-4">
-          <div>
-            <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-              Ablauf
-            </dt>
-            <dd className="mt-1 font-display text-lg font-bold text-foreground">
-              {PROCESS_LABELS['termin-mit-anzahlung'].label}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-              Anzahlung
-            </dt>
-            <dd className="mt-1 font-display text-lg font-bold text-foreground">{deposit}</dd>
-          </div>
-          <div>
-            <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-              Vorlauf
-            </dt>
-            <dd className="mt-1 font-display text-lg font-bold text-foreground">
-              ca. {leadDays} Tage
-            </dd>
-          </div>
-          <div>
-            <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-              Erfasste Modelle
-            </dt>
-            <dd className="mt-1 font-display text-lg font-bold text-foreground">{modelCount}</dd>
-          </div>
+        <dl className="grid grid-cols-2 border-y border-border sm:grid-cols-4">
+          {[
+            { label: 'Ablauf', wert: PROCESS_LABELS['termin-mit-anzahlung'].label },
+            { label: 'Anzahlung', wert: deposit },
+            { label: 'Vorlauf', wert: `ca. ${leadDays} Tage` },
+            { label: 'Erfasste Modelle', wert: String(modelCount) },
+          ].map((feld, index) => (
+            <div
+              key={feld.label}
+              className={cn(
+                'py-4 pr-3 sm:pr-4',
+                index % 2 === 1 && 'border-l border-border pl-3',
+                index > 0 && 'sm:border-l sm:pl-4',
+              )}
+            >
+              <dt className="font-mono text-caption uppercase tracking-label text-foreground-subtle max-sm:tracking-label-eng">
+                {feld.label}
+              </dt>
+              <dd className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
+                {feld.wert}
+              </dd>
+            </div>
+          ))}
         </dl>
       </PageHeader>
 
+      {/* Schlüsselarten: großer Moment (B-21), ein Zeichnungsblatt mit vier Ansichten */}
+      <Section id="schluesselarten" labelledBy="schluesselarten-titel">
+        <SectionHeading
+          id="schluesselarten-titel"
+          nummer="01"
+          eyebrow="Schlüsselarten"
+          title={KEY_KIND_HINT.title}
+          lead={KEY_KIND_HINT.body}
+        />
+        <SchluesselartenReihe className="mt-8" />
+      </Section>
+
       {/* Einordnung */}
       <Section>
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
-          <div>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+          <div className="lg:col-span-7">
             <SectionHeading title="Worum es in diesem Bereich geht" />
             <div className="prose-sm24 mt-5">
               <p>
@@ -324,63 +349,61 @@ export default async function AutoschluesselHubPage() {
             </div>
           </div>
 
-          <ImagePlaceholder
-            slot={{
-              motif: 'Werkstattfoto: Arbeitsplatz mit Schlüsselfräse und Diagnosegerät',
-              ratio: '4/3',
-              note: 'Eigene Aufnahme aus dem Betrieb. Kein Stockfoto.',
-            }}
-          />
+          <div className="lg:col-span-5">
+            <ImagePlaceholder
+              slot={{
+                motif: 'Werkstattfoto: Arbeitsplatz mit Schlüsselfräse und Diagnosegerät',
+                ratio: '4/3',
+                note: 'Eigene Aufnahme aus dem Betrieb. Kein Stockfoto.',
+              }}
+            />
+          </div>
         </div>
       </Section>
 
-      {/* Leistungsbegriffe */}
+      {/* Leistungsbegriffe als Begriffsliste mit Haarlinien, je Zeile ein Zwölfer-Raster */}
       <Section tone="muted" id="leistungen">
         <SectionHeading
+          nummer="02"
           eyebrow="Leistungen"
           title="Alle Begriffe, sauber getrennt"
           lead="Die Begriffe werden im Alltag oft vermischt. Hier steht, was jeweils gemeint ist und wohin er führt."
         />
 
-        <div className="mt-8 space-y-8">
+        <div className="mt-10 space-y-12">
           {TOPIC_GROUPS.map((group) => {
             const Icon = group.icon;
             return (
               <div key={group.title}>
-                <div className="flex items-start gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary">
-                    <Icon size={19} aria-hidden />
-                  </span>
+                <div className="flex items-start gap-4">
+                  <Icon size={40} className="shrink-0 text-area-strong" />
                   <div>
-                    <h3 className="text-[17px] font-bold text-foreground">{group.title}</h3>
-                    <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
-                      {group.lead}
-                    </p>
+                    <h3 className="text-title font-semibold text-foreground">{group.title}</h3>
+                    <p className="mt-1 text-small text-foreground-muted">{group.lead}</p>
                   </div>
                 </div>
 
-                <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <ul className="mt-5 border-t border-border">
                   {group.topics.map((topic) => (
-                    <li key={topic.term}>
-                      <Card className="flex h-full flex-col">
-                        <CardBody className="flex flex-1 flex-col">
-                          <div className="flex items-start justify-between gap-3">
-                            <h4 className="text-[15px] font-bold text-foreground">{topic.term}</h4>
-                            {topic.hint && <InfoTip hint={topic.hint} className="shrink-0" />}
-                          </div>
-                          <p className="mt-2 flex-1 text-[14px] leading-relaxed text-foreground-muted">
-                            {topic.body}
-                          </p>
-                          <Link
-                            href={topic.href}
-                            className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-                          >
-                            Zur Seite
-                            <ArrowRight size={15} aria-hidden />
-                            <span className="sr-only">{topic.term}</span>
-                          </Link>
-                        </CardBody>
-                      </Card>
+                    <li key={topic.term} className="border-b border-border">
+                      {/* Telefon: Pfeil rechts neben Begriff und Erklärung statt eigener Zeile; ab md drei Spalten */}
+                      <div className="grid grid-cols-12 gap-x-3 gap-y-2 py-4 md:items-start md:gap-4 md:py-5">
+                        <div className="col-span-10 col-start-1 row-start-1 flex items-start justify-between gap-3 md:col-span-4">
+                          <h4 className="text-body font-semibold text-foreground">{topic.term}</h4>
+                          {topic.hint && <InfoTip hint={topic.hint} className="shrink-0" />}
+                        </div>
+                        <p className="col-span-10 col-start-1 row-start-2 text-small text-foreground-muted md:col-span-6 md:col-start-5 md:row-start-1">
+                          {topic.body}
+                        </p>
+                        <Link
+                          href={topic.href}
+                          className="group col-span-2 col-start-11 row-span-2 row-start-1 inline-flex min-h-touch min-w-touch items-center justify-center gap-1.5 self-center justify-self-end text-small font-semibold text-primary md:row-span-1 md:-mt-2.5 md:min-w-0 md:self-start"
+                        >
+                          <span className="sr-only md:not-sr-only">Zur Seite</span>
+                          <Weiter size={16} />
+                          <span className="sr-only">{topic.term}</span>
+                        </Link>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -390,19 +413,19 @@ export default async function AutoschluesselHubPage() {
         </div>
       </Section>
 
-      {/* Ablauf in fünf Schritten */}
-      <Section id="ablauf">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-start lg:gap-14">
-          <div>
+      {/* Ablauf in fünf Schritten: Fortschritt läuft mit dem Scrollen (B-03) */}
+      <Section tone="sunken" id="ablauf">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
             <SectionHeading
+              nummer="03"
               eyebrow="Ablauf"
               title="In fünf Schritten zum Termin"
               lead="Mobil bedienbar. Ihre Eingaben bleiben erhalten, wenn Sie zwischendurch abbrechen."
             />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <ButtonLink href="/autoschluessel/anfrage" size="lg">
+              <ButtonLink href="/autoschluessel/anfrage" size="lg" pfeil>
                 Ablauf starten
-                <ArrowRight size={17} aria-hidden />
               </ButtonLink>
               <ButtonLink href="/autoschluessel/marken" size="lg" variant="outline">
                 Erst Fahrzeug nachschlagen
@@ -417,50 +440,54 @@ export default async function AutoschluesselHubPage() {
             </Alert>
           </div>
 
-          <ol className="relative space-y-5 border-l border-border pl-7">
+          <ol className="relative lg:col-span-7">
+            {/* Schiene und Fortschritt: der Strich füllt sich, während die Schritte vorbeiziehen */}
+            <span aria-hidden className="absolute bottom-6 left-5 top-6 w-px bg-border-strong" />
+            <span aria-hidden className="sm24-scrub-y absolute bottom-6 left-5 top-6 w-px bg-area" />
             {steps.map((step, index) => (
-              <li key={step.title} className="relative">
+              <li key={step.title} className="relative flex gap-6 pb-10 last:pb-0">
                 <span
                   aria-hidden
-                  className="absolute -left-[38px] flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface font-display text-xs font-bold text-primary"
+                  className="sm24-scrub-marke relative z-raised flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-area bg-surface font-mono text-small font-semibold tabular-nums text-area-strong"
                 >
                   {index + 1}
                 </span>
-                <h3 className="text-[15px] font-bold text-foreground">{step.title}</h3>
-                <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">{step.body}</p>
+                <div className="pt-1.5">
+                  <p className="text-title-sm font-semibold text-foreground">{step.title}</p>
+                  <p className="mt-1.5 max-w-measure text-body text-foreground-muted">{step.body}</p>
+                </div>
               </li>
             ))}
           </ol>
         </div>
       </Section>
 
-      {/* Fahrzeuge */}
+      {/* Fahrzeuge: Raster 7/5, Markenliste mit Haarlinien-Ruhe */}
       <Section tone="muted" tight>
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14">
-          <div>
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-gutter">
+          <div className="lg:col-span-7">
             <SectionHeading
+              nummer="04"
               eyebrow="Fahrzeuge"
               title="Was für Ihre Marke und Ihr Modell gilt"
               lead={`Zu ${makes.length} Marken und ${modelCount} Modellen haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen vor Ort sein muss.`}
             />
             <div className="mt-7 flex flex-wrap items-center gap-3">
-              <ButtonLink href="/autoschluessel/marken">
+              <ButtonLink href="/autoschluessel/marken" pfeil>
                 Alle Marken ansehen
-                <ArrowRight size={17} aria-hidden />
               </ButtonLink>
-              <InfoTip hint={KEY_KIND_HINT} />
             </div>
           </div>
 
-          <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+          <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:col-span-5">
             {makes.slice(0, 9).map((make) => (
               <li key={make.id}>
                 <Link
                   href={`/autoschluessel/marken/${make.slug}`}
-                  className="flex min-h-[44px] items-center justify-between gap-2 rounded-lg border border-border bg-surface px-3.5 py-2.5 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                  className="flex min-h-touch items-center justify-between gap-2 rounded-lg border border-border bg-surface px-3.5 py-2.5 text-small font-semibold text-foreground transition-colors duration-quick hover:border-primary hover:text-primary"
                 >
                   {make.name}
-                  <ArrowRight size={14} aria-hidden className="shrink-0 text-foreground-subtle" />
+                  <GlyphPfeilRechts size={16} className="shrink-0 text-foreground-subtle" />
                 </Link>
               </li>
             ))}
@@ -471,6 +498,7 @@ export default async function AutoschluesselHubPage() {
       {/* Fragen */}
       <Section>
         <SectionHeading
+          nummer="05"
           eyebrow="Häufige Fragen"
           title="Was vor dem Auftrag meist offen ist"
           className="max-w-2xl"
@@ -496,12 +524,12 @@ export default async function AutoschluesselHubPage() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group flex h-full min-h-[44px] flex-col rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary"
+                className="group flex h-full min-h-touch flex-col rounded-lg border border-border bg-surface p-4 transition-colors duration-quick hover:border-primary"
               >
-                <span className="text-[15px] font-semibold text-foreground group-hover:text-primary">
+                <span className="text-body font-semibold text-foreground group-hover:text-primary">
                   {link.label}
                 </span>
-                <span className="mt-1 text-[13px] leading-relaxed text-foreground-muted">
+                <span className="mt-1 text-small text-foreground-muted">
                   {link.description}
                 </span>
               </Link>
@@ -509,6 +537,6 @@ export default async function AutoschluesselHubPage() {
           ))}
         </ul>
       </Section>
-    </>
+    </AreaScope>
   );
 }
