@@ -418,7 +418,7 @@ export default async function SchliessanlagenPage() {
       <Section tone="muted" tight>
         <div className="grid gap-6 lg:grid-cols-12 lg:items-center lg:gap-gutter">
           <div className="lg:col-span-7">
-            <SectionHeading nummer="04" eyebrow="Gleichschließung" title="Wenige Türen, ein Schlüssel für alles?" />
+            <SectionHeading nummer="03" eyebrow="Gleichschließung" title="Wenige Türen, ein Schlüssel für alles?" />
             <p className="mt-3 text-body leading-relaxed text-foreground-muted">
               Dann brauchen Sie keinen Schließplan. Gleichschließende Zylinder stellen Sie selbst
               zusammen — Bauform, Maße und Anzahl der gemeinsamen Schlüssel — und bestellen direkt.
@@ -445,7 +445,7 @@ export default async function SchliessanlagenPage() {
 
       {/* Fragen */}
       <Section>
-        <SectionHeading nummer="03" eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
+        <SectionHeading nummer="04" eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
         <div className="mt-8">
           <Accordion items={faq} />
         </div>
@@ -454,7 +454,7 @@ export default async function SchliessanlagenPage() {
       {/* Weiterführend: nummerierte Stückliste mit Haarlinien */}
       <Section tone="muted" tight>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
-          <SectionHeading nummer="05" eyebrow="Passend dazu" title="Passend dazu" className="lg:col-span-4" />
+          <SectionHeading nummer="05" eyebrow="Weiterlesen" title="Passend dazu" className="lg:col-span-4" />
 
           <ol className="border-t border-border lg:col-span-8">
             {WEITERFUEHREND.map((link, index) => (
