@@ -389,7 +389,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
     return (
       <div className="max-w-3xl">
         <div className="flex items-center gap-4">
-          <CheckDraw size={56} />
+          <CheckDraw title="Anfrage eingegangen" size={56} />
           <Badge tone="success">Anfrage eingegangen</Badge>
         </div>
 
@@ -427,7 +427,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         )}
 
         <h3 className="mt-8 text-title-sm font-semibold text-foreground">Wie es weitergeht</h3>
-        <ol className="mt-4 space-y-4 border-l border-border pl-6">
+        <ol className="mt-4 border-t border-border">
           {[
             {
               title: 'Wir prüfen Ihre Fotos',
@@ -450,15 +450,14 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
                 + 'Adresse und Vorgangsnummer. Senden Sie bitte nichts unaufgefordert ein.',
             },
           ].map((step, index) => (
-            <li key={step.title} className="relative">
-              <span
-                aria-hidden
-                className="absolute -left-[37px] flex h-6 w-6 items-center justify-center rounded-full border border-border bg-surface font-mono text-caption font-semibold tabular-nums text-primary"
-              >
+            <li key={step.title} className="flex items-baseline gap-4 border-b border-border py-4">
+              <span aria-hidden className="w-6 shrink-0 font-mono text-small font-semibold tabular-nums text-primary">
                 {index + 1}
               </span>
-              <p className="text-body font-semibold text-foreground">{step.title}</p>
-              <p className="mt-1 text-small leading-relaxed text-foreground-muted">{step.body}</p>
+              <div className="min-w-0">
+                <p className="text-body font-semibold text-foreground">{step.title}</p>
+                <p className="mt-1 text-small leading-relaxed text-foreground-muted">{step.body}</p>
+              </div>
             </li>
           ))}
         </ol>
@@ -557,7 +556,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       )}
 
       {flow.step?.id === 'hersteller' && (
-        <div className="max-w-2xl space-y-5">
+        <div className="max-w-3xl space-y-5">
           <Field
             label="Hersteller oder Marke"
             hint="Zum Beispiel der Schriftzug auf dem Schlüsselkopf. Groß- und Kleinschreibung spielt keine Rolle."
@@ -593,7 +592,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       )}
 
       {flow.step?.id === 'nummern' && (
-        <div className="max-w-2xl space-y-5">
+        <div className="max-w-3xl space-y-5">
           <Alert tone="info" title="Bitte zusätzlich fotografieren">
             Übertragen Sie die Zeichen hier als Text <strong>und</strong> fotografieren Sie sie
             deutlich. Bei kleinen Prägungen hilft eine Nahaufnahme, auf der jede Ziffer einzeln
@@ -650,7 +649,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       )}
 
       {flow.step?.id === 'stueckzahl' && (
-        <div className="max-w-2xl space-y-6">
+        <div className="max-w-3xl space-y-6">
           <div>
             <div className="flex items-center gap-2">
               <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Gewünschte Stückzahl</p>
@@ -691,7 +690,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       )}
 
       {flow.step?.id === 'kontakt' && (
-        <div className="max-w-2xl space-y-5">
+        <div className="max-w-3xl space-y-5">
           <div className="grid gap-5 sm:grid-cols-2">
             <Field label="Anrede (freiwillig)">
               {({ id, describedBy }) => (
@@ -933,7 +932,7 @@ function FotoSchritt({
   retentionDays: number;
 }) {
   return (
-    <div className="max-w-2xl space-y-5">
+    <div className="max-w-3xl space-y-5">
       <div className="flex items-center gap-2">
         <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Worauf es bei der Aufnahme ankommt</p>
         <InfoTip hint={hint} />
