@@ -23,6 +23,8 @@ const FARB_FUNKTIONEN_ERLAUBT = ['src/app/(site)/globals.css', 'tailwind.config.
 const EINZELNE_AUSNAHMEN = [
   { datei: 'src/app/(site)/layout.tsx', fund: '#f7f9fb', grund: 'viewport.themeColor verlangt einen Farbwert (D-015)' },
   { datei: 'src/components/forms/photo-upload.tsx', fund: '#fff', grund: 'Canvas-Grund bei der JPEG-Umwandlung, Bildverarbeitung (D-034)' },
+  { datei: 'src/lib/og/bereichsbild.tsx', fund: 'hsl(', grund: 'Vorschaubild (next/og) kennt keine CSS-Variablen; der Wert kommt aus den Tokens (D-039)' },
+  { datei: 'src/lib/og/bereichsbild.test.ts', fund: 'hsl(', grund: 'Test des Farbwerts für das Vorschaubild (D-039)' },
 ];
 const einzelAusnahme = (rel, fund) => EINZELNE_AUSNAHMEN.some((a) => a.datei === rel && a.fund === fund);
 
