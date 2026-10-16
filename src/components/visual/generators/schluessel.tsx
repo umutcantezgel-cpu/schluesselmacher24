@@ -100,6 +100,8 @@ interface Zeichnung {
   linealY?: number;
   /** Nur vorne: Funkbögen, Klapppfeil. */
   zusatz?: ReactNode;
+  /** Rohling: Einschnittzone als gestrichelte Linie (noch nicht gefräst). */
+  zone?: string;
   box: { x1: number; y1: number; x2: number; y2: number };
 }
 
@@ -145,13 +147,14 @@ function funkboegen(x: number, y: number, von: number, bis: number, radien: numb
 
 /* ---------- Schlüsseltypen (lokale Koordinaten, Achse des Barts bei y = 0) ---------- */
 
-function zylinder(tiefenZiffern: number[], f: Farben): Zeichnung {
+function zylinder(tiefenZiffern: number[], f: Farben, rohling = false): Zeichnung {
   const oben = -22;
   const unten = 26;
   const spitze = 372;
   const pos = positionen(tiefenZiffern.length, 176, 326);
   const tiefen = tiefenZiffern.map((d) => 4 + d * 2.6);
-  const kante = kerben(pos, tiefen, 4.5, 1.2).map(([x, t]): [number, number] => [x, oben + t]);
+  /* Rohling: gerader Halm ohne Einschnitte; die Einschnittzone zeigt die Zeichnung gestrichelt. */
+  const kante = rohling ? [] : kerben(pos, tiefen, 4.5, 1.2).map(([x, t]): [number, number] => [x, oben + t]);
   const umriss = `M108 -30H150V${oben}${linie(kante)}L${spitze - 20} ${oben}L${spitze} -6V20L${spitze - 6} ${unten}H150V30H108Z`;
   const kopf =
     'M40 -54H76A40 40 0 0 1 116 -14V14A40 40 0 0 1 76 54H40A40 40 0 0 1 0 14V-14A40 40 0 0 1 40 -54Z' +
@@ -165,8 +168,9 @@ function zylinder(tiefenZiffern: number[], f: Farben): Zeichnung {
         <path className={f.kopf} strokeWidth={KONTUR} fillRule="evenodd" d={kopf} />
       </>
     ),
-    profile: [`M150 ${oben}${linie(kante)}L${spitze - 20} ${oben}`],
-    marken: pos.map((x, i) => ({ x, y: oben + tiefen[i] })),
+    profile: rohling ? [] : [`M150 ${oben}${linie(kante)}L${spitze - 20} ${oben}`],
+    zone: rohling ? `M${pos[0] - 8} ${oben + 4}H${pos[pos.length - 1] + 8}` : undefined,
+    marken: rohling ? [] : pos.map((x, i) => ({ x, y: oben + tiefen[i] })),
     linealY: unten + 18,
     box: { x1: 0, y1: -54, x2: spitze, y2: 54 },
   };
@@ -380,7 +384,7 @@ function buntbart(tiefenZiffern: number[], f: Farben): Zeichnung {
   };
 }
 
-function zeichnung(typ: Typ, tiefen: number[], f: Farben): Zeichnung {
+function zeichnung(typ: Typ, tiefen: number[], f: Farben, rohling = false): Zeichnung {
   switch (typ) {
     case 'buntbart':
       return buntbart(tiefen, f);
@@ -393,7 +397,7 @@ function zeichnung(typ: Typ, tiefen: number[], f: Farben): Zeichnung {
     case 'transponder':
       return transponder(tiefen, f);
     default:
-      return zylinder(tiefen, f);
+      return zylinder(tiefen, f, rohling);
   }
 }
 
@@ -414,6 +418,8 @@ const TITEL: Record<Typ, string> = {
  * - `einschnitte`: 4–8 Ziffern 0–9, Vorrang vor `code`; werden unter dem Bart beschriftet
  * - `code`: Text — ergibt deterministisch ein Einschnittprofil (ohne Beschriftung)
  * - `anzahl`: 1–3 (Standard 1), weitere Schlüssel versetzt dahinter, z. B. für „Kopie“
+ * - `rohling`: `true` – nur beim Zylinderschlüssel: gerader Halm ohne Einschnitte, die
+ *   Einschnittzone gestrichelt (etwa vor der Eingabe eines Codes)
  */
 export function SchluesselGrafik({ params, title, className }: VisualProps) {
   const p = parameter(params);
@@ -422,9 +428,11 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
   const code = kurztext(wert(p, 'code'), 40);
   const tiefen = explizit ?? (code ? profilAusCode(code) : STANDARD_PROFIL);
   const anzahl = zahl(wert(p, 'anzahl'), 1, 3, 1, true);
+  const rohlingWert = wert(p, 'rohling');
+  const rohling = rohlingWert === true || rohlingWert === 'true' || rohlingWert === 'ja';
 
-  const vorn = zeichnung(typ, tiefen, VORN);
-  const hinten = anzahl > 1 ? zeichnung(typ, tiefen, HINTEN) : undefined;
+  const vorn = zeichnung(typ, tiefen, VORN, rohling);
+  const hinten = anzahl > 1 ? zeichnung(typ, tiefen, HINTEN, rohling) : undefined;
 
   const linealY = vorn.linealY;
   const teilung = [...new Set(vorn.marken.map((m) => r(m.x)))];
@@ -473,6 +481,10 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
         </g>
 
         {vorn.zusatz}
+
+        {vorn.zone && (
+          <path className="stroke-border-strong" strokeWidth={LINIE} strokeDasharray="4 3" d={vorn.zone} />
+        )}
 
         {vorn.profile.map((d, i) => (
           <path

@@ -6,7 +6,7 @@ import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { cn } from '@/lib/cn';
 
 export interface LiveSchluesselProps {
-  /** Eingegebener Code; leer zeigt ein ruhiges Standardprofil. */
+  /** Eingegebener Code; leer zeigt den Rohling ohne Einschnitte. */
   code: string;
   /** Wartezeit nach der letzten Eingabe, bevor das Profil wechselt (ms). */
   verzoegerung?: number;
@@ -22,20 +22,31 @@ export interface LiveSchluesselProps {
 export function LiveSchluessel({ code, verzoegerung = 250, className }: LiveSchluesselProps) {
   const [angezeigt, setAngezeigt] = useState(code.trim());
   const [ersterWert] = useState(code.trim());
+  /* Erster Code nach dem Rohling: Die Einschnitte zeichnen sich (Fräsen); danach nur Überblendung. */
+  const [ausRohling, setAusRohling] = useState(false);
   const gewechselt = angezeigt !== ersterWert;
 
   useEffect(() => {
     const ziel = code.trim();
     if (ziel === angezeigt) return;
-    const zeit = window.setTimeout(() => setAngezeigt(ziel), verzoegerung);
+    const zeit = window.setTimeout(() => {
+      setAusRohling(angezeigt === '' && ziel !== '');
+      setAngezeigt(ziel);
+    }, verzoegerung);
     return () => window.clearTimeout(zeit);
   }, [code, angezeigt, verzoegerung]);
 
   return (
-    <figure className={cn('rounded-lg border border-border bg-surface p-4 sm:p-6', gewechselt && 'sm24-ruhig', className)}>
-      <div key={angezeigt} className={cn(gewechselt && 'animate-schleier-ein')}>
+    <figure
+      className={cn(
+        'rounded-lg border border-border bg-surface p-4 sm:p-6',
+        gewechselt && (ausRohling ? 'sm24-nur-zeichnen' : 'sm24-ruhig'),
+        className,
+      )}
+    >
+      <div key={angezeigt} className={cn(gewechselt && !ausRohling && 'animate-schleier-ein')}>
         <SchluesselGrafik
-          params={angezeigt ? { typ: 'zylinder', code: angezeigt } : { typ: 'zylinder' }}
+          params={angezeigt ? { typ: 'zylinder', code: angezeigt } : { typ: 'zylinder', rohling: true }}
           title={angezeigt ? 'Darstellung eines Schlüsselprofils zum eingegebenen Code' : 'Schlüssel in Seitenansicht'}
         />
       </div>

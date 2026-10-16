@@ -26,7 +26,8 @@ export function visualFuerMotiv(motif: string | undefined | null): VisualRef | n
     return { generator: 'schliessplan', params: { system } };
   }
   if (hat(t, 'sicherungskarte')) return { generator: 'code-fundstelle', params: { ort: 'sicherungskarte' } };
-  if (hat(t, 'zylinderstirn', 'schluesselnummer', 'schluesselcode', 'code am')) {
+  /* Prägung = Nummer oder Code auf Kopf oder Zylinder (Beispielbilder an Upload-Feldern, E4-L-27). */
+  if (hat(t, 'zylinderstirn', 'schluesselnummer', 'schluesselcode', 'code am', 'praegung')) {
     return { generator: 'code-fundstelle', params: { ort: hat(t, 'zylinder') ? 'zylinderstirn' : 'schluesselkopf' } };
   }
   if (hat(t, 'zutritt', 'transponderleser', 'leser', 'zugangskarte', 'chipkarte')) {

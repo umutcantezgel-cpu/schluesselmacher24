@@ -398,7 +398,7 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
               <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 Laufende Summe
               </dt>
-              <dd className="mt-1 font-mono text-title font-semibold tabular-nums text-primary">
+              <dd className="mt-1 font-mono text-title font-semibold tabular-nums text-foreground">
                 {formatCents(breakdown.totalCents)}
               </dd>
             </div>

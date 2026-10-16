@@ -86,5 +86,12 @@ describe('Motiv ohne Bildart', () => {
     expect(fachIconFuerMotiv('Anwendungsfoto: Smarte Funktionen')).toBe('smarte-funktionen');
     expect(visualFuerMotiv('Produktfoto Funkschlüssel')?.params).toEqual({ typ: 'funk' });
   });
-});
 
+  it('zeigt Beispielbilder zu Prägungen als Fundstelle am Schlüsselkopf', () => {
+    expect(visualFuerMotiv('Beispielfoto: Nahaufnahme der Prägung auf dem Schlüsselkopf')).toEqual({
+      generator: 'code-fundstelle',
+      params: { ort: 'schluesselkopf' },
+    });
+    expect(visualFuerMotiv('Beispielfoto: Schlüssel flach von oben, Kopf und Bart vollständig im Bild')?.generator).toBe('schluessel');
+  });
+});

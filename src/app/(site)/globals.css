@@ -445,6 +445,11 @@
   animation: none;
 }
 
+/* Nur das Zeichnen läuft (Live-Schlüssel: vom Rohling zum ersten Profil, B-15); alles andere steht. */
+.sm24-nur-zeichnen :is(.sm24-reveal, .sm24-fade, .sm24-pop, .sm24-aufdecken) {
+  animation: none;
+}
+
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   [data-motion='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
     animation-play-state: paused;

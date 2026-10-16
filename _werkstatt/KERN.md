@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.8
+# KERN · SCHLÜSSELMACHER24 · Version 1.9
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -180,7 +180,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 | B-12 | Bestätigungshaken (CheckDraw) | Rückmeldung | Bestätigung erscheint | Fläche, Kreis, Haken, gesamt ≤ 900 ms | sofort vollständig |
 | B-13 | Seitenwechsel mit gemeinsamem Element | Zusammenhang | Bereichskarte → Bereichskopf | ViewTransition `slow` | keiner |
 | B-14 | Schließplan wählen | Zusammenhang | Schlüssel oder Tür wählen | Deckkraft und Farbe `base` | sofort |
-| B-15 | Live-Schlüssel | Rückmeldung | Code-Eingabe | Profil überblendet `quick` | sofort |
+| B-15 | Live-Schlüssel | Rückmeldung | Code-Eingabe | vor der Eingabe Rohling (gestrichelte Einschnittzone); erster Code zeichnet die Einschnitte (`draw`, `.sm24-nur-zeichnen`), jede weitere Änderung überblendet `quick` | sofort |
 | B-16 | Code-Fundstelle umschalten | Orientierung | Auswahl Ort | Überblendung `base` | sofort |
 | B-17 | Zylindermaß live | Rückmeldung | Maßänderung im Konfigurator | Überblendung `quick` | sofort |
 | B-18 | Tür-Schutzpunkte | Hierarchie | InView | Marken `sm24-pop`, gestaffelt ≤ 5 × 120 ms | sofort |
@@ -291,3 +291,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.6 · E4 · K-005: `foreground-subtle` nie auf `surface-sunken`, Etiketten in `foreground-muted`; K-006: Ausschnitt unter 640 px, `scroll-px` für Leisten, Schriftfeld mobil, Fuß auf `surface-sunken`; K-007: `clip-path` für `sm24-aufdecken`, B-01 mit aufdeckender Fläche, B-03-Marken nur `scale`; Farbton Tür 125 → 90 (D-024). Grund: Sichtabnahme E2-L-07, Anlauf 2 (Paket E4-L-16).
 - 1.7 · E4 · B-21 gilt auch für die Modellseite (erfasste Schlüsselarten als Zeichnungen). Grund: Pakete der Welle C (E4-BAUMEISTER-08).
 - 1.8 · E4 · K-008: Mindestgröße der Beschriftung in Zeichnungen auf Telefonen; Ausschnitt mit vergrößerter Legende (`tuer-schutz`, D-033) und schmales Format (`zylinder-mass`, D-036). Grund: Abnahme Welle E und offener Punkt Maßzeichnung schmal.
+- 1.9 · E4 · B-15 mit Rohling und gezeichnetem ersten Profil; `sm24-dash` ein Durchgang; gesperrte Knöpfe als ruhige Fläche; Bereichstöne Code 250°/Schließanlagen 292° (42°). Grund: Sichtabnahme E4-L-23 (Paket E4-L-27).

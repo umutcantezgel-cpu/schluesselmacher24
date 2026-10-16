@@ -56,6 +56,16 @@ describe('SchluesselGrafik', () => {
     expect(html).not.toContain('<text');
   });
 
+  it('zeichnet als Rohling einen geraden Halm mit gestrichelter Einschnittzone', () => {
+    const roh = zeichne({ typ: 'zylinder', rohling: true });
+    expect(roh).toContain('stroke-dasharray="4 3"');
+    expect(roh).not.toContain('class="sm24-draw stroke-area"');
+    expect(roh).not.toContain('sm24-pop fill-area-strong');
+    // Ohne den Schalter bleibt der Zylinderschlüssel unverändert.
+    expect(zeichne({ typ: 'zylinder' })).toBe(zeichne({ typ: 'zylinder', rohling: false }));
+    expect(zeichne({ typ: 'zylinder' })).toContain('class="sm24-draw stroke-area"');
+  });
+
   it('zeigt beim Smart-Key den Notschlüssel im Gehäuse gestrichelt', () => {
     const html = zeichne({ typ: 'smart-key' });
     expect(html).toContain('stroke-dasharray="4 3"');

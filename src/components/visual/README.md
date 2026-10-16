@@ -143,6 +143,7 @@ Ausnahmen nach D-010 stehen als Zahl mit Kommentar im Quelltext (K-008); neue Za
 | `einschnitte` | 4–8 Ziffern 0–9, als Liste oder Text (`'35274'`); werden unter dem Bart beschriftet, Vorrang vor `code` | ruhiges Profil ohne Beschriftung |
 | `code` | Text (es zählen die ersten 40 Zeichen) → daraus abgeleitetes Profil, bewusst ohne Ziffern | – |
 | `anzahl` | 1–3 (ganzzahlig); weitere Schlüssel versetzt dahinter, etwa für „Kopie“ | `1` |
+| `rohling` | `true` – nur `zylinder`: gerader Halm, Einschnittzone gestrichelt (vor der Code-Eingabe) | – |
 
 Beim `smart-key` gibt es keinen Bart; `funk` und `smart-key` zeigen Funkbögen.
 

@@ -304,7 +304,8 @@ export function PhotoUpload({
           <p className="mb-1.5 font-mono text-caption font-semibold uppercase tracking-label text-foreground-muted">
             So sollte das Foto aussehen
           </p>
-          <ImagePlaceholder slot={example} compact />
+          {/* Fachgrafik zum Beispiel statt eines kleinen Symbols in leerer Fläche (Sichtabnahme E4-L-23) */}
+          <ImagePlaceholder slot={example} />
         </div>
 
         <div
