@@ -9,6 +9,7 @@ import { formatWeekday } from '@/lib/format';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -279,6 +280,47 @@ export default async function ServiceUndTerminPage() {
           ))}
         </div>
       </Section>
+
+      <Section id="service-budget-calculator" className="bg-[oklch(0.988_0.002_260)] py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-4xl text-center">
+          <SectionHeading eyebrow="Projekt-Kalkulation" title="Kalkulieren Sie Ihr Service-Budget" lead="Nutzen Sie unseren interaktiven Rechner, um einen Richtwert für Ihr anstehendes Projekt zu erhalten. Die tatsächlichen Kosten können je nach spezifischen Anforderungen variieren." />
+          <div className="mt-12 text-left">
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+      <Section id="faq" className="bg-[oklch(0.968_0.004_260)] py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-4xl">
+          <SectionHeading eyebrow="Expertenwissen" title="Häufig gestellte Fragen (FAQ) zur Service- und Projektplanung" lead="Unsere detaillierte architektonische Methodik bei der Implementierung von Schließ- und Sicherheitstechnik wirft oft Fragen auf. Hier finden Sie umfassende Antworten auf die wichtigsten Aspekte der Planung und Ausführung." />
+          <div className="space-y-6 mt-12">
+            <Accordion
+              items={[
+                {
+                  question: "Wie läuft eine Vor-Ort-Analyse für komplexe Schließanlagen typischerweise ab?",
+                  answer: "Die Vor-Ort-Analyse ist das Fundament unserer Sicherheitsarchitektur. Zunächst begutachten wir die bestehenden mechanischen und elektronischen Schließkomponenten sowie die strukturellen Gegebenheiten Ihrer Türen. Wir analysieren die Personenströme, Zugangsberechtigungen und potenzielle Schwachstellen. Anschließend dokumentieren wir die Anforderungen in einem detaillierten Schließplan, der als Blaupause für die spätere Installation dient. Dieser Prozess dauert je nach Objektgröße zwischen zwei Stunden und einem ganzen Tag."
+                },
+                {
+                  question: "Inwiefern unterscheidet sich die Planung von mechanischen und elektronischen Zugangslösungen?",
+                  answer: "Mechanische Anlagen erfordern eine präzise Vorausplanung der Schließhierarchien, da nachträgliche Änderungen oft den Austausch physischer Zylinder bedingen. Elektronische Zugangslösungen (wie RFID, Bluetooth oder biometrische Systeme) bieten hier weit mehr Flexibilität, da Berechtigungen digital per Software vergeben, entzogen oder zeitlich limitiert werden können. Die Planung elektronischer Anlagen fokussiert sich stärker auf die Netzwerkarchitektur, Stromversorgung (batteriebetrieben vs. verkabelt) und die Integration in bestehende IT- oder Smart-Home-Systeme."
+                },
+                {
+                  question: "Welche Faktoren beeinflussen die Kostenkalkulation eines Service-Einsatzes maßgeblich?",
+                  answer: "Die Kalkulation stützt sich primär auf drei Säulen: Die Komplexität der Hardware (Hochsicherheitszylinder vs. Standardlösungen), den Arbeitsaufwand für Installation und Programmierung sowie die Dringlichkeit (Notdienst vs. geplanter Termin). Bei elektronischen Systemen fließen zudem die Kosten für die Software-Inbetriebnahme, Schulung der Administratoren und eventuell benötigte Gateways für Fernzugriffe ein. Unser Service-Budget-Rechner liefert Ihnen einen ersten, verlässlichen Richtwert."
+                },
+                {
+                  question: "Wie gewährleisten Sie die Ausfallsicherheit bei elektronischen Zutrittskontrollsystemen?",
+                  answer: "Ausfallsicherheit ist eine unserer Kernkompetenzen. Wir setzen auf redundante Systeme und hybride Ansätze. Nahezu alle unsere elektronischen Zylinder verfügen über eine Batteriewarnfunktion weit vor dem kritischen Spannungsabfall. Für Hochsicherheitsbereiche implementieren wir oft mechanische Rückfallebenen (Not- und Gefahrenfunktion) oder nutzen Systeme, die die Zutrittsrechte verschlüsselt auf dem Identmedium (z. B. der RFID-Karte) speichern, sodass der Zylinder selbst keine ständige Serveranbindung benötigt."
+                },
+                {
+                  question: "Ist eine schrittweise Migration von mechanischen zu elektronischen Schließsystemen möglich?",
+                  answer: "Absolut. Eine 'sanfte Migration' ist eine gängige und kosteneffiziente Strategie, besonders bei großen Gebäude- oder Firmenkomplexen. Wir beginnen typischerweise mit der Ausstattung der Gebäudeaußenhülle und kritischer Server- oder Archivräume mit elektronischen Komponenten. Die weniger sensiblen Innenbereiche bleiben vorerst mechanisch. Moderne Kombischlüssel (mit integriertem RFID-Transponder) erlauben es den Nutzern, sowohl elektronische als auch mechanische Türen mit einem einzigen Medium zu bedienen."
+                }
+              ]}
+            />
+          </div>
+        </div>
+      </Section>
+
     </>
   );
 }
