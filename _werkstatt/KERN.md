@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.11
+# KERN · SCHLÜSSELMACHER24 · Version 1.12
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -200,6 +200,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 | B-22 | Code-Fundstelle (Generator-Einstieg) | Orientierung | InView | Bestand `sm24-draw`/`sm24-pop` | sofort |
 | B-23 | Ablaufzeichnung (Generator `ablauf`, Ratgeber-Kopf) | Reihenfolge | InView | Bemaßungslinie `sm24-draw` ≈ 0,6 s, Stationen `sm24-pop` Staffel ≤ 4 × 120 ms, Beschriftung `sm24-fade` mit ihrer Station; gesamt < 1,6 s | sofort |
 | B-24 | Lesefortschritt (Ratgeber) | Orientierung | Scrollen (`animation-timeline`, nur wo unterstützt) | Leiste am Verzeichnis `scaleY` mit dem Artikel; Nummer des Abschnitts an der Leselinie (40 %) in Primärfarbe; Klassen `sm24-lesen*` | ruht (keine Leiste, keine Hervorhebung) |
+| B-25 | Stiftzuhaltung am Scrollen (Kür K-01, `/gleichschliessende-zylinder`) | Mechanik | Scrollen (`animation-timeline: --szene`, nur wo unterstützt) | Schlüssel fährt ein (`translateX`), dann heben sich je Bohrung Stifte (`translateY`) und Federn (`scaleY`), Staffel über `--stift-nr`; Prüfmarken erscheinen zuletzt; Klassen `sm24-szene`, `sm24-scrub-*` | Endlage: Schlüssel steckt, alles passt |
 
 - Neue Einträge gibt es nur durch den Orchestrator. Bewegung ohne Eintrag wird entfernt.
 
@@ -306,3 +307,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.9 · E4 · B-15 mit Rohling und gezeichnetem ersten Profil; `sm24-dash` ein Durchgang; gesperrte Knöpfe als ruhige Fläche; Bereichstöne Code 250°/Schließanlagen 292° (42°). Grund: Sichtabnahme E4-L-23 (Paket E4-L-27).
 - 1.10 · E4 · K-006 Muster aus der Sichtabnahme (Kopf mit Blickfang, Leiste statt Stapel, Ordnung, keine Linkwörter, Links im Satz, Werte, Flächen); B-20 auch für Summen; `PageHeader visual` als 7/5-Kopf. Grund: Sichtabnahme E4-L-23 (D-037).
 - 1.11 · E5 · B-23 Ablaufzeichnung und B-24 Lesefortschritt (Kür K-04). Grund: Sichtabnahme E4-L-23, H12 Ratgeber.
+- 1.12 · E6 · B-25 Stiftzuhaltung am Scrollen (Kür K-01). Grund: Kür nach Plan.

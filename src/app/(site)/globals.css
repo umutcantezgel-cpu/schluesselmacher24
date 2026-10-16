@@ -394,6 +394,27 @@
   to { transform: none; }
 }
 
+/* Stiftzuhaltung am Scrollen (B-25): Schlüssel fährt ein, dann heben sich die Stifte. */
+@keyframes sm24-schluessel-ein {
+  from { transform: translateX(calc(var(--schluessel-von, 0) * 1px)); }
+  to { transform: none; }
+}
+
+@keyframes sm24-stift-heben {
+  from { transform: translateY(calc(var(--stift-von, 0) * 1px)); }
+  to { transform: none; }
+}
+
+@keyframes sm24-feder-heben {
+  from { transform: scaleY(var(--feder-von, 1)); }
+  to { transform: none; }
+}
+
+@keyframes sm24-erscheinen {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* Fläche wird von links nach rechts aufgedeckt, im Takt einer sich zeichnenden Linie
    (nur Malen über clip-path: inset(), ohne Kennung und ohne Layout) */
 @keyframes sm24-aufdecken {
@@ -505,6 +526,50 @@
      * Abschnitts (`data-abschnitt`), der die Leselinie bei 40 % kreuzt, wird
      * Primärfarbe (`.sm24-lesen-nummer` mit `data-zu`). Höchstens sechs Abschnitte.
      */
+    /*
+     * Stiftzuhaltung am Scrollen (B-25): `.sm24-szene` am SVG gibt die Zeitleiste vor.
+     * Der Schlüssel (`.sm24-scrub-schluessel`, `--schluessel-von` in Einheiten) fährt
+     * in der ersten Hälfte ein; je Bohrung heben sich Kernstift und Gehäusestift
+     * (`.sm24-scrub-stift`, `--stift-von`) und die Feder staucht sich
+     * (`.sm24-scrub-feder`, `--feder-von` als Faktor), nacheinander über `--stift-nr`
+     * (0–4); die Prüfmarken (`.sm24-scrub-pruefung`) erscheinen zuletzt.
+     * Ohne Unterstützung oder bei reduzierter Bewegung steht die Endlage: alles passt.
+     */
+    .sm24-szene {
+      view-timeline-name: --szene;
+    }
+
+    :is(.sm24-scrub-schluessel, .sm24-scrub-stift, .sm24-scrub-feder, .sm24-scrub-pruefung) {
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --szene;
+    }
+
+    .sm24-scrub-schluessel {
+      animation-name: sm24-schluessel-ein;
+      animation-range: entry 40% cover 45%;
+    }
+
+    .sm24-scrub-stift,
+    .sm24-scrub-feder {
+      animation-range: cover calc(42% + var(--stift-nr, 0) * 2%) cover calc(52% + var(--stift-nr, 0) * 2%);
+    }
+
+    .sm24-scrub-stift {
+      animation-name: sm24-stift-heben;
+    }
+
+    .sm24-scrub-feder {
+      transform-box: fill-box;
+      transform-origin: top;
+      animation-name: sm24-feder-heben;
+    }
+
+    .sm24-scrub-pruefung {
+      animation-name: sm24-erscheinen;
+      animation-range: cover 60% cover 64%;
+    }
+
     .sm24-lesen {
       timeline-scope: --artikel, --abschnitt-1, --abschnitt-2, --abschnitt-3, --abschnitt-4, --abschnitt-5,
         --abschnitt-6;
