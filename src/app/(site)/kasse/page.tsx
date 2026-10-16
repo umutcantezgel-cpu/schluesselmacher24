@@ -37,6 +37,7 @@ export default async function KassePage() {
     <>
       <PageHeader
         eyebrow="Direkt kaufen"
+        art="arbeit"
         title="Kasse"
         lead="Bitte geben Sie Ihre Kontakt- und Lieferdaten an. Danach sehen Sie die vollständige Bestellübersicht."
         crumbs={[
@@ -58,13 +59,13 @@ export default async function KassePage() {
 
       <section className="border-t border-border bg-surface-muted">
         <div className="shell py-8 md:py-10">
-          <h2 className="text-lg font-bold text-foreground">Rechtliche Hinweise</h2>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          <h2 className="text-title-sm font-semibold text-foreground">Rechtliche Hinweise</h2>
+          <ul className="mt-4 grid border-t border-border sm:grid-cols-2 lg:grid-cols-4">
             {RECHTLICHES.map((link) => (
-              <li key={link.href}>
+              <li key={link.href} className="border-b border-border">
                 <Link
                   href={link.href}
-                  className="inline-flex min-h-[44px] items-center text-[14px] font-semibold text-primary hover:underline"
+                  className="inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline"
                 >
                   {link.label}
                 </Link>

@@ -26,7 +26,6 @@ import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { InfoTip } from '@/components/ui/info-tip';
 import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
-import { SummaryList } from '@/components/layout/summary-list';
 
 export interface KasseFormularProps {
   shipping: ShippingOption[];
@@ -316,7 +315,7 @@ export function KasseFormular({
     return (
       <Card>
         <CardBody>
-          <p className="text-[15px] text-foreground-muted" role="status">
+          <p className="text-body text-foreground-muted" role="status">
             Ihre Bestellung wurde aufgenommen. Sie werden zur Bestätigung weitergeleitet.
           </p>
         </CardBody>
@@ -328,7 +327,7 @@ export function KasseFormular({
     return (
       <Card>
         <CardBody>
-          <p className="text-[15px] text-foreground-muted" role="status">
+          <p className="text-body text-foreground-muted" role="status">
             Bestelldaten werden geladen.
           </p>
         </CardBody>
@@ -340,8 +339,8 @@ export function KasseFormular({
     return (
       <Card>
         <CardBody className="max-w-xl">
-          <h2 className="text-lg font-bold text-foreground">Ihr Warenkorb ist leer</h2>
-          <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
+          <h2 className="text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
+          <p className="mt-2 text-body leading-relaxed text-foreground-muted">
             Ohne Positionen lässt sich keine Bestellung abschließen.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -356,8 +355,8 @@ export function KasseFormular({
   }
 
   return (
-    <form onSubmit={absenden} noValidate className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-start lg:gap-8">
-      <div className="space-y-6">
+    <form onSubmit={absenden} noValidate className="grid gap-6 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+      <div className="space-y-10 lg:col-span-7">
         {!paymentConfigured && (
           <Alert tone="warning" title="Zahlung derzeit nicht online möglich">
             Es ist noch kein Zahlungsdienstleister angebunden. Ihre Bestellung wird mit dem
@@ -365,11 +364,14 @@ export function KasseFormular({
           </Alert>
         )}
 
-        <Card>
-          <CardHeader>
-            <h2 className="text-[15px] font-bold text-foreground">Kontaktdaten</h2>
-          </CardHeader>
-          <CardBody className="grid gap-4 sm:grid-cols-2">
+        <p className="text-small text-foreground-muted">Mit * gekennzeichnete Felder sind Pflichtangaben.</p>
+
+        <section className="border-t border-border pt-8">
+          <header>
+            <p className="font-mono text-caption tabular-nums text-foreground-muted">01</p>
+            <h2 className="mt-1 text-title font-semibold text-foreground">Kontaktdaten</h2>
+          </header>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <Field label="Anrede" hint="Freiwillige Angabe." className="sm:col-span-2 sm:max-w-xs">
               {({ id, describedBy }) => (
                 <Select
@@ -470,14 +472,15 @@ export function KasseFormular({
                 />
               )}
             </Field>
-          </CardBody>
-        </Card>
+          </div>
+        </section>
 
-        <Card>
-          <CardHeader>
-            <h2 className="text-[15px] font-bold text-foreground">Lieferanschrift</h2>
-          </CardHeader>
-          <CardBody className="grid gap-4 sm:grid-cols-2">
+        <section className="border-t border-border pt-8">
+          <header>
+            <p className="font-mono text-caption tabular-nums text-foreground-muted">02</p>
+            <h2 className="mt-1 text-title font-semibold text-foreground">Lieferanschrift</h2>
+          </header>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <Field label="Straße und Hausnummer" required error={fehler.street} className="sm:col-span-2">
               {({ id, describedBy, invalid }) => (
                 <TextInput
@@ -546,15 +549,16 @@ export function KasseFormular({
                 />
               )}
             </Field>
-          </CardBody>
-        </Card>
+          </div>
+        </section>
 
-        <Card>
-          <CardHeader>
-            <h2 className="text-[15px] font-bold text-foreground">Erforderliche Bestätigungen</h2>
-          </CardHeader>
-          <CardBody className="space-y-3">
-            <label className="flex min-h-[44px] cursor-pointer items-start gap-3 rounded-lg border border-border bg-surface p-4">
+        <section className="border-t border-border pt-8">
+          <header>
+            <p className="font-mono text-caption tabular-nums text-foreground-muted">03</p>
+            <h2 className="mt-1 text-title font-semibold text-foreground">Erforderliche Bestätigungen</h2>
+          </header>
+          <div className="mt-6 space-y-3">
+            <label className="flex min-h-touch cursor-pointer items-start gap-3 rounded-lg border border-border bg-surface p-4">
               <input
                 type="checkbox"
                 checked={agbBestaetigt}
@@ -563,9 +567,9 @@ export function KasseFormular({
                   setBestaetigungsFehler(null);
                 }}
                 aria-describedby="bestaetigung-fehler"
-                className="mt-0.5 h-5 w-5 shrink-0 accent-primary"
+                className="mt-0.5 size-5 shrink-0 accent-primary"
               />
-              <span className="text-[14px] leading-relaxed text-foreground">
+              <span className="text-small leading-relaxed text-foreground">
                 Ich habe die{' '}
                 <Link href="/rechtliches/agb" className="font-semibold text-primary hover:underline">
                   AGB
@@ -579,7 +583,7 @@ export function KasseFormular({
             </label>
 
             <div className="flex items-start gap-2">
-              <label className="flex min-h-[44px] flex-1 cursor-pointer items-start gap-3 rounded-lg border border-border bg-surface p-4">
+              <label className="flex min-h-touch flex-1 cursor-pointer items-start gap-3 rounded-lg border border-border bg-surface p-4">
                 <input
                   type="checkbox"
                   checked={anfertigungBestaetigt}
@@ -588,9 +592,9 @@ export function KasseFormular({
                     setBestaetigungsFehler(null);
                   }}
                   aria-describedby="bestaetigung-fehler"
-                  className="mt-0.5 h-5 w-5 shrink-0 accent-primary"
+                  className="mt-0.5 size-5 shrink-0 accent-primary"
                 />
-                <span className="text-[14px] leading-relaxed text-foreground">
+                <span className="text-small leading-relaxed text-foreground">
                   Mir ist bekannt, dass Schlüssel und Zylinder nach meinen Angaben angefertigt
                   werden. Einzelheiten dazu, was das für den Widerruf bedeutet, stehen in der{' '}
                   <Link href="/rechtliches/widerruf" className="font-semibold text-primary hover:underline">
@@ -613,18 +617,59 @@ export function KasseFormular({
               </span>
             </div>
 
-            <p id="bestaetigung-fehler" className="text-[13px] font-semibold text-danger" role="alert">
+            <p id="bestaetigung-fehler" className="text-small font-semibold text-danger" role="alert">
               {bestaetigungsFehler}
             </p>
-          </CardBody>
-        </Card>
+          </div>
+        </section>
       </div>
 
       {/* Bestellübersicht und Absenden */}
-      <div className="space-y-4 lg:sticky lg:top-24">
-        <h2 className="text-lg font-bold text-foreground">Bestellübersicht</h2>
+      <div className="space-y-6 lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+        <h2 className="text-title-sm font-semibold text-foreground">Bestellübersicht</h2>
 
-        <SummaryList sections={uebersicht} />
+        {/* Schriftfeld mit Haarlinien: Artikel und Summe in Mono, Gesamtsumme groß, Kontaktdaten im Fließtext. */}
+        <div className="space-y-6">
+          {uebersicht.map((abschnitt) => (
+            <div key={abschnitt.title}>
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                {abschnitt.title}
+              </p>
+              <dl className="mt-2 border-t border-border">
+                {abschnitt.rows.map((zeile, zeilenIndex) => (
+                  <div
+                    key={`${zeile.label}-${zeilenIndex}`}
+                    className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4"
+                  >
+                    <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">
+                      {zeile.label}
+                    </dt>
+                    <dd
+                      className={
+                        zeile.label === 'Gesamtbetrag'
+                          ? 'font-mono text-title font-semibold tabular-nums text-foreground sm:col-span-7'
+                          : 'text-body text-foreground sm:col-span-7'
+                      }
+                    >
+                      {/* Beträge, Stückzahlen und Maße stehen in Mono, der Text daneben nicht. */}
+                      {zeile.value
+                        .split(/(\d+(?:,\d+)?\s(?:mm|Stück)|\d{1,3}(?:\.\d{3})*,\d{2}\s€)/)
+                        .map((teil, teilIndex) =>
+                          teilIndex % 2 === 1 ? (
+                            <span key={teilIndex} className="font-mono tabular-nums">
+                              {teil}
+                            </span>
+                          ) : (
+                            teil
+                          ),
+                        )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+        </div>
 
         {!versandart && (
           <Alert tone="warning" title="Versandart fehlt">
@@ -656,12 +701,12 @@ export function KasseFormular({
           Zahlungspflichtig bestellen
         </Button>
 
-        <p className="text-[13px] leading-relaxed text-foreground-muted">
+        <p className="text-small leading-relaxed text-foreground-muted">
           Beim Absenden wird der Preis auf unserem Server noch einmal berechnet. Maßgeblich sind
           die dort hinterlegten Preise. Anschließend erhalten Sie eine Vorgangsnummer.
         </p>
 
-        <p className="text-[13px] leading-relaxed text-foreground-muted">
+        <p className="text-small leading-relaxed text-foreground-muted">
           Etwas ändern?{' '}
           <Link href="/warenkorb" className="font-semibold text-primary hover:underline">
             Zurück zum Warenkorb
