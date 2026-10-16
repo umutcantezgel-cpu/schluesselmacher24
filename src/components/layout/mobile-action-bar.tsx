@@ -38,6 +38,7 @@ export function MobileActionBar() {
   return (
     <nav
       aria-label="Schnellzugriff"
+      data-aktionsleiste
       className="pb-safe-area fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface md:hidden"
     >
       <ul className="grid grid-cols-4">

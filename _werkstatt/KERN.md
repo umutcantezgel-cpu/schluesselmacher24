@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.9
+# KERN · SCHLÜSSELMACHER24 · Version 1.10
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -145,6 +145,16 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
   - Große Zeichnungen zeigen unter 640 px einen Ausschnitt (`.sm24-ausschnitt` über `ImagePlaceholder ausschnitt` oder `ausschnittStil()` an einer Hülle, deren direktes Kind das SVG ist). Ziel: Beschriftungen ab 12 px, keine seitlich scrollenden Grafiken.
   - Kennzahlen im Schriftfeld behalten auch mobil `text-title-sm`; passt die Zeile nicht, bekommt das wichtigste Feld eine eigene Zeile.
 - **Fuß:** Schriftfeld auf `surface-sunken`; der Abstand für die mobile Aktionsleiste (`pb-safe-nav`) sitzt im Fuß, nicht in `main`.
+- **Muster aus der Sichtabnahme E4-L-23 (seit 1.10, gelten für alle Ansichten):**
+  - **Kopf mit Blickfang:** Erzählansichten setzen ihre Fachgrafik über `PageHeader visual` in den Kopf (7/5; mobil Kopf → Grafik → Aktion). Die Grafik steht ohne Kartenrahmen auf Papier oder auf `bg-area-soft/40`; der große Moment der Ansicht liegt damit in der ersten Bildschirmhöhe. Das Bereichs-Icon bleibt klein neben der Augenbraue (B-13).
+  - **Leiste statt Stapel:** Mehr als drei gleichartige Karten werden mobil eine Leiste mit Anschnitt (Muster Startseite „Bestellen ohne Termin“: `-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid … md:overflow-visible md:px-0 scroll-px-5 sm:scroll-px-6 md:scroll-px-0`, Karte `shrink-0 basis-3/4 snap-start md:basis-auto`).
+  - **Ordnung durchziehen:** Jeder Abschnitt hat Augenbraue und laufende Nummer (`SectionHeading nummer`), auch „Weiterlesen“ und „Fragen“.
+  - **Keine Linkwörter:** „Zur Seite“, „Ansehen“, „Leistungsdetails“, „… erkunden“ entfallen; die ganze Zeile oder Karte ist der Link, rechts nur `GlyphPfeilRechts` mit B-06.
+  - **Links im Satz** bleiben `inline` (ohne `inline-flex` und `min-h-touch`; WCAG 2.5.8 nimmt sie aus), sonst reißen Zeilen auf.
+  - **Hauptknöpfe mobil einzeilig:** kürzerer vorhandener Wortlaut oder `w-full justify-between text-left`.
+  - **Werte:** Beträge, Maße, Kennungen und Tabellenwerte in `font-mono tabular-nums`, Summen rechtsbündig, Endsummen in Textfarbe (Primärblau nur für Aktionen).
+  - **Flächen sparsam:** Hinweise ohne eigenen Anlass als Zeile mit Glyphe statt getönter Kasten; Warnungen höchstens 8 Spalten, `surface` mit 2-px-Leiste links in Warnfarbe.
+
 
 ## K-007 Bewegungssystem und Register
 - **Dauern** (CSS-Variablen `--dauer-*`, Tailwind `duration-*`): `instant` 120 ms · `quick` 180 ms · `base` 280 ms · `slow` 400 ms · `enter` 600 ms · `scene` 900 ms. Ein großer Moment dauert höchstens 1,6 s gesamt.
@@ -185,7 +195,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 | B-17 | Zylindermaß live | Rückmeldung | Maßänderung im Konfigurator | Überblendung `quick` | sofort |
 | B-18 | Tür-Schutzpunkte | Hierarchie | InView | Marken `sm24-pop`, gestaffelt ≤ 5 × 120 ms | sofort |
 | B-19 | Ladeanzeige | Rückmeldung | Laden | Glyph `laden` dreht (`transform`), 900 ms/Umdrehung | ruht, Text „lädt …“ bleibt |
-| B-20 | Warenkorb-Zähler | Rückmeldung | Menge ändert sich | `sm24-pop` `quick` | sofort |
+| B-20 | Warenkorb-Zähler, Summen | Rückmeldung | Menge oder Summe ändert sich | Zähler `sm24-pop` `quick`; Summen (Warenkorb, Kasse, laufende Summe im Konfigurator) blenden über einen wechselnden `key` mit `animate-schleier-ein` ein | sofort |
 | B-21 | Reihe der Schlüsselarten (Autoschlüssel; Modellseite H03 mit den erfassten Arten) | Hierarchie | InView | Schlüssel nacheinander `sm24-reveal`, Staffel ≤ 4 × 120 ms, Profile zeichnen | sofort |
 | B-22 | Code-Fundstelle (Generator-Einstieg) | Orientierung | InView | Bestand `sm24-draw`/`sm24-pop` | sofort |
 
@@ -292,3 +302,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.7 · E4 · B-21 gilt auch für die Modellseite (erfasste Schlüsselarten als Zeichnungen). Grund: Pakete der Welle C (E4-BAUMEISTER-08).
 - 1.8 · E4 · K-008: Mindestgröße der Beschriftung in Zeichnungen auf Telefonen; Ausschnitt mit vergrößerter Legende (`tuer-schutz`, D-033) und schmales Format (`zylinder-mass`, D-036). Grund: Abnahme Welle E und offener Punkt Maßzeichnung schmal.
 - 1.9 · E4 · B-15 mit Rohling und gezeichnetem ersten Profil; `sm24-dash` ein Durchgang; gesperrte Knöpfe als ruhige Fläche; Bereichstöne Code 250°/Schließanlagen 292° (42°). Grund: Sichtabnahme E4-L-23 (Paket E4-L-27).
+- 1.10 · E4 · K-006 Muster aus der Sichtabnahme (Kopf mit Blickfang, Leiste statt Stapel, Ordnung, keine Linkwörter, Links im Satz, Werte, Flächen); B-20 auch für Summen; `PageHeader visual` als 7/5-Kopf. Grund: Sichtabnahme E4-L-23 (D-037).

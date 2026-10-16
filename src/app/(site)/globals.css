@@ -138,6 +138,12 @@
     scroll-padding-bottom: 8rem;
   }
 
+  /* Seiten mit eigener Aktionsleiste unten (FlowShell, gefüllter Warenkorb: `data-eigene-leiste`)
+     blenden die globale Leiste aus – zwei feste Leisten übereinander verdecken Inhalt. */
+  body:has([data-ablauf], [data-eigene-leiste]) [data-aktionsleiste] {
+    display: none;
+  }
+
   @media (min-width: 768px) {
     html:has([data-ablauf]) {
       scroll-padding-top: calc(var(--header-height) + 5rem);
