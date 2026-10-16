@@ -75,7 +75,7 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E4-B-10 | H08 Schließanlagen und `system-erklaerung` | B/Haiku | 2 Dateien | E3-L-10 | Z-04 | |
 | E4-B-11 | H09 Türtechnik und `[slug]` | B/Haiku | 2 Dateien | E2-G-03, E3-B-06 | Z-04 | |
 | E4-L-16 | H01 Befunde der Sichtabnahme, Anlauf 2 (letztes Paket je Kategorie) | L/Opus | `(site)/page.tsx`, `globals.css`, Fuß, Layout, Generatoren `profilschnitt`/`schliessplan`, `area-theme.ts`, `image-placeholder.tsx` | E2 | Z-04 | 8dc1538 |
-| E4-B-12 | H12 Ratgeber und Liste | B/Haiku | 2 Dateien | E3-L-09 | Z-04 | |
+| E4-B-12 | H12 Ratgeber und Liste | B/Haiku | 2 Dateien | E3-L-09 | Z-04 || a22965a |
 | E4-B-13 | H07 Zylinder-Konfigurator (Logikwächter) | B/Haiku | 2 Dateien | E3-B-02 | Z-04 | |
 | E4-B-14 | H10 Warenkorb (Logikwächter) | B/Haiku | 2 Dateien | E3-B-01 | Z-04 | |
 | E4-B-15 | H11 Kasse (Logikwächter) | B/Haiku | 2 Dateien | E3-B-01 | Z-04 | |

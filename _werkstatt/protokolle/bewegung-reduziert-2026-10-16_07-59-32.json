@@ -1,0 +1,29 @@
+{
+  "skript": "bewegung-reduziert",
+  "zeit": "2026-10-16T05:59:32.653Z",
+  "argumente": {
+    "_": [
+      "reduziert"
+    ],
+    "routen": "/schluessel-nach-code,/schluessel-nach-code/ms-01",
+    "echtzeit": false
+  },
+  "zeilen": [
+    {
+      "ansicht": "H05-code-shop",
+      "pfad": "/schluessel-nach-code",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 563
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 130
+    }
+  ]
+}
