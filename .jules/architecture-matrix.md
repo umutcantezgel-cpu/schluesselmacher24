@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | URL | Ist-Zustand (Wortanzahl) | CWV-Status | Schema-Status | Soll-Zustand |
+|---|---|---|---|---|---|
+| src/app/(payload)/admin/[[...segments]]/page.tsx | /admin/[[...segments]] | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/artikel/[slug]/page.tsx | /artikel/[slug] | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/artikel/page.tsx | /artikel | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/anfrage/page.tsx | /autoschluessel/anfrage | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | /autoschluessel/fahrzeugoeffnung | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/funkschluessel/page.tsx | /autoschluessel/funkschluessel | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/kopieren/page.tsx | /autoschluessel/kopieren | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | /autoschluessel/marken/[make]/[model] | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/marken/[make]/page.tsx | /autoschluessel/marken/[make] | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/marken/page.tsx | /autoschluessel/marken | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/nachmachen/page.tsx | /autoschluessel/nachmachen | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/page.tsx | /autoschluessel | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/programmieren/page.tsx | /autoschluessel/programmieren | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | /autoschluessel/schluesselbart-fraesen | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/autoschluessel/smart-key/page.tsx | /autoschluessel/smart-key | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/bestellung/[id]/page.tsx | /bestellung/[id] | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | /elektronische-zutrittsloesungen/konfigurator | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/elektronische-zutrittsloesungen/page.tsx | /elektronische-zutrittsloesungen | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | /gleichschliessende-zylinder/konfigurator | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/gleichschliessende-zylinder/page.tsx | /gleichschliessende-zylinder | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/kasse/page.tsx | /kasse | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/page.tsx | / | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/ratgeber/[slug]/page.tsx | /ratgeber/[slug] | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/ratgeber/page.tsx | /ratgeber | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/rechtliches/agb/page.tsx | /rechtliches/agb | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | /rechtliches/cookie-einstellungen | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/rechtliches/datenschutz/page.tsx | /rechtliches/datenschutz | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/rechtliches/impressum/page.tsx | /rechtliches/impressum | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | /rechtliches/versand-und-zahlung | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/rechtliches/widerruf/page.tsx | /rechtliches/widerruf | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/schliessanlagen/konfigurator/page.tsx | /schliessanlagen/konfigurator | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/schliessanlagen/page.tsx | /schliessanlagen | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/schluessel-nach-code/[slug]/page.tsx | /schluessel-nach-code/[slug] | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/schluessel-nach-code/page.tsx | /schluessel-nach-code | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | /schluessel-nach-vorlage/anfrage | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/schluessel-nach-vorlage/page.tsx | /schluessel-nach-vorlage | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/service-und-termin/anfrage/page.tsx | /service-und-termin/anfrage | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/service-und-termin/kontakt/page.tsx | /service-und-termin/kontakt | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/service-und-termin/page.tsx | /service-und-termin | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/service-und-termin/terminstatus/page.tsx | /service-und-termin/terminstatus | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/service-und-termin/vor-ort/page.tsx | /service-und-termin/vor-ort | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/sicherheitstechnik/[slug]/page.tsx | /sicherheitstechnik/[slug] | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/sicherheitstechnik/page.tsx | /sicherheitstechnik | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | /sicherheitstechnik/sicherheitscheck | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/standorte/[city]/page.tsx | /standorte/[city] | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/standorte/page.tsx | /standorte | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | /tuer-und-schliesstechnik/[slug] | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/tuer-und-schliesstechnik/page.tsx | /tuer-und-schliesstechnik | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
+| src/app/(site)/warenkorb/page.tsx | /warenkorb | 200 | Needs Improvement | Incomplete | 850 words, InteractiveBentoWidget |
