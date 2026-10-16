@@ -3,8 +3,11 @@ import type { ReactNode } from 'react';
 import type { SummarySection } from '@/lib/types';
 import { cn } from '@/lib/cn';
 
-/** Beträge („1.234,50 €“), Stückzahlen („2 Stück“) und Maße („30 mm“) in einem Anzeigetext. */
-const ZAHLENTEIL = /(\d+(?:,\d+)?\s(?:mm|Stück)|\d{1,3}(?:\.\d{3})*,\d{2}\s€)/;
+/**
+ * Beträge („1.234,50 €“), Stückzahlen („2 Stück“), Maße („30 mm“) und Kennungen von
+ * Codelinien („MS-01“) in einem Anzeigetext.
+ */
+const ZAHLENTEIL = /(\d+(?:,\d+)?\s(?:mm|Stück)|\d{1,3}(?:\.\d{3})*,\d{2}\s€|\b[A-Z]{2,3}-\d{2,3}\b)/;
 
 /**
  * Zerlegt einen Anzeigetext in Teile; Zahlen mit Einheit sind als `mono` markiert,
@@ -22,7 +25,7 @@ function MonoText({ text }: { text: string }) {
     <>
       {monoTeile(text).map((teil, index): ReactNode =>
         teil.mono ? (
-          <span key={index} className="font-mono tabular-nums">
+          <span key={index} className="whitespace-nowrap font-mono tabular-nums">
             {teil.text}
           </span>
         ) : (
@@ -38,19 +41,23 @@ function MonoText({ text }: { text: string }) {
  * Backend, damit beide Seiten dieselbe Sicht auf den Vorgang haben.
  *
  * - `karte` (Standard): Abschnitte als Karten.
- * - `schriftfeld`: Haarlinien wie ein Schriftfeld; Zahlen mit Einheit in Mono, die Zeile
- *   mit der Beschriftung `hervorheben` (etwa „Gesamtbetrag“) groß in Mono.
+ * - `schriftfeld`: Haarlinien wie ein Schriftfeld; Werte ab `sm` rechtsbündig, Zahlen mit
+ *   Einheit und Kennungen in Mono, die Zeile mit der Beschriftung `hervorheben` (etwa
+ *   „Gesamtbetrag“) groß in Mono. Werte gleich `leer` (etwa „Noch nicht ausgefüllt“) stehen
+ *   klein und gedämpft, damit sie die echten Angaben nicht übertönen.
  */
 export function SummaryList({
   sections,
   className,
   variante = 'karte',
   hervorheben,
+  leer,
 }: {
   sections: SummarySection[];
   className?: string;
   variante?: 'karte' | 'schriftfeld';
   hervorheben?: string;
+  leer?: string;
 }) {
   if (sections.length === 0) return null;
 
@@ -69,10 +76,12 @@ export function SummaryList({
                   <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">{row.label}</dt>
                   <dd
                     className={cn(
-                      'sm:col-span-7',
+                      'sm:col-span-7 sm:text-right',
                       row.label === hervorheben
                         ? 'font-mono text-title font-semibold tabular-nums text-foreground'
-                        : 'text-body text-foreground',
+                        : leer !== undefined && row.value === leer
+                          ? 'text-small text-foreground-muted'
+                          : 'text-body text-foreground',
                     )}
                   >
                     {row.label === hervorheben ? row.value : <MonoText text={row.value} />}

@@ -23,6 +23,10 @@ describe('monoTeile', () => {
     ]);
     expect(monoTeile('1.234,50 €')).toEqual([{ text: '1.234,50 €', mono: true }]);
     expect(monoTeile('Versand mit DHL')).toEqual([{ text: 'Versand mit DHL', mono: false }]);
+    expect(monoTeile('Büroschrank — Serie MS-01')).toEqual([
+      { text: 'Büroschrank — Serie ', mono: false },
+      { text: 'MS-01', mono: true },
+    ]);
   });
 });
 
@@ -38,9 +42,22 @@ describe('SummaryList', () => {
     const html = renderToStaticMarkup(
       <SummaryList sections={abschnitte} variante="schriftfeld" hervorheben="Gesamtbetrag" />,
     );
-    expect(html).toContain('<span class="font-mono tabular-nums">2 Stück</span>');
-    expect(html).toContain('<span class="font-mono tabular-nums">30 mm</span>');
+    // Alt: class="font-mono tabular-nums". Neu: zusätzlich whitespace-nowrap (Kennungen brechen nicht).
+    expect(html).toContain('<span class="whitespace-nowrap font-mono tabular-nums">2 Stück</span>');
+    expect(html).toContain('<span class="whitespace-nowrap font-mono tabular-nums">30 mm</span>');
+    expect(html).toContain('sm:text-right');
     expect(html).toMatch(/font-mono text-title font-semibold tabular-nums text-foreground">1\.234,50 €</);
     expect(html).not.toContain('rounded-lg border');
+  });
+
+  it('setzt leere Angaben klein und gedämpft', () => {
+    const html = renderToStaticMarkup(
+      <SummaryList
+        sections={[{ title: 'Kontakt', rows: [{ label: 'E-Mail', value: 'Noch nicht ausgefüllt' }] }]}
+        variante="schriftfeld"
+        leer="Noch nicht ausgefüllt"
+      />,
+    );
+    expect(html).toMatch(/text-small text-foreground-muted">Noch nicht ausgefüllt</);
   });
 });

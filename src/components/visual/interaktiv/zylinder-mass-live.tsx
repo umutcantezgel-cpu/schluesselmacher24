@@ -40,7 +40,7 @@ export function ZylinderMassLive({ form, aussen, innen, name, className }: Zylin
         <ZylinderMassGrafik params={{ ...params, format: 'schmal' }} title={titel} className="sm:hidden" />
         <ZylinderMassGrafik params={params} title={titel} className="hidden sm:block" />
       </div>
-      <figcaption className="mt-2 font-mono text-caption uppercase tracking-label text-foreground-muted">
+      <figcaption className="mt-2 text-balance font-mono text-caption uppercase tracking-label text-foreground-muted">
         Schematisch – maßgeblich sind die gewählten Maße
       </figcaption>
     </figure>
