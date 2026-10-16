@@ -1,0 +1,15 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T09:51:06.899Z",
+  "argumente": {
+    "_": [
+      "../../src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "../../src/components/autoschluessel/vehicle-facts.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 2,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}
