@@ -3,8 +3,10 @@
 - **Etappe:** E5 (übrige Ansichten und Befundpakete). Prüfstufe B für E4 ist grün; die Sichtabnahme E4-L-23 ergab 6,2 (D-037). Die gemeinsamen Befunde sind mit E4-L-27 umgesetzt, KERN 1.11.
 - **Laufend:**
   - Befundwelle 1 (E5-BEFUND-H05, -H09, -H04): Workflow `wf_5006ebc4-e4c` (Task `wt7fmju7i`), Basis `1171973`.
-  - E4-GRAFIKER-10 (Generator `ablauf`): Workflow `wf_5555f066-5e0` (Task `wot1j62t4`), Basis `ae51d9b`.
-- **Fertig seit dem letzten Prüfpunkt:** Prüfstufe B E4 (6798995, 0468a38), L-07a Warenkorb mobil (21d8833), Sichtabnahme E4-L-23, E4-L-24 bis -27, E4-GRAFIKER-09 (385bcf2), E5-L-28 Lesefortschritt B-24 und `ablaufAusText`; Pakete E5-BEFUND-H01 bis -H12, E5-BAUMEISTER-20 bis -29, E4-GRAFIKER-10.
+  - E5-BEFUND-H12 (Ratgeber): Workflow `wf_915efddc-a38` (Task `wpyg86yy5`), Basis `b929023`.
+  - E5-BAUMEISTER-20 (Service, Kontakt, Vor Ort): Workflow `wf_bb43646e-b0f` (Task `wtnkxe0ac`), Basis `8faad51`.
+  - Je Workflow laufen höchstens zwei Agenten gleichzeitig (4 Kerne); zusammen nie mehr als vier Haiku-Plätze.
+- **Fertig seit dem letzten Prüfpunkt:** E4-GRAFIKER-10 abgenommen (ec7db44, b929023), Kür K-02 (fe069ba), K-05 Druckansicht, K-06 Vorschaubilder (D-039), B-25 Stiftzuhaltung als CSS vorbereitet (Paket E6-GRAFIKER-11), Paket E5-DOKUMENTAR-01. Davor: Prüfstufe B E4 (6798995, 0468a38), L-07a Warenkorb mobil (21d8833), Sichtabnahme E4-L-23, E4-L-24 bis -27, E4-GRAFIKER-09 (385bcf2), E5-L-28 Lesefortschritt B-24 und `ablaufAusText`; Pakete E5-BEFUND-H01 bis -H12, E5-BAUMEISTER-20 bis -29, E4-GRAFIKER-10.
 - **Als Nächstes:**
   1. Welle 1 und GRAFIKER-10 abnehmen: ganzer Unterschied, Logikwächter, Wertesuche, Bilder, Berichte; GRAFIKER-10 in Registry (`SCHMALES_FORMAT`), README, Registry-Test eintragen.
   2. Befundwelle 2: H02, H03, H06, H08. Danach Welle 3: H01, H07, H10, H11, dann H12 (braucht `ablauf`).
