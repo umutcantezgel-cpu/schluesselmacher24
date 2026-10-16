@@ -7,9 +7,14 @@ import { Badge } from '@/components/ui/badge';
    werden ausdrücklich als offen gekennzeichnet.
    ========================================================================== */
 
-/** Baujahresangabe aus `yearFrom` und `yearTo`. */
+/** Sind Baujahre erfasst? Fehlt `yearFrom`, gilt die Angabe als offen. */
+export function hatBaujahre(model: Pick<VehicleModel, 'yearFrom' | 'yearTo'>): boolean {
+  return Boolean(model.yearFrom);
+}
+
+/** Baujahresangabe aus `yearFrom` und `yearTo`; ohne Angabe steht „nicht erfasst“. */
 export function formatModelYears(model: Pick<VehicleModel, 'yearFrom' | 'yearTo'>): string {
-  if (!model.yearFrom) return '[Platzhalter: Baujahre noch nicht erfasst]';
+  if (!hatBaujahre(model)) return 'nicht erfasst';
   return model.yearTo ? `${model.yearFrom}–${model.yearTo}` : `ab ${model.yearFrom}`;
 }
 
