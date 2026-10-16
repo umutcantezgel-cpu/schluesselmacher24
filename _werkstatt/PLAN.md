@@ -83,7 +83,10 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E4-B-17 | `/schluessel-nach-vorlage` | B/Haiku | 1 Datei | E3-L-08 | Z-06 | |
 | E4-B-18 | `/elektronische-zutrittsloesungen` | B/Haiku | 1 Datei | E3-L-08 | Z-06 | |
 | E4-B-19 | `/sicherheitstechnik` und `[slug]` | B/Haiku | 2 Dateien | E3-L-08 | Z-06 | |
-| E4-L-11 | Seitenwechsel mit gemeinsamem Element (B-13) | L/Opus | `page-header`, Startseite, `next.config.ts` | E3-L-08 | Z-05 | |
+| E4-L-11 | Seitenwechsel mit gemeinsamem Element (B-13) | L/Opus | `page-header`, Startseite, `seitenwechsel.tsx` (kein `next.config.ts` nötig) | E3-L-08 | Z-05 | 99d2ba9, e523e49 |
+| E4-L-17 | Bestandsfehler: Eingabeschrift mit Rahmenfarbe, InView bei hohen Abschnitten (D-028) | L/Opus | `tailwind.config.ts`, `cn.ts`, `controls.tsx`, `in-view.tsx` + Tests | – | Z-02, Z-07 | 9bcf603 |
+| E4-L-18 | Gemeinsame Bausteine nach Welle C (D-029) | L/Opus | Raster-Token, `option-card`, `photo-upload`, `rechner-bausteine`, Schließplan-Ausschnitt, `tuer-schutz`, Ausnahmen Logikwächter | – | Z-04, Z-07 | 098c3cb |
+| E4-L-19 | Seitenwechsel springt nach oben (D-030) | L/Opus | 3 Seiten, `seitenstruktur.test.ts` | – | Z-02 | e523e49 |
 | E4-L-07 | Leistung absichern (nach der ersten Etappenmessung) | L/Opus | je Befund | E3-P-B | Z-08 | |
 | E5-B-20 | Service, Kontakt, Vor Ort | B/Haiku | 3 Dateien | E3 | Z-06 | |
 | E5-B-21 | `/gleichschliessende-zylinder` | B/Haiku | 1 Datei | E3 | Z-06 | |

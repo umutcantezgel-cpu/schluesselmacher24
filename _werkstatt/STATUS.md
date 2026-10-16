@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 4/6 · Welle C (B-08 fertig, B-09 bis -11 in Prüfung/Bau), Welle D Teil 1 (B-12) im Bau · Pflicht 37/72 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün bis e3ad5bb · Nächster Schritt: Welle C abnehmen, Welle D Teil 2 starten
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 4/6 · Welle C fertig (B-08 bis -11), Welle D: B-12, B-13 fertig, B-14 und B-15 im Bau · Pflicht 47/76 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (e523e49: Build 198/198, 1029 Tests, Logikwächter gleich außer laufenden B-14/B-15) · Nächster Schritt: B-14 und B-15 abnehmen, Kundschaft Welle E (B-16 bis B-19)
 
 # Status des Gestaltungslaufs
 
