@@ -8,6 +8,7 @@ import { useCartStore } from '@/lib/store/cart';
 import { availableShipping, cartTotals, priceCylinderOrder, type CylinderPriceBreakdown, unitPriceForCodeLine } from '@/lib/pricing';
 import { formatCents } from '@/lib/format';
 import { zylinderZeilen } from '@/lib/cylinder-summary';
+import { istPlatzhalter } from '@/lib/platzhalter';
 import type {
   Cart,
   CartItem,
@@ -177,14 +178,14 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
           {positionen.map((position) =>
             position.art === 'code' ? (
               <li key={position.item.uid} className="border-b border-border py-6">
-                <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-gutter">
+                <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-4">
                   {position.line && (
                     <div className="hidden sm:col-span-2 sm:block">
                       <ImagePlaceholder slot={position.line.productImage} compact />
                     </div>
                   )}
 
-                  <div className="min-w-0 sm:col-span-6 sm:col-start-3">
+                  <div className="min-w-0 sm:col-span-4 sm:col-start-3">
                     <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
                       <div className="min-w-0">
                         <h3 className="text-title-sm font-semibold text-foreground">
@@ -201,7 +202,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                         </h3>
                         {position.line && (
                           <p className="text-small text-foreground-muted">
-                            {position.line.manufacturer} · {position.line.application} ·{' '}
+                            {istPlatzhalter(position.line.manufacturer) ? null : `${position.line.manufacturer} · `}
+                            {position.line.application} ·{' '}
                             {position.line.keyType}
                           </p>
                         )}
@@ -257,7 +259,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                     </div>
                   </div>
 
-                  <div className="sm:col-span-2 sm:col-start-9">
+                  <div className="sm:col-span-3 sm:col-start-7">
                     <div className="flex items-center gap-2">
                       <span className="text-small font-semibold text-foreground-muted">Stückzahl</span>
                       {position.line && staffelHinweis(position.line) && (
@@ -288,7 +290,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                     </div>
                   </div>
 
-                  <div className="font-mono text-small tabular-nums sm:col-span-2 sm:text-right">
+                  <div className="font-mono text-small tabular-nums sm:col-span-3 sm:text-right">
                     <p className="text-foreground-muted">
                       {formatCents(position.item.unitPriceCents)} je Stück
                     </p>
@@ -314,7 +316,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
               </li>
             ) : (
               <li key={position.item.uid} className="border-b border-border py-6">
-                <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-gutter">
+                <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-4">
                   <div className="hidden sm:col-span-2 sm:block">
                     <ImagePlaceholder
                       slot={{
@@ -325,7 +327,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                     />
                   </div>
 
-                  <div className="min-w-0 sm:col-span-6 sm:col-start-3">
+                  <div className="min-w-0 sm:col-span-7 sm:col-start-3">
                     <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
                       <h3 className="text-title-sm font-semibold text-foreground">
                         Gleichschließende Zylinder
@@ -381,7 +383,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                     </div>
                   </div>
 
-                  <div className="font-mono text-title-sm font-semibold tabular-nums text-foreground sm:col-span-2 sm:col-start-11 sm:text-right">
+                  <div className="font-mono text-title-sm font-semibold tabular-nums text-foreground sm:col-span-3 sm:col-start-10 sm:text-right">
                     {formatCents(position.item.unitPriceCents)}
                   </div>
                 </div>
@@ -539,14 +541,14 @@ function StandardPositionKarte({
 }) {
   const { item, article } = position;
   return (
-    <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-gutter">
+    <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-4">
       {article && (
         <div className="hidden sm:col-span-2 sm:block">
           <ImagePlaceholder slot={article.image} compact />
         </div>
       )}
 
-      <div className="min-w-0 sm:col-span-6 sm:col-start-3">
+      <div className="min-w-0 sm:col-span-4 sm:col-start-3">
         <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
           <h3 className="text-title-sm font-semibold text-foreground">
             {article ? (
@@ -583,7 +585,7 @@ function StandardPositionKarte({
         </div>
       </div>
 
-      <div className="sm:col-span-2 sm:col-start-9">
+      <div className="sm:col-span-3 sm:col-start-7">
         <span className="text-small font-semibold text-foreground-muted">Stückzahl</span>
         <div className="mt-1.5">
           <QuantityInput
@@ -596,7 +598,7 @@ function StandardPositionKarte({
         </div>
       </div>
 
-      <div className="font-mono text-small tabular-nums sm:col-span-2 sm:text-right">
+      <div className="font-mono text-small tabular-nums sm:col-span-3 sm:text-right">
         <p className="text-foreground-muted">{formatCents(item.unitPriceCents)} je Stück</p>
         <p className="mt-1 text-title-sm font-semibold text-foreground">
           {formatCents(item.unitPriceCents * item.qty)}
