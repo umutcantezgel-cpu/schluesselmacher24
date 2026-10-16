@@ -1,0 +1,17 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-16T04:46:57.086Z",
+  "argumente": {
+    "_": [
+      "src/components/autoschluessel/preis-anzeige.tsx",
+      "src/components/autoschluessel/termin-auswahl.tsx",
+      "src/components/autoschluessel/bestaetigung.tsx",
+      "src/components/autoschluessel/bestaetigung.test.tsx"
+    ]
+  },
+  "seit": null,
+  "dateien": 4,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 0,
+  "funde": []
+}

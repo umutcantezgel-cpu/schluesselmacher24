@@ -130,6 +130,11 @@ Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabna
 - **Kapazität:** 55 Haiku-Pakete ÷ (4 Plätze × 8 Wellen am Tag) × 1,2 ≈ 2,1 Tage reine Haiku-Arbeit. Mit Opus-Engpass, Prüfstufen und Sichtabnahmen ergeben sich etwa 4 Tage.
 
 ## Offene Punkte
+- **Etappentor E2 nicht bestanden** (D-022): Ansichtswert 7,0 nach zwei Anläufen. Die Befunde aus Anlauf 2 gehen als Paket E4-L-16 (Orchestrator) in die Etappe E4. Das Kriterium Z-04 prüft die Endprüfung erneut.
+- **Sichtbarer Platzhalter für Baujahre:** `formatModelYears` in `src/components/autoschluessel/vehicle-facts.tsx` liefert „[Platzhalter: Baujahre noch nicht erfasst]“. Der Text erscheint in Tabellen und im Seitentitel der Marken- und Modellseiten. Das Paket E4-B-08 zeigt Baujahre nur, wenn sie erfasst sind, ohne Platzhalter im Titel (harter Katalog).
+- **Paniktechnik-Kasten auf `/tuer-und-schliesstechnik`:** dunkle Überschrift auf dunklem Grund (Befund E3-B-06; Kontrastbefund H09 schon in E0). Gehört zum Paket E4-B-11.
+- **Zeitfenster im Terminschritt:** Uhrzeit und Dauer der Auswahlkarten nicht in Mono (Befund E3-B-05). Gehört zum Paket E4-B-16 (Assistent).
+- **Bestätigung des Autoschlüssel-Ablaufs:** nur per Rendertest belegt, nicht im Bild (ohne echte Sendung nicht erreichbar).
 - **Wiederherstellungs-Hinweis in Abläufen (Bestand):** „Ihr Zwischenstand von zuletzt wurde geladen“ erscheint schon nach der ersten eigenen Eingabe, ohne Neuladen. Ursache ist `src/lib/flow/use-flow.ts`, Z. 194 (`restored = Boolean(stored) && !dismissed`); das war schon in E0 so (Befund aus der Prüfung E3-BAUMEISTER-02). Mögliche Lösung: „restored“ nur, wenn beim Einhängen schon ein Stand vorlag. Die Datei ist geteilte Ablauflogik, daher ein eigenes Paket mit Test vor E5 (Abläufe).
 - **JS-Menge mobil (E2-PRUEFER-01-ergebnis):** über E0 in allen 12 Ansichten, zum Beispiel H01 293 statt 246 KB. Die Budgets LCP, CLS und INP sind eingehalten. Ursachen sind zu prüfen (Glyphen, `tailwind-merge`-Erweiterung, Client-Hüllen); gehört zu Paket E4-L-07 (Leistung absichern).
 - **Überlauf-Befunde im Bildsatz** (67 statt 29 in E0): zum Teil gewollte Anschnitte im Hero und in den Projekten. Im Etappentor, Anlauf 2, je Ansicht prüfen.

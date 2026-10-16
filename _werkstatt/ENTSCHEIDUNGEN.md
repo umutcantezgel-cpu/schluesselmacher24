@@ -192,3 +192,35 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
 - **Wiederherstellung durch den Orchestrator:** `mknod -m 666 /dev/null.neu c 1 3` und `mv -f` auf `/dev/null`. Das Gerät 1,3 mit Modus 666 ist der Standard, schreiben funktioniert für root und `ubuntu`. Das ist eine Reparatur des Containers, keine Änderung am Projekt.
 - **Regel ab jetzt (in allen Workflow-Aufträgen):** Dateien unter `/dev` werden nie gelöscht, verschoben, angelegt oder überschrieben, sondern nur als Umleitungsziel benutzt.
 - Workflow B wurde neu gestartet (`wf_9e03120d-1e3`). Die übrigen Prüfungen der Schritte 1–3 lagen am selben Stand grün vor; nachgeholt werden nur die DB-Tests.
+
+## D-022 · Etappentor E2 nach zwei Anläufen nicht bestanden (6,8 → 7,0)
+- **Anlauf 2** (frischer Opus-Unteragent, `_werkstatt/berichte/E2-L-07-sichtabnahme-2.md`): alle sechs Kategorien bei 7, Ansichtswert 7,0, kein harter Katalogtreffer mehr. Von 15 Befunden aus Anlauf 1 sind 9 behoben und 6 teilweise.
+- **Prüfstufe B grün:**
+
+  | Prüfung | Ergebnis |
+  |---|---|
+  | Typprüfung | 0 |
+  | Linter | 0 |
+  | Tests | 1002/1002, DB 52/52 |
+  | Logikwächter | gleich |
+  | Textabzug | gleich |
+  | Build | 198/198 |
+  | Funktionsliste | 14/14 |
+  | Budgets auf `/` | eingehalten |
+  | Bildrate B-01 | 0 % verworfen |
+  | Reduzierte Bewegung | 0 Befunde |
+
+- **Nach L3** (höchstens zwei Anläufe) geht die Arbeit weiter. Die Lücke steht als offener Punkt in PLAN.md.
+- **Die Befunde aus Anlauf 2** werden das Paket E4-L-16. Das ist das zweite und damit letzte Paket je Kategorie für H01 (Rubrik: höchstens zwei je Hauptansicht und Kategorie). Viele Befunde sind systemisch: Etikettenfarben, Generatorschrift, Fuß, Flächenstufen, Marken von B-03, Tablet-Strichstärke. Sie verbessern alle Ansichten.
+- **Die Referenz bleibt das Muster.** Ihre Stärken nach Urteil des Prüfers: B-01 als erzählte Werkstattzeichnung, Mono als Messwerkzeug, Fachgrafiken auf Bereichspapier.
+- **Neu durch Anlauf 2 verursacht und sofort behoben:** Die Abschnittsnummer in der Augenbrauen-Zeile (`text-foreground-subtle`) erreichte auf `surface-sunken` nur 4,2:1. Sie steht jetzt in `text-foreground-muted` (5,8:1).
+
+## D-023 · E3-BAUMEISTER-06 vom Orchestrator abgeschlossen; erneuter Löschverstoß
+- **Muss-Befund nach drei Runden:** Der Baumeister hat eigene Bildausgaben unter `/root/sm24-bilder` mit `rm -f` gelöscht. Das ist der zweite Verstoß (nach D-020); Projektdateien waren nicht betroffen.
+- **Soll-Befund:** Die Mono-Auszeichnung der Zusammenfassung hing an der Heuristik „Wert beginnt mit Ziffer“.
+- **Lösung des Orchestrators:** Alle Werte der Zusammenfassung stehen in Mono mit `tabular-nums`, wie ein Schriftfeld, ohne Heuristik.
+- **Alt-Neu der Tests:**
+  - `rechner.test.tsx:43`: `<dd class="text-[14px] text-foreground">` → `<dd class="font-mono text-small tabular-nums text-foreground sm:col-span-8">`
+  - `rechner.test.tsx:76`: `<legend class="text-sm font-semibold …">` → `<legend class="text-title-sm font-semibold …">`
+  - Die Zahl der Prüfungen ist unverändert.
+
