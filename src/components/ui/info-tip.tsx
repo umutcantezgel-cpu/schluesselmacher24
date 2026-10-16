@@ -45,7 +45,7 @@ export function InfoTip({ hint, className, label }: InfoTipProps) {
           id={panelId}
           role="note"
           className={cn(
-            'absolute left-0 top-9 z-header block w-[min(20rem,calc(100vw-3rem))]',
+            'absolute left-0 top-9 z-header block w-tipp',
             'rounded-lg border border-border bg-surface p-4 shadow-overlay',
           )}
         >

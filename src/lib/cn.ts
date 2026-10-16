@@ -26,6 +26,7 @@ const twMerge = extendTailwindMerge({
       "min-w": [{ "min-w": ["touch", "zeichnung"] }],
       "grid-rows": [{ "grid-rows": ["kopf"] }],
       "grid-cols": [{ "grid-cols": ["kacheln"] }],
+      w: [{ w: ["tipp"] }],
       scale: [{ scale: ["druck"] }],
       "border-w": [{ border: ["strich"] }],
       "border-w-x": [{ "border-x": ["strich"] }],

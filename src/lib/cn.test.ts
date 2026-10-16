@@ -46,6 +46,8 @@ describe('cn – eigene Skalen des Designsystems', () => {
   it('führt Spaltenraster nach verfügbarer Breite mit festen Spalten zusammen', () => {
     expect(cn('grid-cols-2', 'grid-cols-kacheln')).toBe('grid-cols-kacheln');
     expect(cn('grid-cols-kacheln', 'gap-3')).toBe('grid-cols-kacheln gap-3');
+    expect(cn('w-full', 'w-tipp')).toBe('w-tipp');
+    expect(cn('w-tipp', 'max-w-measure')).toBe('w-tipp max-w-measure');
   });
 
   it('verhält sich für bekannte Tailwind-Klassen wie bisher', () => {

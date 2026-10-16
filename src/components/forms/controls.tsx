@@ -62,12 +62,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
     <select
       ref={ref}
       aria-invalid={invalid || undefined}
-      className={cn(control, invalid ? bad : ok, 'min-h-touch appearance-none bg-no-repeat pr-10', className)}
-      style={{
-        backgroundImage:
-          "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
-        backgroundPosition: 'right 0.75rem center',
-      }}
+      className={cn(control, invalid ? bad : ok, 'sm24-auswahl min-h-touch appearance-none pr-10', className)}
       {...props}
     >
       {children}

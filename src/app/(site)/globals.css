@@ -525,3 +525,19 @@
     font-size: 16px;
   }
 }
+
+/* ==========================================================================
+   Feste Leiste der Abläufe (FlowShell): 1rem plus Home-Leiste, vorher als
+   style-Wert. Steht nach den Hilfsklassen und übersteuert `p-4`; Varianten wie
+   `md:p-0` folgen später, deshalb hält `md:pb-4` den bisherigen Desktop-Abstand.
+   ========================================================================== */
+.sm24-ablauf-leiste {
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+}
+
+/* Auswahlfeld mit eigenem Pfeil (forms/controls, Select); vorher als style-Wert. */
+.sm24-auswahl {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+}

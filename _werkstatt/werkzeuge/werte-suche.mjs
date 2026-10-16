@@ -7,7 +7,8 @@
 //   - Hex-Farben #rgb bis #rrggbbaa
 //   - rgb(, rgba(, hsl(, oklch( außerhalb von src/app/(site)/globals.css und tailwind.config.ts
 //   - style={{ … }} mit Zahl plus px oder rem
-// Ausnahmen (mitgezählt, getrennt ausgewiesen): src/components/visual/generators/ und src/components/visual/icons/.
+// Ausnahmen (mitgezählt, getrennt ausgewiesen): src/components/visual/generators/ und src/components/visual/icons/,
+// dazu einzelne benannte Funde mit Entscheidung (EINZELNE_AUSNAHMEN, Datei und genauer Fund).
 // Ausgabe: Tabelle „Datei · Zeile · Fund“, Summe je Datei, Summe ohne und mit Ausnahmen; JSON-Protokoll.
 // Exit: 0 fertig (auch mit Funden), 2 Bedienfehler (z. B. unbekannter Commit, fehlende Datei), 1 technischer Fehler.
 import { execFileSync } from 'node:child_process';
@@ -18,6 +19,12 @@ import { REPO, PROTOKOLLE, argumente, zeitstempel, ordner } from './lib.mjs';
 const BASIS_COMMIT = 'fcbcfb2';
 const AUSNAHMEN = ['src/components/visual/generators/', 'src/components/visual/icons/'];
 const FARB_FUNKTIONEN_ERLAUBT = ['src/app/(site)/globals.css', 'tailwind.config.ts'];
+/** Einzelne Funde, die kein Gestaltungswert sind; jeder mit Entscheidung in ENTSCHEIDUNGEN.md. */
+const EINZELNE_AUSNAHMEN = [
+  { datei: 'src/app/(site)/layout.tsx', fund: '#f7f9fb', grund: 'viewport.themeColor verlangt einen Farbwert (D-015)' },
+  { datei: 'src/components/forms/photo-upload.tsx', fund: '#fff', grund: 'Canvas-Grund bei der JPEG-Umwandlung, Bildverarbeitung (D-034)' },
+];
+const einzelAusnahme = (rel, fund) => EINZELNE_AUSNAHMEN.some((a) => a.datei === rel && a.fund === fund);
 
 const bedienfehler = (text) => { console.error(`Bedienfehler: ${text}`); process.exit(2); };
 const zelle = (v) => String(v ?? '–').replace(/\|/g, '\\|').replace(/\s+/g, ' ');
@@ -61,7 +68,7 @@ function suchen(rel, roh) {
   for (const regel of REGELN) {
     if (regel.rel && FARB_FUNKTIONEN_ERLAUBT.includes(rel)) continue;
     for (const m of text.matchAll(regel.muster)) {
-      funde.push({ datei: rel, zeile: zeileVon(text, m.index), kategorie: regel.kategorie, fund: m[0], ausnahme });
+      funde.push({ datei: rel, zeile: zeileVon(text, m.index), kategorie: regel.kategorie, fund: m[0], ausnahme: ausnahme || einzelAusnahme(rel, m[0]) });
     }
   }
   for (const m of text.matchAll(/style=\{\{[\s\S]*?\}\}/g)) {
@@ -102,7 +109,8 @@ function main() {
     const rel = path.relative(REPO, d).split(path.sep).join('/');
     const funde = suchen(rel, readFileSync(d, 'utf8'));
     alle.push(...funde);
-    summe.push({ datei: rel, treffer: funde.length, ausnahme: AUSNAHMEN.some((a) => rel.startsWith(a)) });
+    const ordnerAusnahme = AUSNAHMEN.some((a) => rel.startsWith(a));
+    summe.push({ datei: rel, treffer: funde.length, ausnahme: ordnerAusnahme || (funde.length > 0 && funde.every((f) => f.ausnahme) ? 'einzeln' : false) });
   }
   const ohneAusnahme = alle.filter((f) => !f.ausnahme);
   const mitAusnahme = alle.filter((f) => f.ausnahme);
@@ -124,7 +132,7 @@ function main() {
   console.log('\n### Summe je Datei\n');
   console.log(tabelle(
     ['Datei', 'Treffer', 'Ausnahme'],
-    summe.filter((s) => s.treffer > 0).map((s) => [s.datei, s.treffer, s.ausnahme ? 'ja' : 'nein']),
+    summe.filter((s) => s.treffer > 0).map((s) => [s.datei, s.treffer, s.ausnahme === 'einzeln' ? 'einzeln benannt' : s.ausnahme ? 'ja' : 'nein']),
   ));
   console.log(`\nSumme ohne Ausnahmen: ${ohneAusnahme.length} · Ausnahmen: ${mitAusnahme.length}`);
   console.log(`JSON-Protokoll: ${protokoll}`);

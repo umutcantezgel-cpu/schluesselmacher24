@@ -159,10 +159,9 @@ export function FlowShell<T extends object>({
       {/* Navigation — am Smartphone fest am unteren Rand */}
       <div
         className={cn(
-          'fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface/95 p-4 backdrop-blur',
-          'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none',
+          'sm24-ablauf-leiste fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface/95 p-4 backdrop-blur',
+          'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:pb-4 md:backdrop-blur-none',
         )}
-        style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
       >
         {blockedHint && !flow.canContinue && (
           <p className="mb-2 text-center text-small text-foreground-subtle md:text-left">

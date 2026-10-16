@@ -156,6 +156,10 @@ const config = {
         /* Kopfzeile so hoch wie ihr Inhalt, der Rest nimmt den übrigen Platz (Startseiten-Kopf) */
         kopf: 'min-content 1fr',
       },
+      width: {
+        /* Aufklappender Hinweis: höchstens 20rem, auf Telefonen 3rem schmaler als das Fenster */
+        tipp: 'min(20rem, calc(100vw - 3rem))',
+      },
       maxWidth: {
         shell: 'var(--shell-max)',
         /* Messbreite für Fließtext: 60–75 Zeichen je Zeile */
