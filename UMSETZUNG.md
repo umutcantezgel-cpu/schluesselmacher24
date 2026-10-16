@@ -1,3 +1,5 @@
+> Historisch: Dieses Dokument beschreibt den Stand vom 15.09.2026 (JSON-Backend ohne Anmeldung). Den aktuellen Stand beschreiben `README.md`, `_werkstatt/KERN.md` und `src/components/visual/README.md`.
+
 # SCHLÜSSELMACHER24 — Umsetzungsdokumentation
 
 Stand: 15.09.2026 · Grundlage: Projektleitfaden SCHLÜSSELMACHER24, Version 2.1
