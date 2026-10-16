@@ -25,6 +25,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { OptionCard } from '@/components/forms/option-card';
 import { QuantityInput } from '@/components/forms/controls';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphLaden } from '@/components/visual/glyphen/laden';
 import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
@@ -161,8 +162,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
   }
 
   return (
-    <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-      <div className="space-y-4 lg:col-span-8">
+    <div className="grid gap-10 pb-28 md:pb-0 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+      <div className="space-y-6 lg:col-span-8">
         <h2 className="text-title-sm font-semibold text-foreground">
           Positionen <span className="font-mono text-small font-normal tabular-nums text-foreground-muted">({positionen.length})</span>
         </h2>
@@ -174,130 +175,140 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
           </Alert>
         )}
 
-        {/* Positionen als Stückliste: Haarlinien statt Kartenstapel; ab sm im Zwölfer-Raster. */}
+        {/* Positionen als Stückliste: Haarlinien statt Kartenstapel. Ab sm im Zwölfer-Raster; mobil Bild links, dann Menge und Betrag nebeneinander. */}
         <ul className="border-t border-border">
           {positionen.map((position) =>
             position.art === 'code' ? (
               <li key={position.item.uid} className="border-b border-border py-6">
-                <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-4">
-                  {position.line && (
-                    <div className="hidden sm:col-span-2 sm:block">
-                      <ImagePlaceholder slot={position.line.productImage} compact />
-                    </div>
-                  )}
-
-                  <div className="min-w-0 sm:col-span-4 sm:col-start-3">
-                    <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
-                      <div className="min-w-0">
-                        <h3 className="text-title-sm font-semibold text-foreground">
-                          {position.line ? (
-                            <Link
-                              href={`/schluessel-nach-code/${position.line.slug}`}
-                              className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
-                            >
-                              {position.line.name}
-                            </Link>
-                          ) : (
-                            'Schlüssel nach Code'
-                          )}
-                        </h3>
-                        {position.line && (
-                          <p className="text-small text-foreground-muted">
-                            {istPlatzhalter(position.line.manufacturer) ? null : `${position.line.manufacturer} · `}
-                            {position.line.application} ·{' '}
-                            {position.line.keyType}
-                          </p>
-                        )}
-                      </div>
-                      <Badge tone="outline">Schlüssel nach Code</Badge>
-                    </div>
-
-                    <dl className="mt-3 space-y-1 text-small">
-                      <div className="flex flex-wrap gap-x-2">
-                        <dt className="font-semibold text-foreground-muted">Code:</dt>
-                        <dd className="font-mono font-semibold tabular-nums text-foreground">
-                          {position.item.code}
-                        </dd>
-                      </div>
-                      {position.item.photoRefs.length > 0 && (
-                        <div className="flex flex-wrap gap-x-2">
-                          <dt className="font-semibold text-foreground-muted">Fotos:</dt>
-                          <dd className="text-foreground">
-                            {position.item.photoRefs.length} Datei
-                            {position.item.photoRefs.length === 1 ? '' : 'en'} vermerkt
-                          </dd>
-                        </div>
-                      )}
-                      {position.item.note && (
-                        <div className="flex flex-wrap gap-x-2">
-                          <dt className="font-semibold text-foreground-muted">Anmerkung:</dt>
-                          <dd className="text-foreground">{position.item.note}</dd>
-                        </div>
-                      )}
-                    </dl>
-
-                    {position.line && !position.line.active && (
-                      <p className="mt-3 text-small font-semibold text-danger">
-                        Diese Codelinie ist derzeit nicht bestellbar.
-                      </p>
-                    )}
-                    {!position.line && (
-                      <p className="mt-3 text-small font-semibold text-danger">
-                        Diese Codelinie gibt es nicht mehr. Bitte entfernen Sie die Position.
-                      </p>
-                    )}
-
-                    <div className="mt-3">
-                      <Button
-                        variant="ghost"
-                        onClick={() => entfernen(position.item.uid)}
-                        className="px-0"
-                      >
-                        <GlyphPapierkorb size={16} />
-                        Position entfernen
-                        <span className="sr-only">: {position.line?.name ?? 'Schlüssel nach Code'}</span>
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-3 sm:col-start-7">
-                    <div className="flex items-center gap-2">
-                      <span className="text-small font-semibold text-foreground-muted">Stückzahl</span>
-                      {position.line && staffelHinweis(position.line) && (
-                        <InfoTip
-                          hint={{
-                            title: 'Preis nach Stückzahl',
-                            body: staffelHinweis(position.line) ?? '',
-                          }}
-                        />
-                      )}
-                    </div>
-                    <div className="mt-1.5">
-                      <QuantityInput
-                        value={position.item.qty}
-                        onChange={(wert) =>
-                          updateQty(
-                            position.item.uid,
-                            wert,
-                            position.line
-                              ? unitPriceForCodeLine(position.line, wert)
-                              : undefined,
-                          )
-                        }
-                        min={1}
-                        max={position.line?.maxQty ?? position.item.qty}
-                        label={`Stückzahl ${position.line?.name ?? 'Schlüssel nach Code'}`}
+                <div className="flex flex-col gap-4 sm:grid sm:grid-cols-12 sm:gap-x-4">
+                  <div className="flex gap-4 sm:contents">
+                    {/* Schlüsselprofil des Codes auf Sunken-Fläche; mobil 64 px breit links vom Titel. */}
+                    <div className="w-16 shrink-0 overflow-hidden rounded-lg bg-surface-sunken sm:col-span-2 sm:w-auto">
+                      <ImagePlaceholder
+                        slot={{
+                          motif: 'Schlüsselprofil zum Code',
+                          ratio: '1/1',
+                          visual: { generator: 'schluessel', params: { typ: 'zylinder', code: position.item.code } },
+                        }}
+                        frei
                       />
                     </div>
+
+                    <div className="min-w-0 flex-1 sm:col-span-4 sm:col-start-3">
+                      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                        <div className="min-w-0">
+                          <h3 className="text-title-sm font-semibold text-foreground">
+                            {position.line ? (
+                              <Link
+                                href={`/schluessel-nach-code/${position.line.slug}`}
+                                className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
+                              >
+                                {position.line.name}
+                              </Link>
+                            ) : (
+                              'Schlüssel nach Code'
+                            )}
+                          </h3>
+                          {position.line && (
+                            <p className="text-small text-foreground-muted">
+                              {istPlatzhalter(position.line.manufacturer) ? null : `${position.line.manufacturer} · `}
+                              {position.line.application} ·{' '}
+                              {position.line.keyType}
+                            </p>
+                          )}
+                        </div>
+                        <Badge tone="outline">Schlüssel nach Code</Badge>
+                      </div>
+
+                      <dl className="mt-3 space-y-1 text-small">
+                        <div className="flex flex-wrap gap-x-2">
+                          <dt className="font-semibold text-foreground-muted">Code:</dt>
+                          <dd className="font-mono font-semibold tabular-nums text-foreground">
+                            {position.item.code}
+                          </dd>
+                        </div>
+                        {position.item.photoRefs.length > 0 && (
+                          <div className="flex flex-wrap gap-x-2">
+                            <dt className="font-semibold text-foreground-muted">Fotos:</dt>
+                            <dd className="text-foreground">
+                              {position.item.photoRefs.length} Datei
+                              {position.item.photoRefs.length === 1 ? '' : 'en'} vermerkt
+                            </dd>
+                          </div>
+                        )}
+                        {position.item.note && (
+                          <div className="flex flex-wrap gap-x-2">
+                            <dt className="font-semibold text-foreground-muted">Anmerkung:</dt>
+                            <dd className="text-foreground">{position.item.note}</dd>
+                          </div>
+                        )}
+                      </dl>
+
+                      {position.line && !position.line.active && (
+                        <p className="mt-3 text-small font-semibold text-danger">
+                          Diese Codelinie ist derzeit nicht bestellbar.
+                        </p>
+                      )}
+                      {!position.line && (
+                        <p className="mt-3 text-small font-semibold text-danger">
+                          Diese Codelinie gibt es nicht mehr. Bitte entfernen Sie die Position.
+                        </p>
+                      )}
+                    </div>
                   </div>
 
-                  <div className="font-mono text-small tabular-nums sm:col-span-3 sm:text-right">
-                    <p className="text-foreground-muted">
-                      {formatCents(position.item.unitPriceCents)} je Stück
-                    </p>
-                    <p className="mt-1 text-title-sm font-semibold text-foreground">
-                      {formatCents(position.item.unitPriceCents * position.item.qty)}
-                    </p>
+                  <div className="flex items-end justify-between gap-4 sm:contents">
+                    <div className="sm:col-span-3 sm:col-start-7">
+                      <div className="flex items-center gap-2">
+                        <span className="text-small font-semibold text-foreground-muted">Stückzahl</span>
+                        {position.line && staffelHinweis(position.line) && (
+                          <InfoTip
+                            hint={{
+                              title: 'Preis nach Stückzahl',
+                              body: staffelHinweis(position.line) ?? '',
+                            }}
+                          />
+                        )}
+                      </div>
+                      <div className="mt-1.5">
+                        <QuantityInput
+                          value={position.item.qty}
+                          onChange={(wert) =>
+                            updateQty(
+                              position.item.uid,
+                              wert,
+                              position.line
+                                ? unitPriceForCodeLine(position.line, wert)
+                                : undefined,
+                            )
+                          }
+                          min={1}
+                          max={position.line?.maxQty ?? position.item.qty}
+                          label={`Stückzahl ${position.line?.name ?? 'Schlüssel nach Code'}`}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="text-right font-mono text-small tabular-nums sm:col-span-3 sm:col-start-10">
+                      <p key={position.item.unitPriceCents * position.item.qty} className="text-title-sm font-semibold text-foreground animate-schleier-ein">
+                        {formatCents(position.item.unitPriceCents * position.item.qty)}
+                      </p>
+                      <p className="text-caption text-foreground-muted">
+                        {formatCents(position.item.unitPriceCents)} je Stück
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-4 sm:col-start-3">
+                    <Button
+                      variant="ghost"
+                      onClick={() => entfernen(position.item.uid)}
+                      className="px-0 text-small"
+                    >
+                      <GlyphPapierkorb size={16} />
+                      Position entfernen
+                      <span className="sr-only">: {position.line?.name ?? 'Schlüssel nach Code'}</span>
+                    </Button>
                   </div>
                 </div>
               </li>
@@ -392,10 +403,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
             ),
           )}
         </ul>
-      </div>
 
-      {/* Versand und Summe */}
-      <div className="space-y-4 lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
+        {/* Versandart unter den Positionen: links ab lg, mobil nach der Stückliste */}
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
@@ -445,12 +454,33 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
           </CardBody>
         </Card>
 
+        <p className="text-small leading-relaxed text-foreground-muted">
+          Weiter einkaufen:{' '}
+          <Link
+            href="/schluessel-nach-code"
+            className="font-semibold text-primary hover:underline"
+          >
+            Schlüssel nach Code
+          </Link>{' '}
+          oder{' '}
+          <Link
+            href="/gleichschliessende-zylinder/konfigurator"
+            className="font-semibold text-primary hover:underline"
+          >
+            Zylinder-Konfigurator
+          </Link>
+          .
+        </p>
+      </div>
+
+      {/* Rechts ab lg nur Summe und Kasse */}
+      <div className="space-y-4 lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
         <Card>
           <CardHeader>
             <h2 className="text-title-sm font-semibold text-foreground">Summe</h2>
           </CardHeader>
           <CardBody>
-            {/* Schriftfeld: Beträge in Mono, Haarlinien zwischen den Zeilen. */}
+            {/* Schriftfeld: Beträge in Mono, Haarlinien zwischen den Zeilen. Wechselt der Wert, blendet er ein (B-20). */}
             <dl className="border-y border-border">
               <div className="flex items-baseline justify-between gap-4 py-3">
                 <dt className="text-small text-foreground-muted">Zwischensumme</dt>
@@ -462,13 +492,19 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                 <dt className="text-small text-foreground-muted">
                   Versand{gewaehlteVersandart ? ` (${gewaehlteVersandart.label})` : ''}
                 </dt>
-                <dd className="font-mono text-small font-semibold tabular-nums text-foreground">
+                <dd
+                  key={summen.shippingCents}
+                  className="animate-schleier-ein font-mono text-small font-semibold tabular-nums text-foreground"
+                >
                   {formatCents(summen.shippingCents)}
                 </dd>
               </div>
               <div className="flex items-baseline justify-between gap-4 border-t border-border py-4">
                 <dt className="font-semibold text-foreground">Gesamtsumme</dt>
-                <dd className="font-mono text-title font-semibold tabular-nums text-foreground">
+                <dd
+                  key={summen.totalCents}
+                  className="animate-schleier-ein font-mono text-title font-semibold tabular-nums text-foreground"
+                >
                   {formatCents(summen.totalCents)}
                 </dd>
               </div>
@@ -499,32 +535,44 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
               )}
             </div>
 
-            <div className="mt-5">
-              <Alert tone="info" title="Hinweis zur Preisberechnung">
+            {/* Hinweis als Zeile mit Glyphe, ohne Fläche */}
+            <p className="mt-4 flex items-start gap-2 text-small text-foreground-muted">
+              <GlyphInfo size={16} className="mt-0.5 shrink-0" />
+              <span>
+                <span className="font-semibold text-foreground">Hinweis zur Preisberechnung:</span>{' '}
                 Der endgültige Preis wird beim Absenden der Bestellung noch einmal auf unserem
                 Server berechnet. Maßgeblich sind die dort hinterlegten Preise.
-              </Alert>
-            </div>
+              </span>
+            </p>
           </CardBody>
         </Card>
+      </div>
 
-        <p className="text-small leading-relaxed text-foreground-muted">
-          Weiter einkaufen:{' '}
-          <Link
-            href="/schluessel-nach-code"
-            className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
-          >
-            Schlüssel nach Code
-          </Link>{' '}
-          oder{' '}
-          <Link
-            href="/gleichschliessende-zylinder/konfigurator"
-            className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
-          >
-            Zylinder-Konfigurator
-          </Link>
-          .
-        </p>
+      {/* Mobil eigene Leiste unten: Gesamtsumme und Kasse. Die globale Aktionsleiste blendet sich dann aus (globals.css). */}
+      <div
+        data-eigene-leiste
+        className="pb-safe-area fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface md:hidden"
+      >
+        <div className="shell flex min-h-touch-lg items-center justify-between gap-4 py-2">
+          <p className="text-small text-foreground-muted">
+            Gesamtsumme{' '}
+            <span
+              key={summen.totalCents}
+              className="animate-schleier-ein font-mono text-body font-semibold tabular-nums text-foreground"
+            >
+              {formatCents(summen.totalCents)}
+            </span>
+          </p>
+          {gewaehlteVersandart && !nichtVerfuegbar ? (
+            <ButtonLink href="/kasse" size="lg" pfeil>
+              Zur Kasse
+            </ButtonLink>
+          ) : (
+            <Button size="lg" disabled pfeil>
+              Zur Kasse
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -542,68 +590,72 @@ function StandardPositionKarte({
 }) {
   const { item, article } = position;
   return (
-    <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-4">
-      {article && (
-        <div className="hidden sm:col-span-2 sm:block">
-          <ImagePlaceholder slot={article.image} compact />
-        </div>
-      )}
-
-      <div className="min-w-0 sm:col-span-4 sm:col-start-3">
-        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
-          <h3 className="text-title-sm font-semibold text-foreground">
-            {article ? (
-              <Link
-                href={`/artikel/${article.slug}`}
-                className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
-              >
-                {article.name}
-              </Link>
-            ) : (
-              item.label
-            )}
-          </h3>
-          <Badge tone="outline">Artikel</Badge>
-        </div>
-
-        {!article && (
-          <p className="mt-3 text-small font-semibold text-danger">
-            Diesen Artikel gibt es nicht mehr. Bitte entfernen Sie die Position.
-          </p>
-        )}
-        {article?.example && (
-          <p className="mt-3 text-small font-semibold text-danger">
-            Beispielartikel können nicht bestellt werden. Bitte entfernen Sie die Position.
-          </p>
+    <div className="flex flex-col gap-4 sm:grid sm:grid-cols-12 sm:gap-x-4">
+      <div className="flex gap-4 sm:contents">
+        {article && (
+          <div className="w-16 shrink-0 sm:col-span-2 sm:w-auto">
+            <ImagePlaceholder slot={article.image} compact />
+          </div>
         )}
 
-        <div className="mt-3">
-          <Button variant="ghost" onClick={onRemove} className="px-0">
-            <GlyphPapierkorb size={16} />
-            Position entfernen
-            <span className="sr-only">: {article?.name ?? item.label}</span>
-          </Button>
+        <div className="min-w-0 flex-1 sm:col-span-4 sm:col-start-3">
+          <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+            <h3 className="text-title-sm font-semibold text-foreground">
+              {article ? (
+                <Link
+                  href={`/artikel/${article.slug}`}
+                  className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
+                >
+                  {article.name}
+                </Link>
+              ) : (
+                item.label
+              )}
+            </h3>
+            <Badge tone="outline">Artikel</Badge>
+          </div>
+
+          {!article && (
+            <p className="mt-3 text-small font-semibold text-danger">
+              Diesen Artikel gibt es nicht mehr. Bitte entfernen Sie die Position.
+            </p>
+          )}
+          {article?.example && (
+            <p className="mt-3 text-small font-semibold text-danger">
+              Beispielartikel können nicht bestellt werden. Bitte entfernen Sie die Position.
+            </p>
+          )}
         </div>
       </div>
 
-      <div className="sm:col-span-3 sm:col-start-7">
-        <span className="text-small font-semibold text-foreground-muted">Stückzahl</span>
-        <div className="mt-1.5">
-          <QuantityInput
-            value={item.qty}
-            onChange={onQty}
-            min={1}
-            max={article?.maxQty ?? item.qty}
-            label={`Stückzahl ${article?.name ?? item.label}`}
-          />
+      <div className="flex items-end justify-between gap-4 sm:contents">
+        <div className="sm:col-span-3 sm:col-start-7">
+          <span className="text-small font-semibold text-foreground-muted">Stückzahl</span>
+          <div className="mt-1.5">
+            <QuantityInput
+              value={item.qty}
+              onChange={onQty}
+              min={1}
+              max={article?.maxQty ?? item.qty}
+              label={`Stückzahl ${article?.name ?? item.label}`}
+            />
+          </div>
+        </div>
+
+        <div className="text-right font-mono text-small tabular-nums sm:col-span-3 sm:col-start-10">
+          <p key={item.unitPriceCents * item.qty} className="animate-schleier-ein text-title-sm font-semibold text-foreground">
+            {formatCents(item.unitPriceCents * item.qty)}
+          </p>
+          <p className="text-caption text-foreground-muted">{formatCents(item.unitPriceCents)} je Stück</p>
         </div>
       </div>
 
-      <div className="font-mono text-small tabular-nums sm:col-span-3 sm:text-right">
-        <p className="text-foreground-muted">{formatCents(item.unitPriceCents)} je Stück</p>
-        <p className="mt-1 text-title-sm font-semibold text-foreground">
-          {formatCents(item.unitPriceCents * item.qty)}
-        </p>
+      <div className="sm:col-span-4 sm:col-start-3">
+        <Button variant="ghost" onClick={onRemove} className="px-0 text-small">
+          <GlyphPapierkorb size={16} />
+          Position entfernen
+          <span className="sr-only">: {article?.name ?? item.label}</span>
+        </Button>
       </div>
     </div>
   );

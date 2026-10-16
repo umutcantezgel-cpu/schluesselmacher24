@@ -605,36 +605,29 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
         {/* Schritt 5 — Zusammenfassung */}
         {flow.step?.id === 'zusammenfassung' && (
           <div className="space-y-6">
+            {/* Je Position die Maßzeichnung, damit die Maße vor dem Bestellen sichtbar geprüft werden;
+                die Zahlen stehen vollständig im Schriftfeld darunter. */}
             <div>
-              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Zylinder</p>
-              <ul className="mt-2 border-t border-border">
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Ihre Zylinder</p>
+              <ul className="mt-2 grid gap-x-gutter border-t border-border sm:grid-cols-2 lg:grid-cols-3">
                 {data.items.map((item, index) => (
-                  <li
-                    key={item.uid}
-                    className="grid gap-4 border-b border-border py-5 sm:grid-cols-12 sm:items-center"
-                  >
-                    <div className="sm:col-span-7">
-                      <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                        Position {index + 1}
-                      </p>
-                      <p className="mt-1 text-body text-foreground">{breakdown.lines[index]?.label}</p>
-                      <p className="mt-1 font-mono text-small tabular-nums text-foreground">
-                        {item.qty} Stück · {formatCents(positionTotalCents(catalog, item))}
-                      </p>
-                    </div>
+                  <li key={item.uid} className="border-b border-border py-4">
+                    <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                      Position {index + 1}
+                    </p>
                     <ZylinderMassLive
                       form={item.form}
                       aussen={item.measureAMm}
                       innen={item.measureBMm}
                       name={catalog.forms.find((f) => f.id === item.form)?.label ?? ''}
-                      className="sm:col-span-5 sm:w-60 sm:justify-self-end"
+                      className="mt-2"
                     />
                   </li>
                 ))}
               </ul>
             </div>
 
-            <SummaryList sections={summary.slice(1)} variante="schriftfeld" hervorheben="Gesamt" />
+            <SummaryList sections={summary} variante="schriftfeld" hervorheben="Gesamt" />
 
             <p className="flex items-start gap-3 border-t border-border pt-4 text-small leading-relaxed text-foreground-muted">
               <GlyphWarnung size={18} className="mt-0.5 shrink-0 text-warning" />

@@ -41,7 +41,6 @@ export default async function KassePage() {
         eyebrow="Direkt kaufen"
         art="arbeit"
         title="Kasse"
-        lead="Bitte geben Sie Ihre Kontakt- und Lieferdaten an. Danach sehen Sie die vollständige Bestellübersicht."
         crumbs={[
           { href: '/warenkorb', label: 'Warenkorb' },
           { href: '/kasse', label: 'Kasse' },
