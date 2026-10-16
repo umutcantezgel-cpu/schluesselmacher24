@@ -15,6 +15,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'autoschluessel';
@@ -434,7 +435,126 @@ export default async function AutoschluesselHubPage() {
         </div>
       </Section>
 
-      {/* Fahrzeuge */}
+
+
+      {/* Expanded Content Section & Calculator */}
+      <Section className="py-16 md:py-24 lg:py-32 bg-[oklch(0.988_0.002_260)]">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
+          <div>
+            <SectionHeading
+              eyebrow="Tiefgreifende Methodik"
+              title="Unsere architektonische Herangehensweise bei Autoschlüsseln"
+              lead="Die Anfertigung und Programmierung moderner Fahrzeugschlüssel erfordert höchste Präzision, fundiertes Fachwissen und modernste Diagnosegeräte. Hier erklären wir im Detail, wie wir vorgehen und warum Qualität für uns an erster Stelle steht."
+            />
+            <div className="prose-sm24 mt-5 text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+              <p>
+                Ein moderner Autoschlüssel ist längst kein einfaches Stück Metall mehr, sondern ein hochkomplexes elektronisches System. Er kommuniziert über verschlüsselte Signale mit der Wegfahrsperre und der zentralen Steuereinheit des Fahrzeugs. Wenn Sie einen neuen Schlüssel benötigen, sei es als Ersatz oder weil der alte verloren ging, ist ein tiefgreifendes Verständnis der jeweiligen Fahrzeugarchitektur unerlässlich.
+              </p>
+              <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Der mechanische Fräsprozess: Präzision im Mikrometerbereich</h3>
+              <p>
+                Alles beginnt mit dem mechanischen Rohling. Wir verwenden modernste CNC-gesteuerte Schlüsselfräsmaschinen, die den Originalschlüssel nicht einfach abtasten, sondern auf Basis der werksseitigen Schließungscodes arbeiten. Das bedeutet, dass die Kopie oft präziser ist als Ihr abgenutzter Originalschlüssel. Verschleiß wird herausgerechnet, sodass der neue Schlüssel perfekt im Zylinder gleitet.
+              </p>
+              <p>
+                Dieser Vorgang erfordert spezialisierte Fräser und eine regelmäßige Kalibrierung unserer Maschinen, um Toleranzen im Mikrometerbereich einzuhalten. Nur so können wir sicherstellen, dass das Türschloss und das Zündschloss mechanisch geschont werden.
+              </p>
+              <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Die elektronische Symbiose: Transponder-Programmierung</h3>
+              <p>
+                Der Fräsprozess ist jedoch nur die halbe Miete. Der entscheidende Schritt ist die Integration in das Sicherheitsökosystem des Fahrzeugs. Jedes moderne Fahrzeug verfügt über eine elektronische Wegfahrsperre. Der Schlüssel enthält einen Transponderchip, der beim Einführen in das Zündschloss oder bei Keyless-Go-Systemen bereits bei der Annäherung über ein elektromagnetisches Feld abgefragt wird.
+              </p>
+              <p>
+                Die Programmierung dieses Chips erfordert eine direkte Verbindung zur OBD-II-Schnittstelle (On-Board-Diagnostics) des Fahrzeugs. Mit speziellen Diagnosegeräten loggen wir uns in das Steuergerät ein. Hierbei muss in vielen Fällen ein fahrzeugspezifischer PIN-Code generiert oder ausgelesen werden. Wir überschreiben die bestehenden Codes nicht einfach, sondern fügen den neuen Schlüssel als autorisierte Komponente hinzu.
+              </p>
+              <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Zusätzliche Sicherheitsmaßnahmen und Diagnose</h3>
+              <p>
+                Oft ist es auch notwendig, verloren gegangene Schlüssel aus dem System zu löschen, um zu verhindern, dass Dritte unbefugten Zugriff auf Ihr Fahrzeug erhalten. Diesen Service führen wir routinemäßig durch. Wir prüfen zudem die Signalstärke der Funkfernbedienung und den Status der Batterie, um eine langfristige und zuverlässige Funktion zu gewährleisten.
+              </p>
+            </div>
+
+            <div className="mt-12">
+              <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mb-6">Vergleichsmatrix: Schlüsseltechnologien</h3>
+              <div className="overflow-x-auto rounded-xl border border-[oklch(0.89_0.008_260/0.55)] shadow-[0_4px_12px_-2px_oklch(0.16_0.02_260/0.03)]">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-[oklch(0.968_0.004_260)] border-b border-[oklch(0.89_0.008_260/0.55)]">
+                    <tr>
+                      <th className="p-4 font-semibold text-[oklch(0.16_0.02_260)]">Technologie</th>
+                      <th className="p-4 font-semibold text-[oklch(0.16_0.02_260)]">Mechanik</th>
+                      <th className="p-4 font-semibold text-[oklch(0.16_0.02_260)]">Elektronik</th>
+                      <th className="p-4 font-semibold text-[oklch(0.16_0.02_260)]">Programmierung vor Ort</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)] text-[oklch(0.32_0.02_260)]">
+                    <tr className="bg-[oklch(0.988_0.002_260)]">
+                      <td className="p-4 font-medium">Standard Profil</td>
+                      <td className="p-4">Einfache Fräsung</td>
+                      <td className="p-4">Kein Transponder</td>
+                      <td className="p-4">Nein (selten)</td>
+                    </tr>
+                    <tr className="bg-[oklch(0.988_0.002_260)]">
+                      <td className="p-4 font-medium">Innenbahn / Laser</td>
+                      <td className="p-4">CNC-gesteuert</td>
+                      <td className="p-4">Festcode Transponder</td>
+                      <td className="p-4">Teilweise</td>
+                    </tr>
+                    <tr className="bg-[oklch(0.988_0.002_260)]">
+                      <td className="p-4 font-medium">Krypto-Transponder</td>
+                      <td className="p-4">CNC-gesteuert</td>
+                      <td className="p-4">Rollcode System</td>
+                      <td className="p-4">Zwingend erforderlich</td>
+                    </tr>
+                    <tr className="bg-[oklch(0.988_0.002_260)]">
+                      <td className="p-4 font-medium">Smart Key / Keyless Go</td>
+                      <td className="p-4">Not-Bart (versteckt)</td>
+                      <td className="p-4">Komplexes RFID-System</td>
+                      <td className="p-4">Zwingend erforderlich</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="mt-12">
+              <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mb-6">Erweiterte Fach-FAQ</h3>
+              <div className="space-y-6">
+                <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+                  <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Warum muss das Fahrzeug bei modernen Schlüsseln zwingend vor Ort sein?</h4>
+                  <p className="mt-2 text-[14px] text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Bei modernen Wegfahrsperren mit Wechselcode-Systemen reicht es nicht aus, den Chip des Schlüssels zu klonen. Das Fahrzeug erwartet bei jedem Startvorgang eine andere, mathematisch berechnete Antwortfolge. Um den neuen Schlüssel in diesen Zyklus einzubinden, müssen wir über die OBD-Schnittstelle direkt mit dem Motorsteuergerät (ECU) oder dem Komfortsteuergerät kommunizieren. Dies stellt sicher, dass die kryptografische Synchronisation korrekt abläuft.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+                  <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Was bedeutet &quot;All Keys Lost&quot; (AKL) und wie gehen Sie vor?</h4>
+                  <p className="mt-2 text-[14px] text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Eine &quot;All Keys Lost&quot;-Situation tritt ein, wenn kein funktionierender Schlüssel mehr vorhanden ist. Das bedeutet, dass wir keine Datenlage zum Klonen haben. Wir müssen zunächst über den Fahrzeughersteller oder mechanisches Auslesen des Schließzylinders (mittels Lishi-Tool) den mechanischen Code ermitteln. Anschließend wird das Steuergerät oft in einen speziellen Lernmodus versetzt, was zeitaufwändiger ist und zusätzliche Sicherheitsverifizierungen des Besitzers erfordert.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+                  <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Welche Datenquellen nutzen Sie für die Fräscodes?</h4>
+                  <p className="mt-2 text-[14px] text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Wir greifen auf lizenzierte, internationale Datenbanken wie Instacode zurück, die Herstellerspezifikationen enthalten. Wenn Sie uns die Schlüsselnummer (oft auf einem Plastikschildchen oder im Serviceheft) nennen, können wir den perfekten Original-Zuschnitt ohne Abtastung anfertigen. Alternativ dekodieren wir ein Foto Ihres alten Schlüssels algorithmisch.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+                  <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Sind Ersatzschlüssel vom Fachbetrieb genauso sicher wie vom Hersteller?</h4>
+                  <p className="mt-2 text-[14px] text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Ja, absolut. Wir verwenden oftmals exakt dieselben OEM-Bauteile oder hochwertige Aftermarket-Platinen mit identischer Verschlüsselungsstärke. Die Programmierung erfolgt nach den Herstellervorgaben, und das Sicherheitsniveau der Wegfahrsperre bleibt zu 100% erhalten. Ein unbefugtes Starten ist ausgeschlossen.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+                  <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie lange dauert der gesamte Prozess in der Regel?</h4>
+                  <p className="mt-2 text-[14px] text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Wenn wir den Rohling auf Lager haben, dauert der mechanische Zuschnitt etwa 15 Minuten. Die OBD-Programmierung nimmt je nach Fahrzeug und Sicherheitsstruktur weitere 20 bis 45 Minuten in Anspruch. Rechnen Sie im Schnitt mit etwa einer Stunde für den kompletten Vor-Ort-Service bei uns.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="sticky top-8">
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+{/* Fahrzeuge */}
       <Section tone="muted" tight>
         <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14">
           <div>
