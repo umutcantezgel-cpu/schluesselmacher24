@@ -244,7 +244,7 @@ export default async function HomePage() {
         <AreaScope area="autoschluessel">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
             <div className="flex flex-col lg:col-span-5">
-              <div className="lg:sticky lg:top-28 lg:self-start">
+              <div className="lg:sticky lg:top-28">
                 <SectionHeading
                   id="ablauf-titel"
                   nummer="02"
@@ -276,10 +276,12 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <ol className="relative lg:col-span-7">
+            {/* Ab lg verteilen sich die Schritte über die volle Höhe der Zeile: der letzte Schritt steht mit der Unterkante der Funkschlüssel-Grafik bündig */}
+            <ol className="relative lg:col-span-7 lg:flex lg:flex-col lg:justify-between">
               {/* Schiene und Fortschritt: der Strich füllt sich, während die Schritte vorbeiziehen */}
-              <span aria-hidden className="absolute bottom-6 left-5 top-6 w-px bg-border-strong" />
-              <span aria-hidden className="sm24-scrub-y absolute bottom-6 left-5 top-6 w-px bg-area" />
+              {/* Die Schiene endet unter dem letzten Schritt im Kreis, nicht darunter */}
+              <span aria-hidden className="absolute bottom-11 left-5 top-6 w-px bg-border-strong" />
+              <span aria-hidden className="sm24-scrub-y absolute bottom-11 left-5 top-6 w-px bg-area" />
               {carKeySteps.map((step, index) => (
                 <li key={step.title} className="relative flex gap-6 pb-10 last:pb-0">
                   <span className="sm24-scrub-marke relative z-raised flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-area bg-surface font-mono text-small font-semibold tabular-nums text-area-strong">

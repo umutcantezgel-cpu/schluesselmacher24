@@ -29,6 +29,7 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 import { GlyphPlus } from '@/components/visual/glyphen/plus';
+import { GlyphWarnung } from '@/components/visual/glyphen/warnung';
 import { ZylinderMassLive } from '@/components/visual/interaktiv/zylinder-mass-live';
 
 const FLOW_ID = 'zylinder-konfigurator';
@@ -398,7 +399,10 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
               <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 Laufende Summe
               </dt>
-              <dd className="mt-1 font-mono text-title font-semibold tabular-nums text-foreground">
+              <dd
+                key={breakdown.totalCents}
+                className="mt-1 font-mono text-title font-semibold tabular-nums text-foreground animate-schleier-ein"
+              >
                 {formatCents(breakdown.totalCents)}
               </dd>
             </div>
@@ -414,19 +418,12 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
           <div className="space-y-4">
             <Card variant="muted">
               <CardBody>
-                <div className="grid gap-5 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-                  <div className="lg:col-span-7">
-                    <h3 className="text-body font-semibold text-foreground">
-                      {catalog.measuringInfo.title}
-                    </h3>
-                    <p className="mt-2 text-small leading-relaxed text-foreground-muted">
-                      {catalog.measuringInfo.body}
-                    </p>
-                  </div>
-                  <div className="lg:col-span-5">
-                    <ImagePlaceholder slot={catalog.measuringFigure} />
-                  </div>
-                </div>
+                <h3 className="text-body font-semibold text-foreground">
+                  {catalog.measuringInfo.title}
+                </h3>
+                <p className="mt-2 text-small leading-relaxed text-foreground-muted">
+                  {catalog.measuringInfo.body}
+                </p>
               </CardBody>
             </Card>
 
@@ -607,14 +604,47 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
 
         {/* Schritt 5 — Zusammenfassung */}
         {flow.step?.id === 'zusammenfassung' && (
-          <div className="space-y-5">
-            <SummaryList sections={summary} />
+          <div className="space-y-6">
+            <div>
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Zylinder</p>
+              <ul className="mt-2 border-t border-border">
+                {data.items.map((item, index) => (
+                  <li
+                    key={item.uid}
+                    className="grid gap-4 border-b border-border py-5 sm:grid-cols-12 sm:items-center"
+                  >
+                    <div className="sm:col-span-7">
+                      <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                        Position {index + 1}
+                      </p>
+                      <p className="mt-1 text-body text-foreground">{breakdown.lines[index]?.label}</p>
+                      <p className="mt-1 font-mono text-small tabular-nums text-foreground">
+                        {item.qty} Stück · {formatCents(positionTotalCents(catalog, item))}
+                      </p>
+                    </div>
+                    <ZylinderMassLive
+                      form={item.form}
+                      aussen={item.measureAMm}
+                      innen={item.measureBMm}
+                      name={catalog.forms.find((f) => f.id === item.form)?.label ?? ''}
+                      className="sm:col-span-5 sm:w-60 sm:justify-self-end"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-            <Alert tone="warning" title="Anfertigung nach Ihren Maßen">
-              Die Zylinder werden nach den hier angegebenen Maßen gefertigt. Bitte prüfen Sie Maß A
-              und Maß B jeder Position, bevor Sie fortfahren. Änderungen sind über die
-              Schrittleiste jederzeit möglich.
-            </Alert>
+            <SummaryList sections={summary.slice(1)} variante="schriftfeld" hervorheben="Gesamt" />
+
+            <p className="flex items-start gap-3 border-t border-border pt-4 text-small leading-relaxed text-foreground-muted">
+              <GlyphWarnung size={18} className="mt-0.5 shrink-0 text-warning" />
+              <span>
+                <span className="font-semibold text-foreground">Anfertigung nach Ihren Maßen.</span>{' '}
+                Die Zylinder werden nach den hier angegebenen Maßen gefertigt. Bitte prüfen Sie Maß A
+                und Maß B jeder Position, bevor Sie fortfahren. Änderungen sind über die
+                Schrittleiste jederzeit möglich.
+              </span>
+            </p>
 
             <div className="flex flex-wrap gap-3">
               <Button variant="outline" size="md" onClick={() => flow.goTo('zylinder')}>
@@ -723,8 +753,8 @@ function PositionCard({
             <InfoTip hint={catalog.measuringInfo} />
           </div>
 
-          <div className="mt-3 grid gap-4 lg:grid-cols-12 lg:items-start">
-            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          <div className="mt-3 grid gap-4 lg:grid-cols-12">
+            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
               <Field
                 label={form.measureLabels.a}
                 hint={`${formatMillimeter(form.minMm)} bis ${formatMillimeter(form.maxMm)}`}
@@ -778,7 +808,7 @@ function PositionCard({
 
             {/* Foto vor Zeichnung (K-008): ohne Messfoto folgt die Maßzeichnung live den Maßen (B-17).
                 Neben den Feldern erst ab lg; darunter in voller Breite, sonst wird die Schrift zu klein. */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-7 lg:row-span-2">
               {measureFigure.bild ? (
                 <ImagePlaceholder slot={measureFigure} compact />
               ) : (
@@ -790,15 +820,15 @@ function PositionCard({
                 />
               )}
             </div>
-          </div>
 
-          <p className="mt-3 text-small leading-relaxed text-foreground-muted">
+            <p className="text-small leading-relaxed text-foreground-muted lg:col-span-5">
             Gemessen wird ab Mitte der Stulpschraube — Maß A nach außen
             {form.measures === 'beide' ? ', Maß B nach innen' : ''}. Gesamtlänge dieser Position:{' '}
             {formatMillimeter(item.measureAMm + (item.measureBMm ?? 0))}. Bis{' '}
             {formatMillimeter(form.baseLengthMm)} gilt der Grundpreis, darüber kommen{' '}
             {formatCents(form.lengthSurchargeCents)} je angefangene 5 mm hinzu.
-          </p>
+            </p>
+          </div>
         </div>
 
         {/* Funktion */}

@@ -9,6 +9,7 @@ import { cn } from '@/lib/cn';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
@@ -18,10 +19,10 @@ import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { motionStyle } from '@/components/visual/motion/motion-style';
 import { SCHLUESSELARTEN_REIHE } from '@/components/autoschluessel/schluesselarten-reihe';
 import {
-  KeyKindBadges,
   KEY_KIND_HINT,
   keyKindDescription,
   keyKindLabel,
+  keyKindShortLabel,
 } from '@/components/autoschluessel/key-kinds';
 import {
   BaujahrFeld,
@@ -241,17 +242,26 @@ export default async function ModelPage(props: PageProps) {
         }
       >
         <div className="flex flex-wrap items-center gap-3 border-t border-border pt-6">
-          <div className="flex flex-wrap items-center gap-1.5">
-            <KeyKindBadges kinds={model.keyKinds} />
-            <InfoTip hint={KEY_KIND_HINT} />
-          </div>
+          {/* Der ⓘ gehört zum letzten Chip: Chip und ⓘ brechen gemeinsam um, nie allein. */}
+          <ul className="flex flex-wrap items-center gap-1.5">
+            {model.keyKinds.length > 0 ? (
+              model.keyKinds.map((kind, index) => (
+                <li key={kind} className="inline-flex items-center gap-1.5">
+                  <Badge tone="outline">{keyKindShortLabel(kind)}</Badge>
+                  {index === model.keyKinds.length - 1 && <InfoTip hint={KEY_KIND_HINT} />}
+                </li>
+              ))
+            ) : (
+              <li className="text-small text-foreground-muted">Schlüsselarten noch nicht hinterlegt</li>
+            )}
+          </ul>
           {erfasst && <BaujahrFeld years={years} />}
           <OnSiteBadge required={model.requiresVehicleOnSite} />
         </div>
       </PageHeader>
 
-      {/* Hinterlegte Angaben */}
-      <Section>
+      {/* Hinterlegte Angaben: knapper Abstand nach unten, damit die Lücke zu „02“ dem Takt der Kopfkante folgt (D01). */}
+      <Section className="pb-section-tight">
         <div className="lg:grid lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:col-span-8">
             <SectionHeading
@@ -431,9 +441,11 @@ export default async function ModelPage(props: PageProps) {
           </div>
 
           <nav aria-label="Weiterführende Seiten" className="lg:col-span-5">
-            <h2 className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-              Passend dazu
-            </h2>
+            <p className="eyebrow">
+              <span className="text-foreground-muted tabular-nums">06</span>
+              Weiterlesen
+            </p>
+            <h2 className="mt-3 text-title-sm font-semibold text-foreground">Passend dazu</h2>
             <ul className="mt-4 divide-y divide-border border-y border-border">
               {[
                 { href: '/autoschluessel/nachmachen', label: 'Autoschlüssel nachmachen' },

@@ -63,20 +63,26 @@ export default async function CylinderConfiguratorPage() {
 
       {/* Zusatzabstand, damit die feste Ablauf-Navigation nichts verdeckt. */}
       <Section tone="muted" tight className="pb-28 md:pb-14">
-        <h2 className="text-title-sm font-semibold text-foreground">Wenn Sie vorher etwas nachlesen möchten</h2>
-        <ul className="mt-5 border-t border-border">
+        <div>
+          <p className="eyebrow">
+            <span className="text-foreground-muted tabular-nums">02</span>
+            Weiterlesen
+          </p>
+          <h2 className="mt-3 text-title font-bold text-foreground">Wenn Sie vorher etwas nachlesen möchten</h2>
+        </div>
+        <ul className="mt-8 border-t border-border">
           {RELATED_LINKS.map((link) => (
             <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
-                className="group flex min-h-touch items-center justify-between gap-4 py-5 transition-colors duration-quick hover:text-primary"
+                className="group flex min-h-touch-lg items-center justify-between gap-4 py-5 transition-colors duration-quick hover:text-primary"
               >
-                <span className="text-small font-semibold text-foreground group-hover:text-primary">
+                <span className="text-title-sm font-semibold text-foreground group-hover:text-primary">
                   {link.label}
                 </span>
                 <GlyphPfeilRechts
-                  size={16}
-                  className="shrink-0 text-foreground-muted transition-transform duration-quick group-hover:translate-x-1"
+                  size={18}
+                  className="shrink-0 text-foreground-muted transition-transform duration-quick zeiger:group-hover:translate-x-1"
                 />
               </Link>
             </li>

@@ -97,8 +97,13 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
 
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-          {/* Erklärung und Angaben; die Bestellung steht mobil davor (Live-Schlüssel = Produktbild) */}
-          <div className="lg:col-span-7">
+          {/* Bestellung steht im DOM zuerst: mobil oben, ab lg rechts. Lese- und Fokusfolge entsprechen der Sichtfolge. */}
+          <div className="lg:sticky lg:top-24 lg:col-span-5 lg:col-start-8 lg:row-start-1">
+            <BestellFormular line={line} />
+          </div>
+
+          {/* Erklärung, Angaben und Passende Seiten: ab lg links, füllen die Spalte unter dem Kopf */}
+          <div className="lg:col-span-7 lg:col-start-1 lg:row-start-1">
             <div>
               <h2 className="text-title font-semibold text-foreground">
                 Was Sie erhalten
@@ -188,48 +193,39 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
                 .
               </p>
             </Alert>
-          </div>
 
-          {/* Bestellung: mobil zuerst (order-first), ab lg rechts neben der Erklärung */}
-          <div className="order-first lg:order-none lg:sticky lg:top-24 lg:col-span-5">
-            <BestellFormular line={line} />
+            {/* Stückliste mit Haarlinien: die ganze Zeile ist der Link */}
+            <div className="mt-12">
+              <SectionHeading
+                nummer="01"
+                eyebrow="Weiter im Bereich"
+                title="Passende Seiten zu dieser Codelinie"
+              />
+
+              <ol className="mt-6 border-t border-border">
+                {links.map((link, index) => (
+                  <li key={link.href} className="border-b border-border">
+                    <Link
+                      href={link.href}
+                      className="group flex min-h-touch items-center gap-4 py-5 transition-colors duration-quick ease-standard sm:gap-6"
+                    >
+                      <span className="w-6 shrink-0 font-mono text-caption tabular-nums text-foreground-muted sm:w-8">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className="min-w-0 flex-1 text-title-sm font-semibold text-foreground group-hover:text-primary">
+                        {link.label}
+                      </span>
+                      <GlyphPfeilRechts
+                        size={18}
+                        className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-hover:translate-x-1 group-hover:text-primary"
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </div>
-      </Section>
-
-      <Section tone="muted" tight>
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
-          <SectionHeading
-            className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start"
-            nummer="01"
-            eyebrow="Weiter im Bereich"
-            title="Passende Seiten zu dieser Codelinie"
-          />
-
-          {/* Stückliste mit Haarlinien: die ganze Zeile ist der Link */}
-          <ol className="border-t border-border lg:col-span-7">
-            {links.map((link, index) => (
-              <li key={link.href} className="border-b border-border">
-                <Link
-                  href={link.href}
-                  className="group flex min-h-touch items-center gap-4 py-5 transition-colors duration-quick ease-standard sm:gap-6"
-                >
-                  <span className="w-6 shrink-0 font-mono text-caption tabular-nums text-foreground-muted sm:w-8">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className="min-w-0 flex-1 text-title-sm font-semibold text-foreground group-hover:text-primary">
-                    {link.label}
-                  </span>
-                  <GlyphPfeilRechts
-                    size={18}
-                    className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-hover:translate-x-1 group-hover:text-primary"
-                  />
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </div>
-
       </Section>
     </>
   );
