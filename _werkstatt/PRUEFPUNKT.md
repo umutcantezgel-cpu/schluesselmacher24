@@ -1,18 +1,17 @@
 # Prüfpunkt
 
-- **Etappe:** E2 Etappentor, Anlauf 2 (letzter nach L3); parallel Welle E3-B.
-- **Laufend:** Workflow `wf_9e03120d-1e3` (Skript `~/.claude/projects/…/workflows/scripts/e2-tor-anlauf-2-und-welle-e3b-neu-wf_9e03120d-1e3.js`; Vorlauf `wf_350555d8-5f0` brach wegen /dev/null ab, D-021):
-  1. E2-PRUEFER-03, Schritte 1–3: Bestand und Build-Gate, danach Neustart von Port 3000.
-  2. Schritte 4–7: Messfenster für `/`, Bildsatz `_werkstatt/bilder/referenz-2/`, Einzelbilder B-01 nach Animationszeit.
-  3. Sichtabnahme E2-L-07b durch einen frischen Opus-Agenten, Bericht `_werkstatt/berichte/E2-L-07-sichtabnahme-2.md`.
-  4. Parallel E3-BAUMEISTER-04, -05 und -06, je mit Prüfung und bis zu 2 Reparaturen, sowie E2-PRUEFER-03, Schritte 8–9 (Funktionsliste und Ergebnis).
+- **Etappe:** E4 (Hauptansichten). Das Etappentor E2 ist nach zwei Anläufen nicht bestanden (7,0, D-022); die Befunde sind mit E4-L-16 umgesetzt (8dc1538, D-024).
+- **Laufend:**
+  1. Workflow `wf_f448236a-3de` (Skript `~/.claude/projects/…/workflows/scripts/e3-b07-und-kundschaft-welle-c-wf_f448236a-3de.js`): E3-BAUMEISTER-07 (`/autoschluessel`) in Reparatur oder Prüfung; die vier Kundschafter sind fertig (Bericht `_werkstatt/berichte/E4-KUNDSCHAFT-welle-c.md`).
+  2. Workflow `wf_2c413c54-12a` (Skript `…/welle-c-e4-b08-bis-b11-wf_2c413c54-12a.js`): Welle C mit E4-BAUMEISTER-08 bis -11, 3 Plätze, je Bau, Prüfung und bis zu 2 Reparaturen.
 - **Danach:**
-  - Tor bestanden (≥ 8): Welle E3-B abnehmen, dann E3-BAUMEISTER-07 (`/autoschluessel`) mit der Referenz als Muster.
-  - Tor nicht bestanden: Lücke als offener Punkt in PLAN.md (L3), Befunde als Pakete in E4; die Arbeit geht weiter.
-  - Danach E4 (Hauptansichten).
+  - B-07 abnehmen und committen (nur `src/app/(site)/autoschluessel/page.tsx`).
+  - Welle C je Paket abnehmen, eigene Bildkontrolle, Commit je Paket, Build-Gate, Push.
+  - Pakete der Welle D schreiben: B-12 Ratgeber, B-13 Zylinder-Konfigurator, B-14 Warenkorb, B-15 Kasse (Kundschaft zuerst).
+  - Parallel als Orchestrator: L-11 Seitenwechsel, L-07 Leistung (JS-Menge mobil).
 - **Bei Abbruch:**
-  - `Workflow({scriptPath, resumeFromRunId: "wf_9e03120d-1e3"})`.
+  - `Workflow({scriptPath, resumeFromRunId})` für den jeweiligen Lauf.
   - Server: `server.sh start` (Port 3000); Port 3100 mit `cd /root/sm24-e0 && SM24_DATA=json nohup npx next start -p 3100`; Port 3001 mit `SM24_DATA=json nohup npx next dev -p 3001`.
   - `/tmp/sm24-messfenster.lock` ist verwaist, wenn kein Prüfer läuft.
-- **Hinweis:** AGENTS.md vor jedem Commit zurücknehmen (D-007).
-- **Letzter grüner Stand:** 2b69987. Typprüfung 0, Linter sauber, 45 Testdateien mit 1002 Tests grün, Logikwächter 0 abweichend.
+- **Hinweis:** AGENTS.md vor jedem Commit zurücknehmen (D-007). Nie Dateien unter /dev anfassen (D-021).
+- **Letzter grüner Stand:** 8dc1538. Typprüfung 0, Linter 0, 46 Testdateien mit 1008 Tests grün, Logikwächter 0 abweichend.

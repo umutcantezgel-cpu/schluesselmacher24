@@ -8,3 +8,6 @@ Vorschläge für Texte außerhalb der Mikrotexte. Nichts davon ist eingebaut; du
 | Unterzeile im Kopf (`content/seo.json` → `subline`, Vorgabe in `src/lib/data/defaults/content.ts`) | „Dazu Schlüssel, Schließanlagen, Zutrittslösungen und Sicherheitstechnik aus einer Hand.“ | „Dazu Schlüssel nach Code und Vorlage, Schließanlagen, Zutrittslösungen und Sicherheitstechnik – in der eigenen Werkstatt geprüft.“ | „aus einer Hand“ ist eine Floskel; die Leitidee verlangt „bemaßt statt behauptet“. |
 | Abschnitt 01 (`src/app/(site)/page.tsx`) | „Wobei können wir helfen?“ | „Acht Bereiche, je ein klarer Ablauf“ | Eine Frage als Überschrift wirkt generisch; die Zahl ordnet ein. |
 
+## Modellseite (`/autoschluessel/marken/[make]/[model]`)
+- **Doppelte Verweise:** „Andere {Marke}-Modelle“ (Abschluss) und „Alle {Marke}-Modelle“ (Passend dazu) führen auf dieselbe Seite. Vorschlag: den zweiten Verweis streichen oder durch „Autoschlüssel-Leistungen im Überblick“ (`/autoschluessel`) ersetzen.
+

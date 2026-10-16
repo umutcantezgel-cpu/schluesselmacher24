@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 2/6 · Etappentor Anlauf 2 läuft, Welle E3-B im Bau · Pflicht 30/71 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Typprüfung 0, Linter 0, 1002/1002 Tests, Logikwächter gleich, Build 198/198 in Anlauf 1) · Nächster Schritt: Ergebnis von Anlauf 2 und Welle E3-B abnehmen, dann E3-BAUMEISTER-07
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 4/6 · Welle C (E4-B-08 bis -11) im Bau, E3-B-07 in Prüfung · Pflicht 35/72 · Kür 0/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (8dc1538: Typprüfung 0, Linter 0, 1008/1008 Tests, Logikwächter gleich) · Nächster Schritt: B-07 und Welle C abnehmen, Pakete Welle D schreiben
 
 # Status des Gestaltungslaufs
 
