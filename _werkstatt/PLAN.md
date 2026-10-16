@@ -130,5 +130,9 @@ Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabna
 - **Kapazität:** 55 Haiku-Pakete ÷ (4 Plätze × 8 Wellen am Tag) × 1,2 ≈ 2,1 Tage reine Haiku-Arbeit. Mit Opus-Engpass, Prüfstufen und Sichtabnahmen ergeben sich etwa 4 Tage.
 
 ## Offene Punkte
+- **Wiederherstellungs-Hinweis in Abläufen (Bestand):** „Ihr Zwischenstand von zuletzt wurde geladen“ erscheint schon nach der ersten eigenen Eingabe, ohne Neuladen. Ursache ist `src/lib/flow/use-flow.ts`, Z. 194 (`restored = Boolean(stored) && !dismissed`); das war schon in E0 so (Befund aus der Prüfung E3-BAUMEISTER-02). Mögliche Lösung: „restored“ nur, wenn beim Einhängen schon ein Stand vorlag. Die Datei ist geteilte Ablauflogik, daher ein eigenes Paket mit Test vor E5 (Abläufe).
+- **JS-Menge mobil (E2-PRUEFER-01-ergebnis):** über E0 in allen 12 Ansichten, zum Beispiel H01 293 statt 246 KB. Die Budgets LCP, CLS und INP sind eingehalten. Ursachen sind zu prüfen (Glyphen, `tailwind-merge`-Erweiterung, Client-Hüllen); gehört zu Paket E4-L-07 (Leistung absichern).
+- **Überlauf-Befunde im Bildsatz** (67 statt 29 in E0): zum Teil gewollte Anschnitte im Hero und in den Projekten. Im Etappentor, Anlauf 2, je Ansicht prüfen.
+- **Kleine Beschriftungen in den Karten „Direkt kaufen“** mobil (D-018): Kür-Kandidat, falls die Sichtabnahme es verlangt.
 - **E5-B-23 Sicherheitscheck:** Im Schritt „Bestand“ landete ein Zeigerklick auf eine Auswahlkarte auf „/“ (E0-PRUEFER-04). Vermutete Ursache: Der feste Kopf deckt die Karte nach dem Scrollen ab, und der Klick trifft das Logo. Gegenmaßnahme seit E2: `scroll-padding-top` in `globals.css`. B-23 prüft den Fall mit echtem Zeigerklick erneut.
 - **Funktionsliste:** Die Erkennung der Schritte in F-04 und F-07 (Überschrift, Weiter-Knopf) ist empfindlich. Nach B-16 (Assistent) und B-22 (Vorlage-Anfrage) läuft sie erneut.

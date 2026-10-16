@@ -170,3 +170,19 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - Mobil zeigt ein CSS-Ausschnitt nur den Halm mit Einschnitten; die Beschriftung ist dort etwa 13 px groß.
 - **Bewusst offen:** Die Beschriftungen der kleinen Grafiken in den Karten „Direkt kaufen“ bleiben mobil klein (etwa 8 px). Eine Lösung bräuchte eine Schriftstufe in den Generatoren und ist ein eigenes Paket, falls die Sichtabnahme es verlangt.
 
+## D-019 · Eigene 404-Seite auch für unbekannte Adressen der obersten Ebene
+- Die Website hat je Gruppe ein eigenes Root-Layout (`(site)`, `(payload)`). Ein `not-found.tsx` in `(site)` greift deshalb nur innerhalb der Gruppe. Unbekannte Adressen wie `/gibt-es-nicht` zeigten schon in E0 die Standardseite von Next.js (Befund E3-PRUEFER-01).
+- **Drei Wege:**
+  1. `global-not-found.js`: experimentell; umgeht das Layout, also müssten Kopf, Fuß und Stile ein zweites Mal eingebunden werden.
+  2. Catch-all-Route `(site)/[...unbekannt]/page.tsx`, die `notFound()` aufruft: stabil, nutzt Layout und `not-found.tsx` der Website.
+  3. So lassen: Die Standardseite bricht mit der Gestaltung.
+- **Gewählt:** Weg 2.
+- Bestimmte Routen, Metadaten-Routen (`robots.txt`, `sitemap.xml`, Icon), `/admin`, `/api` und Dateien aus `public/` haben Vorrang. Am Entwicklungsserver geprüft: unbekannte Adresse 404 mit eigener Seite, Icon 200, fehlendes Bild 404, Bestellung ohne Schlüssel 404.
+- **Folge zweiter Ordnung:** Unbekannte Adressen rendern jetzt das Layout der Website (Einstellungen lesen) statt einer statischen Seite. Bei Prüfanfragen von Bots ist das mehr Arbeit je Anfrage, aber vertretbar.
+
+## D-020 · E3-BAUMEISTER-02 vom Orchestrator abgeschlossen
+- Nach drei Prüfrunden blieb ein Muss-Befund: Der Schrittwechsel (B-11) spielte auch beim Wiederherstellen eines Zwischenstands nach dem Laden.
+- **Lösung:** Nur die eigenen Knöpfe der Hülle (Weiter, Zurück, Schrittliste) setzen eine Absicht, und nur dann bewegt sich der Wechsel in deren Richtung. Erster Render, Wiederherstellen und Wechsel durch Kinder stehen still.
+- Im Browser geprüft: Weiter → `sm24-schritt-vor`, Zurück → `sm24-schritt-zurueck`, nach Neuladen mit gespeichertem Schritt keine Klasse. Keine Seitenfehler.
+- **Prozessbefund:** Der Baumeister hat in Runde 2 eigene Bildausgaben mit `rm -f` gelöscht, entgegen der Paketgrenze. Projektdateien waren nicht betroffen. Die Regel bleibt in allen Paketen stehen.
+
