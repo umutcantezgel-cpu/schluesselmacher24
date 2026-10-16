@@ -1,0 +1,11 @@
+{
+  "top_ideas": [
+    {
+      "id": "IDEA_001",
+      "route": "src/app/(site)/schliessanlagen/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "interactive_module": "SchliessanlagenPlaner",
+      "word_count_target": 850
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { SchliessanlagenPlaner } from '@/components/schliessanlagen/schliessanlagen-planer';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Building2, Layers, Users } from 'lucide-react';
@@ -202,7 +203,12 @@ const FALLBACK_FAQ = [
   },
 ];
 
-export default async function SchliessanlagenPage() {
+interface Props { params: Promise<{ id?: string }>; searchParams: Promise<{ [key: string]: string | string[] | undefined }>; }
+export default async function SchliessanlagenPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  void resolvedParams;
+  void resolvedSearch;
   const page = await getPageContent(ROUTE);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -350,6 +356,138 @@ export default async function SchliessanlagenPage() {
           })}
         </ul>
       </Section>
+
+
+      {/* Fachliche Tiefenbetrachtung: Architektonische Methodik & Planung von Schließanlagen */}
+      <Section id="architektur" tone="muted">
+        <SectionHeading
+          eyebrow="Architektur"
+          title="Tiefenbetrachtung: Architektonische Methodik & Planung"
+          lead="Erfahren Sie alles über die zugrundeliegenden Strukturen, Planungsprinzipien und Sicherheitsaspekte von mechanischen Schließanlagen."
+        />
+        <div className="mt-8 prose prose-slate max-w-none text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <p>
+            Eine moderne Schließanlage ist weitaus mehr als nur eine Ansammlung von Zylindern und Schlüsseln. Sie repräsentiert eine komplexe architektonische Methodik, die darauf abzielt, Sicherheit, Flexibilität und Benutzerfreundlichkeit harmonisch miteinander zu vereinen. Die Planung einer solchen Anlage erfordert ein tiefes Verständnis für die organisatorischen Abläufe innerhalb eines Gebäudes oder eines Gebäudeensembles sowie für die technischen Möglichkeiten, die heutige Schließsysteme bieten. In den folgenden Abschnitten werden wir die grundlegenden Konzepte, die verschiedenen Systemarchitekturen und die essenziellen Planungsschritte detailliert beleuchten.
+          </p>
+
+          <h3 className="text-[oklch(0.16_0.02_260)] mt-8 mb-4 font-semibold text-xl tracking-tight">1. Grundlegende Prinzipien der Schließanlagen-Architektur</h3>
+          <p>
+            Das Fundament jeder Schließanlage ist die hierarchische oder funktionale Strukturierung von Zugangsberechtigungen. Jeder Zylinder und jeder Schlüssel wird zu einem integralen Bestandteil eines übergreifenden Sicherheitskonzepts. Dabei spielen zwei wesentliche Konzepte eine zentrale Rolle: die <strong>Schließungsart</strong> und die <strong>Gruppenbildung</strong>.
+          </p>
+          <p>
+            Die Schließungsart bestimmt, wie Zylinder auf Schlüssel reagieren. Bei einer Einzelschließung öffnet ein Schlüssel genau einen Zylinder. Bei einer Gleichschließung öffnet ein Schlüssel mehrere Zylinder gleicher Bauart. Die eigentliche Komplexität entsteht jedoch erst bei übergeordneten Schließungen, bei denen ein Schlüssel unterschiedliche Zylinder öffnen kann. Hier kommt die Gruppenbildung ins Spiel, die es ermöglicht, Benutzer mit ähnlichen Berechtigungsprofilen zu logischen Einheiten zusammenzufassen.
+          </p>
+          <p>
+            Ein weiteres wichtiges Prinzip ist die <strong>Erweiterbarkeit</strong>. Gebäude und Organisationen verändern sich im Laufe der Zeit, und eine Schließanlage muss in der Lage sein, sich diesen Veränderungen anzupassen. Eine vorausschauende Planung berücksichtigt daher von Anfang an Reservekapazitäten für zukünftige Erweiterungen, ohne dass die Sicherheit oder die logische Struktur des Gesamtsystems beeinträchtigt wird.
+          </p>
+
+          <h3 className="text-[oklch(0.16_0.02_260)] mt-8 mb-4 font-semibold text-xl tracking-tight">2. Systemarchitekturen im Detail</h3>
+          <p>
+            Mechanische Schließanlagen lassen sich in verschiedene grundlegende Architekturen unterteilen, die jeweils spezifische Vor- und Nachteile aufweisen und für unterschiedliche Anwendungsszenarien optimiert sind. Die Wahl der richtigen Architektur ist eine der wichtigsten Entscheidungen im Planungsprozess.
+          </p>
+
+          <h4 className="text-[oklch(0.16_0.02_260)] mt-6 mb-3 font-medium text-lg">2.1 Zentralschlossanlage (Z-Anlage)</h4>
+          <p>
+            Die Zentralschlossanlage zeichnet sich durch ein sternförmiges Berechtigungskonzept aus. Im Mittelpunkt stehen ein oder mehrere Zentralschließzylinder (z.B. Hauseingangstür, Kellereingang, Fahrradraum), die von allen Nutzern der Anlage aufgeschlossen werden können. Jeder Nutzer verfügt jedoch über einen individuellen Schlüssel, der neben den zentralen Zylindern nur seinen persönlichen Bereich (z.B. Wohnungstür, Kellerabteil) öffnet.
+          </p>
+          <p>
+            Diese Architektur ist typisch für Mehrfamilienhäuser und Wohnanlagen. Sie bietet ein hohes Maß an Komfort für die Bewohner, da diese nur einen einzigen Schlüssel benötigen, um alle für sie relevanten Türen zu öffnen. Gleichzeitig wird die Privatsphäre der einzelnen Nutzer gewahrt. Die Planung einer Z-Anlage erfordert eine sorgfältige Definition der zentralen und der individuellen Schließbereiche.
+          </p>
+
+          <h4 className="text-[oklch(0.16_0.02_260)] mt-6 mb-3 font-medium text-lg">2.2 Hauptschlüsselanlage (HS-Anlage)</h4>
+          <p>
+            Die Hauptschlüsselanlage basiert auf einer streng hierarchischen Struktur. An der Spitze der Hierarchie steht der Hauptschlüssel, der als übergeordneter Schlüssel konzipiert ist und sämtliche Schließzylinder innerhalb der gesamten Anlage sperrt. Darunter befinden sich die Einzelschlüssel, die jeweils nur für einen ganz spezifischen, ihnen zugeordneten Zylinder berechtigt sind.
+          </p>
+          <p>
+            Diese Architektur kommt häufig in kleineren bis mittelgroßen Gewerbebetrieben, Schulen oder Arztpraxen zum Einsatz. Der Inhaber oder der Hausmeister erhält den Hauptschlüssel und hat somit jederzeit Zugang zu allen Räumlichkeiten. Die Mitarbeiter oder Lehrkräfte erhalten hingegen Einzelschlüssel, die ihnen nur den Zugang zu ihren jeweiligen Arbeitsbereichen oder Büros gewähren. Die klare hierarchische Struktur erleichtert die Verwaltung der Zugangsrechte erheblich.
+          </p>
+
+          <h4 className="text-[oklch(0.16_0.02_260)] mt-6 mb-3 font-medium text-lg">2.3 Generalhauptschlüsselanlage (GHS-Anlage)</h4>
+          <p>
+            Die Generalhauptschlüsselanlage ist die komplexeste und flexibelste Architektur für mechanische Schließsysteme. Sie kombiniert Elemente der Z- und der HS-Anlage und fügt weitere hierarchische Ebenen hinzu. An der Spitze steht der Generalhauptschlüssel (GHS), der alle Zylinder der Anlage sperrt. Darunter sind mehrere Hauptgruppen angeordnet, die jeweils von einem Hauptgruppenschlüssel (HGS) bedient werden. Diese Hauptgruppen können wiederum in Untergruppen mit eigenen Gruppenschlüsseln (GS) unterteilt sein. Auf der untersten Ebene befinden sich schließlich die Einzelschlüssel.
+          </p>
+          <p>
+            GHS-Anlagen sind für große, komplexe Gebäude oder Liegenschaften wie Krankenhäuser, Universitäten oder große Industrieanlagen konzipiert. Sie ermöglichen eine fein granulierte und hochgradig differenzierte Vergabe von Zugangsrechten, die exakt auf die Organisationsstruktur des jeweiligen Nutzers zugeschnitten ist. Die Planung einer GHS-Anlage ist eine anspruchsvolle Aufgabe, die ein tiefes Verständnis der organisatorischen Abläufe und eine präzise Dokumentation aller Berechtigungen erfordert. Die Erstellung eines detaillierten Schließplans ist hierbei unerlässlich.
+          </p>
+
+          <h3 className="text-[oklch(0.16_0.02_260)] mt-8 mb-4 font-semibold text-xl tracking-tight">3. Methodik der Schließplan-Erstellung</h3>
+          <p>
+            Die Erstellung eines Schließplans ist das Herzstück der Anlagenplanung. Der Schließplan ist eine Matrix, die alle Türen (Zylinder) und alle Nutzer (Schlüssel) einer Anlage erfasst und deren Beziehungen zueinander definiert. Ein sorgfältig erstellter Schließplan ist die Voraussetzung für eine fehlerfreie Fertigung und eine reibungslose Inbetriebnahme der Anlage.
+          </p>
+          <p>
+            Der Prozess der Schließplan-Erstellung lässt sich in mehrere Phasen unterteilen:
+          </p>
+          <ul className="list-disc pl-6 space-y-2">
+            <li><strong>Bestandsaufnahme:</strong> Erfassung aller relevanten Türen, Tore und sonstigen Schließstellen. Dabei müssen auch Details wie Türblattstärke, Dornmaß und gewünschte Zylinderart (z.B. Doppelzylinder, Halbzylinder, Knaufzylinder) dokumentiert werden.</li>
+            <li><strong>Nutzeranalyse:</strong> Identifikation aller Personen oder Personengruppen, die Zugang zu bestimmten Bereichen benötigen. Definition der jeweiligen Berechtigungsprofile.</li>
+            <li><strong>Matrix-Erstellung:</strong> Zuordnung der Berechtigungsprofile zu den erfassten Schließstellen. Hierbei wird festgelegt, welcher Schlüssel welchen Zylinder öffnen darf.</li>
+            <li><strong>Optimierung und Reserveplanung:</strong> Überprüfung der Matrix auf Konsistenz und Plausibilität. Einplanung von Reservezylindern und -schlüsseln für zukünftige Erweiterungen.</li>
+            <li><strong>Freigabe:</strong> Überprüfung und formelle Freigabe des Schließplans durch den Auftraggeber.</li>
+          </ul>
+
+          <h3 className="text-[oklch(0.16_0.02_260)] mt-8 mb-4 font-semibold text-xl tracking-tight">4. Sicherheitsaspekte und Profilsysteme</h3>
+          <p>
+            Die Sicherheit einer mechanischen Schließanlage hängt maßgeblich von den verwendeten Zylinder- und Schlüsselprofilen ab. Hochwertige Schließanlagen nutzen in der Regel geschützte Profilsysteme, die einen effektiven Schutz vor unberechtigten Schlüsselkopien und Manipulationen bieten.
+          </p>
+          <p>
+            Ein zentrales Element ist der <strong>Marken- und Patentschutz</strong>. Geschützte Profile dürfen nur vom Hersteller oder von autorisierten Fachpartnern kopiert werden. Die Anfertigung eines Nachschlüssels erfordert in der Regel die Vorlage einer Sicherungskarte, die die Legitimation des Auftraggebers bestätigt.
+          </p>
+          <p>
+            Darüber hinaus verfügen moderne Schließzylinder über verschiedene technische Sicherheitsmerkmale, wie z.B. <strong>Bohrschutz</strong> (gehärtete Stahlstifte im Zylindergehäuse und -kern erschweren das Aufbohren), <strong>Ziehschutz</strong> (spezielle Vorrichtungen verhindern das Herausziehen des Zylinderkerns) und <strong>Abtastschutz</strong> (komplexe Profilformen und zusätzliche Sperrelemente erschweren das zerstörungsfreie Öffnen mit Spezialwerkzeugen).
+          </p>
+
+          <h3 className="text-[oklch(0.16_0.02_260)] mt-8 mb-4 font-semibold text-xl tracking-tight">5. Integration und hybride Systeme</h3>
+          <p>
+            In zunehmendem Maße werden mechanische Schließanlagen mit elektronischen Zutrittskontrollsystemen kombiniert. Diese hybriden Systeme bieten das Beste aus beiden Welten: die Robustheit und Zuverlässigkeit der Mechanik und die Flexibilität und Intelligenz der Elektronik.
+          </p>
+          <p>
+            Bei einer hybriden Anlage werden sensible Bereiche (z.B. Serverräume, Entwicklungslabore) mit elektronischen Zylindern oder Wandlesern ausgestattet, während weniger kritische Bereiche weiterhin mechanisch gesichert bleiben. Die elektronischen Komponenten ermöglichen eine zeitliche Befristung von Zugangsrechten, die Protokollierung von Zutrittsereignissen und das schnelle Sperren verlorener Medien. Moderne Mechatronik-Schlüssel integrieren sowohl das mechanische Profil als auch einen RFID-Chip, sodass der Nutzer nur noch ein einziges Medium für beide Systemwelten benötigt.
+          </p>
+
+          <h3 className="text-[oklch(0.16_0.02_260)] mt-8 mb-4 font-semibold text-xl tracking-tight">6. Detaillierter Fach-FAQ: Mechanische Schließanlagen</h3>
+          <div className="space-y-6 mt-6 border-t border-[oklch(0.89_0.008_260/0.55)] pt-6">
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Warum ist ein geschütztes Profilsystem zwingend erforderlich?</h4>
+              <p className="mt-2">Ein geschütztes Profilsystem, das durch Patente und Markenrechte abgesichert ist, garantiert, dass Schlüsselrohlinge nicht im freien Handel erhältlich sind. Nachschlüssel dürfen ausschließlich gegen Vorlage der Sicherungskarte gefertigt werden. Dies verhindert illegale Kopien und ist essenziell für die Integrität des Schließplans.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Was passiert bei Schlüsselverlust in einer GHS-Anlage?</h4>
+              <p className="mt-2">Bei mechanischen Systemen ist ein Schlüsselverlust kritisch, insbesondere wenn es sich um einen Haupt- oder Generalhauptschlüssel handelt. In diesem Fall muss oft die gesamte Anlage oder zumindest der betroffene Schließbereich ausgetauscht werden, da die Sicherheit kompromittiert ist. Hier empfiehlt sich zunehmend eine mechatronische Lösung.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Können mechanische Anlagen nachträglich erweitert werden?</h4>
+              <p className="mt-2">Ja, aber nur im Rahmen der bei der Initialplanung vorgesehenen Reservekapazitäten. Jede Schließanlage hat eine definierte &quot;Mathematik&quot;. Wurden bestimmte Hierarchieebenen nicht mit Reserven geplant, ist eine Erweiterung oft nicht mehr möglich, ohne die Schließlogik zu brechen.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie lange ist die Lebensdauer einer mechanischen Schließanlage?</h4>
+              <p className="mt-2">Bei regelmäßiger Wartung (z.B. Schmierung der Zylinder mit speziellem Pflegespray) und durchschnittlicher Nutzung können hochwertige mechanische Anlagen 15 bis 20 Jahre zuverlässig funktionieren. Der limitierende Faktor ist oft nicht der Verschleiß, sondern das Auslaufen des Patentschutzes für das verwendete Profil.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Welche Anforderungen stellt der Brandschutz an Schließanlagen?</h4>
+              <p className="mt-2">In Flucht- und Rettungswegen gelten strenge Normen (z.B. DIN EN 179 und DIN EN 1125). Türen müssen sich in Paniksituationen von innen immer ohne Schlüssel öffnen lassen. Hier müssen spezielle Panikschlösser und ggf. Freilaufzylinder in die Schließanlage integriert werden, um die rechtlichen Vorgaben zu erfüllen.</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="planer" tone="muted">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-14">
+          <div>
+            <SectionHeading
+              eyebrow="Interaktiv"
+              title="Budget & Komplexität simulieren"
+              lead="Nutzen Sie unseren Schließanlagen-Planer, um ein erstes Gefühl für die Kostenstruktur Ihrer geplanten Anlage zu bekommen."
+            />
+            <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed text-sm">
+              Dieser Kalkulator dient als erste Orientierungshilfe. Die tatsächlichen Kosten hängen von vielen weiteren Faktoren ab, wie z.B. den genauen Zylinderlängen, eventuellen Sonderfunktionen (z.B. Gefahreneinrichtung, Bohrschutz) und dem gewählten Profilsystem. Für ein verbindliches Angebot erfassen Sie Ihr Projekt bitte vollständig in unserem Konfigurator.
+            </p>
+          </div>
+          <div className="mt-8 lg:mt-0">
+            <SchliessanlagenPlaner />
+          </div>
+        </div>
+      </Section>
+
 
       {/* Kleine Vorhaben */}
       <Section tone="muted" tight>

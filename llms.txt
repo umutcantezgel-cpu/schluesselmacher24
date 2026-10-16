@@ -1,0 +1,3 @@
+
+## New Interactive Modules (Revolution Builder Phase)
+- **SchliessanlagenPlaner**: Interaktiver Kalkulator für mechanische Schließanlagen (Budget & Komplexität).
