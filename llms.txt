@@ -1,0 +1,5 @@
+# Codebase Architecture Blueprint (JC-AUDITOR-ARCHITECT-v1)
+
+Die Codebasis wurde auf Hypermodern Next.js 16+ Standards geprüft.
+Der revolutionäre Masterplan befindet sich in `.jules/revolution-plan.json` und die Routen-Transformation-Matrix in `.jules/architecture-matrix.md`.
+Die Architektur zielt auf eine Null-Fehler-Toleranz und deterministische Transformationen ab.
