@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { CheckCircle2 } from 'lucide-react';
 
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { submitRecord } from '@/lib/actions/records';
@@ -15,6 +14,7 @@ import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
+import { CheckDraw } from '@/components/visual/motion/check-draw';
 
 const STEPS: FlowStep[] = [
   { id: 'thema', short: 'Thema', title: 'Worum geht es?', hint: 'So landet Ihre Anfrage gleich bei der richtigen Person.' },
@@ -162,18 +162,20 @@ export function AllgemeineAnfrage({
 
   if (erfolg) {
     return (
-      <div className="max-w-2xl">
-        <div className="rounded-lg border border-success/30 bg-success-soft p-6">
-          <CheckCircle2 size={26} className="text-success" aria-hidden />
-          <h2 className="mt-3 text-xl font-bold text-foreground">Ihre Anfrage ist bei uns</h2>
-          <p className="mt-2 text-[15px] leading-relaxed text-foreground-muted">
+      <div className="max-w-2xl" role="status">
+        <div className="rounded-lg border border-border bg-surface p-6">
+          <CheckDraw title="Anfrage eingegangen" size={56} />
+          <h2 className="mt-4 text-title font-semibold text-foreground">Ihre Anfrage ist bei uns</h2>
+          <p className="mt-2 text-body text-foreground-muted">
             Wir sehen uns Ihre Angaben an und melden uns mit einer Einschätzung.
           </p>
-          <p className="mt-5 text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+          <p className="mt-5 font-mono text-caption uppercase tracking-label text-foreground-muted">
             Ihre Vorgangsnummer
           </p>
-          <p className="mt-1 font-mono text-xl font-bold text-foreground">{erfolg.reference}</p>
-          <p className="mt-2 text-[13px] text-foreground-muted">
+          <p className="mt-1 break-words font-mono text-title-sm font-semibold tabular-nums text-foreground">
+            {erfolg.reference}
+          </p>
+          <p className="mt-2 text-small text-foreground-muted">
             Bitte bewahren Sie diese Nummer auf. Mit ihr und Ihrer E-Mail-Adresse rufen Sie den{' '}
             <Link href="/service-und-termin/terminstatus" className="font-semibold underline">
               Stand Ihres Vorgangs
@@ -267,7 +269,7 @@ export function AllgemeineAnfrage({
             </Field>
 
             <fieldset>
-              <legend className="mb-3 text-sm font-semibold text-foreground">
+              <legend className="mb-3 text-small font-semibold text-foreground">
                 Wie dringend ist es?
               </legend>
               <div className="space-y-3">
@@ -426,7 +428,7 @@ export function AllgemeineAnfrage({
             </Alert>
 
             {fehler && (
-              <Alert tone="warning" title="Das hat nicht geklappt" className="mt-4">
+              <Alert tone="warning" title="Das hat nicht geklappt" className="mt-4" role="alert">
                 {fehler}
               </Alert>
             )}

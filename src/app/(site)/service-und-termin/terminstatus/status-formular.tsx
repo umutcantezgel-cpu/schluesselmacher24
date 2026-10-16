@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search } from 'lucide-react';
 
 import { fetchRecordStatus } from '@/lib/actions/booking';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
@@ -14,6 +13,7 @@ import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { Field } from '@/components/forms/field';
 import { TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
+import { GlyphSuche } from '@/components/visual/glyphen/suche';
 
 const STATUS_TEXT: Record<RecordStatus, { label: string; erklaerung: string }> = {
   neu: { label: 'Eingegangen', erklaerung: 'Ihr Vorgang liegt uns vor und wird in Kürze gesichtet.' },
@@ -116,13 +116,13 @@ export function TerminStatusFormular() {
         </div>
 
         <Button type="submit" className="mt-5" loading={laeuft}>
-          <Search size={16} aria-hidden />
+          <GlyphSuche size={16} />
           Stand abrufen
         </Button>
       </form>
 
       {fehler && (
-        <Alert tone="warning" title="Nichts gefunden" className="mt-6">
+        <Alert tone="warning" title="Nichts gefunden" className="mt-6" role="alert">
           {fehler}{' '}
           <Link href="/service-und-termin/kontakt" className="font-semibold underline">
             Nehmen Sie Kontakt auf
@@ -133,88 +133,86 @@ export function TerminStatusFormular() {
 
       {ergebnis && (
         <div className="mt-8 space-y-6">
-          <Card>
-            <CardHeader className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div className="flex flex-wrap items-end justify-between gap-3 border-b border-border pb-4">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+                <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                   Vorgang
                 </p>
-                <p className="mt-0.5 font-mono text-lg font-bold text-foreground">
+                <p className="mt-1 break-words font-mono text-title-sm font-semibold tabular-nums text-foreground">
                   {ergebnis.reference}
                 </p>
               </div>
               <Badge tone={STATUS_TON[ergebnis.status]}>{STATUS_TEXT[ergebnis.status].label}</Badge>
-            </CardHeader>
+            </div>
 
-            <CardBody>
-              <p className="text-[15px] leading-relaxed text-foreground-muted">
-                {STATUS_TEXT[ergebnis.status].erklaerung}
-              </p>
+            <p className="mt-4 text-body text-foreground-muted">
+              {STATUS_TEXT[ergebnis.status].erklaerung}
+            </p>
 
-              <dl className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
-                <div>
-                  <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                    Angelegt
-                  </dt>
-                  <dd className="mt-1 text-[15px] text-foreground">
-                    {formatDateTime(ergebnis.createdAt)}
+            <dl className="mt-5 border-t border-border">
+              <div className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4">
+                <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">Angelegt</dt>
+                <dd className="font-mono text-body tabular-nums text-foreground sm:col-span-7 sm:text-right">
+                  {formatDateTime(ergebnis.createdAt)}
+                </dd>
+              </div>
+              <div className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4">
+                <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">
+                  Zuletzt aktualisiert
+                </dt>
+                <dd className="font-mono text-body tabular-nums text-foreground sm:col-span-7 sm:text-right">
+                  {formatDateTime(ergebnis.updatedAt)}
+                </dd>
+              </div>
+
+              {ergebnis.appointment && (
+                <div className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4">
+                  <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">Termin</dt>
+                  <dd className="text-body text-foreground sm:col-span-7 sm:text-right">
+                    {formatDate(ergebnis.appointment.date)}, {ergebnis.appointment.time} Uhr ·{' '}
+                    <span className="font-mono tabular-nums">
+                      {formatDuration(ergebnis.appointment.durationMinutes)}
+                    </span> ·{' '}
+                    {ergebnis.appointment.location === 'werkstatt' ? 'im Fachbetrieb' : 'vor Ort'}
                   </dd>
                 </div>
-                <div>
-                  <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                    Zuletzt aktualisiert
-                  </dt>
-                  <dd className="mt-1 text-[15px] text-foreground">
-                    {formatDateTime(ergebnis.updatedAt)}
+              )}
+
+              {ergebnis.payment && (
+                <div className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4">
+                  <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">Zahlung</dt>
+                  <dd className="text-body text-foreground sm:col-span-7 sm:text-right">
+                    {ergebnis.payment.scope === 'anzahlung' ? 'Anzahlung' : 'Gesamtbetrag'}{' '}
+                    <span className="font-mono tabular-nums">{formatCents(ergebnis.payment.amountCents)}</span>{' '}
+                    — Status: {ergebnis.payment.status}
+                    {ergebnis.payment.paidAt && `, bezahlt am ${formatDateTime(ergebnis.payment.paidAt)}`}
                   </dd>
                 </div>
+              )}
+            </dl>
+          </div>
 
-                {ergebnis.appointment && (
-                  <div className="sm:col-span-2">
-                    <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                      Termin
-                    </dt>
-                    <dd className="mt-1 text-[15px] text-foreground">
-                      {formatDate(ergebnis.appointment.date)}, {ergebnis.appointment.time} Uhr ·{' '}
-                      {formatDuration(ergebnis.appointment.durationMinutes)} ·{' '}
-                      {ergebnis.appointment.location === 'werkstatt' ? 'im Fachbetrieb' : 'vor Ort'}
-                    </dd>
-                  </div>
-                )}
-
-                {ergebnis.payment && (
-                  <div className="sm:col-span-2">
-                    <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                      Zahlung
-                    </dt>
-                    <dd className="mt-1 text-[15px] text-foreground">
-                      {ergebnis.payment.scope === 'anzahlung' ? 'Anzahlung' : 'Gesamtbetrag'}{' '}
-                      {formatCents(ergebnis.payment.amountCents)} — Status:{' '}
-                      {ergebnis.payment.status}
-                      {ergebnis.payment.paidAt && `, bezahlt am ${formatDateTime(ergebnis.payment.paidAt)}`}
-                    </dd>
-                  </div>
-                )}
-              </dl>
-            </CardBody>
-          </Card>
-
-          <SummaryList sections={ergebnis.summary} />
+          <SummaryList sections={ergebnis.summary} variante="schriftfeld" />
 
           {ergebnis.timeline.length > 0 && (
             <div>
-              <h2 className="text-[15px] font-bold text-foreground">Verlauf</h2>
-              <ol className="mt-3 space-y-3 border-l border-border pl-5">
+              <h2 className="text-title-sm font-semibold text-foreground">Verlauf</h2>
+              <ol className="mt-4 space-y-4 border-l border-border pl-5">
                 {ergebnis.timeline.map((entry, index) => (
                   <li key={`${entry.at}-${index}`} className="relative">
-                    <span
-                      aria-hidden
-                      className="absolute -left-[25px] top-1.5 h-2 w-2 rounded-full bg-primary"
-                    />
-                    <p className="text-[13px] font-semibold text-foreground-subtle">
+                    <p className="relative font-mono text-caption tabular-nums text-foreground-muted">
+                      <span
+                        aria-hidden
+                        className="absolute -left-5 top-1/2 h-px w-5 bg-border"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute -left-6 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-area-strong ring-4 ring-background"
+                      />
                       {formatDateTime(entry.at)}
                     </p>
-                    <p className="text-[14px] text-foreground-muted">{entry.message}</p>
+                    <p className="text-small text-foreground">{entry.message}</p>
                   </li>
                 ))}
               </ol>

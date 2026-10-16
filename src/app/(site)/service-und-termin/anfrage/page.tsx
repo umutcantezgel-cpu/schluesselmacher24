@@ -27,6 +27,8 @@ export default async function AnfragePage(props: {
     <>
       <PageHeader
         eyebrow="Geführte Anfrage"
+        bereich="service-und-termin"
+        art="arbeit"
         title="Allgemeine Anfrage"
         lead="Wenn Ihr Anliegen in keinen der Fachbereiche passt: Beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung."
         crumbs={[
