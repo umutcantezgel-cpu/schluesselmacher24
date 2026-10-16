@@ -270,3 +270,10 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - Doppelter Verweis auf die Markenseite: Textvorschlag liegt in TEXTVORSCHLAEGE.md.
   - Tabelle ohne seitliches Scrollen braucht keinen Scrollbereich mehr: bestätigt.
   - Markenbildstelle zeigt drei Transponderschlüssel statt eines Regalfotos: gewollt, bis ein Foto da ist (M-01).
+
+## D-027 · E4-BAUMEISTER-12 (Ratgeber, H12) abgenommen, mit Nacharbeit
+- **Ergebnis:** Prüfung Runde 2 bestanden (Runde 1: sichtbares neues Etikett „Inhalt“). Bericht: `_werkstatt/berichte/E4-BAUMEISTER-12.md`. Daten, Gruppierung, Metadaten, JSON-LD und Texte unverändert; der doppelte Fließtextsatz im Kasten „Ihr nächster Schritt“ entfällt, das Label steht nur noch auf dem Knopf.
+- **Nacharbeit des Orchestrators:**
+  - **Artikel:** Das Inhaltsverzeichnis stand auf dem Desktop außerhalb der Seitenleiste; zwischen ihm und „Passend dazu“ klaffte eine Lücke von etwa 400 px. Jetzt steht es oben in der mitlaufenden Seitenleiste, unter 1024 px vor dem Text (eine Liste, zwei Stellen, je nur eine sichtbar).
+  - **Übersicht:** Jeder Bereich war ein eigener Abschnitt mit meist einem einzigen Beitrag. Das ergab viel Leerraum, den Bereichsnamen dreimal je Abschnitt und gleiche Struktur in jedem Abschnitt. Jetzt ist die Übersicht ein Register in einem Abschnitt: je Bereich eine Zeile mit Nummer, Fach-Icon und Name links (4 Spalten), rechts die Beiträge als ganze Linkzeilen (8 Spalten). Ruhig und dicht wie ein Inhaltsverzeichnis, passend zu „Ratgeber: bewusst ruhig“.
+- **Hinweis des Prüfers:** Werkzeuge ohne `SM24_BASIS_URL` messen Port 3000 (älterer Build). Alle Paketprüfungen laufen gegen Port 3001; das steht in jedem Auftrag.

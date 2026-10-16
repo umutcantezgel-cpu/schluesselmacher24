@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
+import { cn } from '@/lib/cn';
 import { getGuides } from '@/lib/data';
 import { NAV_AREAS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section } from '@/components/layout/section';
+import { AreaScope } from '@/components/visual/area-scope';
+import { BereichIcon } from '@/components/visual/bereich-icon';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 export const metadata: Metadata = {
   title: 'Ratgeber',
@@ -33,35 +36,51 @@ export default async function RatgeberPage() {
         crumbs={[{ href: '/ratgeber', label: 'Ratgeber' }]}
       />
 
-      <Section>
-        <div className="space-y-12">
-          {grouped.map((group) => (
-            <div key={group.area.key}>
-              <h2 className="text-lg font-bold text-foreground">{group.area.label}</h2>
-              <ul className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-                {group.guides.map((guide) => (
-                  <li key={guide.id}>
-                    <Link
-                      href={`/ratgeber/${guide.slug}`}
-                      className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
-                    >
-                      <span className="text-[15px] font-bold text-foreground group-hover:text-primary">
-                        {guide.title}
-                      </span>
-                      <span className="mt-2 flex-1 text-[14px] leading-relaxed text-foreground-muted">
-                        {guide.excerpt}
-                      </span>
-                      <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
-                        Lesen
-                        <ArrowRight size={14} aria-hidden />
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* Register: je Bereich eine Zeile – links Nummer, Fach-Icon und Bereich, rechts seine Beiträge.
+          Ruhig und dicht wie ein Inhaltsverzeichnis; ganze Beitragszeilen sind Links. */}
+      <Section labelledBy="ratgeber-register">
+        <h2 id="ratgeber-register" className="sr-only">
+          Beiträge nach Bereich
+        </h2>
+        <ol className="border-t border-border">
+          {grouped.map((group, index) => (
+            <li key={group.area.key} className="border-b border-border">
+              <AreaScope area={group.area.key}>
+                <div className="grid gap-x-gutter gap-y-4 py-8 lg:grid-cols-12">
+                  <div className="flex items-start gap-4 lg:col-span-4">
+                    <span className="w-6 pt-1 font-mono text-caption tabular-nums text-foreground-muted">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <BereichIcon area={group.area.key} size={40} className="shrink-0 text-area-strong" />
+                    <h3 className="pt-1.5 text-title font-semibold text-foreground">{group.area.label}</h3>
+                  </div>
+
+                  <ul className="lg:col-span-8">
+                    {group.guides.map((guide, guideIndex) => (
+                      <li key={guide.id} className={cn(guideIndex > 0 && 'border-t border-border')}>
+                        <Link
+                          href={`/ratgeber/${guide.slug}`}
+                          className={cn('group flex flex-col gap-2', guideIndex > 0 ? 'py-5' : 'pb-5 lg:pt-1')}
+                        >
+                          <span className="flex items-start justify-between gap-3">
+                            <span className="text-title-sm font-semibold text-foreground group-hover:text-primary">
+                              {guide.title}
+                            </span>
+                            <GlyphPfeilRechts
+                              size={18}
+                              className="mt-1 shrink-0 text-primary transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
+                            />
+                          </span>
+                          <span className="max-w-measure text-small text-foreground-muted">{guide.excerpt}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </AreaScope>
+            </li>
           ))}
-        </div>
+        </ol>
       </Section>
     </>
   );

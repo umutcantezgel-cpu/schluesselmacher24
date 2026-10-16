@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight } from 'lucide-react';
 
 import { getGuide, getGuides } from '@/lib/data';
 import { areaByKey } from '@/lib/navigation';
@@ -9,6 +8,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { JsonLd, articleSchema, breadcrumbSchema } from '@/components/seo/json-ld';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { getSiteUrl } from '@/lib/site-url';
 
 export async function generateStaticParams() {
@@ -30,6 +30,21 @@ export async function generateMetadata(props: {
   };
 }
 
+/**
+ * Anker einer Zwischenüberschrift: Kleinbuchstaben, Umlaute ausgeschrieben,
+ * alles andere außer a–z und 0–9 wird zu „-“ („Prüfen: …“ wird „pruefen-…“).
+ */
+function ankerKennung(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 export default async function GuidePage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
   const [guide, allGuides] = await Promise.all([getGuide(slug), getGuides()]);
@@ -44,6 +59,25 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
     { href: `/ratgeber/${guide.slug}`, label: guide.title },
   ];
 
+  // Inhaltsverzeichnis: einmal gebaut, je nach Breite vor dem Text oder oben in der Seitenleiste.
+  const inhalt = (
+    <ol className="border-t border-border">
+      {guide.body.map((block, index) => (
+        <li key={block.heading} className="border-b border-border">
+          <a
+            href={`#${ankerKennung(block.heading)}`}
+            className="inline-flex min-h-touch w-full items-center gap-3 text-small font-semibold text-foreground transition-colors duration-quick hover:text-primary"
+          >
+            <span className="font-mono text-caption tabular-nums text-foreground-muted">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            {block.heading}
+          </a>
+        </li>
+      ))}
+    </ol>
+  );
+
   return (
     <>
       <JsonLd data={articleSchema(guide)} />
@@ -56,67 +90,88 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
         crumbs={crumbs}
       />
 
-      <div className="shell grid gap-10 py-10 md:py-14 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-14">
-        <article className="min-w-0">
+      {/* Raster: Text 8 Spalten, Seitenleiste 4 */}
+      <div className="shell grid gap-10 py-10 md:py-14 lg:grid-cols-12 lg:gap-gutter">
+        {/* Telefon und Tablet: Inhaltsverzeichnis vor dem Text */}
+        <nav aria-label="Inhalt" className="lg:hidden">
+          {inhalt}
+        </nav>
+
+
+        <article className="min-w-0 lg:col-span-8">
           <ImagePlaceholder slot={guide.image} className="mb-8" />
 
-          <div className="prose-sm24 max-w-none">
+          <div className="prose-sm24">
             {guide.body.map((block) => (
               <section key={block.heading}>
-                <h2>{block.heading}</h2>
+                <h2 id={ankerKennung(block.heading)} className="scroll-mt-28">
+                  {block.heading}
+                </h2>
                 <p>{block.text}</p>
               </section>
             ))}
           </div>
 
-          <div className="mt-10 rounded-lg border border-border bg-surface-muted p-5 md:p-6">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+          <div className="mt-10 rounded-lg border border-border bg-surface p-6">
+            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
               Ihr nächster Schritt
             </p>
-            <p className="mt-2 text-[15px] font-bold text-foreground">{guide.nextStep.label}</p>
-            <ButtonLink href={guide.nextStep.href} className="mt-4">
+            <ButtonLink href={guide.nextStep.href} className="mt-4" pfeil>
               {guide.nextStep.label}
-              <ArrowRight size={16} aria-hidden />
             </ButtonLink>
           </div>
         </article>
 
-        <aside className="lg:sticky lg:top-28 lg:self-start">
-          {related.length > 0 && (
-            <>
-              <p className="mb-3 text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                Passend dazu
-              </p>
-              <ul className="space-y-2">
-                {related.map((item) => (
-                  <li key={item.id}>
+        <aside className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
+          <div className="space-y-8">
+            <nav aria-label="Inhalt" className="hidden lg:block">
+              {inhalt}
+            </nav>
+
+            {related.length > 0 && (
+              <div>
+                <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Passend dazu
+                </p>
+                <ul className="mt-3 border-t border-border">
+                  {related.map((item) => (
+                    <li key={item.id} className="border-b border-border">
+                      <Link
+                        href={`/ratgeber/${item.slug}`}
+                        className="group flex min-h-touch items-center justify-between gap-3 py-3 text-small font-semibold text-foreground transition-colors duration-quick hover:text-primary"
+                      >
+                        {item.title}
+                        <GlyphPfeilRechts
+                          size={16}
+                          className="shrink-0 text-primary transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
+                        />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div>
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Weiterlesen</p>
+              <ul className="mt-3 border-t border-border">
+                {guide.seo.internalLinks.map((link) => (
+                  <li key={link.href} className="border-b border-border">
                     <Link
-                      href={`/ratgeber/${item.slug}`}
-                      className="block rounded-lg border border-border bg-surface p-4 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                      href={link.href}
+                      className="group flex min-h-touch items-center justify-between gap-3 py-3 text-small text-foreground-muted transition-colors duration-quick hover:text-primary"
                     >
-                      {item.title}
+                      {link.label}
+                      <GlyphPfeilRechts
+                        size={16}
+                        className="shrink-0 text-primary transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
+                      />
                     </Link>
                   </li>
                 ))}
               </ul>
-            </>
-          )}
-
-          <p className="mb-3 mt-8 text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-            Weiterlesen
-          </p>
-          <ul className="space-y-2">
-            {guide.seo.internalLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-[14px] text-foreground-muted hover:text-primary hover:underline"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+            </div>
+          </div>
         </aside>
       </div>
     </>
