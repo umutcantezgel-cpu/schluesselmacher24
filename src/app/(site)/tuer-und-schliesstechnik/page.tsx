@@ -161,8 +161,9 @@ export default async function TuerUndSchliesstechnikPage() {
 
       {/* Tiefgreifende Fachliche Einführung */}
       <Section tight>
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-          <div className="space-y-8 lg:col-span-7">
+        {/* Ab lg: Text und Schriftfeld links übereinander, der hohe Rechner rechts über beide Zeilen – ohne Leerfläche links. */}
+        <div className="grid gap-12 lg:grid-cols-12 lg:grid-rows-kopf lg:items-start lg:gap-gutter">
+          <div className="space-y-8 lg:col-span-7 lg:row-start-1">
             <SectionHeading
               nummer="01"
               eyebrow="Architektur der Sicherheit"
@@ -201,15 +202,15 @@ export default async function TuerUndSchliesstechnikPage() {
           </div>
 
           {/* Nicht mitlaufend: Der Rechner ist höher als das Fenster, Ergebnis und Anfrage lägen sonst außer Reichweite. */}
-          <div className="lg:col-span-5 lg:col-start-8">
+          <div className="lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1">
             <TuerAbsicherungRechner
               werte={richtwerte.tuerAbsicherung}
               anfrageHref={`/service-und-termin/anfrage?thema=${ROUTE}`}
             />
           </div>
 
-          {/* Schriftfeld unter beiden Spalten über die volle Breite; ab md zweispaltig: Einordnung links, Ablauf rechts. */}
-          <div className="grid border-y border-border md:grid-cols-2 md:gap-gutter lg:col-span-12">
+          {/* Schriftfeld: mobil nach dem Rechner, ab lg unter dem Text; ab md zweispaltig: Einordnung links, Ablauf rechts. */}
+          <div className="grid border-y border-border md:grid-cols-2 md:gap-gutter lg:col-span-7 lg:row-start-2 lg:self-start">
             <div className="py-6 md:pr-gutter">
               <div className="prose-sm24 max-w-none">
                 <h3 className="mb-4 text-title font-bold text-foreground tracking-tight">Elektronik trifft Mechanik</h3>
