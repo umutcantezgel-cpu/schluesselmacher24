@@ -284,7 +284,7 @@ export default async function AutoschluesselHubPage() {
         crumbs={[{ href: '/autoschluessel', label: 'Autoschlüssel' }]}
         visual={<SchluesselartenReihe variante="kopf" />}
         actions={
-          <ButtonLink href="/autoschluessel/anfrage" pfeil>
+          <ButtonLink href="/autoschluessel/anfrage" pfeil className="whitespace-nowrap">
             {/* Telefon: Kurzlaut, damit der Knopf einzeilig bleibt */}
             <span className="sm:hidden">Termin starten</span>
             <span className="hidden sm:inline">Fahrzeug auswählen und Termin starten</span>

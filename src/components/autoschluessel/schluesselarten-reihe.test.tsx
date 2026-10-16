@@ -32,11 +32,18 @@ describe('SchluesselartenReihe in der Kopf-Variante', () => {
 
   it('zeigt vier Zeichnungen mit Name, ohne Erklärungstexte und ohne Keyless-Zusatz', () => {
     expect(html.match(/<svg/g)).toHaveLength(4);
-    expect(html.match(/<h3/g)).toHaveLength(4);
+    expect(html.match(/<p class="mt-3 text-body font-semibold/g)).toHaveLength(4);
     expect(html).toContain('Smart Key');
     expect(html).not.toContain('Keyless:');
     expect(html).not.toContain('Schlüssel mit Bart und ohne Tasten am Griff');
     expect(html).not.toContain('border-border');
+  });
+
+  it('setzt die Namen als Absatz, nicht als Überschrift, und bricht die Gliederung nicht', () => {
+    expect(html).not.toContain('<h3');
+    expect(html).not.toContain('<h2');
+    expect(html).toContain('snap-x snap-mandatory');
+    expect(html).toContain('md:grid-cols-2');
   });
 
   it('behält Kennung je Zeichnung und staffelt höchstens vier Auftritte zu je 120 ms', () => {

@@ -103,7 +103,7 @@ export default async function HomePage() {
             </h1>
           </div>
 
-          <div className="sm:mx-auto sm:w-full sm:max-w-xl lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:-mr-8 lg:max-w-none lg:self-start xl:-mr-12">
+          <div className="sm:mx-auto sm:w-full sm:max-w-xl lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:-mr-8 lg:max-w-none lg:self-end xl:-mr-12">
             <FraesbahnBewegung>
               <ImagePlaceholder
                 frei
@@ -193,14 +193,20 @@ export default async function HomePage() {
             lead="Jeder Bereich hat einen klaren Ablauf — vom direkten Kauf bis zur Projektplanung."
           />
 
-          {/* Mobil ein kompaktes Zweierraster (Icon und Titel), ab 640 px die volle Stückliste */}
-          <ol className="grid grid-cols-2 border-t border-border lg:col-span-8">
+          {/* Mobil eine Leiste mit Anschnitt (Icon über dem Titel), ab 640 px die volle Stückliste */}
+          <ol className="-mx-5 flex snap-x snap-mandatory overflow-x-auto scroll-px-5 border-y border-border px-5 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:border-t sm:border-b-0 sm:px-0 sm:scroll-px-0 lg:col-span-8">
             {QUICK_ENTRIES.map((area, index) => (
-              <li key={area.key} className={cn('border-b border-border', index % 2 === 0 && 'border-r')}>
+              <li
+                key={area.key}
+                className={cn(
+                  'flex shrink-0 basis-2/5 snap-start border-r border-border sm:basis-auto sm:border-b sm:border-r-0',
+                  index % 2 === 0 && 'sm:border-r',
+                )}
+              >
                 <AreaScope area={area.key}>
                   <Link
                     href={area.href}
-                    className="group relative flex h-full min-h-touch flex-col gap-2 p-3 transition-colors duration-quick hover:bg-area-soft sm:flex-row sm:gap-4 sm:py-5 sm:pl-4 sm:pr-4"
+                    className="group relative flex h-full min-h-touch flex-1 flex-col gap-2 p-3 transition-colors duration-quick hover:bg-area-soft sm:flex-row sm:gap-4 sm:py-5 sm:pl-4 sm:pr-4"
                   >
                     {/* Bereichsfarbe als Kante, wächst beim Hover (nur feiner Zeiger) */}
                     <span
@@ -214,12 +220,13 @@ export default async function HomePage() {
                     <Seitenwechsel name={bereichsName(area.key)}>
                       <BereichIcon area={area.key} size={40} className="shrink-0 text-area-strong" />
                     </Seitenwechsel>
-                    <span className="min-w-0 flex-1">
+                    {/* Ab 640 px füllt die Spalte die Kachel: die Kennung sitzt an der Unterkante, alle auf einer Grundlinie */}
+                    <span className="min-w-0 flex-1 sm:flex sm:flex-col">
                       <span className="block text-small font-semibold text-foreground group-hover:text-area-strong sm:text-title-sm">
                         {area.label}
                       </span>
                       <span className="mt-1 hidden text-small text-foreground-muted sm:block">{area.summary}</span>
-                      <span className="mt-3 hidden font-mono text-caption uppercase tracking-label text-foreground-muted sm:block">
+                      <span className="mt-3 hidden font-mono text-caption uppercase tracking-label text-foreground-muted sm:mt-auto sm:block sm:pt-3">
                         {PROCESS_LABELS[area.process].label}
                       </span>
                     </span>
@@ -236,24 +243,35 @@ export default async function HomePage() {
       <Section tone="sunken" labelledBy="ablauf-titel">
         <AreaScope area="autoschluessel">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
-            <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
-              <SectionHeading
-                id="ablauf-titel"
-                nummer="02"
-                eyebrow="Schwerpunkt Autoschlüssel"
-                title="So läuft Ihr Autoschlüssel-Auftrag ab"
-                lead="Fünf Schritte, mobil bedienbar. Sie geben nur die Daten an, die für Ihr Fahrzeug gebraucht werden."
-                profillinie
-              />
-              <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href="/autoschluessel/anfrage" pfeil>
-                  Ablauf starten
-                </ButtonLink>
-                <ButtonLink href="/autoschluessel" variant="outline">
-                  Alle Leistungen ansehen
-                </ButtonLink>
+            <div className="flex flex-col lg:col-span-5">
+              <div className="lg:sticky lg:top-28 lg:self-start">
+                <SectionHeading
+                  id="ablauf-titel"
+                  nummer="02"
+                  eyebrow="Schwerpunkt Autoschlüssel"
+                  title="So läuft Ihr Autoschlüssel-Auftrag ab"
+                  lead="Fünf Schritte, mobil bedienbar. Sie geben nur die Daten an, die für Ihr Fahrzeug gebraucht werden."
+                  profillinie
+                />
+                {/* Telefon: Knöpfe untereinander, der sekundäre Weg als Textlink; ab 640 px nebeneinander */}
+                <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:gap-x-6">
+                  <ButtonLink href="/autoschluessel/anfrage" pfeil className="w-full sm:w-auto">
+                    Ablauf starten
+                  </ButtonLink>
+                  <Link
+                    href="/autoschluessel"
+                    className="group inline-flex min-h-touch items-center gap-1.5 text-body font-semibold text-primary sm:hidden"
+                  >
+                    Alle Leistungen
+                    <Weiter />
+                  </Link>
+                  <ButtonLink href="/autoschluessel" variant="outline" className="hidden sm:inline-flex">
+                    Alle Leistungen
+                  </ButtonLink>
+                </div>
               </div>
-              <div className="mt-10 hidden rounded-lg border border-border bg-surface p-6 lg:block">
+              {/* Funkschlüssel direkt auf der Fläche, bis an den Rand ragend; Unterkante bündig mit dem letzten Schritt */}
+              <div className="-ml-8 mt-auto hidden pt-10 lg:block">
                 <SchluesselGrafik params={{ typ: 'funk' }} title="Funkschlüssel in Seitenansicht" />
               </div>
             </div>
@@ -280,30 +298,34 @@ export default async function HomePage() {
 
       {/* Vertrauen als Prüfprotokoll: Kopf links läuft mit, rechts die nummerierten Prüfpunkte */}
       <Section labelledBy="vertrauen-titel">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
-          <SectionHeading
-            id="vertrauen-titel"
-            className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start"
-            nummer="03"
-            eyebrow="Warum wir"
-            title="Sachlich, nachvollziehbar, ohne Überraschungen"
-            lead="Wir arbeiten wie ein Fachbetrieb, nicht wie ein Vermittler."
-          />
+        <SectionHeading
+          id="vertrauen-titel"
+          nummer="03"
+          eyebrow="Warum wir"
+          title="Sachlich, nachvollziehbar, ohne Überraschungen"
+          lead="Wir arbeiten wie ein Fachbetrieb, nicht wie ein Vermittler."
+        />
 
-          <ol className="border-t border-border lg:col-span-7">
-            {TRUST_POINTS.map((point, index) => (
-              <li key={point.title} className="grid grid-cols-12 gap-x-4 border-b border-border py-6">
-                <span className="col-span-2 font-mono text-title font-semibold tabular-nums text-primary sm:col-span-1">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div className="col-span-10 sm:col-span-11">
-                  <p className="text-title-sm font-semibold text-foreground">{point.title}</p>
-                  <p className="mt-2 max-w-measure text-body text-foreground-muted">{point.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
+        {/* Schriftfeld mit Haarlinien: mobil zwei Spalten, ab 1024 px vier Felder nebeneinander */}
+        <ol className="mt-10 grid grid-cols-2 border-y border-border lg:grid-cols-4">
+          {TRUST_POINTS.map((point, index) => (
+            <li
+              key={point.title}
+              className={cn(
+                'py-6 pr-3 sm:pr-4',
+                index % 2 === 1 && 'border-l border-border pl-3 sm:pl-4',
+                index === 2 && 'lg:border-l lg:border-border lg:pl-4',
+                index >= 2 && 'border-t border-border lg:border-t-0',
+              )}
+            >
+              <span className="block font-mono text-title font-semibold tabular-nums text-primary">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <p className="mt-3 text-title-sm font-semibold text-foreground">{point.title}</p>
+              <p className="mt-2 max-w-measure text-body text-foreground-muted">{point.body}</p>
+            </li>
+          ))}
+        </ol>
       </Section>
 
       {/* Direkt kaufen: zwei Zeichnungsblätter */}
@@ -317,7 +339,7 @@ export default async function HomePage() {
               href: '/schluessel-nach-code',
               titel: 'Schlüssel nach Code',
               text: 'Code eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.',
-              link: 'Codelinien ansehen',
+              link: 'Codelinien',
               grafik: <SchluesselGrafik params={{ typ: 'zylinder', code: 'SM24' }} title="Schlüssel mit Profil nach Code" />,
             },
             {

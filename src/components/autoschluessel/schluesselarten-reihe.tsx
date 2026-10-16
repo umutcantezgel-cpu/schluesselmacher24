@@ -21,7 +21,9 @@ export const SCHLUESSELARTEN_REIHE: ReadonlyArray<{
 
 /**
  * `blatt` (Standard): Zeichnungsblatt mit Kartenrahmen, je Ansicht Name und Erklärung.
- * `kopf`: 2×2-Raster ohne Rahmen für den Seitenkopf; je Zeichnung nur Kennung und Name.
+ * `kopf`: für den Seitenkopf. Mobil eine Leiste mit Anschnitt (der Kopfknopf bleibt im ersten
+ * Bildschirm), ab `md` ein 2×2-Raster; je Zeichnung nur Kennung und Name. Der Name ist ein
+ * Absatz, keine Überschrift, damit die Gliederung der Seite bei h1 und h2 bleibt.
  */
 export type SchluesselartenVariante = 'blatt' | 'kopf';
 
@@ -45,12 +47,20 @@ export function SchluesselartenReihe({
       <ol
         className={cn(
           kopf
-            ? 'grid grid-cols-2 gap-x-4 gap-y-6 rounded-lg bg-area-soft/40 p-4 sm:gap-x-6 sm:p-6'
+            ? '-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 scroll-px-5 contain-inline-size sm:-mx-6 sm:px-6 sm:scroll-px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:scroll-px-0'
             : 'grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border lg:grid-cols-4',
         )}
       >
         {SCHLUESSELARTEN_REIHE.map(({ art, typ }, index) => (
-          <li key={art} className={cn('flex flex-col', !kopf && 'bg-surface p-4 sm:p-5')}>
+          <li
+            key={art}
+            className={cn(
+              'flex flex-col',
+              kopf
+                ? 'shrink-0 basis-3/4 snap-start rounded-lg bg-area-soft/40 p-4 md:basis-auto sm:p-5'
+                : 'bg-surface p-4 sm:p-5',
+            )}
+          >
             <div className="sm24-reveal" style={motionStyle(index * 0.12)}>
               <p className="font-mono text-caption uppercase tracking-label text-foreground-subtle">
                 <span className="tabular-nums">{String(index + 1).padStart(2, '0')}</span>
@@ -59,9 +69,11 @@ export function SchluesselartenReihe({
               </p>
               <SchluesselGrafik params={{ typ, code: art }} title={`Zeichnung: ${keyKindLabel(art)}`} className="mt-2 w-full" />
             </div>
-            <h3 className={cn('mt-3 font-semibold text-foreground', kopf ? 'text-body' : 'text-title-sm')}>
-              {keyKindLabel(art)}
-            </h3>
+            {kopf ? (
+              <p className="mt-3 text-body font-semibold text-foreground">{keyKindLabel(art)}</p>
+            ) : (
+              <h3 className="mt-3 text-title-sm font-semibold text-foreground">{keyKindLabel(art)}</h3>
+            )}
             {!kopf && <p className="mt-1 text-small text-foreground-muted">{keyKindDescription(art)}</p>}
             {!kopf && art === 'smart-key' && (
               <p className="mt-2 text-small text-foreground-muted">
