@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { Loader2, ShieldCheck } from 'lucide-react';
 
 import type {
   AppointmentInfo,
@@ -37,6 +36,8 @@ import {
 import { PreisAnzeige } from '@/components/autoschluessel/preis-anzeige';
 import { TerminAuswahl } from '@/components/autoschluessel/termin-auswahl';
 import { Bestaetigung } from '@/components/autoschluessel/bestaetigung';
+import { GlyphLaden } from '@/components/visual/glyphen/laden';
+import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
 
 /* ==========================================================================
    Autoschlüssel — geführter Ablauf in 13 Schritten
@@ -853,7 +854,7 @@ export function Assistent({
               checked={data.makeSlug === entry.slug}
               onSelect={selectMake}
               title={entry.name}
-              description={`${entry.models.length} Modelle hinterlegt`}
+              description={<><span className="font-mono tabular-nums">{entry.models.length}</span> Modelle hinterlegt</>}
             />
           ))}
         </div>
@@ -904,7 +905,7 @@ export function Assistent({
           )}
 
           {make.intro && (
-            <p className="text-[14px] leading-relaxed text-foreground-muted">{make.intro}</p>
+            <p className="text-small leading-relaxed text-foreground-muted">{make.intro}</p>
           )}
         </div>
       )}
@@ -927,6 +928,7 @@ export function Assistent({
                 id={id}
                 aria-describedby={describedBy}
                 invalid={invalid}
+                className="font-mono tabular-nums"
                 value={data.year}
                 onChange={(event) => flow.set('year', event.target.value)}
               >
@@ -1047,7 +1049,7 @@ export function Assistent({
               />
             ))}
           </div>
-          <p className="text-[13px] leading-relaxed text-foreground-subtle">
+          <p className="text-small leading-relaxed text-foreground-subtle">
             Unsicher? Wählen Sie die Art, die am ehesten passt. Anhand Ihrer Fotos prüfen wir das
             und melden uns, falls etwas anderes verbaut ist.
           </p>
@@ -1058,7 +1060,7 @@ export function Assistent({
       {flow.step.id === 'vorhandene-schluessel' && (
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <p className="text-sm font-semibold text-foreground">Funktionierende Schlüssel</p>
+            <p className="text-small font-semibold text-foreground">Funktionierende Schlüssel</p>
             <InfoTip hint={WORKING_KEYS_INFO} />
           </div>
           <div className="grid gap-2">
@@ -1375,8 +1377,8 @@ export function Assistent({
       {flow.step.id === 'preis' && (
         <div className="space-y-5">
           {quoteLoading && (
-            <p className="flex items-center gap-2 text-[15px] text-foreground-muted" role="status">
-              <Loader2 size={17} className="animate-spin" aria-hidden />
+            <p className="flex items-center gap-2 text-body text-foreground-muted" role="status">
+              <GlyphLaden size={17} className="animate-spin motion-reduce:animate-none" />
               Ihr Preis wird ermittelt …
             </p>
           )}
@@ -1391,8 +1393,8 @@ export function Assistent({
             <>
               <Card variant="muted">
                 <CardBody>
-                  <p className="text-[13px] leading-relaxed text-foreground-muted">
-                    Grundlage: {make?.name} {modelName}, Baujahr {data.year},{' '}
+                  <p className="text-small leading-relaxed text-foreground-muted">
+                    Grundlage: {make?.name} {modelName}, Baujahr <span className="font-mono tabular-nums">{data.year}</span>,{' '}
                     {data.keyKind ? KEY_KIND_OPTIONS[data.keyKind as KeyKind].label : ''},{' '}
                     {service?.label}.
                   </p>
@@ -1424,8 +1426,8 @@ export function Assistent({
               </p>
             </Alert>
           ) : (
-            <p className="flex items-center gap-2 text-[15px] text-foreground-muted" role="status">
-              <Loader2 size={17} className="animate-spin" aria-hidden />
+            <p className="flex items-center gap-2 text-body text-foreground-muted" role="status">
+              <GlyphLaden size={17} className="animate-spin motion-reduce:animate-none" />
               Ihre Angaben werden geprüft …
             </p>
           )}
@@ -1435,31 +1437,32 @@ export function Assistent({
       {/* 12 — Anzahlung */}
       {flow.step.id === 'anzahlung' && quote && (
         <div className="space-y-5">
-          <Card>
-            <CardBody>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
-                Jetzt fällig
+          <dl className="border-y border-border py-5">
+            <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+              Jetzt fällig
+            </dt>
+            <dd className="mt-1 font-mono text-title font-semibold tabular-nums text-foreground">
+              {formatCents(quote.depositCents)}
+            </dd>
+          </dl>
+
+          <div className="space-y-2">
+            <p className="text-small leading-relaxed text-foreground-muted">
+              Die Anzahlung wird <strong className="font-semibold text-foreground">vollständig
+              auf den Gesamtpreis angerechnet</strong>. Sie ist kein Zuschlag und keine
+              Bearbeitungsgebühr.
+            </p>
+            {quote.mode === 'fest' && quote.remainderCents !== undefined && (
+              <p className="text-small leading-relaxed text-foreground-muted">
+                Beim Termin verbleiben damit <span className="font-mono tabular-nums">{formatCents(quote.remainderCents)}</span>.
               </p>
-              <p className="mt-2 font-display text-3xl font-bold text-foreground">
-                {formatCents(quote.depositCents)}
+            )}
+            {quote.mode !== 'fest' && (
+              <p className="text-small leading-relaxed text-foreground-muted">
+                Den Restbetrag nennen wir Ihnen, sobald der Gesamtpreis feststeht.
               </p>
-              <p className="mt-3 text-[14px] leading-relaxed text-foreground-muted">
-                Die Anzahlung wird <strong className="font-semibold text-foreground">vollständig
-                auf den Gesamtpreis angerechnet</strong>. Sie ist kein Zuschlag und keine
-                Bearbeitungsgebühr.
-              </p>
-              {quote.mode === 'fest' && quote.remainderCents !== undefined && (
-                <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                  Beim Termin verbleiben damit {formatCents(quote.remainderCents)}.
-                </p>
-              )}
-              {quote.mode !== 'fest' && (
-                <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                  Den Restbetrag nennen wir Ihnen, sobald der Gesamtpreis feststeht.
-                </p>
-              )}
-            </CardBody>
-          </Card>
+            )}
+          </div>
 
           <Alert tone="info" title="Wofür die Anzahlung steht">
             <p>
@@ -1488,8 +1491,8 @@ export function Assistent({
             description="Sie wird vollständig auf den Gesamtpreis angerechnet."
           />
 
-          <p className="flex items-start gap-2 text-[13px] leading-relaxed text-foreground-subtle">
-            <ShieldCheck size={15} className="mt-0.5 shrink-0" aria-hidden />
+          <p className="flex items-start gap-2 text-small leading-relaxed text-foreground-subtle">
+            <GlyphPruefsiegel size={15} className="mt-0.5 shrink-0" />
             Im nächsten Schritt wählen Sie Ihren Termin. Erst danach senden Sie die Anfrage ab.
           </p>
         </div>

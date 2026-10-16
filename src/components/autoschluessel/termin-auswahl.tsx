@@ -83,7 +83,7 @@ export function TerminAuswahl({
 
       {loading && (
         <p className="flex items-center gap-2 text-body text-foreground-muted" role="status">
-          <GlyphLaden size={17} className="animate-spin" />
+          <GlyphLaden size={17} className="animate-spin motion-reduce:animate-none" />
           Freie Termine werden geladen …
         </p>
       )}
@@ -123,8 +123,8 @@ export function TerminAuswahl({
                     value={`${slot.date}T${slot.time}`}
                     checked={selectedDate === slot.date && selectedTime === slot.time}
                     onSelect={() => onSelect(slot.date, slot.time)}
-                    title={`${slot.time} Uhr`}
-                    description={`Dauer ${formatDuration(slot.durationMinutes)}`}
+                    title={<><span className="font-mono tabular-nums">{slot.time}</span> Uhr</>}
+                    description={<>Dauer <span className="font-mono tabular-nums">{formatDuration(slot.durationMinutes)}</span></>}
                   />
                 ))}
               </div>

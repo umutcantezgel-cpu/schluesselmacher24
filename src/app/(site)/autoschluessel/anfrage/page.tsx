@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-
 import { getCollection, getPageContent, getSettings, getVehicleMakes } from '@/lib/data';
 import { paymentStatus } from '@/lib/integrations';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { Assistent } from './assistent';
 
 const ROUTE = 'autoschluessel/anfrage';
@@ -84,6 +83,7 @@ export default async function AutoschluesselAnfragePage(props: {
     <>
       <PageHeader
         eyebrow={PROCESS_LABELS['termin-mit-anzahlung'].label}
+        art="arbeit"
         title={page?.headline ?? FALLBACK_TITLE}
         lead={
           page?.subline
@@ -117,22 +117,27 @@ export default async function AutoschluesselAnfragePage(props: {
           title="Passende Seiten zu diesem Ablauf"
           lead="Falls Sie vor dem Absenden noch etwas nachlesen möchten."
         />
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 border-t border-border">
           {RELATED_LINKS.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
-                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                className="group flex min-h-touch items-center justify-between gap-6 py-6"
               >
-                <span className="text-[15px] font-bold text-foreground group-hover:text-primary">
-                  {link.label}
+                <span className="min-w-0">
+                  <span className="block text-title-sm font-semibold text-foreground group-hover:text-primary">
+                    {link.label}
+                  </span>
+                  <span className="mt-1.5 block max-w-measure text-small leading-relaxed text-foreground-muted">
+                    {link.description}
+                  </span>
                 </span>
-                <span className="mt-1.5 flex-1 text-[13px] leading-relaxed text-foreground-muted">
-                  {link.description}
-                </span>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
+                <span className="flex shrink-0 items-center gap-2 text-small font-semibold text-primary">
                   Ansehen
-                  <ArrowRight size={14} aria-hidden />
+                  <GlyphPfeilRechts
+                    size={18}
+                    className="transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                  />
                 </span>
               </Link>
             </li>

@@ -86,11 +86,12 @@ export async function kontextFuer(browser, geraet, { reduziert = false } = {}) {
 
 /**
  * Kennungen der lesenden Server Actions (`fetch*` aus `src/lib/actions/booking.ts`),
- * aus den Manifesten der Builds gelesen (aktueller Build und eingefrorener E0-Build).
+ * aus den Manifesten der Builds gelesen (aktueller Build, Entwicklungsserver unter `.next/dev`
+ * und eingefrorener E0-Build).
  * Alles andere gilt als schreibend und wird abgefangen – auch ohne Prüf-E-Mail.
  */
 function leseActions() {
-  const ordner = [process.env.SM24_NEXT_DIR, path.join(REPO, '.next'), '/root/sm24-e0/.next'].filter(Boolean);
+  const ordner = [process.env.SM24_NEXT_DIR, path.join(REPO, '.next'), path.join(REPO, '.next', 'dev'), '/root/sm24-e0/.next'].filter(Boolean);
   const ids = new Set();
   for (const o of ordner) {
     const datei = path.join(o, 'server', 'server-reference-manifest.json');

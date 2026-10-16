@@ -55,5 +55,12 @@
       "suchen": "import \\{ istPlatzhalter \\} from '@/lib/platzhalter';\\n",
       "ersetzen": ""
     }
+  ],
+  "src/app/(site)/autoschluessel/anfrage/assistent.tsx": [
+    {
+      "grund": "Modellzähler der Markenwahl in Mono-Ziffern (KERN 1.7: Zähler in font-mono tabular-nums); gleicher Text, nur umschlossen (E4-BAUMEISTER-16, D-033)",
+      "suchen": "description=\\{<><span className=\"font\\-mono tabular\\-nums\">\\{entry\\.models\\.length\\}</span> Modelle hinterlegt</>\\}",
+      "ersetzen": "description={`${entry.models.length} Modelle hinterlegt`}"
+    }
   ]
 }

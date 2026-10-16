@@ -3,6 +3,7 @@
 // Aufruf: node _werkstatt/werkzeuge/funktionsliste.mjs [--nur F-01,F-04] [--json <datei>]
 // Je Funktion: eigene Kontexte (kontextFuer), Zeitlimit 60 s, Fehler einer Funktion beenden das Skript nicht.
 // Schreibende Anfragen fängt attrappenSetzen() aus lib.mjs ab; Formulare tragen PRUEF_EMAIL.
+// Optional SM24_SCHRITTBILDER=<Ordner>: ein Bild je Ablaufschritt (Beleg der Darstellung, schreibt nichts ins Repo).
 // Wartet vor dem Start, solange /tmp/sm24-messfenster.lock existiert (höchstens 40 min).
 // Exit: 0 fertig (auch mit NICHT BESTANDEN), 2 Bedienfehler, 1 technischer Fehler.
 import { existsSync, readFileSync, writeFileSync, statSync } from 'node:fs';
@@ -313,6 +314,17 @@ async function absendeKnopf(page) {
   return null;
 }
 
+const SCHRITTBILDER = process.env.SM24_SCHRITTBILDER ?? null;
+let schrittBildNr = 0;
+
+/** Ganzseitiges Bild des aktuellen Schritts, nur mit SM24_SCHRITTBILDER. Fehler sind unerheblich. */
+async function schrittBild(page, titel) {
+  if (!SCHRITTBILDER) return;
+  schrittBildNr += 1;
+  const name = `${String(schrittBildNr).padStart(2, '0')}-${(titel || 'ohne-titel').toLowerCase().replace(/[^a-z0-9äöüß]+/g, '-').slice(0, 40)}.jpg`;
+  await page.screenshot({ path: path.join(SCHRITTBILDER, name), type: 'jpeg', quality: 60, fullPage: true }).catch(() => {});
+}
+
 /**
  * Geht Schritt für Schritt vor: füllen, Termin wählen, „Weiter“ klicken.
  * Klickt NIE den Absende-Knopf; er wird zurückgegeben. Grund ist gesetzt, wenn der Ablauf vorher endet.
@@ -348,10 +360,12 @@ async function durchlaufe(page, { emailWert = PRUEF_EMAIL, maxSchritte = 20, nur
         const diag = felder.slice(0, 8)
           .map((f) => `${f.typ}${f.name ? `(${f.name})` : ''}=${f.checked ? 'an' : (f.wert || 'leer')}`)
           .join(', ');
+        await schrittBild(page, `${titel}-gesperrt`);
         grund = `„Weiter“ gesperrt im Schritt „${titel}“ [Felder: ${diag}]${letzteFehler.length ? ` [Fehler: ${letzteFehler[0]}]` : ''}`;
         schritte.push({ titel, aktion: 'gesperrt' });
         break;
       }
+      await schrittBild(page, titel);
       await weiter.first().click();
       schritte.push({ titel, aktion: 'weiter' });
       console.error(`    · „${titel}“ in ${((Date.now() - t0) / 1000).toFixed(1)} s`);
@@ -359,6 +373,7 @@ async function durchlaufe(page, { emailWert = PRUEF_EMAIL, maxSchritte = 20, nur
       await warteBis(async () => (await stepTitel(page)) !== titel, 6000, 200);
       continue;
     }
+    await schrittBild(page, titel);
     absende = await absendeKnopf(page);
     schritte.push({ titel, aktion: absende ? 'letzter' : 'ohne-weiter-und-absenden' });
     if (!absende) grund = `weder „Weiter“ noch Absende-Knopf in „${titel}“`;
