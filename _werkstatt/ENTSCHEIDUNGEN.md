@@ -504,3 +504,13 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - Prüfungen: Typprüfung 0, ESLint 0, Unit 69 Dateien mit 1163 Tests (neu: `option-card.test.tsx`, `flow-shell.test.tsx`, je ein Fall in `page-header.test.tsx` und `schluessel.test.tsx`), Logikwächter 0 abweichend, Wertesuche 0 ohne Ausnahme.
   - Funktionsliste 14/14 gegen Port 3001. F-12 lief zuerst in eine Zeitüberschreitung, weil der Entwicklungsserver die Route kalt übersetzte; der zweite Lauf ist bestanden.
   - Bilder: `/root/sm24-bilder/E6-L-31/`.
+
+## D-046 · Einleitung von Warenkorb und Kasse bleibt sichtbar, Abstimmungen der Runde 2
+- **Anlass:** KERN 1.14 sah vor, die Einleitung des Kopfes im Leerzustand über `PageHeader leadClassName="korb-leer:hidden"` auszublenden. Die Gegenprüfung von H10 belegt, dass das nicht trägt: Der Kopf steht außerhalb von `group/warenkorb`, die Variante greift dort nicht. Verlegt man die Gruppe, gilt sie auch im Ladezustand, weil die Ladekarte `data-leerzustand` trägt. Dann springt die Einleitung im gefüllten Korb nach der Hydrierung ein, mobil rund 88 px (CLS), und der leere Korb bekommt ein spätes LCP (L-07a: LCP 1004 ms, CLS 0,000).
+- **Entscheidung:** In Warenkorb und Kasse steht die Einleitung im Kopf und bleibt in allen Zuständen sichtbar. Der Wortlaut wird zustandsneutral, aber nur als Textvorschlag. Die Kasse holt ihre Einleitung wortgleich in den Kopf (H11 Befund 3), ohne `leadClassName`. Die optionale Prop bleibt im Baustein (additiv, getestet) und wird derzeit nicht genutzt. KERN 1.14 ist im Text angepasst.
+- **Abstimmungen für die Pakete der Runde 2:**
+  - **Leere Zustände:** H10 und H11 setzen die Rohling-Zeichnung gleich, als Generator direkt in `<div aria-hidden="true" className="sm24-ruhig w-40 shrink-0">` mit `title=""`, ohne `ImagePlaceholder` (der zeichnet einen Rahmen). H11 baut nach H10.
+  - **Warenkorb:** Das Positionsbild der Codeposition blendet beim Einhängen ohne Registereintrag ein. Es bekommt `sm24-ruhig` an der Hülle (nur `className`).
+  - **Funktionsliste:** Sie liest die Endsumme als „Gesamtbetrag“ und weiter als „Gesamtsumme“, damit F-01 vor und nach H10 besteht.
+  - **Logikwächter:** Vorab eingetragen sind die Ausnahmen für `kamera` in `photo-upload.tsx` (H06) und die Suchform des Modellzählers im Assistenten als Alternation aus alter und neuer Form (H04). Beide sind wirkungslos, solange der neue Wortlaut fehlt; der Wächter bleibt bei 0 abweichend.
+  - **Startseite des Assistenten:** H04 bekommt zusätzlich `autoschluessel/anfrage/page.tsx` für den Zeilenpfeil unter „01 Weiterführend“ nach K-006 (Hinweis aus der Gegenprüfung H07).

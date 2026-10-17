@@ -113,8 +113,8 @@
   ],
   "src/app/(site)/autoschluessel/anfrage/assistent.tsx": [
     {
-      "grund": "Modellzähler der Markenwahl in Mono-Ziffern (KERN 1.7: Zähler in font-mono tabular-nums); gleicher Text, nur umschlossen (E4-BAUMEISTER-16, D-033)",
-      "suchen": "description=\\{<><span className=\"font\\-mono tabular\\-nums\">\\{entry\\.models\\.length\\}</span> Modelle hinterlegt</>\\}",
+      "grund": "Modellzähler der Markenwahl in Mono-Ziffern (KERN 1.7: Zähler in font-mono tabular-nums); gleicher Text, nur umschlossen (E4-BAUMEISTER-16, D-033); Mikrotext „n Modelle“ statt „n Modelle hinterlegt“, einzeilig in Mono (E6-BEFUND2-H04, Sichtabnahme E5-L-29 Typografie 6)",
+      "suchen": "description=\\{(?:<><span className=\"font\\-mono tabular\\-nums\">\\{entry\\.models\\.length\\}</span> Modelle hinterlegt</>|<span className=\"whitespace\\-nowrap font\\-mono tabular\\-nums\">\\{entry\\.models\\.length\\} Modelle</span>)\\}",
       "ersetzen": "description={`${entry.models.length} Modelle hinterlegt`}"
     },
     {

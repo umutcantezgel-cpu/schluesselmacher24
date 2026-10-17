@@ -64,7 +64,8 @@ function summeWerte(dl) {
     const k = Object.keys(dl).find((schluessel) => schluessel.startsWith(vorn));
     return k ? euroZuCent(dl[k]) : null;
   };
-  return { zwischen: finde('Zwischensumme'), versand: finde('Versand'), gesamt: finde('Gesamtsumme') };
+  // Summenbegriff seit D-045 „Gesamtbetrag“; „Gesamtsumme“ bleibt für ältere Stände lesbar.
+  return { zwischen: finde('Zwischensumme'), versand: finde('Versand'), gesamt: finde('Gesamtbetrag') ?? finde('Gesamtsumme') };
 }
 
 async function hauptText(page) {
