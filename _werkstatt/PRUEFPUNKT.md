@@ -3,7 +3,7 @@
 - **Etappe:** E6 Abschluss. Runde 2 abgenommen, Sichtabnahme E6-L-34 fertig (vier Berichte `_werkstatt/berichte/E6-L-34-sichtabnahme-*.md`), KERN 1.16 (Register vervollständigt, E6-L-35, Commit 2cdcbab, Build 208/208).
 - **Laufend:**
   - Prüfstufe C, Abschluss: Workflow `wf_2708b732-5cf` (Skript `workflows/scripts/pruefstufe-c-abschluss-wf_3ee9d33c-56a.js`) mit Teil 2 und 4 als Nachlese, Teil 3b Nachlauf Funktionsliste und Tastatur gegen 2cdcbab, Teil 5b Register-Nachprüfung, dann Teil 6 Ergebnis (`_werkstatt/protokolle/E6-PRUEFER-C-ergebnis.md`). Berichte der Teile 1, 3, 5 aus dem ersten Lauf: `_werkstatt/protokolle/E6-PRUEFER-C-teilberichte-1-3-5.md`.
-  - E6-D-02 Dokumentar (Paket `_werkstatt/pakete/E6-DOKUMENTAR-02.md`): Abschluss-Bildsatz nach `_werkstatt/bilder/abschluss/`, Blindvergleich `_werkstatt/bilder/blind/` (Schlüssel nur unter `/root/sm24-bilder/blind-schluessel/`), Galerie `_werkstatt/bilder/galerie.html`.
+  - E6-D-02 Dokumentar (Paket `_werkstatt/pakete/E6-DOKUMENTAR-02.md`): Abschluss-Bildsatz nach `_werkstatt/bilder/abschluss/`, Blindvergleich `_werkstatt/bilder/blind/` (Schlüssel außerhalb des Repositorys; Ort steht nur in der Notiz des Orchestrators im Scratchpad), Galerie `_werkstatt/bilder/galerie.html`.
   - Server: Port 3000 mit Build 2cdcbab, Port 3100 E0 (`/root/sm24-e0`), Port 3001 Entwicklung.
 - **Fertig seit dem letzten Prüfpunkt:** Tastatur-Eingabe im Werkzeug berichtigt (F-01 per Tastatur mobil bestanden), Registerabgleich (KERN 1.16), verwaiste Sperre entfernt.
 - **Als Nächstes:**
