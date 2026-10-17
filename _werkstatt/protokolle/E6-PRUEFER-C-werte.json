@@ -1,0 +1,154 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-10-17T13:57:45.891Z",
+  "argumente": {
+    "_": [],
+    "json": "_werkstatt/protokolle/E6-PRUEFER-C-werte.json"
+  },
+  "seit": "fcbcfb2",
+  "dateien": 227,
+  "summeOhneAusnahmen": 0,
+  "summeAusnahmen": 20,
+  "funde": [
+    {
+      "datei": "src/app/(site)/layout.tsx",
+      "zeile": 63,
+      "kategorie": "Hex-Farbe",
+      "fund": "#f7f9fb",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/forms/photo-upload.tsx",
+      "zeile": 102,
+      "kategorie": "Hex-Farbe",
+      "fund": "#fff",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/ablauf.test.tsx",
+      "zeile": 20,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/ablauf.test.tsx",
+      "zeile": 21,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/code-fundstelle.test.tsx",
+      "zeile": 23,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/code-fundstelle.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/profilschnitt.test.tsx",
+      "zeile": 20,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/profilschnitt.test.tsx",
+      "zeile": 21,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/schliessplan.test.tsx",
+      "zeile": 23,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/schliessplan.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/schluessel.test.tsx",
+      "zeile": 23,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/schluessel.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/stiftzuhaltung.test.tsx",
+      "zeile": 21,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/stiftzuhaltung.test.tsx",
+      "zeile": 22,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/tuer-schutz.test.tsx",
+      "zeile": 23,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/tuer-schutz.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/zylinder-mass.test.tsx",
+      "zeile": 23,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/zylinder-mass.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/og/bereichsbild.test.ts",
+      "zeile": 26,
+      "kategorie": "Farbfunktion",
+      "fund": "hsl(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/og/bereichsbild.tsx",
+      "zeile": 38,
+      "kategorie": "Farbfunktion",
+      "fund": "hsl(",
+      "ausnahme": true
+    }
+  ]
+}

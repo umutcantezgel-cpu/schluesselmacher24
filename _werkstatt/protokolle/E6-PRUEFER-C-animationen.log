@@ -1,0 +1,62 @@
+# Animationen · 2026-10-17T14:29:42.184Z · Server http://localhost:3000 · Gerät desktop
+
+Bekannte Keyframes (23): bounce, menue-ein, ping, pulse, schleier-ein, schublade-ein, sm24-aufdecken, sm24-dash, sm24-draw, sm24-erscheinen, sm24-fade, sm24-feder-heben, sm24-lesen-aktiv, sm24-pop, sm24-reveal, sm24-schluessel-ein, sm24-schritt-vor, sm24-schritt-zurueck, sm24-scrub-marke, sm24-scrub-x, sm24-scrub-y, sm24-stift-heben, spin
+
+| Ansicht | CSS-Animationen (Keyframe × Anzahl) | WAAPI (Element) | Übergänge (Eigenschaft × Anzahl) | unbekannt |
+|---|---|---|---|---|
+| H01-start | sm24-fade ×1, sm24-draw ×27, sm24-reveal ×7, sm24-aufdecken ×1, sm24-scrub-marke ×10, sm24-scrub-y ×2, sm24-dash ×3, sm24-pop ×41 | g.sm24-fade, path.stroke-foreground, g | keine | keine |
+| H02-autoschluessel | sm24-fade ×1, sm24-draw ×7, sm24-reveal ×8, sm24-dash ×6, sm24-pop ×30, sm24-scrub-marke ×10, sm24-scrub-y ×2 | keine | keine | keine |
+| H03-modell-golf | sm24-reveal ×10, sm24-draw ×9, sm24-pop ×42, sm24-dash ×3 | keine | keine | keine |
+| H04-assistent | keine | keine | keine | keine |
+| H05-code-shop | sm24-draw ×8, sm24-pop ×2 | keine | keine | keine |
+| H06-code-produkt | sm24-reveal ×2, sm24-pop ×8, sm24-draw ×10, sm24-fade ×1, sm24-aufdecken ×1 | keine | keine | keine |
+| H07-zylinder-konfigurator | schleier-ein ×3 | keine | keine | keine |
+| H08-schliessanlagen | sm24-reveal ×4, sm24-fade ×5, sm24-draw ×32, sm24-pop ×43 | keine | keine | keine |
+| H09-tuertechnik | sm24-fade ×1, sm24-draw ×6, sm24-pop ×5 | keine | keine | keine |
+| H10-warenkorb | spin ×1 | keine | keine | keine |
+| H11-kasse | keine | keine | keine | keine |
+| H12-ratgeber | sm24-draw ×6, sm24-fade ×8, sm24-pop ×3, sm24-lesen-aktiv ×16, sm24-scrub-y ×2 | keine | keine | keine |
+
+Befunde (unbekannte Keyframes): 0
+JSON-Protokoll: /root/sm24-bilder/e6-c/animationen-desktop.json
+# Animationen · 2026-10-17T14:31:05.228Z · Server http://localhost:3000 · Gerät mobil
+
+Bekannte Keyframes (23): bounce, menue-ein, ping, pulse, schleier-ein, schublade-ein, sm24-aufdecken, sm24-dash, sm24-draw, sm24-erscheinen, sm24-fade, sm24-feder-heben, sm24-lesen-aktiv, sm24-pop, sm24-reveal, sm24-schluessel-ein, sm24-schritt-vor, sm24-schritt-zurueck, sm24-scrub-marke, sm24-scrub-x, sm24-scrub-y, sm24-stift-heben, spin
+
+| Ansicht | CSS-Animationen (Keyframe × Anzahl) | WAAPI (Element) | Übergänge (Eigenschaft × Anzahl) | unbekannt |
+|---|---|---|---|---|
+| H01-start | sm24-fade ×1, sm24-draw ×15, sm24-reveal ×6, sm24-aufdecken ×1, sm24-scrub-marke ×10, sm24-scrub-y ×2, sm24-pop ×19 | g.sm24-fade, path.stroke-foreground, g | keine | keine |
+| H02-autoschluessel | sm24-fade ×1, sm24-draw ×7, sm24-reveal ×8, sm24-dash ×6, sm24-pop ×30, sm24-scrub-marke ×10, sm24-scrub-y ×2 | keine | keine | keine |
+| H03-modell-golf | sm24-reveal ×10, sm24-draw ×9, sm24-pop ×42, sm24-dash ×3 | keine | keine | keine |
+| H04-assistent | keine | keine | keine | keine |
+| H05-code-shop | sm24-draw ×8, sm24-pop ×2 | keine | keine | keine |
+| H06-code-produkt | sm24-reveal ×2, sm24-pop ×8, sm24-draw ×10, sm24-fade ×1, sm24-aufdecken ×1 | keine | keine | keine |
+| H07-zylinder-konfigurator | schleier-ein ×3 | keine | keine | keine |
+| H08-schliessanlagen | sm24-reveal ×4, sm24-fade ×5, sm24-draw ×32, sm24-pop ×43 | keine | keine | keine |
+| H09-tuertechnik | sm24-fade ×1, sm24-draw ×6, sm24-pop ×5 | keine | keine | keine |
+| H10-warenkorb | spin ×1 | keine | keine | keine |
+| H11-kasse | keine | keine | keine | keine |
+| H12-ratgeber | sm24-draw ×6, sm24-fade ×8, sm24-pop ×3, sm24-lesen-aktiv ×16 | keine | keine | keine |
+
+Befunde (unbekannte Keyframes): 0
+JSON-Protokoll: /root/sm24-bilder/e6-c/animationen-mobil.json
+# Animationen · 2026-10-17T14:32:11.617Z · Server http://localhost:3000 · Gerät desktop
+
+Bekannte Keyframes (23): bounce, menue-ein, ping, pulse, schleier-ein, schublade-ein, sm24-aufdecken, sm24-dash, sm24-draw, sm24-erscheinen, sm24-fade, sm24-feder-heben, sm24-lesen-aktiv, sm24-pop, sm24-reveal, sm24-schluessel-ein, sm24-schritt-vor, sm24-schritt-zurueck, sm24-scrub-marke, sm24-scrub-x, sm24-scrub-y, sm24-stift-heben, spin
+
+| Ansicht | CSS-Animationen (Keyframe × Anzahl) | WAAPI (Element) | Übergänge (Eigenschaft × Anzahl) | unbekannt |
+|---|---|---|---|---|
+| /gleichschliessende-zylinder | sm24-draw ×27, sm24-reveal ×10, sm24-fade ×1, sm24-pop ×17, sm24-schluessel-ein ×2, sm24-feder-heben ×10, sm24-stift-heben ×10, sm24-erscheinen ×2 | keine | keine | keine |
+| /service-und-termin | sm24-fade ×18, sm24-draw ×2, sm24-pop ×5 | keine | keine | keine |
+| /artikel | sm24-draw ×1, sm24-pop ×1 | keine | keine | keine |
+| /standorte/berlin | sm24-draw ×3, sm24-pop ×3, sm24-fade ×1 | keine | keine | keine |
+| /sicherheitstechnik/sicherheitscheck | keine | keine | keine | keine |
+| /rechtliches/agb | keine | keine | keine | keine |
+| /artikel/beispiel-schluesselkasten | sm24-reveal ×1, sm24-draw ×2, schleier-ein ×1, sm24-pop ×6 | keine | keine | keine |
+| /autoschluessel/schluesselbart-fraesen | sm24-fade ×2, sm24-draw ×2, sm24-aufdecken ×1 | keine | keine | keine |
+| /elektronische-zutrittsloesungen | sm24-reveal ×10, sm24-dash ×12, sm24-fade ×1, sm24-draw ×4, sm24-pop ×6 | keine | keine | keine |
+| /rechtliches/impressum | keine | keine | keine | keine |
+| /service-und-termin/vor-ort | sm24-draw ×6, sm24-pop ×5 | keine | keine | keine |
+
+Befunde (unbekannte Keyframes): 0
+JSON-Protokoll: /root/sm24-bilder/e6-c/animationen-uebrige.json

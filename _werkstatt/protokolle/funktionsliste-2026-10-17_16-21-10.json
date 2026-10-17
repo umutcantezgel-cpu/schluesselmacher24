@@ -1,0 +1,63 @@
+{
+  "skript": "funktionsliste",
+  "zeit": "2026-10-17T14:20:59.911Z",
+  "argumente": {
+    "_": [],
+    "tastatur": true,
+    "geraet": "desktop",
+    "nur": "F-01"
+  },
+  "server": "http://localhost:3000",
+  "records": {
+    "vorher": false,
+    "nachher": false
+  },
+  "serverlog": {
+    "neuZeichen": 0,
+    "treffer": 0
+  },
+  "ergebnisse": [
+    {
+      "id": "F-01",
+      "funktion": "Warenkorb: Code-Schlüssel hinzufügen, Menge ändern, entfernen, Versandart, Summe",
+      "geraet": "desktop",
+      "ergebnis": "NICHT BESTANDEN",
+      "begruendung": "Eintrag erscheint: ja; Menge 2: nein (12); Zwischensumme 2 × 8,00 €: nein (78,72 €); Summe = Zwischensumme + Versand: ja (78,72 € + 4,95 € = 83,67 €); Menge 3 mit Staffelpreis 3 × 7,20 €: nein (85,28 €); Entfernen zeigt „leer“: ja",
+      "messwert": null,
+      "dauer_ms": 10238,
+      "attrappen": [],
+      "tastatur": [
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Schlüsselcode* (Pflichtangabe)“",
+          "tabs": 13,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[number] „Stückzahl“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[button] „In den Warenkorb“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[number] „Stückzahl Büroschrank und Rollcontainer — Serie MS“",
+          "tabs": 14,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Position entfernen: Büroschrank und Rollcontainer “",
+          "tabs": 2,
+          "fokusSichtbar": true
+        }
+      ]
+    }
+  ]
+}

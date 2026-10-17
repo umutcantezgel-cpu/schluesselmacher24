@@ -114,3 +114,15 @@ stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > coun
  ✓ src/components/ui/alert.test.tsx (3 tests) 54ms
  ✓ src/components/visual/interaktiv/code-fundstelle-interaktiv.test.tsx (2 tests) 48ms
  ✓ src/lib/staffel.test.ts (2 tests) 36ms
+ ✓ src/lib/flow/use-flow.test.ts (3 tests) 3ms
+ ✓ src/components/visual/interaktiv/live-schluessel.test.tsx (2 tests) 22ms
+ ✓ src/lib/spaet-vorladen.test.ts (3 tests) 5ms
+ ✓ src/components/visual/motion/seitenwechsel.test.tsx (2 tests) 13ms
+ ✓ src/components/visual/icons/icon-base.test.tsx (2 tests) 23ms
+
+ Test Files  71 passed (71)
+      Tests  1204 passed (1204)
+   Start at  13:56:29
+   Duration  16.45s (transform 6.75s, setup 0ms, collect 15.08s, tests 5.22s, environment 23ms, prepare 7.80s)
+
+EXIT 0

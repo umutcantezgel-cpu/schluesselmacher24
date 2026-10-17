@@ -1,0 +1,348 @@
+{
+  "skript": "a11y",
+  "zeit": "2026-10-17T14:05:22.584Z",
+  "argumente": {
+    "_": [],
+    "geraet": "beide",
+    "routen": "/gleichschliessende-zylinder,/service-und-termin,/artikel,/standorte/berlin,/sicherheitstechnik/sicherheitscheck,/rechtliches/agb,/artikel/beispiel-schluesselkasten,/autoschluessel/schluesselbart-fraesen,/elektronische-zutrittsloesungen,/rechtliches/impressum,/service-und-termin/vor-ort"
+  },
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "zeilen": [
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "pfad": "/gleichschliessende-zylinder",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "pfad": "/gleichschliessende-zylinder",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "service-und-termin",
+      "pfad": "/service-und-termin",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "service-und-termin",
+      "pfad": "/service-und-termin",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "artikel",
+      "pfad": "/artikel",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "artikel",
+      "pfad": "/artikel",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "standorte-berlin",
+      "pfad": "/standorte/berlin",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "standorte-berlin",
+      "pfad": "/standorte/berlin",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "sicherheitstechnik-sicherheitscheck",
+      "pfad": "/sicherheitstechnik/sicherheitscheck",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "sicherheitstechnik-sicherheitscheck",
+      "pfad": "/sicherheitstechnik/sicherheitscheck",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "rechtliches-agb",
+      "pfad": "/rechtliches/agb",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "rechtliches-agb",
+      "pfad": "/rechtliches/agb",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "artikel-beispiel-schluesselkasten",
+      "pfad": "/artikel/beispiel-schluesselkasten",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "artikel-beispiel-schluesselkasten",
+      "pfad": "/artikel/beispiel-schluesselkasten",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "autoschluessel-schluesselbart-fraesen",
+      "pfad": "/autoschluessel/schluesselbart-fraesen",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "autoschluessel-schluesselbart-fraesen",
+      "pfad": "/autoschluessel/schluesselbart-fraesen",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "elektronische-zutrittsloesungen",
+      "pfad": "/elektronische-zutrittsloesungen",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "elektronische-zutrittsloesungen",
+      "pfad": "/elektronische-zutrittsloesungen",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "rechtliches-impressum",
+      "pfad": "/rechtliches/impressum",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "rechtliches-impressum",
+      "pfad": "/rechtliches/impressum",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "service-und-termin-vor-ort",
+      "pfad": "/service-und-termin/vor-ort",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "service-und-termin-vor-ort",
+      "pfad": "/service-und-termin/vor-ort",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    }
+  ]
+}

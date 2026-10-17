@@ -1,0 +1,108 @@
+{
+  "skript": "bewegung-reduziert",
+  "zeit": "2026-10-17T14:05:51.563Z",
+  "argumente": {
+    "_": [
+      "reduziert"
+    ],
+    "echtzeit": false
+  },
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 201
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 186
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 137
+    },
+    {
+      "ansicht": "H04-assistent",
+      "pfad": "/autoschluessel/anfrage",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 113
+    },
+    {
+      "ansicht": "H05-code-shop",
+      "pfad": "/schluessel-nach-code",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 345
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 141
+    },
+    {
+      "ansicht": "H07-zylinder-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 127
+    },
+    {
+      "ansicht": "H08-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 223
+    },
+    {
+      "ansicht": "H09-tuertechnik",
+      "pfad": "/tuer-und-schliesstechnik",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 172
+    },
+    {
+      "ansicht": "H10-warenkorb",
+      "pfad": "/warenkorb",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 68
+    },
+    {
+      "ansicht": "H11-kasse",
+      "pfad": "/kasse",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 66
+    },
+    {
+      "ansicht": "H12-ratgeber",
+      "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 84
+    }
+  ]
+}
