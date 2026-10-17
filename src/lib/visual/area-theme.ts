@@ -8,7 +8,7 @@ import type { AreaKey } from '@/lib/types';
  * verwenden nur `text-area-strong`, `bg-area-soft`, `fill-area` usw. — nie
  * einen festen Farbwert.
  *
- * Werte als HSL-Tripel „H S% L%“ (wie die übrigen Tokens in `globals.css`).
+ * Werte als OKLCH-Tripel „L C H“ (wie die übrigen Tokens in `globals.css`).
  * - `accent`: Flächen und Linien in Grafiken (≥ 3:1 auf Weiß und `soft`)
  * - `strong`: Text, Schaltflächen, Kennzeichnungen (≥ 4,5:1 auf Weiß und `soft`)
  * - `soft`:   heller Hintergrund des Bereichs
@@ -27,75 +27,75 @@ export interface AreaTheme {
 /** Grundfarbe außerhalb der Bereiche (Startseite, Warenkorb, Kasse …). */
 export const DEFAULT_AREA_THEME: AreaTheme = {
   label: 'Allgemein',
-  accent: '214 86% 50%',
-  strong: '214 80% 40%',
-  soft: '214 100% 96.5%',
-  muted: '214 90% 86%',
+  accent: '0.572 0.205 258.319',
+  strong: '0.485 0.161 257.634',
+  soft: '0.967 0.016 255.038',
+  muted: '0.871 0.059 255.221',
 };
 
 export const AREA_THEMES: Record<AreaKey, AreaTheme> = {
   autoschluessel: {
     label: 'Autoschlüssel',
-    accent: '217 91% 53%',
-    strong: '217 76% 42%',
-    soft: '214 100% 96.5%',
-    muted: '217 90% 86%',
+    accent: '0.572 0.216 260.276',
+    strong: '0.484 0.170 259.975',
+    soft: '0.967 0.016 255.038',
+    muted: '0.864 0.061 259.874',
   },
   'schluessel-nach-vorlage': {
     label: 'Schlüssel nach Vorlage',
-    accent: '172 76% 34%',
-    strong: '174 84% 25%',
-    soft: '168 64% 94.5%',
-    muted: '170 60% 80%',
+    accent: '0.613 0.107 180.522',
+    strong: '0.507 0.088 183.682',
+    soft: '0.971 0.019 182.631',
+    muted: '0.895 0.063 183.458',
   },
   'schluessel-nach-code': {
     label: 'Schlüssel nach Code',
-    accent: '245 78% 62%',
-    strong: '245 58% 50%',
-    soft: '245 100% 97%',
-    muted: '245 90% 88%',
+    accent: '0.545 0.219 280.007',
+    strong: '0.452 0.217 276.985',
+    soft: '0.960 0.020 289.843',
+    muted: '0.845 0.076 288.466',
   },
   'gleichschliessende-zylinder': {
     label: 'Gleichschließende Zylinder',
-    accent: '20 88% 48%',
-    strong: '18 84% 37%',
-    soft: '24 100% 95.5%',
-    muted: '22 95% 84%',
+    accent: '0.638 0.192 40.905',
+    strong: '0.516 0.155 39.717',
+    soft: '0.967 0.019 56.158',
+    muted: '0.881 0.068 51.602',
   },
   schliessanlagen: {
     label: 'Schließanlagen',
-    accent: '266 72% 60%',
-    strong: '266 52% 48%',
-    soft: '266 100% 97%',
-    muted: '266 80% 88%',
+    accent: '0.579 0.213 299.594',
+    strong: '0.489 0.190 299.055',
+    soft: '0.964 0.021 305.444',
+    muted: '0.866 0.070 304.655',
   },
   'elektronische-zutrittsloesungen': {
     label: 'Elektronische Zutrittslösungen',
-    accent: '195 90% 37%',
-    strong: '196 90% 28%',
-    soft: '190 90% 94.5%',
-    muted: '192 75% 80%',
+    accent: '0.589 0.115 229.337',
+    strong: '0.477 0.094 230.924',
+    soft: '0.969 0.023 211.047',
+    muted: '0.879 0.065 214.909',
   },
   'tuer-und-schliesstechnik': {
     label: 'Tür- und Schließtechnik',
-    accent: '152 64% 34%',
-    strong: '153 68% 25%',
-    soft: '148 56% 94.5%',
-    muted: '150 50% 80%',
+    accent: '0.574 0.125 157.394',
+    strong: '0.469 0.101 158.143',
+    soft: '0.968 0.020 162.917',
+    muted: '0.881 0.063 163.095',
   },
   sicherheitstechnik: {
     label: 'Sicherheitstechnik',
-    accent: '350 78% 54%',
-    strong: '350 68% 43%',
-    soft: '350 100% 97%',
-    muted: '350 85% 88%',
+    accent: '0.604 0.215 18.358',
+    strong: '0.513 0.183 18.354',
+    soft: '0.967 0.017 5.898',
+    muted: '0.876 0.060 7.198',
   },
   'service-und-termin': {
     label: 'Service und Termin',
-    accent: '326 68% 52%',
-    strong: '326 62% 41%',
-    soft: '326 100% 97%',
-    muted: '326 75% 88%',
+    accent: '0.602 0.217 351.248',
+    strong: '0.505 0.178 350.879',
+    soft: '0.969 0.020 342.294',
+    muted: '0.885 0.062 343.400',
   },
 };
 
@@ -108,26 +108,44 @@ export function areaCssVariables(theme: AreaTheme): Record<string, string> {
     '--area-strong': theme.strong,
     '--area-soft': theme.soft,
     '--area-muted': theme.muted,
-    '--area-foreground': '0 0% 100%',
+    '--area-foreground': '1.000 0.000 0.000',
   };
 }
 
 /* ---------- Kontrast (WCAG 2.2) ----------------------------------------- */
 
-function parseHsl(value: string): [number, number, number] {
-  const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
-  if (!match) throw new Error(`Kein HSL-Tripel: "${value}"`);
+function parseOklch(value: string): [number, number, number] {
+  const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)\s+([\d.]+)$/);
+  if (!match) throw new Error(`Kein OKLCH-Tripel: "${value}"`);
   return [Number(match[1]), Number(match[2]), Number(match[3])];
 }
 
-function hslToRgb([h, s, l]: [number, number, number]): [number, number, number] {
-  const sat = s / 100;
-  const light = l / 100;
-  const k = (n: number) => (n + h / 30) % 12;
-  const a = sat * Math.min(light, 1 - light);
-  const f = (n: number) => light - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-  return [f(0), f(8), f(4)];
+function oklchToRgb([l, c, h]: [number, number, number]): [number, number, number] {
+  const hr = h * Math.PI / 180;
+  const a = c * Math.cos(hr);
+  const b = c * Math.sin(hr);
+
+  const l_ = l + 0.3963377774 * a + 0.2158037573 * b;
+  const m_ = l - 0.1055613458 * a - 0.0638541728 * b;
+  const s_ = l - 0.0894841775 * a - 1.2914855480 * b;
+
+  const L = l_ ** 3;
+  const M = m_ ** 3;
+  const S = s_ ** 3;
+
+  const r = 4.0767416621 * L - 3.3077115913 * M + 0.2309699292 * S;
+  const g = -1.2684380046 * L + 2.6097574011 * M - 0.3413193965 * S;
+  const bl = -0.0041960863 * L - 0.7034186147 * M + 1.7076147010 * S;
+
+  const toSRGB = (c: number) => c <= 0.0031308 ? 12.92 * c : 1.055 * (c ** (1/2.4)) - 0.055;
+
+  return [
+    toSRGB(Math.max(0, Math.min(1, r))),
+    toSRGB(Math.max(0, Math.min(1, g))),
+    toSRGB(Math.max(0, Math.min(1, bl)))
+  ];
 }
+
 
 function relativeLuminance(rgb: [number, number, number]): number {
   const channel = (v: number) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
@@ -135,9 +153,9 @@ function relativeLuminance(rgb: [number, number, number]): number {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-/** Kontrastverhältnis zweier HSL-Tripel, z. B. `contrastRatio('0 0% 100%', theme.strong)`. */
+/** Kontrastverhältnis zweier HSL-Tripel, z. B. `contrastRatio('1.000 0.000 0.000', theme.strong)`. */
 export function contrastRatio(a: string, b: string): number {
-  const la = relativeLuminance(hslToRgb(parseHsl(a)));
-  const lb = relativeLuminance(hslToRgb(parseHsl(b)));
+  const la = relativeLuminance(oklchToRgb(parseOklch(a)));
+  const lb = relativeLuminance(oklchToRgb(parseOklch(b)));
   return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
 }
