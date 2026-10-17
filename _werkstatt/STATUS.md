@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · Prüfstufe B E5 fertig, Entwürfe Befundpakete Runde 2 laufen · Pflicht 85/88 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Build 208/208, 1141+ Tests, Linter 0, Logikwächter 0, Funktionsliste 14/14, Budgets eingehalten, axe 0) · Nächster Schritt: Entwürfe prüfen, gemeinsame Befunde umsetzen, Befundpakete Runde 2 bauen
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 6 · Prüfstufe C und Sichtabnahme E6-L-34 laufen · Pflicht 86/88 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Build 208/208, Tests 1204, Linter 0, Logikwächter 0, Funktionsliste 14/14) · Nächster Schritt: Ergebnis Prüfstufe C auswerten, Blindvergleich, Endprüfung
 
 # Status des Gestaltungslaufs
 
@@ -45,3 +45,4 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · P
 - 16.10.2026 20:48 · Welle G und H abgenommen (B-26 bis B-29, DOKUMENTAR-01 mit sicherem Probe-Befehl, GRAFIKER-11), Kür K-01 eingebaut (Stiftzuhaltung am Scrollen; Rahmen mit `clip`), lucide-react entfernt (Build 208/208). Prüfstufe B E5 mit Sichtabnahme gestartet.
 - 16.10.2026 22:08 · Nach Container-Neustart Prüfstufe B E5 fortgesetzt und abgeschlossen (D-044): Bestand grün, keine Budget-Verstöße, axe 0; Sichtabnahme Mittel 6,4–7,1, keine Hauptansicht ≥ 8. Bildrate der Startseite mobil durch spätes Vorladen der festen Ziele behoben (E5-L-30). Entwürfe für Befundpakete Runde 2 laufen.
 - 17.10.2026 09:01 · Neustart des Arbeitsprozesses, Server neu gestartet. Morgenbericht 17.10. mit 6 Bildern (`bilder/morgen-2026-10-17/`), nächste Erinnerung `trig_01VjngwmVdyzGnq78x5xnmc7` (18.10. 07:00 Berlin). Entwürfe Runde 2 werden fortgesetzt.
+- 17.10.2026 13:55 · Runde 2 abgenommen (15/15, D-047/D-048), KERN 1.15. Prüfstufe C mit Tastatur-, SVG- und Registerprüfung und abschließende Sichtabnahme E6-L-34 laufen.

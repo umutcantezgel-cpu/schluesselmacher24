@@ -2,17 +2,13 @@
 
 - **Etappe:** E5 (übrige Ansichten und Befundpakete). Alle 12 Befundpakete der Sichtabnahme E4-L-23 sind abgenommen (H01, H02, H03, H06, H10, H11 nach L3 mit Nacharbeit des Orchestrators). KERN 1.13.
 - **Laufend:**
-  - Bauwelle 1 Runde 2 (H01, H02, H03, H12) abgenommen (D-047). Bauwelle 2 (H04, H07, H10, H09, H05, H06, H08, H11 nach H10, U-SERVICE, U-ARTIKEL, U-STANDORTE; Basis `d4a1d47`): Workflow `wf_84cad023-2b9` (Task `wjvvabfsq`), Skript `scratchpad/e6/pakete-kette-e6.js`, höchstens 4 Plätze. Fortsetzen mit `resumeFromRunId` und denselben args. Bildrate am Produktionsbuild: Stand per `git archive` nach `/root/sm24-w<n>` exportieren, `node_modules` mit `cp -al` verlinken (Symlink lehnt Turbopack ab), bauen, eigener Port.
-  - E6-L-31 ist erledigt (gemeinsame Bausteine, KERN 1.14, D-045). Paketerzeuger: `scratchpad/e6/befund2_pakete.py [HID …]` mit `zusatz.json` (Anpassungen je Ansicht) und `kern.md` (Auszug 1.14).
-  - Entwürfe Befundpakete Runde 2, Erzählansichten H01, H02, H03, H05, H06, H08, H09, H12: Workflow `wf_e9710b7f-3ab` (Task `w7dwdvn77`, fortgesetzt 17.10.).
-  - Entwürfe Runde 2, Arbeitsansichten H04, H07, H10, H11 und übrige U-SERVICE, U-ARTIKEL, U-STANDORTE: Workflow `wf_d633ea4c-f45` (Task `wodjj3qid`, fortgesetzt 17.10., Skript `workflows/scripts/befund2-entwuerfe-arbeit.js`, Ansichten als args).
-  - Server: Port 3000 mit dem Build nach E5-L-30 (208/208), Port 3001 Entwicklung (nach Neustart am 17.10. 09:00 UTC neu gestartet). Bei Abbruch beide Workflows mit `resumeFromRunId` fortsetzen.
-  - Morgenbericht 17.10. geschrieben; nächste Erinnerung `trig_01VjngwmVdyzGnq78x5xnmc7` am 18.10. 05:00 UTC.
-- **Fertig seit dem letzten Prüfpunkt:** Prüfstufe B E5 vollständig (D-044, `E5-PRUEFER-B-ergebnis.md`): Bestand grün, Funktionsliste 14/14, Budgets eingehalten, axe 0; Sichtabnahme E5-L-29 aller vier Gruppen (6,8 · 7,0 · 7,1 · 6,4), keine Hauptansicht ≥ 8. E5-L-30: feste Ziele spät vorladen, Bildrate B-01 mobil im Median 0,0 % (`bewegung.mjs bildrate --laeufe`). Linter wieder 0 (eb5cda6).
+  - Prüfstufe C und abschließende Sichtabnahme E6-L-34: Workflow `wf_b30ac901-56c` (Task `wjgxxbs7m`), Paket `_werkstatt/pakete/E6-PRUEFER-C.md` und `E6-L-34-sichtabnahme.md`. Bilder `/root/sm24-bilder/e6-c/`. Fortsetzen mit `resumeFromRunId`.
+  - Server: Port 3000 mit dem Build nach Runde 2 (Commit addae34, 208/208), Port 3100 E0 (`/root/sm24-e0`), Port 3001 Entwicklung.
+- **Fertig seit dem letzten Prüfpunkt:** Runde 2 vollständig abgenommen (15/15; D-047, D-048), E6-L-31 und E6-L-33 (gemeinsame Bausteine, KERN 1.15). Werkzeuge für Prüfstufe C: `funktionsliste.mjs --tastatur`, `svg-pruefung.mjs`, `animationen.mjs`.
 - **Als Nächstes:**
-  1. Entwürfe prüfen, gemeinsame Befunde selbst umsetzen (E6-L-31), dann Paketdateien `E6-BEFUND2-<id>` schreiben (Generator im Scratchpad `e5/befund_pakete.py`, Muster `pakete.paket`).
-  2. Bau in Wellen zu ≤ 4 Plätzen mit `pakete-kette` (Prüfstufe A, ≤ 2 Reparaturen), Abnahme mit eigenen Bildern; danach abschließende Sichtabnahme der geänderten Ansichten.
-  3. Prüfstufe C (E0 auf Port 3100, Bildrate mit `--laeufe 5`), Blindvergleich, Endprüfung, ABSCHLUSS.
+  1. Ergebnis Prüfstufe C und Sichtabnahme E6-L-34 auswerten (ENTSCHEIDUNGEN D-049, ABNAHME.md mit Belegen).
+  2. Blindvergleich E6-D-02: Haiku-Dokumentar benennt Vorher/Nachher neutral in zufälliger Reihenfolge, Schlüssel getrennt; Galerie `_werkstatt/bilder/galerie.html`; BERICHT mit Anleitung zum Zusammenführen und Zurückrollen.
+  3. Endprüfung E6-L-13 durch frischen Opus-Unteragenten (Belege, kein Testlauf), dann ABSCHLUSS (CLAUDE.md-Block entfernen).
 - **Bei Abbruch:**
   - `Workflow({scriptPath: <pakete-kette-Skript>, resumeFromRunId})` für den jeweiligen Lauf; Skript: `/root/.claude/projects/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/workflows/scripts/pakete-kette-wf_be39e9e0-a87.js`, args `{pakete:[{id,basis}], andere}`.
   - Paketerzeuger im Scratchpad `e5/` (`befund_pakete.py [H..]`, `welle_f.py`, `welle_gh.py [Kennung..]`); die erzeugten Pakete liegen im Repo.
