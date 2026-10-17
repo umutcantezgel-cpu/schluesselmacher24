@@ -37,7 +37,7 @@ type Typ = (typeof SCHLUESSELARTEN_REIHE)[number]['typ'];
 interface DetailFeld {
   art: KeyKind;
   typ?: Typ;
-  /** Keyless steht als Hinweiszeile unter den Zeichnungen. */
+  /** Keyless steht als eigene Zelle ohne Zeichnung in der Reihe (D-047). */
   keyless?: boolean;
 }
 
@@ -62,7 +62,7 @@ const LEISTE =
 /**
  * Erfasste Schlüsselarten als Felder: zuerst die Bauformen mit Zeichnung in der
  * Reihenfolge der Reihe, danach die übrigen Arten. Keyless ohne Smart Key erhält
- * eine eigene Zeile ohne Zeichnung.
+ * eine eigene Zelle ohne Zeichnung.
  */
 function detailFelder(kinds: KeyKind[]): DetailFeld[] {
   const felder: DetailFeld[] = SCHLUESSELARTEN_REIHE.filter(({ art }) => kinds.includes(art)).map(
@@ -124,12 +124,13 @@ export default async function ModelPage(props: PageProps) {
   const deposit = formatCents(settings.booking.depositCents);
   const leadDays = settings.booking.leadTimeDays;
   const felder = detailFelder(model.keyKinds);
-  // Keyless steht immer als Hinweiszeile unter den Zeichnungen, auch wenn es am Smart Key hängt.
+  // Keyless steht immer als eigene Zelle hinter den Zeichnungen, auch wenn es am Smart Key hängt (D-047).
   const gezeichnet = felder.filter((feld) => feld.typ !== undefined);
   const hinweise: DetailFeld[] = [
     ...felder.filter((feld) => feld.typ === undefined),
     ...felder.filter((feld) => feld.keyless).map(() => ({ art: 'keyless' as const })),
   ];
+  const zellen = [...gezeichnet, ...hinweise];
   const hatZeichnung = gezeichnet.length > 0;
   const leiste = gezeichnet.length > 3;
 
@@ -341,18 +342,18 @@ export default async function ModelPage(props: PageProps) {
             lead="Welche davon Ihr Fahrzeug hat, erkennen wir an Ihren Schlüsselfotos."
           />
 
-          {hatZeichnung && (
+          {zellen.length > 0 && (
             <ol
               className={cn(
                 'mt-8',
                 leiste
-                  ? cn(LEISTE, 'md:gap-6', SPALTEN[gezeichnet.length])
-                  : cn('grid gap-6', SPALTEN[gezeichnet.length]),
+                  ? cn(LEISTE, 'md:gap-6', SPALTEN[zellen.length])
+                  : cn('grid gap-6', SPALTEN[zellen.length]),
               )}
               tabIndex={leiste ? 0 : undefined}
               aria-label={leiste ? 'Schlüsselarten' : undefined}
             >
-              {gezeichnet.map((feld, index) => (
+              {zellen.map((feld, index) => (
                 <li
                   key={feld.art}
                   className={cn(
@@ -361,12 +362,14 @@ export default async function ModelPage(props: PageProps) {
                   )}
                   style={motionStyle(index * 0.12)}
                 >
-                  {feld.typ && (
+                  {feld.typ ? (
                     <SchluesselGrafik
                       params={{ typ: feld.typ, code: feld.art }}
                       title={`Zeichnung: ${keyKindLabel(feld.art)}`}
                       className="w-full max-w-md"
                     />
+                  ) : (
+                    <GlyphInfo size={20} className="text-foreground-muted" />
                   )}
                   <h3 className="mt-3 text-title-sm font-semibold text-foreground">{keyKindLabel(feld.art)}</h3>
                   <p className="mt-1 text-small text-foreground-muted">{keyKindDescription(feld.art)}</p>
@@ -375,22 +378,9 @@ export default async function ModelPage(props: PageProps) {
             </ol>
           )}
           {hatZeichnung && (
-            <p className="mt-3 font-mono text-caption text-foreground-muted">
+            <p className="mt-4 font-mono text-caption text-foreground-muted">
               Schematische Darstellung, nicht maßstäblich.
             </p>
-          )}
-          {hinweise.length > 0 && (
-            <ul className={cn('max-w-measure border-t border-border', hatZeichnung ? 'mt-6' : 'mt-8')}>
-              {hinweise.map((feld) => (
-                <li key={feld.art} className="flex items-start gap-3 border-b border-border py-4">
-                  <GlyphInfo size={16} className="mt-0.5 shrink-0 text-foreground-subtle" />
-                  <p className="text-small text-foreground-muted">
-                    <span className="font-semibold text-foreground">{keyKindLabel(feld.art)}:</span>{' '}
-                    {keyKindDescription(feld.art)}
-                  </p>
-                </li>
-              ))}
-            </ul>
           )}
         </Section>
       )}

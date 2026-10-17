@@ -307,7 +307,7 @@ export default async function HomePage() {
               <span aria-hidden className="sm24-scrub-y absolute bottom-11 left-5 top-6 w-px bg-area" />
               {carKeySteps.map((step, index) => (
                 <li key={step.title} className="relative flex gap-6 pb-10 last:pb-0">
-                  <span className="sm24-scrub-marke relative z-raised flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-area bg-surface font-mono text-small font-semibold tabular-nums text-area-strong">
+                  <span className="sm24-scrub-marke relative z-raised flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-area bg-surface font-mono text-small font-semibold tabular-nums text-foreground">
                     {index + 1}
                   </span>
                   <div className="pt-1.5">

@@ -105,11 +105,17 @@ export function SiteHeader() {
     }
   };
 
-  // Im Balken ab 1024 px die ersten drei Bereiche, ab 1280 px zusätzlich Bereich 5,
-  // ab 1536 px auch Bereich 4; alles andere steht unter „Mehr“.
+  // Im Balken ab 1024 px die Bereiche 1 und 3, ab 1280 px zusätzlich 2 und 5; Bereich 4 und
+  // alles Weitere steht unter „Mehr“. Sonst passt der Kopfknopf zwischen 1024 und 1279 px und ab
+  // 1536 px nicht in die Zeile (Befund Runde 2, H03).
   const primary = NAV_AREAS.slice(0, 5);
-  const secondary = NAV_AREAS.slice(3);
-  const mehrAktiv = NAV_AREAS.slice(5).some((area) => istAktiv(pathname, area.href));
+  const secondary = [
+    { area: NAV_AREAS[1], ausblenden: 'xl:hidden' },
+    { area: NAV_AREAS[3], ausblenden: '' },
+    { area: NAV_AREAS[4], ausblenden: 'xl:hidden' },
+    ...NAV_AREAS.slice(5).map((area) => ({ area, ausblenden: '' })),
+  ].filter((eintrag) => eintrag.area !== undefined);
+  const mehrAktiv = [NAV_AREAS[3], ...NAV_AREAS.slice(5)].some((area) => area !== undefined && istAktiv(pathname, area.href));
 
   return (
     <header className="fixed inset-x-0 top-0 z-header border-b border-border bg-surface">
@@ -130,8 +136,8 @@ export function SiteHeader() {
                 key: area.key,
                 label: area.label,
                 aktiv: istAktiv(pathname, area.href),
-                /* Bereich 4 (langer Name) erst ab 1536 px, Bereich 5 ab 1280 px im Balken */
-                sichtbar: index === 3 ? 'hidden 2xl:block' : index === 4 ? 'hidden xl:block' : '',
+                /* Bereich 4 nur unter „Mehr“, Bereiche 2 und 5 ab 1280 px im Balken */
+                sichtbar: index === 3 ? 'hidden' : index === 1 || index === 4 ? 'hidden xl:block' : '',
               })),
               { key: 'mehr', label: 'Mehr', aktiv: mehrAktiv, sichtbar: '' },
             ].map(
@@ -227,8 +233,8 @@ export function SiteHeader() {
           <div className="shell-wide py-8">
             {openArea === 'mehr' ? (
               <ul className="grid grid-cols-4 gap-6">
-                {secondary.map((area, index) => (
-                  <li key={area.key} className={cn(index === 0 && '2xl:hidden', index === 1 && 'xl:hidden')}>
+                {secondary.map(({ area, ausblenden }) => (
+                  <li key={area.key} className={ausblenden || undefined}>
                     <AreaScope area={area.key}>
                       <Link href={area.href} className="group flex gap-3 rounded-md p-2 -m-2 hover:bg-surface-muted">
                         <BereichIcon area={area.key} size={36} className="text-area-strong" />

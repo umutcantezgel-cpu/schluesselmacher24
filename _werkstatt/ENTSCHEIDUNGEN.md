@@ -514,3 +514,17 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - **Funktionsliste:** Sie liest die Endsumme als „Gesamtbetrag“ und weiter als „Gesamtsumme“, damit F-01 vor und nach H10 besteht.
   - **Logikwächter:** Vorab eingetragen sind die Ausnahmen für `kamera` in `photo-upload.tsx` (H06) und die Suchform des Modellzählers im Assistenten als Alternation aus alter und neuer Form (H04). Beide sind wirkungslos, solange der neue Wortlaut fehlt; der Wächter bleibt bei 0 abweichend.
   - **Startseite des Assistenten:** H04 bekommt zusätzlich `autoschluessel/anfrage/page.tsx` für den Zeilenpfeil unter „01 Weiterführend“ nach K-006 (Hinweis aus der Gegenprüfung H07).
+
+## D-047 · Bauwelle 1 der Runde 2 abgenommen, Keyless als Zelle, Kopf und InfoTip
+- **Ergebnis:**
+  - H02 und H03 haben die Prüfstufe A in Runde 2 bestanden, H01 und H12 nach drei Runden nicht.
+  - Die Pflichtbefunde sind nachgeprüft: Die Bildrate von H01 kam von einer Messung am Entwicklungsserver. Am Produktionsbuild des Wellenstands liegt der Median bei 0,0 % aus 5 Läufen, genau wie vor der Welle.
+  - Die übrigen Pflichtbefunde (überschriebene eigene Bilder, eine Farbe) sind Verfahrensfehler oder in der Nacharbeit erledigt.
+  - Alle vier Pakete sind mit Nacharbeit des Orchestrators abgenommen (L3, keine weitere Runde). Bericht: `_werkstatt/berichte/E6-BEFUND2-welle1-abnahme.md`.
+- **Keyless (hebt D-026 in diesem Punkt auf):**
+  - Auf der Modellseite steht Keyless als eigene Zelle mit Info-Glyphe in der Reihe der Schlüsselarten.
+  - Die Sichtabnahme E5-L-29 hat die Hinweiszeile unter den Zeichnungen erneut als hängend bewertet (H03, Befund 11). Die Reihe richtet ihre Spalten nach der Zahl der Zellen.
+- **Kopfnavigation:** Ab 1024 px stehen die Bereiche 1 und 3 im Balken, ab 1280 px zusätzlich 2 und 5. Bereich 4 (Gleichschließende Zylinder, langer Name) steht immer unter „Mehr“.
+  - Denkprotokoll: Bei 1024 px und bei 1536 px ragte der Kopfknopf um 69 px über den Innenrand. Kürzere Abstände oder ein kleineres Logo hätten nicht gereicht oder das Logo berührt (unantastbar).
+  - Die Verlagerung in „Mehr“ hält alle Bereiche erreichbar. „Mehr“ ist aktiv markiert, wenn ein Bereich daraus offen ist, der nur dort steht.
+- **InfoTip:** Die Erklärung rückt am Bildschirmrand nach innen. Dafür misst ein Layout-Effekt die Lage und setzt nur `translate`, ohne Zustand und ohne Logik.

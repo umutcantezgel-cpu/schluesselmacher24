@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useId, useLayoutEffect, useRef, useState } from 'react';
 import type { InfoHint } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import { ImagePlaceholder } from './image-placeholder';
@@ -23,6 +23,19 @@ export interface InfoTipProps {
 export function InfoTip({ hint, className, label }: InfoTipProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
+  const panel = useRef<HTMLSpanElement>(null);
+
+  // Am Bildschirmrand rückt die Erklärung nach innen, statt über den Rand zu laufen
+  // (16 px Abstand; Befund Runde 2, H03 mobil). Nur Lage, kein Zustand.
+  useLayoutEffect(() => {
+    const el = panel.current;
+    if (!open || !el) return;
+    el.style.translate = '';
+    const r = el.getBoundingClientRect();
+    const rand = 16;
+    const ueber = r.right - (document.documentElement.clientWidth - rand);
+    if (ueber > 0) el.style.translate = `${-Math.min(ueber, Math.max(0, r.left - rand))}px 0`;
+  }, [open]);
 
   return (
     <span className={cn('relative inline-flex', className)}>
@@ -42,6 +55,7 @@ export function InfoTip({ hint, className, label }: InfoTipProps) {
 
       {open && (
         <span
+          ref={panel}
           id={panelId}
           role="note"
           className={cn(
