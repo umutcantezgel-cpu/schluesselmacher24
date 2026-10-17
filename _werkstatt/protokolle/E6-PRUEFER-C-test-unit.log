@@ -1,0 +1,79 @@
+
+ RUN  v2.1.9 /home/user/schluesselmacher24
+
+ ✓ src/lib/pricing.test.ts (26 tests) 17ms
+ ✓ src/components/visual/generators/ablauf.test.tsx (27 tests) 246ms
+ ✓ src/components/layout/summary-list.test.tsx (12 tests) 62ms
+ ✓ src/components/visual/generators/schliessplan.test.tsx (39 tests) 727ms
+ ✓ src/lib/artikel.test.ts (24 tests) 31ms
+ ✓ src/lib/scheduling.test.ts (22 tests) 24ms
+ ✓ src/lib/richtwerte/rechnen.test.ts (19 tests) 15ms
+ ✓ src/components/visual/generators/stiftzuhaltung.test.tsx (17 tests) 439ms
+ ✓ src/components/visual/icons/icons.test.tsx (327 tests) 137ms
+ ✓ src/lib/actions/security.test.ts (17 tests) 90ms
+ ✓ src/components/visual/generators/tuer-schutz.test.tsx (12 tests) 385ms
+ ✓ src/components/visual/generators/schluessel.test.tsx (16 tests) 238ms
+ ✓ src/lib/data/payload-mapping.test.ts (10 tests) 44ms
+ ✓ src/components/visual/generators/code-fundstelle.test.tsx (11 tests) 151ms
+ ✓ src/lib/visual/motiv.test.ts (15 tests) 13ms
+ ✓ src/app/(site)/api/kunden-upload/route.test.ts (12 tests) 325ms
+ ✓ src/components/visual/generators/zylinder-mass.test.tsx (11 tests) 105ms
+ ✓ src/components/visual/generators/profilschnitt.test.tsx (11 tests) 81ms
+ ✓ src/lib/richtwerte/uebersetzung.test.ts (9 tests) 13ms
+ ✓ src/components/visual/registry.test.tsx (42 tests) 435ms
+ ✓ src/components/calculator/rechner.test.tsx (7 tests) 80ms
+1:56:37 PM [vite] warning: invalid import "./${datei}.tsx". Variable imports cannot import their own directory, place imports in a separate directory or make the import filename more specific. For example: import(`./foo/${bar}.js`).
+  Plugin: vite:dynamic-import-vars
+  File: /home/user/schluesselmacher24/src/components/visual/glyphen/glyphen.test.tsx
+ ✓ src/components/ui/image-placeholder.test.tsx (12 tests) 60ms
+ ✓ src/lib/format.test.ts (23 tests) 13ms
+ ✓ src/components/visual/glyphen/glyphen.test.tsx (197 tests) 91ms
+ ✓ src/lib/server/datei-pruefung.test.ts (8 tests) 29ms
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > addCodeKey legt einen Eintrag an
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > fasst gleiche Codelinie und gleichen Code zusammen: Menge addiert, Preis aktualisiert
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > ein anderer Code ergibt einen zweiten Eintrag
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > addCylinderOrder legt einen Eintrag mit Entwurf und Preis an
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > addStandard legt einen Eintrag an und addiert gleiche Artikel
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > updateQty ändert die Menge, begrenzt auf mindestens 1, und nur bei Code- und Standardartikeln
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > remove entfernt genau einen Eintrag
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > setShipping setzt die Versandart
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > clear leert Einträge und Versandart
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > count() summiert die Mengen über alle Einträge
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+ ✓ src/lib/store/cart.test.ts (10 tests) 20ms
+ ✓ src/components/autoschluessel/schluesselarten-reihe.test.tsx (10 tests) 11ms
+ ✓ src/components/visual/interaktiv/schliessplan-interaktiv.test.tsx (8 tests) 108ms
+ ✓ src/components/visual/generators/zutritt-signal.test.tsx (7 tests) 108ms
