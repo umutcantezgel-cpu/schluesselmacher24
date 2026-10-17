@@ -43,3 +43,10 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architectural Blueprint (JC-AUDITOR-ARCHITECT-v1)
+
+- DNA Profiling Completed
+- Blueprint Generated in `.jules/revolution-plan.json`
+- Matrix Documented in `.jules/architecture-matrix.md`
+- Core UI mapped to OKLCH Light Mode
