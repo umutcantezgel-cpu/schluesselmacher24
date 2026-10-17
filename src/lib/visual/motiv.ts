@@ -83,9 +83,10 @@ export function fachIconFuerMotiv(motif: string | undefined | null): FachIconNam
   if (hat(t, 'fahrzeugschein')) return 'foto-hochladen';
   if (hat(t, 'zylinder')) return 'profilzylinder';
   if (hat(t, 'tuer', 'beschlag', 'schloss')) return 'tuer-und-schliesstechnik';
-  if (hat(t, 'paket', 'versand', 'artikel', 'produkt')) return 'versand-paket';
   if (hat(t, 'auto', 'fahrzeug') || hatFunk(t)) return 'autoschluessel';
   if (hat(t, 'schluessel', 'code')) return 'schluessel-kopieren';
+  /* „Produktfoto …“ ohne Doppelpunkt behält die Bildart im Text; die Sache entscheidet vorher (U-ARTIKEL). */
+  if (hat(t, 'paket', 'versand', 'artikel', 'produkt')) return 'versand-paket';
   /* Ohne erkennbare Sache: Beispiel- und Anwendungsfotos zeigen das Foto-Symbol. */
   if (hat(voll, 'foto', 'aufnahme')) return 'foto-hochladen';
   return 'werkstatt';

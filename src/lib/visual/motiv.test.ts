@@ -52,6 +52,15 @@ describe('fachIconFuerMotiv', () => {
     expect(fachIconFuerMotiv('Empfang')).toBe('werkstatt');
     expect(fachIconFuerMotiv(null)).toBe('werkstatt');
   });
+
+  it('entscheidet bei „Produktfoto …“ nach der Sache, erst danach nach dem Produkt', () => {
+    expect(fachIconFuerMotiv('Produktfoto Schlüsselkasten, geöffnet, mit Haken')).toBe('schluessel-kopieren');
+    expect(fachIconFuerMotiv('Produktfoto Schlüssel Serie MS-01')).toBe('schluessel-kopieren');
+    expect(fachIconFuerMotiv('Produktfoto Funkschlüssel')).toBe('autoschluessel');
+    expect(fachIconFuerMotiv('Produktfoto Möbelschloss mit zwei Schlüsseln')).toBe('tuer-und-schliesstechnik');
+    expect(fachIconFuerMotiv('Produktfoto Pflegespray mit Sprühröhrchen')).toBe('versand-paket');
+    expect(fachIconFuerMotiv('Werkstatt- oder Produktfoto: Montage und Anpassung')).toBe('versand-paket');
+  });
 });
 
 describe('Motiv ohne Bildart', () => {

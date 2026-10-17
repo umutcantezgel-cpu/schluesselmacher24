@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.14
+# KERN · SCHLÜSSELMACHER24 · Version 1.15
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -205,12 +205,13 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 | B-17 | Zylindermaß live | Rückmeldung | Maßänderung im Konfigurator | Überblendung `quick` | sofort |
 | B-18 | Tür-Schutzpunkte | Hierarchie | InView | Marken `sm24-pop`, gestaffelt ≤ 5 × 120 ms | sofort |
 | B-19 | Ladeanzeige | Rückmeldung | Laden | Glyph `laden` dreht (`transform`), 900 ms/Umdrehung | ruht, Text „lädt …“ bleibt |
-| B-20 | Warenkorb-Zähler, Summen | Rückmeldung | Menge oder Summe ändert sich | Zähler `sm24-pop` `quick`; Summen (Warenkorb, Kasse, laufende Summe im Konfigurator) blenden über einen wechselnden `key` mit `animate-schleier-ein` ein | sofort |
+| B-20 | Warenkorb-Zähler, Summen, Trefferzähler | Rückmeldung | Menge, Summe oder Trefferzahl ändert sich | Zähler `sm24-pop` `quick` (Warenkorb; Trefferzahl der Shop-Liste `/artikel` über einen wechselnden `key`); Summen (Warenkorb, Kasse, laufende Summe im Konfigurator und im Band der `FlowShell`) blenden über einen wechselnden `key` mit `animate-schleier-ein` ein | sofort |
 | B-21 | Reihe der Schlüsselarten (Autoschlüssel; Modellseite H03 mit den erfassten Arten) | Hierarchie | InView | Schlüssel nacheinander `sm24-reveal`, Staffel ≤ 4 × 120 ms; in jeder Zeichnung erst die Körper (0,4 s, Kopien 80 ms gestaffelt), dann zeichnen die Profile, zuletzt Marken und Ziffern; je Zeichnung höchstens 1,6 s | sofort |
 | B-22 | Code-Fundstelle (Generator-Einstieg) | Orientierung | InView | Bestand `sm24-draw`/`sm24-pop` | sofort |
-| B-23 | Ablaufzeichnung (Generator `ablauf`, Ratgeber-Kopf) | Reihenfolge | InView | Bemaßungslinie `sm24-draw` ≈ 0,6 s, Stationen `sm24-pop` Staffel ≤ 4 × 120 ms, Beschriftung `sm24-fade` mit ihrer Station; gesamt < 1,6 s | sofort |
+| B-23 | Ablaufzeichnung (Generator `ablauf`, Köpfe von Ratgeber und Service und Termin) | Reihenfolge | InView | Bemaßungslinie `sm24-draw` ≈ 0,6 s, bis fünf Stationen `sm24-pop` Staffel ≤ 5 × 120 ms, Beschriftung `sm24-fade` mit ihrer Station; gesamt < 1,6 s | sofort |
 | B-24 | Lesefortschritt (Ratgeber) | Orientierung | Scrollen (`animation-timeline`, nur wo unterstützt) | Leiste am Verzeichnis `scaleY` mit dem Artikel; Nummer des Abschnitts an der Leselinie (40 %) in Primärfarbe; Klassen `sm24-lesen*` | ruht (keine Leiste, keine Hervorhebung) |
 | B-25 | Stiftzuhaltung am Scrollen (Kür K-01, `/gleichschliessende-zylinder`) | Mechanik | Scrollen (`animation-timeline: --szene`, nur wo unterstützt) | Schlüssel fährt ein (`translateX`), dann heben sich je Bohrung Stifte (`translateY`) und Federn (`scaleY`), Staffel über `--stift-nr`; Prüfmarken erscheinen zuletzt; Klassen `sm24-szene`, `sm24-scrub-*`; ein Rahmen mit `overflow: hidden` um die Szene schneidet mit `clip` (kein Scrollcontainer) | Endlage: Schlüssel steckt, alles passt |
+| B-26 | Einsatzradius im Standortkopf (`/standorte/[city]`, `EinsatzradiusZeichnung`) | Orientierung (Reichweite vor Ort) | Laden des Kopfes (erste Bildschirmhöhe, kein InView) | Marke `sm24-pop` ab 0 s, Ort `sm24-fade` ab 0,2 s, Kreis `sm24-draw` `enter` ab 0,1 s, Radius-Maßlinie `sm24-draw` `base` ab 0,7 s, Pfeilspitze und „r … km“ `sm24-pop` ab 0,95 s; gesamt ≤ 1,6 s | sofort vollständig |
 
 - Neue Einträge gibt es nur durch den Orchestrator. Bewegung ohne Eintrag wird entfernt.
 
@@ -320,3 +321,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.12 · E6 · B-25 Stiftzuhaltung am Scrollen (Kür K-01). Grund: Kür nach Plan.
 - 1.13 · E5 · B-21 Reihenfolge in der Schlüsselzeichnung (Profile erst, wenn alle Körper stehen) und Obergrenze 1,6 s je Zeichnung. Grund: Nachprüfung H02/H03 (Paket E5-L-28). Dazu: `SummaryList` im Schriftfeld setzt Kennungen auch in der Beschriftung ohne Umbruch und Angaben mit Betrag zweizeilig (Angaben klein, Betrag in Mono); Variante `korb-leer:` für die Geschwister der Leerkarte im Warenkorb. Grund: Nachprüfung H10/H11. B-25 eingebaut (K-01) mit `clip` für Rahmen um die Szene. Grund: Abnahme E6-GRAFIKER-11.
 - 1.14 · E6 · K-006 Kleinregeln aus der Sichtabnahme E5-L-29 (Zeilenpfeil, Primärblau nur für Aktionen, Schriftfeld, Zahl und Einheit, kein Rahmen im Rahmen, leere Zustände, Akkordeon, Abläufe, Maß A/B), K-003 Maß A/B, K-008 `sm24-ausschnitt-bemasst`, K-009 additive Props. Schlüsselzeichnung: Lineal nur mit beschrifteten Einschnitten (D-045). Grund: gemeinsame Befunde der Sichtabnahme E5-L-29 (Paket E6-L-31).
+- 1.15 · E6 · K-007: B-20 auch für den Trefferzähler der Shop-Liste und die Summe im Band der `FlowShell`; B-23 bis fünf Stationen (Köpfe von Ratgeber und Service und Termin); neu B-26 Einsatzradius im Standortkopf. K-006: Einleitung von Warenkorb und Kasse bleibt sichtbar (D-046). Grund: Entwürfe der Runde 2 (U-ARTIKEL, U-SERVICE, U-STANDORTE, H10), vor dem Bau festgelegt.
