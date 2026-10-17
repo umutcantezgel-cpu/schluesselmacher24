@@ -201,7 +201,7 @@ export default async function ModelPage(props: PageProps) {
     {
       titel: 'Anzahlung und Vorlauf',
       text: `Die Anzahlung beträgt standardmäßig ${deposit} und wird vollständig auf den `
-        + `Gesamtpreis angerechnet. Der früheste Termin liegt etwa ${leadDays} Tage in der `
+        + `Gesamtpreis angerechnet. Der früheste Termin liegt etwa ${leadDays}\u00a0Tage in der `
         + 'Zukunft, weil wir den passenden Schlüssel vorher beschaffen. Für einzelne '
         + 'Leistungen können abweichende Werte gelten — diese sehen Sie im Ablauf.',
     },

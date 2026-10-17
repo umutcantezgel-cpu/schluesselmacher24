@@ -270,7 +270,7 @@ function SchmalGrafik({ anzahl, beschriftungen, aktiv, title, className }: Zeich
               style={motionStyle(verzoegerung(i), EINBLENDUNG)}
               strokeWidth={HILFSLINIE}
               strokeDasharray={GESTRICHELT}
-              d={`M${lx} ${cy}H${kreisX - KREIS_SCHMAL}`}
+              d={`M${lx - 6} ${cy}H${kreisX - KREIS_SCHMAL}`}
             />
             <Station
               x={kreisX}

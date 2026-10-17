@@ -235,7 +235,7 @@ export default async function HomePage() {
                       className="absolute inset-y-0 left-0 w-0.5 origin-top scale-y-0 bg-area transition-transform duration-base ease-standard zeiger:group-hover:scale-y-100"
                     />
                     {/* Mobil oben rechts in der Karte, ab 640 px links neben dem Icon */}
-                    <span className="absolute right-3 top-3 font-mono text-caption tabular-nums text-foreground-subtle sm:static sm:block sm:w-6 sm:shrink-0 sm:pt-1">
+                    <span className="absolute right-3 top-3 font-mono text-caption tabular-nums text-foreground-muted sm:static sm:block sm:w-6 sm:shrink-0 sm:pt-1">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     {/* Geht beim Seitenwechsel in das Fach-Icon des Bereichskopfs über (B-13) */}
@@ -326,7 +326,7 @@ export default async function HomePage() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <SectionHeading
             id="vertrauen-titel"
-            className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:self-start"
+            className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:-mt-1.5 lg:self-start"
             nummer="03"
             eyebrow="Warum wir"
             title="Sachlich, nachvollziehbar, ohne Überraschungen"

@@ -148,6 +148,10 @@ function pfade(html: string, klasse: string): string[] {
     .filter((tag) => (attribut(tag, 'class') ?? '').split(/\s+/).includes(klasse));
 }
 
+/** Fünf Stationen mit je 14 Zeichen: Grenzfall für Rand und Innenlage. */
+const FUENF_MIT_VIERZEHN =
+  'abcdefghijklmn|abcdefghijklmn|abcdefghijklmn|abcdefghijklmn|abcdefghijklmn';
+
 describe('AblaufGrafik', () => {
   it('zeichnet ohne Parameter drei Stationen nur mit Nummern', () => {
     const html = zeichne({});
@@ -273,6 +277,8 @@ describe('AblaufGrafik', () => {
       { schritte: 'a|b' },
       { schritte: 'abcdefghijklmn|abcdefghijklmn|abcdefghijklmn|abcdefghijklmn' },
       { schritte: 'abcdefghijklmn|abcdefghijklmn|abcdefghijklmn|abcdefghijklmn', aktiv: 4 },
+      { schritte: FUENF_MIT_VIERZEHN },
+      { schritte: FUENF_MIT_VIERZEHN, aktiv: 5 },
       {},
     ];
     for (const params of faelle) {
@@ -365,6 +371,8 @@ describe('AblaufGrafik', () => {
       { schritte: vierMitVierzehn },
       { schritte: vierMitVierzehn, aktiv: 4 },
       { schritte: `${vierMitVierzehn}|abcdefghijklmn` },
+      { schritte: FUENF_MIT_VIERZEHN },
+      { schritte: FUENF_MIT_VIERZEHN, aktiv: 5 },
       {},
     ];
     for (const params of faelle) {
@@ -483,6 +491,49 @@ describe('AblaufGrafik', () => {
       }
       for (const e of bewegung(html)) {
         expect((e.verzoegerung ?? 0) + (e.dauer ?? 0)).toBeLessThan(1.6);
+      }
+    }
+  });
+
+  it('hält Bemaßungskette, Anfangsstrich und Hilfslinien auch bei fünf Stationen', () => {
+    for (const format of ['breit', 'schmal'] as const) {
+      const html = zeichne({ schritte: FUENF_MIT_VIERZEHN, format });
+      const [linie] = pfade(html, 'sm24-draw');
+      const bemassung = punkte(attribut(linie, 'd') ?? '');
+      const stationen = kreise(html);
+      expect(stationen).toHaveLength(5);
+      const hilfslinien = pfade(html, 'sm24-fade')
+        .filter((tag) => tag.includes('stroke-dasharray'))
+        .map((tag) => punkte(attribut(tag, 'd') ?? '')[0]);
+      // Breit kommen für tiefe Stationen je eine weitere Strecke zur Beschriftung hinzu.
+      expect(hilfslinien.length).toBeGreaterThanOrEqual(5);
+
+      if (format === 'breit') {
+        const LY = bemassung[3][1];
+        const xs = bemassung.map(([x]) => x);
+        expect(Math.min(...xs)).toBeCloseTo(stationen[0].cx, 1);
+        expect(Math.max(...xs)).toBeCloseTo(stationen[4].cx, 1);
+        // Anfangsstrich 6 über und 6 unter der Linie; Hilfslinien überragen sie um 6.
+        expect(bemassung[0][1]).toBeCloseTo(LY - 6, 1);
+        expect(bemassung[1][1]).toBeCloseTo(LY + 6, 1);
+        for (const k of stationen) {
+          expect(
+            hilfslinien.some(([x, y]) => Math.abs(x - k.cx) < 0.05 && Math.abs(y - (LY + 6)) < 0.05),
+          ).toBe(true);
+        }
+      } else {
+        const lx = bemassung[2][0];
+        const ys = bemassung.map(([, y]) => y);
+        expect(Math.min(...ys)).toBeCloseTo(stationen[0].cy, 1);
+        expect(Math.max(...ys)).toBeCloseTo(stationen[4].cy, 1);
+        // Anfangsstrich 6 links und 6 rechts der Linie; Hilfslinien überragen sie um 6 nach links.
+        expect(bemassung[0][0]).toBeCloseTo(lx - 6, 1);
+        expect(bemassung[1][0]).toBeCloseTo(lx + 6, 1);
+        for (const k of stationen) {
+          expect(
+            hilfslinien.some(([x, y]) => Math.abs(x - (lx - 6)) < 0.05 && Math.abs(y - k.cy) < 0.05),
+          ).toBe(true);
+        }
       }
     }
   });
