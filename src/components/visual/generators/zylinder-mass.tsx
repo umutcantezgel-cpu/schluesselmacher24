@@ -61,7 +61,7 @@ function mass(wert: number): string {
  * params:
  * - `bauform`: `profil-doppel` (Standard) | `profil-halb` | `knauf`
  * - `aussen`: Maß A in mm, 25–100 (Standard 30)
- * - `innen`: Maß I in mm, 25–100 (Standard 30; bei `profil-halb` ohne Wirkung)
+ * - `innen`: Maß B (innen) in mm, 25–100 (Standard 30; bei `profil-halb` ohne Wirkung)
  * - `knaufseite`: `innen` (Standard) | `aussen` — nur bei `knauf`
  * - `format`: `breit` (Standard, 480 × 270) | `schmal` (300 × 220, größere Schrift für Telefone)
  *
@@ -155,7 +155,7 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
   const masse: { von: number; bis: number; text: string }[] = [
     { von: links, bis: 0, text: `A ${mass(aussen)}` },
   ];
-  if (!halb) masse.push({ von: 0, bis: rechts, text: `I ${mass(innen)}` });
+  if (!halb) masse.push({ von: 0, bis: rechts, text: `B ${mass(innen)}` });
 
   const beschriftungY = r(oben + (PROFIL_HOEHE * s) / 2 + 4.5);
   const mitteText = 'Mitte Stulpschraube';

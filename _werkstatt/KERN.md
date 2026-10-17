@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.13
+# KERN · SCHLÜSSELMACHER24 · Version 1.14
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -30,7 +30,7 @@ SCHLÜSSELMACHER24 ist Website und Shop eines Fachbetriebs für Autoschlüssel, 
   6. Terminstatus prüfen
 
 ## K-003 Gestaltungsprinzipien (Tun · Lassen)
-1. **Bemaßt statt behauptet.** Tun: Zahlen, Maße, Schritte und Fristen sichtbar und in Mono setzen (Anzahlung, Vorlauf, Maß A/I, Vorgangsnummer). Lassen: Superlative und Floskeln wie „nahtlos“, „innovativ“ oder „Entdecken Sie …“; erfundene Kennzahlen; hochzählende Zahlen.
+1. **Bemaßt statt behauptet.** Tun: Zahlen, Maße, Schritte und Fristen sichtbar und in Mono setzen (Anzahlung, Vorlauf, Maß A/B, Vorgangsnummer). Lassen: Superlative und Floskeln wie „nahtlos“, „innovativ“ oder „Entdecken Sie …“; erfundene Kennzahlen; hochzählende Zahlen.
 2. **Eine Linie, die schneidet.** Tun: Die Profillinie ist das einzige wiederkehrende Ornament (Trenner, Unterstrich der Augenbrauen-Zeile, Hero). Lassen: Verläufe, Glas, Leuchtkugeln, Partikel, Schatten als Effekt.
 3. **Der Bereich zeigt Farbe, die Marke bleibt Stahlblau.** Tun: Die Akzentfarbe (`area`) gilt nur im Bereichskontext (Kachel, Kopf, Grafik); Aktionen bleiben `primary`. Lassen: Farbe als Fläche ohne Bedeutung, Signalfarben als Markenfläche.
 4. **Erzählen, wo man wählt – ruhig, wo man arbeitet.** Tun: Erzählansichten haben je Bildschirmhöhe einen Blickfang und einen großen Moment; Arbeitsansichten sind dicht, ruhig und schnell. Lassen: Inszenierung in Formularen, Kasse, Warenkorb oder Rechtstexten.
@@ -154,6 +154,16 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
   - **Hauptknöpfe mobil einzeilig:** kürzerer vorhandener Wortlaut oder `w-full justify-between text-left`.
   - **Werte:** Beträge, Maße, Kennungen und Tabellenwerte in `font-mono tabular-nums`, Summen rechtsbündig, Endsummen in Textfarbe (Primärblau nur für Aktionen).
   - **Flächen sparsam:** Hinweise ohne eigenen Anlass als Zeile mit Glyphe statt getönter Kasten; Warnungen höchstens 8 Spalten, `surface` mit 2-px-Leiste links in Warnfarbe.
+- **Kleinregeln aus der Sichtabnahme E5-L-29 (seit 1.14, gelten für alle Ansichten):**
+  - **Zeilenpfeil:** `GlyphPfeilRechts` in ganzen Link-Zeilen und -Karten steht in Ruhe in `text-foreground-muted`, bei Hover und Tastaturfokus der Zeile in `text-primary` (`group-hover:text-primary group-focus-visible:text-primary`), in Bereichskacheln in `text-area-strong`; Bewegung B-06 (`zeiger:group-hover:translate-x-1 duration-quick ease-standard`). Pfeile in Textlinks („Alle Leistungen“, Etiketten) behalten die Linkfarbe.
+  - **Primärblau nur für Aktionen und Links:** Nicht klickbare laufende Nummern, Stationen, Zähler und Kennungen stehen in `text-foreground` (Augenbrauen behalten die Bereichsfarbe).
+  - **Schriftfeld:** Wortwerte in Inter `text-title-sm font-semibold`, Mono nur für Zahlen, Maße, Beträge und Kennungen.
+  - **Zahl und Einheit untrennbar:** geschütztes Leerzeichen, im Quelltext als Escape `\u00a0` (in Template-Literalen `\xa0`), nie als `&nbsp;` in einer Zeichenkette.
+  - **Kein Rahmen im Rahmen:** Auswahlen in einer Fläche als Liste (`Auswahlgruppe liste` + `OptionCard zeile`) oder als Karten direkt auf `bg-background`, nicht als Karten in einer Karte. Preise in Optionslisten als rechte Spalte (`OptionCard metaSpalte`).
+  - **Leere Zustände von Warenkorb und Kasse:** gleicher Bau, Rohling-Zeichnung (`schluessel` mit `rohling: true`, `w-40`, `sm24-ruhig`, ohne Rahmen); die Einleitung des Kopfes blendet im Leerzustand aus (`PageHeader leadClassName="korb-leer:hidden"`). Ein Summenbegriff: „Gesamtbetrag“.
+  - **Akkordeon:** Die Antwort folgt `max-w-measure` mit Silbentrennung (im Baustein gesetzt), die Fläche bleibt breit.
+  - **Abläufe (`FlowShell`):** Das klebende Band zeigt auf allen Breiten „Schritt n von m · Name“ über die ganze Shell; der Ablauftitel steht nur in der h1. Ab 768 px stehen Zurück und Weiter in einer Zeile, Weiter rechtsbündig in Inhaltsbreite. Lange Abläufe setzen ab 1024 px `raster="seite"` (Schritt 8 Spalten, klebende Seite mit senkrechter Schrittliste und `seite`-Zusatz 4 Spalten). Eine laufende Summe kommt über `summe` (mobil links in der Leiste wie im Warenkorb, ab 768 px rechts im Band). Im laufenden Ablauf ist „Weiter“ die einzige Hauptaktion; der Kopfknopf blendet aus (`data-kopfknopf`).
+  - **Maße der Zylinder** heißen überall „Maß A“ (außen) und „Maß B“ (innen), auch in Zeichnungen.
 
 
 ## K-007 Bewegungssystem und Register
@@ -205,7 +215,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 - Neue Einträge gibt es nur durch den Orchestrator. Bewegung ohne Eintrag wird entfernt.
 
 ## K-008 SVG-Formsystem
-- **Grundgeometrie:** Schlüsselprofil (Rücken, Bart mit Einschnitten), Kreis (Zylinderkern, Knoten), Rechteck mit kleinem Radius (Tür, Körper), Bemaßungslinie mit Pfeilspitzen als Pfad. Raster: Fach-Icons und Glyphen 48 × 48, Generatoren 480 × 270 (16:9), 480 × 300 oder für Szenen mit Bemaßung und Legende 480 × 360 (4:3, `profilschnitt`); Zeichenpapier-Raster im Abstand 30. Gemeinsame Helfer der Generatoren stehen nur in `generators/grafik-basis.tsx`; weitere Hilfsdateien liegen außerhalb von `generators/`. **Telefonbreiten:** Beschriftungen im Bild mindestens etwa 11,5 px. Erreicht wird das über einen Ausschnitt (`ausschnitt`, `.sm24-ausschnitt`; Legenden mit `data-legende` werden darin größer gesetzt) oder über ein schmales Format (`format: 'schmal'`, eingetragen in `SCHMALES_FORMAT` der Registry, von `ImagePlaceholder` unter 640 px gezeigt).
+- **Grundgeometrie:** Schlüsselprofil (Rücken, Bart mit Einschnitten), Kreis (Zylinderkern, Knoten), Rechteck mit kleinem Radius (Tür, Körper), Bemaßungslinie mit Pfeilspitzen als Pfad. Raster: Fach-Icons und Glyphen 48 × 48, Generatoren 480 × 270 (16:9), 480 × 300 oder für Szenen mit Bemaßung und Legende 480 × 360 (4:3, `profilschnitt`); Zeichenpapier-Raster im Abstand 30. Gemeinsame Helfer der Generatoren stehen nur in `generators/grafik-basis.tsx`; weitere Hilfsdateien liegen außerhalb von `generators/`. **Telefonbreiten:** Beschriftungen im Bild mindestens etwa 11,5 px. Erreicht wird das über einen Ausschnitt (`ausschnitt`, `.sm24-ausschnitt`; Legenden mit `data-legende` werden darin größer gesetzt; die Bemaßung mit `data-bemassung` blendet der Ausschnitt aus, außer die Hülle trägt `sm24-ausschnitt-bemasst` und das Fenster fasst sie ganz) oder über ein schmales Format (`format: 'schmal'`, eingetragen in `SCHMALES_FORMAT` der Registry, von `ImagePlaceholder` unter 640 px gezeigt).
 - **Striche:** Enden und Ecken immer rund.
   - **Icons und Glyphen:** gleiche Bildschirmstrichstärke in jeder Größe über `vector-effect: non-scaling-stroke`. Die Regel steht in `globals.css` für `[data-sm24-icon]`; der Wert wird in L-02 am Bild festgelegt (1,75–2 px).
   - **Generatoren:** Strichskala aus `grafik-basis.tsx`: `DETAIL` 0,75 · `HILFSLINIE` 1 · `LINIE` 1,5 · `LINIE_STARK` 2 · `KONTUR` 2,25 · `AKZENT` 3 · `MARKE` 4. In `strokeWidth={…}` stehen nur diese Namen.
@@ -264,7 +274,7 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - **Erzählansichten:** Start, Bereichsseiten, Leistungs-, Marken- und Modellseiten, Code-Shop und Produkt, Ratgeber, Standorte.
 - **Arbeitsansichten:** alle Abläufe und Konfiguratoren, Warenkorb, Kasse, Bestellung, Terminstatus, Rechtstexte, Cookie-Einstellungen.
 - **Bausteine (Bestand, werden erweitert, nicht ersetzt):** `Button`/`ButtonLink`, `Card`, `Badge`, `Alert`, `Accordion`, `InfoTip`, `ImagePlaceholder`, `Section`/`SectionHeading`, `PageHeader`, `Breadcrumbs`, `SummaryList`, `FlowShell`, `OptionCard`, Formularfelder, `SiteHeader`, `SiteFooter`, `MobileActionBar`.
-- **Props-Verträge** gemeinsamer Bausteine bleiben in einer Welle eingefroren.
+- **Props-Verträge** gemeinsamer Bausteine bleiben in einer Welle eingefroren. Erweiterungen nur additiv und optional, ohne Wirkung auf bisherige Aufrufer (seit 1.14: `OptionCard zeile`, `bildLage`, `metaSpalte`; `FlowShell raster`, `seite`, `summe`; `PageHeader leadClassName`).
 
 ## K-010 Ton und Mikrotexte
 - **Ton:** Sie-Form (Bestand), kurz, sachlich, konkret.
@@ -309,3 +319,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.11 · E5 · B-23 Ablaufzeichnung und B-24 Lesefortschritt (Kür K-04). Grund: Sichtabnahme E4-L-23, H12 Ratgeber.
 - 1.12 · E6 · B-25 Stiftzuhaltung am Scrollen (Kür K-01). Grund: Kür nach Plan.
 - 1.13 · E5 · B-21 Reihenfolge in der Schlüsselzeichnung (Profile erst, wenn alle Körper stehen) und Obergrenze 1,6 s je Zeichnung. Grund: Nachprüfung H02/H03 (Paket E5-L-28). Dazu: `SummaryList` im Schriftfeld setzt Kennungen auch in der Beschriftung ohne Umbruch und Angaben mit Betrag zweizeilig (Angaben klein, Betrag in Mono); Variante `korb-leer:` für die Geschwister der Leerkarte im Warenkorb. Grund: Nachprüfung H10/H11. B-25 eingebaut (K-01) mit `clip` für Rahmen um die Szene. Grund: Abnahme E6-GRAFIKER-11.
+- 1.14 · E6 · K-006 Kleinregeln aus der Sichtabnahme E5-L-29 (Zeilenpfeil, Primärblau nur für Aktionen, Schriftfeld, Zahl und Einheit, kein Rahmen im Rahmen, leere Zustände, Akkordeon, Abläufe, Maß A/B), K-003 Maß A/B, K-008 `sm24-ausschnitt-bemasst`, K-009 additive Props. Schlüsselzeichnung: Lineal nur mit beschrifteten Einschnitten (D-045). Grund: gemeinsame Befunde der Sichtabnahme E5-L-29 (Paket E6-L-31).

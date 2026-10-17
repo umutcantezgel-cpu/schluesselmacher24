@@ -442,8 +442,8 @@ const TITEL: Record<Typ, string> = {
  *
  * params:
  * - `typ`: `zylinder` (Standard) | `buntbart` | `klapp` | `funk` | `smart-key` | `transponder`
- * - `einschnitte`: 4–8 Ziffern 0–9, Vorrang vor `code`; werden unter dem Bart beschriftet
- * - `code`: Text — ergibt deterministisch ein Einschnittprofil (ohne Beschriftung)
+ * - `einschnitte`: 4–8 Ziffern 0–9, Vorrang vor `code`; werden unter dem Bart auf einem Lineal beschriftet
+ * - `code`: Text — ergibt deterministisch ein Einschnittprofil (ohne Beschriftung und Lineal)
  * - `anzahl`: 1–3 (Standard 1), weitere Schlüssel versetzt dahinter, z. B. für „Kopie“
  * - `rohling`: `true` – nur beim Zylinderschlüssel: gerader Halm ohne Einschnitte, die
  *   Einschnittzone gestrichelt (etwa vor der Eingabe eines Codes)
@@ -464,20 +464,18 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
 
   const linealY = vorn.linealY;
   const teilung = [...new Set(vorn.marken.map((m) => r(m.x)))];
-  const lineal =
-    linealY !== undefined && teilung.length > 0
-      ? `M${teilung[0]} ${linealY}H${teilung[teilung.length - 1]}` +
-        teilung.map((x) => `M${x} ${linealY - 4}V${linealY + 4}`).join('')
-      : undefined;
-  const beschriften = lineal !== undefined && explizit !== undefined;
+  // Das Lineal steht nur mit Ziffern: unbeschriftete Teilstriche behaupten ein Maß, das man
+  // nicht lesen kann (K-003 „Bemaßt statt behauptet“, E6-L-31).
+  const beschriften = linealY !== undefined && teilung.length > 0 && explizit !== undefined;
+  const lineal = beschriften
+    ? `M${teilung[0]} ${linealY}H${teilung[teilung.length - 1]}` +
+      teilung.map((x) => `M${x} ${linealY - 4}V${linealY + 4}`).join('')
+    : undefined;
 
   const x1 = vorn.box.x1;
   const x2 = vorn.box.x2 + (anzahl - 1) * KOPIE_DX;
   const y1 = vorn.box.y1 + (anzahl - 1) * KOPIE_DY;
-  const y2 =
-    lineal !== undefined && linealY !== undefined
-      ? Math.max(vorn.box.y2, linealY + (beschriften ? 24 : 6))
-      : vorn.box.y2;
+  const y2 = beschriften && linealY !== undefined ? Math.max(vorn.box.y2, linealY + 24) : vorn.box.y2;
   const skala = Math.min(1, (BREITE - 56) / (x2 - x1), (HOEHE - 40) / (y2 - y1));
   const tx = r(BREITE / 2 - (skala * (x1 + x2)) / 2);
   const ty = r(HOEHE / 2 - (skala * (y1 + y2)) / 2);

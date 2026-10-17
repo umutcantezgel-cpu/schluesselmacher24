@@ -42,4 +42,10 @@ describe('PageHeader', () => {
     expect(html).not.toContain('width="40"');
     expect(html).toContain('text-headline');
   });
+
+  it('gibt Zusatzklassen nur an die Einleitung weiter', () => {
+    const html = renderToStaticMarkup(<PageHeader title="Kasse" lead="Einleitung" art="arbeit" leadClassName="korb-leer:hidden" />);
+    expect(html).toMatch(/<p class="[^"]*korb-leer:hidden[^"]*">Einleitung<\/p>/);
+    expect(renderToStaticMarkup(<PageHeader title="Kasse" lead="Einleitung" art="arbeit" />)).not.toContain('korb-leer');
+  });
 });

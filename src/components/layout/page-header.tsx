@@ -10,6 +10,8 @@ export interface PageHeaderProps {
   eyebrow?: string;
   title: string;
   lead?: string;
+  /** Zusatzklassen der Einleitung, etwa `korb-leer:hidden` im Leerzustand von Warenkorb und Kasse. */
+  leadClassName?: string;
   crumbs?: Crumb[];
   /** Aktionen, z. B. Schaltflächen. */
   actions?: ReactNode;
@@ -35,6 +37,7 @@ export function PageHeader({
   eyebrow,
   title,
   lead,
+  leadClassName,
   crumbs,
   actions,
   children,
@@ -76,7 +79,9 @@ export function PageHeader({
         {title}
       </h1>
       {lead && (
-        <p className={cn('mt-4 max-w-measure text-foreground-muted', erzaehl ? 'text-lead' : 'text-body')}>{lead}</p>
+        <p className={cn('mt-4 max-w-measure text-foreground-muted', erzaehl ? 'text-lead' : 'text-body', leadClassName)}>
+          {lead}
+        </p>
       )}
     </>
   );

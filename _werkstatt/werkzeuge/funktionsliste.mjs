@@ -317,9 +317,13 @@ async function absendeKnopf(page) {
 const SCHRITTBILDER = process.env.SM24_SCHRITTBILDER ?? null;
 let schrittBildNr = 0;
 
-/** Ganzseitiges Bild des aktuellen Schritts, nur mit SM24_SCHRITTBILDER. Fehler sind unerheblich. */
+/**
+ * Ganzseitiges Bild des aktuellen Schritts, nur mit SM24_SCHRITTBILDER. Fehler sind unerheblich.
+ * Wartet vorher 400 ms (`--dauer-slow`), damit das Bild den ruhenden Schritt zeigt und keinen Übergang (B-11, B-20).
+ */
 async function schrittBild(page, titel) {
   if (!SCHRITTBILDER) return;
+  await page.waitForTimeout(400);
   schrittBildNr += 1;
   const name = `${String(schrittBildNr).padStart(2, '0')}-${(titel || 'ohne-titel').toLowerCase().replace(/[^a-z0-9äöüß]+/g, '-').slice(0, 40)}.jpg`;
   await page.screenshot({ path: path.join(SCHRITTBILDER, name), type: 'jpeg', quality: 60, fullPage: true }).catch(() => {});

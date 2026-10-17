@@ -49,7 +49,8 @@ export function Accordion({ items, className }: { items: AccordionItem[]; classN
                 isOpen && 'sm24-fade [--sm24-duration:var(--dauer-quick)]',
               )}
             >
-              {item.answer}
+              {/* Die Fläche bleibt breit, der Antworttext folgt dem Zeilenmaß (KERN K-006). */}
+              <p className="max-w-measure hyphens-auto">{item.answer}</p>
             </div>
           </div>
         );

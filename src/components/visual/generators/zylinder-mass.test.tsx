@@ -40,7 +40,7 @@ describe('ZylinderMassGrafik', () => {
     pruefeVertrag(html);
     expect(html).toContain('<title>Maßzeichnung Zylinder</title>');
     expect(html).toContain('A 30');
-    expect(html).toContain('I 30');
+    expect(html).toContain('B 30');
     expect(html).toContain('außen');
     expect(html).toContain('innen');
     expect(html).toContain('pathLength="1"');
@@ -50,7 +50,7 @@ describe('ZylinderMassGrafik', () => {
     const html = zeichne({ aussen: 30, innen: 45 });
     pruefeVertrag(html);
     expect(html).toContain('A 30');
-    expect(html).toContain('I 45');
+    expect(html).toContain('B 45');
   });
 
   it('zeichnet die Seiten maßstäblich im Verhältnis A:I', () => {
@@ -64,7 +64,7 @@ describe('ZylinderMassGrafik', () => {
     const html = zeichne({ bauform: 'profil-halb', aussen: 40, innen: 55 });
     pruefeVertrag(html);
     expect(html).toContain('A 40');
-    expect(html).not.toContain('I 55');
+    expect(html).not.toContain('B 55');
     expect(masslinien(html)).toHaveLength(1);
   });
 
@@ -81,7 +81,7 @@ describe('ZylinderMassGrafik', () => {
   it('formatiert halbe Millimeter mit Komma', () => {
     const html = zeichne({ aussen: 27.5, innen: '32,5' });
     expect(html).toContain('A 27,5');
-    expect(html).toContain('I 32,5');
+    expect(html).toContain('B 32,5');
   });
 
   it('begrenzt Zahlen und wirft bei Unsinnswerten nicht', () => {
@@ -101,7 +101,7 @@ describe('ZylinderMassGrafik', () => {
     }
     const begrenzt = zeichne({ aussen: -5, innen: 999 });
     expect(begrenzt).toContain('A 25');
-    expect(begrenzt).toContain('I 100');
+    expect(begrenzt).toContain('B 100');
   });
 
   it('setzt einen Ersatztitel, wenn der Titel fehlt', () => {

@@ -144,6 +144,12 @@
     display: none;
   }
 
+  /* Im laufenden Ablauf bleibt „Weiter“ die einzige Hauptaktion; der Kopfknopf kehrt auf der
+     Bestätigung zurück (dort fehlt `data-ablauf`). Spezifität schlägt `sm:inline-flex`. */
+  body:has([data-ablauf]) [data-kopfknopf] {
+    display: none;
+  }
+
   @media (min-width: 768px) {
     html:has([data-ablauf]) {
       scroll-padding-top: calc(var(--header-height) + 5rem);
@@ -485,7 +491,7 @@
  * Interaktive Grafiken nach dem ersten Wechsel: Einstiegsbewegungen spielen
  * nicht erneut, die Zeichnung steht sofort (Rückmeldung statt Auftritt).
  */
-.sm24-ruhig :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-aufdecken) {
+.sm24-ruhig :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
   animation: none;
 }
 
@@ -689,7 +695,9 @@
     transform: translate(calc(-100% * var(--aus-x) / var(--voll-w)), calc(-100% * var(--aus-y) / var(--voll-h)));
   }
 
-  .sm24-ausschnitt [data-bemassung] {
+  /* Bemaßung blendet der Ausschnitt aus; mit `sm24-ausschnitt-bemasst` bleibt sie stehen,
+     wenn das Fenster sie ganz fasst (Startseite, E6-L-31). */
+  .sm24-ausschnitt:not(.sm24-ausschnitt-bemasst) [data-bemassung] {
     display: none;
   }
 

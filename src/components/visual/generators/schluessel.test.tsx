@@ -83,6 +83,14 @@ describe('SchluesselGrafik', () => {
     expect(zeichne({ code: 'AB 4711' })).not.toContain('<text');
   });
 
+  it('zeichnet das Lineal nur mit beschrifteten Einschnitten', () => {
+    expect(zeichne({ code: 'AB 4711' })).not.toContain('sm24-draw stroke-foreground-muted');
+    expect(zeichne({})).not.toContain('sm24-draw stroke-foreground-muted');
+    const beschriftet = zeichne({ einschnitte: [3, 5, 2, 7, 4] });
+    expect(beschriftet).toContain('sm24-draw stroke-foreground-muted');
+    expect(beschriftet).toContain('<text');
+  });
+
   it('gibt einschnitten Vorrang vor code und beschriftet sie', () => {
     const a = zeichne({ einschnitte: [3, 5, 2, 7, 4], code: 'A' });
     const b = zeichne({ einschnitte: [3, 5, 2, 7, 4], code: 'B' });

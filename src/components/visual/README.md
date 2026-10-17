@@ -153,7 +153,7 @@ Beim `smart-key` gibt es keinen Bart; `funk` und `smart-key` zeigen Funkbögen.
 |---|---|---|
 | `bauform` | `profil-doppel` · `profil-halb` · `knauf` | `profil-doppel` |
 | `aussen` | Maß A in mm, 25–100 | `30` |
-| `innen` | Maß I in mm, 25–100 (bei `profil-halb` ohne Wirkung) | `30` |
+| `innen` | Maß B (innen) in mm, 25–100 (bei `profil-halb` ohne Wirkung) | `30` |
 | `knaufseite` | `innen` · `aussen` (nur bei `knauf`) | `innen` |
 | `format` | `breit` (480 × 270) · `schmal` (300 × 220, Schrift 16/15 für Telefone) | `breit` |
 
