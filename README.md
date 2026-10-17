@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Letzte Änderungen
+- 2024-05-24: Interaktives Modul 'Security Risk Calculator' unter 'sicherheitstechnik/sicherheitscheck' hinzugefügt.

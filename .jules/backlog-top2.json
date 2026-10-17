@@ -1,0 +1,18 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_014",
+      "route": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "title": "Interactive Security Check Expansion",
+      "description": "Expand the security check page with comprehensive details about the methodology and an interactive self-assessment module.",
+      "status": "COMPLETED_BY_BUILDER"
+    },
+    {
+      "id": "IDEA_042",
+      "route": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "title": "Car Key Programming Module",
+      "description": "Add an interactive programming feasibility checker based on car make and model.",
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
