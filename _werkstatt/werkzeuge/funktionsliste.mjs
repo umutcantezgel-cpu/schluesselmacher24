@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 // funktionsliste.mjs – prüft die Funktionen F-01 bis F-14 aus _werkstatt/LAGEBILD.md im Browser.
-// Aufruf: node _werkstatt/werkzeuge/funktionsliste.mjs [--nur F-01,F-04] [--json <datei>]
+// Aufruf: node _werkstatt/werkzeuge/funktionsliste.mjs [--nur F-01,F-04] [--json <datei>] [--tastatur] [--geraet mobil|tablet|desktop]
+// --tastatur: jede Bedienung nur mit Tab, Pfeiltasten, Leertaste und Enter; je Bedienung werden Tab-Zahl und
+// sichtbarer Fokus protokolliert (Prüfstufe C, Z-07). Dateiauswahl: Der auslösende Knopf muss per Tab erreichbar sein,
+// die Datei selbst setzt das Werkzeug wie ein Dateidialog. --geraet überschreibt das Gerät jeder Funktion.
 // Je Funktion: eigene Kontexte (kontextFuer), Zeitlimit 60 s, Fehler einer Funktion beenden das Skript nicht.
 // Schreibende Anfragen fängt attrappenSetzen() aus lib.mjs ab; Formulare tragen PRUEF_EMAIL.
 // Optional SM24_SCHRITTBILDER=<Ordner>: ein Bild je Ablaufschritt (Beleg der Darstellung, schreibt nichts ins Repo).
@@ -27,6 +30,158 @@ const FREIWILLIG = /freiwillig/i;
 const ZUSTIMMUNG = /zur Kenntnis|einverstanden|bestätig|akzeptier|Ich habe|Ich bin|Ich stimme|zustimm|Mir ist bekannt|gelesen|verstanden/i;
 
 class Zeitlimit extends Error {}
+
+/* ---------- Tastaturmodus ---------- */
+let TASTATUR = false;
+let tastaturLog = [];
+const MAX_TABS = 400;
+let tzZaehler = 0;
+/** Sichtbarkeit des Fokus im Moment, in dem das Ziel erreicht ist (vor Enter oder Leertaste). */
+let fokusBeimZiel = null;
+
+/** Ob der Fokus auf dem Element oder in ihm liegt. */
+async function istFokussiert(loc) {
+  return loc.evaluate((el) => { const a = document.activeElement; return !!a && (a === el || el.contains(a)); }).catch(() => false);
+}
+
+/** Sichtbarer Fokus: Umriss oder Ring am fokussierten Element oder an einem der drei nächsten Vorfahren (fokus-innen). */
+async function fokusSichtbar(page) {
+  return page.evaluate(() => {
+    let el = document.activeElement;
+    for (let i = 0; el && el !== document.body && i < 4; i += 1, el = el.parentElement) {
+      const s = getComputedStyle(el);
+      if ((s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) > 0) || (s.boxShadow && s.boxShadow !== 'none')) return true;
+    }
+    return false;
+  }).catch(() => false);
+}
+
+/** Das Element, das den Fokus tatsächlich bekommt: es selbst, das Steuerelement eines Labels oder ein Nachfahre. */
+async function fokusZiel(loc) {
+  const page = loc.page();
+  const marke = `tz${tzZaehler += 1}`;
+  const ok = await loc.first().evaluate((el, m) => {
+    const fokussierbar = (e) => e && !e.disabled && (e.tabIndex >= 0 || ['INPUT', 'SELECT', 'TEXTAREA', 'BUTTON'].includes(e.tagName) || (e.tagName === 'A' && e.hasAttribute('href')));
+    let ziel = fokussierbar(el) ? el : (el.control ?? el.querySelector('input, select, textarea, button, a[href], [tabindex]:not([tabindex="-1"])'));
+    if (!ziel) return false;
+    ziel.setAttribute('data-sm24-tz', m);
+    return true;
+  }, marke).catch(() => false);
+  return ok ? page.locator(`[data-sm24-tz="${marke}"]`) : loc.first();
+}
+
+async function tabZu(loc, ziel) {
+  const page = loc.page();
+  for (let i = 0; i <= MAX_TABS; i += 1) {
+    if (await istFokussiert(loc)) {
+      fokusBeimZiel = await fokusSichtbar(page);
+      return i;
+    }
+    await page.keyboard.press('Tab');
+  }
+  throw new Error(`Tastatur: ${ziel} nach ${MAX_TABS} Tab-Schritten nicht erreicht`);
+}
+
+/** Radiogruppe: mit Tab in die Gruppe, mit Pfeiltasten zur Option, Leertaste falls noch nicht gewählt. */
+async function radioWaehlen(loc, ziel) {
+  const page = loc.page();
+  const name = await loc.evaluate((el) => el.name);
+  let tabs = 0;
+  for (; tabs <= MAX_TABS; tabs += 1) {
+    const inGruppe = await page.evaluate((n) => { const a = document.activeElement; return a?.type === 'radio' && a.name === n; }, name);
+    if (inGruppe) break;
+    await page.keyboard.press('Tab');
+  }
+  if (tabs > MAX_TABS) throw new Error(`Tastatur: Gruppe von ${ziel} nicht erreicht`);
+  for (let i = 0; i < 80 && !(await istFokussiert(loc)); i += 1) await page.keyboard.press('ArrowDown');
+  if (!(await istFokussiert(loc))) throw new Error(`Tastatur: ${ziel} mit Pfeiltasten nicht erreicht`);
+  fokusBeimZiel = await fokusSichtbar(page);
+  if (!(await loc.isChecked().catch(() => true))) await page.keyboard.press('Space');
+  return tabs;
+}
+
+/** Ersetzt Mausbedienung durch Tastatur (Locator-Prototyp, einmal je Prozess). */
+function tastaturEinschalten(page) {
+  const proto = Object.getPrototypeOf(page.locator('body'));
+  if (proto.__sm24Tastatur) return;
+  proto.__sm24Tastatur = true;
+  const orig = { fill: proto.fill, selectOption: proto.selectOption, setInputFiles: proto.setInputFiles };
+  const protokoll = async (loc, art, fn) => {
+    const ziel = await loc.evaluate((el) => {
+      const text = el.getAttribute('aria-label') || el.labels?.[0]?.textContent || el.textContent || el.name || '';
+      return `${el.tagName.toLowerCase()}${el.type ? `[${el.type}]` : ''} „${text.replace(/\s+/g, ' ').trim().slice(0, 50)}“`;
+    }).catch(() => art);
+    fokusBeimZiel = null;
+    const tabs = await fn(ziel);
+    tastaturLog.push({ art, ziel, tabs, fokusSichtbar: fokusBeimZiel ?? await fokusSichtbar(loc.page()) });
+  };
+  const aktivieren = async function () {
+    const loc = await fokusZiel(this);
+    const typ = await loc.evaluate((el) => (el.type || '').toLowerCase()).catch(() => '');
+    if (typ === 'radio') return protokoll(loc, 'Auswahl', (z) => radioWaehlen(loc, z));
+    if (typ === 'checkbox') {
+      return protokoll(loc, 'Haken', async (z) => { const t = await tabZu(loc, z); await loc.page().keyboard.press('Space'); return t; });
+    }
+    return protokoll(loc, 'Aktivieren', async (z) => { const t = await tabZu(loc, z); await loc.page().keyboard.press('Enter'); return t; });
+  };
+  proto.click = aktivieren;
+  proto.check = async function (opts) {
+    if (await this.isChecked().catch(() => false)) return;
+    return aktivieren.call(this, opts);
+  };
+  const origDispatch = proto.dispatchEvent;
+  proto.dispatchEvent = async function (typ, ...rest) {
+    if (typ === 'click') return aktivieren.call(this);
+    return origDispatch.call(this, typ, ...rest);
+  };
+  proto.fill = async function (wert, opts) {
+    const loc = await fokusZiel(this);
+    return protokoll(loc, 'Eingabe', async (z) => {
+      const t = await tabZu(loc, z);
+      const typ = await loc.evaluate((el) => (el.type || '').toLowerCase()).catch(() => '');
+      if (typ === 'date') {
+        await orig.fill.call(loc, wert, opts); // Datumseingabe tippt der Browser je Sprache anders
+      } else {
+        await loc.page().keyboard.press('ControlOrMeta+A');
+        await loc.page().keyboard.press('Delete');
+        if (wert !== '') await loc.page().keyboard.type(String(wert));
+      }
+      return t;
+    });
+  };
+  proto.selectOption = async function (wert, opts) {
+    const loc = await fokusZiel(this);
+    return protokoll(loc, 'Liste', async (z) => {
+      const t = await tabZu(loc, z);
+      if (wert && typeof wert === 'object' && typeof wert.index === 'number') {
+        await loc.page().keyboard.press('Home');
+        for (let i = 0; i < wert.index; i += 1) await loc.page().keyboard.press('ArrowDown');
+        const ist = await loc.evaluate((el) => el.selectedIndex);
+        if (ist !== wert.index) await orig.selectOption.call(loc, wert, opts);
+      } else {
+        await orig.selectOption.call(loc, wert, opts);
+      }
+      return t;
+    });
+  };
+  proto.setInputFiles = async function (dateien, opts) {
+    const marke = `tz${tzZaehler += 1}`;
+    const knopf = await this.first().evaluate((el, m) => {
+      for (let a = el.parentElement, i = 0; a && i < 5; a = a.parentElement, i += 1) {
+        const b = [...a.querySelectorAll('button, label[for], [role="button"]')].find((x) => x.offsetParent !== null && !x.disabled);
+        if (b) { b.setAttribute('data-sm24-tz', m); return true; }
+      }
+      return false;
+    }, marke).catch(() => false);
+    if (knopf) {
+      const loc = this.page().locator(`[data-sm24-tz="${marke}"]`);
+      await protokoll(loc, 'Datei (Dialog)', (z) => tabZu(loc, z));
+    } else {
+      tastaturLog.push({ art: 'Datei (Dialog)', ziel: 'kein sichtbarer Auslöser gefunden', tabs: null, fokusSichtbar: false });
+    }
+    return orig.setInputFiles.call(this, dateien, opts);
+  };
+}
 
 const pause = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -802,6 +957,7 @@ async function fuehreAus(browser, f) {
   const listen = [];
   let timer = null;
   zuletzt = '';
+  tastaturLog = [];
   const ziel = { liste: () => listen.flat() };
   const neuerKontext = async (geraetIndex) => {
     const ctx = await kontextFuer(browser, GERAETE[geraetIndex]);
@@ -815,12 +971,14 @@ async function fuehreAus(browser, f) {
   let ergebnis;
   try {
     const page = await neuerKontext(f.geraet);
+    if (TASTATUR) tastaturEinschalten(page);
     const lauf = Promise.resolve().then(() => f.lauf({ page, neuerKontext, ziel }));
     lauf.catch(() => {});
-    const zeit = new Promise((_, rej) => { timer = setTimeout(() => rej(new Zeitlimit()), ZEITLIMIT_MS); });
+    const limit = TASTATUR ? ZEITLIMIT_MS * 4 : ZEITLIMIT_MS;
+    const zeit = new Promise((_, rej) => { timer = setTimeout(() => rej(new Zeitlimit()), limit); });
     ergebnis = await Promise.race([lauf, zeit]);
   } catch (e) {
-    if (e instanceof Zeitlimit) ergebnis = { ok: false, begruendung: `Zeitlimit 60 s überschritten${zuletzt ? ` (zuletzt im Schritt „${zuletzt}“)` : ''}` };
+    if (e instanceof Zeitlimit) ergebnis = { ok: false, begruendung: `Zeitlimit ${TASTATUR ? 240 : 60} s überschritten${zuletzt ? ` (zuletzt im Schritt „${zuletzt}“)` : ''}` };
     else ergebnis = { ok: false, begruendung: `Fehler: ${String(e.message ?? e).split('\n')[0].slice(0, 300)}` };
   } finally {
     clearTimeout(timer);
@@ -835,6 +993,7 @@ async function fuehreAus(browser, f) {
     messwert: ergebnis.messwert ?? null,
     dauer_ms: Date.now() - t0,
     attrappen: ziel.liste(),
+    ...(TASTATUR ? { tastatur: tastaturLog } : {}),
   };
 }
 
@@ -843,15 +1002,19 @@ const logGroesse = () => (existsSync(SERVERLOG) ? statSync(SERVERLOG).size : 0);
 
 async function main() {
   const args = argumente();
-  for (const k of ['nur', 'json']) {
+  for (const k of ['nur', 'json', 'geraet']) {
     if (args[k] === true) bedienfehler(`--${k} braucht einen Wert`);
   }
+  TASTATUR = args.tastatur === true;
+  const geraetIndex = typeof args.geraet === 'string' ? GERAETE.findIndex((g) => g.id === args.geraet) : -1;
+  if (typeof args.geraet === 'string' && geraetIndex < 0) bedienfehler(`unbekanntes Gerät: ${args.geraet}`);
   const gewaehlt = typeof args.nur === 'string'
     ? args.nur.split(',').map((t) => t.trim().toUpperCase()).filter(Boolean)
     : FUNKTIONEN.map((f) => f.id);
   const unbekannt = gewaehlt.filter((id) => !FUNKTIONEN.some((f) => f.id === id));
   if (unbekannt.length) bedienfehler(`unbekannte Funktion: ${unbekannt.join(', ')}`);
-  const laufen = FUNKTIONEN.filter((f) => gewaehlt.includes(f.id));
+  const laufen = FUNKTIONEN.filter((f) => gewaehlt.includes(f.id))
+    .map((f) => (geraetIndex >= 0 ? { ...f, geraet: geraetIndex } : f));
 
   try {
     await messfensterAbwarten();
@@ -901,9 +1064,17 @@ async function main() {
     '|---|---|---|---|---|',
     ...ergebnisse.map((e) => `| ${zelle(e.id)} | ${zelle(e.funktion)} | ${e.ergebnis} | ${zelle(e.begruendung)} | ${(e.dauer_ms / 1000).toFixed(1)} s |`),
   ].join('\n');
-  const kopf = `# Funktionsliste (E0-PRUEFER-04)\n\nLauf: ${zeitbeginn} · Server ${BASIS_URL} · Bestanden ${bestanden} von ${ergebnisse.length}\n`;
+  const modus = TASTATUR ? ' · nur Tastatur' : '';
+  const kopf = `# Funktionsliste (E0-PRUEFER-04)\n\nLauf: ${zeitbeginn} · Server ${BASIS_URL}${modus} · Bestanden ${bestanden} von ${ergebnisse.length}\n`;
   const fuss = `\nVorher/Nachher: content/records.json vorhanden ${recordsVorher ? 'ja' : 'nein'} → ${recordsNachher ? 'ja' : 'nein'}; Serverlog neu ${logNeu.length} Zeichen, Treffer Vorgang/Anfrage/POST: ${logTreffer}\n`;
-  const md = `${kopf}\n${tabelle}\n${fuss}`;
+  const tastaturTeil = TASTATUR
+    ? `\n## Tastatur\n\n| F-Nr. | Gerät | Bedienungen | Tab-Schritte | ohne sichtbaren Fokus |\n|---|---|---|---|---|\n${ergebnisse.map((e) => {
+      const t = e.tastatur ?? [];
+      const ohne = t.filter((x) => !x.fokusSichtbar).map((x) => `${x.art}: ${x.ziel}`);
+      return `| ${e.id} | ${e.geraet} | ${t.length} | ${t.reduce((s, x) => s + (x.tabs ?? 0), 0)} | ${zelle(ohne.length ? ohne.join('; ') : 'keine')} |`;
+    }).join('\n')}\n`
+    : '';
+  const md = `${kopf}\n${tabelle}\n${fuss}${tastaturTeil}`;
   ordner(PROTOKOLLE);
   writeFileSync(mdDatei, md);
   writeFileSync(datei, `${JSON.stringify({

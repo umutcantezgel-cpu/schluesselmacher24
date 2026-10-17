@@ -24,6 +24,9 @@ Die Abhängigkeiten liegen außerhalb des Repositorys. Der Symlink ist in `.giti
 - `node bewegung.mjs reduziert [--routen p,p]` – laufende Animationen und verborgene Textelemente bei „Bewegung reduzieren“.
 - `node bewegung.mjs einzelbilder <pfad> --selektor <css> [--dauer <ms>] [--echtzeit] [--rand <px>] [--geraet mobil|desktop] [--ziel ordner]` – 5 Bilder bei 0, ¼, ½, ¾, 1 der Animationszeit des Moments (Standard); `--echtzeit` = alter Wanduhr-Ablauf (braucht `--dauer`); `--rand` Standard 24 px.
 - `node bewegung.mjs bildrate <pfad> --selektor <css> --dauer <ms>` – verworfene Bilder in % (mobil, CPU 4-fach gedrosselt), Schwelle 5 %.
+- `node funktionsliste.mjs [--nur F-xx,…] [--json datei] [--tastatur] [--geraet mobil|tablet|desktop]` – Funktionen F-01 bis F-14 im Browser; `--tastatur` bedient alles nur mit Tab, Pfeiltasten, Leertaste und Enter und protokolliert je Bedienung Tab-Schritte und sichtbaren Fokus (Abschnitt „Tastatur“ im Markdown).
+- `node svg-pruefung.mjs [--routen p,p] [--json datei]` – alle SVG-Dateien (viewBox, Editor-Reste, Kommentare, Nachkommastellen) und die SVG je Ansicht (benannt oder verborgen, doppelte id, lucide-Reste, Familie).
+- `node animationen.mjs [--routen p,p] [--geraet mobil|desktop] [--json datei]` – jede abgelaufene CSS-Animation, jeder Übergang und jede WAAPI-Animation je Ansicht; unbekannte Keyframes sind Befunde (Abgleich mit dem Register K-007).
 - `node werte-suche.mjs [--seit commit] [dateien…]` – feste Werte im Quelltext: Tailwind-Klassen mit `[…]`, Hex-Farben, `rgb(`/`hsl(`/`oklch(`, `style` mit px/rem; Bildinhalte getrennt ausgewiesen.
 
 ## Gemeinsame Regeln
