@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Systemarchitektur & Blueprint
+Die Codebasis wird durch den JC-AUDITOR-ARCHITECT-v1 überwacht.
+Details zur Architektur und Transformationsmatrix finden Sie in `.jules/architecture-matrix.md`.
