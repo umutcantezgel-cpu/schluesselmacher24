@@ -4,7 +4,8 @@
 - **Laufend:**
   - Entwürfe Befundpakete Runde 2, Erzählansichten H01, H02, H03, H05, H06, H08, H09, H12: Workflow `wf_e9710b7f-3ab` (Task `wb4hm6zh0`).
   - Entwürfe Runde 2, Arbeitsansichten H04, H07, H10, H11 und übrige U-SERVICE, U-ARTIKEL, U-STANDORTE: Workflow `wf_d633ea4c-f45` (Task `wfqxkn4t3`, Skript `workflows/scripts/befund2-entwuerfe-arbeit.js`, Ansichten als args).
-  - Server: Port 3000 mit dem Build nach E5-L-30 (208/208), Port 3001 Entwicklung. Bei Abbruch beide Workflows mit `resumeFromRunId` fortsetzen.
+  - Server: Port 3000 mit dem Build nach E5-L-30 (208/208), Port 3001 Entwicklung (nach Neustart am 17.10. 09:00 UTC neu gestartet). Bei Abbruch beide Workflows mit `resumeFromRunId` fortsetzen.
+  - Morgenbericht 17.10. geschrieben; nächste Erinnerung `trig_01VjngwmVdyzGnq78x5xnmc7` am 18.10. 05:00 UTC.
 - **Fertig seit dem letzten Prüfpunkt:** Prüfstufe B E5 vollständig (D-044, `E5-PRUEFER-B-ergebnis.md`): Bestand grün, Funktionsliste 14/14, Budgets eingehalten, axe 0; Sichtabnahme E5-L-29 aller vier Gruppen (6,8 · 7,0 · 7,1 · 6,4), keine Hauptansicht ≥ 8. E5-L-30: feste Ziele spät vorladen, Bildrate B-01 mobil im Median 0,0 % (`bewegung.mjs bildrate --laeufe`). Linter wieder 0 (eb5cda6).
 - **Als Nächstes:**
   1. Entwürfe prüfen, gemeinsame Befunde selbst umsetzen (E6-L-31), dann Paketdateien `E6-BEFUND2-<id>` schreiben (Generator im Scratchpad `e5/befund_pakete.py`, Muster `pakete.paket`).

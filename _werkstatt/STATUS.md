@@ -44,3 +44,4 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 5/6 · P
 
 - 16.10.2026 20:48 · Welle G und H abgenommen (B-26 bis B-29, DOKUMENTAR-01 mit sicherem Probe-Befehl, GRAFIKER-11), Kür K-01 eingebaut (Stiftzuhaltung am Scrollen; Rahmen mit `clip`), lucide-react entfernt (Build 208/208). Prüfstufe B E5 mit Sichtabnahme gestartet.
 - 16.10.2026 22:08 · Nach Container-Neustart Prüfstufe B E5 fortgesetzt und abgeschlossen (D-044): Bestand grün, keine Budget-Verstöße, axe 0; Sichtabnahme Mittel 6,4–7,1, keine Hauptansicht ≥ 8. Bildrate der Startseite mobil durch spätes Vorladen der festen Ziele behoben (E5-L-30). Entwürfe für Befundpakete Runde 2 laufen.
+- 17.10.2026 09:01 · Neustart des Arbeitsprozesses, Server neu gestartet. Morgenbericht 17.10. mit 6 Bildern (`bilder/morgen-2026-10-17/`), nächste Erinnerung `trig_01VjngwmVdyzGnq78x5xnmc7` (18.10. 07:00 Berlin). Entwürfe Runde 2 werden fortgesetzt.

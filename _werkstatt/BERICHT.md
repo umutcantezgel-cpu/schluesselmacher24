@@ -1,5 +1,37 @@
 # Bericht
 
+## Morgenbericht · Samstag, 17. Oktober 2026, 07:00 Uhr (geschrieben um 11:00 Uhr nach einem Neustart)
+
+Bilder: `_werkstatt/bilder/morgen-2026-10-17/`
+
+1. **Alle Seiten sind umgebaut:** die 12 Hauptseiten und dazu Service, Kontakt, Standorte, Rechtstexte, Artikel, alle Konfiguratoren und die Bestellseite.
+2. **Code-Shop:** Oben zeigt eine Zeichnung den Schlüssel mit seinen Einschnitten für den eingegebenen Code (`code-produkt__desktop.jpg`).
+3. **Schließanlagen:** Den Plan kannst du anklicken. Wählst du einen Schlüssel, leuchten die Türen auf, die er öffnet (`schliessanlagen-plan__desktop.jpg`).
+4. **Gleichschließende Zylinder:** Beim Scrollen heben sich die Stifte im Zylinder bis an die Trennlinie (`gleichschliessung-stifte__desktop.jpg`).
+5. **Zylinder, Warenkorb, Kasse:** Sie sind ruhiger. Die Summe steht immer im Blick, auf dem Handy unten mit dem Knopf „Zur Kasse“ (`zylinder-konfigurator__desktop.jpg`, `warenkorb__mobil.jpg`).
+6. **Türtechnik:** Eine Zeichnung zeigt die fünf Schutzpunkte einer Tür (`tuertechnik__desktop.jpg`).
+7. **Einheitliche Symbole:** Die zweite, fremde Symbolfamilie ist ganz entfernt. Alle Symbole stammen jetzt aus einem Satz.
+8. **Alle sechs Extras sind fertig:**
+   - die Stifte-Szene;
+   - das Funksignal bei den Zutrittslösungen;
+   - Fachzeichnungen statt „Bild folgt“;
+   - eine Lesefortschritt-Linie im Ratgeber;
+   - eine Druckansicht der Bestellbestätigung;
+   - Vorschaubilder, wenn jemand einen Link teilt.
+9. **Alles Bestehende funktioniert weiter:**
+   - 1.150 automatische Prüfungen sind grün.
+   - Alle 14 Hauptabläufe laufen von Anfang bis Ende durch.
+   - Die Ladezeiten bleiben in den Grenzen, und die Bedienbarkeitsprüfung findet keine Fehler.
+   - Preise, Bestellung und Zahlung sind unverändert.
+10. **Ehrlich gesagt:** Die strenge Gestaltungsprüfung gibt den Seitengruppen 6,4 bis 7,1 von 10 Punkten; gefordert sind 8. Jetzt kommt die letzte Verbesserungsrunde je Seite, danach die Schlussprüfung mit Vergleich zum Ausgangsstand.
+11. **Für dich zu prüfen** (`_werkstatt/MENSCHEN.md`):
+    - **Artikel (M-25):** Es gibt nur 8 Beispielartikel. Katalog pflegen oder den Bereich vorerst ausblenden.
+    - **Bestellbestätigung (M-26):** Stimmen die Zusagen dort?
+    - **Konfiguratoren und Sicherheitscheck (M-21 bis M-24):** Stimmen die Zahlen und Beispiele?
+    - **Weiter offen:** Firmendaten, echte Fotos, Hersteller der Codelinien und die rechtliche Prüfung der Rechtstexte.
+    - **Textvorschläge:** in `_werkstatt/TEXTVORSCHLAEGE.md`.
+12. **Veröffentlicht ist nichts.** Alles liegt nur auf dem Arbeitszweig `claude/projekt-gestaltung-entwicklung-tofodh`.
+
 ## Morgenbericht · Freitag, 16. Oktober 2026, 07:00 Uhr (ergänzt um 07:30 Uhr)
 
 1. **Startseite:** Oben fräst eine technische Zeichnung einen Schlüssel, Einschnitt für Einschnitt; zum Schluss hebt das Werkzeug ab. Heute früh habe ich alle Kritikpunkte der Gestaltungsprüfung umgesetzt. Auf dem Handy sind Zahlen und Pläne jetzt groß genug, die Karten lassen sich seitlich wischen, und kein Abschnitt wiederholt mehr den Aufbau des vorigen. Bilder: `_werkstatt/bilder/morgen-2026-10-16/startseite__mobil.jpg`, `…__tablet.jpg`, `…__desktop.jpg`.
