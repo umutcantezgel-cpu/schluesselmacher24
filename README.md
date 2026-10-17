@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture Audit
+This repository is under a transformation process guided by the JC-AUDITOR-ARCHITECT-v1. Please see the `.jules` directory for the generated master blueprint and architecture matrix.

@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| URL | Source File | Current Words | Target Words | Component |
+|---|---|---|---|---|
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 934 | 1534 | SecurityChecklist |
+| /artikel | src/app/(site)/artikel/page.tsx | 656 | 1256 | ComparisonTable |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 518 | 1118 | FilterGrid |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1121 | 1721 | MultiStepForm |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 1091 | 1691 | VorherNachherSlider |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1133 | 1733 | CostEstimator |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1223 | 1823 | PriceCalculator |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 979 | 1579 | SecurityChecklist |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 718 | 1318 | ComparisonTable |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1189 | 1789 | FilterGrid |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2002 | 2602 | MultiStepForm |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1222 | 1822 | VorherNachherSlider |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1042 | 1642 | CostEstimator |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1207 | 1807 | PriceCalculator |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1299 | 1899 | SecurityChecklist |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 382 | 982 | ComparisonTable |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2480 | 3080 | FilterGrid |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 310 | 910 | MultiStepForm |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 2081 | 2681 | VorherNachherSlider |
+| /kasse | src/app/(site)/kasse/page.tsx | 242 | 900 | CostEstimator |
+| / | src/app/(site)/page.tsx | 1130 | 1730 | PriceCalculator |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 359 | 959 | SecurityChecklist |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 224 | 900 | ComparisonTable |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 416 | 1016 | FilterGrid |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 228 | 900 | MultiStepForm |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 715 | 1315 | VorherNachherSlider |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 248 | 900 | CostEstimator |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 427 | 1027 | PriceCalculator |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 370 | 970 | SecurityChecklist |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 368 | 968 | ComparisonTable |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 1873 | 2473 | FilterGrid |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 734 | 1334 | MultiStepForm |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 497 | 1097 | VorherNachherSlider |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 221 | 900 | CostEstimator |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 1793 | 2393 | PriceCalculator |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 151 | 900 | SecurityChecklist |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 474 | 1074 | ComparisonTable |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 1578 | 2178 | FilterGrid |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 107 | 900 | MultiStepForm |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 655 | 1255 | VorherNachherSlider |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 644 | 1244 | CostEstimator |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1020 | 1620 | PriceCalculator |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 329 | 929 | SecurityChecklist |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 405 | 1005 | ComparisonTable |
+| /standorte | src/app/(site)/standorte/page.tsx | 249 | 900 | FilterGrid |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 493 | 1093 | MultiStepForm |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 1784 | 2384 | VorherNachherSlider |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 261 | 900 | CostEstimator |
