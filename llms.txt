@@ -1,0 +1,3 @@
+# Master Blueprint LLM Info
+
+Refer to `.jules/revolution-plan.json` for the transformation queue.
