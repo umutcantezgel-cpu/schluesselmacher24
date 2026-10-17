@@ -1,0 +1,1191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-17T09:27:11.829Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für [[...Segments]]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich [[...Segments]]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für [[...Segments]]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SegmentsModule",
+        "target_file": "components/calculator/segments-module.tsx",
+        "action_file": "actions/calculate-segments.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für [Slug]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich [Slug]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für [Slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugModule",
+        "target_file": "components/calculator/slug-module.tsx",
+        "action_file": "actions/calculate-slug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Artikel",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Artikel",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Artikel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelModule",
+        "target_file": "components/calculator/artikel-module.tsx",
+        "action_file": "actions/calculate-artikel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Anfrage",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Anfrage",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageModule",
+        "target_file": "components/calculator/anfrage-module.tsx",
+        "action_file": "actions/calculate-anfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Fahrzeugoeffnung",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Fahrzeugoeffnung",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Fahrzeugoeffnung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugoeffnungModule",
+        "target_file": "components/calculator/fahrzeugoeffnung-module.tsx",
+        "action_file": "actions/calculate-fahrzeugoeffnung.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Funkschluessel",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Funkschluessel",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Funkschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FunkschluesselModule",
+        "target_file": "components/calculator/funkschluessel-module.tsx",
+        "action_file": "actions/calculate-funkschluessel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Kopieren",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Kopieren",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Kopieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KopierenModule",
+        "target_file": "components/calculator/kopieren-module.tsx",
+        "action_file": "actions/calculate-kopieren.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für [Model]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich [Model]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für [Model]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModelModule",
+        "target_file": "components/calculator/model-module.tsx",
+        "action_file": "actions/calculate-model.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für [Make]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich [Make]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für [Make]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MakeModule",
+        "target_file": "components/calculator/make-module.tsx",
+        "action_file": "actions/calculate-make.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Marken",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Marken",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Marken"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenModule",
+        "target_file": "components/calculator/marken-module.tsx",
+        "action_file": "actions/calculate-marken.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Nachmachen",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Nachmachen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Nachmachen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "NachmachenModule",
+        "target_file": "components/calculator/nachmachen-module.tsx",
+        "action_file": "actions/calculate-nachmachen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Autoschluessel",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Autoschluessel",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Autoschluessel"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselModule",
+        "target_file": "components/calculator/autoschluessel-module.tsx",
+        "action_file": "actions/calculate-autoschluessel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Programmieren",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Programmieren",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Programmieren"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ProgrammierenModule",
+        "target_file": "components/calculator/programmieren-module.tsx",
+        "action_file": "actions/calculate-programmieren.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Schluesselbart Fraesen",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Schluesselbart Fraesen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Schluesselbart Fraesen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselbartFraesenModule",
+        "target_file": "components/calculator/schluesselbart-fraesen-module.tsx",
+        "action_file": "actions/calculate-schluesselbart-fraesen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Smart Key",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Smart Key",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Smart Key"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartKeyModule",
+        "target_file": "components/calculator/smart-key-module.tsx",
+        "action_file": "actions/calculate-smart-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für [Id]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich [Id]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für [Id]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "IdModule",
+        "target_file": "components/calculator/id-module.tsx",
+        "action_file": "actions/calculate-id.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Konfigurator",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Konfigurator",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorModule",
+        "target_file": "components/calculator/konfigurator-module.tsx",
+        "action_file": "actions/calculate-konfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Elektronische Zutrittsloesungen",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Elektronische Zutrittsloesungen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Elektronische Zutrittsloesungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenModule",
+        "target_file": "components/calculator/elektronische-zutrittsloesungen-module.tsx",
+        "action_file": "actions/calculate-elektronische-zutrittsloesungen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Konfigurator",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Konfigurator",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorModule",
+        "target_file": "components/calculator/konfigurator-module.tsx",
+        "action_file": "actions/calculate-konfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Gleichschliessende Zylinder",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Gleichschliessende Zylinder",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Gleichschliessende Zylinder"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderModule",
+        "target_file": "components/calculator/gleichschliessende-zylinder-module.tsx",
+        "action_file": "actions/calculate-gleichschliessende-zylinder.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Kasse",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Kasse",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Kasse"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseModule",
+        "target_file": "components/calculator/kasse-module.tsx",
+        "action_file": "actions/calculate-kasse.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Startseite",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Startseite",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Startseite"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StartseiteModule",
+        "target_file": "components/calculator/startseite-module.tsx",
+        "action_file": "actions/calculate-startseite.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für [Slug]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich [Slug]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für [Slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugModule",
+        "target_file": "components/calculator/slug-module.tsx",
+        "action_file": "actions/calculate-slug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Ratgeber",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Ratgeber",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Ratgeber"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberModule",
+        "target_file": "components/calculator/ratgeber-module.tsx",
+        "action_file": "actions/calculate-ratgeber.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Agb",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Agb",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Agb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AgbModule",
+        "target_file": "components/calculator/agb-module.tsx",
+        "action_file": "actions/calculate-agb.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Cookie Einstellungen",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Cookie Einstellungen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Cookie Einstellungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CookieEinstellungenModule",
+        "target_file": "components/calculator/cookie-einstellungen-module.tsx",
+        "action_file": "actions/calculate-cookie-einstellungen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Datenschutz",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Datenschutz",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Datenschutz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DatenschutzModule",
+        "target_file": "components/calculator/datenschutz-module.tsx",
+        "action_file": "actions/calculate-datenschutz.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Impressum",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Impressum",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Impressum"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ImpressumModule",
+        "target_file": "components/calculator/impressum-module.tsx",
+        "action_file": "actions/calculate-impressum.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Versand Und Zahlung",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Versand Und Zahlung",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Versand Und Zahlung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VersandUndZahlungModule",
+        "target_file": "components/calculator/versand-und-zahlung-module.tsx",
+        "action_file": "actions/calculate-versand-und-zahlung.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Widerruf",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Widerruf",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Widerruf"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WiderrufModule",
+        "target_file": "components/calculator/widerruf-module.tsx",
+        "action_file": "actions/calculate-widerruf.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Konfigurator",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Konfigurator",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Konfigurator"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorModule",
+        "target_file": "components/calculator/konfigurator-module.tsx",
+        "action_file": "actions/calculate-konfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Schliessanlagen",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Schliessanlagen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Schliessanlagen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenModule",
+        "target_file": "components/calculator/schliessanlagen-module.tsx",
+        "action_file": "actions/calculate-schliessanlagen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für [Slug]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich [Slug]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für [Slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugModule",
+        "target_file": "components/calculator/slug-module.tsx",
+        "action_file": "actions/calculate-slug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Schluessel Nach Code",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Schluessel Nach Code",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Schluessel Nach Code"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeModule",
+        "target_file": "components/calculator/schluessel-nach-code-module.tsx",
+        "action_file": "actions/calculate-schluessel-nach-code.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Anfrage",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Anfrage",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageModule",
+        "target_file": "components/calculator/anfrage-module.tsx",
+        "action_file": "actions/calculate-anfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Schluessel Nach Vorlage",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Schluessel Nach Vorlage",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Schluessel Nach Vorlage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageModule",
+        "target_file": "components/calculator/schluessel-nach-vorlage-module.tsx",
+        "action_file": "actions/calculate-schluessel-nach-vorlage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Anfrage",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Anfrage",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Anfrage"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageModule",
+        "target_file": "components/calculator/anfrage-module.tsx",
+        "action_file": "actions/calculate-anfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Kontakt",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Kontakt",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Kontakt"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KontaktModule",
+        "target_file": "components/calculator/kontakt-module.tsx",
+        "action_file": "actions/calculate-kontakt.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Service Und Termin",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Service Und Termin",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Service Und Termin"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminModule",
+        "target_file": "components/calculator/service-und-termin-module.tsx",
+        "action_file": "actions/calculate-service-und-termin.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Terminstatus",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Terminstatus",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Terminstatus"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminstatusModule",
+        "target_file": "components/calculator/terminstatus-module.tsx",
+        "action_file": "actions/calculate-terminstatus.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Vor Ort",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Vor Ort",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Vor Ort"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VorOrtModule",
+        "target_file": "components/calculator/vor-ort-module.tsx",
+        "action_file": "actions/calculate-vor-ort.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für [Slug]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich [Slug]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für [Slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugModule",
+        "target_file": "components/calculator/slug-module.tsx",
+        "action_file": "actions/calculate-slug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Sicherheitstechnik",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Sicherheitstechnik",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Sicherheitstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikModule",
+        "target_file": "components/calculator/sicherheitstechnik-module.tsx",
+        "action_file": "actions/calculate-sicherheitstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Sicherheitscheck",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Sicherheitscheck",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Sicherheitscheck"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitscheckModule",
+        "target_file": "components/calculator/sicherheitscheck-module.tsx",
+        "action_file": "actions/calculate-sicherheitscheck.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für [City]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich [City]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für [City]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CityModule",
+        "target_file": "components/calculator/city-module.tsx",
+        "action_file": "actions/calculate-city.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Standorte",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Standorte",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Standorte"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteModule",
+        "target_file": "components/calculator/standorte-module.tsx",
+        "action_file": "actions/calculate-standorte.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für [Slug]",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich [Slug]",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für [Slug]"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SlugModule",
+        "target_file": "components/calculator/slug-module.tsx",
+        "action_file": "actions/calculate-slug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Tuer Und Schliesstechnik",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Tuer Und Schliesstechnik",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Tuer Und Schliesstechnik"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikModule",
+        "target_file": "components/calculator/tuer-und-schliesstechnik-module.tsx",
+        "action_file": "actions/calculate-tuer-und-schliesstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur für Warenkorb",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen im Bereich Warenkorb",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen für Warenkorb"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbModule",
+        "target_file": "components/calculator/warenkorb-module.tsx",
+        "action_file": "actions/calculate-warenkorb.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
