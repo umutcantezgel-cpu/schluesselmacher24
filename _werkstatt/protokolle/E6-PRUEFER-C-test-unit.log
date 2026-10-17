@@ -77,3 +77,40 @@ stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > coun
  ✓ src/components/autoschluessel/schluesselarten-reihe.test.tsx (10 tests) 11ms
  ✓ src/components/visual/interaktiv/schliessplan-interaktiv.test.tsx (8 tests) 108ms
  ✓ src/components/visual/generators/zutritt-signal.test.tsx (7 tests) 108ms
+ ✓ src/components/visual/generators/grafik-basis.test.tsx (12 tests) 42ms
+ ✓ src/components/visual/motion/draw-on.test.tsx (6 tests) 41ms
+ ✓ src/components/visual/interaktiv/fraesbahn-bewegung.test.tsx (11 tests) 23ms
+ ✓ src/components/flow/flow-shell.test.tsx (4 tests) 28ms
+ ✓ src/lib/visual/area-theme.test.ts (34 tests) 11ms
+ ✓ src/components/autoschluessel/termin-auswahl.test.tsx (6 tests) 52ms
+ ✓ src/components/visual/einsatzradius.test.tsx (8 tests) 49ms
+ ✓ src/components/visual/profillinie.test.tsx (8 tests) 49ms
+ ✓ src/components/visual/motion/check-draw.test.tsx (6 tests) 39ms
+ ✓ src/components/autoschluessel/bestaetigung.test.tsx (6 tests) 7ms
+ ✓ src/lib/cn.test.ts (7 tests) 16ms
+ ✓ src/components/visual/interaktiv/auswahl.test.ts (7 tests) 6ms
+ ✓ src/lib/cylinder-summary.test.ts (4 tests) 4ms
+ ✓ src/lib/reference.test.ts (12 tests) 9ms
+ ✓ src/components/layout/page-header.test.tsx (4 tests) 37ms
+ ✓ src/components/forms/option-card.test.tsx (4 tests) 23ms
+ ✓ src/components/visual/interaktiv/zylinder-mass-live.test.tsx (4 tests) 50ms
+ ✓ src/lib/codelinie.test.ts (6 tests) 6ms
+ ✓ src/components/visual/bereich-icon.test.tsx (13 tests) 73ms
+ ✓ src/components/forms/photo-upload.test.tsx (2 tests) 62ms
+ ✓ src/lib/reference-sequence.test.ts (5 tests) 5ms
+ ✓ src/lib/navigation.test.ts (6 tests) 6ms
+ ✓ src/components/visual/motion/reveal.test.tsx (4 tests) 38ms
+ ✓ src/components/vertrauen/nachweise-liste.test.tsx (4 tests) 47ms
+ ✓ src/lib/design-tokens.test.ts (3 tests) 66ms
+ ✓ src/lib/platzhalter.test.ts (4 tests) 5ms
+ ✓ src/components/autoschluessel/vehicle-facts.test.ts (5 tests) 4ms
+ ✓ src/lib/og/bereichsbild.test.ts (4 tests) 15ms
+ ✓ src/components/ui/button.test.tsx (3 tests) 42ms
+ ✓ src/components/visual/motion/in-view.test.ts (3 tests) 5ms
+ ✓ src/app/(site)/seitenstruktur.test.ts (2 tests) 9ms
+ ✓ src/lib/bewegung.test.ts (4 tests) 3ms
+ ✓ src/lib/code-pattern.test.ts (10 tests) 10ms
+ ✓ src/components/visual/schluesselart-zeichnung.test.tsx (3 tests) 38ms
+ ✓ src/components/ui/alert.test.tsx (3 tests) 54ms
+ ✓ src/components/visual/interaktiv/code-fundstelle-interaktiv.test.tsx (2 tests) 48ms
+ ✓ src/lib/staffel.test.ts (2 tests) 36ms
