@@ -43,3 +43,8 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Goals
+
+This project is currently undergoing a complete UI/UX and system architecture overhaul (Swiss Light Design Doctrine) to elevate its design and user experience. Please refer to `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for specific goals and priorities.

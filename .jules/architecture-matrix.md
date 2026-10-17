@@ -1,0 +1,52 @@
+# Architecture Matrix
+
+| Route | Status | Word Count Target | Interactive Component | Schema Entities | CWV Status |
+|---|---|---|---|---|---|
+| /artikel/[slug] | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /artikel | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/anfrage | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/fahrzeugoeffnung | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/funkschluessel | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/kopieren | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/marken/[make]/[model] | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/marken/[make] | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/marken | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/nachmachen | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/programmieren | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/schluesselbart-fraesen | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /autoschluessel/smart-key | PENDING | 950 | VehicleKeyEstimator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /bestellung/[id] | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING | 950 | AdvancedSystemConfigurator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /elektronische-zutrittsloesungen | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /gleichschliessende-zylinder/konfigurator | PENDING | 950 | AdvancedSystemConfigurator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /gleichschliessende-zylinder | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /kasse | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| / | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /ratgeber/[slug] | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /ratgeber | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /rechtliches/agb | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /rechtliches/cookie-einstellungen | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /rechtliches/datenschutz | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /rechtliches/impressum | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /rechtliches/versand-und-zahlung | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /rechtliches/widerruf | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /schliessanlagen/konfigurator | PENDING | 950 | AdvancedSystemConfigurator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /schliessanlagen | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /schluessel-nach-code/[slug] | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /schluessel-nach-code | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /schluessel-nach-vorlage/anfrage | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /schluessel-nach-vorlage | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /service-und-termin/anfrage | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /service-und-termin/kontakt | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /service-und-termin | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /service-und-termin/terminstatus | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /service-und-termin/vor-ort | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /sicherheitstechnik/[slug] | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /sicherheitstechnik | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /sicherheitstechnik/sicherheitscheck | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /standorte/[city] | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /standorte | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /tuer-und-schliesstechnik/[slug] | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /tuer-und-schliesstechnik | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
+| /warenkorb | PENDING | 950 | EnterpriseRoiCalculator | Organization, WebSite | NEEDS_OPTIMIZATION |
