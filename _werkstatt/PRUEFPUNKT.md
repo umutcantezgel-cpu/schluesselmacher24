@@ -2,6 +2,8 @@
 
 - **Etappe:** E5 (übrige Ansichten und Befundpakete). Alle 12 Befundpakete der Sichtabnahme E4-L-23 sind abgenommen (H01, H02, H03, H06, H10, H11 nach L3 mit Nacharbeit des Orchestrators). KERN 1.13.
 - **Laufend:**
+  - Bauwelle 1 Runde 2 (E6-BEFUND2-H01, -H02, -H03, -H12, Basis `69d8213`): Workflow `wf_78d2c95c-665` (Task `woo93513n`), Skript `scratchpad/e6/pakete-kette-e6.js` (höchstens 4 Plätze, Abhängigkeiten über `nach`). Fortsetzen mit `resumeFromRunId` und denselben args.
+  - E6-L-31 ist erledigt (gemeinsame Bausteine, KERN 1.14, D-045). Paketerzeuger: `scratchpad/e6/befund2_pakete.py [HID …]` mit `zusatz.json` (Anpassungen je Ansicht) und `kern.md` (Auszug 1.14).
   - Entwürfe Befundpakete Runde 2, Erzählansichten H01, H02, H03, H05, H06, H08, H09, H12: Workflow `wf_e9710b7f-3ab` (Task `w7dwdvn77`, fortgesetzt 17.10.).
   - Entwürfe Runde 2, Arbeitsansichten H04, H07, H10, H11 und übrige U-SERVICE, U-ARTIKEL, U-STANDORTE: Workflow `wf_d633ea4c-f45` (Task `wodjj3qid`, fortgesetzt 17.10., Skript `workflows/scripts/befund2-entwuerfe-arbeit.js`, Ansichten als args).
   - Server: Port 3000 mit dem Build nach E5-L-30 (208/208), Port 3001 Entwicklung (nach Neustart am 17.10. 09:00 UTC neu gestartet). Bei Abbruch beide Workflows mit `resumeFromRunId` fortsetzen.
