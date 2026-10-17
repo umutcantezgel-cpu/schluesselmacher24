@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 6 · Prüfstufe C und Sichtabnahme E6-L-34 laufen · Pflicht 86/88 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Build 208/208, Tests 1204, Linter 0, Logikwächter 0, Funktionsliste 14/14) · Nächster Schritt: Ergebnis Prüfstufe C auswerten, Blindvergleich, Endprüfung
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 6 · Prüfstufe C und Sichtabnahme E6-L-34 laufen · Pflicht 89/92 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Build 208/208, Tests 1204, Linter 0, Logikwächter 0, Funktionsliste 14/14) · Nächster Schritt: Ergebnis Prüfstufe C auswerten, Blindvergleich, Endprüfung
 
 # Status des Gestaltungslaufs
 

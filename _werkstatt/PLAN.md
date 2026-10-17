@@ -110,6 +110,11 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E5-B-29 | Rechtliches (Logikwächter, Textabzug) | B/Haiku | 8 Dateien | E3 | Z-06 | 2a1fb8c |
 | E5-D-01 | README auf Ist-Stand, UMSETZUNG.md als historisch kennzeichnen | D/Haiku | `README.md`, `UMSETZUNG.md` (Kopfhinweis) | E5 | Z-10 | c7b3309 |
 | E5-L-12 | `lucide-react` entfernen | L/Opus | `package.json`, Lock | E5-B-* | Z-06 | f10b677 |
+| E5-P-B | Prüfstufe B E5 mit Sichtabnahme E5-L-29 (vier Gruppen) | P/Haiku, Opus | Protokolle, Berichte | E5 | Z-02 bis Z-09 | 156879a (D-044) |
+| E5-L-30 | Feste Ziele spät vorladen (Bildrate B-01 mobil) | L/Opus | `spaet-vorladen.ts`, Kopf, Leiste, Startseite | E5-P-B | Z-05 | bb549bc |
+| E6-L-31 | Gemeinsame Befunde der Runde 2 in den Bausteinen (FlowShell, OptionCard, Akkordeon, Seitenkopf, Kopfknopf, Lineal, Maß A/B) | L/Opus | gemeinsame Bausteine, KERN 1.14 | E5-L-29 | Z-03, Z-04 | 6411dc6 (D-045) |
+| E6-L-33 | Fach-Icon nach der Sache, Register B-20, B-23, B-26 | L/Opus | `motiv.ts`, KERN 1.15 | E6-L-31 | Z-05, Z-06 | a1d281d |
+| E6-BEFUND2-* | Befundpakete der Sichtabnahme E5-L-29, Runde 2 von 2 (H01 bis H12, Service, Artikel, Standort) | B/Haiku | je Ansicht | E6-L-31 | Z-04 | Welle 1 c9b49e2 (D-047), Welle 2 fc51625 (D-048) |
 | E6-P-C | Prüfstufe C | P/Haiku | Protokolle | Pflicht | Z-02 bis Z-09 | |
 | E6-D-02 | Blindvergleich vorbereiten, Galerie, Bericht | D/Haiku | `_werkstatt/bilder/`, BERICHT | E6-P-C | Z-04, Z-10 | |
 | E6-L-13 | Endprüfung durch frischen Opus-Unteragenten, Abschluss | L/Opus | ABNAHME, BERICHT | E6-D-02 | alle | |
