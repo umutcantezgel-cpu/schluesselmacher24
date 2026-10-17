@@ -1,0 +1,4 @@
+# SCHLÜSSELMACHER24
+
+Architecture Goals: This project is being updated according to the Swiss Light Design Doctrine.
+See .jules/revolution-plan.json for details.
