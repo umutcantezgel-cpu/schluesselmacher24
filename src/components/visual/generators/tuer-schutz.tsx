@@ -7,7 +7,6 @@ import {
   LINIE,
   Raster,
   SCHRIFT,
-  SCHRIFT_KLEIN,
   auswahl,
   parameter,
   titel,
@@ -65,8 +64,10 @@ const ZYLINDER = { x: 199, y: 150, r: 6 };
 /* Schließblech auf dem Zargenrand, auf Höhe der Falle. */
 const SCHLIESSBLECH = { x: 221, y: 154, w: 10, h: 28 };
 
-/* Marken und Legende. */
+/* Marken und Legende. Die Ziffer in der Marke ist 15 Einheiten groß, damit sie im
+   Telefon-Ausschnitt (Maßstab rund 0,79) mindestens 11,5 px erreicht (K-008). */
 const MARKE_R = 9;
+const MARKE_SCHRIFT = 15;
 const KNICK_X = 280;
 const LINIE_ENDE = 296;
 const LEGENDE_X = 300;
@@ -342,11 +343,11 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
                 />
                 <text
                   className="fill-surface font-mono"
-                  fontSize={SCHRIFT_KLEIN}
+                  fontSize={MARKE_SCHRIFT}
                   fontWeight={600}
                   textAnchor="middle"
                   x={b.mx}
-                  y={b.my + 4}
+                  y={b.my + 5}
                 >
                   {i + 1}
                 </text>

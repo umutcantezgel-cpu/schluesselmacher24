@@ -528,3 +528,18 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - Denkprotokoll: Bei 1024 px und bei 1536 px ragte der Kopfknopf um 69 px über den Innenrand. Kürzere Abstände oder ein kleineres Logo hätten nicht gereicht oder das Logo berührt (unantastbar).
   - Die Verlagerung in „Mehr“ hält alle Bereiche erreichbar. „Mehr“ ist aktiv markiert, wenn ein Bereich daraus offen ist, der nur dort steht.
 - **InfoTip:** Die Erklärung rückt am Bildschirmrand nach innen. Dafür misst ein Layout-Effekt die Lage und setzt nur `translate`, ohne Zustand und ohne Logik.
+
+## D-048 · Bauwelle 2 der Runde 2 abgenommen, Absturz des Entwicklungsservers, benannte Ausnahmen
+- **Lage:** Alle elf Pakete lehnte die Prüfstufe A in Runde 3 ab. Ursache war fast überall der abgestürzte Entwicklungsserver: Ohne Server gab es keine Bildbelege, und die Prüfer durften ihn nicht starten.
+- **Vorgehen:** Der Orchestrator hat den Server neu gestartet, den Code als Ganzes geprüft und die Bildprüfung durch elf Haiku-Prüfer nachgeholt, nur prüfend. Pflichtbefunde am Bild behebt er selbst (L3, keine weitere Reparaturrunde).
+  - Echt waren zwei Befunde: seitliches Scrollen im Code-Shop und der Umbruch in der Leiste des Zylinder-Konfigurators.
+  - Dazu kam eine Abweichung von K-008: die Ziffern der Tür-Schutzpunkte.
+  - Alle drei sind behoben und gemessen. Bericht: `_werkstatt/berichte/E6-BEFUND2-welle2-abnahme.md`.
+- **Ausnahmen des Logikwächters:** fünf benannte Ausnahmen in Kasse, Warenkorb und Zylinder-Konfigurator, jede nur Darstellung. Danach 0 abweichend.
+  - Denkprotokoll: Der Wächter vergleicht mit dem Fingerabdruck des Basisstands. Entfernte Anzeige-Ausdrücke werden deshalb auf der neuen Seite für den Vergleich wieder eingefügt, und zwar an festen Ankern oder per Lookahead, nie im Basisstand getilgt.
+- **G4, entfernte Anzeigen mit Ersatz:**
+  - Anwendung der Codeposition im Warenkorb: wiederholte den Titel.
+  - Kasten „So messen Sie richtig“: Der Text bleibt im InfoTip jeder Position.
+  - Lead der Codelinien-Seite: Ersatz ist die Zeile „Anwendung“.
+  - Daten unverändert.
+- **Werkzeug:** Die Prüfer schreiben ihre Protokolle nach `/root/sm24-bilder`. Die Funktionsliste legt ihre Markdown-Protokolle weiter in `_werkstatt/protokolle/` ab; sie gehören zum Beleg und werden committet.

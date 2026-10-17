@@ -207,8 +207,8 @@ export function ShopListe({ lines, className }: ShopListeProps) {
           )}
         </Field>
 
-        {/* Zähler und Filter-Knopf in einer Zeile; der Knopf nur am Smartphone */}
-        <div className="mt-4 flex items-center justify-between gap-3">
+        {/* Zähler und Filter-Knopf in einer Zeile; der Knopf nur am Smartphone (unter 360 px darf er umbrechen) */}
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
           <p className="whitespace-nowrap font-mono text-small tabular-nums text-foreground-muted" aria-live="polite">
             <strong className="font-bold text-foreground">{results.length}</strong> von {lines.length} {lines.length === 1 ? 'Codelinie' : 'Codelinien'}
           </p>
@@ -314,13 +314,15 @@ export function ShopListe({ lines, className }: ShopListeProps) {
 
       {/* Trefferliste: Sprungleiste der Familien, darunter dichte Zeilen je Anwendungsfamilie */}
       {results.length > 0 ? (
-        <div>
+        // min-w-0: Rasterzelle darf schmaler werden als die Sprungleiste; die Leiste scrollt in sich.
+        // `relative` an der Liste hält die unsichtbaren Namen (sr-only, absolut) im Scrollbereich.
+        <div className="min-w-0">
           {gruppen.length > 1 && (
             <nav
               aria-label="Anwendungsfamilien"
               className="sticky top-header z-sticky -mx-5 mb-8 border-b border-border bg-background sm:-mx-6 md:mx-0"
             >
-              <ul className="flex snap-x gap-1 overflow-x-auto px-5 py-1 scroll-px-5 sm:px-6 sm:scroll-px-6 md:flex-wrap md:overflow-visible md:px-0 md:scroll-px-0">
+              <ul className="relative flex snap-x gap-1 overflow-x-auto px-5 py-1 scroll-px-5 sm:px-6 sm:scroll-px-6 md:flex-wrap md:overflow-visible md:px-0 md:scroll-px-0">
                 {gruppen.map((gruppe) => (
                   <li key={gruppe.schluessel} className="shrink-0 snap-start">
                     <a

@@ -296,7 +296,7 @@ export default async function ServiceUndTerminPage() {
                   </div>
                   <dl className="mt-6 max-w-measure border-t border-border">
                     {PHASEN.map((phase, i) => (
-                      <div key={phase.kurz} className="border-b border-border py-5">
+                      <div key={phase.kurz} className="border-b border-border py-5 last:border-b-0">
                         <dt className="flex items-baseline gap-3 text-title-sm font-semibold text-foreground">
                           <span className="font-mono text-caption font-normal tabular-nums text-foreground-muted">{String(i + 1).padStart(2, '0')}</span>
                           <span>{phase.name}</span>

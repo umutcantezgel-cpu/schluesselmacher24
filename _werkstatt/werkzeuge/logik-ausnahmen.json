@@ -52,8 +52,8 @@
       "ersetzen": "{/* Schritt 1 — Zylinder */}<p>{catalog.measuringInfo.title}{catalog.measuringInfo.body}</p><ImagePlaceholder slot={catalog.measuringFigure} />"
     },
     {
-      "grund": "Laufende Summe in Leiste und Band der FlowShell, derselbe Ausdruck wie in der Kennzahlleiste (E6-BEFUND2-H07, D-048)",
-      "suchen": "\\s*summe=\\{\\{ label: 'Laufende Summe', wert: formatCents\\(breakdown\\.totalCents\\) \\}\\}",
+      "grund": "Laufende Summe in Leiste und Band der FlowShell, derselbe Ausdruck wie in der Kennzahlleiste (E6-BEFUND2-H07, D-048); Beschriftung „Summe“, damit die Leiste bei 390 px einzeilig bleibt (Mikrotext)",
+      "suchen": "\\s*summe=\\{\\{ label: '(?:Laufende Summe|Summe)', wert: formatCents\\(breakdown\\.totalCents\\) \\}\\}",
       "ersetzen": ""
     }
   ],

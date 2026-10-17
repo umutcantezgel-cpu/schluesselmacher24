@@ -367,7 +367,7 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHints[flow.step?.id ?? '']}
-      summe={{ label: 'Laufende Summe', wert: formatCents(breakdown.totalCents) }}
+      summe={{ label: 'Summe', wert: formatCents(breakdown.totalCents) }}
     >
       <div className="space-y-6">
         {/* Laufende Summe — in jedem Schritt sichtbar, als Schriftfeld in Mono */}
