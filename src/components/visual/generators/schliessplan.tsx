@@ -326,7 +326,14 @@ function lesePlan(p: Parameter) {
   const reserve =
     system === 'haupt' || system === 'generalhaupt' ? zahl(wert(p, 'reserve'), 0, 2, 0, true) : 0;
   const f = FLAECHE[auswahl(wert(p, 'format'), FORMATE, 'breit')];
-  return { system, f, ...plan(system, gruppen, tueren, reserve, f) };
+  const nummernWert = wert(p, 'nummern');
+  const nummern = nummernWert === true || nummernWert === 'true' || nummernWert === 'ja';
+  return { system, f, nummern, ...plan(system, gruppen, tueren, reserve, f) };
+}
+
+/** Türnummer (1–8) unter einer echten Tür; Zentral- und Reservetüren haben keine. */
+function tuerNummer(k: Knoten, nummern: boolean): string | undefined {
+  return nummern && k.art === 'tuer' && !k.frei && k.kennung.startsWith('t') ? k.kennung.slice(1) : undefined;
 }
 
 /** Zustand eines Bauteils: `normal` ohne Markierung, sonst hervorgehoben oder gedimmt. */
@@ -587,7 +594,7 @@ function FreierKnoten({ k, stand, f }: KnotenProps) {
   );
 }
 
-function TuerKnoten({ k, stand, f }: KnotenProps) {
+function TuerKnoten({ k, stand, f, nummer }: KnotenProps & { nummer?: string }) {
   if (k.frei) return <FreierTuer k={k} stand={stand} f={f} />;
   const zentral = k.label === 'Z';
   const links = k.x - f.tuerBreite / 2;
@@ -604,6 +611,18 @@ function TuerKnoten({ k, stand, f }: KnotenProps) {
         rx={2.5}
       />
       <circle className="fill-foreground-muted" cx={r(k.x + 5.5)} cy={r(k.y + 3)} r={1.8} />
+      {nummer !== undefined && (
+        <text
+          className={stand === 'hervor' ? 'fill-area-strong font-mono' : 'fill-foreground-muted font-mono'}
+          fontSize={f.schrift}
+          fontWeight={500}
+          textAnchor="middle"
+          x={r(k.x)}
+          y={r(k.y + f.tuerHoehe / 2 + f.schrift + 1)}
+        >
+          {nummer}
+        </text>
+      )}
       {zentral && (
         <text
           className="fill-foreground-muted font-mono"
@@ -663,6 +682,8 @@ function FreierTuer({ k, stand, f }: KnotenProps) {
  * - `reserve`: 0–2 freie Plätze (ES mit Tür, gestrichelt, nicht wählbar), Standard 0 —
  *   nur bei `haupt` und `generalhaupt`; bei `generalhaupt` an der letzten Gruppe
  * - `format`: `breit` (Standard, 480 Einheiten) | `schmal` (360 Einheiten, Schrift 12 für Telefone)
+ * - `nummern`: `true` | `false` (Standard; auch `'true'`, `'ja'`). Türnummer 1–8 in Mono unter jeder
+ *   Tür, nicht an Zentral- und Reservetüren. Ohne den Parameter bleibt die Ausgabe unverändert.
  * - `markiert`: Kennung eines Schlüssels (`wurzel`, `g1`, `g1.1`, `e3` …). Hervorgehoben
  *   werden dieser Schlüssel, die Türen, die er schließt, und die Kanten seines Weges;
  *   alles andere wird gedimmt. Unbekannte Kennung → ohne Markierung.
@@ -675,7 +696,7 @@ function FreierTuer({ k, stand, f }: KnotenProps) {
  */
 export function SchliessplanGrafik({ params, title, className }: VisualProps) {
   const p = parameter(params);
-  const { system, f, knoten, kanten, hoehe } = lesePlan(p);
+  const { system, f, knoten, kanten, hoehe, nummern } = lesePlan(p);
   const markierung = markieren(knoten, kanten, wert(p, 'markiert'), wert(p, 'tuer'));
   const standardTitel = markierung
     ? `${TITEL[system]} – markiert: ${markierung.text}`
@@ -742,6 +763,7 @@ export function SchliessplanGrafik({ params, title, className }: VisualProps) {
               k={k}
               f={f}
               stand={zustand(markierung?.knoten.has(k))}
+              nummer={tuerNummer(k, nummern)}
             />
           ) : (
             <SchluesselKnoten
@@ -768,7 +790,7 @@ export function schliessplanAusschnitt(
   params: unknown,
   rand = 12,
 ): { x: number; y: number; breite: number; hoehe: number; vollBreite: number; vollHoehe: number } {
-  const { knoten, f, hoehe } = lesePlan(parameter(params));
+  const { knoten, f, hoehe, nummern } = lesePlan(parameter(params));
   const halbeBreite = (k: Knoten) => knotenBreite(k, f) / 2;
   const zText = (k: Knoten) => (k.label === 'Z' ? 7 + f.zeichen + 2 : 0);
   const links = Math.min(
@@ -778,9 +800,16 @@ export function schliessplanAusschnitt(
     ...knoten.map((k) => k.x + halbeBreite(k) + (k.x >= f.breite / 2 ? zText(k) : 0)),
   );
   const oben = Math.min(...knoten.map((k) => k.y - halbeHoehe(k, f)));
-  /* Unter einer schmalen Reservetür steht „frei“ (Grundlinie 13 unter der Türkante). */
+  /* Unter einer schmalen Reservetür steht „frei“ (Grundlinie 13 unter der Türkante), unter einer
+     nummerierten Tür die Türnummer (Grundlinie schrift + 1 unter der Türkante). */
   const unten = Math.max(
-    ...knoten.map((k) => k.y + halbeHoehe(k, f) + (k.art === 'tuer' && k.frei && f.schmal ? 13 : 0)),
+    ...knoten.map(
+      (k) =>
+        k.y
+        + halbeHoehe(k, f)
+        + (k.art === 'tuer' && k.frei && f.schmal ? 13 : 0)
+        + (tuerNummer(k, nummern) !== undefined ? f.schrift + 1 : 0),
+    ),
   );
   const voll = { x: 0, y: 0, breite: f.breite, hoehe, vollBreite: f.breite, vollHoehe: hoehe };
   if (rechts - links > f.breite - 2 * f.rand) return voll;

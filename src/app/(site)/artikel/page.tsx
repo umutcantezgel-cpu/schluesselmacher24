@@ -5,17 +5,17 @@ import { sortiereArtikel } from '@/lib/artikel';
 import { getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
-import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { IconGleichschliessendeZylinder } from '@/components/visual/icons/gleichschliessende-zylinder';
 import { IconSchluesselNachCode } from '@/components/visual/icons/schluessel-nach-code';
-import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
 import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
+import { IconZahlung } from '@/components/visual/icons/zahlung';
 
 import { ArtikelListe, type ListenArtikel } from './artikel-liste';
 
@@ -55,7 +55,7 @@ function WeiterIcon({ href }: { href: string }) {
     case '/gleichschliessende-zylinder':
       return <IconGleichschliessendeZylinder size={32} />;
     case '/rechtliches/versand-und-zahlung':
-      return <IconVersandPaket size={32} />;
+      return <IconZahlung size={32} />;
     default:
       return <IconWarenkorb size={32} />;
   }
@@ -103,6 +103,22 @@ export default async function ArtikelPage() {
   const titel = page?.headline || TITEL;
   const crumbs = [{ href: `/${ROUTE}`, label: TITEL }];
 
+  // Beispielhinweis als Zeile mit Glyphe direkt über der Liste (K-006 „Flächen sparsam“), kein Kasten im Kopf.
+  const beispielHinweis = beispiele > 0 ? (
+    <div role="note" className="flex max-w-measure gap-3 text-small leading-relaxed">
+      <GlyphInfo size={18} className="mt-0.5 shrink-0 text-info" />
+      <div className="min-w-0">
+        <p className="font-semibold text-foreground">
+          {nurBeispiele ? 'Derzeit nur Beispielartikel' : 'Beispielartikel sind gekennzeichnet'}
+        </p>
+        <p className="text-foreground-muted">
+          Artikel mit dem Hinweis „Beispiel“ zeigen, wie Artikel hier dargestellt werden. Preise
+          und Angaben sind Beispielwerte; diese Artikel können nicht bestellt werden.
+        </p>
+      </div>
+    </div>
+  ) : null;
+
   return (
     <>
       <JsonLd
@@ -119,19 +135,7 @@ export default async function ArtikelPage() {
         title={titel}
         lead={page?.subline || LEAD}
         crumbs={crumbs}
-      >
-        {beispiele > 0 && (
-          <Alert
-            tone="info"
-            title={nurBeispiele ? 'Derzeit nur Beispielartikel' : 'Beispielartikel sind gekennzeichnet'}
-          >
-            <p>
-              Artikel mit dem Hinweis „Beispiel“ zeigen, wie Artikel hier dargestellt werden. Preise
-              und Angaben sind Beispielwerte; diese Artikel können nicht bestellt werden.
-            </p>
-          </Alert>
-        )}
-      </PageHeader>
+      />
 
       <Section tight labelledBy="artikel-titel">
         {articles.length > 0 ? (
@@ -141,7 +145,7 @@ export default async function ArtikelPage() {
               <SectionHeading
                 id="artikel-titel"
                 nummer="01"
-                eyebrow={`${articles.length} Artikel`}
+                eyebrow="Auswahl"
                 title="Artikel auswählen"
                 lead={
                   page?.intro
@@ -150,7 +154,7 @@ export default async function ArtikelPage() {
                 }
               />
             </div>
-            <ArtikelListe articles={liste} className="mt-8" />
+            <ArtikelListe articles={liste} hinweis={beispielHinweis} className="mt-8" />
           </>
         ) : (
           <Card variant="muted">
@@ -212,7 +216,7 @@ export default async function ArtikelPage() {
                 </span>
                 <GlyphPfeilRechts
                   size={18}
-                  className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary"
+                  className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
                 />
               </Link>
             </li>

@@ -153,6 +153,10 @@ export interface PhotoUploadProps {
    */
   category?: UploadKategorie;
   error?: string;
+  /**
+   * Gewicht des Knopfs „Foto aufnehmen“: `betont` (Standard) gefüllt; `ruhig` als Rahmenknopf, wenn eine andere Handlung die Hauptaktion ist.
+   */
+  kamera?: 'betont' | 'ruhig';
 }
 
 const MAX_BYTES = 12 * 1024 * 1024;
@@ -174,6 +178,7 @@ export function PhotoUpload({
   allowDocuments = false,
   category,
   error,
+  kamera = 'betont',
 }: PhotoUploadProps) {
   const cameraRef = useRef<HTMLInputElement>(null);
   const galleryRef = useRef<HTMLInputElement>(null);
@@ -317,7 +322,7 @@ export function PhotoUpload({
           <button
             type="button"
             onClick={() => cameraRef.current?.click()}
-            className="inline-flex min-h-touch items-center justify-center gap-2 rounded-lg bg-primary px-4 text-body font-semibold text-primary-foreground hover:bg-primary-hover"
+            className={kamera === 'ruhig' ? 'inline-flex min-h-touch items-center justify-center gap-2 rounded-lg border border-border-strong bg-surface px-4 text-body font-semibold text-foreground hover:bg-surface-muted' : 'inline-flex min-h-touch items-center justify-center gap-2 rounded-lg bg-primary px-4 text-body font-semibold text-primary-foreground hover:bg-primary-hover'}
           >
             <GlyphKamera size={18} aria-hidden />
             Foto aufnehmen

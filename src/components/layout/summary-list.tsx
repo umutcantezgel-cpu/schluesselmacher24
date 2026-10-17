@@ -10,20 +10,31 @@ import { cn } from '@/lib/cn';
 const ZAHLENTEIL = /(\d+(?:,\d+)?\s(?:mm|Stück)|\d{1,3}(?:\.\d{3})*,\d{2}\s€|\b[A-Z]{2,3}-\d{2,3}\b)/;
 
 /**
+ * Werte der dichten Übersicht (`dicht`): zusätzlich Prozentangaben („19 %“) und Codes mit
+ * Stückzahl („Code 0812 · 2 Stück“) als eine Mono-Spanne. Die Fanggruppe bleibt genau eine,
+ * weil `monoTeile` die Teile über ihren Index zuordnet.
+ */
+export const ZAHLENTEIL_DICHT = /(\d+(?:,\d+)?\s(?:mm|Stück|%)|\d{1,3}(?:\.\d{3})*,\d{2}\s€|\b[A-Z]{2,3}-\d{2,3}\b|\bCode\s[0-9A-Za-z-]+(?:\s·\s\d+(?:,\d+)?\sStück)?)/;
+
+/**
  * Zerlegt einen Anzeigetext in Teile; Zahlen mit Einheit sind als `mono` markiert,
  * damit sie im Schriftfeld in Mono mit Tabellenziffern stehen, der Text daneben nicht.
+ * Ohne `muster` gilt `ZAHLENTEIL`.
  */
-export function monoTeile(text: string): { text: string; mono: boolean }[] {
+export function monoTeile(
+  text: string,
+  muster: RegExp = ZAHLENTEIL,
+): { text: string; mono: boolean }[] {
   return text
-    .split(ZAHLENTEIL)
+    .split(muster)
     .map((teil, index) => ({ text: teil, mono: index % 2 === 1 }))
     .filter((teil) => teil.text !== '');
 }
 
-function MonoText({ text }: { text: string }) {
+function MonoText({ text, muster }: { text: string; muster?: RegExp }) {
   return (
     <>
-      {monoTeile(text).map((teil, index): ReactNode =>
+      {monoTeile(text, muster).map((teil, index): ReactNode =>
         teil.mono ? (
           <span key={index} className="whitespace-nowrap font-mono tabular-nums">
             {teil.text}
@@ -55,13 +66,13 @@ export function betragAmEnde(text: string): { angaben: string; betrag: string } 
  * Wert im Schriftfeld: Angaben mit Text und Betrag stehen in zwei Zeilen – die Angaben klein
  * und gedämpft, darunter der Betrag in Mono –, damit Inter und Mono nicht in einer Zeile mischen.
  */
-function SchriftfeldWert({ text }: { text: string }) {
+function SchriftfeldWert({ text, muster }: { text: string; muster?: RegExp }) {
   const geteilt = betragAmEnde(text);
-  if (!geteilt) return <MonoText text={text} />;
+  if (!geteilt) return <MonoText text={text} muster={muster} />;
   return (
     <>
       <span className="block text-small text-foreground-muted">
-        <MonoText text={geteilt.angaben} />
+        <MonoText text={geteilt.angaben} muster={muster} />
       </span>
       <span className="block whitespace-nowrap font-mono tabular-nums">{geteilt.betrag}</span>
     </>
@@ -78,6 +89,8 @@ function SchriftfeldWert({ text }: { text: string }) {
  *   Betrag in zwei Zeilen (`betragAmEnde`), die Zeile mit der Beschriftung `hervorheben` (etwa
  *   „Gesamtbetrag“) groß in Mono. Werte gleich `leer` (etwa „Noch nicht ausgefüllt“) stehen
  *   klein und gedämpft, damit sie die echten Angaben nicht übertönen.
+ * - `dicht` (nur Schriftfeld): Jede Zeile steht einzeilig, Beschriftung links und Wert rechts,
+ *   alle Werte gleich groß; Prozentangaben und Codes stehen in Mono (`ZAHLENTEIL_DICHT`).
  */
 export function SummaryList({
   sections,
@@ -85,12 +98,14 @@ export function SummaryList({
   variante = 'karte',
   hervorheben,
   leer,
+  dicht = false,
 }: {
   sections: SummarySection[];
   className?: string;
   variante?: 'karte' | 'schriftfeld';
   hervorheben?: string;
   leer?: string;
+  dicht?: boolean;
 }) {
   if (sections.length === 0) return null;
 
@@ -101,28 +116,63 @@ export function SummaryList({
           <div key={section.title}>
             <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">{section.title}</p>
             <dl className="mt-2 border-t border-border">
-              {section.rows.map((row, index) => (
-                <div
-                  key={`${row.label}-${index}`}
-                  className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4"
-                >
-                  <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">
-                    <MonoText text={row.label} />
-                  </dt>
-                  <dd
-                    className={cn(
-                      'sm:col-span-7 sm:text-right',
-                      row.label === hervorheben
-                        ? 'font-mono text-title font-semibold tabular-nums text-foreground'
-                        : leer !== undefined && row.value === leer
-                          ? 'text-small text-foreground-muted'
-                          : 'text-body text-foreground',
-                    )}
+              {section.rows.map((row, index) => {
+                const hervorgehoben = row.label === hervorheben;
+                const leerWert = leer !== undefined && row.value === leer;
+
+                if (dicht) {
+                  return (
+                    <div
+                      key={`${row.label}-${index}`}
+                      className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-3"
+                    >
+                      <dt
+                        className={cn(
+                          'min-w-0 text-small',
+                          hervorgehoben ? 'font-semibold text-foreground' : 'font-medium text-foreground-muted',
+                        )}
+                      >
+                        <MonoText text={row.label} />
+                      </dt>
+                      <dd
+                        className={cn(
+                          'ml-auto min-w-0 max-w-full break-words text-right',
+                          hervorgehoben
+                            ? 'font-mono text-title font-semibold tabular-nums text-foreground'
+                            : leerWert
+                              ? 'text-small text-foreground-muted'
+                              : 'text-small text-foreground',
+                        )}
+                      >
+                        {hervorgehoben ? row.value : <SchriftfeldWert text={row.value} muster={ZAHLENTEIL_DICHT} />}
+                      </dd>
+                    </div>
+                  );
+                }
+
+                return (
+                  <div
+                    key={`${row.label}-${index}`}
+                    className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4"
                   >
-                    {row.label === hervorheben ? row.value : <SchriftfeldWert text={row.value} />}
-                  </dd>
-                </div>
-              ))}
+                    <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">
+                      <MonoText text={row.label} />
+                    </dt>
+                    <dd
+                      className={cn(
+                        'sm:col-span-7 sm:text-right',
+                        hervorgehoben
+                          ? 'font-mono text-title font-semibold tabular-nums text-foreground'
+                          : leerWert
+                            ? 'text-small text-foreground-muted'
+                            : 'text-body text-foreground',
+                      )}
+                    >
+                      {hervorgehoben ? row.value : <SchriftfeldWert text={row.value} />}
+                    </dd>
+                  </div>
+                );
+              })}
             </dl>
           </div>
         ))}

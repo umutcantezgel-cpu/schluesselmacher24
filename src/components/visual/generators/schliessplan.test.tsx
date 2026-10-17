@@ -465,3 +465,93 @@ describe('SchliessplanGrafik – schmales Format', () => {
     expect(zeichne(params)).toBe(zeichne({ ...params }));
   });
 });
+
+/** Türnummern: Text mit Position und Zahl; die Türen als Rechtecke (Breite 22) mit ihrer Mitte. */
+function nummernTexte(html: string) {
+  return [...html.matchAll(/<text[^>]*? x="([\d.-]+)" y="([\d.-]+)"[^>]*>(\d+)<\/text>/g)].map((m) => ({
+    x: Number(m[1]),
+    y: Number(m[2]),
+    nummer: Number(m[3]),
+  }));
+}
+/** Position, wie sie gezeichnet wird: die Verschiebung und Skalierung der Grafik angewendet. */
+function gezeichnet(html: string, n: { x: number; y: number }) {
+  const t = /<g transform="translate\(([\d.-]+) ([\d.-]+)\) scale\(([\d.-]+)\)"/.exec(html);
+  if (!t) return n;
+  const s = Number(t[3]);
+  return { x: Number(t[1]) + s * n.x, y: Number(t[2]) + s * n.y };
+}
+const tuerMitten = (html: string) =>
+  [...html.matchAll(/<rect[^>]*? x="([\d.-]+)" y="[\d.-]+" width="22"/g)].map((m) => Number(m[1]) + 11);
+
+describe('SchliessplanGrafik – Türnummern (nummern)', () => {
+  const systeme = [
+    { system: 'gleichschliessung', tueren: 4 },
+    { system: 'zentral', tueren: 3 },
+    { system: 'haupt', tueren: 4, reserve: 2 },
+    { system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2 },
+  ];
+
+  it('ohne nummern, mit false, nein oder 1 bleibt die Ausgabe gleich', () => {
+    for (const basis of systeme) {
+      for (const format of ['breit', 'schmal']) {
+        const ohne = zeichne({ ...basis, format });
+        expect(zeichne({ ...basis, format, nummern: false })).toBe(ohne);
+        expect(zeichne({ ...basis, format, nummern: 'nein' })).toBe(ohne);
+        expect(zeichne({ ...basis, format, nummern: 1 })).toBe(ohne);
+      }
+    }
+  });
+
+  it('setzt bei der Hauptschlüsselanlage die Nummern 1 bis 4 je einmal, mittig unter die Tür', () => {
+    for (const nummern of [true, 'ja']) {
+      const html = zeichne({ system: 'haupt', tueren: 4, nummern });
+      const nr = nummernTexte(html).sort((a, b) => a.nummer - b.nummer);
+      expect(nr.map((n) => n.nummer)).toEqual([1, 2, 3, 4]);
+      const mitten = tuerMitten(html);
+      for (const n of nr) {
+        expect(mitten.some((x) => Math.abs(x - n.x) < 0.05)).toBe(true);
+      }
+    }
+  });
+
+  it('nummeriert bei der Zentralschlossanlage nur die Wohnungstüren, nicht die Z-Türen', () => {
+    const html = zeichne({ system: 'zentral', tueren: 4, nummern: true });
+    expect(nummernTexte(html).map((n) => n.nummer).sort()).toEqual([1, 2, 3, 4]);
+    expect(html).toContain('>Z</text>');
+    expect(html.match(/>\d+<\/text>/g)).toHaveLength(4);
+    /* Reserveplätze bekommen keine Nummer. */
+    expect(zeichne({ system: 'haupt', tueren: 4, reserve: 2, nummern: true }).match(/>\d+<\/text>/g)).toHaveLength(4);
+  });
+
+  it('hält die Nummern in der Fläche und mobil bei mindestens 11,5 px', () => {
+    const schmal = zeichne({ system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2, format: 'schmal', nummern: true });
+    const breit = zeichne({ system: 'generalhaupt', gruppen: 4, tueren: 8, reserve: 2, nummern: true });
+    pruefeVertrag(schmal, 360, 254);
+    pruefeVertrag(breit);
+    expect(nummernTexte(schmal)).toHaveLength(6);
+    expect(nummernTexte(breit)).toHaveLength(8);
+    for (const n of nummernTexte(schmal)) {
+      expect(n.x).toBeGreaterThanOrEqual(0);
+      expect(n.x).toBeLessThanOrEqual(360);
+      expect(n.y).toBeLessThanOrEqual(254);
+    }
+    /* Die breite Fassung wird bei zehn Blättern verkleinert: gemessen wird die gezeichnete Position. */
+    expect(breit).toMatch(/<g transform="translate\(/);
+    for (const n of nummernTexte(breit)) {
+      const p = gezeichnet(breit, n);
+      expect(p.x).toBeGreaterThanOrEqual(0);
+      expect(p.x).toBeLessThanOrEqual(480);
+      expect(p.y).toBeLessThanOrEqual(300);
+    }
+    expect(Math.min(...schriftgroessen(schmal)) * 358 / 360).toBeGreaterThanOrEqual(11.5);
+  });
+
+  it('schließt bei nummerierten Türen die Nummern in den Ausschnitt ein', () => {
+    const ohne = schliessplanAusschnitt({ system: 'haupt', tueren: 4 });
+    const mit = schliessplanAusschnitt({ system: 'haupt', tueren: 4, nummern: true });
+    const unterste = Math.max(...nummernTexte(zeichne({ system: 'haupt', tueren: 4, nummern: true })).map((n) => n.y));
+    expect(mit.y + mit.hoehe).toBeGreaterThan(ohne.y + ohne.hoehe);
+    expect(mit.y + mit.hoehe).toBeGreaterThanOrEqual(unterste);
+  });
+});

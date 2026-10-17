@@ -13,7 +13,9 @@ import { PageHeader } from '@/components/layout/page-header';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { AblaufGrafik } from '@/components/visual/generators/ablauf';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
 import { IconBeratungTelefon } from '@/components/visual/icons/beratung-telefon';
 import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconServiceUndTermin } from '@/components/visual/icons/service-und-termin';
@@ -56,6 +58,37 @@ const ENTRIES: Array<{ href: string; label: string; description: string; icon: C
     icon: IconBeratungTelefon,
   },
 ];
+
+/** Die fünf Phasen eines Auftrags: Kopfzeichnung (Abschnitt 03) und Definitionsliste (03.1). */
+const PHASEN: Array<{ kurz: string; name: string; text: string }> = [
+  {
+    kurz: 'Bedarfsanalyse',
+    name: 'Initiierung und Bedarfsanalyse',
+    text: 'Im ersten Schritt erfassen wir nicht nur die offensichtlichen Anforderungen, sondern analysieren auch die verborgenen Risikofaktoren. Dies beinhaltet die Bewertung von Türbeschaffenheiten, Zylindermaßen, elektronischen Schnittstellen und den allgemeinen architektonischen Gegebenheiten vor Ort.',
+  },
+  {
+    kurz: 'Projektierung',
+    name: 'Projektierung und Lösungsdesign',
+    text: 'Basierend auf der Analyse entwickeln wir ein fundiertes Konzept. Bei Schließanlagen bedeutet dies die Erstellung präziser Schließpläne unter Berücksichtigung komplexer Hierarchien und Zutrittsberechtigungen. Bei elektronischen Systemen planen wir die Vernetzung, Stromversorgung und Integration in bestehende IT- oder Smart-Home-Umgebungen.',
+  },
+  {
+    kurz: 'Fertigung',
+    name: 'Präzise Fertigung und Vorkonfiguration',
+    text: 'Bevor wir vor Ort tätig werden, bereiten wir alle Komponenten in unserer Fachwerkstatt vor. Zylinder werden nach Maß gefertigt, Transponder codiert und elektronische Komponenten vorab getestet, um die Ausfallzeiten vor Ort auf ein absolutes Minimum zu reduzieren.',
+  },
+  {
+    kurz: 'Montage',
+    name: 'Fachgerechte Montage und Integration',
+    text: 'Unsere Techniker installieren die Systeme mit höchster handwerklicher Präzision. Dies umfasst die fachgerechte Montage mechanischer Sicherungen ebenso wie die Verkabelung und Inbetriebnahme komplexer elektronischer Anlagen, stets unter Einhaltung geltender Normen und Sicherheitsrichtlinien (z.B. DIN 18252 für Profilzylinder, DIN EN 1303).',
+  },
+  {
+    kurz: 'Dokumentation',
+    name: 'Dokumentation und Systemübergabe',
+    text: 'Jedes Projekt schließt mit einer umfassenden Dokumentation ab. Sie erhalten Sicherungskarten, detaillierte Schließpläne, Bedienungsanleitungen und Protokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.',
+  },
+];
+const PHASEN_SCHRITTE = PHASEN.map((p) => p.kurz).join('|');
+const PHASEN_TITEL = `Phasen eines Auftrags: ${PHASEN.map((p) => p.kurz).join(', ')}`;
 
 /** Sichtbare FAQ der Seite — auch Grundlage der strukturierten Daten. */
 const SERVICE_FAQ = [
@@ -109,13 +142,19 @@ export default async function ServiceUndTerminPage() {
         })}
       />
 
-      {/* Kopf: Fach-Icon als Anker und Ziel des Seitenwechsels (B-13); Schriftfeld nur aus vorhandenen Angaben */}
+      {/* Kopf: Phasenzeichnung als Blickfang, Fach-Icon klein neben der Augenbraue (B-13) */}
       <PageHeader
         bereich="service-und-termin"
         eyebrow="Service und Termin"
         title={page?.headline ?? 'Service und Termin'}
         lead={ohnePlatzhalter(page?.subline)}
         crumbs={[{ href: '/service-und-termin', label: 'Service und Termin' }]}
+        visual={
+          <div className="rounded-lg bg-area-soft/40 p-4 sm:p-6">
+            <AblaufGrafik params={{ schritte: PHASEN_SCHRITTE, format: 'schmal' }} title={PHASEN_TITEL} className="sm:hidden" />
+            <AblaufGrafik params={{ schritte: PHASEN_SCHRITTE }} title={PHASEN_TITEL} className="hidden sm:block" />
+          </div>
+        }
       >
         <dl className="grid grid-cols-2 border-y border-border">
           <div className="py-4">
@@ -177,15 +216,15 @@ export default async function ServiceUndTerminPage() {
           lead="Je nach Anliegen führt ein anderer Weg schneller zum Ziel. Bedienung, Sprache und Gestaltung sind überall gleich."
         />
 
-        <ul className="mt-12 grid border-t border-border sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-12 -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-0 md:overflow-visible md:scroll-px-0 md:border-t md:border-border md:px-0 md:pb-0 lg:grid-cols-4">
           {prozesse.map((key, index) => {
             const areas = NAV_AREAS.filter((a) => a.process === key);
             return (
               <li
                 key={key}
                 className={cn(
-                  'border-b border-border p-6 sm:p-8',
-                  index % 2 === 1 ? 'sm:border-l' : 'sm:border-l-0',
+                  'shrink-0 basis-3/4 snap-start rounded-lg border border-border bg-surface p-5 md:basis-auto md:rounded-none md:border-0 md:border-b md:bg-transparent md:p-8',
+                  index % 2 === 1 && 'md:border-l',
                   index % 4 === 0 ? 'lg:border-l-0' : 'lg:border-l',
                 )}
               >
@@ -195,12 +234,22 @@ export default async function ServiceUndTerminPage() {
                   <ul className="mt-6 border-t border-border">
                     {areas.map((area) => (
                       <li key={area.key} className="border-b border-border">
-                        <Link
-                          href={area.href}
-                          className="flex min-h-touch items-center text-small text-foreground hover:text-primary hover:underline"
-                        >
-                          {area.label}
-                        </Link>
+                        {area.key === 'service-und-termin' ? (
+                          <span aria-current="page" className="flex min-h-touch items-center text-small text-foreground-muted">
+                            {area.label}
+                          </span>
+                        ) : (
+                          <Link
+                            href={area.href}
+                            className="group flex min-h-touch items-center justify-between gap-3 text-small text-foreground transition-colors duration-quick hover:text-primary"
+                          >
+                            <span>{area.label}</span>
+                            <GlyphPfeilRechts
+                              size={16}
+                              className="shrink-0 text-foreground-muted transition duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
+                            />
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -211,86 +260,113 @@ export default async function ServiceUndTerminPage() {
         </ul>
       </Section>
 
-      {/* 03 Methodik: vier nummerierte Teile mit großen Mono-Ziffern */}
+      {/* 03 Vorgehen: Kopf läuft mit (5/7), Teile 03.1–03.4 einklappbar (B-09), Phasen als Definitionsliste */}
       <Section>
-        <SectionHeading
-          nummer="03"
-          eyebrow="Architektonische Methodik"
-          title="Präzision in jedem Schritt: Unsere Service-Architektur"
-          lead="Wir verstehen Schließtechnik und Sicherheitssysteme nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Langlebigkeit erfüllen müssen."
-        />
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+            <SectionHeading
+              nummer="03"
+              eyebrow="Vorgehen"
+              title="Präzision in jedem Schritt: Unsere Service-Architektur"
+              lead="Wir verstehen Schließtechnik und Sicherheitssysteme nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Langlebigkeit erfüllen müssen."
+            />
+          </div>
 
-        <div className="prose-sm24 mt-12">
-          <p>
-            Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
-          </p>
+          <div className="lg:col-span-7">
+            <div className="prose-sm24">
+              <p>
+                Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
+              </p>
+            </div>
+
+            <div className="mt-10 border-t border-border">
+              <details className="group border-b border-border" open>
+                <summary className="flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-5 text-foreground transition-colors duration-quick hover:text-primary [&::-webkit-details-marker]:hidden">
+                  <h3 className="min-w-0 text-title-sm font-semibold">
+                    <span className="block font-mono text-caption font-normal tabular-nums text-foreground-muted">03.1</span>
+                    Die Phasen unserer Service-Implementierung
+                  </h3>
+                  <GlyphWinkelUnten size={18} className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-open:rotate-180" />
+                </summary>
+                <div className="sm24-fade pb-8 [--sm24-duration:var(--dauer-quick)]">
+                  <div className="prose-sm24">
+                    <p>
+                      Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
+                    </p>
+                  </div>
+                  <dl className="mt-6 max-w-measure border-t border-border">
+                    {PHASEN.map((phase, i) => (
+                      <div key={phase.kurz} className="border-b border-border py-5">
+                        <dt className="flex items-baseline gap-3 text-title-sm font-semibold text-foreground">
+                          <span className="font-mono text-caption font-normal tabular-nums text-foreground-muted">{String(i + 1).padStart(2, '0')}</span>
+                          <span>{phase.name}</span>
+                        </dt>
+                        <dd className="mt-2 hyphens-auto text-body text-foreground-muted">{phase.text}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </details>
+              <details className="group border-b border-border">
+                <summary className="flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-5 text-foreground transition-colors duration-quick hover:text-primary [&::-webkit-details-marker]:hidden">
+                  <h3 className="min-w-0 text-title-sm font-semibold">
+                    <span className="block font-mono text-caption font-normal tabular-nums text-foreground-muted">03.2</span>
+                    Technologische Standards und Materialqualität
+                  </h3>
+                  <GlyphWinkelUnten size={18} className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-open:rotate-180" />
+                </summary>
+                <div className="sm24-fade pb-8 [--sm24-duration:var(--dauer-quick)]">
+                  <div className="prose-sm24">
+                    <p>
+                      Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
+                    </p>
+                    <p>
+                      Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
+                    </p>
+                  </div>
+                </div>
+              </details>
+              <details className="group border-b border-border">
+                <summary className="flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-5 text-foreground transition-colors duration-quick hover:text-primary [&::-webkit-details-marker]:hidden">
+                  <h3 className="min-w-0 text-title-sm font-semibold">
+                    <span className="block font-mono text-caption font-normal tabular-nums text-foreground-muted">03.3</span>
+                    Nachhaltigkeit und Lebenszyklus-Management
+                  </h3>
+                  <GlyphWinkelUnten size={18} className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-open:rotate-180" />
+                </summary>
+                <div className="sm24-fade pb-8 [--sm24-duration:var(--dauer-quick)]">
+                  <div className="prose-sm24">
+                    <p>
+                      Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen.
+                    </p>
+                    <p>
+                      Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
+                    </p>
+                  </div>
+                </div>
+              </details>
+              <details className="group border-b border-border">
+                <summary className="flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-5 text-foreground transition-colors duration-quick hover:text-primary [&::-webkit-details-marker]:hidden">
+                  <h3 className="min-w-0 text-title-sm font-semibold">
+                    <span className="block font-mono text-caption font-normal tabular-nums text-foreground-muted">03.4</span>
+                    Gewerbeobjekte und öffentliche Einrichtungen
+                  </h3>
+                  <GlyphWinkelUnten size={18} className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-open:rotate-180" />
+                </summary>
+                <div className="sm24-fade pb-8 [--sm24-duration:var(--dauer-quick)]">
+                  <div className="prose-sm24">
+                    <p>
+                      Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
+                    </p>
+                    <p>
+                      Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
+                    </p>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
         </div>
-
-        <ol className="mt-12 border-t border-border">
-          <li className="grid grid-cols-12 gap-x-4 border-b border-border py-8">
-            <span className="col-span-2 font-mono text-title font-semibold tabular-nums text-area-strong sm:col-span-1">01</span>
-            <div className="col-span-10 sm:col-span-11">
-              <h3 className="text-title-sm font-semibold text-foreground">Die Phasen unserer Service-Implementierung</h3>
-              <div className="prose-sm24 mt-3">
-                <p>
-                  Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
-                </p>
-                <ul>
-                  <li><strong>Initiierung und Bedarfsanalyse:</strong> Im ersten Schritt erfassen wir nicht nur die offensichtlichen Anforderungen, sondern analysieren auch die verborgenen Risikofaktoren. Dies beinhaltet die Bewertung von Türbeschaffenheiten, Zylindermaßen, elektronischen Schnittstellen und den allgemeinen architektonischen Gegebenheiten vor Ort.</li>
-                  <li><strong>Projektierung und Lösungsdesign:</strong> Basierend auf der Analyse entwickeln wir ein fundiertes Konzept. Bei Schließanlagen bedeutet dies die Erstellung präziser Schließpläne unter Berücksichtigung komplexer Hierarchien und Zutrittsberechtigungen. Bei elektronischen Systemen planen wir die Vernetzung, Stromversorgung und Integration in bestehende IT- oder Smart-Home-Umgebungen.</li>
-                  <li><strong>Präzise Fertigung und Vorkonfiguration:</strong> Bevor wir vor Ort tätig werden, bereiten wir alle Komponenten in unserer Fachwerkstatt vor. Zylinder werden nach Maß gefertigt, Transponder codiert und elektronische Komponenten vorab getestet, um die Ausfallzeiten vor Ort auf ein absolutes Minimum zu reduzieren.</li>
-                  <li><strong>Fachgerechte Montage und Integration:</strong> Unsere Techniker installieren die Systeme mit höchster handwerklicher Präzision. Dies umfasst die fachgerechte Montage mechanischer Sicherungen ebenso wie die Verkabelung und Inbetriebnahme komplexer elektronischer Anlagen, stets unter Einhaltung geltender Normen und Sicherheitsrichtlinien (z.B. DIN 18252 für Profilzylinder, DIN EN 1303).</li>
-                  <li><strong>Dokumentation und Systemübergabe:</strong> Jedes Projekt schließt mit einer umfassenden Dokumentation ab. Sie erhalten Sicherungskarten, detaillierte Schließpläne, Bedienungsanleitungen und Protokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.</li>
-                </ul>
-              </div>
-            </div>
-          </li>
-
-          <li className="grid grid-cols-12 gap-x-4 border-b border-border py-8">
-            <span className="col-span-2 font-mono text-title font-semibold tabular-nums text-area-strong sm:col-span-1">02</span>
-            <div className="col-span-10 sm:col-span-11">
-              <h3 className="text-title-sm font-semibold text-foreground">Technologische Standards und Materialqualität</h3>
-              <div className="prose-sm24 mt-3">
-                <p>
-                  Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
-                </p>
-                <p>
-                  Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
-                </p>
-              </div>
-            </div>
-          </li>
-
-          <li className="grid grid-cols-12 gap-x-4 border-b border-border py-8">
-            <span className="col-span-2 font-mono text-title font-semibold tabular-nums text-area-strong sm:col-span-1">03</span>
-            <div className="col-span-10 sm:col-span-11">
-              <h3 className="text-title-sm font-semibold text-foreground">Nachhaltigkeit und Lebenszyklus-Management</h3>
-              <div className="prose-sm24 mt-3">
-                <p>
-                  Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen.
-                </p>
-                <p>
-                  Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
-                </p>
-              </div>
-            </div>
-          </li>
-
-          <li className="grid grid-cols-12 gap-x-4 border-b border-border py-8">
-            <span className="col-span-2 font-mono text-title font-semibold tabular-nums text-area-strong sm:col-span-1">04</span>
-            <div className="col-span-10 sm:col-span-11">
-              <h3 className="text-title-sm font-semibold text-foreground">Gewerbeobjekte und öffentliche Einrichtungen</h3>
-              <div className="prose-sm24 mt-3">
-                <p>
-                  Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
-                </p>
-                <p>
-                  Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
-                </p>
-              </div>
-            </div>
-          </li>
-        </ol>
       </Section>
 
       {/* 04 Rechenhilfe */}

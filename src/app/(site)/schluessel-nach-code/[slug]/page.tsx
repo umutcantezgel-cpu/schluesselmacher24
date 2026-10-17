@@ -13,14 +13,25 @@ import { JsonLd, productSchema, breadcrumbSchema } from '@/components/seo/json-l
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
+import { GlyphHaken } from '@/components/visual/glyphen/haken';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { CodeFundstelleInteraktiv } from '@/components/visual/interaktiv/code-fundstelle-interaktiv';
-import { PROFILSCHNITT_AUSSCHNITT, PROFILSCHNITT_GROESSE } from '@/components/visual/generators/profilschnitt';
+import { PROFILSCHNITT_GROESSE } from '@/components/visual/generators/profilschnitt';
 
 import { BestellFormular } from './bestell-formular';
 import { getSiteUrl } from '@/lib/site-url';
 import { istPlatzhalter } from '@/lib/platzhalter';
-import { beschreibungFuerAnzeige } from '@/lib/codelinie';
+import { beschreibungFuerAnzeige, codelinienKennung } from '@/lib/codelinie';
+
+/** Telefon-Ausschnitt des Profilschnitts (viewBox 480 × 360): Halm ab der Schulter, die Reide samt Kontur (bis x 125,1) ganz außerhalb; Nummern, Spitze, Fräser und Bemaßung (bis y 282) innen; rechter Rand wie PROFILSCHNITT_AUSSCHNITT (462). Schrift 11,5 px bei 320 px Zeichnungsbreite (360 px Viewport), etwa 10 px bei 280 px (320 px Viewport), darunter die Kern-Mindestgröße (K-008). */
+const PROFILSCHNITT_HALM = {
+  x: 128,
+  y: 98,
+  breite: 334,
+  hoehe: 190,
+  vollBreite: PROFILSCHNITT_GROESSE.breite,
+  vollHoehe: PROFILSCHNITT_GROESSE.hoehe,
+} as const;
 
 interface CodeLinePageProps {
   /** In Next.js 16 sind Routenparameter ein Promise. */
@@ -79,15 +90,17 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
     ...baseLinks,
     ...line.seo.internalLinks.filter((link) => !baseLinks.some((b) => b.href === link.href)),
   ];
+  // Titel ohne angehängte Serienkennung, wie `titelOf` in shop-liste.tsx. Nur Anzeige.
+  const kennung = codelinienKennung(line);
+  const titel = line.name.replace(/\s*[—–-]\s*Serie\s+[A-Za-z0-9-]+\s*$/, '');
 
   return (
     <>
       <JsonLd data={productSchema(line)} />
       <JsonLd data={breadcrumbSchema(crumbs, `${getSiteUrl()}/schluessel-nach-code/${line.slug}`)} />
       <PageHeader
-        eyebrow={PROCESS_LABELS.direktkauf.label}
-        title={line.name}
-        lead={line.application}
+        eyebrow={`${kennung} · ${PROCESS_LABELS.direktkauf.label}`}
+        title={titel}
         crumbs={crumbs}
         visual={
           /* Blickfang im Kopf (K-006): die Fräsbahn zum Beispielcode der Codelinie, ohne Kartenrahmen */
@@ -95,11 +108,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
             <ImagePlaceholder
               frei
               sizes="(min-width: 1024px) 40vw, 100vw"
-              ausschnitt={{
-                ...PROFILSCHNITT_AUSSCHNITT,
-                vollBreite: PROFILSCHNITT_GROESSE.breite,
-                vollHoehe: PROFILSCHNITT_GROESSE.hoehe,
-              }}
+              ausschnitt={PROFILSCHNITT_HALM}
+              className="sm24-ausschnitt-bemasst"
               slot={{
                 motif: `Fräsbahn zum Beispielcode ${line.codeExample}`,
                 ratio: '4/3',
@@ -107,15 +117,21 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               }}
             />
             <figcaption className="mt-2 font-mono text-caption uppercase tracking-label text-foreground-muted">
-              Darstellung zum Beispielcode {line.codeExample} – keine echte Schließung
+              Darstellung zum Beispielcode {line.codeExample} –{' '}
+              <span className="whitespace-nowrap">keine echte Schließung</span>
             </figcaption>
           </figure>
         }
       >
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone="primary">Ohne Einsendung des Originalschlüssels</Badge>
+          <Badge tone="outline">
+            <GlyphHaken size={14} className="shrink-0" />
+            Ohne Einsendung des Originalschlüssels
+          </Badge>
           <Badge tone="outline">{line.keyType}</Badge>
-          <Badge tone="outline">Codeformat: {line.codeFormatLabel}</Badge>
+          <Badge tone="outline">
+            Codeformat: <span className="font-mono font-medium tabular-nums text-foreground">{line.codeFormatLabel}</span>
+          </Badge>
         </div>
       </PageHeader>
 
@@ -126,16 +142,11 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
             <BestellFormular line={line} />
           </div>
 
-          {/* Erklärung, Angaben und Passende Seiten: ab lg links, füllen die Spalte unter dem Kopf */}
+          {/* Codefundstelle, Angaben, Hinweis und Passende Seiten: ab lg links, füllen die Spalte unter dem Kopf */}
           <div className="lg:col-span-7 lg:col-start-1 lg:row-start-1">
-            <div>
-              <SectionHeading nummer="01" eyebrow="Lieferumfang" title="Was Sie erhalten" />
-              <p className="prose-sm24 mt-4">{beschreibungFuerAnzeige(line)}</p>
-            </div>
-
             {/* Großer Moment (B-16): Fundstelle als Zeichnung, solange kein Foto hinterlegt ist */}
-            <div className="mt-12">
-              <SectionHeading nummer="02" eyebrow="Codefundstelle" title="Wo steht der Code?" />
+            <div>
+              <SectionHeading nummer="01" eyebrow="Codefundstelle" title="Wo steht der Code?" />
               <p className="prose-sm24 mt-4">{line.codeHint}</p>
 
               {line.codeLocationImage.bild ? (
@@ -169,9 +180,10 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               </p>
             </div>
 
-            {/* Schriftfeld-Liste: Haarlinien statt Karte, Codeformat und Stückzahl in Mono */}
+            {/* Schriftfeld-Liste: Haarlinien statt Karte, Codeformat und Stückzahl in Mono; der Lieferumfang steht als erster Absatz davor */}
             <div className="mt-12">
-              <SectionHeading nummer="03" eyebrow="Angaben" title="Technische Angaben" />
+              <SectionHeading nummer="02" eyebrow="Angaben" title="Technische Angaben" />
+              <p className="prose-sm24 mt-4">{beschreibungFuerAnzeige(line)}</p>
               <dl className="mt-6 border-t border-border">
                 {technik.map((fact) => (
                   <div
@@ -217,7 +229,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
             {/* Stückliste mit Haarlinien: die ganze Zeile ist der Link */}
             <div className="mt-12">
               <SectionHeading
-                nummer="04"
+                nummer="03"
                 eyebrow="Weiter im Bereich"
                 title="Passende Seiten zu dieser Codelinie"
               />

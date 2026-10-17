@@ -313,37 +313,33 @@ export default async function TuerUndSchliesstechnikPage() {
         </ul>
       </Section>
 
-      {/* Normen und Brandschutz */}
-      <Section tight>
-        <div className="relative overflow-hidden rounded-lg bg-surface-ink p-8 text-foreground-inverse md:p-12 lg:p-16">
-          <div className="relative z-raised grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-gutter">
-            <div className="lg:col-span-8">
-              <p className="eyebrow text-foreground-inverse">
-                <span className="tabular-nums text-foreground-inverse/70">03</span>
+      {/* Normen und Brandschutz: Warnung auf Papier mit Leiste links (KERN K-006), nicht als dunkle Fläche */}
+      <Section tone="sunken" tight>
+        <div className="grid lg:grid-cols-12 lg:gap-gutter">
+          <div className="rounded-md border border-l-2 border-border border-l-warning bg-surface p-6 md:p-8 lg:col-span-8">
+            <div className="flex items-center gap-3">
+              <IconPanikFluchttuer size={40} className="shrink-0 text-area-strong" />
+              <p className="eyebrow">
+                <span className="tabular-nums text-foreground-muted">03</span>
                 Normen und Brandschutz
               </p>
-              <h2 className="mt-3 mb-6 text-headline font-bold text-foreground-inverse">Regulatorik: Fluchtwege und Brandschutz</h2>
-              <div className="space-y-6 text-foreground-inverse/80 text-lead leading-relaxed">
-                <p>
-                  Eingriffe an Brand-, Rauchschutz- oder Fluchttüren erfordern höchste fachliche Expertise und die strikte Einhaltung bauaufsichtlicher Zulassungen. Eine nachträglich falsch montierte Mehrfachverriegelung an einer T30-Brandschutztür kann zum sofortigen Erlöschen der Zulassung führen – mit gravierenden haftungsrechtlichen Konsequenzen im Schadensfall.
-                </p>
-                <p>
-                  Wir sind zertifiziert für die Bearbeitung und Instandhaltung von Flucht- und Rettungswegtechnik nach DIN EN 179 und DIN EN 1125. Jede technische Modifikation wird vorab auf Zulässigkeit geprüft und fachgerecht dokumentiert.
-                </p>
-                <Link
-                  href={`/${ROUTE}/panik-und-fluchttuertechnik`}
-                  className="group inline-flex min-h-touch items-center gap-2 border-b border-primary pb-1 font-semibold text-foreground-inverse transition-colors duration-quick hover:text-primary-soft focus-visible:ring-offset-surface-ink"
-                >
-                  Spezifikationen für Paniktechnik
-                  <GlyphPfeilRechts size={18} className="transition-transform duration-quick group-hover:translate-x-1" />
-                </Link>
-              </div>
             </div>
-
-            {/* Rechte Spalte: die Fachgrafik der Kachel Panik- und Fluchttürtechnik, Strich auf dunklem Grund */}
-            <div className="flex justify-center lg:col-span-4 lg:justify-end">
-              <IconPanikFluchttuer size={96} className="stroke-foreground-inverse" />
+            <h2 className="mt-3 text-headline font-bold text-foreground">Regulatorik: Fluchtwege und Brandschutz</h2>
+            <div className="prose-sm24 mt-6">
+              <p>
+                Eingriffe an Brand-, Rauchschutz- oder Fluchttüren erfordern höchste fachliche Expertise und die strikte Einhaltung bauaufsichtlicher Zulassungen. Eine nachträglich falsch montierte Mehrfachverriegelung an einer T30-Brandschutztür kann zum sofortigen Erlöschen der Zulassung führen – mit gravierenden haftungsrechtlichen Konsequenzen im Schadensfall.
+              </p>
+              <p>
+                Wir sind zertifiziert für die Bearbeitung und Instandhaltung von Flucht- und Rettungswegtechnik nach DIN EN 179 und DIN EN 1125. Jede technische Modifikation wird vorab auf Zulässigkeit geprüft und fachgerecht dokumentiert.
+              </p>
             </div>
+            <Link
+              href={`/${ROUTE}/panik-und-fluchttuertechnik`}
+              className="group mt-6 inline-flex min-h-touch items-center gap-2 font-semibold text-primary transition-colors duration-quick ease-standard hover:text-primary-hover"
+            >
+              Spezifikationen für Paniktechnik
+              <GlyphPfeilRechts size={18} className="shrink-0 transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
         {/* Erscheint erst, wenn im Backend ein Nachweis vorliegt und freigegeben ist. */}
@@ -364,37 +360,54 @@ export default async function TuerUndSchliesstechnikPage() {
         </div>
       </Section>
 
-      {/* Angrenzende Bereiche: die ganze Karte ist der Link, unten rechts nur der Pfeil */}
+      {/* Angrenzende Bereiche: nummerierte Bereichsliste mit Fach-Icon je Bereich; die ganze Zeile ist der Link, der Pfeil steht auf Titelhöhe. */}
       <Section tone="muted" tight>
-        <SectionHeading
-          nummer="05"
-          eyebrow="Systemerweiterungen"
-          title="Gewerkeübergreifende Lösungen"
-          lead="Tür- und Schließtechnik ist oft der erste Schritt. Erweitern Sie Ihr System um vernetzte oder komplexe Hierarchien."
-        />
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <SectionHeading
+            nummer="05"
+            eyebrow="Systemerweiterungen"
+            title="Gewerkeübergreifende Lösungen"
+            lead="Tür- und Schließtechnik ist oft der erste Schritt. Erweitern Sie Ihr System um vernetzte oder komplexe Hierarchien."
+            className="lg:col-span-5"
+          />
 
-        {/* Mobil eine Leiste mit Anschnitt, ab 768 px zwei Spalten (Muster Startseite „Bestellen ohne Termin“). */}
-        <ul className="-mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-gutter md:overflow-visible md:px-0 md:pb-0 scroll-px-5 sm:scroll-px-6 md:scroll-px-0">
-          {RELATED_AREAS.map((area) => (
-            <li key={area.href} className="shrink-0 basis-3/4 snap-start md:basis-auto">
-              <Card className="h-full border-border transition-colors hover:border-primary">
-                <Link
-                  href={area.href}
-                  className="group flex h-full flex-col rounded-lg p-6 transition-colors duration-quick md:p-8"
-                >
-                  <span className="text-title font-bold tracking-tight text-foreground">{area.label}</span>
-                  <span className="mt-4 flex-1 text-body leading-relaxed text-foreground-muted">
-                    {area.body}
-                  </span>
-                  <GlyphPfeilRechts
-                    size={18}
-                    className="mt-6 self-end text-primary transition-transform duration-quick group-hover:translate-x-1"
-                  />
-                </Link>
-              </Card>
-            </li>
-          ))}
-        </ul>
+          {/* Mobil eine Leiste mit Anschnitt; ab md eine Liste mit Haarlinien über die volle Breite; ab lg 5/7 neben der Überschrift (Muster H08 05). */}
+          <ol className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 scroll-px-5 sm:-mx-6 sm:px-6 sm:scroll-px-6 md:mx-0 md:block md:overflow-visible md:border-t md:border-border md:px-0 md:pb-0 md:scroll-px-0 lg:col-span-7">
+            {RELATED_AREAS.map((item, index) => (
+              <li
+                key={item.href}
+                className="shrink-0 basis-3/4 snap-start md:basis-auto md:border-b md:border-border"
+              >
+                <AreaScope area={item.area}>
+                  <Link
+                    href={item.href}
+                    className="group flex h-full flex-wrap items-center gap-x-3 gap-y-4 rounded-lg border border-border bg-surface p-6 transition-colors duration-quick ease-standard hover:border-area md:flex-nowrap md:items-start md:gap-6 md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-5"
+                  >
+                    <span
+                      aria-hidden
+                      className="font-mono text-caption tabular-nums text-foreground-muted md:w-8 md:shrink-0 md:pt-1"
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <BereichIcon area={item.area} size={32} className="shrink-0 text-area-strong md:-mt-1" />
+                    <span className="order-last basis-full md:order-none md:min-w-0 md:flex-1 md:basis-auto">
+                      <span className="block text-title-sm font-semibold text-foreground transition-colors duration-quick group-hover:text-area-strong">
+                        {item.label}
+                      </span>
+                      <span className="mt-1 block max-w-measure text-small leading-relaxed text-foreground-muted">
+                        {item.body}
+                      </span>
+                    </span>
+                    <GlyphPfeilRechts
+                      size={18}
+                      className="ml-auto shrink-0 text-foreground-muted transition-transform duration-quick ease-standard group-hover:text-area-strong group-focus-visible:text-area-strong zeiger:group-hover:translate-x-1 md:ml-0 md:mt-1"
+                    />
+                  </Link>
+                </AreaScope>
+              </li>
+            ))}
+          </ol>
+        </div>
       </Section>
     </>
   );

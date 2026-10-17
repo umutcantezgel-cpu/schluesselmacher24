@@ -261,8 +261,9 @@ export function ErweiterbareAnlage() {
   return (
     <Reveal>
       <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-gutter">
-        <div className="rounded-lg border border-border bg-surface p-4 sm:p-6 lg:col-span-5">
-          <ImagePlaceholder slot={entry.figure} frei />
+        {/* Ohne Kartenrahmen auf getönter Fläche; unter 640 px bis an den Rand (Hülle `shell`, px-5). */}
+        <div className="-mx-5 overflow-hidden bg-area-soft/40 sm:mx-0 sm:rounded-lg lg:col-span-5">
+          <ImagePlaceholder slot={entry.figure} className="sm:aspect-3/2" frei />
         </div>
 
         <div className="lg:col-span-7">
@@ -292,14 +293,48 @@ export function ErweiterbareAnlage() {
   );
 }
 
-/** Vergleich der fünf Systeme: ab lg als Tabelle, darunter als gestapelte Angaben je System. */
+/** Name eines Systems: die Langform zuerst, die Abkürzung folgt in Mono in Klammern. */
+function SystemName({ entry }: { entry: LockSystemEntry }) {
+  return (
+    <>
+      {entry.label}
+      {entry.short && (
+        <>
+          {' '}
+          <span className="font-mono">({entry.short})</span>
+        </>
+      )}
+    </>
+  );
+}
+
+/** Das Urteil „Ja“ oder „Begrenzt“ steht als erstes Wort in Textfarbe, der Rest der Angabe bleibt gedämpft. */
+function ErweiterbarUrteil({ text }: { text: string }) {
+  const treffer = /^(Ja|Begrenzt)([\s\S]*)$/.exec(text);
+  if (!treffer) return text;
+  return (
+    <>
+      <span className="font-medium text-foreground">{treffer[1]}</span>
+      {treffer[2]}
+    </>
+  );
+}
+
+/** Vergleich der fünf Systeme: ab md Tabelle, darunter eine Leiste mit Anschnitt, je System eine Karte. */
 export function SystemVergleich() {
   return (
     <div>
-      <div className="border-b border-border lg:hidden">
+      <div
+        role="region"
+        aria-label="Die Systeme im Vergleich"
+        tabIndex={0}
+        className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 pt-1 scroll-px-5 focus-visible:ring-inset sm:-mx-6 sm:px-6 sm:scroll-px-6 md:hidden"
+      >
         {LOCK_SYSTEMS.map((entry) => (
-          <div key={entry.id} className="border-t border-border py-5">
-            <p className="text-title-sm font-semibold text-foreground">{systemName(entry)}</p>
+          <div key={entry.id} className="shrink-0 basis-3/4 snap-start rounded-lg border border-border bg-surface p-5">
+            <p className="text-title-sm font-semibold text-foreground">
+              <SystemName entry={entry} />
+            </p>
             <dl className="mt-3 divide-y divide-border">
               <div className="py-3 first:pt-0">
                 <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
@@ -317,14 +352,16 @@ export function SystemVergleich() {
                 <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                   Erweiterbar
                 </dt>
-                <dd className="mt-1 text-small leading-relaxed text-foreground-muted">{entry.expandable}</dd>
+                <dd className="mt-1 text-small leading-relaxed text-foreground-muted">
+                  <ErweiterbarUrteil text={entry.expandable} />
+                </dd>
               </div>
             </dl>
           </div>
         ))}
       </div>
 
-      <table className="hidden w-full border-collapse text-left lg:table">
+      <table className="hidden w-full border-collapse text-left md:table">
         <caption className="sr-only">
           Die fünf Schließsysteme im Vergleich: wer welche Tür öffnet, typische Einsatzfälle und
           Erweiterbarkeit.
@@ -349,7 +386,7 @@ export function SystemVergleich() {
           {LOCK_SYSTEMS.map((entry) => (
             <tr key={entry.id} className="align-top">
               <th scope="row" className="px-4 py-3 text-small font-bold text-foreground">
-                {systemName(entry)}
+                <SystemName entry={entry} />
               </th>
               <td className="px-4 py-3 text-small leading-relaxed text-foreground-muted">
                 {entry.opensWhat}
@@ -358,7 +395,7 @@ export function SystemVergleich() {
                 {entry.typicalFor}
               </td>
               <td className="px-4 py-3 text-small leading-relaxed text-foreground-muted">
-                {entry.expandable}
+                <ErweiterbarUrteil text={entry.expandable} />
               </td>
             </tr>
           ))}

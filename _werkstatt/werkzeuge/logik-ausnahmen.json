@@ -47,9 +47,14 @@
       "ersetzen": "Anfertigung nach Ihren Maßen.</span>"
     },
     {
-      "grund": "Musterzeichnung im Kasten „So messen Sie richtig“ entfällt (eine Zeichnung statt zwei; die Live-Zeichnung steht daneben), Text unverändert (E5-BEFUND-H07, D-042)",
-      "suchen": "\\{catalog\\.measuringInfo\\.title\\}\\s*</h3>",
-      "ersetzen": "{catalog.measuringInfo.title}</h3><ImagePlaceholder slot={catalog.measuringFigure} />"
+      "grund": "Kasten „So messen Sie richtig“ im Schritt 1 durch eine Zeile mit GlyphLineal ersetzt; Titel und Text stehen weiter im InfoTip jeder Position (catalog.measuringInfo), die Musterzeichnung auf der Zylinderseite (E6-BEFUND2-H07, D-048). Fügt die alte Anzeige nur für den Vergleich wieder ein",
+      "suchen": "\\{/\\* Schritt 1 — Zylinder \\*/\\}",
+      "ersetzen": "{/* Schritt 1 — Zylinder */}<p>{catalog.measuringInfo.title}{catalog.measuringInfo.body}</p><ImagePlaceholder slot={catalog.measuringFigure} />"
+    },
+    {
+      "grund": "Laufende Summe in Leiste und Band der FlowShell, derselbe Ausdruck wie in der Kennzahlleiste (E6-BEFUND2-H07, D-048)",
+      "suchen": "\\s*summe=\\{\\{ label: 'Laufende Summe', wert: formatCents\\(breakdown\\.totalCents\\) \\}\\}",
+      "ersetzen": ""
     }
   ],
   "src/app/(site)/kasse/kasse-formular.tsx": [
@@ -71,6 +76,11 @@
     {
       "grund": "Mobil: Gesamtbetrag direkt über dem Absendeknopf, derselbe Ausdruck wie in der Übersicht (E5-BEFUND-H11, Abnahme)",
       "suchen": "\\{formatCents\\(summen\\.totalCents\\)\\}(?=\\s*</span>\\s*</div>\\s*<Button type=\\\"submit\\\")",
+      "ersetzen": ""
+    },
+    {
+      "grund": "Rohling-Zeichnung der Leerkarte, feste Parameter, liest keinen Zustand (E6-BEFUND2-H10/H11, D-046)",
+      "suchen": "\\s*params=\\{\\{ typ: 'zylinder', rohling: true \\}\\}",
       "ersetzen": ""
     }
   ],
@@ -109,6 +119,21 @@
       "grund": "Mobile Leiste: „Zur Kasse“ mit derselben bestehenden Bedingung wie der Knopf rechts, nur die Darstellung in der Leiste (E5-BEFUND-H10, Abnahme)",
       "suchen": "\\{gewaehlteVersandart && !nichtVerfuegbar \\? \\(\\s*<ButtonLink href=\\\"/kasse\\\" size=\\\"lg\\\" pfeil>\\s*Zur Kasse\\s*</ButtonLink>\\s*\\) : \\(\\s*<Button size=\\\"lg\\\" disabled pfeil>\\s*Zur Kasse\\s*</Button>\\s*\\)\\}",
       "ersetzen": ""
+    },
+    {
+      "grund": "Rohling-Zeichnung der Leerkarte, feste Parameter, liest keinen Zustand (E6-BEFUND2-H10/H11, D-046)",
+      "suchen": "\\s*params=\\{\\{ typ: 'zylinder', rohling: true \\}\\}",
+      "ersetzen": ""
+    },
+    {
+      "grund": "Versandart als eigene Zeile im Betrag statt in Klammern hinter „Versand“; dieselbe Bedingung, nur gelesen (E6-BEFUND2-H10, D-048)",
+      "suchen": "\\{gewaehlteVersandart && \\(\\s*<span className=\"block text-foreground-muted\">\\{gewaehlteVersandart\\.label\\}</span>\\s*\\)\\}",
+      "ersetzen": "{gewaehlteVersandart ? ` (${gewaehlteVersandart.label})` : ''}"
+    },
+    {
+      "grund": "Metazeile der Codeposition ohne die Anwendung, die den Titel wiederholt (Anzeige, Daten unverändert; E6-BEFUND2-H10, D-048). Fügt die alte Anzeige nur für den Vergleich wieder ein; greift nach der Regel zum Hersteller-Platzhalter",
+      "suchen": "\\{position\\.line\\.manufacturer\\} · (?=\\{position\\.line\\.keyType\\})",
+      "ersetzen": "{position.line.manufacturer} · {position.line.application} ·{' '}"
     }
   ],
   "src/app/(site)/autoschluessel/anfrage/assistent.tsx": [

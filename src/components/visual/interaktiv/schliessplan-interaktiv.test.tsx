@@ -44,27 +44,35 @@ describe('SchliessplanInteraktiv: Reiterinhalt', () => {
 });
 
 describe('SchliessplanInteraktiv: Raster der Wählchips', () => {
-  it('stellt die Schlüsselreihe bei fünf Schlüsseln in eine Reihe von fünf Spalten', () => {
+  it('zeigt die Schlüssel als inhaltsbreite Knöpfe in einer Reihe, ohne feste Spalten', () => {
     const html = renderToStaticMarkup(<SchliessplanInteraktiv anfang="haupt" tueren={4} gruppen={2} />);
-    expect(html).toContain('grid-template-columns:repeat(5, minmax(0, 1fr))');
+    expect(html).not.toContain('grid-template-columns');
     expect(html).toContain('>HS<');
     expect(html).toContain('>ES 4<');
   });
 
-  it('setzt jede Tür unter ihren Schlüssel, leer unter der Hauptschlüsselzeile', () => {
+  it('reiht alle Türen ohne Leerzelle in eine Reihe, Tür 1 ist der erste Chip', () => {
     const html = renderToStaticMarkup(<SchliessplanInteraktiv anfang="haupt" tueren={4} gruppen={2} />);
     const kopf = html.indexOf('Tür wählen');
-    const tuerReihe = html.slice(kopf);
-    expect(tuerReihe.indexOf('aria-hidden="true"')).toBeGreaterThan(-1);
-    expect(tuerReihe.indexOf('>Tür 1<')).toBeGreaterThan(tuerReihe.indexOf('aria-hidden="true"'));
+    const tuerFeld = html.slice(kopf, html.indexOf('</fieldset>', kopf));
+    expect(tuerFeld).not.toContain('aria-hidden="true"');
+    expect(tuerFeld.match(/<button[^>]*>([^<]*)<\/button>/)?.[1]).toBe('Tür 1');
   });
 
-  it('verteilt viele Schlüssel auf gleich lange Reihen, ohne einen Chip allein zu lassen', () => {
+  it('zeigt bei der Generalhauptschlüsselanlage alle 15 Chips ohne feste Spalten', () => {
     const html = renderToStaticMarkup(
       <SchliessplanInteraktiv anfang="generalhaupt" tueren={4} gruppen={2} />,
     );
-    /* Elf Schlüssel: drei Reihen zu vier Spalten. */
-    expect(html).toContain('grid-template-columns:repeat(4, minmax(0, 1fr))');
+    /* Elf Schlüssel und vier Türen: 15 Wählknöpfe mit aria-pressed. */
+    expect(html).not.toContain('grid-template-columns');
+    expect(html.match(/aria-pressed=/g)).toHaveLength(15);
+  });
+
+  it('setzt die Türnummern 1 bis 4 in den Plan, je einmal', () => {
+    const html = renderToStaticMarkup(<SchliessplanInteraktiv anfang="haupt" tueren={4} gruppen={2} />);
+    for (let nr = 1; nr <= 4; nr += 1) {
+      expect(html).toContain(`>${nr}</text>`);
+    }
   });
 });
 

@@ -213,7 +213,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                           'Schlüssel nach Code'
                         )}
                       </h3>
-                      <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
                         {position.line && (
                           <p className="text-small text-foreground-muted">
                             {istPlatzhalter(position.line.manufacturer) ? null : `${position.line.manufacturer} · `}

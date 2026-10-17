@@ -284,6 +284,7 @@ export function BestellFormular({ line }: BestellFormularProps) {
         {showPhotoUpload && (
           <PhotoUpload
             category="schluesselfoto"
+            kamera="ruhig"
             id={`foto-${line.slug}`}
             label={photoRequired ? 'Foto des Schlüssels' : 'Foto des Schlüssels (freiwillig)'}
             description={

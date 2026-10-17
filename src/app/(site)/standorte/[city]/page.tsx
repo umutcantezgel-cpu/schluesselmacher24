@@ -7,11 +7,11 @@ import { areaByKey } from '@/lib/navigation';
 import { enthaeltPlatzhalter, istPlatzhalter } from '@/lib/platzhalter';
 import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
-import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { AreaScope } from '@/components/visual/area-scope';
 import { BereichIcon } from '@/components/visual/bereich-icon';
+import { EinsatzradiusZeichnung } from '@/components/visual/einsatzradius';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { JsonLd, breadcrumbSchema, serviceAreaSchema } from '@/components/seo/json-ld';
 import { getSiteUrl } from '@/lib/site-url';
@@ -46,12 +46,50 @@ export default async function CityPage(props: { params: Promise<{ city: string }
 
   const areas = city.servicesOffered.map((key) => areaByKey(key)).filter(Boolean);
   const einleitung = alsFakt(city.localIntro) ? city.localIntro : null;
-  const angaben = city.localFacts.filter((fact) => alsFakt(fact.value));
+  // Angaben, die die Augenbraue (Bundesland) wiederholen, entfallen; die Daten bleiben
+  const angaben = city.localFacts.filter((fact) => alsFakt(fact.value) && fact.value !== city.state);
 
   const crumbs = [
     { href: '/standorte', label: 'Einsatzgebiete' },
     { href: `/standorte/${city.slug}`, label: city.city },
   ];
+
+  // Einleitung und Schriftfeld im Kopf; ohne beides kein leerer Block (PageHeader)
+  const schriftfeld =
+    einleitung || angaben.length > 0 ? (
+      <>
+        {einleitung && <p className="max-w-measure text-body text-foreground-muted">{einleitung}</p>}
+
+        {/* Angaben als Schriftfeld: Haarlinien, Wortwerte in Inter, Zahlen in Mono. Platzhalter entfallen. */}
+        {angaben.length > 0 && (
+          <dl className={cn('grid grid-cols-2 border-y border-border sm:grid-cols-4', einleitung && 'mt-8')}>
+            {angaben.map((fact, index) => (
+              <div
+                key={fact.label}
+                className={cn(
+                  'py-4 pr-3 sm:pr-4',
+                  index % 2 === 1 && 'border-l border-border pl-3 sm:pl-4',
+                  index >= 2 && 'border-t border-border sm:border-t-0',
+                  index === 2 && 'sm:border-l sm:border-border sm:pl-4',
+                )}
+              >
+                <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  {fact.label}
+                </dt>
+                <dd
+                  className={cn(
+                    'mt-1 text-title-sm font-semibold text-foreground',
+                    /\d/.test(fact.value) && 'font-mono tabular-nums whitespace-nowrap',
+                  )}
+                >
+                  {fact.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        )}
+      </>
+    ) : null;
 
   return (
     <>
@@ -61,117 +99,76 @@ export default async function CityPage(props: { params: Promise<{ city: string }
       <PageHeader
         eyebrow={city.state}
         title={`Schlüssel- und Schließtechnik in ${city.city}`}
-        lead={`Vor-Ort-Leistungen im Umkreis von etwa ${city.onSiteRadiusKm} km. Bestellungen aus dem Shop liefern wir deutschlandweit.`}
+        lead={`Vor-Ort-Leistungen im Umkreis von etwa ${city.onSiteRadiusKm}\u00a0km. Bestellungen aus dem Shop liefern wir deutschlandweit.`}
         crumbs={crumbs}
         actions={
           <ButtonLink href="/autoschluessel/anfrage" pfeil>
             Autoschlüssel-Termin
           </ButtonLink>
         }
-        visual={
-          <ImagePlaceholder
-            slot={{
-              motif: `Einsatzgebiet ${city.city}: Schlüssel- und Schließtechnik vor Ort`,
-              ratio: '4/3',
-              visual: { generator: 'schluessel', params: { typ: 'funk' } },
-            }}
-          />
-        }
-      />
+        visual={<EinsatzradiusZeichnung ort={city.city} radiusKm={city.onSiteRadiusKm} />}
+      >
+        {schriftfeld}
+      </PageHeader>
 
-      <Section>
+      <Section tone="muted">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <SectionHeading
             className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start"
             nummer="01"
-            eyebrow="Einsatzgebiet"
-            title={`${city.city} und Umgebung`}
+            eyebrow="Leistungen"
+            title="Bereiche in dieser Region"
           />
 
-          <div className="lg:col-span-7 lg:col-start-6">
-            {einleitung && <p className="max-w-measure text-lead text-foreground-muted">{einleitung}</p>}
-
-            {/* Angaben als Schriftfeld: Haarlinien, Werte groß, Zahlen in Mono. Platzhalter entfallen. */}
-            {angaben.length > 0 && (
-              <dl className={cn('grid border-y border-border sm:grid-cols-2', einleitung && 'mt-10')}>
-                {angaben.map((fact, index) => (
-                  <div
-                    key={fact.label}
-                    className={cn(
-                      'py-5',
-                      index > 0 && 'border-t border-border sm:border-t-0 sm:border-l sm:pl-6',
-                    )}
-                  >
-                    <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                      {fact.label}
-                    </dt>
-                    <dd
-                      className={cn(
-                        'mt-2 text-title-sm font-semibold text-foreground',
-                        /\d/.test(fact.value) && 'font-mono tabular-nums',
-                      )}
+          <div className="lg:col-span-8">
+            {/* Haarlinienliste wie auf den Bereichsseiten: die ganze Zeile ist der Link, einspaltig */}
+            <ul className="border-t border-border">
+              {areas.map((area) => (
+                <li key={area!.key} className="border-b border-border">
+                  <AreaScope area={area!.key}>
+                    <Link
+                      href={area!.href}
+                      className="group flex min-h-touch-lg items-start gap-4 py-5 transition-colors duration-quick sm:gap-6 sm:py-6"
                     >
-                      {fact.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            )}
+                      <BereichIcon area={area!.key} size={40} className="mt-0.5 shrink-0 text-area-strong" />
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-title-sm font-semibold text-foreground transition-colors duration-quick group-hover:text-area-strong">
+                          {area!.label}
+                        </span>
+                        <span className="mt-1 block max-w-measure text-small leading-relaxed text-foreground-muted">
+                          {area!.summary}
+                        </span>
+                      </span>
+                      <GlyphPfeilRechts
+                        size={18}
+                        className="mt-2 shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-area-strong group-focus-visible:text-area-strong"
+                      />
+                    </Link>
+                  </AreaScope>
+                </li>
+              ))}
+            </ul>
+
+            {/* Weiterlesen: interne Links als Stückliste, die ganze Zeile ist der Link */}
+            <p className="mt-12 font-mono text-caption uppercase tracking-label text-foreground-muted">Weiterlesen</p>
+            <ul className="mt-3 border-t border-border">
+              {city.seo.internalLinks.map((link) => (
+                <li key={link.href} className="border-b border-border">
+                  <Link
+                    href={link.href}
+                    className="group flex min-h-touch items-center justify-between gap-4 py-4 text-body font-semibold text-foreground transition-colors duration-quick hover:text-primary"
+                  >
+                    {link.label}
+                    <GlyphPfeilRechts
+                      size={18}
+                      className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </Section>
-
-      <Section tone="muted">
-        <SectionHeading nummer="02" eyebrow="Leistungen" title="Bereiche in dieser Region" />
-
-        {/* Haarlinienliste wie auf den Bereichsseiten: die ganze Zeile ist der Link, ab lg zwei Spalten */}
-        <ul className="mt-12 grid border-t border-border lg:grid-cols-2">
-          {areas.map((area, index) => (
-            <li key={area!.key} className={cn('border-b border-border', index % 2 === 1 && 'lg:border-l')}>
-              <AreaScope area={area!.key}>
-                <Link
-                  href={area!.href}
-                  className={cn(
-                    'group flex min-h-touch-lg items-start gap-4 py-5 transition-colors duration-quick sm:gap-6 sm:py-6',
-                    index % 2 === 1 ? 'lg:pl-gutter' : 'lg:pr-gutter',
-                  )}
-                >
-                  <BereichIcon area={area!.key} size={40} className="mt-0.5 shrink-0 text-area-strong" />
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-title-sm font-semibold text-foreground transition-colors duration-quick group-hover:text-area-strong">
-                      {area!.label}
-                    </span>
-                    <span className="mt-1 block max-w-measure text-small leading-relaxed text-foreground-muted">
-                      {area!.summary}
-                    </span>
-                  </span>
-                  <GlyphPfeilRechts
-                    size={18}
-                    className="mt-2 shrink-0 text-foreground-muted transition-transform duration-quick group-hover:translate-x-1"
-                  />
-                </Link>
-              </AreaScope>
-            </li>
-          ))}
-        </ul>
-
-        {/* Weiterlesen: interne Links als Stückliste, die ganze Zeile ist der Link */}
-        <ul className="mt-12 border-t border-border">
-          {city.seo.internalLinks.map((link) => (
-            <li key={link.href} className="border-b border-border">
-              <Link
-                href={link.href}
-                className="group flex min-h-touch items-center justify-between gap-4 py-4 text-body font-semibold text-foreground transition-colors duration-quick hover:text-primary"
-              >
-                {link.label}
-                <GlyphPfeilRechts
-                  size={18}
-                  className="shrink-0 text-primary transition-transform duration-quick group-hover:translate-x-1"
-                />
-              </Link>
-            </li>
-          ))}
-        </ul>
       </Section>
     </>
   );

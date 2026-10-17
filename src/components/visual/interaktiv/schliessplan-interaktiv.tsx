@@ -17,8 +17,12 @@ const SYSTEM_NAMEN: Record<SchliessSystem, string> = {
   generalhaupt: 'Generalhauptschlüsselanlage',
 };
 
+/* Reiter der Systeme: volle Bezeichnung, inhaltsbreit; mobil als Leiste mit Anschnitt, ab sm als 2×2-Feld. */
+const segment =
+  'inline-flex min-h-touch shrink-0 snap-start items-center justify-center whitespace-nowrap rounded-md border px-3 text-small font-semibold transition-colors duration-quick ease-standard';
+/* Wählknöpfe für Schlüssel und Tür: inhaltsbreit, Kürzel in Mono, rechteckig (K-005). */
 const chip =
-  'inline-flex min-h-touch items-center rounded-full border px-4 text-small font-semibold transition-colors duration-quick ease-standard';
+  'inline-flex min-h-touch min-w-touch items-center justify-center rounded-md border px-3 font-mono text-small font-semibold tabular-nums transition-colors duration-quick ease-standard';
 const chipAn = 'border-area bg-area-soft text-area-strong';
 const chipAus = 'border-border-strong bg-surface text-foreground-muted hover:border-area hover:text-foreground';
 
@@ -51,21 +55,6 @@ export interface SchliessplanInteraktivProps {
   className?: string;
 }
 
-/** Schlüsselreihe: bis fünf Chips in einer Reihe, sonst gleichmäßig auf Reihen verteilt (kein Einzelchip). */
-function reihenSpalten(anzahl: number): number {
-  if (anzahl <= 5) return Math.max(1, anzahl);
-  return Math.ceil(anzahl / Math.ceil(anzahl / 5));
-}
-
-/** Türen unter ihrem Schlüssel: je Schlüssel mit genau einer eigenen Tür, sonst `null`. Nur bei einer Reihe. */
-function tuerUnterSchluessel(schluessel: PlanSchluessel[]): (string | null)[] | null {
-  if (schluessel.length > 5) return null;
-  return schluessel.map((s) => {
-    const eigene = s.tueren.filter((t) => t.startsWith('t'));
-    return eigene.length === 1 ? eigene[0] : null;
-  });
-}
-
 /**
  * Großer Moment der Schließanlagen (B-14): Wer einen Schlüssel wählt, sieht alle
  * Türen, die er schließt; wer eine Tür wählt, sieht alle Schlüssel, die sie
@@ -87,8 +76,10 @@ export function SchliessplanInteraktiv({
   const schluessel = useMemo(() => schliessplanSchluessel(basis), [basis]);
   const tuerListe = useMemo(() => alleTueren(schluessel), [schluessel]);
 
+  /* Türnummern stehen im Plan (für beide Fassungen). */
   const params = {
     ...basis,
+    nummern: true,
     ...(auswahl?.art === 'schluessel' ? { markiert: auswahl.kennung } : {}),
     ...(auswahl?.art === 'tuer' ? { tuer: auswahl.kennung } : {}),
   };
@@ -100,11 +91,6 @@ export function SchliessplanInteraktiv({
       ? tuerBeschreibung(schluessel, auswahl.kennung)
       : 'Wählen Sie einen Schlüssel oder eine Tür.';
 
-  /* Türen unter ihrem Schlüssel; die übrigen (etwa Zentraltüren) folgen darunter. */
-  const ausrichtung = tuerUnterSchluessel(schluessel);
-  const ausgerichtet = new Set(ausrichtung?.filter((t): t is string => t !== null) ?? []);
-  const eigeneReihe = ausrichtung !== null && ausgerichtet.size > 0;
-  const uebrige = tuerListe.filter((t) => !ausgerichtet.has(t));
   const detail = details?.[system];
   const mehrere = systeme.length > 1;
 
@@ -121,7 +107,7 @@ export function SchliessplanInteraktiv({
     document.getElementById(`${id}-system-${systeme[ziel]}`)?.focus();
   };
 
-  /* Rasterchips füllen ihre Zelle (`w-full`), die Reihe mit Schlüssel und Tür bleibt bündig. */
+  /* Wählknöpfe sind inhaltsbreit und bleiben in einer Reihe mit Umbruch; kein Raster, kein Einzelchip-Zwang. */
   const schluesselChip = (s: PlanSchluessel) => {
     const an = auswahl?.art === 'schluessel' && auswahl.kennung === s.kennung;
     return (
@@ -130,14 +116,14 @@ export function SchliessplanInteraktiv({
         type="button"
         aria-pressed={an}
         onClick={() => setAuswahl(an ? null : { art: 'schluessel', kennung: s.kennung })}
-        className={cn(chip, 'w-full px-2.5 font-mono tabular-nums', an ? chipAn : chipAus)}
+        className={cn(chip, an ? chipAn : chipAus)}
       >
         {s.kuerzel}
       </button>
     );
   };
 
-  const tuerChip = (t: string, raster: boolean) => {
+  const tuerChip = (t: string) => {
     const an = auswahl?.art === 'tuer' && auswahl.kennung === t;
     return (
       <button
@@ -145,20 +131,21 @@ export function SchliessplanInteraktiv({
         type="button"
         aria-pressed={an}
         onClick={() => setAuswahl(an ? null : { art: 'tuer', kennung: t })}
-        className={cn(chip, 'font-mono tabular-nums', raster && 'w-full px-2.5', an ? chipAn : chipAus)}
+        className={cn(chip, an ? chipAn : chipAus)}
       >
         {tuerName(t)}
       </button>
     );
   };
 
-  const spalten = reihenSpalten(schluessel.length);
-  const rasterStil = { gridTemplateColumns: `repeat(${spalten}, minmax(0, 1fr))` };
-
   return (
     <div className={cn('grid gap-6', className)}>
       {mehrere && (
-        <div role="tablist" aria-label="Art der Schließanlage" className="flex flex-wrap gap-2">
+        <div
+          role="tablist"
+          aria-label="Art der Schließanlage"
+          className="-mx-5 flex snap-x snap-mandatory gap-2 overflow-x-auto px-5 py-1 scroll-px-5 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:py-0 sm:scroll-px-0"
+        >
           {systeme.map((s, index) => (
             <button
               key={s}
@@ -170,7 +157,7 @@ export function SchliessplanInteraktiv({
               tabIndex={s === system ? 0 : -1}
               onClick={() => systemWaehlen(s)}
               onKeyDown={(event) => systemTaste(event, index)}
-              className={cn(chip, s === system ? chipAn : chipAus)}
+              className={cn(segment, s === system ? chipAn : chipAus)}
             >
               {SYSTEM_NAMEN[s]}
             </button>
@@ -184,7 +171,8 @@ export function SchliessplanInteraktiv({
         aria-labelledby={mehrere ? `${id}-system-${system}` : undefined}
         className="grid gap-6"
       >
-        <div className="rounded-lg border border-border bg-surface p-4 sm:p-6">
+        {/* Ohne Kartenrahmen: unter 640 px bis an den Rand (der Rand kommt von der Hülle `shell`, px-5; der einzige Aufrufer steht darin). */}
+        <div className="-mx-5 overflow-hidden bg-area-soft/40 sm:mx-0 sm:rounded-lg">
           {/* Unter 640 px die schmale Fassung mit größerer Schrift, darüber die breite (Muster zylinder-mass-live). */}
           <div key={system}>
             <div className="sm:hidden">
@@ -199,29 +187,16 @@ export function SchliessplanInteraktiv({
         <div className="grid gap-5">
           <fieldset className="min-w-0">
             <legend className="font-mono text-caption uppercase tracking-label text-foreground-muted">Schlüssel wählen</legend>
-            <div className="mt-3 grid gap-2" style={rasterStil}>
+            <div className="mt-3 flex flex-wrap gap-2">
               {schluessel.map((s) => schluesselChip(s))}
             </div>
           </fieldset>
 
           <fieldset className="min-w-0">
             <legend className="font-mono text-caption uppercase tracking-label text-foreground-muted">Tür wählen</legend>
-            {ausrichtung && eigeneReihe && (
-              <div className="mt-3 grid gap-2" style={rasterStil}>
-                {ausrichtung.map((t, index) =>
-                  t === null ? (
-                    <span key={`leer-${schluessel[index].kennung}`} aria-hidden="true" />
-                  ) : (
-                    tuerChip(t, true)
-                  ),
-                )}
-              </div>
-            )}
-            {uebrige.length > 0 && (
-              <div className={cn('flex flex-wrap gap-2', eigeneReihe ? 'mt-2' : 'mt-3')}>
-                {uebrige.map((t) => tuerChip(t, false))}
-              </div>
-            )}
+            <div className="mt-3 flex flex-wrap gap-2">
+              {tuerListe.map((t) => tuerChip(t))}
+            </div>
           </fieldset>
         </div>
 

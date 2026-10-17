@@ -27,7 +27,7 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
-import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
+import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
 
 export interface KasseFormularProps {
@@ -316,7 +316,7 @@ export function KasseFormular({
 
   if (abgeschlossen) {
     return (
-      <Card>
+      <Card className="lg:col-span-8" data-leerzustand>
         <CardBody>
           <p className="text-body text-foreground-muted" role="status">
             Ihre Bestellung wurde aufgenommen. Sie werden zur Bestätigung weitergeleitet.
@@ -328,37 +328,35 @@ export function KasseFormular({
 
   if (!geladen) {
     return (
-      <>
-        {/* Die Einleitung steht schon vor dem Laden, damit sie nach dem Laden nicht springt. */}
-        <p className="max-w-measure text-body text-foreground-muted">
-          Bitte geben Sie Ihre Kontakt- und Lieferdaten an. Danach sehen Sie die vollständige Bestellübersicht.
-        </p>
-        {/* Gleiche Mindesthöhe wie der Leerzustand: Nach dem Laden springt nichts (CLS). */}
-        <Card className="min-h-60 sm:min-h-44">
-          <CardBody>
-            <p className="text-body text-foreground-muted" role="status">
-              Bestelldaten werden geladen.
-            </p>
-          </CardBody>
-        </Card>
-      </>
+      /* Gleiche Mindesthöhe wie der Leerzustand: Nach dem Laden springt nichts (CLS). */
+      <Card className="min-h-96 sm:min-h-64 lg:col-span-8" data-leerzustand>
+        <CardBody>
+          <p className="text-body text-foreground-muted" role="status">
+            Bestelldaten werden geladen.
+          </p>
+        </CardBody>
+      </Card>
     );
   }
 
   if (positionen.length === 0) {
     return (
-      <Card className="min-h-60 sm:min-h-44">
-        <CardBody className="max-w-xl">
-          <IconWarenkorb size={48} className="text-primary" />
-          <h2 className="mt-4 text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
-          <p className="mt-2 text-small text-foreground-muted">
-            Ohne Positionen lässt sich keine Bestellung abschließen.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/schluessel-nach-code">Schlüssel nach Code</ButtonLink>
-            <ButtonLink href="/gleichschliessende-zylinder" variant="outline">
-              Gleichschließende Zylinder
-            </ButtonLink>
+      <Card className="flex min-h-96 flex-col justify-center sm:min-h-64 lg:col-span-8" data-leerzustand>
+        <CardBody className="flex flex-col gap-6 sm:flex-row sm:items-center">
+          <div aria-hidden="true" className="sm24-ruhig w-40 shrink-0">
+            <SchluesselGrafik params={{ typ: 'zylinder', rohling: true }} title="" />
+          </div>
+          <div className="min-w-0 max-w-xl">
+            <h2 className="text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
+            <p className="mt-2 text-small text-foreground-muted">
+              Ohne Positionen lässt sich keine Bestellung abschließen.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <ButtonLink href="/schluessel-nach-code">Schlüssel nach Code</ButtonLink>
+              <ButtonLink href="/gleichschliessende-zylinder" variant="outline">
+                Gleichschließende Zylinder
+              </ButtonLink>
+            </div>
           </div>
         </CardBody>
       </Card>
@@ -366,11 +364,7 @@ export function KasseFormular({
   }
 
   return (
-    <form onSubmit={absenden} noValidate className="grid gap-6 lg:grid-cols-12 lg:items-start lg:gap-gutter">
-      <p className="max-w-measure text-body text-foreground-muted lg:col-span-12">
-        Bitte geben Sie Ihre Kontakt- und Lieferdaten an. Danach sehen Sie die vollständige Bestellübersicht.
-      </p>
-
+    <form onSubmit={absenden} noValidate className="grid gap-6 lg:grid-cols-12 lg:items-start lg:gap-gutter lg:col-span-12">
       <div className="space-y-10 lg:col-span-7">
         {!paymentConfigured && (
           <Alert tone="warning" title="Zahlung derzeit nicht online möglich">
@@ -391,7 +385,7 @@ export function KasseFormular({
             />
           </summary>
           <div className="sm24-fade border-t border-border px-4 py-4 [--sm24-duration:var(--dauer-quick)]">
-            <SummaryList sections={uebersicht} variante="schriftfeld" hervorheben="Gesamtbetrag" leer="Noch nicht ausgefüllt" />
+            <SummaryList dicht sections={uebersicht} variante="schriftfeld" hervorheben="Gesamtbetrag" leer="Noch nicht ausgefüllt" />
           </div>
         </details>
 
@@ -399,7 +393,7 @@ export function KasseFormular({
 
         <section className="border-t border-border pt-8">
           <header>
-            <p className="eyebrow"><span className="tabular-nums text-foreground-muted">01</span></p>
+            <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" /></p>
             <h2 className="mt-1 text-title font-semibold text-foreground">Kontaktdaten</h2>
           </header>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -508,7 +502,7 @@ export function KasseFormular({
 
         <section className="border-t border-border pt-8">
           <header>
-            <p className="eyebrow"><span className="tabular-nums text-foreground-muted">02</span></p>
+            <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" /></p>
             <h2 className="mt-1 text-title font-semibold text-foreground">Lieferanschrift</h2>
           </header>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -585,7 +579,7 @@ export function KasseFormular({
 
         <section className="border-t border-border pt-8">
           <header>
-            <p className="eyebrow"><span className="tabular-nums text-foreground-muted">03</span></p>
+            <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" /></p>
             <h2 className="mt-1 text-title font-semibold text-foreground">Erforderliche Bestätigungen</h2>
           </header>
           <div className="mt-6 space-y-3">
@@ -661,7 +655,7 @@ export function KasseFormular({
         <h2 className="text-title-sm font-semibold text-foreground">Bestellübersicht</h2>
 
         {/* Schriftfeld mit Haarlinien: Zahlen in Mono, Gesamtsumme groß */}
-        <SummaryList sections={uebersicht} variante="schriftfeld" hervorheben="Gesamtbetrag" leer="Noch nicht ausgefüllt" />
+        <SummaryList dicht sections={uebersicht} variante="schriftfeld" hervorheben="Gesamtbetrag" leer="Noch nicht ausgefüllt" />
 
         {!versandart && (
           <Alert tone="warning" title="Versandart fehlt">

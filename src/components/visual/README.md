@@ -170,8 +170,9 @@ Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende, maßstäblic
 | `tuer` | Kennung einer Tür: `t1`…`t8`, Zentraltüren `z1` · `z2` | ohne Markierung |
 | `reserve` | 0–2 freie Plätze (gestrichelter ES mit Tür, Beschriftung „frei“; nur `haupt` und `generalhaupt`, an der letzten Gruppe); nicht wählbar | `0` |
 | `format` | `breit` · `schmal` (360 Einheiten breit, Schrift 12, Kürzel ohne Symbol; nie verkleinert) | `breit` |
+| `nummern` | `true` · `false` (auch `'true'`, `'ja'`): Türnummer 1–8 in Mono unter jeder Tür, nicht an Zentral- und Reservetüren | `false` |
 
-- `markiert` hat Vorrang vor `tuer`. Unbekannte Kennungen bleiben ohne Wirkung.
+- `markiert` hat Vorrang vor `tuer`. Unbekannte Kennungen bleiben ohne Wirkung. `nummern` steht hier für Türnummern; bei `tuer-schutz` bedeutet derselbe Name Marken und Legende.
 - Markierter Schlüssel: dieser Schlüssel, die Türen, die er schließt, und die Kanten seines Weges
   sind hervorgehoben, alles andere ist gedämpft. Markierte Tür: diese Tür, alle Schlüssel, die sie öffnen,
   und die Kanten dazwischen.

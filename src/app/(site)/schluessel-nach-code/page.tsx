@@ -4,16 +4,20 @@ import Link from 'next/link';
 import { getCodeLines, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
-import { Alert } from '@/components/ui/alert';
+import { ausschnittStil } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { BereichIcon } from '@/components/visual/bereich-icon';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { IconGleichschliessendeZylinder } from '@/components/visual/icons/gleichschliessende-zylinder';
 import { IconSicherungskarte } from '@/components/visual/icons/sicherungskarte';
 import { IconSchluesselNachVorlage } from '@/components/visual/icons/schluessel-nach-vorlage';
 import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
-import { CodeFundstelleGrafik } from '@/components/visual/generators/code-fundstelle';
+import {
+  CODE_FUNDSTELLE_AUSSCHNITT,
+  CodeFundstelleGrafik,
+} from '@/components/visual/generators/code-fundstelle';
 
 import { ShopListe } from './shop-liste';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -98,33 +102,38 @@ export default async function SchluesselNachCodePage() {
         crumbs={[{ href: '/schluessel-nach-code', label: 'Schlüssel nach Code' }]}
         bereich="schluessel-nach-code"
         visual={
-          /* Blickfang im Kopf (E4-L-23): die Fundstelle auf Papier, ohne Kartenrahmen */
-          <div className="grid gap-4">
-            <div>
-              <p className="eyebrow">Codefundstelle</p>
-              <h2 className="mt-3 text-title-sm font-semibold text-foreground">Wo steht der Code?</h2>
-            </div>
-            <CodeFundstelleGrafik params={{ ort: 'schluesselkopf' }} title="" className="w-full" />
+          /* Blickfang im Kopf (E4-L-23): die Fundstelle allein auf Papier, ohne zweite Kopfzeile;
+             der Wortlaut steht im Alternativtext (E6-BEFUND2-H05, U10). */
+          <div className="sm24-ausschnitt overflow-hidden" style={ausschnittStil(CODE_FUNDSTELLE_AUSSCHNITT)}>
+            <CodeFundstelleGrafik
+              params={{ ort: 'schluesselkopf', beschriftung: true }}
+              title="Wo steht der Code? Schlüsselnummer auf dem Schlüsselkopf"
+            />
           </div>
         }
       >
-        <Alert tone="info" title="Ihr Originalschlüssel bleibt bei Ihnen">
-          <p>
-            Bei allen Artikeln in diesem Bereich ist <strong>keine Einsendung des
-            Originalschlüssels</strong> nötig. Wir fertigen den Schlüssel allein anhand des Codes,
-            den Sie bei der Bestellung angeben. Sie können Ihr Schloss also weiter benutzen,
-            während der Nachschlüssel entsteht.
-          </p>
-          <p className="mt-2">
-            Kein Code vorhanden?{' '}
-            <Link
-              href="/schluessel-nach-vorlage"
-              className="font-semibold text-primary hover:underline"
-            >
-              Dann geht es über Schlüssel nach Vorlage weiter.
-            </Link>
-          </p>
-        </Alert>
+        {/* Hinweis als Zeile mit Glyphe, ohne Rahmen und Fettung (K-006, E6-BEFUND2-H05, U2) */}
+        <div role="note" className="flex max-w-measure items-start gap-3 text-small leading-relaxed text-foreground-muted">
+          <GlyphInfo size={18} className="mt-0.5 shrink-0 text-foreground-muted" />
+          <div className="min-w-0">
+            <p className="text-foreground">Ihr Originalschlüssel bleibt bei Ihnen</p>
+            <p className="mt-2">
+              Bei allen Artikeln in diesem Bereich ist keine Einsendung des
+              Originalschlüssels nötig. Wir fertigen den Schlüssel allein anhand des Codes,
+              den Sie bei der Bestellung angeben. Sie können Ihr Schloss also weiter benutzen,
+              während der Nachschlüssel entsteht.
+            </p>
+            <p className="mt-2">
+              Kein Code vorhanden?{' '}
+              <Link
+                href="/schluessel-nach-vorlage"
+                className="font-semibold text-primary hover:underline"
+              >
+                Dann geht es über Schlüssel nach Vorlage weiter.
+              </Link>
+            </p>
+          </div>
+        </div>
       </PageHeader>
 
       <Section tight labelledBy="trefferliste-titel">

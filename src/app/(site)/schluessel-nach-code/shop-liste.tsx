@@ -15,7 +15,9 @@ import { Field } from '@/components/forms/field';
 import { Select, TextInput } from '@/components/forms/controls';
 import { GlyphFilter } from '@/components/visual/glyphen/filter';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
 import { GlyphZuruecksetzen } from '@/components/visual/glyphen/zuruecksetzen';
+import { motionStyle } from '@/components/visual/motion/motion-style';
 
 /** Sammelwert „keine Einschränkung“ in den Auswahlfeldern. */
 const ALL = 'alle';
@@ -53,21 +55,42 @@ interface Gruppe {
   schluessel: string;
   /** Augenbraue, etwa „MS · Möbel- und Büroschloss“. */
   kopf: string;
+  /** Kürzel der Familie (Präfix der Kennung), für die Sprungleiste und die Anker. */
+  kuerzel: string;
+  /** Anwendung ohne Zusatz, nur als Lesetext der Sprungleiste. */
+  anwendung: string;
   /** Schlüsseltyp der Gruppe, nur wenn alle Zeilen denselben haben. */
   schluesseltyp?: string;
+  /** Staffelmenge der Gruppe, nur wenn jede Zeile dieselbe hat. Reine Anzeige. */
+  staffelAb?: number;
   lines: CodeLine[];
+}
+
+/** Die Staffelmenge, wenn jede Zeile dieselbe `minQty` hat; sonst `undefined`. */
+function einheitlicheStaffel(lines: CodeLine[]): number | undefined {
+  const mengen = new Set(lines.map((line) => line.bulkPrices?.[0]?.minQty));
+  return mengen.size === 1 ? [...mengen][0] : undefined;
 }
 
 /** Gruppiert die Treffer nach Anwendungsfamilie; die Reihenfolge bleibt die der Daten. */
 function gruppenVon(lines: CodeLine[]): Gruppe[] {
-  const gruppen = new Map<string, { kopf: string; typen: Set<string>; lines: CodeLine[] }>();
+  const gruppen = new Map<
+    string,
+    { kopf: string; kuerzel: string; anwendung: string; typen: Set<string>; lines: CodeLine[] }
+  >();
   for (const line of lines) {
     const schluessel = familyOf(line);
     let gruppe = gruppen.get(schluessel);
     if (!gruppe) {
       const praefix = codelinienKennung(line).split('-')[0];
       const anwendung = line.application.split(':')[0].trim();
-      gruppe = { kopf: `${praefix} · ${anwendung}`, typen: new Set<string>(), lines: [] };
+      gruppe = {
+        kopf: `${praefix} · ${anwendung}`,
+        kuerzel: praefix,
+        anwendung,
+        typen: new Set<string>(),
+        lines: [],
+      };
       gruppen.set(schluessel, gruppe);
     }
     gruppe.typen.add(line.keyType);
@@ -76,7 +99,10 @@ function gruppenVon(lines: CodeLine[]): Gruppe[] {
   return [...gruppen].map(([schluessel, gruppe]) => ({
     schluessel,
     kopf: gruppe.kopf,
+    kuerzel: gruppe.kuerzel,
+    anwendung: gruppe.anwendung,
     schluesseltyp: gruppe.typen.size === 1 ? [...gruppe.typen][0] : undefined,
+    staffelAb: einheitlicheStaffel(gruppe.lines),
     lines: gruppe.lines,
   }));
 }
@@ -184,8 +210,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
         {/* Zähler und Filter-Knopf in einer Zeile; der Knopf nur am Smartphone */}
         <div className="mt-4 flex items-center justify-between gap-3">
           <p className="whitespace-nowrap font-mono text-small tabular-nums text-foreground-muted" aria-live="polite">
-            <strong className="font-bold text-foreground">{results.length}</strong>
-            {results.length === 1 ? ' Codelinie' : ' Codelinien'} von {lines.length}
+            <strong className="font-bold text-foreground">{results.length}</strong> von {lines.length} {lines.length === 1 ? 'Codelinie' : 'Codelinien'}
           </p>
 
           <Button
@@ -287,82 +312,134 @@ export function ShopListe({ lines, className }: ShopListeProps) {
         )}
       </form>
 
-      {/* Trefferliste: dichte Zeilen je Anwendungsfamilie */}
+      {/* Trefferliste: Sprungleiste der Familien, darunter dichte Zeilen je Anwendungsfamilie */}
       {results.length > 0 ? (
-        <div className="grid gap-12">
-          {gruppen.map((gruppe, gruppenIndex) => {
-            const offen = aufgeklappt.has(gruppe.schluessel);
-            const listenId = `${id}-gruppe-${gruppenIndex}`;
-            return (
-              <section key={gruppe.schluessel} aria-labelledby={`${listenId}-titel`}>
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h3 id={`${listenId}-titel`} className="eyebrow">
-                    {gruppe.kopf}
-                  </h3>
-                  {gruppe.schluesseltyp && (
-                    <p className="font-mono text-caption text-foreground-muted">{gruppe.schluesseltyp}</p>
-                  )}
-                </div>
+        <div>
+          {gruppen.length > 1 && (
+            <nav
+              aria-label="Anwendungsfamilien"
+              className="sticky top-header z-sticky -mx-5 mb-8 border-b border-border bg-background sm:-mx-6 md:mx-0"
+            >
+              <ul className="flex snap-x gap-1 overflow-x-auto px-5 py-1 scroll-px-5 sm:px-6 sm:scroll-px-6 md:flex-wrap md:overflow-visible md:px-0 md:scroll-px-0">
+                {gruppen.map((gruppe) => (
+                  <li key={gruppe.schluessel} className="shrink-0 snap-start">
+                    <a
+                      href={`#familie-${gruppe.kuerzel.toLowerCase()}`}
+                      className="inline-flex min-h-touch min-w-touch items-center justify-center px-2 font-mono text-small font-semibold text-foreground-muted transition-colors duration-quick ease-standard hover:text-primary"
+                    >
+                      {gruppe.kuerzel}
+                      <span className="sr-only"> · {gruppe.anwendung}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
 
-                <ul id={listenId} className="mt-4 border-t border-border">
-                  {gruppe.lines.map((line, zeile) => {
-                    const staffel = line.bulkPrices?.[0];
-                    return (
-                      <li
-                        key={line.id}
-                        className={cn(
-                          'border-b border-border',
-                          zeile >= VORSCHAU && !offen && 'hidden md:block',
-                        )}
-                      >
-                        <Link
-                          href={`/schluessel-nach-code/${line.slug}`}
-                          className="group grid min-h-touch-lg grid-cols-12 items-center gap-x-3 gap-y-1 py-4 transition-colors duration-quick ease-standard md:gap-x-6"
+          <div className="grid gap-12">
+            {gruppen.map((gruppe, gruppenIndex) => {
+              const offen = aufgeklappt.has(gruppe.schluessel);
+              const listenId = `${id}-gruppe-${gruppenIndex}`;
+              return (
+                <section
+                  key={gruppe.schluessel}
+                  id={`familie-${gruppe.kuerzel.toLowerCase()}`}
+                  className="scroll-mt-14"
+                  aria-labelledby={`${listenId}-titel`}
+                >
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <h3 id={`${listenId}-titel`} className="eyebrow">
+                      {gruppe.kopf}
+                    </h3>
+                    <p className="font-mono text-caption text-foreground-muted">
+                      {gruppe.schluesseltyp && <>{gruppe.schluesseltyp} · </>}
+                      <span className="whitespace-nowrap">Preis je Stück</span>
+                      {gruppe.staffelAb !== undefined && (
+                        <>
+                          {' · '}
+                          <span className="whitespace-nowrap">Staffelpreis ab {gruppe.staffelAb}{'\u00a0'}Stück</span>
+                        </>
+                      )}
+                    </p>
+                  </div>
+
+                  <ul id={listenId} className="mt-4 border-t border-border">
+                    {gruppe.lines.map((line, zeile) => {
+                      const staffel = line.bulkPrices?.[0];
+                      const aufgeklappteZeile = zeile >= VORSCHAU && offen;
+                      return (
+                        <li
+                          key={line.id}
+                          className={cn(
+                            'border-b border-border',
+                            zeile >= VORSCHAU && !offen && 'hidden md:block',
+                            aufgeklappteZeile && 'sm24-fade',
+                          )}
+                          style={aufgeklappteZeile ? motionStyle(0, 0.18) : undefined}
                         >
-                          <span className="col-span-2 font-mono text-small font-semibold tabular-nums text-foreground">
-                            {codelinienKennung(line)}
-                          </span>
-                          <span className="col-span-9 text-balance text-body font-semibold leading-snug text-foreground transition-colors duration-quick ease-standard group-hover:text-primary md:col-span-3">
-                            {titelOf(line)}
-                          </span>
-                          <GlyphPfeilRechts
-                            size={16}
-                            className="col-span-1 row-span-2 justify-self-end text-foreground-subtle transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary md:order-last md:row-span-1"
-                          />
-                          <span className="col-span-9 col-start-3 font-mono text-small text-foreground-muted md:col-span-3 md:col-start-auto lg:col-span-4">
-                            {line.codeFormatLabel}
-                          </span>
-                          <span className="col-span-9 col-start-3 flex flex-wrap items-baseline gap-x-3 md:col-span-3 md:col-start-auto md:block md:text-right lg:col-span-2">
-                            <span className="block font-mono text-body font-semibold tabular-nums text-foreground">
-                              {formatCents(line.priceCents)}
+                          <Link
+                            href={`/schluessel-nach-code/${line.slug}`}
+                            className="group grid min-h-touch-lg grid-cols-12 items-center gap-x-3 gap-y-1 py-4 transition-colors duration-quick ease-standard md:gap-x-6"
+                          >
+                            <span className="col-span-2 whitespace-nowrap font-mono text-small font-semibold tabular-nums text-foreground lg:col-span-1">
+                              {codelinienKennung(line)}
                             </span>
-                            <span className="block text-caption text-foreground-muted">je Stück</span>
-                            {staffel && (
-                              <span className="block whitespace-nowrap text-caption text-foreground-muted">
-                                Staffelpreis ab {staffel.minQty} Stück
+                            <span className="col-span-9 text-balance text-body font-semibold leading-snug text-foreground transition-colors duration-quick ease-standard group-hover:text-primary md:col-span-4">
+                              {titelOf(line)}
+                            </span>
+                            <GlyphPfeilRechts
+                              size={16}
+                              className="col-span-1 row-span-2 justify-self-end text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary md:order-last md:row-span-1"
+                            />
+                            <span className="col-span-9 col-start-3 font-mono text-small text-foreground-muted md:col-span-3 md:col-start-auto lg:col-span-4">
+                              {line.codeFormatLabel}
+                            </span>
+                            <span className="col-span-9 col-start-3 md:col-span-2 md:col-start-auto md:text-right">
+                              <span className="whitespace-nowrap font-mono text-body font-semibold tabular-nums text-foreground">
+                                {formatCents(line.priceCents)}
                               </span>
-                            )}
-                          </span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
+                              {gruppe.staffelAb === undefined && staffel && (
+                                <span className="block whitespace-nowrap text-caption text-foreground-muted">
+                                  Staffelpreis ab {staffel.minQty}{'\u00a0'}Stück
+                                </span>
+                              )}
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
 
-                {gruppe.lines.length > VORSCHAU && (
-                  <button
-                    type="button"
-                    aria-expanded={offen}
-                    aria-controls={listenId}
-                    onClick={() => alleZeigen(gruppe.schluessel)}
-                    className="mt-3 inline-flex min-h-touch items-center font-semibold text-small text-primary hover:underline md:hidden"
-                  >
-                    {offen ? 'Weniger anzeigen' : `Alle ${gruppe.lines.length} anzeigen`}
-                  </button>
-                )}
-              </section>
-            );
-          })}
+                  {gruppe.lines.length > VORSCHAU && (
+                    <button
+                      type="button"
+                      aria-expanded={offen}
+                      aria-controls={listenId}
+                      onClick={() => alleZeigen(gruppe.schluessel)}
+                      className="flex min-h-touch w-full items-center justify-between gap-3 border-b border-border text-small font-semibold text-primary md:hidden"
+                    >
+                      <span className="min-w-0">
+                        {offen ? (
+                          'Weniger anzeigen'
+                        ) : (
+                          <>
+                            Alle <span className="font-mono tabular-nums">{gruppe.lines.length}</span> anzeigen
+                          </>
+                        )}
+                      </span>
+                      <GlyphWinkelUnten
+                        size={16}
+                        className={cn(
+                          'shrink-0 transition-transform duration-base ease-standard',
+                          offen && 'rotate-180',
+                        )}
+                      />
+                    </button>
+                  )}
+                </section>
+              );
+            })}
+          </div>
         </div>
       ) : (
         <Card variant="muted">

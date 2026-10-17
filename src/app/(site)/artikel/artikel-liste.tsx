@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useMemo, useState } from 'react';
+import { useId, useMemo, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 
 import { artikelPfad, filterArtikel, preisAb, preisAbText, schlagworte } from '@/lib/artikel';
@@ -36,6 +36,8 @@ export type ListenArtikel = Pick<
 
 export interface ArtikelListeProps {
   articles: ListenArtikel[];
+  /** Beispielhinweis als Zeile mit Glyphe; steht nach dem Suchformular über der Liste. */
+  hinweis?: ReactNode;
   className?: string;
 }
 
@@ -44,8 +46,9 @@ export interface ArtikelListeProps {
  *
  * Filter erscheinen erst, wenn es etwas zu filtern gibt. Am Smartphone sind
  * die Schlagworte eingeklappt, damit die Liste gleich unter der Suche beginnt.
+ * Der Hinweis steht zwischen Zählerzeile und Liste, auch ohne Filterformular.
  */
-export function ArtikelListe({ articles, className }: ArtikelListeProps) {
+export function ArtikelListe({ articles, hinweis, className }: ArtikelListeProps) {
   const [suche, setSuche] = useState('');
   const [gewaehlt, setGewaehlt] = useState<string[]>([]);
   const [filterOffen, setFilterOffen] = useState(false);
@@ -148,22 +151,27 @@ export function ArtikelListe({ articles, className }: ArtikelListeProps) {
             </>
           )}
 
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="mt-4 flex min-h-touch flex-wrap items-center justify-between gap-3">
             <p className="font-mono text-small tabular-nums text-foreground-muted" aria-live="polite">
-              <strong className="font-bold text-foreground">{formatNumber(treffer.length)}</strong>
-              {' '}Artikel von {formatNumber(articles.length)}
+              <strong key={treffer.length} className="inline-block sm24-pop [--sm24-duration:var(--dauer-quick)] font-bold text-foreground">{formatNumber(treffer.length)}</strong>
+              {'\u00a0'}Artikel von {formatNumber(articles.length)}
             </p>
 
-            <Button type="button" variant="ghost" onClick={zuruecksetzen} disabled={aktiv === 0}>
-              <GlyphZuruecksetzen size={15} />
-              Filter zurücksetzen
-            </Button>
+            {/* „Filter zurücksetzen“ erscheint nur, wenn ein Filter aktiv ist */}
+            {aktiv > 0 && (
+              <Button type="button" variant="ghost" onClick={zuruecksetzen}>
+                <GlyphZuruecksetzen size={15} />
+                Filter zurücksetzen
+              </Button>
+            )}
           </div>
         </form>
       )}
 
+      {hinweis}
+
       {treffer.length > 0 ? (
-        <ul className="grid border-t border-border sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3">
+        <ul className="border-t border-border">
           {treffer.map((article) => (
             <li key={article.id} className="border-b border-border">
               <ArtikelKarte article={article} />
@@ -195,15 +203,14 @@ export function ArtikelListe({ articles, className }: ArtikelListeProps) {
 function ArtikelKarte({ article }: { article: ListenArtikel }) {
   // Beim Preis „ab“ steht dabei, ab welcher Menge er gilt und was ein Stück kostet.
   const preis = preisAb(article);
-  const einheit = article.example ? 'Beispielpreis je Stück' : 'je Stück';
 
-  // Eine Zeile der Liste: Vorschau, Name und Kurzangabe links, Preis rechts in Mono, Pfeil als Hinweis.
+  // Eine Zeile der Liste (Stückliste): Fach-Icon ohne Kachel, Name und Kurzangabe, Preis rechts mit „je Stück“, Pfeil als Hinweis.
   return (
     <Link
       href={artikelPfad(article.slug)}
-      className="group flex h-full items-center gap-4 py-4 transition-colors duration-quick ease-standard sm:gap-5 sm:py-5"
+      className="group flex items-center gap-4 py-4 transition-colors duration-quick ease-standard sm:gap-6 sm:py-5"
     >
-      <ImagePlaceholder slot={article.image} compact className="w-10 shrink-0" sizes="40px" />
+      <ImagePlaceholder slot={article.image} compact frei className="w-10 shrink-0" sizes="40px" />
 
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -213,23 +220,28 @@ function ArtikelKarte({ article }: { article: ListenArtikel }) {
           {article.example && <Badge tone="neutral">Beispiel</Badge>}
         </div>
 
-        <p className="mt-1 line-clamp-2 text-small leading-relaxed text-foreground-muted">
+        <p className="mt-1 line-clamp-2 max-w-measure text-small leading-relaxed text-foreground-muted md:line-clamp-3">
           {article.description}
         </p>
-        <p className="mt-1 text-caption text-foreground-muted">
-          {preis.ab
-            ? `${einheit} ab ${formatNumber(preis.abMenge)} Stück · einzeln ${formatCents(preis.einzelCents)}`
-            : einheit}
-        </p>
+        {/* Staffel nur bei Mengenpreisen; „je Stück“ steht bereits unter dem Preis. */}
+        {preis.ab && (
+          <p className="mt-1 text-caption text-foreground-muted">
+            ab {formatNumber(preis.abMenge)}{'\u00a0'}Stück · einzeln {formatCents(preis.einzelCents)}
+          </p>
+        )}
       </div>
 
-      <p className="shrink-0 whitespace-nowrap text-right font-mono text-body font-semibold tabular-nums text-foreground">
-        {preisAbText(article)}
+      {/* Preis rechts in Mono, darunter die Einheit (Muster Code-Shop) */}
+      <p className="shrink-0 text-right">
+        <span className="block whitespace-nowrap font-mono text-body font-semibold tabular-nums text-foreground">
+          {preisAbText(article)}
+        </span>
+        <span className="block text-caption text-foreground-muted">je Stück</span>
       </p>
 
       <GlyphPfeilRechts
         size={16}
-        className="shrink-0 text-foreground-subtle transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary"
+        className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
       />
     </Link>
   );

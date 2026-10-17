@@ -118,7 +118,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Mehrere Parteien, gemeinsame Türen, wechselnde Mieter. Eine Zentralschlossanlage (Z) '
       + 'trennt die Wohnungen und öffnet die gemeinsamen Zugänge für alle.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Objekt erfassen',
+    linkLabel: 'Projekt erfassen',
   },
   {
     icon: IconPruefung,
@@ -127,7 +127,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Schule, Verwaltung, Einrichtung mit Publikumsverkehr: viele Bereiche, klar getrennte '
       + 'Zuständigkeiten und ein nachvollziehbarer Schließplan.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Bedarf erfassen',
+    linkLabel: 'Projekt erfassen',
   },
   {
     icon: BereichsZeichen,
@@ -136,7 +136,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Verteilte Standorte oder eine größere Liegenschaft: Eine Generalhauptschlüsselanlage '
       + '(GHS) fasst mehrere Gebäude unter einer gemeinsamen Ebene zusammen.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Liegenschaft erfassen',
+    linkLabel: 'Projekt erfassen',
   },
 ];
 
@@ -266,19 +266,22 @@ export default async function SchliessanlagenPage() {
       />
 
       <PageHeader
-        eyebrow="Mechanische Schließanlagen"
+        eyebrow="Leistungsbereich"
+        bereich={ROUTE}
         title={page?.headline ?? 'Mechanische Schließanlagen'}
         lead={page?.subline ?? 'Von der Gleichschließung bis zur Generalhauptschlüsselanlage.'}
         crumbs={[{ href: '/schliessanlagen', label: 'Schließanlagen' }]}
-        /* Blickfang im Kopf (E4-L-23): der Schlüsselstapel, auf Papier ohne Rahmen. */
+        /* Blickfang im Kopf: der Schließplan in Stufe HS, ohne Auswahlknöpfe. */
         visual={
           <ImagePlaceholder
             slot={{
               motif: 'Werkstattfoto: Schließplan auf dem Tisch neben sortierten Profilzylindern',
-              ratio: '4/3',
+              ratio: '16/9',
               note: 'Echtes Foto aus dem eigenen Betrieb. Kein Stockfoto.',
-              visual: { generator: 'schluessel', params: { typ: 'zylinder', anzahl: 3 } },
+              visual: { generator: 'schliessplan', params: { system: 'haupt', tueren: 4 } },
             }}
+            /* Mobil 16/9 aus ratio (Paketvorgabe), ab sm 3/2. Die schmale Fassung 360 × 162 steht mittig; oben und unten bleibt ein freier Rand. */
+            className="sm:aspect-3/2"
             frei
           />
         }
@@ -311,7 +314,7 @@ export default async function SchliessanlagenPage() {
               danach wird gefertigt.
             </p>
 
-            <dl className="mt-6 border-y border-border py-4">
+            <dl className="mt-6">
               <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 {process.label}
               </dt>
@@ -338,7 +341,7 @@ export default async function SchliessanlagenPage() {
       </Section>
 
       {/* Die fünf Systeme einmal erzählt: der interaktive Plan mit den Texten als Reiterinhalt */}
-      <Section id="systeme" labelledBy="systeme-titel" tone="sunken">
+      <Section id="systeme" labelledBy="systeme-titel" tone="muted">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           <SectionHeading
             id="systeme-titel"
@@ -349,7 +352,7 @@ export default async function SchliessanlagenPage() {
             lead="Die vollständige Bezeichnung steht immer zuerst, die übliche Abkürzung folgt in Klammern. Vorwissen brauchen Sie nicht."
           />
           <div className="lg:col-span-7">
-            <SchliessplanInteraktiv anfang="haupt" tueren={4} gruppen={2} details={systemReiter()} />
+            <SchliessplanInteraktiv anfang="gleichschliessung" tueren={4} gruppen={2} details={systemReiter()} />
           </div>
         </div>
 
@@ -433,13 +436,24 @@ export default async function SchliessanlagenPage() {
                 Trotzdem Projekt erfassen
               </ButtonLink>
             </div>
+
+            <Alert tone="info" title="Woran Sie den Unterschied erkennen" className="mt-8">
+              Sobald jemand eine Tür nicht öffnen können soll — etwa ein Mieter die Wohnung nebenan
+              oder eine Aushilfe das Büro der Leitung — reicht eine Gleichschließung nicht mehr aus.
+              Dann planen wir eine Anlage mit Ebenen.
+            </Alert>
           </div>
 
-          <Alert tone="info" title="Woran Sie den Unterschied erkennen" className="lg:col-span-5">
-            Sobald jemand eine Tür nicht öffnen können soll — etwa ein Mieter die Wohnung nebenan
-            oder eine Aushilfe das Büro der Leitung — reicht eine Gleichschließung nicht mehr aus.
-            Dann planen wir eine Anlage mit Ebenen.
-          </Alert>
+          {/* Schemazeichnung der Gleichschließung: drei Schlüssel mit derselben Schließung. */}
+          <ImagePlaceholder
+            className="lg:col-span-5"
+            slot={{
+              motif: 'Schemazeichnung Gleichschließung: drei Schlüssel mit derselben Schließung',
+              ratio: '16/9',
+              visual: { generator: 'schluessel', params: { typ: 'zylinder', anzahl: 3 } },
+            }}
+            frei
+          />
         </div>
       </Section>
 
@@ -476,7 +490,7 @@ export default async function SchliessanlagenPage() {
                   </span>
                   <GlyphPfeilRechts
                     size={18}
-                    className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-hover:translate-x-1 group-hover:text-primary"
+                    className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
                   />
                 </Link>
               </li>
