@@ -6,6 +6,7 @@ import type { TimeSlot } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import { formatDate, formatDuration } from '@/lib/format';
 import { Alert } from '@/components/ui/alert';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphKalender } from '@/components/visual/glyphen/kalender';
 import { GlyphLaden } from '@/components/visual/glyphen/laden';
 
@@ -78,29 +79,6 @@ export function TerminAuswahl({
 
   return (
     <div className="space-y-5">
-      <Alert tone="info" title={`Frühester Termin nach etwa ${leadTimeDays} Tagen`}>
-        <p>
-          Der Vorlauf entsteht durch die Prüfung Ihrer Unterlagen und die Beschaffung des passenden
-          Rohlings beziehungsweise Schlüsselgehäuses. Deshalb bieten wir erst Termine ab diesem
-          Zeitpunkt an. Jeder Termin ist mit{' '}
-          <span className="font-mono tabular-nums">{formatDuration(slotMinutes)}</span> eingeplant.
-        </p>
-      </Alert>
-
-      {requiresVehicleOnSite && (
-        <Alert tone="warning" title="Dieser Termin findet mit Fahrzeug statt">
-          <p>
-            Für Ihre Kombination aus Modell und Leistung muss das Fahrzeug beim Termin verfügbar
-            sein — elektronische Schlüssel werden direkt am Fahrzeug angelernt. Ihr Vorgang wird
-            deshalb als Vor-Ort-Termin mit Fahrzeug angelegt.
-          </p>
-          <p className="mt-2">
-            Wo der Termin stattfindet, stimmen wir nach der Prüfung Ihrer Unterlagen mit Ihnen ab und
-            bestätigen es Ihnen zusammen mit dem Preis.
-          </p>
-        </Alert>
-      )}
-
       {staleSelection && !loading && (
         <Alert tone="warning" title="Bitte Termin erneut wählen">
           <p>
@@ -214,6 +192,35 @@ export function TerminAuswahl({
           </div>
         </section>
       )}
+
+      {requiresVehicleOnSite && (
+        <Alert tone="warning" title="Dieser Termin findet mit Fahrzeug statt">
+          <p>
+            Für Ihre Kombination aus Modell und Leistung muss das Fahrzeug beim Termin verfügbar
+            sein — elektronische Schlüssel werden direkt am Fahrzeug angelernt. Ihr Vorgang wird
+            deshalb als Vor-Ort-Termin mit Fahrzeug angelegt.
+          </p>
+          <p className="mt-2">
+            Wo der Termin stattfindet, stimmen wir nach der Prüfung Ihrer Unterlagen mit Ihnen ab und
+            bestätigen es Ihnen zusammen mit dem Preis.
+          </p>
+        </Alert>
+      )}
+
+      <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">
+        <GlyphInfo size={16} className="mt-0.5 shrink-0" />
+        <div className="min-w-0">
+          <p className="font-semibold text-foreground">
+            Frühester Termin nach etwa <span className="font-mono tabular-nums">{`${leadTimeDays}\xa0Tagen`}</span>
+          </p>
+          <p className="mt-1">
+            Der Vorlauf entsteht durch die Prüfung Ihrer Unterlagen und die Beschaffung des passenden
+            Rohlings beziehungsweise Schlüsselgehäuses. Deshalb bieten wir erst Termine ab diesem
+            Zeitpunkt an. Jeder Termin ist mit{' '}
+            <span className="font-mono tabular-nums">{formatDuration(slotMinutes)}</span> eingeplant.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

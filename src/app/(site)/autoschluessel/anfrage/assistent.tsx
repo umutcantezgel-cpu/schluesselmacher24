@@ -36,8 +36,10 @@ import {
 import { PreisAnzeige } from '@/components/autoschluessel/preis-anzeige';
 import { TerminAuswahl } from '@/components/autoschluessel/termin-auswahl';
 import { Bestaetigung } from '@/components/autoschluessel/bestaetigung';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphLaden } from '@/components/visual/glyphen/laden';
 import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
+import { GlyphWaage } from '@/components/visual/glyphen/waage';
 import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
 
 /* ==========================================================================
@@ -837,6 +839,7 @@ export function Assistent({
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHint(flow.step.id)}
+      raster="seite"
     >
       {submitError && (
         <Alert tone="warning" title="Absenden nicht möglich" className="mb-5">
@@ -846,7 +849,7 @@ export function Assistent({
 
       {/* 1 — Marke */}
       {flow.step.id === 'marke' && (
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
           {makes.map((entry) => (
             <OptionCard
               key={entry.id}
@@ -855,7 +858,7 @@ export function Assistent({
               checked={data.makeSlug === entry.slug}
               onSelect={selectMake}
               title={entry.name}
-              description={<><span className="font-mono tabular-nums">{entry.models.length}</span> Modelle hinterlegt</>}
+              description={<span className="whitespace-nowrap font-mono tabular-nums">{entry.models.length} Modelle</span>}
             />
           ))}
         </div>
@@ -915,7 +918,7 @@ export function Assistent({
       {flow.step.id === 'baujahr' && (
         <div className="grid gap-4 sm:grid-cols-2">
           <Field
-            label="Baujahr beziehungsweise Jahr der Erstzulassung"
+            label="Jahr"
             required
             info={{
               title: 'Wo Sie das Jahr finden',
@@ -1036,7 +1039,7 @@ export function Assistent({
               Sie uns Ihren Fall über die allgemeine Anfrage.
             </Alert>
           )}
-          <div className="grid gap-2">
+          <div className="grid gap-2 sm:grid-cols-2">
             {keyKinds.map((kind) => (
               <OptionCard
                 key={kind}
@@ -1047,6 +1050,7 @@ export function Assistent({
                 title={KEY_KIND_OPTIONS[kind].label}
                 description={KEY_KIND_OPTIONS[kind].description}
                 info={KEY_KIND_OPTIONS[kind].info}
+                bildLage="oben"
                 bild={<SchluesselartZeichnung art={kind} />}
               />
             ))}
@@ -1295,41 +1299,43 @@ export function Assistent({
               )}
             </Field>
 
-            <Field
-              label="Postleitzahl"
-              required
-              error={
-                data.postalCode.trim() !== '' && !POSTAL_PATTERN.test(data.postalCode.trim())
-                  ? 'Bitte geben Sie eine gültige Postleitzahl ein.'
-                  : undefined
-              }
-            >
-              {({ id, describedBy, invalid }) => (
-                <TextInput
-                  id={id}
-                  aria-describedby={describedBy}
-                  invalid={invalid}
-                  value={data.postalCode}
-                  onChange={(event) => flow.set('postalCode', event.target.value)}
-                  autoComplete="postal-code"
-                  inputMode="numeric"
-                  maxLength={5}
-                />
-              )}
-            </Field>
+            <div className="grid grid-cols-3 gap-4 sm:col-span-2">
+              <Field
+                label="Postleitzahl"
+                required
+                error={
+                  data.postalCode.trim() !== '' && !POSTAL_PATTERN.test(data.postalCode.trim())
+                    ? 'Bitte geben Sie eine gültige Postleitzahl ein.'
+                    : undefined
+                }
+              >
+                {({ id, describedBy, invalid }) => (
+                  <TextInput
+                    id={id}
+                    aria-describedby={describedBy}
+                    invalid={invalid}
+                    value={data.postalCode}
+                    onChange={(event) => flow.set('postalCode', event.target.value)}
+                    autoComplete="postal-code"
+                    inputMode="numeric"
+                    maxLength={5}
+                  />
+                )}
+              </Field>
 
-            <Field label="Ort" required>
-              {({ id, describedBy, invalid }) => (
-                <TextInput
-                  id={id}
-                  aria-describedby={describedBy}
-                  invalid={invalid}
-                  value={data.city}
-                  onChange={(event) => flow.set('city', event.target.value)}
-                  autoComplete="address-level2"
-                />
-              )}
-            </Field>
+              <Field label="Ort" required className="col-span-2">
+                {({ id, describedBy, invalid }) => (
+                  <TextInput
+                    id={id}
+                    aria-describedby={describedBy}
+                    invalid={invalid}
+                    value={data.city}
+                    onChange={(event) => flow.set('city', event.target.value)}
+                    autoComplete="address-level2"
+                  />
+                )}
+              </Field>
+            </div>
 
             <Field
               label="Land"
@@ -1393,10 +1399,11 @@ export function Assistent({
 
           {!quoteLoading && !quoteError && quote && (
             <>
-              <Card variant="muted">
-                <CardBody>
-                  <p className="text-small leading-relaxed text-foreground-muted">
-                    Grundlage: {make?.name} {modelName}, Baujahr <span className="font-mono tabular-nums">{data.year}</span>,{' '}
+              <Card variant="outline" className="rounded-none border-x-0">
+                <CardBody className="px-0 md:px-0">
+                  <p className="text-small leading-relaxed text-foreground">
+                    <span className="mb-1 block font-mono text-caption uppercase tracking-label text-foreground-muted">Grundlage</span>
+                    {make?.name} {modelName}, Baujahr <span className="font-mono tabular-nums">{data.year}</span>,{' '}
                     {data.keyKind ? KEY_KIND_OPTIONS[data.keyKind as KeyKind].label : ''},{' '}
                     {service?.label}.
                   </p>
@@ -1405,13 +1412,17 @@ export function Assistent({
 
               <PreisAnzeige quote={quote} />
 
-              <Alert tone="legal" title="Prüfung vor der Ausführung">
-                <p>
-                  Bevor wir arbeiten, sehen wir uns Ihre Fotos und die Zulassungsbescheinigung an.
-                  Ergibt sich daraus ein anderer Fall als hier angenommen, melden wir uns mit dem
-                  angepassten Preis. Sie entscheiden dann, ob der Termin bestehen bleibt.
-                </p>
-              </Alert>
+              <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">
+                <GlyphWaage size={16} className="mt-0.5 shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-semibold text-foreground">Prüfung vor der Ausführung</p>
+                  <p className="mt-1">
+                    Bevor wir arbeiten, sehen wir uns Ihre Fotos und die Zulassungsbescheinigung an.
+                    Ergibt sich daraus ein anderer Fall als hier angenommen, melden wir uns mit dem
+                    angepassten Preis. Sie entscheiden dann, ob der Termin bestehen bleibt.
+                  </p>
+                </div>
+              </div>
             </>
           )}
         </div>
@@ -1466,13 +1477,17 @@ export function Assistent({
             )}
           </div>
 
-          <Alert tone="info" title="Wofür die Anzahlung steht">
-            <p>
-              Mit der Anzahlung reservieren wir Ihnen ein festes Zeitfenster und beginnen mit der
-              Beschaffung des passenden Rohlings beziehungsweise Gehäuses. Dadurch entsteht uns
-              Aufwand, bevor Sie in der Werkstatt sind.
-            </p>
-          </Alert>
+          <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">
+            <GlyphInfo size={16} className="mt-0.5 shrink-0" />
+            <div className="min-w-0">
+              <p className="font-semibold text-foreground">Wofür die Anzahlung steht</p>
+              <p className="mt-1">
+                Mit der Anzahlung reservieren wir Ihnen ein festes Zeitfenster und beginnen mit der
+                Beschaffung des passenden Rohlings beziehungsweise Gehäuses. Dadurch entsteht uns
+                Aufwand, bevor Sie in der Werkstatt sind.
+              </p>
+            </div>
+          </div>
 
           {!paymentConfigured && (
             <Alert tone="warning" title="Online-Zahlung ist noch nicht eingerichtet">

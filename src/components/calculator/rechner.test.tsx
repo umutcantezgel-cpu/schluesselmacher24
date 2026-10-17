@@ -108,4 +108,23 @@ describe('Rechner auf Platzhalter-Richtwerten', () => {
     expect(html).toContain('Den Rahmen für Ihre Tür nennen wir Ihnen nach einer kurzen Anfrage.');
     expect(html).toContain('Anfrage stellen');
   });
+
+  it('Türabsicherung: beide Fragen als gerahmte Liste, der Serviceeinsatz bleibt im Kachelraster', () => {
+    const tuer = renderToStaticMarkup(
+      <TuerAbsicherungRechner werte={PLATZHALTER_RICHTWERTE.tuerAbsicherung} anfrageHref={ANFRAGE} />,
+    );
+    pruefeVertrag(tuer);
+    const liste = 'class="mt-3 divide-y divide-border overflow-hidden rounded-lg border border-border"';
+    expect(tuer.split(liste)).toHaveLength(3);
+    expect(tuer).not.toContain('grid-cols-kacheln');
+
+    const service = renderToStaticMarkup(
+      <ServiceEinsatzRechner
+        werte={PLATZHALTER_RICHTWERTE.serviceEinsatz}
+        anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
+      />,
+    );
+    expect(service).toContain('class="mt-3 grid grid-cols-kacheln gap-3"');
+    expect(service).not.toContain('divide-y divide-border overflow-hidden');
+  });
 });

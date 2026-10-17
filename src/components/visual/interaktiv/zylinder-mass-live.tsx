@@ -34,7 +34,7 @@ export function ZylinderMassLive({ form, aussen, innen, name, className }: Zylin
     : `Maßzeichnung ${name}: Maß A ${aussen} mm, Maß B ${innen ?? aussen} mm`;
 
   return (
-    <figure className={cn('rounded-lg border border-border bg-surface p-3 sm:p-4', className)}>
+    <figure className={cn('sm24-ruhig', className)}>
       {/* Unter 640 px die schmale Fassung: Die Zeichnung ist dort etwa 250 px breit. */}
       <div key={`${bauform}-${aussen}-${innen ?? ''}`} className="animate-schleier-ein">
         <ZylinderMassGrafik params={{ ...params, format: 'schmal' }} title={titel} className="sm:hidden" />

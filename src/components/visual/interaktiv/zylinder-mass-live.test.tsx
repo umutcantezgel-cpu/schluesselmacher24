@@ -25,6 +25,8 @@ describe('ZylinderMassLive', () => {
     expect(a).not.toBe(b);
     expect(a).toContain('animate-schleier-ein');
     expect(a).toContain('Schematisch');
+    expect(a).toMatch(/<figure[^>]*class="[^"]*sm24-ruhig/);
+    expect(a).not.toMatch(/<figure[^>]*class="[^"]*border/);
   });
 
   it('zeichnet unter 640 px die schmale Fassung, darüber die breite', () => {

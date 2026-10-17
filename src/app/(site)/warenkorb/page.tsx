@@ -53,21 +53,22 @@ export default async function WarenkorbPage() {
             catalog={catalog}
           />
 
-          {/* Mobil Abstand von 64 px zur Summe; unten Platz für die Leiste „Gesamtsumme · Zur Kasse“ (nur mit Positionen). */}
-          <section className="mt-16 pb-24 md:pb-0 lg:col-span-12 lg:mt-0 korb-leer:pb-0 korb-leer:lg:col-span-4">
-            <h2 className="text-title-sm font-semibold text-foreground">Passend dazu</h2>
-            {/* Haarlinienliste: die ganze Zeile ist der Link, der Pfeil rückt bei feinem Zeiger vor (B-06). */}
-            <ul className="mt-4 grid border-t border-border sm:grid-cols-2 sm:gap-x-gutter lg:grid-cols-3 korb-leer:lg:grid-cols-1">
+          {/* Mobil Abstand von 64 px zur Summe; unten Platz für die Leiste „Gesamtbetrag · Zur Kasse“ (nur mit Positionen). */}
+          <section className="mt-16 pb-24 md:pb-0 lg:col-span-8 lg:mt-0 korb-leer:pb-0 korb-leer:lg:col-span-4">
+            <p className="eyebrow"><span className="text-foreground-muted tabular-nums">01</span>Weiterlesen</p>
+            <h2 className="mt-3 text-title-sm font-semibold text-foreground">Passend dazu</h2>
+            {/* Haarlinienliste, einspaltig: die ganze Zeile ist der Link, der Pfeil rückt bei feinem Zeiger vor (B-06). */}
+            <ul className="mt-4 border-t border-border">
               {WEITERE_SEITEN.map((link) => (
                 <li key={link.href} className="border-b border-border">
                   <Link
                     href={link.href}
-                    className="group flex min-h-touch items-center justify-between gap-3 py-3 text-small font-semibold text-primary hover:underline"
+                    className="group flex min-h-touch items-center justify-between gap-3 py-3 text-small font-semibold text-foreground transition-colors duration-quick ease-standard hover:text-primary"
                   >
                     {link.label}
                     <GlyphPfeilRechts
                       size={16}
-                      className="shrink-0 transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
+                      className="shrink-0 text-foreground-muted transition duration-quick ease-standard group-hover:text-primary group-focus-visible:text-primary zeiger:group-hover:translate-x-1"
                     />
                   </Link>
                 </li>

@@ -7,8 +7,8 @@ import { getNachweise } from '@/lib/data/nachweise';
 import { getRichtwerte } from '@/lib/data/richtwerte';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
+import type { AreaKey } from '@/lib/types';
 import { ButtonLink } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { PageHeader } from '@/components/layout/page-header';
@@ -17,6 +17,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { TuerAbsicherungRechner } from '@/components/calculator/tuer-absicherung-rechner';
 import { NachweiseListe } from '@/components/vertrauen/nachweise-liste';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { AreaScope } from '@/components/visual/area-scope';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
@@ -58,29 +59,45 @@ const SERVICE_ICONS: Record<string, ComponentType<{ size?: number; className?: s
   'montage-und-anpassung': IconMontage,
 };
 
-/** Angrenzende Bereiche — die Hauptnavigation bleibt davon unberührt. */
-const RELATED_AREAS = [
+/** Angrenzende Bereiche — die Hauptnavigation bleibt davon unberührt. `area` färbt die Zeile in der Bereichsfarbe. */
+const RELATED_AREAS: { area: AreaKey; href: string; label: string; body: string }[] = [
   {
+    area: 'gleichschliessende-zylinder',
     href: '/gleichschliessende-zylinder',
     label: 'Gleichschließende Zylinder',
     body: 'Mehrere Türen mit demselben Schlüssel schließen — ohne vollständige Anlagenplanung. Ideal für Einfamilienhäuser und kleine Gewerbeobjekte.',
   },
   {
+    area: 'schliessanlagen',
     href: '/schliessanlagen',
     label: 'Schließanlagen',
     body: 'Wenn verschiedene Personen unterschiedlich weit schließen sollen, wird daraus eine Anlage. Strukturierte Hierarchien für komplexe Gebäude.',
   },
   {
+    area: 'elektronische-zutrittsloesungen',
     href: '/elektronische-zutrittsloesungen',
     label: 'Elektronische Zutrittslösungen',
     body: 'Karte, Transponder, PIN oder App statt Schlüssel — auch in Verbindung mit vorhandener Mechanik. Die flexible Alternative zur klassischen Mechanik.',
   },
   {
+    area: 'sicherheitstechnik',
     href: '/sicherheitstechnik',
     label: 'Sicherheitstechnik',
     body: 'Wenn zusätzlich erkannt und gemeldet werden soll, was an der Tür passiert. Alarmanlagen und Überwachungssysteme.',
   },
 ];
+
+/** Marke im Fließtext: die Nummer des Bauteils in der Kopfzeichnung (`tuer-schutz`). */
+function Marke({ nummer }: { nummer: number }) {
+  return (
+    <span
+      aria-hidden
+      className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-area-strong align-middle font-mono text-caption font-semibold tabular-nums text-surface"
+    >
+      {nummer}
+    </span>
+  );
+}
 
 const EXPERT_FAQ = [
   {
@@ -159,26 +176,35 @@ export default async function TuerUndSchliesstechnikPage() {
         }
       />
 
-      {/* Tiefgreifende Fachliche Einführung */}
+      {/* Tiefgreifende Fachliche Einführung. Mobil in dieser Reihenfolge: Überschrift 01, Rechner, Text, Liste, Schriftfeld. */}
       <Section tight>
-        {/* Ab lg: Text und Schriftfeld links übereinander, der hohe Rechner rechts über beide Zeilen – ohne Leerfläche links. */}
-        <div className="grid gap-12 lg:grid-cols-12 lg:grid-rows-kopf lg:items-start lg:gap-gutter">
-          <div className="space-y-8 lg:col-span-7 lg:row-start-1">
-            <SectionHeading
-              nummer="01"
-              eyebrow="Architektur der Sicherheit"
-              title="Die Tür als geschlossenes Sicherheitssystem"
-              lead="Wirkungsvoller Einbruchschutz und reibungslose Funktion entstehen nicht durch Einzelkomponenten, sondern durch das präzise Zusammenspiel aller Elemente einer Tür."
-            />
+        {/* Ab lg: Überschrift und Text links, der hohe Rechner rechts über beide Zeilen – ohne Leerfläche links. */}
+        <div className="grid gap-12 lg:grid-cols-12 lg:grid-rows-kopf lg:items-start lg:gap-x-gutter lg:gap-y-8">
+          <SectionHeading
+            nummer="01"
+            eyebrow="Architektur der Sicherheit"
+            title="Die Tür als geschlossenes Sicherheitssystem"
+            lead="Wirkungsvoller Einbruchschutz und reibungslose Funktion entstehen nicht durch Einzelkomponenten, sondern durch das präzise Zusammenspiel aller Elemente einer Tür."
+            className="lg:col-span-7 lg:row-start-1"
+          />
 
-            <div className="prose-sm24 max-w-none">
+          {/* Nicht mitlaufend: Der Rechner ist höher als das Fenster, Ergebnis und Anfrage lägen sonst außer Reichweite. Mobil steht er direkt nach der Überschrift; der Anker führt vom Schriftfeld hierher. */}
+          <div id="orientierung" className="lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1">
+            <TuerAbsicherungRechner
+              werte={richtwerte.tuerAbsicherung}
+              anfrageHref={`/service-und-termin/anfrage?thema=${ROUTE}`}
+            />
+          </div>
+
+          <div className="space-y-8 lg:col-span-7 lg:row-start-2">
+            <div className="prose-sm24">
               <p>
                 Die Sicherheit einer Tür wird stets durch ihr schwächstes Glied definiert. Ein hochkomplexer, aufbohrgeschützter Schließzylinder verfehlt seine Wirkung vollständig, wenn das dazugehörige Einsteckschloss einer Hebelwirkung nicht standhält oder der Schutzbeschlag von außen einfach abmontiert werden kann. <strong>Ganzheitliche Tür- und Schließtechnik</strong> bedeutet, die physikalischen Kräfte und potenziellen Angriffsvektoren zu verstehen und das Türsystem entsprechend aufzubauen.
               </p>
 
               <h3 className="mt-8 mb-4 text-title font-bold text-foreground tracking-tight">Mechanische Kernkomponenten im Verbund</h3>
               <p>
-                Das Fundament jeder mechanischen Türsicherung bildet das Zusammenspiel aus <strong>Profilzylinder</strong>, <strong>Einsteckschloss</strong>, <strong>Schutzbeschlag</strong> und <strong>Schließblech</strong> im Rahmen.
+                Das Fundament jeder mechanischen Türsicherung bildet das Zusammenspiel aus <strong>Profilzylinder</strong><Marke nummer={3} />, <strong>Einsteckschloss</strong>, <strong>Schutzbeschlag</strong><Marke nummer={2} /> und <strong>Schließblech</strong><Marke nummer={4} /> im Rahmen.
                 Der Zylinder identifiziert den berechtigten Schlüssel. Das Einsteckschloss übersetzt diese Drehbewegung in die Ver- oder Entriegelung. Der Schutzbeschlag schirmt den Zylinder vor mechanischen Angriffen (Ziehen, Abbrechen) ab, und das Schließblech nimmt die Riegelkraft auf und leitet sie in das Mauerwerk ab.
               </p>
             </div>
@@ -201,18 +227,10 @@ export default async function TuerUndSchliesstechnikPage() {
             </ul>
           </div>
 
-          {/* Nicht mitlaufend: Der Rechner ist höher als das Fenster, Ergebnis und Anfrage lägen sonst außer Reichweite. */}
-          <div className="lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1">
-            <TuerAbsicherungRechner
-              werte={richtwerte.tuerAbsicherung}
-              anfrageHref={`/service-und-termin/anfrage?thema=${ROUTE}`}
-            />
-          </div>
-
-          {/* Schriftfeld: mobil nach dem Rechner, ab lg unter dem Text; ab md zweispaltig: Einordnung links, Ablauf rechts. */}
-          <div className="grid border-y border-border md:grid-cols-2 md:gap-gutter lg:col-span-7 lg:row-start-2 lg:self-start">
-            <div className="py-6 md:pr-gutter">
-              <div className="prose-sm24 max-w-none">
+          {/* Schriftfeld (Variante A): eigene Zeile unter Text und Rechner; ab lg Einordnung links, Ablauf rechts. */}
+          <div className="grid border-y border-border lg:col-span-12 lg:row-start-3 lg:grid-cols-12 lg:gap-x-gutter">
+            <div className="py-6 lg:col-span-7">
+              <div className="prose-sm24">
                 <h3 className="mb-4 text-title font-bold text-foreground tracking-tight">Elektronik trifft Mechanik</h3>
                 <p>
                   Die moderne Türtechnik verschmilzt zunehmend mit elektronischen Systemen. Mechatronische Zylinder, Motorschlösser und digitale Zutrittskontrollen erfordern ein noch tieferes Systemverständnis. Ein Motorschloss muss beispielsweise so konfiguriert sein, dass es im Brandfall eine sichere Flucht ermöglicht, während es im verriegelten Zustand maximalen Widerstand gegen Einbruch bietet.
@@ -220,12 +238,23 @@ export default async function TuerUndSchliesstechnikPage() {
               </div>
             </div>
 
-            {/* Schriftfeld: der Ablauf in diesem Bereich wie eine Zeile der Bemaßung */}
-            <dl className="border-t border-border py-6 md:border-l md:border-t-0 md:pl-gutter">
+            {/* Schriftfeld: der Ablauf in diesem Bereich wie eine Zeile der Bemaßung; das Ziel führt zum Rechner. */}
+            <dl className="border-t border-border py-6 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-gutter">
               <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 Ablauf in diesem Bereich
               </dt>
-              <dd className="mt-2 text-title-sm font-semibold text-foreground">{process.label}</dd>
+              <dd className="mt-1">
+                <Link
+                  href="#orientierung"
+                  className="group inline-flex min-h-touch items-center gap-2 text-title-sm font-semibold text-foreground transition-colors duration-quick ease-standard hover:text-primary"
+                >
+                  {process.label}
+                  <GlyphPfeilRechts
+                    size={18}
+                    className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard group-hover:text-primary group-focus-visible:text-primary zeiger:group-hover:translate-x-1"
+                  />
+                </Link>
+              </dd>
               <dd className="mt-2 max-w-measure text-small text-foreground-muted">
                 {process.hint} Wir analysieren die bauliche Substanz Ihrer Tür und erstellen darauf basierend ein präzises Sicherheitskonzept, bevor wir Komponenten austauschen.
               </dd>

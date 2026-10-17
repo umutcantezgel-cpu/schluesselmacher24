@@ -20,7 +20,8 @@ const HOEHE = 300;
 /*
  * Bauteile in Nummernfolge: 1–5 von oben nach unten, damit sich die
  * Führungslinien nicht kreuzen. `mx`/`my` ist die Mitte der Marke, sitzt also
- * auf dem Bauteil; `row` ist die Mitte der Legendenzeile.
+ * auf dem Bauteil; `row` ist die Mitte der Legendenzeile. Die Bandseite (5)
+ * hat ihre Zeile unter der Tür; dort gilt `legende()` statt `row`.
  */
 const BAUTEILE = [
   { key: 'zusatzschloss', name: 'Zusatzschloss', mx: 189, my: 62, row: 62 },
@@ -75,30 +76,45 @@ const NAME_X = 320;
  * Ausschnitt für Telefonbreiten (`ImagePlaceholder`, Prop `ausschnitt`): Tür und
  * Legende ohne Rand. Im Ausschnitt setzt globals.css die Legende auf 16 Einheiten
  * (`data-legende`); der Ausschnitt ist dafür bemessen, sie wird so rund 12 px groß.
+ * Die Höhe reicht bis y 300, damit die Zeile der Bandseite unter der Tür im Bild liegt.
  */
 export const TUER_SCHUTZ_AUSSCHNITT = {
   x: 26,
   y: 20,
   breite: 444,
-  hoehe: 264,
+  hoehe: 280,
   vollBreite: BREITE,
   vollHoehe: HOEHE,
 } as const;
 
-/** Führung der Bandseite: links außen an der Zarge vorbei (nicht über die Bänder), dann unter der Tür. */
+/*
+ * Bandseite: Die Zeile steht links unter der Tür, neben der Zarge. Ihre Führung geht
+ * außen an der Zarge vorbei nach unten, mit einem Knick und ohne Querung des Bodens.
+ */
+/** Führung der Bandseite: außen an der Zarge vorbei (nicht über die Bänder). */
 const AUSSEN_LINKS = ZARGE.x - 14;
-const UNTER_TUER = BODEN + 7;
+/** Legendenzeile der Bandseite unter der Tür (Mitte der Zeile). */
+const UNTEN_ZEILE = BODEN + 16;
+/** Ziffer der Bandseite links unter der Tür, Name rechts daneben (gleicher Abstand wie in der Legende). */
+const UNTEN_X = AUSSEN_LINKS + 6;
+const UNTEN_NAME_X = UNTEN_X + (NAME_X - LEGENDE_X);
 
 /**
  * Führungslinie einer Marke zur Legende: waagerecht, ein Knick, waagerecht. Die Bandseite
- * sitzt links; ihre Linie läuft außen an der Zarge und unter der Tür entlang statt quer
- * durch das Türblatt (Sichtabnahme E4-L-23).
+ * führt einen Knick außen an der Zarge herunter bis zur Zeile unter der Tür (Sichtabnahme
+ * E5-L-29: vorher ein langer Umweg unter dem Boden).
  */
 function fuehrung(b: (typeof BAUTEILE)[number]): string {
   if (b.key === 'bandseite') {
-    return `M${b.mx - MARKE_R} ${b.my}H${AUSSEN_LINKS}V${UNTER_TUER}H${KNICK_X}V${b.row + 8}L${KNICK_X + 8} ${b.row}H${LINIE_ENDE}`;
+    return `M${b.mx - MARKE_R} ${b.my}H${AUSSEN_LINKS}V${UNTEN_ZEILE}`;
   }
   return `M${b.mx + MARKE_R} ${b.my}H${KNICK_X}L${KNICK_X + 8} ${b.row}H${LINIE_ENDE}`;
+}
+
+/** Lage der Legendenzeile: Ziffer, Name und Zeilenlage. Die Bandseite steht links unter der Tür. */
+function legende(b: (typeof BAUTEILE)[number]): { zahl: number; name: number; y: number } {
+  if (b.key === 'bandseite') return { zahl: UNTEN_X, name: UNTEN_NAME_X, y: UNTEN_ZEILE + 4.5 };
+  return { zahl: LEGENDE_X, name: NAME_X, y: b.row + 4.5 };
 }
 
 const HERVOR = 'fill-area-soft stroke-area-strong';
@@ -152,7 +168,7 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
       <path
         className="stroke-foreground-muted"
         strokeWidth={HILFSLINIE}
-        d={`M${ZARGE.x - 18} ${BODEN}H${ZARGE.x + ZARGE.w + 18}`}
+        d={`M${ZARGE.x - 8} ${BODEN}H${ZARGE.x + ZARGE.w + 8}`}
       />
 
       {/* Zarge und Blatt */}
@@ -292,8 +308,8 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
                 paintOrder="stroke"
                 strokeLinejoin="round"
                 strokeWidth={4}
-                x={LEGENDE_X}
-                y={b.row + 4.5}
+                x={legende(b).zahl}
+                y={legende(b).y}
               >
                 {i + 1}
               </text>
@@ -304,8 +320,8 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
                 paintOrder="stroke"
                 strokeLinejoin="round"
                 strokeWidth={4}
-                x={NAME_X}
-                y={b.row + 4.5}
+                x={legende(b).name}
+                y={legende(b).y}
               >
                 {b.name}
               </text>

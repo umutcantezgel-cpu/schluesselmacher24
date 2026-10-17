@@ -2,7 +2,6 @@
 
 import type { PriceQuote } from '@/lib/types';
 import { formatCents, formatDuration } from '@/lib/format';
-import { Alert } from '@/components/ui/alert';
 import { InfoTip } from '@/components/ui/info-tip';
 import { IconFahrzeugmarke } from '@/components/visual/icons/fahrzeugmarke';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
@@ -109,9 +108,13 @@ export function PreisAnzeige({ quote }: PreisAnzeigeProps) {
       )}
 
       {quote.note && (
-        <Alert tone="info" title="Hinweis zu Ihrem Fall">
-          {quote.note}
-        </Alert>
+        <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">
+          <GlyphInfo size={16} className="mt-0.5 shrink-0" />
+          <div className="min-w-0">
+            <p className="font-semibold text-foreground">Hinweis zu Ihrem Fall</p>
+            <p className="mt-1">{quote.note}</p>
+          </div>
+        </div>
       )}
 
       {/* Schriftfeld mit Haarlinien statt getönter Kästen (Sichtabnahme E4-L-23, H04 Preisschritt) */}

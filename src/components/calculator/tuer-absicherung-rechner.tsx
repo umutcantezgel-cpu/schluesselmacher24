@@ -5,7 +5,7 @@ import { useId, useState } from 'react';
 import { tuerAbsicherungBerechnen, tuerAbsicherungZusammenfassung } from '@/lib/richtwerte/rechnen';
 import type { TuerAbsicherungWerte } from '@/lib/richtwerte/typen';
 import { OptionCard } from '@/components/forms/option-card';
-import { Auswahlgruppe, Fokusrahmen, RechnerRahmen, RichtwertErgebnis } from './rechner-bausteine';
+import { Auswahlgruppe, RechnerRahmen, RichtwertErgebnis } from './rechner-bausteine';
 
 export interface TuerAbsicherungRechnerProps {
   /** Aufbereitete Richtwerte aus `getRichtwerte()` — kommen von der Seite. */
@@ -43,34 +43,34 @@ export function TuerAbsicherungRechner({ werte, anfrageHref }: TuerAbsicherungRe
     >
       {auswaehlbar && (
         <>
-          <Auswahlgruppe legende="1. Um welche Tür geht es?">
+          <Auswahlgruppe legende="1. Um welche Tür geht es?" liste>
             {werte.tuerarten.map((t) => (
-              <Fokusrahmen key={t.kennung}>
-                <OptionCard
-                  name={`${name}-tuerart`}
-                  value={t.kennung}
-                  checked={tuerart === t.kennung}
-                  onSelect={setTuerart}
-                  title={t.label}
-                  description={t.beschreibung ?? undefined}
-                />
-              </Fokusrahmen>
+              <OptionCard
+                key={t.kennung}
+                zeile
+                name={`${name}-tuerart`}
+                value={t.kennung}
+                checked={tuerart === t.kennung}
+                onSelect={setTuerart}
+                title={t.label}
+                description={t.beschreibung ?? undefined}
+              />
             ))}
           </Auswahlgruppe>
 
-          <Auswahlgruppe legende="2. Welche Maßnahmen kommen infrage?" hinweis="Mehrfachauswahl möglich.">
+          <Auswahlgruppe legende="2. Welche Maßnahmen kommen infrage?" hinweis="Mehrfachauswahl möglich." liste>
             {werte.massnahmen.map((m) => (
-              <Fokusrahmen key={m.kennung}>
-                <OptionCard
-                  multiple
-                  name={`${name}-massnahmen`}
-                  value={m.kennung}
-                  checked={massnahmen.includes(m.kennung)}
-                  onSelect={umschalten}
-                  title={m.label}
-                  description={m.beschreibung ?? undefined}
-                />
-              </Fokusrahmen>
+              <OptionCard
+                key={m.kennung}
+                zeile
+                multiple
+                name={`${name}-massnahmen`}
+                value={m.kennung}
+                checked={massnahmen.includes(m.kennung)}
+                onSelect={umschalten}
+                title={m.label}
+                description={m.beschreibung ?? undefined}
+              />
             ))}
           </Auswahlgruppe>
         </>

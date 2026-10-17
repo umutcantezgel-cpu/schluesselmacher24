@@ -27,6 +27,7 @@ import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { SummaryList } from '@/components/layout/summary-list';
+import { GlyphLineal } from '@/components/visual/glyphen/lineal';
 import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 import { GlyphPlus } from '@/components/visual/glyphen/plus';
 import { GlyphWarnung } from '@/components/visual/glyphen/warnung';
@@ -366,6 +367,7 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHints[flow.step?.id ?? '']}
+      summe={{ label: 'Laufende Summe', wert: formatCents(breakdown.totalCents) }}
     >
       <div className="space-y-6">
         {/* Laufende Summe — in jedem Schritt sichtbar, als Schriftfeld in Mono */}
@@ -416,16 +418,13 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
         {/* Schritt 1 — Zylinder */}
         {flow.step?.id === 'zylinder' && (
           <div className="space-y-4">
-            <Card variant="muted">
-              <CardBody>
-                <h3 className="text-body font-semibold text-foreground">
-                  {catalog.measuringInfo.title}
-                </h3>
-                <p className="mt-2 text-small leading-relaxed text-foreground-muted">
-                  {catalog.measuringInfo.body}
-                </p>
-              </CardBody>
-            </Card>
+            <a
+              href="#weiterfuehrend"
+              className="inline-flex min-h-touch items-center gap-2 text-small font-semibold text-primary hover:underline"
+            >
+              <GlyphLineal size={16} className="shrink-0" />
+              Zylinder richtig ausmessen
+            </a>
 
             {data.items.length === 0 && (
               <Alert tone="info" title="Noch keine Position angelegt">
@@ -551,8 +550,8 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
             </div>
 
             <p className="text-small leading-relaxed text-foreground-muted">
-              Optionen mit Preis je Zylinder werden auf alle {breakdown.cylinderCount} Zylinder
-              dieser Bestellung gerechnet. Sie können jede Option wieder abwählen.
+              Optionen mit Preis je Zylinder werden für jeden Zylinder dieser Bestellung gerechnet, zurzeit <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{breakdown.cylinderCount} Stück</span>.
+              Sie können jede Option wieder abwählen.
             </p>
           </div>
         )}
@@ -740,7 +739,7 @@ function PositionCard({
         </fieldset>
 
         {/* Maße */}
-        <div className="rounded-lg border border-border bg-surface-muted p-4">
+        <div className="border-t border-border pt-5">
           <div className="flex items-center gap-2">
             <h4 className="text-small font-semibold text-foreground">Maße dieser Tür</h4>
             <InfoTip hint={catalog.measuringInfo} />
@@ -817,9 +816,9 @@ function PositionCard({
             <p className="text-small leading-relaxed text-foreground-muted lg:col-span-5">
             Gemessen wird ab Mitte der Stulpschraube — Maß A nach außen
             {form.measures === 'beide' ? ', Maß B nach innen' : ''}. Gesamtlänge dieser Position:{' '}
-            {formatMillimeter(item.measureAMm + (item.measureBMm ?? 0))}. Bis{' '}
-            {formatMillimeter(form.baseLengthMm)} gilt der Grundpreis, darüber kommen{' '}
-            {formatCents(form.lengthSurchargeCents)} je angefangene 5 mm hinzu.
+            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatMillimeter(item.measureAMm + (item.measureBMm ?? 0))}</span>. Bis{' '}
+            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatMillimeter(form.baseLengthMm)}</span> gilt der Grundpreis, darüber kommen{' '}
+            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatCents(form.lengthSurchargeCents)}</span> je angefangene <span className="whitespace-nowrap font-mono tabular-nums text-foreground">5 mm</span> hinzu.
             </p>
           </div>
         </div>

@@ -28,7 +28,7 @@ import { QuantityInput } from '@/components/forms/controls';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphLaden } from '@/components/visual/glyphen/laden';
 import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
-import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
+import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 
 export interface WarenkorbAnsichtProps {
   shipping: ShippingOption[];
@@ -105,7 +105,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
 
   const versandarten = useMemo(() => passendeVersandarten(items, shipping), [items, shipping]);
 
-  // Ohne gewählte Versandart lässt sich keine Gesamtsumme nennen.
+  // Ohne gewählte Versandart lässt sich kein Gesamtbetrag nennen.
   useEffect(() => {
     if (!geladen || items.length === 0) return;
     const gewaehlt = versandarten.some((option) => option.id === shippingOptionId);
@@ -129,7 +129,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
   if (!geladen) {
     return (
       /* Gleiche Mindesthöhe wie der Leerzustand: Nach dem Laden springt nichts (CLS). */
-      <Card className="min-h-80 sm:min-h-64 lg:col-span-8" data-leerzustand>
+      <Card className="min-h-96 sm:min-h-64 lg:col-span-8" data-leerzustand>
         <CardBody>
           <p className="flex items-center gap-3 text-body text-foreground-muted" role="status">
             <GlyphLaden size={18} className="animate-spin motion-reduce:animate-none" />
@@ -142,19 +142,23 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
 
   if (positionen.length === 0) {
     return (
-      <Card className="min-h-80 sm:min-h-64 lg:col-span-8" data-leerzustand>
-        <CardBody className="max-w-xl">
-          <IconWarenkorb size={48} className="text-primary" />
-          <h2 className="mt-4 text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
-          <p className="mt-2 text-small text-foreground-muted">
-            Sie können Schlüssel über den Schlüsselcode bestellen oder eine Gleichschließung
-            selbst zusammenstellen.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/schluessel-nach-code">Schlüssel nach Code</ButtonLink>
-            <ButtonLink href="/gleichschliessende-zylinder" variant="outline">
-              Gleichschließende Zylinder
-            </ButtonLink>
+      <Card className="flex min-h-96 flex-col justify-center sm:min-h-64 lg:col-span-8" data-leerzustand>
+        <CardBody className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-gutter">
+          <div aria-hidden="true" className="sm24-ruhig w-40 shrink-0">
+            <SchluesselGrafik params={{ typ: 'zylinder', rohling: true }} title="" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <h2 className="text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
+            <p className="mt-2 text-small text-foreground-muted">
+              Sie können Schlüssel über den Schlüsselcode bestellen oder eine Gleichschließung
+              selbst zusammenstellen.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <ButtonLink href="/schluessel-nach-code">Schlüssel nach Code</ButtonLink>
+              <ButtonLink href="/gleichschliessende-zylinder" variant="outline">
+                Gleichschließende Zylinder
+              </ButtonLink>
+            </div>
           </div>
         </CardBody>
       </Card>
@@ -184,7 +188,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                   <div className="flex gap-4 sm:contents">
                     {/* Schlüsselprofil des Codes auf Sunken-Fläche; mobil 64 px breit links vom Titel. */}
                     {position.line && (
-                      <div className="w-16 shrink-0 self-start overflow-hidden rounded-lg bg-surface-sunken sm:col-span-2 sm:w-auto">
+                      <div className="sm24-ruhig w-16 shrink-0 self-start overflow-hidden rounded-lg bg-surface-sunken sm:col-span-2 sm:w-auto">
                         <ImagePlaceholder
                           slot={{
                             motif: 'Schlüsselprofil zum Code',
@@ -197,28 +201,25 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                     )}
 
                     <div className="min-w-0 flex-1 sm:col-span-4 sm:col-start-3">
-                      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
-                        <div className="min-w-0">
-                          <h3 className="text-title-sm font-semibold text-foreground">
-                            {position.line ? (
-                              <Link
-                                href={`/schluessel-nach-code/${position.line.slug}`}
-                                className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
-                              >
-                                {position.line.name}
-                              </Link>
-                            ) : (
-                              'Schlüssel nach Code'
-                            )}
-                          </h3>
-                          {position.line && (
-                            <p className="text-small text-foreground-muted">
-                              {istPlatzhalter(position.line.manufacturer) ? null : `${position.line.manufacturer} · `}
-                              {position.line.application} ·{' '}
-                              {position.line.keyType}
-                            </p>
-                          )}
-                        </div>
+                      <h3 className="text-title-sm font-semibold text-foreground">
+                        {position.line ? (
+                          <Link
+                            href={`/schluessel-nach-code/${position.line.slug}`}
+                            className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
+                          >
+                            {position.line.name}
+                          </Link>
+                        ) : (
+                          'Schlüssel nach Code'
+                        )}
+                      </h3>
+                      <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                        {position.line && (
+                          <p className="text-small text-foreground-muted">
+                            {istPlatzhalter(position.line.manufacturer) ? null : `${position.line.manufacturer} · `}
+                            {position.line.keyType}
+                          </p>
+                        )}
                         <Badge tone="outline">Schlüssel nach Code</Badge>
                       </div>
 
@@ -407,23 +408,21 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
         </ul>
 
         {/* Versandart unter den Positionen: links ab lg, mobil nach der Stückliste */}
-        <Card>
-          <CardHeader>
-            <div className="flex items-center gap-2">
-              <h2 className="text-title-sm font-semibold text-foreground">Versandart</h2>
-              <InfoTip
-                hint={{
-                  title: 'Versandarten',
-                  body:
-                    'Verfolgbar bedeutet, dass Sie den Weg der Sendung online nachvollziehen '
-                    + 'können. Versichert bedeutet, dass der Wert der Sendung auf dem Transportweg '
-                    + 'abgesichert ist. Welche Arten angeboten werden, hängt davon ab, was in '
-                    + 'Ihrem Warenkorb liegt.',
-                }}
-              />
-            </div>
-          </CardHeader>
-          <CardBody>
+        <div>
+          <div className="flex items-center gap-2 pt-4">
+            <h2 className="text-title-sm font-semibold text-foreground">Versandart</h2>
+            <InfoTip
+              hint={{
+                title: 'Versandarten',
+                body:
+                  'Verfolgbar bedeutet, dass Sie den Weg der Sendung online nachvollziehen '
+                  + 'können. Versichert bedeutet, dass der Wert der Sendung auf dem Transportweg '
+                  + 'abgesichert ist. Welche Arten angeboten werden, hängt davon ab, was in '
+                  + 'Ihrem Warenkorb liegt.',
+              }}
+            />
+          </div>
+          <div className="mt-6 border-t border-border pt-6">
             {versandarten.length === 0 ? (
               <Alert tone="warning" title="Keine passende Versandart">
                 Für diese Kombination aus Artikeln ist keine gemeinsame Versandart hinterlegt.
@@ -441,6 +440,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                     title={option.label}
                     description={option.description}
                     meta={formatCents(option.priceCents)}
+                    metaSpalte
                     info={{
                       title: option.label,
                       body: [
@@ -453,8 +453,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                 ))}
               </div>
             )}
-          </CardBody>
-        </Card>
+          </div>
+        </div>
 
         <p className="text-small leading-relaxed text-foreground-muted">
           Weiter einkaufen:{' '}
@@ -491,18 +491,21 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                 </dd>
               </div>
               <div className="flex items-baseline justify-between gap-4 border-t border-border py-3">
-                <dt className="text-small text-foreground-muted">
-                  Versand{gewaehlteVersandart ? ` (${gewaehlteVersandart.label})` : ''}
-                </dt>
+                <dt className="text-small text-foreground-muted">Versand</dt>
                 <dd
                   key={summen.shippingCents}
-                  className="animate-schleier-ein font-mono text-small font-semibold tabular-nums text-foreground"
+                  className="animate-schleier-ein text-right text-small"
                 >
-                  {formatCents(summen.shippingCents)}
+                  {gewaehlteVersandart && (
+                    <span className="block text-foreground-muted">{gewaehlteVersandart.label}</span>
+                  )}
+                  <span className="block whitespace-nowrap font-mono font-semibold tabular-nums text-foreground">
+                    {formatCents(summen.shippingCents)}
+                  </span>
                 </dd>
               </div>
               <div className="flex items-baseline justify-between gap-4 border-t border-border py-4">
-                <dt className="font-semibold text-foreground">Gesamtsumme</dt>
+                <dt className="font-semibold text-foreground">Gesamtbetrag</dt>
                 <dd
                   key={summen.totalCents}
                   className="animate-schleier-ein font-mono text-title font-semibold tabular-nums text-foreground"
@@ -549,14 +552,14 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
         </Card>
       </div>
 
-      {/* Mobil eigene Leiste unten: Gesamtsumme und Kasse. Die globale Aktionsleiste blendet sich dann aus (globals.css). */}
+      {/* Mobil eigene Leiste unten: Gesamtbetrag und Kasse. Die globale Aktionsleiste blendet sich dann aus (globals.css). */}
       <div
         data-eigene-leiste
         className="pb-safe-area fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface md:hidden"
       >
         <div className="shell flex min-h-touch-lg items-center justify-between gap-4 py-2">
           <p className="text-small text-foreground-muted">
-            Gesamtsumme <span
+            Gesamtbetrag <span
               key={summen.totalCents}
               className="animate-schleier-ein font-mono text-body font-semibold tabular-nums text-foreground"
             >

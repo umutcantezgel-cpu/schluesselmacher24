@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
-import { Section } from '@/components/layout/section';
+import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 import { Konfigurator } from './konfigurator';
@@ -62,14 +62,13 @@ export default async function CylinderConfiguratorPage() {
       </Section>
 
       {/* Zusatzabstand, damit die feste Ablauf-Navigation nichts verdeckt. */}
-      <Section tone="muted" tight className="pb-28 md:pb-14">
-        <div>
-          <p className="eyebrow">
-            <span className="text-foreground-muted tabular-nums">02</span>
-            Weiterlesen
-          </p>
-          <h2 className="mt-3 text-title font-bold text-foreground">Wenn Sie vorher etwas nachlesen möchten</h2>
-        </div>
+      <Section id="weiterfuehrend" tone="muted" tight className="pb-28 md:pb-14">
+        <SectionHeading
+          nummer="01"
+          eyebrow="Weiterführend"
+          title="Wenn Sie vorher etwas nachlesen möchten"
+          className="[&_h2]:text-title [&_h2]:tracking-normal"
+        />
         <ul className="mt-8 border-t border-border">
           {RELATED_LINKS.map((link) => (
             <li key={link.href} className="border-b border-border">
@@ -82,7 +81,7 @@ export default async function CylinderConfiguratorPage() {
                 </span>
                 <GlyphPfeilRechts
                   size={18}
-                  className="shrink-0 text-foreground-muted transition-transform duration-quick zeiger:group-hover:translate-x-1"
+                  className="shrink-0 text-foreground-muted transition duration-quick ease-standard motion-reduce:transition-none group-hover:text-primary group-focus-visible:text-primary zeiger:group-hover:translate-x-1"
                 />
               </Link>
             </li>

@@ -156,7 +156,7 @@ export const KEY_PHOTO_SLOTS: PhotoSlotDef[] = [
       + 'Untergrund legen und ohne Blitz fotografieren.',
     example: {
       motif: 'Beispielfoto: Autoschlüssel von vorn, Tastenseite vollständig und scharf',
-      ratio: '4/3',
+      ratio: '16/9',
       note: 'Eigene Aufnahme aus der Werkstatt, kein Herstellerbild.',
     },
     required: true,
@@ -169,7 +169,7 @@ export const KEY_PHOTO_SLOTS: PhotoSlotDef[] = [
       + 'für die Zuordnung brauchen.',
     example: {
       motif: 'Beispielfoto: Autoschlüssel von hinten mit lesbarer Kennzeichnung',
-      ratio: '4/3',
+      ratio: '16/9',
       note: 'Eigene Aufnahme aus der Werkstatt, kein Herstellerbild.',
     },
     required: true,
@@ -195,7 +195,7 @@ export const KEY_PHOTO_SLOTS: PhotoSlotDef[] = [
       + 'Nahaufnahme davon bei der Zuordnung.',
     example: {
       motif: 'Beispielfoto: Nahaufnahme der eingeprägten Nummern auf dem Schlüsselgehäuse',
-      ratio: '4/3',
+      ratio: '16/9',
       note: 'Eigene Aufnahme aus der Werkstatt, kein Herstellerbild.',
     },
     required: false,

@@ -20,7 +20,7 @@ export function RechnerRahmen({
   return (
     <div className="rounded-lg border border-border bg-surface p-5 md:p-6">
       <div className="flex gap-3 border-b border-border pb-5">
-        <GlyphRechner size={20} className="mt-1 text-primary" />
+        <GlyphRechner size={20} className="mt-1 text-area-strong" />
         <div className="min-w-0">
           <h3 className="text-title font-semibold text-foreground">{titel}</h3>
           <p className="mt-1 text-small leading-relaxed text-foreground-muted">{einleitung}</p>
@@ -31,20 +31,34 @@ export function RechnerRahmen({
   );
 }
 
+/**
+ * Auswahl einer Frage. Standard: Kacheln im Raster. `liste`: eine gerahmte Liste mit
+ * Trennlinien, deren Zeilen `OptionCard zeile` sind (dichter, ohne Kartenstapel).
+ */
 export function Auswahlgruppe({
   legende,
   hinweis,
+  liste = false,
   children,
 }: {
   legende: string;
   hinweis?: string;
+  liste?: boolean;
   children: ReactNode;
 }) {
   return (
     <fieldset>
       <legend className="text-title-sm font-semibold text-foreground">{legende}</legend>
       {hinweis && <p className="mt-1 text-small text-foreground-subtle">{hinweis}</p>}
-      <div className="mt-3 grid grid-cols-kacheln gap-3">{children}</div>
+      <div
+        className={
+          liste
+            ? 'mt-3 divide-y divide-border overflow-hidden rounded-lg border border-border'
+            : 'mt-3 grid grid-cols-kacheln gap-3'
+        }
+      >
+        {children}
+      </div>
     </fieldset>
   );
 }

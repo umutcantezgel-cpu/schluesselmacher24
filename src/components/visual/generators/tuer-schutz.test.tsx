@@ -174,4 +174,32 @@ describe('TuerSchutzGrafik', () => {
     // Gewinn gegenüber der vollen Breite: Faktor ≥ 1,08 bei 16/13 größerer Legende.
     expect(a.vollBreite / a.breite).toBeGreaterThanOrEqual(1.08);
   });
+
+  it('führt die Bandseite außen an der Zarge vorbei unter die Tür, ohne den Boden zu queren', () => {
+    const html = zeichne({});
+    expect(html).toContain('d="M46 210H34V288"');
+    // Keine Führungslinie reicht unter die Zeile 288 (Legende unter der Tür)
+    const fuehrungen = [...html.matchAll(/<path class="sm24-draw[^"]*"[^>]* d="([^"]+)"/g)].map((t) => t[1]);
+    expect(fuehrungen).toHaveLength(5);
+    for (const d of fuehrungen) {
+      const ys = [...d.matchAll(/([MLHVZ])([^MLHVZ]*)/g)].flatMap(([, befehl, args]) => {
+        const zahlen = args.trim().split(/[\s,]+/).filter(Boolean).map(Number);
+        if (befehl === 'V') return zahlen;
+        if (befehl === 'M' || befehl === 'L') return zahlen.filter((_, i) => i % 2 === 1);
+        return [];
+      });
+      expect(Math.max(...ys)).toBeLessThanOrEqual(288);
+    }
+  });
+
+  it('setzt die Bandseite links unter der Tür: Ziffer und Name auf der Zeile 292,5', () => {
+    const html = zeichne({});
+    expect(html).toMatch(/ x="60" y="292.5"[^>]*>Bandseite<\/text>/);
+    expect(html).toMatch(/ x="40" y="292.5"[^>]*>5<\/text>/);
+  });
+
+  it('gibt dem Telefon-Ausschnitt Höhe bis y 300, damit die Zeile unter der Tür im Bild liegt', () => {
+    const a = TUER_SCHUTZ_AUSSCHNITT;
+    expect(a.y + a.hoehe).toBeGreaterThanOrEqual(296);
+  });
 });

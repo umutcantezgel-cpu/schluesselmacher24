@@ -136,7 +136,7 @@ export default async function AutoschluesselAnfragePage(props: {
                 </span>
                 <GlyphPfeilRechts
                   size={18}
-                  className="shrink-0 text-primary transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                  className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
                 />
               </Link>
             </li>
