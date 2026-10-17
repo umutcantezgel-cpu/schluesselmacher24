@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-17T19:35:00.000Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Digitale optische Vermessung von Schlüsselprofilen",
+        "Sicherheits-Check bei Nachbestellungen per Foto",
+        "Materialkunde und Fräs-Präzision"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KeyTemplateAnalyzer",
+        "target_file": "src/components/schluessel-nach-vorlage/template-analyzer.tsx",
+        "action_file": "src/actions/analyze-template.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Service",
+        "Product"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Wegfahrsperren und Transponder-Generationen",
+        "Fahrzeugspezifische OBD-Diagnoseprotokolle",
+        "Notfall-Programmierung bei Totalverlust"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "TransponderCompatibilityChecker",
+        "target_file": "src/components/autoschluessel/transponder-checker.tsx",
+        "action_file": "src/actions/check-transponder.ts"
+      },
+      "signature_interaction": "FILTER_MATRIX_TRANSITION",
+      "schema_entities": [
+        "Service",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 1000,
+      "content_expansion_topics": [
+        "Zylinder-Sicherheitsklassen und Ziehschutz",
+        "Mechanische Einbruchhemmung nach DIN EN 1627",
+        "Vom einfachen Riegel zum High-Tech-Schloss"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "DoorSecurityConfigurator",
+        "target_file": "src/components/tuer-und-schliesstechnik/security-configurator.tsx",
+        "action_file": "src/actions/configure-door-security.ts"
+      },
+      "signature_interaction": "STEPPER_MORPH_ANIMATION",
+      "schema_entities": [
+        "Service",
+        "Article"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
