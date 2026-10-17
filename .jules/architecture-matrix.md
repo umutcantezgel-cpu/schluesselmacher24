@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Current Words | Target Words | Missing Schema | Interactive Module | Awwwards Signature |
+|-------|---------------|--------------|----------------|--------------------|--------------------|
+| /(payload)/admin/[[...segments]] | 99 | 950 | No | (Payload)Admin[[...Segments]]Rechner | PARALLAX_SCROLL_REVEAL |
+| / | 1130 | 1930 | Yes | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber | 224 | 1024 | No | RatgeberRechner | PARALLAX_SCROLL_REVEAL |
+| /ratgeber/[slug] | 359 | 1159 | Yes | Ratgeber[Slug]Rechner | PARALLAX_SCROLL_REVEAL |
+| /schluessel-nach-vorlage | 1793 | 2593 | Yes | SchluesselNachVorlageRechner | PARALLAX_SCROLL_REVEAL |
+| /schluessel-nach-vorlage/anfrage | 221 | 1021 | No | SchluesselNachVorlageAnfrageRechner | PARALLAX_SCROLL_REVEAL |
+| /warenkorb | 261 | 1061 | No | WarenkorbRechner | PARALLAX_SCROLL_REVEAL |
+| /kasse | 242 | 1042 | No | KasseRechner | PARALLAX_SCROLL_REVEAL |
+| /schluessel-nach-code | 497 | 1297 | Yes | SchluesselNachCodeRechner | PARALLAX_SCROLL_REVEAL |
+| /schluessel-nach-code/[slug] | 734 | 1534 | Yes | SchluesselNachCode[Slug]Rechner | PARALLAX_SCROLL_REVEAL |
+| /sicherheitstechnik | 1020 | 1820 | Yes | SicherheitstechnikRechner | PARALLAX_SCROLL_REVEAL |
+| /sicherheitstechnik/[slug] | 644 | 1444 | No | Sicherheitstechnik[Slug]Rechner | PARALLAX_SCROLL_REVEAL |
+| /sicherheitstechnik/sicherheitscheck | 329 | 1129 | No | SicherheitstechnikSicherheitscheckRechner | PARALLAX_SCROLL_REVEAL |
+| /tuer-und-schliesstechnik | 1784 | 2584 | Yes | TuerUndSchliesstechnikSimulator | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik/[slug] | 493 | 1293 | No | TuerUndSchliesstechnik[Slug]Simulator | BENTO_HOVER_GLOW_LIGHT |
+| /bestellung/[id] | 1299 | 2099 | No | Bestellung[Id]Rechner | PARALLAX_SCROLL_REVEAL |
+| /gleichschliessende-zylinder | 2081 | 2881 | Yes | GleichschliessendeZylinderSimulator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder/konfigurator | 310 | 1110 | No | GleichschliessendeZylinderKonfiguratorSimulator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen | 2480 | 3280 | Yes | ElektronischeZutrittsloesungenRechner | PARALLAX_SCROLL_REVEAL |
+| /elektronische-zutrittsloesungen/konfigurator | 382 | 1182 | No | ElektronischeZutrittsloesungenKonfiguratorRechner | PARALLAX_SCROLL_REVEAL |
+| /schliessanlagen | 1873 | 2673 | Yes | SchliessanlagenSimulator | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen/konfigurator | 368 | 1168 | No | SchliessanlagenKonfiguratorSimulator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin | 1578 | 2378 | Yes | ServiceUndTerminRechner | PARALLAX_SCROLL_REVEAL |
+| /service-und-termin/terminstatus | 107 | 950 | No | ServiceUndTerminTerminstatusRechner | PARALLAX_SCROLL_REVEAL |
+| /service-und-termin/anfrage | 151 | 951 | No | ServiceUndTerminAnfrageRechner | PARALLAX_SCROLL_REVEAL |
+| /service-und-termin/vor-ort | 655 | 1455 | No | ServiceUndTerminVorOrtRechner | PARALLAX_SCROLL_REVEAL |
+| /service-und-termin/kontakt | 474 | 1274 | No | ServiceUndTerminKontaktRechner | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/impressum | 248 | 1048 | No | RechtlichesImpressumRechner | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/cookie-einstellungen | 228 | 1028 | No | RechtlichesCookieEinstellungenRechner | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/versand-und-zahlung | 427 | 1227 | No | RechtlichesVersandUndZahlungRechner | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/widerruf | 370 | 1170 | No | RechtlichesWiderrufRechner | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/agb | 416 | 1216 | No | RechtlichesAgbRechner | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/datenschutz | 715 | 1515 | No | RechtlichesDatenschutzRechner | PARALLAX_SCROLL_REVEAL |
+| /artikel | 656 | 1456 | Yes | ArtikelRechner | PARALLAX_SCROLL_REVEAL |
+| /artikel/[slug] | 934 | 1734 | Yes | Artikel[Slug]Rechner | PARALLAX_SCROLL_REVEAL |
+| /standorte | 249 | 1049 | No | StandorteRechner | PARALLAX_SCROLL_REVEAL |
+| /standorte/[city] | 405 | 1205 | Yes | Standorte[City]Rechner | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel | 2002 | 2802 | Yes | AutoschluesselKonfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/marken | 718 | 1518 | No | AutoschluesselMarkenKonfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/marken/[make] | 979 | 1779 | No | AutoschluesselMarken[Make]Konfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/marken/[make]/[model] | 1223 | 2023 | No | AutoschluesselMarken[Make][Model]Konfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/funkschluessel | 1091 | 1891 | No | AutoschluesselFunkschluesselKonfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/programmieren | 1222 | 2022 | No | AutoschluesselProgrammierenKonfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/anfrage | 518 | 1318 | No | AutoschluesselAnfrageKonfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/kopieren | 1133 | 1933 | No | AutoschluesselKopierenKonfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/nachmachen | 1189 | 1989 | No | AutoschluesselNachmachenKonfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/smart-key | 1207 | 2007 | No | AutoschluesselSmartKeyKonfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/schluesselbart-fraesen | 1042 | 1842 | No | AutoschluesselSchluesselbartFraesenKonfigurator | MAGNETIC_BUTTON_KINETIC |
+| /autoschluessel/fahrzeugoeffnung | 1121 | 1921 | No | AutoschluesselFahrzeugoeffnungKonfigurator | MAGNETIC_BUTTON_KINETIC |
