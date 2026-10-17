@@ -190,7 +190,7 @@ export function SiteHeader() {
               <span
                 key={cartCount}
                 aria-hidden
-                className="sm24-pop absolute right-0.5 top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 font-mono text-caption font-semibold tabular-nums text-primary-foreground"
+                className="sm24-pop [--sm24-duration:var(--dauer-quick)] absolute right-0.5 top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 font-mono text-caption font-semibold tabular-nums text-primary-foreground"
               >
                 {cartCount > 99 ? '99+' : cartCount}
               </span>

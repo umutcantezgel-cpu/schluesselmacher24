@@ -407,11 +407,6 @@
   to { transform: scaleY(1); }
 }
 
-@keyframes sm24-scrub-x {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-
 @keyframes sm24-scrub-marke {
   from { transform: scale(0.85); }
   to { transform: none; }
@@ -519,7 +514,6 @@
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .sm24-scrub-y,
-    .sm24-scrub-x,
     .sm24-scrub-marke {
       animation-timing-function: linear;
       animation-fill-mode: both;
@@ -530,11 +524,6 @@
     .sm24-scrub-y {
       transform-origin: top;
       animation-name: sm24-scrub-y;
-    }
-
-    .sm24-scrub-x {
-      transform-origin: left;
-      animation-name: sm24-scrub-x;
     }
 
     .sm24-scrub-marke {

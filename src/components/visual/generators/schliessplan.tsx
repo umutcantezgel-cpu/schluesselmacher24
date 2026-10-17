@@ -443,13 +443,13 @@ function markieren(
 function kantenAttribute(stand: Stand): { className: string; strokeWidth: number } {
   if (stand === 'hervor') {
     return {
-      className: 'sm24-draw stroke-area-strong transition-colors motion-reduce:transition-none',
+      className: 'sm24-draw stroke-area-strong transition-colors duration-base ease-standard motion-reduce:transition-none',
       strokeWidth: KONTUR,
     };
   }
   if (stand === 'gedimmt') {
     return {
-      className: 'sm24-draw stroke-area-muted transition-colors motion-reduce:transition-none',
+      className: 'sm24-draw stroke-area-muted transition-colors duration-base ease-standard motion-reduce:transition-none',
       strokeWidth: LINIE,
     };
   }
@@ -461,9 +461,9 @@ function kantenAttribute(stand: Stand): { className: string; strokeWidth: number
  * weil die Einstiegsbewegung `sm24-pop` die Deckkraft mit `fill: both` festhält.
  */
 function gruppenKlasse(stand: Stand): string {
-  if (stand === 'hervor') return 'sm24-pop transition-opacity motion-reduce:transition-none';
+  if (stand === 'hervor') return 'sm24-pop transition-opacity duration-base ease-standard motion-reduce:transition-none';
   if (stand === 'gedimmt') {
-    return 'sm24-pop !opacity-30 transition-opacity motion-reduce:transition-none';
+    return 'sm24-pop !opacity-30 transition-opacity duration-base ease-standard motion-reduce:transition-none';
   }
   return 'sm24-pop';
 }

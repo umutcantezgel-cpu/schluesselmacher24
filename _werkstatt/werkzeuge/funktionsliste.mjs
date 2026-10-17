@@ -142,9 +142,11 @@ function tastaturEinschalten(page) {
       if (typ === 'date') {
         await orig.fill.call(loc, wert, opts); // Datumseingabe tippt der Browser je Sprache anders
       } else {
-        await loc.page().keyboard.press('ControlOrMeta+A');
-        await loc.page().keyboard.press('Delete');
-        if (wert !== '') await loc.page().keyboard.type(String(wert));
+        // Wie ein Mensch: markieren und überschreiben. Ein leerer Zwischenstand würde kontrollierte Felder
+        // (Menge: leer → 1) zurücksetzen, die Eingabe hinge dann an.
+        await loc.page().keyboard.press('Control+A');
+        if (wert === '') await loc.page().keyboard.press('Delete');
+        else await loc.page().keyboard.type(String(wert));
       }
       return t;
     });
