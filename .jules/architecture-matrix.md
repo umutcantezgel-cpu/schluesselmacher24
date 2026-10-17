@@ -1,0 +1,56 @@
+# Architecture Matrix
+
+| Route Path | Source File | Target Word Count | Interactive Module | Signature Interaction |
+|---|---|---|---|---|
+| /(payload)/admin/[[...segments]] | app/(payload)/admin/[[...segments]]/page.tsx | 950 | InteractiveAdminWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(payload)/api/[...slug] | app/(payload)/api/[...slug]/route.ts | 950 | InteractiveApiWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/api/kunden-upload | app/(site)/api/kunden-upload/route.ts | 950 | InteractiveApiWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/artikel/[slug] | app/(site)/artikel/[slug]/page.tsx | 950 | ArticleContentFilter | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/artikel | app/(site)/artikel/page.tsx | 950 | ArticleContentFilter | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/anfrage | app/(site)/autoschluessel/anfrage/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/fahrzeugoeffnung | app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/funkschluessel | app/(site)/autoschluessel/funkschluessel/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/kopieren | app/(site)/autoschluessel/kopieren/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/marken/[make]/[model] | app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/marken/[make] | app/(site)/autoschluessel/marken/[make]/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/marken | app/(site)/autoschluessel/marken/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/nachmachen | app/(site)/autoschluessel/nachmachen/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel | app/(site)/autoschluessel/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/programmieren | app/(site)/autoschluessel/programmieren/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/schluesselbart-fraesen | app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/autoschluessel/smart-key | app/(site)/autoschluessel/smart-key/page.tsx | 950 | CarKeyCompatibilityChecker | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/bestellung/[id] | app/(site)/bestellung/[id]/page.tsx | 950 | InteractiveBestellungWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/elektronische-zutrittsloesungen/konfigurator | app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 950 | InteractiveElektronische-zutrittsloesungenWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/elektronische-zutrittsloesungen | app/(site)/elektronische-zutrittsloesungen/page.tsx | 950 | InteractiveElektronische-zutrittsloesungenWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/gleichschliessende-zylinder/konfigurator | app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 950 | InteractiveGleichschliessende-zylinderWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/gleichschliessende-zylinder | app/(site)/gleichschliessende-zylinder/page.tsx | 950 | InteractiveGleichschliessende-zylinderWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/kasse | app/(site)/kasse/page.tsx | 950 | InteractiveKasseWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site) | app/(site)/page.tsx | 950 | InteractiveServiceWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/ratgeber/[slug] | app/(site)/ratgeber/[slug]/page.tsx | 950 | ArticleContentFilter | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/ratgeber | app/(site)/ratgeber/page.tsx | 950 | ArticleContentFilter | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/agb | app/(site)/rechtliches/agb/page.tsx | 950 | InteractiveRechtlichesWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/cookie-einstellungen | app/(site)/rechtliches/cookie-einstellungen/page.tsx | 950 | InteractiveRechtlichesWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/datenschutz | app/(site)/rechtliches/datenschutz/page.tsx | 950 | InteractiveRechtlichesWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/impressum | app/(site)/rechtliches/impressum/page.tsx | 950 | InteractiveRechtlichesWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/versand-und-zahlung | app/(site)/rechtliches/versand-und-zahlung/page.tsx | 950 | InteractiveRechtlichesWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/rechtliches/widerruf | app/(site)/rechtliches/widerruf/page.tsx | 950 | InteractiveRechtlichesWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schliessanlagen/konfigurator | app/(site)/schliessanlagen/konfigurator/page.tsx | 950 | LockingSystemConfigurator | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schliessanlagen | app/(site)/schliessanlagen/page.tsx | 950 | LockingSystemConfigurator | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schluessel-nach-code/[slug] | app/(site)/schluessel-nach-code/[slug]/page.tsx | 950 | InteractiveSchluessel-nach-codeWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schluessel-nach-code | app/(site)/schluessel-nach-code/page.tsx | 950 | InteractiveSchluessel-nach-codeWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schluessel-nach-vorlage/anfrage | app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 950 | InteractiveSchluessel-nach-vorlageWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/schluessel-nach-vorlage | app/(site)/schluessel-nach-vorlage/page.tsx | 950 | InteractiveSchluessel-nach-vorlageWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin/anfrage | app/(site)/service-und-termin/anfrage/page.tsx | 950 | InteractiveService-und-terminWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin/kontakt | app/(site)/service-und-termin/kontakt/page.tsx | 950 | InteractiveService-und-terminWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin | app/(site)/service-und-termin/page.tsx | 950 | InteractiveService-und-terminWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin/terminstatus | app/(site)/service-und-termin/terminstatus/page.tsx | 950 | InteractiveService-und-terminWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/service-und-termin/vor-ort | app/(site)/service-und-termin/vor-ort/page.tsx | 950 | InteractiveService-und-terminWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/sicherheitstechnik/[slug] | app/(site)/sicherheitstechnik/[slug]/page.tsx | 950 | SecurityAuditCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/sicherheitstechnik | app/(site)/sicherheitstechnik/page.tsx | 950 | SecurityAuditCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/sicherheitstechnik/sicherheitscheck | app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 950 | SecurityAuditCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/standorte/[city] | app/(site)/standorte/[city]/page.tsx | 950 | InteractiveStandorteWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/standorte | app/(site)/standorte/page.tsx | 950 | InteractiveStandorteWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/tuer-und-schliesstechnik/[slug] | app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 950 | InteractiveTuer-und-schliesstechnikWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/tuer-und-schliesstechnik | app/(site)/tuer-und-schliesstechnik/page.tsx | 950 | InteractiveTuer-und-schliesstechnikWidget | BENTO_HOVER_GLOW_LIGHT |
+| /(site)/warenkorb | app/(site)/warenkorb/page.tsx | 950 | InteractiveWarenkorbWidget | BENTO_HOVER_GLOW_LIGHT |
+| /llms.txt | app/llms.txt/route.ts | 950 | InteractiveLlms.txtWidget | BENTO_HOVER_GLOW_LIGHT |
