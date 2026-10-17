@@ -1,0 +1,11 @@
+# SCHLÜSSELMACHER24
+
+> Fachbetrieb für Autoschlüssel (nachmachen, programmieren, reparieren), Schlüssel nach
+> Code und nach Vorlage, gleichschließende Zylinder, Schließanlagen, elektronische
+> Zutrittslösungen, Tür- und Schließtechnik sowie Sicherheitstechnik. Bestellungen und
+> Anfragen deutschlandweit, Termine mit Fahrzeug vor Ort.
+
+## Status: REVOLUTION ARCHITECTURE
+
+The application is being upgraded to the Swiss Light Mode design system.
+See .jules/revolution-plan.json for details.

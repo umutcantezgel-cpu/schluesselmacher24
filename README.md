@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Status
+Architecture Blueprint has been generated. The Next.js 16 App Router application is undergoing a transformation to Swiss Light Mode.

@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| URL Path | Source File | Current Status | Target Word Count | Target Status | Interactive Module |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | Thin | 950 | PENDING_BUILDER | SegmentsModule |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | Thin | 950 | PENDING_BUILDER | SlugModule |
+| /artikel | src/app/(site)/artikel/page.tsx | Thin | 950 | PENDING_BUILDER | ArtikelModule |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | Thin | 950 | PENDING_BUILDER | AnfrageModule |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | Thin | 950 | PENDING_BUILDER | FahrzeugoeffnungModule |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | Thin | 950 | PENDING_BUILDER | FunkschluesselModule |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | Thin | 950 | PENDING_BUILDER | KopierenModule |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | Thin | 950 | PENDING_BUILDER | ModelModule |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | Thin | 950 | PENDING_BUILDER | MakeModule |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | Thin | 950 | PENDING_BUILDER | MarkenModule |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | Thin | 950 | PENDING_BUILDER | NachmachenModule |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | Thin | 950 | PENDING_BUILDER | AutoschluesselModule |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | Thin | 950 | PENDING_BUILDER | ProgrammierenModule |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | Thin | 950 | PENDING_BUILDER | SchluesselbartFraesenModule |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | Thin | 950 | PENDING_BUILDER | SmartKeyModule |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | Thin | 950 | PENDING_BUILDER | IdModule |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | Thin | 950 | PENDING_BUILDER | KonfiguratorModule |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | Thin | 950 | PENDING_BUILDER | ElektronischeZutrittsloesungenModule |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | Thin | 950 | PENDING_BUILDER | KonfiguratorModule |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | Thin | 950 | PENDING_BUILDER | GleichschliessendeZylinderModule |
+| /kasse | src/app/(site)/kasse/page.tsx | Thin | 950 | PENDING_BUILDER | KasseModule |
+| / | src/app/(site)/page.tsx | Thin | 950 | PENDING_BUILDER | StartseiteModule |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | Thin | 950 | PENDING_BUILDER | SlugModule |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | Thin | 950 | PENDING_BUILDER | RatgeberModule |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | Thin | 950 | PENDING_BUILDER | AgbModule |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | Thin | 950 | PENDING_BUILDER | CookieEinstellungenModule |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | Thin | 950 | PENDING_BUILDER | DatenschutzModule |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | Thin | 950 | PENDING_BUILDER | ImpressumModule |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | Thin | 950 | PENDING_BUILDER | VersandUndZahlungModule |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | Thin | 950 | PENDING_BUILDER | WiderrufModule |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | Thin | 950 | PENDING_BUILDER | KonfiguratorModule |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | Thin | 950 | PENDING_BUILDER | SchliessanlagenModule |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | Thin | 950 | PENDING_BUILDER | SlugModule |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | Thin | 950 | PENDING_BUILDER | SchluesselNachCodeModule |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | Thin | 950 | PENDING_BUILDER | AnfrageModule |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | Thin | 950 | PENDING_BUILDER | SchluesselNachVorlageModule |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | Thin | 950 | PENDING_BUILDER | AnfrageModule |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | Thin | 950 | PENDING_BUILDER | KontaktModule |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | Thin | 950 | PENDING_BUILDER | ServiceUndTerminModule |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | Thin | 950 | PENDING_BUILDER | TerminstatusModule |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | Thin | 950 | PENDING_BUILDER | VorOrtModule |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | Thin | 950 | PENDING_BUILDER | SlugModule |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | Thin | 950 | PENDING_BUILDER | SicherheitstechnikModule |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | Thin | 950 | PENDING_BUILDER | SicherheitscheckModule |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | Thin | 950 | PENDING_BUILDER | CityModule |
+| /standorte | src/app/(site)/standorte/page.tsx | Thin | 950 | PENDING_BUILDER | StandorteModule |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | Thin | 950 | PENDING_BUILDER | SlugModule |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | Thin | 950 | PENDING_BUILDER | TuerUndSchliesstechnikModule |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | Thin | 950 | PENDING_BUILDER | WarenkorbModule |
