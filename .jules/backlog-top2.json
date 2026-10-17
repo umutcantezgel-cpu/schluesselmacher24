@@ -1,0 +1,18 @@
+{
+  "top_2_ideas": [
+    {
+      "id": "IDEA_014",
+      "route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "module_name": "Security-Budget-Calculator",
+      "description": "Erweiterung der Sicherheitstechnik-Seite um fundierte Fachkompetenz (> 800 Wörter) und einen interaktiven Security-Budget-Rechner."
+    },
+    {
+      "id": "IDEA_042",
+      "route": "src/app/(site)/autoschluessel/page.tsx",
+      "status": "PENDING_BUILDER",
+      "module_name": "Autoschlüssel-Konfigurator",
+      "description": "Erweiterung der Autoschlüssel-Seite um Fachinhalte und einen interaktiven Finder."
+    }
+  ]
+}

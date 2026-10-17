@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Interaktive Module (Revolution Builder)
+* **Security-Budget-Calculator**: Ein interaktiver Rechner zur groben Kostenschätzung von Sicherheitstechnik-Projekten. Integriert in `src/app/(site)/sicherheitstechnik/page.tsx`. Nutzt React 19 Server Actions und das "Swiss Light Mode" Design (OKLCH).
