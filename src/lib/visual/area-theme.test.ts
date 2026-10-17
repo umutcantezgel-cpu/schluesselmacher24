@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { AREA_KEYS } from '@/lib/server/record-schema';
 import { AREA_THEMES, DEFAULT_AREA_THEME, contrastRatio, type AreaTheme } from './area-theme';
 
-const WHITE = '0 0% 100%';
+const WHITE = '1.000 0.000 89.9';
 
 function checkTheme(name: string, theme: AreaTheme) {
   it(`${name}: Text in Akzentfarbe ist lesbar (≥ 4,5:1)`, () => {
