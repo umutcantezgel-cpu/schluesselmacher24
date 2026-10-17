@@ -1,0 +1,96 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-17T22:28:36.015Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/service-und-termin"
+    ],
+    "selektor": "main header [role=img]",
+    "dauer": "1600",
+    "ziel": "/root/sm24-bilder/e6-c/einzelbilder/U-SERVICE",
+    "echtzeit": false
+  },
+  "pfad": "/service-und-termin",
+  "selektor": "main header [role=img]",
+  "dauer": 1600,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": null,
+    "zustand": null,
+    "wartezeit_ms": 0
+  },
+  "erweitert": {
+    "von": "svg.block",
+    "groesse": [
+      0,
+      0
+    ],
+    "auf": null
+  },
+  "animationen": 0,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 1600
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-role-img__0.jpg",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "k": 1,
+      "t": 400,
+      "datei": "/root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-role-img__1.jpg",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "k": 2,
+      "t": 800,
+      "datei": "/root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-role-img__2.jpg",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "k": 3,
+      "t": 1200,
+      "datei": "/root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-role-img__3.jpg",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "k": 4,
+      "t": 1600,
+      "datei": "/root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-role-img__4.jpg",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    }
+  ]
+}

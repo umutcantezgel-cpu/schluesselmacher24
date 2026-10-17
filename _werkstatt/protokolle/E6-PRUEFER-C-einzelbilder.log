@@ -72,3 +72,55 @@ Animationszeit-Fenster: 0 ms bis 1550 ms · Animationen: 6 · unendliche übersp
 
 JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/bewegung-einzelbilder-2026-10-17_16-03-02.json
 Bedienfehler: keine endliche Animation mit Dauer am Element gefunden; mit --dauer <ms> angeben oder --echtzeit nutzen
+| Bild | t ms (Animationszeit) | Datei |
+|---|---|---|
+| 0 | 0 | /root/sm24-bilder/e6-c/einzelbilder/H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-svg-role-img__0.jpg |
+| 1 | 400 | /root/sm24-bilder/e6-c/einzelbilder/H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-svg-role-img__1.jpg |
+| 2 | 800 | /root/sm24-bilder/e6-c/einzelbilder/H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-svg-role-img__2.jpg |
+| 3 | 1200 | /root/sm24-bilder/e6-c/einzelbilder/H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-svg-role-img__3.jpg |
+| 4 | 1600 | /root/sm24-bilder/e6-c/einzelbilder/H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-svg-role-img__4.jpg |
+
+Animationszeit-Fenster: 0 ms bis 1600 ms · Animationen: 0 · unendliche übersprungen: 0
+[data-motion]: keines gefunden, sofort weiter
+Ausschnitt erweitert: svg.block (0 × 0 px) → kein Vorfahre mit role=img oder svg, Element bleibt
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/bewegung-einzelbilder-2026-10-18_00-28-19.json
+| Bild | t ms (Animationszeit) | Datei |
+|---|---|---|
+| 0 | 0 | /root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-svg-role-img__0.jpg |
+| 1 | 400 | /root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-svg-role-img__1.jpg |
+| 2 | 800 | /root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-svg-role-img__2.jpg |
+| 3 | 1200 | /root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-svg-role-img__3.jpg |
+| 4 | 1600 | /root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-svg-role-img__4.jpg |
+
+Animationszeit-Fenster: 0 ms bis 1600 ms · Animationen: 0 · unendliche übersprungen: 0
+[data-motion]: keines gefunden, sofort weiter
+Ausschnitt erweitert: svg.block (0 × 0 px) → kein Vorfahre mit role=img oder svg, Element bleibt
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/bewegung-einzelbilder-2026-10-18_00-28-21.json
+| Bild | t ms (Animationszeit) | Datei |
+|---|---|---|
+| 0 | 0 | /root/sm24-bilder/e6-c/einzelbilder/H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-role-img__0.jpg |
+| 1 | 400 | /root/sm24-bilder/e6-c/einzelbilder/H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-role-img__1.jpg |
+| 2 | 800 | /root/sm24-bilder/e6-c/einzelbilder/H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-role-img__2.jpg |
+| 3 | 1200 | /root/sm24-bilder/e6-c/einzelbilder/H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-role-img__3.jpg |
+| 4 | 1600 | /root/sm24-bilder/e6-c/einzelbilder/H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-role-img__4.jpg |
+
+Animationszeit-Fenster: 0 ms bis 1600 ms · Animationen: 0 · unendliche übersprungen: 0
+[data-motion]: keines gefunden, sofort weiter
+Ausschnitt erweitert: svg.block (0 × 0 px) → kein Vorfahre mit role=img oder svg, Element bleibt
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/bewegung-einzelbilder-2026-10-18_00-28-34.json
+| Bild | t ms (Animationszeit) | Datei |
+|---|---|---|
+| 0 | 0 | /root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-role-img__0.jpg |
+| 1 | 400 | /root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-role-img__1.jpg |
+| 2 | 800 | /root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-role-img__2.jpg |
+| 3 | 1200 | /root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-role-img__3.jpg |
+| 4 | 1600 | /root/sm24-bilder/e6-c/einzelbilder/U-SERVICE/service-und-termin__desktop__main-header-role-img__4.jpg |
+
+Animationszeit-Fenster: 0 ms bis 1600 ms · Animationen: 0 · unendliche übersprungen: 0
+[data-motion]: keines gefunden, sofort weiter
+Ausschnitt erweitert: svg.block (0 × 0 px) → kein Vorfahre mit role=img oder svg, Element bleibt
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/bewegung-einzelbilder-2026-10-18_00-28-36.json

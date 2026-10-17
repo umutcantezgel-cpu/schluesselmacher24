@@ -1,0 +1,84 @@
+    · „Welche Marke hat Ihr Fahrzeug?“ in 0.2 s
+    · „Welches Modell fahren Sie?“ in 0.3 s
+    · „Baujahr beziehungsweise Erstzulassung“ in 0.4 s
+    · „Weitere Fahrzeugdaten (freiwillig)“ in 0.0 s
+    · „Welche Schlüsselart haben Sie?“ in 0.2 s
+    · „Wie viele funktionierende Schlüssel haben Sie noch?“ in 0.2 s
+    · „Was sollen wir für Sie tun?“ in 0.2 s
+    · „Fotos Ihres Schlüssels“ in 0.7 s
+    · „Zulassungsbescheinigung Teil I“ in 0.4 s
+    · „Wie erreichen wir Sie?“ in 0.7 s
+    · „Preis für Ihren Fall“ in 0.6 s
+    · „Anzahlung“ in 0.3 s
+    · „Zylinder zusammenstellen“ in 0.2 s
+    · „Gemeinsame Schlüssel“ in 0.1 s
+    · „Schutz und Optionen“ in 0.1 s
+    · „Spätere Erweiterung“ in 0.2 s
+    · „Wer plant das Projekt?“ in 0.2 s
+    · „Ihr Objekt“ in 1.1 s
+    · „Nutzer und Rollen“ in 1.1 s
+    · „Bestehende Anlage“ in 0.2 s
+    · „Erweiterung in der Zukunft“ in 0.8 s
+    · „Türen und Schließstellen“ in 0.5 s
+    · „Wer darf welche Tür öffnen?“ in 1.5 s
+    · „Anzahl der Schlüssel“ in 0.3 s
+    · „Unterlagen hochladen“ in 0.3 s
+    · „Montage, Beratung und Zeitraum“ in 0.4 s
+    · „Foto der Vorderseite“ in 0.3 s
+    · „Foto der Rückseite“ in 0.5 s
+    · „Foto von vorne auf Spitze und Profil“ in 0.4 s
+    · „Hersteller oder Marke“ in 0.3 s
+    · „Nummern und Beschriftungen“ in 1.0 s
+    · „Gewünschte Stückzahl“ in 0.0 s
+    · „Kontaktdaten und Versandland“ in 0.7 s
+    · „Um welches Objekt geht es?“ in 0.7 s
+    · „Zugänge und leicht erreichbare Fenster“ in 0.1 s
+    · „Garage, Keller, Nebengebäude und Außenflächen“ in 0.0 s
+    · „Vorhandene Kamera-, Alarm- oder Schließtechnik“ in 1.2 s
+    · „Wo liegt Ihr Schwerpunkt?“ in 0.4 s
+    · „Internet, WLAN und gewünschte App-Steuerung“ in 0.4 s
+    · „Fotos und Grundriss hochladen“ in 0.4 s
+    · „Budgetrahmen und Vor-Ort-Termin“ in 0.5 s
+    · „Ihre Kontaktdaten“ in 0.7 s
+    · „1. Um welches Objekt geht es?“ in 0.1 s
+    · „2. Wie groß ist der Umfang?“ in 0.9 s
+    · „3. Womit soll geöffnet werden?“ in 0.4 s
+    · „4. Wie soll die Anlage verwaltet werden?“ in 0.2 s
+    · „5. Welche Berechtigungen brauchen Sie?“ in 0.4 s
+    · „6. Ein Objekt oder mehrere Liegenschaften?“ in 0.2 s
+    · „7. Soll vorhandene Mechanik eingebunden werden?“ in 0.8 s
+    · „8. Welchen Service wünschen Sie?“ in 1.2 s
+    · „Worum geht es?“ in 0.1 s
+    · „Beschreiben Sie Ihr Anliegen“ in 0.8 s
+    · „Fotos oder Unterlagen“ in 0.3 s
+    · „Ihre Kontaktdaten“ in 0.5 s
+# Funktionsliste (E0-PRUEFER-04)
+
+Lauf: 2026-10-17T22:29:05.237Z · Server http://localhost:3000 · nur Tastatur · Bestanden 7 von 7
+
+| F-Nr. | Funktion | Ergebnis | Begründung oder Messwert | Dauer |
+|---|---|---|---|---|
+| F-01 | Warenkorb: Code-Schlüssel hinzufügen, Menge ändern, entfernen, Versandart, Summe | BESTANDEN | Eintrag erscheint: ja; Menge 2: ja (2); Zwischensumme 2 × 8,00 €: ja (16,00 €); Summe = Zwischensumme + Versand: ja (16,00 € + 4,95 € = 20,95 €); Menge 3 mit Staffelpreis 3 × 7,20 €: ja (21,60 €); Entfernen zeigt „leer“: ja | 3.5 s |
+| F-02 | Kasse: Pflichtfelder, zwei Bestätigungen, Absenden | BESTANDEN | Absenden als Attrappe abgefangen (action-schreibend, Prüf-E-Mail im Inhalt) | 4.5 s |
+| F-04 | Autoschlüssel-Assistent: Schritte, Fotos, Preis, Termin, Absenden | BESTANDEN | Absenden als Attrappe erreicht; 13 Schritte: Welche Marke hat Ihr Fahrzeug?: weiter → Welches Modell fahren Sie?: weiter → Baujahr beziehungsweise Erstzulassung: weiter → Weitere Fahrzeugdaten (freiwillig): weiter → Welche Schlüsselart haben Sie?: weiter → Wie viele funktionierende Schlüssel haben Sie noch?: weiter → Was sollen wir für Sie tun?: weiter → Fotos Ihres Schlüssels: weiter → Zulassungsbescheinigung Teil I: weiter → Wie erreichen wir Sie?: weiter → Preis für Ihren Fall: weiter → Anzahlung: weiter → Termin auswählen: letzter | 6.0 s |
+| F-05 | Zylinder-Konfigurator in den Warenkorb | BESTANDEN | Warenkorb gespeichert mit 1 Eintrag/Einträgen, Seite nicht leer; Schritte: Zylinder zusammenstellen: weiter → Gemeinsame Schlüssel: weiter → Schutz und Optionen: weiter → Spätere Erweiterung: weiter → Prüfen und in den Warenkorb legen: letzter | 3.4 s |
+| F-06 | Schließanlagen-Konfigurator bis Zusammenfassung und Absenden | BESTANDEN | Projekt-Absenden als Attrappe abgefangen; 11 Schritte | 8.1 s |
+| F-07 | Weitere Abläufe: vorlage, Sicherheitscheck, Zutritt, Service-Anfrage | BESTANDEN | /schluessel-nach-vorlage/anfrage: ok (8 Schritte, erster „Foto der Vorderseite“, letzter „Anfrage prüfen und absenden“, Absenden als Attrappe) · /sicherheitstechnik/sicherheitscheck: ok (10 Schritte, erster „Um welches Objekt geht es?“, letzter „Zusammenfassung“, Absenden als Attrappe) · /elektronische-zutrittsloesungen/konfigurator: ok (9 Schritte, erster „1. Um welches Objekt geht es?“, letzter „Zusammenfassung und Kontakt“, Absenden als Attrappe) · /service-und-termin/anfrage: ok (5 Schritte, erster „Worum geht es?“, letzter „Angaben prüfen und absenden“, Absenden als Attrappe) | 17.5 s |
+| F-08 | Terminstatus abfragen | BESTANDEN | Rückmeldung erscheint: „Nichts gefundenZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.“ | 1.4 s |
+
+Vorher/Nachher: content/records.json vorhanden nein → nein; Serverlog neu 0 Zeichen, Treffer Vorgang/Anfrage/POST: 0
+
+## Tastatur
+
+| F-Nr. | Gerät | Bedienungen | Tab-Schritte | ohne sichtbaren Fokus |
+|---|---|---|---|---|
+| F-01 | mobil | 5 | 25 | keine |
+| F-02 | mobil | 13 | 40 | keine |
+| F-04 | mobil | 33 | 457 | keine |
+| F-05 | mobil | 6 | 60 | keine |
+| F-06 | mobil | 42 | 474 | keine |
+| F-07 | mobil | 98 | 1028 | keine |
+| F-08 | mobil | 3 | 9 | keine |
+
+Markdown: /home/user/schluesselmacher24/_werkstatt/protokolle/funktionsliste-2026-10-18_00-29-50.md
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/funktionsliste-2026-10-18_00-29-50.json
