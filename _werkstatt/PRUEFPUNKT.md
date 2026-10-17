@@ -1,14 +1,15 @@
 # Prüfpunkt
 
-- **Etappe:** E5 (übrige Ansichten und Befundpakete). Alle 12 Befundpakete der Sichtabnahme E4-L-23 sind abgenommen (H01, H02, H03, H06, H10, H11 nach L3 mit Nacharbeit des Orchestrators). KERN 1.13.
+- **Etappe:** E6 Abschluss. Runde 2 abgenommen, Sichtabnahme E6-L-34 fertig (vier Berichte `_werkstatt/berichte/E6-L-34-sichtabnahme-*.md`), KERN 1.16 (Register vervollständigt, E6-L-35, Commit 2cdcbab, Build 208/208).
 - **Laufend:**
-  - Prüfstufe C und abschließende Sichtabnahme E6-L-34: Workflow `wf_b30ac901-56c` (Task `wjgxxbs7m`), Paket `_werkstatt/pakete/E6-PRUEFER-C.md` und `E6-L-34-sichtabnahme.md`. Bilder `/root/sm24-bilder/e6-c/`. Fortsetzen mit `resumeFromRunId`.
-  - Server: Port 3000 mit dem Build nach Runde 2 (Commit addae34, 208/208), Port 3100 E0 (`/root/sm24-e0`), Port 3001 Entwicklung.
-- **Fertig seit dem letzten Prüfpunkt:** Runde 2 vollständig abgenommen (15/15; D-047, D-048), E6-L-31 und E6-L-33 (gemeinsame Bausteine, KERN 1.15). Werkzeuge für Prüfstufe C: `funktionsliste.mjs --tastatur`, `svg-pruefung.mjs`, `animationen.mjs`.
+  - Prüfstufe C, Abschluss: Workflow `wf_2708b732-5cf` (Skript `workflows/scripts/pruefstufe-c-abschluss-wf_3ee9d33c-56a.js`) mit Teil 2 und 4 als Nachlese, Teil 3b Nachlauf Funktionsliste und Tastatur gegen 2cdcbab, Teil 5b Register-Nachprüfung, dann Teil 6 Ergebnis (`_werkstatt/protokolle/E6-PRUEFER-C-ergebnis.md`). Berichte der Teile 1, 3, 5 aus dem ersten Lauf: `_werkstatt/protokolle/E6-PRUEFER-C-teilberichte-1-3-5.md`.
+  - E6-D-02 Dokumentar (Paket `_werkstatt/pakete/E6-DOKUMENTAR-02.md`): Abschluss-Bildsatz nach `_werkstatt/bilder/abschluss/`, Blindvergleich `_werkstatt/bilder/blind/` (Schlüssel nur unter `/root/sm24-bilder/blind-schluessel/`), Galerie `_werkstatt/bilder/galerie.html`.
+  - Server: Port 3000 mit Build 2cdcbab, Port 3100 E0 (`/root/sm24-e0`), Port 3001 Entwicklung.
+- **Fertig seit dem letzten Prüfpunkt:** Tastatur-Eingabe im Werkzeug berichtigt (F-01 per Tastatur mobil bestanden), Registerabgleich (KERN 1.16), verwaiste Sperre entfernt.
 - **Als Nächstes:**
-  1. Ergebnis Prüfstufe C und Sichtabnahme E6-L-34 auswerten (ENTSCHEIDUNGEN D-049, ABNAHME.md mit Belegen).
-  2. Blindvergleich E6-D-02: Haiku-Dokumentar benennt Vorher/Nachher neutral in zufälliger Reihenfolge, Schlüssel getrennt; Galerie `_werkstatt/bilder/galerie.html`; BERICHT mit Anleitung zum Zusammenführen und Zurückrollen.
-  3. Endprüfung E6-L-13 durch frischen Opus-Unteragenten (Belege, kein Testlauf), dann ABSCHLUSS (CLAUDE.md-Block entfernen).
+  1. Ergebnis Prüfstufe C abnehmen; ENTSCHEIDUNGEN D-049; ABNAHME.md je Kriterium mit Beleg; Z-04 nach Urteil des Endprüfers, voraussichtlich AUSNAHME 1 (zwei Befundrunden verbraucht, L3/L7).
+  2. E6-D-02 abnehmen; BERICHT-Abschnitt „Abschluss“ mit Galerie, Anleitung zum Zusammenführen und Zurückrollen und Hinweis zu `_werkstatt`.
+  3. Endprüfung E6-L-13: frischer Opus-Unteragent, zuerst nur der Blindordner, Schlüssel erst nach seinem Urteil (SendMessage), dann jedes Kriterium gegen den Beleg; Urteil wörtlich wiedergeben; ABSCHLUSS (CLAUDE.md-Block entfernen).
 - **Bei Abbruch:**
   - `Workflow({scriptPath: <pakete-kette-Skript>, resumeFromRunId})` für den jeweiligen Lauf; Skript: `/root/.claude/projects/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/workflows/scripts/pakete-kette-wf_be39e9e0-a87.js`, args `{pakete:[{id,basis}], andere}`.
   - Paketerzeuger im Scratchpad `e5/` (`befund_pakete.py [H..]`, `welle_f.py`, `welle_gh.py [Kennung..]`); die erzeugten Pakete liegen im Repo.
