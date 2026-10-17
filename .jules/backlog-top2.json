@@ -1,0 +1,10 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_042",
+      "title": "Interaktiver Sicherheits-Kalkulator & Gefahrenmatrix",
+      "target_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}

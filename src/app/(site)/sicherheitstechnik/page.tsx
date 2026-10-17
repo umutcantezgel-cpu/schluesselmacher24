@@ -19,11 +19,17 @@ import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { SecurityBudgetCalculator } from '@/components/calculator/security-budget-calculator';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'sicherheitstechnik';
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  void resolvedParams;
+  void resolvedSearch;
+
   const page = await getPageContent(ROUTE);
   return {
     title: page?.seo.title ?? 'Sicherheitstechnik',
@@ -73,7 +79,17 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ [key: string]: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  void resolvedParams;
+  void resolvedSearch;
+
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -157,6 +173,126 @@ export default async function SicherheitstechnikPage() {
                 </ButtonLink>
               </div>
             </div>
+          </div>
+        </div>
+      </Section>
+
+
+      {/* Interaktiver Kalkulator */}
+      <Section className="py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-4xl">
+          <SectionHeading
+            eyebrow="Investitionsplanung"
+            title="Sicherheitsbudget vorab kalkulieren"
+            lead="Nutzen Sie unseren interaktiven Kalkulator, um ein erstes Gefühl für die Investitionssumme zu erhalten. Die Berechnung berücksichtigt Objektart, Anzahl der Zugänge sowie die Integration elektronischer Erkennungs- und Meldesysteme."
+          />
+          <div className="mt-12">
+            <SecurityBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Detaillierte Fachinhalte - Architektur & Leistungsklassen */}
+      <Section tone="muted" className="py-16 md:py-24 lg:py-32 bg-[oklch(0.988_0.002_260)]">
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight text-[oklch(0.16_0.02_260)]">Architektur moderner Sicherheitstechnik</h2>
+            <p className="mt-6 text-[16px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Moderne Sicherheitstechnik ist kein isoliertes Gadget, sondern ein holistisches System. Die Architektur stützt sich auf standardisierte Schnittstellen und Protokolle, die sicherstellen, dass Komponenten verschiedener Hersteller (z. B. eine Kamera von Axis, ein Melder von Telenot und ein Zylinder von BKS) über ein zentrales Management-System (Gefahrenmanagementsystem) oder zumindest über eine smarte Zentraleinheit miteinander kommunizieren können.
+            </p>
+            <p className="mt-4 text-[16px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Die Planung erfordert eine präzise Risikoanalyse nach DIN EN 50131 (Einbruchmeldeanlagen). Dabei definieren wir nicht nur die Platzierung von Sensoren, sondern berücksichtigen Umweltbedingungen, Fehlalarmrisiken (z.B. durch Haustiere oder starken Luftzug) und die Bedienfreundlichkeit im Alltag. Ein System, das zu komplex in der Handhabung ist, wird nicht genutzt – und bietet damit keinen Schutz.
+            </p>
+
+            <h3 className="mt-10 text-xl font-bold text-[oklch(0.16_0.02_260)]">Zertifizierung und VdS-Klassen</h3>
+            <p className="mt-4 text-[16px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Für gewerbliche Objekte und Gebäude mit hohen Werten fordern Versicherer häufig Anlagen, die nach VdS-Richtlinien zertifiziert sind. Die VdS-Klassen (A, B, C) definieren den Grad des Widerstands gegen Überwindungsversuche. Während Klasse A für Haushalte mit normaler Gefährdung ausreicht, ist für Juweliere, Waffenhandlungen oder sehr exponierte Privatanwesen mindestens Klasse B oder C erforderlich. Wir projektieren und errichten diese Anlagen nach den strengen Vorgaben und übernehmen die notwendige Dokumentation.
+            </p>
+          </div>
+          <div>
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-8 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">Leistungsklassen & Matrix</h3>
+              <p className="mt-2 text-[14px] text-[oklch(0.32_0.02_260)] mb-6">Eine Übersicht der empfohlenen Schutzmaßnahmen basierend auf der Objektart.</p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                      <th className="py-3 font-semibold text-[oklch(0.16_0.02_260)]">Schutzklasse</th>
+                      <th className="py-3 font-semibold text-[oklch(0.16_0.02_260)]">Mechanik</th>
+                      <th className="py-3 font-semibold text-[oklch(0.16_0.02_260)]">Elektronik & Meldung</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.3)]">
+                    <tr>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)] font-medium">Wohnung (Etage)</td>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)]">Sicherheitsbeschlag, Zylinder mit Bohrschutz, ggf. Querriegel.</td>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)]">Lokale Alarmanlage (Smart Home), Tür-/Fensterkontakte.</td>
+                    </tr>
+                    <tr>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)] font-medium">Einfamilienhaus</td>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)]">Pilzkopfverriegelungen, RC2/RC3 Türen, Lichtschachtrost-Sicherung.</td>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)]">VdS-Home zertifizierte Anlage, Außenhautüberwachung, Video.</td>
+                    </tr>
+                    <tr>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)] font-medium">Gewerbe (Büro)</td>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)]">Elektronische Zutrittskontrolle, Motorschlösser, RC3/RC4 Türen.</td>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)]">VdS Klasse B Anlage, Aufschaltung auf NSL, flächendeckende Videoüberwachung.</td>
+                    </tr>
+                    <tr>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)] font-medium">Gewerbe (Hochrisiko)</td>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)]">Tresore, Hochsicherheitstüren, Durchgreifschutz, Schleusen.</td>
+                      <td className="py-4 text-[oklch(0.32_0.02_260)]">VdS Klasse C Anlage, seismische Melder, redundante Alarmwege (IP+LTE).</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* FAQ Sektion (>5 Fragen) */}
+      <Section tone="muted" className="py-16 md:py-24 lg:py-32 bg-[oklch(0.968_0.004_260)]">
+        <div className="mx-auto max-w-3xl">
+          <SectionHeading
+            eyebrow="Häufig gestellte Fragen"
+            title="Fachliche Antworten zu Sicherheitssystemen"
+            lead="Transparenz ist uns wichtig. Hier finden Sie präzise Antworten auf die drängendsten Fragen rund um Installation, Recht und Technik."
+          />
+
+          <div className="mt-12 space-y-6">
+            {[
+              {
+                q: 'Was ist der Unterschied zwischen VdS-zertifizierten und Smart-Home-Alarmanlagen?',
+                a: 'VdS-zertifizierte Anlagen entsprechen strengsten Prüfrichtlinien der Versicherer bezüglich Sabotagesicherheit, Ausfallsicherheit (Notstrom) und Frequenzstabilität (bei Funk). Smart-Home-Systeme sind primär auf Komfort ausgelegt, lassen sich leicht per App steuern, bieten aber oft nicht den garantierten Widerstand gegen professionelle Manipulationsversuche (z.B. Jamming). Für hohe Sachwerte oder gewerbliche Objekte ist VdS zwingend.'
+              },
+              {
+                q: 'Benötige ich für eine Videoüberwachung am Einfamilienhaus eine Genehmigung?',
+                a: 'Eine behördliche Genehmigung ist privat meist nicht nötig, aber die rechtlichen Grenzen sind eng: Kameras dürfen ausschließlich das eigene Grundstück erfassen. Öffentliche Gehwege, Straßen oder das Nachbargrundstück müssen technisch (z.B. durch Privacy-Masking / Verpixelung) zwingend ausgeblendet werden. Wir stellen die Anlage rechtskonform ein und dokumentieren dies.'
+              },
+              {
+                q: 'Wie funktioniert die Aufschaltung auf eine Notruf- und Serviceleitstelle (NSL)?',
+                a: 'Die Alarmanlage überträgt bei Auslösung ein standardisiertes Protokoll (meist über einen gesicherten IP-Weg mit LTE-Backup) an eine 24/7 besetzte Leitstelle. Dort sitzt geschultes Personal, das gemäß einem vorher definierten Maßnahmenplan agiert (z.B. Rückruf beim Inhaber, Entsendung eines Wachdienstes, direkte Alarmierung der Polizei).'
+              },
+              {
+                q: 'Können Haustiere Fehlalarme auslösen?',
+                a: 'Ja, bei unzureichender Planung. Wir setzen jedoch spezielle Bewegungsmelder ein (sog. tierimmune oder Pet-Melder), die anhand von Größe, Masse und Bewegungsmuster unterscheiden können, ob sich eine Katze/ein Hund oder ein Mensch im Raum bewegt. Alternativ setzen wir stärker auf die Außenhautüberwachung (Tür-/Fensterkontakte), die ohnehin haustierresistent ist.'
+              },
+              {
+                q: 'Was passiert mit der Sicherheitstechnik bei einem Stromausfall?',
+                a: 'Professionelle Einbruchmeldeanlagen verfügen über leistungsstarke, integrierte Notstromakkus. Diese überbrücken Stromausfälle in der Regel für 12 bis 72 Stunden (abhängig von der Anlagengröße und VdS-Klasse). Sobald die Netzspannung abfällt, sendet die Anlage eine Störungsmeldung, bleibt aber voll funktionsfähig.'
+              },
+              {
+                q: 'Ist eine kabelgebundene Anlage immer besser als eine Funkanlage?',
+                a: 'In Neubauten oder bei Sanierungen raten wir immer zu verdrahteten Systemen: Sie sind wartungsärmer (kein Batteriewechsel), extrem störsicher und meist günstiger in den Komponenten. Für Bestandsbauten, wo keine Schlitze geklopft werden sollen, sind moderne, verschlüsselte (Rolling Code) Funkalarmanlagen jedoch eine absolut gleichwertige und hochsichere Alternative.'
+              }
+            ].map((faq, index) => (
+              <div key={index} className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-6 shadow-[0_4px_12px_-2px_oklch(0.16_0.02_260/0.03)]">
+                <h3 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">{faq.q}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
