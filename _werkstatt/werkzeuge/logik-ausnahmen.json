@@ -128,6 +128,16 @@
       "grund": "Unsichtbare Datei-Eingaben bekommen einen Namen und verlassen die Tab-Reihenfolge (axe label critical; die sichtbaren Knöpfe öffnen sie). Gleicher Text wie die Knöpfe (E4-L-27)",
       "suchen": "\\s*aria-label=\\{allowDocuments \\? 'Datei auswählen' : 'Aus Galerie wählen'\\}|\\s*tabIndex=\\{-1\\}",
       "ersetzen": ""
+    },
+    {
+      "grund": "Gewicht des Kameraknopfs als optionale Darstellungs-Prop; Standard unverändert, nur className liest sie (E6-BEFUND2-H06)",
+      "suchen": "\\n\\s*kamera\\?: 'betont' \\| 'ruhig';",
+      "ersetzen": ""
+    },
+    {
+      "grund": "Standardwert der Darstellungs-Prop kamera in der Destrukturierung (E6-BEFUND2-H06)",
+      "suchen": "\\n\\s*kamera = 'betont',",
+      "ersetzen": ""
     }
   ],
   "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx": [
