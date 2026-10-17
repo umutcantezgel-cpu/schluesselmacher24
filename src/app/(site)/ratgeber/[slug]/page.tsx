@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -92,7 +91,7 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
             <li key={block.heading} className="border-b border-border">
               <a
                 href={`#${ankerKennung(block.heading)}`}
-                className="inline-flex min-h-touch w-full items-center gap-3 text-small font-semibold text-foreground transition-colors duration-quick hover:text-primary"
+                className="flex min-h-touch w-full items-baseline gap-3 py-3 text-small font-semibold text-foreground transition-colors duration-quick hover:text-primary"
               >
                 <span
                   className={
@@ -113,6 +112,9 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
     </div>
   );
 
+  // Ablaufzeichnung aus der Unterzeile (B-23); ohne Ablauf bleibt die Fachgrafik zum Motiv.
+  const ablauf = ablaufAusText(guide.excerpt);
+
   return (
     <>
       <JsonLd data={articleSchema(guide)} />
@@ -126,7 +128,8 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
         /* Blickfang im Kopf (E4-L-23): die Ablaufzeichnung aus der Unterzeile, sonst die Fachgrafik zum Motiv. */
         visual={
           <ImagePlaceholder
-            slot={{ ...guide.image, visual: ablaufAusText(guide.excerpt) ?? guide.image.visual }}
+            slot={{ ...guide.image, visual: ablauf ?? guide.image.visual }}
+            className={ablauf && !guide.image.bild?.url ? 'max-sm:aspect-4/3' : undefined}
             sizes="(min-width: 1024px) 40vw, 100vw"
             frei
           />
@@ -142,24 +145,34 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
 
         <article className="sm24-lesen-artikel min-w-0 lg:col-span-8">
           <div className="prose-sm24">
-            {guide.body.map((block, index) => (
-              <Fragment key={block.heading}>
-                {/* Trenner zwischen zwei Abschnitten: die Profillinie (B-02), gleicher Abstand oben und unten. */}
-                {index > 0 && <Profillinie text={block.heading} className="my-12 text-primary" />}
-                <section data-abschnitt={index < 6 ? index + 1 : undefined}>
+            {guide.body.map((block, index) => {
+              const zu = index < 6 ? index + 1 : undefined;
+              return (
+                <section key={block.heading} className="flow-root" data-abschnitt={zu}>
+                  {/* Trenner zwischen zwei Abschnitten: die Profillinie (B-02), gleicher Abstand oben und unten. Sie gehört zum Abschnitt, damit die Lesezeitleiste (B-24) lückenlos läuft. */}
+                  {index > 0 && <Profillinie text={block.heading} className="my-12 text-primary" />}
                   <h2 id={ankerKennung(block.heading)} className="scroll-mt-28">
-                    <span aria-hidden="true" className="block font-mono text-small font-semibold tabular-nums text-primary">
+                    <span
+                      aria-hidden="true"
+                      className={
+                        zu
+                          ? 'sm24-lesen-nummer block font-mono text-small font-semibold tabular-nums text-foreground-muted'
+                          : 'block font-mono text-small font-semibold tabular-nums text-foreground-muted'
+                      }
+                      data-zu={zu}
+                    >
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     {block.heading}
                   </h2>
                   <p>{block.text}</p>
                 </section>
-              </Fragment>
-            ))}
+              );
+            })}
           </div>
 
-          <div className="mt-10 rounded-lg border border-border bg-surface p-4 sm:p-6">
+          <div>
+            <Profillinie text="Ihr nächster Schritt" className="my-12 text-primary" />
             <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
               Ihr nächster Schritt
             </p>
@@ -192,7 +205,7 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
                         {eintrag.label}
                         <GlyphPfeilRechts
                           size={16}
-                          className="shrink-0 text-primary transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
+                          className="shrink-0 text-foreground-muted transition duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
                         />
                       </Link>
                     </li>

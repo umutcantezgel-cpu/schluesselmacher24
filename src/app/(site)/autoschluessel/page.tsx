@@ -19,6 +19,7 @@ import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconReparaturAustausch } from '@/components/visual/icons/reparatur-austausch';
 import { IconSchluesselKopieren } from '@/components/visual/icons/schluessel-kopieren';
 import { IconSchluesselProgrammieren } from '@/components/visual/icons/schluessel-programmieren';
+import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
@@ -218,12 +219,18 @@ const FAQ = [
 /** Begriffe der Schlüsselarten-Liste: die vier Bauformen, danach Keyless als Zusatz des Smart Key. */
 const SCHLUESSELARTEN_BEGRIFFE: KeyKind[] = [...SCHLUESSELARTEN_REIHE.map(({ art }) => art), 'keyless'];
 
-/** Pfeil, der bei feinem Zeiger auf Hover der Gruppe nach rechts rückt (B-06). */
+/**
+ * Zeilenpfeil: gedämpft in Ruhe, bei Hover und Fokus der Zeile in Primärblau; bei feinem
+ * Zeiger rückt er nach rechts (B-06).
+ */
 function Weiter({ size = 18, className }: { size?: number; className?: string }) {
   return (
     <GlyphPfeilRechts
       size={size}
-      className={cn('shrink-0 transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1', className)}
+      className={cn(
+        'shrink-0 text-foreground-muted transition duration-quick ease-standard group-hover:text-primary group-focus-within:text-primary zeiger:group-hover:translate-x-1',
+        className,
+      )}
     />
   );
 }
@@ -259,9 +266,27 @@ export default async function AutoschluesselHubPage() {
     },
     {
       title: 'Termin buchen',
-      body: `Der früheste Termin liegt etwa ${leadDays} Tage in der Zukunft, weil wir Ihren Schlüssel vorher beschaffen.`,
+      body: `Der früheste Termin liegt etwa ${leadDays}\u00a0Tage in der Zukunft, weil wir Ihren Schlüssel vorher beschaffen.`,
     },
   ];
+
+  // Anzahlung und Vorlauf: ein Text, der zweimal ausgegeben wird (Desktop unter den Knöpfen, mobil nach Schritt 5)
+  const anzahlungHinweis = (
+    <>
+      <GlyphInfo size={18} className="mt-0.5 shrink-0 text-foreground-muted" />
+      <div className="min-w-0 max-w-measure text-small leading-relaxed">
+        <p className="mb-1 font-semibold text-foreground">Anzahlung und Vorlauf</p>
+        <p className="text-foreground-muted">
+          Die Anzahlung beträgt standardmäßig{' '}
+          <span className="font-mono tabular-nums text-foreground">{deposit}</span> und wird
+          vollständig auf den Gesamtpreis angerechnet. Der Vorlauf von etwa{' '}
+          <span className="font-mono tabular-nums text-foreground">{leadDays}</span>
+          {'\u00a0'}Tagen entsteht durch die Beschaffung des passenden Schlüssels. Für einzelne Fahrzeuge und Leistungen
+          können abweichende Werte gelten — diese sehen Sie im Ablauf, bevor Sie etwas verbindlich buchen.
+        </p>
+      </div>
+    </>
+  );
 
   return (
     <>
@@ -293,23 +318,29 @@ export default async function AutoschluesselHubPage() {
       >
         <dl className="grid grid-cols-2 border-y border-border sm:grid-cols-4">
           {[
-            { label: 'Ablauf', wert: PROCESS_LABELS['termin-mit-anzahlung'].label },
+            { label: 'Ablauf', wert: PROCESS_LABELS['termin-mit-anzahlung'].label, wort: true },
             { label: 'Anzahlung', wert: deposit },
-            { label: 'Vorlauf', wert: `ca. ${leadDays} Tage` },
+            { label: 'Vorlauf', wert: `ca. ${leadDays}\u00a0Tage` },
             { label: 'Erfasste Modelle', wert: String(modelCount) },
           ].map((feld, index) => (
             <div
               key={feld.label}
               className={cn(
-                'py-4 pr-3 sm:pr-4',
+                'flex flex-col py-4 pr-3 sm:pr-4',
                 index % 2 === 1 && 'border-l border-border pl-3',
                 index > 0 && 'sm:border-l sm:pl-4',
               )}
             >
-              <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng">
+              <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng xl:whitespace-nowrap">
                 {feld.label}
               </dt>
-              <dd className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
+              {/* Werte stehen unten auf einer Grundlinie; Zahlen in Mono, Wortwerte in Inter */}
+              <dd
+                className={cn(
+                  'mt-auto pt-1 text-title-sm font-semibold text-foreground',
+                  !feld.wort && 'font-mono tabular-nums',
+                )}
+              >
                 {feld.wert}
               </dd>
             </div>
@@ -317,7 +348,7 @@ export default async function AutoschluesselHubPage() {
         </dl>
       </PageHeader>
 
-      {/* Abschnitt 01: Einleitung zu den Schlüsselarten, danach die Begriffsliste ohne zweite Zeichnung */}
+      {/* Abschnitt 01: Einleitung, danach die Begriffsliste mit ruhiger Zeichnung je Bauform */}
       <Section id="schluesselarten" labelledBy="schluesselarten-titel">
         <SectionHeading
           id="schluesselarten-titel"
@@ -356,22 +387,18 @@ export default async function AutoschluesselHubPage() {
             {SCHLUESSELARTEN_BEGRIFFE.map((art) => (
               <div
                 key={art}
-                className="grid gap-x-6 gap-y-1 border-b border-border py-5 sm:grid-cols-12"
+                className="grid gap-x-6 gap-y-2 border-b border-border py-5 lg:grid-cols-12 lg:items-start"
               >
-                <dt
-                  className={cn(
-                    'font-semibold text-foreground',
-                    art === 'keyless' ? 'text-body sm:col-span-8 sm:col-start-5' : 'text-title-sm sm:col-span-4',
+                <dt className="flex items-start gap-4 lg:col-span-5 lg:gap-6">
+                  {art === 'keyless' ? (
+                    // Keyless ist keine Bauform: gleich breiter Platz, damit der Name in der Spalte bleibt
+                    <span aria-hidden className="w-28 shrink-0 sm:w-40" />
+                  ) : (
+                    <SchluesselartZeichnung art={art} className="w-28 shrink-0 sm:w-40" />
                   )}
-                >
-                  {keyKindLabel(art)}
+                  <span className="text-title-sm font-semibold text-foreground">{keyKindLabel(art)}</span>
                 </dt>
-                <dd
-                  className={cn(
-                    'max-w-measure text-small text-foreground-muted',
-                    art === 'keyless' ? 'sm:col-span-8 sm:col-start-5' : 'sm:col-span-8',
-                  )}
-                >
+                <dd className="max-w-measure text-small text-foreground-muted sm:pl-44 lg:col-span-7 lg:pl-0">
                   {keyKindDescription(art)}
                 </dd>
               </div>
@@ -393,8 +420,8 @@ export default async function AutoschluesselHubPage() {
           {TOPIC_GROUPS.map((group) => {
             const Icon = group.icon;
             return (
-              <div key={group.title}>
-                <div className="flex items-start gap-4">
+              <div key={group.title} className="lg:grid lg:grid-cols-12 lg:gap-gutter">
+                <div className="flex items-start gap-4 lg:sticky lg:top-28 lg:col-span-4 lg:flex-col lg:self-start">
                   <Icon size={40} className="shrink-0 text-area-strong" />
                   <div>
                     <h3 className="text-title font-semibold text-foreground">{group.title}</h3>
@@ -402,7 +429,7 @@ export default async function AutoschluesselHubPage() {
                   </div>
                 </div>
 
-                <ul className="mt-5 border-t border-border">
+                <ul className="mt-5 border-t border-border lg:col-span-8 lg:mt-0">
                   {group.topics.map((topic) => (
                     <li
                       key={topic.term}
@@ -410,11 +437,11 @@ export default async function AutoschluesselHubPage() {
                     >
                       {/* Telefon: Pfeil rechts neben Begriff und Erklärung; ab md drei Spalten */}
                       <div className="grid grid-cols-12 gap-x-3 gap-y-2 py-4 md:items-start md:gap-4 md:py-5">
-                        <div className="col-span-10 col-start-1 row-start-1 flex items-center md:col-span-4">
+                        <div className="col-span-10 col-start-1 row-start-1 flex items-center md:col-span-4 lg:col-span-5">
                           <h4 className="text-body font-semibold text-foreground">{topic.term}</h4>
                           {topic.hint && <InfoTip hint={topic.hint} className="relative z-raised ml-1.5" />}
                         </div>
-                        <p className="col-span-10 col-start-1 row-start-2 text-small text-foreground-muted md:col-span-6 md:col-start-5 md:row-start-1">
+                        <p className="col-span-10 col-start-1 row-start-2 text-small text-foreground-muted md:col-span-6 md:col-start-5 md:row-start-1 lg:col-span-6 lg:col-start-6">
                           {topic.body}
                         </p>
                         <Weiter
@@ -438,7 +465,7 @@ export default async function AutoschluesselHubPage() {
       {/* Ablauf in fünf Schritten: Fortschritt läuft mit dem Scrollen (B-03) */}
       <Section tone="sunken" id="ablauf">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
-          <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-start">
+          <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-start">
             <SectionHeading
               nummer="03"
               eyebrow="Ablauf"
@@ -452,6 +479,9 @@ export default async function AutoschluesselHubPage() {
               <ButtonLink href="/autoschluessel/marken" size="lg" variant="outline">
                 Erst Fahrzeug nachschlagen
               </ButtonLink>
+            </div>
+            <div className="mt-8 hidden gap-3 border-t border-border pt-5 lg:flex">
+              {anzahlungHinweis}
             </div>
           </div>
 
@@ -475,20 +505,9 @@ export default async function AutoschluesselHubPage() {
             ))}
           </ol>
 
-          {/* Anzahlung und Vorlauf: Fläche mit Haarlinie, unter den Schritten (mobil nach Schritt 5) */}
-          <div className="flex gap-3 rounded-lg border border-border bg-surface p-5 lg:col-span-7 lg:col-start-6 lg:row-start-2">
-            <GlyphInfo size={18} className="mt-0.5 shrink-0 text-foreground-muted" />
-            <div className="min-w-0 text-small leading-relaxed">
-              <p className="mb-1 font-semibold text-foreground">Anzahlung und Vorlauf</p>
-              <p className="text-foreground-muted">
-                Die Anzahlung beträgt standardmäßig{' '}
-                <span className="font-mono font-semibold tabular-nums text-foreground">{deposit}</span> und wird
-                vollständig auf den Gesamtpreis angerechnet. Der Vorlauf von etwa{' '}
-                <span className="font-mono font-semibold tabular-nums text-foreground">{leadDays} Tagen</span>{' '}
-                entsteht durch die Beschaffung des passenden Schlüssels. Für einzelne Fahrzeuge und Leistungen
-                können abweichende Werte gelten — diese sehen Sie im Ablauf, bevor Sie etwas verbindlich buchen.
-              </p>
-            </div>
+          {/* Anzahlung und Vorlauf als Zeile mit Glyphe: Desktop unter den Knöpfen, mobil nach Schritt 5 */}
+          <div className="flex gap-3 border-t border-border pt-5 lg:hidden">
+            {anzahlungHinweis}
           </div>
         </div>
       </Section>
@@ -515,10 +534,10 @@ export default async function AutoschluesselHubPage() {
               <li key={make.id}>
                 <Link
                   href={`/autoschluessel/marken/${make.slug}`}
-                  className="flex min-h-touch items-center justify-between gap-2 whitespace-nowrap rounded-lg border border-border bg-surface px-3.5 py-2.5 text-small font-semibold text-foreground transition-colors duration-quick hover:border-primary hover:text-primary"
+                  className="group flex min-h-touch items-center justify-between gap-2 whitespace-nowrap rounded-lg border border-border bg-surface px-3.5 py-2.5 text-small font-semibold text-foreground transition-colors duration-quick hover:border-primary hover:text-primary"
                 >
                   {make.name}
-                  <GlyphPfeilRechts size={16} className="shrink-0 text-foreground-subtle" />
+                  <Weiter size={16} />
                 </Link>
               </li>
             ))}
@@ -534,7 +553,7 @@ export default async function AutoschluesselHubPage() {
           title="Was vor dem Auftrag meist offen ist"
           className="max-w-2xl"
         />
-        <Accordion items={page?.faq?.length ? page.faq : FAQ} className="mt-8" />
+        <Accordion items={page?.faq?.length ? page.faq : FAQ} className="mt-8 max-w-2xl" />
       </Section>
 
       {/* Weiterführend als Stückliste mit Haarlinien; die ganze Zeile ist der Link */}

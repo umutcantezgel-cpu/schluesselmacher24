@@ -253,20 +253,24 @@ Seiten 404 und Fehler sowie die Kür-Szene auf `/gleichschliessende-zylinder` (A
 
 ### `ablauf` — Reihenfolge als bemaßte Stationen (`viewBox 0 0 480 270`; schmal `0 0 300 h`, Höhe nach Anzahl)
 
-Zwei bis vier nummerierte Stationen auf einer Bemaßungslinie (Kettenmaß mit Endstrichen),
-Pfeilspitzen in Laufrichtung, kurze Mono-Beschriftung. Einsatz: Kopf des Ratgebers, wenn
+Zwei bis fünf nummerierte Stationen auf einer Bemaßungslinie (Kettenmaß von der ersten zur letzten
+Station mit Anfangsstrich), Pfeilspitzen an den Enden, Spitze an der Hilfslinie der Folgestation,
+kurze Mono-Beschriftung. Einsatz: Kopf des Ratgebers, wenn
 der vorhandene Text eine Reihenfolge nennt (`ablaufAusText` in `src/lib/visual/motiv.ts`).
 
 | Parameter | Werte | Standard |
 |---|---|---|
-| `schritte` | Text, durch `\|` getrennt; 2–4 Einträge, je höchstens 14 Zeichen; leere Einträge entfallen; sonst gilt der Standard | drei Stationen nur mit Nummern |
-| `aktiv` | 0 (keine) oder 1–4: diese Station hinterlegt (`fill-area-soft`, `stroke-area-strong`) | `0` |
+| `schritte` | Text, durch `\|` getrennt; 2–5 Einträge, je höchstens 14 Zeichen; leere Einträge entfallen; sonst gilt der Standard | drei Stationen nur mit Nummern |
+| `aktiv` | 0 (keine) oder 1–5: diese Station hinterlegt (`fill-area-soft`, `stroke-area-strong`) | `0` |
 | `format` | `breit` (Schrift 16) · `schmal` (300 breit, senkrecht, Schrift 12) | `breit` |
 
-- Stationen in der Bereichsfarbe (`stroke-area`), Bemaßungslinie `stroke-border-strong`.
-- Passen vier lange Beschriftungen nicht nebeneinander, stehen die geraden Stationen eine Zeile tiefer.
+- Stationen in der Bereichsfarbe (`stroke-area`), im breiten Format Kreis 30 mit Nummer 18, im schmalen
+  Kreis 22. Bemaßungslinie und Pfeile `foreground-muted`.
+- Breit: Polster ein Rasterfeld (30) neben Kreis und Beschriftung. Passen lange Beschriftungen nicht
+  nebeneinander, stehen die geraden Stationen eine Zeile tiefer.
+- Schmal: Der Inhalt steht waagerecht mittig in der Breite.
 - Bewegung (B-23): die Linie zeichnet (0,6 s), dann die Stationen nacheinander (`sm24-pop`, Staffel
-  0,12 s), Beschriftung und Pfeil mit ihrer Station; gesamt 1,36 s.
+  0,12 s), Beschriftung und Pfeil mit ihrer Station; gesamt 1,36 s bei vier Stationen, 1,48 s bei fünf.
 
 ## BereichIcon
 

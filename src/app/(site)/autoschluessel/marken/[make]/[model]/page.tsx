@@ -20,16 +20,12 @@ import { motionStyle } from '@/components/visual/motion/motion-style';
 import { SCHLUESSELARTEN_REIHE } from '@/components/autoschluessel/schluesselarten-reihe';
 import {
   KEY_KIND_HINT,
+  ON_SITE_HINT,
   keyKindDescription,
   keyKindLabel,
   keyKindShortLabel,
 } from '@/components/autoschluessel/key-kinds';
-import {
-  BaujahrFeld,
-  OnSiteBadge,
-  formatModelYears,
-  hatBaujahre,
-} from '@/components/autoschluessel/vehicle-facts';
+import { formatModelYears, hatBaujahre } from '@/components/autoschluessel/vehicle-facts';
 
 interface PageProps {
   params: Promise<{ make: string; model: string }>;
@@ -45,10 +41,15 @@ interface DetailFeld {
   keyless?: boolean;
 }
 
-/** Rasterspalten für zwei Zeichnungen oder eine; ab drei Zeichnungen gilt die Leiste. */
-const RASTER: Record<number, string> = {
-  1: '',
+/**
+ * Spalten der Reihe „Schlüsselarten im Detail“ nach Zahl der Zellen (KERN K-006): mobil ein Stapel,
+ * ab `md` die Reihe, bei vier Zellen zwei Spalten auf dem Tablet und vier ab `lg`.
+ */
+const SPALTEN: Record<number, string> = {
   2: 'sm:grid-cols-2',
+  3: 'md:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4',
+  5: 'md:grid-cols-3 lg:grid-cols-5',
 };
 
 /**
@@ -57,12 +58,6 @@ const RASTER: Record<number, string> = {
 const LEISTE =
   '-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-2 ' +
   'sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:overflow-visible md:scroll-px-0 md:px-0 md:pb-0';
-
-/** Spaltenzahl der Leiste ab `md`, passend zur Zahl der Zeichnungen. */
-const LEISTE_SPALTEN: Record<number, string> = {
-  3: 'md:grid-cols-3',
-  4: 'md:grid-cols-4',
-};
 
 /**
  * Erfasste Schlüsselarten als Felder: zuerst die Bauformen mit Zeichnung in der
@@ -143,7 +138,7 @@ export default async function ModelPage(props: PageProps) {
 
   // Nur Angaben, die tatsächlich im Datensatz stehen. Die Wertespalte steht durchgehend in Mono;
   // `prosa`: freier Redaktionstext bleibt in Fließschrift.
-  const angaben: { label: string; value: string; prosa?: boolean }[] = [
+  const angaben: { label: string; value: string | string[]; prosa?: boolean }[] = [
     { label: 'Marke', value: make.name },
     { label: 'Modell', value: model.name },
     { label: 'Baujahre', value: years },
@@ -151,7 +146,7 @@ export default async function ModelPage(props: PageProps) {
       label: 'Erfasste Schlüsselarten',
       value:
         model.keyKinds.length > 0
-          ? model.keyKinds.map((kind) => keyKindLabel(kind)).join(', ')
+          ? model.keyKinds.map((kind) => keyKindLabel(kind))
           : 'nicht erfasst — wir klären das anhand Ihrer Schlüsselfotos',
     },
     {
@@ -168,7 +163,7 @@ export default async function ModelPage(props: PageProps) {
 
   const bildstelle: ImageSlot = {
     motif: `Produktfoto: typische Schlüsselbauformen für ${make.name} ${model.name} nebeneinander`,
-    ratio: '4/3',
+    ratio: '16/9',
     note: 'Eigene Aufnahme. Kein Herstellerlogo im Bild.',
     ...(zeichenbar.length > 0
       ? {
@@ -206,7 +201,7 @@ export default async function ModelPage(props: PageProps) {
     {
       titel: 'Anzahlung und Vorlauf',
       text: `Die Anzahlung beträgt standardmäßig ${deposit} und wird vollständig auf den `
-        + `Gesamtpreis angerechnet. Der früheste Termin liegt etwa ${leadDays} Tage in der `
+        + `Gesamtpreis angerechnet. Der früheste Termin liegt etwa ${leadDays} Tage in der `
         + 'Zukunft, weil wir den passenden Schlüssel vorher beschaffen. Für einzelne '
         + 'Leistungen können abweichende Werte gelten — diese sehen Sie im Ablauf.',
     },
@@ -236,65 +231,102 @@ export default async function ModelPage(props: PageProps) {
           </ButtonLink>
         }
         visual={
-          <div className="rounded-lg bg-area-soft/40 p-4 sm:p-6">
+          <div className="sm:mx-auto sm:max-w-xl lg:-mr-8 lg:max-w-none xl:-mr-12">
             <ImagePlaceholder slot={bildstelle} frei />
           </div>
         }
       >
-        <div className="flex flex-wrap items-center gap-3 border-t border-border pt-6">
-          {/* Der ⓘ gehört zum letzten Chip: Chip und ⓘ brechen gemeinsam um, nie allein. */}
-          <ul className="flex flex-wrap items-center gap-1.5">
-            {model.keyKinds.length > 0 ? (
-              model.keyKinds.map((kind, index) => (
-                <li key={kind} className="inline-flex items-center gap-1.5">
-                  <Badge tone="outline">{keyKindShortLabel(kind)}</Badge>
-                  {index === model.keyKinds.length - 1 && <InfoTip hint={KEY_KIND_HINT} />}
-                </li>
-              ))
-            ) : (
-              <li className="text-small text-foreground-muted">Schlüsselarten noch nicht hinterlegt</li>
+        {/* Schriftfeld wie auf der Themenseite Autoschlüssel: Kennzahlen als Felder, Werte in Mono nur für Zahlen. */}
+        <dl className="grid grid-cols-2 border-y border-border sm:grid-cols-4">
+          <div className="col-span-2 py-4 max-sm:border-b max-sm:border-border sm:pr-4">
+            <dt className="flex min-h-6 items-center gap-1.5 font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng">
+              Schlüsselarten
+              {model.keyKinds.length > 0 && <InfoTip hint={KEY_KIND_HINT} />}
+            </dt>
+            <dd className="mt-1">
+              {model.keyKinds.length > 0 ? (
+                <ul className="flex flex-wrap gap-1.5">
+                  {model.keyKinds.map((kind) => (
+                    <li key={kind}>
+                      <Badge tone="outline">{keyKindShortLabel(kind)}</Badge>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-small text-foreground-muted">noch nicht hinterlegt</p>
+              )}
+            </dd>
+          </div>
+          {erfasst && (
+            <div className="py-4 pr-3 sm:border-l sm:border-border sm:px-4">
+              <dt className="flex min-h-6 items-center gap-1.5 font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng">
+                Baujahre
+              </dt>
+              <dd className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
+                {years}
+              </dd>
+            </div>
+          )}
+          <div
+            className={cn(
+              'py-4 sm:border-l sm:border-border sm:pl-4',
+              erfasst && 'border-l border-border pl-3',
             )}
-          </ul>
-          {erfasst && <BaujahrFeld years={years} />}
-          <OnSiteBadge required={model.requiresVehicleOnSite} />
-        </div>
+          >
+            <dt className="flex min-h-6 items-center gap-1.5 font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng">
+              Anlernen
+              {model.requiresVehicleOnSite && <InfoTip hint={ON_SITE_HINT} />}
+            </dt>
+            <dd className="mt-1 text-title-sm font-semibold text-foreground">
+              {model.requiresVehicleOnSite ? 'vor Ort' : 'ohne Fahrzeug'}
+            </dd>
+          </div>
+        </dl>
       </PageHeader>
 
-      {/* Hinterlegte Angaben: knapper Abstand nach unten, damit die Lücke zu „02“ dem Takt der Kopfkante folgt (D01). */}
-      <Section className="pb-section-tight">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-gutter">
-          <div className="lg:col-span-8">
-            <SectionHeading
-              nummer="01"
-              eyebrow="Datensatz"
-              title="Das ist zu diesem Modell hinterlegt"
-              lead="Diese Angaben stammen aus unserem Fahrzeugdatensatz. Was darin nicht steht, erfinden wir nicht — das klären wir anhand Ihrer Schlüsselfotos."
-            />
-            <div className="mt-8">
-              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                Hinterlegte Fahrzeugangaben
-              </p>
-              <dl className="mt-2 border-t border-border">
-                {angaben.map((zeile) => (
-                  <div
-                    key={zeile.label}
-                    className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4"
+      {/* Hinterlegte Angaben: 5/7 (Kopf links, Tabelle rechts). Ohne Abstand nach unten: der Abstand
+          zu „02“ kommt vom Abschnittsmaß des folgenden Abschnitts (D01). */}
+      <Section className="pb-0">
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-gutter">
+          <SectionHeading
+            className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start"
+            nummer="01"
+            eyebrow="Datensatz"
+            title="Das ist zu diesem Modell hinterlegt"
+            lead="Diese Angaben stammen aus unserem Fahrzeugdatensatz. Was darin nicht steht, erfinden wir nicht — das klären wir anhand Ihrer Schlüsselfotos."
+          />
+          <div className="lg:col-span-7">
+            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+              Hinterlegte Fahrzeugangaben
+            </p>
+            <dl className="mt-2 border-t border-border">
+              {angaben.map((zeile) => (
+                <div
+                  key={zeile.label}
+                  className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4"
+                >
+                  <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">
+                    {zeile.label}
+                  </dt>
+                  <dd
+                    className={cn(
+                      'text-body text-foreground sm:col-span-7',
+                      !zeile.prosa && 'font-mono tabular-nums sm:text-right',
+                    )}
                   >
-                    <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">
-                      {zeile.label}
-                    </dt>
-                    <dd
-                      className={cn(
-                        'text-body text-foreground sm:col-span-7',
-                        !zeile.prosa && 'font-mono tabular-nums sm:text-right',
-                      )}
-                    >
-                      {zeile.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
+                    {Array.isArray(zeile.value) ? (
+                      <ul className="leading-relaxed">
+                        {zeile.value.map((art) => (
+                          <li key={art}>{art}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      zeile.value
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </Section>
@@ -312,17 +344,19 @@ export default async function ModelPage(props: PageProps) {
           {hatZeichnung && (
             <ol
               className={cn(
-                'mt-8 gap-3',
+                'mt-8',
                 leiste
-                  ? cn(LEISTE, LEISTE_SPALTEN[gezeichnet.length])
-                  : cn('grid', RASTER[gezeichnet.length]),
+                  ? cn(LEISTE, 'md:gap-6', SPALTEN[gezeichnet.length])
+                  : cn('grid gap-6', SPALTEN[gezeichnet.length]),
               )}
+              tabIndex={leiste ? 0 : undefined}
+              aria-label={leiste ? 'Schlüsselarten' : undefined}
             >
               {gezeichnet.map((feld, index) => (
                 <li
                   key={feld.art}
                   className={cn(
-                    'sm24-reveal flex flex-col rounded-lg border border-border bg-surface p-4 sm:p-5',
+                    'sm24-reveal flex flex-col border-t border-border pt-4',
                     leiste && 'shrink-0 basis-3/4 snap-start md:basis-auto',
                   )}
                   style={motionStyle(index * 0.12)}
@@ -331,7 +365,7 @@ export default async function ModelPage(props: PageProps) {
                     <SchluesselGrafik
                       params={{ typ: feld.typ, code: feld.art }}
                       title={`Zeichnung: ${keyKindLabel(feld.art)}`}
-                      className="w-full"
+                      className="w-full max-w-md"
                     />
                   )}
                   <h3 className="mt-3 text-title-sm font-semibold text-foreground">{keyKindLabel(feld.art)}</h3>
@@ -470,7 +504,7 @@ export default async function ModelPage(props: PageProps) {
                     {link.label}
                     <GlyphPfeilRechts
                       size={16}
-                      className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                      className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
                     />
                   </Link>
                 </li>

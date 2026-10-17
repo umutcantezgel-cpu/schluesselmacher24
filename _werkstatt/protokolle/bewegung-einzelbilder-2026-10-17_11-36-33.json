@@ -1,0 +1,88 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-17T09:36:33.748Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/ratgeber/autoschluessel-verloren-was-tun"
+    ],
+    "selektor": "main header svg.sm\\:block",
+    "ziel": "/root/sm24-bilder/E6-BEFUND2-H12",
+    "echtzeit": false
+  },
+  "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+  "selektor": "main header svg.sm\\:block",
+  "dauer": null,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": null,
+    "zustand": null,
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 12,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 1240
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-svg-sm-block__0.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 194.265625,
+        "width": 519.328125,
+        "height": 313.109375
+      }
+    },
+    {
+      "k": 1,
+      "t": 310,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-svg-sm-block__1.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 194.265625,
+        "width": 519.328125,
+        "height": 313.109375
+      }
+    },
+    {
+      "k": 2,
+      "t": 620,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-svg-sm-block__2.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 194.265625,
+        "width": 519.328125,
+        "height": 313.109375
+      }
+    },
+    {
+      "k": 3,
+      "t": 930,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-svg-sm-block__3.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 194.265625,
+        "width": 519.328125,
+        "height": 313.109375
+      }
+    },
+    {
+      "k": 4,
+      "t": 1240,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H12/ratgeber-autoschluessel-verloren-was-tun__desktop__main-header-svg-sm-block__4.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 194.265625,
+        "width": 519.328125,
+        "height": 313.109375
+      }
+    }
+  ]
+}

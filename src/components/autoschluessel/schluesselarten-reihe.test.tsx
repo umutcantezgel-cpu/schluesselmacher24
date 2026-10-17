@@ -45,7 +45,9 @@ describe('SchluesselartenReihe in der Kopf-Variante', () => {
     expect(html).toContain('Smart Key');
     expect(html).not.toContain('Keyless:');
     expect(html).not.toContain('Schlüssel mit Bart und ohne Tasten am Griff');
-    expect(html).not.toContain('border-border');
+    expect(html).not.toContain('bg-area-soft');
+    expect(html).not.toContain('rounded-lg');
+    expect(html).toContain('border-y border-border');
   });
 
   it('macht die mobile Leiste per Tastatur erreichbar und benennt sie', () => {
@@ -68,7 +70,12 @@ describe('SchluesselartenReihe in der Kopf-Variante', () => {
     expect(staffel).toContain(0.36);
     expect(staffel).not.toContain(0.48);
     expect(Math.max(...staffel)).toBeLessThanOrEqual(0.36);
-    expect(html).toContain('Ansicht');
+    expect(html).not.toContain('Ansicht');
+    expect(html.match(/>0[1-4]<\/p>/g)).toHaveLength(4);
+  });
+
+  it('setzt die Kennung vor die Bewegung, damit sie sofort steht', () => {
+    expect(html).toMatch(/>01<\/p><div class="sm24-reveal"/);
   });
 
   it('beschriftet die Zeichnungen und kennzeichnet sie als schematisch', () => {

@@ -35,6 +35,22 @@ export async function generateMetadata(): Promise<Metadata> {
 const PLAN_MOBIL = { system: 'haupt', tueren: 4 } as const;
 const PLAN_AUSSCHNITT_MOBIL: GrafikAusschnitt = schliessplanAusschnitt(PLAN_MOBIL);
 
+/**
+ * Telefon-Ausschnitt der Kopfgrafik (Profilschnitt, unter 640 px): Fenster x 126–476 und y 98–288
+ * in der viewBox 480 × 360. Es beginnt rechts der Reidenkante (124 + KONTUR/2 = 125,1) und fasst die
+ * Einschnitt-Nummern (y 122), die Spitze (x 456), den gehobenen Fräser (x bis 455,5, y ab 119,5) und die
+ * Halm-Bemaßung (Text y 266, Linie 274, Hilfslinien bis 282). Breite 350 ergibt Maßstab 1 bei 390 px,
+ * also 12 px Schrift (K-008). Die Bezugswerte hängen an Interna von `generators/profilschnitt.tsx`
+ * (REIDE, masslinieY), die nicht exportiert sind: Ändert sich der Generator, hier nachmessen.
+ */
+const KOPF_AUSSCHNITT_MOBIL: GrafikAusschnitt = {
+  ...PROFILSCHNITT_AUSSCHNITT,
+  x: 126,
+  hoehe: 190,
+  vollBreite: PROFILSCHNITT_GROESSE.breite,
+  vollHoehe: PROFILSCHNITT_GROESSE.hoehe,
+};
+
 const TRUST_POINTS = [
   {
     title: 'Fachbetrieb mit eigener Werkstatt',
@@ -82,7 +98,7 @@ export default async function HomePage() {
     { title: 'Fotos hochladen', body: 'Schlüssel aus drei Richtungen und den Fahrzeugschein.' },
     { title: 'Preis oder Prüfung', body: 'Fester Preis, Preisrahmen oder Hinweis auf manuelle Prüfung.' },
     { title: 'Anzahlung', body: `Standard ${deposit}, wird voll angerechnet.` },
-    { title: 'Termin buchen', body: `Frühester Termin nach etwa ${leadDays} Tagen Vorlauf.` },
+    { title: 'Termin buchen', body: `Frühester Termin nach etwa ${leadDays}\u00a0Tagen Vorlauf.` },
   ];
 
   const projekte = NAV_AREAS.filter((a) =>
@@ -95,8 +111,9 @@ export default async function HomePage() {
 
       {/*
         Einstieg in drei Teilen: Kopf, Fräsbahn (großer Moment B-01), Handlung. Mobil steht
-        der Halm direkt unter der Überschrift, damit der Moment im ersten Bildschirm spielt;
-        ab 1024 px stehen die Textteile links, die Zeichnung rechts über beide Zeilen.
+        der Halm direkt unter der Überschrift, damit der Moment im ersten Bildschirm spielt, als
+        Ausschnitt mit Halm-Bemaßung; ab 1024 px stehen die Textteile links, die Zeichnung rechts
+        über beide Zeilen.
       */}
       <section aria-labelledby="start-titel" className="overflow-hidden border-b border-border bg-surface">
         <div className="shell grid gap-8 py-section-tight lg:grid-cols-12 lg:grid-rows-kopf lg:gap-x-gutter lg:gap-y-0">
@@ -111,12 +128,9 @@ export default async function HomePage() {
             <FraesbahnBewegung>
               <ImagePlaceholder
                 frei
+                className="sm24-ausschnitt-bemasst"
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                ausschnitt={{
-                  ...PROFILSCHNITT_AUSSCHNITT,
-                  vollBreite: PROFILSCHNITT_GROESSE.breite,
-                  vollHoehe: PROFILSCHNITT_GROESSE.hoehe,
-                }}
+                ausschnitt={KOPF_AUSSCHNITT_MOBIL}
                 slot={{
                   motif: 'Werkstattfoto: Schlüsselfräse mit Autoschlüssel in Bearbeitung',
                   ratio: '4/3',
@@ -163,7 +177,7 @@ export default async function HomePage() {
             <dl className="mt-8 grid grid-cols-2 border-y border-border sm:grid-cols-3 lg:mt-10">
               {[
                 { label: 'Anzahlung', wert: deposit },
-                { label: 'Vorlauf', wert: `ca. ${leadDays} Tage` },
+                { label: 'Vorlauf', wert: `ca.\u00a0${leadDays}\u00a0Tage` },
                 { label: 'Versand', wert: 'bundesweit' },
               ].map((feld, index) => (
                 <div
@@ -200,13 +214,13 @@ export default async function HomePage() {
             lead="Jeder Bereich hat einen klaren Ablauf — vom direkten Kauf bis zur Projektplanung."
           />
 
-          {/* Mobil eine Leiste mit Anschnitt (Icon über dem Titel), ab 640 px die volle Stückliste */}
+          {/* Mobil eine Leiste mit Anschnitt: Nummer oben rechts, Icon über dem Titel, Kennung an der Unterkante; ab 640 px die volle Stückliste */}
           <ol className="-mx-5 flex snap-x snap-mandatory overflow-x-auto scroll-px-5 border-y border-border px-5 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:border-t sm:border-b-0 sm:px-0 sm:scroll-px-0 lg:col-span-8">
             {QUICK_ENTRIES.map((area, index) => (
               <li
                 key={area.key}
                 className={cn(
-                  'flex shrink-0 basis-2/5 snap-start border-r border-border sm:basis-auto sm:border-b sm:border-r-0',
+                  'flex shrink-0 basis-3/5 snap-start border-r border-border sm:basis-auto sm:border-b sm:border-r-0',
                   index % 2 === 0 && 'sm:border-r',
                 )}
               >
@@ -220,24 +234,25 @@ export default async function HomePage() {
                       aria-hidden
                       className="absolute inset-y-0 left-0 w-0.5 origin-top scale-y-0 bg-area transition-transform duration-base ease-standard zeiger:group-hover:scale-y-100"
                     />
-                    <span className="hidden w-6 shrink-0 pt-1 font-mono text-caption tabular-nums text-foreground-subtle sm:block">
+                    {/* Mobil oben rechts in der Karte, ab 640 px links neben dem Icon */}
+                    <span className="absolute right-3 top-3 font-mono text-caption tabular-nums text-foreground-subtle sm:static sm:block sm:w-6 sm:shrink-0 sm:pt-1">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     {/* Geht beim Seitenwechsel in das Fach-Icon des Bereichskopfs über (B-13) */}
                     <Seitenwechsel name={bereichsName(area.key)}>
                       <BereichIcon area={area.key} size={40} className="shrink-0 text-area-strong" />
                     </Seitenwechsel>
-                    {/* Ab 640 px füllt die Spalte die Kachel: die Kennung sitzt an der Unterkante, alle auf einer Grundlinie */}
-                    <span className="min-w-0 flex-1 sm:flex sm:flex-col">
+                    {/* Die Kennung sitzt in allen Breiten an der Unterkante und ab 640 px auf einer Grundlinie; die Spalte füllt die Kachel */}
+                    <span className="flex min-w-0 flex-1 flex-col">
                       <span className="block text-small font-semibold text-foreground group-hover:text-area-strong sm:text-title-sm">
                         {area.label}
                       </span>
                       <span className="mt-1 hidden text-small text-foreground-muted sm:block">{area.summary}</span>
-                      <span className="mt-3 hidden font-mono text-caption uppercase tracking-label text-foreground-muted sm:mt-auto sm:block sm:pt-3">
+                      <span className="mt-auto block pt-2 font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng sm:pt-3">
                         {PROCESS_LABELS[area.process].label}
                       </span>
                     </span>
-                    <Weiter className="mt-1 hidden text-foreground-subtle group-hover:text-area-strong sm:block" />
+                    <Weiter className="mt-1 hidden text-foreground-muted group-hover:text-area-strong group-focus-visible:text-area-strong sm:block" />
                   </Link>
                 </AreaScope>
               </li>
@@ -297,7 +312,7 @@ export default async function HomePage() {
                   </span>
                   <div className="pt-1.5">
                     <p className="text-title-sm font-semibold text-foreground">{step.title}</p>
-                    <p className="mt-1.5 max-w-measure text-body text-foreground-muted">{step.body}</p>
+                    <p className="mt-1.5 max-w-measure text-pretty text-body text-foreground-muted">{step.body}</p>
                   </div>
                 </li>
               ))}
@@ -306,36 +321,41 @@ export default async function HomePage() {
         </AreaScope>
       </Section>
 
-      {/* Vertrauen als Prüfprotokoll: Kopf links läuft mit, rechts die nummerierten Prüfpunkte */}
+      {/* Vertrauen als Prüfprotokoll: ab 1024 px die nummerierten Prüfpunkte links (7), der Kopf rechts (5); mobil Zeilen Nummer | Text */}
       <Section labelledBy="vertrauen-titel">
-        <SectionHeading
-          id="vertrauen-titel"
-          nummer="03"
-          eyebrow="Warum wir"
-          title="Sachlich, nachvollziehbar, ohne Überraschungen"
-          lead="Wir arbeiten wie ein Fachbetrieb, nicht wie ein Vermittler."
-        />
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <SectionHeading
+            id="vertrauen-titel"
+            className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:self-start"
+            nummer="03"
+            eyebrow="Warum wir"
+            title="Sachlich, nachvollziehbar, ohne Überraschungen"
+            lead="Wir arbeiten wie ein Fachbetrieb, nicht wie ein Vermittler."
+          />
 
-        {/* Schriftfeld mit Haarlinien: mobil zwei Spalten, ab 1024 px vier Felder nebeneinander */}
-        <ol className="mt-10 grid grid-cols-2 border-y border-border lg:grid-cols-4">
-          {TRUST_POINTS.map((point, index) => (
-            <li
-              key={point.title}
-              className={cn(
-                'py-6 pr-3 sm:pr-4',
-                index % 2 === 1 && 'border-l border-border pl-3 sm:pl-4',
-                index === 2 && 'lg:border-l lg:border-border lg:pl-4',
-                index >= 2 && 'border-t border-border lg:border-t-0',
-              )}
-            >
-              <span className="block font-mono text-title font-semibold tabular-nums text-primary">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <p className="mt-3 text-title-sm font-semibold text-foreground">{point.title}</p>
-              <p className="mt-2 max-w-measure text-body text-foreground-muted">{point.body}</p>
-            </li>
-          ))}
-        </ol>
+          {/* Prüfpunkte mit Haarlinien: mobil Zeilen Nummer | Text, ab 640 px ein 2×2 unter dem Kopf, ab 1024 px ein 2×2 in 7 Spalten links */}
+          <ol className="border-y border-border sm:grid sm:grid-cols-2 lg:col-span-7 lg:col-start-1 lg:row-start-1 lg:self-start">
+            {TRUST_POINTS.map((point, index) => (
+              <li
+                key={point.title}
+                className={cn(
+                  'grid grid-cols-12 gap-x-4 py-6 sm:block sm:pr-4',
+                  index > 0 && 'border-t border-border',
+                  index === 1 && 'sm:border-t-0',
+                  index % 2 === 1 && 'sm:border-l sm:border-border sm:pl-4',
+                )}
+              >
+                <span className="block col-span-2 font-mono text-title font-semibold tabular-nums text-foreground">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div className="col-span-10 sm:mt-3">
+                  <p className="text-title-sm font-semibold text-foreground">{point.title}</p>
+                  <p className="mt-2 max-w-measure text-body text-foreground-muted">{point.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </Section>
 
       {/* Direkt kaufen: zwei Zeichnungsblätter */}
@@ -349,7 +369,6 @@ export default async function HomePage() {
               href: '/schluessel-nach-code',
               titel: 'Schlüssel nach Code',
               text: 'Code eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.',
-              link: 'Codelinien',
               grafik: <SchluesselGrafik params={{ typ: 'zylinder', code: 'SM24' }} title="Schlüssel mit Profil nach Code" />,
             },
             {
@@ -357,7 +376,6 @@ export default async function HomePage() {
               href: '/gleichschliessende-zylinder/konfigurator',
               titel: 'Gleichschließende Zylinder',
               text: 'Mehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.',
-              link: 'Zum Konfigurator',
               /* Bis lg ist die Kartenfläche schmal (230–300 px): dort das schmale Format mit größerer Schrift. */
               grafik: (
                 <>
@@ -375,12 +393,11 @@ export default async function HomePage() {
                 <div className="border-b border-border bg-area-soft/40 px-6 pt-6">{angebot.grafik}</div>
                 <div className="flex flex-1 flex-col p-6">
                   <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Direkt kaufen</p>
-                  <p className="mt-2 text-title font-bold text-foreground">{angebot.titel}</p>
-                  <p className="mt-2 max-w-measure flex-1 text-body text-foreground-muted">{angebot.text}</p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-body font-semibold text-primary">
-                    {angebot.link}
-                    <Weiter />
-                  </span>
+                  <p className="mt-2 flex items-start justify-between gap-3">
+                    <span className="text-title font-bold text-foreground">{angebot.titel}</span>
+                    <Weiter className="mt-1 text-foreground-muted group-hover:text-area-strong group-focus-visible:text-area-strong" />
+                  </p>
+                  <p className="mt-2 max-w-measure text-body text-foreground-muted">{angebot.text}</p>
                 </div>
               </Link>
             </AreaScope>
@@ -463,7 +480,7 @@ export default async function HomePage() {
                 </span>
                 <span className="flex items-start justify-between gap-3">
                   <span className="text-title-sm font-semibold text-foreground group-hover:text-primary">{guide.title}</span>
-                  <Weiter className="mt-1 text-primary" />
+                  <Weiter className="mt-1 text-foreground-muted group-hover:text-primary group-focus-visible:text-primary" />
                 </span>
                 <span className="max-w-measure text-small text-foreground-muted">{guide.excerpt}</span>
               </Link>

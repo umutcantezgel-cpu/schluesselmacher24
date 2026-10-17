@@ -1,0 +1,21 @@
+{
+  "skript": "bewegung-reduziert",
+  "zeit": "2026-10-17T09:47:00.575Z",
+  "argumente": {
+    "_": [
+      "reduziert"
+    ],
+    "routen": "/autoschluessel",
+    "echtzeit": false
+  },
+  "zeilen": [
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 187
+    }
+  ]
+}

@@ -22,15 +22,15 @@ export const SCHLUESSELARTEN_REIHE: ReadonlyArray<{
 /**
  * `blatt` (Standard): Zeichnungsblatt mit Kartenrahmen, je Ansicht Name und Erklärung.
  * `kopf`: für den Seitenkopf. Mobil eine Leiste mit Anschnitt (der Kopfknopf bleibt im ersten
- * Bildschirm), ab `md` ein 2×2-Raster; je Zeichnung nur Kennung und Name. Der Name ist ein
- * Absatz, keine Überschrift, damit die Gliederung der Seite bei h1 und h2 bleibt.
+ * Bildschirm), ab `md` ein 2×2-Raster mit Haarlinien auf Papier; je Zelle Kennung, Zeichnung und
+ * Name. Der Name ist ein Absatz, keine Überschrift, damit die Gliederung der Seite bei h1 und h2 bleibt.
  */
 export type SchluesselartenVariante = 'blatt' | 'kopf';
 
 /**
- * Großer Moment der Autoschlüssel-Seite (Register B-21): vier Ansichten. Die
- * Ansichten treten gestaffelt auf (≤ 4 × 120 ms), die Profile zeichnen sich im
- * Generator selbst. Ohne Bewegung steht alles sofort.
+ * Großer Moment der Autoschlüssel-Seite (Register B-21): vier Ansichten. Nur die
+ * Zeichnungen treten gestaffelt auf (≤ 4 × 120 ms); Kennung und Name stehen sofort.
+ * Die Profile zeichnen sich im Generator selbst. Ohne Bewegung steht alles sofort.
  * Nur Server-Markup; die Bewegung startet über das `InView` des Abschnitts.
  */
 export function SchluesselartenReihe({
@@ -50,7 +50,7 @@ export function SchluesselartenReihe({
         aria-label={kopf ? 'Schlüsselarten' : undefined}
         className={cn(
           kopf
-            ? '-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 scroll-px-5 contain-inline-size sm:-mx-6 sm:px-6 sm:scroll-px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:scroll-px-0'
+            ? '-mx-5 flex snap-x snap-mandatory overflow-x-auto border-y border-border px-5 scroll-px-5 contain-inline-size sm:-mx-6 sm:px-6 sm:scroll-px-6 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:border-b-0 md:px-0 md:scroll-px-0'
             : 'grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border lg:grid-cols-4',
         )}
       >
@@ -60,16 +60,14 @@ export function SchluesselartenReihe({
             className={cn(
               'flex flex-col',
               kopf
-                ? 'shrink-0 basis-3/4 snap-start rounded-lg bg-area-soft/40 p-4 md:basis-auto sm:p-5'
+                ? `shrink-0 basis-3/4 snap-start border-r border-border p-4 first:pl-0 md:basis-auto md:border-b md:py-5 ${index % 2 === 0 ? 'md:pl-0 md:pr-5' : 'md:border-r-0 md:pl-5 md:pr-0'}`
                 : 'bg-surface p-4 sm:p-5',
             )}
           >
+            <p className="font-mono text-caption tabular-nums text-foreground-subtle">
+              {String(index + 1).padStart(2, '0')}
+            </p>
             <div className="sm24-reveal" style={motionStyle(index * 0.12)}>
-              <p className="font-mono text-caption uppercase tracking-label text-foreground-subtle">
-                <span className="tabular-nums">{String(index + 1).padStart(2, '0')}</span>
-                <span aria-hidden> · </span>
-                Ansicht
-              </p>
               <SchluesselGrafik params={{ typ, code: art }} title={`Zeichnung: ${keyKindLabel(art)}`} className="mt-2 w-full" />
             </div>
             {kopf ? (

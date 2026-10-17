@@ -1,0 +1,90 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-17T09:47:12.352Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/autoschluessel"
+    ],
+    "selektor": "#schluesselarten dl",
+    "geraet": "desktop",
+    "dauer": "1500",
+    "ziel": "/root/sm24-bilder/E6-BEFUND2-H02",
+    "echtzeit": false
+  },
+  "pfad": "/autoschluessel",
+  "selektor": "#schluesselarten dl",
+  "dauer": 1500,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": "div.shell",
+    "zustand": "play",
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 0,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 1500
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H02/autoschluessel__desktop__schluesselarten-dl__0.jpg",
+      "clip": {
+        "x": 108,
+        "y": 170.3125,
+        "width": 1224,
+        "height": 656
+      }
+    },
+    {
+      "k": 1,
+      "t": 375,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H02/autoschluessel__desktop__schluesselarten-dl__1.jpg",
+      "clip": {
+        "x": 108,
+        "y": 170.3125,
+        "width": 1224,
+        "height": 656
+      }
+    },
+    {
+      "k": 2,
+      "t": 750,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H02/autoschluessel__desktop__schluesselarten-dl__2.jpg",
+      "clip": {
+        "x": 108,
+        "y": 170.3125,
+        "width": 1224,
+        "height": 656
+      }
+    },
+    {
+      "k": 3,
+      "t": 1125,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H02/autoschluessel__desktop__schluesselarten-dl__3.jpg",
+      "clip": {
+        "x": 108,
+        "y": 170.3125,
+        "width": 1224,
+        "height": 656
+      }
+    },
+    {
+      "k": 4,
+      "t": 1500,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H02/autoschluessel__desktop__schluesselarten-dl__4.jpg",
+      "clip": {
+        "x": 108,
+        "y": 170.3125,
+        "width": 1224,
+        "height": 656
+      }
+    }
+  ]
+}

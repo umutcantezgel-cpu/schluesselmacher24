@@ -1,0 +1,89 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-17T09:46:29.146Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/autoschluessel"
+    ],
+    "selektor": "main ol:has(svg[role=img])",
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/E6-BEFUND2-H02",
+    "echtzeit": false
+  },
+  "pfad": "/autoschluessel",
+  "selektor": "main ol:has(svg[role=img])",
+  "dauer": null,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": null,
+    "zustand": null,
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 50,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 1500
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H02/autoschluessel__desktop__main-ol-has-svg-role-img__0.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 164.796875,
+        "width": 519.328125,
+        "height": 498.40625
+      }
+    },
+    {
+      "k": 1,
+      "t": 375,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H02/autoschluessel__desktop__main-ol-has-svg-role-img__1.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 164.796875,
+        "width": 519.328125,
+        "height": 498.40625
+      }
+    },
+    {
+      "k": 2,
+      "t": 750,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H02/autoschluessel__desktop__main-ol-has-svg-role-img__2.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 164.796875,
+        "width": 519.328125,
+        "height": 498.40625
+      }
+    },
+    {
+      "k": 3,
+      "t": 1125,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H02/autoschluessel__desktop__main-ol-has-svg-role-img__3.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 164.796875,
+        "width": 519.328125,
+        "height": 498.40625
+      }
+    },
+    {
+      "k": 4,
+      "t": 1500,
+      "datei": "/root/sm24-bilder/E6-BEFUND2-H02/autoschluessel__desktop__main-ol-has-svg-role-img__4.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 164.796875,
+        "width": 519.328125,
+        "height": 498.40625
+      }
+    }
+  ]
+}

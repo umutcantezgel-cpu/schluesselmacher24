@@ -84,7 +84,7 @@ function punkte(d: string): [number, number][] {
 
 /** Alle gezeichneten Punkte (ohne das Raster) müssen innerhalb der Fläche liegen. */
 function pruefeInnerhalb(html: string, breite: number, hoehe: number) {
-  const pfade = [...html.matchAll(/<path([^>]*)\/>/g)]
+  const pfade = [...html.matchAll(/<path([^>]*)>/g)]
     .map((t) => t[1])
     .filter((tag) => !(attribut(tag, 'class') ?? '').includes('stroke-area-muted'));
   for (const tag of pfade) {
@@ -95,7 +95,7 @@ function pruefeInnerhalb(html: string, breite: number, hoehe: number) {
       expect(y).toBeLessThanOrEqual(hoehe);
     }
   }
-  for (const [tag] of html.matchAll(/<circle([^>]*)\/>/g)) {
+  for (const [tag] of html.matchAll(/<circle([^>]*)>/g)) {
     const cx = Number(attribut(tag, 'cx'));
     const cy = Number(attribut(tag, 'cy'));
     const radius = Number(attribut(tag, 'r'));
@@ -130,6 +130,22 @@ function bewegung(html: string) {
       };
     });
   return elemente;
+}
+
+/** Kreise der Stationen in der Reihenfolge der Zeichnung. */
+function kreise(html: string): { cx: number; cy: number; r: number }[] {
+  return [...html.matchAll(/<circle([^>]*)>/g)].map(([, tag]) => ({
+    cx: Number(attribut(tag, 'cx')),
+    cy: Number(attribut(tag, 'cy')),
+    r: Number(attribut(tag, 'r')),
+  }));
+}
+
+/** Pfade, die die Klasse `klasse` tragen (als Attributtext). */
+function pfade(html: string, klasse: string): string[] {
+  return [...html.matchAll(/<path([^>]*)>/g)]
+    .map((t) => t[1])
+    .filter((tag) => (attribut(tag, 'class') ?? '').split(/\s+/).includes(klasse));
 }
 
 describe('AblaufGrafik', () => {
@@ -179,11 +195,11 @@ describe('AblaufGrafik', () => {
   it('fällt bei zu langen oder zu vielen Einträgen auf den Standard zurück', () => {
     const standard = zeichne({});
     expect(zeichne({ schritte: 'eins' })).toBe(standard);
-    expect(zeichne({ schritte: 'a|b|c|d|e' })).toBe(standard);
+    expect(zeichne({ schritte: 'a|b|c|d|e|f' })).toBe(standard);
     expect(zeichne({ schritte: 'kurz|dieser Eintrag ist viel zu lang' })).toBe(standard);
     expect(zeichne({ schritte: 'a|||' })).toBe(standard);
     expect(zeichne({ schritte: 42 })).toBe(standard);
-    expect(ablaufSchritte({ schritte: 'a|b|c|d|e' })).toEqual([]);
+    expect(ablaufSchritte({ schritte: 'a|b|c|d|e|f' })).toEqual([]);
     expect(ablaufSchritte({ schritte: 'a|sehr lange beschriftung' })).toEqual([]);
     expect(ablaufSchritte(null)).toEqual([]);
     expect(ablaufSchritte({})).toEqual([]);
@@ -339,5 +355,135 @@ describe('AblaufGrafik', () => {
   it('enthält keine Ausblendung im Stil, damit die Endlage ohne Bewegung vollständig sichtbar ist', () => {
     const html = zeichne({ schritte: 'a|b|c|d', aktiv: 1 });
     expect(html).not.toMatch(/opacity|display:\s*none|visibility/);
+  });
+
+  it('hält im breiten Format Kreise und Beschriftungen mindestens 30 Einheiten vom Rand', () => {
+    const vierMitVierzehn = 'abcdefghijklmn|abcdefghijklmn|abcdefghijklmn|abcdefghijklmn';
+    const faelle = [
+      { schritte: 'sichern|prüfen|bestellen' },
+      { schritte: 'a|b' },
+      { schritte: vierMitVierzehn },
+      { schritte: vierMitVierzehn, aktiv: 4 },
+      { schritte: `${vierMitVierzehn}|abcdefghijklmn` },
+      {},
+    ];
+    for (const params of faelle) {
+      const html = zeichne(params);
+      expect(html).toContain('font-size="18"');
+      for (const k of kreise(html)) {
+        expect(k.r).toBe(30);
+        expect(k.cx - k.r).toBeGreaterThanOrEqual(30 - 1e-9);
+        expect(k.cx + k.r).toBeLessThanOrEqual(480 - 30 + 1e-9);
+      }
+      for (const t of beschriftungen(html)) {
+        const halb = breiteSchaetzung(t) / 2;
+        expect(t.x - halb).toBeGreaterThanOrEqual(30 - 1e-9);
+        expect(t.x + halb).toBeLessThanOrEqual(480 - 30 + 1e-9);
+      }
+    }
+  });
+
+  it('stellt im breiten Format die Zeichnung senkrecht mittig, oben und unten fast gleich weit vom Rand', () => {
+    const html = zeichne({ schritte: 'sichern|prüfen|bestellen' });
+    const [erster] = kreise(html);
+    const [erste] = beschriftungen(html);
+    const oben = erster.cy - erster.r;
+    const basis = erste.y;
+    expect(basis - oben).toBeGreaterThanOrEqual(0.5 * 270);
+    expect(Math.abs(oben - (270 - basis))).toBeLessThanOrEqual(8);
+  });
+
+  it('setzt die Pfeilspitzen an die Enden der Bemaßung, in beiden Formaten', () => {
+    for (const anzahl of [2, 3, 4, 5]) {
+      const schritte = Array.from({ length: anzahl }, (_, i) => `s${i + 1}`).join('|');
+      for (const format of ['breit', 'schmal'] as const) {
+        const html = zeichne({ schritte, format });
+        const stationen = kreise(html);
+        const spitzen = pfade(html, 'fill-foreground-muted');
+        expect(spitzen).toHaveLength(anzahl - 1);
+        expect(pfade(html, 'fill-area')).toHaveLength(0);
+        spitzen.forEach((tag, i) => {
+          const [x, y] = punkte(attribut(tag, 'd') ?? '')[0];
+          if (format === 'breit') {
+            expect(x).toBeCloseTo(stationen[i + 1].cx, 1);
+          } else {
+            expect(y).toBeCloseTo(stationen[i + 1].cy, 1);
+          }
+        });
+      }
+    }
+  });
+
+  it('beginnt die Bemaßungslinie an der ersten Station und endet an der letzten, in beiden Formaten', () => {
+    for (const format of ['breit', 'schmal'] as const) {
+      const html = zeichne({ schritte: 'sichern|prüfen|bestellen', format });
+      const [linie] = pfade(html, 'sm24-draw');
+      const bemassung = punkte(attribut(linie, 'd') ?? '');
+      const stationen = kreise(html);
+      const erste = stationen[0];
+      const letzte = stationen[stationen.length - 1];
+      if (format === 'breit') {
+        const xs = bemassung.map(([x]) => x);
+        expect(Math.min(...xs)).toBeCloseTo(erste.cx, 1);
+        expect(Math.max(...xs)).toBeCloseTo(letzte.cx, 1);
+      } else {
+        const ys = bemassung.map(([, y]) => y);
+        expect(Math.min(...ys)).toBeCloseTo(erste.cy, 1);
+        expect(Math.max(...ys)).toBeCloseTo(letzte.cy, 1);
+      }
+    }
+  });
+
+  it('zentriert im schmalen Format den Inhalt mit Beschriftung waagerecht', () => {
+    const html = zeichne({ schritte: 'sichern|prüfen|bestellen', format: 'schmal' });
+    const [linie] = pfade(html, 'sm24-draw');
+    const links = Math.min(...punkte(attribut(linie, 'd') ?? '').map(([x]) => x));
+    const rechts = Math.max(...beschriftungen(html).map((t) => t.x + breiteSchaetzung(t)));
+    expect(Math.abs(links - (300 - rechts))).toBeLessThanOrEqual(4);
+  });
+
+  it('zentriert im schmalen Format die Zeichnung ohne Beschriftung waagerecht', () => {
+    const html = zeichne({ format: 'schmal' });
+    const [linie] = pfade(html, 'sm24-draw');
+    const links = Math.min(...punkte(attribut(linie, 'd') ?? '').map(([x]) => x));
+    const rechts = Math.max(...kreise(html).map((k) => k.cx + k.r));
+    expect(Math.abs(links - (300 - rechts))).toBeLessThanOrEqual(4);
+  });
+
+  it('zeichnet fünf Stationen in beiden Formaten, versetzt und mit Bewegung unter 1,6 s', () => {
+    const fuenf = 'abcdefghijklmn|abcdefghijklmn|abcdefghijklmn|abcdefghijklmn|abcdefghijklmn';
+    const breit = zeichne({ schritte: fuenf, aktiv: 5 });
+    pruefeVertrag(breit, 480, 270);
+    expect(nummern(breit)).toEqual(['01', '02', '03', '04', '05']);
+    const labels = beschriftungen(breit);
+    expect(labels).toHaveLength(5);
+    expect(new Set(labels.map((t) => t.y)).size).toBe(2);
+    for (let a = 0; a < labels.length; a += 1) {
+      for (let b = a + 1; b < labels.length; b += 1) {
+        if (Math.abs(labels[a].y - labels[b].y) < 16) {
+          expect(Math.abs(labels[a].x - labels[b].x)).toBeGreaterThanOrEqual(
+            (breiteSchaetzung(labels[a]) + breiteSchaetzung(labels[b])) / 2 + 8,
+          );
+        }
+      }
+    }
+    expect(breit.match(/class="fill-area-soft stroke-area-strong"/g)).toHaveLength(1);
+
+    const schmal = zeichne({ schritte: fuenf, format: 'schmal' });
+    pruefeVertrag(schmal, 300, ablaufHoehe(5));
+    expect(ablaufHoehe(5)).toBe(360);
+    expect(nummern(schmal)).toEqual(['01', '02', '03', '04', '05']);
+
+    for (const html of [breit, schmal]) {
+      const stationen = bewegung(html).filter((e) => e.klasse.includes('sm24-pop'));
+      expect(stationen).toHaveLength(5);
+      const verzoegerungen = stationen.map((e) => e.verzoegerung ?? 0);
+      for (let i = 1; i < verzoegerungen.length; i += 1) {
+        expect(verzoegerungen[i] - verzoegerungen[i - 1]).toBeCloseTo(0.12, 3);
+      }
+      for (const e of bewegung(html)) {
+        expect((e.verzoegerung ?? 0) + (e.dauer ?? 0)).toBeLessThan(1.6);
+      }
+    }
   });
 });
