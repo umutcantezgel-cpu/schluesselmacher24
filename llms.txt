@@ -1,0 +1,5 @@
+# LLMS.txt
+
+This project is a Next.js 16+ App Router application with React 19.2+ and Tailwind CSS v4 using the OKLCH Light Mode design system.
+
+All UI should strictly adhere to Swiss Light Design Doctrine with kinetic view transitions, strict TypeScript 5.5+ rules (no enums), and modern CSS subgrid patterns.
