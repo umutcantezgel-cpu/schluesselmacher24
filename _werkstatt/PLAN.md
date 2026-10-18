@@ -131,8 +131,8 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E7-B-04 | Ablauf: Führungslinien kreuzen keine Beschriftung | B/Haiku | `ablauf.tsx` mit Test | – | Z-09 | e4d7336 · nach 3 Runden vom Orchestrator übernommen (L3): Luft 10, Linie endet über der Reihe |
 | E7-L-40 | Register K-007 nach E7 (KERN 1.17) | L/Opus | KERN | Welle 1 | Z-05 | e4d7336 · KERN 1.17 |
 | E7-P-1 | Messung Anlauf 1 (Z-08 im Vergleich mit E0, Bildrate am gerenderten Element) | P/Haiku | Protokolle | E7-W-01, Welle 1 | Z-05, Z-08 | acc9455 · Bildrate 8/8 ≤ 5 %, INP 12/12, CLS 11/12, LCP 3/12 (`E7-PRUEFER-01-ergebnis.md`) |
-| E7-L-43 | Anlauf 2 Leistung: CSS im Dokument, maßgleiche Ersatzschriften, Mono wieder vorgeladen | L/Opus | `next.config.ts`, `globals.css`, `tailwind.config.ts`, `layout.tsx`, KERN 1.18 | E7-P-1, D-050 | Z-08 | |
-| E7-P-2 | Messung Anlauf 2 (wie E7-P-1) | P/Haiku | Protokolle `E7-PRUEFER-02-*` | E7-L-43 | Z-05, Z-08 | |
+| E7-L-43 | Anlauf 2 Leistung: CSS im Dokument, maßgleiche Ersatzschriften, Mono wieder vorgeladen | L/Opus | `next.config.ts`, `globals.css`, `tailwind.config.ts`, `layout.tsx`, KERN 1.18 | E7-P-1, D-050 | Z-08 | acc9455 (Code), f6e55ab (D-050) |
+| E7-P-2 | Messung Anlauf 2 (wie E7-P-1) | P/Haiku | Protokolle `E7-PRUEFER-02-*` | E7-L-43 | Z-05, Z-08 | als Teil 4 von E7-P-C (wf_7a2d5363-c26): mobil 36/36, Desktop 35/36 (H05 LCP +28 bei Spanne 24), Bildrate 8/8 |
 | E7-P-C | Prüfstufe C, Abschlussversuch 2 | P/Haiku | Protokolle | E7-P-2 | Z-02 bis Z-09 | |
 | E7-D-03 | Abschluss-Bildsatz, Blindvergleich und Galerie erneuern | D/Haiku | `_werkstatt/bilder/` | E7-P-C | Z-04, Z-10 | |
 
