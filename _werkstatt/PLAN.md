@@ -115,9 +115,24 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E6-L-31 | Gemeinsame Befunde der Runde 2 in den Bausteinen (FlowShell, OptionCard, Akkordeon, Seitenkopf, Kopfknopf, Lineal, Maß A/B) | L/Opus | gemeinsame Bausteine, KERN 1.14 | E5-L-29 | Z-03, Z-04 | 6411dc6 (D-045) |
 | E6-L-33 | Fach-Icon nach der Sache, Register B-20, B-23, B-26 | L/Opus | `motiv.ts`, KERN 1.15 | E6-L-31 | Z-05, Z-06 | a1d281d |
 | E6-BEFUND2-* | Befundpakete der Sichtabnahme E5-L-29, Runde 2 von 2 (H01 bis H12, Service, Artikel, Standort) | B/Haiku | je Ansicht | E6-L-31 | Z-04 | Welle 1 c9b49e2 (D-047), Welle 2 fc51625 (D-048) |
-| E6-P-C | Prüfstufe C | P/Haiku | Protokolle | Pflicht | Z-02 bis Z-09 | |
-| E6-D-02 | Blindvergleich vorbereiten, Galerie, Bericht | D/Haiku | `_werkstatt/bilder/`, BERICHT | E6-P-C | Z-04, Z-10 | |
+| E6-P-C | Prüfstufe C, Abschlussversuch 1 | P/Haiku | Protokolle | Pflicht | Z-02 bis Z-09 | 1a6425b, Ergebnis db3de18 (D-049) |
+| E6-D-02 | Blindvergleich vorbereiten, Galerie, Bericht | D/Haiku | `_werkstatt/bilder/`, BERICHT | E6-P-C | Z-04, Z-10 | 1a6425b (Stand Abschlussversuch 1; wird nach Abschlussversuch 2 erneuert) |
 | E6-L-13 | Endprüfung durch frischen Opus-Unteragenten, Abschluss | L/Opus | ABNAHME, BERICHT | E6-D-02 | alle | |
+| E7-L-35 | Register K-007 vervollständigt, Dauer-Tokens, ungenutzter Keyframe entfernt | L/Opus | KERN 1.16, `globals.css`, Kopf, Schließplan | E6-P-C | Z-05 | 2cdcbab |
+| E7-W-01 | Werkzeuge: `messung --vergleich`, `ladeweg`, `bewegung` am gerenderten Treffer, `animationen --bedienen` | W/Haiku | `_werkstatt/werkzeuge/` | E6-P-C | Z-05, Z-08 | |
+| E7-L-36 | Menü öffnen ohne erzwungenes Layout (rAF-Fokus, Transition, memo) | L/Opus | `site-header.tsx` | D-049 | Z-08 | db3de18 |
+| E7-L-37 | Plex Mono ohne Vorladen | L/Opus | `layout.tsx` | D-049 | Z-08 | db3de18 |
+| E7-L-38 | Kopfgrafik startet nach Sichtbarkeit (InView) | L/Opus | `page-header.tsx` mit Test | D-049 | Z-05 | db3de18 |
+| E7-L-39 | 404-Ansicht als Client-Komponente | L/Opus | `not-found.tsx` | D-049 | Z-08 | db3de18 |
+| E7-L-41 | `:has()` prüft Klassen statt Attribute | L/Opus | `globals.css`, `tailwind.config.ts`, FlowShell, Warenkorb, Kasse | D-049 | Z-08 | db3de18 |
+| E7-L-42 | Kompakte Bildstelle ohne Registry, Brotkrumen spät vorladen, Vorladen bei Absicht | L/Opus | `bild-flaeche.tsx`, `image-placeholder.tsx`, `info-tip.tsx`, `breadcrumbs.tsx`, `absicht-vorladen.ts` | D-049 | Z-05, Z-08 | db3de18, bbb260e |
+| E7-B-02 | Schlüsselzeichnung mit Markengruppe, Karten der Kopfreihe per InView, Vorladen H02/H05 | B/Haiku | siehe Paket | E7-L-42 | Z-05, Z-08 | |
+| E7-B-03 | Tür-Legende lesbar, Zutritts-Signal ≤ 1,6 s, Vorladen H08/H09 | B/Haiku | siehe Paket | E7-L-42 | Z-05, Z-07, Z-09 | |
+| E7-B-04 | Ablauf: Führungslinien kreuzen keine Beschriftung | B/Haiku | `ablauf.tsx` mit Test | – | Z-09 | |
+| E7-L-40 | Register K-007 nach E7 (KERN 1.17) | L/Opus | KERN | Welle 1 | Z-05 | |
+| E7-P-1 | Messung Anlauf 1 (Z-08 im Vergleich mit E0, Bildrate am gerenderten Element) | P/Haiku | Protokolle | E7-W-01, Welle 1 | Z-05, Z-08 | |
+| E7-P-C | Prüfstufe C, Abschlussversuch 2 | P/Haiku | Protokolle | E7-P-1 | Z-02 bis Z-09 | |
+| E7-D-03 | Abschluss-Bildsatz, Blindvergleich und Galerie erneuern | D/Haiku | `_werkstatt/bilder/` | E7-P-C | Z-04, Z-10 | |
 
 Je Etappe kommt eine Prüfstufe B (E2-P-B, E3-P-B, E4-P-B, E5-P-B) mit Sichtabnahme hinzu. Befunde werden zu Paketen der nächsten Etappe, höchstens 2 je Hauptansicht und Kategorie.
 

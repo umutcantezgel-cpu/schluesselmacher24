@@ -1,15 +1,16 @@
 # Prüfpunkt
 
-- **Etappe:** E6 Abschluss. Runde 2 abgenommen, Sichtabnahme E6-L-34 fertig (vier Berichte `_werkstatt/berichte/E6-L-34-sichtabnahme-*.md`), KERN 1.16 (Register vervollständigt, E6-L-35, Commit 2cdcbab, Build 208/208).
+- **Etappe:** E7 „Absichern“ nach Abschlussversuch 1 (D-049). Plan: Abschnitt „Abschlussversuch 2“ in der Plandatei; Pakete `_werkstatt/pakete/E7-*.md`.
+- **Fertig:** E7-L-35 (2cdcbab), E7-L-36 bis L-39 und L-41 (db3de18), E7-L-42 (bbb260e). Morgenbericht 18.10. (0609ada); nächste Erinnerung `trig_012YdSA5a5zqbxz4A5A9Pasq` (19.10. 07:00 Berlin).
 - **Laufend:**
-  - Prüfstufe C, Abschluss: Workflow `wf_2708b732-5cf` (Skript `workflows/scripts/pruefstufe-c-abschluss-wf_3ee9d33c-56a.js`) mit Teil 2 und 4 als Nachlese, Teil 3b Nachlauf Funktionsliste und Tastatur gegen 2cdcbab, Teil 5b Register-Nachprüfung, dann Teil 6 Ergebnis (`_werkstatt/protokolle/E6-PRUEFER-C-ergebnis.md`). Berichte der Teile 1, 3, 5 aus dem ersten Lauf: `_werkstatt/protokolle/E6-PRUEFER-C-teilberichte-1-3-5.md`.
-  - E6-D-02 Dokumentar (Paket `_werkstatt/pakete/E6-DOKUMENTAR-02.md`): Abschluss-Bildsatz nach `_werkstatt/bilder/abschluss/`, Blindvergleich `_werkstatt/bilder/blind/` (Schlüssel außerhalb des Repositorys; Ort steht nur in der Notiz des Orchestrators im Scratchpad), Galerie `_werkstatt/bilder/galerie.html`.
-  - Server: Port 3000 mit Build 2cdcbab, Port 3100 E0 (`/root/sm24-e0`), Port 3001 Entwicklung.
-- **Fertig seit dem letzten Prüfpunkt:** Tastatur-Eingabe im Werkzeug berichtigt (F-01 per Tastatur mobil bestanden), Registerabgleich (KERN 1.16), verwaiste Sperre entfernt.
+  - E7-W-01 Werkzeuge: Workflow `wf_f71d2297-859` (Skript `workflows/scripts/e7-werkzeug-01-wf_f71d2297-859.js`).
+  - Welle 1 (E7-B-02, -03, -04): Workflow `wf_083a3c28-cfc` (Skript `workflows/scripts/e7-welle-1-wf_d5024926-3a3.js`, args `{basis: "bbb260e"}`).
+  - Prüfstand `/root/sm24-v1` (Kopie mit Hardlinks, Port 3201) für Diagnosen; Skripte `scratchpad/e6/perf/` (diag, diag2, spur, ladespur, wasserfall, ausloeser, klassentest).
+  - Server: 3000 alter Build (2cdcbab), 3100 E0, 3001 Entwicklung.
 - **Als Nächstes:**
-  1. Ergebnis Prüfstufe C abnehmen; ENTSCHEIDUNGEN D-049; ABNAHME.md je Kriterium mit Beleg; Z-04 nach Urteil des Endprüfers, voraussichtlich AUSNAHME 1 (zwei Befundrunden verbraucht, L3/L7).
-  2. E6-D-02 abnehmen; BERICHT-Abschnitt „Abschluss“ mit Galerie, Anleitung zum Zusammenführen und Zurückrollen und Hinweis zu `_werkstatt`.
-  3. Endprüfung E6-L-13: frischer Opus-Unteragent, zuerst nur der Blindordner, Schlüssel erst nach seinem Urteil (SendMessage), dann jedes Kriterium gegen den Beleg; Urteil wörtlich wiedergeben; ABSCHLUSS (CLAUDE.md-Block entfernen).
+  1. W-01 und Welle 1 abnehmen (Diff, Bilder, Bildrate), committen; KERN 1.17 (E7-L-40: B-08, B-10, B-21, B-26, B-27, B-28, B-18).
+  2. Build-Gate, Port 3000 neu; Messung Anlauf 1 durch Haiku-Prüfer (E7-P-1): `messung --vergleich http://localhost:3100 --laeufe 5 --profil mobil`, Bildrate H01, H02, H05, H08, H09 am gerenderten Element, Funktionsliste und Tastatur. Entscheidung D-050 (Anlauf 2 oder weiter).
+  3. Prüfstufe C, Abschlussversuch 2 (E7-P-C); E7-D-03 Bildsatz, Blindvergleich und Galerie neu; ABNAHME; BERICHT-Abschnitt Abschluss; Endprüfung E6-L-13; ABSCHLUSS.
 - **Bei Abbruch:**
   - `Workflow({scriptPath: <pakete-kette-Skript>, resumeFromRunId})` für den jeweiligen Lauf; Skript: `/root/.claude/projects/-home-user-schluesselmacher24/97f67536-828c-582d-bf9e-78d9960a0d12/workflows/scripts/pakete-kette-wf_be39e9e0-a87.js`, args `{pakete:[{id,basis}], andere}`.
   - Paketerzeuger im Scratchpad `e5/` (`befund_pakete.py [H..]`, `welle_f.py`, `welle_gh.py [Kennung..]`); die erzeugten Pakete liegen im Repo.

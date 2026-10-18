@@ -543,3 +543,42 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - Lead der Codelinien-Seite: Ersatz ist die Zeile „Anwendung“.
   - Daten unverändert.
 - **Werkzeug:** Die Prüfer schreiben ihre Protokolle nach `/root/sm24-bilder`. Die Funktionsliste legt ihre Markdown-Protokolle weiter in `_werkstatt/protokolle/` ab; sie gehören zum Beleg und werden committet.
+
+## D-049 · Abschlussversuch 1 (Prüfstufe C) ausgewertet, Etappe E7 „Absichern“, Gründe für Leistung und Bildrate
+- **Belege:** `_werkstatt/protokolle/E6-PRUEFER-C-ergebnis.md` (Teil 6 und Nachlesen, wörtlich), `E6-PRUEFER-C-teilberichte-1-3-5.md`, `E6-PRUEFER-C-messung-auswertung.md`, `E6-PRUEFER-C-register.md` und `-register-nachtrag.md`, Sichtabnahme `_werkstatt/berichte/E6-L-34-sichtabnahme-*.md`.
+- **Erfüllt:**
+  - Bestand: tsc 0, ESLint 0, Vitest 1204, DB 52/52, Build 208/208, Logikwächter 0, Textabzug gleich, Wertesuche 0 ohne Ausnahme.
+  - Funktionsliste 14/14; Tastatur 7/7 mobil und am Desktop im Nachlauf.
+  - axe: 0 ernste oder kritische Befunde in 46 Läufen (E0: 26 + 4).
+  - Konsole 0 Fehler; kein Seitenüberlauf; reduzierte Bewegung 0 Befunde.
+  - SVG: 0 unbenannte, 0 doppelte ids, lucide 0.
+- **Tastatur F-01, erster Lauf „nicht bestanden“:** Ursache war das Werkzeug, nicht die Seite. `funktionsliste.mjs` drückte nach Strg+A noch Entf; das kontrollierte Mengenfeld setzt den leeren Wert sofort auf 1, die getippte „2“ hing an („12“). Ein Mensch markiert und überschreibt. Korrektur in 2cdcbab (`proto.fill`: Strg+A, dann tippen; Entf nur beim leeren Wert). Nachlauf: F-01 mobil und Desktop bestanden.
+- **Nicht erfüllt, erster belegter Anlauf (L7):**
+  1. **Z-08:** Budgets mit Reserve eingehalten (LCP ≤ 1,2 s bei 2,5 s), aber mobil schlechter als E0 um mehr als dessen Spanne: LCP 10/12, INP 11/12.
+  2. **Z-05 Bildrate:** H02 8,0 %, H05 6,2 %, H08 9,9 %, H09 5,3 %. Bei H08 traf der Selektor die mobil versteckte breite Fassung; der Wert gilt nicht dem Schließplan.
+  3. **Z-05 Register:** Reste bei zutritt-signal (≈ 2,45 s), Texten zu B-21/B-28/B-08 und einem Übergang ohne Token. Übergänge beim Bedienen hat das Werkzeug nicht erfasst.
+  4. **Z-09:** Führungslinien der Ablaufzeichnung kreuzen Beschriftungen (`/service-und-termin`).
+  5. **Lesbarkeit:** Gedimmte Legende der Türzeichnung mit 30 % Deckkraft.
+  6. **Einzelbilder H12/U-SERVICE:** Der Selektor traf die versteckte Fassung (0 × 0 px).
+- **Ursachen, gemessen am Produktionsbuild** (Skripte `scratchpad/e6/perf/*.mjs`, Prüfstand `/root/sm24-v1` auf Port 3201):
+  - **INP:** Gemessen wird das Öffnen der Schublade über „Menü öffnen“.
+    - Klickverarbeitung 114–124 ms gegen 11 ms in E0. Der Fokus-Effekt erzwang Stil und Layout im Klick.
+    - Wichtiger: **Jede Einfügung ins Dokument berechnete den Stil der ganzen Seite neu** (741 Elemente; E0: 1). Ursache waren `:has()`-Regeln mit **Attribut** im Argument: `html:has([data-ablauf])`, `body:has([data-ablauf]) …` und die Variante `korb-leer` mit `[data-leerzustand]`.
+    - Gegenprobe: dieselben Regeln mit Klasse im Argument → 3 Elemente. `:has(.klasse)` und `:has(:focus-visible)` sind unschädlich.
+  - **LCP:** LCP = FCP = h1. CSS kommt nur 44 ms später als in E0, der Unterschied liegt auf dem Hauptthread vor dem ersten Zeichnen: Stil und Layout der ganzen Seite (Startseite neu 104 + 241 ms, E0 72 + 142 ms bei vierfacher Drosselung). Der Zuwachs kommt von den Fachgrafiken und Fach-Icons im Dokument (Elemente 978 gegen 519, SVG-Knoten 462 gegen 95).
+  - **Nicht übernommen, `content-visibility: auto` für Abschnitte:** Gemessen spart es beim ersten Zeichnen kaum etwas (Chromium berechnet den ersten Frame vollständig), birgt aber Risiken: feste Leisten in Abschnitten, abgeschnittene Einblendungen, CSS-Zähler der Bestellseite.
+  - **Bildrate:** Im Messfenster nach `networkidle` laufen Hydrierung und Vorladen sichtbarer Links (Brotkrumen, Kopfknöpfe, Shop-Liste). Kopfgrafiken starteten ohne InView sofort. H02 hatte 51 gleichzeitige Animationen.
+- **Entscheidung, Etappe E7 „Absichern“ (Plan im Abschnitt „Abschlussversuch 2“):**
+  - E7-L-36: Menü (rAF-Fokus, Transition, memo).
+  - E7-L-41: `:has()` mit Klassen.
+  - E7-L-37: Mono ohne Vorladen.
+  - E7-L-38: Kopfgrafik in InView.
+  - E7-L-39: 404 als Client-Komponente.
+  - E7-L-42: kompakte Bildstelle ohne Registry, Brotkrumen spät vorladen; dazu Vorladen bei Absicht.
+  - E7-W-01: Werkzeuge `messung --vergleich`, `ladeweg`, `bewegung` am gerenderten Treffer, `animationen --bedienen`.
+  - Welle 1: B-02 Schlüssel/Code, B-03 Tür/Zutritt, B-04 Ablauf.
+  - Danach Messung von Anlauf 1 durch einen Haiku-Prüfer, Entscheidung D-050.
+- **Zwischenmessung des Orchestrators am Prüfstand, Startseite mobil, je 3 Läufe (Diagnose, kein Abnahmebeleg):**
+  - INP-Näherung 48–56 ms gegen E0 72–88 ms.
+  - LCP 1108–1188 gegen E0 960–992 ms; der Abstand bleibt.
+- **Favicon `src/app/(site)/icon.svg`:** Die SVG-Prüfung meldet einen Kommentar, dazu feste Farben und ids. Die Datei ist UNANTASTBAR (Logo und Favicon, G8) und bleibt unverändert. Z-06 vermerkt das als begründete Abweichung, nicht als Mangel der Gestaltung.
