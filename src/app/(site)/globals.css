@@ -2,6 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Ersatz für die Webschriften, solange sie laden (E7-L-43). next/font legt je Schrift einen
+ * angepassten Ersatz an, der nur auf `local(Arial)` zeigt und keinen fetten Schnitt kennt. Auf
+ * Linux und Android gibt es kein Arial: Der Browser nahm eine unangepasste Systemschrift, und beim
+ * Tausch rückte etwa die „24“ der Wortmarke um 10 px (159 → 149 px; in E0 genauso, 169 → 158 px).
+ * Hier dieselben Maße wie bei next/font mit den maßgleichen Schriften Liberation Sans, Arimo und
+ * Roboto (mittlere Zeichenbreite 913 bzw. 911 gegen Arial 913 je 2048), dazu ein echter fetter
+ * Schnitt: Liberation Sans fett ist ohne Ausgleich 2–2,5 % breiter als Plex Sans fett
+ * (Überschriften gemessen), daher 97,7 %; die Wortmarke in engen Großbuchstaben braucht 92,55 %
+ * (149,1 gegen 161,1 px). Vertikale Maße wie Plex Sans (Oberlänge 1,025, Unterlänge 0,275 em,
+ * geteilt durch den Ausgleich). Inter bleibt beim Ersatz von next/font. Mono: Liberation Mono,
+ * Cousine und Courier New haben denselben Vorschub von 0,6 em wie IBM Plex Mono.
+ */
+@font-face {
+  font-family: 'SM24 Ersatz Plex Sans';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans'), local('Arimo'), local('Roboto');
+  font-weight: 400 500;
+  ascent-override: 101.32%;
+  descent-override: 27.18%;
+  line-gap-override: 0%;
+  size-adjust: 101.17%;
+}
+
+@font-face {
+  font-family: 'SM24 Ersatz Plex Sans';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Arimo Bold'), local('Arimo-Bold'), local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 600 700;
+  ascent-override: 104.91%;
+  descent-override: 28.15%;
+  line-gap-override: 0%;
+  size-adjust: 97.7%;
+}
+
+@font-face {
+  font-family: 'SM24 Ersatz Wortmarke';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Arimo Bold'), local('Arimo-Bold'), local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 700;
+  ascent-override: 110.75%;
+  descent-override: 29.71%;
+  line-gap-override: 0%;
+  size-adjust: 92.55%;
+}
+
+@font-face {
+  font-family: 'SM24 Ersatz Plex Mono';
+  src: local('Liberation Mono'), local('LiberationMono'), local('Cousine'), local('Courier New'), local('CourierNewPSMT');
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+/* Wortmarke im Kopf: Während des Ladens nimmt sie den Ersatz in Wortmarken-Breite, damit die „24“
+   beim Schrifttausch nicht springt. Die Wortmarke selbst bleibt unverändert (Logo, G8); ist
+   Plex Sans geladen, gilt sie wie bisher. */
+header a[aria-label$='Startseite'] > span {
+  font-family: var(--font-display), 'SM24 Ersatz Wortmarke', system-ui, sans-serif;
+}
+
 /* ==========================================================================
    SCHLÜSSELMACHER24 — Designsystem
    Hell, freundlich, farbig — und trotzdem fachlich. Klares Blau auf hellem

@@ -20,9 +20,10 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
+        /* Plex Sans und Mono: hinter dem Ersatz von next/font der eigene für Systeme ohne Arial (globals.css, E7-L-43) */
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+        display: ['var(--font-display)', "'SM24 Ersatz Plex Sans'", 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', "'SM24 Ersatz Plex Mono'", 'ui-monospace', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',

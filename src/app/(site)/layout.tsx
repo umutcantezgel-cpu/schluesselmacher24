@@ -25,20 +25,11 @@ const body = Inter({
   weight: ['400', '500', '600', '700'],
 });
 
-/*
- * Mono nur für Augenbrauen, Zahlen und Bemaßung – nie für die erste Überschrift. Daher ohne
- * Vorladen: Die drei Dateien teilen sich auf langsamen Leitungen sonst die Bandbreite mit CSS
- * und Seite (E7-L-37). Ersatz ist eine System-Monospace mit gleichem Zeichenvorschub; der
- * Wechsel verschiebt nichts, ein angepasster Arial-Ersatz würde es tun.
- */
 const mono = IBM_Plex_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
   display: 'swap',
   weight: ['400', '500', '600'],
-  preload: false,
-  adjustFontFallback: false,
-  fallback: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono', 'monospace'],
 });
 
 const siteUrl = getSiteUrl();
