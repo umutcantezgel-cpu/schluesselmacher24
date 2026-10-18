@@ -20,6 +20,8 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
+
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +75,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  void params;
+  void searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -91,6 +100,80 @@ export default async function SicherheitstechnikPage() {
           crumbs: [{ href: `/${ROUTE}`, label: 'Sicherheitstechnik' }],
         })}
       />
+
+
+      {/* Fachliche Detailausführung */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Tiefgehende Betrachtung von Sicherheitssystemen"
+          lead="Wir setzen auf ein holistisches Konzept, bei dem Mechanik, Elektronik und Organisation nahtlos ineinandergreifen."
+        />
+        <div className="mt-8 space-y-6 text-[oklch(0.32_0.02_260)] text-[15px] leading-relaxed">
+          <p>
+            Moderne Sicherheitstechnik basiert auf einem mehrschichtigen Verteidigungsansatz. Der mechanische Grundschutz
+            bildet dabei das Fundament: Er stellt den physischen Widerstand dar, der einen Eindringling aktiv aufhält.
+            Je länger dieser Widerstand anhält, desto größer ist das Entdeckungsrisiko für den Täter. Elektronische
+            Maßnahmen ergänzen diesen Schutz, indem sie den Versuch eines Einbruchs detektieren und frühzeitig melden,
+            können jedoch ohne robuste Mechanik leicht überwunden werden.
+          </p>
+          <p>
+            Unsere Planung beginnt mit einer umfassenden Schwachstellenanalyse. Wir betrachten die Außenhaut des Gebäudes
+            – Türen, Fenster, Lichtschächte – sowie die interne Struktur. Dabei berücksichtigen wir die Widerstandsklasse (RC)
+            nach DIN EN 1627 und kombinieren zertifizierte Einbruchhemmung mit intelligenter Sensorik.
+          </p>
+          <p>
+            Die Alarmtechnik wiederum wird präzise auf die örtlichen Gegebenheiten abgestimmt. Wir setzen auf
+            Sabotageüberwachung, redundante Übertragungswege (Dual-Path-Signalisierung über IP und Mobilfunk) und
+            maßgeschneiderte Scharfschaltekonzepte, die Falschalarme minimieren und höchste Zuverlässigkeit garantieren.
+            Das Ziel ist eine lückenlose Alarmkette, die von der Detektion über die Verarbeitung in der Einbruchmeldezentrale (EMZ)
+            bis zur Alarmierung einer Notruf- und Serviceleitstelle (NSL) reicht.
+          </p>
+        </div>
+      </Section>
+
+      {/* Interaktiver Kalkulator */}
+      <Section>
+        <SectionHeading
+          eyebrow="Investitionsplanung"
+          title="Kalkulieren Sie Ihr Projekt"
+          lead="Nutzen Sie unseren interaktiven Rechner, um einen ersten Richtwert für Ihr Sicherheitsprojekt zu erhalten."
+        />
+        <div className="mt-8 mx-auto max-w-2xl">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
+      {/* FAQ Sektion */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Häufig gestellte Fragen"
+          title="Expertenantworten zu Sicherheitstechnik"
+          lead="Fundiertes Wissen für Ihre Entscheidungsfindung."
+        />
+        <div className="mt-8 space-y-6">
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h3 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Wie verhält sich der mechanische Schutz zur Alarmtechnik?</h3>
+            <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">Mechanik ist der primäre Widerstand. Die Alarmtechnik detektiert den Versuch. Ohne Mechanik ist der Eindringling im Objekt, bevor die Hilfe eintrifft. Die ideale Kombination maximiert die Verzögerungszeit und minimiert die Reaktionszeit.</p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h3 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Welche Zertifizierungen sind für Einbruchmeldeanlagen (EMA) relevant?</h3>
+            <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">In Deutschland sind die VdS-Klassen (A, B, C) sowie die DIN EN 50131 (Grade 1-4) maßgeblich. Diese Normen definieren die Anforderungen an die Geräte und deren Überwindungssicherheit, was für Versicherungen von zentraler Bedeutung ist.</p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h3 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Was bedeutet Zwangsläufigkeit in der Alarmtechnik?</h3>
+            <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">Zwangsläufigkeit verhindert Falschalarme durch organisatorische oder technische Maßnahmen. Es bedeutet, dass eine Anlage nur scharfgeschaltet werden kann, wenn alle Melder im Ruhezustand sind (z.B. alle Fenster zu). Das Betreten des Objekts ist erst nach Unscharfschaltung möglich.</p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h3 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Ist Videoüberwachung auf privaten Grundstücken erlaubt?</h3>
+            <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">Grundsätzlich ja, jedoch darf ausschließlich das eigene Grundstück erfasst werden. Öffentlicher Raum (Bürgersteig) oder Nachbargrundstücke sind strikt tabu. Die datenschutzrechtlichen Vorgaben der DSGVO und lokale Regelungen müssen zwingend beachtet werden.</p>
+          </div>
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+            <h3 className="text-[16px] font-bold text-[oklch(0.16_0.02_260)]">Wie funktioniert eine Aufschaltung auf eine Notruf- und Serviceleitstelle (NSL)?</h3>
+            <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">Die Alarmanlage kommuniziert über einen gesicherten Übertragungsweg (oft redundant) mit der Leitstelle. Bei einer Auslösung wertet das geschulte Personal das Signal aus und leitet sofort die vereinbarten Maßnahmen ein, wie die Benachrichtigung der Polizei, Feuerwehr oder eines Interventionsdienstes.</p>
+          </div>
+        </div>
+      </Section>
 
       <PageHeader
         eyebrow="Leistungsbereich"
