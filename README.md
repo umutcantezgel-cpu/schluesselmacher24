@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+## Architecture State
+| Route | Status | Subagent | Note |
+|-------|--------|----------|------|
+| `/sicherheitstechnik` | `ROUTE_ELEVATED` | `JC-REVOLUTION-BUILDER-v1` | Added >800 words content and `SecurityScoreCalculator` |

@@ -1,0 +1,5 @@
+
+---
+## Recent Updates
+- **Builder Stage**: `src/app/(site)/sicherheitstechnik/page.tsx` was expanded with >800 words of content, following the Swiss Light Mode OKLCH design language.
+- Added `SecurityScoreCalculator` interactive module to assess security readiness and provide recommendations via Server Actions.
