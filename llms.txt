@@ -1,0 +1,5 @@
+# Agent Knowledge
+
+- Strict adherence to Next.js 16+, App Router, React 19.2+ Server Actions.
+- Style system based on OKLCH and Tailwind CSS.
+- Zero-new-routes invariant: only expand existing ones.
