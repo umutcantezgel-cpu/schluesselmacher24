@@ -1,0 +1,16 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_001",
+      "target_route": "app/page.tsx",
+      "target_component": "app/page.tsx",
+      "topic": "Systemarchitektur"
+    },
+    {
+      "id": "IDEA_002",
+      "target_route": "app/(site)/autoschluessel/page.tsx",
+      "target_component": "app/(site)/autoschluessel/page.tsx",
+      "topic": "Autoschlüssel Übersicht"
+    }
+  ]
+}
