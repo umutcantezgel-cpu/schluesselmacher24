@@ -1,3 +1,9 @@
+'use client';
+
+/*
+ * Als Client-Komponente steht die Ansicht samt Zeichnung nur einmal im Bündel von `error.tsx`
+ * und nicht in den Seitendaten jeder Seite (E7-L-39). Vorgerendert wird sie weiterhin.
+ */
 import { ButtonLink } from '@/components/ui/button';
 import { FehlerAnsicht } from '@/components/layout/fehler-ansicht';
 

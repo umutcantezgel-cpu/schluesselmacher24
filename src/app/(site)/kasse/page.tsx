@@ -69,7 +69,7 @@ export default async function KassePage() {
   const zahlung = paymentStatus();
 
   // Ein Wrapper für die ganze Seite, damit die Nummern der Abschnitte durchlaufen (CSS-Zähler).
-  // Der Gruppenname gilt für `korb-leer:`: Im leeren Zustand (`data-leerzustand`) stehen die
+  // Der Gruppenname gilt für `korb-leer:`: Im leeren Zustand (`.sm24-leerzustand`) stehen die
   // Rechtlichen Hinweise in der Seitenspalte, sonst als Band unten.
   return (
     <div className="group/warenkorb sm24-zaehlung">

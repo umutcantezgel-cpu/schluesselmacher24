@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { Seitenwechsel, bereichsName } from '@/components/visual/motion/seitenwechsel';
 import { Profillinie } from '@/components/visual/profillinie';
+import { InView } from '@/components/visual/motion/in-view';
 import type { AreaKey } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import { Breadcrumbs, type Crumb } from './breadcrumbs';
@@ -96,7 +97,9 @@ export function PageHeader({
              Mobil: Kopf → Grafik → Aktionen und Schriftfeld (Bild vor Handlung, Handlung vor Erklärung). */
           <div className="grid gap-8 lg:grid-cols-12 lg:grid-rows-kopf lg:gap-x-gutter lg:gap-y-0">
             <div className="lg:col-span-7 lg:self-end">{kopf}</div>
-            <div className="lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:self-center">{visual}</div>
+            {/* Die Zeichnung startet nach dem Hydrieren, sobald sie im Bild ist – wie der Hero der
+                Startseite (B-27); vorher läuft im Ladefenster keine Malarbeit (E7-L-38). */}
+            <InView className="lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:self-center">{visual}</InView>
             {(actions || children) && (
               <div className="lg:col-span-7 lg:self-start lg:pt-7">
                 {actions && <div className="flex flex-wrap items-center gap-3">{actions}</div>}

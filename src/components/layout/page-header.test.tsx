@@ -34,6 +34,8 @@ describe('PageHeader', () => {
     expect(aktion).toBeGreaterThan(grafik);
     expect(feld).toBeGreaterThan(aktion);
     expect(html).toContain('lg:row-span-2');
+    // Die Grafik wartet auf das Sichtbarwerden nach dem Hydrieren (E7-L-38).
+    expect(html).toMatch(/<div[^>]*data-motion="wait"[^>]*>(?:(?!<\/div>).)*data-test="grafik"/);
   });
 
   it('zeigt in der Arbeitsansicht kein Fach-Icon und keine Profillinie', () => {

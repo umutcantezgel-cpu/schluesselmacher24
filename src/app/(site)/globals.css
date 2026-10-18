@@ -130,28 +130,34 @@
     scroll-padding-top: calc(var(--header-height) + 1rem);
   }
 
-  /* In Abläufen (FlowShell, `data-ablauf`) zusätzlich unter der klebenden Fortschrittsleiste
+  /*
+   * Die Regeln mit `:has()` prüfen Klassen, keine Attribute: Mit einem Attribut im Argument
+   * berechnet Chromium bei jeder Einfügung irgendwo im Dokument den Stil der ganzen Seite neu
+   * (Öffnen der Schublade: 2 × 894 Elemente, E7-L-41). Die Klassen stehen neben den Attributen.
+   */
+
+  /* In Abläufen (FlowShell, `.sm24-ablauf`) zusätzlich unter der klebenden Fortschrittsleiste
      (mobil etwa 56 px, ab md etwa 60 px; die Schrittliste klebt nicht mit) und über der festen
      Aktionsleiste (mobil 113 px). Sonst landet eine fokussierte Karte darunter (Befund E5-B-23). */
-  html:has([data-ablauf]) {
+  html:has(.sm24-ablauf) {
     scroll-padding-top: calc(var(--header-height) + 4.5rem);
     scroll-padding-bottom: 8rem;
   }
 
-  /* Seiten mit eigener Aktionsleiste unten (FlowShell, gefüllter Warenkorb: `data-eigene-leiste`)
+  /* Seiten mit eigener Aktionsleiste unten (FlowShell, gefüllter Warenkorb: `.sm24-eigene-leiste`)
      blenden die globale Leiste aus – zwei feste Leisten übereinander verdecken Inhalt. */
-  body:has([data-ablauf], [data-eigene-leiste]) [data-aktionsleiste] {
+  body:has(.sm24-ablauf, .sm24-eigene-leiste) [data-aktionsleiste] {
     display: none;
   }
 
   /* Im laufenden Ablauf bleibt „Weiter“ die einzige Hauptaktion; der Kopfknopf kehrt auf der
-     Bestätigung zurück (dort fehlt `data-ablauf`). Spezifität schlägt `sm:inline-flex`. */
-  body:has([data-ablauf]) [data-kopfknopf] {
+     Bestätigung zurück (dort fehlt `.sm24-ablauf`). Spezifität schlägt `sm:inline-flex`. */
+  body:has(.sm24-ablauf) [data-kopfknopf] {
     display: none;
   }
 
   @media (min-width: 768px) {
-    html:has([data-ablauf]) {
+    html:has(.sm24-ablauf) {
       scroll-padding-top: calc(var(--header-height) + 5rem);
       scroll-padding-bottom: 1rem;
     }

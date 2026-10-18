@@ -316,7 +316,7 @@ export function KasseFormular({
 
   if (abgeschlossen) {
     return (
-      <Card className="lg:col-span-8" data-leerzustand>
+      <Card className="sm24-leerzustand lg:col-span-8" data-leerzustand>
         <CardBody>
           <p className="text-body text-foreground-muted" role="status">
             Ihre Bestellung wurde aufgenommen. Sie werden zur Bestätigung weitergeleitet.
@@ -329,7 +329,7 @@ export function KasseFormular({
   if (!geladen) {
     return (
       /* Gleiche Mindesthöhe wie der Leerzustand: Nach dem Laden springt nichts (CLS). */
-      <Card className="min-h-96 sm:min-h-64 lg:col-span-8" data-leerzustand>
+      <Card className="sm24-leerzustand min-h-96 sm:min-h-64 lg:col-span-8" data-leerzustand>
         <CardBody>
           <p className="text-body text-foreground-muted" role="status">
             Bestelldaten werden geladen.
@@ -341,7 +341,7 @@ export function KasseFormular({
 
   if (positionen.length === 0) {
     return (
-      <Card className="flex min-h-96 flex-col justify-center sm:min-h-64 lg:col-span-8" data-leerzustand>
+      <Card className="sm24-leerzustand flex min-h-96 flex-col justify-center sm:min-h-64 lg:col-span-8" data-leerzustand>
         <CardBody className="flex flex-col gap-6 sm:flex-row sm:items-center">
           <div aria-hidden="true" className="sm24-ruhig w-40 shrink-0">
             <SchluesselGrafik params={{ typ: 'zylinder', rohling: true }} title="" />

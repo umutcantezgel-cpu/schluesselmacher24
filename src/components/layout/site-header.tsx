@@ -1,6 +1,17 @@
 'use client';
 
-import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
+import {
+  memo,
+  startTransition,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type Dispatch,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type RefObject,
+  type SetStateAction,
+} from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSpaetVorladen } from '@/lib/spaet-vorladen';
@@ -11,7 +22,7 @@ import { GlyphMenue } from '@/components/visual/glyphen/menue';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { GlyphWarenkorb } from '@/components/visual/glyphen/warenkorb';
 import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
-import { NAV_AREAS, istAktiv } from '@/lib/navigation';
+import { NAV_AREAS, istAktiv, type NavArea } from '@/lib/navigation';
 import { useHydrated } from '@/lib/client-state';
 import { useCartStore } from '@/lib/store/cart';
 import { cn } from '@/lib/cn';
@@ -61,12 +72,14 @@ export function SiteHeader() {
 
   // Drawer: Fokus hinein beim Öffnen, zurück auf den Menüknopf nach dem Schließen
   // (nicht beim ersten Laden – dort bleibt der Fokus, wo der Browser ihn setzt).
+  // Der Fokus folgt ein Bild später: `focus()` erzwingt Stil und Layout, im Klick selbst
+  // verzögerte das die Antwort auf den Menüknopf (E7-L-36).
   const warOffen = useRef(false);
   useEffect(() => {
     if (drawerOpen) {
       warOffen.current = true;
-      fokussierbare(drawerRef.current)[0]?.focus();
-      return;
+      const bild = requestAnimationFrame(() => fokussierbare(drawerRef.current)[0]?.focus({ preventScroll: true }));
+      return () => cancelAnimationFrame(bild);
     }
     if (warOffen.current && document.activeElement === document.body) {
       menuButtonRef.current?.focus({ preventScroll: true });
@@ -89,33 +102,18 @@ export function SiteHeader() {
     return () => document.removeEventListener('keydown', onKey);
   }, [drawerOpen, openArea]);
 
-  // Fokusfalle: Tab bleibt im geöffneten Drawer.
-  const fokusFalle = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-    if (event.key !== 'Tab') return;
-    const elemente = fokussierbare(drawerRef.current);
-    if (elemente.length === 0) return;
-    const erstes = elemente[0];
-    const letztes = elemente[elemente.length - 1];
-    if (event.shiftKey && document.activeElement === erstes) {
-      event.preventDefault();
-      letztes.focus();
-    } else if (!event.shiftKey && document.activeElement === letztes) {
-      event.preventDefault();
-      erstes.focus();
-    }
-  };
+  const schliessen = useCallback(() => setDrawerOpen(false), []);
+  const umschalten = useCallback((key: string) => setOpenMobileArea((offen) => (offen === key ? null : key)), []);
 
   // Im Balken ab 1024 px die Bereiche 1 und 3, ab 1280 px zusätzlich 2 und 5; Bereich 4 und
   // alles Weitere steht unter „Mehr“. Sonst passt der Kopfknopf zwischen 1024 und 1279 px und ab
   // 1536 px nicht in die Zeile (Befund Runde 2, H03).
-  const primary = NAV_AREAS.slice(0, 5);
   const secondary = [
     { area: NAV_AREAS[1], ausblenden: 'xl:hidden' },
     { area: NAV_AREAS[3], ausblenden: '' },
     { area: NAV_AREAS[4], ausblenden: 'xl:hidden' },
     ...NAV_AREAS.slice(5).map((area) => ({ area, ausblenden: '' })),
   ].filter((eintrag) => eintrag.area !== undefined);
-  const mehrAktiv = [NAV_AREAS[3], ...NAV_AREAS.slice(5)].some((area) => area !== undefined && istAktiv(pathname, area.href));
 
   return (
     <header className="fixed inset-x-0 top-0 z-header border-b border-border bg-surface">
@@ -129,55 +127,7 @@ export function SiteHeader() {
         </Link>
 
         {/* Hauptnavigation ab Desktop */}
-        <nav className="ml-auto hidden lg:block" aria-label="Hauptnavigation">
-          <ul className="flex items-center gap-0.5">
-            {[
-              ...primary.map((area, index) => ({
-                key: area.key,
-                label: area.label,
-                aktiv: istAktiv(pathname, area.href),
-                /* Bereich 4 nur unter „Mehr“, Bereiche 2 und 5 ab 1280 px im Balken */
-                sichtbar: index === 3 ? 'hidden' : index === 1 || index === 4 ? 'hidden xl:block' : '',
-              })),
-              { key: 'mehr', label: 'Mehr', aktiv: mehrAktiv, sichtbar: '' },
-            ].map(
-              (eintrag) => (
-                <li key={eintrag.key} className={cn('relative', eintrag.sichtbar)}>
-                  <button
-                    type="button"
-                    onClick={() => setOpenArea(openArea === eintrag.key ? null : eintrag.key)}
-                    onMouseEnter={() => setOpenArea(eintrag.key)}
-                    aria-expanded={openArea === eintrag.key}
-                    aria-controls="megamenue"
-                    className={cn(
-                      'relative inline-flex min-h-touch items-center gap-1 whitespace-nowrap rounded-md px-3 text-small font-semibold transition-colors duration-quick',
-                      eintrag.aktiv || openArea === eintrag.key
-                        ? 'text-primary'
-                        : 'text-foreground-muted hover:bg-surface-muted hover:text-foreground',
-                    )}
-                  >
-                    {eintrag.label}
-                    <GlyphWinkelUnten
-                      size={14}
-                      className={cn(
-                        'transition-transform duration-base ease-standard',
-                        openArea === eintrag.key && 'rotate-180',
-                      )}
-                    />
-                    {/* Bemaßungsstrich unter dem aktiven Bereich */}
-                    <span
-                      aria-hidden
-                      className={cn(
-                        'absolute inset-x-3 -bottom-px h-0.5 bg-primary transition-transform duration-base ease-standard',
-                        eintrag.aktiv ? 'scale-x-100' : 'scale-x-0',
-                      )}
-                    />
-                  </button>
-                </li>
-              ),
-            )}
-          </ul>
-        </nav>
+        <DesktopNav pathname={pathname} openArea={openArea} setOpenArea={setOpenArea} />
 
         <div className="ml-auto flex items-center gap-1 lg:ml-0">
           <Link
@@ -212,7 +162,8 @@ export function SiteHeader() {
           <button
             ref={menuButtonRef}
             type="button"
-            onClick={() => setDrawerOpen(true)}
+            // Öffnen als Transition: Der Klick antwortet sofort, die Schublade baut sich im nächsten Bild auf.
+            onClick={() => startTransition(() => setDrawerOpen(true))}
             aria-expanded={drawerOpen}
             aria-controls="hauptmenue-mobil"
             className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-md text-foreground hover:bg-surface-muted lg:hidden"
@@ -323,114 +274,237 @@ export function SiteHeader() {
 
       {/* Schublade für Smartphone und Tablet (B-07) */}
       {drawerOpen && (
-        <div className="fixed inset-0 z-drawer lg:hidden">
-          <button
-            type="button"
-            tabIndex={-1}
-            className="absolute inset-0 animate-schleier-ein bg-surface-ink/40"
-            onClick={() => setDrawerOpen(false)}
-            aria-label="Menü schließen"
-          />
-          <div
-            id="hauptmenue-mobil"
-            ref={drawerRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Menü"
-            onKeyDown={fokusFalle}
-            className="absolute inset-y-0 right-0 flex w-full max-w-sm animate-schublade-ein flex-col bg-surface shadow-overlay"
-          >
-            <div className="flex h-header shrink-0 items-center justify-between border-b border-border px-5">
-              <span className="font-mono text-caption uppercase tracking-label text-foreground-subtle">Menü</span>
-              <button
-                type="button"
-                onClick={() => setDrawerOpen(false)}
-                className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-md hover:bg-surface-muted"
-              >
-                <GlyphKreuz size={22} />
-                <span className="sr-only">Menü schließen</span>
-              </button>
-            </div>
-
-            <nav className="flex-1 overflow-y-auto overscroll-contain" aria-label="Hauptnavigation">
-              <ul className="divide-y divide-border">
-                {NAV_AREAS.map((area) => (
-                  <li key={area.key}>
-                    <AreaScope area={area.key}>
-                      <div className="flex items-stretch">
-                        <Link
-                          href={area.href}
-                          aria-current={istAktiv(pathname, area.href) ? 'page' : undefined}
-                          className="flex min-h-touch-lg flex-1 items-center gap-3 px-5 py-3 text-body font-semibold text-foreground"
-                        >
-                          <BereichIcon area={area.key} size={28} className="text-area-strong" />
-                          {area.label}
-                        </Link>
-                        <button
-                          type="button"
-                          onClick={() => setOpenMobileArea(openMobileArea === area.key ? null : area.key)}
-                          aria-expanded={openMobileArea === area.key}
-                          className="w-14 shrink-0 border-l border-border text-foreground-subtle"
-                        >
-                          <GlyphWinkelUnten
-                            size={20}
-                            className={cn(
-                              'mx-auto transition-transform duration-base ease-standard',
-                              openMobileArea === area.key && 'rotate-180',
-                            )}
-                          />
-                          <span className="sr-only">Unterpunkte von {area.label} anzeigen</span>
-                        </button>
-                      </div>
-
-                      {openMobileArea === area.key && (
-                        <div className="animate-menue-ein bg-surface-muted px-5 pb-4 pt-1">
-                          {area.highlight && (
-                            <Link
-                              href={area.highlight.href}
-                              className="mb-3 flex min-h-touch items-center rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground"
-                            >
-                              {area.highlight.label}
-                            </Link>
-                          )}
-                          {area.columns.map((column) => (
-                            <div key={column.title} className="mb-3 last:mb-0">
-                              <p className="mb-1.5 font-mono text-caption uppercase tracking-label text-foreground-subtle">
-                                {column.title}
-                              </p>
-                              <ul>
-                                {column.links.map((link) => (
-                                  <li key={link.href}>
-                                    <Link
-                                      href={link.href}
-                                      className="flex min-h-touch items-center text-small text-foreground-muted"
-                                    >
-                                      {link.label}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </AreaScope>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            <div className="shrink-0 border-t border-border p-5">
-              <Link
-                href="/autoschluessel/anfrage"
-                className="flex min-h-touch-lg items-center justify-center rounded-md bg-primary px-4 text-body font-semibold text-primary-foreground"
-              >
-                Autoschlüssel-Termin starten
-              </Link>
-            </div>
-          </div>
-        </div>
+        <MobilSchublade
+          pathname={pathname}
+          drawerRef={drawerRef}
+          openMobileArea={openMobileArea}
+          onToggle={umschalten}
+          onClose={schliessen}
+        />
       )}
     </header>
   );
 }
+
+type DesktopNavProps = {
+  pathname: string;
+  openArea: string | null;
+  setOpenArea: Dispatch<SetStateAction<string | null>>;
+};
+
+/**
+ * Hauptnavigation ab Desktop. Eigene, gemerkte Komponente: Das Öffnen der Schublade
+ * zeichnet sie nicht mit neu (E7-L-36).
+ */
+const DesktopNav = memo(function DesktopNav({ pathname, openArea, setOpenArea }: DesktopNavProps) {
+  const primary = NAV_AREAS.slice(0, 5);
+  const mehrAktiv = [NAV_AREAS[3], ...NAV_AREAS.slice(5)].some(
+    (area) => area !== undefined && istAktiv(pathname, area.href),
+  );
+  return (
+    <nav className="ml-auto hidden lg:block" aria-label="Hauptnavigation">
+      <ul className="flex items-center gap-0.5">
+        {[
+          ...primary.map((area, index) => ({
+            key: area.key,
+            label: area.label,
+            aktiv: istAktiv(pathname, area.href),
+            /* Bereich 4 nur unter „Mehr“, Bereiche 2 und 5 ab 1280 px im Balken */
+            sichtbar: index === 3 ? 'hidden' : index === 1 || index === 4 ? 'hidden xl:block' : '',
+          })),
+          { key: 'mehr', label: 'Mehr', aktiv: mehrAktiv, sichtbar: '' },
+        ].map((eintrag) => (
+          <li key={eintrag.key} className={cn('relative', eintrag.sichtbar)}>
+            <button
+              type="button"
+              onClick={() => setOpenArea(openArea === eintrag.key ? null : eintrag.key)}
+              onMouseEnter={() => setOpenArea(eintrag.key)}
+              aria-expanded={openArea === eintrag.key}
+              aria-controls="megamenue"
+              className={cn(
+                'relative inline-flex min-h-touch items-center gap-1 whitespace-nowrap rounded-md px-3 text-small font-semibold transition-colors duration-quick',
+                eintrag.aktiv || openArea === eintrag.key
+                  ? 'text-primary'
+                  : 'text-foreground-muted hover:bg-surface-muted hover:text-foreground',
+              )}
+            >
+              {eintrag.label}
+              <GlyphWinkelUnten
+                size={14}
+                className={cn(
+                  'transition-transform duration-base ease-standard',
+                  openArea === eintrag.key && 'rotate-180',
+                )}
+              />
+              {/* Bemaßungsstrich unter dem aktiven Bereich */}
+              <span
+                aria-hidden
+                className={cn(
+                  'absolute inset-x-3 -bottom-px h-0.5 bg-primary transition-transform duration-base ease-standard',
+                  eintrag.aktiv ? 'scale-x-100' : 'scale-x-0',
+                )}
+              />
+            </button>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+});
+
+type SchubladeProps = {
+  pathname: string;
+  drawerRef: RefObject<HTMLDivElement | null>;
+  openMobileArea: string | null;
+  onToggle: (key: string) => void;
+  onClose: () => void;
+};
+
+/** Schublade für Smartphone und Tablet (B-07). Wird beim Öffnen eingehängt. */
+const MobilSchublade = memo(function MobilSchublade({
+  pathname,
+  drawerRef,
+  openMobileArea,
+  onToggle,
+  onClose,
+}: SchubladeProps) {
+  // Fokusfalle: Tab bleibt im geöffneten Drawer.
+  const fokusFalle = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'Tab') return;
+    const elemente = fokussierbare(drawerRef.current);
+    if (elemente.length === 0) return;
+    const erstes = elemente[0];
+    const letztes = elemente[elemente.length - 1];
+    if (event.shiftKey && document.activeElement === erstes) {
+      event.preventDefault();
+      letztes.focus();
+    } else if (!event.shiftKey && document.activeElement === letztes) {
+      event.preventDefault();
+      erstes.focus();
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-drawer lg:hidden">
+      <button
+        type="button"
+        tabIndex={-1}
+        className="absolute inset-0 animate-schleier-ein bg-surface-ink/40"
+        onClick={onClose}
+        aria-label="Menü schließen"
+      />
+      <div
+        id="hauptmenue-mobil"
+        ref={drawerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menü"
+        onKeyDown={fokusFalle}
+        className="absolute inset-y-0 right-0 flex w-full max-w-sm animate-schublade-ein flex-col bg-surface shadow-overlay"
+      >
+        <div className="flex h-header shrink-0 items-center justify-between border-b border-border px-5">
+          <span className="font-mono text-caption uppercase tracking-label text-foreground-subtle">Menü</span>
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-md hover:bg-surface-muted"
+          >
+            <GlyphKreuz size={22} />
+            <span className="sr-only">Menü schließen</span>
+          </button>
+        </div>
+
+        <nav className="flex-1 overflow-y-auto overscroll-contain" aria-label="Hauptnavigation">
+          <ul className="divide-y divide-border">
+            {NAV_AREAS.map((area) => (
+              <SchubladenZeile
+                key={area.key}
+                area={area}
+                aktiv={istAktiv(pathname, area.href)}
+                offen={openMobileArea === area.key}
+                onToggle={onToggle}
+              />
+            ))}
+          </ul>
+        </nav>
+
+        <div className="shrink-0 border-t border-border p-5">
+          <Link
+            href="/autoschluessel/anfrage"
+            className="flex min-h-touch-lg items-center justify-center rounded-md bg-primary px-4 text-body font-semibold text-primary-foreground"
+          >
+            Autoschlüssel-Termin starten
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+type SchubladenZeileProps = {
+  area: NavArea;
+  aktiv: boolean;
+  offen: boolean;
+  onToggle: (key: string) => void;
+};
+
+/** Ein Bereich in der Schublade; beim Auf- und Zuklappen zeichnen nur die betroffenen Zeilen neu. */
+const SchubladenZeile = memo(function SchubladenZeile({ area, aktiv, offen, onToggle }: SchubladenZeileProps) {
+  return (
+    <li>
+      <AreaScope area={area.key}>
+        <div className="flex items-stretch">
+          <Link
+            href={area.href}
+            aria-current={aktiv ? 'page' : undefined}
+            className="flex min-h-touch-lg flex-1 items-center gap-3 px-5 py-3 text-body font-semibold text-foreground"
+          >
+            <BereichIcon area={area.key} size={28} className="text-area-strong" />
+            {area.label}
+          </Link>
+          <button
+            type="button"
+            onClick={() => onToggle(area.key)}
+            aria-expanded={offen}
+            className="w-14 shrink-0 border-l border-border text-foreground-subtle"
+          >
+            <GlyphWinkelUnten
+              size={20}
+              className={cn('mx-auto transition-transform duration-base ease-standard', offen && 'rotate-180')}
+            />
+            <span className="sr-only">Unterpunkte von {area.label} anzeigen</span>
+          </button>
+        </div>
+
+        {offen && (
+          <div className="animate-menue-ein bg-surface-muted px-5 pb-4 pt-1">
+            {area.highlight && (
+              <Link
+                href={area.highlight.href}
+                className="mb-3 flex min-h-touch items-center rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground"
+              >
+                {area.highlight.label}
+              </Link>
+            )}
+            {area.columns.map((column) => (
+              <div key={column.title} className="mb-3 last:mb-0">
+                <p className="mb-1.5 font-mono text-caption uppercase tracking-label text-foreground-subtle">
+                  {column.title}
+                </p>
+                <ul>
+                  {column.links.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="flex min-h-touch items-center text-small text-foreground-muted">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+      </AreaScope>
+    </li>
+  );
+});

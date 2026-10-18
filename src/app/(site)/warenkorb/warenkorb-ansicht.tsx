@@ -129,7 +129,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
   if (!geladen) {
     return (
       /* Gleiche Mindesthöhe wie der Leerzustand: Nach dem Laden springt nichts (CLS). */
-      <Card className="min-h-96 sm:min-h-64 lg:col-span-8" data-leerzustand>
+      <Card className="sm24-leerzustand min-h-96 sm:min-h-64 lg:col-span-8" data-leerzustand>
         <CardBody>
           <p className="flex items-center gap-3 text-body text-foreground-muted" role="status">
             <GlyphLaden size={18} className="animate-spin motion-reduce:animate-none" />
@@ -142,7 +142,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
 
   if (positionen.length === 0) {
     return (
-      <Card className="flex min-h-96 flex-col justify-center sm:min-h-64 lg:col-span-8" data-leerzustand>
+      <Card className="sm24-leerzustand flex min-h-96 flex-col justify-center sm:min-h-64 lg:col-span-8" data-leerzustand>
         <CardBody className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-gutter">
           <div aria-hidden="true" className="sm24-ruhig w-40 shrink-0">
             <SchluesselGrafik params={{ typ: 'zylinder', rohling: true }} title="" />
@@ -555,7 +555,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
       {/* Mobil eigene Leiste unten: Gesamtbetrag und Kasse. Die globale Aktionsleiste blendet sich dann aus (globals.css). */}
       <div
         data-eigene-leiste
-        className="pb-safe-area fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface md:hidden"
+        className="sm24-eigene-leiste pb-safe-area fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface md:hidden"
       >
         <div className="shell flex min-h-touch-lg items-center justify-between gap-4 py-2">
           <p className="text-small text-foreground-muted">

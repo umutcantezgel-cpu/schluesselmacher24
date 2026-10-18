@@ -87,7 +87,7 @@ export function FlowShell<T extends object>({
             disabled={i > flow.stepIndex}
             aria-current={i === flow.stepIndex ? 'step' : undefined}
             className={cn(
-              'inline-flex min-h-6 items-center gap-1.5 text-caption font-semibold transition-colors',
+              'inline-flex min-h-6 items-center gap-1.5 text-caption font-semibold transition-colors duration-quick ease-standard',
               i === flow.stepIndex && 'text-primary',
               i < flow.stepIndex && 'text-foreground-muted hover:text-primary',
               i > flow.stepIndex && 'cursor-default text-foreground-subtle',
@@ -108,7 +108,7 @@ export function FlowShell<T extends object>({
   );
 
   return (
-    <div data-ablauf className="pb-40 md:pb-8">
+    <div data-ablauf className="sm24-ablauf pb-40 md:pb-8">
       {/* Fortschritt: klebendes Band über die ganze Breite der Shell, auf allen Breiten gleich
           (eine Zeile „Schritt n von m · Name“, der Ablauftitel steht schon in der h1). */}
       <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background px-5 py-3 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
