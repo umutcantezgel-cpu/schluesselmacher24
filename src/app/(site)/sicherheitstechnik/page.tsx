@@ -20,8 +20,14 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
@@ -73,7 +79,11 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  void resolvedParams;
+  void resolvedSearch;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -105,25 +115,62 @@ export default async function SicherheitstechnikPage() {
         }
       />
 
-      {/* Grundsatz */}
+      {/* Grundsatz und Methodik - Erweiterter Expertenbereich */}
       <Section tight>
         <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-12">
           <div>
             <SectionHeading
-              eyebrow="Einordnung"
+              eyebrow="Einordnung & Methodik"
               title="Mechanik hält auf, Meldetechnik erkennt, Alarmierung informiert"
               lead={page?.intro}
             />
 
-            <dl className="mt-6 space-y-4">
+            <div className="mt-8 prose prose-slate text-[oklch(0.32_0.02_260)] leading-relaxed max-w-none">
+              <p>
+                Ein durchdachtes Sicherheitskonzept basiert stets auf dem Prinzip der konzentrischen Sicherheitsringe.
+                Die äußere Schicht bildet die Perimetersicherung, gefolgt von der Außenhautüberwachung und der inneren Fallenüberwachung.
+                Dabei gilt ein fundamentaler Leitsatz der Sicherheitstechnik: Elektronische Systeme können mechanische Grundsicherung niemals ersetzen,
+                sondern nur ergänzen.
+              </p>
+              <h3 className="text-[oklch(0.16_0.02_260)] font-semibold mt-6 mb-3 text-lg">Die Triade der Gebäudesicherheit</h3>
+              <p>
+                Die mechanische Absicherung stellt den physischen Widerstand dar. Sie definiert den Zeitwertkreis – die Zeitspanne,
+                die ein Täter benötigt, um in das Objekt einzudringen. Ziel ist es, diesen Widerstandszeitwert (Resistance Time) so weit zu erhöhen,
+                dass der Täter den Versuch aufgrund des gestiegenen Entdeckungsrisikos abbricht.
+              </p>
+              <p>
+                Die Meldetechnik (Sensoren, Magnetkontakte, Glasbruchmelder) hat die Aufgabe, den Überwindungsversuch der Mechanik
+                frühestmöglich zu detektieren. Hierbei unterscheiden wir zwischen Außenhautüberwachung (Öffnungs-, Durchgriff-, Durchstiegsüberwachung)
+                und Raumüberwachung (Bewegungsmelder, Trittmatten).
+              </p>
+              <p>
+                Die Alarmierung schließt die Kette. Sie sorgt dafür, dass die detektierte Information unverzüglich und manipulationssicher
+                an eine hilfeleistende Stelle (NSL – Notruf- und Serviceleitstelle) oder lokal via optisch-akustischer Signalgeber übertragen wird.
+              </p>
+              <h3 className="text-[oklch(0.16_0.02_260)] font-semibold mt-6 mb-3 text-lg">Leistungsstufen und Normierung</h3>
+              <p>
+                Unsere Konzepte orientieren sich streng an den Vorgaben der VdS Schadenverhütung GmbH sowie der DIN EN 50131 für Einbruchmeldeanlagen.
+                Abhängig von der Gefährdungsklasse (Grad 1 bis 4) projektieren wir Anlagen, die nicht nur den aktuellen Sicherheitsanforderungen genügen,
+                sondern auch zukunftssicher und skalierbar sind. Die Integration von Videoüberwachungstechnik (CCTV) nach DIN EN 62676 rundet das Portfolio ab,
+                wobei wir höchste Maßstäbe an die Bildqualität, Ausleuchtung (IR-Technologie) und datenschutzkonforme Aufzeichnung legen.
+              </p>
+              <h3 className="text-[oklch(0.16_0.02_260)] font-semibold mt-6 mb-3 text-lg">Wartung und Instandhaltung</h3>
+              <p>
+                Eine sicherheitstechnische Anlage ist nur so zuverlässig wie ihre regelmäßige Wartung. Wir bieten präventive Instandhaltungskonzepte
+                nach DIN VDE 0833, um die Systemintegrität dauerhaft zu gewährleisten. Dazu gehören Batteriewechsel, Justierung von Sensoren,
+                Firmware-Updates und die Überprüfung der Übertragungswege.
+              </p>
+            </div>
+
+            <dl className="mt-8 space-y-4">
               {PRINCIPLE.map((item) => (
-                <div key={item.term} className="rounded-lg border border-border bg-surface p-5">
-                  <dt className="text-[15px] font-bold text-foreground">{item.term}</dt>
-                  <dd className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+                <div key={item.term} className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-5">
+                  <dt className="text-[15px] font-bold text-[oklch(0.16_0.02_260)]">{item.term}</dt>
+                  <dd className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                     {item.body}
                     <Link
                       href={item.href}
-                      className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
+                      className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[oklch(0.52_0.24_260)] hover:underline"
                     >
                       {item.linkLabel}
                       <ArrowRight size={15} aria-hidden />
@@ -143,21 +190,48 @@ export default async function SicherheitstechnikPage() {
               }}
             />
 
-            <div className="rounded-lg border border-border bg-surface-muted p-5">
-              <p className="text-[13px] font-bold uppercase tracking-wider text-foreground-subtle">
+            <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-5 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <p className="text-[13px] font-bold uppercase tracking-wider text-[oklch(0.52_0.24_260)]">
                 Ablauf in diesem Bereich
               </p>
-              <p className="mt-2 text-[15px] font-bold text-foreground">{process.label}</p>
-              <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
+              <p className="mt-2 text-[15px] font-bold text-[oklch(0.16_0.02_260)]">{process.label}</p>
+              <p className="mt-1 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                 {process.hint}
               </p>
               <div className="mt-5">
-                <ButtonLink href={`/${ROUTE}/sicherheitscheck`} variant="outline">
+                <ButtonLink href={"/" + ROUTE + "/sicherheitscheck"} variant="outline">
                   Bestandsaufnahme starten
                 </ButtonLink>
               </div>
             </div>
+
+            <div className="mt-8">
+              <ServiceBudgetCalculator />
+            </div>
           </div>
+        </div>
+      </Section>
+
+      {/* Fachspezifische FAQs */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Häufige Fragen"
+          title="Expertenantworten zur Sicherheitstechnik"
+          lead="Detaillierte Informationen zu technischen und konzeptionellen Aspekten unserer Sicherheitslösungen."
+        />
+        <div className="mt-8 grid gap-4 max-w-3xl mx-auto">
+          {[
+            { q: "Wie verhält sich eine Einbruchmeldeanlage bei Stromausfall?", a: "Professionelle Anlagen verfügen zwingend über eine Notstromversorgung (Akkumulatoren). Diese überbrücken Netzausfälle je nach Systemklasse und Projektierung für 12 bis 60 Stunden. Die Sabotageüberwachung bleibt dabei vollständig intakt." },
+            { q: "Was unterscheidet eine verkabelte Anlage von einem Funksystem?", a: "Verkabelte Systeme (Bus-Technologie) bieten die höchste Ausfallsicherheit und sind immun gegen Jamming (Funkstörungen). Moderne Funk-Alarmsysteme nutzen jedoch proprietäre, bidirektionale Frequenzen mit Rolling-Code-Verschlüsselung und Frequenzsprungverfahren, was sie für Nachrüstungen in Bestandsbauten zur ersten Wahl macht." },
+            { q: "Können Haustiere eine Raumüberwachung auslösen?", a: "Ja, allerdings setzen wir für Haushalte mit Tieren spezielle Dual-Melder ein, die Passiv-Infrarot (PIR) mit Mikrowellentechnologie kombinieren. Diese 'haustierimmunen' Sensoren ignorieren Bewegungen von Objekten bis ca. 30 kg, wenn diese sich bodennah bewegen." },
+            { q: "Wie ist die rechtliche Lage bei der Videoüberwachung von Privatgrundstücken?", a: "Die DSGVO und das BDSG setzen enge Grenzen. Kameras dürfen ausschließlich das eigene Grundstück erfassen. Öffentlicher Raum (Gehwege) oder Nachbargrundstücke müssen zwingend physisch oder per Software-Maskierung ausgeschlossen werden. Zudem besteht eine Hinweispflicht (Piktogramm)." },
+            { q: "Ist eine Aufschaltung auf einen Wachdienst zwingend erforderlich?", a: "Technisch nicht, jedoch strategisch dringend empfohlen. Eine lokale Alarmierung (Sirene) vertreibt zwar oft Gelegenheitstäter, garantiert aber keine Intervention. Die Aufschaltung auf eine VdS-zertifizierte Notruf- und Serviceleitstelle (NSL) stellt sicher, dass Alarme 24/7 von Profis verifiziert und entsprechende Maßnahmen (Interventionskräfte, Polizei) eingeleitet werden." }
+          ].map((faq, i) => (
+            <div key={i} className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+              <h4 className="text-[16px] font-semibold text-[oklch(0.16_0.02_260)]">{faq.q}</h4>
+              <p className="mt-3 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">{faq.a}</p>
+            </div>
+          ))}
         </div>
       </Section>
 

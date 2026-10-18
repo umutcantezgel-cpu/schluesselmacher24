@@ -1,0 +1,12 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_001",
+      "title": "Sicherheitstechnik Deep Dive & Interactive Configurator",
+      "description": "Expand the Sicherheitstechnik page to include >800 words of professional content on security methodology, performance tiers, comparisons, and an extensive FAQ. Add an interactive security check module.",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}
