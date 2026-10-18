@@ -119,7 +119,7 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E6-D-02 | Blindvergleich vorbereiten, Galerie, Bericht | D/Haiku | `_werkstatt/bilder/`, BERICHT | E6-P-C | Z-04, Z-10 | 1a6425b (Stand Abschlussversuch 1; wird nach Abschlussversuch 2 erneuert) |
 | E6-L-13 | Endprüfung durch frischen Opus-Unteragenten, Abschluss | L/Opus | ABNAHME, BERICHT | E6-D-02 | alle | |
 | E7-L-35 | Register K-007 vervollständigt, Dauer-Tokens, ungenutzter Keyframe entfernt | L/Opus | KERN 1.16, `globals.css`, Kopf, Schließplan | E6-P-C | Z-05 | 2cdcbab |
-| E7-W-01 | Werkzeuge: `messung --vergleich`, `ladeweg`, `bewegung` am gerenderten Treffer, `animationen --bedienen` | W/Haiku | `_werkstatt/werkzeuge/` | E6-P-C | Z-05, Z-08 | |
+| E7-W-01 | Werkzeuge: `messung --vergleich`, `ladeweg`, `bewegung` am gerenderten Treffer, `animationen --bedienen` | W/Haiku | `_werkstatt/werkzeuge/` | E6-P-C | Z-05, Z-08 | ed71c48 · abgenommen (Prüfstufe A R2, wf_f71d2297-859) |
 | E7-L-36 | Menü öffnen ohne erzwungenes Layout (rAF-Fokus, Transition, memo) | L/Opus | `site-header.tsx` | D-049 | Z-08 | db3de18 |
 | E7-L-37 | Plex Mono ohne Vorladen | L/Opus | `layout.tsx` | D-049 | Z-08 | db3de18 |
 | E7-L-38 | Kopfgrafik startet nach Sichtbarkeit (InView) | L/Opus | `page-header.tsx` mit Test | D-049 | Z-05 | db3de18 |

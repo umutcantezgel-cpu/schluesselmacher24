@@ -2,6 +2,7 @@ import type { KeyKind } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { motionStyle } from '@/components/visual/motion/motion-style';
+import { InView } from '@/components/visual/motion/in-view';
 import { keyKindDescription, keyKindLabel } from './key-kinds';
 
 /**
@@ -54,36 +55,46 @@ export function SchluesselartenReihe({
             : 'grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border lg:grid-cols-4',
         )}
       >
-        {SCHLUESSELARTEN_REIHE.map(({ art, typ }, index) => (
-          <li
-            key={art}
-            className={cn(
-              'flex flex-col',
-              kopf
-                ? `shrink-0 basis-3/4 snap-start border-r border-border p-4 first:pl-0 md:basis-auto md:border-b md:py-5 ${index % 2 === 0 ? 'md:pl-0 md:pr-5' : 'md:border-r-0 md:pl-5 md:pr-0'}`
-                : 'bg-surface p-4 sm:p-5',
-            )}
-          >
-            <p className="font-mono text-caption tabular-nums text-foreground-subtle">
-              {String(index + 1).padStart(2, '0')}
-            </p>
-            <div className="sm24-reveal" style={motionStyle(index * 0.12)}>
-              <SchluesselGrafik params={{ typ, code: art }} title={`Zeichnung: ${keyKindLabel(art)}`} className="mt-2 w-full" />
-            </div>
-            {kopf ? (
-              <p className="mt-3 text-body font-semibold text-foreground">{keyKindLabel(art)}</p>
-            ) : (
-              <h3 className="mt-3 text-title-sm font-semibold text-foreground">{keyKindLabel(art)}</h3>
-            )}
-            {!kopf && <p className="mt-1 text-small text-foreground-muted">{keyKindDescription(art)}</p>}
-            {!kopf && art === 'smart-key' && (
-              <p className="mt-2 text-small text-foreground-muted">
-                <span className="font-semibold text-foreground">{keyKindLabel('keyless')}:</span>{' '}
-                {keyKindDescription('keyless')}
+        {SCHLUESSELARTEN_REIHE.map(({ art, typ }, index) => {
+          const klasse = cn(
+            'flex flex-col',
+            kopf
+              ? `shrink-0 basis-3/4 snap-start border-r border-border p-4 first:pl-0 md:basis-auto md:border-b md:py-5 ${index % 2 === 0 ? 'md:pl-0 md:pr-5' : 'md:border-r-0 md:pl-5 md:pr-0'}`
+              : 'bg-surface p-4 sm:p-5',
+          );
+          const inhalt = (
+            <>
+              <p className="font-mono text-caption tabular-nums text-foreground-subtle">
+                {String(index + 1).padStart(2, '0')}
               </p>
-            )}
-          </li>
-        ))}
+              <div className="sm24-reveal" style={motionStyle(index * 0.12)}>
+                <SchluesselGrafik params={{ typ, code: art }} title={`Zeichnung: ${keyKindLabel(art)}`} className="mt-2 w-full" />
+              </div>
+              {kopf ? (
+                <p className="mt-3 text-body font-semibold text-foreground">{keyKindLabel(art)}</p>
+              ) : (
+                <h3 className="mt-3 text-title-sm font-semibold text-foreground">{keyKindLabel(art)}</h3>
+              )}
+              {!kopf && <p className="mt-1 text-small text-foreground-muted">{keyKindDescription(art)}</p>}
+              {!kopf && art === 'smart-key' && (
+                <p className="mt-2 text-small text-foreground-muted">
+                  <span className="font-semibold text-foreground">{keyKindLabel('keyless')}:</span>{' '}
+                  {keyKindDescription('keyless')}
+                </p>
+              )}
+            </>
+          );
+          // Kopf: jede Karte wartet auf ihr Sichtbarwerden (mobil rechts außerhalb der Leiste, E7 Bildrate).
+          return kopf ? (
+            <InView key={art} as="li" threshold={0.5} className={klasse}>
+              {inhalt}
+            </InView>
+          ) : (
+            <li key={art} className={klasse}>
+              {inhalt}
+            </li>
+          );
+        })}
       </ol>
       <figcaption className="mt-3 font-mono text-caption text-foreground-subtle">
         Schematische Darstellung, nicht maßstäblich.

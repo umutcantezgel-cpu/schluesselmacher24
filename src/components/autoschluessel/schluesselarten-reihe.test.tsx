@@ -78,6 +78,10 @@ describe('SchluesselartenReihe in der Kopf-Variante', () => {
     expect(html).toMatch(/>01<\/p><div class="sm24-reveal"/);
   });
 
+  it('lässt jede Karte erst beim Sichtbarwerden zeichnen', () => {
+    expect(html.match(/<li[^>]*data-motion="wait"/g)).toHaveLength(4);
+  });
+
   it('beschriftet die Zeichnungen und kennzeichnet sie als schematisch', () => {
     for (const titel of ['Mechanischer Schlüssel', 'Funkschlüssel', 'Klappschlüssel', 'Smart Key']) {
       expect(html).toContain(`<title>Zeichnung: ${titel}`);

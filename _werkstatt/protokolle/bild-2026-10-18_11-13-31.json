@@ -1,0 +1,24 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:13:31.979Z",
+  "argumente": {
+    "_": [
+      "/elektronische-zutrittsloesungen"
+    ],
+    "geraet": "mobil",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-03"
+  },
+  "pfad": "/elektronische-zutrittsloesungen",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-03/elektronische-zutrittsloesungen__mobil.jpg",
+      "status": 200,
+      "bytes": 27368,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": false
+    }
+  ]
+}

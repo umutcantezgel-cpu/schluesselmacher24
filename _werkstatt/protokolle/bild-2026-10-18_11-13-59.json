@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:13:59.455Z",
+  "argumente": {
+    "_": [
+      "/autoschluessel/marken/volkswagen/golf"
+    ],
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-02/nachher",
+    "name": "nachher-golf"
+  },
+  "pfad": "/autoschluessel/marken/volkswagen/golf",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "desktop",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-02/nachher/nachher-golf__desktop.jpg",
+      "status": 200,
+      "bytes": 64124,
+      "breite": 1440,
+      "hoehe": 900,
+      "ganz": false
+    }
+  ]
+}

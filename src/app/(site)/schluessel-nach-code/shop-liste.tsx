@@ -18,6 +18,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
 import { GlyphZuruecksetzen } from '@/components/visual/glyphen/zuruecksetzen';
 import { motionStyle } from '@/components/visual/motion/motion-style';
+import { useAbsichtVorladen } from '@/lib/absicht-vorladen';
 
 /** Sammelwert „keine Einschränkung“ in den Auswahlfeldern. */
 const ALL = 'alle';
@@ -125,6 +126,8 @@ export function ShopListe({ lines, className }: ShopListeProps) {
   const [keyType, setKeyType] = useState(ALL);
   const [family, setFamily] = useState(ALL);
   const [filterOpen, setFilterOpen] = useState(false);
+  // Zeilen laden erst bei erkennbarer Absicht vor, nicht alle beim Erscheinen (D-044)
+  const vorladen = useAbsichtVorladen();
   const [aufgeklappt, setAufgeklappt] = useState<ReadonlySet<string>>(() => new Set());
 
   const id = useId();
@@ -369,6 +372,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
                     {gruppe.lines.map((line, zeile) => {
                       const staffel = line.bulkPrices?.[0];
                       const aufgeklappteZeile = zeile >= VORSCHAU && offen;
+                      const ziel = `/schluessel-nach-code/${line.slug}`;
                       return (
                         <li
                           key={line.id}
@@ -380,7 +384,11 @@ export function ShopListe({ lines, className }: ShopListeProps) {
                           style={aufgeklappteZeile ? motionStyle(0, 0.18) : undefined}
                         >
                           <Link
-                            href={`/schluessel-nach-code/${line.slug}`}
+                            href={ziel}
+                            prefetch={false}
+                            onPointerEnter={() => vorladen(ziel)}
+                            onFocus={() => vorladen(ziel)}
+                            onTouchStart={() => vorladen(ziel)}
                             className="group grid min-h-touch-lg grid-cols-12 items-center gap-x-3 gap-y-1 py-4 transition-colors duration-quick ease-standard md:gap-x-6"
                           >
                             <span className="col-span-2 whitespace-nowrap font-mono text-small font-semibold tabular-nums text-foreground lg:col-span-1">

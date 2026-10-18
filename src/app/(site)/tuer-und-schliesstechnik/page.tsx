@@ -171,11 +171,13 @@ export default async function TuerUndSchliesstechnikPage() {
           />
         }
         actions={
-          <ButtonLink href={`/service-und-termin/anfrage?thema=${ROUTE}`} prefetch={false} size="lg" pfeil>
-            Beratungstermin vereinbaren
-          </ButtonLink>
-          {/* Ziel des Kopfknopfs erst nach der Fräsbahn vorladen (D-044) */}
-          <SpaetVorladen ziele={[`/service-und-termin/anfrage?thema=${ROUTE}`]} />
+          <>
+            <ButtonLink href={`/service-und-termin/anfrage?thema=${ROUTE}`} prefetch={false} size="lg" pfeil>
+              Beratungstermin vereinbaren
+            </ButtonLink>
+            {/* Ziel des Kopfknopfs erst nach der Fräsbahn vorladen (D-044) */}
+            <SpaetVorladen ziele={[`/service-und-termin/anfrage?thema=${ROUTE}`]} />
+          </>
         }
       />
 

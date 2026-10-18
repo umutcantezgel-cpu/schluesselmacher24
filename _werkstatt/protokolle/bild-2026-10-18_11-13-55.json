@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:13:55.932Z",
+  "argumente": {
+    "_": [
+      "/autoschluessel"
+    ],
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-02/nachher",
+    "name": "nachher-h02"
+  },
+  "pfad": "/autoschluessel",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "desktop",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-02/nachher/nachher-h02__desktop.jpg",
+      "status": 200,
+      "bytes": 62544,
+      "breite": 1440,
+      "hoehe": 900,
+      "ganz": false
+    }
+  ]
+}

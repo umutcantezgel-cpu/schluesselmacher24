@@ -180,4 +180,21 @@ describe('Bewegung der Schlüsselzeichnung', () => {
       expect(Math.min(...profilStarts), `${anzahl} Schlüssel`).toBeGreaterThanOrEqual(Math.max(...koerperEnden) - 1e-9);
     }
   });
+
+  it('fasst die Marken eines Schlüssels in genau eine Gruppe mit einer Animation', () => {
+    for (const anzahl of [1, 3]) {
+      const html = zeichne({ typ: 'zylinder', einschnitte: [3, 5, 2, 7, 4], anzahl });
+      const gruppen = [...html.matchAll(/<g class="sm24-fade"[^>]*>((?:(?!<\/g>).)*)<\/g>/g)];
+      expect(gruppen, `${anzahl} Schlüssel`).toHaveLength(1);
+      const marken = gruppen[0][1].match(/<circle class="fill-area-strong"/g) ?? [];
+      expect(marken.length, `${anzahl} Schlüssel`).toBeGreaterThan(0);
+      expect(marken.length, `${anzahl} Schlüssel`).toBe(html.match(/<circle/g)?.length);
+    }
+  });
+
+  it('zeichnet keine Marke mehr als eigene Animation', () => {
+    for (const typ of TYPEN) {
+      expect(zeichne({ typ, einschnitte: [3, 5, 2, 7, 4], anzahl: 3 }), typ).not.toContain('<circle class="sm24-pop');
+    }
+  });
 });

@@ -21,6 +21,7 @@ import {
 
 import { ShopListe } from './shop-liste';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { SpaetVorladen } from '@/lib/spaet-vorladen';
 
 const ROUTE = 'schluessel-nach-code';
 
@@ -95,6 +96,9 @@ export default async function SchluesselNachCodePage() {
         })}
       />
 
+      {/* Ziele des Kopfs erst nach dem großen Moment vorladen (D-044) */}
+      <SpaetVorladen ziele={['/schluessel-nach-vorlage']} />
+
       <PageHeader
         eyebrow={PROCESS_LABELS.direktkauf.label}
         title={page?.headline ?? 'Schlüssel nach Code'}
@@ -127,6 +131,7 @@ export default async function SchluesselNachCodePage() {
               Kein Code vorhanden?{' '}
               <Link
                 href="/schluessel-nach-vorlage"
+                prefetch={false}
                 className="font-semibold text-primary hover:underline"
               >
                 Dann geht es über Schlüssel nach Vorlage weiter.
