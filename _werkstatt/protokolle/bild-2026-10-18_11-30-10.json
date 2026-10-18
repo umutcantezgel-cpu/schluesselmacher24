@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:30:10.175Z",
+  "argumente": {
+    "_": [
+      "/service-und-termin"
+    ],
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-04/runde2",
+    "name": "r2_service-und-termin"
+  },
+  "pfad": "/service-und-termin",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "desktop",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-04/runde2/r2_service-und-termin__desktop.jpg",
+      "status": 200,
+      "bytes": 58764,
+      "breite": 1440,
+      "hoehe": 900,
+      "ganz": false
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:26:21.167Z",
+  "argumente": {
+    "_": [
+      "/service-und-termin"
+    ],
+    "geraet": "mobil",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-04-pruefung-r1",
+    "name": "service-und-termin-mobil"
+  },
+  "pfad": "/service-und-termin",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-04-pruefung-r1/service-und-termin-mobil__mobil.jpg",
+      "status": 200,
+      "bytes": 24251,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": false
+    }
+  ]
+}

@@ -2,7 +2,13 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { ABLAUF_FLAECHE, AblaufGrafik, ablaufHoehe, ablaufSchritte } from './ablauf';
+import {
+  ABLAUF_FLAECHE,
+  AblaufGrafik,
+  ablaufHoehe,
+  ablaufSchritte,
+  tiefeFuehrung,
+} from './ablauf';
 
 function zeichne(params: unknown, title: unknown = 'Ablauf'): string {
   return renderToStaticMarkup(
@@ -535,6 +541,76 @@ describe('AblaufGrafik', () => {
           ).toBe(true);
         }
       }
+    }
+  });
+});
+
+/** Schritte der Seite /service-und-termin (PHASEN, Kurzfassung der Beschriftung). */
+const SEITE_SCHRITTE = 'Bedarfsanalyse|Projektierung|Fertigung|Montage|Dokumentation';
+
+/** Gestrichelte Pfade mit ihrer senkrechten Strecke (x, obere und untere y-Koordinate). */
+function gestrichelt(html: string): { x: number; von: number; bis: number }[] {
+  return [...html.matchAll(/<path([^>]*)>/g)]
+    .map((t) => t[1])
+    .filter((tag) => tag.includes('stroke-dasharray="4 3"'))
+    .map((tag) => {
+      const [anfang, ende] = punkte(attribut(tag, 'd') ?? '');
+      return {
+        x: anfang[0],
+        von: Math.min(anfang[1], ende[1]),
+        bis: Math.max(anfang[1], ende[1]),
+      };
+    });
+}
+
+describe('AblaufGrafik · Führungslinie (Z-09)', () => {
+  it('kürzt die tiefe Führungslinie über der ersten Reihe, wenn eine Beschriftung ihr zu nahe kommt', () => {
+    // Halbe Breite 62 + Luft 10 > Abstand 60: die Beschriftung reicht bis an die Linie.
+    expect(tiefeFuehrung(100, 150, 178, 16, [{ x: 40, breite: 124 }])).toEqual(['M100 154V160']);
+    // Auch ohne Berührung: Abstand 66 < 62 + 10 – die Linie liefe zu knapp an der Schrift vorbei.
+    expect(tiefeFuehrung(100, 150, 178, 16, [{ x: 34, breite: 124 }])).toEqual(['M100 154V160']);
+    // Schon eine von zwei Nachbarbeschriftungen genügt.
+    expect(
+      tiefeFuehrung(100, 150, 178, 16, [
+        { x: 40, breite: 20 },
+        { x: 160, breite: 124 },
+      ]),
+    ).toEqual(['M100 154V160']);
+  });
+
+  it('lässt die Führungslinie durchgehend, wenn keine Beschriftung sie erreicht', () => {
+    // Halbe Breite 62 + Luft 10 = 72 < Abstand 80: die Beschriftung bleibt frei.
+    expect(tiefeFuehrung(100, 150, 178, 16, [{ x: 20, breite: 124 }])).toEqual(['M100 154V189']);
+    expect(tiefeFuehrung(100, 150, 178, 16, [])).toEqual(['M100 154V189']);
+  });
+
+  it('lässt auf der Seite Service und Termin jeder Beschriftung der ersten Reihe seitlich Luft', () => {
+    const html = zeichne({ schritte: SEITE_SCHRITTE });
+    const beschriftungsZeilen = beschriftungen(html);
+    const ersteReihe = Math.min(...beschriftungsZeilen.map((t) => t.y));
+    const erste = beschriftungsZeilen.filter((t) => t.y === ersteReihe);
+    expect(erste.map((t) => t.inhalt)).toEqual(['Bedarfsanalyse', 'Fertigung', 'Dokumentation']);
+    const strecken = gestrichelt(html);
+    // Fünf Stationslinien, die beiden tiefen Führungslinien (02, 04) enden über der ersten Reihe.
+    expect(strecken).toHaveLength(7);
+    for (const t of erste) {
+      const halb = breiteSchaetzung(t) / 2;
+      const oberkante = t.y - t.groesse;
+      const unterkante = t.y + 4;
+      for (const s of strecken) {
+        // In der Höhe der Beschriftung hält jede Linie mindestens 10 Einheiten seitlich Abstand.
+        const zuNah = s.von <= unterkante && s.bis >= oberkante && Math.abs(s.x - t.x) < halb + 10;
+        expect(zuNah).toBe(false);
+      }
+    }
+  });
+
+  it('behält bei kurzen Beschriftungen eine durchgehende Linie je Station', () => {
+    for (const schritte of ['sichern|prüfen|bestellen', 'messen|bestellen', 'a|b|c|d']) {
+      const html = zeichne({ schritte });
+      const anzahl = nummern(html).length;
+      expect(html.match(/stroke-dasharray="4 3"/g)).toHaveLength(anzahl);
+      expect(gestrichelt(html)).toHaveLength(anzahl);
     }
   });
 });

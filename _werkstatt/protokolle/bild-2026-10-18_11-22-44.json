@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:22:44.556Z",
+  "argumente": {
+    "_": [
+      "/ratgeber/autoschluessel-verloren-was-tun"
+    ],
+    "geraet": "mobil",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-04",
+    "name": "nachher"
+  },
+  "pfad": "/ratgeber/autoschluessel-verloren-was-tun",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-04/nachher__mobil.jpg",
+      "status": 200,
+      "bytes": 27941,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": false
+    }
+  ]
+}

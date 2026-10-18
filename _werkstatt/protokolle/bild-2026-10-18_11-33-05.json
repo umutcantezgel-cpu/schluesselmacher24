@@ -1,0 +1,24 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:33:05.684Z",
+  "argumente": {
+    "_": [
+      "/schluessel-nach-vorlage"
+    ],
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-04-pruefung-r2"
+  },
+  "pfad": "/schluessel-nach-vorlage",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "desktop",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-04-pruefung-r2/schluessel-nach-vorlage__desktop.jpg",
+      "status": 200,
+      "bytes": 63005,
+      "breite": 1440,
+      "hoehe": 900,
+      "ganz": false
+    }
+  ]
+}

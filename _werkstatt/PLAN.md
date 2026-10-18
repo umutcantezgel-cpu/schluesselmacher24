@@ -126,10 +126,10 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E7-L-39 | 404-Ansicht als Client-Komponente | L/Opus | `not-found.tsx` | D-049 | Z-08 | db3de18 |
 | E7-L-41 | `:has()` prüft Klassen statt Attribute | L/Opus | `globals.css`, `tailwind.config.ts`, FlowShell, Warenkorb, Kasse | D-049 | Z-08 | db3de18 |
 | E7-L-42 | Kompakte Bildstelle ohne Registry, Brotkrumen spät vorladen, Vorladen bei Absicht | L/Opus | `bild-flaeche.tsx`, `image-placeholder.tsx`, `info-tip.tsx`, `breadcrumbs.tsx`, `absicht-vorladen.ts` | D-049 | Z-05, Z-08 | db3de18, bbb260e |
-| E7-B-02 | Schlüsselzeichnung mit Markengruppe, Karten der Kopfreihe per InView, Vorladen H02/H05 | B/Haiku | siehe Paket | E7-L-42 | Z-05, Z-08 | |
-| E7-B-03 | Tür-Legende lesbar, Zutritts-Signal ≤ 1,6 s, Vorladen H08/H09 | B/Haiku | siehe Paket | E7-L-42 | Z-05, Z-07, Z-09 | |
-| E7-B-04 | Ablauf: Führungslinien kreuzen keine Beschriftung | B/Haiku | `ablauf.tsx` mit Test | – | Z-09 | |
-| E7-L-40 | Register K-007 nach E7 (KERN 1.17) | L/Opus | KERN | Welle 1 | Z-05 | |
+| E7-B-02 | Schlüsselzeichnung mit Markengruppe, Karten der Kopfreihe per InView, Vorladen H02/H05 | B/Haiku | siehe Paket | E7-L-42 | Z-05, Z-08 | COMMIT · abgenommen R1 (wf_083a3c28-cfc), Schwelle 0,25 nachgearbeitet |
+| E7-B-03 | Tür-Legende lesbar, Zutritts-Signal ≤ 1,6 s, Vorladen H08/H09 | B/Haiku | siehe Paket | E7-L-42 | Z-05, Z-07, Z-09 | COMMIT · abgenommen R1 (wf_083a3c28-cfc) |
+| E7-B-04 | Ablauf: Führungslinien kreuzen keine Beschriftung | B/Haiku | `ablauf.tsx` mit Test | – | Z-09 | COMMIT · nach 3 Runden vom Orchestrator übernommen (L3): Luft 10, Linie endet über der Reihe |
+| E7-L-40 | Register K-007 nach E7 (KERN 1.17) | L/Opus | KERN | Welle 1 | Z-05 | COMMIT · KERN 1.17 |
 | E7-P-1 | Messung Anlauf 1 (Z-08 im Vergleich mit E0, Bildrate am gerenderten Element) | P/Haiku | Protokolle | E7-W-01, Welle 1 | Z-05, Z-08 | |
 | E7-P-C | Prüfstufe C, Abschlussversuch 2 | P/Haiku | Protokolle | E7-P-1 | Z-02 bis Z-09 | |
 | E7-D-03 | Abschluss-Bildsatz, Blindvergleich und Galerie erneuern | D/Haiku | `_werkstatt/bilder/` | E7-P-C | Z-04, Z-10 | |

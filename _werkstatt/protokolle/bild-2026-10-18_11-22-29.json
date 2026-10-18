@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:22:29.766Z",
+  "argumente": {
+    "_": [
+      "/service-und-termin"
+    ],
+    "geraet": "mobil",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-04",
+    "name": "nachher"
+  },
+  "pfad": "/service-und-termin",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-04/nachher__mobil.jpg",
+      "status": 200,
+      "bytes": 24251,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": false
+    }
+  ]
+}

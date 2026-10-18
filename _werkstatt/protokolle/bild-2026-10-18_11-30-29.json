@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:30:29.712Z",
+  "argumente": {
+    "_": [
+      "/schluessel-nach-vorlage"
+    ],
+    "geraet": "mobil",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-04/runde2",
+    "name": "r2_schluessel-nach-vorlage"
+  },
+  "pfad": "/schluessel-nach-vorlage",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-04/runde2/r2_schluessel-nach-vorlage__mobil.jpg",
+      "status": 200,
+      "bytes": 31060,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": false
+    }
+  ]
+}

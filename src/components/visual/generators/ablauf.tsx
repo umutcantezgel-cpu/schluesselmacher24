@@ -40,6 +40,14 @@ const PFEIL_LAENGE = 12;
 const PFEIL_BREITE = 9;
 /** Strichmuster der Hilfslinien. */
 const GESTRICHELT = '4 3';
+/**
+ * Seitliche Luft zwischen einer tiefen Führungslinie und einer Beschriftung der ersten Reihe:
+ * Wie in einer technischen Zeichnung berührt die Linie die Schrift nicht, sie lässt sichtbar
+ * Platz (etwa ¾ der Schrifthöhe 16). Liegt sie näher, wird sie dort unterbrochen (Z-09).
+ */
+const LUFT = 10;
+/** Lücke zwischen dem Ende einer gekürzten Führungslinie und der Schrift. */
+const SCHRIFT_LUECKE = 2;
 
 /**
  * Maße je Format. Telefonbreite: Schriftgröße × 358 / Flächenbreite ≥ 11,5.
@@ -85,6 +93,25 @@ export function ablaufHoehe(anzahl: number): number {
 
 function textBreite(text: string, schrift: number): number {
   return [...text].length * schrift * ZEICHEN_EM;
+}
+
+/**
+ * Pfade einer tiefen Führungslinie bei `x`. Kommt eine Beschriftung der ersten Reihe
+ * (`nachbarn`: Mitte und geschätzte Breite) der Linie näher als `LUFT`, endet die Linie über
+ * dieser Zeile; sonst führt sie durchgehend bis zur zweiten Reihe (`LY + 39`).
+ */
+export function tiefeFuehrung(
+  x: number,
+  LY: number,
+  grundlinie: number,
+  schrift: number,
+  nachbarn: { x: number; breite: number }[],
+): string[] {
+  const erreicht = nachbarn.some((n) => n.breite / 2 + LUFT > Math.abs(n.x - x));
+  if (!erreicht) return [`M${x} ${LY + 4}V${LY + 39}`];
+  // Unter der Zeile bliebe nur ein Reststück von wenigen Einheiten – es wirkte wie ein verirrter
+  // Strich. Die zweite Reihe steht ohnehin mittig unter ihrer Station.
+  return [`M${x} ${LY + 4}V${grundlinie - schrift - SCHRIFT_LUECKE}`];
 }
 
 function nummer(index: number): string {
@@ -179,6 +206,10 @@ function BreitGrafik({ anzahl, beschriftungen, aktiv, title, className }: Zeichn
       {xs.map((x, i) => {
         const tief = versetzt && i % 2 === 1;
         const beschriftungY = LY + 28 + (tief ? 24 : 0);
+        const nachbarn = [i - 1, i + 1]
+          .filter((j) => j >= 0 && j < beschriftungen.length)
+          .map((j) => ({ x: xs[j], breite: breiten[j] }));
+        const fuehrung = tief ? tiefeFuehrung(x, LY, LY + 28, f.schrift, nachbarn) : [];
         return (
           <g key={`station-${i}`}>
             <path
@@ -188,15 +219,16 @@ function BreitGrafik({ anzahl, beschriftungen, aktiv, title, className }: Zeichn
               strokeDasharray={GESTRICHELT}
               d={`M${x} ${LY + 6}V${cy + KREIS_BREIT}`}
             />
-            {tief && (
+            {fuehrung.map((d, k) => (
               <path
+                key={`fuehrung-${k}`}
                 className="sm24-fade stroke-foreground-muted"
                 style={motionStyle(verzoegerung(i), EINBLENDUNG)}
                 strokeWidth={HILFSLINIE}
                 strokeDasharray={GESTRICHELT}
-                d={`M${x} ${LY + 4}V${LY + 39}`}
+                d={d}
               />
-            )}
+            ))}
             <Station
               x={x}
               cy={cy}
