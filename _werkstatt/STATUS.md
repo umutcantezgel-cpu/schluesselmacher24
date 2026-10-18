@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 7 · Welle 1 · Pflicht 98/107 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (Build 208/208, Tests grün, Linter 0, Logikwächter 0) · Nächster Schritt: Welle 1 und Werkzeuge abnehmen, Messung Anlauf 1
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 7 · Welle Anlauf 2 (E7-L-43) · Pflicht 99/107 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (tsc 0, ESLint 0, Vitest 1217, Logikwächter 0) · Nächster Schritt: Build-Gate, Prüfstufe C Abschlussversuch 2
 
 # Status des Gestaltungslaufs
 
@@ -49,3 +49,4 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 7 · Wel
 - 17.10.2026 22:45 · Neustart des Containers, Server neu gestartet. Prüfstufe C erneut versucht: Werkzeugfehler beim Tastatur-Eingeben behoben (F-01 per Tastatur bestanden), Register K-007 vervollständigt (KERN 1.16, E6-L-35, Build 208/208). Abschluss von Prüfstufe C und Blindvergleich E6-D-02 laufen.
 - 18.10.2026 08:40 · Neustart des Containers. Abschlussversuch 1 ausgewertet (Z-08 Abstand zu E0 und Bildrate nicht erfüllt, siehe Plan E7 „Absichern“). Morgenbericht 18.10. mit 6 Bildern (`bilder/morgen-2026-10-18/`).
 - 18.10.2026 09:40 · D-049: Ursachen gefunden (Menü: Fokus im Klick und `:has()` mit Attributen machten jede Einfügung seitenweit teuer; Bildrate: Vorladen und Kopfgrafiken im Ladefenster). E7-L-36 bis L-42 umgesetzt, Klickverarbeitung 114 → 0–2 ms, Stil beim Öffnen 2 × 894 → 170 Elemente. Werkzeuge und Welle 1 laufen.
+- 18.10.2026 11:56 · Neustart des Arbeitsprozesses (Server aus), gesichert. Messung Anlauf 1 (E7-P-1): Bildrate 8/8 ≤ 5 %, INP 12/12, LCP mobil 3/12. Anlauf 2 (E7-L-43, D-050): CSS im Dokument, maßgleiche Ersatzschriften, Mono vorgeladen. Am Prüfstand mobil LCP 12/12 unter E0 (480–800 gegen 870–2580 ms), CLS nicht über E0, Desktop 36/36. KERN 1.18, M-28.

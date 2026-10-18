@@ -582,3 +582,57 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - INP-Näherung 48–56 ms gegen E0 72–88 ms.
   - LCP 1108–1188 gegen E0 960–992 ms; der Abstand bleibt.
 - **Favicon `src/app/(site)/icon.svg`:** Die SVG-Prüfung meldet einen Kommentar, dazu feste Farben und ids. Die Datei ist UNANTASTBAR (Logo und Favicon, G8) und bleibt unverändert. Z-06 vermerkt das als begründete Abweichung, nicht als Mangel der Gestaltung.
+
+## D-050 · Anlauf 1 gemessen, Anlauf 2 für Z-08 (E7-L-43): CSS im Dokument, maßgleiche Ersatzschriften
+- **Beleg Anlauf 1:** `_werkstatt/protokolle/E7-PRUEFER-01-ergebnis.md` (Haiku-Prüfer, Build `mO87Jg1jNnqeWLZgBYSbk`, Stand e4d7336, mobil 5 Läufe und Desktop 3 Läufe je Ansicht, abwechselnd gegen E0 auf Port 3100).
+  - **Erfüllt:** Bildrate aller 8 Momente am gerenderten Element mit Median 0,0 % (Z-05 Bildrate). INP 12/12 mobil und Desktop (Menü jetzt 16–48 ms gegen 56–72 ms in E0). Budgets mit großer Reserve (LCP höchstens 1,18 s mobil). Funktionsliste 14/14, Tastatur 7/7 auf beiden Geräten, Konsole ohne Fehler.
+  - **Nicht erfüllt (Z-08):** LCP mobil 3/12 (+64 bis +176 ms über E0, mehr als dessen Spanne). CLS mobil 11/12: H04 0,000124 gegen 0. Desktop LCP 8/12 und CLS 9/12 (H04 0,0015, H07 0,00003, H12 0,00001 gegen 0).
+- **Ursachen, gemessen am Produktionsbuild** (Ladeweg im Protokoll, eigene Diagnosen `scratchpad/e6/perf/`, Prüfstände `/root/sm24-v2` und `/root/sm24-v3`):
+  - **LCP = FCP = h1.** Vor dem ersten Zeichnen wartet der Browser auf das Stylesheet, eine zweite Anfrage mit 150 ms Latenz auf der gedrosselten Leitung. Das CSS ist seit E0 gewachsen (15,9 gegen 11,0 KB gz), das Dokument ebenso (33,4 gegen 16,9 KB gz). Beides teilt sich die Leitung mit den Schriften.
+  - **CLS-Reste kommen vom Schrifttausch.** next/font legt als Ersatz nur `local(Arial)` an. Linux und Android haben kein Arial, also zeichnet der Browser zuerst eine unangepasste Systemschrift. Die Wortmarke rückt beim Tausch um etwa 10 px (E0 genauso). Chromium zählt das nur, wenn das erste Zeichnen früh genug liegt. E7-L-37 (Mono ohne Vorladen, unangepasster Ersatz) brachte zusätzliche kleine Verschiebungen.
+- **Entscheidung Anlauf 2 (E7-L-43, Denkprotokoll):**
+  1. **`experimental.inlineCss`:** Das CSS steht als `<style>` im Dokument, die Anfrage vor dem ersten Zeichnen entfällt.
+     - Die CSP erlaubt `'unsafe-inline'` für Stile schon heute; es gibt keine neue Abhängigkeit.
+     - Laut Next-16-Doku (`node_modules/next/dist/docs/01-app/03-api-reference/05-config/01-next-config-js/inlineCss.md`) ist es gedacht für atomares CSS wie Tailwind, Erstbesuche und langsame Leitungen. Genau das prüft Z-08.
+     - **Kehrseiten laut Doku:**
+       - Beim ersten Laden steht das CSS zweimal im Dokument, als `<style>` und im RSC-Payload.
+       - Wiederkehrende Besucher haben keinen getrennt zwischengespeicherten Stil.
+       - Seitenwechsel im Browser laden weiter `<link>`.
+       - Die Option gilt global und nur im Produktionsbuild.
+     - **Bewertung:** Bei 16 KB gz CSS ist der Gewinn beim ersten Zeichnen größer als die doppelte Übertragung; die Messung unten belegt das. In MENSCHEN steht, dass die Option mit dem nächsten Next-Update erneut zu prüfen ist.
+     - Verworfen wurde die kritische CSS-Extraktion: neues Werkzeug, G6.
+  2. **Maßgleiche Ersatzschriften** in `globals.css`:
+     - `SM24 Ersatz Plex Sans` normal und fett, `SM24 Ersatz Wortmarke`, `SM24 Ersatz Plex Mono`.
+     - Sie zeigen auf Arial, Liberation Sans, Arimo und Roboto (mittlere Zeichenbreite 913 bzw. 911 je 2048, wie Arial) bzw. auf Liberation Mono, Cousine und Courier New (Vorschub 0,6 em wie Plex Mono).
+     - Ausgleich `size-adjust` aus gemessenen Breiten: 101,17 % normal (Wert von next/font), 97,7 % fett, 92,55 % Wortmarke (149,1 gegen 161,1 px). Ober- und Unterlänge wie Plex Sans (1,025 / 0,275 em), geteilt durch den Ausgleich.
+     - In `tailwind.config.ts` stehen sie hinter `var(--font-display)` bzw. `var(--font-mono)`; Inter behält den Ersatz von next/font.
+     - Verworfen: `display: 'optional'`. Die Webschrift fiele auf langsamen Leitungen ganz weg, das ist ein Gestaltungsverlust.
+  3. **E7-L-37 zurückgenommen:** Mono wird wieder vorgeladen. Mit CSS im Dokument konkurriert die Mono nicht mehr mit dem Stylesheet, ihr Tausch verschob aber Zeilen.
+  - **Logo (G8):** Die Wortmarke bleibt in Schrift, Größe und Form unverändert. Nur ihr Ersatz während des Ladens ist neu, damit die „24“ nicht springt.
+- **Vorprüfung am Prüfstand v3** (Build `ytWmZ-eGhKucTBtzuoGat`, Port 3203, diag2 mobil, 3 Läufe je Server, abwechselnd; Diagnose, kein Abnahmebeleg):
+  - LCP mobil in ms, je 3 Läufe neu | E0:
+
+    | Ansicht | neu | E0 |
+    |---|---|---|
+    | H01 `/` | 796 · 672 · 648 | 952 · 964 · 932 |
+    | H02 | 668 · 648 · 684 | 940 · 924 · 992 |
+    | H03 | 576 · 616 · 596 | 992 · 948 · 1064 |
+    | H04 | 700 · 540 · 516 | 904 · 924 · 872 |
+    | H05 | 684 · 596 · 588 | 1112 · 1140 · 1072 |
+    | H06 | 644 · 616 · 636 | 1016 · 968 · 964 |
+    | H07 | 748 · 632 · 584 | 1020 · 964 · 948 |
+    | H08 | 676 · 644 · 676 | 1032 · 936 · 952 |
+    | H09 | 584 · 628 · 612 | 1008 · 1108 · 1056 |
+    | H10 | 504 · 488 · 516 | 2580 · 2516 · 2576 |
+    | H11 | 500 · 524 · 480 | 940 · 928 · 896 |
+    | H12 | 548 · 572 · 524 | 1000 · 912 · 892 |
+
+  - In jeder Ansicht liegt der langsamste neue Lauf unter dem schnellsten E0-Lauf.
+  - CLS mobil ist 0 in H01 bis H09 und H12, auch in H04 (Anlauf 1: 0,000124). H10 hat 0,0073 gegen 0,1174, H11 0,0098 gegen 0,1038 (Warenkarte, schon in Anlauf 1).
+  - Wortmarke während des Ladens 148,6 → 149,1 px statt 159 → 149 px.
+  - **Desktop** (`messung.mjs --profil desktop --laeufe 3 --vergleich`, Protokoll `scratchpad/e7/v3-desktop.log`, nicht im Repository):
+    - 36 von 36 Werten erfüllt, CLS überall 0 bzw. unter E0.
+    - LCP liegt in H01, H02, H03, H04, H06, H07, H08 und H12 um 4 bis 40 ms über E0, jeweils innerhalb der Spanne. H02 und H04 liegen genau auf der Grenze (+12 bei Spanne 12).
+    - Am ungedrosselten Desktop entfällt der Vorteil der gesparten Anfrage fast ganz, und das doppelte CSS wiegt mit. Ehrlich festgehalten: Die formale Messung kann dort knapp ausfallen.
+- **Bestand:** tsc 0, ESLint 0 (geänderte Dateien), Vitest 73 Dateien mit 1217 Tests grün, Logikwächter 15 Dateien mit 0 abweichend, Wertesuche ohne neue Werte. Die `@font-face`-Prozente sind keine Gestaltungswerte; die Suche meldet sie nicht.
+- **Weiter:** Nach L7 ist das der letzte Anlauf. Der Build nach E7-L-43 ist darum der Endstand. Die formale Messung (Paket `E7-PRUEFER-02`) läuft als Teil 4 der Prüfstufe C, Abschlussversuch 2 (Paket `E7-PRUEFER-C`); so gibt es eine Messung statt zwei. Danach folgt D-051. Ist Z-08 dann nicht erfüllt, gilt AUSNAHME 2 mit diesem Denkprotokoll und beiden Anläufen als Beleg.
