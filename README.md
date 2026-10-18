@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Interaktive Module (Revolution Builder)
+- **Sicherheits-Budget Kalkulator**: Ein Next.js 19 Server Action basiertes interaktives Modul, das unter `app/(site)/sicherheitstechnik/page.tsx` hinzugefügt wurde. Es hilft bei der Budgetplanung für Sicherheitstechnik und verwendet Optimistic UI Updates und das Swiss Light Mode Design (OKLCH).

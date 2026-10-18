@@ -1,0 +1,2 @@
+# Interaktive Module
+- **Sicherheits-Budget Kalkulator**: Verfügbar in der Sicherheitstechnik-Route (`app/(site)/sicherheitstechnik/page.tsx`). Nutzt React 19 Server Actions (`calculateSecurityBudget` in `actions/calculate-budget.ts`) für Echtzeit-Preisschätzungen.
