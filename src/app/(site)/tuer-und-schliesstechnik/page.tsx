@@ -6,6 +6,7 @@ import { getPageContent, getServicePages } from '@/lib/data';
 import { getNachweise } from '@/lib/data/nachweise';
 import { getRichtwerte } from '@/lib/data/richtwerte';
 import { PROCESS_LABELS } from '@/lib/navigation';
+import { SpaetVorladen } from '@/lib/spaet-vorladen';
 import { cn } from '@/lib/cn';
 import type { AreaKey } from '@/lib/types';
 import { ButtonLink } from '@/components/ui/button';
@@ -170,9 +171,11 @@ export default async function TuerUndSchliesstechnikPage() {
           />
         }
         actions={
-          <ButtonLink href={`/service-und-termin/anfrage?thema=${ROUTE}`} size="lg" pfeil>
+          <ButtonLink href={`/service-und-termin/anfrage?thema=${ROUTE}`} prefetch={false} size="lg" pfeil>
             Beratungstermin vereinbaren
           </ButtonLink>
+          {/* Ziel des Kopfknopfs erst nach der Fräsbahn vorladen (D-044) */}
+          <SpaetVorladen ziele={[`/service-und-termin/anfrage?thema=${ROUTE}`]} />
         }
       />
 

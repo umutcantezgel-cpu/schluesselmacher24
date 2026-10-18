@@ -140,7 +140,6 @@ const ZEIT = {
   profilStaffel: 0.08,
   profilDauer: 0.6,
   markeNach: 0.35,
-  markeStaffel: 0.03,
   markeSpanne: 0.3,
   markeDauer: 0.3,
   linealDauer: 0.6,
@@ -523,16 +522,14 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
           />
         ))}
 
-        {vorn.marken.map((m, i) => (
-          <circle
-            key={`${r(m.x)}-${r(m.y)}`}
-            className="sm24-pop fill-area-strong"
-            style={motionStyle(beginn + Math.min(ZEIT.markeNach + i * ZEIT.markeStaffel, ZEIT.markeNach + ZEIT.markeSpanne), ZEIT.markeDauer)}
-            cx={r(m.x)}
-            cy={r(m.y)}
-            r={2.6}
-          />
-        ))}
+        {vorn.marken.length > 0 && (
+          // Alle Marken eines Schlüssels in einer Gruppe: eine Animation statt bis zu 30 (E7, Bildrate).
+          <g className="sm24-fade" style={motionStyle(beginn + ZEIT.markeNach, ZEIT.markeSpanne + ZEIT.markeDauer)}>
+            {vorn.marken.map((m) => (
+              <circle key={`${r(m.x)}-${r(m.y)}`} className="fill-area-strong" cx={r(m.x)} cy={r(m.y)} r={2.6} />
+            ))}
+          </g>
+        )}
 
         {lineal && (
           <path

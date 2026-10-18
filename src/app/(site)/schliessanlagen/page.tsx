@@ -4,6 +4,7 @@ import type { ComponentType } from 'react';
 
 import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
+import { SpaetVorladen } from '@/lib/spaet-vorladen';
 import type { InfoHint } from '@/lib/types';
 import { ButtonLink } from '@/components/ui/button';
 import { Alert } from '@/components/ui/alert';
@@ -287,9 +288,11 @@ export default async function SchliessanlagenPage() {
         }
         actions={
           <>
-            <ButtonLink href="/schliessanlagen/konfigurator" size="lg" pfeil>
+            <ButtonLink href="/schliessanlagen/konfigurator" prefetch={false} size="lg" pfeil>
               Projekt erfassen
             </ButtonLink>
+            {/* Ziel des Kopfknopfs erst nach der Fräsbahn vorladen (D-044) */}
+            <SpaetVorladen ziele={['/schliessanlagen/konfigurator']} />
             <ButtonLink href="#systeme" size="lg" variant="outline">
               Zu den Systemen
             </ButtonLink>
