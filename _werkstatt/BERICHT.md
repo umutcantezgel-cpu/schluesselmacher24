@@ -1,5 +1,28 @@
 # Bericht
 
+## Morgenbericht · Sonntag, 18. Oktober 2026, 07:00 Uhr (geschrieben um 10:40 Uhr nach einem Neustart)
+
+**Fertig seit gestern**
+- Die zweite und letzte Verbesserungsrunde ist auf allen Seiten abgenommen.
+- Die große Schlussprüfung ist gelaufen:
+  - Alle 14 Abläufe laufen durch, die 7 Hauptaufgaben auch nur mit der Tastatur.
+  - Keine Zugänglichkeitsfehler und keine Fehler im Browser.
+  - Nichts ragt über den Bildschirmrand; mit „Bewegung reduzieren“ steht alles still und bleibt sichtbar.
+  - Die Liste aller Bewegungen ist jetzt vollständig.
+- Vorher-Nachher-Galerie zum Durchblättern: `_werkstatt/bilder/galerie.html` (Ausschnitt `bilder/morgen-2026-10-18/galerie-vorher-nachher__desktop.jpg`). Der Blindvergleich für die Endprüfung ist vorbereitet.
+- Beispiele von heute: `schliessanlagen__mobil.jpg`, `code-shop__desktop.jpg`, `kasse__mobil.jpg`, `startseite-profilschnitt__desktop.jpg`.
+
+**Ehrlich**
+- Auf dem Handy erscheint die Überschrift 0,05 bis 0,2 Sekunden später als vor dem Umbau, weil die neuen Zeichnungen mitgeladen werden. Alle Grenzwerte sind weit eingehalten (gut 1 statt erlaubter 2,5 Sekunden), die strenge Regel „nicht langsamer als vorher“ aber nicht.
+- Das Menü auf dem Handy reagiert etwa 0,1 Sekunden träger.
+- Vier Zeichnungen ruckeln auf schwachen Handys leicht; bei einer davon wurde zudem die falsche Grafik gemessen.
+- Zwei Bildfehler: Linien kreuzen Beschriftungen (`service-linien-ueber-beschriftung__desktop.jpg`), und eine Legende ist zu blass.
+- Gestaltungsnoten: Startseite 8 von 10, die übrigen Hauptseiten 7,2 bis 7,7; Ziel war überall 8.
+
+**Als Nächstes:** Ladeweg und Menü beschleunigen, Zeichnungen erst nach dem Laden starten, die zwei Bildfehler beheben. Danach folgen eine zweite Schlussprüfung, die unabhängige Endprüfung und die Übergabe.
+
+**Für dich:** Platzhalter in den AGB (M-05), nur 8 Beispielartikel (M-25), Zusagen auf der Bestellbestätigung (M-26), Firmendaten (M-02), Galerie ansehen und Richtung freigeben (M-08). Nichts ist veröffentlicht.
+
 ## Morgenbericht · Samstag, 17. Oktober 2026, 07:00 Uhr (geschrieben um 11:00 Uhr nach einem Neustart)
 
 Bilder: `_werkstatt/bilder/morgen-2026-10-17/`
