@@ -1,0 +1,61 @@
+| Ansicht | Profil | Läufe | LCP ms | CLS | INP ms | TBT ms | JS KB | Gesamt KB | Budget (Median) |
+|---|---|---|---|---|---|---|---|---|---|
+| H01-start | mobil | 5 von 5 | 656 (632–728) | 0,000 (0,000–0,000) | 40 (32–56) | 441 (387–654) | 201,5 (201,5–243,2) | 515,8 (501,7–529,8) | eingehalten |
+| H02-autoschluessel | mobil | 5 von 5 | 656 (624–660) | 0,000 (0,000–0,000) | 24 (24–176) | 463 (402–597) | 179,9 (179,9–186,2) | 556,5 (548,1–575,6) | eingehalten |
+| H03-modell-golf | mobil | 5 von 5 | 588 (580–596) | 0,000 (0,000–0,000) | 24 (24–40) | 361 (318–380) | 178,9 (178,9–178,9) | 412,1 (412,1–412,1) | eingehalten |
+| H04-assistent | mobil | 5 von 5 | 540 (516–556) | 0,000 (0,000–0,000) | 24 (16–32) | 329 (292–347) | 224,3 (224,3–224,3) | 556,3 (540,2–556,3) | eingehalten |
+| H05-code-shop | mobil | 5 von 5 | 628 (584–652) | 0,000 (0,000–0,000) | 16 (16–24) | 506 (467–542) | 185,2 (185,2–185,2) | 405,2 (405,2–420,8) | eingehalten |
+| H06-code-produkt | mobil | 5 von 5 | 632 (596–784) | 0,000 (0,000–0,000) | 24 (24–32) | 401 (364–587) | 222,2 (222,2–222,2) | 465,7 (454,3–466,4) | eingehalten |
+| H07-zylinder-konfigurator | mobil | 5 von 5 | 580 (552–632) | 0,000 (0,000–0,000) | 24 (16–40) | 290 (266–378) | 212,3 (212,3–219,7) | 461,4 (461,4–468,7) | eingehalten |
+| H08-schliessanlagen | mobil | 5 von 5 | 688 (664–700) | 0,000 (0,000–0,000) | 32 (24–64) | 589 (527–643) | 248,6 (240,6–248,6) | 562,1 (538,9–584,4) | eingehalten |
+| H09-tuertechnik | mobil | 5 von 5 | 632 (600–672) | 0,000 (0,000–0,000) | 24 (24–24) | 409 (362–511) | 190,9 (190,9–190,9) | 449,0 (449,0–449,0) | eingehalten |
+| H10-warenkorb | mobil | 5 von 5 | 500 (460–572) | 0,007 (0,007–0,007) | 24 (16–32) | 224 (215–413) | 226,9 (226,9–226,9) | 495,1 (480,8–512,3) | eingehalten |
+| H11-kasse | mobil | 5 von 5 | 484 (468–524) | 0,010 (0,010–0,010) | 16 (16–24) | 265 (246–296) | 200,4 (200,4–207,8) | 504,4 (457,8–513,1) | eingehalten |
+| H12-ratgeber | mobil | 5 von 5 | 564 (524–592) | 0,000 (0,000–0,000) | 32 (16–48) | 299 (255–310) | 200,5 (200,5–200,5) | 481,7 (434,6–494,8) | eingehalten |
+
+Budgets: LCP ≤ 2500 ms, CLS ≤ 0,1, INP ≤ 200 ms (am Median). Das Bewegungscode-Budget (60 KB) wird nicht gesondert gemessen; „JS KB“ ist die Gesamtmenge aller Skript-Ressourcen.
+
+Vergleich gegen http://localhost:3100 (Lauf um Lauf abwechselnd mit http://localhost:3000):
+
+| Ansicht | Profil | Wert | Läufe jetzt (mit Wert) | Läufe Vergleich (mit Wert) | Median jetzt | Median Vergleich | Spanne Vergleich (max − min) | Differenz | erfüllt |
+|---|---|---|---|---|---|---|---|---|---|
+| H01-start | mobil | LCP | 5 von 5 | 5 von 5 | 656 ms | 960 ms | 48 ms | −304 ms | ja |
+| H01-start | mobil | CLS | 5 von 5 | 5 von 5 | 0,000 | 0,000 | 0,000 | 0,000 | ja |
+| H01-start | mobil | INP | 5 von 5 | 5 von 5 | 40 ms | 56 ms | 24 ms | −16 ms | ja |
+| H02-autoschluessel | mobil | LCP | 5 von 5 | 5 von 5 | 656 ms | 984 ms | 64 ms | −328 ms | ja |
+| H02-autoschluessel | mobil | CLS | 5 von 5 | 5 von 5 | 0,000 | 0,000 | 0,000 | 0,000 | ja |
+| H02-autoschluessel | mobil | INP | 5 von 5 | 5 von 5 | 24 ms | 64 ms | 24 ms | −40 ms | ja |
+| H03-modell-golf | mobil | LCP | 5 von 5 | 5 von 5 | 588 ms | 964 ms | 56 ms | −376 ms | ja |
+| H03-modell-golf | mobil | CLS | 5 von 5 | 5 von 5 | 0,000 | 0,000 | 0,000 | 0,000 | ja |
+| H03-modell-golf | mobil | INP | 5 von 5 | 5 von 5 | 24 ms | 64 ms | 16 ms | −40 ms | ja |
+| H04-assistent | mobil | LCP | 5 von 5 | 5 von 5 | 540 ms | 892 ms | 48 ms | −352 ms | ja |
+| H04-assistent | mobil | CLS | 5 von 5 | 5 von 5 | 0,000 | 0,000 | 0,000 | 0,000 | ja |
+| H04-assistent | mobil | INP | 5 von 5 | 5 von 5 | 24 ms | 56 ms | 16 ms | −32 ms | ja |
+| H05-code-shop | mobil | LCP | 5 von 5 | 5 von 5 | 628 ms | 1060 ms | 64 ms | −432 ms | ja |
+| H05-code-shop | mobil | CLS | 5 von 5 | 5 von 5 | 0,000 | 0,000 | 0,000 | 0,000 | ja |
+| H05-code-shop | mobil | INP | 5 von 5 | 5 von 5 | 16 ms | 64 ms | 32 ms | −48 ms | ja |
+| H06-code-produkt | mobil | LCP | 5 von 5 | 5 von 5 | 632 ms | 992 ms | 72 ms | −360 ms | ja |
+| H06-code-produkt | mobil | CLS | 5 von 5 | 5 von 5 | 0,000 | 0,000 | 0,000 | 0,000 | ja |
+| H06-code-produkt | mobil | INP | 5 von 5 | 5 von 5 | 24 ms | 64 ms | 32 ms | −40 ms | ja |
+| H07-zylinder-konfigurator | mobil | LCP | 5 von 5 | 5 von 5 | 580 ms | 1000 ms | 68 ms | −420 ms | ja |
+| H07-zylinder-konfigurator | mobil | CLS | 5 von 5 | 5 von 5 | 0,000 | 0,000 | 0,000 | 0,000 | ja |
+| H07-zylinder-konfigurator | mobil | INP | 5 von 5 | 5 von 5 | 24 ms | 56 ms | 16 ms | −32 ms | ja |
+| H08-schliessanlagen | mobil | LCP | 5 von 5 | 5 von 5 | 688 ms | 988 ms | 132 ms | −300 ms | ja |
+| H08-schliessanlagen | mobil | CLS | 5 von 5 | 5 von 5 | 0,000 | 0,000 | 0,000 | 0,000 | ja |
+| H08-schliessanlagen | mobil | INP | 5 von 5 | 5 von 5 | 32 ms | 64 ms | 16 ms | −32 ms | ja |
+| H09-tuertechnik | mobil | LCP | 5 von 5 | 5 von 5 | 632 ms | 1024 ms | 52 ms | −392 ms | ja |
+| H09-tuertechnik | mobil | CLS | 5 von 5 | 5 von 5 | 0,000 | 0,000 | 0,000 | 0,000 | ja |
+| H09-tuertechnik | mobil | INP | 5 von 5 | 5 von 5 | 24 ms | 64 ms | 32 ms | −40 ms | ja |
+| H10-warenkorb | mobil | LCP | 5 von 5 | 5 von 5 | 500 ms | 2584 ms | 116 ms | −2084 ms | ja |
+| H10-warenkorb | mobil | CLS | 5 von 5 | 5 von 5 | 0,007 | 0,117 | 0,000 | −0,110 | ja |
+| H10-warenkorb | mobil | INP | 5 von 5 | 5 von 5 | 24 ms | 64 ms | 0 ms | −40 ms | ja |
+| H11-kasse | mobil | LCP | 5 von 5 | 5 von 5 | 484 ms | 888 ms | 40 ms | −404 ms | ja |
+| H11-kasse | mobil | CLS | 5 von 5 | 5 von 5 | 0,010 | 0,104 | 0,000 | −0,094 | ja |
+| H11-kasse | mobil | INP | 5 von 5 | 5 von 5 | 16 ms | 64 ms | 24 ms | −48 ms | ja |
+| H12-ratgeber | mobil | LCP | 5 von 5 | 5 von 5 | 564 ms | 932 ms | 116 ms | −368 ms | ja |
+| H12-ratgeber | mobil | CLS | 5 von 5 | 5 von 5 | 0,000 | 0,000 | 0,000 | 0,000 | ja |
+| H12-ratgeber | mobil | INP | 5 von 5 | 5 von 5 | 32 ms | 72 ms | 64 ms | −40 ms | ja |
+| Summe | – | – | – | – | – | – | – | – | 36 von 36 erfüllt |
+Läufe (mit Wert) = Läufe mit gültigem Wert von allen Läufen der Serie (gelungen und fehlgeschlagen). Differenz = Median jetzt − Median Vergleich (+ heißt: jetzt höher). erfüllt = Differenz ≤ Spanne Vergleich oder Differenz ≤ 0. Spanne „–“ und erfüllt „nicht bewertbar“, wenn die Vergleichsserie weniger als zwei Werte hat oder ein Median fehlt.
+
+JSON-Protokoll: /root/sm24-bilder/e7-p2/messung-mobil.json

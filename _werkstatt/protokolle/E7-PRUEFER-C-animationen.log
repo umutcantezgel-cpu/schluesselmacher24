@@ -1,0 +1,95 @@
+# Animationen · 2026-10-18T12:43:29.275Z · Server http://localhost:3000 · Gerät desktop
+
+Bekannte Keyframes (22): bounce, menue-ein, ping, pulse, schleier-ein, schublade-ein, sm24-aufdecken, sm24-dash, sm24-draw, sm24-erscheinen, sm24-fade, sm24-feder-heben, sm24-lesen-aktiv, sm24-pop, sm24-reveal, sm24-schluessel-ein, sm24-schritt-vor, sm24-schritt-zurueck, sm24-scrub-marke, sm24-scrub-y, sm24-stift-heben, spin
+
+| Ansicht | CSS-Animationen (Keyframe × Anzahl) | WAAPI (Element) | Übergänge (Eigenschaft × Anzahl) | unbekannt | Bedienung |
+|---|---|---|---|---|---|
+| H01-start | sm24-fade ×3, sm24-draw ×27, sm24-reveal ×7, sm24-aufdecken ×1, sm24-scrub-marke ×10, sm24-scrub-y ×2, sm24-dash ×3, sm24-pop ×23, menue-ein ×1 | g.sm24-fade, path.stroke-foreground, g | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| H02-autoschluessel | sm24-reveal ×8, sm24-fade ×4, sm24-draw ×7, sm24-dash ×6, sm24-scrub-marke ×10, sm24-scrub-y ×2, menue-ein ×1 | keine | transform ×3, border-bottom-color ×1, border-left-color ×1, border-right-color ×1, border-top-color ×1, background-color ×1, color ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H03-modell-golf | sm24-reveal ×10, sm24-draw ×9, sm24-fade ×4, sm24-dash ×3, menue-ein ×1 | keine | transform ×2, background-color ×1, color ×1 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H04-assistent | menue-ein ×1 | keine | transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| H05-code-shop | sm24-pop ×2, sm24-draw ×8, menue-ein ×1 | keine | background-color ×5, color ×5, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H06-code-produkt | sm24-fade ×2, sm24-reveal ×2, sm24-pop ×2, sm24-draw ×10, sm24-aufdecken ×1, menue-ein ×1 | keine | background-color ×5, color ×5, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H07-zylinder-konfigurator | schleier-ein ×6, menue-ein ×1, sm24-schritt-vor ×1, sm24-schritt-zurueck ×1 | keine | background-color ×6, color ×9, transform ×5 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter ja/ja · Zurück ja/ja |
+| H08-schliessanlagen | sm24-reveal ×4, sm24-fade ×6, sm24-draw ×32, sm24-pop ×37, menue-ein ×1 | keine | background-color ×5, color ×5, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H09-tuertechnik | sm24-fade ×2, sm24-draw ×6, sm24-pop ×5, menue-ein ×1 | keine | background-color ×5, color ×4, transform ×4 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H10-warenkorb | spin ×1, menue-ein ×1 | keine | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| H11-kasse | menue-ein ×1 | keine | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| H12-ratgeber | sm24-draw ×6, sm24-fade ×8, sm24-pop ×3, sm24-lesen-aktiv ×16, sm24-scrub-y ×2, menue-ein ×1 | keine | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+
+Befunde (unbekannte Keyframes): 0
+
+Bedienung: je Schritt gefunden/ausgeführt (ja/nein); „(Fehler)“ = Bedienung fehlgeschlagen.
+JSON-Protokoll: /root/sm24-bilder/e7-c/animationen-desktop.json
+EXIT desktop 0
+# Animationen · 2026-10-18T12:45:19.112Z · Server http://localhost:3000 · Gerät mobil
+
+Bekannte Keyframes (22): bounce, menue-ein, ping, pulse, schleier-ein, schublade-ein, sm24-aufdecken, sm24-dash, sm24-draw, sm24-erscheinen, sm24-fade, sm24-feder-heben, sm24-lesen-aktiv, sm24-pop, sm24-reveal, sm24-schluessel-ein, sm24-schritt-vor, sm24-schritt-zurueck, sm24-scrub-marke, sm24-scrub-y, sm24-stift-heben, spin
+
+| Ansicht | CSS-Animationen (Keyframe × Anzahl) | WAAPI (Element) | Übergänge (Eigenschaft × Anzahl) | unbekannt | Bedienung |
+|---|---|---|---|---|---|
+| H01-start | sm24-fade ×2, sm24-draw ×15, sm24-reveal ×6, sm24-aufdecken ×1, sm24-scrub-y ×2, sm24-scrub-marke ×10, sm24-pop ×13, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | g.sm24-fade, path.stroke-foreground, g | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| H02-autoschluessel | sm24-reveal ×6, sm24-fade ×3, sm24-draw ×5, sm24-dash ×3, sm24-scrub-y ×2, sm24-scrub-marke ×10, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1, color ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H03-modell-golf | sm24-reveal ×10, sm24-draw ×9, sm24-fade ×4, sm24-dash ×3, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H04-assistent | schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| H05-code-shop | sm24-pop ×2, sm24-draw ×8, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×3 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H06-code-produkt | sm24-fade ×2, sm24-reveal ×2, sm24-pop ×2, sm24-draw ×10, sm24-aufdecken ×1, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H07-zylinder-konfigurator | schleier-ein ×7, schublade-ein ×1, menue-ein ×1, sm24-schritt-vor ×1, sm24-schritt-zurueck ×1 | keine | transform ×4 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter ja/ja · Zurück ja/ja |
+| H08-schliessanlagen | sm24-reveal ×4, sm24-fade ×6, sm24-draw ×32, sm24-pop ×37, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H09-tuertechnik | sm24-fade ×2, sm24-draw ×6, sm24-pop ×5, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×3 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| H10-warenkorb | spin ×1, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| H11-kasse | schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| H12-ratgeber | sm24-draw ×6, sm24-fade ×8, sm24-pop ×3, sm24-lesen-aktiv ×16, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+
+Befunde (unbekannte Keyframes): 0
+
+Bedienung: je Schritt gefunden/ausgeführt (ja/nein); „(Fehler)“ = Bedienung fehlgeschlagen.
+JSON-Protokoll: /root/sm24-bilder/e7-c/animationen-mobil.json
+EXIT mobil 0
+# Animationen · 2026-10-18T12:46:46.561Z · Server http://localhost:3000 · Gerät desktop
+
+Bekannte Keyframes (22): bounce, menue-ein, ping, pulse, schleier-ein, schublade-ein, sm24-aufdecken, sm24-dash, sm24-draw, sm24-erscheinen, sm24-fade, sm24-feder-heben, sm24-lesen-aktiv, sm24-pop, sm24-reveal, sm24-schluessel-ein, sm24-schritt-vor, sm24-schritt-zurueck, sm24-scrub-marke, sm24-scrub-y, sm24-stift-heben, spin
+
+| Ansicht | CSS-Animationen (Keyframe × Anzahl) | WAAPI (Element) | Übergänge (Eigenschaft × Anzahl) | unbekannt | Bedienung |
+|---|---|---|---|---|---|
+| /gleichschliessende-zylinder | sm24-reveal ×10, sm24-draw ×27, sm24-fade ×1, sm24-pop ×17, sm24-schluessel-ein ×3, sm24-feder-heben ×15, sm24-stift-heben ×15, sm24-erscheinen ×3, menue-ein ×1 | keine | background-color ×5, color ×5, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| /service-und-termin | sm24-draw ×2, sm24-fade ×19, sm24-pop ×5, menue-ein ×1 | keine | background-color ×5, color ×4, transform ×4 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| /artikel | sm24-pop ×1, sm24-draw ×1, menue-ein ×1 | keine | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /standorte/berlin | sm24-pop ×3, sm24-draw ×3, sm24-fade ×1, menue-ein ×1 | keine | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /sicherheitstechnik/sicherheitscheck | menue-ein ×1 | keine | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /rechtliches/agb | menue-ein ×1 | keine | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /artikel/beispiel-schluesselkasten | sm24-reveal ×1, sm24-draw ×2, schleier-ein ×1, sm24-fade ×1, menue-ein ×1 | keine | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /autoschluessel/schluesselbart-fraesen | sm24-fade ×2, sm24-draw ×2, sm24-aufdecken ×1, menue-ein ×1 | keine | transform ×2, background-color ×1, color ×1 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| /elektronische-zutrittsloesungen | sm24-reveal ×10, sm24-dash ×12, sm24-fade ×1, sm24-draw ×4, sm24-pop ×6, menue-ein ×1 | keine | background-color ×5, color ×5, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| /rechtliches/impressum | menue-ein ×1 | keine | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /service-und-termin/vor-ort | sm24-draw ×6, sm24-pop ×5, menue-ein ×1 | keine | background-color ×3, color ×3, transform ×2 | keine | Megamenü überfahren ja/ja · Megamenü klicken ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+
+Befunde (unbekannte Keyframes): 0
+
+Bedienung: je Schritt gefunden/ausgeführt (ja/nein); „(Fehler)“ = Bedienung fehlgeschlagen.
+JSON-Protokoll: /root/sm24-bilder/e7-c/animationen-desktop-uebrige.json
+EXIT desktop-uebrige 0
+# Animationen · 2026-10-18T12:48:23.717Z · Server http://localhost:3000 · Gerät mobil
+
+Bekannte Keyframes (22): bounce, menue-ein, ping, pulse, schleier-ein, schublade-ein, sm24-aufdecken, sm24-dash, sm24-draw, sm24-erscheinen, sm24-fade, sm24-feder-heben, sm24-lesen-aktiv, sm24-pop, sm24-reveal, sm24-schluessel-ein, sm24-schritt-vor, sm24-schritt-zurueck, sm24-scrub-marke, sm24-scrub-y, sm24-stift-heben, spin
+
+| Ansicht | CSS-Animationen (Keyframe × Anzahl) | WAAPI (Element) | Übergänge (Eigenschaft × Anzahl) | unbekannt | Bedienung |
+|---|---|---|---|---|---|
+| /gleichschliessende-zylinder | sm24-reveal ×10, sm24-draw ×27, sm24-fade ×1, sm24-pop ×17, sm24-feder-heben ×15, sm24-schluessel-ein ×3, sm24-stift-heben ×15, sm24-erscheinen ×3, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| /service-und-termin | sm24-draw ×2, sm24-fade ×17, sm24-pop ×5, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×3 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| /artikel | sm24-pop ×1, sm24-draw ×1, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×3 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| /standorte/berlin | sm24-pop ×3, sm24-draw ×3, sm24-fade ×1, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /sicherheitstechnik/sicherheitscheck | schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /rechtliches/agb | schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /artikel/beispiel-schluesselkasten | sm24-reveal ×1, sm24-draw ×2, schleier-ein ×2, sm24-fade ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /autoschluessel/schluesselbart-fraesen | sm24-fade ×2, sm24-draw ×2, sm24-aufdecken ×1, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| /elektronische-zutrittsloesungen | sm24-reveal ×10, sm24-dash ×12, sm24-fade ×1, sm24-draw ×4, sm24-pop ×6, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen ja/ja · Akkordeon schließen ja/ja · Weiter nein/nein |
+| /rechtliches/impressum | schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+| /service-und-termin/vor-ort | sm24-draw ×6, sm24-pop ×5, schleier-ein ×1, schublade-ein ×1, menue-ein ×1 | keine | transform ×1 | keine | Schublade ja/ja · Untermenü ja/ja · Escape ja/ja · Akkordeon öffnen nein/nein · Akkordeon schließen nein/nein · Weiter nein/nein |
+
+Befunde (unbekannte Keyframes): 0
+
+Bedienung: je Schritt gefunden/ausgeführt (ja/nein); „(Fehler)“ = Bedienung fehlgeschlagen.
+JSON-Protokoll: /root/sm24-bilder/e7-c/animationen-mobil-uebrige.json
+EXIT mobil-uebrige 0
+=== LAUF ENDE ===

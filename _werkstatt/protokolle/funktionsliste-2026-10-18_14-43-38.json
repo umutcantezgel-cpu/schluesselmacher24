@@ -1,0 +1,1416 @@
+{
+  "skript": "funktionsliste",
+  "zeit": "2026-10-18T12:42:45.314Z",
+  "argumente": {
+    "_": [],
+    "tastatur": true,
+    "geraet": "mobil",
+    "nur": "F-01,F-02,F-04,F-05,F-06,F-07,F-08"
+  },
+  "server": "http://localhost:3000",
+  "records": {
+    "vorher": false,
+    "nachher": false
+  },
+  "serverlog": {
+    "neuZeichen": 0,
+    "treffer": 0
+  },
+  "ergebnisse": [
+    {
+      "id": "F-01",
+      "funktion": "Warenkorb: Code-Schlüssel hinzufügen, Menge ändern, entfernen, Versandart, Summe",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Eintrag erscheint: ja; Menge 2: ja (2); Zwischensumme 2 × 8,00 €: ja (16,00 €); Summe = Zwischensumme + Versand: ja (16,00 € + 4,95 € = 20,95 €); Menge 3 mit Staffelpreis 3 × 7,20 €: ja (21,60 €); Entfernen zeigt „leer“: ja",
+      "messwert": null,
+      "dauer_ms": 3686,
+      "attrappen": [],
+      "tastatur": [
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Schlüsselcode* (Pflichtangabe)“",
+          "tabs": 8,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[number] „Stückzahl“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[button] „In den Warenkorb“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[number] „Stückzahl Büroschrank und Rollcontainer — Serie MS“",
+          "tabs": 9,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Position entfernen: Büroschrank und Rollcontainer “",
+          "tabs": 2,
+          "fokusSichtbar": true
+        }
+      ]
+    },
+    {
+      "id": "F-02",
+      "funktion": "Kasse: Pflichtfelder, zwei Bestätigungen, Absenden",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Absenden als Attrappe abgefangen (action-schreibend, Prüf-E-Mail im Inhalt)",
+      "messwert": null,
+      "dauer_ms": 4742,
+      "attrappen": [
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/kasse",
+          "laenge": 523
+        }
+      ],
+      "tastatur": [
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Schlüsselcode* (Pflichtangabe)“",
+          "tabs": 8,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[number] „Stückzahl“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[button] „In den Warenkorb“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Vorname* (Pflichtangabe)“",
+          "tabs": 9,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Nachname* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[email] „E-Mail* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[tel] „Telefon* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Straße und Hausnummer* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Postleitzahl* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Ort* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Ich habe die AGB und die Widerrufsbelehrung zur Ke“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Mir ist bekannt, dass Schlüssel und Zylinder nach “",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Zahlungspflichtig bestellen“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        }
+      ]
+    },
+    {
+      "id": "F-04",
+      "funktion": "Autoschlüssel-Assistent: Schritte, Fotos, Preis, Termin, Absenden",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Absenden als Attrappe erreicht; 13 Schritte: Welche Marke hat Ihr Fahrzeug?: weiter → Welches Modell fahren Sie?: weiter → Baujahr beziehungsweise Erstzulassung: weiter → Weitere Fahrzeugdaten (freiwillig): weiter → Welche Schlüsselart haben Sie?: weiter → Wie viele funktionierende Schlüssel haben Sie noch?: weiter → Was sollen wir für Sie tun?: weiter → Fotos Ihres Schlüssels: weiter → Zulassungsbescheinigung Teil I: weiter → Wie erreichen wir Sie?: weiter → Preis für Ihren Fall: weiter → Anzahlung: weiter → Termin auswählen: letzter",
+      "messwert": null,
+      "dauer_ms": 6537,
+      "attrappen": [
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/autoschluessel/anfrage",
+          "laenge": 3046
+        }
+      ],
+      "tastatur": [
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Volkswagen6 Modelle“",
+          "tabs": 7,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Golfab 2003“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „Jahr* (Pflichtangabe)“",
+          "tabs": 34,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Schlüssel mit Transponder im KopfMechanischer Schl“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 6,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Kein funktionierender SchlüsselAlle Schlüssel sind“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Zweitschlüssel anfertigenEin zusätzlicher Schlüsse“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 6,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Ich bin berechtigt, für dieses Fahrzeug einen Schl“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Vorname* (Pflichtangabe)“",
+          "tabs": 34,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Nachname* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[email] „E-Mail-Adresse* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[tel] „Telefonnummer* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Postleitzahl* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Ort* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 35,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Ich habe verstanden, dass eine Anzahlung von 69,90“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[button] „09:00 UhrDauer 1 Std.“",
+          "tabs": 53,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Zahlungspflichtig buchen“",
+          "tabs": 7,
+          "fokusSichtbar": true
+        }
+      ]
+    },
+    {
+      "id": "F-05",
+      "funktion": "Zylinder-Konfigurator in den Warenkorb",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Warenkorb gespeichert mit 1 Eintrag/Einträgen, Seite nicht leer; Schritte: Zylinder zusammenstellen: weiter → Gemeinsame Schlüssel: weiter → Schutz und Optionen: weiter → Spätere Erweiterung: weiter → Prüfen und in den Warenkorb legen: letzter",
+      "messwert": "Attrappen: 0",
+      "dauer_ms": 3878,
+      "attrappen": [],
+      "tastatur": [
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 22,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Ja, Schließung hinterlegenSpäter lassen sich weite“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „In den Warenkorb“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        }
+      ]
+    },
+    {
+      "id": "F-06",
+      "funktion": "Schließanlagen-Konfigurator bis Zusammenfassung und Absenden",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Projekt-Absenden als Attrappe abgefangen; 11 Schritte",
+      "messwert": null,
+      "dauer_ms": 11154,
+      "attrappen": [
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/schliessanlagen/konfigurator",
+          "laenge": 4794
+        }
+      ],
+      "tastatur": [
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „PrivatEigenes Haus oder eigene Wohnung, meist mit “",
+          "tabs": 7,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Name der Organisation“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Besonderheiten am Objekt“",
+          "tabs": 45,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Ja, nicht jeder soll jede Tür öffnenZum Beispiel: “",
+          "tabs": 40,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Rollen und Abteilungen“",
+          "tabs": 40,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Nein, wir fangen neu an“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Keine Erweiterung vorgesehen“",
+          "tabs": 38,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Was ist konkret geplant?“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Bezeichnung der Tür* (Pflichtangabe)“",
+          "tabs": 34,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „Zylindertyp“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Maß außen in mm“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Maß innen in mm“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 6,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Ja, ein übergeordneter Schlüssel ist gewünscht“",
+          "tabs": 35,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Bezeichnung der Gruppe* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Diese Gruppe soll folgende Türen öffnen* (Pflichta“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Rangfolge zwischen den Gruppen“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Person, Rolle oder Gruppe* (Pflichtangabe)“",
+          "tabs": 34,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 6,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 35,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Montage durch uns gewünscht“",
+          "tabs": 34,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Beratungstermin im Betrieb“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „So bald wie möglich“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Budgetrahmen“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „Anrede“",
+          "tabs": 35,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Vorname* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Nachname* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[email] „E-Mail* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[tel] „Telefon* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Straße und Hausnummer“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Postleitzahl“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Ort“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Ich habe die Datenschutzerklärung gelesen und bin “",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Projekt absenden“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        }
+      ]
+    },
+    {
+      "id": "F-07",
+      "funktion": "Weitere Abläufe: vorlage, Sicherheitscheck, Zutritt, Service-Anfrage",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "/schluessel-nach-vorlage/anfrage: ok (8 Schritte, erster „Foto der Vorderseite“, letzter „Anfrage prüfen und absenden“, Absenden als Attrappe) · /sicherheitstechnik/sicherheitscheck: ok (10 Schritte, erster „Um welches Objekt geht es?“, letzter „Zusammenfassung“, Absenden als Attrappe) · /elektronische-zutrittsloesungen/konfigurator: ok (9 Schritte, erster „1. Um welches Objekt geht es?“, letzter „Zusammenfassung und Kontakt“, Absenden als Attrappe) · /service-und-termin/anfrage: ok (5 Schritte, erster „Worum geht es?“, letzter „Angaben prüfen und absenden“, Absenden als Attrappe)",
+      "messwert": null,
+      "dauer_ms": 20079,
+      "attrappen": [
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/schluessel-nach-vorlage/anfrage",
+          "laenge": 2010
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/sicherheitstechnik/sicherheitscheck",
+          "laenge": 2810
+        },
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/elektronische-zutrittsloesungen/konfigurator",
+          "laenge": 2404
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/service-und-termin/anfrage",
+          "laenge": 1404
+        }
+      ],
+      "tastatur": [
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 8,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Hersteller oder Marke“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Nummern und Beschriftungen“",
+          "tabs": 32,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Vorname* (Pflichtangabe)“",
+          "tabs": 34,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Nachname* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[email] „E-Mail* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[tel] „Telefon* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Straße und Hausnummer“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Postleitzahl“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Ort“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Anfrage absenden“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „EinfamilienhausFreistehend, mit eigenem Grundstück“",
+          "tabs": 7,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Ergänzung zum Objekt“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Hersteller, Alter oder Zustand der vorhandenen Tec“",
+          "tabs": 40,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Nichts vorhanden“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 10,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „KameraBereiche im Blick behalten und Ereignisse na“",
+          "tabs": 31,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 12,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „Internetanschluss im Objekt vorhanden?* (Pflichtan“",
+          "tabs": 32,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „WLAN-Abdeckung im Objekt* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „App-Steuerung gewünscht?* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „Protokollfunktionen gewünscht?* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 32,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Ja, bitte Vor-Ort-Termin anfragen“",
+          "tabs": 35,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Budgetrahmen“",
+          "tabs": 35,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Zeitliche Vorstellung“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „Anrede“",
+          "tabs": 32,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Vorname* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Nachname* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[email] „E-Mail* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[tel] „Telefon* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Straße und Hausnummer des Objekts“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Postleitzahl“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Ort“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Ich bin damit einverstanden, dass meine Angaben zu“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Anfrage absenden“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Privates WohnobjektHaus oder Wohnung mit festem Nu“",
+          "tabs": 7,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Eine Tür“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Bis 5 Personen“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Genaue Anzahl oder Besonderheiten“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „ZutrittskarteKarte im Scheckkartenformat, passt in“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 10,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Lokal verwaltetÄnderungen werden direkt an der Tür“",
+          "tabs": 32,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Zeitlich begrenzte BerechtigungenGültig ab einem D“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 10,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Ein ObjektAlle Türen befinden sich an einer Adress“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Ja, vorhandene mechanische Anlage einbindenMechani“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Was ist mechanisch vorhanden?“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Wünsche zur Terminlage oder zum Ablauf“",
+          "tabs": 39,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Montage vor OrtEinbau der Zylinder, Beschläge und “",
+          "tabs": 34,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 9,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „Anrede“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Vorname* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Nachname* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[email] „E-Mail-Adresse* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[tel] „Telefon* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Postleitzahl“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Ort“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Projekt absenden“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „AutoschlüsselNachmachen, programmieren, reparieren“",
+          "tabs": 7,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "textarea[textarea] „Was sollen wir für Sie tun?* (Pflichtangabe)“",
+          "tabs": 28,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Um welches Objekt oder Fahrzeug geht es?“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 27,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „Anrede“",
+          "tabs": 28,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Vorname* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Nachname* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[email] „E-Mail-Adresse* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[tel] „Telefon* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Postleitzahl“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Ort“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Anfrage absenden“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        }
+      ]
+    },
+    {
+      "id": "F-08",
+      "funktion": "Terminstatus abfragen",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Rückmeldung erscheint: „Nichts gefundenZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.“",
+      "messwert": null,
+      "dauer_ms": 1504,
+      "attrappen": [],
+      "tastatur": [
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Vorgangsnummer* (Pflichtangabe)“",
+          "tabs": 7,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[email] „E-Mail-Adresse* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Stand abrufen“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        }
+      ]
+    }
+  ]
+}

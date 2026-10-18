@@ -1,0 +1,191 @@
+# Ladeweg · 2026-10-18T12:24:35.434Z · Server http://localhost:3000 · mobil 390 × 844, CPU 4-fach, Netz 150 ms, 1,6/0,75 Mbit/s · 3 Läufe je Route
+
+| Ansicht | Läufe | FCP ms | LCP ms | LCP-Element (mittlerer Lauf) | Long Tasks vor FCP (Anzahl · Summe ms) | DOM-Elemente | HTML KB (übertragen) | Bytes vor FCP KB | Schriften bei FCP (mittlerer Lauf) |
+|---|---|---|---|---|---|---|---|---|---|
+| H01-start | 3 von 3 | 656 | 656 | h1.mt-5.text-display.font-bold „Autoschlüssel nachmachen und programmieren“ | 1,0 · 273 | 985 | 64,4 | 0,0 | IBM Plex Sans nein (0 von 1); IBM Plex Sans Fallback nein (0 von 1); Inter nein (0 von 3); Inter Fallback nein (0 von 1); IBM Plex Mono nein (0 von 3); IBM Plex Mono Fallback nein (0 von 1); SM24 Ersatz Plex Sans ja; SM24 Ersatz Wortmarke ja; SM24 Ersatz Plex Mono ja |
+| H08-schliessanlagen | 3 von 3 | 676 | 676 | h1.text-balance.font-bold.text-foreground „Mechanische Schließanlagen“ | 1,0 · 300 | 1184 | 70,2 | 0,0 | IBM Plex Sans nein (0 von 2); IBM Plex Sans Fallback nein (0 von 1); Inter nein (0 von 4); Inter Fallback nein (0 von 1); IBM Plex Mono nein (0 von 3); IBM Plex Mono Fallback nein (0 von 1); SM24 Ersatz Plex Sans ja; SM24 Ersatz Wortmarke ja; SM24 Ersatz Plex Mono ja |
+| H03-modell-golf | 3 von 3 | 612 | 612 | h1.text-balance.font-bold.text-foreground „Autoschlüssel für Volkswagen Golf“ | 1,0 · 216 | 601 | 53,1 | 0,0 | IBM Plex Sans nein (0 von 2); IBM Plex Sans Fallback nein (0 von 1); Inter nein (0 von 3); Inter Fallback nein (0 von 1); IBM Plex Mono nein (0 von 3); IBM Plex Mono Fallback nein (0 von 1); SM24 Ersatz Plex Sans ja; SM24 Ersatz Wortmarke ja; SM24 Ersatz Plex Mono ja |
+
+### Bytes vor FCP je Typ (Median, KB)
+
+| Ansicht | Typ | Bytes vor FCP KB |
+|---|---|---|
+
+### Wasserfall · H01-start · mittlerer Lauf 2 von 3 (LCP 656 ms)
+
+| # | Typ | Priorität | Adresse | Start ms | Ende ms | KB | vor FCP |
+|---|---|---|---|---|---|---|---|
+| 1 | Document | VeryHigh | / | 0 | 898 | 64,4 | nein |
+| 2 | Font | High | /_next/static/media/03fc1b4a8d284b5e-s.p.0wiir8udbzjvx.woff2 | 206 | 1364 | 40,1 | nein |
+| 3 | Font | High | /_next/static/media/23b7a97ae3b5c134-s.p.226pwps5o-gq_.woff2 | 208 | 703 | 10,7 | nein |
+| 4 | Font | High | /_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2 | 209 | 1513 | 48,1 | nein |
+| 5 | Font | High | /_next/static/media/99e609270109b47d-s.p.40sczeszzbjw1.woff2 | 210 | 717 | 10,7 | nein |
+| 6 | Font | High | /_next/static/media/effe91970fc4db64-s.p.0oace-s_gkfks.woff2 | 210 | 724 | 10,7 | nein |
+| 7 | Script | Low | /_next/static/chunks/1edfvwc5_eck-.js | 260 | 988 | 4,5 | nein |
+| 8 | Script | Low | /_next/static/chunks/0if-vqkhyn-zc.js | 261 | 1114 | 9,1 | nein |
+| 9 | Script | Low | /_next/static/chunks/3bvdabbo3ut63.js | 262 | 2105 | 70,9 | nein |
+| 10 | Script | Low | /_next/static/chunks/1vgpv7vwitdbl.js | 262 | 1992 | 43,0 | nein |
+| 11 | Script | Low | /_next/static/chunks/turbopack-0hnhbz3l811ce.js | 262 | 1287 | 5,1 | nein |
+| 12 | Script | Low | /_next/static/chunks/33t46atd3n2zd.js | 263 | 1415 | 4,5 | nein |
+| 13 | Script | Low | /_next/static/chunks/36-x6d5tdhafn.js | 263 | 1662 | 9,8 | nein |
+| 14 | Script | Low | /_next/static/chunks/1hesc0m6ocd2d.js | 263 | 1857 | 14,2 | nein |
+| 15 | Script | Low | /_next/static/chunks/0wdu7mo5vn80g.js | 264 | 1753 | 7,1 | nein |
+| 16 | Script | Low | /_next/static/chunks/1ffqanlfbeiaq.js | 264 | 1835 | 6,9 | nein |
+| 17 | Script | Low | /_next/static/chunks/1dtpxoj6j-zrf.js | 264 | 1970 | 8,6 | nein |
+
+### Wasserfall · H08-schliessanlagen · mittlerer Lauf 1 von 3 (LCP 676 ms)
+
+| # | Typ | Priorität | Adresse | Start ms | Ende ms | KB | vor FCP |
+|---|---|---|---|---|---|---|---|
+| 1 | Document | VeryHigh | /schliessanlagen | 1 | 1072 | 70,2 | nein |
+| 2 | Font | High | /_next/static/media/03fc1b4a8d284b5e-s.p.0wiir8udbzjvx.woff2 | 203 | 1326 | 40,1 | nein |
+| 3 | Font | High | /_next/static/media/23b7a97ae3b5c134-s.p.226pwps5o-gq_.woff2 | 206 | 704 | 10,7 | nein |
+| 4 | Font | High | /_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2 | 207 | 1514 | 48,1 | nein |
+| 5 | Font | High | /_next/static/media/99e609270109b47d-s.p.40sczeszzbjw1.woff2 | 207 | 719 | 10,7 | nein |
+| 6 | Font | High | /_next/static/media/effe91970fc4db64-s.p.0oace-s_gkfks.woff2 | 209 | 726 | 10,7 | nein |
+| 7 | Script | Low | /_next/static/chunks/1edfvwc5_eck-.js | 261 | 1019 | 4,5 | nein |
+| 8 | Script | Low | /_next/static/chunks/0if-vqkhyn-zc.js | 261 | 1139 | 9,1 | nein |
+| 9 | Script | Low | /_next/static/chunks/3bvdabbo3ut63.js | 261 | 2196 | 70,9 | nein |
+| 10 | Script | Low | /_next/static/chunks/1vgpv7vwitdbl.js | 261 | 2084 | 43,0 | nein |
+| 11 | Script | Low | /_next/static/chunks/turbopack-0hnhbz3l811ce.js | 261 | 1379 | 5,1 | nein |
+| 12 | Script | Low | /_next/static/chunks/33t46atd3n2zd.js | 261 | 1439 | 4,5 | nein |
+| 13 | Script | Low | /_next/static/chunks/36-x6d5tdhafn.js | 261 | 1717 | 9,8 | nein |
+| 14 | Script | Low | /_next/static/chunks/1hesc0m6ocd2d.js | 261 | 1874 | 14,2 | nein |
+| 15 | Script | Low | /_next/static/chunks/0wdu7mo5vn80g.js | 261 | 1784 | 7,1 | nein |
+| 16 | Script | Low | /_next/static/chunks/1ffqanlfbeiaq.js | 261 | 1852 | 6,9 | nein |
+| 17 | Script | Low | /_next/static/chunks/1huwovwvnv3gm.js | 261 | 2031 | 8,3 | nein |
+| 18 | Script | Low | /_next/static/chunks/0qjmcoju795ay.js | 261 | 2129 | 10,9 | nein |
+
+### Wasserfall · H03-modell-golf · mittlerer Lauf 1 von 3 (LCP 612 ms)
+
+| # | Typ | Priorität | Adresse | Start ms | Ende ms | KB | vor FCP |
+|---|---|---|---|---|---|---|---|
+| 1 | Document | VeryHigh | /autoschluessel/marken/volkswagen/golf | 1 | 694 | 53,1 | nein |
+| 2 | Font | High | /_next/static/media/03fc1b4a8d284b5e-s.p.0wiir8udbzjvx.woff2 | 212 | 1288 | 40,1 | nein |
+| 3 | Font | High | /_next/static/media/23b7a97ae3b5c134-s.p.226pwps5o-gq_.woff2 | 214 | 709 | 10,7 | nein |
+| 4 | Font | High | /_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2 | 214 | 1437 | 48,1 | nein |
+| 5 | Font | High | /_next/static/media/99e609270109b47d-s.p.40sczeszzbjw1.woff2 | 216 | 725 | 10,7 | nein |
+| 6 | Font | High | /_next/static/media/effe91970fc4db64-s.p.0oace-s_gkfks.woff2 | 216 | 732 | 10,7 | nein |
+| 7 | Script | Low | /_next/static/chunks/1edfvwc5_eck-.js | 263 | 980 | 4,5 | nein |
+| 8 | Script | Low | /_next/static/chunks/0if-vqkhyn-zc.js | 264 | 1130 | 9,1 | nein |
+| 9 | Script | Low | /_next/static/chunks/3bvdabbo3ut63.js | 264 | 2067 | 70,9 | nein |
+| 10 | Script | Low | /_next/static/chunks/1vgpv7vwitdbl.js | 264 | 1887 | 43,0 | nein |
+| 11 | Script | Low | /_next/static/chunks/turbopack-0hnhbz3l811ce.js | 264 | 1279 | 5,1 | nein |
+| 12 | Script | Low | /_next/static/chunks/33t46atd3n2zd.js | 265 | 1409 | 4,5 | nein |
+| 13 | Script | Low | /_next/static/chunks/36-x6d5tdhafn.js | 266 | 1662 | 9,8 | nein |
+| 14 | Script | Low | /_next/static/chunks/1hesc0m6ocd2d.js | 266 | 1782 | 14,2 | nein |
+| 15 | Script | Low | /_next/static/chunks/0wdu7mo5vn80g.js | 266 | 1760 | 7,1 | nein |
+| 16 | Script | Low | /_next/static/chunks/1ffqanlfbeiaq.js | 267 | 1789 | 6,9 | nein |
+| 17 | Script | Low | /_next/static/chunks/0qjmcoju795ay.js | 267 | 1963 | 10,9 | nein |
+
+Hinweise: Start unter 0 = Anfrage vor Navigationsbeginn. „nein (x von y)“ bei Schriften = nicht alle Schnitte geladen; ungenutzte Schnitte bleiben ungeladen. Bytes = übertragen (mit Kopfzeilen). Fremde Anfragen außer Google-Schriften sind abgebrochen (Fehler in der Tabelle).
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/ladeweg-2026-10-18_14-24-35.json
+# Ladeweg · 2026-10-18T12:25:15.353Z · Server http://localhost:3100 · mobil 390 × 844, CPU 4-fach, Netz 150 ms, 1,6/0,75 Mbit/s · 3 Läufe je Route
+
+| Ansicht | Läufe | FCP ms | LCP ms | LCP-Element (mittlerer Lauf) | Long Tasks vor FCP (Anzahl · Summe ms) | DOM-Elemente | HTML KB (übertragen) | Bytes vor FCP KB | Schriften bei FCP (mittlerer Lauf) |
+|---|---|---|---|---|---|---|---|---|---|
+| H01-start | 3 von 3 | 944 | 944 | h1.mt-4.text-[2rem].font-bold „Autoschlüssel nachmachen und programmieren“ | 2,0 · 178 | 519 | 16,9 | 59,9 | IBM Plex Sans nein (0 von 1); IBM Plex Sans Fallback nein (0 von 1); Inter nein (0 von 4); Inter Fallback nein (0 von 1); IBM Plex Mono ungenutzt; IBM Plex Mono Fallback ungenutzt |
+| H08-schliessanlagen | 3 von 3 | 1008 | 1008 | p.mt-4.text-[15px].leading-relaxed „Der Weg dorthin ist immer derselbe: Sie erfassen I“ | 2,0 · 225 | 734 | 25,0 | 72,5 | IBM Plex Sans nein (0 von 2); IBM Plex Sans Fallback nein (0 von 1); Inter nein (0 von 4); Inter Fallback nein (0 von 1); IBM Plex Mono ungenutzt; IBM Plex Mono Fallback ungenutzt |
+| H03-modell-golf | 3 von 3 | 932 | 932 | p.mt-3.text-[15px].leading-relaxed „Diese Angaben stammen aus unserem Fahrzeugdatensat“ | 1,0 · 120 | 432 | 15,7 | 58,7 | IBM Plex Sans nein (0 von 1); IBM Plex Sans Fallback nein (0 von 1); Inter nein (0 von 4); Inter Fallback nein (0 von 1); IBM Plex Mono ungenutzt; IBM Plex Mono Fallback ungenutzt |
+
+### Bytes vor FCP je Typ (Median, KB)
+
+| Ansicht | Typ | Bytes vor FCP KB |
+|---|---|---|
+| H01-start | Document | 16,9 |
+| H01-start | Font | 32,1 |
+| H01-start | Stylesheet | 11,0 |
+| H08-schliessanlagen | Document | 25,0 |
+| H08-schliessanlagen | Font | 32,1 |
+| H08-schliessanlagen | Script | 4,5 |
+| H08-schliessanlagen | Stylesheet | 11,0 |
+| H03-modell-golf | Document | 15,7 |
+| H03-modell-golf | Font | 32,1 |
+| H03-modell-golf | Stylesheet | 11,0 |
+
+### Wasserfall · H01-start · mittlerer Lauf 2 von 3 (LCP 944 ms)
+
+| # | Typ | Priorität | Adresse | Start ms | Ende ms | KB | vor FCP |
+|---|---|---|---|---|---|---|---|
+| 1 | Document | VeryHigh | / | 1 | 245 | 16,9 | ja |
+| 2 | Font | High | /_next/static/media/03fc1b4a8d284b5e-s.p.0wiir8udbzjvx.woff2 | 198 | 1220 | 40,1 | nein |
+| 3 | Font | High | /_next/static/media/23b7a97ae3b5c134-s.p.226pwps5o-gq_.woff2 | 199 | 680 | 10,7 | ja |
+| 4 | Font | High | /_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2 | 200 | 1430 | 48,1 | nein |
+| 5 | Font | High | /_next/static/media/99e609270109b47d-s.p.40sczeszzbjw1.woff2 | 200 | 694 | 10,7 | ja |
+| 6 | Font | High | /_next/static/media/effe91970fc4db64-s.p.0oace-s_gkfks.woff2 | 200 | 732 | 10,7 | ja |
+| 7 | Stylesheet | VeryHigh | /_next/static/chunks/1jic2bzaljctl.css | 201 | 702 | 11,0 | ja |
+| 8 | Script | Low | /_next/static/chunks/1edfvwc5_eck-.js | 201 | 980 | 4,5 | nein |
+| 9 | Script | Low | /_next/static/chunks/0if-vqkhyn-zc.js | 201 | 1107 | 9,1 | nein |
+| 10 | Script | Low | /_next/static/chunks/3bvdabbo3ut63.js | 201 | 1940 | 70,9 | nein |
+| 11 | Script | Low | /_next/static/chunks/1vgpv7vwitdbl.js | 201 | 1804 | 43,0 | nein |
+| 12 | Script | Low | /_next/static/chunks/turbopack-0hnhbz3l811ce.js | 201 | 1272 | 5,1 | nein |
+| 13 | Script | Low | /_next/static/chunks/33t46atd3n2zd.js | 201 | 1384 | 4,5 | nein |
+| 14 | Script | Low | /_next/static/chunks/3gjwxae8pyjlj.js | 201 | 1595 | 9,6 | nein |
+| 15 | Script | Low | /_next/static/chunks/1kuo-ra2m7j1o.js | 201 | 1707 | 12,1 | nein |
+| 16 | Script | Low | /_next/static/chunks/3zplj9z_pk-nm.js | 201 | 1700 | 7,1 | nein |
+| 17 | Script | Low | /_next/static/chunks/458vu7r8iga_g.js | 3001 | 3351 | 12,1 | nein |
+| 18 | Script | Low | /_next/static/chunks/0ofgm9-mg-hi1.js | 3003 | 3389 | 13,9 | nein |
+| 19 | Script | Low | /_next/static/chunks/0nju3v7ouo4pu.js | 3065 | 3447 | 11,2 | nein |
+| 20 | Script | Low | /_next/static/chunks/12o4o_lpgb9ul.js | 3084 | 3426 | 7,5 | nein |
+| 21 | Script | Low | /_next/static/chunks/1034s5-wwoymy.js | 3138 | 3469 | 11,2 | nein |
+
+### Wasserfall · H08-schliessanlagen · mittlerer Lauf 2 von 3 (LCP 1008 ms)
+
+| # | Typ | Priorität | Adresse | Start ms | Ende ms | KB | vor FCP |
+|---|---|---|---|---|---|---|---|
+| 1 | Document | VeryHigh | /schliessanlagen | 0 | 291 | 25,0 | ja |
+| 2 | Font | High | /_next/static/media/03fc1b4a8d284b5e-s.p.0wiir8udbzjvx.woff2 | 211 | 1251 | 40,1 | nein |
+| 3 | Font | High | /_next/static/media/23b7a97ae3b5c134-s.p.226pwps5o-gq_.woff2 | 213 | 696 | 10,7 | ja |
+| 4 | Font | High | /_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2 | 213 | 1447 | 48,1 | nein |
+| 5 | Font | High | /_next/static/media/99e609270109b47d-s.p.40sczeszzbjw1.woff2 | 215 | 719 | 10,7 | ja |
+| 6 | Font | High | /_next/static/media/effe91970fc4db64-s.p.0oace-s_gkfks.woff2 | 215 | 771 | 10,7 | ja |
+| 7 | Stylesheet | VeryHigh | /_next/static/chunks/1jic2bzaljctl.css | 215 | 726 | 11,0 | ja |
+| 8 | Script | Low | /_next/static/chunks/1edfvwc5_eck-.js | 216 | 981 | 4,5 | ja |
+| 9 | Script | Low | /_next/static/chunks/0if-vqkhyn-zc.js | 216 | 1131 | 9,1 | nein |
+| 10 | Script | Low | /_next/static/chunks/3bvdabbo3ut63.js | 217 | 2038 | 70,9 | nein |
+| 11 | Script | Low | /_next/static/chunks/1vgpv7vwitdbl.js | 217 | 1903 | 43,0 | nein |
+| 12 | Script | Low | /_next/static/chunks/turbopack-0hnhbz3l811ce.js | 217 | 1281 | 5,1 | nein |
+| 13 | Script | Low | /_next/static/chunks/33t46atd3n2zd.js | 217 | 1401 | 4,5 | nein |
+| 14 | Script | Low | /_next/static/chunks/3gjwxae8pyjlj.js | 217 | 1634 | 9,6 | nein |
+| 15 | Script | Low | /_next/static/chunks/1kuo-ra2m7j1o.js | 218 | 1739 | 12,1 | nein |
+| 16 | Script | Low | /_next/static/chunks/12o4o_lpgb9ul.js | 218 | 1776 | 7,5 | nein |
+| 17 | Script | Low | /_next/static/chunks/458vu7r8iga_g.js | 219 | 1874 | 12,1 | nein |
+| 18 | Script | Low | /_next/static/chunks/3zplj9z_pk-nm.js | 3121 | 3354 | 7,1 | nein |
+| 19 | Script | Low | /_next/static/chunks/0c6rzxorqkph4.js | 3179 | 3369 | 1,2 | nein |
+| 20 | Script | Low | /_next/static/chunks/1tep02y3mhohv.js | 3180 | 3615 | 12,5 | nein |
+| 21 | Script | Low | /_next/static/chunks/1304tteq9tq5e.js | 3183 | 3628 | 14,6 | nein |
+| 22 | Script | Low | /_next/static/chunks/0ofgm9-mg-hi1.js | 3232 | 3741 | 13,9 | nein |
+| 23 | Script | Low | /_next/static/chunks/0nju3v7ouo4pu.js | 3712 | 3929 | 11,2 | nein |
+| 24 | Script | Low | /_next/static/chunks/1034s5-wwoymy.js | 3785 | 3997 | 11,2 | nein |
+
+### Wasserfall · H03-modell-golf · mittlerer Lauf 1 von 3 (LCP 932 ms)
+
+| # | Typ | Priorität | Adresse | Start ms | Ende ms | KB | vor FCP |
+|---|---|---|---|---|---|---|---|
+| 1 | Document | VeryHigh | /autoschluessel/marken/volkswagen/golf | 1 | 238 | 15,7 | ja |
+| 2 | Font | High | /_next/static/media/03fc1b4a8d284b5e-s.p.0wiir8udbzjvx.woff2 | 192 | 1252 | 40,1 | nein |
+| 3 | Font | High | /_next/static/media/23b7a97ae3b5c134-s.p.226pwps5o-gq_.woff2 | 195 | 675 | 10,7 | ja |
+| 4 | Font | High | /_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2 | 195 | 1416 | 48,1 | nein |
+| 5 | Font | High | /_next/static/media/99e609270109b47d-s.p.40sczeszzbjw1.woff2 | 195 | 680 | 10,7 | ja |
+| 6 | Font | High | /_next/static/media/effe91970fc4db64-s.p.0oace-s_gkfks.woff2 | 196 | 726 | 10,7 | ja |
+| 7 | Stylesheet | VeryHigh | /_next/static/chunks/1jic2bzaljctl.css | 196 | 703 | 11,0 | ja |
+| 8 | Script | Low | /_next/static/chunks/1edfvwc5_eck-.js | 196 | 966 | 4,5 | nein |
+| 9 | Script | Low | /_next/static/chunks/0if-vqkhyn-zc.js | 196 | 1101 | 9,1 | nein |
+| 10 | Script | Low | /_next/static/chunks/3bvdabbo3ut63.js | 197 | 2009 | 70,9 | nein |
+| 11 | Script | Low | /_next/static/chunks/1vgpv7vwitdbl.js | 198 | 1867 | 43,0 | nein |
+| 12 | Script | Low | /_next/static/chunks/turbopack-0hnhbz3l811ce.js | 198 | 1266 | 5,1 | nein |
+| 13 | Script | Low | /_next/static/chunks/33t46atd3n2zd.js | 198 | 1379 | 4,5 | nein |
+| 14 | Script | Low | /_next/static/chunks/3gjwxae8pyjlj.js | 198 | 1633 | 9,6 | nein |
+| 15 | Script | Low | /_next/static/chunks/1kuo-ra2m7j1o.js | 198 | 1738 | 12,1 | nein |
+| 16 | Script | Low | /_next/static/chunks/0uti9c72sazqf.js | 198 | 1732 | 7,2 | nein |
+| 17 | Script | Low | /_next/static/chunks/458vu7r8iga_g.js | 198 | 1851 | 12,1 | nein |
+| 18 | Script | Low | /_next/static/chunks/3zplj9z_pk-nm.js | 2992 | 3233 | 7,1 | nein |
+| 19 | Script | Low | /_next/static/chunks/0ofgm9-mg-hi1.js | 3078 | 3359 | 13,9 | nein |
+| 20 | Script | Low | /_next/static/chunks/12o4o_lpgb9ul.js | 3148 | 3397 | 7,5 | nein |
+| 21 | Script | Low | /_next/static/chunks/0nju3v7ouo4pu.js | 3506 | 3764 | 11,2 | nein |
+| 22 | Script | Low | /_next/static/chunks/1034s5-wwoymy.js | 3519 | 3779 | 11,2 | nein |
+
+Hinweise: Start unter 0 = Anfrage vor Navigationsbeginn. „nein (x von y)“ bei Schriften = nicht alle Schnitte geladen; ungenutzte Schnitte bleiben ungeladen. Bytes = übertragen (mit Kopfzeilen). Fremde Anfragen außer Google-Schriften sind abgebrochen (Fehler in der Tabelle).
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/ladeweg-2026-10-18_14-25-15.json

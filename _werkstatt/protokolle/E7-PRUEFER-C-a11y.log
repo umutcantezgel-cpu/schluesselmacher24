@@ -1,0 +1,56 @@
+| Ansicht | Gerät | critical | serious | moderate | minor | Regeln gesamt | Stellen gesamt |
+|---|---|---|---|---|---|---|---|
+| H01-start | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H01-start | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H02-autoschluessel | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H02-autoschluessel | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H03-modell-golf | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H03-modell-golf | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H04-assistent | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H04-assistent | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H05-code-shop | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H05-code-shop | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H06-code-produkt | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H06-code-produkt | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H07-zylinder-konfigurator | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H07-zylinder-konfigurator | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H08-schliessanlagen | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H08-schliessanlagen | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H09-tuertechnik | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H09-tuertechnik | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H10-warenkorb | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H10-warenkorb | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H11-kasse | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H11-kasse | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H12-ratgeber | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H12-ratgeber | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/a11y-2026-10-18_14-37-23.json
+EXIT 0
+| Ansicht | Gerät | critical | serious | moderate | minor | Regeln gesamt | Stellen gesamt |
+|---|---|---|---|---|---|---|---|
+| gleichschliessende-zylinder | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| gleichschliessende-zylinder | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| service-und-termin | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| service-und-termin | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| artikel | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| artikel | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| standorte-berlin | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| standorte-berlin | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| sicherheitstechnik-sicherheitscheck | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| sicherheitstechnik-sicherheitscheck | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| rechtliches-agb | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| rechtliches-agb | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| artikel-beispiel-schluesselkasten | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| artikel-beispiel-schluesselkasten | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| autoschluessel-schluesselbart-fraesen | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| autoschluessel-schluesselbart-fraesen | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| elektronische-zutrittsloesungen | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| elektronische-zutrittsloesungen | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| rechtliches-impressum | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| rechtliches-impressum | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| service-und-termin-vor-ort | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| service-und-termin-vor-ort | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/a11y-2026-10-18_14-38-27.json
+EXIT 0

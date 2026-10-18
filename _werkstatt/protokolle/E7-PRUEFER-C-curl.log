@@ -1,0 +1,7 @@
+# curl-Proben Port 3000 · 2026-10-18T12:01:24Z
+## 1 Startseite /
+HTTP 200 bytes 420993
+## 2 /gibt-es-nicht-pruefung
+HTTP 404
+## 3 Suche Hinweis fuer die Redaktion in HTML von /
+0

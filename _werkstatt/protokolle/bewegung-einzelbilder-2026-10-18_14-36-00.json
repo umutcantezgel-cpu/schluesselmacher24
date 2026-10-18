@@ -1,0 +1,100 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-10-18T12:36:00.695Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/autoschluessel"
+    ],
+    "selektor": "main header [role=img]",
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/e7-c/einzelbilder/H02",
+    "echtzeit": false
+  },
+  "pfad": "/autoschluessel",
+  "selektor": "main header [role=img]",
+  "dauer": null,
+  "geraet": "desktop",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": "li.flex",
+    "zustand": "play",
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 5,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 1350
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/root/sm24-bilder/e7-c/einzelbilder/H02/autoschluessel__desktop__main-header-role-img__0.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 218.59375,
+        "width": 262.65625,
+        "height": 168.734375
+      }
+    },
+    {
+      "k": 1,
+      "t": 337.5,
+      "datei": "/root/sm24-bilder/e7-c/einzelbilder/H02/autoschluessel__desktop__main-header-role-img__1.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 210.72828674316406,
+        "width": 262.65625,
+        "height": 168.73435974121094
+      }
+    },
+    {
+      "k": 2,
+      "t": 675,
+      "datei": "/root/sm24-bilder/e7-c/einzelbilder/H02/autoschluessel__desktop__main-header-role-img__2.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 210.59375,
+        "width": 262.65625,
+        "height": 168.734375
+      }
+    },
+    {
+      "k": 3,
+      "t": 1012.5,
+      "datei": "/root/sm24-bilder/e7-c/einzelbilder/H02/autoschluessel__desktop__main-header-role-img__3.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 210.59375,
+        "width": 262.65625,
+        "height": 168.734375
+      }
+    },
+    {
+      "k": 4,
+      "t": 1350,
+      "datei": "/root/sm24-bilder/e7-c/einzelbilder/H02/autoschluessel__desktop__main-header-role-img__4.jpg",
+      "clip": {
+        "x": 812.65625,
+        "y": 210.59375,
+        "width": 262.65625,
+        "height": 168.734375
+      }
+    }
+  ],
+  "treffer": {
+    "gesamt": 4,
+    "index": 0,
+    "versteckt": 0,
+    "groesse": [
+      215,
+      121
+    ],
+    "viewBox": "0 0 480 270",
+    "element": "svg.block"
+  }
+}

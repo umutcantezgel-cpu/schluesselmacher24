@@ -1,0 +1,53 @@
+{
+  "ziel": "/root/sm24-bilder/e7-c/gefuellt",
+  "protokoll": [
+    {
+      "geraet": "mobil",
+      "warenkorb": [
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__mobil__04.jpg"
+      ],
+      "kasse": [
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__mobil__04.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__mobil__05.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__mobil__06.jpg"
+      ]
+    },
+    {
+      "geraet": "tablet",
+      "warenkorb": [
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__tablet__02.jpg"
+      ],
+      "kasse": [
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__tablet__02.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__tablet__03.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__tablet__04.jpg"
+      ]
+    },
+    {
+      "geraet": "desktop",
+      "warenkorb": [
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/warenkorb-gefuellt__desktop__02.jpg"
+      ],
+      "kasse": [
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__desktop__02.jpg",
+        "/root/sm24-bilder/e7-c/gefuellt/kasse-gefuellt__desktop__03.jpg"
+      ]
+    }
+  ]
+}

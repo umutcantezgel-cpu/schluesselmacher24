@@ -1,0 +1,954 @@
+{
+  "skript": "bildsatz",
+  "zeit": "2026-10-18T12:35:26.951Z",
+  "argumente": {
+    "_": [],
+    "routen": "/gleichschliessende-zylinder,/service-und-termin,/artikel,/standorte/berlin,/sicherheitstechnik/sicherheitscheck,/rechtliches/agb,/artikel/beispiel-schluesselkasten,/autoschluessel/schluesselbart-fraesen,/elektronische-zutrittsloesungen,/rechtliches/impressum,/service-und-termin/vor-ort",
+    "ziel": "/root/sm24-bilder/e7-c/uebrige",
+    "max": "6"
+  },
+  "max": 6,
+  "zeilen": [
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "geraet": "mobil",
+      "pfad": "/gleichschliessende-zylinder",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 14,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 8,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > figure.-mx-5 > div.relative > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > rect.fill-surface"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > rect.fill-area-soft"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > path.stroke-foreground"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "8: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-7 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-7 > figure.-mx-5 > div.relative > svg.block",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__mobil__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__mobil__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "geraet": "tablet",
+      "pfad": "/gleichschliessende-zylinder",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 10,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 4,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "4: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__tablet__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__tablet__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__tablet__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__tablet__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "geraet": "desktop",
+      "pfad": "/gleichschliessende-zylinder",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 10,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 4,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "4: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__desktop__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__desktop__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__desktop__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/gleichschliessende-zylinder__desktop__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "service-und-termin",
+      "geraet": "mobil",
+      "pfad": "/service-und-termin",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 12,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 33,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "section.section > div.shell > ul.mt-12 > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shell > ul.mt-12 > li.shrink-0 > p.text-title-sm"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shell > ul.mt-12 > li.shrink-0 > p.mt-2"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shell > ul.mt-12 > li.shrink-0 > ul.mt-6"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ul.mt-12 > li.shrink-0 > ul.mt-6 > li.border-b"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.shrink-0 > ul.mt-6 > li.border-b > a.group"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ul.mt-6 > li.border-b > a.group > span"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ul.mt-12 > li.shrink-0 > ul.mt-6 > li.border-b"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.shrink-0 > ul.mt-6 > li.border-b > a.group"
+        }
+      ],
+      "befundText": "33: über den rechten Rand div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40; über den rechten Rand section.section > div.shell > ul.mt-12 > li.shrink-0; über den rechten Rand div.shell > ul.mt-12 > li.shrink-0 > p.text-title-sm",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__mobil__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__mobil__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "service-und-termin",
+      "geraet": "tablet",
+      "pfad": "/service-und-termin",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 8,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.rounded-lg > svg.h-auto > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.rounded-lg > svg.h-auto > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__tablet__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__tablet__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__tablet__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__tablet__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "service-und-termin",
+      "geraet": "desktop",
+      "pfad": "/service-und-termin",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 9,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__desktop__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__desktop__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__desktop__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin__desktop__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "artikel",
+      "geraet": "mobil",
+      "pfad": "/artikel",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/artikel__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel__mobil__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "artikel",
+      "geraet": "tablet",
+      "pfad": "/artikel",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/artikel__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel__tablet__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel__tablet__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "artikel",
+      "geraet": "desktop",
+      "pfad": "/artikel",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/artikel__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel__desktop__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel__desktop__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "standorte-berlin",
+      "geraet": "mobil",
+      "pfad": "/standorte/berlin",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > div.lgcol-span-5 > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.grid > div.lgcol-span-5 > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/standorte-berlin__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/standorte-berlin__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/standorte-berlin__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/standorte-berlin__mobil__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "standorte-berlin",
+      "geraet": "tablet",
+      "pfad": "/standorte/berlin",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/standorte-berlin__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/standorte-berlin__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/standorte-berlin__tablet__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "standorte-berlin",
+      "geraet": "desktop",
+      "pfad": "/standorte/berlin",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > div.lgcol-span-5 > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.grid > div.lgcol-span-5 > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/standorte-berlin__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/standorte-berlin__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/standorte-berlin__desktop__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "sicherheitstechnik-sicherheitscheck",
+      "geraet": "mobil",
+      "pfad": "/sicherheitstechnik/sicherheitscheck",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__mobil__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "sicherheitstechnik-sicherheitscheck",
+      "geraet": "tablet",
+      "pfad": "/sicherheitstechnik/sicherheitscheck",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__tablet__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "sicherheitstechnik-sicherheitscheck",
+      "geraet": "desktop",
+      "pfad": "/sicherheitstechnik/sicherheitscheck",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/sicherheitstechnik-sicherheitscheck__desktop__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "rechtliches-agb",
+      "geraet": "mobil",
+      "pfad": "/rechtliches/agb",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 8,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > nav.-mx-5 > ul.flex > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > nav.-mx-5 > ul.flex > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > nav.-mx-5 > ul.flex > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > nav.-mx-5 > ul.flex > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex"
+        }
+      ],
+      "befundText": "8: über den rechten Rand div.grid > nav.-mx-5 > ul.flex > li.shrink-0; über den rechten Rand nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex; über den rechten Rand div.grid > nav.-mx-5 > ul.flex > li.shrink-0",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__mobil__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__mobil__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "rechtliches-agb",
+      "geraet": "tablet",
+      "pfad": "/rechtliches/agb",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > nav.-mx-5 > ul.flex > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div.grid > nav.-mx-5 > ul.flex > li.shrink-0; über den rechten Rand nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__tablet__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__tablet__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "rechtliches-agb",
+      "geraet": "desktop",
+      "pfad": "/rechtliches/agb",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__desktop__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-agb__desktop__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "artikel-beispiel-schluesselkasten",
+      "geraet": "mobil",
+      "pfad": "/artikel/beispiel-schluesselkasten",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.min-w-0 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.min-w-0 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__mobil__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__mobil__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "artikel-beispiel-schluesselkasten",
+      "geraet": "tablet",
+      "pfad": "/artikel/beispiel-schluesselkasten",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.min-w-0 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.min-w-0 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__tablet__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__tablet__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__tablet__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "artikel-beispiel-schluesselkasten",
+      "geraet": "desktop",
+      "pfad": "/artikel/beispiel-schluesselkasten",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__desktop__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__desktop__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/artikel-beispiel-schluesselkasten__desktop__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "autoschluessel-schluesselbart-fraesen",
+      "geraet": "mobil",
+      "pfad": "/autoschluessel/schluesselbart-fraesen",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 8,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__mobil__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__mobil__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "autoschluessel-schluesselbart-fraesen",
+      "geraet": "tablet",
+      "pfad": "/autoschluessel/schluesselbart-fraesen",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__tablet__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__tablet__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__tablet__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__tablet__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "autoschluessel-schluesselbart-fraesen",
+      "geraet": "desktop",
+      "pfad": "/autoschluessel/schluesselbart-fraesen",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__desktop__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__desktop__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__desktop__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/autoschluessel-schluesselbart-fraesen__desktop__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "elektronische-zutrittsloesungen",
+      "geraet": "mobil",
+      "pfad": "/elektronische-zutrittsloesungen",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 14,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > div.lgcol-span-5 > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand div.grid > div.lgcol-span-5 > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__mobil__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__mobil__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "elektronische-zutrittsloesungen",
+      "geraet": "tablet",
+      "pfad": "/elektronische-zutrittsloesungen",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 9,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > div.lgcol-span-5 > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand div.grid > div.lgcol-span-5 > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__tablet__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__tablet__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__tablet__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__tablet__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "elektronische-zutrittsloesungen",
+      "geraet": "desktop",
+      "pfad": "/elektronische-zutrittsloesungen",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 8,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > div.lgcol-span-5 > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div.grid > div.lgcol-span-5 > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__desktop__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__desktop__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__desktop__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/elektronische-zutrittsloesungen__desktop__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "rechtliches-impressum",
+      "geraet": "mobil",
+      "pfad": "/rechtliches/impressum",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 8,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > nav.-mx-5 > ul.flex > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > nav.-mx-5 > ul.flex > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > nav.-mx-5 > ul.flex > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > nav.-mx-5 > ul.flex > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex"
+        }
+      ],
+      "befundText": "8: über den rechten Rand div.grid > nav.-mx-5 > ul.flex > li.shrink-0; über den rechten Rand nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex; über den rechten Rand div.grid > nav.-mx-5 > ul.flex > li.shrink-0",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__mobil__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "rechtliches-impressum",
+      "geraet": "tablet",
+      "pfad": "/rechtliches/impressum",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > nav.-mx-5 > ul.flex > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div.grid > nav.-mx-5 > ul.flex > li.shrink-0; über den rechten Rand nav.-mx-5 > ul.flex > li.shrink-0 > a.inline-flex",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__tablet__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__tablet__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "rechtliches-impressum",
+      "geraet": "desktop",
+      "pfad": "/rechtliches/impressum",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__desktop__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/rechtliches-impressum__desktop__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "service-und-termin-vor-ort",
+      "geraet": "mobil",
+      "pfad": "/service-und-termin/vor-ort",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__mobil__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__mobil__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__mobil__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__mobil__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__mobil__04.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__mobil__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "service-und-termin-vor-ort",
+      "geraet": "tablet",
+      "pfad": "/service-und-termin/vor-ort",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__tablet__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__tablet__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__tablet__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__tablet__03.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__tablet__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "service-und-termin-vor-ort",
+      "geraet": "desktop",
+      "pfad": "/service-und-termin/vor-ort",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__desktop__00.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__desktop__01.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__desktop__02.jpg",
+        "/root/sm24-bilder/e7-c/uebrige/service-und-termin-vor-ort__desktop__03.jpg"
+      ]
+    }
+  ]
+}
