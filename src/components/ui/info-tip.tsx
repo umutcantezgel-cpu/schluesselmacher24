@@ -3,7 +3,7 @@
 import { useId, useLayoutEffect, useRef, useState } from 'react';
 import type { InfoHint } from '@/lib/types';
 import { cn } from '@/lib/cn';
-import { ImagePlaceholder } from './image-placeholder';
+import { KompaktBild } from './bild-flaeche';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphKreuz } from '@/components/visual/glyphen/kreuz';
 
@@ -81,7 +81,7 @@ export function InfoTip({ hint, className, label }: InfoTipProps) {
 
           {hint.figure && (
             <span className="mt-3 block">
-              <ImagePlaceholder slot={hint.figure} compact />
+              <KompaktBild slot={hint.figure} />
             </span>
           )}
         </span>
