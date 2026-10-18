@@ -1,0 +1,2 @@
+### Revolution Builder - Modul Update
+- Integriert: ServiceBudgetCalculator in app/(site)/sicherheitstechnik/page.tsx
