@@ -1,0 +1,56 @@
+# Architecture Matrix
+
+| URL | Source File | Target Words | Component |
+|---|---|---|---|
+| /(payload)/admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 950 | SecurityRiskAssessment |
+| /(payload)/api/[...slug] | src/app/(payload)/api/[...slug]/route.ts | 950 | SecurityRiskAssessment |
+| /(site)/api/kunden-upload | src/app/(site)/api/kunden-upload/route.ts | 950 | SecurityRiskAssessment |
+| /(site)/artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/artikel | src/app/(site)/artikel/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel | src/app/(site)/autoschluessel/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 950 | AutoKeyConfigurator |
+| /(site)/bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 950 | CylinderSystemPlanner |
+| /(site)/gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 950 | CylinderSystemPlanner |
+| /(site)/kasse | src/app/(site)/kasse/page.tsx | 950 | SecurityRiskAssessment |
+| /(site) | src/app/(site)/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/ratgeber | src/app/(site)/ratgeber/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 950 | CylinderSystemPlanner |
+| /(site)/schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 950 | CylinderSystemPlanner |
+| /(site)/schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/service-und-termin | src/app/(site)/service-und-termin/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/standorte | src/app/(site)/standorte/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 950 | SecurityRiskAssessment |
+| /(site)/warenkorb | src/app/(site)/warenkorb/page.tsx | 950 | SecurityRiskAssessment |
+| /llms.txt | src/app/llms.txt/route.ts | 950 | SecurityRiskAssessment |
