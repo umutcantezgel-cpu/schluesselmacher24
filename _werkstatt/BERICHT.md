@@ -1,5 +1,28 @@
 # Bericht
 
+## Anleitung · Zusammenführen und Zurückrollen
+
+Alles liegt auf dem Zweig `claude/projekt-gestaltung-entwicklung-tofodh`. Er zweigt von `main` beim Commit `71dbadd` („build: auf Vercel nie ein lokales Postgres starten“) ab. Nichts ist zusammengeführt oder veröffentlicht; das entscheidest du (MENSCHEN M-14).
+
+**Was sich ändert (gegenüber `main`)**
+- Website-Code: 243 Dateien, vor allem unter `src/` (Gestaltung, Grafiken, Bewegung, Bedienung). Unverändert: Datenmodelle und Migrationen, Server-Aktionen, Preis- und Terminlogik, Anbindungen (`src/lib/integrations`), Inhalte unter `content/` und `public/`.
+- Abhängigkeiten: `lucide-react` entfernt (`package.json`, `package-lock.json`); keine neue Bibliothek.
+- Konfiguration: `tailwind.config.ts` (Designsystem), `README.md` (Ist-Stand), `UMSETZUNG.md` (Hinweis „historisch“). Für den Arbeitsordner `_werkstatt/` je eine Ausnahme in `.gitignore`, `eslint.config.mjs`, `tsconfig.json` und `vitest.config.ts`.
+- `_werkstatt/` (rund 44 MB, davon 36 MB Bilder): Auftrag, Kern, Plan, Berichte, Prüfprotokolle, Bildsätze, Galerie (`_werkstatt/bilder/galerie.html`) und Prüfwerkzeuge mit eigener Paketdatei. Nicht Teil der Website.
+
+**Vor dem Zusammenführen: `_werkstatt` bewusst entscheiden**
+- *Entfernen* (empfohlen, wenn das Repository schlank bleiben soll): auf dem Zweig `git rm -r _werkstatt` und die vier `_werkstatt`-Zeilen in `.gitignore`, `eslint.config.mjs`, `tsconfig.json` und `vitest.config.ts` wieder herausnehmen; committen. Die Unterlagen bleiben in der Geschichte des Zweigs erhalten.
+- *Behalten* (wenn Kern, Plan und Belege im Repository nachlesbar bleiben sollen): nichts tun; die Ausnahmen sorgen dafür, dass Typprüfung, Linter und Tests den Ordner nicht anfassen.
+
+**Zusammenführen**
+1. Einen Pull Request von `claude/projekt-gestaltung-entwicklung-tofodh` nach `main` öffnen und die Galerie ansehen.
+2. Prüfen wie im Projekt üblich: `npm ci`, `npx tsc --noEmit`, `npx eslint .`, `npm run test:unit`, Build (auf Vercel wie bisher; lokal ohne Datenbank `SM24_DATA=json npx next build`).
+3. Mit einem Merge-Commit zusammenführen (nicht „squash“), damit die Paketkennungen in den Commits erhalten bleiben.
+
+**Zurückrollen**
+- Nach dem Zusammenführen: `git revert -m 1 <Merge-Commit>` auf `main` und pushen – das nimmt alle Änderungen in einem neuen Commit zurück, ohne die Geschichte umzuschreiben.
+- Einzelne Pakete: Jeder Commit trägt seine Kennung (etwa `[E7-L-36]`); `git log --grep "E7-L-36"` findet ihn, `git revert <commit>` nimmt ihn zurück.
+
 ## Morgenbericht · Sonntag, 18. Oktober 2026, 07:00 Uhr (geschrieben um 10:40 Uhr nach einem Neustart)
 
 **Fertig seit gestern**
