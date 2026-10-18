@@ -1,3 +1,4 @@
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
@@ -159,6 +160,106 @@ export default async function SicherheitstechnikPage() {
             </div>
           </div>
         </div>
+      </Section>
+
+
+      {/* Fachliche Methodik & Erweiterter Inhalt */}
+      <Section tight>
+        <div className="space-y-6">
+          <h2 className="text-[oklch(0.16_0.02_260)] font-semibold tracking-tight" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>
+            Architektonische Methodik und ganzheitliche Sicherheitstechnik
+          </h2>
+          <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+            Die Konzeption zeitgemäßer Sicherheitstechnik erfordert einen integralen Ansatz, der weit über die bloße Installation isolierter Komponenten hinausgeht. Es handelt sich um ein fein abgestimmtes Zusammenspiel aus physischer Barriere, sensorischer Erfassung und reaktiver Alarmierung. Jedes Objekt – ob privater Wohnraum, gewerbliche Immobilie oder hochsensible Infrastruktur – weist ein individuelles Risikoprofil auf, das durch eine maßgeschneiderte Sicherheitsarchitektur adressiert werden muss.
+          </p>
+          <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+            Unsere Methodik basiert auf dem Prinzip der konzentrischen Sicherheitsringe. Dies beginnt an der Peripherie des Grundstücks, wo erste Detektionsmaßnahmen Eindringlinge frühzeitig erfassen. Der zweite Ring bildet die Gebäudehülle, die durch massive mechanische Sicherungen und mechatronische Schließsysteme gegen Überwindung gehärtet wird. Der dritte und innerste Ring umfasst die Raumüberwachung und Zugriffskontrolle auf sensible Bereiche im Gebäudeinneren. Nur durch die lückenlose Verzahnung dieser Zonen entsteht ein resilientes Gesamtsystem.
+          </p>
+          <h3 className="text-[oklch(0.16_0.02_260)] font-semibold mt-8 mb-4" style={{ fontSize: 'clamp(1.25rem, 2vw, 1.5rem)' }}>
+            Die drei Säulen der Gebäudesicherheit
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-[oklch(0.32_0.02_260)] leading-relaxed ml-4">
+            <li><strong>Prävention (Mechanik):</strong> Der fundamentale Grundschutz. Erhöhung des Zeitaufwands und Werkzeugeinsatzes für Täter durch einbruchhemmende Türen, Fenster, Nachrüstsicherungen und Hochsicherheitszylinder. Mechanik kauft Zeit.</li>
+            <li><strong>Detektion (Meldetechnik):</strong> Die sensorische Erfassung von Anomalien. Einsatz von Magnetkontakten, passiven Infrarotmeldern (PIR), Glasbruchsensoren und videobasierter Analytik zur sofortigen Erkennung unbefugten Eindringens.</li>
+            <li><strong>Intervention (Alarmierung):</strong> Die strukturierte Reaktion auf verifizierte Alarme. Weiterleitung an hilfeleistende Stellen (Wachdienst, Polizei), lokale akustisch-optische Signalgebung zur Täterabschreckung und Alarmierung der Betreiber.</li>
+          </ul>
+        </div>
+      </Section>
+
+      {/* Leistungsstufen / Vergleichsmatrix */}
+      <Section tone="muted">
+         <SectionHeading
+          eyebrow="Systemarchitektur"
+          title="Leistungsstufen moderner Sicherheitssysteme"
+          lead="Von der soliden Grundsicherung bis zur vernetzten Enterprise-Lösung."
+        />
+        <div className="mt-8 grid gap-6 md:grid-cols-3" style={{ gridTemplateRows: 'subgrid' }}>
+          {[
+            {
+              tier: 'Grundschutz',
+              target: 'Private Wohnobjekte',
+              features: ['Mechanische Basissicherung', 'Geprüfte Profilzylinder', 'Einfache Alarmierung', 'Lokale Steuerung'],
+            },
+            {
+              tier: 'Erweiterter Schutz',
+              target: 'Gewerbe & anspruchsvolle Privathaushalte',
+              features: ['Mechatronische Schließanlagen', 'Zertifizierte Einbruchmeldeanlage', 'App-Integration & Fernzugriff', 'Video-Verifikation'],
+            },
+            {
+              tier: 'Enterprise',
+              target: 'Kritische Infrastrukturen',
+              features: ['Ganzheitliches Gefahrenmanagement', 'Vernetzte Zutrittskontrolle', 'KI-gestützte Videoanalytik', '24/7 Leitstellenaufschaltung'],
+            }
+          ].map((item) => (
+            <div key={item.tier} className="flex flex-col rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)]">{item.tier}</h4>
+              <p className="text-sm text-[oklch(0.52_0.015_260)] mt-1">{item.target}</p>
+              <ul className="mt-4 flex-1 space-y-2">
+                {item.features.map(f => (
+                  <li key={f} className="flex items-start text-sm text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    <span className="mr-2 text-[oklch(0.52_0.24_260)]">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Interaktiver Kalkulator */}
+      <Section>
+         <SectionHeading
+          eyebrow="Kalkulation"
+          title="Transparente Budgetplanung"
+          lead="Nutzen Sie unseren interaktiven Rechner für eine erste Kosteneinschätzung Ihres Sicherheitsprojekts."
+        />
+        <div className="mt-8 max-w-2xl mx-auto">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
+      {/* FAQ Sektion */}
+      <Section tone="muted" tight>
+        <SectionHeading
+          eyebrow="Wissen"
+          title="Häufige Fragen zur Sicherheitstechnik"
+          lead="Kompakte Antworten auf komplexe sicherheitstechnische Fragestellungen."
+        />
+        <dl className="mt-8 space-y-6 max-w-3xl mx-auto">
+          {[
+            { q: 'Ist eine Einbruchmeldeanlage ohne mechanische Grundsicherung sinnvoll?', a: 'Nein. Eine Alarmanlage verhindert keinen Einbruch, sie meldet ihn nur. Ohne adäquate mechanische Sicherungen (wie Zusatzschlösser oder einbruchhemmende Fenster) haben Täter das Objekt betreten, bevor Hilfe eintrifft. Die Kombination aus Mechanik (Zeitgewinn) und Elektronik (Meldung) ist zwingend.' },
+            { q: 'Welche Zertifizierungen sind bei Sicherheitstechnik relevant?', a: 'Wir achten strikt auf VdS-Anerkennung sowie DIN EN 50131-Konformität bei elektronischen Systemen und DIN 18104/DIN 18252 bei mechanischen Komponenten. Diese Normen garantieren nicht nur die Funktionstüchtigkeit unter Belastung, sondern sind oft auch Voraussetzung für Versicherungsrabatte oder KfW-Förderungen.' },
+            { q: 'Lassen sich bestehende Systeme nachträglich smart aufrüsten?', a: 'In vielen Fällen ja. Moderne Gefahrenmanagementsysteme und mechatronische Schließzylinder können oft in bestehende Infrastrukturen integriert werden, um App-Steuerung und Remote-Monitoring zu ermöglichen. Die Machbarkeit prüfen wir im Rahmen unseres Sicherheitschecks vor Ort.' },
+            { q: 'Wie hoch ist der Wartungsaufwand für ein elektronisches Sicherheitssystem?', a: 'Eine jährliche Wartung nach DIN VDE 0833 ist für die Aufrechterhaltung der Systemintegrität und im Gewerbebereich oft aus versicherungsrechtlichen Gründen obligatorisch. Dabei werden Batterien geprüft, Sensoren kalibriert und Firmware-Updates eingespielt, um höchste Zuverlässigkeit zu gewährleisten.' },
+            { q: 'Sind Funk-Alarmanlagen so sicher wie verkabelte Systeme?', a: 'Moderne, professionelle Funk-Alarmsysteme nutzen proprietäre, verschlüsselte Frequenzbänder (oft 868 MHz) mit Rolling-Code-Verfahren und Anti-Jamming-Erkennung. Für den privaten und kleingewerblichen Bereich bieten sie ein exzellentes Sicherheitsniveau bei geringerem Installationsaufwand. Für Hochrisikoobjekte bleibt die Festverdrahtung jedoch der Goldstandard.' }
+          ].map((faq, i) => (
+            <div key={i} className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6">
+              <dt className="text-[15px] font-bold text-[oklch(0.16_0.02_260)]">{faq.q}</dt>
+              <dd className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">{faq.a}</dd>
+            </div>
+          ))}
+        </dl>
       </Section>
 
       {/* Bereiche */}
