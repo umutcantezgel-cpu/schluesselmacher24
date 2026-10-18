@@ -1,0 +1,5 @@
+Project: SCHLÜSSELMACHER24
+Domain: schluesselmacher24.de
+Architecture Blueprint and Metadata synced for all existing routes.
+No new routes introduced (ZERO-NEW-ROUTES invariant satisfied).
+Core brand DNA preserved and upgraded to OKLCH.
