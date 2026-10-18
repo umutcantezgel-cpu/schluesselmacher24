@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 1.17
+# KERN · SCHLÜSSELMACHER24 · Version 1.18
 
 Quelle der Wahrheit für alle Pakete. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt.
 
@@ -45,6 +45,7 @@ SCHLÜSSELMACHER24 ist Website und Shop eines Fachbetriebs für Autoschlüssel, 
   - Payload 3.90 auf Postgres; ohne `DATABASE_URL` oder mit `SM24_DATA=json` gilt der JSON-Adapter auf `content/`
   - Vitest 2 (Umgebung `node`, ohne DOM), ESLint 9 mit `eslint-config-next`
   - Schriften über `next/font/google`: IBM Plex Sans (Display), Inter (Text), IBM Plex Mono. Sie werden beim Build selbst gehostet.
+  - CSS steht als `<style>` im Dokument (`experimental.inlineCss`, E7-L-43): Auf langsamen Leitungen entfällt die eigene Anfrage vor dem ersten Zeichnen. Neue Regeln halten das CSS darum klein; seitenspezifisches CSS gehört als Klasse an die Seite, nicht in neue globale Blöcke.
 - **Struktur:** `src/app/(site)` (Website), `src/app/(payload)` (Backend, ausgenommen), `src/components/<bereich>/`, `src/lib/`, `src/components/visual/` (Icons, Glyphen, Generatoren, Bewegung).
 - **Konventionen:**
   - Dateinamen in kebab-case, benannte Exporte, Server-Komponenten als Standard; `'use client'` nur, wo nötig.
@@ -133,6 +134,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 
 ## K-006 Typografie und Komposition
 - **Schriften:** Display IBM Plex Sans (600/700), Text Inter (400–600), Zahlen, Maße und Kennungen in IBM Plex Mono (`font-mono`, `tabular-nums`). Keine neuen Schriften.
+- **Ersatz während des Ladens:** Hinter jeder Webschrift steht ein maßgleicher lokaler Ersatz (`SM24 Ersatz Plex Sans`, `… Plex Mono`, `… Wortmarke` in `globals.css`; Inter über next/font), damit beim Schrifttausch nichts springt. Wer Schriftschnitte oder die Wortmarke ändert, misst die Ausgleichswerte neu (Verfahren in D-050).
 - **Hierarchie:** pro Ansicht genau eine h1. Abstand Display zu Fließtext mindestens Faktor 2,2. Fließtext höchstens `max-w-measure`. Silbentrennung `hyphens: auto` für Fließtext (`lang="de"` ist gesetzt), nie für Überschriften unter `text-headline`.
 - **Augenbrauen-Zeile (`.eyebrow`):** `text-caption`, Mono, Großbuchstaben, davor eine Bemaßungsmarke statt eines Strichs, optional eine laufende Nummer („01“). Darunter darf die Profillinie stehen.
 - **Raster:**
@@ -327,3 +329,4 @@ Das 400-px-Dekor-Icon auf der Türtechnik-Seite (`tuer-und-schliesstechnik/page.
 - 1.15 · E6 · K-007: B-20 auch für den Trefferzähler der Shop-Liste und die Summe im Band der `FlowShell`; B-23 bis fünf Stationen (Köpfe von Ratgeber und Service und Termin); neu B-26 Einsatzradius im Standortkopf. K-006: Einleitung von Warenkorb und Kasse bleibt sichtbar (D-046). Grund: Entwürfe der Runde 2 (U-ARTIKEL, U-SERVICE, U-STANDORTE, H10), vor dem Bau festgelegt. Dazu K-006: Zeilenpfeil in Behältern mit überdeckendem Link `group-focus-within:`; Ausnahme Abschnittsnummern im Ratgeber (B-24). Grund: Abnahme Bauwelle 1 (D-047).
 - 1.16 · E6 · K-007: Register vervollständigt. B-01 Fräserrad (WAAPI), B-04 Staffel der Fotostellen, B-05 `quick` wie im Baustein, B-08 Winkel, B-14 mit Dauer-Token, B-16 `schleier-ein`, B-17 und B-20 auch beim ersten Anzeigen, B-21 Funk-Bögen; neu B-27 Einstieg der Fachgrafiken, B-28 Markierung des aktiven Bereichs, B-29 Auswahlzustand. Code: Zähler im Kopf `quick` (B-20), Schließplan-Übergänge mit `duration-base ease-standard` (B-14), ungenutzter Keyframe `sm24-scrub-x` entfernt (Nutzungssuche ohne Fund). Grund: Registerabgleich Prüfstufe C Teil 5 (`_werkstatt/protokolle/E6-PRUEFER-C-register.md`), Kriterium Z-05 „jede Animation im Register“.
 - 1.17 · E7 · K-007 nach Etappe E7: B-07 Öffnen als Transition, B-08 Auslöser Überfahren, B-10 Schrittknöpfe, B-18 Legende der Hervorhebung ohne Deckkraft, B-21 Markengruppe, Funk-Bögen 1,0–1,2 s und Karten der Kopfreihe je InView, B-26 und B-27 im Seitenkopf nach Sichtbarkeit, B-28 Beschriftung der Aktionsleiste; zutritt-signal endet ≤ 1,55 s. Grund: Registernachprüfung (`E6-PRUEFER-C-register-nachtrag.md`) und Etappe E7 (D-049).
+- 1.18 · E7 · K-004 CSS im Dokument, K-006 Ersatzschriften während des Ladens. Grund: Messung Anlauf 1 (`E7-PRUEFER-01-ergebnis.md`, LCP 3/12) und Anlauf 2 (Paket E7-L-43, D-050).

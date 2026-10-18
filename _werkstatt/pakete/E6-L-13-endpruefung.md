@@ -1,4 +1,4 @@
-E6-L-13 · Endprüfung des Gestaltungslaufs · Rolle Endprüfer · frischer Unteragent · Kern-Version 1.16 · Schreibrechte (exakt): `_werkstatt/berichte/E6-L-13-endpruefung.md` · Umfang: Urteil über Z-01 bis Z-10, jede AUSNAHME und jede UMGEBUNGSAUSNAHME in `_werkstatt/ABNAHME.md` anhand der Belege und Bildsätze
+E6-L-13 · Endprüfung des Gestaltungslaufs · Rolle Endprüfer · frischer Unteragent · Kern-Version 1.18 · Schreibrechte (exakt): `_werkstatt/berichte/E6-L-13-endpruefung.md` · Umfang: Urteil über Z-01 bis Z-10, jede AUSNAHME und jede UMGEBUNGSAUSNAHME in `_werkstatt/ABNAHME.md` anhand der Belege und Bildsätze
 
 Dieses Paket bekommst du erst, nachdem du den Blindvergleich (Teil A) abgegeben hast. Dein Blindurteil aus Teil A bleibt unverändert; du ergänzt es nur um die Auflösung.
 
@@ -12,8 +12,8 @@ SCHLÜSSELMACHER24 ist Website und Shop eines Fachbetriebs für Autoschlüssel, 
 - Auftrag: `_werkstatt/AUFTRAG.md`, Abschnitt 9 (Rubrik der Sichtabnahme), 10 (L7: Ausnahmen) und 11 (Kriterien Z-01 bis Z-10 mit Schwellen).
 - Abnahmeliste: `_werkstatt/ABNAHME.md` (Stand, Beleg, Ausnahmen, Umgebungsausnahmen).
 - Gestaltungskern: `_werkstatt/KERN.md` (K-001, K-003, K-006 bis K-009, Register K-007 B-01 bis B-29).
-- Entscheidungen: `_werkstatt/ENTSCHEIDUNGEN.md` (besonders D-049).
-- Prüfstufe C: `_werkstatt/protokolle/E6-PRUEFER-C-ergebnis.md` und die Protokolle `_werkstatt/protokolle/E6-PRUEFER-C-*`.
+- Entscheidungen: `_werkstatt/ENTSCHEIDUNGEN.md` (besonders D-049 bis D-051: Abschlussversuch 1, Etappe E7, Anläufe 1 und 2 für Z-08).
+- Prüfstufe C, Abschlussversuch 2 (maßgeblich): `_werkstatt/protokolle/E7-PRUEFER-C-ergebnis.md`, Leistung und Bildrate `_werkstatt/protokolle/E7-PRUEFER-02-ergebnis.md`, dazu die Protokolle `E7-PRUEFER-C-*` und `E7-PRUEFER-02-*`. Abschlussversuch 1 und Anlauf 1 zum Vergleich: `E6-PRUEFER-C-ergebnis.md`, `E7-PRUEFER-01-ergebnis.md`.
 - Bildsätze: vorher `_werkstatt/bilder/e0/`, nachher `_werkstatt/bilder/abschluss/` (mit `einzelbilder/`, `gefuellt/`, `uebrige/`), Galerie `_werkstatt/bilder/galerie.html`.
 - Sichtabnahmen: `_werkstatt/berichte/E6-L-34-sichtabnahme-*.md` (abschließend), frühere `E5-L-29-*`, `E4-L-23-*`.
 - Übergabe: `_werkstatt/BERICHT.md`, `_werkstatt/MENSCHEN.md`, `README.md`, `_werkstatt/PLAN.md`.
