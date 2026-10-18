@@ -7,8 +7,8 @@
   - E7-L-43: Code in acc9455, Vorprüfung und D-050 im Commit [E7-L-43]. Am Prüfstand mobil 12/12 schneller als E0, Desktop 36/36.
   - Morgenbericht 18.10. ist erledigt. Die nächste Erinnerung ist `trig_012YdSA5a5zqbxz4A5A9Pasq` (19.10., 07:00 Berlin).
 - **Als Nächstes:**
-  1. Build-Gate: `server.sh stop` → `SM24_DATA=json npx next build > _werkstatt/protokolle/E7-PRUEFER-C-build.log` → `server.sh start`. Den Prüfstand 3203 beenden: PID über `/proc/<pid>/cwd` = `/root/sm24-v3` finden.
-  2. Prüfstufe C, Abschlussversuch 2, per Workflow nach dem Paket `E7-PRUEFER-C`, in dieser Reihenfolge:
+  1. ERLEDIGT · Build-Gate 208/208 (BUILD_ID `_yaN_J-sWFLTSeQqU6QII`, Protokoll `E7-PRUEFER-C-build.log`), Port 3000 neu, Prüfstand 3203 beendet. Früherer Wortlaut: `server.sh stop` → `SM24_DATA=json npx next build > _werkstatt/protokolle/E7-PRUEFER-C-build.log` → `server.sh start`. Den Prüfstand 3203 beenden: PID über `/proc/<pid>/cwd` = `/root/sm24-v3` finden.
+  2. LÄUFT · Workflow `wf_7a2d5363-c26` (Skript `workflows/scripts/pruefstufe-c-abschlussversuch-2-wf_7a2d5363-c26.js`; bei Abbruch mit `resumeFromRunId` fortsetzen). Prüfstufe C, Abschlussversuch 2, per Workflow nach dem Paket `E7-PRUEFER-C`, in dieser Reihenfolge:
      - Teil 1 Bestand
      - Teil 4 Messung (E7-PRUEFER-02, allein)
      - Teil 2 Messfenster A
