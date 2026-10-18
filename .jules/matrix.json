@@ -1,0 +1,194 @@
+[
+  {
+    "route": "src/app/(site)/artikel/[slug]/page.tsx",
+    "words": 558
+  },
+  {
+    "route": "src/app/(site)/artikel/page.tsx",
+    "words": 430
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+    "words": 344
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+    "words": 194
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+    "words": 177
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+    "words": 217
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+    "words": 789
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+    "words": 547
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/marken/page.tsx",
+    "words": 437
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+    "words": 108
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/page.tsx",
+    "words": 1422
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+    "words": 211
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+    "words": 198
+  },
+  {
+    "route": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+    "words": 249
+  },
+  {
+    "route": "src/app/(site)/bestellung/[id]/page.tsx",
+    "words": 895
+  },
+  {
+    "route": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+    "words": 231
+  },
+  {
+    "route": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+    "words": 1848
+  },
+  {
+    "route": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+    "words": 191
+  },
+  {
+    "route": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+    "words": 1277
+  },
+  {
+    "route": "src/app/(site)/kasse/page.tsx",
+    "words": 148
+  },
+  {
+    "route": "src/app/(site)/page.tsx",
+    "words": 490
+  },
+  {
+    "route": "src/app/(site)/ratgeber/[slug]/page.tsx",
+    "words": 216
+  },
+  {
+    "route": "src/app/(site)/ratgeber/page.tsx",
+    "words": 125
+  },
+  {
+    "route": "src/app/(site)/rechtliches/agb/page.tsx",
+    "words": 412
+  },
+  {
+    "route": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+    "words": 205
+  },
+  {
+    "route": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+    "words": 731
+  },
+  {
+    "route": "src/app/(site)/rechtliches/impressum/page.tsx",
+    "words": 233
+  },
+  {
+    "route": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+    "words": 351
+  },
+  {
+    "route": "src/app/(site)/rechtliches/widerruf/page.tsx",
+    "words": 374
+  },
+  {
+    "route": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+    "words": 262
+  },
+  {
+    "route": "src/app/(site)/schliessanlagen/page.tsx",
+    "words": 1447
+  },
+  {
+    "route": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+    "words": 474
+  },
+  {
+    "route": "src/app/(site)/schluessel-nach-code/page.tsx",
+    "words": 310
+  },
+  {
+    "route": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+    "words": 124
+  },
+  {
+    "route": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+    "words": 1228
+  },
+  {
+    "route": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+    "words": 83
+  },
+  {
+    "route": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+    "words": 221
+  },
+  {
+    "route": "src/app/(site)/service-und-termin/page.tsx",
+    "words": 1296
+  },
+  {
+    "route": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+    "words": 53
+  },
+  {
+    "route": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+    "words": 457
+  },
+  {
+    "route": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+    "words": 389
+  },
+  {
+    "route": "src/app/(site)/sicherheitstechnik/page.tsx",
+    "words": 545
+  },
+  {
+    "route": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+    "words": 181
+  },
+  {
+    "route": "src/app/(site)/standorte/[city]/page.tsx",
+    "words": 210
+  },
+  {
+    "route": "src/app/(site)/standorte/page.tsx",
+    "words": 120
+  },
+  {
+    "route": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+    "words": 266
+  },
+  {
+    "route": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+    "words": 1318
+  },
+  {
+    "route": "src/app/(site)/warenkorb/page.tsx",
+    "words": 178
+  }
+]

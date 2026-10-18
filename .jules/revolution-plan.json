@@ -1,0 +1,1167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-18T17:34:08.084Z",
+  "total_existing_routes": 48,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema [slug]",
+        "Leistungsübersicht und Qualitätsversprechen für [slug]",
+        "Häufig gestellte Fragen (FAQ) zu [slug] und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "slugServiceKonfigurator",
+        "target_file": "src/components/calculator/slug-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-slug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Artikel",
+        "Leistungsübersicht und Qualitätsversprechen für Artikel",
+        "Häufig gestellte Fragen (FAQ) zu Artikel und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelServiceKonfigurator",
+        "target_file": "src/components/calculator/artikel-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-artikel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Übersicht aller Dienstleistungen rund um Autoschlüssel und Transponder",
+        "Welche Fahrzeugmarken wir unterstützen (Datenbank-Auszug)",
+        "Der Unterschied zwischen Original- und Zubehörschlüsseln"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugMarkenFilter",
+        "target_file": "src/components/calculator/fahrzeug-marken-filter.tsx",
+        "action_file": "src/actions/filter-vehicle-brands.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Zerstörungsfreie Öffnungsmethoden für moderne Fahrzeugtypen",
+        "Notdienst-Ablauf: Reaktionszeiten, Legitimation und Kosten",
+        "Prävention: Was tun, wenn der Schlüssel im Kofferraum liegt?"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "OeffnungsNotdienstRechner",
+        "target_file": "src/components/calculator/oeffnungs-notdienst-rechner.tsx",
+        "action_file": "src/actions/calculate-emergency-opening.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Funktionsweise moderner Funkschlüssel und Keyless-Go-Systeme",
+        "Diagnose und Reparatur von defekten Platinen und Tasten",
+        "Sicherheitsaspekte: Schutz vor Relay-Attacks und Diebstahl"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FunkschluesselDiagnoseFilter",
+        "target_file": "src/components/calculator/funkschluessel-diagnose-filter.tsx",
+        "action_file": "src/actions/filter-key-diagnostics.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Vollständiger Ablauf der Schlüsselkopie (Transponder, Fräsen, Anlernen)",
+        "Sicherheitsrisiken bei billigen Kopien vs. zertifizierter Dienstleistung",
+        "FAQ zu Wegfahrsperren, benötigten Unterlagen und Dauer des Prozesses"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselKopieKostenRechner",
+        "target_file": "src/components/calculator/schluessel-kopie-kosten-rechner.tsx",
+        "action_file": "src/actions/calculate-key-copy.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Übersicht aller Dienstleistungen rund um Autoschlüssel und Transponder",
+        "Welche Fahrzeugmarken wir unterstützen (Datenbank-Auszug)",
+        "Der Unterschied zwischen Original- und Zubehörschlüsseln"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugMarkenFilter",
+        "target_file": "src/components/calculator/fahrzeug-marken-filter.tsx",
+        "action_file": "src/actions/filter-vehicle-brands.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Übersicht aller Dienstleistungen rund um Autoschlüssel und Transponder",
+        "Welche Fahrzeugmarken wir unterstützen (Datenbank-Auszug)",
+        "Der Unterschied zwischen Original- und Zubehörschlüsseln"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugMarkenFilter",
+        "target_file": "src/components/calculator/fahrzeug-marken-filter.tsx",
+        "action_file": "src/actions/filter-vehicle-brands.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Übersicht aller Dienstleistungen rund um Autoschlüssel und Transponder",
+        "Welche Fahrzeugmarken wir unterstützen (Datenbank-Auszug)",
+        "Der Unterschied zwischen Original- und Zubehörschlüsseln"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugMarkenFilter",
+        "target_file": "src/components/calculator/fahrzeug-marken-filter.tsx",
+        "action_file": "src/actions/filter-vehicle-brands.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Übersicht aller Dienstleistungen rund um Autoschlüssel und Transponder",
+        "Welche Fahrzeugmarken wir unterstützen (Datenbank-Auszug)",
+        "Der Unterschied zwischen Original- und Zubehörschlüsseln"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugMarkenFilter",
+        "target_file": "src/components/calculator/fahrzeug-marken-filter.tsx",
+        "action_file": "src/actions/filter-vehicle-brands.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 1622,
+      "content_expansion_topics": [
+        "Übersicht aller Dienstleistungen rund um Autoschlüssel und Transponder",
+        "Welche Fahrzeugmarken wir unterstützen (Datenbank-Auszug)",
+        "Der Unterschied zwischen Original- und Zubehörschlüsseln"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugMarkenFilter",
+        "target_file": "src/components/calculator/fahrzeug-marken-filter.tsx",
+        "action_file": "src/actions/filter-vehicle-brands.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Übersicht aller Dienstleistungen rund um Autoschlüssel und Transponder",
+        "Welche Fahrzeugmarken wir unterstützen (Datenbank-Auszug)",
+        "Der Unterschied zwischen Original- und Zubehörschlüsseln"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugMarkenFilter",
+        "target_file": "src/components/calculator/fahrzeug-marken-filter.tsx",
+        "action_file": "src/actions/filter-vehicle-brands.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Übersicht aller Dienstleistungen rund um Autoschlüssel und Transponder",
+        "Welche Fahrzeugmarken wir unterstützen (Datenbank-Auszug)",
+        "Der Unterschied zwischen Original- und Zubehörschlüsseln"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugMarkenFilter",
+        "target_file": "src/components/calculator/fahrzeug-marken-filter.tsx",
+        "action_file": "src/actions/filter-vehicle-brands.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Übersicht aller Dienstleistungen rund um Autoschlüssel und Transponder",
+        "Welche Fahrzeugmarken wir unterstützen (Datenbank-Auszug)",
+        "Der Unterschied zwischen Original- und Zubehörschlüsseln"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugMarkenFilter",
+        "target_file": "src/components/calculator/fahrzeug-marken-filter.tsx",
+        "action_file": "src/actions/filter-vehicle-brands.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1095,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema [id]",
+        "Leistungsübersicht und Qualitätsversprechen für [id]",
+        "Häufig gestellte Fragen (FAQ) zu [id] und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "idServiceKonfigurator",
+        "target_file": "src/components/calculator/id-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-id.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Vergleich: RFID, Bluetooth, Fingerprint und Pincode-Zutritt",
+        "Integration in bestehende Smart-Home und Unternehmens-Netzwerke",
+        "Batterielaufzeiten, Notstrom-Konzepte und Wartungsintervalle"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ZutrittsSystemKonfigurator",
+        "target_file": "src/components/calculator/zutritts-system-konfigurator.tsx",
+        "action_file": "src/actions/configure-access-system.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 2048,
+      "content_expansion_topics": [
+        "Vergleich: RFID, Bluetooth, Fingerprint und Pincode-Zutritt",
+        "Integration in bestehende Smart-Home und Unternehmens-Netzwerke",
+        "Batterielaufzeiten, Notstrom-Konzepte und Wartungsintervalle"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ZutrittsSystemKonfigurator",
+        "target_file": "src/components/calculator/zutritts-system-konfigurator.tsx",
+        "action_file": "src/actions/configure-access-system.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Konfigurator",
+        "Leistungsübersicht und Qualitätsversprechen für Konfigurator",
+        "Häufig gestellte Fragen (FAQ) zu Konfigurator und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorServiceKonfigurator",
+        "target_file": "src/components/calculator/konfigurator-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-konfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 1477,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Gleichschliessende zylinder",
+        "Leistungsübersicht und Qualitätsversprechen für Gleichschliessende zylinder",
+        "Häufig gestellte Fragen (FAQ) zu Gleichschliessende zylinder und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendezylinderServiceKonfigurator",
+        "target_file": "src/components/calculator/gleichschliessendezylinder-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-gleichschliessendezylinder.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Kasse",
+        "Leistungsübersicht und Qualitätsversprechen für Kasse",
+        "Häufig gestellte Fragen (FAQ) zu Kasse und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseServiceKonfigurator",
+        "target_file": "src/components/calculator/kasse-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-kasse.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Startseite",
+        "Leistungsübersicht und Qualitätsversprechen für Startseite",
+        "Häufig gestellte Fragen (FAQ) zu Startseite und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StartseiteServiceKonfigurator",
+        "target_file": "src/components/calculator/startseite-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-startseite.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema [slug]",
+        "Leistungsübersicht und Qualitätsversprechen für [slug]",
+        "Häufig gestellte Fragen (FAQ) zu [slug] und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "slugServiceKonfigurator",
+        "target_file": "src/components/calculator/slug-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-slug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Ratgeber",
+        "Leistungsübersicht und Qualitätsversprechen für Ratgeber",
+        "Häufig gestellte Fragen (FAQ) zu Ratgeber und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberServiceKonfigurator",
+        "target_file": "src/components/calculator/ratgeber-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-ratgeber.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Agb",
+        "Leistungsübersicht und Qualitätsversprechen für Agb",
+        "Häufig gestellte Fragen (FAQ) zu Agb und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AgbServiceKonfigurator",
+        "target_file": "src/components/calculator/agb-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-agb.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Cookie einstellungen",
+        "Leistungsübersicht und Qualitätsversprechen für Cookie einstellungen",
+        "Häufig gestellte Fragen (FAQ) zu Cookie einstellungen und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CookieeinstellungenServiceKonfigurator",
+        "target_file": "src/components/calculator/cookieeinstellungen-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-cookieeinstellungen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Datenschutz",
+        "Leistungsübersicht und Qualitätsversprechen für Datenschutz",
+        "Häufig gestellte Fragen (FAQ) zu Datenschutz und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DatenschutzServiceKonfigurator",
+        "target_file": "src/components/calculator/datenschutz-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-datenschutz.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Impressum",
+        "Leistungsübersicht und Qualitätsversprechen für Impressum",
+        "Häufig gestellte Fragen (FAQ) zu Impressum und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ImpressumServiceKonfigurator",
+        "target_file": "src/components/calculator/impressum-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-impressum.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Versand und zahlung",
+        "Leistungsübersicht und Qualitätsversprechen für Versand und zahlung",
+        "Häufig gestellte Fragen (FAQ) zu Versand und zahlung und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VersandundzahlungServiceKonfigurator",
+        "target_file": "src/components/calculator/versandundzahlung-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-versandundzahlung.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Widerruf",
+        "Leistungsübersicht und Qualitätsversprechen für Widerruf",
+        "Häufig gestellte Fragen (FAQ) zu Widerruf und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WiderrufServiceKonfigurator",
+        "target_file": "src/components/calculator/widerruf-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-widerruf.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Planung und Konzeption von mechanischen Schließanlagen (Z-, HS-, GHS-Anlagen)",
+        "Sicherheitsstufen und Kopierschutz von Profilzylindern",
+        "Verwaltung und Nachbestellungsprozesse für Gebäudeverwalter"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenPlaner",
+        "target_file": "src/components/calculator/schliessanlagen-planer.tsx",
+        "action_file": "src/actions/calculate-locking-system.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 1647,
+      "content_expansion_topics": [
+        "Planung und Konzeption von mechanischen Schließanlagen (Z-, HS-, GHS-Anlagen)",
+        "Sicherheitsstufen und Kopierschutz von Profilzylindern",
+        "Verwaltung und Nachbestellungsprozesse für Gebäudeverwalter"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenPlaner",
+        "target_file": "src/components/calculator/schliessanlagen-planer.tsx",
+        "action_file": "src/actions/calculate-locking-system.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema [slug]",
+        "Leistungsübersicht und Qualitätsversprechen für [slug]",
+        "Häufig gestellte Fragen (FAQ) zu [slug] und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "slugServiceKonfigurator",
+        "target_file": "src/components/calculator/slug-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-slug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Schluessel nach code",
+        "Leistungsübersicht und Qualitätsversprechen für Schluessel nach code",
+        "Häufig gestellte Fragen (FAQ) zu Schluessel nach code und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselnachcodeServiceKonfigurator",
+        "target_file": "src/components/calculator/schluesselnachcode-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-schluesselnachcode.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Anfrage",
+        "Leistungsübersicht und Qualitätsversprechen für Anfrage",
+        "Häufig gestellte Fragen (FAQ) zu Anfrage und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageServiceKonfigurator",
+        "target_file": "src/components/calculator/anfrage-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-anfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 1428,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Schluessel nach vorlage",
+        "Leistungsübersicht und Qualitätsversprechen für Schluessel nach vorlage",
+        "Häufig gestellte Fragen (FAQ) zu Schluessel nach vorlage und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselnachvorlageServiceKonfigurator",
+        "target_file": "src/components/calculator/schluesselnachvorlage-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-schluesselnachvorlage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Anfrage",
+        "Leistungsübersicht und Qualitätsversprechen für Anfrage",
+        "Häufig gestellte Fragen (FAQ) zu Anfrage und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageServiceKonfigurator",
+        "target_file": "src/components/calculator/anfrage-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-anfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Kontakt",
+        "Leistungsübersicht und Qualitätsversprechen für Kontakt",
+        "Häufig gestellte Fragen (FAQ) zu Kontakt und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KontaktServiceKonfigurator",
+        "target_file": "src/components/calculator/kontakt-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-kontakt.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 1496,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Service und termin",
+        "Leistungsübersicht und Qualitätsversprechen für Service und termin",
+        "Häufig gestellte Fragen (FAQ) zu Service und termin und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceundterminServiceKonfigurator",
+        "target_file": "src/components/calculator/serviceundtermin-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-serviceundtermin.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Terminstatus",
+        "Leistungsübersicht und Qualitätsversprechen für Terminstatus",
+        "Häufig gestellte Fragen (FAQ) zu Terminstatus und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminstatusServiceKonfigurator",
+        "target_file": "src/components/calculator/terminstatus-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-terminstatus.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Vor ort",
+        "Leistungsübersicht und Qualitätsversprechen für Vor ort",
+        "Häufig gestellte Fragen (FAQ) zu Vor ort und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VorortServiceKonfigurator",
+        "target_file": "src/components/calculator/vorort-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-vorort.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Ganzheitliche Sicherheitskonzepte für private und gewerbliche Objekte",
+        "Einbruchschutz nach DIN 18104 (Fenster- und Türsicherungen)",
+        "Förderprogramme (KfW) für einbruchhemmende Maßnahmen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitsCheckRechner",
+        "target_file": "src/components/calculator/sicherheits-check-rechner.tsx",
+        "action_file": "src/actions/calculate-security-check.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Ganzheitliche Sicherheitskonzepte für private und gewerbliche Objekte",
+        "Einbruchschutz nach DIN 18104 (Fenster- und Türsicherungen)",
+        "Förderprogramme (KfW) für einbruchhemmende Maßnahmen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitsCheckRechner",
+        "target_file": "src/components/calculator/sicherheits-check-rechner.tsx",
+        "action_file": "src/actions/calculate-security-check.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Ganzheitliche Sicherheitskonzepte für private und gewerbliche Objekte",
+        "Einbruchschutz nach DIN 18104 (Fenster- und Türsicherungen)",
+        "Förderprogramme (KfW) für einbruchhemmende Maßnahmen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitsCheckRechner",
+        "target_file": "src/components/calculator/sicherheits-check-rechner.tsx",
+        "action_file": "src/actions/calculate-security-check.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema [city]",
+        "Leistungsübersicht und Qualitätsversprechen für [city]",
+        "Häufig gestellte Fragen (FAQ) zu [city] und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "cityServiceKonfigurator",
+        "target_file": "src/components/calculator/city-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-city.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Standorte",
+        "Leistungsübersicht und Qualitätsversprechen für Standorte",
+        "Häufig gestellte Fragen (FAQ) zu Standorte und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteServiceKonfigurator",
+        "target_file": "src/components/calculator/standorte-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-standorte.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema [slug]",
+        "Leistungsübersicht und Qualitätsversprechen für [slug]",
+        "Häufig gestellte Fragen (FAQ) zu [slug] und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "slugServiceKonfigurator",
+        "target_file": "src/components/calculator/slug-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-slug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 1518,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Tuer und schliesstechnik",
+        "Leistungsübersicht und Qualitätsversprechen für Tuer und schliesstechnik",
+        "Häufig gestellte Fragen (FAQ) zu Tuer und schliesstechnik und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerundschliesstechnikServiceKonfigurator",
+        "target_file": "src/components/calculator/tuerundschliesstechnik-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-tuerundschliesstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Detaillierte Fachinformationen zum Thema Warenkorb",
+        "Leistungsübersicht und Qualitätsversprechen für Warenkorb",
+        "Häufig gestellte Fragen (FAQ) zu Warenkorb und verwandten Bereichen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbServiceKonfigurator",
+        "target_file": "src/components/calculator/warenkorb-service-konfigurator.tsx",
+        "action_file": "src/actions/configure-warenkorb.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
