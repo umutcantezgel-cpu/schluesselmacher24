@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:11:36.138Z",
+  "argumente": {
+    "_": [
+      "/autoschluessel"
+    ],
+    "geraet": "desktop",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-02/vorher",
+    "name": "vorher"
+  },
+  "pfad": "/autoschluessel",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "desktop",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-02/vorher/vorher__desktop.jpg",
+      "status": 200,
+      "bytes": 62492,
+      "breite": 1440,
+      "hoehe": 900,
+      "ganz": false
+    }
+  ]
+}

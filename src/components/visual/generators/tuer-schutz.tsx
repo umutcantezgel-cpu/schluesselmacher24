@@ -296,13 +296,14 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
             />
           ))}
 
-          {/* Legende: Ziffer in Mono, Name in Mono, ohne Kreis */}
+          {/* Legende: Ziffer in Mono, Name in Mono, ohne Kreis. Gedimmte Zeilen bleiben lesbar:
+              keine Deckkraft auf dem Text, sondern die Schriftfarbe der Ruhestufe (Kontrast ≥ 4,5:1). */}
           {BAUTEILE.map((b, i) => (
-            <g key={b.key} className={gedimmt(b.key) ? 'opacity-30' : undefined}>
+            <g key={b.key} data-gedimmt={gedimmt(b.key) ? 'true' : undefined}>
               {/* Papierfarbener Rand um die Schrift: Rasterlinien laufen nicht durch die Legende.
                   Fläche aus breitem Strich, daher Zahl statt Strichstufe (D-010). */}
               <text
-                className="fill-area-strong stroke-surface font-mono"
+                className={`${gedimmt(b.key) ? 'fill-foreground-subtle' : 'fill-area-strong'} stroke-surface font-mono`}
                 data-legende
                 fontSize={SCHRIFT}
                 fontWeight={600}
@@ -315,7 +316,7 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
                 {i + 1}
               </text>
               <text
-                className="fill-foreground-muted stroke-surface font-mono"
+                className={`${gedimmt(b.key) ? 'fill-foreground-subtle' : 'fill-foreground-muted'} stroke-surface font-mono`}
                 data-legende
                 fontSize={SCHRIFT}
                 paintOrder="stroke"

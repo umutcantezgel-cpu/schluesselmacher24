@@ -18,6 +18,9 @@
 //   Element in den Blick scrollt. Verworfene Bilder = Summe max(0; round(Abstand / 16,67) − 1); Anteil = verworfen ÷
 //   (gezeichnet + verworfen); Schwelle 5 %. --laeufe <n> (Standard 1): n frische Läufe, Ergebnis ist der Median der
 //   Anteile; alle Einzelwerte stehen in Tabelle und JSON (wie messung.mjs, robust gegen Zeitpunkt der Hydrierung).
+// Treffer (einzelbilder, bildrate): der erste GERENDERTE Treffer des Selektors (Breite > 0, getClientRects). Protokoll und
+//   Text nennen Index unter allen Treffern, Größe in px und viewBox (bei SVG). Ohne gerenderten Treffer: Bedienfehler mit
+//   Zahl der versteckten Treffer. Beispiel: node bewegung.mjs bildrate /schliessanlagen --selektor "main header [role=img]" --dauer 1600
 // Exit: 0 fertig (auch mit Befunden), 2 Bedienfehler, 1 technischer Fehler.
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -58,6 +61,34 @@ function geraetWahl(text) {
   if (text === 'mobil') return GERAETE[0];
   if (text === 'desktop') return GERAETE[2];
   return bedienfehler(`--geraet „${text}“ ist nicht erlaubt (mobil|desktop)`);
+}
+
+/** Node-Seite: Fehlertext, wenn kein gerenderter Treffer vorliegt (mit Zahl der versteckten Treffer). */
+const trefferFehler = (pfad, selektor, t) => (t.gesamt === 0
+  ? `Selektor „${selektor}“ auf ${pfad} nicht gefunden`
+  : `Selektor „${selektor}“ auf ${pfad}: ${t.gesamt} Treffer, alle versteckt (${t.versteckt} versteckt, kein gerenderter Treffer)`);
+/** Node-Seite: Zeile für Text-Ausgabe. */
+const trefferText = (t) => `Treffer: Index ${t.index} von ${t.gesamt} Treffern (${t.versteckt} versteckt) · ${t.groesse[0]} × ${t.groesse[1]} px · viewBox ${t.viewBox ?? '–'} · ${t.element}`;
+
+/** Läuft im Browser. Erster gerenderter Treffer des Selektors (Index unter allen Treffern); sonst Zählung der versteckten. */
+function trefferInPage(selektor) {
+  const alle = [...document.querySelectorAll(selektor)];
+  const gerendert = (e) => e.getClientRects().length > 0 && e.getBoundingClientRect().width > 0;
+  const index = alle.findIndex(gerendert);
+  const versteckt = alle.length - alle.filter(gerendert).length;
+  if (index < 0) return { gesamt: alle.length, index: -1, versteckt, groesse: [0, 0], viewBox: null, element: null };
+  const el = alle[index];
+  const r = el.getBoundingClientRect();
+  const tag = el.tagName.toLowerCase();
+  const klasse = String(el.getAttribute('class') ?? '').split(/\s+/).find(Boolean);
+  return {
+    gesamt: alle.length,
+    index,
+    versteckt,
+    groesse: [Math.round(r.width), Math.round(r.height)],
+    viewBox: tag === 'svg' ? el.getAttribute('viewBox') : null,
+    element: `${tag}${el.id ? `#${el.id}` : ''}${klasse ? `.${klasse.replace(/[^\w-]/g, '')}` : ''}`,
+  };
 }
 
 /** Läuft im Browser. Prüft Animationen und verborgene Textelemente. */
@@ -118,17 +149,34 @@ function pruefeReduziert() {
   return { laufend, animationen, verborgen, textElemente };
 }
 
-/** Läuft im Browser. Sammelt rAF-Zeitstempel, während das Element in den Blick scrollt. */
+/** Läuft im Browser. Erster gerenderter Treffer; sammelt rAF-Zeitstempel, während er in den Blick scrollt. */
 function rafZeiten({ selektor, dauer }) {
-  const el = document.querySelector(selektor);
-  if (!el) return null;
+  const alle = [...document.querySelectorAll(selektor)];
+  const gerendert = (e) => e.getClientRects().length > 0 && e.getBoundingClientRect().width > 0;
+  const index = alle.findIndex(gerendert);
+  const versteckt = alle.length - alle.filter(gerendert).length;
+  if (index < 0) {
+    return Promise.resolve({ gesamt: alle.length, index: -1, versteckt, groesse: [0, 0], viewBox: null, element: null, zeiten: null });
+  }
+  const el = alle[index];
+  const r = el.getBoundingClientRect();
+  const tag = el.tagName.toLowerCase();
+  const klasse = String(el.getAttribute('class') ?? '').split(/\s+/).find(Boolean);
+  const info = {
+    gesamt: alle.length,
+    index,
+    versteckt,
+    groesse: [Math.round(r.width), Math.round(r.height)],
+    viewBox: tag === 'svg' ? el.getAttribute('viewBox') : null,
+    element: `${tag}${el.id ? `#${el.id}` : ''}${klasse ? `.${klasse.replace(/[^\w-]/g, '')}` : ''}`,
+  };
   return new Promise((fertig) => {
     const zeiten = [];
     const ende = performance.now() + dauer + 200;
     const tick = (t) => {
       zeiten.push(t);
       if (t < ende) requestAnimationFrame(tick);
-      else fertig(zeiten);
+      else fertig({ ...info, zeiten });
     };
     requestAnimationFrame(tick);
     el.scrollIntoView({ behavior: 'instant', block: 'center' });
@@ -299,6 +347,7 @@ async function einzelbilder(args, pfad, dauer) {
   if (!(rand >= 0)) bedienfehler('--rand <px> ist keine Zahl ≥ 0');
   const bilder = [];
   let info = null;
+  let treffer = null;
   const browser = await browserStarten();
   try {
     const context = await kontextFuer(browser, g);
@@ -306,8 +355,9 @@ async function einzelbilder(args, pfad, dauer) {
       await attrappenSetzen(context);
       const page = await context.newPage();
       await laden(page, pfad);
-      const el = page.locator(args.selektor).first();
-      if ((await el.count()) === 0) bedienfehler(`Selektor „${args.selektor}“ auf ${pfad} nicht gefunden`);
+      treffer = await page.evaluate(trefferInPage, args.selektor);
+      if (treffer.index < 0) bedienfehler(trefferFehler(pfad, args.selektor, treffer));
+      const el = page.locator(args.selektor).nth(treffer.index);
       await el.evaluate((e) => e.scrollIntoView({ behavior: 'instant', block: 'center' }));
       info = await el.evaluate(bereitstellen, {
         modus: echtzeit ? 'echtzeit' : 'animationszeit',
@@ -350,7 +400,7 @@ async function einzelbilder(args, pfad, dauer) {
   }
   const modus = echtzeit ? 'echtzeit' : 'animationszeit';
   const protokoll = jsonSchreiben('bewegung-einzelbilder', args, {
-    pfad, selektor: args.selektor, dauer: dauer ?? null, geraet: g.id, modus, rand, ...info, bilder,
+    pfad, selektor: args.selektor, dauer: dauer ?? null, geraet: g.id, modus, rand, ...info, bilder, treffer,
   });
   if (echtzeit) {
     console.log(tabelle(
@@ -372,6 +422,7 @@ async function einzelbilder(args, pfad, dauer) {
       console.log('[data-motion]: keines gefunden, sofort weiter');
     }
   }
+  console.log(trefferText(treffer));
   if (info.erweitert) {
     const [w, h] = info.erweitert.groesse;
     console.log(`Ausschnitt erweitert: ${info.erweitert.von} (${w} × ${h} px) → ${info.erweitert.auf ?? 'kein Vorfahre mit role=img oder svg, Element bleibt'}`);
@@ -381,7 +432,7 @@ async function einzelbilder(args, pfad, dauer) {
 
 async function bildrateLauf(args, pfad, dauer) {
   const g = GERAETE[0];
-  let zeiten = null;
+  let ergebnis = null;
   const browser = await browserStarten();
   try {
     const context = await kontextFuer(browser, g);
@@ -391,33 +442,39 @@ async function bildrateLauf(args, pfad, dauer) {
       const cdp = await context.newCDPSession(page);
       await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
       await laden(page, pfad);
-      zeiten = await page.evaluate(rafZeiten, { selektor: args.selektor, dauer });
-      if (zeiten === null) bedienfehler(`Selektor „${args.selektor}“ auf ${pfad} nicht gefunden`);
+      ergebnis = await page.evaluate(rafZeiten, { selektor: args.selektor, dauer });
+      if (ergebnis.index < 0) bedienfehler(trefferFehler(pfad, args.selektor, ergebnis));
     } finally {
       await context.close();
     }
   } finally {
     await browser.close();
   }
+  const { zeiten, ...treffer } = ergebnis;
   let verworfen = 0;
   for (let i = 1; i < zeiten.length; i += 1) {
     verworfen += Math.max(0, Math.round((zeiten[i] - zeiten[i - 1]) / 16.67) - 1);
   }
   const gezeichnet = zeiten.length;
-  return { gezeichnet, verworfen, anteil: (verworfen / Math.max(1, gezeichnet + verworfen)) * 100 };
+  return { gezeichnet, verworfen, anteil: (verworfen / Math.max(1, gezeichnet + verworfen)) * 100, treffer };
 }
 
 async function bildrate(args, pfad, dauer, laeufe = 1) {
   const g = GERAETE[0];
   const einzel = [];
-  for (let i = 0; i < laeufe; i += 1) einzel.push(await bildrateLauf(args, pfad, dauer));
+  let treffer = null;
+  for (let i = 0; i < laeufe; i += 1) {
+    const lauf = await bildrateLauf(args, pfad, dauer);
+    treffer ??= lauf.treffer;
+    einzel.push({ gezeichnet: lauf.gezeichnet, verworfen: lauf.verworfen, anteil: lauf.anteil });
+  }
   const sortiert = [...einzel].sort((a, b) => a.anteil - b.anteil);
   const median = sortiert[Math.floor((sortiert.length - 1) / 2)];
   const { gezeichnet, verworfen, anteil } = median;
   const ueber = anteil > 5;
   const protokoll = jsonSchreiben('bewegung-bildrate', args, {
     pfad, selektor: args.selektor, dauer, geraet: g.id, laeufe, gezeichnet, verworfen, anteil, schwelle: 5, ueber,
-    einzel,
+    einzel, treffer,
   });
   if (laeufe > 1) {
     console.log(tabelle(
@@ -430,6 +487,7 @@ async function bildrate(args, pfad, dauer, laeufe = 1) {
     ['Bilder (gezeichnet)', 'Verworfen', 'Anteil', 'Schwelle', 'Ergebnis'],
     [[gezeichnet, verworfen, `${fmt(anteil, 1)} %`, '5 %', ueber ? 'über Schwelle' : 'innerhalb Schwelle']],
   ));
+  console.log(trefferText(treffer));
   console.log(`\nJSON-Protokoll: ${protokoll}`);
 }
 

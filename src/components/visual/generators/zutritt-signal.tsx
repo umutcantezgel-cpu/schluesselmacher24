@@ -296,14 +296,14 @@ export function ZutrittSignalGrafik({ params, title, className }: VisualProps) {
           <path
             key={radius}
             className="sm24-dash stroke-area"
-            style={motionStyle(0, 1.6 + i * 0.2)}
+            style={motionStyle(0, 0.9 + i * 0.1)}
             strokeWidth={LINIE_STARK}
             d={bogen(bogenMitte, ACHSE, radius, winkel)}
           />
         ))}
         <path
           className="sm24-dash stroke-area-muted"
-          style={motionStyle(0, 2)}
+          style={motionStyle(0, 1.1)}
           strokeWidth={LINIE_STARK}
           d={`M${flussStart} ${ACHSE}H${r(flussEnde - 6)}`}
         />
@@ -334,7 +334,7 @@ export function ZutrittSignalGrafik({ params, title, className }: VisualProps) {
       <path
         className="sm24-draw stroke-surface"
         pathLength={1}
-        style={motionStyle(1.2, 0.45, { strokeDasharray: DRAW_DASHARRAY })}
+        style={motionStyle(1.2, 0.4, { strokeDasharray: DRAW_DASHARRAY })}
         strokeWidth={KONTUR}
         d={haken}
       />

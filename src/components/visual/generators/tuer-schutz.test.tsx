@@ -77,13 +77,27 @@ describe('TuerSchutzGrafik', () => {
 
     for (const fokus of FOKUS) {
       const html = zeichne({ fokus });
-      /* Marken, Legendenzeilen und Linien der übrigen vier Bauteile */
+      /* Marken und Linien der übrigen vier Bauteile sind abgeblendet, die Legende nicht */
       expect(html.match(/class="opacity-30"><g class="sm24-pop"/g)).toHaveLength(4);
-      expect(html.match(/class="opacity-30"><text/g)).toHaveLength(4);
       expect(html.match(/class="sm24-draw stroke-area opacity-30"/g)).toHaveLength(4);
-      expect(html.match(/opacity-30/g)).toHaveLength(12);
+      expect(html.match(/opacity-30/g)).toHaveLength(8);
+      /* Legendenzeilen der übrigen vier Bauteile: Kennzeichen und Schriftfarbe der Ruhestufe */
+      expect(html.match(/data-gedimmt="true"/g)).toHaveLength(4);
+      expect(html.match(/class="fill-foreground-subtle stroke-surface font-mono"/g)).toHaveLength(8);
       /* Das hervorgehobene Bauteil ist nicht abgeblendet */
       expect(html.split(HERVOR_KLASSE).length - 1).toBe(HERVOR[fokus]);
+    }
+  });
+
+  it('blendet Legendentext nie über die Deckkraft ab, auch nicht gedimmt', () => {
+    for (const fokus of FOKUS) {
+      const html = zeichne({ fokus });
+      /* Jede Legendengruppe: Öffnungs-Tag ohne opacity-Klasse, direkt darin nur die Legendentexte */
+      const gruppen = [...html.matchAll(/<g([^>]*)>((?:<text[^>]*data-legende[^>]*>[^<]*<\/text>)+)<\/g>/g)];
+      expect(gruppen).toHaveLength(NAMEN.length);
+      for (const [, attribute] of gruppen) {
+        expect(attribute).not.toMatch(/opacity-/);
+      }
     }
   });
 

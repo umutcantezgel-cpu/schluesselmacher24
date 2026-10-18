@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 // messung.mjs – Leistungsmessung der Hauptansichten: LCP, CLS, INP-Näherung, TBT, JS-Menge, Übertragung.
 // Aufruf: node messung.mjs [--routen <pfad,pfad>] [--laeufe 3] [--profil mobil|desktop|beide] [--json <datei>]
+//   [--vergleich <url>]: misst je Ansicht und Profil abwechselnd Lauf um Lauf gegen den zweiten Server (z. B. http://localhost:3100)
+//   und gibt zusätzlich eine Vergleichstabelle aus; ohne die Option unverändert.
 // Je Lauf ein frischer Kontext. Profil mobil: 390×844, Prozessor 4-fach gedrosselt (CDP),
 // Netz „langsames 4G“ (150 ms Latenz, 1,6 Mbit/s herunter, 0,75 Mbit/s hoch). Profil desktop: 1440×900 ohne Drosselung.
 // Ablauf je Lauf: laden, einmal durchscrollen, ein Klick auf den ersten sichtbaren Knopf außerhalb
@@ -10,10 +12,10 @@
 // Ausgabe je Ansicht und Profil: Median (Minimum–Maximum) über die Läufe und Budgetverstöße am Median.
 // Budgets: LCP ≤ 2500 ms, CLS ≤ 0,1, INP ≤ 200 ms. Exit: 0 fertig (auch mit Verstößen),
 // 1 wenn ein Lauf technisch scheiterte (Daten werden trotzdem geschrieben), 2 Bedienfehler.
-import { writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import {
-  HAUPTANSICHTEN, GERAETE, PROTOKOLLE, argumente, browserStarten, kontextFuer,
+  REPO, BASIS_URL, HAUPTANSICHTEN, GERAETE, PROTOKOLLE, argumente, browserStarten, kontextFuer,
   attrappenSetzen, laden, durchscrollen, zeitstempel, ordner,
 } from './lib.mjs';
 
@@ -110,11 +112,68 @@ async function interagieren(page) {
   return { tStart, klick: markiert, navigiert: page.url() !== url0 };
 }
 
-async function einLauf(browser, route, profil) {
+/**
+ * Gleiche Regeln wie attrappenSetzen() aus lib.mjs, aber für den Vergleichsursprung.
+ * lib.mjs bleibt unverändert; daher hier eine Kopie der Regeln (Lese-Kennungen aus denselben Manifesten).
+ */
+function leseActionsVergleich() {
+  const verzeichnisse = [process.env.SM24_NEXT_DIR, path.join(REPO, '.next'), path.join(REPO, '.next', 'dev'), '/root/sm24-e0/.next'].filter(Boolean);
+  const ids = new Set();
+  for (const v of verzeichnisse) {
+    const datei = path.join(v, 'server', 'server-reference-manifest.json');
+    if (!existsSync(datei)) continue;
+    try {
+      const m = JSON.parse(readFileSync(datei, 'utf8'));
+      for (const [id, eintrag] of Object.entries(m.node ?? {})) {
+        if (eintrag.filename === 'src/lib/actions/booking.ts' && /^fetch[A-Z]/.test(eintrag.exportedName)) ids.add(id);
+      }
+    } catch {
+      // Unlesbares Manifest: keine Lese-Kennungen, also wird jede Action abgefangen.
+    }
+  }
+  return ids;
+}
+
+async function attrappenFuer(context, basis) {
+  const eigen = new URL(basis).origin;
+  let lesend = leseActionsVergleich();
+  await context.route('**/*', async (route) => {
+    const req = route.request();
+    const url = new URL(req.url());
+    const methode = req.method();
+    if (url.origin !== eigen) {
+      if (methode === 'GET' && /fonts\.(gstatic|googleapis)\.com$/.test(url.hostname)) return route.continue();
+      return route.abort();
+    }
+    if (methode === 'GET' || methode === 'HEAD') return route.continue();
+    if (url.pathname.startsWith('/api/kunden-upload')) {
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ ok: true, id: 'attrappe-upload', schluessel: 'attrappe' }),
+      });
+    }
+    const action = req.headers()['next-action'];
+    if (action && !lesend.has(action)) lesend = leseActionsVergleich();
+    if (action && lesend.has(action)) return route.continue();
+    if (action) {
+      return route.fulfill({ status: 200, contentType: 'text/x-component', body: '0:{"a":"$@1","f":"","b":"attrappe"}\n1:null\n' });
+    }
+    return route.fulfill({ status: 204, body: '' });
+  });
+}
+
+async function ladenUnter(page, basis, pfad) {
+  await page.goto(basis + pfad, { waitUntil: 'networkidle', timeout: 45000 });
+  await page.evaluate(() => document.fonts?.ready);
+}
+
+async function einLauf(browser, route, profil, basis = null) {
   const g = profil === 'mobil' ? GERAETE[0] : GERAETE[2];
   const context = await kontextFuer(browser, g);
   try {
-    await attrappenSetzen(context);
+    if (basis) await attrappenFuer(context, basis);
+    else await attrappenSetzen(context);
     const page = await context.newPage();
     await page.addInitScript(INIT);
     if (profil === 'mobil') {
@@ -128,7 +187,8 @@ async function einLauf(browser, route, profil) {
         uploadThroughput: 0.75e6 / 8,
       });
     }
-    await laden(page, route.pfad);
+    if (basis) await ladenUnter(page, basis, route.pfad);
+    else await laden(page, route.pfad);
     await durchscrollen(page);
     const { tStart, klick, navigiert } = await interagieren(page);
     await page.waitForFunction(() => performance.now() > 5200, null, { timeout: 60000 });
@@ -139,9 +199,62 @@ async function einLauf(browser, route, profil) {
   }
 }
 
+const VERGLEICH_WERTE = [
+  { name: 'LCP', schluessel: 'lcp', einheit: ' ms', stellen: 0 },
+  { name: 'CLS', schluessel: 'cls', einheit: '', stellen: 3 },
+  { name: 'INP', schluessel: 'inp', einheit: ' ms', stellen: 0 },
+];
+const werteAus = (serie, schluessel) => serie.laeufe
+  .map((l) => l[schluessel])
+  .filter((v) => typeof v === 'number' && Number.isFinite(v));
+const mitVorzeichen = (d, stellen) => {
+  const r = Number(d.toFixed(stellen));
+  return `${r > 0 ? '+' : r < 0 ? '−' : ''}${fmt(Math.abs(r), stellen)}`;
+};
+
+/**
+ * Je Ansicht, Profil und Wert: Median jetzt, Median Vergleich, Spanne Vergleich (max − min),
+ * Differenz (jetzt − Vergleich) und erfüllt (Differenz ≤ Spanne oder Differenz ≤ 0), mit ungerundeten Werten.
+ * Die Spanne gibt es erst ab zwei Werten der Vergleichsserie; sonst ist sie unbekannt (null) und erfüllt
+ * ist „nicht bewertbar“ (null). Je Serie stehen die Läufe insgesamt (gelungen und fehlgeschlagen) und die
+ * Läufe mit gültigem Wert, damit fehlende Werte nicht unbemerkt bleiben.
+ */
+function vergleichZeilenBauen(serien, vergleichSerien) {
+  const zeilen = [];
+  serien.forEach((s, k) => {
+    const v = vergleichSerien[k];
+    for (const w of VERGLEICH_WERTE) {
+      const jetzt = werteAus(s, w.schluessel);
+      const vgl = werteAus(v, w.schluessel);
+      const medianJetzt = jetzt.length ? med(jetzt) : null;
+      const medianVergleich = vgl.length ? med(vgl) : null;
+      const spanne = vgl.length >= 2 ? Math.max(...vgl) - Math.min(...vgl) : null;
+      const differenz = medianJetzt !== null && medianVergleich !== null ? medianJetzt - medianVergleich : null;
+      const erfuellt = differenz === null || spanne === null ? null : (differenz <= spanne || differenz <= 0);
+      zeilen.push({
+        ansicht: s.ansicht, profil: s.profil, wert: w.name, einheit: w.einheit, stellen: w.stellen,
+        medianJetzt, medianVergleich, spanne, differenz, erfuellt,
+        laeufeJetzt: s.laeufe.length + s.fehler.length,
+        werteJetzt: jetzt.length,
+        laeufeVergleich: v.laeufe.length + v.fehler.length,
+        werteVergleich: vgl.length,
+      });
+    }
+  });
+  return zeilen;
+}
+
+/** Zwei Adressen zeigen auf denselben Server, wenn Protokoll, Port und Rechner übereinstimmen; Loopback-Namen zählen als gleich. */
+const LOOPBACK = new Set(['localhost', '127.0.0.1', '[::1]', '::1']);
+const portVon = (u) => u.port || (u.protocol === 'https:' ? '443' : '80');
+function gleicherServer(a, b) {
+  const rechner = (u) => (LOOPBACK.has(u.hostname) ? 'loopback' : u.hostname);
+  return a.protocol === b.protocol && portVon(a) === portVon(b) && rechner(a) === rechner(b);
+}
+
 async function main() {
   const args = argumente();
-  for (const k of ['routen', 'laeufe', 'profil', 'json']) {
+  for (const k of ['routen', 'laeufe', 'profil', 'json', 'vergleich']) {
     if (args[k] === true) bedienfehler(`--${k} braucht einen Wert`);
   }
   const routen = routenWaehlen(args.routen);
@@ -150,21 +263,43 @@ async function main() {
   const profilWahl = args.profil ?? 'beide';
   if (!['mobil', 'desktop', 'beide'].includes(profilWahl)) bedienfehler(`--profil „${profilWahl}“ ist nicht erlaubt`);
   const profile = profilWahl === 'beide' ? ['mobil', 'desktop'] : [profilWahl];
+  let vergleich = null;
+  if (args.vergleich !== undefined) {
+    let u = null;
+    try { u = new URL(args.vergleich); } catch { u = null; }
+    if (!u || !['http:', 'https:'].includes(u.protocol)) {
+      bedienfehler(`--vergleich „${args.vergleich}“ ist keine http(s)-Adresse, z. B. --vergleich http://localhost:3100`);
+    }
+    if (gleicherServer(u, new URL(BASIS_URL))) {
+      bedienfehler(`--vergleich zeigt auf denselben Server wie die Messung (${BASIS_URL}; localhost, 127.0.0.1 und ::1 gelten als gleich); ein zweiter Server ist nötig (z. B. http://localhost:3100)`);
+    }
+    vergleich = u.origin;
+  }
 
   const serien = [];
+  const vergleichSerien = [];
   const browser = await browserStarten();
   try {
     for (const r of routen) {
       for (const p of profile) {
         const serie = { ansicht: r.id, pfad: r.pfad, profil: p, laeufe: [], fehler: [] };
+        const vserie = vergleich ? { ansicht: r.id, pfad: r.pfad, profil: p, laeufe: [], fehler: [] } : null;
         for (let i = 0; i < laeufe; i += 1) {
           try {
             serie.laeufe.push(await einLauf(browser, r, p));
           } catch (e) {
             serie.fehler.push(String(e.message ?? e).split('\n')[0]);
           }
+          if (vserie) {
+            try {
+              vserie.laeufe.push(await einLauf(browser, r, p, vergleich));
+            } catch (e) {
+              vserie.fehler.push(String(e.message ?? e).split('\n')[0]);
+            }
+          }
         }
         serien.push(serie);
+        if (vserie) vergleichSerien.push(vserie);
       }
     }
   } finally {
@@ -204,12 +339,15 @@ async function main() {
     };
   });
 
-  const technischFehler = serien.reduce((s, x) => s + x.fehler.length, 0);
+  const technischFehler = serien.reduce((s, x) => s + x.fehler.length, 0)
+    + vergleichSerien.reduce((s, x) => s + x.fehler.length, 0);
+  const vergleichZeilen = vergleich ? vergleichZeilenBauen(serien, vergleichSerien) : null;
   const protokoll = jsonSchreiben('messung', args, {
     budget: BUDGET,
     hinweis: 'Werte: Median (Minimum–Maximum) je Ansicht und Profil; INP 0 = kein Ereignis über 16 ms',
     serien,
     zusammenfassung: zeilen,
+    ...(vergleich ? { vergleich: vergleichSerien, vergleichZusammenfassung: vergleichZeilen } : {}),
   });
 
   console.log(tabelle(
@@ -217,9 +355,35 @@ async function main() {
     zeilen.map((z) => [z.ansicht, z.profil, z.laeufe, z.lcp, z.cls, z.inp, z.tbt, z.jsKB, z.gesamtKB, z.budget]),
   ));
   console.log('\nBudgets: LCP ≤ 2500 ms, CLS ≤ 0,1, INP ≤ 200 ms (am Median). Das Bewegungscode-Budget (60 KB) wird nicht gesondert gemessen; „JS KB“ ist die Gesamtmenge aller Skript-Ressourcen.');
+  if (vergleich) {
+    console.log(`\nVergleich gegen ${vergleich} (Lauf um Lauf abwechselnd mit ${BASIS_URL}):\n`);
+    const bewertbar = vergleichZeilen.filter((z) => z.erfuellt !== null);
+    const ja = bewertbar.filter((z) => z.erfuellt).length;
+    const nichtBewertbar = vergleichZeilen.length - bewertbar.length;
+    const kopf = ['Ansicht', 'Profil', 'Wert', 'Läufe jetzt (mit Wert)', 'Läufe Vergleich (mit Wert)', 'Median jetzt', 'Median Vergleich', 'Spanne Vergleich (max − min)', 'Differenz', 'erfüllt'];
+    const summe = ['Summe', '–', '–', '–', '–', '–', '–', '–', '–', `${ja} von ${bewertbar.length} erfüllt${nichtBewertbar ? ` · ${nichtBewertbar} nicht bewertbar` : ''}`];
+    console.log(tabelle(
+      kopf,
+      [
+        ...vergleichZeilen.map((z) => [
+          z.ansicht, z.profil, z.wert,
+          `${z.werteJetzt} von ${z.laeufeJetzt}`,
+          `${z.werteVergleich} von ${z.laeufeVergleich}`,
+          z.medianJetzt === null ? '–' : `${fmt(z.medianJetzt, z.stellen)}${z.einheit}`,
+          z.medianVergleich === null ? '–' : `${fmt(z.medianVergleich, z.stellen)}${z.einheit}`,
+          z.spanne === null ? '–' : `${fmt(z.spanne, z.stellen)}${z.einheit}`,
+          z.differenz === null ? '–' : `${mitVorzeichen(z.differenz, z.stellen)}${z.einheit}`,
+          z.erfuellt === null ? 'nicht bewertbar' : (z.erfuellt ? 'ja' : 'nein'),
+        ]),
+        summe,
+      ],
+    ));
+    console.log('Läufe (mit Wert) = Läufe mit gültigem Wert von allen Läufen der Serie (gelungen und fehlgeschlagen). Differenz = Median jetzt − Median Vergleich (+ heißt: jetzt höher). erfüllt = Differenz ≤ Spanne Vergleich oder Differenz ≤ 0. Spanne „–“ und erfüllt „nicht bewertbar“, wenn die Vergleichsserie weniger als zwei Werte hat oder ein Median fehlt.');
+  }
   if (technischFehler) {
     console.log('\nFehlgeschlagene Läufe:');
     for (const s of serien) for (const f of s.fehler) console.log(`- ${s.ansicht} · ${s.profil}: ${f}`);
+    for (const s of vergleichSerien) for (const f of s.fehler) console.log(`- ${s.ansicht} · ${s.profil} (Vergleich): ${f}`);
   }
   console.log(`\nJSON-Protokoll: ${protokoll}`);
   if (technischFehler) process.exitCode = 1;

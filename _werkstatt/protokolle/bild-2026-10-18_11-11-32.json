@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:11:32.045Z",
+  "argumente": {
+    "_": [
+      "/schluessel-nach-code"
+    ],
+    "geraet": "mobil",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-02/vorher",
+    "name": "vorher"
+  },
+  "pfad": "/schluessel-nach-code",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-02/vorher/vorher__mobil.jpg",
+      "status": 200,
+      "bytes": 35830,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": false
+    }
+  ]
+}

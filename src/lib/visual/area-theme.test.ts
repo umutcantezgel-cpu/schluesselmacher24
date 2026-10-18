@@ -65,6 +65,7 @@ describe('Grundfarben in globals.css', () => {
     ['foreground-muted', 'background'],
     ['foreground-muted', 'surface-muted'],
     ['foreground-subtle', 'surface'],
+    ['foreground-subtle', 'surface-muted'],
     ['primary', 'surface'],
     ['primary', 'primary-soft'],
     ['primary-foreground', 'primary'],

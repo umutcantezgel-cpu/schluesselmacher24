@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:11:53.250Z",
+  "argumente": {
+    "_": [
+      "/autoschluessel"
+    ],
+    "geraet": "mobil",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-02/vorher",
+    "name": "vorher-h02"
+  },
+  "pfad": "/autoschluessel",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-02/vorher/vorher-h02__mobil.jpg",
+      "status": 200,
+      "bytes": 26164,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": false
+    }
+  ]
+}

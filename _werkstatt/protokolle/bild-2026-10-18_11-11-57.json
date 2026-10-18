@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-10-18T09:11:57.323Z",
+  "argumente": {
+    "_": [
+      "/autoschluessel/marken/volkswagen/golf"
+    ],
+    "geraet": "mobil",
+    "ziel": "/root/sm24-bilder/E7-BAUMEISTER-02/vorher",
+    "name": "vorher-golf"
+  },
+  "pfad": "/autoschluessel/marken/volkswagen/golf",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/root/sm24-bilder/E7-BAUMEISTER-02/vorher/vorher-golf__mobil.jpg",
+      "status": 200,
+      "bytes": 30758,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": false
+    }
+  ]
+}
