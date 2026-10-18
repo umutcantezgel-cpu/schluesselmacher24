@@ -5,9 +5,9 @@
 Alles liegt auf dem Zweig `claude/projekt-gestaltung-entwicklung-tofodh`. Er zweigt von `main` beim Commit `71dbadd` („build: auf Vercel nie ein lokales Postgres starten“) ab. Nichts ist zusammengeführt oder veröffentlicht; das entscheidest du (MENSCHEN M-14).
 
 **Was sich ändert (gegenüber `main`)**
-- Website-Code: 243 Dateien, vor allem unter `src/` (Gestaltung, Grafiken, Bewegung, Bedienung). Unverändert: Datenmodelle und Migrationen, Server-Aktionen, Preis- und Terminlogik, Anbindungen (`src/lib/integrations`), Inhalte unter `content/` und `public/`.
+- Website-Code: 244 Dateien, vor allem unter `src/` (Gestaltung, Grafiken, Bewegung, Bedienung). Unverändert: Datenmodelle und Migrationen, Server-Aktionen, Preis- und Terminlogik, Anbindungen (`src/lib/integrations`), Inhalte unter `content/` und `public/`.
 - Abhängigkeiten: `lucide-react` entfernt (`package.json`, `package-lock.json`); keine neue Bibliothek.
-- Konfiguration: `tailwind.config.ts` (Designsystem), `README.md` (Ist-Stand), `UMSETZUNG.md` (Hinweis „historisch“). Für den Arbeitsordner `_werkstatt/` je eine Ausnahme in `.gitignore`, `eslint.config.mjs`, `tsconfig.json` und `vitest.config.ts`.
+- Konfiguration: `tailwind.config.ts` (Designsystem), `next.config.ts` (CSS im Dokument für schnelleres erstes Laden, noch experimentell, siehe MENSCHEN M-28), `README.md` (Ist-Stand), `UMSETZUNG.md` (Hinweis „historisch“). Für den Arbeitsordner `_werkstatt/` je eine Ausnahme in `.gitignore`, `eslint.config.mjs`, `tsconfig.json` und `vitest.config.ts`.
 - `_werkstatt/` (rund 44 MB, davon 36 MB Bilder): Auftrag, Kern, Plan, Berichte, Prüfprotokolle, Bildsätze, Galerie (`_werkstatt/bilder/galerie.html`) und Prüfwerkzeuge mit eigener Paketdatei. Nicht Teil der Website.
 
 **Vor dem Zusammenführen: `_werkstatt` bewusst entscheiden**
