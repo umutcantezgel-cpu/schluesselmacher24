@@ -1,0 +1,13 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_014",
+      "title": "Interactive Security Audit Scanner for Sicherheitstechnik",
+      "description": "Expand the Sicherheitstechnik page with a deep dive into modern security methodologies and add an interactive security audit tool.",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "interactive_module": "components/sicherheitstechnik/security-audit-scanner.tsx",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}
