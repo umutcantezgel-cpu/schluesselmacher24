@@ -1,0 +1,9 @@
+# SCHLÜSSELMACHER24 - LLM Guide
+
+Dieses Projekt basiert auf Next.js 16+, React 19.2+ und Tailwind CSS v4.
+Die Architektur folgt dem Swiss Light Design Doctrine mit OKLCH-Farbraum.
+
+## Wichtige Konzepte:
+- **Zero-New-Routes Invariante**: Es dürfen keine neuen Routen oder Dateien im `app/` Verzeichnis angelegt werden. Alle Änderungen basieren auf Bestandserweiterung.
+- **Brand DNA**: Beibehaltung der Kernästhetik unter Nutzung von Swiss High-End Design und Subgrid-Strukturen.
+- **Server Components**: Bevorzugte Nutzung von RSC, asynchrone Route APIs und moderne React 19 Action Features (`useActionState`, `useOptimistic`).

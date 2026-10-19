@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architektur-Ziele
+
+Das Projekt wurde durch den Auditor Architect inspiziert. Es gelten die Prinzipien der Zero-New-Routes Invariante und die Nutzung des OKLCH-Farbraums für die Schweizer High-End-Ästhetik.
