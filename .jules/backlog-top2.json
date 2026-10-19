@@ -1,0 +1,11 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_001",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "description": "Erweitere die Sicherheitstechnik-Seite mit detaillierten Fachinhalten zu modernem Einbruchschutz, Überwachungssystemen und einem interaktiven Sicherheitsbudget-Rechner."
+    }
+  ]
+}
