@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -115,15 +116,28 @@ export default async function SicherheitstechnikPage() {
               lead={page?.intro}
             />
 
-            <dl className="mt-6 space-y-4">
+            {/* Added Deep Content Expansion */}
+            <div className="mt-8 text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+              <p>
+                Die professionelle Absicherung von Privat- und Gewerbeobjekten erfordert ein ganzheitliches Verständnis von potenziellen Bedrohungsszenarien und den entsprechenden Gegenmaßnahmen. Stückwerk oder isolierte Einzellösungen bieten oft ein falsches Gefühl der Sicherheit, während die eigentlichen Schwachstellen des Objekts unbeachtet bleiben. Unser Ansatz basiert auf der präzisen Abstimmung von mechanischen Widerständen und elektronischer Überwachung.
+              </p>
+              <p>
+                <strong>Die Architektur der Sicherheit</strong> beginnt immer an der Außenhaut des Gebäudes. Fenster, Türen und Lichtschächte sind die primären Angriffsziele. Hier greift das Prinzip des mechanischen Grundschutzes. Jede Minute, die ein potenzieller Täter länger benötigt, um eine physische Barriere zu überwinden, erhöht das Risiko seiner Entdeckung drastisch. Daher setzen wir konsequent auf zertifizierte Schließzylinder, einbruchhemmende Beschläge und massive Zusatzsicherungen, die den Täter zwingen, schweres Werkzeug einzusetzen und Lärm zu verursachen.
+              </p>
+              <p>
+                Doch Mechanik allein ist blind. Sie hält auf, aber sie alarmiert nicht. Hier integriert sich die elektronische Meldetechnik nahtlos in das Konzept. Bevor der mechanische Widerstand nachgibt, registrieren sensible Sensoren — von Magnetkontakten an den Fensterrahmen bis hin zu seismischen Meldern — den Angriffsversuch. Diese intelligente Vernetzung sorgt dafür, dass Interventionen eingeleitet werden können, während die physische Barriere noch standhält.
+              </p>
+            </div>
+
+            <dl className="mt-8 space-y-4">
               {PRINCIPLE.map((item) => (
-                <div key={item.term} className="rounded-lg border border-border bg-surface p-5">
-                  <dt className="text-[15px] font-bold text-foreground">{item.term}</dt>
-                  <dd className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
+                <div key={item.term} className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-5 transition-shadow hover:shadow-md">
+                  <dt className="text-[15px] font-bold text-[oklch(0.16_0.02_260)]">{item.term}</dt>
+                  <dd className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                     {item.body}
                     <Link
                       href={item.href}
-                      className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
+                      className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[oklch(0.52_0.24_260)] hover:text-[oklch(0.46_0.24_260)] hover:underline"
                     >
                       {item.linkLabel}
                       <ArrowRight size={15} aria-hidden />
@@ -143,18 +157,78 @@ export default async function SicherheitstechnikPage() {
               }}
             />
 
-            <div className="rounded-lg border border-border bg-surface-muted p-5">
-              <p className="text-[13px] font-bold uppercase tracking-wider text-foreground-subtle">
+            <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <p className="text-[13px] font-bold uppercase tracking-wider text-[oklch(0.52_0.24_260)]">
                 Ablauf in diesem Bereich
               </p>
-              <p className="mt-2 text-[15px] font-bold text-foreground">{process.label}</p>
-              <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
+              <p className="mt-2 text-[18px] font-bold text-[oklch(0.16_0.02_260)]">{process.label}</p>
+              <p className="mt-2 text-[14px] leading-relaxed text-[oklch(0.32_0.02_260)]">
                 {process.hint}
+                <br /><br />
+                Eine gründliche Bestandsaufnahme ist der wichtigste Schritt. Wir analysieren Schwachstellen, bewerten bestehende Systeme und erstellen ein maßgeschneidertes Sicherheitskonzept, das genau auf Ihre Anforderungen und Ihr Budget abgestimmt ist.
               </p>
-              <div className="mt-5">
-                <ButtonLink href={`/${ROUTE}/sicherheitscheck`} variant="outline">
+              <div className="mt-6">
+                <ButtonLink href={`/${ROUTE}/sicherheitscheck`} variant="outline" className="w-full justify-center border-[oklch(0.89_0.008_260/0.55)] text-[oklch(0.16_0.02_260)] hover:bg-[oklch(0.94_0.004_260)]">
                   Bestandsaufnahme starten
                 </ButtonLink>
+              </div>
+            </div>
+
+            {/* INTERACTIVE MODULE INTEGRATION */}
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* Detail-Architektur & FAQ (New Deep Content) */}
+      <Section>
+        <SectionHeading
+          eyebrow="Tiefeneinblick"
+          title="Technologische Methodik und Qualitätsstandards"
+          lead="Wir verbauen keine Standardlösungen von der Stange, sondern maßschneidern die Sicherheitsarchitektur präzise auf Ihre Bedürfnisse."
+        />
+
+        <div className="mt-12 grid gap-12 lg:grid-cols-2">
+          <div className="prose prose-sm max-w-none text-[oklch(0.32_0.02_260)]">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-4">Integrierte Sicherheitskonzepte (ISK)</h3>
+            <p className="mb-4">
+              Unsere Planungen folgen den strengen Richtlinien moderner integrierter Sicherheitskonzepte. Dies bedeutet, dass wir nicht nur die technischen Komponenten betrachten, sondern auch organisatorische und personelle Faktoren in die Risikoanalyse einbeziehen. Eine Alarmanlage ist nur so effektiv wie das Interventionsprotokoll, das bei einer Auslösung abläuft.
+            </p>
+            <p className="mb-4">
+              <strong>Zertifizierte Komponenten:</strong> Wir setzen ausschließlich auf VdS-anerkannte oder nach DIN EN normierte Produkte. Dies garantiert nicht nur eine verlässliche Funktion unter extremen Bedingungen, sondern wird auch von Versicherern zur Risikominimierung anerkannt und oft vorausgesetzt.
+            </p>
+            <p>
+              <strong>Redundanz und Ausfallsicherheit:</strong> Moderne Systeme müssen auch bei Stromausfall, Sabotageversuchen der Kommunikationswege oder extremen Witterungsbedingungen zuverlässig funktionieren. Notstromakkus, redundante Übertragungswege (z.B. IP und LTE) sowie ständige Selbsttests der Sensorik (Polling) sind fester Bestandteil unserer Anlagenarchitektur.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-8">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-6">Häufig gestellte Fragen (FAQ)</h3>
+
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-bold text-[oklch(0.16_0.02_260)]">1. Macht eine Alarmanlage ohne Wachdienst-Aufschaltung Sinn?</h4>
+                <p className="mt-1 text-sm text-[oklch(0.32_0.02_260)]">Ein lokaler Alarm hat zwar eine abschreckende Wirkung, jedoch bleibt bei Abwesenheit eine professionelle Intervention aus. Wir empfehlen dringend die Aufschaltung auf eine VdS-zertifizierte Notruf- und Serviceleitstelle (NSL), um im Ernstfall garantierte, protokollierte Maßnahmen (Polizei, Wachdienst) einzuleiten.</p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-[oklch(0.16_0.02_260)]">2. Wie aufwendig ist die Nachrüstung in einem Bestandsbau?</h4>
+                <p className="mt-1 text-sm text-[oklch(0.32_0.02_260)]">Dank modernster, hochverschlüsselter Funk-Technologie (z.B. 868 MHz Band mit Rolling-Code) lassen sich bestehende Objekte heute meist ohne aufwendige Kabelverlegung und Schmutz nachrüsten. Die Komponenten fügen sich dezent in das Raumbild ein.</p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-[oklch(0.16_0.02_260)]">3. Sind smarte Alarmanlagen über das Handy hackbar?</h4>
+                <p className="mt-1 text-sm text-[oklch(0.32_0.02_260)]">Systeme aus dem Fachhandel nutzen dedizierte, hochsichere Protokolle und getrennte Netzwerke. Sie sind nicht vergleichbar mit einfachen Smart-Home-Gadgets. App-Zugriffe erfolgen verschlüsselt und können detailliert in ihren Rechten beschnitten werden.</p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-[oklch(0.16_0.02_260)]">4. Was passiert bei einem Stromausfall?</h4>
+                <p className="mt-1 text-sm text-[oklch(0.32_0.02_260)]">Professionelle Anlagen verfügen über Notstromakkus, die das System für mindestens 12 bis 24 Stunden vollständig funktionsfähig halten. Ein Netzausfall wird zudem sofort an die Leitstelle oder Ihr Smartphone gemeldet.</p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-[oklch(0.16_0.02_260)]">5. Werden meine Haustiere Fehlalarme auslösen?</h4>
+                <p className="mt-1 text-sm text-[oklch(0.32_0.02_260)]">Nein. Durch den Einsatz von speziellen, tierimmunen Bewegungsmeldern, die auf Volumen und Bewegungsmuster kalibriert sind, können sich Hunde oder Katzen bis zu einem gewissen Gewicht frei im Objekt bewegen, ohne den Alarm zu triggern.</p>
               </div>
             </div>
           </div>
@@ -213,9 +287,9 @@ export default async function SicherheitstechnikPage() {
         <Alert
           tone="legal"
           title="Verantwortlich für die Nutzung ist die Betreiberin oder der Betreiber der Anlage"
-          className="mt-8"
+          className="mt-8 border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)]"
         >
-          <ul className="space-y-2">
+          <ul className="space-y-2 text-[oklch(0.32_0.02_260)]">
             <li>
               Wer eine Anlage mit Video-, Audio- oder Protokollfunktion betreibt, verantwortet deren
               rechtmäßige Nutzung — also Zweck, Umfang, Speicherdauer, Zugriff und Kennzeichnung.
@@ -243,10 +317,10 @@ export default async function SicherheitstechnikPage() {
             </li>
           </ul>
 
-          <p className="mt-3">
+          <p className="mt-4">
             <Link
               href="/rechtliches/datenschutz"
-              className="font-semibold text-primary hover:underline"
+              className="font-semibold text-[oklch(0.52_0.24_260)] hover:underline"
             >
               Hinweise zum Datenschutz
             </Link>

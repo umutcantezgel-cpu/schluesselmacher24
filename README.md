@@ -43,3 +43,4 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+## New Interactive Modules\n- **Service Budget Calculator**: Added to the Sicherheitstechnik page to estimate project costs based on scope and tier.
