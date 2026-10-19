@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architektur-Ziele
+
+Aktueller Auditor Blueprint generiert am 2026-10-19T19:37:32.253Z. Es wurden 49 Routen analysiert und für eine Content-Erweiterung auf > 800 Wörter sowie die Integration interaktiver Module vorbereitet.
