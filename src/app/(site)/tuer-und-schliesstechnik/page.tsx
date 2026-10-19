@@ -26,6 +26,7 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { TuerAbsicherungRechner } from '@/components/calculator/tuer-absicherung-rechner';
 import { NachweiseListe } from '@/components/vertrauen/nachweise-liste';
+import { ServiceBudgetCalculator } from "@/components/calculator/service-budget-calculator";
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'tuer-und-schliesstechnik';
@@ -81,30 +82,25 @@ const RELATED_AREAS = [
 
 const EXPERT_FAQ = [
   {
-    question: 'Wann reicht ein Zylindertausch und wann muss die gesamte Türtechnik erneuert werden?',
-    answer:
-      'Ein einfacher Zylindertausch reicht oft aus, wenn Sie lediglich die Schließhoheit nach einem Schlüsselverlust oder Mieterwechsel wiederherstellen möchten, vorausgesetzt das Einsteckschloss und der Beschlag sind noch intakt und bieten ausreichend Schutz. Wenn die Tür jedoch veraltet ist, das Schloss hakt, der Beschlag keinen Ziehschutz bietet oder Sie den Einbruchschutz substanziell erhöhen wollen (z.B. auf Widerstandsklasse RC2 oder RC3), muss die Tür als Gesamtsystem betrachtet werden. Oft empfiehlt sich dann die Nachrüstung einer Mehrfachverriegelung oder eines Querriegelschlosses in Kombination mit einem Schutzbeschlag.',
+    question: 'Wie erkenne ich, ob mein Profilzylinder ausreichend geschützt ist?',
+    answer: 'Ein hochwertiger Profilzylinder verfügt über spezifische Sicherheitsmerkmale wie Bohrschutz (gehärtete Stahlstifte im Zylinderkern und -gehäuse), Ziehschutz (oft in Kombination mit einem Schutzbeschlag) und einen komplexen Schlüsselquerschnitt mit Kopierschutz. Ein Blick auf die Prägungen am Zylinder kann Aufschluss geben (z.B. VdS-Klasse oder SKG-Sterne). Wir empfehlen grundsätzlich Zylinder mit einer Sicherungskarte, die das unbefugte Kopieren von Schlüsseln verhindert. Zudem sollte der Zylinder nicht mehr als 3mm über den Türbeschlag hinausragen, um ein Abbrechen zu erschweren.'
   },
   {
-    question: 'Was ist der Unterschied zwischen einem Einsteckschloss und einer Mehrfachverriegelung?',
-    answer:
-      'Ein Einsteckschloss verriegelt die Tür an genau einem Punkt, nämlich in Höhe des Schlosses über den Riegel. Eine Mehrfachverriegelung (oft auch als Stangenschloss bezeichnet) verriegelt die Tür zusätzlich an weiteren Punkten – meist oben und unten – über Schwenkriegel, Bolzen oder Pilzzapfen. Dadurch wird die Kraft bei einem Einbruchsversuch auf den gesamten Türrahmen verteilt, was ein Aufhebeln massiv erschwert und die Sicherheit signifikant erhöht.',
+    question: 'Was ist der Unterschied zwischen einer Gleichschließung und einer Schließanlage?',
+    answer: 'Bei einer Gleichschließung können mehrere Zylinder (z.B. Haustür, Kellertür, Garage) mit demselben Schlüssel bedient werden. Es gibt jedoch keine Hierarchie oder unterschiedliche Berechtigungen. Eine Schließanlage hingegen ist ein komplexes System, bei dem Schlüssel mit verschiedenen Berechtigungen ausgestattet sind. Ein Hauptschlüssel (HS) schließt beispielsweise alle Türen, während ein Gruppenschlüssel (GS) nur Zugang zu einer bestimmten Abteilung gewährt und Einzelschlüssel (ES) nur für spezifische Räume codiert sind. Schließanlagen erfordern eine exakte Planung mittels eines Schließplans.'
   },
   {
-    question: 'Welche Anforderungen gibt es an Schlösser für Flucht- und Rettungswege?',
-    answer:
-      'Für Flucht- und Rettungswege gelten strenge gesetzliche Normen (EN 179 für Notausgänge und EN 1125 für Paniktüren). Das wichtigste Prinzip ist: Eine Tür im Fluchtweg muss sich von innen jederzeit und ohne Schlüssel öffnen lassen, auch wenn sie von außen verriegelt ist. Dies wird durch spezielle Panikschlösser und entsprechende Beschläge (wie Drücker oder Panikstangen) realisiert. Modifikationen an diesen Türen dürfen nur mit zugelassenen Komponenten und fachgerecht erfolgen, um die Zulassung nicht zu verlieren.',
+    question: 'Können elektronische Schließsysteme bei einem Stromausfall weiterhin genutzt werden?',
+    answer: 'Ja, professionelle elektronische und mechatronische Schließsysteme sind für solche Szenarien ausgelegt. Mechatronische Zylinder werden in der Regel durch Batterien im Zylinder selbst oder im Schlüssel (z.B. bei Systemen mit aktiven Transpondern) mit Strom versorgt und arbeiten völlig autark vom Stromnetz. Vernetzte Systeme oder Motorschlösser verfügen über Notstromakkus (USV), die den Betrieb über mehrere Stunden oder Tage aufrechterhalten. Zudem gibt es bei vielen Systemen mechanische Notöffnungsfunktionen, um in jedem Fall Zugang zu gewährleisten.'
   },
   {
-    question: 'Lässt sich jede Haustür mit einem elektronischen Schloss nachrüsten?',
-    answer:
-      'In den meisten Fällen ja. Es gibt elektronische Zylinder, die den mechanischen Profilzylinder exakt ersetzen und ohne Kabelverlegung installiert werden können (Batteriebetrieb). Für vollautomatische Motorschlösser (die die Tür von selbst auf- und zuschließen) ist jedoch eine Stromversorgung im Türblatt erforderlich. Ist diese nicht vorhanden, können motorische Aufsatzantriebe auf den bestehenden Zylinder (mit Not- und Gefahrenfunktion) gesetzt werden. Wir prüfen die Gegebenheiten vor Ort und empfehlen die passende Lösung.',
+    question: 'Welche Anforderungen gelten für Fluchttüren nach DIN EN 179 und DIN EN 1125?',
+    answer: 'Türen in Flucht- und Rettungswegen müssen jederzeit von innen ohne Schlüssel und mit einem einzigen Handgriff (Panikfunktion) zu öffnen sein. DIN EN 179 gilt für Notausgänge, die von Personen genutzt werden, die mit den Fluchtwegen vertraut sind (Bedienung über Türdrücker oder Stoßplatte). DIN EN 1125 gilt für Paniktüren in öffentlichen Gebäuden, wo Personen in Panik geraten könnten (Bedienung über horizontale Betätigungsstangen). Nachträgliche Änderungen, wie der Einbau von Zusatzschlössern oder elektronischen Zutrittskontrollen, dürfen diese Funktionen unter keinen Umständen beeinträchtigen und bedürfen spezieller Systemprüfungen.'
   },
   {
-    question: 'Wie pflege ich meine Schließzylinder und Türschlösser richtig?',
-    answer:
-      'Verwenden Sie für Schließzylinder niemals herkömmliches Öl oder harzende Schmiermittel, da diese den feinen Mechanismus im Inneren verkleben können. Nutzen Sie stattdessen spezielles Pflegespray für Schließzylinder (nicht fettend, z.B. auf Teflon- oder Graphitbasis). Einsteckschlösser und Mehrfachverriegelungen können hingegen an den beweglichen Teilen (Falle, Riegel) sparsam mit einem geeigneten Schmierfett behandelt werden. Schließbleche sollten regelmäßig auf festen Sitz geprüft und justiert werden, damit die Tür leichtgängig ins Schloss fällt und kein unnötiger Druck auf den Schlüssel ausgeübt wird.',
-  },
+    question: 'Was bedeutet die Widerstandsklasse (RC) bei einbruchhemmenden Türen?',
+    answer: 'Die Widerstandsklasse (Resistance Class, kurz RC) nach DIN EN 1627 gibt an, wie lange und gegen welche Werkzeuge eine Tür einem Einbruchsversuch standhält. RC1N bietet nur einen geringen Grundschutz. Für private Wohnungen und Häuser empfiehlt die Polizei mindestens RC2 (Schutz gegen Gelegenheitstäter mit einfachen Werkzeugen wie Schraubendreher oder Keil für mindestens 3 Minuten). RC3 bietet Schutz gegen Gewohnheitstäter mit erweitertem Werkzeug (z.B. Kuhfuß) für 5 Minuten. Die Klassen RC4 bis RC6 sind für Bereiche mit hohem bis extremem Gefährdungspotenzial konzipiert und widerstehen erfahrenen Tätern mit Akku- und Elektrowerkzeugen.'
+  }
 ];
 
 export default async function TuerUndSchliesstechnikPage() {
@@ -164,6 +160,74 @@ export default async function TuerUndSchliesstechnikPage() {
                 Der Zylinder identifiziert den berechtigten Schlüssel. Das Einsteckschloss übersetzt diese Drehbewegung in die Ver- oder Entriegelung. Der Schutzbeschlag schirmt den Zylinder vor mechanischen Angriffen (Ziehen, Abbrechen) ab, und das Schließblech nimmt die Riegelkraft auf und leitet sie in das Mauerwerk ab.
               </p>
 
+              <h2 className="text-2xl font-bold text-foreground mt-12 mb-4 tracking-tight">Tiefgehende architektonische Methodik in der Schließtechnik</h2>
+              <p className="mt-4">
+                Unsere Methodik bei der Konzeption von Schließanlagen und Sicherheitssystemen basiert auf einem ganzheitlichen Ansatz, der mechanische und elektronische Komponenten perfekt aufeinander abstimmt. Die Architektur eines sicheren Gebäudes beginnt an der Peripherie und setzt sich bis in die innersten Sicherheitszonen fort. Dabei analysieren wir nicht nur die offensichtlichen Schwachstellen wie Türen und Fenster, sondern auch strukturelle Integrität, Fluchtwege und die Integration in übergeordnete Gebäudemanagementsysteme. Die Auswahl der richtigen Zylinder, Schlösser und Beschläge erfordert ein tiefes Verständnis der Materialwissenschaften, der Mechanik und der aktuellen Einbruchsmethoden.
+              </p>
+              <p className="mt-4">
+                Ein wesentlicher Bestandteil unserer Methodik ist die Risikobewertung. Wir kategorisieren Gebäude nach verschiedenen Sicherheitsstufen und entwickeln darauf basierend maßgeschneiderte Konzepte. Für Hochsicherheitsbereiche setzen wir auf mechatronische Systeme, die kryptografisch abgesichert sind und physischen Angriffen extremen Widerstand entgegensetzen. Diese Systeme sind so konzipiert, dass sie selbst bei Stromausfall oder Netzwerkunterbrechungen ihre Kernfunktionen beibehalten. Darüber hinaus legen wir großen Wert auf die Wartbarkeit und Skalierbarkeit unserer Anlagen. Eine Schließanlage muss mit den Anforderungen des Nutzers wachsen können, ohne dass grundlegende Strukturänderungen notwendig werden.
+              </p>
+              <p className="mt-4">
+                Ein weiterer entscheidender Faktor ist die Benutzerfreundlichkeit. Die komplexeste Sicherheitstechnik nützt wenig, wenn sie im Alltag als hinderlich empfunden wird oder durch Fehlbedienung ihre Wirkung verliert. Daher integrieren wir intuitive Bedienkonzepte und barrierefreie Lösungen, die höchsten Sicherheitsstandards entsprechen. Dazu gehören beispielsweise elektronische Zylinder, die per Smartphone oder Transponder bedient werden können, sowie Panikschlösser, die im Notfall eine schnelle und sichere Evakuierung gewährleisten, ohne die äußere Sicherheit zu kompromittieren.
+              </p>
+
+              <h3 className="text-xl font-bold text-foreground mt-8 mb-4 tracking-tight">Vergleichsmatrix: Mechanische vs. Mechatronische Zylinder</h3>
+              <div className="overflow-x-auto mt-6">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-border text-foreground">
+                      <th className="py-4 px-6 font-semibold">Eigenschaft</th>
+                      <th className="py-4 px-6 font-semibold">Mechanische Zylinder</th>
+                      <th className="py-4 px-6 font-semibold">Mechatronische Zylinder</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm text-foreground-muted">
+                    <tr className="border-b border-border">
+                      <td className="py-4 px-6 font-medium text-foreground">Sicherheitsniveau</td>
+                      <td className="py-4 px-6">Hoch (je nach RC-Klasse und Bohrschutz)</td>
+                      <td className="py-4 px-6">Sehr hoch (kombiniert physischen Widerstand mit elektronischer Authentifizierung)</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-4 px-6 font-medium text-foreground">Flexibilität</td>
+                      <td className="py-4 px-6">Gering (Änderungen erfordern oft den Austausch von Zylindern/Schlüsseln)</td>
+                      <td className="py-4 px-6">Sehr hoch (Berechtigungen können in Echtzeit entzogen oder erteilt werden)</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-4 px-6 font-medium text-foreground">Protokollierung</td>
+                      <td className="py-4 px-6">Nicht möglich</td>
+                      <td className="py-4 px-6">Umfassend (Wer, wann, wo)</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-4 px-6 font-medium text-foreground">Schlüsselverlust</td>
+                      <td className="py-4 px-6">Hohes Risiko (kostenintensiver Austausch der Anlage oft notwendig)</td>
+                      <td className="py-4 px-6">Geringes Risiko (Medium wird einfach im System gesperrt)</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-4 px-6 font-medium text-foreground">Kosten (Initial)</td>
+                      <td className="py-4 px-6">Geringer bis mittel</td>
+                      <td className="py-4 px-6">Höher (Elektronik und Software-Infrastruktur)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 className="text-xl font-bold text-foreground mt-8 mb-4 tracking-tight">Zertifizierungen und Normen im Detail</h3>
+              <p className="mt-4">
+                Unsere Arbeit richtet sich strikt nach den relevanten DIN- und EN-Normen, um eine nachvollziehbare und überprüfbare Qualität zu gewährleisten. Die DIN EN 1627 beispielsweise definiert die Anforderungen und Klassifizierungen für einbruchhemmende Türen, Fenster und Abschlüsse. Wir verbauen standardmäßig Komponenten, die mindestens der Widerstandsklasse RC2 entsprechen, was einen soliden Grundschutz gegen Gelegenheitstäter bietet. Für gewerbliche Objekte oder bei erhöhtem Gefährdungspotenzial empfehlen wir die Klassen RC3 bis RC6, die auch gezielten Angriffen mit schwerem Werkzeug standhalten.
+              </p>
+              <p className="mt-4">
+                Darüber hinaus sind die Vorgaben für Brandschutz und Fluchtwege von essenzieller Bedeutung. Die DIN EN 179 regelt Notausgangsverschlüsse mit Drückern oder Stoßplatten, während die DIN EN 1125 Paniktürverschlüsse mit horizontaler Betätigungsstange für Gebäude mit öffentlichem Publikumsverkehr spezifiziert. Jede Modifikation an solchen Türen, wie der Einbau eines Motorschlosses oder eines elektronischen Zylinders, muss zwingend mit der bauaufsichtlichen Zulassung der Tür übereinstimmen. Ein Verstoß hiergegen führt nicht nur zum Verlust des Versicherungsschutzes, sondern kann im Schadensfall auch strafrechtliche Konsequenzen haben. Daher dokumentieren wir alle Änderungen minutiös und verwenden ausschließlich zertifizierte und zugelassene Bauteile.
+              </p>
+
+              <h3 className="text-xl font-bold text-foreground mt-8 mb-4 tracking-tight">Wartung und Lebenszyklusmanagement</h3>
+              <p className="mt-4">
+                Eine Schließanlage ist kein statisches Gebilde, sondern bedarf regelmäßiger Pflege und Wartung, um ihre Funktion und Sicherheit über Jahre hinweg zu gewährleisten. Mechanische Bauteile unterliegen einem natürlichen Verschleiß, der durch Umwelteinflüsse, unsachgemäße Bedienung oder Vandalismus beschleunigt werden kann. Wir bieten umfassende Wartungsverträge an, die eine regelmäßige Inspektion, Reinigung und Schmierung der relevanten Komponenten umfassen. Dabei prüfen wir auch die korrekte Funktion von Türschließern, Mehrfachverriegelungen und elektronischen Komponenten.
+              </p>
+              <p className="mt-4">
+                Besonderes Augenmerk legen wir auf das Lebenszyklusmanagement. Dies beinhaltet die rechtzeitige Identifikation von veralteten oder nicht mehr unterstützten Systemen und die Planung von Migrationsstrategien. Gerade im Bereich der mechatronischen Anlagen ist es wichtig, Software-Updates und Hardware-Upgrades proaktiv zu planen, um Sicherheitslücken zu schließen und die Kompatibilität mit neuen Technologien sicherzustellen. Unser Ziel ist es, den Wert Ihrer Investition langfristig zu erhalten und ungeplante Ausfallzeiten zu minimieren. Durch eine vorausschauende Planung und regelmäßige Wartung können wir die Lebensdauer Ihrer Schließanlage signifikant verlängern und die Betriebskosten optimieren.
+              </p>
+
+
               <ul className="grid gap-4 mt-6">
                 {[
                   { title: 'Widerstandsklassen (RC)', desc: 'Wir orientieren uns bei der Konzeption an den DIN EN 1627 Normen. Für den privaten Bereich empfehlen wir mindestens RC2, bei erhöhtem Schutzbedarf RC3.' },
@@ -207,6 +271,7 @@ export default async function TuerUndSchliesstechnikPage() {
                 note: 'Hochauflösendes Detailfoto zur Verdeutlichung der mechanischen Präzision.',
               }}
             />
+            <ServiceBudgetCalculator />
             <TuerAbsicherungRechner
               werte={richtwerte.tuerAbsicherung}
               anfrageHref={`/service-und-termin/anfrage?thema=${ROUTE}`}

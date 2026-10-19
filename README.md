@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Architecture State
+Interactive Modules:
+- Service Budget Calculator (src/components/calculator/service-budget-calculator.tsx) added to src/app/(site)/tuer-und-schliesstechnik/page.tsx.

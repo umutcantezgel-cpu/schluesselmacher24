@@ -1,0 +1,11 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_001",
+      "target_existing_route": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_component_file": "src/components/calculator/service-budget-calculator.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "description": "Add service budget calculator"
+    }
+  ]
+}
