@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2024-05-24T12:00:00Z",
+  "total_existing_routes": 61,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Institutionelle Leistungsübersicht und Systemarchitektur",
+        "Methodischer Transformationsprozess in vier auditierbaren Phasen",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erläuterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "src/components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "src/actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": ["Organization", "WebSite", "FAQPage"],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 900,
+      "content_expansion_topics": [
+        "Technologische Evolution der Wegfahrsperre und Transponder-Generationen",
+        "Präzisionsfräsen nach Herstellervorgaben",
+        "FAQ zu Programmierung und Rohlingen"
+      ],
+      "interactive_module": {
+        "type": "FILTER",
+        "component_name": "KeyCompatibilityFilter",
+        "target_file": "src/components/autoschluessel/key-compatibility-filter.tsx",
+        "action_file": "src/actions/check-compatibility.ts"
+      },
+      "signature_interaction": "MAGNETIC_BUTTON_EFFECT",
+      "schema_entities": ["Service", "FAQPage"],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Sicherheitsprotokolle bei der Code-Übermittlung",
+        "Materialkunde und Fräspräzision bei Code-Schlüsseln",
+        "FAQ zu Schließungscodes und Lieferzeiten"
+      ],
+      "interactive_module": {
+        "type": "VISUALIZER",
+        "component_name": "CodeLineVisualizer",
+        "target_file": "src/components/schluessel-nach-code/code-line-visualizer.tsx",
+        "action_file": "src/actions/verify-code-format.ts"
+      },
+      "signature_interaction": "KINETIC_TYPOGRAPHY",
+      "schema_entities": ["Product", "FAQPage"],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 920,
+      "content_expansion_topics": [
+        "Einbruchhemmung und Zylinderklassen im Detail",
+        "Vorteile der Gleichschließung im Privat- und Gewerbebereich",
+        "FAQ zu Nachbestellungen und Sicherungskarten"
+      ],
+      "interactive_module": {
+        "type": "CONFIGURATOR",
+        "component_name": "CylinderSystemConfigurator",
+        "target_file": "src/components/gleichschliessende-zylinder/cylinder-system-configurator.tsx",
+        "action_file": "src/actions/calculate-cylinder-system.ts"
+      },
+      "signature_interaction": "3D_CYLINDER_ROTATE",
+      "schema_entities": ["Product", "FAQPage"],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Hierarchische Zutrittskontrolle: Z-, HS- und GHS-Anlagen",
+        "Planungsmethodik für komplexe Gebäudestrukturen",
+        "FAQ zu Schließplänen und Anlagenerweiterungen"
+      ],
+      "interactive_module": {
+        "type": "PLANNER",
+        "component_name": "MasterKeySystemPlanner",
+        "target_file": "src/components/schliessanlagen/master-key-system-planner.tsx",
+        "action_file": "src/actions/validate-hierarchy.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_MATRIX",
+      "schema_entities": ["Service", "FAQPage"],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 900,
+      "content_expansion_topics": [
+        "Verschlüsselungsstandards und digitale Schlüsselverwaltung",
+        "Integration in bestehende Smart-Building-Architekturen",
+        "FAQ zu Batterielaufzeiten und Notöffnungen"
+      ],
+      "interactive_module": {
+        "type": "SIMULATOR",
+        "component_name": "AccessControlSimulator",
+        "target_file": "src/components/elektronische-zutrittsloesungen/access-control-simulator.tsx",
+        "action_file": "src/actions/simulate-access.ts"
+      },
+      "signature_interaction": "GLOWING_NFC_WAVE",
+      "schema_entities": ["Service", "FAQPage"],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 880,
+      "content_expansion_topics": [
+        "Mechanische Widerstandsklassen und Türblatt-Verstärkung",
+        "Mehrfachverriegelungen und Schutzbeschläge",
+        "FAQ zu Nachrüstungen und DIN-Normen"
+      ],
+      "interactive_module": {
+        "type": "ANALYZER",
+        "component_name": "DoorSecurityAnalyzer",
+        "target_file": "src/components/tuer-und-schliesstechnik/door-security-analyzer.tsx",
+        "action_file": "src/actions/analyze-door-security.ts"
+      },
+      "signature_interaction": "DOOR_CROSS_SECTION_REVEAL",
+      "schema_entities": ["Service", "FAQPage"],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 910,
+      "content_expansion_topics": [
+        "Ganzheitliche Sicherheitskonzepte für Wohn- und Gewerbeobjekte",
+        "Alarmsysteme und Videoüberwachungstechnologien",
+        "FAQ zu KFW-Förderungen und Aufschaltungen"
+      ],
+      "interactive_module": {
+        "type": "AUDIT",
+        "component_name": "HomeSecurityAudit",
+        "target_file": "src/components/sicherheitstechnik/home-security-audit.tsx",
+        "action_file": "src/actions/generate-security-score.ts"
+      },
+      "signature_interaction": "RADAR_SCAN_ANIMATION",
+      "schema_entities": ["Service", "FAQPage"],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Unser Serviceversprechen und Reaktionszeiten",
+        "Transparente Preisgestaltung und Anfahrtskosten",
+        "FAQ zu Notdienst und Zahlungsabwicklung"
+      ],
+      "interactive_module": {
+        "type": "CALENDAR",
+        "component_name": "DynamicBookingCalendar",
+        "target_file": "src/components/service-und-termin/dynamic-booking-calendar.tsx",
+        "action_file": "src/actions/fetch-availability.ts"
+      },
+      "signature_interaction": "FLUID_TIME_SLOT_SELECTION",
+      "schema_entities": ["Service", "FAQPage"],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 820,
+      "content_expansion_topics": [
+        "Fachwissen kompakt: Einbrüche verhindern",
+        "Pflege und Wartung von Schließzylindern",
+        "FAQ zur Suchfunktion und Beitragsaktualität"
+      ],
+      "interactive_module": {
+        "type": "FINDER",
+        "component_name": "InteractiveGuideFinder",
+        "target_file": "src/components/ratgeber/interactive-guide-finder.tsx",
+        "action_file": "src/actions/search-guides.ts"
+      },
+      "signature_interaction": "FILTER_GRID_SHUFFLE",
+      "schema_entities": ["CollectionPage", "FAQPage"],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
