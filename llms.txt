@@ -1,0 +1,6 @@
+# SCHLÜSSELMACHER24 Architecture Goals
+- Next.js 16+ App Router
+- React 19.2+ Server Components & Actions
+- Tailwind CSS v4 (OKLCH Light Mode)
+- Strict TypeScript 5.5+
+- Zero New Routes (Audit & Transformation Phase)
