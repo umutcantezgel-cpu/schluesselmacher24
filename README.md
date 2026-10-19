@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Updates
+For the latest architectural blueprint and matrices, refer to `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`.
