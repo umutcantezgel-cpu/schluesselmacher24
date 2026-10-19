@@ -1,0 +1,53 @@
+# Architektur-Matrix (Ist-/Soll-Zustand)
+
+| Route | Status | Wörter (Ist) | Wörter (Soll) | Interaktives Modul |
+|---|---|---|---|---|
+| /(payload)/admin/[[...segments]] | PENDING | 69 | 950 | InteractiveWidget1 |
+| /artikel/[slug] | PENDING | 545 | 1345 | InteractiveWidget2 |
+| /artikel | PENDING | 400 | 1200 | InteractiveWidget3 |
+| /autoschluessel/anfrage | PENDING | 319 | 1119 | AutoKeyConfigurator |
+| /autoschluessel/fahrzeugoeffnung | PENDING | 177 | 977 | AutoKeyConfigurator |
+| /autoschluessel/funkschluessel | PENDING | 163 | 963 | AutoKeyConfigurator |
+| /autoschluessel/kopieren | PENDING | 196 | 996 | AutoKeyConfigurator |
+| /autoschluessel/marken/[make]/[model] | PENDING | 725 | 1525 | AutoKeyConfigurator |
+| /autoschluessel/marken/[make] | PENDING | 513 | 1313 | AutoKeyConfigurator |
+| /autoschluessel/marken | PENDING | 404 | 1204 | AutoKeyConfigurator |
+| /autoschluessel/nachmachen | PENDING | 99 | 950 | AutoKeyConfigurator |
+| /autoschluessel | PENDING | 1275 | 2075 | AutoKeyConfigurator |
+| /autoschluessel/programmieren | PENDING | 199 | 999 | AutoKeyConfigurator |
+| /autoschluessel/schluesselbart-fraesen | PENDING | 178 | 978 | AutoKeyConfigurator |
+| /autoschluessel/smart-key | PENDING | 228 | 1028 | AutoKeyConfigurator |
+| /bestellung/[id] | PENDING | 831 | 1631 | InteractiveWidget16 |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING | 208 | 1008 | InteractiveWidget17 |
+| /elektronische-zutrittsloesungen | PENDING | 1676 | 2476 | InteractiveWidget18 |
+| /gleichschliessende-zylinder/konfigurator | PENDING | 163 | 963 | InteractiveWidget19 |
+| /gleichschliessende-zylinder | PENDING | 1132 | 1932 | InteractiveWidget20 |
+| /kasse | PENDING | 137 | 950 | InteractiveWidget21 |
+| / | PENDING | 432 | 1232 | InteractiveWidget22 |
+| /ratgeber/[slug] | PENDING | 210 | 1010 | InteractiveWidget23 |
+| /ratgeber | PENDING | 116 | 950 | InteractiveWidget24 |
+| /rechtliches/agb | PENDING | 371 | 1171 | InteractiveWidget25 |
+| /rechtliches/cookie-einstellungen | PENDING | 188 | 988 | InteractiveWidget26 |
+| /rechtliches/datenschutz | PENDING | 649 | 1449 | InteractiveWidget27 |
+| /rechtliches/impressum | PENDING | 213 | 1013 | InteractiveWidget28 |
+| /rechtliches/versand-und-zahlung | PENDING | 328 | 1128 | InteractiveWidget29 |
+| /rechtliches/widerruf | PENDING | 327 | 1127 | InteractiveWidget30 |
+| /schliessanlagen/konfigurator | PENDING | 232 | 1032 | InteractiveWidget31 |
+| /schliessanlagen | PENDING | 1273 | 2073 | InteractiveWidget32 |
+| /schluessel-nach-code/[slug] | PENDING | 438 | 1238 | InteractiveWidget33 |
+| /schluessel-nach-code | PENDING | 275 | 1075 | InteractiveWidget34 |
+| /schluessel-nach-vorlage/anfrage | PENDING | 111 | 950 | InteractiveWidget35 |
+| /schluessel-nach-vorlage | PENDING | 1112 | 1912 | InteractiveWidget36 |
+| /service-und-termin/anfrage | PENDING | 76 | 950 | InteractiveWidget37 |
+| /service-und-termin/kontakt | PENDING | 204 | 1004 | InteractiveWidget38 |
+| /service-und-termin | PENDING | 1155 | 1955 | InteractiveWidget39 |
+| /service-und-termin/terminstatus | PENDING | 47 | 950 | InteractiveWidget40 |
+| /service-und-termin/vor-ort | PENDING | 409 | 1209 | InteractiveWidget41 |
+| /sicherheitstechnik/[slug] | PENDING | 360 | 1160 | InteractiveWidget42 |
+| /sicherheitstechnik | PENDING | 497 | 1297 | InteractiveWidget43 |
+| /sicherheitstechnik/sicherheitscheck | PENDING | 164 | 964 | InteractiveWidget44 |
+| /standorte/[city] | PENDING | 203 | 1003 | InteractiveWidget45 |
+| /standorte | PENDING | 108 | 950 | InteractiveWidget46 |
+| /tuer-und-schliesstechnik/[slug] | PENDING | 252 | 1052 | InteractiveWidget47 |
+| /tuer-und-schliesstechnik | PENDING | 1155 | 1955 | InteractiveWidget48 |
+| /warenkorb | PENDING | 155 | 955 | InteractiveWidget49 |
