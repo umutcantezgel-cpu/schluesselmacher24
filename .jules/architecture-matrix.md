@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| URL | Source File | Target Word Count | Interactive Module | CWV / Schema Status |
+|-----|-------------|-------------------|--------------------|---------------------|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 950 | GeneralContactForm | Pending |
+| / | src/app/(site)/page.tsx | 950 | GeneralContactForm | Pending |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 950 | GeneralContactForm | Pending |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 950 | GeneralContactForm | Pending |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 950 | GeneralContactForm | Pending |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 950 | GeneralContactForm | Pending |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 950 | GeneralContactForm | Pending |
+| /kasse | src/app/(site)/kasse/page.tsx | 950 | GeneralContactForm | Pending |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 950 | GeneralContactForm | Pending |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 950 | GeneralContactForm | Pending |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 950 | SecurityChecklist | Pending |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 950 | SecurityChecklist | Pending |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 950 | SecurityChecklist | Pending |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 950 | GeneralContactForm | Pending |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 950 | GeneralContactForm | Pending |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 950 | GeneralContactForm | Pending |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 950 | GeneralContactForm | Pending |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 950 | GeneralContactForm | Pending |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 950 | GeneralContactForm | Pending |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 950 | GeneralContactForm | Pending |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 950 | LockSystemConfigurator | Pending |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 950 | LockSystemConfigurator | Pending |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 950 | GeneralContactForm | Pending |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 950 | GeneralContactForm | Pending |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 950 | GeneralContactForm | Pending |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 950 | GeneralContactForm | Pending |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 950 | GeneralContactForm | Pending |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 950 | GeneralContactForm | Pending |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 950 | GeneralContactForm | Pending |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 950 | GeneralContactForm | Pending |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 950 | GeneralContactForm | Pending |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 950 | GeneralContactForm | Pending |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 950 | GeneralContactForm | Pending |
+| /artikel | src/app/(site)/artikel/page.tsx | 950 | GeneralContactForm | Pending |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 950 | GeneralContactForm | Pending |
+| /standorte | src/app/(site)/standorte/page.tsx | 950 | GeneralContactForm | Pending |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 950 | GeneralContactForm | Pending |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 950 | CarKeyCostCalculator | Pending |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 950 | CarKeyCostCalculator | Pending |
