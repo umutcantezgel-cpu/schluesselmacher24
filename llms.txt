@@ -1,0 +1,11 @@
+# System Architecture Goals
+
+## Core Architecture
+- Next.js 16+ App Router
+- React 19.2+ Server Components & Actions
+- TypeScript 5.5+ Strict
+- Tailwind CSS v4.x (OKLCH Color Space)
+
+## Transformation Status
+A complete architecture audit has been generated, identifying current routes and targeting them for content expansion (> 800 words) and interactive modules.
+See `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for full details.
