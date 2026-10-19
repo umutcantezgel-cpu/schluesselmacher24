@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Architecture Matrix State
+The architecture matrix has been generated in `.jules/architecture-matrix.md`. It tracks all routes and their target word count, signature interactions, and content depth improvements.
