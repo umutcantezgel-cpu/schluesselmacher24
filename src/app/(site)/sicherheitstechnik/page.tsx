@@ -14,6 +14,7 @@ import {
 import { getPageContent, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
@@ -158,6 +159,71 @@ export default async function SicherheitstechnikPage() {
               </div>
             </div>
           </div>
+        </div>
+      </Section>
+
+
+      {/* Fachliche Erweiterung & Interaktives Modul */}
+      <Section id="umfassender-einbruchschutz" tight className="py-16 md:py-24 lg:py-32 bg-[oklch(0.988_0.002_260)]">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-start">
+
+          <div className="space-y-8">
+            <SectionHeading
+              eyebrow="Tiefgreifende Sicherheit"
+              title="Modernster Einbruchschutz und smarte Überwachungssysteme"
+              lead="In einer zunehmend komplexen Welt reicht einfache Mechanik oft nicht mehr aus. Ein ganzheitliches Sicherheitskonzept kombiniert physische Barrieren mit intelligenter Sensorik und proaktiver Alarmierung."
+            />
+
+            <div className="prose prose-sm text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+              <p>
+                Die Architektur moderner Sicherheitssysteme basiert auf dem Prinzip der konzentrischen Ringe. Der äußere Ring (Perimeterschutz) schreckt ab und meldet Annäherungen. Der mittlere Ring (Gebäudehülle) leistet massiven physischen Widerstand durch einbruchhemmende Türen, Fenster und Sicherheitsbeschläge. Der innere Ring (Raumüberwachung) detektiert Bewegungen und sichert sensible Bereiche wie Serverräume oder Wertgelasse.
+              </p>
+
+              <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Mechanische Grundsicherung: Das Fundament</h3>
+              <p>
+                Ohne eine solide Mechanik ist jede elektronische Anlage wertlos. Wir setzen auf Hochsicherheitszylinder mit Kopierschutz, Kernziehschutzbeschläge und massive Mehrfachverriegelungen. Diese Komponenten verlängern die Zeit, die ein Täter zum Eindringen benötigt, signifikant. Die sogenannte &quot;Widerstandszeit&quot; ist die kritischste Metrik im Einbruchschutz.
+              </p>
+
+              <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Elektronische Detektion und Alarmierung</h3>
+              <p>
+                Moderne Gefahrenmeldeanlagen (GMA) arbeiten mit einer Vielzahl von Sensoren: Glasbruchmelder, Magnetkontakte an Türen und Fenstern, sowie Dual-Bewegungsmelder (Infrarot und Mikrowelle), die Fehlalarme minimieren. Im Ernstfall wird nicht nur eine lokale Sirene aktiviert, sondern über verschlüsselte IP/GSM-Pfade eine Notruf- und Serviceleitstelle (NSL) informiert, die sofortige Interventionsmaßnahmen einleitet.
+              </p>
+
+              <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Intelligente Videoüberwachung (CCTV)</h3>
+              <p>
+                Kamerasysteme dienen heute nicht mehr nur der Aufzeichnung nach einem Vorfall. Durch den Einsatz von KI-basierter Videoanalytik können Personen von Tieren oder Fahrzeugen unterschieden werden. Virtuelle Stolperdrähte (&quot;Tripwires&quot;) lösen Alarme aus, bevor der Täter überhaupt das Gebäude erreicht. Wir integrieren hochauflösende IP-Kameras mit Starlight-Technologie für farbige Bilder auch bei minimaler Resthelligkeit.
+              </p>
+
+              <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Häufig gestellte Fragen (FAQ)</h3>
+              <dl className="space-y-4">
+                <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-4">
+                  <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Wie oft muss eine Alarmanlage gewartet werden?</dt>
+                  <dd className="mt-2">Nach DIN VDE 0833 ist eine jährliche Wartung durch eine Fachfirma vorgeschrieben, bei gewerblichen Anlagen oft vierteljährlich, um die volle Funktionalität der Sensoren und Akkus zu gewährleisten.</dd>
+                </div>
+                <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-4">
+                  <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Können Haustiere Fehlalarme auslösen?</dt>
+                  <dd className="mt-2">Wir verwenden spezielle &quot;Pet-immune&quot; Bewegungsmelder, die Tiere bis zu einer bestimmten Größe und Gewichtsklasse (z.B. bis 30kg) ignorieren, aber auf menschliche Bewegungsmuster reagieren.</dd>
+                </div>
+                <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-4">
+                  <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Ist eine Videoüberwachung rechtlich immer erlaubt?</dt>
+                  <dd className="mt-2">Nein. Es gilt der Grundsatz der Verhältnismäßigkeit und die DSGVO. Öffentlicher Grund (Gehwege, Straßen) und Nachbargrundstücke dürfen nicht erfasst werden. Entsprechende Bereiche müssen in der Software der Kamera &quot;maskiert&quot; (geschwärzt) werden.</dd>
+                </div>
+                <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-4">
+                  <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Was bedeutet &quot;Aufschaltung&quot;?</dt>
+                  <dd className="mt-2">Die Aufschaltung bezeichnet die permanente Kommunikationsverbindung zwischen Ihrer Einbruchmeldeanlage und einer 24/7 besetzten Notruf- und Serviceleitstelle (NSL), die im Alarmfall sofort reagiert.</dd>
+                </div>
+                <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-4">
+                  <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Gibt es Förderungen für Einbruchschutz?</dt>
+                  <dd className="mt-2">Ja, die KfW-Bank fördert einbruchhemmende Maßnahmen (Zuschuss 455-E). Wichtig ist, dass der Antrag vor Beginn der Maßnahmen gestellt wird und die Ausführung durch einen Fachbetrieb erfolgt.</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <div className="sticky top-24">
+            <ServiceBudgetCalculator />
+          </div>
+
         </div>
       </Section>
 
