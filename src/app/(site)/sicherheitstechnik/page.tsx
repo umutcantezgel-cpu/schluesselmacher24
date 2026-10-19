@@ -12,13 +12,13 @@ import {
 } from 'lucide-react';
 
 import { getPageContent, getServicePages } from '@/lib/data';
-import { PROCESS_LABELS } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
-import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { SecurityAuditScanner } from '@/components/sicherheitstechnik/security-audit-scanner';
+
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'sicherheitstechnik';
@@ -46,40 +46,19 @@ const SERVICE_ICONS: Record<string, typeof ShieldCheck> = {
 };
 
 /** Der Grundsatz, nach dem wir die Bereiche zusammenstellen. */
-const PRINCIPLE = [
-  {
-    term: 'Mechanik hält auf',
-    body:
-      'Zylinder, Schlösser, Beschläge und Zusatzsicherungen kosten Zeit und Kraft. Ohne diesen '
-      + 'Grundschutz meldet jede Elektronik nur, dass bereits etwas passiert ist.',
-    href: '/tuer-und-schliesstechnik',
-    linkLabel: 'Zur Tür- und Schließtechnik',
-  },
-  {
-    term: 'Meldetechnik erkennt',
-    body:
-      'Melder, Kontakte und Kameras erkennen, dass an einer Stelle etwas geschieht — an der Tür, '
-      + 'am Fenster, an der Scheibe oder im Raum.',
-    href: `/${ROUTE}/alarmtechnik`,
-    linkLabel: 'Zur Alarmtechnik',
-  },
-  {
-    term: 'Alarmierung informiert',
-    body:
-      'Signalgeber und Benachrichtigungen bringen die Information dorthin, wo jemand darauf '
-      + 'reagieren kann. Der Weg wird vorab festgelegt.',
-    href: `/${ROUTE}/panik-und-alarmtaster`,
-    linkLabel: 'Zu Panik- und Alarmtastern',
-  },
-];
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
-export default async function SicherheitstechnikPage() {
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
   ]);
 
-  const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
   return (
     <>
@@ -106,56 +85,104 @@ export default async function SicherheitstechnikPage() {
       />
 
       {/* Grundsatz */}
+
       <Section tight>
-        <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-12">
-          <div>
-            <SectionHeading
-              eyebrow="Einordnung"
-              title="Mechanik hält auf, Meldetechnik erkennt, Alarmierung informiert"
-              lead={page?.intro}
-            />
+        <div className="space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed" data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
+          <h2 className="text-2xl font-bold text-[oklch(0.16_0.02_260)]">Fundierte Sicherheitsarchitektur für moderne Objekte</h2>
+          <p>
+            Sicherheitstechnik im 21. Jahrhundert ist weit mehr als die bloße Aneinanderreihung von Riegeln und Kameras.
+            Es ist ein komplexes Zusammenspiel aus physischen Barrieren, intelligenten Sensoren und vernetzten Meldesystemen.
+            Jeder Aspekt der Gebäudeinfrastruktur muss als integraler Bestandteil eines ganzheitlichen Sicherheitskonzepts betrachtet werden.
+            Die Zeiten, in denen eine einfache Schließanlage oder eine isolierte Alarmanlage ausreichte, sind endgültig vorbei.
+            Moderne Gefährdungslagen erfordern adaptive, mehrschichtige Verteidigungsstrategien, die potenzielle Angreifer nicht nur abschrecken,
+            sondern jeden Versuch des unbefugten Eindringens in Echtzeit detektieren, verifizieren und eskalieren.
+            Um eine echte Sicherheit zu gewährleisten, müssen wir weg von Insellösungen hin zu integrierten Systemen, die miteinander kommunizieren.
+            Die Verbindung von Mechanik, Mechatronik und reiner Elektronik bildet das Rückgrat eines jeden ernstzunehmenden Sicherheitsdispositivs.
+            Dies beginnt bereits bei der architektonischen Planung, bei der Fluchtwege, Brandschutzanforderungen und Einbruchschutz in Einklang gebracht werden müssen.
+            Eine fehlerhafte Planung in dieser frühen Phase führt später zu enormen Kosten für Nachrüstungen und Kompromissen bei der Sicherheit.
+          </p>
+          <p>
+            Der Grundpfeiler jeder robusten Sicherheitsarchitektur bleibt die physische Mechanik.
+            Mechanische Schließsysteme, Sicherheitstüren der entsprechenden Widerstandsklassen (RC3 bis RC6) und
+            gepanzerte Fensterfronten bilden die erste Verteidigungslinie. Ihr primäres Ziel ist die Zeiterhöhung –
+            die Maximierung der Dauer, die ein Täter benötigt, um die Barriere zu überwinden. In der Kriminologie
+            und der Sicherheitstechnik spricht man hier vom &quot;Täter-Zeit-Diagramm&quot;. Je länger der Widerstand standhält,
+            desto höher ist die Wahrscheinlichkeit eines Abbruchs der Tat. Moderne Schließzylinder verfügen heute über
+            Bohr-, Zieh- und Nachschließschutz sowie komplexe Profilierungen, die unbefugtes Kopieren unmöglich machen.
+            Doch Mechanik allein ist stumm. Sie leistet Widerstand, meldet aber keinen Angriff. Genau hier setzt die elektronische Überwachung an,
+            um den Täter nicht nur aufzuhalten, sondern gleichzeitig die Interventionskräfte zu alarmieren.
+            Der mechanische Grundschutz muss zwingend nach DIN EN 1627 zertifiziert sein, um von Versicherern anerkannt zu werden.
+            Zusatzschlösser, Panzerriegel und Scharnierseitensicherungen ergänzen schwache Türen, können aber eine minderwertige Grundsubstanz nicht vollständig heilen.
+          </p>
 
-            <dl className="mt-6 space-y-4">
-              {PRINCIPLE.map((item) => (
-                <div key={item.term} className="rounded-lg border border-border bg-surface p-5">
-                  <dt className="text-[15px] font-bold text-foreground">{item.term}</dt>
-                  <dd className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                    {item.body}
-                    <Link
-                      href={item.href}
-                      className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-                    >
-                      {item.linkLabel}
-                      <ArrowRight size={15} aria-hidden />
-                    </Link>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          <SecurityAuditScanner />
 
-          <div className="space-y-6">
-            <ImagePlaceholder
-              slot={{
-                motif: 'Objektfoto: Hauseingang mit Außenkamera, Türkontakt und Sicherheitsbeschlag',
-                ratio: '4/3',
-                note: 'Eigene Aufnahme aus einem abgeschlossenen Projekt. Kein Stockfoto.',
-              }}
-            />
-
-            <div className="rounded-lg border border-border bg-surface-muted p-5">
-              <p className="text-[13px] font-bold uppercase tracking-wider text-foreground-subtle">
-                Ablauf in diesem Bereich
-              </p>
-              <p className="mt-2 text-[15px] font-bold text-foreground">{process.label}</p>
-              <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
-                {process.hint}
-              </p>
-              <div className="mt-5">
-                <ButtonLink href={`/${ROUTE}/sicherheitscheck`} variant="outline">
-                  Bestandsaufnahme starten
-                </ButtonLink>
-              </div>
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Elektronische Zutrittskontrolle als dynamischer Filter</h3>
+          <p>
+            Aufbauend auf der Mechanik ermöglicht die elektronische Zutrittskontrolle (EZK) eine granulare,
+            zeit- und raumbezogene Steuerung der Personenströme. Anders als mechanische Schlüssel, die bei Verlust
+            einen kostspieligen Austausch der gesamten Anlage erzwingen, lassen sich RFID-Transponder, Smart Cards
+            oder mobile Credentials via Smartphone in Millisekunden sperren. Ein modernes Zutrittskontrollsystem
+            fungiert als das zentrale Nervensystem des Gebäudes. Es protokolliert nicht nur Zutrittsereignisse,
+            sondern integriert sich nahtlos in Personalzeiterfassung, Aufzugssteuerung und Gebäudeautomation.
+            Die Implementierung kryptografisch abgesicherter Kommunikationsprotokolle (wie OSDP) zwischen Leser und
+            Controller ist dabei obligatorisch, um Man-in-the-Middle-Angriffe (z.B. Skimming) effektiv zu unterbinden.
+            Darüber hinaus ermöglicht eine vernetzte EZK die Umsetzung komplexer Logiken wie Anti-Passback (um die Weitergabe von Ausweisen zu verhindern),
+            Vier-Augen-Prinzipien für Hochsicherheitsbereiche und automatische Schleusensteuerungen.
+            Die Integration in Active Directory oder andere Identity-Provider automatisiert das Onboarding und Offboarding von Mitarbeitern
+            und minimiert so administrative Sicherheitslücken.
+          </p>
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Gefahrenmeldetechnik: Das wachsame Auge</h3>
+          <p>
+            Die dritte Säule bildet die Einbruchmeldeanlage (EMA), oft synonym als Alarmanlage bezeichnet.
+            Sie übernimmt die Aufgabe der permanenten Raum- und Außenhautüberwachung. Moderne EMA-Systeme nutzen
+            eine Fusion verschiedener Sensortechnologien (Dual-Melder mit Passiv-Infrarot und Mikrowelle), um
+            Fehlalarme durch Haustiere oder thermische Schwankungen zu minimieren. Die Außenhautüberwachung mittels
+            Magnetkontakten, Glasbruchsensoren und Erschütterungsmeldern detektiert den Angriffsversuch bereits
+            bevor der Täter in das Objekt eingedrungen ist. Das Herzstück der Anlage, die Gefahrenmeldezentrale,
+            muss strengen Normen (EN 50131 / VdS) entsprechen und über redundante Übertragungswege (IP, LTE, GSM)
+            die Alarmierung einer Notruf- und Serviceleitstelle (NSL) sicherstellen.
+            Eine professionelle EMA muss zudem manipulationssicher sein; Sabotagekontakte an Gehäusen und Meldern
+            sowie die ständige Überwachung der Bus-Kommunikation sind unabdingbar.
+            Die Zwangsläufigkeit – also die technische Unmöglichkeit, eine unscharfe Anlage bei noch offenen Fenstern scharfzuschalten –
+            verhindert menschliche Bedienfehler und ist ein Kernkriterium für VdS-zertifizierte Anlagen.
+          </p>
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Videosicherheit und Verifikation</h3>
+          <p>
+            Videoüberwachung (CCTV) dient heute nicht mehr primär der bloßen Aufzeichnung, sondern der proaktiven
+            Intervention. Durch die Integration von Künstlicher Intelligenz (KI) und Deep-Learning-Algorithmen
+            können Kamerasysteme Objekte klassifizieren, virtuelle Stolperdrähte ziehen (Line Crossing) und
+            verwaiste Gepäckstücke erkennen. Im Alarmfall ermöglicht die Videoverifikation der NSL eine
+            Echtzeit-Beurteilung der Lage. Dies ist entscheidend, um den Polizeieinsatz zu priorisieren und
+            Falschalarme auszuschließen. Gleichzeitig müssen bei der Planung und Installation von Kamerasystemen
+            strenge datenschutzrechtliche Vorgaben (DSGVO, BDSG) eingehalten werden. Privacy-Masking, minimale
+            Vorhaltezeiten und verschlüsselte Datenspeicher sind zwingende Voraussetzungen für den rechtskonformen Betrieb.
+            Die neuesten Generationen von Wärmebildkameras erlauben zudem eine Detektion selbst bei völliger Dunkelheit,
+            starkem Nebel oder dichtem Laubwerk, wo konventionelle optische Sensoren an ihre physikalischen Grenzen stoßen.
+            Ein intelligentes Videomanagementsystem (VMS) korreliert diese Videodaten mit den Ereignissen der Zutrittskontrolle
+            und der Einbruchmeldeanlage, um dem Sicherheitsverantwortlichen ein umfassendes, sofort verständliches Lagebild zu präsentieren.
+          </p>
+          <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Häufig gestellte Fragen (FAQ)</h3>
+          <div className="space-y-4">
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-4 rounded-lg">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">1. Wie oft sollte eine Schließanlage gewartet oder erneuert werden?</h4>
+              <p className="mt-2 text-sm">Mechanische Komponenten unterliegen einem Verschleiß. Wir empfehlen eine jährliche Inspektion und einen Austausch nach spätestens 10-15 Jahren oder bei signifikanten Veränderungen im Personalbestand. Auch Schmutz, Staub und Witterungseinflüsse verkürzen die Lebensdauer von Außenzylindern erheblich. Eine regelmäßige Pflege mit speziellen Pflegesprays (niemals Öl!) erhält die Funktionsfähigkeit.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-4 rounded-lg">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">2. Was unterscheidet eine VdS-anerkannte Anlage von einem Baumarkt-System?</h4>
+              <p className="mt-2 text-sm">VdS-Systeme durchlaufen strenge Prüfverfahren bezüglich Manipulationssicherheit, Zuverlässigkeit und Fehlalarmsicherheit. Sie sind zudem oft Voraussetzung für den Versicherungsschutz bei Gewerbeobjekten. Ein Baumarkt-System bietet oft nur Scheinsicherheit, verwendet unverschlüsselte Funkprotokolle, die leicht gestört (Jamming) oder abgefangen (Replay-Angriffe) werden können, und verfügt nicht über die notwendige Sabotageüberwachung.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-4 rounded-lg">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">3. Kann ich eine bestehende Mechanik mit Elektronik nachrüsten?</h4>
+              <p className="mt-2 text-sm">Ja, in den meisten Fällen lassen sich mechatronische Zylinder oder elektronische Beschläge in bestehende DIN-Schlösser integrieren, ohne dass Türen ausgetauscht werden müssen. Der Vorteil dieser Lösung ist die Skalierbarkeit: Man kann zunächst die Außentüren elektronisch absichern und später Innentüren schrittweise in das System aufnehmen. Einzige Voraussetzung ist ein normgerechtes Einsteckschloss.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-4 rounded-lg">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">4. Sind kabellose (Funk-) Alarmanlagen sicher?</h4>
+              <p className="mt-2 text-sm">Moderne Funk-EMA nutzen bidirektionale, verschlüsselte Kommunikation (AES) und ständigen Rollcode. Sie erkennen Jamming-Versuche sofort und sind somit sehr sicher, sofern hochwertige Komponenten verwendet werden. Es muss jedoch beachtet werden, dass Funkkomponenten auf Batterien angewiesen sind, deren Zustand regelmäßig überwacht und deren Austausch turnusgemäß (ca. alle 2-3 Jahre) eingeplant werden muss.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-4 rounded-lg">
+              <h4 className="font-bold text-[oklch(0.16_0.02_260)]">5. Was passiert bei einem Stromausfall?</h4>
+              <p className="mt-2 text-sm">Professionelle Sicherheitssysteme sind zwingend mit Notstromakkus ausgestattet, die den Betrieb (je nach Systemgröße und Konzeption) für mindestens 12 bis 60 Stunden gewährleisten. Bei Zutrittskontrollsystemen kann konfiguriert werden, ob Türen im stromlosen Zustand automatisch verriegeln (Fail-Secure, typisch für Hochsicherheitsbereiche) oder zur Flucht entriegeln (Fail-Safe, gesetzliche Pflicht bei Fluchtwegen).</p>
             </div>
           </div>
         </div>
