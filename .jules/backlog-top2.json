@@ -1,0 +1,10 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_001",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/components/calculator/security-budget-calculator.tsx",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}

@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { SecurityBudgetCalculator } from '@/components/calculator/security-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -109,11 +110,63 @@ export default async function SicherheitstechnikPage() {
       <Section tight>
         <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-12">
           <div>
+
             <SectionHeading
               eyebrow="Einordnung"
               title="Mechanik hält auf, Meldetechnik erkennt, Alarmierung informiert"
               lead={page?.intro}
             />
+
+            <div className="mt-8 space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              <p>
+                Sicherheitstechnik in modernen Wohn- und Gewerbeobjekten ist keine monolithische Struktur, sondern ein
+                fein abgestimmtes Zusammenspiel verschiedener Gewerke und Technologien. Der Kern einer jeden fundierten
+                Sicherheitsstrategie beruht auf dem Prinzip des Zwiebelschalenmodells: Die Peripherie wird ebenso
+                betrachtet wie die kritischen inneren Kernzonen. Mechanische Barrieren wie hochwertige Profilzylinder,
+                massive Schließbleche und Panzerriegel bilden die unüberwindbare Basis. Sie sind darauf ausgelegt,
+                physische Einbruchsversuche so lange zu verzögern, dass der Täter von seinem Vorhaben ablässt.
+              </p>
+              <p>
+                Darauf aufbauend setzen wir elektronische Meldetechnik ein. Magnetkontakte, Glasbruchsensoren und
+                Infrarot-Bewegungsmelder erkennen unbefugte Eindringversuche in Echtzeit. Diese Sensoren sind
+                nahtlos in ein übergeordnetes System integriert, das nicht nur lokale Sirenen ansteuert, sondern
+                im Bedarfsfall auch externe Sicherheitsdienste oder direkt die Polizeileitstelle informiert.
+                Die korrekte Kalibrierung dieser Anlagen ist entscheidend, um Falschalarme durch Haustiere oder
+                Umwelteinflüsse auf ein absolutes Minimum zu reduzieren.
+              </p>
+              <p>
+                Wir betrachten bei jedem Projekt die individuellen Schwachstellen der Gebäudehülle.
+                Besonders kritisch sind häufig nicht die offensichtlichen Haupteingänge, sondern seitliche,
+                schlecht ausgeleuchtete Zugänge, Kellerschächte oder Terrassentüren.
+                Die Kombination aus zertifizierter Mechanik (mindestens RC2, idealerweise RC3) und
+                intelligenter Elektronik (EN 50131-konform) schafft eine Resilienz, die den höchsten
+                Anforderungen gerecht wird.
+              </p>
+
+              <h3 className="mt-8 mb-4 text-xl font-bold text-[oklch(0.16_0.02_260)]">Fachspezifisches FAQ</h3>
+              <div className="space-y-4">
+                <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-5">
+                  <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">1. Wie verhält sich die Anlage bei einem Stromausfall?</h4>
+                  <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Jede fachgerecht installierte Gefahrenmeldeanlage verfügt über eine redundante Notstromversorgung (Akkumulatoren), die den Betrieb bei Netzausfall für mindestens 12 bis 60 Stunden sicherstellt, abhängig von der Anlagenklasse.</p>
+                </div>
+                <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-5">
+                  <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">2. Kann ich meine bestehende Schließanlage in ein elektronisches System integrieren?</h4>
+                  <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Ja, mechatronische Zylinder ermöglichen eine nahtlose Verbindung. Mechanische Schlüssel können durch Transponder oder Smartphone-basierte Credentials ersetzt werden, wobei die physische Sperrfunktion erhalten bleibt.</p>
+                </div>
+                <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-5">
+                  <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">3. Welche normativen Anforderungen gelten für gewerbliche Alarmanlagen?</h4>
+                  <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Für Gewerbeobjekte ziehen Versicherungen in der Regel die VdS-Richtlinien heran (Klasse A, B oder C). Diese fordern spezifische Ausführungen bei der Verkabelung, den Meldern und der Aufschaltung (Zwangsläufigkeit).</p>
+                </div>
+                <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-5">
+                  <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">4. Was bedeutet &quot;Zwangsläufigkeit&quot; bei einer Alarmanlage?</h4>
+                  <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Zwangsläufigkeit verhindert, dass ein gesicherter Bereich betreten wird, während die Anlage scharfgeschaltet ist. Das System blockiert beispielsweise physisch das Türschloss (Sperrelement) oder erlaubt die Scharfschaltung erst, wenn alle Fenster geschlossen sind.</p>
+                </div>
+                <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-5">
+                  <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">5. Sind Funk-Alarmanlagen sicher vor Sabotage (Jamming)?</h4>
+                  <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Moderne, zertifizierte Funksysteme nutzen Mehrfrequenzverfahren (z.B. 868 MHz) und ständige Heartbeat-Kommunikation. Wird ein Störsignal (Jamming) erkannt, löst die Zentrale sofort Alarm aus.</p>
+                </div>
+              </div>
+            </div>
 
             <dl className="mt-6 space-y-4">
               {PRINCIPLE.map((item) => (
@@ -296,6 +349,19 @@ export default async function SicherheitstechnikPage() {
               </Link>
             </CardBody>
           </Card>
+        </div>
+      </Section>
+
+
+      {/* Interactive Budget Calculator */}
+      <Section tight>
+        <SectionHeading
+          eyebrow="Budget-Orientierung"
+          title="Kalkulieren Sie Ihre Sicherheitsinvestition"
+          lead="Verschaffen Sie sich einen schnellen Überblick über zu erwartende Kosten basierend auf dem Umfang Ihres Projekts."
+        />
+        <div className="mt-12 max-w-2xl mx-auto">
+          <SecurityBudgetCalculator />
         </div>
       </Section>
 
