@@ -1,0 +1,15 @@
+{
+  "top_2_selected": [
+    {
+      "id": "IDEA_001",
+      "target_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "idea": "Expand the Sicherheitstechnik page with comprehensive content about security technology, methodology, and a Budget Calculator interactive component.",
+      "interactive_module": {
+        "name": "ServiceBudgetCalculator",
+        "path": "src/components/calculator/service-budget-calculator.tsx",
+        "action_path": "src/actions/calculate-budget.ts"
+      },
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}

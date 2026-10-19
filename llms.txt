@@ -1,0 +1,1 @@
+## New Interactive Modules\n- **Service Budget Calculator**: Added to the Sicherheitstechnik page to estimate project costs based on scope and tier.
