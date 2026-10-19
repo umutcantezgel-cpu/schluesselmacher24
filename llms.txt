@@ -1,0 +1,3 @@
+# LLM Documentation
+
+Refer to `.jules/revolution-plan.json` for the transformation queue.
