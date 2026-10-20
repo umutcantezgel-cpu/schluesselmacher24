@@ -707,3 +707,7 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
   - Bildsatz, Blindvergleich und Galerie von Abschlussversuch 1 (`_werkstatt/bilder/abschluss/`, `blind/`, `galerie.html`) sind entfernt (5c8e7c5). Sie bleiben in der Geschichte des Zweigs.
   - Gleichwertiger Ersatz aus Abschlussversuch 2 nach dem Paket E7-DOKUMENTAR-03. Der Schlüssel liegt außerhalb des Repositorys an einem Ort, den keine Repository-Datei nennt.
 - **Weiter:** ABNAHME je Kriterium, BERICHT-Abschnitt „Abschluss“, Endprüfung E6-L-13 (frischer Opus-Agent, zuerst Teil A blind), danach ABSCHLUSS oder HALT.
+- **Lehre (L6), Commits während laufender Agenten:**
+  - Zwei Commits (fb812a4, 4d1c6b6) liefen mit `git add _werkstatt`, während der Dokumentar noch kopierte. Der neue Bildsatz steckt deshalb in diesen beiden Commits statt in einem eigenen. Der Endstand ist vollständig (324 und 141 Dateien, Arbeitsbaum danach sauber).
+  - Ab jetzt committet der Orchestrator nur ausdrücklich genannte Pfade, solange ein Agent unter `_werkstatt/` schreibt.
+  - Der Bericht des Dokumentars liegt als `berichte/E7-DOKUMENTAR-03.md` vor; der Orchestrator hat ihn übernommen, weil der Agent keine .md-Berichte schreiben darf.

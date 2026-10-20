@@ -1,5 +1,30 @@
 # Bericht
 
+## Abschluss · Stand 20. Oktober 2026
+
+**Was erreicht ist** (Belege in `ABNAHME.md`):
+- Alles läuft wie vorher und besser:
+  - alle 14 Abläufe, die 7 Hauptaufgaben auch nur mit der Tastatur;
+  - 1217 automatische Prüfungen und 52 Datenbankprüfungen grün;
+  - an Preisen, Bestellung, Zahlung und Rechtstexten nichts verändert.
+- Ein durchgängiges Designsystem: Schriftgrößen, Abstände, Farben und Bewegungen kommen aus einer Liste; frei gesetzte Werte gibt es nur noch in den Zeichnungen selbst und an vier begründeten Stellen. Eine einzige Symbolfamilie, eigene Fachzeichnungen statt „Bild folgt“, große bewegte Momente, die etwas erklären.
+- Zugänglich: keine ernsten Fehler der automatischen Prüfung, sichtbarer Fokus, ruhige Seiten bei „Bewegung reduzieren“.
+- Schnell: Auf dem Handy erscheinen alle Hauptseiten früher als vor dem Umbau, keine Zeichnung ruckelt.
+
+**Zwei begründete Ausnahmen** (mehr erlaubt die Regel nicht):
+1. **Gestaltungsnote:** Die strenge Bewertung gibt der Startseite 8 von 10, den übrigen Hauptseiten 7,2 bis 7,7; gefordert sind 8. Beide erlaubten Verbesserungsrunden sind verbraucht. Was fehlt, sind vor allem Dinge, die nur du liefern kannst: echte Fotos, Firmendaten und ein echter Artikelkatalog. Die unabhängige Endprüfung urteilt mit einem Blindvergleich.
+2. **Ladezeit am großen Bildschirm:** Der Code-Shop erscheint dort 0,03 Sekunden später als vorher, knapp über der normalen Schwankung. Überall sonst und auf dem Handy ist es schneller.
+
+**Zum Ansehen:**
+- Galerie: `_werkstatt/bilder/galerie.html`, vorher und nachher nebeneinander, mit den großen Momenten.
+- Alle Bilder des Endstands: `_werkstatt/bilder/abschluss/`.
+
+**Für später:**
+- Die offenen Hinweise der letzten Gestaltungsprüfung stehen in `_werkstatt/berichte/E6-L-34-sichtabnahme-*.md`, je Seite mit Vorschlag. Sie passen gut zu einer Runde nach dem Zusammenführen, wenn Fotos und echte Inhalte da sind.
+- Was du prüfen oder entscheiden solltest, steht in `_werkstatt/MENSCHEN.md` (M-01 bis M-28).
+
+**Endprüfung:** Das Urteil des unabhängigen Endprüfers folgt unten, wörtlich.
+
 ## Anleitung · Zusammenführen und Zurückrollen
 
 Alles liegt auf dem Zweig `claude/projekt-gestaltung-entwicklung-tofodh`. Er zweigt von `main` beim Commit `71dbadd` („build: auf Vercel nie ein lokales Postgres starten“) ab. Nichts ist zusammengeführt oder veröffentlicht; das entscheidest du (MENSCHEN M-14).
@@ -8,7 +33,7 @@ Alles liegt auf dem Zweig `claude/projekt-gestaltung-entwicklung-tofodh`. Er zwe
 - Website-Code: 244 Dateien, vor allem unter `src/` (Gestaltung, Grafiken, Bewegung, Bedienung). Unverändert: Datenmodelle und Migrationen, Server-Aktionen, Preis- und Terminlogik, Anbindungen (`src/lib/integrations`), Inhalte unter `content/` und `public/`.
 - Abhängigkeiten: `lucide-react` entfernt (`package.json`, `package-lock.json`); keine neue Bibliothek.
 - Konfiguration: `tailwind.config.ts` (Designsystem), `next.config.ts` (CSS im Dokument für schnelleres erstes Laden, noch experimentell, siehe MENSCHEN M-28), `README.md` (Ist-Stand), `UMSETZUNG.md` (Hinweis „historisch“). Für den Arbeitsordner `_werkstatt/` je eine Ausnahme in `.gitignore`, `eslint.config.mjs`, `tsconfig.json` und `vitest.config.ts`.
-- `_werkstatt/` (rund 44 MB, davon 36 MB Bilder): Auftrag, Kern, Plan, Berichte, Prüfprotokolle, Bildsätze, Galerie (`_werkstatt/bilder/galerie.html`) und Prüfwerkzeuge mit eigener Paketdatei. Nicht Teil der Website.
+- `_werkstatt/` (rund 46 MB, davon 36 MB Bilder): Auftrag, Kern, Plan, Berichte, Prüfprotokolle, Bildsätze, Galerie (`_werkstatt/bilder/galerie.html`) und Prüfwerkzeuge mit eigener Paketdatei. Nicht Teil der Website.
 
 **Vor dem Zusammenführen: `_werkstatt` bewusst entscheiden**
 - *Entfernen* (empfohlen, wenn das Repository schlank bleiben soll): auf dem Zweig `git rm -r _werkstatt` und die vier `_werkstatt`-Zeilen in `.gitignore`, `eslint.config.mjs`, `tsconfig.json` und `vitest.config.ts` wieder herausnehmen; committen. Die Unterlagen bleiben in der Geschichte des Zweigs erhalten.
