@@ -1,0 +1,1 @@
+New Interactive Module: Security Budget Calculator in src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx.

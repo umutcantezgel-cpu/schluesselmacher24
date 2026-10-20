@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+## Revolution Builder Updates
+* Added an interactive Security Budget Calculator to `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx`.
