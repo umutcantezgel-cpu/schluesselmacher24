@@ -116,3 +116,61 @@ Alle offenen Punkte für Menschen: `docs/gestaltung/MENSCHEN.md`.
 ## Gestaltungslauf
 
 Die Unterlagen des Gestaltungslaufs liegen in `docs/gestaltung/`: der Kern des Designsystems (`KERN.md`), die Entscheidungen (`ENTSCHEIDUNGEN.md`), offene Punkte für Menschen (`MENSCHEN.md`), Textvorschläge (`TEXTVORSCHLAEGE.md`) und das Berichtsbuch mit Abnahme und Anleitung zum Zurückrollen (`BERICHT.md`). Der vollständige Arbeitsordner mit Auftrag, Plan, Prüfprotokollen, Bildsätzen, Vorher-Nachher-Galerie und Prüfwerkzeugen bleibt in der Git-Geschichte erhalten (Zweig `claude/projekt-gestaltung-entwicklung-tofodh`, Commit `b8e7ea7`, Ordner `_werkstatt/`).
+
+
+## Architecture State
+
+# Architecture Matrix
+
+| URL | Source File | Current Words | Target Words | Component |
+|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 300 | 1306 | EnterpriseRoiCalculator |
+| /artikel | src/app/(site)/artikel/page.tsx | 300 | 1072 | EnterpriseRoiCalculator |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 300 | 860 | EnterpriseRoiCalculator |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 300 | 1903 | EnterpriseRoiCalculator |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 300 | 1158 | EnterpriseRoiCalculator |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 300 | 971 | EnterpriseRoiCalculator |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 300 | 2292 | EnterpriseRoiCalculator |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 300 | 1433 | EnterpriseRoiCalculator |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 300 | 2779 | EnterpriseRoiCalculator |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 300 | 1969 | EnterpriseRoiCalculator |
+| /kasse | src/app/(site)/kasse/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| / | src/app/(site)/page.tsx | 300 | 1672 | EnterpriseRoiCalculator |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 300 | 982 | EnterpriseRoiCalculator |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 300 | 883 | EnterpriseRoiCalculator |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 300 | 1153 | EnterpriseRoiCalculator |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 300 | 885 | EnterpriseRoiCalculator |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 300 | 2096 | EnterpriseRoiCalculator |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 300 | 1212 | EnterpriseRoiCalculator |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 300 | 966 | EnterpriseRoiCalculator |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 300 | 2062 | EnterpriseRoiCalculator |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 300 | 1974 | EnterpriseRoiCalculator |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 300 | 987 | EnterpriseRoiCalculator |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 300 | 940 | EnterpriseRoiCalculator |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 300 | 1326 | EnterpriseRoiCalculator |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 300 | 884 | EnterpriseRoiCalculator |
+| /standorte | src/app/(site)/standorte/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 300 | 2060 | EnterpriseRoiCalculator |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 300 | 850 | EnterpriseRoiCalculator |
