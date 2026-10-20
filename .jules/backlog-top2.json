@@ -1,0 +1,26 @@
+{
+  "timestamp": "2024-10-20T11:34:00.000Z",
+  "top_ideas": [
+    {
+      "id": "IDEA_001",
+      "target_existing_route": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "title": "Sicherheitstechnik Calculator"
+    },
+    {
+      "id": "IDEA_002",
+      "target_existing_route": "app/(site)/service-und-termin/page.tsx",
+      "target_component_file": "app/(site)/service-und-termin/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "title": "Service Budget Calculator"
+    },
+    {
+      "id": "IDEA_003",
+      "target_existing_route": "app/(site)/autoschluessel/page.tsx",
+      "target_component_file": "app/(site)/autoschluessel/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "title": "Interactive Car Key Configurator"
+    }
+  ]
+}
