@@ -116,3 +116,9 @@ Alle offenen Punkte für Menschen: `docs/gestaltung/MENSCHEN.md`.
 ## Gestaltungslauf
 
 Die Unterlagen des Gestaltungslaufs liegen in `docs/gestaltung/`: der Kern des Designsystems (`KERN.md`), die Entscheidungen (`ENTSCHEIDUNGEN.md`), offene Punkte für Menschen (`MENSCHEN.md`), Textvorschläge (`TEXTVORSCHLAEGE.md`) und das Berichtsbuch mit Abnahme und Anleitung zum Zurückrollen (`BERICHT.md`). Der vollständige Arbeitsordner mit Auftrag, Plan, Prüfprotokollen, Bildsätzen, Vorher-Nachher-Galerie und Prüfwerkzeugen bleibt in der Git-Geschichte erhalten (Zweig `claude/projekt-gestaltung-entwicklung-tofodh`, Commit `b8e7ea7`, Ordner `_werkstatt/`).
+
+## Architecture Blueprint
+
+- 53 existing physical routes mapped and analyzed for content depth.
+- Target set to expand content and add interactive calculators/filters.
+- Architecture matrix and revolution plan established in `.jules/` directory.

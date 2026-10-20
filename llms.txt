@@ -1,0 +1,8 @@
+# LLMs Instructions and Context
+
+## Project Architecture & Blueprint Context
+- **Framework:** Next.js 16+
+- **React:** 19.2+
+- **Styling:** Tailwind CSS v4 (OKLCH)
+- **Active Routes:** 53 routes audited.
+- **Goal:** Expand content (>850 words) and add interactive elements to all existing routes without creating any new ones.
