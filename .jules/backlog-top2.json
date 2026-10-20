@@ -1,0 +1,14 @@
+{
+  "top_2_innovations": [
+    {
+      "idea_id": "IDEA_001",
+      "target_existing_route": "src/app/(site)/service-und-termin/page.tsx",
+      "target_component_file": "src/app/(site)/service-und-termin/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "plan": {
+        "content_expansion": "Erweitere die Service-Methodik und den Fachbereich auf über 800 Wörter.",
+        "interactive_module": "Integriere einen Budgetrechner für Serviceeinsätze."
+      }
+    }
+  ]
+}

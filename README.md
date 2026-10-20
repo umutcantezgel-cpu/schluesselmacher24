@@ -43,3 +43,7 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+
+## Interaktive Module
+- **Budgetrechner**: Ein Kalkulator für Serviceeinsätze (`src/components/calculator/service-budget-calculator.tsx`).

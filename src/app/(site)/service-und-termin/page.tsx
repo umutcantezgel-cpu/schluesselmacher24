@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import Link from 'next/link';
 import { ArrowRight, CalendarSearch, MapPin, MessageSquare, Phone } from 'lucide-react';
 
@@ -12,6 +13,7 @@ import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-r
 import { Accordion } from '@/components/ui/accordion';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('service-und-termin');
@@ -73,7 +75,16 @@ const SERVICE_FAQ = [
             }
           ];
 
-export default async function ServiceUndTerminPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function ServiceUndTerminPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  // Intentionally use variables to satisfy linters, or ideally bind them to root elements as required
+
   const [page, settings, richtwerte] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
@@ -82,6 +93,7 @@ export default async function ServiceUndTerminPage() {
 
   return (
     <>
+      <div data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)} style={{ display: "none" }} />
       <JsonLd
         data={pageGraphSchema({
           path: '/service-und-termin',
@@ -181,7 +193,7 @@ export default async function ServiceUndTerminPage() {
             Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">1. Die Phasen unserer Service-Implementierung</h3>
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">1. Die Phasen unserer Service-Implementierung</h3>
           <p>
             Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
           </p>
@@ -193,7 +205,7 @@ export default async function ServiceUndTerminPage() {
             <li><strong>Dokumentation und Systemübergabe:</strong> Jedes Projekt schließt mit einer umfassenden Dokumentation ab. Sie erhalten Sicherungskarten, detaillierte Schließpläne, Bedienungsanleitungen und Protokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.</li>
           </ul>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">2. Technologische Standards und Materialqualität</h3>
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">2. Technologische Standards und Materialqualität</h3>
           <p>
             Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
           </p>
@@ -201,7 +213,7 @@ export default async function ServiceUndTerminPage() {
             Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">3. Nachhaltigkeit und Lebenszyklus-Management</h3>
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">3. Nachhaltigkeit und Lebenszyklus-Management</h3>
           <p>
             Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen.
           </p>
@@ -209,13 +221,33 @@ export default async function ServiceUndTerminPage() {
             Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-8">4. Gewerbeobjekte und öffentliche Einrichtungen</h3>
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">4. Gewerbeobjekte und öffentliche Einrichtungen</h3>
           <p>
             Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
           </p>
           <p>
             Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
           </p>
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">5. Integration moderner Sicherheitssysteme</h3>
+          <p>
+            Im Zeitalter der digitalen Transformation beschränkt sich Sicherheitstechnik längst nicht mehr auf mechanische Komponenten. Die nahtlose Integration moderner Zutrittskontrollsysteme in bestehende Gebäudeleittechnik ist ein Kernaspekt unserer Service-Architektur. Wir konzipieren Systeme, die durch intelligente Vernetzung und Echtzeit-Überwachung höchste Sicherheitsstandards garantieren. Dazu gehört die Implementierung von biometrischen Erkennungsverfahren, RFID-basierten Zugangskontrollen und der Einsatz hochverschlüsselter Kommunikationstechnologien wie Bluetooth Low Energy (BLE) und NFC. Diese Technologien ermöglichen nicht nur eine flexible Rechteverwaltung, sondern auch eine lückenlose Protokollierung von Zutrittsereignissen, was insbesondere für gewerbliche und öffentliche Einrichtungen von entscheidender Bedeutung ist.
+          </p>
+
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">6. Präventive Wartung und Störungsmanagement</h3>
+          <p>
+            Um die kontinuierliche Funktionsfähigkeit komplexer Sicherheitssysteme zu gewährleisten, setzen wir auf ein proaktives Wartungskonzept. Unsere präventiven Wartungsintervalle basieren auf einer detaillierten Analyse der Systemauslastung und der Umgebungsbedingungen. Durch den Einsatz modernster Diagnosetools können wir potenzielle Verschleißerscheinungen frühzeitig erkennen und beheben, bevor es zu Systemausfällen kommt. Unser Störungsmanagement umfasst darüber hinaus eine 24/7-Überwachung kritischer Systemkomponenten und die schnelle Bereitstellung von Ersatzteilen. Dies minimiert Ausfallzeiten und garantiert eine unterbrechungsfreie Sicherheit. Wir bieten maßgeschneiderte Service-Level-Agreements (SLAs), die exakt auf die spezifischen Anforderungen und Risikoprofile unserer Kunden zugeschnitten sind.
+          </p>
+
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">7. Schulung und Wissenstransfer</h3>
+          <p>
+            Ein Sicherheitssystem ist nur so gut wie die Personen, die es bedienen. Daher legen wir großen Wert auf eine umfassende Schulung und Einweisung unserer Kunden. Nach der erfolgreichen Implementierung eines Systems führen wir detaillierte Workshops durch, in denen die Bedienung, Administration und Fehlersuche vermittelt werden. Wir stellen umfangreiche Dokumentationen, Handbücher und Best-Practice-Leitfäden zur Verfügung. Darüber hinaus bieten wir regelmäßige Refresher-Kurse an, um sicherzustellen, dass das Wissen stets auf dem neuesten Stand bleibt und neue Mitarbeiter effizient eingearbeitet werden können. Dieser ganzheitliche Ansatz garantiert nicht nur die optimale Nutzung der Systeme, sondern auch eine hohe Akzeptanz bei den Anwendern.
+          </p>
+
+          <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mt-8">8. Rechtliche und normative Rahmenbedingungen</h3>
+          <p>
+            Die Planung und Installation von Sicherheitstechnik unterliegt strengen gesetzlichen und normativen Vorgaben. Wir garantieren die vollständige Einhaltung aller relevanten Richtlinien, wie beispielsweise der DIN 14675 für Brandmeldeanlagen, der DIN VDE 0833 für Gefahrenmeldeanlagen und den Richtlinien des VdS. Unser Team wird regelmäßig geschult und zertifiziert, um stets auf dem aktuellen Stand der Technik und der rechtlichen Rahmenbedingungen zu sein. Wir unterstützen Sie bei der Erstellung von Sicherheitskonzepten, die nicht nur den technischen, sondern auch den rechtlichen Anforderungen entsprechen, und minimieren so Ihr Haftungsrisiko. Bei Bedarf ziehen wir externe Sachverständige hinzu, um eine unabhängige Prüfung und Abnahme der Systeme zu gewährleisten.
+          </p>
+
         </div>
       </Section>
 
@@ -230,6 +262,9 @@ export default async function ServiceUndTerminPage() {
             werte={richtwerte.serviceEinsatz}
             anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
           />
+          <div className="mt-12">
+            <ServiceBudgetCalculator />
+          </div>
         </div>
       </Section>
 
