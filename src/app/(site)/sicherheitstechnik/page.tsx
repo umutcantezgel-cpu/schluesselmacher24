@@ -20,6 +20,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { SecurityCheckCalculator } from '@/components/calculator/security-check-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -160,6 +161,64 @@ export default async function SicherheitstechnikPage() {
           </div>
         </div>
       </Section>
+
+
+      {/* Fachliche Vertiefung und Interaktiver Rechner (800+ words expansion) */}
+      <Section tight>
+        <div className="mx-auto max-w-4xl space-y-12">
+
+          <div className="prose prose-lg prose-headings:text-[oklch(0.16_0.02_260)] prose-p:text-[oklch(0.32_0.02_260)] prose-li:text-[oklch(0.32_0.02_260)]">
+            <h2 className="text-3xl font-bold tracking-tight mb-6">Umfassende Sicherheitsarchitektur: Ein tieferer Einblick</h2>
+            <p className="leading-relaxed mb-6">
+              Die Planung und Implementierung effektiver Sicherheitstechnik ist weit mehr als die bloße Installation von Hardware. Sie erfordert eine holistische Betrachtung des Objekts, der individuellen Gefährdungslage und der spezifischen Bedürfnisse der Nutzer. Eine moderne Sicherheitsarchitektur basiert auf dem bewährten Prinzip des Zwiebelschalenmodells: Verschiedene, sich ergänzende Sicherheitsebenen werden so kombiniert, dass ein Eindringen erschwert, Verzögerungen maximiert und Täter frühzeitig detektiert werden. Dieses Prinzip ist fundamental für private Wohnobjekte ebenso wie für gewerbliche und industrielle Komplexe.
+            </p>
+            <p className="leading-relaxed mb-6">
+              Im Kern jeder robusten Absicherung steht die <strong>mechanische Grundsicherung</strong>. Sie ist das Fundament, auf dem alle weiteren Maßnahmen aufbauen. Mechanik hat primär die Aufgabe, physischen Widerstand zu leisten und den Zeitaufwand für einen Einbruchsversuch signifikant zu erhöhen. Täter arbeiten unter enormem Zeitdruck; jeder zusätzliche Widerstand, der den Einbruch um wertvolle Minuten verzögert, erhöht das Entdeckungsrisiko drastisch und führt häufig zum Abbruch des Versuchs. Hierzu zählen hochwertige Schließzylinder mit Bohr- und Ziehschutz, massive Sicherheitsschließbleche, Panzerriegel und vor allem einbruchhemmende Fensterbeschläge (wie Pilzkopfverriegelungen) und Türen entsprechend den DIN EN 1627 Normen (Widerstandsklassen RC2 oder RC3 für den Privatbereich).
+            </p>
+
+            <h3 className="text-2xl font-semibold mt-10 mb-4">Meldetechnik und Detektion: Der elektronische Ring</h3>
+            <p className="leading-relaxed mb-6">
+              Während die Mechanik den Widerstand leistet, ist die <strong>elektronische Meldetechnik</strong> (Einbruchmeldeanlagen, EMA) dafür zuständig, einen dennoch erfolgten oder versuchten Einbruch zu erkennen und zu melden. Wichtig zu verstehen ist: Eine Alarmanlage verhindert keinen Einbruch physisch, sie meldet ihn nur. Daher ist die Kombination aus Mechanik (Verzögerung) und Elektronik (Erkennung) entscheidend. Moderne Systeme nutzen eine Kombination aus Außenhautüberwachung (Magnetkontakte an Fenstern und Türen, Glasbruchmelder) und Fallenüberwachung (Bewegungsmelder im Innenbereich). Die Alarmierung erfolgt meist dual: lokal über akustische und optische Signalgeber (Sirenen und Blitzleuchten) zur Abschreckung des Täters sowie zur Alarmierung der direkten Umgebung, und als Fernalarmierung via GSM/IP an einen zertifizierten Wachdienst, der vordefinierte Interventionsmaßnahmen einleitet.
+            </p>
+
+            <h3 className="text-2xl font-semibold mt-10 mb-4">Videoüberwachung und Zutrittskontrolle: Prävention und Protokollierung</h3>
+            <p className="leading-relaxed mb-6">
+              Die dritte Schicht umfasst <strong>Videoüberwachungssysteme (CCTV)</strong> und <strong>elektronische Zutrittskontrollen</strong>. Kamerasysteme wirken hochgradig präventiv und dienen nach einem Vorfall der Aufklärung und Beweissicherung. Dank hochauflösender IP-Kameras, intelligenter Videoanalytik (z.B. KI-gestützte Erkennung von Personen oder Fahrzeugen vs. Tieren oder witterungsbedingten Bewegungen) und Infrarot-Nachtsicht liefern moderne Anlagen rund um die Uhr verlässliches Bildmaterial. Bei der Planung ist der Datenschutz jedoch zwingend zu beachten; öffentliche Bereiche dürfen nicht erfasst werden.
+            </p>
+            <p className="leading-relaxed mb-6">
+              Elektronische Zutrittskontrollsysteme ersetzen den klassischen mechanischen Schlüssel durch RFID-Transponder, Smartcards, PIN-Codes oder biometrische Merkmale (z.B. Fingerabdruck). Der immense Vorteil liegt in der Flexibilität: Berechtigungen können zeitlich und räumlich individuell vergeben, bei Verlust eines Transponders dieser sofort gesperrt und Zutrittsereignisse lückenlos protokolliert werden. Dies ist besonders im gewerblichen Umfeld mit wechselndem Personal oder in Mehrfamilienhäusern von unschätzbarem Wert.
+            </p>
+
+            <h3 className="text-2xl font-semibold mt-10 mb-4">Häufig gestellte Fragen (FAQ) zur Sicherheitstechnik</h3>
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-bold text-lg mb-2">1. Was ist wichtiger: Mechanik oder Elektronik?</h4>
+                <p className="leading-relaxed">Ganz klar: Die Mechanik. Sie ist der physische Widerstand. Elektronik ist eine sinnvolle und oft notwendige Ergänzung, kann aber fehlende mechanische Sicherheit (z.B. ein Fenster, das man mit einem Schraubenzieher in Sekunden aufhebeln kann) niemals kompensieren. Die Mechanik hält den Täter draußen, die Elektronik meldet, dass er da ist.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg mb-2">2. Lohnt sich eine Alarmanlage für eine normale Wohnung?</h4>
+                <p className="leading-relaxed">Ja, absolut. Insbesondere Wohnungen im Erdgeschoss oder mit leicht erreichbaren Balkonen sind gefährdet. Eine professionelle, drahtlose Einbruchmeldeanlage lässt sich heute ohne großen baulichen Aufwand (Schmutz, Kabelziehen) installieren und bei einem Umzug problemlos mitnehmen. Die abschreckende Wirkung ist enorm.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg mb-2">3. Sind Smart-Home-Alarmanlagen aus dem Baumarkt ausreichend?</h4>
+                <p className="leading-relaxed">Für einen rudimentären Schutz oder reine Informationszwecke mögen diese Systeme ausreichen. Sie erfüllen jedoch in der Regel nicht die strengen normativen Anforderungen an professionelle Einbruchmeldeanlagen (z.B. VdS-Klassen oder EN 50131). Professionelle Systeme bieten redundante Übertragungswege, Notstromversorgung, Sabotageschutz auf allen Komponenten und eine garantierte Zuverlässigkeit, die bei DIY-Systemen oft fehlt.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg mb-2">4. Darf ich Kameras auf meinem Grundstück frei installieren?</h4>
+                <p className="leading-relaxed">Nein. Sie dürfen ausschließlich Ihr eigenes, privates Grundstück überwachen. Der Erfassungsbereich der Kamera darf öffentliche Gehwege, Straßen oder das Nachbargrundstück nicht tangieren. Auch Hinweisschilder (&quot;Achtung Videoüberwachung&quot;) sind in der Regel gesetzlich vorgeschrieben, wenn Dritte (z.B. Postboten, Besucher) das Grundstück betreten können.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg mb-2">5. Was kostet eine vernünftige Absicherung?</h4>
+                <p className="leading-relaxed">Das lässt sich seriös nicht pauschal beantworten, da es stark von der Objektgröße, den vorhandenen Schwachstellen und dem individuellen Schutzbedürfnis abhängt. Eine solide mechanische Grundsicherung einer Tür beginnt bei wenigen hundert Euro, eine umfassende Absicherung eines Einfamilienhauses inkl. Fenstern und professioneller Alarmanlage liegt oft im mittleren vierstelligen Bereich. Eine Vor-Ort-Analyse ist unerlässlich für ein verlässliches Angebot.</p>
+              </div>
+            </div>
+          </div>
+
+          <SecurityCheckCalculator />
+
+        </div>
+      </Section>
+
 
       {/* Bereiche */}
       <Section tone="muted">

@@ -1,0 +1,13 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_001",
+      "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "module_name": "Sicherheits-Check Rechner",
+      "module_path": "src/components/calculator/security-check-calculator.tsx",
+      "description": "Erweiterung der Sicherheitstechnik-Seite um umfassende Erklärungen und einen interaktiven Sicherheitscheck-Rechner."
+    }
+  ]
+}
