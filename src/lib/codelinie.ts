@@ -11,7 +11,7 @@ export function codelinienKennung(line: Pick<CodeLine, 'name' | 'slug'>): string
  * wiederholt die Anwendung kleingeschrieben („Nachschlüssel für möbel- und büroschloss: …“).
  * Auf der Seite nennt er stattdessen die Codelinie; alle weiteren Sätze bleiben wörtlich.
  * Weicht der erste Satz von diesem Muster ab, bleibt die Beschreibung unverändert.
- * Die Daten selbst ändern sich nicht (Vorschlag in `_werkstatt/TEXTVORSCHLAEGE.md`).
+ * Die Daten selbst ändern sich nicht (Vorschlag in `docs/gestaltung/TEXTVORSCHLAEGE.md`).
  */
 export function beschreibungFuerAnzeige(
   line: Pick<CodeLine, 'name' | 'slug' | 'description' | 'application'>,

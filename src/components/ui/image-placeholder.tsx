@@ -54,7 +54,7 @@ export function ausschnittStil(a: GrafikAusschnitt): AusschnittStil {
  *
  * Es gibt keine sichtbaren Platzhalter und keine erzeugten Fotos: Die Grafiken
  * erklären die Sache und geben sich nicht als Foto aus. Welche Fotos fehlen,
- * steht für die Redaktion in `_werkstatt/MENSCHEN.md`.
+ * steht für die Redaktion in `docs/gestaltung/MENSCHEN.md`.
  */
 export function ImagePlaceholder({
   slot,

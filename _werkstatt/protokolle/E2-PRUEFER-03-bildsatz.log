@@ -1,8 +1,0 @@
-| Ansicht | Gerät | Ausschnitte | Überlauf | Befunde |
-|---|---|---|---|---|
-| H01-start | mobil | 10 von 10 | nein | 47: über den rechten Rand div.lgcol-span-6 > div > div.relative > svg.block; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40 |
-| H01-start | tablet | 7 von 7 | nein | 4: über den rechten Rand div.lgcol-span-6 > div > div.relative > svg.block; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40 |
-| H01-start | desktop | 7 von 7 | nein | 2: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40 |
-
-Bilder: 24 in /home/user/schluesselmacher24/_werkstatt/bilder/referenz-2
-JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/protokolle/bildsatz-2026-10-16_06-18-08.json

@@ -39,7 +39,7 @@ SM24_DATA=json npx next build
 
 `npm run dev` ruft vorher `scripts/db.mjs ensure` auf. Ohne externe `DATABASE_URL` startet das ein lokales Postgres aus dem Paket `embedded-postgres` (Port 5433, nur localhost, Daten unter `.data/postgres`). Das Skript setzt `DATABASE_URL` nicht; die Seite nutzt die Datenbank erst, wenn die Variable gesetzt ist.
 
-**Build.** Auf Vercel ohne `DATABASE_URL` läuft `npm run build` ohne Datenbank. Sonst führt der Build `scripts/db.mjs ensure`, `payload migrate` und den Seed aus und ruft danach `next build` auf (`package.json`, Skript `build`). Ohne `DATABASE_URL` startet `scripts/db.mjs` dabei das lokale Postgres; zeigt `DATABASE_URL` auf eine externe Datenbank, startet es keines (`scripts/db.mjs`, Zeilen 104–114 und 119–123), und Migrationen und Seed laufen gegen diese Datenbank. Als root scheitert `initdb` am lokalen Postgres. Ohne Datenbank baut `SM24_DATA=json npx next build` (`_werkstatt/STATUS.md`, Abschnitt Einrichtung).
+**Build.** Auf Vercel ohne `DATABASE_URL` läuft `npm run build` ohne Datenbank. Sonst führt der Build `scripts/db.mjs ensure`, `payload migrate` und den Seed aus und ruft danach `next build` auf (`package.json`, Skript `build`). Ohne `DATABASE_URL` startet `scripts/db.mjs` dabei das lokale Postgres; zeigt `DATABASE_URL` auf eine externe Datenbank, startet es keines (`scripts/db.mjs`, Zeilen 104–114 und 119–123), und Migrationen und Seed laufen gegen diese Datenbank. Als root scheitert `initdb` am lokalen Postgres. Ohne Datenbank baut `SM24_DATA=json npx next build`.
 
 ## Technischer Aufbau
 
@@ -56,8 +56,8 @@ SM24_DATA=json npx next build
 
 ## Gestaltung
 
-- **Leitidee** (K-001 in `_werkstatt/KERN.md`): „SCHLÜSSELMACHER24 sieht aus wie eine saubere Werkstattzeichnung: helles Papier, stahlblaue Linien, bemaßte Details in Mono-Schrift – und an den entscheidenden Stellen fräst eine Linie sichtbar das Profil, damit man Genauigkeit sieht, bevor man sie liest.“
-- **Regeln:** Prinzipien in K-003 und Typografie in K-006 (`_werkstatt/KERN.md`). Das Designsystem beschreibt `src/components/visual/README.md`.
+- **Leitidee** (K-001 in `docs/gestaltung/KERN.md`): „SCHLÜSSELMACHER24 sieht aus wie eine saubere Werkstattzeichnung: helles Papier, stahlblaue Linien, bemaßte Details in Mono-Schrift – und an den entscheidenden Stellen fräst eine Linie sichtbar das Profil, damit man Genauigkeit sieht, bevor man sie liest.“
+- **Regeln:** Prinzipien in K-003 und Typografie in K-006 (`docs/gestaltung/KERN.md`). Das Designsystem beschreibt `src/components/visual/README.md`.
 - **Tokens** (`src/app/(site)/globals.css`, `tailwind.config.ts`):
   - Schrift: `--text-caption` bis `--text-display`, fließend zwischen 390 und 1440 px.
   - Abstände: `--space-section`, `--space-gutter`.
@@ -73,7 +73,7 @@ SM24_DATA=json npx next build
 
 - **Unit-Tests:** `npm run test:unit` (Vitest 2, Umgebung `node`, ohne DOM; `vitest.config.ts`). 73 Unit-Testdateien mit 1217 Tests (`find src -name '*.test.ts*' ! -name '*.db.test.ts' | wc -l`).
 - **DB-Tests:** `npm run test:db` (`vitest.db.config.ts`), 7 Dateien `*.db.test.ts`. Die Datei `src/test/db-global-setup.ts` startet eine eigene Postgres-Instanz (Port 5434, änderbar mit `SM24_TEST_PG_PORT`) und spielt Migrationen und Seed ein.
-- Laut `_werkstatt/STATUS.md` (Abschnitt Einrichtung) sind die DB-Tests als root nicht lauffähig.
+- Als root sind die DB-Tests nicht lauffähig (`initdb` lehnt root ab); im Gestaltungslauf liefen sie über einen Nutzer ohne root-Rechte.
 - **Prüfungen:** `npm run typecheck` und `npm run lint`.
 
 ## Inhaltspflege
@@ -109,10 +109,10 @@ Der Status der Anbindungen steht in `src/lib/integrations/index.ts`. Im Backend 
 - **E-Mail-Versand:** nicht angebunden. Ohne `MAIL_PROVIDER` und `MAIL_API_KEY` versendet `sendMail` nichts.
 - **Dateiablage:** Kundendateien liegen in der Sammlung `kundendateien` (`src/payload/collections/Kundendateien.ts`) und im Ordner `private-uploads/` (nicht im Repository, `.gitignore`). Die Ablage ist nur verfügbar, wenn `DATABASE_URL` gesetzt ist, `SM24_DATA` nicht `json` ist und die Umgebung auf die Festplatte schreiben darf. Nicht verfügbar ist sie daher ohne `DATABASE_URL`, im JSON-Modus (`SM24_DATA=json`), auf Vercel (`VERCEL` gesetzt) und mit `SM24_READONLY_CONTENT=1` (`src/lib/integrations/index.ts`, Zeilen 142–148). Die Variablen `STORAGE_*` aus `.env.example` liest der Code nicht.
 - **Stripe:** `stripe` steht in `package.json`, wird aber nicht importiert.
-- **Rechtstexte und Firmendaten:** juristische Prüfung und Angaben stehen aus (`_werkstatt/MENSCHEN.md`, M-02 und M-05).
+- **Rechtstexte und Firmendaten:** juristische Prüfung und Angaben stehen aus (`docs/gestaltung/MENSCHEN.md`, M-02 und M-05).
 
-Alle offenen Punkte für Menschen: `_werkstatt/MENSCHEN.md`.
+Alle offenen Punkte für Menschen: `docs/gestaltung/MENSCHEN.md`.
 
 ## Gestaltungslauf
 
-Der Ordner `_werkstatt/` gehört zum Gestaltungslauf. Er liegt außerhalb von `src/` und ist nicht Teil der Website. Er enthält den Auftrag (`AUFTRAG.md`), den Kern (`KERN.md`), den Plan (`PLAN.md`), Status und Prüfpunkt (`STATUS.md`, `PRUEFPUNKT.md`), das Berichtsbuch (`BERICHT.md`), die Berichte (`berichte/`), die Arbeitspakete (`pakete/`), Protokolle (`protokolle/`) und die Prüfwerkzeuge (`werkzeuge/`, mit eigener `package.json`).
+Die Unterlagen des Gestaltungslaufs liegen in `docs/gestaltung/`: der Kern des Designsystems (`KERN.md`), die Entscheidungen (`ENTSCHEIDUNGEN.md`), offene Punkte für Menschen (`MENSCHEN.md`), Textvorschläge (`TEXTVORSCHLAEGE.md`) und das Berichtsbuch mit Abnahme und Anleitung zum Zurückrollen (`BERICHT.md`). Der vollständige Arbeitsordner mit Auftrag, Plan, Prüfprotokollen, Bildsätzen, Vorher-Nachher-Galerie und Prüfwerkzeugen bleibt in der Git-Geschichte erhalten (Zweig `claude/projekt-gestaltung-entwicklung-tofodh`, Commit `b8e7ea7`, Ordner `_werkstatt/`).

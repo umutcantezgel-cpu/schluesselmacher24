@@ -125,7 +125,7 @@ außer bei den Ausnahmen unten.
 
 Für Strichmuster gilt `MITTELLINIE` (`'10 3 2 3'`, Strich-Punkt) und `DRAW_DASHARRAY` (`'1 2'`, siehe Bewegung).
 
-Ausnahmen nach D-010 (`_werkstatt/ENTSCHEIDUNGEN.md`): elf Zahlen bleiben im Quelltext stehen, weil sie
+Ausnahmen nach D-010 (`docs/gestaltung/ENTSCHEIDUNGEN.md`): elf Zahlen bleiben im Quelltext stehen, weil sie
 Flächen aus breiten Strichen sind oder die Geometrie steuern.
 
 - Doppelstrich-Halos (gezeichnete Flächen): `code-fundstelle` Griff 13 + 8, Lupe 9 + 4,5;

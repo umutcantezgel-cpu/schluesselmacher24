@@ -10,8 +10,6 @@ const eslintConfig = defineConfig([
     // Default ignores of eslint-config-next:
     ".next/**",
     ".claude/**",
-    // Arbeitsordner des Gestaltungslaufs (Berichte, Prüfwerkzeuge) — kein Projektcode.
-    "_werkstatt/**",
     "out/**",
     "build/**",
     "next-env.d.ts",

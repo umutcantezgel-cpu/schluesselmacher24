@@ -1,7 +1,0 @@
-
-/home/user/schluesselmacher24/src/components/layout/page-header.test.tsx
-  20:18  error  Do not use an `<a>` element to navigate to `/x/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-
-✖ 1 problem (1 error, 0 warnings)
-
-EXIT 1
