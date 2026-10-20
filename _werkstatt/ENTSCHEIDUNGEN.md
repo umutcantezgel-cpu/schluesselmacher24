@@ -636,3 +636,74 @@ Folgenreiche Entscheidungen mit Denkprotokoll (Ziel → drei Wege → Bewertung 
     - Am ungedrosselten Desktop entfällt der Vorteil der gesparten Anfrage fast ganz, und das doppelte CSS wiegt mit. Ehrlich festgehalten: Die formale Messung kann dort knapp ausfallen.
 - **Bestand:** tsc 0, ESLint 0 (geänderte Dateien), Vitest 73 Dateien mit 1217 Tests grün, Logikwächter 15 Dateien mit 0 abweichend, Wertesuche ohne neue Werte. Die `@font-face`-Prozente sind keine Gestaltungswerte; die Suche meldet sie nicht.
 - **Weiter:** Nach L7 ist das der letzte Anlauf. Der Build nach E7-L-43 ist darum der Endstand. Die formale Messung (Paket `E7-PRUEFER-02`) läuft als Teil 4 der Prüfstufe C, Abschlussversuch 2 (Paket `E7-PRUEFER-C`); so gibt es eine Messung statt zwei. Danach folgt D-051. Ist Z-08 dann nicht erfüllt, gilt AUSNAHME 2 mit diesem Denkprotokoll und beiden Anläufen als Beleg.
+
+## D-051 · Abschlussversuch 2 (Prüfstufe C) ausgewertet, AUSNAHME 1 (Z-04) und AUSNAHME 2 (Z-08), Register-Nacharbeit, neuer Abschluss-Bildsatz
+- **Belege:**
+  - `_werkstatt/protokolle/E7-PRUEFER-C-ergebnis-vollstaendig.md` (Teil 6) mit den Protokollen `E7-PRUEFER-C-*`.
+  - Leistung und Bildrate: `E7-PRUEFER-02-ergebnis.md` mit den Protokollen `E7-PRUEFER-02-*`.
+  - Register: `E7-PRUEFER-C-register.md`.
+  - Nacharbeit: `E7-L-44-*`.
+  - Workflows `wf_7a2d5363-c26` und `wf_6c8d5283-31b`, Build `_yaN_J-sWFLTSeQqU6QII` (Stand f6e55ab).
+- **Erfüllt:**
+  - Bestand: tsc 0, ESLint 0, Vitest 73 Dateien mit 1217 Tests, DB 52/52, Logikwächter 15 Dateien mit 0 abweichend, Textabzug 6/6 gleich, Wertesuche 0 ohne Ausnahmen, Build 208/208.
+  - Funktionsliste 14/14; Tastatur 7/7 mobil und am Desktop, keine Bedienung ohne sichtbaren Fokus.
+  - axe: 0 ernste oder kritische Befunde in 23 Ansichten auf beiden Geräten.
+  - Konsole: 0 Fehler, 0 Warnungen, 0 Seitenfehler. Abgebrochene Link-Vorabrufe (`ERR_ABORTED …?_rsc=`) beim Schließen der Seite gab es schon in Abschlussversuch 1; sie sind keine Fehler.
+  - Reduzierte Bewegung: 0 Befunde.
+  - Kein Seitenüberlauf. Elemente über dem rechten Rand liegen in quer scrollbaren Reihen, Zählung wie in Abschlussversuch 1.
+  - Bildrate 8/8 Momente mit Median 0,0 % (höchster Einzelwert 3,7 %).
+  - Leistung mobil 36/36 gegen E0 heute (LCP 484–688 ms gegen 888–2584 ms).
+  - SVG: 0 unbenannte, 0 doppelte ids, lucide 0; `icon.svg` bleibt UNANTASTBAR (D-049).
+- **Register (Teil 5), Nacharbeit E7-L-44 (Commit 3315165):**
+  - Behoben:
+    - R-1 bis R-4: B-07 und B-08 beschreiben jetzt die Keyframes, das Untermenü und das Schließen ohne Ausgang.
+    - R-5 und R-6, dazu zwei weitere Fundstellen: sechs Übergänge ohne Dauer-Token bekamen `duration-quick ease-standard` (nur className); eine Suche über `src` findet keinen weiteren.
+    - R-7: B-29 nennt die Eingabefelder.
+    - N-1: Text ≤ 1,6 s, der Code endet bei 1,60 s.
+  - R-8 (B-13, ViewTransition): Das Werkzeug erfasst die Übergänge nicht; der Eintrag ist am Code belegt (`seitenwechsel.tsx`) und hat einen Endzustand ohne Unterstützung (U-2).
+  - Neu ist die Regel „kein Übergang ohne Dauer-Token“; reduziert heißt nach der globalen Regel „sofort“.
+  - Nachprüfung der fünf geänderten Seiten: a11y 0, Konsole 0 Fehler, 0 unbekannte Keyframes. Build 208/208 (`E7-L-44-build.log`, BUILD_ID `iKl_M5gLZWsTLj9wvJVXf`).
+  - Leistung, Bildrate und Bildsatz bleiben gültig, weil nur Hover- und Fokusübergänge geändert sind.
+  - **Bauumgebung:** Die ersten zwei Build-Versuche scheiterten mit „next/font/google queries have exactly one entry“. Ursache war ein nach dem Neustart beschädigter Turbopack-Zwischenspeicher. Er liegt jetzt unter `/root/sm24-cache-sicherung/` (nicht gelöscht); der Neuaufbau ging durch. Die Wiederholung ist im Protokoll vermerkt.
+- **AUSNAHME 2 · Z-08 Leistung (Desktop, H05 Code-Shop, LCP)**, Denkprotokoll:
+  - **Ziel:** Keine Hauptansicht ist in einem Profil schlechter als E0 um mehr als die E0-Spanne.
+  - **Stand:**
+    - Mobil 36/36, Desktop 35/36.
+    - H05 Desktop LCP: jetzt 176 · 232 · 180 ms (Median 180), E0 152 · 176 · 152 ms (Median 152), Spanne 24 ms. Differenz +28 ms, also 4 ms über der Spanne.
+    - In der Vorprüfung am Prüfstand (D-050) lag H05 Desktop bei −20 ms. Der zweite Lauf mit 232 ms ist ein Ausreißer, aber er zählt.
+  - **Zwei belegte Anläufe:**
+    - Anlauf 1 (E7-P-1, `E7-PRUEFER-01-ergebnis.md`): LCP mobil 3/12, Desktop LCP 8/12.
+    - Anlauf 2 (E7-P-2, `E7-PRUEFER-02-ergebnis.md`): mobil 12/12, Desktop LCP 11/12.
+  - **Drei Wege:**
+    1. Messung wiederholen, bis H05 passt. Verboten: Das Rollenbriefing der Prüfer und G7 schließen das aus.
+    2. Ein dritter Anlauf, etwa ein kleineres Dokument für H05 oder die Desktop-Schrift vorladen. Ausgeschlossen durch L3 (höchstens zwei Anläufe je Tor). Die Ursache liegt zudem im Messrauschen: am ungedrosselten Desktop sind es 150 ms bei 24 ms E0-Spanne aus drei Läufen.
+    3. **AUSNAHME mit Ersatz (gewählt).**
+  - **Ersatzlösung, belegt:**
+    - Alle Budgets mit großer Reserve: Desktop LCP höchstens 208 ms bei 2500 ms Budget, CLS höchstens 0,004, INP höchstens 48 ms.
+    - Im maßgeblichen gedrosselten Mobilprofil sind alle 12 Ansichten deutlich schneller als E0 (−300 bis −2084 ms).
+    - H05 mobil: 628 gegen 1060 ms.
+  - **Umkehrprobe:** Würde E0 auf diese Ausnahme verzichten? Nein. E0 verletzte auf H10 und H11 mobil die Budgets; der jetzige Stand ist in jedem Profil im Budget.
+  - **Folgen zweiter Ordnung:** keine für Nutzer. Für die Wartung bleibt M-28 (CSS im Dokument bei jedem Next-Update prüfen).
+- **AUSNAHME 1 · Z-04 Gestaltung** (vorsorglich; sie entfällt, wenn der Endprüfer Z-04 bestätigt), Denkprotokoll:
+  - **Ziel:** Jede Hauptansicht hat einen Ansichtswert ≥ 8, keine Kategorie unter 7, und der neue Stand wird im Blindvergleich überall vorgezogen.
+  - **Verlauf der Sichtabnahmen** (frische Prüfer, nur Bilder):
+
+    | Stand | Werte |
+    |---|---|
+    | Referenz E2 | 6,8 → 7,0 |
+    | E4 | Mittel 6,2 (5,2–7,3) |
+    | E5 | Mittel 7,0 (6,0–7,7) |
+    | E6-L-34 | H01 8,0; H02 7,5; H03 7,3; H12 7,7; H05 7,2; H06 7,3; H08 7,7; H09 7,2; H04 7,5; H07 7,7; H10 7,5; H11 7,5 |
+
+    In E6-L-34 hat H09 in „Details“ eine 6.
+  - **Zwei belegte Anläufe je Ansicht und Kategorie:** Befundrunde 1 (E5-BEFUND-H01 bis H12) und Befundrunde 2 (E6-BEFUND2). L3 lässt keine dritte zu.
+  - **Drei Wege:**
+    1. Eine dritte Befundrunde. Ausgeschlossen durch L3.
+    2. Inhalte ändern, die die Noten drücken: Platzhalterartikel, AGB-Platzhalter, fehlende Fotos. Inhalte sind nur als Vorschlag erlaubt (TEXTE), Fotos werden nicht erzeugt (M-01).
+    3. **AUSNAHME (gewählt)**, mit Ersatz: Blindvergleich und Urteil des frischen Endprüfers je Ansicht (E6-L-13), dazu die Galerie für das Geschmacksurteil des Menschen (M-08).
+  - **Umkehrprobe:** Der Abstand zu 8 kommt vor allem von Details und Komposition einzelner Ansichten sowie von Inhalten, die nur ein Mensch liefern kann: Fotos, Katalog, Firmendaten (M-01, M-02, M-25).
+  - **Folgen zweiter Ordnung:** Die offenen Befunde der Sichtabnahme E6-L-34 bleiben als Liste für eine spätere Runde nach dem Zusammenführen (BERICHT, Abschnitt Abschluss).
+- **Bildsatz (G4, Vermerk):**
+  - Bildsatz, Blindvergleich und Galerie von Abschlussversuch 1 (`_werkstatt/bilder/abschluss/`, `blind/`, `galerie.html`) sind entfernt (5c8e7c5). Sie bleiben in der Geschichte des Zweigs.
+  - Gleichwertiger Ersatz aus Abschlussversuch 2 nach dem Paket E7-DOKUMENTAR-03. Der Schlüssel liegt außerhalb des Repositorys an einem Ort, den keine Repository-Datei nennt.
+- **Weiter:** ABNAHME je Kriterium, BERICHT-Abschnitt „Abschluss“, Endprüfung E6-L-13 (frischer Opus-Agent, zuerst Teil A blind), danach ABSCHLUSS oder HALT.

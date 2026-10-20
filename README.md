@@ -49,6 +49,8 @@ SM24_DATA=json npx next build
 - **Datenschicht** (`src/lib/data/index.ts`): Payload-Adapter oder JSON-Adapter (`json-adapter.ts`) auf `content/`. Fehlt eine Datei, greifen die Standardwerte aus `src/lib/data/defaults/`.
 - **Formulare:** zod (`^4.4.3`) wird in drei Quelldateien importiert. `react-hook-form` steht in `package.json`, wird aber nicht importiert.
 - **Schriften:** IBM Plex Sans, Inter und IBM Plex Mono über `next/font/google` (`src/app/(site)/layout.tsx`, Variablen `--font-display`, `--font-body`, `--font-mono`).
+  - Während die Schriften laden, stehen maßgleiche lokale Ersatzschriften dahinter (`SM24 Ersatz …` in `src/app/(site)/globals.css`, Stapel in `tailwind.config.ts`); so verrutscht beim Schrifttausch nichts.
+- **CSS im Dokument:** `experimental.inlineCss` in `next.config.ts` schreibt das CSS als `<style>` in jede Seite und spart auf langsamen Leitungen eine Anfrage vor dem ersten Zeichnen. Die Option ist noch experimentell: bei jedem Next-Update prüfen, ob sie bleiben soll; abschalten durch Entfernen der Zeile.
 - **Zwischenstände** der Abläufe liegen im Browser (`src/lib/flow/use-flow.ts`, `src/lib/client-state.ts`). Der Warenkorb ist ein Zustand-Store (`src/lib/store/cart.ts`).
 - **Verzeichnisse:** `src/app/(site)/` (Website), `src/app/(payload)/` (Backend), `src/components/<bereich>/`, `src/components/visual/` (Formsystem), `src/lib/` (`pricing.ts`, `scheduling.ts`, `actions/`, `integrations/`).
 
