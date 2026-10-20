@@ -4,6 +4,7 @@ import type { ComponentType } from 'react';
 
 import { getPageContent, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
+import { SicherheitscheckRechner } from '@/components/calculator/sicherheitscheck-rechner';
 import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
@@ -337,6 +338,110 @@ export default async function SicherheitstechnikPage() {
                 Hinweise zum Datenschutz
               </Link>
             </p>
+          </div>
+        </div>
+      </Section>
+
+
+
+      {/* Expansion: Architektonische Methodik, Leistungsstufen und Rechner */}
+      <Section id="architektonische-methodik">
+        <SectionHeading
+          nummer="05"
+          eyebrow="Methodik & Analyse"
+          title="Systematische Sicherheitsarchitektur für Ihr Objekt"
+          lead="Wir betrachten Sicherheit nicht als Summe von Einzelteilen, sondern als geschlossene Architektur."
+        />
+
+        <div className="mt-12 grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-7 space-y-8">
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Fundamentale Prinzipien der Absicherung</h3>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Eine wirksame Sicherheitsstrategie baut auf ineinandergreifenden Ringen auf. Die physische Hülle bildet den ersten Widerstand (mechanische Grundsicherung). Sensoren und Kameras (elektronische Überwachung) bilden den zweiten Ring, der frühzeitig alarmiert und dokumentiert. Die intelligente Vernetzung (Zutrittskontrolle) regelt schließlich, wer wann welche Zonen betreten darf. Diese drei Säulen müssen exakt aufeinander abgestimmt sein, um Schwachstellen an den Schnittstellen zu vermeiden.
+              </p>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Unsere Methodik beginnt immer mit einer rigorosen Schwachstellenanalyse vor Ort. Wir bewerten Fenster, Türen, Kellerschächte und Dachzugänge nach DIN EN 1627 und empfehlen Maßnahmen, die den realen Angriffsvektoren entsprechen. Oftmals ist ein massiver Querriegel effektiver als eine komplexe Kameraanlage – wir planen objektiv und herstellerunabhängig.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Die drei Leistungsstufen der Sicherheitstechnik</h3>
+              <div className="overflow-x-auto rounded-lg border border-[oklch(0.89_0.008_260/0.55)]">
+                <table className="w-full text-left text-sm text-[oklch(0.32_0.02_260)]">
+                  <thead className="bg-[oklch(0.968_0.004_260)] text-[oklch(0.16_0.02_260)]">
+                    <tr>
+                      <th className="border-b border-[oklch(0.89_0.008_260/0.55)] p-4 font-semibold">Stufe</th>
+                      <th className="border-b border-[oklch(0.89_0.008_260/0.55)] p-4 font-semibold">Fokus</th>
+                      <th className="border-b border-[oklch(0.89_0.008_260/0.55)] p-4 font-semibold">Komponenten</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)]">
+                    <tr>
+                      <td className="p-4 font-medium text-[oklch(0.16_0.02_260)]">BASIS</td>
+                      <td className="p-4">Physischer Widerstand, Verzögerung von Einbruchsversuchen.</td>
+                      <td className="p-4">Sicherheitszylinder, Schutzbeschläge, Pilzkopfverriegelungen.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium text-[oklch(0.16_0.02_260)]">ERWEITERT</td>
+                      <td className="p-4">Zusätzliche Abschreckung und frühzeitige Alarmierung.</td>
+                      <td className="p-4">Basis + Alarmanlage, Bewegungsmelder, einfache Videoüberwachung.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium text-[oklch(0.16_0.02_260)]">VOLLSCHUTZ</td>
+                      <td className="p-4">Umfassende Kontrolle, Aufzeichnung und proaktive Steuerung.</td>
+                      <td className="p-4">Erweitert + IP-Kamerasysteme, elektronische Zutrittskontrolle, Smart-Home Integration.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Zertifizierte Komponenten und DIN-Normen</h3>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Der Einbau von Sicherheitstechnik ist Vertrauenssache, erfordert aber auch messbare Standards. Wir verwenden ausschließlich Komponenten, die nach DIN 18104 (für einbruchhemmende Nachrüstprodukte) und DIN EN 1627 (für einbruchhemmende Türen und Fenster) geprüft sind. VdS-anerkannte Systeme garantieren zudem höchste Zuverlässigkeit und werden von Versicherungen bei der Beitragsberechnung positiv berücksichtigt.
+              </p>
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Die fachgerechte Montage ist dabei ebenso wichtig wie das Produkt selbst. Ein RC2-zertifizierter Fenstergriff nützt wenig, wenn er mit zu kurzen Schrauben im weichen Kunststoffprofil befestigt wird. Unsere Techniker sind geschult, die strukturelle Integrität des Untergrunds zu bewerten und die Befestigungsmittel entsprechend der Herstellervorgaben und Prüfzeugnisse auszuwählen.
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="sticky top-28">
+              <SicherheitscheckRechner />
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="sicherheit-faq" tone="muted">
+        <SectionHeading
+          nummer="06"
+          eyebrow="FAQ & Expertenwissen"
+          title="Häufige Fragen zur Objekt- und Gebäudesicherheit"
+        />
+        <div className="mt-12 max-w-3xl space-y-8">
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">1. Reicht eine elektronische Alarmanlage als alleiniger Schutz aus?</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">Nein. Eine Alarmanlage meldet den Einbruch, verhindert ihn aber nicht. Ohne adäquate mechanische Sicherungen haben Täter oft leichtes Spiel und können innerhalb weniger Minuten flüchten, bevor Sicherheitskräfte eintreffen. Elektronik ist immer als Ergänzung zur soliden Mechanik (Zylinder, Beschläge, Riegel) zu betrachten.</p>
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">2. Welche Widerstandsklasse (RC) wird für Privathaushalte empfohlen?</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">Die Polizei rät für private Wohnungen und Häuser generell zu Elementen der Resistance Class 2 (RC 2). Diese bieten einen effektiven Basisschutz gegen Gelegenheitstäter, die versuchen, mit einfachen Werkzeugen wie Schraubendrehern oder Keilen in das Gebäude einzudringen. Für besonders gefährdete Bereiche oder Gewerbeobjekte empfehlen wir RC 3.</p>
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">3. Muss Sicherheitstechnik regelmäßig gewartet werden?</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">Ja, absolut. Elektronische Systeme (Kameras, Alarmanlagen) erfordern regelmäßige Software-Updates und Funktionstests der Sensoren und Akkus. Mechanische Bauteile müssen auf Leichtgängigkeit, Verschleiß und festen Sitz geprüft und gegebenenfalls geschmiert oder nachjustiert werden, um ihre Schutzwirkung dauerhaft zu gewährleisten.</p>
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">4. Was ist bei der Installation von Videoüberwachung rechtlich zu beachten?</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">Kameras dürfen auf privaten Grundstücken nur den eigenen Bereich erfassen. Öffentliche Gehwege, Straßen oder Nachbargrundstücke sind tabu (Recht auf informationelle Selbstbestimmung). Zudem muss durch deutliche Hinweisschilder auf die Videoüberwachung aufmerksam gemacht werden. Die Speicherdauer der Aufnahmen sollte auf das Nötigste (meist 48 bis 72 Stunden) begrenzt sein.</p>
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">5. Gibt es staatliche Förderungen für den Einbau von Sicherheitstechnik?</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">Ja, die KfW (Kreditanstalt für Wiederaufbau) bietet Zuschüsse für einbruchhemmende Maßnahmen in Bestandsgebäuden an. Voraussetzung ist oft, dass die Produkte bestimmte DIN-Normen erfüllen (z. B. RC 2) und der Einbau durch einen Fachbetrieb erfolgt. Der Förderantrag muss zwingend vor Beginn der Maßnahmen gestellt werden.</p>
           </div>
         </div>
       </Section>
