@@ -146,7 +146,7 @@ export default async function MarkenPage() {
                   </span>
                   <GlyphPfeilRechts
                     size={18}
-                    className="mt-1 shrink-0 text-foreground-muted transition-transform group-hover:translate-x-0.5"
+                    className="mt-1 shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
                   />
                 </Link>
               </li>
@@ -196,7 +196,7 @@ export default async function MarkenPage() {
                     {link.label}
                     <GlyphPfeilRechts
                       size={16}
-                      className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                      className="shrink-0 text-foreground-subtle transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
                     />
                   </Link>
                 </li>

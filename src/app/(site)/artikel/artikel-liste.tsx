@@ -132,7 +132,7 @@ export function ArtikelListe({ articles, hinweis, className }: ArtikelListeProps
                           />
                           <span
                             className={cn(
-                              'inline-flex min-h-touch items-center gap-1.5 rounded-lg border px-3.5 text-small font-semibold transition-colors',
+                              'inline-flex min-h-touch items-center gap-1.5 rounded-lg border px-3.5 text-small font-semibold transition-colors duration-quick ease-standard',
                               'peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background',
                               an
                                 ? 'border-primary bg-primary-soft text-primary'

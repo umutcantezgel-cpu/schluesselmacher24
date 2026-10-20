@@ -159,7 +159,7 @@ export default async function ServiceDetailPage(props: PageProps) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="inline-flex min-h-touch items-center gap-2 rounded-lg border border-border bg-surface px-4 text-small font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                className="inline-flex min-h-touch items-center gap-2 rounded-lg border border-border bg-surface px-4 text-small font-semibold text-foreground transition-colors duration-quick ease-standard hover:border-primary hover:text-primary"
               >
                 {link.label}
                 <GlyphPfeilRechts size={16} />

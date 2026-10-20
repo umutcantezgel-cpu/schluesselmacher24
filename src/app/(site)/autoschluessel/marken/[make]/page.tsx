@@ -342,7 +342,7 @@ export default async function MakePage(props: PageProps) {
                     {link.label}
                     <GlyphPfeilRechts
                       size={16}
-                      className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                      className="shrink-0 text-foreground-subtle transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
                     />
                   </Link>
                 </li>

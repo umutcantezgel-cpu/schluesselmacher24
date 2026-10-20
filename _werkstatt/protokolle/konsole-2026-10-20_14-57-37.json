@@ -1,0 +1,89 @@
+{
+  "skript": "konsole",
+  "zeit": "2026-10-20T12:57:37.493Z",
+  "argumente": {
+    "_": [],
+    "routen": "/autoschluessel/marken,/autoschluessel/marken/volkswagen,/artikel,/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder,/sicherheitstechnik/alarmtechnik"
+  },
+  "geraet": "desktop",
+  "ergebnisse": [
+    {
+      "ansicht": "autoschluessel-marken",
+      "pfad": "/autoschluessel/marken",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=ds7iW_8pVd-6zcUZ",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=xS-7OHKavslhFyQ6",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "autoschluessel-marken-volkswagen",
+      "pfad": "/autoschluessel/marken/volkswagen",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?marke=volkswagen&_rsc=CV2f_gLP0yRILyXw",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=3p4ndJ6DaM4j9Myv",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "artikel",
+      "pfad": "/artikel",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "tuer-und-schliesstechnik-profilzylinder-und-spezialzylinder",
+      "pfad": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?thema=tuer-und-schliesstechnik&_rsc=xJSA0Eu8g8BBomxy",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "sicherheitstechnik-alarmtechnik",
+      "pfad": "/sicherheitstechnik/alarmtechnik",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    }
+  ]
+}
