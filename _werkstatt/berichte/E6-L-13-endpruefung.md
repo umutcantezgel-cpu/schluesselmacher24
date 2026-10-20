@@ -108,4 +108,14 @@ Höchstens zwei Ausnahmen: erfüllt (zwei, keine für Z-02).
 
 ABSCHLUSS ist nicht möglich: Z-10 ist nicht bestätigt (README nennt 66 statt 73 Unit-Testdateien, die Standardannahme in MENSCHEN M-02 ist veraltet, M-07 nennt Firefox nicht); alle übrigen Zeilen, Z-01 bis Z-09, AUSNAHME 1 und 2 sowie U-1 bis U-4, sind bestätigt oder als Ausnahme bestätigt.
 
+## 6 · Nachprüfung Z-10
+
+Geprüft nach der Berichtigung in Commit 486b43e (nur Texte: `README.md`, `MENSCHEN.md`, `ABNAHME.md`). Die übrigen Zeilen oben bleiben unverändert.
+
+Z-10 · bestätigt · `README.md` (Zeile 74), `MENSCHEN.md` (M-02, M-07), `src/components/layout/site-footer.tsx` (Zeilen 49–52), `protokolle/E7-PRUEFER-C-test-unit.log`, dazu `BERICHT.md`, `KERN.md`, `bilder/galerie.html` · README nennt jetzt „73 Unit-Testdateien mit 1217 Tests“, und das stimmt mit dem dort genannten Befehl (73) und dem Unit-Protokoll (73 Dateien, 1217 Tests) überein; M-02 beschreibt den Fuß so, wie ihn der Code baut (bei Platzhalterdaten keine Firmenzeilen, Redaktionshinweis nur bei `NODE_ENV !== 'production'`), M-07 nennt Safari auf iPhone und Computer, Chrome auf Android, Firefox sowie VoiceOver, TalkBack und NVDA und deckt damit U-1 bis U-3; BERICHT (Galerie, Anleitung zum Zusammenführen und Zurückrollen, Hinweis zu `_werkstatt`), KERN 1.19 und die übrigen README-Stichproben waren schon bestätigt.
+
+Hinweise ohne Einfluss auf die Zeile: D-008 beschreibt noch die frühere Fassung des Fußes (Redaktionshinweis ohne Einschränkung auf die Entwicklung); maßgeblich ist der Code. Der Codekommentar in `site-footer.tsx` verweist auf D-016, ein Etappentor. Die neue Spalte „Was fehlt“ bei AUSNAHME 1 entspricht den Werten aus Teil C. Die Z-04-Zeile von ABNAHME nennt in „Stand“ weiter die Werte von E6-L-34.
+
+Neues Gesamturteil: ABSCHLUSS ist möglich, denn alle Zeilen sind bestätigt oder als Ausnahme bestätigt: Z-01 bis Z-03, Z-05 bis Z-07, Z-09 und Z-10 sowie U-1 bis U-4 bestätigt, Z-04 und Z-08 über AUSNAHME 1 und AUSNAHME 2 bestätigt, mit zwei Ausnahmen und keiner für Z-02.
+
 === ENDE E6-L-13 · BEREIT ZUR RÜCKGABE ===

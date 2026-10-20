@@ -117,7 +117,7 @@ Rolle: L = Leitung (Opus, Stufe 3), K = Kundschafter, P = Prüfer, B = Baumeiste
 | E6-BEFUND2-* | Befundpakete der Sichtabnahme E5-L-29, Runde 2 von 2 (H01 bis H12, Service, Artikel, Standort) | B/Haiku | je Ansicht | E6-L-31 | Z-04 | Welle 1 c9b49e2 (D-047), Welle 2 fc51625 (D-048) |
 | E6-P-C | Prüfstufe C, Abschlussversuch 1 | P/Haiku | Protokolle | Pflicht | Z-02 bis Z-09 | 1a6425b, Ergebnis db3de18 (D-049) |
 | E6-D-02 | Blindvergleich vorbereiten, Galerie, Bericht | D/Haiku | `_werkstatt/bilder/`, BERICHT | E6-P-C | Z-04, Z-10 | 1a6425b (Stand Abschlussversuch 1; wird nach Abschlussversuch 2 erneuert) |
-| E6-L-13 | Endprüfung durch frischen Opus-Unteragenten, Abschluss | L/Opus | ABNAHME, BERICHT | E6-D-02 | alle | |
+| E6-L-13 | Endprüfung durch frischen Opus-Unteragenten, Abschluss | L/Opus | ABNAHME, BERICHT | E6-D-02 | alle | 486b43e, Abschluss-Commit · `berichte/E6-L-13-endpruefung.md`: ABSCHLUSS möglich |
 | E7-L-35 | Register K-007 vervollständigt, Dauer-Tokens, ungenutzter Keyframe entfernt | L/Opus | KERN 1.16, `globals.css`, Kopf, Schließplan | E6-P-C | Z-05 | 2cdcbab |
 | E7-W-01 | Werkzeuge: `messung --vergleich`, `ladeweg`, `bewegung` am gerenderten Treffer, `animationen --bedienen` | W/Haiku | `_werkstatt/werkzeuge/` | E6-P-C | Z-05, Z-08 | ed71c48 · abgenommen (Prüfstufe A R2, wf_f71d2297-859) |
 | E7-L-36 | Menü öffnen ohne erzwungenes Layout (rAF-Fokus, Transition, memo) | L/Opus | `site-header.tsx` | D-049 | Z-08 | db3de18 |

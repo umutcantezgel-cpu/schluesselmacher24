@@ -23,7 +23,27 @@
 - Die offenen Hinweise der letzten Gestaltungsprüfung stehen in `_werkstatt/berichte/E6-L-34-sichtabnahme-*.md`, je Seite mit Vorschlag. Sie passen gut zu einer Runde nach dem Zusammenführen, wenn Fotos und echte Inhalte da sind.
 - Was du prüfen oder entscheiden solltest, steht in `_werkstatt/MENSCHEN.md` (M-01 bis M-28).
 
-**Endprüfung:** Das Urteil des unabhängigen Endprüfers folgt unten, wörtlich.
+**Endprüfung (E6-L-13, frischer unabhängiger Prüfer, 20. Oktober 2026), Urteil wörtlich** (Bericht: `_werkstatt/berichte/E6-L-13-endpruefung.md`):
+
+Blindvergleich: Der neue Stand ist auf 12 von 12 Hauptansichten vorgezogen.
+
+- Z-01 · bestätigt · `PLAN.md` · 101 von 102 Pflichtzeilen tragen eine Commit-Kennung (Stichprobe von 17 Kennungen vorhanden); offen ist nur E6-L-13 selbst, das mit diesem Bericht erledigt ist; die Kür K-01 bis K-06 ist mit Beleg abgearbeitet.
+- Z-02 · bestätigt · `protokolle/E7-PRUEFER-C-build.log`, `E7-L-44-build.log`, `-typecheck.log`, `-lint.log`, `-test-unit.log`, `-test-db.log`, `-funktionsliste.log`, `funktionsliste-2026-10-15_23-58-16.md` (E0), `-konsole.log`, `-logik.log`, `-textabzug.log` · Build 208/208, Typprüfung und Linter EXIT 0, Unit 1217/1217 in 73 Dateien, DB 52/52, Funktionsliste 14/14 mit denselben Messwerten wie im E0-Lauf, Konsole 0/0/0 in 23 Ansichten, Logikwächter 0 abweichend, Textabzug 6/6 gleich; die eine spätere Codeänderung (3315165, sechs `className`-Zeilen) ist mit Build und TypeScript EXIT 0 belegt und am Code als ohne Wirkung auf Tests und Linter begründet.
+- Z-03 · bestätigt · `protokolle/E7-PRUEFER-C-werte.log`, D-015/D-034/D-039 · 232 geänderte Dateien, 0 Funde ohne Ausnahme, 22 benannte Ausnahmen; eine eigene Stichprobe findet 0 freie Pixelwerte und Tokens in den neuen Bausteinen.
+- Z-04 · Ausnahme bestätigt · Bericht Teil C, `bilder/abschluss/`, `bilder/blind/`, ABNAHME AUSNAHME 1, D-051 · Die Notenschwelle ist verfehlt (8 oder mehr nur H01; H04 und H11 mit Kategorien bei 6), der Blindvergleich ist mit 12 von 12 erfüllt, und AUSNAHME 1 trägt.
+- Z-05 · bestätigt · `E7-PRUEFER-02-bildrate.log`, `E7-PRUEFER-C-bewegung-reduziert.log`, `-animationen.log`, `E7-L-44-animationen.log`, `-register.md`, KERN 1.19 · 8 von 8 Momenten mit Median 0,0 % verworfen (höchster Einzelwert 3,7 %) bei 390 × 844 und vierfacher Drosselung, reduziert 0 Befunde in 23 Ansichten, 0 unbekannte Keyframes, kein Übergang ohne Dauer-Token; offen nur R-8 (am Code belegt).
+- Z-06 · bestätigt · `E7-PRUEFER-C-svg.log`, D-049, G8 · 0 unbenannte sichtbare SVG, 0 doppelte ids, lucide 0; der einzige Befund `icon.svg` ist Logo und Favicon und nach G8 unantastbar.
+- Z-07 · bestätigt · `E7-PRUEFER-C-a11y.log`, `E7-L-44-a11y.log`, `-tastatur-mobil.log`, `-tastatur-desktop.log`, `area-theme.test.ts` · axe 0 ernst und 0 kritisch in 23 Ansichten auf beiden Geräten, Tastatur 7/7 je Gerät ohne fehlenden Fokus, Kontrasttests grün.
+- Z-08 · Ausnahme bestätigt · `E7-PRUEFER-02-messung-mobil.log`, `-messung-desktop.log`, `E7-PRUEFER-02-ergebnis.md`, `E7-PRUEFER-01-ergebnis.md` · Budgets auf allen 24 Serien eingehalten, mobil 36 von 36, Desktop 35 von 36 (H05 LCP +28 ms bei 24 ms Spanne); AUSNAHME 2 trägt.
+- Z-09 · bestätigt · `E7-PRUEFER-C-bildsatz.log`, `bilder/abschluss/` · 69 von 69 Läufen ohne Überlauf, kein überlappender Text, angeschnittene Wörter nur am Rand quer wischbarer Leisten, ein Thema, eine Sprache.
+- Z-10 (Nachprüfung) · bestätigt · `README.md` (Zeile 74), `MENSCHEN.md` (M-02, M-07), `src/components/layout/site-footer.tsx` (Zeilen 49–52), `protokolle/E7-PRUEFER-C-test-unit.log`, dazu `BERICHT.md`, `KERN.md`, `bilder/galerie.html` · README nennt jetzt „73 Unit-Testdateien mit 1217 Tests“, und das stimmt mit dem dort genannten Befehl (73) und dem Unit-Protokoll (73 Dateien, 1217 Tests) überein; M-02 beschreibt den Fuß so, wie ihn der Code baut (bei Platzhalterdaten keine Firmenzeilen, Redaktionshinweis nur bei `NODE_ENV !== 'production'`), M-07 nennt Safari auf iPhone und Computer, Chrome auf Android, Firefox sowie VoiceOver, TalkBack und NVDA und deckt damit U-1 bis U-3; BERICHT (Galerie, Anleitung zum Zusammenführen und Zurückrollen, Hinweis zu `_werkstatt`), KERN 1.19 und die übrigen README-Stichproben waren schon bestätigt.
+- AUSNAHME 1 (Z-04) · Ausnahme bestätigt · ABNAHME, D-051, `pakete/E5-BEFUND-*`, `pakete/E6-BEFUND2-*`, PLAN-Commits, `bilder/blind/`, `galerie.html` · Denkprotokoll, zwei belegte Befundrunden je Ansicht und eine tragende Ersatzlösung (Blindvergleich 12/12) liegen vor, die Ausnahme deckt nur den Notenteil ab; die Spalte „Was fehlt“ ist auf die Werte dieser Endprüfung zu berichtigen.
+- AUSNAHME 2 (Z-08) · Ausnahme bestätigt · ABNAHME, D-050, D-051, `E7-PRUEFER-01-ergebnis.md`, `E7-PRUEFER-02-ergebnis.md` · Zwei belegte Anläufe, Denkprotokoll und Ersatzlösung (alle Budgets mit großer Reserve) liegen vor; die Ausnahme deckt genau den einen Wert H05 Desktop LCP ab.
+- U-1 bis U-4: je eine Zeile „bestätigt“; der Wortlaut steht im Bericht.
+
+Gesamturteil: „ABSCHLUSS ist möglich, denn alle Zeilen sind bestätigt oder als Ausnahme bestätigt: Z-01 bis Z-03, Z-05 bis Z-07, Z-09 und Z-10 sowie U-1 bis U-4 bestätigt, Z-04 und Z-08 über AUSNAHME 1 und AUSNAHME 2 bestätigt, mit zwei Ausnahmen und keiner für Z-02.“
+
+Hinweis des Prüfers für die Zeit nach dem Zusammenführen: Für den Codestand 3315165 (sechs Klassen an Übergängen) gibt es kein eigenes Protokoll von Linter und Unit-Tests. Die Prüfungen liefen vor dem Commit grün (tsc 0, ESLint 0, Vitest 1217/1217, D-051); ein kurzer Lauf vor dem Zusammenführen ist trotzdem gut.
 
 ## Anleitung · Zusammenführen und Zurückrollen
 

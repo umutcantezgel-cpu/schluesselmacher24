@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe Abschluss · Welle Endprüfung · Pflicht 106/107 · Kür 6/6 · Kriterien 8/10 (Z-04 und Z-08 als Ausnahme) · Ausnahmen 2 · Bestand grün (Build 208/208, Tests 1217, DB 52/52, Logikwächter 0) · Nächster Schritt: Endprüfung E6-L-13 (Teil A blind)
+ABSCHLUSS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe Abschluss · Welle – · Pflicht 107/107 · Kür 6/6 · Kriterien 10/10 (8 bestätigt, Z-04 und Z-08 als Ausnahme bestätigt) · Ausnahmen 2 · Bestand grün (Build 208/208, Tests 1217, DB 52/52, Logikwächter 0) · Nächster Schritt: Zusammenführen nach Entscheidung des Menschen (BERICHT, Anleitung)
 
 # Status des Gestaltungslaufs
 
@@ -53,3 +53,4 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe Abschlus
 - 18.10.2026 15:10 · Prüfstufe C, Abschlussversuch 2 (wf_7a2d5363-c26, Nachlese wf_6c8d5283-31b): Bestand grün, 14/14, Tastatur 7/7, axe 0, Konsole 0, Bildrate 8/8, Leistung mobil 36/36, Desktop 35/36 (H05 LCP +28 bei Spanne 24). Register: R-1 bis R-8 offen. Teil 6 am Sitzungslimit gescheitert.
 - 20.10.2026 12:46 · Der Arbeitsprozess hing seit der Erinnerung vom 19.10. (Neustart), der Morgenbericht 19.10. fiel aus. Server neu, Morgenbericht 20.10. nachgeholt, nächste Erinnerung trig_01D5ohguFrkqDLFuLTXhdg71 (21.10. 07:00 Berlin).
 - 20.10.2026 13:09 · E7-L-44 (Register an den Code angeglichen, sechs Übergänge mit Token, KERN 1.19; Build nach Cache-Neuaufbau 208/208). Teil 6 vollständig. D-051: AUSNAHME 1 Z-04 (vorsorglich), AUSNAHME 2 Z-08. E7-D-03: neuer Bildsatz, Blindvergleich und Galerie. ABNAHME eingetragen, BERICHT-Abschnitt „Abschluss“.
+- 20.10.2026 13:40 · Endprüfung E6-L-13: Blindvergleich 12/12; Z-01 bis Z-03, Z-05 bis Z-07, Z-09 und Z-10 (nach Nachprüfung) bestätigt; Z-04 und Z-08 als Ausnahme bestätigt; U-1 bis U-4 bestätigt. ABSCHLUSS: CLAUDE.md-Block entfernt.
