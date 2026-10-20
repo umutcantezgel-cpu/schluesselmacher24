@@ -1,0 +1,3 @@
+
+### Neue interaktive Module
+- **Interactive Car Key Configurator**: Eingebaut in `src/app/(site)/autoschluessel/page.tsx` um interaktiv Kosten und Machbarkeit zu ermitteln. Nutzt React 19 Server Actions und das Swiss Light Mode Design.

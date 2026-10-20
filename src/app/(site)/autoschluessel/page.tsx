@@ -16,6 +16,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { CarKeyConfigurator } from '@/components/autoschluessel/car-key-configurator';
 
 const ROUTE = 'autoschluessel';
 
@@ -311,6 +312,70 @@ export default async function AutoschluesselHubPage() {
                   ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder '
                     + 'Preisrahmen. Erst dann buchen Sie einen Termin.'}
               </p>
+
+        <div className="prose prose-slate max-w-none mt-12 text-[oklch(0.32_0.02_260)]">
+            <h2 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mb-6">Architektonische Methodik & Technologische Expertise</h2>
+            <p className="mb-4">
+                Die moderne Fahrzeugsicherheitstechnik hat sich von rein mechanischen Schließsystemen zu hochkomplexen, kryptografisch abgesicherten Netzwerken entwickelt. Ein zeitgemäßer Autoschlüssel ist nicht länger nur ein passendes Stück Metall, sondern ein vollwertiger Authentifizierungs-Token, der permanent in einem verschlüsselten Dialog mit den Steuergeräten (ECU) Ihres Fahrzeugs steht. Unser Ansatz beim Nachmachen, Programmieren oder Reparieren von Autoschlüsseln basiert auf tiefgreifendem Verständnis dieser zugrundeliegenden Architektur. Wir betrachten jeden Auftrag nicht nur als handwerkliche Dienstleistung, sondern als hochspezialisierten datentechnischen Eingriff in die Sicherheitsinfrastruktur des Fahrzeugs.
+            </p>
+            <p className="mb-4">
+                Das Fundament unserer Arbeit bildet die präzise Analyse der vorhandenen Schließanlage und der dazugehörigen Elektronik. Wenn wir einen Schlüssel nachmachen, beginnen wir in der Regel mit der physischen Rekonstruktion des Schlüsselbarts. Dies geschieht heute nicht mehr manuell nach Augenmaß, sondern mittels hochpräziser CNC-Fräsmaschinen, die auf Basis von hinterlegten Code-Tabellen der Hersteller exakte Kopien mit minimalen Toleranzen im Mikrometerbereich anfertigen. Doch die eigentliche Herausforderung liegt im digitalen Bereich. Der im Schlüssel integrierte Transponder, der die Kommunikation mit der Wegfahrsperre übernimmt, muss exakt auf die spezifische Frequenz und das Protokoll des Fahrzeugs abgestimmt sein. Dies erfordert nicht nur das richtige Equipment, sondern auch fortlaufend aktualisiertes Fachwissen über die sich stetig wandelnden Verschlüsselungsstandards der verschiedenen Automobilhersteller.
+            </p>
+
+            <CarKeyConfigurator />
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-4">Der Programmierprozess: Diagnose und Kryptografie</h3>
+            <p className="mb-4">
+                Die Programmierung eines neuen Schlüssels ist ein mehrstufiger Vorgang. Zunächst muss eine Verbindung über die OBD-II-Schnittstelle (On-Board Diagnostics) des Fahrzeugs hergestellt werden. Hierbei setzen wir auf modernste Diagnosetechnik, die es uns ermöglicht, sicher auf die relevanten Steuergeräte, insbesondere das Wegfahrsperren-Modul, zuzugreifen. In vielen Fällen ist es notwendig, einen Security Access Code (PIN) auszulesen oder vom Hersteller anzufordern, um die Programmierroutinen freizuschalten. Dieser Prozess unterliegt strengen Sicherheitsvorkehrungen, um unbefugten Zugriff zu verhindern.
+            </p>
+            <p className="mb-4">
+                Nach erfolgreicher Autorisierung wird der neue Transponderchip im System registriert. Dabei wird oft ein neues kryptografisches Schlüsselpaar generiert oder ein Rolling-Code-Verfahren synchronisiert, um sicherzustellen, dass die Kommunikation zwischen Schlüssel und Fahrzeug abhörsicher bleibt. Bei Fahrzeugen mit Keyless-Go oder Smart-Key-Systemen wird zusätzlich die Nahfeldkommunikation (RFID/NFC) kalibriert, damit das Fahrzeug zuverlässig erkennt, wenn Sie sich nähern, und die Türen automatisch entriegelt. Jeder dieser Schritte erfordert absolute Präzision, da Fehlkonfigurationen im schlimmsten Fall zur vollständigen Sperrung des Motorsteuergeräts führen können.
+            </p>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Mechanik vs. Elektronik: Eine ganzheitliche Betrachtung</h3>
+            <p className="mb-4">
+                Trotz der Dominanz der Elektronik darf die mechanische Komponente nicht vernachlässigt werden. Ein perfekt programmierter Chip ist nutzlos, wenn der Schlüsselbart im Zylinderschloss hakt. Oft erleben wir Fälle, in denen verschlissene Originalschlüssel als Kopiervorlage dienen. Hier liegt unsere Expertise darin, nicht einfach den Verschleiß zu kopieren, sondern anhand der Abnutzungsmuster den ursprünglichen Code zu rekonstruieren (Decodierung). So erhalten Sie einen Schlüssel in Werksqualität, der Schließzylinder schont und eine lange Lebensdauer garantiert.
+            </p>
+            <p className="mb-4">
+                Ebenso bieten wir professionelle Reparaturen an. Ein defekter Taster auf der Platine, ein gebrochenes Gehäuse oder eine leere Batterie müssen nicht zwingend den Austausch des gesamten Schlüssels bedeuten. Durch mikroelektronische Lötverfahren können wir viele Defekte kostengünstig und nachhaltig beheben, ohne dass eine teure Neuprogrammierung erforderlich wird. Diese ressourcenschonende Herangehensweise ist fester Bestandteil unserer Philosophie.
+            </p>
+
+            <div className="my-12">
+                <h2 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mb-6">Umfassende Fachspezifische Fragen & Antworten</h2>
+
+                <div className="space-y-6">
+                    <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                        <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">1. Was genau passiert, wenn ein Schlüssel die Wegfahrsperre deaktiviert?</h4>
+                        <p className="text-sm">Beim Einschalten der Zündung sendet eine Spule am Zündschloss ein elektromagnetisches Feld aus, das den passiven Transponder im Schlüssel mit Energie versorgt. Der Transponder sendet daraufhin einen verschlüsselten Code zurück an das Motorsteuergerät. Nur wenn dieser Code mit dem im Steuergerät hinterlegten Wert übereinstimmt, wird die Kraftstoffzufuhr und die Zündung freigegeben. Dieser Handshake findet in Bruchteilen von Sekunden statt.</p>
+                    </div>
+
+                    <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                        <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">2. Warum ist das Nachmachen ohne Originalschlüssel deutlich teurer?</h4>
+                        <p className="text-sm">Fehlt der Originalschlüssel, müssen wir sowohl den mechanischen Schließcode als auch die elektronischen Zugangsdaten komplett neu ermitteln. Dies bedeutet oft, dass wir das Türschloss oder Zündschloss ausbauen und zerlegen müssen, um die mechanische Fräsung abzuleiten. Elektronisch muss das Steuergerät zurückgesetzt und mit neuen Schlüsseln synchronisiert werden, was bei vielen modernen Fahrzeugen einen enormen Aufwand und spezielle, herstellergebundene Software erfordert.</p>
+                    </div>
+
+                    <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                        <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">3. Können Sie jeden Keyless-Go-Schlüssel kopieren?</h4>
+                        <p className="text-sm">Wir decken eine sehr hohe Bandbreite an Herstellern ab, jedoch gibt es Ausnahmen. Einige der neuesten Fahrzeuggenerationen (insbesondere bei Premium-Herstellern) nutzen stark geschlossene Ökosysteme mit sogenanntem Component Protection (Komponentenschutz), bei dem selbst freie Werkstätten kaum Zugriff auf die Programmierroutinen erhalten. In solchen speziellen Fällen muss der Schlüssel zwingend über das Händlernetz des Herstellers bezogen werden.</p>
+                    </div>
+
+                    <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                        <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">4. Wie lange dauert die Neuprogrammierung eines Transponders?</h4>
+                        <p className="text-sm">Die reine Datenübertragung und Synchronisation dauert oft nur wenige Minuten. Der zeitaufwendige Teil ist jedoch die Vorbereitung: Das Herstellen der sicheren Verbindung über die OBD-Schnittstelle, das Auslesen der Sicherheitsprotokolle und das eventuelle Warten auf Freigabecodes vom Herstellerserver. Im Durchschnitt kalkulieren wir für eine Standard-Programmierung zwischen 20 und 45 Minuten ein.</p>
+                    </div>
+
+                    <div className="bg-[oklch(0.988_0.002_260)] p-6 rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                        <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">5. Was bedeutet &apos;Klonen&apos; im Gegensatz zum &apos;Anlernen&apos;?</h4>
+                        <p className="text-sm">Beim Klonen wird der exakte elektronische Code eines vorhandenen Schlüssels auf einen neuen, leeren Transponder 1:1 kopiert. Das Fahrzeug &apos;denkt&apos; weiterhin, es gäbe nur den einen ursprünglichen Schlüssel. Beim Anlernen hingegen wird ein komplett neuer, eindeutiger Code generiert und dem Fahrzeug mitgeteilt, dass nun ein weiterer, eigenständiger Schlüssel existiert. Das Anlernen ist die sicherere und professionellere Methode, wird jedoch nicht von jedem Diagnosegerät unterstützt.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p className="mb-8 font-medium text-[oklch(0.16_0.02_260)]">
+                Vertrauen Sie auf unsere Expertise. Wir bieten Ihnen transparente Prozesse, höchste technische Standards und Lösungen, die exakt auf die Anforderungen Ihres Fahrzeugs zugeschnitten sind.
+            </p>
+        </div>
+
               <p>
                 Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem
                 mechanischen Bart und der Elektronik. Für Ihren Auftrag ist entscheidend, welcher der
