@@ -23,6 +23,24 @@ Alles liegt auf dem Zweig `claude/projekt-gestaltung-entwicklung-tofodh`. Er zwe
 - Nach dem Zusammenführen: `git revert -m 1 <Merge-Commit>` auf `main` und pushen – das nimmt alle Änderungen in einem neuen Commit zurück, ohne die Geschichte umzuschreiben.
 - Einzelne Pakete: Jeder Commit trägt seine Kennung (etwa `[E7-L-36]`); `git log --grep "E7-L-36"` findet ihn, `git revert <commit>` nimmt ihn zurück.
 
+## Morgenbericht · Dienstag, 20. Oktober 2026 (nachgeholt um 14:50 Uhr)
+
+Der Bericht vom 19. Oktober fehlt: Der Arbeitsprozess hing nach einem Neustart über einen Tag, ohne dass etwas verloren ging. Seitdem lief nichts weiter, dieser Bericht holt beide Tage nach.
+
+**Fertig seit Sonntag** (Bilder in `bilder/morgen-2026-10-20/`)
+- Auf dem Handy laden alle 12 Hauptseiten jetzt schneller als vor dem Umbau: die Überschrift steht 0,3 bis 0,4 Sekunden früher, im Warenkorb sogar nach 0,5 statt 2,6 Sekunden. Beim Laden verrutscht nichts mehr; nur in Warenkorb und Kasse bleibt eine winzige Bewegung, ein Zehntel von früher.
+- Das Menü reagiert schneller als vorher. Keine der acht großen Zeichnungen ruckelt mehr (`fraesbahn-mitte__desktop.jpg`, `schliessanlagen__desktop.jpg`).
+- Die Linien im Ablaufbild enden jetzt über der Schrift (`ablauf-ohne-ueberschneidung__desktop.jpg`), die Legende der Türzeichnung ist gut lesbar (`tuertechnik-legende__desktop.jpg`).
+- Die zweite Schlussprüfung ist sauber: alle 14 Abläufe, die 7 Hauptaufgaben auch nur mit der Tastatur, keine Zugänglichkeits- und keine Browserfehler (`kasse__mobil.jpg`, `startseite__mobil.jpg`).
+
+**Ehrlich**
+- Am großen Bildschirm erscheint der Code-Shop 0,03 Sekunden später als vorher, knapp mehr als die normale Messschwankung. Mehr als zwei Anläufe erlaubt die Regel nicht; das wird eine begründete Ausnahme.
+- Die Gestaltungsnoten liegen bei etwa 7,5 von 10 statt 8. Das wird die zweite und letzte erlaubte Ausnahme; das Urteil fällt die unabhängige Endprüfung.
+
+**Als Nächstes:** zwei kleine Unstimmigkeiten in der Bewegungsliste beheben, neue Vorher-Nachher-Bilder und Blindvergleich, Endprüfung, Übergabe.
+
+**Für dich:** eine neue Ladeoption, die bei Updates zu prüfen ist (M-28), Platzhalter in den AGB (M-05), nur 8 Beispielartikel (M-25), Zusagen auf der Bestellbestätigung (M-26), Firmendaten (M-02), Galerie ansehen (M-08). Nichts ist veröffentlicht.
+
 ## Morgenbericht · Sonntag, 18. Oktober 2026, 07:00 Uhr (geschrieben um 10:40 Uhr nach einem Neustart)
 
 **Fertig seit gestern**

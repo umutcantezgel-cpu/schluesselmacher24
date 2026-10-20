@@ -1,4 +1,4 @@
-STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 7 · Welle Anlauf 2 (E7-L-43) · Pflicht 99/107 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 · Bestand grün (tsc 0, ESLint 0, Vitest 1217, Logikwächter 0) · Nächster Schritt: Build-Gate, Prüfstufe C Abschlussversuch 2
+STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 7 · Welle Prüfstufe C, Abschlussversuch 2 (Auswertung) · Pflicht 101/107 · Kür 6/6 · Kriterien 0/10 · Ausnahmen 0 (geplant 2: Z-04, Z-08) · Bestand grün (Build 208/208, Tests 1217, DB 52/52, Logikwächter 0) · Nächster Schritt: Register-Nacharbeit E7-L-44, Teil 6 vollständig, D-051, Bildsatz und Blindvergleich, Endprüfung
 
 # Status des Gestaltungslaufs
 
@@ -50,3 +50,5 @@ STATUS · Branch claude/projekt-gestaltung-entwicklung-tofodh · Etappe 7 · Wel
 - 18.10.2026 08:40 · Neustart des Containers. Abschlussversuch 1 ausgewertet (Z-08 Abstand zu E0 und Bildrate nicht erfüllt, siehe Plan E7 „Absichern“). Morgenbericht 18.10. mit 6 Bildern (`bilder/morgen-2026-10-18/`).
 - 18.10.2026 09:40 · D-049: Ursachen gefunden (Menü: Fokus im Klick und `:has()` mit Attributen machten jede Einfügung seitenweit teuer; Bildrate: Vorladen und Kopfgrafiken im Ladefenster). E7-L-36 bis L-42 umgesetzt, Klickverarbeitung 114 → 0–2 ms, Stil beim Öffnen 2 × 894 → 170 Elemente. Werkzeuge und Welle 1 laufen.
 - 18.10.2026 11:56 · Neustart des Arbeitsprozesses (Server aus), gesichert. Messung Anlauf 1 (E7-P-1): Bildrate 8/8 ≤ 5 %, INP 12/12, LCP mobil 3/12. Anlauf 2 (E7-L-43, D-050): CSS im Dokument, maßgleiche Ersatzschriften, Mono vorgeladen. Am Prüfstand mobil LCP 12/12 unter E0 (480–800 gegen 870–2580 ms), CLS nicht über E0, Desktop 36/36. KERN 1.18, M-28.
+- 18.10.2026 15:10 · Prüfstufe C, Abschlussversuch 2 (wf_7a2d5363-c26, Nachlese wf_6c8d5283-31b): Bestand grün, 14/14, Tastatur 7/7, axe 0, Konsole 0, Bildrate 8/8, Leistung mobil 36/36, Desktop 35/36 (H05 LCP +28 bei Spanne 24). Register: R-1 bis R-8 offen. Teil 6 am Sitzungslimit gescheitert.
+- 20.10.2026 12:46 · Der Arbeitsprozess hing seit der Erinnerung vom 19.10. (Neustart), der Morgenbericht 19.10. fiel aus. Server neu, Morgenbericht 20.10. nachgeholt, nächste Erinnerung trig_01D5ohguFrkqDLFuLTXhdg71 (21.10. 07:00 Berlin).
