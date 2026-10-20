@@ -1,0 +1,111 @@
+# E6-L-13 · Endprüfung des Gestaltungslaufs
+
+Rolle: unabhängiger Endprüfer (frischer Opus-Unteragent), Kern-Version 1.19. Grundlage: AUFTRAG Abschnitte 9 bis 11, `ABNAHME.md`, `KERN.md`, `ENTSCHEIDUNGEN.md` D-049 bis D-051, Prüfstufe C Abschlussversuch 2 (`protokolle/E7-PRUEFER-C-ergebnis-vollstaendig.md`, `E7-PRUEFER-02-ergebnis.md` und die Einzelprotokolle), Bildsätze `bilder/e0/`, `bilder/abschluss/`, `bilder/blind/`, `bilder/galerie.html`, `BERICHT.md`, `MENSCHEN.md`, `README.md`, `PLAN.md`.
+
+Vorgehen: Teil A blind und ohne andere Dateien (abgegeben vor dem Schlüssel), danach Schlüssel und Paket. Teil C vor dem Lesen von E6-L-34 bewertet. Keine Tests, Builds, Server oder Werkzeuge; nur gelesen (Dateien, Protokolle, Bilder, dazu lesende `git`-Abfragen für Commit-Kennungen und Änderungsumfang). Geschrieben wurde nur diese Datei.
+
+## 1 · Teil A und B · Blindvergleich und Auflösung
+
+Schlüssel laut Nachricht des Orchestrators. Das Blindurteil ist unverändert übernommen.
+
+| Ansicht | vorgezogen | Begründung (ein Satz, aus Teil A) | neuer Stand vorgezogen |
+|---|---|---|---|
+| V01 · H01 `/` | B | Die Profilschnitt-Zeichnung ersetzt den leeren „Bild folgt“-Platzhalter, der Hero ist typografisch kräftiger, und die nummerierte Leistungsliste mit farbigen Fachpiktogrammen wirkt fachlich, während A mit zweizeilig umbrechendem Hauptbutton und gleichförmigem Kachelraster generisch bleibt (Schwäche von B: mobil sind der Schlüsselkopf und die Kacheln seitlich angeschnitten). | ja (B = nachher) |
+| V02 · H02 `/autoschluessel` | A | Vier beschriftete Zeichnungen der Schlüsselbauformen erklären das Thema sofort, und die Begriffe stehen als ruhige Tabellenliste statt als Dutzend gleichförmiger „Zur Seite“-Karten, während B erneut einen leeren Fotoplatzhalter zeigt (Schwäche von A: mobil sind die Bauform-Kacheln seitlich angeschnitten). | ja (A = nachher) |
+| V03 · H03 Golf | A | Großer Titel mit Schlüssel-Illustration, Fahrzeugdatensatz in Monospace und eine nummerierte Einordnung wirken wie ein technisches Datenblatt, B dagegen kombiniert eine kleine Überschrift, ein Kartenraster und eine Platzhalterfläche ohne Bildinhalt. | ja (A = nachher) |
+| V04 · H04 Anfrage | B | Ein dreispaltiges Markenraster, die Schrittliste als Seitenleiste und ein eindeutig grau deaktivierter „Weiter“-Knopf ohne funktionslosen Zurück-Knopf auf Schritt 1 machen den Ablauf kompakter, während A mit blassblauem, halb aktiv wirkendem Button und langer einspaltiger Liste mehr Scrollarbeit verlangt (Schwäche von B: auffällige Leerfläche unter dem Raster). | ja (B = nachher) |
+| V05 · H05 Code-Shop | B | Die dichte Katalogliste mit Codenummer, Codeformat, Preis und der Sprungleiste MS/SP/BK passt zu einem Fachshop mit 52 Codelinien, A dagegen verschwendet je Artikel eine riesige leere Produktfotofläche. | ja (B = nachher) |
+| V06 · H06 MS-01 | B | Profilschnitt-Zeichnung, Lupe für die Codefundstelle, eine mitwachsende Schlüsselvorschau und Staffelpreise in Monospace geben der Produktseite Charakter, A dagegen zeigt zwei leere Fotoplatzhalter, „[Hersteller eintragen]“, kleingeschriebene Eigennamen und einen umbrechenden Foto-Button (Schwäche von B: die Kaufbox liegt auf dem Desktop erst unter der Falz). | ja (B = nachher) |
+| V07 · H07 Konfigurator | A | Die maßstäbliche Messzeichnung des Zylinders mit A/B-Bemaßung und die mobil fixierte Summenleiste sind echte Bedienhilfen, B ersetzt die Messzeichnung durch einen Platzhalter und zeigt auf Schritt 1 einen funktionslosen Zurück-Knopf. | ja (A = nachher) |
+| V08 · H08 Schließanlagen | B | Die interaktive Schließplan-Grafik (HS/ES, GHS-Baum, Schlüssel und Tür wählbar) erklärt die Systeme anschaulich, A besteht dagegen aus Fließtext, Infokarten und vier großen „Bild folgt“-Flächen (Schwäche von B: im Systemteil bleibt die linke Spalte ungenutzt). | ja (B = nachher) |
+| V09 · H09 Türtechnik | B | Die nummerierte Türzeichnung, deren Ziffern im Fließtext wieder aufgegriffen werden, und Linienlisten mit eigenen grünen Piktogrammen sind deutlich hochwertiger als das Platzhalterbild und das generische Icon-Kartenraster von A. | ja (B = nachher) |
+| V10 · H10 Warenkorb | B | Der Leerzustand mit kleiner Schlüsselzeichnung, die Linkliste als Seitenspalte und ein Footer ohne sichtbare Redaktionsplatzhalter wirken fertig, A dagegen lässt „[Platzhalter …]“ und einen Redaktionshinweis öffentlich im Footer stehen. | ja (B = nachher) |
+| V11 · H11 Kasse | B | Wie bei V10 schlagen der geordnete Leerzustand mit Liste der Rechtstexte und der saubere Footer die lose Linkzeile und den Platzhalter-Footer von A, auch wenn B eine verwaiste Abschnittsnummer „01“ ohne Bezeichnung zeigt. | ja (B = nachher) |
+| V12 · H12 Ratgeber | A | Das Ablaufdiagramm sichern–prüfen–bestellen, nummerierte Abschnitte und ein mitlaufendes Inhaltsverzeichnis geben dem Ratgeber eine klare Lesestruktur, B dagegen beginnt mit einer bildschirmfüllenden leeren Beitragsbildfläche und hat mobil einen zweizeilig umbrechenden Aufruf-Button (Schwäche von A: die Zickzack-Trenner zwischen allen Abschnitten sind etwas zu dekorativ). | ja (A = nachher) |
+
+**Ergebnis Teil B:** Der neue Stand ist auf **12 von 12** Hauptansichten vorgezogen. Die Vorbereitung entspricht Z-04: Ein Haiku-Dokumentar (`pakete/E7-DOKUMENTAR-03.md`, „Modell Haiku 5.5“) hat die Ordner neutral benannt und A/B je Ansicht per Zufall zugeteilt (`berichte/E7-DOKUMENTAR-03.md`, `secrets.choice`); der Schlüssel lag außerhalb des Repositorys. Einschränkung, ohne Einfluss auf das Urteil: V10 und V11 hatten je 5 statt 6 Bilder pro Seite, und die Bildsprache des neuen Stands ist über alle Ordner hinweg einheitlich und daher als Gruppe erkennbar.
+
+## 2 · Teil C · Bewertung der Nachher-Bilder (Z-04)
+
+Bilder: `bilder/abschluss/<id>__desktop__00…05` und `__mobil__00…05` (bei kürzeren Sätzen alle), dazu einige Tablet-Bilder, die Einzelbilder `abschluss/einzelbilder/` (H01, H02, H05, H08, H09, H12) und das Register K-007 (B-01 bis B-29). Für H10 und H11 sind die Hauptbilder Leerzustände; die gefüllten Zustände (`abschluss/gefuellt/`) sind in die Werte eingerechnet. Für H04 enthält der Bildsatz nur Schritt 1 des Ablaufs.
+
+Anker nach AUFTRAG Abschnitt 9: 5 sauber, aber vorhersehbar · 7 eigenständig, einzelne generische Stellen · 8 unverwechselbar und präzise, Bewegung mit Sinn · 9 man zeigt es anderen.
+
+| Ansicht | T | K | F | B | G | D | Wert | harte Treffer |
+|---|---|---|---|---|---|---|---|---|
+| H01 Start | 8 | 8 | 8 | 8 | 9 | 7 | 8,0 | keine |
+| H02 Autoschlüssel | 8 | 8 | 7 | 8 | 8 | 7 | 7,7 | keine |
+| H03 Modell Golf | 8 | 7 | 7 | 8 | 8 | 7 | 7,5 | keine |
+| H04 Assistent | 7 | 7 | 6 | 7 | 6 | 7 | 6,7 | keine |
+| H05 Code-Shop | 8 | 8 | 7 | 8 | 8 | 7 | 7,7 | keine |
+| H06 Codelinie MS-01 | 8 | 7 | 7 | 8 | 8 | 7 | 7,5 | keine |
+| H07 Zylinder-Konfigurator | 7 | 7 | 7 | 7 | 8 | 7 | 7,2 | keine |
+| H08 Schließanlagen | 8 | 7 | 8 | 8 | 9 | 7 | 7,8 | keine |
+| H09 Tür- und Schließtechnik | 8 | 7 | 7 | 8 | 8 | 7 | 7,5 | keine vom Lauf; sichtbare, unbelegte Bestandsaussage „zertifiziert … nach DIN EN 179 und DIN EN 1125“ (schon in E0, `e0/H09-tuertechnik__desktop__04.jpg`; offen als M-16) |
+| H10 Warenkorb | 8 | 7 | 7 | 7 | 7 | 7 | 7,2 | keine |
+| H11 Kasse | 8 | 7 | 7 | 7 | 6 | 6 | 6,8 | keine |
+| H12 Ratgeber | 8 | 8 | 7 | 8 | 7 | 7 | 7,5 | keine |
+
+Harte Katalogtreffer im Einzelnen: In den 12 Hauptansichten keine sichtbaren Platzhalter (die Firmendaten-Platzhalter des Fußes aus E0 sind nicht mehr sichtbar), keine Vorlader, keine Effekte, die Inhalte dauerhaft verdecken; feste untere Leisten (H04, H07, Warenkorb mobil) lassen den Inhalt darüber vollständig erreichen. Fokus und Kontrast lassen sich an Standbildern nicht beurteilen; dafür gelten die Protokolle unter Z-07. Eine Icon-Familie ist erkennbar; die Füllung ist uneinheitlich (Fach-Icons mit Fläche neben reinen Linien-Icons, etwa H08 „Für wen“, H02 Abschnittsköpfe), das werte ich als Detail, nicht als zweite Familie. Außerhalb der Hauptansichten zeigen AGB und Impressum „[Platzhalter: …]“; das ist unveränderter Rechtstext (UNANTASTBAR, Textabzug 6/6 gleich) und als M-05 offen.
+
+Begründung der Werte unter 8:
+- H01: Details 7 – mobil angeschnittener Schlüsselkopf im Hero, leere Bandflächen an Abschnittsenden (desktop 04, 05). Grafik 9 für Profilschnitt mit Fräser, Zylindermaß und GHS-Baum; B-01 erklärt das Fräsen (Einzelbilder 0–4).
+- H02: Farbe 7 – Bereichsblau fällt mit dem Aktionsblau zusammen, nach dem Kopf fast nur Grau. Details 7 – Keyless ohne Zeichnung, Fragen auf 8 Spalten mit leerem Rest, Schriftfeld mobil von der Aktionsleiste angeschnitten.
+- H03: Komposition 7 – Warnkasten und „Der nächste Schritt“ lassen ein Drittel leer. Farbe 7. Details 7 – Keyless als reine Textkarte in der Zeichnungsreihe.
+- H04: Farbe 6 und Grafik 6 – im Bildsatz steht nur Schritt 1: ein Markenraster ohne Bild oder Zeichnung in Grau und Blau. Typografie, Komposition, Bewegung 7 – sauber, aber vorhersehbar; Leerfläche unter dem Raster.
+- H05: Farbe 7 – nach dem Kopf Grau auf Off-White. Details 7 – Sprungleiste ohne aktiven Abschnitt und nur mit Kürzeln, Lupe zeigt Striche statt eines Codes.
+- H06: Komposition 7 – die linke Kopfspalte endet nach den Plaketten, die Kaufkarte liegt am Desktop unter der Falz. Farbe 7, Details 7 – Fundstellen-Reiter mobil angeschnitten, Rahmen in Rahmen.
+- H07: Typografie und Bewegung 7 – zweckmäßig, ohne eigenen Moment. Komposition und Details 7 – mobil rund 200 px Leerfläche nach „Bisher 1 von 30 möglichen Zylindern“. Grafik 8 für die bemaßte Zylinderzeichnung.
+- H08: Komposition 7 – leere linke Spalte im Systemteil, der GHS-Baum steht abgesetzt unter der Überschrift. Details 7 – gleichlautende „Projekt erfassen“, Icons mit uneinheitlicher Füllung. Grafik 9 für die Planfamilie.
+- H09: Komposition 7 – Textwand in Abschnitt 01, Regulatorik-Karte auf 8 Spalten mit leerem Rest. Farbe 7. Details 7 – Floskeln („Angriffsvektoren“, „höchste fachliche Expertise“), unbelegte Zertifizierungsaussage (Bestand).
+- H10: Leerzustand sauber, aber knapp; gefüllt trägt das Schriftfeld mit Mono-Beträgen (Typografie 8). Farbe, Bewegung, Grafik, Details 7 – wenig Bild, Positionsbild mobil winzig.
+- H11: Grafik 6 – die Kasse hat außer der kleinen Rohling-Skizze im Leerzustand keine Zeichnung. Details 6 – Augenbrauen nur „01“ bis „04“ ohne Wort, fünfmal „Noch nicht ausgefüllt“ in der Übersicht.
+- H12: Farbe und Grafik 7 – außer der dünnen Ablaufzeichnung kein Bild, gleiche Zickzack-Trenner zwischen allen Abschnitten. Details 7.
+
+**Ergebnis Teil C:** Ansichtswert ≥ 8 nur auf H01 (8,0); die übrigen 11 Ansichten liegen bei 6,7 bis 7,8. Kategorien unter 7: H04 Farbe 6 und Grafik 6, H11 Grafik 6 und Details 6. Die Notenschwelle von Z-04 ist damit nicht erreicht; der Blindvergleich (Teil B) ist erfüllt.
+
+### Abweichungen zur Sichtabnahme E6-L-34 (nach meinem Urteil gelesen)
+
+E6-L-34: H01 8,0 · H02 7,5 · H03 7,3 · H04 7,5 · H05 7,2 · H06 7,3 · H07 7,7 · H08 7,7 · H09 7,2 · H10 7,5 · H11 7,5 · H12 7,7.
+
+- **Über einen Punkt:** nur **H04 Grafik** (hier 6, E6-L-34: 8). Grund: E6-L-34 hat die Zeichnungen der Schritte 05 und 08 aus `schritte/01…13` bewertet. Dieser Ordner gehört zum Bildsatz von Abschlussversuch 1, der laut D-051 entfernt wurde (5c8e7c5); im heutigen Bildsatz `bilder/abschluss/` gibt es keinen Ordner `schritte/`, für H04 also nur Schritt 1. Dasselbe gilt für die Schritte des Konfigurators H07 (`schritte/14…18`).
+- Genau ein Punkt Unterschied in mehreren Kategorien (etwa H04 Farbe, H07 Typografie und Bewegung, H10 Farbe und Bewegung, H11 Grafik und Details, H05 Komposition, Bewegung und Grafik, H09 Grafik und Details). Die Ansichtswerte weichen um höchstens 0,8 ab (H04 6,7 gegen 7,5; H11 6,8 gegen 7,5; H05 7,7 gegen 7,2).
+- Allgemein: E6-L-34 bewertet den Stand von Abschlussversuch 1 (Kern 1.15). Ihre Bildpfade beziehen sich auf den entfernten Bildsatz, nicht auf den Bildsatz, den ABNAHME heute für Z-04 nennt.
+
+## 3 · Teil D · Kriterien gegen ihre Belege
+
+Pfade relativ zu `_werkstatt/`, sofern nicht anders angegeben.
+
+Z-01 · bestätigt · `PLAN.md` (Pflicht- und Kürtabelle) · 101 von 102 Pflichtzeilen tragen eine Commit-Kennung (Stichprobe von 17 Kennungen per `git cat-file` vorhanden), offen ist nur E6-L-13 selbst, das mit diesem Bericht erledigt ist, und die Kür K-01 bis K-06 ist mit Beleg abgearbeitet.
+Z-02 · bestätigt · `protokolle/E7-PRUEFER-C-build.log`, `E7-L-44-build.log`, `E7-PRUEFER-C-typecheck.log`, `E7-PRUEFER-C-lint.log`, `E7-PRUEFER-C-test-unit.log`, `E7-PRUEFER-C-test-db.log`, `E7-PRUEFER-C-funktionsliste.log`, `funktionsliste-2026-10-15_23-58-16.md` (E0), `funktionsliste-2026-10-18_14-42-36.md`, `E7-PRUEFER-C-konsole.log`, `E7-PRUEFER-C-logik.log`, `E7-PRUEFER-C-textabzug.log` · Build 208/208 (E0 198/198), Typprüfung und Linter EXIT 0, Unit 73 Dateien mit 1217/1217 (E0 680/680), DB 52/52, Funktionsliste 14/14 mit denselben Messwerten wie im E0-Lauf (14/14, Port 3100), Konsole 0/0/0 in 23 Ansichten, Logikwächter 0 abweichend und Textabzug 6/6 gleich; die einzige spätere Codeänderung (3315165, sechs `className`-Zeilen in fünf Dateien) ist mit Build und TypeScript EXIT 0 belegt (`E7-L-44-build.log`, Zeile 2170), und am Code gelesen importiert kein Test diese Dateien, die beiden dateilesenden Tests prüfen andere Muster, und die ESLint-Konfiguration hat keine Regel für Klasseninhalte.
+Z-03 · bestätigt · `protokolle/E7-PRUEFER-C-werte.log`, `ENTSCHEIDUNGEN.md` D-015, D-034, D-039 · 232 geänderte Dateien, 0 Funde ohne Ausnahme, 22 benannte Ausnahmen (18 Prüfmuster `rgb(`/`oklch(` in Generator-Tests, `themeColor` D-015, Canvas-Grund in `photo-upload.tsx` D-034, Farbe des OG-Bilds und sein Test D-039), und eine eigene Lesestichprobe findet 0 freie Pixelwerte in `src/**/*.tsx` und Tokens in neuen Bausteinen (`live-schluessel.tsx`, `schluesselarten-reihe.tsx`).
+Z-04 · Ausnahme bestätigt · Teil C dieses Berichts, `bilder/abschluss/`, `bilder/blind/`, `ABNAHME.md` (AUSNAHME 1), `ENTSCHEIDUNGEN.md` D-051 · Die Notenschwelle ist verfehlt (≥ 8 nur H01; H04 Farbe und Grafik 6, H11 Grafik und Details 6), der Blindvergleich ist mit 12 von 12 erfüllt, und AUSNAHME 1 trägt (Zeile unten).
+Z-05 · bestätigt · `protokolle/E7-PRUEFER-02-bildrate.log`, `E7-PRUEFER-02-ergebnis.md` (Zeile 120), `E7-PRUEFER-C-bewegung-reduziert.log`, `E7-PRUEFER-C-animationen.log`, `E7-L-44-animationen.log`, `E7-PRUEFER-C-register.md`, `KERN.md` K-007 (1.19) · 8 von 8 großen Momenten mit Median 0,0 % verworfen (höchster Einzelwert 3,7 %) bei 390 × 844 und vierfach gedrosseltem Prozessor (`werkzeuge/bewegung.mjs`, `setCPUThrottlingRate` 4), reduziert 0 Befunde, 0 laufende Animationen und 0 verborgene Inhalte in 23 Ansichten, 0 unbekannte Keyframes, eine eigene Suche findet keinen Übergang ohne Dauer-Token, und offen ist nur R-8 (B-13, im Register als nur am Code belegt geführt).
+Z-06 · bestätigt · `protokolle/E7-PRUEFER-C-svg.log`, `ENTSCHEIDUNGEN.md` D-049, `AUFTRAG.md` G8 und Vorrang · In 23 Ansichten gibt es 0 unbenannte sichtbare SVG, 0 doppelte ids und lucide 0 (`grep lucide-react src package.json`: 0); der einzige Dateibefund ist `src/app/(site)/icon.svg` (zwei Kommentare), das Logo und Favicon ist und nach G8 mit Vorrang vor der Abnahmeliste unverändert bleibt.
+Z-07 · bestätigt · `protokolle/E7-PRUEFER-C-a11y.log`, `E7-L-44-a11y.log`, `E7-PRUEFER-C-tastatur-mobil.log`, `E7-PRUEFER-C-tastatur-desktop.log`, `src/lib/visual/area-theme.test.ts` · axe meldet 0 ernste und 0 kritische Befunde in 23 Ansichten mobil und am Desktop (E0: 26 ernst, 4 kritisch), dazu 0/0 auf den fünf nach 3315165 geänderten Seiten; Tastatur 7 von 7 je Gerät mit „ohne sichtbaren Fokus: keine“, und die Kontrasttests (≥ 4,5:1 Text, ≥ 3:1 Grafik, 35 Tests) sind im Unit-Lauf grün.
+Z-08 · Ausnahme bestätigt · `protokolle/E7-PRUEFER-02-messung-mobil.log`, `E7-PRUEFER-02-messung-desktop.log`, `E7-PRUEFER-02-ergebnis.md`, `E7-PRUEFER-01-ergebnis.md`, `ABNAHME.md` (AUSNAHME 2) · Die Budgets sind auf allen 24 Serien eingehalten (mobil LCP höchstens 688 ms, Desktop höchstens 208 ms), gegen E0 heute sind mobil 36 von 36 und am Desktop 35 von 36 Werten erfüllt, die einzige Überschreitung ist H05 Desktop LCP (180 gegen 152 ms, +28 ms bei 24 ms Spanne), und AUSNAHME 2 trägt (Zeile unten).
+Z-09 · bestätigt · `protokolle/E7-PRUEFER-C-bildsatz.log`, `bilder/abschluss/` (224 Hauptbilder, 33 Stichprobenbilder) · 69 von 69 Läufen ohne Dokumentüberlauf in drei Größen, in den gesichteten Haupt- und Tabletbildern kein überlappender Text, angeschnittene Wörter nur am Rand quer wischbarer Leisten (H01, H02, H06, H08 mobil), die Ablaufzeichnung kreuzt keine Beschriftung mehr (`uebrige/service-und-termin__desktop__00.jpg`), ein Thema und eine Sprache.
+Z-10 · nicht bestätigt · `README.md` (Abschnitt Tests), `MENSCHEN.md` (M-02, M-07), `protokolle/E7-PRUEFER-C-test-unit.log`, `protokolle/E7-PRUEFER-C-curl.log`, dazu `BERICHT.md`, `KERN.md`, `bilder/galerie.html` · README nennt „66 Unit-Testdateien“, der dort genannte Befehl ergibt heute 73 (Unit-Protokoll: 73 Dateien), M-02 beschreibt als Standardannahme einen Redaktionshinweis im Fuß, den die Seite nicht mehr zeigt (curl: 0 Treffer, Nachher-Bilder ohne Hinweis), und M-07 nennt für U-2 nur Safari, nicht Firefox; BERICHT (Galerie als eigenständige Seite mit 575 Bildern, 0 Skripten und vorhandenen Pfaden, Anleitung zum Zusammenführen und Zurückrollen, Hinweis zu `_werkstatt`, Basis 71dbadd und 244 Dateien stimmen), KERN 1.19 (K-001 bis K-012) und die übrigen README-Stichproben (54 Fach-Icons, 39 Glyphen, 9 Generatoren, lucide 0) sind dagegen in Ordnung.
+
+AUSNAHME 1 (Z-04) · Ausnahme bestätigt · `ABNAHME.md` (Ausnahmen), `ENTSCHEIDUNGEN.md` D-051, `pakete/E5-BEFUND-H01…H12.md`, `pakete/E6-BEFUND2-H01…H12.md`, die gleichnamigen Berichte, `PLAN.md` (Commits je Runde), `bilder/blind/`, `bilder/galerie.html` · Denkprotokoll mit Ziel, drei Wegen, Umkehrprobe und Folgen liegt vor, für jede Hauptansicht sind beide nach L3 erlaubten Befundrunden mit Commit belegt, die Ersatzlösung trägt (Blindvergleich 12 von 12 für den neuen Stand, Galerie für M-08), und die Ausnahme deckt nur den Notenteil von Z-04 ab; ihre Spalte „Was fehlt“ zitiert E6-L-34 richtig, muss aber auf die Werte dieser Endprüfung berichtigt werden (11 von 12 unter 8 mit 6,7 bis 7,8; H04 Farbe und Grafik 6, H11 Grafik und Details 6).
+AUSNAHME 2 (Z-08) · Ausnahme bestätigt · `ABNAHME.md` (Ausnahmen), `ENTSCHEIDUNGEN.md` D-050 und D-051, `protokolle/E7-PRUEFER-01-ergebnis.md`, `E7-PRUEFER-02-ergebnis.md`, `E7-PRUEFER-02-messung-desktop.log` · Zwei belegte Anläufe (E7-P-1: mobil 26 von 36, Desktop 29 von 36; E7-P-2: 36 von 36 und 35 von 36), Denkprotokoll mit drei Wegen und Umkehrprobe und eine Ersatzlösung mit allen Budgets bei großer Reserve (mobil 300 bis 2084 ms schneller als E0) liegen vor, und die Ausnahme deckt genau den einen verfehlten Wert ab (H05 Desktop LCP, 4 ms über der Spanne).
+U-1 · bestätigt · `protokolle/E7-PRUEFER-02-ergebnis.md` (Zeile 120), `protokolle/E7-PRUEFER-02-bildrate.log`, `werkzeuge/bewegung.mjs` (Zeilen 17 und 443), `werkzeuge/messung.mjs` (Zeilen 6–7 und 185–186), `MENSCHEN.md` M-07 · Die Ersatzprüfung in Chromium headless mit 390 × 844, vierfacher Prozessordrosselung und langsamem 4G ist belegt, und M-07 bittet um iPhone- und Android-Durchlauf.
+U-2 · bestätigt · `src/app/(site)/globals.css` (Zeile 579, `@supports (animation-timeline: view())`), `src/components/visual/motion/seitenwechsel.tsx`, `KERN.md` B-13, B-24 und B-25, `protokolle/E7-PRUEFER-C-ergebnis-vollstaendig.md` (R-8), `MENSCHEN.md` M-07 · Scroll-Timeline und ViewTransition haben am Code belegte Endzustände ohne Unterstützung, und M-07 verweist auf U-1 bis U-3, nennt aber nur Safari (Firefox fehlt im Text, gezählt unter Z-10).
+U-3 · bestätigt · `protokolle/E7-PRUEFER-C-a11y.log`, `E7-PRUEFER-C-svg.log`, `E7-PRUEFER-C-tastatur-mobil.log`, `E7-PRUEFER-C-tastatur-desktop.log`, `MENSCHEN.md` M-07 · axe 0/0, 0 unbenannte sichtbare SVG und Tastatur 7 von 7 je Gerät ersetzen den Bildschirmleser, und M-07 nennt VoiceOver und TalkBack.
+U-4 · bestätigt · `protokolle/E7-L-44-build.log`, `E7-PRUEFER-C-build.log`, `E7-PRUEFER-C-test-db.log`, `E0-PRUEFER-01-test-db-root.log`, `MENSCHEN.md` M-11, `ENTSCHEIDUNGEN.md` D-001 · Der Build läuft im JSON-Modus („Seite läuft aus content/*.json“, 208/208, EXIT 0), und die DB-Tests sind 52/52 grün; den Nutzer `ubuntu` nennt das Protokoll nicht, die Meldung „/root/.ccr/ca-bundle.crt … Permission denied“ zeigt aber einen Lauf ohne root, während der root-Lauf in E0 scheitert.
+
+Höchstens zwei Ausnahmen: erfüllt (zwei, keine für Z-02).
+
+## 4 · Vorbehalte ohne Einfluss auf die Zeilen
+
+1. Nach der Prüfstufe C (5980acc) gibt es für den Codestand 3315165 kein Protokoll für Linter und Unit-Tests; PRUEFPUNKT nennt „ESLint 0, Vitest 1217/1217“ ohne Datei. Z-02 ist oben am Code begründet; vor dem Zusammenführen sollten die Prüfungen ohnehin laufen (BERICHT, Schritt 2).
+2. Z-08 misst gegen „E0 heute“ (E0-Build im Wechsel auf Port 3100). Gegen die Original-Tabelle von 15.10. (`E0-PRUEFER-05-ausgangswerte.md`, Tabelle A) läge statt H05 der Desktop-LCP von H08 über der Spanne (156 gegen 140 ms, +16 bei 4 ms Spanne). Der gleichzeitige Vergleich ist die bessere Methode und in D-049/D-050 begründet; der Unterschied gehört in die Ausnahme-Notiz.
+3. Die Stichprobe der übrigen Ansichten liegt im Repository nur mit der ersten Bildschirmhöhe (33 Bilder). Die 164 Bilder liegen unter `/root/sm24-bilder/e7-c/uebrige/`; vier Sätze sind bei 6 Höhen gekappt. Ich habe einige davon gesichtet (Service und Termin, Sicherheitscheck); dauerhaft belegt ist das nicht.
+4. Die Beschreibung der Z-03-Ausnahmen in ABNAHME („Generatoren und Icons als Bildinhalt“) ist ungenau: 18 der 22 Ausnahmen sind Prüfmuster in Testdateien.
+5. Die Sichtabnahme E6-L-34 und ihre Bildpfade (darunter `schritte/`) beziehen sich auf den entfernten Bildsatz von Abschlussversuch 1. ABNAHME nennt sie trotzdem als Beleg für Z-04.
+
+## 5 · Gesamturteil
+
+ABSCHLUSS ist nicht möglich: Z-10 ist nicht bestätigt (README nennt 66 statt 73 Unit-Testdateien, die Standardannahme in MENSCHEN M-02 ist veraltet, M-07 nennt Firefox nicht); alle übrigen Zeilen, Z-01 bis Z-09, AUSNAHME 1 und 2 sowie U-1 bis U-4, sind bestätigt oder als Ausnahme bestätigt.
+
+=== ENDE E6-L-13 · BEREIT ZUR RÜCKGABE ===

@@ -71,7 +71,7 @@ SM24_DATA=json npx next build
 
 ## Tests
 
-- **Unit-Tests:** `npm run test:unit` (Vitest 2, Umgebung `node`, ohne DOM; `vitest.config.ts`). 66 Unit-Testdateien (`find src -name '*.test.ts*' ! -name '*.db.test.ts' | wc -l`).
+- **Unit-Tests:** `npm run test:unit` (Vitest 2, Umgebung `node`, ohne DOM; `vitest.config.ts`). 73 Unit-Testdateien mit 1217 Tests (`find src -name '*.test.ts*' ! -name '*.db.test.ts' | wc -l`).
 - **DB-Tests:** `npm run test:db` (`vitest.db.config.ts`), 7 Dateien `*.db.test.ts`. Die Datei `src/test/db-global-setup.ts` startet eine eigene Postgres-Instanz (Port 5434, änderbar mit `SM24_TEST_PG_PORT`) und spielt Migrationen und Seed ein.
 - Laut `_werkstatt/STATUS.md` (Abschnitt Einrichtung) sind die DB-Tests als root nicht lauffähig.
 - **Prüfungen:** `npm run typecheck` und `npm run lint`.
