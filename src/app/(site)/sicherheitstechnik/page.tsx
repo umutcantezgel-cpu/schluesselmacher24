@@ -20,6 +20,9 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
+
+
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -73,7 +76,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -82,7 +92,7 @@ export default async function SicherheitstechnikPage() {
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
@@ -157,6 +167,110 @@ export default async function SicherheitstechnikPage() {
                 </ButtonLink>
               </div>
             </div>
+          </div>
+        </div>
+      </Section>
+
+            {/* Tiefgehende methodische Sektion */}
+      <Section id="architektur-methodik" tone="muted">
+        <SectionHeading
+          eyebrow="Architektonische Methodik"
+          title="Ganzheitliche Sicherheitskonzepte statt Insellösungen"
+          lead="Moderne Sicherheitstechnik basiert auf dem Ineinandergreifen verschiedener Gewerke. Unsere Methodik verbindet mechanischen Grundschutz mit elektronischer Früherkennung und intelligenter Alarmierung zu einem kohärenten System."
+        />
+
+        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-8 shadow-sm">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-4">Mechanische Prävention</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Die Basis jedes Sicherheitskonzepts ist die mechanische Widerstandsfähigkeit. Wir analysieren Schwachstellen an Türen, Fenstern und Lichtschächten. Hochwertige Schließzylinder, Mehrfachverriegelungen und Schutzbeschläge erhöhen den Zeitaufwand für Täter signifikant. In der Praxis zeigt sich: Bricht ein Täter nicht innerhalb weniger Minuten ein, bricht er den Versuch meist ab.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-8 shadow-sm">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-4">Perimeterschutz & Früherkennung</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Noch bevor ein mechanischer Angriff stattfindet, detektiert die Außenhautsicherung unbefugtes Annähern. Moderne Videoanalyse unterscheidet zuverlässig zwischen Tieren, Witterungseinflüssen und Personen. Durch virtuelle Zäune (Line Crossing) und Bereichsüberwachung generieren wir Vorwarnzeiten, die Interventionen ermöglichen, bevor ein Schaden am Objekt entsteht.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-8 shadow-sm">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-4">Intervention & Alarmierung</h3>
+            <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Die intelligente Vernetzung von Einbruchmeldeanlagen (EMA) mit der Videoüberwachung ermöglicht eine sofortige Verifikation durch Notruf- und Serviceleitstellen (NSL). Falschalarme werden minimiert, während echte Gefahren sofort zu polizeilicher oder privater Intervention führen. Die Alarmierung erfolgt redundant über verschiedene Übertragungswege.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Calculator Section */}
+      <Section id="kalkulator" tight>
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Transparenz"
+              title="Planen Sie Ihr Sicherheitsbudget"
+              lead="Nutzen Sie unseren interaktiven Kalkulator für eine erste grobe Einschätzung der Investitionskosten basierend auf der Anzahl der zu sichernden Bereiche und dem geschätzten Installationsaufwand."
+            />
+            <div className="mt-6 space-y-4">
+              <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Diese Kalkulation dient als erster Richtwert. Die tatsächlichen Kosten hängen stark von den spezifischen baulichen Gegebenheiten, der gewünschten Sicherheitsklasse (z.B. nach DIN EN 50131) und der Komplexität der Vernetzung ab.
+              </p>
+              <ul className="list-disc pl-5 text-[oklch(0.32_0.02_260)] space-y-2">
+                <li>Berücksichtigt Basis-Hardware für die ausgewählten Bereiche</li>
+                <li>Beinhaltet geschätzte Arbeitszeit für Installation und Inbetriebnahme</li>
+                <li>Konfigurations- und Einweisungsaufwand inklusive</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      {/* FAQ Section */}
+      <Section tone="muted">
+        <SectionHeading
+          eyebrow="Wissensdatenbank"
+          title="Häufige Fragen zur Sicherheitstechnik"
+          lead="Fundierte Antworten auf die wichtigsten Fragen bei der Planung von Sicherheitskonzepten für Gewerbe und Privat."
+        />
+
+        <div className="mt-10 space-y-6 max-w-4xl mx-auto">
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h3 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">Kabelgebunden oder Funk – was ist sicherer?</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Kabelgebundene Systeme (Bus-Systeme) bieten die höchste Ausfallsicherheit und sind immun gegen Jamming (Störsender). Bei Neubauten oder Kernsanierungen sind sie die erste Wahl. Moderne Funk-Alarmanlagen nutzen jedoch dedizierte Frequenzen und wechselnde Kanäle, wodurch sie ein sehr hohes Sicherheitsniveau erreichen. Sie eignen sich besonders zur Nachrüstung in Bestandsgebäuden, wo eine unsichtbare Kabelverlegung unverhältnismäßig aufwändig wäre.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h3 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">Was bedeutet Aufschaltung auf eine Notrufleitstelle (NSL)?</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Bei einer Aufschaltung werden Alarmmeldungen (Einbruch, Überfall, Feuer, Sabotage) digital an eine 24/7 besetzte, zertifizierte Notruf- und Serviceleitstelle übertragen. Das geschulte Personal dort bewertet die Meldung (oft mittels Video-Vorprüfung zur Vermeidung von Falschalarmen) und leitet den vorher definierten Interventionsplan ein – z.B. die Alarmierung der Polizei, des Sicherheitsdienstes oder des Eigentümers.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h3 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">Sind Videoüberwachungssysteme im Außenbereich datenschutzkonform?</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Ja, wenn sie richtig geplant sind. Die Kameras dürfen ausschließlich das eigene Grundstück erfassen. Öffentlicher Raum (Bürgersteige, Straßen) oder Nachbargrundstücke müssen zwingend mittels Privacy-Masking (Schwarzschaltung spezifischer Bildbereiche) in der Kamera ausgeblendet werden. Zudem muss auf die Überwachung hingewiesen werden (z.B. durch Piktogramme) und die Speicherdauer der Aufzeichnungen ist auf das absolut notwendige Minimum (oft 48-72 Stunden) zu begrenzen.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h3 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">Wie oft muss Sicherheitstechnik gewartet werden?</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Für Gewerbeobjekte und Anlagen, die polizeilich oder bei Versicherungen anerkannt sind, ist eine jährliche Wartung durch einen Fachbetrieb vorgeschrieben (gemäß VdS/DIN VDE 0833). Bei reinen Privatobjekten empfehlen wir ebenfalls einen jährlichen Turnus, um die Funktion der Akkus/Batterien, der Melder und der Übertragungswege sicherzustellen. Mechanische Komponenten sollten regelmäßig geschmiert und auf Schließzwang geprüft werden.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6">
+            <h3 className="text-[17px] font-bold text-[oklch(0.16_0.02_260)]">Was ist der Unterschied zwischen Außenhaut- und Fallenüberwachung?</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Die Außenhautüberwachung sichert die Gebäudehülle (Türen, Fenster) durch Öffnungs- und Glasbruchmelder. Der Alarm wird ausgelöst, *bevor* oder *während* der Täter eindringt. Die Fallenüberwachung nutzt Bewegungsmelder im Gebäudeinneren und löst aus, wenn der Täter bereits im Objekt ist. Ein gutes Konzept kombiniert beide Ansätze: Die Außenhautüberwachung ermöglicht es, die Anlage auch bei Anwesenheit im Gebäude (z.B. nachts) scharfzuschalten, während die Fallenüberwachung als zweite Linie dient.
+            </p>
           </div>
         </div>
       </Section>
@@ -318,6 +432,6 @@ export default async function SicherheitstechnikPage() {
           </ul>
         </Section>
       )}
-    </>
+    </main>
   );
 }

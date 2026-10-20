@@ -1,0 +1,10 @@
+{
+  "ideas": [
+    {
+      "id": "IDEA_001",
+      "target_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "module_name": "Sicherheitscheck-Kalkulator"
+    }
+  ]
+}
