@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2024-05-24T12:00:00Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_055",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+      "target_component_file": "src/components/autoschluessel/key-kinds.tsx",
+      "title": "Interaktiver Autoschlüssel-Kalkulator & Live-Konfigurator",
+      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Autoschlüssel-Seite ein und erweitere den umgebenden Fließtext auf 850 Wörter.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_012",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/visual/einsatzradius.tsx",
+      "title": "Spatial Einsatzradius mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "Überführung der bestehenden Einsatzradius-Komponente auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
