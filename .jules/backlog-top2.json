@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2024-05-24T12:00:00Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten basierend auf Score = (Visuell * 0.35) + (ROI * 0.35) + (Machbarkeit * 0.30).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_087",
+      "category": "PERFORMANCE_ARCHITECTURE",
+      "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+      "target_component_file": "src/components/showcase/autoschluessel-hero.tsx",
+      "title": "Zero-Shift Webfont-Optimierung mit next/font - Variante 12",
+      "specification": "Zero-Shift Webfont-Optimierung mit next/font auf `src/app/(site)/autoschluessel/page.tsx` f\u00fcr makellose Core Web Vitals ohne Layout-L\u00f6cher. Die Komponente `src/components/showcase/autoschluessel-hero.tsx` wird entsprechend refaktoriert, um absolute Perfektion zu erreichen.",
+      "score": 9.79,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_097",
+      "category": "PERFORMANCE_ARCHITECTURE",
+      "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+      "target_component_file": "src/components/showcase/autoschluessel-hero.tsx",
+      "title": "Zero-Shift Webfont-Optimierung mit next/font - Variante 22",
+      "specification": "Zero-Shift Webfont-Optimierung mit next/font auf `src/app/(site)/autoschluessel/page.tsx` f\u00fcr makellose Core Web Vitals ohne Layout-L\u00f6cher. Die Komponente `src/components/showcase/autoschluessel-hero.tsx` wird entsprechend refaktoriert, um absolute Perfektion zu erreichen.",
+      "score": 9.79,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
