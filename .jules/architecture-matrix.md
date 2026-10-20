@@ -1,0 +1,57 @@
+# Architecture Matrix
+
+| Priority | Route | Source File | Current Words | Target Words | Status |
+|---|---|---|---|---|---|
+| 1 | /api/[...slug] | src/app/(payload)/api/[...slug]/route.ts | 70 | 850 | PENDING_BUILDER |
+| 2 | /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 99 | 850 | PENDING_BUILDER |
+| 3 | / | src/app/(site)/page.tsx | 2210 | 2710 | PENDING_BUILDER |
+| 4 | /ratgeber | src/app/(site)/ratgeber/page.tsx | 317 | 850 | PENDING_BUILDER |
+| 5 | /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 775 | 1275 | PENDING_BUILDER |
+| 6 | /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 2203 | 2703 | PENDING_BUILDER |
+| 7 | /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 235 | 850 | PENDING_BUILDER |
+| 8 | /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | 72 | 850 | PENDING_BUILDER |
+| 9 | /warenkorb | src/app/(site)/warenkorb/page.tsx | 342 | 850 | PENDING_BUILDER |
+| 10 | /kasse | src/app/(site)/kasse/page.tsx | 417 | 917 | PENDING_BUILDER |
+| 11 | /api/kunden-upload | src/app/(site)/api/kunden-upload/route.ts | 704 | 1204 | PENDING_BUILDER |
+| 12 | /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 738 | 1238 | PENDING_BUILDER |
+| 13 | /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 1040 | 1540 | PENDING_BUILDER |
+| 14 | /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1431 | 1931 | PENDING_BUILDER |
+| 15 | /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 729 | 1229 | PENDING_BUILDER |
+| 16 | /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 378 | 878 | PENDING_BUILDER |
+| 17 | /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 2271 | 2771 | PENDING_BUILDER |
+| 18 | /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 523 | 1023 | PENDING_BUILDER |
+| 19 | /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1389 | 1889 | PENDING_BUILDER |
+| 20 | /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 2564 | 3064 | PENDING_BUILDER |
+| 21 | /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 316 | 850 | PENDING_BUILDER |
+| 22 | /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2982 | 3482 | PENDING_BUILDER |
+| 23 | /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 406 | 906 | PENDING_BUILDER |
+| 24 | /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 2166 | 2666 | PENDING_BUILDER |
+| 25 | /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 379 | 879 | PENDING_BUILDER |
+| 26 | /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 2247 | 2747 | PENDING_BUILDER |
+| 27 | /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 109 | 850 | PENDING_BUILDER |
+| 28 | /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 153 | 850 | PENDING_BUILDER |
+| 29 | /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 742 | 1242 | PENDING_BUILDER |
+| 30 | /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 622 | 1122 | PENDING_BUILDER |
+| 31 | /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 247 | 850 | PENDING_BUILDER |
+| 32 | /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 227 | 850 | PENDING_BUILDER |
+| 33 | /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 515 | 1015 | PENDING_BUILDER |
+| 34 | /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 369 | 869 | PENDING_BUILDER |
+| 35 | /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 415 | 915 | PENDING_BUILDER |
+| 36 | /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 730 | 1230 | PENDING_BUILDER |
+| 37 | /artikel | src/app/(site)/artikel/page.tsx | 807 | 1307 | PENDING_BUILDER |
+| 38 | /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 1160 | 1660 | PENDING_BUILDER |
+| 39 | /standorte | src/app/(site)/standorte/page.tsx | 306 | 850 | PENDING_BUILDER |
+| 40 | /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 617 | 1117 | PENDING_BUILDER |
+| 41 | /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2496 | 2996 | PENDING_BUILDER |
+| 42 | /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 779 | 1279 | PENDING_BUILDER |
+| 43 | /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 1209 | 1709 | PENDING_BUILDER |
+| 44 | /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 2004 | 2504 | PENDING_BUILDER |
+| 45 | /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 1091 | 1591 | PENDING_BUILDER |
+| 46 | /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1222 | 1722 | PENDING_BUILDER |
+| 47 | /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 521 | 1021 | PENDING_BUILDER |
+| 48 | /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1133 | 1633 | PENDING_BUILDER |
+| 49 | /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1189 | 1689 | PENDING_BUILDER |
+| 50 | /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1207 | 1707 | PENDING_BUILDER |
+| 51 | /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1042 | 1542 | PENDING_BUILDER |
+| 52 | /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1121 | 1621 | PENDING_BUILDER |
+| 53 | /llms.txt | src/app/llms.txt/route.ts | 145 | 850 | PENDING_BUILDER |
