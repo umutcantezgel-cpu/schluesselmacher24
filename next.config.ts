@@ -43,6 +43,14 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  experimental: {
+    /*
+     * CSS als <style> im Kopf statt als eigene Datei: Auf langsamen Leitungen entfällt die
+     * Anfrage samt Latenz vor dem ersten Zeichnen (Tailwind hält das CSS klein). Gemessen am
+     * Produktionsbuild, mobil gedrosselt: Startseite LCP 1,09 → 0,62 s (E7-L-43, D-050).
+     */
+    inlineCss: true,
+  },
   outputFileTracingIncludes: {
     '/*': ['./content/**/*'],
   },

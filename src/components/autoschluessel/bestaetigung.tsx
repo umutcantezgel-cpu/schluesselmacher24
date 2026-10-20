@@ -1,13 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { CalendarCheck, CheckCircle2, CreditCard } from 'lucide-react';
 import type { AppointmentInfo, PriceQuote, SummarySection } from '@/lib/types';
 import { formatCents, formatDate, formatDuration } from '@/lib/format';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { SummaryList } from '@/components/layout/summary-list';
+import { CheckDraw } from '@/components/visual/motion/check-draw';
+import { GlyphKalender } from '@/components/visual/glyphen/kalender';
+import { IconZahlung } from '@/components/visual/icons/zahlung';
 
 export interface BestaetigungProps {
   reference: string;
@@ -31,20 +33,22 @@ export function Bestaetigung({
   return (
     <div className="space-y-6">
       <div className="rounded-lg border border-border bg-surface p-6">
-        <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-success">
-          <CheckCircle2 size={16} aria-hidden />
+        <CheckDraw title="Vorgang angelegt" size={56} />
+        <p className="mt-4 font-mono text-caption uppercase tracking-label text-success">
           Vorgang angelegt
         </p>
-        <h2 className="mt-3 text-xl font-bold text-foreground md:text-2xl">
+        <h2 className="mt-2 text-headline text-foreground">
           Ihre Anfrage ist bei uns eingegangen
         </h2>
 
         <div className="mt-5 rounded-lg border border-border bg-surface-muted p-5">
-          <p className="text-[13px] font-semibold text-foreground-muted">Ihre Vorgangsnummer</p>
-          <p className="mt-1 font-mono text-2xl font-bold tracking-tight text-foreground">
+          <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+            Ihre Vorgangsnummer
+          </p>
+          <p className="mt-1 break-words font-mono text-headline tabular-nums text-foreground">
             {reference}
           </p>
-          <p className="mt-2 text-[13px] leading-relaxed text-foreground-muted">
+          <p className="mt-2 text-small leading-relaxed text-foreground-muted">
             Bitte bewahren Sie diese Nummer auf. Zusammen mit Ihrer E-Mail-Adresse rufen Sie damit
             jederzeit den Stand Ihres Vorgangs ab.
           </p>
@@ -54,14 +58,15 @@ export function Bestaetigung({
       <div className="grid gap-3 sm:grid-cols-2">
         <Card>
           <CardBody className="flex items-start gap-3">
-            <CalendarCheck size={18} className="mt-0.5 shrink-0 text-foreground-subtle" aria-hidden />
+            <GlyphKalender size={18} className="mt-0.5 shrink-0 text-foreground-subtle" />
             <div>
-              <p className="text-[14px] font-bold text-foreground">Ihr Termin</p>
-              <p className="mt-1 text-[15px] font-semibold text-foreground">
+              <p className="font-mono text-caption uppercase tracking-label text-foreground">Ihr Termin</p>
+              <p className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
                 {formatDate(appointment.date)}, {appointment.time} Uhr
               </p>
-              <p className="mt-1 text-[13px] leading-relaxed text-foreground-muted">
-                Eingeplant sind {formatDuration(appointment.durationMinutes)}.
+              <p className="mt-1 text-small leading-relaxed text-foreground-muted">
+                Eingeplant sind{' '}
+                <span className="font-mono tabular-nums text-foreground">{formatDuration(appointment.durationMinutes)}</span>.
                 {appointment.location === 'vor-ort'
                   ? ' Der Termin findet mit Fahrzeug statt; den Ort stimmen wir mit Ihnen ab.'
                   : ' Die Arbeiten erfolgen im Fachbetrieb.'}
@@ -72,13 +77,13 @@ export function Bestaetigung({
 
         <Card>
           <CardBody className="flex items-start gap-3">
-            <CreditCard size={18} className="mt-0.5 shrink-0 text-foreground-subtle" aria-hidden />
+            <IconZahlung size={24} className="mt-0.5 shrink-0 text-area-strong" />
             <div>
-              <p className="text-[14px] font-bold text-foreground">Anzahlung</p>
-              <p className="mt-1 text-[15px] font-semibold text-foreground">
+              <p className="font-mono text-caption uppercase tracking-label text-foreground">Anzahlung</p>
+              <p className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
                 {formatCents(quote.depositCents)}
               </p>
-              <p className="mt-1 text-[13px] leading-relaxed text-foreground-muted">
+              <p className="mt-1 text-small leading-relaxed text-foreground-muted">
                 Die Anzahlung wird vollständig auf den Gesamtpreis angerechnet.
                 {quote.mode === 'pruefung'
                   ? ' Verbindlich wird der Termin, sobald wir Ihre Unterlagen geprüft und Ihnen den Preis genannt haben.'
@@ -106,7 +111,7 @@ export function Bestaetigung({
       )}
 
       <div>
-        <h3 className="text-[15px] font-bold text-foreground">Das haben Sie uns übermittelt</h3>
+        <h3 className="text-title-sm font-semibold text-foreground">Das haben Sie uns übermittelt</h3>
         <SummaryList sections={summary} className="mt-3" />
       </div>
 
@@ -119,9 +124,12 @@ export function Bestaetigung({
         </ButtonLink>
       </div>
 
-      <p className="text-[13px] leading-relaxed text-foreground-muted">
+      <p className="text-small leading-relaxed text-foreground-muted">
         Stimmt etwas nicht?{' '}
-        <Link href="/service-und-termin/kontakt" className="font-semibold text-primary hover:underline">
+        <Link
+          href="/service-und-termin/kontakt"
+          className="rounded-sm font-semibold text-primary hover:underline"
+        >
           Melden Sie sich bei uns
         </Link>{' '}
         und nennen Sie Ihre Vorgangsnummer.

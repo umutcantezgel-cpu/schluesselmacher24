@@ -1,7 +1,13 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Camera, Check, ImageUp, Loader2, RotateCcw, Trash2 } from 'lucide-react';
+import { GlyphBildHochladen } from '@/components/visual/glyphen/bild-hochladen';
+import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { GlyphKamera } from '@/components/visual/glyphen/kamera';
+import { GlyphLaden } from '@/components/visual/glyphen/laden';
+import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
+import { GlyphWarnung } from '@/components/visual/glyphen/warnung';
+import { GlyphZuruecksetzen } from '@/components/visual/glyphen/zuruecksetzen';
 import type { ImageSlot, UploadRef } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import Image from 'next/image';
@@ -147,6 +153,10 @@ export interface PhotoUploadProps {
    */
   category?: UploadKategorie;
   error?: string;
+  /**
+   * Gewicht des Knopfs „Foto aufnehmen“: `betont` (Standard) gefüllt; `ruhig` als Rahmenknopf, wenn eine andere Handlung die Hauptaktion ist.
+   */
+  kamera?: 'betont' | 'ruhig';
 }
 
 const MAX_BYTES = 12 * 1024 * 1024;
@@ -168,6 +178,7 @@ export function PhotoUpload({
   allowDocuments = false,
   category,
   error,
+  kamera = 'betont',
 }: PhotoUploadProps) {
   const cameraRef = useRef<HTMLInputElement>(null);
   const galleryRef = useRef<HTMLInputElement>(null);
@@ -280,7 +291,7 @@ export function PhotoUpload({
   return (
     <div className="flex flex-col gap-3">
       <div>
-        <p className="text-sm font-semibold text-foreground">
+        <p className="text-small font-semibold text-foreground">
           {label}
           {required && (
             <span className="ml-1 text-danger" aria-hidden>
@@ -288,16 +299,18 @@ export function PhotoUpload({
             </span>
           )}
         </p>
-        <p className="mt-1 text-[13px] leading-relaxed text-foreground-muted">{description}</p>
+        <p className="mt-1 text-small leading-relaxed text-foreground-muted">{description}</p>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      {/* Spalten nach verfügbarer Breite: in schmalen Formularspalten untereinander (Befund E4-B-09) */}
+      <div className="grid grid-cols-kacheln gap-3">
         {/* Beispielbild direkt am Uploadfeld */}
         <div>
-          <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-foreground-subtle">
+          <p className="mb-1.5 font-mono text-caption font-semibold uppercase tracking-label text-foreground-muted">
             So sollte das Foto aussehen
           </p>
-          <ImagePlaceholder slot={example} compact />
+          {/* Fachgrafik zum Beispiel statt eines kleinen Symbols in leerer Fläche (Sichtabnahme E4-L-23) */}
+          <ImagePlaceholder slot={example} />
         </div>
 
         <div
@@ -309,20 +322,20 @@ export function PhotoUpload({
           <button
             type="button"
             onClick={() => cameraRef.current?.click()}
-            className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-lg bg-primary px-4 text-[15px] font-semibold text-primary-foreground hover:bg-primary-hover"
+            className={kamera === 'ruhig' ? 'inline-flex min-h-touch items-center justify-center gap-2 rounded-lg border border-border-strong bg-surface px-4 text-body font-semibold text-foreground hover:bg-surface-muted' : 'inline-flex min-h-touch items-center justify-center gap-2 rounded-lg bg-primary px-4 text-body font-semibold text-primary-foreground hover:bg-primary-hover'}
           >
-            <Camera size={17} aria-hidden />
+            <GlyphKamera size={18} aria-hidden />
             Foto aufnehmen
           </button>
           <button
             type="button"
             onClick={() => galleryRef.current?.click()}
-            className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-lg border border-border-strong bg-surface px-4 text-[15px] font-semibold text-foreground hover:bg-surface-muted"
+            className="inline-flex min-h-touch items-center justify-center gap-2 rounded-lg border border-border-strong bg-surface px-4 text-body font-semibold text-foreground hover:bg-surface-muted"
           >
-            <ImageUp size={17} aria-hidden />
+            <GlyphBildHochladen size={18} aria-hidden />
             {allowDocuments ? 'Datei auswählen' : 'Aus Galerie wählen'}
           </button>
-          <p className="text-center text-[11px] text-foreground-subtle">
+          <p className="text-center font-mono tabular-nums text-caption text-foreground-muted">
             Max. {formatFileSize(MAX_BYTES)} je Datei
             {multiple ? ` · bis zu ${maxFiles} Dateien` : ''}
           </p>
@@ -334,6 +347,8 @@ export function PhotoUpload({
         ref={cameraRef}
         id={`${id}-camera`}
         type="file"
+        aria-label="Foto aufnehmen"
+        tabIndex={-1}
         accept="image/*"
         capture="environment"
         multiple={multiple}
@@ -344,6 +359,8 @@ export function PhotoUpload({
         ref={galleryRef}
         id={`${id}-gallery`}
         type="file"
+        aria-label={allowDocuments ? 'Datei auswählen' : 'Aus Galerie wählen'}
+        tabIndex={-1}
         accept={accept}
         multiple={multiple}
         className="sr-only"
@@ -359,25 +376,25 @@ export function PhotoUpload({
                   <Image src={file.previewUrl} alt="" fill className="object-cover" unoptimized />
                 </div>
               ) : (
-                <div className="flex aspect-square w-full items-center justify-center bg-surface-muted text-xs font-semibold text-foreground-muted">
+                <div className="flex aspect-square w-full items-center justify-center bg-surface-muted font-mono text-caption font-semibold uppercase tracking-label text-foreground-muted">
                   PDF
                 </div>
               )}
               <div className="flex items-center justify-between gap-1 p-2">
-                <span className="truncate text-[11px] text-foreground-muted">{file.name}</span>
+                <span className="truncate text-caption text-foreground-muted">{file.name}</span>
                 <button
                   type="button"
                   onClick={() => remove(file.id)}
-                  className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded text-foreground-subtle hover:text-danger"
+                  className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded text-foreground-subtle hover:text-danger"
                 >
-                  <Trash2 size={14} aria-hidden />
+                  <GlyphPapierkorb size={14} aria-hidden />
                   <span className="sr-only">{file.name} entfernen</span>
                 </button>
               </div>
               {file.status && (
                 <div
                   className={cn(
-                    'flex items-center gap-1.5 border-t border-border px-2 py-1.5 text-[11px] font-semibold',
+                    'flex items-center gap-1.5 border-t border-border px-2 py-1.5 text-caption font-semibold',
                     file.status === 'fertig' && 'text-success',
                     file.status === 'laedt' && 'text-foreground-muted',
                     file.status === 'fehler' && 'text-danger',
@@ -385,26 +402,29 @@ export function PhotoUpload({
                 >
                   {file.status === 'laedt' && (
                     <>
-                      <Loader2 size={13} className="animate-spin motion-reduce:animate-none" aria-hidden />
+                      <GlyphLaden size={14} className="animate-spin motion-reduce:animate-none" aria-hidden />
                       Wird hochgeladen …
                     </>
                   )}
                   {file.status === 'fertig' && (
                     <>
-                      <Check size={13} aria-hidden />
+                      <GlyphHaken size={14} aria-hidden />
                       Gespeichert
                     </>
                   )}
                   {file.status === 'fehler' && (
                     <span className="flex w-full flex-col gap-1">
-                      <span>{file.fehler ?? 'Nicht hochgeladen.'}</span>
+                      <span className="flex items-start gap-1.5">
+                        <GlyphWarnung size={14} aria-hidden className="mt-px shrink-0" />
+                        <span>{file.fehler ?? 'Nicht hochgeladen.'}</span>
+                      </span>
                       {originale.has(file.id) && (
                         <button
                           type="button"
                           onClick={() => erneut(file.id)}
-                          className="inline-flex min-h-[44px] items-center gap-1 text-primary hover:underline"
+                          className="inline-flex min-h-touch items-center gap-1 text-primary hover:underline"
                         >
-                          <RotateCcw size={13} aria-hidden />
+                          <GlyphZuruecksetzen size={14} aria-hidden />
                           Erneut versuchen
                         </button>
                       )}
@@ -418,8 +438,9 @@ export function PhotoUpload({
       )}
 
       {shownError && (
-        <p className="text-[13px] font-semibold text-danger" role="alert">
-          {shownError}
+        <p className="flex items-start gap-1.5 text-small font-semibold text-danger" role="alert">
+          <GlyphWarnung size={16} aria-hidden className="mt-px shrink-0" />
+          <span>{shownError}</span>
         </p>
       )}
 

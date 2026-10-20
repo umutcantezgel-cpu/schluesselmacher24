@@ -2,6 +2,7 @@
 
 import { useCallback, useMemo, useState } from 'react';
 
+import { scrollVerhalten } from '@/lib/bewegung';
 import {
   removeStoredValue,
   useStoredValue,
@@ -67,6 +68,15 @@ interface Snapshot<T> {
   version: number;
   data: T;
   stepId: string;
+}
+
+/**
+ * Ob der Hinweis „Zwischenstand geladen“ gilt: nur solange die Anzeige aus dem
+ * gespeicherten Stand kommt. Nach der ersten eigenen Eingabe steht der Stand
+ * zwar auch im Speicher, ist dann aber kein geladener mehr.
+ */
+export function zeigtGeladenenStand(gespeichert: boolean, eigeneEingabe: boolean, verworfen: boolean): boolean {
+  return gespeichert && !eigeneEingabe && !verworfen;
 }
 
 /**
@@ -150,7 +160,7 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     (target: string) => {
       if (!steps.some((s) => s.id === target)) return;
       persist({ ...current, stepId: target });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: scrollVerhalten() });
     },
     [steps, current, persist],
   );
@@ -190,7 +200,7 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     isLast: stepIndex === relevantSteps.length - 1,
     canContinue: validate ? validate(current.data, step?.id ?? '') : true,
     reset,
-    restored: Boolean(stored) && !dismissed,
+    restored: zeigtGeladenenStand(Boolean(stored), local !== null, dismissed),
     dismissRestored: () => setDismissed(true),
     saved,
   };

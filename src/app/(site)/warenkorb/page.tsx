@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 import { getCodeLines, getCollection, getSettings } from '@/lib/data';
 import { PageHeader } from '@/components/layout/page-header';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { WarenkorbAnsicht } from './warenkorb-ansicht';
 
 export const metadata: Metadata = {
@@ -36,6 +36,7 @@ export default async function WarenkorbPage() {
   return (
     <>
       <PageHeader
+        art="arbeit"
         eyebrow="Direkt kaufen"
         title="Warenkorb"
         lead="Prüfen Sie Ihre Positionen, wählen Sie die Versandart und gehen Sie anschließend zur Kasse."
@@ -43,32 +44,39 @@ export default async function WarenkorbPage() {
       />
 
       <div className="shell py-8 md:py-12">
-        <WarenkorbAnsicht
-          shipping={settings.shipping}
-          codeLines={codeLines}
-          standardArticles={standardArticles}
-          catalog={catalog}
-        />
-      </div>
+        {/* Ab lg ein Zwölfer-Raster: Im Leerzustand steht „Passend dazu“ rechts neben der Leerkarte (Komposition 3). */}
+        <div className="group/warenkorb lg:grid lg:grid-cols-12 lg:items-start lg:gap-gutter">
+          <WarenkorbAnsicht
+            shipping={settings.shipping}
+            codeLines={codeLines}
+            standardArticles={standardArticles}
+            catalog={catalog}
+          />
 
-      <section className="border-t border-border bg-surface-muted">
-        <div className="shell py-8 md:py-10">
-          <h2 className="text-lg font-bold text-foreground">Passend dazu</h2>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {WEITERE_SEITEN.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="inline-flex min-h-[44px] items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-                >
-                  {link.label}
-                  <ArrowRight size={15} aria-hidden />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {/* Mobil Abstand von 64 px zur Summe; unten Platz für die Leiste „Gesamtbetrag · Zur Kasse“ (nur mit Positionen). */}
+          <section className="mt-16 pb-24 md:pb-0 lg:col-span-8 lg:mt-0 korb-leer:pb-0 korb-leer:lg:col-span-4">
+            <p className="eyebrow"><span className="text-foreground-muted tabular-nums">01</span>Weiterlesen</p>
+            <h2 className="mt-3 text-title-sm font-semibold text-foreground">Passend dazu</h2>
+            {/* Haarlinienliste, einspaltig: die ganze Zeile ist der Link, der Pfeil rückt bei feinem Zeiger vor (B-06). */}
+            <ul className="mt-4 border-t border-border">
+              {WEITERE_SEITEN.map((link) => (
+                <li key={link.href} className="border-b border-border">
+                  <Link
+                    href={link.href}
+                    className="group flex min-h-touch items-center justify-between gap-3 py-3 text-small font-semibold text-foreground transition-colors duration-quick ease-standard hover:text-primary"
+                  >
+                    {link.label}
+                    <GlyphPfeilRechts
+                      size={16}
+                      className="shrink-0 text-foreground-muted transition duration-quick ease-standard group-hover:text-primary group-focus-visible:text-primary zeiger:group-hover:translate-x-1"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
-      </section>
+      </div>
     </>
   );
 }

@@ -3,10 +3,13 @@ import type { ReactNode } from 'react';
 import type { VisualProps } from '../registry';
 import { DRAW_DASHARRAY, motionStyle } from '../motion/motion-style';
 import {
+  AKZENT,
   GrafikRahmen,
   HILFSLINIE,
   KONTUR,
   LINIE,
+  LINIE_STARK,
+  MARKE,
   Raster,
   auswahl,
   parameter,
@@ -69,7 +72,7 @@ function transponder(): Darstellung {
             gezeigt, läse er sich klein wie ein Minuszeichen. */}
         <circle
           className="stroke-foreground-muted"
-          strokeWidth={LINIE + 0.5}
+          strokeWidth={LINIE_STARK}
           cx={cx}
           cy={loch.y - loch.r - 2 - ring}
           r={ring}
@@ -132,7 +135,7 @@ function karte(): Darstellung {
         />
         <path
           className="stroke-border-strong"
-          strokeWidth={4}
+          strokeWidth={MARKE}
           d={`M${x + 18} ${y + 56}H${x + 70}M${x + 56} ${y + 30}H${x + 96}`}
         />
       </>
@@ -160,10 +163,10 @@ function smartphone(): Darstellung {
         <rect className="fill-area-soft" x={x + 6} y={y + 14} width={54} height={98} rx={6} />
         <path
           className="stroke-foreground-muted"
-          strokeWidth={LINIE + 0.5}
+          strokeWidth={LINIE_STARK}
           d={`M${x + 27} ${y + 7.5}H${x + 39}`}
         />
-        <g className="stroke-area-strong" strokeWidth={LINIE + 0.5}>
+        <g className="stroke-area-strong" strokeWidth={LINIE_STARK}>
           <circle cx={MEDIUM_X - 7} cy={ACHSE - 8} r={7} />
           <path
             d={`M${MEDIUM_X} ${ACHSE - 8}H${MEDIUM_X + 15}M${MEDIUM_X + 10} ${ACHSE - 8}v5M${MEDIUM_X + 15} ${ACHSE - 8}v5`}
@@ -171,7 +174,7 @@ function smartphone(): Darstellung {
         </g>
         <path
           className="stroke-border-strong"
-          strokeWidth={4}
+          strokeWidth={MARKE}
           d={`M${x + 16} ${ACHSE + 18}H${x + 50}M${x + 22} ${ACHSE + 30}H${x + 44}`}
         />
       </>
@@ -270,7 +273,7 @@ export function ZutrittSignalGrafik({ params, title, className }: VisualProps) {
           height={SCHILD.h}
           rx={SCHILD.w / 2}
         />
-        {/* Drücker als Doppelstrich: Kontur, darin die helle Fläche */}
+        {/* Drücker als Doppelstrich: Kontur, darin die helle Fläche (Halo, Ausnahme nach D-010) */}
         <path className="stroke-foreground" strokeWidth={11} d={druecker} />
         <path className="stroke-surface" strokeWidth={6} d={druecker} />
         <circle
@@ -293,15 +296,15 @@ export function ZutrittSignalGrafik({ params, title, className }: VisualProps) {
           <path
             key={radius}
             className="sm24-dash stroke-area"
-            style={motionStyle(0, 1.6 + i * 0.2)}
-            strokeWidth={LINIE + 0.5}
+            style={motionStyle(0, 0.9 + i * 0.1)}
+            strokeWidth={LINIE_STARK}
             d={bogen(bogenMitte, ACHSE, radius, winkel)}
           />
         ))}
         <path
           className="sm24-dash stroke-area-muted"
-          style={motionStyle(0, 2)}
-          strokeWidth={LINIE + 0.5}
+          style={motionStyle(0, 1.1)}
+          strokeWidth={LINIE_STARK}
           d={`M${flussStart} ${ACHSE}H${r(flussEnde - 6)}`}
         />
         <path className="fill-area" d={pfeilspitze(flussEnde, ACHSE, 0, 9, 7)} />
@@ -323,7 +326,7 @@ export function ZutrittSignalGrafik({ params, title, className }: VisualProps) {
       <circle
         className="sm24-pop fill-area stroke-surface"
         style={motionStyle(1)}
-        strokeWidth={3}
+        strokeWidth={AKZENT}
         cx={STATUS.x}
         cy={STATUS.y}
         r={STATUS.r}
@@ -331,8 +334,8 @@ export function ZutrittSignalGrafik({ params, title, className }: VisualProps) {
       <path
         className="sm24-draw stroke-surface"
         pathLength={1}
-        style={motionStyle(1.2, 0.45, { strokeDasharray: DRAW_DASHARRAY })}
-        strokeWidth={2.5}
+        style={motionStyle(1.2, 0.4, { strokeDasharray: DRAW_DASHARRAY })}
+        strokeWidth={KONTUR}
         d={haken}
       />
     </GrafikRahmen>

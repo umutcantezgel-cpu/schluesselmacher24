@@ -82,5 +82,7 @@ export function formatWeekday(day: number): string {
 export function formatFileSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  // Deutsche Schreibweise (K-010): ganze Werte ohne Nachkommastelle, sonst mit Komma.
+  const mb = Math.round((bytes / (1024 * 1024)) * 10) / 10;
+  return `${Number.isInteger(mb) ? mb : String(mb).replace('.', ',')} MB`;
 }

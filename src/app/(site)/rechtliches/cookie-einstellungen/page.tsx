@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CookieEinstellungenPage() {
   return (
     <>
-      <h1 className="text-[1.75rem] font-bold leading-tight md:text-3xl">Cookie-Einstellungen</h1>
+      <h1 className="text-headline font-bold text-balance">Cookie-Einstellungen</h1>
       <p className="mt-3">
         Diese Website kommt derzeit ohne Analyse-, Werbe- und Fremddienste aus. Gespeichert wird
         nur, was für den Betrieb nötig ist — und zwar ausschließlich in Ihrem Browser.

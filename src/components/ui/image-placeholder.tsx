@@ -1,100 +1,91 @@
-import Image from 'next/image';
-import { ImageOff } from 'lucide-react';
+import type { CSSProperties } from 'react';
 
-import { renderVisual } from '@/components/visual/registry';
+import { FachIconFlaeche, FotoFlaeche, ratios } from './bild-flaeche';
+import { renderVisual, schmaleFassung } from '@/components/visual/registry';
 import type { ImageSlot } from '@/lib/types';
+import { visualFuerMotiv } from '@/lib/visual/motiv';
 import { cn } from '@/lib/cn';
-
-const ratios: Record<ImageSlot['ratio'], string> = {
-  '16/9': 'aspect-[16/9]',
-  '4/3': 'aspect-[4/3]',
-  '1/1': 'aspect-square',
-  '3/2': 'aspect-[3/2]',
-  '21/9': 'aspect-[21/9]',
-};
 
 export interface ImagePlaceholderProps {
   slot: ImageSlot;
   className?: string;
-  /** Kompakte Darstellung ohne Hinweistext. */
+  /** Kleine Fläche (Vorschaubild, Liste): Fach-Icon statt Zeichnung. */
   compact?: boolean;
   /** Hinweis für den Browser, wie breit das Bild dargestellt wird. */
   sizes?: string;
+  /** Ohne Fläche und Rahmen – die Zeichnung steht frei (etwa im Seitenkopf). */
+  frei?: boolean;
+  /**
+   * Nur für Fachgrafiken: Unter 640 px zeigt die Fläche nur diesen Ausschnitt der
+   * Zeichnung (viewBox-Einheiten), damit Beschriftungen lesbar groß bleiben.
+   */
+  ausschnitt?: GrafikAusschnitt;
+}
+
+export interface GrafikAusschnitt {
+  x: number;
+  y: number;
+  breite: number;
+  hoehe: number;
+  /** Volle Größe der Zeichenfläche (viewBox). */
+  vollBreite: number;
+  vollHoehe: number;
+}
+
+type AusschnittStil = CSSProperties & Record<'--aus-x' | '--aus-y' | '--aus-w' | '--aus-h' | '--voll-w' | '--voll-h', number>;
+
+/** CSS-Variablen für `.sm24-ausschnitt` (globals.css). */
+export function ausschnittStil(a: GrafikAusschnitt): AusschnittStil {
+  return {
+    '--aus-x': a.x,
+    '--aus-y': a.y,
+    '--aus-w': a.breite,
+    '--aus-h': a.hoehe,
+    '--voll-w': a.vollBreite,
+    '--voll-h': a.vollHoehe,
+  };
 }
 
 /**
- * Bildfläche mit fester Rangfolge:
+ * Bildfläche mit fester Rangfolge (KERN K-008):
  * 1. Foto aus der Medienbibliothek (`slot.bild`)
- * 2. aus Daten erzeugte Vektorgrafik (`slot.visual`)
- * 3. neutrale, beschriftete Platzhalterfläche
+ * 2. Fachgrafik aus Daten – `slot.visual` oder passend zum Motiv (`visualFuerMotiv`)
+ * 3. Fach-Icon passend zum Motiv
  *
- * Es werden bewusst keine Stockfotos und keine erzeugten Fotos eingesetzt,
- * die eine echte Werkstatt vortäuschen.
+ * Es gibt keine sichtbaren Platzhalter und keine erzeugten Fotos: Die Grafiken
+ * erklären die Sache und geben sich nicht als Foto aus. Welche Fotos fehlen,
+ * steht für die Redaktion in `docs/gestaltung/MENSCHEN.md`.
  */
 export function ImagePlaceholder({
   slot,
   className,
   compact = false,
   sizes = '(min-width: 1024px) 50vw, 100vw',
+  frei = false,
+  ausschnitt,
 }: ImagePlaceholderProps) {
-  if (slot.bild?.url) {
-    return (
-      <div
-        className={cn('relative w-full overflow-hidden rounded-lg bg-surface-muted', ratios[slot.ratio], className)}
-      >
-        <Image
-          src={slot.bild.url}
-          alt={slot.bild.alt || slot.motif}
-          fill
-          sizes={sizes}
-          className="object-cover"
-        />
-      </div>
-    );
-  }
+  if (slot.bild?.url) return <FotoFlaeche slot={slot} className={className} sizes={sizes} />;
 
-  const visual = slot.visual
-    ? renderVisual(slot.visual, slot.motif, 'absolute inset-0 h-full w-full')
-    : null;
+  const flaeche = frei ? '' : 'rounded-lg border border-border bg-surface';
+  const ref = compact ? null : (slot.visual ?? visualFuerMotiv(slot.motif));
+  /* Unter 640 px die schmale Fassung mit größerer Schrift, wo der Generator eine hat. Sie hat
+     Vorrang vor einem Ausschnitt: Ein Ausschnitt hilft breiten Bäumen nicht, die schmale
+     Fassung setzt die Schrift sicher lesbar. Der Ausschnitt gilt dann nicht. */
+  const schmal = ref ? schmaleFassung(ref) : null;
+  const zuschnitt = schmal ? undefined : ausschnitt;
+  /* Der Titel kommt vom Generator selbst (sachlich), nicht aus dem Fotomotiv. */
+  const visual = ref ? renderVisual(ref, '', cn('absolute inset-0 h-full w-full', schmal && 'hidden sm:block')) : null;
   if (visual) {
     return (
       <div
-        className={cn(
-          'relative w-full overflow-hidden rounded-lg bg-area-soft',
-          ratios[slot.ratio],
-          className,
-        )}
+        className={cn('relative w-full overflow-hidden', flaeche, ratios[slot.ratio], zuschnitt && 'sm24-ausschnitt', className)}
+        style={zuschnitt ? ausschnittStil(zuschnitt) : undefined}
       >
+        {schmal && renderVisual(schmal, '', 'absolute inset-0 h-full w-full sm:hidden')}
         {visual}
       </div>
     );
   }
 
-  return (
-    <div
-      className={cn(
-        'flex w-full flex-col items-center justify-center gap-2 rounded-lg',
-        'border border-dashed border-border-strong bg-surface-muted p-4 text-center',
-        ratios[slot.ratio],
-        className,
-      )}
-      role="img"
-      aria-label={`Bildplatzhalter: ${slot.motif}`}
-    >
-      <ImageOff className="text-foreground-subtle" size={compact ? 16 : 20} aria-hidden />
-      <span className="max-w-[28ch] text-xs font-semibold leading-snug text-foreground-muted">
-        {slot.motif}
-      </span>
-      {!compact && slot.note && (
-        <span className="max-w-[34ch] text-[11px] leading-snug text-foreground-subtle">
-          {slot.note}
-        </span>
-      )}
-      {!compact && (
-        <span className="text-[10px] font-medium uppercase tracking-wider text-foreground-subtle">
-          Bild folgt
-        </span>
-      )}
-    </div>
-  );
+  return <FachIconFlaeche slot={slot} className={className} compact={compact} frei={frei} />;
 }

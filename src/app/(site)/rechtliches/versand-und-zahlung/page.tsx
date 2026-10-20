@@ -15,21 +15,39 @@ export default async function VersandUndZahlungPage() {
 
   return (
     <>
-      <h1 className="text-[1.75rem] font-bold leading-tight md:text-3xl">Zahlung und Versand</h1>
+      <h1 className="text-headline font-bold text-balance">Zahlung und Versand</h1>
       <p className="mt-3">
         Hier finden Sie die Versandarten mit Kosten, die Zahlungsarten und die Regeln zur
         Anzahlung bei Terminaufträgen.
       </p>
 
       <h2>Versandarten</h2>
-      <div className="table-scroll mt-4">
-        <table className="w-full min-w-[34rem] border-collapse text-[14px]">
+      {/* Mobil gestapelte Zeilen mit denselben Angaben (KERN 1.6); die Tabelle erscheint ab md */}
+      <dl className="mt-4 border-t border-border md:hidden">
+        {settings.shipping.map((option) => (
+          <div key={option.id} className="border-b border-border py-3">
+            <dt className="flex items-baseline justify-between gap-4 font-semibold text-foreground">
+              <span>{option.label}</span>
+              <span className="whitespace-nowrap font-mono tabular-nums">
+                {option.priceCents === 0 ? 'kostenfrei' : formatCents(option.priceCents)}
+              </span>
+            </dt>
+            <dd className="mt-1 text-small text-foreground-muted">{option.description}</dd>
+            <dd className="mt-1 text-small text-foreground-muted">
+              Sendungsverfolgung: {option.tracked ? 'ja' : 'nein'}
+              {option.insured ? ', versichert' : ''}
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <div className="table-scroll mt-4 hidden md:block">
+        <table className="w-full border-collapse text-small">
           <thead>
             <tr className="border-b border-border text-left">
               <th className="py-2 pr-4 font-semibold text-foreground">Versandart</th>
               <th className="py-2 pr-4 font-semibold text-foreground">Beschreibung</th>
               <th className="py-2 pr-4 font-semibold text-foreground">Sendungsverfolgung</th>
-              <th className="py-2 font-semibold text-foreground">Kosten</th>
+              <th className="py-2 text-right font-semibold text-foreground">Kosten</th>
             </tr>
           </thead>
           <tbody>
@@ -41,7 +59,7 @@ export default async function VersandUndZahlungPage() {
                   {option.tracked ? 'ja' : 'nein'}
                   {option.insured ? ', versichert' : ''}
                 </td>
-                <td className="py-3 font-semibold text-foreground">
+                <td className="py-3 text-right font-mono font-semibold tabular-nums text-foreground">
                   {option.priceCents === 0 ? 'kostenfrei' : formatCents(option.priceCents)}
                 </td>
               </tr>
@@ -76,17 +94,20 @@ export default async function VersandUndZahlungPage() {
       <h2>Anzahlung bei Terminaufträgen</h2>
       <p>
         Für Autoschlüssel-Termine erheben wir eine Anzahlung. Sie beträgt standardmäßig{' '}
-        <strong>{formatCents(settings.booking.depositCents)}</strong> und liegt je nach Fahrzeug
-        und Leistung zwischen {formatCents(settings.booking.depositMinCents)} und{' '}
-        {formatCents(settings.booking.depositMaxCents)}. Die Anzahlung wird{' '}
-        <strong>vollständig auf den Gesamtpreis angerechnet</strong>.
+        <strong className="font-mono tabular-nums">{formatCents(settings.booking.depositCents)}</strong>{' '}
+        und liegt je nach Fahrzeug und Leistung zwischen{' '}
+        <span className="font-mono tabular-nums">{formatCents(settings.booking.depositMinCents)}</span>{' '}
+        und{' '}
+        <span className="font-mono tabular-nums">{formatCents(settings.booking.depositMaxCents)}</span>.
+        Die Anzahlung wird <strong>vollständig auf den Gesamtpreis angerechnet</strong>.
       </p>
       <p>
         Grund für die Anzahlung: Für viele Fahrzeuge muss fahrzeugspezifisches Material im Voraus
         beschafft werden. Die Anzahlung sichert diese Beschaffung und den reservierten Termin ab.
       </p>
       <p>
-        Der früheste Termin liegt in der Regel etwa {settings.booking.leadTimeDays} Tage in der
+        Der früheste Termin liegt in der Regel etwa{' '}
+        <span className="font-mono tabular-nums">{settings.booking.leadTimeDays} Tage</span> in der
         Zukunft, damit Beschaffung und Vorbereitung sicher abgeschlossen sind.
       </p>
       <p>

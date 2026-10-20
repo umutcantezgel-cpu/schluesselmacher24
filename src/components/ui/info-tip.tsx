@@ -1,10 +1,11 @@
 'use client';
 
-import { useId, useState } from 'react';
-import { Info, X } from 'lucide-react';
+import { useId, useLayoutEffect, useRef, useState } from 'react';
 import type { InfoHint } from '@/lib/types';
 import { cn } from '@/lib/cn';
-import { ImagePlaceholder } from './image-placeholder';
+import { KompaktBild } from './bild-flaeche';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
+import { GlyphKreuz } from '@/components/visual/glyphen/kreuz';
 
 export interface InfoTipProps {
   hint: InfoHint;
@@ -22,6 +23,19 @@ export interface InfoTipProps {
 export function InfoTip({ hint, className, label }: InfoTipProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
+  const panel = useRef<HTMLSpanElement>(null);
+
+  // Am Bildschirmrand rückt die Erklärung nach innen, statt über den Rand zu laufen
+  // (16 px Abstand; Befund Runde 2, H03 mobil). Nur Lage, kein Zustand.
+  useLayoutEffect(() => {
+    const el = panel.current;
+    if (!open || !el) return;
+    el.style.translate = '';
+    const r = el.getBoundingClientRect();
+    const rand = 16;
+    const ueber = r.right - (document.documentElement.clientWidth - rand);
+    if (ueber > 0) el.style.translate = `${-Math.min(ueber, Math.max(0, r.left - rand))}px 0`;
+  }, [open]);
 
   return (
     <span className={cn('relative inline-flex', className)}>
@@ -31,42 +45,43 @@ export function InfoTip({ hint, className, label }: InfoTipProps) {
         aria-expanded={open}
         aria-controls={panelId}
         className={cn(
-          'inline-flex h-7 w-7 items-center justify-center rounded-full border border-border',
-          'bg-surface text-foreground-muted transition-colors hover:bg-surface-muted hover:text-primary',
+          'inline-flex min-h-6 min-w-6 items-center justify-center rounded-full border border-border',
+          'bg-surface text-foreground-muted transition-colors duration-quick hover:bg-surface-muted hover:text-primary',
         )}
       >
-        <Info size={15} aria-hidden />
+        <GlyphInfo size={15} />
         <span className="sr-only">{label ?? `Erklärung zu ${hint.title}`}</span>
       </button>
 
       {open && (
         <span
+          ref={panel}
           id={panelId}
           role="note"
           className={cn(
-            'absolute left-0 top-9 z-40 block w-[min(20rem,calc(100vw-3rem))]',
-            'rounded-lg border border-border bg-surface p-4 shadow-lg',
+            'absolute left-0 top-9 z-header block w-tipp',
+            'rounded-lg border border-border bg-surface p-4 shadow-overlay',
           )}
         >
           <span className="mb-2 flex items-start justify-between gap-3">
-            <strong className="text-sm font-bold text-foreground">{hint.title}</strong>
+            <strong className="text-small font-bold text-foreground">{hint.title}</strong>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="-mr-1 -mt-1 rounded p-1 text-foreground-subtle hover:text-foreground"
+              className="-mr-1 -mt-1 inline-flex min-h-6 min-w-6 items-center justify-center rounded text-foreground-subtle transition-colors duration-quick hover:text-foreground"
             >
-              <X size={15} aria-hidden />
+              <GlyphKreuz size={15} />
               <span className="sr-only">Erklärung schließen</span>
             </button>
           </span>
 
-          <span className="block text-[13px] leading-relaxed text-foreground-muted">
+          <span className="block text-small leading-relaxed text-foreground-muted">
             {hint.body}
           </span>
 
           {hint.figure && (
             <span className="mt-3 block">
-              <ImagePlaceholder slot={hint.figure} compact />
+              <KompaktBild slot={hint.figure} />
             </span>
           )}
         </span>

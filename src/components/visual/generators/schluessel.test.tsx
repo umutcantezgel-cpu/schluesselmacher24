@@ -56,6 +56,22 @@ describe('SchluesselGrafik', () => {
     expect(html).not.toContain('<text');
   });
 
+  it('zeichnet als Rohling einen geraden Halm mit gestrichelter Einschnittzone', () => {
+    const roh = zeichne({ typ: 'zylinder', rohling: true });
+    expect(roh).toContain('stroke-dasharray="4 3"');
+    expect(roh).not.toContain('class="sm24-draw stroke-area"');
+    expect(roh).not.toContain('sm24-pop fill-area-strong');
+    // Ohne den Schalter bleibt der Zylinderschlüssel unverändert.
+    expect(zeichne({ typ: 'zylinder' })).toBe(zeichne({ typ: 'zylinder', rohling: false }));
+    expect(zeichne({ typ: 'zylinder' })).toContain('class="sm24-draw stroke-area"');
+  });
+
+  it('zeigt beim Smart-Key den Notschlüssel im Gehäuse gestrichelt', () => {
+    const html = zeichne({ typ: 'smart-key' });
+    expect(html).toContain('stroke-dasharray="4 3"');
+    expect(zeichne({ typ: 'funk' })).not.toContain('stroke-dasharray="4 3"');
+  });
+
   it('leitet aus gleichem Code dasselbe Profil ab, aus anderem ein anderes', () => {
     expect(zeichne({ code: 'AB 4711' })).toBe(zeichne({ code: 'AB 4711' }));
     expect(zeichne({ code: 'ab4711' })).toBe(zeichne({ code: 'AB 4711' }));
@@ -65,6 +81,14 @@ describe('SchluesselGrafik', () => {
 
   it('beschriftet Code-Profile nicht mit Ziffern', () => {
     expect(zeichne({ code: 'AB 4711' })).not.toContain('<text');
+  });
+
+  it('zeichnet das Lineal nur mit beschrifteten Einschnitten', () => {
+    expect(zeichne({ code: 'AB 4711' })).not.toContain('sm24-draw stroke-foreground-muted');
+    expect(zeichne({})).not.toContain('sm24-draw stroke-foreground-muted');
+    const beschriftet = zeichne({ einschnitte: [3, 5, 2, 7, 4] });
+    expect(beschriftet).toContain('sm24-draw stroke-foreground-muted');
+    expect(beschriftet).toContain('<text');
   });
 
   it('gibt einschnitten Vorrang vor code und beschriftet sie', () => {
@@ -114,5 +138,63 @@ describe('SchluesselGrafik', () => {
   it('setzt einen Ersatztitel je Typ', () => {
     expect(zeichne({ typ: 'buntbart' }, '')).toContain('<title>Buntbartschlüssel, Seitenansicht</title>');
     expect(zeichne({}, null)).toContain('<title>Zylinderschlüssel, Seitenansicht</title>');
+  });
+});
+
+describe('Bewegung der Schlüsselzeichnung', () => {
+  /** Standarddauern der Bausteine (globals.css): draw `scene` 0,9 s, sonst `enter` 0,6 s. */
+  const STANDARD: Record<string, number> = { 'sm24-draw': 0.9, 'sm24-reveal': 0.6, 'sm24-pop': 0.6, 'sm24-fade': 0.6, 'sm24-dash': 0.9 };
+
+  function ende(html: string): number {
+    let max = 0;
+    for (const [, klasse, stil] of html.matchAll(/class="(sm24-(?:draw|reveal|pop|fade|dash))[^"]*"[^>]*?style="([^"]*)"/g)) {
+      const delay = Number(/--sm24-delay:\s*([\d.]+)s/.exec(stil)?.[1] ?? 0);
+      const dauer = Number(/--sm24-duration:\s*([\d.]+)s/.exec(stil)?.[1] ?? STANDARD[klasse]);
+      max = Math.max(max, delay + dauer);
+    }
+    return max;
+  }
+
+  it('endet für jede Bauform und Anzahl spätestens nach 1,6 s', () => {
+    for (const typ of ['zylinder', 'buntbart', 'klapp', 'funk', 'smart-key', 'transponder']) {
+      for (const anzahl of [1, 3]) {
+        const html = renderToStaticMarkup(<SchluesselGrafik params={{ typ, anzahl, beschriftung: true }} title="t" />);
+        const t = ende(html);
+        expect(t, `${typ} × ${anzahl}`).toBeLessThanOrEqual(1.6);
+        expect(t, `${typ} × ${anzahl} hat Bewegung`).toBeGreaterThan(1);
+      }
+    }
+  });
+
+  it('zeichnet die Profile erst, wenn alle Körper ganz erschienen sind', () => {
+    for (const anzahl of [1, 2, 3]) {
+      const html = renderToStaticMarkup(<SchluesselGrafik params={{ typ: 'zylinder', anzahl }} title="t" />);
+      const koerperEnden = [...html.matchAll(/<g class="sm24-reveal" style="([^"]*)"/g)].map(([, stil]) => {
+        const delay = Number(/--sm24-delay:\s*([\d.]+)s/.exec(stil)?.[1] ?? 0);
+        const dauer = Number(/--sm24-duration:\s*([\d.]+)s/.exec(stil)?.[1] ?? 0.6);
+        return delay + dauer;
+      });
+      const profilStarts = [...html.matchAll(/class="sm24-draw stroke-area"[^>]*style="--sm24-delay:([\d.]+)s/g)].map((m) => Number(m[1]));
+      expect(koerperEnden, `${anzahl} Körper`).toHaveLength(anzahl);
+      expect(profilStarts.length).toBeGreaterThan(0);
+      expect(Math.min(...profilStarts), `${anzahl} Schlüssel`).toBeGreaterThanOrEqual(Math.max(...koerperEnden) - 1e-9);
+    }
+  });
+
+  it('fasst die Marken eines Schlüssels in genau eine Gruppe mit einer Animation', () => {
+    for (const anzahl of [1, 3]) {
+      const html = zeichne({ typ: 'zylinder', einschnitte: [3, 5, 2, 7, 4], anzahl });
+      const gruppen = [...html.matchAll(/<g class="sm24-fade"[^>]*>((?:(?!<\/g>).)*)<\/g>/g)];
+      expect(gruppen, `${anzahl} Schlüssel`).toHaveLength(1);
+      const marken = gruppen[0][1].match(/<circle class="fill-area-strong"/g) ?? [];
+      expect(marken.length, `${anzahl} Schlüssel`).toBeGreaterThan(0);
+      expect(marken.length, `${anzahl} Schlüssel`).toBe(html.match(/<circle/g)?.length);
+    }
+  });
+
+  it('zeichnet keine Marke mehr als eigene Animation', () => {
+    for (const typ of TYPEN) {
+      expect(zeichne({ typ, einschnitte: [3, 5, 2, 7, 4], anzahl: 3 }), typ).not.toContain('<circle class="sm24-pop');
+    }
   });
 });

@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Plus, Trash2 } from 'lucide-react';
 
 import type {
   CylinderCatalog,
@@ -28,6 +27,11 @@ import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { SummaryList } from '@/components/layout/summary-list';
+import { GlyphLineal } from '@/components/visual/glyphen/lineal';
+import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
+import { GlyphPlus } from '@/components/visual/glyphen/plus';
+import { GlyphWarnung } from '@/components/visual/glyphen/warnung';
+import { ZylinderMassLive } from '@/components/visual/interaktiv/zylinder-mass-live';
 
 const FLOW_ID = 'zylinder-konfigurator';
 
@@ -349,7 +353,7 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
   if (catalog.forms.filter((form) => form.active).length === 0) {
     return (
       <Alert tone="warning" title="Zusammenstellung derzeit nicht möglich">
-        [Platzhalter: Im Katalog ist zurzeit keine Bauform freigeschaltet.] Bitte nutzen Sie
+        Im Katalog ist zurzeit keine Bauform freigeschaltet. Bitte nutzen Sie
         vorübergehend die allgemeine Anfrage, damit wir Ihre Zylinder von Hand erfassen können.
       </Alert>
     );
@@ -363,48 +367,49 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHints[flow.step?.id ?? '']}
+      summe={{ label: 'Summe', wert: formatCents(breakdown.totalCents) }}
     >
       <div className="space-y-6">
-        {/* Laufende Summe — in jedem Schritt sichtbar */}
-        <div
-          className="rounded-lg border border-border bg-surface px-4 py-3"
-          aria-live="polite"
-        >
-          <dl className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
-            <div>
-              <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+        {/* Laufende Summe — in jedem Schritt sichtbar, als Schriftfeld in Mono */}
+        <div aria-live="polite">
+          <dl className="grid grid-cols-2 border-y border-border sm:grid-cols-4">
+            <div className="py-4 pr-3 sm:pr-4">
+              <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 Zylinder
               </dt>
-              <dd className="mt-0.5 font-display text-[15px] font-bold text-foreground">
+              <dd className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
                 {breakdown.cylinderCount}
               </dd>
             </div>
-            <div>
-              <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+            <div className="border-l border-border py-4 pl-3 pr-3 sm:pl-4 sm:pr-4">
+              <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 Schlüssel
               </dt>
-              <dd className="mt-0.5 font-display text-[15px] font-bold text-foreground">
+              <dd className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
                 {data.keyCount}
               </dd>
             </div>
-            <div>
-              <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+            <div className="py-4 pr-3 sm:border-l sm:border-border sm:pl-4 sm:pr-4">
+              <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 Optionen
               </dt>
-              <dd className="mt-0.5 font-display text-[15px] font-bold text-foreground">
+              <dd className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
                 {data.extraIds.length}
               </dd>
             </div>
-            <div>
-              <dt className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+            <div className="border-l border-border py-4 pl-3 pr-3 sm:pl-4 sm:pr-4">
+              <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
                 Laufende Summe
               </dt>
-              <dd className="mt-0.5 font-display text-[15px] font-bold text-primary">
+              <dd
+                key={breakdown.totalCents}
+                className="mt-1 font-mono text-title font-semibold tabular-nums text-foreground animate-schleier-ein"
+              >
                 {formatCents(breakdown.totalCents)}
               </dd>
             </div>
           </dl>
-          <p className="mt-2 text-[12px] leading-snug text-foreground-subtle">
+          <p className="mt-2 text-caption leading-snug text-foreground-muted">
             Die Versandart wählen Sie im Warenkorb. Bis dahin ändert sich die Summe mit jeder
             Anpassung.
           </p>
@@ -413,21 +418,13 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
         {/* Schritt 1 — Zylinder */}
         {flow.step?.id === 'zylinder' && (
           <div className="space-y-4">
-            <Card variant="muted">
-              <CardBody>
-                <div className="grid gap-5 md:grid-cols-[1.2fr_1fr] md:items-start">
-                  <div>
-                    <h3 className="text-[16px] font-bold text-foreground">
-                      {catalog.measuringInfo.title}
-                    </h3>
-                    <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                      {catalog.measuringInfo.body}
-                    </p>
-                  </div>
-                  <ImagePlaceholder slot={catalog.measuringFigure} />
-                </div>
-              </CardBody>
-            </Card>
+            <a
+              href="#weiterfuehrend"
+              className="inline-flex min-h-touch items-center gap-2 text-small font-semibold text-primary hover:underline"
+            >
+              <GlyphLineal size={16} className="shrink-0" />
+              Zylinder richtig ausmessen
+            </a>
 
             {data.items.length === 0 && (
               <Alert tone="info" title="Noch keine Position angelegt">
@@ -451,11 +448,11 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
             ))}
 
             <Button variant="outline" size="lg" fullWidth onClick={addPosition} disabled={!canAddPosition}>
-              <Plus size={18} aria-hidden />
+              <GlyphPlus size={18} />
               Weitere Tür hinzufügen
             </Button>
 
-            <p className="text-[13px] leading-relaxed text-foreground-subtle">
+            <p className="text-small leading-relaxed text-foreground-muted">
               {canAddPosition
                 ? `Bisher ${count} von ${catalog.maxCylinders} möglichen Zylindern.`
                 : `Die Höchstzahl von ${catalog.maxCylinders} Zylindern je Bestellung ist erreicht. Für größere Vorhaben planen wir eine Schließanlage.`}
@@ -490,22 +487,22 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
 
                 <dl className="divide-y divide-border rounded-lg border border-border">
                   <div className="flex flex-wrap items-baseline justify-between gap-2 px-4 py-3">
-                    <dt className="text-[14px] text-foreground-muted">Im Grundpreis enthalten</dt>
-                    <dd className="text-[15px] font-semibold text-foreground">
+                    <dt className="text-small text-foreground-muted">Im Grundpreis enthalten</dt>
+                    <dd className="font-mono text-body font-semibold tabular-nums text-foreground">
                       {catalog.includedKeys} Stück
                     </dd>
                   </div>
                   <div className="flex flex-wrap items-baseline justify-between gap-2 px-4 py-3">
-                    <dt className="text-[14px] text-foreground-muted">
+                    <dt className="text-small text-foreground-muted">
                       Zusätzliche Schlüssel je {formatCents(catalog.keyPriceCents)}
                     </dt>
-                    <dd className="text-[15px] font-semibold text-foreground">
+                    <dd className="font-mono text-body font-semibold tabular-nums text-foreground">
                       {extraKeys} Stück
                     </dd>
                   </div>
                   <div className="flex flex-wrap items-baseline justify-between gap-2 bg-surface-muted px-4 py-3">
-                    <dt className="text-[14px] font-semibold text-foreground">Summe Schlüssel</dt>
-                    <dd className="text-[15px] font-bold text-foreground">
+                    <dt className="text-small font-semibold text-foreground">Summe Schlüssel</dt>
+                    <dd className="font-mono text-body font-bold tabular-nums text-foreground">
                       {formatCents(breakdown.keysCents)}
                     </dd>
                   </div>
@@ -546,15 +543,15 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
             </fieldset>
 
             <div className="flex flex-wrap items-baseline justify-between gap-2 rounded-lg border border-border bg-surface-muted px-4 py-3">
-              <p className="text-[14px] font-semibold text-foreground">Summe Optionen</p>
-              <p className="text-[15px] font-bold text-foreground">
+              <p className="text-small font-semibold text-foreground">Summe Optionen</p>
+              <p className="font-mono text-body font-bold tabular-nums text-foreground">
                 {formatCents(breakdown.extrasCents)}
               </p>
             </div>
 
-            <p className="text-[13px] leading-relaxed text-foreground-subtle">
-              Optionen mit Preis je Zylinder werden auf alle {breakdown.cylinderCount} Zylinder
-              dieser Bestellung gerechnet. Sie können jede Option wieder abwählen.
+            <p className="text-small leading-relaxed text-foreground-muted">
+              Optionen mit Preis je Zylinder werden für jeden Zylinder dieser Bestellung gerechnet, zurzeit <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{breakdown.cylinderCount} Stück</span>.
+              Sie können jede Option wieder abwählen.
             </p>
           </div>
         )}
@@ -563,7 +560,7 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
         {flow.step?.id === 'erweiterung' && (
           <div className="space-y-4">
             <fieldset>
-              <legend className="mb-3 text-[15px] font-semibold text-foreground">
+              <legend className="mb-3 text-body font-semibold text-foreground">
                 Soll Ihre Schließung später erweiterbar sein?
               </legend>
               <div className="space-y-3">
@@ -606,14 +603,40 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
 
         {/* Schritt 5 — Zusammenfassung */}
         {flow.step?.id === 'zusammenfassung' && (
-          <div className="space-y-5">
-            <SummaryList sections={summary} />
+          <div className="space-y-6">
+            {/* Je Position die Maßzeichnung, damit die Maße vor dem Bestellen sichtbar geprüft werden;
+                die Zahlen stehen vollständig im Schriftfeld darunter. */}
+            <div>
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Ihre Zylinder</p>
+              <ul className="mt-2 grid gap-x-gutter border-t border-border sm:grid-cols-2 lg:grid-cols-3">
+                {data.items.map((item, index) => (
+                  <li key={item.uid} className="border-b border-border py-4">
+                    <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                      Position {index + 1}
+                    </p>
+                    <ZylinderMassLive
+                      form={item.form}
+                      aussen={item.measureAMm}
+                      innen={item.measureBMm}
+                      name={catalog.forms.find((f) => f.id === item.form)?.label ?? ''}
+                      className="mt-2"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-            <Alert tone="warning" title="Anfertigung nach Ihren Maßen">
-              Die Zylinder werden nach den hier angegebenen Maßen gefertigt. Bitte prüfen Sie Maß A
-              und Maß B jeder Position, bevor Sie fortfahren. Änderungen sind über die
-              Schrittleiste jederzeit möglich.
-            </Alert>
+            <SummaryList sections={summary} variante="schriftfeld" hervorheben="Gesamt" />
+
+            <p className="flex items-start gap-3 border-t border-border pt-4 text-small leading-relaxed text-foreground-muted">
+              <GlyphWarnung size={18} className="mt-0.5 shrink-0 text-warning" />
+              <span>
+                <span className="font-semibold text-foreground">Anfertigung nach Ihren Maßen.</span>{' '}
+                Die Zylinder werden nach den hier angegebenen Maßen gefertigt. Bitte prüfen Sie Maß A
+                und Maß B jeder Position, bevor Sie fortfahren. Änderungen sind über die
+                Schrittleiste jederzeit möglich.
+              </span>
+            </p>
 
             <div className="flex flex-wrap gap-3">
               <Button variant="outline" size="md" onClick={() => flow.goTo('zylinder')}>
@@ -671,12 +694,12 @@ function PositionCard({
     <Card>
       <CardHeader className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">
-          <h3 className="text-[15px] font-bold text-foreground">Position {index + 1}</h3>
+          <h3 className="text-body font-semibold text-foreground">Position {index + 1}</h3>
           <Badge tone="primary">{form.label}</Badge>
         </div>
         {canRemove && (
           <Button variant="ghost" size="md" onClick={onRemove}>
-            <Trash2 size={16} aria-hidden />
+            <GlyphPapierkorb size={16} />
             Entfernen
             <span className="sr-only"> — Position {index + 1}</span>
           </Button>
@@ -686,7 +709,7 @@ function PositionCard({
       <CardBody className="space-y-6">
         {/* Bauform */}
         <fieldset>
-          <legend className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
+          <legend className="mb-3 flex items-center gap-2 text-small font-semibold text-foreground">
             Bauform
             <InfoTip
               hint={{
@@ -716,14 +739,14 @@ function PositionCard({
         </fieldset>
 
         {/* Maße */}
-        <div className="rounded-lg border border-border bg-surface-muted p-4">
+        <div className="border-t border-border pt-5">
           <div className="flex items-center gap-2">
-            <h4 className="text-sm font-semibold text-foreground">Maße dieser Tür</h4>
+            <h4 className="text-small font-semibold text-foreground">Maße dieser Tür</h4>
             <InfoTip hint={catalog.measuringInfo} />
           </div>
 
-          <div className="mt-3 grid gap-4 md:grid-cols-[1fr_auto] md:items-start">
-            <div className="grid gap-4 sm:grid-cols-2">
+          <div className="mt-3 grid gap-4 lg:grid-cols-12">
+            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
               <Field
                 label={form.measureLabels.a}
                 hint={`${formatMillimeter(form.minMm)} bis ${formatMillimeter(form.maxMm)}`}
@@ -734,6 +757,7 @@ function PositionCard({
                     id={id}
                     aria-describedby={describedBy}
                     invalid={!hasA}
+                    className="font-mono font-semibold tabular-nums text-foreground"
                     value={hasA ? item.measureAMm : ''}
                     onChange={(event) => onUpdate({ measureAMm: Number(event.target.value) })}
                   >
@@ -758,6 +782,7 @@ function PositionCard({
                       id={id}
                       aria-describedby={describedBy}
                       invalid={!hasB}
+                      className="font-mono font-semibold tabular-nums text-foreground"
                       value={hasB ? item.measureBMm : ''}
                       onChange={(event) => onUpdate({ measureBMm: Number(event.target.value) })}
                     >
@@ -773,24 +798,35 @@ function PositionCard({
               )}
             </div>
 
-            <div className="w-full md:w-52">
-              <ImagePlaceholder slot={measureFigure} compact />
+            {/* Foto vor Zeichnung (K-008): ohne Messfoto folgt die Maßzeichnung live den Maßen (B-17).
+                Neben den Feldern erst ab lg; darunter in voller Breite, sonst wird die Schrift zu klein. */}
+            <div className="lg:col-span-7 lg:row-span-2">
+              {measureFigure.bild ? (
+                <ImagePlaceholder slot={measureFigure} compact />
+              ) : (
+                <ZylinderMassLive
+                  form={item.form}
+                  aussen={item.measureAMm}
+                  innen={item.measureBMm}
+                  name={form.label}
+                />
+              )}
             </div>
-          </div>
 
-          <p className="mt-3 text-[13px] leading-relaxed text-foreground-muted">
+            <p className="text-small leading-relaxed text-foreground-muted lg:col-span-5">
             Gemessen wird ab Mitte der Stulpschraube — Maß A nach außen
             {form.measures === 'beide' ? ', Maß B nach innen' : ''}. Gesamtlänge dieser Position:{' '}
-            {formatMillimeter(item.measureAMm + (item.measureBMm ?? 0))}. Bis{' '}
-            {formatMillimeter(form.baseLengthMm)} gilt der Grundpreis, darüber kommen{' '}
-            {formatCents(form.lengthSurchargeCents)} je angefangene 5 mm hinzu.
-          </p>
+            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatMillimeter(item.measureAMm + (item.measureBMm ?? 0))}</span>. Bis{' '}
+            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatMillimeter(form.baseLengthMm)}</span> gilt der Grundpreis, darüber kommen{' '}
+            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatCents(form.lengthSurchargeCents)}</span> je angefangene <span className="whitespace-nowrap font-mono tabular-nums text-foreground">5 mm</span> hinzu.
+            </p>
+          </div>
         </div>
 
         {/* Funktion */}
         {functions.length > 0 && (
           <fieldset>
-            <legend className="mb-3 text-sm font-semibold text-foreground">Funktion</legend>
+            <legend className="mb-3 text-small font-semibold text-foreground">Funktion</legend>
             <div className="space-y-3">
               {functions.map((fn) => {
                 const allowed = fn.forms.includes(form.id);
@@ -842,11 +878,11 @@ function PositionCard({
             )}
           </Field>
 
-          <p className="text-right">
-            <span className="block text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+          <p className="ml-auto text-right">
+            <span className="block font-mono text-caption uppercase tracking-label text-foreground-muted">
               Zwischensumme
             </span>
-            <span className="mt-0.5 block font-display text-[17px] font-bold text-foreground">
+            <span className="mt-1 block font-mono text-title-sm font-semibold tabular-nums text-foreground">
               {formatCents(positionTotal)}
             </span>
           </p>

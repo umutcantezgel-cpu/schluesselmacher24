@@ -2,9 +2,13 @@ import { createElement, type ComponentType, type ReactElement } from 'react';
 
 import type { VisualParamValue, VisualRef } from '@/lib/types';
 
+import { AblaufGrafik } from './generators/ablauf';
 import { CodeFundstelleGrafik } from './generators/code-fundstelle';
+import { ProfilschnittGrafik } from './generators/profilschnitt';
 import { SchliessplanGrafik } from './generators/schliessplan';
 import { SchluesselGrafik } from './generators/schluessel';
+import { StiftzuhaltungGrafik } from './generators/stiftzuhaltung';
+import { TuerSchutzGrafik } from './generators/tuer-schutz';
 import { ZutrittSignalGrafik } from './generators/zutritt-signal';
 import { ZylinderMassGrafik } from './generators/zylinder-mass';
 
@@ -29,12 +33,28 @@ export type VisualComponent = ComponentType<VisualProps>;
  * sind stabil, weil sie in Inhalten gespeichert werden (Name = Dateiname).
  */
 const REGISTRY: Record<string, VisualComponent> = {
+  ablauf: AblaufGrafik,
   'code-fundstelle': CodeFundstelleGrafik,
+  profilschnitt: ProfilschnittGrafik,
   schliessplan: SchliessplanGrafik,
   schluessel: SchluesselGrafik,
+  stiftzuhaltung: StiftzuhaltungGrafik,
+  'tuer-schutz': TuerSchutzGrafik,
   'zutritt-signal': ZutrittSignalGrafik,
   'zylinder-mass': ZylinderMassGrafik,
 };
+
+/**
+ * Generatoren mit dem Parameter `format: 'schmal'`: eigene, kleinere Fläche mit
+ * größerer Schrift für Telefonbreiten. Bildflächen zeigen sie unter 640 px.
+ */
+const SCHMALES_FORMAT: ReadonlySet<string> = new Set(['ablauf', 'schliessplan', 'zylinder-mass']);
+
+/** Die schmale Fassung zu `ref`, sofern der Generator eine hat; sonst `null`. */
+export function schmaleFassung(ref: VisualRef): VisualRef | null {
+  if (!ref || typeof ref.generator !== 'string' || !SCHMALES_FORMAT.has(ref.generator)) return null;
+  return { ...ref, params: { ...(ref.params ?? {}), format: 'schmal' } };
+}
 
 export function getVisual(name: string): VisualComponent | undefined {
   return Object.prototype.hasOwnProperty.call(REGISTRY, name) ? REGISTRY[name] : undefined;

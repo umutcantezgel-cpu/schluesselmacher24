@@ -104,4 +104,39 @@ describe('ZutrittSignalGrafik', () => {
   it('liefert für gleiche Eingaben dieselbe Grafik', () => {
     expect(zeichne({ medium: 'smartphone' })).toBe(zeichne({ medium: 'smartphone' }));
   });
+
+  it('endet mit allen Bewegungen spätestens nach 1,6 s', () => {
+    for (const medium of MEDIEN) {
+      const t = ende(zeichne({ medium }));
+      expect(t, medium).toBeLessThanOrEqual(1.6);
+      expect(t, `${medium} hat Bewegung`).toBeGreaterThan(1);
+    }
+  });
 });
+
+/** Standarddauern der Bausteine (globals.css): draw `scene` 0,9 s, sonst `enter` 0,6 s. */
+const STANDARD: Record<string, number> = { 'sm24-draw': 0.9, 'sm24-reveal': 0.6, 'sm24-pop': 0.6, 'sm24-fade': 0.6, 'sm24-dash': 0.9 };
+
+/**
+ * Ende der letzten Bewegung in Sekunden: je animiertem Element Verzögerung der umschließenden
+ * Gruppen plus eigene Verzögerung plus Dauer (Muster `ende` aus schluessel.test.tsx, mit Gruppen).
+ */
+function ende(html: string): number {
+  let max = 0;
+  const gruppen: number[] = [];
+  for (const [, schliesst, name, attribute, selbst] of html.matchAll(/<(\/?)([a-z]+)([^>]*?)(\/?)>/g)) {
+    if (schliesst) {
+      if (name === 'g') gruppen.pop();
+      continue;
+    }
+    const eigene = Number(/--sm24-delay:\s*([\d.]+)s/.exec(attribute)?.[1] ?? 0);
+    const klasse = /class="(sm24-(?:draw|reveal|pop|fade|dash))/.exec(attribute)?.[1];
+    if (klasse) {
+      const dauer = Number(/--sm24-duration:\s*([\d.]+)s/.exec(attribute)?.[1] ?? STANDARD[klasse]);
+      const gruppe = gruppen.reduce((summe, verzoegerung) => summe + verzoegerung, 0);
+      max = Math.max(max, gruppe + eigene + dauer);
+    }
+    if (name === 'g' && selbst !== '/') gruppen.push(eigene);
+  }
+  return max;
+}

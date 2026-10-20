@@ -16,6 +16,8 @@ export default function TerminStatusPage() {
     <>
       <PageHeader
         eyebrow="Terminstatus"
+        bereich="service-und-termin"
+        art="arbeit"
         title="Stand Ihres Vorgangs"
         lead="Geben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben."
         crumbs={[

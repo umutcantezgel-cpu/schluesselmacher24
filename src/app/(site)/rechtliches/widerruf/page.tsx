@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function WiderrufPage() {
   return (
     <>
-      <h1 className="text-[1.75rem] font-bold leading-tight md:text-3xl">Widerruf und Rückgabe</h1>
+      <h1 className="text-headline font-bold text-balance">Widerruf und Rückgabe</h1>
       <p className="mt-3">
         Diese Seite fasst zusammen, wann ein Widerrufsrecht besteht, wie es ausgeübt wird und
         welche Ausnahmen für Sonderanfertigungen gelten.

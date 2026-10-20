@@ -24,6 +24,28 @@ describe('Bereichsfarben', () => {
     expect(Object.keys(AREA_THEMES).sort()).toEqual([...AREA_KEYS].sort());
   });
 
+  it('benachbarte Bereiche liegen im Farbton mindestens 30° auseinander', () => {
+    const toene = Object.values(AREA_THEMES)
+      .map((theme) => Number(theme.accent.split(' ')[0]))
+      .sort((a, b) => a - b);
+    toene.forEach((ton, index) => {
+      const naechster = toene[(index + 1) % toene.length];
+      expect((naechster - ton + 360) % 360).toBeGreaterThanOrEqual(30);
+    });
+  });
+
+  it('Code und Schließanlagen (beide Blau-Violett) liegen mindestens 40° auseinander', () => {
+    const ton = (key: keyof typeof AREA_THEMES) => Number(AREA_THEMES[key].accent.split(' ')[0]);
+    expect(ton('schliessanlagen') - ton('schluessel-nach-code')).toBeGreaterThanOrEqual(40);
+  });
+
+  it('Fläche, Text und Linie eines Bereichs teilen seinen Farbton', () => {
+    for (const theme of Object.values(AREA_THEMES)) {
+      const ton = theme.accent.split(' ')[0];
+      expect([theme.strong, theme.soft, theme.muted].map((wert) => wert.split(' ')[0])).toEqual([ton, ton, ton]);
+    }
+  });
+
   checkTheme('Allgemein', DEFAULT_AREA_THEME);
   for (const [key, theme] of Object.entries(AREA_THEMES)) {
     checkTheme(key, theme);
@@ -43,6 +65,7 @@ describe('Grundfarben in globals.css', () => {
     ['foreground-muted', 'background'],
     ['foreground-muted', 'surface-muted'],
     ['foreground-subtle', 'surface'],
+    ['foreground-subtle', 'surface-muted'],
     ['primary', 'surface'],
     ['primary', 'primary-soft'],
     ['primary-foreground', 'primary'],

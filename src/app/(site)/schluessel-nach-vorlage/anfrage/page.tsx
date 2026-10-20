@@ -26,6 +26,8 @@ export default async function SchluesselNachVorlageAnfragePage() {
   return (
     <>
       <PageHeader
+        bereich="schluessel-nach-vorlage"
+        art="arbeit"
         eyebrow={PROCESS_LABELS['gefuehrte-anfrage'].label}
         title={page?.headline ?? 'Schlüssel nach Vorlage anfragen'}
         lead={
@@ -42,18 +44,18 @@ export default async function SchluesselNachVorlageAnfragePage() {
       <div className="shell py-8 md:py-12">
         <AnfrageFormular photoRetentionDays={settings.retentionDays.keyPhotos} />
 
-        <p className="mt-10 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-6 text-[14px]">
+        <p className="mt-10 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-6 text-small">
           <span className="font-semibold text-foreground-muted">Verwandte Bereiche:</span>
-          <Link href="/schluessel-nach-vorlage" className="font-semibold text-primary hover:underline">
+          <Link href="/schluessel-nach-vorlage" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
             So funktioniert die Anfrage
           </Link>
-          <Link href="/schluessel-nach-code" className="font-semibold text-primary hover:underline">
+          <Link href="/schluessel-nach-code" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
             Schlüssel nach Code
           </Link>
-          <Link href="/autoschluessel/kopieren" className="font-semibold text-primary hover:underline">
+          <Link href="/autoschluessel/kopieren" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
             Autoschlüssel kopieren
           </Link>
-          <Link href="/autoschluessel/programmieren" className="font-semibold text-primary hover:underline">
+          <Link href="/autoschluessel/programmieren" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
             Programmieren und anlernen
           </Link>
         </p>

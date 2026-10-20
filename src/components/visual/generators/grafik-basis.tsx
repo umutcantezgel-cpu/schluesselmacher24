@@ -16,6 +16,14 @@ export const KONTUR = 2.25;
 export const LINIE = 1.5;
 /** Hilfslinien, Raster, Mittellinien. */
 export const HILFSLINIE = 1;
+/** Feine Details (Kerben im Raster). */
+export const DETAIL = 0.75;
+/** Kräftigere Linie (ersetzt `LINIE + 0.25`, `LINIE + 0.5` und `2`). */
+export const LINIE_STARK = 2;
+/** Akzent: Statusmarken, Kanten mit Hervorhebung (ersetzt `KONTUR + 0.75` und `3`). */
+export const AKZENT = 3;
+/** Sehr kräftige Marke (ersetzt `4`). */
+export const MARKE = 4;
 /** Beschriftung in viewBox-Einheiten. */
 export const SCHRIFT = 13;
 export const SCHRIFT_KLEIN = 12;
@@ -96,6 +104,42 @@ export function ziffern(value: unknown, minLaenge: number, maxLaenge: number): n
     folge.push(Math.min(9, Math.max(0, Math.round(n))));
   }
   return folge.length >= minLaenge ? folge : undefined;
+}
+
+/** Gleichmäßig verteilte Positionen zwischen `von` und `bis`. */
+export function positionen(anzahl: number, von: number, bis: number): number[] {
+  if (anzahl <= 1) return [(von + bis) / 2];
+  const schritt = (bis - von) / (anzahl - 1);
+  return Array.from({ length: anzahl }, (_, i) => von + i * schritt);
+}
+
+/**
+ * Kantenverlauf mit V-Einschnitten (flacher Grund, schräge Flanken) als
+ * Punkte `[x, tiefe]`; Tiefe 0 liegt auf der unberührten Kante.
+ */
+export function kerben(pos: number[], tiefen: number[], flach: number, steigung: number): [number, number][] {
+  const punkte: [number, number][] = [];
+  const n = pos.length;
+  punkte.push([pos[0] - flach / 2 - tiefen[0] / steigung, 0]);
+  for (let i = 0; i < n; i += 1) {
+    punkte.push([pos[i] - flach / 2, tiefen[i]]);
+    punkte.push([pos[i] + flach / 2, tiefen[i]]);
+    if (i < n - 1) {
+      const a = pos[i] + flach / 2;
+      const b = pos[i + 1] - flach / 2;
+      const linksOben = a + tiefen[i] / steigung;
+      const rechtsOben = b - tiefen[i + 1] / steigung;
+      if (linksOben <= rechtsOben) {
+        punkte.push([linksOben, 0], [rechtsOben, 0]);
+      } else {
+        const x = Math.min(b, Math.max(a, (tiefen[i] - tiefen[i + 1]) / (2 * steigung) + (a + b) / 2));
+        const t = Math.max(tiefen[i] - (x - a) * steigung, tiefen[i + 1] - (b - x) * steigung, 0);
+        punkte.push([x, t]);
+      }
+    }
+  }
+  punkte.push([pos[n - 1] + flach / 2 + tiefen[n - 1] / steigung, 0]);
+  return punkte;
 }
 
 /** Alternativtext — leere oder fehlerhafte Titel ersetzt der Standardtext. */

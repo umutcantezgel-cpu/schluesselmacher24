@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
-import { ArrowRight, Calculator } from 'lucide-react';
 
 import { orientierungsHinweis, spanneText } from '@/lib/richtwerte/rechnen';
 import type { AuswahlZeile, RichtwertErgebnis as Ergebnis } from '@/lib/richtwerte/typen';
 import { ButtonLink } from '@/components/ui/button';
+import { GlyphRechner } from '@/components/visual/glyphen/rechner';
 
 /* Gemeinsame Bausteine der Orientierungsrechner — beide Rechner sehen gleich
  * aus und sagen dasselbe, nur die Auswahl unterscheidet sich. */
@@ -20,12 +20,10 @@ export function RechnerRahmen({
   return (
     <div className="rounded-lg border border-border bg-surface p-5 md:p-6">
       <div className="flex gap-3 border-b border-border pb-5">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary">
-          <Calculator size={20} aria-hidden />
-        </span>
+        <GlyphRechner size={20} className="mt-1 text-area-strong" />
         <div className="min-w-0">
-          <h3 className="text-lg font-bold leading-snug text-foreground">{titel}</h3>
-          <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">{einleitung}</p>
+          <h3 className="text-title font-semibold text-foreground">{titel}</h3>
+          <p className="mt-1 text-small leading-relaxed text-foreground-muted">{einleitung}</p>
         </div>
       </div>
       <div className="mt-5 space-y-6">{children}</div>
@@ -33,31 +31,46 @@ export function RechnerRahmen({
   );
 }
 
+/**
+ * Auswahl einer Frage. Standard: Kacheln im Raster. `liste`: eine gerahmte Liste mit
+ * Trennlinien, deren Zeilen `OptionCard zeile` sind (dichter, ohne Kartenstapel).
+ */
 export function Auswahlgruppe({
   legende,
   hinweis,
+  liste = false,
   children,
 }: {
   legende: string;
   hinweis?: string;
+  liste?: boolean;
   children: ReactNode;
 }) {
   return (
     <fieldset>
-      <legend className="text-sm font-semibold text-foreground">{legende}</legend>
-      {hinweis && <p className="mt-1 text-[13px] text-foreground-subtle">{hinweis}</p>}
-      <div className="mt-3 grid gap-3 sm:grid-cols-2">{children}</div>
+      <legend className="text-title-sm font-semibold text-foreground">{legende}</legend>
+      {hinweis && <p className="mt-1 text-small text-foreground-subtle">{hinweis}</p>}
+      <div
+        className={
+          liste
+            ? 'mt-3 divide-y divide-border overflow-hidden rounded-lg border border-border'
+            : 'mt-3 grid grid-cols-kacheln gap-3'
+        }
+      >
+        {children}
+      </div>
     </fieldset>
   );
 }
 
 /**
  * Die Auswahlkarten verstecken ihr Eingabefeld; der Tastaturfokus wird
- * deshalb am Rahmen der Karte sichtbar gemacht.
+ * deshalb am Rahmen der Karte sichtbar gemacht (Variante `fokus-innen`).
  */
 export function Fokusrahmen({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-lg has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2 has-[:focus-visible]:ring-offset-background">
+    // self-start: Der Rahmen folgt der Karte und wird nicht auf die Zeilenhöhe der Nachbarkarte gestreckt.
+    <div className="self-start rounded-lg fokus-innen:ring-2 fokus-innen:ring-ring fokus-innen:ring-offset-2 fokus-innen:ring-offset-background">
       {children}
     </div>
   );
@@ -92,44 +105,44 @@ export function RichtwertErgebnis({
     <div className="space-y-4">
       <div aria-live="polite" className="rounded-lg border border-border bg-surface-muted p-4 md:p-5">
         {ergebnis.art === 'unvollstaendig' ? (
-          <p className="text-[15px] leading-relaxed text-foreground-muted">{aufforderung}</p>
+          <p className="text-body leading-relaxed text-foreground-muted">{aufforderung}</p>
         ) : (
           <>
             {ergebnis.art === 'spanne' ? (
               <>
-                <p className="text-xs font-bold uppercase tracking-wider text-foreground-muted">
+                <p className="font-mono text-caption font-bold uppercase tracking-label text-foreground-muted">
                   Richtwert für Ihre Auswahl
                 </p>
-                <p className="mt-1 text-3xl font-bold tracking-tight tabular-nums text-foreground">
+                <p className="mt-1 font-mono text-headline font-bold tabular-nums text-foreground">
                   {spanneText(ergebnis.spanne)}
                 </p>
-                <p className="mt-1 text-[13px] text-foreground-muted">
+                <p className="mt-1 text-small text-foreground-muted">
                   {['inklusive Umsatzsteuer', zusatz].filter(Boolean).join(', ')}
                 </p>
               </>
             ) : (
-              <p className="text-[15px] font-semibold leading-relaxed text-foreground">{KEIN_RICHTWERT_TEXT}</p>
+              <p className="text-body font-semibold leading-relaxed text-foreground">{KEIN_RICHTWERT_TEXT}</p>
             )}
 
             <dl className="mt-4 divide-y divide-border border-t border-border">
               {zusammenfassung.map((zeile) => (
-                <div key={zeile.label} className="grid gap-0.5 py-2.5 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-3">
-                  <dt className="text-[13px] font-semibold text-foreground-muted">{zeile.label}</dt>
-                  <dd className="text-[14px] text-foreground">{zeile.wert}</dd>
+                <div key={zeile.label} className="grid gap-0.5 py-2.5 sm:grid-cols-12 sm:gap-3">
+                  <dt className="text-small font-semibold text-foreground-muted sm:col-span-4">{zeile.label}</dt>
+                  {/* Wie ein Schriftfeld: alle Angaben in Mono, Zahlen mit fester Ziffernbreite (K-005a) */}
+                  <dd className="font-mono text-small tabular-nums text-foreground sm:col-span-8">{zeile.wert}</dd>
                 </div>
               ))}
             </dl>
 
             {ergebnis.art === 'spanne' && (
-              <p className="mt-3 text-[13px] leading-relaxed text-foreground-muted">{orientierungsHinweis(hinweis)}</p>
+              <p className="mt-3 text-small leading-relaxed text-foreground-muted">{orientierungsHinweis(hinweis)}</p>
             )}
           </>
         )}
       </div>
 
-      <ButtonLink href={anfrageHref} fullWidth>
+      <ButtonLink href={anfrageHref} fullWidth pfeil>
         Anfrage stellen
-        <ArrowRight size={18} aria-hidden />
       </ButtonLink>
     </div>
   );

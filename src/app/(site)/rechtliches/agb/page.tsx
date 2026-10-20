@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function AgbPage() {
   return (
     <>
-      <h1 className="text-[1.75rem] font-bold leading-tight md:text-3xl">
+      <h1 className="text-headline font-bold text-balance">
         Allgemeine Geschäftsbedingungen
       </h1>
       <p className="mt-3">

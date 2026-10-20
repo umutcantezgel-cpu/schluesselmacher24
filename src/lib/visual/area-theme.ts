@@ -14,7 +14,10 @@ import type { AreaKey } from '@/lib/types';
  * - `soft`:   heller Hintergrund des Bereichs
  * - `muted`:  zarte Linien und Füllungen in Grafiken (rein dekorativ)
  *
- * Bewusst kein Gelb/Schwarz: keine Notdienstoptik.
+ * Bewusst kein Gelb/Schwarz: keine Notdienstoptik. Benachbarte Bereiche liegen im
+ * Farbton mindestens 30° auseinander, damit sie nebeneinander unterscheidbar bleiben
+ * (Sichtabnahme E2-L-07, D-017). Code und Schließanlagen liegen im Blau-Violett, wo
+ * 30° kaum zu sehen sind; zwischen ihnen stehen deshalb 42° (Sichtabnahme E4-L-23).
  */
 export interface AreaTheme {
   label: string;
@@ -36,66 +39,66 @@ export const DEFAULT_AREA_THEME: AreaTheme = {
 export const AREA_THEMES: Record<AreaKey, AreaTheme> = {
   autoschluessel: {
     label: 'Autoschlüssel',
-    accent: '217 91% 53%',
-    strong: '217 76% 42%',
-    soft: '214 100% 96.5%',
-    muted: '217 90% 86%',
+    accent: '220 88% 52%',
+    strong: '220 76% 41%',
+    soft: '220 100% 96.5%',
+    muted: '220 90% 86%',
   },
   'schluessel-nach-vorlage': {
     label: 'Schlüssel nach Vorlage',
-    accent: '172 76% 34%',
-    strong: '174 84% 25%',
-    soft: '168 64% 94.5%',
-    muted: '170 60% 80%',
+    accent: '160 78% 32%',
+    strong: '160 84% 24%',
+    soft: '160 62% 94.5%',
+    muted: '160 58% 80%',
   },
   'schluessel-nach-code': {
     label: 'Schlüssel nach Code',
-    accent: '245 78% 62%',
-    strong: '245 58% 50%',
-    soft: '245 100% 97%',
-    muted: '245 90% 88%',
+    accent: '250 70% 60%',
+    strong: '250 54% 49%',
+    soft: '250 100% 97%',
+    muted: '250 88% 88%',
   },
   'gleichschliessende-zylinder': {
     label: 'Gleichschließende Zylinder',
-    accent: '20 88% 48%',
-    strong: '18 84% 37%',
-    soft: '24 100% 95.5%',
+    accent: '22 88% 48%',
+    strong: '22 84% 37%',
+    soft: '22 100% 95.5%',
     muted: '22 95% 84%',
   },
   schliessanlagen: {
     label: 'Schließanlagen',
-    accent: '266 72% 60%',
-    strong: '266 52% 48%',
-    soft: '266 100% 97%',
-    muted: '266 80% 88%',
+    accent: '292 62% 55%',
+    strong: '292 50% 44%',
+    soft: '292 100% 97%',
+    muted: '292 78% 88%',
   },
   'elektronische-zutrittsloesungen': {
     label: 'Elektronische Zutrittslösungen',
-    accent: '195 90% 37%',
-    strong: '196 90% 28%',
-    soft: '190 90% 94.5%',
-    muted: '192 75% 80%',
+    accent: '190 90% 36%',
+    strong: '190 90% 27%',
+    soft: '190 88% 94.5%',
+    muted: '190 74% 80%',
   },
   'tuer-und-schliesstechnik': {
     label: 'Tür- und Schließtechnik',
-    accent: '152 64% 34%',
-    strong: '153 68% 25%',
-    soft: '148 56% 94.5%',
-    muted: '150 50% 80%',
+    accent: '90 56% 30%',
+    strong: '90 62% 22%',
+    soft: '90 46% 94%',
+    muted: '90 42% 78%',
   },
   sicherheitstechnik: {
     label: 'Sicherheitstechnik',
-    accent: '350 78% 54%',
-    strong: '350 68% 43%',
-    soft: '350 100% 97%',
-    muted: '350 85% 88%',
+    accent: '352 78% 54%',
+    strong: '352 68% 43%',
+    soft: '352 100% 97%',
+    muted: '352 85% 88%',
   },
   'service-und-termin': {
     label: 'Service und Termin',
-    accent: '326 68% 52%',
-    strong: '326 62% 41%',
-    soft: '326 100% 97%',
-    muted: '326 75% 88%',
+    accent: '322 64% 50%',
+    strong: '322 60% 40%',
+    soft: '322 100% 97%',
+    muted: '322 72% 88%',
   },
 };
 

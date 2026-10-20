@@ -7,14 +7,25 @@ import { describe, expect, it } from 'vitest';
 
 import type { VisualRef } from '@/lib/types';
 
+import { AblaufGrafik } from './generators/ablauf';
 import { CodeFundstelleGrafik } from './generators/code-fundstelle';
 import { SchliessplanGrafik } from './generators/schliessplan';
 import { SchluesselGrafik } from './generators/schluessel';
 import { ZutrittSignalGrafik } from './generators/zutritt-signal';
 import { ZylinderMassGrafik } from './generators/zylinder-mass';
-import { getVisual, renderVisual, visualNames } from './registry';
+import { getVisual, renderVisual, schmaleFassung, visualNames } from './registry';
 
-const NAMEN = ['schluessel', 'zylinder-mass', 'schliessplan', 'code-fundstelle', 'zutritt-signal'];
+const NAMEN = [
+  'schluessel',
+  'zylinder-mass',
+  'schliessplan',
+  'code-fundstelle',
+  'zutritt-signal',
+  'profilschnitt',
+  'tuer-schutz',
+  'stiftzuhaltung',
+  'ablauf',
+];
 
 const GENERATOR_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'generators');
 
@@ -80,6 +91,19 @@ describe('Registry', () => {
     expect(getVisual('schliessplan')).toBe(SchliessplanGrafik);
     expect(getVisual('code-fundstelle')).toBe(CodeFundstelleGrafik);
     expect(getVisual('zutritt-signal')).toBe(ZutrittSignalGrafik);
+    expect(getVisual('ablauf')).toBe(AblaufGrafik);
+  });
+
+  it('liefert eine schmale Fassung nur für Generatoren mit schmalem Format', () => {
+    expect(schmaleFassung({ generator: 'zylinder-mass', params: { aussen: 35 } })).toEqual({
+      generator: 'zylinder-mass',
+      params: { aussen: 35, format: 'schmal' },
+    });
+    expect(schmaleFassung({ generator: 'zylinder-mass' })?.params).toEqual({ format: 'schmal' });
+    expect(schmaleFassung({ generator: 'schliessplan', params: { system: 'haupt' } })?.params).toEqual({ system: 'haupt', format: 'schmal' });
+    expect(schmaleFassung({ generator: 'ablauf', params: { schritte: 'a|b' } })?.params).toEqual({ schritte: 'a|b', format: 'schmal' });
+    expect(schmaleFassung({ generator: 'profilschnitt', params: {} })).toBeNull();
+    expect(schmaleFassung({ generator: 'gibt-es-nicht' })).toBeNull();
   });
 
   it('liefert für unbekannte Namen nichts — auch nicht aus dem Prototyp', () => {

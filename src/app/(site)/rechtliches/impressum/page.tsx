@@ -12,7 +12,7 @@ export default async function ImpressumPage() {
 
   return (
     <>
-      <h1 className="text-[1.75rem] font-bold leading-tight md:text-3xl">Impressum</h1>
+      <h1 className="text-headline font-bold text-balance">Impressum</h1>
       <p className="mt-3">Angaben gemäß den gesetzlichen Informationspflichten für Diensteanbieter.</p>
 
       <h2>Anbieter</h2>

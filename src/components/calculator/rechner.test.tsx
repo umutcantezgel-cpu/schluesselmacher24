@@ -40,7 +40,7 @@ describe('Ergebnisbereich', () => {
     expect(html).toContain('ca. 120 – 181 €');
     expect(html).toContain('inklusive Umsatzsteuer, einschließlich Anfahrt');
     expect(html).toContain('Unverbindliche Orientierung. Preis nach Prüfung.');
-    expect(html).toContain('<dd class="text-[14px] text-foreground">Schutzbeschlag</dd>');
+    expect(html).toContain('<dd class="font-mono text-small tabular-nums text-foreground sm:col-span-8">Schutzbeschlag</dd>');
     expect(html).not.toContain(KEIN_RICHTWERT_TEXT);
     expect(html).toContain(`href="${ANFRAGE.replace('&', '&amp;')}"`);
   });
@@ -73,7 +73,7 @@ describe('Rechner auf Platzhalter-Richtwerten', () => {
     );
     pruefeVertrag(html);
     expect(html.match(/<fieldset/g)).toHaveLength(2);
-    expect(html).toContain('<legend class="text-sm font-semibold text-foreground">1. Um welche Tür geht es?</legend>');
+    expect(html).toContain('<legend class="text-title-sm font-semibold text-foreground">1. Um welche Tür geht es?</legend>');
     expect(html.match(/type="radio"/g)).toHaveLength(4);
     expect(html.match(/type="checkbox"/g)).toHaveLength(5);
     expect(html).toContain('Wählen Sie eine Tür und mindestens eine Maßnahme.');
@@ -107,5 +107,24 @@ describe('Rechner auf Platzhalter-Richtwerten', () => {
     expect(html).not.toContain('<fieldset');
     expect(html).toContain('Den Rahmen für Ihre Tür nennen wir Ihnen nach einer kurzen Anfrage.');
     expect(html).toContain('Anfrage stellen');
+  });
+
+  it('Türabsicherung: beide Fragen als gerahmte Liste, der Serviceeinsatz bleibt im Kachelraster', () => {
+    const tuer = renderToStaticMarkup(
+      <TuerAbsicherungRechner werte={PLATZHALTER_RICHTWERTE.tuerAbsicherung} anfrageHref={ANFRAGE} />,
+    );
+    pruefeVertrag(tuer);
+    const liste = 'class="mt-3 divide-y divide-border overflow-hidden rounded-lg border border-border"';
+    expect(tuer.split(liste)).toHaveLength(3);
+    expect(tuer).not.toContain('grid-cols-kacheln');
+
+    const service = renderToStaticMarkup(
+      <ServiceEinsatzRechner
+        werte={PLATZHALTER_RICHTWERTE.serviceEinsatz}
+        anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
+      />,
+    );
+    expect(service).toContain('class="mt-3 grid grid-cols-kacheln gap-3"');
+    expect(service).not.toContain('divide-y divide-border overflow-hidden');
   });
 });

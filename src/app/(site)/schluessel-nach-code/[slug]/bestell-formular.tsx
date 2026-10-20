@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Check, ShoppingCart } from 'lucide-react';
 
 import type { CodeLine, ImageSlot, UploadRef } from '@/lib/types';
 import { unitPriceForCodeLine } from '@/lib/pricing';
@@ -15,6 +14,10 @@ import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { Field } from '@/components/forms/field';
 import { QuantityInput, TextInput } from '@/components/forms/controls';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
+import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
+import { GlyphWarenkorb } from '@/components/visual/glyphen/warenkorb';
+import { LiveSchluessel } from '@/components/visual/interaktiv/live-schluessel';
 
 export interface BestellFormularProps {
   line: CodeLine;
@@ -126,8 +129,8 @@ export function BestellFormular({ line }: BestellFormularProps) {
   return (
     <Card>
       <CardHeader>
-        <h2 className="text-lg font-bold text-foreground">Schlüssel nach Code bestellen</h2>
-        <p className="mt-1 text-[13px] leading-relaxed text-foreground-muted">
+        <h2 className="text-title-sm font-semibold text-foreground">Schlüssel nach Code bestellen</h2>
+        <p className="mt-1 text-small leading-relaxed text-foreground-muted">
           Sie behalten Ihren Originalschlüssel. Wir fertigen allein nach dem Code, den Sie hier
           eintragen.
         </p>
@@ -174,7 +177,7 @@ export function BestellFormular({ line }: BestellFormularProps) {
                     className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-success"
                     aria-hidden
                   >
-                    <Check size={18} />
+                    <GlyphHaken size={18} />
                   </span>
                 )}
               </div>
@@ -182,7 +185,7 @@ export function BestellFormular({ line }: BestellFormularProps) {
               {/* Dauerhafter Bereich, damit die Rueckmeldung vorgelesen wird. */}
               <div aria-live="polite">
                 {codeValid && (
-                  <p className="text-[13px] font-semibold text-success">
+                  <p className="text-small font-semibold text-success">
                     Der Code passt zum erwarteten Format.
                   </p>
                 )}
@@ -190,6 +193,9 @@ export function BestellFormular({ line }: BestellFormularProps) {
             </>
           )}
         </Field>
+
+        {/* Live-Schlüssel: das Profil folgt dem eingegebenen Code (B-15) */}
+        <LiveSchluessel code={codeValid ? normalized : ''} className="mt-4" />
 
         {/* Stückzahl und Staffel */}
         <div>
@@ -223,7 +229,7 @@ export function BestellFormular({ line }: BestellFormularProps) {
 
           {tiers.length > 1 && (
             <div className="table-scroll mt-4">
-              <table className="w-full border-collapse text-[13px]">
+              <table className="w-full border-collapse text-small">
                 <caption className="sr-only">
                   Staffelpreise für {line.name}: Preis je Stück nach Stückzahl.
                 </caption>
@@ -249,7 +255,7 @@ export function BestellFormular({ line }: BestellFormularProps) {
                       <th
                         scope="row"
                         className={cn(
-                          'py-2 pr-4 text-left font-medium text-foreground-muted',
+                          'py-2 pr-4 text-left font-mono font-medium tabular-nums text-foreground-muted',
                           index === activeTierIndex && 'font-bold text-primary',
                         )}
                       >
@@ -260,7 +266,7 @@ export function BestellFormular({ line }: BestellFormularProps) {
                       </th>
                       <td
                         className={cn(
-                          'py-2 text-foreground',
+                          'py-2 font-mono tabular-nums text-foreground',
                           index === activeTierIndex && 'font-bold text-primary',
                         )}
                       >
@@ -278,6 +284,7 @@ export function BestellFormular({ line }: BestellFormularProps) {
         {showPhotoUpload && (
           <PhotoUpload
             category="schluesselfoto"
+            kamera="ruhig"
             id={`foto-${line.slug}`}
             label={photoRequired ? 'Foto des Schlüssels' : 'Foto des Schlüssels (freiwillig)'}
             description={
@@ -302,40 +309,43 @@ export function BestellFormular({ line }: BestellFormularProps) {
 
         {/* Preis */}
         <div className="rounded-lg border border-border bg-surface-muted p-4">
-          <dl className="space-y-2 text-[14px]">
+          <dl className="space-y-2 text-small">
             <div className="flex items-baseline justify-between gap-4">
               <dt className="text-foreground-muted">Preis je Stück</dt>
-              <dd className="font-semibold text-foreground">{formatCents(unitPriceCents)}</dd>
+              <dd className="font-mono font-semibold tabular-nums text-foreground">{formatCents(unitPriceCents)}</dd>
             </div>
             <div className="flex items-baseline justify-between gap-4">
               <dt className="text-foreground-muted">Stückzahl</dt>
-              <dd className="font-semibold text-foreground">{formatNumber(qty)}</dd>
+              <dd className="font-mono font-semibold tabular-nums text-foreground">{formatNumber(qty)}</dd>
             </div>
             <div className="flex items-baseline justify-between gap-4 border-t border-border pt-2">
               <dt className="font-bold text-foreground">Zwischensumme</dt>
-              <dd className="font-display text-lg font-bold text-foreground">
+              <dd className="font-mono text-title-sm font-bold tabular-nums text-foreground">
                 {formatCents(totalCents)}
               </dd>
             </div>
           </dl>
-          <p className="mt-2 text-[12px] leading-snug text-foreground-subtle">
+          <p className="mt-2 text-caption leading-snug text-foreground-muted">
             Die Versandart wählen Sie im Warenkorb. Sie wird dort mit den Kosten ausgewiesen.
           </p>
         </div>
 
         <div>
-          <Button type="button" size="lg" fullWidth onClick={handleAdd} disabled={!canSubmit}>
-            <ShoppingCart size={18} aria-hidden />
-            In den Warenkorb
-          </Button>
-
           {!canSubmit && (
-            <p className="mt-2 text-center text-[13px] text-foreground-subtle">
-              {!codeValid
-                ? 'Bitte tragen Sie zuerst den Schlüsselcode ein.'
-                : 'Bitte fügen Sie das erforderliche Foto hinzu.'}
+            <p className="mb-3 flex items-start gap-2 text-small leading-snug text-foreground-muted">
+              <GlyphInfo size={16} className="mt-0.5 shrink-0" />
+              <span>
+                {!codeValid
+                  ? 'Bitte tragen Sie zuerst den Schlüsselcode ein.'
+                  : 'Bitte fügen Sie das erforderliche Foto hinzu.'}
+              </span>
             </p>
           )}
+
+          <Button type="button" size="lg" fullWidth onClick={handleAdd} disabled={!canSubmit}>
+            <GlyphWarenkorb size={18} />
+            In den Warenkorb
+          </Button>
         </div>
 
         {/* Bestätigung */}
@@ -359,10 +369,13 @@ export function BestellFormular({ line }: BestellFormularProps) {
           )}
         </div>
 
-        <p className="text-[12px] leading-relaxed text-foreground-subtle">
+        <p className="text-caption leading-relaxed text-foreground-muted">
           Die Fertigung erfolgt nach Ihrer Codeangabe. Bei kundenspezifischer Anfertigung kann das
           Widerrufsrecht eingeschränkt sein — Einzelheiten stehen unter{' '}
-          <Link href="/rechtliches/widerruf" className="font-semibold text-primary hover:underline">
+          <Link
+            href="/rechtliches/widerruf"
+            className="inline py-1 -my-1 font-semibold text-primary hover:underline"
+          >
             Widerruf und Rückgabe
           </Link>
           .

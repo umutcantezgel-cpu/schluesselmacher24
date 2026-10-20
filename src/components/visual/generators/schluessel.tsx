@@ -11,8 +11,10 @@ import {
   SCHRIFT_KLEIN,
   auswahl,
   hash,
+  kerben,
   kurztext,
   parameter,
+  positionen,
   r,
   titel,
   wert,
@@ -52,42 +54,6 @@ function profilAusCode(code: string): number[] {
     folge.push(tiefe);
   }
   return folge;
-}
-
-/** Gleichmäßig verteilte Positionen zwischen `von` und `bis`. */
-function positionen(anzahl: number, von: number, bis: number): number[] {
-  if (anzahl <= 1) return [(von + bis) / 2];
-  const schritt = (bis - von) / (anzahl - 1);
-  return Array.from({ length: anzahl }, (_, i) => von + i * schritt);
-}
-
-/**
- * Kantenverlauf mit V-Einschnitten (flacher Grund, schräge Flanken) als
- * Punkte `[x, tiefe]`; Tiefe 0 liegt auf der unberührten Kante.
- */
-function kerben(pos: number[], tiefen: number[], flach: number, steigung: number): [number, number][] {
-  const punkte: [number, number][] = [];
-  const n = pos.length;
-  punkte.push([pos[0] - flach / 2 - tiefen[0] / steigung, 0]);
-  for (let i = 0; i < n; i += 1) {
-    punkte.push([pos[i] - flach / 2, tiefen[i]]);
-    punkte.push([pos[i] + flach / 2, tiefen[i]]);
-    if (i < n - 1) {
-      const a = pos[i] + flach / 2;
-      const b = pos[i + 1] - flach / 2;
-      const linksOben = a + tiefen[i] / steigung;
-      const rechtsOben = b - tiefen[i + 1] / steigung;
-      if (linksOben <= rechtsOben) {
-        punkte.push([linksOben, 0], [rechtsOben, 0]);
-      } else {
-        const x = Math.min(b, Math.max(a, (tiefen[i] - tiefen[i + 1]) / (2 * steigung) + (a + b) / 2));
-        const t = Math.max(tiefen[i] - (x - a) * steigung, tiefen[i + 1] - (b - x) * steigung, 0);
-        punkte.push([x, t]);
-      }
-    }
-  }
-  punkte.push([pos[n - 1] + flach / 2 + tiefen[n - 1] / steigung, 0]);
-  return punkte;
 }
 
 function linie(punkte: [number, number][]): string {
@@ -134,6 +100,8 @@ interface Zeichnung {
   linealY?: number;
   /** Nur vorne: Funkbögen, Klapppfeil. */
   zusatz?: ReactNode;
+  /** Rohling: Einschnittzone als gestrichelte Linie (noch nicht gefräst). */
+  zone?: string;
   box: { x1: number; y1: number; x2: number; y2: number };
 }
 
@@ -160,6 +128,32 @@ function taste(x: number, y: number, radius: number, f: Farben, glyphe?: 'zu' | 
   );
 }
 
+/**
+ * Bewegung der Schlüsselzeichnung (B-15, B-21): erst die Körper, dann – wenn der letzte Körper
+ * steht – zeichnen sich die Profile, zuletzt erscheinen Marken und Ziffern. Alles zusammen
+ * höchstens 1,6 s (Sichtabnahme E4-L-23, Nachprüfung H02/H03); Test in `schluessel.test.tsx`.
+ * Marken, Lineal und Ziffern beziehen sich auf den Profilbeginn (`profilBeginn`).
+ */
+const ZEIT = {
+  koerperStaffel: 0.08,
+  koerperDauer: 0.4,
+  profilStaffel: 0.08,
+  profilDauer: 0.6,
+  markeNach: 0.35,
+  markeSpanne: 0.3,
+  markeDauer: 0.3,
+  linealDauer: 0.6,
+  zifferNach: 0.4,
+  zifferStaffel: 0.03,
+  zifferSpanne: 0.3,
+  zifferDauer: 0.3,
+} as const;
+
+/** Die Profile beginnen, wenn der letzte (vorderste) Körper ganz erschienen ist. */
+function profilBeginn(anzahl: number): number {
+  return ZEIT.koerperStaffel * (anzahl - 1) + ZEIT.koerperDauer;
+}
+
 function funkboegen(x: number, y: number, von: number, bis: number, radien: number[]) {
   return radien.map((radius, i) => {
     const a1 = (von * Math.PI) / 180;
@@ -169,7 +163,7 @@ function funkboegen(x: number, y: number, von: number, bis: number, radien: numb
       <path
         key={radius}
         className="sm24-dash stroke-area"
-        style={motionStyle(0, 1.6 + i * 0.2)}
+        style={motionStyle(0.3, 1 + i * 0.1)}
         strokeWidth={LINIE}
         d={d}
       />
@@ -179,13 +173,14 @@ function funkboegen(x: number, y: number, von: number, bis: number, radien: numb
 
 /* ---------- Schlüsseltypen (lokale Koordinaten, Achse des Barts bei y = 0) ---------- */
 
-function zylinder(tiefenZiffern: number[], f: Farben): Zeichnung {
+function zylinder(tiefenZiffern: number[], f: Farben, rohling = false): Zeichnung {
   const oben = -22;
   const unten = 26;
   const spitze = 372;
   const pos = positionen(tiefenZiffern.length, 176, 326);
   const tiefen = tiefenZiffern.map((d) => 4 + d * 2.6);
-  const kante = kerben(pos, tiefen, 4.5, 1.2).map(([x, t]): [number, number] => [x, oben + t]);
+  /* Rohling: gerader Halm ohne Einschnitte; die Einschnittzone zeigt die Zeichnung gestrichelt. */
+  const kante = rohling ? [] : kerben(pos, tiefen, 4.5, 1.2).map(([x, t]): [number, number] => [x, oben + t]);
   const umriss = `M108 -30H150V${oben}${linie(kante)}L${spitze - 20} ${oben}L${spitze} -6V20L${spitze - 6} ${unten}H150V30H108Z`;
   const kopf =
     'M40 -54H76A40 40 0 0 1 116 -14V14A40 40 0 0 1 76 54H40A40 40 0 0 1 0 14V-14A40 40 0 0 1 40 -54Z' +
@@ -199,8 +194,9 @@ function zylinder(tiefenZiffern: number[], f: Farben): Zeichnung {
         <path className={f.kopf} strokeWidth={KONTUR} fillRule="evenodd" d={kopf} />
       </>
     ),
-    profile: [`M150 ${oben}${linie(kante)}L${spitze - 20} ${oben}`],
-    marken: pos.map((x, i) => ({ x, y: oben + tiefen[i] })),
+    profile: rohling ? [] : [`M150 ${oben}${linie(kante)}L${spitze - 20} ${oben}`],
+    zone: rohling ? `M${pos[0] - 8} ${oben + 4}H${pos[pos.length - 1] + 8}` : undefined,
+    marken: rohling ? [] : pos.map((x, i) => ({ x, y: oben + tiefen[i] })),
     linealY: unten + 18,
     box: { x1: 0, y1: -54, x2: spitze, y2: 54 },
   };
@@ -322,6 +318,7 @@ function klapp(tiefenZiffern: number[], f: Farben): Zeichnung {
           strokeWidth={KONTUR}
           d={`M176 ${oben}H${spitze - 10}L${spitze} -8V8L${spitze - 10} ${unten}H176Z`}
         />
+        {/* Spurband: ein breiter Strich als Fläche, keine Linie der Strichskala (D-010) */}
         <path
           className={f.spur}
           strokeWidth={10}
@@ -344,7 +341,7 @@ function klapp(tiefenZiffern: number[], f: Farben): Zeichnung {
       <path
         className="sm24-draw stroke-area-strong"
         pathLength={1}
-        style={motionStyle(1.2, 0.8)}
+        style={motionStyle(0.8, 0.6)}
         strokeWidth={LINIE}
         d={`M${r(sx)} ${r(sy)}A${bogenR} ${bogenR} 0 0 0 ${r(ex)} ${r(ey)}${pfeil}`}
       />
@@ -362,6 +359,13 @@ function smartKey(f: Farben): Zeichnung {
       <>
         <path className={f.kopf} strokeWidth={KONTUR} fillRule="evenodd" d={fob} />
         <path className={f.detail} strokeWidth={HILFSLINIE} d="M9 64H115" />
+        {/* Notschlüssel im Gehäuse, gestrichelt wie ein verdecktes Teil (Sichtabnahme E4-L-23) */}
+        <path
+          className={f.detail}
+          strokeWidth={HILFSLINIE}
+          strokeDasharray="4 3"
+          d="M14 -60H28V40L21 50L14 40Z"
+        />
         {taste(62, -30, 15, f, 'zu')}
         {taste(62, 10, 15, f, 'auf')}
         <circle className={f.knopf} strokeWidth={LINIE} cx={62} cy={44} r={8} />
@@ -406,7 +410,7 @@ function buntbart(tiefenZiffern: number[], f: Farben): Zeichnung {
   };
 }
 
-function zeichnung(typ: Typ, tiefen: number[], f: Farben): Zeichnung {
+function zeichnung(typ: Typ, tiefen: number[], f: Farben, rohling = false): Zeichnung {
   switch (typ) {
     case 'buntbart':
       return buntbart(tiefen, f);
@@ -419,7 +423,7 @@ function zeichnung(typ: Typ, tiefen: number[], f: Farben): Zeichnung {
     case 'transponder':
       return transponder(tiefen, f);
     default:
-      return zylinder(tiefen, f);
+      return zylinder(tiefen, f, rohling);
   }
 }
 
@@ -437,9 +441,11 @@ const TITEL: Record<Typ, string> = {
  *
  * params:
  * - `typ`: `zylinder` (Standard) | `buntbart` | `klapp` | `funk` | `smart-key` | `transponder`
- * - `einschnitte`: 4–8 Ziffern 0–9, Vorrang vor `code`; werden unter dem Bart beschriftet
- * - `code`: Text — ergibt deterministisch ein Einschnittprofil (ohne Beschriftung)
+ * - `einschnitte`: 4–8 Ziffern 0–9, Vorrang vor `code`; werden unter dem Bart auf einem Lineal beschriftet
+ * - `code`: Text — ergibt deterministisch ein Einschnittprofil (ohne Beschriftung und Lineal)
  * - `anzahl`: 1–3 (Standard 1), weitere Schlüssel versetzt dahinter, z. B. für „Kopie“
+ * - `rohling`: `true` – nur beim Zylinderschlüssel: gerader Halm ohne Einschnitte, die
+ *   Einschnittzone gestrichelt (etwa vor der Eingabe eines Codes)
  */
 export function SchluesselGrafik({ params, title, className }: VisualProps) {
   const p = parameter(params);
@@ -448,26 +454,27 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
   const code = kurztext(wert(p, 'code'), 40);
   const tiefen = explizit ?? (code ? profilAusCode(code) : STANDARD_PROFIL);
   const anzahl = zahl(wert(p, 'anzahl'), 1, 3, 1, true);
+  const rohlingWert = wert(p, 'rohling');
+  const rohling = rohlingWert === true || rohlingWert === 'true' || rohlingWert === 'ja';
 
-  const vorn = zeichnung(typ, tiefen, VORN);
-  const hinten = anzahl > 1 ? zeichnung(typ, tiefen, HINTEN) : undefined;
+  const vorn = zeichnung(typ, tiefen, VORN, rohling);
+  const hinten = anzahl > 1 ? zeichnung(typ, tiefen, HINTEN, rohling) : undefined;
+  const beginn = profilBeginn(anzahl);
 
   const linealY = vorn.linealY;
   const teilung = [...new Set(vorn.marken.map((m) => r(m.x)))];
-  const lineal =
-    linealY !== undefined && teilung.length > 0
-      ? `M${teilung[0]} ${linealY}H${teilung[teilung.length - 1]}` +
-        teilung.map((x) => `M${x} ${linealY - 4}V${linealY + 4}`).join('')
-      : undefined;
-  const beschriften = lineal !== undefined && explizit !== undefined;
+  // Das Lineal steht nur mit Ziffern: unbeschriftete Teilstriche behaupten ein Maß, das man
+  // nicht lesen kann (K-003 „Bemaßt statt behauptet“, E6-L-31).
+  const beschriften = linealY !== undefined && teilung.length > 0 && explizit !== undefined;
+  const lineal = beschriften
+    ? `M${teilung[0]} ${linealY}H${teilung[teilung.length - 1]}` +
+      teilung.map((x) => `M${x} ${linealY - 4}V${linealY + 4}`).join('')
+    : undefined;
 
   const x1 = vorn.box.x1;
   const x2 = vorn.box.x2 + (anzahl - 1) * KOPIE_DX;
   const y1 = vorn.box.y1 + (anzahl - 1) * KOPIE_DY;
-  const y2 =
-    lineal !== undefined && linealY !== undefined
-      ? Math.max(vorn.box.y2, linealY + (beschriften ? 24 : 6))
-      : vorn.box.y2;
+  const y2 = beschriften && linealY !== undefined ? Math.max(vorn.box.y2, linealY + 24) : vorn.box.y2;
   const skala = Math.min(1, (BREITE - 56) / (x2 - x1), (HOEHE - 40) / (y2 - y1));
   const tx = r(BREITE / 2 - (skala * (x1 + x2)) / 2);
   const ty = r(HOEHE / 2 - (skala * (y1 + y2)) / 2);
@@ -488,45 +495,47 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
               key={stelle}
               transform={`translate(${stelle * KOPIE_DX} ${stelle * KOPIE_DY})`}
             >
-              <g className="sm24-reveal" style={motionStyle(0.1 * (anzahl - 1 - stelle))}>
+              <g className="sm24-reveal" style={motionStyle(ZEIT.koerperStaffel * (anzahl - 1 - stelle), ZEIT.koerperDauer)}>
                 {hinten.koerper}
               </g>
             </g>
           ))}
 
-        <g className="sm24-reveal" style={motionStyle(0.1 * (anzahl - 1))}>
+        <g className="sm24-reveal" style={motionStyle(ZEIT.koerperStaffel * (anzahl - 1), ZEIT.koerperDauer)}>
           {vorn.koerper}
         </g>
 
         {vorn.zusatz}
+
+        {vorn.zone && (
+          <path className="stroke-border-strong" strokeWidth={LINIE} strokeDasharray="4 3" d={vorn.zone} />
+        )}
 
         {vorn.profile.map((d, i) => (
           <path
             key={d}
             className="sm24-draw stroke-area"
             pathLength={1}
-            style={motionStyle(0.45 + i * 0.1, 1.2)}
-            strokeWidth={2.5}
+            style={motionStyle(beginn + i * ZEIT.profilStaffel, ZEIT.profilDauer)}
+            strokeWidth={KONTUR}
             d={d}
           />
         ))}
 
-        {vorn.marken.map((m, i) => (
-          <circle
-            key={`${r(m.x)}-${r(m.y)}`}
-            className="sm24-pop fill-area-strong"
-            style={motionStyle(0.9 + i * 0.06)}
-            cx={r(m.x)}
-            cy={r(m.y)}
-            r={2.6}
-          />
-        ))}
+        {vorn.marken.length > 0 && (
+          // Alle Marken eines Schlüssels in einer Gruppe: eine Animation statt bis zu 30 (E7, Bildrate).
+          <g className="sm24-fade" style={motionStyle(beginn + ZEIT.markeNach, ZEIT.markeSpanne + ZEIT.markeDauer)}>
+            {vorn.marken.map((m) => (
+              <circle key={`${r(m.x)}-${r(m.y)}`} className="fill-area-strong" cx={r(m.x)} cy={r(m.y)} r={2.6} />
+            ))}
+          </g>
+        )}
 
         {lineal && (
           <path
             className="sm24-draw stroke-foreground-muted"
             pathLength={1}
-            style={motionStyle(0.6, 1)}
+            style={motionStyle(beginn, ZEIT.linealDauer)}
             strokeWidth={HILFSLINIE}
             d={lineal}
           />
@@ -538,7 +547,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
             <text
               key={x}
               className="sm24-reveal fill-foreground-muted font-mono"
-              style={motionStyle(1.1 + i * 0.05)}
+              style={motionStyle(beginn + Math.min(ZEIT.zifferNach + i * ZEIT.zifferStaffel, ZEIT.zifferNach + ZEIT.zifferSpanne), ZEIT.zifferDauer)}
               fontSize={schrift}
               textAnchor="middle"
               x={x}

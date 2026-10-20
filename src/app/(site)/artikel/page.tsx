@@ -1,17 +1,21 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, PackageOpen } from 'lucide-react';
 
 import { sortiereArtikel } from '@/lib/artikel';
 import { getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
-import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { IconGleichschliessendeZylinder } from '@/components/visual/icons/gleichschliessende-zylinder';
+import { IconSchluesselNachCode } from '@/components/visual/icons/schluessel-nach-code';
+import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
+import { IconZahlung } from '@/components/visual/icons/zahlung';
 
 import { ArtikelListe, type ListenArtikel } from './artikel-liste';
 
@@ -42,6 +46,20 @@ const BASE_LINKS: NavLink[] = [
     description: 'Welche Versandarten und Zahlungswege zur Verfügung stehen.',
   },
 ];
+
+/** Fach-Icon je Ziel der Weiterlesen-Liste; ohne eigenes Motiv der Warenkorb. */
+function WeiterIcon({ href }: { href: string }) {
+  switch (href) {
+    case '/schluessel-nach-code':
+      return <IconSchluesselNachCode size={32} />;
+    case '/gleichschliessende-zylinder':
+      return <IconGleichschliessendeZylinder size={32} />;
+    case '/rechtliches/versand-und-zahlung':
+      return <IconZahlung size={32} />;
+    default:
+      return <IconWarenkorb size={32} />;
+  }
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
@@ -85,6 +103,22 @@ export default async function ArtikelPage() {
   const titel = page?.headline || TITEL;
   const crumbs = [{ href: `/${ROUTE}`, label: TITEL }];
 
+  // Beispielhinweis als Zeile mit Glyphe direkt über der Liste (K-006 „Flächen sparsam“), kein Kasten im Kopf.
+  const beispielHinweis = beispiele > 0 ? (
+    <div role="note" className="flex max-w-measure gap-3 text-small leading-relaxed">
+      <GlyphInfo size={18} className="mt-0.5 shrink-0 text-info" />
+      <div className="min-w-0">
+        <p className="font-semibold text-foreground">
+          {nurBeispiele ? 'Derzeit nur Beispielartikel' : 'Beispielartikel sind gekennzeichnet'}
+        </p>
+        <p className="text-foreground-muted">
+          Artikel mit dem Hinweis „Beispiel“ zeigen, wie Artikel hier dargestellt werden. Preise
+          und Angaben sind Beispielwerte; diese Artikel können nicht bestellt werden.
+        </p>
+      </div>
+    </div>
+  ) : null;
+
   return (
     <>
       <JsonLd
@@ -101,50 +135,42 @@ export default async function ArtikelPage() {
         title={titel}
         lead={page?.subline || LEAD}
         crumbs={crumbs}
-      >
-        {beispiele > 0 && (
-          <Alert
-            tone="info"
-            title={nurBeispiele ? 'Derzeit nur Beispielartikel' : 'Beispielartikel sind gekennzeichnet'}
-          >
-            <p>
-              Artikel mit dem Hinweis „Beispiel“ zeigen, wie Artikel hier dargestellt werden. Preise
-              und Angaben sind Beispielwerte; diese Artikel können nicht bestellt werden.
-            </p>
-          </Alert>
-        )}
-      </PageHeader>
+      />
 
-      <Section tight>
+      <Section tight labelledBy="artikel-titel">
         {articles.length > 0 ? (
           <>
-            <SectionHeading
-              eyebrow={`${articles.length} Artikel`}
-              title="Artikel auswählen"
-              lead={
-                page?.intro
-                || 'Öffnen Sie einen Artikel, um Eigenschaften, Lieferumfang und Staffelpreise zu '
-                  + 'sehen und die Stückzahl zu wählen.'
-              }
-            />
-            <ArtikelListe articles={liste} className="mt-8" />
+            {/* Haarlinie über dem nummerierten Abschnittskopf */}
+            <div className="border-t border-border pt-8">
+              <SectionHeading
+                id="artikel-titel"
+                nummer="01"
+                eyebrow="Auswahl"
+                title="Artikel auswählen"
+                lead={
+                  page?.intro
+                  || 'Öffnen Sie einen Artikel, um Eigenschaften, Lieferumfang und Staffelpreise zu '
+                    + 'sehen und die Stückzahl zu wählen.'
+                }
+              />
+            </div>
+            <ArtikelListe articles={liste} hinweis={beispielHinweis} className="mt-8" />
           </>
         ) : (
           <Card variant="muted">
             <CardBody className="flex flex-col items-start gap-4 py-8 text-left sm:items-center sm:text-center">
               <div>
-                <h2 className="text-[15px] font-bold text-foreground">
+                <h2 className="text-body font-bold text-foreground">
                   Derzeit sind hier keine Artikel eingestellt.
                 </h2>
-                <p className="mt-2 max-w-md text-[14px] leading-relaxed text-foreground-muted">
+                <p className="mt-2 max-w-md text-small leading-relaxed text-foreground-muted">
                   Schauen Sie gern später wieder vorbei. Nachschlüssel nach Code bestellen Sie
                   weiterhin direkt; für alle anderen Anliegen erreichen Sie uns über die Anfrage.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 sm:justify-center">
-                <ButtonLink href="/schluessel-nach-code">
+                <ButtonLink href="/schluessel-nach-code" pfeil>
                   Schlüssel nach Code
-                  <ArrowRight size={16} aria-hidden />
                 </ButtonLink>
                 <ButtonLink href="/service-und-termin/anfrage" variant="outline">
                   Anfrage stellen
@@ -155,40 +181,47 @@ export default async function ArtikelPage() {
         )}
       </Section>
 
-      <Section tone="muted" tight>
+      <Section tone="muted" tight labelledBy="weiter-titel">
         <SectionHeading
+          id="weiter-titel"
+          nummer="02"
           eyebrow="Weiterlesen"
           title="Passende Bereiche und Hinweise"
           lead="Schlüssel nach Code, gleichschließende Zylinder und alles zu Zahlung und Versand."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {links.map((link) => (
-            <li key={link.href}>
+        {/* Stückliste mit Fach-Icons: die ganze Zeile ist der Link */}
+        <ol className="mt-8 border-t border-border">
+          {links.map((link, index) => (
+            <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
-                className="group flex h-full items-start gap-3 rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                className="group flex min-h-touch items-center gap-4 py-6 transition-colors duration-quick ease-standard sm:gap-6"
               >
-                <PackageOpen size={18} aria-hidden className="mt-0.5 shrink-0 text-primary" />
+                <span className="w-6 shrink-0 font-mono text-caption tabular-nums text-foreground-muted sm:w-8">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="shrink-0 text-primary">
+                  <WeiterIcon href={link.href} />
+                </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block text-[15px] font-bold text-foreground group-hover:text-primary">
+                  <span className="block text-title-sm font-semibold text-foreground group-hover:text-primary">
                     {link.label}
                   </span>
                   {link.description && (
-                    <span className="mt-1 block text-[13px] leading-relaxed text-foreground-muted">
+                    <span className="mt-1 block max-w-measure text-small text-foreground-muted">
                       {link.description}
                     </span>
                   )}
                 </span>
-                <ArrowRight
-                  size={16}
-                  aria-hidden
-                  className="mt-0.5 shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                <GlyphPfeilRechts
+                  size={18}
+                  className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
                 />
               </Link>
             </li>
           ))}
-        </ul>
+        </ol>
       </Section>
     </>
   );

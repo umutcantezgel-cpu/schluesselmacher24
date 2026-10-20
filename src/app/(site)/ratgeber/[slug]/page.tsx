@@ -1,14 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight } from 'lucide-react';
 
 import { getGuide, getGuides } from '@/lib/data';
 import { areaByKey } from '@/lib/navigation';
+import { ablaufAusText } from '@/lib/visual/motiv';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { JsonLd, articleSchema, breadcrumbSchema } from '@/components/seo/json-ld';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { Profillinie } from '@/components/visual/profillinie';
 import { getSiteUrl } from '@/lib/site-url';
 
 export async function generateStaticParams() {
@@ -30,6 +32,21 @@ export async function generateMetadata(props: {
   };
 }
 
+/**
+ * Anker einer Zwischenüberschrift: Kleinbuchstaben, Umlaute ausgeschrieben,
+ * alles andere außer a–z und 0–9 wird zu „-“ („Prüfen: …“ wird „pruefen-…“).
+ */
+function ankerKennung(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 export default async function GuidePage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
   const [guide, allGuides] = await Promise.all([getGuide(slug), getGuides()]);
@@ -44,6 +61,60 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
     { href: `/ratgeber/${guide.slug}`, label: guide.title },
   ];
 
+  // Der Gedankenstrich hängt am Ende der ersten Zeile, nicht vorn in der zweiten (Befund D00/M00).
+  const anzeigeTitel = guide.title.replace(' — ', '\u00a0— ');
+
+  // Weiterlesen: verwandte Beiträge zuerst, dann die internen Links – ohne den Schritt-Knopf
+  // und ohne doppelte Ziele.
+  const weiterlesen = [
+    ...related.map((item) => ({ href: `/ratgeber/${item.slug}`, label: item.title })),
+    ...guide.seo.internalLinks,
+  ].filter(
+    (eintrag, index, alle) =>
+      eintrag.href !== guide.nextStep.href && alle.findIndex((e) => e.href === eintrag.href) === index,
+  );
+
+  // Inhaltsverzeichnis: zweimal gebaut – vor dem Text (Telefon, Tablet) und in der Seitenleiste (ab lg).
+  // Nur die Seitenleiste trägt die Leiste des Lesefortschritts (B-24).
+  const inhalt = (leiste: boolean) => (
+    <div className={leiste ? 'relative pl-5' : undefined}>
+      {leiste && (
+        <>
+          <span aria-hidden="true" className="absolute inset-y-0 left-0 w-px bg-border" />
+          <span aria-hidden="true" className="sm24-lesen-leiste absolute inset-y-0 left-0 w-0.5 bg-primary" />
+        </>
+      )}
+      <ol className="border-t border-border">
+        {guide.body.map((block, index) => {
+          const zu = index < 6 ? index + 1 : undefined;
+          return (
+            <li key={block.heading} className="border-b border-border">
+              <a
+                href={`#${ankerKennung(block.heading)}`}
+                className="flex min-h-touch w-full items-baseline gap-3 py-3 text-small font-semibold text-foreground transition-colors duration-quick hover:text-primary"
+              >
+                <span
+                  className={
+                    zu
+                      ? 'sm24-lesen-nummer font-mono text-caption tabular-nums text-foreground-muted'
+                      : 'font-mono text-caption tabular-nums text-foreground-muted'
+                  }
+                  data-zu={zu}
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                {block.heading}
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+
+  // Ablaufzeichnung aus der Unterzeile (B-23); ohne Ablauf bleibt die Fachgrafik zum Motiv.
+  const ablauf = ablaufAusText(guide.excerpt);
+
   return (
     <>
       <JsonLd data={articleSchema(guide)} />
@@ -51,72 +122,98 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
 
       <PageHeader
         eyebrow={area?.label ?? 'Ratgeber'}
-        title={guide.title}
+        title={anzeigeTitel}
         lead={guide.excerpt}
         crumbs={crumbs}
+        /* Blickfang im Kopf (E4-L-23): die Ablaufzeichnung aus der Unterzeile, sonst die Fachgrafik zum Motiv. */
+        visual={
+          <ImagePlaceholder
+            slot={{ ...guide.image, visual: ablauf ?? guide.image.visual }}
+            className={ablauf && !guide.image.bild?.url ? 'max-sm:aspect-4/3' : undefined}
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            frei
+          />
+        }
       />
 
-      <div className="shell grid gap-10 py-10 md:py-14 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-14">
-        <article className="min-w-0">
-          <ImagePlaceholder slot={guide.image} className="mb-8" />
+      {/* Raster: Text 8 Spalten, Seitenleiste 4. Der gemeinsame Vorfahr trägt den Lesefortschritt (B-24). */}
+      <div className="sm24-lesen shell grid gap-10 py-10 md:py-14 lg:grid-cols-12 lg:gap-gutter">
+        {/* Telefon und Tablet: Inhaltsverzeichnis vor dem Text */}
+        <nav aria-label="Inhalt" className="lg:hidden">
+          {inhalt(false)}
+        </nav>
 
-          <div className="prose-sm24 max-w-none">
-            {guide.body.map((block) => (
-              <section key={block.heading}>
-                <h2>{block.heading}</h2>
-                <p>{block.text}</p>
-              </section>
-            ))}
+        <article className="sm24-lesen-artikel min-w-0 lg:col-span-8">
+          <div className="prose-sm24">
+            {guide.body.map((block, index) => {
+              const zu = index < 6 ? index + 1 : undefined;
+              return (
+                <section key={block.heading} className="flow-root" data-abschnitt={zu}>
+                  {/* Trenner zwischen zwei Abschnitten: die Profillinie (B-02), gleicher Abstand oben und unten. Sie gehört zum Abschnitt, damit die Lesezeitleiste (B-24) lückenlos läuft. */}
+                  {index > 0 && <Profillinie text={block.heading} className="my-12 text-primary" />}
+                  <h2 id={ankerKennung(block.heading)} className="scroll-mt-28">
+                    <span
+                      aria-hidden="true"
+                      className={
+                        zu
+                          ? 'sm24-lesen-nummer block font-mono text-small font-semibold tabular-nums text-foreground-muted'
+                          : 'block font-mono text-small font-semibold tabular-nums text-foreground-muted'
+                      }
+                      data-zu={zu}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    {block.heading}
+                  </h2>
+                  <p>{block.text}</p>
+                </section>
+              );
+            })}
           </div>
 
-          <div className="mt-10 rounded-lg border border-border bg-surface-muted p-5 md:p-6">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+          <div>
+            <Profillinie text="Ihr nächster Schritt" className="my-12 text-primary" />
+            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
               Ihr nächster Schritt
             </p>
-            <p className="mt-2 text-[15px] font-bold text-foreground">{guide.nextStep.label}</p>
-            <ButtonLink href={guide.nextStep.href} className="mt-4">
+            <ButtonLink
+              href={guide.nextStep.href}
+              className="mt-4 w-full justify-between text-left sm:w-auto"
+              pfeil
+            >
               {guide.nextStep.label}
-              <ArrowRight size={16} aria-hidden />
             </ButtonLink>
           </div>
         </article>
 
-        <aside className="lg:sticky lg:top-28 lg:self-start">
-          {related.length > 0 && (
-            <>
-              <p className="mb-3 text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                Passend dazu
-              </p>
-              <ul className="space-y-2">
-                {related.map((item) => (
-                  <li key={item.id}>
-                    <Link
-                      href={`/ratgeber/${item.slug}`}
-                      className="block rounded-lg border border-border bg-surface p-4 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
+        <aside className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
+          <div className="space-y-8">
+            <nav aria-label="Inhalt" className="hidden lg:block">
+              {inhalt(true)}
+            </nav>
 
-          <p className="mb-3 mt-8 text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-            Weiterlesen
-          </p>
-          <ul className="space-y-2">
-            {guide.seo.internalLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-[14px] text-foreground-muted hover:text-primary hover:underline"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+            {weiterlesen.length > 0 && (
+              <div>
+                <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Weiterlesen</p>
+                <ul className="mt-3 border-t border-border">
+                  {weiterlesen.map((eintrag) => (
+                    <li key={eintrag.href} className="border-b border-border">
+                      <Link
+                        href={eintrag.href}
+                        className="group flex min-h-touch items-center justify-between gap-3 py-3 text-small font-semibold text-foreground transition-colors duration-quick hover:text-primary"
+                      >
+                        {eintrag.label}
+                        <GlyphPfeilRechts
+                          size={16}
+                          className="shrink-0 text-foreground-muted transition duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
+                        />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </aside>
       </div>
     </>

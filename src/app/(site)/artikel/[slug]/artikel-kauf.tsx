@@ -1,7 +1,6 @@
 'use client';
 
 import { useId, useMemo, useState } from 'react';
-import { ShoppingCart } from 'lucide-react';
 
 import { aktiveStufe, preisstufen, staffelText } from '@/lib/artikel';
 import { useHydrated } from '@/lib/client-state';
@@ -15,6 +14,7 @@ import { Button, ButtonLink } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { Field } from '@/components/forms/field';
 import { QuantityInput } from '@/components/forms/controls';
+import { GlyphWarenkorb } from '@/components/visual/glyphen/warenkorb';
 
 /** Was der Kaufbereich vom Artikel braucht. */
 export type KaufArtikel = Pick<
@@ -86,14 +86,14 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
   return (
     <Card>
       <CardHeader>
-        <h2 className="text-lg font-bold text-foreground">
+        <h2 className="text-title-sm font-semibold text-foreground">
           {beispiel ? 'Beispielartikel — nicht bestellbar' : 'Stückzahl wählen'}
         </h2>
         <p className="mt-2 flex flex-wrap items-baseline gap-x-2">
-          <span className="font-display text-2xl font-bold text-foreground">
+          <span className="font-mono text-title font-semibold tabular-nums text-foreground">
             {formatCents(stufen[0]?.priceCents ?? article.priceCents)}
           </span>
-          <span className="text-[13px] text-foreground-muted">{preisLabel}</span>
+          <span className="text-small text-foreground-muted">{preisLabel}</span>
         </p>
       </CardHeader>
 
@@ -131,7 +131,7 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
           </Field>
 
           {vorhanden > 0 && (
-            <p className="mt-2 text-[13px] text-foreground-muted">
+            <p className="mt-2 text-small text-foreground-muted">
               Bereits im Warenkorb: {formatNumber(vorhanden)} Stück. Der Staffelpreis richtet sich
               nach der Gesamtmenge.
             </p>
@@ -139,7 +139,7 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
 
           {stufen.length > 1 && (
             <div className="table-scroll mt-4">
-              <table className="w-full border-collapse text-[13px]">
+              <table className="w-full border-collapse text-small">
                 <caption className="sr-only">
                   Staffelpreise für {article.name}: {preisLabel} nach Stückzahl.
                 </caption>
@@ -165,7 +165,7 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
                       <th
                         scope="row"
                         className={cn(
-                          'py-2 pr-4 text-left font-medium text-foreground-muted',
+                          'py-2 pr-4 text-left font-mono font-medium tabular-nums text-foreground-muted',
                           index === aktiv && 'font-bold text-primary',
                         )}
                       >
@@ -173,7 +173,10 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
                         {index === aktiv && <span className="sr-only"> — gilt für Ihre Auswahl</span>}
                       </th>
                       <td
-                        className={cn('py-2 text-foreground', index === aktiv && 'font-bold text-primary')}
+                        className={cn(
+                          'py-2 font-mono tabular-nums text-foreground',
+                          index === aktiv && 'font-bold text-primary',
+                        )}
                       >
                         {formatCents(stufe.priceCents)}
                       </td>
@@ -187,27 +190,33 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
 
         {/* Preis */}
         <div className="rounded-lg border border-border bg-surface-muted p-4">
-          <dl className="space-y-2 text-[14px]">
+          <dl className="space-y-2 text-small">
             <div className="flex items-baseline justify-between gap-4">
               <dt className="text-foreground-muted">{preisLabel}</dt>
-              <dd className="font-semibold text-foreground">{formatCents(stueckpreis)}</dd>
+              <dd className="font-mono font-semibold tabular-nums text-foreground">{formatCents(stueckpreis)}</dd>
             </div>
             <div className="flex items-baseline justify-between gap-4">
               <dt className="text-foreground-muted">Stückzahl</dt>
-              <dd className="font-semibold text-foreground">{formatNumber(menge)}</dd>
+              <dd className="font-mono font-semibold tabular-nums text-foreground">{formatNumber(menge)}</dd>
             </div>
             <div className="flex items-baseline justify-between gap-4 border-t border-border pt-2">
               <dt className="font-bold text-foreground">
                 {beispiel ? 'Zwischensumme (Beispiel)' : 'Zwischensumme'}
               </dt>
-              <dd className="font-display text-lg font-bold text-foreground">{formatCents(summe)}</dd>
+              {/* Summe blendet bei jeder Änderung neu ein (B-20) */}
+              <dd
+                key={summe}
+                className="animate-schleier-ein font-mono text-title-sm font-semibold tabular-nums text-foreground"
+              >
+                {formatCents(summe)}
+              </dd>
             </div>
           </dl>
           {/* Kurze Ansage bei jeder Mengenänderung statt der ganzen Aufstellung. */}
           <p className="sr-only" aria-live="polite">
             {`${formatNumber(menge)} Stück zu je ${formatCents(stueckpreis)}, zusammen ${formatCents(summe)}.`}
           </p>
-          <p className="mt-2 text-[12px] leading-snug text-foreground-subtle">
+          <p className="mt-2 text-caption leading-snug text-foreground-muted">
             Preise inklusive Umsatzsteuer, zuzüglich Versandkosten. Die Versandart wählen Sie im
             Warenkorb.
           </p>
@@ -222,12 +231,12 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
             disabled={!bestellbar}
             aria-describedby={sperrgrund ? hinweisId : undefined}
           >
-            <ShoppingCart size={18} aria-hidden />
+            <GlyphWarenkorb size={18} />
             In den Warenkorb
           </Button>
 
           {sperrgrund && (
-            <p id={hinweisId} className="mt-2 text-center text-[13px] text-foreground-subtle">
+            <p id={hinweisId} className="mt-2 text-center text-small text-foreground-muted">
               {sperrgrund}
             </p>
           )}
@@ -236,7 +245,7 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
         {/* Bestätigung */}
         <div aria-live="polite">
           {hinzugefuegt !== null && (
-            <Alert tone="success" title="Im Warenkorb">
+            <Alert tone="success" title="Im Warenkorb" role="status">
               <p>
                 {formatNumber(hinzugefuegt)} × {article.name} wurde in den Warenkorb gelegt.
               </p>

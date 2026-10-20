@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { Loader2, ShieldCheck } from 'lucide-react';
 
 import type {
   AppointmentInfo,
@@ -37,6 +36,11 @@ import {
 import { PreisAnzeige } from '@/components/autoschluessel/preis-anzeige';
 import { TerminAuswahl } from '@/components/autoschluessel/termin-auswahl';
 import { Bestaetigung } from '@/components/autoschluessel/bestaetigung';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
+import { GlyphLaden } from '@/components/visual/glyphen/laden';
+import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
+import { GlyphWaage } from '@/components/visual/glyphen/waage';
+import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
 
 /* ==========================================================================
    Autoschlüssel — geführter Ablauf in 13 Schritten
@@ -835,6 +839,7 @@ export function Assistent({
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHint(flow.step.id)}
+      raster="seite"
     >
       {submitError && (
         <Alert tone="warning" title="Absenden nicht möglich" className="mb-5">
@@ -844,7 +849,7 @@ export function Assistent({
 
       {/* 1 — Marke */}
       {flow.step.id === 'marke' && (
-        <div className="grid gap-2 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
           {makes.map((entry) => (
             <OptionCard
               key={entry.id}
@@ -853,7 +858,7 @@ export function Assistent({
               checked={data.makeSlug === entry.slug}
               onSelect={selectMake}
               title={entry.name}
-              description={`${entry.models.length} Modelle hinterlegt`}
+              description={<span className="whitespace-nowrap font-mono tabular-nums">{entry.models.length} Modelle</span>}
             />
           ))}
         </div>
@@ -904,7 +909,7 @@ export function Assistent({
           )}
 
           {make.intro && (
-            <p className="text-[14px] leading-relaxed text-foreground-muted">{make.intro}</p>
+            <p className="text-small leading-relaxed text-foreground-muted">{make.intro}</p>
           )}
         </div>
       )}
@@ -913,7 +918,7 @@ export function Assistent({
       {flow.step.id === 'baujahr' && (
         <div className="grid gap-4 sm:grid-cols-2">
           <Field
-            label="Baujahr beziehungsweise Jahr der Erstzulassung"
+            label="Jahr"
             required
             info={{
               title: 'Wo Sie das Jahr finden',
@@ -927,6 +932,7 @@ export function Assistent({
                 id={id}
                 aria-describedby={describedBy}
                 invalid={invalid}
+                className="font-mono tabular-nums"
                 value={data.year}
                 onChange={(event) => flow.set('year', event.target.value)}
               >
@@ -1033,7 +1039,7 @@ export function Assistent({
               Sie uns Ihren Fall über die allgemeine Anfrage.
             </Alert>
           )}
-          <div className="grid gap-2">
+          <div className="grid gap-2 sm:grid-cols-2">
             {keyKinds.map((kind) => (
               <OptionCard
                 key={kind}
@@ -1044,10 +1050,12 @@ export function Assistent({
                 title={KEY_KIND_OPTIONS[kind].label}
                 description={KEY_KIND_OPTIONS[kind].description}
                 info={KEY_KIND_OPTIONS[kind].info}
+                bildLage="oben"
+                bild={<SchluesselartZeichnung art={kind} />}
               />
             ))}
           </div>
-          <p className="text-[13px] leading-relaxed text-foreground-subtle">
+          <p className="text-small leading-relaxed text-foreground-subtle">
             Unsicher? Wählen Sie die Art, die am ehesten passt. Anhand Ihrer Fotos prüfen wir das
             und melden uns, falls etwas anderes verbaut ist.
           </p>
@@ -1058,7 +1066,7 @@ export function Assistent({
       {flow.step.id === 'vorhandene-schluessel' && (
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <p className="text-sm font-semibold text-foreground">Funktionierende Schlüssel</p>
+            <p className="text-small font-semibold text-foreground">Funktionierende Schlüssel</p>
             <InfoTip hint={WORKING_KEYS_INFO} />
           </div>
           <div className="grid gap-2">
@@ -1291,41 +1299,43 @@ export function Assistent({
               )}
             </Field>
 
-            <Field
-              label="Postleitzahl"
-              required
-              error={
-                data.postalCode.trim() !== '' && !POSTAL_PATTERN.test(data.postalCode.trim())
-                  ? 'Bitte geben Sie eine gültige Postleitzahl ein.'
-                  : undefined
-              }
-            >
-              {({ id, describedBy, invalid }) => (
-                <TextInput
-                  id={id}
-                  aria-describedby={describedBy}
-                  invalid={invalid}
-                  value={data.postalCode}
-                  onChange={(event) => flow.set('postalCode', event.target.value)}
-                  autoComplete="postal-code"
-                  inputMode="numeric"
-                  maxLength={5}
-                />
-              )}
-            </Field>
+            <div className="grid grid-cols-3 gap-4 sm:col-span-2">
+              <Field
+                label="Postleitzahl"
+                required
+                error={
+                  data.postalCode.trim() !== '' && !POSTAL_PATTERN.test(data.postalCode.trim())
+                    ? 'Bitte geben Sie eine gültige Postleitzahl ein.'
+                    : undefined
+                }
+              >
+                {({ id, describedBy, invalid }) => (
+                  <TextInput
+                    id={id}
+                    aria-describedby={describedBy}
+                    invalid={invalid}
+                    value={data.postalCode}
+                    onChange={(event) => flow.set('postalCode', event.target.value)}
+                    autoComplete="postal-code"
+                    inputMode="numeric"
+                    maxLength={5}
+                  />
+                )}
+              </Field>
 
-            <Field label="Ort" required>
-              {({ id, describedBy, invalid }) => (
-                <TextInput
-                  id={id}
-                  aria-describedby={describedBy}
-                  invalid={invalid}
-                  value={data.city}
-                  onChange={(event) => flow.set('city', event.target.value)}
-                  autoComplete="address-level2"
-                />
-              )}
-            </Field>
+              <Field label="Ort" required className="col-span-2">
+                {({ id, describedBy, invalid }) => (
+                  <TextInput
+                    id={id}
+                    aria-describedby={describedBy}
+                    invalid={invalid}
+                    value={data.city}
+                    onChange={(event) => flow.set('city', event.target.value)}
+                    autoComplete="address-level2"
+                  />
+                )}
+              </Field>
+            </div>
 
             <Field
               label="Land"
@@ -1375,8 +1385,8 @@ export function Assistent({
       {flow.step.id === 'preis' && (
         <div className="space-y-5">
           {quoteLoading && (
-            <p className="flex items-center gap-2 text-[15px] text-foreground-muted" role="status">
-              <Loader2 size={17} className="animate-spin" aria-hidden />
+            <p className="flex items-center gap-2 text-body text-foreground-muted" role="status">
+              <GlyphLaden size={17} className="animate-spin motion-reduce:animate-none" />
               Ihr Preis wird ermittelt …
             </p>
           )}
@@ -1389,10 +1399,11 @@ export function Assistent({
 
           {!quoteLoading && !quoteError && quote && (
             <>
-              <Card variant="muted">
-                <CardBody>
-                  <p className="text-[13px] leading-relaxed text-foreground-muted">
-                    Grundlage: {make?.name} {modelName}, Baujahr {data.year},{' '}
+              <Card variant="outline" className="rounded-none border-x-0">
+                <CardBody className="px-0 md:px-0">
+                  <p className="text-small leading-relaxed text-foreground">
+                    <span className="mb-1 block font-mono text-caption uppercase tracking-label text-foreground-muted">Grundlage</span>
+                    {make?.name} {modelName}, Baujahr <span className="font-mono tabular-nums">{data.year}</span>,{' '}
                     {data.keyKind ? KEY_KIND_OPTIONS[data.keyKind as KeyKind].label : ''},{' '}
                     {service?.label}.
                   </p>
@@ -1401,13 +1412,17 @@ export function Assistent({
 
               <PreisAnzeige quote={quote} />
 
-              <Alert tone="legal" title="Prüfung vor der Ausführung">
-                <p>
-                  Bevor wir arbeiten, sehen wir uns Ihre Fotos und die Zulassungsbescheinigung an.
-                  Ergibt sich daraus ein anderer Fall als hier angenommen, melden wir uns mit dem
-                  angepassten Preis. Sie entscheiden dann, ob der Termin bestehen bleibt.
-                </p>
-              </Alert>
+              <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">
+                <GlyphWaage size={16} className="mt-0.5 shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-semibold text-foreground">Prüfung vor der Ausführung</p>
+                  <p className="mt-1">
+                    Bevor wir arbeiten, sehen wir uns Ihre Fotos und die Zulassungsbescheinigung an.
+                    Ergibt sich daraus ein anderer Fall als hier angenommen, melden wir uns mit dem
+                    angepassten Preis. Sie entscheiden dann, ob der Termin bestehen bleibt.
+                  </p>
+                </div>
+              </div>
             </>
           )}
         </div>
@@ -1424,8 +1439,8 @@ export function Assistent({
               </p>
             </Alert>
           ) : (
-            <p className="flex items-center gap-2 text-[15px] text-foreground-muted" role="status">
-              <Loader2 size={17} className="animate-spin" aria-hidden />
+            <p className="flex items-center gap-2 text-body text-foreground-muted" role="status">
+              <GlyphLaden size={17} className="animate-spin motion-reduce:animate-none" />
               Ihre Angaben werden geprüft …
             </p>
           )}
@@ -1435,39 +1450,44 @@ export function Assistent({
       {/* 12 — Anzahlung */}
       {flow.step.id === 'anzahlung' && quote && (
         <div className="space-y-5">
-          <Card>
-            <CardBody>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-primary">
-                Jetzt fällig
-              </p>
-              <p className="mt-2 font-display text-3xl font-bold text-foreground">
-                {formatCents(quote.depositCents)}
-              </p>
-              <p className="mt-3 text-[14px] leading-relaxed text-foreground-muted">
-                Die Anzahlung wird <strong className="font-semibold text-foreground">vollständig
-                auf den Gesamtpreis angerechnet</strong>. Sie ist kein Zuschlag und keine
-                Bearbeitungsgebühr.
-              </p>
-              {quote.mode === 'fest' && quote.remainderCents !== undefined && (
-                <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                  Beim Termin verbleiben damit {formatCents(quote.remainderCents)}.
-                </p>
-              )}
-              {quote.mode !== 'fest' && (
-                <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                  Den Restbetrag nennen wir Ihnen, sobald der Gesamtpreis feststeht.
-                </p>
-              )}
-            </CardBody>
-          </Card>
+          <dl className="border-y border-border py-5">
+            <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+              Jetzt fällig
+            </dt>
+            <dd className="mt-1 font-mono text-title font-semibold tabular-nums text-foreground">
+              {formatCents(quote.depositCents)}
+            </dd>
+          </dl>
 
-          <Alert tone="info" title="Wofür die Anzahlung steht">
-            <p>
-              Mit der Anzahlung reservieren wir Ihnen ein festes Zeitfenster und beginnen mit der
-              Beschaffung des passenden Rohlings beziehungsweise Gehäuses. Dadurch entsteht uns
-              Aufwand, bevor Sie in der Werkstatt sind.
+          <div className="space-y-2">
+            <p className="text-small leading-relaxed text-foreground-muted">
+              Die Anzahlung wird <strong className="font-semibold text-foreground">vollständig
+              auf den Gesamtpreis angerechnet</strong>. Sie ist kein Zuschlag und keine
+              Bearbeitungsgebühr.
             </p>
-          </Alert>
+            {quote.mode === 'fest' && quote.remainderCents !== undefined && (
+              <p className="text-small leading-relaxed text-foreground-muted">
+                Beim Termin verbleiben damit <span className="font-mono tabular-nums">{formatCents(quote.remainderCents)}</span>.
+              </p>
+            )}
+            {quote.mode !== 'fest' && (
+              <p className="text-small leading-relaxed text-foreground-muted">
+                Den Restbetrag nennen wir Ihnen, sobald der Gesamtpreis feststeht.
+              </p>
+            )}
+          </div>
+
+          <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">
+            <GlyphInfo size={16} className="mt-0.5 shrink-0" />
+            <div className="min-w-0">
+              <p className="font-semibold text-foreground">Wofür die Anzahlung steht</p>
+              <p className="mt-1">
+                Mit der Anzahlung reservieren wir Ihnen ein festes Zeitfenster und beginnen mit der
+                Beschaffung des passenden Rohlings beziehungsweise Gehäuses. Dadurch entsteht uns
+                Aufwand, bevor Sie in der Werkstatt sind.
+              </p>
+            </div>
+          </div>
 
           {!paymentConfigured && (
             <Alert tone="warning" title="Online-Zahlung ist noch nicht eingerichtet">
@@ -1488,8 +1508,8 @@ export function Assistent({
             description="Sie wird vollständig auf den Gesamtpreis angerechnet."
           />
 
-          <p className="flex items-start gap-2 text-[13px] leading-relaxed text-foreground-subtle">
-            <ShieldCheck size={15} className="mt-0.5 shrink-0" aria-hidden />
+          <p className="flex items-start gap-2 text-small leading-relaxed text-foreground-subtle">
+            <GlyphPruefsiegel size={15} className="mt-0.5 shrink-0" />
             Im nächsten Schritt wählen Sie Ihren Termin. Erst danach senden Sie die Anfrage ab.
           </p>
         </div>

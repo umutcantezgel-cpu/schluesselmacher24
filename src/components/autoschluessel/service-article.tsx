@@ -1,17 +1,18 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Check, Minus } from 'lucide-react';
 
 import type { ImageSlot, InfoHint, PageContent } from '@/lib/types';
 import type { Crumb } from '@/components/layout/breadcrumbs';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
 import { Accordion, type AccordionItem } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
+import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { GlyphMinus } from '@/components/visual/glyphen/minus';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 /* ==========================================================================
    Gemeinsamer Aufbau aller Autoschlüssel-Leistungsseiten.
@@ -91,18 +92,18 @@ export function ServiceArticle({
         title={headline}
         lead={subline}
         crumbs={crumbs}
+        bereich="autoschluessel"
         actions={
-          <ButtonLink href={next.primary.href}>
+          <ButtonLink href={next.primary.href} pfeil>
             {next.primary.label}
-            <ArrowRight size={17} aria-hidden />
           </ButtonLink>
         }
       />
 
       {/* Was ist das */}
       <Section>
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
-          <div>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+          <div className="lg:col-span-7">
             <SectionHeading title={what.title} />
             <div className="prose-sm24 mt-5">
               <p>{intro}</p>
@@ -118,55 +119,52 @@ export function ServiceArticle({
             </div>
           </div>
 
-          <ImagePlaceholder slot={image} />
+          <div className="lg:col-span-5">
+            <ImagePlaceholder slot={image} />
+          </div>
         </div>
       </Section>
 
       {/* Wann brauchen Sie das */}
       <Section tone="muted">
         <SectionHeading title={when.title} lead={when.lead} />
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-          {when.items.map((item) => (
-            <li key={item.title}>
-              <Card className="h-full">
-                <CardBody>
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-[15px] font-bold text-foreground">{item.title}</h3>
-                    {item.hint && <InfoTip hint={item.hint} className="shrink-0" />}
-                  </div>
-                  <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                    {item.body}
-                  </p>
-                </CardBody>
-              </Card>
+        <ol className="mt-8 grid border-t border-border lg:grid-cols-2 lg:gap-x-gutter">
+          {when.items.map((item, index) => (
+            <li key={item.title} className="flex gap-5 border-b border-border py-6">
+              <span
+                aria-hidden
+                className="pt-1 font-mono text-caption tabular-nums text-foreground-subtle"
+              >
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-title-sm font-semibold text-foreground">{item.title}</h3>
+                  {item.hint && <InfoTip hint={item.hint} className="shrink-0" />}
+                </div>
+                <p className="mt-2 text-small text-foreground-muted">{item.body}</p>
+              </div>
             </li>
           ))}
-        </ul>
+        </ol>
       </Section>
 
       {/* Was wir von Ihnen brauchen */}
       <Section>
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-14">
-          <SectionHeading title={need.title} lead={need.lead} />
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+          <SectionHeading title={need.title} lead={need.lead} className="lg:col-span-5" />
 
-          <div>
+          <div className="lg:col-span-7">
             <ul className="space-y-4">
               {need.items.map((item) => (
                 <li key={item.title} className="flex gap-3">
-                  <span
-                    aria-hidden
-                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary"
-                  >
-                    <Check size={14} />
-                  </span>
+                  <GlyphHaken size={16} className="mt-1 shrink-0 text-success" />
                   <div className="min-w-0">
                     <div className="flex items-start gap-2">
-                      <h3 className="text-[15px] font-bold text-foreground">{item.title}</h3>
+                      <h3 className="text-body font-semibold text-foreground">{item.title}</h3>
                       {item.hint && <InfoTip hint={item.hint} className="shrink-0" />}
                     </div>
-                    <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">
-                      {item.body}
-                    </p>
+                    <p className="mt-1 text-small text-foreground-muted">{item.body}</p>
                   </div>
                 </li>
               ))}
@@ -184,27 +182,14 @@ export function ServiceArticle({
       {/* Abgrenzung */}
       <Section tone="muted">
         <SectionHeading title={boundary.title} lead={boundary.lead} />
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+        <ul className="mt-8 grid border-t border-border sm:grid-cols-2 sm:gap-x-gutter">
           {boundary.items.map((item) => (
-            <li key={item.title}>
-              <Card className="h-full" variant="outline">
-                <CardBody>
-                  <div className="flex items-start gap-3">
-                    <span
-                      aria-hidden
-                      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border-strong text-foreground-subtle"
-                    >
-                      <Minus size={14} />
-                    </span>
-                    <div className="min-w-0">
-                      <h3 className="text-[15px] font-bold text-foreground">{item.title}</h3>
-                      <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                        {item.body}
-                      </p>
-                    </div>
-                  </div>
-                </CardBody>
-              </Card>
+            <li key={item.title} className="flex gap-3 border-b border-border py-5">
+              <GlyphMinus size={16} className="mt-1 shrink-0 text-foreground-subtle" />
+              <div className="min-w-0">
+                <h3 className="text-body font-semibold text-foreground">{item.title}</h3>
+                <p className="mt-2 text-small text-foreground-muted">{item.body}</p>
+              </div>
             </li>
           ))}
         </ul>
@@ -226,13 +211,12 @@ export function ServiceArticle({
 
       {/* Nächster Schritt und interne Links */}
       <Section tone="muted" tight>
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
-          <div>
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-7">
             <SectionHeading title={next.title} lead={next.lead} />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <ButtonLink href={next.primary.href} size="lg">
+              <ButtonLink href={next.primary.href} size="lg" pfeil>
                 {next.primary.label}
-                <ArrowRight size={17} aria-hidden />
               </ButtonLink>
               {next.secondary && (
                 <ButtonLink href={next.secondary.href} size="lg" variant="outline">
@@ -243,31 +227,28 @@ export function ServiceArticle({
           </div>
 
           {links.length > 0 && (
-            <nav aria-label="Weiterführende Seiten">
-              <h2 className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                Passend dazu
-              </h2>
+            <nav aria-label="Weiterführende Seiten" className="lg:col-span-5">
+              <h2 className="eyebrow">Passend dazu</h2>
               <ul className="mt-4 divide-y divide-border border-y border-border">
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="group flex min-h-[44px] items-center justify-between gap-4 py-3"
+                      className="group flex min-h-touch items-center justify-between gap-4 py-3"
                     >
                       <span className="min-w-0">
-                        <span className="block text-[15px] font-semibold text-foreground group-hover:text-primary">
+                        <span className="block text-body font-semibold text-foreground group-hover:text-primary">
                           {link.label}
                         </span>
                         {link.description && (
-                          <span className="mt-0.5 block text-[13px] text-foreground-muted">
+                          <span className="mt-0.5 block text-small text-foreground-muted">
                             {link.description}
                           </span>
                         )}
                       </span>
-                      <ArrowRight
+                      <GlyphPfeilRechts
                         size={16}
-                        aria-hidden
-                        className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                        className="shrink-0 text-foreground-subtle transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
                       />
                     </Link>
                   </li>

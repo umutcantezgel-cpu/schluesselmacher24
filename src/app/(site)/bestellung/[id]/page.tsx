@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
-import { ArrowRight } from 'lucide-react';
 
 import { getRecord } from '@/lib/data';
 import { verifyAccessToken } from '@/lib/server/access-token';
@@ -11,9 +10,9 @@ import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/f
 import type { OrderLine, OrderTotals, PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
 import { SummaryList } from '@/components/layout/summary-list';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 interface BestellungSeiteProps {
   params: Promise<{ id: string }>;
@@ -87,54 +86,50 @@ export const metadata: Metadata = {
 /** Beim Bestellen festgeschriebene Positionen — unabhängig von späteren Preisänderungen. */
 function BestelltePositionen({ lines, totals }: { lines: OrderLine[]; totals?: OrderTotals }) {
   return (
-    <Card>
-      <CardHeader>
-        <h2 className="text-[15px] font-bold text-foreground">Bestellte Artikel</h2>
-      </CardHeader>
-      <CardBody>
-        <ul className="divide-y divide-border">
-          {lines.map((line, index) => (
-            <li key={`${line.productId}-${index}`} className="py-3 first:pt-0 last:pb-0">
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <p className="text-[15px] font-semibold text-foreground">{line.label}</p>
-                <p className="text-[15px] font-semibold text-foreground">{formatCents(line.totalCents)}</p>
-              </div>
-              {line.details && (
-                <p className="mt-1 whitespace-pre-line text-[13px] leading-relaxed text-foreground-muted">
-                  {line.details}
-                </p>
-              )}
-              <p className="mt-1 text-[13px] text-foreground-muted">
-                {line.qty} Stück zu je {formatCents(line.unitPriceCents)} · inkl. {line.vatPercent} % USt.
-              </p>
-            </li>
-          ))}
-        </ul>
+    <section className="border-t border-border pt-8">
+      <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" />Positionen</p>
+      <h2 className="mt-1 text-title font-semibold text-foreground">Bestellte Artikel</h2>
 
-        {totals && (
-          <dl className="mt-4 space-y-2 border-t border-border pt-4 text-[14px]">
-            <div className="flex flex-wrap justify-between gap-4">
-              <dt className="text-foreground-muted">Artikel</dt>
-              <dd className="text-foreground">{formatCents(totals.itemsCents)}</dd>
+      <ul className="mt-6 divide-y divide-border border-y border-border">
+        {lines.map((line, index) => (
+          <li key={`${line.productId}-${index}`} className="py-4">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <p className="text-body font-semibold text-foreground">{line.label}</p>
+              <p className="font-mono text-body font-semibold tabular-nums text-foreground">{formatCents(line.totalCents)}</p>
             </div>
-            <div className="flex flex-wrap justify-between gap-4">
-              <dt className="text-foreground-muted">
-                Versand{totals.shippingLabel ? ` · ${totals.shippingLabel}` : ''}
-              </dt>
-              <dd className="text-foreground">{formatCents(totals.shippingCents)}</dd>
-            </div>
-            <div className="flex flex-wrap justify-between gap-4">
-              <dt className="font-bold text-foreground">Gesamtbetrag</dt>
-              <dd className="font-bold text-foreground">{formatCents(totals.totalCents)}</dd>
-            </div>
-            <div className="flex flex-wrap justify-between gap-4">
-              <dt className="text-foreground-muted">Enthaltene Umsatzsteuer</dt>
-              <dd className="text-foreground">{formatCents(totals.vatCents)}</dd>
-            </div>
-          </dl>
-        )}
-      </CardBody>
-    </Card>
+            {line.details && (
+              <p className="mt-1 whitespace-pre-line text-small leading-relaxed text-foreground-muted">
+                {line.details}
+              </p>
+            )}
+            <p className="mt-1 text-small text-foreground-muted"><span className="font-mono tabular-nums">{line.qty}</span> Stück zu je <span className="font-mono tabular-nums">{formatCents(line.unitPriceCents)}</span> · inkl. <span className="font-mono tabular-nums">{line.vatPercent}</span> % USt.</p>
+          </li>
+        ))}
+      </ul>
+
+      {totals && (
+        <dl className="mt-6 space-y-3 text-small">
+          <div className="flex flex-wrap justify-between gap-4">
+            <dt className="text-foreground-muted">Artikel</dt>
+            <dd className="font-mono tabular-nums text-foreground">{formatCents(totals.itemsCents)}</dd>
+          </div>
+          <div className="flex flex-wrap justify-between gap-4">
+            <dt className="text-foreground-muted">
+              Versand{totals.shippingLabel ? ` · ${totals.shippingLabel}` : ''}
+            </dt>
+            <dd className="font-mono tabular-nums text-foreground">{formatCents(totals.shippingCents)}</dd>
+          </div>
+          <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-border pt-4">
+            <dt className="text-body font-semibold text-foreground">Gesamtbetrag</dt>
+            <dd className="font-mono text-title-sm font-semibold tabular-nums text-foreground">{formatCents(totals.totalCents)}</dd>
+          </div>
+          <div className="flex flex-wrap justify-between gap-4">
+            <dt className="text-foreground-muted">Enthaltene Umsatzsteuer</dt>
+            <dd className="font-mono tabular-nums text-foreground">{formatCents(totals.vatCents)}</dd>
+          </div>
+        </dl>
+      )}
+    </section>
   );
 }
 
@@ -224,6 +219,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
   return (
     <>
       <PageHeader
+        art="arbeit"
         eyebrow="Direkt kaufen"
         title={`${kindLabel} eingegangen`}
         lead="Wir haben Ihren Vorgang aufgenommen. Bitte bewahren Sie die Vorgangsnummer auf — damit finden Sie den Stand jederzeit wieder."
@@ -231,34 +227,32 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
       />
 
       <div className="shell py-8 md:py-12">
-        <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr] lg:items-start lg:gap-8">
-          <div className="space-y-6">
-            {/* Vorgangsnummer */}
-            <Card>
-              <CardBody>
-                <h2 className="text-[13px] font-bold uppercase tracking-wider text-foreground-subtle">
-                  Ihre Vorgangsnummer
-                </h2>
-                <p className="mt-2 select-all break-all font-mono text-2xl font-bold text-foreground md:text-3xl">
-                  {record.reference}
-                </p>
-                <p className="mt-2 text-[13px] leading-relaxed text-foreground-muted">
-                  Ein Klick auf die Nummer markiert sie vollständig — danach können Sie sie
-                  kopieren. Eingegangen am {formatDateTime(record.createdAt)}.
-                </p>
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+          {/* Abschnittsnummern zählt CSS (.sm24-zaehlung): Artikel und Zahlung erscheinen nur mit Daten */}
+          <div className="sm24-zaehlung space-y-12 lg:col-span-7">
+            {/* Vorgangsnummer und Stand */}
+            <section className="border-t border-border pt-8">
+              <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" />Bestätigung</p>
+              <h2 className="mt-1 text-title font-semibold text-foreground">Ihre Vorgangsnummer</h2>
+              <p className="mt-4 select-all break-all font-mono text-headline font-bold tabular-nums text-foreground">
+                {record.reference}
+              </p>
+              <p className="mt-3 text-small leading-relaxed text-foreground-muted">
+                Ein Klick auf die Nummer markiert sie vollständig — danach können Sie sie
+                kopieren. Eingegangen am {formatDateTime(record.createdAt)}.
+              </p>
 
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <Badge tone={STATUS_TONE[record.status]}>
-                    Status: {STATUS_LABELS[record.status]}
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Badge tone={STATUS_TONE[record.status]}>
+                  Status: {STATUS_LABELS[record.status]}
+                </Badge>
+                {record.payment && (
+                  <Badge tone={PAYMENT_TONE[record.payment.status]}>
+                    Zahlung: {PAYMENT_LABELS[record.payment.status]}
                   </Badge>
-                  {record.payment && (
-                    <Badge tone={PAYMENT_TONE[record.payment.status]}>
-                      Zahlung: {PAYMENT_LABELS[record.payment.status]}
-                    </Badge>
-                  )}
-                </div>
-              </CardBody>
-            </Card>
+                )}
+              </div>
+            </section>
 
             {hinweise.length > 0 && (
               <Alert tone="info" title="Bitte beachten">
@@ -274,126 +268,123 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
 
             {/* Zahlung */}
             {record.payment && (
-              <Card>
-                <CardHeader>
-                  <h2 className="text-[15px] font-bold text-foreground">Zahlung</h2>
-                </CardHeader>
-                <CardBody>
-                  <dl className="space-y-2 text-[14px]">
-                    <div className="flex flex-wrap justify-between gap-4">
-                      <dt className="text-foreground-muted">
-                        {PAYMENT_SCOPE_LABELS[record.payment.scope]}
-                      </dt>
-                      <dd className="font-semibold text-foreground">
-                        {formatCents(record.payment.amountCents)}
-                      </dd>
-                    </div>
-                    <div className="flex flex-wrap justify-between gap-4">
-                      <dt className="text-foreground-muted">Zahlungsstatus</dt>
-                      <dd className="font-semibold text-foreground">
-                        {PAYMENT_LABELS[record.payment.status]}
-                      </dd>
-                    </div>
-                    {record.payment.paidAt && (
-                      <div className="flex flex-wrap justify-between gap-4">
-                        <dt className="text-foreground-muted">Bezahlt am</dt>
-                        <dd className="font-semibold text-foreground">
-                          {formatDateTime(record.payment.paidAt)}
-                        </dd>
-                      </div>
-                    )}
-                  </dl>
+              <section className="border-t border-border pt-8">
+                <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" />Abrechnung</p>
+                <h2 className="mt-1 text-title font-semibold text-foreground">Zahlung</h2>
 
-                  {record.payment.status === 'offen' && (
-                    <div className="mt-4">
-                      <Alert tone="info" title="Zahlung noch offen">
-                        Ihr Vorgang ist gespeichert. Wir melden uns mit den Zahlungsinformationen
-                        zu dieser Vorgangsnummer.
-                      </Alert>
+                <dl className="mt-6 divide-y divide-border border-y border-border text-small">
+                  <div className="flex flex-wrap items-baseline justify-between gap-4 py-3">
+                    <dt className="text-foreground-muted">
+                      {PAYMENT_SCOPE_LABELS[record.payment.scope]}
+                    </dt>
+                    <dd className="font-mono text-body font-semibold tabular-nums text-foreground">
+                      {formatCents(record.payment.amountCents)}
+                    </dd>
+                  </div>
+                  <div className="flex flex-wrap items-baseline justify-between gap-4 py-3">
+                    <dt className="text-foreground-muted">Zahlungsstatus</dt>
+                    <dd className="font-semibold text-foreground">
+                      {PAYMENT_LABELS[record.payment.status]}
+                    </dd>
+                  </div>
+                  {record.payment.paidAt && (
+                    <div className="flex flex-wrap items-baseline justify-between gap-4 py-3">
+                      <dt className="text-foreground-muted">Bezahlt am</dt>
+                      <dd className="font-semibold text-foreground">
+                        {formatDateTime(record.payment.paidAt)}
+                      </dd>
                     </div>
                   )}
-                </CardBody>
-              </Card>
+                </dl>
+
+                {record.payment.status === 'offen' && (
+                  <div className="mt-6">
+                    <Alert tone="info" title="Zahlung noch offen">
+                      Ihr Vorgang ist gespeichert. Wir melden uns mit den Zahlungsinformationen
+                      zu dieser Vorgangsnummer.
+                    </Alert>
+                  </div>
+                )}
+              </section>
             )}
 
-            {/* Zusammenfassung */}
-            <section>
-              <h2 className="text-lg font-bold text-foreground">Ihre Angaben</h2>
-              <div className="mt-4">
-                <SummaryList sections={abschnitte} />
+            {/* Angaben */}
+            <section className="border-t border-border pt-8">
+              <p className="eyebrow"><span className="sm24-nummer tabular-nums text-foreground-muted" />Übersicht</p>
+              <h2 className="mt-1 text-title font-semibold text-foreground">Ihre Angaben</h2>
+              <div className="mt-6">
+                <SummaryList sections={abschnitte} variante="schriftfeld" hervorheben="Gesamtbetrag" />
               </div>
             </section>
           </div>
 
-          {/* Nächste Schritte */}
-          <div className="space-y-4 lg:sticky lg:top-24">
-            <Card>
-              <CardHeader>
-                <h2 className="text-[15px] font-bold text-foreground">Wie es weitergeht</h2>
-              </CardHeader>
-              <CardBody>
-                <ol className="space-y-4">
-                  <li>
-                    <p className="text-[14px] font-bold text-foreground">1. Prüfung Ihrer Angaben</p>
-                    <p className="mt-1 text-[13px] leading-relaxed text-foreground-muted">
-                      Wir prüfen Code, Maße und Zusammenstellung, bevor etwas gefertigt wird.
-                    </p>
-                  </li>
-                  <li>
-                    <p className="text-[14px] font-bold text-foreground">2. Zahlung</p>
-                    <p className="mt-1 text-[13px] leading-relaxed text-foreground-muted">
-                      Solange der Zahlungsstatus offen ist, erhalten Sie von uns die
-                      Zahlungsinformationen zu Ihrer Vorgangsnummer.
-                    </p>
-                  </li>
-                  <li>
-                    <p className="text-[14px] font-bold text-foreground">3. Fertigung und Versand</p>
-                    <p className="mt-1 text-[13px] leading-relaxed text-foreground-muted">
-                      Danach fertigen wir Ihre Bestellung und versenden sie auf dem von Ihnen
-                      gewählten Weg. Sie werden über jeden Schritt informiert.
-                    </p>
-                  </li>
-                </ol>
+          {/* Nächste Schritte und Fragen: Seitenleiste mit Haarlinien */}
+          <aside className="space-y-12 lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
+            <section className="border-t border-border pt-8">
+              <h2 className="text-title-sm font-semibold text-foreground">Wie es weitergeht</h2>
 
-                <div className="mt-6 border-t border-border pt-5">
-                  <p className="text-[13px] leading-relaxed text-foreground-muted">
-                    Den aktuellen Stand rufen Sie jederzeit mit Ihrer Vorgangsnummer ab.
+              <ol className="mt-6 divide-y divide-border border-y border-border">
+                <li className="py-4">
+                  <p className="text-body font-semibold text-foreground">1. Prüfung Ihrer Angaben</p>
+                  <p className="mt-1 text-small leading-relaxed text-foreground-muted">
+                    Wir prüfen Code, Maße und Zusammenstellung, bevor etwas gefertigt wird.
                   </p>
-                  <Link
-                    href="/service-und-termin/terminstatus"
-                    className="mt-3 inline-flex min-h-[44px] items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-                  >
-                    Stand des Vorgangs abrufen
-                    <ArrowRight size={15} aria-hidden />
-                  </Link>
-                </div>
-              </CardBody>
-            </Card>
+                </li>
+                <li className="py-4">
+                  <p className="text-body font-semibold text-foreground">2. Zahlung</p>
+                  <p className="mt-1 text-small leading-relaxed text-foreground-muted">
+                    Solange der Zahlungsstatus offen ist, erhalten Sie von uns die
+                    Zahlungsinformationen zu Ihrer Vorgangsnummer.
+                  </p>
+                </li>
+                <li className="py-4">
+                  <p className="text-body font-semibold text-foreground">3. Fertigung und Versand</p>
+                  <p className="mt-1 text-small leading-relaxed text-foreground-muted">
+                    Danach fertigen wir Ihre Bestellung und versenden sie auf dem von Ihnen
+                    gewählten Weg. Sie werden über jeden Schritt informiert.
+                  </p>
+                </li>
+              </ol>
 
-            <Card variant="muted">
-              <CardBody>
-                <h2 className="text-[15px] font-bold text-foreground">Fragen zur Bestellung?</h2>
-                <ul className="mt-3 space-y-2">
-                  {[
-                    { href: '/service-und-termin/kontakt', label: 'Kontakt aufnehmen' },
-                    { href: '/rechtliches/versand-und-zahlung', label: 'Zahlung und Versand' },
-                    { href: '/rechtliches/widerruf', label: 'Widerruf und Rückgabe' },
-                    { href: '/rechtliches/agb', label: 'AGB' },
-                  ].map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="inline-flex min-h-[44px] items-center gap-1.5 text-[14px] font-semibold text-primary hover:underline"
-                      >
-                        {link.label}
-                        <ArrowRight size={15} aria-hidden />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </CardBody>
-            </Card>
-          </div>
+              <div className="mt-6">
+                <p className="text-small leading-relaxed text-foreground-muted">
+                  Den aktuellen Stand rufen Sie jederzeit mit Ihrer Vorgangsnummer ab.
+                </p>
+                <Link
+                  href="/service-und-termin/terminstatus"
+                  className="mt-3 inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary hover:underline"
+                >
+                  Stand des Vorgangs abrufen
+                  <GlyphPfeilRechts size={18} />
+                </Link>
+              </div>
+            </section>
+
+            <section className="border-t border-border pt-8">
+              <h2 className="text-title-sm font-semibold text-foreground">Fragen zur Bestellung?</h2>
+              <ul className="mt-4 divide-y divide-border border-y border-border">
+                {[
+                  { href: '/service-und-termin/kontakt', label: 'Kontakt aufnehmen' },
+                  { href: '/rechtliches/versand-und-zahlung', label: 'Zahlung und Versand' },
+                  { href: '/rechtliches/widerruf', label: 'Widerruf und Rückgabe' },
+                  { href: '/rechtliches/agb', label: 'AGB' },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="group flex min-h-touch items-center justify-between gap-4 py-3 text-small font-semibold text-foreground transition-colors duration-quick hover:text-primary"
+                    >
+                      {link.label}
+                      <GlyphPfeilRechts
+                        size={18}
+                        className="shrink-0 text-primary transition-transform duration-quick group-hover:translate-x-1"
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </aside>
         </div>
       </div>
     </>

@@ -1,7 +1,9 @@
 import type { InfoHint, LockSystemExplainer } from '@/lib/types';
+import type { SchliessDetail, SchliessSystem } from '@/components/visual/interaktiv/schliessplan-interaktiv';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
-import { Card, CardBody } from '@/components/ui/card';
+import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { Reveal } from '@/components/visual/motion/reveal';
 
 /**
  * Ein Schließsystem in Kundensprache.
@@ -61,6 +63,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung Gleichschließung: ein Schlüsselsymbol, Pfeile zu vier gleichen Türen',
       ratio: '4/3',
+      visual: { generator: 'schliessplan', params: { system: 'gleichschliessung', tueren: 3 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -98,6 +101,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung Zentralschlossanlage: Wohnungstüren getrennt, Haustür und Keller gemeinsam',
       ratio: '4/3',
+      visual: { generator: 'schliessplan', params: { system: 'zentral', tueren: 4 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -135,6 +139,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung Hauptschlüsselanlage: zwei Ebenen, Hauptschlüssel oben, Nutzerschlüssel unten',
       ratio: '4/3',
+      visual: { generator: 'schliessplan', params: { system: 'haupt', tueren: 4 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -173,6 +178,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung Generalhauptschlüsselanlage: Baumstruktur über zwei Gebäude',
       ratio: '4/3',
+      visual: { generator: 'schliessplan', params: { system: 'generalhaupt', gruppen: 2, tueren: 4 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -209,6 +215,7 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     figure: {
       motif: 'Schemazeichnung erweiterbare Anlage: Schließplan-Raster mit belegten und freien Feldern',
       ratio: '4/3',
+      visual: { generator: 'schliessplan', params: { system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2 } },
       note: 'Einfache technische Zeichnung, beschriftet, ohne Fotomaterial.',
     },
   },
@@ -219,74 +226,158 @@ export function systemName(entry: LockSystemEntry): string {
   return entry.short ? `${entry.label} (${entry.short})` : entry.label;
 }
 
-/** Die fünf Systeme als erklärende Karten — je System eine Überschrift. */
-export function SystemErklaerung() {
+/**
+ * Die vier Schließsysteme als Reiter des interaktiven Plans (B-14): Beschreibung, Merkpunkte,
+ * Eignung und Info-Symbol kommen aus den Systemeinträgen. Die Erweiterbare Anlage hat keinen
+ * Reiter, sie ist eine Planungsentscheidung (siehe `ErweiterbareAnlage`).
+ */
+const REITER: [SchliessSystem, string][] = [
+  ['gleichschliessung', 'gleichschliessung'],
+  ['zentral', 'z'],
+  ['haupt', 'hs'],
+  ['generalhaupt', 'ghs'],
+];
+
+export function systemReiter(): Partial<Record<SchliessSystem, SchliessDetail>> {
+  const reiter: Partial<Record<SchliessSystem, SchliessDetail>> = {};
+  for (const [system, id] of REITER) {
+    const entry = LOCK_SYSTEMS.find((e) => e.id === id);
+    if (!entry) continue;
+    reiter[system] = {
+      name: systemName(entry),
+      beschreibung: entry.explanation,
+      haken: entry.bullets,
+      geeignetFuer: entry.suitableFor,
+      infoTip: <InfoTip hint={entry.info} />,
+    };
+  }
+  return reiter;
+}
+
+/** Die erweiterbare Anlage: keine Schließart, sondern eine Entscheidung bei der Planung – ein Blatt mit Reserve. */
+export function ErweiterbareAnlage() {
+  const entry = LOCK_SYSTEMS.find((e) => e.id === 'erweiterbar');
+  if (!entry) return null;
   return (
-    <ul className="grid gap-4 lg:grid-cols-2">
-      {LOCK_SYSTEMS.map((entry) => (
-        <li key={entry.id}>
-          <Card className="h-full">
-            <CardBody className="flex h-full flex-col gap-4">
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="text-lg font-bold text-foreground">{systemName(entry)}</h3>
-                <InfoTip hint={entry.info} />
-              </div>
+    <Reveal>
+      <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-gutter">
+        {/* Ohne Kartenrahmen auf getönter Fläche; unter 640 px bis an den Rand (Hülle `shell`, px-5). */}
+        <div className="-mx-5 overflow-hidden bg-area-soft/40 sm:mx-0 sm:rounded-lg lg:col-span-5">
+          <ImagePlaceholder slot={entry.figure} className="sm:aspect-3/2" frei />
+        </div>
 
-              <ImagePlaceholder slot={entry.figure} />
+        <div className="lg:col-span-7">
+          <div className="flex items-start justify-between gap-3">
+            <h3 className="text-title-sm font-bold text-foreground">{systemName(entry)}</h3>
+            <InfoTip hint={entry.info} />
+          </div>
 
-              <p className="text-[15px] leading-relaxed text-foreground-muted">
-                {entry.explanation}
-              </p>
+          <p className="mt-3 max-w-measure text-body leading-relaxed text-foreground-muted">{entry.explanation}</p>
 
-              <ul className="space-y-1.5">
-                {entry.bullets.map((bullet) => (
-                  <li
-                    key={bullet}
-                    className="flex gap-2 text-[14px] leading-relaxed text-foreground-muted"
-                  >
-                    <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
+          <ul className="mt-5 grid max-w-measure gap-2.5">
+            {entry.bullets.map((bullet) => (
+              <li key={bullet} className="flex gap-2.5 text-small leading-relaxed text-foreground-muted">
+                <GlyphHaken size={16} className="mt-0.5 shrink-0 text-area-strong" />
+                {bullet}
+              </li>
+            ))}
+          </ul>
 
-              <div className="mt-auto rounded-lg bg-surface-muted px-4 py-3">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                  Geeignet für
-                </p>
-                <p className="mt-1 text-[14px] leading-relaxed text-foreground">
-                  {entry.suitableFor}
-                </p>
-              </div>
-            </CardBody>
-          </Card>
-        </li>
-      ))}
-    </ul>
+          <div className="mt-6 max-w-measure border-t border-border pt-4">
+            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Geeignet für</p>
+            <p className="mt-1.5 text-small leading-relaxed text-foreground">{entry.suitableFor}</p>
+          </div>
+        </div>
+      </div>
+    </Reveal>
   );
 }
 
-/** Vergleichstabelle der fünf Systeme — auf schmalen Geräten scrollbar. */
+/** Name eines Systems: die Langform zuerst, die Abkürzung folgt in Mono in Klammern. */
+function SystemName({ entry }: { entry: LockSystemEntry }) {
+  return (
+    <>
+      {entry.label}
+      {entry.short && (
+        <>
+          {' '}
+          <span className="font-mono">({entry.short})</span>
+        </>
+      )}
+    </>
+  );
+}
+
+/** Das Urteil „Ja“ oder „Begrenzt“ steht als erstes Wort in Textfarbe, der Rest der Angabe bleibt gedämpft. */
+function ErweiterbarUrteil({ text }: { text: string }) {
+  const treffer = /^(Ja|Begrenzt)([\s\S]*)$/.exec(text);
+  if (!treffer) return text;
+  return (
+    <>
+      <span className="font-medium text-foreground">{treffer[1]}</span>
+      {treffer[2]}
+    </>
+  );
+}
+
+/** Vergleich der fünf Systeme: ab md Tabelle, darunter eine Leiste mit Anschnitt, je System eine Karte. */
 export function SystemVergleich() {
   return (
-    <div className="table-scroll">
-      <table className="w-full min-w-[46rem] border-collapse text-left">
+    <div>
+      <div
+        role="region"
+        aria-label="Die Systeme im Vergleich"
+        tabIndex={0}
+        className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 pt-1 scroll-px-5 focus-visible:ring-inset sm:-mx-6 sm:px-6 sm:scroll-px-6 md:hidden"
+      >
+        {LOCK_SYSTEMS.map((entry) => (
+          <div key={entry.id} className="shrink-0 basis-3/4 snap-start rounded-lg border border-border bg-surface p-5">
+            <p className="text-title-sm font-semibold text-foreground">
+              <SystemName entry={entry} />
+            </p>
+            <dl className="mt-3 divide-y divide-border">
+              <div className="py-3 first:pt-0">
+                <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Wer öffnet was
+                </dt>
+                <dd className="mt-1 text-small leading-relaxed text-foreground-muted">{entry.opensWhat}</dd>
+              </div>
+              <div className="py-3">
+                <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Typisch für
+                </dt>
+                <dd className="mt-1 text-small leading-relaxed text-foreground-muted">{entry.typicalFor}</dd>
+              </div>
+              <div className="py-3 last:pb-0">
+                <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Erweiterbar
+                </dt>
+                <dd className="mt-1 text-small leading-relaxed text-foreground-muted">
+                  <ErweiterbarUrteil text={entry.expandable} />
+                </dd>
+              </div>
+            </dl>
+          </div>
+        ))}
+      </div>
+
+      <table className="hidden w-full border-collapse text-left md:table">
         <caption className="sr-only">
           Die fünf Schließsysteme im Vergleich: wer welche Tür öffnet, typische Einsatzfälle und
           Erweiterbarkeit.
         </caption>
         <thead>
           <tr className="border-b border-border-strong">
-            <th scope="col" className="px-4 py-3 text-[13px] font-bold text-foreground">
+            <th scope="col" className="px-4 py-3 text-small font-bold text-foreground">
               System
             </th>
-            <th scope="col" className="px-4 py-3 text-[13px] font-bold text-foreground">
+            <th scope="col" className="px-4 py-3 text-small font-bold text-foreground">
               Wer öffnet was
             </th>
-            <th scope="col" className="px-4 py-3 text-[13px] font-bold text-foreground">
+            <th scope="col" className="px-4 py-3 text-small font-bold text-foreground">
               Typisch für
             </th>
-            <th scope="col" className="px-4 py-3 text-[13px] font-bold text-foreground">
+            <th scope="col" className="px-4 py-3 text-small font-bold text-foreground">
               Erweiterbar
             </th>
           </tr>
@@ -294,17 +385,17 @@ export function SystemVergleich() {
         <tbody className="divide-y divide-border">
           {LOCK_SYSTEMS.map((entry) => (
             <tr key={entry.id} className="align-top">
-              <th scope="row" className="px-4 py-3 text-[14px] font-bold text-foreground">
-                {systemName(entry)}
+              <th scope="row" className="px-4 py-3 text-small font-bold text-foreground">
+                <SystemName entry={entry} />
               </th>
-              <td className="px-4 py-3 text-[14px] leading-relaxed text-foreground-muted">
+              <td className="px-4 py-3 text-small leading-relaxed text-foreground-muted">
                 {entry.opensWhat}
               </td>
-              <td className="px-4 py-3 text-[14px] leading-relaxed text-foreground-muted">
+              <td className="px-4 py-3 text-small leading-relaxed text-foreground-muted">
                 {entry.typicalFor}
               </td>
-              <td className="px-4 py-3 text-[14px] leading-relaxed text-foreground-muted">
-                {entry.expandable}
+              <td className="px-4 py-3 text-small leading-relaxed text-foreground-muted">
+                <ErweiterbarUrteil text={entry.expandable} />
               </td>
             </tr>
           ))}

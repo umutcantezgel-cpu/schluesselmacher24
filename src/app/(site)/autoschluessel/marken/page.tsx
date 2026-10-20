@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 import { getPageContent, getVehicleMakes } from '@/lib/data';
 import type { KeyKind, VehicleMake } from '@/lib/types';
@@ -11,9 +10,15 @@ import { ButtonLink } from '@/components/ui/button';
 import { Alert } from '@/components/ui/alert';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { KeyKindBadges, KEY_KIND_HINT } from '@/components/autoschluessel/key-kinds';
 
 const ROUTE = 'autoschluessel/marken';
+
+/** Einzahl bei 1, sonst Mehrzahl: „1 Modell“, „3 Modelle“. */
+function nomen(n: number, einzahl: string, mehrzahl: string): string {
+  return n === 1 ? einzahl : mehrzahl;
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   const [page, makes] = await Promise.all([getPageContent(ROUTE), getVehicleMakes()]);
@@ -23,7 +28,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Autoschlüssel nach Marke und Modell',
     description:
       page?.seo.description
-      ?? `Zu ${makes.length} Fahrzeugmarken und ${modelCount} Modellen finden Sie hier, welche `
+      ?? `Zu ${makes.length} ${nomen(makes.length, 'Fahrzeugmarke', 'Fahrzeugmarken')} und `
+        + `${modelCount} ${nomen(modelCount, 'Modell', 'Modellen')} finden Sie hier, welche `
         + 'Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen vor Ort sein muss.',
     alternates: { canonical: '/autoschluessel/marken' },
   };
@@ -59,22 +65,22 @@ export default async function MarkenPage() {
           { href: '/autoschluessel/marken', label: 'Marken' },
         ]}
         actions={
-          <ButtonLink href="/autoschluessel/anfrage">
+          <ButtonLink href="/autoschluessel/anfrage" pfeil>
             Fahrzeug auswählen und Termin starten
-            <ArrowRight size={17} aria-hidden />
           </ButtonLink>
         }
       />
 
       <Section>
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-14">
-          <div>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+          <div className="lg:col-span-7">
             <SectionHeading title="Was Sie hier finden" />
             <div className="prose-sm24 mt-5">
               <p>
                 {page?.intro
-                  ?? `Für ${formatNumber(makes.length)} Marken mit insgesamt ${formatNumber(modelCount)} `
-                    + 'Modellen haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das '
+                  ?? `Für ${formatNumber(makes.length)} ${nomen(makes.length, 'Marke', 'Marken')} `
+                    + `mit insgesamt ${formatNumber(modelCount)} ${nomen(modelCount, 'Modell', 'Modellen')} `
+                    + 'haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das '
                     + 'Fahrzeug zum Anlernen vor Ort sein muss.'}
               </p>
               <p>
@@ -90,20 +96,23 @@ export default async function MarkenPage() {
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <span className="text-[14px] font-semibold text-foreground">
+              <span className="text-small font-semibold text-foreground">
                 Erklärung der Schlüsselarten
               </span>
               <InfoTip hint={KEY_KIND_HINT} />
             </div>
           </div>
 
-          <ImagePlaceholder
-            slot={{
-              motif: 'Werkstattfoto: Schlüsselrohlinge verschiedener Fahrzeugmarken sortiert im Regal',
-              ratio: '4/3',
-              note: 'Eigene Aufnahme. Keine Herstellerlogos im Bild.',
-            }}
-          />
+          <div className="lg:col-span-5">
+            <ImagePlaceholder
+              slot={{
+                motif: 'Werkstattfoto: Schlüsselrohlinge verschiedener Fahrzeugmarken sortiert im Regal',
+                ratio: '4/3',
+                note: 'Eigene Aufnahme. Keine Herstellerlogos im Bild.',
+                visual: { generator: 'schluessel', params: { typ: 'transponder', anzahl: 3 } },
+              }}
+            />
+          </div>
         </div>
       </Section>
 
@@ -114,35 +123,31 @@ export default async function MarkenPage() {
           lead="Alphabetisch sortiert, mit der Anzahl der hinterlegten Modelle."
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Stückliste: je Marke eine ganze Zeile als Link, ab lg zwei Spalten */}
+        <ul className="mt-8 border-t border-border lg:grid lg:grid-cols-2 lg:gap-x-gutter">
           {sorted.map((make) => {
             const kinds = keyKindsOfMake(make);
             return (
-              <li key={make.id}>
+              <li key={make.id} className="border-b border-border">
                 <Link
                   href={`/autoschluessel/marken/${make.slug}`}
-                  className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                  className="group flex items-start justify-between gap-4 py-6"
                 >
-                  <span className="flex items-start justify-between gap-3">
-                    <span className="text-[17px] font-bold text-foreground group-hover:text-primary">
+                  <span className="min-w-0">
+                    <span className="block text-title-sm font-semibold text-foreground group-hover:text-primary">
                       {make.name}
                     </span>
-                    <ArrowRight
-                      size={16}
-                      aria-hidden
-                      className="mt-1 shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
-                    />
+                    <span className="mt-1 block font-mono text-small tabular-nums text-foreground-muted">
+                      {`${formatNumber(make.models.length)} ${nomen(make.models.length, 'Modell', 'Modelle')} hinterlegt`}
+                    </span>
+                    <span className="mt-3 block">
+                      <KeyKindBadges kinds={kinds} />
+                    </span>
                   </span>
-
-                  <span className="mt-1 block text-[13px] text-foreground-muted">
-                    {make.models.length === 1
-                      ? '1 Modell hinterlegt'
-                      : `${formatNumber(make.models.length)} Modelle hinterlegt`}
-                  </span>
-
-                  <span className="mt-4 block">
-                    <KeyKindBadges kinds={kinds} />
-                  </span>
+                  <GlyphPfeilRechts
+                    size={18}
+                    className="mt-1 shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
+                  />
                 </Link>
               </li>
             );
@@ -156,16 +161,15 @@ export default async function MarkenPage() {
       </Section>
 
       <Section tight>
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
-          <div>
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-7">
             <SectionHeading
               title="Der nächste Schritt"
               lead="Im geführten Ablauf wählen Sie Marke, Modell und Baujahr aus und laden Ihre Fotos hoch."
             />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/autoschluessel/anfrage" size="lg">
+              <ButtonLink href="/autoschluessel/anfrage" size="lg" pfeil>
                 Fahrzeug auswählen
-                <ArrowRight size={17} aria-hidden />
               </ButtonLink>
               <ButtonLink href="/autoschluessel" size="lg" variant="outline">
                 Alle Leistungen ansehen
@@ -173,8 +177,8 @@ export default async function MarkenPage() {
             </div>
           </div>
 
-          <nav aria-label="Weiterführende Seiten">
-            <h2 className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
+          <nav aria-label="Weiterführende Seiten" className="lg:col-span-5">
+            <h2 className="font-mono text-caption uppercase tracking-label text-foreground-muted">
               Passend dazu
             </h2>
             <ul className="mt-4 divide-y divide-border border-y border-border">
@@ -187,13 +191,12 @@ export default async function MarkenPage() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="group flex min-h-[44px] items-center justify-between gap-4 py-3 text-[15px] font-semibold text-foreground hover:text-primary"
+                    className="group flex min-h-touch items-center justify-between gap-4 py-3 text-body font-semibold text-foreground hover:text-primary"
                   >
                     {link.label}
-                    <ArrowRight
+                    <GlyphPfeilRechts
                       size={16}
-                      aria-hidden
-                      className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                      className="shrink-0 text-foreground-subtle transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1"
                     />
                   </Link>
                 </li>

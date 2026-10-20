@@ -1,25 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  ArrowRight,
-  Ban,
-  Blend,
-  Building2,
-  CalendarClock,
-  Clock,
-  CreditCard,
-  DoorClosed,
-  FileText,
-  Hash,
-  Layers,
-  Smartphone,
-  UserCog,
-} from 'lucide-react';
+import type { ComponentType } from 'react';
 
 import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
+import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
@@ -27,6 +13,21 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ZutrittSignalGrafik } from '@/components/visual/generators/zutritt-signal';
+import { GlyphGebaeude } from '@/components/visual/glyphen/gebaeude';
+import { GlyphHaken } from '@/components/visual/glyphen/haken';
+import { GlyphPersonen } from '@/components/visual/glyphen/personen';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GlyphRaute } from '@/components/visual/glyphen/raute';
+import { GlyphUhr } from '@/components/visual/glyphen/uhr';
+import { GlyphVerbot } from '@/components/visual/glyphen/verbot';
+import { IconKombinierteKonzepte } from '@/components/visual/icons/kombinierte-konzepte';
+import { IconNachweis } from '@/components/visual/icons/nachweis';
+import { IconProfilzylinder } from '@/components/visual/icons/profilzylinder';
+import { IconSchutzbeschlag } from '@/components/visual/icons/schutzbeschlag';
+import { IconSmarteFunktionen } from '@/components/visual/icons/smarte-funktionen';
+import { IconTermin } from '@/components/visual/icons/termin';
+import { IconTransponder } from '@/components/visual/icons/transponder';
 
 const ROUTE = 'elektronische-zutrittsloesungen';
 
@@ -42,6 +43,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+/** Fach-Icon oder Glyph eines Bausteins: beide nehmen `size` und `className`. */
+type BausteinIcon = ComponentType<{ size?: number; className?: string }>;
+
 /* Die elf Bausteine einer elektronischen Zutrittslösung — je Baustein wird
    erklärt, was er leistet und wann er sinnvoll ist. */
 interface BuildingBlock {
@@ -49,8 +53,10 @@ interface BuildingBlock {
   title: string;
   body: string;
   points: string[];
-  icon: typeof CreditCard;
-  /** Baustein über die volle Breite, wenn er zusätzlichen Hinweis trägt. */
+  icon: BausteinIcon;
+  /** Fach-Icons 40 px, Glyphen 24 px (KERN K-008a). */
+  iconSize: 24 | 40;
+  /** Baustein über zwei Spalten, wenn er zusätzlichen Hinweis trägt. */
   wide?: boolean;
 }
 
@@ -66,7 +72,8 @@ const BLOCKS: BuildingBlock[] = [
       'Ein Medium kann mehrere Türen öffnen, ohne dass Schlüssel dazukommen',
       'Ausgabe und Entzug erfolgen in der Verwaltung, nicht an der Tür',
     ],
-    icon: CreditCard,
+    icon: IconTransponder,
+    iconSize: 40,
   },
   {
     id: 'smartphone',
@@ -79,7 +86,8 @@ const BLOCKS: BuildingBlock[] = [
       'Setzt voraus, dass alle Beteiligten ein geeignetes Gerät haben und bedienen wollen',
       'Sinnvoll als Ergänzung, selten als einziges Medium',
     ],
-    icon: Smartphone,
+    icon: IconSmarteFunktionen,
+    iconSize: 40,
   },
   {
     id: 'pin',
@@ -92,7 +100,8 @@ const BLOCKS: BuildingBlock[] = [
       'Codes sollten je Person oder Gruppe vergeben und regelmäßig gewechselt werden',
       'Häufig in Kombination mit Karte oder Transponder eingesetzt',
     ],
-    icon: Hash,
+    icon: GlyphRaute,
+    iconSize: 24,
   },
   {
     id: 'digitale-zylinder',
@@ -105,7 +114,8 @@ const BLOCKS: BuildingBlock[] = [
       'Maße der Tür und die vorhandene Beschlagsituation entscheiden über die Auswahl',
       'Batteriebetrieben — der Wechselrhythmus gehört in die Planung',
     ],
-    icon: Layers,
+    icon: IconProfilzylinder,
+    iconSize: 40,
   },
   {
     id: 'beschlaege',
@@ -118,7 +128,8 @@ const BLOCKS: BuildingBlock[] = [
       'Einsatz hängt von Türstärke, Dornmaß und Schlossart ab',
       'Bei Brand- und Fluchttüren gelten besondere Anforderungen an die Ausführung',
     ],
-    icon: DoorClosed,
+    icon: IconSchutzbeschlag,
+    iconSize: 40,
   },
   {
     id: 'zeitlich-begrenzt',
@@ -131,7 +142,8 @@ const BLOCKS: BuildingBlock[] = [
       'Verhindert, dass alte Berechtigungen unbemerkt bestehen bleiben',
       'Der Ablauf wird bei der Einrichtung festgelegt und lässt sich später ändern',
     ],
-    icon: CalendarClock,
+    icon: IconTermin,
+    iconSize: 40,
   },
   {
     id: 'benutzerverwaltung',
@@ -144,7 +156,8 @@ const BLOCKS: BuildingBlock[] = [
       'Änderungen wirken auf alle Mitglieder gleichzeitig',
       'Die Gruppenstruktur sollte vor dem Aufbau der Anlage festgelegt werden',
     ],
-    icon: UserCog,
+    icon: GlyphPersonen,
+    iconSize: 24,
   },
   {
     id: 'zeitprofile',
@@ -157,7 +170,8 @@ const BLOCKS: BuildingBlock[] = [
       'Zeitfenster je Tür und je Gruppe unterschiedlich möglich',
       'Feiertage und Ausnahmen sind je nach System gesondert zu pflegen',
     ],
-    icon: Clock,
+    icon: GlyphUhr,
+    iconSize: 24,
   },
   {
     id: 'sperren',
@@ -170,7 +184,8 @@ const BLOCKS: BuildingBlock[] = [
       'Bei lokal verwalteten Anlagen muss die Sperre an die betroffenen Türen übertragen werden',
       'Bei online verwalteten Anlagen wirkt die Sperre unmittelbar',
     ],
-    icon: Ban,
+    icon: GlyphVerbot,
+    iconSize: 24,
   },
   {
     id: 'protokoll',
@@ -184,7 +199,8 @@ const BLOCKS: BuildingBlock[] = [
       'In vielen Objekten ist die Funktion nicht erforderlich und bleibt abgeschaltet',
       'Ob und wie protokolliert wird, entscheiden Sie als Betreiber',
     ],
-    icon: FileText,
+    icon: IconNachweis,
+    iconSize: 40,
     wide: true,
   },
   {
@@ -198,9 +214,45 @@ const BLOCKS: BuildingBlock[] = [
       'Mechanisch an Innentüren mit festem Nutzerkreis',
       'Beide Teile werden gemeinsam geplant, damit die Schlüsselübersicht stimmig bleibt',
     ],
-    icon: Blend,
+    icon: IconKombinierteKonzepte,
+    iconSize: 40,
   },
 ];
+
+/**
+ * Spalte je Baustein, wie das CSS-Raster sie setzt: Die Zeilen füllen sich von links,
+ * der breite Baustein belegt zwei Spalten. Daraus folgen die senkrechten Haarlinien.
+ */
+function spaltenStart(spalten: number, breiteWide: number): number[] {
+  const starts: number[] = [];
+  let spalte = 0;
+  for (const block of BLOCKS) {
+    const breite = block.wide ? breiteWide : 1;
+    if (spalte + breite > spalten) spalte = 0;
+    starts.push(spalte);
+    spalte = (spalte + breite) % spalten;
+  }
+  return starts;
+}
+
+const SPALTE_AB_SM = spaltenStart(2, 1);
+const SPALTE_AB_LG = spaltenStart(3, 2);
+
+/** Drei Schritte nach dem Konfigurator (Abschnitt 03). */
+const ABLAUF = [
+  {
+    titel: 'Bedarf erfassen.',
+    text: 'Objekt, Umfang, Medien, Verwaltung, Berechtigungen, Standorte, Integration und Service.',
+  },
+  {
+    titel: 'Prüfen.',
+    text: 'Wir schauen uns die Türsituation an und sagen Ihnen, was technisch möglich ist.',
+  },
+  {
+    titel: 'Angebot.',
+    text: 'Sie erhalten eine Aufstellung mit nachvollziehbaren Positionen.',
+  },
+] as const;
 
 const PROTOCOL_HINT = {
   title: 'Protokollierung betrifft personenbezogene Daten',
@@ -353,24 +405,31 @@ export default async function ElektronischeZutrittsloesungenPage() {
         })}
       />
 
+      {/* Großer Moment: Medium, Funk, Leser und Freigabe; die Bewegung steckt im Generator. */}
       <PageHeader
         eyebrow={process.label}
         title={page?.headline ?? 'Elektronische Zutrittslösungen'}
         lead={page?.subline ?? 'Karte, Transponder, PIN, App und digitale Zylinder.'}
         crumbs={[{ href: `/${ROUTE}`, label: 'Elektronische Zutrittslösungen' }]}
+        bereich="elektronische-zutrittsloesungen"
+        visual={
+          <ZutrittSignalGrafik
+            params={{ medium: 'transponder' }}
+            title="Zeichnung: Transponder öffnet eine Tür mit Leser"
+          />
+        }
         actions={
-          <ButtonLink href={`/${ROUTE}/konfigurator`} size="lg">
+          <ButtonLink href={`/${ROUTE}/konfigurator`} size="lg" pfeil>
             Bedarf erfassen
-            <ArrowRight size={18} aria-hidden />
           </ButtonLink>
         }
       />
 
       {/* Einordnung */}
       <Section tight>
-        <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-12">
-          <div>
-            <p className="prose-sm24 max-w-2xl text-base">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+          <div className="lg:col-span-7">
+            <p className="prose-sm24 max-w-2xl text-body">
               {page?.intro
                 ?? 'Elektronische Zutrittslösungen ersetzen den mechanischen Schlüssel oder ergänzen '
                   + 'ihn. Verlorene Medien sperren Sie selbst — ohne die Zylinder zu tauschen.'}
@@ -384,94 +443,110 @@ export default async function ElektronischeZutrittsloesungenPage() {
             </p>
 
             <div className="mt-6 rounded-lg border border-border bg-surface-muted p-4">
-              <p className="text-[13px] font-bold text-foreground">{process.label}</p>
-              <p className="mt-1 text-[13px] leading-relaxed text-foreground-muted">
-                {process.hint}
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                {process.label}
               </p>
+              <p className="mt-1 text-small text-foreground-muted">{process.hint}</p>
             </div>
           </div>
 
-          <ImagePlaceholder
-            slot={{
-              motif:
-                'Werkstattfoto: digitaler Zylinder und Transponder neben dem ausgebauten '
-                + 'mechanischen Zylinder',
-              ratio: '4/3',
-              note: 'Echtes Foto aus der eigenen Werkstatt. Kein Stockfoto, kein Herstellerbild.',
-            }}
-          />
+          <div className="lg:col-span-5">
+            <ImagePlaceholder
+              slot={{
+                motif:
+                  'Werkstattfoto: digitaler Zylinder und Transponder neben dem ausgebauten '
+                  + 'mechanischen Zylinder',
+                ratio: '4/3',
+                note: 'Echtes Foto aus der eigenen Werkstatt. Kein Stockfoto, kein Herstellerbild.',
+                visual: { generator: 'zutritt-signal', params: { medium: 'karte' } },
+              }}
+            />
+          </div>
         </div>
       </Section>
 
       {/* Die elf Bausteine */}
       <Section tone="muted" id="bausteine">
         <SectionHeading
+          nummer="01"
           eyebrow="Bausteine"
           title="Elf Bausteine einer elektronischen Zutrittslösung"
           lead="Jeder Baustein löst eine bestimmte Aufgabe. Erst die Kombination ergibt die Lösung für Ihr Objekt."
+          className="sm24-reveal"
         />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Haarlinien wie im Leistungsportfolio der Türtechnik; mobil eine Spalte */}
+        <ul className="mt-12 grid border-t border-border sm:grid-cols-2 lg:grid-cols-3">
           {BLOCKS.map((block, index) => {
             const Icon = block.icon;
+            const sm = SPALTE_AB_SM[index] > 0;
+            const lg = SPALTE_AB_LG[index] > 0;
             return (
               <li
                 key={block.id}
                 id={block.id}
-                className={block.wide ? 'sm:col-span-2 lg:col-span-3' : undefined}
+                className={cn(
+                  'border-b border-border',
+                  block.wide && 'lg:col-span-2',
+                  block.id === 'kombination' && 'sm:col-span-2 lg:col-span-1',
+                  sm && 'sm:border-l',
+                  sm && !lg && 'lg:border-l-0',
+                  lg && 'lg:border-l',
+                )}
               >
-                <Card className="h-full">
-                  <CardBody className="flex h-full flex-col">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary">
-                        <Icon size={19} aria-hidden />
-                      </span>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-foreground-subtle">
-                        Baustein {index + 1}
-                      </span>
-                      {block.id === 'rfid' && <InfoTip hint={MEDIA_HINT} />}
-                      {block.id === 'sperren' && <InfoTip hint={ADMIN_HINT} />}
-                    </div>
+                <div className="flex h-full flex-col py-6 sm:p-8">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center text-area-strong">
+                      <Icon size={block.iconSize} />
+                    </span>
+                    <span className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                      Baustein {index + 1}
+                    </span>
+                    {block.id === 'rfid' && <InfoTip hint={MEDIA_HINT} />}
+                    {block.id === 'sperren' && <InfoTip hint={ADMIN_HINT} />}
+                  </div>
 
-                    <h3 className="mt-4 text-[15px] font-bold text-foreground">{block.title}</h3>
-                    <p className="mt-2 text-[14px] leading-relaxed text-foreground-muted">
-                      {block.body}
-                    </p>
+                  <h3 className="mt-6 text-title-sm font-semibold text-foreground">{block.title}</h3>
+                  <p className="mt-2 text-small text-foreground-muted">{block.body}</p>
 
-                    <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[13px] leading-relaxed text-foreground-muted">
-                      {block.points.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
+                  <ul className="mt-4 space-y-2 text-small text-foreground-muted">
+                    {block.points.map((point) => (
+                      <li key={point} className="flex gap-2.5">
+                        <GlyphHaken size={16} className="mt-0.5 shrink-0 text-primary" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                    {block.id === 'protokoll' && (
-                      <Alert tone="legal" title={PROTOCOL_HINT.title} className="mt-4">
-                        <p>{PROTOCOL_HINT.body}</p>
-                        <p className="mt-2">
-                          Wie wir mit personenbezogenen Daten umgehen, steht in unserer{' '}
-                          <Link
-                            href="/rechtliches/datenschutz"
-                            className="font-semibold text-primary hover:underline"
-                          >
-                            Datenschutzerklärung
-                          </Link>
-                          .
-                        </p>
-                      </Alert>
-                    )}
-                  </CardBody>
-                </Card>
+                </div>
               </li>
             );
           })}
         </ul>
+
+        {/* Hinweis zu Baustein 10 unter der Liste: In der Zelle machte er sie mehr als
+            doppelt so hoch wie ihre Nachbarin, auf dem Tablet blieb daneben eine Lücke. */}
+        <Alert tone="legal" title={PROTOCOL_HINT.title} className="mt-8 max-w-measure">
+          <p>{PROTOCOL_HINT.body}</p>
+          <p className="mt-2">
+            Wie wir mit personenbezogenen Daten umgehen, steht in unserer{' '}
+            <Link
+              href="/rechtliches/datenschutz"
+              className="font-semibold text-primary hover:underline"
+            >
+              Datenschutzerklärung
+            </Link>
+            .
+          </p>
+        </Alert>
       </Section>
 
       {/* Mechanisch oder elektronisch */}
       <Section id="mechanisch-oder-elektronisch">
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.25fr] lg:items-start lg:gap-12">
-          <div>
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-gutter">
+          <div className="lg:col-span-5">
             <SectionHeading
+              nummer="02"
               eyebrow="Entscheidungshilfe"
               title="Mechanisch oder elektronisch?"
               lead="Die Antwort hängt weniger am Objekt als an einer Frage: Wie oft ändert sich, wer hineindarf?"
@@ -486,9 +561,8 @@ export default async function ElektronischeZutrittsloesungenPage() {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <ButtonLink href="/ratgeber/mechanisch-oder-elektronisch" variant="outline">
+              <ButtonLink href="/ratgeber/mechanisch-oder-elektronisch" variant="outline" pfeil>
                 Zum Ratgeber
-                <ArrowRight size={17} aria-hidden />
               </ButtonLink>
               <ButtonLink href="/schliessanlagen" variant="outline">
                 Mechanische Schließanlagen
@@ -496,20 +570,21 @@ export default async function ElektronischeZutrittsloesungenPage() {
             </div>
           </div>
 
-          <div className="table-scroll">
-            <table className="w-full min-w-[34rem] border-collapse text-left">
+          <div className="lg:col-span-7">
+            {/* Ab md die Tabelle; darunter dieselben Daten als gestapelte Zeilen. */}
+            <table className="hidden w-full border-collapse text-left md:table">
               <caption className="sr-only">
                 Vergleich mechanischer und elektronischer Lösungen nach Situation
               </caption>
               <thead>
                 <tr className="border-b border-border-strong">
-                  <th scope="col" className="py-2.5 pr-4 text-[13px] font-bold text-foreground">
+                  <th scope="col" className="py-2.5 pr-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
                     Situation
                   </th>
-                  <th scope="col" className="py-2.5 pr-4 text-[13px] font-bold text-foreground">
+                  <th scope="col" className="py-2.5 pr-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
                     Mechanisch
                   </th>
-                  <th scope="col" className="py-2.5 text-[13px] font-bold text-foreground">
+                  <th scope="col" className="py-2.5 font-mono text-caption uppercase tracking-label text-foreground-muted">
                     Elektronisch
                   </th>
                 </tr>
@@ -519,101 +594,129 @@ export default async function ElektronischeZutrittsloesungenPage() {
                   <tr key={row.situation} className="border-b border-border align-top">
                     <th
                       scope="row"
-                      className="py-3 pr-4 text-[13px] font-semibold leading-relaxed text-foreground"
+                      className="py-3 pr-4 text-small font-semibold text-foreground"
                     >
                       {row.situation}
                     </th>
-                    <td className="py-3 pr-4 text-[13px] leading-relaxed text-foreground-muted">
+                    <td className="py-3 pr-4 text-small text-foreground-muted">
                       {row.mechanisch}
                     </td>
-                    <td className="py-3 text-[13px] leading-relaxed text-foreground-muted">
+                    <td className="py-3 text-small text-foreground-muted">
                       {row.elektronisch}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+
+            <dl className="border-t border-border md:hidden">
+              {DECISION_ROWS.map((row) => (
+                <div key={row.situation} className="border-b border-border py-5">
+                  <dt className="text-title-sm font-semibold text-foreground">{row.situation}</dt>
+                  <dd className="mt-3 text-small text-foreground-muted">
+                    <span className="block font-mono text-caption uppercase tracking-label text-foreground-muted">
+                      Mechanisch
+                    </span>
+                    {row.mechanisch}
+                  </dd>
+                  <dd className="mt-2 text-small text-foreground-muted">
+                    <span className="block font-mono text-caption uppercase tracking-label text-foreground-muted">
+                      Elektronisch
+                    </span>
+                    {row.elektronisch}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </Section>
 
       {/* Ablauf */}
+      {/* Gegenstück zu 02: Zeichnung links, Schritte als nummerierte Stückliste rechts */}
       <Section tone="muted" tight>
-        <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-12">
-          <div>
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-gutter">
+          <div className="lg:col-span-7 lg:col-start-6 lg:row-start-1">
             <SectionHeading
+              nummer="03"
               eyebrow="So geht es weiter"
               title="Vom Bedarf zum Angebot"
               lead="Der Konfigurator stellt acht Fragen zu Ihrem Objekt. Sie können jederzeit unterbrechen — Ihre Angaben bleiben im Browser gespeichert."
             />
 
-            <ol className="mt-7 space-y-3 text-[14px] leading-relaxed text-foreground-muted">
-              <li>
-                <span className="font-semibold text-foreground">Bedarf erfassen.</span> Objekt,
-                Umfang, Medien, Verwaltung, Berechtigungen, Standorte, Integration und Service.
-              </li>
-              <li>
-                <span className="font-semibold text-foreground">Prüfen.</span> Wir schauen uns die
-                Türsituation an und sagen Ihnen, was technisch möglich ist.
-              </li>
-              <li>
-                <span className="font-semibold text-foreground">Angebot.</span> Sie erhalten eine
-                Aufstellung mit nachvollziehbaren Positionen.
-              </li>
+            <ol className="mt-7 border-t border-border text-small text-foreground-muted">
+              {ABLAUF.map((schritt, index) => (
+                <li key={schritt.titel} className="flex gap-4 border-b border-border py-4">
+                  <span className="w-6 shrink-0 font-mono text-caption leading-6 tabular-nums text-foreground-muted">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span>
+                    <span className="font-semibold text-foreground">{schritt.titel}</span>{' '}
+                    {schritt.text}
+                  </span>
+                </li>
+              ))}
             </ol>
 
             <div className="mt-7">
-              <ButtonLink href={`/${ROUTE}/konfigurator`} size="lg">
+              <ButtonLink href={`/${ROUTE}/konfigurator`} size="lg" pfeil>
                 Bedarf erfassen
-                <ArrowRight size={18} aria-hidden />
               </ButtonLink>
             </div>
           </div>
 
-          <ImagePlaceholder
-            slot={{
-              motif:
-                'Schemazeichnung: Türenübersicht eines Objekts mit Kennzeichnung elektronisch und '
-                + 'mechanisch ausgestatteter Türen',
-              ratio: '3/2',
-              note: 'Technische Zeichnung, keine Fotomontage.',
-            }}
-          />
+          <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
+            <ImagePlaceholder
+              slot={{
+                motif:
+                  'Schemazeichnung: Türenübersicht eines Objekts mit Kennzeichnung elektronisch und '
+                  + 'mechanisch ausgestatteter Türen',
+                ratio: '3/2',
+                note: 'Technische Zeichnung, keine Fotomontage.',
+                visual: { generator: 'zutritt-signal', params: { medium: 'smartphone' } },
+              }}
+            />
+          </div>
         </div>
       </Section>
 
       {/* Fragen */}
       <Section>
         <SectionHeading
+          nummer="04"
           eyebrow="Häufige Fragen"
           title="Was Kundinnen und Kunden vorab wissen wollen"
         />
         <Accordion items={faq} className="mt-8" />
       </Section>
 
-      {/* Interne Verlinkung */}
+      {/* Interne Verlinkung: Haarlinienliste, die ganze Zeile ist der Link */}
       <Section tone="muted" tight>
-        <SectionHeading eyebrow="Weiterlesen" title="Passende Bereiche" />
+        <SectionHeading nummer="05" eyebrow="Weiterlesen" title="Passende Bereiche" />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {RELATED_LINKS.map((link) => (
-            <li key={link.href}>
+        <ul className="mt-8 border-t border-border">
+          {RELATED_LINKS.map((link, index) => (
+            <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
-                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+                className="group flex items-center gap-4 py-5 transition-colors duration-quick sm:gap-6 sm:py-6"
               >
-                <span className="text-[15px] font-bold text-foreground group-hover:text-primary">
-                  {link.label}
+                <span className="hidden w-8 shrink-0 font-mono text-caption tabular-nums text-foreground-muted sm:block">
+                  {String(index + 1).padStart(2, '0')}
                 </span>
-                <span className="mt-1.5 flex-1 text-[13px] leading-relaxed text-foreground-muted">
-                  {link.description}
+                <span className="min-w-0 flex-1">
+                  <span className="block text-title-sm font-semibold text-foreground group-hover:text-primary">
+                    {link.label}
+                  </span>
+                  <span className="mt-1 block text-small text-foreground-muted">
+                    {link.description}
+                  </span>
                 </span>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
+                <span className="flex shrink-0 items-center gap-1.5 text-small font-semibold text-primary">
                   Ansehen
-                  <ArrowRight
-                    size={14}
-                    aria-hidden
-                    className="transition-transform group-hover:translate-x-0.5"
+                  <GlyphPfeilRechts
+                    size={16}
+                    className="transition-transform duration-quick group-hover:translate-x-1"
                   />
                 </span>
               </Link>
@@ -621,16 +724,18 @@ export default async function ElektronischeZutrittsloesungenPage() {
           ))}
         </ul>
 
-        <p className="mt-6 text-[13px] leading-relaxed text-foreground-muted">
-          <Building2 size={14} className="mr-1.5 inline align-[-2px]" aria-hidden />
-          Sie sind unsicher, ob Ihr Vorhaben hierher gehört?{' '}
-          <Link
-            href="/service-und-termin/anfrage"
-            className="font-semibold text-primary hover:underline"
-          >
-            Allgemeine Anfrage stellen
-          </Link>{' '}
-          — wir ordnen es für Sie ein.
+        <p className="mt-6 flex gap-2 text-small text-foreground-muted">
+          <GlyphGebaeude size={16} className="mt-0.5 shrink-0" />
+          <span>
+            Sie sind unsicher, ob Ihr Vorhaben hierher gehört?{' '}
+            <Link
+              href="/service-und-termin/anfrage"
+              className="font-semibold text-primary hover:underline"
+            >
+              Allgemeine Anfrage stellen
+            </Link>{' '}
+            — wir ordnen es für Sie ein.
+          </span>
         </p>
       </Section>
     </>

@@ -302,3 +302,21 @@ export const PROCESS_LABELS: Record<ProcessKind, { label: string; hint: string }
 export function areaByKey(key: AreaKey): NavArea | undefined {
   return NAV_AREAS.find((a) => a.key === key);
 }
+
+/**
+ * Ob `pathname` zu `href` gehört: gleicher Pfad oder ein Unterpfad davon
+ * (`/autoschluessel/marken/vw` gehört zu `/autoschluessel`, `/autoschluesselx` nicht).
+ */
+export function istAktiv(pathname: string, href: string): boolean {
+  const pfad = pathname.split(/[?#]/)[0].replace(/\/+$/, '') || '/';
+  const ziel = href.replace(/\/+$/, '') || '/';
+  if (ziel === '/') return pfad === '/';
+  return pfad === ziel || pfad.startsWith(`${ziel}/`);
+}
+
+/** Der Eintrag, zu dem `pathname` am genauesten passt (längster Treffer), sonst `undefined`. */
+export function aktiverEintrag(pathname: string, hrefs: readonly string[]): string | undefined {
+  return hrefs
+    .filter((href) => istAktiv(pathname, href))
+    .sort((a, b) => b.length - a.length)[0];
+}

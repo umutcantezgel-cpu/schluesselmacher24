@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
+import { scrollVerhalten } from '@/lib/bewegung';
 import { submitRecord, type SubmitResult } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import type { ImageSlot, InfoHint, SummarySection } from '@/lib/types';
@@ -18,6 +18,8 @@ import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { SummaryList } from '@/components/layout/summary-list';
+import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
+import { CheckDraw } from '@/components/visual/motion/check-draw';
 
 const FLOW_ID = 'schluessel-nach-vorlage-anfrage';
 const MAX_STUECK = 20;
@@ -370,7 +372,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       if (antwort.ok) {
         setResult(antwort);
         clearFlow(FLOW_ID);
-        if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: scrollVerhalten() });
       } else {
         setFehler(antwort.error ?? 'Die Anfrage konnte nicht gespeichert werden.');
       }
@@ -386,28 +388,28 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
   if (result?.ok) {
     return (
       <div className="max-w-3xl">
-        <Badge tone="success" className="mb-4">
-          <CheckCircle2 size={14} aria-hidden />
-          Anfrage eingegangen
-        </Badge>
+        <div className="flex items-center gap-4">
+          <CheckDraw title="Anfrage eingegangen" size={56} />
+          <Badge tone="success">Anfrage eingegangen</Badge>
+        </div>
 
-        <h2 className="text-2xl font-bold text-foreground md:text-3xl">
+        <h2 className="mt-5 text-headline text-foreground">
           Ihre Anfrage liegt uns vor
         </h2>
-        <p className="mt-3 text-[15px] leading-relaxed text-foreground-muted">
+        <p className="mt-3 text-body leading-relaxed text-foreground-muted">
           Wir prüfen Ihre Fotos und melden uns mit dem Ergebnis: ob eine Anfertigung möglich ist
           und was sie kostet. Ein Vertrag ist damit noch nicht geschlossen.
         </p>
 
         <Card className="mt-6">
           <CardBody>
-            <p className="text-[13px] font-semibold uppercase tracking-wider text-foreground-subtle">
+            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
               Ihre Vorgangsnummer
             </p>
-            <p className="mt-1.5 font-mono text-xl font-bold text-foreground md:text-2xl">
+            <p className="mt-1.5 break-words font-mono text-headline tabular-nums text-foreground">
               {result.reference}
             </p>
-            <p className="mt-3 text-[14px] leading-relaxed text-foreground-muted">
+            <p className="mt-3 text-small leading-relaxed text-foreground-muted">
               Bitte notieren Sie diese Nummer. Sie brauchen sie für jede Rückfrage und für den
               Abruf des Bearbeitungsstands.
             </p>
@@ -424,8 +426,8 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
           </div>
         )}
 
-        <h3 className="mt-8 text-[17px] font-bold text-foreground">Wie es weitergeht</h3>
-        <ol className="mt-4 space-y-4 border-l border-border pl-6">
+        <h3 className="mt-8 text-title-sm font-semibold text-foreground">Wie es weitergeht</h3>
+        <ol className="mt-4 border-t border-border">
           {[
             {
               title: 'Wir prüfen Ihre Fotos',
@@ -448,41 +450,39 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
                 + 'Adresse und Vorgangsnummer. Senden Sie bitte nichts unaufgefordert ein.',
             },
           ].map((step, index) => (
-            <li key={step.title} className="relative">
-              <span
-                aria-hidden
-                className="absolute -left-[37px] flex h-6 w-6 items-center justify-center rounded-full border border-border bg-surface font-display text-[11px] font-bold text-primary"
-              >
+            <li key={step.title} className="flex items-baseline gap-4 border-b border-border py-4">
+              <span aria-hidden className="w-6 shrink-0 font-mono text-small font-semibold tabular-nums text-primary">
                 {index + 1}
               </span>
-              <p className="text-[15px] font-bold text-foreground">{step.title}</p>
-              <p className="mt-1 text-[14px] leading-relaxed text-foreground-muted">{step.body}</p>
+              <div className="min-w-0">
+                <p className="text-body font-semibold text-foreground">{step.title}</p>
+                <p className="mt-1 text-small leading-relaxed text-foreground-muted">{step.body}</p>
+              </div>
             </li>
           ))}
         </ol>
 
-        <h3 className="mt-8 text-[17px] font-bold text-foreground">Ihre Angaben</h3>
-        <SummaryList sections={summary} className="mt-4" />
+        <h3 className="mt-8 text-title-sm font-semibold text-foreground">Ihre Angaben</h3>
+        <SummaryList sections={summary} variante="schriftfeld" className="mt-4" />
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/service-und-termin/terminstatus">
+          <ButtonLink href="/service-und-termin/terminstatus" pfeil className="w-full justify-between sm:w-auto">
             Bearbeitungsstand abrufen
-            <ArrowRight size={17} aria-hidden />
           </ButtonLink>
           <ButtonLink href="/schluessel-nach-vorlage" variant="outline">
             Zurück zur Übersicht
           </ButtonLink>
         </div>
 
-        <p className="mt-8 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-6 text-[14px]">
+        <p className="mt-8 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-6 text-small">
           <span className="font-semibold text-foreground-muted">Ebenfalls passend:</span>
-          <Link href="/schluessel-nach-code" className="font-semibold text-primary hover:underline">
+          <Link href="/schluessel-nach-code" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
             Schlüssel nach Code
           </Link>
-          <Link href="/autoschluessel/kopieren" className="font-semibold text-primary hover:underline">
+          <Link href="/autoschluessel/kopieren" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
             Autoschlüssel kopieren
           </Link>
-          <Link href="/autoschluessel/programmieren" className="font-semibold text-primary hover:underline">
+          <Link href="/autoschluessel/programmieren" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
             Programmieren und anlernen
           </Link>
         </p>
@@ -511,7 +511,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       blockedHint={blockedHints[flow.step?.id ?? '']}
     >
       {fehler && (
-        <Alert tone="warning" title="Absenden nicht möglich" className="mb-6">
+        <Alert tone="warning" title="Absenden nicht möglich" className="mb-6" role="alert">
           {fehler}
         </Alert>
       )}
@@ -556,7 +556,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       )}
 
       {flow.step?.id === 'hersteller' && (
-        <div className="max-w-2xl space-y-5">
+        <div className="max-w-3xl space-y-5">
           <Field
             label="Hersteller oder Marke"
             hint="Zum Beispiel der Schriftzug auf dem Schlüsselkopf. Groß- und Kleinschreibung spielt keine Rolle."
@@ -592,7 +592,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       )}
 
       {flow.step?.id === 'nummern' && (
-        <div className="max-w-2xl space-y-5">
+        <div className="max-w-3xl space-y-5">
           <Alert tone="info" title="Bitte zusätzlich fotografieren">
             Übertragen Sie die Zeichen hier als Text <strong>und</strong> fotografieren Sie sie
             deutlich. Bei kleinen Prägungen hilft eine Nahaufnahme, auf der jede Ziffer einzeln
@@ -649,10 +649,10 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       )}
 
       {flow.step?.id === 'stueckzahl' && (
-        <div className="max-w-2xl space-y-6">
+        <div className="max-w-3xl space-y-6">
           <div>
             <div className="flex items-center gap-2">
-              <p className="text-sm font-semibold text-foreground">Gewünschte Stückzahl</p>
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Gewünschte Stückzahl</p>
               <InfoTip hint={HINT_STUECKZAHL} />
             </div>
             <div className="mt-2">
@@ -664,31 +664,33 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
                 onChange={(value) => flow.set('stueckzahl', value)}
               />
             </div>
-            <p className="mt-2 text-[13px] leading-snug text-foreground-subtle">
+            <p className="mt-2 text-small leading-snug text-foreground-subtle">
               Größere Stückzahlen tragen Sie bitte unten als Anmerkung ein. Die Angabe ist
               unverbindlich und lässt sich nach unserer Rückmeldung noch ändern.
             </p>
           </div>
 
-          <Field
-            label="Anmerkung (freiwillig)"
-            hint="Zum Beispiel, wofür der Schlüssel gebraucht wird oder ob das Schloss schwergängig ist."
-          >
-            {({ id, describedBy }) => (
-              <TextArea
-                id={id}
-                aria-describedby={describedBy}
-                rows={4}
-                value={flow.data.anmerkung}
-                onChange={(e) => flow.set('anmerkung', e.target.value)}
-              />
-            )}
-          </Field>
+          <div className="border-t border-border pt-6">
+            <Field
+              label="Anmerkung (freiwillig)"
+              hint="Zum Beispiel, wofür der Schlüssel gebraucht wird oder ob das Schloss schwergängig ist."
+            >
+              {({ id, describedBy }) => (
+                <TextArea
+                  id={id}
+                  aria-describedby={describedBy}
+                  rows={4}
+                  value={flow.data.anmerkung}
+                  onChange={(e) => flow.set('anmerkung', e.target.value)}
+                />
+              )}
+            </Field>
+          </div>
         </div>
       )}
 
       {flow.step?.id === 'kontakt' && (
-        <div className="max-w-2xl space-y-5">
+        <div className="max-w-3xl space-y-5">
           <div className="grid gap-5 sm:grid-cols-2">
             <Field label="Anrede (freiwillig)">
               {({ id, describedBy }) => (
@@ -818,12 +820,12 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
 
           <div className="border-t border-border pt-5">
             <div className="flex items-center gap-2">
-              <p className="text-sm font-semibold text-foreground">Anschrift (freiwillig)</p>
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Anschrift (freiwillig)</p>
               <InfoTip hint={HINT_ANSCHRIFT} />
             </div>
 
-            <div className="mt-3 grid gap-5 sm:grid-cols-[2fr_1fr]">
-              <Field label="Straße und Hausnummer">
+            <div className="mt-3 grid gap-5 sm:grid-cols-12">
+              <Field label="Straße und Hausnummer" className="sm:col-span-8">
                 {({ id, describedBy }) => (
                   <TextInput
                     id={id}
@@ -835,7 +837,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
                 )}
               </Field>
 
-              <Field label="Postleitzahl">
+              <Field label="Postleitzahl" className="sm:col-span-4">
                 {({ id, describedBy }) => (
                   <TextInput
                     id={id}
@@ -848,7 +850,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
                 )}
               </Field>
 
-              <Field label="Ort" className="sm:col-span-2">
+              <Field label="Ort" className="sm:col-span-12">
                 {({ id, describedBy }) => (
                   <TextInput
                     id={id}
@@ -862,7 +864,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             </div>
           </div>
 
-          <p className="text-[13px] leading-relaxed text-foreground-subtle">
+          <p className="text-small leading-relaxed text-foreground-subtle">
             Wir verwenden Ihre Angaben ausschließlich zur Bearbeitung dieser Anfrage. Die Fotos
             werden nach {photoRetentionDays} Tagen gelöscht. Einzelheiten stehen in der{' '}
             <Link href="/rechtliches/datenschutz" className="font-semibold text-primary hover:underline">
@@ -881,7 +883,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             erteilen. Ihren Originalschlüssel senden Sie zunächst nicht ein.
           </Alert>
 
-          <SummaryList sections={summary} />
+          <SummaryList sections={summary} variante="schriftfeld" />
 
           {(fotoVorderseite.length === 0
             || fotoRueckseite.length === 0
@@ -898,7 +900,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             </Alert>
           )}
 
-          <p className="text-[13px] leading-relaxed text-foreground-subtle">
+          <p className="text-small leading-relaxed text-foreground-subtle">
             Sie können jeden Schritt über die Fortschrittsanzeige erneut aufrufen und Angaben
             ändern, solange Sie nicht abgesendet haben.
           </p>
@@ -930,33 +932,35 @@ function FotoSchritt({
   retentionDays: number;
 }) {
   return (
-    <div className="max-w-2xl space-y-5">
+    <div className="max-w-3xl space-y-5">
       <div className="flex items-center gap-2">
-        <p className="text-sm font-semibold text-foreground">Worauf es bei der Aufnahme ankommt</p>
+        <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Worauf es bei der Aufnahme ankommt</p>
         <InfoTip hint={hint} />
       </div>
 
       <ul className="space-y-2">
         {AUFNAHME_HINWEISE.map((tipp) => (
           <li key={tipp} className="flex gap-2.5">
-            <CheckCircle2 size={15} aria-hidden className="mt-0.5 shrink-0 text-primary" />
-            <span className="text-[14px] leading-relaxed text-foreground-muted">{tipp}</span>
+            <GlyphHakenKreis size={15} className="mt-0.5 shrink-0 text-primary" />
+            <span className="text-small leading-relaxed text-foreground-muted">{tipp}</span>
           </li>
         ))}
       </ul>
 
-      <PhotoUpload
-        category="schluesselfoto"
-        id={id}
-        label={label}
-        description={description}
-        example={example}
-        files={files}
-        onChange={onChange}
-        required
-      />
+      <div className="border-t border-border pt-5">
+        <PhotoUpload
+          category="schluesselfoto"
+          id={id}
+          label={label}
+          description={description}
+          example={example}
+          files={files}
+          onChange={onChange}
+          required
+        />
+      </div>
 
-      <p className="text-[13px] leading-relaxed text-foreground-subtle">
+      <p className="text-small leading-relaxed text-foreground-subtle">
         Fotos werden nicht im Browser zwischengespeichert. Nach einem Neuladen der Seite wählen
         Sie sie bitte erneut aus. Nach dem Absenden werden sie nach {retentionDays} Tagen
         gelöscht.

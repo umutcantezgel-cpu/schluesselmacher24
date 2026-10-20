@@ -35,7 +35,6 @@
     "@payloadcms/ui": "^3.90.2",
     "framer-motion": "^12.40.0",
     "graphql": "^16.14.2",
-    "lucide-react": "^1.17.0",
     "next": "^16.3.5",
     "payload": "^3.90.2",
     "react": "19.2.4",

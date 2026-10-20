@@ -1,11 +1,12 @@
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 import { getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
-import { Section } from '@/components/layout/section';
+import { Section, SectionHeading } from '@/components/layout/section';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 import { Konfigurator } from './konfigurator';
 
@@ -42,6 +43,7 @@ export default async function CylinderConfiguratorPage() {
   return (
     <>
       <PageHeader
+        art="arbeit"
         eyebrow={PROCESS_LABELS.direktkauf.label}
         title={page?.headline ?? 'Gleichschließende Zylinder zusammenstellen'}
         lead={
@@ -60,22 +62,26 @@ export default async function CylinderConfiguratorPage() {
       </Section>
 
       {/* Zusatzabstand, damit die feste Ablauf-Navigation nichts verdeckt. */}
-      <Section tone="muted" tight className="pb-28 md:pb-14">
-        <h2 className="text-lg font-bold text-foreground">Wenn Sie vorher etwas nachlesen möchten</h2>
-        <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <Section id="weiterfuehrend" tone="muted" tight className="pb-28 md:pb-14">
+        <SectionHeading
+          nummer="01"
+          eyebrow="Weiterführend"
+          title="Wenn Sie vorher etwas nachlesen möchten"
+          className="[&_h2]:text-title [&_h2]:tracking-normal"
+        />
+        <ul className="mt-8 border-t border-border">
           {RELATED_LINKS.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
-                className="group flex h-full items-center justify-between gap-3 rounded-lg border border-border bg-surface px-5 py-4 transition-colors hover:border-primary"
+                className="group flex min-h-touch-lg items-center justify-between gap-4 py-5 transition-colors duration-quick hover:text-primary"
               >
-                <span className="text-[14px] font-semibold text-foreground group-hover:text-primary">
+                <span className="text-title-sm font-semibold text-foreground group-hover:text-primary">
                   {link.label}
                 </span>
-                <ArrowRight
-                  size={15}
-                  aria-hidden
-                  className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                <GlyphPfeilRechts
+                  size={18}
+                  className="shrink-0 text-foreground-muted transition duration-quick ease-standard motion-reduce:transition-none group-hover:text-primary group-focus-visible:text-primary zeiger:group-hover:translate-x-1"
                 />
               </Link>
             </li>

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight, Truck } from 'lucide-react';
 
 import {
   artikelPfad,
@@ -16,17 +15,34 @@ import { PROCESS_LABELS } from '@/lib/navigation';
 import type { ImageSlot } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { monoTeile } from '@/components/layout/summary-list';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { IconLieferung } from '@/components/visual/icons/lieferung';
+import { IconRueckgabe } from '@/components/visual/icons/rueckgabe';
+import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
+import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
 
 import { ArtikelKauf } from './artikel-kauf';
 
 interface ArtikelSeiteProps {
   /** In Next.js 16 sind Routenparameter ein Promise. */
   params: Promise<{ slug: string }>;
+}
+
+/** Fach-Icon je Ziel der Weiterlesen-Liste; ohne eigenes Motiv der Warenkorb. */
+function WeiterIcon({ href }: { href: string }) {
+  switch (href) {
+    case '/rechtliches/versand-und-zahlung':
+      return <IconVersandPaket size={32} />;
+    case '/rechtliches/widerruf':
+      return <IconRueckgabe size={32} />;
+    default:
+      return <IconWarenkorb size={32} />;
+  }
 }
 
 /** Nach dem Build veröffentlichte Artikel werden beim ersten Aufruf erzeugt. */
@@ -94,7 +110,7 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
   }));
 
   const baseLinks = [
-    { href: '/artikel', label: 'Alle Artikel ansehen' },
+    { href: '/artikel', label: 'Alle Artikel' },
     { href: '/warenkorb', label: 'Zum Warenkorb' },
     { href: '/rechtliches/versand-und-zahlung', label: 'Zahlung und Versand' },
     { href: '/rechtliches/widerruf', label: 'Widerruf und Rückgabe' },
@@ -105,6 +121,16 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
       (link) => link.href !== pfad && !baseLinks.some((b) => b.href === link.href),
     ),
   ];
+
+  // Laufende Nummern der Abschnitte; fehlt ein Abschnitt, rücken die folgenden nach.
+  const reihe = [
+    'beschreibung',
+    ...(eigenschaften.length > 0 ? ['eigenschaften'] : []),
+    ...(article.scope.trim() ? ['lieferumfang'] : []),
+    'versand',
+    'weiter',
+  ];
+  const nr = (abschnitt: string) => String(reihe.indexOf(abschnitt) + 1).padStart(2, '0');
 
   return (
     <>
@@ -149,9 +175,9 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
       <Section tight>
         {/* Am Smartphone: Bild, Bestellung, Angaben. Ab Desktop steht die
             Bestellung rechts neben Bild und Angaben. */}
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-x-12">
-          <div className="min-w-0 lg:col-start-1">
-            <ImagePlaceholder slot={article.image} sizes="(min-width: 1024px) 50vw, 100vw" />
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-gutter">
+          <div className="min-w-0 lg:col-span-7 lg:col-start-1 lg:row-start-1">
+            <ImagePlaceholder slot={article.image} sizes="(min-width: 1024px) 58vw, 100vw" />
             {galerie.length > 0 && (
               <ul className="mt-3 grid grid-cols-3 gap-3 sm:grid-cols-4" aria-label="Weitere Bilder">
                 {galerie.map((slot, index) => (
@@ -163,7 +189,7 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
             )}
           </div>
 
-          <div className="lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
+          <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:self-start">
             <ArtikelKauf
               article={{
                 id: article.id,
@@ -177,66 +203,64 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
             />
           </div>
 
-          <div className="min-w-0 lg:col-start-1">
-            <h2 className="text-xl font-bold text-foreground md:text-2xl">Beschreibung</h2>
-            <p className="prose-sm24 mt-3">{article.description}</p>
+          <div className="min-w-0 lg:col-span-7 lg:col-start-1 lg:row-start-2">
+            <div className="border-t border-border pt-8">
+              <SectionHeading nummer={nr('beschreibung')} eyebrow="Artikel" title="Beschreibung" />
+            </div>
+            <p className="prose-sm24 mt-4">{article.description}</p>
 
             {eigenschaften.length > 0 && (
-              <div className="mt-8">
-                <h2 className="text-xl font-bold text-foreground md:text-2xl">Eigenschaften</h2>
-                <Card className="mt-4 overflow-hidden">
-                  <table className="w-full border-collapse text-left">
-                    <caption className="sr-only">Eigenschaften von {article.name}</caption>
-                    <tbody className="divide-y divide-border">
-                      {eigenschaften.map((eintrag, index) => (
-                        <tr key={`${index}-${eintrag.name}`}>
-                          <th
-                            scope="row"
-                            className="w-2/5 px-4 py-3 align-top text-[13px] font-semibold text-foreground-muted"
-                          >
-                            {eintrag.name}
-                          </th>
-                          <td className="px-4 py-3 align-top text-[15px] text-foreground">
-                            {eintrag.value}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </Card>
+              <div className="mt-12 border-t border-border pt-8">
+                <SectionHeading nummer={nr('eigenschaften')} eyebrow="Angaben" title="Eigenschaften" />
+                {/* Schriftfeld statt Tabelle: untereinander auch am Smartphone */}
+                <dl aria-label={`Eigenschaften von ${article.name}`} className="mt-6">
+                  {eigenschaften.map((eintrag, index) => (
+                    <div
+                      key={`${index}-${eintrag.name}`}
+                      className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4"
+                    >
+                      <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng sm:col-span-4">
+                        {eintrag.name}
+                      </dt>
+                      <dd className="text-body text-foreground sm:col-span-8">
+                        <EigenschaftWert wert={eintrag.value} />
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             )}
 
             {article.scope.trim() && (
-              <div className="mt-8">
-                <h2 className="text-xl font-bold text-foreground md:text-2xl">Lieferumfang</h2>
-                <p className="prose-sm24 mt-3">{article.scope}</p>
+              <div className="mt-12 border-t border-border pt-8">
+                <SectionHeading nummer={nr('lieferumfang')} eyebrow="Umfang" title="Lieferumfang" />
+                <p className="prose-sm24 mt-4">{article.scope}</p>
               </div>
             )}
 
-            <div className="mt-8">
-              <h2 className="text-xl font-bold text-foreground md:text-2xl">Versand</h2>
-              <p className="prose-sm24 mt-3">
+            <div className="mt-12 border-t border-border pt-8">
+              <SectionHeading nummer={nr('versand')} eyebrow="Lieferung" title="Versand" />
+              <p className="prose-sm24 mt-4">
                 Die Versandart wählen Sie im Warenkorb.
                 {versandarten.length > 0 && ' Für diesen Artikel kommen folgende Versandarten in Frage:'}
               </p>
               {versandarten.length > 0 && (
-                <ul className="mt-4 grid gap-2">
+                /* Stückliste mit Haarlinien: Name und Betrag je Versandart, Betrag in Mono */
+                <ul className="mt-4 border-t border-border">
                   {versandarten.map((option) => (
-                    <li
-                      key={option.id}
-                      className="flex items-start gap-3 rounded-lg border border-border bg-surface p-4"
-                    >
-                      <Truck size={18} aria-hidden className="mt-0.5 shrink-0 text-primary" />
+                    <li key={option.id} className="flex items-start gap-4 border-b border-border py-4">
+                      <span className="shrink-0 text-primary">
+                        <IconLieferung size={24} />
+                      </span>
                       <span className="min-w-0 flex-1">
                         <span className="flex flex-wrap items-baseline justify-between gap-x-3">
-                          <span className="text-[15px] font-semibold text-foreground">{option.label}</span>
-                          <span className="text-[14px] text-foreground-muted">
+                          <span className="text-body font-semibold text-foreground">{option.label}</span>
+                          <span className="font-mono text-body tabular-nums text-foreground">
                             {formatCents(option.priceCents)}
                           </span>
                         </span>
                         {option.description && (
-                          <span className="mt-1 block text-[13px] leading-relaxed text-foreground-muted">
+                          <span className="mt-1 block max-w-measure text-small text-foreground-muted">
                             {option.description}
                           </span>
                         )}
@@ -261,27 +285,55 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
         </div>
       </Section>
 
-      <Section tone="muted" tight>
-        <SectionHeading eyebrow="Weiter im Shop" title="Passende Seiten zu diesem Artikel" />
+      <Section tone="muted" tight labelledBy="weiter-titel">
+        <SectionHeading
+          id="weiter-titel"
+          nummer={nr('weiter')}
+          eyebrow="Weiter im Shop"
+          title="Passende Seiten zu diesem Artikel"
+        />
 
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Stückliste mit Fach-Icons: die ganze Zeile ist der Link */}
+        <ol className="mt-8 border-t border-border">
           {links.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
-                className="group flex h-full min-h-[44px] items-center justify-between gap-3 rounded-lg border border-border bg-surface px-5 py-4 text-[15px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                className="group flex min-h-touch items-center gap-4 py-5 transition-colors duration-quick ease-standard sm:gap-6"
               >
-                {link.label}
-                <ArrowRight
-                  size={16}
-                  aria-hidden
-                  className="shrink-0 text-foreground-subtle transition-transform group-hover:translate-x-0.5"
+                <span className="shrink-0 text-primary">
+                  <WeiterIcon href={link.href} />
+                </span>
+                <span className="min-w-0 flex-1 text-title-sm font-semibold text-foreground group-hover:text-primary">
+                  {link.label}
+                </span>
+                <GlyphPfeilRechts
+                  size={18}
+                  className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary"
                 />
               </Link>
             </li>
           ))}
-        </ul>
+        </ol>
       </Section>
+    </>
+  );
+}
+
+/** Wert einer Eigenschaft: reine Zahlen ganz in Mono, sonst Zahlen mit Einheit in Mono und Text in der Grundschrift (K-006). */
+function EigenschaftWert({ wert }: { wert: string }) {
+  if (/^[\d.,\s×x/–-]+$/.test(wert)) return <span className="font-mono tabular-nums">{wert}</span>;
+  return (
+    <>
+      {monoTeile(wert).map((teil, index) =>
+        teil.mono ? (
+          <span key={index} className="whitespace-nowrap font-mono tabular-nums">
+            {teil.text}
+          </span>
+        ) : (
+          teil.text
+        ),
+      )}
     </>
   );
 }

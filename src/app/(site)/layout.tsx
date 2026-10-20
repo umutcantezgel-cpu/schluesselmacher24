@@ -59,6 +59,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
+  // Viewport-Metadaten verlangen einen Farbwert; er entspricht `--background` (globals.css).
   themeColor: '#f7f9fb',
 };
 
@@ -72,14 +73,14 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       <body className="flex min-h-full flex-col">
         <a
           href="#inhalt"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:rounded-md focus:bg-primary focus:px-4 focus:py-3 focus:text-small focus:font-semibold focus:text-primary-foreground"
         >
           Zum Inhalt springen
         </a>
 
         <SiteHeader />
 
-        <main id="inhalt" className="flex-1 pt-16 pb-safe-nav md:pt-20">
+        <main id="inhalt" className="flex-1 pt-header">
           {children}
         </main>
 

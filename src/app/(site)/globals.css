@@ -2,6 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Ersatz für die Webschriften, solange sie laden (E7-L-43). next/font legt je Schrift einen
+ * angepassten Ersatz an, der nur auf `local(Arial)` zeigt und keinen fetten Schnitt kennt. Auf
+ * Linux und Android gibt es kein Arial: Der Browser nahm eine unangepasste Systemschrift, und beim
+ * Tausch rückte etwa die „24“ der Wortmarke um 10 px (159 → 149 px; in E0 genauso, 169 → 158 px).
+ * Hier dieselben Maße wie bei next/font mit den maßgleichen Schriften Liberation Sans, Arimo und
+ * Roboto (mittlere Zeichenbreite 913 bzw. 911 gegen Arial 913 je 2048), dazu ein echter fetter
+ * Schnitt: Liberation Sans fett ist ohne Ausgleich 2–2,5 % breiter als Plex Sans fett
+ * (Überschriften gemessen), daher 97,7 %; die Wortmarke in engen Großbuchstaben braucht 92,55 %
+ * (149,1 gegen 161,1 px). Vertikale Maße wie Plex Sans (Oberlänge 1,025, Unterlänge 0,275 em,
+ * geteilt durch den Ausgleich). Inter bleibt beim Ersatz von next/font. Mono: Liberation Mono,
+ * Cousine und Courier New haben denselben Vorschub von 0,6 em wie IBM Plex Mono.
+ */
+@font-face {
+  font-family: 'SM24 Ersatz Plex Sans';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans'), local('Arimo'), local('Roboto');
+  font-weight: 400 500;
+  ascent-override: 101.32%;
+  descent-override: 27.18%;
+  line-gap-override: 0%;
+  size-adjust: 101.17%;
+}
+
+@font-face {
+  font-family: 'SM24 Ersatz Plex Sans';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Arimo Bold'), local('Arimo-Bold'), local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 600 700;
+  ascent-override: 104.91%;
+  descent-override: 28.15%;
+  line-gap-override: 0%;
+  size-adjust: 97.7%;
+}
+
+@font-face {
+  font-family: 'SM24 Ersatz Wortmarke';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Arimo Bold'), local('Arimo-Bold'), local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 700;
+  ascent-override: 110.75%;
+  descent-override: 29.71%;
+  line-gap-override: 0%;
+  size-adjust: 92.55%;
+}
+
+@font-face {
+  font-family: 'SM24 Ersatz Plex Mono';
+  src: local('Liberation Mono'), local('LiberationMono'), local('Cousine'), local('Courier New'), local('CourierNewPSMT');
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+/* Wortmarke im Kopf: Während des Ladens nimmt sie den Ersatz in Wortmarken-Breite, damit die „24“
+   beim Schrifttausch nicht springt. Die Wortmarke selbst bleibt unverändert (Logo, G8); ist
+   Plex Sans geladen, gilt sie wie bisher. */
+header a[aria-label$='Startseite'] > span {
+  font-family: var(--font-display), 'SM24 Ersatz Wortmarke', system-ui, sans-serif;
+}
+
 /* ==========================================================================
    SCHLÜSSELMACHER24 — Designsystem
    Hell, freundlich, farbig — und trotzdem fachlich. Klares Blau auf hellem
@@ -67,12 +126,55 @@
     --destructive: 0 58% 42%;
     --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.75rem;
+    /* Kanten: kleine Radien wie an einem Werkstück */
+    --radius: 0.625rem;
+
+    /* Haarlinie der Bemaßung (Augenbraue, Profillinie, Trenner) */
+    --strich: 1.5px;
+    /* Bildschirm-Strichstärke der Icon-Familie (Fach-Icons und Glyphen) */
+    --icon-strich: 1.75px;
+
+    /* Schattenfarbe für `shadow-raised` und `shadow-overlay` */
+    --shadow-color: 222 40% 18%;
 
     /* Layout */
     --header-height: 4rem;
     --header-height-md: 5rem;
     --shell-max: 1240px;
+
+    /* Typoskala — fließend zwischen 390 und 1440 px Breite (KERN K-005) */
+    --text-caption: 0.75rem;
+    --text-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+    --text-body: clamp(0.9375rem, 0.91rem + 0.12vw, 1rem);
+    --text-eingabe: 1rem;
+    --text-lead: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+    --text-title-sm: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+    --text-title: clamp(1.1875rem, 1.12rem + 0.3vw, 1.375rem);
+    --text-headline: clamp(1.625rem, 1.39rem + 0.95vw, 2.25rem);
+    --text-display: clamp(2.125rem, 1.5rem + 2.5vw, 3.75rem);
+
+    /* Abstände der Abschnitte und Spalten */
+    --space-section: clamp(3.5rem, 2.6rem + 3.7vw, 6.5rem);
+    --space-section-tight: clamp(2.5rem, 2rem + 2vw, 4rem);
+    --space-gutter: clamp(1.25rem, 0.95rem + 1.25vw, 2rem);
+
+    /* Bewegung — Dauern und Kurven (KERN K-007) */
+    --dauer-instant: 120ms;
+    --dauer-quick: 180ms;
+    --dauer-base: 280ms;
+    --dauer-slow: 400ms;
+    --dauer-enter: 600ms;
+    --dauer-scene: 900ms;
+    --kurve-standard: cubic-bezier(0.2, 0, 0, 1);
+    --kurve-enter: cubic-bezier(0.16, 1, 0.3, 1);
+    --kurve-exit: cubic-bezier(0.4, 0, 1, 1);
+    --kurve-draw: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --header-height: var(--header-height-md);
+    }
   }
 }
 
@@ -83,6 +185,41 @@
 
   html {
     -webkit-text-size-adjust: 100%;
+    /* Fokus und Sprungziele nie unter dem festen Kopf (WCAG 2.4.11). */
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+  }
+
+  /*
+   * Die Regeln mit `:has()` prüfen Klassen, keine Attribute: Mit einem Attribut im Argument
+   * berechnet Chromium bei jeder Einfügung irgendwo im Dokument den Stil der ganzen Seite neu
+   * (Öffnen der Schublade: 2 × 894 Elemente, E7-L-41). Die Klassen stehen neben den Attributen.
+   */
+
+  /* In Abläufen (FlowShell, `.sm24-ablauf`) zusätzlich unter der klebenden Fortschrittsleiste
+     (mobil etwa 56 px, ab md etwa 60 px; die Schrittliste klebt nicht mit) und über der festen
+     Aktionsleiste (mobil 113 px). Sonst landet eine fokussierte Karte darunter (Befund E5-B-23). */
+  html:has(.sm24-ablauf) {
+    scroll-padding-top: calc(var(--header-height) + 4.5rem);
+    scroll-padding-bottom: 8rem;
+  }
+
+  /* Seiten mit eigener Aktionsleiste unten (FlowShell, gefüllter Warenkorb: `.sm24-eigene-leiste`)
+     blenden die globale Leiste aus – zwei feste Leisten übereinander verdecken Inhalt. */
+  body:has(.sm24-ablauf, .sm24-eigene-leiste) [data-aktionsleiste] {
+    display: none;
+  }
+
+  /* Im laufenden Ablauf bleibt „Weiter“ die einzige Hauptaktion; der Kopfknopf kehrt auf der
+     Bestätigung zurück (dort fehlt `.sm24-ablauf`). Spezifität schlägt `sm:inline-flex`. */
+  body:has(.sm24-ablauf) [data-kopfknopf] {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    html:has(.sm24-ablauf) {
+      scroll-padding-top: calc(var(--header-height) + 5rem);
+      scroll-padding-bottom: 1rem;
+    }
   }
 
   body {
@@ -132,44 +269,109 @@
     max-width: 1440px;
   }
 
-  /* Vertikaler Rhythmus */
+  /* Vertikaler Rhythmus — fließend über `--space-section` */
   .section {
-    @apply py-14 md:py-20;
+    @apply py-section;
   }
 
   .section-tight {
-    @apply py-10 md:py-14;
+    @apply py-section-tight;
   }
 
-  /* Kleine Überschrift über der Hauptüberschrift */
+  /*
+   * Augenbrauen-Zeile über einer Überschrift: Mono, Großbuchstaben, davor eine
+   * Bemaßungsmarke (|—|) wie auf einer Werkstattzeichnung (KERN K-006).
+   */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-area-strong;
+    @apply inline-flex items-center gap-2.5 font-mono text-caption font-medium uppercase tracking-label text-area-strong max-sm:tracking-label-eng;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply h-2 w-3.5 shrink-0 border-x-strich border-current;
+    background: linear-gradient(currentColor, currentColor) center / 100% var(--strich) no-repeat;
+  }
+
+  /* Laufende Abschnittsnummer („01“), die nur gerenderte Abschnitte zählt – für Seiten, deren
+     Abschnitte je nach Daten fehlen (Bestellseite). Zähler am Behälter, Nummer in der Augenbraue. */
+  .sm24-zaehlung {
+    counter-reset: sm24-abschnitt;
+  }
+
+  .sm24-zaehlung .sm24-nummer::before {
+    counter-increment: sm24-abschnitt;
+    content: counter(sm24-abschnitt, decimal-leading-zero);
   }
 
   /* Fließtext in redaktionellen Bereichen */
   .prose-sm24 {
-    @apply text-[15px] leading-relaxed text-foreground-muted;
+    @apply max-w-measure text-body text-foreground-muted;
+    hyphens: auto;
   }
 
   .prose-sm24 p + p {
     @apply mt-4;
   }
 
+  .prose-sm24 ul,
+  .prose-sm24 ol {
+    @apply mt-4 space-y-2 pl-5;
+  }
+
   .prose-sm24 ul {
-    @apply mt-4 space-y-2 list-disc pl-5;
+    @apply list-disc;
+  }
+
+  .prose-sm24 ol {
+    @apply list-decimal;
+  }
+
+  .prose-sm24 li::marker {
+    @apply text-area;
   }
 
   .prose-sm24 h2 {
-    @apply mt-10 mb-3 text-xl font-bold text-foreground;
+    @apply mb-3 mt-12 text-title font-bold text-foreground;
+    hyphens: manual;
   }
 
   .prose-sm24 h3 {
-    @apply mt-8 mb-2 text-base font-bold text-foreground;
+    @apply mb-2 mt-8 text-title-sm font-bold text-foreground;
+    hyphens: manual;
+  }
+
+  /* Beginnt die Lesespalte mit einer Überschrift (auch im ersten Abschnitt), steht sie oben bündig. */
+  .prose-sm24 > :first-child:is(h2, h3),
+  .prose-sm24 > :first-child > :first-child:is(h2, h3) {
+    @apply mt-0;
+  }
+
+  .prose-sm24 a {
+    @apply font-semibold text-primary underline decoration-primary/40 underline-offset-2 transition-colors duration-quick hover:decoration-primary;
+  }
+
+  .prose-sm24 strong {
+    @apply font-semibold text-foreground;
   }
 
   /* Tabellen auf schmalen Geräten horizontal scrollbar halten */
   .table-scroll {
     @apply w-full overflow-x-auto -mx-5 px-5 sm:mx-0 sm:px-0;
+  }
+}
+
+@layer base {
+  /*
+   * Formsystem (KERN K-008): Fach-Icons und Glyphen zeichnen in jeder Größe mit
+   * derselben Strichstärke am Bildschirm. `vector-effect` vererbt sich nicht,
+   * deshalb gilt die Regel für jede Form im Icon.
+   */
+  [data-sm24-icon] {
+    stroke-width: var(--icon-strich);
+  }
+
+  [data-sm24-icon] :is(path, circle, ellipse, line, polyline, polygon, rect) {
+    vector-effect: non-scaling-stroke;
   }
 }
 
@@ -192,20 +394,41 @@
   .pt-safe {
     padding-top: env(safe-area-inset-top);
   }
+
+  /* Sicherer Bereich unten (Home-Leiste) für feste Leisten */
+  .pb-safe-area {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Zahlenfeld ohne Pfeile des Browsers (eigene Minus/Plus-Knöpfe daneben) */
+  .zahl-ohne-pfeile {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+
+  .zahl-ohne-pfeile::-webkit-inner-spin-button,
+  .zahl-ohne-pfeile::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 /* ==========================================================================
-   Bewegung für Vektorgrafiken — nur CSS, kein SMIL.
+   Bewegungssystem (KERN K-007) — nur CSS, kein SMIL.
+   Dauern und Kurven kommen aus `--dauer-*` und `--kurve-*`; animiert werden nur
+   `transform`, `opacity` und – für Linien, die sich zeichnen – `stroke-dashoffset`.
    Vertrag (siehe src/components/visual/README.md):
    - `.sm24-draw`   Linie zeichnet sich (Element braucht pathLength="1")
    - `.sm24-reveal` Element blendet von unten ein
+   - `.sm24-fade`   Element blendet ein, ohne sich zu bewegen
    - `.sm24-pop`    Element wächst aus seiner Mitte (Punkte, Haken, Marker)
-   - `.sm24-float`  ruhiges Schweben (Dauerbewegung, sparsam einsetzen)
-   - `.sm24-dash`   laufende Strichlinie (Signal, Funk, Datenfluss)
-   Verzögerung/Dauer über `--sm24-delay` / `--sm24-duration`.
+   - `.sm24-dash`   laufende Strichlinie (Signal, Funk) — ein Durchgang: das Signal
+                    geht einmal hinaus (Sichtabnahme E4-L-23, WCAG 2.2.2)
+   - `.sm24-scrub-*` an das Scrollen gebundene Szenen (B-03)
+   Verzögerung/Dauer einzeln über `--sm24-delay` / `--sm24-duration`.
    `[data-motion="wait"]` hält die Einstiegs-Animationen an, bis `InView`
    den Bereich sichtbar meldet (`data-motion="play"`). Ohne JavaScript oder
-   bei „Bewegung reduzieren“ sind alle Grafiken sofort vollständig sichtbar.
+   bei „Bewegung reduzieren“ sind alle Inhalte sofort vollständig sichtbar.
    ========================================================================== */
 
 @keyframes sm24-draw {
@@ -218,54 +441,276 @@
   to { opacity: 1; transform: none; }
 }
 
+@keyframes sm24-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes sm24-pop {
   from { opacity: 0; transform: scale(0.6); }
   70% { opacity: 1; transform: scale(1.06); }
   to { opacity: 1; transform: none; }
 }
 
-@keyframes sm24-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
 @keyframes sm24-dash {
   to { stroke-dashoffset: -24; }
+}
+
+/* Schrittwechsel im Ablauf (B-11): 8 px in Laufrichtung */
+@keyframes sm24-schritt-vor {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes sm24-schritt-zurueck {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes sm24-scrub-y {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes sm24-scrub-marke {
+  from { transform: scale(0.85); }
+  to { transform: none; }
+}
+
+/* Stiftzuhaltung am Scrollen (B-25): Schlüssel fährt ein, dann heben sich die Stifte. */
+@keyframes sm24-schluessel-ein {
+  from { transform: translateX(calc(var(--schluessel-von, 0) * 1px)); }
+  to { transform: none; }
+}
+
+@keyframes sm24-stift-heben {
+  from { transform: translateY(calc(var(--stift-von, 0) * 1px)); }
+  to { transform: none; }
+}
+
+@keyframes sm24-feder-heben {
+  from { transform: scaleY(var(--feder-von, 1)); }
+  to { transform: none; }
+}
+
+@keyframes sm24-erscheinen {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Fläche wird von links nach rechts aufgedeckt, im Takt einer sich zeichnenden Linie
+   (nur Malen über clip-path: inset(), ohne Kennung und ohne Layout) */
+@keyframes sm24-aufdecken {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .sm24-draw {
     stroke-dasharray: 1;
-    animation: sm24-draw var(--sm24-duration, 1.4s) cubic-bezier(0.65, 0, 0.35, 1)
+    animation: sm24-draw var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw)
       var(--sm24-delay, 0s) both;
   }
 
   .sm24-reveal {
-    animation: sm24-reveal var(--sm24-duration, 0.6s) cubic-bezier(0.16, 1, 0.3, 1)
+    animation: sm24-reveal var(--sm24-duration, var(--dauer-enter)) var(--kurve-enter)
+      var(--sm24-delay, 0s) both;
+  }
+
+  .sm24-fade {
+    animation: sm24-fade var(--sm24-duration, var(--dauer-base)) var(--kurve-standard)
       var(--sm24-delay, 0s) both;
   }
 
   .sm24-pop {
     transform-box: fill-box;
     transform-origin: center;
-    animation: sm24-pop var(--sm24-duration, 0.5s) cubic-bezier(0.16, 1, 0.3, 1)
+    animation: sm24-pop var(--sm24-duration, var(--dauer-enter)) var(--kurve-enter)
       var(--sm24-delay, 0s) both;
-  }
-
-  .sm24-float {
-    animation: sm24-float var(--sm24-duration, 6s) ease-in-out var(--sm24-delay, 0s) infinite;
   }
 
   .sm24-dash {
     stroke-dasharray: 6 6;
-    animation: sm24-dash var(--sm24-duration, 1.6s) linear infinite;
+    animation: sm24-dash var(--sm24-duration, 1.6s) linear var(--sm24-delay, 0s) 1;
+  }
+
+  .sm24-aufdecken {
+    animation: sm24-aufdecken var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw) var(--sm24-delay, 0s) both;
+  }
+
+  .sm24-schritt-vor {
+    animation: sm24-schritt-vor var(--dauer-base) var(--kurve-enter) both;
+  }
+
+  .sm24-schritt-zurueck {
+    animation: sm24-schritt-zurueck var(--dauer-base) var(--kurve-enter) both;
   }
 }
 
+/*
+ * Interaktive Grafiken nach dem ersten Wechsel: Einstiegsbewegungen spielen
+ * nicht erneut, die Zeichnung steht sofort (Rückmeldung statt Auftritt).
+ */
+.sm24-ruhig :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
+  animation: none;
+}
+
+/* Nur das Zeichnen läuft (Live-Schlüssel: vom Rohling zum ersten Profil, B-15); alles andere steht. */
+.sm24-nur-zeichnen :is(.sm24-reveal, .sm24-fade, .sm24-pop, .sm24-aufdecken) {
+  animation: none;
+}
+
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  [data-motion='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-pop) {
+  [data-motion='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
     animation-play-state: paused;
   }
+}
+
+/* Ohne Scroll-Timeline oder bei reduzierter Bewegung ruht die Anzeige: keine Leiste (B-24; die Regel unten blendet sie ein). */
+.sm24-lesen-leiste {
+  visibility: hidden;
+}
+
+/*
+ * An das Scrollen gebundene Szenen (B-03): nur, wo der Browser
+ * `animation-timeline: view()` kennt und Bewegung erwünscht ist. Ohne
+ * Unterstützung stehen die Elemente im Endzustand (keine Animation).
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .sm24-scrub-y,
+    .sm24-scrub-marke {
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 55%;
+    }
+
+    .sm24-scrub-y {
+      transform-origin: top;
+      animation-name: sm24-scrub-y;
+    }
+
+    .sm24-scrub-marke {
+      animation-name: sm24-scrub-marke;
+      animation-range: entry 60% cover 45%;
+    }
+
+    /*
+     * Lesefortschritt im Ratgeber (B-24): `.sm24-lesen` umschließt Artikel und
+     * Verzeichnis. Die Leiste am Verzeichnis wächst, während der Artikel
+     * (`.sm24-lesen-artikel`) durch den Bildschirm läuft; die Nummer des
+     * Abschnitts (`data-abschnitt`), der die Leselinie bei 40 % kreuzt, wird
+     * Primärfarbe (`.sm24-lesen-nummer` mit `data-zu`). Höchstens sechs Abschnitte.
+     */
+    /*
+     * Stiftzuhaltung am Scrollen (B-25): `.sm24-szene` am SVG gibt die Zeitleiste vor.
+     * Der Schlüssel (`.sm24-scrub-schluessel`, `--schluessel-von` in Einheiten) fährt
+     * in der ersten Hälfte ein; je Bohrung heben sich Kernstift und Gehäusestift
+     * (`.sm24-scrub-stift`, `--stift-von`) und die Feder staucht sich
+     * (`.sm24-scrub-feder`, `--feder-von` als Faktor), nacheinander über `--stift-nr`
+     * (0–4); die Prüfmarken (`.sm24-scrub-pruefung`) erscheinen zuletzt.
+     * Ohne Unterstützung oder bei reduzierter Bewegung steht die Endlage: alles passt.
+     */
+    .sm24-szene {
+      view-timeline-name: --szene;
+    }
+
+    /* Ein Rahmen mit `overflow: hidden` (etwa `ImagePlaceholder`) wäre Scrollcontainer der Szene
+       und hielte ihre Zeitleiste an; `clip` schneidet gleich ab, ohne Scrollcontainer zu sein. */
+    :is(.overflow-hidden, .overflow-x-hidden, .overflow-y-hidden):has(.sm24-szene) {
+      overflow: clip;
+    }
+
+    :is(.sm24-scrub-schluessel, .sm24-scrub-stift, .sm24-scrub-feder, .sm24-scrub-pruefung) {
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --szene;
+    }
+
+    .sm24-scrub-schluessel {
+      animation-name: sm24-schluessel-ein;
+      animation-range: entry 40% cover 45%;
+    }
+
+    .sm24-scrub-stift,
+    .sm24-scrub-feder {
+      animation-range: cover calc(42% + var(--stift-nr, 0) * 2%) cover calc(52% + var(--stift-nr, 0) * 2%);
+    }
+
+    .sm24-scrub-stift {
+      animation-name: sm24-stift-heben;
+    }
+
+    .sm24-scrub-feder {
+      transform-box: fill-box;
+      transform-origin: top;
+      animation-name: sm24-feder-heben;
+    }
+
+    .sm24-scrub-pruefung {
+      animation-name: sm24-erscheinen;
+      animation-range: cover 60% cover 64%;
+    }
+
+    .sm24-lesen {
+      timeline-scope: --artikel, --abschnitt-1, --abschnitt-2, --abschnitt-3, --abschnitt-4, --abschnitt-5,
+        --abschnitt-6;
+    }
+
+    .sm24-lesen-artikel {
+      view-timeline-name: --artikel;
+    }
+
+    .sm24-lesen-leiste {
+      visibility: visible;
+      transform-origin: top;
+      animation: sm24-scrub-y linear both;
+      animation-timeline: --artikel;
+      animation-range: contain 0% contain 100%;
+    }
+
+    .sm24-lesen [data-abschnitt] {
+      view-timeline-inset: 40% 59.9%;
+    }
+
+    .sm24-lesen [data-abschnitt='1'] { view-timeline-name: --abschnitt-1; }
+    .sm24-lesen [data-abschnitt='2'] { view-timeline-name: --abschnitt-2; }
+    .sm24-lesen [data-abschnitt='3'] { view-timeline-name: --abschnitt-3; }
+    .sm24-lesen [data-abschnitt='4'] { view-timeline-name: --abschnitt-4; }
+    .sm24-lesen [data-abschnitt='5'] { view-timeline-name: --abschnitt-5; }
+    .sm24-lesen [data-abschnitt='6'] { view-timeline-name: --abschnitt-6; }
+
+    .sm24-lesen-nummer {
+      animation: sm24-lesen-aktiv linear none;
+      animation-range: cover 0% cover 100%;
+    }
+
+    .sm24-lesen-nummer[data-zu='1'] { animation-timeline: --abschnitt-1; }
+    .sm24-lesen-nummer[data-zu='2'] { animation-timeline: --abschnitt-2; }
+    .sm24-lesen-nummer[data-zu='3'] { animation-timeline: --abschnitt-3; }
+    .sm24-lesen-nummer[data-zu='4'] { animation-timeline: --abschnitt-4; }
+    .sm24-lesen-nummer[data-zu='5'] { animation-timeline: --abschnitt-5; }
+    .sm24-lesen-nummer[data-zu='6'] { animation-timeline: --abschnitt-6; }
+  }
+}
+
+@keyframes sm24-lesen-aktiv {
+  from,
+  to {
+    color: hsl(var(--primary));
+  }
+}
+
+/* Seitenwechsel mit gemeinsamen Elementen (B-13), schrittweise Verbesserung. */
+::view-transition-group(*) {
+  animation-duration: var(--dauer-slow);
+  animation-timing-function: var(--kurve-standard);
+}
+
+/* Klicks während des Wechsels erreichen die neue Seite statt der Überlagerung. */
+::view-transition {
+  pointer-events: none;
 }
 
 /* Bewegung reduzieren — Layout darf dadurch nicht brechen */
@@ -277,5 +722,118 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Ausschnitt einer Fachgrafik für Telefonbreiten (unter 640 px; Startseite, B-01): Ein
+   einziges SVG wird beschnitten statt doppelt gezeichnet, damit Bewegung und
+   Beschriftung erhalten bleiben und die Schrift lesbar groß wird. Werte setzt
+   `ImagePlaceholder` (Prop `ausschnitt`) als Variablen. Steht nach den
+   Hilfsklassen, damit `aspect-ratio` hier Vorrang hat.
+   ========================================================================== */
+@media (max-width: 639.98px) {
+  .sm24-ausschnitt {
+    aspect-ratio: var(--aus-w) / var(--aus-h);
+  }
+
+  .sm24-ausschnitt > svg {
+    width: calc(100% * var(--voll-w) / var(--aus-w));
+    height: calc(100% * var(--voll-h) / var(--aus-h));
+    transform: translate(calc(-100% * var(--aus-x) / var(--voll-w)), calc(-100% * var(--aus-y) / var(--voll-h)));
+  }
+
+  /* Bemaßung blendet der Ausschnitt aus; mit `sm24-ausschnitt-bemasst` bleibt sie stehen,
+     wenn das Fenster sie ganz fasst (Startseite, E6-L-31). */
+  .sm24-ausschnitt:not(.sm24-ausschnitt-bemasst) [data-bemassung] {
+    display: none;
+  }
+
+  /* Legenden, deren Generator den Ausschnitt dafür bemisst (tuer-schutz). */
+  .sm24-ausschnitt [data-legende] {
+    font-size: 16px;
+  }
+}
+
+/* ==========================================================================
+   Feste Leiste der Abläufe (FlowShell): 1rem plus Home-Leiste, vorher als
+   style-Wert. Steht nach den Hilfsklassen und übersteuert `p-4`; Varianten wie
+   `md:p-0` folgen später, deshalb hält `md:pb-4` den bisherigen Desktop-Abstand.
+   ========================================================================== */
+.sm24-ablauf-leiste {
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+}
+
+/* Auswahlfeld mit eigenem Pfeil (forms/controls, Select); vorher als style-Wert. */
+.sm24-auswahl {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+}
+
+/* ==========================================================================
+   Druckansicht (Kür K-05): Bestellbestätigung, Vorgangsnummern und
+   Zusammenfassungen drucken ohne Kopf, Fuß, Aktionsleisten und Bewegung –
+   auf weißem Papier, ohne klebende Spalten, Abschnitte nicht zerrissen.
+   `data-nicht-drucken` blendet einzelne Bedienelemente aus.
+   ========================================================================== */
+@media print {
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  body > header,
+  body > footer,
+  [data-aktionsleiste],
+  .sm24-ablauf-leiste,
+  nav[aria-label='Brotkrumennavigation'],
+  [data-nicht-drucken] {
+    display: none !important;
+  }
+
+  body {
+    background: hsl(var(--surface));
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
+
+  .shell {
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  .sticky,
+  [class*='lg:sticky'] {
+    position: static !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  section,
+  dl > div,
+  li,
+  tr,
+  figure {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
   }
 }

@@ -40,7 +40,7 @@ describe('ZylinderMassGrafik', () => {
     pruefeVertrag(html);
     expect(html).toContain('<title>Maßzeichnung Zylinder</title>');
     expect(html).toContain('A 30');
-    expect(html).toContain('I 30');
+    expect(html).toContain('B 30');
     expect(html).toContain('außen');
     expect(html).toContain('innen');
     expect(html).toContain('pathLength="1"');
@@ -50,7 +50,7 @@ describe('ZylinderMassGrafik', () => {
     const html = zeichne({ aussen: 30, innen: 45 });
     pruefeVertrag(html);
     expect(html).toContain('A 30');
-    expect(html).toContain('I 45');
+    expect(html).toContain('B 45');
   });
 
   it('zeichnet die Seiten maßstäblich im Verhältnis A:I', () => {
@@ -64,7 +64,7 @@ describe('ZylinderMassGrafik', () => {
     const html = zeichne({ bauform: 'profil-halb', aussen: 40, innen: 55 });
     pruefeVertrag(html);
     expect(html).toContain('A 40');
-    expect(html).not.toContain('I 55');
+    expect(html).not.toContain('B 55');
     expect(masslinien(html)).toHaveLength(1);
   });
 
@@ -81,7 +81,7 @@ describe('ZylinderMassGrafik', () => {
   it('formatiert halbe Millimeter mit Komma', () => {
     const html = zeichne({ aussen: 27.5, innen: '32,5' });
     expect(html).toContain('A 27,5');
-    expect(html).toContain('I 32,5');
+    expect(html).toContain('B 32,5');
   });
 
   it('begrenzt Zahlen und wirft bei Unsinnswerten nicht', () => {
@@ -101,7 +101,7 @@ describe('ZylinderMassGrafik', () => {
     }
     const begrenzt = zeichne({ aussen: -5, innen: 999 });
     expect(begrenzt).toContain('A 25');
-    expect(begrenzt).toContain('I 100');
+    expect(begrenzt).toContain('B 100');
   });
 
   it('setzt einen Ersatztitel, wenn der Titel fehlt', () => {
@@ -115,5 +115,33 @@ describe('ZylinderMassGrafik', () => {
   it('liefert für gleiche Eingaben dieselbe Grafik', () => {
     const params = { bauform: 'knauf', aussen: 45, innen: 35, knaufseite: 'aussen' };
     expect(zeichne(params)).toBe(zeichne({ ...params }));
+  });
+
+  it('zeichnet im schmalen Format eine kleinere Fläche mit größerer Schrift', () => {
+    const schmal = zeichne({ bauform: 'profil-doppel', aussen: 35, innen: 45, format: 'schmal' });
+    expect(schmal).toContain('viewBox="0 0 300 220"');
+    expect(schmal).toContain('font-size="16"');
+    expect(schmal).toContain('font-size="15"');
+    expect(schmal).not.toMatch(/NaN|Infinity|undefined/);
+    // Gleiche Maße, gleiches Verhältnis A:I wie im breiten Format.
+    const [a, i] = masslinien(schmal);
+    expect(a / i).toBeCloseTo(35 / 45, 1);
+    // Unbekanntes Format fällt auf das breite zurück.
+    pruefeVertrag(zeichne({ format: 'quer' }));
+  });
+
+  it('lässt im schmalen Format „außen“ und „innen“ in der Fläche', () => {
+    for (const params of [
+      { bauform: 'profil-doppel', aussen: 25, innen: 25 },
+      { bauform: 'knauf', aussen: 100, innen: 100, knaufseite: 'aussen' },
+      { bauform: 'profil-halb', aussen: 60 },
+    ]) {
+      const html = zeichne({ ...params, format: 'schmal' });
+      const aussenX = Number(/text-anchor="end" x="([\d.]+)"[^>]*>außen</.exec(html)?.[1]);
+      const innenX = Number(/text-anchor="start" x="([\d.]+)"[^>]*>innen</.exec(html)?.[1]);
+      // Fünf Zeichen Mono in 16 Einheiten sind etwa 48 Einheiten breit.
+      expect(aussenX - 5 * 16 * 0.6).toBeGreaterThanOrEqual(0);
+      expect(innenX + 5 * 16 * 0.6).toBeLessThanOrEqual(300);
+    }
   });
 });

@@ -13,7 +13,7 @@ export default async function DatenschutzPage() {
 
   return (
     <>
-      <h1 className="text-[1.75rem] font-bold leading-tight md:text-3xl">Datenschutzerklärung</h1>
+      <h1 className="text-headline font-bold text-balance">Datenschutzerklärung</h1>
       <p className="mt-3">
         Diese Seite beschreibt, welche personenbezogenen Daten wir erheben, wozu wir sie
         verwenden und wie lange wir sie aufbewahren.
@@ -79,10 +79,18 @@ export default async function DatenschutzPage() {
       <h3>3.4 Aufbewahrungsfristen</h3>
       <p>Wir haben folgende Fristen für die genannten Unterlagen festgelegt:</p>
       <ul>
-        <li>Fahrzeugschein: {retentionDays.vehicleRegistration} Tage</li>
-        <li>Schlüsselfotos: {retentionDays.keyPhotos} Tage</li>
-        <li>Grundrisse und Objektpläne: {retentionDays.floorPlans} Tage</li>
-        <li>Projektunterlagen: {retentionDays.projectDocuments} Tage</li>
+        <li>
+          Fahrzeugschein: <span className="font-mono tabular-nums">{retentionDays.vehicleRegistration}</span> Tage
+        </li>
+        <li>
+          Schlüsselfotos: <span className="font-mono tabular-nums">{retentionDays.keyPhotos}</span> Tage
+        </li>
+        <li>
+          Grundrisse und Objektpläne: <span className="font-mono tabular-nums">{retentionDays.floorPlans}</span> Tage
+        </li>
+        <li>
+          Projektunterlagen: <span className="font-mono tabular-nums">{retentionDays.projectDocuments}</span> Tage
+        </li>
       </ul>
       <p>
         [Platzhalter: Gesetzliche Aufbewahrungspflichten für Geschäftsunterlagen und Belege
