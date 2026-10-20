@@ -1,0 +1,3 @@
+
+### Interaktive Module (Revolution Builder)
+- **Sicherheitsbudget-Kalkulator**: Ein interaktiver Kalkulator zur groben Einschätzung der Investitionskosten für Sicherheitstechnik. Erreichbar unter `/sicherheitstechnik`.

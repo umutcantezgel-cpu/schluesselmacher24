@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+
+### Interaktive Module (Revolution Builder)
+- **Sicherheitsbudget-Kalkulator**: Ein interaktiver Kalkulator zur groben Einschätzung der Investitionskosten für Sicherheitstechnik. Erreichbar unter `/sicherheitstechnik`.
