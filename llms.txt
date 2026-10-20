@@ -1,0 +1,10 @@
+# SCHLÜSSELMACHER24 LLM Context
+
+This file contains the context for LLMs interacting with this repository.
+It is kept in sync with the current system architecture and blueprint.
+
+## Architecture Status
+- Framework: Next.js 16+ App Router
+- Runtime: React 19.2+
+- Styling: Tailwind CSS v4 (OKLCH)
+- State: Transformation pending based on .jules/revolution-plan.json
