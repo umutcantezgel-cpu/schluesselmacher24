@@ -1,0 +1,4 @@
+
+## Architecture Blueprint
+
+Blueprint generated for 52 existing routes aiming for Next.js 16+, React 19.2+, and OKLCH Light Mode design.
