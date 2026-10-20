@@ -1,0 +1,1191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-20T13:28:54.173Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/(payload)/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 0",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module0",
+        "target_file": "src/components/calculator/module-0.tsx",
+        "action_file": "src/actions/module-0.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1135,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 1",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module1",
+        "target_file": "src/components/calculator/module-1.tsx",
+        "action_file": "src/actions/module-1.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 2",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module2",
+        "target_file": "src/components/calculator/module-2.tsx",
+        "action_file": "src/actions/module-2.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 3",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module3",
+        "target_file": "src/components/calculator/module-3.tsx",
+        "action_file": "src/actions/module-3.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1322,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 4",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module4",
+        "target_file": "src/components/calculator/module-4.tsx",
+        "action_file": "src/actions/module-4.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1292,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 5",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module5",
+        "target_file": "src/components/calculator/module-5.tsx",
+        "action_file": "src/actions/module-5.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1334,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 6",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module6",
+        "target_file": "src/components/calculator/module-6.tsx",
+        "action_file": "src/actions/module-6.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1424,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 7",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module7",
+        "target_file": "src/components/calculator/module-7.tsx",
+        "action_file": "src/actions/module-7.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1180,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 8",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module8",
+        "target_file": "src/components/calculator/module-8.tsx",
+        "action_file": "src/actions/module-8.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 9",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module9",
+        "target_file": "src/components/calculator/module-9.tsx",
+        "action_file": "src/actions/module-9.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1390,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 10",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module10",
+        "target_file": "src/components/calculator/module-10.tsx",
+        "action_file": "src/actions/module-10.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2203,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 11",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module11",
+        "target_file": "src/components/calculator/module-11.tsx",
+        "action_file": "src/actions/module-11.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1423,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 12",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module12",
+        "target_file": "src/components/calculator/module-12.tsx",
+        "action_file": "src/actions/module-12.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1243,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 13",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module13",
+        "target_file": "src/components/calculator/module-13.tsx",
+        "action_file": "src/actions/module-13.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 14",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module14",
+        "target_file": "src/components/calculator/module-14.tsx",
+        "action_file": "src/actions/module-14.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1500,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 15",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module15",
+        "target_file": "src/components/calculator/module-15.tsx",
+        "action_file": "src/actions/module-15.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 16",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module16",
+        "target_file": "src/components/calculator/module-16.tsx",
+        "action_file": "src/actions/module-16.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 2681,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 17",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module17",
+        "target_file": "src/components/calculator/module-17.tsx",
+        "action_file": "src/actions/module-17.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 18",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module18",
+        "target_file": "src/components/calculator/module-18.tsx",
+        "action_file": "src/actions/module-18.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 2282,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 19",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module19",
+        "target_file": "src/components/calculator/module-19.tsx",
+        "action_file": "src/actions/module-19.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 20",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module20",
+        "target_file": "src/components/calculator/module-20.tsx",
+        "action_file": "src/actions/module-20.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 1331,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 21",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module21",
+        "target_file": "src/components/calculator/module-21.tsx",
+        "action_file": "src/actions/module-21.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 22",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module22",
+        "target_file": "src/components/calculator/module-22.tsx",
+        "action_file": "src/actions/module-22.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 23",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module23",
+        "target_file": "src/components/calculator/module-23.tsx",
+        "action_file": "src/actions/module-23.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 24",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module24",
+        "target_file": "src/components/calculator/module-24.tsx",
+        "action_file": "src/actions/module-24.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 25",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module25",
+        "target_file": "src/components/calculator/module-25.tsx",
+        "action_file": "src/actions/module-25.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 26",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module26",
+        "target_file": "src/components/calculator/module-26.tsx",
+        "action_file": "src/actions/module-26.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 27",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module27",
+        "target_file": "src/components/calculator/module-27.tsx",
+        "action_file": "src/actions/module-27.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 28",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module28",
+        "target_file": "src/components/calculator/module-28.tsx",
+        "action_file": "src/actions/module-28.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 29",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module29",
+        "target_file": "src/components/calculator/module-29.tsx",
+        "action_file": "src/actions/module-29.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 30",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module30",
+        "target_file": "src/components/calculator/module-30.tsx",
+        "action_file": "src/actions/module-30.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2074,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 31",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module31",
+        "target_file": "src/components/calculator/module-31.tsx",
+        "action_file": "src/actions/module-31.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 32",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module32",
+        "target_file": "src/components/calculator/module-32.tsx",
+        "action_file": "src/actions/module-32.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 33",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module33",
+        "target_file": "src/components/calculator/module-33.tsx",
+        "action_file": "src/actions/module-33.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 34",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module34",
+        "target_file": "src/components/calculator/module-34.tsx",
+        "action_file": "src/actions/module-34.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 1994,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 35",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module35",
+        "target_file": "src/components/calculator/module-35.tsx",
+        "action_file": "src/actions/module-35.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 36",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module36",
+        "target_file": "src/components/calculator/module-36.tsx",
+        "action_file": "src/actions/module-36.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 37",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module37",
+        "target_file": "src/components/calculator/module-37.tsx",
+        "action_file": "src/actions/module-37.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 1779,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 38",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module38",
+        "target_file": "src/components/calculator/module-38.tsx",
+        "action_file": "src/actions/module-38.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 39",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module39",
+        "target_file": "src/components/calculator/module-39.tsx",
+        "action_file": "src/actions/module-39.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 40",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module40",
+        "target_file": "src/components/calculator/module-40.tsx",
+        "action_file": "src/actions/module-40.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 41",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module41",
+        "target_file": "src/components/calculator/module-41.tsx",
+        "action_file": "src/actions/module-41.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1221,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 42",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module42",
+        "target_file": "src/components/calculator/module-42.tsx",
+        "action_file": "src/actions/module-42.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 43",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module43",
+        "target_file": "src/components/calculator/module-43.tsx",
+        "action_file": "src/actions/module-43.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 44",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module44",
+        "target_file": "src/components/calculator/module-44.tsx",
+        "action_file": "src/actions/module-44.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 45",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module45",
+        "target_file": "src/components/calculator/module-45.tsx",
+        "action_file": "src/actions/module-45.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 46",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module46",
+        "target_file": "src/components/calculator/module-46.tsx",
+        "action_file": "src/actions/module-46.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 1985,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 47",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module47",
+        "target_file": "src/components/calculator/module-47.tsx",
+        "action_file": "src/actions/module-47.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Erweiterung Themenbereich 48",
+        "Detaillierte Fach-FAQ",
+        "Prozessabläufe und Tabellen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "Module48",
+        "target_file": "src/components/calculator/module-48.tsx",
+        "action_file": "src/actions/module-48.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
