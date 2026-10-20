@@ -43,3 +43,6 @@ Backend unter `/admin` bearbeitet:
 
 Siehe `UMSETZUNG.md` — Zahlung, Mailversand und Datei-Ablage sind
 vorbereitet, aber ohne Zugangsdaten inaktiv.
+## Neue interaktive Module
+
+- **Sicherheits-Check Rechner:** Ein interaktives Tool zur Bewertung der aktuellen Objektabsicherung, integriert in die Sicherheitstechnik-Seite. Implementiert mit React 19 Server Actions und im Schweizer Light Mode Design.
