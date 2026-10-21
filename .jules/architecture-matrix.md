@@ -1,0 +1,54 @@
+# Architecture Matrix
+
+| Route Path | Current Words | Target Words | Schema Entities | Status |
+|---|---|---|---|---|
+| `/(payload)/admin/[[...segments]]` | 99 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/` | 2210 | 2710 | `FAQPage, Service` | PENDING_BUILDER |
+| `/ratgeber` | 317 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/ratgeber/[slug]` | 775 | 1275 | `FAQPage, Service` | PENDING_BUILDER |
+| `/schluessel-nach-vorlage` | 2203 | 2703 | `FAQPage, Service` | PENDING_BUILDER |
+| `/schluessel-nach-vorlage/anfrage` | 235 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/[...unbekannt]` | 72 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/warenkorb` | 342 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/kasse` | 417 | 917 | `FAQPage, Service` | PENDING_BUILDER |
+| `/schluessel-nach-code` | 738 | 1238 | `FAQPage, Service` | PENDING_BUILDER |
+| `/schluessel-nach-code/[slug]` | 1040 | 1540 | `FAQPage, Service` | PENDING_BUILDER |
+| `/sicherheitstechnik` | 1431 | 1931 | `FAQPage, Service` | PENDING_BUILDER |
+| `/sicherheitstechnik/[slug]` | 729 | 1229 | `FAQPage, Service` | PENDING_BUILDER |
+| `/sicherheitstechnik/sicherheitscheck` | 378 | 878 | `FAQPage, Service` | PENDING_BUILDER |
+| `/tuer-und-schliesstechnik` | 2271 | 2771 | `FAQPage, Service` | PENDING_BUILDER |
+| `/tuer-und-schliesstechnik/[slug]` | 523 | 1023 | `FAQPage, Service` | PENDING_BUILDER |
+| `/bestellung/[id]` | 1389 | 1889 | `FAQPage, Service` | PENDING_BUILDER |
+| `/gleichschliessende-zylinder` | 2564 | 3064 | `FAQPage, Service` | PENDING_BUILDER |
+| `/gleichschliessende-zylinder/konfigurator` | 316 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/elektronische-zutrittsloesungen` | 2982 | 3482 | `FAQPage, Service` | PENDING_BUILDER |
+| `/elektronische-zutrittsloesungen/konfigurator` | 406 | 906 | `FAQPage, Service` | PENDING_BUILDER |
+| `/schliessanlagen` | 2166 | 2666 | `FAQPage, Service` | PENDING_BUILDER |
+| `/schliessanlagen/konfigurator` | 379 | 879 | `FAQPage, Service` | PENDING_BUILDER |
+| `/service-und-termin` | 2247 | 2747 | `FAQPage, Service` | PENDING_BUILDER |
+| `/service-und-termin/terminstatus` | 109 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/service-und-termin/anfrage` | 153 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/service-und-termin/vor-ort` | 742 | 1242 | `FAQPage, Service` | PENDING_BUILDER |
+| `/service-und-termin/kontakt` | 622 | 1122 | `FAQPage, Service` | PENDING_BUILDER |
+| `/rechtliches/impressum` | 247 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/rechtliches/cookie-einstellungen` | 227 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/rechtliches/versand-und-zahlung` | 515 | 1015 | `FAQPage, Service` | PENDING_BUILDER |
+| `/rechtliches/widerruf` | 369 | 869 | `FAQPage, Service` | PENDING_BUILDER |
+| `/rechtliches/agb` | 415 | 915 | `FAQPage, Service` | PENDING_BUILDER |
+| `/rechtliches/datenschutz` | 730 | 1230 | `FAQPage, Service` | PENDING_BUILDER |
+| `/artikel` | 807 | 1307 | `FAQPage, Service` | PENDING_BUILDER |
+| `/artikel/[slug]` | 1160 | 1660 | `FAQPage, Service` | PENDING_BUILDER |
+| `/standorte` | 306 | 850 | `FAQPage, Service` | PENDING_BUILDER |
+| `/standorte/[city]` | 617 | 1117 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel` | 2496 | 2996 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/marken` | 779 | 1279 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/marken/[make]` | 1209 | 1709 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/marken/[make]/[model]` | 2004 | 2504 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/funkschluessel` | 1091 | 1591 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/programmieren` | 1222 | 1722 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/anfrage` | 521 | 1021 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/kopieren` | 1133 | 1633 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/nachmachen` | 1189 | 1689 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/smart-key` | 1207 | 1707 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/schluesselbart-fraesen` | 1042 | 1542 | `FAQPage, Service` | PENDING_BUILDER |
+| `/autoschluessel/fahrzeugoeffnung` | 1121 | 1621 | `FAQPage, Service` | PENDING_BUILDER |
