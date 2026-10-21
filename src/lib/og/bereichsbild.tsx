@@ -34,9 +34,38 @@ export function tokensAusCss(css: string): Record<Token, string> {
 }
 
 /** HSL-Tripel „H S% L%“ als Farbwert für das Bild. */
-export function farbe(tripel: string): string {
-  return `hsl(${tripel})`;
+
+function oklchToRgbString(tripel: string): string {
+  const [l, c, h] = tripel.split(' ').map(Number);
+  const hRad = (h * Math.PI) / 180;
+  const a = c * Math.cos(hRad);
+  const b = c * Math.sin(hRad);
+
+  const l_ = l + 0.3963377774 * a + 0.2158037573 * b;
+  const m_ = l - 0.1055613458 * a - 0.0638541728 * b;
+  const s_ = l - 0.0894841775 * a - 1.2914855480 * b;
+
+  const l3 = l_ * l_ * l_;
+  const m3 = m_ * m_ * m_;
+  const s3 = s_ * s_ * s_;
+
+  const lr = +4.0767416621 * l3 - 3.3077115913 * m3 + 0.2309699292 * s3;
+  const lg = -1.2684380046 * l3 + 2.6097574011 * m3 - 0.3413193965 * s3;
+  const lb = -0.0041960863 * l3 - 0.7034186147 * m3 + 1.7076147010 * s3;
+
+  const channel = (c: number) => c <= 0.0031308 ? 12.92 * c : 1.055 * Math.pow(c, 1 / 2.4) - 0.055;
+
+  const r = Math.max(0, Math.min(255, Math.round(channel(lr) * 255)));
+  const g = Math.max(0, Math.min(255, Math.round(channel(lg) * 255)));
+  const bVal = Math.max(0, Math.min(255, Math.round(channel(lb) * 255)));
+
+  return `rgb(${r}, ${g}, ${bVal})`;
 }
+
+export function farbe(tripel: string): string {
+  return oklchToRgbString(tripel);
+}
+
 
 export interface BildInhalt {
   /** Augenbraue über dem Titel. */
