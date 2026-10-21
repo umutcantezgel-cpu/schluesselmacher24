@@ -1,0 +1,54 @@
+# Architecture Matrix
+
+| URL | Status | Word Count | Schema Status | CWV Status | Interactive Component |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | PENDING_BUILDER | 99 -> 850 | Missing | Needs Audit | AdminSegmentsWidget |
+| / | PENDING_BUILDER | 2079 -> 2679 | Missing | Needs Audit | HomeWidget |
+| /ratgeber | PENDING_BUILDER | 258 -> 858 | Missing | Needs Audit | RatgeberWidget |
+| /ratgeber/[slug] | PENDING_BUILDER | 695 -> 1295 | Missing | Needs Audit | RatgeberSlugWidget |
+| /schluessel-nach-vorlage | PENDING_BUILDER | 2041 -> 2641 | Missing | Needs Audit | SchluesselNachVorlageWidget |
+| /schluessel-nach-vorlage/anfrage | PENDING_BUILDER | 199 -> 850 | Missing | Needs Audit | SchluesselNachVorlageAnfrageWidget |
+| /[...unbekannt] | PENDING_BUILDER | 66 -> 850 | Missing | Needs Audit | UnbekanntWidget |
+| /warenkorb | PENDING_BUILDER | 305 -> 905 | Missing | Needs Audit | WarenkorbWidget |
+| /kasse | PENDING_BUILDER | 362 -> 962 | Missing | Needs Audit | KasseWidget |
+| /schluessel-nach-code | PENDING_BUILDER | 627 -> 1227 | Missing | Needs Audit | SchluesselNachCodeWidget |
+| /schluessel-nach-code/[slug] | PENDING_BUILDER | 904 -> 1504 | Missing | Needs Audit | SchluesselNachCodeSlugWidget |
+| /sicherheitstechnik | PENDING_BUILDER | 1296 -> 1896 | Missing | Needs Audit | SicherheitstechnikWidget |
+| /sicherheitstechnik/[slug] | PENDING_BUILDER | 656 -> 1256 | Missing | Needs Audit | SicherheitstechnikSlugWidget |
+| /sicherheitstechnik/sicherheitscheck | PENDING_BUILDER | 323 -> 923 | Missing | Needs Audit | SicherheitstechnikSicherheitscheckWidget |
+| /tuer-und-schliesstechnik | PENDING_BUILDER | 2069 -> 2669 | Missing | Needs Audit | TuerUndSchliesstechnikWidget |
+| /tuer-und-schliesstechnik/[slug] | PENDING_BUILDER | 456 -> 1056 | Missing | Needs Audit | TuerUndSchliesstechnikSlugWidget |
+| /bestellung/[id] | PENDING_BUILDER | 1296 -> 1896 | Missing | Needs Audit | BestellungIdWidget |
+| /gleichschliessende-zylinder | PENDING_BUILDER | 2423 -> 3023 | Missing | Needs Audit | GleichschliessendeZylinderWidget |
+| /gleichschliessende-zylinder/konfigurator | PENDING_BUILDER | 267 -> 867 | Missing | Needs Audit | GleichschliessendeZylinderKonfiguratorWidget |
+| /elektronische-zutrittsloesungen | PENDING_BUILDER | 2806 -> 3406 | Missing | Needs Audit | ElektronischeZutrittsloesungenWidget |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING_BUILDER | 352 -> 952 | Missing | Needs Audit | ElektronischeZutrittsloesungenKonfiguratorWidget |
+| /schliessanlagen | PENDING_BUILDER | 2016 -> 2616 | Missing | Needs Audit | SchliessanlagenWidget |
+| /schliessanlagen/konfigurator | PENDING_BUILDER | 328 -> 928 | Missing | Needs Audit | SchliessanlagenKonfiguratorWidget |
+| /service-und-termin | PENDING_BUILDER | 2109 -> 2709 | Missing | Needs Audit | ServiceUndTerminWidget |
+| /service-und-termin/terminstatus | PENDING_BUILDER | 90 -> 850 | Missing | Needs Audit | ServiceUndTerminTerminstatusWidget |
+| /service-und-termin/anfrage | PENDING_BUILDER | 128 -> 850 | Missing | Needs Audit | ServiceUndTerminAnfrageWidget |
+| /service-und-termin/vor-ort | PENDING_BUILDER | 681 -> 1281 | Missing | Needs Audit | ServiceUndTerminVorOrtWidget |
+| /service-und-termin/kontakt | PENDING_BUILDER | 538 -> 1138 | Missing | Needs Audit | ServiceUndTerminKontaktWidget |
+| /rechtliches/impressum | PENDING_BUILDER | 234 -> 850 | Missing | Needs Audit | RechtlichesImpressumWidget |
+| /rechtliches/cookie-einstellungen | PENDING_BUILDER | 214 -> 850 | Missing | Needs Audit | RechtlichesCookieEinstellungenWidget |
+| /rechtliches/versand-und-zahlung | PENDING_BUILDER | 490 -> 1090 | Missing | Needs Audit | RechtlichesVersandUndZahlungWidget |
+| /rechtliches/widerruf | PENDING_BUILDER | 362 -> 962 | Missing | Needs Audit | RechtlichesWiderrufWidget |
+| /rechtliches/agb | PENDING_BUILDER | 408 -> 1008 | Missing | Needs Audit | RechtlichesAgbWidget |
+| /rechtliches/datenschutz | PENDING_BUILDER | 717 -> 1317 | Missing | Needs Audit | RechtlichesDatenschutzWidget |
+| /artikel | PENDING_BUILDER | 693 -> 1293 | Missing | Needs Audit | ArtikelWidget |
+| /artikel/[slug] | PENDING_BUILDER | 1037 -> 1637 | Missing | Needs Audit | ArtikelSlugWidget |
+| /standorte | PENDING_BUILDER | 252 -> 852 | Missing | Needs Audit | StandorteWidget |
+| /standorte/[city] | PENDING_BUILDER | 517 -> 1117 | Missing | Needs Audit | StandorteCityWidget |
+| /autoschluessel | PENDING_BUILDER | 2347 -> 2947 | Missing | Needs Audit | AutoschluesselWidget |
+| /autoschluessel/marken | PENDING_BUILDER | 697 -> 1297 | Missing | Needs Audit | AutoschluesselMarkenWidget |
+| /autoschluessel/marken/[make] | PENDING_BUILDER | 1113 -> 1713 | Missing | Needs Audit | AutoschluesselMarkenMakeWidget |
+| /autoschluessel/marken/[make]/[model] | PENDING_BUILDER | 1879 -> 2479 | Missing | Needs Audit | AutoschluesselMarkenMakeModelWidget |
+| /autoschluessel/funkschluessel | PENDING_BUILDER | 1058 -> 1658 | Missing | Needs Audit | AutoschluesselFunkschluesselWidget |
+| /autoschluessel/programmieren | PENDING_BUILDER | 1183 -> 1783 | Missing | Needs Audit | AutoschluesselProgrammierenWidget |
+| /autoschluessel/anfrage | PENDING_BUILDER | 464 -> 1064 | Missing | Needs Audit | AutoschluesselAnfrageWidget |
+| /autoschluessel/kopieren | PENDING_BUILDER | 1094 -> 1694 | Missing | Needs Audit | AutoschluesselKopierenWidget |
+| /autoschluessel/nachmachen | PENDING_BUILDER | 1157 -> 1757 | Missing | Needs Audit | AutoschluesselNachmachenWidget |
+| /autoschluessel/smart-key | PENDING_BUILDER | 1168 -> 1768 | Missing | Needs Audit | AutoschluesselSmartKeyWidget |
+| /autoschluessel/schluesselbart-fraesen | PENDING_BUILDER | 1016 -> 1616 | Missing | Needs Audit | AutoschluesselSchluesselbartFraesenWidget |
+| /autoschluessel/fahrzeugoeffnung | PENDING_BUILDER | 1082 -> 1682 | Missing | Needs Audit | AutoschluesselFahrzeugoeffnungWidget |
