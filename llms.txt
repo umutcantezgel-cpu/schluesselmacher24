@@ -1,0 +1,3 @@
+# LLMs Instructions
+
+- **SicherheitsBudgetRechner**: Ein interaktiver Kalkulator für Projekt-Budgets im Bereich Sicherheitstechnik. Integriert in `sicherheitstechnik/page.tsx`.

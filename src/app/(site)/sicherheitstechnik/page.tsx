@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { SicherheitsBudgetRechner } from '@/components/sicherheitstechnik/sicherheits-budget-rechner';
+
 import Link from 'next/link';
 import type { ComponentType } from 'react';
 
@@ -178,6 +180,7 @@ export default async function SicherheitstechnikPage() {
         {/* Hauseingang als Blickfang, daneben der Ablauf als Schriftfeld */}
         <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           <div className="lg:col-span-7">
+            <div className="mb-16"><SicherheitsBudgetRechner /></div>
             <ImagePlaceholder
               slot={{
                 motif: 'Objektfoto: Hauseingang mit Außenkamera, Türkontakt und Sicherheitsbeschlag',
@@ -205,6 +208,120 @@ export default async function SicherheitstechnikPage() {
       </Section>
 
       {/* 02 Bereiche: Raster mit Haarlinien wie die Tür- und Schließtechnik */}
+
+<Section className="py-16 md:py-24 lg:py-32 border-t border-border mt-16">
+  <SectionHeading
+    nummer="01b"
+    eyebrow="Grundlagen der Sicherheit"
+    title="Prävention, Detektion und Intervention"
+    lead="Eine tiefgehende architektonische Methodik für lückenlosen Schutz."
+  />
+
+  <div className="mt-12 text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+    <div className="prose prose-p:text-[oklch(0.32_0.02_260)] prose-headings:text-[oklch(0.16_0.02_260)] prose-headings:font-semibold max-w-none">
+      <p>
+        Die Absicherung von Objekten ist heutzutage nicht mehr nur ein technisches Randthema, sondern eine essenzielle Grundlage für den Schutz von Menschen, Werten und Betriebsabläufen. In unserer sich schnell verändernden Welt steigen die Anforderungen an professionelle Sicherheitstechnik kontinuierlich. Wir betrachten Sicherheitstechnik als eine ganzheitliche architektonische Methodik, die weit über das einfache Anbringen einer Kamera oder eines Bewegungsmelders hinausgeht. Es handelt sich um ein tief verwobenes System aus ineinandergreifenden Komponenten, das präzise auf die individuellen Gegebenheiten jedes Objekts abgestimmt werden muss. Unsere Leistungsarchitektur basiert auf drei fundamentalen Säulen: präventive Abschreckung, verlässliche Detektion und proaktive Intervention.
+      </p>
+
+      <p>
+        Zunächst analysieren wir detailliert die bestehende Infrastruktur und die potenziellen Gefahrenquellen. Die Prävention bildet dabei die erste Verteidigungslinie. Hier setzen wir auf sichtbare mechanische und elektronische Barrieren, die das Risiko eines unbefugten Eindringens signifikant minimieren. Mechanischer Schutz – wie hochsichere Schließzylinder, einbruchhemmende Türen und Fensterbeschläge – bildet das physische Fundament. Er verzögert den Einbruchsversuch maßgeblich, was in den meisten Fällen bereits dazu führt, dass Täter ihr Vorhaben abbrechen. Doch mechanischer Schutz allein reicht oft nicht aus.
+      </p>
+
+      <p>
+        Die zweite Säule, die Detektion, kommt ins Spiel, wenn die Prävention überwunden wird oder ergänzt werden soll. Moderne Alarmtechnik und Videoüberwachungssysteme bilden hier das Rückgrat. Wir nutzen hochsensible Sensoren zur Außenhautsicherung, die bereits den Versuch eines Einbruchs an Fenstern oder Türen erkennen, noch bevor der Täter im Gebäude ist. Intelligente Videoanalysesysteme unterscheiden dank moderner Algorithmen zuverlässig zwischen relevanten Ereignissen und Fehlalarmen (wie etwa vorbeilaufenden Tieren oder sich im Wind bewegenden Ästen). Diese Kamerasysteme liefern nicht nur im Nachhinein wichtiges Beweismaterial, sondern ermöglichen in Echtzeit einen Überblick über die Situation.
+      </p>
+
+      <p>
+        Die dritte Säule, die Intervention, stellt sicher, dass auf ein detektiertes Ereignis sofort die richtige Reaktion erfolgt. Smarte Funktionen vernetzen die Komponenten so, dass im Alarmfall beispielsweise sofort eine Meldung an das Smartphone des Eigentümers oder eine Notruf- und Serviceleitstelle abgesetzt wird. Gleichzeitig können intelligente Systeme im Gebäude reagieren: Lichter werden eingeschaltet, Rollläden hochgefahren, um maximale Aufmerksamkeit zu erzeugen. Bei kritischen Situationen bieten Panik- und Alarmtaster eine direkte, unkomplizierte Möglichkeit, diskret Hilfe zu rufen – ein unverzichtbares Feature, besonders in gewerblichen Objekten oder bei erhöhtem persönlichen Schutzbedarf.
+      </p>
+
+      <p>
+        Um diese drei Säulen effektiv zu verbinden, setzen wir auf kombinierte Konzepte. Ein isoliertes Alarmsystem ohne entsprechenden mechanischen Widerstand bietet ebenso wenig Sicherheit wie eine Panzertür, bei der niemand bemerkt, wenn jemand tagelang daran manipuliert. Wir integrieren alle Gewerke – von der Zutrittskontrolle über die Videotechnik bis zur Alarmanlage – in eine kohärente, leicht bedienbare Plattform. So entsteht ein engmaschiges Sicherheitsnetz, das lückenlosen Schutz bietet.
+      </p>
+
+      <h3 className="text-xl mt-12 mb-6">Vergleichsmatrix unserer Sicherheitskonzepte</h3>
+
+      <div className="overflow-x-auto">
+        <table className="w-full text-left border-collapse mt-6 mb-12">
+          <thead>
+            <tr>
+              <th className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3 font-semibold">Kriterium</th>
+              <th className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3 font-semibold">Basis-Schutz</th>
+              <th className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3 font-semibold">Erweitert</th>
+              <th className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3 font-semibold">Premium-Integration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3 font-semibold">Mechanische Grundsicherung</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Standard-Profilzylinder</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Hochsicherheits-Zylinder</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Elektronische Schließanlage</td>
+            </tr>
+            <tr>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3 font-semibold">Außenhautsicherung</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Tür-/Fensterkontakte (EG)</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Alle potenziellen Zugänge</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">+ Glasbruch- &amp; Erschütterungssensoren</td>
+            </tr>
+            <tr>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3 font-semibold">Videoüberwachung</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Bereichsübersicht (Eingang)</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Perimeterüberwachung</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Intelligente Videoanalyse &amp; Tracking</td>
+            </tr>
+            <tr>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3 font-semibold">Alarmtechnik</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Lokale Sirene</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Aufschaltung zur Leitstelle</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Redundante Kommunikationswege</td>
+            </tr>
+            <tr>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3 font-semibold">Smart Integration</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Basis-App Steuerung</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Szenen-Automatisierung</td>
+              <td className="border-b border-[oklch(0.89_0.008_260/0.55)] py-3">Vollständige Gebäude-Integration</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 className="text-xl mt-12 mb-6">Häufig gestellte Fragen (FAQ) zur professionellen Sicherheitstechnik</h3>
+
+      <div className="space-y-8">
+        <div>
+          <strong className="block text-lg mb-2">1. Wie effektiv ist eine Videoüberwachung wirklich zur Abschreckung?</strong>
+          <p>Eine sichtbare, professionell installierte Kameraanlage reduziert das Risiko eines Einbruchs statistisch signifikant. Täter meiden Objekte mit offensichtlichem Überwachungsdruck, da das Entdeckungsrisiko zu hoch ist. Wichtig ist jedoch, dass die Anlage erkennbar funktionsfähig ist – Attrappen werden von Profis schnell entlarvt und können sogar gegenteilige Effekte erzielen.</p>
+        </div>
+
+        <div>
+          <strong className="block text-lg mb-2">2. Was passiert bei einem Stromausfall? Sind meine Systeme dann nutzlos?</strong>
+          <p>Nein. Alle unsere professionellen Einbruchmelde- und Zugangskontrollsysteme sind mit Notstromakkus ausgestattet. Diese überbrücken Stromausfälle problemlos über mehrere Stunden oder gar Tage, sodass die Schutzfunktion lückenlos erhalten bleibt. Auch die Kommunikationswege (z.B. via Mobilfunk-Fallback) bleiben aktiv.</p>
+        </div>
+
+        <div>
+          <strong className="block text-lg mb-2">3. Ist die Installation in einem bestehenden, älteren Gebäude problemlos möglich?</strong>
+          <p>Ja. Für Bestandsbauten, in denen keine Kabel verlegt werden können oder sollen, bieten wir hochsichere, verschlüsselte Funk-Alarmsysteme an. Diese Komponenten arbeiten absolut zuverlässig, lassen sich staub- und schmutzfrei installieren und flexibel erweitern.</p>
+        </div>
+
+        <div>
+          <strong className="block text-lg mb-2">4. Können Haustiere Fehlalarme auslösen?</strong>
+          <p>Moderne Bewegungsmelder sind &quot;tierimmun&quot; (pet-immune). Durch intelligente Sensorik und Auswertungsalgorithmen können sie zwischen einem Menschen und einem Haustier (bis zu einem gewissen Gewicht) unterscheiden. So können Ihre Tiere sich im Haus frei bewegen, während die Alarmanlage scharfgeschaltet ist, ohne dass Fehlalarme entstehen.</p>
+        </div>
+
+        <div>
+          <strong className="block text-lg mb-2">5. Wie aufwendig ist die Wartung solcher Anlagen?</strong>
+          <p>Eine regelmäßige Wartung ist essenziell für die dauerhafte Zuverlässigkeit. Die meisten Systeme führen automatische Selbsttests durch und melden schwache Batterien oder Störungen frühzeitig. Wir empfehlen eine jährliche Inspektion durch unsere Techniker, bei der alle Sensoren geprüft, Batterien (bei Funksystemen) gewechselt und Software-Updates eingespielt werden.</p>
+        </div>
+      </div>
+
+      <p className="mt-8">
+        Durch diese fundierte Herangehensweise stellen wir sicher, dass Sie nicht nur ein Produkt erwerben, sondern ein auf Ihre Lebens- oder Geschäftssituation maßgeschneidertes Sicherheitskonzept. Vertrauen Sie auf unsere Expertise und investieren Sie in echte Sicherheit. Die Planung einer solchen Anlage beginnt stets mit einer gründlichen Bestandsaufnahme vor Ort.
+      </p>
+    </div>
+  </div>
+</Section>
+
       <Section tone="muted">
         <SectionHeading
           nummer="02"
