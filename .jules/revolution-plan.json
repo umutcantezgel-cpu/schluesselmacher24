@@ -1,0 +1,1218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-21T19:15:03.207847+00:00",
+  "total_existing_routes": 50,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/(payload)/admin/[[...segments]]",
+      "source_file": "app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Admin",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Admin",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AdminWidget",
+        "target_file": "components/interactive/admin-widget.tsx",
+        "action_file": "actions/process-admin.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 2710,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Startseite",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Startseite",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StartseiteWidget",
+        "target_file": "components/interactive/start-widget.tsx",
+        "action_file": "actions/process-start.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Ratgeber",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Ratgeber",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberWidget",
+        "target_file": "components/interactive/ratgeber-widget.tsx",
+        "action_file": "actions/process-ratgeber.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1275,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Ratgeber",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Ratgeber",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "RatgeberWidget",
+        "target_file": "components/interactive/ratgeber-widget.tsx",
+        "action_file": "actions/process-ratgeber.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2703,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Schluessel Nach Vorlage",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Schluessel Nach Vorlage",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachVorlageWidget",
+        "target_file": "components/interactive/schluessel-nach-vorlage-widget.tsx",
+        "action_file": "actions/process-schluessel-nach-vorlage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Anfrage",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Anfrage",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageWidget",
+        "target_file": "components/interactive/anfrage-widget.tsx",
+        "action_file": "actions/process-anfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/[...unbekannt]",
+      "source_file": "app/(site)/[...unbekannt]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Allgemein",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Allgemein",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AllgemeinWidget",
+        "target_file": "components/interactive/allgemein-widget.tsx",
+        "action_file": "actions/process-allgemein.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Warenkorb",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Warenkorb",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WarenkorbWidget",
+        "target_file": "components/interactive/warenkorb-widget.tsx",
+        "action_file": "actions/process-warenkorb.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 917,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Kasse",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Kasse",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KasseWidget",
+        "target_file": "components/interactive/kasse-widget.tsx",
+        "action_file": "actions/process-kasse.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1238,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Schluessel Nach Code",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Schluessel Nach Code",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeWidget",
+        "target_file": "components/interactive/schluessel-nach-code-widget.tsx",
+        "action_file": "actions/process-schluessel-nach-code.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1540,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Schluessel Nach Code",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Schluessel Nach Code",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselNachCodeWidget",
+        "target_file": "components/interactive/schluessel-nach-code-widget.tsx",
+        "action_file": "actions/process-schluessel-nach-code.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1931,
+      "content_expansion_topics": [
+        "Moderne Einbruchschutz-Technologien f\u00fcr Sicherheitstechnik",
+        "Sicherheitsklassen und Widerstandsgrade nach DIN EN 1627",
+        "F\u00f6rderm\u00f6glichkeiten durch die KfW"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikWidget",
+        "target_file": "components/interactive/sicherheitstechnik-widget.tsx",
+        "action_file": "actions/process-sicherheitstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1229,
+      "content_expansion_topics": [
+        "Moderne Einbruchschutz-Technologien f\u00fcr Sicherheitstechnik",
+        "Sicherheitsklassen und Widerstandsgrade nach DIN EN 1627",
+        "F\u00f6rderm\u00f6glichkeiten durch die KfW"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitstechnikWidget",
+        "target_file": "components/interactive/sicherheitstechnik-widget.tsx",
+        "action_file": "actions/process-sicherheitstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 878,
+      "content_expansion_topics": [
+        "Moderne Einbruchschutz-Technologien f\u00fcr Sicherheitscheck",
+        "Sicherheitsklassen und Widerstandsgrade nach DIN EN 1627",
+        "F\u00f6rderm\u00f6glichkeiten durch die KfW"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SicherheitscheckWidget",
+        "target_file": "components/interactive/sicherheitscheck-widget.tsx",
+        "action_file": "actions/process-sicherheitscheck.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2771,
+      "content_expansion_topics": [
+        "Moderne Einbruchschutz-Technologien f\u00fcr Tuer Und Schliesstechnik",
+        "Sicherheitsklassen und Widerstandsgrade nach DIN EN 1627",
+        "F\u00f6rderm\u00f6glichkeiten durch die KfW"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikWidget",
+        "target_file": "components/interactive/tuer-und-schliesstechnik-widget.tsx",
+        "action_file": "actions/process-tuer-und-schliesstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1023,
+      "content_expansion_topics": [
+        "Moderne Einbruchschutz-Technologien f\u00fcr Tuer Und Schliesstechnik",
+        "Sicherheitsklassen und Widerstandsgrade nach DIN EN 1627",
+        "F\u00f6rderm\u00f6glichkeiten durch die KfW"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TuerUndSchliesstechnikWidget",
+        "target_file": "components/interactive/tuer-und-schliesstechnik-widget.tsx",
+        "action_file": "actions/process-tuer-und-schliesstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1889,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Bestellung",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Bestellung",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "BestellungWidget",
+        "target_file": "components/interactive/bestellung-widget.tsx",
+        "action_file": "actions/process-bestellung.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3064,
+      "content_expansion_topics": [
+        "Technische Spezifikationen und DIN-Normen f\u00fcr Gleichschliessende Zylinder",
+        "Planungsleitfaden f\u00fcr hierarchische Schlie\u00dfberechtigungen",
+        "Sicherheitsstufen, Bohr- und Ziehschutz-Details"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "GleichschliessendeZylinderWidget",
+        "target_file": "components/interactive/gleichschliessende-zylinder-widget.tsx",
+        "action_file": "actions/process-gleichschliessende-zylinder.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Technische Spezifikationen und DIN-Normen f\u00fcr Konfigurator",
+        "Planungsleitfaden f\u00fcr hierarchische Schlie\u00dfberechtigungen",
+        "Sicherheitsstufen, Bohr- und Ziehschutz-Details"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorWidget",
+        "target_file": "components/interactive/konfigurator-widget.tsx",
+        "action_file": "actions/process-konfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service",
+        "Product"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3482,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Elektronische Zutrittsloesungen",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Elektronische Zutrittsloesungen",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ElektronischeZutrittsloesungenWidget",
+        "target_file": "components/interactive/elektronische-zutrittsloesungen-widget.tsx",
+        "action_file": "actions/process-elektronische-zutrittsloesungen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 906,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Konfigurator",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Konfigurator",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorWidget",
+        "target_file": "components/interactive/konfigurator-widget.tsx",
+        "action_file": "actions/process-konfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service",
+        "Product"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2666,
+      "content_expansion_topics": [
+        "Technische Spezifikationen und DIN-Normen f\u00fcr Schliessanlagen",
+        "Planungsleitfaden f\u00fcr hierarchische Schlie\u00dfberechtigungen",
+        "Sicherheitsstufen, Bohr- und Ziehschutz-Details"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchliessanlagenWidget",
+        "target_file": "components/interactive/schliessanlagen-widget.tsx",
+        "action_file": "actions/process-schliessanlagen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 879,
+      "content_expansion_topics": [
+        "Technische Spezifikationen und DIN-Normen f\u00fcr Konfigurator",
+        "Planungsleitfaden f\u00fcr hierarchische Schlie\u00dfberechtigungen",
+        "Sicherheitsstufen, Bohr- und Ziehschutz-Details"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KonfiguratorWidget",
+        "target_file": "components/interactive/konfigurator-widget.tsx",
+        "action_file": "actions/process-konfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service",
+        "Product"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2747,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Service Und Termin",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Service Und Termin",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceUndTerminWidget",
+        "target_file": "components/interactive/service-und-termin-widget.tsx",
+        "action_file": "actions/process-service-und-termin.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Terminstatus",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Terminstatus",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "TerminstatusWidget",
+        "target_file": "components/interactive/terminstatus-widget.tsx",
+        "action_file": "actions/process-terminstatus.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Anfrage",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Anfrage",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageWidget",
+        "target_file": "components/interactive/anfrage-widget.tsx",
+        "action_file": "actions/process-anfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1242,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Vor Ort",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Vor Ort",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VorOrtWidget",
+        "target_file": "components/interactive/vor-ort-widget.tsx",
+        "action_file": "actions/process-vor-ort.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1122,
+      "content_expansion_topics": [
+        "Detaillierte Fach-Erl\u00e4uterung f\u00fcr den Bereich Kontakt",
+        "Schritt-f\u00fcr-Schritt Prozessbeschreibung und Methodik f\u00fcr Kontakt",
+        "Umfassende FAQ mit technischen Spezifikationen und Preistransparenz"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KontaktWidget",
+        "target_file": "components/interactive/kontakt-widget.tsx",
+        "action_file": "actions/process-kontakt.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Rechtlich bindende Erkl\u00e4rungen zu Impressum",
+        "Datenschutz- und Transparenzrichtlinien",
+        "Geltungsbereich und Streitschlichtung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ImpressumWidget",
+        "target_file": "components/interactive/impressum-widget.tsx",
+        "action_file": "actions/process-impressum.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Rechtlich bindende Erkl\u00e4rungen zu Cookie Einstellungen",
+        "Datenschutz- und Transparenzrichtlinien",
+        "Geltungsbereich und Streitschlichtung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "CookieEinstellungenWidget",
+        "target_file": "components/interactive/cookie-einstellungen-widget.tsx",
+        "action_file": "actions/process-cookie-einstellungen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1015,
+      "content_expansion_topics": [
+        "Rechtlich bindende Erkl\u00e4rungen zu Versand Und Zahlung",
+        "Datenschutz- und Transparenzrichtlinien",
+        "Geltungsbereich und Streitschlichtung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VersandUndZahlungWidget",
+        "target_file": "components/interactive/versand-und-zahlung-widget.tsx",
+        "action_file": "actions/process-versand-und-zahlung.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 869,
+      "content_expansion_topics": [
+        "Rechtlich bindende Erkl\u00e4rungen zu Widerruf",
+        "Datenschutz- und Transparenzrichtlinien",
+        "Geltungsbereich und Streitschlichtung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "WiderrufWidget",
+        "target_file": "components/interactive/widerruf-widget.tsx",
+        "action_file": "actions/process-widerruf.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 915,
+      "content_expansion_topics": [
+        "Rechtlich bindende Erkl\u00e4rungen zu Agb",
+        "Datenschutz- und Transparenzrichtlinien",
+        "Geltungsbereich und Streitschlichtung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AgbWidget",
+        "target_file": "components/interactive/agb-widget.tsx",
+        "action_file": "actions/process-agb.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1230,
+      "content_expansion_topics": [
+        "Rechtlich bindende Erkl\u00e4rungen zu Datenschutz",
+        "Datenschutz- und Transparenzrichtlinien",
+        "Geltungsbereich und Streitschlichtung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DatenschutzWidget",
+        "target_file": "components/interactive/datenschutz-widget.tsx",
+        "action_file": "actions/process-datenschutz.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1307,
+      "content_expansion_topics": [
+        "Kaufberatung und Produktdetails f\u00fcr Artikel",
+        "Technische Daten und Kompatibilit\u00e4t",
+        "Montagehinweise und Lieferumfang"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelWidget",
+        "target_file": "components/interactive/artikel-widget.tsx",
+        "action_file": "actions/process-artikel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1660,
+      "content_expansion_topics": [
+        "Kaufberatung und Produktdetails f\u00fcr Artikel",
+        "Technische Daten und Kompatibilit\u00e4t",
+        "Montagehinweise und Lieferumfang"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ArtikelWidget",
+        "target_file": "components/interactive/artikel-widget.tsx",
+        "action_file": "actions/process-artikel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Spezifische Vor-Ort-Leistungen f\u00fcr den Standort Standorte",
+        "Anfahrtskosten und regionale Einsatzbedingungen",
+        "Kundenreferenzen und lokale Besonderheiten"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteWidget",
+        "target_file": "components/interactive/standorte-widget.tsx",
+        "action_file": "actions/process-standorte.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1117,
+      "content_expansion_topics": [
+        "Spezifische Vor-Ort-Leistungen f\u00fcr den Standort Standorte",
+        "Anfahrtskosten und regionale Einsatzbedingungen",
+        "Kundenreferenzen und lokale Besonderheiten"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "StandorteWidget",
+        "target_file": "components/interactive/standorte-widget.tsx",
+        "action_file": "actions/process-standorte.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2996,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Autoschluessel",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AutoschluesselWidget",
+        "target_file": "components/interactive/autoschluessel-widget.tsx",
+        "action_file": "actions/process-autoschluessel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1279,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Marken",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenWidget",
+        "target_file": "components/interactive/marken-widget.tsx",
+        "action_file": "actions/process-marken.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1709,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Marken",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenWidget",
+        "target_file": "components/interactive/marken-widget.tsx",
+        "action_file": "actions/process-marken.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2504,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Marken",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "MarkenWidget",
+        "target_file": "components/interactive/marken-widget.tsx",
+        "action_file": "actions/process-marken.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1591,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Funkschluessel",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FunkschluesselWidget",
+        "target_file": "components/interactive/funkschluessel-widget.tsx",
+        "action_file": "actions/process-funkschluessel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1722,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Programmieren",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ProgrammierenWidget",
+        "target_file": "components/interactive/programmieren-widget.tsx",
+        "action_file": "actions/process-programmieren.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1021,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Anfrage",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "AnfrageWidget",
+        "target_file": "components/interactive/anfrage-widget.tsx",
+        "action_file": "actions/process-anfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1633,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Kopieren",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "KopierenWidget",
+        "target_file": "components/interactive/kopieren-widget.tsx",
+        "action_file": "actions/process-kopieren.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1689,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Nachmachen",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "NachmachenWidget",
+        "target_file": "components/interactive/nachmachen-widget.tsx",
+        "action_file": "actions/process-nachmachen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1707,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Smart Key",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SmartKeyWidget",
+        "target_file": "components/interactive/smart-key-widget.tsx",
+        "action_file": "actions/process-smart-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1542,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Schluesselbart Fraesen",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SchluesselbartFraesenWidget",
+        "target_file": "components/interactive/schluesselbart-fraesen-widget.tsx",
+        "action_file": "actions/process-schluesselbart-fraesen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1621,
+      "content_expansion_topics": [
+        "Spezifische Erl\u00e4uterung der Programmierung und Fr\u00e4sung f\u00fcr Fahrzeugoeffnung",
+        "Beschreibung der Vor-Ort-Leistung und ben\u00f6tigten Fahrzeugdokumente",
+        "H\u00e4ufige Fehlermeldungen und Wegfahrsperren-Kompatibilit\u00e4t"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "FahrzeugoeffnungWidget",
+        "target_file": "components/interactive/fahrzeugoeffnung-widget.tsx",
+        "action_file": "actions/process-fahrzeugoeffnung.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "FAQPage",
+        "WebPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
