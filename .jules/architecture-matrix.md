@@ -1,0 +1,54 @@
+# Architecture Transformation Matrix
+
+| Route | Source File | Target Word Count | Interactive Module | Action |
+|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 850 | InteractiveModule | src/actions/action-1.ts |
+| / | src/app/(site)/page.tsx | 1452 | InteractiveModule | src/actions/action-2.ts |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 850 | InteractiveModule | src/actions/action-3.ts |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 897 | InteractiveModule | src/actions/action-4.ts |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 1765 | InteractiveModule | src/actions/action-5.ts |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 850 | InteractiveModule | src/actions/action-6.ts |
+| /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | 850 | InteractiveModule | src/actions/action-7.ts |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 850 | InteractiveModule | src/actions/action-8.ts |
+| /kasse | src/app/(site)/kasse/page.tsx | 850 | InteractiveModule | src/actions/action-9.ts |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 884 | InteractiveModule | src/actions/action-10.ts |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 1032 | InteractiveModule | src/actions/action-11.ts |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1172 | SecurityCheckCalculator | src/actions/security.ts |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 884 | SecurityCheckCalculator | src/actions/security.ts |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 850 | SecurityCheckCalculator | src/actions/security.ts |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 1810 | InteractiveModule | src/actions/action-15.ts |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 850 | InteractiveModule | src/actions/action-16.ts |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1238 | InteractiveModule | src/actions/action-17.ts |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 1681 | InteractiveModule | src/actions/action-18.ts |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 850 | InteractiveModule | src/actions/action-19.ts |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2341 | InteractiveModule | src/actions/action-20.ts |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 850 | InteractiveModule | src/actions/action-21.ts |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 1805 | LockingSystemPlanner | src/actions/planner.ts |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 850 | LockingSystemPlanner | src/actions/planner.ts |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 1780 | InteractiveModule | src/actions/action-24.ts |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 850 | InteractiveModule | src/actions/action-25.ts |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 850 | InteractiveModule | src/actions/action-26.ts |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 964 | InteractiveModule | src/actions/action-27.ts |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 850 | InteractiveModule | src/actions/action-28.ts |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 850 | InteractiveModule | src/actions/action-29.ts |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 850 | InteractiveModule | src/actions/action-30.ts |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 902 | InteractiveModule | src/actions/action-31.ts |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 908 | InteractiveModule | src/actions/action-32.ts |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 954 | InteractiveModule | src/actions/action-33.ts |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 1197 | InteractiveModule | src/actions/action-34.ts |
+| /artikel | src/app/(site)/artikel/page.tsx | 953 | InteractiveModule | src/actions/action-35.ts |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 1050 | InteractiveModule | src/actions/action-36.ts |
+| /standorte | src/app/(site)/standorte/page.tsx | 850 | InteractiveModule | src/actions/action-37.ts |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 850 | InteractiveModule | src/actions/action-38.ts |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 1968 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 909 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 1025 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1539 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 850 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 850 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 850 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 850 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 850 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 850 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 850 | CarKeyConfigurator | src/actions/car-key.ts |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 850 | CarKeyConfigurator | src/actions/car-key.ts |
