@@ -11,6 +11,7 @@ import { cn } from '@/lib/cn';
 import { Accordion } from '@/components/ui/accordion';
 import { PageHeader } from '@/components/layout/page-header';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { ServiceTierCalculator } from '@/components/calculator/service-tier-calculator';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { AblaufGrafik } from '@/components/visual/generators/ablauf';
@@ -119,7 +120,7 @@ function ohnePlatzhalter(text: string | undefined): string | undefined {
   return istPlatzhalter(text) || enthaeltPlatzhalter(text) ? undefined : text;
 }
 
-export default async function ServiceUndTerminPage() {
+export default async function ServiceUndTerminPage(_props: { params: Promise<unknown>; searchParams: Promise<unknown> }) {
   const [page, settings, richtwerte] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
@@ -293,6 +294,21 @@ export default async function ServiceUndTerminPage() {
                     <p>
                       Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
                     </p>
+                    <p className="mt-4">
+                      Die Bestandsaufnahme bildet das Fundament jedes erfolgreichen Sicherheitsprojekts. Unsere Experten führen vor Ort eine detaillierte Schwachstellenanalyse durch, die weit über das Offensichtliche hinausgeht. Wir prüfen nicht nur die physische Beschaffenheit von Türen, Fenstern und Zugangswegen, sondern analysieren auch organisatorische Abläufe, bestehende Sicherheitsrichtlinien und potenzielle Angriffsvektoren.
+                    </p>
+                    <p className="mt-4">
+                      In der anschließenden Planungsphase übersetzen wir diese Erkenntnisse in ein kohärentes Sicherheitskonzept. Dabei berücksichtigen wir:
+                    </p>
+                    <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-foreground-muted">
+                      <li><strong>Mechanische Grundsicherung:</strong> Festlegung der erforderlichen Widerstandsklassen (RC-Klassen) gemäß DIN EN 1627.</li>
+                      <li><strong>Zutrittskontrolle:</strong> Definition von Berechtigungskonzepten und Auswahl geeigneter Identifikationsmedien (RFID, Biometrie, Mobile Access).</li>
+                      <li><strong>Brandschutz und Fluchtwege:</strong> Integration von Panikschlössern und Fluchttürsteuerungen gemäß DIN EN 179 und DIN EN 1125.</li>
+                      <li><strong>Integration:</strong> Nahtlose Einbindung in bestehende Gebäudeleittechnik oder Alarmsysteme.</li>
+                    </ul>
+                    <p className="mt-4">
+                      Das Resultat ist ein detailliertes, modular aufgebautes Konzept, das Ihnen volle Transparenz über die empfohlenen Maßnahmen und die damit verbundenen Investitionen bietet. Wir legen großen Wert darauf, dass Sie jede Entscheidungsebene nachvollziehen können.
+                    </p>
                   </div>
                   <dl className="mt-6 max-w-measure border-t border-border">
                     {PHASEN.map((phase, i) => (
@@ -323,6 +339,43 @@ export default async function ServiceUndTerminPage() {
                     <p>
                       Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
                     </p>
+                    <h4 className="mt-6 font-semibold text-foreground">Vergleich: Mechanik vs. Elektronik</h4>
+                    <div className="mt-4 overflow-x-auto rounded-xl border border-border">
+                      <table className="w-full text-left text-sm">
+                        <thead className="bg-surface-muted text-foreground-muted">
+                          <tr>
+                            <th className="px-4 py-3 font-medium">Eigenschaft</th>
+                            <th className="px-4 py-3 font-medium">Reine Mechanik</th>
+                            <th className="px-4 py-3 font-medium">Mechatronik / Elektronik</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-border text-foreground">
+                          <tr>
+                            <td className="px-4 py-3">Initialkosten</td>
+                            <td className="px-4 py-3">Gering bis mittel</td>
+                            <td className="px-4 py-3">Mittel bis hoch</td>
+                          </tr>
+                          <tr>
+                            <td className="px-4 py-3">Schlüsselverlust</td>
+                            <td className="px-4 py-3">Zylindertausch notwendig</td>
+                            <td className="px-4 py-3">Einfache Sperrung per Software</td>
+                          </tr>
+                          <tr>
+                            <td className="px-4 py-3">Wartung</td>
+                            <td className="px-4 py-3">Gelegentliches Schmieren</td>
+                            <td className="px-4 py-3">Batteriewechsel, Software-Updates</td>
+                          </tr>
+                          <tr>
+                            <td className="px-4 py-3">Protokollierung</td>
+                            <td className="px-4 py-3">Nicht möglich</td>
+                            <td className="px-4 py-3">Wer, wann, wo (DSGVO-konform konfigurierbar)</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p className="mt-4">
+                      Unsere Zulieferer und Partner wählen wir nach strengen Qualitätskriterien aus. Wir verbauen ausschließlich Komponenten von Herstellern, die eine langjährige Ersatzteilversorgung garantieren und höchste Standards in der Fertigungspräzision erfüllen.
+                    </p>
                   </div>
                 </div>
               </details>
@@ -342,6 +395,15 @@ export default async function ServiceUndTerminPage() {
                     <p>
                       Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
                     </p>
+                    <h4 className="mt-6 font-semibold text-foreground">Service-Level-Agreements (SLA)</h4>
+                    <p className="mt-2">
+                      Um den reibungslosen Betrieb sicherzustellen, bieten wir verschiedene Service-Level an, die auf die Kritikalität Ihrer Infrastruktur abgestimmt sind. Unsere SLAs definieren verbindliche Reaktionszeiten im Störungsfall, Turnusse für präventive Wartungsarbeiten und Modalitäten für Software- und Firmware-Upgrades.
+                    </p>
+                    <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-foreground-muted">
+                      <li><strong>Basis-Wartung:</strong> Jährliche Inspektion und Funktionsprüfung.</li>
+                      <li><strong>Proaktive Wartung:</strong> Inklusive Batteriemanagement für elektronische Zylinder und garantierter Ersatzteilverfügbarkeit.</li>
+                      <li><strong>Full-Service:</strong> 24/7 Rufbereitschaft, garantierte Reaktionszeiten &lt; 4 Stunden, unlimitierte Vor-Ort-Einsätze bei Hardwaredefekten.</li>
+                    </ul>
                   </div>
                 </div>
               </details>
@@ -360,6 +422,12 @@ export default async function ServiceUndTerminPage() {
                     </p>
                     <p>
                       Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
+                    </p>
+                    <p className="mt-4">
+                      Besonderes Augenmerk legen wir auf die Konformität mit gesetzlichen und regulatorischen Vorgaben (Compliance). Bei der Implementierung elektronischer Zutrittssysteme in sensiblen Bereichen unterstützen wir Sie bei der Erstellung von Verfahrensverzeichnissen und der datenschutzkonformen Konfiguration (Privacy by Design).
+                    </p>
+                    <p className="mt-4">
+                      Für Filialisten und dezentrale Organisationen realisieren wir Cloud-basierte Management-Plattformen, die eine zentrale Verwaltung von Berechtigungen über mehrere Standorte hinweg ermöglichen, ohne Kompromisse bei der Sicherheit einzugehen.
                     </p>
                   </div>
                 </div>
@@ -382,6 +450,9 @@ export default async function ServiceUndTerminPage() {
             werte={richtwerte.serviceEinsatz}
             anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
           />
+        </div>
+        <div className="mt-12 max-w-3xl">
+          <ServiceTierCalculator />
         </div>
       </Section>
 
