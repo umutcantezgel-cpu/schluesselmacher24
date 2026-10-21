@@ -1,0 +1,1 @@
+System architecture now includes an interactive Budgetrechner module for Sicherheitstechnik.
