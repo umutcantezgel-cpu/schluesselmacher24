@@ -1,0 +1,2 @@
+# Architecture Blueprint
+Transformation blueprint generated in .jules/revolution-plan.json. Matrix documented in .jules/architecture-matrix.md.
