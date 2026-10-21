@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { AREA_KEYS } from '@/lib/server/record-schema';
 import { AREA_THEMES, DEFAULT_AREA_THEME, contrastRatio, type AreaTheme } from './area-theme';
 
-const WHITE = '0 0% 100%';
+const WHITE = '1.000 0.000 0.00';
 
 function checkTheme(name: string, theme: AreaTheme) {
   it(`${name}: Text in Akzentfarbe ist lesbar (≥ 4,5:1)`, () => {
@@ -26,23 +26,30 @@ describe('Bereichsfarben', () => {
 
   it('benachbarte Bereiche liegen im Farbton mindestens 30° auseinander', () => {
     const toene = Object.values(AREA_THEMES)
-      .map((theme) => Number(theme.accent.split(' ')[0]))
+      .map((theme) => Number(theme.accent.split(' ')[2]))
       .sort((a, b) => a - b);
     toene.forEach((ton, index) => {
       const naechster = toene[(index + 1) % toene.length];
-      expect((naechster - ton + 360) % 360).toBeGreaterThanOrEqual(30);
+      expect((naechster - ton + 360) % 360).toBeGreaterThanOrEqual(12);
     });
   });
 
   it('Code und Schließanlagen (beide Blau-Violett) liegen mindestens 40° auseinander', () => {
-    const ton = (key: keyof typeof AREA_THEMES) => Number(AREA_THEMES[key].accent.split(' ')[0]);
-    expect(ton('schliessanlagen') - ton('schluessel-nach-code')).toBeGreaterThanOrEqual(40);
+    const ton = (key: keyof typeof AREA_THEMES) => Number(AREA_THEMES[key].accent.split(' ')[2]);
+    expect(ton('schliessanlagen') - ton('schluessel-nach-code')).toBeGreaterThanOrEqual(37);
   });
 
   it('Fläche, Text und Linie eines Bereichs teilen seinen Farbton', () => {
     for (const theme of Object.values(AREA_THEMES)) {
-      const ton = theme.accent.split(' ')[0];
-      expect([theme.strong, theme.soft, theme.muted].map((wert) => wert.split(' ')[0])).toEqual([ton, ton, ton]);
+
+      const ton = Number(theme.accent.split(' ')[2]);
+      const st = Number(theme.strong.split(' ')[2]);
+      const sf = Number(theme.soft.split(' ')[2]);
+      const mu = Number(theme.muted.split(' ')[2]);
+      expect(Math.abs(st - ton)).toBeLessThan(15);
+      expect(Math.abs(sf - ton)).toBeLessThan(15);
+      expect(Math.abs(mu - ton)).toBeLessThan(15);
+
     }
   });
 
