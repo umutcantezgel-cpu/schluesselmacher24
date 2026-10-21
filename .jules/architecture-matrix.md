@@ -1,0 +1,54 @@
+# Architecture Matrix
+
+| Route | Word Count | Target Word Count |
+|---|---|---|
+| /(payload)/admin/[[...segments]] | 99 | 950 |
+| /(site)/ratgeber | 317 | 950 |
+| /(site)/ratgeber/[slug] | 775 | 1275 |
+| /(site)/schluessel-nach-vorlage/anfrage | 235 | 950 |
+| /(site)/schluessel-nach-vorlage | 2203 | 2703 |
+| /(site)/[...unbekannt] | 72 | 950 |
+| /(site)/warenkorb | 342 | 950 |
+| /(site)/kasse | 417 | 950 |
+| /(site)/schluessel-nach-code | 738 | 1238 |
+| /(site)/schluessel-nach-code/[slug] | 1040 | 1540 |
+| /(site) | 2210 | 2710 |
+| /(site)/sicherheitstechnik | 1431 | 1931 |
+| /(site)/sicherheitstechnik/[slug] | 729 | 1229 |
+| /(site)/sicherheitstechnik/sicherheitscheck | 378 | 950 |
+| /(site)/tuer-und-schliesstechnik | 2271 | 2771 |
+| /(site)/tuer-und-schliesstechnik/[slug] | 523 | 1023 |
+| /(site)/bestellung/[id] | 1389 | 1889 |
+| /(site)/gleichschliessende-zylinder | 2564 | 3064 |
+| /(site)/gleichschliessende-zylinder/konfigurator | 316 | 950 |
+| /(site)/elektronische-zutrittsloesungen | 2982 | 3482 |
+| /(site)/elektronische-zutrittsloesungen/konfigurator | 406 | 950 |
+| /(site)/schliessanlagen | 2166 | 2666 |
+| /(site)/schliessanlagen/konfigurator | 379 | 950 |
+| /(site)/service-und-termin/terminstatus | 109 | 950 |
+| /(site)/service-und-termin/anfrage | 153 | 950 |
+| /(site)/service-und-termin | 2247 | 2747 |
+| /(site)/service-und-termin/vor-ort | 742 | 1242 |
+| /(site)/service-und-termin/kontakt | 622 | 1122 |
+| /(site)/rechtliches/impressum | 247 | 950 |
+| /(site)/rechtliches/cookie-einstellungen | 227 | 950 |
+| /(site)/rechtliches/versand-und-zahlung | 515 | 1015 |
+| /(site)/rechtliches/widerruf | 369 | 950 |
+| /(site)/rechtliches/agb | 415 | 950 |
+| /(site)/rechtliches/datenschutz | 730 | 1230 |
+| /(site)/artikel | 807 | 1307 |
+| /(site)/artikel/[slug] | 1160 | 1660 |
+| /(site)/standorte | 306 | 950 |
+| /(site)/standorte/[city] | 617 | 1117 |
+| /(site)/autoschluessel/marken | 779 | 1279 |
+| /(site)/autoschluessel/marken/[make]/[model] | 2004 | 2504 |
+| /(site)/autoschluessel/marken/[make] | 1209 | 1709 |
+| /(site)/autoschluessel/funkschluessel | 1091 | 1591 |
+| /(site)/autoschluessel/programmieren | 1222 | 1722 |
+| /(site)/autoschluessel/anfrage | 521 | 1021 |
+| /(site)/autoschluessel | 2496 | 2996 |
+| /(site)/autoschluessel/kopieren | 1133 | 1633 |
+| /(site)/autoschluessel/nachmachen | 1189 | 1689 |
+| /(site)/autoschluessel/smart-key | 1207 | 1707 |
+| /(site)/autoschluessel/schluesselbart-fraesen | 1042 | 1542 |
+| /(site)/autoschluessel/fahrzeugoeffnung | 1121 | 1621 |

@@ -1,0 +1,2 @@
+# Swiss Light Mode Architect Blueprint
+This document describes the updated architecture blueprint for the system based on the generated DNA and revolution plan.
