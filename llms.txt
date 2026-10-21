@@ -1,0 +1,5 @@
+# Master Architecture Blueprint
+
+Audited 50 existing routes.
+All future transformations must follow the strict Swiss Light Mode design doctrine.
+See `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for details.
