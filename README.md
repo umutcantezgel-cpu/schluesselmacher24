@@ -116,3 +116,8 @@ Alle offenen Punkte für Menschen: `docs/gestaltung/MENSCHEN.md`.
 ## Gestaltungslauf
 
 Die Unterlagen des Gestaltungslaufs liegen in `docs/gestaltung/`: der Kern des Designsystems (`KERN.md`), die Entscheidungen (`ENTSCHEIDUNGEN.md`), offene Punkte für Menschen (`MENSCHEN.md`), Textvorschläge (`TEXTVORSCHLAEGE.md`) und das Berichtsbuch mit Abnahme und Anleitung zum Zurückrollen (`BERICHT.md`). Der vollständige Arbeitsordner mit Auftrag, Plan, Prüfprotokollen, Bildsätzen, Vorher-Nachher-Galerie und Prüfwerkzeugen bleibt in der Git-Geschichte erhalten (Zweig `claude/projekt-gestaltung-entwicklung-tofodh`, Commit `b8e7ea7`, Ordner `_werkstatt/`).
+
+
+## Neu implementierte Interaktive Module
+
+- **Sicherheitstechnik Budgetrechner**: Ein interaktives Tool (unter `src/components/calculator/service-budget-calculator.tsx`) auf der Sicherheitstechnik-Seite, das Server Actions und Optimistic Updates nutzt, um ein geschätztes Projektbudget basierend auf dem Projektumfang zu berechnen.

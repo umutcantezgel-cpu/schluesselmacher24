@@ -8,6 +8,7 @@ import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { BereichIcon } from '@/components/visual/bereich-icon';
@@ -341,7 +342,101 @@ export default async function SicherheitstechnikPage() {
         </div>
       </Section>
 
-      {/* 04 · Weiterlesen: Grundschutz und Bestandsaufnahme als Stückliste, darunter die
+      <ServiceBudgetCalculator />
+
+
+      <Section id="methodik-und-faq" tone="muted">
+        <SectionHeading
+          nummer="05"
+          eyebrow="Methodik & FAQ"
+          title="Unsere architektonische Methodik und Ihre häufigsten Fragen zur Sicherheitstechnik"
+          lead="Erfahren Sie mehr über unseren strukturierten Ansatz zur Planung und Umsetzung hochmoderner Sicherheitsarchitekturen sowie Antworten auf essenzielle Fragen."
+        />
+
+        <div className="mt-12 text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+          <p>
+            In der heutigen, von komplexen Bedrohungsszenarien geprägten Welt reicht es nicht mehr aus, isolierte Sicherheitskomponenten zu installieren. Wir verfolgen einen integralen und systematischen Ansatz, der architektonische Prinzipien mit hochmoderner Technik verknüpft. Unsere Methodik basiert auf einer rigorosen Analyse der spezifischen Risikoprofile Ihres Objekts. Dabei betrachten wir Sicherheit nicht als statischen Zustand, sondern als einen kontinuierlichen Prozess der Anpassung und Optimierung. Jeder Aspekt der Außenhautsicherung, des mechanischen Schutzes und der elektronischen Überwachung wird detailliert geplant und in ein kohärentes Gesamtkonzept überführt. Durch die Nutzung offener Standards und skalierbarer Systemarchitekturen stellen wir sicher, dass Ihre Sicherheitsinfrastruktur auch zukünftigen Anforderungen gewachsen ist. Dies beinhaltet die Integration smarter Funktionen, die es ermöglichen, verschiedene Gewerke intelligent zu vernetzen – von der Alarmierung bis hin zur Gebäudeautomation. Unsere Experten evaluieren permanent neue Technologien und implementieren Best Practices, um Ihnen eine Lösung zu bieten, die nicht nur reaktiv, sondern proaktiv schützt. Die Kombination aus mechanischem Grundschutz, der als physische Barriere dient, und elektronischer Detektion, die Ereignisse in Echtzeit meldet, bildet das Fundament unserer Philosophie. Wir setzen auf Redundanz und Ausfallsicherheit, um Schwachstellen systematisch zu eliminieren. So entsteht ein engmaschiges Sicherheitsnetz, das individuell auf Ihre Bedürfnisse zugeschnitten ist und ein Höchstmaß an Schutz und Verlässlichkeit garantiert. Dabei berücksichtigen wir stets die geltenden Normen und Vorschriften, um nicht nur technische, sondern auch rechtliche Sicherheit zu gewährleisten. Unser Ziel ist es, Ihnen ein beruhigendes Gefühl der Kontrolle und Souveränität über Ihre Sicherheitsinfrastruktur zu geben, ohne dass die Nutzbarkeit im Alltag beeinträchtigt wird. Dies erreichen wir durch eine nutzerzentrierte Planung, die komplexe Technologien intuitiv bedienbar macht und sich nahtlos in Ihre Prozesse integriert. Vertrauen Sie auf unsere Expertise und lassen Sie uns gemeinsam ein Sicherheitskonzept entwickeln, das kompromisslos Ihre Werte schützt und gleichzeitig flexibel genug ist, um sich verändernden Rahmenbedingungen anzupassen. Die präzise Abstimmung aller Komponenten – von der hochauflösenden Videoüberwachung bis hin zu den sensiblen Sensoren der Alarmtechnik – garantiert eine lückenlose Erfassung sicherheitsrelevanter Vorfälle. Darüber hinaus bieten wir umfassende Wartungs- und Servicekonzepte an, um die Leistungsfähigkeit Ihrer Anlage über den gesamten Lebenszyklus hinweg sicherzustellen. So wird aus einem Konzept ein lebendiges System, das mit Ihnen wächst und sich weiterentwickelt. Letztendlich ist wahre Sicherheit ein harmonisches Zusammenspiel aus fortschrittlicher Technologie, durchdachter Planung und kontinuierlicher Betreuung.
+
+
+Unsere Vorgehensweise bei der Konzeption und Implementierung von Sicherheitstechnik zeichnet sich durch ein Höchstmaß an Präzision und Weitsicht aus. Wir verstehen, dass Sicherheit kein universelles Produkt ist, das einfach von der Stange gekauft werden kann. Stattdessen erfordert sie eine detaillierte Auseinandersetzung mit den individuellen Gegebenheiten jedes Objekts. Bei der Analyse der potenziellen Schwachstellen gehen wir weit über das Offensichtliche hinaus. Wir betrachten nicht nur physische Angriffsvektoren wie Türen, Fenster oder Dachzugänge, sondern auch organisatorische und technologische Risiken.
+
+Die Integration modernster Sensorik, wie beispielsweise hochsensibler Infrarot-Bewegungsmelder, seismischer Detektoren und intelligenter Kamerasysteme, ermöglicht eine lückenlose Überwachung der gesamten Außenhaut und des Innenbereichs. Diese Systeme sind so kalibriert, dass sie zuverlässig zwischen tatsächlichen Bedrohungen und harmlosen Ereignissen unterscheiden können, wodurch Fehlalarme minimiert werden. Darüber hinaus legen wir großen Wert auf die Resilienz der von uns installierten Anlagen. Dies bedeutet, dass wir redundante Kommunikationswege und Notstromversorgungen implementieren, um sicherzustellen, dass die Systeme auch bei gezielten Sabotageversuchen oder Stromausfällen einwandfrei funktionieren.
+
+Ein weiterer entscheidender Aspekt unserer Arbeit ist die enge Zusammenarbeit mit den zuständigen Behörden und Sicherheitsdiensten. Auf Wunsch integrieren wir Mechanismen zur direkten Alarmaufschaltung, die im Ernstfall wertvolle Sekunden sparen und eine sofortige Intervention ermöglichen. Gleichzeitig achten wir darauf, dass alle Installationen den strengsten Datenschutzrichtlinien entsprechen. Privatsphäre und Sicherheit dürfen sich nicht ausschließen, sondern müssen in einem ausgewogenen Verhältnis zueinander stehen. Dies erreichen wir durch den Einsatz fortschrittlicher Verschlüsselungstechnologien und strenger Zugriffskontrollen für alle Systemdaten.
+
+Unsere Expertise erstreckt sich auch auf die Schulung und Sensibilisierung der Nutzer. Denn selbst die beste Technik ist nur so effektiv wie die Menschen, die sie bedienen. Wir stellen sicher, dass Sie und Ihre Mitarbeiter genau wissen, wie die Systeme zu handhaben sind und wie im Falle eines Alarms zu reagieren ist. Durch diese ganzheitliche Herangehensweise schaffen wir ein Sicherheitsnetzwerk, das nicht nur technologisch auf dem neuesten Stand ist, sondern auch tief im Bewusstsein aller Beteiligten verankert ist. Vertrauen Sie auf unsere langjährige Erfahrung und unser unermüdliches Engagement für Ihre Sicherheit. Wir sind erst dann zufrieden, wenn Sie es sind.
+
+</p>
+
+          <div className="space-y-8 mt-12">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] border-b border-[oklch(0.89_0.008_260/0.55)] pb-2">Strukturierte Leistungsstufen & Vergleichsmatrix</h3>
+            <div className="overflow-x-auto rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+              <table className="w-full text-left text-sm text-[oklch(0.32_0.02_260)]">
+                <thead className="bg-[oklch(0.968_0.004_260)] text-[oklch(0.16_0.02_260)] uppercase">
+                  <tr>
+                    <th scope="col" className="px-6 py-4 font-semibold border-b border-[oklch(0.89_0.008_260/0.55)]">Feature</th>
+                    <th scope="col" className="px-6 py-4 font-semibold border-b border-[oklch(0.89_0.008_260/0.55)] border-l">Standard</th>
+                    <th scope="col" className="px-6 py-4 font-semibold border-b border-[oklch(0.89_0.008_260/0.55)] border-l">Premium</th>
+                    <th scope="col" className="px-6 py-4 font-semibold border-b border-[oklch(0.89_0.008_260/0.55)] border-l">Enterprise</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                    <td className="px-6 py-4 font-medium text-[oklch(0.16_0.02_260)]">Videoüberwachung</td>
+                    <td className="px-6 py-4 border-l border-[oklch(0.89_0.008_260/0.55)]">HD Kameras</td>
+                    <td className="px-6 py-4 border-l border-[oklch(0.89_0.008_260/0.55)]">4K KI-Kameras</td>
+                    <td className="px-6 py-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Multisensor-Arrays</td>
+                  </tr>
+                  <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                    <td className="px-6 py-4 font-medium text-[oklch(0.16_0.02_260)]">Alarmaufschaltung</td>
+                    <td className="px-6 py-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Lokal</td>
+                    <td className="px-6 py-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Wachdienst</td>
+                    <td className="px-6 py-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Direkt Polizei</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 font-medium text-[oklch(0.16_0.02_260)]">Wartung</td>
+                    <td className="px-6 py-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Jährlich</td>
+                    <td className="px-6 py-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Halbjährlich</td>
+                    <td className="px-6 py-4 border-l border-[oklch(0.89_0.008_260/0.55)]">24/7 Monitoring</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="space-y-8 mt-12">
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] border-b border-[oklch(0.89_0.008_260/0.55)] pb-2">Häufig gestellte Fragen (FAQ)</h3>
+
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie lange dauert die Installation einer umfassenden Sicherheitsanlage?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">Die Dauer der Installation hängt stark von der Komplexität des Projekts und den baulichen Gegebenheiten ab. Ein einfaches System kann innerhalb weniger Tage implementiert werden, während eine vernetzte Gesamtarchitektur für größere Objekte mehrere Wochen in Anspruch nehmen kann. Wir erstellen für jedes Projekt einen detaillierten Zeitplan.</p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Sind Ihre Systeme mit bestehenden Smart-Home-Lösungen kompatibel?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">Ja, unsere Konzepte basieren auf offenen Schnittstellen und Protokollen. Dies ermöglicht eine nahtlose Integration in die meisten gängigen Smart-Home- und Gebäudeautomationssysteme, sodass Sie alle Funktionen zentral und komfortabel steuern können.</p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Welche Wartungsintervalle empfehlen Sie für Video- und Alarmanlagen?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">Wir empfehlen eine jährliche Inspektion und Wartung aller sicherheitsrelevanten Komponenten. Dies stellt sicher, dass Batterien, Sensoren und Software-Updates stets auf dem neuesten Stand sind und die Ausfallsicherheit des Gesamtsystems gewährleistet bleibt.</p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie wird der Datenschutz bei der Videoüberwachung gewährleistet?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">Datenschutz ist ein zentraler Aspekt unserer Planung. Wir konfigurieren Systeme so, dass öffentliche Bereiche maskiert werden und die Speicherdauer der Aufzeichnungen den gesetzlichen Vorgaben entspricht. Zudem implementieren wir strikte Zugriffskontrollen für die aufgezeichneten Daten.</p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Kann ich die Anlage auch aus der Ferne über mein Smartphone steuern?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">Absolut. Moderne Sicherheitstechnik bietet hochsichere, verschlüsselte Apps, mit denen Sie jederzeit und von überall den Status Ihrer Anlage überprüfen, Kameras einsehen oder Alarme quittieren können. Die Verbindung erfolgt über gesicherte Cloud- oder VPN-Verbindungen.</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+
+{/* 04 · Weiterlesen: Grundschutz und Bestandsaufnahme als Stückliste, darunter die
           Seitenverweise aus der Redaktion als Haarlinienzeilen */}
       <Section tone="muted" tight>
         <SectionHeading nummer="04" eyebrow="Weiterlesen" title="Passende Seiten" />
