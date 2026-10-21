@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-21T21:07:40.622737+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_089",
+      "category": "PERFORMANCE_ARCHITECTURE",
+      "target_existing_route": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_component_file": "components/ui/bild-flaeche.tsx",
+      "title": "Refactoring von ungenutztem Code durch aggressive ...",
+      "specification": "**Ziel:** Refactoring von ungenutztem Code durch aggressive Tree-Shaking-Strategien. **Ziel-Route:** `app/(site)/sicherheitstechnik/page.tsx`. **Ziel-Komponente:** `components/ui/bild-flaeche.tsx`.",
+      "score": 9.63,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_088",
+      "category": "PERFORMANCE_ARCHITECTURE",
+      "target_existing_route": "app/(site)/page.tsx",
+      "target_component_file": "components/autoschluessel/schluesselarten-reihe.tsx",
+      "title": "Implementierung von Edge-Caching f\u00fcr globale Asset...",
+      "specification": "**Ziel:** Implementierung von Edge-Caching f\u00fcr globale Assets zur Verringerung der Latenz. **Ziel-Route:** `app/(site)/page.tsx`. **Ziel-Komponente:** `components/autoschluessel/schluesselarten-reihe.tsx`.",
+      "score": 9.58,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
