@@ -21,6 +21,7 @@ import { IconMechanischerSchutz } from '@/components/visual/icons/mechanischer-s
 import { IconPanikAlarmtaster } from '@/components/visual/icons/panik-alarmtaster';
 import { IconSmarteFunktionen } from '@/components/visual/icons/smarte-funktionen';
 import { IconVideoueberwachung } from '@/components/visual/icons/videoueberwachung';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -92,7 +93,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  // Await params if needed in the future
+  await Promise.all([params, searchParams]);
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -130,6 +138,72 @@ export default async function SicherheitstechnikPage() {
       />
 
       {/* 01 Grundsatz: Kopf links, nummerierte Stückliste rechts */}
+            {/* 00 Neu: Ausführlicher Fachinhalt und Kalkulator */}
+      <Section className="bg-[oklch(0.988_0.002_260)] py-16 md:py-24 lg:py-32">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
+          <div className="space-y-8">
+            <h2 className="text-3xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] sm:text-4xl">
+              Ganzheitliche Sicherheitstechnik für Ihr Objekt
+            </h2>
+            <div className="space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              <p>
+                Moderne Sicherheitstechnik ist weit mehr als die bloße Installation von Kameras oder Alarmanlagen.
+                Es geht um die Schaffung eines intelligenten, vernetzten Systems, das präventiv schützt,
+                im Ernstfall zuverlässig reagiert und sich nahtlos in Ihren Alltag oder Betriebsablauf integriert.
+                Unsere Herangehensweise basiert auf einer tiefgehenden Analyse der Schwachstellen Ihres Objekts
+                und der Entwicklung maßgeschneiderter Sicherheitskonzepte.
+              </p>
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Architektonische Methodik</h3>
+              <p>
+                Wir betrachten Gebäude als komplexe Organismen. Die äußere Hülle (Außenhautsicherung) bildet die erste
+                Verteidigungslinie. Hier setzen wir auf robuste mechanische Barrieren in Kombination mit intelligenter
+                Sensorik. Dringt ein Störfaktor dennoch ein, übernimmt die innere Raumüberwachung (Volumenschutz)
+                durch hochpräzise Bewegungsmelder und Videoanalytik. Dieser mehrstufige Ansatz – das Zwiebelprinzip –
+                garantiert, dass ein einzelner Fehler im System niemals zu einem kritischen Sicherheitsverlust führt.
+              </p>
+              <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Leistungsstufen & Integration</h3>
+              <p>
+                Unsere Systeme sind skalierbar. Von der grundlegenden mechanischen Absicherung bis hin zur
+                KI-gestützten Videoüberwachung mit automatischer Kennzeichenerkennung und Cloud-Anbindung.
+                Die Integration in bestehende Smart-Home- oder Gebäudeautomationssysteme (KNX, Loxone) ermöglicht
+                Szenarien wie die automatische Beleuchtungsschaltung bei Alarmauslösung oder die Fernüberwachung
+                via verschlüsselter App-Verbindung.
+              </p>
+
+              <div className="mt-12">
+                <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-6">Häufig gestellte Fragen (FAQ)</h3>
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">1. Wie schnell kann eine Anlage installiert werden?</h4>
+                    <p className="mt-2">Nach der Bestandsaufnahme und Freigabe des Konzepts rechnen wir je nach Umfang mit 1-3 Tagen für die Installation. Wir arbeiten sauber und minimieren Störungen in Ihrem Betriebsablauf.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">2. Sind Funk-Alarmanlagen so sicher wie verkabelte Systeme?</h4>
+                    <p className="mt-2">Moderne Funk-Systeme nutzen verschlüsselte Dual-Band-Kommunikation und sind gegen Jamming-Attacken geschützt. Sie sind für viele Nachrüstungen ideal, während im Neubau verkabelte Systeme oft bevorzugt werden.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">3. Werden meine Videodaten in einer Cloud gespeichert?</h4>
+                    <p className="mt-2">Standardmäßig speichern wir lokal auf gesicherten Rekordern (NVR). Eine Cloud-Anbindung für Benachrichtigungen oder externe Backups richten wir nur auf ausdrücklichen Wunsch und datenschutzkonform ein.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">4. Was passiert bei einem Stromausfall?</h4>
+                    <p className="mt-2">Alle kritischen Komponenten (Zentrale, Sirenen, wichtige Kameras) sind durch Notstromakkus bzw. USV-Anlagen gepuffert und bleiben für mehrere Stunden voll funktionsfähig.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">5. Wie oft muss das System gewartet werden?</h4>
+                    <p className="mt-2">Wir empfehlen eine jährliche Wartung, bei der Batterien geprüft, Firmware-Updates installiert und die Sensorik kalibriert wird. Dies gewährleistet die langfristige Zuverlässigkeit.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="sticky top-24">
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
       <Section>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <SectionHeading
