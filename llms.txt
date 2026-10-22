@@ -1,0 +1,5 @@
+# Auditor Architect Output Reference
+
+This repository has been audited by the Auditor Architect.
+A complete blueprint and codebase DNA profiling report has been generated
+and stored in the `.jules` directory for further automated steps.
