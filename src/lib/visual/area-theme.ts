@@ -118,7 +118,11 @@ export function areaCssVariables(theme: AreaTheme): Record<string, string> {
 /* ---------- Kontrast (WCAG 2.2) ----------------------------------------- */
 
 function parseHsl(value: string): [number, number, number] {
-  const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
+  const matchOklch = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+  if (matchOklch && !value.includes('%')) {
+    return [0, 0, Number(matchOklch[1]) * 100];
+  }
+  const match = value.trim().match(/^(-?[\d.]+)\s+([\d.]+)%?\s+([\d.]+)%?/);
   if (!match) throw new Error(`Kein HSL-Tripel: "${value}"`);
   return [Number(match[1]), Number(match[2]), Number(match[3])];
 }

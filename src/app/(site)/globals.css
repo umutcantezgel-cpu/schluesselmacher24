@@ -73,58 +73,58 @@ header a[aria-label$='Startseite'] > span {
 @layer base {
   :root {
     /* Flächen */
-    --background: 214 45% 98.6%;
-    --surface: 0 0% 100%;
-    --surface-muted: 214 50% 96.6%;
-    --surface-sunken: 214 36% 92.5%;
-    --surface-ink: 222 36% 16%;
+    --background: 0.988 0.002 260;
+    --surface: 0.968 0.004 260;
+    --surface-muted: 0.966 0.150 214.0;
+    --surface-sunken: 0.925 0.108 214.0;
+    --surface-ink: 0.160 0.108 222.0;
 
     /* Text */
-    --foreground: 222 34% 15%;
-    --foreground-muted: 219 16% 37%;
-    --foreground-subtle: 217 12% 45%;
-    --foreground-inverse: 214 45% 98.6%;
+    --foreground: 0.16 0.02 260;
+    --foreground-muted: 0.32 0.02 260;
+    --foreground-subtle: 0.450 0.036 217.0;
+    --foreground-inverse: 0.986 0.135 214.0;
 
     /* Linien */
-    --border: 214 32% 89%;
-    --border-strong: 214 22% 77%;
-    --input: 214 28% 84%;
-    --ring: 214 86% 50%;
+    --border: 0.890 0.008 260;
+    --border-strong: 0.890 0.008 260;
+    --input: 0.840 0.084 214.0;
+    --ring: 0.500 0.258 214.0;
 
     /* Primär — klares Blau */
-    --primary: 214 80% 40%;
-    --primary-hover: 214 82% 33%;
-    --primary-soft: 214 100% 96.5%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0.400 0.240 214.0;
+    --primary-hover: 0.330 0.246 214.0;
+    --primary-soft: 0.965 0.300 214.0;
+    --primary-foreground: 1.000 0.000 0.0;
 
     /* Sekundär */
-    --secondary: 214 50% 94%;
-    --secondary-foreground: 222 34% 15%;
+    --secondary: 0.940 0.150 214.0;
+    --secondary-foreground: 0.150 0.102 222.0;
 
     /* Akzent — Technisch-Teal, sparsam für Bestätigungen */
-    --accent: 188 52% 30%;
-    --accent-soft: 188 44% 94%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0.300 0.156 188.0;
+    --accent-soft: 0.940 0.132 188.0;
+    --accent-foreground: 1.000 0.000 0.0;
 
     /* Funktionsfarben — nur für Status, nie als Markenfläche */
-    --success: 152 48% 30%;
-    --success-soft: 152 44% 94%;
-    --warning: 32 80% 33%;
-    --warning-soft: 38 70% 95%;
-    --danger: 0 58% 42%;
-    --danger-soft: 0 60% 96%;
-    --info: 214 80% 40%;
-    --info-soft: 214 100% 96.5%;
+    --success: 0.300 0.144 152.0;
+    --success-soft: 0.940 0.132 152.0;
+    --warning: 0.330 0.240 32.0;
+    --warning-soft: 0.950 0.210 38.0;
+    --danger: 0.420 0.174 0.0;
+    --danger-soft: 0.960 0.180 0.0;
+    --info: 0.400 0.240 214.0;
+    --info-soft: 0.965 0.300 214.0;
 
     /* Karten / Popover */
-    --card: 0 0% 100%;
-    --card-foreground: 222 34% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 34% 15%;
-    --muted: 214 50% 94%;
-    --muted-foreground: 219 16% 37%;
-    --destructive: 0 58% 42%;
-    --destructive-foreground: 0 0% 100%;
+    --card: 1.000 0.000 0.0;
+    --card-foreground: 0.150 0.102 222.0;
+    --popover: 1.000 0.000 0.0;
+    --popover-foreground: 0.150 0.102 222.0;
+    --muted: 0.940 0.150 214.0;
+    --muted-foreground: 0.370 0.048 219.0;
+    --destructive: 0.420 0.174 0.0;
+    --destructive-foreground: 1.000 0.000 0.0;
 
     /* Kanten: kleine Radien wie an einem Werkstück */
     --radius: 0.625rem;
@@ -135,7 +135,7 @@ header a[aria-label$='Startseite'] > span {
     --icon-strich: 1.75px;
 
     /* Schattenfarbe für `shadow-raised` und `shadow-overlay` */
-    --shadow-color: 222 40% 18%;
+    --shadow-color: 0.180 0.120 222.0;
 
     /* Layout */
     --header-height: 4rem;
@@ -165,10 +165,10 @@ header a[aria-label$='Startseite'] > span {
     --dauer-slow: 400ms;
     --dauer-enter: 600ms;
     --dauer-scene: 900ms;
-    --kurve-standard: cubic-bezier(0.2, 0, 0, 1);
+    --kurve-standard: cubic-bezier(0.16, 1, 0.3, 1);
     --kurve-enter: cubic-bezier(0.16, 1, 0.3, 1);
-    --kurve-exit: cubic-bezier(0.4, 0, 1, 1);
-    --kurve-draw: cubic-bezier(0.65, 0, 0.35, 1);
+    --kurve-exit: cubic-bezier(0.16, 1, 0.3, 1);
+    --kurve-draw: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @media (min-width: 768px) {
@@ -835,5 +835,21 @@ header a[aria-label$='Startseite'] > span {
   h2,
   h3 {
     break-after: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer base {
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid oklch(var(--ring));
+    outline-offset: 2px;
   }
 }

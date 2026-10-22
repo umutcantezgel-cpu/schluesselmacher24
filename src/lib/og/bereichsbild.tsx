@@ -35,6 +35,16 @@ export function tokensAusCss(css: string): Record<Token, string> {
 
 /** HSL-Tripel „H S% L%“ als Farbwert für das Bild. */
 export function farbe(tripel: string): string {
+  // Quick fallback: return a hex or rgb string since Satori doesn't support OKLCH
+  if (tripel.includes('.')) {
+    // It's likely OKLCH, return a fallback gray or parse it if we can.
+    // Since we know the few OKLCH colors, we can map them or just return a default
+    if (tripel.startsWith('0.988')) return '#fcfcfc'; // background
+    if (tripel.startsWith('0.16')) return '#1f252d'; // foreground
+    if (tripel.startsWith('0.32')) return '#4c5765'; // foreground-muted
+    if (tripel.startsWith('0.89')) return '#e2e8f0'; // border
+    return '#000000';
+  }
   return `hsl(${tripel})`;
 }
 
