@@ -1,0 +1,2 @@
+
+- Service Budget Calculator added to `sicherheitstechnik` route (interactive estimation powered by React 19 Server Actions & Swiss Light Mode OKLCH styling).

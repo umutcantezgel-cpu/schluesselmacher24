@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 import { getPageContent, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -343,8 +344,158 @@ export default async function SicherheitstechnikPage() {
 
       {/* 04 · Weiterlesen: Grundschutz und Bestandsaufnahme als Stückliste, darunter die
           Seitenverweise aus der Redaktion als Haarlinienzeilen */}
+
+      {/* Fachlicher Deep Dive (Content Expansion > 800 Wörter) */}
+      <Section id="architektur-methodik">
+        <SectionHeading
+          nummer="04"
+          eyebrow="Tiefenanalyse & Methodik"
+          title="Umfassende Sicherheitsarchitektur und methodische Projektierung im Detail"
+          lead="Erfahren Sie, wie wir bei der Planung, Konzeption und Umsetzung moderner Sicherheitslösungen vorgehen und welche technologischen Standards für einen lückenlosen Objektschutz entscheidend sind."
+        />
+
+        <div className="mt-12 max-w-3xl space-y-8 text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Fundierte Risikoanalyse und Bedrohungsmodellierung</h3>
+          <p>
+            Moderne Sicherheitstechnik beginnt lange vor der Installation der ersten Kamera oder dem Einbau des ersten Schließzylinders.
+            Der Grundstein eines jeden erfolgreichen Projekts liegt in der detaillierten Risikoanalyse. Wir betrachten Objekte nicht
+            isoliert, sondern im Kontext ihrer Umgebung. Dabei analysieren wir potenzielle Angriffsvektoren systematisch.
+            Ein Einfamilienhaus in einer ruhigen Vorstadtsiedlung weist ein anderes Risikoprofil auf als ein Gewerbebetrieb im Industriegebiet.
+            Unsere Methodik orientiert sich an etablierten Standards und berücksichtigt nicht nur offensichtliche Schwachstellen wie
+            Haupteingänge, sondern auch Nebeneingänge, Lichtschächte, Dachzugänge und die Perimetersicherheit.
+          </p>
+          <p>
+            Die Bedrohungsmodellierung umfasst die Kategorisierung möglicher Täterprofile – vom Gelegenheitseinbrecher bis hin zum
+            organisierten Beschaffungskriminellen. Abhängig von den identifizierten Risiken definieren wir gemeinsam mit Ihnen das
+            angestrebte Schutzniveau. Dieses Schutzniveau determiniert die Auswahl der technischen Komponenten und deren Widerstandsklassen
+            (Resistance Classes, RC). Eine durchdachte Konzeption vermeidet sowohl gefährliche Sicherheitslücken als auch unnötige
+            Überinvestitionen in nicht bedarfsgerechte Technik.
+          </p>
+
+          <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Mechanischer Grundschutz als Fundament</h3>
+          <p>
+            Trotz der rasanten Entwicklung elektronischer Systeme bleibt der mechanische Grundschutz das unersetzliche Fundament
+            jeder Sicherheitsarchitektur. Elektronik meldet, Mechanik leistet Widerstand. Einbruchmeldeanlagen können Täter abschrecken
+            und Interventionskräfte alarmieren, aber nur solide Mechanik kann den physischen Zutritt zeitlich relevant verzögern.
+            Wir setzen auf zertifizierte Schließzylinder mit Bohrschutz, Ziehschutz und komplexen Profilen, die gängigen Manipulationsmethoden
+            wie Picking oder Schlagschlüsseln effektiv widerstehen.
+          </p>
+          <p>
+            Dazu gehören auch massive Sicherheitsbeschläge, Mehrfachverriegelungen in den Türen und Zusatzschlösser.
+            Bei Fenstern – den häufigsten Angriffszielen – implementieren wir Pilzkopfverriegelungen und abschließbare Fenstergriffe
+            mit einem entsprechenden Drehwiderstand. Die mechanischen Barrieren zwingen den Täter zu mehr Zeitaufwand und Lärmentwicklung,
+            was das Entdeckungsrisiko signifikant erhöht und in den meisten Fällen zum Abbruch des Versuchs führt.
+          </p>
+
+          <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Integration elektronischer Assistenz- und Detektionssysteme</h3>
+          <p>
+            Auf dem mechanischen Fundament bauen wir die elektronische Überwachung auf. Moderne Einbruchmeldeanlagen (EMA) sind heute
+            komplexe Netzwerke aus Sensoren und Aktoren. Wir unterscheiden zwischen Außenhautüberwachung und Raumüberwachung.
+            Die Außenhautüberwachung mittels Magnetkontakten und Glasbruchmeldern an Fenstern und Türen alarmiert, noch bevor der Täter
+            das Objekt betritt. Die Raumüberwachung durch Dual-Bewegungsmelder (Infrarot und Mikrowelle) dient als zweite Verteidigungslinie.
+          </p>
+          <p>
+            Diese Systeme sind redundant ausgelegt und verfügen über Notstromversorgungen, um auch bei Sabotage oder Stromausfall
+            funktionsfähig zu bleiben. Die Signalverarbeitung erfolgt verschlüsselt, um Replay-Angriffe oder Signal-Jamming zu verhindern.
+            Intelligente Algorithmen in den Meldern unterscheiden zuverlässig zwischen echten Bedrohungen und Störfaktoren
+            wie Haustieren oder Zugluft, was die Falschalarmquote minimiert.
+          </p>
+
+          <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Videosicherheit und Verifikation</h3>
+          <p>
+            Die Videotechnik hat in den letzten Jahren einen enormen Evolutionssprung vollzogen. Hochauflösende IP-Kameras liefern
+            nicht nur Beweismaterial im Nachhinein, sondern ermöglichen durch Video-Analyse (VCA) die aktive Detektion von Eindringlingen.
+            Künstliche Intelligenz klassifiziert Objekte in Echtzeit und filtert irrelevante Bewegungen wie schwankende Bäume
+            oder wechselnde Lichtverhältnisse heraus.
+          </p>
+          <p>
+            Ein entscheidender Vorteil moderner Videosysteme ist die Alarmverifikation. Löst ein Sensor der Einbruchmeldeanlage aus,
+            kann durch den sofortigen Zugriff auf die Kamerasituation bewertet werden, ob ein Echt- oder Falschalarm vorliegt.
+            Dies ist für die schnelle Einleitung polizeilicher Maßnahmen von unschätzbarem Wert. Bei der Projektierung von Videosystemen
+            achten wir streng auf die Einhaltung datenschutzrechtlicher Vorgaben, maskieren öffentliche Bereiche und definieren
+            klare Löschfristen für die Aufzeichnungen.
+          </p>
+
+          <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Elektronische Zutrittskontrolle als zentrales Nervensystem</h3>
+          <p>
+            In gewerblichen Objekten, aber zunehmend auch im privaten Sektor, ersetzt die elektronische Zutrittskontrolle den klassischen
+            Schlüssel. Systeme auf Basis von RFID (Mifare DESFire), Bluetooth Low Energy (BLE) oder biometrischen Merkmalen bieten eine
+            Flexibilität, die mechanische Anlagen nicht leisten können. Geht ein Transponder verloren, wird dieser im System gesperrt –
+            ein teurer Austausch von Schließzylindern entfällt.
+          </p>
+          <p>
+            Wir implementieren zonenbasierte Zutrittskonzepte, bei denen berechtigten Personen nur zu bestimmten Zeiten Zugang zu
+            definierten Bereichen gewährt wird. Die lückenlose Protokollierung der Zutrittsereignisse schafft Transparenz und
+            erleichtert die Aufklärung von Vorfällen. Die Integration der Zutrittskontrolle mit der Einbruchmeldeanlage ermöglicht
+            komfortable Szenarien, wie die automatische Unscharfschaltung beim berechtigten Betreten.
+          </p>
+
+          <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Matrix der Schutzklassen</h3>
+          <div className="my-8 overflow-hidden rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-[oklch(0.968_0.004_260)] text-[oklch(0.16_0.02_260)]">
+                <tr>
+                  <th className="p-4 font-semibold">Schutzstufe</th>
+                  <th className="p-4 font-semibold">Mechanik (RC-Klasse)</th>
+                  <th className="p-4 font-semibold">Elektronik & Sensorik</th>
+                  <th className="p-4 font-semibold">Empfohlener Einsatzbereich</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)] text-[oklch(0.32_0.02_260)]">
+                <tr>
+                  <td className="p-4">Basis-Schutz</td>
+                  <td className="p-4">RC 1 N / RC 2 N</td>
+                  <td className="p-4">Stand-Alone Melder, lokale Alarmierung</td>
+                  <td className="p-4">Wohnungen in Obergeschossen</td>
+                </tr>
+                <tr>
+                  <td className="p-4 bg-[oklch(0.988_0.002_260)]">Erweiterter Schutz</td>
+                  <td className="p-4 bg-[oklch(0.988_0.002_260)]">RC 2</td>
+                  <td className="p-4 bg-[oklch(0.988_0.002_260)]">App-gesteuerte EMA, Außenhautüberwachung</td>
+                  <td className="p-4 bg-[oklch(0.988_0.002_260)]">Einfamilienhäuser, Erdgeschosswohnungen</td>
+                </tr>
+                <tr>
+                  <td className="p-4">Hochsicherheit</td>
+                  <td className="p-4">RC 3 / RC 4</td>
+                  <td className="p-4">Redundante EMA, Video-Verifikation, Aufschaltung</td>
+                  <td className="p-4">Gewerbe, gehobener Privatbereich, Wertezentren</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Häufig gestellte Fragen (FAQ)</h3>
+          <dl className="mt-6 space-y-6">
+            <div>
+              <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Welche Zertifizierungen sind für Einbruchmeldeanlagen relevant?</dt>
+              <dd className="mt-2 text-[oklch(0.32_0.02_260)]">Wir richten uns strikt nach den VdS-Richtlinien und der DIN EN 50131. Diese Normen definieren die Anforderungen an die Geräte, die Planung und die Installation. Versicherungen fordern bei gewerblichen Objekten oft eine zertifizierte Anlage für den Versicherungsschutz.</dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Wie aufwendig ist die Nachrüstung in einem Bestandsbau?</dt>
+              <dd className="mt-2 text-[oklch(0.32_0.02_260)]">Dank moderner und sicherer Funktechnologie (z. B. auf 868 MHz Basis) lassen sich viele Systeme heute ohne aufwendige Kabelverlegung nachrüsten. Die Komponenten sind batteriebetrieben und kommunizieren verschlüsselt mit der Zentrale. Für den mechanischen Schutz bieten wir spezielle Nachrüstprodukte nach DIN 18104 an.</dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Wie sicher sind smarte Schlösser gegen Hacking?</dt>
+              <dd className="mt-2 text-[oklch(0.32_0.02_260)]">Wir verwenden ausschließlich Systeme, die auf modernsten Verschlüsselungsstandards (wie AES-256) basieren und regelmäßige Firmware-Updates erhalten. Zusätzlich achten wir darauf, dass die Systeme auch offline funktionieren, um die Abhängigkeit von Cloud-Diensten zu reduzieren.</dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Gibt es staatliche Förderungen für den Einbau von Sicherheitstechnik?</dt>
+              <dd className="mt-2 text-[oklch(0.32_0.02_260)]">Ja, die KfW (Kreditanstalt für Wiederaufbau) fördert Maßnahmen zum Einbruchschutz im Rahmen bestehender Programme (z. B. 455-E). Wichtig ist, dass die Antragstellung vor Beginn der Maßnahmen erfolgt und die Installation durch einen Fachbetrieb durchgeführt wird.</dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Wie oft muss eine Anlage gewartet werden?</dt>
+              <dd className="mt-2 text-[oklch(0.32_0.02_260)]">Wir empfehlen eine jährliche Wartung durch unsere Techniker. Bei VdS-zertifizierten Anlagen oder im gewerblichen Bereich kann eine häufigere Überprüfung vorgeschrieben sein. Bei der Wartung werden unter anderem Batterien getauscht, Sensoren kalibriert und die Signalwege überprüft.</dd>
+            </div>
+          </dl>
+
+          <div className="mt-16">
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
       <Section tone="muted" tight>
-        <SectionHeading nummer="04" eyebrow="Weiterlesen" title="Passende Seiten" />
+        <SectionHeading nummer="05" eyebrow="Weiterlesen" title="Passende Seiten" />
 
         <ul className="mt-8 grid border-t border-border md:grid-cols-2">
           {WEITER.map((eintrag, index) => (
