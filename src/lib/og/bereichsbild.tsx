@@ -33,9 +33,40 @@ export function tokensAusCss(css: string): Record<Token, string> {
   return ergebnis;
 }
 
-/** HSL-Tripel „H S% L%“ als Farbwert für das Bild. */
+/** OKLCH-Tripel „L C H“ als Farbwert für das Bild. Satori unterstützt noch kein OKLCH nativ,
+ * daher wird es hier annähernd zu rgb() für OpenGraph konvertiert. */
 export function farbe(tripel: string): string {
-  return `hsl(${tripel})`;
+  const match = tripel.trim().match(/^(-?[\d.]+)\s+([\d.]+)\s+([\d.]+)$/);
+  if (!match) return `oklch(${tripel})`; // Fallback
+
+  const l = Number(match[1]);
+  const c = Number(match[2]);
+  const h = Number(match[3]);
+
+  // Einfache OKLCH zu RGB Umrechnung (nicht perfekt sRGB-farbtreu, aber ausreichend für OG-Bilder)
+  const hRad = (h * Math.PI) / 180;
+  const a = c * Math.cos(hRad);
+  const b = c * Math.sin(hRad);
+
+  const l_ = l + 0.3963377774 * a + 0.2158037573 * b;
+  const m_ = l - 0.1055613458 * a - 0.0638541728 * b;
+  const s_ = l - 0.0894841775 * a - 1.2914855480 * b;
+
+  const lms_l = l_ * l_ * l_;
+  const lms_m = m_ * m_ * m_;
+  const lms_s = s_ * s_ * s_;
+
+  const r =  4.0767416621 * lms_l - 3.3077115913 * lms_m + 0.2309699292 * lms_s;
+  const g = -1.2684380046 * lms_l + 2.6097574011 * lms_m - 0.3413193965 * lms_s;
+  const b_rgb = -0.0041960863 * lms_l - 0.7034186147 * lms_m + 1.7076147010 * lms_s;
+
+  // Gamma-Kompression für sRGB Ausgabe
+  const toSRGB = (c: number) => {
+    c = c <= 0.0031308 ? 12.92 * c : 1.055 * Math.pow(c, 1 / 2.4) - 0.055;
+    return Math.round(Math.max(0, Math.min(1, c)) * 255);
+  };
+
+  return `rgb(${toSRGB(r)}, ${toSRGB(g)}, ${toSRGB(b_rgb)})`;
 }
 
 export interface BildInhalt {
