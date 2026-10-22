@@ -1,0 +1,6 @@
+# Architecture Goals
+
+We are transitioning the codebase to Next.js 16+, React 19.2+, and TypeScript 5.5+.
+The design system is moving to a Swiss High-End Light Mode using OKLCH Color Space and Tailwind CSS v4.
+
+All identified routes will receive content expansion (>800 words), semantic HTML improvements, and new interactive components utilizing React 19 Server Actions.
