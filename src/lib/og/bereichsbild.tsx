@@ -33,9 +33,39 @@ export function tokensAusCss(css: string): Record<Token, string> {
   return ergebnis;
 }
 
-/** HSL-Tripel „H S% L%“ als Farbwert für das Bild. */
+/** OKLCH-Tripel "L C H" als Farbwert für das Bild. Konvertiert zu rgb(). */
 export function farbe(tripel: string): string {
-  return `hsl(${tripel})`;
+  const [lStr, cStr, hStr] = tripel.trim().split(/\s+/);
+  if (!lStr || !cStr || !hStr) return 'rgb(0, 0, 0)'; // fallback
+
+  const l = Number(lStr);
+  const c = Number(cStr);
+  const h = Number(hStr);
+
+  const hRad = (h * Math.PI) / 180;
+  const oklabL = l;
+  const oklabA = c * Math.cos(hRad);
+  const oklabB = c * Math.sin(hRad);
+
+  const l_ = oklabL + 0.3963377774 * oklabA + 0.2158037573 * oklabB;
+  const m_ = oklabL - 0.1055613458 * oklabA - 0.0638541728 * oklabB;
+  const s_ = oklabL - 0.0894841775 * oklabA - 1.2914855480 * oklabB;
+
+  const lL = l_ * l_ * l_;
+  const mM = m_ * m_ * m_;
+  const sS = s_ * s_ * s_;
+
+  let r = 4.0767416621 * lL - 3.3077115913 * mM + 0.2309699292 * sS;
+  let g = -1.2684380046 * lL + 2.6097574011 * mM - 0.3413193965 * sS;
+  let b = -0.0041960863 * lL - 0.7034186147 * mM + 1.7076147010 * sS;
+
+  const channel = (v: number) => (v <= 0.0031308 ? 12.92 * v : 1.055 * Math.pow(v, 1 / 2.4) - 0.055);
+
+  r = Math.max(0, Math.min(1, channel(r)));
+  g = Math.max(0, Math.min(1, channel(g)));
+  b = Math.max(0, Math.min(1, channel(b)));
+
+  return `rgb(${Math.round(r * 255)}, ${Math.round(g * 255)}, ${Math.round(b * 255)})`;
 }
 
 export interface BildInhalt {
