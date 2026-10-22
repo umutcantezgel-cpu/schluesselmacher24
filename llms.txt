@@ -1,0 +1,2 @@
+
+- **ServiceBudgetCalculator**: Eingefügt in app/(site)/autoschluessel/page.tsx zur Budgetkalkulation.
