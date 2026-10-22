@@ -1,0 +1,1 @@
+Architecture Goals: Migrate to OKLCH, enforce subgrid, implement 800+ word deep content per route, add interactive modules.
