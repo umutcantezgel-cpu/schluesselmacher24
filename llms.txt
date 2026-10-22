@@ -1,0 +1,18 @@
+# SCHLÜSSELMACHER24 Architecture Blueprint
+
+This document contains the core architectural blueprint and routing schema for SCHLÜSSELMACHER24.
+
+## DNA Summary
+- Framework: Next.js 16+
+- React Version: 19.2+
+- Styling: Tailwind CSS v4 (OKLCH)
+- Brand Color Primary: oklch(0.52 0.24 260)
+- Typography: Swiss Modernist
+
+## Transformation Strategy
+- Strict Zero-New-Routes policy.
+- All modifications are in-place expansions of existing paths.
+- Enforcing High-End Swiss Light Mode aesthetic with OKLCH color space.
+
+## Reference
+Refer to `.jules/revolution-plan.json` for detailed, route-by-route transformation parameters and `.jules/architecture-matrix.md` for a tabular overview of target word counts and interactive modules.

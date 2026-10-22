@@ -1,0 +1,54 @@
+# Architektur-Matrix
+
+| Route | Status | Wörter Ist | Ziel | Schema | CWV | Interaktives Modul |
+|---|---|---|---|---|---|---|
+| /(payload)/admin/[[...segments]] | PENDING | 99 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /(site) | PENDING | 2210 | 2710 | PENDING | PENDING | DynamicInteractiveModule |
+| /ratgeber | PENDING | 317 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /ratgeber/[slug] | PENDING | 775 | 1275 | PENDING | PENDING | DynamicInteractiveModule |
+| /schluessel-nach-vorlage | PENDING | 2203 | 2703 | PENDING | PENDING | DynamicInteractiveModule |
+| /schluessel-nach-vorlage/anfrage | PENDING | 235 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /[...unbekannt] | PENDING | 72 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /warenkorb | PENDING | 342 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /kasse | PENDING | 417 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /schluessel-nach-code | PENDING | 738 | 1238 | PENDING | PENDING | DynamicInteractiveModule |
+| /schluessel-nach-code/[slug] | PENDING | 1040 | 1540 | PENDING | PENDING | DynamicInteractiveModule |
+| /sicherheitstechnik | PENDING | 1431 | 1931 | PENDING | PENDING | DynamicInteractiveModule |
+| /sicherheitstechnik/[slug] | PENDING | 729 | 1229 | PENDING | PENDING | DynamicInteractiveModule |
+| /sicherheitstechnik/sicherheitscheck | PENDING | 378 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /tuer-und-schliesstechnik | PENDING | 2271 | 2771 | PENDING | PENDING | DynamicInteractiveModule |
+| /tuer-und-schliesstechnik/[slug] | PENDING | 523 | 1023 | PENDING | PENDING | DynamicInteractiveModule |
+| /bestellung/[id] | PENDING | 1389 | 1889 | PENDING | PENDING | DynamicInteractiveModule |
+| /gleichschliessende-zylinder | PENDING | 2564 | 3064 | PENDING | PENDING | DynamicInteractiveModule |
+| /gleichschliessende-zylinder/konfigurator | PENDING | 316 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /elektronische-zutrittsloesungen | PENDING | 2982 | 3482 | PENDING | PENDING | DynamicInteractiveModule |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING | 406 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /schliessanlagen | PENDING | 2166 | 2666 | PENDING | PENDING | DynamicInteractiveModule |
+| /schliessanlagen/konfigurator | PENDING | 379 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /service-und-termin | PENDING | 2247 | 2747 | PENDING | PENDING | DynamicInteractiveModule |
+| /service-und-termin/terminstatus | PENDING | 109 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /service-und-termin/anfrage | PENDING | 153 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /service-und-termin/vor-ort | PENDING | 742 | 1242 | PENDING | PENDING | DynamicInteractiveModule |
+| /service-und-termin/kontakt | PENDING | 622 | 1122 | PENDING | PENDING | DynamicInteractiveModule |
+| /rechtliches/impressum | PENDING | 247 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /rechtliches/cookie-einstellungen | PENDING | 227 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /rechtliches/versand-und-zahlung | PENDING | 515 | 1015 | PENDING | PENDING | DynamicInteractiveModule |
+| /rechtliches/widerruf | PENDING | 369 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /rechtliches/agb | PENDING | 415 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /rechtliches/datenschutz | PENDING | 730 | 1230 | PENDING | PENDING | DynamicInteractiveModule |
+| /artikel | PENDING | 807 | 1307 | PENDING | PENDING | DynamicInteractiveModule |
+| /artikel/[slug] | PENDING | 1160 | 1660 | PENDING | PENDING | DynamicInteractiveModule |
+| /standorte | PENDING | 306 | 950 | PENDING | PENDING | DynamicInteractiveModule |
+| /standorte/[city] | PENDING | 617 | 1117 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel | PENDING | 2496 | 2996 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/marken | PENDING | 779 | 1279 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/marken/[make] | PENDING | 1209 | 1709 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/marken/[make]/[model] | PENDING | 2004 | 2504 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/funkschluessel | PENDING | 1091 | 1591 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/programmieren | PENDING | 1222 | 1722 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/anfrage | PENDING | 521 | 1021 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/kopieren | PENDING | 1133 | 1633 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/nachmachen | PENDING | 1189 | 1689 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/smart-key | PENDING | 1207 | 1707 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/schluesselbart-fraesen | PENDING | 1042 | 1542 | PENDING | PENDING | DynamicInteractiveModule |
+| /autoschluessel/fahrzeugoeffnung | PENDING | 1121 | 1621 | PENDING | PENDING | DynamicInteractiveModule |
