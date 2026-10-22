@@ -33,10 +33,46 @@ export function tokensAusCss(css: string): Record<Token, string> {
   return ergebnis;
 }
 
-/** HSL-Tripel „H S% L%“ als Farbwert für das Bild. */
-export function farbe(tripel: string): string {
-  return `hsl(${tripel})`;
+
+function oklchToHex(l: number, c: number, h: number): string {
+  const hRad = (h * Math.PI) / 180;
+  const a = c * Math.cos(hRad);
+  const b = c * Math.sin(hRad);
+
+  const l_ = l + 0.3963377774 * a + 0.2158037573 * b;
+  const m_ = l - 0.1055613458 * a - 0.0638541728 * b;
+  const s_ = l - 0.0894841775 * a - 1.2914855480 * b;
+
+  const l_l = l_ ** 3;
+  const m_l = m_ ** 3;
+  const s_l = s_ ** 3;
+
+  const rLin =  4.0767416621 * l_l - 3.3077115913 * m_l + 0.2309699292 * s_l;
+  const gLin = -1.2684380046 * l_l + 2.6097574011 * m_l - 0.3413193965 * s_l;
+  const bLin = -0.0041960863 * l_l - 0.7034186147 * m_l + 1.7076147010 * s_l;
+
+  const gamma = (v: number) => {
+    v = Math.max(0, Math.min(1, v));
+    return v <= 0.0031308 ? 12.92 * v : 1.055 * Math.pow(v, 1/2.4) - 0.055;
+  };
+
+  const r = Math.round(gamma(rLin) * 255);
+  const g = Math.round(gamma(gLin) * 255);
+  const bl = Math.round(gamma(bLin) * 255);
+
+  return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${bl.toString(16).padStart(2, '0')}`;
 }
+
+/** OKLCH-Tripel „L C H“ als Farbwert für das Bild. */
+export function farbe(tripel: string): string {
+  const match = tripel.trim().match(/^(-?[\d.]+)\s+([\d.]+)\s+([\d.]+)$/);
+  if (!match) return '#000000'; // fallback
+  const l = Number(match[1]);
+  const c = Number(match[2]);
+  const h = Number(match[3]);
+  return oklchToHex(l, c, h);
+}
+
 
 export interface BildInhalt {
   /** Augenbraue über dem Titel. */
