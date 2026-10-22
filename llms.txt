@@ -1,0 +1,2 @@
+
+- app/page.tsx: Expanded with >800 words and interactive ServiceBudgetCalculator.

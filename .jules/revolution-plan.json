@@ -1,0 +1,8 @@
+{
+  "routes": [
+    {
+      "path": "app/page.tsx",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}
