@@ -1,0 +1,9 @@
+{
+  "top_2": [
+    {
+      "id": "IDEA_014",
+      "target_route": "src/app/(site)/service-und-termin/page.tsx",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}

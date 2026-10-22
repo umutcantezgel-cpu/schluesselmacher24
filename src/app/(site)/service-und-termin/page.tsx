@@ -1,3 +1,4 @@
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
@@ -119,7 +120,15 @@ function ohnePlatzhalter(text: string | undefined): string | undefined {
   return istPlatzhalter(text) || enthaeltPlatzhalter(text) ? undefined : text;
 }
 
-export default async function ServiceUndTerminPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function ServiceUndTerminPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
+
   const [page, settings, richtwerte] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
@@ -290,8 +299,90 @@ export default async function ServiceUndTerminPage() {
                 </summary>
                 <div className="sm24-fade pb-8 [--sm24-duration:var(--dauer-quick)]">
                   <div className="prose-sm24">
+
+
                     <p>
-                      Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
+                      Die Wahl des passenden Sicherheitssystems erfordert eine tiefgreifende Analyse Ihrer individuellen Anforderungen.
+                      Wir betrachten nicht nur die mechanische Belastbarkeit von Türen und Schließzylindern, sondern auch die Integration
+                      in bestehende Gebäudeleittechnik. Dabei setzen wir auf zukunftssichere Standards, die eine nahtlose Kombination
+                      von physischem Einbruchschutz und elektronischer Zutrittskontrolle ermöglichen. Unsere Expertise umfasst die gesamte Bandbreite moderner Schließtechnik, von hochsicheren mechanischen Systemen mit patentierten Schlüsselprofilen bis hin zu vernetzten mechatronischen Lösungen, die eine flexible Verwaltung von Zutrittsrechten über zentrale Managementplattformen erlauben. Wir berücksichtigen dabei stets die aktuellen normativen Anforderungen, wie beispielsweise die DIN EN 1303 für Schließzylinder oder die DIN EN 14846 für elektromechanische Schlösser, um ein Höchstmaß an Sicherheit und Zuverlässigkeit zu gewährleisten.
+                    </p>
+                    <p>
+                      Darüber hinaus spielt die Benutzerfreundlichkeit eine entscheidende Rolle bei der Akzeptanz und Effektivität eines Sicherheitssystems. Wir legen großen Wert darauf, dass die Bedienung intuitiv und komfortabel ist, ohne Kompromisse bei der Sicherheit einzugehen. Dies beinhaltet die sorgfältige Auswahl von Identifikationsmedien, wie RFID-Transpondern oder mobilen Credentials via Smartphone, sowie die Gestaltung ergonomischer und barrierefreier Zugänge. Auch die Aspekte des Datenschutzes und der Datensicherheit werden bei der Konzeption und Implementierung elektronischer Zutrittskontrollsysteme umfassend berücksichtigt, um den Anforderungen der DSGVO gerecht zu werden und Manipulationen oder unbefugten Datenzugriff wirksam zu verhindern.
+                    </p>
+                    <p>
+                      Ein weiterer wesentlicher Aspekt unserer Methodik ist die vorausschauende Planung und Skalierbarkeit der Systeme. Wir konzipieren Lösungen, die nicht nur Ihren aktuellen Bedarf decken, sondern auch zukünftige Entwicklungen und Erweiterungen berücksichtigen. Ob es sich um die Integration zusätzlicher Türen, die Einbindung neuer Standorte oder die Anbindung an andere Gewerke wie Alarmanlagen oder Videoüberwachungssysteme handelt – unsere Architekturen sind darauf ausgelegt, mit Ihren Anforderungen zu wachsen. Dies sichert Ihre Investition langfristig und minimiert die Kosten für spätere Anpassungen oder Systemwechsel.
+                    </p>
+                    <p>
+                      Zusammenfassend lässt sich sagen, dass unsere architektonische Methodik auf einem ganzheitlichen Ansatz basiert, der technische Expertise, normative Konformität, Benutzerfreundlichkeit und Zukunftsfähigkeit miteinander vereint. Wir entwickeln maßgeschneiderte Sicherheitslösungen, die optimal auf Ihre individuellen Bedürfnisse abgestimmt sind und ein Höchstmaß an Schutz für Personen, Sachwerte und Daten bieten.
+                    </p>
+
+                    <h3 className="mt-8 mb-4 text-xl font-semibold text-[oklch(0.16_0.02_260)]">Vergleich der Leistungsstufen</h3>
+                    <div className="my-6 overflow-x-auto rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+                      <table className="w-full text-left text-sm text-[oklch(0.32_0.02_260)]">
+                        <thead className="bg-[oklch(0.968_0.004_260)] text-[oklch(0.16_0.02_260)] font-semibold">
+                          <tr>
+                            <th className="px-4 py-3 border-b border-[oklch(0.89_0.008_260/0.55)]">Merkmal</th>
+                            <th className="px-4 py-3 border-b border-[oklch(0.89_0.008_260/0.55)]">Basis-Absicherung</th>
+                            <th className="px-4 py-3 border-b border-[oklch(0.89_0.008_260/0.55)]">Erweiterte Sicherheit</th>
+                            <th className="px-4 py-3 border-b border-[oklch(0.89_0.008_260/0.55)]">Premium Mechatronik</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)] bg-white">
+                          <tr>
+                            <td className="px-4 py-3 font-medium">Zylindertechnologie</td>
+                            <td className="px-4 py-3">Mechanisches Wendeschlüsselsystem</td>
+                            <td className="px-4 py-3">Mechanik mit Kopierschutz & Magnet-Codierung</td>
+                            <td className="px-4 py-3">Voll-elektronische Identifikation (RFID/BLE)</td>
+                          </tr>
+                          <tr>
+                            <td className="px-4 py-3 font-medium">Zutrittsverwaltung</td>
+                            <td className="px-4 py-3">Statischer Schließplan</td>
+                            <td className="px-4 py-3">Flexibel anpassbar per Software</td>
+                            <td className="px-4 py-3">Echtzeit-Steuerung & Protokollierung</td>
+                          </tr>
+                          <tr>
+                            <td className="px-4 py-3 font-medium">Sicherheitslevel</td>
+                            <td className="px-4 py-3">Einbruchhemmend (DIN EN 1303)</td>
+                            <td className="px-4 py-3">Erhöhter Bohrschutz & Ziehschutz</td>
+                            <td className="px-4 py-3">Höchste Stufe, integrierte Alarm-Option</td>
+                          </tr>
+                          <tr>
+                            <td className="px-4 py-3 font-medium">Schlüsselverlust</td>
+                            <td className="px-4 py-3">Zylinder-Austausch notwendig</td>
+                            <td className="px-4 py-3">Schnelle Umcodierung möglich</td>
+                            <td className="px-4 py-3">Sekundenschnelle Sperrung im System</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <h3 className="mt-8 mb-4 text-xl font-semibold text-[oklch(0.16_0.02_260)]">Häufig gestellte Fragen zur Architektur (FAQ)</h3>
+                    <div className="space-y-4 my-6">
+                      <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4">
+                        <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">1. Wie gewährleisten Sie die Zukunftsfähigkeit der elektronischen Systeme?</h4>
+                        <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Wir setzen ausschließlich auf offene Standards und modulare Komponenten namhafter Hersteller. Dadurch können Systeme später um neue Identifikationstechnologien (z. B. mobile Credentials) erweitert werden, ohne die Basishardware auszutauschen.</p>
+                      </div>
+                      <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4">
+                        <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">2. Welche normativen Vorgaben erfüllen Ihre Installationen?</h4>
+                        <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Alle unsere mechanischen und elektronischen Zylinder erfüllen mindestens die DIN EN 1303. Fluchttüren rüsten wir streng nach DIN EN 179 und DIN EN 1125 aus, um die bauordnungsrechtlichen Anforderungen an den Personenschutz zu erfüllen.</p>
+                      </div>
+                      <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4">
+                        <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">3. Wie gehen Sie mit dem Thema Datenschutz bei Zutrittsprotokollen um?</h4>
+                        <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Der Datenschutz ist integraler Bestandteil unserer Architektur (Privacy by Design). Die Protokollierung von Zutrittsereignissen wird nur in Abstimmung mit den betrieblichen Bestimmungen (und ggf. dem Betriebsrat) aktiviert und erfolgt streng zweckgebunden gemäß DSGVO.</p>
+                      </div>
+                      <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4">
+                        <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">4. Sind mechatronische Anlagen auch bei Stromausfall sicher?</h4>
+                        <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Ja. Unsere Systeme verfügen über eine mehrstufige Ausfallsicherheit durch integrierte Batteriepufferung und Fail-Secure/Fail-Safe-Konfigurationen, die gewährleisten, dass sicherheitskritische Türen verschlossen bleiben und Fluchtwege jederzeit nutzbar sind.</p>
+                      </div>
+                      <div className="rounded-lg border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-4">
+                        <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">5. Wie lange dauert die Implementierung eines vollständigen Systems?</h4>
+                        <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Dies hängt stark vom Projektumfang ab. Kleinere mechanische Anlagen sind oft in 1-2 Tagen installiert. Komplexe mechatronische Projekte mit Integration in Gebäudemanagementsysteme können von der ersten Bestandsaufnahme bis zur finalen Abnahme mehrere Wochen beanspruchen. Nutzen Sie unseren Budgetrechner unten für eine erste Indikation.</p>
+                      </div>
+                    </div>
+
+
+<p>Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
                     </p>
                   </div>
                   <dl className="mt-6 max-w-measure border-t border-border">
@@ -435,6 +526,20 @@ export default async function ServiceUndTerminPage() {
           </ul>
         )}
       </Section>
+
+      {/* 07 Budgetrechner */}
+      <Section tone="sunken" id="budgetrechner">
+        <SectionHeading
+          nummer="07"
+          eyebrow="Projekt-Budget"
+          title="Interaktive Budgetkalkulation"
+          lead="Berechnen Sie hier direkt den geschätzten Umfang für Ihr Service-Projekt."
+        />
+        <div className="mt-12 max-w-3xl">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
     </>
   );
 }
