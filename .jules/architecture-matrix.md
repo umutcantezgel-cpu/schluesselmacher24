@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| URL Path | Source File | Status | Target Words | Schema Entities |
+|---|---|---|---|---|
+| /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| / | src/app/(site)/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING | 950 | Organization, WebSite, FAQPage |
