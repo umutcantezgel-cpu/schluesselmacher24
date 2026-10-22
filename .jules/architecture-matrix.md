@@ -1,0 +1,54 @@
+# Architecture Matrix
+
+| URL Path | Source File | Current Words | Target Words | Interactive Module |
+|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 77 | 850 | Admin[[...segments]]InteractiveModule |
+| / | src/app/(site)/page.tsx | 3089 | 3689 | HomeInteractiveModule |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 411 | 1011 | RatgeberInteractiveModule |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 950 | 1550 | Ratgeber[slug]InteractiveModule |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 2503 | 3103 | Schluessel-nach-vorlageInteractiveModule |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 290 | 890 | Schluessel-nach-vorlageAnfrageInteractiveModule |
+| /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | 67 | 850 | [...unbekannt]InteractiveModule |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 420 | 1020 | WarenkorbInteractiveModule |
+| /kasse | src/app/(site)/kasse/page.tsx | 498 | 1098 | KasseInteractiveModule |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 873 | 1473 | Schluessel-nach-codeInteractiveModule |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 1247 | 1847 | Schluessel-nach-code[slug]InteractiveModule |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1791 | 2391 | SicherheitstechnikInteractiveModule |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 941 | 1541 | Sicherheitstechnik[slug]InteractiveModule |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 441 | 1041 | SicherheitstechnikSicherheitscheckInteractiveModule |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 2793 | 3393 | Tuer-und-schliesstechnikInteractiveModule |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 681 | 1281 | Tuer-und-schliesstechnik[slug]InteractiveModule |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1809 | 2409 | Bestellung[id]InteractiveModule |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 3232 | 3832 | Gleichschliessende-zylinderInteractiveModule |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 359 | 959 | Gleichschliessende-zylinderKonfiguratorInteractiveModule |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 3195 | 3795 | Elektronische-zutrittsloesungenInteractiveModule |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 454 | 1054 | Elektronische-zutrittsloesungenKonfiguratorInteractiveModule |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 2366 | 2966 | SchliessanlagenInteractiveModule |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 442 | 1042 | SchliessanlagenKonfiguratorInteractiveModule |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 2898 | 3498 | Service-und-terminInteractiveModule |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 110 | 850 | Service-und-terminTerminstatusInteractiveModule |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 148 | 850 | Service-und-terminAnfrageInteractiveModule |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 914 | 1514 | Service-und-terminVor-ortInteractiveModule |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 807 | 1407 | Service-und-terminKontaktInteractiveModule |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 279 | 879 | RechtlichesImpressumInteractiveModule |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 228 | 850 | RechtlichesCookie-einstellungenInteractiveModule |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 647 | 1247 | RechtlichesVersand-und-zahlungInteractiveModule |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 386 | 986 | RechtlichesWiderrufInteractiveModule |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 445 | 1045 | RechtlichesAgbInteractiveModule |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 821 | 1421 | RechtlichesDatenschutzInteractiveModule |
+| /artikel | src/app/(site)/artikel/page.tsx | 921 | 1521 | ArtikelInteractiveModule |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 1365 | 1965 | Artikel[slug]InteractiveModule |
+| /standorte | src/app/(site)/standorte/page.tsx | 376 | 976 | StandorteInteractiveModule |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 800 | 1400 | Standorte[city]InteractiveModule |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2963 | 3563 | AutoschluesselInteractiveModule |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 926 | 1526 | AutoschluesselMarkenInteractiveModule |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 1555 | 2155 | AutoschluesselMarken[make]InteractiveModule |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 2375 | 2975 | AutoschluesselMarken[make][model]InteractiveModule |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 951 | 1551 | AutoschluesselFunkschluesselInteractiveModule |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1071 | 1671 | AutoschluesselProgrammierenInteractiveModule |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 567 | 1167 | AutoschluesselAnfrageInteractiveModule |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1006 | 1606 | AutoschluesselKopierenInteractiveModule |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1047 | 1647 | AutoschluesselNachmachenInteractiveModule |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1060 | 1660 | AutoschluesselSmart-keyInteractiveModule |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 908 | 1508 | AutoschluesselSchluesselbart-fraesenInteractiveModule |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 994 | 1594 | AutoschluesselFahrzeugoeffnungInteractiveModule |
