@@ -10,7 +10,6 @@ import { cn } from '@/lib/cn';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
-import { Accordion } from '@/components/ui/accordion';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT, keyKindDescription, keyKindLabel } from '@/components/autoschluessel/key-kinds';
 import { SCHLUESSELARTEN_REIHE, SchluesselartenReihe } from '@/components/autoschluessel/schluesselarten-reihe';
@@ -20,6 +19,7 @@ import { IconReparaturAustausch } from '@/components/visual/icons/reparatur-aust
 import { IconSchluesselKopieren } from '@/components/visual/icons/schluessel-kopieren';
 import { IconSchluesselProgrammieren } from '@/components/visual/icons/schluessel-programmieren';
 import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
+import { ServiceBudgetCalculator } from '@/components/autoschluessel/service-budget-calculator';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
@@ -408,7 +408,32 @@ export default async function AutoschluesselHubPage() {
       </Section>
 
       {/* Leistungsbegriffe als Begriffsliste mit Haarlinien; die ganze Zeile ist der Link */}
-      <Section tone="muted" id="leistungen">
+      {/* Interaktiver Kalkulator für Budgetabschätzung */}
+      <Section tone="sunken" tight className="py-16 md:py-24 lg:py-32">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-gutter">
+          <div className="lg:col-span-6">
+            <SectionHeading
+               nummer="00"
+               eyebrow="Budget"
+               title="Transparente Kostenstruktur für Ihre Planung"
+               lead="Die Kosten für einen Ersatzschlüssel variieren stark nach Hersteller, Modell und dem kryptografischen Aufwand der Wegfahrsperre. Nutzen Sie unseren Rechner für eine erste Abschätzung der Komplexität."
+            />
+            <div className="mt-8 text-[oklch(0.32_0.02_260)] leading-relaxed space-y-4">
+              <p>
+                Die Leistungsarchitektur der Kosten setzt sich aus mehreren Faktoren zusammen. Das Material des Schlüsselrohlings und die Qualität des Funksenders spielen ebenso eine Rolle wie die Lizenzgebühren für die Diagnose-Software, die für das Anlernen an das Fahrzeugsteuergerät benötigt wird.
+              </p>
+              <p>
+                Zudem unterscheiden wir zwischen reinen Kopien (Klonen des Transponders) und dem echten Programmieren (OBD-Programmierung im Fahrzeug). Letzteres ist bei fast allen modernen Fahrzeugen (ab ca. Baujahr 2008) unumgänglich, da rollierende Codes verwendet werden, die sich nicht einfach dublizieren lassen. Unser Rechner hilft Ihnen, ein Gefühl für den zu erwartenden Aufwand zu bekommen.
+              </p>
+            </div>
+          </div>
+          <div className="lg:col-span-6">
+            <ServiceBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+<Section tone="muted" id="leistungen">
         <SectionHeading
           nummer="02"
           eyebrow="Leistungen"
@@ -546,14 +571,50 @@ export default async function AutoschluesselHubPage() {
       </Section>
 
       {/* Fragen */}
+      {/* Ausführliche Fragen und Antworten */}
       <Section>
         <SectionHeading
           nummer="05"
-          eyebrow="Häufige Fragen"
-          title="Was vor dem Auftrag meist offen ist"
+          eyebrow="Häufige Fragen & Technische Methodik"
+          title="Tiefgehende Antworten für Ihre Entscheidungsfindung"
           className="max-w-2xl"
         />
-        <Accordion items={page?.faq?.length ? page.faq : FAQ} className="mt-8 max-w-2xl" />
+        <div className="mt-8 text-[oklch(0.32_0.02_260)] max-w-3xl leading-relaxed space-y-8">
+            <div>
+                <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Warum muss für die Programmierung oft das Fahrzeug vor Ort sein?</h3>
+                <p>
+                    Bei der Mehrheit der modernen Fahrzeuge (insbesondere ab Baujahr 2008 mit Krypto-Transpondern wie Hitag, Megamos Crypto oder Texas Crypto) ist ein einfaches &quot;Klonen&quot; des Schlüssels am Tresen technisch unmöglich oder hochgradig unsicher. Das Fahrzeugsteuergerät (Wegfahrsperre, BCM, Kombiinstrument) erwartet bei jedem Startvorgang einen rollierenden Code. Um einen neuen Schlüssel anzulernen, müssen wir uns über die OBD-II (On-Board-Diagnose) Schnittstelle direkt mit dem Fahrzeug verbinden. Nur so kann der neue Schlüssel autorisiert und in die Liste der erlaubten Schlüssel im Steuergerät eingetragen werden. Ohne das Fahrzeug haben wir keinen Zugriff auf diese kritische Infrastruktur.
+                </p>
+            </div>
+
+            <div>
+                <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Wie funktioniert das CNC-Fräsen eines Schlüsselbarts im Vergleich zum traditionellen Kopieren?</h3>
+                <p>
+                    Traditionelle Kopierfräsen tasten den Originalschlüssel mechanisch ab und übertragen die Kontur analog auf den Rohling. Der gravierende Nachteil: Jeder Verschleiß des Originals wird exakt mitkopiert. Unsere moderne technische Methodik beruht auf digitalem CNC-Fräsen. Wir entschlüsseln die Einschnitte Ihres Schlüssels und ermitteln den ursprünglichen, werkseitigen Code (die sogenannten Bitting-Daten). Die CNC-Maschine fräst dann einen völlig neuen Schlüssel exakt nach diesen Werksvorgaben. Sie erhalten also keine &quot;Kopie Ihrer Kopie&quot;, sondern einen Schlüssel in absolutem Neuzustand, der Ihre Schließzylinder perfekt schont.
+                </p>
+            </div>
+
+            <div>
+                <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Was passiert mit verlorenen Schlüsseln? Kann mein Auto gestohlen werden?</h3>
+                <p>
+                    Wenn Sie einen Autoschlüssel verloren haben, besteht grundsätzlich die Gefahr, dass dieser von unbefugten Dritten gefunden und missbraucht wird. Unsere Diagnosesysteme erlauben es jedoch in den allermeisten Fällen, sich in das Steuergerät des Fahrzeugs einzuloggen und die verlorenen Schlüssel permanent aus dem System zu löschen (sogenanntes &quot;Ausprogrammieren&quot;). Der verlorene Schlüssel kann dann den Motor nicht mehr starten. Die mechanische Schließung (Türschloss) bleibt zwar bestehen, aber das Fahrzeug ist gegen elektronischen Diebstahl geschützt. Wir raten dringend zu dieser Maßnahme bei unklarem Verlust.
+                </p>
+            </div>
+
+            <div>
+                <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Können Sie auch Keyless-Go und Smart-Keys (Proximity) anlernen?</h3>
+                <p>
+                    Ja, unsere Leistungsarchitektur deckt die neueste Generation von Fahrzeugschlüsseln vollständig ab. Keyless-Go (auch Smart Key, Proximity Key oder Advanced Key genannt) nutzt niederfrequente Antennen im Fahrzeug, um den Schlüssel in der Hosentasche zu erkennen. Die Programmierung dieser Schlüssel erfordert oft eine Online-Verbindung zum Herstellerserver, um Sicherheits-Tokens (Seed-Key-Algorithmen) auszutauschen. Wir verfügen über die notwendigen Händlerzugänge und das Equipment, um auch diese hochkomplexen Systeme für eine Vielzahl von Marken sicher und zuverlässig anzulernen.
+                </p>
+            </div>
+
+            <div>
+                <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Reparatur vs. Neuanschaffung: Was ist wirtschaftlicher?</h3>
+                <p>
+                    Oftmals ist der mechanische Bart noch intakt und der Transponder funktioniert, aber das Gehäuse ist gebrochen, die Tasten sind durchgedrückt oder die Mikroschalter auf der Platine sind abgerissen. In unserer Elektronikwerkstatt können wir Mikroschalter unter dem Mikroskop neu einlöten, frische Akkus (auch fest verlötete VL-Zellen) einbauen und das Innenleben in ein nagelneues Gehäuse transferieren. Dies ist in der Regel signifikant günstiger als die komplette Neuanschaffung und Neuprogrammierung eines Originalschlüssels. Wir prüfen jeden Schlüssel vorab detailliert auf seine Reparierbarkeit.
+                </p>
+            </div>
+        </div>
       </Section>
 
       {/* Weiterführend als Stückliste mit Haarlinien; die ganze Zeile ist der Link */}

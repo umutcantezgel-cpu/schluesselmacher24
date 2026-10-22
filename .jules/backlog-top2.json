@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "route": "app/(site)/autoschluessel/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "module": "InteractiveServiceCalculator"
+    }
+  ]
+}
