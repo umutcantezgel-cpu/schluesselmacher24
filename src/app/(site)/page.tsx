@@ -19,6 +19,8 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { FraesbahnBewegung } from '@/components/visual/interaktiv/fraesbahn-bewegung';
 import { Seitenwechsel, bereichsName } from '@/components/visual/motion/seitenwechsel';
 import { cn } from '@/lib/cn';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('');
@@ -488,6 +490,125 @@ export default async function HomePage() {
           ))}
         </ol>
       </Section>
+
+      {/* EXPANSIERTER EXPERTEN-INHALT (>800 WÖRTER) MIT INTERAKTIVEM MODUL */}
+      <section aria-labelledby="expert-methodik" className="bg-[oklch(0.988_0.002_260)] py-16 md:py-24 lg:py-32">
+        <div className="shell">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
+
+            {/* Linke Spalte: Tiefgreifende Fachinformationen */}
+            <div className="lg:col-span-7">
+              <h2 id="expert-methodik" className="text-3xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mb-8">
+                Unsere architektonische Methodik für moderne Schließ- und Sicherheitstechnik
+              </h2>
+
+              <div className="prose prose-lg text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+                <p>
+                  In einer zunehmend komplexen Welt der Gebäudesicherheit ist die rein physische Absicherung durch klassische Schließzylinder nur noch ein Baustein eines umfassenden Sicherheitskonzepts. Bei SCHLÜSSELMACHER24 betrachten wir die Gebäudesicherheit als eine tief vernetzte architektonische Disziplin, die Mechanik, Elektronik und digitale Verwaltung nahtlos miteinander verschmilzt. Unsere Expertise basiert auf jahrzehntelanger Erfahrung und einem kompromisslosen Fokus auf Präzision, Materialgüte und zukunftssichere Systemarchitektur.
+                </p>
+
+                <h3 className="text-2xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mt-10 mb-4">
+                  Die Symbiose aus Mechanik und Elektronik
+                </h3>
+                <p>
+                  Eine moderne Schließanlage zeichnet sich dadurch aus, dass sie die Stärken bewährter mechanischer Schließsysteme mit der Flexibilität und Kontrollierbarkeit elektronischer Zutrittskontrollen kombiniert. Wir konzipieren hybride Anlagen, bei denen hochsensible Außenhautbereiche durch mechatronische Hochsicherheitszylinder geschützt werden, während im Innenbereich flexible, elektronische Beschläge oder smarte Zylinder zum Einsatz kommen. Diese Methodik ermöglicht es, verlorene Schlüssel sofort digital zu sperren, ohne physische Komponenten austauschen zu müssen – ein entscheidender Faktor für die langfristige Kosteneffizienz in Gewerbeobjekten und großen Wohnanlagen.
+                </p>
+                <p>
+                  Darüber hinaus legen wir größten Wert auf die mathematische Strukturierung von Schließplänen. Ein Schließplan ist nicht nur eine Tabelle von Schlüsseln und Zylindern, sondern die Abbildung der organisatorischen Struktur eines Unternehmens oder Gebäudes. Wir nutzen fortschrittliche Planungsalgorithmen, um die Schließhierarchien so zu optimieren, dass sie auch bei zukünftigen organisatorischen Änderungen skalierbar bleiben. Dabei werden Reservegruppen und Kreuzschließungen mit höchster Präzision vorkalkuliert, um die Sicherheit der Anlage über ihren gesamten Lebenszyklus zu garantieren.
+                </p>
+
+                <h3 className="text-2xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mt-10 mb-4">
+                  Materialgüte und Normkonformität (DIN EN 1303 & VdS)
+                </h3>
+                <p>
+                  Die physische Resilienz einer Schließanlage wird durch die Qualität der verwendeten Materialien bestimmt. Unsere Hochsicherheitszylinder entsprechen den strengsten Anforderungen der DIN EN 1303 und sind mehrheitlich VdS-anerkannt. Dies bedeutet, dass sie rigorosen Tests gegen zerstörende Öffnungsmethoden wie Aufbohren, Kernziehen oder die zerstörungsfreie Manipulation (z. B. Picking und Bumping) unterzogen wurden. Durch den Einsatz von gehärteten Stahlstiften im Zylindergehäuse, massiven Ziehschutzrosetten und hochkomplexen, patentierten Schlüsselprofilen schaffen wir ein physisches Bollwerk, das selbst professionellsten Angriffsversuchen standhält.
+                </p>
+                <p>
+                  Besonderes Augenmerk legen wir zudem auf den Patentschutz. Ein starker technischer und rechtlicher Kopierschutz des Schlüssels ist unerlässlich, um zu verhindern, dass unberechtigte Nachschlüssel angefertigt werden. Unsere Premium-Systeme verfügen über mehrdimensionale Profilmerkmale, aktive Sperrelemente im Schlüssel und zeitlich unbegrenzten Markenschutz, wodurch eine illegale Vervielfältigung praktisch ausgeschlossen wird.
+                </p>
+
+                <h3 className="text-2xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mt-10 mb-4">
+                  Skalierbarkeit und digitale Verwaltung (Cloud & On-Premise)
+                </h3>
+                <p>
+                  Die Verwaltung großer Schließanlagen stellt Facility Manager oft vor enorme Herausforderungen. Unsere elektronischen Zutrittslösungen integrieren sich nahtlos in moderne Verwaltungsplattformen. Egal ob cloudbasiert für maximale Flexibilität und Remote-Management oder als On-Premise-Lösung für höchste Datenhoheit in sicherheitskritischen Infrastrukturen – wir implementieren Systeme, die mit Ihren Anforderungen mitwachsen.
+                </p>
+                <p>
+                  Dank der Unterstützung von Technologien wie BLE (Bluetooth Low Energy), NFC und RFID (Mifare DESFire EV2/EV3) können Nutzer ihre Türen bequem und sicher per Smartphone, Smartwatch oder verschlüsseltem Transponder öffnen. Die Vergabe von temporären Zutrittsrechten, das Auslesen von Zutrittsereignissen und das sofortige Sperren verlorener Medien erfolgt in Echtzeit und bietet ein unerreichtes Maß an Transparenz und Kontrolle.
+                </p>
+
+                <h3 className="text-2xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mt-12 mb-6">
+                  Leistungsstufen im direkten Vergleich
+                </h3>
+
+                {/* CSS Subgrid Bento-Matrix für Leistungsvergleich */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                  <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-sm">
+                    <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)] mb-3">Tier 1: Mechanik Basis</h4>
+                    <ul className="space-y-2 text-sm text-[oklch(0.32_0.02_260)]">
+                      <li>• DIN EN 1303 zertifiziert</li>
+                      <li>• Standard Patentschutz</li>
+                      <li>• Grundlegender Aufbohrschutz</li>
+                      <li>• Ideal für Einfamilienhäuser</li>
+                    </ul>
+                  </div>
+                  <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-sm ring-1 ring-[oklch(0.52_0.24_260)]">
+                    <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)] mb-3">Tier 2: Hybrid-System</h4>
+                    <ul className="space-y-2 text-sm text-[oklch(0.32_0.02_260)]">
+                      <li>• Mechatronische Verknüpfung</li>
+                      <li>• VdS B/BZ Zertifizierung</li>
+                      <li>• Hoher Zieh- und Bohrschutz</li>
+                      <li>• Optimal für Gewerbebetriebe</li>
+                    </ul>
+                  </div>
+                  <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-sm">
+                    <h4 className="text-lg font-bold text-[oklch(0.16_0.02_260)] mb-3">Tier 3: Digital Enterprise</h4>
+                    <ul className="space-y-2 text-sm text-[oklch(0.32_0.02_260)]">
+                      <li>• 100% Elektronische Kontrolle</li>
+                      <li>• Echtzeit-Verwaltung per Cloud</li>
+                      <li>• Mifare DESFire EV3, BLE, NFC</li>
+                      <li>• Für komplexe Konzernstrukturen</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <h3 className="text-2xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mt-12 mb-6">
+                  Häufig gestellte Fragen (Expert-FAQ)
+                </h3>
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="font-bold text-[oklch(0.16_0.02_260)]">1. Wie unterscheidet sich der Patentschutz vom Markenschutz bei Schließzylindern?</h4>
+                    <p className="mt-1 text-sm text-[oklch(0.32_0.02_260)]">Der Patentschutz schützt die technische Funktionsweise (z.B. ein bewegliches Element im Schlüssel) für maximal 20 Jahre. Nach Ablauf dürfen Drittanbieter den Schlüssel kopieren. Der Markenschutz hingegen schützt beispielsweise das Profil (die Form des Schlüssels als Bildmarke) und kann unbegrenzt verlängert werden, was einen dauerhaften, rechtlichen Schutz gegen illegale Schlüsselkopien bietet.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[oklch(0.16_0.02_260)]">2. Ist eine elektronische Zutrittskontrolle bei Stromausfall noch funktionsfähig?</h4>
+                    <p className="mt-1 text-sm text-[oklch(0.32_0.02_260)]">Ja. Die meisten unserer Systeme (elektronische Zylinder und Beschläge) sind batteriebetrieben (Off-Line) und funktionieren vollkommen unabhängig vom Stromnetz. Bei vernetzten Online-Systemen sichern unterbrechungsfreie Stromversorgungen (USV) und redundante Systeme die volle Funktionsfähigkeit auch im Krisenfall ab.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[oklch(0.16_0.02_260)]">3. Was ist die VdS-Zertifizierung und warum ist sie relevant für meine Versicherung?</h4>
+                    <p className="mt-1 text-sm text-[oklch(0.32_0.02_260)]">Die VdS (Vertrauen durch Sicherheit) ist die wichtigste deutsche Zertifizierungsstelle für Brandschutz und Sicherheitstechnik. VdS-anerkannte Zylinder (Klasse A, B, BZ) bieten nachgewiesenen, extrem hohen Widerstand gegen Einbruchversuche. Viele Gewerbeversicherungen setzen eine VdS-Zertifizierung zwingend voraus, um bei Einbruchschäden die volle Deckung zu gewährleisten.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[oklch(0.16_0.02_260)]">4. Lassen sich bestehende mechanische Schließanlagen nachträglich elektronisch aufrüsten?</h4>
+                    <p className="mt-1 text-sm text-[oklch(0.32_0.02_260)]">Absolut. Diese hybride Methodik wird sehr häufig angewendet. Durch den einfachen Austausch von mechanischen Zylindern durch elektronische Knaufzylinder können spezifische Türen in die digitale Verwaltung integriert werden, ohne dass die gesamte Anlage oder gar die Einsteckschlösser getauscht werden müssen.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[oklch(0.16_0.02_260)]">5. Wie lange dauert die Produktion und Planung einer Schließanlage nach Tier 2 oder 3?</h4>
+                    <p className="mt-1 text-sm text-[oklch(0.32_0.02_260)]">Die sorgfältige mathematische Planung des Schließplans benötigt in der Regel 3 bis 5 Werktage, abhängig von der Komplexität. Nach der finalen Freigabe des Schließplans durch Sie, dauert die werkseitige Produktion der Hochsicherheitskomponenten durchschnittlich 2 bis 4 Wochen. Mit unserem Vorab-Kalkulator können Sie den Scope besser einschätzen.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Rechte Spalte: Interaktives Modul */}
+            <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+              <ServiceBudgetCalculator />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
     </>
   );
 }
