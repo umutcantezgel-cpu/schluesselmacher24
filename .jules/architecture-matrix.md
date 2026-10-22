@@ -1,0 +1,54 @@
+# Architecture Matrix
+
+| Route | Word Count | Status | Schema | CWV | Plan |
+|-------|------------|--------|--------|-----|------|
+| /admin/[[...segments]] | 99 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /(site) | 2210 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /ratgeber | 317 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /ratgeber/[slug] | 775 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /schluessel-nach-vorlage | 2203 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /schluessel-nach-vorlage/anfrage | 235 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /[...unbekannt] | 72 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /warenkorb | 342 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CHECKOUT_BENTO |
+| /kasse | 417 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CHECKOUT_BENTO |
+| /schluessel-nach-code | 738 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /schluessel-nach-code/[slug] | 1040 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /sicherheitstechnik | 1431 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR |
+| /sicherheitstechnik/[slug] | 729 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR |
+| /sicherheitstechnik/sicherheitscheck | 378 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR |
+| /tuer-und-schliesstechnik | 2271 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR |
+| /tuer-und-schliesstechnik/[slug] | 523 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR |
+| /bestellung/[id] | 1389 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /gleichschliessende-zylinder | 2564 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /gleichschliessende-zylinder/konfigurator | 316 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /elektronische-zutrittsloesungen | 2982 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /elektronische-zutrittsloesungen/konfigurator | 406 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /schliessanlagen | 2166 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /schliessanlagen/konfigurator | 379 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /service-und-termin | 2247 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /service-und-termin/terminstatus | 109 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /service-und-termin/anfrage | 153 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /service-und-termin/vor-ort | 742 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /service-und-termin/kontakt | 622 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /rechtliches/impressum | 247 | PENDING_BUILDER | TODO | TODO | Exp > 800w + TOC_NAV |
+| /rechtliches/cookie-einstellungen | 227 | PENDING_BUILDER | TODO | TODO | Exp > 800w + TOC_NAV |
+| /rechtliches/versand-und-zahlung | 515 | PENDING_BUILDER | TODO | TODO | Exp > 800w + TOC_NAV |
+| /rechtliches/widerruf | 369 | PENDING_BUILDER | TODO | TODO | Exp > 800w + TOC_NAV |
+| /rechtliches/agb | 415 | PENDING_BUILDER | TODO | TODO | Exp > 800w + TOC_NAV |
+| /rechtliches/datenschutz | 730 | PENDING_BUILDER | TODO | TODO | Exp > 800w + TOC_NAV |
+| /artikel | 807 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /artikel/[slug] | 1160 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /standorte | 306 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /standorte/[city] | 617 | PENDING_BUILDER | TODO | TODO | Exp > 800w + CALCULATOR_OR_FILTER |
+| /autoschluessel | 2496 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/marken | 779 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/marken/[make] | 1209 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/marken/[make]/[model] | 2004 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/funkschluessel | 1091 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/programmieren | 1222 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/anfrage | 521 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/kopieren | 1133 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/nachmachen | 1189 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/smart-key | 1207 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/schluesselbart-fraesen | 1042 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
+| /autoschluessel/fahrzeugoeffnung | 1121 | PENDING_BUILDER | TODO | TODO | Exp > 800w + FILTER |
