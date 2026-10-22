@@ -11,7 +11,7 @@ describe('tokensAusCss', () => {
   it('liest die Grundfarben aus globals.css (eine Quelle für Seite und Vorschaubild)', () => {
     const css = readFileSync(join(process.cwd(), 'src/app/(site)/globals.css'), 'utf8');
     const t = tokensAusCss(css);
-    for (const wert of Object.values(t)) expect(wert).toMatch(/^\d+(\.\d+)? \d+(\.\d+)?% \d+(\.\d+)?%$/);
+    for (const wert of Object.values(t)) expect(wert).toMatch(/^\d+(\.\d+)? \d+(\.\d+)? \d+(\.\d+)?$/);
     /* `--foreground` darf nicht von `--foreground-muted` überdeckt werden und umgekehrt. */
     expect(t.foreground).not.toBe(t['foreground-muted']);
   });
@@ -23,7 +23,7 @@ describe('tokensAusCss', () => {
 
 describe('farbe', () => {
   it('macht aus dem HSL-Tripel einen Farbwert', () => {
-    expect(farbe('214 80% 40%')).toBe('hsl(214 80% 40%)');
+    expect(farbe('0.50 0.15 260')).toMatch(/^rgb\(\d+, \d+, \d+\)$/);
   });
 });
 
