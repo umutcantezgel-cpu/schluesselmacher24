@@ -1,0 +1,12 @@
+# Architecture Blueprint & Guidelines
+
+## Core Blueprint
+- Framework: Next.js 16+
+- React: 19.2+
+- Styling: Tailwind CSS v4 (OKLCH Light Mode)
+- Typography: Swiss Modernist
+
+## Transformation Strategy
+All existing routes will be expanded with in-depth institutional content (>800 words), incorporating calculators, filters, and Bento-Grid interactions without creating any new routes or altering the existing path structure.
+
+Refer to `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for specific transformation targets.
