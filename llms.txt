@@ -1,0 +1,3 @@
+
+## Interactive Modules
+- ServiceBudgetCalculator added to /sicherheitstechnik (Budget calculator using React 19 Server Actions)

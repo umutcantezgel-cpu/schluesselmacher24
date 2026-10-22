@@ -4,6 +4,7 @@ import type { ComponentType } from 'react';
 
 import { getPageContent, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
@@ -205,6 +206,113 @@ export default async function SicherheitstechnikPage() {
       </Section>
 
       {/* 02 Bereiche: Raster mit Haarlinien wie die Tür- und Schließtechnik */}
+
+      {/* EXPANDED CONTENT AREA */}
+      <Section id="architectural-methodology">
+        <SectionHeading
+          nummer="01a"
+          eyebrow="Architektonische Methodik"
+          title="Tiefgehende Analyse und Konzeption"
+          lead="Wir verstehen Sicherheitstechnik nicht als reine Produktinstallation, sondern als integrierte Systemarchitektur."
+        />
+
+        <div className="mt-12 text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6 max-w-4xl mx-auto">
+          <p>
+            Moderne Sicherheitstechnik erfordert einen ganzheitlichen Ansatz. Es reicht nicht aus, Kameras aufzuhängen oder einen Alarmtaster zu installieren. Die wahre Stärke eines Systems zeigt sich in der nahtlosen Integration der einzelnen Komponenten. Unsere Methodik basiert auf einer detaillierten Risikoanalyse, bei der wir die spezifischen Anforderungen Ihres Objekts evaluieren. Wir betrachten Einbruchhemmung, Zutrittskontrolle, Videoüberwachung und Alarmtechnik als Bausteine eines umfassenden Sicherheitskonzepts.
+          </p>
+          <p>
+            Ein zentraler Aspekt unserer Planung ist die <strong>mechanische Grundsicherung</strong>. Elektronische Systeme können Alarm schlagen, aber sie können einen physischen Angriff nicht verzögern. Die mechanische Sicherheit bildet das Fundament. Erst wenn Fenster und Türen einen definierten Widerstandswert aufweisen, ist der Einsatz von Sensorik sinnvoll. Wir analysieren Schließzylinder, Beschläge, Schließbleche und Bandseitensicherungen. Jede Schwachstelle in der Gebäudehülle wird identifiziert und in das Gesamtkonzept integriert.
+          </p>
+          <p>
+            Die <strong>elektronische Überwachung</strong> baut auf diesem Fundament auf. Hierbei setzen wir auf hochauflösende IP-Kameras mit intelligenter Videoanalyse. Diese Systeme können nicht nur Bewegungen erkennen, sondern auch zwischen Menschen, Tieren und Fahrzeugen unterscheiden. Dadurch reduzieren wir Fehlalarme auf ein absolutes Minimum. Die Datenübertragung erfolgt stets verschlüsselt und entspricht den höchsten Standards der Datensicherheit. Ein manipulationssicheres Netzwerk ist die Voraussetzung für einen zuverlässigen Betrieb.
+          </p>
+          <p>
+            Ein weiterer Pfeiler unserer Methodik ist die <strong>Alarmierung und Intervention</strong>. Ein Alarm ist wertlos, wenn er nicht die richtigen Reaktionen auslöst. Wir projektieren die Aufschaltung auf zertifizierte Notruf- und Serviceleitstellen (NSL). Im Alarmfall erfolgt eine sofortige Verifikation durch die Leitstelle, beispielsweise durch den Zugriff auf die Videokameras. So können Einsatzkräfte gezielt alarmiert werden. Die redundante Signalübertragung über IP und Mobilfunk stellt sicher, dass der Alarm auch bei Ausfall des primären Netzwerks übertragen wird.
+          </p>
+
+          <h3 className="text-[oklch(0.16_0.02_260)] text-xl font-semibold mt-12 mb-4">Leistungsstufen und Vergleichsmatrix</h3>
+          <p>
+            Um Ihnen größtmögliche Transparenz zu bieten, haben wir unsere Lösungen in klar definierte Leistungsstufen unterteilt. Jede Stufe baut auf der vorherigen auf und adressiert spezifische Gefährdungspotenziale.
+          </p>
+
+          <div className="overflow-x-auto mt-8 mb-12">
+            <table className="w-full border-collapse border border-[oklch(0.89_0.008_260/0.55)]">
+              <thead>
+                <tr className="bg-[oklch(0.968_0.004_260)]">
+                  <th className="p-4 text-left border-b border-[oklch(0.89_0.008_260/0.55)] font-semibold text-[oklch(0.16_0.02_260)]">Feature</th>
+                  <th className="p-4 text-left border-b border-[oklch(0.89_0.008_260/0.55)] font-semibold text-[oklch(0.16_0.02_260)]">Basis (Grundschutz)</th>
+                  <th className="p-4 text-left border-b border-[oklch(0.89_0.008_260/0.55)] font-semibold text-[oklch(0.16_0.02_260)]">Erweitert (Pro)</th>
+                  <th className="p-4 text-left border-b border-[oklch(0.89_0.008_260/0.55)] font-semibold text-[oklch(0.16_0.02_260)]">Maximal (Enterprise)</th>
+                </tr>
+              </thead>
+              <tbody className="text-sm">
+                <tr>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Mechanische Absicherung</td>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Standard (RC2 analog)</td>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Erhöht (RC3 analog)</td>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Maximal (RC4 analog)</td>
+                </tr>
+                <tr className="bg-[oklch(0.988_0.002_260)]">
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Videoüberwachung</td>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Eingangsbereich (HD)</td>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Vollflächig (4K, KI-Analyse)</td>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Thermalkameras & Radar</td>
+                </tr>
+                <tr>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Alarmaufschaltung</td>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">Lokal (Sirene)</td>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">NSL (Einfacher Pfad)</td>
+                  <td className="p-4 border-b border-[oklch(0.89_0.008_260/0.55)]">NSL (Redundant IP+LTE)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-[oklch(0.16_0.02_260)] text-xl font-semibold mt-12 mb-4">Umfassende FAQ zur Sicherheitstechnik</h3>
+          <div className="space-y-6">
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-xl bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">1. Wie hoch sind die initialen Kosten für ein professionelles System?</h4>
+              <p className="text-[oklch(0.32_0.02_260)]">Die Kosten variieren stark nach Objektgröße und Schutzbedarf. Ein grundlegendes System beginnt oft im mittleren vierstelligen Bereich. Nutzen Sie unseren Budget-Kalkulator weiter unten auf dieser Seite für eine erste Einschätzung. Wir empfehlen stets eine Vor-Ort-Analyse für ein belastbares Angebot.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-xl bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">2. Ist eine kabellose (Funk-) Alarmanlage sicher?</h4>
+              <p className="text-[oklch(0.32_0.02_260)]">Moderne professionelle Funksysteme nutzen verschlüsselte Frequenzen und bidirektionale Kommunikation. Sie sind gegen Jamming (Störsender) geschützt und melden Sabotageversuche sofort. Für die höchste Sicherheitsstufe (VdS Klasse C) sind jedoch oft kabelgebundene Systeme vorgeschrieben.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-xl bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">3. Welche Datenschutzrichtlinien gelten für Kameras?</h4>
+              <p className="text-[oklch(0.32_0.02_260)]">Im privaten Bereich dürfen Sie Ihr eigenes Grundstück überwachen. Öffentliche Bereiche wie Gehwege dürfen nicht erfasst werden. Im gewerblichen Bereich (DSGVO) sind strenge Vorgaben bezüglich Hinweisschildern, Zweckbindung und Löschfristen einzuhalten. Wir unterstützen Sie bei der datenschutzkonformen Einrichtung (ohne Rechtsberatung).</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-xl bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">4. Was passiert bei einem Stromausfall?</h4>
+              <p className="text-[oklch(0.32_0.02_260)]">Professionelle Anlagen verfügen über Notstromakkus, die den Betrieb für mindestens 12 bis 60 Stunden aufrechterhalten. Auch die Kommunikationsmodule zur Leitstelle sind gepuffert. Ein Sabotagealarm wird auch bei Stromausfall abgesetzt.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-xl bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">5. Wie oft muss das System gewartet werden?</h4>
+              <p className="text-[oklch(0.32_0.02_260)]">Wir empfehlen eine jährliche Wartung. Dabei werden Akkus geprüft, Sensoren auf Funktion getestet und Firmware-Updates eingespielt. Regelmäßige Wartung ist oft eine Voraussetzung für den Versicherungsschutz und die Aufschaltung auf eine Leitstelle.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-xl bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">6. Kann das System in mein Smart Home integriert werden?</h4>
+              <p className="text-[oklch(0.32_0.02_260)]">Ja, viele unserer Systeme bieten Schnittstellen (z.B. KNX) für die Hausautomation. So können bei einer Alarmauslösung beispielsweise Lichter eingeschaltet und Rollläden hochgefahren werden. Wir achten jedoch streng darauf, dass die Sicherheitsarchitektur vom restlichen Netzwerk getrennt bleibt, um Manipulationen auszuschließen.</p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-xl bg-[oklch(0.988_0.002_260)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] mb-2">7. Wie funktioniert die Alarmverifikation?</h4>
+              <p className="text-[oklch(0.32_0.02_260)]">Bei einem Alarmfall (z.B. Auslösen eines Bewegungsmelders) schaltet sich die Leitstelle auf die Kameras auf. So kann sofort geprüft werden, ob ein echter Einbruch oder ein Fehlalarm (z.B. durch ein Tier) vorliegt. Nur bei verifizierten Alarmen wird die Polizei verständigt, was teure Fehleinsätze vermeidet.</p>
+            </div>
+          </div>
+
+          <p className="mt-8">
+            Wir legen größten Wert auf Nachhaltigkeit und Langlebigkeit unserer Installationen. Unsere Partner und Lieferanten sind nach DIN EN ISO 9001 zertifiziert und wir verbauen ausschließlich Komponenten, für die eine langjährige Ersatzteilverfügbarkeit garantiert ist. Dies senkt die Total Cost of Ownership (TCO) erheblich.
+          </p>
+          <p>
+            Die Integration verschiedener Gewerke – von der mechanischen Schließanlage über die elektronische Zutrittskontrolle bis hin zur Videoüberwachung – erfordert ein hohes Maß an technischer Expertise. Unsere Techniker werden fortlaufend geschult und zertifiziert, um stets auf dem neuesten Stand der Technik zu sein. Jedes Projekt wird von einem dedizierten Projektleiter betreut, der als Ihr zentraler Ansprechpartner fungiert. Von der ersten Begehung bis zur finalen Abnahme und Einweisung stehen wir Ihnen mit unserem gesamten Know-how zur Seite.
+          </p>
+        </div>
+
+        <div className="mt-16 max-w-2xl mx-auto">
+           <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
       <Section tone="muted">
         <SectionHeading
           nummer="02"
