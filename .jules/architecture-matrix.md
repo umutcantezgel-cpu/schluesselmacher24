@@ -1,0 +1,54 @@
+# Architecture Matrix
+
+| Route | Word Count | Status |
+|---|---|---|
+| /admin/[[...segments]] | 51 | Needs Expansion (Target > 800) |
+| / | 333 | Needs Expansion (Target > 800) |
+| /ratgeber | 78 | Needs Expansion (Target > 800) |
+| /ratgeber/[slug] | 275 | Needs Expansion (Target > 800) |
+| /schluessel-nach-vorlage | 518 | Needs Expansion (Target > 800) |
+| /schluessel-nach-vorlage/anfrage | 43 | Needs Expansion (Target > 800) |
+| /[...unbekannt] | 65 | Needs Expansion (Target > 800) |
+| /warenkorb | 45 | Needs Expansion (Target > 800) |
+| /kasse | 81 | Needs Expansion (Target > 800) |
+| /schluessel-nach-code | 205 | Needs Expansion (Target > 800) |
+| /schluessel-nach-code/[slug] | 397 | Needs Expansion (Target > 800) |
+| /sicherheitstechnik | 351 | Needs Expansion (Target > 800) |
+| /sicherheitstechnik/[slug] | 199 | Needs Expansion (Target > 800) |
+| /sicherheitstechnik/sicherheitscheck | 83 | Needs Expansion (Target > 800) |
+| /tuer-und-schliesstechnik | 517 | Needs Expansion (Target > 800) |
+| /tuer-und-schliesstechnik/[slug] | 173 | Needs Expansion (Target > 800) |
+| /bestellung/[id] | 367 | Needs Expansion (Target > 800) |
+| /gleichschliessende-zylinder | 551 | Needs Expansion (Target > 800) |
+| /gleichschliessende-zylinder/konfigurator | 84 | Needs Expansion (Target > 800) |
+| /elektronische-zutrittsloesungen | 417 | Needs Expansion (Target > 800) |
+| /elektronische-zutrittsloesungen/konfigurator | 113 | Needs Expansion (Target > 800) |
+| /schliessanlagen | 331 | Needs Expansion (Target > 800) |
+| /schliessanlagen/konfigurator | 60 | Needs Expansion (Target > 800) |
+| /service-und-termin | 604 | Needs Expansion (Target > 800) |
+| /service-und-termin/terminstatus | 23 | Needs Expansion (Target > 800) |
+| /service-und-termin/anfrage | 37 | Needs Expansion (Target > 800) |
+| /service-und-termin/vor-ort | 140 | Needs Expansion (Target > 800) |
+| /service-und-termin/kontakt | 165 | Needs Expansion (Target > 800) |
+| /rechtliches/impressum | 179 | Needs Expansion (Target > 800) |
+| /rechtliches/cookie-einstellungen | 16 | Needs Expansion (Target > 800) |
+| /rechtliches/versand-und-zahlung | 202 | Needs Expansion (Target > 800) |
+| /rechtliches/widerruf | 12 | Needs Expansion (Target > 800) |
+| /rechtliches/agb | 12 | Needs Expansion (Target > 800) |
+| /rechtliches/datenschutz | 615 | Needs Expansion (Target > 800) |
+| /artikel | 289 | Needs Expansion (Target > 800) |
+| /artikel/[slug] | 381 | Needs Expansion (Target > 800) |
+| /standorte | 87 | Needs Expansion (Target > 800) |
+| /standorte/[city] | 209 | Needs Expansion (Target > 800) |
+| /autoschluessel | 386 | Needs Expansion (Target > 800) |
+| /autoschluessel/marken | 253 | Needs Expansion (Target > 800) |
+| /autoschluessel/marken/[make] | 356 | Needs Expansion (Target > 800) |
+| /autoschluessel/marken/[make]/[model] | 741 | Needs Expansion (Target > 800) |
+| /autoschluessel/funkschluessel | 40 | Needs Expansion (Target > 800) |
+| /autoschluessel/programmieren | 49 | Needs Expansion (Target > 800) |
+| /autoschluessel/anfrage | 121 | Needs Expansion (Target > 800) |
+| /autoschluessel/kopieren | 88 | Needs Expansion (Target > 800) |
+| /autoschluessel/nachmachen | 38 | Needs Expansion (Target > 800) |
+| /autoschluessel/smart-key | 50 | Needs Expansion (Target > 800) |
+| /autoschluessel/schluesselbart-fraesen | 40 | Needs Expansion (Target > 800) |
+| /autoschluessel/fahrzeugoeffnung | 46 | Needs Expansion (Target > 800) |
