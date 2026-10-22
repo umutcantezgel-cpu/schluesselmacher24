@@ -1,0 +1,1 @@
+Neues Interaktives Modul: Projekt-Budget Kalkulator (src/components/calculator/service-budget-calculator.tsx) mit Server Actions (src/actions/calculate-budget.ts). Integriert in src/app/(site)/sicherheitstechnik/page.tsx.

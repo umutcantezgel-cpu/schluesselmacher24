@@ -13,6 +13,7 @@ import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { IconAlarmtechnik } from '@/components/visual/icons/alarmtechnik';
 import { IconAussenhautsicherung } from '@/components/visual/icons/aussenhautsicherung';
@@ -283,10 +284,25 @@ export default async function SicherheitstechnikPage() {
         </ul>
       </Section>
 
-      {/* 03 Recht und Verantwortung: Kasten mit Haarlinien */}
-      <Section id="recht-und-verantwortung">
+
+      {/* 03 Budgetkalkulator: Interaktives Modul */}
+      <Section id="budget-kalkulator">
         <SectionHeading
           nummer="03"
+          eyebrow="Kostenabschätzung"
+          title="Projekt-Budget Kalkulator"
+          lead="Berechnen Sie den groben Projektumfang für Ihr Sicherheitsprojekt. Die Schätzung dient als erste Orientierung für die Planung."
+        />
+
+        <div className="mt-12 max-w-3xl">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
+      {/* 04 Recht und Verantwortung: Kasten mit Haarlinien */}
+      <Section id="recht-und-verantwortung">
+        <SectionHeading
+          nummer="04"
           eyebrow="Recht und Verantwortung"
           title="Was Sie beim Betrieb von Video, Audio und Protokollen beachten müssen"
           lead="Diese Punkte klären wir vor der Planung, damit die Technik so aufgebaut wird, wie Sie sie später auch betreiben dürfen."
@@ -341,10 +357,54 @@ export default async function SicherheitstechnikPage() {
         </div>
       </Section>
 
-      {/* 04 · Weiterlesen: Grundschutz und Bestandsaufnahme als Stückliste, darunter die
+
+      {/* 05 FAQ: Häufige Fragen */}
+      <Section id="faq" tone="muted">
+        <SectionHeading
+          nummer="05"
+          eyebrow="Häufige Fragen"
+          title="Expertenantworten zur Sicherheitstechnik"
+          lead="Fundierte Antworten auf die wichtigsten Fragen zur Planung, Installation und rechtlichen Aspekten von Sicherheitstechnik."
+        />
+
+        <div className="mt-12 space-y-8 max-w-3xl">
+          <div className="border-b border-border pb-8">
+            <h3 className="text-title-sm font-semibold text-foreground">Wie läuft die architektonische Methodik bei der Planung ab?</h3>
+            <p className="mt-4 text-small text-foreground-muted leading-relaxed">
+              Unsere architektonische Methodik basiert auf dem Prinzip der konzentrischen Sicherheitsringe (Zwiebelschalenprinzip). Wir beginnen bei der äußersten Begrenzung Ihres Grundstücks (Perimeterschutz) und arbeiten uns über die Gebäudehülle (Außenhautsicherung, mechanischer Schutz) bis in das Innere vor (Raumüberwachung, Paniktaster). Dabei berücksichtigen wir stets die architektonischen Gegebenheiten Ihres Objekts, um die Technik möglichst unauffällig, aber maximal wirksam zu integrieren. Jede Planung startet mit einer detaillierten Schwachstellenanalyse vor Ort.
+            </p>
+          </div>
+          <div className="border-b border-border pb-8">
+            <h3 className="text-title-sm font-semibold text-foreground">Welche Leistungsstufen und Vergleichsmatrizen bieten Sie an?</h3>
+            <p className="mt-4 text-small text-foreground-muted leading-relaxed">
+              Wir unterscheiden grundlegend zwischen drei Leistungsstufen (Tiers): <strong>STANDARD</strong> (solider mechanischer Grundschutz ergänzt durch rudimentäre Meldesysteme), <strong>PREMIUM</strong> (vollintegrierte smarte Systeme mit Aufschaltung auf eine Leitstelle und App-Steuerung) und <strong>ENTERPRISE</strong> (hochkomplexe vernetzte Anlagen für Gewerbeobjekte mit Zutrittskontrolle, Videoüberwachung und Zeitwirtschaft). In unserer detaillierten Vergleichsmatrix stellen wir Ausfallsicherheit, Bedienkomfort, Skalierbarkeit und Investitionskosten transparent gegenüber, damit Sie die optimale Entscheidungsgrundlage haben.
+            </p>
+          </div>
+          <div className="border-b border-border pb-8">
+            <h3 className="text-title-sm font-semibold text-foreground">Wie gewährleisten Sie den Datenschutz bei der Videoüberwachung?</h3>
+            <p className="mt-4 text-small text-foreground-muted leading-relaxed">
+              Datenschutz (DSGVO-Konformität) ist ein integraler Bestandteil unserer Anlagenplanung. Wir konfigurieren die Kameras so, dass öffentliche Bereiche (Gehwege, Straßen) und Nachbargrundstücke durch sogenannte Privacy-Masking-Zonen (geschwärzte Bereiche im Bild) automatisch ausgeblendet werden. Zudem richten wir ein strenges Rollen- und Rechtekonzept ein, sodass nur autorisierte Personen Zugriff auf das Live-Bild oder die Aufzeichnungen haben. Die Speicherdauer der Aufzeichnungen wird auf das rechtlich zulässige Minimum (in der Regel 72 Stunden) begrenzt und anschließend automatisch überschrieben.
+            </p>
+          </div>
+          <div className="border-b border-border pb-8">
+            <h3 className="text-title-sm font-semibold text-foreground">Was passiert bei einem Stromausfall oder Internetausfall?</h3>
+            <p className="mt-4 text-small text-foreground-muted leading-relaxed">
+              Professionelle Sicherheitstechnik zeichnet sich durch hohe Ausfallsicherheit (Redundanz) aus. Unsere Alarmanlagen und kritischen Komponenten sind serienmäßig mit leistungsstarken Notstromakkus ausgestattet, die den Betrieb je nach Ausbaustufe für 12 bis 48 Stunden lückenlos aufrechterhalten. Die Kommunikation zur Notruf- und Serviceleitstelle erfolgt redundant: Fällt die primäre IP-Verbindung (Festnetz/Internet) aus, übernimmt sofort und automatisch das integrierte LTE/5G-Mobilfunkmodul (Dual-Path-Übertragung). So bleibt Ihr Objekt auch bei massiven Infrastrukturstörungen geschützt.
+            </p>
+          </div>
+          <div className="border-b border-border pb-8">
+            <h3 className="text-title-sm font-semibold text-foreground">Wie zukunftssicher und erweiterbar sind die installierten Systeme?</h3>
+            <p className="mt-4 text-small text-foreground-muted leading-relaxed">
+              Wir setzen ausschließlich auf etablierte Industriestandards und offene Protokolle von Premium-Herstellern, anstatt uns auf kurzlebige proprietäre Insellösungen zu verlassen. Das modulare Bus-System ermöglicht es, die Anlage auch Jahre später noch problemlos zu erweitern — sei es durch zusätzliche Melder, neue Bedienteile oder die Integration neuer Technologien. Firmware-Updates werden zentral eingespielt, sodass die Systeme auch gegen zukünftige Cyber-Bedrohungen gewappnet bleiben und sich nahtlos in sich wandelnde Smart-Home- oder Gebäudeautomations-Umgebungen (KNX) einfügen.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* 06 · Weiterlesen: Grundschutz und Bestandsaufnahme als Stückliste, darunter die
           Seitenverweise aus der Redaktion als Haarlinienzeilen */}
       <Section tone="muted" tight>
-        <SectionHeading nummer="04" eyebrow="Weiterlesen" title="Passende Seiten" />
+        <SectionHeading nummer="06" eyebrow="Weiterlesen" title="Passende Seiten" />
 
         <ul className="mt-8 grid border-t border-border md:grid-cols-2">
           {WEITER.map((eintrag, index) => (
