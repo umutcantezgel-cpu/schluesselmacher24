@@ -1,0 +1,1330 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-23T17:07:28.333650+00:00",
+  "total_existing_routes": 65,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/(payload)",
+      "source_file": "src/app/(payload)/layout.tsx",
+      "target_word_count": 87,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/(payload)/api/[...slug]",
+      "source_file": "src/app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 69,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/(payload)/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicpayloadadminsegmentsWidget",
+        "target_file": "src/components/interactive/dynamic-widget-2.tsx",
+        "action_file": "src/actions/interactive-action-2.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/(site)",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 3589,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteWidget",
+        "target_file": "src/components/interactive/dynamic-widget-3.tsx",
+        "action_file": "src/actions/interactive-action-3.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/(site)",
+      "source_file": "src/app/(site)/layout.tsx",
+      "target_word_count": 273,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/(site)/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 911,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteratgeberWidget",
+        "target_file": "src/components/interactive/dynamic-widget-5.tsx",
+        "action_file": "src/actions/interactive-action-5.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/(site)/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1450,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteratgeberslugWidget",
+        "target_file": "src/components/interactive/dynamic-widget-6.tsx",
+        "action_file": "src/actions/interactive-action-6.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/(site)/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 3003,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteschluesselnachvorlageWidget",
+        "target_file": "src/components/interactive/dynamic-widget-7.tsx",
+        "action_file": "src/actions/interactive-action-7.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/(site)/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/layout.tsx",
+      "target_word_count": 33,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/(site)/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteschluesselnachvorlageanfrageWidget",
+        "target_file": "src/components/interactive/dynamic-widget-9.tsx",
+        "action_file": "src/actions/interactive-action-9.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/(site)/[...unbekannt]",
+      "source_file": "src/app/(site)/[...unbekannt]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteunbekanntWidget",
+        "target_file": "src/components/interactive/dynamic-widget-10.tsx",
+        "action_file": "src/actions/interactive-action-10.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/(site)/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 920,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitewarenkorbWidget",
+        "target_file": "src/components/interactive/dynamic-widget-11.tsx",
+        "action_file": "src/actions/interactive-action-11.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/(site)/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 998,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitekasseWidget",
+        "target_file": "src/components/interactive/dynamic-widget-12.tsx",
+        "action_file": "src/actions/interactive-action-12.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/(site)/api/kunden-upload",
+      "source_file": "src/app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 690,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/(site)/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1373,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteschluesselnachcodeWidget",
+        "target_file": "src/components/interactive/dynamic-widget-14.tsx",
+        "action_file": "src/actions/interactive-action-14.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/(site)/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/layout.tsx",
+      "target_word_count": 33,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/(site)/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1747,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteschluesselnachcodeslugWidget",
+        "target_file": "src/components/interactive/dynamic-widget-16.tsx",
+        "action_file": "src/actions/interactive-action-16.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/(site)/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 2291,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitesicherheitstechnikWidget",
+        "target_file": "src/components/interactive/dynamic-widget-17.tsx",
+        "action_file": "src/actions/interactive-action-17.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/(site)/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/layout.tsx",
+      "target_word_count": 31,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/(site)/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1441,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitesicherheitstechnikslugWidget",
+        "target_file": "src/components/interactive/dynamic-widget-19.tsx",
+        "action_file": "src/actions/interactive-action-19.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/(site)/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 941,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitesicherheitstechniksicherheitscheckWidget",
+        "target_file": "src/components/interactive/dynamic-widget-20.tsx",
+        "action_file": "src/actions/interactive-action-20.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/(site)/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 3293,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitetuerundschliesstechnikWidget",
+        "target_file": "src/components/interactive/dynamic-widget-21.tsx",
+        "action_file": "src/actions/interactive-action-21.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/(site)/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/layout.tsx",
+      "target_word_count": 33,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/(site)/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1181,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitetuerundschliesstechnikslugWidget",
+        "target_file": "src/components/interactive/dynamic-widget-23.tsx",
+        "action_file": "src/actions/interactive-action-23.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/(site)/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2309,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitebestellungidWidget",
+        "target_file": "src/components/interactive/dynamic-widget-24.tsx",
+        "action_file": "src/actions/interactive-action-24.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/(site)/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3732,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitegleichschliessendezylinderWidget",
+        "target_file": "src/components/interactive/dynamic-widget-25.tsx",
+        "action_file": "src/actions/interactive-action-25.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/(site)/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/layout.tsx",
+      "target_word_count": 32,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/(site)/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 859,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitegleichschliessendezylinderkonfiguratorWidget",
+        "target_file": "src/components/interactive/dynamic-widget-27.tsx",
+        "action_file": "src/actions/interactive-action-27.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/(site)/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3695,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteelektronischezutrittsloesungenWidget",
+        "target_file": "src/components/interactive/dynamic-widget-28.tsx",
+        "action_file": "src/actions/interactive-action-28.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/(site)/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/layout.tsx",
+      "target_word_count": 32,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/(site)/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 954,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteelektronischezutrittsloesungenkonfiguratorWidget",
+        "target_file": "src/components/interactive/dynamic-widget-30.tsx",
+        "action_file": "src/actions/interactive-action-30.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/(site)/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2866,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteschliessanlagenWidget",
+        "target_file": "src/components/interactive/dynamic-widget-31.tsx",
+        "action_file": "src/actions/interactive-action-31.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/(site)/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/layout.tsx",
+      "target_word_count": 31,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/(site)/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 942,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteschliessanlagenkonfiguratorWidget",
+        "target_file": "src/components/interactive/dynamic-widget-33.tsx",
+        "action_file": "src/actions/interactive-action-33.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/(site)/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 3398,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteserviceundterminWidget",
+        "target_file": "src/components/interactive/dynamic-widget-34.tsx",
+        "action_file": "src/actions/interactive-action-34.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/(site)/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/layout.tsx",
+      "target_word_count": 33,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/(site)/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteserviceundterminterminstatusWidget",
+        "target_file": "src/components/interactive/dynamic-widget-36.tsx",
+        "action_file": "src/actions/interactive-action-36.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/(site)/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteserviceundterminanfrageWidget",
+        "target_file": "src/components/interactive/dynamic-widget-37.tsx",
+        "action_file": "src/actions/interactive-action-37.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/(site)/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1414,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteserviceundterminvorortWidget",
+        "target_file": "src/components/interactive/dynamic-widget-38.tsx",
+        "action_file": "src/actions/interactive-action-38.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/(site)/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1307,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteserviceundterminkontaktWidget",
+        "target_file": "src/components/interactive/dynamic-widget-39.tsx",
+        "action_file": "src/actions/interactive-action-39.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/(site)/rechtliches",
+      "source_file": "src/app/(site)/rechtliches/layout.tsx",
+      "target_word_count": 289,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/(site)/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiterechtlichesimpressumWidget",
+        "target_file": "src/components/interactive/dynamic-widget-41.tsx",
+        "action_file": "src/actions/interactive-action-41.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/(site)/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiterechtlichescookieeinstellungenWidget",
+        "target_file": "src/components/interactive/dynamic-widget-42.tsx",
+        "action_file": "src/actions/interactive-action-42.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/(site)/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1147,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiterechtlichesversandundzahlungWidget",
+        "target_file": "src/components/interactive/dynamic-widget-43.tsx",
+        "action_file": "src/actions/interactive-action-43.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/(site)/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 886,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiterechtlicheswiderrufWidget",
+        "target_file": "src/components/interactive/dynamic-widget-44.tsx",
+        "action_file": "src/actions/interactive-action-44.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/(site)/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 945,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiterechtlichesagbWidget",
+        "target_file": "src/components/interactive/dynamic-widget-45.tsx",
+        "action_file": "src/actions/interactive-action-45.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/(site)/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1321,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiterechtlichesdatenschutzWidget",
+        "target_file": "src/components/interactive/dynamic-widget-46.tsx",
+        "action_file": "src/actions/interactive-action-46.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/(site)/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1421,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteartikelWidget",
+        "target_file": "src/components/interactive/dynamic-widget-47.tsx",
+        "action_file": "src/actions/interactive-action-47.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/(site)/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1865,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteartikelslugWidget",
+        "target_file": "src/components/interactive/dynamic-widget-48.tsx",
+        "action_file": "src/actions/interactive-action-48.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/(site)/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 876,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitestandorteWidget",
+        "target_file": "src/components/interactive/dynamic-widget-49.tsx",
+        "action_file": "src/actions/interactive-action-49.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/(site)/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1300,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsitestandortecityWidget",
+        "target_file": "src/components/interactive/dynamic-widget-50.tsx",
+        "action_file": "src/actions/interactive-action-50.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/(site)/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 3463,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselWidget",
+        "target_file": "src/components/interactive/dynamic-widget-51.tsx",
+        "action_file": "src/actions/interactive-action-51.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/(site)/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/layout.tsx",
+      "target_word_count": 31,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/(site)/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1426,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselmarkenWidget",
+        "target_file": "src/components/interactive/dynamic-widget-53.tsx",
+        "action_file": "src/actions/interactive-action-53.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "/(site)/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 2055,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselmarkenmakeWidget",
+        "target_file": "src/components/interactive/dynamic-widget-54.tsx",
+        "action_file": "src/actions/interactive-action-54.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 56,
+      "route_path": "/(site)/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2875,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselmarkenmakemodelWidget",
+        "target_file": "src/components/interactive/dynamic-widget-55.tsx",
+        "action_file": "src/actions/interactive-action-55.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 57,
+      "route_path": "/(site)/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1451,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselfunkschluesselWidget",
+        "target_file": "src/components/interactive/dynamic-widget-56.tsx",
+        "action_file": "src/actions/interactive-action-56.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 58,
+      "route_path": "/(site)/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1571,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselprogrammierenWidget",
+        "target_file": "src/components/interactive/dynamic-widget-57.tsx",
+        "action_file": "src/actions/interactive-action-57.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 59,
+      "route_path": "/(site)/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1067,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselanfrageWidget",
+        "target_file": "src/components/interactive/dynamic-widget-58.tsx",
+        "action_file": "src/actions/interactive-action-58.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 60,
+      "route_path": "/(site)/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1506,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselkopierenWidget",
+        "target_file": "src/components/interactive/dynamic-widget-59.tsx",
+        "action_file": "src/actions/interactive-action-59.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 61,
+      "route_path": "/(site)/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1547,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselnachmachenWidget",
+        "target_file": "src/components/interactive/dynamic-widget-60.tsx",
+        "action_file": "src/actions/interactive-action-60.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 62,
+      "route_path": "/(site)/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1560,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselsmartkeyWidget",
+        "target_file": "src/components/interactive/dynamic-widget-61.tsx",
+        "action_file": "src/actions/interactive-action-61.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 63,
+      "route_path": "/(site)/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselschluesselbartfraesenWidget",
+        "target_file": "src/components/interactive/dynamic-widget-62.tsx",
+        "action_file": "src/actions/interactive-action-62.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 64,
+      "route_path": "/(site)/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1494,
+      "content_expansion_topics": [
+        "Erweiterte Experten-Insights und Anwendungsf\u00e4lle",
+        "Detaillierte Prozessbeschreibung und Methodik",
+        "Umfassende FAQ-Sektion zur Entscheidungsfindung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicsiteautoschluesselfahrzeugoeffnungWidget",
+        "target_file": "src/components/interactive/dynamic-widget-63.tsx",
+        "action_file": "src/actions/interactive-action-63.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 65,
+      "route_path": "/llms.txt",
+      "source_file": "src/app/llms.txt/route.ts",
+      "target_word_count": 139,
+      "content_expansion_topics": [],
+      "interactive_module": null,
+      "signature_interaction": "NONE",
+      "schema_entities": [],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
