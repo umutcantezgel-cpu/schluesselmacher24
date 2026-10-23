@@ -1,0 +1,3 @@
+# Sicherheitstechnik Modul Updates
+- Hinzugefügter Budgetrechner in `src/components/sicherheitstechnik/service-budget-calculator.tsx` mit Server Actions `calculateServiceBudget`.
+- Text-Erweiterung auf der Seite `sicherheitstechnik/page.tsx` (> 800 Wörter, Swiss Light Mode OKLCH Design, FAQs, Redundanzen, Vergleiche).
