@@ -26,7 +26,7 @@ const config = {
         mono: ['var(--font-mono)', "'SM24 Ersatz Plex Mono'", 'ui-monospace', 'monospace'],
       },
       colors: {
-        background: 'hsl(var(--background))',
+        background: 'oklch(var(--background))',
         surface: {
           DEFAULT: 'hsl(var(--surface))',
           muted: 'hsl(var(--surface-muted))',
@@ -34,7 +34,7 @@ const config = {
           ink: 'hsl(var(--surface-ink))',
         },
         foreground: {
-          DEFAULT: 'hsl(var(--foreground))',
+          DEFAULT: 'oklch(var(--foreground))',
           muted: 'hsl(var(--foreground-muted))',
           subtle: 'hsl(var(--foreground-subtle))',
           inverse: 'hsl(var(--foreground-inverse))',
