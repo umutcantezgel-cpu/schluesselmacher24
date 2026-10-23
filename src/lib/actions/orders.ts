@@ -323,3 +323,21 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
     },
   });
 }
+
+export async function calculateServiceBudget(
+  prevState: unknown,
+  formData: FormData
+) {
+  const scopeDays = Number(formData.get('scopeDays')) || 15;
+
+  // Simulate delay
+  await new Promise((resolve) => setTimeout(resolve, 800));
+
+  const totalEstimate = scopeDays * 150;
+
+  return {
+    totalEstimate,
+    breakdown: [],
+    tier: scopeDays > 30 ? 'PREMIUM' : 'STANDARD'
+  };
+}
