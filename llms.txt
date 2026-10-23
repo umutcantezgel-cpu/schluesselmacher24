@@ -1,0 +1,1 @@
+Architecture audited 65 routes. See `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for details.
