@@ -10,6 +10,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
@@ -390,6 +391,110 @@ export default async function SicherheitstechnikPage() {
           </ul>
         )}
       </Section>
+      <Section className="py-16 md:py-24 bg-[oklch(0.988_0.002_260)]">
+        <div className="max-w-3xl mx-auto">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
+      <Section className="py-16 md:py-24 lg:py-32 bg-[oklch(0.988_0.002_260)]">
+        <SectionHeading title="Architektonische Methodik & Tiefe Fachkompetenz" />
+        <div className="mt-8 space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed text-lg max-w-4xl mx-auto">
+          <p>
+            Moderne Sicherheitstechnik basiert auf einer präzisen architektonischen Methodik, die mechanischen Schutz mit
+            elektronischen Kontrollsystemen vereint. Unser ganzheitlicher Ansatz beginnt mit einer detaillierten
+            Risikoanalyse der Gebäudeinfrastruktur. Wir bewerten potenzielle Schwachstellen nicht isoliert, sondern als
+            Teil eines komplexen Systems, in dem Türen, Fenster, Zutrittspunkte und Überwachungsbereiche nahtlos ineinandergreifen müssen.
+            Dabei berücksichtigen wir sowohl die physische Beschaffenheit der Bausubstanz als auch die dynamischen Anforderungen
+            des täglichen Betriebs.
+          </p>
+          <p>
+            Die Leistungsarchitektur unserer Systeme ist modular aufgebaut. Die Basisstufe (Tier 1) umfasst grundlegende
+            mechanische Sicherungen wie hochsichere Schließzylinder, Pilzkopfverriegelungen und verstärkte Türblätter.
+            Darauf aufbauend integriert die erweiterte Stufe (Tier 2) elektronische Zutrittskontrollen und lokale Alarmsysteme,
+            die unbefugte Zutrittsversuche sofort detektieren. In der höchsten Stufe (Tier 3) implementieren wir vernetzte
+            Gefahrenmeldeanlagen, smarte Videoüberwachung mit KI-basierter Objekterkennung und eine direkte Aufschaltung
+            auf zertifizierte Notruf- und Serviceleitstellen. Diese mehrschichtige Struktur garantiert maximale Resilienz.
+          </p>
+          <p>
+            Ein entscheidender Faktor bei der Planung ist die Einhaltung strenger normativer Vorgaben. Unsere Konzepte
+            richten sich konsequent nach den Richtlinien des VdS (Vertrauen durch Sicherheit) und der DIN EN-Normen für
+            Einbruchhemmung (z. B. DIN EN 1627). Wir stellen sicher, dass alle verbauten Komponenten nicht nur isoliert
+            geprüft sind, sondern auch im Verbund zertifiziert bleiben. Dies ist besonders relevant für versicherungstechnische
+            Anforderungen und die langfristige Rechtssicherheit für unsere Kunden im gewerblichen wie privaten Sektor.
+          </p>
+          <p>
+            Um Ihnen eine fundierte Entscheidungsgrundlage zu bieten, setzen wir auf transparente Vergleichsmatrizen.
+            Diese stellen die verschiedenen Lösungskonzepte hinsichtlich ihres Schutzniveaus, der Installationskomplexität,
+            der Wartungsintensität und des finanziellen Investitionsrahmens gegenüber. So können Sie genau evaluieren,
+            welches System die optimale Balance zwischen Sicherheit, Komfort und Wirtschaftlichkeit für Ihr spezifisches
+            Objekt bietet. Die Matrix berücksichtigt dabei auch die Skalierbarkeit für zukünftige Erweiterungen.
+          </p>
+          <p>
+            Darüber hinaus legen wir großen Wert auf die nahtlose Integration in bestehende Gebäudeautomatisierungssysteme
+            (Smart Home / Smart Building). Die Verschmelzung von Sicherheitstechnik und Gebäudesteuerung ermöglicht nicht nur
+            einen höheren Bedienkomfort, sondern auch intelligente Synergien – beispielsweise das automatische Verriegeln von
+            Türen und Schließen von Rollläden bei Aktivierung der Alarmanlage, oder die bedarfsgesteuerte Ausleuchtung
+            potenzieller Gefahrenzonen im Außenbereich bei Bewegungserkennung.
+          </p>
+          <h3 className="text-2xl font-bold mt-12 mb-6 text-[oklch(0.16_0.02_260)]">Häufig gestellte Fragen (FAQ)</h3>
+          <div className="space-y-6">
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-2xl bg-[oklch(0.968_0.004_260)] shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] text-xl">1. Wie lange dauert die Installation eines umfassenden Sicherheitssystems?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Die Dauer hängt stark von der Objektgröße und dem gewählten Schutzniveau ab. Eine Basisabsicherung für ein
+                Einfamilienhaus ist oft in 1-2 Tagen abgeschlossen. Komplexe gewerbliche Anlagen mit vernetzter Zutrittskontrolle
+                und Videoüberwachung erfordern hingegen eine detaillierte Projektplanung und können mehrere Wochen in Anspruch nehmen.
+              </p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-2xl bg-[oklch(0.968_0.004_260)] shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] text-xl">2. Sind kabellose (Funk-) Alarmanlagen genauso sicher wie kabelgebundene?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Moderne Funk-Alarmanlagen nutzen verschlüsselte Mehrfrequenz-Technologien und bieten ein sehr hohes Sicherheitsniveau,
+                das für die meisten privaten und kleingewerblichen Anwendungen absolut ausreichend ist (oft VdS Home oder Klasse A zertifiziert).
+                Für höchste Sicherheitsanforderungen (z.B. Banken, Juweliere) sind kabelgebundene Systeme nach VdS Klasse B/C jedoch weiterhin zwingend erforderlich.
+              </p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-2xl bg-[oklch(0.968_0.004_260)] shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] text-xl">3. Welche Wartungsintervalle sind für Sicherheitstechnik vorgeschrieben?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Um die Zuverlässigkeit und gegebenenfalls den Versicherungsschutz aufrechtzuerhalten, empfehlen wir und die
+                einschlägigen Normen eine jährliche Wartung durch einen zertifizierten Fachbetrieb. Bei bestimmten Anlagen
+                (z.B. Brandmeldeanlagen oder sicherheitskritischen Zutrittskontrollen) können auch vierteljährliche oder
+                halbjährliche Prüfungen gesetzlich vorgeschrieben sein.
+              </p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-2xl bg-[oklch(0.968_0.004_260)] shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] text-xl">4. Lässt sich bestehende Mechanik mit neuen elektronischen Systemen kombinieren?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Ja, das ist ein zentraler Bestandteil unseres hybriden Ansatzes. Mechatronische Schließzylinder oder
+                elektronische Beschläge lassen sich oft problemlos in bestehende Türen nachrüsten. So können Sie die
+                Vorteile elektronischer Zutrittskontrolle (z.B. schnelles Sperren verlorener Schlüssel) nutzen, ohne
+                die komplette mechanische Infrastruktur austauschen zu müssen.
+              </p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-2xl bg-[oklch(0.968_0.004_260)] shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] text-xl">5. Was passiert bei einem Stromausfall?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Professionelle Sicherheitssysteme verfügen immer über integrierte Notstromakkus. Diese überbrücken
+                Netzausfälle je nach Systemgröße und Konfiguration für mehrere Stunden bis hin zu mehreren Tagen.
+                Gleichzeitig wird ein Stromausfall als Störung an die verbundene Leitstelle oder Ihre App gemeldet.
+                Mechanische Komponenten wie Schließzylinder funktionieren ohnehin stromlos.
+              </p>
+            </div>
+            <div className="border border-[oklch(0.89_0.008_260/0.55)] p-6 rounded-2xl bg-[oklch(0.968_0.004_260)] shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)] text-xl">6. Ist mein System gegen Cyberangriffe geschützt?</h4>
+              <p className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Sicherheit endet heute nicht mehr an der Haustür, sondern schließt das Netzwerk ein. Wir setzen
+                ausschließlich auf Systeme mit starker End-to-End-Verschlüsselung (z.B. AES-256), sicheren Authentifizierungsverfahren
+                und regelmäßigen Firmware-Updates. Eine Segmentierung des Netzwerks trennt zudem die Sicherheitstechnik
+                vom regulären Gast- oder Büronetzwerk, um Angriffsvektoren zu minimieren.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
     </>
   );
 }

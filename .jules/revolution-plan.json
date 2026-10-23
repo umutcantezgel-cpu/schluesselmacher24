@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "path": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "module_name": "security-budget-calculator"
+    }
+  ]
+}
