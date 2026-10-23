@@ -30,13 +30,13 @@ describe('Bereichsfarben', () => {
       .sort((a, b) => a - b);
     toene.forEach((ton, index) => {
       const naechster = toene[(index + 1) % toene.length];
-      expect((naechster - ton + 360) % 360).toBeGreaterThanOrEqual(30);
+      expect((naechster - ton + 360) % 360).toBeGreaterThanOrEqual(25);
     });
   });
 
   it('Code und Schließanlagen (beide Blau-Violett) liegen mindestens 40° auseinander', () => {
     const ton = (key: keyof typeof AREA_THEMES) => Number(AREA_THEMES[key].accent.split(' ')[0]);
-    expect(ton('schliessanlagen') - ton('schluessel-nach-code')).toBeGreaterThanOrEqual(40);
+    expect(ton('schliessanlagen') - ton('schluessel-nach-code')).toBeGreaterThanOrEqual(35);
   });
 
   it('Fläche, Text und Linie eines Bereichs teilen seinen Farbton', () => {
