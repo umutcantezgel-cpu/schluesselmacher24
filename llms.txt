@@ -1,0 +1,4 @@
+Interactive Modules Summary:
+- Projekt-Budget-Kalkulator (src/components/calculator/projekt-budget-kalkulator.tsx)
+  Uses: React 19 Server Actions, useOptimistic, useActionState.
+  Design: Swiss Light Mode (OKLCH, no dark mode).
