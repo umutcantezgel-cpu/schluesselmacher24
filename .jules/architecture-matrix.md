@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Source File | Current Words | Target Words | Interactive Module | Status |
+|-------|-------------|---------------|--------------|--------------------|--------|
+| `/` | `src/app/(site)/page.tsx` | 981 | 1781 | `EnterpriseRoiCalculator` | `PENDING_BUILDER` |
+| `/ratgeber` | `src/app/(site)/ratgeber/page.tsx` | 129 | 929 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/ratgeber/[slug]` | `src/app/(site)/ratgeber/[slug]/page.tsx` | 381 | 1181 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/schluessel-nach-vorlage` | `src/app/(site)/schluessel-nach-vorlage/page.tsx` | 1255 | 2055 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/schluessel-nach-vorlage/anfrage` | `src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx` | 83 | 883 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/[...unbekannt]` | `src/app/(site)/[...unbekannt]/page.tsx` | 62 | 862 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/warenkorb` | `src/app/(site)/warenkorb/page.tsx` | 186 | 986 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/kasse` | `src/app/(site)/kasse/page.tsx` | 177 | 977 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/schluessel-nach-code` | `src/app/(site)/schluessel-nach-code/page.tsx` | 335 | 1135 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/schluessel-nach-code/[slug]` | `src/app/(site)/schluessel-nach-code/[slug]/page.tsx` | 543 | 1343 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/sicherheitstechnik` | `src/app/(site)/sicherheitstechnik/page.tsx` | 634 | 1434 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/sicherheitstechnik/[slug]` | `src/app/(site)/sicherheitstechnik/[slug]/page.tsx` | 343 | 1143 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/sicherheitstechnik/sicherheitscheck` | `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx` | 157 | 957 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/tuer-und-schliesstechnik` | `src/app/(site)/tuer-und-schliesstechnik/page.tsx` | 1284 | 2084 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/tuer-und-schliesstechnik/[slug]` | `src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx` | 209 | 1009 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/bestellung/[id]` | `src/app/(site)/bestellung/[id]/page.tsx` | 792 | 1592 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/gleichschliessende-zylinder` | `src/app/(site)/gleichschliessende-zylinder/page.tsx` | 1235 | 2035 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/gleichschliessende-zylinder/konfigurator` | `src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx` | 131 | 931 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/elektronische-zutrittsloesungen` | `src/app/(site)/elektronische-zutrittsloesungen/page.tsx` | 1862 | 2662 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/elektronische-zutrittsloesungen/konfigurator` | `src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx` | 186 | 986 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/schliessanlagen` | `src/app/(site)/schliessanlagen/page.tsx` | 1278 | 2078 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/schliessanlagen/konfigurator` | `src/app/(site)/schliessanlagen/konfigurator/page.tsx` | 197 | 997 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/service-und-termin` | `src/app/(site)/service-und-termin/page.tsx` | 1329 | 2129 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/service-und-termin/terminstatus` | `src/app/(site)/service-und-termin/terminstatus/page.tsx` | 50 | 850 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/service-und-termin/anfrage` | `src/app/(site)/service-und-termin/anfrage/page.tsx` | 60 | 860 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/service-und-termin/vor-ort` | `src/app/(site)/service-und-termin/vor-ort/page.tsx` | 412 | 1212 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/service-und-termin/kontakt` | `src/app/(site)/service-und-termin/kontakt/page.tsx` | 228 | 1028 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/rechtliches/impressum` | `src/app/(site)/rechtliches/impressum/page.tsx` | 206 | 1006 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/rechtliches/cookie-einstellungen` | `src/app/(site)/rechtliches/cookie-einstellungen/page.tsx` | 181 | 981 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/rechtliches/versand-und-zahlung` | `src/app/(site)/rechtliches/versand-und-zahlung/page.tsx` | 348 | 1148 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/rechtliches/widerruf` | `src/app/(site)/rechtliches/widerruf/page.tsx` | 325 | 1125 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/rechtliches/agb` | `src/app/(site)/rechtliches/agb/page.tsx` | 366 | 1166 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/rechtliches/datenschutz` | `src/app/(site)/rechtliches/datenschutz/page.tsx` | 651 | 1451 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/artikel` | `src/app/(site)/artikel/page.tsx` | 412 | 1212 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/artikel/[slug]` | `src/app/(site)/artikel/[slug]/page.tsx` | 588 | 1388 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/standorte` | `src/app/(site)/standorte/page.tsx` | 87 | 887 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/standorte/[city]` | `src/app/(site)/standorte/[city]/page.tsx` | 258 | 1058 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel` | `src/app/(site)/autoschluessel/page.tsx` | 1476 | 2276 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/marken` | `src/app/(site)/autoschluessel/marken/page.tsx` | 380 | 1180 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/marken/[make]` | `src/app/(site)/autoschluessel/marken/[make]/page.tsx` | 535 | 1335 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/marken/[make]/[model]` | `src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx` | 1184 | 1984 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/funkschluessel` | `src/app/(site)/autoschluessel/funkschluessel/page.tsx` | 136 | 936 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/programmieren` | `src/app/(site)/autoschluessel/programmieren/page.tsx` | 168 | 968 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/anfrage` | `src/app/(site)/autoschluessel/anfrage/page.tsx` | 284 | 1084 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/kopieren` | `src/app/(site)/autoschluessel/kopieren/page.tsx` | 162 | 962 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/nachmachen` | `src/app/(site)/autoschluessel/nachmachen/page.tsx` | 72 | 872 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/smart-key` | `src/app/(site)/autoschluessel/smart-key/page.tsx` | 199 | 999 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/schluesselbart-fraesen` | `src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx` | 160 | 960 | `DynamicBentoGrid` | `PENDING_BUILDER` |
+| `/autoschluessel/fahrzeugoeffnung` | `src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx` | 143 | 943 | `DynamicBentoGrid` | `PENDING_BUILDER` |
