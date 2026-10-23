@@ -1,0 +1,1 @@
+Security Score Calculator (src/components/calculator/security-score-calculator.tsx) auf der Sicherheitstechnik-Seite hinzugefügt.

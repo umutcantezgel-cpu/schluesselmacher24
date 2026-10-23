@@ -14,6 +14,9 @@ import { BereichIcon } from '@/components/visual/bereich-icon';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+
+import { SecurityScoreCalculator } from '@/components/calculator/security-score-calculator';
+
 import { IconAlarmtechnik } from '@/components/visual/icons/alarmtechnik';
 import { IconAussenhautsicherung } from '@/components/visual/icons/aussenhautsicherung';
 import { IconKombinierteKonzepte } from '@/components/visual/icons/kombinierte-konzepte';
@@ -202,7 +205,10 @@ export default async function SicherheitstechnikPage() {
             </div>
           </div>
         </div>
-      </Section>
+        <div className="mt-16 max-w-4xl mx-auto">
+        <SecurityScoreCalculator />
+      </div>
+    </Section>
 
       {/* 02 Bereiche: Raster mit Haarlinien wie die Tür- und Schließtechnik */}
       <Section tone="muted">
@@ -284,6 +290,96 @@ export default async function SicherheitstechnikPage() {
       </Section>
 
       {/* 03 Recht und Verantwortung: Kasten mit Haarlinien */}
+
+      <Section id="expertenwissen" tone="muted">
+        <SectionHeading
+          nummer="EX"
+          eyebrow="Tiefgang"
+          title="Sicherheitstechnik: Ein ganzheitlicher Ansatz"
+          lead="Wie mechanische und elektronische Systeme ineinandergreifen, um echten Schutz zu bieten."
+        />
+
+        <div className="mt-12 text-[oklch(0.32_0.02_260)] text-base leading-relaxed space-y-6 max-w-4xl mx-auto">
+          <p>
+            Sicherheitstechnik ist mehr als die Summe ihrer Einzelteile. In unserer modernen, vernetzten Welt reicht es nicht mehr aus, lediglich eine Alarmanlage an die Wand zu schrauben oder eine Kamera auf den Eingangsbereich zu richten. Ein fundiertes Sicherheitskonzept basiert auf einer ganzheitlichen Risikoanalyse, die sowohl physische als auch digitale Angriffsvektoren berücksichtigt. Die Verzahnung von mechanischem Grundschutz und intelligenter Elektronik bildet das Rückgrat einer widerstandsfähigen Sicherheitsarchitektur. Jeder Gebäudetyp, sei es ein privates Wohnhaus, eine Gewerbeimmobilie oder ein kritischer Infrastrukturknoten, erfordert eine maßgeschneiderte Lösung, die sich nahtlos in den Alltag der Nutzer integriert und gleichzeitig maximale Abschreckung und Detektion bietet.
+          </p>
+
+          <p>
+            Die erste Verteidigungslinie bildet stets die Mechanik. Hochwertige Schließzylinder, massive Riegelwerke und zertifizierte Sicherheitsbeschläge an Türen und Fenstern zwingen potenzielle Täter zu einem zeitaufwändigen und lärmintensiven Vorgehen. Statistiken zeigen deutlich, dass die meisten Einbruchsversuche abgebrochen werden, wenn der Widerstand des Materials eine schnelle Überwindung verhindert. Doch Mechanik allein ist blind und stumm. Hier setzt die elektronische Sicherheitstechnik an, um die passive Abwehr durch aktive Überwachung und Alarmierung zu ergänzen. Sensoren an der Außenhaut des Gebäudes registrieren Erschütterungen oder das Öffnen von Fenstern und Türen, noch bevor der Täter in das Innere eindringen kann.
+          </p>
+
+          <p>
+            Diese sogenannten Außenhautsicherungen sind besonders effektiv, da sie eine Alarmierung auslösen, während die mechanischen Barrieren noch intakt sind. Die Bewohner oder das Sicherheitspersonal gewinnen dadurch wertvolle Reaktionszeit. Moderne Gefahrenmeldeanlagen gehen jedoch weit über den klassischen Einbruchschutz hinaus. Sie integrieren Brand-, Gas- und Wassermelder und kommunizieren über verschlüsselte Kanäle mit Leitstellen und den Smartphones der Nutzer. Die Parametrierung solcher Systeme erfordert ein tiefes Verständnis für die jeweiligen Normen und Richtlinien (wie etwa die VdS-Klassen), um Falschalarme zu minimieren und eine hohe Zuverlässigkeit zu gewährleisten.
+          </p>
+
+          <p>
+            Videomanagementsysteme (VMS) bilden eine weitere wichtige Säule. Sie dienen nicht nur der retrospektiven Aufklärung von Vorfällen, sondern auch der Echtzeit-Verifikation von Alarmen. Intelligente Videoanalyse-Algorithmen, basierend auf künstlicher Intelligenz (KI), können heute zwischen Tieren, witterungsbedingten Bewegungen und tatsächlichen Bedrohungen unterscheiden. Sie ermöglichen das Setzen virtueller Stolperdrähte und das Erkennen von zurückgelassenen Gegenständen. Die Planung einer Videoanlage erfordert jedoch ein Höchstmaß an Sensibilität bezüglich des Datenschutzes und der Persönlichkeitsrechte. Die DSGVO setzt enge Grenzen für die Erfassung öffentlicher Bereiche und die Speicherdauer der Aufnahmen, weshalb Verpixelungsfunktionen (Privacy Masking) zwingend erforderlich sind.
+          </p>
+
+          <p>
+            Zutrittskontrollsysteme (ZKS) regulieren, wer, wann und wo Zutritt hat. Der Übergang vom mechanischen Schlüssel zum elektronischen Identifikationsmedium (RFID-Transponder, Smartphone via BLE/NFC, Biometrie) ermöglicht eine dynamische Rechteverwaltung. Verlorene Schlüssel stellen kein Sicherheitsrisiko mehr dar, da das entsprechende Medium sofort gesperrt werden kann. Die Architektur moderner ZKS ist zunehmend dezentral und cloudbasiert, was eine standortübergreifende Verwaltung vereinfacht, gleichzeitig aber hohe Anforderungen an die Cybersicherheit stellt. Die Kommunikation zwischen den Komponenten (Leser, Controller, Server) muss zwingend nach aktuellen Standards (z.B. OSDP) verschlüsselt sein.
+          </p>
+
+          <p>
+            Ein oft unterschätzter Aspekt ist die Systemintegration. Erst wenn Einbruchmeldetechnik, Videoüberwachung, Zutrittskontrolle und Gebäudeautomation (Smart Home/Smart Building) intelligent miteinander vernetzt sind, entfaltet sich das volle Potenzial. Ein Alarm der Gefahrenmeldeanlage kann beispielsweise automatisch die Beleuchtung einschalten, die Rollläden hochfahren und die relevanten Kamerabilder auf dem Monitor des Wachpersonals priorisieren. Diese Automatisierung reduziert die kognitive Belastung in Stresssituationen und beschleunigt die Einleitung von Interventionsmaßnahmen.
+          </p>
+
+          <p>
+            Die Nachhaltigkeit einer Sicherheitslösung zeigt sich nicht zuletzt im laufenden Betrieb. Regelmäßige Wartung, Software-Updates und Funktionstests sind unerlässlich, um die Leistungsfähigkeit der Anlagen über Jahre hinweg zu erhalten. Auch die Schulung der Nutzer spielt eine zentrale Rolle. Ein System, das aufgrund mangelnder Bedienbarkeit oder ständiger Fehlalarme deaktiviert wird, bietet keinen Schutz. Die Konzeption einer Benutzeroberfläche (UX-Design), die komplexe Zustände einfach und intuitiv darstellt, ist daher ein entscheidender Faktor für die Akzeptanz und Effektivität der Gesamtlösung.
+          </p>
+
+          <p>
+            Zusammenfassend lässt sich sagen, dass professionelle Sicherheitstechnik eine interdisziplinäre Ingenieursleistung ist. Sie verbindet klassische Handwerkskunst im mechanischen Bereich mit hochspezialisiertem IT-Wissen in der Netzwerktechnik und Softwarekonfiguration. Unser Ansatz basiert auf der Überzeugung, dass nur eine detaillierte Risikoanalyse, eine herstellerneutrale Beratung und eine fachgerechte Installation zu einem Sicherheitskonzept führen, das seinen Namen verdient und reale Bedrohungen effektiv minimiert.
+          </p>
+        </div>
+      </Section>
+
+      <Section id="faq">
+        <SectionHeading
+          nummer="FAQ"
+          eyebrow="Häufige Fragen"
+          title="Wissen kompakt: Antworten auf Ihre wichtigsten Fragen"
+          lead="Klartext statt Fachjargon."
+        />
+
+        <div className="mt-12 space-y-8 max-w-4xl mx-auto">
+            <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 bg-white">
+                <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">1. Welche Rolle spielt die VdS-Zertifizierung bei Alarmanlagen?</h4>
+                <p className="mt-3 text-sm leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Die Zertifizierung durch die VdS Schadenverhütung GmbH ist ein wichtiges Qualitätsmerkmal. Sie garantiert, dass Komponenten und Systeme strenge Prüfkriterien hinsichtlich Zuverlässigkeit, Sabotagesicherheit und Fehlalarmsicherheit erfüllen. Für den privaten Bereich ist die VdS-Klasse A oder B üblich, während im gewerblichen Bereich mit höherem Risiko oft Klasse C gefordert wird. Versicherungen knüpfen ihre Prämiennachlässe oder den Versicherungsschutz selbst oft an den Einsatz VdS-anerkannter Systeme.
+                </p>
+            </div>
+
+            <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 bg-white">
+                <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">2. Wie unterscheiden sich kabelgebundene von funkbasierten Alarmsystemen?</h4>
+                <p className="mt-3 text-sm leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Kabelgebundene Systeme gelten traditionell als die robusteste und sabotagesicherste Lösung, da sie nicht durch Funkinterferenzen gestört werden können. Sie eignen sich besonders für Neubauten oder Kernsanierungen, da die Kabelverlegung mit Aufwand verbunden ist. Moderne Funksysteme (z.B. auf 868 MHz Basis) haben in den letzten Jahren enorm aufgeholt. Sie nutzen Mehrfrequenzverfahren und bidirektionale Kommunikation, um Störversuche (Jamming) zu erkennen. Der große Vorteil liegt in der flexiblen und zerstörungsfreien Nachrüstung in Bestandsgebäuden.
+                </p>
+            </div>
+
+            <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 bg-white">
+                <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">3. Ist eine Aufschaltung auf einen Wachdienst sinnvoll?</h4>
+                <p className="mt-3 text-sm leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Eine Aufschaltung auf eine zertifizierte Notruf- und Serviceleitstelle (NSL) ist in den meisten Fällen sehr zu empfehlen. Ein lokaler Alarm (Sirene/Blitzlicht) schreckt zwar ab, garantiert aber nicht, dass Nachbarn oder Passanten adäquat reagieren. Eine NSL empfängt den Alarm in Sekundenschnelle, kann ihn (z.B. per Videoverifikation) überprüfen und bei Bedarf sofort die Polizei oder einen Interventionsdienst alarmieren – auch wenn Sie selbst im Urlaub oder nicht erreichbar sind.
+                </p>
+            </div>
+
+            <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 bg-white">
+                <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">4. Wie sicher sind biometrische Zutrittskontrollen (z.B. Fingerabdruck)?</h4>
+                <p className="mt-3 text-sm leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Biometrische Systeme bieten einen hohen Komfort, da das Identifikationsmerkmal nicht vergessen oder verloren werden kann. Moderne Fingerabdruckscanner arbeiten mit kapazitiven Sensoren oder Lebenderkennung (z.B. multispektrale Bildgebung), die ein Überlisten mit einfachen Silikonkopien nahezu unmöglich machen. Dennoch ist Biometrie nicht das alleinige Allheilmittel. In Hochsicherheitsbereichen wird sie oft als Faktor in einer Zwei-Faktor-Authentifizierung (z.B. Fingerabdruck + PIN oder RFID-Karte) eingesetzt.
+                </p>
+            </div>
+
+            <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 bg-white">
+                <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">5. Wie kann ich mein Smart Home vor Hackerangriffen schützen?</h4>
+                <p className="mt-3 text-sm leading-relaxed text-[oklch(0.32_0.02_260)]">
+                Mit der Integration von Sicherheitstechnik in das Smart Home (IoT) steigt die Angriffsfläche. Der wichtigste Schritt ist die strikte Trennung von Netzwerken: Sicherheitssysteme sollten in einem separaten VLAN (Virtual Local Area Network) operieren, isoliert von Smart-TVs und anderen Consumer-Geräten. Standardpasswörter müssen bei Inbetriebnahme sofort geändert werden. Zudem sind regelmäßige Firmware-Updates aller vernetzten Komponenten essenziell, um neu entdeckte Sicherheitslücken zu schließen. Fernzugriffe sollten ausschließlich über verschlüsselte VPN-Verbindungen erfolgen.
+                </p>
+            </div>
+        </div>
+      </Section>
+
       <Section id="recht-und-verantwortung">
         <SectionHeading
           nummer="03"
