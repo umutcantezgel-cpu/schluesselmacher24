@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route | Existing Word Count | Target Word Count | Interactive Module | Signature Interaction | Schema |
+|---|---|---|---|---|---|
+| / | 1121 | 1621 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /ratgeber | 189 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /ratgeber/[slug] | 462 | 962 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /schluessel-nach-vorlage | 1428 | 1928 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /schluessel-nach-vorlage/anfrage | 116 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /[...unbekannt] | 67 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /warenkorb | 223 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /kasse | 230 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /schluessel-nach-code | 456 | 956 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /schluessel-nach-code/[slug] | 681 | 1181 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /sicherheitstechnik | 783 | 1283 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /sicherheitstechnik/[slug] | 418 | 918 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /sicherheitstechnik/sicherheitscheck | 211 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /tuer-und-schliesstechnik | 1506 | 2006 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /tuer-und-schliesstechnik/[slug] | 277 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /bestellung/[id] | 883 | 1383 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /gleichschliessende-zylinder | 1384 | 1884 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /gleichschliessende-zylinder/konfigurator | 178 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /elektronische-zutrittsloesungen | 2055 | 2555 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /elektronische-zutrittsloesungen/konfigurator | 239 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /schliessanlagen | 1438 | 1938 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /schliessanlagen/konfigurator | 247 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /service-und-termin | 1477 | 1977 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /service-und-termin/terminstatus | 53 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /service-und-termin/anfrage | 82 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /service-und-termin/vor-ort | 477 | 977 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /service-und-termin/kontakt | 314 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /rechtliches/impressum | 216 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /rechtliches/cookie-einstellungen | 191 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /rechtliches/versand-und-zahlung | 368 | 868 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /rechtliches/widerruf | 330 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /rechtliches/agb | 371 | 871 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /rechtliches/datenschutz | 661 | 1161 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /artikel | 532 | 1032 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /artikel/[slug] | 715 | 1215 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /standorte | 144 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /standorte/[city] | 358 | 858 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel | 1634 | 2134 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/marken | 464 | 964 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/marken/[make] | 631 | 1131 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/marken/[make]/[model] | 1315 | 1815 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/funkschluessel | 165 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/programmieren | 204 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/anfrage | 338 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/kopieren | 198 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/nachmachen | 102 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/smart-key | 235 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/schluesselbart-fraesen | 183 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
+| /autoschluessel/fahrzeugoeffnung | 179 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | Organization, WebSite, FAQPage |
