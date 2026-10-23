@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-23T14:35:44.106187+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_014",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+      "target_component_file": "src/components/autoschluessel/key-kinds.tsx",
+      "title": "Introducing a fluid transition for accordion toggl...",
+      "specification": "Target src/app/(site)/elektronische-zutrittsloesungen/page.tsx and specifically modify src/components/ui/button.tsx. Implement introducing a fluid transition for accordion toggles without layout shifts to radically improve the visual interaction. This must rigorously follow the Swiss Light Mode design principles (OKLCH, 1px borders) and strictly adhere to the ZERO-NEW-ROUTES invariant. Use federd\u00e4mpfung curve cubic-bezier(0.16, 1, 0.3, 1) where applicable.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_042",
+      "category": "SEMANTISCHE_AUTORITAET",
+      "target_existing_route": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_component_file": "src/components/schliessanlagen/system-erklaerung.tsx",
+      "title": "Adding a rich narrative describing the precision m...",
+      "specification": "Target src/app/(site)/schliessanlagen/page.tsx and specifically modify src/components/ui/accordion.tsx. Implement adding a rich narrative describing the precision milling process to radically improve the content depth. This must rigorously follow the Swiss Light Mode design principles (OKLCH, 1px borders) and strictly adhere to the ZERO-NEW-ROUTES invariant. Use federd\u00e4mpfung curve cubic-bezier(0.16, 1, 0.3, 1) where applicable.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
