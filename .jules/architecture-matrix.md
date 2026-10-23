@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| URL | Source File | Current Words | Target Words | Interactive Module |
+|---|---|---|---|---|
+| / | src/app/(site)/page.tsx | N/A | 2710 | DynamicFilterMatrix |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | N/A | 2703 | DynamicFilterMatrix |
+| /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /kasse | src/app/(site)/kasse/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | N/A | 1238 | DynamicFilterMatrix |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | N/A | 1931 | DynamicFilterMatrix |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | N/A | 2771 | DynamicFilterMatrix |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | N/A | 3064 | DynamicFilterMatrix |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | N/A | 3482 | DynamicFilterMatrix |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | N/A | 2666 | DynamicFilterMatrix |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | N/A | 2747 | DynamicFilterMatrix |
+| /artikel | src/app/(site)/artikel/page.tsx | N/A | 1307 | DynamicFilterMatrix |
+| /standorte | src/app/(site)/standorte/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | N/A | 2996 | DynamicFilterMatrix |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | N/A | 1275 | DynamicFilterMatrix |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | N/A | 1540 | DynamicFilterMatrix |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | N/A | 1229 | DynamicFilterMatrix |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | N/A | 1023 | DynamicFilterMatrix |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | N/A | 1889 | DynamicFilterMatrix |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | N/A | 1242 | DynamicFilterMatrix |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | N/A | 1122 | DynamicFilterMatrix |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | N/A | 1015 | DynamicFilterMatrix |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | N/A | 950 | DynamicFilterMatrix |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | N/A | 1230 | DynamicFilterMatrix |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | N/A | 1660 | DynamicFilterMatrix |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | N/A | 1117 | DynamicFilterMatrix |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | N/A | 1279 | DynamicFilterMatrix |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | N/A | 1591 | DynamicFilterMatrix |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | N/A | 1722 | DynamicFilterMatrix |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | N/A | 1021 | DynamicFilterMatrix |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | N/A | 1633 | DynamicFilterMatrix |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | N/A | 1689 | DynamicFilterMatrix |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | N/A | 1707 | DynamicFilterMatrix |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | N/A | 1542 | DynamicFilterMatrix |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | N/A | 1621 | DynamicFilterMatrix |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | N/A | 1709 | DynamicFilterMatrix |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | N/A | 2504 | DynamicFilterMatrix |

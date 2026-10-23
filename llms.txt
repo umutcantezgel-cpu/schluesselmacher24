@@ -1,0 +1,5 @@
+# Codebase Audited by JC-AUDITOR-ARCHITECT-v1
+
+The application codebase has been audited.
+We're upgrading it to Next.js 16+ with React 19.2+ and OKLCH color space for styling, enforcing the Swiss Light Mode Design Doctrine.
+No new routes will be added. Existing routes will be expanded with > 800 words and kinetic interactive components.
