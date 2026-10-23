@@ -1,0 +1,3 @@
+# Project Documentation
+
+Architecture blueprint has been generated. See `.jules/architecture-matrix.md` and `.jules/revolution-plan.json` for details.
