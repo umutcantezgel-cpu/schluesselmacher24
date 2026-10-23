@@ -1,0 +1,3 @@
+
+## Neue Interaktive Module
+- **Sicherheitstechnik**: `ServiceBudgetCalculator` (src/components/calculator/service-budget-calculator.tsx) - Ein interaktives Tool zur Kostenabschätzung von Sicherheitstechnik-Projekten.
