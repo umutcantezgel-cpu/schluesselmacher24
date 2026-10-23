@@ -1,0 +1,54 @@
+# Architecture Matrix
+
+| URL | Source File | Current Words | Target Words | Missing Entities | Action |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 90 | 850 | Schema.org JSON-LD | Transform |
+| / | src/app/(site)/page.tsx | 1174 | 1174 | Schema.org JSON-LD | Transform |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 196 | 850 | Schema.org JSON-LD | Transform |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 485 | 850 | Schema.org JSON-LD | Transform |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 1564 | 1564 | Schema.org JSON-LD | Transform |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 127 | 850 | Schema.org JSON-LD | Transform |
+| /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | 72 | 850 | Schema.org JSON-LD | Transform |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 243 | 850 | Schema.org JSON-LD | Transform |
+| /kasse | src/app/(site)/kasse/page.tsx | 260 | 850 | Schema.org JSON-LD | Transform |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 467 | 850 | Schema.org JSON-LD | Transform |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 714 | 850 | Schema.org JSON-LD | Transform |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 828 | 850 | Schema.org JSON-LD | Transform |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 443 | 850 | Schema.org JSON-LD | Transform |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 228 | 850 | Schema.org JSON-LD | Transform |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 1565 | 1565 | Schema.org JSON-LD | Transform |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 297 | 850 | Schema.org JSON-LD | Transform |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 936 | 936 | Schema.org JSON-LD | Transform |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 1471 | 1471 | Schema.org JSON-LD | Transform |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 196 | 850 | Schema.org JSON-LD | Transform |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2282 | 2282 | Schema.org JSON-LD | Transform |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 263 | 850 | Schema.org JSON-LD | Transform |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 1599 | 1599 | Schema.org JSON-LD | Transform |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 257 | 850 | Schema.org JSON-LD | Transform |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 1476 | 1476 | Schema.org JSON-LD | Transform |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 62 | 850 | Schema.org JSON-LD | Transform |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 97 | 850 | Schema.org JSON-LD | Transform |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 488 | 850 | Schema.org JSON-LD | Transform |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 329 | 850 | Schema.org JSON-LD | Transform |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 218 | 850 | Schema.org JSON-LD | Transform |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 206 | 850 | Schema.org JSON-LD | Transform |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 390 | 850 | Schema.org JSON-LD | Transform |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 342 | 850 | Schema.org JSON-LD | Transform |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 384 | 850 | Schema.org JSON-LD | Transform |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 654 | 850 | Schema.org JSON-LD | Transform |
+| /artikel | src/app/(site)/artikel/page.tsx | 574 | 850 | Schema.org JSON-LD | Transform |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 810 | 850 | Schema.org JSON-LD | Transform |
+| /standorte | src/app/(site)/standorte/page.tsx | 158 | 850 | Schema.org JSON-LD | Transform |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 389 | 850 | Schema.org JSON-LD | Transform |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 1794 | 1794 | Schema.org JSON-LD | Transform |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 473 | 850 | Schema.org JSON-LD | Transform |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 661 | 850 | Schema.org JSON-LD | Transform |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1405 | 1405 | Schema.org JSON-LD | Transform |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 185 | 850 | Schema.org JSON-LD | Transform |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 229 | 850 | Schema.org JSON-LD | Transform |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 362 | 850 | Schema.org JSON-LD | Transform |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 221 | 850 | Schema.org JSON-LD | Transform |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 110 | 850 | Schema.org JSON-LD | Transform |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 260 | 850 | Schema.org JSON-LD | Transform |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 209 | 850 | Schema.org JSON-LD | Transform |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 199 | 850 | Schema.org JSON-LD | Transform |
