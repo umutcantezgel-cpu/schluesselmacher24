@@ -1,0 +1,3 @@
+# LLMs Documentation
+
+Project architecture optimized for Next.js 16, React 19.2+, and strictly OKLCH based Tailwind CSS v4.
