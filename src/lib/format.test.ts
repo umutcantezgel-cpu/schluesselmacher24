@@ -9,6 +9,7 @@ import {
   formatMillimeter,
   formatWeekday,
   formatFileSize,
+  formatTime,
 } from './format';
 
 describe('format utilities', () => {
@@ -80,8 +81,15 @@ describe('format utilities', () => {
   });
 
   describe('formatDateTime', () => {
-    it('formats a valid ISO datetime', () => {
-      expect(formatDateTime('2026-10-02T14:30:00Z')).toMatch(/02\.10\.2026, \d{2}:30/); // Timezone dependent
+    it('formats a valid ISO datetime in German time', () => {
+      expect(formatDateTime('2026-10-02T14:30:00Z')).toBe('02.10.2026, 16:30');
+    });
+
+    it('rechnet 23:30 UTC in deutsche Zeit um – auch über den Tageswechsel', () => {
+      // Sommerzeit (UTC+2) und Winterzeit (UTC+1)
+      expect(formatDateTime('2026-07-31T23:30:00Z')).toBe('01.08.2026, 01:30');
+      expect(formatDateTime('2026-12-31T23:30:00Z')).toBe('01.01.2027, 00:30');
+      expect(formatTime('2026-12-31T23:30:00Z')).toBe('00:30');
     });
 
     it('returns the input if the datetime is invalid', () => {
