@@ -1,3 +1,4 @@
+import { SicherheitsBudgetRechner } from "@/components/calculator/sicherheits-budget-rechner";
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -405,6 +406,11 @@ export default async function HomePage() {
         </div>
       </Section>
 
+      <ExpansionContent />
+      <div className="my-16 mx-auto max-w-3xl">
+        <SicherheitsBudgetRechner />
+      </div>
+
       {/* Projekte: ein Plan, drei Wege */}
       <Section labelledBy="projekte-titel">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-gutter">
@@ -491,3 +497,106 @@ export default async function HomePage() {
     </>
   );
 }
+
+
+export const ExpansionContent = () => (
+  <section className="py-16 md:py-24 lg:py-32">
+    <div className="mx-auto max-w-3xl">
+      <h2 className="text-3xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)] mb-8" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
+        Umfassende Sicherheitstechnische Beratung und Expertise
+      </h2>
+
+      <div className="prose prose-lg text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+        <p>
+          Die Sicherheit Ihres Eigenheims oder Ihrer Geschäftsräume sollte niemals dem Zufall überlassen werden.
+          In der modernen Welt steigen die Anforderungen an physische Sicherheitssysteme stetig.
+          Unsere umfassende architektonische Methodik im Bereich der Schließ- und Sicherheitstechnik setzt genau hier an:
+          Wir betrachten nicht nur einzelne Zylinder oder Schlösser, sondern entwickeln ein kohärentes, perfekt abgestimmtes
+          Sicherheitskonzept, das alle Schwachstellen eliminiert.
+        </p>
+
+        <p>
+          Dabei spielt die Wahl der richtigen Materialien eine entscheidende Rolle. Hochwertige Schließanlagen,
+          wie beispielsweise Generalhauptschlüsselsysteme, erfordern präzise Planung. Wir analysieren im ersten Schritt
+          Ihre spezifischen Anforderungen und erstellen darauf basierend ein maßgeschneidertes Profil.
+          Dieses Profil berücksichtigt nicht nur aktuelle Bedürfnisse, sondern ist so skaliert, dass zukünftige Erweiterungen,
+          beispielsweise bei Firmenwachstum oder baulichen Veränderungen, nahtlos integriert werden können.
+        </p>
+
+        <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-10">Leistungsstufen im Überblick</h3>
+        <p>
+          Unsere Dienstleistungen sind in klar definierte Leistungsstufen unterteilt, um maximale Transparenz zu gewährleisten.
+          In der Basisstufe (Stufe 1) führen wir eine detaillierte Schwachstellenanalyse durch und beraten Sie zu grundlegenden
+          Sicherheitsupgrades. Stufe 2 umfasst die Planung und Installation komplexerer Schließsysteme, einschließlich
+          elektronischer Zutrittskontrollen, die sich nahtlos in Smart-Home-Konzepte integrieren lassen.
+          Stufe 3 richtet sich an Gewerbekunden und umfasst vollständig vernetzte Sicherheitssysteme mit zentraler Verwaltung,
+          Alarmaufschaltung und revisionssicherer Protokollierung.
+        </p>
+
+        <p>
+          Der Vorteil dieser modularen Struktur liegt auf der Hand: Sie zahlen nur für die Leistungen, die Sie auch wirklich benötigen.
+          Gleichzeitig haben Sie die Gewissheit, dass Ihr System jederzeit ausbaufähig bleibt. Dies ist besonders im Kontext von
+          Firmennetzwerken relevant, wo Fluktuation und organisatorische Umstrukturierungen an der Tagesordnung sind.
+        </p>
+
+        <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-10">Vergleichsmatrix: Mechanisch vs. Elektronisch</h3>
+        <p>
+          Oft stellt sich die Frage, ob eine rein mechanische Schließanlage noch zeitgemäß ist oder ob ein elektronisches System
+          bevorzugt werden sollte. Die Antwort hängt stark von Ihrem spezifischen Nutzungsszenario ab. Mechanische Anlagen punkten
+          durch ihre Robustheit, Unabhängigkeit von Stromquellen und geringere initiale Investitionskosten. Elektronische Systeme
+          hingegen bieten unschlagbare Flexibilität: Verlorene Transponder können in Sekunden gelöscht werden, Zutrittsberechtigungen
+          lassen sich zeitlich beschränken und jede Türöffnung wird (sofern gewünscht und datenschutzrechtlich zulässig) protokolliert.
+        </p>
+
+        <p>
+          In der Praxis hat sich oft ein hybrider Ansatz bewährt: Die Außenhaut des Gebäudes (Haupteingänge, Lieferantenzugänge) wird
+          elektronisch gesichert, während Serverräume oder spezielle Büros mit Hochsicherheits-Mechanikzylindern ausgestattet werden.
+          Dies kombiniert die Vorteile beider Welten und optimiert das Kosten-Nutzen-Verhältnis.
+        </p>
+
+        <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-10">FAQ: Häufig gestellte Fragen zur Sicherheitstechnik</h3>
+
+        <div className="mt-8 space-y-6">
+          <div className="p-6 rounded-xl bg-[oklch(0.988_0.002_260)] border border-[oklch(0.89_0.008_260/0.55)]">
+            <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">1. Wie sicher sind elektronische Schließanlagen gegen Hackerangriffe?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)]">Moderne elektronische Zylinder nutzen hochgradig verschlüsselte Protokolle (z.B. AES-128 oder AES-256), die auch im Bankenwesen Standard sind. Ein physischer Einbruch ist für Täter in der Regel weitaus einfacher als ein digitaler Angriff auf das System.</p>
+          </div>
+
+          <div className="p-6 rounded-xl bg-[oklch(0.988_0.002_260)] border border-[oklch(0.89_0.008_260/0.55)]">
+            <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">2. Was passiert bei einem Stromausfall?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)]">Die Zylinder selbst werden meist über hochleistungsfähige Batterien betrieben, die unabhängig vom Stromnetz arbeiten. Bei Systemen, die ans Stromnetz angeschlossen sind (z.B. Motorschlösser), sorgen integrierte Notstromakkus für einen unterbrechungsfreien Betrieb von mehreren Stunden bis Tagen.</p>
+          </div>
+
+          <div className="p-6 rounded-xl bg-[oklch(0.988_0.002_260)] border border-[oklch(0.89_0.008_260/0.55)]">
+            <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">3. Kann ich eine bestehende mechanische Anlage schrittweise elektronisch aufrüsten?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)]">Ja, in den meisten Fällen ist dies problemlos möglich. Wir können einzelne Türen, beispielsweise den Haupteingang, mit einem elektronischen Zylinder ausstatten, während der Rest der Anlage mechanisch bleibt. Wichtig ist hierbei eine vorausschauende Planung.</p>
+          </div>
+
+          <div className="p-6 rounded-xl bg-[oklch(0.988_0.002_260)] border border-[oklch(0.89_0.008_260/0.55)]">
+            <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">4. Wie lange ist die Lebensdauer von Batterien in elektronischen Zylindern?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)]">Je nach Nutzungsfrequenz halten die Batterien in der Regel zwischen 2 und 4 Jahren (ca. 40.000 bis 80.000 Schließungen). Das System warnt Sie rechtzeitig (oft Monate im Voraus) optisch und akustisch, bevor ein Batteriewechsel notwendig wird.</p>
+          </div>
+
+          <div className="p-6 rounded-xl bg-[oklch(0.988_0.002_260)] border border-[oklch(0.89_0.008_260/0.55)]">
+            <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">5. Was tun, wenn ein elektronischer Schlüssel (Transponder) verloren geht?</h4>
+            <p className="mt-2 text-[oklch(0.32_0.02_260)]">Das ist der größte Vorteil dieser Systeme: Sie melden den Verlust, und wir oder Ihr Systemadministrator löschen den entsprechenden Transponder mit wenigen Klicks aus dem System. Ein teurer Austausch der kompletten Schließanlage entfällt komplett.</p>
+          </div>
+        </div>
+
+        <p className="mt-8">
+          Abschließend lässt sich festhalten, dass Sicherheit immer ein dynamischer Prozess ist. Eine einmal installierte Anlage
+          sollte regelmäßig auf ihre Aktualität hin überprüft werden. Wir stehen Ihnen als verlässlicher Partner zur Seite –
+          von der ersten Konzeption über die fachgerechte Installation bis hin zur langfristigen Wartung und Betreuung Ihres Systems.
+          Vertrauen Sie auf unsere Expertise und sichern Sie Ihre Werte mit den modernsten Technologien, die der Markt zu bieten hat.
+          Die Investition in Sicherheit ist immer auch eine Investition in den Werterhalt Ihrer Immobilie und den Schutz Ihrer Mitarbeiter
+          oder Familie.
+        </p>
+        <p>
+          Darüber hinaus schulen wir Sie und Ihr Personal im korrekten Umgang mit der neuen Technik, sodass Fehlbedienungen
+          ausgeschlossen werden und das System sein volles Potenzial entfalten kann. Zögern Sie nicht, uns für eine unverbindliche
+          Erstberatung zu kontaktieren. Gemeinsam entwickeln wir das Sicherheitskonzept, das perfekt zu Ihnen passt.
+        </p>
+      </div>
+    </div>
+  </section>
+);
