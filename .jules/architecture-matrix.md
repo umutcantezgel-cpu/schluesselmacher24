@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route URL | Source File | Status | Target Word Count | Interactive Module | Signature Interaction | Schema Entities |
+|-----------|-------------|--------|-------------------|--------------------|-----------------------|-----------------|
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | PENDING_BUILDER | 950 | ModuleRatgeber | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 950 | ModuleRatgeberSlug | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 950 | ModuleSchluessel-nach-vorlageAnfrage | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 950 | ModuleSchluessel-nach-vorlage | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | PENDING_BUILDER | 950 | ModuleUnbekannt | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | PENDING_BUILDER | 950 | ModuleWarenkorb | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /kasse | src/app/(site)/kasse/page.tsx | PENDING_BUILDER | 950 | ModuleKasse | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | PENDING_BUILDER | 950 | ModuleSchluessel-nach-code | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 950 | ModuleSchluessel-nach-codeSlug | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| / | src/app/(site)/page.tsx | PENDING_BUILDER | 950 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | PENDING_BUILDER | 950 | ModuleSicherheitstechnik | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 950 | ModuleSicherheitstechnikSlug | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 950 | ModuleSicherheitstechnikSicherheitscheck | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 950 | ModuleTuer-und-schliesstechnik | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 950 | ModuleTuer-und-schliesstechnikSlug | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | PENDING_BUILDER | 950 | ModuleBestellungId | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 950 | ModuleGleichschliessende-zylinder | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 950 | ModuleGleichschliessende-zylinderKonfigurator | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 950 | ModuleElektronische-zutrittsloesungen | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 950 | ModuleElektronische-zutrittsloesungenKonfigurator | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | PENDING_BUILDER | 950 | ModuleSchliessanlagen | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 950 | ModuleSchliessanlagenKonfigurator | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 950 | ModuleService-und-terminTerminstatus | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 950 | ModuleService-und-terminAnfrage | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | PENDING_BUILDER | 950 | ModuleService-und-termin | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 950 | ModuleService-und-terminVor-ort | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 950 | ModuleService-und-terminKontakt | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | PENDING_BUILDER | 950 | ModuleRechtlichesImpressum | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 950 | ModuleRechtlichesCookie-einstellungen | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 950 | ModuleRechtlichesVersand-und-zahlung | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 950 | ModuleRechtlichesWiderruf | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | PENDING_BUILDER | 950 | ModuleRechtlichesAgb | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 950 | ModuleRechtlichesDatenschutz | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /artikel | src/app/(site)/artikel/page.tsx | PENDING_BUILDER | 950 | ModuleArtikel | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | PENDING_BUILDER | 950 | ModuleArtikelSlug | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /standorte | src/app/(site)/standorte/page.tsx | PENDING_BUILDER | 950 | ModuleStandorte | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | PENDING_BUILDER | 950 | ModuleStandorteCity | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselMarken | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselMarkenMakeModel | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselMarkenMake | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselFunkschluessel | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselProgrammieren | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselAnfrage | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluessel | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselKopieren | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselNachmachen | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselSmart-key | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselSchluesselbart-fraesen | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 950 | ModuleAutoschluesselFahrzeugoeffnung | BENTO_HOVER_GLOW_LIGHT | WebPage, FAQPage |
