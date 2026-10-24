@@ -1,0 +1,3 @@
+
+### Neu Hinzugefügte Interaktive Module
+- **Service Budget Calculator**: Ein interaktiver Budgetrechner für Autoschlüssel-Leistungen unter `src/components/calculator/service-budget-calculator.tsx`.
