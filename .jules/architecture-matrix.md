@@ -1,0 +1,53 @@
+# Architecture Matrix
+
+| Route Path | Source File | Status | Target Words | Schema | Interactive Module | Awwwards Signature |
+|------------|-------------|--------|--------------|--------|--------------------|--------------------|
+| /[...unbekannt] | app/(site)/[...unbekannt]/page.tsx | PENDING_BUILDER | 850 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /artikel/[slug] | app/(site)/artikel/[slug]/page.tsx | PENDING_BUILDER | 1660 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /artikel | app/(site)/artikel/page.tsx | PENDING_BUILDER | 1307 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/anfrage | app/(site)/autoschluessel/anfrage/page.tsx | PENDING_BUILDER | 1021 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/fahrzeugoeffnung | app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | PENDING_BUILDER | 1621 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/funkschluessel | app/(site)/autoschluessel/funkschluessel/page.tsx | PENDING_BUILDER | 1591 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/kopieren | app/(site)/autoschluessel/kopieren/page.tsx | PENDING_BUILDER | 1633 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/marken/[make]/[model] | app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | PENDING_BUILDER | 2504 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/marken/[make] | app/(site)/autoschluessel/marken/[make]/page.tsx | PENDING_BUILDER | 1709 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/marken | app/(site)/autoschluessel/marken/page.tsx | PENDING_BUILDER | 1279 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/nachmachen | app/(site)/autoschluessel/nachmachen/page.tsx | PENDING_BUILDER | 1689 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel | app/(site)/autoschluessel/page.tsx | PENDING_BUILDER | 2996 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/programmieren | app/(site)/autoschluessel/programmieren/page.tsx | PENDING_BUILDER | 1722 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/schluesselbart-fraesen | app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | PENDING_BUILDER | 1542 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /autoschluessel/smart-key | app/(site)/autoschluessel/smart-key/page.tsx | PENDING_BUILDER | 1707 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /bestellung/[id] | app/(site)/bestellung/[id]/page.tsx | PENDING_BUILDER | 1889 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /elektronische-zutrittsloesungen/konfigurator | app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | PENDING_BUILDER | 906 | WebPage, FAQPage | SystemConfigurator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen | app/(site)/elektronische-zutrittsloesungen/page.tsx | PENDING_BUILDER | 3482 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /gleichschliessende-zylinder/konfigurator | app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | PENDING_BUILDER | 850 | WebPage, FAQPage | SystemConfigurator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder | app/(site)/gleichschliessende-zylinder/page.tsx | PENDING_BUILDER | 3064 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /kasse | app/(site)/kasse/page.tsx | PENDING_BUILDER | 917 | WebPage, FAQPage | PriceCalculator | KINETIC_PRICE_CARD |
+| / | app/(site)/page.tsx | PENDING_BUILDER | 2710 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /ratgeber/[slug] | app/(site)/ratgeber/[slug]/page.tsx | PENDING_BUILDER | 1275 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /ratgeber | app/(site)/ratgeber/page.tsx | PENDING_BUILDER | 850 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/agb | app/(site)/rechtliches/agb/page.tsx | PENDING_BUILDER | 915 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/cookie-einstellungen | app/(site)/rechtliches/cookie-einstellungen/page.tsx | PENDING_BUILDER | 850 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/datenschutz | app/(site)/rechtliches/datenschutz/page.tsx | PENDING_BUILDER | 1230 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/impressum | app/(site)/rechtliches/impressum/page.tsx | PENDING_BUILDER | 850 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/versand-und-zahlung | app/(site)/rechtliches/versand-und-zahlung/page.tsx | PENDING_BUILDER | 1015 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /rechtliches/widerruf | app/(site)/rechtliches/widerruf/page.tsx | PENDING_BUILDER | 869 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /schliessanlagen/konfigurator | app/(site)/schliessanlagen/konfigurator/page.tsx | PENDING_BUILDER | 879 | WebPage, FAQPage | SystemConfigurator | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen | app/(site)/schliessanlagen/page.tsx | PENDING_BUILDER | 2666 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /schluessel-nach-code/[slug] | app/(site)/schluessel-nach-code/[slug]/page.tsx | PENDING_BUILDER | 1540 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /schluessel-nach-code | app/(site)/schluessel-nach-code/page.tsx | PENDING_BUILDER | 1238 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /schluessel-nach-vorlage/anfrage | app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | PENDING_BUILDER | 850 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /schluessel-nach-vorlage | app/(site)/schluessel-nach-vorlage/page.tsx | PENDING_BUILDER | 2703 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /service-und-termin/anfrage | app/(site)/service-und-termin/anfrage/page.tsx | PENDING_BUILDER | 850 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /service-und-termin/kontakt | app/(site)/service-und-termin/kontakt/page.tsx | PENDING_BUILDER | 1122 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /service-und-termin | app/(site)/service-und-termin/page.tsx | PENDING_BUILDER | 2747 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /service-und-termin/terminstatus | app/(site)/service-und-termin/terminstatus/page.tsx | PENDING_BUILDER | 850 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /service-und-termin/vor-ort | app/(site)/service-und-termin/vor-ort/page.tsx | PENDING_BUILDER | 1242 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /sicherheitstechnik/[slug] | app/(site)/sicherheitstechnik/[slug]/page.tsx | PENDING_BUILDER | 1229 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /sicherheitstechnik | app/(site)/sicherheitstechnik/page.tsx | PENDING_BUILDER | 1931 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /sicherheitstechnik/sicherheitscheck | app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | PENDING_BUILDER | 878 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /standorte/[city] | app/(site)/standorte/[city]/page.tsx | PENDING_BUILDER | 1117 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /standorte | app/(site)/standorte/page.tsx | PENDING_BUILDER | 850 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /tuer-und-schliesstechnik/[slug] | app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | PENDING_BUILDER | 1023 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /tuer-und-schliesstechnik | app/(site)/tuer-und-schliesstechnik/page.tsx | PENDING_BUILDER | 2771 | WebPage, FAQPage | ServiceFilter | PARALLAX_SCROLL_REVEAL |
+| /warenkorb | app/(site)/warenkorb/page.tsx | PENDING_BUILDER | 850 | WebPage, FAQPage | PriceCalculator | KINETIC_PRICE_CARD |

@@ -1,0 +1,1142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-24T09:10:25.537628Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 2,
+      "route_path": "/[...unbekannt]",
+      "source_file": "app/(site)/[...unbekannt]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1660,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1307,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1021,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1621,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1591,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1633,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2504,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1709,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1279,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1689,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2996,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1722,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1542,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1707,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1889,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 906,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SystemConfigurator",
+        "target_file": "components/interaktiv/systemconfigurator.tsx",
+        "action_file": "actions/systemconfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3482,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SystemConfigurator",
+        "target_file": "components/interaktiv/systemconfigurator.tsx",
+        "action_file": "actions/systemconfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3064,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 917,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/interaktiv/pricecalculator.tsx",
+        "action_file": "actions/pricecalculator.ts"
+      },
+      "signature_interaction": "KINETIC_PRICE_CARD",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 2710,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1275,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 915,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1230,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1015,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 869,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 879,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SystemConfigurator",
+        "target_file": "components/interaktiv/systemconfigurator.tsx",
+        "action_file": "actions/systemconfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2666,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1540,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1238,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2703,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1122,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2747,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1242,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1229,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1931,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 878,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1117,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1023,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2771,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ServiceFilter",
+        "target_file": "components/interaktiv/servicefilter.tsx",
+        "action_file": "actions/servicefilter.ts"
+      },
+      "signature_interaction": "PARALLAX_SCROLL_REVEAL",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Erweiterung der semantischen Tiefe nach Themen-Clustern",
+        "Integration interaktiver Vergleichselemente",
+        "Ausformulierte FAQ mit > 6 relevanten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/interaktiv/pricecalculator.tsx",
+        "action_file": "actions/pricecalculator.ts"
+      },
+      "signature_interaction": "KINETIC_PRICE_CARD",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
