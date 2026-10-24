@@ -5,6 +5,8 @@ import { createHmac } from 'node:crypto';
 import { sql, type PostgresAdapter } from '@payloadcms/db-postgres';
 import { headers } from 'next/headers';
 
+import { mitDatenbank } from '@/lib/umgebung';
+
 /**
  * Ratenbegrenzung pro Absender und Vorgang.
  *
@@ -60,9 +62,8 @@ const DB_PAUSE_MS = 30_000;
 let dbPauseBis = 0;
 
 function datenbankVerwenden(now: number): boolean {
-  if ((process.env.SM24_DATA === 'json' || !process.env.DATABASE_URL)) return false;
-  // Deckt auch Einheitstests ab: dort gibt es keine DATABASE_URL.
-  if (!process.env.DATABASE_URL) return false;
+  // Deckt auch Einheitstests ab: dort gibt es keine Datenbankverbindung.
+  if (!mitDatenbank()) return false;
   return now >= dbPauseBis;
 }
 

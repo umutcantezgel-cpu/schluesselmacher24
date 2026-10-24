@@ -10,6 +10,7 @@ import { PayloadAdapter, payloadInstanz } from './payload-adapter';
 import { vorgangZuPayload, vorgangZuSeite } from './payload-mapping';
 import { buildRecordId, buildReference, counterKey, nextSequenceFromExisting } from '@/lib/reference';
 import type { RecordKind } from '@/lib/types';
+import { mitDatenbank } from '@/lib/umgebung';
 import type { Vorgaenge } from '@/payload-types';
 
 export type { CollectionName, Collections, DataAdapter };
@@ -19,7 +20,7 @@ export type { CollectionName, Collections, DataAdapter };
  * Seite stattdessen die JSON-Dateien unter `content/` — nur für Notfälle und
  * Werkzeuge ohne Datenbank.
  */
-const useJson = (process.env.SM24_DATA === 'json' || !process.env.DATABASE_URL);
+const useJson = !mitDatenbank();
 const adapter: DataAdapter = useJson ? new JsonFileAdapter() : new PayloadAdapter();
 
 /** Je Anfrage wird jede Sammlung höchstens einmal gelesen. */

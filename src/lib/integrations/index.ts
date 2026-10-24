@@ -1,10 +1,21 @@
 /* ==========================================================================
    Externe Anbindungen
-   Zahlung und Mailversand sind vorbereitet, aber ohne Zugangsdaten inaktiv.
-   Die Dateiablage nutzt die eigene Datenbank und braucht keinen Anbieter.
-   Es werden keine Zugangsdaten erfunden oder fest hinterlegt.
-   Der Status ist im Backend unter „Einstellungen“ sichtbar.
+   Zahlung (Stripe), Mailversand (Resend) und Dateiablage (S3-kompatibler
+   Bucket). Ohne Zugangsdaten bleiben Zahlung und Mailversand inaktiv; die
+   Dateiablage nutzt dann — wo erlaubt — die eigene Festplatte. Zugangsdaten
+   stehen nur in Umgebungsvariablen (`src/lib/umgebung.ts`), nie im Code.
+   Den Stand liefert `integrationStatuses()`; eine Anzeige im Backend gibt es
+   bisher nicht.
    ========================================================================== */
+
+import {
+  dateiablage,
+  dateisystemSchreibbar,
+  datenbankUrl,
+  mailKonfiguration,
+  mitDatenbank,
+  zahlungKonfiguration,
+} from '@/lib/umgebung';
 
 export interface IntegrationStatus {
   id: 'zahlung' | 'mailversand' | 'dateiablage';
@@ -22,20 +33,34 @@ export function integrationStatuses(): IntegrationStatus[] {
   return [paymentStatus(), mailStatus(), storageStatus()];
 }
 
-/** Welche der benötigten Umgebungsvariablen sind nicht gesetzt? */
+/** Pflichtwerte für die Anbieterwahl — ein anderer Wert zählt als fehlend. */
+const ANBIETER: Record<string, string> = { PAYMENT_PROVIDER: 'stripe', MAIL_PROVIDER: 'resend' };
+
+/** Welche der benötigten Umgebungsvariablen fehlen (oder passen nicht)? */
 function missing(keys: string[]): string[] {
-  return keys.filter((key) => !process.env[key]);
+  return keys.filter((key) => {
+    // Die Datenbank darf auch über POSTGRES_URL (Vercel-Integration) kommen.
+    if (key === 'DATABASE_URL') return !datenbankUrl();
+    const value = process.env[key]?.trim();
+    if (!value) return true;
+    return key in ANBIETER && value !== ANBIETER[key];
+  });
 }
 
 /* ---------- Zahlung ------------------------------------------------------ */
 
+/**
+ * Online-Zahlung braucht Stripe und die Datenbank: Webhooks verbuchen die
+ * Zahlung am gespeicherten Vorgang.
+ */
 export function paymentStatus(): IntegrationStatus {
+  const requiredEnv = ['PAYMENT_PROVIDER', 'PAYMENT_API_KEY', 'PAYMENT_WEBHOOK_SECRET', 'DATABASE_URL'];
   return {
     id: 'zahlung',
     label: 'Online-Zahlung',
-    configured: Boolean(process.env.PAYMENT_PROVIDER && process.env.PAYMENT_API_KEY),
-    requiredEnv: ['PAYMENT_PROVIDER', 'PAYMENT_API_KEY', 'PAYMENT_WEBHOOK_SECRET'],
-    missingEnv: missing(['PAYMENT_PROVIDER', 'PAYMENT_API_KEY', 'PAYMENT_WEBHOOK_SECRET']),
+    configured: zahlungKonfiguration() !== null && mitDatenbank(),
+    requiredEnv,
+    missingEnv: missing(requiredEnv),
     fallback:
       'Vorgänge werden mit dem Zahlungsstatus „offen“ angelegt. Die Zahlung wird außerhalb '
       + 'des Systems abgewickelt und im Backend manuell auf „bezahlt“ gesetzt.',
@@ -53,6 +78,10 @@ export interface PaymentIntent {
 export interface PaymentResult {
   status: 'offen' | 'bezahlt' | 'fehlgeschlagen';
   providerRef?: string;
+  /** Kennung der Checkout-Sitzung beim Anbieter. */
+  checkoutSessionId?: string;
+  /** Bis wann die Zahlung möglich ist (ISO-Zeitpunkt). */
+  expiresAt?: string;
   /** Wohin der Kunde zum Bezahlen geschickt wird, sobald angebunden. */
   redirectUrl?: string;
   message: string;
@@ -84,13 +113,19 @@ export async function createPayment(intent: PaymentIntent): Promise<PaymentResul
 
 /* ---------- Mailversand -------------------------------------------------- */
 
+/**
+ * Kundenmails gehen, sobald Resend vollständig eingetragen ist. Ohne
+ * MAIL_TEAM_ADDRESS fehlt nur die Mail an den Betrieb — deshalb steht sie in
+ * der Liste, entscheidet aber nicht über `configured`.
+ */
 export function mailStatus(): IntegrationStatus {
+  const requiredEnv = ['MAIL_PROVIDER', 'MAIL_API_KEY', 'MAIL_FROM_ADDRESS', 'MAIL_TEAM_ADDRESS'];
   return {
     id: 'mailversand',
     label: 'E-Mail-Versand',
-    configured: Boolean(process.env.MAIL_PROVIDER && process.env.MAIL_API_KEY),
-    requiredEnv: ['MAIL_PROVIDER', 'MAIL_API_KEY', 'MAIL_FROM_ADDRESS'],
-    missingEnv: missing(['MAIL_PROVIDER', 'MAIL_API_KEY', 'MAIL_FROM_ADDRESS']),
+    configured: mailKonfiguration() !== null,
+    requiredEnv,
+    missingEnv: missing(requiredEnv),
     fallback:
       'Bestätigungen werden nicht automatisch versendet. Der Vorgang ist im Backend sichtbar '
       + 'und wird von Hand bestätigt.',
@@ -131,23 +166,24 @@ export async function sendMail(message: MailMessage): Promise<MailResult> {
 /* ---------- Dateiablage für Uploads -------------------------------------- */
 
 /**
- * Kundendateien liegen in der privaten Payload-Sammlung `kundendateien`
- * (Datenbank plus Ordner `private-uploads/` auf dem Server). Die Ablage ist
- * verfügbar, sobald die Seite mit der Datenbank arbeitet und der Server
- * dauerhaft auf die Festplatte schreiben darf — auf Plattformen mit
- * schreibgeschütztem Dateisystem (Vercel, SM24_READONLY_CONTENT=1) nicht.
+ * Kundendateien liegen in der privaten Payload-Sammlung `kundendateien`.
+ * Die Dateien selbst liegen in einem privaten S3-Bucket (STORAGE_*) oder —
+ * wo der Server dauerhaft auf die Festplatte schreiben darf — im Ordner
+ * `private-uploads/`. Auf Vercel (oder mit SM24_READONLY_CONTENT=1) geht es
+ * nur mit Bucket. Ohne Datenbank gibt es keine Ablage.
  * Hochgeladen wird über /api/kunden-upload, zugeordnet beim Absenden
  * (src/lib/server/kundendateien.ts).
  */
 export function storageStatus(): IntegrationStatus {
-  const readonly = Boolean(process.env.VERCEL) || process.env.SM24_READONLY_CONTENT === '1';
-  const ohneDatenbank = (process.env.SM24_DATA === 'json' || !process.env.DATABASE_URL);
+  const requiredEnv = dateisystemSchreibbar()
+    ? ['DATABASE_URL']
+    : ['DATABASE_URL', 'STORAGE_BUCKET', 'STORAGE_ACCESS_KEY', 'STORAGE_SECRET_KEY'];
   return {
     id: 'dateiablage',
     label: 'Dateiablage für Uploads',
-    configured: Boolean(process.env.DATABASE_URL) && !ohneDatenbank && !readonly,
-    requiredEnv: ['DATABASE_URL'],
-    missingEnv: missing(['DATABASE_URL']),
+    configured: mitDatenbank() && (dateiablage() !== null || dateisystemSchreibbar()),
+    requiredEnv,
+    missingEnv: missing(requiredEnv),
     fallback:
       'Ohne Datenbank-Ablage werden hochgeladene Dateien nicht gespeichert. Am Vorgang wird nur '
       + 'vermerkt, welche Dateien der Kunde ausgewählt hat; die Dateien werden separat angefordert.',

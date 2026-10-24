@@ -5,6 +5,7 @@ import { cache } from 'react';
 import type { Richtwerte } from '@/payload-types';
 import type { RechnerRichtwerte } from '@/lib/richtwerte/typen';
 import { PLATZHALTER_RICHTWERTE, richtwerteAusPayload } from '@/lib/richtwerte/uebersetzung';
+import { mitDatenbank } from '@/lib/umgebung';
 import { payloadInstanz } from './payload-adapter';
 
 /**
@@ -16,7 +17,7 @@ import { payloadInstanz } from './payload-adapter';
  * Platzhalter-Struktur — die Rechner nennen dann keine Beträge.
  */
 export const getRichtwerte = cache(async (): Promise<RechnerRichtwerte> => {
-  if ((process.env.SM24_DATA === 'json' || !process.env.DATABASE_URL)) return PLATZHALTER_RICHTWERTE;
+  if (!mitDatenbank()) return PLATZHALTER_RICHTWERTE;
   const payload = await payloadInstanz();
   const doc = (await payload.findGlobal({ slug: 'richtwerte', depth: 0, overrideAccess: true })) as Richtwerte;
   return richtwerteAusPayload(doc);

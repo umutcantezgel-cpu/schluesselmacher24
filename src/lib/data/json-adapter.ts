@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
+import { dateisystemSchreibbar } from '../umgebung';
 import type { CollectionName, Collections, DataAdapter } from './adapter';
 import { defaults } from './defaults';
 
@@ -37,7 +38,7 @@ export class JsonFileAdapter implements DataAdapter {
    * still in einen flüchtigen Zwischenspeicher zu schreiben, wird ehrlich
    * abgelehnt — dauerhaft gespeichert wird über die Datenbank (Payload).
    */
-  readonly writable = !process.env.VERCEL && process.env.SM24_READONLY_CONTENT !== '1';
+  readonly writable = dateisystemSchreibbar();
 
   private cache = new Map<CollectionName, unknown>();
 
