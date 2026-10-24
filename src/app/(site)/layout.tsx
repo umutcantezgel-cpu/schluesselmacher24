@@ -45,7 +45,9 @@ export const metadata: Metadata = {
     + 'gleichschließende Zylinder, Schließanlagen, elektronische Zutrittslösungen und '
     + 'Sicherheitstechnik.',
   applicationName: 'SCHLÜSSELMACHER24',
-  alternates: { canonical: '/' },
+  // Keine canonical-Vorgabe hier: Sie würde an jede Seite ohne eigene Angabe
+  // vererbt und erklärte sie zur Kopie der Startseite. Jede indexierbare Seite
+  // setzt ihre eigene (geprüft in src/app/(site)/canonical.test.ts).
   openGraph: {
     type: 'website',
     locale: 'de_DE',

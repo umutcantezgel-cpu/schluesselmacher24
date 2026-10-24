@@ -37,6 +37,8 @@ export const LIMITS = {
   // Je Aufruf ein Abruf bei Stripe: „Jetzt bezahlen“ und Rückkehr von der Zahlungsseite.
   zahlung: { name: 'zahlung', limit: 10, windowMs: 10 * 60 * 1000 },
   rueckkehr: { name: 'rueckkehr', limit: 20, windowMs: 10 * 60 * 1000 },
+  // Widerrufsbutton: wenige echte Erklärungen, aber kein Durchprobieren von Nummern.
+  widerruf: { name: 'widerruf', limit: 5, windowMs: 10 * 60 * 1000 },
 } satisfies Record<string, RateLimitRule>;
 
 export const RATE_LIMIT_MESSAGE =

@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { getCities, getCity } from '@/lib/data';
 import { areaByKey } from '@/lib/navigation';
 import { enthaeltPlatzhalter, istPlatzhalter } from '@/lib/platzhalter';
+import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
 import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
 import { PageHeader } from '@/components/layout/page-header';
@@ -32,6 +33,8 @@ export async function generateMetadata(props: {
     title: city.seo.title,
     description: city.seo.description,
     alternates: { canonical: `/standorte/${city.slug}` },
+    // Solange Platzhalter drinstehen, verspricht die Seite Unbelegtes: nicht in Suchmaschinen.
+    ...(stadtIndexierbar(city) ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
@@ -99,7 +102,7 @@ export default async function CityPage(props: { params: Promise<{ city: string }
       <PageHeader
         eyebrow={city.state}
         title={`Schlüssel- und Schließtechnik in ${city.city}`}
-        lead={`Vor-Ort-Leistungen im Umkreis von etwa ${city.onSiteRadiusKm}\u00a0km. Bestellungen aus dem Shop liefern wir deutschlandweit.`}
+        lead={`Vor-Ort-Leistungen im Umkreis von etwa ${city.onSiteRadiusKm}\u00a0km. Bestellungen aus dem Shop liefern wir innerhalb Deutschlands.`}
         crumbs={crumbs}
         actions={
           <ButtonLink href="/autoschluessel/anfrage" pfeil>

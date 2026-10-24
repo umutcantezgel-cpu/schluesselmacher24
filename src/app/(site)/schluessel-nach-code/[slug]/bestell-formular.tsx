@@ -8,6 +8,7 @@ import { unitPriceForCodeLine } from '@/lib/pricing';
 import { formatCents, formatNumber } from '@/lib/format';
 import { cn } from '@/lib/cn';
 import { useCartStore } from '@/lib/store/cart';
+import { PreisHinweis } from '@/components/recht/preis-hinweis';
 import { Alert } from '@/components/ui/alert';
 import { Button, ButtonLink } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
@@ -325,7 +326,8 @@ export function BestellFormular({ line }: BestellFormularProps) {
               </dd>
             </div>
           </dl>
-          <p className="mt-2 text-caption leading-snug text-foreground-muted">
+          <PreisHinweis className="mt-2" />
+          <p className="mt-1 text-caption leading-snug text-foreground-muted">
             Die Versandart wählen Sie im Warenkorb. Sie wird dort mit den Kosten ausgewiesen.
           </p>
         </div>

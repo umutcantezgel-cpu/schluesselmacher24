@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { getSettings } from '@/lib/data';
 import { formatWeekday } from '@/lib/format';
 import { enthaeltPlatzhalter } from '@/lib/platzhalter';
+import { anbieterZeilen, standort } from '@/lib/rechtliches/firma';
+import { telefonLink } from '@/lib/telefon';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
@@ -27,6 +29,9 @@ const ANFAHRT_HINWEIS =
 export default async function KontaktPage() {
   const settings = await getSettings();
   const { company } = settings;
+  const anbieter = anbieterZeilen(company).filter((zeile) => zeile !== company.country);
+  const telefonHref = telefonLink(company.phone);
+  const werkstatt = standort(company);
 
   return (
     <>
@@ -75,17 +80,34 @@ export default async function KontaktPage() {
                   <GlyphOrt size={20} className="mt-1 shrink-0 text-primary" />
                   <div className="min-w-0">
                     <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                      Anschrift
+                      {werkstatt ? 'Firmensitz' : 'Anschrift'}
                     </dt>
                     <dd className="mt-2 text-body text-foreground">
-                      {company.legalName}
-                      <br />
-                      {company.street}
-                      <br />
-                      {company.postalCode} {company.city}
+                      {anbieter.map((zeile, index) => (
+                        <span key={zeile}>
+                          {index > 0 && <br />}
+                          {zeile}
+                        </span>
+                      ))}
                     </dd>
                   </div>
                 </div>
+
+                {werkstatt && (
+                  <div className="flex gap-4 border-b border-border py-5">
+                    <GlyphOrt size={20} className="mt-1 shrink-0 text-primary" />
+                    <div className="min-w-0">
+                      <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                        {werkstatt.label}
+                      </dt>
+                      <dd className="mt-2 text-body text-foreground">
+                        {werkstatt.street}
+                        <br />
+                        {werkstatt.postalCode} {werkstatt.city}
+                      </dd>
+                    </div>
+                  </div>
+                )}
 
                 <div className="flex gap-4 border-b border-border py-5">
                   <GlyphTelefon size={20} className="mt-1 shrink-0 text-primary" />
@@ -94,12 +116,16 @@ export default async function KontaktPage() {
                       Telefon
                     </dt>
                     <dd className="mt-2 font-mono tabular-nums text-body text-foreground">
-                      <a
-                        href={`tel:${company.phone}`}
-                        className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
-                      >
-                        {company.phone}
-                      </a>
+                      {telefonHref ? (
+                        <a
+                          href={telefonHref}
+                          className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
+                        >
+                          {company.phone}
+                        </a>
+                      ) : (
+                        company.phone
+                      )}
                     </dd>
                   </div>
                 </div>

@@ -9,11 +9,16 @@ import {
   getServicePages,
   getVehicleMakes,
 } from '@/lib/data';
+import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
 import { getSiteUrl } from '@/lib/site-url';
 
 const siteUrl = getSiteUrl();
 
-/** Feste Seiten. Neue Routen hier ergänzen. */
+/**
+ * Feste Seiten. Neue Routen hier ergänzen. Seiten mit noindex (Impressum,
+ * Datenschutz, AGB, Widerruf, Cookie-Einstellungen, Terminstatus, Kasse)
+ * gehören nicht hierher — sonst widersprechen sich Sitemap und Seite.
+ */
 const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '', priority: 1 },
   { path: '/autoschluessel', priority: 0.9 },
@@ -42,16 +47,9 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/service-und-termin', priority: 0.6 },
   { path: '/service-und-termin/anfrage', priority: 0.6 },
   { path: '/service-und-termin/kontakt', priority: 0.6 },
-  { path: '/service-und-termin/terminstatus', priority: 0.4 },
   { path: '/service-und-termin/vor-ort', priority: 0.6 },
   { path: '/ratgeber', priority: 0.6 },
-  { path: '/standorte', priority: 0.6 },
-  { path: '/rechtliches/impressum', priority: 0.2 },
-  { path: '/rechtliches/datenschutz', priority: 0.2 },
-  { path: '/rechtliches/widerruf', priority: 0.2 },
-  { path: '/rechtliches/agb', priority: 0.2 },
   { path: '/rechtliches/versand-und-zahlung', priority: 0.3 },
-  { path: '/rechtliches/cookie-einstellungen', priority: 0.2 },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -109,7 +107,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  for (const page of servicePages) {
+  for (const page of servicePages.filter((p) => !p.seo.noindex)) {
     entries.push({
       url: `${siteUrl}/${page.area}/${page.slug}`,
       lastModified,
@@ -127,7 +125,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  for (const city of cities) {
+  // Einsatzgebiete nur ohne Platzhalter; die Übersicht nur, wenn es mindestens eins gibt.
+  const gebiete = cities.filter(stadtIndexierbar);
+  if (gebiete.length > 0) {
+    entries.push({ url: `${siteUrl}/standorte`, lastModified, changeFrequency: 'weekly', priority: 0.6 });
+  }
+  for (const city of gebiete) {
     entries.push({
       url: `${siteUrl}/standorte/${city.slug}`,
       lastModified,

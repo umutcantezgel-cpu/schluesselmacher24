@@ -1,5 +1,7 @@
 import type { CityPage, CodeLine, Guide, Settings } from '@/lib/types';
 import { getSiteUrl } from '@/lib/site-url';
+import { angabe, firmaVeroeffentlichbar, kontakt, standort, ustId } from '@/lib/rechtliches/firma';
+import { telefonE164 } from '@/lib/telefon';
 import type { Graph, DayOfWeek, Thing } from 'schema-dts';
 
 /**
@@ -31,9 +33,44 @@ const WEEKDAYS = [
   'https://schema.org/Sunday',
 ];
 
-/** Der Betrieb selbst. Wird auf der Startseite eingebunden. */
+function postanschrift(street: string, postalCode: string, city: string) {
+  return {
+    '@type': 'PostalAddress' as const,
+    streetAddress: street,
+    postalCode,
+    addressLocality: city,
+    addressCountry: 'DE',
+  };
+}
+
+/**
+ * Der Betrieb selbst. Wird auf der Startseite eingebunden.
+ *
+ * Firmendaten erscheinen nur, wenn sie nicht als Platzhalter markiert sind;
+ * Telefon, E-Mail und USt-IdNr. nur, wenn sie gepflegt sind. Die Organisation
+ * trägt den Firmensitz, der Betrieb (Locksmith) die Werkstatt — dort, wo
+ * Kundinnen und Kunden hinkommen.
+ */
 export function localBusinessSchema(settings: Settings): Graph {
   const { company } = settings;
+  const veroeffentlichbar = firmaVeroeffentlichbar(company);
+  const { telefon, email } = kontakt(company);
+  const telephone = telefonE164(telefon) ?? telefon;
+  const vatID = ustId(company);
+  const strasse = angabe(company.street);
+  const plz = angabe(company.postalCode);
+  const ort = angabe(company.city);
+  const sitz = veroeffentlichbar && strasse && plz && ort ? postanschrift(strasse, plz, ort) : undefined;
+  const werkstatt = standort(company);
+  const betriebsort = werkstatt ? postanschrift(werkstatt.street, werkstatt.postalCode, werkstatt.city) : sitz;
+  const legalName = veroeffentlichbar ? angabe(company.legalName) : undefined;
+
+  const kontaktAngaben = {
+    ...(legalName ? { legalName } : {}),
+    ...(telephone ? { telephone } : {}),
+    ...(email ? { email } : {}),
+    ...(vatID ? { vatID } : {}),
+  };
 
   const openingHours = settings.openingHours
     .filter((entry) => entry.spans.length > 0)
@@ -54,21 +91,8 @@ export function localBusinessSchema(settings: Settings): Graph {
         '@id': `${siteUrl}/#organization`,
         name: company.brandName,
         url: siteUrl,
-        ...(company.isPlaceholder
-          ? {}
-          : {
-              legalName: company.legalName,
-              telephone: company.phone,
-              email: company.email,
-              vatID: company.vatId,
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: company.street,
-                postalCode: company.postalCode,
-                addressLocality: company.city,
-                addressCountry: 'DE',
-              },
-            }),
+        ...kontaktAngaben,
+        ...(sitz ? { address: sitz } : {}),
       },
       {
         '@type': 'WebSite',
@@ -90,26 +114,13 @@ export function localBusinessSchema(settings: Settings): Graph {
         '@id': `${siteUrl}/#localbusiness`,
         name: company.brandName,
         url: siteUrl,
-        areaServed: { '@type': 'Country', name: 'Deutschland' },
+        parentOrganization: { '@id': `${siteUrl}/#organization` },
         description:
           'Fachbetrieb für Autoschlüssel, Schlüssel- und Schließtechnik, elektronische '
           + 'Zutrittslösungen und Sicherheitstechnik.',
-        ...(company.isPlaceholder
-          ? {}
-          : {
-              legalName: company.legalName,
-              telephone: company.phone,
-              email: company.email,
-              vatID: company.vatId,
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: company.street,
-                postalCode: company.postalCode,
-                addressLocality: company.city,
-                addressCountry: 'DE',
-              },
-              openingHoursSpecification: openingHours,
-            }),
+        ...kontaktAngaben,
+        ...(betriebsort ? { address: betriebsort } : {}),
+        ...(veroeffentlichbar && openingHours.length ? { openingHoursSpecification: openingHours } : {}),
       }
     ]
   } satisfies Graph;

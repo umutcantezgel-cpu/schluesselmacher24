@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { formatCents, formatMillimeter } from '@/lib/format';
+import { PreisHinweis } from '@/components/recht/preis-hinweis';
 import { cn } from '@/lib/cn';
 import { Accordion } from '@/components/ui/accordion';
 import { Alert } from '@/components/ui/alert';
@@ -332,6 +333,7 @@ export default async function CylinderOverviewPage() {
             );
           })}
         </ul>
+        <PreisHinweis alle className="mt-4" />
       </Section>
 
       {/* 03 Funktion: zwei Spalten durch eine Haarlinie ab md */}
@@ -580,6 +582,7 @@ export default async function CylinderOverviewPage() {
             </li>
           ))}
         </ul>
+        <PreisHinweis alle className="mt-4" />
       </Section>
 
       {/* 07 Abgrenzung: zwei Spalten durch eine Haarlinie */}

@@ -10,6 +10,7 @@ import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { JsonLd, productSchema, breadcrumbSchema } from '@/components/seo/json-ld';
+import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
@@ -207,6 +208,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               </dl>
             </div>
 
+            <GpsrAngaben info={line.gpsr} className="mt-12" />
+
             <Alert tone="legal" title="Anfertigung nach Ihrer Codeangabe" className="mt-10">
               <p>
                 Dieser Schlüssel wird eigens für Sie nach dem Code gefertigt, den Sie angeben. Ein
@@ -214,8 +217,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
                 Ihre Eingabe deshalb vor dem Absenden.
               </p>
               <p className="mt-2">
-                Weil es sich um eine kundenspezifische Anfertigung handelt, kann das Widerrufsrecht
-                eingeschränkt sein. Was im Einzelnen gilt, steht unter{' '}
+                Weil der Schlüssel nach Ihrer Angabe angefertigt wird, besteht nach § 312g Abs. 2
+                Nr. 1 BGB kein Widerrufsrecht. Einzelheiten stehen unter{' '}
                 <Link
                   href="/rechtliches/widerruf"
                   className="inline py-1 -my-1 font-semibold text-primary hover:underline"
