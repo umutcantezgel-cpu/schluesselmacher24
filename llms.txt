@@ -1,0 +1,20 @@
+# Codebase Architecture and Design System (LLM Guidelines)
+
+## Next.js 16+ App Router, React 19.2+, TypeScript 5.5+
+- **Server Component Supremacy**: Use React Server Components heavily. Avoid `use client` unless necessary for interactive modules.
+- **Asynchronous Request-APIs**: All access to `params`, `searchParams`, `headers()`, and `cookies()` MUST be strictly asynchronous via `await`.
+- **Form Actions**: Prefer Server Actions with `useActionState`, `useOptimistic`, and `useTransition` for state management instead of old `onSubmit` patterns.
+- **CSS Subgrid**: Utilize `grid-template-rows: subgrid` and `grid-template-columns: subgrid` for layout consistency.
+
+## Swiss Light Design Doctrine
+- **OKLCH Colors**: Strictly use the OKLCH color space for a "light, sun-drenched" aesthetic.
+- **Base Canvas**: `oklch(0.988 0.002 260)`
+- **Spatial Rhythm**: Strict 8px grid spacing.
+- **Shadows & Glassmorphism**: Use soft, diffused shadows and light frosted-glass effects.
+- **Typography**: Fluid typography via CSS `clamp()`.
+
+## Core Guidelines
+- Zero new routes (strictly preserve existing URLs).
+- Do not modify source application code files during the auditing phase.
+
+*(Automatically synced via JC-AUDITOR-ARCHITECT-v1)*
