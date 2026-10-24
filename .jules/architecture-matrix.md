@@ -1,0 +1,54 @@
+# Architecture Matrix
+
+| Route | Existing File | Word Count | Target Word Count | Interactive Module | Status |
+|---|---|---|---|---|---|
+| / | src/app/(site)/page.tsx | 3089 | 3239 | HomeWidget | PENDING_BUILDER |
+| /admin/admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 800 | 950 | AdminAdmin[[...Segments]]Widget | PENDING_BUILDER |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 800 | 950 | RatgeberWidget | PENDING_BUILDER |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 2503 | 2653 | SchluesselNachVorlageWidget | PENDING_BUILDER |
+| /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | 800 | 950 | [...Unbekannt]Widget | PENDING_BUILDER |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 800 | 950 | WarenkorbWidget | PENDING_BUILDER |
+| /kasse | src/app/(site)/kasse/page.tsx | 800 | 950 | KasseWidget | PENDING_BUILDER |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 873 | 1023 | SchluesselNachCodeWidget | PENDING_BUILDER |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1791 | 1941 | SicherheitstechnikWidget | PENDING_BUILDER |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 2793 | 2943 | TuerUndSchliesstechnikWidget | PENDING_BUILDER |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 3232 | 3382 | GleichschliessendeZylinderWidget | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 3195 | 3345 | ElektronischeZutrittsloesungenWidget | PENDING_BUILDER |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 2366 | 2516 | SchliessanlagenWidget | PENDING_BUILDER |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 2898 | 3048 | ServiceUndTerminWidget | PENDING_BUILDER |
+| /artikel | src/app/(site)/artikel/page.tsx | 921 | 1071 | ArtikelWidget | PENDING_BUILDER |
+| /standorte | src/app/(site)/standorte/page.tsx | 800 | 950 | StandorteWidget | PENDING_BUILDER |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2963 | 3113 | AutoschluesselWidget | PENDING_BUILDER |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 950 | 1100 | Ratgeber[Slug]Widget | PENDING_BUILDER |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 800 | 950 | SchluesselNachVorlageAnfrageWidget | PENDING_BUILDER |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 1247 | 1397 | SchluesselNachCode[Slug]Widget | PENDING_BUILDER |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 941 | 1091 | Sicherheitstechnik[Slug]Widget | PENDING_BUILDER |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 800 | 950 | SicherheitstechnikSicherheitscheckWidget | PENDING_BUILDER |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 800 | 950 | TuerUndSchliesstechnik[Slug]Widget | PENDING_BUILDER |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1809 | 1959 | Bestellung[Id]Widget | PENDING_BUILDER |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 800 | 950 | GleichschliessendeZylinderKonfiguratorWidget | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 800 | 950 | ElektronischeZutrittsloesungenKonfiguratorWidget | PENDING_BUILDER |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 800 | 950 | SchliessanlagenKonfiguratorWidget | PENDING_BUILDER |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 800 | 950 | ServiceUndTerminTerminstatusWidget | PENDING_BUILDER |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 800 | 950 | ServiceUndTerminAnfrageWidget | PENDING_BUILDER |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 914 | 1064 | ServiceUndTerminVorOrtWidget | PENDING_BUILDER |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 807 | 957 | ServiceUndTerminKontaktWidget | PENDING_BUILDER |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 800 | 950 | RechtlichesImpressumWidget | PENDING_BUILDER |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 800 | 950 | RechtlichesCookieEinstellungenWidget | PENDING_BUILDER |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 800 | 950 | RechtlichesVersandUndZahlungWidget | PENDING_BUILDER |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 800 | 950 | RechtlichesWiderrufWidget | PENDING_BUILDER |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 800 | 950 | RechtlichesAgbWidget | PENDING_BUILDER |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 821 | 971 | RechtlichesDatenschutzWidget | PENDING_BUILDER |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 1365 | 1515 | Artikel[Slug]Widget | PENDING_BUILDER |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 800 | 950 | Standorte[City]Widget | PENDING_BUILDER |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 926 | 1076 | AutoschluesselMarkenWidget | PENDING_BUILDER |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 951 | 1101 | AutoschluesselFunkschluesselWidget | PENDING_BUILDER |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1071 | 1221 | AutoschluesselProgrammierenWidget | PENDING_BUILDER |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 800 | 950 | AutoschluesselAnfrageWidget | PENDING_BUILDER |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1006 | 1156 | AutoschluesselKopierenWidget | PENDING_BUILDER |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1047 | 1197 | AutoschluesselNachmachenWidget | PENDING_BUILDER |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1060 | 1210 | AutoschluesselSmartKeyWidget | PENDING_BUILDER |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 908 | 1058 | AutoschluesselSchluesselbartFraesenWidget | PENDING_BUILDER |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 994 | 1144 | AutoschluesselFahrzeugoeffnungWidget | PENDING_BUILDER |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 1555 | 1705 | AutoschluesselMarken[Make]Widget | PENDING_BUILDER |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 2375 | 2525 | AutoschluesselMarken[Make][Model]Widget | PENDING_BUILDER |
