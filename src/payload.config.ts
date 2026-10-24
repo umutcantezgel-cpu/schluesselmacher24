@@ -9,7 +9,8 @@ import { de } from '@payloadcms/translations/languages/de';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
 
-import { dateiablage, datenbankUrl, mailKonfiguration } from './lib/umgebung';
+import { dateiablage, mailKonfiguration } from './lib/umgebung';
+import { csrfHerkuenfte, payloadGeheimnis, payloadServerUrl, poolKonfiguration } from './payload/betrieb';
 import { AutoschluesselLeistungen } from './payload/collections/AutoschluesselLeistungen';
 import { Benutzer } from './payload/collections/Benutzer';
 import { Einsatzgebiete } from './payload/collections/Einsatzgebiete';
@@ -37,21 +38,16 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 const ablage = dateiablage();
 const mail = mailKonfiguration();
 
-const serverURL = process.env.NEXT_PUBLIC_SERVER_URL?.trim() || 'http://localhost:3000';
-
-// Ohne Geheimnis und Datenbank (z. B. erster Vercel-Build) läuft die Seite
-// aus content/*.json; das Backend ist dann nicht nutzbar. Zufallswert statt
-// eines festen Werts, damit niemand Anmeldungen fälschen kann.
-const secret = process.env.PAYLOAD_SECRET || crypto.randomUUID() + crypto.randomUUID();
-if (!process.env.PAYLOAD_SECRET) {
-  console.warn('PAYLOAD_SECRET fehlt — Backend deaktiviert, Seite läuft aus content/*.json.');
-}
+// Server-Adresse, CSRF-Liste, Geheimnis und Pool: src/payload/betrieb.ts
+// (dort auch, warum die Server-Adresse in Vorschauen leer bleibt).
+const serverURL = payloadServerUrl();
 
 export default buildConfig({
   serverURL,
   // Ohne diese Liste akzeptiert Payload Anmelde-Cookies von jeder Herkunft.
-  csrf: [serverURL],
-  secret,
+  csrf: csrfHerkuenfte(),
+  // In Produktion mit Datenbank Pflicht — sonst bricht der Start hier mit klarer Meldung ab.
+  secret: payloadGeheimnis(),
   admin: {
     user: Benutzer.slug,
     importMap: { baseDir: path.resolve(dirname) },
@@ -97,7 +93,7 @@ export default buildConfig({
   globals: [Zylinderkatalog, Richtwerte, Einstellungen],
   editor: lexicalEditor(),
   db: postgresAdapter({
-    pool: { connectionString: datenbankUrl() },
+    pool: poolKonfiguration(),
     // Schema nur über committete Migrationen — gleich lokal und bei Supabase.
     push: false,
     migrationDir: path.resolve(dirname, 'migrations'),
