@@ -21,7 +21,10 @@ import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limi
  * Abruf — hochgeladene Dateien sieht nur das Team im Backend.
  */
 
-/** Größte Datei plus Platz für die Felder und Trenner des Formulars. */
+/**
+ * Größte Datei plus Platz für die Felder und Trenner des Formulars — bleibt
+ * unter der Grenze von Vercel (4,5 MB je Anfrage).
+ */
 const MAX_ANFRAGE_BYTES = MAX_PDF_BYTES + 256 * 1024;
 
 const kategorieSchema = z.enum(UPLOAD_KATEGORIEN);

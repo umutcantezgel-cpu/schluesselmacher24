@@ -553,6 +553,8 @@ export interface Produkte {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Fotos höchstens 4 MB groß hochladen (JPEG, PNG, WebP oder AVIF), am besten mit 1600–2560 Pixel Breite.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "medien".
  */

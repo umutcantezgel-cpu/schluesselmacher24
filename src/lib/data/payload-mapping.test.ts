@@ -309,6 +309,34 @@ describe('Übersetzung Payload ↔ Seite', () => {
     expect(slot.bild).toEqual({ url: '/api/medien/file/fraese.jpg', alt: 'Fräse in der Werkstatt', width: 1600, height: 900 });
   });
 
+  it('Medien-URL wird immer zum Pfad unter /api/medien/file/ (serverURL und Ablage-Präfix)', () => {
+    expect(m.medienPfad('https://schluesselmacher24.de/api/medien/file/a-960x540.jpg?123')).toBe('/api/medien/file/a-960x540.jpg');
+    expect(m.medienPfad('/api/medien/file/a.jpg?prefix=medien')).toBe('/api/medien/file/a.jpg');
+    expect(m.medienPfad('/api/medien/file/fr%C3%A4se%20vorn.jpg')).toBe('/api/medien/file/fr%C3%A4se%20vorn.jpg');
+    // Alles andere nicht: fremde Pfade und Hosts erreichen next/image nie.
+    expect(m.medienPfad('https://fremd.example/bild.jpg')).toBeUndefined();
+    expect(m.medienPfad('/api/kundendateien/file/schein.jpg')).toBeUndefined();
+    expect(m.medienPfad('/api/medien/file/../../kundendateien/file/x.jpg')).toBeUndefined();
+    expect(m.medienPfad('')).toBeUndefined();
+    expect(m.medienPfad(null)).toBeUndefined();
+
+    const slot = m.bildZuSeite(
+      {
+        motiv: 'Werkstatt',
+        bild: {
+          id: 4,
+          alt: '',
+          url: 'https://schluesselmacher24.de/api/medien/file/werkstatt.jpg?prefix=medien',
+          sizes: { mittel: { url: 'https://schluesselmacher24.de/api/medien/file/werkstatt-960x540.jpg?prefix=medien', width: 960, height: 540 } },
+          updatedAt: STAND,
+          createdAt: STAND,
+        },
+      },
+      'Fallback',
+    );
+    expect(slot.bild).toEqual({ url: '/api/medien/file/werkstatt-960x540.jpg', alt: 'Werkstatt', width: 960, height: 540 });
+  });
+
   it('Standardinhalt ist vollständig übersetzbar', () => {
     expect(() => m.einstellungenZuPayload(defaults.settings())).not.toThrow();
     expect(() => m.zylinderkatalogZuPayload(defaults.cylinderCatalog())).not.toThrow();

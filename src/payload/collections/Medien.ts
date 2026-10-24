@@ -2,6 +2,7 @@ import path from 'node:path';
 import type { CollectionConfig } from 'payload';
 
 import { istTeam, oeffentlich } from '../access/rollen';
+import { erneuernHooks } from '../hooks/revalidate';
 
 /**
  * Öffentliche Bilder: echte Produkt- und Werkstattfotos. Sobald hier ein Foto
@@ -10,7 +11,14 @@ import { istTeam, oeffentlich } from '../access/rollen';
 export const Medien: CollectionConfig = {
   slug: 'medien',
   labels: { singular: 'Bild', plural: 'Medien' },
-  admin: { group: 'Inhalte', defaultColumns: ['filename', 'alt', 'updatedAt'] },
+  admin: {
+    group: 'Inhalte',
+    defaultColumns: ['filename', 'alt', 'updatedAt'],
+    // Vercel nimmt je Anfrage höchstens 4,5 MB an; größere Fotos scheitern beim Hochladen.
+    description: 'Fotos höchstens 4 MB groß hochladen (JPEG, PNG, WebP oder AVIF), am besten mit 1600–2560 Pixel Breite.',
+  },
+  // Geänderte oder gelöschte Fotos erscheinen sofort auf den Seiten.
+  hooks: erneuernHooks,
   access: {
     read: oeffentlich,
     create: istTeam,

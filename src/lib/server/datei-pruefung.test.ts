@@ -71,13 +71,16 @@ describe('pruefeDatei', () => {
     expect(pruefeDatei(bytes('MZ'), 'dokument')).toMatchObject({ ok: false, status: 415 });
   });
 
-  it('begrenzt Bilder auf 12 MB und PDF auf 15 MB', () => {
+  it('begrenzt Bilder und PDF auf 4 MB — unter der Grenze von Vercel (4,5 MB je Anfrage)', () => {
+    expect(MAX_BILD_BYTES).toBe(4 * 1024 * 1024);
+    expect(MAX_PDF_BYTES).toBe(4 * 1024 * 1024);
     expect(pruefeDatei(mitLaenge(JPEG, MAX_BILD_BYTES), 'schluesselfoto').ok).toBe(true);
     expect(pruefeDatei(mitLaenge(JPEG, MAX_BILD_BYTES + 1), 'schluesselfoto')).toMatchObject({
       ok: false,
       status: 413,
+      fehler: expect.stringMatching(/4 MB.*E-Mail/),
     });
-    expect(pruefeDatei(mitLaenge(PDF, MAX_BILD_BYTES + 1), 'dokument').ok).toBe(true);
+    expect(pruefeDatei(mitLaenge(PDF, MAX_PDF_BYTES), 'dokument').ok).toBe(true);
     expect(pruefeDatei(mitLaenge(PDF, MAX_PDF_BYTES + 1), 'dokument')).toMatchObject({
       ok: false,
       status: 413,
