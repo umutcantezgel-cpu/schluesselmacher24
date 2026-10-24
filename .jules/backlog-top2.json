@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-24T12:42:15.135386Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf Visueller Hebelwirkung, Nutzer-Mehrwert und Machbarkeit.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/service-und-termin/page.tsx",
+      "target_component_file": "components/calculator/enterprise-roi-calculator.tsx",
+      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
+      "specification": "Entwicklung eines reaktiven Schieberegler-Tools mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_052",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "app/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_component_file": "components/calculator/cylinder-length-calculator.tsx",
+      "title": "Dynamischer Zylinder-Längen-Rechner",
+      "specification": "Ein interaktives Tool, bei dem der Nutzer Türblattstärke und Beschlagdicke eingibt und die passende asymmetrische Zylinderlänge ausgegeben wird.",
+      "score": 9.5,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
