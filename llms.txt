@@ -1,0 +1,9 @@
+# LLM Instructions & Context
+
+- Framework: Next.js 16+ App Router
+- React: 19.2+
+- Styling: Tailwind CSS v4 (OKLCH Light Mode)
+- Design: Swiss Light Design Doctrine
+- Typography: Swiss Modernist
+
+Refer to `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for architecture details.

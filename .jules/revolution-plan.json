@@ -1,0 +1,1142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-24T15:14:57.961699Z",
+  "total_existing_routes": 49,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleRatgeber",
+        "target_file": "src/components/calculator/moduleratgeber.tsx",
+        "action_file": "src/actions/calculate-moduleratgeber.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleRatgeberSlug",
+        "target_file": "src/components/calculator/moduleratgeberslug.tsx",
+        "action_file": "src/actions/calculate-moduleratgeberslug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleSchluessel-nach-vorlageAnfrage",
+        "target_file": "src/components/calculator/moduleschluessel-nach-vorlageanfrage.tsx",
+        "action_file": "src/actions/calculate-moduleschluessel-nach-vorlageanfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleSchluessel-nach-vorlage",
+        "target_file": "src/components/calculator/moduleschluessel-nach-vorlage.tsx",
+        "action_file": "src/actions/calculate-moduleschluessel-nach-vorlage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/[...unbekannt]",
+      "source_file": "src/app/(site)/[...unbekannt]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleUnbekannt",
+        "target_file": "src/components/calculator/moduleunbekannt.tsx",
+        "action_file": "src/actions/calculate-moduleunbekannt.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleWarenkorb",
+        "target_file": "src/components/calculator/modulewarenkorb.tsx",
+        "action_file": "src/actions/calculate-modulewarenkorb.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleKasse",
+        "target_file": "src/components/calculator/modulekasse.tsx",
+        "action_file": "src/actions/calculate-modulekasse.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleSchluessel-nach-code",
+        "target_file": "src/components/calculator/moduleschluessel-nach-code.tsx",
+        "action_file": "src/actions/calculate-moduleschluessel-nach-code.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleSchluessel-nach-codeSlug",
+        "target_file": "src/components/calculator/moduleschluessel-nach-codeslug.tsx",
+        "action_file": "src/actions/calculate-moduleschluessel-nach-codeslug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "src/components/calculator/enterpriseroicalculator.tsx",
+        "action_file": "src/actions/calculate-enterpriseroicalculator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleSicherheitstechnik",
+        "target_file": "src/components/calculator/modulesicherheitstechnik.tsx",
+        "action_file": "src/actions/calculate-modulesicherheitstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleSicherheitstechnikSlug",
+        "target_file": "src/components/calculator/modulesicherheitstechnikslug.tsx",
+        "action_file": "src/actions/calculate-modulesicherheitstechnikslug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleSicherheitstechnikSicherheitscheck",
+        "target_file": "src/components/calculator/modulesicherheitstechniksicherheitscheck.tsx",
+        "action_file": "src/actions/calculate-modulesicherheitstechniksicherheitscheck.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleTuer-und-schliesstechnik",
+        "target_file": "src/components/calculator/moduletuer-und-schliesstechnik.tsx",
+        "action_file": "src/actions/calculate-moduletuer-und-schliesstechnik.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleTuer-und-schliesstechnikSlug",
+        "target_file": "src/components/calculator/moduletuer-und-schliesstechnikslug.tsx",
+        "action_file": "src/actions/calculate-moduletuer-und-schliesstechnikslug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleBestellungId",
+        "target_file": "src/components/calculator/modulebestellungid.tsx",
+        "action_file": "src/actions/calculate-modulebestellungid.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleGleichschliessende-zylinder",
+        "target_file": "src/components/calculator/modulegleichschliessende-zylinder.tsx",
+        "action_file": "src/actions/calculate-modulegleichschliessende-zylinder.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleGleichschliessende-zylinderKonfigurator",
+        "target_file": "src/components/calculator/modulegleichschliessende-zylinderkonfigurator.tsx",
+        "action_file": "src/actions/calculate-modulegleichschliessende-zylinderkonfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleElektronische-zutrittsloesungen",
+        "target_file": "src/components/calculator/moduleelektronische-zutrittsloesungen.tsx",
+        "action_file": "src/actions/calculate-moduleelektronische-zutrittsloesungen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleElektronische-zutrittsloesungenKonfigurator",
+        "target_file": "src/components/calculator/moduleelektronische-zutrittsloesungenkonfigurator.tsx",
+        "action_file": "src/actions/calculate-moduleelektronische-zutrittsloesungenkonfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleSchliessanlagen",
+        "target_file": "src/components/calculator/moduleschliessanlagen.tsx",
+        "action_file": "src/actions/calculate-moduleschliessanlagen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleSchliessanlagenKonfigurator",
+        "target_file": "src/components/calculator/moduleschliessanlagenkonfigurator.tsx",
+        "action_file": "src/actions/calculate-moduleschliessanlagenkonfigurator.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleService-und-terminTerminstatus",
+        "target_file": "src/components/calculator/moduleservice-und-terminterminstatus.tsx",
+        "action_file": "src/actions/calculate-moduleservice-und-terminterminstatus.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleService-und-terminAnfrage",
+        "target_file": "src/components/calculator/moduleservice-und-terminanfrage.tsx",
+        "action_file": "src/actions/calculate-moduleservice-und-terminanfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleService-und-termin",
+        "target_file": "src/components/calculator/moduleservice-und-termin.tsx",
+        "action_file": "src/actions/calculate-moduleservice-und-termin.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleService-und-terminVor-ort",
+        "target_file": "src/components/calculator/moduleservice-und-terminvor-ort.tsx",
+        "action_file": "src/actions/calculate-moduleservice-und-terminvor-ort.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleService-und-terminKontakt",
+        "target_file": "src/components/calculator/moduleservice-und-terminkontakt.tsx",
+        "action_file": "src/actions/calculate-moduleservice-und-terminkontakt.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleRechtlichesImpressum",
+        "target_file": "src/components/calculator/modulerechtlichesimpressum.tsx",
+        "action_file": "src/actions/calculate-modulerechtlichesimpressum.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleRechtlichesCookie-einstellungen",
+        "target_file": "src/components/calculator/modulerechtlichescookie-einstellungen.tsx",
+        "action_file": "src/actions/calculate-modulerechtlichescookie-einstellungen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleRechtlichesVersand-und-zahlung",
+        "target_file": "src/components/calculator/modulerechtlichesversand-und-zahlung.tsx",
+        "action_file": "src/actions/calculate-modulerechtlichesversand-und-zahlung.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleRechtlichesWiderruf",
+        "target_file": "src/components/calculator/modulerechtlicheswiderruf.tsx",
+        "action_file": "src/actions/calculate-modulerechtlicheswiderruf.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleRechtlichesAgb",
+        "target_file": "src/components/calculator/modulerechtlichesagb.tsx",
+        "action_file": "src/actions/calculate-modulerechtlichesagb.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleRechtlichesDatenschutz",
+        "target_file": "src/components/calculator/modulerechtlichesdatenschutz.tsx",
+        "action_file": "src/actions/calculate-modulerechtlichesdatenschutz.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleArtikel",
+        "target_file": "src/components/calculator/moduleartikel.tsx",
+        "action_file": "src/actions/calculate-moduleartikel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleArtikelSlug",
+        "target_file": "src/components/calculator/moduleartikelslug.tsx",
+        "action_file": "src/actions/calculate-moduleartikelslug.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleStandorte",
+        "target_file": "src/components/calculator/modulestandorte.tsx",
+        "action_file": "src/actions/calculate-modulestandorte.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleStandorteCity",
+        "target_file": "src/components/calculator/modulestandortecity.tsx",
+        "action_file": "src/actions/calculate-modulestandortecity.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselMarken",
+        "target_file": "src/components/calculator/moduleautoschluesselmarken.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselmarken.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselMarkenMakeModel",
+        "target_file": "src/components/calculator/moduleautoschluesselmarkenmakemodel.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselmarkenmakemodel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselMarkenMake",
+        "target_file": "src/components/calculator/moduleautoschluesselmarkenmake.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselmarkenmake.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselFunkschluessel",
+        "target_file": "src/components/calculator/moduleautoschluesselfunkschluessel.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselfunkschluessel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselProgrammieren",
+        "target_file": "src/components/calculator/moduleautoschluesselprogrammieren.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselprogrammieren.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselAnfrage",
+        "target_file": "src/components/calculator/moduleautoschluesselanfrage.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselanfrage.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluessel",
+        "target_file": "src/components/calculator/moduleautoschluessel.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluessel.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselKopieren",
+        "target_file": "src/components/calculator/moduleautoschluesselkopieren.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselkopieren.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselNachmachen",
+        "target_file": "src/components/calculator/moduleautoschluesselnachmachen.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselnachmachen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselSmart-key",
+        "target_file": "src/components/calculator/moduleautoschluesselsmart-key.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselsmart-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselSchluesselbart-fraesen",
+        "target_file": "src/components/calculator/moduleautoschluesselschluesselbart-fraesen.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselschluesselbart-fraesen.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende fachliche Analyse und methodische Grundlagen",
+        "Detaillierte Systemarchitektur und Leistungs\u00fcbersicht",
+        "Tiefgreifende FAQ und Fehlerbehebung"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "ModuleAutoschluesselFahrzeugoeffnung",
+        "target_file": "src/components/calculator/moduleautoschluesselfahrzeugoeffnung.tsx",
+        "action_file": "src/actions/calculate-moduleautoschluesselfahrzeugoeffnung.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
