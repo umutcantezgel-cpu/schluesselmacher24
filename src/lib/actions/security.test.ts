@@ -46,6 +46,13 @@ vi.mock('@/lib/data', () => {
       stored[index] = { ...stored[index], ...patch };
       return stored[index];
     },
+    vorgangAendern: async (id: string, aendern: (r: BusinessRecord) => Partial<BusinessRecord> | null) => {
+      const index = stored.findIndex((r) => r.id === id);
+      if (index < 0) return null;
+      const aenderung = aendern(stored[index]);
+      if (aenderung) stored[index] = { ...stored[index], ...aenderung };
+      return stored[index];
+    },
   };
 });
 

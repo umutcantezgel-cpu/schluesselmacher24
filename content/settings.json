@@ -1,18 +1,30 @@
 {
   "company": {
-    "legalName": "[Platzhalter: vollständige Firmierung]",
+    "legalName": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
     "brandName": "SCHLÜSSELMACHER24",
-    "street": "[Platzhalter: Straße und Hausnummer]",
-    "postalCode": "[PLZ]",
-    "city": "[Ort]",
+    "legalForm": "einzelunternehmen",
+    "owner": "Mina Saad",
+    "street": "Gloelstraße 11",
+    "postalCode": "35576",
+    "city": "Wetzlar",
     "country": "Deutschland",
-    "phone": "[Platzhalter: Telefonnummer]",
-    "email": "[Platzhalter: E-Mail-Adresse]",
-    "vatId": "[Platzhalter: Umsatzsteuer-Identifikationsnummer]",
-    "registerCourt": "[Platzhalter: Registergericht]",
-    "registerNumber": "[Platzhalter: Registernummer]",
-    "managingDirector": "[Platzhalter: vertretungsberechtigte Person]",
-    "isPlaceholder": true
+    "phone": "06441 8056279",
+    "email": "info@schluesselmacher24.de",
+    "vatId": "DE 282140471",
+    "registerCourt": "",
+    "registerNumber": "",
+    "managingDirector": "Mina Saad",
+    "profession": "Schlüsseldienst und Sicherheitstechnik",
+    "chamber": "Handwerkskammer Wiesbaden, Zweigstelle Wetzlar, Ederstraße 2, 35576 Wetzlar",
+    "contentResponsible": "Mina Saad, Gloelstraße 11, 35576 Wetzlar",
+    "taxNumber": "03986300160",
+    "location": {
+      "label": "Werkstatt und Abholung",
+      "street": "Langgasse 70",
+      "postalCode": "35576",
+      "city": "Wetzlar"
+    },
+    "isPlaceholder": false
   },
   "openingHours": [
     {
@@ -93,6 +105,7 @@
     "slotMinutes": 60,
     "bookingHorizonDays": 90,
     "slotsPerWindow": 1,
+    "federalState": "HE",
     "windows": [
       {
         "from": "09:00",

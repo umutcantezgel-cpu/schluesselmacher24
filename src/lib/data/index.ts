@@ -7,13 +7,18 @@ import { cache } from 'react';
 import type { CollectionName, Collections, DataAdapter } from './adapter';
 import { JsonFileAdapter } from './json-adapter';
 import { PayloadAdapter, payloadInstanz } from './payload-adapter';
-import { vorgangZuPayload, vorgangZuSeite } from './payload-mapping';
+import {
+  vorgangAenderungZuPayload,
+  vorgangZuPayload,
+  vorgangZuSeite,
+  type VorgangsAenderung,
+} from './payload-mapping';
 import { buildRecordId, buildReference, counterKey, nextSequenceFromExisting } from '@/lib/reference';
 import type { RecordKind } from '@/lib/types';
 import { mitDatenbank } from '@/lib/umgebung';
 import type { Vorgaenge } from '@/payload-types';
 
-export type { CollectionName, Collections, DataAdapter };
+export type { CollectionName, Collections, DataAdapter, VorgangsAenderung };
 
 /**
  * Aktive Datenschicht: Payload (Datenbank). Mit `SM24_DATA=json` liest die
@@ -243,6 +248,12 @@ export async function appendRecord(record: Vorgang) {
   return vorgangZuSeite(doc);
 }
 
+/**
+ * Schreibt den ganzen Vorgang zurück (gelesen, ergänzt, gespeichert — ohne
+ * Sperre). Ändert in der Zwischenzeit ein Webhook oder das Team den Vorgang,
+ * geht dessen Änderung verloren.
+ * @deprecated Nur noch für bestehende Aufrufer. Neue Änderungen über `vorgangAendern`.
+ */
 export async function updateRecord(id: string, patch: Partial<Vorgang>) {
   if (useJson) {
     const items = await readRecordsFresh();
@@ -288,7 +299,206 @@ export async function vorgangDateienSetzen(
   return vorgangZuSeite(doc);
 }
 
+/**
+ * Ändert einen Vorgang gezielt und ohne verlorene Änderungen.
+ *
+ * `aendern` erhält den frisch gelesenen Vorgang und liefert nur die Gruppen,
+ * die sich ändern (z. B. `{ timeline: [...v.timeline, eintrag] }`), oder
+ * `null` für „nichts zu tun“. Mit Datenbank liegt alles in einer Transaktion:
+ * Die Zeile bleibt bis zum Ende gesperrt (`FOR UPDATE`), parallele Aufrufe
+ * warten und sehen danach den neuen Stand. Geschrieben werden nur die
+ * geänderten Gruppen — Dateien, Mailprotokoll und alles andere bleiben, wie
+ * sie sind.
+ *
+ * Liefert den Vorgang nach der Änderung, unverändert bei `null` aus
+ * `aendern`, und `null`, wenn es den Vorgang nicht gibt.
+ */
+export async function vorgangAendern(
+  id: string,
+  aendern: (vorgang: Vorgang) => VorgangsAenderung | null,
+): Promise<Vorgang | null> {
+  if (useJson) {
+    // Dateimodus: ohne Datenbank gibt es keine Sperre — nur für Notfälle und Werkzeuge.
+    const items = await readRecordsFresh();
+    const current = items.find((r) => r.id === id);
+    if (!current) return null;
+    const aenderung = aendern(current);
+    if (!aenderung) return current;
+    const next: Vorgang = { ...current, ...aenderung, updatedAt: new Date().toISOString() };
+    await adapter.write('records', items.map((r) => (r.id === id ? next : r)));
+    return next;
+  }
+  if (!/^\d{1,15}$/.test(id)) return null;
+  const payload = await payloadInstanz();
+  return inTransaktion(payload, async (t) => {
+    const vorgang = await vorgangSperren(payload, t, { vorgangId: id });
+    if (!vorgang) return null;
+    const aenderung = aendern(vorgang);
+    return aenderung ? aenderungSchreiben(payload, t, vorgang, aenderung) : vorgang;
+  });
+}
+
+/* ---------- Zahlungsereignisse ------------------------------------------ */
+
+/** Woran ein Zahlungsereignis seinen Vorgang erkennt — in dieser Reihenfolge. */
+export interface ZahlungsVerweis {
+  vorgangId?: string;
+  checkoutSitzung?: string;
+  anbieterRef?: string;
+}
+
+export interface Zahlungsereignis<E extends string = string> {
+  /** Kennung beim Anbieter (Stripe: `evt_…`) — jedes Ereignis zählt nur einmal. */
+  ereignisId: string;
+  /** Art des Ereignisses, z. B. `checkout.session.completed`. */
+  typ: string;
+  anbieter?: string;
+  finde: ZahlungsVerweis;
+  /**
+   * Leitet aus dem frisch gelesenen, gesperrten Vorgang die Änderung ab.
+   * `ergebnis` landet in der Ereigniszeile. `null`: Ereignis ohne Wirkung.
+   */
+  anwenden: (vorgang: Vorgang) => { aenderung: VorgangsAenderung | null; ergebnis: E } | null;
+}
+
+export type ZahlungsVerbuchung<E extends string = string> =
+  /** Ereignis war schon verbucht (oder wird es gerade) — nichts geändert. */
+  | { ergebnis: 'doppelt' }
+  /** Kein passender Vorgang; das Ereignis ist trotzdem vermerkt. */
+  | { ergebnis: 'kein-vorgang' }
+  /** `anwenden` lieferte `null`. */
+  | { ergebnis: 'ignoriert'; vorgang: Vorgang }
+  | { ergebnis: E; vorgang: Vorgang };
+
+/**
+ * Verbucht ein Zahlungsereignis genau einmal.
+ *
+ * Alles in einer Transaktion: Ereignis eintragen (`ON CONFLICT DO NOTHING` —
+ * eine Wiederholung derselben Kennung wartet auf die erste und ist dann
+ * „doppelt“), Vorgang sperren und frisch lesen, Änderung anwenden und
+ * schreiben, Ergebnis und Vorgang in der Ereigniszeile vermerken. Scheitert
+ * ein Schritt, wird alles zurückgerollt und der Fehler geworfen — der
+ * Anbieter stellt das Ereignis dann erneut zu.
+ */
+export async function zahlungsereignisVerbuchen<E extends string>(
+  ereignis: Zahlungsereignis<E>,
+): Promise<ZahlungsVerbuchung<E>> {
+  if (useJson) {
+    throw new Error('Zahlungsereignisse werden nur mit Datenbank verbucht.');
+  }
+  const payload = await payloadInstanz();
+  return inTransaktion(payload, async (t): Promise<ZahlungsVerbuchung<E>> => {
+    const { rows } = await t.execute(sql`
+      INSERT INTO webhook_ereignisse (ereignis_id, anbieter, typ)
+      VALUES (${ereignis.ereignisId}, ${ereignis.anbieter ?? 'stripe'}, ${ereignis.typ})
+      ON CONFLICT (ereignis_id) DO NOTHING
+      RETURNING id
+    `);
+    if (rows.length === 0) return { ergebnis: 'doppelt' };
+    const zeile = Number(rows[0].id);
+
+    const vermerken = (ergebnis: string, vorgangId: string | null) =>
+      t.execute(sql`
+        UPDATE webhook_ereignisse
+        SET ergebnis = ${ergebnis}, vorgang_id = ${vorgangId === null ? null : Number(vorgangId)}, updated_at = now()
+        WHERE id = ${zeile}
+      `);
+
+    const vorgang = await vorgangSperren(payload, t, ereignis.finde);
+    if (!vorgang) {
+      await vermerken('kein-vorgang', null);
+      return { ergebnis: 'kein-vorgang' };
+    }
+
+    const wirkung = ereignis.anwenden(vorgang);
+    if (!wirkung) {
+      await vermerken('ignoriert', vorgang.id);
+      return { ergebnis: 'ignoriert', vorgang };
+    }
+    const neu = wirkung.aenderung ? await aenderungSchreiben(payload, t, vorgang, wirkung.aenderung) : vorgang;
+    await vermerken(wirkung.ergebnis, vorgang.id);
+    return { ergebnis: wirkung.ergebnis, vorgang: neu };
+  });
+}
+
+/**
+ * Vorgang zu einer Checkout-Sitzung oder Zahlungskennung — ohne Sperre, etwa
+ * für die Rückkehr von der Zahlungsseite.
+ */
+export async function findeVorgangFuerZahlung(
+  verweis: Pick<ZahlungsVerweis, 'checkoutSitzung' | 'anbieterRef'>,
+): Promise<Vorgang | null> {
+  const { checkoutSitzung, anbieterRef } = verweis;
+  if (!checkoutSitzung && !anbieterRef) return null;
+  if (useJson) {
+    const items = await readRecordsFresh();
+    return (
+      items.find((r) =>
+        checkoutSitzung
+          ? r.payment?.checkoutSessionId === checkoutSitzung
+          : r.payment?.providerRef === anbieterRef,
+      ) ?? null
+    );
+  }
+  const where: Where = checkoutSitzung
+    ? { 'zahlung.checkoutSitzung': { equals: checkoutSitzung } }
+    : { 'zahlung.anbieterRef': { equals: anbieterRef } };
+  const [treffer] = await vorgaengeFinden(await payloadInstanz(), where);
+  return treffer ?? null;
+}
+
 /* ---------- Vorgänge: interne Helfer ------------------------------------- */
+
+/**
+ * Sperrt den Vorgang bis zum Ende der Transaktion und liest ihn danach frisch
+ * (nach der Sperre — so ist eine eben bestätigte Änderung schon sichtbar).
+ */
+async function vorgangSperren(
+  payload: Payload,
+  t: Transaktion,
+  verweis: ZahlungsVerweis,
+): Promise<Vorgang | null> {
+  let abfrage: Abfrage | null = null;
+  if (verweis.vorgangId) {
+    if (!/^\d{1,15}$/.test(verweis.vorgangId)) return null;
+    abfrage = sql`SELECT id FROM vorgaenge WHERE id = ${Number(verweis.vorgangId)} FOR UPDATE`;
+  } else if (verweis.checkoutSitzung) {
+    abfrage = sql`SELECT id FROM vorgaenge WHERE zahlung_checkout_sitzung = ${verweis.checkoutSitzung} ORDER BY id LIMIT 1 FOR UPDATE`;
+  } else if (verweis.anbieterRef) {
+    abfrage = sql`SELECT id FROM vorgaenge WHERE zahlung_anbieter_ref = ${verweis.anbieterRef} ORDER BY id LIMIT 1 FOR UPDATE`;
+  }
+  if (!abfrage) return null;
+  const { rows } = await t.execute(abfrage);
+  if (rows.length === 0) return null;
+  const doc = (await payload.findByID({
+    collection: 'vorgaenge',
+    id: Number(rows[0].id),
+    depth: 0,
+    overrideAccess: true,
+    req: t.req(),
+  })) as Vorgaenge;
+  return vorgangZuSeite(doc);
+}
+
+/** Schreibt nur die geänderten Gruppen des gesperrten Vorgangs. */
+async function aenderungSchreiben(
+  payload: Payload,
+  t: Transaktion,
+  vorgang: Vorgang,
+  aenderung: VorgangsAenderung,
+): Promise<Vorgang> {
+  const data = vorgangAenderungZuPayload(aenderung);
+  if (Object.keys(data).length === 0) return vorgang;
+  const doc = (await payload.update({
+    collection: 'vorgaenge',
+    id: Number(vorgang.id),
+    data,
+    overrideAccess: true,
+    depth: 0,
+    req: t.req(),
+  })) as Vorgaenge;
+  return vorgangZuSeite(doc);
+}
 
 /**
  * Vorgänge werden nicht aus dem Zwischenspeicher gelesen: Terminbelegung und

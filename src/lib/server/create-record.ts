@@ -5,10 +5,11 @@ import {
   getAppointments,
   getCollection,
   getSettings,
-  updateRecord,
+  vorgangAendern,
   vorgangAnlegen,
   vorgangDateienSetzen,
   type TerminSperre,
+  type VorgangsAenderung,
 } from '@/lib/data';
 import { createPayment, sendMail, storageStatus } from '@/lib/integrations';
 import { quoteCarKeyService } from '@/lib/pricing';
@@ -178,7 +179,9 @@ async function startPayment(
 ): Promise<string | undefined> {
   const at = new Date().toISOString();
   let redirectUrl: string | undefined;
-  let patch: Pick<BusinessRecord, 'payment' | 'timeline'>;
+  // Wird erst unter der Sperre auf den frisch gelesenen Vorgang angewendet —
+  // so geht nichts verloren, was inzwischen dazugekommen ist.
+  let aendern: (aktuell: BusinessRecord) => VorgangsAenderung;
 
   try {
     const result = await createPayment({
@@ -189,33 +192,37 @@ async function startPayment(
       returnUrl: `/bestellung/${saved.id}?t=${token}`,
     });
     redirectUrl = result.redirectUrl;
-    patch = {
-      payment: {
-        scope: payment.scope,
-        amountCents: payment.amountCents,
-        status: result.status,
-        providerRef: result.providerRef,
-      },
-      timeline: saved.timeline,
+    if (result.status === 'offen') notices.push(result.message);
+    aendern = (aktuell) => {
+      const aenderung: VorgangsAenderung = {
+        payment: {
+          ...aktuell.payment,
+          scope: payment.scope,
+          amountCents: payment.amountCents,
+          status: result.status,
+          providerRef: result.providerRef,
+          checkoutSessionId: result.checkoutSessionId,
+          expiresAt: result.expiresAt,
+        },
+      };
+      if (result.status === 'offen') {
+        aenderung.timeline = [
+          ...aktuell.timeline,
+          { at, actor: 'system', message: 'Zahlung offen: kein Zahlungsdienstleister angebunden.' },
+        ];
+      }
+      return aenderung;
     };
-    if (result.status === 'offen') {
-      notices.push(result.message);
-      patch.timeline = [
-        ...saved.timeline,
-        { at, actor: 'system', message: 'Zahlung offen: kein Zahlungsdienstleister angebunden.' },
-      ];
-    }
   } catch (error) {
     console.error('[vorgang] Zahlung nicht gestartet', error);
     notices.push(PAYMENT_NOT_STARTED);
-    patch = {
-      payment: saved.payment,
-      timeline: [...saved.timeline, { at, actor: 'system', message: 'Zahlung konnte nicht gestartet werden.' }],
-    };
+    aendern = (aktuell) => ({
+      timeline: [...aktuell.timeline, { at, actor: 'system', message: 'Zahlung konnte nicht gestartet werden.' }],
+    });
   }
 
   try {
-    await updateRecord(saved.id, patch);
+    await vorgangAendern(saved.id, aendern);
   } catch (error) {
     console.error('[vorgang] Zahlungsstand nicht gespeichert', error);
   }

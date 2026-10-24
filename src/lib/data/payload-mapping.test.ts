@@ -164,6 +164,139 @@ describe('Übersetzung Payload ↔ Seite', () => {
     expect(back).toEqual(record);
   });
 
+  it('Vorgänge mit Mailprotokoll, Versand, Zustimmungen und vollständiger Zahlung', () => {
+    const record = {
+      id: '8',
+      reference: 'SM24-B-2026-0008',
+      kind: 'bestellung',
+      area: 'schluessel-nach-code',
+      process: 'direktkauf',
+      status: 'versendet',
+      createdAt: STAND,
+      updatedAt: STAND,
+      contact: { firstName: 'Erika', lastName: 'Muster', email: 'erika@example.org', phone: '0301234567', country: 'Deutschland' },
+      payload: {},
+      summary: [],
+      uploads: [],
+      payment: {
+        scope: 'gesamt',
+        amountCents: 2490,
+        status: 'erstattet',
+        providerRef: 'pi_123',
+        checkoutSessionId: 'cs_test_123',
+        refundedCents: 2490,
+        paidAt: STAND,
+        expiresAt: '2026-09-02T09:00:00.000Z',
+      },
+      internalNotes: [{ at: STAND, actor: 'team', message: 'Rückruf vereinbart.' }],
+      timeline: [],
+      mailLog: [
+        { kind: 'eingang-kunde', to: 'erika@example.org', at: STAND, result: 'gesendet', providerId: 're_1' },
+        { kind: 'eingang-team', to: 'werkstatt@example.org', at: STAND, result: 'fehlgeschlagen', error: '429' },
+      ],
+      shipment: { carrier: 'dhl', trackingNumber: '00340434161234567890' },
+      consents: { terms: true, withdrawalNotice: true, customMade: false, at: STAND, version: '2026-10' },
+    } satisfies Collections['records'][number];
+    const back = m.vorgangZuSeite(gespeichert(m.vorgangZuPayload(record), 8) as never);
+    expect(back).toEqual(record);
+  });
+
+  it('Vorgänge ohne Mailprotokoll leeren beim Zurückschreiben nichts', () => {
+    const data = m.vorgangZuPayload({
+      id: '9',
+      reference: 'SM24-A-2026-0009',
+      kind: 'anfrage',
+      area: 'service-und-termin',
+      process: 'gefuehrte-anfrage',
+      status: 'neu',
+      createdAt: STAND,
+      updatedAt: STAND,
+      contact: { firstName: 'Erika', lastName: 'Muster', email: 'erika@example.org', phone: '0301234567', country: 'Deutschland' },
+      payload: {},
+      summary: [],
+      uploads: [],
+      internalNotes: [],
+      timeline: [],
+    });
+    // undefined heißt für Payload: gespeicherten Wert behalten.
+    expect(data.mails).toBeUndefined();
+    expect(data.positionen).toBeUndefined();
+    expect(data.versand).toBeUndefined();
+    expect(data.zustimmungen).toBeUndefined();
+    expect(data.zahlung).toBeUndefined();
+    expect('dateien' in data).toBe(false);
+  });
+
+  it('Teiländerung schreibt nur die genannten Gruppen, die Zahlung immer ganz', () => {
+    expect(m.vorgangAenderungZuPayload({})).toEqual({});
+    const daten = m.vorgangAenderungZuPayload({
+      status: 'storniert',
+      payment: { scope: 'anzahlung', amountCents: 6990, status: 'bezahlt', paidAt: STAND },
+      timeline: [{ at: STAND, actor: 'system', message: 'Zahlung eingegangen.' }],
+    });
+    expect(Object.keys(daten).sort()).toEqual(['status', 'verlauf', 'zahlung']);
+    expect(Object.keys(daten.zahlung ?? {}).sort()).toEqual([
+      'ablaufAm', 'anbieterRef', 'betragCent', 'bezahltAm', 'checkoutSitzung', 'erstattetCent', 'status', 'umfang',
+    ]);
+    expect(daten.verlauf).toEqual([{ am: STAND, von: 'system', text: 'Zahlung eingegangen.' }]);
+    const mails = m.vorgangAenderungZuPayload({
+      mailLog: [{ kind: 'status', to: 'erika@example.org', at: STAND, result: 'nicht-eingerichtet' }],
+      shipment: { carrier: 'dpd' },
+      consents: { earlyStart: true },
+      accessTokenHash: 'b'.repeat(64),
+    });
+    expect(Object.keys(mails).sort()).toEqual(['mails', 'versand', 'zugriffsHash', 'zustimmungen']);
+  });
+
+  it('GPSR-Angaben an Artikeln und am Zylinderkatalog', async () => {
+    const [lines, articles, catalog] = await Promise.all([
+      read('codeLines'),
+      read('standardArticles'),
+      read('cylinderCatalog'),
+    ]);
+    const gpsr = { manufacturerName: 'Beispiel GmbH', manufacturerAddress: 'Musterweg 1\n12345 Musterstadt', productId: 'ZY-01' };
+    const line = { ...lines[0], gpsr };
+    if (!line.bulkPrices?.length) delete line.bulkPrices;
+    expect(m.codeLineZuSeite(gespeichert(m.codeLineZuPayload(line), 1) as never)).toEqual(line);
+    const article = { ...articles[0], gpsr: { manufacturerEmail: 'info@example.org', safetyNotes: 'Nicht für Kinder.' } };
+    expect(m.standardartikelZuSeite(gespeichert(m.standardartikelZuPayload(article), 1) as never)).toEqual(article);
+    const katalog = { ...catalog, gpsr: { manufacturerWebsite: 'https://example.org' } };
+    expect(m.zylinderkatalogZuSeite(gespeichert(m.zylinderkatalogZuPayload(katalog), 1) as never)).toEqual(katalog);
+    // Leere Gruppe aus der Datenbank: kein GPSR-Eintrag.
+    expect(m.gpsrZuSeite({ herstellerName: '', produktkennung: null })).toBeUndefined();
+  });
+
+  it('Eigentexte der Rechtsseiten nur, wenn sie Text enthalten', async () => {
+    const settings = await read('settings');
+    const absatz = (text: string) => ({
+      root: { type: 'root', children: [{ type: 'paragraph', children: text ? [{ type: 'text', text }] : [] }] },
+    });
+    const mitTexten = { ...settings, legalTexts: { terms: absatz('§ 1 Geltungsbereich'), privacy: absatz('Verantwortlich ist …') } };
+    const doc = gespeichert(m.einstellungenZuPayload(mitTexten), 1, { updatedAt: settings.updatedAt }) as Record<string, unknown>;
+    expect(m.einstellungenZuSeite(doc as never)).toEqual(mitTexten);
+    const leer = { ...doc, rechtstexte: { agb: absatz(''), widerruf: absatz('   '), datenschutz: null } };
+    expect(m.einstellungenZuSeite(leer as never).legalTexts).toBeUndefined();
+  });
+
+  it('Firmendaten: Rechtsform, Standort und Lieferzeit', async () => {
+    const settings = await read('settings');
+    expect(settings.company).toMatchObject({ legalForm: 'einzelunternehmen', isPlaceholder: false });
+    const anders = {
+      ...settings,
+      company: { ...settings.company, legalForm: 'gmbh' as const, registerCourt: 'Amtsgericht Wetzlar', registerNumber: 'HRB 1' },
+      shipping: settings.shipping.map((v) => ({ ...v, deliveryTime: '2–4 Werktage' })),
+      booking: { ...settings.booking, federalState: 'NW' as const },
+    };
+    const doc = gespeichert(m.einstellungenZuPayload(anders), 1, { updatedAt: settings.updatedAt });
+    expect(m.einstellungenZuSeite(doc as never)).toEqual(anders);
+    const ohneStandort = { ...settings, company: { ...settings.company } };
+    delete ohneStandort.company.location;
+    delete ohneStandort.company.taxNumber;
+    delete ohneStandort.company.contentResponsible;
+    const doc2 = gespeichert(m.einstellungenZuPayload(ohneStandort), 1, { updatedAt: settings.updatedAt });
+    expect(m.einstellungenZuSeite(doc2 as never)).toEqual(ohneStandort);
+  });
+
   it('Bild aus der Medienbibliothek ersetzt den Platzhalter', () => {
     const slot = m.bildZuSeite(
       {

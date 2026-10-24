@@ -82,10 +82,24 @@ export interface OpeningHour {
   spans: { from: string; to: string }[];
 }
 
+export type LegalForm = 'einzelunternehmen' | 'eingetragener-kaufmann' | 'gmbh' | 'ug';
+
+/** Zweiter Standort, z. B. Werkstatt und Abholung abseits des Firmensitzes. */
+export interface CompanyLocation {
+  label: string;
+  street: string;
+  postalCode: string;
+  city: string;
+}
+
 export interface CompanyProfile {
   /** Platzhalter — vor Livegang durch echte Daten ersetzen. */
   legalName: string;
   brandName: string;
+  legalForm: LegalForm;
+  /** Inhaberin oder Inhaber (Einzelunternehmen, e. K.). */
+  owner: string;
+  /** Firmensitz. */
   street: string;
   postalCode: string;
   city: string;
@@ -93,12 +107,28 @@ export interface CompanyProfile {
   phone: string;
   email: string;
   vatId: string;
+  /** Nur mit Handelsregister (nicht beim Einzelunternehmen). */
   registerCourt: string;
   registerNumber: string;
   managingDirector: string;
+  /** Berufsbezeichnung fürs Impressum. */
+  profession: string;
+  /** Zuständige Kammer mit Anschrift. */
+  chamber: string;
+  /** Inhaltlich verantwortlich nach § 18 MStV. */
+  contentResponsible?: string;
+  /** Steuernummer — nur intern, nie auf der Seite ausgeben. */
+  taxNumber?: string;
+  /** Werkstatt oder Abholung, falls nicht am Firmensitz. */
+  location?: CompanyLocation;
   /** true, solange noch Platzhalter hinterlegt sind. */
   isPlaceholder: boolean;
 }
+
+/** Bundesland für die gesetzlichen Feiertage. */
+export type FederalState =
+  | 'BW' | 'BY' | 'BE' | 'BB' | 'HB' | 'HH' | 'HE' | 'MV'
+  | 'NI' | 'NW' | 'RP' | 'SL' | 'SN' | 'ST' | 'SH' | 'TH';
 
 export interface BookingDefaults {
   /** Mindestvorlauf in Tagen bis zum frühesten buchbaren Termin. */
@@ -116,6 +146,25 @@ export interface BookingDefaults {
   slotsPerWindow: number;
   /** Tägliche Buchungsfenster, z. B. 09:00–17:00. */
   windows: { from: string; to: string }[];
+  /** Bundesland für gesetzliche Feiertage; ohne Angabe Hessen. */
+  federalState?: FederalState;
+}
+
+/**
+ * Inhalt eines Richtext-Felds aus dem Backend (Lexical-JSON), unverändert
+ * durchgereicht. Darstellung über den RichText-Baustein von Payload.
+ */
+export interface RichTextDocument {
+  root: { type: string; children: unknown[]; [key: string]: unknown };
+  [key: string]: unknown;
+}
+
+/** Eigene Fassungen der Rechtsseiten aus dem Backend — ersetzen den eingebauten Entwurf. */
+export interface LegalTexts {
+  terms?: RichTextDocument;
+  withdrawal?: RichTextDocument;
+  privacy?: RichTextDocument;
+  shippingAndPayment?: RichTextDocument;
 }
 
 export interface Settings {
@@ -131,6 +180,8 @@ export interface Settings {
     floorPlans: number;
     projectDocuments: number;
   };
+  /** Nur gesetzt, wenn im Backend mindestens ein Eigentext hinterlegt ist. */
+  legalTexts?: LegalTexts;
   updatedAt: string;
 }
 
@@ -143,6 +194,8 @@ export interface ShippingOption {
   insured: boolean;
   /** Auf welche Produktklassen die Versandart passt. */
   productClasses: ProductClass[];
+  /** Lieferzeit, z. B. „2–4 Werktage nach Fertigung“. */
+  deliveryTime?: string;
 }
 
 export type ProductClass = 'code-schluessel' | 'zylinder' | 'zubehoer';
@@ -241,6 +294,19 @@ export interface PriceQuote {
   note?: string;
 }
 
+/* ---------- Produktsicherheit (GPSR) ------------------------------------- */
+
+/** Angaben nach der EU-Produktsicherheitsverordnung. Nur gefüllte Felder sind gesetzt. */
+export interface ProductSafetyInfo {
+  manufacturerName?: string;
+  manufacturerAddress?: string;
+  manufacturerEmail?: string;
+  manufacturerWebsite?: string;
+  /** Typ-, Chargen- oder Artikelnummer. */
+  productId?: string;
+  safetyNotes?: string;
+}
+
 /* ---------- Schlüssel nach Code (Shop) ---------------------------------- */
 
 export interface CodeLine {
@@ -276,6 +342,7 @@ export interface CodeLine {
   seo: SeoFields;
   /** Beispielartikel: sichtbar, aber nicht bestellbar und nicht in Suchmaschinen. */
   example?: boolean;
+  gpsr?: ProductSafetyInfo;
 }
 
 /* ---------- Standardartikel (Shop) -------------------------------------- */
@@ -300,6 +367,7 @@ export interface StandardArticle {
   seo: SeoFields;
   /** Beispielartikel: sichtbar, aber nicht bestellbar und nicht in Suchmaschinen. */
   example: boolean;
+  gpsr?: ProductSafetyInfo;
 }
 
 /* ---------- Gleichschließende Zylinder ---------------------------------- */
@@ -361,6 +429,8 @@ export interface CylinderCatalog {
   /** Erklärung zum richtigen Messen. */
   measuringInfo: InfoHint;
   measuringFigure: ImageSlot;
+  /** Gilt für alle Zylinder des Katalogs. */
+  gpsr?: ProductSafetyInfo;
 }
 
 export interface CylinderLineItem {
@@ -482,9 +552,61 @@ export interface PaymentInfo {
   scope: 'anzahlung' | 'gesamt';
   amountCents: number;
   status: 'offen' | 'bezahlt' | 'fehlgeschlagen' | 'erstattet';
-  /** Kennung des Zahlungsdienstleisters, sobald angebunden. */
+  /** Kennung des Zahlungsdienstleisters (Stripe: PaymentIntent). */
   providerRef?: string;
+  /** Stripe-Checkout-Sitzung. */
+  checkoutSessionId?: string;
+  /** Bereits erstatteter Betrag. */
+  refundedCents?: number;
   paidAt?: string;
+  /** Bis wann die Zahlung möglich ist (ISO-Zeitpunkt). */
+  expiresAt?: string;
+}
+
+export type MailKind =
+  | 'eingang-kunde'
+  | 'eingang-team'
+  | 'vertrag'
+  | 'zahlung-erhalten'
+  | 'zahlung-nicht-abgeschlossen'
+  | 'erstattung'
+  | 'status'
+  | 'widerruf'
+  | 'sonstige';
+
+/** Eintrag im Mailprotokoll eines Vorgangs. */
+export interface MailLogEntry {
+  kind: MailKind;
+  /** Empfängeradresse. */
+  to: string;
+  at: string;
+  result: 'gesendet' | 'fehlgeschlagen' | 'nicht-eingerichtet';
+  /** Kennung beim Mailanbieter. */
+  providerId?: string;
+  error?: string;
+}
+
+export type ShipmentCarrier = 'dhl' | 'dpd' | 'deutsche-post' | 'hermes' | 'gls' | 'ups' | 'sonstige';
+
+export interface ShipmentInfo {
+  carrier?: ShipmentCarrier;
+  trackingNumber?: string;
+}
+
+/** Was der Kunde beim Absenden bestätigt hat. Nur gesetzte Angaben sind enthalten. */
+export interface RecordConsents {
+  terms?: boolean;
+  withdrawalNotice?: boolean;
+  /** Ausdrückliches Verlangen nach Beginn vor Ende der Widerrufsfrist. */
+  earlyStart?: boolean;
+  /** Kenntnis: Sonderanfertigung, kein Widerrufsrecht. */
+  customMade?: boolean;
+  deposit?: boolean;
+  /** Berechtigung (z. B. Fahrzeughalter, Eigentümer). */
+  authorization?: boolean;
+  at?: string;
+  /** Stand der Rechtstexte zum Zeitpunkt der Zustimmung. */
+  version?: string;
 }
 
 export interface TimelineEntry {
@@ -550,6 +672,13 @@ export interface BusinessRecord {
   /** Nur bei Bestellungen: festgeschriebene Positionen und Summen. */
   lines?: OrderLine[];
   totals?: OrderTotals;
+  /**
+   * Versendete E-Mails. Fehlt der Wert, bleibt das gespeicherte Protokoll
+   * beim Zurückschreiben unverändert.
+   */
+  mailLog?: MailLogEntry[];
+  shipment?: ShipmentInfo;
+  consents?: RecordConsents;
 }
 
 export interface SummarySection {
