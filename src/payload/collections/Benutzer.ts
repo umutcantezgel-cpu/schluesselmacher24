@@ -1,10 +1,13 @@
 import type { CollectionConfig } from 'payload';
 
 import { ROLLEN, feldNurInhaber, hatRolle, istInhaber } from '../access/rollen';
+import { anmeldungBegrenzen, erstregistrierungSperren } from '../hooks/benutzer-schutz';
 
 /**
- * Zugänge zum Backend. Es gibt bewusst keine offene Registrierung: den ersten
- * Zugang legt das Seed-Skript aus Umgebungsvariablen an.
+ * Zugänge zum Backend. Es gibt bewusst keine offene Registrierung: Den ersten
+ * Zugang legt src/scripts/admin-anlegen.ts aus SEED_ADMIN_EMAIL und
+ * SEED_ADMIN_PASSWORD an (im Produktions-Build Pflicht, scripts/build.mjs);
+ * /admin/create-first-user ist gesperrt (hooks/benutzer-schutz.ts).
  */
 export const Benutzer: CollectionConfig = {
   slug: 'benutzer',
@@ -22,6 +25,9 @@ export const Benutzer: CollectionConfig = {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'Lax',
     },
+  },
+  hooks: {
+    beforeOperation: [erstregistrierungSperren, anmeldungBegrenzen],
   },
   access: {
     // Nur Konten mit Backend-Rolle kommen ins Backend.

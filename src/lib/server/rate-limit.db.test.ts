@@ -13,7 +13,7 @@ vi.mock('next/headers', () => ({
   headers: async () => new Headers({ 'x-forwarded-for': `${adresse}, 10.0.0.1` }),
 }));
 
-const { allowRequest, resetRateLimits } = await import('./rate-limit');
+const { allowRequest, alteZaehlerLoeschen, resetRateLimits } = await import('./rate-limit');
 
 let payload: Payload;
 
@@ -77,5 +77,38 @@ describe('Ratenbegrenzung über die Datenbank', () => {
     const now = Date.now();
     const ergebnisse = await Promise.all(Array.from({ length: 20 }, () => allowRequest(rule, now)));
     expect(ergebnisse.filter(Boolean)).toHaveLength(5);
+  });
+
+  it('zählt IPv6-Absender je /64-Netz', async () => {
+    const rule = { name: 'test-ipv6', limit: 2, windowMs: 60_000 };
+    const now = Date.now();
+    adresse = '2001:db8:85a3:1234::1';
+    expect(await allowRequest(rule, now)).toBe(true);
+    adresse = '2001:db8:85a3:1234:dead:beef:0:7';
+    expect(await allowRequest(rule, now)).toBe(true);
+    adresse = '2001:db8:85a3:1234:ffff:ffff:ffff:ffff';
+    expect(await allowRequest(rule, now)).toBe(false);
+    adresse = '2001:db8:85a3:9999::1';
+    expect(await allowRequest(rule, now)).toBe(true);
+  });
+
+  it('löscht Zähler, deren Fenster älter als einen Tag ist', async () => {
+    const rule = { name: 'test-alt', limit: 5, windowMs: 60_000 };
+    const tag = 24 * 60 * 60 * 1000;
+    const now = Date.now();
+    adresse = '198.51.100.202';
+    await allowRequest(rule, now - 60_000);
+    // Direkt eingefügt: allowRequest räumt selbst gelegentlich auf.
+    const db = (payload.db as unknown as PostgresAdapter).drizzle;
+    await db.execute(sql`
+      INSERT INTO "sm24_ratenbegrenzung" ("schluessel", "fenster_start", "anzahl")
+      VALUES ('test-alt:veraltet', ${new Date(now - 2 * tag).toISOString()}::timestamptz, 3)
+    `);
+
+    const geloescht = await alteZaehlerLoeschen(now);
+    expect(geloescht).toBeGreaterThanOrEqual(1);
+    const uebrig = (await zeilen()).filter((z) => z.schluessel.startsWith('test-alt:'));
+    expect(uebrig).toHaveLength(1);
+    expect(await alteZaehlerLoeschen(now)).toBe(0);
   });
 });
