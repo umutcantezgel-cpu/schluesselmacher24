@@ -3,14 +3,12 @@ import Link from 'next/link';
 import type { ComponentType } from 'react';
 
 import { getPageContent, getSettings } from '@/lib/data';
-import { getRichtwerte } from '@/lib/data/richtwerte';
 import { NAV_AREAS, PROCESS_LABELS } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
 import { enthaeltPlatzhalter, istPlatzhalter } from '@/lib/platzhalter';
 import { cn } from '@/lib/cn';
 import { Accordion } from '@/components/ui/accordion';
 import { PageHeader } from '@/components/layout/page-header';
-import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { AblaufGrafik } from '@/components/visual/generators/ablauf';
@@ -21,6 +19,12 @@ import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconServiceUndTermin } from '@/components/visual/icons/service-und-termin';
 import { IconStandort } from '@/components/visual/icons/standort';
 import { IconTermin } from '@/components/visual/icons/termin';
+import { ServiceBudgetCalculator } from "@/components/calculator/service-budget-calculator";
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('service-und-termin');
@@ -92,6 +96,28 @@ const PHASEN_TITEL = `Phasen eines Auftrags: ${PHASEN.map((p) => p.kurz).join(',
 
 /** Sichtbare FAQ der Seite — auch Grundlage der strukturierten Daten. */
 const SERVICE_FAQ = [
+
+  {
+    question: 'Wie hoch sind die Kosten bei einem verlorenen Generalhauptschlüssel?',
+    answer: 'Die Kosten bei Verlust eines Generalhauptschlüssels hängen stark von der Art der Schließanlage ab. Bei einer rein mechanischen Anlage müssen aus Versicherungsgründen in der Regel alle Schließzylinder ausgetauscht werden, die von diesem Schlüssel geschlossen wurden. In großen Bürogebäuden oder Wohnanlagen kann dies schnell Kosten im fünf- bis sechsstelligen Bereich verursachen. Bei elektronischen oder mechatronischen Anlagen entfällt dieser immense Hardware-Austausch. Das verlorene Identmedium (Transponder oder mechatronischer Schlüssel) wird einfach in der Verwaltungssoftware gesperrt. Die Kosten beschränken sich hier auf den Ersatz des Mediums (oft unter 50 Euro) und den minimalen administrativen Aufwand. Dies ist der primäre Grund, warum wir für komplexe Objekte ab einer bestimmten Größe dringend zu elektronischen Systemen raten.',
+  },
+  {
+    question: 'Welche Verschlüsselungsstandards werden bei elektronischen Zutrittssystemen verwendet?',
+    answer: 'Sicherheit in der Elektronik erfordert den Einsatz modernster kryptografischer Verfahren. Wir implementieren ausschließlich Systeme, die auf anerkannten und als sicher geltenden Standards basieren. Für die Kommunikation zwischen Identmedium (z.B. Smartcard) und Leser setzen wir auf Technologien wie MIFARE DESFire EV2 oder EV3, die mit AES-128-Bit-Verschlüsselung arbeiten. Proprietäre, veraltete Standards wie einfache 125-kHz-Systeme (z.B. unverschlüsseltes EM4102), die leicht auslesbar und kopierbar sind, verbauen wir in neuen Anlagen nicht mehr. Bei Smartphone-basierten Lösungen via Bluetooth Low Energy (BLE) oder NFC sorgen zusätzliche Ende-zu-Ende-Verschlüsselungen zwischen dem sicheren Element im Smartphone und dem Schließzylinder dafür, dass Man-in-the-Middle-Angriffe oder Replay-Attacken effektiv verhindert werden.',
+  },
+  {
+    question: 'Wie wird die Ausfallsicherheit bei Stromausfall gewährleistet?',
+    answer: 'Die Ausfallsicherheit ist ein kritisches Kriterium bei der Anlagenplanung. Offline-Komponenten (wie elektronische Doppelzylinder oder Beschläge) arbeiten autark mit integrierten Batterien. Hier überwacht das System den Batteriestatus und warnt den Administrator (z.B. durch optische/akustische Signale am Zylinder oder über virtuelle Netzwerk-Updates) lange vor dem kompletten Ausfall. Sollte eine Batterie dennoch tiefenentladen sein, verfügen hochwertige Systeme über Notstrom-Kontaktierungen an der Außenseite, um dem Zylinder temporär Energie zuzuführen und mit berechtigtem Medium zu öffnen. Bei online-vernetzten Wandlesern (z.B. an Schiebetüren oder Motorschlössern), die vom Hausnetz versorgt werden, planen wir in der Regel eine unterbrechungsfreie Stromversorgung (USV) ein. Zudem muss im Vorfeld für jede Tür definiert werden, ob sie bei einem totalen Stromausfall verriegelt bleiben soll (Fail-Secure – wichtig für Hochsicherheitsbereiche) oder sich automatisch entriegeln muss (Fail-Safe – zwingend vorgeschrieben für Flucht- und Rettungswege gemäß DIN EN 13637).',
+  },
+  {
+    question: 'Was beinhaltet ein professionelles Wartungskonzept für Schließanlagen?',
+    answer: 'Ein strukturiertes Wartungskonzept ist essenziell für die Langlebigkeit und die Aufrechterhaltung des Sicherheitsniveaus. Unsere Wartungsverträge umfassen mehrere Säulen: Bei mechanischen Komponenten erfolgt eine fachgerechte Reinigung und Schmierung (ausschließlich mit nicht-harzenden Spezialpflegemitteln, niemals mit herkömmlichen Ölen), sowie die Prüfung auf Verschleiß an Zylinderkernen und Schlüsseln. Bei elektronischen Systemen steht das Software-Lifecycle-Management im Fokus: Wir spielen sicherheitskritische Firmware-Updates auf die Zylinder und Leser auf, aktualisieren die Verwaltungssoftware zur Schließung von bekannten IT-Sicherheitslücken (CVEs) und führen einen proaktiven Batteriewechsel nach definierten Zyklen (z.B. alle 2 Jahre oder 40.000 Schließungen) durch. Zudem überprüfen wir die korrekte Funktion der Türschließer und mechanischen Notöffnungsfunktionen.',
+  },
+  {
+    question: 'Wie erfolgt die Integration der Schließanlage in bestehende IT-Infrastrukturen?',
+    answer: 'Die isolierte Betrachtung von Schließsystemen ist nicht mehr zeitgemäß. Wir planen die Integration in Ihre bestehende IT-Umgebung (Identity and Access Management, IAM). Durch standardisierte Schnittstellen (z.B. REST-APIs, LDAP, Active Directory-Kopplung) können Zutrittsrechte automatisiert vergeben oder entzogen werden, wenn ein Mitarbeiter in die Firma eintritt oder sie verlässt. Dies minimiert den administrativen Aufwand und schließt gefährliche Sicherheitslücken durch "vergessene" Berechtigungen (sogenannte Orphaned Accounts). Darüber hinaus können moderne Systeme mit Zeiterfassungsterminals, Alarmanlagen (Einbruchmeldeanlagen - EMA) oder der Gebäudeautomation gekoppelt werden. Beispielsweise kann das Scharfschalten der Alarmanlage nur dann erfolgen, wenn alle relevanten Fenster geschlossen sind, und gleichzeitig den Zutritt für reguläre Mitarbeiter blockieren, bis die Anlage durch Berechtigte wieder unscharf geschaltet wurde.',
+  },
+
   {
     question: 'Wie lange dauert die Implementierung einer komplexen Schließanlage?',
     answer: 'Die Dauer variiert stark nach Umfang und Komplexität. Nach der Bestandsaufnahme und Freigabe des Schließplans hängt die Liefer- und Fertigungszeit vom Hersteller und vom Umfang ab; den verbindlichen Zeitplan nennen wir mit dem Angebot. Die Montage vor Ort stimmen wir so ab, dass Ihr Betriebsablauf möglichst wenig gestört wird. Elektronische Systeme erfordern oft zusätzliche Vorbereitungen in der IT-Infrastruktur.'
@@ -119,11 +145,13 @@ function ohnePlatzhalter(text: string | undefined): string | undefined {
   return istPlatzhalter(text) || enthaeltPlatzhalter(text) ? undefined : text;
 }
 
-export default async function ServiceUndTerminPage() {
-  const [page, settings, richtwerte] = await Promise.all([
+export default async function ServiceUndTerminPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
+  const [page, settings] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
-    getRichtwerte(),
+
   ]);
 
   const ablauf = PROCESS_LABELS['gefuehrte-anfrage'];
@@ -378,10 +406,7 @@ export default async function ServiceUndTerminPage() {
           lead="Für häufige Leistungen vor Ort erhalten Sie hier eine erste Orientierung. Den verbindlichen Preis nennen wir nach der Prüfung Ihrer Anfrage."
         />
         <div className="mt-12 max-w-3xl">
-          <ServiceEinsatzRechner
-            werte={richtwerte.serviceEinsatz}
-            anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
-          />
+          <ServiceBudgetCalculator />
         </div>
       </Section>
 

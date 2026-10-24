@@ -1,0 +1,9 @@
+{
+  "transformation_queue": [
+    {
+      "route": "src/app/(site)/service-und-termin/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "interactive_module_planned": "service-budget-calculator"
+    }
+  ]
+}
