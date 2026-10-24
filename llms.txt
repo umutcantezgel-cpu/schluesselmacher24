@@ -1,0 +1,4 @@
+
+
+## Architecture Blueprint
+See `.jules/architecture-matrix.md` and `.jules/revolution-plan.json` for the current transformation goals and strict Swiss Light Mode adherence (OKLCH, CSS clamp, Subgrid).
