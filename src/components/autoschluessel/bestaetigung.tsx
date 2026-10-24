@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import type { AppointmentInfo, PriceQuote, SummarySection } from '@/lib/types';
-import { formatCents, formatDate, formatDuration } from '@/lib/format';
+import { formatCents, formatDate, formatDuration, formatTime } from '@/lib/format';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
@@ -19,6 +19,8 @@ export interface BestaetigungProps {
   notices: string[];
   /** Zahlungsseite des Anbieters, sobald einer angebunden ist. */
   redirectUrl?: string;
+  /** Bei offener Online-Zahlung: bis wann der Termin reserviert ist (ISO). */
+  reserviertBis?: string;
 }
 
 /** Abschlussansicht nach erfolgreichem Absenden. */
@@ -29,6 +31,7 @@ export function Bestaetigung({
   summary,
   notices,
   redirectUrl,
+  reserviertBis,
 }: BestaetigungProps) {
   return (
     <div className="space-y-6">
@@ -95,9 +98,15 @@ export function Bestaetigung({
       </div>
 
       {redirectUrl && (
-        <ButtonLink href={redirectUrl} size="lg">
-          Anzahlung jetzt bezahlen
-        </ButtonLink>
+        <div className="space-y-3">
+          <Alert tone="warning" title={reserviertBis ? `Reserviert bis ${formatTime(reserviertBis)} Uhr` : 'Anzahlung offen'} role="status">
+            Sie werden zur sicheren Zahlungsseite weitergeleitet. Geht die Anzahlung bis dahin nicht ein, geben wir das
+            Zeitfenster wieder frei.
+          </Alert>
+          <ButtonLink href={redirectUrl} size="lg">
+            Anzahlung jetzt bezahlen
+          </ButtonLink>
+        </div>
       )}
 
       {notices.length > 0 && (

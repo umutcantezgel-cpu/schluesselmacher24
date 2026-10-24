@@ -127,6 +127,8 @@ export function KasseFormular({
   const [hinweise, setHinweise] = useState<string[]>([]);
   const [sendet, setSendet] = useState(false);
   const [abgeschlossen, setAbgeschlossen] = useState(false);
+  /** Weiterleitung zur Zahlungsseite statt zur Bestätigung. */
+  const [zurZahlung, setZurZahlung] = useState(false);
 
   function setzen<K extends keyof Eingaben>(feld: K, wert: Eingaben[K]) {
     setWerte((vorher) => ({ ...vorher, [feld]: wert }));
@@ -305,6 +307,8 @@ export function KasseFormular({
     leeren();
 
     if (ergebnis.redirectUrl) {
+      // Zahlungsseite von Stripe. Bei Abbruch führt Stripe auf die Bestellseite zurück.
+      setZurZahlung(true);
       window.location.assign(ergebnis.redirectUrl);
       return;
     }
@@ -319,7 +323,9 @@ export function KasseFormular({
       <Card className="sm24-leerzustand lg:col-span-8" data-leerzustand>
         <CardBody>
           <p className="text-body text-foreground-muted" role="status">
-            Ihre Bestellung wurde aufgenommen. Sie werden zur Bestätigung weitergeleitet.
+            {zurZahlung
+              ? 'Ihre Bestellung wurde aufgenommen. Sie werden zur sicheren Zahlungsseite weitergeleitet.'
+              : 'Ihre Bestellung wurde aufgenommen. Sie werden zur Bestätigung weitergeleitet.'}
           </p>
         </CardBody>
       </Card>

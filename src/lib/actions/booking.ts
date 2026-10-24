@@ -124,7 +124,15 @@ export async function fetchRecordStatus(reference: string, email: string) {
       createdAt: record.createdAt,
       updatedAt: record.updatedAt,
       appointment: record.appointment,
-      payment: record.payment,
+      // Ohne Kennungen des Zahlungsdienstleisters (Sitzung, Zahlung).
+      payment: record.payment
+        ? {
+            scope: record.payment.scope,
+            amountCents: record.payment.amountCents,
+            status: record.payment.status,
+            paidAt: record.payment.paidAt,
+          }
+        : undefined,
       summary: record.summary,
       timeline: record.timeline,
     },

@@ -11,9 +11,10 @@ import {
   type TerminSperre,
   type VorgangsAenderung,
 } from '@/lib/data';
-import { createPayment, sendMail, storageStatus } from '@/lib/integrations';
+import { createPayment, storageStatus } from '@/lib/integrations';
 import { quoteCarKeyService } from '@/lib/pricing';
 import { buildRecordId } from '@/lib/reference';
+import { VERLAUF } from '@/lib/zahlung/uebergaenge';
 import { availableSlots, toIsoDate } from '@/lib/scheduling';
 import type {
   AppointmentInfo,
@@ -34,6 +35,7 @@ import type {
 } from '@/lib/types';
 
 import { createAccessToken } from './access-token';
+import { benachrichtigeNeuerVorgang } from './benachrichtigungen';
 
 /**
  * Eingabe für einen Vorgang, die bereits geprüft ist.
@@ -150,11 +152,19 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
     saved = await dateienZuordnen(saved, input.uploads, notices);
   }
 
-  const redirectUrl = input.payment
-    ? await startPayment(saved, input.payment, token, notices)
-    : undefined;
+  let redirectUrl: string | undefined;
+  if (input.payment) {
+    const zahlung = await startPayment(saved, input, token, notices);
+    redirectUrl = zahlung.redirectUrl;
+    saved = zahlung.vorgang;
+  }
 
-  await sendConfirmation(saved, input.contact, settings, notices);
+  // Eingangsbestätigung mit dem Stand nach dem Zahlungsstart (Ablauf der Reservierung).
+  try {
+    notices.push(...(await benachrichtigeNeuerVorgang({ saved, token, settings })));
+  } catch (error) {
+    console.error('[vorgang] Bestätigung nicht versendet', error);
+  }
 
   return {
     ok: true,
@@ -169,14 +179,16 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
 /**
  * Startet die Zahlung erst nach dem Speichern: Rücksprungadresse und Verweis
  * brauchen die endgültige Kennung aus der Datenbank, und kein Zahlungsdienst
- * hält eine Datenbanksperre offen.
+ * hält eine Datenbanksperre offen. Liefert die Zahlungsadresse (falls
+ * online bezahlt wird) und den Vorgang nach dem Speichern des Zahlungsstands.
  */
 async function startPayment(
   saved: BusinessRecord,
-  payment: PaymentRequest,
+  input: TrustedRecordInput,
   token: string,
   notices: string[],
-): Promise<string | undefined> {
+): Promise<{ redirectUrl?: string; vorgang: BusinessRecord }> {
+  const payment = input.payment as PaymentRequest;
   const at = new Date().toISOString();
   let redirectUrl: string | undefined;
   // Wird erst unter der Sperre auf den frisch gelesenen Vorgang angewendet —
@@ -186,13 +198,20 @@ async function startPayment(
   try {
     const result = await createPayment({
       recordId: saved.id,
+      reference: saved.reference,
+      recordKind: saved.kind,
       amountCents: payment.amountCents,
       scope: payment.scope,
       description: payment.description,
-      returnUrl: `/bestellung/${saved.id}?t=${token}`,
+      accessToken: token,
+      customerEmail: saved.contact.email,
+      lines: input.lines,
+      shipping: input.totals ? { label: input.totals.shippingLabel, cents: input.totals.shippingCents } : undefined,
+      appointment: input.appointment,
     });
     redirectUrl = result.redirectUrl;
-    if (result.status === 'offen') notices.push(result.message);
+    // Ohne Zahlungsseite bleibt die Zahlung offen — der Kunde erfährt, wie es weitergeht.
+    if (result.status === 'offen' && !redirectUrl) notices.push(result.message);
     aendern = (aktuell) => {
       const aenderung: VorgangsAenderung = {
         payment: {
@@ -205,11 +224,16 @@ async function startPayment(
           expiresAt: result.expiresAt,
         },
       };
-      if (result.status === 'offen') {
-        aenderung.timeline = [
-          ...aktuell.timeline,
-          { at, actor: 'system', message: 'Zahlung offen: kein Zahlungsdienstleister angebunden.' },
-        ];
+      let verlauf: string | undefined;
+      if (redirectUrl) verlauf = VERLAUF.gestartet;
+      else if (result.status === 'offen') {
+        verlauf = result.internalNote
+          ? 'Zahlung offen – die Zahlungsinformationen erhalten Sie von uns.'
+          : 'Zahlung offen: kein Zahlungsdienstleister angebunden.';
+      }
+      if (verlauf) aenderung.timeline = [...aktuell.timeline, { at, actor: 'system', message: verlauf }];
+      if (result.internalNote) {
+        aenderung.internalNotes = [...aktuell.internalNotes, { at, actor: 'system', message: result.internalNote }];
       }
       return aenderung;
     };
@@ -217,47 +241,26 @@ async function startPayment(
     console.error('[vorgang] Zahlung nicht gestartet', error);
     notices.push(PAYMENT_NOT_STARTED);
     aendern = (aktuell) => ({
-      timeline: [...aktuell.timeline, { at, actor: 'system', message: 'Zahlung konnte nicht gestartet werden.' }],
+      timeline: [...aktuell.timeline, { at, actor: 'system', message: VERLAUF.nichtGestartet }],
+      internalNotes: [
+        ...aktuell.internalNotes,
+        {
+          at,
+          actor: 'system',
+          message:
+            `Online-Zahlung konnte nicht gestartet werden (${error instanceof Error ? error.message.slice(0, 200) : 'unbekannter Fehler'}). `
+            + 'Der Kunde kann sie über seinen Link erneut starten.',
+        },
+      ],
     });
   }
 
   try {
-    await vorgangAendern(saved.id, aendern);
+    const vorgang = await vorgangAendern(saved.id, aendern);
+    return { redirectUrl, vorgang: vorgang ?? saved };
   } catch (error) {
     console.error('[vorgang] Zahlungsstand nicht gespeichert', error);
-  }
-  return redirectUrl;
-}
-
-async function sendConfirmation(
-  saved: BusinessRecord,
-  contact: ContactDetails,
-  settings: Settings,
-  notices: string[],
-) {
-  try {
-    const mail = await sendMail({
-      to: contact.email,
-      subject: `Ihr Vorgang ${saved.reference} bei SCHLÜSSELMACHER24`,
-      body:
-        `Guten Tag ${contact.firstName} ${contact.lastName},\n\n`
-        + `wir haben Ihren Vorgang unter der Nummer ${saved.reference} aufgenommen.\n`
-        + `Sie können den Stand jederzeit unter /service-und-termin/terminstatus abrufen.\n\n`
-        + `${settings.company.brandName}`,
-      recordId: saved.id,
-    });
-    if (!mail.sent) {
-      notices.push(
-        'Eine automatische Bestätigung per E-Mail ist noch nicht eingerichtet. '
-          + 'Notieren Sie sich bitte Ihre Vorgangsnummer.',
-      );
-    }
-  } catch (error) {
-    console.error('[vorgang] Bestätigung nicht versendet', error);
-    notices.push(
-      'Die Bestätigung per E-Mail konnte gerade nicht versendet werden. '
-        + 'Notieren Sie sich bitte Ihre Vorgangsnummer.',
-    );
+    return { redirectUrl, vorgang: saved };
   }
 }
 
