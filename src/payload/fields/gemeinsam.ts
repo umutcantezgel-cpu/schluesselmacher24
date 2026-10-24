@@ -1,4 +1,4 @@
-import type { ArrayField, Field, GroupField, NumberField, SelectField, TextField } from 'payload';
+import type { ArrayField, CollectionSlug, Field, GroupField, NumberField, SelectField, TextField } from 'payload';
 
 /**
  * Wiederkehrende Felder des Backends. Beschriftungen und Hilfetexte sind für
@@ -125,8 +125,14 @@ export const FORMATE: SelectField['options'] = [
 /**
  * Bildplatz: beschreibt das Motiv und nimmt optional ein echtes Foto auf.
  * Ohne Foto zeigt die Seite eine passende Grafik oder einen ruhigen Platzhalter.
+ * `ablage`: öffentliche `medien` oder private `interne-dateien` (Nachweise).
  */
-export function bildFeld(name: string, label: string, standardFormat = '16/9'): GroupField {
+export function bildFeld(
+  name: string,
+  label: string,
+  standardFormat = '16/9',
+  ablage: Extract<CollectionSlug, 'medien' | 'interne-dateien'> = 'medien',
+): GroupField {
   return {
     name,
     type: 'group',
@@ -154,7 +160,7 @@ export function bildFeld(name: string, label: string, standardFormat = '16/9'): 
       {
         name: 'bild',
         type: 'upload',
-        relationTo: 'medien',
+        relationTo: ablage,
         label: 'Foto (optional)',
         admin: { description: 'Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.' },
       },
@@ -208,6 +214,37 @@ export function seoFeld(): GroupField {
         defaultValue: false,
       },
       bildFeld('socialBild', 'Vorschaubild für soziale Netzwerke'),
+    ],
+  };
+}
+
+/**
+ * Angaben nach der EU-Produktsicherheitsverordnung (GPSR) für Online-Angebote:
+ * Hersteller mit Post- und elektronischer Anschrift, eine Kennung zur
+ * Identifizierung und, falls nötig, Warn- und Sicherheitshinweise.
+ */
+export function gpsrFeld(): GroupField {
+  return {
+    name: 'gpsr',
+    type: 'group',
+    label: 'Produktsicherheit (GPSR)',
+    admin: {
+      description:
+        'Pflichtangaben im Online-Handel: Hersteller (Name, Postanschrift, E-Mail oder Website) und eine '
+        + 'Kennung (Typ, Charge oder Artikelnummer). Sicherheitshinweise nur, wenn nötig.',
+    },
+    fields: [
+      { name: 'herstellerName', type: 'text', label: 'Hersteller' },
+      { name: 'herstellerAnschrift', type: 'textarea', label: 'Postanschrift des Herstellers' },
+      {
+        type: 'row',
+        fields: [
+          { name: 'herstellerEmail', type: 'text', label: 'E-Mail des Herstellers', admin: { width: '50%' } },
+          { name: 'herstellerWebsite', type: 'text', label: 'Website des Herstellers', admin: { width: '50%' } },
+        ],
+      },
+      { name: 'produktkennung', type: 'text', label: 'Produktkennung', admin: { description: 'Typ-, Chargen- oder Artikelnummer.' } },
+      { name: 'sicherheitshinweise', type: 'textarea', label: 'Warn- und Sicherheitshinweise' },
     ],
   };
 }

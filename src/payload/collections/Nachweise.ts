@@ -68,7 +68,8 @@ export const Nachweise: CollectionConfig = {
         },
       ],
     },
-    bildFeld('bild', 'Foto des Nachweises', '4/3'),
+    // Privat: Nachweis-Fotos zeigen Namen und Urkunden und sind nie öffentlich abrufbar.
+    bildFeld('bild', 'Foto des Nachweises', '4/3', 'interne-dateien'),
     {
       name: 'oeffentlich',
       type: 'checkbox',
