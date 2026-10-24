@@ -1,0 +1,2 @@
+Project is utilizing Next.js 16+, React 19.2+, TypeScript 5.5+ and Tailwind v4.
+Architecture mapped, 5-phase strict execution ready. OKLCH color space applied.

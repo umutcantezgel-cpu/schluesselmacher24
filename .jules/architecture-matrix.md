@@ -1,0 +1,57 @@
+# Architecture Matrix
+
+| Route | Source File | Current Words | Target Words | Module | Status |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 99 | 850 | InteractiveMatrixModule | PENDING_BUILDER |
+| /api/[...slug] | src/app/(payload)/api/[...slug]/route.ts | 70 | 850 | InteractiveMatrixModule | PENDING_BUILDER |
+| /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | 72 | 850 | InteractiveMatrixModule | PENDING_BUILDER |
+| /api/kunden-upload | src/app/(site)/api/kunden-upload/route.ts | 704 | 1304 | InteractiveMatrixModule | PENDING_BUILDER |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 1160 | 1760 | InteractiveMatrixModule | PENDING_BUILDER |
+| /artikel | src/app/(site)/artikel/page.tsx | 807 | 1407 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 521 | 1121 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1121 | 1721 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 1091 | 1691 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1133 | 1733 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 2004 | 2604 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 1209 | 1809 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 779 | 1379 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1189 | 1789 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2496 | 3096 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1222 | 1822 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1042 | 1642 | InteractiveMatrixModule | PENDING_BUILDER |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1207 | 1807 | InteractiveMatrixModule | PENDING_BUILDER |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1389 | 1989 | InteractiveMatrixModule | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 406 | 1006 | InteractiveMatrixModule | PENDING_BUILDER |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2982 | 3582 | InteractiveMatrixModule | PENDING_BUILDER |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 316 | 916 | InteractiveMatrixModule | PENDING_BUILDER |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 2564 | 3164 | InteractiveMatrixModule | PENDING_BUILDER |
+| /kasse | src/app/(site)/kasse/page.tsx | 417 | 1017 | InteractiveMatrixModule | PENDING_BUILDER |
+| / | src/app/(site)/page.tsx | 2210 | 2810 | InteractiveMatrixModule | PENDING_BUILDER |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 775 | 1375 | InteractiveMatrixModule | PENDING_BUILDER |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 317 | 917 | InteractiveMatrixModule | PENDING_BUILDER |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 415 | 1015 | InteractiveMatrixModule | PENDING_BUILDER |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 227 | 850 | InteractiveMatrixModule | PENDING_BUILDER |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 730 | 1330 | InteractiveMatrixModule | PENDING_BUILDER |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 247 | 850 | InteractiveMatrixModule | PENDING_BUILDER |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 515 | 1115 | InteractiveMatrixModule | PENDING_BUILDER |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 369 | 969 | InteractiveMatrixModule | PENDING_BUILDER |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 379 | 979 | InteractiveMatrixModule | PENDING_BUILDER |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 2166 | 2766 | InteractiveMatrixModule | PENDING_BUILDER |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 1040 | 1640 | InteractiveMatrixModule | PENDING_BUILDER |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 738 | 1338 | InteractiveMatrixModule | PENDING_BUILDER |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 235 | 850 | InteractiveMatrixModule | PENDING_BUILDER |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 2203 | 2803 | InteractiveMatrixModule | PENDING_BUILDER |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 153 | 850 | InteractiveMatrixModule | PENDING_BUILDER |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 622 | 1222 | InteractiveMatrixModule | PENDING_BUILDER |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 2247 | 2847 | InteractiveMatrixModule | PENDING_BUILDER |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 109 | 850 | InteractiveMatrixModule | PENDING_BUILDER |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 742 | 1342 | InteractiveMatrixModule | PENDING_BUILDER |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 729 | 1329 | InteractiveMatrixModule | PENDING_BUILDER |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1431 | 2031 | InteractiveMatrixModule | PENDING_BUILDER |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 378 | 978 | InteractiveMatrixModule | PENDING_BUILDER |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 617 | 1217 | InteractiveMatrixModule | PENDING_BUILDER |
+| /standorte | src/app/(site)/standorte/page.tsx | 306 | 906 | InteractiveMatrixModule | PENDING_BUILDER |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 523 | 1123 | InteractiveMatrixModule | PENDING_BUILDER |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 2271 | 2871 | InteractiveMatrixModule | PENDING_BUILDER |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 342 | 942 | InteractiveMatrixModule | PENDING_BUILDER |
+| /llms.txt | src/app/llms.txt/route.ts | 145 | 850 | InteractiveMatrixModule | PENDING_BUILDER |

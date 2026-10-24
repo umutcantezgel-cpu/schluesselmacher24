@@ -1,0 +1,1234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-24T11:11:40.549Z",
+  "total_existing_routes": 53,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/admin/[[...segments]]",
+      "source_file": "src/app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-admin-...segments-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/api/[...slug]",
+      "source_file": "src/app/(payload)/api/[...slug]/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-api-...slug-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/[...unbekannt]",
+      "source_file": "src/app/(site)/[...unbekannt]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-...unbekannt-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/api/kunden-upload",
+      "source_file": "src/app/(site)/api/kunden-upload/route.ts",
+      "target_word_count": 1304,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-api-kunden-upload-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1760,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-artikel-slug-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1407,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-artikel-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1121,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-anfrage-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1721,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-fahrzeugoeffnung-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1691,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-funkschluessel-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1733,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-kopieren-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 2604,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-marken-make-model-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1809,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-marken-make-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1379,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-marken-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1789,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-nachmachen-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 3096,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1822,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-programmieren-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1642,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-schluesselbart-fraesen-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1807,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-autoschluessel-smart-key-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1989,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-bestellung-id-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1006,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-elektronische-zutrittsloesungen-konfigurator-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3582,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-elektronische-zutrittsloesungen-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 916,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-gleichschliessende-zylinder-konfigurator-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3164,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-gleichschliessende-zylinder-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 1017,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-kasse-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 2810,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/--matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1375,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-ratgeber-slug-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 917,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-ratgeber-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 1015,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-rechtliches-agb-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-rechtliches-cookie-einstellungen-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1330,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-rechtliches-datenschutz-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-rechtliches-impressum-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1115,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-rechtliches-versand-und-zahlung-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 969,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-rechtliches-widerruf-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 979,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-schliessanlagen-konfigurator-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2766,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-schliessanlagen-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1640,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-schluessel-nach-code-slug-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1338,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-schluessel-nach-code-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-schluessel-nach-vorlage-anfrage-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2803,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-schluessel-nach-vorlage-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-service-und-termin-anfrage-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1222,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-service-und-termin-kontakt-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2847,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-service-und-termin-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-service-und-termin-terminstatus-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1342,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-service-und-termin-vor-ort-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1329,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-sicherheitstechnik-slug-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 2031,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-sicherheitstechnik-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 978,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-sicherheitstechnik-sicherheitscheck-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1217,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-standorte-city-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 906,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-standorte-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1123,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-tuer-und-schliesstechnik-slug-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2871,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-tuer-und-schliesstechnik-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 942,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-warenkorb-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 1,
+      "route_path": "/llms.txt",
+      "source_file": "src/app/llms.txt/route.ts",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende architektonische Prozessanalyse",
+        "Detaillierte Fach-FAQ und Fallbeispiele",
+        "Spezifische Methoden- und Werkzeugübersicht"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InteractiveMatrixModule",
+        "target_file": "src/components/matrix/-llms.txt-matrix.tsx",
+        "action_file": "src/lib/actions/interactive-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
