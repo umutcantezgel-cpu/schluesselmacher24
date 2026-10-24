@@ -263,10 +263,22 @@ export const NAV_AREAS: NavArea[] = [
 /** Einstiege auf der Startseite — dieselbe Reihenfolge wie die Navigation. */
 export const QUICK_ENTRIES = NAV_AREAS.filter((a) => a.key !== 'service-und-termin');
 
+/** Widerrufsbutton (Pflicht seit 19.06.2026): führt zum Formular für den Online-Widerruf. */
+export const WIDERRUF_ERKLAEREN_HREF = '/rechtliches/widerruf/erklaeren';
+
+export const WIDERRUF_BUTTON: NavLink = { href: WIDERRUF_ERKLAEREN_HREF, label: 'Vertrag widerrufen' };
+
+/** Link zum Widerrufsformular, auf Wunsch mit vorbelegter Vorgangsnummer (etwa von der Bestellseite). */
+export function widerrufErklaerenHref(vorgangsnummer?: string): string {
+  const nummer = vorgangsnummer?.trim();
+  return nummer ? `${WIDERRUF_ERKLAEREN_HREF}?nummer=${encodeURIComponent(nummer)}` : WIDERRUF_ERKLAEREN_HREF;
+}
+
 export const FOOTER_LEGAL: NavLink[] = [
   { href: '/rechtliches/impressum', label: 'Impressum' },
   { href: '/rechtliches/datenschutz', label: 'Datenschutz' },
   { href: '/rechtliches/widerruf', label: 'Widerruf und Rückgabe' },
+  WIDERRUF_BUTTON,
   { href: '/rechtliches/versand-und-zahlung', label: 'Zahlung und Versand' },
   { href: '/rechtliches/agb', label: 'AGB' },
   { href: '/rechtliches/cookie-einstellungen', label: 'Cookie-Einstellungen' },

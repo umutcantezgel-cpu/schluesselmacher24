@@ -32,6 +32,8 @@ export const LIMITS = {
   status: { name: 'status', limit: 20, windowMs: 10 * 60 * 1000 },
   // Großzügiger: ein Formular kann ein Dutzend Fotos enthalten, dazu Wiederholungen.
   upload: { name: 'upload', limit: 30, windowMs: 10 * 60 * 1000 },
+  // Widerrufsbutton: wenige echte Erklärungen, aber kein Durchprobieren von Nummern.
+  widerruf: { name: 'widerruf', limit: 5, windowMs: 10 * 60 * 1000 },
 } satisfies Record<string, RateLimitRule>;
 
 export const RATE_LIMIT_MESSAGE =
