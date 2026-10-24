@@ -277,6 +277,8 @@ export function Assistent({
     summary: SummarySection[];
     notices: string[];
     redirectUrl?: string;
+    /** Bis wann der Termin ohne Anzahlung reserviert bleibt (ISO). */
+    reserviertBis?: string;
   } | null>(null);
 
   /* Preis und Zeitfenster werden über einen Schlüssel an die Eingaben
@@ -802,8 +804,12 @@ export function Assistent({
           summary,
           notices: result.notices,
           redirectUrl: result.redirectUrl,
+          // Stripe hält die Zahlungsseite 31 Minuten offen — angezeigt wird die sichere Untergrenze.
+          reserviertBis: result.redirectUrl ? new Date(Date.now() + 30 * 60 * 1000).toISOString() : undefined,
         });
         clearFlow(FLOW_ID);
+        // Wie in der Kasse: sofort zur Zahlungsseite. Ohne Anzahlung wird das Zeitfenster wieder frei.
+        if (result.redirectUrl) window.location.assign(result.redirectUrl);
       } else {
         setSubmitError(
           result.error ?? 'Ihre Anfrage konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.',
@@ -825,6 +831,7 @@ export function Assistent({
         summary={done.summary}
         notices={done.notices}
         redirectUrl={done.redirectUrl}
+        reserviertBis={done.reserviertBis}
       />
     );
   }

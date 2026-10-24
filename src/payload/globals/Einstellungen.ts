@@ -1,7 +1,12 @@
-import { ValidationError, type GlobalBeforeValidateHook, type GlobalConfig } from 'payload';
+import { ValidationError, type Endpoint, type GlobalBeforeValidateHook, type GlobalConfig } from 'payload';
 
+import { einstellungenZuSeite } from '../../lib/data/payload-mapping';
+import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '../../lib/mail/versand';
+import { testmail } from '../../lib/mail/vorlagen/testmail';
 import { enthaeltPlatzhalter, istPlatzhalter } from '../../lib/platzhalter';
-import { istInhaber, istTeam } from '../access/rollen';
+import { mailKonfiguration } from '../../lib/umgebung';
+import type { Einstellungen as EinstellungenDoc } from '../../payload-types';
+import { hatRolle, istInhaber, istTeam } from '../access/rollen';
 import { VERSANDKLASSEN, euroFeld, zeitfensterFeld } from '../fields/gemeinsam';
 import { nachGlobalAenderung } from '../hooks/revalidate';
 
@@ -118,12 +123,45 @@ const EIGENTEXT =
   'Wenn gefüllt, ersetzt dieser Text den eingebauten Entwurf '
   + '(z. B. Text vom Anwalt oder Rechtstexte-Dienst einfügen).';
 
+/**
+ * POST /api/globals/einstellungen/testmail — „Testmail an mich“ (nur Inhaber).
+ * Empfänger ist immer die Adresse des angemeldeten Benutzers.
+ */
+const testmailSenden: Endpoint = {
+  path: '/testmail',
+  method: 'post',
+  handler: async (req) => {
+    const antwort = (status: number, body: Record<string, unknown>) =>
+      Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
+    if (!req.user) return antwort(401, { error: 'Bitte melden Sie sich an.' });
+    if (!hatRolle(req.user, 'inhaber')) return antwort(403, { error: 'Nur für Inhaber.' });
+    const an = (req.user as { email?: string }).email;
+    if (!an) return antwort(400, { error: 'Ihr Konto hat keine E-Mail-Adresse.' });
+    if (!mailKonfiguration()) return antwort(409, { error: 'Der Mailversand ist nicht eingerichtet.' });
+
+    const doc = (await req.payload.findGlobal({ slug: 'einstellungen', depth: 0, overrideAccess: true, req })) as EinstellungenDoc;
+    const settings = einstellungenZuSeite(doc);
+    const jetzt = new Date().toISOString();
+    const eintrag = await sendeVorlage({
+      art: 'sonstige',
+      an,
+      inhalt: testmail({ kontext: vorlagenKontext(settings), jetzt }),
+      antwortAn: antwortAdresse(settings.company),
+      idempotenzSchluessel: idempotenzSchluessel('testmail', 'sonstige', String(Date.parse(jetzt))),
+    });
+    return eintrag.result === 'gesendet'
+      ? antwort(200, { ok: true, meldung: `Testmail an ${an} gesendet.` })
+      : antwort(502, { ok: false, error: `Testmail nicht gesendet (${eintrag.error ?? eintrag.result}).` });
+  },
+};
+
 export const Einstellungen: GlobalConfig = {
   slug: 'einstellungen',
   label: 'Einstellungen',
   admin: { group: 'Verwaltung' },
   access: { read: istTeam, update: istInhaber },
   hooks: { beforeValidate: [firmendatenPruefen], afterChange: [nachGlobalAenderung] },
+  endpoints: [testmailSenden],
   fields: [
     {
       type: 'tabs',
@@ -301,6 +339,13 @@ export const Einstellungen: GlobalConfig = {
             { name: 'widerruf', type: 'richText', label: 'Widerrufsbelehrung', admin: { description: EIGENTEXT } },
             { name: 'datenschutz', type: 'richText', label: 'Datenschutzerklärung', admin: { description: EIGENTEXT } },
             { name: 'versandUndZahlung', type: 'richText', label: 'Versand und Zahlung', admin: { description: EIGENTEXT } },
+          ],
+        },
+        {
+          label: 'Anbindungen',
+          description: 'Stand von Online-Zahlung, Mailversand und Dateiablage. Nur Anzeige — nichts zu speichern.',
+          fields: [
+            { name: 'anbindungen', type: 'ui', admin: { components: { Field: '/payload/components/Anbindungen#Anbindungen' } } },
           ],
         },
       ],

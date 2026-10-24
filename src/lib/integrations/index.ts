@@ -4,10 +4,12 @@
    Bucket). Ohne Zugangsdaten bleiben Zahlung und Mailversand inaktiv; die
    Dateiablage nutzt dann — wo erlaubt — die eigene Festplatte. Zugangsdaten
    stehen nur in Umgebungsvariablen (`src/lib/umgebung.ts`), nie im Code.
-   Den Stand liefert `integrationStatuses()`; eine Anzeige im Backend gibt es
-   bisher nicht.
+   Den Stand liefert `integrationStatuses()`; das Backend zeigt ihn unter
+   Einstellungen → Anbindungen (mit „Testmail an mich“).
    ========================================================================== */
 
+import { sendeUeberResend } from '@/lib/mail/transport-resend';
+import type { AppointmentInfo, OrderLine, RecordKind } from '@/lib/types';
 import {
   dateiablage,
   dateisystemSchreibbar,
@@ -69,10 +71,21 @@ export function paymentStatus(): IntegrationStatus {
 
 export interface PaymentIntent {
   recordId: string;
+  /** Vorgangsnummer, z. B. „SM24-T-2026-0001“. */
+  reference: string;
+  recordKind: RecordKind;
   amountCents: number;
   scope: 'anzahlung' | 'gesamt';
+  /** Vom Server gebildet, nie aus dem Browser. */
   description: string;
-  returnUrl: string;
+  /** Link-Schlüssel für Rückkehr und Abbruch (`/bestellung/<id>?t=…`). */
+  accessToken: string;
+  customerEmail: string;
+  /** Bestellung: festgeschriebene Positionen. Nur `label`, Menge und Preis gehen an den Anbieter. */
+  lines?: OrderLine[];
+  shipping?: { label: string; cents: number };
+  /** Termin: für die Bezeichnung der Anzahlung. */
+  appointment?: AppointmentInfo;
 }
 
 export interface PaymentResult {
@@ -85,14 +98,17 @@ export interface PaymentResult {
   /** Wohin der Kunde zum Bezahlen geschickt wird, sobald angebunden. */
   redirectUrl?: string;
   message: string;
+  /** Hinweis fürs Team (interne Notiz), nie für den Kunden. */
+  internalNote?: string;
 }
 
 /**
  * Startet eine Zahlung.
  *
- * Ohne hinterlegten Anbieter wird der Vorgang als „offen“ angelegt. Die
- * Anbindung eines Anbieters erfolgt genau an dieser Stelle — der restliche
- * Ablauf bleibt unverändert.
+ * Ohne hinterlegten Anbieter wird der Vorgang als „offen“ angelegt (ohne
+ * `redirectUrl`). Mit Stripe entsteht eine Checkout-Sitzung; der Kunde wird
+ * zu `redirectUrl` geschickt. Scheitert Stripe, wirft die Funktion — der
+ * Aufrufer meldet das als Hinweis, der Vorgang bleibt gespeichert.
  */
 export async function createPayment(intent: PaymentIntent): Promise<PaymentResult> {
   if (!paymentStatus().configured) {
@@ -103,12 +119,9 @@ export async function createPayment(intent: PaymentIntent): Promise<PaymentResul
         + 'wir melden uns mit den Zahlungsinformationen.',
     };
   }
-
-  // Anbindung des gewählten Anbieters hier ergänzen.
-  throw new Error(
-    `Zahlungsanbieter "${process.env.PAYMENT_PROVIDER}" ist konfiguriert, aber noch nicht implementiert. `
-      + `Bitte die Anbindung in src/lib/integrations/index.ts ergänzen. Vorgang: ${intent.recordId}`,
-  );
+  // Erst bei Bedarf laden: Das Stripe-Paket braucht nur, wer bezahlt.
+  const { starteCheckout } = await import('./stripe');
+  return starteCheckout(intent);
 }
 
 /* ---------- Mailversand -------------------------------------------------- */
@@ -133,34 +146,54 @@ export function mailStatus(): IntegrationStatus {
 }
 
 export interface MailMessage {
-  to: string;
+  to: string | string[];
   subject: string;
+  /** Reiner Text — Rückfall, wenn `text` fehlt. */
   body: string;
   /** Interner Verweis auf den Vorgang. */
   recordId?: string;
+  html?: string;
+  text?: string;
+  replyTo?: string;
+  /** Schlagworte für die Auswertung beim Anbieter. */
+  tags?: Record<string, string>;
+  /** Schützt vor doppeltem Versand (`<umgebung>-<nummer>-<art>`). */
+  idempotencyKey?: string;
 }
 
 export interface MailResult {
   sent: boolean;
   message: string;
+  /** Kennung beim Mailanbieter. */
+  providerId?: string;
 }
 
-/** Versendet eine Bestätigung. Ohne Anbindung passiert bewusst nichts. */
+/**
+ * Versendet eine Mail über Resend. Ohne Anbindung passiert bewusst nichts.
+ * Wirft nie — ein Mailfehler bricht keinen Ablauf ab.
+ */
 export async function sendMail(message: MailMessage): Promise<MailResult> {
   if (!mailStatus().configured) {
     return {
       sent: false,
-      message:
-        'Kein Mailversand angebunden. Die Bestätigung an '
-        + `${message.to} wurde nicht versendet und muss im Backend ausgelöst werden.`,
+      message: 'Kein Mailversand angebunden. Die Mail wurde nicht versendet und muss im Backend ausgelöst werden.',
     };
   }
-
-  // Anbindung des gewählten Anbieters hier ergänzen.
-  throw new Error(
-    `Mailanbieter "${process.env.MAIL_PROVIDER}" ist konfiguriert, aber noch nicht implementiert. `
-      + 'Bitte die Anbindung in src/lib/integrations/index.ts ergänzen.',
-  );
+  const ergebnis = await sendeUeberResend({
+    an: message.to,
+    betreff: message.subject,
+    text: message.text ?? message.body,
+    html: message.html,
+    antwortAn: message.replyTo,
+    tags: message.tags,
+    idempotenzSchluessel: message.idempotencyKey,
+  });
+  const sent = ergebnis.status === 'gesendet' || ergebnis.status === 'moeglicherweise-gesendet';
+  return {
+    sent,
+    message: sent ? 'Mail versendet.' : `Mail nicht versendet (${ergebnis.fehler ?? ergebnis.status}).`,
+    ...(ergebnis.id ? { providerId: ergebnis.id } : {}),
+  };
 }
 
 /* ---------- Dateiablage für Uploads -------------------------------------- */

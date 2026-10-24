@@ -34,6 +34,9 @@ export const LIMITS = {
   status: { name: 'status', limit: 20, windowMs: 10 * 60 * 1000 },
   // Großzügiger: ein Formular kann ein Dutzend Fotos enthalten, dazu Wiederholungen.
   upload: { name: 'upload', limit: 30, windowMs: 10 * 60 * 1000 },
+  // Je Aufruf ein Abruf bei Stripe: „Jetzt bezahlen“ und Rückkehr von der Zahlungsseite.
+  zahlung: { name: 'zahlung', limit: 10, windowMs: 10 * 60 * 1000 },
+  rueckkehr: { name: 'rueckkehr', limit: 20, windowMs: 10 * 60 * 1000 },
 } satisfies Record<string, RateLimitRule>;
 
 export const RATE_LIMIT_MESSAGE =

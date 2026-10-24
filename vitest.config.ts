@@ -9,6 +9,8 @@ export default defineConfig({
     environment: 'node',
     globals: true,
     exclude: [...configDefaults.exclude, '.claude/**', 'src/**/*.db.test.ts'],
+    // Keine echten Mails, Zahlungen oder Bucket-Zugriffe aus Tests.
+    setupFiles: ['src/test/setup-umgebung.ts'],
   },
   resolve: {
     alias: {

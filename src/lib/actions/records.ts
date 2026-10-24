@@ -99,7 +99,8 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     payment = {
       scope: 'anzahlung',
       amountCents: verified.quote.depositCents,
-      description: data.payment?.description?.trim() || 'Anzahlung Autoschlüssel-Termin',
+      // Vom Server gebildet — der Text aus dem Browser geht nirgends hin.
+      description: 'Anzahlung Autoschlüssel-Termin',
     };
   }
 
