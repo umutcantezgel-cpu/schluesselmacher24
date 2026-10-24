@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Profillinie } from '@/components/visual/profillinie';
 import { getSettings } from '@/lib/data';
-import { FOOTER_CONTENT, FOOTER_LEGAL, NAV_AREAS, type NavLink } from '@/lib/navigation';
+import { FOOTER_CONTENT, FOOTER_LEGAL, NAV_AREAS, WIDERRUF_BUTTON, type NavLink } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
+import { anbieterZeilen, kontakt, standort } from '@/lib/rechtliches/firma';
+import { telefonLink } from '@/lib/telefon';
 
 /** Shop-Seiten ohne eigenen Leistungsbereich — stehen im Anschluss an die Bereiche. */
 const FOOTER_SHOP: NavLink[] = [{ href: '/artikel', label: 'Artikel' }];
@@ -22,6 +24,11 @@ const linkKlasse =
 export async function SiteFooter() {
   const settings = await getSettings();
   const { company } = settings;
+  // Firmenname, Inhaber und Sitz ohne Land — das Land steht im Fuß nicht.
+  const anbieter = anbieterZeilen(company).filter((zeile) => zeile !== company.country);
+  const kontaktDaten = kontakt(company);
+  const telefonHref = telefonLink(kontaktDaten.telefon);
+  const werkstatt = standort(company);
 
   return (
     <footer className="bg-surface-sunken pb-safe-nav">
@@ -53,24 +60,47 @@ export async function SiteFooter() {
                 </p>
               )
             ) : (
-              <address className="mt-6 text-small not-italic text-foreground-muted">
-                {company.legalName}
-                <br />
-                {company.street}
-                <br />
-                {company.postalCode} {company.city}
-                <br />
-                <a
-                  href={`tel:${company.phone}`}
-                  className="font-mono tabular-nums transition-colors duration-quick hover:text-primary"
-                >
-                  {company.phone}
-                </a>
-                <br />
-                <a href={`mailto:${company.email}`} className="transition-colors duration-quick hover:text-primary">
-                  {company.email}
-                </a>
-              </address>
+              <>
+                <address className="mt-6 text-small not-italic text-foreground-muted">
+                  {anbieter.map((zeile) => (
+                    <span key={zeile} className="block">
+                      {zeile}
+                    </span>
+                  ))}
+                  {kontaktDaten.telefon && (
+                    <span className="block">
+                      {telefonHref ? (
+                        <a
+                          href={telefonHref}
+                          className="font-mono tabular-nums transition-colors duration-quick hover:text-primary"
+                        >
+                          {kontaktDaten.telefon}
+                        </a>
+                      ) : (
+                        <span className="font-mono tabular-nums">{kontaktDaten.telefon}</span>
+                      )}
+                    </span>
+                  )}
+                  {kontaktDaten.email && (
+                    <a
+                      href={`mailto:${kontaktDaten.email}`}
+                      className="block transition-colors duration-quick hover:text-primary"
+                    >
+                      {kontaktDaten.email}
+                    </a>
+                  )}
+                </address>
+                {werkstatt && (
+                  <div className="mt-6">
+                    <Feldtitel>{werkstatt.label}</Feldtitel>
+                    <address className="text-small not-italic text-foreground-muted">
+                      {werkstatt.street}
+                      <br />
+                      {werkstatt.postalCode} {werkstatt.city}
+                    </address>
+                  </div>
+                )}
+              </>
             )}
           </div>
 
@@ -124,7 +154,15 @@ export async function SiteFooter() {
               <ul>
                 {FOOTER_LEGAL.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className={linkKlasse}>
+                    <Link
+                      href={link.href}
+                      className={
+                        // Widerrufsbutton gut sichtbar hervorgehoben (Pflicht seit 19.06.2026)
+                        link.href === WIDERRUF_BUTTON.href
+                          ? `${linkKlasse} font-semibold text-foreground underline decoration-border-strong underline-offset-2`
+                          : linkKlasse
+                      }
+                    >
                       {link.label}
                     </Link>
                   </li>

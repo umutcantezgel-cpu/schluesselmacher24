@@ -7,6 +7,7 @@ import { useHydrated } from '@/lib/client-state';
 import { useCartStore } from '@/lib/store/cart';
 import { availableShipping, cartTotals, priceCylinderOrder, type CylinderPriceBreakdown, unitPriceForCodeLine } from '@/lib/pricing';
 import { formatCents } from '@/lib/format';
+import { PreisHinweis } from '@/components/recht/preis-hinweis';
 import { zylinderZeilen } from '@/lib/cylinder-summary';
 import { istPlatzhalter } from '@/lib/platzhalter';
 import type {
@@ -522,6 +523,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                 </dd>
               </div>
             </dl>
+            <PreisHinweis variante="mit-versand" className="mt-3" />
 
             <div className="mt-5">
               {gewaehlteVersandart && !nichtVerfuegbar ? (

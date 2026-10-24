@@ -16,6 +16,7 @@ import { IconGleichschliessendeZylinder } from '@/components/visual/icons/gleich
 import { IconSchluesselNachCode } from '@/components/visual/icons/schluessel-nach-code';
 import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
 import { IconZahlung } from '@/components/visual/icons/zahlung';
+import { PreisHinweis } from '@/components/recht/preis-hinweis';
 
 import { ArtikelListe, type ListenArtikel } from './artikel-liste';
 
@@ -154,7 +155,8 @@ export default async function ArtikelPage() {
                 }
               />
             </div>
-            <ArtikelListe articles={liste} hinweis={beispielHinweis} className="mt-8" />
+            <PreisHinweis alle className="mt-4" />
+            <ArtikelListe articles={liste} hinweis={beispielHinweis} className="mt-6" />
           </>
         ) : (
           <Card variant="muted">
