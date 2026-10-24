@@ -196,9 +196,12 @@ export interface Vorgaenge {
     | 'versendet'
     | 'abgeschlossen'
     | 'storniert';
+  /**
+   * Mail geht bei „Wartet auf Kunde“, „Terminiert“, „Versendet“ und „Storniert“. Haken entfernen, um diesen einen Wechsel still zu speichern.
+   */
   kundeInformieren?: boolean | null;
   /**
-   * Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen.
+   * Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen und danach geleert.
    */
   nachrichtAnKunde?: string | null;
   zusammenfassung?:
@@ -276,8 +279,14 @@ export interface Vorgaenge {
   zahlung?: {
     umfang?: ('anzahlung' | 'gesamt') | null;
     betragCent?: number | null;
+    /**
+     * Von Hand auf „Bezahlt“: Datum und Notiz setzen sich, der Kunde erhält eine Mail.
+     */
     status?: ('offen' | 'bezahlt' | 'fehlgeschlagen' | 'erstattet') | null;
     bezahltAm?: string | null;
+    /**
+     * Kennung der Zahlung (pi_…), gesetzt beim Zahlungseingang.
+     */
     anbieterRef?: string | null;
     checkoutSitzung?: string | null;
     erstattetCent?: number | null;

@@ -2,6 +2,8 @@ import type { CollectionConfig, Field } from 'payload';
 
 import { istInhaber, istTeam } from '../access/rollen';
 import { BEREICHE, PROZESSE } from '../fields/gemeinsam';
+import { bestaetigungSenden } from '../hooks/bestaetigung-senden';
+import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-benachrichtigen';
 
 export const VORGANG_STATUS = [
   { label: 'Neu', value: 'neu' },
@@ -96,6 +98,12 @@ export const Vorgaenge: CollectionConfig = {
     update: istTeam,
     delete: istInhaber,
   },
+  hooks: {
+    // Statusmails, Zahlung von Hand, offene Zahlungsseite beim Stornieren beenden.
+    beforeChange: [vorgangVorAenderung],
+    afterChange: [vorgangNachAenderung],
+  },
+  endpoints: [bestaetigungSenden],
   fields: [
     {
       type: 'row',
@@ -133,7 +141,12 @@ export const Vorgaenge: CollectionConfig = {
       type: 'checkbox',
       label: 'Bei Statuswechsel Kunden per E-Mail informieren',
       defaultValue: true,
-      admin: { position: 'sidebar' },
+      admin: {
+        position: 'sidebar',
+        description:
+          'Mail geht bei „Wartet auf Kunde“, „Terminiert“, „Versendet“ und „Storniert“. '
+          + 'Haken entfernen, um diesen einen Wechsel still zu speichern.',
+      },
     },
     {
       name: 'nachrichtAnKunde',
@@ -141,8 +154,13 @@ export const Vorgaenge: CollectionConfig = {
       label: 'Nachricht an den Kunden',
       admin: {
         position: 'sidebar',
-        description: 'Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen.',
+        description: 'Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen und danach geleert.',
       },
+    },
+    {
+      name: 'bestaetigungSenden',
+      type: 'ui',
+      admin: { position: 'sidebar', components: { Field: '/payload/components/BestaetigungSenden#BestaetigungSenden' } },
     },
     {
       type: 'tabs',
@@ -396,12 +414,23 @@ export const Vorgaenge: CollectionConfig = {
                         { label: 'Fehlgeschlagen', value: 'fehlgeschlagen' },
                         { label: 'Erstattet', value: 'erstattet' },
                       ],
-                      admin: { width: '25%' },
+                      admin: {
+                        width: '25%',
+                        description: 'Von Hand auf „Bezahlt“: Datum und Notiz setzen sich, der Kunde erhält eine Mail.',
+                      },
                     },
                     { name: 'bezahltAm', type: 'date', label: 'Bezahlt am', admin: { width: '25%', ...nurLesen }, ...systemFeld },
                   ],
                 },
-                { name: 'anbieterRef', type: 'text', label: 'Zahlungskennung (Stripe)', index: true, admin: nurLesen, ...systemFeld },
+                {
+                  name: 'anbieterRef',
+                  type: 'text',
+                  label: 'Zahlungskennung (Stripe)',
+                  index: true,
+                  admin: { ...nurLesen, description: 'Kennung der Zahlung (pi_…), gesetzt beim Zahlungseingang.' },
+                  ...systemFeld,
+                },
+                { name: 'stripeLink', type: 'ui', admin: { components: { Field: '/payload/components/StripeLink#StripeLink' } } },
                 { name: 'checkoutSitzung', type: 'text', label: 'Stripe-Checkout-Sitzung', index: true, admin: nurLesen, ...systemFeld },
                 {
                   type: 'row',
