@@ -14,6 +14,7 @@ import { BereichIcon } from '@/components/visual/bereich-icon';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
 import { IconAlarmtechnik } from '@/components/visual/icons/alarmtechnik';
 import { IconAussenhautsicherung } from '@/components/visual/icons/aussenhautsicherung';
 import { IconKombinierteKonzepte } from '@/components/visual/icons/kombinierte-konzepte';
@@ -21,6 +22,9 @@ import { IconMechanischerSchutz } from '@/components/visual/icons/mechanischer-s
 import { IconPanikAlarmtaster } from '@/components/visual/icons/panik-alarmtaster';
 import { IconSmarteFunktionen } from '@/components/visual/icons/smarte-funktionen';
 import { IconVideoueberwachung } from '@/components/visual/icons/videoueberwachung';
+
+import { SecurityScoreCalculator } from '@/components/calculator/security-score-calculator';
+
 
 const ROUTE = 'sicherheitstechnik';
 
@@ -92,7 +96,21 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
+  void resolvedParams;
+  void resolvedSearch;
+
+
+
+
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -204,6 +222,108 @@ export default async function SicherheitstechnikPage() {
         </div>
       </Section>
 
+
+      {/* 01B Deep Content: Architektonische Methodik und Matrix */}
+      <Section tone="muted">
+        <SectionHeading
+          nummer="01.5"
+          eyebrow="Architektonische Methodik"
+          title="Unsere Philosophie der integralen Sicherheitstechnik"
+          lead="Ein tiefgreifender Blick auf unsere Planungsprinzipien und die technische Umsetzung moderner Sicherheitskonzepte."
+        />
+        <div className="mt-12 prose prose-lg max-w-4xl text-[oklch(0.32_0.02_260)] leading-relaxed">
+          <p>
+            Moderne Sicherheitstechnik ist weit mehr als die bloße Aneinanderreihung von Kameras und Alarmmeldern.
+            Sie ist eine hochkomplexe, integrale Architektur, die physische Barrieren, elektronische Sensorik und
+            intelligente Steuerungslogik nahtlos miteinander verwebt. Unser Ansatz beruht auf dem Prinzip der
+            &quot;Defense in Depth&quot; (Tiefenverteidigung), bei der mehrere unabhängige Schutzschichten kombiniert werden,
+            um Single Points of Failure zu eliminieren und eine robuste Gesamtsicherheit zu gewährleisten.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-10 mb-4">Die Fundamente: Mechanik trifft auf Mechatronik</h3>
+          <p>
+            Die Basis jeder effektiven Sicherheitsarchitektur ist die mechanische Widerstandskraft. Zylinder,
+            Einsteckschlösser, Schutzbeschläge und massive Schließbleche bilden die physische Hürde, die Zeit
+            und erheblichen Kraftaufwand erfordert, um überwunden zu werden. Ohne diesen mechanischen Grundschutz
+            degradiert jede elektronische Anlage zu einem reinen Meldesystem, das den Täter nicht aufhalten kann,
+            sondern lediglich seinen erfolgreichen Eindringversuch dokumentiert.
+          </p>
+          <p className="mt-4">
+            Wir setzen auf Hochsicherheitszylinder mit komplexen Profilen, die gegen Picking, Bumping und
+            Bohrangriffe zertifiziert sind. Die Evolution dieser Systeme führt uns zur Mechatronik: Hier wird die
+            robuste Mechanik mit mikroelektronischen Sperrelementen ergänzt. Ein Schlüssel muss nicht nur mechanisch
+            passen, sondern auch ein kryptographisch gesichertes Challenge-Response-Protokoll erfolgreich absolvieren,
+            bevor der Zylinderkern freigegeben wird. Dies ermöglicht ein hochgranulares Zutrittsmanagement, bei dem
+            Rechte zeitlich befristet und bei Schlüsselverlust sofort entzogen werden können.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-10 mb-4">Sensorik und Perimeterüberwachung</h3>
+          <p>
+            Die zweite Schicht unserer Architektur ist die elektronische Überwachung der Gebäudeaußenhaut
+            (Perimeterschutz). Moderne Gefahrenmeldeanlagen (GMA) nutzen ein Netzwerk aus heterogenen Sensoren,
+            um Anomalien frühzeitig zu detektieren. Dazu gehören magnetische Öffnungskontakte, die den Zustand von
+            Türen und Fenstern überwachen, Körperschallmelder zur Erkennung von Aufbruchversuchen und aktive
+            Infrarot-Lichtschranken zur Absicherung von Freiflächen.
+          </p>
+          <p className="mt-4">
+            Die Signalverarbeitung erfolgt heute durch intelligente Zentralen, die mithilfe heuristischer Algorithmen
+            zwischen echten Bedrohungen und Umweltfaktoren (wie Wetter oder Tieren) unterscheiden, um Fehlalarme
+            drastisch zu minimieren. Bei der Vernetzung setzen wir auf busbasierte Systeme oder stark verschlüsselte
+            Funkprotokolle (AES-128/256) mit bidirektionaler Kommunikation und Anti-Jamming-Funktionen, um die
+            Integrität der Signalwege jederzeit sicherzustellen.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-10 mb-4">Videoüberwachung und algorithmische Analyse</h3>
+          <p>
+            Videoüberwachungssysteme (CCTV) haben sich von passiven Aufzeichnungsgeräten zu aktiven Analysewerkzeugen
+            entwickelt. Moderne IP-Kameras liefern nicht nur hochauflösende Bilder (4K und darüber) selbst bei
+            extremen Lichtverhältnissen, sondern verfügen über integrierte Edge-Analytics.
+          </p>
+          <p className="mt-4">
+            Diese kamerabasierten Algorithmen können Line-Crossing-Detection, Loitering (Herumlungern) oder
+            Objektklassifizierungen autonom durchführen und bei definierten Ereignissen die Alarmanlage triggern
+            oder direkte Push-Benachrichtigungen versenden. Die Datenhaltung erfolgt DSGVO-konform auf verschlüsselten
+            NVRs (Network Video Recorders) oder hybriden Cloud-Lösungen, wobei wir streng auf die Einhaltung
+            von Löschfristen und Privacy-Masking achten.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)] mt-10 mb-4">Vergleichsmatrix: Sicherheitsstufen (EN 50131 / VdS)</h3>
+          <div className="overflow-x-auto mt-6">
+            <table className="w-full text-sm text-left border-collapse">
+              <thead className="bg-[oklch(0.968_0.004_260)] border-b border-[oklch(0.89_0.008_260/0.55)] text-[oklch(0.16_0.02_260)]">
+                <tr>
+                  <th className="p-4 font-semibold">Stufe</th>
+                  <th className="p-4 font-semibold">Täterprofil</th>
+                  <th className="p-4 font-semibold">Technischer Standard</th>
+                  <th className="p-4 font-semibold">Anwendungsbereich</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)]">
+                <tr>
+                  <td className="p-4 font-medium">Grad 1 (VdS Home)</td>
+                  <td className="p-4 text-[oklch(0.32_0.02_260)]">Gelegenheitstäter, wenig Vorwissen, einfache Werkzeuge.</td>
+                  <td className="p-4 text-[oklch(0.32_0.02_260)]">Einfache Funk-Alarmsysteme, grundlegender mechanischer Schutz.</td>
+                  <td className="p-4 text-[oklch(0.32_0.02_260)]">Wohnungen, kleine Einfamilienhäuser ohne besondere Werte.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium">Grad 2 (VdS A/B)</td>
+                  <td className="p-4 text-[oklch(0.32_0.02_260)]">Erfahrene Täter, spezielles Werkzeug, gewisse Planung.</td>
+                  <td className="p-4 text-[oklch(0.32_0.02_260)]">Überwachte Funk-/Bus-Systeme, zertifizierte Zylinder (Bohr-/Ziehschutz), Aufschaltung.</td>
+                  <td className="p-4 text-[oklch(0.32_0.02_260)]">Gewerbebetriebe, gehobene Privatobjekte.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium">Grad 3 (VdS C)</td>
+                  <td className="p-4 text-[oklch(0.32_0.02_260)]">Professionelle Banden, hohes Vorwissen, schweres Werkzeug.</td>
+                  <td className="p-4 text-[oklch(0.32_0.02_260)]">Kabelgebundene Bus-Systeme, redundante Übertragungswege, höchste Sabotagesicherheit.</td>
+                  <td className="p-4 text-[oklch(0.32_0.02_260)]">Juweliere, Banken, Hochrisikoobjekte.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </Section>
+
+
       {/* 02 Bereiche: Raster mit Haarlinien wie die Tür- und Schließtechnik */}
       <Section tone="muted">
         <SectionHeading
@@ -283,6 +403,15 @@ export default async function SicherheitstechnikPage() {
         </ul>
       </Section>
 
+
+      {/* Interaktiver Kalkulator */}
+      <Section id="score">
+        <div className="mx-auto max-w-4xl">
+          <SecurityScoreCalculator />
+        </div>
+      </Section>
+
+
       {/* 03 Recht und Verantwortung: Kasten mit Haarlinien */}
       <Section id="recht-und-verantwortung">
         <SectionHeading
@@ -340,6 +469,69 @@ export default async function SicherheitstechnikPage() {
           </div>
         </div>
       </Section>
+
+
+      {/* Umfassendes Fach-FAQ */}
+      <Section tone="muted">
+        <SectionHeading
+          nummer="05"
+          eyebrow="Expertenwissen"
+          title="Tiefgreifende Fragen & Antworten zur Sicherheitstechnik"
+          lead="Detaillierte technische Einblicke und Antworten auf komplexe Fragestellungen aus unserer täglichen Praxis."
+        />
+        <div className="mt-12 max-w-4xl space-y-6">
+          <details className="group border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] rounded-xl">
+            <summary className="flex cursor-pointer list-none items-center justify-between p-6 text-[oklch(0.16_0.02_260)] font-semibold [&::-webkit-details-marker]:hidden">
+              Was ist der Unterschied zwischen einer IP-basierten und einer analogen Videoüberwachung?
+              <GlyphWinkelUnten size={20} className="transition-transform duration-300 group-open:rotate-180" />
+            </summary>
+            <div className="p-6 pt-0 text-[oklch(0.32_0.02_260)] leading-relaxed border-t border-[oklch(0.89_0.008_260/0.55)] mt-4">
+              Analoge Systeme (AHD, HD-TVI) übertragen ein unkomprimiertes Videosignal über Koaxialkabel an einen zentralen DVR (Digital Video Recorder), wo es digitalisiert wird. Sie sind robust, haben aber Einschränkungen in der Auflösung und Skalierbarkeit. IP-Kameras digitalisieren und komprimieren das Bild direkt in der Kamera und senden es als Netzwerkdatenstrom (meist H.265) über Ethernet (CAT5e/6/7) an einen NVR oder Server. IP-Systeme bieten deutlich höhere Auflösungen, ermöglichen Power over Ethernet (PoE) und unterstützen fortschrittliche On-Edge-Videoanalyse. Wir empfehlen bei Neuinstallationen nahezu ausschließlich IP-basierte Architekturen.
+            </div>
+          </details>
+
+          <details className="group border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] rounded-xl">
+            <summary className="flex cursor-pointer list-none items-center justify-between p-6 text-[oklch(0.16_0.02_260)] font-semibold [&::-webkit-details-marker]:hidden">
+              Wie funktioniert die Sabotageüberwachung bei einer VdS-zertifizierten Einbruchmeldeanlage?
+              <GlyphWinkelUnten size={20} className="transition-transform duration-300 group-open:rotate-180" />
+            </summary>
+            <div className="p-6 pt-0 text-[oklch(0.32_0.02_260)] leading-relaxed border-t border-[oklch(0.89_0.008_260/0.55)] mt-4">
+              Zertifizierte Anlagen überwachen permanent alle Komponenten und Übertragungswege auf Manipulation. Bei busbasierten Systemen erfolgt dies durch eine ständige, kryptografisch gesicherte Polling-Kommunikation zwischen Zentrale und Meldern. Öffnet jemand das Gehäuse eines Melders, der Zentrale oder des Signalgebers, löst ein Sabotagekontakt sofort einen Alarm aus – unabhängig davon, ob die Anlage scharf oder unscharf geschaltet ist. Zudem werden Kabelwege auf Kurzschluss und Unterbrechung überwacht (Zwangsläufigkeit).
+            </div>
+          </details>
+
+          <details className="group border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] rounded-xl">
+            <summary className="flex cursor-pointer list-none items-center justify-between p-6 text-[oklch(0.16_0.02_260)] font-semibold [&::-webkit-details-marker]:hidden">
+              Welche Redundanzen sind bei der Alarmübertragung zur Leitstelle erforderlich?
+              <GlyphWinkelUnten size={20} className="transition-transform duration-300 group-open:rotate-180" />
+            </summary>
+            <div className="p-6 pt-0 text-[oklch(0.32_0.02_260)] leading-relaxed border-t border-[oklch(0.89_0.008_260/0.55)] mt-4">
+              Ein einzelner Übertragungsweg (z.B. reines IP über den lokalen Router) reicht für professionelle Sicherheitskonzepte nicht aus. Fällt der Router aus oder wird die Leitung durchtrennt, ist die Anlage blind. Daher verbauen wir standardmäßig redundante Übertragungsgeräte (AWUG), die das Signal primär über IP/Ethernet und sekundär über ein Mobilfunknetz (LTE/4G mit Roaming-SIM) an die Notruf- und Serviceleitstelle (NSL) übertragen. Die Verbindung wird zudem zyklisch durch sogenannte Polling-Routinen überprüft.
+            </div>
+          </details>
+
+          <details className="group border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] rounded-xl">
+            <summary className="flex cursor-pointer list-none items-center justify-between p-6 text-[oklch(0.16_0.02_260)] font-semibold [&::-webkit-details-marker]:hidden">
+              Was bedeutet Zwangsläufigkeit bei Schließanlagen und Alarmsystemen?
+              <GlyphWinkelUnten size={20} className="transition-transform duration-300 group-open:rotate-180" />
+            </summary>
+            <div className="p-6 pt-0 text-[oklch(0.32_0.02_260)] leading-relaxed border-t border-[oklch(0.89_0.008_260/0.55)] mt-4">
+              Zwangsläufigkeit ist ein zentrales Sicherheitsprinzip, das menschliche Fehler ausschließt. Es besagt im Wesentlichen: Eine Alarmanlage lässt sich nur dann scharfschalten (extern aktivieren), wenn alle überwachten Fenster und Türen nachweislich verschlossen sind. Umgekehrt stellt die Zwangsläufigkeit beim Unscharfschalten sicher, dass man den gesicherten Bereich erst betreten kann, nachdem die Anlage erfolgreich deaktiviert wurde. Dies wird technisch oft durch ein Sperrelement im Türrahmen realisiert, das die Tür mechanisch blockiert, solange die Anlage scharf ist – so werden teure Falschalarme durch versehentliches Betreten verhindert.
+            </div>
+          </details>
+
+          <details className="group border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] rounded-xl">
+            <summary className="flex cursor-pointer list-none items-center justify-between p-6 text-[oklch(0.16_0.02_260)] font-semibold [&::-webkit-details-marker]:hidden">
+              Können mechatronische Zylinder in bestehende Schließanlagen integriert werden?
+              <GlyphWinkelUnten size={20} className="transition-transform duration-300 group-open:rotate-180" />
+            </summary>
+            <div className="p-6 pt-0 text-[oklch(0.32_0.02_260)] leading-relaxed border-t border-[oklch(0.89_0.008_260/0.55)] mt-4">
+              Ja, die Migration zu hybriden Systemen ist eine unserer Kernkompetenzen. Viele Hersteller bieten mechatronische Schlüssel an, die sowohl eine mechanische Codierung (für bestehende, unkritische Zylinder) als auch einen RFID-Chip oder eine Kontaktfläche (für elektronische Zylinder an Außentüren oder sensiblen Bereichen) besitzen. Dies ermöglicht einen kosteneffizienten, schrittweisen Ausbau der Sicherheitsarchitektur. Der elektronische Teil kommuniziert dabei verschlüsselt und ermöglicht es, bei Verlust eines Schlüssels diesen sofort aus den elektronischen Zylindern zu löschen, ohne die gesamte Mechanik austauschen zu müssen.
+            </div>
+          </details>
+        </div>
+      </Section>
+
 
       {/* 04 · Weiterlesen: Grundschutz und Bestandsaufnahme als Stückliste, darunter die
           Seitenverweise aus der Redaktion als Haarlinienzeilen */}
