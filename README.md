@@ -41,6 +41,14 @@ SM24_DATA=json npx next build
 
 **Build.** Auf Vercel ohne `DATABASE_URL` läuft `npm run build` ohne Datenbank. Sonst führt der Build `scripts/db.mjs ensure`, `payload migrate` und den Seed aus und ruft danach `next build` auf (`package.json`, Skript `build`). Ohne `DATABASE_URL` startet `scripts/db.mjs` dabei das lokale Postgres; zeigt `DATABASE_URL` auf eine externe Datenbank, startet es keines (`scripts/db.mjs`, Zeilen 104–114 und 119–123), und Migrationen und Seed laufen gegen diese Datenbank. Als root scheitert `initdb` am lokalen Postgres. Ohne Datenbank baut `SM24_DATA=json npx next build`.
 
+
+## Architecture Goals (Stage 1 Audit)
+- **Zero New Routes**: Strictly preserve existing URLs and architecture.
+- **Server Component Supremacy**: Migrate to React Server Components (Next.js 16+ App Router).
+- **Modern Data & Actions**: Use `use cache`, strictly asynchronous Request-APIs, and React 19 Server Actions.
+- **Swiss Light Design**: Enforce OKLCH color space tokens, 8px grid rhythm, and light glassmorphism effects.
+- **CSS Grid Modernization**: Implement `grid-template-rows: subgrid` and `@container` queries for components.
+
 ## Technischer Aufbau
 
 - **Next.js 16** (App Router, `^16.3.5`), **React 19** (`19.2.4`), **TypeScript** (`^5.9.3`, `strict` in `tsconfig.json`).
