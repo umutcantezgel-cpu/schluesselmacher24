@@ -16,7 +16,8 @@ import { KUNDENDATEI_ID_MUSTER, type Dateityp, type UploadKategorie } from './da
  * Beim Absenden des Formulars ordnet der Server die Dateien mit diesem
  * Schlüssel dem neuen Vorgang zu und löscht den Hash — so kann niemand fremde
  * Dateien an seinen Vorgang hängen. Nie zugeordnete Dateien und Dateien mit
- * abgelaufener Frist entfernt src/scripts/aufbewahrung-bereinigen.ts.
+ * abgelaufener Frist entfernt der tägliche Cron (/api/cron/taeglich) oder
+ * von Hand src/scripts/aufbewahrung-bereinigen.ts.
  *
  * Bewusst ohne 'server-only': Das Bereinigungsskript läuft mit
  * `npx payload run` außerhalb von Next, wo es dieses Paket nicht gibt.
@@ -259,21 +260,45 @@ export async function waehleZuLoeschendeKundendateien({
 export interface Bereinigung {
   geloescht: ZuLoeschendeKundendatei[];
   fehlgeschlagen: Array<ZuLoeschendeKundendatei & { fehler: string }>;
+  /** Inzwischen einem Vorgang zugeordnet — bleibt erhalten. */
+  uebersprungen: ZuLoeschendeKundendatei[];
 }
 
-/** Löscht die ausgewählten Dateien samt Datei im Ablageordner. */
-export async function bereinigeKundendateien({
-  payload: payloadArg,
-  jetzt = new Date(),
-  probelauf = false,
-}: { payload?: Payload; jetzt?: Date; probelauf?: boolean } = {}): Promise<Bereinigung> {
-  const payload = await payloadAus(payloadArg);
-  const auswahl = await waehleZuLoeschendeKundendateien({ payload, jetzt });
-  if (probelauf) return { geloescht: auswahl, fehlgeschlagen: [] };
+/**
+ * Beansprucht eine nie zugeordnete Datei für die Löschung: in einem Schritt
+ * und nur, solange sie keinem Vorgang gehört. Der Hash des Upload-Schlüssels
+ * verschwindet dabei, eine spätere Zuordnung (verknuepfeKundendateien) geht
+ * also ins Leere. Ohne diesen Schritt könnte ein Kunde sein Formular genau
+ * zwischen Auswahl und Löschen absenden — die Datei wäre dann zugeordnet und
+ * trotzdem gelöscht.
+ */
+async function beanspruchen(db: SqlAusfuehrer, id: number): Promise<boolean> {
+  const result = await db.execute(sql`
+    UPDATE "kundendateien"
+    SET "upload_schluessel_hash" = NULL, "updated_at" = now()
+    WHERE "id" = ${id} AND "vorgang_id" IS NULL
+    RETURNING "id"
+  `);
+  return result.rows.length > 0;
+}
 
-  const ergebnis: Bereinigung = { geloescht: [], fehlgeschlagen: [] };
+/** Löscht die ausgewählten Dateien samt Datei in der Ablage. */
+export async function loescheKundendateien({
+  payload: payloadArg,
+  auswahl,
+}: {
+  payload?: Payload;
+  auswahl: ZuLoeschendeKundendatei[];
+}): Promise<Bereinigung> {
+  const payload = await payloadAus(payloadArg);
+  const db = await datenbank(payload);
+  const ergebnis: Bereinigung = { geloescht: [], fehlgeschlagen: [], uebersprungen: [] };
   for (const datei of auswahl) {
     try {
+      if (datei.grund === 'nie-zugeordnet' && !(await beanspruchen(db, datei.id))) {
+        ergebnis.uebersprungen.push(datei);
+        continue;
+      }
       await payload.delete({ collection: 'kundendateien', id: datei.id, overrideAccess: true });
       ergebnis.geloescht.push(datei);
     } catch (error) {
@@ -281,4 +306,16 @@ export async function bereinigeKundendateien({
     }
   }
   return ergebnis;
+}
+
+/** Wählt und löscht Dateien mit abgelaufener Frist und nie zugeordnete Uploads. */
+export async function bereinigeKundendateien({
+  payload: payloadArg,
+  jetzt = new Date(),
+  probelauf = false,
+}: { payload?: Payload; jetzt?: Date; probelauf?: boolean } = {}): Promise<Bereinigung> {
+  const payload = await payloadAus(payloadArg);
+  const auswahl = await waehleZuLoeschendeKundendateien({ payload, jetzt });
+  if (probelauf) return { geloescht: auswahl, fehlgeschlagen: [], uebersprungen: [] };
+  return loescheKundendateien({ payload, auswahl });
 }

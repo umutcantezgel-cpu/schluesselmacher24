@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/db.mjs ensure && next dev",
-    "build": "if [ -n \"$DATABASE_URL\" ] || [ -z \"$VERCEL\" ]; then node scripts/db.mjs ensure && payload migrate && payload run src/scripts/seed.ts; else echo \"Keine DATABASE_URL: Build ohne Datenbank (Inhalte aus content/*.json)\"; fi && next build",
+    "build": "node scripts/build.mjs",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
@@ -23,7 +23,11 @@
     "admin:anlegen": "payload run src/scripts/admin-anlegen.ts",
     "test:unit": "vitest run",
     "test:db": "vitest run -c vitest.db.config.ts",
-    "aufbewahrung:bereinigen": "payload run src/scripts/aufbewahrung-bereinigen.ts"
+    "aufbewahrung:bereinigen": "payload run src/scripts/aufbewahrung-bereinigen.ts",
+    "pruefen:livegang": "payload run src/scripts/livegang-pruefen.ts"
+  },
+  "engines": {
+    "node": "22.x"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^5.3.0",

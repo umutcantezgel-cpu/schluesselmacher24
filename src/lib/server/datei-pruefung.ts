@@ -28,8 +28,13 @@ export const UPLOAD_TOKEN_MUSTER = /^[A-Za-z0-9_-]{43}$/;
 /** Nur bei diesen Unterlagen ist ein PDF sinnvoll; Fotos müssen Bilder sein. */
 const KATEGORIEN_MIT_PDF: readonly UploadKategorie[] = ['fahrzeugschein', 'grundriss', 'dokument'];
 
-export const MAX_BILD_BYTES = 12 * 1024 * 1024;
-export const MAX_PDF_BYTES = 15 * 1024 * 1024;
+/*
+ * Vercel nimmt je Anfrage höchstens 4,5 MB an. Mit 4 MB je Datei passt die
+ * Anfrage samt Formularfeldern sicher darunter. Fotos verkleinert der Browser
+ * vorher (photo-upload.tsx); größere Dateien schickt der Kunde per E-Mail.
+ */
+export const MAX_BILD_BYTES = 4 * 1024 * 1024;
+export const MAX_PDF_BYTES = 4 * 1024 * 1024;
 
 export interface Dateityp {
   art: 'bild' | 'pdf';
@@ -79,7 +84,7 @@ export function maxBytesFuer(typ: Dateityp): number {
 }
 
 export const MELDUNG_ZU_GROSS =
-  'Die Datei ist zu groß. Fotos dürfen höchstens 12 MB, PDF-Dokumente höchstens 15 MB groß sein.';
+  'Die Datei ist größer als 4 MB. Bitte verkleinern Sie sie oder senden Sie sie uns per E-Mail.';
 
 export const MELDUNG_FORMAT =
   'Dieses Dateiformat können wir nicht annehmen. Möglich sind Fotos als JPEG, PNG, WEBP oder HEIC '
@@ -112,8 +117,8 @@ export function pruefeDatei(bytes: Uint8Array, kategorie: UploadKategorie): Prue
       status: 413,
       fehler:
         typ.art === 'pdf'
-          ? 'Das PDF ist größer als 15 MB. Bitte verkleinern Sie es oder senden Sie nur die nötigen Seiten.'
-          : 'Das Foto ist größer als 12 MB. Bitte wählen Sie eine kleinere Aufnahme.',
+          ? 'Das PDF ist größer als 4 MB. Bitte senden Sie nur die nötigen Seiten oder schicken Sie es uns per E-Mail.'
+          : 'Das Foto ist größer als 4 MB. Bitte wählen Sie eine kleinere Aufnahme oder senden Sie es uns per E-Mail.',
     };
   }
 

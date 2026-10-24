@@ -74,14 +74,32 @@ type BildGruppe = {
 } | null | undefined;
 
 /** Payload liefert Bildverweise je nach Tiefe als Zahl oder als Dokument. */
+const MEDIEN_PFAD = '/api/medien/file/';
+
+/**
+ * Pfad eines Fotos für next/image — immer relativ und nur unter
+ * /api/medien/file/. Payload liefert mit gesetzter `serverURL` (Produktion)
+ * absolute Adressen, das Ablage-Plugin hängt `?prefix=…` an. Next.js lehnt
+ * Suchparameter bei lokalen Bildern ohne Freigabe ab, und fremde Hosts sind
+ * nicht freigegeben. Ohne `prefix` findet die Auslieferung die Datei über
+ * ihren Namen (@payloadcms/plugin-cloud-storage, getFilePrefix).
+ */
+export function medienPfad(url: string | null | undefined): string | undefined {
+  if (!url) return undefined;
+  try {
+    const { pathname } = new URL(url, 'http://x');
+    return pathname.startsWith(MEDIEN_PFAD) ? pathname : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 function medienBild(bild: number | Medien | null | undefined, motiv: string): MediaImage | undefined {
   if (!bild || typeof bild === 'number') return undefined;
-  const url = bild.sizes?.mittel?.url ?? bild.url;
+  const url = medienPfad(bild.sizes?.mittel?.url ?? bild.url);
   if (!url) return undefined;
   return {
-    // Payload hängt teils einen Zeitstempel an — Next.js lehnt Suchparameter
-    // bei lokalen Bildern ohne Freigabe ab.
-    url: url.split('?')[0],
+    url,
     alt: bild.alt || motiv,
     width: bild.sizes?.mittel?.width ?? bild.width ?? undefined,
     height: bild.sizes?.mittel?.height ?? bild.height ?? undefined,

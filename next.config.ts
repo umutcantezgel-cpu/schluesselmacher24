@@ -10,7 +10,13 @@ const isDev = process.env.NODE_ENV === 'development';
 /**
  * Content-Security-Policy.
  * - `blob:` in img-src: Fotovorschau beim Hochladen (URL.createObjectURL).
- * - `form-action` erlaubt die Weiterleitung zum Stripe-Checkout.
+ * - `form-action` erlaubt die Weiterleitung zum Stripe-Checkout. Der Checkout
+ *   ist gehostet (Weiterleitung zu checkout.stripe.com), deshalb braucht es
+ *   weder Stripe-Skripte noch -Frames: script-src, frame-src und connect-src
+ *   bleiben unverändert.
+ * - `connect-src 'self'`: Uploads laufen über die eigene Route, nie direkt
+ *   in den Bucket. Fotos liefert Payload über /api/medien/file/… aus; next/image
+ *   lädt sie als lokale Pfade, `images` braucht deshalb keine Freigaben.
  * - `frame-ancestors 'self'`: die eigene Seite darf sich für die Live-Vorschau
  *   im Backend einbetten, fremde Seiten nicht.
  * - `'unsafe-eval'` nur in der Entwicklung (React-Fehlerüberlagerung).
