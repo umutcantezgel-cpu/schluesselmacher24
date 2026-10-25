@@ -11,7 +11,7 @@ import type {
 import { quoteCarKeyService } from '@/lib/pricing';
 import { formatCents, formatNumber } from '@/lib/format';
 import { istPlatzhalter } from '@/lib/platzhalter';
-import { keyKindLabel } from '@/components/autoschluessel/key-kinds';
+import { keyKindLabel, keyKindShortLabel } from '@/components/autoschluessel/key-kinds';
 import { formatModelYears, hatBaujahre } from '@/components/autoschluessel/vehicle-facts';
 
 /* ==========================================================================
@@ -180,7 +180,6 @@ export function modellTexte(
   const arten = model.keyKinds.map((art) => keyKindLabel(art));
   const daten = eckdaten(preise);
   const ab = preisAb(preise);
-  const ort = werkstatt ? `in der Werkstatt in ${werkstatt.city}` : 'bei uns';
 
   const titelVorschlaege = [
     ...(erfasst ? [`${name} Autoschlüssel (${jahre}): Preise und Termin`, `${name} Autoschlüssel (${jahre})`] : []),
@@ -195,11 +194,17 @@ export function modellTexte(
     .slice(0, 2)
     .map((p) => `${p.service.label}: ${preisAngabe(p.mitSchluessel[0].quote)}.`);
   const eigeneBeschreibung = model.seo?.description?.trim();
+  const kurzArten = model.keyKinds.map((art) => keyKindShortLabel(art));
   const metaBeschreibung =
     eigeneBeschreibung
     || bisLaenge(
-      `Autoschlüssel für ${name}${erfasst ? ` (${jahre})` : ''}${arten.length ? `: ${aufzaehlung(arten)}` : ''}.`,
-      [...erstePreise, werkstatt ? `Termin ${ort}.` : undefined, daten.vorlauf ? `Vorlauf ${daten.vorlauf}.` : undefined],
+      `Autoschlüssel für ${name}${erfasst ? ` (${jahre})` : ''}${kurzArten.length ? ` – ${aufzaehlung(kurzArten)}` : ''}.`,
+      [
+        erstePreise[0],
+        werkstatt ? `Termin in ${werkstatt.city}.` : undefined,
+        ...erstePreise.slice(1),
+        daten.vorlauf ? `Vorlauf ${daten.vorlauf}.` : undefined,
+      ],
       BESCHREIBUNG_MAX,
     );
 
@@ -223,32 +228,7 @@ export function modellTexte(
         : 'Für dieses Modell sind noch keine Schlüsselarten erfasst. Wir klären das anhand Ihrer Schlüsselfotos und der Fahrzeugdaten.',
     },
   ];
-  if (daten.mitFahrzeug.length || daten.ohneFahrzeug.length) {
-    faq.push({
-      question: `Muss mein ${name} zum Termin da sein?`,
-      answer: !daten.ohneFahrzeug.length
-        ? `Ja, für alle ${formatNumber(preise.length)} angebotenen Leistungen muss das Fahrzeug zum Termin ${ort} stehen.`
-        : [
-            daten.mitFahrzeug.length
-              ? `Für ${leistungen(daten.mitFahrzeug)} ja — das Fahrzeug muss zum Termin ${ort} stehen.`
-              : undefined,
-            `Für ${leistungen(daten.ohneFahrzeug)} ist das Fahrzeug nicht nötig.`,
-          ]
-            .filter(Boolean)
-            .join(' '),
-    });
-  }
-  if (daten.vorlauf || daten.anzahlung) {
-    faq.push({
-      question: `Wie schnell bekomme ich einen Termin für ${name}?`,
-      answer: [
-        daten.vorlauf ? `Der früheste Termin liegt je nach Leistung ${daten.vorlauf} in der Zukunft, weil wir den passenden Schlüssel vorher beschaffen.` : undefined,
-        daten.anzahlung ? `Die Anzahlung beträgt ${daten.anzahlung} und wird vollständig auf den Preis angerechnet.` : undefined,
-      ]
-        .filter(Boolean)
-        .join(' '),
-    });
-  }
+  // Fahrzeugbedarf, Anzahlung und Vorlauf stehen in der Einordnung der Seite — hier nicht doppelt.
   if (daten.pruefung.length) {
     const alle = daten.pruefung.length === preise.length;
     faq.push({

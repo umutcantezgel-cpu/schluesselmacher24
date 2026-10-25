@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { getCities, getCollection, getSettings, getVehicleMakes, getVehicleModel } from '@/lib/data';
 import type { ImageSlot, KeyKind } from '@/lib/types';
-import { formatCents, formatDuration, formatWeekday } from '@/lib/format';
+import { formatCents, formatDuration } from '@/lib/format';
 import { cn } from '@/lib/cn';
 import {
   aufzaehlung,
@@ -117,7 +117,7 @@ async function laden(makeSlug: string, modelSlug: string) {
   const werkstattSeite = werkstatt
     ? cities.find((city) => city.city === werkstatt.city && stadtIndexierbar(city))
     : undefined;
-  return { make, model, settings, preise, werkstatt, werkstattSeite, texte };
+  return { make, model, preise, werkstatt, werkstattSeite, texte };
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
@@ -144,7 +144,7 @@ export default async function ModelPage(props: PageProps) {
 
   if (!geladen) notFound();
 
-  const { make, model, settings, preise, werkstatt, werkstattSeite, texte } = geladen;
+  const { make, model, preise, werkstatt, werkstattSeite, texte } = geladen;
   const years = formatModelYears(model);
   const erfasst = hatBaujahre(model);
   const daten = eckdaten(preise);
@@ -169,7 +169,6 @@ export default async function ModelPage(props: PageProps) {
   const geschwister = [...make.models]
     .filter((m) => m.slug !== model.slug)
     .sort((a, b) => a.name.localeCompare(b.name, 'de'));
-  const oeffnungszeiten = settings.openingHours.filter((eintrag) => eintrag.spans.length > 0);
 
   // Vorbelegung des Assistenten über Suchparameter.
   const assistantHref = `/autoschluessel/anfrage?marke=${make.slug}&modell=${model.slug}`;
@@ -540,24 +539,13 @@ export default async function ModelPage(props: PageProps) {
                 {werkstatt.street}, {werkstatt.postalCode} {werkstatt.city}
               </address>
             )}
-            {werkstatt && oeffnungszeiten.length > 0 && (
-              <dl className="mt-4 grid max-w-sm grid-cols-3 gap-y-1 text-small">
-                {oeffnungszeiten.map((eintrag) => (
-                  <div key={eintrag.day} className="contents">
-                    <dt className="text-foreground-muted">{formatWeekday(eintrag.day)}</dt>
-                    <dd className="col-span-2 font-mono tabular-nums text-foreground">
-                      {eintrag.spans.map((span) => `${span.from}–${span.to}`).join(' · ')}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            )}
+            {/* Öffnungszeiten und Anreise stehen auf der Standortseite (aus den Einstellungen). */}
             {werkstattSeite && (
               <Link
                 href={`/standorte/${werkstattSeite.slug}`}
                 className="mt-4 inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary hover:underline"
               >
-                Standort {werkstattSeite.city}
+                Öffnungszeiten und Anreise: Standort {werkstattSeite.city}
                 <GlyphPfeilRechts size={16} />
               </Link>
             )}
@@ -606,7 +594,7 @@ export default async function ModelPage(props: PageProps) {
               <GlyphWarnung size={18} className="mt-0.5 shrink-0 text-warning" />
               <div className="min-w-0 text-small leading-relaxed">
                 <p className="mb-1 font-bold">Angaben ohne Gewähr für Ihr konkretes Fahrzeug</p>
-                Der Datensatz beschreibt die Baureihe, nicht Ihr einzelnes Fahrzeug. Ausstattung,
+                Der Datensatz beschreibt die Baureihe {model.name}, nicht Ihr einzelnes Fahrzeug. Ausstattung,
                 Sonderausstattung, Umbauten und das genaue Baujahr können abweichen. Wir legen uns erst
                 fest, wenn uns Ihre Schlüsselfotos und der Fahrzeugschein vorliegen. Angaben, die hier
                 nicht stehen — etwa Rohlingstyp oder Elektronikvariante —, klären wir in der Prüfung und

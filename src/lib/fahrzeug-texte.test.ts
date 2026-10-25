@@ -81,7 +81,8 @@ describe('modellTexte', () => {
     expect(golf.einleitung).toContain('ab 2003');
     expect(golf.metaTitel.length).toBeLessThanOrEqual(TITEL_MAX);
     expect(golf.metaBeschreibung.length).toBeLessThanOrEqual(BESCHREIBUNG_MAX);
-    expect(golf.faq.some((f) => f.answer.includes('Wetzlar'))).toBe(true);
+    expect(golf.metaBeschreibung).toContain('Termin in Wetzlar');
+    expect(golf.metaBeschreibung).toContain('249,00');
     expect(golf.mitbringen.map((p) => p.titel)).toContain('Fahrzeugschein und Ausweisdokument');
   });
 
