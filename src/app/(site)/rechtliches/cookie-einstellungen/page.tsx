@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { gaMessId } from '@/lib/statistik';
+
 import { CookieSettings } from './cookie-einstellungen';
 
 export const metadata: Metadata = {
@@ -10,17 +12,29 @@ export const metadata: Metadata = {
 };
 
 export default function CookieEinstellungenPage() {
+  // Google Analytics nur, wenn eine Mess-ID gesetzt ist — sonst bleibt die Seite wie bisher.
+  const statistik = Boolean(gaMessId());
   return (
     <>
       <h1 className="text-headline font-bold text-balance">Cookie-Einstellungen</h1>
-      <p className="mt-3">
-        Diese Website setzt keine Analyse-, Werbe- oder Marketingdienste ein und bindet keine
-        Inhalte fremder Anbieter ein. Gespeichert wird nur, was für die von Ihnen genutzten
-        Funktionen technisch notwendig ist — und zwar im lokalen Speicher Ihres Browsers. Eine
-        Einwilligung ist dafür nicht erforderlich.
-      </p>
+      {statistik ? (
+        <p className="mt-3">
+          Diese Website setzt keine Werbe- oder Marketingdienste ein. Für die Reichweitenmessung
+          nutzen wir Google Analytics — aber nur, wenn Sie unten in „Statistik“ einwilligen. Alles
+          Weitere, was gespeichert wird, ist für die von Ihnen genutzten Funktionen technisch
+          notwendig und liegt im lokalen Speicher Ihres Browsers; dafür ist keine Einwilligung
+          erforderlich.
+        </p>
+      ) : (
+        <p className="mt-3">
+          Diese Website setzt keine Analyse-, Werbe- oder Marketingdienste ein und bindet keine
+          Inhalte fremder Anbieter ein. Gespeichert wird nur, was für die von Ihnen genutzten
+          Funktionen technisch notwendig ist — und zwar im lokalen Speicher Ihres Browsers. Eine
+          Einwilligung ist dafür nicht erforderlich.
+        </p>
+      )}
 
-      <CookieSettings />
+      <CookieSettings statistikAktiv={statistik} />
 
       <h2>Was genau gespeichert wird</h2>
       <ul>
@@ -44,6 +58,19 @@ export default function CookieEinstellungenPage() {
         übertragen; Einzelheiten stehen in der{' '}
         <Link href="/rechtliches/datenschutz">Datenschutzerklärung</Link>.
       </p>
+
+      {statistik && (
+        <>
+          <h2>Statistik mit Google Analytics</h2>
+          <p>
+            Nur mit Ihrer Einwilligung lädt die Seite Google Analytics 4. Google setzt dann die
+            Cookies <code>_ga</code> und <code>_ga_…</code> mit einer zufälligen Kennung (Laufzeit bis
+            zu 2 Jahre). Ohne Einwilligung wird das Skript nicht geladen. Widerrufen Sie die
+            Einwilligung oben, endet die Messung sofort und die Cookies werden gelöscht. Einzelheiten
+            stehen in der <Link href="/rechtliches/datenschutz">Datenschutzerklärung</Link>.
+          </p>
+        </>
+      )}
 
       <h2>Online-Zahlung</h2>
       <p>

@@ -7,6 +7,7 @@ import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { submitRecord } from '@/lib/actions/records';
 import { formatNumber } from '@/lib/format';
 import type { ContactDetails, InfoHint, SummarySection, UploadRef } from '@/lib/types';
+import { aktionMelden } from '@/lib/statistik';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
@@ -955,6 +956,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
       schutz.antwortBeachten(response);
 
       if (response.ok && response.reference) {
+        aktionMelden('projektanfrage', 'schliessanlagen');
         clearFlow(FLOW_ID);
         setResult({ reference: response.reference, notices: response.notices });
       } else {

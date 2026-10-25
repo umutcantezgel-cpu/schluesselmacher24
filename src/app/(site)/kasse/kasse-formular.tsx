@@ -11,6 +11,7 @@ import { cartTotals, priceCylinderOrder, unitPriceForCodeLine } from '@/lib/pric
 import { formatCents } from '@/lib/format';
 import { zylinderZeilen } from '@/lib/cylinder-summary';
 import { LIEFERLAND, istSonderanfertigung } from '@/lib/kasse';
+import { aktionMelden } from '@/lib/statistik';
 import type {
   Cart,
   CartItem,
@@ -316,6 +317,9 @@ export function KasseFormular({
       setFormularFehler(ergebnis.error ?? 'Die Bestellung konnte nicht abgeschlossen werden.');
       return;
     }
+
+    // Messung (nur mit Einwilligung in die Statistik): Bestellung angenommen.
+    aktionMelden('bestellung');
 
     // Erst umschalten, dann leeren — sonst blitzt der leere Warenkorb auf.
     setAbgeschlossen(true);

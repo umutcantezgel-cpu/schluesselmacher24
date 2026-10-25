@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { DatenschutzInhalt } from '@/app/(site)/rechtliches/datenschutz/datenschutz-inhalt';
 
 import { echteEinstellungen, platzhalterEinstellungen } from './test-hilfen';
-import { DIENSTLEISTER, VERARBEITUNGEN_FASSUNG, verarbeitungen } from './verarbeitungen';
+import { DIENSTLEISTER, VERARBEITUNGEN_FASSUNG, dienstleister, verarbeitungen } from './verarbeitungen';
 
 /** HTML-Entitäten zurückwandeln, damit Texte mit Anführungszeichen vergleichbar sind. */
 function klartext(html: string): string {
@@ -80,5 +80,37 @@ describe('Datenschutzerklärung', () => {
     const html = renderToStaticMarkup(<DatenschutzInhalt settings={platzhalterEinstellungen()} />);
     expect(html).not.toContain('[Platzhalter');
     expect(html).not.toContain('[PLZ]');
+  });
+});
+
+describe('Google Analytics in der Datenschutzerklärung', () => {
+  const settings = echteEinstellungen();
+
+  it('erscheint nur, wenn eine Mess-ID gesetzt ist', () => {
+    expect(verarbeitungen(settings).some((e) => e.id === 'statistik')).toBe(false);
+    expect(dienstleister().map((d) => d.id)).toEqual(['vercel', 'supabase', 'stripe', 'resend']);
+    expect(verarbeitungen(settings, { statistik: true }).some((e) => e.id === 'statistik')).toBe(true);
+    expect(dienstleister({ statistik: true }).map((d) => d.id)).toContain('google');
+  });
+
+  it('nennt Anbieter, Zweck, Einwilligung als Grundlage, Drittland und Widerruf', () => {
+    const eintrag = verarbeitungen(settings, { statistik: true }).find((e) => e.id === 'statistik')!;
+    expect(eintrag.empfaenger).toContain('Google Ireland Limited');
+    expect(eintrag.zweck).toContain('Website genutzt wird');
+    expect(eintrag.rechtsgrundlage).toContain('Art. 6 Abs. 1 lit. a DSGVO');
+    expect(eintrag.rechtsgrundlage).toContain('§ 25 Abs. 1 TDDDG');
+    expect(eintrag.rechtsgrundlage).toContain('Cookie-Einstellungen widerrufen');
+    expect(eintrag.drittland).toContain('Data Privacy Framework');
+  });
+
+  it('ändert die Erklärung ohne Mess-ID nicht und nennt Google mit Mess-ID', () => {
+    const ohne = klartext(renderToStaticMarkup(<DatenschutzInhalt settings={settings} />));
+    expect(ohne).not.toContain('Google Analytics');
+    expect(ohne).toContain('Analyse- oder Werbedienste setzen wir nicht ein.');
+
+    const mit = klartext(renderToStaticMarkup(<DatenschutzInhalt settings={settings} statistik />));
+    expect(mit).toContain('Reichweitenmessung mit Google Analytics (nur mit Einwilligung)');
+    expect(mit).toContain('Google Ireland Limited');
+    expect(mit).not.toContain('keine Cookies oder Techniken zur Analyse');
   });
 });
