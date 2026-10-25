@@ -654,5 +654,32 @@
       }
     },
     "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "partner-werden",
+    "headline": "Partner werden",
+    "subline": "Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort — vor allem für Autoschlüssel.",
+    "intro": "Bei uns gehen auch Anfragen aus Regionen ein, in denen wir selbst nicht tätig sind. Diese Aufträge vermitteln wir an zuverlässige Fachbetriebe vor Ort. Sie bewerben sich mit wenigen Angaben; wir prüfen Ihre Bewerbung und melden uns bei Ihnen.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Partner werden – Auftragsvermittlung für Fachbetriebe",
+      "description": "Für Schlüsseldienste und Fachbetriebe: Als Partner von SCHLÜSSELMACHER24 übernehmen Sie geprüfte Kundenanfragen aus Ihrer Region und rechnen direkt mit dem Kunden ab.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        },
+        {
+          "href": "/service-und-termin/kontakt",
+          "label": "Kontakt"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Partner werden",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-10-25T00:00:00.000Z"
   }
 ]

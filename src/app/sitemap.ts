@@ -48,6 +48,7 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/service-und-termin/anfrage', priority: 0.6 },
   { path: '/service-und-termin/kontakt', priority: 0.6 },
   { path: '/service-und-termin/vor-ort', priority: 0.6 },
+  { path: '/partner-werden', priority: 0.4 },
   { path: '/ratgeber', priority: 0.6 },
   { path: '/rechtliches/versand-und-zahlung', priority: 0.3 },
 ];
