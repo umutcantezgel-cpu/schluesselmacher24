@@ -4,7 +4,7 @@ import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limi
 
 import { getAppointments, getCollection, getRecordByReference, getSettings } from '@/lib/data';
 import { heuteInBerlin } from '@/lib/berliner-zeit';
-import { addDays, availableSlots, bookableDays, earliestBookableDate } from '@/lib/scheduling';
+import { addDays, availableSlots, bookableDays, earliestBookableDate, minutenInBerlin } from '@/lib/scheduling';
 import { quoteCarKeyService } from '@/lib/pricing';
 import type { KeyKind, PriceQuote, TimeSlot } from '@/lib/types';
 
@@ -75,14 +75,16 @@ export async function fetchSlots(
 
   // Nur die Termine des angezeigten Zeitraums lesen — derselbe Zeitraum, den
   // `availableSlots` durchläuft.
-  // „Heute“ in deutscher Zeit — der Server läuft in UTC.
-  const today = heuteInBerlin();
+  // „Heute“ und die Uhrzeit in deutscher Zeit — der Server läuft in UTC.
+  const jetzt = new Date();
+  const today = heuteInBerlin(jetzt);
   const from = earliestBookableDate(today, leadTimeDays ?? settings.booking.leadTimeDays);
   const scanned = Math.min(daysToScan, settings.booking.bookingHorizonDays);
   const existing = await getAppointments(from, addDays(from, Math.max(scanned - 1, 0)));
 
   const slots = availableSlots({
     today,
+    jetztMinuten: minutenInBerlin(jetzt),
     durationMinutes,
     leadTimeDays,
     booking: settings.booking,

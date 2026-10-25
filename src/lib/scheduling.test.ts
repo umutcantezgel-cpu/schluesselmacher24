@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest';
+import { afterEach, describe, it, expect, vi } from 'vitest';
+import { heuteInBerlin } from './berliner-zeit';
 import {
   earliestBookableDate,
   addDays,
@@ -6,6 +7,7 @@ import {
   weekdayOf,
   groupSlotsByDate,
   availableSlots,
+  minutenInBerlin,
   zeitpunktPruefen,
   type SlotQuery,
 } from './scheduling';
@@ -297,6 +299,34 @@ describe('scheduling', () => {
 
       expect(thurs0900?.available).toBe(false);
       expect(thurs0900?.blockedReason).toBe('Bereits vergeben');
+    });
+
+    describe('Vorlauf 0: heute nur Fenster, die noch nicht begonnen haben', () => {
+      afterEach(() => {
+        vi.useRealTimers();
+      });
+
+      it('rechnet die Uhrzeit in deutscher Zeit', () => {
+        expect(minutenInBerlin(new Date('2026-10-27T16:00:00Z'))).toBe(17 * 60); // Winterzeit
+        expect(minutenInBerlin(new Date('2026-07-01T22:30:00Z'))).toBe(30); // Sommerzeit, schon nach Mitternacht
+      });
+
+      it('überspringt heute Fenster mit Beginn bis jetzt, andere Tage bleiben', () => {
+        const slots = availableSlots({ ...baseQuery, jetztMinuten: 10 * 60 });
+        expect(slots.filter((s) => s.date === '2026-10-01')).toEqual([]);
+        expect(slots.filter((s) => s.date === '2026-10-02').map((s) => s.time)).toEqual(['09:00', '10:00']);
+
+        const halbZehn = availableSlots({ ...baseQuery, jetztMinuten: 9 * 60 + 30 });
+        expect(halbZehn.filter((s) => s.date === '2026-10-01').map((s) => s.time)).toEqual(['10:00']);
+      });
+
+      it('mit festgesetzter Uhr: um 10:30 Uhr ist heute nichts mehr frei', () => {
+        vi.useFakeTimers();
+        vi.setSystemTime(new Date('2026-10-01T08:30:00Z')); // 10:30 Uhr in Wetzlar
+        const slots = availableSlots({ ...baseQuery, today: heuteInBerlin(), jetztMinuten: minutenInBerlin() });
+        expect(slots.some((s) => s.date === '2026-10-01')).toBe(false);
+        expect(slots.filter((s) => s.date === '2026-10-02')).toHaveLength(2);
+      });
     });
 
     it('respects lead time days', () => {

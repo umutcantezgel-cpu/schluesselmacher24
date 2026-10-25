@@ -17,7 +17,7 @@ import { quoteCarKeyService } from '@/lib/pricing';
 import { buildRecordId } from '@/lib/reference';
 import { VERLAUF } from '@/lib/zahlung/uebergaenge';
 import { heuteInBerlin, jahrInBerlin } from '@/lib/berliner-zeit';
-import { availableSlots } from '@/lib/scheduling';
+import { availableSlots, minutenInBerlin } from '@/lib/scheduling';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -296,8 +296,10 @@ function freeSlot(args: {
   date: string;
   time: string;
 }): TimeSlot | undefined {
+  const jetzt = new Date();
   return availableSlots({
-    today: heuteInBerlin(),
+    today: heuteInBerlin(jetzt),
+    jetztMinuten: minutenInBerlin(jetzt),
     durationMinutes: args.durationMinutes,
     leadTimeDays: args.leadTimeDays,
     booking: args.settings.booking,
