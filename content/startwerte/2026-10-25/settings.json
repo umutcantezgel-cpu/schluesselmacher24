@@ -1,0 +1,183 @@
+{
+  "company": {
+    "legalName": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+    "brandName": "SCHLÜSSELMACHER24",
+    "legalForm": "einzelunternehmen",
+    "owner": "Mina Saad",
+    "street": "Gloelstraße 11",
+    "postalCode": "35576",
+    "city": "Wetzlar",
+    "country": "Deutschland",
+    "phone": "06441 8056279",
+    "email": "info@schluesselmacher24.de",
+    "vatId": "DE 282140471",
+    "registerCourt": "",
+    "registerNumber": "",
+    "managingDirector": "Mina Saad",
+    "profession": "Schlüsseldienst und Sicherheitstechnik",
+    "chamber": "Handwerkskammer Wiesbaden, Zweigstelle Wetzlar, Ederstraße 2, 35576 Wetzlar",
+    "contentResponsible": "Mina Saad, Gloelstraße 11, 35576 Wetzlar",
+    "taxNumber": "03986300160",
+    "location": {
+      "label": "Werkstatt und Abholung",
+      "street": "Langgasse 70",
+      "postalCode": "35576",
+      "city": "Wetzlar"
+    },
+    "isPlaceholder": false
+  },
+  "openingHours": [
+    {
+      "day": 1,
+      "spans": [
+        {
+          "from": "09:00",
+          "to": "13:00"
+        },
+        {
+          "from": "14:00",
+          "to": "17:00"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "spans": [
+        {
+          "from": "09:00",
+          "to": "13:00"
+        },
+        {
+          "from": "14:00",
+          "to": "17:00"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "spans": [
+        {
+          "from": "09:00",
+          "to": "13:00"
+        },
+        {
+          "from": "14:00",
+          "to": "17:00"
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "spans": [
+        {
+          "from": "09:00",
+          "to": "13:00"
+        },
+        {
+          "from": "14:00",
+          "to": "17:00"
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "spans": [
+        {
+          "from": "09:00",
+          "to": "13:00"
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "spans": []
+    },
+    {
+      "day": 7,
+      "spans": []
+    }
+  ],
+  "booking": {
+    "leadTimeDays": 7,
+    "depositCents": 6990,
+    "depositMinCents": 5000,
+    "depositMaxCents": 8000,
+    "slotMinutes": 60,
+    "bookingHorizonDays": 90,
+    "slotsPerWindow": 1,
+    "federalState": "HE",
+    "windows": [
+      {
+        "from": "09:00",
+        "to": "10:00"
+      },
+      {
+        "from": "10:00",
+        "to": "11:00"
+      },
+      {
+        "from": "11:00",
+        "to": "12:00"
+      },
+      {
+        "from": "14:00",
+        "to": "15:00"
+      },
+      {
+        "from": "15:00",
+        "to": "16:00"
+      },
+      {
+        "from": "16:00",
+        "to": "17:00"
+      }
+    ]
+  },
+  "shipping": [
+    {
+      "id": "brief-verfolgt",
+      "label": "Versand verfolgbar",
+      "description": "Versand mit Sendungsverfolgung. Geeignet für einzelne Schlüssel.",
+      "priceCents": 495,
+      "tracked": true,
+      "insured": false,
+      "productClasses": [
+        "code-schluessel",
+        "zubehoer"
+      ]
+    },
+    {
+      "id": "paket-versichert",
+      "label": "Paket versichert",
+      "description": "Versicherter Paketversand mit Sendungsverfolgung.",
+      "priceCents": 795,
+      "tracked": true,
+      "insured": true,
+      "productClasses": [
+        "code-schluessel",
+        "zylinder",
+        "zubehoer"
+      ]
+    },
+    {
+      "id": "abholung",
+      "label": "Abholung im Fachbetrieb",
+      "description": "Sie holen Ihre Bestellung nach Benachrichtigung selbst ab.",
+      "priceCents": 0,
+      "tracked": false,
+      "insured": false,
+      "productClasses": [
+        "code-schluessel",
+        "zylinder",
+        "zubehoer"
+      ]
+    }
+  ],
+  "retentionDays": {
+    "vehicleRegistration": 90,
+    "keyPhotos": 180,
+    "floorPlans": 365,
+    "projectDocuments": 365
+  },
+  "updatedAt": "2026-09-16T05:43:05.154Z"
+}

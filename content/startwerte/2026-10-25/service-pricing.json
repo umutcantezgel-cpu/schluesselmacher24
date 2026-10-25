@@ -1,0 +1,228 @@
+[
+  {
+    "id": "gruppe-a--zweitschluessel",
+    "pricingGroupId": "gruppe-a",
+    "serviceId": "zweitschluessel",
+    "keyKind": "alle",
+    "mode": "fest",
+    "priceCents": 14900,
+    "slotMinutes": 45
+  },
+  {
+    "id": "gruppe-a--ersatz-bei-verlust",
+    "pricingGroupId": "gruppe-a",
+    "serviceId": "ersatz-bei-verlust",
+    "keyKind": "alle",
+    "mode": "rahmen",
+    "priceFromCents": 19900,
+    "priceToCents": 29900
+  },
+  {
+    "id": "gruppe-a--programmierung",
+    "pricingGroupId": "gruppe-a",
+    "serviceId": "programmierung",
+    "keyKind": "alle",
+    "mode": "fest",
+    "priceCents": 8900,
+    "slotMinutes": 30
+  },
+  {
+    "id": "gruppe-a--bart-fraesen",
+    "pricingGroupId": "gruppe-a",
+    "serviceId": "bart-fraesen",
+    "keyKind": "alle",
+    "mode": "fest",
+    "priceCents": 4900,
+    "slotMinutes": 30
+  },
+  {
+    "id": "gruppe-a--gehaeuse-reparatur",
+    "pricingGroupId": "gruppe-a",
+    "serviceId": "gehaeuse-reparatur",
+    "keyKind": "alle",
+    "mode": "fest",
+    "priceCents": 5900,
+    "slotMinutes": 30
+  },
+  {
+    "id": "gruppe-a--fahrzeugoeffnung",
+    "pricingGroupId": "gruppe-a",
+    "serviceId": "fahrzeugoeffnung",
+    "keyKind": "alle",
+    "mode": "rahmen",
+    "priceFromCents": 9900,
+    "priceToCents": 18900,
+    "slotMinutes": 45
+  },
+  {
+    "id": "gruppe-b--zweitschluessel",
+    "pricingGroupId": "gruppe-b",
+    "serviceId": "zweitschluessel",
+    "keyKind": "alle",
+    "mode": "fest",
+    "priceCents": 24900,
+    "slotMinutes": 60
+  },
+  {
+    "id": "gruppe-b--ersatz-bei-verlust",
+    "pricingGroupId": "gruppe-b",
+    "serviceId": "ersatz-bei-verlust",
+    "keyKind": "alle",
+    "mode": "rahmen",
+    "priceFromCents": 32900,
+    "priceToCents": 48900,
+    "slotMinutes": 90
+  },
+  {
+    "id": "gruppe-b--programmierung",
+    "pricingGroupId": "gruppe-b",
+    "serviceId": "programmierung",
+    "keyKind": "alle",
+    "mode": "fest",
+    "priceCents": 12900,
+    "slotMinutes": 45
+  },
+  {
+    "id": "gruppe-b--bart-fraesen",
+    "pricingGroupId": "gruppe-b",
+    "serviceId": "bart-fraesen",
+    "keyKind": "alle",
+    "mode": "fest",
+    "priceCents": 6900,
+    "slotMinutes": 30
+  },
+  {
+    "id": "gruppe-b--gehaeuse-reparatur",
+    "pricingGroupId": "gruppe-b",
+    "serviceId": "gehaeuse-reparatur",
+    "keyKind": "alle",
+    "mode": "fest",
+    "priceCents": 7900,
+    "slotMinutes": 30
+  },
+  {
+    "id": "gruppe-b--fahrzeugoeffnung",
+    "pricingGroupId": "gruppe-b",
+    "serviceId": "fahrzeugoeffnung",
+    "keyKind": "alle",
+    "mode": "rahmen",
+    "priceFromCents": 12900,
+    "priceToCents": 22900,
+    "slotMinutes": 45
+  },
+  {
+    "id": "gruppe-c--zweitschluessel",
+    "pricingGroupId": "gruppe-c",
+    "serviceId": "zweitschluessel",
+    "keyKind": "alle",
+    "mode": "rahmen",
+    "priceFromCents": 39900,
+    "priceToCents": 64900,
+    "depositCents": 7900,
+    "slotMinutes": 90
+  },
+  {
+    "id": "gruppe-c--ersatz-bei-verlust",
+    "pricingGroupId": "gruppe-c",
+    "serviceId": "ersatz-bei-verlust",
+    "keyKind": "alle",
+    "mode": "pruefung",
+    "depositCents": 7900,
+    "slotMinutes": 120,
+    "leadTimeDays": 10
+  },
+  {
+    "id": "gruppe-c--programmierung",
+    "pricingGroupId": "gruppe-c",
+    "serviceId": "programmierung",
+    "keyKind": "alle",
+    "mode": "rahmen",
+    "priceFromCents": 17900,
+    "priceToCents": 29900,
+    "slotMinutes": 60
+  },
+  {
+    "id": "gruppe-c--bart-fraesen",
+    "pricingGroupId": "gruppe-c",
+    "serviceId": "bart-fraesen",
+    "keyKind": "alle",
+    "mode": "fest",
+    "priceCents": 8900,
+    "slotMinutes": 45
+  },
+  {
+    "id": "gruppe-c--gehaeuse-reparatur",
+    "pricingGroupId": "gruppe-c",
+    "serviceId": "gehaeuse-reparatur",
+    "keyKind": "alle",
+    "mode": "rahmen",
+    "priceFromCents": 9900,
+    "priceToCents": 16900,
+    "slotMinutes": 45
+  },
+  {
+    "id": "gruppe-c--fahrzeugoeffnung",
+    "pricingGroupId": "gruppe-c",
+    "serviceId": "fahrzeugoeffnung",
+    "keyKind": "alle",
+    "mode": "rahmen",
+    "priceFromCents": 14900,
+    "priceToCents": 26900,
+    "slotMinutes": 60
+  },
+  {
+    "id": "gruppe-d--zweitschluessel",
+    "pricingGroupId": "gruppe-d",
+    "serviceId": "zweitschluessel",
+    "keyKind": "alle",
+    "mode": "pruefung",
+    "depositCents": 8000,
+    "slotMinutes": 120,
+    "leadTimeDays": 10,
+    "note": "Zugang über den Hersteller erforderlich. Wir prüfen Unterlagen und Machbarkeit vor der Terminbestätigung."
+  },
+  {
+    "id": "gruppe-d--ersatz-bei-verlust",
+    "pricingGroupId": "gruppe-d",
+    "serviceId": "ersatz-bei-verlust",
+    "keyKind": "alle",
+    "mode": "pruefung",
+    "depositCents": 8000,
+    "slotMinutes": 150,
+    "leadTimeDays": 14
+  },
+  {
+    "id": "gruppe-d--programmierung",
+    "pricingGroupId": "gruppe-d",
+    "serviceId": "programmierung",
+    "keyKind": "alle",
+    "mode": "pruefung",
+    "depositCents": 8000,
+    "slotMinutes": 90,
+    "leadTimeDays": 10
+  },
+  {
+    "id": "gruppe-d--bart-fraesen",
+    "pricingGroupId": "gruppe-d",
+    "serviceId": "bart-fraesen",
+    "keyKind": "alle",
+    "mode": "pruefung",
+    "slotMinutes": 60
+  },
+  {
+    "id": "gruppe-d--gehaeuse-reparatur",
+    "pricingGroupId": "gruppe-d",
+    "serviceId": "gehaeuse-reparatur",
+    "keyKind": "alle",
+    "mode": "pruefung",
+    "slotMinutes": 60
+  },
+  {
+    "id": "gruppe-d--fahrzeugoeffnung",
+    "pricingGroupId": "gruppe-d",
+    "serviceId": "fahrzeugoeffnung",
+    "keyKind": "alle",
+    "mode": "pruefung",
+    "slotMinutes": 90
+  }
+]

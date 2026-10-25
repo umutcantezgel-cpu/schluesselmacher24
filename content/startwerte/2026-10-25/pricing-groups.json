@@ -1,0 +1,22 @@
+[
+  {
+    "id": "gruppe-a",
+    "label": "Gruppe A — einfache Systeme",
+    "description": "Fahrzeuge mit mechanischem Schlüssel oder einfacher Funkfernbedienung. Kurze Bearbeitungszeit."
+  },
+  {
+    "id": "gruppe-b",
+    "label": "Gruppe B — Funk und Transponder",
+    "description": "Fahrzeuge mit Transponder und Funkfernbedienung. Anlernen am Fahrzeug erforderlich."
+  },
+  {
+    "id": "gruppe-c",
+    "label": "Gruppe C — Smart Key und Keyless",
+    "description": "Fahrzeuge mit schlüssellosem Zugang und Start. Höherer Beschaffungs- und Programmieraufwand."
+  },
+  {
+    "id": "gruppe-d",
+    "label": "Gruppe D — Sonderfälle",
+    "description": "Fahrzeuge mit geschütztem Zugang, Totalverlust oder Sonderausstattung. Immer manuelle Prüfung."
+  }
+]

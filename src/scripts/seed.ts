@@ -3,8 +3,8 @@
  *
  *   npx payload run src/scripts/seed.ts
  *
- * Läuft bei jedem Build; jede Sammlung wird nur einmal übernommen
- * (siehe `src/payload/seed.ts`).
+ * Läuft bei jedem Build: legt neue Einträge an, belebt gelöschte nicht wieder
+ * und gleicht unveränderte Startwerte ab (siehe `src/payload/seed.ts`).
  */
 import config from '@payload-config';
 import { getPayload } from 'payload';

@@ -1,0 +1,87 @@
+[
+  {
+    "id": "zweitschluessel",
+    "slug": "zweitschluessel",
+    "label": "Zweitschlüssel anfertigen",
+    "description": "Ein zusätzlicher Schlüssel, während mindestens ein funktionierender Schlüssel vorhanden ist.",
+    "requiresVehicleOnSite": true,
+    "keyKinds": [
+      "mechanisch",
+      "funk",
+      "klappschluessel",
+      "smart-key",
+      "keyless"
+    ],
+    "active": true
+  },
+  {
+    "id": "ersatz-bei-verlust",
+    "slug": "ersatz-bei-verlust",
+    "label": "Ersatzschlüssel bei Verlust",
+    "description": "Alle Schlüssel verloren oder beschädigt. Umfang und Machbarkeit werden vorab geprüft.",
+    "requiresVehicleOnSite": true,
+    "keyKinds": [
+      "mechanisch",
+      "funk",
+      "klappschluessel",
+      "smart-key",
+      "keyless"
+    ],
+    "active": true
+  },
+  {
+    "id": "programmierung",
+    "slug": "programmierung",
+    "label": "Schlüssel programmieren und anlernen",
+    "description": "Vorhandener oder neuer Schlüssel wird elektronisch am Fahrzeug angelernt.",
+    "requiresVehicleOnSite": true,
+    "keyKinds": [
+      "funk",
+      "klappschluessel",
+      "smart-key",
+      "keyless"
+    ],
+    "active": true
+  },
+  {
+    "id": "bart-fraesen",
+    "slug": "bart-fraesen",
+    "label": "Schlüsselbart fräsen",
+    "description": "Mechanische Fertigung des Bartes nach Vorlage oder geeigneten Fahrzeugdaten.",
+    "requiresVehicleOnSite": false,
+    "keyKinds": [
+      "mechanisch",
+      "funk",
+      "klappschluessel"
+    ],
+    "active": true
+  },
+  {
+    "id": "gehaeuse-reparatur",
+    "slug": "gehaeuse-reparatur",
+    "label": "Gehäuse, Tasten und Batterie",
+    "description": "Austausch von Gehäuse, Tasten oder Batterie. Die Elektronik bleibt erhalten.",
+    "requiresVehicleOnSite": false,
+    "keyKinds": [
+      "funk",
+      "klappschluessel",
+      "smart-key"
+    ],
+    "active": true
+  },
+  {
+    "id": "fahrzeugoeffnung",
+    "slug": "fahrzeugoeffnung",
+    "label": "Fahrzeugöffnung",
+    "description": "Zerstörungsfreie Öffnung des Fahrzeugs bei ausgesperrtem Schlüssel.",
+    "requiresVehicleOnSite": true,
+    "keyKinds": [
+      "mechanisch",
+      "funk",
+      "klappschluessel",
+      "smart-key",
+      "keyless"
+    ],
+    "active": true
+  }
+]
