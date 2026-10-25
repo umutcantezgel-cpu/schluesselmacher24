@@ -1,0 +1,7 @@
+# Next.js 16+ App Router Architectural Goals
+
+- Target Runtime: Next.js 16+ (App Router, Turbopack, React 19.2+)
+- Typescript: Strict 5.5+, No Enums, Satisfies Operator
+- CSS: Tailwind v4 (OKLCH Light Mode, Swiss Design Doctrine)
+- Zero New Routes Invariant
+- Read-Only Invariant for Application Code during Audit

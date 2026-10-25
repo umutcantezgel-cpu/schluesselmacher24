@@ -1,0 +1,54 @@
+# Architecture Matrix
+
+| Route Path | Source File | Word Count | Status | Target Expansion | Interactive Module |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 88 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | 68 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 1117 (Target: 1317) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /artikel | src/app/(site)/artikel/page.tsx | 775 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 498 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 1108 (Target: 1308) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 1079 (Target: 1279) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 1120 (Target: 1320) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 1962 (Target: 2162) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 1178 (Target: 1378) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 755 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 1179 (Target: 1379) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel | src/app/(site)/autoschluessel/page.tsx | 2449 (Target: 2649) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 1207 (Target: 1407) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 1029 (Target: 1229) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 1192 (Target: 1392) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 1351 (Target: 1551) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 387 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 2921 (Target: 3121) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 299 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 2525 (Target: 2725) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /kasse | src/app/(site)/kasse/page.tsx | 399 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| / | src/app/(site)/page.tsx | 2173 (Target: 2373) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 752 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /ratgeber | src/app/(site)/ratgeber/page.tsx | 303 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 410 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 221 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 724 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 241 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 507 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 364 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 366 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 2123 (Target: 2323) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 1007 (Target: 1207) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 707 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 224 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 2161 (Target: 2361) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 144 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 602 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /service-und-termin | src/app/(site)/service-und-termin/page.tsx | 2207 (Target: 2407) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 102 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 726 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 704 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 1395 (Target: 1595) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 361 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 592 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /standorte | src/app/(site)/standorte/page.tsx | 293 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 502 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 2220 (Target: 2420) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
+| /warenkorb | src/app/(site)/warenkorb/page.tsx | 330 (Target: 950) | PENDING_BUILDER | Technical Specs, FAQs | DynamicInteractiveModule |
