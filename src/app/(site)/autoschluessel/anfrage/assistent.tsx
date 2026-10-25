@@ -1179,7 +1179,7 @@ export function Assistent({
                   onSelect={selectService}
                   title={entry.label}
                   description={entry.description}
-                  info={serviceInfo(entry)}
+                  info={serviceInfo(entry, model)}
                 />
               ))}
             </div>

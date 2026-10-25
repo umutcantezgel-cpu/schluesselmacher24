@@ -1,4 +1,5 @@
-import type { CarKeyService, ImageSlot, InfoHint, KeyKind } from '@/lib/types';
+import { fahrzeugVorOrtNoetig } from '@/lib/pricing';
+import type { CarKeyService, ImageSlot, InfoHint, KeyKind, VehicleModel } from '@/lib/types';
 
 /* ==========================================================================
    Beschriftungen für den Autoschlüssel-Assistenten
@@ -208,13 +209,16 @@ export const REGISTRATION_EXAMPLE: ImageSlot = {
   note: 'Nachgestelltes Musterdokument ohne echte Daten.',
 };
 
-/** Erklärung zu einer Leistung — aus den gepflegten Leistungsdaten gebaut. */
-export function serviceInfo(service: CarKeyService): InfoHint {
+/**
+ * Erklärung zu einer Leistung — aus den gepflegten Leistungsdaten gebaut. Mit Modell gilt dieselbe
+ * Regel wie in der Preisermittlung (`fahrzeugVorOrtNoetig`).
+ */
+export function serviceInfo(service: CarKeyService, model?: VehicleModel | null): InfoHint {
   return {
     title: service.label,
     body:
       `${service.description} `
-      + (service.requiresVehicleOnSite
+      + (fahrzeugVorOrtNoetig(service, model)
         ? 'Für diese Leistung muss das Fahrzeug beim Termin verfügbar sein.'
         : 'Für diese Leistung ist das Fahrzeug beim Termin nicht zwingend nötig.'),
   };

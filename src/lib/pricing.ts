@@ -14,12 +14,38 @@ import type {
   ProductClass,
   ShippingOption,
 } from '@/lib/types';
+import { gewaehlterHersteller, wirksameZusatzIds } from '@/lib/cylinder-rules';
 
 /* ==========================================================================
    Preisermittlung
    Alle Werte stammen aus der Datenschicht. In dieser Datei steht keine
    Zahl, die den Preis eines Produkts oder einer Leistung bestimmt.
    ========================================================================== */
+
+/**
+ * Leistungen, bei denen am Fahrzeug angelernt wird (Transponder, Funk, Wegfahrsperre). Nur für sie
+ * gilt der Schalter am Modell „Programmierung nur am Fahrzeug“ (`requiresVehicleOnSite`).
+ */
+export const LEISTUNGEN_MIT_ANLERNEN: ReadonlySet<string> = new Set([
+  'zweitschluessel',
+  'ersatz-bei-verlust',
+  'programmierung',
+]);
+
+/**
+ * Muss das Fahrzeug zum Termin? Maßgeblich ist die Leistung („Fahrzeug muss vor Ort sein“):
+ * Ohne diesen Haken nie — etwa beim Bart fräsen oder bei Gehäuse und Batterie. Mit Haken ja;
+ * bei Leistungen mit Anlernen entscheidet zusätzlich das Modell, ob dort ohne Fahrzeug angelernt
+ * werden kann. Für die Fahrzeugöffnung und andere Leistungen spielt der Modell-Schalter keine Rolle.
+ */
+export function fahrzeugVorOrtNoetig(
+  service: Pick<CarKeyService, 'id' | 'requiresVehicleOnSite'>,
+  model?: Pick<VehicleModel, 'requiresVehicleOnSite'> | null,
+): boolean {
+  if (!service.requiresVehicleOnSite) return false;
+  if (!model || !LEISTUNGEN_MIT_ANLERNEN.has(service.id)) return true;
+  return model.requiresVehicleOnSite;
+}
 
 export interface QuoteInput {
   make: VehicleMake;
@@ -56,8 +82,7 @@ export function quoteCarKeyService(
     ) ??
     null;
 
-  const requiresVehicleOnSite =
-    input.model?.requiresVehicleOnSite || input.service.requiresVehicleOnSite;
+  const requiresVehicleOnSite = fahrzeugVorOrtNoetig(input.service, input.model);
 
   // Ohne hinterlegte Regel wird der Fall grundsätzlich manuell geprüft.
   if (!rule) {
@@ -90,8 +115,11 @@ export function quoteCarKeyService(
   };
 
   if (mode === 'fest' && rule.priceCents !== undefined) {
+    // Die Anzahlung ist nie höher als der Festpreis: Bart fräsen für 69 € verlangt 69 € statt
+    // der Standard-Anzahlung von 69,90 € (Rest 0), auch wenn der Festpreis unter der Mindestanzahlung liegt.
+    if (rule.priceCents > 0) quote.depositCents = Math.min(depositCents, rule.priceCents);
     quote.priceCents = rule.priceCents;
-    quote.remainderCents = Math.max(0, rule.priceCents - depositCents);
+    quote.remainderCents = Math.max(0, rule.priceCents - quote.depositCents);
   } else if (mode === 'rahmen') {
     quote.priceFromCents = rule.priceFromCents ?? rule.priceCents;
     quote.priceToCents = rule.priceToCents ?? undefined;
@@ -129,11 +157,22 @@ export function unitPriceForCodeLine(
 
 /* ---------- Gleichschließende Zylinder ---------------------------------- */
 
+export interface CylinderPriceLine {
+  label: string;
+  qty: number;
+  unitCents: number;
+  totalCents: number;
+}
+
 export interface CylinderPriceBreakdown {
-  lines: Array<{ label: string; qty: number; unitCents: number; totalCents: number }>;
+  /** Je Position ein Zylinder-Posten; der Herstelleraufpreis steckt im Stückpreis. */
+  lines: CylinderPriceLine[];
   cylindersCents: number;
   keysCents: number;
   extrasCents: number;
+  /** Zusatzkomponenten des gewählten Herstellers. */
+  componentLines: CylinderPriceLine[];
+  componentsCents: number;
   totalCents: number;
   /** Anzahl Zylinder insgesamt. */
   cylinderCount: number;
@@ -146,6 +185,9 @@ export function priceCylinderOrder(
   const lines: CylinderPriceBreakdown['lines'] = [];
   let cylindersCents = 0;
   let cylinderCount = 0;
+  // Ohne angebotenen Hersteller kein Aufpreis und keine Komponenten — alles wie ohne Herstellerauswahl.
+  const hersteller = gewaehlterHersteller(draft, catalog);
+  const herstellerAufpreis = hersteller?.surchargeCentsPerCylinder ?? 0;
 
   for (const item of draft.items) {
     const form = catalog.forms.find((f) => f.id === item.form);
@@ -160,7 +202,7 @@ export function priceCylinderOrder(
     const fn = catalog.functions.find((f) => f.id === item.functionId);
     const fnSurcharge = fn && fn.forms.includes(item.form) ? fn.surchargeCents : 0;
 
-    const unit = form.basePriceCents + surcharge + fnSurcharge;
+    const unit = form.basePriceCents + surcharge + fnSurcharge + herstellerAufpreis;
     const total = unit * item.qty;
 
     const measureLabel = item.measureBMm
@@ -182,10 +224,20 @@ export function priceCylinderOrder(
   const keysCents = extraKeys * catalog.keyPriceCents;
 
   let extrasCents = 0;
-  for (const id of draft.extraIds) {
+  for (const id of wirksameZusatzIds(draft, catalog)) {
     const extra = catalog.extras.find((e) => e.id === id && e.active);
     if (!extra) continue;
     extrasCents += extra.unit === 'stueck' ? extra.priceCents * cylinderCount : extra.priceCents;
+  }
+
+  const componentLines: CylinderPriceLine[] = [];
+  let componentsCents = 0;
+  for (const wahl of draft.components ?? []) {
+    const komponente = hersteller?.components.find((k) => k.name === wahl.name);
+    if (!komponente || !(wahl.qty >= 1)) continue;
+    const total = komponente.priceCents * wahl.qty;
+    componentLines.push({ label: komponente.name, qty: wahl.qty, unitCents: komponente.priceCents, totalCents: total });
+    componentsCents += total;
   }
 
   return {
@@ -193,8 +245,10 @@ export function priceCylinderOrder(
     cylindersCents,
     keysCents,
     extrasCents,
+    componentLines,
+    componentsCents,
     cylinderCount,
-    totalCents: cylindersCents + keysCents + extrasCents,
+    totalCents: cylindersCents + keysCents + extrasCents + componentsCents,
   };
 }
 

@@ -1,17 +1,26 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import type {
   CylinderCatalog,
+  CylinderComponentChoice,
   CylinderFormOption,
   CylinderLineItem,
+  CylinderManufacturer,
   CylinderOrderDraft,
   InfoHint,
   SummarySection,
 } from '@/lib/types';
-import { measureOptions } from '@/lib/cylinder-rules';
+import {
+  ERWEITERBAR_OPTION_ID,
+  aktiveHersteller,
+  herstellerFuehrtBauform,
+  measureOptions,
+  wirksameZusatzIds,
+} from '@/lib/cylinder-rules';
 import { priceCylinderOrder } from '@/lib/pricing';
 import { formatCents, formatMillimeter } from '@/lib/format';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
@@ -37,6 +46,13 @@ import { ZylinderMassLive } from '@/components/visual/interaktiv/zylinder-mass-l
 const FLOW_ID = 'zylinder-konfigurator';
 
 const STEPS: FlowStep[] = [
+  {
+    // Erscheint nur, wenn im Katalog mindestens ein Hersteller angeboten wird.
+    id: 'hersteller',
+    short: 'Hersteller',
+    title: 'Hersteller wählen',
+    hint: 'Alle Zylinder dieser Schließung kommen vom selben Hersteller.',
+  },
   {
     id: 'zylinder',
     short: 'Zylinder',
@@ -69,12 +85,18 @@ const STEPS: FlowStep[] = [
   },
 ];
 
-/** Zwischenstand im Browser. `expandable` bleibt offen, bis gewählt wurde. */
+/**
+ * Zwischenstand im Browser. `expandable` bleibt offen, bis gewählt wurde. Die Option
+ * „Erweiterbar reservieren“ steht nie in `extraIds`: Sie folgt allein `expandable`.
+ */
 interface ConfigState {
   items: CylinderLineItem[];
   keyCount: number;
   extraIds: string[];
   expandable: boolean | null;
+  /** Kennung des Herstellers; leer, solange keiner gewählt ist oder keiner angeboten wird. */
+  manufacturerId: string;
+  components: CylinderComponentChoice[];
 }
 
 const EXPANDABLE_HINTS: Record<'ja' | 'nein', InfoHint> = {
@@ -126,6 +148,15 @@ function availableFunctions(catalog: CylinderCatalog, formId: CylinderFormOption
   return catalog.functions.filter((fn) => fn.active && fn.forms.includes(formId));
 }
 
+/** Wählbare Bauformen: aktiv und — falls ein Hersteller gewählt ist — von ihm geführt. */
+function availableForms(catalog: CylinderCatalog, hersteller?: CylinderManufacturer): CylinderFormOption[] {
+  return catalog.forms.filter((form) => form.active && herstellerFuehrtBauform(hersteller, form.id));
+}
+
+function herstellerAusState(catalog: CylinderCatalog, manufacturerId: string): CylinderManufacturer | undefined {
+  return manufacturerId ? aktiveHersteller(catalog).find((h) => h.id === manufacturerId) : undefined;
+}
+
 /** Fortlaufende, vorhersagbare Kennung — gleich auf Server und im Browser. */
 function nextUid(items: CylinderLineItem[]): string {
   let index = 1;
@@ -133,8 +164,12 @@ function nextUid(items: CylinderLineItem[]): string {
   return `position-${index}`;
 }
 
-function createItem(catalog: CylinderCatalog, items: CylinderLineItem[]): CylinderLineItem | null {
-  const form = catalog.forms.find((f) => f.active);
+function createItem(
+  catalog: CylinderCatalog,
+  items: CylinderLineItem[],
+  hersteller?: CylinderManufacturer,
+): CylinderLineItem | null {
+  const form = availableForms(catalog, hersteller)[0];
   if (!form) return null;
   return {
     uid: nextUid(items),
@@ -145,9 +180,9 @@ function createItem(catalog: CylinderCatalog, items: CylinderLineItem[]): Cylind
   };
 }
 
-function isItemValid(catalog: CylinderCatalog, item: CylinderLineItem): boolean {
+function isItemValid(catalog: CylinderCatalog, item: CylinderLineItem, hersteller?: CylinderManufacturer): boolean {
   const form = catalog.forms.find((f) => f.id === item.form && f.active);
-  if (!form) return false;
+  if (!form || !herstellerFuehrtBauform(hersteller, form.id)) return false;
 
   const values = measureOptions(form);
   if (!values.includes(item.measureAMm)) return false;
@@ -168,19 +203,39 @@ function cylinderCount(items: CylinderLineItem[]): number {
   return items.reduce((sum, item) => sum + item.qty, 0);
 }
 
-function toDraft(state: ConfigState): CylinderOrderDraft {
-  return {
+/**
+ * Bestellentwurf aus dem Zwischenstand. Hersteller und Komponenten kommen nur hinein, wenn der
+ * Katalog Hersteller anbietet — sonst bleibt der Entwurf genau wie ohne Herstellerauswahl.
+ */
+function toDraft(state: ConfigState, catalog: CylinderCatalog): CylinderOrderDraft {
+  const expandable = state.expandable === true;
+  const draft: CylinderOrderDraft = {
     items: state.items,
     keyCount: state.keyCount,
-    extraIds: state.extraIds,
-    expandable: state.expandable === true,
+    extraIds: wirksameZusatzIds({ extraIds: state.extraIds, expandable }, catalog),
+    expandable,
   };
+  if (aktiveHersteller(catalog).length > 0 && state.manufacturerId) {
+    draft.manufacturerId = state.manufacturerId;
+    const hersteller = herstellerAusState(catalog, state.manufacturerId);
+    const components = state.components.filter(
+      (wahl) => wahl.qty >= 1 && hersteller?.components.some((k) => k.name === wahl.name),
+    );
+    if (components.length > 0) draft.components = components;
+  }
+  return draft;
 }
 
 /** Preis einer einzelnen Position — dieselbe Rechnung wie für die Bestellung. */
-function positionTotalCents(catalog: CylinderCatalog, item: CylinderLineItem): number {
+function positionTotalCents(catalog: CylinderCatalog, item: CylinderLineItem, manufacturerId: string): number {
   return priceCylinderOrder(
-    { items: [item], keyCount: catalog.includedKeys, extraIds: [], expandable: false },
+    {
+      items: [item],
+      keyCount: catalog.includedKeys,
+      extraIds: [],
+      expandable: false,
+      ...(manufacturerId ? { manufacturerId } : {}),
+    },
     catalog,
   ).cylindersCents;
 }
@@ -193,6 +248,8 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
   const [submitting, setSubmitting] = useState(false);
 
   const extras = useMemo(() => catalog.extras.filter((extra) => extra.active), [catalog]);
+  const herstellerListe = useMemo(() => aktiveHersteller(catalog), [catalog]);
+  const erweiterbarOption = extras.find((extra) => extra.id === ERWEITERBAR_OPTION_ID);
 
   const initial = useMemo<ConfigState>(() => {
     const first = createItem(catalog, []);
@@ -201,6 +258,8 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
       keyCount: Math.max(1, catalog.includedKeys),
       extraIds: [],
       expandable: null,
+      manufacturerId: '',
+      components: [],
     };
   }, [catalog]);
 
@@ -209,32 +268,40 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
     steps: STEPS,
     initial,
     version: 1,
+    // Den Herstellerschritt gibt es nur, wenn der Katalog Hersteller anbietet.
+    isStepRelevant: (_data, stepId) => stepId !== 'hersteller' || herstellerListe.length > 0,
     validate: (data, stepId) => {
+      const hersteller = herstellerAusState(catalog, data.manufacturerId);
+      const herstellerOk = herstellerListe.length === 0 || hersteller !== undefined;
       const count = cylinderCount(data.items);
       const cylindersOk =
         data.items.length > 0
         && count >= 1
         && count <= catalog.maxCylinders
-        && data.items.every((item) => isItemValid(catalog, item));
+        && data.items.every((item) => isItemValid(catalog, item, hersteller));
       const keysOk = data.keyCount >= 1 && data.keyCount <= catalog.maxKeys;
 
+      if (stepId === 'hersteller') return herstellerOk;
       if (stepId === 'zylinder') return cylindersOk;
       if (stepId === 'schluessel') return keysOk;
       if (stepId === 'erweiterung') return data.expandable !== null;
       if (stepId === 'zusammenfassung') {
-        return cylindersOk && keysOk && data.expandable !== null;
+        return herstellerOk && cylindersOk && keysOk && data.expandable !== null;
       }
       return true;
     },
   });
 
   const { data } = flow;
-  const breakdown = useMemo(() => priceCylinderOrder(toDraft(data), catalog), [data, catalog]);
+  const hersteller = useMemo(() => herstellerAusState(catalog, data.manufacturerId), [catalog, data.manufacturerId]);
+  const draft = useMemo(() => toDraft(data, catalog), [data, catalog]);
+  const breakdown = useMemo(() => priceCylinderOrder(draft, catalog), [draft, catalog]);
   const count = cylinderCount(data.items);
   const canAddPosition = count < catalog.maxCylinders && data.items.length < catalog.maxCylinders;
   const extraKeys = Math.max(0, data.keyCount - catalog.includedKeys);
 
   const blockedHints: Record<string, string> = {
+    hersteller: 'Bitte wählen Sie einen Hersteller.',
     zylinder:
       data.items.length === 0
         ? 'Bitte legen Sie mindestens eine Position an.'
@@ -253,21 +320,49 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
     );
   }
 
-  /** Bauformwechsel: Maße und Funktion auf die neue Bauform anpassen. */
-  function changeForm(uid: string, formId: string) {
-    const form = catalog.forms.find((f) => f.id === formId && f.active);
-    if (!form) return;
+  /** Bauform, Maße und Funktion einer Position auf eine neue Bauform umstellen. */
+  function mitBauform(item: CylinderLineItem, form: CylinderFormOption): CylinderLineItem {
     const measures = defaultMeasures(form);
-    updateItem(uid, {
+    return {
+      ...item,
       form: form.id,
       measureAMm: measures.measureAMm,
       measureBMm: form.measures === 'beide' ? measures.measureBMm : undefined,
       functionId: availableFunctions(catalog, form.id)[0]?.id,
+    };
+  }
+
+  /** Bauformwechsel: Maße und Funktion auf die neue Bauform anpassen. */
+  function changeForm(uid: string, formId: string) {
+    const form = availableForms(catalog, hersteller).find((f) => f.id === formId);
+    if (!form) return;
+    flow.set('items', data.items.map((item) => (item.uid === uid ? mitBauform(item, form) : item)));
+  }
+
+  /**
+   * Herstellerwechsel: Komponenten gehören zum Hersteller und entfallen; Positionen mit einer
+   * Bauform, die der neue Hersteller nicht führt, wechseln auf seine erste Bauform.
+   */
+  function changeManufacturer(id: string) {
+    const neu = herstellerAusState(catalog, id);
+    if (!neu || id === data.manufacturerId) return;
+    const erste = availableForms(catalog, neu)[0];
+    flow.update({
+      manufacturerId: id,
+      components: [],
+      items: data.items.map((item) =>
+        herstellerFuehrtBauform(neu, item.form) || !erste ? item : mitBauform(item, erste),
+      ),
     });
   }
 
+  function setComponentQty(name: string, qty: number) {
+    const rest = data.components.filter((wahl) => wahl.name !== name);
+    flow.set('components', qty >= 1 ? [...rest, { name, qty }] : rest);
+  }
+
   function addPosition() {
-    const item = createItem(catalog, data.items);
+    const item = createItem(catalog, data.items, hersteller);
     if (item) flow.set('items', [...data.items, item]);
   }
 
@@ -276,6 +371,11 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
   }
 
   function toggleExtra(id: string) {
+    // „Erweiterbar reservieren“ ist dieselbe Wahl wie „Erweiterbar: Ja“ im nächsten Schritt.
+    if (id === ERWEITERBAR_OPTION_ID) {
+      flow.set('expandable', data.expandable !== true);
+      return;
+    }
     flow.set(
       'extraIds',
       data.extraIds.includes(id)
@@ -287,15 +387,37 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
   function handleSubmit() {
     if (!flow.canContinue || submitting) return;
     setSubmitting(true);
-    addCylinderOrder(toDraft(data), breakdown.totalCents);
+    addCylinderOrder(draft, breakdown.totalCents);
     clearFlow(FLOW_ID);
     router.push('/warenkorb');
   }
 
   const summary = useMemo<SummarySection[]>(() => {
-    const selectedExtras = extras.filter((extra) => data.extraIds.includes(extra.id));
+    const selectedExtras = extras.filter((extra) => draft.extraIds.includes(extra.id));
+    const herstellerAbschnitt: SummarySection[] = hersteller
+      ? [
+          {
+            title: 'Hersteller',
+            rows: [
+              { label: 'Hersteller', value: hersteller.name },
+              {
+                label: 'Aufpreis je Zylinder',
+                value:
+                  hersteller.surchargeCentsPerCylinder > 0
+                    ? `${formatCents(hersteller.surchargeCentsPerCylinder)} (im Zylinderpreis enthalten)`
+                    : 'keiner',
+              },
+              ...breakdown.componentLines.map((line) => ({
+                label: line.label,
+                value: `${line.qty} × ${formatCents(line.unitCents)} = ${formatCents(line.totalCents)}`,
+              })),
+            ],
+          },
+        ]
+      : [];
 
     return [
+      ...herstellerAbschnitt,
       {
         title: 'Zylinder',
         rows: breakdown.lines.map((line) => ({
@@ -344,11 +466,14 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
           { label: 'Zylinder', value: formatCents(breakdown.cylindersCents) },
           { label: 'Zusätzliche Schlüssel', value: formatCents(breakdown.keysCents) },
           { label: 'Optionen', value: formatCents(breakdown.extrasCents) },
+          ...(breakdown.componentLines.length > 0
+            ? [{ label: 'Zusatzkomponenten', value: formatCents(breakdown.componentsCents) }]
+            : []),
           { label: 'Gesamt', value: formatCents(breakdown.totalCents) },
         ],
       },
     ];
-  }, [breakdown, catalog, data.expandable, data.extraIds, data.keyCount, extraKeys, extras]);
+  }, [breakdown, catalog, data.expandable, data.keyCount, draft.extraIds, extraKeys, extras, hersteller]);
 
   // Ohne gepflegte Bauformen ist keine Zusammenstellung möglich.
   if (catalog.forms.filter((form) => form.active).length === 0) {
@@ -395,7 +520,7 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
                 Optionen
               </dt>
               <dd className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
-                {data.extraIds.length}
+                {draft.extraIds.length}
               </dd>
             </div>
             <div className="border-l border-border py-4 pl-3 pr-3 sm:pl-4 sm:pr-4">
@@ -416,6 +541,42 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
             Anpassung.
           </p>
         </div>
+
+        {/* Hersteller — nur, wenn der Katalog Hersteller anbietet */}
+        {flow.step?.id === 'hersteller' && (
+          <div className="space-y-4">
+            <fieldset>
+              <legend className="mb-3 text-body font-semibold text-foreground">
+                Von welchem Hersteller sollen Ihre Zylinder sein?
+              </legend>
+              <div className="space-y-3">
+                {herstellerListe.map((eintrag) => (
+                  <OptionCard
+                    key={eintrag.id}
+                    name="hersteller"
+                    value={eintrag.id}
+                    checked={data.manufacturerId === eintrag.id}
+                    onSelect={changeManufacturer}
+                    title={eintrag.name}
+                    description={eintrag.description || undefined}
+                    meta={
+                      eintrag.surchargeCentsPerCylinder > 0
+                        ? `+ ${formatCents(eintrag.surchargeCentsPerCylinder)} je Zylinder`
+                        : 'ohne Aufpreis'
+                    }
+                  />
+                ))}
+              </div>
+            </fieldset>
+            <p className="text-small leading-relaxed text-foreground-muted">
+              Weitere Hersteller oder Sonderlösungen auf Anfrage — schreiben Sie uns über die{' '}
+              <Link href="/service-und-termin/anfrage" className="font-semibold text-primary hover:underline">
+                allgemeine Anfrage
+              </Link>
+              .
+            </p>
+          </div>
+        )}
 
         {/* Schritt 1 — Zylinder */}
         {flow.step?.id === 'zylinder' && (
@@ -439,6 +600,7 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
               <PositionCard
                 key={item.uid}
                 catalog={catalog}
+                hersteller={hersteller}
                 item={item}
                 index={index}
                 maxQty={Math.max(1, catalog.maxCylinders - (count - item.qty))}
@@ -531,7 +693,7 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
                     multiple
                     name="zylinder-optionen"
                     value={extra.id}
-                    checked={data.extraIds.includes(extra.id)}
+                    checked={draft.extraIds.includes(extra.id)}
                     onSelect={toggleExtra}
                     title={extra.label}
                     description={extra.description}
@@ -550,6 +712,50 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
                 {formatCents(breakdown.extrasCents)}
               </p>
             </div>
+
+            {/* Zusatzkomponenten des gewählten Herstellers mit Stückzahl */}
+            {hersteller && hersteller.components.length > 0 && (
+              <fieldset className="border-t border-border pt-5">
+                <legend className="mb-1 text-body font-semibold text-foreground">
+                  Zusatzkomponenten von {hersteller.name}
+                </legend>
+                <p className="mb-3 text-small leading-relaxed text-foreground-muted">
+                  Weitere Teile mit derselben Schließung. Freiwillig — Stückzahl 0 heißt: nicht gewählt.
+                </p>
+                <ul className="divide-y divide-border rounded-lg border border-border">
+                  {hersteller.components.map((komponente, index) => {
+                    const qty = data.components.find((wahl) => wahl.name === komponente.name)?.qty ?? 0;
+                    return (
+                      <li key={komponente.name} className="flex flex-wrap items-center justify-between gap-4 px-4 py-3">
+                        <div className="min-w-0">
+                          <p className="text-small font-semibold text-foreground">{komponente.name}</p>
+                          {komponente.description && (
+                            <p className="mt-0.5 text-small text-foreground-muted">{komponente.description}</p>
+                          )}
+                          <p className="mt-1 font-mono text-small tabular-nums text-foreground-muted">
+                            {formatCents(komponente.priceCents)} je Stück
+                          </p>
+                        </div>
+                        <QuantityInput
+                          id={`komponente-${index}`}
+                          label={`Stückzahl ${komponente.name}`}
+                          value={qty}
+                          min={0}
+                          max={catalog.maxCylinders}
+                          onChange={(value) => setComponentQty(komponente.name, value)}
+                        />
+                      </li>
+                    );
+                  })}
+                </ul>
+                <div className="mt-3 flex flex-wrap items-baseline justify-between gap-2 rounded-lg border border-border bg-surface-muted px-4 py-3">
+                  <p className="text-small font-semibold text-foreground">Summe Zusatzkomponenten</p>
+                  <p className="font-mono text-body font-bold tabular-nums text-foreground">
+                    {formatCents(breakdown.componentsCents)}
+                  </p>
+                </div>
+              </fieldset>
+            )}
 
             <p className="text-small leading-relaxed text-foreground-muted">
               Optionen mit Preis je Zylinder werden für jeden Zylinder dieser Bestellung gerechnet, zurzeit <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{breakdown.cylinderCount} Stück</span>.
@@ -574,6 +780,13 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
                   title="Ja, Schließung hinterlegen"
                   description="Später lassen sich weitere Zylinder mit derselben Schließung ergänzen."
                   info={EXPANDABLE_HINTS.ja}
+                  meta={
+                    erweiterbarOption
+                      ? `+ ${formatCents(erweiterbarOption.priceCents)} ${
+                          erweiterbarOption.unit === 'stueck' ? 'je Zylinder' : 'einmalig'
+                        }`
+                      : undefined
+                  }
                 />
                 <OptionCard
                   name="erweiterbar"
@@ -587,19 +800,21 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
               </div>
             </fieldset>
 
-            <Alert tone="info" title="Was die Hinterlegung voraussetzt">
-              Damit wir Ihre Schließung hinterlegen können, muss die passende Option im Schritt
-              „Schutz und Optionen“ ausgewählt sein. Zurzeit haben Sie dort{' '}
-              {data.extraIds.length === 0
-                ? 'keine Option ausgewählt'
-                : `${data.extraIds.length} Option(en) ausgewählt`}
-              .
-              <span className="mt-3 block">
-                <Button variant="outline" size="md" onClick={() => flow.goTo('optionen')}>
-                  Optionen noch einmal ansehen
-                </Button>
-              </span>
-            </Alert>
+            {erweiterbarOption && (
+              <Alert tone="info" title="Hinterlegung als Option">
+                Mit „Ja“ ist die Option „{erweiterbarOption.label}“ für{' '}
+                <span className="whitespace-nowrap font-mono tabular-nums">
+                  {formatCents(erweiterbarOption.priceCents)}
+                </span>{' '}
+                {erweiterbarOption.unit === 'stueck' ? 'je Zylinder' : 'einmalig'} gewählt und in der
+                Summe enthalten. Sie steht auch im Schritt „Schutz und Optionen“.
+                <span className="mt-3 block">
+                  <Button variant="outline" size="md" onClick={() => flow.goTo('optionen')}>
+                    Optionen noch einmal ansehen
+                  </Button>
+                </span>
+              </Alert>
+            )}
           </div>
         )}
 
@@ -659,6 +874,8 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
 
 interface PositionCardProps {
   catalog: CylinderCatalog;
+  /** Gewählter Hersteller: begrenzt die Bauformen und trägt seinen Aufpreis bei. */
+  hersteller?: CylinderManufacturer;
   item: CylinderLineItem;
   index: number;
   maxQty: number;
@@ -670,6 +887,7 @@ interface PositionCardProps {
 
 function PositionCard({
   catalog,
+  hersteller,
   item,
   index,
   maxQty,
@@ -679,14 +897,14 @@ function PositionCard({
   onRemove,
 }: PositionCardProps) {
   const form = catalog.forms.find((f) => f.id === item.form && f.active);
-  const forms = catalog.forms.filter((f) => f.active);
+  const forms = availableForms(catalog, hersteller);
   const functions = catalog.functions.filter((fn) => fn.active);
 
   if (!form) return null;
 
   const values = measureOptions(form);
   const measureFigure = catalog.measuringInfo.figure ?? catalog.measuringFigure;
-  const positionTotal = positionTotalCents(catalog, item);
+  const positionTotal = positionTotalCents(catalog, item, hersteller?.id ?? '');
   // Nach einem Bauformwechsel oder aus einem alten Zwischenstand kann ein Maß
   // außerhalb des erlaubten Bereichs liegen — dann bleibt die Auswahl leer.
   const hasA = values.includes(item.measureAMm);
@@ -734,7 +952,7 @@ function PositionCard({
                 title={option.label}
                 description={option.description}
                 info={option.info}
-                meta={`ab ${formatCents(option.basePriceCents)}`}
+                meta={`ab ${formatCents(option.basePriceCents + (hersteller?.surchargeCentsPerCylinder ?? 0))}`}
               />
             ))}
           </div>

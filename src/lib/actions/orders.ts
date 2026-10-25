@@ -91,6 +91,11 @@ const cartItemSchema = z.discriminatedUnion('kind', [
       keyCount: z.number().int(),
       extraIds: z.array(z.string().max(80)).max(20),
       expandable: z.boolean(),
+      manufacturerId: z.string().max(80).optional(),
+      components: z
+        .array(z.object({ name: z.string().max(200), qty: z.number().int().min(1).max(999) }))
+        .max(20)
+        .optional(),
     }),
     unitPriceCents: z.number().int().min(0),
     qty: z.literal(1),
@@ -249,7 +254,7 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
           `${breakdown.cylinderCount} Zylinder · ${item.draft.keyCount} gemeinsame Schlüssel · `
           + formatCents(breakdown.totalCents),
       });
-      for (const line of breakdown.lines) {
+      for (const line of [...breakdown.lines, ...breakdown.componentLines]) {
         rows.push({ label: `— ${line.label}`, value: `${line.qty} × ${formatCents(line.unitCents)}` });
       }
       positions.push({
