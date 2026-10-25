@@ -39,7 +39,7 @@ export default async function StandortePage() {
         title={cities.length > 0 ? 'Vor Ort und deutschlandweit' : 'Werkstatt und Versand'}
         lead={
           cities.length > 0
-            ? 'Schlüssel nach Code und gleichschließende Zylinder versenden wir innerhalb Deutschlands. Vor-Ort-Leistungen erbringen wir in den hier aufgeführten Gebieten.'
+            ? 'Schlüssel nach Code und gleichschließende Zylinder versenden wir innerhalb Deutschlands. Was wir in den aufgeführten Orten anbieten, steht auf der jeweiligen Seite.'
             : 'Schlüssel nach Code und gleichschließende Zylinder versenden wir innerhalb Deutschlands. Vor-Ort-Leistungen stimmen wir im Einzelfall mit Ihnen ab.'
         }
         crumbs={[{ href: '/standorte', label: 'Einsatzgebiete' }]}
@@ -71,7 +71,7 @@ export default async function StandortePage() {
               nummer="01"
               eyebrow="Vor-Ort-Gebiete"
               title="Regionen"
-              lead="Jede Region hat eigene Angaben zu Anfahrt und angebotenen Leistungen."
+              lead="Jeder Ort hat eigene Angaben zu Werkstatt, Anreise und angebotenen Leistungen."
             />
 
             {/* Stückliste mit Haarlinien: die ganze Zeile ist der Link. Mobil eine Spalte, ab 768 px zwei. */}
@@ -88,8 +88,15 @@ export default async function StandortePage() {
                         {city.city}
                       </span>
                       <span className="mt-1 block text-small text-foreground-muted">
-                        {city.state} · Einsatzradius etwa{' '}
-                        <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{city.onSiteRadiusKm} km</span>
+                        {city.state} ·{' '}
+                        {city.onSiteRadiusKm > 0 ? (
+                          <>
+                            Einsatzradius etwa{' '}
+                            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{city.onSiteRadiusKm} km</span>
+                          </>
+                        ) : (
+                          'Einsätze vor Ort nach Prüfung'
+                        )}
                       </span>
                     </span>
                     <GlyphPfeilRechts

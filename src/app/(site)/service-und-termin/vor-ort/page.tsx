@@ -168,8 +168,8 @@ export default async function VorOrtPage() {
                   Einsatzgebiete
                 </p>
                 <p className="mt-2 max-w-measure text-small text-foreground-muted">
-                  Vor-Ort-Leistungen erbringen wir in folgenden Regionen. Bestellungen aus dem Shop
-                  liefern wir deutschlandweit.
+                  Werkstatt, Anreise und regionale Leistungen stehen auf diesen Seiten. Bestellungen aus
+                  dem Shop liefern wir deutschlandweit.
                 </p>
                 <ul className="mt-3 flex flex-wrap gap-x-4">
                   {cities.map((city) => (
