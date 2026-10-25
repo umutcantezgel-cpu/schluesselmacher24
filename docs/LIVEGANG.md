@@ -30,7 +30,8 @@ Reihenfolge: **1 Postfach → 2 Supabase → 3 Resend → 4 Stripe (Testmodus) �
    - **Session pooler** (Port **5432**, Host `…pooler.supabase.com`) → `DATABASE_URL_UNPOOLED`
 
    Nicht die „Direct connection“ (`db.<ref>.supabase.co`) nehmen, sie ist nur per IPv6 erreichbar und funktioniert aus Vercel nicht.
-3. **Database → Settings → SSL Configuration → Download certificate**: Den Inhalt der Datei nach `DATABASE_CA_CERT` kopieren. Ohne Zertifikat scheitert die Verbindung.
+3. **Database → Settings → SSL Configuration → Download certificate**: Den Inhalt der Datei nach `DATABASE_CA_CERT` kopieren. Ohne Zertifikat bricht der Produktions-Build ab (sonst liefe die Verbindung unverschlüsselt).
+   Im selben Abschnitt **Database → Settings → Enforce SSL on incoming connections** einschalten: Dann nimmt die Datenbank keine unverschlüsselte Verbindung mehr an.
 4. **Storage → New bucket**: Name `sm24-dateien`, **Public aus**. Dort liegen Fahrzeugscheine, Schlüsselfotos und Grundrisse, sie dürfen nie öffentlich sein.
 5. **Storage → S3 Connection**:
    - Endpoint → `STORAGE_ENDPOINT` (`https://<ref>.storage.supabase.co/storage/v1/s3`)
@@ -65,7 +66,7 @@ Reihenfolge: **1 Postfach → 2 Supabase → 3 Resend → 4 Stripe (Testmodus) �
    - Support-Telefon und -Mail wie im Impressum
    - Links zu AGB (`/rechtliches/agb`), Widerruf und Datenschutz
 3. **Settings → Branding**: Logo und Farben, damit die Bezahlseite nach SCHLÜSSELMACHER24 aussieht.
-4. **Settings → Payment methods**: Karte (inkl. Apple Pay und Google Pay) aktivieren; optional PayPal. Was aktiv ist, muss in `PAYMENT_METHODS` stehen, z. B. `card` oder `card,paypal`. **Keine SEPA-Lastschrift für Anzahlungen**: Die Bestätigung kommt erst nach Tagen, ein Termin bleibt aber nur 30 Minuten reserviert.
+4. **Settings → Payment methods**: Karte (inkl. Apple Pay und Google Pay) aktivieren; optional PayPal. Was aktiv ist, muss in `PAYMENT_METHODS` stehen, z. B. `card` oder `card,paypal`. Die Liste gilt für **alle** Zahlungen, also für Bestellungen und für Anzahlungen auf Termine. Deshalb **keine verzögerten Zahlarten wie SEPA-Lastschrift** eintragen: Die Bestätigung kommt erst nach Tagen, ein Termin bleibt aber nur 30 Minuten reserviert.
 5. **Settings → Customer emails → „Successful payments“ aus**: Die Website schickt selbst eine Zahlungsbestätigung, sonst kommt sie doppelt.
 6. **Developers → Webhooks → Add endpoint**: URL `https://schluesselmacher24.de/api/zahlung/stripe`, genau diese 6 Ereignisse:
    - `checkout.session.completed`

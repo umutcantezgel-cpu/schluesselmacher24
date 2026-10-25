@@ -48,11 +48,12 @@ export const metadata: Metadata = {
   // Keine canonical-Vorgabe hier: Sie würde an jede Seite ohne eigene Angabe
   // vererbt und erklärte sie zur Kopie der Startseite. Jede indexierbare Seite
   // setzt ihre eigene (geprüft in src/app/(site)/canonical.test.ts).
+  // Aus demselben Grund keine og:url: Seiten ohne eigenes openGraph erben das
+  // Objekt vollständig, und Facebook/LinkedIn zeigten sonst die Startseite.
   openGraph: {
     type: 'website',
     locale: 'de_DE',
     siteName: 'SCHLÜSSELMACHER24',
-    url: siteUrl,
   },
   robots: { index: true, follow: true },
 };

@@ -28,11 +28,13 @@ const nurLesen = { readOnly: true };
 
 /**
  * Felder, die nur der Server schreibt (Zahlungsdienst, Mailversand,
- * Zustimmungen aus dem Formular). Beim Speichern im Backend übernimmt Payload
- * für diese Felder den gespeicherten Wert statt des Formularstands
+ * Zustimmungen aus dem Formular, Termin). Beim Speichern im Backend übernimmt
+ * Payload für diese Felder den gespeicherten Wert statt des Formularstands
  * (`payload/dist/fields/hooks/beforeValidate/promise.js`, getFallbackValue) —
  * so überschreibt ein offenes Formular keine Zahlung, die inzwischen
- * eingegangen ist. Die Local API mit `overrideAccess` schreibt weiterhin.
+ * eingegangen ist, und keinen verschobenen Termin. Zahlungsstand, Status und
+ * Notizen pflegt das Team; sie schützt `vorgangVorAenderung`. Die Local API
+ * mit `overrideAccess` schreibt weiterhin.
  */
 const systemFeld = { access: { update: () => false } };
 
@@ -219,6 +221,8 @@ export const Vorgaenge: CollectionConfig = {
               type: 'group',
               label: 'Termin',
               admin: { condition: (data) => data?.art === 'termin' },
+              // Nur über „Termin verschieben“ (mit Belegungsprüfung) änderbar.
+              ...systemFeld,
               fields: [
                 {
                   type: 'row',

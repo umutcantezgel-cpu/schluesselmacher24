@@ -3,7 +3,8 @@
  * Produktionsbuild (`npm run build`, auch auf Vercel).
  *
  * 1. Pflichtprüfungen: Ein Produktions-Build (VERCEL_ENV=production) bricht
- *    ab ohne Datenbank, PAYLOAD_SECRET oder NEXT_PUBLIC_SITE_URL. Fehlende
+ *    ab ohne Datenbank, PAYLOAD_SECRET oder NEXT_PUBLIC_SITE_URL und ohne
+ *    verschlüsselte Datenbankverbindung (DATABASE_CA_CERT oder sslmode). Fehlende
  *    Anbindungen (Cron, Dateiablage, Mail, Zahlung) ergeben Warnungen.
  * 2. Mit Datenbank — lokal und in Produktion, in Vorschauen nur mit
  *    SM24_PREVIEW_MIGRATE=1:
@@ -57,6 +58,18 @@ export function istProduktionsBuild(env) {
   return env.VERCEL_ENV === 'production';
 }
 
+/** sslmode-Werte, mit denen `pg` ohne eigenes Zertifikat verschlüsselt verbindet. */
+const SSL_MODI = ['require', 'verify-ca', 'verify-full'];
+
+/** @param {string | undefined} url */
+function mitSslmode(url) {
+  try {
+    return SSL_MODI.includes(new URL(url ?? '').searchParams.get('sslmode') ?? '');
+  } catch {
+    return false;
+  }
+}
+
 /** Anbindungen, die in Produktion fehlen dürfen, aber gemeldet werden. */
 const ANBINDUNGEN = [
   { namen: ['CRON_SECRET'], folge: 'Die täglichen Crons werden abgewiesen (Löschfristen, Zahlungsabgleich).' },
@@ -85,6 +98,14 @@ export function pruefeUmgebung(env) {
 
   if (!datenbankUrl(env)) fehler.push('DATABASE_URL (oder POSTGRES_URL) fehlt — ohne Datenbank kein Backend, keine Vorgänge.');
   else if (env.SM24_DATA === 'json') fehler.push('SM24_DATA=json ist in Produktion nicht erlaubt (Seite liefe ohne Datenbank).');
+  // Ohne CA setzt src/payload/betrieb.ts kein `ssl`; ohne sslmode verbände `pg` im Klartext
+  // (Laufzeit über DATABASE_URL, Migrationen über die direkte Verbindung).
+  else if (!wert(env, 'DATABASE_CA_CERT') && !(mitSslmode(datenbankUrl(env)) && mitSslmode(datenbankUrlDirekt(env)))) {
+    fehler.push(
+      'Datenbankverbindung wäre unverschlüsselt: DATABASE_CA_CERT setzen (Supabase → Database → Settings → SSL Configuration → '
+        + 'Download certificate) oder sslmode in der URL angeben.',
+    );
+  }
   const geheimnis = wert(env, 'PAYLOAD_SECRET');
   if (!geheimnis) fehler.push('PAYLOAD_SECRET fehlt (mindestens 32 zufällige Zeichen, z. B. `openssl rand -hex 32`).');
   else if (geheimnis.length < 32) warnungen.push('PAYLOAD_SECRET ist kürzer als 32 Zeichen.');
