@@ -28,7 +28,7 @@
       "ratio": "16/9"
     },
     "nextStep": {
-      "href": "/autoschluessel/anfrage",
+      "href": "/autoschluessel/anfrage?vorhanden=0",
       "label": "Anfrage für Ersatzschlüssel starten"
     },
     "seo": {
@@ -40,7 +40,7 @@
           "label": "Alle Ratgeber"
         },
         {
-          "href": "/autoschluessel/anfrage",
+          "href": "/autoschluessel/anfrage?vorhanden=0",
           "label": "Anfrage für Ersatzschlüssel starten"
         }
       ]

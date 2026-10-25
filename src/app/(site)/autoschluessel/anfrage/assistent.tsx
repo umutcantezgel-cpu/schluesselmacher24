@@ -43,6 +43,12 @@ import { GlyphLaden } from '@/components/visual/glyphen/laden';
 import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
 import { GlyphWaage } from '@/components/visual/glyphen/waage';
 import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
+import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
+import {
+  schluesselfotosFreiwillig,
+  unterlagenSchrittErfuellt,
+  type UploadSlotId,
+} from './unterlagen-pruefung';
 
 /* ==========================================================================
    Autoschlüssel — geführter Ablauf in 13 Schritten
@@ -57,6 +63,9 @@ const FLOW_VERSION = 2;
 
 /** Kennung für „Modell nicht in der Liste“. */
 const OTHER_MODEL = '__nicht-aufgefuehrt';
+
+/** Allgemeine Anfrage mit vorgewähltem Bereich, wenn die Marke fehlt. */
+const ANFRAGE_OHNE_MARKE = '/service-und-termin/anfrage?thema=autoschluessel';
 
 const VIN_PATTERN = /^[A-HJ-NPR-Z0-9]{17}$/i;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -145,7 +154,10 @@ const STEPS: FlowStep[] = [
   },
 ];
 
-type UploadSlotId = 'vorderseite' | 'rueckseite' | 'bart' | 'detail' | 'fahrzeugschein';
+/** Hinweis im Fotoschritt, wenn kein funktionierender Schlüssel mehr da ist. */
+const HINWEIS_OHNE_SCHLUESSEL =
+  'Ist noch ein (defekter) Schlüssel da, fotografieren Sie ihn bitte. Ist keiner mehr da, '
+  + 'überspringen Sie diesen Schritt.';
 
 interface AssistentData {
   makeSlug: string;
@@ -205,8 +217,10 @@ export interface AssistentProps {
   retentionDays: { vehicleRegistration: number; keyPhotos: number };
   /** Aktuelles Jahr — auf dem Server ermittelt, damit Server und Browser übereinstimmen. */
   currentYear: number;
-  /** Vorbelegung aus ?marke= und ?modell=. */
-  preselect: { makeSlug: string; modelSlug: string };
+  /** Vorbelegung aus ?marke=, ?modell= und ?vorhanden=. */
+  preselect: { makeSlug: string; modelSlug: string; workingKeys: number | null };
+  /** Werkstatt und Telefon über dem Buchungsknopf — fehlt der Standort, entfällt die Zeile. */
+  werkstatt?: WerkstattAngaben;
 }
 
 export function Assistent({
@@ -216,6 +230,7 @@ export function Assistent({
   retentionDays,
   currentYear,
   preselect,
+  werkstatt,
 }: AssistentProps) {
   const initial = useMemo<AssistentData>(
     () => ({
@@ -227,7 +242,7 @@ export function Assistent({
       engine: '',
       vin: '',
       keyKind: '',
-      workingKeys: null,
+      workingKeys: preselect.workingKeys,
       serviceId: '',
       entitlementConfirmed: false,
       salutation: '',
@@ -247,7 +262,7 @@ export function Assistent({
       slotDate: '',
       slotTime: '',
     }),
-    [preselect.makeSlug, preselect.modelSlug],
+    [preselect.makeSlug, preselect.modelSlug, preselect.workingKeys],
   );
 
   /* Dateien bleiben bewusst außerhalb des Zwischenspeichers — sie lassen
@@ -384,6 +399,7 @@ export function Assistent({
   }, []);
 
   const modelName = isOtherModel ? data.modelOther.trim() : model?.name ?? '';
+  const fotosFreiwillig = schluesselfotosFreiwillig(data.workingKeys);
 
   /* ---------- Schrittprüfung -------------------------------------------- */
 
@@ -406,11 +422,8 @@ export function Assistent({
       case 'leistung':
         return Boolean(current.serviceId);
       case 'schluesselfotos':
-        return (
-          files.vorderseite.length > 0 && files.rueckseite.length > 0 && files.bart.length > 0
-        );
       case 'fahrzeugschein':
-        return files.fahrzeugschein.length > 0 && current.entitlementConfirmed;
+        return unterlagenSchrittErfuellt(stepId, current, files);
       case 'kontakt':
         return isContactComplete(current);
       case 'preis':
@@ -641,6 +654,7 @@ export function Assistent({
     }
 
     const keyKindLabel = data.keyKind ? KEY_KIND_OPTIONS[data.keyKind as KeyKind].label : '—';
+    const anzahlFotos = KEY_PHOTO_SLOTS.reduce((sum, slot) => sum + files[slot.id].length, 0);
     const workingKeysLabel =
       WORKING_KEYS_OPTIONS.find((option) => option.value === data.workingKeys)?.label ?? '—';
 
@@ -718,7 +732,10 @@ export function Assistent({
         rows: [
           {
             label: 'Schlüsselfotos',
-            value: `${KEY_PHOTO_SLOTS.reduce((sum, slot) => sum + files[slot.id].length, 0)} Datei(en)`,
+            value:
+              anzahlFotos === 0 && fotosFreiwillig
+                ? 'keine Schlüsselfotos (kein Schlüssel vorhanden)'
+                : `${anzahlFotos} Datei(en)`,
           },
           { label: 'Zulassungsbescheinigung', value: `${files.fahrzeugschein.length} Datei(en)` },
         ],
@@ -867,9 +884,16 @@ export function Assistent({
 
   /* ---------- Darstellung der einzelnen Schritte ------------------------ */
 
+  /* Bei Totalverlust ersetzt ein eigener Hinweis den des Fotoschritts —
+     der Rahmen zeigt den Hinweis aus dem aktuellen Schritt. */
+  const anzeigeFlow =
+    flow.step.id === 'schluesselfotos' && fotosFreiwillig
+      ? { ...flow, step: { ...flow.step, hint: HINWEIS_OHNE_SCHLUESSEL } }
+      : flow;
+
   return (
     <FlowShell
-      flow={flow}
+      flow={anzeigeFlow}
       title="Autoschlüssel: Anfrage mit Termin"
       submitLabel="Zahlungspflichtig buchen"
       onSubmit={handleSubmit}
@@ -877,6 +901,11 @@ export function Assistent({
       blockedHint={blockedHint(flow.step.id)}
       raster="seite"
       schutz={schutz}
+      abschlussHinweis={
+        werkstatt?.standort && (
+          <WerkstattZeile standort={werkstatt.standort} telefon={werkstatt.telefon} />
+        )
+      }
     >
       {submitError && (
         <Alert tone="warning" title="Absenden nicht möglich" className="mb-5">
@@ -886,18 +915,27 @@ export function Assistent({
 
       {/* 1 — Marke */}
       {flow.step.id === 'marke' && (
-        <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
-          {makes.map((entry) => (
-            <OptionCard
-              key={entry.id}
-              name="marke"
-              value={entry.slug}
-              checked={data.makeSlug === entry.slug}
-              onSelect={selectMake}
-              title={entry.name}
-              description={<span className="whitespace-nowrap font-mono tabular-nums">{entry.models.length} Modelle</span>}
-            />
-          ))}
+        <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
+            {makes.map((entry) => (
+              <OptionCard
+                key={entry.id}
+                name="marke"
+                value={entry.slug}
+                checked={data.makeSlug === entry.slug}
+                onSelect={selectMake}
+                title={entry.name}
+                description={<span className="whitespace-nowrap font-mono tabular-nums">{entry.models.length} Modelle</span>}
+              />
+            ))}
+          </div>
+          {/* Fehlt die Marke, führt der Weg über die allgemeine Anfrage mit vorgewähltem Bereich. */}
+          <p className="text-small leading-relaxed text-foreground-muted">
+            Ihre Marke ist nicht dabei?{' '}
+            <Link href={ANFRAGE_OHNE_MARKE} className="font-semibold text-primary hover:underline">
+              Fall schildern
+            </Link>
+          </p>
         </div>
       )}
 
@@ -1165,10 +1203,10 @@ export function Assistent({
               category="schluesselfoto"
               key={slot.id}
               id={`schluessel-${slot.id}`}
-              label={slot.label}
+              label={fotosFreiwillig && slot.required ? `${slot.label} (freiwillig)` : slot.label}
               description={slot.description}
               example={slot.example}
-              required={slot.required}
+              required={slot.required && !fotosFreiwillig}
               multiple={slot.id === 'detail'}
               maxFiles={slot.id === 'detail' ? 3 : 1}
               files={files[slot.id]}

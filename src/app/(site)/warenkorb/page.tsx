@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { getCodeLines, getCollection, getSettings } from '@/lib/data';
 import { PageHeader } from '@/components/layout/page-header';
+import { werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { WarenkorbAnsicht } from './warenkorb-ansicht';
 
@@ -51,6 +52,7 @@ export default async function WarenkorbPage() {
             codeLines={codeLines}
             standardArticles={standardArticles}
             catalog={catalog}
+            werkstatt={werkstattAngaben(settings.company)}
           />
 
           {/* Mobil Abstand von 64 px zur Summe; unten Platz für die Leiste „Gesamtbetrag · Zur Kasse“ (nur mit Positionen). */}

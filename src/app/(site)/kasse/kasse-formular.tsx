@@ -31,6 +31,8 @@ import { SchutzFelder, useFormularSchutz } from '@/components/forms/formular-sch
 import { SummaryList } from '@/components/layout/summary-list';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
+import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
+import { ZahlartenZeile } from '@/components/vertrauen/zahlarten-zeile';
 
 export interface KasseFormularProps {
   shipping: ShippingOption[];
@@ -39,6 +41,10 @@ export interface KasseFormularProps {
   catalog: CylinderCatalog;
   /** Ist ein Zahlungsdienstleister angebunden? */
   paymentConfigured: boolean;
+  /** Aus `onlineZahlarten()`; `null` ohne Online-Zahlung. */
+  zahlarten: string[] | null;
+  /** Werkstatt am Bestellknopf — ohne gepflegten Standort entfällt die Zeile. */
+  werkstatt?: WerkstattAngaben;
 }
 
 interface Eingaben {
@@ -93,6 +99,8 @@ export function KasseFormular({
   standardArticles,
   catalog,
   paymentConfigured,
+  zahlarten,
+  werkstatt,
 }: KasseFormularProps) {
   const router = useRouter();
   const schutz = useFormularSchutz();
@@ -700,6 +708,14 @@ export function KasseFormular({
             </ul>
           </Alert>
         )}
+
+        {/* Wer verkauft und womit bezahlt wird: die echte Werkstatt und die Zahlarten des Checkouts */}
+        {(werkstatt?.standort || zahlarten?.length) ? (
+          <div className="space-y-2">
+            <WerkstattZeile {...werkstatt} />
+            <ZahlartenZeile zahlarten={zahlarten} />
+          </div>
+        ) : null}
 
         {/* Mobil steht der Betrag direkt über dem Knopf, damit er beim Absenden im Blick bleibt. */}
         <div className="flex items-baseline justify-between gap-4 lg:hidden">

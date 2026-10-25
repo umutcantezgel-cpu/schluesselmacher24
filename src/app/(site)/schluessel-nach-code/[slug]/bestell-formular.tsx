@@ -9,6 +9,7 @@ import { formatCents, formatNumber } from '@/lib/format';
 import { cn } from '@/lib/cn';
 import { useCartStore } from '@/lib/store/cart';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
+import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { Alert } from '@/components/ui/alert';
 import { Button, ButtonLink } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
@@ -22,6 +23,8 @@ import { LiveSchluessel } from '@/components/visual/interaktiv/live-schluessel';
 
 export interface BestellFormularProps {
   line: CodeLine;
+  /** Werkstatt unter der Zwischensumme — ohne gepflegten Standort entfällt die Zeile. */
+  werkstatt?: WerkstattAngaben;
 }
 
 /**
@@ -31,7 +34,7 @@ export interface BestellFormularProps {
  * erst, wenn das Feld verlassen wurde — sonst wird schon während der ersten
  * Zeichen bemängelt.
  */
-export function BestellFormular({ line }: BestellFormularProps) {
+export function BestellFormular({ line, werkstatt }: BestellFormularProps) {
   const [code, setCode] = useState('');
   const [touched, setTouched] = useState(false);
   const [qty, setQty] = useState(1);
@@ -330,6 +333,7 @@ export function BestellFormular({ line }: BestellFormularProps) {
           <p className="mt-1 text-caption leading-snug text-foreground-muted">
             Die Versandart wählen Sie im Warenkorb. Sie wird dort mit den Kosten ausgewiesen.
           </p>
+          <WerkstattZeile {...werkstatt} className="mt-3 border-t border-border pt-3" />
         </div>
 
         <div>

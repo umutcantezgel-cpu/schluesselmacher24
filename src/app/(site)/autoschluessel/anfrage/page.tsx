@@ -4,6 +4,8 @@ import { getCollection, getPageContent, getSettings, getVehicleMakes } from '@/l
 import { jahrInBerlin } from '@/lib/berliner-zeit';
 import { paymentStatus } from '@/lib/integrations';
 import { PROCESS_LABELS } from '@/lib/navigation';
+import { WORKING_KEYS_OPTIONS } from '@/components/autoschluessel/optionen';
+import { werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
@@ -77,6 +79,10 @@ export default async function AutoschluesselAnfragePage(props: {
   const wantedModel = first(searchParams.modell);
   const make = makes.find((entry) => entry.slug === wantedMake) ?? null;
   const model = make?.models.find((entry) => entry.slug === wantedModel) ?? null;
+  // ?vorhanden= (etwa aus dem Ratgeber zum Verlust) nur mit einem Wert aus der Auswahl.
+  const wantedWorkingKeys = first(searchParams.vorhanden);
+  const workingKeys =
+    WORKING_KEYS_OPTIONS.find((option) => String(option.value) === wantedWorkingKeys)?.value ?? null;
 
   const payment = paymentStatus();
 
@@ -108,7 +114,8 @@ export default async function AutoschluesselAnfragePage(props: {
             keyPhotos: settings.retentionDays.keyPhotos,
           }}
           currentYear={jahrInBerlin()}
-          preselect={{ makeSlug: make?.slug ?? '', modelSlug: model?.slug ?? '' }}
+          preselect={{ makeSlug: make?.slug ?? '', modelSlug: model?.slug ?? '', workingKeys }}
+          werkstatt={werkstattAngaben(settings.company)}
         />
       </div>
 
