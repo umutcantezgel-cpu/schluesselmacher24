@@ -6,6 +6,7 @@ import { connection } from 'next/server';
 import { getRecord } from '@/lib/data';
 import { verifyAccessToken } from '@/lib/server/access-token';
 import { mailStatus, paymentStatus, storageStatus } from '@/lib/integrations';
+import { widerrufErklaerenHref } from '@/lib/navigation';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
 import { mailHinweis } from '@/lib/mail/hinweise';
 import type { OrderLine, OrderTotals, PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
@@ -408,7 +409,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                   { href: '/rechtliches/widerruf', label: 'Widerruf und Rückgabe' },
                   { href: '/rechtliches/agb', label: 'AGB' },
                   ...(widerrufbar
-                    ? [{ href: `/rechtliches/widerruf/erklaeren?nummer=${encodeURIComponent(record.reference)}`, label: 'Vertrag widerrufen' }]
+                    ? [{ href: widerrufErklaerenHref(record.reference), label: 'Vertrag widerrufen' }]
                     : []),
                 ].map((link) => (
                   <li key={link.href}>
