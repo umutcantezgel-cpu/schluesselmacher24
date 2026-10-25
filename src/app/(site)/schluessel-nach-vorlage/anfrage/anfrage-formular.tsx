@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 
 import { scrollVerhalten } from '@/lib/bewegung';
+import { LIEFERLAND } from '@/lib/kasse';
 import { submitRecord, type SubmitResult } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import type { ImageSlot, InfoHint, SummarySection } from '@/lib/types';
@@ -118,13 +119,6 @@ const INITIAL: AnfrageData = {
   landFrei: '',
 };
 
-const LAENDER: Array<{ value: string; label: string }> = [
-  { value: 'DE', label: 'Deutschland' },
-  { value: 'AT', label: 'Österreich' },
-  { value: 'CH', label: 'Schweiz' },
-  { value: 'andere', label: 'Anderes Land' },
-];
-
 /* ---------- Erklärungen hinter dem Info-Symbol -------------------------- */
 
 const HINT_FOTO: InfoHint = {
@@ -159,11 +153,10 @@ const HINT_STUECKZAHL: InfoHint = {
 };
 
 const HINT_LAND: InfoHint = {
-  title: 'Wozu das Versandland?',
+  title: 'Warum nur Deutschland?',
   body:
-    'Das Land bestimmt, welche Versandwege infrage kommen und was beim Versand zu beachten '
-    + 'ist. Ob und wie wir in Ihr Land versenden können, klären wir mit der Prüfung Ihrer '
-    + 'Anfrage.',
+    'Wie im Shop liefern wir derzeit nur innerhalb Deutschlands (AGB). Fertige Schlüssel '
+    + 'schicken wir an eine Anschrift in Deutschland oder Sie holen sie in der Werkstatt ab.',
 };
 
 const HINT_ANSCHRIFT: InfoHint = {
@@ -247,7 +240,6 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             && data.nachname.trim().length > 1
             && EMAIL_MUSTER.test(data.email.trim())
             && data.telefon.replace(/\D/g, '').length >= 6
-            && (data.land !== 'andere' || data.landFrei.trim().length > 1)
           );
         default:
           return true;
@@ -269,10 +261,8 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
   // Weiter-Sperre hier ergänzt.
   const shellFlow = { ...flow, canContinue: flow.canContinue && aktuelleFotosOk };
 
-  const landLabel =
-    data.land === 'andere'
-      ? data.landFrei.trim()
-      : (LAENDER.find((l) => l.value === data.land)?.label ?? '');
+  // Lieferung nur innerhalb Deutschlands, wie Kasse und AGB (LIEFERLAND).
+  const landLabel = LIEFERLAND;
 
   const summary: SummarySection[] = useMemo(() => {
     const dateiAngabe = (files: PickedFile[], pflicht: boolean) => {
@@ -799,38 +789,12 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             </Field>
           </div>
 
-          <Field label="Versandland" required info={HINT_LAND}>
-            {({ id, describedBy, invalid }) => (
-              <Select
-                id={id}
-                aria-describedby={describedBy}
-                invalid={invalid}
-                value={flow.data.land}
-                onChange={(e) => flow.set('land', e.target.value)}
-              >
-                {LAENDER.map((land) => (
-                  <option key={land.value} value={land.value}>
-                    {land.label}
-                  </option>
-                ))}
-              </Select>
-            )}
-          </Field>
-
-          {flow.data.land === 'andere' && (
-            <Field label="Land" required hint="Bitte den Ländernamen ausschreiben.">
-              {({ id, describedBy, invalid }) => (
-                <TextInput
-                  id={id}
-                  aria-describedby={describedBy}
-                  invalid={invalid}
-                  autoComplete="country-name"
-                  value={flow.data.landFrei}
-                  onChange={(e) => flow.set('landFrei', e.target.value)}
-                />
-              )}
-            </Field>
-          )}
+          <div className="flex items-center gap-2 text-small text-foreground-muted">
+            <span>
+              <span className="font-semibold text-foreground">Versand:</span> nur innerhalb Deutschlands
+            </span>
+            <InfoTip hint={HINT_LAND} />
+          </div>
 
           <div className="border-t border-border pt-5">
             <div className="flex items-center gap-2">
