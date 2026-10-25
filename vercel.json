@@ -4,6 +4,6 @@
   "regions": ["fra1"],
   "crons": [
     { "path": "/api/cron/taeglich", "schedule": "17 2 * * *" },
-    { "path": "/api/cron/zahlungen", "schedule": "7 * * * *" }
+    { "path": "/api/cron/zahlungen", "schedule": "47 3 * * *" }
   ]
 }
