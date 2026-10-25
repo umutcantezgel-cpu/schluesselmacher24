@@ -3,6 +3,7 @@ import { Profillinie } from '@/components/visual/profillinie';
 import { getSettings } from '@/lib/data';
 import { FOOTER_CONTENT, FOOTER_LEGAL, NAV_AREAS, WIDERRUF_BUTTON, type NavLink } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
+import { jahrInBerlin } from '@/lib/berliner-zeit';
 import { anbieterZeilen, kontakt, standort } from '@/lib/rechtliches/firma';
 import { telefonLink } from '@/lib/telefon';
 
@@ -173,7 +174,7 @@ export async function SiteFooter() {
         </div>
 
         <div className="flex flex-col gap-2 pt-6 font-mono text-caption text-foreground-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} SCHLÜSSELMACHER24</p>
+          <p>© {jahrInBerlin()} SCHLÜSSELMACHER24</p>
           <p>Preise inklusive gesetzlicher Umsatzsteuer, zuzüglich Versandkosten.</p>
         </div>
       </div>

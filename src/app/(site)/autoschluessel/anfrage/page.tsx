@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getCollection, getPageContent, getSettings, getVehicleMakes } from '@/lib/data';
+import { jahrInBerlin } from '@/lib/berliner-zeit';
 import { paymentStatus } from '@/lib/integrations';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
@@ -106,7 +107,7 @@ export default async function AutoschluesselAnfragePage(props: {
             vehicleRegistration: settings.retentionDays.vehicleRegistration,
             keyPhotos: settings.retentionDays.keyPhotos,
           }}
-          currentYear={new Date().getFullYear()}
+          currentYear={jahrInBerlin()}
           preselect={{ makeSlug: make?.slug ?? '', modelSlug: model?.slug ?? '' }}
         />
       </div>

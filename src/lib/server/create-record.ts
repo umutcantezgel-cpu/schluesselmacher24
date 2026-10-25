@@ -15,7 +15,8 @@ import { createPayment, storageStatus } from '@/lib/integrations';
 import { quoteCarKeyService } from '@/lib/pricing';
 import { buildRecordId } from '@/lib/reference';
 import { VERLAUF } from '@/lib/zahlung/uebergaenge';
-import { availableSlots, toIsoDate } from '@/lib/scheduling';
+import { heuteInBerlin, jahrInBerlin } from '@/lib/berliner-zeit';
+import { availableSlots } from '@/lib/scheduling';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -103,7 +104,8 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
     // keine Nummer verbraucht und kein Termin doppelt vergeben.
     saved = await vorgangAnlegen({
       art: input.kind,
-      jahr: now.getFullYear(),
+      // Jahr der Werkstatt: Silvester nach 23 Uhr UTC zählt schon das neue Jahr.
+      jahr: jahrInBerlin(now),
       termin,
       aufbauen: (reference) => ({
         area: input.area,
@@ -280,7 +282,7 @@ function freeSlot(args: {
   time: string;
 }): TimeSlot | undefined {
   return availableSlots({
-    today: toIsoDate(new Date()),
+    today: heuteInBerlin(),
     durationMinutes: args.durationMinutes,
     leadTimeDays: args.leadTimeDays,
     booking: args.settings.booking,
