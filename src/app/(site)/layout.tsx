@@ -5,7 +5,10 @@ import type { ReactNode } from 'react';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { MobileActionBar } from '@/components/layout/mobile-action-bar';
+import { EinwilligungHinweis } from '@/components/statistik/einwilligung-hinweis';
+import { GoogleAnalytics } from '@/components/statistik/google-analytics';
 import { getSiteUrl } from '@/lib/site-url';
+import { gaMessId } from '@/lib/statistik';
 
 import './globals.css';
 
@@ -33,6 +36,8 @@ const mono = IBM_Plex_Mono({
 });
 
 const siteUrl = getSiteUrl();
+/** Google Analytics 4 nur mit Mess-ID — ohne sie wird nichts davon geladen. */
+const gaId = gaMessId();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -89,6 +94,12 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
 
         <SiteFooter />
         <MobileActionBar />
+        {gaId && (
+          <>
+            <GoogleAnalytics messId={gaId} />
+            <EinwilligungHinweis />
+          </>
+        )}
       </body>
     </html>
   );

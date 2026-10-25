@@ -6,6 +6,10 @@ import type { NextConfig } from 'next';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const isDev = process.env.NODE_ENV === 'development';
+/** Google Analytics 4 (nur nach Einwilligung geladen): Freigaben in der CSP nur mit gültiger Mess-ID. */
+const mitStatistik = /^G-[A-Z0-9]{4,20}$/.test(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim().toUpperCase() ?? '');
+const GA_SKRIPT = ' https://www.googletagmanager.com';
+const GA_VERBINDUNG = ' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com';
 
 /**
  * Content-Security-Policy.
@@ -20,15 +24,17 @@ const isDev = process.env.NODE_ENV === 'development';
  * - `frame-ancestors 'self'`: die eigene Seite darf sich für die Live-Vorschau
  *   im Backend einbetten, fremde Seiten nicht.
  * - `'unsafe-eval'` nur in der Entwicklung (React-Fehlerüberlagerung).
+ * - Google Analytics: script-src und connect-src für Google nur, wenn eine
+ *   Mess-ID gesetzt ist (Bilder sind über `https:` ohnehin erlaubt).
  */
 function csp(): string {
   return [
     "default-src 'self'",
-    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
+    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}${mitStatistik ? GA_SKRIPT : ''}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
-    "connect-src 'self'",
+    `connect-src 'self'${mitStatistik ? GA_VERBINDUNG : ''}`,
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self' https://checkout.stripe.com",

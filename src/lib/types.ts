@@ -495,11 +495,21 @@ export interface CylinderLineItem {
   qty: number;
 }
 
+/** Gewählte Zusatzkomponente des Herstellers, erkannt an ihrer Bezeichnung. */
+export interface CylinderComponentChoice {
+  name: string;
+  qty: number;
+}
+
 export interface CylinderOrderDraft {
   items: CylinderLineItem[];
   keyCount: number;
   extraIds: string[];
   expandable: boolean;
+  /** Kennung des Herstellers; nur gesetzt, wenn der Katalog Hersteller anbietet. */
+  manufacturerId?: string;
+  /** Zusatzkomponenten des gewählten Herstellers mit Stückzahl. */
+  components?: CylinderComponentChoice[];
 }
 
 /* ---------- Warenkorb und Bestellungen ---------------------------------- */

@@ -23,7 +23,18 @@ export const AutoschluesselLeistungen: CollectionConfig = {
       required: true,
       options: SCHLUESSELARTEN,
     },
-    { name: 'fahrzeugVorOrt', type: 'checkbox', label: 'Fahrzeug muss vor Ort sein', defaultValue: false },
+    {
+      name: 'fahrzeugVorOrt',
+      type: 'checkbox',
+      label: 'Fahrzeug muss vor Ort sein',
+      defaultValue: false,
+      admin: {
+        description:
+          'Ohne Haken nie ein Termin mit Fahrzeug (z. B. Bart fräsen, Gehäuse). Mit Haken wird das Fahrzeug '
+          + 'gebraucht; bei Zweitschlüssel, Ersatz bei Verlust und Programmierung entscheidet zusätzlich das '
+          + 'Modell („Programmierung nur am Fahrzeug“).',
+      },
+    },
     { name: 'aktiv', type: 'checkbox', label: 'Wird angeboten', defaultValue: true, admin: { position: 'sidebar' } },
     slugFeld(),
     kennungFeld(),

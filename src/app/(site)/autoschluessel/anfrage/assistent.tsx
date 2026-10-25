@@ -16,6 +16,7 @@ import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { fetchQuote, fetchSlots, type SlotsResponse } from '@/lib/actions/booking';
 import { submitRecord } from '@/lib/actions/records';
 import { formatCents, formatDuration } from '@/lib/format';
+import { aktionMelden } from '@/lib/statistik';
 import { Alert } from '@/components/ui/alert';
 import { Card, CardBody } from '@/components/ui/card';
 import { InfoTip } from '@/components/ui/info-tip';
@@ -843,6 +844,8 @@ export function Assistent({
       schutz.antwortBeachten(result);
 
       if (result.ok && result.reference) {
+        // Messung (nur mit Einwilligung in die Statistik): Terminanfrage abgesendet.
+        aktionMelden('terminanfrage', 'autoschluessel');
         setDone({
           reference: result.reference,
           appointment,
@@ -1179,7 +1182,7 @@ export function Assistent({
                   onSelect={selectService}
                   title={entry.label}
                   description={entry.description}
-                  info={serviceInfo(entry)}
+                  info={serviceInfo(entry, model)}
                 />
               ))}
             </div>

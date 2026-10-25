@@ -688,6 +688,9 @@ export interface Fahrzeugmarken {
         baujahrVon: number;
         baujahrBis?: number | null;
         schluesselarten: ('mechanisch' | 'funk' | 'klappschluessel' | 'smart-key' | 'keyless')[];
+        /**
+         * Gilt nur für Leistungen mit Anlernen (Zweitschlüssel, Ersatz bei Verlust, Programmierung), die laut Leistung das Fahrzeug brauchen. Ohne Haken wird dafür kein Fahrzeugtermin verlangt.
+         */
         fahrzeugVorOrt?: boolean | null;
         preisgruppe?: (number | null) | Preisgruppen;
         hinweise?: string | null;
@@ -774,6 +777,9 @@ export interface AutoschluesselLeistungen {
   label: string;
   beschreibung: string;
   schluesselarten: ('mechanisch' | 'funk' | 'klappschluessel' | 'smart-key' | 'keyless')[];
+  /**
+   * Ohne Haken nie ein Termin mit Fahrzeug (z. B. Bart fräsen, Gehäuse). Mit Haken wird das Fahrzeug gebraucht; bei Zweitschlüssel, Ersatz bei Verlust und Programmierung entscheidet zusätzlich das Modell („Programmierung nur am Fahrzeug“).
+   */
   fahrzeugVorOrt?: boolean | null;
   aktiv?: boolean | null;
   /**
@@ -804,7 +810,7 @@ export interface Preisregeln {
   preisVon?: number | null;
   preisBis?: number | null;
   /**
-   * Betrag in Euro inklusive Umsatzsteuer.
+   * Betrag in Euro inklusive Umsatzsteuer. Leer = Standard-Anzahlung aus den Einstellungen. Bei einem Festpreis ist die Anzahlung höchstens der Festpreis: Liegt sie darüber, wird der Festpreis als Anzahlung verlangt und der Restbetrag ist 0.
    */
   anzahlung?: number | null;
   terminMinuten?: number | null;
@@ -2473,6 +2479,9 @@ export interface Zylinderkatalog {
         zusatzkomponenten?:
           | {
               name: string;
+              /**
+               * Preis je Stück inklusive Umsatzsteuer. Die Stückzahl wählt der Kunde im Konfigurator.
+               */
               preis: number;
               beschreibung?: string | null;
               id?: string | null;

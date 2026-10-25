@@ -46,7 +46,17 @@ export const Fahrzeugmarken: CollectionConfig = {
           ],
         },
         { name: 'schluesselarten', type: 'select', label: 'Mögliche Schlüsselarten', hasMany: true, required: true, options: SCHLUESSELARTEN },
-        { name: 'fahrzeugVorOrt', type: 'checkbox', label: 'Programmierung nur am Fahrzeug', defaultValue: true },
+        {
+          name: 'fahrzeugVorOrt',
+          type: 'checkbox',
+          label: 'Programmierung nur am Fahrzeug',
+          defaultValue: true,
+          admin: {
+            description:
+              'Gilt nur für Leistungen mit Anlernen (Zweitschlüssel, Ersatz bei Verlust, Programmierung), '
+              + 'die laut Leistung das Fahrzeug brauchen. Ohne Haken wird dafür kein Fahrzeugtermin verlangt.',
+          },
+        },
         { name: 'preisgruppe', type: 'relationship', relationTo: 'preisgruppen', label: 'Abweichende Preisgruppe' },
         { name: 'hinweise', type: 'text', label: 'Hinweise' },
         {

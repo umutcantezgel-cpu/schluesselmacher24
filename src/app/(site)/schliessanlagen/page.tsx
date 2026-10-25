@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
 
-import { getPageContent } from '@/lib/data';
+import { getCodeLines, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { SpaetVorladen } from '@/lib/spaet-vorladen';
 import type { InfoHint } from '@/lib/types';
@@ -12,6 +12,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
+import { NachbestellenAbschnitt, sicherungskartenLinie } from '@/components/schliessung/nachbestellen';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ErweiterbareAnlage, SystemVergleich, systemReiter } from '@/components/schliessanlagen/system-erklaerung';
 import { BereichIcon } from '@/components/visual/bereich-icon';
@@ -110,7 +111,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Büro, Werkstatt, Lager, Serverraum: Nicht jede Person braucht jede Tür. Eine '
       + 'Hauptschlüsselanlage (HS) bildet Zuständigkeiten ab, ohne den Alltag zu erschweren.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Projekt erfassen',
+    linkLabel: 'Schließanlage konfigurieren',
   },
   {
     icon: GlyphPersonen,
@@ -119,7 +120,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Mehrere Parteien, gemeinsame Türen, wechselnde Mieter. Eine Zentralschlossanlage (Z) '
       + 'trennt die Wohnungen und öffnet die gemeinsamen Zugänge für alle.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Projekt erfassen',
+    linkLabel: 'Schließanlage konfigurieren',
   },
   {
     icon: IconPruefung,
@@ -128,7 +129,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Schule, Verwaltung, Einrichtung mit Publikumsverkehr: viele Bereiche, klar getrennte '
       + 'Zuständigkeiten und ein nachvollziehbarer Schließplan.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Projekt erfassen',
+    linkLabel: 'Schließanlage konfigurieren',
   },
   {
     icon: BereichsZeichen,
@@ -137,7 +138,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Verteilte Standorte oder eine größere Liegenschaft: Eine Generalhauptschlüsselanlage '
       + '(GHS) fasst mehrere Gebäude unter einer gemeinsamen Ebene zusammen.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Projekt erfassen',
+    linkLabel: 'Schließanlage konfigurieren',
   },
 ];
 
@@ -250,7 +251,7 @@ const FALLBACK_FAQ = [
 ];
 
 export default async function SchliessanlagenPage() {
-  const page = await getPageContent(ROUTE);
+  const [page, codeLines] = await Promise.all([getPageContent(ROUTE), getCodeLines()]);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
@@ -289,7 +290,7 @@ export default async function SchliessanlagenPage() {
         actions={
           <>
             <ButtonLink href="/schliessanlagen/konfigurator" prefetch={false} size="lg" pfeil>
-              Projekt erfassen
+              Schließanlage konfigurieren
             </ButtonLink>
             {/* Ziel des Kopfknopfs erst nach der Fräsbahn vorladen (D-044) */}
             <SpaetVorladen ziele={['/schliessanlagen/konfigurator']} />
@@ -436,7 +437,7 @@ export default async function SchliessanlagenPage() {
                 Zu den gleichschließenden Zylindern
               </ButtonLink>
               <ButtonLink href="/schliessanlagen/konfigurator" variant="outline">
-                Trotzdem Projekt erfassen
+                Trotzdem Schließanlage konfigurieren
               </ButtonLink>
             </div>
 
@@ -460,18 +461,21 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+      {/* Nachbestellen mit Sicherungskarte */}
+      <NachbestellenAbschnitt linie={sicherungskartenLinie(codeLines)} nummer="04" />
+
       {/* Fragen */}
-      <Section>
-        <SectionHeading nummer="04" eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
+      <Section tone="muted">
+        <SectionHeading nummer="05" eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
         <div className="mt-8">
           <Accordion items={faq} />
         </div>
       </Section>
 
       {/* Weiterführend: nummerierte Stückliste mit Haarlinien */}
-      <Section tone="muted" tight>
+      <Section tight>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
-          <SectionHeading nummer="05" eyebrow="Weiterlesen" title="Passend dazu" className="lg:col-span-4" />
+          <SectionHeading nummer="06" eyebrow="Weiterlesen" title="Passend dazu" className="lg:col-span-4" />
 
           <ol className="border-t border-border lg:col-span-8">
             {WEITERFUEHREND.map((link, index) => (

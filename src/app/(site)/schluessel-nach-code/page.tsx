@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getCodeLines, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
+import { ButtonLink } from '@/components/ui/button';
 import { ausschnittStil } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -106,6 +107,11 @@ export default async function SchluesselNachCodePage() {
         lead={page?.subline ?? 'Code eingeben, Stückzahl wählen, bestellen.'}
         crumbs={[{ href: '/schluessel-nach-code', label: 'Schlüssel nach Code' }]}
         bereich="schluessel-nach-code"
+        actions={
+          <ButtonLink href="#codelinien" size="lg" pfeil>
+            Nach Code bestellen
+          </ButtonLink>
+        }
         visual={
           /* Blickfang im Kopf (E4-L-23): die Fundstelle allein auf Papier, ohne zweite Kopfzeile;
              der Wortlaut steht im Alternativtext (E6-BEFUND2-H05, U10). */
@@ -142,7 +148,7 @@ export default async function SchluesselNachCodePage() {
         </div>
       </PageHeader>
 
-      <Section tight labelledBy="trefferliste-titel">
+      <Section id="codelinien" tight labelledBy="trefferliste-titel">
         <SectionHeading
           id="trefferliste-titel"
           nummer="01"

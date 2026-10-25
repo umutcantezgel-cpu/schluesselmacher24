@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 import { anbieterZeilen, kontakt } from '@/lib/rechtliches/firma';
-import { DIENSTLEISTER, VERARBEITUNGEN_FASSUNG, verarbeitungen } from '@/lib/rechtliches/verarbeitungen';
+import { VERARBEITUNGEN_FASSUNG, dienstleister, verarbeitungen } from '@/lib/rechtliches/verarbeitungen';
 import { formatDateShort } from '@/lib/format';
 import { telefonLink } from '@/lib/telefon';
 import type { Settings } from '@/lib/types';
@@ -12,6 +12,8 @@ interface DatenschutzInhaltProps {
   /** Prüfhinweise für den Inhaber anzeigen (nur außerhalb der Produktion). */
   pruefhinweise?: boolean;
   hinweis?: ReactNode;
+  /** Google Analytics ist eingebunden (Mess-ID gesetzt) — nur dann erscheint es hier. */
+  statistik?: boolean;
 }
 
 function Pruefhinweis({ children }: { children: ReactNode }) {
@@ -27,9 +29,9 @@ function Pruefhinweis({ children }: { children: ReactNode }) {
  * und die Drittlandangaben kommen ausschließlich aus
  * `src/lib/rechtliches/verarbeitungen.ts`.
  */
-export function DatenschutzInhalt({ settings, pruefhinweise = false, hinweis }: DatenschutzInhaltProps) {
+export function DatenschutzInhalt({ settings, pruefhinweise = false, hinweis, statistik = false }: DatenschutzInhaltProps) {
   const { company } = settings;
-  const liste = verarbeitungen(settings);
+  const liste = verarbeitungen(settings, { statistik });
   const drittland = liste.filter((eintrag) => eintrag.drittland);
   const { telefon, email } = kontakt(company);
   const telefonHref = telefonLink(telefon);
@@ -40,8 +42,10 @@ export function DatenschutzInhalt({ settings, pruefhinweise = false, hinweis }: 
       {hinweis}
       <p className="mt-3">
         Hier steht, welche personenbezogenen Daten wir verarbeiten, wozu, auf welcher
-        Rechtsgrundlage, an wen sie gehen und wie lange wir sie speichern. Analyse- oder
-        Werbedienste setzen wir nicht ein.
+        Rechtsgrundlage, an wen sie gehen und wie lange wir sie speichern.{' '}
+        {statistik
+          ? 'Werbedienste setzen wir nicht ein; Google Analytics nur mit Ihrer Einwilligung.'
+          : 'Analyse- oder Werbedienste setzen wir nicht ein.'}
       </p>
 
       <h2>1. Verantwortlicher</h2>
@@ -113,12 +117,12 @@ export function DatenschutzInhalt({ settings, pruefhinweise = false, hinweis }: 
         Art. 28 DSGVO geschlossen; sie verarbeiten die Daten nur nach unserer Weisung.
       </p>
       <ul>
-        {DIENSTLEISTER.map((dienstleister) => (
-          <li key={dienstleister.id}>
-            <strong>{dienstleister.name}</strong> ({dienstleister.sitz}) – {dienstleister.aufgabe};{' '}
-            {dienstleister.rolle}.
-            {pruefhinweise && dienstleister.pruefhinweis && (
-              <Pruefhinweis>{dienstleister.pruefhinweis}</Pruefhinweis>
+        {dienstleister({ statistik }).map((eintrag) => (
+          <li key={eintrag.id}>
+            <strong>{eintrag.name}</strong> ({eintrag.sitz}) – {eintrag.aufgabe};{' '}
+            {eintrag.rolle}.
+            {pruefhinweise && eintrag.pruefhinweis && (
+              <Pruefhinweis>{eintrag.pruefhinweis}</Pruefhinweis>
             )}
           </li>
         ))}
@@ -144,12 +148,23 @@ export function DatenschutzInhalt({ settings, pruefhinweise = false, hinweis }: 
       </ul>
 
       <h2>5. Speicherung im Browser, Cookies und Fremdinhalte</h2>
-      <p>
-        Wir verwenden keine Cookies oder Techniken zur Analyse, Reichweitenmessung oder Werbung und
-        binden keine Inhalte fremder Anbieter wie Karten, Videos oder Schriftarten-Dienste ein. Die
-        Schriftarten liefern wir selbst aus; beim Aufruf der Seite besteht keine Verbindung zu
-        Google oder anderen Schriftanbietern.
-      </p>
+      {statistik ? (
+        <p>
+          Cookies zur Reichweitenmessung setzt nur Google Analytics – und erst, wenn Sie auf der Seite{' '}
+          <Link href="/rechtliches/cookie-einstellungen">Cookie-Einstellungen</Link> oder im Hinweis beim
+          ersten Besuch in „Statistik“ einwilligen (siehe 2.{liste.findIndex((e) => e.id === 'statistik') + 1}).
+          Ohne Einwilligung wird das Skript von Google nicht geladen. Werbe-Cookies verwenden wir nicht und
+          binden keine Inhalte fremder Anbieter wie Karten, Videos oder Schriftarten-Dienste ein. Die
+          Schriftarten liefern wir selbst aus.
+        </p>
+      ) : (
+        <p>
+          Wir verwenden keine Cookies oder Techniken zur Analyse, Reichweitenmessung oder Werbung und
+          binden keine Inhalte fremder Anbieter wie Karten, Videos oder Schriftarten-Dienste ein. Die
+          Schriftarten liefern wir selbst aus; beim Aufruf der Seite besteht keine Verbindung zu
+          Google oder anderen Schriftanbietern.
+        </p>
+      )}
       <p>
         Gespeichert wird nur, was für die von Ihnen genutzten Funktionen unbedingt nötig ist:
         Warenkorb, Zwischenstand in Formularen und Ihre Auswahl auf der Seite{' '}

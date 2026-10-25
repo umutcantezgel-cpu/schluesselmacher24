@@ -13,7 +13,7 @@ import { useSpaetVorladen } from '@/lib/spaet-vorladen';
 const ITEMS = [
   { href: '/autoschluessel', label: 'Autoschlüssel', icon: GlyphSchluessel },
   { href: '/schluessel-nach-code', label: 'Nach Code', icon: GlyphSuche },
-  { href: '/autoschluessel/anfrage', label: 'Termin', icon: GlyphKalender },
+  { href: '/autoschluessel/anfrage', label: 'Termin anfragen', icon: GlyphKalender },
   { href: '/service-und-termin', label: 'Service', icon: GlyphHilfe },
 ];
 
@@ -44,18 +44,19 @@ export function MobileActionBar() {
       data-aktionsleiste
       className="pb-safe-area fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface md:hidden"
     >
-      <ul className="grid grid-cols-4">
+      {/* Spalten nach Inhalt statt gleich breit: „Termin anfragen“ bleibt ab 320 px einzeilig */}
+      <ul className="flex">
         {ITEMS.map((item) => {
           const active = item.href === aktiv;
           const Icon = item.icon;
           return (
-            <li key={item.href}>
+            <li key={item.href} className="flex-auto">
               <Link
                 href={item.href}
                 prefetch={false}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'relative flex min-h-touch-lg flex-col items-center justify-center gap-1 px-1 py-2 text-caption font-semibold transition-colors duration-quick',
+                  'relative flex min-h-touch-lg flex-col items-center justify-center gap-1 px-1 py-2 text-center text-caption font-semibold leading-tight transition-colors duration-quick',
                   active ? 'text-primary' : 'text-foreground-muted',
                 )}
               >

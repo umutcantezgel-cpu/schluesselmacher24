@@ -1,6 +1,6 @@
 import { bereichsInhalt, vorschaubild } from '@/lib/og/bereichsbild';
 
-export const alt = 'SCHLÜSSELMACHER24 · Schlüssel nach Vorlage';
+export const alt = 'SCHLÜSSELMACHER24 · Schlüssel nach Foto oder Vorlage';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 

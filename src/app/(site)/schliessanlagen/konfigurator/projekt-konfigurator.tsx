@@ -7,6 +7,7 @@ import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { submitRecord } from '@/lib/actions/records';
 import { formatNumber } from '@/lib/format';
 import type { ContactDetails, InfoHint, SummarySection, UploadRef } from '@/lib/types';
+import { aktionMelden } from '@/lib/statistik';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
@@ -89,6 +90,8 @@ interface ProjectData {
   existingManufacturer: string;
   existingSystem: string;
   securityCard: '' | 'ja' | 'nein' | 'unbekannt';
+  /** Gewünschtes System für die neue Anlage (Erg. Leitfaden §1: ABUS und BKS) — ohne Preis. */
+  desiredSystem: '' | 'abus' | 'bks' | 'offen';
 
   /* 5 Erweiterung */
   expandDoors: boolean;
@@ -142,6 +145,7 @@ const INITIAL: ProjectData = {
   existingManufacturer: '',
   existingSystem: '',
   securityCard: '',
+  desiredSystem: '',
 
   expandDoors: false,
   expandUsers: false,
@@ -298,6 +302,12 @@ const CARD_LABELS: Record<string, string> = {
   unbekannt: 'Nicht bekannt',
 };
 
+const DESIRED_SYSTEM_LABELS: Record<string, string> = {
+  abus: 'ABUS',
+  bks: 'BKS',
+  offen: 'Noch offen – Beratung gewünscht',
+};
+
 const HORIZON_LABELS: Record<string, string> = {
   keine: 'Keine Erweiterung vorgesehen',
   absehbar: 'Erweiterung ist bereits absehbar',
@@ -408,7 +418,11 @@ function validateStep(d: ProjectData, stepId: string): boolean {
     case 'nutzer':
       return d.userCount >= 1 && d.keyHolders >= 1 && d.differentRights !== '';
     case 'bestand':
-      return d.hasExisting !== '' && (d.hasExisting !== 'ja' || d.securityCard !== '');
+      return (
+        d.hasExisting !== ''
+        && (d.hasExisting !== 'ja' || d.securityCard !== '')
+        && d.desiredSystem !== ''
+      );
     case 'erweiterung':
       return d.expansionHorizon !== '';
     case 'tueren':
@@ -528,6 +542,10 @@ function buildSummary(
           value: isFilled(d.existingSystem) ? d.existingSystem.trim() : 'Keine Angabe',
         },
         { label: 'Sicherungskarte', value: CARD_LABELS[d.securityCard] ?? 'Keine Angabe' },
+        {
+          label: 'Gewünschtes System (neue Anlage)',
+          value: DESIRED_SYSTEM_LABELS[d.desiredSystem] ?? 'Keine Angabe',
+        },
         {
           label: 'Fotos und Schließplan',
           value: planFiles.length > 0 ? planFiles.map((f) => f.name).join(', ') : 'Keine Dateien',
@@ -757,6 +775,14 @@ const HINT_DIFFERENT_RIGHTS: InfoHint = {
   },
 };
 
+const HINT_DESIRED_SYSTEM: InfoHint = {
+  title: 'System der neuen Anlage',
+  body:
+    'Mechanische Schließanlagen planen wir mit Systemen von ABUS und BKS. Weitere Hersteller oder '
+    + 'Sonderlösungen auf Anfrage — wählen Sie dann „Noch offen“ und nennen Sie Ihren Wunsch in den '
+    + 'Hinweisen zum Service.',
+};
+
 const HINT_SECURITY_CARD: InfoHint = {
   title: 'Sicherungskarte',
   body:
@@ -920,6 +946,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
         contact: d.contact,
         payload: {
           ...d,
+          gewuenschtesSystem: DESIRED_SYSTEM_LABELS[d.desiredSystem] ?? null,
           empfehlung: recommendation.system,
           empfehlungBegruendung: recommendation.reasons,
         },
@@ -929,6 +956,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
       schutz.antwortBeachten(response);
 
       if (response.ok && response.reference) {
+        aktionMelden('projektanfrage', 'schliessanlagen');
         clearFlow(FLOW_ID);
         setResult({ reference: response.reference, notices: response.notices });
       } else {
@@ -1329,6 +1357,27 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
               />
             </div>
           )}
+
+          <Question
+            title="Welches System wünschen Sie für die neue Anlage?"
+            required
+            info={HINT_DESIRED_SYSTEM}
+            hint="Ohne Preisangabe — der Preis folgt mit dem Angebot zu Ihrem Schließplan."
+          >
+            {(['abus', 'bks', 'offen'] as const).map((value) => (
+              <OptionCard
+                key={value}
+                name="systemwunsch"
+                value={value}
+                checked={d.desiredSystem === value}
+                onSelect={() => flow.set('desiredSystem', value)}
+                title={DESIRED_SYSTEM_LABELS[value]}
+                description={
+                  value === 'offen' ? 'Welches System zu Ihrem Objekt passt, klären wir im Beratungsgespräch.' : undefined
+                }
+              />
+            ))}
+          </Question>
         </div>
       )}
 

@@ -5,6 +5,7 @@ import {
   cartTotals,
   priceCylinderOrder,
   availableShipping,
+  fahrzeugVorOrtNoetig,
   type QuoteInput,
 } from './pricing';
 import type {
@@ -205,7 +206,7 @@ describe('pricing', () => {
       expect(result.remainderCents).toBe(10000);
     });
 
-    it('should establish requiresVehicleOnSite correctly', () => {
+    it('verlangt kein Fahrzeug, wenn die Leistung es nicht braucht — auch wenn das Modell nur am Fahrzeug programmiert', () => {
       const serviceNoSite: CarKeyService = { ...mockService, requiresVehicleOnSite: false };
       const modelRequiresSite: VehicleModel = { ...mockModel, requiresVehicleOnSite: true };
 
@@ -219,7 +220,74 @@ describe('pricing', () => {
 
       const result = quoteCarKeyService(input, mockRules, mockBookingDefaults);
 
-      expect(result.requiresVehicleOnSite).toBe(true);
+      expect(result.requiresVehicleOnSite).toBe(false);
+    });
+
+    describe('Anzahlung bei Festpreisen', () => {
+      const booking: BookingDefaults = { ...mockBookingDefaults, depositCents: 6990, depositMinCents: 5000, depositMaxCents: 8000 };
+      const regel = (priceCents: number, extra: Partial<PricingRule> = {}): PricingRule[] => [
+        { id: 'r', pricingGroupId: 'group_b', serviceId: 'service_nachmachen', keyKind: 'alle', mode: 'fest', priceCents, ...extra },
+      ];
+      const eingabe: QuoteInput = { make: mockMake, model: mockModel, service: mockService, keyKind: 'mechanisch', workingKeys: 1 };
+
+      it('verlangt höchstens den Festpreis: Bart fräsen 69 € statt 69,90 € Anzahlung, Rest 0', () => {
+        const result = quoteCarKeyService(eingabe, regel(6900), booking);
+        expect(result.depositCents).toBe(6900);
+        expect(result.priceCents).toBe(6900);
+        expect(result.remainderCents).toBe(0);
+      });
+
+      it('geht auch unter die Mindestanzahlung, wenn der Festpreis darunter liegt', () => {
+        const result = quoteCarKeyService(eingabe, regel(4900), booking);
+        expect(result.depositCents).toBe(4900);
+        expect(result.remainderCents).toBe(0);
+      });
+
+      it('lässt die Anzahlung unverändert, wenn der Festpreis darüber liegt', () => {
+        const result = quoteCarKeyService(eingabe, regel(24900), booking);
+        expect(result.depositCents).toBe(6990);
+        expect(result.remainderCents).toBe(17910);
+      });
+
+      it('begrenzt eine abweichend gepflegte Anzahlung ebenfalls auf den Festpreis', () => {
+        const result = quoteCarKeyService(eingabe, regel(5900, { depositCents: 8000 }), booking);
+        expect(result.depositCents).toBe(5900);
+        expect(result.remainderCents).toBe(0);
+      });
+
+      it('ändert nichts bei Preisrahmen und ohne funktionierenden Schlüssel', () => {
+        const ohneSchluessel = quoteCarKeyService({ ...eingabe, workingKeys: 0 }, regel(4900), booking);
+        expect(ohneSchluessel.mode).toBe('rahmen');
+        expect(ohneSchluessel.depositCents).toBe(6990);
+      });
+    });
+  });
+
+  describe('fahrzeugVorOrtNoetig', () => {
+    const leistung = (id: string, requiresVehicleOnSite: boolean) => ({ id, requiresVehicleOnSite });
+    const modell = (requiresVehicleOnSite: boolean) => ({ requiresVehicleOnSite });
+
+    it('Bart fräsen und Gehäuse: nie ein Fahrzeugtermin', () => {
+      expect(fahrzeugVorOrtNoetig(leistung('bart-fraesen', false), modell(true))).toBe(false);
+      expect(fahrzeugVorOrtNoetig(leistung('gehaeuse-reparatur', false), modell(true))).toBe(false);
+      expect(fahrzeugVorOrtNoetig(leistung('bart-fraesen', false), null)).toBe(false);
+    });
+
+    it('Leistungen mit Anlernen: das Modell entscheidet', () => {
+      for (const id of ['zweitschluessel', 'ersatz-bei-verlust', 'programmierung']) {
+        expect(fahrzeugVorOrtNoetig(leistung(id, true), modell(true))).toBe(true);
+        expect(fahrzeugVorOrtNoetig(leistung(id, true), modell(false))).toBe(false);
+      }
+    });
+
+    it('ohne bekanntes Modell gilt die Leistung', () => {
+      expect(fahrzeugVorOrtNoetig(leistung('programmierung', true), null)).toBe(true);
+      expect(fahrzeugVorOrtNoetig(leistung('programmierung', true), undefined)).toBe(true);
+    });
+
+    it('Fahrzeugöffnung und andere Leistungen ohne Anlernen: der Modell-Schalter wirkt nicht', () => {
+      expect(fahrzeugVorOrtNoetig(leistung('fahrzeugoeffnung', true), modell(false))).toBe(true);
+      expect(fahrzeugVorOrtNoetig(leistung('neue-leistung', true), modell(false))).toBe(true);
     });
   });
 
@@ -582,6 +650,119 @@ describe('pricing', () => {
       expect(result.extrasCents).toBe(5500);
       expect(result.totalCents).toBe(11500);
       expect(result.cylinderCount).toBe(2);
+    });
+
+    describe('Erweiterbar', () => {
+      const mitOption: CylinderCatalog = {
+        ...catalog,
+        extras: [
+          ...catalog.extras,
+          {
+            id: 'gleichschliessung-erweiterbar',
+            label: 'Erweiterbar reservieren',
+            description: 'Mock',
+            priceCents: 1500,
+            unit: 'einmal',
+            info: mockInfo,
+            active: true,
+          },
+        ],
+      };
+      const basis: CylinderOrderDraft = {
+        items: [{ uid: '1', form: 'doppelzylinder', measureAMm: 30, measureBMm: 30, qty: 2 }],
+        keyCount: 3,
+        extraIds: [],
+        expandable: false,
+      };
+
+      it('„Erweiterbar: Ja“ berechnet die Option „Erweiterbar reservieren“ mit', () => {
+        const result = priceCylinderOrder({ ...basis, expandable: true }, mitOption);
+        expect(result.extrasCents).toBe(1500);
+        expect(result.totalCents).toBe(7500);
+      });
+
+      it('zählt die Option nur einmal, auch wenn sie zusätzlich gewählt ist', () => {
+        const result = priceCylinderOrder(
+          { ...basis, expandable: true, extraIds: ['gleichschliessung-erweiterbar'] },
+          mitOption,
+        );
+        expect(result.extrasCents).toBe(1500);
+      });
+
+      it('„Erweiterbar: Nein“ berechnet die Option nicht', () => {
+        const result = priceCylinderOrder(
+          { ...basis, expandable: false, extraIds: ['gleichschliessung-erweiterbar'] },
+          mitOption,
+        );
+        expect(result.extrasCents).toBe(0);
+        expect(result.totalCents).toBe(6000);
+      });
+
+      it('ohne angebotene Option bleibt die Erweiterbarkeit ohne Aufpreis', () => {
+        const result = priceCylinderOrder({ ...basis, expandable: true }, catalog);
+        expect(result.extrasCents).toBe(0);
+      });
+    });
+
+    describe('Hersteller', () => {
+      const abus = {
+        id: 'abus',
+        name: 'ABUS',
+        active: true,
+        description: '',
+        surchargeCentsPerCylinder: 800,
+        forms: [],
+        components: [{ name: 'Vorhängeschloss', priceCents: 3900, description: '' }],
+      };
+      const mitHersteller: CylinderCatalog = { ...catalog, manufacturers: [abus] };
+      const basis: CylinderOrderDraft = {
+        items: [
+          { uid: '1', form: 'doppelzylinder', measureAMm: 30, measureBMm: 30, qty: 2 },
+          { uid: '2', form: 'halbzylinder', measureAMm: 30, qty: 1 },
+        ],
+        keyCount: 3,
+        extraIds: [],
+        expandable: false,
+      };
+
+      it('rechnet den Aufpreis je Zylinder in den Stückpreis ein', () => {
+        const result = priceCylinderOrder({ ...basis, manufacturerId: 'abus' }, mitHersteller);
+        expect(result.lines.map((line) => line.unitCents)).toEqual([3800, 2800]);
+        expect(result.cylindersCents).toBe(3 * 800 + 8000);
+        expect(result.totalCents).toBe(10400);
+      });
+
+      it('berechnet Zusatzkomponenten mit Stückzahl', () => {
+        const result = priceCylinderOrder(
+          { ...basis, manufacturerId: 'abus', components: [{ name: 'Vorhängeschloss', qty: 2 }] },
+          mitHersteller,
+        );
+        expect(result.componentLines).toEqual([{ label: 'Vorhängeschloss', qty: 2, unitCents: 3900, totalCents: 7800 }]);
+        expect(result.componentsCents).toBe(7800);
+        expect(result.totalCents).toBe(10400 + 7800);
+      });
+
+      it('ignoriert unbekannte Komponenten und nicht angebotene Hersteller', () => {
+        const fremd = priceCylinderOrder(
+          { ...basis, manufacturerId: 'abus', components: [{ name: 'Gibt es nicht', qty: 1 }] },
+          mitHersteller,
+        );
+        expect(fremd.componentsCents).toBe(0);
+
+        const inaktiv = priceCylinderOrder(
+          { ...basis, manufacturerId: 'abus', components: [{ name: 'Vorhängeschloss', qty: 1 }] },
+          { ...catalog, manufacturers: [{ ...abus, active: false }] },
+        );
+        expect(inaktiv.totalCents).toBe(8000);
+        expect(inaktiv.componentsCents).toBe(0);
+      });
+
+      it('ohne Hersteller bleibt alles wie bisher', () => {
+        const result = priceCylinderOrder(basis, mitHersteller);
+        expect(result.cylindersCents).toBe(8000);
+        expect(result.componentLines).toEqual([]);
+        expect(result.totalCents).toBe(8000);
+      });
     });
   });
 

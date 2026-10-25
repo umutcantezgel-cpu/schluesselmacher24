@@ -311,8 +311,8 @@ export default async function AutoschluesselHubPage() {
         actions={
           <ButtonLink href="/autoschluessel/anfrage" pfeil prefetch={false} className="whitespace-nowrap">
             {/* Telefon: Kurzlaut, damit der Knopf einzeilig bleibt */}
-            <span className="sm:hidden">Termin starten</span>
-            <span className="hidden sm:inline">Fahrzeug auswählen und Termin starten</span>
+            <span className="sm:hidden">Termin anfragen</span>
+            <span className="hidden sm:inline">Fahrzeug auswählen und Termin anfragen</span>
           </ButtonLink>
         }
       >

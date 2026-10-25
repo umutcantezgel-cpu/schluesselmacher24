@@ -7,6 +7,7 @@ import { submitRecord } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { scrollVerhalten } from '@/lib/bewegung';
 import type { InfoHint, SummarySection } from '@/lib/types';
+import { aktionMelden } from '@/lib/statistik';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
@@ -677,6 +678,7 @@ export function ZutrittKonfigurator() {
     setSubmitting(false);
 
     if (response.ok && response.reference) {
+      aktionMelden('projektanfrage', 'elektronische-zutrittsloesungen');
       clearFlow(FLOW_ID);
       setResult({ reference: response.reference, notices: response.notices });
       window.scrollTo({ top: 0, behavior: scrollVerhalten() });

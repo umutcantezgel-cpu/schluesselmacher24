@@ -161,7 +161,14 @@ export const Zylinderkatalog: GlobalConfig = {
                   fields: [
                     { type: 'row', fields: [
                       { name: 'name', type: 'text', label: 'Bezeichnung', required: true, admin: { width: '60%' } },
-                      euroFeld('preis', 'Preis', { required: true, admin: { width: '40%', step: 0.01 } }),
+                      euroFeld('preis', 'Preis', {
+                        required: true,
+                        admin: {
+                          width: '40%',
+                          step: 0.01,
+                          description: 'Preis je Stück inklusive Umsatzsteuer. Die Stückzahl wählt der Kunde im Konfigurator.',
+                        },
+                      }),
                     ] },
                     { name: 'beschreibung', type: 'textarea', label: 'Beschreibung' },
                   ],

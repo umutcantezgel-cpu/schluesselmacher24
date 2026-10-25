@@ -32,7 +32,7 @@ const ROUTE = 'schluessel-nach-vorlage';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Schlüssel nach Vorlage nachmachen lassen',
+    title: page?.seo.title ?? 'Schlüssel nach Foto oder Vorlage nachmachen lassen',
     description:
       page?.seo.description
       ?? 'Schlüssel nach Vorlage: Fotos hochladen, Machbarkeit und Preis erhalten. '
@@ -251,9 +251,9 @@ export default async function SchluesselNachVorlagePage() {
       <JsonLd
         data={pageGraphSchema({
           path: '/schluessel-nach-vorlage',
-          name: page?.headline ?? 'Schlüssel nach Vorlage',
+          name: page?.headline ?? 'Schlüssel nach Foto oder Vorlage',
           description: page?.seo.description,
-          crumbs: [{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' }],
+          crumbs: [{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Foto oder Vorlage' }],
           faq: faq,
         })}
       />
@@ -261,9 +261,9 @@ export default async function SchluesselNachVorlagePage() {
       {/* Großer Moment (B-04): Zeichnung „Vorlage und Kopie“ im Kopf, auf Papier */}
       <PageHeader
         eyebrow={process.label}
-        title={page?.headline ?? 'Schlüssel nach Vorlage'}
+        title={page?.headline ?? 'Schlüssel nach Foto oder Vorlage'}
         lead={page?.subline ?? 'Sie haben den Schlüssel — wir prüfen, ob wir ihn nachfertigen können.'}
-        crumbs={[{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' }]}
+        crumbs={[{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Foto oder Vorlage' }]}
         bereich="schluessel-nach-vorlage"
         visual={
           <div className="rounded-lg border border-border bg-surface p-4 sm:p-6">
@@ -276,7 +276,7 @@ export default async function SchluesselNachVorlagePage() {
         }
         actions={
           <ButtonLink href="/schluessel-nach-vorlage/anfrage" size="lg" pfeil>
-            Anfrage mit Fotos starten
+            Foto prüfen lassen
           </ButtonLink>
         }
       >
@@ -324,7 +324,7 @@ export default async function SchluesselNachVorlagePage() {
 
             <div className="mt-7">
               <ButtonLink href="/schluessel-nach-vorlage/anfrage" pfeil>
-                Ablauf starten
+                Foto prüfen lassen
               </ButtonLink>
             </div>
           </div>
@@ -473,6 +473,17 @@ export default async function SchluesselNachVorlagePage() {
               Schlüssel im unverfolgten Brief ist bei Verlust nicht auffindbar und nicht
               ersetzbar.
             </Alert>
+
+            <Link
+              href="/schluessel-einschicken"
+              className="group mt-6 inline-flex min-h-touch items-center gap-2 text-small font-semibold text-primary hover:underline"
+            >
+              Alles zur Einsendung: Schlüssel einschicken
+              <GlyphPfeilRechts
+                size={16}
+                className="shrink-0 transition-transform duration-quick ease-standard group-hover:translate-x-1"
+              />
+            </Link>
           </div>
 
           <Card className="lg:col-span-7">
