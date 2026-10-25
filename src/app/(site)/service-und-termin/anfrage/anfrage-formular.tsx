@@ -154,6 +154,7 @@ export function AllgemeineAnfrage({
       summary: zusammenfassung,
       uploads: dateien.map((f) => alsUpload(f, 'dokument')),
     });
+    schutz.antwortBeachten(ergebnis);
 
     setSenden(false);
 

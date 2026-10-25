@@ -1,6 +1,6 @@
 'use server';
 
-import type { FormularSchutz } from '@/lib/formular-schutz';
+import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
 import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
 import { createRecord, verifyCarKeyBooking } from '@/lib/server/create-record';
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
@@ -52,7 +52,7 @@ export interface SubmitInput {
   schutz?: FormularSchutz;
 }
 
-export interface SubmitResult {
+export interface SubmitResult extends SchutzAntwort {
   ok: boolean;
   reference?: string;
   recordId?: string;
@@ -78,12 +78,18 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     return { ok: false, notices: [], error: RATE_LIMIT_MESSAGE };
   }
 
-  // Bot-Schutz: still „angenommen“, aber nichts gespeichert und nichts versendet.
+  // Bot-Schutz: Beim Honigtopf still „angenommen“, aber nichts gespeichert
+  // und nichts versendet. Sonst ein sichtbarer Fehler, der Browser holt einen
+  // neuen Startzeitpunkt — die Eingaben bleiben stehen.
   const befund = formularSchutzPruefen(input?.schutz);
-  if (befund !== 'ok') {
+  if (befund === 'honigtopf') {
     botVerdachtMelden('submitRecord', befund);
     const art = (['anfrage', 'termin', 'projekt'] as const).find((k) => k === input?.kind) ?? 'anfrage';
     return { ok: true, reference: scheinNummer(art), notices: [] };
+  }
+  if (befund !== 'ok') {
+    botVerdachtMelden('submitRecord', befund);
+    return { ok: false, notices: [], error: SCHUTZ_ERNEUERT, schutzNeu: true };
   }
 
   const parsed = publicRecordSchema.safeParse(input);

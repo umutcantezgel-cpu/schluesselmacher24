@@ -75,6 +75,7 @@ const aktionen = { ...(await import('./records')), ...(await import('./orders'))
 const { resetRateLimits } = await import('@/lib/server/rate-limit');
 const { createAccessToken, verifyAccessToken } = await import('@/lib/server/access-token');
 const { startSignieren } = await import('@/lib/server/formular-schutz');
+const { SCHUTZ_ERNEUERT } = await import('@/lib/formular-schutz');
 
 /** Wie aus dem Browser: Formular vor 10 Sekunden geöffnet, Honigtopf leer. */
 const schutz = () => ({ start: startSignieren(Date.now() - 10_000), website: '' });
@@ -527,32 +528,51 @@ describe('Bot-Schutz', () => {
     uploads: [],
   };
 
-  it.each([
-    ['Honigtopf ausgefüllt', () => ({ start: startSignieren(Date.now() - 10_000), website: 'https://spam.example' })],
-    ['zu schnell (1 s)', () => ({ start: startSignieren(Date.now() - 1_000), website: '' })],
-    ['älter als 24 Stunden', () => ({ start: startSignieren(Date.now() - 25 * 60 * 60 * 1000), website: '' })],
-    ['ohne Startzeitpunkt', () => ({})],
-    ['mit gefälschter Signatur', () => ({ start: `${Date.now() - 10_000}.${'A'.repeat(43)}` })],
-  ])('antwortet bei „%s“ wie bei Erfolg, speichert aber nichts', async (_name, falsch) => {
-    const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const result = await aktionen.submitRecord({ ...anfrage, schutz: falsch() });
-    expect(result.ok).toBe(true);
-    expect(result.reference).toMatch(/^SM24-A-\d{4}-\d{4}$/);
-    expect(stored).toHaveLength(0);
-
-    const bestellung = await aktionen.submitOrder({
+  const bestellung = (schutz: Record<string, string>) =>
+    aktionen.submitOrder({
       items: [],
       shippingOptionId: 'x',
       contact,
       acceptedTerms: true,
       acceptedCustomMade: true,
       expectedTotalCents: 0,
-      schutz: falsch(),
+      schutz,
     });
-    expect(bestellung.ok).toBe(true);
+
+  it('antwortet beim ausgefüllten Honigtopf still wie bei Erfolg, speichert aber nichts', async () => {
+    const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const honig = { start: startSignieren(Date.now() - 10_000), website: 'https://spam.example' };
+    const result = await aktionen.submitRecord({ ...anfrage, schutz: honig });
+    expect(result.ok).toBe(true);
+    expect(result.reference).toMatch(/^SM24-A-\d{4}-\d{4}$/);
+    expect(result.schutzNeu).toBeUndefined();
+    expect((await bestellung(honig)).ok).toBe(true);
+    expect(stored).toHaveLength(0);
+    expect(warnung).toHaveBeenCalledWith(expect.stringContaining('honigtopf'));
+    warnung.mockRestore();
+  });
+
+  it.each([
+    ['zu schnell (1 s)', () => ({ start: startSignieren(Date.now() - 1_000), website: '' })],
+    ['älter als 24 Stunden', () => ({ start: startSignieren(Date.now() - 25 * 60 * 60 * 1000), website: '' })],
+    ['ohne Startzeitpunkt', () => ({})],
+    ['mit gefälschter Signatur', () => ({ start: `${Date.now() - 10_000}.${'A'.repeat(43)}` })],
+  ])('meldet bei „%s“ einen wiederholbaren Fehler statt einer Schein-Nummer', async (_name, falsch) => {
+    const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = await aktionen.submitRecord({ ...anfrage, schutz: falsch() });
+    expect(result).toMatchObject({ ok: false, schutzNeu: true, error: SCHUTZ_ERNEUERT });
+    expect(result.reference).toBeUndefined();
+
+    const order = await bestellung(falsch());
+    expect(order).toMatchObject({ ok: false, schutzNeu: true, error: SCHUTZ_ERNEUERT });
+    expect(order.reference).toBeUndefined();
     expect(stored).toHaveLength(0);
     expect(warnung).toHaveBeenCalledWith(expect.stringContaining('[bot-schutz]'));
     warnung.mockRestore();
+
+    // Zweiter Versuch mit frischem Startzeitpunkt geht durch.
+    expect((await aktionen.submitRecord({ ...anfrage, schutz: schutz() })).ok).toBe(true);
+    expect(stored).toHaveLength(1);
   });
 
   it('nimmt gültige Formulare an', async () => {

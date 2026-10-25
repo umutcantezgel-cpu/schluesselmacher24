@@ -7,7 +7,7 @@ import { codePasst } from '@/lib/code-pattern';
 import { validateCylinderDraft } from '@/lib/cylinder-rules';
 import { zylinderDetails } from '@/lib/cylinder-summary';
 import { formatCents } from '@/lib/format';
-import type { FormularSchutz } from '@/lib/formular-schutz';
+import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
 import { LIEFERLAND, istSonderanfertigung } from '@/lib/kasse';
 import { availableShipping, cartTotals, priceCylinderOrder, unitPriceForCodeLine } from '@/lib/pricing';
 import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
@@ -37,7 +37,7 @@ export interface CheckoutInput {
   schutz?: FormularSchutz;
 }
 
-export interface CheckoutResult {
+export interface CheckoutResult extends SchutzAntwort {
   ok: boolean;
   reference?: string;
   recordId?: string;
@@ -146,11 +146,16 @@ const ZYLINDER_KENNUNG = 'zylinder-schliessung';
 export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult> {
   if (!(await allowRequest(LIMITS.bestellung))) return fail(RATE_LIMIT_MESSAGE);
 
-  // Bot-Schutz: still „angenommen“, aber nichts gespeichert und nichts versendet.
+  // Bot-Schutz: Beim Honigtopf still „angenommen“, aber nichts gespeichert
+  // und nichts versendet. Sonst ein sichtbarer, wiederholbarer Fehler.
   const befund = formularSchutzPruefen(input?.schutz);
-  if (befund !== 'ok') {
+  if (befund === 'honigtopf') {
     botVerdachtMelden('submitOrder', befund);
     return { ok: true, reference: scheinNummer('bestellung'), notices: [] };
+  }
+  if (befund !== 'ok') {
+    botVerdachtMelden('submitOrder', befund);
+    return { ...fail(SCHUTZ_ERNEUERT), schutzNeu: true };
   }
 
   if (!input?.acceptedTerms) {

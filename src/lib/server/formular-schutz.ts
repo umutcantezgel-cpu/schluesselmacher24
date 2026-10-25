@@ -14,8 +14,12 @@ import { istProduktion } from '@/lib/umgebung';
    - ein verstecktes Honigtopf-Feld, das nur Programme ausfüllen,
    - ein beim Öffnen signierter Zeitpunkt (HMAC): zwischen Öffnen und
      Absenden liegen mindestens 4 Sekunden und höchstens 24 Stunden.
-   Fällt ein Absenden auf, antworten die Aktionen wie bei Erfolg, speichern
-   aber nichts — ein Programm erfährt so nicht, woran es gescheitert ist.
+   Nur beim ausgefüllten Honigtopf antworten die Aktionen wie bei Erfolg und
+   speichern nichts. Ein fehlender oder unpassender Startzeitpunkt kann auch
+   Menschen treffen (ohne JavaScript, Netz weg, neuer Schlüssel): Dann gibt
+   es einen sichtbaren Fehler mit `schutzNeu` — der Browser holt einen neuen
+   Startzeitpunkt, der zweite Versuch geht durch. Der Widerruf wird in diesem
+   Fall trotzdem gespeichert (src/lib/actions/widerruf.ts).
    ========================================================================== */
 
 export type SchutzBefund = 'ok' | 'honigtopf' | 'ohne-start' | 'ungueltig' | 'zu-schnell' | 'abgelaufen';
@@ -72,8 +76,12 @@ export function formularSchutzPruefen(schutz: FormularSchutz | null | undefined,
 }
 
 /** Vermerkt einen Treffer im Server-Log — ohne personenbezogene Angaben. */
-export function botVerdachtMelden(formular: string, befund: Exclude<SchutzBefund, 'ok'>): void {
-  console.warn(`[bot-schutz] ${formular}: ${befund} — still verworfen.`);
+export function botVerdachtMelden(
+  formular: string,
+  befund: Exclude<SchutzBefund, 'ok'>,
+  folge = befund === 'honigtopf' ? 'still verworfen' : 'abgewiesen, neuer Versuch möglich',
+): void {
+  console.warn(`[bot-schutz] ${formular}: ${befund} — ${folge}.`);
 }
 
 /** Plausible Nummer für die stille Antwort — es gibt keinen Vorgang dazu. */

@@ -22,3 +22,15 @@ export const MINDESTDAUER_MS = 4_000;
 
 /** Höchstalter des Startzeitpunkts. */
 export const HOECHSTALTER_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * Antwort, wenn der Startzeitpunkt fehlt, ungültig, zu jung oder zu alt ist.
+ * Das kann auch Menschen treffen (Netz weg, neuer Schlüssel nach einer
+ * Auslieferung) — deshalb sichtbar und wiederholbar, nie still.
+ */
+export const SCHUTZ_ERNEUERT = 'Bitte senden Sie das Formular noch einmal ab – die Sitzung wurde erneuert.';
+
+/** Kennung in der Antwort der Aktionen: Der Browser holt dann einen neuen Startzeitpunkt. */
+export interface SchutzAntwort {
+  schutzNeu?: boolean;
+}

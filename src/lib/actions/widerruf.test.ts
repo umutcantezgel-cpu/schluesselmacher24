@@ -9,6 +9,8 @@ import type { WiderrufDatensatz } from '@/lib/rechtliches/widerruf-aufnahme';
 
 const zustand = { erlaubt: true, mitDatenbank: true };
 const gespeichert: WiderrufDatensatz[] = [];
+/** Wer welche Mail bekommen hätte (Kunde: Eingangsbestätigung, Betrieb: Meldung). */
+const versand = { kunde: [] as Array<Record<string, unknown>>, betrieb: [] as string[] };
 
 vi.mock('@/lib/server/rate-limit', () => ({
   LIMITS: { widerruf: { name: 'widerruf', limit: 5, windowMs: 600_000 } },
@@ -35,6 +37,20 @@ vi.mock('@/lib/rechtliches/widerruf-speicher', () => ({
   widerrufAmVorgangVermerken: async () => {},
 }));
 
+vi.mock('@/lib/server/benachrichtigungen', () => ({
+  nachDerAntwort: async (arbeit: () => Promise<unknown>) => {
+    await arbeit();
+  },
+  sendeWiderrufEingang: async (daten: Record<string, unknown>) => {
+    versand.kunde.push(daten);
+    return { kind: 'widerruf', to: daten.an, at: new Date().toISOString(), result: 'gesendet' };
+  },
+  sendeWiderrufBetrieb: async (daten: { email: string }) => {
+    versand.betrieb.push(daten.email);
+    return null;
+  },
+}));
+
 const { widerrufErklaeren } = await import('./widerruf');
 const { startSignieren } = await import('@/lib/server/formular-schutz');
 
@@ -51,6 +67,8 @@ beforeEach(() => {
   zustand.erlaubt = true;
   zustand.mitDatenbank = true;
   gespeichert.length = 0;
+  versand.kunde.length = 0;
+  versand.betrieb.length = 0;
 });
 
 describe('widerrufErklaeren', () => {
@@ -59,9 +77,12 @@ describe('widerrufErklaeren', () => {
       null,
       formular({ name: 'Erika Muster', email: 'erika@example.org', vorgangsnummer: 'SM24-T-2026-0007', erklaerung: '' }),
     );
-    expect(ergebnis).toMatchObject({ status: 'eingegangen', vorgangsnummer: 'SM24-T-2026-0007', mailGesendet: false });
+    expect(ergebnis).toMatchObject({ status: 'eingegangen', vorgangsnummer: 'SM24-T-2026-0007', mailGesendet: true });
     expect(gespeichert).toHaveLength(1);
     expect(gespeichert[0].zuordnung).toBe('zu-pruefen');
+    expect(gespeichert[0].notiz).toBeUndefined();
+    expect(versand.kunde).toEqual([expect.objectContaining({ an: 'erika@example.org' })]);
+    expect(versand.betrieb).toEqual(['erika@example.org']);
   });
 
   it('meldet fehlende Pflichtfelder', async () => {
@@ -93,16 +114,39 @@ describe('widerrufErklaeren', () => {
       const ergebnis = await widerrufErklaeren(null, formular({ ...eingabe, website: 'https://spam.example' }));
       expect(ergebnis).toMatchObject({ status: 'eingegangen', name: 'Erika Muster', mailGesendet: false });
       expect(gespeichert).toHaveLength(0);
+      expect(versand).toEqual({ kunde: [], betrieb: [] });
       expect(warnung).toHaveBeenCalledWith(expect.stringContaining('honigtopf'));
       warnung.mockRestore();
     });
 
-    it('verwirft zu schnelles Absenden und fehlende Startzeitpunkte still', async () => {
+    it.each([
+      ['zu schnell abgesendet', () => startSignieren(Date.now() - 1_000)],
+      ['ohne Startzeitpunkt', () => ''],
+      ['mit gefälschtem Startzeitpunkt', () => '1700000000000.gefaelscht'],
+      ['mit abgelaufenem Startzeitpunkt', () => startSignieren(Date.now() - 25 * 60 * 60 * 1000)],
+    ])('speichert die Erklärung %s trotzdem, informiert den Betrieb, mailt aber nicht an die eingegebene Adresse', async (_name, start) => {
       const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
-      expect((await widerrufErklaeren(null, formular({ ...eingabe, formularStart: startSignieren(Date.now() - 1_000) }))).status).toBe('eingegangen');
-      expect((await widerrufErklaeren(null, formular({ ...eingabe, formularStart: '' }))).status).toBe('eingegangen');
-      expect((await widerrufErklaeren(null, formular({ ...eingabe, formularStart: '1700000000000.gefaelscht' }))).status).toBe('eingegangen');
-      expect(gespeichert).toHaveLength(0);
+      const ergebnis = await widerrufErklaeren(null, formular({ ...eingabe, formularStart: start() }));
+      expect(ergebnis).toMatchObject({ status: 'eingegangen', name: 'Erika Muster', mailGesendet: false });
+      expect(ergebnis.status === 'eingegangen' && Date.parse(ergebnis.eingangAm)).not.toBeNaN();
+      expect(gespeichert).toHaveLength(1);
+      expect(gespeichert[0].notiz).toContain('Bot-Schutz');
+      expect(versand.kunde).toHaveLength(0);
+      expect(versand.betrieb).toEqual(['erika@example.org']);
+      warnung.mockRestore();
+    });
+
+    it('speichert auch eine Erklärung, die ohne JavaScript abgesendet wurde', async () => {
+      const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      // Natives Absenden: Das versteckte Startfeld bleibt leer.
+      const daten = new FormData();
+      for (const [name, wert] of Object.entries({ ...eingabe, erklaerung: '', formularStart: '', website: '' })) {
+        daten.set(name, wert);
+      }
+      const ergebnis = await widerrufErklaeren(null, daten);
+      expect(ergebnis).toMatchObject({ status: 'eingegangen', vorgangsnummer: 'SM24-T-2026-0007', mailGesendet: false });
+      expect(gespeichert).toHaveLength(1);
+      expect(versand.kunde).toHaveLength(0);
       warnung.mockRestore();
     });
   });
