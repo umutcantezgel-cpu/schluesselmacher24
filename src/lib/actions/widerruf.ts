@@ -1,15 +1,18 @@
 'use server';
 
 import { getSettings } from '@/lib/data';
-import { mailStatus, sendMail } from '@/lib/integrations';
+import { HONIGTOPF_FELD, START_FELD } from '@/lib/formular-schutz';
 import { kontakt } from '@/lib/rechtliches/firma';
 import { widerrufAufnehmen, type WiderrufErgebnis } from '@/lib/rechtliches/widerruf-aufnahme';
+import { WIDERRUF_ERKLAERUNG } from '@/lib/rechtliches/widerruf-typen';
 import {
   widerrufAmVorgangVermerken,
   widerrufBestaetigungVermerken,
   widerrufSpeichern,
   widerrufVorgangFinden,
 } from '@/lib/rechtliches/widerruf-speicher';
+import { nachDerAntwort, sendeWiderrufBetrieb, sendeWiderrufEingang } from '@/lib/server/benachrichtigungen';
+import { botVerdachtMelden, formularSchutzPruefen } from '@/lib/server/formular-schutz';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { mitDatenbank } from '@/lib/umgebung';
 
@@ -19,10 +22,18 @@ function feld(formData: FormData, name: string): string | undefined {
   return typeof wert === 'string' ? wert : undefined;
 }
 
+/** Freie Angaben ohne den vorangestellten Erklärungssatz (für die Betriebsmail). */
+function angabenAus(erklaerung: string): string | undefined {
+  const rest = erklaerung.startsWith(WIDERRUF_ERKLAERUNG) ? erklaerung.slice(WIDERRUF_ERKLAERUNG.length) : erklaerung;
+  return rest.trim() || undefined;
+}
+
 /**
  * Widerrufsbutton: nimmt die Erklärung aus dem Formular
  * `/rechtliches/widerruf/erklaeren` entgegen (für `useActionState`).
  * Speichert jede gültige Erklärung mit Eingangszeit, storniert nie selbst.
+ * Eingangsbestätigung an den Kunden und Meldung an den Betrieb kommen aus
+ * den Mailvorlagen (src/lib/server/benachrichtigungen.ts).
  */
 export async function widerrufErklaeren(
   _vorher: WiderrufErgebnis | null,
@@ -40,6 +51,24 @@ export async function widerrufErklaeren(
     };
   }
 
+  // Bot-Schutz: still „eingegangen“, aber nichts gespeichert und nichts versendet.
+  const befund = formularSchutzPruefen({
+    start: feld(formData, START_FELD),
+    [HONIGTOPF_FELD]: feld(formData, HONIGTOPF_FELD),
+  });
+  if (befund !== 'ok') {
+    botVerdachtMelden('widerrufErklaeren', befund);
+    const vorgangsnummer = feld(formData, 'vorgangsnummer')?.trim().toUpperCase().slice(0, 40);
+    return {
+      status: 'eingegangen',
+      eingangAm: new Date().toISOString(),
+      name: (feld(formData, 'name') ?? '').trim().slice(0, 120),
+      email: (feld(formData, 'email') ?? '').trim().slice(0, 254),
+      ...(vorgangsnummer ? { vorgangsnummer } : {}),
+      mailGesendet: false,
+    };
+  }
+
   return widerrufAufnehmen(
     {
       name: feld(formData, 'name'),
@@ -50,18 +79,40 @@ export async function widerrufErklaeren(
     {
       mitDatenbank: mitDatenbank(),
       firma: settings.company,
-      mailEingerichtet: mailStatus().configured,
       jetzt: () => new Date(),
       vorgangFinden: widerrufVorgangFinden,
       speichern: widerrufSpeichern,
       bestaetigungVermerken: widerrufBestaetigungVermerken,
       vorgangVermerken: widerrufAmVorgangVermerken,
-      mailSenden: async (mail) => {
-        const antwort = await sendMail(mail);
-        // Die Kennung beim Mailanbieter liefert die Resend-Anbindung, sobald vorhanden.
-        const { providerId } = antwort as typeof antwort & { providerId?: string };
-        return { sent: antwort.sent, message: antwort.message, ...(providerId ? { providerId } : {}) };
+      bestaetigungSenden: async (datensatz) => {
+        const eintrag = await sendeWiderrufEingang({
+          an: datensatz.email,
+          // Ein Namensfeld: die Vorlage prüft und kürzt die Anrede selbst.
+          vorname: datensatz.name,
+          vorgangsnummer: datensatz.vorgangsnummer,
+          eingegangenAm: datensatz.eingegangenAm,
+          settings,
+        });
+        return {
+          ergebnis: eintrag.result,
+          ...(eintrag.providerId ? { anbieterId: eintrag.providerId } : {}),
+          ...(eintrag.error ? { fehler: eintrag.error } : {}),
+        };
       },
+      // Nach der Antwort: Der Kunde wartet nicht auf die Mail an den Betrieb.
+      betriebInformieren: (datensatz, id) =>
+        nachDerAntwort(() =>
+          sendeWiderrufBetrieb({
+            widerrufId: id,
+            name: datensatz.name,
+            email: datensatz.email,
+            vorgangsnummer: datensatz.vorgangsnummer,
+            eingegangenAm: datensatz.eingegangenAm,
+            zugeordnet: datensatz.zuordnung === 'zugeordnet',
+            angaben: angabenAus(datensatz.erklaerung),
+            settings,
+          }),
+        ),
     },
   );
 }

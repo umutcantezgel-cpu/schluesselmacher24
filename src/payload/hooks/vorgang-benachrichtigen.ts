@@ -2,6 +2,7 @@ import type { CollectionAfterChangeHook, CollectionBeforeChangeHook, PayloadRequ
 
 import { einstellungenZuSeite, vorgangAenderungZuPayload, vorgangZuSeite } from '../../lib/data/payload-mapping';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '../../lib/mail/versand';
+import { BESTAETIGENDE_STATUS, sendeVertragsbestaetigung, vertragsbestaetigungOffen } from '../../lib/mail/vertrag';
 import { istStatusMitMail, statusMail, type StatusMitMail } from '../../lib/mail/vorlagen/status';
 import { kundeBezahlt } from '../../lib/mail/vorlagen/zahlung';
 import type { MailLogEntry, Settings } from '../../lib/types';
@@ -25,6 +26,8 @@ interface Vorhaben {
   statusMail?: { status: StatusMitMail; nachricht?: string };
   /** Zahlung von Hand auf „bezahlt“ gesetzt. */
   zahlungsMail?: boolean;
+  /** Vertrag angenommen (bestätigender Status oder Zahlung von Hand): Vertragsbestätigung, falls noch offen. */
+  vertrag?: boolean;
   /** Offene Checkout-Sitzung beim Stornieren beenden. */
   sitzungBeenden?: string;
 }
@@ -61,6 +64,7 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
     if (zahlungNeu === 'bezahlt') {
       if (!originalDoc.zahlung?.bezahltAm) data.zahlung.bezahltAm = jetzt;
       vorhaben.zahlungsMail = true;
+      vorhaben.vertrag = true;
     }
     data.notizen = [
       ...(data.notizen ?? originalDoc.notizen ?? []),
@@ -87,6 +91,9 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
     }
     // Das Häkchen gilt nur für diesen einen Wechsel.
     data.kundeInformieren = true;
+    // Annahme durch das Team: Ohne Online-Zahlung ist das der Vertragsschluss
+    // (§ 3 Abs. 3, § 4 Abs. 2 der AGB) — die Bestätigung geht unabhängig vom Häkchen.
+    if (BESTAETIGENDE_STATUS.includes(data.status)) vorhaben.vertrag = true;
   }
 
   if (Object.keys(vorhaben).length) req.context[vorhabenSchluessel(originalDoc.id)] = vorhaben;
@@ -155,7 +162,7 @@ export const vorgangNachAenderung: CollectionAfterChangeHook<Vorgaenge> = async 
     }
   }
 
-  if ((!vorhaben.statusMail && !vorhaben.zahlungsMail) || !mailKonfiguration()) return doc;
+  if ((!vorhaben.statusMail && !vorhaben.zahlungsMail && !vorhaben.vertrag) || !mailKonfiguration()) return doc;
 
   const vorgang = vorgangZuSeite(doc);
   const settings = await einstellungenLaden(req);
@@ -186,6 +193,17 @@ export const vorgangNachAenderung: CollectionAfterChangeHook<Vorgaenge> = async 
       }),
     );
   }
+  if (vorhaben.vertrag && vertragsbestaetigungOffen(vorgang)) {
+    if (settings) {
+      // Erst hier laden: Die Zahlarten lesen die Umgebung der Seite.
+      const { onlineZahlarten } = await import('../../lib/rechtliches/zahlarten');
+      const eintrag = await sendeVertragsbestaetigung({ vorgang, settings, zahlarten: onlineZahlarten() });
+      if (eintrag) eintraege.push(eintrag);
+    } else {
+      req.payload.logger.warn({ msg: `Vertragsbestätigung zu Vorgang ${doc.id} nicht gesendet: Einstellungen fehlen` });
+    }
+  }
+  if (eintraege.length === 0) return doc;
 
   try {
     const neu = await vorgangVermerken(req, doc.id, { mailLog: [...(vorgang.mailLog ?? []), ...eintraege] });

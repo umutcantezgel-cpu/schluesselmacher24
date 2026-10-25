@@ -48,3 +48,59 @@ export function widerrufEingang({ vorname, nachname, vorgangsnummer, eingegangen
     site: kontext.site,
   });
 }
+
+export interface BetriebWiderrufDaten {
+  name: string;
+  email: string;
+  vorgangsnummer?: string;
+  /** ISO-Zeitpunkt des Eingangs. */
+  eingegangenAm: string;
+  /** Vom Server zugeordnet (Nummer und E-Mail passen) oder von Hand zu prüfen. */
+  zugeordnet: boolean;
+  /** Freie Angaben des Kunden, falls vorhanden. */
+  angaben?: string;
+  /** Link auf die Erklärung im Backend. */
+  adminUrl: string;
+  kontext: VorlagenKontext;
+}
+
+/**
+ * Meldung „Widerruf eingegangen“ an den Betrieb. Geht nur an die feste
+ * Team-Adresse — deshalb darf hier stehen, was der Kunde eingegeben hat.
+ */
+export function betriebWiderrufEingang({
+  name,
+  email,
+  vorgangsnummer,
+  eingegangenAm,
+  zugeordnet,
+  angaben,
+  adminUrl,
+  kontext,
+}: BetriebWiderrufDaten): MailInhalt {
+  const nummer = vorgangsnummer?.trim().toUpperCase();
+  const zeilen: Array<[string, string]> = [
+    ['Eingegangen am', `${formatDateTime(eingegangenAm)} Uhr`],
+    ['Name', name],
+    ['E-Mail', email],
+    ['Vorgangsnummer', nummer || 'nicht angegeben'],
+    ['Zuordnung', zugeordnet ? 'dem Vorgang zugeordnet (Nummer und E-Mail passen)' : 'bitte von Hand prüfen'],
+  ];
+  const bausteine: Baustein[] = [
+    {
+      art: 'absatz',
+      text:
+        'über den Widerrufsbutton der Website ist eine Widerrufserklärung eingegangen. Sie ist mit dem Zugang '
+        + 'wirksam; bitte prüfen und bearbeiten. Es wird nichts automatisch storniert oder erstattet.',
+    },
+    { art: 'felder', zeilen },
+  ];
+  if (angaben?.trim()) bausteine.push({ art: 'nachricht', titel: 'Angaben des Kunden', text: angaben.trim() });
+  bausteine.push({ art: 'knopf', href: adminUrl, label: 'Im Backend öffnen' });
+  return baueMail({
+    betreff: `Widerruf eingegangen${nummer ? `: ${nummer}` : ''}`,
+    anrede: 'Hallo Team,',
+    bausteine,
+    site: kontext.site,
+  });
+}

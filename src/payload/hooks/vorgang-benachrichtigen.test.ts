@@ -1,5 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { einstellungenZuPayload } from '../../lib/data/payload-mapping';
+import { echteEinstellungen } from '../../lib/rechtliches/test-hilfen';
 import { hashToken } from '../../lib/server/access-token';
 import type { Vorgaenge } from '../../payload-types';
 import { bestaetigungSendenHandler } from './bestaetigung-senden';
@@ -85,13 +87,15 @@ describe('vorgangVorAenderung', () => {
     expect(data.kundeInformieren).toBe(true);
     expect(r.context['sm24Vorhaben:42']).toEqual({
       statusMail: { status: 'versendet', nachricht: 'Ihr Schlüssel ist unterwegs.' },
+      vertrag: true,
     });
   });
 
   it('schickt ohne Haken keine Mail und setzt den Haken zurück', () => {
     const r = req();
     const data = vor({ data: { ...doc(), status: 'terminiert', kundeInformieren: false }, originalDoc: doc(), operation: 'update', req: r });
-    expect(r.context['sm24Vorhaben:42']).toBeUndefined();
+    // Keine Statusmail — die Vertragsbestätigung ist Pflicht und hängt nicht am Haken.
+    expect(r.context['sm24Vorhaben:42']).toEqual({ vertrag: true });
     expect(data.kundeInformieren).toBe(true);
     expect(data.nachrichtAnKunde).toBe('Ihr Schlüssel ist unterwegs.');
   });
@@ -106,7 +110,7 @@ describe('vorgangVorAenderung', () => {
     });
     expect(data.zahlung?.bezahltAm).toEqual(expect.any(String));
     expect(data.notizen?.at(-1)).toMatchObject({ von: 'team', text: expect.stringContaining('von „Offen“ auf „Bezahlt“ gesetzt (Mina Saad)') });
-    expect(r.context['sm24Vorhaben:42']).toEqual({ zahlungsMail: true });
+    expect(r.context['sm24Vorhaben:42']).toEqual({ zahlungsMail: true, vertrag: true });
   });
 
   it('merkt beim Stornieren die offene Checkout-Sitzung vor', () => {
@@ -147,6 +151,30 @@ describe('vorgangNachAenderung', () => {
     // Nur einmal je Speichern
     await nach({ doc: doc({ status: 'versendet' }), operation: 'update', req: r });
     expect(gesendet).toHaveLength(1);
+  });
+
+  it('sendet beim Annehmen die Vertragsbestätigung genau einmal', async () => {
+    const r = req();
+    r.payload.findGlobal = vi.fn(async () => einstellungenZuPayload(echteEinstellungen()) as never);
+    r.context['sm24Vorhaben:42'] = { vertrag: true };
+    const ergebnis = await nach({ doc: doc({ status: 'geprueft' }), operation: 'update', req: r });
+    expect(gesendet).toHaveLength(1);
+    expect(gesendet[0]).toMatchObject({ an: ['erika@example.org'], betreff: 'Vertragsbestätigung – SM24-B-2026-0007', schluessel: 'lokal-SM24-B-2026-0007-vertrag' });
+    expect(ergebnis.mails?.[0]).toMatchObject({ art: 'vertrag', ergebnis: 'gesendet' });
+
+    // Steht sie im Protokoll, geht sie nicht noch einmal hinaus.
+    r.context['sm24Vorhaben:42'] = { vertrag: true };
+    await nach({ doc: doc({ status: 'versendet', mails: ergebnis.mails }), operation: 'update', req: r });
+    expect(gesendet).toHaveLength(1);
+  });
+
+  it('sendet für Anfragen keine Vertragsbestätigung', async () => {
+    const r = req();
+    r.payload.findGlobal = vi.fn(async () => einstellungenZuPayload(echteEinstellungen()) as never);
+    r.context['sm24Vorhaben:42'] = { vertrag: true };
+    await nach({ doc: doc({ art: 'anfrage', status: 'geprueft' }), operation: 'update', req: r });
+    expect(gesendet).toHaveLength(0);
+    expect(update).not.toHaveBeenCalled();
   });
 
   it('sendet ohne Mail-Einrichtung nichts', async () => {

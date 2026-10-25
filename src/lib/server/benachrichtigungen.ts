@@ -4,6 +4,7 @@ import { after } from 'next/server';
 
 import { getSettings, vorgangAendern } from '@/lib/data';
 import { MAIL_NICHT_EINGERICHTET, MAIL_NICHT_VERSENDET } from '@/lib/mail/hinweise';
+import { sendeVertragsbestaetigung } from '@/lib/mail/vertrag';
 import {
   adminLink,
   antwortAdresse,
@@ -15,6 +16,7 @@ import {
 import {
   betriebBezahlt,
   betriebNeuerVorgang,
+  betriebWiderrufEingang,
   kundeBezahlt,
   kundeEingang,
   kundeErstattet,
@@ -23,6 +25,7 @@ import {
   widerrufEingang,
   type StatusMitMail,
 } from '@/lib/mail/vorlagen';
+import { onlineZahlarten } from '@/lib/rechtliches/zahlarten';
 import type { BusinessRecord, MailLogEntry, Settings } from '@/lib/types';
 import { mailKonfiguration } from '@/lib/umgebung';
 import type { ZahlungsMail } from '@/lib/zahlung/uebergaenge';
@@ -131,7 +134,8 @@ export async function benachrichtigeNeuerVorgang({ saved, token, settings }: Neu
 /* ---------- Zahlung ------------------------------------------------------ */
 
 /**
- * Mail nach einer verbuchten Zahlung: „bezahlt“ an Kunde und Betrieb,
+ * Mail nach einer verbuchten Zahlung: „bezahlt“ an Kunde und Betrieb — dazu
+ * einmalig die Vertragsbestätigung mit AGB und Widerrufsbelehrung —,
  * „nicht abgeschlossen“ und „erstattet“ an den Kunden.
  */
 export async function benachrichtigeZahlung({
@@ -149,7 +153,8 @@ export async function benachrichtigeZahlung({
     const kontext = vorlagenKontext(settings);
     const antwortAn = antwortAdresse(settings.company);
     const kunde = vorgang.contact.email;
-    const sendungen: Array<Promise<MailLogEntry>> = [];
+    // `null`: nichts versendet (Vertragsbestätigung bereits im Protokoll).
+    const sendungen: Array<Promise<MailLogEntry | null>> = [];
 
     switch (mail.art) {
       case 'bezahlt': {
@@ -173,6 +178,8 @@ export async function benachrichtigeZahlung({
             }),
           );
         }
+        // Mit dem Zahlungseingang nehmen wir den Vertrag an (§ 312f Abs. 2 BGB) — genau einmal.
+        sendungen.push(sendeVertragsbestaetigung({ vorgang, settings, zahlarten: onlineZahlarten() }));
         break;
       }
       case 'nicht-abgeschlossen':
@@ -202,10 +209,30 @@ export async function benachrichtigeZahlung({
     const ergebnisse = await Promise.allSettled(sendungen);
     await protokollieren(
       vorgang.id,
-      ergebnisse.flatMap((e) => (e.status === 'fulfilled' ? [e.value] : [])),
+      ergebnisse.flatMap((e) => (e.status === 'fulfilled' && e.value ? [e.value] : [])),
     );
   } catch (error) {
     console.error('[benachrichtigung] Zahlungsmail nicht versendet', error);
+  }
+}
+
+/* ---------- Vertrag ------------------------------------------------------ */
+
+/**
+ * Vertragsbestätigung mit AGB und Widerrufsbelehrung, falls noch nicht
+ * gesendet — für Annahmen, die nicht über den Backend-Hook laufen (Termin
+ * verschieben, Telefontermin). Protokolliert am Vorgang.
+ */
+export async function benachrichtigeVertrag({ vorgang }: { vorgang: BusinessRecord }): Promise<MailLogEntry | null> {
+  if (!mailKonfiguration()) return null;
+  try {
+    const settings = await getSettings();
+    const eintrag = await sendeVertragsbestaetigung({ vorgang, settings, zahlarten: onlineZahlarten() });
+    if (eintrag) await protokollieren(vorgang.id, [eintrag]);
+    return eintrag;
+  } catch (error) {
+    console.error('[benachrichtigung] Vertragsbestätigung nicht versendet', error);
+    return null;
   }
 }
 
@@ -278,4 +305,52 @@ export async function sendeWiderrufEingang(daten: WiderrufEingangMail): Promise<
       String(Date.parse(daten.eingegangenAm) || Date.now()),
     ),
   });
+}
+
+export interface WiderrufBetriebMail {
+  widerrufId: number | string;
+  name: string;
+  email: string;
+  vorgangsnummer?: string;
+  /** ISO-Zeitpunkt des Eingangs. */
+  eingegangenAm: string;
+  zugeordnet: boolean;
+  /** Freie Angaben des Kunden. */
+  angaben?: string;
+  settings?: Settings;
+}
+
+/**
+ * Meldung „Widerruf eingegangen“ an den Betrieb (Team-Adresse). Liefert den
+ * Protokolleintrag, `null` ohne Mailversand oder ohne Team-Adresse.
+ */
+export async function sendeWiderrufBetrieb(daten: WiderrufBetriebMail): Promise<MailLogEntry | null> {
+  if (!mailKonfiguration()) return null;
+  const settings = daten.settings ?? (await getSettings().catch(() => undefined));
+  const an = teamEmpfaenger(settings?.company);
+  if (!an.length) {
+    console.warn('[benachrichtigung] Keine Adresse für Betriebsmails (MAIL_TEAM_ADDRESS fehlt) — Widerruf nur im Backend.');
+    return null;
+  }
+  const eintrag = await sendeVorlage({
+    art: 'widerruf',
+    an,
+    inhalt: betriebWiderrufEingang({
+      name: daten.name,
+      email: daten.email,
+      vorgangsnummer: daten.vorgangsnummer,
+      eingegangenAm: daten.eingegangenAm,
+      zugeordnet: daten.zugeordnet,
+      angaben: daten.angaben,
+      adminUrl: adminLink(String(daten.widerrufId), 'widerrufe'),
+      kontext: vorlagenKontext(settings),
+    }),
+    idempotenzSchluessel: idempotenzSchluessel(
+      `widerruf-${daten.widerrufId}`,
+      'widerruf-team',
+      String(Date.parse(daten.eingegangenAm) || Date.now()),
+    ),
+  });
+  if (eintrag.result !== 'gesendet') console.warn(`[benachrichtigung] Widerruf #${daten.widerrufId}: Betriebsmail ${eintrag.result}.`);
+  return eintrag;
 }

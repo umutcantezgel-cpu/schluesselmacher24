@@ -49,13 +49,12 @@ function umgebung(): WiderrufUmgebung {
   return {
     mitDatenbank: true,
     firma: echteEinstellungen().company,
-    mailEingerichtet: true,
     jetzt: () => new Date(),
     vorgangFinden: widerrufVorgangFinden,
     speichern: widerrufSpeichern,
     bestaetigungVermerken: widerrufBestaetigungVermerken,
     vorgangVermerken: widerrufAmVorgangVermerken,
-    mailSenden: async () => ({ sent: true, providerId: 're_test' }),
+    bestaetigungSenden: async () => ({ ergebnis: 'gesendet', anbieterId: 're_test' }),
   };
 }
 

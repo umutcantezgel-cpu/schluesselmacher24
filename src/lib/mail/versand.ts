@@ -20,10 +20,10 @@ export function vorlagenKontext(settings?: Pick<Settings, 'company'>): VorlagenK
   return { site: ohneSchraegstrich(getSiteUrl()), firma: settings?.company };
 }
 
-/** Link auf den Vorgang im Backend (feste Backend-Adresse, sonst die Seite). */
-export function adminLink(id: string): string {
+/** Link auf einen Eintrag im Backend (feste Backend-Adresse, sonst die Seite); Standard: Vorgänge. */
+export function adminLink(id: string, sammlung: 'vorgaenge' | 'widerrufe' = 'vorgaenge'): string {
   const basis = ohneSchraegstrich(serverUrl() || getSiteUrl());
-  return `${basis}/admin/collections/vorgaenge/${encodeURIComponent(id)}`;
+  return `${basis}/admin/collections/${sammlung}/${encodeURIComponent(id)}`;
 }
 
 /** Firmenadresse nur, wenn sie echt ist — nie ein Platzhalter. */

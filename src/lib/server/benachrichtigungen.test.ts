@@ -27,7 +27,9 @@ vi.mock('@/lib/data', () => ({
   },
 }));
 
-const { benachrichtigeNeuerVorgang, benachrichtigeZahlung, sendeWiderrufEingang } = await import('./benachrichtigungen');
+const { benachrichtigeNeuerVorgang, benachrichtigeZahlung, sendeWiderrufBetrieb, sendeWiderrufEingang } = await import(
+  './benachrichtigungen'
+);
 
 function vorgang(): BusinessRecord {
   return {
@@ -141,11 +143,28 @@ describe('benachrichtigeNeuerVorgang', () => {
 });
 
 describe('benachrichtigeZahlung', () => {
-  it('informiert bei Zahlungseingang Kunde und Betrieb', async () => {
+  it('informiert bei Zahlungseingang Kunde und Betrieb und bestätigt den Vertrag', async () => {
     mailEinrichten();
     await benachrichtigeZahlung({ vorgang: vorgang(), mail: { art: 'bezahlt' }, ereignisId: 'evt_1' });
-    expect(aufrufe.map((a) => a.betreff)).toEqual(['Zahlung erhalten – SM24-T-2026-0007', 'Bezahlt: Termin SM24-T-2026-0007']);
-    expect(gespeichert.mailLog?.map((m) => m.kind)).toEqual(['zahlung-erhalten', 'zahlung-erhalten']);
+    expect(aufrufe.map((a) => a.betreff)).toEqual([
+      'Zahlung erhalten – SM24-T-2026-0007',
+      'Bezahlt: Termin SM24-T-2026-0007',
+      'Vertragsbestätigung – SM24-T-2026-0007',
+    ]);
+    expect(aufrufe[2]).toMatchObject({ an: ['erika@example.org'], schluessel: 'lokal-SM24-T-2026-0007-vertrag' });
+    expect(gespeichert.mailLog?.map((m) => m.kind)).toEqual(['zahlung-erhalten', 'zahlung-erhalten', 'vertrag']);
+  });
+
+  it('sendet die Vertragsbestätigung nur einmal', async () => {
+    mailEinrichten();
+    const schonBestaetigt: BusinessRecord = {
+      ...vorgang(),
+      mailLog: [{ kind: 'vertrag', to: 'erika@example.org', at: '2026-10-24T10:05:00.000Z', result: 'gesendet' }],
+    };
+    gespeichert = schonBestaetigt;
+    await benachrichtigeZahlung({ vorgang: schonBestaetigt, mail: { art: 'bezahlt' }, ereignisId: 'evt_9' });
+    expect(aufrufe.map((a) => a.betreff)).not.toContain('Vertragsbestätigung – SM24-T-2026-0007');
+    expect(gespeichert.mailLog?.filter((m) => m.kind === 'vertrag')).toHaveLength(1);
   });
 
   it('meldet einen verfallenen Termin dem Kunden', async () => {
@@ -168,5 +187,36 @@ describe('sendeWiderrufEingang', () => {
   it('meldet ohne Einrichtung „nicht eingerichtet“', async () => {
     const eintrag = await sendeWiderrufEingang({ an: 'erika@example.org', eingegangenAm: '2026-10-24T10:00:00.000Z' });
     expect(eintrag.result).toBe('nicht-eingerichtet');
+  });
+});
+
+describe('sendeWiderrufBetrieb', () => {
+  it('meldet den Widerruf an die Team-Adresse mit Link ins Backend', async () => {
+    mailEinrichten();
+    const eintrag = await sendeWiderrufBetrieb({
+      widerrufId: 7,
+      name: 'Erika Muster',
+      email: 'erika@example.org',
+      vorgangsnummer: 'SM24-B-2026-0042',
+      eingegangenAm: '2026-10-24T12:30:05.000Z',
+      zugeordnet: true,
+      angaben: 'Bestellung vom 20.10.',
+      settings: ECHTE_FIRMA,
+    });
+    expect(eintrag).toMatchObject({ kind: 'widerruf', result: 'gesendet' });
+    expect(aufrufe).toHaveLength(1);
+    expect(aufrufe[0]).toMatchObject({
+      an: ['team@schluesselmacher24.de', 'inhaber@schluesselmacher24.de'],
+      betreff: 'Widerruf eingegangen: SM24-B-2026-0042',
+    });
+  });
+
+  it('versendet ohne Einrichtung nichts', async () => {
+    const fetchSpion = vi.fn();
+    vi.stubGlobal('fetch', fetchSpion);
+    expect(
+      await sendeWiderrufBetrieb({ widerrufId: 1, name: 'A', email: 'a@example.org', eingegangenAm: '2026-10-24T12:30:05.000Z', zugeordnet: false }),
+    ).toBeNull();
+    expect(fetchSpion).not.toHaveBeenCalled();
   });
 });

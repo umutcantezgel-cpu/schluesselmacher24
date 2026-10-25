@@ -36,9 +36,13 @@ vi.mock('@/lib/rechtliches/widerruf-speicher', () => ({
 }));
 
 const { widerrufErklaeren } = await import('./widerruf');
+const { startSignieren } = await import('@/lib/server/formular-schutz');
 
+/** Formulardaten wie aus dem Browser — mit gültigem Startzeitpunkt (vor 10 s geöffnet). */
 function formular(felder: Record<string, string>): FormData {
   const daten = new FormData();
+  daten.set('formularStart', startSignieren(Date.now() - 10_000));
+  daten.set('website', '');
   for (const [name, wert] of Object.entries(felder)) daten.set(name, wert);
   return daten;
 }
@@ -79,5 +83,27 @@ describe('widerrufErklaeren', () => {
     const ergebnis = await widerrufErklaeren(null, formular({ name: 'Erika Muster', email: 'erika@example.org' }));
     expect(ergebnis).toEqual({ status: 'ohne-speicher', email: 'info@schluesselmacher24.de' });
     expect(gespeichert).toHaveLength(0);
+  });
+
+  describe('Bot-Schutz', () => {
+    const eingabe = { name: 'Erika Muster', email: 'erika@example.org', vorgangsnummer: 'SM24-T-2026-0007' };
+
+    it('antwortet beim ausgefüllten Honigtopf wie bei Erfolg, speichert aber nichts', async () => {
+      const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const ergebnis = await widerrufErklaeren(null, formular({ ...eingabe, website: 'https://spam.example' }));
+      expect(ergebnis).toMatchObject({ status: 'eingegangen', name: 'Erika Muster', mailGesendet: false });
+      expect(gespeichert).toHaveLength(0);
+      expect(warnung).toHaveBeenCalledWith(expect.stringContaining('honigtopf'));
+      warnung.mockRestore();
+    });
+
+    it('verwirft zu schnelles Absenden und fehlende Startzeitpunkte still', async () => {
+      const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      expect((await widerrufErklaeren(null, formular({ ...eingabe, formularStart: startSignieren(Date.now() - 1_000) }))).status).toBe('eingegangen');
+      expect((await widerrufErklaeren(null, formular({ ...eingabe, formularStart: '' }))).status).toBe('eingegangen');
+      expect((await widerrufErklaeren(null, formular({ ...eingabe, formularStart: '1700000000000.gefaelscht' }))).status).toBe('eingegangen');
+      expect(gespeichert).toHaveLength(0);
+      warnung.mockRestore();
+    });
   });
 });

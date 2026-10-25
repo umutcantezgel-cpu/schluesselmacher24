@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 import type { CompanyProfile } from '@/lib/types';
 
-import { anbieterZeilen, firmenname, kontakt } from './firma';
+import { kontakt } from './firma';
 import { WIDERRUF_ERKLAERUNG, type WiderrufErgebnis, type WiderrufFeld } from './widerruf-typen';
 import { eingangszeitText } from './zeit';
 
@@ -20,6 +20,8 @@ export { WIDERRUF_ERKLAERUNG, type WiderrufErgebnis, type WiderrufFeld };
 
    Die Abhängigkeiten (Speicher, Vorgangssuche, Mailversand) kommen als
    Parameter — so lässt sich der Ablauf ohne Datenbank und Netz testen.
+   Die Mails selbst (Eingangsbestätigung an den Kunden, Meldung an den
+   Betrieb) baut src/lib/server/benachrichtigungen.ts aus den Vorlagen.
    ========================================================================== */
 
 export const widerrufSchema = z.object({
@@ -67,23 +69,21 @@ export interface WiderrufBestaetigung {
   fehler?: string;
 }
 
-export interface WiderrufMail {
-  to: string;
-  subject: string;
-  body: string;
-}
+/** Ergebnis des Mailversands, wie es im Protokoll steht. */
+export type WiderrufMailErgebnis = Omit<WiderrufBestaetigung, 'am'>;
 
 export interface WiderrufUmgebung {
   /** Ohne Datenbank wird nichts gespeichert. */
   mitDatenbank: boolean;
   firma: CompanyProfile;
-  /** Ist ein Mailversand eingerichtet? Entscheidet „fehlgeschlagen“ gegen „nicht eingerichtet“. */
-  mailEingerichtet: boolean;
   jetzt: () => Date;
   vorgangFinden: (nummer: string) => Promise<{ id: string; contact: { email: string } } | null>;
   speichern: (datensatz: WiderrufDatensatz) => Promise<{ id: number | string }>;
   bestaetigungVermerken: (id: number | string, bestaetigung: WiderrufBestaetigung) => Promise<void>;
-  mailSenden: (mail: WiderrufMail) => Promise<{ sent: boolean; providerId?: string; message?: string }>;
+  /** Eingangsbestätigung an den Kunden (dauerhafter Datenträger, mit Datum und Uhrzeit). */
+  bestaetigungSenden: (datensatz: WiderrufDatensatz) => Promise<WiderrufMailErgebnis>;
+  /** Meldung „Widerruf eingegangen“ an den Betrieb (optional, Fehler ändern nichts). */
+  betriebInformieren?: (datensatz: WiderrufDatensatz, id: number | string) => Promise<void>;
   /** Interne Notiz am zugeordneten Vorgang (optional). */
   vorgangVermerken?: (vorgangId: string, notiz: string) => Promise<void>;
 }
@@ -106,38 +106,6 @@ function fehlerJeFeld(error: z.ZodError): Partial<Record<WiderrufFeld, string>> 
     if (feld && !fehler[feld]) fehler[feld] = problem.message;
   }
   return fehler;
-}
-
-/** Text der Eingangsbestätigung (dauerhafter Datenträger: die E-Mail selbst). */
-export function bestaetigungsMail(
-  datensatz: Pick<WiderrufDatensatz, 'name' | 'email' | 'vorgangsnummer' | 'eingegangenAm' | 'erklaerung'>,
-  firma: CompanyProfile,
-): WiderrufMail {
-  const { telefon, email } = kontakt(firma);
-  const body = [
-    `Guten Tag ${datensatz.name},`,
-    'wir bestätigen den Eingang Ihrer Widerrufserklärung.',
-    [
-      `Eingegangen am: ${eingangszeitText(datensatz.eingegangenAm)} (deutsche Zeit)`,
-      `Name: ${datensatz.name}`,
-      `E-Mail: ${datensatz.email}`,
-      `Vorgangsnummer: ${datensatz.vorgangsnummer ?? 'nicht angegeben'}`,
-      `Ihre Erklärung: ${datensatz.erklaerung}`,
-    ].join('\n'),
-    'Wir prüfen Ihren Widerruf und melden uns mit den weiteren Schritten. Bitte bewahren Sie diese '
-      + 'E-Mail als Nachweis auf.',
-    [
-      ...anbieterZeilen(firma),
-      ...(telefon ? [`Telefon ${telefon}`] : []),
-      ...(email ? [`E-Mail ${email}`] : []),
-    ].join('\n'),
-  ].join('\n\n');
-
-  return {
-    to: datensatz.email,
-    subject: `Eingangsbestätigung Ihres Widerrufs${datensatz.vorgangsnummer ? ` – ${datensatz.vorgangsnummer}` : ''} – ${firmenname(firma)}`,
-    body,
-  };
 }
 
 /* ---------- Ablauf ------------------------------------------------------- */
@@ -208,14 +176,13 @@ export async function widerrufAufnehmen(eingabe: unknown, umgebung: WiderrufUmge
   // Eingangsbestätigung — Fehler ändern das Ergebnis nicht.
   let bestaetigung: WiderrufBestaetigung;
   try {
-    const antwort = await umgebung.mailSenden(bestaetigungsMail(datensatz, umgebung.firma));
-    bestaetigung = antwort.sent
-      ? { ergebnis: 'gesendet', am: umgebung.jetzt().toISOString(), ...(antwort.providerId ? { anbieterId: antwort.providerId } : {}) }
-      : {
-          ergebnis: umgebung.mailEingerichtet ? 'fehlgeschlagen' : 'nicht-eingerichtet',
-          am: umgebung.jetzt().toISOString(),
-          ...(umgebung.mailEingerichtet && antwort.message ? { fehler: antwort.message.slice(0, 500) } : {}),
-        };
+    const antwort = await umgebung.bestaetigungSenden(datensatz);
+    bestaetigung = {
+      ergebnis: antwort.ergebnis,
+      am: umgebung.jetzt().toISOString(),
+      ...(antwort.anbieterId ? { anbieterId: antwort.anbieterId } : {}),
+      ...(antwort.ergebnis === 'fehlgeschlagen' && antwort.fehler ? { fehler: antwort.fehler.slice(0, 500) } : {}),
+    };
   } catch (error) {
     bestaetigung = {
       ergebnis: 'fehlgeschlagen',
@@ -227,6 +194,14 @@ export async function widerrufAufnehmen(eingabe: unknown, umgebung: WiderrufUmge
     await umgebung.bestaetigungVermerken(gespeichert.id, bestaetigung);
   } catch (error) {
     console.error('[widerruf] Bestätigung konnte nicht vermerkt werden.', error);
+  }
+
+  if (umgebung.betriebInformieren) {
+    try {
+      await umgebung.betriebInformieren(datensatz, gespeichert.id);
+    } catch (error) {
+      console.error('[widerruf] Meldung an den Betrieb fehlgeschlagen.', error);
+    }
   }
 
   return {
