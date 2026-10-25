@@ -1,0 +1,55 @@
+# Architektur & Transformations-Matrix
+
+| URL-Pfad | Datei | Ist-Zustand (Wörter) | Soll-Zustand (Wörter) | Geplante Komponente |
+|---|---|---|---|---|
+| /[...unbekannt] | `src/app/(site)/[...unbekannt]/page.tsx` | 72 | 950 | GenericBentoGrid |
+| /artikel/[slug] | `src/app/(site)/artikel/[slug]/page.tsx` | 812 | 1312 | GenericBentoGrid |
+| /artikel | `src/app/(site)/artikel/page.tsx` | 578 | 1078 | GenericBentoGrid |
+| /autoschluessel/anfrage | `src/app/(site)/autoschluessel/anfrage/page.tsx` | 408 | 950 | VehicleSelectorInteractive |
+| /autoschluessel/fahrzeugoeffnung | `src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx` | 199 | 950 | VehicleSelectorInteractive |
+| /autoschluessel/funkschluessel | `src/app/(site)/autoschluessel/funkschluessel/page.tsx` | 185 | 950 | VehicleSelectorInteractive |
+| /autoschluessel/kopieren | `src/app/(site)/autoschluessel/kopieren/page.tsx` | 221 | 950 | VehicleSelectorInteractive |
+| /autoschluessel/marken/[make]/[model] | `src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx` | 1403 | 1903 | VehicleSelectorInteractive |
+| /autoschluessel/marken/[make] | `src/app/(site)/autoschluessel/marken/[make]/page.tsx` | 658 | 1158 | VehicleSelectorInteractive |
+| /autoschluessel/marken | `src/app/(site)/autoschluessel/marken/page.tsx` | 467 | 967 | VehicleSelectorInteractive |
+| /autoschluessel/nachmachen | `src/app/(site)/autoschluessel/nachmachen/page.tsx` | 110 | 950 | VehicleSelectorInteractive |
+| /autoschluessel | `src/app/(site)/autoschluessel/page.tsx` | 1792 | 2292 | VehicleSelectorInteractive |
+| /autoschluessel/programmieren | `src/app/(site)/autoschluessel/programmieren/page.tsx` | 229 | 950 | VehicleSelectorInteractive |
+| /autoschluessel/schluesselbart-fraesen | `src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx` | 209 | 950 | VehicleSelectorInteractive |
+| /autoschluessel/smart-key | `src/app/(site)/autoschluessel/smart-key/page.tsx` | 260 | 950 | VehicleSelectorInteractive |
+| /bestellung/[id] | `src/app/(site)/bestellung/[id]/page.tsx` | 1191 | 1691 | GenericBentoGrid |
+| /elektronische-zutrittsloesungen/konfigurator | `src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx` | 262 | 950 | GenericBentoGrid |
+| /elektronische-zutrittsloesungen | `src/app/(site)/elektronische-zutrittsloesungen/page.tsx` | 2279 | 2779 | GenericBentoGrid |
+| /gleichschliessende-zylinder/konfigurator | `src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx` | 201 | 950 | GenericBentoGrid |
+| /gleichschliessende-zylinder | `src/app/(site)/gleichschliessende-zylinder/page.tsx` | 1475 | 1975 | GenericBentoGrid |
+| /kasse | `src/app/(site)/kasse/page.tsx` | 272 | 950 | GenericBentoGrid |
+| / | `src/app/(site)/page.tsx` | 1194 | 1694 | GenericBentoGrid |
+| /ratgeber/[slug] | `src/app/(site)/ratgeber/[slug]/page.tsx` | 482 | 982 | KnowledgeBaseFilter |
+| /ratgeber | `src/app/(site)/ratgeber/page.tsx` | 195 | 950 | KnowledgeBaseFilter |
+| /rechtliches/agb | `src/app/(site)/rechtliches/agb/page.tsx` | 103 | 950 | GenericBentoGrid |
+| /rechtliches/cookie-einstellungen | `src/app/(site)/rechtliches/cookie-einstellungen/page.tsx` | 230 | 950 | GenericBentoGrid |
+| /rechtliches/datenschutz | `src/app/(site)/rechtliches/datenschutz/page.tsx` | 121 | 950 | GenericBentoGrid |
+| /rechtliches/impressum | `src/app/(site)/rechtliches/impressum/page.tsx` | 100 | 950 | GenericBentoGrid |
+| /rechtliches/versand-und-zahlung | `src/app/(site)/rechtliches/versand-und-zahlung/page.tsx` | 87 | 950 | GenericBentoGrid |
+| /rechtliches/widerruf/erklaeren | `src/app/(site)/rechtliches/widerruf/erklaeren/page.tsx` | 245 | 950 | GenericBentoGrid |
+| /rechtliches/widerruf | `src/app/(site)/rechtliches/widerruf/page.tsx` | 484 | 984 | GenericBentoGrid |
+| /schliessanlagen/konfigurator | `src/app/(site)/schliessanlagen/konfigurator/page.tsx` | 256 | 950 | SchliessanlagenCalculator |
+| /schliessanlagen | `src/app/(site)/schliessanlagen/page.tsx` | 1596 | 2096 | SchliessanlagenCalculator |
+| /schluessel-nach-code/[slug] | `src/app/(site)/schluessel-nach-code/[slug]/page.tsx` | 730 | 1230 | GenericBentoGrid |
+| /schluessel-nach-code | `src/app/(site)/schluessel-nach-code/page.tsx` | 472 | 972 | GenericBentoGrid |
+| /schluessel-nach-vorlage/anfrage | `src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx` | 126 | 950 | GenericBentoGrid |
+| /schluessel-nach-vorlage | `src/app/(site)/schluessel-nach-vorlage/page.tsx` | 1562 | 2062 | GenericBentoGrid |
+| /service-und-termin/anfrage | `src/app/(site)/service-und-termin/anfrage/page.tsx` | 95 | 950 | GenericBentoGrid |
+| /service-und-termin/kontakt | `src/app/(site)/service-und-termin/kontakt/page.tsx` | 383 | 950 | GenericBentoGrid |
+| /service-und-termin | `src/app/(site)/service-und-termin/page.tsx` | 1474 | 1974 | GenericBentoGrid |
+| /service-und-termin/terminstatus | `src/app/(site)/service-und-termin/terminstatus/page.tsx` | 61 | 950 | GenericBentoGrid |
+| /service-und-termin/vor-ort | `src/app/(site)/service-und-termin/vor-ort/page.tsx` | 518 | 1018 | GenericBentoGrid |
+| /sicherheitstechnik/[slug] | `src/app/(site)/sicherheitstechnik/[slug]/page.tsx` | 440 | 950 | SecurityCheckWizard |
+| /sicherheitstechnik | `src/app/(site)/sicherheitstechnik/page.tsx` | 826 | 1326 | SecurityCheckWizard |
+| /sicherheitstechnik/sicherheitscheck | `src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx` | 227 | 950 | SecurityCheckWizard |
+| /standorte/[city] | `src/app/(site)/standorte/[city]/page.tsx` | 414 | 950 | GenericBentoGrid |
+| /standorte | `src/app/(site)/standorte/page.tsx` | 334 | 950 | GenericBentoGrid |
+| /tuer-und-schliesstechnik/[slug] | `src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx` | 295 | 950 | GenericBentoGrid |
+| /tuer-und-schliesstechnik | `src/app/(site)/tuer-und-schliesstechnik/page.tsx` | 1560 | 2060 | GenericBentoGrid |
+| /warenkorb | `src/app/(site)/warenkorb/page.tsx` | 247 | 950 | GenericBentoGrid |
+| /src/app/llms.txt/route.ts | `src/app/llms.txt/route.ts` | 213 | 950 | GenericBentoGrid |

@@ -1,0 +1,4 @@
+Project Documentation
+=================
+
+Refer to .jules/revolution-plan.json for the architecture master blueprint.
