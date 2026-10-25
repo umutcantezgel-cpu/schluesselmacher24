@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-25T18:49:00.300Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/app/(site)/page.tsx",
+      "title": "Spezifische Optimierung 51 für page.tsx",
+      "specification": "Dies ist eine detaillierte Ausformulierung der Idee 51, die sich auf src/app/(site)/page.tsx bezieht. In dieser Idee setzen wir modernste Prinzipien aus der Kategorie CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE um, um die Konversionsrate und die visuelle Ästhetik nach Schweizer Light Mode zu maximieren. Keine neuen Routen werden hinzugefügt.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_001",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/ratgeber/page.tsx",
+      "target_component_file": "src/app/(site)/ratgeber/page.tsx",
+      "title": "Spezifische Optimierung 1 für page.tsx",
+      "specification": "Dies ist eine detaillierte Ausformulierung der Idee 1, die sich auf src/app/(site)/ratgeber/page.tsx bezieht. In dieser Idee setzen wir modernste Prinzipien aus der Kategorie AWWWARDS-KINETIK & TAKTILE INTERAKTION um, um die Konversionsrate und die visuelle Ästhetik nach Schweizer Light Mode zu maximieren. Keine neuen Routen werden hinzugefügt.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
