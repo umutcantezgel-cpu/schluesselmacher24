@@ -5,6 +5,7 @@ import { useId, useMemo, useState } from 'react';
 import { aktiveStufe, preisstufen, staffelText } from '@/lib/artikel';
 import { useHydrated } from '@/lib/client-state';
 import { formatCents, formatNumber } from '@/lib/format';
+import { PreisHinweis } from '@/components/recht/preis-hinweis';
 import { cn } from '@/lib/cn';
 import { unitPriceForCodeLine } from '@/lib/pricing';
 import { useCartStore } from '@/lib/store/cart';
@@ -216,9 +217,9 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
           <p className="sr-only" aria-live="polite">
             {`${formatNumber(menge)} Stück zu je ${formatCents(stueckpreis)}, zusammen ${formatCents(summe)}.`}
           </p>
-          <p className="mt-2 text-caption leading-snug text-foreground-muted">
-            Preise inklusive Umsatzsteuer, zuzüglich Versandkosten. Die Versandart wählen Sie im
-            Warenkorb.
+          <PreisHinweis className="mt-2" />
+          <p className="mt-1 text-caption leading-snug text-foreground-muted">
+            Die Versandart wählen Sie im Warenkorb.
           </p>
         </div>
 

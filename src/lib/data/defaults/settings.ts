@@ -1,17 +1,23 @@
 import type { Settings } from '@/lib/types';
 
 /**
- * Standard-Einstellungen.
+ * Standard-Einstellungen — nur der Rückfall, wenn weder `content/settings.json`
+ * noch das Global „Einstellungen“ Daten liefern.
  *
- * Alle Firmenangaben sind bewusst Platzhalter und müssen vor Livegang
- * ersetzt werden (Backend → Einstellungen). `isPlaceholder` steuert die
- * Warnhinweise auf den Rechtstexten.
+ * Die Firmenangaben bleiben hier bewusst Platzhalter: Fällt die Seite auf
+ * diese Werte zurück, soll das auffallen, statt still fremde Daten zu zeigen.
+ * Die echten Angaben stehen in `content/settings.json` (einmalige Übernahme
+ * in die Datenbank beim ersten Build) und danach im Backend unter
+ * „Einstellungen“. `isPlaceholder` blendet Firmenangaben in Fußzeile,
+ * Kontaktseite und strukturierten Daten aus.
  */
 export function settings(): Settings {
   return {
     company: {
       legalName: '[Platzhalter: vollständige Firmierung]',
       brandName: 'SCHLÜSSELMACHER24',
+      legalForm: 'einzelunternehmen',
+      owner: '[Platzhalter: Inhaberin oder Inhaber]',
       street: '[Platzhalter: Straße und Hausnummer]',
       postalCode: '[PLZ]',
       city: '[Ort]',
@@ -22,6 +28,8 @@ export function settings(): Settings {
       registerCourt: '[Platzhalter: Registergericht]',
       registerNumber: '[Platzhalter: Registernummer]',
       managingDirector: '[Platzhalter: vertretungsberechtigte Person]',
+      profession: '[Platzhalter: Berufsbezeichnung]',
+      chamber: '[Platzhalter: zuständige Kammer mit Anschrift]',
       isPlaceholder: true,
     },
     openingHours: [
@@ -44,6 +52,7 @@ export function settings(): Settings {
       slotMinutes: 60,
       bookingHorizonDays: 90,
       slotsPerWindow: 1,
+      federalState: 'HE',
       windows: [
         { from: '09:00', to: '10:00' },
         { from: '10:00', to: '11:00' },

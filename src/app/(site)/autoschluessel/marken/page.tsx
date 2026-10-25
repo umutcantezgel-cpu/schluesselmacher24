@@ -155,8 +155,14 @@ export default async function MarkenPage() {
         </ul>
 
         <Alert tone="info" title="Marke nicht dabei?" className="mt-8">
-          Die Liste wächst laufend. Wenn Ihre Marke fehlt, starten Sie bitte den geführten Ablauf —
-          wir prüfen Ihren Fall dann einzeln anhand Ihrer Schlüsselfotos und der Fahrzeugdaten.
+          Die Liste wächst laufend. Fehlt Ihre Marke, schildern Sie Ihren Fall bitte über die{' '}
+          <Link
+            href="/service-und-termin/anfrage?thema=autoschluessel"
+            className="font-semibold text-primary hover:underline"
+          >
+            Anfrage
+          </Link>{' '}
+          — wir prüfen ihn einzeln.
         </Alert>
       </Section>
 

@@ -3,7 +3,8 @@
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 
 import { getAppointments, getCollection, getRecordByReference, getSettings } from '@/lib/data';
-import { addDays, availableSlots, bookableDays, earliestBookableDate, toIsoDate } from '@/lib/scheduling';
+import { heuteInBerlin } from '@/lib/berliner-zeit';
+import { addDays, availableSlots, bookableDays, earliestBookableDate, minutenInBerlin } from '@/lib/scheduling';
 import { quoteCarKeyService } from '@/lib/pricing';
 import type { KeyKind, PriceQuote, TimeSlot } from '@/lib/types';
 
@@ -23,6 +24,8 @@ export interface QuoteResponse {
 
 /** Ermittelt Preis, Anzahlung, Terminlänge und Vorlauf für einen Fall. */
 export async function fetchQuote(request: QuoteRequest): Promise<QuoteResponse> {
+  if (!(await allowRequest(LIMITS.preis))) return { ok: false, error: RATE_LIMIT_MESSAGE };
+
   const [makes, services, rules, settings] = await Promise.all([
     getCollection('vehicleMakes'),
     getCollection('carKeyServices'),
@@ -54,6 +57,8 @@ export interface SlotsResponse {
   /** Frühester angebotener Tag. */
   earliest?: string;
   leadTimeDays: number;
+  /** Gesetzt, wenn keine Zeitfenster geliefert werden (z. B. zu viele Abfragen). */
+  error?: string;
 }
 
 /** Liefert die buchbaren Zeitfenster für eine Terminlänge. */
@@ -62,17 +67,24 @@ export async function fetchSlots(
   leadTimeDays?: number,
   daysToScan = 28,
 ): Promise<SlotsResponse> {
+  if (!(await allowRequest(LIMITS.termine))) {
+    return { days: [], leadTimeDays: leadTimeDays ?? 0, error: RATE_LIMIT_MESSAGE };
+  }
+
   const [settings, blocked] = await Promise.all([getSettings(), getCollection('blockedDays')]);
 
   // Nur die Termine des angezeigten Zeitraums lesen — derselbe Zeitraum, den
   // `availableSlots` durchläuft.
-  const today = toIsoDate(new Date());
+  // „Heute“ und die Uhrzeit in deutscher Zeit — der Server läuft in UTC.
+  const jetzt = new Date();
+  const today = heuteInBerlin(jetzt);
   const from = earliestBookableDate(today, leadTimeDays ?? settings.booking.leadTimeDays);
   const scanned = Math.min(daysToScan, settings.booking.bookingHorizonDays);
   const existing = await getAppointments(from, addDays(from, Math.max(scanned - 1, 0)));
 
   const slots = availableSlots({
     today,
+    jetztMinuten: minutenInBerlin(jetzt),
     durationMinutes,
     leadTimeDays,
     booking: settings.booking,
@@ -124,7 +136,15 @@ export async function fetchRecordStatus(reference: string, email: string) {
       createdAt: record.createdAt,
       updatedAt: record.updatedAt,
       appointment: record.appointment,
-      payment: record.payment,
+      // Ohne Kennungen des Zahlungsdienstleisters (Sitzung, Zahlung).
+      payment: record.payment
+        ? {
+            scope: record.payment.scope,
+            amountCents: record.payment.amountCents,
+            status: record.payment.status,
+            paidAt: record.payment.paidAt,
+          }
+        : undefined,
       summary: record.summary,
       timeline: record.timeline,
     },

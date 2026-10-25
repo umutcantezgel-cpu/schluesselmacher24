@@ -3,8 +3,10 @@ import Link from 'next/link';
 
 import { getCodeLines, getCollection, getSettings } from '@/lib/data';
 import { paymentStatus } from '@/lib/integrations';
+import { onlineZahlarten } from '@/lib/rechtliches/zahlarten';
 import { cn } from '@/lib/cn';
 import { PageHeader } from '@/components/layout/page-header';
+import { werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { Section } from '@/components/layout/section';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { KasseFormular } from './kasse-formular';
@@ -90,8 +92,9 @@ export default async function KassePage() {
           codeLines={codeLines}
           standardArticles={standardArticles}
           catalog={catalog}
-          defaultCountry={settings.company.country}
           paymentConfigured={zahlung.configured}
+          zahlarten={onlineZahlarten()}
+          werkstatt={werkstattAngaben(settings.company)}
         />
 
         <section aria-labelledby="kasse-rechtliches-leer" className="hidden lg:col-span-4 korb-leer:lg:block">

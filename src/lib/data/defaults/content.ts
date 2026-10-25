@@ -479,7 +479,7 @@ export function guides(): Guide[] {
             + 'gibt, und den Fahrzeugschein. Damit können wir Machbarkeit und Preis einordnen.',
         ],
       ],
-      next: ['/autoschluessel/anfrage', 'Anfrage für Ersatzschlüssel starten'],
+      next: ['/autoschluessel/anfrage?vorhanden=0', 'Anfrage für Ersatzschlüssel starten'],
     },
     {
       slug: 'unterschied-kopie-und-programmierung',

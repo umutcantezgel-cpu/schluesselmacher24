@@ -111,11 +111,19 @@ describe('POST /api/kunden-upload', () => {
   });
 
   it('begrenzt die Größe je Dateityp', async () => {
-    const grossesFoto = new Uint8Array(12 * 1024 * 1024 + 1);
+    const grossesFoto = new Uint8Array(4 * 1024 * 1024 + 1);
     grossesFoto.set(JPEG);
     const response = await route.POST(anfrage(formular({ kategorie: 'objektfoto', datei: [grossesFoto, 'gross.jpg'] })));
     expect(response.status).toBe(413);
-    expect(await fehlerVon(response)).toMatch(/12 MB/);
+    expect(await fehlerVon(response)).toMatch(/4 MB/);
+
+    // Genau 4 MB passen samt Formular in eine Anfrage unter 4,5 MB (Grenze von Vercel).
+    const grenzfall = new Uint8Array(4 * 1024 * 1024);
+    grenzfall.set(JPEG);
+    const form = formular({ kategorie: 'objektfoto', datei: [grenzfall, 'grenze.jpg'] });
+    const groesse = (await new Request(URL_UPLOAD, { method: 'POST', body: form }).arrayBuffer()).byteLength;
+    expect(groesse).toBeLessThan(4.5 * 1024 * 1024);
+    expect((await route.POST(anfrage(form))).status).toBe(201);
   });
 
   it('bricht zu große Anfragen ab, ohne sie ganz zu lesen', async () => {
@@ -142,7 +150,7 @@ describe('POST /api/kunden-upload', () => {
       } as RequestInit),
     );
     expect(gestreamt.status).toBe(413);
-    expect(gelesen).toBeLessThan(20 * 1024 * 1024);
+    expect(gelesen).toBeLessThan(10 * 1024 * 1024);
   });
 
   it('verlangt genau eine Datei und eine gültige Kategorie', async () => {

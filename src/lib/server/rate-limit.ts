@@ -1,9 +1,21 @@
 import 'server-only';
 
-import { createHmac } from 'node:crypto';
-
-import { sql, type PostgresAdapter } from '@payloadcms/db-postgres';
+import { type PostgresAdapter } from '@payloadcms/db-postgres';
 import { headers } from 'next/headers';
+
+import { mitDatenbank } from '@/lib/umgebung';
+
+import {
+  absenderAus,
+  absenderSchluessel,
+  loescheAlteZaehler,
+  zaehleImSpeicher,
+  zaehleInDatenbank,
+  type RateLimitRule,
+  type SqlAusfuehrer,
+} from './ratenzaehler';
+
+export type { RateLimitRule };
 
 /**
  * Ratenbegrenzung pro Absender und Vorgang.
@@ -13,16 +25,8 @@ import { headers } from 'next/headers';
  * Ist die Datenbank nicht erreichbar — oder in Einheitstests ohne
  * DATABASE_URL —, zählt jede Instanz im eigenen Arbeitsspeicher weiter. Das
  * bremst Massenanfragen weiterhin zuverlässig, nur eben je Instanz.
+ * Absender und Zählung: ratenzaehler.ts (IPv6 je /64-Präfix).
  */
-
-export interface RateLimitRule {
-  /** Name des Vorgangs, z. B. "anfrage". */
-  name: string;
-  /** Erlaubte Aufrufe im Zeitfenster. */
-  limit: number;
-  /** Zeitfenster in Millisekunden. */
-  windowMs: number;
-}
 
 export const LIMITS = {
   vorgang: { name: 'vorgang', limit: 10, windowMs: 10 * 60 * 1000 },
@@ -30,6 +34,14 @@ export const LIMITS = {
   status: { name: 'status', limit: 20, windowMs: 10 * 60 * 1000 },
   // Großzügiger: ein Formular kann ein Dutzend Fotos enthalten, dazu Wiederholungen.
   upload: { name: 'upload', limit: 30, windowMs: 10 * 60 * 1000 },
+  // Je Aufruf ein Abruf bei Stripe: „Jetzt bezahlen“ und Rückkehr von der Zahlungsseite.
+  zahlung: { name: 'zahlung', limit: 10, windowMs: 10 * 60 * 1000 },
+  rueckkehr: { name: 'rueckkehr', limit: 20, windowMs: 10 * 60 * 1000 },
+  // Widerrufsbutton: wenige echte Erklärungen, aber kein Durchprobieren von Nummern.
+  widerruf: { name: 'widerruf', limit: 5, windowMs: 10 * 60 * 1000 },
+  // Öffentliche Abfragen des Termin-Assistenten — je Aufruf ein Datenbankzugriff.
+  termine: { name: 'termine', limit: 60, windowMs: 10 * 60 * 1000 },
+  preis: { name: 'preis', limit: 60, windowMs: 10 * 60 * 1000 },
 } satisfies Record<string, RateLimitRule>;
 
 export const RATE_LIMIT_MESSAGE =
@@ -38,19 +50,7 @@ export const RATE_LIMIT_MESSAGE =
 /* ---------- Absender ---------------------------------------------------- */
 
 async function clientAddress(): Promise<string> {
-  const h = await headers();
-  const forwarded = h.get('x-forwarded-for')?.split(',')[0]?.trim();
-  return forwarded || h.get('x-real-ip') || 'unbekannt';
-}
-
-/**
- * Die Adresse wird nur als HMAC gespeichert. Ein einfacher Hash genügte
- * nicht: Alle IPv4-Adressen lassen sich in Minuten durchprobieren.
- */
-function absenderSchluessel(rule: RateLimitRule, address: string): string {
-  const geheimnis = process.env.PAYLOAD_SECRET || 'sm24-ratenbegrenzung';
-  const hash = createHmac('sha256', geheimnis).update(address, 'utf8').digest('hex');
-  return `${rule.name}:${hash}`;
+  return absenderAus(await headers());
 }
 
 /* ---------- Zählung in der Datenbank ------------------------------------ */
@@ -60,65 +60,22 @@ const DB_PAUSE_MS = 30_000;
 let dbPauseBis = 0;
 
 function datenbankVerwenden(now: number): boolean {
-  if ((process.env.SM24_DATA === 'json' || !process.env.DATABASE_URL)) return false;
-  // Deckt auch Einheitstests ab: dort gibt es keine DATABASE_URL.
-  if (!process.env.DATABASE_URL) return false;
+  // Deckt auch Einheitstests ab: dort gibt es keine Datenbankverbindung.
+  if (!mitDatenbank()) return false;
   return now >= dbPauseBis;
 }
 
-/** Ein einziges UPSERT: neues Fenster → 1, sonst +1. Liefert den Zählerstand. */
-async function zaehleInDatenbank(schluessel: string, rule: RateLimitRule, now: number): Promise<number> {
+async function datenbank(): Promise<SqlAusfuehrer> {
   // Dynamisch: Die Payload-Konfiguration verlangt Geheimnisse, die es ohne
   // Datenbank (z. B. in Einheitstests) nicht gibt.
   const { payloadInstanz } = await import('@/lib/data/payload-adapter');
   const payload = await payloadInstanz();
-  const db = (payload.db as unknown as PostgresAdapter).drizzle;
-
-  const jetzt = new Date(now).toISOString();
-  const fensterEnde = new Date(now - rule.windowMs).toISOString();
-  const result = await db.execute(sql`
-    INSERT INTO "sm24_ratenbegrenzung" AS r ("schluessel", "fenster_start", "anzahl")
-    VALUES (${schluessel}, ${jetzt}::timestamptz, 1)
-    ON CONFLICT ("schluessel") DO UPDATE SET
-      "fenster_start" = CASE WHEN r."fenster_start" <= ${fensterEnde}::timestamptz
-        THEN EXCLUDED."fenster_start" ELSE r."fenster_start" END,
-      "anzahl" = CASE WHEN r."fenster_start" <= ${fensterEnde}::timestamptz
-        THEN 1 ELSE LEAST(r."anzahl" + 1, ${rule.limit + 1}) END
-    RETURNING "anzahl"
-  `);
-
-  // Gelegentlich aufräumen, damit die Tabelle nicht mit alten Absendern wächst.
-  if (Math.random() < 0.01) {
-    const alt = new Date(now - 24 * 60 * 60 * 1000).toISOString();
-    await db.execute(sql`DELETE FROM "sm24_ratenbegrenzung" WHERE "fenster_start" < ${alt}::timestamptz`);
-  }
-
-  const anzahl = Number((result.rows[0] as { anzahl?: unknown } | undefined)?.anzahl);
-  if (!Number.isFinite(anzahl)) throw new Error('Ratenbegrenzung: unerwartete Antwort der Datenbank.');
-  return anzahl;
+  return (payload.db as unknown as PostgresAdapter).drizzle as unknown as SqlAusfuehrer;
 }
 
 /* ---------- Rückfall im Arbeitsspeicher --------------------------------- */
 
 const buckets = new Map<string, number[]>();
-
-function zaehleImSpeicher(schluessel: string, rule: RateLimitRule, now: number): boolean {
-  const recent = (buckets.get(schluessel) ?? []).filter((t) => now - t < rule.windowMs);
-  if (recent.length >= rule.limit) {
-    buckets.set(schluessel, recent);
-    return false;
-  }
-  recent.push(now);
-  buckets.set(schluessel, recent);
-
-  // Speicher klein halten.
-  if (buckets.size > 5000) {
-    for (const [k, times] of buckets) {
-      if (times.every((t) => now - t >= rule.windowMs)) buckets.delete(k);
-    }
-  }
-  return true;
-}
 
 /* ---------- Öffentliche Schnittstelle ----------------------------------- */
 
@@ -128,13 +85,22 @@ export async function allowRequest(rule: RateLimitRule, now = Date.now()): Promi
 
   if (datenbankVerwenden(now)) {
     try {
-      return (await zaehleInDatenbank(schluessel, rule, now)) <= rule.limit;
+      return (await zaehleInDatenbank(await datenbank(), schluessel, rule, now)) <= rule.limit;
     } catch (error) {
       dbPauseBis = now + DB_PAUSE_MS;
       console.warn('[ratenbegrenzung] Datenbank nicht erreichbar, zähle vorübergehend im Speicher.', error);
     }
   }
-  return zaehleImSpeicher(schluessel, rule, now);
+  return zaehleImSpeicher(buckets, schluessel, rule, now);
+}
+
+/**
+ * Löscht Zähler, deren Fenster älter als einen Tag ist (täglicher Cron).
+ * Ohne Datenbank gibt es nichts zu löschen.
+ */
+export async function alteZaehlerLoeschen(now = Date.now()): Promise<number> {
+  if (!mitDatenbank()) return 0;
+  return loescheAlteZaehler(await datenbank(), now);
 }
 
 /** Nur für Tests: leert den Speicher und hebt eine Datenbank-Pause auf. */

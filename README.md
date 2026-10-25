@@ -28,7 +28,7 @@ Weitere Skripte aus `package.json`:
 | `npm run db:migrate` · `generate:types` · `generate:importmap` | Payload: Migrationen, Typen, Importmap |
 | `npm run aufbewahrung:bereinigen` | löscht Kundendateien mit abgelaufener Frist und Uploads, die nie einem Vorgang zugeordnet wurden und älter als 24 Stunden sind. Nur anzeigen: `npm run aufbewahrung:bereinigen -- -- --probe` – das erste `--` nimmt npm, das zweite `payload run`; mit nur einem `--` verschluckt `payload run` das Flag, und das Skript löscht (`src/scripts/aufbewahrung-bereinigen.ts`, `node_modules/payload/dist/bin/index.js`) |
 
-Die Vorlage `.env.example` nach `.env.local` kopieren und ausfüllen. Sie enthält keine Zugangsdaten; vorbelegt ist nur `NEXT_PUBLIC_SITE_URL`. Im Code gelesen werden unter anderem `DATABASE_URL`, `PAYLOAD_SECRET`, `SM24_DATA`, `SM24_READONLY_CONTENT`, `NEXT_PUBLIC_SERVER_URL`, `NEXT_PUBLIC_SITE_URL`, `SEED_ADMIN_EMAIL` und `SEED_ADMIN_PASSWORD`.
+Die Vorlage `.env.example` nach `.env.local` kopieren und ausfüllen. Sie enthält keine Zugangsdaten und erklärt jede Variable; gelesen werden sie an einer Stelle (`src/lib/umgebung.ts`, Build: `scripts/build.mjs`). Für den Livegang: `docs/LIVEGANG.md`.
 
 **Ohne Datenbank.** Die Seite liest aus Payload, sobald `DATABASE_URL` gesetzt ist. Sonst liest sie die Dateien unter `content/` (`src/lib/data/index.ts`). Dasselbe erzwingt `SM24_DATA=json`:
 
@@ -39,7 +39,11 @@ SM24_DATA=json npx next build
 
 `npm run dev` ruft vorher `scripts/db.mjs ensure` auf. Ohne externe `DATABASE_URL` startet das ein lokales Postgres aus dem Paket `embedded-postgres` (Port 5433, nur localhost, Daten unter `.data/postgres`). Das Skript setzt `DATABASE_URL` nicht; die Seite nutzt die Datenbank erst, wenn die Variable gesetzt ist.
 
-**Build.** Auf Vercel ohne `DATABASE_URL` läuft `npm run build` ohne Datenbank. Sonst führt der Build `scripts/db.mjs ensure`, `payload migrate` und den Seed aus und ruft danach `next build` auf (`package.json`, Skript `build`). Ohne `DATABASE_URL` startet `scripts/db.mjs` dabei das lokale Postgres; zeigt `DATABASE_URL` auf eine externe Datenbank, startet es keines (`scripts/db.mjs`, Zeilen 104–114 und 119–123), und Migrationen und Seed laufen gegen diese Datenbank. Als root scheitert `initdb` am lokalen Postgres. Ohne Datenbank baut `SM24_DATA=json npx next build`.
+**Build.** `npm run build` ruft `scripts/build.mjs` auf:
+- In Produktion (`VERCEL_ENV=production`) bricht er ab, wenn Datenbank, `PAYLOAD_SECRET` oder `NEXT_PUBLIC_SITE_URL` fehlen.
+- Mit Datenbank laufen Migrationen (über die direkte Verbindung `DATABASE_URL_UNPOOLED`), Seed, Anlage des ersten Inhaber-Zugangs aus `SEED_ADMIN_*` und die Livegang-Prüfung (`npm run pruefen:livegang`; in Produktion ein Abbruch bei Platzhaltern in Firmendaten oder Rechtsseiten), danach `next build`.
+- Vorschau-Deployments überspringen Migration und Seed (`SM24_PREVIEW_MIGRATE=1` schaltet sie ein).
+- Lokal ohne externe `DATABASE_URL` startet `scripts/db.mjs` das eingebettete Postgres; als root scheitert dort `initdb`. Ohne Datenbank baut `SM24_DATA=json npx next build`.
 
 ## Technischer Aufbau
 
@@ -71,10 +75,10 @@ SM24_DATA=json npx next build
 
 ## Tests
 
-- **Unit-Tests:** `npm run test:unit` (Vitest 2, Umgebung `node`, ohne DOM; `vitest.config.ts`). 73 Unit-Testdateien mit 1217 Tests (`find src -name '*.test.ts*' ! -name '*.db.test.ts' | wc -l`).
-- **DB-Tests:** `npm run test:db` (`vitest.db.config.ts`), 7 Dateien `*.db.test.ts`. Die Datei `src/test/db-global-setup.ts` startet eine eigene Postgres-Instanz (Port 5434, änderbar mit `SM24_TEST_PG_PORT`) und spielt Migrationen und Seed ein.
+- **Unit-Tests:** `npm run test:unit` (Vitest 2, Umgebung `node`, ohne DOM; `vitest.config.ts`). 113 Unit-Testdateien mit 1531 Tests (`find src -name '*.test.ts*' ! -name '*.db.test.ts' | wc -l`).
+- **DB-Tests:** `npm run test:db` (`vitest.db.config.ts`), 11 Dateien `*.db.test.ts` mit 77 Tests. Die Datei `src/test/db-global-setup.ts` startet eine eigene Postgres-Instanz (Port 5434, änderbar mit `SM24_TEST_PG_PORT`) und spielt Migrationen und Seed ein.
 - Als root sind die DB-Tests nicht lauffähig (`initdb` lehnt root ab); im Gestaltungslauf liefen sie über einen Nutzer ohne root-Rechte.
-- **Prüfungen:** `npm run typecheck` und `npm run lint`.
+- **Prüfungen:** `npm run typecheck` und `npm run lint`. Die CI (`.github/workflows/ci.yml`) führt alles samt DB-Tests und Build ohne Datenbank für jeden PR auf `main` aus.
 
 ## Inhaltspflege
 
@@ -101,15 +105,23 @@ Mit laufender Datenbank sind die Inhalte in Payload gepflegt. Die Dateien unter 
 
 `content/records.json` (Vorgänge und Kundendaten) steht nicht im Repository (`.gitignore`). Im JSON-Modus liest und schreibt der Adapter diese Datei; schreiben ist nicht möglich auf Vercel oder mit `SM24_READONLY_CONTENT=1`.
 
-## Offene Anbindungen
+## Anbindungen und Livegang
 
-Der Status der Anbindungen steht in `src/lib/integrations/index.ts`. Im Backend (`src/payload/`, `src/app/(payload)/`) gibt es keinen Bezug zu den Anbindungen. Gelesen wird er auf den öffentlichen Seiten: `integrationStatuses()` auf `rechtliches/versand-und-zahlung/page.tsx`, `paymentStatus()` auf `kasse/page.tsx` und `autoschluessel/anfrage/page.tsx`, `mailStatus()` und `storageStatus()` auf `bestellung/[id]/page.tsx`. Der Vorgang beim Absenden nutzt `createPayment`, `sendMail` und `storageStatus` (`src/lib/server/create-record.ts`).
+Alle Anbindungen sind fertig programmiert und schalten sich ein, sobald ihre Variablen gesetzt sind (`src/lib/umgebung.ts`). Den Stand zeigt das Backend unter Verwaltung → Einstellungen → Anbindungen, dort auch eine Testmail. Schritt-für-Schritt-Anleitung für Konten, DNS und ersten Deploy: **`docs/LIVEGANG.md`**.
 
-- **Online-Zahlung:** nicht angebunden. Ohne `PAYMENT_PROVIDER` und `PAYMENT_API_KEY` legt `createPayment` den Vorgang mit Zahlungsstatus „offen“ an (`src/lib/integrations/index.ts`, Zeilen 68–76). Sind beide gesetzt, wirft `createPayment`, weil die Anbindung des Anbieters im Code fehlt (Zeilen 78–82), nicht weil ein Wert fehlt. `PAYMENT_WEBHOOK_SECRET` steht in der Liste der benötigten Variablen, geht aber nicht in `configured` ein.
-- **E-Mail-Versand:** nicht angebunden. Ohne `MAIL_PROVIDER` und `MAIL_API_KEY` versendet `sendMail` nichts.
-- **Dateiablage:** Kundendateien liegen in der Sammlung `kundendateien` (`src/payload/collections/Kundendateien.ts`) und im Ordner `private-uploads/` (nicht im Repository, `.gitignore`). Die Ablage ist nur verfügbar, wenn `DATABASE_URL` gesetzt ist, `SM24_DATA` nicht `json` ist und die Umgebung auf die Festplatte schreiben darf. Nicht verfügbar ist sie daher ohne `DATABASE_URL`, im JSON-Modus (`SM24_DATA=json`), auf Vercel (`VERCEL` gesetzt) und mit `SM24_READONLY_CONTENT=1` (`src/lib/integrations/index.ts`, Zeilen 142–148). Die Variablen `STORAGE_*` aus `.env.example` liest der Code nicht.
-- **Stripe:** `stripe` steht in `package.json`, wird aber nicht importiert.
-- **Rechtstexte und Firmendaten:** juristische Prüfung und Angaben stehen aus (`docs/gestaltung/MENSCHEN.md`, M-02 und M-05).
+| Anbindung | Code | Variablen | Ohne Anbindung |
+|---|---|---|---|
+| Online-Zahlung (Stripe Checkout) | `src/lib/integrations/stripe.ts`, `src/lib/zahlung/*`, Webhook `api/zahlung/stripe`, Rückkehr `api/zahlung/rueckkehr` | `PAYMENT_PROVIDER`, `PAYMENT_API_KEY`, `PAYMENT_WEBHOOK_SECRET`, `PAYMENT_METHODS`, `PAYMENT_INVOICES` | Vorgang mit Zahlung „offen“, Verbuchung von Hand |
+| E-Mail (Resend) | `src/lib/mail/*`, `src/lib/server/benachrichtigungen.ts`, Payload-Adapter `@payloadcms/email-resend` | `MAIL_PROVIDER`, `MAIL_API_KEY`, `MAIL_FROM_ADDRESS`, `MAIL_TEAM_ADDRESS`, `MAIL_REPLY_TO` | keine Mails, Vorgänge werden trotzdem gespeichert |
+| Datenbank (Supabase Postgres) | `src/payload.config.ts`, `src/payload/betrieb.ts` | `DATABASE_URL`, `DATABASE_URL_UNPOOLED`, `DATABASE_CA_CERT` | Seite liest `content/*.json`, keine Vorgänge (in Produktion verboten) |
+| Dateiablage (Supabase Storage, privater Bucket) | `@payloadcms/storage-s3` für Medien, Kundendateien, interne Dateien | `STORAGE_ENDPOINT`, `STORAGE_REGION`, `STORAGE_BUCKET`, `STORAGE_ACCESS_KEY`, `STORAGE_SECRET_KEY` | auf Vercel keine Uploads |
+| Crons (Vercel) | `api/cron/taeglich` (Löschfristen), `api/cron/zahlungen` (Abgleich), `vercel.json` | `CRON_SECRET` | Crons werden abgewiesen |
+
+Mailvorlagen: Eingangsbestätigung je Ablauf, Vertragsbestätigung mit Widerrufsbelehrung, Betriebsmail, Zahlung, Status (inkl. Sendungsnummer), Widerruf. Alle Mails stehen im Mail-Protokoll am Vorgang.
+
+Backend-Aktionen am Vorgang: Bestätigung erneut senden, Termin verschieben, Telefontermin eintragen, CSV-Export für die Buchhaltung.
+
+Rechtsseiten (`src/app/(site)/rechtliches/*`, Texte in `src/lib/rechtliches/*`) sind vollständige Entwürfe aus den Firmendaten. Die juristische Freigabe steht aus (`docs/gestaltung/MENSCHEN.md`, M-05). Eigene Texte ersetzen den Entwurf über Einstellungen → Rechtstexte.
 
 Alle offenen Punkte für Menschen: `docs/gestaltung/MENSCHEN.md`.
 

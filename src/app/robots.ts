@@ -9,8 +9,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        // Vorgangsdaten, Warenkorb und Backend gehören nicht in den Index.
-        disallow: ['/admin', '/kasse', '/warenkorb', '/bestellung'],
+        // Vorgangsdaten, Warenkorb, Backend und Schnittstellen gehören nicht in den Index.
+        disallow: ['/admin', '/api/', '/kasse', '/warenkorb', '/bestellung'],
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,

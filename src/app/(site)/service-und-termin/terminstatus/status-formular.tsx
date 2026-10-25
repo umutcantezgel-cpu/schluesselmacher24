@@ -41,13 +41,21 @@ const STATUS_TON: Record<RecordStatus, 'neutral' | 'primary' | 'success' | 'warn
   storniert: 'danger',
 };
 
+const ZAHLUNG_TEXT: Record<PaymentInfo['status'], string> = {
+  offen: 'offen',
+  bezahlt: 'bezahlt',
+  fehlgeschlagen: 'nicht abgeschlossen',
+  erstattet: 'erstattet',
+};
+
 interface Ergebnis {
   reference: string;
   status: RecordStatus;
   createdAt: string;
   updatedAt: string;
   appointment?: AppointmentInfo;
-  payment?: PaymentInfo;
+  /** Ohne Kennungen des Zahlungsdienstleisters. */
+  payment?: Pick<PaymentInfo, 'scope' | 'amountCents' | 'status' | 'paidAt'>;
   summary: SummarySection[];
   timeline: Array<{ at: string; actor: string; message: string }>;
 }
@@ -184,7 +192,7 @@ export function TerminStatusFormular() {
                   <dd className="text-body text-foreground sm:col-span-7 sm:text-right">
                     {ergebnis.payment.scope === 'anzahlung' ? 'Anzahlung' : 'Gesamtbetrag'}{' '}
                     <span className="font-mono tabular-nums">{formatCents(ergebnis.payment.amountCents)}</span>{' '}
-                    — Status: {ergebnis.payment.status}
+                    — {ZAHLUNG_TEXT[ergebnis.payment.status]}
                     {ergebnis.payment.paidAt && `, bezahlt am ${formatDateTime(ergebnis.payment.paidAt)}`}
                   </dd>
                 </div>

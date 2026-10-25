@@ -7,6 +7,7 @@ import { useHydrated } from '@/lib/client-state';
 import { useCartStore } from '@/lib/store/cart';
 import { availableShipping, cartTotals, priceCylinderOrder, type CylinderPriceBreakdown, unitPriceForCodeLine } from '@/lib/pricing';
 import { formatCents } from '@/lib/format';
+import { PreisHinweis } from '@/components/recht/preis-hinweis';
 import { zylinderZeilen } from '@/lib/cylinder-summary';
 import { istPlatzhalter } from '@/lib/platzhalter';
 import type {
@@ -29,13 +30,19 @@ import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphLaden } from '@/components/visual/glyphen/laden';
 import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
+import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 
 export interface WarenkorbAnsichtProps {
   shipping: ShippingOption[];
   codeLines: CodeLine[];
   standardArticles: StandardArticle[];
   catalog: CylinderCatalog;
+  /** Abholort bei der Versandart „Abholung“ — ohne gepflegten Standort entfällt die Zeile. */
+  werkstatt?: WerkstattAngaben;
 }
+
+/** Kennung der Versandart „Abholung im Fachbetrieb“ in den Einstellungen. */
+const ABHOLUNG = 'abholung';
 
 type CodePosition = Extract<CartItem, { kind: 'code-schluessel' }>;
 type ZylinderPosition = Extract<CartItem, { kind: 'zylinder-schliessung' }>;
@@ -61,7 +68,7 @@ function staffelHinweis(line: CodeLine): string | null {
   return `Einzelpreis ${formatCents(line.priceCents)} je Stück, ${stufen.join(', ')}.`;
 }
 
-export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalog }: WarenkorbAnsichtProps) {
+export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalog, werkstatt }: WarenkorbAnsichtProps) {
   const items = useCartStore((state) => state.items);
   const shippingOptionId = useCartStore((state) => state.shippingOptionId);
   const updateQty = useCartStore((state) => state.updateQty);
@@ -451,6 +458,10 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                     }}
                   />
                 ))}
+                {/* Bei Abholung steht der Abholort direkt unter der Auswahl */}
+                {gewaehlteVersandart?.id === ABHOLUNG && (
+                  <WerkstattZeile {...werkstatt} className="pt-2" />
+                )}
               </div>
             )}
           </div>
@@ -522,6 +533,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                 </dd>
               </div>
             </dl>
+            <PreisHinweis variante="mit-versand" className="mt-3" />
 
             <div className="mt-5">
               {gewaehlteVersandart && !nichtVerfuegbar ? (

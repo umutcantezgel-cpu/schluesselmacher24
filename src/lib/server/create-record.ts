@@ -2,18 +2,22 @@ import 'server-only';
 
 import {
   TerminVergebenFehler,
+  ZuVieleOffeneTermineFehler,
   getAppointments,
   getCollection,
   getSettings,
-  updateRecord,
+  vorgangAendern,
   vorgangAnlegen,
   vorgangDateienSetzen,
   type TerminSperre,
+  type VorgangsAenderung,
 } from '@/lib/data';
-import { createPayment, sendMail, storageStatus } from '@/lib/integrations';
+import { createPayment, storageStatus } from '@/lib/integrations';
 import { quoteCarKeyService } from '@/lib/pricing';
 import { buildRecordId } from '@/lib/reference';
-import { availableSlots, toIsoDate } from '@/lib/scheduling';
+import { VERLAUF } from '@/lib/zahlung/uebergaenge';
+import { heuteInBerlin, jahrInBerlin } from '@/lib/berliner-zeit';
+import { availableSlots, minutenInBerlin } from '@/lib/scheduling';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -25,6 +29,7 @@ import type {
   OrderTotals,
   PriceQuote,
   ProcessKind,
+  RecordConsents,
   RecordKind,
   Settings,
   SummarySection,
@@ -33,6 +38,7 @@ import type {
 } from '@/lib/types';
 
 import { createAccessToken } from './access-token';
+import { benachrichtigeNeuerVorgang } from './benachrichtigungen';
 
 /**
  * Eingabe für einen Vorgang, die bereits geprüft ist.
@@ -55,6 +61,8 @@ export interface TrustedRecordInput {
   /** Nur bei Bestellungen: vom Server berechnete Positionen und Summen zum Festschreiben. */
   lines?: OrderLine[];
   totals?: OrderTotals;
+  /** Zustimmungen beim Absenden, mit Zeitpunkt und Fassung der Rechtstexte. */
+  consents?: RecordConsents;
 }
 
 export interface CreateRecordResult {
@@ -75,6 +83,13 @@ const SLOT_TAKEN =
   'Der gewählte Termin ist inzwischen nicht mehr frei. Bitte wählen Sie ein anderes '
   + 'Zeitfenster aus.';
 
+/** Höchstens so viele offene, unbezahlte Termine je E-Mail-Adresse. */
+export const OFFENE_TERMINE_JE_EMAIL = 2;
+
+const ZU_VIELE_OFFENE_TERMINE =
+  'Zu Ihrer E-Mail-Adresse sind bereits Termine offen, deren Anzahlung noch aussteht. Bitte schließen '
+  + 'Sie zuerst deren Zahlung ab oder melden Sie sich bei uns — wir helfen gern weiter.';
+
 const PAYMENT_NOT_STARTED =
   'Die Online-Zahlung konnte gerade nicht gestartet werden. Ihr Vorgang ist gespeichert; '
   + 'wir melden uns mit den Zahlungsinformationen.';
@@ -93,14 +108,15 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
   try {
     settings = await getSettings();
     const termin = input.appointment
-      ? await slotLock(input.appointment, input.quote, settings)
+      ? await slotLock(input.appointment, input.quote, settings, input.payment ? input.contact.email : undefined)
       : undefined;
 
     // Nummer, Terminprüfung und Vorgang in einem Zug: Scheitert etwas, bleibt
     // keine Nummer verbraucht und kein Termin doppelt vergeben.
     saved = await vorgangAnlegen({
       art: input.kind,
-      jahr: now.getFullYear(),
+      // Jahr der Werkstatt: Silvester nach 23 Uhr UTC zählt schon das neue Jahr.
+      jahr: jahrInBerlin(now),
       termin,
       aufbauen: (reference) => ({
         area: input.area,
@@ -132,11 +148,15 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
         accessTokenHash: hash,
         lines: input.lines,
         totals: input.totals,
+        consents: input.consents,
       }),
     });
   } catch (error) {
     if (error instanceof TerminVergebenFehler) {
       return { ok: false, notices, error: SLOT_TAKEN };
+    }
+    if (error instanceof ZuVieleOffeneTermineFehler) {
+      return { ok: false, notices, error: ZU_VIELE_OFFENE_TERMINE };
     }
     console.error('[vorgang] Speichern fehlgeschlagen', error);
     return { ok: false, notices, error: GENERIC_ERROR };
@@ -149,11 +169,19 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
     saved = await dateienZuordnen(saved, input.uploads, notices);
   }
 
-  const redirectUrl = input.payment
-    ? await startPayment(saved, input.payment, token, notices)
-    : undefined;
+  let redirectUrl: string | undefined;
+  if (input.payment) {
+    const zahlung = await startPayment(saved, input, token, notices);
+    redirectUrl = zahlung.redirectUrl;
+    saved = zahlung.vorgang;
+  }
 
-  await sendConfirmation(saved, input.contact, settings, notices);
+  // Eingangsbestätigung mit dem Stand nach dem Zahlungsstart (Ablauf der Reservierung).
+  try {
+    notices.push(...(await benachrichtigeNeuerVorgang({ saved, token, settings })));
+  } catch (error) {
+    console.error('[vorgang] Bestätigung nicht versendet', error);
+  }
 
   return {
     ok: true,
@@ -168,89 +196,88 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
 /**
  * Startet die Zahlung erst nach dem Speichern: Rücksprungadresse und Verweis
  * brauchen die endgültige Kennung aus der Datenbank, und kein Zahlungsdienst
- * hält eine Datenbanksperre offen.
+ * hält eine Datenbanksperre offen. Liefert die Zahlungsadresse (falls
+ * online bezahlt wird) und den Vorgang nach dem Speichern des Zahlungsstands.
  */
 async function startPayment(
   saved: BusinessRecord,
-  payment: PaymentRequest,
+  input: TrustedRecordInput,
   token: string,
   notices: string[],
-): Promise<string | undefined> {
+): Promise<{ redirectUrl?: string; vorgang: BusinessRecord }> {
+  const payment = input.payment as PaymentRequest;
   const at = new Date().toISOString();
   let redirectUrl: string | undefined;
-  let patch: Pick<BusinessRecord, 'payment' | 'timeline'>;
+  // Wird erst unter der Sperre auf den frisch gelesenen Vorgang angewendet —
+  // so geht nichts verloren, was inzwischen dazugekommen ist.
+  let aendern: (aktuell: BusinessRecord) => VorgangsAenderung;
 
   try {
     const result = await createPayment({
       recordId: saved.id,
+      reference: saved.reference,
+      recordKind: saved.kind,
       amountCents: payment.amountCents,
       scope: payment.scope,
       description: payment.description,
-      returnUrl: `/bestellung/${saved.id}?t=${token}`,
+      accessToken: token,
+      customerEmail: saved.contact.email,
+      lines: input.lines,
+      shipping: input.totals ? { label: input.totals.shippingLabel, cents: input.totals.shippingCents } : undefined,
+      appointment: input.appointment,
     });
     redirectUrl = result.redirectUrl;
-    patch = {
-      payment: {
-        scope: payment.scope,
-        amountCents: payment.amountCents,
-        status: result.status,
-        providerRef: result.providerRef,
-      },
-      timeline: saved.timeline,
+    // Ohne Zahlungsseite bleibt die Zahlung offen — der Kunde erfährt, wie es weitergeht.
+    if (result.status === 'offen' && !redirectUrl) notices.push(result.message);
+    aendern = (aktuell) => {
+      const aenderung: VorgangsAenderung = {
+        payment: {
+          ...aktuell.payment,
+          scope: payment.scope,
+          amountCents: payment.amountCents,
+          status: result.status,
+          providerRef: result.providerRef,
+          checkoutSessionId: result.checkoutSessionId,
+          expiresAt: result.expiresAt,
+        },
+      };
+      let verlauf: string | undefined;
+      if (redirectUrl) verlauf = VERLAUF.gestartet;
+      else if (result.status === 'offen') {
+        verlauf = result.internalNote
+          ? 'Zahlung offen – die Zahlungsinformationen erhalten Sie von uns.'
+          : 'Zahlung offen: kein Zahlungsdienstleister angebunden.';
+      }
+      if (verlauf) aenderung.timeline = [...aktuell.timeline, { at, actor: 'system', message: verlauf }];
+      if (result.internalNote) {
+        aenderung.internalNotes = [...aktuell.internalNotes, { at, actor: 'system', message: result.internalNote }];
+      }
+      return aenderung;
     };
-    if (result.status === 'offen') {
-      notices.push(result.message);
-      patch.timeline = [
-        ...saved.timeline,
-        { at, actor: 'system', message: 'Zahlung offen: kein Zahlungsdienstleister angebunden.' },
-      ];
-    }
   } catch (error) {
     console.error('[vorgang] Zahlung nicht gestartet', error);
     notices.push(PAYMENT_NOT_STARTED);
-    patch = {
-      payment: saved.payment,
-      timeline: [...saved.timeline, { at, actor: 'system', message: 'Zahlung konnte nicht gestartet werden.' }],
-    };
+    aendern = (aktuell) => ({
+      timeline: [...aktuell.timeline, { at, actor: 'system', message: VERLAUF.nichtGestartet }],
+      internalNotes: [
+        ...aktuell.internalNotes,
+        {
+          at,
+          actor: 'system',
+          message:
+            `Online-Zahlung konnte nicht gestartet werden (${error instanceof Error ? error.message.slice(0, 200) : 'unbekannter Fehler'}). `
+            + 'Der Kunde kann sie über seinen Link erneut starten.',
+        },
+      ],
+    });
   }
 
   try {
-    await updateRecord(saved.id, patch);
+    const vorgang = await vorgangAendern(saved.id, aendern);
+    return { redirectUrl, vorgang: vorgang ?? saved };
   } catch (error) {
     console.error('[vorgang] Zahlungsstand nicht gespeichert', error);
-  }
-  return redirectUrl;
-}
-
-async function sendConfirmation(
-  saved: BusinessRecord,
-  contact: ContactDetails,
-  settings: Settings,
-  notices: string[],
-) {
-  try {
-    const mail = await sendMail({
-      to: contact.email,
-      subject: `Ihr Vorgang ${saved.reference} bei SCHLÜSSELMACHER24`,
-      body:
-        `Guten Tag ${contact.firstName} ${contact.lastName},\n\n`
-        + `wir haben Ihren Vorgang unter der Nummer ${saved.reference} aufgenommen.\n`
-        + `Sie können den Stand jederzeit unter /service-und-termin/terminstatus abrufen.\n\n`
-        + `${settings.company.brandName}`,
-      recordId: saved.id,
-    });
-    if (!mail.sent) {
-      notices.push(
-        'Eine automatische Bestätigung per E-Mail ist noch nicht eingerichtet. '
-          + 'Notieren Sie sich bitte Ihre Vorgangsnummer.',
-      );
-    }
-  } catch (error) {
-    console.error('[vorgang] Bestätigung nicht versendet', error);
-    notices.push(
-      'Die Bestätigung per E-Mail konnte gerade nicht versendet werden. '
-        + 'Notieren Sie sich bitte Ihre Vorgangsnummer.',
-    );
+    return { redirectUrl, vorgang: saved };
   }
 }
 
@@ -269,8 +296,10 @@ function freeSlot(args: {
   date: string;
   time: string;
 }): TimeSlot | undefined {
+  const jetzt = new Date();
   return availableSlots({
-    today: toIsoDate(new Date()),
+    today: heuteInBerlin(jetzt),
+    jetztMinuten: minutenInBerlin(jetzt),
     durationMinutes: args.durationMinutes,
     leadTimeDays: args.leadTimeDays,
     booking: args.settings.booking,
@@ -280,15 +309,21 @@ function freeSlot(args: {
   }).find((slot) => slot.date === args.date && slot.time === args.time && slot.available);
 }
 
-/** Prüfung, die beim Anlegen unter der Tagessperre mit frisch gelesenen Terminen läuft. */
+/**
+ * Prüfung, die beim Anlegen unter der Tagessperre mit frisch gelesenen
+ * Terminen läuft. Mit `email` (Termine mit Online-Anzahlung) zusätzlich die
+ * Höchstzahl offener, unbezahlter Termine dieser Adresse.
+ */
 async function slotLock(
   appointment: AppointmentInfo,
   quote: PriceQuote | undefined,
   settings: Settings,
+  email?: string,
 ): Promise<TerminSperre> {
   const blocked = await getCollection('blockedDays');
   return {
     datum: appointment.date,
+    ...(email ? { kunde: { email, hoechstensOffen: OFFENE_TERMINE_JE_EMAIL, abDatum: heuteInBerlin() } } : {}),
     istFrei: (existing) =>
       freeSlot({
         settings,
@@ -312,8 +347,16 @@ export interface CarKeyVerifyInput {
   workingKeys: number;
 }
 
+/** Bezeichnungen aus den Stammdaten — für Zusammenfassung und Vertragsbestätigung. */
+export interface GepruefteAngaben {
+  leistung: string;
+  marke: string;
+  /** Nur bei einem Modell aus der Liste. */
+  modell?: string;
+}
+
 export type VerifyResult =
-  | { ok: true; quote: PriceQuote; appointment?: AppointmentInfo }
+  | { ok: true; quote: PriceQuote; appointment?: AppointmentInfo; angaben: GepruefteAngaben }
   | { ok: false; error: string };
 
 /**
@@ -363,8 +406,14 @@ export async function verifyCarKeyBooking(
     settings.booking,
   );
 
+  const angaben: GepruefteAngaben = {
+    leistung: service.label,
+    marke: make.name,
+    ...(model ? { modell: model.name } : {}),
+  };
+
   if (!requested) {
-    return { ok: true, quote };
+    return { ok: true, quote, angaben };
   }
 
   const match = freeSlot({
@@ -384,6 +433,7 @@ export async function verifyCarKeyBooking(
   return {
     ok: true,
     quote,
+    angaben,
     appointment: {
       date: match.date,
       time: match.time,

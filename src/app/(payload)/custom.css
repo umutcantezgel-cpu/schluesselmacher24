@@ -16,3 +16,54 @@
   --theme-success-100: #eaf1ff;
   --theme-success-150: #dce8ff;
 }
+
+/* Eigene Aktionen: Termin verschieben (Seitenleiste), Werkzeuge über der Vorgangsliste. */
+.sm24-aktion__zeile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 8px 0;
+}
+.sm24-aktion__haken {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 4px 0 8px;
+  font-size: 13px;
+}
+.sm24-aktion input[type='date'],
+.sm24-aktion input[type='time'],
+.sm24-werkzeug input:not([type='checkbox']),
+.sm24-werkzeug select {
+  min-height: 36px;
+  padding: 4px 10px;
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: var(--style-radius-s);
+  background: var(--theme-input-bg, var(--theme-elevation-0));
+  color: var(--theme-text);
+  font: inherit;
+}
+.sm24-werkzeug {
+  display: grid;
+  gap: 8px;
+  margin-bottom: calc(var(--base) * 1.5);
+}
+.sm24-werkzeug details {
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: var(--style-radius-m);
+  padding: 10px 14px;
+}
+.sm24-werkzeug summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.sm24-werkzeug__formular {
+  margin-top: 12px;
+}
+.sm24-werkzeug__raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}

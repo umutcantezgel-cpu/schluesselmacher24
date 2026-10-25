@@ -11,6 +11,7 @@ export default defineConfig({
     include: ['src/**/*.db.test.ts'],
     exclude: ['node_modules/**', '.claude/**'],
     globalSetup: ['src/test/db-global-setup.ts'],
+    setupFiles: ['src/test/setup-umgebung.ts'],
     testTimeout: 30_000,
     hookTimeout: 120_000,
     fileParallelism: false,

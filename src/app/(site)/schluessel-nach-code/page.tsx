@@ -18,6 +18,7 @@ import {
   CODE_FUNDSTELLE_AUSSCHNITT,
   CodeFundstelleGrafik,
 } from '@/components/visual/generators/code-fundstelle';
+import { PreisHinweis } from '@/components/recht/preis-hinweis';
 
 import { ShopListe } from './shop-liste';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
@@ -154,7 +155,8 @@ export default async function SchluesselNachCodePage() {
           }
         />
 
-        <ShopListe lines={lines} className="mt-8" />
+        <PreisHinweis alle className="mt-4" />
+        <ShopListe lines={lines} className="mt-6" />
       </Section>
 
       {/* Ton wechselt zur Liste darüber (K-006); die Fundstelle steht im Kopf */}

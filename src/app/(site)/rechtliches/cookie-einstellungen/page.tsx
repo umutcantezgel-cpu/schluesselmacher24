@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+
 import { CookieSettings } from './cookie-einstellungen';
 
 export const metadata: Metadata = {
@@ -12,8 +14,10 @@ export default function CookieEinstellungenPage() {
     <>
       <h1 className="text-headline font-bold text-balance">Cookie-Einstellungen</h1>
       <p className="mt-3">
-        Diese Website kommt derzeit ohne Analyse-, Werbe- und Fremddienste aus. Gespeichert wird
-        nur, was für den Betrieb nötig ist — und zwar ausschließlich in Ihrem Browser.
+        Diese Website setzt keine Analyse-, Werbe- oder Marketingdienste ein und bindet keine
+        Inhalte fremder Anbieter ein. Gespeichert wird nur, was für die von Ihnen genutzten
+        Funktionen technisch notwendig ist — und zwar im lokalen Speicher Ihres Browsers. Eine
+        Einwilligung ist dafür nicht erforderlich.
       </p>
 
       <CookieSettings />
@@ -34,18 +38,18 @@ export default function CookieEinstellungenPage() {
         </li>
       </ul>
       <p>
-        Diese Daten werden nicht an uns übertragen, solange Sie einen Vorgang nicht absenden. Sie
-        können sie jederzeit über die Schaltfläche oben oder über die Einstellungen Ihres Browsers
-        löschen.
+        Diese Angaben bleiben in Ihrem Browser, bis Sie einen Vorgang absenden. Sie können sie
+        jederzeit über die Schaltfläche oben oder über die Einstellungen Ihres Browsers löschen.
+        Fotos und Unterlagen, die Sie in einem Formular auswählen, werden dagegen sofort an uns
+        übertragen; Einzelheiten stehen in der{' '}
+        <Link href="/rechtliches/datenschutz">Datenschutzerklärung</Link>.
       </p>
 
-      <h2>Sobald weitere Dienste hinzukommen</h2>
+      <h2>Online-Zahlung</h2>
       <p>
-        [Platzhalter: Sobald Analyse-, Karten-, Zahlungs- oder Marketingdienste eingebunden werden,
-        müssen sie hier einzeln mit Zweck, Anbieter, Speicherdauer und Rechtsgrundlage aufgeführt
-        werden. Die Einwilligung ist dann vor dem Laden dieser Dienste einzuholen; die Umschalter
-        auf dieser Seite sind dafür bereits vorgesehen. Die Ausgestaltung ist vor Livegang
-        juristisch zu prüfen.]
+        Für die Online-Zahlung leiten wir Sie auf die Bezahlseite von Stripe weiter. Auf unserer
+        Website selbst werden dafür keine Skripte oder Cookies von Stripe geladen. Was Stripe auf
+        seiner Bezahlseite speichert, regelt die Datenschutzerklärung von Stripe.
       </p>
     </>
   );

@@ -11,6 +11,7 @@ import {
 } from '@/lib/artikel';
 import { getCollection, getSettings } from '@/lib/data';
 import { formatCents } from '@/lib/format';
+import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { ImageSlot } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
@@ -281,6 +282,8 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
                 .
               </p>
             </div>
+
+            <GpsrAngaben info={article.gpsr} className="mt-12 border-t border-border pt-8" />
           </div>
         </div>
       </Section>

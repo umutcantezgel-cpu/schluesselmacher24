@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getCities, getSettings } from '@/lib/data';
+import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
@@ -77,7 +78,9 @@ const SERVICES = [
 ];
 
 export default async function VorOrtPage() {
-  const [settings, cities] = await Promise.all([getSettings(), getCities()]);
+  const [settings, alleGebiete] = await Promise.all([getSettings(), getCities()]);
+  // Wie /standorte: Gebiete mit Platzhaltern versprächen Leistungen, die nicht belegt sind (Erg. Leitfaden §5).
+  const cities = alleGebiete.filter(stadtIndexierbar);
 
   return (
     <>
@@ -159,27 +162,29 @@ export default async function VorOrtPage() {
               benötigen, sagen wir Ihnen bei der Terminbestätigung.
             </Alert>
 
-            <div className="mt-12 border-t border-border pt-6">
-              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                Einsatzgebiete
-              </p>
-              <p className="mt-2 max-w-measure text-small text-foreground-muted">
-                Vor-Ort-Leistungen erbringen wir in folgenden Regionen. Bestellungen aus dem Shop
-                liefern wir deutschlandweit.
-              </p>
-              <ul className="mt-3 flex flex-wrap gap-x-4">
-                {cities.map((city) => (
-                  <li key={city.id}>
-                    <Link
-                      href={`/standorte/${city.slug}`}
-                      className="inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline"
-                    >
-                      {city.city}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {cities.length > 0 && (
+              <div className="mt-12 border-t border-border pt-6">
+                <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Einsatzgebiete
+                </p>
+                <p className="mt-2 max-w-measure text-small text-foreground-muted">
+                  Vor-Ort-Leistungen erbringen wir in folgenden Regionen. Bestellungen aus dem Shop
+                  liefern wir deutschlandweit.
+                </p>
+                <ul className="mt-3 flex flex-wrap gap-x-4">
+                  {cities.map((city) => (
+                    <li key={city.id}>
+                      <Link
+                        href={`/standorte/${city.slug}`}
+                        className="inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline"
+                      >
+                        {city.city}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <div className="mt-8 border-y border-border py-6">
               <p className="text-title-sm font-semibold text-foreground">Terminvorlauf</p>

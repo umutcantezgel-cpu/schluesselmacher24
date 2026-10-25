@@ -1,0 +1,164 @@
+ SCHLUESSELMACHER24.DE
+ Ergänzender Leitfaden für Umut | Shop, Google-SEO & B2B-Partnernetzwerk
+
+  Ziel und Einordnung
+  Diese Unterlage ergänzt die bereits übergebene Planung. Die Website ist noch in Entwicklung.
+  Geplant ist ein überschaubarer, spezialisierter Fachshop – kein überdimensionierter Marktplatz.
+  Wichtig sind eine einfache Bedienung, fachlich richtige Angaben und eine gute technische Basis
+  für späteres Wachstum.
+
+
+
+ 1 Geplanter Funktionsumfang zum Shopstart
+ • Rund 50–55 Schlüsselangebote nach Code: Eigene bestellbare Produktseiten für die tatsächlich
+    angebotenen Schlüsseltypen. Saubere Zuordnung nach Hersteller/Profil/Codeserie, verständliche
+    Eingabe und klare Preis- und Versandinformationen.
+
+ • Schlüssel nach Foto oder Einsendung: Kunde lädt ein Foto hoch und sendet eine Anfrage. Interne
+    manuelle Prüfung, ob die Anfertigung möglich ist. Rückmeldung als Freigabe („grün“), Rückfrage
+    oder Absage. Erst nach Freigabe bestellt der Kunde bzw. sendet seinen Originalschlüssel ein, wenn
+    erforderlich.
+
+ • Autoschlüssel: Schwerpunkt Wetzlar und Umgebung, aber Terminanfragen aus ganz Deutschland
+    sind möglich. Kunden können für einen Termin anreisen; überregionale Außeneinsätze nur nach
+    individueller Prüfung von Aufwand und Kosten.
+
+ • Konfiguratoren: ABUS-Sperrschließungen sowie Schließanlagen über ABUS und BKS; weitere
+    Hersteller oder Sonderlösungen auf Anfrage. Konfiguratoren sollen klar erklären, was ausgewählt
+    und bestellt wird.
+
+ • Vertrauensbasis: Hinter dem Shop steht die echte Schlüssel Schmiede in Wetzlar, mit Werkstatt,
+    fachlicher Beratung und realer Fertigung.
+
+
+ 2 Nutzerführung und Bestellablauf
+ • Jede Rubrik braucht eine eindeutige Handlungsaufforderung: „Nach Code bestellen“, „Foto prüfen
+    lassen“, „Termin anfragen“ oder „Schließanlage konfigurieren“.
+
+ • Der Status einer Fotoanfrage muss intern nachvollziehbar sein: eingegangen → geprüft →
+    freigegeben / Rückfrage / nicht möglich → Bestellung. Kundinnen und Kunden dürfen eine Prüfung
+    nicht mit einer Fertigungszusage verwechseln.
+
+ • Mobile Nutzung besonders einfach halten: gut erkennbare Formulare, sichere Foto-Uploads,
+    verständliche Bestätigungen und wenige unnötige Klicks.
+
+
+ Grundsatz: Fachlich korrekte Produktdaten und zuverlässige Abläufe gehen vor möglichst vielen Funktionen.
+
+
+
+
+Schluesselmacher24.de | Ergänzender Entwicklungsleitfaden | 08.10.2026                                       1
+ GOOGLE & TECHNIK
+ Von Anfang an sauber vorbereiten – die eigentliche Sichtbarkeit entwickelt sich nach
+ dem Start.
+
+ 3 Die rund 55 Produktseiten SEO-fähig aufbauen
+ • Eine eigene, dauerhaft erreichbare URL pro sinnvoll eigenständigem Schlüsselangebot, z. B. mit
+    Hersteller und Codeserie im Pfad. Keine 55 nahezu identischen Seiten ohne eigenständigen Nutzen
+    erzeugen.
+
+ • Für jedes Angebot: passender Seitentitel, klare H1-Überschrift, kurze eigene Beschreibung, echte
+    Produktinformationen/Bilder, Preis, Versand und präzise Eingabehinweise.
+
+ • Kategorien logisch verlinken: Startseite → Schlüssel nach Code → Hersteller/Schlüsseltyp → Produkt.
+    Wichtige Produkte sollen nicht nur über eine Suche oder einen Filter erreichbar sein.
+
+ • Eigene, gut verständliche Hauptseiten auch für „Schlüssel nach Foto“, „Schlüssel einschicken“,
+    „Autoschlüssel anfertigen/programmieren“, „Sperrschließungen“ und „Schließanlagen“.
+
+
+ 4 Technische SEO-Checkliste für die Entwicklung
+ • Mobile-first, gute Ladezeiten, stabile Darstellung, HTTPS und barrierearme Formulare.
+
+ • Sprechende URLs, individuelle Title-Tags und Meta-Beschreibungen, saubere Überschriften.
+
+ • XML-Sitemap, interne Links, korrekte robots-/Indexierungssteuerung und Canonical-Angaben.
+
+ • Produkt-Strukturdaten nur mit zutreffenden Angaben zu Preis und Verfügbarkeit.
+
+ • Unfertige Test-/Vorschauseiten vor Suchmaschinen schützen; zur Liveschaltung finale Domain und
+    Weiterleitungen sauber konfigurieren.
+
+ • Nach dem Start Google Search Console und bei geeigneten Verkaufsprodukten Google Merchant
+    Center anbinden.
+
+ • Wichtige Aktionen messen: Bestellungen, Fotoanfragen, Terminanfragen und spätere
+    Partneranmeldungen. Datenschutz/Cookie-Regeln beachten.
+
+
+ 5 Was Google und Kunden überzeugen soll
+ • Echte Werkstatt-, Maschinen- und Produktfotos statt austauschbarer Werbetexte; nachvollziehbare
+    Angaben zu Verfahren, Bearbeitung, Versand und Erreichbarkeit.
+
+ • Keine künstlich erzeugten Städte-Seiten oder falschen Filialangaben. Regionale Leistungen und
+    deutschlandweit bestellbare Leistungen erkennbar trennen.
+
+  Wichtig für die Umsetzung
+  Die SEO-Grundlagen sollten beim Programmieren gleich berücksichtigt werden. Produkttexte,
+  exakte Schlüsselprofile, Fotos und die Feinabstimmung der etwa 55 Angebote können
+  anschließend gemeinsam im neuen Büro Schritt für Schritt ausgearbeitet werden.
+
+
+
+
+Schluesselmacher24.de | Ergänzender Entwicklungsleitfaden | 08.10.2026                                   2
+ B2B-PARTNERNETZWERK
+ Geplante Erweiterung: „Partner werden“ – zunächst einfach, später ausbaubar.
+
+ 6 Idee: bundesweite Auftragsvermittlung
+ Schluesselmacher24.de soll mittelfristig auch Anfragen von Kundinnen und Kunden aus anderen
+ Regionen an geprüfte, unabhängige Fachbetriebe vermitteln können, besonders für Autoschlüssel
+ und später ggf. weitere Fachleistungen.
+
+ • Beispiel: Anfrage aus Hamburg → Schluesselmacher24 prüft die Anfrage → passender Partnerbetrieb
+    übernimmt nach Abstimmung → Partner führt Leistung aus und rechnet mit dem Kunden ab →
+    Schluesselmacher24 stellt dem Partner eine vertraglich vereinbarte Vermittlungsprovision in
+    Rechnung.
+
+ • Transparenz: Der Kunde erfährt, welcher Betrieb ausführt und sein Vertragspartner ist. Die interne
+    Höhe der Partnerprovision muss nicht als Marketinginformation ausgewiesen werden.
+
+
+ 7 „Partner werden“ – was die Website jetzt braucht
+ • Eine eigene Infoseite mit kurzem, professionellem Bewerbungsformular. Als Start reichen
+    E-Mail-Benachrichtigung und einfache interne Bearbeitung; kein komplexes Partnerportal nötig.
+
+ • Formularfelder: Firmenname, Ansprechpartner, Kontakt, PLZ/Ort, Einsatzradius, Leistungen,
+    Autohersteller/Systeme, mobile Einsätze, Qualifikationen und optionale Nachweise.
+
+ • Aufträge intern markieren: neu → geprüft → Partner angefragt → angenommen → erledigt →
+    Provision abgerechnet. Später erweiterbar zu einem geschützten Partnerbereich.
+
+ • Vor Freischaltung von Partnern: Gewerbe und fachliche Eignung prüfen, klare Preisregeln und
+    Zuverlässigkeit vereinbaren; bei Autoschlüsseln Identitäts- und Berechtigungsprüfung festlegen.
+
+
+ 8 Rechtliches und Datenschutz einplanen
+ • Für Anfragen, Foto-Uploads und Partnerdaten: zweckgebundene Datenerhebung, sichere
+    Übertragung/Speicherung, geregelte Zugriffe, Löschfristen und passende Datenschutzhinweise.
+
+ • Vor der ersten Vermittlung: Partnervertrag zu Provision, Abrechnung, Reklamation und
+    Verantwortung; klare Kundeninformation zum ausführenden Betrieb und zur Weitergabe
+    erforderlicher Kontaktdaten. Juristisch prüfen lassen.
+
+
+ 9 Reihenfolge – nicht alles auf einmal bauen
+JETZT                Grundstruktur, Bestellabläufe, 55 SEO-fähige Produktseiten, Foto-Freigabe,
+                     Konfiguratoren und einfache „Partner werden“-Seite einplanen.
+
+ZUM START            Fertige Kernprodukte veröffentlichen, Google-Messung aktivieren, Bestell- und
+                     Anfrageprozesse testen.
+
+DANACH               Mit wenigen seriösen Partnern manuell starten. Erst bei regelmäßigen Anfragen
+                     Matching und Partnerverwaltung automatisieren.
+
+
+ Gemeinsamer Termin im neuen Büro: Die Details zu Schlüsselcodes, Produktfotos, Freigabeprozess, Konfiguratoren
+ und Partnerformular zusammen durchgehen und priorisieren.
+
+
+
+
+Schluesselmacher24.de | Ergänzender Entwicklungsleitfaden | 08.10.2026                                            3
+

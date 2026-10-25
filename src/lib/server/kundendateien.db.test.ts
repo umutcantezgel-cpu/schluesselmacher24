@@ -10,7 +10,7 @@ import {
   type Payload,
 } from 'payload';
 import sharp from 'sharp';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 
 import config from '@payload-config';
 import { vorgangZuPayload } from '@/lib/data/payload-mapping';
@@ -19,6 +19,7 @@ import { createAccessToken, hashToken } from './access-token';
 import { erkenneDateityp, type UploadKategorie } from './datei-pruefung';
 import {
   bereinigeKundendateien,
+  loescheKundendateien,
   speichereKundendatei,
   verknuepfeKundendateien,
   waehleZuLoeschendeKundendateien,
@@ -293,5 +294,44 @@ describe('Aufbewahrung', () => {
 
     // Aufräumen: alle Testdateien aus private-uploads/ entfernen
     await bereinigeKundendateien({ payload, jetzt: new Date(jetzt + 3650 * TAG) });
+  });
+
+  it('löscht keine Datei, die zwischen Auswahl und Löschen zugeordnet wurde', async () => {
+    const jetzt = Date.now();
+    const spaet = await hochladen('objektfoto', new Date(jetzt + 30 * TAG));
+    const verwaist = await hochladen('objektfoto', new Date(jetzt + 30 * TAG));
+    const auswahl = (await waehleZuLoeschendeKundendateien({ payload, jetzt: new Date(jetzt + TAG + 60_000) })).filter(
+      (d) => [spaet.id, verwaist.id].includes(String(d.id)),
+    );
+    expect(auswahl.map((d) => d.grund)).toEqual(['nie-zugeordnet', 'nie-zugeordnet']);
+
+    // Der Kunde sendet sein Formular genau jetzt ab.
+    const vorgang = await neuerVorgang();
+    await verknuepfeKundendateien({ payload, vorgangId: vorgang, uploads: [{ id: spaet.id, uploadToken: spaet.token }] });
+
+    const ergebnis = await loescheKundendateien({ payload, auswahl });
+    expect(ergebnis.uebersprungen.map((d) => String(d.id))).toEqual([spaet.id]);
+    expect(ergebnis.geloescht.map((d) => String(d.id))).toEqual([verwaist.id]);
+    expect(vorgangVon(await lies(spaet.id))).toBe(vorgang);
+    await expect(lies(verwaist.id)).rejects.toThrow();
+  });
+
+  it('beansprucht vor dem Löschen: eine spätere Zuordnung geht ins Leere', async () => {
+    const datei = await hochladen('objektfoto', new Date(Date.now() + 30 * TAG));
+    const auswahl = [{ id: Number(datei.id), dateiname: datei.fileName, grund: 'nie-zugeordnet' as const }];
+    // Löschen scheitert nach dem Beanspruchen — der Hash ist trotzdem entfernt.
+    const loeschen = vi.spyOn(payload, 'delete').mockRejectedValueOnce(new Error('Ablage nicht erreichbar'));
+    const ergebnis = await loescheKundendateien({ payload, auswahl });
+    loeschen.mockRestore();
+    expect(ergebnis.fehlgeschlagen).toHaveLength(1);
+
+    const vorgang = await neuerVorgang();
+    expect(
+      await verknuepfeKundendateien({ payload, vorgangId: vorgang, uploads: [{ id: datei.id, uploadToken: datei.token }] }),
+    ).toEqual([]);
+    expect((await lies(datei.id)).uploadSchluesselHash ?? null).toBeNull();
+
+    // Der nächste Lauf räumt sie ab.
+    expect((await loescheKundendateien({ payload, auswahl })).geloescht).toHaveLength(1);
   });
 });

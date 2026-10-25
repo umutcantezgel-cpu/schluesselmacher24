@@ -1,7 +1,7 @@
 import type { GlobalConfig } from 'payload';
 
 import { istInhaber, istTeam } from '../access/rollen';
-import { bildFeld, euroFeld, infoFeld } from '../fields/gemeinsam';
+import { bildFeld, euroFeld, gpsrFeld, infoFeld } from '../fields/gemeinsam';
 import { nachGlobalAenderung } from '../hooks/revalidate';
 
 const BAUFORMEN = [
@@ -123,6 +123,11 @@ export const Zylinderkatalog: GlobalConfig = {
               ],
             },
           ],
+        },
+        {
+          label: 'Produktsicherheit',
+          description: 'Gilt für alle Zylinder aus diesem Katalog.',
+          fields: [gpsrFeld()],
         },
       ],
     },

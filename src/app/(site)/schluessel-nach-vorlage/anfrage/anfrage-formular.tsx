@@ -17,6 +17,8 @@ import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/c
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { FlowShell } from '@/components/flow/flow-shell';
+import { useFormularSchutz } from '@/components/forms/formular-schutz';
+import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { CheckDraw } from '@/components/visual/motion/check-draw';
@@ -223,6 +225,9 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
   const [result, setResult] = useState<SubmitResult | null>(null);
   const [fehler, setFehler] = useState<string | null>(null);
 
+  const schutz = useFormularSchutz();
+
+
   const flow = useFlow<AnfrageData>({
     id: FLOW_ID,
     steps: STEPS,
@@ -340,6 +345,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
 
     try {
       const antwort = await submitRecord({
+        schutz: await schutz.daten(),
         kind: 'anfrage',
         area: 'schluessel-nach-vorlage',
         process: 'gefuehrte-anfrage',
@@ -368,6 +374,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         summary,
         uploads: alleFotos.map((file) => alsUpload(file, 'schluesselfoto')),
       });
+      schutz.antwortBeachten(antwort);
 
       if (antwort.ok) {
         setResult(antwort);
@@ -503,6 +510,8 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
 
   return (
     <FlowShell
+      schutz={schutz}
+      abschlussHinweis={<AnfrageHinweis />}
       flow={shellFlow}
       title="Schlüssel nach Vorlage — Anfrage"
       submitLabel="Anfrage absenden"

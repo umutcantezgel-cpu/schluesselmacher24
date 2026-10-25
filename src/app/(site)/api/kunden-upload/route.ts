@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { getSettings } from '@/lib/data';
 import { storageStatus } from '@/lib/integrations';
 import { createAccessToken } from '@/lib/server/access-token';
+import { leseBegrenzt } from '@/lib/server/anfrage-koerper';
 import {
   MAX_PDF_BYTES,
   MELDUNG_ZU_GROSS,
@@ -21,7 +22,10 @@ import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limi
  * Abruf — hochgeladene Dateien sieht nur das Team im Backend.
  */
 
-/** Größte Datei plus Platz für die Felder und Trenner des Formulars. */
+/**
+ * Größte Datei plus Platz für die Felder und Trenner des Formulars — bleibt
+ * unter der Grenze von Vercel (4,5 MB je Anfrage).
+ */
 const MAX_ANFRAGE_BYTES = MAX_PDF_BYTES + 256 * 1024;
 
 const kategorieSchema = z.enum(UPLOAD_KATEGORIEN);
@@ -47,35 +51,6 @@ function gleicheHerkunft(request: Request): boolean {
   } catch {
     return false;
   }
-}
-
-/** Liest den Anfragekörper, bricht aber ab, sobald er zu groß wird. */
-async function leseBegrenzt(request: Request, max: number): Promise<Uint8Array<ArrayBuffer> | 'zu-gross'> {
-  const angegeben = Number(request.headers.get('content-length'));
-  if (Number.isFinite(angegeben) && angegeben > max) return 'zu-gross';
-  if (!request.body) return new Uint8Array(0);
-
-  const reader = request.body.getReader();
-  const teile: Uint8Array[] = [];
-  let gesamt = 0;
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    gesamt += value.byteLength;
-    if (gesamt > max) {
-      await reader.cancel().catch(() => {});
-      return 'zu-gross';
-    }
-    teile.push(value);
-  }
-
-  const koerper = new Uint8Array(gesamt);
-  let position = 0;
-  for (const teil of teile) {
-    koerper.set(teil, position);
-    position += teil.byteLength;
-  }
-  return koerper;
 }
 
 /** Fehler, die Payload bei unlesbaren oder beschädigten Dateien wirft. */

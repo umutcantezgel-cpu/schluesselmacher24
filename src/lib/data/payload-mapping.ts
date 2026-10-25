@@ -37,8 +37,15 @@ import type {
   ImageSlot,
   InfoHint,
   KeyKind,
+  LegalTexts,
+  MailLogEntry,
   MediaImage,
   PageContent,
+  PaymentInfo,
+  ProductSafetyInfo,
+  RecordConsents,
+  RichTextDocument,
+  ShipmentInfo,
   PricingGroup,
   PricingRule,
   SeoFields,
@@ -67,14 +74,32 @@ type BildGruppe = {
 } | null | undefined;
 
 /** Payload liefert Bildverweise je nach Tiefe als Zahl oder als Dokument. */
+const MEDIEN_PFAD = '/api/medien/file/';
+
+/**
+ * Pfad eines Fotos für next/image — immer relativ und nur unter
+ * /api/medien/file/. Payload liefert mit gesetzter `serverURL` (Produktion)
+ * absolute Adressen, das Ablage-Plugin hängt `?prefix=…` an. Next.js lehnt
+ * Suchparameter bei lokalen Bildern ohne Freigabe ab, und fremde Hosts sind
+ * nicht freigegeben. Ohne `prefix` findet die Auslieferung die Datei über
+ * ihren Namen (@payloadcms/plugin-cloud-storage, getFilePrefix).
+ */
+export function medienPfad(url: string | null | undefined): string | undefined {
+  if (!url) return undefined;
+  try {
+    const { pathname } = new URL(url, 'http://x');
+    return pathname.startsWith(MEDIEN_PFAD) ? pathname : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 function medienBild(bild: number | Medien | null | undefined, motiv: string): MediaImage | undefined {
   if (!bild || typeof bild === 'number') return undefined;
-  const url = bild.sizes?.mittel?.url ?? bild.url;
+  const url = medienPfad(bild.sizes?.mittel?.url ?? bild.url);
   if (!url) return undefined;
   return {
-    // Payload hängt teils einen Zeitstempel an — Next.js lehnt Suchparameter
-    // bei lokalen Bildern ohne Freigabe ab.
-    url: url.split('?')[0],
+    url,
     alt: bild.alt || motiv,
     width: bild.sizes?.mittel?.width ?? bild.width ?? undefined,
     height: bild.sizes?.mittel?.height ?? bild.height ?? undefined,
@@ -153,6 +178,41 @@ function verweisKennung(
   return kennung(wert);
 }
 
+type GpsrGruppe = {
+  herstellerName?: string | null;
+  herstellerAnschrift?: string | null;
+  herstellerEmail?: string | null;
+  herstellerWebsite?: string | null;
+  produktkennung?: string | null;
+  sicherheitshinweise?: string | null;
+} | null | undefined;
+
+/** Nur gefüllte Angaben; ohne Angaben `undefined`. */
+export function gpsrZuSeite(gruppe: GpsrGruppe): ProductSafetyInfo | undefined {
+  const felder: ProductSafetyInfo = {
+    manufacturerName: optText(gruppe?.herstellerName),
+    manufacturerAddress: optText(gruppe?.herstellerAnschrift),
+    manufacturerEmail: optText(gruppe?.herstellerEmail),
+    manufacturerWebsite: optText(gruppe?.herstellerWebsite),
+    productId: optText(gruppe?.produktkennung),
+    safetyNotes: optText(gruppe?.sicherheitshinweise),
+  };
+  const gesetzt = Object.entries(felder).filter(([, value]) => value !== undefined);
+  return gesetzt.length ? (Object.fromEntries(gesetzt) as ProductSafetyInfo) : undefined;
+}
+
+export function gpsrZuPayload(info: ProductSafetyInfo | undefined) {
+  if (!info) return undefined;
+  return {
+    herstellerName: info.manufacturerName,
+    herstellerAnschrift: info.manufacturerAddress,
+    herstellerEmail: info.manufacturerEmail,
+    herstellerWebsite: info.manufacturerWebsite,
+    produktkennung: info.productId,
+    sicherheitshinweise: info.safetyNotes,
+  };
+}
+
 /* ---------- Artikel (Schlüssel nach Code) -------------------------------- */
 
 export function codeLineZuSeite(doc: Produkte): CodeLine {
@@ -186,6 +246,8 @@ export function codeLineZuSeite(doc: Produkte): CodeLine {
   if (bulkPrices.length) line.bulkPrices = bulkPrices;
   if (doc.fotoHinweis) line.photoUploadHint = doc.fotoHinweis;
   if (doc.beispiel) line.example = true;
+  const gpsr = gpsrZuSeite(doc.gpsr);
+  if (gpsr) line.gpsr = gpsr;
   return line;
 }
 
@@ -217,6 +279,7 @@ export function codeLineZuPayload(line: CodeLine): RequiredDataFromCollectionSlu
     fotoUpload: line.photoUpload,
     fotoHinweis: line.photoUploadHint ?? null,
     produktbild: bildZuPayload(line.productImage),
+    gpsr: gpsrZuPayload(line.gpsr),
     seo: seoZuPayload(line.seo),
     _status: line.active ? 'published' : 'draft',
   };
@@ -253,6 +316,8 @@ export function standardartikelZuSeite(doc: Produkte): StandardArticle {
     example,
   };
   if (bulkPrices.length) article.bulkPrices = bulkPrices;
+  const gpsr = gpsrZuSeite(doc.gpsr);
+  if (gpsr) article.gpsr = gpsr;
   return article;
 }
 
@@ -277,6 +342,7 @@ export function standardartikelZuPayload(article: StandardArticle): RequiredData
     maxMenge: article.maxQty,
     versandklasse: article.shippingClass,
     produktbild: bildZuPayload(article.image),
+    gpsr: gpsrZuPayload(article.gpsr),
     seo: seoZuPayload(article.seo),
     _status: 'published',
   };
@@ -578,24 +644,63 @@ export function sperrtagZuPayload(day: BlockedDay): RequiredDataFromCollectionSl
 
 type EinstellungenDaten = Omit<Einstellungen, 'id' | 'updatedAt' | 'createdAt'>;
 
+const RECHTSTEXTE = [
+  ['agb', 'terms'],
+  ['widerruf', 'withdrawal'],
+  ['datenschutz', 'privacy'],
+  ['versandUndZahlung', 'shippingAndPayment'],
+] as const;
+
+type RechtstexteGruppe = Partial<Record<(typeof RECHTSTEXTE)[number][0], unknown>> | null | undefined;
+
+/** Ein Richtext gilt als gefüllt, sobald er sichtbaren Text enthält. */
+function richtextGefuellt(wert: unknown): wert is RichTextDocument {
+  const kinder = (wert as RichTextDocument | null | undefined)?.root?.children;
+  if (!Array.isArray(kinder)) return false;
+  // Ein geleerter Editor speichert einen leeren Absatz — das ist kein Eigentext.
+  return /"text":"\s*[^"\s]/.test(JSON.stringify(kinder));
+}
+
+export function rechtstexteZuSeite(gruppe: RechtstexteGruppe): LegalTexts | undefined {
+  const texte: LegalTexts = {};
+  for (const [feld, schluessel] of RECHTSTEXTE) {
+    const wert = gruppe?.[feld];
+    if (richtextGefuellt(wert)) texte[schluessel] = wert;
+  }
+  return Object.keys(texte).length ? texte : undefined;
+}
+
 export function einstellungenZuSeite(doc: Einstellungen): Settings {
   const f = doc.firma;
-  return {
-    company: {
-      legalName: f.rechtlicherName,
-      brandName: f.marke,
-      street: f.strasse,
-      postalCode: f.plz,
-      city: f.ort,
-      country: f.land,
-      phone: f.telefon,
-      email: f.email,
-      vatId: f.ustId ?? '',
-      registerCourt: f.registergericht ?? '',
-      registerNumber: f.registernummer ?? '',
-      managingDirector: f.geschaeftsfuehrung ?? '',
-      isPlaceholder: Boolean(f.platzhalter),
-    },
+  const company: Settings['company'] = {
+    legalName: f.rechtlicherName,
+    brandName: f.marke,
+    legalForm: f.rechtsform ?? 'einzelunternehmen',
+    owner: f.inhaber ?? '',
+    street: f.strasse,
+    postalCode: f.plz,
+    city: f.ort,
+    country: f.land,
+    phone: f.telefon,
+    email: f.email,
+    vatId: f.ustId ?? '',
+    registerCourt: f.registergericht ?? '',
+    registerNumber: f.registernummer ?? '',
+    managingDirector: f.geschaeftsfuehrung ?? '',
+    profession: f.berufsbezeichnung ?? '',
+    chamber: f.kammer ?? '',
+    isPlaceholder: Boolean(f.platzhalter),
+  };
+  const contentResponsible = optText(f.inhaltlichVerantwortlich);
+  if (contentResponsible) company.contentResponsible = contentResponsible;
+  const taxNumber = optText(f.steuernummer);
+  if (taxNumber) company.taxNumber = taxNumber;
+  const s = f.standort;
+  if (s?.bezeichnung || s?.strasse || s?.plz || s?.ort) {
+    company.location = { label: s.bezeichnung ?? '', street: s.strasse ?? '', postalCode: s.plz ?? '', city: s.ort ?? '' };
+  }
+  const settings: Settings = {
+    company,
     openingHours: (doc.oeffnungszeiten ?? []).map((o) => ({
       day: Number(o.tag),
       spans: (o.zeiten ?? []).map((z) => ({ from: z.von, to: z.bis })),
@@ -610,15 +715,19 @@ export function einstellungenZuSeite(doc: Einstellungen): Settings {
       slotsPerWindow: doc.buchung.termineJeFenster,
       windows: (doc.buchung.fenster ?? []).map((z) => ({ from: z.von, to: z.bis })),
     },
-    shipping: (doc.versand ?? []).map((v) => ({
-      id: v.kennung,
-      label: v.label,
-      description: v.beschreibung,
-      priceCents: zuCent(v.preis),
-      tracked: Boolean(v.verfolgt),
-      insured: Boolean(v.versichert),
-      productClasses: v.produktklassen,
-    })),
+    shipping: (doc.versand ?? []).map((v) => {
+      const option: Settings['shipping'][number] = {
+        id: v.kennung,
+        label: v.label,
+        description: v.beschreibung,
+        priceCents: zuCent(v.preis),
+        tracked: Boolean(v.verfolgt),
+        insured: Boolean(v.versichert),
+        productClasses: v.produktklassen,
+      };
+      if (v.lieferzeit) option.deliveryTime = v.lieferzeit;
+      return option;
+    }),
     retentionDays: {
       vehicleRegistration: doc.aufbewahrung.fahrzeugschein,
       keyPhotos: doc.aufbewahrung.schluesselfotos,
@@ -627,6 +736,10 @@ export function einstellungenZuSeite(doc: Einstellungen): Settings {
     },
     updatedAt: doc.updatedAt ?? new Date(0).toISOString(),
   };
+  if (doc.buchung.bundesland) settings.booking.federalState = doc.buchung.bundesland;
+  const legalTexts = rechtstexteZuSeite(doc.rechtstexte);
+  if (legalTexts) settings.legalTexts = legalTexts;
+  return settings;
 }
 
 export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
@@ -636,6 +749,8 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
       platzhalter: c.isPlaceholder,
       rechtlicherName: c.legalName,
       marke: c.brandName,
+      rechtsform: c.legalForm,
+      inhaber: c.owner,
       strasse: c.street,
       plz: c.postalCode,
       ort: c.city,
@@ -643,9 +758,16 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
       telefon: c.phone,
       email: c.email,
       ustId: c.vatId,
+      steuernummer: c.taxNumber,
       registergericht: c.registerCourt,
       registernummer: c.registerNumber,
       geschaeftsfuehrung: c.managingDirector,
+      berufsbezeichnung: c.profession,
+      kammer: c.chamber,
+      inhaltlichVerantwortlich: c.contentResponsible,
+      standort: c.location
+        ? { bezeichnung: c.location.label, strasse: c.location.street, plz: c.location.postalCode, ort: c.location.city }
+        : undefined,
     },
     oeffnungszeiten: s.openingHours.map((o) => ({
       tag: String(o.day) as '1',
@@ -659,6 +781,7 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
       anzahlungMin: zuEuro(s.booking.depositMinCents),
       anzahlungMax: zuEuro(s.booking.depositMaxCents),
       termineJeFenster: s.booking.slotsPerWindow,
+      bundesland: s.booking.federalState,
       fenster: s.booking.windows.map((z) => ({ von: z.from, bis: z.to })),
     },
     versand: s.shipping.map((v) => ({
@@ -668,6 +791,7 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
       preis: zuEuro(v.priceCents),
       verfolgt: v.tracked,
       versichert: v.insured,
+      lieferzeit: v.deliveryTime,
       produktklassen: v.productClasses,
     })),
     aufbewahrung: {
@@ -676,13 +800,21 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
       grundrisse: s.retentionDays.floorPlans,
       projektunterlagen: s.retentionDays.projectDocuments,
     },
+    rechtstexte: s.legalTexts
+      ? {
+          agb: s.legalTexts.terms,
+          widerruf: s.legalTexts.withdrawal,
+          datenschutz: s.legalTexts.privacy,
+          versandUndZahlung: s.legalTexts.shippingAndPayment,
+        } as EinstellungenDaten['rechtstexte']
+      : undefined,
   };
 }
 
 type ZylinderDaten = Omit<Zylinderkatalog, 'id' | 'updatedAt' | 'createdAt'>;
 
 export function zylinderkatalogZuSeite(doc: Zylinderkatalog): CylinderCatalog {
-  return {
+  const katalog: CylinderCatalog = {
     keyPriceCents: zuCent(doc.schluesselPreis),
     includedKeys: doc.inklusiveSchluessel,
     maxKeys: doc.maxSchluessel,
@@ -728,6 +860,9 @@ export function zylinderkatalogZuSeite(doc: Zylinderkatalog): CylinderCatalog {
       active: e.aktiv !== false,
     })),
   };
+  const gpsr = gpsrZuSeite(doc.gpsr);
+  if (gpsr) katalog.gpsr = gpsr;
+  return katalog;
 }
 
 export function zylinderkatalogZuPayload(c: CylinderCatalog): ZylinderDaten {
@@ -773,10 +908,130 @@ export function zylinderkatalogZuPayload(c: CylinderCatalog): ZylinderDaten {
       einheit: e.unit,
       info: infoZuPayload(e.info),
     })),
+    gpsr: gpsrZuPayload(c.gpsr),
   };
 }
 
 /* ---------- Vorgänge ----------------------------------------------------- */
+
+type VorgangDaten = RequiredDataFromCollectionSlug<'vorgaenge'>;
+
+/**
+ * Alles, was sich an einem bestehenden Vorgang ändern lässt, ohne das ganze
+ * Dokument zurückzuschreiben (`vorgangAendern` in `./index.ts`).
+ */
+export type VorgangsAenderung = Partial<
+  Pick<
+    BusinessRecord,
+    | 'status'
+    | 'appointment'
+    | 'payment'
+    | 'timeline'
+    | 'internalNotes'
+    | 'mailLog'
+    | 'shipment'
+    | 'consents'
+    | 'accessTokenHash'
+  >
+>;
+
+const eintragZuSeite = (n: { am: string; von: 'kunde' | 'team' | 'system'; text: string }) =>
+  ({ at: n.am, actor: n.von, message: n.text });
+
+const eintragZuPayload = (n: BusinessRecord['timeline'][number]) => ({ am: n.at, von: n.actor, text: n.message });
+
+function zahlungZuSeite(zahlung: Vorgaenge['zahlung']): PaymentInfo | undefined {
+  if (!zahlung?.umfang) return undefined;
+  const payment: PaymentInfo = {
+    scope: zahlung.umfang,
+    amountCents: zahlung.betragCent ?? 0,
+    status: zahlung.status ?? 'offen',
+  };
+  if (zahlung.anbieterRef) payment.providerRef = zahlung.anbieterRef;
+  if (zahlung.checkoutSitzung) payment.checkoutSessionId = zahlung.checkoutSitzung;
+  if (zahlung.erstattetCent !== null && zahlung.erstattetCent !== undefined) {
+    payment.refundedCents = Number(zahlung.erstattetCent);
+  }
+  if (zahlung.bezahltAm) payment.paidAt = zahlung.bezahltAm;
+  if (zahlung.ablaufAm) payment.expiresAt = zahlung.ablaufAm;
+  return payment;
+}
+
+/**
+ * Immer die ganze Gruppe. Fehlende Angaben bleiben `undefined` — Payload
+ * behält dann den gespeicherten Wert, statt ihn zu leeren.
+ */
+function zahlungZuPayload(payment: PaymentInfo): NonNullable<VorgangDaten['zahlung']> {
+  return {
+    umfang: payment.scope,
+    betragCent: payment.amountCents,
+    status: payment.status,
+    anbieterRef: payment.providerRef,
+    checkoutSitzung: payment.checkoutSessionId,
+    erstattetCent: payment.refundedCents,
+    bezahltAm: payment.paidAt,
+    ablaufAm: payment.expiresAt,
+  };
+}
+
+const mailZuPayload = (m: MailLogEntry) => ({
+  art: m.kind,
+  an: m.to,
+  am: m.at,
+  ergebnis: m.result,
+  anbieterId: m.providerId,
+  fehler: m.error,
+});
+
+function mailsZuSeite(mails: Vorgaenge['mails']): MailLogEntry[] | undefined {
+  if (!mails?.length) return undefined;
+  return mails.map((m) => {
+    const eintrag: MailLogEntry = { kind: m.art, to: m.an, at: m.am, result: m.ergebnis };
+    if (m.anbieterId) eintrag.providerId = m.anbieterId;
+    if (m.fehler) eintrag.error = m.fehler;
+    return eintrag;
+  });
+}
+
+function versandZuSeite(versand: Vorgaenge['versand']): ShipmentInfo | undefined {
+  if (!versand?.dienstleister && !versand?.sendungsnummer) return undefined;
+  const shipment: ShipmentInfo = {};
+  if (versand.dienstleister) shipment.carrier = versand.dienstleister;
+  if (versand.sendungsnummer) shipment.trackingNumber = versand.sendungsnummer;
+  return shipment;
+}
+
+const versandZuPayload = (shipment: ShipmentInfo) => ({
+  dienstleister: shipment.carrier,
+  sendungsnummer: shipment.trackingNumber,
+});
+
+const ZUSTIMMUNGEN = [
+  ['agb', 'terms'],
+  ['widerrufsbelehrung', 'withdrawalNotice'],
+  ['vorzeitigerBeginn', 'earlyStart'],
+  ['sonderanfertigung', 'customMade'],
+  ['anzahlung', 'deposit'],
+  ['berechtigung', 'authorization'],
+] as const;
+
+function zustimmungenZuSeite(z: Vorgaenge['zustimmungen']): RecordConsents | undefined {
+  if (!z) return undefined;
+  const consents: RecordConsents = {};
+  for (const [feld, schluessel] of ZUSTIMMUNGEN) {
+    const wert = z[feld];
+    if (typeof wert === 'boolean') consents[schluessel] = wert;
+  }
+  if (z.am) consents.at = z.am;
+  if (z.fassung) consents.version = z.fassung;
+  return Object.keys(consents).length ? consents : undefined;
+}
+
+function zustimmungenZuPayload(consents: RecordConsents): NonNullable<VorgangDaten['zustimmungen']> {
+  const daten: NonNullable<VorgangDaten['zustimmungen']> = { am: consents.at, fassung: consents.version };
+  for (const [feld, schluessel] of ZUSTIMMUNGEN) daten[feld] = consents[schluessel];
+  return daten;
+}
 
 export function vorgangZuSeite(doc: Vorgaenge): BusinessRecord {
   const k = doc.kontakt;
@@ -802,8 +1057,8 @@ export function vorgangZuSeite(doc: Vorgaenge): BusinessRecord {
       rows: (s.zeilen ?? []).map((z) => ({ label: z.label ?? '', value: z.wert ?? '' })),
     })),
     uploads: (doc.uploads as unknown as BusinessRecord['uploads'] | null) ?? [],
-    internalNotes: (doc.notizen ?? []).map((n) => ({ at: n.am, actor: n.von, message: n.text })),
-    timeline: (doc.verlauf ?? []).map((n) => ({ at: n.am, actor: n.von, message: n.text })),
+    internalNotes: (doc.notizen ?? []).map(eintragZuSeite),
+    timeline: (doc.verlauf ?? []).map(eintragZuSeite),
   };
   const kontaktOptional = {
     salutation: optText(k.anrede),
@@ -824,15 +1079,8 @@ export function vorgangZuSeite(doc: Vorgaenge): BusinessRecord {
       location: doc.termin.ort ?? 'werkstatt',
     };
   }
-  if (doc.zahlung?.umfang) {
-    record.payment = {
-      scope: doc.zahlung.umfang,
-      amountCents: doc.zahlung.betragCent ?? 0,
-      status: doc.zahlung.status ?? 'offen',
-    };
-    if (doc.zahlung.anbieterRef) record.payment.providerRef = doc.zahlung.anbieterRef;
-    if (doc.zahlung.bezahltAm) record.payment.paidAt = doc.zahlung.bezahltAm;
-  }
+  const payment = zahlungZuSeite(doc.zahlung);
+  if (payment) record.payment = payment;
   if (doc.zugriffsHash) record.accessTokenHash = doc.zugriffsHash;
   if (doc.positionen?.length) {
     record.lines = doc.positionen.map((p) => ({
@@ -855,10 +1103,21 @@ export function vorgangZuSeite(doc: Vorgaenge): BusinessRecord {
       shippingLabel: doc.summen.versandart ?? '',
     };
   }
+  const mailLog = mailsZuSeite(doc.mails);
+  if (mailLog) record.mailLog = mailLog;
+  const shipment = versandZuSeite(doc.versand);
+  if (shipment) record.shipment = shipment;
+  const consents = zustimmungenZuSeite(doc.zustimmungen);
+  if (consents) record.consents = consents;
   return record;
 }
 
-export function vorgangZuPayload(record: BusinessRecord): RequiredDataFromCollectionSlug<'vorgaenge'> {
+/**
+ * Ganzes Dokument für Anlage und Seed. Fehlende Angaben bleiben `undefined`
+ * (nie `?? []`): Beim Zurückschreiben behält Payload so gespeicherte Werte —
+ * etwa das Mailprotokoll oder die Dateien —, statt sie zu leeren.
+ */
+export function vorgangZuPayload(record: BusinessRecord): VorgangDaten {
   const c = record.contact;
   return {
     nummer: record.reference,
@@ -890,22 +1149,14 @@ export function vorgangZuPayload(record: BusinessRecord): RequiredDataFromCollec
           ort: record.appointment.location,
         }
       : undefined,
-    zahlung: record.payment
-      ? {
-          umfang: record.payment.scope,
-          betragCent: record.payment.amountCents,
-          status: record.payment.status,
-          anbieterRef: record.payment.providerRef,
-          bezahltAm: record.payment.paidAt,
-        }
-      : undefined,
-    notizen: record.internalNotes.map((n) => ({ am: n.at, von: n.actor, text: n.message })),
-    verlauf: record.timeline.map((n) => ({ am: n.at, von: n.actor, text: n.message })),
+    zahlung: record.payment ? zahlungZuPayload(record.payment) : undefined,
+    notizen: record.internalNotes.map(eintragZuPayload),
+    verlauf: record.timeline.map(eintragZuPayload),
     daten: record.payload,
     angebot: (record.quote ?? null) as unknown as Record<string, unknown> | null,
     uploads: record.uploads as unknown as Record<string, unknown>[],
     zugriffsHash: record.accessTokenHash,
-    positionen: (record.lines ?? []).map((l) => ({
+    positionen: record.lines?.map((l) => ({
       art: l.kind,
       kennung: l.productId,
       bezeichnung: l.label,
@@ -924,5 +1175,34 @@ export function vorgangZuPayload(record: BusinessRecord): RequiredDataFromCollec
           versandart: record.totals.shippingLabel,
         }
       : undefined,
+    mails: record.mailLog?.map(mailZuPayload),
+    versand: record.shipment ? versandZuPayload(record.shipment) : undefined,
+    zustimmungen: record.consents ? zustimmungenZuPayload(record.consents) : undefined,
   };
+}
+
+/**
+ * Nur die geänderten Gruppen — alles andere fehlt in den Daten und bleibt in
+ * der Datenbank, wie es ist. Die Zahlung wird immer als ganze Gruppe
+ * geschrieben.
+ */
+export function vorgangAenderungZuPayload(aenderung: VorgangsAenderung): Partial<VorgangDaten> {
+  const daten: Partial<VorgangDaten> = {};
+  if (aenderung.status !== undefined) daten.status = aenderung.status;
+  if (aenderung.appointment !== undefined) {
+    daten.termin = {
+      datum: aenderung.appointment.date,
+      uhrzeit: aenderung.appointment.time,
+      dauerMinuten: aenderung.appointment.durationMinutes,
+      ort: aenderung.appointment.location,
+    };
+  }
+  if (aenderung.payment !== undefined) daten.zahlung = zahlungZuPayload(aenderung.payment);
+  if (aenderung.timeline !== undefined) daten.verlauf = aenderung.timeline.map(eintragZuPayload);
+  if (aenderung.internalNotes !== undefined) daten.notizen = aenderung.internalNotes.map(eintragZuPayload);
+  if (aenderung.mailLog !== undefined) daten.mails = aenderung.mailLog.map(mailZuPayload);
+  if (aenderung.shipment !== undefined) daten.versand = versandZuPayload(aenderung.shipment);
+  if (aenderung.consents !== undefined) daten.zustimmungen = zustimmungenZuPayload(aenderung.consents);
+  if (aenderung.accessTokenHash !== undefined) daten.zugriffsHash = aenderung.accessTokenHash;
+  return daten;
 }

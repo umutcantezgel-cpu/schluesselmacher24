@@ -14,6 +14,7 @@ import type {
 import { measureOptions } from '@/lib/cylinder-rules';
 import { priceCylinderOrder } from '@/lib/pricing';
 import { formatCents, formatMillimeter } from '@/lib/format';
+import { PreisHinweis } from '@/components/recht/preis-hinweis';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { useCartStore } from '@/lib/store/cart';
 import { FlowShell } from '@/components/flow/flow-shell';
@@ -409,7 +410,8 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
               </dd>
             </div>
           </dl>
-          <p className="mt-2 text-caption leading-snug text-foreground-muted">
+          <PreisHinweis className="mt-2" />
+          <p className="mt-1 text-caption leading-snug text-foreground-muted">
             Die Versandart wählen Sie im Warenkorb. Bis dahin ändert sich die Summe mit jeder
             Anpassung.
           </p>

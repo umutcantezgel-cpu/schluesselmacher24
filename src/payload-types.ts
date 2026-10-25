@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     vorgaenge: Vorgaenge;
     kundendateien: Kundendateien;
+    widerrufe: Widerrufe;
     produkte: Produkte;
     fahrzeugmarken: Fahrzeugmarken;
     'autoschluessel-leistungen': AutoschluesselLeistungen;
@@ -82,6 +83,7 @@ export interface Config {
     nachweise: Nachweise;
     medien: Medien;
     benutzer: Benutzer;
+    'interne-dateien': InterneDateien;
     'webhook-ereignisse': WebhookEreignisse;
     'payload-kv': PayloadKv;
     'payload-jobs': PayloadJob;
@@ -93,6 +95,7 @@ export interface Config {
   collectionsSelect: {
     vorgaenge: VorgaengeSelect<false> | VorgaengeSelect<true>;
     kundendateien: KundendateienSelect<false> | KundendateienSelect<true>;
+    widerrufe: WiderrufeSelect<false> | WiderrufeSelect<true>;
     produkte: ProdukteSelect<false> | ProdukteSelect<true>;
     fahrzeugmarken: FahrzeugmarkenSelect<false> | FahrzeugmarkenSelect<true>;
     'autoschluessel-leistungen': AutoschluesselLeistungenSelect<false> | AutoschluesselLeistungenSelect<true>;
@@ -106,6 +109,7 @@ export interface Config {
     nachweise: NachweiseSelect<false> | NachweiseSelect<true>;
     medien: MedienSelect<false> | MedienSelect<true>;
     benutzer: BenutzerSelect<false> | BenutzerSelect<true>;
+    'interne-dateien': InterneDateienSelect<false> | InterneDateienSelect<true>;
     'webhook-ereignisse': WebhookEreignisseSelect<false> | WebhookEreignisseSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
@@ -192,6 +196,14 @@ export interface Vorgaenge {
     | 'versendet'
     | 'abgeschlossen'
     | 'storniert';
+  /**
+   * Mail geht bei „Wartet auf Kunde“, „Terminiert“, „Versendet“ und „Storniert“. Haken entfernen, um diesen einen Wechsel still zu speichern.
+   */
+  kundeInformieren?: boolean | null;
+  /**
+   * Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen und danach geleert.
+   */
+  nachrichtAnKunde?: string | null;
   zusammenfassung?:
     | {
         titel?: string | null;
@@ -211,6 +223,19 @@ export interface Vorgaenge {
     uhrzeit?: string | null;
     dauerMinuten?: number | null;
     ort?: ('werkstatt' | 'vor-ort') | null;
+  };
+  /**
+   * So beim Absenden bestätigt. Nicht änderbar.
+   */
+  zustimmungen?: {
+    agb?: boolean | null;
+    widerrufsbelehrung?: boolean | null;
+    vorzeitigerBeginn?: boolean | null;
+    sonderanfertigung?: boolean | null;
+    anzahlung?: boolean | null;
+    berechtigung?: boolean | null;
+    am?: string | null;
+    fassung?: string | null;
   };
   positionen?:
     | {
@@ -232,6 +257,13 @@ export interface Vorgaenge {
     steuerCent?: number | null;
     versandart?: string | null;
   };
+  /**
+   * Nach dem Versand eintragen — die Sendungsnummer erscheint in der Mail an den Kunden.
+   */
+  versand?: {
+    dienstleister?: ('dhl' | 'dpd' | 'deutsche-post' | 'hermes' | 'gls' | 'ups' | 'sonstige') | null;
+    sendungsnummer?: string | null;
+  };
   kontakt: {
     anrede?: string | null;
     vorname: string;
@@ -247,12 +279,42 @@ export interface Vorgaenge {
   zahlung?: {
     umfang?: ('anzahlung' | 'gesamt') | null;
     betragCent?: number | null;
+    /**
+     * Von Hand auf „Bezahlt“: Datum und Notiz setzen sich, der Kunde erhält eine Mail.
+     */
     status?: ('offen' | 'bezahlt' | 'fehlgeschlagen' | 'erstattet') | null;
     bezahltAm?: string | null;
+    /**
+     * Kennung der Zahlung (pi_…), gesetzt beim Zahlungseingang.
+     */
     anbieterRef?: string | null;
     checkoutSitzung?: string | null;
     erstattetCent?: number | null;
+    ablaufAm?: string | null;
   };
+  /**
+   * Automatisch versendete E-Mails zu diesem Vorgang.
+   */
+  mails?:
+    | {
+        art:
+          | 'eingang-kunde'
+          | 'eingang-team'
+          | 'vertrag'
+          | 'zahlung-erhalten'
+          | 'zahlung-nicht-abgeschlossen'
+          | 'erstattung'
+          | 'status'
+          | 'widerruf'
+          | 'sonstige';
+        an: string;
+        am: string;
+        ergebnis: 'gesendet' | 'fehlgeschlagen' | 'nicht-eingerichtet';
+        anbieterId?: string | null;
+        fehler?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * Nur für das Team sichtbar.
    */
@@ -264,6 +326,9 @@ export interface Vorgaenge {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Für den Kunden in der Statusabfrage sichtbar.
+   */
   verlauf?:
     | {
         am: string;
@@ -315,6 +380,8 @@ export interface Kundendateien {
   vorgang?: (number | null) | Vorgaenge;
   aufbewahrenBis?: string | null;
   uploadSchluesselHash?: string | null;
+  prefix?: string | null;
+  _objectKey?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -326,6 +393,35 @@ export interface Kundendateien {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * Über die Seite eingegangene Widerrufserklärungen. Neueste oben.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "widerrufe".
+ */
+export interface Widerrufe {
+  id: number;
+  name?: string | null;
+  email?: string | null;
+  vorgangsnummer?: string | null;
+  eingegangenAm: string;
+  erklaerung?: string | null;
+  /**
+   * Nur sicher zugeordnete Vorgänge — sonst von Hand prüfen.
+   */
+  vorgang?: (number | null) | Vorgaenge;
+  zuordnung?: ('zugeordnet' | 'zu-pruefen') | null;
+  bearbeitet?: boolean | null;
+  notiz?: string | null;
+  bestaetigung?: {
+    ergebnis?: ('gesendet' | 'fehlgeschlagen' | 'nicht-eingerichtet') | null;
+    am?: string | null;
+    anbieterId?: string | null;
+    fehler?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * Neue Artikel als Entwurf anlegen und erst veröffentlichen, wenn alles stimmt. Nicht mehr angebotene Artikel in den Papierkorb legen — sie lassen sich wiederherstellen.
@@ -420,6 +516,20 @@ export interface Produkte {
   };
   weitereBilder?: (number | Medien)[] | null;
   /**
+   * Pflichtangaben im Online-Handel: Hersteller (Name, Postanschrift, E-Mail oder Website) und eine Kennung (Typ, Charge oder Artikelnummer). Sicherheitshinweise nur, wenn nötig.
+   */
+  gpsr?: {
+    herstellerName?: string | null;
+    herstellerAnschrift?: string | null;
+    herstellerEmail?: string | null;
+    herstellerWebsite?: string | null;
+    /**
+     * Typ-, Chargen- oder Artikelnummer.
+     */
+    produktkennung?: string | null;
+    sicherheitshinweise?: string | null;
+  };
+  /**
    * Titel und Beschreibung, wie sie bei Google erscheinen.
    */
   seo?: {
@@ -452,6 +562,8 @@ export interface Produkte {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Fotos höchstens 4 MB groß hochladen (JPEG, PNG, WebP oder AVIF), am besten mit 1600–2560 Pixel Breite.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "medien".
  */
@@ -461,6 +573,8 @@ export interface Medien {
    * Was ist auf dem Bild zu sehen? Wichtig für Barrierefreiheit und Suchmaschinen.
    */
   alt: string;
+  prefix?: string | null;
+  _objectKey?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -968,7 +1082,7 @@ export interface Nachweise {
     /**
      * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
      */
-    bild?: (number | null) | Medien;
+    bild?: (number | null) | InterneDateien;
     hinweis?: string | null;
   };
   /**
@@ -978,6 +1092,29 @@ export interface Nachweise {
   updatedAt: string;
   createdAt: string;
   deletedAt?: string | null;
+}
+/**
+ * Nur für das Team sichtbar, z. B. Fotos von Zertifikaten und Versicherungsnachweisen.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "interne-dateien".
+ */
+export interface InterneDateien {
+  id: number;
+  beschreibung?: string | null;
+  prefix?: string | null;
+  _objectKey?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1146,6 +1283,10 @@ export interface PayloadLockedDocument {
         value: number | Kundendateien;
       } | null)
     | ({
+        relationTo: 'widerrufe';
+        value: number | Widerrufe;
+      } | null)
+    | ({
         relationTo: 'produkte';
         value: number | Produkte;
       } | null)
@@ -1196,6 +1337,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'benutzer';
         value: number | Benutzer;
+      } | null)
+    | ({
+        relationTo: 'interne-dateien';
+        value: number | InterneDateien;
       } | null)
     | ({
         relationTo: 'webhook-ereignisse';
@@ -1253,6 +1398,8 @@ export interface VorgaengeSelect<T extends boolean = true> {
   bereich?: T;
   prozess?: T;
   status?: T;
+  kundeInformieren?: T;
+  nachrichtAnKunde?: T;
   zusammenfassung?:
     | T
     | {
@@ -1275,6 +1422,18 @@ export interface VorgaengeSelect<T extends boolean = true> {
         dauerMinuten?: T;
         ort?: T;
       };
+  zustimmungen?:
+    | T
+    | {
+        agb?: T;
+        widerrufsbelehrung?: T;
+        vorzeitigerBeginn?: T;
+        sonderanfertigung?: T;
+        anzahlung?: T;
+        berechtigung?: T;
+        am?: T;
+        fassung?: T;
+      };
   positionen?:
     | T
     | {
@@ -1296,6 +1455,12 @@ export interface VorgaengeSelect<T extends boolean = true> {
         gesamtCent?: T;
         steuerCent?: T;
         versandart?: T;
+      };
+  versand?:
+    | T
+    | {
+        dienstleister?: T;
+        sendungsnummer?: T;
       };
   kontakt?:
     | T
@@ -1321,6 +1486,18 @@ export interface VorgaengeSelect<T extends boolean = true> {
         anbieterRef?: T;
         checkoutSitzung?: T;
         erstattetCent?: T;
+        ablaufAm?: T;
+      };
+  mails?:
+    | T
+    | {
+        art?: T;
+        an?: T;
+        am?: T;
+        ergebnis?: T;
+        anbieterId?: T;
+        fehler?: T;
+        id?: T;
       };
   notizen?:
     | T
@@ -1354,6 +1531,8 @@ export interface KundendateienSelect<T extends boolean = true> {
   vorgang?: T;
   aufbewahrenBis?: T;
   uploadSchluesselHash?: T;
+  prefix?: T;
+  _objectKey?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -1365,6 +1544,31 @@ export interface KundendateienSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "widerrufe_select".
+ */
+export interface WiderrufeSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  vorgangsnummer?: T;
+  eingegangenAm?: T;
+  erklaerung?: T;
+  vorgang?: T;
+  zuordnung?: T;
+  bearbeitet?: T;
+  notiz?: T;
+  bestaetigung?:
+    | T
+    | {
+        ergebnis?: T;
+        am?: T;
+        anbieterId?: T;
+        fehler?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1423,6 +1627,16 @@ export interface ProdukteSelect<T extends boolean = true> {
         hinweis?: T;
       };
   weitereBilder?: T;
+  gpsr?:
+    | T
+    | {
+        herstellerName?: T;
+        herstellerAnschrift?: T;
+        herstellerEmail?: T;
+        herstellerWebsite?: T;
+        produktkennung?: T;
+        sicherheitshinweise?: T;
+      };
   seo?:
     | T
     | {
@@ -1797,6 +2011,8 @@ export interface NachweiseSelect<T extends boolean = true> {
  */
 export interface MedienSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
+  _objectKey?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -1867,6 +2083,26 @@ export interface BenutzerSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "interne-dateien_select".
+ */
+export interface InterneDateienSelect<T extends boolean = true> {
+  beschreibung?: T;
+  prefix?: T;
+  _objectKey?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2090,6 +2326,20 @@ export interface Zylinderkatalog {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Pflichtangaben im Online-Handel: Hersteller (Name, Postanschrift, E-Mail oder Website) und eine Kennung (Typ, Charge oder Artikelnummer). Sicherheitshinweise nur, wenn nötig.
+   */
+  gpsr?: {
+    herstellerName?: string | null;
+    herstellerAnschrift?: string | null;
+    herstellerEmail?: string | null;
+    herstellerWebsite?: string | null;
+    /**
+     * Typ-, Chargen- oder Artikelnummer.
+     */
+    produktkennung?: string | null;
+    sicherheitshinweise?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2157,6 +2407,11 @@ export interface Einstellungen {
     platzhalter?: boolean | null;
     rechtlicherName: string;
     marke: string;
+    rechtsform?: ('einzelunternehmen' | 'eingetragener-kaufmann' | 'gmbh' | 'ug') | null;
+    /**
+     * Vor- und Nachname, z. B. für das Impressum.
+     */
+    inhaber?: string | null;
     strasse: string;
     plz: string;
     ort: string;
@@ -2164,9 +2419,34 @@ export interface Einstellungen {
     telefon: string;
     email: string;
     ustId?: string | null;
+    /**
+     * intern, wird nicht veröffentlicht
+     */
+    steuernummer?: string | null;
     registergericht?: string | null;
     registernummer?: string | null;
     geschaeftsfuehrung?: string | null;
+    /**
+     * z. B. „Schlüsseldienst und Sicherheitstechnik“.
+     */
+    berufsbezeichnung?: string | null;
+    /**
+     * Name und Anschrift, z. B. der Handwerkskammer.
+     */
+    kammer?: string | null;
+    /**
+     * Optional. Name und Anschrift.
+     */
+    inhaltlichVerantwortlich?: string | null;
+    /**
+     * Nur ausfüllen, wenn Werkstatt oder Abholung nicht am Firmensitz liegen.
+     */
+    standort?: {
+      bezeichnung?: string | null;
+      strasse?: string | null;
+      plz?: string | null;
+      ort?: string | null;
+    };
   };
   oeffnungszeiten?:
     | {
@@ -2192,6 +2472,12 @@ export interface Einstellungen {
     anzahlungMin: number;
     anzahlungMax: number;
     termineJeFenster: number;
+    /**
+     * An gesetzlichen Feiertagen dieses Landes gibt es keine Termine.
+     */
+    bundesland?:
+      | ('BW' | 'BY' | 'BE' | 'BB' | 'HB' | 'HH' | 'HE' | 'MV' | 'NI' | 'NW' | 'RP' | 'SL' | 'SN' | 'ST' | 'SH' | 'TH')
+      | null;
     fenster?:
       | {
           von: string;
@@ -2208,6 +2494,10 @@ export interface Einstellungen {
         preis: number;
         verfolgt?: boolean | null;
         versichert?: boolean | null;
+        /**
+         * z. B. „2–4 Werktage nach Fertigung“.
+         */
+        lieferzeit?: string | null;
         produktklassen: ('code-schluessel' | 'zylinder' | 'zubehoer')[];
         id?: string | null;
       }[]
@@ -2217,6 +2507,80 @@ export interface Einstellungen {
     schluesselfotos: number;
     grundrisse: number;
     projektunterlagen: number;
+  };
+  rechtstexte?: {
+    /**
+     * Wenn gefüllt, ersetzt dieser Text den eingebauten Entwurf (z. B. Text vom Anwalt oder Rechtstexte-Dienst einfügen).
+     */
+    agb?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Wenn gefüllt, ersetzt dieser Text den eingebauten Entwurf (z. B. Text vom Anwalt oder Rechtstexte-Dienst einfügen).
+     */
+    widerruf?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Wenn gefüllt, ersetzt dieser Text den eingebauten Entwurf (z. B. Text vom Anwalt oder Rechtstexte-Dienst einfügen).
+     */
+    datenschutz?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Wenn gefüllt, ersetzt dieser Text den eingebauten Entwurf (z. B. Text vom Anwalt oder Rechtstexte-Dienst einfügen).
+     */
+    versandUndZahlung?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -2342,6 +2706,16 @@ export interface ZylinderkatalogSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  gpsr?:
+    | T
+    | {
+        herstellerName?: T;
+        herstellerAnschrift?: T;
+        herstellerEmail?: T;
+        herstellerWebsite?: T;
+        produktkennung?: T;
+        sicherheitshinweise?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2409,6 +2783,8 @@ export interface EinstellungenSelect<T extends boolean = true> {
         platzhalter?: T;
         rechtlicherName?: T;
         marke?: T;
+        rechtsform?: T;
+        inhaber?: T;
         strasse?: T;
         plz?: T;
         ort?: T;
@@ -2416,9 +2792,21 @@ export interface EinstellungenSelect<T extends boolean = true> {
         telefon?: T;
         email?: T;
         ustId?: T;
+        steuernummer?: T;
         registergericht?: T;
         registernummer?: T;
         geschaeftsfuehrung?: T;
+        berufsbezeichnung?: T;
+        kammer?: T;
+        inhaltlichVerantwortlich?: T;
+        standort?:
+          | T
+          | {
+              bezeichnung?: T;
+              strasse?: T;
+              plz?: T;
+              ort?: T;
+            };
       };
   oeffnungszeiten?:
     | T
@@ -2443,6 +2831,7 @@ export interface EinstellungenSelect<T extends boolean = true> {
         anzahlungMin?: T;
         anzahlungMax?: T;
         termineJeFenster?: T;
+        bundesland?: T;
         fenster?:
           | T
           | {
@@ -2460,6 +2849,7 @@ export interface EinstellungenSelect<T extends boolean = true> {
         preis?: T;
         verfolgt?: T;
         versichert?: T;
+        lieferzeit?: T;
         produktklassen?: T;
         id?: T;
       };
@@ -2470,6 +2860,14 @@ export interface EinstellungenSelect<T extends boolean = true> {
         schluesselfotos?: T;
         grundrisse?: T;
         projektunterlagen?: T;
+      };
+  rechtstexte?:
+    | T
+    | {
+        agb?: T;
+        widerruf?: T;
+        datenschutz?: T;
+        versandUndZahlung?: T;
       };
   updatedAt?: T;
   createdAt?: T;

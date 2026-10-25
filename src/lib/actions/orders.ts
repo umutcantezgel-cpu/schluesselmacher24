@@ -7,12 +7,16 @@ import { codePasst } from '@/lib/code-pattern';
 import { validateCylinderDraft } from '@/lib/cylinder-rules';
 import { zylinderDetails } from '@/lib/cylinder-summary';
 import { formatCents } from '@/lib/format';
+import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
+import { LIEFERLAND, istSonderanfertigung } from '@/lib/kasse';
 import { availableShipping, cartTotals, priceCylinderOrder, unitPriceForCodeLine } from '@/lib/pricing';
+import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
 import { createRecord } from '@/lib/server/create-record';
 import { KUNDENDATEI_ID_MUSTER, UPLOAD_TOKEN_MUSTER } from '@/lib/server/datei-pruefung';
+import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { contactSchema } from '@/lib/server/record-schema';
-import type { Cart, CartItem, ContactDetails, OrderLine, OrderTotals, SummarySection } from '@/lib/types';
+import type { Cart, CartItem, ContactDetails, OrderLine, OrderTotals, RecordConsents, SummarySection } from '@/lib/types';
 
 export interface CheckoutInput {
   items: CartItem[];
@@ -20,16 +24,20 @@ export interface CheckoutInput {
   contact: ContactDetails;
   /** Abweichende Lieferanschrift, falls angegeben. */
   deliveryNote?: string;
+  /** AGB gelesen und Widerrufsbelehrung zur Kenntnis genommen. */
   acceptedTerms: boolean;
+  /** Nur Pflicht, wenn der Warenkorb Anfertigungen nach Kundenangaben enthält. */
   acceptedCustomMade: boolean;
   /**
    * Der Gesamtbetrag, den der Kunde beim Absenden gesehen hat. Weicht der
    * serverseitig berechnete Betrag ab, wird nicht bestellt (§ 312j BGB).
    */
   expectedTotalCents: number;
+  /** Bot-Schutz: Honigtopf und signierter Startzeitpunkt. */
+  schutz?: FormularSchutz;
 }
 
-export interface CheckoutResult {
+export interface CheckoutResult extends SchutzAntwort {
   ok: boolean;
   reference?: string;
   recordId?: string;
@@ -100,13 +108,22 @@ const cartItemSchema = z.discriminatedUnion('kind', [
   }),
 ]);
 
+/** Lieferung nur nach Deutschland: Land fest, Postleitzahl fünfstellig, Anschrift vollständig. */
+const lieferanschriftSchema = contactSchema.extend({
+  street: z.string().trim().min(1).max(200),
+  postalCode: z.string().trim().regex(/^\d{5}$/),
+  city: z.string().trim().min(1).max(120),
+  country: z.literal(LIEFERLAND),
+});
+
 const checkoutSchema = z.object({
   items: z.array(cartItemSchema).min(1).max(50),
   shippingOptionId: z.string().max(80),
-  contact: contactSchema,
+  contact: lieferanschriftSchema,
   deliveryNote: z.string().max(2000).optional(),
   acceptedTerms: z.literal(true),
-  acceptedCustomMade: z.literal(true),
+  // Ob die Bestätigung nötig ist, ergibt sich erst aus den geprüften Positionen.
+  acceptedCustomMade: z.boolean(),
   expectedTotalCents: z.number().int().min(0),
 });
 
@@ -129,11 +146,26 @@ const ZYLINDER_KENNUNG = 'zylinder-schliessung';
 export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult> {
   if (!(await allowRequest(LIMITS.bestellung))) return fail(RATE_LIMIT_MESSAGE);
 
-  if (!input?.acceptedTerms || !input?.acceptedCustomMade) {
+  // Bot-Schutz: Beim Honigtopf still „angenommen“, aber nichts gespeichert
+  // und nichts versendet. Sonst ein sichtbarer, wiederholbarer Fehler.
+  const befund = formularSchutzPruefen(input?.schutz);
+  if (befund === 'honigtopf') {
+    botVerdachtMelden('submitOrder', befund);
+    return { ok: true, reference: scheinNummer('bestellung'), notices: [] };
+  }
+  if (befund !== 'ok') {
+    botVerdachtMelden('submitOrder', befund);
+    return { ...fail(SCHUTZ_ERNEUERT), schutzNeu: true };
+  }
+
+  if (!input?.acceptedTerms) {
     return fail('Bitte bestätigen Sie die erforderlichen Hinweise, um die Bestellung abzuschließen.');
   }
   if (!Array.isArray(input.items) || input.items.length === 0) {
     return fail('Ihr Warenkorb ist leer.');
+  }
+  if (input.contact?.country !== LIEFERLAND) {
+    return fail('Wir liefern derzeit nur nach Deutschland. Bitte geben Sie eine Lieferanschrift in Deutschland an.');
   }
 
   const parsed = checkoutSchema.safeParse(input);
@@ -232,6 +264,13 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
     }
   }
 
+  // Anfertigungen nach Kundenangaben (kein Widerrufsrecht, § 312g Abs. 2 Nr. 1 BGB):
+  // Die Bestätigung ist nur nötig, wenn der geprüfte Warenkorb solche enthält.
+  const sonderanfertigung = verified.some(istSonderanfertigung);
+  if (sonderanfertigung && !data.acceptedCustomMade) {
+    return fail('Bitte bestätigen Sie den Hinweis zur Anfertigung nach Ihren Angaben, um die Bestellung abzuschließen.');
+  }
+
   // Versandart muss existieren und zu allen Artikeln passen.
   const shipping = availableShipping(verified, settings.shipping).find(
     (option) => option.id === data.shippingOptionId,
@@ -281,6 +320,14 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
     },
   ];
 
+  const consents: RecordConsents = {
+    terms: true,
+    withdrawalNotice: true,
+    ...(sonderanfertigung ? { customMade: true } : {}),
+    at: new Date().toISOString(),
+    version: RECHTSTEXTE_FASSUNG,
+  };
+
   return createRecord({
     kind: 'bestellung',
     area: verified.some((i) => i.kind === 'zylinder-schliessung')
@@ -316,6 +363,7 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
     ),
     lines,
     totals: orderTotals,
+    consents,
     payment: {
       scope: 'gesamt',
       amountCents: totals.totalCents,

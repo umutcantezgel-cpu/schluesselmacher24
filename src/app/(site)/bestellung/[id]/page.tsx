@@ -5,19 +5,27 @@ import { connection } from 'next/server';
 
 import { getRecord } from '@/lib/data';
 import { verifyAccessToken } from '@/lib/server/access-token';
-import { mailStatus, storageStatus } from '@/lib/integrations';
+import { mailStatus, paymentStatus, storageStatus } from '@/lib/integrations';
+import { widerrufErklaerenHref } from '@/lib/navigation';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
+import { mailHinweis } from '@/lib/mail/hinweise';
 import type { OrderLine, OrderTotals, PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
+import { zahlungsAnsicht } from '@/lib/zahlung/ansicht';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/layout/page-header';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
+import { JetztBezahlen } from './jetzt-bezahlen';
+
 interface BestellungSeiteProps {
   params: Promise<{ id: string }>;
-  /** `t` ist der geheime Link-Schlüssel aus der Bestätigung. */
-  searchParams: Promise<{ t?: string | string[] }>;
+  /**
+   * `t` ist der geheime Link-Schlüssel aus der Bestätigung. `abbruch=1` kommt
+   * von der Zahlungsseite (abgebrochen), `rueckkehr=1` nach dem Bezahlen.
+   */
+  searchParams: Promise<{ t?: string | string[]; abbruch?: string | string[]; rueckkehr?: string | string[] }>;
 }
 
 type Tonfall = 'neutral' | 'primary' | 'accent' | 'success' | 'warning' | 'danger' | 'outline';
@@ -133,34 +141,66 @@ function BestelltePositionen({ lines, totals }: { lines: OrderLine[]; totals?: O
   );
 }
 
+const erster = (wert: string | string[] | undefined) => (Array.isArray(wert) ? wert[0] : wert);
+
 async function loadAuthorisedRecord(props: BestellungSeiteProps) {
-  const [{ id }, { t }] = await Promise.all([props.params, props.searchParams]);
-  const token = Array.isArray(t) ? t[0] : t;
+  const [{ id }, suche] = await Promise.all([props.params, props.searchParams]);
+  const token = erster(suche.t);
   const record = await getRecord(id);
   // Unbekannter Vorgang und falscher Schlüssel sehen gleich aus — so lässt
   // sich nicht herausfinden, welche Nummern existieren.
-  if (!record || !verifyAccessToken(token, record.accessTokenHash)) return null;
-  return record;
+  if (!record || !token || !verifyAccessToken(token, record.accessTokenHash)) return null;
+  return { record, token, abbruch: erster(suche.abbruch) === '1', rueckkehr: erster(suche.rueckkehr) === '1' };
 }
+
+/** Nächste Schritte je Art des Vorgangs. */
+const SCHRITTE: Record<RecordKind, Array<{ titel: string; text: string }>> = {
+  bestellung: [
+    { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Code, Maße und Zusammenstellung, bevor etwas gefertigt wird.' },
+    { titel: 'Zahlung', text: 'Gefertigt wird nach Zahlungseingang. Solange die Zahlung offen ist, können Sie sie hier fortsetzen.' },
+    {
+      titel: 'Fertigung und Versand',
+      text: 'Danach fertigen wir Ihre Bestellung und versenden sie auf dem von Ihnen gewählten Weg. Sie werden über jeden Schritt informiert.',
+    },
+  ],
+  termin: [
+    { titel: 'Anzahlung', text: 'Mit der Anzahlung ist Ihr Zeitfenster fest für Sie reserviert. Sie wird auf den Gesamtpreis angerechnet.' },
+    { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Fahrzeug, Unterlagen und Leistung und melden uns, falls etwas fehlt.' },
+    { titel: 'Termin', text: 'Wir sind zum vereinbarten Termin für Sie da. Über Änderungen informieren wir Sie per E-Mail.' },
+  ],
+  anfrage: [
+    { titel: 'Sichtung', text: 'Wir sichten Ihre Angaben und Unterlagen.' },
+    { titel: 'Rückmeldung', text: 'Wir melden uns mit einem Angebot oder dem nächsten Schritt.' },
+  ],
+  projekt: [
+    { titel: 'Sichtung', text: 'Wir sichten Ihre Angaben und Unterlagen.' },
+    { titel: 'Rückmeldung', text: 'Wir melden uns mit einem Angebot oder einem Vorschlag für einen Termin vor Ort.' },
+  ],
+};
 
 export default async function BestellungSeite(props: BestellungSeiteProps) {
   // Persönliche Daten: immer zur Anfragezeit rendern, nie aus einem Seiten-Cache.
   await connection();
-  const record = await loadAuthorisedRecord(props);
+  const geladen = await loadAuthorisedRecord(props);
 
-  if (!record) notFound();
+  if (!geladen) notFound();
+  const { record, token } = geladen;
 
   const kindLabel = KIND_LABELS[record.kind];
+  const zahlung = zahlungsAnsicht(record, {
+    online: paymentStatus().configured,
+    abbruch: geladen.abbruch,
+    rueckkehr: geladen.rueckkehr,
+    jetzt: new Date(),
+  });
+  // Widerrufsbutton: nur bei Verträgen (Bestellung, Termin mit Anzahlung).
+  const widerrufbar = record.kind === 'bestellung' || record.kind === 'termin';
 
-  // Dieselben Hinweise, die beim Absenden zurückgegeben werden — sie ergeben
-  // sich aus den noch nicht angebundenen Diensten.
+  // Hinweise zu diesem Vorgang: ob die Bestätigung per E-Mail rausging
+  // (Mailprotokoll) und ob die Dateien gespeichert werden konnten.
   const hinweise: string[] = [];
-  if (!mailStatus().configured) {
-    hinweise.push(
-      'Eine automatische Bestätigung per E-Mail ist noch nicht eingerichtet. '
-      + 'Notieren Sie sich bitte Ihre Vorgangsnummer.',
-    );
-  }
+  const mail = mailHinweis(record, mailStatus().configured);
+  if (mail) hinweise.push(mail);
   if (record.uploads.length > 0 && !storageStatus().configured) {
     hinweise.push(
       'Ihre Dateien konnten noch nicht dauerhaft gespeichert werden. Wir melden uns, '
@@ -220,7 +260,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
     <>
       <PageHeader
         art="arbeit"
-        eyebrow="Direkt kaufen"
+        eyebrow={record.kind === 'bestellung' ? 'Direkt kaufen' : kindLabel}
         title={`${kindLabel} eingegangen`}
         lead="Wir haben Ihren Vorgang aufgenommen. Bitte bewahren Sie die Vorgangsnummer auf — damit finden Sie den Stand jederzeit wieder."
         crumbs={[{ href: `/bestellung/${record.id}`, label: `${kindLabel} ${record.reference}` }]}
@@ -297,12 +337,26 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                   )}
                 </dl>
 
-                {record.payment.status === 'offen' && (
-                  <div className="mt-6">
-                    <Alert tone="info" title="Zahlung noch offen">
-                      Ihr Vorgang ist gespeichert. Wir melden uns mit den Zahlungsinformationen
-                      zu dieser Vorgangsnummer.
+                {zahlung && (
+                  <div className="mt-6 space-y-4">
+                    <Alert tone={zahlung.ton} title={zahlung.titel} role={zahlung.ton === 'info' ? 'status' : 'note'}>
+                      {zahlung.text}
+                      {zahlung.neuBuchen && (
+                        <>
+                          {' '}
+                          <Link href="/autoschluessel/anfrage" className="font-semibold text-primary hover:underline">
+                            Termin neu buchen
+                          </Link>
+                        </>
+                      )}
                     </Alert>
+                    {zahlung.knopf && (
+                      <JetztBezahlen
+                        recordId={record.id}
+                        token={token}
+                        label={zahlung.knopf === 'erneut' ? 'Erneut bezahlen' : 'Jetzt bezahlen'}
+                      />
+                    )}
                   </div>
                 )}
               </section>
@@ -324,26 +378,12 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
               <h2 className="text-title-sm font-semibold text-foreground">Wie es weitergeht</h2>
 
               <ol className="mt-6 divide-y divide-border border-y border-border">
-                <li className="py-4">
-                  <p className="text-body font-semibold text-foreground">1. Prüfung Ihrer Angaben</p>
-                  <p className="mt-1 text-small leading-relaxed text-foreground-muted">
-                    Wir prüfen Code, Maße und Zusammenstellung, bevor etwas gefertigt wird.
-                  </p>
-                </li>
-                <li className="py-4">
-                  <p className="text-body font-semibold text-foreground">2. Zahlung</p>
-                  <p className="mt-1 text-small leading-relaxed text-foreground-muted">
-                    Solange der Zahlungsstatus offen ist, erhalten Sie von uns die
-                    Zahlungsinformationen zu Ihrer Vorgangsnummer.
-                  </p>
-                </li>
-                <li className="py-4">
-                  <p className="text-body font-semibold text-foreground">3. Fertigung und Versand</p>
-                  <p className="mt-1 text-small leading-relaxed text-foreground-muted">
-                    Danach fertigen wir Ihre Bestellung und versenden sie auf dem von Ihnen
-                    gewählten Weg. Sie werden über jeden Schritt informiert.
-                  </p>
-                </li>
+                {SCHRITTE[record.kind].map((schritt, index) => (
+                  <li key={schritt.titel} className="py-4">
+                    <p className="text-body font-semibold text-foreground">{index + 1}. {schritt.titel}</p>
+                    <p className="mt-1 text-small leading-relaxed text-foreground-muted">{schritt.text}</p>
+                  </li>
+                ))}
               </ol>
 
               <div className="mt-6">
@@ -361,13 +401,16 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
             </section>
 
             <section className="border-t border-border pt-8">
-              <h2 className="text-title-sm font-semibold text-foreground">Fragen zur Bestellung?</h2>
+              <h2 className="text-title-sm font-semibold text-foreground">Fragen zu Ihrem Vorgang?</h2>
               <ul className="mt-4 divide-y divide-border border-y border-border">
                 {[
                   { href: '/service-und-termin/kontakt', label: 'Kontakt aufnehmen' },
                   { href: '/rechtliches/versand-und-zahlung', label: 'Zahlung und Versand' },
                   { href: '/rechtliches/widerruf', label: 'Widerruf und Rückgabe' },
                   { href: '/rechtliches/agb', label: 'AGB' },
+                  ...(widerrufbar
+                    ? [{ href: widerrufErklaerenHref(record.reference), label: 'Vertrag widerrufen' }]
+                    : []),
                 ].map((link) => (
                   <li key={link.href}>
                     <Link

@@ -7,6 +7,7 @@ import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
 
 import { Konfigurator } from './konfigurator';
 
@@ -59,6 +60,7 @@ export default async function CylinderConfiguratorPage() {
 
       <Section tight>
         <Konfigurator catalog={catalog} />
+        <GpsrAngaben info={catalog.gpsr} className="mt-12 max-w-3xl" />
       </Section>
 
       {/* Zusatzabstand, damit die feste Ablauf-Navigation nichts verdeckt. */}

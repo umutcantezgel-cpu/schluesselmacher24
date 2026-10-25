@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { getCodeLine, getCodeLines } from '@/lib/data';
+import { getCodeLine, getCodeLines, getSettings } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { formatNumber } from '@/lib/format';
 import { cn } from '@/lib/cn';
@@ -10,6 +10,8 @@ import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { JsonLd, productSchema, breadcrumbSchema } from '@/components/seo/json-ld';
+import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
+import { werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
@@ -61,7 +63,7 @@ export async function generateMetadata(props: CodeLinePageProps): Promise<Metada
 
 export default async function CodeLinePage(props: CodeLinePageProps) {
   const { slug } = await props.params;
-  const line = await getCodeLine(slug);
+  const [line, settings] = await Promise.all([getCodeLine(slug), getSettings()]);
 
   if (!line || !line.active) notFound();
 
@@ -139,7 +141,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           {/* Bestellung steht im DOM zuerst: mobil oben, ab lg rechts. Lese- und Fokusfolge entsprechen der Sichtfolge. */}
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-start-1">
-            <BestellFormular line={line} />
+            <BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} />
           </div>
 
           {/* Codefundstelle, Angaben, Hinweis und Passende Seiten: ab lg links, füllen die Spalte unter dem Kopf */}
@@ -207,6 +209,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               </dl>
             </div>
 
+            <GpsrAngaben info={line.gpsr} className="mt-12" />
+
             <Alert tone="legal" title="Anfertigung nach Ihrer Codeangabe" className="mt-10">
               <p>
                 Dieser Schlüssel wird eigens für Sie nach dem Code gefertigt, den Sie angeben. Ein
@@ -214,8 +218,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
                 Ihre Eingabe deshalb vor dem Absenden.
               </p>
               <p className="mt-2">
-                Weil es sich um eine kundenspezifische Anfertigung handelt, kann das Widerrufsrecht
-                eingeschränkt sein. Was im Einzelnen gilt, steht unter{' '}
+                Weil der Schlüssel nach Ihrer Angabe angefertigt wird, besteht nach § 312g Abs. 2
+                Nr. 1 BGB kein Widerrufsrecht. Einzelheiten stehen unter{' '}
                 <Link
                   href="/rechtliches/widerruf"
                   className="inline py-1 -my-1 font-semibold text-primary hover:underline"

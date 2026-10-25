@@ -8,14 +8,17 @@ import { fetchQuote, fetchSlots } from '@/lib/actions/booking';
 import { submitRecord } from '@/lib/actions/records';
 import { buildReference } from '@/lib/reference';
 import { createRecord, type TrustedRecordInput } from '@/lib/server/create-record';
+import { startSignieren } from '@/lib/server/formular-schutz';
 import { resetRateLimits } from '@/lib/server/rate-limit';
 import type { PriceQuote } from '@/lib/types';
 import {
   TerminVergebenFehler,
+  ZuVieleOffeneTermineFehler,
   getAppointments,
   getRecord,
   getRecordByReference,
   getSettings,
+  terminVerschieben,
   updateRecord,
   vorgangAnlegen,
   type NeuerVorgang,
@@ -39,6 +42,9 @@ const contact = {
   phone: '0301234567',
   country: 'Deutschland',
 };
+
+/** Bot-Schutz wie aus dem Browser: Formular vor 10 Sekunden geöffnet. */
+const schutz = () => ({ start: startSignieren(Date.now() - 10_000), website: '' });
 
 function anfrage(overrides: Partial<NeuerVorgang> = {}): () => NeuerVorgang {
   return () => {
@@ -204,6 +210,8 @@ describe('Termine', () => {
       uploads: [],
       appointment: { ...wunsch, durationMinutes: 45, location: 'werkstatt' },
       verify,
+      consents: { terms: true, deposit: true, authorization: true, earlyStart: true },
+      schutz: schutz(),
     });
   }
 
@@ -235,7 +243,8 @@ describe('Termine', () => {
       kind: 'termin',
       area: 'autoschluessel',
       process: 'termin-mit-anzahlung',
-      contact,
+      // Eigene Adresse: Die Höchstzahl offener Termine je E-Mail ist hier nicht Gegenstand.
+      contact: { ...contact, email: `sperre-${process.pid}-${Date.now()}@example.org` },
       payload: {},
       summary: [],
       uploads: [],
@@ -279,6 +288,74 @@ describe('Termine', () => {
     const zweiter = await vorgangAnlegen({ art: 'termin', jahr: 2096, aufbauen, termin });
     expect(zweiter.reference).toBe('SM24-T-2096-0002');
   });
+
+  it('verschiebt Termine unter der Tagessperre und nie in einen belegten Zeitraum', async () => {
+    const tag = '2098-06-03';
+    const frei = (zeit: string) => (termine: { id: string; appointment?: { time: string } }[], eigener: { id: string }) =>
+      !termine.some((r) => r.id !== eigener.id && r.appointment?.time === zeit);
+    const anlegen = (zeit: string) =>
+      vorgangAnlegen({
+        art: 'termin',
+        jahr: 2098,
+        termin: { datum: tag, istFrei: () => true },
+        aufbauen: anfrage({
+          area: 'autoschluessel',
+          process: 'termin-mit-anzahlung',
+          appointment: { date: tag, time: zeit, durationMinutes: 60, location: 'werkstatt' },
+        }),
+      });
+    const a = await anlegen('09:00');
+    const b = await anlegen('11:00');
+
+    await expect(
+      terminVerschieben({
+        vorgangId: b.id,
+        neu: { date: tag, time: '09:00', durationMinutes: 60, location: 'werkstatt' },
+        istFrei: frei('09:00'),
+        aendern: () => ({}),
+      }),
+    ).rejects.toBeInstanceOf(TerminVergebenFehler);
+
+    const verschoben = await terminVerschieben({
+      vorgangId: a.id,
+      neu: { date: '2098-06-04', time: '10:00', durationMinutes: 90, location: 'vor-ort' },
+      istFrei: frei('10:00'),
+      aendern: (v) => ({ status: 'terminiert', timeline: [...v.timeline, { at: new Date().toISOString(), actor: 'team', message: 'verlegt' }] }),
+    });
+    expect(verschoben?.appointment).toEqual({ date: '2098-06-04', time: '10:00', durationMinutes: 90, location: 'vor-ort' });
+    expect(verschoben?.status).toBe('terminiert');
+    expect((await getRecord(a.id))?.timeline.at(-1)?.message).toBe('verlegt');
+    expect(await getAppointments(tag, tag)).toHaveLength(1);
+    expect(await terminVerschieben({ vorgangId: '999999999', neu: verschoben!.appointment!, istFrei: () => true, aendern: () => ({}) })).toBeNull();
+  });
+
+  it('lässt je E-Mail-Adresse höchstens zwei offene, unbezahlte Termine zu (unter Sperre)', async () => {
+    const email = `Offen-${process.pid}-${Date.now()}@Example.org`;
+    const kunde = { email: email.toLowerCase(), hoechstensOffen: 2, abDatum: '2000-01-01' };
+    const termin = { datum: '2097-03-03', istFrei: () => true, kunde };
+    const aufbauen = (zeit: string, status: 'offen' | 'bezahlt' = 'offen') =>
+      anfrage({
+        area: 'autoschluessel',
+        process: 'termin-mit-anzahlung',
+        contact: { ...contact, email },
+        appointment: { date: '2097-03-03', time: zeit, durationMinutes: 60, location: 'werkstatt' },
+        payment: { scope: 'anzahlung', amountCents: 6990, status },
+      });
+
+    // Ein bezahlter Termin zählt nicht mit.
+    await vorgangAnlegen({ art: 'termin', jahr: 2097, aufbauen: aufbauen('08:00', 'bezahlt'), termin });
+    const erster = await vorgangAnlegen({ art: 'termin', jahr: 2097, aufbauen: aufbauen('09:00'), termin });
+    await vorgangAnlegen({ art: 'termin', jahr: 2097, aufbauen: aufbauen('10:00'), termin });
+    await expect(
+      vorgangAnlegen({ art: 'termin', jahr: 2097, aufbauen: aufbauen('11:00'), termin }),
+    ).rejects.toBeInstanceOf(ZuVieleOffeneTermineFehler);
+    // Die Ablehnung verbraucht keine Nummer.
+    expect(await zaehlerstand('T-2097')).toBe(3);
+
+    await updateRecord(erster.id, { status: 'storniert' });
+    const vierter = await vorgangAnlegen({ art: 'termin', jahr: 2097, aufbauen: aufbauen('11:00'), termin });
+    expect(vierter.reference).toBe('SM24-T-2097-0004');
+  });
 });
 
 describe('Bestellungen', () => {
@@ -310,10 +387,11 @@ describe('Bestellungen', () => {
     const ergebnis = await submitOrder({
       items: [{ kind: 'code-schluessel', uid: 'a', codeLineId: kennung, code: '0812', qty, unitPriceCents: 1, photoRefs: [] }],
       shippingOptionId: versand.id,
-      contact,
+      contact: { ...contact, street: 'Musterweg 1', postalCode: '35576', city: 'Wetzlar' },
       acceptedTerms: true,
       acceptedCustomMade: true,
       expectedTotalCents: qty * einzelCent + versand.priceCents,
+      schutz: schutz(),
     });
     return { ergebnis, versand };
   }

@@ -76,19 +76,68 @@ const MAX_KANTE = 2560;
 const VERKLEINERN_AB_BYTES = 3 * 1024 * 1024;
 
 /**
- * Fotos im Browser verkleinern: spart Datenvolumen am Smartphone und
- * Speicherplatz. HEIC und PDF bleiben unverändert.
+ * Größte Datei, die der Server annimmt — wie MAX_BILD_BYTES und MAX_PDF_BYTES
+ * in src/lib/server/datei-pruefung.ts. Vercel nimmt je Anfrage höchstens
+ * 4,5 MB an.
+ */
+export const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
+/** Fotos dürfen größer ausgewählt werden; der Browser verkleinert sie vorher. */
+export const MAX_AUSWAHL_FOTO_BYTES = 12 * 1024 * 1024;
+/** Stufenweise geringere JPEG-Qualität, bis das Foto unter die Grenze passt. */
+export const QUALITAETSSTUFEN = [0.85, 0.7, 0.6] as const;
+
+export const MELDUNG_UPLOAD_ZU_GROSS =
+  'Die Datei ist größer als 4 MB – bitte senden Sie sie uns per E-Mail.';
+
+/** Fotos, die der Browser neu kodieren kann; HEIC/HEIF nur, wo er es dekodiert (Safari). */
+const VERKLEINERBAR = /^image\/(jpeg|png|webp|heic|heif)$/;
+
+/** Typ der Datei; manche Browser melden HEIC ohne Typ, dann zählt die Endung. */
+export function dateityp(file: { type: string; name: string }): string {
+  if (file.type) return file.type;
+  return /\.hei[cf]$/i.test(file.name) ? 'image/heic' : '';
+}
+
+/** Grenze bei der Auswahl: Fotos bis 12 MB (sie werden verkleinert), PDF und Unbekanntes bis 4 MB. */
+export function auswahlGrenze(file: { type: string; name: string }): number {
+  return VERKLEINERBAR.test(dateityp(file)) ? MAX_AUSWAHL_FOTO_BYTES : MAX_UPLOAD_BYTES;
+}
+
+/**
+ * Kodiert mit sinkender Qualität, bis das Ergebnis unter `grenze` liegt.
+ * Liefert sonst das kleinste Ergebnis (oder `null`, wenn nichts entstand).
+ */
+export async function kodiereUnterGrenze(
+  kodieren: (qualitaet: number) => Promise<Blob | null>,
+  grenze: number,
+): Promise<Blob | null> {
+  let kleinstes: Blob | null = null;
+  for (const qualitaet of QUALITAETSSTUFEN) {
+    const blob = await kodieren(qualitaet);
+    if (blob && (!kleinstes || blob.size < kleinstes.size)) kleinstes = blob;
+    if (blob && blob.size <= grenze) return blob;
+  }
+  return kleinstes;
+}
+
+/**
+ * Fotos im Browser verkleinern: spart Datenvolumen am Smartphone, Speicher
+ * und hält die Grenze von 4 MB ein. HEIC/HEIF wird versucht (Safari kann es
+ * dekodieren); scheitert das, bleibt die Datei unverändert. PDF bleibt immer
+ * unverändert.
  */
 async function verkleinern(file: File): Promise<{ blob: Blob; name: string }> {
-  if (!/^image\/(jpeg|png|webp)$/.test(file.type) || typeof createImageBitmap !== 'function') {
-    return { blob: file, name: file.name };
-  }
+  const original = { blob: file as Blob, name: file.name };
+  const typ = dateityp(file);
+  if (!VERKLEINERBAR.test(typ) || typeof createImageBitmap !== 'function') return original;
+  // HEIC immer als JPEG senden: Das Team kann es dann in jedem Browser ansehen.
+  const heic = /^image\/hei[cf]$/.test(typ);
   try {
     const bitmap = await createImageBitmap(file);
     const faktor = Math.min(1, MAX_KANTE / Math.max(bitmap.width, bitmap.height));
-    if (faktor === 1 && file.size <= VERKLEINERN_AB_BYTES) {
+    if (!heic && faktor === 1 && file.size <= VERKLEINERN_AB_BYTES) {
       bitmap.close();
-      return { blob: file, name: file.name };
+      return original;
     }
     const canvas = document.createElement('canvas');
     canvas.width = Math.round(bitmap.width * faktor);
@@ -96,19 +145,33 @@ async function verkleinern(file: File): Promise<{ blob: Blob; name: string }> {
     const ctx = canvas.getContext('2d');
     if (!ctx) {
       bitmap.close();
-      return { blob: file, name: file.name };
+      return original;
     }
     // Weißer Grund, damit transparente Bereiche nicht schwarz werden.
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
     bitmap.close();
-    const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.85));
-    if (!blob || blob.size >= file.size) return { blob: file, name: file.name };
+    const blob = await kodiereUnterGrenze(
+      (qualitaet) => new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/jpeg', qualitaet)),
+      MAX_UPLOAD_BYTES,
+    );
+    // Das Original behalten, wenn die Neukodierung nichts spart und es ohnehin passt.
+    const originalBehalten = !heic && file.size <= MAX_UPLOAD_BYTES && (!blob || blob.size >= file.size);
+    if (!blob || originalBehalten) return original;
     return { blob, name: file.name.replace(/\.[^.]+$/, '') + '.jpg' };
   } catch {
-    return { blob: file, name: file.name };
+    return original;
   }
+}
+
+/** Fehlermeldung für eine gescheiterte Antwort des Servers. */
+export function uploadFehler(status: number, daten: { error?: unknown }): string {
+  if (typeof daten.error === 'string') return daten.error;
+  // Die Plattform weist zu große Anfragen ab, bevor unser Server sie sieht —
+  // dann kommt kein JSON zurück.
+  if (status === 413) return MELDUNG_UPLOAD_ZU_GROSS;
+  return 'Die Datei konnte nicht hochgeladen werden.';
 }
 
 async function hochladen(
@@ -116,6 +179,8 @@ async function hochladen(
   category: UploadKategorie,
 ): Promise<{ ok: true; storageKey: string; uploadToken: string } | { ok: false; fehler: string }> {
   const { blob, name } = await verkleinern(file);
+  // Prüfung nach dem Verkleinern: maßgeblich ist, was tatsächlich gesendet wird.
+  if (blob.size > MAX_UPLOAD_BYTES) return { ok: false, fehler: MELDUNG_UPLOAD_ZU_GROSS };
   const body = new FormData();
   body.append('kategorie', category);
   body.append('datei', blob, name);
@@ -123,10 +188,7 @@ async function hochladen(
     const response = await fetch('/api/kunden-upload', { method: 'POST', body });
     const daten = (await response.json().catch(() => ({}))) as { id?: unknown; uploadToken?: unknown; error?: unknown };
     if (!response.ok || typeof daten.uploadToken !== 'string' || daten.id === undefined) {
-      return {
-        ok: false,
-        fehler: typeof daten.error === 'string' ? daten.error : 'Die Datei konnte nicht hochgeladen werden.',
-      };
+      return { ok: false, fehler: uploadFehler(response.status, daten) };
     }
     return { ok: true, storageKey: String(daten.id), uploadToken: daten.uploadToken };
   } catch {
@@ -158,8 +220,6 @@ export interface PhotoUploadProps {
    */
   kamera?: 'betont' | 'ruhig';
 }
-
-const MAX_BYTES = 12 * 1024 * 1024;
 
 /**
  * Foto-Upload mit direkter Kameraaufnahme am Smartphone und
@@ -241,8 +301,14 @@ export function PhotoUpload({
     const incoming: PickedFile[] = [];
     const neueDateien = new Map<string, File>();
     for (const file of Array.from(list)) {
-      if (file.size > MAX_BYTES) {
-        setLocalError(`„${file.name}“ ist größer als ${formatFileSize(MAX_BYTES)}.`);
+      // Fotos dürfen größer sein (sie werden verkleinert), PDF nicht.
+      const grenze = auswahlGrenze(file);
+      if (file.size > grenze) {
+        setLocalError(
+          grenze === MAX_UPLOAD_BYTES
+            ? `„${file.name}“ ist größer als ${formatFileSize(grenze)} – bitte senden Sie die Datei per E-Mail.`
+            : `„${file.name}“ ist größer als ${formatFileSize(grenze)}.`,
+        );
         continue;
       }
       const fileId = neueDateiId();
@@ -336,7 +402,8 @@ export function PhotoUpload({
             {allowDocuments ? 'Datei auswählen' : 'Aus Galerie wählen'}
           </button>
           <p className="text-center font-mono tabular-nums text-caption text-foreground-muted">
-            Max. {formatFileSize(MAX_BYTES)} je Datei
+            Fotos bis {formatFileSize(MAX_AUSWAHL_FOTO_BYTES)}
+            {allowDocuments ? ` · PDF bis ${formatFileSize(MAX_UPLOAD_BYTES)}` : ''}
             {multiple ? ` · bis zu ${maxFiles} Dateien` : ''}
           </p>
         </div>

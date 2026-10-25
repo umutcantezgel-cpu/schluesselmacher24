@@ -1,0 +1,850 @@
+                                                                      SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+
+
+
+
+           SCHLÜSSELMACHER24
+                      Website und Shop Leitfaden
+    Konzept für Webdesign, Shop, Formulare, Konfiguratoren, Terminlogik und SEO
+
+
+
+            70 %                                     30 %                                       DE
+           Autoschlüssel                    Schlüssel, Schließtechnik und              Deutschlandweit skalierbar
+                                                 Sicherheitstechnik
+
+
+
+
+Ziel des Dokuments
+Dieser Leitfaden beschreibt, was auf schluesselmacher24.de fachlich und technisch umgesetzt werden soll.
+Er dient als gemeinsame Arbeitsgrundlage für Webdesign, Entwicklung, Shop Aufbau, Formulare,
+Konfiguratoren, SEO und spätere Erweiterungen.
+
+
+
+
+                                   Domain: schluesselmacher24.de
+Priorität: einfache Kundenführung, hochwertige Wirkung, starke Autoschlüssel Kompetenz und skalierbarer Online
+                                                   Vertrieb
+
+
+
+
+                                   Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                         SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+01
+
+
+Projektziel und Positionierung
+SCHLÜSSELMACHER24 soll nicht wie eine klassische Türöffnungs Notdienstseite wirken.
+Die Website soll als moderner Fachbetrieb und Online Plattform für Autoschlüssel,
+Schlüssel, Schließtechnik, elektronische Zutrittslösungen und Sicherheitstechnik
+auftreten.
+
+• Autoschlüssel bilden rund 70 Prozent des sichtbaren Leistungs, Shop und SEO Fokus.
+• Schlüssel, Schließtechnik und Sicherheitstechnik bilden rund 30 Prozent und werden als vollwertige
+  Kompetenzbereiche dargestellt.
+• Die Seite soll lokal Termine und Montageaufträge erzeugen und gleichzeitig deutschlandweit Produkte,
+  Schlüssel nach Code und geeignete Zylinderlösungen verkaufen.
+• Jede Hauptleistung erhält einen klaren Prozess: direkter Kauf, geführte Anfrage, Termin mit Anzahlung oder
+  Projektkonfigurator.
+
+ Markenwirkung
+ SCHLÜSSELMACHER24 soll technisch, fachlich, modern und vertrauenswürdig wirken. Die 24 ist Teil des
+ Namens, die Seite darf deshalb trotzdem nicht wie ein austauschbarer 24 Stunden Vermittler aussehen.
+
+
+
+Erfolgskriterien
+Ziel                                                           Umsetzung
+
+Kunde versteht Angebot in wenigen Sekunden                     Autoschlüssel als sichtbarer Schwerpunkt, weitere Bereiche klar
+                                                               getrennt.
+
+Weniger Rückfragen                                             Formulare sammeln Fahrzeugdaten, Schlüsselbilder, Maße,
+                                                               Dokumente und Projektangaben.
+
+Mehr verbindliche Termine                                      Anzahlung und Terminbuchung direkt im Autoschlüssel
+                                                               Prozess.
+
+Skalierbarer Shop                                              Code Schlüssel, gleichschließende Zylinder und geeignete
+                                                               Standardprodukte direkt bestellbar.
+
+Planbare Projekte                                              Schließanlagen, Zutritt und Sicherheitstechnik über
+                                                               strukturierte Konfiguratoren.
+
+SEO Wachstum                                                   Leistungsseiten, Fahrzeugseiten und Stadtseiten mit sauberer
+                                                               interner Verlinkung.
+
+
+
+
+                                      Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                      SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+02
+
+
+Empfohlene Seitenstruktur
+Die Hauptnavigation muss den 70 Prozent Autoschlüssel Schwerpunkt sofort zeigen, die
+übrigen Kompetenzbereiche aber sichtbar und eigenständig behandeln.
+
+Hauptnavigation
+Bereich                                                     Aufgabe
+
+Autoschlüssel                                               Zentrale Themenwelt für Kopie, Zweitschlüssel,
+                                                            Programmierung, Smart Key, Reparatur und Fahrzeugöffnung.
+
+Schlüssel nach Vorlage                                      Geführte Fotoanfrage mit drei Ansichten und optionaler
+                                                            Einsendung des Originals.
+
+Schlüssel nach Code                                         Shop mit etwa 50 bis 52 einzelnen Codelinien.
+
+Gleichschließende Zylinder                                  Direkter Konfigurator und Shop für Sperrschließungen.
+
+Schließanlagen                                              Projektplanung für Z, HS, GHS und erweiterbare mechanische
+                                                            Anlagen.
+
+Elektronische Zutrittslösungen                              RFID, Karte, Transponder, PIN, App, digitale Zylinder und
+                                                            Beschläge.
+
+Tür und Schließtechnik                                      Zylinder, Schlösser, Mehrfachverriegelungen, Beschläge und
+                                                            Türtechnik.
+
+Sicherheitstechnik                                          Kameras, Alarm, Glasbruch, Bewegungsmelder, Tür und
+                                                            Fenstersicherung und Einbruchschutz.
+
+Service und Termin                                          Allgemeine Anfrage, Terminstatus, Kontakt und Vor Ort
+                                                            Leistungen.
+
+
+
+
+Footer Pflichtbereiche
+• Impressum, Datenschutz, Widerruf und Rückgabe, Zahlungs und Versandinformationen, AGB sofern
+  verwendet und Cookie Einstellungen.
+• Rechtstexte vor Livegang juristisch prüfen, insbesondere bei Sonderanfertigungen, kundenspezifischen
+  Produkten und Anzahlungen.
+
+
+
+
+                                   Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                      SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+03
+
+
+Startseite: empfohlener Aufbau
+Der erste Bildschirm soll sofort vermitteln: Autoschlüssel professionell nachmachen und
+programmieren, dazu Schlüssel, Schließanlagen, digitale Zutrittslösungen und
+Sicherheitstechnik aus einer Hand.
+
+Bereich auf Startseite                                      Inhalt / Aktion
+
+Hero                                                        Autoschlüssel nachmachen oder programmieren. Hauptbutton:
+                                                            Fahrzeug auswählen und Termin starten.
+
+Schnelleinstiege                                            Autoschlüssel, Schlüssel nach Vorlage, Schlüssel nach Code,
+                                                            Schließanlagen, Zutritt, Sicherheitstechnik.
+
+Vertrauen                                                   Fachbetrieb, echte Werkstatt, professionelle Maschinen,
+                                                            transparente Abläufe, sichere Zahlung.
+
+Autoschlüssel Prozess                                       Fahrzeug wählen, Fotos hochladen, Preis oder Prüfung,
+                                                            Anzahlung, Termin.
+
+Shop Teaser                                                 Code Schlüssel und gleichschließende Zylinder direkt online
+                                                            bestellen.
+
+Projektbereiche                                             Schließanlagen, elektronische Zutrittslösungen und
+                                                            Sicherheitstechnik mit geführter Anfrage.
+
+SEO und Ratgeber                                            Hilfreiche Inhalte zu Schlüsselarten, Fahrzeugen,
+                                                            Schließsystemen und Einbruchschutz.
+
+
+
+
+ Gestaltungsregel
+ Keine typische gelb schwarze Notdienst Optik. Die Seite soll hochwertig, technisch und ruhig wirken. Echte
+ Produkt und Werkstattbilder haben Vorrang vor generischen Stockfotos.
+
+
+
+
+                                   Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                          SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+04
+
+
+Autoschlüssel Themenwelt und Leistungsbegriffe
+Der Autoschlüssel Bereich ist der größte Teil der Website und muss sowohl für Kunden
+als auch für Suchmaschinen sehr sauber differenziert werden.
+
+• Autoschlüssel nachmachen und Autoschlüssel kopieren
+• Zweitschlüssel und Ersatzschlüssel
+• Autoschlüssel programmieren und anlernen
+• Transponder und Wegfahrsperre
+• Funkschlüssel und Funkfernbedienung
+• Smart Key und Keyless Systeme
+• Schlüsselbart fräsen nach Original oder Fahrzeugdaten
+• Schlüsselgehäuse, Tasten, Batterie und Reparatur
+• Schlüsselverlust und Prüfung einer Ersatzlösung
+• Fahrzeugöffnung als eigene Serviceleistung
+
+Sinnvolle Unterseiten im KFZ Bereich
+Unterseite                                                      Zweck
+
+Autoschlüssel nachmachen                                        Hauptseite für Zweitschlüssel und Ersatzschlüssel.
+
+Autoschlüssel programmieren                                     Elektronische Anlernung, Transponder, Funk und Smart Key.
+
+Autoschlüssel kopieren                                          Mechanische und technisch mögliche Kopierlösungen.
+
+Funkschlüssel                                                   Fernbedienung, Tasten, Funkfunktion und Ersatz.
+
+Smart Key / Keyless                                             Schlüsselloser Zugang und Start je nach Fahrzeug.
+
+Schlüsselbart fräsen                                            Mechanische Fertigung nach Vorlage oder geeigneten Daten.
+
+Fahrzeugmarken und Modelle                                      SEO Seiten für häufige Hersteller und Modelle mit echtem
+                                                                Mehrwert.
+
+
+
+
+                                       Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                       SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+05
+
+
+Autoschlüssel: geführter Anfrage und Terminprozess
+Der Kunde soll nicht mit einem langen Formular erschlagen werden. Ein Schritt für
+Schritt Assistent sammelt nur die Daten, die für sein Fahrzeug und seinen Auftrag
+benötigt werden.
+
+1. Fahrzeugmarke auswählen.
+2. Modell auswählen.
+3. Baujahr oder Erstzulassung angeben.
+4. Optional Motorisierung beziehungsweise relevante Fahrzeugdaten ergänzen.
+5. Schlüsselart auswählen: mechanisch, Funk, Klappschlüssel, Smart Key oder Keyless.
+6. Anzahl vorhandener funktionierender Schlüssel angeben.
+7. Gewünschte Leistung auswählen.
+8. Schlüsselfotos hochladen.
+9. Fahrzeugschein hochladen.
+10. Kontaktdaten eingeben.
+11. Preis, Preisrahmen oder Hinweis auf manuelle Prüfung anzeigen.
+12. Anzahlung leisten.
+13. Termin auswählen.
+
+Fotofunktion
+• Direkter Kamera Upload auf dem Smartphone und alternativ Upload aus der Galerie.
+• Vorderseite, Rückseite, Schlüsselbart beziehungsweise Spitze und bei Bedarf Nahaufnahme von Nummern oder
+  Logos.
+• Direkt am Uploadfeld Beispielbilder zeigen, damit Beschriftungen und Details scharf und vollständig
+  fotografiert werden.
+• Fahrzeugschein als Foto oder Datei hochladen und eindeutig dem Vorgang zuordnen.
+
+ Wichtig
+ Nicht jeder Autoschlüssel kann ausschließlich per Versand fertiggestellt werden. Wo Fahrzeugzugriff zum
+ Programmieren erforderlich ist, muss der Prozess automatisch in eine Vor Ort Terminbuchung übergehen.
+
+
+
+
+                                    Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                      SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+06
+
+
+Termin, Preis und Anzahlung
+Die Terminlogik muss ausreichend Beschaffungs und Vorbereitungszeit einplanen.
+Standardmäßig sollen Autoschlüssel Termine erst mit ungefähr sieben bis acht Tagen
+Vorlauf angeboten werden.
+
+Regel                                                       Umsetzung
+
+Mindestvorlauf                                              Standard 7 bis 8 Tage, im Backend flexibel veränderbar.
+
+Anzahlung                                                   Standard 69,90 Euro, je Fahrzeug oder Leistung etwa 50 bis 80
+                                                            Euro einstellbar.
+
+Verrechnung                                                 Anzahlung wird vollständig auf den späteren Gesamtpreis
+                                                            angerechnet.
+
+Preis sicher bekannt                                        Gesamtpreis direkt anzeigen, dazu bereits bezahlte Anzahlung
+                                                            und Restbetrag.
+
+Preis noch zu prüfen                                        Preisrahmen oder manuelle Prüfung vor verbindlicher
+                                                            Buchung.
+
+Terminlänge                                                 Je Leistung oder Fahrzeuggruppe im Backend steuerbar.
+
+Sperrtage                                                   Urlaub, Feiertage, ausgebuchte Tage und interne Sperrzeiten
+                                                            pflegbar.
+
+
+
+
+Zahlungsarten
+• Gängige Online Zahlung integrieren und erweiterbar halten.
+• Automatische Bestell und Terminbestätigung nach erfolgreicher Zahlung.
+• Rechnung beziehungsweise Zahlungsbeleg nachvollziehbar am Auftrag hinterlegen.
+
+ Backend Regel
+ Preis, Anzahlung, Vorlaufzeit und Terminlänge dürfen nicht fest im Quellcode stehen. Diese Werte müssen
+ ohne Entwickler je Fahrzeuggruppe, Produkt oder Leistung geändert werden können.
+
+
+
+
+                                   Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                        SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+07
+
+
+Schlüssel nach Vorlage
+Dieser Bereich ist eine eigenständige geführte Anfrage. Der Kunde besitzt einen
+Originalschlüssel und möchte wissen, ob eine Kopie gefertigt werden kann. Er muss den
+Schlüssel zunächst nicht einsenden.
+
+1. Foto der Vorderseite hochladen.
+2. Foto der Rückseite hochladen.
+3. Foto von vorne auf Spitze und Profil hochladen.
+4. Hersteller oder Marke angeben, falls bekannt.
+5. Nummern und Beschriftungen eintragen oder deutlich fotografieren.
+6. Gewünschte Stückzahl angeben.
+7. Kontaktdaten und Versandland angeben.
+8. Anfrage absenden.
+
+ Nach der Prüfung
+ Der Kunde erhält Machbarkeit und Preis. Wenn der Originalschlüssel benötigt wird, bekommt er eine klare
+ Einsendeanweisung. Der Originalschlüssel kann je nach Fall versichert oder per geeigneter nachverfolgbarer
+ Sendungsart eingesendet werden.
+
+
+
+ Auch für mechanische Autoschlüssel
+ Mechanische Autoschlüssel oder einzelne Schlüsselbärte können in dieser Rubrik ebenfalls angefragt
+ werden. Es muss klar erklärt werden, dass ein kopierter Bart bei vielen Fahrzeugen nicht automatisch
+ Transponder, Funk oder Wegfahrsperre ersetzt.
+
+
+
+
+                                     Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                        SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+08
+
+
+Schlüssel nach Code
+Schlüssel nach Code wird als echter Online Shop aufgebaut. Geplant sind ungefähr 50 bis
+52 einzelne Codelinien beziehungsweise Produkte. Bei diesen Artikeln ist grundsätzlich
+keine Einsendung des Originalschlüssels erforderlich.
+
+• Jede Codelinie erhält eine eigene Produktseite mit verständlicher Beschreibung.
+• Beispielbilder zeigen, wo der Code typischerweise zu finden ist.
+• Eingabefeld für den Schlüsselcode mit Plausibilitätsprüfung des erwarteten Formats.
+• Optionaler oder verpflichtender Foto Upload nur bei Codelinien, bei denen ein optischer Abgleich sinnvoll ist.
+• Hersteller, Anwendung, Codeformat, Lieferumfang und Stückzahl klar darstellen.
+• Direkt bezahlen, automatische Bestellbestätigung und interne Produktionsansicht.
+
+Shoplogik
+ Funktion                                                     Anforderung
+
+ Suche und Filter                                             Hersteller, Schlüsseltyp, Codelinie, Anwendung.
+
+ Produktpflege                                                Alle etwa 50 bis 52 Produkte ohne Programmierer bearbeitbar.
+
+ Status                                                       Neu, geprüft, in Fertigung, versendet, abgeschlossen.
+
+ Versand                                                      Passende Versandart und Sendungsverfolgung je Produktklasse.
+
+ Interne Ansicht                                              Code, Stückzahl, Kundendaten, Hinweise und Produktionsstatus
+                                                              auf einen Blick.
+
+
+
+
+                                     Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                       SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+09
+
+
+Gleichschließende Zylinder und Sperrschließungen
+Kleine gleichschließende Systeme sollen direkt im Online Shop konfigurierbar und
+bestellbar sein. Der Kunde stellt mehrere Zylinder zusammen, die alle mit demselben
+Schlüssel bedient werden.
+
+Auswahl                                                      Mögliche Optionen
+
+Zylinderart                                                  Doppelzylinder, Knaufzylinder, Halbzylinder und weitere
+                                                             passende Bauformen je Hersteller.
+
+Maße                                                         Maß A und Maß B beziehungsweise das jeweils passende
+                                                             Zylindermaß.
+
+Funktion                                                     Standard oder Not und Gefahrenfunktion, soweit für das
+                                                             Produkt verfügbar.
+
+Menge                                                        Beliebig viele Zylinder mit unterschiedlichen Maßen in
+                                                             derselben Schließung.
+
+Schlüssel                                                    Gewünschte Gesamtanzahl gemeinsamer Schlüssel.
+
+Schutz                                                       Optional Sicherungskarte beziehungsweise geschütztes System.
+
+Erweiterung                                                  Option, ob spätere Erweiterbarkeit gewünscht ist.
+
+Zusatzkomponenten                                            Je Hersteller mögliche weitere gleichschließende Komponenten.
+
+
+
+
+Maßauswahl
+• Eine einfache Zeichnung zeigt Innen und Außenmaß und erklärt, wie richtig gemessen wird.
+• Doppelzylinder, Knaufzylinder und Halbzylinder müssen optisch unterscheidbar erklärt werden.
+• Fehleingaben durch Plausibilitätsprüfung und kurze Messhinweise reduzieren.
+
+ Bestellbeispiel
+ Drei gleichschließende Zylinder: 30/35, 40/40 und 55/30. Alle drei erhalten dieselbe Schließung und die vom
+ Kunden gewählte Anzahl gemeinsamer Schlüssel.
+
+
+
+
+                                    Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                     SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+10
+
+
+Mechanische Schließanlagen und Systemerklärung
+Schließanlagen benötigen einen eigenen Projektkonfigurator. Die Maske muss für ein
+Einfamilienhaus genauso funktionieren wie für Unternehmen, Hausverwaltungen,
+mehrere Gebäude oder größere Liegenschaften.
+
+Welche Systeme dem Kunden erklärt werden müssen
+System                                                     Einfache Kundenerklärung
+
+Gleichschließung                                           Mehrere Zylinder werden mit demselben Schlüssel geöffnet.
+                                                           Geeignet für kleinere Objekte oder klar abgegrenzte Bereiche.
+
+Zentralschlossanlage Z                                     Mehrere Einzelschlüssel öffnen jeweils eigene Türen und
+                                                           zusätzlich eine gemeinsame zentrale Tür, zum Beispiel den
+                                                           Hauseingang.
+
+Hauptschlüsselanlage HS                                    Einzelschlüssel öffnen definierte Türen. Ein Hauptschlüssel
+                                                           kann alle oder eine größere Gruppe der zugeordneten Türen
+                                                           öffnen.
+
+Generalhauptschlüsselanlage GHS                            Mehrere Hierarchiestufen und Bereiche werden kombiniert.
+                                                           Über Bereichs und Hauptschlüsseln steht ein
+                                                           Generalhauptschlüssel für die gesamte Anlage.
+
+Erweiterbare Anlage                                        Die Anlage wird so gewählt und geplant, dass später weitere
+                                                           Türen, Nutzer oder Gebäude ergänzt werden können, soweit das
+                                                           gewählte System dies unterstützt.
+
+
+
+
+ Interaktive Erklärung
+ Neben jeder Auswahl steht ein Info Symbol. Beim Antippen erscheint eine kurze Erklärung und möglichst
+ eine einfache Grafik. Der Kunde muss die Abkürzungen Z, HS oder GHS nicht vorher kennen.
+
+
+
+
+                                  Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                    SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+11
+
+
+Schließanlagen: geführte Projektplanung
+Der Konfigurator soll am Ende eine strukturierte Zusammenfassung erzeugen, sodass
+aus der Kundenanfrage bereits ein brauchbarer Projektbericht für Beratung und
+Angebot entsteht.
+
+Frageblock                                                Beispiele
+
+Kundentyp                                                 Privat, Unternehmen, Hausverwaltung, öffentliche Einrichtung,
+                                                          sonstige Organisation.
+
+Objekt                                                    Anzahl Gebäude, Liegenschaften, Bereiche und Schließstellen.
+
+Nutzer                                                    Anzahl Nutzer, Rollen, Abteilungen oder Schlüsselinhaber.
+
+Bestehende Anlage                                         Hersteller, System, vorhandene Sicherungskarte, Fotos oder
+                                                          Schließplan.
+
+Erweiterung                                               Soll die Anlage später um Türen, Nutzer oder weitere
+                                                          Immobilien ergänzt werden?
+
+Türen                                                     Bezeichnung, Zylindertyp und Zylindermaß je Tür.
+
+Berechtigungen                                            Wer darf welche Türen öffnen? Berechtigungsgruppen und
+                                                          Hierarchien.
+
+Schlüssel                                                 Anzahl je Person, Rolle oder Gruppe.
+
+Dokumente                                                 Upload von Türlisten, Grundrissen, Fotos und vorhandenen
+                                                          Plänen.
+
+Service                                                   Montage, Beratungstermin, gewünschter Projektzeitraum,
+                                                          Budgetrahmen optional.
+
+
+
+
+ Ausgabe
+ Vor dem Absenden sieht der Kunde eine Zusammenfassung. Im Backend entsteht dieselbe strukturierte
+ Projektübersicht, die als PDF oder interne Auftragszusammenfassung gespeichert werden kann.
+
+
+
+
+                                 Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                      SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+12
+
+
+Elektronische Zutrittslösungen
+Elektronische Zutrittslösungen sind eine eigene Hauptkategorie. Sie werden nicht nur als
+Unterpunkt von Schließanlagen oder Sicherheitstechnik versteckt.
+
+• RFID Transponder und Zutrittskarten
+• Smartphone und App Steuerung
+• PIN Code und Tastatur
+• Digitale Zylinder
+• Elektronische Beschläge und Smart Locks
+• Zeitlich begrenzte Zugangsberechtigungen
+• Benutzerverwaltung und Berechtigungsgruppen
+• Berechtigungen nach Wochentag oder Uhrzeit
+• Schnelles Sperren verlorener Karten oder Transponder
+• Optional Ereignisprotokoll, soweit System und Einsatzbereich dies rechtmäßig ermöglichen
+• Kombination aus mechanischer und elektronischer Lösung
+
+Elektronischer Zutrittskonfigurator
+ Abfrage                                                    Beispiele
+
+ Objekt                                                     Privat, Büro, Praxis, Gewerbe, Hausverwaltung, mehrere
+                                                            Standorte.
+
+ Umfang                                                     Anzahl Türen und Nutzer.
+
+ Identmedium                                                Karte, Transponder, Smartphone, PIN oder Kombination.
+
+ Verwaltung                                                 Lokal oder online verwaltet.
+
+ Berechtigungen                                             Zeitlich begrenzt, nach Gruppen, Wochentagen oder Uhrzeiten.
+
+ Standorte                                                  Ein Objekt oder mehrere Liegenschaften.
+
+ Integration                                                Kombination mit vorhandener mechanischer Anlage
+                                                            gewünscht.
+
+ Service                                                    Montage, Einrichtung und Einweisung vor Ort.
+
+
+
+
+                                   Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                          SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+13
+
+
+Tür und Schließtechnik
+Dieser Bereich bündelt klassische Schließ und Türtechnik, die weder ausschließlich zu
+Schließanlagen noch zum Autoschlüssel Bereich gehört.
+
+• Profilzylinder und Spezialzylinder
+• Einsteckschlösser
+• Mehrfachverriegelungen
+• Schutzbeschläge
+• Türzusatzschlösser
+• Türschließer
+• Panik und Fluchttürtechnik im passenden Leistungsrahmen
+• Reparatur und Austausch von Schließkomponenten
+• Technische Beratung zu bestehenden Türen
+• Montage und Anpassung
+
+ Interne Verknüpfung
+ Produkt und Leistungsseiten können sinnvoll auf gleichschließende Zylinder, Schließanlagen, elektronische
+ Zutrittslösungen oder Sicherheitstechnik verweisen. Die Hauptnavigation soll trotzdem klar getrennt
+ bleiben.
+
+
+
+
+                                       Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                       SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+14
+
+
+Sicherheitstechnik und Überwachung
+Sicherheitstechnik wird als eigener, sichtbarer Kompetenzbereich aufgebaut.
+Schwerpunkt sind Einbruchschutz, Überwachung, Alarmierung und die kombinierte
+Absicherung von Gebäuden.
+
+Bereich                                                      Leistungen / Produkte
+
+Videoüberwachung                                             Kameras für Innen und Außen, geeignete Aufzeichnung,
+                                                             Netzwerk und App Zugriff.
+
+Alarmtechnik                                                 Alarmanlagen, Bewegungsmelder, Glasbruchsensoren, Tür und
+                                                             Fensterkontakte.
+
+Außenhaut                                                    Absicherung erreichbarer Türen, Fenster, Keller, Garage und
+                                                             Nebengebäude.
+
+Mechanischer Schutz                                          Zusatzschlösser, Schutzbeschläge, Sicherheitszylinder und
+                                                             weitere mechanische Sicherungen.
+
+Smarte Funktionen                                            Anwesenheitssimulation, Sicherheitsbeleuchtung, geeignete
+                                                             Schaltmodule und Fernsteuerung.
+
+Panik und Alarm                                              Geeignete Panik oder Alarmtaster und Benachrichtigungswege.
+
+Kombinierte Konzepte                                         Mechanik, Elektronik, Zutrittskontrolle, Kamera und Alarm
+                                                             sinnvoll zusammenführen.
+
+
+
+
+Geführter Sicherheitscheck
+• Objektart, Anzahl Zugänge und leicht erreichbare Fenster abfragen.
+• Garage, Keller, Nebengebäude und Außenflächen berücksichtigen.
+• Vorhandene Kamera, Alarm oder Schließtechnik erfassen.
+• Schwerpunkte auswählen: Kamera, Alarm, Glasbruch, Fenster, Türen, Zutritt oder Außenbereich.
+• Internet, WLAN und gewünschte App Steuerung abfragen.
+• Fotos und Grundriss Upload ermöglichen, Budgetrahmen optional, Vor Ort Termin anfragbar.
+
+ Recht und Transparenz
+ Bei Video, Audio und Protokollfunktionen muss die Website auf rechtmäßige Nutzung und die
+ Verantwortung des Betreibers hinweisen. Verdeckte Audioüberwachung wird nicht als Standardprodukt
+ beworben. Gegensprech und Alarmfunktionen werden nur für zulässige Einsatzzwecke angeboten.
+
+
+
+
+                                    Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                      SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+15
+
+
+Vier unterschiedliche Kundenprozesse
+Nicht jede Leistung soll technisch in denselben Shop Ablauf gezwungen werden. Vier
+unterschiedliche Wege sorgen für eine verständliche und saubere Nutzerführung.
+
+Prozess                                                     Typische Leistungen
+
+Direkt kaufen                                               Schlüssel nach Code, gleichschließende Zylinder, geeignete
+                                                            Standardprodukte.
+
+Geführte Anfrage                                            Schlüssel nach Vorlage, unklare Autoschlüssel Fälle,
+                                                            Reparaturen und Sicherheitstechnik.
+
+Projektkonfigurator                                         Mechanische Schließanlagen, elektronische Zutrittslösungen
+                                                            und größere Sicherheitsprojekte.
+
+Termin mit Anzahlung                                        Autoschlüssel Aufträge, bei denen Fahrzeug und Kunde vor Ort
+                                                            benötigt werden.
+
+
+
+
+ Einheitliches Erlebnis
+ Die Prozesse dürfen technisch unterschiedlich sein, müssen aber dasselbe Design, dieselbe klare Sprache und
+ dieselbe mobile Bedienlogik verwenden.
+
+
+
+
+                                   Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                       SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+16
+
+
+SEO Architektur und deutschlandweiter Ausbau
+Die Website muss von Beginn an für viele hochwertige Unterseiten vorbereitet sein, ohne
+dass Navigation oder Technik später neu gebaut werden müssen.
+
+Leistungscluster
+• Autoschlüssel nachmachen, kopieren, programmieren und anlernen
+• Zweitschlüssel, Funkschlüssel, Smart Key, Keyless und Schlüsselbart
+• Schlüssel nach Code und Schlüssel nach Vorlage
+• Gleichschließende Zylinder und Sperrschließungen
+• Schließanlagen, Z Anlage, HS und GHS
+• Elektronische Schließsysteme, RFID und Zutrittskontrolle
+• Videoüberwachung, Alarmanlagen und Einbruchschutz
+
+Fahrzeug und Stadtseiten
+• Eigene Hersteller und Modellseiten für häufige Fahrzeuge, mit echten technischen Informationen und klarem
+  Ablauf.
+• Stadtseiten für lokale Sichtbarkeit, jeweils mit individuellem lokalen Mehrwert statt massenhaft identischem
+  Text.
+• Ratgeberseiten für typische Fragen, Probleme und Suchanfragen rund um Autoschlüssel, Schließtechnik und
+  Sicherheit.
+
+ SEO Regel
+ Keine dünnen Massenkopien. Jede wichtige Seite soll die konkrete Suchabsicht beantworten, passende
+ interne Links enthalten und zu einem klaren nächsten Schritt führen.
+
+
+
+
+                                    Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                     SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+17
+
+
+Technische Anforderungen und Backend
+Der Webdesigner soll nicht nur die sichtbare Kundenseite bauen. Entscheidend ist eine
+saubere interne Bearbeitung von Bestellungen, Terminen, Anfragen und Projekten.
+
+Backend Funktion                                           Anforderung
+
+Zentrale Vorgänge                                          Bestellungen, Anfragen, Termine und Projekte in einer
+                                                           übersichtlichen Struktur.
+
+Uploads                                                    Fotos, Fahrzeugschein, Grundrisse und Dokumente direkt am
+                                                           Vorgang.
+
+Status                                                     Filter und Status je Bereich, inklusive interner Notizen.
+
+Preise                                                     Preis, Anzahlung, Terminlänge und Vorlauf flexibel änderbar.
+
+Termine                                                    Verschieben, sperren, Auslastung steuern und Erinnerungen
+                                                           versenden.
+
+Produkte                                                   Code Schlüssel und Zylinderprodukte ohne
+                                                           Programmierkenntnisse pflegbar.
+
+Projektberichte                                            Zusammenfassung für Schließanlage, Zutritt und Sicherheit als
+                                                           PDF oder interne Ansicht.
+
+SEO                                                        Title, Description, Texte, Bilder und interne Verlinkung je Seite
+                                                           pflegbar.
+
+Ausbau                                                     Schnittstellen zu Buchhaltung, Warenwirtschaft oder CRM
+                                                           später möglich.
+
+
+
+
+Mobile zuerst
+• Kamera Upload, Formulare und Terminbuchung müssen auf Smartphones besonders einfach funktionieren.
+• Lange Konfiguratoren mit Fortschrittsanzeige und möglichst Zwischenspeicherung bauen.
+
+
+
+
+                                  Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                       SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+18
+
+
+Datenschutz, Sicherheit und rechtliche Pflichtbereiche
+Fahrzeugscheine, Schlüsselbilder, Objektpläne und Sicherheitsinformationen sind
+sensible Kundendaten. Schutz und Zugriffskontrolle müssen bereits in der technischen
+Planung berücksichtigt werden.
+
+• Datenschutzerklärung und Impressum
+• Widerrufsbelehrung, Versand und Zahlungsinformationen und Shop Pflichtinformationen
+• AGB, sofern eingesetzt und juristisch abgestimmt
+• HTTPS und geschützter Datei Upload
+• Speicherfristen für Fahrzeugschein, Bilder, Grundrisse und Projektunterlagen definieren
+• Zugriff auf Kundendokumente nur für berechtigte interne Nutzer
+• Datenschutzkonformes Cookie und Tracking Konzept
+• Backup und Wiederherstellungskonzept
+• Spamschutz ohne unnötige Hürden für echte Kunden
+• Rechtliche Hinweise bei Videoüberwachung, Aufzeichnung und Zutrittsprotokollierung
+
+ Vor Livegang
+ Rechtstexte und datenschutzrelevante Prozesse müssen vor Veröffentlichung geprüft werden. Besonders zu
+ beachten sind kundenspezifische Sonderanfertigungen, Anzahlungen, Dokument Uploads und
+ Überwachungstechnik.
+
+
+
+
+                                    Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                      SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+19
+
+
+Empfohlene Entwicklungsreihenfolge
+Das Projekt kann in Phasen umgesetzt werden, ohne die spätere Gesamtarchitektur zu
+verbauen.
+
+Phase                                                       Inhalt
+
+Phase 1                                                     Grunddesign, Navigation, Autoschlüssel Bereich, Schlüssel nach
+                                                            Vorlage, Schlüssel nach Code, Shopbasis, Zahlung und
+                                                            Terminbuchung.
+
+Phase 2                                                     Gleichschließende Zylinder, Sperrschließungen, mechanische
+                                                            Schließanlagen und Projektzusammenfassung.
+
+Phase 3                                                     Elektronische Zutrittslösungen, Sicherheitstechnik,
+                                                            Sicherheitscheck und weitere Shopprodukte.
+
+Phase 4                                                     SEO Ausbau mit Fahrzeugmarken, Modellen, Städten, Ratgeber
+                                                            und zusätzlichen Produktlinien.
+
+Phase 5                                                     Automatisierungen, weitere Zahlungsarten, CRM oder
+                                                            Warenwirtschaft Anbindungen und zusätzliche Auswertungen.
+
+
+
+
+ MVP darf nicht fehlen
+ Der erste klickbare Prototyp soll mindestens die Kernprozesse Autoschlüssel Termin, Schlüssel nach Vorlage,
+ Schlüssel nach Code und Schließanlagen Anfrage vollständig durchspielbar machen.
+
+
+
+
+                                   Projektleitfaden • Stand 15.09.2026 • Version 2.1
+                                                                       SCHLÜSSELMACHER24 | WEBSITE UND SHOP LEITFADEN
+20
+
+
+Kurzbriefing für den Webdesigner
+Die folgende Zusammenfassung ist die verbindliche Grundrichtung für
+SCHLÜSSELMACHER24.
+
+• Name und Domain: SCHLÜSSELMACHER24 beziehungsweise schluesselmacher24.de.
+• 70 Prozent Fokus auf Autoschlüssel und Fahrzeugschlüssel Dienstleistungen.
+• 30 Prozent Fokus auf klassische Schlüssel, Schließtechnik, Schließanlagen, elektronische Zutrittslösungen und
+  Sicherheitstechnik.
+• Autoschlüssel mit geführtem Formular, Schlüsselbildern, Fahrzeugschein Upload, Preislogik, Anzahlung und
+  Terminbuchung.
+• Termine im Regelfall erst nach etwa sieben bis acht Tagen buchbar, Vorlauf im Backend steuerbar.
+• Standard Anzahlung 69,90 Euro, je Fahrzeug oder Leistung flexibel etwa 50 bis 80 Euro anpassbar.
+• Schlüssel nach Vorlage als Anfrage mit drei Fotos und möglicher späterer Einsendung des Originals.
+• Schlüssel nach Code als Online Shop mit ungefähr 50 bis 52 einzelnen Codelinien.
+• Gleichschließende Zylinder und Sperrschließungen als direkter Konfigurator mit Zylinderart, Maßen, Funktion
+  und Schlüsselanzahl.
+• Schließanlagen als umfangreicher Projektkonfigurator mit verständlicher Erklärung von Gleichschließung, Z,
+  HS, GHS und Erweiterbarkeit.
+• Elektronische Zutrittslösungen als eigene Hauptkategorie mit RFID, Karte, Transponder, PIN, App und digitalen
+  Zylindern.
+• Tür und Schließtechnik als eigener Bereich.
+• Sicherheitstechnik als eigener Bereich mit Kameras, Videoüberwachung, Alarmtechnik, Glasbruch,
+  Bewegungsmeldern, Tür und Fenstersicherung und kombiniertem Einbruchschutz.
+• Klare Trennung zwischen direktem Kauf, geführter Anfrage, Projektkonfigurator und Terminauftrag.
+• Mobile Bedienung und Kamera Upload haben von Anfang an Priorität.
+• Die Architektur muss deutschlandweiten Shopbetrieb, lokale Servicebereiche und starken SEO Ausbau
+  ermöglichen.
+
+ Abnahmeziel
+ Der Webdesigner soll nicht nur eine schöne Oberfläche bauen. Die Seite muss die wichtigsten
+ Kundenprozesse verständlich, mobil und technisch belastbar abbilden und später ohne kompletten Neubau
+ erweitert werden können.
+
+
+
+
+                                    Projektleitfaden • Stand 15.09.2026 • Version 2.1
+

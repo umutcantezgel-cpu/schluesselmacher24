@@ -1,5 +1,11 @@
 /* Anzeigeformate — deutschsprachig, ohne fachliche Annahmen. */
 
+/**
+ * Uhrzeiten gelten in Wetzlar. Der Server läuft auf Vercel in UTC — ohne feste
+ * Zeitzone stünde dort „22:30“ statt „00:30“ und am Monatsende das falsche Datum.
+ */
+export const ZEITZONE = 'Europe/Berlin';
+
 const EUR = new Intl.NumberFormat('de-DE', {
   style: 'currency',
   currency: 'EUR',
@@ -21,6 +27,7 @@ export function formatDate(iso: string): string {
   const date = new Date(`${iso}T12:00:00`);
   if (Number.isNaN(date.getTime())) return iso;
   return new Intl.DateTimeFormat('de-DE', {
+    timeZone: ZEITZONE,
     weekday: 'long',
     day: 'numeric',
     month: 'long',
@@ -33,20 +40,33 @@ export function formatDateShort(iso: string): string {
   const date = new Date(`${iso}T12:00:00`);
   if (Number.isNaN(date.getTime())) return iso;
   return new Intl.DateTimeFormat('de-DE', {
+    timeZone: ZEITZONE,
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
   }).format(date);
 }
 
-/** Vollständiger Zeitstempel, z. B. "02.10.2026, 14:30". */
+/** Vollständiger Zeitstempel in deutscher Zeit, z. B. "02.10.2026, 14:30". */
 export function formatDateTime(iso: string): string {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return iso;
   return new Intl.DateTimeFormat('de-DE', {
+    timeZone: ZEITZONE,
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(date);
+}
+
+/** Uhrzeit eines Zeitstempels in deutscher Zeit, z. B. "14:30". */
+export function formatTime(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return new Intl.DateTimeFormat('de-DE', {
+    timeZone: ZEITZONE,
     hour: '2-digit',
     minute: '2-digit',
   }).format(date);

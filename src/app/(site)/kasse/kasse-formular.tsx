@@ -10,6 +10,7 @@ import { submitOrder } from '@/lib/actions/orders';
 import { cartTotals, priceCylinderOrder, unitPriceForCodeLine } from '@/lib/pricing';
 import { formatCents } from '@/lib/format';
 import { zylinderZeilen } from '@/lib/cylinder-summary';
+import { LIEFERLAND, istSonderanfertigung } from '@/lib/kasse';
 import type {
   Cart,
   CartItem,
@@ -26,19 +27,24 @@ import { Card, CardBody } from '@/components/ui/card';
 import { InfoTip } from '@/components/ui/info-tip';
 import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
+import { SchutzFelder, useFormularSchutz } from '@/components/forms/formular-schutz';
 import { SummaryList } from '@/components/layout/summary-list';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
+import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
+import { ZahlartenZeile } from '@/components/vertrauen/zahlarten-zeile';
 
 export interface KasseFormularProps {
   shipping: ShippingOption[];
   codeLines: CodeLine[];
   standardArticles: StandardArticle[];
   catalog: CylinderCatalog;
-  /** Vorbelegung des Lieferlands aus den Firmendaten. */
-  defaultCountry: string;
   /** Ist ein Zahlungsdienstleister angebunden? */
   paymentConfigured: boolean;
+  /** Aus `onlineZahlarten()`; `null` ohne Online-Zahlung. */
+  zahlarten: string[] | null;
+  /** Werkstatt am Bestellknopf — ohne gepflegten Standort entfällt die Zeile. */
+  werkstatt?: WerkstattAngaben;
 }
 
 interface Eingaben {
@@ -76,15 +82,13 @@ function pruefen(werte: Eingaben): Fehler {
 
   if (!werte.street.trim()) fehler.street = 'Bitte geben Sie Straße und Hausnummer an.';
   if (!werte.city.trim()) fehler.city = 'Bitte geben Sie den Ort an.';
-  if (!werte.country.trim()) fehler.country = 'Bitte geben Sie das Lieferland an.';
+  if (werte.country !== LIEFERLAND) fehler.country = 'Wir liefern derzeit nur nach Deutschland.';
 
+  // Lieferung nur nach Deutschland: fünfstellige Postleitzahl.
   const plz = werte.postalCode.trim();
-  const istDeutschland = werte.country.trim().toLowerCase() === 'deutschland';
   if (!plz) fehler.postalCode = 'Bitte geben Sie die Postleitzahl an.';
-  else if (istDeutschland && !/^\d{5}$/.test(plz))
+  else if (!/^\d{5}$/.test(plz))
     fehler.postalCode = 'Eine deutsche Postleitzahl besteht aus fünf Ziffern.';
-  else if (!istDeutschland && !/^[A-Za-z0-9][A-Za-z0-9 -]{2,9}$/.test(plz))
-    fehler.postalCode = 'Bitte prüfen Sie die Postleitzahl.';
 
   return fehler;
 }
@@ -94,10 +98,12 @@ export function KasseFormular({
   codeLines,
   standardArticles,
   catalog,
-  defaultCountry,
   paymentConfigured,
+  zahlarten,
+  werkstatt,
 }: KasseFormularProps) {
   const router = useRouter();
+  const schutz = useFormularSchutz();
 
   const items = useCartStore((state) => state.items);
   const shippingOptionId = useCartStore((state) => state.shippingOptionId);
@@ -116,7 +122,7 @@ export function KasseFormular({
     street: '',
     postalCode: '',
     city: '',
-    country: defaultCountry,
+    country: LIEFERLAND,
     deliveryNote: '',
   });
   const [fehler, setFehler] = useState<Fehler>({});
@@ -127,6 +133,8 @@ export function KasseFormular({
   const [hinweise, setHinweise] = useState<string[]>([]);
   const [sendet, setSendet] = useState(false);
   const [abgeschlossen, setAbgeschlossen] = useState(false);
+  /** Weiterleitung zur Zahlungsseite statt zur Bestätigung. */
+  const [zurZahlung, setZurZahlung] = useState(false);
 
   function setzen<K extends keyof Eingaben>(feld: K, wert: Eingaben[K]) {
     setWerte((vorher) => ({ ...vorher, [feld]: wert }));
@@ -162,6 +170,9 @@ export function KasseFormular({
       }),
     [items, codeLines, standardArticles, catalog],
   );
+
+  // Schlüssel nach Code und Zylinder werden nach Kundenangaben gefertigt — nur dann ist der Hinweis nötig.
+  const mitAnfertigung = positionen.some(istSonderanfertigung);
 
   const cart: Cart = useMemo(
     // Der Zeitstempel wird erst beim Absenden auf dem Server gesetzt.
@@ -253,9 +264,13 @@ export function KasseFormular({
     const gefunden = pruefen(werte);
     setFehler(gefunden);
 
-    const bestaetigungenFehlen = !agbBestaetigt || !anfertigungBestaetigt;
+    const bestaetigungenFehlen = !agbBestaetigt || (mitAnfertigung && !anfertigungBestaetigt);
     setBestaetigungsFehler(
-      bestaetigungenFehlen ? 'Bitte bestätigen Sie beide Hinweise, um fortzufahren.' : null,
+      bestaetigungenFehlen
+        ? mitAnfertigung
+          ? 'Bitte bestätigen Sie beide Hinweise, um fortzufahren.'
+          : 'Bitte bestätigen Sie den Hinweis, um fortzufahren.'
+        : null,
     );
 
     if (Object.keys(gefunden).length > 0 || bestaetigungenFehlen) {
@@ -278,7 +293,7 @@ export function KasseFormular({
       street: werte.street.trim(),
       postalCode: werte.postalCode.trim(),
       city: werte.city.trim(),
-      country: werte.country.trim(),
+      country: LIEFERLAND,
     };
 
     setSendet(true);
@@ -288,10 +303,12 @@ export function KasseFormular({
       contact: kontakt,
       deliveryNote: werte.deliveryNote.trim() || undefined,
       acceptedTerms: agbBestaetigt,
-      acceptedCustomMade: anfertigungBestaetigt,
+      acceptedCustomMade: mitAnfertigung && anfertigungBestaetigt,
       // Der Server bestellt nur, wenn sein Betrag mit dem angezeigten übereinstimmt.
       expectedTotalCents: summen.totalCents,
+      schutz: await schutz.daten(),
     });
+    schutz.antwortBeachten(ergebnis);
 
     if (!ergebnis.ok) {
       setSendet(false);
@@ -305,6 +322,8 @@ export function KasseFormular({
     leeren();
 
     if (ergebnis.redirectUrl) {
+      // Zahlungsseite von Stripe. Bei Abbruch führt Stripe auf die Bestellseite zurück.
+      setZurZahlung(true);
       window.location.assign(ergebnis.redirectUrl);
       return;
     }
@@ -319,7 +338,9 @@ export function KasseFormular({
       <Card className="sm24-leerzustand lg:col-span-8" data-leerzustand>
         <CardBody>
           <p className="text-body text-foreground-muted" role="status">
-            Ihre Bestellung wurde aufgenommen. Sie werden zur Bestätigung weitergeleitet.
+            {zurZahlung
+              ? 'Ihre Bestellung wurde aufgenommen. Sie werden zur sicheren Zahlungsseite weitergeleitet.'
+              : 'Ihre Bestellung wurde aufgenommen. Sie werden zur Bestätigung weitergeleitet.'}
           </p>
         </CardBody>
       </Card>
@@ -364,7 +385,8 @@ export function KasseFormular({
   }
 
   return (
-    <form onSubmit={absenden} noValidate className="grid gap-6 lg:grid-cols-12 lg:items-start lg:gap-gutter lg:col-span-12">
+    <form onSubmit={absenden} noValidate className="relative grid gap-6 lg:grid-cols-12 lg:items-start lg:gap-gutter lg:col-span-12">
+      <SchutzFelder schutz={schutz} />
       <div className="space-y-10 lg:col-span-7">
         {!paymentConfigured && (
           <Alert tone="warning" title="Zahlung derzeit nicht online möglich">
@@ -546,16 +568,18 @@ export function KasseFormular({
               )}
             </Field>
 
-            <Field label="Land" required error={fehler.country}>
+            <Field label="Land" required error={fehler.country} hint="Wir liefern derzeit nur innerhalb Deutschlands.">
               {({ id, describedBy, invalid }) => (
-                <TextInput
+                <Select
                   id={id}
                   aria-describedby={describedBy}
                   invalid={invalid}
                   value={werte.country}
                   onChange={(event) => setzen('country', event.target.value)}
                   autoComplete="country-name"
-                />
+                >
+                  <option value={LIEFERLAND}>{LIEFERLAND}</option>
+                </Select>
               )}
             </Field>
 
@@ -608,40 +632,42 @@ export function KasseFormular({
             </label>
 
             {/* Gleiche Breite wie die Karte darüber: das Info-Symbol sitzt rechts oben in der Karte. */}
-            <div className="flex min-h-touch items-start rounded-lg border border-border bg-surface">
-              <label className="flex flex-1 cursor-pointer items-start gap-3 p-4">
-                <input
-                  type="checkbox"
-                  checked={anfertigungBestaetigt}
-                  onChange={(event) => {
-                    setAnfertigungBestaetigt(event.target.checked);
-                    setBestaetigungsFehler(null);
-                  }}
-                  aria-describedby="bestaetigung-fehler"
-                  className="mt-0.5 size-5 shrink-0 accent-primary"
-                />
-                <span className="text-small leading-relaxed text-foreground">
-                  Mir ist bekannt, dass Schlüssel und Zylinder nach meinen Angaben angefertigt
-                  werden. Einzelheiten dazu, was das für den Widerruf bedeutet, stehen in der{' '}
-                  <Link href="/rechtliches/widerruf" className="font-semibold text-primary hover:underline">
-                    Widerrufsbelehrung
-                  </Link>
-                  .
+            {mitAnfertigung && (
+              <div className="flex min-h-touch items-start rounded-lg border border-border bg-surface">
+                <label className="flex flex-1 cursor-pointer items-start gap-3 p-4">
+                  <input
+                    type="checkbox"
+                    checked={anfertigungBestaetigt}
+                    onChange={(event) => {
+                      setAnfertigungBestaetigt(event.target.checked);
+                      setBestaetigungsFehler(null);
+                    }}
+                    aria-describedby="bestaetigung-fehler"
+                    className="mt-0.5 size-5 shrink-0 accent-primary"
+                  />
+                  <span className="text-small leading-relaxed text-foreground">
+                    Mir ist bekannt, dass Schlüssel und Zylinder nach meinen Angaben angefertigt
+                    werden. Einzelheiten dazu, was das für den Widerruf bedeutet, stehen in der{' '}
+                    <Link href="/rechtliches/widerruf" className="font-semibold text-primary hover:underline">
+                      Widerrufsbelehrung
+                    </Link>
+                    .
+                  </span>
+                </label>
+                <span className="shrink-0 pr-4 pt-4">
+                  <InfoTip
+                    hint={{
+                      title: 'Anfertigung nach Ihren Angaben',
+                      body:
+                        'Schlüssel nach Code und gleichschließende Zylinder werden eigens für Sie '
+                        + 'gefertigt — nach dem Code beziehungsweise nach den Maßen, die Sie '
+                        + 'angegeben haben. Solche Anfertigungen lassen sich nicht weiterverkaufen. '
+                        + 'Was daraus für Ihr Widerrufsrecht folgt, steht in der Widerrufsbelehrung.',
+                    }}
+                  />
                 </span>
-              </label>
-              <span className="shrink-0 pr-4 pt-4">
-                <InfoTip
-                  hint={{
-                    title: 'Anfertigung nach Ihren Angaben',
-                    body:
-                      'Schlüssel nach Code und gleichschließende Zylinder werden eigens für Sie '
-                      + 'gefertigt — nach dem Code beziehungsweise nach den Maßen, die Sie '
-                      + 'angegeben haben. Solche Anfertigungen lassen sich nicht weiterverkaufen. '
-                      + 'Was daraus für Ihr Widerrufsrecht folgt, steht in der Widerrufsbelehrung.',
-                  }}
-                />
-              </span>
-            </div>
+              </div>
+            )}
 
             <p id="bestaetigung-fehler" className="text-small font-semibold text-danger" role="alert">
               {bestaetigungsFehler}
@@ -682,6 +708,14 @@ export function KasseFormular({
             </ul>
           </Alert>
         )}
+
+        {/* Wer verkauft und womit bezahlt wird: die echte Werkstatt und die Zahlarten des Checkouts */}
+        {(werkstatt?.standort || zahlarten?.length) ? (
+          <div className="space-y-2">
+            <WerkstattZeile {...werkstatt} />
+            <ZahlartenZeile zahlarten={zahlarten} />
+          </div>
+        ) : null}
 
         {/* Mobil steht der Betrag direkt über dem Knopf, damit er beim Absenden im Blick bleibt. */}
         <div className="flex items-baseline justify-between gap-4 lg:hidden">

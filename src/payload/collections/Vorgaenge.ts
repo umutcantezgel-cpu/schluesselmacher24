@@ -2,6 +2,9 @@ import type { CollectionConfig, Field } from 'payload';
 
 import { istInhaber, istTeam } from '../access/rollen';
 import { BEREICHE, PROZESSE } from '../fields/gemeinsam';
+import { bestaetigungSenden } from '../hooks/bestaetigung-senden';
+import { terminAktionen } from '../hooks/termin-aktionen';
+import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-benachrichtigen';
 
 export const VORGANG_STATUS = [
   { label: 'Neu', value: 'neu' },
@@ -22,6 +25,42 @@ const AKTEURE = [
 ];
 
 const nurLesen = { readOnly: true };
+
+/**
+ * Felder, die nur der Server schreibt (Zahlungsdienst, Mailversand,
+ * Zustimmungen aus dem Formular, Termin). Beim Speichern im Backend übernimmt
+ * Payload für diese Felder den gespeicherten Wert statt des Formularstands
+ * (`payload/dist/fields/hooks/beforeValidate/promise.js`, getFallbackValue) —
+ * so überschreibt ein offenes Formular keine Zahlung, die inzwischen
+ * eingegangen ist, und keinen verschobenen Termin. Zahlungsstand, Status und
+ * Notizen pflegt das Team; sie schützt `vorgangVorAenderung`. Die Local API
+ * mit `overrideAccess` schreibt weiterhin.
+ */
+const systemFeld = { access: { update: () => false } };
+
+export const MAIL_ARTEN = [
+  { label: 'Eingangsbestätigung', value: 'eingang-kunde' },
+  { label: 'Benachrichtigung an den Betrieb', value: 'eingang-team' },
+  { label: 'Vertragsbestätigung', value: 'vertrag' },
+  { label: 'Zahlung erhalten', value: 'zahlung-erhalten' },
+  { label: 'Zahlung nicht abgeschlossen', value: 'zahlung-nicht-abgeschlossen' },
+  { label: 'Erstattung', value: 'erstattung' },
+  { label: 'Statusänderung', value: 'status' },
+  { label: 'Widerruf erhalten', value: 'widerruf' },
+  { label: 'Sonstige', value: 'sonstige' },
+];
+
+export const VERSANDDIENSTLEISTER = [
+  { label: 'DHL', value: 'dhl' },
+  { label: 'DPD', value: 'dpd' },
+  { label: 'Deutsche Post', value: 'deutsche-post' },
+  { label: 'Hermes', value: 'hermes' },
+  { label: 'GLS', value: 'gls' },
+  { label: 'UPS', value: 'ups' },
+  { label: 'Sonstige', value: 'sonstige' },
+];
+
+const zeitpunkt = { date: { pickerAppearance: 'dayAndTime' as const, displayFormat: 'dd.MM.yyyy HH:mm' } };
 
 function eintragFelder(): Field[] {
   return [
@@ -54,6 +93,10 @@ export const Vorgaenge: CollectionConfig = {
     listSearchableFields: ['nummer', 'kontakt.email', 'kontakt.nachname', 'kontakt.firma'],
     pagination: { defaultLimit: 50 },
     description: 'Alle Bestellungen, Anfragen, Termine und Projekte. Neueste oben.',
+    components: {
+      // Telefontermin eintragen (Team) und CSV-Export für die Buchhaltung (Inhaber).
+      beforeListTable: ['/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge'],
+    },
   },
   defaultSort: '-createdAt',
   access: {
@@ -62,6 +105,12 @@ export const Vorgaenge: CollectionConfig = {
     update: istTeam,
     delete: istInhaber,
   },
+  hooks: {
+    // Statusmails, Zahlung von Hand, offene Zahlungsseite beim Stornieren beenden.
+    beforeChange: [vorgangVorAenderung],
+    afterChange: [vorgangNachAenderung],
+  },
+  endpoints: [bestaetigungSenden, ...terminAktionen],
   fields: [
     {
       type: 'row',
@@ -93,6 +142,41 @@ export const Vorgaenge: CollectionConfig = {
       index: true,
       options: VORGANG_STATUS,
       admin: { position: 'sidebar' },
+    },
+    {
+      name: 'kundeInformieren',
+      type: 'checkbox',
+      label: 'Bei Statuswechsel Kunden per E-Mail informieren',
+      defaultValue: true,
+      admin: {
+        position: 'sidebar',
+        description:
+          'Mail geht bei „Wartet auf Kunde“, „Terminiert“, „Versendet“ und „Storniert“. '
+          + 'Haken entfernen, um diesen einen Wechsel still zu speichern.',
+      },
+    },
+    {
+      name: 'nachrichtAnKunde',
+      type: 'textarea',
+      label: 'Nachricht an den Kunden',
+      admin: {
+        position: 'sidebar',
+        description: 'Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen und danach geleert.',
+      },
+    },
+    {
+      name: 'bestaetigungSenden',
+      type: 'ui',
+      admin: { position: 'sidebar', components: { Field: '/payload/components/BestaetigungSenden#BestaetigungSenden' } },
+    },
+    {
+      name: 'terminVerschieben',
+      type: 'ui',
+      admin: {
+        position: 'sidebar',
+        condition: (data) => data?.art === 'termin',
+        components: { Field: '/payload/components/TerminVerschieben#TerminVerschieben' },
+      },
     },
     {
       type: 'tabs',
@@ -130,12 +214,15 @@ export const Vorgaenge: CollectionConfig = {
               hasMany: true,
               label: 'Hochgeladene Dateien',
               admin: nurLesen,
+              ...systemFeld,
             },
             {
               name: 'termin',
               type: 'group',
               label: 'Termin',
               admin: { condition: (data) => data?.art === 'termin' },
+              // Nur über „Termin verschieben“ (mit Belegungsprüfung) änderbar.
+              ...systemFeld,
               fields: [
                 {
                   type: 'row',
@@ -153,6 +240,38 @@ export const Vorgaenge: CollectionConfig = {
                       ],
                       admin: { width: '25%', ...nurLesen },
                     },
+                  ],
+                },
+              ],
+            },
+            {
+              name: 'zustimmungen',
+              type: 'group',
+              label: 'Zustimmungen des Kunden',
+              admin: { ...nurLesen, description: 'So beim Absenden bestätigt. Nicht änderbar.' },
+              ...systemFeld,
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'agb', type: 'checkbox', label: 'AGB', admin: { width: '33%' } },
+                    { name: 'widerrufsbelehrung', type: 'checkbox', label: 'Widerrufsbelehrung', admin: { width: '33%' } },
+                    { name: 'vorzeitigerBeginn', type: 'checkbox', label: 'Beginn vor Ende der Widerrufsfrist', admin: { width: '34%' } },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'sonderanfertigung', type: 'checkbox', label: 'Sonderanfertigung (kein Widerruf)', admin: { width: '33%' } },
+                    { name: 'anzahlung', type: 'checkbox', label: 'Anzahlung', admin: { width: '33%' } },
+                    { name: 'berechtigung', type: 'checkbox', label: 'Berechtigung', admin: { width: '34%' } },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'am', type: 'date', label: 'Bestätigt am', admin: { width: '50%', ...zeitpunkt } },
+                    { name: 'fassung', type: 'text', label: 'Stand der Rechtstexte', admin: { width: '50%' } },
                   ],
                 },
               ],
@@ -218,6 +337,27 @@ export const Vorgaenge: CollectionConfig = {
                   ],
                 },
                 { name: 'versandart', type: 'text', label: 'Versandart' },
+              ],
+            },
+          ],
+        },
+        {
+          label: 'Versand',
+          admin: { condition: (data) => data?.art === 'bestellung' },
+          fields: [
+            {
+              name: 'versand',
+              type: 'group',
+              label: 'Sendung',
+              admin: { description: 'Nach dem Versand eintragen — die Sendungsnummer erscheint in der Mail an den Kunden.' },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'dienstleister', type: 'select', label: 'Versanddienstleister', options: VERSANDDIENSTLEISTER, admin: { width: '40%' } },
+                    { name: 'sendungsnummer', type: 'text', label: 'Sendungsnummer', admin: { width: '60%' } },
+                  ],
+                },
               ],
             },
           ],
@@ -292,14 +432,73 @@ export const Vorgaenge: CollectionConfig = {
                         { label: 'Fehlgeschlagen', value: 'fehlgeschlagen' },
                         { label: 'Erstattet', value: 'erstattet' },
                       ],
-                      admin: { width: '25%' },
+                      admin: {
+                        width: '25%',
+                        description: 'Von Hand auf „Bezahlt“: Datum und Notiz setzen sich, der Kunde erhält eine Mail.',
+                      },
                     },
-                    { name: 'bezahltAm', type: 'date', label: 'Bezahlt am', admin: { width: '25%', ...nurLesen } },
+                    { name: 'bezahltAm', type: 'date', label: 'Bezahlt am', admin: { width: '25%', ...nurLesen }, ...systemFeld },
                   ],
                 },
-                { name: 'anbieterRef', type: 'text', label: 'Zahlungskennung (Stripe)', admin: nurLesen },
-                { name: 'checkoutSitzung', type: 'text', label: 'Stripe-Checkout-Sitzung', index: true, admin: nurLesen },
-                { name: 'erstattetCent', type: 'number', label: 'Erstattet (Cent)', admin: nurLesen },
+                {
+                  name: 'anbieterRef',
+                  type: 'text',
+                  label: 'Zahlungskennung (Stripe)',
+                  index: true,
+                  admin: { ...nurLesen, description: 'Kennung der Zahlung (pi_…), gesetzt beim Zahlungseingang.' },
+                  ...systemFeld,
+                },
+                { name: 'stripeLink', type: 'ui', admin: { components: { Field: '/payload/components/StripeLink#StripeLink' } } },
+                { name: 'checkoutSitzung', type: 'text', label: 'Stripe-Checkout-Sitzung', index: true, admin: nurLesen, ...systemFeld },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'erstattetCent', type: 'number', label: 'Erstattet (Cent)', admin: { width: '50%', ...nurLesen }, ...systemFeld },
+                    { name: 'ablaufAm', type: 'date', label: 'Zahlung möglich bis', admin: { width: '50%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: 'E-Mails',
+          fields: [
+            {
+              name: 'mails',
+              type: 'array',
+              label: 'E-Mails',
+              labels: { singular: 'E-Mail', plural: 'E-Mails' },
+              admin: { ...nurLesen, description: 'Automatisch versendete E-Mails zu diesem Vorgang.' },
+              ...systemFeld,
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'art', type: 'select', label: 'Art', required: true, options: MAIL_ARTEN, admin: { width: '30%' } },
+                    { name: 'an', type: 'text', label: 'An', required: true, admin: { width: '40%' } },
+                    { name: 'am', type: 'date', label: 'Zeitpunkt', required: true, admin: { width: '30%', ...zeitpunkt } },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'ergebnis',
+                      type: 'select',
+                      label: 'Ergebnis',
+                      required: true,
+                      options: [
+                        { label: 'Gesendet', value: 'gesendet' },
+                        { label: 'Fehlgeschlagen', value: 'fehlgeschlagen' },
+                        { label: 'Nicht eingerichtet', value: 'nicht-eingerichtet' },
+                      ],
+                      admin: { width: '30%' },
+                    },
+                    { name: 'anbieterId', type: 'text', label: 'Kennung beim Mailanbieter', admin: { width: '30%' } },
+                    { name: 'fehler', type: 'text', label: 'Fehler', admin: { width: '40%' } },
+                  ],
+                },
               ],
             },
           ],
@@ -319,7 +518,8 @@ export const Vorgaenge: CollectionConfig = {
               name: 'verlauf',
               type: 'array',
               label: 'Verlauf',
-              admin: nurLesen,
+              admin: { ...nurLesen, description: 'Für den Kunden in der Statusabfrage sichtbar.' },
+              ...systemFeld,
               fields: eintragFelder(),
             },
           ],
@@ -329,7 +529,7 @@ export const Vorgaenge: CollectionConfig = {
     // Technische Rohdaten — für die Seite nötig, im Backend ausgeblendet.
     { name: 'daten', type: 'json', admin: { hidden: true } },
     { name: 'angebot', type: 'json', admin: { hidden: true } },
-    { name: 'uploads', type: 'json', admin: { hidden: true } },
+    { name: 'uploads', type: 'json', admin: { hidden: true }, ...systemFeld },
     { name: 'zugriffsHash', type: 'text', admin: { hidden: true }, access: { read: () => false, update: () => false } },
   ],
 };

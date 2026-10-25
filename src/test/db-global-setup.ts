@@ -28,12 +28,14 @@ export default function setup() {
     DATABASE_URL: `postgres://postgres:postgres@127.0.0.1:${PORT}/sm24_test`,
     PAYLOAD_SECRET: process.env.PAYLOAD_SECRET || 'nur-fuer-tests-0123456789abcdef',
     NEXT_PUBLIC_SERVER_URL: 'http://localhost:3000',
+    // Dateien immer lokal — auch wenn in der Shell Zugangsdaten für den Bucket stehen.
+    SM24_STORAGE: 'lokal',
   };
   run(['node', 'scripts/db.mjs', 'start'], env);
   run(['npx', 'payload', 'migrate'], env);
   run(['npx', 'payload', 'run', 'src/scripts/seed.ts'], env);
 
-  for (const key of ['DATABASE_URL', 'PAYLOAD_SECRET', 'NEXT_PUBLIC_SERVER_URL'] as const) {
+  for (const key of ['DATABASE_URL', 'PAYLOAD_SECRET', 'NEXT_PUBLIC_SERVER_URL', 'SM24_STORAGE'] as const) {
     process.env[key] = env[key];
   }
 

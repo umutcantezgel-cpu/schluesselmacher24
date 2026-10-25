@@ -14,6 +14,8 @@ import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/c
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { FlowShell } from '@/components/flow/flow-shell';
+import { useFormularSchutz } from '@/components/forms/formular-schutz';
+import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { SummaryList } from '@/components/layout/summary-list';
 import { CheckDraw } from '@/components/visual/motion/check-draw';
 
@@ -418,6 +420,9 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
   const [result, setResult] = useState<SubmitResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const schutz = useFormularSchutz();
+
+
   const flow = useFlow<CheckData>({
     id: FLOW_ID,
     steps: STEPS,
@@ -563,6 +568,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
 
     try {
       const response = await submitRecord({
+        schutz: await schutz.daten(),
         kind: 'anfrage',
         area: 'sicherheitstechnik',
         process: 'gefuehrte-anfrage',
@@ -582,6 +588,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
         summary,
         uploads,
       });
+      schutz.antwortBeachten(response);
 
       if (response.ok) {
         setResult(response);
@@ -654,6 +661,8 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
 
   return (
     <FlowShell
+      schutz={schutz}
+      abschlussHinweis={<AnfrageHinweis />}
       flow={flow}
       title="Sicherheitscheck"
       submitLabel="Anfrage absenden"

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 
 import type {
   AppointmentInfo,
@@ -19,6 +20,7 @@ import { Alert } from '@/components/ui/alert';
 import { Card, CardBody } from '@/components/ui/card';
 import { InfoTip } from '@/components/ui/info-tip';
 import { FlowShell } from '@/components/flow/flow-shell';
+import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
@@ -41,6 +43,12 @@ import { GlyphLaden } from '@/components/visual/glyphen/laden';
 import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
 import { GlyphWaage } from '@/components/visual/glyphen/waage';
 import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
+import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
+import {
+  schluesselfotosFreiwillig,
+  unterlagenSchrittErfuellt,
+  type UploadSlotId,
+} from './unterlagen-pruefung';
 
 /* ==========================================================================
    Autoschlüssel — geführter Ablauf in 13 Schritten
@@ -51,10 +59,13 @@ import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichn
 
 const FLOW_ID = 'autoschluessel-anfrage';
 /** Erhöhen, sobald sich AssistentData ändert — alte Zwischenstände verfallen. */
-const FLOW_VERSION = 1;
+const FLOW_VERSION = 2;
 
 /** Kennung für „Modell nicht in der Liste“. */
 const OTHER_MODEL = '__nicht-aufgefuehrt';
+
+/** Allgemeine Anfrage mit vorgewähltem Bereich, wenn die Marke fehlt. */
+const ANFRAGE_OHNE_MARKE = '/service-und-termin/anfrage?thema=autoschluessel';
 
 const VIN_PATTERN = /^[A-HJ-NPR-Z0-9]{17}$/i;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -143,7 +154,10 @@ const STEPS: FlowStep[] = [
   },
 ];
 
-type UploadSlotId = 'vorderseite' | 'rueckseite' | 'bart' | 'detail' | 'fahrzeugschein';
+/** Hinweis im Fotoschritt, wenn kein funktionierender Schlüssel mehr da ist. */
+const HINWEIS_OHNE_SCHLUESSEL =
+  'Ist noch ein (defekter) Schlüssel da, fotografieren Sie ihn bitte. Ist keiner mehr da, '
+  + 'überspringen Sie diesen Schritt.';
 
 interface AssistentData {
   makeSlug: string;
@@ -171,6 +185,10 @@ interface AssistentData {
   country: string;
   note: string;
   depositAccepted: boolean;
+  /** AGB gelesen, Widerrufsbelehrung zur Kenntnis genommen. */
+  termsAccepted: boolean;
+  /** Ausdrückliches Verlangen nach Beginn vor Ende der Widerrufsfrist (§ 356 Abs. 4, § 357a Abs. 2 BGB). */
+  earlyStartRequested: boolean;
   slotDate: string;
   slotTime: string;
 }
@@ -199,8 +217,10 @@ export interface AssistentProps {
   retentionDays: { vehicleRegistration: number; keyPhotos: number };
   /** Aktuelles Jahr — auf dem Server ermittelt, damit Server und Browser übereinstimmen. */
   currentYear: number;
-  /** Vorbelegung aus ?marke= und ?modell=. */
-  preselect: { makeSlug: string; modelSlug: string };
+  /** Vorbelegung aus ?marke=, ?modell= und ?vorhanden=. */
+  preselect: { makeSlug: string; modelSlug: string; workingKeys: number | null };
+  /** Werkstatt und Telefon über dem Buchungsknopf — fehlt der Standort, entfällt die Zeile. */
+  werkstatt?: WerkstattAngaben;
 }
 
 export function Assistent({
@@ -210,6 +230,7 @@ export function Assistent({
   retentionDays,
   currentYear,
   preselect,
+  werkstatt,
 }: AssistentProps) {
   const initial = useMemo<AssistentData>(
     () => ({
@@ -221,7 +242,7 @@ export function Assistent({
       engine: '',
       vin: '',
       keyKind: '',
-      workingKeys: null,
+      workingKeys: preselect.workingKeys,
       serviceId: '',
       entitlementConfirmed: false,
       salutation: '',
@@ -236,10 +257,12 @@ export function Assistent({
       country: COUNTRIES[0],
       note: '',
       depositAccepted: false,
+      termsAccepted: false,
+      earlyStartRequested: false,
       slotDate: '',
       slotTime: '',
     }),
-    [preselect.makeSlug, preselect.modelSlug],
+    [preselect.makeSlug, preselect.modelSlug, preselect.workingKeys],
   );
 
   /* Dateien bleiben bewusst außerhalb des Zwischenspeichers — sie lassen
@@ -277,6 +300,8 @@ export function Assistent({
     summary: SummarySection[];
     notices: string[];
     redirectUrl?: string;
+    /** Bis wann der Termin ohne Anzahlung reserviert bleibt (ISO). */
+    reserviertBis?: string;
   } | null>(null);
 
   /* Preis und Zeitfenster werden über einen Schlüssel an die Eingaben
@@ -308,6 +333,8 @@ export function Assistent({
         day.slots.some((entry) => entry.time === current.slotTime && entry.available),
     );
   }
+
+  const schutz = useFormularSchutz();
 
   const flow = useFlow<AssistentData>({
     id: FLOW_ID,
@@ -372,6 +399,7 @@ export function Assistent({
   }, []);
 
   const modelName = isOtherModel ? data.modelOther.trim() : model?.name ?? '';
+  const fotosFreiwillig = schluesselfotosFreiwillig(data.workingKeys);
 
   /* ---------- Schrittprüfung -------------------------------------------- */
 
@@ -394,17 +422,19 @@ export function Assistent({
       case 'leistung':
         return Boolean(current.serviceId);
       case 'schluesselfotos':
-        return (
-          files.vorderseite.length > 0 && files.rueckseite.length > 0 && files.bart.length > 0
-        );
       case 'fahrzeugschein':
-        return files.fahrzeugschein.length > 0 && current.entitlementConfirmed;
+        return unterlagenSchrittErfuellt(stepId, current, files);
       case 'kontakt':
         return isContactComplete(current);
       case 'preis':
         return quoteFor(current) !== null;
       case 'anzahlung':
-        return quoteFor(current) !== null && current.depositAccepted;
+        return (
+          quoteFor(current) !== null
+          && current.depositAccepted
+          && current.termsAccepted
+          && current.earlyStartRequested
+        );
       case 'termin':
         return isSelectedSlotFree(current);
       default:
@@ -439,7 +469,7 @@ export function Assistent({
       case 'preis':
         return 'Der Preis wird noch ermittelt.';
       case 'anzahlung':
-        return 'Bitte bestätigen Sie die Anzahlung, um fortzufahren.';
+        return 'Bitte bestätigen Sie die Anzahlung, die AGB und den Beginn vor Ablauf der Widerrufsfrist, um fortzufahren.';
       case 'termin':
         return 'Bitte wählen Sie ein freies Zeitfenster aus.';
       default:
@@ -559,7 +589,12 @@ export function Assistent({
 
     fetchSlots(slotMinutes, leadTimeDays)
       .then((response) => {
-        if (!cancelled) setSlotsResult({ key: slotsKey, days: response, error: null });
+        if (cancelled) return;
+        setSlotsResult(
+          response.error
+            ? { key: slotsKey, days: null, error: response.error }
+            : { key: slotsKey, days: response, error: null },
+        );
       })
       .catch(() => {
         if (!cancelled) setSlotsResult({ key: slotsKey, days: null, error: failure });
@@ -619,6 +654,7 @@ export function Assistent({
     }
 
     const keyKindLabel = data.keyKind ? KEY_KIND_OPTIONS[data.keyKind as KeyKind].label : '—';
+    const anzahlFotos = KEY_PHOTO_SLOTS.reduce((sum, slot) => sum + files[slot.id].length, 0);
     const workingKeysLabel =
       WORKING_KEYS_OPTIONS.find((option) => option.value === data.workingKeys)?.label ?? '—';
 
@@ -696,7 +732,10 @@ export function Assistent({
         rows: [
           {
             label: 'Schlüsselfotos',
-            value: `${KEY_PHOTO_SLOTS.reduce((sum, slot) => sum + files[slot.id].length, 0)} Datei(en)`,
+            value:
+              anzahlFotos === 0 && fotosFreiwillig
+                ? 'keine Schlüsselfotos (kein Schlüssel vorhanden)'
+                : `${anzahlFotos} Datei(en)`,
           },
           { label: 'Zulassungsbescheinigung', value: `${files.fahrzeugschein.length} Datei(en)` },
         ],
@@ -773,6 +812,13 @@ export function Assistent({
           entitlementConfirmed: data.entitlementConfirmed,
           depositAccepted: data.depositAccepted,
         },
+        // Pflicht-Zustimmungen — der Server prüft sie und speichert sie mit Zeitpunkt.
+        consents: {
+          terms: data.termsAccepted,
+          deposit: data.depositAccepted,
+          authorization: data.entitlementConfirmed,
+          earlyStart: data.earlyStartRequested,
+        },
         summary,
         uploads: buildUploads(),
         quote,
@@ -792,7 +838,9 @@ export function Assistent({
           amountCents: quote.depositCents,
           description: `Anzahlung für ${service?.label ?? 'Autoschlüssel-Leistung'}`,
         },
+        schutz: await schutz.daten(),
       });
+      schutz.antwortBeachten(result);
 
       if (result.ok && result.reference) {
         setDone({
@@ -802,8 +850,12 @@ export function Assistent({
           summary,
           notices: result.notices,
           redirectUrl: result.redirectUrl,
+          // Stripe hält die Zahlungsseite 31 Minuten offen — angezeigt wird die sichere Untergrenze.
+          reserviertBis: result.redirectUrl ? new Date(Date.now() + 30 * 60 * 1000).toISOString() : undefined,
         });
         clearFlow(FLOW_ID);
+        // Wie in der Kasse: sofort zur Zahlungsseite. Ohne Anzahlung wird das Zeitfenster wieder frei.
+        if (result.redirectUrl) window.location.assign(result.redirectUrl);
       } else {
         setSubmitError(
           result.error ?? 'Ihre Anfrage konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.',
@@ -825,21 +877,35 @@ export function Assistent({
         summary={done.summary}
         notices={done.notices}
         redirectUrl={done.redirectUrl}
+        reserviertBis={done.reserviertBis}
       />
     );
   }
 
   /* ---------- Darstellung der einzelnen Schritte ------------------------ */
 
+  /* Bei Totalverlust ersetzt ein eigener Hinweis den des Fotoschritts —
+     der Rahmen zeigt den Hinweis aus dem aktuellen Schritt. */
+  const anzeigeFlow =
+    flow.step.id === 'schluesselfotos' && fotosFreiwillig
+      ? { ...flow, step: { ...flow.step, hint: HINWEIS_OHNE_SCHLUESSEL } }
+      : flow;
+
   return (
     <FlowShell
-      flow={flow}
+      flow={anzeigeFlow}
       title="Autoschlüssel: Anfrage mit Termin"
       submitLabel="Zahlungspflichtig buchen"
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHint(flow.step.id)}
       raster="seite"
+      schutz={schutz}
+      abschlussHinweis={
+        werkstatt?.standort && (
+          <WerkstattZeile standort={werkstatt.standort} telefon={werkstatt.telefon} />
+        )
+      }
     >
       {submitError && (
         <Alert tone="warning" title="Absenden nicht möglich" className="mb-5">
@@ -849,18 +915,27 @@ export function Assistent({
 
       {/* 1 — Marke */}
       {flow.step.id === 'marke' && (
-        <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
-          {makes.map((entry) => (
-            <OptionCard
-              key={entry.id}
-              name="marke"
-              value={entry.slug}
-              checked={data.makeSlug === entry.slug}
-              onSelect={selectMake}
-              title={entry.name}
-              description={<span className="whitespace-nowrap font-mono tabular-nums">{entry.models.length} Modelle</span>}
-            />
-          ))}
+        <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
+            {makes.map((entry) => (
+              <OptionCard
+                key={entry.id}
+                name="marke"
+                value={entry.slug}
+                checked={data.makeSlug === entry.slug}
+                onSelect={selectMake}
+                title={entry.name}
+                description={<span className="whitespace-nowrap font-mono tabular-nums">{entry.models.length} Modelle</span>}
+              />
+            ))}
+          </div>
+          {/* Fehlt die Marke, führt der Weg über die allgemeine Anfrage mit vorgewähltem Bereich. */}
+          <p className="text-small leading-relaxed text-foreground-muted">
+            Ihre Marke ist nicht dabei?{' '}
+            <Link href={ANFRAGE_OHNE_MARKE} className="font-semibold text-primary hover:underline">
+              Fall schildern
+            </Link>
+          </p>
         </div>
       )}
 
@@ -1128,10 +1203,10 @@ export function Assistent({
               category="schluesselfoto"
               key={slot.id}
               id={`schluessel-${slot.id}`}
-              label={slot.label}
+              label={fotosFreiwillig && slot.required ? `${slot.label} (freiwillig)` : slot.label}
               description={slot.description}
               example={slot.example}
-              required={slot.required}
+              required={slot.required && !fotosFreiwillig}
               multiple={slot.id === 'detail'}
               maxFiles={slot.id === 'detail' ? 3 : 1}
               files={files[slot.id]}
@@ -1143,7 +1218,7 @@ export function Assistent({
             <p>
               Die Schlüsselfotos verwenden wir ausschließlich, um Bauform, Profil und Elektronik zu
               bestimmen und Ihren Auftrag auszuführen. Wir bewahren sie höchstens{' '}
-              {retentionDays.keyPhotos} Tage nach Abschluss des Vorgangs auf und löschen sie
+              {retentionDays.keyPhotos} Tage nach dem Hochladen auf und löschen sie
               anschließend.
             </p>
           </Alert>
@@ -1170,7 +1245,7 @@ export function Assistent({
               Wir fertigen Fahrzeugschlüssel ausschließlich für Berechtigte. Die
               Zulassungsbescheinigung dient allein diesem Nachweis und der Zuordnung Ihres
               Fahrzeugs. Wir bewahren sie höchstens {retentionDays.vehicleRegistration} Tage nach
-              Abschluss des Vorgangs auf und löschen sie danach. Eine Weitergabe zu anderen Zwecken
+              dem Hochladen auf und löschen sie danach. Eine Weitergabe zu anderen Zwecken
               findet nicht statt.
             </p>
             <p className="mt-2">
@@ -1506,6 +1581,37 @@ export function Assistent({
             onSelect={() => flow.set('depositAccepted', !data.depositAccepted)}
             title={`Ich habe verstanden, dass eine Anzahlung von ${formatCents(quote.depositCents)} anfällt.`}
             description="Sie wird vollständig auf den Gesamtpreis angerechnet."
+          />
+
+          <p className="text-small leading-relaxed text-foreground-muted">
+            Bitte lesen Sie vor der Buchung unsere{' '}
+            <Link href="/rechtliches/agb" target="_blank" className="font-semibold text-primary hover:underline">
+              AGB
+            </Link>{' '}
+            und die{' '}
+            <Link href="/rechtliches/widerruf" target="_blank" className="font-semibold text-primary hover:underline">
+              Widerrufsbelehrung
+            </Link>
+            . Beide öffnen sich in einem neuen Fenster; Ihre Angaben bleiben hier erhalten.
+          </p>
+
+          <OptionCard
+            name="agb"
+            value="bestaetigt"
+            multiple
+            checked={data.termsAccepted}
+            onSelect={() => flow.set('termsAccepted', !data.termsAccepted)}
+            title="Ich habe die AGB gelesen und die Widerrufsbelehrung zur Kenntnis genommen."
+          />
+
+          <OptionCard
+            name="vorzeitiger-beginn"
+            value="verlangt"
+            multiple
+            checked={data.earlyStartRequested}
+            onSelect={() => flow.set('earlyStartRequested', !data.earlyStartRequested)}
+            title="Ich verlange ausdrücklich, dass Sie vor Ablauf der Widerrufsfrist mit der Leistung beginnen (z. B. Rohling bestellen)."
+            description="Mir ist bekannt, dass ich bei vollständiger Vertragserfüllung mein Widerrufsrecht verliere und bei Widerruf Wertersatz leiste."
           />
 
           <p className="flex items-start gap-2 text-small leading-relaxed text-foreground-subtle">
