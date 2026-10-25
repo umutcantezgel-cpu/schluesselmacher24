@@ -7,6 +7,7 @@ const PRODUKTION = {
   VERCEL_ENV: 'production',
   DATABASE_URL: 'postgres://pooler:6543/postgres',
   DATABASE_URL_UNPOOLED: 'postgres://direkt:5432/postgres',
+  DATABASE_CA_CERT: '-----BEGIN CERTIFICATE-----\\nMIIC…\\n-----END CERTIFICATE-----',
   PAYLOAD_SECRET: '0123456789abcdef0123456789abcdef',
   NEXT_PUBLIC_SITE_URL: 'https://schluesselmacher24.de',
   CRON_SECRET: 'x',
@@ -35,6 +36,37 @@ describe('pruefeUmgebung', () => {
     expect(fehler.join(' ')).toMatch(/DATABASE_URL.*PAYLOAD_SECRET.*NEXT_PUBLIC_SITE_URL/);
     expect(pruefeUmgebung({ ...PRODUKTION, DATABASE_URL: undefined, POSTGRES_URL: 'postgres://vercel' }).fehler).toEqual([]);
     expect(pruefeUmgebung({ ...PRODUKTION, SM24_DATA: 'json' }).fehler).toHaveLength(1);
+  });
+
+  it('bricht in Produktion ab, wenn die Datenbankverbindung unverschlüsselt wäre', () => {
+    const ohneCa = { ...PRODUKTION, DATABASE_CA_CERT: ' ' };
+    const { fehler } = pruefeUmgebung(ohneCa);
+    expect(fehler).toHaveLength(1);
+    expect(fehler[0]).toMatch(/^Datenbankverbindung wäre unverschlüsselt: DATABASE_CA_CERT setzen \(Supabase → Database/);
+
+    // Mit sslmode in beiden Adressen verschlüsselt `pg` auch ohne eigenes Zertifikat.
+    const mitSsl = (url: string, modus: string) => `${url}?sslmode=${modus}`;
+    for (const modus of ['require', 'verify-ca', 'verify-full']) {
+      const env = { ...ohneCa, DATABASE_URL: mitSsl(PRODUKTION.DATABASE_URL, modus), DATABASE_URL_UNPOOLED: mitSsl(PRODUKTION.DATABASE_URL_UNPOOLED, modus) };
+      expect(pruefeUmgebung(env).fehler).toEqual([]);
+    }
+    // Vercel-Integration: POSTGRES_URL / POSTGRES_URL_NON_POOLING mit sslmode=require.
+    expect(
+      pruefeUmgebung({
+        ...ohneCa,
+        DATABASE_URL: undefined,
+        DATABASE_URL_UNPOOLED: undefined,
+        POSTGRES_URL: 'postgres://u:p@pooler:6543/postgres?sslmode=require&supa=base-pooler.x',
+        POSTGRES_URL_NON_POOLING: 'postgres://u:p@pooler:5432/postgres?sslmode=require',
+      }).fehler,
+    ).toEqual([]);
+
+    // Nur eine Adresse mit sslmode, oder ein Modus ohne Pflicht: weiter Fehler.
+    expect(pruefeUmgebung({ ...ohneCa, DATABASE_URL: mitSsl(PRODUKTION.DATABASE_URL, 'require') }).fehler).toHaveLength(1);
+    for (const modus of ['disable', 'prefer', 'allow']) {
+      const env = { ...ohneCa, DATABASE_URL: mitSsl(PRODUKTION.DATABASE_URL, modus), DATABASE_URL_UNPOOLED: mitSsl(PRODUKTION.DATABASE_URL_UNPOOLED, modus) };
+      expect(pruefeUmgebung(env).fehler).toHaveLength(1);
+    }
   });
 
   it('warnt bei fehlenden Anbindungen und kurzem Geheimnis', () => {

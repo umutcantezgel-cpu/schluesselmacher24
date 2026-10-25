@@ -30,7 +30,8 @@ Reihenfolge: **1 Postfach → 2 Supabase → 3 Resend → 4 Stripe (Testmodus) �
    - **Session pooler** (Port **5432**, Host `…pooler.supabase.com`) → `DATABASE_URL_UNPOOLED`
 
    Nicht die „Direct connection“ (`db.<ref>.supabase.co`) nehmen, sie ist nur per IPv6 erreichbar und funktioniert aus Vercel nicht.
-3. **Database → Settings → SSL Configuration → Download certificate**: Den Inhalt der Datei nach `DATABASE_CA_CERT` kopieren. Ohne Zertifikat scheitert die Verbindung.
+3. **Database → Settings → SSL Configuration → Download certificate**: Den Inhalt der Datei nach `DATABASE_CA_CERT` kopieren. Ohne Zertifikat bricht der Produktions-Build ab (sonst liefe die Verbindung unverschlüsselt).
+   Im selben Abschnitt **Database → Settings → Enforce SSL on incoming connections** einschalten: Dann nimmt die Datenbank keine unverschlüsselte Verbindung mehr an.
 4. **Storage → New bucket**: Name `sm24-dateien`, **Public aus**. Dort liegen Fahrzeugscheine, Schlüsselfotos und Grundrisse, sie dürfen nie öffentlich sein.
 5. **Storage → S3 Connection**:
    - Endpoint → `STORAGE_ENDPOINT` (`https://<ref>.storage.supabase.co/storage/v1/s3`)
