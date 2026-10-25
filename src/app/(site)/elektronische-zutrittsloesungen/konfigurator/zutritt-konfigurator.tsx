@@ -672,6 +672,7 @@ export function ZutrittKonfigurator() {
       summary: [...answerSummary, buildContactSummary(data)],
       uploads: [],
     });
+    schutz.antwortBeachten(response);
 
     setSubmitting(false);
 

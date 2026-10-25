@@ -3,7 +3,13 @@
 import { useCallback, useEffect, useId, useRef, type RefObject } from 'react';
 
 import { formularStarten } from '@/lib/actions/formular';
-import { HONIGTOPF_FELD, MINDESTDAUER_MS, START_FELD, type FormularSchutz } from '@/lib/formular-schutz';
+import {
+  HONIGTOPF_FELD,
+  MINDESTDAUER_MS,
+  START_FELD,
+  type FormularSchutz,
+  type SchutzAntwort,
+} from '@/lib/formular-schutz';
 
 /* Bot-Schutz im Browser: Startzeitpunkt beim Öffnen holen, Honigtopf-Feld
    verstecken, beides beim Absenden mitschicken. Prüfung auf dem Server
@@ -35,6 +41,12 @@ export interface FormularSchutzHandle {
   felderFuellen: () => void;
   /** Angaben für die Server-Aktion, nach `vorbereiten`. */
   daten: () => Promise<FormularSchutz>;
+  /**
+   * Antwort der Server-Aktion beachten: Bei `schutzNeu` sofort einen neuen
+   * Startzeitpunkt holen, damit der nächste Versuch durchgeht. Die Eingaben
+   * im Formular bleiben dabei stehen.
+   */
+  antwortBeachten: (antwort: SchutzAntwort | null | undefined) => void;
 }
 
 export function useFormularSchutz(): FormularSchutzHandle {
@@ -79,7 +91,18 @@ export function useFormularSchutz(): FormularSchutzHandle {
     return { start: start.current?.wert ?? '', [HONIGTOPF_FELD]: honig instanceof HTMLInputElement ? honig.value : '' };
   }, [vorbereiten, honigtopfId]);
 
-  return { ids: { start: startId, honigtopf: honigtopfId }, bereit, vorbereiten, felderFuellen, daten };
+  const antwortBeachten = useCallback(
+    (antwort: SchutzAntwort | null | undefined) => {
+      if (!antwort?.schutzNeu) return;
+      // Den abgewiesenen Zeitpunkt verwerfen: Wer vor dem Eintreffen des
+      // neuen erneut absendet, holt in `vorbereiten` selbst einen.
+      start.current = null;
+      void holen();
+    },
+    [holen],
+  );
+
+  return { ids: { start: startId, honigtopf: honigtopfId }, bereit, vorbereiten, felderFuellen, daten, antwortBeachten };
 }
 
 /**

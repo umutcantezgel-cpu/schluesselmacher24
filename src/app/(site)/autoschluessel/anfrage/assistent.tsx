@@ -823,6 +823,7 @@ export function Assistent({
         },
         schutz: await schutz.daten(),
       });
+      schutz.antwortBeachten(result);
 
       if (result.ok && result.reference) {
         setDone({

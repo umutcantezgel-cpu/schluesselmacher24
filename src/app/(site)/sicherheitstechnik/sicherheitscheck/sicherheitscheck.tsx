@@ -588,6 +588,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
         summary,
         uploads,
       });
+      schutz.antwortBeachten(response);
 
       if (response.ok) {
         setResult(response);

@@ -60,6 +60,8 @@ export interface WiderrufDatensatz {
   vorgang?: number;
   zuordnung: 'zugeordnet' | 'zu-pruefen';
   bearbeitet: false;
+  /** Interne Notiz fürs Backend, z. B. zum Bot-Schutz. */
+  notiz?: string;
 }
 
 export interface WiderrufBestaetigung {

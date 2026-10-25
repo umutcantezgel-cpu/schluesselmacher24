@@ -926,6 +926,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
         summary,
         uploads,
       });
+      schutz.antwortBeachten(response);
 
       if (response.ok && response.reference) {
         clearFlow(FLOW_ID);

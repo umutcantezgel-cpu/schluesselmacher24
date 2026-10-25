@@ -33,6 +33,20 @@ export function earliestBookableDate(today: string, leadTimeDays: number): strin
   return addDays(today, leadTimeDays);
 }
 
+const UHRZEIT_BERLIN = new Intl.DateTimeFormat('de-DE', {
+  timeZone: 'Europe/Berlin',
+  hour: '2-digit',
+  minute: '2-digit',
+  hourCycle: 'h23',
+});
+
+/** Uhrzeit in deutscher Zeit als Minuten seit Mitternacht (Gegenstück zu `heuteInBerlin`). */
+export function minutenInBerlin(jetzt: Date = new Date()): number {
+  const werte: Record<string, string> = {};
+  for (const teil of UHRZEIT_BERLIN.formatToParts(jetzt)) werte[teil.type] = teil.value;
+  return Number(werte.hour) * 60 + Number(werte.minute);
+}
+
 function timeToMinutes(value: string): number {
   const [h, m] = value.split(':').map(Number);
   return h * 60 + m;
@@ -50,6 +64,11 @@ function overlaps(
 export interface SlotQuery {
   /** Heutiges Datum als ISO-Tag (in deutscher Zeit, siehe `heuteInBerlin`). */
   today: string;
+  /**
+   * Aktuelle Uhrzeit in deutscher Zeit (`minutenInBerlin`). Am Tag `today`
+   * entfallen dann alle Fenster, die schon begonnen haben — bei Vorlauf 0.
+   */
+  jetztMinuten?: number;
   /** Wie lange der Termin dauert. */
   durationMinutes: number;
   /** Abweichender Vorlauf, sonst der Standard. */
@@ -159,7 +178,10 @@ export function availableSlots(query: SlotQuery): TimeSlot[] {
     if (tagGesperrt(date, query)) continue;
 
     for (const window of query.booking.windows) {
-      const grund = fensterPruefen(date, timeToMinutes(window.from), query.durationMinutes, query, belegungen.get(date) ?? []);
+      const von = timeToMinutes(window.from);
+      // Heute nur, was noch nicht begonnen hat.
+      if (date === query.today && query.jetztMinuten !== undefined && von <= query.jetztMinuten) continue;
+      const grund = fensterPruefen(date, von, query.durationMinutes, query, belegungen.get(date) ?? []);
       // Fenster außerhalb der Öffnungszeit werden nicht angeboten.
       if (grund === 'oeffnungszeit') continue;
 

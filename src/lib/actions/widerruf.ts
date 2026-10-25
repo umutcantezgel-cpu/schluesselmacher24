@@ -22,7 +22,7 @@ function feld(formData: FormData, name: string): string | undefined {
   return typeof wert === 'string' ? wert : undefined;
 }
 
-/** Freie Angaben ohne den vorangestellten Erklärungssatz (für die Betriebsmail). */
+/** Freie Angaben ohne den vorangestellten Erklärungssatz (für beide Mails). */
 function angabenAus(erklaerung: string): string | undefined {
   const rest = erklaerung.startsWith(WIDERRUF_ERKLAERUNG) ? erklaerung.slice(WIDERRUF_ERKLAERUNG.length) : erklaerung;
   return rest.trim() || undefined;
@@ -51,12 +51,12 @@ export async function widerrufErklaeren(
     };
   }
 
-  // Bot-Schutz: still „eingegangen“, aber nichts gespeichert und nichts versendet.
+  // Bot-Schutz: Nur der ausgefüllte Honigtopf wird still verworfen.
   const befund = formularSchutzPruefen({
     start: feld(formData, START_FELD),
     [HONIGTOPF_FELD]: feld(formData, HONIGTOPF_FELD),
   });
-  if (befund !== 'ok') {
+  if (befund === 'honigtopf') {
     botVerdachtMelden('widerrufErklaeren', befund);
     const vorgangsnummer = feld(formData, 'vorgangsnummer')?.trim().toUpperCase().slice(0, 40);
     return {
@@ -68,6 +68,16 @@ export async function widerrufErklaeren(
       mailGesendet: false,
     };
   }
+  // Fehlender oder unpassender Startzeitpunkt (etwa ohne JavaScript): Die
+  // Erklärung ist trotzdem wirksam und wird gespeichert, der Betrieb erfährt
+  // davon. Nur die Eingangsbestätigung an die eingegebene Adresse entfällt —
+  // sonst ließe sich unsere Domain als Mailverteiler missbrauchen.
+  const verdacht = befund !== 'ok';
+  if (verdacht) botVerdachtMelden('widerrufErklaeren', befund, 'gespeichert, ohne Mail an den Kunden');
+  const notiz = verdacht
+    ? `Bot-Schutz: ${befund} (Startzeitpunkt fehlt oder passt nicht, etwa ohne JavaScript). Keine Eingangsbestätigung `
+      + 'an die angegebene Adresse versendet — bitte prüfen und den Eingang bei Bedarf von Hand bestätigen.'
+    : undefined;
 
   return widerrufAufnehmen(
     {
@@ -81,15 +91,17 @@ export async function widerrufErklaeren(
       firma: settings.company,
       jetzt: () => new Date(),
       vorgangFinden: widerrufVorgangFinden,
-      speichern: widerrufSpeichern,
+      speichern: notiz ? (datensatz) => widerrufSpeichern({ ...datensatz, notiz }) : widerrufSpeichern,
       bestaetigungVermerken: widerrufBestaetigungVermerken,
       vorgangVermerken: widerrufAmVorgangVermerken,
       bestaetigungSenden: async (datensatz) => {
+        if (verdacht) return { ergebnis: 'nicht-eingerichtet' };
+        // Mit dem Inhalt der Erklärung; die Vorlage escapt und kürzt alle Eingaben.
         const eintrag = await sendeWiderrufEingang({
           an: datensatz.email,
-          // Ein Namensfeld: die Vorlage prüft und kürzt die Anrede selbst.
-          vorname: datensatz.name,
+          name: datensatz.name,
           vorgangsnummer: datensatz.vorgangsnummer,
+          angaben: angabenAus(datensatz.erklaerung),
           eingegangenAm: datensatz.eingegangenAm,
           settings,
         });

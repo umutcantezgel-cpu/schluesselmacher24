@@ -300,6 +300,7 @@ export function KasseFormular({
       expectedTotalCents: summen.totalCents,
       schutz: await schutz.daten(),
     });
+    schutz.antwortBeachten(ergebnis);
 
     if (!ergebnis.ok) {
       setSendet(false);

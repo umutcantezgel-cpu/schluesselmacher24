@@ -272,10 +272,13 @@ export async function benachrichtigeStatus({
 /* ---------- Widerruf ----------------------------------------------------- */
 
 export interface WiderrufEingangMail {
+  /** E-Mail-Adresse wie eingegeben — steht auch in der Bestätigung. */
   an: string;
-  vorname?: string;
-  nachname?: string;
+  /** Name wie eingegeben. */
+  name: string;
   vorgangsnummer?: string;
+  /** Freie Angaben des Kunden (ohne den Erklärungssatz). */
+  angaben?: string;
   /** ISO-Zeitpunkt des Eingangs. */
   eingegangenAm: string;
   settings?: Settings;
@@ -292,9 +295,10 @@ export async function sendeWiderrufEingang(daten: WiderrufEingangMail): Promise<
     art: 'widerruf',
     an: daten.an,
     inhalt: widerrufEingang({
-      vorname: daten.vorname,
-      nachname: daten.nachname,
+      name: daten.name,
+      email: daten.an,
       vorgangsnummer: daten.vorgangsnummer,
+      angaben: daten.angaben,
       eingegangenAm: daten.eingegangenAm,
       kontext: vorlagenKontext(settings),
     }),

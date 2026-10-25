@@ -374,6 +374,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         summary,
         uploads: alleFotos.map((file) => alsUpload(file, 'schluesselfoto')),
       });
+      schutz.antwortBeachten(antwort);
 
       if (antwort.ok) {
         setResult(antwort);

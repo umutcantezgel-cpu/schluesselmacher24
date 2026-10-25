@@ -75,6 +75,7 @@ const aktionen = { ...(await import('./records')), ...(await import('./orders'))
 const { resetRateLimits } = await import('@/lib/server/rate-limit');
 const { createAccessToken, verifyAccessToken } = await import('@/lib/server/access-token');
 const { startSignieren } = await import('@/lib/server/formular-schutz');
+const { SCHUTZ_ERNEUERT } = await import('@/lib/formular-schutz');
 
 /** Wie aus dem Browser: Formular vor 10 Sekunden geöffnet, Honigtopf leer. */
 const schutz = () => ({ start: startSignieren(Date.now() - 10_000), website: '' });
@@ -252,6 +253,64 @@ describe('submitRecord', () => {
       expect(dritte.error).toContain('Anzahlung noch aussteht');
       // Eine andere Adresse darf weiter buchen.
       expect((await buchen(c, { contact: { ...contact, email: 'max@example.org' } })).ok).toBe(true);
+    });
+
+    it('setzt Leistung, Marke und Modell aus den Stammdaten, nicht aus der Zusammenfassung des Browsers', async () => {
+      const make = defaults.vehicleMakes().find((m) => m.slug === 'volkswagen')!;
+      const model = make.models.find((m) => m.slug === 'golf')!;
+      const result = await buchen(await freiesFenster(), {
+        summary: [
+          {
+            title: 'Fahrzeug',
+            rows: [
+              { label: 'Marke', value: 'Ferrari' },
+              { label: 'Modell', value: 'Enzo' },
+              { label: 'Baujahr / Erstzulassung', value: '2015' },
+            ],
+          },
+          {
+            title: 'Schlüssel und Leistung',
+            rows: [
+              { label: 'Schlüsselart', value: 'Klappschlüssel' },
+              { label: 'Gewünschte Leistung', value: '2 Funkschlüssel inkl. Anlernen' },
+            ],
+          },
+        ],
+      });
+      expect(result.ok).toBe(true);
+      const summary = stored[0].summary;
+      expect(summary[0].rows).toEqual([
+        { label: 'Gewünschte Leistung', value: 'Zweitschlüssel anfertigen' },
+        { label: 'Marke', value: make.name },
+        { label: 'Modell', value: model.name },
+      ]);
+      const zeilen = summary.flatMap((abschnitt) => abschnitt.rows);
+      expect(zeilen.map((z) => z.value)).not.toContain('2 Funkschlüssel inkl. Anlernen');
+      expect(zeilen.map((z) => z.value)).not.toContain('Ferrari');
+      expect(zeilen).toContainEqual({ label: 'Baujahr / Erstzulassung', value: '2015' });
+
+      // Die Vertragsbestätigung liest dieselben Zeilen.
+      const { vertragsbestaetigung } = await import('@/lib/mail/vorlagen/vertragsbestaetigung');
+      const mail = vertragsbestaetigung({
+        vorgang: stored[0],
+        kontext: { site: 'https://schluesselmacher24.de' },
+        settings: defaults.settings(),
+        zahlarten: null,
+      });
+      expect(mail.text).toContain('Leistung: Zweitschlüssel anfertigen');
+      expect(mail.text).toContain(`Fahrzeug: ${make.name} ${model.name}`);
+      expect(mail.text).not.toContain('Funkschlüssel inkl. Anlernen');
+    });
+
+    it('behält ein Modell außerhalb der Liste nur als Angabe des Kunden', async () => {
+      const result = await buchen(await freiesFenster(), {
+        verify: { ...verify, modelSlug: null },
+        summary: [{ title: 'Fahrzeug', rows: [{ label: 'Modell', value: 'Golf Country (nicht in der Liste aufgeführt)' }] }],
+      });
+      expect(result.ok).toBe(true);
+      const zeilen = stored[0].summary.flatMap((abschnitt) => abschnitt.rows);
+      expect(zeilen.filter((z) => z.label === 'Modell')).toEqual([]);
+      expect(zeilen).toContainEqual({ label: 'Modell (Angabe des Kunden)', value: 'Golf Country (nicht in der Liste aufgeführt)' });
     });
 
     it('übernimmt den geprüften Termin, nicht die Angaben des Browsers', async () => {
@@ -527,32 +586,51 @@ describe('Bot-Schutz', () => {
     uploads: [],
   };
 
-  it.each([
-    ['Honigtopf ausgefüllt', () => ({ start: startSignieren(Date.now() - 10_000), website: 'https://spam.example' })],
-    ['zu schnell (1 s)', () => ({ start: startSignieren(Date.now() - 1_000), website: '' })],
-    ['älter als 24 Stunden', () => ({ start: startSignieren(Date.now() - 25 * 60 * 60 * 1000), website: '' })],
-    ['ohne Startzeitpunkt', () => ({})],
-    ['mit gefälschter Signatur', () => ({ start: `${Date.now() - 10_000}.${'A'.repeat(43)}` })],
-  ])('antwortet bei „%s“ wie bei Erfolg, speichert aber nichts', async (_name, falsch) => {
-    const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const result = await aktionen.submitRecord({ ...anfrage, schutz: falsch() });
-    expect(result.ok).toBe(true);
-    expect(result.reference).toMatch(/^SM24-A-\d{4}-\d{4}$/);
-    expect(stored).toHaveLength(0);
-
-    const bestellung = await aktionen.submitOrder({
+  const bestellung = (schutz: Record<string, string>) =>
+    aktionen.submitOrder({
       items: [],
       shippingOptionId: 'x',
       contact,
       acceptedTerms: true,
       acceptedCustomMade: true,
       expectedTotalCents: 0,
-      schutz: falsch(),
+      schutz,
     });
-    expect(bestellung.ok).toBe(true);
+
+  it('antwortet beim ausgefüllten Honigtopf still wie bei Erfolg, speichert aber nichts', async () => {
+    const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const honig = { start: startSignieren(Date.now() - 10_000), website: 'https://spam.example' };
+    const result = await aktionen.submitRecord({ ...anfrage, schutz: honig });
+    expect(result.ok).toBe(true);
+    expect(result.reference).toMatch(/^SM24-A-\d{4}-\d{4}$/);
+    expect(result.schutzNeu).toBeUndefined();
+    expect((await bestellung(honig)).ok).toBe(true);
+    expect(stored).toHaveLength(0);
+    expect(warnung).toHaveBeenCalledWith(expect.stringContaining('honigtopf'));
+    warnung.mockRestore();
+  });
+
+  it.each([
+    ['zu schnell (1 s)', () => ({ start: startSignieren(Date.now() - 1_000), website: '' })],
+    ['älter als 24 Stunden', () => ({ start: startSignieren(Date.now() - 25 * 60 * 60 * 1000), website: '' })],
+    ['ohne Startzeitpunkt', () => ({})],
+    ['mit gefälschter Signatur', () => ({ start: `${Date.now() - 10_000}.${'A'.repeat(43)}` })],
+  ])('meldet bei „%s“ einen wiederholbaren Fehler statt einer Schein-Nummer', async (_name, falsch) => {
+    const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = await aktionen.submitRecord({ ...anfrage, schutz: falsch() });
+    expect(result).toMatchObject({ ok: false, schutzNeu: true, error: SCHUTZ_ERNEUERT });
+    expect(result.reference).toBeUndefined();
+
+    const order = await bestellung(falsch());
+    expect(order).toMatchObject({ ok: false, schutzNeu: true, error: SCHUTZ_ERNEUERT });
+    expect(order.reference).toBeUndefined();
     expect(stored).toHaveLength(0);
     expect(warnung).toHaveBeenCalledWith(expect.stringContaining('[bot-schutz]'));
     warnung.mockRestore();
+
+    // Zweiter Versuch mit frischem Startzeitpunkt geht durch.
+    expect((await aktionen.submitRecord({ ...anfrage, schutz: schutz() })).ok).toBe(true);
+    expect(stored).toHaveLength(1);
   });
 
   it('nimmt gültige Formulare an', async () => {
