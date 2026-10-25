@@ -3,6 +3,7 @@ import type { CollectionConfig, Field } from 'payload';
 import { istInhaber, istTeam } from '../access/rollen';
 import { BEREICHE, PROZESSE } from '../fields/gemeinsam';
 import { bestaetigungSenden } from '../hooks/bestaetigung-senden';
+import { druckansichten } from '../hooks/druckansichten';
 import { terminAktionen } from '../hooks/termin-aktionen';
 import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-benachrichtigen';
 
@@ -128,7 +129,7 @@ export const Vorgaenge: CollectionConfig = {
     beforeChange: [vorgangVorAenderung],
     afterChange: [vorgangNachAenderung],
   },
-  endpoints: [bestaetigungSenden, ...terminAktionen],
+  endpoints: [bestaetigungSenden, ...terminAktionen, ...druckansichten],
   fields: [
     {
       type: 'row',
@@ -188,6 +189,12 @@ export const Vorgaenge: CollectionConfig = {
       name: 'bestaetigungSenden',
       type: 'ui',
       admin: { position: 'sidebar', components: { Field: '/payload/components/BestaetigungSenden#BestaetigungSenden' } },
+    },
+    {
+      // Vorgangsblatt zum Drucken / als PDF speichern (Leitfaden Kap. 11 und 17).
+      name: 'vorgangsblatt',
+      type: 'ui',
+      admin: { position: 'sidebar', components: { Field: '/payload/components/VorgangsblattKnopf#VorgangsblattKnopf' } },
     },
     {
       name: 'terminVerschieben',
