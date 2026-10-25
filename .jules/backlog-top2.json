@@ -1,0 +1,11 @@
+{
+  "top_2_selected": [
+    {
+      "id": "idea-1",
+      "target_existing_route": "src/app/(site)/service-und-termin/page.tsx",
+      "target_component_file": "src/components/calculator/service-budget-calculator.tsx",
+      "module_name": "service-budget-calculator",
+      "status": "COMPLETED_BY_BUILDER"
+    }
+  ]
+}

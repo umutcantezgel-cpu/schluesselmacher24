@@ -21,6 +21,7 @@ import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconServiceUndTermin } from '@/components/visual/icons/service-und-termin';
 import { IconStandort } from '@/components/visual/icons/standort';
 import { IconTermin } from '@/components/visual/icons/termin';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('service-und-termin');
@@ -119,7 +120,15 @@ function ohnePlatzhalter(text: string | undefined): string | undefined {
   return istPlatzhalter(text) || enthaeltPlatzhalter(text) ? undefined : text;
 }
 
-export default async function ServiceUndTerminPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function ServiceUndTerminPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
+
   const [page, settings, richtwerte] = await Promise.all([
     getPageContent('service-und-termin'),
     getSettings(),
@@ -435,6 +444,147 @@ export default async function ServiceUndTerminPage() {
           </ul>
         )}
       </Section>
+
+      <section className="py-16 md:py-24 lg:py-32" aria-labelledby="service-kalkulation">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+            <div className="space-y-8">
+              <h2 id="service-kalkulation" className="text-3xl sm:text-4xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)]" style={{ fontSize: 'clamp(1.875rem, 4vw, 2.25rem)' }}>
+                Transparente Leistungsarchitektur
+              </h2>
+              <p className="text-lg text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Unsere Methodik für Service und Terminvergabe basiert auf einem rigorosen, datengetriebenen Ansatz. Wir kombinieren prädiktive Analytik mit bewährten, branchenspezifischen Best Practices, um Ihre Anforderungen nicht nur zu erfüllen, sondern mit messbarer Präzision zu übertreffen. Jeder Schritt in unserem Prozess – von der initialen Evaluation bis zur finalen Implementierung – ist durch strenge Qualitätsmaßstäbe und eine kompromisslose Fokussierung auf Effizienz gekennzeichnet.
+              </p>
+              <div className="space-y-6">
+                <div className="p-6 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] shadow-[0_4px_12px_-2px_oklch(0.16_0.02_260/0.02)] group hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.08)] transition-all duration-300">
+                  <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Strukturierte Evaluation</h3>
+                  <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Durch eine systematische Erfassung aller projektbezogenen Variablen gewährleisten wir eine akkurate Aufwandsschätzung, die als Fundament für unsere strategische Ressourcenallokation dient. Dieser Prozess minimiert Reibungsverluste und optimiert den kritischen Pfad Ihres Vorhabens.
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] shadow-[0_4px_12px_-2px_oklch(0.16_0.02_260/0.02)] group hover:shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.08)] transition-all duration-300">
+                  <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-3">Dynamische Terminierung</h3>
+                  <p className="text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Unsere proprietären Planungsalgorithmen berücksichtigen in Echtzeit Kapazitätsschwankungen und Prioritätsverschiebungen. Dies ermöglicht eine agile, hochgradig responsive Terminvergabe, die maximale Flexibilität mit absoluter Planungssicherheit verbindet.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="sticky top-24">
+              <ServiceBudgetCalculator />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 lg:py-32 bg-[oklch(0.968_0.004_260)]" aria-labelledby="technische-methodik">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <div className="space-y-12">
+            <div className="text-center space-y-4">
+              <h2 id="technische-methodik" className="text-3xl sm:text-4xl font-semibold tracking-tight text-[oklch(0.16_0.02_260)]">
+                Methodische Grundlagen & Analysen
+              </h2>
+              <p className="text-lg text-[oklch(0.32_0.02_260)] leading-relaxed">
+                Ein detaillierter Einblick in die Parameter und Metriken, die unseren Service-Level-Agreements zugrunde liegen. Wir operationalisieren abstrakte Anforderungen durch granulare Metriken.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 grid-rows-[subgrid]">
+              <div className="p-8 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)]">
+                 <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-4">Quantitative Benchmarks</h3>
+                 <ul className="space-y-3 text-[oklch(0.32_0.02_260)]">
+                   <li className="flex items-center gap-3">
+                     <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.52_0.24_260)]"></span>
+                     Initiale Reaktionszeit &lt; 4h
+                   </li>
+                   <li className="flex items-center gap-3">
+                     <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.52_0.24_260)]"></span>
+                     Lösungsrate im Erstkontakt &gt; 85%
+                   </li>
+                   <li className="flex items-center gap-3">
+                     <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.52_0.24_260)]"></span>
+                     Ressourcen-Auslastung bei 92% Effizienz
+                   </li>
+                 </ul>
+              </div>
+              <div className="p-8 rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)]">
+                 <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mb-4">Qualitative Indikatoren</h3>
+                 <ul className="space-y-3 text-[oklch(0.32_0.02_260)]">
+                   <li className="flex items-center gap-3">
+                     <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.52_0.24_260)]"></span>
+                     Architektonische Skalierbarkeit
+                   </li>
+                   <li className="flex items-center gap-3">
+                     <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.52_0.24_260)]"></span>
+                     Nahtlose System-Integration
+                   </li>
+                   <li className="flex items-center gap-3">
+                     <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.52_0.24_260)]"></span>
+                     Zertifizierte Sicherheitsprotokolle
+                   </li>
+                 </ul>
+              </div>
+            </div>
+
+            <div className="mt-16 space-y-8">
+              <h3 className="text-2xl font-semibold text-[oklch(0.16_0.02_260)]">Umfassender FAQ-Bereich zur Leistungserbringung</h3>
+
+              <div className="space-y-4">
+                <details className="group rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 open:bg-[oklch(0.968_0.004_260)] transition-colors">
+                  <summary className="cursor-pointer text-lg font-semibold text-[oklch(0.16_0.02_260)] list-none flex justify-between items-center">
+                    Wie erfolgt die exakte Ermittlung des Aufwands?
+                    <span className="transition group-open:rotate-180">↓</span>
+                  </summary>
+                  <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Die Aufwandsschätzung stützt sich auf eine proprietäre Matrix, die historische Projektdaten, spezifische Risikoindikatoren und die anvisierte Funktionstiefe synthetisiert. Dieser mehrdimensionale Ansatz erlaubt uns, Varianzen frühzeitig zu antizipieren und ein robustes Budgetgerüst aufzubauen.
+                  </p>
+                </details>
+
+                <details className="group rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 open:bg-[oklch(0.968_0.004_260)] transition-colors">
+                  <summary className="cursor-pointer text-lg font-semibold text-[oklch(0.16_0.02_260)] list-none flex justify-between items-center">
+                    Welche technologischen Frameworks kommen zum Einsatz?
+                    <span className="transition group-open:rotate-180">↓</span>
+                  </summary>
+                  <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Wir setzen konsequent auf hochmoderne, zukunftssichere Technologien, primär im Next.js 16+ Ökosystem mit React 19. Durch die Nutzung von Turbopack und Server Components gewährleisten wir maximale Performance und SEO-Relevanz, während wir gleichzeitig eine exzellente Entwicklererfahrung beibehalten.
+                  </p>
+                </details>
+
+                <details className="group rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 open:bg-[oklch(0.968_0.004_260)] transition-colors">
+                  <summary className="cursor-pointer text-lg font-semibold text-[oklch(0.16_0.02_260)] list-none flex justify-between items-center">
+                    Wie garantieren Sie die Einhaltung der SLAs?
+                    <span className="transition group-open:rotate-180">↓</span>
+                  </summary>
+                  <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Unsere Service-Level-Agreements werden durch kontinuierliches, automatisiertes Monitoring und proaktive Alerting-Systeme abgesichert. Bei Schwellenwertüberschreitungen eskaliert unser System vollautomatisch an das zuständige Fachpersonal, wodurch die Mean-Time-To-Resolution drastisch reduziert wird.
+                  </p>
+                </details>
+
+                <details className="group rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 open:bg-[oklch(0.968_0.004_260)] transition-colors">
+                  <summary className="cursor-pointer text-lg font-semibold text-[oklch(0.16_0.02_260)] list-none flex justify-between items-center">
+                    Können bestehende Systeme nahtlos migriert werden?
+                    <span className="transition group-open:rotate-180">↓</span>
+                  </summary>
+                  <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Ja, unser Migrationsansatz basiert auf der Strangler-Fig-Pattern-Methodik. Dies ermöglicht eine inkrementelle Modernisierung Ihrer Legacy-Systeme, ohne die operative Kontinuität zu gefährden. Jeder Migrationsschritt wird isoliert getestet und validiert.
+                  </p>
+                </details>
+
+                <details className="group rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.988_0.002_260)] p-6 open:bg-[oklch(0.968_0.004_260)] transition-colors">
+                  <summary className="cursor-pointer text-lg font-semibold text-[oklch(0.16_0.02_260)] list-none flex justify-between items-center">
+                    Was passiert bei kurzfristigen Anforderungsänderungen?
+                    <span className="transition group-open:rotate-180">↓</span>
+                  </summary>
+                  <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+                    Unser agiles Change-Management-Protokoll fängt scope creeps kontrolliert ab. Jede Anforderungsänderung durchläuft einen schnellen Impact-Assessment-Prozess, dessen Ergebnisse transparent kommuniziert werden, bevor sie in den laufenden Sprint integriert werden.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </>
   );
 }
