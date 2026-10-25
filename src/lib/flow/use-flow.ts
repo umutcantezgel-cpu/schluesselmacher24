@@ -79,6 +79,34 @@ export function zeigtGeladenenStand(gespeichert: boolean, eigeneEingabe: boolean
   return gespeichert && !eigeneEingabe && !verworfen;
 }
 
+/** Smartphone-Breite: unter 768 px (ab dort gilt Tailwinds `md`). */
+const SCHMAL = '(max-width: 767px)';
+
+/**
+ * Bringt nach einem Schrittwechsel den neuen Schritt ins Bild (I-08).
+ *
+ * Am Smartphone geht es zur Schrittüberschrift (`data-schritt-titel` in der FlowShell):
+ * Mit `top: 0` läge sie unter dem Seitenkopf weit unten, sichtbar wären nur zwei, drei
+ * Optionen. Den Abstand unter Kopf und Fortschrittsband gibt `scroll-padding-top` in
+ * `globals.css` vor. Ab 768 px, ohne `matchMedia` oder ohne Überschrift wie bisher an
+ * den Seitenanfang.
+ */
+export function zumSchrittScrollen(): void {
+  if (typeof window === 'undefined') return;
+  const behavior = scrollVerhalten();
+  const schmal = typeof window.matchMedia === 'function' && window.matchMedia(SCHMAL).matches;
+  if (!schmal) {
+    window.scrollTo({ top: 0, behavior });
+    return;
+  }
+  // Erst nach dem Rendern steht die Überschrift des neuen Schrittes im Dokument.
+  window.requestAnimationFrame(() => {
+    const titel = document.querySelector<HTMLElement>('[data-schritt-titel]');
+    if (titel) titel.scrollIntoView({ block: 'start', behavior });
+    else window.scrollTo({ top: 0, behavior });
+  });
+}
+
 /**
  * Zustand für mehrstufige Formulare und Konfiguratoren.
  *
@@ -160,7 +188,7 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     (target: string) => {
       if (!steps.some((s) => s.id === target)) return;
       persist({ ...current, stepId: target });
-      window.scrollTo({ top: 0, behavior: scrollVerhalten() });
+      zumSchrittScrollen();
     },
     [steps, current, persist],
   );

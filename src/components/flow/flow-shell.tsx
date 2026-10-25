@@ -190,7 +190,12 @@ export function FlowShell<T extends object>({
                 wechsel.richtung === 'zurueck' && 'sm24-schritt-zurueck',
               )}
             >
-              <h2 className="text-title font-bold text-foreground">{flow.step?.title}</h2>
+              {/* Ziel des Scrollens nach „Weiter“ am Smartphone (`zumSchrittScrollen`, I-08). Den Platz
+                  für Kopf und Band hält `scroll-padding-top` von `html:has(.sm24-ablauf)` frei; ein
+                  `scroll-margin` käme dazu und schöbe die Überschrift doppelt so weit nach unten. */}
+              <h2 data-schritt-titel className="text-title font-bold text-foreground">
+                {flow.step?.title}
+              </h2>
               {flow.step?.hint && (
                 <p className="mt-2 max-w-measure text-body text-foreground-muted">{flow.step.hint}</p>
               )}
