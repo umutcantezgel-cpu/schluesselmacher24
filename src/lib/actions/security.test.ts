@@ -255,6 +255,64 @@ describe('submitRecord', () => {
       expect((await buchen(c, { contact: { ...contact, email: 'max@example.org' } })).ok).toBe(true);
     });
 
+    it('setzt Leistung, Marke und Modell aus den Stammdaten, nicht aus der Zusammenfassung des Browsers', async () => {
+      const make = defaults.vehicleMakes().find((m) => m.slug === 'volkswagen')!;
+      const model = make.models.find((m) => m.slug === 'golf')!;
+      const result = await buchen(await freiesFenster(), {
+        summary: [
+          {
+            title: 'Fahrzeug',
+            rows: [
+              { label: 'Marke', value: 'Ferrari' },
+              { label: 'Modell', value: 'Enzo' },
+              { label: 'Baujahr / Erstzulassung', value: '2015' },
+            ],
+          },
+          {
+            title: 'Schlüssel und Leistung',
+            rows: [
+              { label: 'Schlüsselart', value: 'Klappschlüssel' },
+              { label: 'Gewünschte Leistung', value: '2 Funkschlüssel inkl. Anlernen' },
+            ],
+          },
+        ],
+      });
+      expect(result.ok).toBe(true);
+      const summary = stored[0].summary;
+      expect(summary[0].rows).toEqual([
+        { label: 'Gewünschte Leistung', value: 'Zweitschlüssel anfertigen' },
+        { label: 'Marke', value: make.name },
+        { label: 'Modell', value: model.name },
+      ]);
+      const zeilen = summary.flatMap((abschnitt) => abschnitt.rows);
+      expect(zeilen.map((z) => z.value)).not.toContain('2 Funkschlüssel inkl. Anlernen');
+      expect(zeilen.map((z) => z.value)).not.toContain('Ferrari');
+      expect(zeilen).toContainEqual({ label: 'Baujahr / Erstzulassung', value: '2015' });
+
+      // Die Vertragsbestätigung liest dieselben Zeilen.
+      const { vertragsbestaetigung } = await import('@/lib/mail/vorlagen/vertragsbestaetigung');
+      const mail = vertragsbestaetigung({
+        vorgang: stored[0],
+        kontext: { site: 'https://schluesselmacher24.de' },
+        settings: defaults.settings(),
+        zahlarten: null,
+      });
+      expect(mail.text).toContain('Leistung: Zweitschlüssel anfertigen');
+      expect(mail.text).toContain(`Fahrzeug: ${make.name} ${model.name}`);
+      expect(mail.text).not.toContain('Funkschlüssel inkl. Anlernen');
+    });
+
+    it('behält ein Modell außerhalb der Liste nur als Angabe des Kunden', async () => {
+      const result = await buchen(await freiesFenster(), {
+        verify: { ...verify, modelSlug: null },
+        summary: [{ title: 'Fahrzeug', rows: [{ label: 'Modell', value: 'Golf Country (nicht in der Liste aufgeführt)' }] }],
+      });
+      expect(result.ok).toBe(true);
+      const zeilen = stored[0].summary.flatMap((abschnitt) => abschnitt.rows);
+      expect(zeilen.filter((z) => z.label === 'Modell')).toEqual([]);
+      expect(zeilen).toContainEqual({ label: 'Modell (Angabe des Kunden)', value: 'Golf Country (nicht in der Liste aufgeführt)' });
+    });
+
     it('übernimmt den geprüften Termin, nicht die Angaben des Browsers', async () => {
       const wunsch = await freiesFenster();
       const result = await buchen(wunsch);

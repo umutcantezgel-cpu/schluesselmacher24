@@ -345,8 +345,16 @@ export interface CarKeyVerifyInput {
   workingKeys: number;
 }
 
+/** Bezeichnungen aus den Stammdaten — für Zusammenfassung und Vertragsbestätigung. */
+export interface GepruefteAngaben {
+  leistung: string;
+  marke: string;
+  /** Nur bei einem Modell aus der Liste. */
+  modell?: string;
+}
+
 export type VerifyResult =
-  | { ok: true; quote: PriceQuote; appointment?: AppointmentInfo }
+  | { ok: true; quote: PriceQuote; appointment?: AppointmentInfo; angaben: GepruefteAngaben }
   | { ok: false; error: string };
 
 /**
@@ -396,8 +404,14 @@ export async function verifyCarKeyBooking(
     settings.booking,
   );
 
+  const angaben: GepruefteAngaben = {
+    leistung: service.label,
+    marke: make.name,
+    ...(model ? { modell: model.name } : {}),
+  };
+
   if (!requested) {
-    return { ok: true, quote };
+    return { ok: true, quote, angaben };
   }
 
   const match = freeSlot({
@@ -417,6 +431,7 @@ export async function verifyCarKeyBooking(
   return {
     ok: true,
     quote,
+    angaben,
     appointment: {
       date: match.date,
       time: match.time,
