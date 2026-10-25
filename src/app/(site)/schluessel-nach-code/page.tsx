@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getCodeLines, getPageContent } from '@/lib/data';
+import { codeFamilien, codeHersteller, herstellerPfad, kategoriePfad } from '@/lib/codelinie';
+import { formatCents, formatNumber } from '@/lib/format';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
 import { ausschnittStil } from '@/components/ui/image-placeholder';
@@ -85,6 +87,9 @@ export default async function SchluesselNachCodePage() {
     (link) => !BASE_LINKS.some((base) => base.href === link.href),
   );
   const links = [...BASE_LINKS, ...extraLinks];
+  // Kategorien als feste Links (Erg. Leitfaden §3): jede Linie ist auch ohne Suche und Filter erreichbar.
+  const familien = codeFamilien(lines);
+  const hersteller = codeHersteller(lines);
 
   return (
     <>
@@ -150,7 +155,7 @@ export default async function SchluesselNachCodePage() {
           title="Passende Codelinie finden"
           lead={
             page?.intro
-            ?? 'Suchen Sie nach Anwendung, Schlüsseltyp oder Hersteller und grenzen Sie das '
+            ?? 'Suchen Sie nach Anwendung, Schlüsseltyp, Hersteller oder Ihrem Schlüsselcode und grenzen Sie das '
               + 'Ergebnis über die Filter ein.'
           }
         />
@@ -159,11 +164,74 @@ export default async function SchluesselNachCodePage() {
         <ShopListe lines={lines} className="mt-6" />
       </Section>
 
+      {/* Kategorien und Hersteller als Stückliste: Startseite → Schlüssel nach Code → Kategorie → Produkt */}
+      <Section tone="muted" tight labelledBy="kategorien-titel">
+        <SectionHeading
+          id="kategorien-titel"
+          nummer="02"
+          eyebrow="Kategorien"
+          title="Codelinien nach Anwendung"
+          lead="Jede Anwendungsfamilie hat eine eigene Seite mit allen Linien, Codeformaten und Preisen."
+        />
+        <ul className="mt-8 border-t border-border md:grid md:grid-cols-2 md:gap-x-gutter">
+          {familien.map((familie) => {
+            const preise = familie.lines.map((line) => line.priceCents);
+            return (
+              <li key={familie.adresse} className="border-b border-border">
+                <Link
+                  href={kategoriePfad(familie.name)}
+                  prefetch={false}
+                  className="group flex min-h-touch-lg items-center gap-4 py-4 transition-colors duration-quick"
+                >
+                  {familie.kuerzel && (
+                    <span className="w-8 shrink-0 font-mono text-small font-semibold text-foreground-muted">
+                      {familie.kuerzel}
+                    </span>
+                  )}
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-body font-semibold text-foreground group-hover:text-area-strong">
+                      {familie.name}
+                    </span>
+                    <span className="mt-0.5 block font-mono text-caption tabular-nums text-foreground-muted">
+                      {formatNumber(familie.lines.length)} {familie.lines.length === 1 ? 'Linie' : 'Linien'} · ab{' '}
+                      {formatCents(Math.min(...preise))}
+                    </span>
+                  </span>
+                  <GlyphPfeilRechts
+                    size={16}
+                    className="shrink-0 text-foreground-subtle transition-transform duration-base ease-standard group-hover:translate-x-1 group-hover:text-area-strong"
+                  />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        {hersteller.length > 0 && (
+          <>
+            <p className="mt-10 font-mono text-caption uppercase tracking-label text-foreground-muted">Nach Hersteller</p>
+            <ul className="mt-3 flex flex-wrap gap-x-6 border-t border-border pt-2">
+              {hersteller.map((eintrag) => (
+                <li key={eintrag.adresse}>
+                  <Link
+                    href={herstellerPfad(eintrag.name)}
+                    prefetch={false}
+                    className="inline-flex min-h-touch items-center text-body font-semibold text-primary hover:underline"
+                  >
+                    {eintrag.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </Section>
+
       {/* Ton wechselt zur Liste darüber (K-006); die Fundstelle steht im Kopf */}
-      <Section tone="muted" tight labelledBy="weiter-titel">
+      <Section tight labelledBy="weiter-titel">
         <SectionHeading
           id="weiter-titel"
-          nummer="02"
+          nummer="03"
           eyebrow="Weiterlesen"
           title="Passende Bereiche und Erklärungen"
           lead="Wenn der Code fehlt oder mehrere Türen zusammengehören, führen diese Wege weiter."
