@@ -52,6 +52,11 @@ const KOPF_AUSSCHNITT_MOBIL: GrafikAusschnitt = {
   vollHoehe: PROFILSCHNITT_GROESSE.hoehe,
 };
 
+/** Vertrauensbasis nach Erg. Leitfaden §1 — nur diese belegte Aussage, ohne Zahlen oder Siegel. */
+const VERTRAUENSBASIS =
+  'Hinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar – mit Werkstatt, fachlicher '
+  + 'Beratung und eigener Fertigung.';
+
 const TRUST_POINTS = [
   {
     title: 'Fachbetrieb mit eigener Werkstatt',
@@ -264,6 +269,46 @@ export default async function HomePage() {
         </div>
       </Section>
 
+      {/* Vertrauen vor dem Ablauf (Leitfaden Kap. 03) als Prüfprotokoll: ab 1024 px die nummerierten Prüfpunkte links (7), der Kopf rechts (5); mobil Zeilen Nummer | Text */}
+      <Section tone="muted" labelledBy="vertrauen-titel">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:-mt-1.5 lg:self-start">
+            <SectionHeading
+              id="vertrauen-titel"
+              nummer="02"
+              eyebrow="Warum wir"
+              title="Sachlich, nachvollziehbar, ohne Überraschungen"
+              lead={VERTRAUENSBASIS}
+            />
+            {/* Die echte Werkstatt — entfällt, solange kein Standort gepflegt ist */}
+            <WerkstattZeile {...werkstattAngaben(settings.company)} className="mt-5" />
+          </div>
+
+          {/* Prüfpunkte mit Haarlinien: mobil Zeilen Nummer | Text, ab 640 px ein 2×2 unter dem Kopf, ab 1024 px ein 2×2 in 7 Spalten links */}
+          <ol className="border-y border-border sm:grid sm:grid-cols-2 lg:col-span-7 lg:col-start-1 lg:row-start-1 lg:self-start">
+            {TRUST_POINTS.map((point, index) => (
+              <li
+                key={point.title}
+                className={cn(
+                  'grid grid-cols-12 gap-x-4 py-6 sm:block sm:pr-4',
+                  index > 0 && 'border-t border-border',
+                  index === 1 && 'sm:border-t-0',
+                  index % 2 === 1 && 'sm:border-l sm:border-border sm:pl-4',
+                )}
+              >
+                <span className="block col-span-2 font-mono text-title font-semibold tabular-nums text-foreground">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div className="col-span-10 sm:mt-3">
+                  <p className="text-title-sm font-semibold text-foreground">{point.title}</p>
+                  <p className="mt-2 max-w-measure text-body text-foreground-muted">{point.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </Section>
+
       {/* Autoschlüssel-Ablauf: Fortschritt läuft mit dem Scrollen (B-03) */}
       <Section tone="sunken" labelledBy="ablauf-titel">
         <AreaScope area="autoschluessel">
@@ -273,7 +318,7 @@ export default async function HomePage() {
               <div>
                 <SectionHeading
                   id="ablauf-titel"
-                  nummer="02"
+                  nummer="03"
                   eyebrow="Schwerpunkt Autoschlüssel"
                   title="So läuft Ihr Autoschlüssel-Auftrag ab"
                   lead="Fünf Schritte, mobil bedienbar. Sie geben nur die Daten an, die für Ihr Fahrzeug gebraucht werden."
@@ -322,43 +367,6 @@ export default async function HomePage() {
             </ol>
           </div>
         </AreaScope>
-      </Section>
-
-      {/* Vertrauen als Prüfprotokoll: ab 1024 px die nummerierten Prüfpunkte links (7), der Kopf rechts (5); mobil Zeilen Nummer | Text */}
-      <Section labelledBy="vertrauen-titel">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
-          <SectionHeading
-            id="vertrauen-titel"
-            className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:-mt-1.5 lg:self-start"
-            nummer="03"
-            eyebrow="Warum wir"
-            title="Sachlich, nachvollziehbar, ohne Überraschungen"
-            lead="Wir arbeiten wie ein Fachbetrieb, nicht wie ein Vermittler."
-          />
-
-          {/* Prüfpunkte mit Haarlinien: mobil Zeilen Nummer | Text, ab 640 px ein 2×2 unter dem Kopf, ab 1024 px ein 2×2 in 7 Spalten links */}
-          <ol className="border-y border-border sm:grid sm:grid-cols-2 lg:col-span-7 lg:col-start-1 lg:row-start-1 lg:self-start">
-            {TRUST_POINTS.map((point, index) => (
-              <li
-                key={point.title}
-                className={cn(
-                  'grid grid-cols-12 gap-x-4 py-6 sm:block sm:pr-4',
-                  index > 0 && 'border-t border-border',
-                  index === 1 && 'sm:border-t-0',
-                  index % 2 === 1 && 'sm:border-l sm:border-border sm:pl-4',
-                )}
-              >
-                <span className="block col-span-2 font-mono text-title font-semibold tabular-nums text-foreground">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div className="col-span-10 sm:mt-3">
-                  <p className="text-title-sm font-semibold text-foreground">{point.title}</p>
-                  <p className="mt-2 max-w-measure text-body text-foreground-muted">{point.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
       </Section>
 
       {/* Direkt kaufen: zwei Zeichnungsblätter */}
