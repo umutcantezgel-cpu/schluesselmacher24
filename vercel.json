@@ -5,12 +5,5 @@
   "crons": [
     { "path": "/api/cron/taeglich", "schedule": "17 2 * * *" },
     { "path": "/api/cron/zahlungen", "schedule": "7 * * * *" }
-  ],
-  "git": {
-    "deploymentEnabled": {
-      "*": false,
-      "**": false,
-      "main": true
-    }
-  }
+  ]
 }
