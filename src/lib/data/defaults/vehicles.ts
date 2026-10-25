@@ -1,4 +1,5 @@
 import type { KeyKind, VehicleMake, VehicleModel } from '@/lib/types';
+import { slugify } from '@/lib/slug';
 
 /**
  * Fahrzeugdaten für den Autoschlüssel-Assistenten und die SEO-Seiten.
@@ -31,16 +32,7 @@ function toModels(specs: ModelSpec[]): VehicleModel[] {
   }));
 }
 
-function slugify(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/ä/g, 'ae')
-    .replace(/ö/g, 'oe')
-    .replace(/ü/g, 'ue')
-    .replace(/ß/g, 'ss')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
+export { slugify };
 
 export function vehicleMakes(): VehicleMake[] {
   const raw: Array<{

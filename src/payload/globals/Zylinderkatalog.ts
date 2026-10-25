@@ -1,10 +1,10 @@
 import type { GlobalConfig } from 'payload';
 
 import { istInhaber, istTeam } from '../access/rollen';
-import { bildFeld, euroFeld, gpsrFeld, infoFeld } from '../fields/gemeinsam';
+import { bildFeld, euroFeld, gpsrFeld, infoFeld, slugFeld } from '../fields/gemeinsam';
 import { nachGlobalAenderung } from '../hooks/revalidate';
 
-const BAUFORMEN = [
+export const BAUFORMEN = [
   { label: 'Doppelzylinder', value: 'doppelzylinder' },
   { label: 'Knaufzylinder', value: 'knaufzylinder' },
   { label: 'Halbzylinder', value: 'halbzylinder' },
@@ -120,6 +120,59 @@ export const Zylinderkatalog: GlobalConfig = {
                   ], admin: { width: '50%' } },
                 ] },
                 infoFeld('info', 'Erklärung'),
+              ],
+            },
+          ],
+        },
+        {
+          label: 'Hersteller',
+          description:
+            'Hersteller und Systeme für den Konfigurator (z. B. ABUS, BKS). Der Konfigurator fragt den Hersteller '
+            + 'erst ab, wenn mindestens ein Eintrag angeboten wird.',
+          fields: [
+            {
+              name: 'hersteller',
+              type: 'array',
+              label: 'Hersteller',
+              labels: { singular: 'Hersteller', plural: 'Hersteller' },
+              fields: [
+                { type: 'row', fields: [
+                  { name: 'name', type: 'text', label: 'Name', required: true, admin: { width: '40%' } },
+                  slugFeld({ name: 'kennung', label: 'Kennung', unique: false, index: false, admin: { width: '40%', description: 'z. B. „abus“.' } }),
+                  { name: 'aktiv', type: 'checkbox', label: 'Angeboten', defaultValue: false, admin: { width: '20%' } },
+                ] },
+                { name: 'beschreibung', type: 'textarea', label: 'Beschreibung' },
+                { type: 'row', fields: [
+                  euroFeld('aufpreisJeZylinder', 'Aufpreis je Zylinder', { admin: { width: '40%', step: 0.01 } }),
+                  {
+                    name: 'bauformen',
+                    type: 'select',
+                    label: 'Für Bauformen',
+                    hasMany: true,
+                    options: BAUFORMEN,
+                    admin: { width: '60%', description: 'Leer = für alle Bauformen.' },
+                  },
+                ] },
+                {
+                  name: 'zusatzkomponenten',
+                  type: 'array',
+                  label: 'Zusatzkomponenten',
+                  labels: { singular: 'Zusatzkomponente', plural: 'Zusatzkomponenten' },
+                  fields: [
+                    { type: 'row', fields: [
+                      { name: 'name', type: 'text', label: 'Bezeichnung', required: true, admin: { width: '60%' } },
+                      euroFeld('preis', 'Preis', {
+                        required: true,
+                        admin: {
+                          width: '40%',
+                          step: 0.01,
+                          description: 'Preis je Stück inklusive Umsatzsteuer. Die Stückzahl wählt der Kunde im Konfigurator.',
+                        },
+                      }),
+                    ] },
+                    { name: 'beschreibung', type: 'textarea', label: 'Beschreibung' },
+                  ],
+                },
               ],
             },
           ],

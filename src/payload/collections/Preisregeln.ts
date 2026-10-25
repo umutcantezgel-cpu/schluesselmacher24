@@ -78,7 +78,15 @@ export const Preisregeln: CollectionConfig = {
       label: 'Abweichungen von den Standardwerten (optional)',
       admin: { initCollapsed: true },
       fields: [
-        euroFeld('anzahlung', 'Anzahlung'),
+        euroFeld('anzahlung', 'Anzahlung', {
+          admin: {
+            step: 0.01,
+            description:
+              'Betrag in Euro inklusive Umsatzsteuer. Leer = Standard-Anzahlung aus den Einstellungen. Bei einem '
+              + 'Festpreis ist die Anzahlung höchstens der Festpreis: Liegt sie darüber, wird der Festpreis als '
+              + 'Anzahlung verlangt und der Restbetrag ist 0.',
+          },
+        }),
         {
           type: 'row',
           fields: [

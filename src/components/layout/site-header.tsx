@@ -25,7 +25,48 @@ import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
 import { NAV_AREAS, istAktiv, type NavArea } from '@/lib/navigation';
 import { useHydrated } from '@/lib/client-state';
 import { useCartStore } from '@/lib/store/cart';
+import type { AreaKey } from '@/lib/types';
 import { cn } from '@/lib/cn';
+
+type Stufe = 'lg' | 'xl' | '2xl';
+
+/**
+ * Ab welcher Breite ein Bereich mit seiner Kurzbezeichnung in der Leiste steht; ohne Eintrag
+ * steht er nur unter „Mehr“ (und immer in der Schublade). Nachgemessen mit den Schriften der
+ * Seite (Inter halbfett, IBM Plex Sans fett) und 17 px Bildlaufleiste, mit Kopfknopf „Termin
+ * anfragen“: Bei 1024 px bleiben rund 65 px frei, bei 1280 px rund 45 px, bei 1440 px rund 200 px,
+ * ab 1536 px rund 135 px.
+ * Wer hier etwas ergänzt oder eine Kurzbezeichnung verlängert, misst diese drei Breiten nach.
+ */
+const LEISTE: Partial<Record<AreaKey, Stufe>> = {
+  autoschluessel: 'lg',
+  'schluessel-nach-code': 'lg',
+  'gleichschliessende-zylinder': 'lg',
+  'schluessel-nach-vorlage': 'xl',
+  schliessanlagen: 'xl',
+  'elektronische-zutrittsloesungen': '2xl',
+};
+
+/** Sichtbarkeit in der Leiste (die Leiste selbst erscheint erst ab 1024 px). */
+const IN_LEISTE: Record<Stufe, string> = { lg: '', xl: 'hidden xl:block', '2xl': 'hidden 2xl:block' };
+/** Sichtbarkeit unter „Mehr“: dort nur, solange der Bereich nicht in der Leiste steht. */
+const UNTER_MEHR: Record<Stufe, string> = { lg: 'hidden', xl: 'xl:hidden', '2xl': '2xl:hidden' };
+/** Markierung von „Mehr“, wenn die aktuelle Seite in einem Bereich liegt, der ab einer Breite in die Leiste wandert. */
+const MEHR_MARKE: Record<Stufe | 'immer', string> = {
+  immer: 'scale-x-100',
+  lg: 'scale-x-0',
+  xl: 'scale-x-100 xl:scale-x-0',
+  '2xl': 'scale-x-100 2xl:scale-x-0',
+};
+const MEHR_TEXT: Record<Stufe | 'immer', string> = {
+  immer: 'text-primary',
+  lg: '',
+  xl: 'text-primary xl:text-foreground-muted',
+  '2xl': 'text-primary 2xl:text-foreground-muted',
+};
+
+/** Bereiche, die mindestens bei einer Breite unter „Mehr“ stehen — in der Reihenfolge der Navigation. */
+const MEHR_BEREICHE = NAV_AREAS.filter((area) => LEISTE[area.key] !== 'lg');
 
 /** Fokussierbare Elemente innerhalb eines Containers (für die Fokusfalle des Drawers). */
 function fokussierbare(container: HTMLElement | null): HTMLElement[] {
@@ -105,16 +146,6 @@ export function SiteHeader() {
   const schliessen = useCallback(() => setDrawerOpen(false), []);
   const umschalten = useCallback((key: string) => setOpenMobileArea((offen) => (offen === key ? null : key)), []);
 
-  // Im Balken ab 1024 px die Bereiche 1 und 3, ab 1280 px zusätzlich 2 und 5; Bereich 4 und
-  // alles Weitere steht unter „Mehr“. Sonst passt der Kopfknopf zwischen 1024 und 1279 px und ab
-  // 1536 px nicht in die Zeile (Befund Runde 2, H03).
-  const secondary = [
-    { area: NAV_AREAS[1], ausblenden: 'xl:hidden' },
-    { area: NAV_AREAS[3], ausblenden: '' },
-    { area: NAV_AREAS[4], ausblenden: 'xl:hidden' },
-    ...NAV_AREAS.slice(5).map((area) => ({ area, ausblenden: '' })),
-  ].filter((eintrag) => eintrag.area !== undefined);
-
   return (
     <header className="fixed inset-x-0 top-0 z-header border-b border-border bg-surface">
       <div className="shell-wide flex h-header items-center gap-4">
@@ -156,7 +187,7 @@ export function SiteHeader() {
             data-kopfknopf
             className="hidden min-h-touch items-center whitespace-nowrap rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground transition-colors duration-quick hover:bg-primary-hover active:scale-druck motion-reduce:transform-none sm:inline-flex"
           >
-            Termin starten
+            Termin anfragen
           </Link>
 
           <button
@@ -184,8 +215,8 @@ export function SiteHeader() {
           <div className="shell-wide py-8">
             {openArea === 'mehr' ? (
               <ul className="grid grid-cols-4 gap-6">
-                {secondary.map(({ area, ausblenden }) => (
-                  <li key={area.key} className={ausblenden || undefined}>
+                {MEHR_BEREICHE.map((area) => (
+                  <li key={area.key} className={cn(LEISTE[area.key] && UNTER_MEHR[LEISTE[area.key]!])}>
                     <AreaScope area={area.key}>
                       <Link href={area.href} className="group flex gap-3 rounded-md p-2 -m-2 hover:bg-surface-muted">
                         <BereichIcon area={area.key} size={36} className="text-area-strong" />
@@ -297,22 +328,28 @@ type DesktopNavProps = {
  * zeichnet sie nicht mit neu (E7-L-36).
  */
 const DesktopNav = memo(function DesktopNav({ pathname, openArea, setOpenArea }: DesktopNavProps) {
-  const primary = NAV_AREAS.slice(0, 5);
-  const mehrAktiv = [NAV_AREAS[3], ...NAV_AREAS.slice(5)].some(
-    (area) => area !== undefined && istAktiv(pathname, area.href),
-  );
+  // Liegt die Seite in einem Bereich, der (noch) unter „Mehr“ steht, trägt „Mehr“ die Markierung.
+  const aktiverBereich = NAV_AREAS.find((area) => istAktiv(pathname, area.href));
+  const mehrStufe = aktiverBereich ? (LEISTE[aktiverBereich.key] ?? 'immer') : undefined;
+  const leiste = NAV_AREAS.filter((area) => LEISTE[area.key]).map((area) => ({
+    key: area.key,
+    label: area.navLabel ?? area.label,
+    sichtbar: IN_LEISTE[LEISTE[area.key]!],
+    marke: istAktiv(pathname, area.href) ? 'scale-x-100' : 'scale-x-0',
+    text: istAktiv(pathname, area.href) ? 'text-primary' : '',
+  }));
   return (
     <nav className="ml-auto hidden lg:block" aria-label="Hauptnavigation">
       <ul className="flex items-center gap-0.5">
         {[
-          ...primary.map((area, index) => ({
-            key: area.key,
-            label: area.label,
-            aktiv: istAktiv(pathname, area.href),
-            /* Bereich 4 nur unter „Mehr“, Bereiche 2 und 5 ab 1280 px im Balken */
-            sichtbar: index === 3 ? 'hidden' : index === 1 || index === 4 ? 'hidden xl:block' : '',
-          })),
-          { key: 'mehr', label: 'Mehr', aktiv: mehrAktiv, sichtbar: '' },
+          ...leiste,
+          {
+            key: 'mehr',
+            label: 'Mehr',
+            sichtbar: '',
+            marke: mehrStufe ? MEHR_MARKE[mehrStufe] : 'scale-x-0',
+            text: mehrStufe ? MEHR_TEXT[mehrStufe] : '',
+          },
         ].map((eintrag) => (
           <li key={eintrag.key} className={cn('relative', eintrag.sichtbar)}>
             <button
@@ -323,9 +360,9 @@ const DesktopNav = memo(function DesktopNav({ pathname, openArea, setOpenArea }:
               aria-controls="megamenue"
               className={cn(
                 'relative inline-flex min-h-touch items-center gap-1 whitespace-nowrap rounded-md px-3 text-small font-semibold transition-colors duration-quick',
-                eintrag.aktiv || openArea === eintrag.key
+                openArea === eintrag.key || eintrag.text === 'text-primary'
                   ? 'text-primary'
-                  : 'text-foreground-muted hover:bg-surface-muted hover:text-foreground',
+                  : cn('text-foreground-muted hover:bg-surface-muted hover:text-foreground', eintrag.text),
               )}
             >
               {eintrag.label}
@@ -341,7 +378,7 @@ const DesktopNav = memo(function DesktopNav({ pathname, openArea, setOpenArea }:
                 aria-hidden
                 className={cn(
                   'absolute inset-x-3 -bottom-px h-0.5 bg-primary transition-transform duration-base ease-standard',
-                  eintrag.aktiv ? 'scale-x-100' : 'scale-x-0',
+                  eintrag.marke,
                 )}
               />
             </button>
@@ -433,7 +470,7 @@ const MobilSchublade = memo(function MobilSchublade({
             href="/autoschluessel/anfrage"
             className="flex min-h-touch-lg items-center justify-center rounded-md bg-primary px-4 text-body font-semibold text-primary-foreground"
           >
-            Autoschlüssel-Termin starten
+            Autoschlüssel-Termin anfragen
           </Link>
         </div>
       </div>

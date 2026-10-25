@@ -2,20 +2,20 @@
 
 import { useMemo, useState } from 'react';
 
-import { removeStoredValue, useStoredValue, writeStoredValue } from '@/lib/client-state';
+import { removeStoredValue } from '@/lib/client-state';
+import {
+  einwilligungEntfernen,
+  einwilligungLesen,
+  einwilligungSpeichern,
+  useEinwilligungRoh,
+  type Einwilligung,
+} from '@/lib/einwilligung';
 import { Button } from '@/components/ui/button';
 import { Alert } from '@/components/ui/alert';
 import { GlyphHaken } from '@/components/visual/glyphen/haken';
 import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 
-const STORAGE_KEY = 'sm24-cookie-einwilligung';
-
-interface Consent {
-  notwendig: true;
-  statistik: boolean;
-  komfort: boolean;
-  updatedAt: string;
-}
+type Consent = Einwilligung;
 
 const CATEGORIES = [
   {
@@ -46,34 +46,42 @@ const CATEGORIES = [
   },
 ];
 
-export function CookieSettings() {
-  const raw = useStoredValue(STORAGE_KEY);
+/** „Statistik“, wenn Google Analytics eingebunden ist (Mess-ID gesetzt). */
+const STATISTIK_AKTIV = {
+  id: 'statistik' as const,
+  label: 'Statistik',
+  description:
+    'Reichweitenmessung mit Google Analytics (Google Ireland Limited): welche Seiten aufgerufen und welche '
+    + 'Abläufe abgeschlossen werden. Erst mit Ihrer Einwilligung wird das Skript geladen; dabei können Daten in '
+    + 'die USA übertragen werden. Schalten Sie die Statistik aus, endet die Messung und die Analytics-Cookies '
+    + 'werden gelöscht.',
+  locked: false,
+  active: true,
+};
+
+export function CookieSettings({ statistikAktiv = false }: { statistikAktiv?: boolean }) {
+  const raw = useEinwilligungRoh();
   const [entwurf, setEntwurf] = useState<Consent | null>(null);
   const [message, setMessage] = useState<string | null>(null);
+  const kategorien = useMemo(
+    () => CATEGORIES.map((category) => (category.id === 'statistik' && statistikAktiv ? STATISTIK_AKTIV : category)),
+    [statistikAktiv],
+  );
 
   // Gespeicherte Auswahl, sofern vorhanden. „Notwendig“ ist immer aktiv.
-  const gespeichert = useMemo<Consent>(() => {
-    const standard: Consent = {
-      notwendig: true,
-      statistik: false,
-      komfort: false,
-      updatedAt: '',
-    };
-    if (!raw) return standard;
-    try {
-      return { ...standard, ...(JSON.parse(raw) as Consent), notwendig: true };
-    } catch {
-      return standard;
-    }
-  }, [raw]);
+  const gespeichert = useMemo<Consent>(
+    () => einwilligungLesen(raw) ?? { notwendig: true, statistik: false, komfort: false, updatedAt: '' },
+    [raw],
+  );
 
   const consent = entwurf ?? gespeichert;
   const setConsent = (naechste: Consent | ((prev: Consent) => Consent)) =>
     setEntwurf(typeof naechste === 'function' ? naechste(consent) : naechste);
 
   function save() {
-    const next = { ...consent, updatedAt: new Date().toISOString() };
-    if (writeStoredValue(STORAGE_KEY, JSON.stringify(next))) {
+    // Ohne eingebundenen Dienst bleibt „Statistik“ aus, auch wenn ein alter Stand anderes sagt.
+    const next = einwilligungSpeichern({ statistik: statistikAktiv && consent.statistik, komfort: consent.komfort });
+    if (next) {
       setEntwurf(next);
       setMessage('Ihre Auswahl wurde gespeichert.');
     } else {
@@ -91,6 +99,8 @@ export function CookieSettings() {
         if (key && (key.startsWith('sm24') || key.startsWith('sm24:'))) keys.push(key);
       }
       for (const key of keys) removeStoredValue(key);
+      // Auch die Einwilligung ist damit gelöscht: gilt als Widerruf, eine laufende Messung endet.
+      einwilligungEntfernen();
       setEntwurf(null);
       setMessage(
         `${keys.length} gespeicherte Einträge wurden gelöscht. Warenkorb und Zwischenstände sind zurückgesetzt.`,
@@ -103,7 +113,7 @@ export function CookieSettings() {
   return (
     <div className="not-prose my-8 rounded-lg border border-border bg-surface p-5 md:p-6">
       <ul className="divide-y divide-border">
-        {CATEGORIES.map((category) => {
+        {kategorien.map((category) => {
           const checked = category.locked ? true : consent[category.id];
           return (
             <li key={category.id} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">

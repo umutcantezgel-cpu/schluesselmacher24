@@ -26,6 +26,7 @@ import type {
 } from '@/payload-types';
 import { rabattAusPreis, staffelPreis } from '../staffel';
 import type {
+  ApprovalInfo,
   AreaKey,
   BlockedDay,
   BusinessRecord,
@@ -48,11 +49,13 @@ import type {
   ShipmentInfo,
   PricingGroup,
   PricingRule,
+  ReferralInfo,
   SeoFields,
   ServicePage,
   StandardArticle,
   Settings,
   VehicleMake,
+  VehicleModelSeo,
 } from '@/lib/types';
 
 /* ---------- Grundbausteine ----------------------------------------------- */
@@ -139,6 +142,19 @@ export function seoZuSeite(seo: SeoGruppe, fallbackTitel: string): SeoFields {
   }
   if (seo?.noindex) result.noindex = true;
   return result;
+}
+
+/**
+ * Eigene Suchmaschinen-Angaben — nur, wenn im Backend etwas eingetragen ist.
+ * Nicht eingetragene Texte bleiben leer (kein Rückfall auf einen Titel), damit
+ * die Seite erkennt, wo sie ihren eigenen Text erzeugt.
+ */
+export function eigeneSeoZuSeite(seo: SeoGruppe): SeoFields | undefined {
+  const links = seo?.interneLinks ?? [];
+  const bild = seo?.socialBild;
+  const mitBild = Boolean(bild?.motiv || (bild?.bild && typeof bild.bild !== 'number'));
+  if (!seo?.titel && !seo?.beschreibung && !seo?.noindex && !links.length && !mitBild) return undefined;
+  return seoZuSeite(seo, '');
 }
 
 export function seoZuPayload(seo: SeoFields) {
@@ -244,10 +260,15 @@ export function codeLineZuSeite(doc: Produkte): CodeLine {
     seo: seoZuSeite(doc.seo, doc.name),
   };
   if (bulkPrices.length) line.bulkPrices = bulkPrices;
+  const profile = optText(doc.profil);
+  if (profile) line.profile = profile;
+  const codeSeries = optText(doc.codeserie);
+  if (codeSeries) line.codeSeries = codeSeries;
   if (doc.fotoHinweis) line.photoUploadHint = doc.fotoHinweis;
   if (doc.beispiel) line.example = true;
   const gpsr = gpsrZuSeite(doc.gpsr);
   if (gpsr) line.gpsr = gpsr;
+  if (doc.updatedAt) line.updatedAt = doc.updatedAt;
   return line;
 }
 
@@ -260,6 +281,8 @@ export function codeLineZuPayload(line: CodeLine): RequiredDataFromCollectionSlu
     name: line.name,
     beschreibung: line.description,
     hersteller: line.manufacturer,
+    profil: line.profile ?? null,
+    codeserie: line.codeSeries ?? null,
     einsatz: line.application,
     schluesseltyp: line.keyType,
     umfang: line.scope,
@@ -454,6 +477,9 @@ export function fahrzeugmarkeZuSeite(doc: Fahrzeugmarken, gruppen?: Map<number, 
       const gruppe = verweisKennung(m.preisgruppe, gruppen);
       if (gruppe) model.pricingGroupId = gruppe;
       if (m.hinweise) model.notes = m.hinweise;
+      if (m.einleitung) model.intro = m.einleitung;
+      const seo = modellSeoZuSeite(m.seo);
+      if (seo) model.seo = seo;
       return model;
     }),
   };
@@ -461,7 +487,24 @@ export function fahrzeugmarkeZuSeite(doc: Fahrzeugmarken, gruppen?: Map<number, 
   if (doc.bild?.motiv || (doc.bild?.bild && typeof doc.bild.bild !== 'number')) {
     make.image = bildZuSeite(doc.bild, doc.name);
   }
+  const seo = eigeneSeoZuSeite(doc.seo);
+  if (seo) make.seo = seo;
+  if (doc.updatedAt) make.updatedAt = doc.updatedAt;
   return make;
+}
+
+type ModellSeoGruppe = { titel?: string | null; beschreibung?: string | null; noindex?: boolean | null } | null | undefined;
+
+function modellSeoZuSeite(seo: ModellSeoGruppe): VehicleModelSeo | undefined {
+  if (!seo?.titel && !seo?.beschreibung && !seo?.noindex) return undefined;
+  const result: VehicleModelSeo = { title: seo.titel ?? '', description: seo.beschreibung ?? '' };
+  if (seo.noindex) result.noindex = true;
+  return result;
+}
+
+function modellSeoZuPayload(seo: VehicleModelSeo | undefined) {
+  if (!seo) return undefined;
+  return { titel: seo.title, beschreibung: seo.description, noindex: seo.noindex ?? false };
 }
 
 export function fahrzeugmarkeZuPayload(
@@ -477,6 +520,7 @@ export function fahrzeugmarkeZuPayload(
     preisgruppe,
     intro: make.intro,
     bild: bildZuPayload(make.image),
+    seo: make.seo ? seoZuPayload(make.seo) : undefined,
     modelle: make.models.map((m) => ({
       kennung: m.id === m.slug ? null : m.id,
       slug: m.slug,
@@ -487,6 +531,8 @@ export function fahrzeugmarkeZuPayload(
       fahrzeugVorOrt: m.requiresVehicleOnSite,
       preisgruppe: m.pricingGroupId ? (gruppenIds.get(m.pricingGroupId) ?? null) : null,
       hinweise: m.notes ?? null,
+      einleitung: m.intro ?? null,
+      seo: modellSeoZuPayload(m.seo),
     })),
     _status: 'published',
   };
@@ -714,6 +760,7 @@ export function einstellungenZuSeite(doc: Einstellungen): Settings {
       bookingHorizonDays: doc.buchung.horizontTage,
       slotsPerWindow: doc.buchung.termineJeFenster,
       windows: (doc.buchung.fenster ?? []).map((z) => ({ from: z.von, to: z.bis })),
+      reminderDaysBefore: doc.buchung.erinnerungTageVorher ?? 1,
     },
     shipping: (doc.versand ?? []).map((v) => {
       const option: Settings['shipping'][number] = {
@@ -783,6 +830,7 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
       termineJeFenster: s.booking.slotsPerWindow,
       bundesland: s.booking.federalState,
       fenster: s.booking.windows.map((z) => ({ von: z.from, bis: z.to })),
+      erinnerungTageVorher: s.booking.reminderDaysBefore,
     },
     versand: s.shipping.map((v) => ({
       kennung: v.id,
@@ -859,6 +907,20 @@ export function zylinderkatalogZuSeite(doc: Zylinderkatalog): CylinderCatalog {
       info: infoZuSeite(e.info),
       active: e.aktiv !== false,
     })),
+    manufacturers: (doc.hersteller ?? []).map((h) => ({
+      id: h.kennung,
+      name: h.name,
+      // Ohne Haken nicht angeboten — anders als bei Bauformen und Funktionen.
+      active: h.aktiv === true,
+      description: h.beschreibung ?? '',
+      surchargeCentsPerCylinder: zuCent(h.aufpreisJeZylinder),
+      forms: h.bauformen ?? [],
+      components: (h.zusatzkomponenten ?? []).map((k) => ({
+        name: k.name,
+        priceCents: zuCent(k.preis),
+        description: k.beschreibung ?? '',
+      })),
+    })),
   };
   const gpsr = gpsrZuSeite(doc.gpsr);
   if (gpsr) katalog.gpsr = gpsr;
@@ -908,6 +970,15 @@ export function zylinderkatalogZuPayload(c: CylinderCatalog): ZylinderDaten {
       einheit: e.unit,
       info: infoZuPayload(e.info),
     })),
+    hersteller: (c.manufacturers ?? []).map((h) => ({
+      kennung: h.id,
+      name: h.name,
+      aktiv: h.active,
+      beschreibung: h.description,
+      aufpreisJeZylinder: zuEuro(h.surchargeCentsPerCylinder),
+      bauformen: h.forms,
+      zusatzkomponenten: h.components.map((k) => ({ name: k.name, preis: zuEuro(k.priceCents), beschreibung: k.description })),
+    })),
     gpsr: gpsrZuPayload(c.gpsr),
   };
 }
@@ -932,6 +1003,8 @@ export type VorgangsAenderung = Partial<
     | 'shipment'
     | 'consents'
     | 'accessTokenHash'
+    | 'approval'
+    | 'referral'
   >
 >;
 
@@ -1005,6 +1078,55 @@ const versandZuPayload = (shipment: ShipmentInfo) => ({
   dienstleister: shipment.carrier,
   sendungsnummer: shipment.trackingNumber,
 });
+
+function freigabeZuSeite(f: Vorgaenge['freigabe']): ApprovalInfo | undefined {
+  if (!f) return undefined;
+  const approval: ApprovalInfo = {};
+  if (f.preisCent !== null && f.preisCent !== undefined) approval.priceCents = Number(f.preisCent);
+  if (typeof f.einsendenNoetig === 'boolean') approval.sendInRequired = f.einsendenNoetig;
+  if (f.hinweis) approval.note = f.hinweis;
+  if (f.freigegebenAm) approval.approvedAt = f.freigegebenAm;
+  return Object.keys(approval).length ? approval : undefined;
+}
+
+/**
+ * Immer die ganze Gruppe, so wie sie danach gelten soll: Fehlende Angaben
+ * werden geleert. Nur der Zeitpunkt der Freigabe (vom System gesetzt) bleibt
+ * bei `undefined` gespeichert.
+ */
+function freigabeZuPayload(approval: ApprovalInfo): NonNullable<VorgangDaten['freigabe']> {
+  return {
+    preisCent: approval.priceCents ?? null,
+    einsendenNoetig: approval.sendInRequired ?? null,
+    hinweis: approval.note ?? null,
+    freigegebenAm: approval.approvedAt,
+  };
+}
+
+function vermittlungZuSeite(v: Vorgaenge['vermittlung']): ReferralInfo | undefined {
+  if (!v) return undefined;
+  const referral: ReferralInfo = {};
+  if (v.status) referral.status = v.status;
+  const partner = typeof v.partner === 'number' ? v.partner : v.partner?.id;
+  if (partner !== null && partner !== undefined) referral.partnerId = String(partner);
+  if (v.provisionCent !== null && v.provisionCent !== undefined) referral.commissionCents = Number(v.provisionCent);
+  if (v.notiz) referral.note = v.notiz;
+  return Object.keys(referral).length ? referral : undefined;
+}
+
+/**
+ * Immer die ganze Gruppe, so wie sie danach gelten soll: Fehlende Angaben
+ * werden geleert (ohne Stand = keine Vermittlung). Änderungen daher aus dem
+ * frisch gelesenen Vorgang bilden: `{ referral: { ...v.referral, status } }`.
+ */
+function vermittlungZuPayload(referral: ReferralInfo): NonNullable<VorgangDaten['vermittlung']> {
+  return {
+    status: referral.status ?? null,
+    partner: referral.partnerId ? Number(referral.partnerId) : null,
+    provisionCent: referral.commissionCents ?? null,
+    notiz: referral.note ?? null,
+  };
+}
 
 const ZUSTIMMUNGEN = [
   ['agb', 'terms'],
@@ -1109,6 +1231,10 @@ export function vorgangZuSeite(doc: Vorgaenge): BusinessRecord {
   if (shipment) record.shipment = shipment;
   const consents = zustimmungenZuSeite(doc.zustimmungen);
   if (consents) record.consents = consents;
+  const approval = freigabeZuSeite(doc.freigabe);
+  if (approval) record.approval = approval;
+  const referral = vermittlungZuSeite(doc.vermittlung);
+  if (referral) record.referral = referral;
   return record;
 }
 
@@ -1178,6 +1304,8 @@ export function vorgangZuPayload(record: BusinessRecord): VorgangDaten {
     mails: record.mailLog?.map(mailZuPayload),
     versand: record.shipment ? versandZuPayload(record.shipment) : undefined,
     zustimmungen: record.consents ? zustimmungenZuPayload(record.consents) : undefined,
+    freigabe: record.approval ? freigabeZuPayload(record.approval) : undefined,
+    vermittlung: record.referral ? vermittlungZuPayload(record.referral) : undefined,
   };
 }
 
@@ -1204,5 +1332,7 @@ export function vorgangAenderungZuPayload(aenderung: VorgangsAenderung): Partial
   if (aenderung.shipment !== undefined) daten.versand = versandZuPayload(aenderung.shipment);
   if (aenderung.consents !== undefined) daten.zustimmungen = zustimmungenZuPayload(aenderung.consents);
   if (aenderung.accessTokenHash !== undefined) daten.zugriffsHash = aenderung.accessTokenHash;
+  if (aenderung.approval !== undefined) daten.freigabe = freigabeZuPayload(aenderung.approval);
+  if (aenderung.referral !== undefined) daten.vermittlung = vermittlungZuPayload(aenderung.referral);
   return daten;
 }

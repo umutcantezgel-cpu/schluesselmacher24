@@ -38,6 +38,43 @@ Zu beachten:
 - **Startseiten-Titel:** Die Marke steht jetzt hinten („… in Wetzlar | SCHLÜSSELMACHER24“), damit der Ort in den sichtbaren ersten 60 Zeichen bleibt. Wortlaut aller neuen Texte bitte freigeben.
 - **Fahrzeugschein:** Ist heute nur im Browser Pflicht, nicht auf dem Server. Das war schon vorher so und ist unverändert.
 
+### Leitfaden-Umsetzung (25.10.2026 abends, zweiter Pull Request)
+
+Umgesetzt wurde alles aus beiden Leitfäden, was im Code machbar ist. Die Abschnitte 3 bis 8 bleiben als Grundlage stehen; diese Liste ersetzt den Status der offenen Zeilen aus Abschnitt 4.
+
+| Bereich | Leitfaden | Stand |
+|---|---|---|
+| Foto-Freigabe: eingegangen → geprüft → freigegeben / Rückfrage / nicht möglich → Bestellung | Erg. §1, §2, §9; PL 07 | **umgesetzt.** Preis im Backend, Mail mit Zahlungslink (Stripe) und Einsendeanweisung, nach Zahlung „In Fertigung“ |
+| „Partner werden“ mit Formular, Vermittlungsstatus bis „Provision abgerechnet“ | Erg. §6, §7, §9 | **umgesetzt.** Bewerbungen als Vorgang `SM24-N-…`, Vermittlung an jedem Vorgang |
+| Wichtige Aktionen messen | Erg. §4, §9 | **umgesetzt.** Kennzahlen im Backend ohne Cookies; GA4 nur nach Einwilligung, sobald die Mess-ID gesetzt ist |
+| Statusverlauf intern nachvollziehbar | Erg. §2 | **umgesetzt** |
+| Termin-Erinnerungen | PL 17 | **umgesetzt.** Täglich, x Tage vorher, mit Kalenderdatei |
+| Projektübersicht / Projektberichte als PDF, Produktionsansicht | PL 08, 11, 17 | **umgesetzt.** Vorgangsblatt und Produktionsliste zum Drucken bzw. Speichern als PDF |
+| SEO je Seite pflegbar (Marken, Modelle) | PL 17 | **umgesetzt** |
+| Backup und Wiederherstellung | PL 18 | **umgesetzt.** `scripts/sicherung.mjs` und Ablauf in `docs/LIVEGANG.md`; Aufbewahrung legt der Inhaber fest |
+| 9 Bereiche in der Navigation, Handlungsaufforderung je Rubrik | PL 02; Erg. §2 | **umgesetzt** |
+| Hauptseiten „Schlüssel nach Foto“, „Schlüssel einschicken“, „Sperrschließungen“ | Erg. §3 | **umgesetzt** |
+| Kategorien Code → Anwendung → Produkt; Herstellerebene | Erg. §3 | **umgesetzt.** Herstellerebene erscheint automatisch mit den Herstellerdaten |
+| Keine nahezu identischen Seiten | Erg. §3; PL 16 | **umgesetzt.** Code-, Marken- und Modellseiten aus den echten Daten; Textgleichheit Codeseiten 73 % → 56 %, Modelle 78 % → 68 % |
+| Code-Suche | PL 08 | **umgesetzt.** Erkennt eingegebene Codes am Codeformat |
+| Schwerpunkt Wetzlar, Anreise, Außeneinsatz nur nach Prüfung | Erg. §1 | **umgesetzt.** Werkstatt als Terminort in Ablauf, Mails und Kundenseite; PLZ-Hinweis; Seite `/standorte/wetzlar` |
+| Vertrauensbasis Schlüssel Schmiede | Erg. §1 | **umgesetzt** (Startseite) |
+| Keine künstlichen Städte | Erg. §5 | **umgesetzt.** Platzhalter-Städte im Papierkorb |
+| ABUS/BKS-Konfiguratoren | Erg. §1 | **Struktur umgesetzt.** Herstellerschritt erscheint, sobald Hersteller mit Preisen im Backend gepflegt sind; Systemwahl ABUS/BKS im Projekt-Konfigurator |
+| Anzahlung angerechnet, nie höher als der Preis; Fahrzeugtermin nur bei Bedarf | PL 05, 06 | **umgesetzt** |
+| Unfertige Seiten schützen, Vorschauen noindex | Erg. §4 | **umgesetzt** |
+| Fahrzeugschein Pflicht | PL 05 | **umgesetzt**, jetzt auch auf dem Server |
+
+**Weiter offen, weil nur der Inhaber es liefern kann:**
+- echte Fotos
+- Hersteller, Profil und Codeserie der 52 Codelinien
+- ABUS/BKS-Typen und -Preise
+- Lieferzeiten je Versandart
+- Fahrzeugöffnung als Notfall statt Termin (F-16)
+- Endbetrag und Rechnung am Vorgang (F-09)
+- Anwaltsprüfung der Rechtstexte und des Partnervertrags
+- Search Console und Merchant Center nach dem Start
+
 ---
 
 ## 2 Hebelrechnung je Linie

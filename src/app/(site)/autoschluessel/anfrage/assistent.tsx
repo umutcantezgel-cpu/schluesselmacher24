@@ -16,6 +16,7 @@ import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { fetchQuote, fetchSlots, type SlotsResponse } from '@/lib/actions/booking';
 import { submitRecord } from '@/lib/actions/records';
 import { formatCents, formatDuration } from '@/lib/format';
+import { aktionMelden } from '@/lib/statistik';
 import { Alert } from '@/components/ui/alert';
 import { Card, CardBody } from '@/components/ui/card';
 import { InfoTip } from '@/components/ui/info-tip';
@@ -44,6 +45,7 @@ import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
 import { GlyphWaage } from '@/components/visual/glyphen/waage';
 import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
 import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
+import { ausserhalbDerRegion, ausserhalbHinweis, buchungsOrt, terminBeimKunden } from '@/lib/terminort';
 import {
   schluesselfotosFreiwillig,
   unterlagenSchrittErfuellt,
@@ -698,7 +700,11 @@ export function Assistent({
           { label: 'Eingeplante Dauer', value: formatDuration(current.slotMinutes) },
           {
             label: 'Art des Termins',
-            value: current.requiresVehicleOnSite ? 'Vor-Ort-Termin mit Fahrzeug' : 'Termin im Fachbetrieb',
+            value: terminBeimKunden(data.serviceId)
+              ? 'Bei Ihrem Fahrzeug (Ort nach telefonischer Absprache)'
+              : current.requiresVehicleOnSite
+                ? 'In der Werkstatt, mit Fahrzeug'
+                : 'In der Werkstatt',
           },
         ],
       },
@@ -773,7 +779,9 @@ export function Assistent({
       date: data.slotDate,
       time: data.slotTime,
       durationMinutes: quote.slotMinutes,
-      location: quote.requiresVehicleOnSite ? 'vor-ort' : 'werkstatt',
+      // Online gebuchte Termine finden in der Werkstatt statt (Erg. Leitfaden §1),
+      // Leistungen beim Fahrzeug des Kunden (Fahrzeugöffnung) nach Absprache.
+      location: buchungsOrt(data.serviceId),
     };
     const summary = buildSummary(quote);
 
@@ -843,6 +851,8 @@ export function Assistent({
       schutz.antwortBeachten(result);
 
       if (result.ok && result.reference) {
+        // Messung (nur mit Einwilligung in die Statistik): Terminanfrage abgesendet.
+        aktionMelden('terminanfrage', 'autoschluessel');
         setDone({
           reference: result.reference,
           appointment,
@@ -878,6 +888,7 @@ export function Assistent({
         notices={done.notices}
         redirectUrl={done.redirectUrl}
         reserviertBis={done.reserviertBis}
+        werkstatt={werkstatt?.standort}
       />
     );
   }
@@ -1179,7 +1190,7 @@ export function Assistent({
                   onSelect={selectService}
                   title={entry.label}
                   description={entry.description}
-                  info={serviceInfo(entry)}
+                  info={serviceInfo(entry, model)}
                 />
               ))}
             </div>
@@ -1412,14 +1423,21 @@ export function Assistent({
               </Field>
             </div>
 
+            {/* Erg. Leitfaden §1: Schwerpunkt Wetzlar — Kunden von außerhalb reisen an. */}
+            {ausserhalbDerRegion(data.postalCode, data.country) && (
+              <Alert tone="info" title="Termin in unserer Werkstatt" className="sm:col-span-2">
+                {ausserhalbHinweis(werkstatt?.standort?.city)}
+              </Alert>
+            )}
+
             <Field
               label="Land"
               required
               info={{
                 title: 'Wozu wir die Anschrift brauchen',
                 body:
-                  'Steht bei Ihrer Leistung das Fahrzeug im Mittelpunkt, stimmen wir den Ort des '
-                  + 'Termins mit Ihnen ab. Dafür brauchen wir mindestens Postleitzahl und Ort.',
+                  'Termine finden in unserer Werkstatt statt. Ein Einsatz bei Ihnen ist nur nach '
+                  + 'individueller Prüfung möglich — dafür brauchen wir mindestens Postleitzahl und Ort.',
               }}
             >
               {({ id, describedBy, invalid }) => (
@@ -1485,7 +1503,7 @@ export function Assistent({
                 </CardBody>
               </Card>
 
-              <PreisAnzeige quote={quote} />
+              <PreisAnzeige quote={quote} beimKunden={terminBeimKunden(data.serviceId)} />
 
               <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">
                 <GlyphWaage size={16} className="mt-0.5 shrink-0" />
@@ -1630,6 +1648,8 @@ export function Assistent({
           leadTimeDays={slots?.leadTimeDays ?? quote.leadTimeDays}
           slotMinutes={quote.slotMinutes}
           requiresVehicleOnSite={quote.requiresVehicleOnSite}
+          beimKunden={terminBeimKunden(data.serviceId)}
+          werkstatt={werkstatt?.standort}
           staleSelection={staleSlotSelection}
           selectedDate={data.slotDate}
           selectedTime={data.slotTime}

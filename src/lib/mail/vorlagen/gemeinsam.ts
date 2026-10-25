@@ -1,6 +1,7 @@
 /* Gemeinsame Bausteine der Mailvorlagen. Reine Funktionen, relative Importe. */
 
 import { formatCents, formatDate, formatDateTime, formatDuration } from '../../format';
+import { vorgangOrtText } from '../../terminort';
 import type { AreaKey, BusinessRecord, CompanyProfile, PaymentInfo, RecordKind } from '../../types';
 import type { Baustein } from '../html';
 
@@ -17,6 +18,7 @@ export const ART_LABEL: Record<RecordKind, string> = {
   termin: 'Termin',
   anfrage: 'Anfrage',
   projekt: 'Projektanfrage',
+  partner: 'Partner-Bewerbung',
 };
 
 export const BEREICH_LABEL: Record<AreaKey, string> = {
@@ -58,13 +60,17 @@ export function statusLink(site: string): string {
   return `${ohneSchraegstrich(site)}/service-und-termin/terminstatus`;
 }
 
-export function terminZeilen(vorgang: BusinessRecord): Array<[string, string]> {
+/**
+ * Termin, Dauer und Ort. Mit den Firmendaten (`kontext.firma`) nennt der Ort
+ * die Anschrift der Werkstatt (Erg. Leitfaden §1).
+ */
+export function terminZeilen(vorgang: BusinessRecord, firma?: CompanyProfile): Array<[string, string]> {
   const termin = vorgang.appointment;
   if (!termin) return [];
   return [
     ['Termin', `${formatDate(termin.date)}, ${termin.time} Uhr`],
     ['Dauer', formatDuration(termin.durationMinutes)],
-    ['Ort', termin.location === 'werkstatt' ? 'In unserer Werkstatt' : 'Vor Ort mit Ihrem Fahrzeug (Ort stimmen wir mit Ihnen ab)'],
+    ['Ort', vorgangOrtText(vorgang, firma) ?? ''],
   ];
 }
 

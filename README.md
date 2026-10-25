@@ -86,7 +86,7 @@ Mit laufender Datenbank sind die Inhalte in Payload gepflegt. Die Dateien unter 
 
 - **Backend unter `/admin`:** Anmeldung mit einem Konto der Sammlung `benutzer`. Zugelassen sind die Rollen Inhaber und Mitarbeiter (`src/payload/access/rollen.ts`). Den ersten Zugang legt `npm run admin:anlegen` an; die Zugangsdaten kommen aus `SEED_ADMIN_EMAIL` und `SEED_ADMIN_PASSWORD` (mindestens 12 Zeichen für das Passwort).
 - **Sammlungen:** Vorgänge, Kundendateien, Produkte, Fahrzeugmarken, Autoschlüssel-Leistungen, Preisregeln, Preisgruppen, Sperrtage, Seiten, Leistungsseiten, Ratgeber, Einsatzgebiete, Nachweise, Medien, Benutzer und Webhook-Ereignisse. Globals: Einstellungen, Richtwerte, Zylinderkatalog (`src/payload.config.ts`). Die Adresse einer Sammlung ist `/admin/collections/<slug>`.
-- **Übernahme:** `npm run seed` überträgt `content/*.json` in die Datenbank. Jede Sammlung wird nur einmal übernommen (`src/payload/seed.ts`).
+- **Übernahme:** `npm run seed` überträgt `content/*.json` in die Datenbank — je Eintrag: Neues wird angelegt, Gelöschtes nicht wiederbelebt, Texte nur dort aktualisiert, wo noch ein früherer Startwert steht (`src/payload/seed.ts`, Schnappschüsse unter `content/startwerte/`).
 
 | Datei | Inhalt |
 |---|---|

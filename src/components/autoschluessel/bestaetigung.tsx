@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import type { AppointmentInfo, PriceQuote, SummarySection } from '@/lib/types';
+import type { AppointmentInfo, CompanyLocation, PriceQuote, SummarySection } from '@/lib/types';
 import { formatCents, formatDate, formatDuration, formatTime } from '@/lib/format';
+import { terminOrtText } from '@/lib/terminort';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
@@ -21,6 +22,8 @@ export interface BestaetigungProps {
   redirectUrl?: string;
   /** Bei offener Online-Zahlung: bis wann der Termin reserviert ist (ISO). */
   reserviertBis?: string;
+  /** Werkstatt, in der der Termin stattfindet. */
+  werkstatt?: CompanyLocation;
 }
 
 /** Abschlussansicht nach erfolgreichem Absenden. */
@@ -32,6 +35,7 @@ export function Bestaetigung({
   notices,
   redirectUrl,
   reserviertBis,
+  werkstatt,
 }: BestaetigungProps) {
   return (
     <div className="space-y-6">
@@ -70,9 +74,11 @@ export function Bestaetigung({
               <p className="mt-1 text-small leading-relaxed text-foreground-muted">
                 Eingeplant sind{' '}
                 <span className="font-mono tabular-nums text-foreground">{formatDuration(appointment.durationMinutes)}</span>.
-                {appointment.location === 'vor-ort'
-                  ? ' Der Termin findet mit Fahrzeug statt; den Ort stimmen wir mit Ihnen ab.'
-                  : ' Die Arbeiten erfolgen im Fachbetrieb.'}
+                {' '}
+                {terminOrtText(appointment, { mitFahrzeug: quote.requiresVehicleOnSite, werkstatt })}.
+                {appointment.location === 'werkstatt' && quote.requiresVehicleOnSite
+                  ? ' Bitte bringen Sie Ihr Fahrzeug zum Termin mit.'
+                  : ''}
               </p>
             </div>
           </CardBody>

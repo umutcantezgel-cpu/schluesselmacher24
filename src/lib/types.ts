@@ -148,6 +148,8 @@ export interface BookingDefaults {
   windows: { from: string; to: string }[];
   /** Bundesland für gesetzliche Feiertage; ohne Angabe Hessen. */
   federalState?: FederalState;
+  /** Termin-Erinnerung: so viele Tage vor dem Termin. 0 = keine Erinnerung. */
+  reminderDaysBefore: number;
 }
 
 /**
@@ -217,9 +219,27 @@ export interface VehicleMake {
   /** Gruppe für Preis-, Anzahlungs- und Terminlängenregeln. */
   pricingGroupId: string;
   models: VehicleModel[];
-  /** Redaktioneller Text für die Markenseite. */
+  /**
+   * Redaktioneller Text für die Markenseite (Backend: `intro`). Eigener Text
+   * des Betriebs geht vor automatisch erzeugten Texten.
+   */
   intro?: string;
   image?: ImageSlot;
+  /**
+   * Eigene Suchmaschinen-Angaben der Markenseite (Projektleitfaden Kap. 17).
+   * Nur gesetzt, wenn im Backend etwas eingetragen ist; nicht eingetragene
+   * Texte sind leer — die Seite erzeugt dann ihre eigenen.
+   */
+  seo?: SeoFields;
+  /** Letzte Änderung im Backend (für die Sitemap); fehlt bei Inhalten aus `content/`. */
+  updatedAt?: string;
+}
+
+/** Eigene Suchmaschinen-Angaben einer Modellseite; leere Texte = automatisch. */
+export interface VehicleModelSeo {
+  title: string;
+  description: string;
+  noindex?: boolean;
 }
 
 export interface VehicleModel {
@@ -235,6 +255,10 @@ export interface VehicleModel {
   /** Abweichende Preisgruppe, sonst gilt die der Marke. */
   pricingGroupId?: string;
   notes?: string;
+  /** Eigene Einleitung der Modellseite (Backend: `einleitung`); geht vor erzeugtem Text. */
+  intro?: string;
+  /** Nur gesetzt, wenn im Backend etwas eingetragen ist. */
+  seo?: VehicleModelSeo;
 }
 
 /** Leistung im Autoschlüssel-Bereich. */
@@ -314,6 +338,10 @@ export interface CodeLine {
   slug: string;
   name: string;
   manufacturer: string;
+  /** Schlüsselprofil laut Hersteller (Erg. Leitfaden §1/§3), nur wenn gepflegt. */
+  profile?: string;
+  /** Codeserie bzw. Schließungsserie, nur wenn gepflegt. */
+  codeSeries?: string;
   /** Wofür die Codelinie eingesetzt wird, z. B. "Möbelschloss". */
   application: string;
   keyType: string;
@@ -343,6 +371,8 @@ export interface CodeLine {
   /** Beispielartikel: sichtbar, aber nicht bestellbar und nicht in Suchmaschinen. */
   example?: boolean;
   gpsr?: ProductSafetyInfo;
+  /** Letzte Änderung im Backend (für die Sitemap); fehlt bei Inhalten aus `content/`. */
+  updatedAt?: string;
 }
 
 /* ---------- Standardartikel (Shop) -------------------------------------- */
@@ -416,6 +446,31 @@ export interface CylinderExtraOption {
   active: boolean;
 }
 
+/** Zusatzkomponente eines Zylinder-Herstellers, z. B. eine Sicherungskarte. */
+export interface CylinderManufacturerComponent {
+  name: string;
+  priceCents: number;
+  description: string;
+}
+
+/**
+ * Hersteller bzw. System für den Zylinder-Konfigurator (Erg. Leitfaden §1:
+ * ABUS, BKS). Der Konfigurator fragt den Hersteller nur ab, wenn mindestens
+ * ein Eintrag aktiv ist.
+ */
+export interface CylinderManufacturer {
+  /** Kennung, z. B. "abus". */
+  id: string;
+  name: string;
+  active: boolean;
+  description: string;
+  /** Aufpreis je Zylinder in Cent (Backend: Euro, `aufpreisJeZylinder`). */
+  surchargeCentsPerCylinder: number;
+  /** Für diese Bauformen; leer = alle. */
+  forms: CylinderForm[];
+  components: CylinderManufacturerComponent[];
+}
+
 export interface CylinderCatalog {
   forms: CylinderFormOption[];
   functions: CylinderFunctionOption[];
@@ -429,6 +484,8 @@ export interface CylinderCatalog {
   /** Erklärung zum richtigen Messen. */
   measuringInfo: InfoHint;
   measuringFigure: ImageSlot;
+  /** Hersteller und Systeme; leer, solange keine gepflegt sind. */
+  manufacturers: CylinderManufacturer[];
   /** Gilt für alle Zylinder des Katalogs. */
   gpsr?: ProductSafetyInfo;
 }
@@ -442,11 +499,21 @@ export interface CylinderLineItem {
   qty: number;
 }
 
+/** Gewählte Zusatzkomponente des Herstellers, erkannt an ihrer Bezeichnung. */
+export interface CylinderComponentChoice {
+  name: string;
+  qty: number;
+}
+
 export interface CylinderOrderDraft {
   items: CylinderLineItem[];
   keyCount: number;
   extraIds: string[];
   expandable: boolean;
+  /** Kennung des Herstellers; nur gesetzt, wenn der Katalog Hersteller anbietet. */
+  manufacturerId?: string;
+  /** Zusatzkomponenten des gewählten Herstellers mit Stückzahl. */
+  components?: CylinderComponentChoice[];
 }
 
 /* ---------- Warenkorb und Bestellungen ---------------------------------- */
@@ -512,12 +579,19 @@ export interface UploadRef {
 
 /* ---------- Vorgänge (zentrale Backend-Struktur) ------------------------- */
 
-export type RecordKind = 'bestellung' | 'anfrage' | 'termin' | 'projekt';
+/** `partner`: Bewerbung über „Partner werden“ (Erg. Leitfaden §7). */
+export type RecordKind = 'bestellung' | 'anfrage' | 'termin' | 'projekt' | 'partner';
 
+/**
+ * Foto-Freigabe (Erg. Leitfaden §2): eingegangen (`neu`) → `geprueft` →
+ * `freigegeben` / Rückfrage (`wartet-auf-kunde`) / `nicht-moeglich` → Bestellung.
+ */
 export type RecordStatus =
   | 'neu'
   | 'in-pruefung'
   | 'geprueft'
+  | 'freigegeben'
+  | 'nicht-moeglich'
   | 'wartet-auf-kunde'
   | 'in-fertigung'
   | 'terminiert'
@@ -572,6 +646,9 @@ export type MailKind =
   | 'erstattung'
   | 'status'
   | 'widerruf'
+  | 'erinnerung'
+  | 'freigabe'
+  | 'team-hinweis'
   | 'sonstige';
 
 /** Eintrag im Mailprotokoll eines Vorgangs. */
@@ -607,6 +684,42 @@ export interface RecordConsents {
   at?: string;
   /** Stand der Rechtstexte zum Zeitpunkt der Zustimmung. */
   version?: string;
+}
+
+/**
+ * Ergebnis der Foto-Prüfung bei „Schlüssel nach Vorlage“ (Backend: Gruppe
+ * `freigabe`). Nur gefüllte Angaben sind gesetzt.
+ */
+export interface ApprovalInfo {
+  /** Preis der Anfertigung in Cent. */
+  priceCents?: number;
+  /** Muss der Kunde den Originalschlüssel einsenden? */
+  sendInRequired?: boolean;
+  /** Hinweis an den Kunden. */
+  note?: string;
+  /** Zeitpunkt der Freigabe (ISO), setzt das System beim Status „freigegeben“. */
+  approvedAt?: string;
+}
+
+/** Stand einer Auftragsvermittlung an einen Partnerbetrieb (Erg. Leitfaden §7). */
+export type ReferralStatus =
+  | 'neu'
+  | 'geprueft'
+  | 'partner-angefragt'
+  | 'angenommen'
+  | 'erledigt'
+  | 'provision-abgerechnet';
+
+/** Vermittlung an einen Partnerbetrieb (Backend: Gruppe `vermittlung`). */
+export interface ReferralInfo {
+  /** Leer = keine Vermittlung. */
+  status?: ReferralStatus;
+  /** Kennung (`BusinessRecord.id`) der Partner-Bewerbung, Art `partner`. */
+  partnerId?: string;
+  /** Vereinbarte Provision in Cent. */
+  commissionCents?: number;
+  /** Interne Notiz. */
+  note?: string;
 }
 
 export interface TimelineEntry {
@@ -679,6 +792,10 @@ export interface BusinessRecord {
   mailLog?: MailLogEntry[];
   shipment?: ShipmentInfo;
   consents?: RecordConsents;
+  /** Nur bei Fotoanfragen (Bereich `schluessel-nach-vorlage`). */
+  approval?: ApprovalInfo;
+  /** Nur wenn der Vorgang an einen Partnerbetrieb vermittelt wird. */
+  referral?: ReferralInfo;
 }
 
 export interface SummarySection {

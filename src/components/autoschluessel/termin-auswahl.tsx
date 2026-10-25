@@ -2,13 +2,15 @@
 
 import { useState } from 'react';
 
-import type { TimeSlot } from '@/lib/types';
+import type { CompanyLocation, TimeSlot } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import { formatDate, formatDuration } from '@/lib/format';
+import { AUSSENEINSATZ_HINWEIS, BEIM_KUNDEN_HINWEIS, anschriftEinzeilig } from '@/lib/terminort';
 import { Alert } from '@/components/ui/alert';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphKalender } from '@/components/visual/glyphen/kalender';
 import { GlyphLaden } from '@/components/visual/glyphen/laden';
+import { GlyphOrt } from '@/components/visual/glyphen/ort';
 
 export interface TerminAuswahlProps {
   days: Array<{ date: string; slots: TimeSlot[] }>;
@@ -17,6 +19,10 @@ export interface TerminAuswahlProps {
   leadTimeDays: number;
   slotMinutes: number;
   requiresVehicleOnSite: boolean;
+  /** Leistung beim Fahrzeug des Kunden (Fahrzeugöffnung): kein Werkstatttermin. */
+  beimKunden?: boolean;
+  /** Werkstatt, in der der Termin stattfindet (`standort` aus den Firmendaten). */
+  werkstatt?: CompanyLocation;
   /**
    * Wahr, wenn der zuvor gewählte Termin nicht mehr frei ist — etwa weil sich
    * durch eine geänderte Leistung die Terminlänge verschoben hat.
@@ -59,6 +65,8 @@ export function TerminAuswahl({
   leadTimeDays,
   slotMinutes,
   requiresVehicleOnSite,
+  beimKunden = false,
+  werkstatt,
   staleSelection = false,
   selectedDate,
   selectedTime,
@@ -193,18 +201,31 @@ export function TerminAuswahl({
         </section>
       )}
 
-      {requiresVehicleOnSite && (
-        <Alert tone="warning" title="Dieser Termin findet mit Fahrzeug statt">
+      {/* Terminort (Erg. Leitfaden §1): Kundinnen und Kunden kommen zur Werkstatt. */}
+      {beimKunden ? (
+        <Alert tone="info" title="Termin bei Ihrem Fahrzeug">
+          <p>{BEIM_KUNDEN_HINWEIS}</p>
+        </Alert>
+      ) : requiresVehicleOnSite ? (
+        <Alert tone="warning" title="Bitte bringen Sie Ihr Fahrzeug mit">
           <p>
             Für Ihre Kombination aus Modell und Leistung muss das Fahrzeug beim Termin verfügbar
-            sein — elektronische Schlüssel werden direkt am Fahrzeug angelernt. Ihr Vorgang wird
-            deshalb als Vor-Ort-Termin mit Fahrzeug angelegt.
+            sein — elektronische Schlüssel werden direkt am Fahrzeug angelernt. Der Termin findet
+            in unserer Werkstatt statt, mit Fahrzeug
+            {werkstatt ? `: ${werkstatt.label}, ${anschriftEinzeilig(werkstatt)}.` : '.'}
           </p>
-          <p className="mt-2">
-            Wo der Termin stattfindet, stimmen wir nach der Prüfung Ihrer Unterlagen mit Ihnen ab und
-            bestätigen es Ihnen zusammen mit dem Preis.
-          </p>
+          <p className="mt-2">{AUSSENEINSATZ_HINWEIS}</p>
         </Alert>
+      ) : (
+        <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">
+          <GlyphOrt size={16} className="mt-0.5 shrink-0" />
+          <div className="min-w-0">
+            <p className="font-semibold text-foreground">
+              Termin in unserer Werkstatt{werkstatt ? `: ${anschriftEinzeilig(werkstatt)}` : ''}
+            </p>
+            <p className="mt-1">{AUSSENEINSATZ_HINWEIS}</p>
+          </div>
+        </div>
       )}
 
       <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">

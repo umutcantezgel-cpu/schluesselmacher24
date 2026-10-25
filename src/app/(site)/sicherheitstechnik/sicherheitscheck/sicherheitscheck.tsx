@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { submitRecord, type SubmitResult } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import type { InfoHint, SummarySection, UploadRef } from '@/lib/types';
+import { aktionMelden } from '@/lib/statistik';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { InfoTip } from '@/components/ui/info-tip';
@@ -591,6 +592,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
       schutz.antwortBeachten(response);
 
       if (response.ok) {
+        aktionMelden('projektanfrage', 'sicherheitstechnik');
         setResult(response);
         clearFlow(FLOW_ID);
       } else {

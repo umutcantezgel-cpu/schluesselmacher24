@@ -148,3 +148,35 @@ describe('zahlungFortsetzen', () => {
     expect(abrufen).not.toHaveBeenCalled();
   });
 });
+
+describe('zahlungFortsetzen: Fotoanfrage', () => {
+  const foto = (status: BusinessRecord['status']) =>
+    vorgang(
+      { reference: 'SM24-A-2026-0011', kind: 'anfrage', area: 'schluessel-nach-vorlage', process: 'gefuehrte-anfrage', status, lines: undefined, totals: undefined },
+      { amountCents: 2490, checkoutSessionId: undefined },
+    );
+
+  it('startet nach der Freigabe die Zahlung als Anfertigung nach Vorlage', async () => {
+    gespeichert = foto('freigegeben');
+    zahlungStarten.mockResolvedValue({
+      status: 'offen',
+      checkoutSessionId: 'cs_foto',
+      expiresAt: '2026-10-26T10:00:00.000Z',
+      redirectUrl: 'https://checkout.stripe.com/c/pay/cs_foto',
+      message: '',
+    });
+    expect(await zahlungFortsetzen({ recordId: '42', token })).toEqual({ ok: true, url: 'https://checkout.stripe.com/c/pay/cs_foto' });
+    expect(zahlungStarten).toHaveBeenCalledWith(
+      expect.objectContaining({ recordKind: 'anfrage', amountCents: 2490, description: 'Anfertigung Schlüssel nach Vorlage' }),
+    );
+    expect(gespeichert?.payment).toMatchObject({ checkoutSessionId: 'cs_foto', status: 'offen' });
+  });
+
+  it('lehnt die Zahlung ab, solange die Anfrage nicht freigegeben ist', async () => {
+    for (const status of ['in-pruefung', 'wartet-auf-kunde', 'nicht-moeglich'] as const) {
+      gespeichert = foto(status);
+      expect(await zahlungFortsetzen({ recordId: '42', token })).toMatchObject({ ok: false, meldung: expect.stringContaining('keine Zahlung möglich') });
+    }
+    expect(zahlungStarten).not.toHaveBeenCalled();
+  });
+});

@@ -5,6 +5,8 @@ const PREFIX: Record<RecordKind, string> = {
   anfrage: 'A',
   termin: 'T',
   projekt: 'P',
+  // Bewerbung über „Partner werden“ — eigener Nummernkreis.
+  partner: 'N',
 };
 
 /**

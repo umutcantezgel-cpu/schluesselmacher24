@@ -1,3 +1,4 @@
+import { gewaehlterHersteller, wirksameZusatzIds } from '@/lib/cylinder-rules';
 import { formatMillimeter } from '@/lib/format';
 import type { CylinderCatalog, CylinderOrderDraft } from '@/lib/types';
 
@@ -18,6 +19,9 @@ export function zylinderZeilen(draft: CylinderOrderDraft, catalog: CylinderCatal
   const formsMap = new Map(catalog.forms.map((f) => [f.id, f]));
   const functionsMap = new Map(catalog.functions.map((f) => [f.id, f]));
   const extrasMap = new Map(catalog.extras.map((e) => [e.id, e]));
+  const hersteller = gewaehlterHersteller(draft, catalog);
+
+  if (hersteller) zeilen.push({ label: 'Hersteller', value: hersteller.name });
 
   for (const eintrag of draft.items) {
     const form = formsMap.get(eintrag.form);
@@ -36,11 +40,19 @@ export function zylinderZeilen(draft: CylinderOrderDraft, catalog: CylinderCatal
 
   zeilen.push({ label: 'Gemeinsame Schlüssel', value: `${draft.keyCount} Stück` });
 
-  const zusatz = draft.extraIds
+  // Wie in der Preisermittlung: „Erweiterbar: Ja“ wählt die Option „Erweiterbar reservieren“ mit.
+  const zusatz = wirksameZusatzIds(draft, catalog)
     .map((id) => extrasMap.get(id)?.label)
     .filter((label): label is string => Boolean(label));
   if (zusatz.length > 0) {
     zeilen.push({ label: 'Zusatzoptionen', value: zusatz.join(', ') });
+  }
+
+  const komponenten = (draft.components ?? [])
+    .filter((wahl) => hersteller?.components.some((k) => k.name === wahl.name))
+    .map((wahl) => `${wahl.qty} × ${wahl.name}`);
+  if (komponenten.length > 0) {
+    zeilen.push({ label: 'Zusatzkomponenten', value: komponenten.join(', ') });
   }
 
   zeilen.push({

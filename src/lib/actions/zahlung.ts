@@ -3,6 +3,7 @@
 import { getRecord, vorgangAendern } from '@/lib/data';
 import { createPayment, paymentStatus } from '@/lib/integrations';
 import { checkoutAbrufen } from '@/lib/integrations/stripe';
+import { FOTOANFRAGE_ZAHLUNG, istFotoanfrage } from '@/lib/foto-freigabe';
 import { verifyAccessToken } from '@/lib/server/access-token';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { terminNochBezahlbar } from '@/lib/zahlung/ansicht';
@@ -27,7 +28,9 @@ const ABGELAUFEN = 'Die Reservierung ist abgelaufen – bitte buchen Sie den Ter
  *
  * Eine offene Zahlungsseite wird wiederverwendet — so entsteht keine zweite.
  * Ist sie abgelaufen, startet bei Bestellungen eine neue; ein Termin muss neu
- * gebucht werden, weil sein Zeitfenster dann wieder frei ist.
+ * gebucht werden, weil sein Zeitfenster dann wieder frei ist. Eine
+ * Fotoanfrage lässt sich nur bezahlen, solange sie freigegeben ist — mit der
+ * Zahlung erteilt der Kunde den Auftrag.
  */
 export async function zahlungFortsetzen(eingabe: { recordId: string; token: string }): Promise<ZahlungFortsetzenErgebnis> {
   if (!(await allowRequest(LIMITS.zahlung))) return { ok: false, meldung: RATE_LIMIT_MESSAGE };
@@ -49,6 +52,13 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
     return termin
       ? { ok: false, meldung: 'Dieser Termin ist storniert.', neuBuchen: NEU_BUCHEN }
       : { ok: false, meldung: 'Dieser Vorgang ist storniert.' };
+  }
+  if (vorgang.status === 'nicht-moeglich') {
+    return { ok: false, meldung: 'Für diesen Vorgang ist keine Zahlung möglich.' };
+  }
+  const foto = istFotoanfrage(vorgang);
+  if (foto && vorgang.status !== 'freigegeben') {
+    return { ok: false, meldung: 'Für diese Anfrage ist derzeit keine Zahlung möglich. Wir melden uns bei Ihnen.' };
   }
   if (!paymentStatus().configured) {
     return { ok: false, meldung: 'Die Online-Zahlung ist derzeit nicht verfügbar. Wir melden uns mit den Zahlungsinformationen.' };
@@ -86,7 +96,7 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
       recordKind: vorgang.kind,
       amountCents: zahlung.amountCents,
       scope: zahlung.scope,
-      description: termin ? 'Anzahlung Autoschlüssel-Termin' : 'Bestellung',
+      description: termin ? 'Anzahlung Autoschlüssel-Termin' : foto ? FOTOANFRAGE_ZAHLUNG : 'Bestellung',
       accessToken: token,
       customerEmail: vorgang.contact.email,
       lines: vorgang.lines,

@@ -4,6 +4,7 @@ import Stripe from 'stripe';
 
 import { formatDateShort } from '@/lib/format';
 import { getSiteUrl } from '@/lib/site-url';
+import type { RecordKind } from '@/lib/types';
 import { zahlungKonfiguration, type ZahlungKonfiguration } from '@/lib/umgebung';
 
 import type { PaymentIntent, PaymentResult } from './index';
@@ -22,7 +23,8 @@ export const MINDESTBETRAG_CENT = 50;
 /**
  * Wie lange die Zahlungsseite offen bleibt. Stripe verlangt mindestens
  * 30 Minuten — mit einer Minute Puffer für Laufzeit und Uhrzeitabweichung.
- * Bestellungen: höchstens 24 Stunden, mit einer Stunde Puffer.
+ * Bestellungen und freigegebene Fotoanfragen: höchstens 24 Stunden, mit einer
+ * Stunde Puffer — danach startet „Jetzt bezahlen“ eine neue Sitzung.
  */
 export const ABLAUF_MINUTEN = { termin: 31, bestellung: 23 * 60 } as const;
 
@@ -58,7 +60,12 @@ export interface CheckoutMetadaten {
   [schluessel: string]: string;
 }
 
-const BESCHREIBUNG: Record<string, string> = {
+/**
+ * Arten ohne Eintrag (Anfrage, Projekt, Partner) nutzen die Beschreibung der
+ * Zahlung — bei der freigegebenen Fotoanfrage „Anfertigung Schlüssel nach
+ * Vorlage“ (`FOTOANFRAGE_ZAHLUNG`), als einzige Position mit Vorgangsnummer.
+ */
+const BESCHREIBUNG: Partial<Record<RecordKind, string>> = {
   termin: 'Anzahlung Autoschlüssel-Termin',
   bestellung: 'Bestellung',
 };

@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
       page?.seo.description
       ?? `Zu ${makes.length} ${nomen(makes.length, 'Fahrzeugmarke', 'Fahrzeugmarken')} und `
         + `${modelCount} ${nomen(modelCount, 'Modell', 'Modellen')} finden Sie hier, welche `
-        + 'Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen vor Ort sein muss.',
+        + 'Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen in die Werkstatt mitkommen muss.',
     alternates: { canonical: '/autoschluessel/marken' },
   };
 }
@@ -81,7 +81,7 @@ export default async function MarkenPage() {
                   ?? `Für ${formatNumber(makes.length)} ${nomen(makes.length, 'Marke', 'Marken')} `
                     + `mit insgesamt ${formatNumber(modelCount)} ${nomen(modelCount, 'Modell', 'Modellen')} `
                     + 'haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das '
-                    + 'Fahrzeug zum Anlernen vor Ort sein muss.'}
+                    + 'Fahrzeug zum Anlernen in die Werkstatt mitkommen muss.'}
               </p>
               <p>
                 Diese Angaben sind eine Orientierung für die Planung. Welche Variante Ihr Fahrzeug

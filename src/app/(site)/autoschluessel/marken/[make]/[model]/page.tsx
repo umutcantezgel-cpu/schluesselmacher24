@@ -2,10 +2,24 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { getSettings, getVehicleMakes, getVehicleModel } from '@/lib/data';
+import { getCities, getCollection, getSettings, getVehicleMakes, getVehicleModel } from '@/lib/data';
 import type { ImageSlot, KeyKind } from '@/lib/types';
-import { formatCents } from '@/lib/format';
+import { formatCents, formatDuration } from '@/lib/format';
 import { cn } from '@/lib/cn';
+import {
+  aufzaehlung,
+  eckdaten,
+  erstNachPruefung,
+  leistungsPreise,
+  modellIndexierbar,
+  modellTexte,
+  preisAngabe,
+  preisAb,
+} from '@/lib/fahrzeug-texte';
+import { standort } from '@/lib/rechtliches/firma';
+import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
+import { Accordion } from '@/components/ui/accordion';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
@@ -85,44 +99,56 @@ export async function generateStaticParams() {
   );
 }
 
+/** Modell samt Preisen wie im Assistenten und den Texten der Seite. */
+async function laden(makeSlug: string, modelSlug: string) {
+  const [found, settings, services, rules, cities] = await Promise.all([
+    getVehicleModel(makeSlug, modelSlug),
+    getSettings(),
+    getCollection('carKeyServices'),
+    getCollection('pricingRules'),
+    getCities(),
+  ]);
+  if (!found) return null;
+  const { make, model } = found;
+  const preise = leistungsPreise(make, model, { services, rules, booking: settings.booking });
+  const werkstatt = standort(settings.company);
+  const texte = modellTexte(make, model, preise, werkstatt);
+  // Eine Standortseite der Werkstattstadt, wenn sie gepflegt und indexierbar ist.
+  const werkstattSeite = werkstatt
+    ? cities.find((city) => city.city === werkstatt.city && stadtIndexierbar(city))
+    : undefined;
+  return { make, model, preise, werkstatt, werkstattSeite, texte };
+}
+
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { make: makeSlug, model: modelSlug } = await props.params;
-  const found = await getVehicleModel(makeSlug, modelSlug);
+  const geladen = await laden(makeSlug, modelSlug);
 
-  if (!found) {
+  if (!geladen) {
     return { title: 'Modell nicht gefunden' };
   }
 
-  const { make, model } = found;
-  const years = formatModelYears(model);
-  const erfasst = hatBaujahre(model);
-  const kinds = model.keyKinds.map((kind) => keyKindLabel(kind)).join(', ');
-  const kopf = `Autoschlüssel für ${make.name} ${model.name}${erfasst ? `, Baujahre ${years}` : ''}.`;
-
+  const { make, model, texte } = geladen;
   return {
-    title: `${make.name} ${model.name} Autoschlüssel${erfasst ? ` (${years})` : ''}`,
-    description:
-      kinds.length > 0
-        ? `${kopf} Erfasste Schlüsselarten: ${kinds}. Anfrage mit Schlüsselfotos, Preisangabe und fester Terminbuchung.`
-        : `${kopf} Anfrage mit Schlüsselfotos, Preisangabe und fester Terminbuchung.`,
+    title: texte.metaTitel,
+    description: texte.metaBeschreibung,
     alternates: { canonical: `/autoschluessel/marken/${make.slug}/${model.slug}` },
+    // `noindex` aus dem Backend gilt für Seite und Sitemap.
+    ...(modellIndexierbar(model) ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
 export default async function ModelPage(props: PageProps) {
   const { make: makeSlug, model: modelSlug } = await props.params;
-  const [found, settings] = await Promise.all([
-    getVehicleModel(makeSlug, modelSlug),
-    getSettings(),
-  ]);
+  const geladen = await laden(makeSlug, modelSlug);
 
-  if (!found) notFound();
+  if (!geladen) notFound();
 
-  const { make, model } = found;
+  const { make, model, preise, werkstatt, werkstattSeite, texte } = geladen;
   const years = formatModelYears(model);
   const erfasst = hatBaujahre(model);
-  const deposit = formatCents(settings.booking.depositCents);
-  const leadDays = settings.booking.leadTimeDays;
+  const daten = eckdaten(preise);
+  const ab = preisAb(preise);
   const felder = detailFelder(model.keyKinds);
   // Keyless steht immer als eigene Zelle hinter den Zeichnungen, auch wenn es am Smart Key hängt (D-047).
   const gezeichnet = felder.filter((feld) => feld.typ !== undefined);
@@ -133,6 +159,16 @@ export default async function ModelPage(props: PageProps) {
   const zellen = [...gezeichnet, ...hinweise];
   const hatZeichnung = gezeichnet.length > 0;
   const leiste = gezeichnet.length > 3;
+  const pfad = `/autoschluessel/marken/${make.slug}/${model.slug}`;
+  const crumbs = [
+    { href: '/autoschluessel', label: 'Autoschlüssel' },
+    { href: '/autoschluessel/marken', label: 'Marken' },
+    { href: `/autoschluessel/marken/${make.slug}`, label: make.name },
+    { href: pfad, label: model.name },
+  ];
+  const geschwister = [...make.models]
+    .filter((m) => m.slug !== model.slug)
+    .sort((a, b) => a.name.localeCompare(b.name, 'de'));
 
   // Vorbelegung des Assistenten über Suchparameter.
   const assistantHref = `/autoschluessel/anfrage?marke=${make.slug}&modell=${model.slug}`;
@@ -151,9 +187,11 @@ export default async function ModelPage(props: PageProps) {
           : 'nicht erfasst — wir klären das anhand Ihrer Schlüsselfotos',
     },
     {
-      label: 'Fahrzeug zum Anlernen vor Ort',
+      label: 'Fahrzeug zum Anlernen mitbringen',
       value: model.requiresVehicleOnSite ? 'Ja' : 'Nein',
     },
+    ...(ab !== undefined ? [{ label: 'Leistungen ab', value: formatCents(ab) }] : []),
+    ...(daten.vorlauf ? [{ label: 'Vorlauf bis zum Termin', value: daten.vorlauf }] : []),
     ...(model.notes ? [{ label: 'Hinweis', value: model.notes, prosa: true }] : []),
   ];
 
@@ -177,21 +215,24 @@ export default async function ModelPage(props: PageProps) {
   };
 
   const baujahrSatz = erfasst
-    ? `Für dieses Modell sind die Baujahre ${years} erfasst.`
-    : 'Für dieses Modell sind die Baujahre nicht erfasst.';
+    ? `Für ${make.name} ${model.name} sind die Baujahre ${years} erfasst.`
+    : `Für ${make.name} ${model.name} sind die Baujahre nicht erfasst.`;
 
   const einordnung = [
     {
-      titel: model.requiresVehicleOnSite
+      titel: daten.mitFahrzeug.length
         ? 'Ihr Fahrzeug muss zum Termin da sein'
         : 'Ohne Fahrzeug möglich',
-      text: model.requiresVehicleOnSite
-        ? 'Für dieses Modell ist zum elektronischen Anlernen Zugriff auf das Fahrzeug '
-          + 'hinterlegt. Ein Versand des Schlüssels löst die Aufgabe daher nicht. '
-          + 'Planen Sie einen Termin ein, bei dem das Fahrzeug bei uns steht.'
-        : 'Für dieses Modell ist im Datensatz kein Zugriff auf das Fahrzeug vermerkt. '
-          + 'Ob das für Ihren konkreten Auftrag gilt, hängt von der Leistung ab — rein '
-          + 'mechanische Arbeiten sind ohnehin ohne Fahrzeug möglich.',
+      text: [
+        daten.mitFahrzeug.length
+          ? `${daten.ohneFahrzeug.length ? `Für ${aufzaehlung(daten.mitFahrzeug.map((l) => `„${l}“`))}` : 'Für alle angebotenen Leistungen'} braucht es Zugriff auf Ihren ${make.name} ${model.name}; ein Versand des Schlüssels löst die Aufgabe dann nicht.`
+          : undefined,
+        daten.ohneFahrzeug.length
+          ? `${aufzaehlung(daten.ohneFahrzeug.map((l) => `„${l}“`))} ${daten.ohneFahrzeug.length === 1 ? 'geht' : 'gehen'} ohne Fahrzeug.`
+          : undefined,
+      ]
+        .filter(Boolean)
+        .join(' ') || 'Ob das Fahrzeug nötig ist, hängt von der Leistung ab — das zeigt der Ablauf.',
     },
     {
       titel: 'Baujahr entscheidet mit',
@@ -201,10 +242,12 @@ export default async function ModelPage(props: PageProps) {
     },
     {
       titel: 'Anzahlung und Vorlauf',
-      text: `Die Anzahlung beträgt standardmäßig ${deposit} und wird vollständig auf den `
-        + `Gesamtpreis angerechnet. Der früheste Termin liegt etwa ${leadDays}\u00a0Tage in der `
-        + 'Zukunft, weil wir den passenden Schlüssel vorher beschaffen. Für einzelne '
-        + 'Leistungen können abweichende Werte gelten — diese sehen Sie im Ablauf.',
+      text: [
+        daten.anzahlung ? `Die Anzahlung beträgt bei ${make.name} ${model.name} ${daten.anzahlung} und wird vollständig auf den Gesamtpreis angerechnet.` : undefined,
+        daten.vorlauf ? `Der früheste Termin liegt etwa ${daten.vorlauf} in der Zukunft, weil wir den passenden Schlüssel vorher beschaffen.` : undefined,
+      ]
+        .filter(Boolean)
+        .join(' ') || 'Anzahlung und Vorlauf sehen Sie im Ablauf, sobald die Leistung gewählt ist.',
     },
     {
       titel: 'Ein vorhandener Schlüssel hilft',
@@ -216,16 +259,20 @@ export default async function ModelPage(props: PageProps) {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: pfad,
+          name: `Autoschlüssel für ${make.name} ${model.name}`,
+          description: texte.metaBeschreibung,
+          faq: texte.faq,
+          crumbs,
+        })}
+      />
       <PageHeader
         eyebrow={`${make.name} · Modell`}
         title={`Autoschlüssel für ${make.name} ${model.name}`}
-        lead="Was für dieses Modell hinterlegt ist und was das für Ihren Auftrag bedeutet."
-        crumbs={[
-          { href: '/autoschluessel', label: 'Autoschlüssel' },
-          { href: '/autoschluessel/marken', label: 'Marken' },
-          { href: `/autoschluessel/marken/${make.slug}`, label: make.name },
-          { href: `/autoschluessel/marken/${make.slug}/${model.slug}`, label: model.name },
-        ]}
+        lead={texte.einleitung}
+        crumbs={crumbs}
         actions={
           <ButtonLink href={assistantHref} pfeil>
             Mit diesem Fahrzeug starten
@@ -279,7 +326,7 @@ export default async function ModelPage(props: PageProps) {
               {model.requiresVehicleOnSite && <InfoTip hint={ON_SITE_HINT} />}
             </dt>
             <dd className="mt-1 text-title-sm font-semibold text-foreground">
-              {model.requiresVehicleOnSite ? 'vor Ort' : 'ohne Fahrzeug'}
+              {model.requiresVehicleOnSite ? 'am Fahrzeug' : 'ohne Fahrzeug'}
             </dd>
           </div>
         </dl>
@@ -332,11 +379,74 @@ export default async function ModelPage(props: PageProps) {
         </div>
       </Section>
 
+      {/* Leistungen mit Preis: dieselbe Berechnung wie im Termin-Assistenten (quoteCarKeyService) */}
+      <Section id="preise">
+        <SectionHeading
+          nummer="02"
+          eyebrow="Leistungen und Preise"
+          title={`Leistungen für ${make.name} ${model.name}`}
+          lead="Berechnet wie im Termin-Assistenten für dieses Modell, wenn mindestens ein funktionierender Schlüssel vorhanden ist."
+        />
+        {preise.length > 0 ? (
+          <ul className="mt-8 border-t border-border">
+            {preise.map((eintrag) => (
+              <li key={eintrag.service.id} className="grid gap-3 border-b border-border py-5 md:grid-cols-12 md:gap-6">
+                <div className="md:col-span-5">
+                  <p className="text-body font-semibold text-foreground">{eintrag.service.label}</p>
+                  <p className="mt-1 max-w-measure text-small text-foreground-muted">{eintrag.service.description}</p>
+                </div>
+                <div className="grid gap-4 md:col-span-7">
+                  {eintrag.mitSchluessel.map((zeile) => (
+                    <div key={zeile.arten.join('-')}>
+                      {eintrag.mitSchluessel.length > 1 && (
+                        <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                          {zeile.arten.map((art) => keyKindShortLabel(art)).join(' · ')}
+                        </p>
+                      )}
+                      <p className="font-mono text-title-sm font-semibold tabular-nums text-foreground">
+                        {preisAngabe(zeile.quote)}
+                      </p>
+                      <p className="mt-1 text-caption text-foreground-muted">
+                        Anzahlung {formatCents(zeile.quote.depositCents)} · Termin {formatDuration(zeile.quote.slotMinutes)} ·
+                        Vorlauf ca. {zeile.quote.leadTimeDays} Tage ·{' '}
+                        {zeile.quote.requiresVehicleOnSite ? 'Fahrzeug muss da sein' : 'ohne Fahrzeug'}
+                      </p>
+                      {erstNachPruefung(zeile.quote) && (
+                        <p className="mt-1 text-caption font-semibold text-foreground">
+                          Verbindlich nach Prüfung der Unterlagen.
+                        </p>
+                      )}
+                      {zeile.quote.note && <p className="mt-1 text-caption text-foreground-muted">{zeile.quote.note}</p>}
+                    </div>
+                  ))}
+                  {eintrag.ohneSchluessel.length > 0 && (
+                    <p className="text-caption text-foreground-muted">
+                      Ohne funktionierenden Schlüssel:{' '}
+                      <span className="font-mono tabular-nums text-foreground">
+                        {[...new Set(eintrag.ohneSchluessel.map((zeile) => preisAngabe(zeile.quote)))].join(' / ')}
+                      </span>
+                      {eintrag.ohneSchluessel.some((zeile) => erstNachPruefung(zeile.quote))
+                        && ' — verbindlich nach Prüfung der Unterlagen'}
+                      .
+                    </p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="prose-sm24 mt-6">
+            Für die erfassten Schlüsselarten ist noch keine Leistung hinterlegt. Wir prüfen Ihren Fall
+            einzeln und nennen den Preis vor der Terminbestätigung.
+          </p>
+        )}
+      </Section>
+
       {/* Großer Moment (B-21): je erfasster Schlüsselart eine Zeichnung */}
       {model.keyKinds.length > 0 && (
         <Section id="schluesselarten-detail">
           <SectionHeading
-            nummer="02"
+            nummer="03"
             eyebrow="Schlüsselarten"
             title={`Diese Bauformen kommen beim ${make.name} ${model.name} vor`}
             lead="Welche davon Ihr Fahrzeug hat, erkennen wir an Ihren Schlüsselfotos."
@@ -390,7 +500,7 @@ export default async function ModelPage(props: PageProps) {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <SectionHeading
             className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start"
-            nummer="03"
+            nummer="04"
             eyebrow="Einordnung"
             title="Was das für Ihren Auftrag bedeutet"
             lead="Die technischen Angaben allein helfen wenig. Hier steht, was daraus für Ablauf, Termin und Aufwand folgt."
@@ -412,12 +522,67 @@ export default async function ModelPage(props: PageProps) {
         </div>
       </Section>
 
+      {/* Termin in der Werkstatt: Anschrift und Öffnungszeiten aus den Einstellungen, Mitbringliste */}
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-5">
+            <SectionHeading
+              nummer="05"
+              eyebrow="Termin"
+              title={werkstatt ? `Termin in der Werkstatt in ${werkstatt.city}` : 'Den Termin vorbereiten'}
+              lead="Kunden aus Mittelhessen und darüber hinaus können für ihren Termin anreisen; Einsätze vor Ort nur nach Prüfung."
+            />
+            {werkstatt && (
+              <address className="mt-6 text-body not-italic text-foreground">
+                {werkstatt.label}
+                <br />
+                {werkstatt.street}, {werkstatt.postalCode} {werkstatt.city}
+              </address>
+            )}
+            {/* Öffnungszeiten und Anreise stehen auf der Standortseite (aus den Einstellungen). */}
+            {werkstattSeite && (
+              <Link
+                href={`/standorte/${werkstattSeite.slug}`}
+                className="mt-4 inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary hover:underline"
+              >
+                Öffnungszeiten und Anreise: Standort {werkstattSeite.city}
+                <GlyphPfeilRechts size={16} />
+              </Link>
+            )}
+          </div>
+          <div className="lg:col-span-7">
+            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Bitte mitbringen</p>
+            <ol className="mt-3 border-t border-border">
+              {texte.mitbringen.map((punkt, index) => (
+                <li key={punkt.titel} className="grid grid-cols-12 gap-x-4 border-b border-border py-4">
+                  <span className="col-span-2 font-mono text-title-sm font-semibold tabular-nums text-primary sm:col-span-1">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div className="col-span-10 sm:col-span-11">
+                    <p className="text-body font-semibold text-foreground">{punkt.titel}</p>
+                    <p className="mt-1 max-w-measure text-small text-foreground-muted">{punkt.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </Section>
+
+      {/* Häufige Fragen: Antworten aus Fahrzeugdaten und Preisregeln dieses Modells */}
+      {texte.faq.length > 0 && (
+        <Section tone="muted" tight>
+          <SectionHeading nummer="06" eyebrow="Fragen" title={`Häufige Fragen zu ${make.name} ${model.name}`} />
+          <Accordion items={texte.faq} className="mt-8 max-w-4xl" />
+        </Section>
+      )}
+
       {/* Was wir nicht wissen */}
       <Section tone="sunken" tight>
         <div className="lg:grid lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:col-span-8">
             <SectionHeading
-              nummer="04"
+              nummer="07"
               eyebrow="Vorbehalt"
               title="Was wir ohne Ihre Unterlagen nicht sagen können"
             />
@@ -429,7 +594,7 @@ export default async function ModelPage(props: PageProps) {
               <GlyphWarnung size={18} className="mt-0.5 shrink-0 text-warning" />
               <div className="min-w-0 text-small leading-relaxed">
                 <p className="mb-1 font-bold">Angaben ohne Gewähr für Ihr konkretes Fahrzeug</p>
-                Der Datensatz beschreibt die Baureihe, nicht Ihr einzelnes Fahrzeug. Ausstattung,
+                Der Datensatz beschreibt die Baureihe {model.name}, nicht Ihr einzelnes Fahrzeug. Ausstattung,
                 Sonderausstattung, Umbauten und das genaue Baujahr können abweichen. Wir legen uns erst
                 fest, wenn uns Ihre Schlüsselfotos und der Fahrzeugschein vorliegen. Angaben, die hier
                 nicht stehen — etwa Rohlingstyp oder Elektronikvariante —, klären wir in der Prüfung und
@@ -445,8 +610,8 @@ export default async function ModelPage(props: PageProps) {
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:col-span-7">
             <SectionHeading
-              nummer="05"
-              eyebrow="Termin"
+              nummer="08"
+              eyebrow="Anfrage"
               title="Der nächste Schritt"
               lead="Marke und Modell sind im Ablauf schon vorbelegt. Sie ergänzen Baujahr, Schlüsselart und Ihre Fotos."
             />
@@ -466,10 +631,35 @@ export default async function ModelPage(props: PageProps) {
 
           <nav aria-label="Weiterführende Seiten" className="lg:col-span-5">
             <p className="eyebrow">
-              <span className="text-foreground-muted tabular-nums">06</span>
+              <span className="text-foreground-muted tabular-nums">09</span>
               Weiterlesen
             </p>
-            <h2 className="mt-3 text-title-sm font-semibold text-foreground">Passend dazu</h2>
+            {geschwister.length > 0 && (
+              <>
+                <h2 className="mt-3 text-title-sm font-semibold text-foreground">Weitere {make.name}-Modelle</h2>
+                <ul className="mt-4 divide-y divide-border border-y border-border">
+                  {geschwister.map((anderes) => (
+                    <li key={anderes.id}>
+                      <Link
+                        href={`/autoschluessel/marken/${make.slug}/${anderes.slug}`}
+                        className="group flex min-h-touch items-center justify-between gap-4 py-3 hover:text-primary"
+                      >
+                        <span className="min-w-0">
+                          <span className="block text-body font-semibold text-foreground group-hover:text-primary">
+                            {anderes.name}
+                          </span>
+                          <span className="block font-mono text-caption text-foreground-muted">
+                            {formatModelYears(anderes)} · {anderes.keyKinds.map((art) => keyKindShortLabel(art)).join(', ')}
+                          </span>
+                        </span>
+                        <GlyphPfeilRechts size={16} className="shrink-0 text-foreground-muted" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            <h2 className="mt-8 text-title-sm font-semibold text-foreground">Passend dazu</h2>
             <ul className="mt-4 divide-y divide-border border-y border-border">
               {[
                 { href: '/autoschluessel/nachmachen', label: 'Autoschlüssel nachmachen' },

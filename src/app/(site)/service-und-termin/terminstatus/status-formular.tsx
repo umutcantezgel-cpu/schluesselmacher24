@@ -18,9 +18,19 @@ const STATUS_TEXT: Record<RecordStatus, { label: string; erklaerung: string }> =
   neu: { label: 'Eingegangen', erklaerung: 'Ihr Vorgang liegt uns vor und wird in Kürze gesichtet.' },
   'in-pruefung': { label: 'In Prüfung', erklaerung: 'Wir prüfen Machbarkeit, Unterlagen und Preis.' },
   geprueft: { label: 'Geprüft', erklaerung: 'Die Prüfung ist abgeschlossen. Sie hören von uns.' },
+  freigegeben: {
+    label: 'Freigegeben',
+    erklaerung:
+      'Die Anfertigung ist nach unserer Prüfung möglich; Preis und Weg zur Zahlung stehen in unserer E-Mail. '
+      + 'Die Freigabe ist noch keine Fertigungszusage: Den Auftrag erteilen Sie mit der Zahlung.',
+  },
+  'nicht-moeglich': {
+    label: 'Nicht möglich',
+    erklaerung: 'Nach unserer Prüfung können wir diesen Auftrag leider nicht ausführen. Einzelheiten stehen in unserer E-Mail.',
+  },
   'wartet-auf-kunde': {
-    label: 'Wartet auf Sie',
-    erklaerung: 'Wir brauchen noch eine Angabe oder eine Unterlage von Ihnen.',
+    label: 'Rückfrage an Sie',
+    erklaerung: 'Wir brauchen noch eine Angabe oder eine Unterlage von Ihnen. Einzelheiten stehen in unserer E-Mail.',
   },
   'in-fertigung': { label: 'In Fertigung', erklaerung: 'Ihr Auftrag wird bearbeitet.' },
   terminiert: { label: 'Termin steht', erklaerung: 'Ihr Termin ist verbindlich eingeplant.' },
@@ -33,6 +43,8 @@ const STATUS_TON: Record<RecordStatus, 'neutral' | 'primary' | 'success' | 'warn
   neu: 'primary',
   'in-pruefung': 'primary',
   geprueft: 'primary',
+  freigegeben: 'success',
+  'nicht-moeglich': 'danger',
   'wartet-auf-kunde': 'warning',
   'in-fertigung': 'primary',
   terminiert: 'success',
@@ -54,6 +66,8 @@ interface Ergebnis {
   createdAt: string;
   updatedAt: string;
   appointment?: AppointmentInfo;
+  /** Ort des Termins mit Werkstatt-Anschrift, vom Server gebildet. */
+  ort?: string;
   /** Ohne Kennungen des Zahlungsdienstleisters. */
   payment?: Pick<PaymentInfo, 'scope' | 'amountCents' | 'status' | 'paidAt'>;
   summary: SummarySection[];
@@ -180,8 +194,8 @@ export function TerminStatusFormular() {
                     {formatDate(ergebnis.appointment.date)}, {ergebnis.appointment.time} Uhr ·{' '}
                     <span className="font-mono tabular-nums">
                       {formatDuration(ergebnis.appointment.durationMinutes)}
-                    </span> ·{' '}
-                    {ergebnis.appointment.location === 'werkstatt' ? 'im Fachbetrieb' : 'vor Ort'}
+                    </span>
+                    {ergebnis.ort && <span className="block">{ergebnis.ort}</span>}
                   </dd>
                 </div>
               )}

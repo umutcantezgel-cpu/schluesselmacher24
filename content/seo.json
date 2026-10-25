@@ -252,14 +252,14 @@
   },
   {
     "route": "schluessel-nach-vorlage",
-    "headline": "Schlüssel nach Vorlage",
-    "subline": "Sie haben den Schlüssel — wir prüfen, ob wir ihn nachfertigen können.",
+    "headline": "Schlüssel nach Foto oder Vorlage",
+    "subline": "Sie haben den Schlüssel — wir prüfen anhand Ihrer Fotos, ob wir ihn nachfertigen können.",
     "intro": "Sie fotografieren Ihren Schlüssel aus drei Richtungen und schicken uns die Bilder. Wir sagen Ihnen, ob eine Anfertigung möglich ist und was sie kostet. Einsenden müssen Sie Ihren Schlüssel zunächst nicht.",
     "sections": [],
     "faq": [],
     "seo": {
-      "title": "Schlüssel nach Vorlage nachmachen lassen",
-      "description": "Schlüssel nach Vorlage: drei Fotos hochladen, Machbarkeit und Preis erhalten. Einsendung des Originals nur, wenn es nötig ist.",
+      "title": "Schlüssel nach Foto oder Vorlage nachmachen lassen",
+      "description": "Schlüssel nach Foto: drei Fotos hochladen, Machbarkeit und Preis erhalten. Einsendung des Originals nur, wenn es nötig ist.",
       "internalLinks": [
         {
           "href": "/schluessel-nach-code",
@@ -268,14 +268,45 @@
         {
           "href": "/autoschluessel/kopieren",
           "label": "Mechanische Autoschlüssel"
+        },
+        {
+          "href": "/schluessel-einschicken",
+          "label": "Schlüssel einschicken – nur nach Freigabe"
         }
       ],
       "socialImage": {
-        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel nach Vorlage",
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel nach Foto oder Vorlage",
         "ratio": "16/9"
       }
     },
     "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "schluessel-einschicken",
+    "headline": "Schlüssel einschicken",
+    "subline": "Nur nach Freigabe Ihrer Fotoanfrage oder auf unsere Bitte — so kommt Ihr Schlüssel sicher an und zurück.",
+    "intro": "Meist genügen uns Fotos Ihres Schlüssels. Brauchen wir doch das Original, sagen wir es Ihnen mit dem Ergebnis der Prüfung. Hier steht, wie die Einsendung dann abläuft: wohin, was beiliegen soll und wie Sie sicher versenden.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Schlüssel einschicken: Ablauf, Anschrift und Versand",
+      "description": "Schlüssel einschicken nur nach Freigabe Ihrer Fotoanfrage oder auf unsere Bitte: wohin, was beiliegen soll und wie Sie mit Sendungsverfolgung versenden.",
+      "internalLinks": [
+        {
+          "href": "/schluessel-nach-vorlage",
+          "label": "Schlüssel nach Foto oder Vorlage"
+        },
+        {
+          "href": "/schluessel-nach-code",
+          "label": "Code vorhanden? Direkt bestellen"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel einschicken",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-10-25T00:00:00.000Z"
   },
   {
     "route": "schluessel-nach-code",
@@ -306,14 +337,14 @@
   },
   {
     "route": "gleichschliessende-zylinder",
-    "headline": "Gleichschließende Zylinder",
-    "subline": "Mehrere Türen, ein Schlüssel. Direkt konfigurierbar.",
+    "headline": "Gleichschließende Zylinder (Sperrschließung)",
+    "subline": "Mehrere Türen, ein Schlüssel. Als Sperrschließung direkt konfigurierbar.",
     "intro": "Sie stellen sich Ihre Zylinder mit den passenden Maßen zusammen. Alle erhalten dieselbe Schließung und werden mit derselben Anzahl gemeinsamer Schlüssel geliefert.",
     "sections": [],
     "faq": [],
     "seo": {
-      "title": "Gleichschließende Zylinder konfigurieren und bestellen",
-      "description": "Gleichschließende Zylinder online zusammenstellen: Bauform, Maße, Funktion, Stückzahl und Anzahl gemeinsamer Schlüssel.",
+      "title": "Sperrschließung: gleichschließende Zylinder bestellen",
+      "description": "Sperrschließung mit gleichschließenden Zylindern online zusammenstellen: Bauform, Maße, Funktion, Stückzahl und Anzahl gemeinsamer Schlüssel.",
       "internalLinks": [
         {
           "href": "/schliessanlagen",
@@ -325,7 +356,7 @@
         }
       ],
       "socialImage": {
-        "motif": "Vorschaubild für soziale Netzwerke: Gleichschließende Zylinder",
+        "motif": "Vorschaubild für soziale Netzwerke: Gleichschließende Zylinder (Sperrschließung)",
         "ratio": "16/9"
       }
     },
@@ -654,5 +685,32 @@
       }
     },
     "updatedAt": "2026-09-15T00:00:00.000Z"
+  },
+  {
+    "route": "partner-werden",
+    "headline": "Partner werden",
+    "subline": "Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort — vor allem für Autoschlüssel.",
+    "intro": "Bei uns gehen auch Anfragen aus Regionen ein, in denen wir selbst nicht tätig sind. Diese Aufträge vermitteln wir an zuverlässige Fachbetriebe vor Ort. Sie bewerben sich mit wenigen Angaben; wir prüfen Ihre Bewerbung und melden uns bei Ihnen.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Partner werden – Auftragsvermittlung für Fachbetriebe",
+      "description": "Für Schlüsseldienste und Fachbetriebe: Als Partner von SCHLÜSSELMACHER24 übernehmen Sie geprüfte Kundenanfragen aus Ihrer Region und rechnen direkt mit dem Kunden ab.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        },
+        {
+          "href": "/service-und-termin/kontakt",
+          "label": "Kontakt"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Partner werden",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-10-25T00:00:00.000Z"
   }
 ]

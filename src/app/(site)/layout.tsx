@@ -5,7 +5,11 @@ import type { ReactNode } from 'react';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { MobileActionBar } from '@/components/layout/mobile-action-bar';
+import { EinwilligungHinweis } from '@/components/statistik/einwilligung-hinweis';
+import { GoogleAnalytics } from '@/components/statistik/google-analytics';
 import { getSiteUrl } from '@/lib/site-url';
+import { gaMessId } from '@/lib/statistik';
+import { googleVerifizierung, indexierungErlaubt } from '@/lib/umgebung';
 
 import './globals.css';
 
@@ -33,6 +37,9 @@ const mono = IBM_Plex_Mono({
 });
 
 const siteUrl = getSiteUrl();
+/** Google Analytics 4 nur mit Mess-ID — ohne sie wird nichts davon geladen. */
+const gaId = gaMessId();
+const googleBestaetigung = googleVerifizierung();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -55,7 +62,10 @@ export const metadata: Metadata = {
     locale: 'de_DE',
     siteName: 'SCHLÜSSELMACHER24',
   },
-  robots: { index: true, follow: true },
+  // Außerhalb der Produktion (Vorschau, lokal) auf noindex: Seiten ohne eigene Angabe erben das;
+  // Seiten mit eigenem `robots` setzen ohnehin `index: false` (Erg. Leitfaden §4).
+  robots: indexierungErlaubt() ? { index: true, follow: true } : { index: false, follow: false },
+  ...(googleBestaetigung ? { verification: { google: googleBestaetigung } } : {}),
 };
 
 export const viewport: Viewport = {
@@ -89,6 +99,12 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
 
         <SiteFooter />
         <MobileActionBar />
+        {gaId && (
+          <>
+            <GoogleAnalytics messId={gaId} />
+            <EinwilligungHinweis />
+          </>
+        )}
       </body>
     </html>
   );

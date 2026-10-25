@@ -5,6 +5,8 @@ import {
   dateisystemSchreibbar,
   datenbankUrl,
   datenbankUrlDirekt,
+  googleVerifizierung,
+  indexierungErlaubt,
   istProduktion,
   mailKonfiguration,
   mitDatenbank,
@@ -20,7 +22,7 @@ const VARIABLEN = [
   'SM24_STORAGE', 'STORAGE_ENDPOINT', 'STORAGE_REGION', 'STORAGE_BUCKET', 'STORAGE_ACCESS_KEY', 'STORAGE_SECRET_KEY',
   'MAIL_PROVIDER', 'MAIL_API_KEY', 'MAIL_FROM_ADDRESS', 'MAIL_FROM_NAME', 'MAIL_REPLY_TO', 'MAIL_TEAM_ADDRESS',
   'MAIL_REDIRECT_TO', 'PAYMENT_PROVIDER', 'PAYMENT_API_KEY', 'PAYMENT_WEBHOOK_SECRET', 'PAYMENT_METHODS',
-  'PAYMENT_INVOICES',
+  'PAYMENT_INVOICES', 'GOOGLE_SITE_VERIFICATION',
 ];
 
 beforeEach(() => {
@@ -79,6 +81,26 @@ describe('Dateisystem und Produktion', () => {
     expect(istProduktion()).toBe(false);
     vi.stubEnv('VERCEL_ENV', 'production');
     expect(istProduktion()).toBe(true);
+  });
+});
+
+describe('Suchmaschinen', () => {
+  it('erlaubt die Indexierung nur in der Produktion', () => {
+    vi.stubEnv('NODE_ENV', 'development');
+    expect(indexierungErlaubt()).toBe(false);
+    vi.stubEnv('NODE_ENV', 'production');
+    vi.stubEnv('VERCEL', '1');
+    vi.stubEnv('VERCEL_ENV', 'preview');
+    expect(indexierungErlaubt()).toBe(false);
+    vi.stubEnv('VERCEL_ENV', 'production');
+    expect(indexierungErlaubt()).toBe(true);
+  });
+
+  it('liest die Google-Bestätigung, leer ist keine', () => {
+    vi.stubEnv('GOOGLE_SITE_VERIFICATION', '  ');
+    expect(googleVerifizierung()).toBeUndefined();
+    vi.stubEnv('GOOGLE_SITE_VERIFICATION', 'abc123');
+    expect(googleVerifizierung()).toBe('abc123');
   });
 });
 

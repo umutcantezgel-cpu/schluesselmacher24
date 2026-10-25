@@ -71,6 +71,28 @@ describe('zahlungsAnsicht', () => {
   });
 });
 
+describe('zahlungsAnsicht: Fotoanfrage', () => {
+  const foto = (teil: Partial<BusinessRecord> = {}, zahlung: Partial<PaymentInfo> = {}) =>
+    vorgang(
+      { kind: 'anfrage', area: 'schluessel-nach-vorlage', process: 'gefuehrte-anfrage', status: 'freigegeben', ...teil },
+      { checkoutSessionId: undefined, expiresAt: undefined, ...zahlung },
+    );
+
+  it('bietet nach der Freigabe „Jetzt bezahlen“ und sagt, dass erst die Zahlung den Auftrag auslöst', () => {
+    expect(zahlungsAnsicht(foto(), UMFELD)).toMatchObject({ titel: 'Freigegeben – Zahlung offen', knopf: 'jetzt' });
+    expect(zahlungsAnsicht(foto({}, { checkoutSessionId: 'cs_1', expiresAt: '2026-10-25T10:50:00.000Z' }), UMFELD)?.text).toContain(
+      'Mit der Zahlung erteilen Sie den Auftrag',
+    );
+    expect(zahlungsAnsicht(foto(), { ...UMFELD, abbruch: true })?.text).toContain('Ihre Freigabe bleibt bestehen.');
+    expect(zahlungsAnsicht(foto({}, { status: 'bezahlt' }), { ...UMFELD, rueckkehr: true })?.text).toContain('Auftrag erteilt');
+  });
+
+  it('zeigt keinen Zahlknopf bei Rückfrage oder Absage', () => {
+    expect(zahlungsAnsicht(foto({ status: 'wartet-auf-kunde' }), UMFELD)).toMatchObject({ titel: 'Zahlung derzeit nicht möglich' });
+    expect(zahlungsAnsicht(foto({ status: 'nicht-moeglich' }), UMFELD)?.knopf).toBeUndefined();
+  });
+});
+
 describe('terminNochBezahlbar', () => {
   it('erlaubt ohne Sitzung nur kurz nach der Buchung und nur im Status „neu“', () => {
     const ohneSitzung = termin({}, { checkoutSessionId: undefined, expiresAt: undefined });

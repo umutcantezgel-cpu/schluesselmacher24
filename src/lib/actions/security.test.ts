@@ -99,6 +99,9 @@ const contact = {
 /** Pflicht-Zustimmungen des Termin-Assistenten. */
 const zustimmungen = { terms: true, deposit: true, authorization: true, earlyStart: true };
 
+/** Ohne Dateiablage (Tests) genügt die Angabe der ausgewählten Datei. */
+const fahrzeugschein = { fileName: 'fahrzeugschein.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'fahrzeugschein' as const };
+
 beforeEach(() => {
   stored.length = 0;
   vorab.veraltet = false;
@@ -120,6 +123,16 @@ describe('submitRecord', () => {
     expect(result.ok).toBe(true);
     expect(stored[0].payment).toBeUndefined();
     expect(stored[0].quote).toBeUndefined();
+  });
+
+  it('nimmt Partner-Bewerbungen nur mit Datenschutz-Einwilligung und festem Bereich an', async () => {
+    const bewerbung = (area: 'service-und-termin' | 'autoschluessel', payload: Record<string, unknown>) =>
+      submitRecord({ kind: 'partner', area, process: 'gefuehrte-anfrage', contact, payload, summary: [], uploads: [] });
+    expect((await bewerbung('service-und-termin', {})).ok).toBe(false);
+    expect((await bewerbung('autoschluessel', { datenschutz: true })).ok).toBe(false);
+    expect(stored).toHaveLength(0);
+    expect((await bewerbung('service-und-termin', { datenschutz: true })).ok).toBe(true);
+    expect(stored[0]).toMatchObject({ kind: 'partner', area: 'service-und-termin' });
   });
 
   it('lehnt Bestellungen außerhalb der Kasse ab', async () => {
@@ -161,7 +174,7 @@ describe('submitRecord', () => {
       contact,
       payload: {},
       summary: [],
-      uploads: [],
+      uploads: [fahrzeugschein],
       payment: { scope: 'anzahlung', amountCents: 1, description: 'Anzahlung' },
       verify: {
         kind: 'autoschluessel',
@@ -205,7 +218,7 @@ describe('submitRecord', () => {
         contact,
         payload: {},
         summary: [],
-        uploads: [],
+        uploads: [fahrzeugschein],
         appointment: { ...appointment, durationMinutes: 1, location: 'werkstatt' },
         verify,
         consents: zustimmungen,
@@ -311,6 +324,27 @@ describe('submitRecord', () => {
       const zeilen = stored[0].summary.flatMap((abschnitt) => abschnitt.rows);
       expect(zeilen.filter((z) => z.label === 'Modell')).toEqual([]);
       expect(zeilen).toContainEqual({ label: 'Modell (Angabe des Kunden)', value: 'Golf Country (nicht in der Liste aufgeführt)' });
+    });
+
+    it('lehnt Termine ohne Fahrzeugschein ab — auch mit Schlüsselfotos', async () => {
+      const schluesselfoto = { ...fahrzeugschein, fileName: 'schluessel.jpg', category: 'schluesselfoto' as const };
+      const ohne = await buchen(await freiesFenster(), { uploads: [schluesselfoto] });
+      expect(ohne.ok).toBe(false);
+      expect(ohne.error).toContain('Zulassungsbescheinigung Teil I');
+      expect(stored).toHaveLength(0);
+    });
+
+    it('bucht bei Totalverlust ohne Schlüsselfotos, nur mit Fahrzeugschein', async () => {
+      const result = await buchen(await freiesFenster(), { verify: { ...verify, workingKeys: 0 }, uploads: [fahrzeugschein] });
+      expect(result.ok).toBe(true);
+      expect(stored[0].uploads.map((u) => u.category)).toEqual(['fahrzeugschein']);
+    });
+
+    it('legt online gebuchte Termine in der Werkstatt an — auch mit Fahrzeug', async () => {
+      const result = await buchen(await freiesFenster(), { appointment: { ...(await freiesFenster()), durationMinutes: 1, location: 'vor-ort' } });
+      expect(result.ok).toBe(true);
+      expect(stored[0].quote?.requiresVehicleOnSite).toBe(true);
+      expect(stored[0].appointment?.location).toBe('werkstatt');
     });
 
     it('übernimmt den geprüften Termin, nicht die Angaben des Browsers', async () => {

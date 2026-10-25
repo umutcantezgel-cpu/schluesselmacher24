@@ -28,6 +28,14 @@ interface LineSpec {
   tags: string[];
 }
 
+/**
+ * Linien mit Foto-Pflicht und ihrem Hinweis. ZY-02 (Sicherungskarte): Nachschlüssel
+ * nur gegen Kartennachweis (FAQ Schließanlagen; Evaluierung I-44).
+ */
+const FOTO_PFLICHT: Record<string, string> = {
+  'ZY-02': 'Pflicht: Bitte laden Sie ein Foto Ihrer Sicherungskarte hoch. Bei Anlagen mit Sicherungskarte bestellt nur, wer die Karte vorlegt.',
+};
+
 const FAMILIES: Array<{ family: string; prefix: string; lines: LineSpec[] }> = [
   {
     family: 'Möbel- und Büroschlösser',
@@ -157,13 +165,62 @@ function buildFamily(
     pattern,
     formatLabel,
     example,
-    hint: `Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: ${formatLabel}.`,
+    hint: generatorCodeHinweis(formatLabel),
     where:
       'Beispielbild: Fundstelle des Codes auf Schloss und Schlüssel, Nahaufnahme mit lesbarer Prägung.',
     priceCents: priceEuro * 100,
     photo: 'optional',
     tags: [applicationBase, keyType, prefix],
   }));
+}
+
+/* ---------- Texte des Generators -------------------------------------------
+   Die Startwerte der Beschreibungen sind für alle Linien gleich gebaut. Die
+   Produktseite erkennt einen solchen Text (`istGeneratorText` in
+   `src/lib/codelinie-texte.ts`) und setzt stattdessen einen eigenen Text aus
+   den Daten der Linie zusammen; ein im Backend gepflegter Text geht immer vor.
+   Bis zum 25.10.2026 schrieb der Generator die Anwendung klein
+   („möbel- und büroschloss: …“) — die Erkennung vergleicht deshalb ohne
+   Groß- und Kleinschreibung.
+   -------------------------------------------------------------------------- */
+
+export function generatorBeschreibung(application: string): string {
+  return (
+    `Nachschlüssel für ${application}. Die Fertigung erfolgt anhand des `
+    + 'aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. '
+    + 'Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung '
+    + 'nach Ihrer Angabe erfolgt.'
+  );
+}
+
+export function generatorSeoTitel(name: string): string {
+  return `${name} nach Code bestellen`;
+}
+
+export function generatorSeoBeschreibung(application: string, formatLabel: string): string {
+  return (
+    `Nachschlüssel für ${application} nach Code bestellen. `
+    + `Ohne Einsendung des Originalschlüssels. Codeformat: ${formatLabel}.`
+  );
+}
+
+export function generatorCodeHinweis(formatLabel: string): string {
+  return `Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: ${formatLabel}.`;
+}
+
+/** Die Texte, die der Generator für genau diese Linie schreibt (Vergleichsgrundlage). */
+export function generatorTexte(line: Pick<CodeLine, 'name' | 'application' | 'codeFormatLabel'>): {
+  description: string;
+  seoTitle: string;
+  seoDescription: string;
+  codeHint: string;
+} {
+  return {
+    description: generatorBeschreibung(line.application),
+    seoTitle: generatorSeoTitel(line.name),
+    seoDescription: generatorSeoBeschreibung(line.application, line.codeFormatLabel),
+    codeHint: generatorCodeHinweis(line.codeFormatLabel),
+  };
 }
 
 export function codeLines(): CodeLine[] {
@@ -179,11 +236,7 @@ export function codeLines(): CodeLine[] {
         manufacturer: '[Hersteller eintragen]',
         application: line.application,
         keyType: line.keyType,
-        description:
-          `Nachschlüssel für ${line.application.toLowerCase()}. Die Fertigung erfolgt anhand des ` +
-          'aufgedruckten Codes — Sie müssen Ihren Originalschlüssel nicht einsenden. ' +
-          'Bitte prüfen Sie den Code vor dem Absenden sorgfältig, da die Anfertigung ' +
-          'nach Ihrer Angabe erfolgt.',
+        description: generatorBeschreibung(line.application),
         codeFormatLabel: line.formatLabel,
         codePattern: line.pattern,
         codeExample: line.example,
@@ -205,18 +258,16 @@ export function codeLines(): CodeLine[] {
         ],
         scope: '1 Schlüssel je Stück, gefertigt nach angegebenem Code.',
         maxQty: 20,
-        photoUpload: line.photo,
+        photoUpload: FOTO_PFLICHT[line.code] ? 'pflicht' : line.photo,
         photoUploadHint:
-          'Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.',
+          FOTO_PFLICHT[line.code]
+          ?? 'Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.',
         shippingClass: 'code-schluessel',
         active: true,
         tags: [...line.tags, family.family],
         seo: {
-          title: `${line.name} nach Code bestellen`,
-          description:
-            `Nachschlüssel für ${line.application.toLowerCase()} nach Code bestellen. ` +
-            'Ohne Einsendung des Originalschlüssels. Codeformat: ' +
-            `${line.formatLabel}.`,
+          title: generatorSeoTitel(line.name),
+          description: generatorSeoBeschreibung(line.application, line.formatLabel),
           internalLinks: [
             { href: '/schluessel-nach-code', label: 'Alle Codelinien ansehen' },
             { href: '/schluessel-nach-vorlage', label: 'Kein Code vorhanden? Schlüssel nach Vorlage' },

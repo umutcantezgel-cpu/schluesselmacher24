@@ -2,6 +2,7 @@ import type { CityPage, CodeLine, Guide, Settings } from '@/lib/types';
 import { getSiteUrl } from '@/lib/site-url';
 import { angabe, firmaVeroeffentlichbar, kontakt, standort, ustId } from '@/lib/rechtliches/firma';
 import { telefonE164 } from '@/lib/telefon';
+import { istPlatzhalter } from '@/lib/platzhalter';
 import type { Graph, DayOfWeek, Thing } from 'schema-dts';
 
 /**
@@ -126,8 +127,11 @@ export function localBusinessSchema(settings: Settings): Graph {
   } satisfies Graph;
 }
 
-/** Eine Codelinie im Shop. */
-export function productSchema(line: CodeLine): Graph {
+/**
+ * Eine Codelinie im Shop. `beschreibung` ist der Text, der auf der Seite
+ * steht (gepflegt oder aus den Daten der Linie zusammengesetzt).
+ */
+export function productSchema(line: CodeLine, beschreibung: string = line.description): Graph {
   const productUrl = `${siteUrl}/schluessel-nach-code/${line.slug}`;
   return {
     '@context': 'https://schema.org',
@@ -153,11 +157,12 @@ export function productSchema(line: CodeLine): Graph {
         '@type': 'Product',
         '@id': `${productUrl}/#product`,
         name: line.name,
-        description: line.description,
+        description: beschreibung,
         category: line.application,
-        ...(line.manufacturer.startsWith('[')
+        // Hersteller nur, wenn gepflegt — Platzhalter und leere Werte nie.
+        ...(istPlatzhalter(line.manufacturer)
           ? {}
-          : { brand: { '@type': 'Brand', name: line.manufacturer } }),
+          : { brand: { '@type': 'Brand', name: line.manufacturer.trim() } }),
         offers: {
           '@type': 'Offer',
           priceCurrency: 'EUR',

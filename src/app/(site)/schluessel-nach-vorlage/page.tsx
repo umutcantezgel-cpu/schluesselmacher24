@@ -8,10 +8,11 @@ import { istPlatzhalter } from '@/lib/platzhalter';
 import type { ImageSlot } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import type { IconProps } from '@/components/visual/icons/icon-base';
-import { IconAnzahlung } from '@/components/visual/icons/anzahlung';
 import { IconFotoHochladen } from '@/components/visual/icons/foto-hochladen';
+import { IconNachweis } from '@/components/visual/icons/nachweis';
 import { IconPruefung } from '@/components/visual/icons/pruefung';
 import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
+import { IconZahlung } from '@/components/visual/icons/zahlung';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { GlyphLineal } from '@/components/visual/glyphen/lineal';
@@ -31,7 +32,7 @@ const ROUTE = 'schluessel-nach-vorlage';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Schlüssel nach Vorlage nachmachen lassen',
+    title: page?.seo.title ?? 'Schlüssel nach Foto oder Vorlage nachmachen lassen',
     description:
       page?.seo.description
       ?? 'Schlüssel nach Vorlage: Fotos hochladen, Machbarkeit und Preis erhalten. '
@@ -99,18 +100,26 @@ const STEPS: Array<{ icon: ComponentType<IconProps>; title: string; body: string
       + 'Nachfertigung nach Ihren Bildern möglich ist.',
   },
   {
-    icon: IconAnzahlung,
-    title: 'Machbarkeit und Preis',
+    icon: IconNachweis,
+    title: 'Freigabe, Rückfrage oder Absage',
     body:
-      'Sie erhalten eine Rückmeldung mit dem Ergebnis der Prüfung und dem Preis. Erst '
-      + 'danach entscheiden Sie, ob wir anfertigen sollen.',
+      'Ist die Anfertigung möglich, erhalten Sie die Freigabe mit Preis per E-Mail. Fehlt '
+      + 'uns noch etwas, melden wir uns mit einer Rückfrage; geht es nicht, sagen wir es '
+      + 'Ihnen. Die Prüfung ist noch keine Fertigungszusage.',
+  },
+  {
+    icon: IconZahlung,
+    title: 'Auftrag mit dem Zahlungslink',
+    body:
+      'Mit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer Zahlung '
+      + 'erteilen Sie den Auftrag — danach fertigen wir.',
   },
   {
     icon: IconVersandPaket,
     title: 'Nur falls nötig: Einsendung',
     body:
-      'Reichen die Fotos nicht aus, erhalten Sie von uns eine Einsendeanweisung mit '
-      + 'Adresse und Vorgangsnummer.',
+      'Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und '
+      + 'Vorgangsnummer in der Freigabe. Vorher senden Sie bitte nichts ein.',
   },
 ];
 
@@ -190,6 +199,13 @@ export default async function SchluesselNachVorlagePage() {
               + 'wenn Ihnen unsere Rückmeldung vorliegt.',
           },
           {
+            question: 'Wie erteile ich den Auftrag?',
+            answer:
+              'Ist die Anfertigung möglich, erhalten Sie von uns die Freigabe mit Preis und einem '
+              + 'persönlichen Zahlungslink. Mit Ihrer Zahlung erteilen Sie den Auftrag; erst danach '
+              + 'fertigen wir. Die Freigabe allein ist noch keine Fertigungszusage.',
+          },
+          {
             question: 'Wie lange dauert die Prüfung?',
             answer:
               'Die Dauer hängt vom Schlüsseltyp und von der Qualität der Fotos ab. Wir melden '
@@ -235,9 +251,9 @@ export default async function SchluesselNachVorlagePage() {
       <JsonLd
         data={pageGraphSchema({
           path: '/schluessel-nach-vorlage',
-          name: page?.headline ?? 'Schlüssel nach Vorlage',
+          name: page?.headline ?? 'Schlüssel nach Foto oder Vorlage',
           description: page?.seo.description,
-          crumbs: [{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' }],
+          crumbs: [{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Foto oder Vorlage' }],
           faq: faq,
         })}
       />
@@ -245,9 +261,9 @@ export default async function SchluesselNachVorlagePage() {
       {/* Großer Moment (B-04): Zeichnung „Vorlage und Kopie“ im Kopf, auf Papier */}
       <PageHeader
         eyebrow={process.label}
-        title={page?.headline ?? 'Schlüssel nach Vorlage'}
+        title={page?.headline ?? 'Schlüssel nach Foto oder Vorlage'}
         lead={page?.subline ?? 'Sie haben den Schlüssel — wir prüfen, ob wir ihn nachfertigen können.'}
-        crumbs={[{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' }]}
+        crumbs={[{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Foto oder Vorlage' }]}
         bereich="schluessel-nach-vorlage"
         visual={
           <div className="rounded-lg border border-border bg-surface p-4 sm:p-6">
@@ -260,7 +276,7 @@ export default async function SchluesselNachVorlagePage() {
         }
         actions={
           <ButtonLink href="/schluessel-nach-vorlage/anfrage" size="lg" pfeil>
-            Anfrage mit Fotos starten
+            Foto prüfen lassen
           </ButtonLink>
         }
       >
@@ -295,7 +311,7 @@ export default async function SchluesselNachVorlagePage() {
               id="ablauf-titel"
               nummer="01"
               eyebrow="Ablauf"
-              title="Vier Abschnitte von der Anfrage bis zum Schlüssel"
+              title="Fünf Schritte von der Anfrage bis zum Schlüssel"
               lead={process.hint}
             />
 
@@ -308,7 +324,7 @@ export default async function SchluesselNachVorlagePage() {
 
             <div className="mt-7">
               <ButtonLink href="/schluessel-nach-vorlage/anfrage" pfeil>
-                Ablauf starten
+                Foto prüfen lassen
               </ButtonLink>
             </div>
           </div>
@@ -446,8 +462,9 @@ export default async function SchluesselNachVorlagePage() {
             <div className="prose-sm24 mt-6 max-w-none">
               <p>
                 Senden Sie bitte nichts unaufgefordert ein. Die Versandadresse und den genauen
-                Umfang nennen wir Ihnen mit dem Ergebnis der Prüfung — zusammen mit Ihrer
-                Vorgangsnummer.
+                Umfang nennen wir Ihnen mit der Freigabe — zusammen mit Ihrer Vorgangsnummer.
+                Senden Sie das Original erst, nachdem Sie den Auftrag mit der Zahlung erteilt
+                haben.
               </p>
             </div>
 
@@ -456,6 +473,17 @@ export default async function SchluesselNachVorlagePage() {
               Schlüssel im unverfolgten Brief ist bei Verlust nicht auffindbar und nicht
               ersetzbar.
             </Alert>
+
+            <Link
+              href="/schluessel-einschicken"
+              className="group mt-6 inline-flex min-h-touch items-center gap-2 text-small font-semibold text-primary hover:underline"
+            >
+              Alles zur Einsendung: Schlüssel einschicken
+              <GlyphPfeilRechts
+                size={16}
+                className="shrink-0 transition-transform duration-quick ease-standard group-hover:translate-x-1"
+              />
+            </Link>
           </div>
 
           <Card className="lg:col-span-7">

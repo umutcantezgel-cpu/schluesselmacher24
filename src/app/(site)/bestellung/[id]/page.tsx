@@ -3,12 +3,15 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
 
-import { getRecord } from '@/lib/data';
+import { getRecord, getSettings } from '@/lib/data';
+import { istFotoanfrage } from '@/lib/foto-freigabe';
+import { einsendeAnschrift } from '@/lib/mail/einsendung';
 import { verifyAccessToken } from '@/lib/server/access-token';
 import { mailStatus, paymentStatus, storageStatus } from '@/lib/integrations';
 import { widerrufErklaerenHref } from '@/lib/navigation';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
 import { mailHinweis } from '@/lib/mail/hinweise';
+import { vorgangOrtText } from '@/lib/terminort';
 import type { OrderLine, OrderTotals, PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
 import { zahlungsAnsicht } from '@/lib/zahlung/ansicht';
 import { Alert } from '@/components/ui/alert';
@@ -17,6 +20,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
+import { FotoErgebnis } from './foto-ergebnis';
 import { JetztBezahlen } from './jetzt-bezahlen';
 
 interface BestellungSeiteProps {
@@ -35,12 +39,15 @@ const KIND_LABELS: Record<RecordKind, string> = {
   anfrage: 'Anfrage',
   termin: 'Termin',
   projekt: 'Projekt',
+  partner: 'Partner-Bewerbung',
 };
 
 const STATUS_LABELS: Record<RecordStatus, string> = {
   neu: 'Eingegangen',
   'in-pruefung': 'In Prüfung',
   geprueft: 'Geprüft',
+  freigegeben: 'Freigegeben',
+  'nicht-moeglich': 'Nicht möglich',
   'wartet-auf-kunde': 'Wartet auf Ihre Rückmeldung',
   'in-fertigung': 'In Fertigung',
   terminiert: 'Termin vereinbart',
@@ -53,6 +60,8 @@ const STATUS_TONE: Record<RecordStatus, Tonfall> = {
   neu: 'primary',
   'in-pruefung': 'primary',
   geprueft: 'accent',
+  freigegeben: 'success',
+  'nicht-moeglich': 'danger',
   'wartet-auf-kunde': 'warning',
   'in-fertigung': 'accent',
   terminiert: 'accent',
@@ -176,7 +185,28 @@ const SCHRITTE: Record<RecordKind, Array<{ titel: string; text: string }>> = {
     { titel: 'Sichtung', text: 'Wir sichten Ihre Angaben und Unterlagen.' },
     { titel: 'Rückmeldung', text: 'Wir melden uns mit einem Angebot oder einem Vorschlag für einen Termin vor Ort.' },
   ],
+  partner: [
+    { titel: 'Prüfung', text: 'Wir prüfen Ihre Angaben zu Betrieb, Leistungen und Qualifikation.' },
+    { titel: 'Rückmeldung', text: 'Wir melden uns mit dem nächsten Schritt.' },
+  ],
 };
+
+/** Schlüssel nach Vorlage: Prüfung → Freigabe, Rückfrage oder Absage → Auftrag per Zahlung (Erg. Leitfaden §2). */
+const SCHRITTE_FOTOANFRAGE: Array<{ titel: string; text: string }> = [
+  { titel: 'Prüfung Ihrer Fotos', text: 'Wir bestimmen Profil und Rohling und prüfen, ob eine Anfertigung nach Ihrer Vorlage möglich ist.' },
+  {
+    titel: 'Ergebnis',
+    text: 'Sie erhalten die Freigabe mit Preis, eine Rückfrage oder — wenn es nicht geht — eine Absage. Die Prüfung ist noch keine Fertigungszusage.',
+  },
+  {
+    titel: 'Auftrag mit der Zahlung',
+    text: 'Nach der Freigabe erteilen Sie den Auftrag, indem Sie über Ihren persönlichen Link bezahlen. Erst danach fertigen wir.',
+  },
+  {
+    titel: 'Anfertigung',
+    text: 'Brauchen wir das Original, senden Sie es nach der Anleitung aus der Freigabe ein. Über jeden Schritt informieren wir Sie per E-Mail.',
+  },
+];
 
 export default async function BestellungSeite(props: BestellungSeiteProps) {
   // Persönliche Daten: immer zur Anfragezeit rendern, nie aus einem Seiten-Cache.
@@ -185,8 +215,15 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
 
   if (!geladen) notFound();
   const { record, token } = geladen;
+  const fotoanfrage = istFotoanfrage(record);
+  // Anschrift für die Einsendung nur, wenn die Freigabe sie verlangt.
+  const einsendeZeilen = fotoanfrage && record.approval?.sendInRequired
+    ? einsendeAnschrift((await getSettings().catch(() => null))?.company)
+    : [];
 
   const kindLabel = KIND_LABELS[record.kind];
+  const schritte = fotoanfrage ? SCHRITTE_FOTOANFRAGE : SCHRITTE[record.kind];
+  const freigegeben = fotoanfrage && record.status === 'freigegeben';
   const zahlung = zahlungsAnsicht(record, {
     online: paymentStatus().configured,
     abbruch: geladen.abbruch,
@@ -242,16 +279,15 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
   const abschnitte: SummarySection[] = [...angaben, { title: 'Kontakt und Lieferanschrift', rows: anschrift }];
 
   if (record.appointment) {
+    // Werkstatt mit Anschrift (Erg. Leitfaden §1); die Firmendaten nur für Termine laden.
+    const ort = vorgangOrtText(record, (await getSettings()).company);
     abschnitte.push({
       title: 'Termin',
       rows: [
         { label: 'Datum', value: formatDate(record.appointment.date) },
         { label: 'Uhrzeit', value: `${record.appointment.time} Uhr` },
         { label: 'Dauer', value: formatDuration(record.appointment.durationMinutes) },
-        {
-          label: 'Ort',
-          value: record.appointment.location === 'werkstatt' ? 'In der Werkstatt' : 'Vor Ort bei Ihnen',
-        },
+        { label: 'Ort', value: ort ?? '' },
       ],
     });
   }
@@ -261,8 +297,12 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
       <PageHeader
         art="arbeit"
         eyebrow={record.kind === 'bestellung' ? 'Direkt kaufen' : kindLabel}
-        title={`${kindLabel} eingegangen`}
-        lead="Wir haben Ihren Vorgang aufgenommen. Bitte bewahren Sie die Vorgangsnummer auf — damit finden Sie den Stand jederzeit wieder."
+        title={freigegeben ? 'Anfrage freigegeben' : `${kindLabel} eingegangen`}
+        lead={
+          freigegeben
+            ? 'Wir können Ihren Schlüssel nach Ihrer Vorlage anfertigen. Mit der Zahlung erteilen Sie den Auftrag.'
+            : 'Wir haben Ihren Vorgang aufgenommen. Bitte bewahren Sie die Vorgangsnummer auf — damit finden Sie den Stand jederzeit wieder.'
+        }
         crumbs={[{ href: `/bestellung/${record.id}`, label: `${kindLabel} ${record.reference}` }]}
       />
 
@@ -303,6 +343,8 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                 </ul>
               </Alert>
             )}
+
+            {fotoanfrage && <FotoErgebnis record={record} einsendeAnschrift={einsendeZeilen} />}
 
             {positionen && <BestelltePositionen lines={positionen} totals={record.totals} />}
 
@@ -378,7 +420,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
               <h2 className="text-title-sm font-semibold text-foreground">Wie es weitergeht</h2>
 
               <ol className="mt-6 divide-y divide-border border-y border-border">
-                {SCHRITTE[record.kind].map((schritt, index) => (
+                {schritte.map((schritt, index) => (
                   <li key={schritt.titel} className="py-4">
                     <p className="text-body font-semibold text-foreground">{index + 1}. {schritt.titel}</p>
                     <p className="mt-1 text-small leading-relaxed text-foreground-muted">{schritt.text}</p>

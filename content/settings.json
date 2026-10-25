@@ -106,6 +106,7 @@
     "bookingHorizonDays": 90,
     "slotsPerWindow": 1,
     "federalState": "HE",
+    "reminderDaysBefore": 1,
     "windows": [
       {
         "from": "09:00",

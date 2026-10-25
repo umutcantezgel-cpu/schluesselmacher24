@@ -140,6 +140,30 @@ describe('sendeUeberResend', () => {
   });
 });
 
+describe('Anhänge', () => {
+  it('sendet Anhänge Base64-kodiert mit sicherem Dateinamen und Typ', async () => {
+    const fetchImpl = vi.fn(async () => antwort(200, { id: 're_anhang' }));
+    const ics = 'BEGIN:VCALENDAR\r\nSUMMARY:Termin – Straße\r\nEND:VCALENDAR\r\n';
+    await sendeUeberResend(
+      { ...MAIL, anhaenge: [{ dateiname: '../termin SM24-T-2026-0001.ics', inhalt: ics, typ: 'text/calendar; charset=utf-8\r\nX: y' }] },
+      { konfiguration: KONFIGURATION, fetchImpl },
+    );
+    const body = JSON.parse((fetchImpl.mock.calls[0] as unknown as [string, RequestInit])[1].body as string);
+    expect(body.attachments).toHaveLength(1);
+    const [anhang] = body.attachments;
+    expect(anhang.filename).toBe('_termin_SM24-T-2026-0001.ics');
+    expect(anhang.content_type).toBe('text/calendar; charset=utf-8X: y');
+    expect(Buffer.from(anhang.content, 'base64').toString('utf8')).toBe(ics);
+  });
+
+  it('lässt das Feld ohne Anhänge weg', async () => {
+    const fetchImpl = vi.fn(async () => antwort(200, { id: 're_ohne' }));
+    await sendeUeberResend(MAIL, { konfiguration: KONFIGURATION, fetchImpl });
+    const body = JSON.parse((fetchImpl.mock.calls[0] as unknown as [string, RequestInit])[1].body as string);
+    expect(body).not.toHaveProperty('attachments');
+  });
+});
+
 describe('saubererBetreff', () => {
   it('entfernt Zeilenumbrüche und kürzt', () => {
     expect(saubererBetreff('a\r\nb\nc')).toBe('a b c');

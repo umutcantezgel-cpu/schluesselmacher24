@@ -1,0 +1,597 @@
+[
+  {
+    "id": "tuer-profilzylinder-und-spezialzylinder",
+    "slug": "profilzylinder-und-spezialzylinder",
+    "area": "tuer-und-schliesstechnik",
+    "title": "Profilzylinder und Spezialzylinder",
+    "summary": "Wir tauschen, passen an und beraten zu Zylindern für Haus-, Wohnungs- und Nebentüren — einschließlich Sonderbauformen.",
+    "bullets": [
+      "Zylinder nach Maß für Ihre Türstärke",
+      "Doppel-, Knauf- und Halbzylinder",
+      "Sonderbauformen für Möbel, Technik und Außenanlagen",
+      "Umstellung auf gleichschließende Lösungen möglich"
+    ],
+    "image": {
+      "motif": "Werkstatt- oder Produktfoto: Profilzylinder und Spezialzylinder",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/service-und-termin/anfrage?thema=tuer-und-schliesstechnik",
+    "ctaLabel": "Anfrage starten",
+    "active": true,
+    "seo": {
+      "title": "Profilzylinder und Spezialzylinder",
+      "description": "Wir tauschen, passen an und beraten zu Zylindern für Haus-, Wohnungs- und Nebentüren — einschließlich Sonderbauformen.",
+      "internalLinks": [
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Alle Leistungen der Tür- und Schließtechnik"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder konfigurieren"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tuer-einsteckschloesser",
+    "slug": "einsteckschloesser",
+    "area": "tuer-und-schliesstechnik",
+    "title": "Einsteckschlösser",
+    "summary": "Austausch und Anpassung von Einsteckschlössern für Zimmer-, Wohnungs- und Haustüren.",
+    "bullets": [
+      "Passendes Schloss nach Dorn-, Entfernungs- und Stulpmaß",
+      "Buntbart, Profilzylinder und Wechselgarnitur",
+      "Reparatur klemmender oder defekter Schlösser",
+      "Einbau und Nacharbeit an der Tür"
+    ],
+    "image": {
+      "motif": "Werkstatt- oder Produktfoto: Einsteckschlösser",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/service-und-termin/anfrage?thema=tuer-und-schliesstechnik",
+    "ctaLabel": "Anfrage starten",
+    "active": true,
+    "seo": {
+      "title": "Einsteckschlösser",
+      "description": "Austausch und Anpassung von Einsteckschlössern für Zimmer-, Wohnungs- und Haustüren.",
+      "internalLinks": [
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Alle Leistungen der Tür- und Schließtechnik"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder konfigurieren"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tuer-mehrfachverriegelungen",
+    "slug": "mehrfachverriegelungen",
+    "area": "tuer-und-schliesstechnik",
+    "title": "Mehrfachverriegelungen",
+    "summary": "Verriegelung an mehreren Punkten für Haus- und Wohnungseingangstüren.",
+    "bullets": [
+      "Austausch defekter Mehrfachverriegelungen",
+      "Nachrüstung an geeigneten Türen",
+      "Einstellung von Fallen, Riegeln und Bolzen",
+      "Abstimmung mit Beschlag und Zylinder"
+    ],
+    "image": {
+      "motif": "Werkstatt- oder Produktfoto: Mehrfachverriegelungen",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/service-und-termin/anfrage?thema=tuer-und-schliesstechnik",
+    "ctaLabel": "Anfrage starten",
+    "active": true,
+    "seo": {
+      "title": "Mehrfachverriegelungen",
+      "description": "Verriegelung an mehreren Punkten für Haus- und Wohnungseingangstüren.",
+      "internalLinks": [
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Alle Leistungen der Tür- und Schließtechnik"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder konfigurieren"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tuer-schutzbeschlaege",
+    "slug": "schutzbeschlaege",
+    "area": "tuer-und-schliesstechnik",
+    "title": "Schutzbeschläge",
+    "summary": "Beschläge, die Zylinder und Schloss vor mechanischen Angriffen schützen.",
+    "bullets": [
+      "Zylinderabdeckung gegen Ziehen und Abbrechen",
+      "Ausführungen mit und ohne Kernziehschutz",
+      "Passend zu Türblatt und Zylinderüberstand",
+      "Montage und Anpassung vor Ort"
+    ],
+    "image": {
+      "motif": "Werkstatt- oder Produktfoto: Schutzbeschläge",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/service-und-termin/anfrage?thema=tuer-und-schliesstechnik",
+    "ctaLabel": "Anfrage starten",
+    "active": true,
+    "seo": {
+      "title": "Schutzbeschläge",
+      "description": "Beschläge, die Zylinder und Schloss vor mechanischen Angriffen schützen.",
+      "internalLinks": [
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Alle Leistungen der Tür- und Schließtechnik"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder konfigurieren"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tuer-tuerzusatzschloesser",
+    "slug": "tuerzusatzschloesser",
+    "area": "tuer-und-schliesstechnik",
+    "title": "Türzusatzschlösser",
+    "summary": "Zusätzliche Verriegelung, wenn die vorhandene Tür nicht getauscht werden soll.",
+    "bullets": [
+      "Querriegel- und Kastenzusatzschlösser",
+      "Absicherung der Bandseite",
+      "Sinnvoll für Wohnungs- und Nebentüren",
+      "Kombinierbar mit mechanischem Grundschutz"
+    ],
+    "image": {
+      "motif": "Werkstatt- oder Produktfoto: Türzusatzschlösser",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/service-und-termin/anfrage?thema=tuer-und-schliesstechnik",
+    "ctaLabel": "Anfrage starten",
+    "active": true,
+    "seo": {
+      "title": "Türzusatzschlösser",
+      "description": "Zusätzliche Verriegelung, wenn die vorhandene Tür nicht getauscht werden soll.",
+      "internalLinks": [
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Alle Leistungen der Tür- und Schließtechnik"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder konfigurieren"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tuer-tuerschliesser",
+    "slug": "tuerschliesser",
+    "area": "tuer-und-schliesstechnik",
+    "title": "Türschließer",
+    "summary": "Kontrolliertes Schließen von Haus-, Flur- und Objekttüren.",
+    "bullets": [
+      "Oben liegende Schließer und Bodentürschließer",
+      "Einstellung von Schließgeschwindigkeit und Endschlag",
+      "Ausführungen für Flucht- und Rauchschutztüren im passenden Leistungsrahmen",
+      "Wartung und Austausch"
+    ],
+    "image": {
+      "motif": "Werkstatt- oder Produktfoto: Türschließer",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/service-und-termin/anfrage?thema=tuer-und-schliesstechnik",
+    "ctaLabel": "Anfrage starten",
+    "active": true,
+    "seo": {
+      "title": "Türschließer",
+      "description": "Kontrolliertes Schließen von Haus-, Flur- und Objekttüren.",
+      "internalLinks": [
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Alle Leistungen der Tür- und Schließtechnik"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder konfigurieren"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tuer-panik-und-fluchttuertechnik",
+    "slug": "panik-und-fluchttuertechnik",
+    "area": "tuer-und-schliesstechnik",
+    "title": "Panik- und Fluchttürtechnik",
+    "summary": "Türtechnik, die im Notfall aus dem Gebäude heraus jederzeit begehbar bleibt.",
+    "bullets": [
+      "Panikschlösser und Panikstangen im passenden Leistungsrahmen",
+      "Abstimmung von Schloss, Beschlag und Zylinder",
+      "Prüfung der vorhandenen Situation vor Ort",
+      "Hinweis: Anforderungen ergeben sich aus dem konkreten Objekt und sind vorab zu klären"
+    ],
+    "image": {
+      "motif": "Werkstatt- oder Produktfoto: Panik- und Fluchttürtechnik",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/service-und-termin/anfrage?thema=tuer-und-schliesstechnik",
+    "ctaLabel": "Anfrage starten",
+    "active": true,
+    "seo": {
+      "title": "Panik- und Fluchttürtechnik",
+      "description": "Türtechnik, die im Notfall aus dem Gebäude heraus jederzeit begehbar bleibt.",
+      "internalLinks": [
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Alle Leistungen der Tür- und Schließtechnik"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder konfigurieren"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tuer-reparatur-und-austausch",
+    "slug": "reparatur-und-austausch",
+    "area": "tuer-und-schliesstechnik",
+    "title": "Reparatur und Austausch von Schließkomponenten",
+    "summary": "Wenn ein Schlüssel klemmt, ein Riegel hakt oder ein Beschlag ausschlägt.",
+    "bullets": [
+      "Fehlersuche an Schloss, Zylinder und Beschlag",
+      "Austausch einzelner Komponenten statt der ganzen Tür",
+      "Nacharbeit an Schließblech und Falz",
+      "Ersatzteile passend zur vorhandenen Technik"
+    ],
+    "image": {
+      "motif": "Werkstatt- oder Produktfoto: Reparatur und Austausch von Schließkomponenten",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/service-und-termin/anfrage?thema=tuer-und-schliesstechnik",
+    "ctaLabel": "Anfrage starten",
+    "active": true,
+    "seo": {
+      "title": "Reparatur und Austausch von Schließkomponenten",
+      "description": "Wenn ein Schlüssel klemmt, ein Riegel hakt oder ein Beschlag ausschlägt.",
+      "internalLinks": [
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Alle Leistungen der Tür- und Schließtechnik"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder konfigurieren"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tuer-technische-beratung",
+    "slug": "technische-beratung",
+    "area": "tuer-und-schliesstechnik",
+    "title": "Technische Beratung zu bestehenden Türen",
+    "summary": "Wir schauen uns an, was verbaut ist, und sagen, was sinnvoll ist.",
+    "bullets": [
+      "Bestandsaufnahme der vorhandenen Schließtechnik",
+      "Einordnung von Schwachstellen",
+      "Vorschlag mit mechanischen und elektronischen Möglichkeiten",
+      "Grundlage für ein belastbares Angebot"
+    ],
+    "image": {
+      "motif": "Werkstatt- oder Produktfoto: Technische Beratung zu bestehenden Türen",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/service-und-termin/anfrage?thema=tuer-und-schliesstechnik",
+    "ctaLabel": "Anfrage starten",
+    "active": true,
+    "seo": {
+      "title": "Technische Beratung zu bestehenden Türen",
+      "description": "Wir schauen uns an, was verbaut ist, und sagen, was sinnvoll ist.",
+      "internalLinks": [
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Alle Leistungen der Tür- und Schließtechnik"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder konfigurieren"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tuer-montage-und-anpassung",
+    "slug": "montage-und-anpassung",
+    "area": "tuer-und-schliesstechnik",
+    "title": "Montage und Anpassung",
+    "summary": "Einbau, Justage und Nacharbeit — damit die Technik dauerhaft funktioniert.",
+    "bullets": [
+      "Fachgerechte Montage der gelieferten Komponenten",
+      "Justage von Tür, Band und Schließblech",
+      "Funktionsprüfung nach dem Einbau",
+      "Übergabe mit Einweisung"
+    ],
+    "image": {
+      "motif": "Werkstatt- oder Produktfoto: Montage und Anpassung",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/service-und-termin/anfrage?thema=tuer-und-schliesstechnik",
+    "ctaLabel": "Anfrage starten",
+    "active": true,
+    "seo": {
+      "title": "Montage und Anpassung",
+      "description": "Einbau, Justage und Nacharbeit — damit die Technik dauerhaft funktioniert.",
+      "internalLinks": [
+        {
+          "href": "/tuer-und-schliesstechnik",
+          "label": "Alle Leistungen der Tür- und Schließtechnik"
+        },
+        {
+          "href": "/gleichschliessende-zylinder",
+          "label": "Gleichschließende Zylinder konfigurieren"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sicherheit-videoueberwachung",
+    "slug": "videoueberwachung",
+    "area": "sicherheitstechnik",
+    "title": "Videoüberwachung",
+    "summary": "Kameras für Innen- und Außenbereich mit geeigneter Aufzeichnung und App-Zugriff.",
+    "bullets": [
+      "Kameras für Innen und Außen",
+      "Aufzeichnung lokal oder im Netzwerk",
+      "Zugriff über App im eigenen Netz oder per gesicherter Verbindung",
+      "Planung der Blickfelder unter Beachtung der rechtlichen Vorgaben"
+    ],
+    "image": {
+      "motif": "Anwendungsfoto: Videoüberwachung",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/sicherheitstechnik/sicherheitscheck",
+    "ctaLabel": "Sicherheitscheck starten",
+    "active": true,
+    "seo": {
+      "title": "Videoüberwachung",
+      "description": "Kameras für Innen- und Außenbereich mit geeigneter Aufzeichnung und App-Zugriff.",
+      "internalLinks": [
+        {
+          "href": "/sicherheitstechnik",
+          "label": "Alle Bereiche der Sicherheitstechnik"
+        },
+        {
+          "href": "/elektronische-zutrittsloesungen",
+          "label": "Elektronische Zutrittslösungen"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sicherheit-alarmtechnik",
+    "slug": "alarmtechnik",
+    "area": "sicherheitstechnik",
+    "title": "Alarmtechnik",
+    "summary": "Alarmanlagen, Melder und Kontakte, die auffällige Ereignisse zuverlässig erkennen.",
+    "bullets": [
+      "Alarmzentrale mit Bedienteil oder App",
+      "Bewegungsmelder für Innenräume",
+      "Glasbruchsensoren an gefährdeten Scheiben",
+      "Tür- und Fensterkontakte an erreichbaren Öffnungen"
+    ],
+    "image": {
+      "motif": "Anwendungsfoto: Alarmtechnik",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/sicherheitstechnik/sicherheitscheck",
+    "ctaLabel": "Sicherheitscheck starten",
+    "active": true,
+    "seo": {
+      "title": "Alarmtechnik",
+      "description": "Alarmanlagen, Melder und Kontakte, die auffällige Ereignisse zuverlässig erkennen.",
+      "internalLinks": [
+        {
+          "href": "/sicherheitstechnik",
+          "label": "Alle Bereiche der Sicherheitstechnik"
+        },
+        {
+          "href": "/elektronische-zutrittsloesungen",
+          "label": "Elektronische Zutrittslösungen"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sicherheit-aussenhautsicherung",
+    "slug": "aussenhautsicherung",
+    "area": "sicherheitstechnik",
+    "title": "Sicherung der Außenhaut",
+    "summary": "Absicherung aller Stellen, an denen ein Gebäude von außen erreichbar ist.",
+    "bullets": [
+      "Türen, Fenster und Balkontüren",
+      "Keller-, Garagen- und Nebengebäudezugänge",
+      "Lichtschächte und Kellerfenster",
+      "Abstimmung von Mechanik und Meldetechnik"
+    ],
+    "image": {
+      "motif": "Anwendungsfoto: Sicherung der Außenhaut",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/sicherheitstechnik/sicherheitscheck",
+    "ctaLabel": "Sicherheitscheck starten",
+    "active": true,
+    "seo": {
+      "title": "Sicherung der Außenhaut",
+      "description": "Absicherung aller Stellen, an denen ein Gebäude von außen erreichbar ist.",
+      "internalLinks": [
+        {
+          "href": "/sicherheitstechnik",
+          "label": "Alle Bereiche der Sicherheitstechnik"
+        },
+        {
+          "href": "/elektronische-zutrittsloesungen",
+          "label": "Elektronische Zutrittslösungen"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sicherheit-mechanischer-schutz",
+    "slug": "mechanischer-schutz",
+    "area": "sicherheitstechnik",
+    "title": "Mechanischer Schutz",
+    "summary": "Mechanik hält auf, Elektronik meldet. Beides zusammen ergibt den Schutz.",
+    "bullets": [
+      "Zusatzschlösser für Türen und Fenster",
+      "Schutzbeschläge und Sicherheitszylinder",
+      "Bandseitensicherung",
+      "Gitter und Rollladensicherungen im passenden Rahmen"
+    ],
+    "image": {
+      "motif": "Anwendungsfoto: Mechanischer Schutz",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/sicherheitstechnik/sicherheitscheck",
+    "ctaLabel": "Sicherheitscheck starten",
+    "active": true,
+    "seo": {
+      "title": "Mechanischer Schutz",
+      "description": "Mechanik hält auf, Elektronik meldet. Beides zusammen ergibt den Schutz.",
+      "internalLinks": [
+        {
+          "href": "/sicherheitstechnik",
+          "label": "Alle Bereiche der Sicherheitstechnik"
+        },
+        {
+          "href": "/elektronische-zutrittsloesungen",
+          "label": "Elektronische Zutrittslösungen"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sicherheit-smarte-funktionen",
+    "slug": "smarte-funktionen",
+    "area": "sicherheitstechnik",
+    "title": "Smarte Funktionen",
+    "summary": "Anwesenheitssimulation, Beleuchtung und Schaltmodule, sinnvoll eingesetzt.",
+    "bullets": [
+      "Anwesenheitssimulation bei Abwesenheit",
+      "Sicherheitsbeleuchtung im Außenbereich",
+      "Geeignete Schaltmodule",
+      "Fernsteuerung über gesicherte Zugänge"
+    ],
+    "image": {
+      "motif": "Anwendungsfoto: Smarte Funktionen",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/sicherheitstechnik/sicherheitscheck",
+    "ctaLabel": "Sicherheitscheck starten",
+    "active": true,
+    "seo": {
+      "title": "Smarte Funktionen",
+      "description": "Anwesenheitssimulation, Beleuchtung und Schaltmodule, sinnvoll eingesetzt.",
+      "internalLinks": [
+        {
+          "href": "/sicherheitstechnik",
+          "label": "Alle Bereiche der Sicherheitstechnik"
+        },
+        {
+          "href": "/elektronische-zutrittsloesungen",
+          "label": "Elektronische Zutrittslösungen"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sicherheit-panik-und-alarmtaster",
+    "slug": "panik-und-alarmtaster",
+    "area": "sicherheitstechnik",
+    "title": "Panik- und Alarmtaster",
+    "summary": "Auslöser und Benachrichtigungswege für Situationen, in denen es schnell gehen muss.",
+    "bullets": [
+      "Fest montierte oder mobile Auslöser",
+      "Festgelegte Benachrichtigungswege",
+      "Einsatz nur für zulässige Zwecke",
+      "Abstimmung mit der vorhandenen Alarmtechnik"
+    ],
+    "image": {
+      "motif": "Anwendungsfoto: Panik- und Alarmtaster",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/sicherheitstechnik/sicherheitscheck",
+    "ctaLabel": "Sicherheitscheck starten",
+    "active": true,
+    "seo": {
+      "title": "Panik- und Alarmtaster",
+      "description": "Auslöser und Benachrichtigungswege für Situationen, in denen es schnell gehen muss.",
+      "internalLinks": [
+        {
+          "href": "/sicherheitstechnik",
+          "label": "Alle Bereiche der Sicherheitstechnik"
+        },
+        {
+          "href": "/elektronische-zutrittsloesungen",
+          "label": "Elektronische Zutrittslösungen"
+        }
+      ]
+    }
+  },
+  {
+    "id": "sicherheit-kombinierte-konzepte",
+    "slug": "kombinierte-konzepte",
+    "area": "sicherheitstechnik",
+    "title": "Kombinierte Sicherheitskonzepte",
+    "summary": "Mechanik, Elektronik, Zutrittskontrolle, Kamera und Alarm in einem Konzept.",
+    "bullets": [
+      "Gemeinsame Planung aller Bereiche",
+      "Klare Zuständigkeiten je Gewerk",
+      "Schrittweiser Ausbau möglich",
+      "Dokumentierte Übergabe"
+    ],
+    "image": {
+      "motif": "Anwendungsfoto: Kombinierte Sicherheitskonzepte",
+      "ratio": "4/3"
+    },
+    "process": "gefuehrte-anfrage",
+    "ctaHref": "/sicherheitstechnik/sicherheitscheck",
+    "ctaLabel": "Sicherheitscheck starten",
+    "active": true,
+    "seo": {
+      "title": "Kombinierte Sicherheitskonzepte",
+      "description": "Mechanik, Elektronik, Zutrittskontrolle, Kamera und Alarm in einem Konzept.",
+      "internalLinks": [
+        {
+          "href": "/sicherheitstechnik",
+          "label": "Alle Bereiche der Sicherheitstechnik"
+        },
+        {
+          "href": "/elektronische-zutrittsloesungen",
+          "label": "Elektronische Zutrittslösungen"
+        }
+      ]
+    }
+  }
+]

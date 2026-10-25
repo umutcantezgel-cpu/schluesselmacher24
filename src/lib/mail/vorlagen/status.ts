@@ -1,15 +1,26 @@
 /**
  * Statusmails aus dem Backend: Das Team setzt einen neuen Status, der Kunde
  * erfährt es per Mail — auf Wunsch mit einer kurzen Nachricht des Teams.
+ * Bei Fotoanfragen („Schlüssel nach Vorlage“) kommen Freigabe, Rückfrage und
+ * Absage aus der eigenen Vorlage `./freigabe`.
  */
 
+import { istFotoanfrage } from '../../foto-freigabe';
 import type { BusinessRecord, ShipmentCarrier } from '../../types';
 import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
+import { freigabeMail } from './freigabe';
 import { ANTWORT_HINWEIS, nummerBaustein, statusLink, terminZeilen, type VorlagenKontext } from './gemeinsam';
 
 /** Status, zu denen der Kunde eine Mail erhält. */
-export const STATUS_MIT_MAIL = ['wartet-auf-kunde', 'terminiert', 'versendet', 'storniert'] as const;
+export const STATUS_MIT_MAIL = ['freigegeben', 'nicht-moeglich', 'wartet-auf-kunde', 'terminiert', 'versendet', 'storniert'] as const;
 export type StatusMitMail = (typeof STATUS_MIT_MAIL)[number];
+
+/** Ergebnis der Foto-Prüfung — im Mailprotokoll als Art „freigabe“ vermerkt. */
+export const FREIGABE_STATUS = ['freigegeben', 'nicht-moeglich'] as const;
+
+export function mailArtZumStatus(status: StatusMitMail): 'freigabe' | 'status' {
+  return (FREIGABE_STATUS as readonly string[]).includes(status) ? 'freigabe' : 'status';
+}
 
 export function istStatusMitMail(status: string): status is StatusMitMail {
   return (STATUS_MIT_MAIL as readonly string[]).includes(status);
@@ -52,13 +63,36 @@ export interface StatusMailDaten {
   /** Optionale Nachricht des Teams aus dem Backend. */
   nachricht?: string;
   kontext: VorlagenKontext;
+  /** Freigabe einer Fotoanfrage: persönlicher Link zur Zahlung — nur mit Online-Zahlung. */
+  zahlungsLink?: string;
+  /** Freigabe mit Einsendung: Anschrift der Werkstatt (`einsendeAnschrift`). */
+  einsendeAnschrift?: string[];
 }
 
-export function statusMail({ vorgang, status, nachricht, kontext }: StatusMailDaten): MailInhalt {
+export function statusMail({ vorgang, status, nachricht, kontext, zahlungsLink, einsendeAnschrift }: StatusMailDaten): MailInhalt {
+  if (istFotoanfrage(vorgang) && (status === 'freigegeben' || status === 'nicht-moeglich' || status === 'wartet-auf-kunde')) {
+    return freigabeMail({ vorgang, ergebnis: status, nachricht, kontext, zahlungsLink, einsendeAnschrift });
+  }
+
   const bausteine: Baustein[] = [];
   let betreff: string;
 
   switch (status) {
+    // Freigabe und Absage gibt es nur bei Fotoanfragen (oben); dies ist der Rückfall für andere Vorgänge.
+    case 'freigegeben':
+      betreff = `Ihre Anfrage ist freigegeben – ${vorgang.reference}`;
+      bausteine.push({
+        art: 'absatz',
+        text: 'wir haben Ihre Anfrage geprüft: Die Anfertigung ist möglich. Wir melden uns mit dem nächsten Schritt.',
+      });
+      break;
+    case 'nicht-moeglich':
+      betreff = `Ergebnis Ihrer Anfrage – ${vorgang.reference}`;
+      bausteine.push({
+        art: 'absatz',
+        text: 'wir haben Ihre Anfrage geprüft. Leider können wir diesen Schlüssel nicht anfertigen.',
+      });
+      break;
     case 'wartet-auf-kunde':
       betreff = `Wir brauchen noch etwas von Ihnen – ${vorgang.reference}`;
       bausteine.push({
@@ -88,7 +122,7 @@ export function statusMail({ vorgang, status, nachricht, kontext }: StatusMailDa
 
   bausteine.push(nummerBaustein(vorgang));
 
-  const zeilen: Array<[string, string]> = status === 'terminiert' ? terminZeilen(vorgang) : [];
+  const zeilen: Array<[string, string]> = status === 'terminiert' ? terminZeilen(vorgang, kontext.firma) : [];
   if (status === 'versendet' && vorgang.shipment) {
     const { carrier, trackingNumber } = vorgang.shipment;
     if (carrier) zeilen.push(['Versand mit', DIENSTLEISTER[carrier]]);

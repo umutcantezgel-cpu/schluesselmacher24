@@ -31,9 +31,40 @@ describe('zylinderZeilen', () => {
   });
 
   it('lässt Zusatzoptionen weg, wenn keine gewählt sind', () => {
-    const zeilen = zylinderZeilen({ ...draft, extraIds: [], expandable: true }, catalog);
+    const zeilen = zylinderZeilen({ ...draft, extraIds: [], expandable: false }, catalog);
     expect(zeilen.some((z) => z.label === 'Zusatzoptionen')).toBe(false);
+    expect(zeilen.at(-1)).toEqual({ label: 'Spätere Erweiterung', value: 'Nicht vorgesehen' });
+  });
+
+  it('nennt bei „Erweiterbar: Ja“ die Option „Erweiterbar reservieren“', () => {
+    const option = catalog.extras.find((e) => e.id === 'gleichschliessung-erweiterbar')!.label;
+    const zeilen = zylinderZeilen({ ...draft, extraIds: [], expandable: true }, catalog);
+    expect(zeilen).toContainEqual({ label: 'Zusatzoptionen', value: option });
     expect(zeilen.at(-1)).toEqual({ label: 'Spätere Erweiterung', value: 'Vorgesehen' });
+  });
+
+  it('nennt Hersteller und Zusatzkomponenten nur, wenn ein Hersteller gewählt ist', () => {
+    const mitHersteller = {
+      ...catalog,
+      manufacturers: [
+        {
+          id: 'bks',
+          name: 'BKS',
+          active: true,
+          description: '',
+          surchargeCentsPerCylinder: 0,
+          forms: [],
+          components: [{ name: 'Möbelschloss', priceCents: 1500, description: '' }],
+        },
+      ],
+    };
+    const zeilen = zylinderZeilen(
+      { ...draft, manufacturerId: 'bks', components: [{ name: 'Möbelschloss', qty: 2 }] },
+      mitHersteller,
+    );
+    expect(zeilen[0]).toEqual({ label: 'Hersteller', value: 'BKS' });
+    expect(zeilen).toContainEqual({ label: 'Zusatzkomponenten', value: '2 × Möbelschloss' });
+    expect(zylinderZeilen(draft, mitHersteller).some((z) => z.label === 'Hersteller')).toBe(false);
   });
 
   it('zeigt unbekannte Bauformen mit ihrer Kennung statt zu scheitern', () => {

@@ -6,6 +6,7 @@ import { getAppointments, getCollection, getRecordByReference, getSettings } fro
 import { heuteInBerlin } from '@/lib/berliner-zeit';
 import { addDays, availableSlots, bookableDays, earliestBookableDate, minutenInBerlin } from '@/lib/scheduling';
 import { quoteCarKeyService } from '@/lib/pricing';
+import { vorgangOrtText } from '@/lib/terminort';
 import type { KeyKind, PriceQuote, TimeSlot } from '@/lib/types';
 
 export interface QuoteRequest {
@@ -136,6 +137,8 @@ export async function fetchRecordStatus(reference: string, email: string) {
       createdAt: record.createdAt,
       updatedAt: record.updatedAt,
       appointment: record.appointment,
+      // Ort mit Werkstatt-Anschrift (Erg. Leitfaden §1), nur bei Terminen.
+      ort: record.appointment ? vorgangOrtText(record, (await getSettings()).company) : undefined,
       // Ohne Kennungen des Zahlungsdienstleisters (Sitzung, Zahlung).
       payment: record.payment
         ? {

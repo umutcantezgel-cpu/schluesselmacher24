@@ -290,6 +290,15 @@ export const Einstellungen: GlobalConfig = {
               },
             ] },
             zeitfensterFeld('fenster', 'Buchbare Zeitfenster'),
+            {
+              name: 'erinnerungTageVorher',
+              type: 'number',
+              label: 'Termin-Erinnerung (Tage vorher)',
+              defaultValue: 1,
+              min: 0,
+              max: 14,
+              admin: { step: 1, description: 'Wie viele Tage vor dem Termin der Kunde eine Erinnerung erhält. 0 = keine Erinnerung.' },
+            },
           ],
         },
         {

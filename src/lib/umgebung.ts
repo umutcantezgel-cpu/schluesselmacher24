@@ -53,6 +53,21 @@ export function istProduktion(): boolean {
   return process.env.NODE_ENV === 'production';
 }
 
+/* ---------- Suchmaschinen ------------------------------------------------ */
+
+/**
+ * Dürfen Suchmaschinen die Seiten aufnehmen? Nur in der Produktion — Vorschau-
+ * Deployments und lokale Entwicklung stehen auf noindex (Erg. Leitfaden §4).
+ */
+export function indexierungErlaubt(): boolean {
+  return istProduktion();
+}
+
+/** Bestätigung für die Google Search Console (`GOOGLE_SITE_VERIFICATION`), falls gesetzt. */
+export function googleVerifizierung(): string | undefined {
+  return wert('GOOGLE_SITE_VERIFICATION');
+}
+
 /* ---------- Dateiablage -------------------------------------------------- */
 
 export interface Dateiablage {

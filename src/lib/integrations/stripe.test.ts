@@ -132,6 +132,30 @@ describe('checkoutParameter', () => {
     expect(p.payment_intent_data?.description).toBe('SM24-T-2026-0003 – Anzahlung Autoschlüssel-Termin');
     expect(p.shipping_options).toBeUndefined();
   });
+
+  it('bezahlt eine freigegebene Fotoanfrage als eine Position ohne Angaben zum Schlüssel, 23 Stunden offen', () => {
+    const p = checkoutParameter(
+      bestellung({
+        recordId: '44',
+        reference: 'SM24-A-2026-0011',
+        recordKind: 'anfrage',
+        amountCents: 2490,
+        description: 'Anfertigung Schlüssel nach Vorlage',
+        lines: undefined,
+        shipping: undefined,
+      }),
+      UMFELD,
+    );
+    expect(p.line_items).toEqual([
+      {
+        quantity: 1,
+        price_data: { currency: 'eur', unit_amount: 2490, product_data: { name: 'Anfertigung Schlüssel nach Vorlage SM24-A-2026-0011' } },
+      },
+    ]);
+    expect(p.payment_intent_data?.description).toBe('SM24-A-2026-0011 – Anfertigung Schlüssel nach Vorlage');
+    expect(p.metadata).toMatchObject({ vorgangId: '44', nummer: 'SM24-A-2026-0011', art: 'anfrage' });
+    expect(p.expires_at).toBe(Math.floor(JETZT.getTime() / 1000) + ABLAUF_MINUTEN.bestellung * 60);
+  });
 });
 
 describe('starteCheckout und createPayment', () => {

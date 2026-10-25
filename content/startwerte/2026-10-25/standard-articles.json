@@ -1,0 +1,355 @@
+[
+  {
+    "id": "beispiel-schluesselkasten",
+    "slug": "beispiel-schluesselkasten",
+    "name": "Schlüsselkasten für 20 Schlüssel",
+    "description": "Wandkasten aus Stahlblech mit nummerierten Haken. Hält Schlüssel geordnet und verschlossen — etwa im Büro, in der Hausverwaltung oder in der Werkstatt.",
+    "manufacturer": "",
+    "scope": "1 Schlüsselkasten, Befestigungsmaterial, 2 Schlüssel",
+    "properties": [
+      {
+        "name": "Hakenplätze",
+        "value": "20"
+      },
+      {
+        "name": "Material",
+        "value": "Stahlblech, pulverbeschichtet"
+      },
+      {
+        "name": "Verschluss",
+        "value": "Zylinderschloss"
+      }
+    ],
+    "deliveryTime": "",
+    "priceCents": 4000,
+    "maxQty": 20,
+    "shippingClass": "zubehoer",
+    "image": {
+      "motif": "Produktfoto Schlüsselkasten, geöffnet, mit Haken",
+      "ratio": "1/1"
+    },
+    "gallery": [],
+    "tags": [
+      "Aufbewahrung",
+      "Büro",
+      "Hausverwaltung"
+    ],
+    "seo": {
+      "title": "Schlüsselkasten für 20 Schlüssel (Beispiel)",
+      "description": "Wandkasten aus Stahlblech mit nummerierten Haken. Hält Schlüssel geordnet und verschlossen — etwa im Büro, in der Hausverwaltung oder in der Werkstatt.",
+      "internalLinks": [
+        {
+          "href": "/artikel",
+          "label": "Alle Artikel"
+        }
+      ],
+      "noindex": true
+    },
+    "example": true
+  },
+  {
+    "id": "beispiel-schluesselsafe-zahlencode",
+    "slug": "beispiel-schluesselsafe-zahlencode",
+    "name": "Schlüsselsafe mit Zahlencode",
+    "description": "Kleiner Wandtresor für die Schlüsselübergabe ohne persönliches Treffen, zum Beispiel für Handwerker oder Pflegedienste. Der Code lässt sich jederzeit ändern.",
+    "manufacturer": "",
+    "scope": "1 Schlüsselsafe, Befestigungsmaterial",
+    "properties": [
+      {
+        "name": "Öffnung",
+        "value": "4-stelliger Zahlencode"
+      },
+      {
+        "name": "Montage",
+        "value": "Wand"
+      },
+      {
+        "name": "Innenraum",
+        "value": "für bis zu 5 Schlüssel"
+      }
+    ],
+    "deliveryTime": "",
+    "priceCents": 3000,
+    "maxQty": 20,
+    "shippingClass": "zubehoer",
+    "image": {
+      "motif": "Produktfoto Schlüsselsafe mit Zahlenrädern",
+      "ratio": "1/1"
+    },
+    "gallery": [],
+    "tags": [
+      "Aufbewahrung",
+      "Übergabe"
+    ],
+    "seo": {
+      "title": "Schlüsselsafe mit Zahlencode (Beispiel)",
+      "description": "Kleiner Wandtresor für die Schlüsselübergabe ohne persönliches Treffen, zum Beispiel für Handwerker oder Pflegedienste. Der Code lässt sich jederzeit ändern.",
+      "internalLinks": [
+        {
+          "href": "/artikel",
+          "label": "Alle Artikel"
+        }
+      ],
+      "noindex": true
+    },
+    "example": true
+  },
+  {
+    "id": "beispiel-schluesselkappen-set",
+    "slug": "beispiel-schluesselkappen-set",
+    "name": "Schlüsselkappen, farbig sortiert (10 Stück)",
+    "description": "Farbige Kappen für den Schlüsselkopf. Damit unterscheiden Sie Haustür-, Keller- und Garagenschlüssel auf einen Blick.",
+    "manufacturer": "",
+    "scope": "10 Kappen in 5 Farben",
+    "properties": [
+      {
+        "name": "Farben",
+        "value": "5"
+      },
+      {
+        "name": "Passend für",
+        "value": "gängige Profilzylinderschlüssel"
+      }
+    ],
+    "deliveryTime": "",
+    "priceCents": 500,
+    "maxQty": 20,
+    "shippingClass": "code-schluessel",
+    "image": {
+      "motif": "Produktfoto farbige Schlüsselkappen",
+      "ratio": "1/1"
+    },
+    "gallery": [],
+    "tags": [
+      "Zubehör",
+      "Ordnung"
+    ],
+    "seo": {
+      "title": "Schlüsselkappen, farbig sortiert (10 Stück) (Beispiel)",
+      "description": "Farbige Kappen für den Schlüsselkopf. Damit unterscheiden Sie Haustür-, Keller- und Garagenschlüssel auf einen Blick.",
+      "internalLinks": [
+        {
+          "href": "/artikel",
+          "label": "Alle Artikel"
+        }
+      ],
+      "noindex": true
+    },
+    "example": true
+  },
+  {
+    "id": "beispiel-schluesselanhaenger-adressfeld",
+    "slug": "beispiel-schluesselanhaenger-adressfeld",
+    "name": "Schlüsselanhänger mit Beschriftungsfeld (5 Stück)",
+    "description": "Anhänger mit Sichtfenster und Einlegeschild. Beschriften Sie Räume oder Wohnungen — ohne die Anschrift preiszugeben.",
+    "manufacturer": "",
+    "scope": "5 Anhänger, 5 Einlegeschilder",
+    "properties": [
+      {
+        "name": "Material",
+        "value": "Kunststoff"
+      },
+      {
+        "name": "Beschriftung",
+        "value": "Einlegeschild"
+      }
+    ],
+    "deliveryTime": "",
+    "priceCents": 500,
+    "maxQty": 20,
+    "shippingClass": "code-schluessel",
+    "image": {
+      "motif": "Produktfoto Schlüsselanhänger mit Beschriftungsfeld",
+      "ratio": "1/1"
+    },
+    "gallery": [],
+    "tags": [
+      "Zubehör",
+      "Ordnung"
+    ],
+    "seo": {
+      "title": "Schlüsselanhänger mit Beschriftungsfeld (5 Stück) (Beispiel)",
+      "description": "Anhänger mit Sichtfenster und Einlegeschild. Beschriften Sie Räume oder Wohnungen — ohne die Anschrift preiszugeben.",
+      "internalLinks": [
+        {
+          "href": "/artikel",
+          "label": "Alle Artikel"
+        }
+      ],
+      "noindex": true
+    },
+    "example": true
+  },
+  {
+    "id": "beispiel-zylinder-pflegespray",
+    "slug": "beispiel-zylinder-pflegespray",
+    "name": "Pflegespray für Schließzylinder",
+    "description": "Pflegemittel für Schließzylinder und Schlösser. Nicht verharzend und für Präzisionszylinder geeignet — anders als Öl oder Kriechöl.",
+    "manufacturer": "",
+    "scope": "1 Sprühdose mit Röhrchen",
+    "properties": [
+      {
+        "name": "Inhalt",
+        "value": "50 ml"
+      },
+      {
+        "name": "Anwendung",
+        "value": "ein- bis zweimal im Jahr"
+      }
+    ],
+    "deliveryTime": "",
+    "priceCents": 1000,
+    "maxQty": 20,
+    "shippingClass": "zubehoer",
+    "image": {
+      "motif": "Produktfoto Pflegespray mit Sprühröhrchen",
+      "ratio": "1/1"
+    },
+    "gallery": [],
+    "tags": [
+      "Pflege",
+      "Zylinder"
+    ],
+    "seo": {
+      "title": "Pflegespray für Schließzylinder (Beispiel)",
+      "description": "Pflegemittel für Schließzylinder und Schlösser. Nicht verharzend und für Präzisionszylinder geeignet — anders als Öl oder Kriechöl.",
+      "internalLinks": [
+        {
+          "href": "/artikel",
+          "label": "Alle Artikel"
+        }
+      ],
+      "noindex": true
+    },
+    "example": true
+  },
+  {
+    "id": "beispiel-briefkastenschloss",
+    "slug": "beispiel-briefkastenschloss",
+    "name": "Briefkastenschloss mit Nocke",
+    "description": "Ersatzschloss für Briefkästen mit zwei Schlüsseln. Bitte Länge und Nockenform vor der Bestellung mit dem vorhandenen Schloss vergleichen.",
+    "manufacturer": "",
+    "scope": "1 Schloss, 2 Schlüssel, 2 Nocken",
+    "properties": [
+      {
+        "name": "Schlüssel",
+        "value": "2"
+      },
+      {
+        "name": "Nocken",
+        "value": "gerade und gekröpft"
+      }
+    ],
+    "deliveryTime": "",
+    "priceCents": 1500,
+    "maxQty": 20,
+    "shippingClass": "zubehoer",
+    "image": {
+      "motif": "Produktfoto Briefkastenschloss mit Nocken und Schlüsseln",
+      "ratio": "1/1"
+    },
+    "gallery": [],
+    "tags": [
+      "Briefkasten",
+      "Ersatzteil"
+    ],
+    "seo": {
+      "title": "Briefkastenschloss mit Nocke (Beispiel)",
+      "description": "Ersatzschloss für Briefkästen mit zwei Schlüsseln. Bitte Länge und Nockenform vor der Bestellung mit dem vorhandenen Schloss vergleichen.",
+      "internalLinks": [
+        {
+          "href": "/artikel",
+          "label": "Alle Artikel"
+        }
+      ],
+      "noindex": true
+    },
+    "example": true
+  },
+  {
+    "id": "beispiel-fenstergriff-abschliessbar",
+    "slug": "beispiel-fenstergriff-abschliessbar",
+    "name": "Fenstergriff, abschließbar",
+    "description": "Griff mit Zylinder für Fenster und Balkontüren. Erschwert das Öffnen von außen nach einem Glasdurchbruch.",
+    "manufacturer": "",
+    "scope": "1 Fenstergriff, 2 Schlüssel, Schrauben",
+    "properties": [
+      {
+        "name": "Stiftlänge",
+        "value": "bitte vor der Bestellung messen"
+      },
+      {
+        "name": "Schlüssel",
+        "value": "2"
+      }
+    ],
+    "deliveryTime": "",
+    "priceCents": 2500,
+    "maxQty": 20,
+    "shippingClass": "zubehoer",
+    "image": {
+      "motif": "Produktfoto abschließbarer Fenstergriff",
+      "ratio": "1/1"
+    },
+    "gallery": [],
+    "tags": [
+      "Fenster",
+      "Einbruchschutz"
+    ],
+    "seo": {
+      "title": "Fenstergriff, abschließbar (Beispiel)",
+      "description": "Griff mit Zylinder für Fenster und Balkontüren. Erschwert das Öffnen von außen nach einem Glasdurchbruch.",
+      "internalLinks": [
+        {
+          "href": "/artikel",
+          "label": "Alle Artikel"
+        }
+      ],
+      "noindex": true
+    },
+    "example": true
+  },
+  {
+    "id": "beispiel-moebelschloss",
+    "slug": "beispiel-moebelschloss",
+    "name": "Möbelschloss für Schubladen und Türen",
+    "description": "Aufschraubschloss für Holzmöbel. Mit zwei Schlüsseln; weitere Schlüssel können Sie später nach Code bestellen.",
+    "manufacturer": "",
+    "scope": "1 Schloss, 2 Schlüssel, Schrauben",
+    "properties": [
+      {
+        "name": "Einsatz",
+        "value": "Schublade oder Tür"
+      },
+      {
+        "name": "Dornmaß",
+        "value": "bitte vor der Bestellung messen"
+      }
+    ],
+    "deliveryTime": "",
+    "priceCents": 1500,
+    "maxQty": 20,
+    "shippingClass": "zubehoer",
+    "image": {
+      "motif": "Produktfoto Möbelschloss mit zwei Schlüsseln",
+      "ratio": "1/1"
+    },
+    "gallery": [],
+    "tags": [
+      "Möbel",
+      "Ersatzteil"
+    ],
+    "seo": {
+      "title": "Möbelschloss für Schubladen und Türen (Beispiel)",
+      "description": "Aufschraubschloss für Holzmöbel. Mit zwei Schlüsseln; weitere Schlüssel können Sie später nach Code bestellen.",
+      "internalLinks": [
+        {
+          "href": "/artikel",
+          "label": "Alle Artikel"
+        }
+      ],
+      "noindex": true
+    },
+    "example": true
+  }
+]

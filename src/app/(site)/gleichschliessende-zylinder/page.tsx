@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getCollection, getPageContent } from '@/lib/data';
+import { getCodeLines, getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { formatCents, formatMillimeter } from '@/lib/format';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
@@ -13,6 +13,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { PageHeader } from '@/components/layout/page-header';
+import { NachbestellenAbschnitt, sicherungskartenLinie } from '@/components/schliessung/nachbestellen';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { BereichIcon } from '@/components/visual/bereich-icon';
@@ -32,7 +33,7 @@ const ROUTE = 'gleichschliessende-zylinder';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Gleichschließende Zylinder konfigurieren und bestellen',
+    title: page?.seo.title ?? 'Sperrschließung: gleichschließende Zylinder bestellen',
     description:
       page?.seo.description
       ?? 'Mehrere Türen mit einem Schlüssel: Bauform, Maße, Funktion und Anzahl der gemeinsamen '
@@ -101,9 +102,10 @@ const BAUFORM_ICONS: Partial<Record<string, typeof IconProfilzylinder>> = {
 };
 
 export default async function CylinderOverviewPage() {
-  const [page, catalog] = await Promise.all([
+  const [page, catalog, codeLines] = await Promise.all([
     getPageContent(ROUTE),
     getCollection('cylinderCatalog'),
+    getCodeLines(),
   ]);
 
   const forms = catalog.forms.filter((form) => form.active);
@@ -135,18 +137,18 @@ export default async function CylinderOverviewPage() {
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
-          name: page?.headline ?? 'Gleichschließende Zylinder',
+          name: page?.headline ?? 'Gleichschließende Zylinder (Sperrschließung)',
           description: page?.seo.description,
-          crumbs: [{ href: `/${ROUTE}`, label: 'Gleichschließende Zylinder' }],
+          crumbs: [{ href: `/${ROUTE}`, label: 'Gleichschließende Zylinder (Sperrschließung)' }],
           faq: faq,
         })}
       />
 
       <PageHeader
         eyebrow={PROCESS_LABELS.direktkauf.label}
-        title={page?.headline ?? 'Gleichschließende Zylinder'}
-        lead={page?.subline ?? 'Mehrere Türen, ein Schlüssel. Direkt konfigurierbar.'}
-        crumbs={[{ href: `/${ROUTE}`, label: 'Gleichschließende Zylinder' }]}
+        title={page?.headline ?? 'Gleichschließende Zylinder (Sperrschließung)'}
+        lead={page?.subline ?? 'Mehrere Türen, ein Schlüssel. Als Sperrschließung direkt konfigurierbar.'}
+        crumbs={[{ href: `/${ROUTE}`, label: 'Gleichschließende Zylinder (Sperrschließung)' }]}
         bereich={ROUTE}
         /* Blickfang im Kopf (E4-L-23): die bemaßte Zeichnung des Profilzylinders, auf Papier ohne Rahmen. */
         visual={
@@ -644,20 +646,23 @@ export default async function CylinderOverviewPage() {
         </div>
       </Section>
 
-      {/* 08 Fragen */}
-      <Section tone="muted" tight>
+      {/* 08 Nachbestellen mit Sicherungskarte */}
+      <NachbestellenAbschnitt linie={sicherungskartenLinie(codeLines)} nummer="08" tone="muted" />
+
+      {/* 09 Fragen */}
+      <Section tight>
         <SectionHeading
-          nummer="08"
+          nummer="09"
           eyebrow="Fragen und Antworten"
           title="Häufige Fragen zur Gleichschließung"
         />
         <Accordion items={faq} className="mt-8" />
       </Section>
 
-      {/* 09 Weiterlesen: Stückliste, die ganze Zeile ist der Link */}
-      <Section tight>
+      {/* 10 Weiterlesen: Stückliste, die ganze Zeile ist der Link */}
+      <Section tone="muted" tight>
         <SectionHeading
-          nummer="09"
+          nummer="10"
           eyebrow="Weiterlesen"
           title="Passende Bereiche"
           lead="Wenn eine Gleichschließung nicht das Richtige ist, führen diese Wege weiter."

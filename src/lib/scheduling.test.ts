@@ -191,6 +191,7 @@ describe('scheduling', () => {
         slotMinutes: 30,
         bookingHorizonDays: 7,
         slotsPerWindow: 1,
+        reminderDaysBefore: 1,
         windows: [
           { from: '09:00', to: '09:30' },
           { from: '10:00', to: '10:30' },
@@ -380,6 +381,7 @@ describe('scheduling', () => {
           slotMinutes: 60,
           bookingHorizonDays: 1,
           slotsPerWindow,
+          reminderDaysBefore: 1,
           windows: fenster,
         },
         openingHours: [{ day: 3, spans: [{ from: '08:00', to: '18:00' }] }],
@@ -417,7 +419,7 @@ describe('scheduling', () => {
         today: tag,
         durationMinutes: 60,
         leadTimeDays: 0,
-        booking: { leadTimeDays: 0, depositCents: 0, depositMinCents: 0, depositMaxCents: 0, slotMinutes: 60, bookingHorizonDays: 1, slotsPerWindow: 1, windows: fenster },
+        booking: { leadTimeDays: 0, depositCents: 0, depositMinCents: 0, depositMaxCents: 0, slotMinutes: 60, bookingHorizonDays: 1, slotsPerWindow: 1, windows: fenster, reminderDaysBefore: 1 },
         openingHours: [{ day: 3, spans: [{ from: '08:00', to: '18:00' }] }],
         blockedDays: [],
         existing: [termin('7', '09:00', 150)],
@@ -429,7 +431,7 @@ describe('scheduling', () => {
 
     it('zeitpunktPruefen: beliebige Startzeit, gleiche Regeln', () => {
       const rahmen = {
-        booking: { leadTimeDays: 7, depositCents: 0, depositMinCents: 0, depositMaxCents: 0, slotMinutes: 60, bookingHorizonDays: 90, slotsPerWindow: 1, windows: fenster },
+        booking: { leadTimeDays: 7, depositCents: 0, depositMinCents: 0, depositMaxCents: 0, slotMinutes: 60, bookingHorizonDays: 90, slotsPerWindow: 1, windows: fenster, reminderDaysBefore: 1 },
         openingHours: [{ day: 3, spans: [{ from: '08:00', to: '18:00' }] }],
         blockedDays: [],
       };
@@ -453,6 +455,7 @@ describe('scheduling', () => {
       slotMinutes: 60,
       bookingHorizonDays: 120,
       slotsPerWindow: 1,
+      reminderDaysBefore: 1,
       windows: [{ from: '10:00', to: '11:00' }],
     };
 
