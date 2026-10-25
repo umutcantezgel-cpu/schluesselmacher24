@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
 
-import { getPageContent } from '@/lib/data';
+import { getCodeLines, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { SpaetVorladen } from '@/lib/spaet-vorladen';
 import type { InfoHint } from '@/lib/types';
@@ -12,6 +12,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
+import { NachbestellenAbschnitt, sicherungskartenLinie } from '@/components/schliessung/nachbestellen';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ErweiterbareAnlage, SystemVergleich, systemReiter } from '@/components/schliessanlagen/system-erklaerung';
 import { BereichIcon } from '@/components/visual/bereich-icon';
@@ -250,7 +251,7 @@ const FALLBACK_FAQ = [
 ];
 
 export default async function SchliessanlagenPage() {
-  const page = await getPageContent(ROUTE);
+  const [page, codeLines] = await Promise.all([getPageContent(ROUTE), getCodeLines()]);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
@@ -460,18 +461,21 @@ export default async function SchliessanlagenPage() {
         </div>
       </Section>
 
+      {/* Nachbestellen mit Sicherungskarte */}
+      <NachbestellenAbschnitt linie={sicherungskartenLinie(codeLines)} nummer="04" />
+
       {/* Fragen */}
-      <Section>
-        <SectionHeading nummer="04" eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
+      <Section tone="muted">
+        <SectionHeading nummer="05" eyebrow="Fragen" title="Häufige Fragen zu Schließanlagen" />
         <div className="mt-8">
           <Accordion items={faq} />
         </div>
       </Section>
 
       {/* Weiterführend: nummerierte Stückliste mit Haarlinien */}
-      <Section tone="muted" tight>
+      <Section tight>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
-          <SectionHeading nummer="05" eyebrow="Weiterlesen" title="Passend dazu" className="lg:col-span-4" />
+          <SectionHeading nummer="06" eyebrow="Weiterlesen" title="Passend dazu" className="lg:col-span-4" />
 
           <ol className="border-t border-border lg:col-span-8">
             {WEITERFUEHREND.map((link, index) => (
