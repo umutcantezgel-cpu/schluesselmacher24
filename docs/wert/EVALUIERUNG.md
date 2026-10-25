@@ -20,6 +20,24 @@
 4. Paket A (≈ 5 Tage) enthält die fünf von der Gegenprüfung bestätigten Sofort-Hebel, die Pflichtkorrekturen und die Messgrundlage. Es bringt rechnerisch 0,3–3,6 T€ Deckungsbeitrag pro Monat, Paket B (≈ 19 Tage) weitere 0,6–5,0 T€. Nachweisen lässt sich keine dieser Wirkungen, solange PLZ, Status und Kennzahlen nicht erfasst werden.
 5. Belastbar wird die Rechnung erst, wenn der Inhaber echte Mengen, Materialkosten und freie Werkstattstunden liefert. Außerdem muss er fünf Punkte entscheiden: öffentliche Preise, Terminort, Öffnungszeiten, Preisabgleich mit der Schlüssel Schmiede und Personal.
 
+### Schon umgesetzt (25.10.2026, im selben Pull Request)
+
+Die fünf Sofort-Hebel, die die Gegenprüfung bestätigt hat, dazu I-21 als Pflichtkorrektur. Alle ohne Schemaänderung, ohne neuen Dienst und ohne Eingriff in Preise oder Rechtstexte. Geprüft mit Typprüfung, Lint, 1574 Unit-Tests, 78 DB-Tests, Produktionsbuild und Browser-Durchlauf auf Handy (390×844) und Desktop (1280×900).
+
+| ID | Änderung | Gemessen nachher |
+|---|---|---|
+| I-01 | Bei „Kein funktionierender Schlüssel“ sind die Schlüsselfotos freiwillig, mit eigenem Hinweis. Fahrzeugschein und Berechtigung bleiben Pflicht. `?vorhanden=0` (Ratgeber „Schlüssel verloren“) belegt die Auswahl vor. | Schritt 8 geht ohne Fotos weiter, Schritt 9 bleibt ohne Fahrzeugschein gesperrt, Preisrahmen ab 329 € in Schritt 11. Gegenprobe mit funktionierendem Schlüssel: Schritt 8 bleibt gesperrt. |
+| I-05 | „Ihre Marke ist nicht dabei? Fall schildern“ unter dem Marken-Raster und auf der Markenseite, Ziel: Anfrage mit Thema Autoschlüssel. | Link in Schritt 1 und auf /autoschluessel/marken vorhanden. |
+| I-08 | Am Handy springt „Weiter“ zur Schrittüberschrift, am Desktop wie bisher an den Seitenanfang. Gilt für alle Abläufe. | Überschrift bei y = 136 statt 449; Desktop scrollY 0. |
+| I-15 | Werkstattzeile „Werkstatt und Abholung: Langgasse 70, 35576 Wetzlar · Telefon“ auf der Startseite, im letzten Terminschritt über „Zahlungspflichtig buchen“, auf den Code-Produktseiten, im Warenkorb bei Abholung und in der Kasse. Die Kasse nennt die Zahlarten, sobald Stripe eingerichtet ist. | Langgasse auf allen fünf Stellen sichtbar; ohne Stripe keine Zahlartenzeile. |
+| I-17 | Wetzlar in den Titeln der Startseite und der acht Autoschlüssel-Seiten, „Werkstatt in Wetzlar (Mittelhessen)“ in den Beschreibungen, Ort und Anreise in den Unterzeilen von Startseite und /autoschluessel. Fahrzeugöffnung bewusst ausgelassen (Einsatzort nicht belegt). | Alle Titel ≤ 60 Zeichen ohne Marke, Test `seitentexte.test.ts`. |
+| I-21 | Die Vor-Ort-Seite nennt Platzhalter-Gebiete nicht mehr als Vor-Ort-Regionen (wie schon /standorte und die Sitemap). | Berlin bis Stuttgart nicht mehr auf der Seite. |
+
+Zu beachten:
+- **Bestehende Datenbank:** Seitentexte (`content/seo.json`) und Ratgeber (`content/guides.json`) übernimmt der Seed nur beim ersten Import. Ist die Produktions-Datenbank schon befüllt, die neuen Titel und Unterzeilen im Backend unter „Seitentexte“ und den Ratgeber-Link „Anfrage für Ersatzschlüssel starten“ auf `/autoschluessel/anfrage?vorhanden=0` setzen.
+- **Startseiten-Titel:** Die Marke steht jetzt hinten („… in Wetzlar | SCHLÜSSELMACHER24“), damit der Ort in den sichtbaren ersten 60 Zeichen bleibt. Wortlaut aller neuen Texte bitte freigeben.
+- **Fahrzeugschein:** Ist heute nur im Browser Pflicht, nicht auf dem Server. Das war schon vorher so und ist unverändert.
+
 ---
 
 ## 2 Hebelrechnung je Linie
