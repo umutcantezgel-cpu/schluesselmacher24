@@ -22,6 +22,8 @@ import { GlyphGebaeude } from '@/components/visual/glyphen/gebaeude';
 import { GlyphPersonen } from '@/components/visual/glyphen/personen';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { SchliessplanInteraktiv } from '@/components/visual/interaktiv/schliessplan-interaktiv';
+import { ServiceBudgetCalculator } from '@/components/schliessanlagen/service-budget-calculator';
+
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
 const ROUTE = 'schliessanlagen';
@@ -304,18 +306,32 @@ export default async function SchliessanlagenPage() {
       <Section tight>
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           <div className="lg:col-span-7">
-            <p className="text-body leading-relaxed text-foreground-muted">
-              {page?.intro
-                ?? 'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme '
-                  + 'in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert '
-                  + 'werden kann.'}
-            </p>
+            <div className="prose prose-zinc prose-p:text-body prose-p:leading-relaxed prose-p:text-foreground-muted max-w-none">
+              <p>
+                {page?.intro
+                  ?? 'Eine Schließanlage ist weit mehr als eine Sammlung von Zylindern und Schlüsseln — sie ist das architektonische Rückgrat der physischen Sicherheit Ihres Gebäudes. Sie regelt nicht nur, wer welche Tür öffnen darf, sondern definiert auch Verantwortlichkeiten, Fluchtwege und die Skalierbarkeit für zukünftige Entwicklungen. Wir erklären die zugrundeliegenden Systeme in klarer, technischer Sprache und planen Ihre Anlage nach modernsten kryptografischen und mechanischen Standards, sodass sie auch in Jahrzehnten noch sicher und flexibel erweiterbar bleibt.'}
+              </p>
 
-            <p className="mt-4 text-body leading-relaxed text-foreground-muted">
-              Der Weg dorthin ist immer derselbe: Sie erfassen Ihr Objekt, Ihre Nutzer und Ihre
-              Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst
-              danach wird gefertigt.
-            </p>
+              <h2 className="text-title-sm font-semibold text-foreground mt-8 mb-4">Architektonische Methodik und Planungsprozess</h2>
+              <p>
+                Der Weg zu einer sicheren und langlebigen Schließanlage folgt einer strengen, bewährten Methodik. Zunächst erfolgt eine detaillierte Erfassung der physischen Gegebenheiten: Wir analysieren Ihr Objekt, definieren Nutzergruppen mit spezifischen Berechtigungsprofilen und kartieren sämtliche Zugangspunkte. Diese Daten bilden das Fundament für die Erstellung eines mathematisch präzisen Schließplans. Dieser Plan wird in einem iterativen Prozess gemeinsam mit Ihnen validiert, um sicherzustellen, dass alle organisatorischen Anforderungen erfüllt sind. Erst nach der finalen Freigabe des Schließplans durch alle Stakeholder beginnt die hochpräzise Fertigung der mechanischen oder mechatronischen Komponenten.
+              </p>
+
+              <h2 className="text-title-sm font-semibold text-foreground mt-8 mb-4">Lebenszyklus und Skalierbarkeit</h2>
+              <p>
+                Ein wesentlicher Aspekt unserer Planung ist die Berücksichtigung des gesamten Lebenszyklus der Anlage. Durch den Einsatz moderner Profilzylinder mit patentiertem Kopierschutz und die strategische Einplanung von Reserve-Schließungen (Erweiterbarkeit) gewährleisten wir, dass Ihre Investition auch bei strukturellen Veränderungen im Unternehmen oder Gebäude geschützt bleibt. Die Integration von elektronischen Zutrittskomponenten kann von Beginn an vorbereitet werden, um einen nahtlosen Übergang zu hybriden Systemen zu ermöglichen.
+              </p>
+
+              <h2 className="text-title-sm font-semibold text-foreground mt-8 mb-4">Sicherheitsklassen und Zertifizierungen</h2>
+              <p>
+                Unsere Schließanlagen erfüllen höchste Sicherheitsstandards nach DIN EN 1303 und DIN 18252. Dies umfasst nicht nur den physischen Widerstand gegen gängige Einbruchmethoden wie Picking, Bumping oder Bohren, sondern auch strenge organisatorische Maßnahmen beim Schlüsselmanagement. Die Ausgabe von Nachschlüsseln oder Ersatzzylindern erfolgt ausschließlich gegen Vorlage der Sicherungskarte, was unautorisierte Kopien effektiv verhindert.
+              </p>
+
+              <h2 className="text-title-sm font-semibold text-foreground mt-8 mb-4">Wirtschaftlichkeitsbetrachtung (ROI)</h2>
+              <p>
+                Die Implementierung einer professionell geplanten Schließanlage führt langfristig zu signifikanten Kosteneinsparungen. Durch die Reduzierung der Schlüsselanzahl (ein Schlüssel für alle relevanten Türen) sinkt der administrative Aufwand für die Verwaltung. Zudem minimieren hochwertige, langlebige Komponenten die Wartungs- und Austauschkosten. Um diese Effekte transparent zu machen, bieten wir Ihnen unseren interaktiven Kalkulator an.
+              </p>
+            </div>
 
             <dl className="mt-6">
               <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
@@ -340,6 +356,9 @@ export default async function SchliessanlagenPage() {
               </div>
             ))}
           </dl>
+        </div>
+        <div className="mt-16">
+          <ServiceBudgetCalculator />
         </div>
       </Section>
 
