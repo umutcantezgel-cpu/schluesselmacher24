@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Profillinie } from '@/components/visual/profillinie';
 import { getSettings } from '@/lib/data';
+import { defaults } from '@/lib/data/defaults';
 import { FOOTER_CONTENT, FOOTER_LEGAL, NAV_AREAS, WIDERRUF_BUTTON, type NavLink } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
 import { jahrInBerlin } from '@/lib/berliner-zeit';
@@ -23,7 +24,12 @@ const linkKlasse =
  * Haarlinien, Beschriftung in Mono, darüber die Profillinie als Abschluss.
  */
 export async function SiteFooter() {
-  const settings = await getSettings();
+  // Der Fuß steht im Root-Layout jeder Seite: Ist die Datenbank kurz nicht
+  // erreichbar, fällt er auf die Standardwerte zurück, statt die Seite zu brechen.
+  const settings = await getSettings().catch((error: unknown) => {
+    console.error('[fuss] Einstellungen nicht geladen, Standardwerte verwendet', error);
+    return defaults.settings();
+  });
   const { company } = settings;
   // Firmenname, Inhaber und Sitz ohne Land — das Land steht im Fuß nicht.
   const anbieter = anbieterZeilen(company).filter((zeile) => zeile !== company.country);
