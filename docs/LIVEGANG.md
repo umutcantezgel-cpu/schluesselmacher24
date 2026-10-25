@@ -65,7 +65,7 @@ Reihenfolge: **1 Postfach → 2 Supabase → 3 Resend → 4 Stripe (Testmodus) �
    - Support-Telefon und -Mail wie im Impressum
    - Links zu AGB (`/rechtliches/agb`), Widerruf und Datenschutz
 3. **Settings → Branding**: Logo und Farben, damit die Bezahlseite nach SCHLÜSSELMACHER24 aussieht.
-4. **Settings → Payment methods**: Karte (inkl. Apple Pay und Google Pay) aktivieren; optional PayPal. Was aktiv ist, muss in `PAYMENT_METHODS` stehen, z. B. `card` oder `card,paypal`. **Keine SEPA-Lastschrift für Anzahlungen**: Die Bestätigung kommt erst nach Tagen, ein Termin bleibt aber nur 30 Minuten reserviert.
+4. **Settings → Payment methods**: Karte (inkl. Apple Pay und Google Pay) aktivieren; optional PayPal. Was aktiv ist, muss in `PAYMENT_METHODS` stehen, z. B. `card` oder `card,paypal`. Die Liste gilt für **alle** Zahlungen, also für Bestellungen und für Anzahlungen auf Termine. Deshalb **keine verzögerten Zahlarten wie SEPA-Lastschrift** eintragen: Die Bestätigung kommt erst nach Tagen, ein Termin bleibt aber nur 30 Minuten reserviert.
 5. **Settings → Customer emails → „Successful payments“ aus**: Die Website schickt selbst eine Zahlungsbestätigung, sonst kommt sie doppelt.
 6. **Developers → Webhooks → Add endpoint**: URL `https://schluesselmacher24.de/api/zahlung/stripe`, genau diese 6 Ereignisse:
    - `checkout.session.completed`

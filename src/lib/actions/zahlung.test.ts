@@ -126,6 +126,22 @@ describe('zahlungFortsetzen', () => {
     expect(await zahlungFortsetzen({ recordId: '42', token })).toEqual({ ok: false, meldung: 'Dieser Vorgang ist bereits bezahlt.' });
   });
 
+  it('startet nach gescheiterter Lastschrift eine neue Sitzung, statt „eingeleitet“ zu melden', async () => {
+    // Stripe lässt die Sitzung nach async_payment_failed auf complete/unpaid stehen.
+    gespeichert = vorgang({}, { status: 'fehlgeschlagen' });
+    abrufen.mockResolvedValue({ id: 'cs_alt', status: 'complete', payment_status: 'unpaid', url: null });
+    zahlungStarten.mockResolvedValue({ status: 'offen', checkoutSessionId: 'cs_neu', redirectUrl: 'https://checkout.stripe.com/c/pay/cs_neu', message: '' });
+    expect(await zahlungFortsetzen({ recordId: '42', token })).toEqual({ ok: true, url: 'https://checkout.stripe.com/c/pay/cs_neu' });
+    expect(verbuchen).not.toHaveBeenCalled();
+    expect(gespeichert?.payment).toMatchObject({ status: 'offen', checkoutSessionId: 'cs_neu' });
+
+    // Ein Termin muss dagegen neu gebucht werden.
+    gespeichert = vorgang({ kind: 'termin', lines: undefined, totals: undefined }, { scope: 'anzahlung', status: 'fehlgeschlagen' });
+    zahlungStarten.mockClear();
+    expect(await zahlungFortsetzen({ recordId: '42', token })).toMatchObject({ ok: false, neuBuchen: '/autoschluessel/anfrage' });
+    expect(zahlungStarten).not.toHaveBeenCalled();
+  });
+
   it('bietet bei stornierten Vorgängen keine Zahlung an', async () => {
     gespeichert = vorgang({ status: 'storniert' });
     expect(await zahlungFortsetzen({ recordId: '42', token })).toMatchObject({ ok: false, meldung: 'Dieser Vorgang ist storniert.' });

@@ -58,7 +58,9 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
     if (zahlung.checkoutSessionId) {
       const session = await checkoutAbrufen(zahlung.checkoutSessionId);
       if (session.status === 'open' && session.url) return { ok: true, url: session.url };
-      if (session.status === 'complete') {
+      // Nach einer gescheiterten Lastschrift bleibt die Sitzung „complete“ —
+      // dann braucht es eine neue (beim Termin: neu buchen, siehe unten).
+      if (session.status === 'complete' && zahlung.status !== 'fehlgeschlagen') {
         // Schon bezahlt (oder bei der Bank unterwegs) — den Stand gleich verbuchen.
         await sitzungVerbuchen(`rueckkehr:${session.id}`, 'checkout.session.completed', session).catch((error) => {
           console.error('[zahlung] Abgeschlossene Sitzung nicht verbucht', error);
