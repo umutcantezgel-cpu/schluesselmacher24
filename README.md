@@ -128,3 +128,16 @@ Alle offenen Punkte für Menschen: `docs/gestaltung/MENSCHEN.md`.
 ## Gestaltungslauf
 
 Die Unterlagen des Gestaltungslaufs liegen in `docs/gestaltung/`: der Kern des Designsystems (`KERN.md`), die Entscheidungen (`ENTSCHEIDUNGEN.md`), offene Punkte für Menschen (`MENSCHEN.md`), Textvorschläge (`TEXTVORSCHLAEGE.md`) und das Berichtsbuch mit Abnahme und Anleitung zum Zurückrollen (`BERICHT.md`). Der vollständige Arbeitsordner mit Auftrag, Plan, Prüfprotokollen, Bildsätzen, Vorher-Nachher-Galerie und Prüfwerkzeugen bleibt in der Git-Geschichte erhalten (Zweig `claude/projekt-gestaltung-entwicklung-tofodh`, Commit `b8e7ea7`, Ordner `_werkstatt/`).
+
+## Architectural Master Blueprint
+
+*This section was automatically synchronized by the Auditor Architect.*
+
+The application adheres to a strict Next.js 16+ App Router architecture, utilizing React 19.2+ Server Actions, and a Tailwind CSS v4 design system rooted in the OKLCH color space (Swiss Light Mode).
+
+For detailed mapping of current routes and their impending transformations, please review:
+- `.jules/revolution-plan.json`: The deterministic transformation blueprint.
+- `.jules/architecture-matrix.md`: The markdown representation of the architectural state.
+- `llms.txt`: The system instructions and core invariants.
+
+Our ongoing evolution strictly preserves existing routes while elevating their content depth (minimum 800 words) and integrating sophisticated, tailored interactive modules on a per-page basis.

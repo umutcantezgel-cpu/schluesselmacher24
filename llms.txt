@@ -1,0 +1,22 @@
+# Architecture Master Blueprint
+
+This file outlines the architectural goals and transformation strategy for the Next.js 16+ App Router application.
+
+## Core Architectural Invariants
+1. **Next.js 16+ App Router Paradigm:**
+   - Strict use of Server Components where possible.
+   - Asynchronous request APIs (Promises for `params` and `searchParams`).
+   - "use cache" directive for data-intensive calculations.
+2. **React 19.2+ Innovations:**
+   - Server Actions with `useActionState`, `useOptimistic`, and `useTransition`.
+3. **Styling and Design System:**
+   - Tailwind CSS v4 with OKLCH Color Space (Swiss Light Mode doctrine).
+   - Strict 8px spatial rhythm and fluid typography via `clamp()`.
+
+## Transformation Strategy
+- Evaluate every existing route (`.jules/architecture-matrix.md`).
+- Ensure substantive content (minimum 800 words) tailored to each specific page.
+- Integrate one distinct interactive signature module (e.g., Benton grids, ROI calculators) per route.
+- Execute direct-to-main deployment via `sentinel/auto` fast-forward branch without adding new routes.
+
+Refer to `.jules/revolution-plan.json` for the comprehensive JSON mapping of planned route augmentations.
