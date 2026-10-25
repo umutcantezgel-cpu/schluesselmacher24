@@ -25,6 +25,7 @@ import {
   widerrufEingang,
   type StatusMitMail,
 } from '@/lib/mail/vorlagen';
+import { betriebRueckrufEmpfohlen } from '@/lib/mail/vorlagen/team-hinweis';
 import { onlineZahlarten } from '@/lib/rechtliches/zahlarten';
 import type { BusinessRecord, MailLogEntry, Settings } from '@/lib/types';
 import { mailKonfiguration } from '@/lib/umgebung';
@@ -136,7 +137,9 @@ export async function benachrichtigeNeuerVorgang({ saved, token, settings }: Neu
 /**
  * Mail nach einer verbuchten Zahlung: „bezahlt“ an Kunde und Betrieb — dazu
  * einmalig die Vertragsbestätigung mit AGB und Widerrufsbelehrung —,
- * „nicht abgeschlossen“ und „erstattet“ an den Kunden.
+ * „nicht abgeschlossen“ und „erstattet“ an den Kunden. Wird ein Termin
+ * mangels Anzahlung freigegeben, erhält das Team zusätzlich „Rückruf
+ * empfohlen“ (K-02).
  */
 export async function benachrichtigeZahlung({
   vorgang,
@@ -192,6 +195,20 @@ export async function benachrichtigeZahlung({
             idempotenzSchluessel: idempotenzSchluessel(vorgang.reference, 'zahlung-nicht-abgeschlossen', ereignisId),
           }),
         );
+        if (mail.terminFreigegeben && vorgang.kind === 'termin') {
+          const teamAn = teamEmpfaenger(settings.company);
+          if (teamAn.length) {
+            sendungen.push(
+              sendeVorlage({
+                art: 'team-hinweis',
+                an: teamAn,
+                inhalt: betriebRueckrufEmpfohlen({ vorgang, kontext, adminUrl: adminLink(vorgang.id) }),
+                // Einmal je Vorgang: Ein Termin wird nur einmal freigegeben.
+                idempotenzSchluessel: idempotenzSchluessel(vorgang.reference, 'team-hinweis', 'rueckruf'),
+              }),
+            );
+          }
+        }
         break;
       case 'erstattet':
         sendungen.push(

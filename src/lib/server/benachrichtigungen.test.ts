@@ -167,12 +167,25 @@ describe('benachrichtigeZahlung', () => {
     expect(gespeichert.mailLog?.filter((m) => m.kind === 'vertrag')).toHaveLength(1);
   });
 
-  it('meldet einen verfallenen Termin dem Kunden', async () => {
+  it('meldet einen verfallenen Termin dem Kunden und empfiehlt dem Team einen Rückruf', async () => {
     mailEinrichten();
     await benachrichtigeZahlung({ vorgang: vorgang(), mail: { art: 'nicht-abgeschlossen', terminFreigegeben: true }, ereignisId: 'evt_2' });
-    expect(aufrufe).toHaveLength(1);
+    expect(aufrufe).toHaveLength(2);
     expect(aufrufe[0].an).toEqual(['erika@example.org']);
     expect(aufrufe[0].schluessel).toBe('lokal-SM24-T-2026-0007-zahlung-nicht-abgeschlossen-evt_2');
+    expect(aufrufe[1]).toMatchObject({
+      an: ['team@schluesselmacher24.de', 'inhaber@schluesselmacher24.de'],
+      betreff: 'Rückruf empfohlen: Anzahlung nicht eingegangen – SM24-T-2026-0007',
+      schluessel: 'lokal-SM24-T-2026-0007-team-hinweis-rueckruf',
+    });
+    expect(gespeichert.mailLog?.map((m) => m.kind)).toEqual(['zahlung-nicht-abgeschlossen', 'team-hinweis']);
+  });
+
+  it('empfiehlt keinen Rückruf, solange der Termin bestehen bleibt', async () => {
+    mailEinrichten();
+    await benachrichtigeZahlung({ vorgang: vorgang(), mail: { art: 'nicht-abgeschlossen', terminFreigegeben: false }, ereignisId: 'evt_3' });
+    expect(aufrufe).toHaveLength(1);
+    expect(aufrufe[0].an).toEqual(['erika@example.org']);
   });
 });
 
