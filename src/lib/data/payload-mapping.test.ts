@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { defaults } from './defaults';
-import { slugify } from './defaults/vehicles';
+import { slugify } from '@/lib/slug';
 import * as m from './payload-mapping';
 import { JsonFileAdapter } from './json-adapter';
 import type { Collections } from './adapter';
@@ -32,7 +32,7 @@ describe('Übersetzung Payload ↔ Seite', () => {
     lines.forEach((line, index) => {
       const doc = gespeichert(m.codeLineZuPayload(line), index + 1);
       const back = m.codeLineZuSeite(doc as never);
-      const expected = { ...line };
+      const expected = { ...line, updatedAt: STAND };
       if (!expected.bulkPrices?.length) delete expected.bulkPrices;
       expect(back, line.id).toEqual(expected);
     });
@@ -77,7 +77,7 @@ describe('Übersetzung Payload ↔ Seite', () => {
     const gruppenKennung = new Map(groups.map((g, i) => [i + 1, g.id]));
     makes.forEach((make, i) => {
       const doc = gespeichert(m.fahrzeugmarkeZuPayload(make, gruppenIds), i + 1);
-      expect(m.fahrzeugmarkeZuSeite(doc as never, gruppenKennung), make.id).toEqual(make);
+      expect(m.fahrzeugmarkeZuSeite(doc as never, gruppenKennung), make.id).toEqual({ ...make, updatedAt: STAND });
     });
   });
 
@@ -133,13 +133,13 @@ describe('Übersetzung Payload ↔ Seite', () => {
       models: [{ ...makes[0].models[0], intro: 'Eigene Einleitung', seo: { title: 'Eigener Titel', description: '' } }],
     };
     const doc = gespeichert(m.fahrzeugmarkeZuPayload(make, gruppenIds), 1);
-    expect(m.fahrzeugmarkeZuSeite(doc as never, new Map(groups.map((g, i) => [i + 1, g.id])))).toEqual(make);
+    expect(m.fahrzeugmarkeZuSeite(doc as never, new Map(groups.map((g, i) => [i + 1, g.id])))).toEqual({ ...make, updatedAt: STAND });
 
     expect([slugify('Škoda'), slugify('Mégane'), slugify('Größe Ü')]).toEqual(['skoda', 'megane', 'groesse-ue']);
 
     const [line] = await read('codeLines');
     const mitProfil = { ...line, profile: 'Profil A', codeSeries: 'Serie 100-200' };
-    expect(m.codeLineZuSeite(gespeichert(m.codeLineZuPayload(mitProfil), 1) as never)).toEqual(mitProfil);
+    expect(m.codeLineZuSeite(gespeichert(m.codeLineZuPayload(mitProfil), 1) as never)).toEqual({ ...mitProfil, updatedAt: STAND });
   });
 
   it('Sperrtage behalten ihr Datum', async () => {
@@ -294,7 +294,7 @@ describe('Übersetzung Payload ↔ Seite', () => {
     const gpsr = { manufacturerName: 'Beispiel GmbH', manufacturerAddress: 'Musterweg 1\n12345 Musterstadt', productId: 'ZY-01' };
     const line = { ...lines[0], gpsr };
     if (!line.bulkPrices?.length) delete line.bulkPrices;
-    expect(m.codeLineZuSeite(gespeichert(m.codeLineZuPayload(line), 1) as never)).toEqual(line);
+    expect(m.codeLineZuSeite(gespeichert(m.codeLineZuPayload(line), 1) as never)).toEqual({ ...line, updatedAt: STAND });
     const article = { ...articles[0], gpsr: { manufacturerEmail: 'info@example.org', safetyNotes: 'Nicht für Kinder.' } };
     expect(m.standardartikelZuSeite(gespeichert(m.standardartikelZuPayload(article), 1) as never)).toEqual(article);
     const katalog = { ...catalog, gpsr: { manufacturerWebsite: 'https://example.org' } };

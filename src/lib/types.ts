@@ -231,6 +231,8 @@ export interface VehicleMake {
    * Texte sind leer — die Seite erzeugt dann ihre eigenen.
    */
   seo?: SeoFields;
+  /** Letzte Änderung im Backend (für die Sitemap); fehlt bei Inhalten aus `content/`. */
+  updatedAt?: string;
 }
 
 /** Eigene Suchmaschinen-Angaben einer Modellseite; leere Texte = automatisch. */
@@ -369,6 +371,8 @@ export interface CodeLine {
   /** Beispielartikel: sichtbar, aber nicht bestellbar und nicht in Suchmaschinen. */
   example?: boolean;
   gpsr?: ProductSafetyInfo;
+  /** Letzte Änderung im Backend (für die Sitemap); fehlt bei Inhalten aus `content/`. */
+  updatedAt?: string;
 }
 
 /* ---------- Standardartikel (Shop) -------------------------------------- */

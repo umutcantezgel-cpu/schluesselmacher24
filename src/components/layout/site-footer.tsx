@@ -8,8 +8,11 @@ import { jahrInBerlin } from '@/lib/berliner-zeit';
 import { anbieterZeilen, kontakt, standort } from '@/lib/rechtliches/firma';
 import { telefonLink } from '@/lib/telefon';
 
-/** Shop-Seiten ohne eigenen Leistungsbereich — stehen im Anschluss an die Bereiche. */
-const FOOTER_SHOP: NavLink[] = [{ href: '/artikel', label: 'Artikel' }];
+/**
+ * Shop-Seiten ohne eigenen Leistungsbereich — stehen im Anschluss an die Bereiche.
+ * „Artikel“ fehlt, solange es dort nur Beispielartikel gibt (noindex, Erg. Leitfaden §4).
+ */
+const FOOTER_SHOP: NavLink[] = [];
 
 /** Feldbeschriftung im Schriftfeld (Mono, Großbuchstaben). */
 function Feldtitel({ children }: { children: string }) {
