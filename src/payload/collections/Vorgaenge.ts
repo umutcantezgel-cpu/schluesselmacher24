@@ -255,8 +255,9 @@ export const Vorgaenge: CollectionConfig = {
                       type: 'select',
                       label: 'Ort',
                       options: [
+                        // Erg. Leitfaden §1: online immer Werkstatt; beim Kunden nur nach Prüfung (Telefontermin).
                         { label: 'Werkstatt', value: 'werkstatt' },
-                        { label: 'Vor Ort', value: 'vor-ort' },
+                        { label: 'Beim Kunden (nach Prüfung)', value: 'vor-ort' },
                       ],
                       admin: { width: '25%', ...nurLesen },
                     },

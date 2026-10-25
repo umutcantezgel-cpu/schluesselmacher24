@@ -7,6 +7,7 @@
    ========================================================================== */
 
 import { enthaeltPlatzhalter, istPlatzhalter } from '../platzhalter';
+import { standort } from '../rechtliches/firma';
 import type { CompanyProfile } from '../types';
 
 export interface MailInhalt {
@@ -96,13 +97,19 @@ export function anrede(kontakt: { firstName?: string; lastName?: string } | unde
 
 /* ---------- Fuß ---------------------------------------------------------- */
 
-/** Firmendaten nur, wenn sie echt sind — nie mit „[Platzhalter …]“. */
+/**
+ * Firmendaten nur, wenn sie echt sind — nie mit „[Platzhalter …]“. Nach dem
+ * Firmensitz die Werkstatt, falls sie woanders liegt (Erg. Leitfaden §1:
+ * Kundinnen und Kunden kommen zur Werkstatt).
+ */
 function firmenzeilen(firma: CompanyProfile | undefined): string[] {
   if (!firma || firma.isPlaceholder) return [];
+  const werkstatt = standort(firma);
   const zeilen = [
     firma.legalName,
     firma.street,
     [firma.postalCode, firma.city].filter(Boolean).join(' '),
+    werkstatt ? `${werkstatt.label}: ${werkstatt.street}, ${werkstatt.postalCode} ${werkstatt.city}` : '',
     firma.phone ? `Telefon ${firma.phone}` : '',
     firma.email ? `E-Mail ${firma.email}` : '',
     firma.vatId ? `USt-IdNr. ${firma.vatId}` : '',

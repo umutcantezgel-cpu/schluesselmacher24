@@ -1,5 +1,5 @@
-import { enthaeltPlatzhalter, istPlatzhalter } from '@/lib/platzhalter';
-import type { CompanyLocation, CompanyProfile } from '@/lib/types';
+import { enthaeltPlatzhalter, istPlatzhalter } from '../platzhalter';
+import type { CompanyLocation, CompanyProfile } from '../types';
 
 /* ==========================================================================
    Firmendaten für Rechtstexte und Pflichtangaben
@@ -7,6 +7,8 @@ import type { CompanyLocation, CompanyProfile } from '@/lib/types';
    die Firmendaten als Platzhalter markiert sind, erscheint nichts davon —
    auch kein „[Platzhalter …]“. Die Steuernummer gibt es hier bewusst nicht:
    Sie ist intern und wird nie veröffentlicht.
+   Nur relative Importe: Mailvorlagen und Backend-Endpunkte (Payload) laden
+   diese Datei ebenfalls.
    ========================================================================== */
 
 /** Ein gepflegter Wert — oder `undefined` für leer und Platzhalter. */

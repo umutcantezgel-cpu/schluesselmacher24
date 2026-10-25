@@ -13,6 +13,7 @@ import {
 } from '@/lib/data';
 import { formatDate, formatDuration } from '@/lib/format';
 import { SPERRGRUND_TEXT, zeitpunktPruefen, type SperrGrund } from '@/lib/scheduling';
+import { terminOrtText, werkstattAnschrift } from '@/lib/terminort';
 import type { AppointmentInfo, BlockedDay, BusinessRecord, MailLogEntry, Settings } from '@/lib/types';
 
 import { benachrichtigeStatus, benachrichtigeVertrag } from './benachrichtigungen';
@@ -206,7 +207,8 @@ export async function telefonterminEintragen(eingabe: unknown, team: string): Pr
               ...(daten.leistung ? [{ label: 'Gewünschte Leistung', value: daten.leistung }] : []),
               { label: 'Termin', value: terminText(termin) },
               { label: 'Dauer', value: formatDuration(termin.durationMinutes) },
-              { label: 'Ort', value: termin.location === 'werkstatt' ? 'Werkstatt' : 'Vor Ort' },
+              // Für den Kunden sichtbar (Vorgangsseite, Statusabfrage): Werkstatt mit Anschrift.
+              { label: 'Ort', value: terminOrtText(termin, { werkstatt: werkstattAnschrift(settings.company) }) },
             ],
           },
         ],

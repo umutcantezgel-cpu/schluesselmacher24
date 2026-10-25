@@ -73,7 +73,7 @@ function Telefontermin({ api }: { api: string }) {
         <input required type="number" min={15} max={600} step={15} aria-label="Dauer in Minuten" title="Dauer in Minuten" value={werte.dauerMinuten} onChange={setzen('dauerMinuten')} />
         <select aria-label="Ort" value={werte.ort} onChange={setzen('ort')}>
           <option value="werkstatt">Werkstatt</option>
-          <option value="vor-ort">Vor Ort</option>
+          <option value="vor-ort">Beim Kunden (nach Prüfung)</option>
         </select>
         <input placeholder="Leistung (z. B. Zweitschlüssel)" aria-label="Leistung" value={werte.leistung} onChange={setzen('leistung')} />
         <input placeholder="Interne Notiz" aria-label="Interne Notiz" value={werte.notiz} onChange={setzen('notiz')} />

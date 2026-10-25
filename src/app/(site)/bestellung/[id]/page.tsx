@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
 
-import { getRecord } from '@/lib/data';
+import { getRecord, getSettings } from '@/lib/data';
 import { verifyAccessToken } from '@/lib/server/access-token';
 import { mailStatus, paymentStatus, storageStatus } from '@/lib/integrations';
 import { widerrufErklaerenHref } from '@/lib/navigation';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
 import { mailHinweis } from '@/lib/mail/hinweise';
+import { vorgangOrtText } from '@/lib/terminort';
 import type { OrderLine, OrderTotals, PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
 import { zahlungsAnsicht } from '@/lib/zahlung/ansicht';
 import { Alert } from '@/components/ui/alert';
@@ -251,16 +252,15 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
   const abschnitte: SummarySection[] = [...angaben, { title: 'Kontakt und Lieferanschrift', rows: anschrift }];
 
   if (record.appointment) {
+    // Werkstatt mit Anschrift (Erg. Leitfaden §1); die Firmendaten nur für Termine laden.
+    const ort = vorgangOrtText(record, (await getSettings()).company);
     abschnitte.push({
       title: 'Termin',
       rows: [
         { label: 'Datum', value: formatDate(record.appointment.date) },
         { label: 'Uhrzeit', value: `${record.appointment.time} Uhr` },
         { label: 'Dauer', value: formatDuration(record.appointment.durationMinutes) },
-        {
-          label: 'Ort',
-          value: record.appointment.location === 'werkstatt' ? 'In der Werkstatt' : 'Vor Ort bei Ihnen',
-        },
+        { label: 'Ort', value: ort ?? '' },
       ],
     });
   }

@@ -44,6 +44,7 @@ import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
 import { GlyphWaage } from '@/components/visual/glyphen/waage';
 import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
 import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
+import { ausserhalbDerRegion, ausserhalbHinweis } from '@/lib/terminort';
 import {
   schluesselfotosFreiwillig,
   unterlagenSchrittErfuellt,
@@ -698,7 +699,7 @@ export function Assistent({
           { label: 'Eingeplante Dauer', value: formatDuration(current.slotMinutes) },
           {
             label: 'Art des Termins',
-            value: current.requiresVehicleOnSite ? 'Vor-Ort-Termin mit Fahrzeug' : 'Termin im Fachbetrieb',
+            value: current.requiresVehicleOnSite ? 'In der Werkstatt, mit Fahrzeug' : 'In der Werkstatt',
           },
         ],
       },
@@ -773,7 +774,8 @@ export function Assistent({
       date: data.slotDate,
       time: data.slotTime,
       durationMinutes: quote.slotMinutes,
-      location: quote.requiresVehicleOnSite ? 'vor-ort' : 'werkstatt',
+      // Online gebuchte Termine finden in der Werkstatt statt (Erg. Leitfaden §1).
+      location: 'werkstatt',
     };
     const summary = buildSummary(quote);
 
@@ -878,6 +880,7 @@ export function Assistent({
         notices={done.notices}
         redirectUrl={done.redirectUrl}
         reserviertBis={done.reserviertBis}
+        werkstatt={werkstatt?.standort}
       />
     );
   }
@@ -1412,14 +1415,21 @@ export function Assistent({
               </Field>
             </div>
 
+            {/* Erg. Leitfaden §1: Schwerpunkt Wetzlar — Kunden von außerhalb reisen an. */}
+            {ausserhalbDerRegion(data.postalCode, data.country) && (
+              <Alert tone="info" title="Termin in unserer Werkstatt" className="sm:col-span-2">
+                {ausserhalbHinweis(werkstatt?.standort?.city)}
+              </Alert>
+            )}
+
             <Field
               label="Land"
               required
               info={{
                 title: 'Wozu wir die Anschrift brauchen',
                 body:
-                  'Steht bei Ihrer Leistung das Fahrzeug im Mittelpunkt, stimmen wir den Ort des '
-                  + 'Termins mit Ihnen ab. Dafür brauchen wir mindestens Postleitzahl und Ort.',
+                  'Termine finden in unserer Werkstatt statt. Ein Einsatz bei Ihnen ist nur nach '
+                  + 'individueller Prüfung möglich — dafür brauchen wir mindestens Postleitzahl und Ort.',
               }}
             >
               {({ id, describedBy, invalid }) => (
@@ -1630,6 +1640,7 @@ export function Assistent({
           leadTimeDays={slots?.leadTimeDays ?? quote.leadTimeDays}
           slotMinutes={quote.slotMinutes}
           requiresVehicleOnSite={quote.requiresVehicleOnSite}
+          werkstatt={werkstatt?.standort}
           staleSelection={staleSlotSelection}
           selectedDate={data.slotDate}
           selectedTime={data.slotTime}

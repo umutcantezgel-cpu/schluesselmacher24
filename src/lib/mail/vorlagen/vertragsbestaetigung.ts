@@ -24,7 +24,7 @@ import {
   widerrufsbelehrung,
   type RechtsAbschnitt,
 } from '../../rechtliches/texte';
-import type { BusinessRecord, RecordConsents, Settings } from '../../types';
+import type { BusinessRecord, CompanyProfile, RecordConsents, Settings } from '../../types';
 import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
 import {
   ANTWORT_HINWEIS,
@@ -98,13 +98,13 @@ function zeileAus(vorgang: BusinessRecord, label: string): string | undefined {
 }
 
 /** Vertragsinhalt eines Termins: Leistung, Termin, Preis und Anzahlung. */
-function terminInhalt(vorgang: BusinessRecord): Array<[string, string]> {
+function terminInhalt(vorgang: BusinessRecord, firma: CompanyProfile | undefined): Array<[string, string]> {
   const zeilen: Array<[string, string]> = [];
   const leistung = zeileAus(vorgang, 'Gewünschte Leistung') ?? BEREICH_LABEL[vorgang.area];
   zeilen.push(['Leistung', leistung]);
   const fahrzeug = [zeileAus(vorgang, 'Marke'), zeileAus(vorgang, 'Modell')].filter(Boolean).join(' ');
   if (fahrzeug) zeilen.push(['Fahrzeug', fahrzeug]);
-  zeilen.push(...terminZeilen(vorgang));
+  zeilen.push(...terminZeilen(vorgang, firma));
   const quote = vorgang.quote;
   if (quote) {
     if (quote.mode === 'fest' && quote.priceCents !== undefined) {
@@ -184,7 +184,7 @@ export function vertragsbestaetigung({ vorgang, kontext, settings, zahlarten }: 
     { art: 'ueberschrift', text: 'Ihr Vertragspartner' },
     { art: 'absatz', text: anbieterText(settings) },
     { art: 'ueberschrift', text: 'Vertragsinhalt' },
-    { art: 'felder', zeilen: bestellung ? positionsZeilen(vorgang) : terminInhalt(vorgang) },
+    { art: 'felder', zeilen: bestellung ? positionsZeilen(vorgang) : terminInhalt(vorgang, settings.company) },
   ];
 
   const zahlung = zahlungsZeilen(vorgang);

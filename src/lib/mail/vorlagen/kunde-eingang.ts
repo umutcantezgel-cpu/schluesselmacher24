@@ -89,7 +89,7 @@ export function kundeEingang({ vorgang, token, onlineZahlung, kontext }: KundeEi
   const betreff = BETREFF[art].replace('{nr}', vorgang.reference);
   const bausteine: Baustein[] = [{ art: 'absatz', text: EINLEITUNG[art] }, nummerBaustein(vorgang)];
 
-  const felder: Array<[string, string]> = [['Art', ART_LABEL[art]], ...terminZeilen(vorgang)];
+  const felder: Array<[string, string]> = [['Art', ART_LABEL[art]], ...terminZeilen(vorgang, kontext.firma)];
   if (art === 'bestellung' && vorgang.lines?.length) {
     bausteine.push({ art: 'felder', zeilen: felder });
     bausteine.push({ art: 'ueberschrift', text: 'Ihre Bestellung' }, { art: 'felder', zeilen: positionsZeilen(vorgang) });
