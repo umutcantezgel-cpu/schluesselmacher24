@@ -2,10 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { getSettings, getVehicleMake, getVehicleMakes } from '@/lib/data';
+import { getCollection, getSettings, getVehicleMake, getVehicleMakes } from '@/lib/data';
 import type { KeyKind, VehicleMake } from '@/lib/types';
 import { formatCents, formatNumber } from '@/lib/format';
 import { cn } from '@/lib/cn';
+import { eckdaten, leistungsPreise, markeIndexierbar, markenTexte, preisAb } from '@/lib/fahrzeug-texte';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
@@ -43,13 +45,13 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     return { title: 'Marke nicht gefunden' };
   }
 
+  // Eigene Angaben aus dem Backend gehen vor; sonst aus den Modellen der Marke.
+  const texte = markenTexte(make);
   return {
-    title: `${make.name} Autoschlüssel — Modelle und Schlüsselarten`,
-    description:
-      `Autoschlüssel für ${make.name}: ${formatNumber(make.models.length)} `
-      + `${nomen(make.models.length, 'Modell mit Baujahr', 'Modelle mit Baujahren')}, `
-      + 'Schlüsselarten und der Angabe, ob das Fahrzeug zum Anlernen vor Ort sein muss.',
+    title: texte.metaTitel,
+    description: texte.metaBeschreibung,
     alternates: { canonical: `/autoschluessel/marken/${make.slug}` },
+    ...(markeIndexierbar(make) ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
@@ -64,15 +66,34 @@ function keyKindsOfMake(make: VehicleMake): KeyKind[] {
 
 export default async function MakePage(props: PageProps) {
   const { make: makeSlug } = await props.params;
-  const [make, settings] = await Promise.all([getVehicleMake(makeSlug), getSettings()]);
+  const [make, settings, services, rules] = await Promise.all([
+    getVehicleMake(makeSlug),
+    getSettings(),
+    getCollection('carKeyServices'),
+    getCollection('pricingRules'),
+  ]);
 
   if (!make) notFound();
 
   const models = [...make.models].sort((a, b) => a.name.localeCompare(b.name, 'de'));
   const kinds = keyKindsOfMake(make);
   const onSiteCount = models.filter((m) => m.requiresVehicleOnSite).length;
-  const deposit = formatCents(settings.booking.depositCents);
-  const leadDays = settings.booking.leadTimeDays;
+  // Preise je Modell wie im Termin-Assistenten; Anzahlung und Vorlauf über alle Modelle und Leistungen.
+  const preiseJeModell = new Map(
+    models.map((model) => [model.id, leistungsPreise(make, model, { services, rules, booking: settings.booking })]),
+  );
+  const alle = eckdaten([...preiseJeModell.values()].flat());
+  const deposit = alle.anzahlung ?? formatCents(settings.booking.depositCents);
+  const vorlauf = alle.vorlauf ?? `${settings.booking.leadTimeDays} Tage`;
+  const abPreis = (modelId: string) => {
+    const ab = preisAb(preiseJeModell.get(modelId) ?? []);
+    return ab === undefined ? 'nach Prüfung' : `ab ${formatCents(ab)}`;
+  };
+  const crumbs = [
+    { href: '/autoschluessel', label: 'Autoschlüssel' },
+    { href: '/autoschluessel/marken', label: 'Marken' },
+    { href: `/autoschluessel/marken/${make.slug}`, label: make.name },
+  ];
 
   const modellSatz =
     `Zu ${make.name} ${models.length === 1 ? 'ist' : 'sind'} bei uns `
@@ -81,20 +102,24 @@ export default async function MakePage(props: PageProps) {
   const felder = [
     { label: 'Hinterlegte Modelle', wert: formatNumber(models.length) },
     { label: 'Anzahlung', wert: deposit },
-    { label: 'Vorlauf', wert: `ca. ${leadDays} Tage` },
+    { label: 'Vorlauf', wert: `ca. ${vorlauf}` },
   ];
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: `/autoschluessel/marken/${make.slug}`,
+          name: `Autoschlüssel für ${make.name}`,
+          description: markenTexte(make).metaBeschreibung,
+          crumbs,
+        })}
+      />
       <PageHeader
         eyebrow="Fahrzeugmarke"
         title={`Autoschlüssel für ${make.name}`}
-        lead={`Welche Schlüsselarten bei ${make.name} vorkommen und was das für Ihren Auftrag bedeutet.`}
-        crumbs={[
-          { href: '/autoschluessel', label: 'Autoschlüssel' },
-          { href: '/autoschluessel/marken', label: 'Marken' },
-          { href: `/autoschluessel/marken/${make.slug}`, label: make.name },
-        ]}
+        lead={`${models.map((m) => m.name).join(', ')}: Baujahre, Schlüsselarten und Preise je Modell — berechnet wie im Termin-Assistenten.`}
+        crumbs={crumbs}
         actions={
           <ButtonLink href={`/autoschluessel/anfrage?marke=${make.slug}`} pfeil>
             {make.name} auswählen
@@ -180,7 +205,7 @@ export default async function MakePage(props: PageProps) {
         <SectionHeading
           eyebrow="Modelle"
           title={`Alle erfassten ${make.name}-Modelle`}
-          lead="Baujahre, mögliche Schlüsselarten und die Frage, ob das Fahrzeug zum Anlernen bei uns stehen muss."
+          lead="Baujahre, mögliche Schlüsselarten, ob das Fahrzeug zum Anlernen bei uns stehen muss, und der niedrigste Preis der angebotenen Leistungen."
         />
 
         <div className="mt-8 hidden md:block">
@@ -209,6 +234,9 @@ export default async function MakePage(props: PageProps) {
                     <InfoTip hint={ON_SITE_HINT} />
                   </span>
                 </th>
+                <th scope="col" className="px-4 py-3 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                  Leistungen
+                </th>
                 <th scope="col" className="px-4 py-3">
                   <span className="sr-only">Detailseite</span>
                 </th>
@@ -228,6 +256,9 @@ export default async function MakePage(props: PageProps) {
                   </td>
                   <td className="px-4 py-3 text-small text-foreground-muted">
                     {onSiteLabel(model.requiresVehicleOnSite)}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-3 font-mono text-small tabular-nums text-foreground">
+                    {abPreis(model.id)}
                   </td>
                   <td className="px-4 py-3">
                     <Link
@@ -270,6 +301,12 @@ export default async function MakePage(props: PageProps) {
                   <dd className="mt-1 text-small text-foreground-muted">
                     {onSiteLabel(model.requiresVehicleOnSite)}
                   </dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                    Leistungen
+                  </dt>
+                  <dd className="mt-1 font-mono text-small tabular-nums text-foreground">{abPreis(model.id)}</dd>
                 </div>
                 <div className="col-span-2">
                   <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
