@@ -79,4 +79,10 @@ describe('FlowShell', () => {
     expect(html).not.toMatch(/<button[^>]*class="[^"]*\bw-full\b/);
     expect(rahmen()).not.toContain('39,00 €');
   });
+
+  it('kennzeichnet die Schrittüberschrift als Ziel des Scrollens nach „Weiter“ (I-08)', () => {
+    const html = rahmen();
+    expect(html.match(/data-schritt-titel/g)).toHaveLength(1);
+    expect(html).toMatch(/<h2 data-schritt-titel="true"[^>]*>Zweiter Schritt<\/h2>/);
+  });
 });
