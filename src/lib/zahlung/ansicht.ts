@@ -45,6 +45,8 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   if (!zahlung) return null;
   const termin = vorgang.kind === 'termin';
   const foto = istFotoanfrage(vorgang);
+  // „Nicht möglich“ beendet den Vorgang wie eine Stornierung: keine offene Zahlung mehr anzeigen.
+  if (vorgang.status === 'nicht-moeglich' && zahlung.status !== 'bezahlt' && zahlung.status !== 'erstattet') return null;
   const storniert = vorgang.status === 'storniert';
 
   if (zahlung.status === 'bezahlt') {

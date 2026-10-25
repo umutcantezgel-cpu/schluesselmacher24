@@ -4,7 +4,7 @@ import { heuteInBerlin } from '@/lib/berliner-zeit';
 import { getAppointments, getSettings, vorgangAendern } from '@/lib/data';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '@/lib/mail/versand';
 import { kundeErinnerung, terminKalender } from '@/lib/mail/vorlagen/erinnerung';
-import { erinnerungAuswahl, erinnerungsZieltag } from '@/lib/termin-erinnerung';
+import { erinnerungAuswahl, erinnerungsZieltag, tagPlus } from '@/lib/termin-erinnerung';
 import type { BusinessRecord, MailLogEntry } from '@/lib/types';
 import { mailKonfiguration } from '@/lib/umgebung';
 
@@ -75,7 +75,8 @@ export async function terminErinnerungenSenden(jetzt: Date = new Date()): Promis
   const ergebnis: ErinnerungsErgebnis = { tageVorher, termintag, termine: 0, gesendet: 0, bereitsErinnert: 0, fehlgeschlagen: 0 };
   if (!termintag) return ergebnis;
 
-  const auswahl = erinnerungAuswahl(await getAppointments(termintag, termintag), { heute, tageVorher });
+  // Von morgen bis zum Zieltag: Ausgefallene Läufe oder Versandfehler holt der nächste Lauf nach.
+  const auswahl = erinnerungAuswahl(await getAppointments(tagPlus(heute, 1), termintag), { heute, tageVorher });
   ergebnis.termine = auswahl.faellig.length + auswahl.bereitsErinnert.length;
   ergebnis.bereitsErinnert = auswahl.bereitsErinnert.length;
   if (auswahl.faellig.length === 0) return ergebnis;

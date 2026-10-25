@@ -104,3 +104,19 @@ describe('Auswahl der Termine', () => {
     expect(bereitsErinnert(termin({ mailLog: [erinnerung('2026-10-25T22:30:00.000Z')] }), 1)).toBe(false);
   });
 });
+
+describe('Nachholen ausgefallener Erinnerungen', () => {
+  it('erinnert an noch nicht erinnerte Termine zwischen morgen und dem Zieltag', () => {
+    // Zwei Tage vorher: Der Lauf am 25. ist ausgefallen, der Termin am 27. bekommt die Erinnerung am 26.
+    const verpasst = termin({ id: 'a', appointment: { date: '2026-10-27', time: '10:00', durationMinutes: 60, location: 'werkstatt' } });
+    const erinnert = termin({
+      id: 'b',
+      appointment: { date: '2026-10-27', time: '12:00', durationMinutes: 60, location: 'werkstatt' },
+      mailLog: [erinnerung('2026-10-25T03:00:00.000Z')],
+    });
+    const heuteSchon = termin({ id: 'c', appointment: { date: '2026-10-26', time: '09:00', durationMinutes: 60, location: 'werkstatt' } });
+    const auswahl = erinnerungAuswahl([verpasst, erinnert, heuteSchon], { heute: '2026-10-26', tageVorher: 2 });
+    expect(auswahl.faellig.map((v) => v.id)).toEqual(['a']);
+    expect(auswahl.bereitsErinnert.map((v) => v.id)).toEqual(['b']);
+  });
+});

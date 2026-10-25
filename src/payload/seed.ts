@@ -275,10 +275,20 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
     const frueher = fruehereWerte(plan);
     let angelegt = 0;
     let abgeglichen = 0;
+    let warnungen = 0;
 
     const standMerken = (schluessel: string, daten: unknown) => {
       if (!plan.abgleich?.length) return;
       stand[schluessel] = Object.fromEntries(plan.abgleich.map((feld) => [feld.pfad, pruefsumme(vergleichswert(daten, feld))]));
+    };
+
+    // Passt ein Eintrag nicht mehr zum Bestand (etwa eine im Backend gelöschte
+    // Preisgruppe), wird nur er übersprungen — ein Inhaltsproblem darf den
+    // Produktions-Build nicht abbrechen.
+    const uebersprungen = (schluessel: string, fehler: unknown) => {
+      const grund = fehler instanceof Error ? fehler.message : String(fehler);
+      console.warn(`  ${plan.name}: „${schluessel}“ übersprungen – ${grund}`);
+      warnungen += 1;
     };
 
     for (const item of plan.inhalt) {
@@ -288,11 +298,15 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       if (!doc) {
         // Schon einmal angelegt und inzwischen gelöscht: nicht wiederbeleben.
         if (bekannt.has(schluessel)) continue;
-        const data = plan.zuDaten(item);
-        await payload.create({ collection: plan.collection, data: data as never, draft: data._status === 'draft', context });
-        bekannt.add(schluessel);
-        standMerken(schluessel, data);
-        angelegt += 1;
+        try {
+          const data = plan.zuDaten(item);
+          await payload.create({ collection: plan.collection, data: data as never, draft: data._status === 'draft', context });
+          bekannt.add(schluessel);
+          standMerken(schluessel, data);
+          angelegt += 1;
+        } catch (fehler) {
+          uebersprungen(schluessel, fehler);
+        }
         continue;
       }
 
@@ -300,7 +314,13 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       // Papierkorb und offene Entwürfe gehören dem Betrieb.
       if (!plan.abgleich?.length || doc.deletedAt || doc._status === 'draft') continue;
 
-      const neu = plan.zuDaten(item);
+      let neu: Daten;
+      try {
+        neu = plan.zuDaten(item);
+      } catch (fehler) {
+        uebersprungen(schluessel, fehler);
+        continue;
+      }
       const aenderung: Daten = {};
       const eigenerStand = { ...stand[schluessel] };
       for (const feld of plan.abgleich) {
@@ -310,7 +330,11 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
           eigenerStand[feld.pfad] = summeNeu;
           continue;
         }
-        const unveraendert = eigenerStand[feld.pfad] === summeDb || frueher.get(schluessel)?.get(feld.pfad)?.has(summeDb);
+        // Gibt es schon einen eigenen Stand, zählt nur er: Stellt der Betrieb einen
+        // früheren Startwert bewusst wieder her, bleibt dieser stehen.
+        const unveraendert = eigenerStand[feld.pfad] !== undefined
+          ? eigenerStand[feld.pfad] === summeDb
+          : frueher.get(schluessel)?.get(feld.pfad)?.has(summeDb);
         if (!unveraendert) continue; // vom Betrieb geändert — bleibt
         const wert = feld.spalten
           ? zeilenAbgleichen(lesen(doc, feld.pfad), lesen(neu, feld.pfad), feld.spalten)
@@ -318,16 +342,26 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
         setzen(aenderung, feld.pfad, wert);
         eigenerStand[feld.pfad] = summeNeu;
       }
-      stand[schluessel] = eigenerStand;
       if (Object.keys(aenderung).length) {
-        await payload.update({ collection: plan.collection, id: doc.id as number, data: aenderung as never, context });
-        abgeglichen += 1;
+        try {
+          await payload.update({ collection: plan.collection, id: doc.id as number, data: aenderung as never, context });
+          abgeglichen += 1;
+        } catch (fehler) {
+          // Stand nicht fortschreiben, damit der nächste Lauf es erneut versucht.
+          uebersprungen(schluessel, fehler);
+          continue;
+        }
       }
+      stand[schluessel] = eigenerStand;
     }
 
     await payload.kv.set(schluesselVermerk(plan.name), { schluessel: [...bekannt].sort() });
     await payload.kv.set(standVermerk(plan.name), stand);
-    const teile = [angelegt && `${angelegt} angelegt`, abgeglichen && `${abgeglichen} abgeglichen`].filter(Boolean);
+    const teile = [
+      angelegt && `${angelegt} angelegt`,
+      abgeglichen && `${abgeglichen} abgeglichen`,
+      warnungen && `${warnungen} übersprungen`,
+    ].filter(Boolean);
     console.log(`  ${plan.name}: ${teile.length ? teile.join(', ') : 'aktuell'}`);
   }
 

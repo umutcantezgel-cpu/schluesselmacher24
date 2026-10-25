@@ -69,7 +69,7 @@ export const KEY_KIND_HINT: InfoHint = {
 
 /** Erklärung zur Angabe „Fahrzeug vor Ort“. */
 export const ON_SITE_HINT: InfoHint = {
-  title: 'Warum das Fahrzeug vor Ort sein muss',
+  title: 'Warum das Fahrzeug mitkommen muss',
   body:
     'Ein Schlüssel muss dem Fahrzeug elektronisch bekannt gemacht werden. Dieser Schritt läuft über '
     + 'die Diagnoseschnittstelle und setzt voraus, dass das Fahrzeug bei uns steht. Rein mechanische '

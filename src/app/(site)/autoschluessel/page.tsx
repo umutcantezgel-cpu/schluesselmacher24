@@ -520,7 +520,7 @@ export default async function AutoschluesselHubPage() {
               nummer="04"
               eyebrow="Fahrzeuge"
               title="Was für Ihre Marke und Ihr Modell gilt"
-              lead={`Zu ${makes.length} Marken und ${modelCount} Modellen haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen vor Ort sein muss.`}
+              lead={`Zu ${makes.length} Marken und ${modelCount} Modellen haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen in die Werkstatt mitkommen muss.`}
             />
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <ButtonLink href="/autoschluessel/marken" pfeil>

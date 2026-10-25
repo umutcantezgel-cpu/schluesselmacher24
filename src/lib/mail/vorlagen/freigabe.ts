@@ -105,6 +105,7 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
           art: 'absatz',
           text:
             'Über diesen persönlichen Link sehen Sie die Freigabe und bezahlen über unseren Zahlungsdienstleister. '
+            + 'Links aus früheren E-Mails zu diesem Vorgang gelten nicht mehr – bitte nutzen Sie diesen. '
             + 'Bitte geben Sie den Link nicht weiter.',
         },
       );

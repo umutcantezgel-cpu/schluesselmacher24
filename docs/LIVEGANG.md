@@ -157,7 +157,7 @@ Das Projekt `schluesselmacher24` ist bereits mit dem GitHub-Repo verbunden (Team
 - **Google Search Console** per DNS verifizieren oder den Code aus der Search Console als `GOOGLE_SITE_VERIFICATION` in Vercel eintragen und neu deployen. Danach `https://schluesselmacher24.de/sitemap.xml` einreichen.
 - **Google Analytics 4 (optional, nur nach Einwilligung):**
   1. Mess-ID (`G-…`) als `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel eintragen und neu deployen. Ohne ID lädt nichts von Google, und es erscheint kein Einwilligungshinweis.
-  2. In GA4 die Aufbewahrungsdauer festlegen, Google-Signale und Werbefunktionen aus lassen und die Auftragsverarbeitungsbedingungen akzeptieren.
+  2. In GA4 die Aufbewahrungsdauer festlegen, Google-Signale und Werbefunktionen aus lassen und die Auftragsverarbeitungsbedingungen akzeptieren. Unter „Optimierte Analysen“ die Option „Seitenänderungen basierend auf Browserverlaufsereignissen“ ausschalten: Die Seite meldet Seitenaufrufe selbst, immer ohne Adressparameter, und auf Vorgangsseiten (`/bestellung/…`) gar nicht.
   3. Die Ereignisse `bestellung`, `fotoanfrage`, `terminanfrage`, `partneranmeldung` und `projektanfrage` als Schlüsselereignisse markieren.
   4. Datenschutzerklärung und Cookie-Seite schalten den GA4-Abschnitt automatisch ein. Beides vor dem Einschalten juristisch prüfen lassen.
 

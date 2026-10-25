@@ -187,7 +187,7 @@ export default async function ModelPage(props: PageProps) {
           : 'nicht erfasst — wir klären das anhand Ihrer Schlüsselfotos',
     },
     {
-      label: 'Fahrzeug zum Anlernen vor Ort',
+      label: 'Fahrzeug zum Anlernen mitbringen',
       value: model.requiresVehicleOnSite ? 'Ja' : 'Nein',
     },
     ...(ab !== undefined ? [{ label: 'Leistungen ab', value: formatCents(ab) }] : []),
@@ -326,7 +326,7 @@ export default async function ModelPage(props: PageProps) {
               {model.requiresVehicleOnSite && <InfoTip hint={ON_SITE_HINT} />}
             </dt>
             <dd className="mt-1 text-title-sm font-semibold text-foreground">
-              {model.requiresVehicleOnSite ? 'vor Ort' : 'ohne Fahrzeug'}
+              {model.requiresVehicleOnSite ? 'am Fahrzeug' : 'ohne Fahrzeug'}
             </dd>
           </div>
         </dl>

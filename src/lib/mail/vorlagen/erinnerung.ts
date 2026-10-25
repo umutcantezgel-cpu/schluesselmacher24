@@ -23,7 +23,10 @@ export interface ErinnerungDaten {
 
 /** Mitbringliste nur bei Autoschlüsseln — dort sind Fahrzeugpapiere und Schlüssel nötig. */
 function mitbringen(vorgang: BusinessRecord): string[] {
-  return vorgang.area === 'autoschluessel' ? mitbringliste(mitFahrzeug(vorgang)) : [];
+  if (vorgang.area !== 'autoschluessel') return [];
+  // Beim Kunden steht das Fahrzeug schon dort; ohne Angebot (Telefontermin) ist offen, ob es gebraucht wird.
+  if (vorgang.appointment?.location === 'vor-ort') return mitbringliste(false);
+  return mitbringliste(vorgang.quote ? mitFahrzeug(vorgang) : 'unbekannt');
 }
 
 function marke(kontext: VorlagenKontext): string {

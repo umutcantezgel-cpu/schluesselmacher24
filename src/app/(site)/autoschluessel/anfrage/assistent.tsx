@@ -45,7 +45,7 @@ import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
 import { GlyphWaage } from '@/components/visual/glyphen/waage';
 import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
 import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
-import { ausserhalbDerRegion, ausserhalbHinweis } from '@/lib/terminort';
+import { ausserhalbDerRegion, ausserhalbHinweis, buchungsOrt, terminBeimKunden } from '@/lib/terminort';
 import {
   schluesselfotosFreiwillig,
   unterlagenSchrittErfuellt,
@@ -700,7 +700,11 @@ export function Assistent({
           { label: 'Eingeplante Dauer', value: formatDuration(current.slotMinutes) },
           {
             label: 'Art des Termins',
-            value: current.requiresVehicleOnSite ? 'In der Werkstatt, mit Fahrzeug' : 'In der Werkstatt',
+            value: terminBeimKunden(data.serviceId)
+              ? 'Bei Ihrem Fahrzeug (Ort nach telefonischer Absprache)'
+              : current.requiresVehicleOnSite
+                ? 'In der Werkstatt, mit Fahrzeug'
+                : 'In der Werkstatt',
           },
         ],
       },
@@ -775,8 +779,9 @@ export function Assistent({
       date: data.slotDate,
       time: data.slotTime,
       durationMinutes: quote.slotMinutes,
-      // Online gebuchte Termine finden in der Werkstatt statt (Erg. Leitfaden §1).
-      location: 'werkstatt',
+      // Online gebuchte Termine finden in der Werkstatt statt (Erg. Leitfaden §1),
+      // Leistungen beim Fahrzeug des Kunden (Fahrzeugöffnung) nach Absprache.
+      location: buchungsOrt(data.serviceId),
     };
     const summary = buildSummary(quote);
 
@@ -1498,7 +1503,7 @@ export function Assistent({
                 </CardBody>
               </Card>
 
-              <PreisAnzeige quote={quote} />
+              <PreisAnzeige quote={quote} beimKunden={terminBeimKunden(data.serviceId)} />
 
               <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">
                 <GlyphWaage size={16} className="mt-0.5 shrink-0" />
@@ -1643,6 +1648,7 @@ export function Assistent({
           leadTimeDays={slots?.leadTimeDays ?? quote.leadTimeDays}
           slotMinutes={quote.slotMinutes}
           requiresVehicleOnSite={quote.requiresVehicleOnSite}
+          beimKunden={terminBeimKunden(data.serviceId)}
           werkstatt={werkstatt?.standort}
           staleSelection={staleSlotSelection}
           selectedDate={data.slotDate}

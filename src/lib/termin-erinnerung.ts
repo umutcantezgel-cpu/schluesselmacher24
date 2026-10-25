@@ -4,6 +4,9 @@
    des Zieltags und versendet über `src/lib/server/termin-erinnerungen.ts`.
 
    - Zieltag: heute in deutscher Zeit plus `reminderDaysBefore` Tage (0 = aus).
+     Erinnert wird an alle noch nicht erinnerten Termine von morgen bis zum
+     Zieltag — fällt ein Lauf aus oder scheitert ein Versand, holt der
+     nächste Lauf die Erinnerung nach.
    - Nur Termine (Art „termin“), nicht storniert oder abgeschlossen, mit
      bezahlter Anzahlung oder vom Team bestätigt (Status „terminiert“).
    - Doppelversand: Eine gesendete Erinnerung (Mailprotokoll, Art
@@ -51,13 +54,13 @@ export function bereitsErinnert(vorgang: BusinessRecord, tageVorher: number): bo
 }
 
 export interface ErinnerungsAuswahl {
-  /** Termin am Zieltag, noch nicht erinnert. */
+  /** Termin von morgen bis zum Zieltag, noch nicht erinnert. */
   faellig: BusinessRecord[];
-  /** Termin am Zieltag, Erinnerung schon gesendet (etwa bei einem zweiten Lauf). */
+  /** Termin von morgen bis zum Zieltag, Erinnerung schon gesendet (etwa bei einem zweiten Lauf). */
   bereitsErinnert: BusinessRecord[];
 }
 
-/** Wählt aus den Vorgängen die Termine am Zieltag aus. */
+/** Wählt aus den Vorgängen die Termine von morgen bis zum Zieltag aus. */
 export function erinnerungAuswahl(
   vorgaenge: BusinessRecord[],
   { heute, tageVorher }: { heute: string; tageVorher: number },
@@ -66,7 +69,8 @@ export function erinnerungAuswahl(
   const zieltag = erinnerungsZieltag(heute, tageVorher);
   if (!zieltag) return auswahl;
   for (const vorgang of vorgaenge) {
-    if (vorgang.appointment?.date !== zieltag || !erinnerungMoeglich(vorgang)) continue;
+    const datum = vorgang.appointment?.date;
+    if (!datum || datum <= heute || datum > zieltag || !erinnerungMoeglich(vorgang)) continue;
     if (bereitsErinnert(vorgang, tageVorher)) auswahl.bereitsErinnert.push(vorgang);
     else auswahl.faellig.push(vorgang);
   }

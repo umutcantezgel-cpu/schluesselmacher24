@@ -17,6 +17,27 @@ import type { AppointmentInfo, BusinessRecord, CompanyLocation, CompanyProfile }
 export const AUSSENEINSATZ_HINWEIS =
   'Ein Einsatz bei Ihnen ist nur nach individueller Prüfung möglich – rufen Sie uns dazu gern an.';
 
+/**
+ * Leistungen, die beim Fahrzeug des Kunden stattfinden: Ein ausgesperrtes Fahrzeug
+ * lässt sich nicht in die Werkstatt bringen. Ort und Anfahrt klären wir nach der
+ * Buchung telefonisch; überregional nur nach Prüfung (Erg. Leitfaden §1).
+ */
+const LEISTUNGEN_BEIM_KUNDEN: readonly string[] = ['fahrzeugoeffnung'];
+
+export function terminBeimKunden(leistung: string | null | undefined): boolean {
+  return Boolean(leistung && LEISTUNGEN_BEIM_KUNDEN.includes(leistung));
+}
+
+/** Ort einer online gebuchten Leistung. */
+export function buchungsOrt(leistung: string | null | undefined): AppointmentInfo['location'] {
+  return terminBeimKunden(leistung) ? 'vor-ort' : 'werkstatt';
+}
+
+/** Hinweis für Leistungen beim Kunden — Assistent und Bestätigung. */
+export const BEIM_KUNDEN_HINWEIS =
+  'Die Leistung findet bei Ihrem Fahrzeug statt. Ort und Anfahrt klären wir nach der Buchung telefonisch mit Ihnen; '
+  + 'außerhalb von Wetzlar und Umgebung nur nach individueller Prüfung von Aufwand und Kosten.';
+
 /** Leitbereich der Werkstatt (Wetzlar und Umgebung). */
 const PLZ_REGION = '35';
 
@@ -92,10 +113,18 @@ export function ausserhalbHinweis(stadt?: string): string {
 /**
  * Was zum Autoschlüssel-Termin mitzubringen ist — dieselben Angaben wie auf
  * den Seiten „Vor-Ort-Leistungen“, „Programmieren“ und „Nachmachen“.
+ * `unbekannt`: Termin ohne Angebot (vom Team telefonisch eingetragen) — dann
+ * das Fahrzeug nicht stillschweigend weglassen.
  */
-export function mitbringliste(fahrzeug: boolean): string[] {
+export function mitbringliste(fahrzeug: boolean | 'unbekannt'): string[] {
+  const fahrzeugPunkt =
+    fahrzeug === 'unbekannt'
+      ? ['Ihr Fahrzeug, falls am Fahrzeug gearbeitet wird (Anlernen, Programmieren) – wie telefonisch besprochen']
+      : fahrzeug
+        ? ['Ihr Fahrzeug – fahrbereit oder zumindest bei uns abstellbar, mit nutzbarer Bordspannung']
+        : [];
   return [
-    ...(fahrzeug ? ['Ihr Fahrzeug – fahrbereit oder zumindest bei uns abstellbar, mit nutzbarer Bordspannung'] : []),
+    ...fahrzeugPunkt,
     'Zulassungsbescheinigung Teil I (Fahrzeugschein) im Original',
     'Nachweis, dass Sie über das Fahrzeug verfügen dürfen',
     'Alle vorhandenen Schlüssel zum Fahrzeug',

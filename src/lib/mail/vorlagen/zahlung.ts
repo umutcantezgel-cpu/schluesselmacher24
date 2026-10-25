@@ -23,7 +23,9 @@ interface ZahlungsDaten {
 /** Zahlung eingegangen — an den Kunden. */
 export function kundeBezahlt({ vorgang, kontext }: ZahlungsDaten): MailInhalt {
   const termin = vorgang.kind === 'termin' && vorgang.appointment;
-  const foto = istFotoanfrage(vorgang);
+  // Auftrag erteilt nur bei einer freigegebenen Fotoanfrage (Status danach „In Fertigung“);
+  // kam die Zahlung etwa gleichzeitig zur Rückfrage oder Absage, entscheidet das Team.
+  const foto = istFotoanfrage(vorgang) && vorgang.status === 'in-fertigung';
   const einleitung = termin
     ? `Ihre Anzahlung ist bei uns eingegangen, vielen Dank. Ihr Termin am ${formatDate(vorgang.appointment!.date)} `
       + `um ${vorgang.appointment!.time} Uhr bleibt für Sie reserviert.`
@@ -61,7 +63,11 @@ export function kundeBezahlt({ vorgang, kontext }: ZahlungsDaten): MailInhalt {
 /** Zahlung eingegangen — an den Betrieb. */
 export function betriebBezahlt({ vorgang, kontext, adminUrl }: ZahlungsDaten & { adminUrl: string }): MailInhalt {
   const foto = istFotoanfrage(vorgang);
-  const einleitung = foto
+  const auftrag = foto && vorgang.status === 'in-fertigung';
+  const einleitung = foto && !auftrag
+    ? `zu dieser Fotoanfrage ist eine Zahlung eingegangen, obwohl sie nicht freigegeben ist (Status „${vorgang.status}“). `
+      + 'Bitte prüfen und die Zahlung gegebenenfalls erstatten.'
+    : auftrag
     ? 'zu dieser freigegebenen Fotoanfrage (Schlüssel nach Vorlage) ist die Online-Zahlung eingegangen. Der Auftrag '
       + 'ist erteilt, der Status steht auf „In Fertigung“.'
       + (vorgang.approval?.sendInRequired ? ' Der Originalschlüssel muss noch eingesendet werden.' : '')

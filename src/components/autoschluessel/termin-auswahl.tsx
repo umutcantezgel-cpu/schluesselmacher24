@@ -5,7 +5,7 @@ import { useState } from 'react';
 import type { CompanyLocation, TimeSlot } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import { formatDate, formatDuration } from '@/lib/format';
-import { AUSSENEINSATZ_HINWEIS, anschriftEinzeilig } from '@/lib/terminort';
+import { AUSSENEINSATZ_HINWEIS, BEIM_KUNDEN_HINWEIS, anschriftEinzeilig } from '@/lib/terminort';
 import { Alert } from '@/components/ui/alert';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphKalender } from '@/components/visual/glyphen/kalender';
@@ -19,6 +19,8 @@ export interface TerminAuswahlProps {
   leadTimeDays: number;
   slotMinutes: number;
   requiresVehicleOnSite: boolean;
+  /** Leistung beim Fahrzeug des Kunden (Fahrzeugöffnung): kein Werkstatttermin. */
+  beimKunden?: boolean;
   /** Werkstatt, in der der Termin stattfindet (`standort` aus den Firmendaten). */
   werkstatt?: CompanyLocation;
   /**
@@ -63,6 +65,7 @@ export function TerminAuswahl({
   leadTimeDays,
   slotMinutes,
   requiresVehicleOnSite,
+  beimKunden = false,
   werkstatt,
   staleSelection = false,
   selectedDate,
@@ -199,7 +202,11 @@ export function TerminAuswahl({
       )}
 
       {/* Terminort (Erg. Leitfaden §1): Kundinnen und Kunden kommen zur Werkstatt. */}
-      {requiresVehicleOnSite ? (
+      {beimKunden ? (
+        <Alert tone="info" title="Termin bei Ihrem Fahrzeug">
+          <p>{BEIM_KUNDEN_HINWEIS}</p>
+        </Alert>
+      ) : requiresVehicleOnSite ? (
         <Alert tone="warning" title="Bitte bringen Sie Ihr Fahrzeug mit">
           <p>
             Für Ihre Kombination aus Modell und Leistung muss das Fahrzeug beim Termin verfügbar

@@ -23,9 +23,13 @@ export const BESTAETIGENDE_STATUS: readonly RecordStatus[] = ['geprueft', 'in-fe
  * einmal gesendet, nie wieder.
  */
 export function vertragsbestaetigungOffen(vorgang: BusinessRecord): boolean {
-  const fotoauftrag = istFotoanfrage(vorgang) && vorgang.payment?.status === 'bezahlt';
+  // Fotoanfrage: nur, wenn die Zahlung zu einer Freigabe gehört (Status danach „In Fertigung“ o. ä.),
+  // nicht bei einer Zahlung, die etwa gleichzeitig zur Rückfrage oder Absage einging.
+  const fotoauftrag = istFotoanfrage(vorgang)
+    && vorgang.payment?.status === 'bezahlt'
+    && (['in-fertigung', 'versendet', 'abgeschlossen'] as RecordStatus[]).includes(vorgang.status);
   if (vorgang.kind !== 'bestellung' && vorgang.kind !== 'termin' && !fotoauftrag) return false;
-  if (vorgang.status === 'storniert') return false;
+  if (vorgang.status === 'storniert' || vorgang.status === 'nicht-moeglich') return false;
   return !(vorgang.mailLog ?? []).some((eintrag) => eintrag.kind === 'vertrag' && eintrag.result === 'gesendet');
 }
 

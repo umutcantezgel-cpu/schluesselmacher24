@@ -9,6 +9,8 @@ import { GlyphUhr } from '@/components/visual/glyphen/uhr';
 
 export interface PreisAnzeigeProps {
   quote: PriceQuote;
+  /** Leistung beim Fahrzeug des Kunden (Fahrzeugöffnung): Das Fahrzeug kommt nicht in die Werkstatt. */
+  beimKunden?: boolean;
 }
 
 /** Eine Zeile der bemaßten Liste: Bezeichnung links, Zahl rechts in Mono. */
@@ -39,7 +41,7 @@ function Zeile({ label, value, strong }: { label: string; value: string; strong?
  * bewusst unterschiedlich dargestellt, damit keine Zusage entsteht,
  * die noch nicht belastbar ist.
  */
-export function PreisAnzeige({ quote }: PreisAnzeigeProps) {
+export function PreisAnzeige({ quote, beimKunden = false }: PreisAnzeigeProps) {
   return (
     <div className="space-y-4">
       {quote.mode === 'fest' && quote.priceCents !== undefined && (
@@ -145,9 +147,11 @@ export function PreisAnzeige({ quote }: PreisAnzeigeProps) {
             />
           </dt>
           <dd className="mt-2 text-small leading-relaxed text-foreground-muted">
-            {quote.requiresVehicleOnSite
-              ? 'Wird benötigt. Bitte bringen Sie Ihr Fahrzeug zum Termin in unsere Werkstatt mit.'
-              : 'Wird für diese Leistung nicht zwingend benötigt.'}
+            {beimKunden
+              ? 'Die Leistung findet bei Ihrem Fahrzeug statt. Ort und Anfahrt klären wir telefonisch mit Ihnen.'
+              : quote.requiresVehicleOnSite
+                ? 'Wird benötigt. Bitte bringen Sie Ihr Fahrzeug zum Termin in unsere Werkstatt mit.'
+                : 'Wird für diese Leistung nicht zwingend benötigt.'}
           </dd>
         </div>
       </dl>

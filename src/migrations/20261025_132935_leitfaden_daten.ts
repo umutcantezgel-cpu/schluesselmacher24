@@ -17,6 +17,15 @@ import type { Einsatzgebiete } from '../payload-types'
  *    fielen beim Erzeugen der Adresse weg).
  * 3. ZY-02 (Sicherungskarte): Foto-Upload auf Pflicht, solange noch der
  *    Startwert „Freiwillig“ steht; der Hinweis nur, wenn er noch der alte ist.
+ * 4. Online gebuchte Autoschlüssel-Termine aus der Zeit vor dem Leitfaden-Ausbau
+ *    standen bei Leistungen am Fahrzeug auf „vor-ort“ (gemeint: „mit Fahrzeug,
+ *    Ort stimmen wir ab“). Seit dem Ausbau heißt „vor-ort“ „beim Kunden nach
+ *    Prüfung“; online gebuchte Termine finden in der Werkstatt statt. Diese
+ *    Alttermine kommen auf „werkstatt“ — Telefontermine des Teams und die
+ *    Fahrzeugöffnung (am Fahrzeug des Kunden) bleiben, wie sie sind.
+ *
+ * Einträge im Papierkorb und solche mit offenem Entwurf gehören dem Betrieb und
+ * bleiben unberührt (wie im Seed).
  *
  * Über die Local API, damit Versionen und Kennungen stimmig bleiben. Auf einer
  * leeren Datenbank (Tests, neue Umgebung) gibt es nichts zu tun; dann fragt die
@@ -25,6 +34,11 @@ import type { Einsatzgebiete } from '../payload-types'
  */
 
 const context = { disableRevalidate: true }
+
+/** Papierkorb und offene Entwürfe gehören dem Betrieb — wie im Seed nicht anfassen. */
+function gehoertDemBetrieb(doc: { deletedAt?: string | null; _status?: string | null }): boolean {
+  return Boolean(doc.deletedAt) || doc._status === 'draft'
+}
 
 const UMBENENNUNG_MARKE: Record<string, string> = { koda: 'skoda' }
 const UMBENENNUNG_MODELL: Record<string, string> = { 'm-gane': 'megane' }
@@ -42,8 +56,9 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
 
   // 1. Einsatzgebiete mit Platzhaltern (wie `stadtIndexierbar`) in den Papierkorb.
   if (await hatZeilen('einsatzgebiete')) {
-    const { docs } = await payload.find({ collection: 'einsatzgebiete', pagination: false, depth: 0, req, context })
+    const { docs } = await payload.find({ collection: 'einsatzgebiete', pagination: false, depth: 0, draft: true, req, context })
     for (const doc of docs) {
+      if (gehoertDemBetrieb(doc)) continue
       if (!stadtHatPlatzhalter(einsatzgebietZuSeite(doc as Einsatzgebiete))) continue
       await payload.update({
         collection: 'einsatzgebiete',
@@ -58,9 +73,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
 
   // 2. Adressen von Marken und Modellen — nur, wo noch der alte Wert steht.
   if (await hatZeilen('fahrzeugmarken')) {
-    const { docs } = await payload.find({ collection: 'fahrzeugmarken', pagination: false, depth: 0, trash: true, req, context })
+    const { docs } = await payload.find({ collection: 'fahrzeugmarken', pagination: false, depth: 0, trash: true, draft: true, req, context })
     const belegt = new Set(docs.map((doc) => doc.slug))
     for (const doc of docs) {
+      if (gehoertDemBetrieb(doc)) {
+        if (UMBENENNUNG_MARKE[doc.slug] || doc.modelle?.some((modell) => UMBENENNUNG_MODELL[modell.slug])) {
+          payload.logger.warn({ msg: `Fahrzeugmarke „${doc.name}“ liegt im Papierkorb oder hat einen Entwurf – Adressen bitte im Backend prüfen` })
+        }
+        continue
+      }
       const data: { slug?: string; modelle?: typeof doc.modelle } = {}
       const neueAdresse = UMBENENNUNG_MARKE[doc.slug]
       if (neueAdresse && !belegt.has(neueAdresse)) data.slug = neueAdresse
@@ -85,10 +106,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
       pagination: false,
       depth: 0,
       trash: true,
+      draft: true,
       req,
       context,
     })
     for (const doc of docs) {
+      if (gehoertDemBetrieb(doc)) {
+        payload.logger.warn({ msg: 'ZY-02 liegt im Papierkorb oder hat einen Entwurf – Foto-Pflicht bitte im Backend setzen' })
+        continue
+      }
       const data: { fotoUpload?: 'pflicht'; fotoHinweis?: string } = {}
       if (doc.fotoUpload === 'optional') data.fotoUpload = 'pflicht'
       const wirdPflicht = data.fotoUpload === 'pflicht' || doc.fotoUpload === 'pflicht'
@@ -98,6 +124,16 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
       payload.logger.info({ msg: 'ZY-02: Foto der Sicherungskarte ist jetzt Pflicht' })
     }
   }
+
+  // 4. Online gebuchte Alttermine mit „vor-ort“ finden in der Werkstatt statt.
+  const { rows } = await db.execute(sql`
+    UPDATE "vorgaenge" SET "termin_ort" = 'werkstatt'
+    WHERE "art" = 'termin'
+      AND "termin_ort" = 'vor-ort'
+      AND coalesce(("daten"->>'telefonisch')::boolean, false) = false
+      AND coalesce("daten"->>'serviceId', '') <> 'fahrzeugoeffnung'
+    RETURNING "id"`)
+  if (rows.length) payload.logger.info({ msg: `${rows.length} online gebuchte Termine auf „Werkstatt“ umgestellt` })
 }
 
 /** Nicht umkehrbar: Einsatzgebiete lassen sich aus dem Papierkorb wiederherstellen. */

@@ -15,7 +15,15 @@
 import { formatCents } from '@/lib/format';
 import { auftragErteiltVerlauf, istFotoanfrage } from '@/lib/foto-freigabe';
 import type { VorgangsAenderung } from '@/lib/data/payload-mapping';
-import type { BusinessRecord, PaymentInfo, TimelineEntry } from '@/lib/types';
+import type { BusinessRecord, PaymentInfo, RecordStatus, TimelineEntry } from '@/lib/types';
+
+/** Status, die eine Fotoanfrage nach Freigabe und Zahlung erreicht. */
+const NACH_FREIGABE: readonly RecordStatus[] = ['freigegeben', 'in-fertigung', 'versendet', 'abgeschlossen'];
+
+/** Storniert oder abgelehnt: Für den Vorgang kommt kein Auftrag mehr zustande. */
+function ohneAuftrag(status: RecordStatus): boolean {
+  return status === 'storniert' || status === 'nicht-moeglich';
+}
 
 /** Checkout-Sitzung, wie sie im Ereignis steht. */
 export interface Sitzung {
@@ -139,8 +147,23 @@ function bezahlt(
   if (frueher) {
     notizen.push(eintrag(kontext.jetzt, `Zahlung über eine frühere Checkout-Sitzung (${sitzung.id}) eingegangen.`));
   }
-  if (vorgang.status === 'storniert') {
-    notizen.push(eintrag(kontext.jetzt, 'Zahlung nach der Stornierung eingegangen – bitte Erstattung prüfen.'));
+  if (vorgang.status === 'storniert' || vorgang.status === 'nicht-moeglich') {
+    notizen.push(
+      eintrag(
+        kontext.jetzt,
+        vorgang.status === 'storniert'
+          ? 'Zahlung nach der Stornierung eingegangen – bitte Erstattung prüfen.'
+          : 'Zahlung eingegangen, obwohl der Vorgang auf „Nicht möglich“ steht – bitte Erstattung prüfen.',
+      ),
+    );
+  } else if (istFotoanfrage(vorgang) && !NACH_FREIGABE.includes(vorgang.status)) {
+    // Etwa gleichzeitig zur Rückfrage bezahlt: kein Auftrag, das Team entscheidet.
+    notizen.push(
+      eintrag(
+        kontext.jetzt,
+        `Zahlung eingegangen, obwohl die Anfrage nicht freigegeben ist (Status „${vorgang.status}“) – bitte prüfen und ggf. erstatten.`,
+      ),
+    );
   }
 
   const timeline = [...vorgang.timeline, eintrag(kontext.jetzt, vorgang.kind === 'termin' ? VERLAUF.anzahlung : VERLAUF.bezahlt)];
@@ -187,7 +210,7 @@ function nichtAbgeschlossen(
       return {
         aenderung: { timeline: [...vorgang.timeline, eintrag(jetzt, VERLAUF.abgelaufen)] },
         ergebnis: 'abgelaufen',
-        ...(vorgang.status === 'storniert' ? {} : { mail: { art: 'nicht-abgeschlossen', terminFreigegeben: false } as const }),
+        ...(ohneAuftrag(vorgang.status) ? {} : { mail: { art: 'nicht-abgeschlossen', terminFreigegeben: false } as const }),
       };
     }
     return {
@@ -196,7 +219,7 @@ function nichtAbgeschlossen(
         timeline: [...vorgang.timeline, eintrag(jetzt, VERLAUF.fehlgeschlagen)],
       },
       ergebnis: 'fehlgeschlagen',
-      ...(vorgang.status === 'storniert' ? {} : { mail: { art: 'nicht-abgeschlossen', terminFreigegeben: false } as const }),
+      ...(ohneAuftrag(vorgang.status) ? {} : { mail: { art: 'nicht-abgeschlossen', terminFreigegeben: false } as const }),
     };
   }
 
@@ -266,6 +289,10 @@ export function zahlungsUebergang(
 
       // Eine frühere Sitzung läuft ab oder scheitert — die aktuelle zählt.
       if (zu === 'frueher') return null;
+      // Fotoanfrage nicht (mehr) freigegeben, oder Sitzung zu einem alten Freigabepreis:
+      // Es gilt die Rückfrage-, Absage- bzw. neue Freigabe-Mail, keine „nicht abgeschlossen“-Mail.
+      if (istFotoanfrage(vorgang) && vorgang.status !== 'freigegeben') return null;
+      if (sitzung.betragCent !== null && sitzung.betragCent !== zahlung.amountCents) return null;
       if (ereignis.typ === 'checkout.session.async_payment_failed') {
         if (zahlung.status !== 'offen') return null;
         return nichtAbgeschlossen(vorgang, zahlung, 'fehlgeschlagen', kontext);

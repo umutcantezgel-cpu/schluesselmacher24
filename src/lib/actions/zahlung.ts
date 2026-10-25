@@ -53,6 +53,9 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
       ? { ok: false, meldung: 'Dieser Termin ist storniert.', neuBuchen: NEU_BUCHEN }
       : { ok: false, meldung: 'Dieser Vorgang ist storniert.' };
   }
+  if (vorgang.status === 'nicht-moeglich') {
+    return { ok: false, meldung: 'Für diesen Vorgang ist keine Zahlung möglich.' };
+  }
   const foto = istFotoanfrage(vorgang);
   if (foto && vorgang.status !== 'freigegeben') {
     return { ok: false, meldung: 'Für diese Anfrage ist derzeit keine Zahlung möglich. Wir melden uns bei Ihnen.' };

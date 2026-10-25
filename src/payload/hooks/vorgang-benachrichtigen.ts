@@ -165,9 +165,9 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
       data.freigabe = { ...(data.freigabe ?? originalDoc.freigabe ?? {}), freigegebenAm: jetzt };
     }
     const zahlung = originalDoc.zahlung;
-    // Storniert, abgelehnt oder Rückfrage: Eine offene Zahlungsseite gilt nicht mehr.
+    // Storniert, abgelehnt (bei jeder Art) oder Rückfrage zur Fotoanfrage: Eine offene Zahlungsseite gilt nicht mehr.
     const zahlungBeenden =
-      data.status === 'storniert' || (fotoanfrage && (data.status === 'nicht-moeglich' || data.status === 'wartet-auf-kunde'));
+      data.status === 'storniert' || data.status === 'nicht-moeglich' || (fotoanfrage && data.status === 'wartet-auf-kunde');
     if (zahlungBeenden && zahlung?.status === 'offen' && zahlung.checkoutSitzung) {
       vorhaben.sitzungBeenden = zahlung.checkoutSitzung;
     }
@@ -217,6 +217,28 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
         data.kundeInformieren = true;
       }
     }
+  }
+
+  // Freigabepreis entfernt, Freigabe bleibt: Die offene Zahlung zum alten Betrag gilt nicht mehr.
+  // Der Kunde bekommt den Zahlungslink erst wieder mit einem neuen Preis.
+  const offeneZahlung = originalDoc.zahlung;
+  if (
+    fotoanfrage
+    && (data.status ?? originalDoc.status) === 'freigegeben'
+    && !mitPreis
+    && offeneZahlung?.umfang
+    && (offeneZahlung.status === 'offen' || offeneZahlung.status === 'fehlgeschlagen')
+  ) {
+    if (offeneZahlung.status === 'offen' && offeneZahlung.checkoutSitzung) vorhaben.sitzungBeenden = offeneZahlung.checkoutSitzung;
+    data.zahlung = {
+      ...(data.zahlung ?? offeneZahlung),
+      umfang: null,
+      betragCent: null,
+      status: null,
+      checkoutSitzung: null,
+      ablaufAm: null,
+    };
+    notiz(`Freigabepreis entfernt – Zahlung zur Freigabe zurückgezogen (${bearbeiter}).`);
   }
 
   if (Object.keys(vorhaben).length) req.context[vorhabenSchluessel(originalDoc.id)] = vorhaben;
@@ -337,7 +359,10 @@ export const vorgangNachAenderung: CollectionAfterChangeHook<Vorgaenge> = async 
       idempotenzSchluessel: idempotenzSchluessel(vorgang.reference, `status-${status}`, doc.updatedAt),
     });
     eintraege.push(eintrag);
-    if (freigabe.hash && eintrag.result === 'gesendet') neuerLink = freigabe.hash;
+    // „Gesendet“ umfasst auch „möglicherweise gesendet“ (siehe versand.ts). Bei einer
+    // Zeitüberschreitung kann die Mail ebenfalls angekommen sein — dann muss ihr Link gelten.
+    const vielleichtZugestellt = eintrag.result === 'fehlgeschlagen' && /Zeitlimit/.test(eintrag.error ?? '');
+    if (freigabe.hash && (eintrag.result === 'gesendet' || vielleichtZugestellt)) neuerLink = freigabe.hash;
   }
   if (vorhaben.zahlungsMail) {
     eintraege.push(

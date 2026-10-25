@@ -240,6 +240,8 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             && data.nachname.trim().length > 1
             && EMAIL_MUSTER.test(data.email.trim())
             && data.telefon.replace(/\D/g, '').length >= 6
+            // Lieferung nur innerhalb Deutschlands: eine angegebene Postleitzahl ist fünfstellig.
+            && (!data.plz.trim() || /^\d{5}$/.test(data.plz.trim()))
           );
         default:
           return true;
@@ -815,7 +817,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
                 )}
               </Field>
 
-              <Field label="Postleitzahl" className="sm:col-span-4">
+              <Field label="Postleitzahl" className="sm:col-span-4" hint="Nur Anschriften in Deutschland (fünfstellig).">
                 {({ id, describedBy }) => (
                   <TextInput
                     id={id}

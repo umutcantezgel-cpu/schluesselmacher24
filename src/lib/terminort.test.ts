@@ -6,7 +6,9 @@ import {
   AUSSENEINSATZ_HINWEIS,
   ausserhalbDerRegion,
   ausserhalbHinweis,
+  buchungsOrt,
   mitbringliste,
+  terminBeimKunden,
   terminOrtText,
   vorgangOrtText,
   werkstattAnschrift,
@@ -92,5 +94,19 @@ describe('Mitbringliste', () => {
     ]);
     expect(mitbringliste(true)[0]).toMatch(/^Ihr Fahrzeug/);
     expect(mitbringliste(true)).toHaveLength(4);
+  });
+});
+
+describe('Leistungen beim Kunden', () => {
+  it('bucht die Fahrzeugöffnung beim Kunden, alles andere in der Werkstatt', () => {
+    expect(terminBeimKunden('fahrzeugoeffnung')).toBe(true);
+    expect(buchungsOrt('fahrzeugoeffnung')).toBe('vor-ort');
+    expect(buchungsOrt('zweitschluessel')).toBe('werkstatt');
+    expect(buchungsOrt(undefined)).toBe('werkstatt');
+  });
+
+  it('lässt das Fahrzeug bei Terminen ohne Angebot nicht stillschweigend weg', () => {
+    expect(mitbringliste('unbekannt')[0]).toMatch(/falls am Fahrzeug gearbeitet wird/);
+    expect(mitbringliste(false).some((punkt) => /Ihr Fahrzeug/.test(punkt))).toBe(false);
   });
 });

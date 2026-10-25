@@ -20,11 +20,11 @@ export function formatModelYears(model: Pick<VehicleModel, 'yearFrom' | 'yearTo'
   return model.yearTo ? `${model.yearFrom}–${model.yearTo}` : `ab ${model.yearFrom}`;
 }
 
-/** Kennzeichnung, ob das Fahrzeug zum Anlernen vor Ort sein muss; die Erklärung sitzt im Chip. */
+/** Kennzeichnung, ob das Fahrzeug zum Anlernen mitkommen muss; die Erklärung sitzt im Chip. */
 export function OnSiteBadge({ required }: { required: boolean }) {
   return required ? (
     <Badge tone="primary">
-      Fahrzeug vor Ort nötig
+      Fahrzeug zum Anlernen nötig
       <InfoTip hint={ON_SITE_HINT} className="-my-1 -mr-1" />
     </Badge>
   ) : (

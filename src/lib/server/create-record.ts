@@ -12,6 +12,7 @@ import {
   type TerminSperre,
   type VorgangsAenderung,
 } from '@/lib/data';
+import { buchungsOrt } from '@/lib/terminort';
 import { createPayment, storageStatus } from '@/lib/integrations';
 import { quoteCarKeyService } from '@/lib/pricing';
 import { buildRecordId } from '@/lib/reference';
@@ -440,8 +441,8 @@ export async function verifyCarKeyBooking(
       durationMinutes: quote.slotMinutes,
       // Online gebuchte Termine finden in der Werkstatt statt (Erg. Leitfaden §1) —
       // bei Leistungen am Fahrzeug mit Fahrzeug (`quote.requiresVehicleOnSite`).
-      // „vor-ort“ (beim Kunden) setzt nur das Team nach Prüfung.
-      location: 'werkstatt',
+      // Ausnahme: Leistungen beim Fahrzeug des Kunden (Fahrzeugöffnung), Ort nach Absprache.
+      location: buchungsOrt(input.serviceId),
     },
   };
 }

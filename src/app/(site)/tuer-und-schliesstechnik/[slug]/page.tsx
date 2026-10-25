@@ -35,7 +35,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title: page.seo.title,
     description: page.seo.description,
     alternates: { canonical: `/${AREA}/${page.slug}` },
-    robots: page.seo.noindex ? { index: false, follow: false } : undefined,
+    // Ohne eigene Angabe den Schlüssel weglassen, damit das Layout (Vorschau: noindex) gilt.
+    ...(page.seo.noindex ? { robots: { index: false, follow: false } } : {}),
   };
 }
 
