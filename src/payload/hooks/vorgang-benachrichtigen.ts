@@ -1,4 +1,4 @@
-import { APIError, type CollectionAfterChangeHook, type CollectionBeforeChangeHook, type PayloadRequest } from 'payload';
+import { APIError, isolateObjectProperty, type CollectionAfterChangeHook, type CollectionBeforeChangeHook, type PayloadRequest } from 'payload';
 
 import { einstellungenZuSeite, vorgangAenderungZuPayload, vorgangZuSeite } from '../../lib/data/payload-mapping';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '../../lib/mail/versand';
@@ -164,26 +164,27 @@ export async function einstellungenLaden(req: PayloadRequest): Promise<Settings 
 /**
  * Schreibt Einträge gezielt an den Vorgang (Mailprotokoll, Notizen, Link-
  * Schlüssel) — als Systemänderung, ohne die Hooks erneut auszulösen.
+ *
+ * Das Kennzeichen steht nur im eigenen Kontext dieses Aufrufs: Bei der
+ * Sammelbearbeitung teilen sich alle Vorgänge dasselbe `req` und laufen
+ * parallel — am geteilten `req.context` unterdrückte es die Mails der übrigen.
+ * Die Transaktion (`transactionID`) bleibt geteilt.
  */
 export async function vorgangVermerken(
   req: PayloadRequest,
   id: number,
   daten: Parameters<typeof vorgangAenderungZuPayload>[0],
 ): Promise<Vorgaenge> {
-  req.context[SYSTEM_AENDERUNG] = true;
-  try {
-    return (await req.payload.update({
-      collection: 'vorgaenge',
-      id,
-      data: vorgangAenderungZuPayload(daten),
-      overrideAccess: true,
-      depth: 0,
-      req,
-    })) as Vorgaenge;
-  } finally {
-    // Payload kopiert `req.context` — deshalb am aktuellen Objekt zurücksetzen.
-    delete req.context[SYSTEM_AENDERUNG];
-  }
+  const eigenerReq = isolateObjectProperty(req, 'context');
+  eigenerReq.context = { ...req.context, [SYSTEM_AENDERUNG]: true };
+  return (await req.payload.update({
+    collection: 'vorgaenge',
+    id,
+    data: vorgangAenderungZuPayload(daten),
+    overrideAccess: true,
+    depth: 0,
+    req: eigenerReq,
+  })) as Vorgaenge;
 }
 
 /**

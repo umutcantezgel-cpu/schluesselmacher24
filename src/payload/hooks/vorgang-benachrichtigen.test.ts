@@ -10,6 +10,7 @@ import {
   MELDUNG_ZAHLUNG_EINGEGANGEN,
   SYSTEM_AENDERUNG,
   vorgangNachAenderung,
+  vorgangVermerken,
   vorgangVorAenderung,
 } from './vorgang-benachrichtigen';
 
@@ -245,6 +246,29 @@ describe('vorgangNachAenderung', () => {
     await nach({ doc: doc(), operation: 'update', req: r });
     expect(gesendet).toHaveLength(0);
     expect(update).not.toHaveBeenCalled();
+  });
+});
+
+describe('vorgangVermerken', () => {
+  it('kennzeichnet nur den eigenen Aufruf als Systemänderung, nicht das geteilte req (Sammelbearbeitung)', async () => {
+    // Bei der Sammelbearbeitung teilen sich alle Vorgänge dieses req.
+    const r = req();
+    r.context['sm24Vorhaben:43'] = { statusMail: { status: 'versendet' } };
+    let geteiltBeimSpeichern: unknown = 'nicht gespeichert';
+    let eigenerKontext: Record<string, unknown> | undefined;
+    update.mockImplementation(async ({ data, req: innen }: { data: Partial<Vorgaenge>; req: { context: Record<string, unknown> } }) => {
+      geteiltBeimSpeichern = r.context[SYSTEM_AENDERUNG];
+      eigenerKontext = innen.context;
+      // Payload ersetzt dabei den Kontext des übergebenen req (createLocalReq).
+      innen.context = { ...innen.context };
+      return { ...doc(), ...data };
+    });
+
+    await vorgangVermerken(r as never, 42, { mailLog: [] });
+    expect(geteiltBeimSpeichern).toBeUndefined();
+    expect(eigenerKontext?.[SYSTEM_AENDERUNG]).toBe(true);
+    expect(eigenerKontext?.['sm24Vorhaben:43']).toEqual({ statusMail: { status: 'versendet' } });
+    expect(r.context).toEqual({ 'sm24Vorhaben:43': { statusMail: { status: 'versendet' } } });
   });
 });
 
