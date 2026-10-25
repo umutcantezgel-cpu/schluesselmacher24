@@ -9,7 +9,8 @@
    ========================================================================== */
 
 import { BEREICH_LABEL, ART_LABEL, ZAHLUNG_LABEL } from './mail/vorlagen/gemeinsam';
-import type { BusinessRecord } from './types';
+import type { BusinessRecord, ContactDetails } from './types';
+import { STATUS_LABEL } from './vorgang-status';
 
 export const CSV_SPALTEN = [
   'Nummer',
@@ -25,7 +26,24 @@ export const CSV_SPALTEN = [
   'Versand',
   'Zahlungsstand',
   'Zahlungsreferenz',
+  // Angehängt, damit bestehende Auswertungen ihre Spalten behalten.
+  'Status',
+  'PLZ',
+  'Region',
 ] as const;
+
+/**
+ * Region zur Postleitzahl: der PLZ-Bereich 35 ist die Region der Werkstatt
+ * („Mittelhessen“), alles andere „anderes Gebiet“. Ein Bundesland lässt sich
+ * aus der Leitzone nicht sauber ableiten (Leitzonen schneiden Ländergrenzen)
+ * — deshalb bewusst nur diese Unterscheidung. Ohne PLZ leer.
+ */
+export function region(kontakt: Partial<Pick<ContactDetails, 'postalCode' | 'country'>>): string {
+  const plz = kontakt.postalCode?.trim() ?? '';
+  if (!plz) return '';
+  const deutschland = !kontakt.country?.trim() || kontakt.country.trim().toLowerCase() === 'deutschland';
+  return deutschland && /^35\d{3}$/.test(plz) ? 'Mittelhessen' : 'anderes Gebiet';
+}
 
 /** Umsatzsteuersatz, mit dem Anzahlungen ohne festgeschriebene Summen aufgeteilt werden. */
 const UST_SATZ = 0.19;
@@ -92,6 +110,9 @@ function zeile(vorgang: BusinessRecord): string[] {
     betrag(versand),
     vorgang.payment ? ZAHLUNG_LABEL[vorgang.payment.status] : '',
     vorgang.payment?.providerRef ?? '',
+    STATUS_LABEL[vorgang.status] ?? vorgang.status,
+    k.postalCode?.trim() ?? '',
+    region(k),
   ];
 }
 

@@ -1,11 +1,13 @@
 'use server';
 
 import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
+import { storageStatus } from '@/lib/integrations';
 import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
 import { createRecord, verifyCarKeyBooking, type GepruefteAngaben } from '@/lib/server/create-record';
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
 import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen } from '@/lib/server/record-schema';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
+import { fahrzeugscheinPruefen } from '@/lib/server/unterlagen-pflicht';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -164,6 +166,11 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     // Preis selbst ermittelt. Beträge aus dem Browser werden nie übernommen.
     if (!data.verify) {
       return { ok: false, notices: [], error: INVALID_INPUT };
+    }
+    // Fahrzeugschein ist Pflicht (Leitfaden Kap. 05, Schritt 9) — auch bei Totalverlust.
+    const unterlagen = fahrzeugscheinPruefen(data.uploads, storageStatus().configured);
+    if (unterlagen) {
+      return { ok: false, notices: [], error: unterlagen };
     }
     const verified = await verifyCarKeyBooking(
       data.verify,

@@ -10,7 +10,7 @@ import { getSiteUrl } from '../site-url';
 import type { CompanyProfile, MailKind, MailLogEntry, Settings } from '../types';
 import { mailKonfiguration, serverUrl } from '../umgebung';
 import type { MailInhalt } from './html';
-import { mailUmgebung, sendeUeberResend, type TransportOptionen } from './transport-resend';
+import { mailUmgebung, sendeUeberResend, type MailAnhang, type TransportOptionen } from './transport-resend';
 import { ohneSchraegstrich, type VorlagenKontext } from './vorlagen/gemeinsam';
 
 const EMAIL = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/;
@@ -62,6 +62,8 @@ export interface VorlageSenden {
   inhalt: MailInhalt;
   antwortAn?: string;
   idempotenzSchluessel?: string;
+  /** Anhänge, z. B. der Kalendereintrag zur Termin-Erinnerung. */
+  anhaenge?: MailAnhang[];
   /** Nur für Tests (fetch, Konfiguration). */
   transport?: TransportOptionen;
 }
@@ -80,6 +82,7 @@ export async function sendeVorlage(senden: VorlageSenden): Promise<MailLogEntry>
         antwortAn: senden.antwortAn,
         tags: { art: senden.art, umgebung: mailUmgebung() },
         idempotenzSchluessel: senden.idempotenzSchluessel,
+        anhaenge: senden.anhaenge,
       },
       senden.transport,
     );

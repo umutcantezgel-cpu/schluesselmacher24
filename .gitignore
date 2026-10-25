@@ -57,3 +57,6 @@ dev_server.log
 
 # Worktrees der Hilfsagenten
 /.claude/worktrees/
+
+# Sicherungen (scripts/sicherung.mjs) enthalten Kundendaten — nie ins Repo
+/sicherung/

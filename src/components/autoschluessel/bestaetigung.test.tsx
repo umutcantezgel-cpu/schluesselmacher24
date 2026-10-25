@@ -46,6 +46,17 @@ describe('Bestaetigung', () => {
     expect(html).toMatch(/Eingeplant sind <span class="font-mono tabular-nums text-foreground">1 Std\.<\/span>\./);
   });
 
+  it('nennt die Werkstatt als Ort und bittet bei Fahrzeugleistungen um das Fahrzeug', () => {
+    const werkstatt = { label: 'Werkstatt und Abholung', street: 'Langgasse 70', postalCode: '35576', city: 'Wetzlar' };
+    expect(html).toContain('In unserer Werkstatt.');
+    const mitFahrzeug = renderToStaticMarkup(
+      <Bestaetigung {...beispiel} werkstatt={werkstatt} quote={{ ...beispiel.quote, requiresVehicleOnSite: true }} />,
+    );
+    expect(mitFahrzeug).toContain('In unserer Werkstatt, mit Fahrzeug (Langgasse 70, 35576 Wetzlar).');
+    expect(mitFahrzeug).toContain('Bitte bringen Sie Ihr Fahrzeug zum Termin mit.');
+    expect(mitFahrzeug).not.toContain('stimmen wir');
+  });
+
   it('ergänzt bei Prüfung den Hinweis zur Verbindlichkeit', () => {
     const pruefung = renderToStaticMarkup(
       <Bestaetigung {...beispiel} quote={{ ...beispiel.quote, mode: 'pruefung', priceCents: undefined }} />,

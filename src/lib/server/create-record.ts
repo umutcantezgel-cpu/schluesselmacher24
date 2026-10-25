@@ -438,7 +438,10 @@ export async function verifyCarKeyBooking(
       date: match.date,
       time: match.time,
       durationMinutes: quote.slotMinutes,
-      location: quote.requiresVehicleOnSite ? 'vor-ort' : 'werkstatt',
+      // Online gebuchte Termine finden in der Werkstatt statt (Erg. Leitfaden §1) —
+      // bei Leistungen am Fahrzeug mit Fahrzeug (`quote.requiresVehicleOnSite`).
+      // „vor-ort“ (beim Kunden) setzt nur das Team nach Prüfung.
+      location: 'werkstatt',
     },
   };
 }

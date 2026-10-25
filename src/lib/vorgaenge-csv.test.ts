@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import type { BusinessRecord } from './types';
-import { betrag, tagInBerlin, vorgaengeAlsCsv, zelle } from './vorgaenge-csv';
+import { betrag, region, tagInBerlin, vorgaengeAlsCsv, zelle } from './vorgaenge-csv';
 
 function vorgang(teil: Partial<BusinessRecord>): BusinessRecord {
   return {
@@ -26,7 +26,7 @@ function vorgang(teil: Partial<BusinessRecord>): BusinessRecord {
 describe('CSV-Export der Vorgänge', () => {
   it('Semikolon, BOM, CRLF und Kopfzeile', () => {
     const csv = vorgaengeAlsCsv([]);
-    expect(csv.startsWith('﻿Nummer;Datum;Art;Bereich;Name;E-Mail;Positionen;Netto;USt.;Brutto;Versand;Zahlungsstand;Zahlungsreferenz\r\n')).toBe(true);
+    expect(csv.startsWith('﻿Nummer;Datum;Art;Bereich;Name;E-Mail;Positionen;Netto;USt.;Brutto;Versand;Zahlungsstand;Zahlungsreferenz;Status;PLZ;Region\r\n')).toBe(true);
   });
 
   it('Bestellung mit Positionen und Summen, Anzahlung mit herausgerechneter USt., älteste zuerst', () => {
@@ -40,7 +40,7 @@ describe('CSV-Export der Vorgänge', () => {
         appointment: { date: '2026-11-04', time: '10:00', durationMinutes: 90, location: 'werkstatt' },
       }),
       vorgang({
-        contact: { firstName: 'Erika', lastName: 'Muster', company: 'Muster GmbH', email: 'erika@example.org', phone: '1', country: 'Deutschland' },
+        contact: { firstName: 'Erika', lastName: 'Muster', company: 'Muster GmbH', email: 'erika@example.org', phone: '1', postalCode: '35576', country: 'Deutschland' },
         lines: [
           { kind: 'code-schluessel', productId: 'ms-01', label: 'Schlüssel MS 01', details: 'Code 4711', qty: 2, unitPriceCents: 1290, totalCents: 2580, vatPercent: 19 },
         ],
@@ -49,8 +49,8 @@ describe('CSV-Export der Vorgänge', () => {
       }),
     ]);
     const [, erste, zweite] = csv.split('\r\n');
-    expect(erste).toBe('SM24-B-2026-0001;24.10.2026;Bestellung;Schlüssel nach Code;Muster GmbH (Erika Muster);erika@example.org;2× Schlüssel MS 01;25,84;4,91;30,75;4,95;offen;');
-    expect(zweite).toBe('SM24-T-2026-0002;25.10.2026;Termin;Autoschlüssel;Erika Muster;erika@example.org;Termin 2026-11-04 10:00;58,74;11,16;69,90;;bezahlt;pi_123');
+    expect(erste).toBe('SM24-B-2026-0001;24.10.2026;Bestellung;Schlüssel nach Code;Muster GmbH (Erika Muster);erika@example.org;2× Schlüssel MS 01;25,84;4,91;30,75;4,95;offen;;Neu;35576;Mittelhessen');
+    expect(zweite).toBe('SM24-T-2026-0002;25.10.2026;Termin;Autoschlüssel;Erika Muster;erika@example.org;Termin 2026-11-04 10:00;58,74;11,16;69,90;;bezahlt;pi_123;Neu;;');
     // Der Code (Sicherheitsmerkmal) steht nicht im Export.
     expect(csv).not.toContain('4711');
   });
@@ -72,5 +72,21 @@ describe('CSV-Export der Vorgänge', () => {
     expect(betrag(5)).toBe('0,05');
     expect(betrag(undefined)).toBe('');
     expect(tagInBerlin('2026-12-31T23:30:00.000Z')).toBe('2027-01-01');
+  });
+
+  it('Region: PLZ-Bereich 35 ist Mittelhessen, sonst „anderes Gebiet“', () => {
+    expect(region({ postalCode: '35576', country: 'Deutschland' })).toBe('Mittelhessen');
+    expect(region({ postalCode: ' 35390 ' })).toBe('Mittelhessen');
+    expect(region({ postalCode: '20095', country: 'Deutschland' })).toBe('anderes Gebiet');
+    expect(region({ postalCode: '3500', country: 'Österreich' })).toBe('anderes Gebiet');
+    expect(region({ postalCode: '35576', country: 'Schweiz' })).toBe('anderes Gebiet');
+    expect(region({ postalCode: '', country: 'Deutschland' })).toBe('');
+  });
+
+  it('Status und Region als eigene Spalten', () => {
+    const [, zeile] = vorgaengeAlsCsv([
+      vorgang({ status: 'wartet-auf-kunde', contact: { firstName: 'Max', lastName: 'M', email: 'm@example.org', phone: '1', postalCode: '20095', country: 'Deutschland' } }),
+    ]).split('\r\n');
+    expect(zeile.split(';').slice(-3)).toEqual(['Wartet auf Kunde', '20095', 'anderes Gebiet']);
   });
 });

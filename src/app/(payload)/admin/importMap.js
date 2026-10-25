@@ -1,4 +1,5 @@
 import { BestaetigungSenden as BestaetigungSenden_2b67584cce3b124551b67f336a0a494b } from '../../../payload/components/BestaetigungSenden'
+import { VorgangsblattKnopf as VorgangsblattKnopf_1582ece8fd27138b4964598e268494e3 } from '../../../payload/components/VorgangsblattKnopf'
 import { TerminVerschieben as TerminVerschieben_bd501514f0546f17ffc3ae7327e14806 } from '../../../payload/components/TerminVerschieben'
 import { StripeLink as StripeLink_93f7020958f194c58a5525561020cceb } from '../../../payload/components/StripeLink'
 import { VorgaengeWerkzeuge as VorgaengeWerkzeuge_a6117e4679cb3b948f245e05432911e8 } from '../../../payload/components/VorgaengeWerkzeuge'
@@ -28,12 +29,14 @@ import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0
 import { Anbindungen as Anbindungen_ca20a8f228fe6cf3ebdcef3a428b237d } from '../../../payload/components/Anbindungen'
 import { Icon as Icon_6147daba291c02d7939247dac363a456 } from '../../../payload/components/Marke'
 import { Logo as Logo_6147daba291c02d7939247dac363a456 } from '../../../payload/components/Marke'
+import { Kennzahlen as Kennzahlen_2a00476c789ced4e61f43f7b9da8bc80 } from '../../../payload/components/Kennzahlen'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 
 /** @type import('payload').ImportMap */
 export const importMap = {
   "/payload/components/BestaetigungSenden#BestaetigungSenden": BestaetigungSenden_2b67584cce3b124551b67f336a0a494b,
+  "/payload/components/VorgangsblattKnopf#VorgangsblattKnopf": VorgangsblattKnopf_1582ece8fd27138b4964598e268494e3,
   "/payload/components/TerminVerschieben#TerminVerschieben": TerminVerschieben_bd501514f0546f17ffc3ae7327e14806,
   "/payload/components/StripeLink#StripeLink": StripeLink_93f7020958f194c58a5525561020cceb,
   "/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge": VorgaengeWerkzeuge_a6117e4679cb3b948f245e05432911e8,
@@ -63,6 +66,7 @@ export const importMap = {
   "/payload/components/Anbindungen#Anbindungen": Anbindungen_ca20a8f228fe6cf3ebdcef3a428b237d,
   "/payload/components/Marke#Icon": Icon_6147daba291c02d7939247dac363a456,
   "/payload/components/Marke#Logo": Logo_6147daba291c02d7939247dac363a456,
+  "/payload/components/Kennzahlen#Kennzahlen": Kennzahlen_2a00476c789ced4e61f43f7b9da8bc80,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24
 }

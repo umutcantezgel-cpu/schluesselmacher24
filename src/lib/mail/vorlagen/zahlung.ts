@@ -35,7 +35,7 @@ export function kundeBezahlt({ vorgang, kontext }: ZahlungsDaten): MailInhalt {
   const bausteine: Baustein[] = [
     { art: 'absatz', text: einleitung },
     nummerBaustein(vorgang),
-    { art: 'felder', zeilen: [...terminZeilen(vorgang), ...zahlungsZeilen(vorgang)] },
+    { art: 'felder', zeilen: [...terminZeilen(vorgang, kontext.firma), ...zahlungsZeilen(vorgang)] },
   ];
   // Fotoanfrage mit Einsendung: Gefertigt wird, sobald das Original da ist.
   if (foto && vorgang.approval?.sendInRequired) {
@@ -73,7 +73,7 @@ export function betriebBezahlt({ vorgang, kontext, adminUrl }: ZahlungsDaten & {
       { art: 'absatz', text: einleitung },
       {
         art: 'felder',
-        zeilen: [['Vorgangsnummer', vorgang.reference], ['Art', ART_LABEL[vorgang.kind]], ...terminZeilen(vorgang), ...zahlungsZeilen(vorgang)],
+        zeilen: [['Vorgangsnummer', vorgang.reference], ['Art', ART_LABEL[vorgang.kind]], ...terminZeilen(vorgang, kontext.firma), ...zahlungsZeilen(vorgang)],
       },
       { art: 'knopf', href: adminUrl, label: 'Im Backend öffnen' },
     ],
@@ -99,7 +99,7 @@ export function kundeNichtAbgeschlossen({
           + 'deshalb wieder freigegeben. Gern können Sie einen neuen Termin buchen.'
         : 'die Anzahlung für Ihren Termin ist nicht bei uns eingegangen. Wir melden uns bei Ihnen.',
     });
-    bausteine.push(nummerBaustein(vorgang), { art: 'felder', zeilen: terminZeilen(vorgang) });
+    bausteine.push(nummerBaustein(vorgang), { art: 'felder', zeilen: terminZeilen(vorgang, kontext.firma) });
     if (terminFreigegeben) {
       bausteine.push({ art: 'knopf', href: `${ohneSchraegstrich(kontext.site)}/autoschluessel/anfrage`, label: 'Neuen Termin buchen' });
     }

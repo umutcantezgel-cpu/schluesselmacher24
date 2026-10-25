@@ -207,7 +207,8 @@ describe('Termine', () => {
       contact,
       payload: {},
       summary: [],
-      uploads: [],
+      // Fahrzeugschein ist Pflicht; die Zuordnung der (hier nicht vorhandenen) Datei scheitert nur als Hinweis.
+      uploads: [{ fileName: 'fahrzeugschein.jpg', sizeBytes: 1000, mimeType: 'image/jpeg', category: 'fahrzeugschein', storageKey: '999999999', uploadToken: 'x'.repeat(43) }],
       appointment: { ...wunsch, durationMinutes: 45, location: 'werkstatt' },
       verify,
       consents: { terms: true, deposit: true, authorization: true, earlyStart: true },

@@ -66,6 +66,8 @@ interface Ergebnis {
   createdAt: string;
   updatedAt: string;
   appointment?: AppointmentInfo;
+  /** Ort des Termins mit Werkstatt-Anschrift, vom Server gebildet. */
+  ort?: string;
   /** Ohne Kennungen des Zahlungsdienstleisters. */
   payment?: Pick<PaymentInfo, 'scope' | 'amountCents' | 'status' | 'paidAt'>;
   summary: SummarySection[];
@@ -192,8 +194,8 @@ export function TerminStatusFormular() {
                     {formatDate(ergebnis.appointment.date)}, {ergebnis.appointment.time} Uhr ·{' '}
                     <span className="font-mono tabular-nums">
                       {formatDuration(ergebnis.appointment.durationMinutes)}
-                    </span> ·{' '}
-                    {ergebnis.appointment.location === 'werkstatt' ? 'im Fachbetrieb' : 'vor Ort'}
+                    </span>
+                    {ergebnis.ort && <span className="block">{ergebnis.ort}</span>}
                   </dd>
                 </div>
               )}

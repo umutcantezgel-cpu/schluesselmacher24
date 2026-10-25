@@ -34,7 +34,7 @@ export function betriebNeuerVorgang({ vorgang, adminUrl, kontext }: BetriebNeuer
           ['Art', ART_LABEL[vorgang.kind]],
           ['Bereich', BEREICH_LABEL[vorgang.area] ?? vorgang.area],
           ['Name', name],
-          ...terminZeilen(vorgang),
+          ...terminZeilen(vorgang, kontext.firma),
           ...zahlungsZeilen(vorgang),
         ],
       },

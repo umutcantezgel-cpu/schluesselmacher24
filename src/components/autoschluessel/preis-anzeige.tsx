@@ -146,7 +146,7 @@ export function PreisAnzeige({ quote }: PreisAnzeigeProps) {
           </dt>
           <dd className="mt-2 text-small leading-relaxed text-foreground-muted">
             {quote.requiresVehicleOnSite
-              ? 'Wird benötigt. Der Termin wird als Vor-Ort-Termin mit Fahrzeug geführt.'
+              ? 'Wird benötigt. Bitte bringen Sie Ihr Fahrzeug zum Termin in unsere Werkstatt mit.'
               : 'Wird für diese Leistung nicht zwingend benötigt.'}
           </dd>
         </div>

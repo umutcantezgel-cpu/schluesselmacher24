@@ -122,7 +122,7 @@ export function statusMail({ vorgang, status, nachricht, kontext, zahlungsLink, 
 
   bausteine.push(nummerBaustein(vorgang));
 
-  const zeilen: Array<[string, string]> = status === 'terminiert' ? terminZeilen(vorgang) : [];
+  const zeilen: Array<[string, string]> = status === 'terminiert' ? terminZeilen(vorgang, kontext.firma) : [];
   if (status === 'versendet' && vorgang.shipment) {
     const { carrier, trackingNumber } = vorgang.shipment;
     if (carrier) zeilen.push(['Versand mit', DIENSTLEISTER[carrier]]);

@@ -3,8 +3,8 @@
 import { Button, toast, useAuth, useConfig } from '@payloadcms/ui';
 import { useState, type FormEvent } from 'react';
 
-/* Über der Liste der Vorgänge: Telefontermin eintragen (Team) und
-   CSV-Export für die Buchhaltung (nur Inhaber). */
+/* Über der Liste der Vorgänge: Telefontermin eintragen und Produktionsliste
+   (Team), CSV-Export für die Buchhaltung (nur Inhaber). */
 
 const LEER = {
   vorname: '',
@@ -73,7 +73,7 @@ function Telefontermin({ api }: { api: string }) {
         <input required type="number" min={15} max={600} step={15} aria-label="Dauer in Minuten" title="Dauer in Minuten" value={werte.dauerMinuten} onChange={setzen('dauerMinuten')} />
         <select aria-label="Ort" value={werte.ort} onChange={setzen('ort')}>
           <option value="werkstatt">Werkstatt</option>
-          <option value="vor-ort">Vor Ort</option>
+          <option value="vor-ort">Beim Kunden (nach Prüfung)</option>
         </select>
         <input placeholder="Leistung (z. B. Zweitschlüssel)" aria-label="Leistung" value={werte.leistung} onChange={setzen('leistung')} />
         <input placeholder="Interne Notiz" aria-label="Interne Notiz" value={werte.notiz} onChange={setzen('notiz')} />
@@ -112,8 +112,8 @@ function CsvExport({ api }: { api: string }) {
         </a>
       </div>
       <p className="field-description">
-        Alle Vorgänge des Zeitraums (nach Eingangsdatum) mit Positionen, Netto, USt., Brutto, Versand und Zahlungsstand —
-        Semikolon-getrennt für Excel.
+        Alle Vorgänge des Zeitraums (nach Eingangsdatum) mit Positionen, Netto, USt., Brutto, Versand, Zahlungsstand,
+        Status, PLZ und Region — Semikolon-getrennt für Excel.
       </p>
     </div>
   );
@@ -129,6 +129,18 @@ export function VorgaengeWerkzeuge() {
       <details>
         <summary>Telefontermin eintragen</summary>
         <Telefontermin api={api} />
+      </details>
+      <details>
+        <summary>Produktionsliste</summary>
+        <div className="sm24-werkzeug__formular">
+          <a className="btn btn--style-secondary btn--size-small" href={`${api}/vorgaenge/produktionsliste`} target="_blank" rel="noopener noreferrer">
+            Produktionsliste öffnen
+          </a>
+          <p className="field-description">
+            Offene Code- und Zylinderpositionen bezahlter, noch nicht versendeter Bestellungen mit Code, Stückzahl, Kunde und
+            Hinweisen — zum Drucken oder als PDF speichern.
+          </p>
+        </div>
       </details>
       {rollen.includes('inhaber') && (
         <details>
