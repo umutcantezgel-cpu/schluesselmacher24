@@ -1,0 +1,55 @@
+# Architecture Matrix
+
+| URL | Source File | Current Words | Target Words | Interactive Module | Status |
+|---|---|---|---|---|---|
+| /(payload)/admin/[[...segments]] | src/app/(payload)/admin/[[...segments]]/page.tsx | 21 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/[...unbekannt] | src/app/(site)/[...unbekannt]/page.tsx | 6 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/artikel/[slug] | src/app/(site)/artikel/[slug]/page.tsx | 260 | 860 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/artikel | src/app/(site)/artikel/page.tsx | 213 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/anfrage | src/app/(site)/autoschluessel/anfrage/page.tsx | 92 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/fahrzeugoeffnung | src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx | 32 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/funkschluessel | src/app/(site)/autoschluessel/funkschluessel/page.tsx | 28 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/kopieren | src/app/(site)/autoschluessel/kopieren/page.tsx | 74 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/marken/[make]/[model] | src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx | 560 | 1160 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/marken/[make] | src/app/(site)/autoschluessel/marken/[make]/page.tsx | 305 | 905 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/marken | src/app/(site)/autoschluessel/marken/page.tsx | 199 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/nachmachen | src/app/(site)/autoschluessel/nachmachen/page.tsx | 27 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel | src/app/(site)/autoschluessel/page.tsx | 283 | 883 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/programmieren | src/app/(site)/autoschluessel/programmieren/page.tsx | 35 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/schluesselbart-fraesen | src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx | 30 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/autoschluessel/smart-key | src/app/(site)/autoschluessel/smart-key/page.tsx | 36 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/bestellung/[id] | src/app/(site)/bestellung/[id]/page.tsx | 290 | 890 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/elektronische-zutrittsloesungen/konfigurator | src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx | 84 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/elektronische-zutrittsloesungen | src/app/(site)/elektronische-zutrittsloesungen/page.tsx | 294 | 894 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/gleichschliessende-zylinder/konfigurator | src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx | 70 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/gleichschliessende-zylinder | src/app/(site)/gleichschliessende-zylinder/page.tsx | 461 | 1061 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/kasse | src/app/(site)/kasse/page.tsx | 43 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site) | src/app/(site)/page.tsx | 158 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/ratgeber/[slug] | src/app/(site)/ratgeber/[slug]/page.tsx | 159 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/ratgeber | src/app/(site)/ratgeber/page.tsx | 56 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/rechtliches/agb | src/app/(site)/rechtliches/agb/page.tsx | 26 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/rechtliches/cookie-einstellungen | src/app/(site)/rechtliches/cookie-einstellungen/page.tsx | 53 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/rechtliches/datenschutz | src/app/(site)/rechtliches/datenschutz/page.tsx | 26 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/rechtliches/impressum | src/app/(site)/rechtliches/impressum/page.tsx | 52 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/rechtliches/versand-und-zahlung | src/app/(site)/rechtliches/versand-und-zahlung/page.tsx | 20 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/rechtliches/widerruf/erklaeren | src/app/(site)/rechtliches/widerruf/erklaeren/page.tsx | 134 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/rechtliches/widerruf | src/app/(site)/rechtliches/widerruf/page.tsx | 333 | 933 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/schliessanlagen/konfigurator | src/app/(site)/schliessanlagen/konfigurator/page.tsx | 42 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/schliessanlagen | src/app/(site)/schliessanlagen/page.tsx | 239 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/schluessel-nach-code/[slug] | src/app/(site)/schluessel-nach-code/[slug]/page.tsx | 272 | 872 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/schluessel-nach-code | src/app/(site)/schluessel-nach-code/page.tsx | 146 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/schluessel-nach-vorlage/anfrage | src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx | 29 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/schluessel-nach-vorlage | src/app/(site)/schluessel-nach-vorlage/page.tsx | 387 | 987 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/service-und-termin/anfrage | src/app/(site)/service-und-termin/anfrage/page.tsx | 28 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/service-und-termin/kontakt | src/app/(site)/service-und-termin/kontakt/page.tsx | 145 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/service-und-termin | src/app/(site)/service-und-termin/page.tsx | 512 | 1112 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/service-und-termin/terminstatus | src/app/(site)/service-und-termin/terminstatus/page.tsx | 16 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/service-und-termin/vor-ort | src/app/(site)/service-und-termin/vor-ort/page.tsx | 105 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/sicherheitstechnik/[slug] | src/app/(site)/sicherheitstechnik/[slug]/page.tsx | 152 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/sicherheitstechnik | src/app/(site)/sicherheitstechnik/page.tsx | 271 | 871 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/sicherheitstechnik/sicherheitscheck | src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx | 56 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/standorte/[city] | src/app/(site)/standorte/[city]/page.tsx | 146 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/standorte | src/app/(site)/standorte/page.tsx | 90 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/tuer-und-schliesstechnik/[slug] | src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx | 138 | 850 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/tuer-und-schliesstechnik | src/app/(site)/tuer-und-schliesstechnik/page.tsx | 409 | 1009 | InteractiveBentoModule | PENDING_BUILDER |
+| /(site)/warenkorb | src/app/(site)/warenkorb/page.tsx | 35 | 850 | InteractiveBentoModule | PENDING_BUILDER |
