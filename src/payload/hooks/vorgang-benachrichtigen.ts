@@ -1,4 +1,4 @@
-import type { CollectionAfterChangeHook, CollectionBeforeChangeHook, PayloadRequest } from 'payload';
+import { APIError, type CollectionAfterChangeHook, type CollectionBeforeChangeHook, type PayloadRequest } from 'payload';
 
 import { einstellungenZuSeite, vorgangAenderungZuPayload, vorgangZuSeite } from '../../lib/data/payload-mapping';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '../../lib/mail/versand';
@@ -47,15 +47,65 @@ const ZAHLUNGSSTAND: Record<string, string> = {
   erstattet: 'Erstattet',
 };
 
+const veraltet = (grund: string) => `Der Vorgang wurde inzwischen geändert (${grund}). Bitte die Seite neu laden.`;
+export const MELDUNG_ZAHLUNG_EINGEGANGEN = veraltet('Zahlung eingegangen');
+export const MELDUNG_TERMIN_FREIGEGEBEN = veraltet('Termin wurde freigegeben');
+
+type Notizen = NonNullable<Vorgaenge['notizen']>;
+
+/** Zeitpunkt + Text — unabhängig von der Schreibweise des Datums. */
+function notizSchluessel({ am, text }: Notizen[number]): string {
+  const zeit = Date.parse(am);
+  return `${Number.isNaN(zeit) ? am : zeit}|${text}`;
+}
+
+/**
+ * Notizen sind ein Protokoll: Einträge, die das Formular nicht mitschickt
+ * (inzwischen vom Server ergänzt oder im Formular gelöscht), hängen wieder an —
+ * ohne alte Zeilenkennung, damit eine bearbeitete Notiz keine doppelte erzeugt.
+ */
+function notizenZusammenfuehren(formular: Notizen, gespeichert: Notizen): Notizen {
+  const vorhanden = new Set(formular.map(notizSchluessel));
+  const fehlend = gespeichert.filter((n) => !vorhanden.has(notizSchluessel(n))).map(({ am, von, text }) => ({ am, von, text }));
+  return fehlend.length ? [...formular, ...fehlend] : formular;
+}
+
 /**
  * Vor dem Speichern: Zahlung von Hand nachhalten, Statuswechsel für die Mail
  * vormerken, Nachricht an den Kunden übernehmen und das Feld leeren — sonst
  * ginge sie beim nächsten Statuswechsel noch einmal hinaus.
+ *
+ * Das Backend-Formular schickt den ganzen Stand vom Öffnen mit. Was der
+ * Zahlungsdienst inzwischen gebucht hat, darf es nicht zurückdrehen: Ein
+ * Rückschritt von „bezahlt“ (über Stripe) oder die Wiederbelebung eines
+ * automatisch freigegebenen Termins wird mit 409 abgelehnt.
  */
 export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ data, originalDoc, operation, req }) => {
   if (operation !== 'update' || !req.user || req.context?.[SYSTEM_AENDERUNG] || !originalDoc) return data;
   const jetzt = new Date().toISOString();
   const vorhaben: Vorhaben = {};
+
+  const gespeichert = originalDoc.zahlung;
+  const formularZahlung = data.zahlung?.status;
+  if (
+    gespeichert?.status === 'bezahlt'
+    && gespeichert.anbieterRef
+    && (formularZahlung === 'offen' || formularZahlung === 'fehlgeschlagen')
+  ) {
+    throw new APIError(MELDUNG_ZAHLUNG_EINGEGANGEN, 409);
+  }
+  if (
+    originalDoc.status === 'storniert'
+    && gespeichert?.status === 'fehlgeschlagen'
+    && data.status
+    && data.status !== 'storniert'
+    && formularZahlung === 'offen'
+  ) {
+    throw new APIError(MELDUNG_TERMIN_FREIGEGEBEN, 409);
+  }
+  if (Array.isArray(data.notizen) && originalDoc.notizen?.length) {
+    data.notizen = notizenZusammenfuehren(data.notizen, originalDoc.notizen);
+  }
 
   const zahlungAlt = originalDoc.zahlung?.status ?? null;
   const zahlungNeu = data.zahlung?.status ?? zahlungAlt;

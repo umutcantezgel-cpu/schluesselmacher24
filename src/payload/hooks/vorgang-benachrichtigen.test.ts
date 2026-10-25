@@ -5,7 +5,13 @@ import { echteEinstellungen } from '../../lib/rechtliches/test-hilfen';
 import { hashToken } from '../../lib/server/access-token';
 import type { Vorgaenge } from '../../payload-types';
 import { bestaetigungSendenHandler } from './bestaetigung-senden';
-import { SYSTEM_AENDERUNG, vorgangNachAenderung, vorgangVorAenderung } from './vorgang-benachrichtigen';
+import {
+  MELDUNG_TERMIN_FREIGEGEBEN,
+  MELDUNG_ZAHLUNG_EINGEGANGEN,
+  SYSTEM_AENDERUNG,
+  vorgangNachAenderung,
+  vorgangVorAenderung,
+} from './vorgang-benachrichtigen';
 
 /* Hooks und Endpunkt der Sammlung Vorgänge mit nachgebildetem `req`.
  * Resend ist über fetch ersetzt. */
@@ -118,6 +124,61 @@ describe('vorgangVorAenderung', () => {
     const original = doc({ zahlung: { umfang: 'gesamt', betragCent: 3070, status: 'offen', checkoutSitzung: 'cs_offen' } });
     vor({ data: { ...original, status: 'storniert' }, originalDoc: original, operation: 'update', req: r });
     expect(r.context['sm24Vorhaben:42']).toMatchObject({ sitzungBeenden: 'cs_offen', statusMail: { status: 'storniert' } });
+  });
+
+  describe('veraltetes Formular', () => {
+    const fehlerVon = (aufruf: () => unknown) => {
+      try {
+        aufruf();
+      } catch (error) {
+        return error as { status?: number; message: string };
+      }
+      return undefined;
+    };
+
+    it('dreht eine über Stripe eingegangene Zahlung nicht zurück (409)', () => {
+      const gespeichert = doc({ zahlung: { umfang: 'gesamt', betragCent: 3070, status: 'bezahlt', anbieterRef: 'pi_1', bezahltAm: '2026-10-24T12:05:00.000Z' } });
+      for (const status of ['offen', 'fehlgeschlagen'] as const) {
+        const r = req();
+        const fehler = fehlerVon(() =>
+          vor({ data: { ...doc({ status: 'in-pruefung' }), zahlung: { ...doc().zahlung, status } }, originalDoc: gespeichert, operation: 'update', req: r }),
+        );
+        expect(fehler).toMatchObject({ status: 409, message: MELDUNG_ZAHLUNG_EINGEGANGEN });
+        expect(r.context).toEqual({});
+      }
+      // Erstatten bleibt möglich, ebenso das Zurücksetzen einer Zahlung von Hand (ohne Stripe-Kennung).
+      expect(fehlerVon(() => vor({ data: { ...gespeichert, zahlung: { ...gespeichert.zahlung, status: 'erstattet' } }, originalDoc: gespeichert, operation: 'update', req: req() }))).toBeUndefined();
+      const vonHand = doc({ zahlung: { umfang: 'gesamt', betragCent: 3070, status: 'bezahlt' } });
+      expect(fehlerVon(() => vor({ data: doc(), originalDoc: vonHand, operation: 'update', req: req() }))).toBeUndefined();
+    });
+
+    it('belebt einen automatisch freigegebenen Termin nicht wieder (409)', () => {
+      const freigegeben = doc({ art: 'termin', status: 'storniert', zahlung: { umfang: 'anzahlung', betragCent: 6990, status: 'fehlgeschlagen' } });
+      const formular = doc({ art: 'termin', status: 'neu', zahlung: { umfang: 'anzahlung', betragCent: 6990, status: 'offen' } });
+      expect(fehlerVon(() => vor({ data: formular, originalDoc: freigegeben, operation: 'update', req: req() }))).toMatchObject({
+        status: 409,
+        message: MELDUNG_TERMIN_FREIGEGEBEN,
+      });
+      // Bewusst wieder aufnehmen (Zahlungsstand bleibt) geht weiter.
+      const bewusst = { ...freigegeben, status: 'in-pruefung' as const };
+      expect(fehlerVon(() => vor({ data: bewusst, originalDoc: freigegeben, operation: 'update', req: req() }))).toBeUndefined();
+    });
+
+    it('führt die Notizen zusammen, statt inzwischen ergänzte oder gelöschte zu verlieren', () => {
+      const team = { id: 'a', am: '2026-10-24T11:00:00.000Z', von: 'team' as const, text: 'Rückruf vereinbart.' };
+      const system = { id: 'b', am: '2026-10-24T12:05:00.000Z', von: 'system' as const, text: 'Streitfall eröffnet.' };
+      const neu = { am: '2026-10-24T12:10:00.000Z', von: 'team' as const, text: 'Kunde informiert.' };
+      const gespeichert = doc({ notizen: [team, system] });
+
+      const data = vor({ data: { ...doc(), notizen: [team, neu] }, originalDoc: gespeichert, operation: 'update', req: req() });
+      expect(data.notizen).toEqual([team, neu, { am: system.am, von: 'system', text: system.text }]);
+
+      // Gelöschte Notizen kommen wieder; gleiche Einträge werden nicht verdoppelt.
+      const geloescht = vor({ data: { ...doc(), notizen: [] }, originalDoc: gespeichert, operation: 'update', req: req() });
+      expect(geloescht.notizen?.map((n) => n.text)).toEqual(['Rückruf vereinbart.', 'Streitfall eröffnet.']);
+      const unveraendert = vor({ data: { ...doc(), notizen: [team, system] }, originalDoc: gespeichert, operation: 'update', req: req() });
+      expect(unveraendert.notizen).toEqual([team, system]);
+    });
   });
 
   it('greift nicht bei Änderungen ohne Benutzer oder vom Server selbst', () => {

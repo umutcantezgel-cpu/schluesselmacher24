@@ -150,43 +150,69 @@ describe('vorgangAendern', () => {
     expect(texte).toEqual(expect.arrayContaining(['eins', 'zwei', 'drei', 'vier']));
   });
 
-  it('ein veraltetes Backend-Formular überschreibt keine Systemfelder', async () => {
-    const team = await payload.create({
-      collection: 'benutzer',
-      data: { email: `${eindeutig('team')}@example.org`, password: 'nur-fuer-tests-123456', rollen: ['mitarbeiter'] },
-      overrideAccess: true,
+  describe('veraltetes Backend-Formular', () => {
+    async function teamZugang() {
+      const team = await payload.create({
+        collection: 'benutzer',
+        data: { email: `${eindeutig('team')}@example.org`, password: 'nur-fuer-tests-123456', rollen: ['mitarbeiter'] },
+        overrideAccess: true,
+      });
+      return { ...team, collection: 'benutzer' as const };
+    }
+
+    /** Speichert den beim Öffnen gelesenen Formularstand — wie der Speichern-Knopf im Backend. */
+    async function speichern(id: string, formular: Vorgaenge, user: Awaited<ReturnType<typeof teamZugang>>, aenderung: Partial<Vorgaenge>) {
+      const daten: Record<string, unknown> = { ...formular, ...aenderung };
+      for (const feld of ['id', 'createdAt', 'updatedAt']) delete daten[feld];
+      return payload.update({ collection: 'vorgaenge', id: Number(id), data: daten as never, depth: 0, overrideAccess: false, user });
+    }
+
+    it('überschreibt keine Systemfelder, keinen verschobenen Termin und keine neuen Notizen', async () => {
+      const user = await teamZugang();
+      const { vorgang } = await mitSitzung();
+      await vorgangAendern(vorgang.id, () => ({ appointment: { date: '2081-05-04', time: '09:00', durationMinutes: 60, location: 'werkstatt' } }));
+
+      // Das Team öffnet den Vorgang …
+      const formular = await payload.findByID({ collection: 'vorgaenge', id: Number(vorgang.id), depth: 0, overrideAccess: false, user });
+
+      // … währenddessen wird der Termin verschoben, eine Mail protokolliert und eine Notiz ergänzt.
+      await vorgangAendern(vorgang.id, (v) => ({
+        appointment: { ...v.appointment!, date: '2081-05-05', time: '11:00' },
+        payment: { ...v.payment!, checkoutSessionId: 'cs_neu', refundedCents: 0 },
+        mailLog: [mail],
+        timeline: [...v.timeline, { at: STAND, actor: 'system', message: 'Termin verlegt.' }],
+        internalNotes: [...v.internalNotes, { at: STAND, actor: 'system', message: 'Streitfall eröffnet.' }],
+      }));
+
+      // … und speichert den alten Formularstand mit neuem Status.
+      await speichern(vorgang.id, formular, user, { status: 'terminiert' });
+
+      const doc = await roh(vorgang.id);
+      expect(doc.status).toBe('terminiert');
+      expect(doc.termin).toMatchObject({ datum: '2081-05-05', uhrzeit: '11:00' });
+      expect(doc.zahlung).toMatchObject({ status: 'offen', checkoutSitzung: 'cs_neu', erstattetCent: 0 });
+      expect(doc.mails).toHaveLength(1);
+      expect(doc.verlauf?.at(-1)?.text).toBe('Termin verlegt.');
+      expect(doc.notizen?.map((n) => n.text)).toEqual(['Streitfall eröffnet.']);
+      expect(doc.zugriffsHash).toBe('a'.repeat(64));
     });
-    const user = { ...team, collection: 'benutzer' as const };
-    const { vorgang } = await mitSitzung();
 
-    // Das Team öffnet den Vorgang …
-    const formular = await payload.findByID({ collection: 'vorgaenge', id: Number(vorgang.id), depth: 0, overrideAccess: false, user });
+    it('lehnt das Zurückdrehen einer inzwischen eingegangenen Zahlung mit 409 ab', async () => {
+      const user = await teamZugang();
+      const { vorgang } = await mitSitzung();
+      const formular = await payload.findByID({ collection: 'vorgaenge', id: Number(vorgang.id), depth: 0, overrideAccess: false, user });
 
-    // … währenddessen geht die Zahlung ein und eine Mail wird protokolliert.
-    await vorgangAendern(vorgang.id, (v) => ({
-      payment: { ...v.payment!, status: 'bezahlt', paidAt: STAND, checkoutSessionId: 'cs_neu', refundedCents: 0 },
-      mailLog: [mail],
-      timeline: [...v.timeline, { at: STAND, actor: 'system', message: 'Zahlung eingegangen.' }],
-    }));
+      await vorgangAendern(vorgang.id, (v) => ({
+        payment: { ...v.payment!, status: 'bezahlt', paidAt: STAND },
+        timeline: [...v.timeline, { at: STAND, actor: 'system', message: 'Zahlung eingegangen.' }],
+      }));
 
-    // … und speichert den alten Formularstand mit neuem Status.
-    const daten: Record<string, unknown> = { ...formular, status: 'terminiert' };
-    for (const feld of ['id', 'createdAt', 'updatedAt']) delete daten[feld];
-    await payload.update({
-      collection: 'vorgaenge',
-      id: Number(vorgang.id),
-      data: daten as never,
-      depth: 0,
-      overrideAccess: false,
-      user,
+      await expect(speichern(vorgang.id, formular, user, { status: 'terminiert' })).rejects.toMatchObject({ status: 409 });
+      const doc = await roh(vorgang.id);
+      expect(doc.status).toBe('neu');
+      expect(doc.zahlung).toMatchObject({ status: 'bezahlt', bezahltAm: STAND });
+      expect(doc.notizen ?? []).toEqual([]);
     });
-
-    const doc = await roh(vorgang.id);
-    expect(doc.status).toBe('terminiert');
-    expect(doc.zahlung).toMatchObject({ checkoutSitzung: 'cs_neu', bezahltAm: STAND, erstattetCent: 0 });
-    expect(doc.mails).toHaveLength(1);
-    expect(doc.verlauf?.at(-1)?.text).toBe('Zahlung eingegangen.');
-    expect(doc.zugriffsHash).toBe('a'.repeat(64));
   });
 });
 
