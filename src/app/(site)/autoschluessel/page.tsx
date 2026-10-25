@@ -22,6 +22,8 @@ import { IconSchluesselProgrammieren } from '@/components/visual/icons/schluesse
 import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { CarKeyCompatibilityChecker } from '@/components/autoschluessel/compatibility-checker';
+
 
 const ROUTE = 'autoschluessel';
 
@@ -235,7 +237,14 @@ function Weiter({ size = 18, className }: { size?: number; className?: string })
   );
 }
 
-export default async function AutoschluesselHubPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function AutoschluesselHubPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const [page, settings, makes] = await Promise.all([
     getPageContent(ROUTE),
     getSettings(),
@@ -522,6 +531,9 @@ export default async function AutoschluesselHubPage() {
               title="Was für Ihre Marke und Ihr Modell gilt"
               lead={`Zu ${makes.length} Marken und ${modelCount} Modellen haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen vor Ort sein muss.`}
             />
+            <div className="mt-8">
+              <CarKeyCompatibilityChecker makes={makes} />
+            </div>
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <ButtonLink href="/autoschluessel/marken" pfeil>
                 Alle Marken
@@ -554,6 +566,77 @@ export default async function AutoschluesselHubPage() {
           className="max-w-2xl"
         />
         <Accordion items={page?.faq?.length ? page.faq : FAQ} className="mt-8 max-w-2xl" />
+      </Section>
+
+
+      {/* Fachlicher Deep Dive: Technologische Methodik */}
+      <Section tone="sunken" id="technologie">
+        <SectionHeading
+          nummer="07"
+          eyebrow="Technologische Methodik"
+          title="Präzision auf Herstellerniveau"
+          lead="Moderne Fahrzeugschlüssel sind hochkomplexe Sicherheitssysteme. Wir arbeiten mit denselben Diagnosestandards und kryptografischen Protokollen wie die Automobilhersteller."
+        />
+        <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-gutter">
+          <div>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Diagnose und Wegfahrsperre</h3>
+            <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Die Wegfahrsperre (Immobilizer) ist das Herzstück der modernen Fahrzeugsicherheit. Sie verhindert, dass der Motor ohne authorisierten Schlüssel gestartet werden kann. Der Prozess des Anlernens (Programmierung) eines neuen Schlüssels erfordert eine direkte, sichere Kommunikation mit den Steuergeräten des Fahrzeugs, oft dem BCM (Body Control Module) oder dem Motorsteuergerät (ECU).
+              Dabei nutzen wir fortschrittliche On-Board-Diagnose-Systeme (OBD2), um uns über herstellerspezifische Protokolle (wie UDS, CAN, K-Line oder DoIP) mit dem Fahrzeug zu verbinden. Nach erfolgreicher Authentifizierung, bei der oft kryptografische Challenge-Response-Verfahren zum Einsatz kommen, wird der neue Transponderchip im System registriert. Erst dann erkennt das Fahrzeug den neuen Schlüssel als gültig an.
+              Dies erfordert spezielles Equipment und tiefgreifendes Wissen, da bei fehlerhafter Kommunikation das Steuergerät gesperrt werden kann (Anti-Theft-Lockout).
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Kryptografie und Transponder-Technologie</h3>
+            <p className="mt-4 text-[oklch(0.32_0.02_260)] leading-relaxed">
+              Die Kommunikation zwischen Fahrzeug und Schlüssel basiert auf modernen kryptografischen Verfahren (oft AES, Hitag oder Megamos). Ein einfacher, unverschlüsselter Code reicht bei aktuellen Fahrzeugen längst nicht mehr aus, um den Motor zu starten. Bei Systemen wie Keyless-Go oder Smart-Keys erfolgt die Kommunikation zusätzlich über Funkstrecken (RF) und Niederfrequenzantennen (LF) zur exakten Positionsbestimmung des Schlüssels (Relay-Attack-Prevention).
+              Zusätzlich zur elektronischen Komponente fertigen wir den mechanischen Schlüsselbart mit computergesteuerten CNC-Fräsmaschinen. Dabei greifen wir auf Datenbanken zurück, um den Schlüsselcode (Key Code) zu ermitteln, falls das Original stark verschlissen ist, und stellen so sicher, dass der neue Schlüssel perfekt im Zündschloss oder Türschloss schließt, ohne zu haken.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Vergleichsmatrix */}
+      <Section id="vergleich">
+        <SectionHeading
+          nummer="08"
+          eyebrow="Vergleichsmatrix"
+          title="Reparatur vs. Neuprogrammierung"
+          lead="Nicht immer ist ein komplett neuer Schlüssel erforderlich. Oft reicht eine Instandsetzung des Gehäuses oder das Ersetzen der Taster."
+        />
+        <div className="mt-10 overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <th className="py-4 pr-4 font-semibold text-[oklch(0.16_0.02_260)]">Kriterium</th>
+                <th className="py-4 px-4 font-semibold text-[oklch(0.16_0.02_260)]">Reparatur (Gehäuse / Taster)</th>
+                <th className="py-4 px-4 font-semibold text-[oklch(0.16_0.02_260)]">Ersatzschlüssel programmieren</th>
+              </tr>
+            </thead>
+            <tbody className="text-sm">
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 pr-4 font-medium text-[oklch(0.16_0.02_260)]">Dauer</td>
+                <td className="py-4 px-4 text-[oklch(0.32_0.02_260)]">15-30 Minuten</td>
+                <td className="py-4 px-4 text-[oklch(0.32_0.02_260)]">30-60 Minuten (inkl. Fräsen)</td>
+              </tr>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 pr-4 font-medium text-[oklch(0.16_0.02_260)]">Fahrzeug vor Ort nötig?</td>
+                <td className="py-4 px-4 text-[oklch(0.32_0.02_260)]">Meistens nicht (nur Schlüssel)</td>
+                <td className="py-4 px-4 text-[oklch(0.32_0.02_260)]">Zwingend erforderlich</td>
+              </tr>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 pr-4 font-medium text-[oklch(0.16_0.02_260)]">Kostenrahmen</td>
+                <td className="py-4 px-4 text-[oklch(0.32_0.02_260)]">Günstig (Material + Arbeitszeit)</td>
+                <td className="py-4 px-4 text-[oklch(0.32_0.02_260)]">Höher (Neuer Transponder, Anlern-Lizenz)</td>
+              </tr>
+              <tr className="border-b border-[oklch(0.89_0.008_260/0.55)]">
+                <td className="py-4 pr-4 font-medium text-[oklch(0.16_0.02_260)]">Voraussetzung</td>
+                <td className="py-4 px-4 text-[oklch(0.32_0.02_260)]">Platine (Transponder) funktioniert</td>
+                <td className="py-4 px-4 text-[oklch(0.32_0.02_260)]">Eigentumsnachweis (Fahrzeugpapiere)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </Section>
 
       {/* Weiterführend als Stückliste mit Haarlinien; die ganze Zeile ist der Link */}
