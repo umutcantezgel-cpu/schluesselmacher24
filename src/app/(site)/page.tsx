@@ -9,6 +9,7 @@ import { SpaetVorladen } from '@/lib/spaet-vorladen';
 import { ImagePlaceholder, ausschnittStil, type GrafikAusschnitt } from '@/components/ui/image-placeholder';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
+import { WerkstattZeile, werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { AreaScope } from '@/components/visual/area-scope';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { PROFILSCHNITT_AUSSCHNITT, PROFILSCHNITT_GROESSE } from '@/components/visual/generators/profilschnitt';
@@ -198,6 +199,8 @@ export default async function HomePage() {
                 </div>
               ))}
             </dl>
+            {/* Die echte Werkstatt unter den Eckdaten — entfällt, solange kein Standort gepflegt ist */}
+            <WerkstattZeile {...werkstattAngaben(settings.company)} className="mt-4" />
           </div>
         </div>
       </section>

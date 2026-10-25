@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { getCodeLine, getCodeLines } from '@/lib/data';
+import { getCodeLine, getCodeLines, getSettings } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { formatNumber } from '@/lib/format';
 import { cn } from '@/lib/cn';
@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { JsonLd, productSchema, breadcrumbSchema } from '@/components/seo/json-ld';
 import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
+import { werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
@@ -62,7 +63,7 @@ export async function generateMetadata(props: CodeLinePageProps): Promise<Metada
 
 export default async function CodeLinePage(props: CodeLinePageProps) {
   const { slug } = await props.params;
-  const line = await getCodeLine(slug);
+  const [line, settings] = await Promise.all([getCodeLine(slug), getSettings()]);
 
   if (!line || !line.active) notFound();
 
@@ -140,7 +141,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           {/* Bestellung steht im DOM zuerst: mobil oben, ab lg rechts. Lese- und Fokusfolge entsprechen der Sichtfolge. */}
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-start-1">
-            <BestellFormular line={line} />
+            <BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} />
           </div>
 
           {/* Codefundstelle, Angaben, Hinweis und Passende Seiten: ab lg links, füllen die Spalte unter dem Kopf */}
