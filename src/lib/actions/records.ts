@@ -1,7 +1,10 @@
 'use server';
 
+import type { FormularSchutz } from '@/lib/formular-schutz';
+import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
 import { createRecord, verifyCarKeyBooking } from '@/lib/server/create-record';
-import { publicRecordSchema } from '@/lib/server/record-schema';
+import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
+import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen } from '@/lib/server/record-schema';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import type {
   AppointmentInfo,
@@ -10,6 +13,7 @@ import type {
   KeyKind,
   PriceQuote,
   ProcessKind,
+  RecordConsents,
   RecordKind,
   SummarySection,
   UploadRef,
@@ -42,6 +46,10 @@ export interface SubmitInput {
     keyKind: KeyKind;
     workingKeys: number;
   };
+  /** Nur Termine: Pflicht-Zustimmungen aus dem Anzahlungsschritt (alle müssen `true` sein). */
+  consents?: { [K in keyof TerminZustimmungen]: boolean };
+  /** Bot-Schutz: Honigtopf und signierter Startzeitpunkt. */
+  schutz?: FormularSchutz;
 }
 
 export interface SubmitResult {
@@ -58,6 +66,9 @@ export interface SubmitResult {
 const INVALID_INPUT =
   'Einige Angaben sind unvollständig oder ungültig. Bitte prüfen Sie das Formular.';
 
+const ZUSTIMMUNG_FEHLT =
+  'Bitte bestätigen Sie im Schritt „Anzahlung“ alle Punkte, um den Termin verbindlich zu buchen.';
+
 /**
  * Öffentliche Aktion für Anfragen, Projekte und Autoschlüssel-Termine.
  * Bestellungen laufen ausschließlich über `submitOrder` in der Kasse.
@@ -65,6 +76,14 @@ const INVALID_INPUT =
 export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   if (!(await allowRequest(LIMITS.vorgang))) {
     return { ok: false, notices: [], error: RATE_LIMIT_MESSAGE };
+  }
+
+  // Bot-Schutz: still „angenommen“, aber nichts gespeichert und nichts versendet.
+  const befund = formularSchutzPruefen(input?.schutz);
+  if (befund !== 'ok') {
+    botVerdachtMelden('submitRecord', befund);
+    const art = (['anfrage', 'termin', 'projekt'] as const).find((k) => k === input?.kind) ?? 'anfrage';
+    return { ok: true, reference: scheinNummer(art), notices: [] };
   }
 
   const parsed = publicRecordSchema.safeParse(input);
@@ -80,8 +99,25 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   let quote: PriceQuote | undefined;
   let appointment: AppointmentInfo | undefined;
   let payment: { scope: 'anzahlung'; amountCents: number; description: string } | undefined;
+  let consents: RecordConsents | undefined;
 
   if (data.kind === 'termin') {
+    // Zustimmungen sind Pflicht und werden als Nachweis gespeichert — nicht
+    // aus dem freien `payload`, sondern aus einem eigenen, geprüften Objekt.
+    const zustimmungen = terminZustimmungenSchema.safeParse(input.consents);
+    if (!zustimmungen.success) {
+      return { ok: false, notices: [], error: ZUSTIMMUNG_FEHLT };
+    }
+    consents = {
+      terms: true,
+      withdrawalNotice: true,
+      deposit: true,
+      authorization: true,
+      earlyStart: true,
+      at: new Date().toISOString(),
+      version: RECHTSTEXTE_FASSUNG,
+    };
+
     // Ein Termin mit Anzahlung braucht die Angaben, aus denen der Server den
     // Preis selbst ermittelt. Beträge aus dem Browser werden nie übernommen.
     if (!data.verify) {
@@ -115,6 +151,7 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     quote,
     appointment,
     payment,
+    consents,
   });
 
   // Der Link-Schlüssel gehört nur zur Bestellbestätigung und bleibt hier intern.

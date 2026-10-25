@@ -90,7 +90,6 @@ export default async function KassePage() {
           codeLines={codeLines}
           standardArticles={standardArticles}
           catalog={catalog}
-          defaultCountry={settings.company.country}
           paymentConfigured={zahlung.configured}
         />
 

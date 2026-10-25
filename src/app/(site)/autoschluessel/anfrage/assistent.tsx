@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 
 import type {
   AppointmentInfo,
@@ -19,6 +20,7 @@ import { Alert } from '@/components/ui/alert';
 import { Card, CardBody } from '@/components/ui/card';
 import { InfoTip } from '@/components/ui/info-tip';
 import { FlowShell } from '@/components/flow/flow-shell';
+import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
@@ -51,7 +53,7 @@ import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichn
 
 const FLOW_ID = 'autoschluessel-anfrage';
 /** Erhöhen, sobald sich AssistentData ändert — alte Zwischenstände verfallen. */
-const FLOW_VERSION = 1;
+const FLOW_VERSION = 2;
 
 /** Kennung für „Modell nicht in der Liste“. */
 const OTHER_MODEL = '__nicht-aufgefuehrt';
@@ -171,6 +173,10 @@ interface AssistentData {
   country: string;
   note: string;
   depositAccepted: boolean;
+  /** AGB gelesen, Widerrufsbelehrung zur Kenntnis genommen. */
+  termsAccepted: boolean;
+  /** Ausdrückliches Verlangen nach Beginn vor Ende der Widerrufsfrist (§ 356 Abs. 4, § 357a Abs. 2 BGB). */
+  earlyStartRequested: boolean;
   slotDate: string;
   slotTime: string;
 }
@@ -236,6 +242,8 @@ export function Assistent({
       country: COUNTRIES[0],
       note: '',
       depositAccepted: false,
+      termsAccepted: false,
+      earlyStartRequested: false,
       slotDate: '',
       slotTime: '',
     }),
@@ -310,6 +318,8 @@ export function Assistent({
         day.slots.some((entry) => entry.time === current.slotTime && entry.available),
     );
   }
+
+  const schutz = useFormularSchutz();
 
   const flow = useFlow<AssistentData>({
     id: FLOW_ID,
@@ -406,7 +416,12 @@ export function Assistent({
       case 'preis':
         return quoteFor(current) !== null;
       case 'anzahlung':
-        return quoteFor(current) !== null && current.depositAccepted;
+        return (
+          quoteFor(current) !== null
+          && current.depositAccepted
+          && current.termsAccepted
+          && current.earlyStartRequested
+        );
       case 'termin':
         return isSelectedSlotFree(current);
       default:
@@ -441,7 +456,7 @@ export function Assistent({
       case 'preis':
         return 'Der Preis wird noch ermittelt.';
       case 'anzahlung':
-        return 'Bitte bestätigen Sie die Anzahlung, um fortzufahren.';
+        return 'Bitte bestätigen Sie die Anzahlung, die AGB und den Beginn vor Ablauf der Widerrufsfrist, um fortzufahren.';
       case 'termin':
         return 'Bitte wählen Sie ein freies Zeitfenster aus.';
       default:
@@ -561,7 +576,12 @@ export function Assistent({
 
     fetchSlots(slotMinutes, leadTimeDays)
       .then((response) => {
-        if (!cancelled) setSlotsResult({ key: slotsKey, days: response, error: null });
+        if (cancelled) return;
+        setSlotsResult(
+          response.error
+            ? { key: slotsKey, days: null, error: response.error }
+            : { key: slotsKey, days: response, error: null },
+        );
       })
       .catch(() => {
         if (!cancelled) setSlotsResult({ key: slotsKey, days: null, error: failure });
@@ -775,6 +795,13 @@ export function Assistent({
           entitlementConfirmed: data.entitlementConfirmed,
           depositAccepted: data.depositAccepted,
         },
+        // Pflicht-Zustimmungen — der Server prüft sie und speichert sie mit Zeitpunkt.
+        consents: {
+          terms: data.termsAccepted,
+          deposit: data.depositAccepted,
+          authorization: data.entitlementConfirmed,
+          earlyStart: data.earlyStartRequested,
+        },
         summary,
         uploads: buildUploads(),
         quote,
@@ -794,6 +821,7 @@ export function Assistent({
           amountCents: quote.depositCents,
           description: `Anzahlung für ${service?.label ?? 'Autoschlüssel-Leistung'}`,
         },
+        schutz: await schutz.daten(),
       });
 
       if (result.ok && result.reference) {
@@ -847,6 +875,7 @@ export function Assistent({
       submitting={submitting}
       blockedHint={blockedHint(flow.step.id)}
       raster="seite"
+      schutz={schutz}
     >
       {submitError && (
         <Alert tone="warning" title="Absenden nicht möglich" className="mb-5">
@@ -1150,7 +1179,7 @@ export function Assistent({
             <p>
               Die Schlüsselfotos verwenden wir ausschließlich, um Bauform, Profil und Elektronik zu
               bestimmen und Ihren Auftrag auszuführen. Wir bewahren sie höchstens{' '}
-              {retentionDays.keyPhotos} Tage nach Abschluss des Vorgangs auf und löschen sie
+              {retentionDays.keyPhotos} Tage nach dem Hochladen auf und löschen sie
               anschließend.
             </p>
           </Alert>
@@ -1177,7 +1206,7 @@ export function Assistent({
               Wir fertigen Fahrzeugschlüssel ausschließlich für Berechtigte. Die
               Zulassungsbescheinigung dient allein diesem Nachweis und der Zuordnung Ihres
               Fahrzeugs. Wir bewahren sie höchstens {retentionDays.vehicleRegistration} Tage nach
-              Abschluss des Vorgangs auf und löschen sie danach. Eine Weitergabe zu anderen Zwecken
+              dem Hochladen auf und löschen sie danach. Eine Weitergabe zu anderen Zwecken
               findet nicht statt.
             </p>
             <p className="mt-2">
@@ -1513,6 +1542,37 @@ export function Assistent({
             onSelect={() => flow.set('depositAccepted', !data.depositAccepted)}
             title={`Ich habe verstanden, dass eine Anzahlung von ${formatCents(quote.depositCents)} anfällt.`}
             description="Sie wird vollständig auf den Gesamtpreis angerechnet."
+          />
+
+          <p className="text-small leading-relaxed text-foreground-muted">
+            Bitte lesen Sie vor der Buchung unsere{' '}
+            <Link href="/rechtliches/agb" target="_blank" className="font-semibold text-primary hover:underline">
+              AGB
+            </Link>{' '}
+            und die{' '}
+            <Link href="/rechtliches/widerruf" target="_blank" className="font-semibold text-primary hover:underline">
+              Widerrufsbelehrung
+            </Link>
+            . Beide öffnen sich in einem neuen Fenster; Ihre Angaben bleiben hier erhalten.
+          </p>
+
+          <OptionCard
+            name="agb"
+            value="bestaetigt"
+            multiple
+            checked={data.termsAccepted}
+            onSelect={() => flow.set('termsAccepted', !data.termsAccepted)}
+            title="Ich habe die AGB gelesen und die Widerrufsbelehrung zur Kenntnis genommen."
+          />
+
+          <OptionCard
+            name="vorzeitiger-beginn"
+            value="verlangt"
+            multiple
+            checked={data.earlyStartRequested}
+            onSelect={() => flow.set('earlyStartRequested', !data.earlyStartRequested)}
+            title="Ich verlange ausdrücklich, dass Sie vor Ablauf der Widerrufsfrist mit der Leistung beginnen (z. B. Rohling bestellen)."
+            description="Mir ist bekannt, dass ich bei vollständiger Vertragserfüllung mein Widerrufsrecht verliere und bei Widerruf Wertersatz leiste."
           />
 
           <p className="flex items-start gap-2 text-small leading-relaxed text-foreground-subtle">

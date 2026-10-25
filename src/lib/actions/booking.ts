@@ -24,6 +24,8 @@ export interface QuoteResponse {
 
 /** Ermittelt Preis, Anzahlung, Terminlänge und Vorlauf für einen Fall. */
 export async function fetchQuote(request: QuoteRequest): Promise<QuoteResponse> {
+  if (!(await allowRequest(LIMITS.preis))) return { ok: false, error: RATE_LIMIT_MESSAGE };
+
   const [makes, services, rules, settings] = await Promise.all([
     getCollection('vehicleMakes'),
     getCollection('carKeyServices'),
@@ -55,6 +57,8 @@ export interface SlotsResponse {
   /** Frühester angebotener Tag. */
   earliest?: string;
   leadTimeDays: number;
+  /** Gesetzt, wenn keine Zeitfenster geliefert werden (z. B. zu viele Abfragen). */
+  error?: string;
 }
 
 /** Liefert die buchbaren Zeitfenster für eine Terminlänge. */
@@ -63,6 +67,10 @@ export async function fetchSlots(
   leadTimeDays?: number,
   daysToScan = 28,
 ): Promise<SlotsResponse> {
+  if (!(await allowRequest(LIMITS.termine))) {
+    return { days: [], leadTimeDays: leadTimeDays ?? 0, error: RATE_LIMIT_MESSAGE };
+  }
+
   const [settings, blocked] = await Promise.all([getSettings(), getCollection('blockedDays')]);
 
   // Nur die Termine des angezeigten Zeitraums lesen — derselbe Zeitraum, den

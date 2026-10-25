@@ -11,6 +11,8 @@ import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { FlowShell } from '@/components/flow/flow-shell';
+import { useFormularSchutz } from '@/components/forms/formular-schutz';
+import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
@@ -620,6 +622,8 @@ interface SubmitState {
 }
 
 export function ZutrittKonfigurator() {
+  const schutz = useFormularSchutz();
+
   const flow = useFlow<ZutrittData>({
     id: FLOW_ID,
     steps: STEPS,
@@ -649,6 +653,7 @@ export function ZutrittKonfigurator() {
     setError(null);
 
     const response = await submitRecord({
+      schutz: await schutz.daten(),
       kind: 'projekt',
       area: 'elektronische-zutrittsloesungen',
       process: 'projektkonfigurator',
@@ -732,6 +737,8 @@ export function ZutrittKonfigurator() {
 
   return (
     <FlowShell
+      schutz={schutz}
+      abschlussHinweis={<AnfrageHinweis />}
       flow={flow}
       title="Zutrittskonfigurator"
       submitLabel="Projekt absenden"

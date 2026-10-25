@@ -21,17 +21,32 @@ vi.mock('next/headers', () => ({
 
 vi.mock('@/lib/data', () => {
   class TerminVergebenFehler extends Error {}
+  class ZuVieleOffeneTermineFehler extends Error {}
+  // Wie die Abfrage in vorgangAnlegen: offene, unbezahlte Termine je E-Mail-Adresse.
+  const offene = (email: string, ab: string) =>
+    stored.filter(
+      (r) =>
+        r.kind === 'termin'
+        && r.contact.email.toLowerCase() === email.toLowerCase()
+        && !['storniert', 'abgeschlossen'].includes(r.status)
+        && (r.payment?.status === 'offen' || r.payment?.status === 'fehlgeschlagen')
+        && (r.appointment?.date ?? '') >= ab,
+    ).length;
   const termine = (von: string, bis: string) =>
     stored.filter(
       (r) => r.appointment && r.appointment.date >= von && r.appointment.date <= bis && r.status !== 'storniert',
     );
   return {
     TerminVergebenFehler,
+    ZuVieleOffeneTermineFehler,
     getSettings: async () => defaults.settings(),
     getCollection: async (name: keyof typeof defaults) => defaults[name](),
     getAppointments: async (von: string, bis: string) => (vorab.veraltet ? [] : termine(von, bis)),
     // Wie die Datenschicht: Termin unter Sperre frisch prüfen, dann Nummer vergeben.
     vorgangAnlegen: async ({ art, jahr, aufbauen, termin }: VorgangsAnlage) => {
+      if (termin?.kunde && offene(termin.kunde.email, termin.kunde.abDatum) >= termin.kunde.hoechstensOffen) {
+        throw new ZuVieleOffeneTermineFehler();
+      }
       if (termin && !termin.istFrei(termine(termin.datum, termin.datum))) {
         throw new TerminVergebenFehler(termin.datum);
       }
@@ -56,18 +71,32 @@ vi.mock('@/lib/data', () => {
   };
 });
 
-const { submitRecord } = await import('./records');
-const { submitOrder } = await import('./orders');
+const aktionen = { ...(await import('./records')), ...(await import('./orders')) };
 const { resetRateLimits } = await import('@/lib/server/rate-limit');
 const { createAccessToken, verifyAccessToken } = await import('@/lib/server/access-token');
+const { startSignieren } = await import('@/lib/server/formular-schutz');
+
+/** Wie aus dem Browser: Formular vor 10 Sekunden geöffnet, Honigtopf leer. */
+const schutz = () => ({ start: startSignieren(Date.now() - 10_000), website: '' });
+
+type RecordEingabe = Parameters<typeof aktionen.submitRecord>[0];
+type OrderEingabe = Parameters<typeof aktionen.submitOrder>[0];
+const submitRecord = (input: RecordEingabe) => aktionen.submitRecord({ schutz: schutz(), ...input });
+const submitOrder = (input: OrderEingabe) => aktionen.submitOrder({ schutz: schutz(), ...input });
 
 const contact = {
   firstName: 'Erika',
   lastName: 'Muster',
   email: 'erika@example.org',
   phone: '0301234567',
+  street: 'Musterweg 1',
+  postalCode: '35576',
+  city: 'Wetzlar',
   country: 'Deutschland',
 };
+
+/** Pflicht-Zustimmungen des Termin-Assistenten. */
+const zustimmungen = { terms: true, deposit: true, authorization: true, earlyStart: true };
 
 beforeEach(() => {
   stored.length = 0;
@@ -141,6 +170,7 @@ describe('submitRecord', () => {
         keyKind: 'klappschluessel',
         workingKeys: 1,
       },
+      consents: zustimmungen,
     });
     expect(result.ok).toBe(true);
     const amount = stored[0].payment?.amountCents ?? 0;
@@ -166,7 +196,7 @@ describe('submitRecord', () => {
       return { date: slot.date, time: slot.time };
     }
 
-    function buchen(appointment: { date: string; time: string }) {
+    function buchen(appointment: { date: string; time: string }, anpassen: Partial<RecordEingabe> = {}) {
       return submitRecord({
         kind: 'termin',
         area: 'autoschluessel',
@@ -177,8 +207,52 @@ describe('submitRecord', () => {
         uploads: [],
         appointment: { ...appointment, durationMinutes: 1, location: 'werkstatt' },
         verify,
+        consents: zustimmungen,
+        ...anpassen,
       });
     }
+
+    async function freieFenster(anzahl: number) {
+      const { fetchQuote, fetchSlots } = await import('./booking');
+      const quote = await fetchQuote(verify);
+      const slots = await fetchSlots(quote.quote!.slotMinutes, quote.quote!.leadTimeDays);
+      // Je Tag ein Fenster — so überschneiden sich die Termine nicht.
+      return slots.days.slice(0, anzahl).map((tag) => {
+        const slot = tag.slots.find((s) => s.available)!;
+        return { date: slot.date, time: slot.time };
+      });
+    }
+
+    it('speichert die Zustimmungen mit Zeitpunkt und Fassung der Rechtstexte', async () => {
+      const result = await buchen(await freiesFenster());
+      expect(result.ok).toBe(true);
+      expect(stored[0].consents).toMatchObject({ terms: true, withdrawalNotice: true, deposit: true, authorization: true, earlyStart: true });
+      expect(stored[0].consents?.version).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(Date.parse(stored[0].consents?.at ?? '')).not.toBeNaN();
+    });
+
+    it.each([
+      ['ohne Zustimmungen', undefined],
+      ['ohne vorzeitigen Beginn', { ...zustimmungen, earlyStart: false }],
+      ['ohne AGB', { ...zustimmungen, terms: false }],
+      ['ohne Berechtigung', { ...zustimmungen, authorization: false }],
+    ])('lehnt Termine %s ab', async (_name, consents) => {
+      const result = await buchen(await freiesFenster(), { consents });
+      expect(result.ok).toBe(false);
+      expect(result.error).toContain('Anzahlung');
+      expect(stored).toHaveLength(0);
+    });
+
+    it('lässt höchstens zwei offene, unbezahlte Termine je E-Mail-Adresse zu', async () => {
+      const [a, b, c] = await freieFenster(3);
+      expect((await buchen(a)).ok).toBe(true);
+      expect((await buchen(b, { contact: { ...contact, email: 'ERIKA@example.org' } })).ok).toBe(true);
+      const dritte = await buchen(c);
+      expect(dritte.ok).toBe(false);
+      expect(dritte.error).toContain('Anzahlung noch aussteht');
+      // Eine andere Adresse darf weiter buchen.
+      expect((await buchen(c, { contact: { ...contact, email: 'max@example.org' } })).ok).toBe(true);
+    });
 
     it('übernimmt den geprüften Termin, nicht die Angaben des Browsers', async () => {
       const wunsch = await freiesFenster();
@@ -206,6 +280,15 @@ describe('submitRecord', () => {
       expect(zweite.error).toContain('nicht mehr frei');
       expect(stored).toHaveLength(1);
     });
+  });
+
+  it('begrenzt Preis- und Terminabfragen je Adresse', async () => {
+    const { fetchQuote, fetchSlots } = await import('./booking');
+    const anfrage = { makeSlug: 'volkswagen', modelSlug: 'golf', serviceId: 'zweitschluessel', keyKind: 'klappschluessel' as const, workingKeys: 1 };
+    for (let i = 0; i < 60; i += 1) expect((await fetchQuote(anfrage)).ok).toBe(true);
+    expect(await fetchQuote(anfrage)).toMatchObject({ ok: false, error: expect.stringContaining('Zu viele Anfragen') });
+    for (let i = 0; i < 60; i += 1) expect((await fetchSlots(60, 7, 1)).error).toBeUndefined();
+    expect((await fetchSlots(60, 7, 1)).error).toContain('Zu viele Anfragen');
   });
 
   it('lehnt ungültige Kontaktdaten ab', async () => {
@@ -364,6 +447,43 @@ describe('submitOrder', () => {
     expect(stored[0].totals?.shippingLabel).toBe(versand.label);
   });
 
+  it('speichert die Zustimmungen und verlangt die Anfertigungs-Bestätigung nur bei Sonderanfertigungen', async () => {
+    const total = line.priceCents + shipping.priceCents;
+    const ohne = await submitOrder({
+      items: [{ kind: 'code-schluessel', uid: 'a', codeLineId: line.id, code: line.codeExample, qty: 1, unitPriceCents: 1, photoRefs: [] }],
+      shippingOptionId: shipping.id,
+      contact,
+      acceptedTerms: true,
+      acceptedCustomMade: false,
+      expectedTotalCents: total,
+    });
+    expect(ohne.ok).toBe(false);
+    expect(ohne.error).toContain('Anfertigung');
+    expect(stored).toHaveLength(0);
+
+    expect((await order(total)).ok).toBe(true);
+    expect(stored[0].consents).toMatchObject({ terms: true, withdrawalNotice: true, customMade: true });
+  });
+
+  it('liefert nur nach Deutschland und prüft die Postleitzahl', async () => {
+    const total = line.priceCents + shipping.priceCents;
+    const mit = (kontakt: typeof contact) =>
+      submitOrder({
+        items: [{ kind: 'code-schluessel', uid: 'a', codeLineId: line.id, code: line.codeExample, qty: 1, unitPriceCents: 1, photoRefs: [] }],
+        shippingOptionId: shipping.id,
+        contact: kontakt,
+        acceptedTerms: true,
+        acceptedCustomMade: true,
+        expectedTotalCents: total,
+      });
+    const ausland = await mit({ ...contact, country: 'Österreich', postalCode: '1010' });
+    expect(ausland.ok).toBe(false);
+    expect(ausland.error).toContain('nur nach Deutschland');
+    expect((await mit({ ...contact, postalCode: '3557' })).ok).toBe(false);
+    expect((await mit({ ...contact, street: '' })).ok).toBe(false);
+    expect(stored).toHaveLength(0);
+  });
+
   it('lehnt unbekannte Versandarten ab statt kostenlos zu versenden', async () => {
     const result = await order(line.priceCents, 'gibt-es-nicht');
     expect(result.ok).toBe(false);
@@ -393,6 +513,51 @@ describe('submitOrder', () => {
     });
     expect(result.ok).toBe(false);
     expect(result.error).toContain('Maß A');
+  });
+});
+
+describe('Bot-Schutz', () => {
+  const anfrage = {
+    kind: 'anfrage' as const,
+    area: 'service-und-termin' as const,
+    process: 'gefuehrte-anfrage' as const,
+    contact,
+    payload: {},
+    summary: [],
+    uploads: [],
+  };
+
+  it.each([
+    ['Honigtopf ausgefüllt', () => ({ start: startSignieren(Date.now() - 10_000), website: 'https://spam.example' })],
+    ['zu schnell (1 s)', () => ({ start: startSignieren(Date.now() - 1_000), website: '' })],
+    ['älter als 24 Stunden', () => ({ start: startSignieren(Date.now() - 25 * 60 * 60 * 1000), website: '' })],
+    ['ohne Startzeitpunkt', () => ({})],
+    ['mit gefälschter Signatur', () => ({ start: `${Date.now() - 10_000}.${'A'.repeat(43)}` })],
+  ])('antwortet bei „%s“ wie bei Erfolg, speichert aber nichts', async (_name, falsch) => {
+    const warnung = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = await aktionen.submitRecord({ ...anfrage, schutz: falsch() });
+    expect(result.ok).toBe(true);
+    expect(result.reference).toMatch(/^SM24-A-\d{4}-\d{4}$/);
+    expect(stored).toHaveLength(0);
+
+    const bestellung = await aktionen.submitOrder({
+      items: [],
+      shippingOptionId: 'x',
+      contact,
+      acceptedTerms: true,
+      acceptedCustomMade: true,
+      expectedTotalCents: 0,
+      schutz: falsch(),
+    });
+    expect(bestellung.ok).toBe(true);
+    expect(stored).toHaveLength(0);
+    expect(warnung).toHaveBeenCalledWith(expect.stringContaining('[bot-schutz]'));
+    warnung.mockRestore();
+  });
+
+  it('nimmt gültige Formulare an', async () => {
+    expect((await aktionen.submitRecord({ ...anfrage, schutz: schutz() })).ok).toBe(true);
+    expect(stored).toHaveLength(1);
   });
 });
 

@@ -4,6 +4,7 @@ import { useState, type ReactNode } from 'react';
 import type { FlowState } from '@/lib/flow/use-flow';
 import { cn } from '@/lib/cn';
 import { Button } from '@/components/ui/button';
+import { SchutzFelder, type FormularSchutzHandle } from '@/components/forms/formular-schutz';
 import { GlyphHaken } from '@/components/visual/glyphen/haken';
 import { GlyphPfeilLinks } from '@/components/visual/glyphen/pfeil-links';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
@@ -29,6 +30,10 @@ export interface FlowShellProps<T extends object> {
   seite?: ReactNode;
   /** Laufende Summe: mobil links in der Leiste, ab 768 px rechts im klebenden Band (B-20). */
   summe?: { label: string; wert: string };
+  /** Bot-Schutz des Ablaufs (`useFormularSchutz`): rendert das versteckte Honigtopf-Feld. */
+  schutz?: FormularSchutzHandle;
+  /** Hinweis unter dem letzten Schritt, direkt über dem Absenden (etwa zu AGB bei Anfragen). */
+  abschlussHinweis?: ReactNode;
   children: ReactNode;
 }
 
@@ -47,6 +52,8 @@ export function FlowShell<T extends object>({
   raster = 'voll',
   seite,
   summe,
+  schutz,
+  abschlussHinweis,
   children,
 }: FlowShellProps<T>) {
   const percent = Math.round(flow.progress * 100);
@@ -108,7 +115,8 @@ export function FlowShell<T extends object>({
   );
 
   return (
-    <div data-ablauf className="sm24-ablauf pb-40 md:pb-8">
+    <div data-ablauf className="sm24-ablauf relative pb-40 md:pb-8">
+      {schutz && <SchutzFelder schutz={schutz} />}
       {/* Fortschritt: klebendes Band über die ganze Breite der Shell, auf allen Breiten gleich
           (eine Zeile „Schritt n von m · Name“, der Ablauftitel steht schon in der h1). */}
       <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background px-5 py-3 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -187,6 +195,7 @@ export function FlowShell<T extends object>({
                 <p className="mt-2 max-w-measure text-body text-foreground-muted">{flow.step.hint}</p>
               )}
               <div className="mt-6">{children}</div>
+              {flow.isLast && abschlussHinweis && <div className="mt-6">{abschlussHinweis}</div>}
             </div>
           </div>
 

@@ -1,9 +1,10 @@
 'use client';
 
-import { useActionState, useState } from 'react';
+import { useActionState, useRef, useState, type FormEvent } from 'react';
 
 import { Field } from '@/components/forms/field';
 import { TextArea, TextInput } from '@/components/forms/controls';
+import { SchutzFelder, useFormularSchutz } from '@/components/forms/formular-schutz';
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { widerrufErklaeren } from '@/lib/actions/widerruf';
@@ -59,6 +60,30 @@ function Eingangsbestaetigung({ ergebnis }: { ergebnis: Extract<WiderrufErgebnis
 export function WiderrufFormular({ vorgangsnummer = '' }: { vorgangsnummer?: string }) {
   const [ergebnis, absenden, laeuft] = useActionState(widerrufErklaeren, null);
   const [werte, setWerte] = useState({ name: '', email: '', vorgangsnummer, erklaerung: '' });
+  const schutz = useFormularSchutz();
+  const formular = useRef<HTMLFormElement>(null);
+  /** Nach dem Warten genau einmal durchlassen — auch wenn der Startzeitpunkt nicht zu holen war. */
+  const durchlassen = useRef(false);
+  const [vorbereitung, setVorbereitung] = useState(false);
+
+  /** Bot-Schutz: Ist der Startzeitpunkt noch nicht bereit, kurz warten und dann absenden. */
+  async function vorDemAbsenden(event: FormEvent<HTMLFormElement>) {
+    if (durchlassen.current || schutz.bereit()) {
+      durchlassen.current = false;
+      // Vor dem Bilden der Formulardaten (React liest sie erst nach diesem Handler).
+      schutz.felderFuellen();
+      return;
+    }
+    event.preventDefault();
+    setVorbereitung(true);
+    try {
+      await schutz.vorbereiten();
+    } finally {
+      setVorbereitung(false);
+    }
+    durchlassen.current = true;
+    formular.current?.requestSubmit();
+  }
 
   if (ergebnis?.status === 'eingegangen') return <Eingangsbestaetigung ergebnis={ergebnis} />;
 
@@ -67,7 +92,14 @@ export function WiderrufFormular({ vorgangsnummer = '' }: { vorgangsnummer?: str
     setWerte((vorher) => ({ ...vorher, [feld]: event.target.value }));
 
   return (
-    <form action={absenden} noValidate className="mt-6 rounded-lg border border-border bg-surface p-5 md:p-6">
+    <form
+      ref={formular}
+      action={absenden}
+      onSubmit={vorDemAbsenden}
+      noValidate
+      className="relative mt-6 rounded-lg border border-border bg-surface p-5 md:p-6"
+    >
+      <SchutzFelder schutz={schutz} />
       {ergebnis?.status === 'fehler' && (
         <Alert tone="danger" title="Nicht gespeichert" role="alert" className="mb-5">
           {ergebnis.meldung}
@@ -179,7 +211,7 @@ export function WiderrufFormular({ vorgangsnummer = '' }: { vorgangsnummer?: str
         Mit dem Absenden erklären Sie: „{WIDERRUF_ERKLAERUNG}“
       </p>
 
-      <Button type="submit" size="lg" className="mt-5" loading={laeuft}>
+      <Button type="submit" size="lg" className="mt-5" loading={laeuft || vorbereitung}>
         Widerruf jetzt erklären
       </Button>
     </form>

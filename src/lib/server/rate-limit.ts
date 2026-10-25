@@ -39,6 +39,9 @@ export const LIMITS = {
   rueckkehr: { name: 'rueckkehr', limit: 20, windowMs: 10 * 60 * 1000 },
   // Widerrufsbutton: wenige echte Erklärungen, aber kein Durchprobieren von Nummern.
   widerruf: { name: 'widerruf', limit: 5, windowMs: 10 * 60 * 1000 },
+  // Öffentliche Abfragen des Termin-Assistenten — je Aufruf ein Datenbankzugriff.
+  termine: { name: 'termine', limit: 60, windowMs: 10 * 60 * 1000 },
+  preis: { name: 'preis', limit: 60, windowMs: 10 * 60 * 1000 },
 } satisfies Record<string, RateLimitRule>;
 
 export const RATE_LIMIT_MESSAGE =

@@ -120,6 +120,13 @@ export interface TerminSperre {
   /** ISO-Datum des Termins. */
   datum: string;
   istFrei: (termineDesTages: Vorgang[]) => boolean;
+  /**
+   * Höchstzahl offener, unbezahlter Termine je E-Mail-Adresse (Schutz gegen
+   * Kalenderblockaden). Gezählt werden nicht stornierte, nicht
+   * abgeschlossene Termine ab `abDatum`, deren Zahlung offen oder
+   * fehlgeschlagen ist.
+   */
+  kunde?: { email: string; hoechstensOffen: number; abDatum: string };
 }
 
 export interface VorgangsAnlage {
@@ -129,6 +136,14 @@ export interface VorgangsAnlage {
   /** Baut den Vorgang, sobald seine Nummer feststeht. */
   aufbauen: (nummer: string) => NeuerVorgang;
   termin?: TerminSperre;
+}
+
+/** Zu dieser E-Mail-Adresse sind schon zu viele Termine ohne Zahlung offen. */
+export class ZuVieleOffeneTermineFehler extends Error {
+  constructor() {
+    super('Zu dieser E-Mail-Adresse sind bereits mehrere unbezahlte Termine offen.');
+    this.name = 'ZuVieleOffeneTermineFehler';
+  }
 }
 
 /** Der Wunschtermin wurde vergeben, während der Kunde gebucht hat. */
@@ -198,7 +213,21 @@ export async function vorgangAnlegen(anlage: VorgangsAnlage): Promise<Vorgang> {
   const payload = await payloadInstanz();
   return inTransaktion(payload, async ({ execute, req }) => {
     if (anlage.termin) {
-      const { datum, istFrei } = anlage.termin;
+      const { datum, istFrei, kunde } = anlage.termin;
+      if (kunde) {
+        // Reihenfolge der Sperren: erst Kunde, dann Tag — überall gleich, sonst droht eine Verklemmung.
+        const email = kunde.email.trim().toLowerCase();
+        await execute(sql`SELECT pg_advisory_xact_lock(hashtext(${`sm24:termin-kunde:${email}`}))`);
+        const { rows } = await execute(sql`
+          SELECT count(*)::int AS anzahl FROM vorgaenge
+          WHERE art = 'termin'
+            AND lower(kontakt_email) = ${email}
+            AND status NOT IN ('storniert', 'abgeschlossen')
+            AND zahlung_status IN ('offen', 'fehlgeschlagen')
+            AND termin_datum >= ${kunde.abDatum}
+        `);
+        if (Number(rows[0]?.anzahl ?? 0) >= kunde.hoechstensOffen) throw new ZuVieleOffeneTermineFehler();
+      }
       await execute(sql`SELECT pg_advisory_xact_lock(hashtext(${`sm24:termin:${datum}`}))`);
       const tag = await vorgaengeFinden(payload, terminImZeitraum(datum, datum), req());
       if (!istFrei(tag)) throw new TerminVergebenFehler(datum);
@@ -545,7 +574,10 @@ async function vorgaengeFinden(
 async function vorgangAnlegenOhneDatenbank(anlage: VorgangsAnlage): Promise<Vorgang> {
   const items = await readRecordsFresh();
   if (anlage.termin) {
-    const { datum, istFrei } = anlage.termin;
+    const { datum, istFrei, kunde } = anlage.termin;
+    if (kunde && offeneTermine(items, kunde.email, kunde.abDatum) >= kunde.hoechstensOffen) {
+      throw new ZuVieleOffeneTermineFehler();
+    }
     if (!istFrei(items.filter((r) => hatTerminImZeitraum(r, datum, datum)))) {
       throw new TerminVergebenFehler(datum);
     }
@@ -567,6 +599,20 @@ async function vorgangAnlegenOhneDatenbank(anlage: VorgangsAnlage): Promise<Vorg
 }
 
 type Abfrage = ReturnType<typeof sql>;
+/** Dateimodus: offene, unbezahlte Termine einer E-Mail-Adresse (wie die Abfrage in `vorgangAnlegen`). */
+function offeneTermine(items: Vorgang[], email: string, abDatum: string): number {
+  const adresse = email.trim().toLowerCase();
+  return items.filter(
+    (r) =>
+      r.kind === 'termin'
+      && r.contact.email.trim().toLowerCase() === adresse
+      && r.status !== 'storniert'
+      && r.status !== 'abgeschlossen'
+      && (r.payment?.status === 'offen' || r.payment?.status === 'fehlgeschlagen')
+      && (r.appointment?.date ?? '') >= abDatum,
+  ).length;
+}
+
 
 interface Transaktion {
   execute: (abfrage: Abfrage) => Promise<{ rows: Record<string, unknown>[] }>;

@@ -2,6 +2,7 @@ import 'server-only';
 
 import {
   TerminVergebenFehler,
+  ZuVieleOffeneTermineFehler,
   getAppointments,
   getCollection,
   getSettings,
@@ -28,6 +29,7 @@ import type {
   OrderTotals,
   PriceQuote,
   ProcessKind,
+  RecordConsents,
   RecordKind,
   Settings,
   SummarySection,
@@ -59,6 +61,8 @@ export interface TrustedRecordInput {
   /** Nur bei Bestellungen: vom Server berechnete Positionen und Summen zum Festschreiben. */
   lines?: OrderLine[];
   totals?: OrderTotals;
+  /** Zustimmungen beim Absenden, mit Zeitpunkt und Fassung der Rechtstexte. */
+  consents?: RecordConsents;
 }
 
 export interface CreateRecordResult {
@@ -79,6 +83,13 @@ const SLOT_TAKEN =
   'Der gewählte Termin ist inzwischen nicht mehr frei. Bitte wählen Sie ein anderes '
   + 'Zeitfenster aus.';
 
+/** Höchstens so viele offene, unbezahlte Termine je E-Mail-Adresse. */
+export const OFFENE_TERMINE_JE_EMAIL = 2;
+
+const ZU_VIELE_OFFENE_TERMINE =
+  'Zu Ihrer E-Mail-Adresse sind bereits Termine offen, deren Anzahlung noch aussteht. Bitte schließen '
+  + 'Sie zuerst deren Zahlung ab oder melden Sie sich bei uns — wir helfen gern weiter.';
+
 const PAYMENT_NOT_STARTED =
   'Die Online-Zahlung konnte gerade nicht gestartet werden. Ihr Vorgang ist gespeichert; '
   + 'wir melden uns mit den Zahlungsinformationen.';
@@ -97,7 +108,7 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
   try {
     settings = await getSettings();
     const termin = input.appointment
-      ? await slotLock(input.appointment, input.quote, settings)
+      ? await slotLock(input.appointment, input.quote, settings, input.payment ? input.contact.email : undefined)
       : undefined;
 
     // Nummer, Terminprüfung und Vorgang in einem Zug: Scheitert etwas, bleibt
@@ -137,11 +148,15 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
         accessTokenHash: hash,
         lines: input.lines,
         totals: input.totals,
+        consents: input.consents,
       }),
     });
   } catch (error) {
     if (error instanceof TerminVergebenFehler) {
       return { ok: false, notices, error: SLOT_TAKEN };
+    }
+    if (error instanceof ZuVieleOffeneTermineFehler) {
+      return { ok: false, notices, error: ZU_VIELE_OFFENE_TERMINE };
     }
     console.error('[vorgang] Speichern fehlgeschlagen', error);
     return { ok: false, notices, error: GENERIC_ERROR };
@@ -292,15 +307,21 @@ function freeSlot(args: {
   }).find((slot) => slot.date === args.date && slot.time === args.time && slot.available);
 }
 
-/** Prüfung, die beim Anlegen unter der Tagessperre mit frisch gelesenen Terminen läuft. */
+/**
+ * Prüfung, die beim Anlegen unter der Tagessperre mit frisch gelesenen
+ * Terminen läuft. Mit `email` (Termine mit Online-Anzahlung) zusätzlich die
+ * Höchstzahl offener, unbezahlter Termine dieser Adresse.
+ */
 async function slotLock(
   appointment: AppointmentInfo,
   quote: PriceQuote | undefined,
   settings: Settings,
+  email?: string,
 ): Promise<TerminSperre> {
   const blocked = await getCollection('blockedDays');
   return {
     datum: appointment.date,
+    ...(email ? { kunde: { email, hoechstensOffen: OFFENE_TERMINE_JE_EMAIL, abDatum: heuteInBerlin() } } : {}),
     istFrei: (existing) =>
       freeSlot({
         settings,

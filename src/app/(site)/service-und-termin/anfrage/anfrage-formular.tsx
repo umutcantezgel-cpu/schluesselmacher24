@@ -9,6 +9,8 @@ import type { AreaKey, SummarySection } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { FlowShell } from '@/components/flow/flow-shell';
+import { useFormularSchutz } from '@/components/forms/formular-schutz';
+import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { Field } from '@/components/forms/field';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
@@ -72,6 +74,9 @@ export function AllgemeineAnfrage({
   const [fehler, setFehler] = useState<string | null>(null);
   const [erfolg, setErfolg] = useState<{ reference: string; notices: string[] } | null>(null);
 
+  const schutz = useFormularSchutz();
+
+
   const flow = useFlow<FormData>({
     id: 'allgemeine-anfrage',
     steps: STEPS,
@@ -130,6 +135,7 @@ export function AllgemeineAnfrage({
     await uploadsAbwarten();
 
     const ergebnis = await submitRecord({
+      schutz: await schutz.daten(),
       kind: 'anfrage',
       area: (data.thema || 'service-und-termin') as AreaKey,
       process: 'gefuehrte-anfrage',
@@ -207,6 +213,8 @@ export function AllgemeineAnfrage({
   return (
     <div className="max-w-3xl">
       <FlowShell
+        schutz={schutz}
+        abschlussHinweis={<AnfrageHinweis />}
         flow={flow}
         title="Allgemeine Anfrage"
         submitLabel="Anfrage absenden"

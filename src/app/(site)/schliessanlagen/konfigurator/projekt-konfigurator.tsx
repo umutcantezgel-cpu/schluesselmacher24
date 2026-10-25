@@ -8,6 +8,8 @@ import { submitRecord } from '@/lib/actions/records';
 import { formatNumber } from '@/lib/format';
 import type { ContactDetails, InfoHint, SummarySection, UploadRef } from '@/lib/types';
 import { FlowShell } from '@/components/flow/flow-shell';
+import { useFormularSchutz } from '@/components/forms/formular-schutz';
+import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { Field } from '@/components/forms/field';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
@@ -822,6 +824,8 @@ const HINT_BUDGET: InfoHint = {
    ========================================================================== */
 
 export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfiguratorProps) {
+  const schutz = useFormularSchutz();
+
   const flow = useFlow<ProjectData>({
     id: FLOW_ID,
     steps: STEPS,
@@ -909,6 +913,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
 
     try {
       const response = await submitRecord({
+        schutz: await schutz.daten(),
         kind: 'projekt',
         area: 'schliessanlagen',
         process: 'projektkonfigurator',
@@ -1010,6 +1015,8 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
 
   return (
     <FlowShell
+      schutz={schutz}
+      abschlussHinweis={<AnfrageHinweis />}
       flow={flow}
       title="Projektkonfigurator Schließanlage"
       submitLabel="Projekt absenden"

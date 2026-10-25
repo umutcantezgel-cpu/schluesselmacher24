@@ -76,6 +76,24 @@ export const requestedAppointmentSchema = z.object({
   time: z.string().regex(/^\d{2}:\d{2}$/),
 });
 
+/**
+ * Zustimmungen beim Autoschlüssel-Termin — alle Pflicht. Der Server speichert
+ * sie mit Zeitpunkt und Fassung der Rechtstexte am Vorgang (Nachweis für
+ * Einbeziehung der AGB, Anzahlung und Wertersatz nach § 357a Abs. 2 BGB).
+ */
+export const terminZustimmungenSchema = z.object({
+  /** AGB gelesen, Widerrufsbelehrung zur Kenntnis genommen. */
+  terms: z.literal(true),
+  /** Anzahlung akzeptiert. */
+  deposit: z.literal(true),
+  /** Berechtigt (Halter oder beauftragt). */
+  authorization: z.literal(true),
+  /** Ausdrückliches Verlangen nach Beginn vor Ende der Widerrufsfrist, mit Kenntnis der Folgen. */
+  earlyStart: z.literal(true),
+});
+
+export type TerminZustimmungen = z.infer<typeof terminZustimmungenSchema>;
+
 /** Eingabe der öffentlichen Aktion `submitRecord`. */
 export const publicRecordSchema = z.object({
   kind: z.enum(['anfrage', 'termin', 'projekt', 'bestellung']),
