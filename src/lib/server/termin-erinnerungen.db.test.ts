@@ -31,7 +31,9 @@ beforeEach(() => {
   vi.stubEnv('VERCEL_ENV', '');
   vi.stubGlobal(
     'fetch',
-    vi.fn(async (_url: string, init: RequestInit) => {
+    vi.fn(async (url: string, init: RequestInit) => {
+      // Nur Resend zählt — Payload meldet beim Start Telemetrie über fetch.
+      if (!String(url).startsWith('https://api.resend.com/')) return new Response(null, { status: 204 });
       const body = JSON.parse(init.body as string);
       sendungen.push({
         an: body.to,
@@ -45,9 +47,17 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  vi.useRealTimers();
   vi.unstubAllEnvs();
   vi.unstubAllGlobals();
 });
+
+/** Uhr auf den Zeitpunkt des Laufs stellen — das Mailprotokoll vermerkt die echte Versandzeit. */
+function uhr(zeitpunkt: Date): Date {
+  vi.useFakeTimers({ toFake: ['Date'] });
+  vi.setSystemTime(zeitpunkt);
+  return zeitpunkt;
+}
 
 async function termin(
   datum: string,
@@ -86,7 +96,7 @@ describe('terminErinnerungenSenden', () => {
     const uebermorgen = await termin('2084-05-11', 'neu', 'bezahlt', 'uebermorgen@example.org');
 
     // Erster Lauf: zwei Erinnerungen (bezahlt, terminiert), nicht offen, storniert oder übermorgen.
-    const erster = await terminErinnerungenSenden(LAUF);
+    const erster = await terminErinnerungenSenden(uhr(LAUF));
     expect(erster).toEqual({ tageVorher: 1, termintag: '2084-05-10', termine: 2, gesendet: 2, bereitsErinnert: 0, fehlgeschlagen: 0 });
     expect(sendungen.map((s) => s.an[0]).sort()).toEqual(['bezahlt@example.org', 'telefon@example.org']);
     const mail = sendungen.find((s) => s.an[0] === 'bezahlt@example.org')!;
@@ -106,14 +116,14 @@ describe('terminErinnerungenSenden', () => {
 
     // Zweiter Lauf am selben Tag: nichts doppelt.
     sendungen.length = 0;
-    const zweiter = await terminErinnerungenSenden(new Date('2084-05-09T09:00:00.000Z'));
+    const zweiter = await terminErinnerungenSenden(uhr(new Date('2084-05-09T09:00:00.000Z')));
     expect(zweiter).toMatchObject({ termine: 2, gesendet: 0, bereitsErinnert: 2 });
     expect(sendungen).toHaveLength(0);
     expect((await getRecord(bezahlt.id))?.mailLog).toHaveLength(1);
 
     // Verschoben auf den 11.05.: am 10.05. erneut erinnern — zusammen mit dem Termin von übermorgen.
     await vorgangAendern(bezahlt.id, (v) => ({ appointment: { ...v.appointment!, date: '2084-05-11', time: '14:00' } }));
-    const naechsterTag = await terminErinnerungenSenden(new Date('2084-05-10T02:17:00.000Z'));
+    const naechsterTag = await terminErinnerungenSenden(uhr(new Date('2084-05-10T02:17:00.000Z')));
     expect(naechsterTag).toMatchObject({ termintag: '2084-05-11', termine: 2, gesendet: 2, bereitsErinnert: 0 });
     expect(sendungen.map((s) => s.an[0]).sort()).toEqual(['bezahlt@example.org', 'uebermorgen@example.org']);
     expect(sendungen.find((s) => s.an[0] === 'bezahlt@example.org')?.schluessel).toBe(
@@ -136,11 +146,11 @@ describe('terminErinnerungenSenden', () => {
     vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ name: 'validation_error' }), { status: 422 })));
     const log = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const vorgang = await termin('2084-07-02', 'terminiert', null, 'abgelehnt@example.org');
-    const ergebnis = await terminErinnerungenSenden(new Date('2084-07-01T02:17:00.000Z'));
+    const ergebnis = await terminErinnerungenSenden(uhr(new Date('2084-07-01T02:17:00.000Z')));
     expect(ergebnis).toMatchObject({ termine: 1, gesendet: 0, fehlgeschlagen: 1 });
     expect((await getRecord(vorgang.id))?.mailLog?.[0]).toMatchObject({ kind: 'erinnerung', result: 'fehlgeschlagen' });
     // Eine gescheiterte Erinnerung zählt nicht als versendet.
-    const nochmal = await terminErinnerungenSenden(new Date('2084-07-01T09:00:00.000Z'));
+    const nochmal = await terminErinnerungenSenden(uhr(new Date('2084-07-01T09:00:00.000Z')));
     expect(nochmal).toMatchObject({ bereitsErinnert: 0, fehlgeschlagen: 1 });
     log.mockRestore();
   });
