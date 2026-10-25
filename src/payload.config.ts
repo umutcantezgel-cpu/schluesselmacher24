@@ -57,6 +57,8 @@ export default buildConfig({
         Logo: '/payload/components/Marke#Logo',
         Icon: '/payload/components/Marke#Icon',
       },
+      // Kennzahlen aus den Vorgängen (Erg. Leitfaden §4), nur für das Team.
+      beforeDashboard: ['/payload/components/Kennzahlen#Kennzahlen'],
     },
     theme: 'light',
   },
