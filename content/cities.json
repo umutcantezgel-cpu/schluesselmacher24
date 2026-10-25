@@ -1,1 +1,54 @@
-[]
+[
+  {
+    "id": "wetzlar",
+    "slug": "wetzlar",
+    "city": "Wetzlar",
+    "state": "Hessen",
+    "localIntro": "In unserer Werkstatt in der Langgasse 70 in Wetzlar fertigen wir Schlüssel, programmieren Autoschlüssel nach Termin und geben Bestellungen zur Abholung aus. Kunden aus Mittelhessen und darüber hinaus können für ihren Termin anreisen; Einsätze vor Ort nur nach Prüfung.",
+    "localFacts": [
+      {
+        "label": "Bundesland",
+        "value": "Hessen"
+      },
+      {
+        "label": "Werkstatt",
+        "value": "Langgasse 70, 35576 Wetzlar"
+      },
+      {
+        "label": "Autoschlüssel",
+        "value": "Termin in der Werkstatt"
+      },
+      {
+        "label": "Einsätze vor Ort",
+        "value": "nur nach Prüfung"
+      }
+    ],
+    "servicesOffered": [
+      "autoschluessel",
+      "tuer-und-schliesstechnik",
+      "schliessanlagen",
+      "elektronische-zutrittsloesungen",
+      "sicherheitstechnik"
+    ],
+    "onSiteRadiusKm": 0,
+    "seo": {
+      "title": "Autoschlüssel und Schließtechnik in Wetzlar",
+      "description": "Werkstatt in der Langgasse 70 in Wetzlar: Autoschlüssel nach Termin, Schlüssel und Abholung. Anreise aus Mittelhessen, Einsätze vor Ort nach Prüfung.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel/anfrage",
+          "label": "Autoschlüssel-Termin anfragen"
+        },
+        {
+          "href": "/service-und-termin/kontakt",
+          "label": "Kontakt und Erreichbarkeit"
+        },
+        {
+          "href": "/standorte",
+          "label": "Alle Einsatzgebiete"
+        }
+      ]
+    },
+    "updatedAt": "2026-10-25T00:00:00.000Z"
+  }
+]

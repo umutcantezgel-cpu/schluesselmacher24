@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { sortiereArtikel } from '@/lib/artikel';
+import { istIndexierbar, sortiereArtikel } from '@/lib/artikel';
 import { getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
@@ -63,12 +63,15 @@ function WeiterIcon({ href }: { href: string }) {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page = await getPageContent(ROUTE);
+  const [page, alle] = await Promise.all([getPageContent(ROUTE), getCollection('standardArticles')]);
+  // Nur mit mindestens einem echten (indexierbaren) Artikel in Suchmaschinen — Beispielartikel
+  // allein ergeben keine eigene Seite (Erg. Leitfaden §4, MENSCHEN M-25). Wie in der Sitemap.
+  const indexierbar = !page?.seo.noindex && alle.some(istIndexierbar);
   return {
     title: page?.seo.title || TITEL,
     description: page?.seo.description || BESCHREIBUNG,
     alternates: { canonical: `/${ROUTE}` },
-    ...(page?.seo.noindex ? { robots: { index: false, follow: true } } : {}),
+    ...(indexierbar ? {} : { robots: { index: false, follow: true } }),
   };
 }
 

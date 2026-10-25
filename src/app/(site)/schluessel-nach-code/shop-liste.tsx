@@ -7,7 +7,13 @@ import type { CodeLine } from '@/lib/types';
 import { formatCents } from '@/lib/format';
 import { cn } from '@/lib/cn';
 import { istPlatzhalter } from '@/lib/platzhalter';
-import { codelinienKennung } from '@/lib/codelinie';
+import {
+  codelinienFamilie,
+  codelinienKennung,
+  codelinienTitel,
+  kategoriePfad,
+  linienZumCode,
+} from '@/lib/codelinie';
 import { Badge } from '@/components/ui/badge';
 import { Button, ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
@@ -26,14 +32,8 @@ const ALL = 'alle';
 /** Mobil zeigt jede Anwendungsgruppe zunächst so viele Zeilen; der Rest liegt hinter „Alle n anzeigen“. */
 const VORSCHAU = 4;
 
-/**
- * Konvention der Datenschicht: Die Anwendungsfamilie steht als letzter Eintrag
- * in `tags`. Fehlt sie, wird auf die Anwendung zurückgefallen.
- */
-function familyOf(line: CodeLine): string {
-  const last = line.tags[line.tags.length - 1];
-  return last ?? line.application;
-}
+/** Anwendungsfamilie: letzter Eintrag in `tags`, sonst die Anwendung (`codelinienFamilie`). */
+const familyOf = codelinienFamilie;
 
 /** Alle durchsuchbaren Felder einer Codelinie in einem Text. */
 function haystackOf(line: CodeLine): string {
@@ -47,9 +47,7 @@ function sortedUnique(values: string[]): string[] {
 }
 
 /** Titel ohne die angehängte Serienkennung („— Serie MS-01“). Nur Anzeige. */
-function titelOf(line: CodeLine): string {
-  return line.name.replace(/\s*[—–-]\s*Serie\s+[A-Za-z0-9-]+\s*$/, '');
-}
+const titelOf = codelinienTitel;
 
 interface Gruppe {
   /** Schlüssel der Anwendungsfamilie (wie beim Filter). */
@@ -58,6 +56,8 @@ interface Gruppe {
   kopf: string;
   /** Kürzel der Familie (Präfix der Kennung), für die Sprungleiste und die Anker. */
   kuerzel: string;
+  /** Eigene Seite der Anwendungsfamilie. */
+  href: string;
   /** Anwendung ohne Zusatz, nur als Lesetext der Sprungleiste. */
   anwendung: string;
   /** Schlüsseltyp der Gruppe, nur wenn alle Zeilen denselben haben. */
@@ -101,6 +101,7 @@ function gruppenVon(lines: CodeLine[]): Gruppe[] {
     schluessel,
     kopf: gruppe.kopf,
     kuerzel: gruppe.kuerzel,
+    href: kategoriePfad(schluessel),
     anwendung: gruppe.anwendung,
     schluesseltyp: gruppe.typen.size === 1 ? [...gruppe.typen][0] : undefined,
     staffelAb: einheitlicheStaffel(gruppe.lines),
@@ -117,6 +118,10 @@ export interface ShopListeProps {
  * Suche und Filter über alle Codelinien.
  *
  * Vier Dimensionen: Freitext, Hersteller, Schlüsseltyp und Anwendungsfamilie.
+ * Sieht die Eingabe wie ein Schlüsselcode aus (ein Wort mit Ziffer), erscheinen
+ * zusätzlich alle Linien, zu deren Codeformat sie passt (`codePasst`).
+ * Die Kategorien sind zugleich als eigene Seiten verlinkt, damit keine Linie
+ * nur über Suche oder Filter erreichbar ist (Erg. Leitfaden §3).
  * Die Treffer stehen als dichte Zeilen je Anwendungsfamilie. Am Smartphone sind
  * die Auswahlfelder eingeklappt und je Gruppe nur die ersten Zeilen sichtbar.
  */
@@ -145,6 +150,12 @@ export function ShopListe({ lines, className }: ShopListeProps) {
   // Das Auswahlfeld „Hersteller“ erscheint nur, wenn ein echter Hersteller vorliegt.
   const herstellerOptionen = options.manufacturers.filter((value) => !istPlatzhalter(value));
 
+  // Linien, zu deren Codeformat die Eingabe passt — nur, wenn sie wie ein Code aussieht.
+  const codeTreffer = useMemo(
+    () => new Set(linienZumCode(lines, query).map((line) => line.id)),
+    [lines, query],
+  );
+
   const results = useMemo(() => {
     // Mehrere Suchwörter müssen alle passen — das grenzt zuverlässiger ein.
     const terms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
@@ -153,11 +164,13 @@ export function ShopListe({ lines, className }: ShopListeProps) {
       if (manufacturer !== ALL && line.manufacturer !== manufacturer) return false;
       if (keyType !== ALL && line.keyType !== keyType) return false;
       if (family !== ALL && familyOf(line) !== family) return false;
-      if (terms.length === 0) return true;
+      if (terms.length === 0 || codeTreffer.has(line.id)) return true;
       const haystack = haystackOf(line);
       return terms.every((term) => haystack.includes(term));
     });
-  }, [lines, query, manufacturer, keyType, family]);
+  }, [lines, query, manufacturer, keyType, family, codeTreffer]);
+
+  const codeTrefferSichtbar = results.filter((line) => codeTreffer.has(line.id)).length;
 
   const gruppen = useMemo(() => gruppenVon(results), [results]);
 
@@ -194,7 +207,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
       >
         <Field
           label="Suche"
-          hint="Zum Beispiel Briefkasten, Spind, Profilzylinder oder eine Serienkennung."
+          hint="Zum Beispiel Briefkasten, Spind, eine Serienkennung oder der Code von Ihrem Schloss — dann erscheinen die Linien, deren Codeformat passt."
         >
           {({ id: fieldId, describedBy }) => (
             <TextInput
@@ -204,7 +217,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
               inputMode="search"
               autoComplete="off"
               value={query}
-              placeholder="Anwendung, Typ oder Hersteller"
+              placeholder="Anwendung, Typ, Hersteller oder Schlüsselcode"
               onChange={(event) => setQuery(event.target.value)}
             />
           )}
@@ -214,6 +227,11 @@ export function ShopListe({ lines, className }: ShopListeProps) {
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
           <p className="whitespace-nowrap font-mono text-small tabular-nums text-foreground-muted" aria-live="polite">
             <strong className="font-bold text-foreground">{results.length}</strong> von {lines.length} {lines.length === 1 ? 'Codelinie' : 'Codelinien'}
+            {codeTrefferSichtbar > 0 && (
+              <span className="sr-only">
+                , davon {codeTrefferSichtbar} passend zum Codeformat
+              </span>
+            )}
           </p>
 
           <Button
@@ -304,6 +322,15 @@ export function ShopListe({ lines, className }: ShopListeProps) {
           </Field>
         </div>
 
+        {/* Codesuche: Hinweis, dass das Format passt — welche Linie zum Schloss gehört, entscheidet die Anwendung */}
+        {codeTrefferSichtbar > 0 && (
+          <p className="mt-4 max-w-measure text-small text-foreground-muted">
+            Ihr Code <span className="font-mono font-semibold text-foreground">{query.trim()}</span> passt zum
+            Codeformat von {codeTrefferSichtbar} {codeTrefferSichtbar === 1 ? 'Codelinie' : 'Codelinien'}. Welche
+            davon zu Ihrem Schloss gehört, erkennen Sie an der Anwendung.
+          </p>
+        )}
+
         {/* „Filter zurücksetzen“ erscheint nur, wenn ein Filter aktiv ist */}
         {activeCount > 0 && (
           <div className="mt-4 flex justify-end">
@@ -354,7 +381,9 @@ export function ShopListe({ lines, className }: ShopListeProps) {
                 >
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                     <h3 id={`${listenId}-titel`} className="eyebrow">
-                      {gruppe.kopf}
+                      <Link href={gruppe.href} prefetch={false} className="hover:text-primary hover:underline">
+                        {gruppe.kopf}
+                      </Link>
                     </h3>
                     <p className="font-mono text-caption text-foreground-muted">
                       {gruppe.schluesseltyp && <>{gruppe.schluesseltyp} · </>}
@@ -403,6 +432,11 @@ export function ShopListe({ lines, className }: ShopListeProps) {
                             />
                             <span className="col-span-9 col-start-3 font-mono text-small text-foreground-muted md:col-span-3 md:col-start-auto lg:col-span-4">
                               {line.codeFormatLabel}
+                              {codeTreffer.has(line.id) && (
+                                <Badge tone="primary" className="ml-2 align-middle font-sans">
+                                  passt zum Codeformat
+                                </Badge>
+                              )}
                             </span>
                             <span className="col-span-9 col-start-3 md:col-span-2 md:col-start-auto md:text-right">
                               <span className="whitespace-nowrap font-mono text-body font-semibold tabular-nums text-foreground">

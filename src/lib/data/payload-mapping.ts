@@ -268,6 +268,7 @@ export function codeLineZuSeite(doc: Produkte): CodeLine {
   if (doc.beispiel) line.example = true;
   const gpsr = gpsrZuSeite(doc.gpsr);
   if (gpsr) line.gpsr = gpsr;
+  if (doc.updatedAt) line.updatedAt = doc.updatedAt;
   return line;
 }
 
@@ -488,6 +489,7 @@ export function fahrzeugmarkeZuSeite(doc: Fahrzeugmarken, gruppen?: Map<number, 
   }
   const seo = eigeneSeoZuSeite(doc.seo);
   if (seo) make.seo = seo;
+  if (doc.updatedAt) make.updatedAt = doc.updatedAt;
   return make;
 }
 

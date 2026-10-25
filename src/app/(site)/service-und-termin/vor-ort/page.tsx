@@ -24,14 +24,15 @@ const SERVICES = [
     title: 'Autoschlüssel am Fahrzeug',
     body:
       'Programmieren und Anlernen setzen Zugriff auf das Fahrzeug voraus. Diese Arbeiten lassen '
-      + 'sich nicht per Versand erledigen.',
+      + 'sich nicht per Versand erledigen: Sie bringen das Fahrzeug zum Termin in unsere Werkstatt '
+      + 'in Wetzlar. Ein Einsatz bei Ihnen ist nur nach individueller Prüfung möglich.',
     needs: [
-      'Fahrzeug am vereinbarten Ort',
+      'Fahrzeug zum Termin in der Werkstatt',
       'Fahrzeugschein im Original',
       'Nachweis, dass Sie über das Fahrzeug verfügen dürfen',
     ],
     href: '/autoschluessel/anfrage',
-    cta: 'Termin starten',
+    cta: 'Termin anfragen',
   },
   {
     title: 'Zylinder- und Schlosstausch',
@@ -168,8 +169,8 @@ export default async function VorOrtPage() {
                   Einsatzgebiete
                 </p>
                 <p className="mt-2 max-w-measure text-small text-foreground-muted">
-                  Vor-Ort-Leistungen erbringen wir in folgenden Regionen. Bestellungen aus dem Shop
-                  liefern wir deutschlandweit.
+                  Werkstatt, Anreise und regionale Leistungen stehen auf diesen Seiten. Bestellungen aus
+                  dem Shop liefern wir deutschlandweit.
                 </p>
                 <ul className="mt-3 flex flex-wrap gap-x-4">
                   {cities.map((city) => (

@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { getCities, getCity } from '@/lib/data';
+import { getCities, getCity, getSettings } from '@/lib/data';
+import { formatWeekday } from '@/lib/format';
+import { standort } from '@/lib/rechtliches/firma';
 import { areaByKey } from '@/lib/navigation';
 import { enthaeltPlatzhalter, istPlatzhalter } from '@/lib/platzhalter';
 import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
@@ -43,9 +45,20 @@ const alsFakt = (wert: string) => !istPlatzhalter(wert) && !enthaeltPlatzhalter(
 
 export default async function CityPage(props: { params: Promise<{ city: string }> }) {
   const { city: slug } = await props.params;
-  const city = await getCity(slug);
+  const [city, settings] = await Promise.all([getCity(slug), getSettings()]);
 
   if (!city) notFound();
+
+  // Die Werkstatt steht in den Einstellungen; liegt sie in dieser Stadt, zeigt die Seite Anschrift und Öffnungszeiten.
+  const werkstatt = standort(settings.company);
+  const werkstattHier = werkstatt && werkstatt.city === city.city ? werkstatt : undefined;
+  const oeffnungszeiten = settings.openingHours.filter((eintrag) => eintrag.spans.length > 0);
+  const mitRadius = city.onSiteRadiusKm > 0;
+  const lead = werkstattHier
+    ? `Unsere Werkstatt: ${werkstattHier.street}, ${werkstattHier.postalCode} ${werkstattHier.city}. Einsätze vor Ort nur nach Prüfung; Bestellungen aus dem Shop liefern wir innerhalb Deutschlands.`
+    : mitRadius
+      ? `Vor-Ort-Leistungen im Umkreis von etwa ${city.onSiteRadiusKm}\u00a0km. Bestellungen aus dem Shop liefern wir innerhalb Deutschlands.`
+      : 'Einsätze vor Ort nur nach Prüfung. Bestellungen aus dem Shop liefern wir innerhalb Deutschlands.';
 
   const areas = city.servicesOffered.map((key) => areaByKey(key)).filter(Boolean);
   const einleitung = alsFakt(city.localIntro) ? city.localIntro : null;
@@ -102,7 +115,7 @@ export default async function CityPage(props: { params: Promise<{ city: string }
       <PageHeader
         eyebrow={city.state}
         title={`Schlüssel- und Schließtechnik in ${city.city}`}
-        lead={`Vor-Ort-Leistungen im Umkreis von etwa ${city.onSiteRadiusKm}\u00a0km. Bestellungen aus dem Shop liefern wir innerhalb Deutschlands.`}
+        lead={lead}
         crumbs={crumbs}
         actions={
           <ButtonLink href="/autoschluessel/anfrage" pfeil>
@@ -114,11 +127,49 @@ export default async function CityPage(props: { params: Promise<{ city: string }
         {schriftfeld}
       </PageHeader>
 
+      {werkstattHier && (
+        <Section tight labelledBy="werkstatt-titel">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+            <SectionHeading
+              id="werkstatt-titel"
+              className="lg:col-span-4"
+              nummer="01"
+              eyebrow={werkstattHier.label}
+              title={`Werkstatt in ${werkstattHier.city}`}
+            />
+            <div className="lg:col-span-8">
+              <address className="text-body not-italic text-foreground">
+                {werkstattHier.street}
+                <br />
+                {werkstattHier.postalCode} {werkstattHier.city}
+              </address>
+              {oeffnungszeiten.length > 0 && (
+                <>
+                  <p className="mt-6 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                    Öffnungszeiten
+                  </p>
+                  <dl className="mt-2 grid max-w-md grid-cols-3 gap-y-1 text-small">
+                    {oeffnungszeiten.map((eintrag) => (
+                      <div key={eintrag.day} className="contents">
+                        <dt className="text-foreground-muted">{formatWeekday(eintrag.day)}</dt>
+                        <dd className="col-span-2 font-mono tabular-nums text-foreground">
+                          {eintrag.spans.map((span) => `${span.from}–${span.to}`).join(' · ')}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </>
+              )}
+            </div>
+          </div>
+        </Section>
+      )}
+
       <Section tone="muted">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <SectionHeading
             className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start"
-            nummer="01"
+            nummer={werkstattHier ? '02' : '01'}
             eyebrow="Leistungen"
             title="Bereiche in dieser Region"
           />

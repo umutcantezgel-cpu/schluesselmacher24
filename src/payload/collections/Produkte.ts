@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload';
+import type { CollectionConfig, TextFieldSingleValidation } from 'payload';
 
 import { pruefeCodeMuster, codePasst } from '../../lib/code-pattern';
 import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
@@ -15,6 +15,10 @@ import { loeschsperre } from '../hooks/loeschsperre';
 import { erneuernHooks } from '../hooks/revalidate';
 
 const istCodeSchluessel = (data: Record<string, unknown> | undefined) => data?.typ !== 'standard';
+
+/** Adressen der Übersichtsseiten unter /schluessel-nach-code/ — kein Artikel darf sie belegen. */
+const RESERVIERTE_ADRESSEN = new Set(['kategorie', 'hersteller']);
+const slugPruefung = slugFeld().validate as (wert: unknown, optionen: unknown) => true | string;
 const istStandardartikel = (data: Record<string, unknown> | undefined) => data?.typ === 'standard';
 
 /**
@@ -59,7 +63,12 @@ export const Produkte: CollectionConfig = {
       ],
       admin: { position: 'sidebar' },
     },
-    slugFeld(),
+    slugFeld({
+      validate: ((wert: unknown, optionen: unknown) =>
+        typeof wert === 'string' && RESERVIERTE_ADRESSEN.has(wert)
+          ? 'Diese Adresse ist für eine Übersichtsseite reserviert. Bitte eine andere wählen.'
+          : slugPruefung(wert, optionen)) as TextFieldSingleValidation,
+    }),
     kennungFeld(),
     {
       name: 'beispiel',
