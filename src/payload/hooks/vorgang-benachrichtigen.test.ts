@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { einstellungenZuPayload } from '../../lib/data/payload-mapping';
+import { formatCents } from '../../lib/format';
 import { echteEinstellungen } from '../../lib/rechtliches/test-hilfen';
 import { hashToken } from '../../lib/server/access-token';
 import type { Vorgaenge } from '../../payload-types';
@@ -246,6 +247,123 @@ describe('vorgangNachAenderung', () => {
     await nach({ doc: doc(), operation: 'update', req: r });
     expect(gesendet).toHaveLength(0);
     expect(update).not.toHaveBeenCalled();
+  });
+});
+
+describe('Statusverlauf und Foto-Freigabe', () => {
+  const foto = (teil: Partial<Vorgaenge> = {}) =>
+    doc({
+      nummer: 'SM24-A-2026-0011',
+      art: 'anfrage',
+      bereich: 'schluessel-nach-vorlage',
+      prozess: 'gefuehrte-anfrage',
+      status: 'geprueft',
+      nachrichtAnKunde: null,
+      zahlung: { umfang: null, betragCent: null, status: null },
+      versand: null,
+      freigabe: { preisCent: 2490, einsendenNoetig: true, hinweis: 'Rohling BKS.' },
+      ...teil,
+    } as Partial<Vorgaenge>);
+
+  it('schreibt jeden Statuswechsel mit altem und neuem Status und Bearbeiter in die Notizen', () => {
+    const data = vor({ data: { ...doc(), status: 'versendet' }, originalDoc: doc(), operation: 'update', req: req() });
+    expect(data.notizen?.at(-1)).toMatchObject({
+      von: 'team',
+      am: expect.any(String),
+      text: 'Status von „In Prüfung“ auf „Versendet“ geändert (Mina Saad).',
+    });
+    // Kundensichtbar nur die Schritte der Foto-Prüfung.
+    expect(data.verlauf).toEqual([]);
+  });
+
+  it('legt bei „Freigegeben“ mit Preis die Zahlung an und merkt die Freigabe-Mail vor', () => {
+    const r = req();
+    const original = foto({ zahlung: { umfang: 'gesamt', betragCent: 1990, status: 'offen', checkoutSitzung: 'cs_alt' } });
+    const data = vor({ data: { ...original, status: 'freigegeben' }, originalDoc: original, operation: 'update', req: r });
+    expect(data.zahlung).toMatchObject({ umfang: 'gesamt', betragCent: 2490, status: 'offen', checkoutSitzung: null, ablaufAm: null });
+    expect(data.notizen?.map((n) => n.text)).toEqual([
+      'Status von „Geprüft“ auf „Freigegeben“ geändert (Mina Saad).',
+      `Betrag zur Freigabe von ${formatCents(1990)} auf ${formatCents(2490)} geändert (Mina Saad).`,
+    ]);
+    expect(data.verlauf?.at(-1)?.text).toContain('Den Auftrag erteilen Sie mit der Zahlung');
+    expect(data.freigabe?.freigegebenAm).toEqual(expect.any(String));
+    expect(r.context['sm24Vorhaben:42']).toEqual({ statusMail: { status: 'freigegeben' }, sitzungBeenden: 'cs_alt' });
+  });
+
+  it('schickt die Freigabe mit Zahlungslink, wenn der Preis nachgetragen wird', () => {
+    const r = req();
+    const original = foto({ status: 'freigegeben', freigabe: { preisCent: null, einsendenNoetig: false }, nachrichtAnKunde: 'Preis wie besprochen.' });
+    const data = vor({ data: { ...original, freigabe: { preisCent: 2490, einsendenNoetig: false } }, originalDoc: original, operation: 'update', req: r });
+    expect(data.zahlung).toMatchObject({ umfang: 'gesamt', betragCent: 2490, status: 'offen' });
+    expect(data.nachrichtAnKunde).toBe('');
+    expect(r.context['sm24Vorhaben:42']).toEqual({ statusMail: { status: 'freigegeben', nachricht: 'Preis wie besprochen.' } });
+
+    // Unverändert gespeichert: keine zweite Zahlung, keine zweite Mail.
+    const angelegt = foto({ status: 'freigegeben', zahlung: { umfang: 'gesamt', betragCent: 2490, status: 'offen' } });
+    const r2 = req();
+    vor({ data: { ...angelegt }, originalDoc: angelegt, operation: 'update', req: r2 });
+    expect(r2.context).toEqual({});
+  });
+
+  it('setzt eine freigegebene Fotoanfrage nach Zahlung von Hand auf „In Fertigung“', () => {
+    const r = req();
+    const original = foto({ status: 'freigegeben', zahlung: { umfang: 'gesamt', betragCent: 2490, status: 'offen' } });
+    const data = vor({ data: { ...original, zahlung: { ...original.zahlung, status: 'bezahlt' } }, originalDoc: original, operation: 'update', req: r });
+    expect(data.status).toBe('in-fertigung');
+    expect(data.verlauf?.at(-1)?.text).toContain('Auftrag erteilt');
+    expect(data.notizen?.map((n) => n.text)).toEqual([
+      'Zahlungsstand von Hand von „Offen“ auf „Bezahlt“ gesetzt (Mina Saad).',
+      'Status von „Freigegeben“ auf „In Fertigung“ geändert (Mina Saad).',
+    ]);
+    expect(r.context['sm24Vorhaben:42']).toEqual({ zahlungsMail: true, vertrag: true });
+  });
+
+  it('sendet die Freigabe mit neuem persönlichem Zahlungslink und ersetzt den Hash erst nach dem Versand', async () => {
+    vi.stubEnv('PAYMENT_PROVIDER', 'stripe');
+    vi.stubEnv('PAYMENT_API_KEY', 'sk_test_x');
+    vi.stubEnv('PAYMENT_WEBHOOK_SECRET', 'whsec_x');
+    const texte: string[] = [];
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (_url: string, init: RequestInit) => {
+        texte.push(JSON.parse(init.body as string).text);
+        return new Response(JSON.stringify({ id: 're_2' }), { status: 200 });
+      }),
+    );
+    const r = req();
+    r.payload.findGlobal = vi.fn(async () => einstellungenZuPayload(echteEinstellungen()) as never);
+    r.context['sm24Vorhaben:42'] = { statusMail: { status: 'freigegeben' } };
+    const gespeichert = foto({
+      status: 'freigegeben',
+      zahlung: { umfang: 'gesamt', betragCent: 2490, status: 'offen' },
+      zugriffsHash: 'alt',
+    });
+    await nach({ doc: gespeichert, operation: 'update', req: r });
+
+    expect(texte).toHaveLength(1);
+    const link = texte[0].match(/https?:\/\/\S+\/bestellung\/42\?t=([\w-]+)/);
+    expect(link).not.toBeNull();
+    expect(texte[0]).toContain('Langgasse 70');
+    const daten = update.mock.calls[0][0].data as Partial<Vorgaenge>;
+    expect(daten.zugriffsHash).toBe(hashToken(link![1]));
+    expect(daten.mails?.[0]).toMatchObject({ art: 'freigabe', ergebnis: 'gesendet' });
+    expect(daten.notizen?.at(-1)?.text).toContain('neuem persönlichem Zahlungslink');
+
+    // Scheitert die Mail, bleibt der bisherige Link gültig.
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ name: 'validation_error' }), { status: 422 })));
+    update.mockClear();
+    r.context['sm24Vorhaben:42'] = { statusMail: { status: 'freigegeben' } };
+    await nach({ doc: gespeichert, operation: 'update', req: r });
+    expect((update.mock.calls[0][0].data as Partial<Vorgaenge>).zugriffsHash).toBeUndefined();
+  });
+
+  it('sendet ohne Online-Zahlung die Freigabe ohne Link und ohne neuen Hash', async () => {
+    const r = req();
+    r.context['sm24Vorhaben:42'] = { statusMail: { status: 'freigegeben' } };
+    await nach({ doc: foto({ status: 'freigegeben', zahlung: { umfang: 'gesamt', betragCent: 2490, status: 'offen' } }), operation: 'update', req: r });
+    expect(gesendet).toHaveLength(1);
+    expect(gesendet[0].betreff).toBe('Ihre Anfrage ist freigegeben – SM24-A-2026-0011');
+    expect((update.mock.calls[0][0].data as Partial<Vorgaenge>).zugriffsHash).toBeUndefined();
   });
 });
 

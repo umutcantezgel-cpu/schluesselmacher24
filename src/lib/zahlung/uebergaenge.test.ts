@@ -117,6 +117,46 @@ describe('zahlungsUebergang: Zahlung eingegangen', () => {
   });
 });
 
+describe('zahlungsUebergang: freigegebene Fotoanfrage', () => {
+  const foto = (teil: Partial<BusinessRecord> = {}) =>
+    vorgang(
+      {
+        reference: 'SM24-A-2026-0011',
+        kind: 'anfrage',
+        area: 'schluessel-nach-vorlage',
+        process: 'gefuehrte-anfrage',
+        status: 'freigegeben',
+        approval: { priceCents: 2490, sendInRequired: true },
+        ...teil,
+      },
+      { scope: 'gesamt', amountCents: 2490 },
+    );
+  const bezahlt = (v: BusinessRecord) =>
+    zahlungsUebergang(
+      v,
+      completed({ betragCent: 2490, metadata: { vorgangId: '7', nummer: v.reference, art: 'anfrage', umgebung: 'production' } }),
+      KONTEXT,
+    );
+
+  it('setzt mit der Zahlung den Status auf „In Fertigung“ — mit Verlauf und Notiz', () => {
+    const u = bezahlt(foto());
+    expect(u?.ergebnis).toBe('bezahlt');
+    expect(u?.mail).toEqual({ art: 'bezahlt' });
+    expect(u?.aenderung?.status).toBe('in-fertigung');
+    expect(u?.aenderung?.timeline?.map((e) => e.message).slice(-2)).toEqual([
+      VERLAUF.bezahlt,
+      'Auftrag erteilt. Sobald Ihr Originalschlüssel bei uns eingegangen ist, fertigen wir Ihren Schlüssel.',
+    ]);
+    expect(u?.aenderung?.internalNotes?.at(-1)?.message).toContain('„In Fertigung“');
+  });
+
+  it('ändert den Status nicht, wenn die Anfrage nicht (mehr) freigegeben ist', () => {
+    const u = bezahlt(foto({ status: 'wartet-auf-kunde' }));
+    expect(u?.ergebnis).toBe('bezahlt');
+    expect(u?.aenderung?.status).toBeUndefined();
+  });
+});
+
 describe('zahlungsUebergang: nicht abgeschlossen', () => {
   it('gibt einen neuen Termin frei, wenn die Sitzung abläuft', () => {
     const u = zahlungsUebergang(vorgang(), expired(), KONTEXT);

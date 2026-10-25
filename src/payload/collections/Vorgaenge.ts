@@ -2,23 +2,12 @@ import type { CollectionConfig, Field } from 'payload';
 
 import { istInhaber, istTeam } from '../access/rollen';
 import { BEREICHE, PROZESSE } from '../fields/gemeinsam';
+import { VORGANG_STATUS } from '../fields/vorgang-status';
 import { bestaetigungSenden } from '../hooks/bestaetigung-senden';
 import { terminAktionen } from '../hooks/termin-aktionen';
 import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-benachrichtigen';
 
-export const VORGANG_STATUS = [
-  { label: 'Neu', value: 'neu' },
-  { label: 'In Prüfung', value: 'in-pruefung' },
-  { label: 'Geprüft', value: 'geprueft' },
-  { label: 'Freigegeben', value: 'freigegeben' },
-  { label: 'Wartet auf Kunde', value: 'wartet-auf-kunde' },
-  { label: 'Nicht möglich', value: 'nicht-moeglich' },
-  { label: 'In Fertigung', value: 'in-fertigung' },
-  { label: 'Terminiert', value: 'terminiert' },
-  { label: 'Versendet', value: 'versendet' },
-  { label: 'Abgeschlossen', value: 'abgeschlossen' },
-  { label: 'Storniert', value: 'storniert' },
-];
+export { VORGANG_STATUS };
 
 const AKTEURE = [
   { label: 'Kunde', value: 'kunde' },
@@ -107,10 +96,14 @@ export const Vorgaenge: CollectionConfig = {
   admin: {
     group: 'Aufträge',
     useAsTitle: 'nummer',
-    defaultColumns: ['nummer', 'art', 'bereich', 'status', 'createdAt'],
-    listSearchableFields: ['nummer', 'kontakt.email', 'kontakt.nachname', 'kontakt.firma'],
+    // Stand der Vermittlung als Spalte (Erg. Leitfaden §7); filterbar über „Filter“ → „Vermittlung“.
+    defaultColumns: ['nummer', 'art', 'bereich', 'status', 'vermittlung.status', 'createdAt'],
+    listSearchableFields: ['nummer', 'kontakt.email', 'kontakt.nachname', 'kontakt.firma', 'vermittlung.notiz'],
     pagination: { defaultLimit: 50 },
-    description: 'Alle Bestellungen, Anfragen, Termine und Projekte. Neueste oben.',
+    description:
+      'Alle Bestellungen, Anfragen, Termine, Projekte und Partner-Bewerbungen. Neueste oben. '
+      + 'Partner-Bewerbungen haben die Art „Partner-Bewerbung“ und Nummern mit „N“ (z. B. SM24-N-2026-0001); '
+      + 'die Firma steht unter „Kontakt“. Vermittelte Aufträge: Spalte „Stand der Vermittlung“ oder Filter.',
     components: {
       // Telefontermin eintragen (Team) und CSV-Export für die Buchhaltung (Inhaber).
       beforeListTable: ['/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge'],
@@ -171,7 +164,8 @@ export const Vorgaenge: CollectionConfig = {
         position: 'sidebar',
         description:
           'Mail geht bei „Freigegeben“, „Nicht möglich“, „Wartet auf Kunde“, „Terminiert“, „Versendet“ '
-          + 'und „Storniert“. '
+          + 'und „Storniert“. Bei Schlüsseln nach Vorlage enthält die Freigabe Preis, Zahlungslink und '
+          + 'ggf. die Einsendeanweisung. '
           + 'Haken entfernen, um diesen einen Wechsel still zu speichern.',
       },
     },
@@ -304,7 +298,11 @@ export const Vorgaenge: CollectionConfig = {
           admin: { condition: (data) => data?.bereich === 'schluessel-nach-vorlage' },
           description:
             'Ergebnis der Foto-Prüfung: Ablauf eingegangen → geprüft → freigegeben / Rückfrage („Wartet auf Kunde“) '
-            + '/ nicht möglich → Bestellung. Eine Freigabe ist noch keine Fertigungszusage.',
+            + '/ nicht möglich → Bestellung. Eine Freigabe ist noch keine Fertigungszusage. '
+            + 'Preis eintragen und Status „Freigegeben“ setzen: Die Zahlung wird angelegt, der Kunde erhält per Mail '
+            + 'Preis und persönlichen Zahlungslink (und, wenn angehakt, die Einsendeanweisung an die Werkstatt). '
+            + 'Mit der Zahlung erteilt er den Auftrag; der Status springt dann auf „In Fertigung“. '
+            + 'Ohne Preis geht die Freigabe ohne Zahlungslink hinaus — wird der Preis später eingetragen, folgt die Mail mit Link.',
           fields: [
             {
               name: 'freigabe',
@@ -314,12 +312,17 @@ export const Vorgaenge: CollectionConfig = {
                 {
                   type: 'row',
                   fields: [
-                    { name: 'preisCent', type: 'number', label: 'Preis (Cent)', min: 0, admin: { width: '34%', step: 1, description: 'Preis der Anfertigung inklusive Umsatzsteuer, in Cent.' } },
+                    { name: 'preisCent', type: 'number', label: 'Preis (Cent)', min: 0, admin: { width: '34%', step: 1, description: 'Betrag, den der Kunde über den Zahlungslink zahlt — inklusive Umsatzsteuer und, falls angefallen, Versand. In Cent (24,90 € = 2490).' } },
                     { name: 'einsendenNoetig', type: 'checkbox', label: 'Originalschlüssel einsenden', admin: { width: '33%' } },
                     { name: 'freigegebenAm', type: 'date', label: 'Freigegeben am', admin: { width: '33%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
                   ],
                 },
-                { name: 'hinweis', type: 'textarea', label: 'Hinweis an den Kunden' },
+                {
+                  name: 'hinweis',
+                  type: 'textarea',
+                  label: 'Hinweis an den Kunden',
+                  admin: { description: 'Erscheint in der Mail zur Freigabe bzw. als Begründung bei „Nicht möglich“.' },
+                },
               ],
             },
           ],

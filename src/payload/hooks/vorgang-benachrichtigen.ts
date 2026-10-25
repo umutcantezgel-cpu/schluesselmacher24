@@ -1,13 +1,17 @@
 import { APIError, isolateObjectProperty, type CollectionAfterChangeHook, type CollectionBeforeChangeHook, type PayloadRequest } from 'payload';
 
 import { einstellungenZuSeite, vorgangAenderungZuPayload, vorgangZuSeite } from '../../lib/data/payload-mapping';
+import { formatCents } from '../../lib/format';
+import { auftragErteiltVerlauf, fotoanfrageVerlauf, freigabeZahlbar, istFotoanfrage } from '../../lib/foto-freigabe';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '../../lib/mail/versand';
 import { BESTAETIGENDE_STATUS, sendeVertragsbestaetigung, vertragsbestaetigungOffen } from '../../lib/mail/vertrag';
-import { istStatusMitMail, mailArtZumStatus, statusMail, type StatusMitMail } from '../../lib/mail/vorlagen/status';
+import { vorgangsLink } from '../../lib/mail/vorlagen/gemeinsam';
+import { istStatusMitMail, mailArtZumStatus, statusMail, type StatusMailDaten, type StatusMitMail } from '../../lib/mail/vorlagen/status';
 import { kundeBezahlt } from '../../lib/mail/vorlagen/zahlung';
-import type { MailLogEntry, Settings } from '../../lib/types';
+import type { AreaKey, BusinessRecord, MailLogEntry, Settings } from '../../lib/types';
 import { mailKonfiguration, zahlungKonfiguration } from '../../lib/umgebung';
 import type { Einstellungen, Vorgaenge } from '../../payload-types';
+import { statusBezeichnung } from '../fields/vorgang-status';
 
 /* ==========================================================================
    Hooks der Sammlung Vorgänge — nur für Änderungen des Teams im Backend
@@ -73,7 +77,15 @@ function notizenZusammenfuehren(formular: Notizen, gespeichert: Notizen): Notize
 /**
  * Vor dem Speichern: Zahlung von Hand nachhalten, Statuswechsel für die Mail
  * vormerken, Nachricht an den Kunden übernehmen und das Feld leeren — sonst
- * ginge sie beim nächsten Statuswechsel noch einmal hinaus.
+ * ginge sie beim nächsten Statuswechsel noch einmal hinaus. Jeder
+ * Statuswechsel steht mit altem und neuem Status, Zeit und Bearbeiter in den
+ * Notizen (Erg. Leitfaden §2).
+ *
+ * Foto-Freigabe („Schlüssel nach Vorlage“): Mit „Freigegeben“ und Preis legt
+ * der Hook die Zahlung an (Gesamtbetrag, offen); die Mail mit dem neuen
+ * persönlichen Zahlungslink geht nach dem Speichern hinaus. Wird der Preis
+ * später eingetragen oder geändert, folgt die Freigabe-Mail erneut. Zahlt der
+ * Kunde (oder setzt das Team „bezahlt“), springt der Status auf „In Fertigung“.
  *
  * Das Backend-Formular schickt den ganzen Stand vom Öffnen mit. Was der
  * Zahlungsdienst inzwischen gebucht hat, darf es nicht zurückdrehen: Ein
@@ -84,6 +96,18 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
   if (operation !== 'update' || !req.user || req.context?.[SYSTEM_AENDERUNG] || !originalDoc) return data;
   const jetzt = new Date().toISOString();
   const vorhaben: Vorhaben = {};
+  const bearbeiter = benutzerName(req.user);
+  const fotoanfrage = istFotoanfrage({ kind: originalDoc.art, area: originalDoc.bereich as AreaKey });
+  const freigabe = data.freigabe ?? originalDoc.freigabe;
+  const preis = Number(freigabe?.preisCent ?? 0);
+  const mitPreis = Number.isSafeInteger(preis) && preis > 0;
+  const informieren = (data.kundeInformieren ?? originalDoc.kundeInformieren) !== false;
+  const notiz = (text: string) => {
+    data.notizen = [...(data.notizen ?? originalDoc.notizen ?? []), { am: jetzt, von: 'team', text }];
+  };
+  const verlauf = (text: string) => {
+    data.verlauf = [...(data.verlauf ?? originalDoc.verlauf ?? []), { am: jetzt, von: 'team', text }];
+  };
 
   const gespeichert = originalDoc.zahlung;
   const formularZahlung = data.zahlung?.status;
@@ -115,29 +139,38 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
       if (!originalDoc.zahlung?.bezahltAm) data.zahlung.bezahltAm = jetzt;
       vorhaben.zahlungsMail = true;
       vorhaben.vertrag = true;
+      // Freigegebene Fotoanfrage von Hand bezahlt (Überweisung, bar): Auftrag erteilt.
+      if (fotoanfrage && (data.status ?? originalDoc.status) === 'freigegeben') {
+        if (!data.zahlung.umfang && mitPreis) data.zahlung = { ...data.zahlung, umfang: 'gesamt', betragCent: preis };
+        data.status = 'in-fertigung';
+        verlauf(auftragErteiltVerlauf(freigabe?.einsendenNoetig === true));
+      }
     }
-    data.notizen = [
-      ...(data.notizen ?? originalDoc.notizen ?? []),
-      {
-        am: jetzt,
-        von: 'team',
-        text:
-          `Zahlungsstand von Hand von „${ZAHLUNGSSTAND[zahlungAlt ?? ''] ?? '–'}“ auf „${ZAHLUNGSSTAND[zahlungNeu ?? ''] ?? '–'}“ `
-          + `gesetzt (${benutzerName(req.user)}).`,
-      },
-    ];
+    notiz(
+      `Zahlungsstand von Hand von „${ZAHLUNGSSTAND[zahlungAlt ?? ''] ?? '–'}“ auf „${ZAHLUNGSSTAND[zahlungNeu ?? ''] ?? '–'}“ `
+        + `gesetzt (${bearbeiter}).`,
+    );
   }
 
+  const statusWechsel = Boolean(data.status && data.status !== originalDoc.status);
   if (data.status && data.status !== originalDoc.status) {
+    // Statusverlauf (Erg. Leitfaden §2): intern mit altem und neuem Status, Zeit und Bearbeiter.
+    notiz(`Status von „${statusBezeichnung(originalDoc.status)}“ auf „${statusBezeichnung(data.status)}“ geändert (${bearbeiter}).`);
+    // Für den Kunden nur die Schritte der Foto-Prüfung (Statusabfrage).
+    const kundentext = fotoanfrage ? fotoanfrageVerlauf(data.status, mitPreis) : null;
+    if (kundentext) verlauf(kundentext);
+
     // Foto-Freigabe: Zeitpunkt der ersten Freigabe festhalten (Systemfeld).
     if (data.status === 'freigegeben' && !originalDoc.freigabe?.freigegebenAm) {
       data.freigabe = { ...(data.freigabe ?? originalDoc.freigabe ?? {}), freigegebenAm: jetzt };
     }
     const zahlung = originalDoc.zahlung;
-    if (data.status === 'storniert' && zahlung?.status === 'offen' && zahlung.checkoutSitzung) {
+    // Storniert, abgelehnt oder Rückfrage: Eine offene Zahlungsseite gilt nicht mehr.
+    const zahlungBeenden =
+      data.status === 'storniert' || (fotoanfrage && (data.status === 'nicht-moeglich' || data.status === 'wartet-auf-kunde'));
+    if (zahlungBeenden && zahlung?.status === 'offen' && zahlung.checkoutSitzung) {
       vorhaben.sitzungBeenden = zahlung.checkoutSitzung;
     }
-    const informieren = (data.kundeInformieren ?? originalDoc.kundeInformieren) !== false;
     if (informieren && istStatusMitMail(data.status)) {
       const nachricht = (data.nachrichtAnKunde ?? originalDoc.nachrichtAnKunde ?? '').trim();
       vorhaben.statusMail = { status: data.status, ...(nachricht ? { nachricht } : {}) };
@@ -148,6 +181,42 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
     // Annahme durch das Team: Ohne Online-Zahlung ist das der Vertragsschluss
     // (§ 3 Abs. 3, § 4 Abs. 2 der AGB) — die Bestätigung geht unabhängig vom Häkchen.
     if (BESTAETIGENDE_STATUS.includes(data.status)) vorhaben.vertrag = true;
+  }
+
+  // Foto-Freigabe mit Preis: Zahlung anlegen — beim Wechsel auf „Freigegeben“
+  // oder wenn der Preis danach eingetragen bzw. geändert wird.
+  if (fotoanfrage && (data.status ?? originalDoc.status) === 'freigegeben' && mitPreis) {
+    const alt = originalDoc.zahlung;
+    const erledigt = alt?.status === 'bezahlt' || alt?.status === 'erstattet';
+    const betragAlt = alt?.umfang ? (alt.betragCent ?? null) : null;
+    if (!erledigt && (statusWechsel || betragAlt !== preis)) {
+      if (alt?.status === 'offen' && alt.checkoutSitzung) vorhaben.sitzungBeenden = alt.checkoutSitzung;
+      data.zahlung = {
+        ...(data.zahlung ?? alt ?? {}),
+        umfang: 'gesamt',
+        betragCent: preis,
+        status: 'offen',
+        anbieterRef: null,
+        checkoutSitzung: null,
+        ablaufAm: null,
+        bezahltAm: null,
+        erstattetCent: null,
+      };
+      notiz(
+        betragAlt === null
+          ? `Zahlung über ${formatCents(preis)} zur Freigabe angelegt (${bearbeiter}).`
+          : betragAlt === preis
+            ? `Zahlung über ${formatCents(preis)} zur Freigabe wieder geöffnet (${bearbeiter}).`
+            : `Betrag zur Freigabe von ${formatCents(betragAlt)} auf ${formatCents(preis)} geändert (${bearbeiter}).`,
+      );
+      // Preis nachgetragen, Status unverändert: Freigabe mit Zahlungslink erneut senden.
+      if (!statusWechsel && informieren) {
+        const nachricht = (data.nachrichtAnKunde ?? originalDoc.nachrichtAnKunde ?? '').trim();
+        vorhaben.statusMail = { status: 'freigegeben', ...(nachricht ? { nachricht } : {}) };
+        data.nachrichtAnKunde = '';
+        data.kundeInformieren = true;
+      }
+    }
   }
 
   if (Object.keys(vorhaben).length) req.context[vorhabenSchluessel(originalDoc.id)] = vorhaben;
@@ -192,6 +261,36 @@ export async function vorgangVermerken(
 }
 
 /**
+ * Zusätze zur Freigabe-Mail einer Fotoanfrage: neuer persönlicher Link zur
+ * Zahlung (nur mit Online-Zahlung und offenem Betrag) und die Anschrift für
+ * die Einsendung. Der Link-Schlüssel selbst wird nie gespeichert, nur sein
+ * Hash — und der erst, wenn die Mail mit ihm rausging.
+ */
+async function freigabeAngaben(
+  vorgang: BusinessRecord,
+  status: StatusMitMail,
+  settings: Settings | undefined,
+  site: string,
+): Promise<{ mail: Pick<StatusMailDaten, 'zahlungsLink' | 'einsendeAnschrift'>; hash?: string }> {
+  if (status !== 'freigegeben' || !istFotoanfrage(vorgang)) return { mail: {} };
+  const mail: Pick<StatusMailDaten, 'zahlungsLink' | 'einsendeAnschrift'> = {};
+  let hash: string | undefined;
+  if (freigabeZahlbar(vorgang) && zahlungKonfiguration()) {
+    // Erst hier laden: Der Link-Schlüssel gehört zum Server der Seite.
+    const { createAccessToken } = await import('../../lib/server/access-token');
+    const neu = createAccessToken();
+    mail.zahlungsLink = vorgangsLink(site, vorgang.id, neu.token);
+    hash = neu.hash;
+  }
+  if (vorgang.approval?.sendInRequired) {
+    // Erst hier laden: Die Firmendaten importieren mit `@/`-Pfaden.
+    const { einsendeAnschrift } = await import('../../lib/mail/einsendung');
+    mail.einsendeAnschrift = einsendeAnschrift(settings?.company);
+  }
+  return { mail, hash };
+}
+
+/**
  * Nach dem Speichern: Statusmail bzw. Zahlungsmail an den Kunden, Eintrag im
  * Mailprotokoll, offene Zahlungsseite beim Stornieren beenden.
  *
@@ -224,18 +323,21 @@ export const vorgangNachAenderung: CollectionAfterChangeHook<Vorgaenge> = async 
   const kontext = vorlagenKontext(settings);
   const antwortAn = antwortAdresse(settings?.company);
   const eintraege: MailLogEntry[] = [];
+  /** Neuer Link-Schlüssel aus der Freigabe-Mail — nur, wenn sie mit ihm rausging. */
+  let neuerLink: string | undefined;
 
   if (vorhaben.statusMail) {
     const { status, nachricht } = vorhaben.statusMail;
-    eintraege.push(
-      await sendeVorlage({
-        art: mailArtZumStatus(status),
-        an: vorgang.contact.email,
-        inhalt: statusMail({ vorgang, status, nachricht, kontext }),
-        antwortAn,
-        idempotenzSchluessel: idempotenzSchluessel(vorgang.reference, `status-${status}`, doc.updatedAt),
-      }),
-    );
+    const freigabe = await freigabeAngaben(vorgang, status, settings, kontext.site);
+    const eintrag = await sendeVorlage({
+      art: mailArtZumStatus(status),
+      an: vorgang.contact.email,
+      inhalt: statusMail({ vorgang, status, nachricht, kontext, ...freigabe.mail }),
+      antwortAn,
+      idempotenzSchluessel: idempotenzSchluessel(vorgang.reference, `status-${status}`, doc.updatedAt),
+    });
+    eintraege.push(eintrag);
+    if (freigabe.hash && eintrag.result === 'gesendet') neuerLink = freigabe.hash;
   }
   if (vorhaben.zahlungsMail) {
     eintraege.push(
@@ -261,8 +363,23 @@ export const vorgangNachAenderung: CollectionAfterChangeHook<Vorgaenge> = async 
   if (eintraege.length === 0) return doc;
 
   try {
-    const neu = await vorgangVermerken(req, doc.id, { mailLog: [...(vorgang.mailLog ?? []), ...eintraege] });
-    return { ...doc, mails: neu.mails };
+    const neu = await vorgangVermerken(req, doc.id, {
+      mailLog: [...(vorgang.mailLog ?? []), ...eintraege],
+      ...(neuerLink
+        ? {
+            accessTokenHash: neuerLink,
+            internalNotes: [
+              ...vorgang.internalNotes,
+              {
+                at: new Date().toISOString(),
+                actor: 'system' as const,
+                message: 'Freigabe mit neuem persönlichem Zahlungslink gesendet; der bisherige Link gilt nicht mehr.',
+              },
+            ],
+          }
+        : {}),
+    });
+    return { ...doc, mails: neu.mails, notizen: neu.notizen };
   } catch (error) {
     req.payload.logger.error({ msg: `Mailprotokoll zu Vorgang ${doc.id} nicht gespeichert`, err: error });
     return doc;

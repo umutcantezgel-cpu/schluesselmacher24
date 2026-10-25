@@ -20,12 +20,17 @@ const STATUS_TEXT: Record<RecordStatus, { label: string; erklaerung: string }> =
   geprueft: { label: 'Geprüft', erklaerung: 'Die Prüfung ist abgeschlossen. Sie hören von uns.' },
   freigegeben: {
     label: 'Freigegeben',
-    erklaerung: 'Die Anfertigung ist nach Prüfung möglich. Die Freigabe ist noch keine Fertigungszusage.',
+    erklaerung:
+      'Die Anfertigung ist nach unserer Prüfung möglich; Preis und Weg zur Zahlung stehen in unserer E-Mail. '
+      + 'Die Freigabe ist noch keine Fertigungszusage: Den Auftrag erteilen Sie mit der Zahlung.',
   },
-  'nicht-moeglich': { label: 'Nicht möglich', erklaerung: 'Nach unserer Prüfung können wir diesen Auftrag nicht ausführen.' },
+  'nicht-moeglich': {
+    label: 'Nicht möglich',
+    erklaerung: 'Nach unserer Prüfung können wir diesen Auftrag leider nicht ausführen. Einzelheiten stehen in unserer E-Mail.',
+  },
   'wartet-auf-kunde': {
-    label: 'Wartet auf Sie',
-    erklaerung: 'Wir brauchen noch eine Angabe oder eine Unterlage von Ihnen.',
+    label: 'Rückfrage an Sie',
+    erklaerung: 'Wir brauchen noch eine Angabe oder eine Unterlage von Ihnen. Einzelheiten stehen in unserer E-Mail.',
   },
   'in-fertigung': { label: 'In Fertigung', erklaerung: 'Ihr Auftrag wird bearbeitet.' },
   terminiert: { label: 'Termin steht', erklaerung: 'Ihr Termin ist verbindlich eingeplant.' },

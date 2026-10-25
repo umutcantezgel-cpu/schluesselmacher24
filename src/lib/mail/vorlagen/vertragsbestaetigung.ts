@@ -12,6 +12,7 @@
  */
 
 import { formatCents, formatDateTime } from '../../format';
+import { gewuenschteStueckzahl, istFotoanfrage } from '../../foto-freigabe';
 import { eigentextAlsText } from '../../rechtliches/eigentext-text';
 import { anbieterZeilen, firmenname, kontakt, registereintrag, ustId } from '../../rechtliches/firma';
 import {
@@ -127,6 +128,22 @@ function terminInhalt(vorgang: BusinessRecord): Array<[string, string]> {
   return zeilen;
 }
 
+/**
+ * Vertragsinhalt einer bezahlten Fotoanfrage: das Angebot aus der Freigabe
+ * (Preis, Einsendung, Hinweis) und die Stückzahl der Anfrage.
+ */
+function fotoauftragInhalt(vorgang: BusinessRecord): Array<[string, string]> {
+  const freigabe = vorgang.approval ?? {};
+  const zeilen: Array<[string, string]> = [['Leistung', 'Schlüssel nach Vorlage — Anfertigung nach Ihrer Vorlage']];
+  const stueck = gewuenschteStueckzahl(vorgang);
+  if (stueck) zeilen.push(['Stückzahl laut Ihrer Anfrage', String(stueck)]);
+  const preis = freigabe.priceCents ?? vorgang.payment?.amountCents;
+  if (preis !== undefined) zeilen.push(['Preis laut Freigabe', `${formatCents(preis)} (inkl. 19 % USt.)`]);
+  zeilen.push(['Originalschlüssel', freigabe.sendInRequired ? 'Einsendung erforderlich (siehe E-Mail zur Freigabe)' : 'keine Einsendung nötig']);
+  if (freigabe.note?.trim()) zeilen.push(['Hinweis zur Freigabe', freigabe.note.trim().slice(0, 2000)]);
+  return zeilen;
+}
+
 function zustimmungsZeilen(consents: RecordConsents | undefined): Array<[string, string]> {
   if (!consents) return [];
   const am = consents.at ? `ja, am ${formatDateTime(consents.at)} Uhr` : 'ja';
@@ -141,7 +158,13 @@ function zustimmungsZeilen(consents: RecordConsents | undefined): Array<[string,
 function agbKurzfassung(vorgang: BusinessRecord, settings: VertragsbestaetigungDaten['settings']): string {
   const punkte = [`Ihr Vertragspartner ist ${firmenname(settings.company)}.`];
   punkte.push('Alle Preise sind Endpreise einschließlich 19 % Umsatzsteuer.');
-  if (vorgang.kind === 'bestellung') {
+  if (istFotoanfrage(vorgang)) {
+    punkte.push(
+      'Inhalt, Umfang und Preis richten sich nach unserem Angebot aus der Freigabe; mit Ihrer Zahlung haben Sie es angenommen.',
+      'Schlüssel nach Vorlage fertigen wir eigens nach Ihrer Vorlage; für die Richtigkeit Ihrer Angaben sind Sie verantwortlich. Für solche Anfertigungen besteht kein Widerrufsrecht.',
+      'Die Ware bleibt bis zur vollständigen Bezahlung unser Eigentum.',
+    );
+  } else if (vorgang.kind === 'bestellung') {
     punkte.push(
       'Versandkosten richten sich nach der gewählten Versandart; wir liefern nur an Anschriften in Deutschland.',
       'Schlüssel nach Code und gleichschließende Zylinder fertigen wir nach Ihren Angaben; für deren Richtigkeit sind Sie verantwortlich. Für solche Anfertigungen besteht kein Widerrufsrecht.',
@@ -163,6 +186,9 @@ function agbKurzfassung(vorgang: BusinessRecord, settings: VertragsbestaetigungD
 
 export function vertragsbestaetigung({ vorgang, kontext, settings, zahlarten }: VertragsbestaetigungDaten): MailInhalt {
   const bestellung = vorgang.kind === 'bestellung';
+  // Bezahlte Fotoanfrage: Kauf einer Anfertigung nach Vorlage — Ware, kein Termin.
+  const fotoauftrag = istFotoanfrage(vorgang);
+  const ware = bestellung || fotoauftrag;
   const site = kontext.site;
   const agbUrl = `${site}/rechtliches/agb`;
   const eigeneAgb = settings.legalTexts?.terms;
@@ -172,19 +198,26 @@ export function vertragsbestaetigung({ vorgang, kontext, settings, zahlarten }: 
   const bausteine: Baustein[] = [
     {
       art: 'absatz',
-      text: bestellung
-        ? 'vielen Dank für Ihre Bestellung. Hiermit nehmen wir sie an und bestätigen Ihnen den Vertrag. '
-          + 'Bitte bewahren Sie diese E-Mail auf: Sie enthält die Vertragsdaten, unsere AGB, die '
-          + 'Widerrufsbelehrung und das Muster-Widerrufsformular.'
-        : 'vielen Dank für Ihre Buchung. Hiermit bestätigen wir Ihnen den Vertrag über Ihren Termin. '
-          + 'Bitte bewahren Sie diese E-Mail auf: Sie enthält die Vertragsdaten, unsere AGB, die '
-          + 'Widerrufsbelehrung und das Muster-Widerrufsformular.',
+      text: fotoauftrag
+        ? 'vielen Dank für Ihren Auftrag. Mit Ihrer Zahlung haben Sie unser Angebot aus der Freigabe angenommen; '
+          + 'hiermit bestätigen wir Ihnen den Vertrag. Bitte bewahren Sie diese E-Mail auf: Sie enthält die '
+          + 'Vertragsdaten, unsere AGB, die Widerrufsbelehrung und das Muster-Widerrufsformular.'
+        : bestellung
+          ? 'vielen Dank für Ihre Bestellung. Hiermit nehmen wir sie an und bestätigen Ihnen den Vertrag. '
+            + 'Bitte bewahren Sie diese E-Mail auf: Sie enthält die Vertragsdaten, unsere AGB, die '
+            + 'Widerrufsbelehrung und das Muster-Widerrufsformular.'
+          : 'vielen Dank für Ihre Buchung. Hiermit bestätigen wir Ihnen den Vertrag über Ihren Termin. '
+            + 'Bitte bewahren Sie diese E-Mail auf: Sie enthält die Vertragsdaten, unsere AGB, die '
+            + 'Widerrufsbelehrung und das Muster-Widerrufsformular.',
     },
     nummerBaustein(vorgang),
     { art: 'ueberschrift', text: 'Ihr Vertragspartner' },
     { art: 'absatz', text: anbieterText(settings) },
     { art: 'ueberschrift', text: 'Vertragsinhalt' },
-    { art: 'felder', zeilen: bestellung ? positionsZeilen(vorgang) : terminInhalt(vorgang) },
+    {
+      art: 'felder',
+      zeilen: fotoauftrag ? fotoauftragInhalt(vorgang) : bestellung ? positionsZeilen(vorgang) : terminInhalt(vorgang),
+    },
   ];
 
   const zahlung = zahlungsZeilen(vorgang);
@@ -197,6 +230,15 @@ export function vertragsbestaetigung({ vorgang, kontext, settings, zahlarten }: 
       text:
         `Diese Positionen fertigen wir eigens nach Ihren Angaben: ${anfertigungen.map((line) => line.label).join(', ')}. `
         + 'Für sie besteht nach § 312g Abs. 2 Nr. 1 BGB kein Widerrufsrecht.',
+    });
+  }
+  if (fotoauftrag) {
+    bausteine.push({
+      art: 'hinweis',
+      titel: 'Kein Widerrufsrecht bei Anfertigungen nach Ihren Angaben',
+      text:
+        'Diesen Schlüssel fertigen wir eigens nach Ihrer Vorlage. Für ihn besteht nach § 312g Abs. 2 Nr. 1 BGB '
+        + 'kein Widerrufsrecht.',
     });
   }
 
@@ -224,9 +266,9 @@ export function vertragsbestaetigung({ vorgang, kontext, settings, zahlarten }: 
   } else {
     const firma = settings.company;
     bausteine.push(
-      ...rechtsBausteine(widerrufsbelehrung(bestellung ? 'waren' : 'dienstleistung', firma, site)),
+      ...rechtsBausteine(widerrufsbelehrung(ware ? 'waren' : 'dienstleistung', firma, site)),
       { art: 'absatz', text: 'Ende der Widerrufsbelehrung' },
-      ...rechtsBausteine([bestellung ? ausschlussSonderanfertigung() : erloeschenDienstleistung()]),
+      ...rechtsBausteine([ware ? ausschlussSonderanfertigung() : erloeschenDienstleistung()]),
       ...rechtsBausteine([musterWiderrufsformular(firma)]),
     );
   }

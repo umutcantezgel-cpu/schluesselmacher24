@@ -1,10 +1,12 @@
 /* ==========================================================================
    Zahlungszustand für die Kundenseite (/bestellung/[id])
    Reine Funktion: Welcher Hinweis erscheint, und darf der Kunde (erneut)
-   bezahlen? Gilt für Bestellungen und Termine.
+   bezahlen? Gilt für Bestellungen, Termine und freigegebene Fotoanfragen
+   („Schlüssel nach Vorlage“: Mit der Zahlung erteilt der Kunde den Auftrag).
    ========================================================================== */
 
 import { formatDateTime, formatTime } from '@/lib/format';
+import { istFotoanfrage } from '@/lib/foto-freigabe';
 import type { BusinessRecord } from '@/lib/types';
 
 export interface ZahlungsAnsicht {
@@ -42,12 +44,17 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   const zahlung = vorgang.payment;
   if (!zahlung) return null;
   const termin = vorgang.kind === 'termin';
+  const foto = istFotoanfrage(vorgang);
   const storniert = vorgang.status === 'storniert';
 
   if (zahlung.status === 'bezahlt') {
-    return umfeld.rueckkehr
-      ? { ton: 'success', titel: 'Vielen Dank', text: termin ? 'Ihre Anzahlung ist eingegangen.' : 'Ihre Zahlung ist eingegangen.' }
-      : null;
+    if (!umfeld.rueckkehr) return null;
+    const text = termin
+      ? 'Ihre Anzahlung ist eingegangen.'
+      : foto
+        ? 'Ihre Zahlung ist eingegangen. Damit ist Ihr Auftrag erteilt.'
+        : 'Ihre Zahlung ist eingegangen.';
+    return { ton: 'success', titel: 'Vielen Dank', text };
   }
   if (zahlung.status === 'erstattet') return null;
 
@@ -58,6 +65,13 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
       titel: 'Zahlung noch offen',
       text: 'Ihr Vorgang ist gespeichert. Wir melden uns mit den Zahlungsinformationen zu dieser Vorgangsnummer.',
     };
+  }
+
+  // Fotoanfrage: Bezahlt wird nur, solange sie freigegeben ist (nicht bei Rückfrage oder Absage).
+  if (foto && !storniert && vorgang.status !== 'freigegeben') {
+    return zahlung.status === 'offen'
+      ? { ton: 'info', titel: 'Zahlung derzeit nicht möglich', text: 'Wir prüfen Ihre Anfrage noch einmal und melden uns bei Ihnen.' }
+      : null;
   }
 
   if (storniert) {
@@ -102,19 +116,32 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   }
 
   const abgelaufen = Boolean(zahlung.expiresAt && Date.parse(zahlung.expiresAt) <= umfeld.jetzt.getTime());
+  // Fotoanfrage: Gespeichert ist die Freigabe; erst die Zahlung löst den Auftrag aus (Erg. Leitfaden §2).
+  const gespeichert = foto ? 'Ihre Freigabe bleibt bestehen.' : 'Ihre Bestellung ist gespeichert.';
   if (umfeld.abbruch) {
-    return { ton: 'warning', titel: 'Zahlung abgebrochen', text: 'Ihre Bestellung ist gespeichert. Sie können die Zahlung jederzeit fortsetzen.', knopf: 'jetzt' };
+    return { ton: 'warning', titel: 'Zahlung abgebrochen', text: `${gespeichert} Sie können die Zahlung jederzeit fortsetzen.`, knopf: 'jetzt' };
   }
   if (abgelaufen) {
-    return { ton: 'warning', titel: 'Zahlungslink abgelaufen', text: 'Ihre Bestellung ist gespeichert. Starten Sie die Zahlung bitte erneut.', knopf: 'erneut' };
+    return { ton: 'warning', titel: 'Zahlungslink abgelaufen', text: `${gespeichert} Starten Sie die Zahlung bitte erneut.`, knopf: 'erneut' };
   }
   if (!zahlung.checkoutSessionId) {
-    return { ton: 'warning', titel: 'Zahlung noch offen', text: 'Die Online-Zahlung wurde noch nicht gestartet.', knopf: 'jetzt' };
+    return foto
+      ? {
+          ton: 'info',
+          titel: 'Freigegeben – Zahlung offen',
+          text:
+            'Wir können Ihren Schlüssel anfertigen. Mit der Zahlung erteilen Sie den Auftrag; erst danach fertigen wir.',
+          knopf: 'jetzt',
+        }
+      : { ton: 'warning', titel: 'Zahlung noch offen', text: 'Die Online-Zahlung wurde noch nicht gestartet.', knopf: 'jetzt' };
   }
+  const bis = zahlung.expiresAt ? ` Der Zahlungslink gilt bis ${formatDateTime(zahlung.expiresAt)} Uhr.` : '';
   return {
     ton: 'info',
     titel: 'Zahlung noch offen',
-    text: `Gefertigt wird erst nach Zahlungseingang.${zahlung.expiresAt ? ` Der Zahlungslink gilt bis ${formatDateTime(zahlung.expiresAt)} Uhr.` : ''}`,
+    text: foto
+      ? `Mit der Zahlung erteilen Sie den Auftrag; gefertigt wird erst nach Zahlungseingang.${bis}`
+      : `Gefertigt wird erst nach Zahlungseingang.${bis}`,
     knopf: 'jetzt',
   };
 }

@@ -13,6 +13,7 @@
    ========================================================================== */
 
 import { formatCents } from '@/lib/format';
+import { auftragErteiltVerlauf, istFotoanfrage } from '@/lib/foto-freigabe';
 import type { VorgangsAenderung } from '@/lib/data/payload-mapping';
 import type { BusinessRecord, PaymentInfo, TimelineEntry } from '@/lib/types';
 
@@ -142,6 +143,7 @@ function bezahlt(
     notizen.push(eintrag(kontext.jetzt, 'Zahlung nach der Stornierung eingegangen – bitte Erstattung prüfen.'));
   }
 
+  const timeline = [...vorgang.timeline, eintrag(kontext.jetzt, vorgang.kind === 'termin' ? VERLAUF.anzahlung : VERLAUF.bezahlt)];
   const aenderung: VorgangsAenderung = {
     payment: {
       ...zahlung,
@@ -150,8 +152,21 @@ function bezahlt(
       checkoutSessionId: sitzung.id,
       ...(sitzung.paymentIntent ? { providerRef: sitzung.paymentIntent } : {}),
     },
-    timeline: [...vorgang.timeline, eintrag(kontext.jetzt, vorgang.kind === 'termin' ? VERLAUF.anzahlung : VERLAUF.bezahlt)],
+    timeline,
   };
+  // Freigegebene Fotoanfrage: Mit der Zahlung erteilt der Kunde den Auftrag (Erg. Leitfaden §2).
+  if (istFotoanfrage(vorgang) && vorgang.status === 'freigegeben') {
+    const einsenden = vorgang.approval?.sendInRequired === true;
+    aenderung.status = 'in-fertigung';
+    timeline.push(eintrag(kontext.jetzt, auftragErteiltVerlauf(einsenden)));
+    notizen.push(
+      eintrag(
+        kontext.jetzt,
+        'Zahlung zur Freigabe eingegangen – Status von „Freigegeben“ auf „In Fertigung“ gesetzt.'
+          + (einsenden ? ' Der Originalschlüssel muss noch eingesendet werden.' : ''),
+      ),
+    );
+  }
   if (notizen.length) aenderung.internalNotes = [...vorgang.internalNotes, ...notizen];
   return { aenderung, ergebnis: 'bezahlt', mail: { art: 'bezahlt' } };
 }
