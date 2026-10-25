@@ -1,0 +1,57 @@
+# Architecture Matrix
+
+| Route | Status | Word Count | Target Words | Interactive Module | Signature Interaction |
+|---|---|---|---|---|---|
+| /admin/[[...segments]] | PENDING_BUILDER | 70 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /[...unbekannt] | PENDING_BUILDER | 67 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /artikel/[slug] | PENDING_BUILDER | 716 | 916 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /artikel | PENDING_BUILDER | 536 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/anfrage | PENDING_BUILDER | 345 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/fahrzeugoeffnung | PENDING_BUILDER | 180 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/funkschluessel | PENDING_BUILDER | 166 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/kopieren | PENDING_BUILDER | 199 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make]/[model] | PENDING_BUILDER | 1325 | 1525 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken/[make] | PENDING_BUILDER | 635 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/marken | PENDING_BUILDER | 466 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/nachmachen | PENDING_BUILDER | 104 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel | PENDING_BUILDER | 1660 | 1860 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/programmieren | PENDING_BUILDER | 208 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/schluesselbart-fraesen | PENDING_BUILDER | 185 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /autoschluessel/smart-key | PENDING_BUILDER | 239 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /bestellung/[id] | PENDING_BUILDER | 896 | 1096 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen/konfigurator | PENDING_BUILDER | 243 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /elektronische-zutrittsloesungen | PENDING_BUILDER | 2076 | 2276 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder/konfigurator | PENDING_BUILDER | 185 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /gleichschliessende-zylinder | PENDING_BUILDER | 1393 | 1593 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /kasse | PENDING_BUILDER | 230 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| / | PENDING_BUILDER | 1142 | 1342 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber/[slug] | PENDING_BUILDER | 462 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /ratgeber | PENDING_BUILDER | 191 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/agb | PENDING_BUILDER | 371 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/cookie-einstellungen | PENDING_BUILDER | 191 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/datenschutz | PENDING_BUILDER | 661 | 861 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/impressum | PENDING_BUILDER | 216 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/versand-und-zahlung | PENDING_BUILDER | 368 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /rechtliches/widerruf | PENDING_BUILDER | 330 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen/konfigurator | PENDING_BUILDER | 249 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schliessanlagen | PENDING_BUILDER | 1442 | 1642 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code/[slug] | PENDING_BUILDER | 687 | 887 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-code | PENDING_BUILDER | 462 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage/anfrage | PENDING_BUILDER | 117 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /schluessel-nach-vorlage | PENDING_BUILDER | 1430 | 1630 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/anfrage | PENDING_BUILDER | 84 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/kontakt | PENDING_BUILDER | 318 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin | PENDING_BUILDER | 1487 | 1687 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/terminstatus | PENDING_BUILDER | 53 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /service-und-termin/vor-ort | PENDING_BUILDER | 479 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/[slug] | PENDING_BUILDER | 424 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik | PENDING_BUILDER | 789 | 989 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /sicherheitstechnik/sicherheitscheck | PENDING_BUILDER | 215 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /standorte/[city] | PENDING_BUILDER | 358 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /standorte | PENDING_BUILDER | 144 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik/[slug] | PENDING_BUILDER | 281 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /tuer-und-schliesstechnik | PENDING_BUILDER | 1515 | 1715 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /warenkorb | PENDING_BUILDER | 225 | 850 | EnterpriseRoiCalculator | BENTO_HOVER_GLOW_LIGHT |
+| /api/[...slug] | PENDING_BUILDER | 81 | 0 | - | - |
+| /api/kunden-upload | PENDING_BUILDER | 703 | 0 | - | - |
+| /llms.txt | PENDING_BUILDER | 141 | 0 | - | - |
