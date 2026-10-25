@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2024-10-25T21:05:00Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf Visueller Hebelwirkung (35%), Nutzer-Mehrwert/ROI (35%) und Machbarkeit (30%).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/services/page.tsx",
+      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
+      "title": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator",
+      "specification": "Interaktiver Enterprise ROI- und Ladezeit-Kalkulator auf `app/(site)/services/page.tsx` unter Nutzung von React 19 Server Actions und `useOptimistic`.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_005",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/showcase/spatial-bento-grid.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex für Feature-Karten auf `app/(site)/page.tsx` (`components/showcase/spatial-bento-grid.tsx`).",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
