@@ -59,7 +59,7 @@ export function istProduktionsBuild(env) {
 
 /** Anbindungen, die in Produktion fehlen dürfen, aber gemeldet werden. */
 const ANBINDUNGEN = [
-  { namen: ['CRON_SECRET'], folge: 'Die täglichen und stündlichen Crons werden abgewiesen (Löschfristen, Zahlungsabgleich).' },
+  { namen: ['CRON_SECRET'], folge: 'Die täglichen Crons werden abgewiesen (Löschfristen, Zahlungsabgleich).' },
   {
     namen: ['STORAGE_BUCKET', 'STORAGE_ACCESS_KEY', 'STORAGE_SECRET_KEY'],
     folge: 'Keine Dateiablage: Kunden können keine Fotos hochladen, Medien lassen sich nicht speichern.',

@@ -3,7 +3,7 @@ import { cronAbgelehnt } from '@/lib/server/cron-zugriff';
 import { zahlungenAbgleichen } from '@/lib/zahlung/abgleich';
 
 /*
- * GET /api/cron/zahlungen — stündlicher Abgleich offener Termin-Zahlungen
+ * GET /api/cron/zahlungen — täglicher Abgleich offener Termin-Zahlungen (mit Vercel Pro auch stündlich möglich)
  * (Vercel Cron). Zugang wie alle Cron-Routen über `CRON_SECRET`
  * (src/lib/server/cron-zugriff.ts). Antwort nur mit Zählern, ohne Vorgangsdaten.
  */

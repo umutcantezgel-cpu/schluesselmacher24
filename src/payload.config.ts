@@ -131,6 +131,10 @@ export default buildConfig({
             region: ablage.region,
             // S3-kompatible Anbieter (Supabase, R2) erwarten den Bucket im Pfad.
             forcePathStyle: Boolean(ablage.endpoint),
+            // Neuere AWS-SDKs senden sonst Prüfsummen-Trailer, die S3-kompatible
+            // Anbieter (Supabase, R2) nicht immer annehmen.
+            requestChecksumCalculation: 'WHEN_REQUIRED',
+            responseChecksumValidation: 'WHEN_REQUIRED',
             credentials: { accessKeyId: ablage.accessKeyId, secretAccessKey: ablage.secretAccessKey },
           }
         : {},

@@ -14,7 +14,7 @@ import { VERLAUF } from './uebergaenge';
 import { sitzungVerbuchen } from './verbuchen';
 
 /* ==========================================================================
-   Abgleich offener Termin-Zahlungen (stündlicher Cron)
+   Abgleich offener Termin-Zahlungen (täglicher Cron, Sicherheitsnetz zum Webhook)
    Sicherheitsnetz, falls ein Webhook ausbleibt: Ein unbezahlter Termin darf
    sein Zeitfenster nicht dauerhaft belegen.
    ========================================================================== */
