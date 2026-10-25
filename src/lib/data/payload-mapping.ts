@@ -924,6 +924,7 @@ export type VorgangsAenderung = Partial<
   Pick<
     BusinessRecord,
     | 'status'
+    | 'appointment'
     | 'payment'
     | 'timeline'
     | 'internalNotes'
@@ -1188,6 +1189,14 @@ export function vorgangZuPayload(record: BusinessRecord): VorgangDaten {
 export function vorgangAenderungZuPayload(aenderung: VorgangsAenderung): Partial<VorgangDaten> {
   const daten: Partial<VorgangDaten> = {};
   if (aenderung.status !== undefined) daten.status = aenderung.status;
+  if (aenderung.appointment !== undefined) {
+    daten.termin = {
+      datum: aenderung.appointment.date,
+      uhrzeit: aenderung.appointment.time,
+      dauerMinuten: aenderung.appointment.durationMinutes,
+      ort: aenderung.appointment.location,
+    };
+  }
   if (aenderung.payment !== undefined) daten.zahlung = zahlungZuPayload(aenderung.payment);
   if (aenderung.timeline !== undefined) daten.verlauf = aenderung.timeline.map(eintragZuPayload);
   if (aenderung.internalNotes !== undefined) daten.notizen = aenderung.internalNotes.map(eintragZuPayload);

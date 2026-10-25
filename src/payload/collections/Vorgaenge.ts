@@ -3,6 +3,7 @@ import type { CollectionConfig, Field } from 'payload';
 import { istInhaber, istTeam } from '../access/rollen';
 import { BEREICHE, PROZESSE } from '../fields/gemeinsam';
 import { bestaetigungSenden } from '../hooks/bestaetigung-senden';
+import { terminAktionen } from '../hooks/termin-aktionen';
 import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-benachrichtigen';
 
 export const VORGANG_STATUS = [
@@ -90,6 +91,10 @@ export const Vorgaenge: CollectionConfig = {
     listSearchableFields: ['nummer', 'kontakt.email', 'kontakt.nachname', 'kontakt.firma'],
     pagination: { defaultLimit: 50 },
     description: 'Alle Bestellungen, Anfragen, Termine und Projekte. Neueste oben.',
+    components: {
+      // Telefontermin eintragen (Team) und CSV-Export für die Buchhaltung (Inhaber).
+      beforeListTable: ['/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge'],
+    },
   },
   defaultSort: '-createdAt',
   access: {
@@ -103,7 +108,7 @@ export const Vorgaenge: CollectionConfig = {
     beforeChange: [vorgangVorAenderung],
     afterChange: [vorgangNachAenderung],
   },
-  endpoints: [bestaetigungSenden],
+  endpoints: [bestaetigungSenden, ...terminAktionen],
   fields: [
     {
       type: 'row',
@@ -161,6 +166,15 @@ export const Vorgaenge: CollectionConfig = {
       name: 'bestaetigungSenden',
       type: 'ui',
       admin: { position: 'sidebar', components: { Field: '/payload/components/BestaetigungSenden#BestaetigungSenden' } },
+    },
+    {
+      name: 'terminVerschieben',
+      type: 'ui',
+      admin: {
+        position: 'sidebar',
+        condition: (data) => data?.art === 'termin',
+        components: { Field: '/payload/components/TerminVerschieben#TerminVerschieben' },
+      },
     },
     {
       type: 'tabs',

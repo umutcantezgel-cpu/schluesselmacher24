@@ -14,7 +14,7 @@ import {
   type VorgangsAenderung,
 } from './payload-mapping';
 import { buildRecordId, buildReference, counterKey, nextSequenceFromExisting } from '@/lib/reference';
-import type { RecordKind } from '@/lib/types';
+import type { AppointmentInfo, RecordKind } from '@/lib/types';
 import { mitDatenbank } from '@/lib/umgebung';
 import type { Vorgaenge } from '@/payload-types';
 
@@ -367,6 +367,54 @@ export async function vorgangAendern(
   });
 }
 
+/* ---------- Termin verschieben ------------------------------------------- */
+
+export interface TerminVerschiebung {
+  vorgangId: string;
+  /** Neuer Termin (Datum, Uhrzeit, Dauer, Ort). */
+  neu: AppointmentInfo;
+  /**
+   * Prüft unter der Sperre des neuen Tages: `termineDesTages` sind die frisch
+   * gelesenen, nicht stornierten Vorgänge dieses Tages (der eigene kann darunter
+   * sein — die Prüfung nimmt ihn selbst aus).
+   */
+  istFrei: (termineDesTages: Vorgang[], vorgang: Vorgang) => boolean;
+  /** Weitere Änderungen am gesperrten Vorgang (Status, Verlauf, Notiz). */
+  aendern: (vorgang: Vorgang) => Omit<VorgangsAenderung, 'appointment'>;
+}
+
+/**
+ * Verschiebt einen Termin unter derselben Tagessperre wie `vorgangAnlegen`:
+ * erst der neue Tag (Advisory-Lock), dann die Zeile des Vorgangs. Wer
+ * gleichzeitig denselben Tag bucht, wartet und sieht danach den neuen Termin.
+ * Liefert den geänderten Vorgang, `null` ohne Vorgang; wirft
+ * `TerminVergebenFehler`, wenn das Zeitfenster nicht frei ist.
+ */
+export async function terminVerschieben(verschiebung: TerminVerschiebung): Promise<Vorgang | null> {
+  const { vorgangId, neu, istFrei, aendern } = verschiebung;
+  if (useJson) {
+    const items = await readRecordsFresh();
+    const current = items.find((r) => r.id === vorgangId);
+    if (!current) return null;
+    if (!istFrei(items.filter((r) => hatTerminImZeitraum(r, neu.date, neu.date)), current)) {
+      throw new TerminVergebenFehler(neu.date);
+    }
+    const next: Vorgang = { ...current, ...aendern(current), appointment: neu, updatedAt: new Date().toISOString() };
+    await adapter.write('records', items.map((r) => (r.id === vorgangId ? next : r)));
+    return next;
+  }
+  if (!/^\d{1,15}$/.test(vorgangId)) return null;
+  const payload = await payloadInstanz();
+  return inTransaktion(payload, async (t) => {
+    await t.execute(sql`SELECT pg_advisory_xact_lock(hashtext(${`sm24:termin:${neu.date}`}))`);
+    const vorgang = await vorgangSperren(payload, t, { vorgangId });
+    if (!vorgang) return null;
+    const tag = await vorgaengeFinden(payload, terminImZeitraum(neu.date, neu.date), t.req());
+    if (!istFrei(tag, vorgang)) throw new TerminVergebenFehler(neu.date);
+    return aenderungSchreiben(payload, t, vorgang, { ...aendern(vorgang), appointment: neu });
+  });
+}
+
 /* ---------- Zahlungsereignisse ------------------------------------------ */
 
 /** Woran ein Zahlungsereignis seinen Vorgang erkennt — in dieser Reihenfolge. */
@@ -548,6 +596,20 @@ function terminImZeitraum(von: string, bis: string): Where {
   };
 }
 
+/** Dateimodus: offene, unbezahlte Termine einer E-Mail-Adresse (wie die Abfrage in `vorgangAnlegen`). */
+function offeneTermine(items: Vorgang[], email: string, abDatum: string): number {
+  const adresse = email.trim().toLowerCase();
+  return items.filter(
+    (r) =>
+      r.kind === 'termin'
+      && r.contact.email.trim().toLowerCase() === adresse
+      && r.status !== 'storniert'
+      && r.status !== 'abgeschlossen'
+      && (r.payment?.status === 'offen' || r.payment?.status === 'fehlgeschlagen')
+      && (r.appointment?.date ?? '') >= abDatum,
+  ).length;
+}
+
 function hatTerminImZeitraum(record: Vorgang, von: string, bis: string): boolean {
   const datum = record.appointment?.date;
   return Boolean(datum && datum >= von && datum <= bis && record.status !== 'storniert');
@@ -599,20 +661,6 @@ async function vorgangAnlegenOhneDatenbank(anlage: VorgangsAnlage): Promise<Vorg
 }
 
 type Abfrage = ReturnType<typeof sql>;
-/** Dateimodus: offene, unbezahlte Termine einer E-Mail-Adresse (wie die Abfrage in `vorgangAnlegen`). */
-function offeneTermine(items: Vorgang[], email: string, abDatum: string): number {
-  const adresse = email.trim().toLowerCase();
-  return items.filter(
-    (r) =>
-      r.kind === 'termin'
-      && r.contact.email.trim().toLowerCase() === adresse
-      && r.status !== 'storniert'
-      && r.status !== 'abgeschlossen'
-      && (r.payment?.status === 'offen' || r.payment?.status === 'fehlgeschlagen')
-      && (r.appointment?.date ?? '') >= abDatum,
-  ).length;
-}
-
 
 interface Transaktion {
   execute: (abfrage: Abfrage) => Promise<{ rows: Record<string, unknown>[] }>;
