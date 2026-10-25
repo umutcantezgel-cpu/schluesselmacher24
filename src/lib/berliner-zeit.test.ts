@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { heuteInBerlin, jahrInBerlin } from './berliner-zeit';
+import { heuteInBerlin, jahrInBerlin, zeitpunktInBerlin } from './berliner-zeit';
 
 afterEach(() => {
   vi.useRealTimers();
@@ -25,5 +25,20 @@ describe('Tag und Jahr in deutscher Zeit', () => {
     expect(heuteInBerlin(new Date('2027-01-14T22:59:00Z'))).toBe('2027-01-14');
     expect(jahrInBerlin(new Date('2027-12-31T22:59:59Z'))).toBe(2027);
     expect(jahrInBerlin(new Date('2027-12-31T23:00:00Z'))).toBe(2028);
+  });
+});
+
+describe('zeitpunktInBerlin', () => {
+  it('rechnet Winter- und Sommerzeit nach dem Tag des Termins um', () => {
+    expect(zeitpunktInBerlin('2026-10-27', '10:00').toISOString()).toBe('2026-10-27T09:00:00.000Z');
+    expect(zeitpunktInBerlin('2026-07-01', '10:00').toISOString()).toBe('2026-07-01T08:00:00.000Z');
+    expect(zeitpunktInBerlin('2027-01-01', '00:30').toISOString()).toBe('2026-12-31T23:30:00.000Z');
+  });
+
+  it('trifft die Tage der Zeitumstellung', () => {
+    // 25.10.2026: um 3 Uhr Sommerzeit zurück auf 2 Uhr Winterzeit.
+    expect(zeitpunktInBerlin('2026-10-25', '09:00').toISOString()).toBe('2026-10-25T08:00:00.000Z');
+    // 28.03.2027: um 2 Uhr Winterzeit vor auf 3 Uhr Sommerzeit.
+    expect(zeitpunktInBerlin('2027-03-28', '09:00').toISOString()).toBe('2027-03-28T07:00:00.000Z');
   });
 });

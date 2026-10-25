@@ -15,6 +15,16 @@ const BUDGET_MS = 8000;
 /** Wartezeit vor der Wiederholung bei 429/5xx. */
 const WARTEN_MS = 1000;
 
+/** Anhang als Text, z. B. ein Kalendereintrag (.ics). */
+export interface MailAnhang {
+  /** Dateiname, nur Buchstaben, Ziffern, Punkt, Binde- und Unterstrich. */
+  dateiname: string;
+  /** Inhalt als Text (UTF-8); Resend erhält ihn Base64-kodiert. */
+  inhalt: string;
+  /** MIME-Typ, z. B. „text/calendar; charset=utf-8; method=PUBLISH“. Ohne Angabe leitet Resend ihn aus dem Namen ab. */
+  typ?: string;
+}
+
 export interface AusgehendeMail {
   an: string | string[];
   betreff: string;
@@ -30,6 +40,8 @@ export interface AusgehendeMail {
    * Zeitstempel, sonst verwirft Resend die zweite Mail.
    */
   idempotenzSchluessel?: string;
+  /** Anhänge — klein halten (Resend: höchstens 40 MB je Mail nach Kodierung). */
+  anhaenge?: MailAnhang[];
 }
 
 export type Versandstatus = 'gesendet' | 'moeglicherweise-gesendet' | 'fehlgeschlagen' | 'nicht-eingerichtet';
@@ -74,6 +86,22 @@ function tagsFuerResend(tags: Record<string, string> | undefined) {
   if (!tags) return undefined;
   const sauber = (wert: string) => wert.replace(/[^A-Za-z0-9_-]/g, '_').slice(0, 256);
   return Object.entries(tags).map(([name, value]) => ({ name: sauber(name), value: sauber(value) }));
+}
+
+/** Dateiname ohne Pfad und Steuerzeichen. */
+function sichererDateiname(name: string): string {
+  const sauber = name.replace(/[^A-Za-z0-9._-]/g, '_').replace(/^\.+/, '').slice(0, 120);
+  return sauber || 'anhang';
+}
+
+/** Anhänge im Format der Resend-API (`content` Base64). */
+function anhaengeFuerResend(anhaenge: MailAnhang[] | undefined) {
+  if (!anhaenge?.length) return undefined;
+  return anhaenge.map((anhang) => ({
+    filename: sichererDateiname(anhang.dateiname),
+    content: Buffer.from(anhang.inhalt, 'utf8').toString('base64'),
+    ...(anhang.typ ? { content_type: anhang.typ.replace(/[\r\n]/g, '') } : {}),
+  }));
 }
 
 const schlafen = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -146,6 +174,7 @@ export async function sendeUeberResend(mail: AusgehendeMail, optionen: Transport
   }
 
   const antwortAn = liste(mail.antwortAn ?? konfiguration.replyTo);
+  const anhaenge = anhaengeFuerResend(mail.anhaenge);
   const body = JSON.stringify({
     from: absender(konfiguration),
     to: empfaenger,
@@ -154,6 +183,7 @@ export async function sendeUeberResend(mail: AusgehendeMail, optionen: Transport
     ...(mail.html ? { html: mail.html } : {}),
     ...(antwortAn.length ? { reply_to: antwortAn } : {}),
     ...(mail.tags ? { tags: tagsFuerResend(mail.tags) } : {}),
+    ...(anhaenge ? { attachments: anhaenge } : {}),
   });
 
   for (let versuch = 1; versuch <= 2; versuch += 1) {
