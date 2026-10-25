@@ -179,13 +179,13 @@ describe('benachrichtigeZahlung', () => {
 describe('sendeWiderrufEingang', () => {
   it('liefert das Ergebnis für die Ablage', async () => {
     mailEinrichten();
-    const eintrag = await sendeWiderrufEingang({ an: 'erika@example.org', eingegangenAm: '2026-10-24T10:00:00.000Z', vorgangsnummer: 'SM24-B-2026-0001' });
+    const eintrag = await sendeWiderrufEingang({ an: 'erika@example.org', name: 'Erika Muster', eingegangenAm: '2026-10-24T10:00:00.000Z', vorgangsnummer: 'SM24-B-2026-0001' });
     expect(eintrag).toMatchObject({ kind: 'widerruf', to: 'erika@example.org', result: 'gesendet' });
     expect(aufrufe[0].betreff).toBe('Eingang Ihrer Widerrufserklärung');
   });
 
   it('meldet ohne Einrichtung „nicht eingerichtet“', async () => {
-    const eintrag = await sendeWiderrufEingang({ an: 'erika@example.org', eingegangenAm: '2026-10-24T10:00:00.000Z' });
+    const eintrag = await sendeWiderrufEingang({ an: 'erika@example.org', name: 'Erika Muster', eingegangenAm: '2026-10-24T10:00:00.000Z' });
     expect(eintrag.result).toBe('nicht-eingerichtet');
   });
 });

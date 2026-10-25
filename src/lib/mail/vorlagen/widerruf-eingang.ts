@@ -1,48 +1,78 @@
 /**
- * Bestätigung des Zugangs einer Widerrufserklärung (Widerrufsbutton) — mit
- * Datum und Uhrzeit des Eingangs.
+ * Bestätigung des Zugangs einer Widerrufserklärung (Widerrufsbutton) auf
+ * dauerhaftem Datenträger — mit ihrem Inhalt sowie Datum und Uhrzeit des
+ * Eingangs (§ 356a BGB).
  *
- * Der Text der Erklärung wird nicht wiederholt: Die Empfängeradresse stammt
- * aus einem öffentlichen Formular, und frei eingegebener Text darf nicht über
- * unsere Domain an beliebige Adressen gehen.
+ * Die Empfängeradresse stammt aus einem öffentlichen Formular. Die Mail geht
+ * deshalb nur nach bestandenem Bot-Schutz und unter Ratenbegrenzung raus
+ * (src/lib/actions/widerruf.ts), alle Eingaben stehen escapt und gekürzt
+ * darin, und die Anrede nennt den Namen nur, wenn er wie ein Name aussieht.
  */
 
 import { formatDateTime } from '../../format';
+import { WIDERRUF_ERKLAERUNG } from '../../rechtliches/widerruf-typen';
 import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
 import { ANTWORT_HINWEIS, type VorlagenKontext } from './gemeinsam';
 
-/** Nur echte Vorgangsnummern (SM24-B-2026-0001) erscheinen in der Mail. */
-const NUMMER = /^SM24-[A-Z]-\d{4}-\d{4,6}$/;
+/** Freie Angaben erscheinen höchstens so lang in der Mail. */
+const ANGABEN_MAX = 500;
 
 export interface WiderrufEingangDaten {
-  vorname?: string;
-  nachname?: string;
+  /** Name wie eingegeben. */
+  name: string;
+  /** E-Mail-Adresse wie eingegeben. */
+  email: string;
   vorgangsnummer?: string;
+  /** Freie Angaben des Kunden (ohne den Erklärungssatz), falls vorhanden. */
+  angaben?: string;
   /** ISO-Zeitpunkt des Eingangs. */
   eingegangenAm: string;
   kontext: VorlagenKontext;
 }
 
-export function widerrufEingang({ vorname, nachname, vorgangsnummer, eingegangenAm, kontext }: WiderrufEingangDaten): MailInhalt {
-  const nummer = vorgangsnummer?.trim().toUpperCase();
+export function widerrufEingang({
+  name,
+  email,
+  vorgangsnummer,
+  angaben,
+  eingegangenAm,
+  kontext,
+}: WiderrufEingangDaten): MailInhalt {
+  // Nur Buchstaben, Ziffern und Bindestrich — so wird aus der Nummer kein Link.
+  const nummer = (vorgangsnummer ?? '').replace(/[^A-Za-z0-9-]/g, '').slice(0, 40);
+  const zusatz = angaben?.trim() ?? '';
+  const eingang = `${formatDateTime(eingegangenAm)} Uhr`;
   const bausteine: Baustein[] = [
     {
       art: 'absatz',
       text:
-        `Ihre Widerrufserklärung ist am ${formatDateTime(eingegangenAm)} Uhr bei uns eingegangen. `
-        + 'Mit dieser E-Mail bestätigen wir den Eingang.',
+        `Ihre Widerrufserklärung ist am ${eingang} bei uns eingegangen. `
+        + 'Mit dieser E-Mail bestätigen wir den Eingang und den Inhalt Ihrer Erklärung.',
+    },
+    {
+      art: 'felder',
+      zeilen: [
+        ['Erklärung', WIDERRUF_ERKLAERUNG],
+        ['Name', name.trim().slice(0, 120)],
+        ['E-Mail', email.trim().slice(0, 254)],
+        ['Vorgangsnummer', nummer || 'nicht angegeben'],
+        ['Eingegangen am', eingang],
+      ],
     },
   ];
-  const zeilen: Array<[string, string]> = [['Eingegangen am', `${formatDateTime(eingegangenAm)} Uhr`]];
-  if (nummer && NUMMER.test(nummer)) zeilen.unshift(['Vorgangsnummer', nummer]);
+  if (zusatz) {
+    bausteine.push({
+      art: 'absatz',
+      text: `Ihre weiteren Angaben:\n${zusatz.length > ANGABEN_MAX ? `${zusatz.slice(0, ANGABEN_MAX)} …` : zusatz}`,
+    });
+  }
   bausteine.push(
-    { art: 'felder', zeilen },
     { art: 'absatz', text: 'Wir bearbeiten Ihren Widerruf und melden uns mit den nächsten Schritten.' },
     ANTWORT_HINWEIS,
   );
   return baueMail({
     betreff: 'Eingang Ihrer Widerrufserklärung',
-    anrede: anrede({ firstName: vorname, lastName: nachname }),
+    anrede: anrede({ firstName: name }),
     bausteine,
     firma: kontext.firma,
     site: kontext.site,

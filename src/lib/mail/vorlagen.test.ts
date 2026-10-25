@@ -210,19 +210,47 @@ describe('Zahlungs-, Status- und weitere Mails', () => {
     expect(verfolgungsLink('ups', '1Z 99')).toBe('https://www.ups.com/track?loc=de_DE&tracknum=1Z%2099');
   });
 
-  it('bestätigt den Eingang eines Widerrufs mit Uhrzeit, aber ohne fremden Text', () => {
+  it('bestätigt den Eingang eines Widerrufs mit Inhalt, Datum und Uhrzeit', () => {
     const mail = widerrufEingang({
-      vorname: 'Erika',
-      nachname: 'Muster',
-      vorgangsnummer: 'sm24-b-2026-0007',
+      name: 'Erika Muster',
+      email: 'erika@example.org',
+      vorgangsnummer: 'SM24-B-2026-0007',
       eingegangenAm: '2026-10-24T21:15:00.000Z',
       kontext: { site: SITE },
     });
-    expect(mail.text).toContain('24.10.2026, 23:15 Uhr');
-    expect(mail.text).toContain('SM24-B-2026-0007');
-    const ohneNummer = widerrufEingang({ vorgangsnummer: 'Klick hier: http://x', eingegangenAm: '2026-10-24T21:15:00.000Z', kontext: { site: SITE } });
-    expect(ohneNummer.text).not.toContain('http://x');
-    expect(ohneNummer.text).toContain('Guten Tag,');
+    expect(mail.text).toContain('Guten Tag Erika Muster,');
+    expect(mail.text).toContain('Erklärung: Hiermit widerrufe ich den oben bezeichneten Vertrag.');
+    expect(mail.text).toContain('Name: Erika Muster');
+    expect(mail.text).toContain('E-Mail: erika@example.org');
+    expect(mail.text).toContain('Vorgangsnummer: SM24-B-2026-0007');
+    expect(mail.text).toContain('Eingegangen am: 24.10.2026, 23:15 Uhr');
+    expect(mail.html).toContain('Hiermit widerrufe ich den oben bezeichneten Vertrag.');
+    expect(mail.html).toContain('erika@example.org');
+  });
+
+  it('übernimmt Eingaben im Widerruf escapt und gekürzt, die Anrede nur mit sicherem Namen', () => {
+    const mail = widerrufEingang({
+      name: 'Erika <b>Muster</b>',
+      email: 'erika@example.org',
+      vorgangsnummer: 'Klick hier: http://x.example/<script>',
+      angaben: `Bestellung vom <i>Montag</i> ${'x'.repeat(600)}`,
+      eingegangenAm: '2026-10-24T21:15:00.000Z',
+      kontext: { site: SITE },
+    });
+    expect(mail.text).toContain('Guten Tag,');
+    expect(mail.text).toContain('Name: Erika <b>Muster</b>');
+    expect(mail.html).toContain('Erika &lt;b&gt;Muster&lt;/b&gt;');
+    expect(mail.html).not.toContain('<b>Muster');
+    // Nur Buchstaben, Ziffern und Bindestrich, höchstens 40 Zeichen.
+    expect(mail.text).toContain('Vorgangsnummer: Klickhierhttpxexamplescript');
+    expect(mail.html).toContain('Bestellung vom &lt;i&gt;Montag&lt;/i&gt;');
+    expect(mail.html).not.toContain('<i>Montag');
+    expect(mail.text).toContain('x'.repeat(400));
+    expect(mail.text).not.toContain('x'.repeat(500));
+
+    const ohne = widerrufEingang({ name: 'Erika Muster', email: 'erika@example.org', eingegangenAm: '2026-10-24T21:15:00.000Z', kontext: { site: SITE } });
+    expect(ohne.text).toContain('Vorgangsnummer: nicht angegeben');
+    expect(ohne.text).not.toContain('weiteren Angaben');
   });
 });
 

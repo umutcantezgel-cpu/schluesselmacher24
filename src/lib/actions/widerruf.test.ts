@@ -75,13 +75,16 @@ describe('widerrufErklaeren', () => {
   it('nimmt die Erklärung aus dem Formular an und speichert sie', async () => {
     const ergebnis = await widerrufErklaeren(
       null,
-      formular({ name: 'Erika Muster', email: 'erika@example.org', vorgangsnummer: 'SM24-T-2026-0007', erklaerung: '' }),
+      formular({ name: 'Erika Muster', email: 'erika@example.org', vorgangsnummer: 'SM24-T-2026-0007', erklaerung: 'Termin am Montag' }),
     );
     expect(ergebnis).toMatchObject({ status: 'eingegangen', vorgangsnummer: 'SM24-T-2026-0007', mailGesendet: true });
     expect(gespeichert).toHaveLength(1);
     expect(gespeichert[0].zuordnung).toBe('zu-pruefen');
     expect(gespeichert[0].notiz).toBeUndefined();
-    expect(versand.kunde).toEqual([expect.objectContaining({ an: 'erika@example.org' })]);
+    // Die Eingangsbestätigung trägt den Inhalt der Erklärung.
+    expect(versand.kunde).toEqual([
+      expect.objectContaining({ an: 'erika@example.org', name: 'Erika Muster', vorgangsnummer: 'SM24-T-2026-0007', angaben: 'Termin am Montag' }),
+    ]);
     expect(versand.betrieb).toEqual(['erika@example.org']);
   });
 

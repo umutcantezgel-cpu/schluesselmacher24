@@ -22,7 +22,7 @@ function feld(formData: FormData, name: string): string | undefined {
   return typeof wert === 'string' ? wert : undefined;
 }
 
-/** Freie Angaben ohne den vorangestellten Erklärungssatz (für die Betriebsmail). */
+/** Freie Angaben ohne den vorangestellten Erklärungssatz (für beide Mails). */
 function angabenAus(erklaerung: string): string | undefined {
   const rest = erklaerung.startsWith(WIDERRUF_ERKLAERUNG) ? erklaerung.slice(WIDERRUF_ERKLAERUNG.length) : erklaerung;
   return rest.trim() || undefined;
@@ -96,11 +96,12 @@ export async function widerrufErklaeren(
       vorgangVermerken: widerrufAmVorgangVermerken,
       bestaetigungSenden: async (datensatz) => {
         if (verdacht) return { ergebnis: 'nicht-eingerichtet' };
+        // Mit dem Inhalt der Erklärung; die Vorlage escapt und kürzt alle Eingaben.
         const eintrag = await sendeWiderrufEingang({
           an: datensatz.email,
-          // Ein Namensfeld: die Vorlage prüft und kürzt die Anrede selbst.
-          vorname: datensatz.name,
+          name: datensatz.name,
           vorgangsnummer: datensatz.vorgangsnummer,
+          angaben: angabenAus(datensatz.erklaerung),
           eingegangenAm: datensatz.eingegangenAm,
           settings,
         });
