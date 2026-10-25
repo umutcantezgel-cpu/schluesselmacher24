@@ -39,6 +39,7 @@ export async function GET() {
     `- [Ratgeber](${site}/ratgeber): Antworten auf häufige Fragen zu Schlüsseln, Schließtechnik und Einbruchschutz`,
     `- [Kontakt](${site}/service-und-termin/kontakt): Anschrift, Erreichbarkeit und Öffnungszeiten`,
     `- [Zahlung und Versand](${site}/rechtliches/versand-und-zahlung): Versandarten, Kosten und Anzahlung`,
+    `- [Partner werden](${site}/partner-werden): Bewerbung für Fachbetriebe, an die wir geprüfte Kundenanfragen vermitteln`,
     '',
   ].join('\n');
 

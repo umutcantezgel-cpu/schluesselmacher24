@@ -166,7 +166,7 @@ export interface BenutzerAuthOperations {
   };
 }
 /**
- * Alle Bestellungen, Anfragen, Termine und Projekte. Neueste oben.
+ * Alle Bestellungen, Anfragen, Termine, Projekte und Partner-Bewerbungen. Neueste oben. Partner-Bewerbungen haben die Art „Partner-Bewerbung“ und Nummern mit „N“ (z. B. SM24-N-2026-0001); die Firma steht unter „Kontakt“. Vermittelte Aufträge: Spalte „Stand der Vermittlung“ oder Filter.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "vorgaenge".
@@ -199,7 +199,7 @@ export interface Vorgaenge {
     | 'abgeschlossen'
     | 'storniert';
   /**
-   * Mail geht bei „Freigegeben“, „Nicht möglich“, „Wartet auf Kunde“, „Terminiert“, „Versendet“ und „Storniert“. Haken entfernen, um diesen einen Wechsel still zu speichern.
+   * Mail geht bei „Freigegeben“, „Nicht möglich“, „Wartet auf Kunde“, „Terminiert“, „Versendet“ und „Storniert“. Bei Schlüsseln nach Vorlage enthält die Freigabe Preis, Zahlungslink und ggf. die Einsendeanweisung. Haken entfernen, um diesen einen Wechsel still zu speichern.
    */
   kundeInformieren?: boolean | null;
   /**
@@ -241,11 +241,14 @@ export interface Vorgaenge {
   };
   freigabe?: {
     /**
-     * Preis der Anfertigung inklusive Umsatzsteuer, in Cent.
+     * Betrag, den der Kunde über den Zahlungslink zahlt — inklusive Umsatzsteuer und, falls angefallen, Versand. In Cent (24,90 € = 2490).
      */
     preisCent?: number | null;
     einsendenNoetig?: boolean | null;
     freigegebenAm?: string | null;
+    /**
+     * Erscheint in der Mail zur Freigabe bzw. als Begründung bei „Nicht möglich“.
+     */
     hinweis?: string | null;
   };
   vermittlung?: {

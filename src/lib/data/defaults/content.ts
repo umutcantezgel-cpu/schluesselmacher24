@@ -415,6 +415,25 @@ export function pages(): PageContent[] {
         ['/service-und-termin/terminstatus', 'Terminstatus prüfen'],
       ],
     },
+    {
+      route: 'partner-werden',
+      headline: 'Partner werden',
+      subline:
+        'Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort — '
+        + 'vor allem für Autoschlüssel.',
+      intro:
+        'Bei uns gehen auch Anfragen aus Regionen ein, in denen wir selbst nicht tätig sind. Diese Aufträge '
+        + 'vermitteln wir an zuverlässige Fachbetriebe vor Ort. Sie bewerben sich mit wenigen Angaben; wir prüfen '
+        + 'Ihre Bewerbung und melden uns bei Ihnen.',
+      title: 'Partner werden – Auftragsvermittlung für Fachbetriebe',
+      description:
+        'Für Schlüsseldienste und Fachbetriebe: Als Partner von SCHLÜSSELMACHER24 übernehmen Sie geprüfte '
+        + 'Kundenanfragen aus Ihrer Region und rechnen direkt mit dem Kunden ab.',
+      links: [
+        ['/autoschluessel', 'Autoschlüssel'],
+        ['/service-und-termin/kontakt', 'Kontakt'],
+      ],
+    },
   ];
 
   return raw.map((entry) => ({

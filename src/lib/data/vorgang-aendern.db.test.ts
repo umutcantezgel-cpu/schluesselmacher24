@@ -193,7 +193,11 @@ describe('vorgangAendern', () => {
       expect(doc.zahlung).toMatchObject({ status: 'offen', checkoutSitzung: 'cs_neu', erstattetCent: 0 });
       expect(doc.mails).toHaveLength(1);
       expect(doc.verlauf?.at(-1)?.text).toBe('Termin verlegt.');
-      expect(doc.notizen?.map((n) => n.text)).toEqual(['Streitfall eröffnet.']);
+      // Die inzwischen ergänzte Notiz bleibt; dazu der Statusverlauf dieses Speicherns.
+      expect(doc.notizen?.map((n) => n.text)).toEqual([
+        'Streitfall eröffnet.',
+        expect.stringMatching(/^Status von „Neu“ auf „Terminiert“ geändert \(.+\)\.$/),
+      ]);
       expect(doc.zugriffsHash).toBe('a'.repeat(64));
     });
 

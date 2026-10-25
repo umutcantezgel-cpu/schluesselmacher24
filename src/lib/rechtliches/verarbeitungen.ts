@@ -12,7 +12,7 @@ import type { Settings } from '@/lib/types';
    ========================================================================== */
 
 /** Fassung der Liste. Bei jeder inhaltlichen Änderung hochzählen. */
-export const VERARBEITUNGEN_FASSUNG = { nummer: 1, stand: '2026-10-24' } as const;
+export const VERARBEITUNGEN_FASSUNG = { nummer: 2, stand: '2026-10-25' } as const;
 
 export interface Dienstleister {
   id: 'vercel' | 'supabase' | 'stripe' | 'resend';
@@ -164,6 +164,28 @@ export function verarbeitungen(settings: Pick<Settings, 'retentionDays'>): Verar
         + `Sonst gelten ab dem Hochladen folgende Fristen: Fahrzeugschein ${TAGE(fristen.vehicleRegistration)}, `
         + `Schlüsselfotos ${TAGE(fristen.keyPhotos)}, Grundrisse und Objektpläne ${TAGE(fristen.floorPlans)}, `
         + `Projektunterlagen und Objektfotos ${TAGE(fristen.projectDocuments)}. Danach werden die Dateien automatisch gelöscht.`,
+    },
+    {
+      id: 'partner',
+      titel: 'Bewerbung als Partnerbetrieb',
+      zweck:
+        'Prüfung Ihrer Bewerbung über „Partner werden“, Abstimmung einer Zusammenarbeit und – nach einer Freischaltung – die Vermittlung von Kundenaufträgen an Ihren Betrieb.',
+      daten: [
+        'Firmenname, Ansprechpartner, E-Mail-Adresse und Telefonnummer',
+        'Postleitzahl, Ort und Einsatzradius',
+        'Leistungen, Fahrzeughersteller und Systeme, mobile Einsätze',
+        'Angaben zu Qualifikationen',
+        'freiwillig hochgeladene Nachweise (z. B. Gewerbeanmeldung, Zertifikate)',
+      ],
+      rechtsgrundlage:
+        'Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen auf Ihre Anfrage) und Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung beim Absenden); für die Prüfung von Gewerbe, Eignung und Zuverlässigkeit zusätzlich Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse, Aufträge nur an geeignete Betriebe zu vermitteln.',
+      empfaenger:
+        'Hosting- und Datenbankdienstleister (siehe oben). Kommt eine Zusammenarbeit zustande, nennen wir Kundinnen und Kunden, deren Auftrag Ihr Betrieb übernimmt, Namen und Kontaktdaten Ihres Betriebs.',
+      drittland: null,
+      speicherdauer:
+        'Kommt keine Zusammenarbeit zustande, löschen wir Ihre Bewerbung, sobald sie für die Prüfung und mögliche Rückfragen nicht mehr benötigt wird und keine Aufbewahrungspflicht besteht. Bei einer Zusammenarbeit für deren Dauer, danach nach den gesetzlichen Fristen (§ 257 HGB, § 147 AO). Hochgeladene Nachweise löschen wir nach der Frist für Projektunterlagen (siehe „Hochgeladene Fotos und Unterlagen“).',
+      pruefhinweis:
+        'Konkrete Löschfrist für abgelehnte Bewerbungen festlegen und Partnervertrag (Weitergabe der Kontaktdaten an Kunden) juristisch prüfen lassen (Erg. Leitfaden §8).',
     },
     {
       id: 'zahlung',

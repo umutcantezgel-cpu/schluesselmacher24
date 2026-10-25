@@ -8,10 +8,11 @@ import { istPlatzhalter } from '@/lib/platzhalter';
 import type { ImageSlot } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import type { IconProps } from '@/components/visual/icons/icon-base';
-import { IconAnzahlung } from '@/components/visual/icons/anzahlung';
 import { IconFotoHochladen } from '@/components/visual/icons/foto-hochladen';
+import { IconNachweis } from '@/components/visual/icons/nachweis';
 import { IconPruefung } from '@/components/visual/icons/pruefung';
 import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
+import { IconZahlung } from '@/components/visual/icons/zahlung';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { GlyphLineal } from '@/components/visual/glyphen/lineal';
@@ -99,18 +100,26 @@ const STEPS: Array<{ icon: ComponentType<IconProps>; title: string; body: string
       + 'Nachfertigung nach Ihren Bildern möglich ist.',
   },
   {
-    icon: IconAnzahlung,
-    title: 'Machbarkeit und Preis',
+    icon: IconNachweis,
+    title: 'Freigabe, Rückfrage oder Absage',
     body:
-      'Sie erhalten eine Rückmeldung mit dem Ergebnis der Prüfung und dem Preis. Erst '
-      + 'danach entscheiden Sie, ob wir anfertigen sollen.',
+      'Ist die Anfertigung möglich, erhalten Sie die Freigabe mit Preis per E-Mail. Fehlt '
+      + 'uns noch etwas, melden wir uns mit einer Rückfrage; geht es nicht, sagen wir es '
+      + 'Ihnen. Die Prüfung ist noch keine Fertigungszusage.',
+  },
+  {
+    icon: IconZahlung,
+    title: 'Auftrag mit dem Zahlungslink',
+    body:
+      'Mit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer Zahlung '
+      + 'erteilen Sie den Auftrag — danach fertigen wir.',
   },
   {
     icon: IconVersandPaket,
     title: 'Nur falls nötig: Einsendung',
     body:
-      'Reichen die Fotos nicht aus, erhalten Sie von uns eine Einsendeanweisung mit '
-      + 'Adresse und Vorgangsnummer.',
+      'Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und '
+      + 'Vorgangsnummer in der Freigabe. Vorher senden Sie bitte nichts ein.',
   },
 ];
 
@@ -188,6 +197,13 @@ export default async function SchluesselNachVorlagePage() {
               'Preis und Machbarkeit nennen wir nach der Prüfung Ihrer Fotos. Mit dem Absenden '
               + 'der Anfrage entsteht noch kein Auftrag und kein Vertrag. Sie entscheiden erst, '
               + 'wenn Ihnen unsere Rückmeldung vorliegt.',
+          },
+          {
+            question: 'Wie erteile ich den Auftrag?',
+            answer:
+              'Ist die Anfertigung möglich, erhalten Sie von uns die Freigabe mit Preis und einem '
+              + 'persönlichen Zahlungslink. Mit Ihrer Zahlung erteilen Sie den Auftrag; erst danach '
+              + 'fertigen wir. Die Freigabe allein ist noch keine Fertigungszusage.',
           },
           {
             question: 'Wie lange dauert die Prüfung?',
@@ -295,7 +311,7 @@ export default async function SchluesselNachVorlagePage() {
               id="ablauf-titel"
               nummer="01"
               eyebrow="Ablauf"
-              title="Vier Abschnitte von der Anfrage bis zum Schlüssel"
+              title="Fünf Schritte von der Anfrage bis zum Schlüssel"
               lead={process.hint}
             />
 
@@ -446,8 +462,9 @@ export default async function SchluesselNachVorlagePage() {
             <div className="prose-sm24 mt-6 max-w-none">
               <p>
                 Senden Sie bitte nichts unaufgefordert ein. Die Versandadresse und den genauen
-                Umfang nennen wir Ihnen mit dem Ergebnis der Prüfung — zusammen mit Ihrer
-                Vorgangsnummer.
+                Umfang nennen wir Ihnen mit der Freigabe — zusammen mit Ihrer Vorgangsnummer.
+                Senden Sie das Original erst, nachdem Sie den Auftrag mit der Zahlung erteilt
+                haben.
               </p>
             </div>
 

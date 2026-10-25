@@ -122,6 +122,16 @@ describe('submitRecord', () => {
     expect(stored[0].quote).toBeUndefined();
   });
 
+  it('nimmt Partner-Bewerbungen nur mit Datenschutz-Einwilligung und festem Bereich an', async () => {
+    const bewerbung = (area: 'service-und-termin' | 'autoschluessel', payload: Record<string, unknown>) =>
+      submitRecord({ kind: 'partner', area, process: 'gefuehrte-anfrage', contact, payload, summary: [], uploads: [] });
+    expect((await bewerbung('service-und-termin', {})).ok).toBe(false);
+    expect((await bewerbung('autoschluessel', { datenschutz: true })).ok).toBe(false);
+    expect(stored).toHaveLength(0);
+    expect((await bewerbung('service-und-termin', { datenschutz: true })).ok).toBe(true);
+    expect(stored[0]).toMatchObject({ kind: 'partner', area: 'service-und-termin' });
+  });
+
   it('lehnt Bestellungen außerhalb der Kasse ab', async () => {
     const result = await submitRecord({
       kind: 'bestellung',

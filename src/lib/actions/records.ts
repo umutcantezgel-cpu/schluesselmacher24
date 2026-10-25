@@ -132,6 +132,10 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   if (data.kind === 'bestellung') {
     return { ok: false, notices: [], error: 'Bestellungen werden über die Kasse abgeschlossen.' };
   }
+  // Partner-Bewerbung („Partner werden“): fester Bereich, Einwilligung zum Datenschutz Pflicht.
+  if (data.kind === 'partner' && (data.area !== 'service-und-termin' || data.payload.datenschutz !== true)) {
+    return { ok: false, notices: [], error: INVALID_INPUT };
+  }
 
   let quote: PriceQuote | undefined;
   let appointment: AppointmentInfo | undefined;

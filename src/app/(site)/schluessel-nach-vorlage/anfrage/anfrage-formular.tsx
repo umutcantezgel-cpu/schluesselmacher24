@@ -379,6 +379,8 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       if (antwort.ok) {
         setResult(antwort);
         clearFlow(FLOW_ID);
+        // Messung (Strang S4 hört darauf): Fotoanfrage abgesendet.
+        window.dispatchEvent(new CustomEvent('sm24:aktion', { detail: { aktion: 'fotoanfrage' } }));
         if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: scrollVerhalten() });
       } else {
         setFehler(antwort.error ?? 'Die Anfrage konnte nicht gespeichert werden.');
@@ -405,7 +407,8 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         </h2>
         <p className="mt-3 text-body leading-relaxed text-foreground-muted">
           Wir prüfen Ihre Fotos und melden uns mit dem Ergebnis: ob eine Anfertigung möglich ist
-          und was sie kostet. Ein Vertrag ist damit noch nicht geschlossen.
+          und was sie kostet. Ein Vertrag ist damit noch nicht geschlossen — und die Prüfung ist
+          noch keine Fertigungszusage.
         </p>
 
         <Card className="mt-6">
@@ -441,20 +444,22 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
               body: 'Profil, Rohling und Beschriftung werden bestimmt.',
             },
             {
-              title: 'Sie erhalten Machbarkeit und Preis',
-              body: 'Die Rückmeldung geht an die angegebene E-Mail-Adresse.',
+              title: 'Sie erhalten das Ergebnis',
+              body:
+                'Per E-Mail an die angegebene Adresse: die Freigabe mit Preis, eine Rückfrage '
+                + 'oder — wenn es nicht geht — eine Absage.',
             },
             {
               title: 'Sie entscheiden',
               body:
-                'Erst mit Ihrer ausdrücklichen Zusage beauftragen Sie die Anfertigung. Bis dahin '
-                + 'entstehen Ihnen keine Verpflichtungen.',
+                'Mit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer '
+                + 'Zahlung erteilen Sie den Auftrag; bis dahin entstehen Ihnen keine Verpflichtungen.',
             },
             {
               title: 'Nur falls nötig: Einsendung',
               body:
-                'Reichen die Fotos nicht aus, senden wir Ihnen eine Einsendeanweisung mit '
-                + 'Adresse und Vorgangsnummer. Senden Sie bitte nichts unaufgefordert ein.',
+                'Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und '
+                + 'Vorgangsnummer in der Freigabe. Senden Sie bitte nichts unaufgefordert ein.',
             },
           ].map((step, index) => (
             <li key={step.title} className="flex items-baseline gap-4 border-b border-border py-4">
@@ -888,8 +893,8 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         <div className="max-w-3xl space-y-6">
           <Alert tone="legal" title="Noch kein Vertrag">
             Mit dem Absenden stellen Sie eine Anfrage. Preis und Machbarkeit nennen wir Ihnen
-            nach der Prüfung. Ein Auftrag kommt erst zustande, wenn Sie ihn danach ausdrücklich
-            erteilen. Ihren Originalschlüssel senden Sie zunächst nicht ein.
+            nach der Prüfung. Ein Auftrag kommt erst zustande, wenn Sie nach unserer Freigabe
+            den genannten Preis bezahlen. Ihren Originalschlüssel senden Sie zunächst nicht ein.
           </Alert>
 
           <SummaryList sections={summary} variante="schriftfeld" />

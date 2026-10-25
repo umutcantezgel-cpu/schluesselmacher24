@@ -3,7 +3,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
 
-import { getRecord } from '@/lib/data';
+import { getRecord, getSettings } from '@/lib/data';
+import { istFotoanfrage } from '@/lib/foto-freigabe';
+import { einsendeAnschrift } from '@/lib/mail/einsendung';
 import { verifyAccessToken } from '@/lib/server/access-token';
 import { mailStatus, paymentStatus, storageStatus } from '@/lib/integrations';
 import { widerrufErklaerenHref } from '@/lib/navigation';
@@ -17,6 +19,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
+import { FotoErgebnis } from './foto-ergebnis';
 import { JetztBezahlen } from './jetzt-bezahlen';
 
 interface BestellungSeiteProps {
@@ -187,6 +190,23 @@ const SCHRITTE: Record<RecordKind, Array<{ titel: string; text: string }>> = {
   ],
 };
 
+/** Schlüssel nach Vorlage: Prüfung → Freigabe, Rückfrage oder Absage → Auftrag per Zahlung (Erg. Leitfaden §2). */
+const SCHRITTE_FOTOANFRAGE: Array<{ titel: string; text: string }> = [
+  { titel: 'Prüfung Ihrer Fotos', text: 'Wir bestimmen Profil und Rohling und prüfen, ob eine Anfertigung nach Ihrer Vorlage möglich ist.' },
+  {
+    titel: 'Ergebnis',
+    text: 'Sie erhalten die Freigabe mit Preis, eine Rückfrage oder — wenn es nicht geht — eine Absage. Die Prüfung ist noch keine Fertigungszusage.',
+  },
+  {
+    titel: 'Auftrag mit der Zahlung',
+    text: 'Nach der Freigabe erteilen Sie den Auftrag, indem Sie über Ihren persönlichen Link bezahlen. Erst danach fertigen wir.',
+  },
+  {
+    titel: 'Anfertigung',
+    text: 'Brauchen wir das Original, senden Sie es nach der Anleitung aus der Freigabe ein. Über jeden Schritt informieren wir Sie per E-Mail.',
+  },
+];
+
 export default async function BestellungSeite(props: BestellungSeiteProps) {
   // Persönliche Daten: immer zur Anfragezeit rendern, nie aus einem Seiten-Cache.
   await connection();
@@ -194,8 +214,15 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
 
   if (!geladen) notFound();
   const { record, token } = geladen;
+  const fotoanfrage = istFotoanfrage(record);
+  // Anschrift für die Einsendung nur, wenn die Freigabe sie verlangt.
+  const einsendeZeilen = fotoanfrage && record.approval?.sendInRequired
+    ? einsendeAnschrift((await getSettings().catch(() => null))?.company)
+    : [];
 
   const kindLabel = KIND_LABELS[record.kind];
+  const schritte = fotoanfrage ? SCHRITTE_FOTOANFRAGE : SCHRITTE[record.kind];
+  const freigegeben = fotoanfrage && record.status === 'freigegeben';
   const zahlung = zahlungsAnsicht(record, {
     online: paymentStatus().configured,
     abbruch: geladen.abbruch,
@@ -270,8 +297,12 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
       <PageHeader
         art="arbeit"
         eyebrow={record.kind === 'bestellung' ? 'Direkt kaufen' : kindLabel}
-        title={`${kindLabel} eingegangen`}
-        lead="Wir haben Ihren Vorgang aufgenommen. Bitte bewahren Sie die Vorgangsnummer auf — damit finden Sie den Stand jederzeit wieder."
+        title={freigegeben ? 'Anfrage freigegeben' : `${kindLabel} eingegangen`}
+        lead={
+          freigegeben
+            ? 'Wir können Ihren Schlüssel nach Ihrer Vorlage anfertigen. Mit der Zahlung erteilen Sie den Auftrag.'
+            : 'Wir haben Ihren Vorgang aufgenommen. Bitte bewahren Sie die Vorgangsnummer auf — damit finden Sie den Stand jederzeit wieder.'
+        }
         crumbs={[{ href: `/bestellung/${record.id}`, label: `${kindLabel} ${record.reference}` }]}
       />
 
@@ -312,6 +343,8 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                 </ul>
               </Alert>
             )}
+
+            {fotoanfrage && <FotoErgebnis record={record} einsendeAnschrift={einsendeZeilen} />}
 
             {positionen && <BestelltePositionen lines={positionen} totals={record.totals} />}
 
@@ -387,7 +420,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
               <h2 className="text-title-sm font-semibold text-foreground">Wie es weitergeht</h2>
 
               <ol className="mt-6 divide-y divide-border border-y border-border">
-                {SCHRITTE[record.kind].map((schritt, index) => (
+                {schritte.map((schritt, index) => (
                   <li key={schritt.titel} className="py-4">
                     <p className="text-body font-semibold text-foreground">{index + 1}. {schritt.titel}</p>
                     <p className="mt-1 text-small leading-relaxed text-foreground-muted">{schritt.text}</p>

@@ -7,6 +7,7 @@
    erst beim Versand geladen. Wer versendet, schreibt das Protokoll selbst.
    ========================================================================== */
 
+import { istFotoanfrage } from '../foto-freigabe';
 import type { BusinessRecord, MailLogEntry, RecordStatus, Settings } from '../types';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from './versand';
 
@@ -14,12 +15,16 @@ import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } f
 export const BESTAETIGENDE_STATUS: readonly RecordStatus[] = ['geprueft', 'in-fertigung', 'terminiert', 'versendet', 'abgeschlossen'];
 
 /**
- * Braucht dieser Vorgang (noch) eine Vertragsbestätigung? Nur Bestellungen
- * und Termine — Anfragen sind unverbindlich. Maßgeblich ist das
- * Mailprotokoll: Ist sie einmal gesendet, nie wieder.
+ * Braucht dieser Vorgang (noch) eine Vertragsbestätigung? Bestellungen und
+ * Termine — Anfragen sind unverbindlich. Ausnahme ist die bezahlte
+ * Fotoanfrage: Mit der Zahlung nimmt der Kunde unser Angebot aus der Freigabe
+ * an (§ 5 Abs. 2 der AGB), ein Fernabsatzvertrag über eine Anfertigung nach
+ * Vorlage (§ 312f Abs. 2 BGB). Maßgeblich ist das Mailprotokoll: Ist sie
+ * einmal gesendet, nie wieder.
  */
 export function vertragsbestaetigungOffen(vorgang: BusinessRecord): boolean {
-  if (vorgang.kind !== 'bestellung' && vorgang.kind !== 'termin') return false;
+  const fotoauftrag = istFotoanfrage(vorgang) && vorgang.payment?.status === 'bezahlt';
+  if (vorgang.kind !== 'bestellung' && vorgang.kind !== 'termin' && !fotoauftrag) return false;
   if (vorgang.status === 'storniert') return false;
   return !(vorgang.mailLog ?? []).some((eintrag) => eintrag.kind === 'vertrag' && eintrag.result === 'gesendet');
 }
