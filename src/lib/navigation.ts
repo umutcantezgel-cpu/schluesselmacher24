@@ -20,6 +20,8 @@ export interface NavColumn {
 export interface NavArea {
   key: AreaKey;
   label: string;
+  /** Kurze Bezeichnung für die Leiste am Desktop; sonst gilt `label`. */
+  navLabel?: string;
   href: string;
   /** Kurzbeschreibung für Einstiegskacheln. */
   summary: string;
@@ -39,8 +41,8 @@ export const NAV_AREAS: NavArea[] = [
     process: 'termin-mit-anzahlung',
     highlight: {
       href: '/autoschluessel/anfrage',
-      label: 'Fahrzeug auswählen und Termin starten',
-      description: 'Geführter Ablauf mit Preisangabe, Anzahlung und Termin',
+      label: 'Termin anfragen',
+      description: 'Fahrzeug auswählen — geführter Ablauf mit Preisangabe, Anzahlung und Termin',
     },
     columns: [
       {
@@ -71,13 +73,14 @@ export const NAV_AREAS: NavArea[] = [
   },
   {
     key: 'schluessel-nach-vorlage',
-    label: 'Schlüssel nach Vorlage',
+    label: 'Schlüssel nach Foto oder Vorlage',
+    navLabel: 'Nach Foto',
     href: '/schluessel-nach-vorlage',
     summary: 'Drei Fotos hochladen — wir prüfen Machbarkeit und Preis.',
     process: 'gefuehrte-anfrage',
     highlight: {
       href: '/schluessel-nach-vorlage/anfrage',
-      label: 'Anfrage mit Fotos starten',
+      label: 'Foto prüfen lassen',
       description: 'Ohne Einsendung des Originals',
     },
     columns: [
@@ -85,7 +88,8 @@ export const NAV_AREAS: NavArea[] = [
         title: 'Ablauf',
         links: [
           { href: '/schluessel-nach-vorlage', label: 'So funktioniert es', description: 'Von der Anfrage bis zum Schlüssel' },
-          { href: '/schluessel-nach-vorlage/anfrage', label: 'Anfrage starten', description: 'Acht Schritte, mobil bedienbar' },
+          { href: '/schluessel-nach-vorlage/anfrage', label: 'Foto prüfen lassen', description: 'Acht Schritte, mobil bedienbar' },
+          { href: '/schluessel-einschicken', label: 'Schlüssel einschicken', description: 'Nur nach Freigabe oder auf Aufforderung' },
           { href: '/ratgeber/schluesselcode-finden', label: 'Code statt Foto?', description: 'Wann der Code schneller ist' },
         ],
       },
@@ -94,13 +98,14 @@ export const NAV_AREAS: NavArea[] = [
   {
     key: 'schluessel-nach-code',
     label: 'Schlüssel nach Code',
+    navLabel: 'Nach Code',
     href: '/schluessel-nach-code',
     summary: 'Code eingeben und direkt bestellen. Ohne Einsendung.',
     process: 'direktkauf',
     highlight: {
-      href: '/schluessel-nach-code',
-      label: 'Alle Codelinien ansehen',
-      description: 'Suchen, filtern, Code eingeben, bestellen',
+      href: '/schluessel-nach-code#codelinien',
+      label: 'Nach Code bestellen',
+      description: 'Codelinie suchen, Code eingeben, bestellen',
     },
     columns: [
       {
@@ -115,7 +120,8 @@ export const NAV_AREAS: NavArea[] = [
   },
   {
     key: 'gleichschliessende-zylinder',
-    label: 'Gleichschließende Zylinder',
+    label: 'Gleichschließende Zylinder (Sperrschließung)',
+    navLabel: 'Zylinder',
     href: '/gleichschliessende-zylinder',
     summary: 'Mehrere Türen, ein Schlüssel — direkt konfigurierbar.',
     process: 'direktkauf',
@@ -131,6 +137,7 @@ export const NAV_AREAS: NavArea[] = [
           { href: '/gleichschliessende-zylinder', label: 'Was ist eine Gleichschließung?', description: 'Einfach erklärt' },
           { href: '/gleichschliessende-zylinder/konfigurator', label: 'Zum Konfigurator', description: 'Direkt bestellbar' },
           { href: '/ratgeber/zylinder-richtig-ausmessen', label: 'Zylinder richtig messen', description: 'Maß A und Maß B' },
+          { href: '/gleichschliessende-zylinder#nachbestellen', label: 'Schlüssel nachbestellen', description: 'Mit Sicherungskarte' },
         ],
       },
     ],
@@ -143,7 +150,7 @@ export const NAV_AREAS: NavArea[] = [
     process: 'projektkonfigurator',
     highlight: {
       href: '/schliessanlagen/konfigurator',
-      label: 'Projekt erfassen',
+      label: 'Schließanlage konfigurieren',
       description: 'Strukturierte Planung in zehn Blöcken',
     },
     columns: [
@@ -153,6 +160,7 @@ export const NAV_AREAS: NavArea[] = [
           { href: '/schliessanlagen#systeme', label: 'Systeme im Vergleich', description: 'Gleichschließung, Z, HS, GHS' },
           { href: '/schliessanlagen/konfigurator', label: 'Projektkonfigurator', description: 'Für Haus, Betrieb und Verwaltung' },
           { href: '/ratgeber/welche-schliessanlage-passt', label: 'Welche Anlage passt?', description: 'Entscheidungshilfe' },
+          { href: '/schliessanlagen#nachbestellen', label: 'Schlüssel nachbestellen', description: 'Mit Sicherungskarte' },
         ],
       },
     ],
@@ -160,6 +168,7 @@ export const NAV_AREAS: NavArea[] = [
   {
     key: 'elektronische-zutrittsloesungen',
     label: 'Elektronische Zutrittslösungen',
+    navLabel: 'Zutritt',
     href: '/elektronische-zutrittsloesungen',
     summary: 'Karte, Transponder, PIN, App und digitale Zylinder.',
     process: 'projektkonfigurator',

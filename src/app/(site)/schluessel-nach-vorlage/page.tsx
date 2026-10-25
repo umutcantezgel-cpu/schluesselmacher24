@@ -260,7 +260,7 @@ export default async function SchluesselNachVorlagePage() {
         }
         actions={
           <ButtonLink href="/schluessel-nach-vorlage/anfrage" size="lg" pfeil>
-            Anfrage mit Fotos starten
+            Foto prüfen lassen
           </ButtonLink>
         }
       >
@@ -308,7 +308,7 @@ export default async function SchluesselNachVorlagePage() {
 
             <div className="mt-7">
               <ButtonLink href="/schluessel-nach-vorlage/anfrage" pfeil>
-                Ablauf starten
+                Foto prüfen lassen
               </ButtonLink>
             </div>
           </div>

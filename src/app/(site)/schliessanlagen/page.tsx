@@ -110,7 +110,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Büro, Werkstatt, Lager, Serverraum: Nicht jede Person braucht jede Tür. Eine '
       + 'Hauptschlüsselanlage (HS) bildet Zuständigkeiten ab, ohne den Alltag zu erschweren.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Projekt erfassen',
+    linkLabel: 'Schließanlage konfigurieren',
   },
   {
     icon: GlyphPersonen,
@@ -119,7 +119,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Mehrere Parteien, gemeinsame Türen, wechselnde Mieter. Eine Zentralschlossanlage (Z) '
       + 'trennt die Wohnungen und öffnet die gemeinsamen Zugänge für alle.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Projekt erfassen',
+    linkLabel: 'Schließanlage konfigurieren',
   },
   {
     icon: IconPruefung,
@@ -128,7 +128,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Schule, Verwaltung, Einrichtung mit Publikumsverkehr: viele Bereiche, klar getrennte '
       + 'Zuständigkeiten und ein nachvollziehbarer Schließplan.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Projekt erfassen',
+    linkLabel: 'Schließanlage konfigurieren',
   },
   {
     icon: BereichsZeichen,
@@ -137,7 +137,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
       'Verteilte Standorte oder eine größere Liegenschaft: Eine Generalhauptschlüsselanlage '
       + '(GHS) fasst mehrere Gebäude unter einer gemeinsamen Ebene zusammen.',
     href: '/schliessanlagen/konfigurator',
-    linkLabel: 'Projekt erfassen',
+    linkLabel: 'Schließanlage konfigurieren',
   },
 ];
 
@@ -289,7 +289,7 @@ export default async function SchliessanlagenPage() {
         actions={
           <>
             <ButtonLink href="/schliessanlagen/konfigurator" prefetch={false} size="lg" pfeil>
-              Projekt erfassen
+              Schließanlage konfigurieren
             </ButtonLink>
             {/* Ziel des Kopfknopfs erst nach der Fräsbahn vorladen (D-044) */}
             <SpaetVorladen ziele={['/schliessanlagen/konfigurator']} />
@@ -436,7 +436,7 @@ export default async function SchliessanlagenPage() {
                 Zu den gleichschließenden Zylindern
               </ButtonLink>
               <ButtonLink href="/schliessanlagen/konfigurator" variant="outline">
-                Trotzdem Projekt erfassen
+                Trotzdem Schließanlage konfigurieren
               </ButtonLink>
             </div>
 

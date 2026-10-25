@@ -158,7 +158,7 @@ export default async function HomePage() {
               {/* Ziele des ersten Bildschirms erst nach der Fräsbahn vorladen (D-044) */}
               <SpaetVorladen ziele={HERO_ZIELE} />
               <ButtonLink href="/autoschluessel/anfrage" prefetch={false} size="lg" pfeil className="w-full sm:w-auto">
-                Autoschlüssel-Termin starten
+                Autoschlüssel-Termin anfragen
               </ButtonLink>
               <Link
                 href="/schluessel-nach-code"
@@ -282,7 +282,7 @@ export default async function HomePage() {
                 {/* Telefon: Knöpfe untereinander, der sekundäre Weg als Textlink; ab 640 px nebeneinander */}
                 <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:gap-x-6">
                   <ButtonLink href="/autoschluessel/anfrage" pfeil className="w-full sm:w-auto">
-                    Ablauf starten
+                    Termin anfragen
                   </ButtonLink>
                   <Link
                     href="/autoschluessel"
