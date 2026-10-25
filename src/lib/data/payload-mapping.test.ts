@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { defaults } from './defaults';
+import { slugify } from './defaults/vehicles';
 import * as m from './payload-mapping';
 import { JsonFileAdapter } from './json-adapter';
 import type { Collections } from './adapter';
@@ -103,6 +104,42 @@ describe('Übersetzung Payload ↔ Seite', () => {
       const doc = gespeichert(m.einsatzgebietZuPayload(c), i + 1, { updatedAt: c.updatedAt });
       expect(m.einsatzgebietZuSeite(doc as never), c.id).toEqual(c);
     });
+  });
+
+  it('Zylinder-Hersteller, Modell-SEO und Profil der Codelinie', async () => {
+    const catalog = await read('cylinderCatalog');
+    const mitHersteller = {
+      ...catalog,
+      manufacturers: [
+        {
+          id: 'test-hersteller',
+          name: 'Testhersteller',
+          active: true,
+          description: 'Beschreibung',
+          surchargeCentsPerCylinder: 1250,
+          forms: ['doppelzylinder' as const],
+          components: [{ name: 'Karte', priceCents: 990, description: '' }],
+        },
+      ],
+    };
+    const c = m.zylinderkatalogZuSeite(gespeichert(m.zylinderkatalogZuPayload(mitHersteller), 1) as never);
+    expect(c.manufacturers).toEqual(mitHersteller.manufacturers);
+
+    const [groups, makes] = await Promise.all([read('pricingGroups'), read('vehicleMakes')]);
+    const gruppenIds = new Map(groups.map((g, i) => [g.id, i + 1]));
+    const make = {
+      ...makes[0],
+      seo: { title: '', description: 'Eigene Beschreibung', internalLinks: [] },
+      models: [{ ...makes[0].models[0], intro: 'Eigene Einleitung', seo: { title: 'Eigener Titel', description: '' } }],
+    };
+    const doc = gespeichert(m.fahrzeugmarkeZuPayload(make, gruppenIds), 1);
+    expect(m.fahrzeugmarkeZuSeite(doc as never, new Map(groups.map((g, i) => [i + 1, g.id])))).toEqual(make);
+
+    expect([slugify('Škoda'), slugify('Mégane'), slugify('Größe Ü')]).toEqual(['skoda', 'megane', 'groesse-ue']);
+
+    const [line] = await read('codeLines');
+    const mitProfil = { ...line, profile: 'Profil A', codeSeries: 'Serie 100-200' };
+    expect(m.codeLineZuSeite(gespeichert(m.codeLineZuPayload(mitProfil), 1) as never)).toEqual(mitProfil);
   });
 
   it('Sperrtage behalten ihr Datum', async () => {

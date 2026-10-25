@@ -3,7 +3,7 @@ import { APIError, isolateObjectProperty, type CollectionAfterChangeHook, type C
 import { einstellungenZuSeite, vorgangAenderungZuPayload, vorgangZuSeite } from '../../lib/data/payload-mapping';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '../../lib/mail/versand';
 import { BESTAETIGENDE_STATUS, sendeVertragsbestaetigung, vertragsbestaetigungOffen } from '../../lib/mail/vertrag';
-import { istStatusMitMail, statusMail, type StatusMitMail } from '../../lib/mail/vorlagen/status';
+import { istStatusMitMail, mailArtZumStatus, statusMail, type StatusMitMail } from '../../lib/mail/vorlagen/status';
 import { kundeBezahlt } from '../../lib/mail/vorlagen/zahlung';
 import type { MailLogEntry, Settings } from '../../lib/types';
 import { mailKonfiguration, zahlungKonfiguration } from '../../lib/umgebung';
@@ -129,6 +129,10 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
   }
 
   if (data.status && data.status !== originalDoc.status) {
+    // Foto-Freigabe: Zeitpunkt der ersten Freigabe festhalten (Systemfeld).
+    if (data.status === 'freigegeben' && !originalDoc.freigabe?.freigegebenAm) {
+      data.freigabe = { ...(data.freigabe ?? originalDoc.freigabe ?? {}), freigegebenAm: jetzt };
+    }
     const zahlung = originalDoc.zahlung;
     if (data.status === 'storniert' && zahlung?.status === 'offen' && zahlung.checkoutSitzung) {
       vorhaben.sitzungBeenden = zahlung.checkoutSitzung;
@@ -225,7 +229,7 @@ export const vorgangNachAenderung: CollectionAfterChangeHook<Vorgaenge> = async 
     const { status, nachricht } = vorhaben.statusMail;
     eintraege.push(
       await sendeVorlage({
-        art: 'status',
+        art: mailArtZumStatus(status),
         an: vorgang.contact.email,
         inhalt: statusMail({ vorgang, status, nachricht, kontext }),
         antwortAn,

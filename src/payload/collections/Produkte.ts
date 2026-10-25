@@ -88,6 +88,14 @@ export const Produkte: CollectionConfig = {
                 { name: 'schluesseltyp', type: 'text', label: 'Schlüsseltyp', admin: { width: '50%' } },
               ],
             },
+            {
+              type: 'row',
+              admin: { condition: istCodeSchluessel },
+              fields: [
+                { name: 'profil', type: 'text', label: 'Profil', admin: { width: '50%', description: 'Schlüsselprofil laut Hersteller.' } },
+                { name: 'codeserie', type: 'text', label: 'Codeserie', admin: { width: '50%', description: 'Codeserie bzw. Schließungsserie.' } },
+              ],
+            },
             { name: 'einsatz', type: 'text', label: 'Einsatzbereich', admin: { description: 'z. B. „Briefkasten“ oder „Büroschrank“.' } },
             { name: 'umfang', type: 'text', label: 'Lieferumfang' },
             {

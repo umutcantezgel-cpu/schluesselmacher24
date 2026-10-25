@@ -28,6 +28,14 @@ interface LineSpec {
   tags: string[];
 }
 
+/**
+ * Linien mit Foto-Pflicht und ihrem Hinweis. ZY-02 (Sicherungskarte): Nachschlüssel
+ * nur gegen Kartennachweis (FAQ Schließanlagen; Evaluierung I-44).
+ */
+const FOTO_PFLICHT: Record<string, string> = {
+  'ZY-02': 'Pflicht: Bitte laden Sie ein Foto Ihrer Sicherungskarte hoch. Bei Anlagen mit Sicherungskarte bestellt nur, wer die Karte vorlegt.',
+};
+
 const FAMILIES: Array<{ family: string; prefix: string; lines: LineSpec[] }> = [
   {
     family: 'Möbel- und Büroschlösser',
@@ -205,9 +213,10 @@ export function codeLines(): CodeLine[] {
         ],
         scope: '1 Schlüssel je Stück, gefertigt nach angegebenem Code.',
         maxQty: 20,
-        photoUpload: line.photo,
+        photoUpload: FOTO_PFLICHT[line.code] ? 'pflicht' : line.photo,
         photoUploadHint:
-          'Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.',
+          FOTO_PFLICHT[line.code]
+          ?? 'Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.',
         shippingClass: 'code-schluessel',
         active: true,
         tags: [...line.tags, family.family],

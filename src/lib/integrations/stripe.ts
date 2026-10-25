@@ -4,6 +4,7 @@ import Stripe from 'stripe';
 
 import { formatDateShort } from '@/lib/format';
 import { getSiteUrl } from '@/lib/site-url';
+import type { RecordKind } from '@/lib/types';
 import { zahlungKonfiguration, type ZahlungKonfiguration } from '@/lib/umgebung';
 
 import type { PaymentIntent, PaymentResult } from './index';
@@ -58,7 +59,8 @@ export interface CheckoutMetadaten {
   [schluessel: string]: string;
 }
 
-const BESCHREIBUNG: Record<string, string> = {
+/** Arten ohne Eintrag (Anfrage, Projekt, Partner) nutzen die Beschreibung der Zahlung. */
+const BESCHREIBUNG: Partial<Record<RecordKind, string>> = {
   termin: 'Anzahlung Autoschlüssel-Termin',
   bestellung: 'Bestellung',
 };

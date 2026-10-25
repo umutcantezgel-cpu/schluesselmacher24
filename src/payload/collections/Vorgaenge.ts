@@ -10,7 +10,9 @@ export const VORGANG_STATUS = [
   { label: 'Neu', value: 'neu' },
   { label: 'In Prüfung', value: 'in-pruefung' },
   { label: 'Geprüft', value: 'geprueft' },
+  { label: 'Freigegeben', value: 'freigegeben' },
   { label: 'Wartet auf Kunde', value: 'wartet-auf-kunde' },
+  { label: 'Nicht möglich', value: 'nicht-moeglich' },
   { label: 'In Fertigung', value: 'in-fertigung' },
   { label: 'Terminiert', value: 'terminiert' },
   { label: 'Versendet', value: 'versendet' },
@@ -47,7 +49,23 @@ export const MAIL_ARTEN = [
   { label: 'Erstattung', value: 'erstattung' },
   { label: 'Statusänderung', value: 'status' },
   { label: 'Widerruf erhalten', value: 'widerruf' },
+  { label: 'Termin-Erinnerung', value: 'erinnerung' },
+  { label: 'Ergebnis der Foto-Prüfung', value: 'freigabe' },
+  { label: 'Hinweis an das Team', value: 'team-hinweis' },
   { label: 'Sonstige', value: 'sonstige' },
+];
+
+/**
+ * Stand einer Auftragsvermittlung an einen Partnerbetrieb (Erg. Leitfaden §7).
+ * Leer = der Vorgang wird nicht vermittelt.
+ */
+export const VERMITTLUNG_STATUS = [
+  { label: 'neu', value: 'neu' },
+  { label: 'geprüft', value: 'geprueft' },
+  { label: 'Partner angefragt', value: 'partner-angefragt' },
+  { label: 'angenommen', value: 'angenommen' },
+  { label: 'erledigt', value: 'erledigt' },
+  { label: 'Provision abgerechnet', value: 'provision-abgerechnet' },
 ];
 
 export const VERSANDDIENSTLEISTER = [
@@ -126,6 +144,7 @@ export const Vorgaenge: CollectionConfig = {
             { label: 'Anfrage', value: 'anfrage' },
             { label: 'Termin', value: 'termin' },
             { label: 'Projekt', value: 'projekt' },
+            { label: 'Partner-Bewerbung', value: 'partner' },
           ],
           admin: { width: '25%', ...nurLesen },
         },
@@ -151,7 +170,8 @@ export const Vorgaenge: CollectionConfig = {
       admin: {
         position: 'sidebar',
         description:
-          'Mail geht bei „Wartet auf Kunde“, „Terminiert“, „Versendet“ und „Storniert“. '
+          'Mail geht bei „Freigegeben“, „Nicht möglich“, „Wartet auf Kunde“, „Terminiert“, „Versendet“ '
+          + 'und „Storniert“. '
           + 'Haken entfernen, um diesen einen Wechsel still zu speichern.',
       },
     },
@@ -274,6 +294,69 @@ export const Vorgaenge: CollectionConfig = {
                     { name: 'fassung', type: 'text', label: 'Stand der Rechtstexte', admin: { width: '50%' } },
                   ],
                 },
+              ],
+            },
+          ],
+        },
+        {
+          label: 'Freigabe',
+          // Foto-Freigabe (Erg. Leitfaden §2): nur bei Schlüsseln nach Vorlage.
+          admin: { condition: (data) => data?.bereich === 'schluessel-nach-vorlage' },
+          description:
+            'Ergebnis der Foto-Prüfung: Ablauf eingegangen → geprüft → freigegeben / Rückfrage („Wartet auf Kunde“) '
+            + '/ nicht möglich → Bestellung. Eine Freigabe ist noch keine Fertigungszusage.',
+          fields: [
+            {
+              name: 'freigabe',
+              type: 'group',
+              label: 'Freigabe',
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'preisCent', type: 'number', label: 'Preis (Cent)', min: 0, admin: { width: '34%', step: 1, description: 'Preis der Anfertigung inklusive Umsatzsteuer, in Cent.' } },
+                    { name: 'einsendenNoetig', type: 'checkbox', label: 'Originalschlüssel einsenden', admin: { width: '33%' } },
+                    { name: 'freigegebenAm', type: 'date', label: 'Freigegeben am', admin: { width: '33%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
+                  ],
+                },
+                { name: 'hinweis', type: 'textarea', label: 'Hinweis an den Kunden' },
+              ],
+            },
+          ],
+        },
+        {
+          label: 'Vermittlung',
+          admin: { condition: (data) => data?.art !== 'partner' },
+          description: 'Nur ausfüllen, wenn der Auftrag an einen Partnerbetrieb vermittelt wird.',
+          fields: [
+            {
+              name: 'vermittlung',
+              type: 'group',
+              label: 'Vermittlung',
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'status',
+                      type: 'select',
+                      label: 'Stand der Vermittlung',
+                      options: VERMITTLUNG_STATUS,
+                      index: true,
+                      admin: { width: '40%', description: 'Leer = keine Vermittlung.' },
+                    },
+                    {
+                      name: 'partner',
+                      type: 'relationship',
+                      relationTo: 'vorgaenge',
+                      label: 'Partnerbetrieb',
+                      filterOptions: { art: { equals: 'partner' } },
+                      admin: { width: '40%', description: 'Bewerbung des Partners (Vorgang der Art „Partner-Bewerbung“).' },
+                    },
+                    { name: 'provisionCent', type: 'number', label: 'Provision (Cent)', min: 0, admin: { width: '20%', step: 1 } },
+                  ],
+                },
+                { name: 'notiz', type: 'textarea', label: 'Notiz zur Vermittlung', admin: { description: 'Nur für das Team sichtbar.' } },
               ],
             },
           ],

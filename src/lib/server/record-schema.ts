@@ -96,7 +96,7 @@ export type TerminZustimmungen = z.infer<typeof terminZustimmungenSchema>;
 
 /** Eingabe der öffentlichen Aktion `submitRecord`. */
 export const publicRecordSchema = z.object({
-  kind: z.enum(['anfrage', 'termin', 'projekt', 'bestellung']),
+  kind: z.enum(['anfrage', 'termin', 'projekt', 'bestellung', 'partner']),
   area: z.enum(AREA_KEYS),
   process: z.enum(['direktkauf', 'gefuehrte-anfrage', 'projektkonfigurator', 'termin-mit-anzahlung']),
   contact: contactSchema,

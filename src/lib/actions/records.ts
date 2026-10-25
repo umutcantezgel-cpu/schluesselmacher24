@@ -115,7 +115,7 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   const befund = formularSchutzPruefen(input?.schutz);
   if (befund === 'honigtopf') {
     botVerdachtMelden('submitRecord', befund);
-    const art = (['anfrage', 'termin', 'projekt'] as const).find((k) => k === input?.kind) ?? 'anfrage';
+    const art = (['anfrage', 'termin', 'projekt', 'partner'] as const).find((k) => k === input?.kind) ?? 'anfrage';
     return { ok: true, reference: scheinNummer(art), notices: [] };
   }
   if (befund !== 'ok') {

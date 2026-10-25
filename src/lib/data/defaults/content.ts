@@ -696,56 +696,11 @@ export function guides(): Guide[] {
 }
 
 /**
- * Stadtseiten. Jede Seite braucht echten örtlichen Mehrwert —
- * keine Massenkopien. Die Startseiten sind bewusst als Gerüst mit
- * gekennzeichneten Platzhaltern angelegt.
+ * Stadtseiten. Bewusst leer: keine künstlich erzeugten Städteseiten
+ * (Erg. Leitfaden §5). Eine Stadt kommt erst dazu, wenn der Betrieb dort
+ * echte Vor-Ort-Leistungen erbringt und den örtlichen Text selbst schreibt —
+ * im Backend unter „Einsatzgebiete“.
  */
 export function cities(): CityPage[] {
-  const now = '2026-09-15T00:00:00.000Z';
-
-  const raw: Array<[slug: string, city: string, state: string, radius: number]> = [
-    ['berlin', 'Berlin', 'Berlin', 40],
-    ['hamburg', 'Hamburg', 'Hamburg', 40],
-    ['muenchen', 'München', 'Bayern', 40],
-    ['koeln', 'Köln', 'Nordrhein-Westfalen', 40],
-    ['frankfurt-am-main', 'Frankfurt am Main', 'Hessen', 40],
-    ['stuttgart', 'Stuttgart', 'Baden-Württemberg', 40],
-  ];
-
-  return raw.map(([slug, city, state, radius]) => ({
-    id: slug,
-    slug,
-    city,
-    state,
-    localIntro:
-      `[Platzhalter — örtlicher Text für ${city} eintragen] Dieser Abschnitt soll beschreiben, `
-      + `was den Bereich ${city} konkret ausmacht: welche Objektarten hier häufig vorkommen, `
-      + 'welche Anfahrtszeiten realistisch sind und welche Leistungen wir vor Ort erbringen. '
-      + 'Bitte keinen allgemeinen Text mehrfach verwenden.',
-    localFacts: [
-      { label: 'Bundesland', value: state },
-      { label: 'Einsatzradius', value: `${radius} km` },
-      { label: 'Vor-Ort-Leistungen', value: '[Platzhalter: konkrete Leistungen eintragen]' },
-      { label: 'Übliche Anfahrt', value: '[Platzhalter: Anfahrtszeit eintragen]' },
-    ],
-    servicesOffered: [
-      'autoschluessel',
-      'tuer-und-schliesstechnik',
-      'schliessanlagen',
-      'elektronische-zutrittsloesungen',
-      'sicherheitstechnik',
-    ],
-    onSiteRadiusKm: radius,
-    seo: {
-      title: `Schlüsseldienst und Autoschlüssel in ${city}`,
-      description:
-        `Autoschlüssel, Schließtechnik und Sicherheitstechnik für ${city} und Umgebung. `
-        + 'Termine nach Vereinbarung, Versand deutschlandweit.',
-      internalLinks: [
-        { href: '/standorte', label: 'Alle Einsatzgebiete' },
-        { href: '/autoschluessel/anfrage', label: 'Autoschlüssel-Termin' },
-      ],
-    },
-    updatedAt: now,
-  }));
+  return [];
 }

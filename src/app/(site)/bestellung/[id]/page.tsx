@@ -35,12 +35,15 @@ const KIND_LABELS: Record<RecordKind, string> = {
   anfrage: 'Anfrage',
   termin: 'Termin',
   projekt: 'Projekt',
+  partner: 'Partner-Bewerbung',
 };
 
 const STATUS_LABELS: Record<RecordStatus, string> = {
   neu: 'Eingegangen',
   'in-pruefung': 'In Prüfung',
   geprueft: 'Geprüft',
+  freigegeben: 'Freigegeben',
+  'nicht-moeglich': 'Nicht möglich',
   'wartet-auf-kunde': 'Wartet auf Ihre Rückmeldung',
   'in-fertigung': 'In Fertigung',
   terminiert: 'Termin vereinbart',
@@ -53,6 +56,8 @@ const STATUS_TONE: Record<RecordStatus, Tonfall> = {
   neu: 'primary',
   'in-pruefung': 'primary',
   geprueft: 'accent',
+  freigegeben: 'success',
+  'nicht-moeglich': 'danger',
   'wartet-auf-kunde': 'warning',
   'in-fertigung': 'accent',
   terminiert: 'accent',
@@ -175,6 +180,10 @@ const SCHRITTE: Record<RecordKind, Array<{ titel: string; text: string }>> = {
   projekt: [
     { titel: 'Sichtung', text: 'Wir sichten Ihre Angaben und Unterlagen.' },
     { titel: 'Rückmeldung', text: 'Wir melden uns mit einem Angebot oder einem Vorschlag für einen Termin vor Ort.' },
+  ],
+  partner: [
+    { titel: 'Prüfung', text: 'Wir prüfen Ihre Angaben zu Betrieb, Leistungen und Qualifikation.' },
+    { titel: 'Rückmeldung', text: 'Wir melden uns mit dem nächsten Schritt.' },
   ],
 };
 

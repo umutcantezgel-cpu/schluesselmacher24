@@ -27,6 +27,8 @@ export function cylinderCatalog(): CylinderCatalog {
       motif: 'Messzeichnung Zylinder mit Bemaßung A und B',
       ratio: '16/9',
     },
+    // Hersteller (ABUS, BKS) pflegt der Betrieb im Backend — ohne erfundene Preise.
+    manufacturers: [],
     forms: [
       {
         id: 'doppelzylinder',

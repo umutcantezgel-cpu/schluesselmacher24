@@ -17,6 +17,7 @@ export const ART_LABEL: Record<RecordKind, string> = {
   termin: 'Termin',
   anfrage: 'Anfrage',
   projekt: 'Projektanfrage',
+  partner: 'Partner-Bewerbung',
 };
 
 export const BEREICH_LABEL: Record<AreaKey, string> = {

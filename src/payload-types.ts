@@ -174,7 +174,7 @@ export interface BenutzerAuthOperations {
 export interface Vorgaenge {
   id: number;
   nummer: string;
-  art: 'bestellung' | 'anfrage' | 'termin' | 'projekt';
+  art: 'bestellung' | 'anfrage' | 'termin' | 'projekt' | 'partner';
   bereich:
     | 'autoschluessel'
     | 'schluessel-nach-vorlage'
@@ -190,14 +190,16 @@ export interface Vorgaenge {
     | 'neu'
     | 'in-pruefung'
     | 'geprueft'
+    | 'freigegeben'
     | 'wartet-auf-kunde'
+    | 'nicht-moeglich'
     | 'in-fertigung'
     | 'terminiert'
     | 'versendet'
     | 'abgeschlossen'
     | 'storniert';
   /**
-   * Mail geht bei „Wartet auf Kunde“, „Terminiert“, „Versendet“ und „Storniert“. Haken entfernen, um diesen einen Wechsel still zu speichern.
+   * Mail geht bei „Freigegeben“, „Nicht möglich“, „Wartet auf Kunde“, „Terminiert“, „Versendet“ und „Storniert“. Haken entfernen, um diesen einen Wechsel still zu speichern.
    */
   kundeInformieren?: boolean | null;
   /**
@@ -236,6 +238,30 @@ export interface Vorgaenge {
     berechtigung?: boolean | null;
     am?: string | null;
     fassung?: string | null;
+  };
+  freigabe?: {
+    /**
+     * Preis der Anfertigung inklusive Umsatzsteuer, in Cent.
+     */
+    preisCent?: number | null;
+    einsendenNoetig?: boolean | null;
+    freigegebenAm?: string | null;
+    hinweis?: string | null;
+  };
+  vermittlung?: {
+    /**
+     * Leer = keine Vermittlung.
+     */
+    status?: ('neu' | 'geprueft' | 'partner-angefragt' | 'angenommen' | 'erledigt' | 'provision-abgerechnet') | null;
+    /**
+     * Bewerbung des Partners (Vorgang der Art „Partner-Bewerbung“).
+     */
+    partner?: (number | null) | Vorgaenge;
+    provisionCent?: number | null;
+    /**
+     * Nur für das Team sichtbar.
+     */
+    notiz?: string | null;
   };
   positionen?:
     | {
@@ -306,6 +332,9 @@ export interface Vorgaenge {
           | 'erstattung'
           | 'status'
           | 'widerruf'
+          | 'erinnerung'
+          | 'freigabe'
+          | 'team-hinweis'
           | 'sonstige';
         an: string;
         am: string;
@@ -448,6 +477,14 @@ export interface Produkte {
   beschreibung: string;
   hersteller?: string | null;
   schluesseltyp?: string | null;
+  /**
+   * Schlüsselprofil laut Hersteller.
+   */
+  profil?: string | null;
+  /**
+   * Codeserie bzw. Schließungsserie.
+   */
+  codeserie?: string | null;
   /**
    * z. B. „Briefkasten“ oder „Büroschrank“.
    */
@@ -621,6 +658,9 @@ export interface Fahrzeugmarken {
   id: number;
   name: string;
   preisgruppe: number | Preisgruppen;
+  /**
+   * Eigener Text des Betriebs — geht vor automatisch erzeugten Texten.
+   */
   intro?: string | null;
   bild?: {
     /**
@@ -648,9 +688,48 @@ export interface Fahrzeugmarken {
         fahrzeugVorOrt?: boolean | null;
         preisgruppe?: (number | null) | Preisgruppen;
         hinweise?: string | null;
+        /**
+         * Eigener Text. Leer lassen = die Seite erzeugt ihn aus den Modelldaten.
+         */
+        einleitung?: string | null;
+        /**
+         * Eigener Titel und eigene Beschreibung der Modellseite. Leer = automatisch.
+         */
+        seo?: {
+          titel?: string | null;
+          beschreibung?: string | null;
+          noindex?: boolean | null;
+        };
         id?: string | null;
       }[]
     | null;
+  /**
+   * Titel und Beschreibung, wie sie bei Google erscheinen.
+   */
+  seo?: {
+    titel?: string | null;
+    beschreibung?: string | null;
+    interneLinks?:
+      | {
+          href: string;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    noindex?: boolean | null;
+    socialBild?: {
+      /**
+       * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+       */
+      motiv?: string | null;
+      format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+      /**
+       * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+       */
+      bild?: (number | null) | Medien;
+      hinweis?: string | null;
+    };
+  };
   /**
    * Nur Kleinbuchstaben, Ziffern und Bindestriche, z. B. „ms-01“. Ändert die Adresse der Seite.
    */
@@ -1434,6 +1513,22 @@ export interface VorgaengeSelect<T extends boolean = true> {
         am?: T;
         fassung?: T;
       };
+  freigabe?:
+    | T
+    | {
+        preisCent?: T;
+        einsendenNoetig?: T;
+        freigegebenAm?: T;
+        hinweis?: T;
+      };
+  vermittlung?:
+    | T
+    | {
+        status?: T;
+        partner?: T;
+        provisionCent?: T;
+        notiz?: T;
+      };
   positionen?:
     | T
     | {
@@ -1583,6 +1678,8 @@ export interface ProdukteSelect<T extends boolean = true> {
   beschreibung?: T;
   hersteller?: T;
   schluesseltyp?: T;
+  profil?: T;
+  codeserie?: T;
   einsatz?: T;
   umfang?: T;
   eigenschaften?:
@@ -1692,7 +1789,37 @@ export interface FahrzeugmarkenSelect<T extends boolean = true> {
         fahrzeugVorOrt?: T;
         preisgruppe?: T;
         hinweise?: T;
+        einleitung?: T;
+        seo?:
+          | T
+          | {
+              titel?: T;
+              beschreibung?: T;
+              noindex?: T;
+            };
         id?: T;
+      };
+  seo?:
+    | T
+    | {
+        titel?: T;
+        beschreibung?: T;
+        interneLinks?:
+          | T
+          | {
+              href?: T;
+              label?: T;
+              id?: T;
+            };
+        noindex?: T;
+        socialBild?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
       };
   slug?: T;
   kennung?: T;
@@ -2326,6 +2453,31 @@ export interface Zylinderkatalog {
         id?: string | null;
       }[]
     | null;
+  hersteller?:
+    | {
+        name: string;
+        /**
+         * z. B. „abus“.
+         */
+        kennung: string;
+        aktiv?: boolean | null;
+        beschreibung?: string | null;
+        aufpreisJeZylinder?: number | null;
+        /**
+         * Leer = für alle Bauformen.
+         */
+        bauformen?: ('doppelzylinder' | 'knaufzylinder' | 'halbzylinder')[] | null;
+        zusatzkomponenten?:
+          | {
+              name: string;
+              preis: number;
+              beschreibung?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * Pflichtangaben im Online-Handel: Hersteller (Name, Postanschrift, E-Mail oder Website) und eine Kennung (Typ, Charge oder Artikelnummer). Sicherheitshinweise nur, wenn nötig.
    */
@@ -2485,6 +2637,10 @@ export interface Einstellungen {
           id?: string | null;
         }[]
       | null;
+    /**
+     * Wie viele Tage vor dem Termin der Kunde eine Erinnerung erhält. 0 = keine Erinnerung.
+     */
+    erinnerungTageVorher?: number | null;
   };
   versand?:
     | {
@@ -2706,6 +2862,25 @@ export interface ZylinderkatalogSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  hersteller?:
+    | T
+    | {
+        name?: T;
+        kennung?: T;
+        aktiv?: T;
+        beschreibung?: T;
+        aufpreisJeZylinder?: T;
+        bauformen?: T;
+        zusatzkomponenten?:
+          | T
+          | {
+              name?: T;
+              preis?: T;
+              beschreibung?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   gpsr?:
     | T
     | {
@@ -2839,6 +3014,7 @@ export interface EinstellungenSelect<T extends boolean = true> {
               bis?: T;
               id?: T;
             };
+        erinnerungTageVorher?: T;
       };
   versand?:
     | T

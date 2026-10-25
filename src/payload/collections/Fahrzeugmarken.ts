@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload';
 
 import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
-import { SCHLUESSELARTEN, bildFeld, kennungFeld, slugFeld } from '../fields/gemeinsam';
+import { SCHLUESSELARTEN, bildFeld, kennungFeld, seoFeld, slugFeld } from '../fields/gemeinsam';
 import { erneuernHooks } from '../hooks/revalidate';
 
 /** Fahrzeugmarken mit Modellen für die Autoschlüssel-Buchung. */
@@ -16,7 +16,12 @@ export const Fahrzeugmarken: CollectionConfig = {
   fields: [
     { name: 'name', type: 'text', label: 'Marke', required: true },
     { name: 'preisgruppe', type: 'relationship', relationTo: 'preisgruppen', label: 'Preisgruppe', required: true },
-    { name: 'intro', type: 'textarea', label: 'Einleitung auf der Markenseite' },
+    {
+      name: 'intro',
+      type: 'textarea',
+      label: 'Einleitung auf der Markenseite',
+      admin: { description: 'Eigener Text des Betriebs — geht vor automatisch erzeugten Texten.' },
+    },
     bildFeld('bild', 'Bild der Markenseite'),
     {
       name: 'modelle',
@@ -44,8 +49,26 @@ export const Fahrzeugmarken: CollectionConfig = {
         { name: 'fahrzeugVorOrt', type: 'checkbox', label: 'Programmierung nur am Fahrzeug', defaultValue: true },
         { name: 'preisgruppe', type: 'relationship', relationTo: 'preisgruppen', label: 'Abweichende Preisgruppe' },
         { name: 'hinweise', type: 'text', label: 'Hinweise' },
+        {
+          name: 'einleitung',
+          type: 'textarea',
+          label: 'Einleitung auf der Modellseite',
+          admin: { description: 'Eigener Text. Leer lassen = die Seite erzeugt ihn aus den Modelldaten.' },
+        },
+        {
+          name: 'seo',
+          type: 'group',
+          label: 'Suchmaschinen',
+          admin: { description: 'Eigener Titel und eigene Beschreibung der Modellseite. Leer = automatisch.' },
+          fields: [
+            { name: 'titel', type: 'text', label: 'Seitentitel', maxLength: 90 },
+            { name: 'beschreibung', type: 'textarea', label: 'Beschreibung', maxLength: 320 },
+            { name: 'noindex', type: 'checkbox', label: 'Nicht in Suchmaschinen aufnehmen', defaultValue: false },
+          ],
+        },
       ],
     },
+    seoFeld(),
     slugFeld(),
     kennungFeld(),
   ],

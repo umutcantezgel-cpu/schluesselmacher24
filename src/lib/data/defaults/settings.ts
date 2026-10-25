@@ -53,6 +53,8 @@ export function settings(): Settings {
       bookingHorizonDays: 90,
       slotsPerWindow: 1,
       federalState: 'HE',
+      // Termin-Erinnerung einen Tag vorher (0 = aus), im Backend änderbar.
+      reminderDaysBefore: 1,
       windows: [
         { from: '09:00', to: '10:00' },
         { from: '10:00', to: '11:00' },

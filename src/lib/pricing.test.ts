@@ -61,6 +61,7 @@ describe('pricing', () => {
       bookingHorizonDays: 14,
       slotsPerWindow: 2,
       windows: [{ from: '09:00', to: '17:00' }],
+      reminderDaysBefore: 1,
     };
 
     const mockRules: PricingRule[] = [
@@ -489,6 +490,7 @@ describe('pricing', () => {
       maxCylinders: 10,
       measuringInfo: mockInfo,
       measuringFigure: mockImage,
+      manufacturers: [],
     };
 
     it('calculates the base case correctly without surcharges', () => {

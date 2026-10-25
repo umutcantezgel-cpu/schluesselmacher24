@@ -442,8 +442,8 @@
     ]
   },
   {
-    "id": "koda",
-    "slug": "koda",
+    "id": "skoda",
+    "slug": "skoda",
     "name": "Škoda",
     "pricingGroupId": "gruppe-b",
     "intro": "Škoda teilt sich viele Schlüsselsysteme mit anderen Marken des Konzerns. Das erleichtert die Beschaffung passender Rohlinge.",
@@ -596,8 +596,8 @@
         "requiresVehicleOnSite": true
       },
       {
-        "id": "m-gane",
-        "slug": "m-gane",
+        "id": "megane",
+        "slug": "megane",
         "name": "Mégane",
         "yearFrom": 1995,
         "keyKinds": [

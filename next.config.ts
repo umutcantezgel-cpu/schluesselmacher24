@@ -75,6 +75,14 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }];
   },
+  // Frühere Adressen mit verlorenem Akzent (Datenmigration 20261025 „leitfaden_daten“).
+  async redirects() {
+    return [
+      { source: '/autoschluessel/marken/koda', destination: '/autoschluessel/marken/skoda', permanent: true },
+      { source: '/autoschluessel/marken/koda/:model', destination: '/autoschluessel/marken/skoda/:model', permanent: true },
+      { source: '/autoschluessel/marken/renault/m-gane', destination: '/autoschluessel/marken/renault/megane', permanent: true },
+    ];
+  },
 };
 
 const withCms = withPayload(nextConfig, { devBundleServerPackages: false });

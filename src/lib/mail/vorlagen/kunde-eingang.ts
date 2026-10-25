@@ -36,6 +36,7 @@ const BETREFF: Record<BusinessRecord['kind'], string> = {
   termin: 'Ihre Terminbuchung {nr} ist eingegangen',
   anfrage: 'Ihre Anfrage {nr} ist eingegangen',
   projekt: 'Ihre Projektanfrage {nr} ist eingegangen',
+  partner: 'Ihre Bewerbung als Partnerbetrieb {nr} ist eingegangen',
 };
 
 const EINLEITUNG: Record<BusinessRecord['kind'], string> = {
@@ -48,6 +49,9 @@ const EINLEITUNG: Record<BusinessRecord['kind'], string> = {
   anfrage: 'vielen Dank für Ihre Anfrage. Wir sichten Ihre Angaben und melden uns mit dem nächsten Schritt.',
   projekt:
     'vielen Dank für Ihre Projektanfrage. Wir sichten Ihre Angaben und Unterlagen und melden uns mit dem '
+    + 'nächsten Schritt.',
+  partner:
+    'vielen Dank für Ihre Bewerbung als Partnerbetrieb. Wir prüfen Ihre Angaben und melden uns mit dem '
     + 'nächsten Schritt.',
 };
 

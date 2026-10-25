@@ -8,8 +8,15 @@ import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
 import { ANTWORT_HINWEIS, nummerBaustein, statusLink, terminZeilen, type VorlagenKontext } from './gemeinsam';
 
 /** Status, zu denen der Kunde eine Mail erhält. */
-export const STATUS_MIT_MAIL = ['wartet-auf-kunde', 'terminiert', 'versendet', 'storniert'] as const;
+export const STATUS_MIT_MAIL = ['freigegeben', 'nicht-moeglich', 'wartet-auf-kunde', 'terminiert', 'versendet', 'storniert'] as const;
 export type StatusMitMail = (typeof STATUS_MIT_MAIL)[number];
+
+/** Ergebnis der Foto-Prüfung — im Mailprotokoll als Art „freigabe“ vermerkt. */
+export const FREIGABE_STATUS = ['freigegeben', 'nicht-moeglich'] as const;
+
+export function mailArtZumStatus(status: StatusMitMail): 'freigabe' | 'status' {
+  return (FREIGABE_STATUS as readonly string[]).includes(status) ? 'freigabe' : 'status';
+}
 
 export function istStatusMitMail(status: string): status is StatusMitMail {
   return (STATUS_MIT_MAIL as readonly string[]).includes(status);
@@ -59,6 +66,21 @@ export function statusMail({ vorgang, status, nachricht, kontext }: StatusMailDa
   let betreff: string;
 
   switch (status) {
+    // Einfache Fassung; Preis, Einsenden und Bestellweg ergänzt die Feinarbeit der Foto-Freigabe.
+    case 'freigegeben':
+      betreff = `Ihre Anfrage ist freigegeben – ${vorgang.reference}`;
+      bausteine.push({
+        art: 'absatz',
+        text: 'wir haben Ihre Anfrage geprüft: Die Anfertigung ist möglich. Wir melden uns mit dem nächsten Schritt.',
+      });
+      break;
+    case 'nicht-moeglich':
+      betreff = `Ergebnis Ihrer Anfrage – ${vorgang.reference}`;
+      bausteine.push({
+        art: 'absatz',
+        text: 'wir haben Ihre Anfrage geprüft. Leider können wir diesen Schlüssel nicht anfertigen.',
+      });
+      break;
     case 'wartet-auf-kunde':
       betreff = `Wir brauchen noch etwas von Ihnen – ${vorgang.reference}`;
       bausteine.push({

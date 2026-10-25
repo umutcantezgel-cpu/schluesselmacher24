@@ -18,6 +18,11 @@ const STATUS_TEXT: Record<RecordStatus, { label: string; erklaerung: string }> =
   neu: { label: 'Eingegangen', erklaerung: 'Ihr Vorgang liegt uns vor und wird in Kürze gesichtet.' },
   'in-pruefung': { label: 'In Prüfung', erklaerung: 'Wir prüfen Machbarkeit, Unterlagen und Preis.' },
   geprueft: { label: 'Geprüft', erklaerung: 'Die Prüfung ist abgeschlossen. Sie hören von uns.' },
+  freigegeben: {
+    label: 'Freigegeben',
+    erklaerung: 'Die Anfertigung ist nach Prüfung möglich. Die Freigabe ist noch keine Fertigungszusage.',
+  },
+  'nicht-moeglich': { label: 'Nicht möglich', erklaerung: 'Nach unserer Prüfung können wir diesen Auftrag nicht ausführen.' },
   'wartet-auf-kunde': {
     label: 'Wartet auf Sie',
     erklaerung: 'Wir brauchen noch eine Angabe oder eine Unterlage von Ihnen.',
@@ -33,6 +38,8 @@ const STATUS_TON: Record<RecordStatus, 'neutral' | 'primary' | 'success' | 'warn
   neu: 'primary',
   'in-pruefung': 'primary',
   geprueft: 'primary',
+  freigegeben: 'success',
+  'nicht-moeglich': 'danger',
   'wartet-auf-kunde': 'warning',
   'in-fertigung': 'primary',
   terminiert: 'success',

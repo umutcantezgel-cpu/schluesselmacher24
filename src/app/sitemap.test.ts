@@ -24,11 +24,16 @@ const { default: sitemap } = await import('./sitemap');
 
 function stadt(slug: string, intro: string): CityPage {
   return {
-    ...defaults.cities()[0],
     id: slug,
     slug,
+    city: slug,
+    state: 'Hessen',
     localIntro: intro,
     localFacts: [{ label: 'Einsatzradius', value: '20 km' }],
+    servicesOffered: ['autoschluessel'],
+    onSiteRadiusKm: 20,
+    seo: { title: `Schlüsseldienst in ${slug}`, description: 'Vor Ort und in der Werkstatt.', internalLinks: [] },
+    updatedAt: '2026-09-15T00:00:00.000Z',
   };
 }
 

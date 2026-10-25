@@ -1054,8 +1054,8 @@
     ],
     "scope": "1 Schlüssel je Stück, gefertigt nach angegebenem Code.",
     "maxQty": 20,
-    "photoUpload": "optional",
-    "photoUploadHint": "Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.",
+    "photoUpload": "pflicht",
+    "photoUploadHint": "Pflicht: Bitte laden Sie ein Foto Ihrer Sicherungskarte hoch. Bei Anlagen mit Sicherungskarte bestellt nur, wer die Karte vorlegt.",
     "shippingClass": "code-schluessel",
     "active": true,
     "tags": [
