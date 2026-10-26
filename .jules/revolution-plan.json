@@ -1,0 +1,1311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-26T17:25:25.639673Z",
+  "total_existing_routes": 54,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 3090,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter0",
+        "target_file": "src/components/interaktiv/info-filter-0.tsx",
+        "action_file": "src/actions/info-action-0.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 1117,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /ratgeber",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter1",
+        "target_file": "src/components/interaktiv/info-filter-1.tsx",
+        "action_file": "src/actions/info-action-1.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1575,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /ratgeber/[slug]",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter2",
+        "target_file": "src/components/interaktiv/info-filter-2.tsx",
+        "action_file": "src/actions/info-action-2.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 3160,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /schluessel-nach-vorlage",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter3",
+        "target_file": "src/components/interaktiv/info-filter-3.tsx",
+        "action_file": "src/actions/info-action-3.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 1035,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /schluessel-nach-vorlage/anfrage",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter4",
+        "target_file": "src/components/interaktiv/info-filter-4.tsx",
+        "action_file": "src/actions/info-action-4.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/[...unbekannt]",
+      "source_file": "src/app/(site)/[...unbekannt]/page.tsx",
+      "target_word_count": 872,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /[...unbekannt]",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter5",
+        "target_file": "src/components/interaktiv/info-filter-5.tsx",
+        "action_file": "src/actions/info-action-5.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 1149,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /warenkorb",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter6",
+        "target_file": "src/components/interaktiv/info-filter-6.tsx",
+        "action_file": "src/actions/info-action-6.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 1230,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /kasse",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter7",
+        "target_file": "src/components/interaktiv/info-filter-7.tsx",
+        "action_file": "src/actions/info-action-7.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1787,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /schluessel-nach-code",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter8",
+        "target_file": "src/components/interaktiv/info-filter-8.tsx",
+        "action_file": "src/actions/info-action-8.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 2218,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /schluessel-nach-code/[slug]",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter9",
+        "target_file": "src/components/interaktiv/info-filter-9.tsx",
+        "action_file": "src/actions/info-action-9.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/schluessel-nach-code/hersteller/[hersteller]",
+      "source_file": "src/app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx",
+      "target_word_count": 1283,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /schluessel-nach-code/hersteller/[hersteller]",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter10",
+        "target_file": "src/components/interaktiv/info-filter-10.tsx",
+        "action_file": "src/actions/info-action-10.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/schluessel-nach-code/kategorie/[familie]",
+      "source_file": "src/app/(site)/schluessel-nach-code/kategorie/[familie]/page.tsx",
+      "target_word_count": 1324,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /schluessel-nach-code/kategorie/[familie]",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter11",
+        "target_file": "src/components/interaktiv/info-filter-11.tsx",
+        "action_file": "src/actions/info-action-11.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 2231,
+      "content_expansion_topics": [
+        "Sicherheitstechnische Analysen und Bedrohungsmodellierung",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecurityChecklist",
+        "target_file": "src/components/sicherheitstechnik/security-checklist.tsx",
+        "action_file": "src/actions/sicherheit-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1544,
+      "content_expansion_topics": [
+        "Sicherheitstechnische Analysen und Bedrohungsmodellierung",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecurityChecklist",
+        "target_file": "src/components/sicherheitstechnik/security-checklist.tsx",
+        "action_file": "src/actions/sicherheit-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 1178,
+      "content_expansion_topics": [
+        "Sicherheitstechnische Analysen und Bedrohungsmodellierung",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "SecurityChecklist",
+        "target_file": "src/components/sicherheitstechnik/security-checklist.tsx",
+        "action_file": "src/actions/sicherheit-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/partner-werden",
+      "source_file": "src/app/(site)/partner-werden/page.tsx",
+      "target_word_count": 1536,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /partner-werden",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter15",
+        "target_file": "src/components/interaktiv/info-filter-15.tsx",
+        "action_file": "src/actions/info-action-15.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/schluessel-einschicken",
+      "source_file": "src/app/(site)/schluessel-einschicken/page.tsx",
+      "target_word_count": 1956,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /schluessel-einschicken",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter16",
+        "target_file": "src/components/interaktiv/info-filter-16.tsx",
+        "action_file": "src/actions/info-action-16.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 3071,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /tuer-und-schliesstechnik",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter17",
+        "target_file": "src/components/interaktiv/info-filter-17.tsx",
+        "action_file": "src/actions/info-action-17.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1338,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /tuer-und-schliesstechnik/[slug]",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter18",
+        "target_file": "src/components/interaktiv/info-filter-18.tsx",
+        "action_file": "src/actions/info-action-18.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2751,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /bestellung/[id]",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter19",
+        "target_file": "src/components/interaktiv/info-filter-19.tsx",
+        "action_file": "src/actions/info-action-19.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3404,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /gleichschliessende-zylinder",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter20",
+        "target_file": "src/components/interaktiv/info-filter-20.tsx",
+        "action_file": "src/actions/info-action-20.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 1127,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /gleichschliessende-zylinder/konfigurator",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter21",
+        "target_file": "src/components/interaktiv/info-filter-21.tsx",
+        "action_file": "src/actions/info-action-21.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3782,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /elektronische-zutrittsloesungen",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter22",
+        "target_file": "src/components/interaktiv/info-filter-22.tsx",
+        "action_file": "src/actions/info-action-22.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1206,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /elektronische-zutrittsloesungen/konfigurator",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter23",
+        "target_file": "src/components/interaktiv/info-filter-23.tsx",
+        "action_file": "src/actions/info-action-23.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2985,
+      "content_expansion_topics": [
+        "Umfassende Architektur von Schlie\u00dfanlagen und Zutrittssystemen",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LockSystemConfigurator",
+        "target_file": "src/components/schliessanlagen/lock-system-configurator.tsx",
+        "action_file": "src/actions/schliessanlagen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1179,
+      "content_expansion_topics": [
+        "Umfassende Architektur von Schlie\u00dfanlagen und Zutrittssystemen",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "LockSystemConfigurator",
+        "target_file": "src/components/schliessanlagen/lock-system-configurator.tsx",
+        "action_file": "src/actions/schliessanlagen-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 3047,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /service-und-termin",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter26",
+        "target_file": "src/components/interaktiv/info-filter-26.tsx",
+        "action_file": "src/actions/info-action-26.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 909,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /service-und-termin/terminstatus",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter27",
+        "target_file": "src/components/interaktiv/info-filter-27.tsx",
+        "action_file": "src/actions/info-action-27.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 953,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /service-und-termin/anfrage",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter28",
+        "target_file": "src/components/interaktiv/info-filter-28.tsx",
+        "action_file": "src/actions/info-action-28.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1601,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /service-und-termin/vor-ort",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter29",
+        "target_file": "src/components/interaktiv/info-filter-29.tsx",
+        "action_file": "src/actions/info-action-29.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1508,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /service-und-termin/kontakt",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter30",
+        "target_file": "src/components/interaktiv/info-filter-30.tsx",
+        "action_file": "src/actions/info-action-30.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 911,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /rechtliches/impressum",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter31",
+        "target_file": "src/components/interaktiv/info-filter-31.tsx",
+        "action_file": "src/actions/info-action-31.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 1206,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /rechtliches/cookie-einstellungen",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter32",
+        "target_file": "src/components/interaktiv/info-filter-32.tsx",
+        "action_file": "src/actions/info-action-32.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 895,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /rechtliches/versand-und-zahlung",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter33",
+        "target_file": "src/components/interaktiv/info-filter-33.tsx",
+        "action_file": "src/actions/info-action-33.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1373,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /rechtliches/widerruf",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter34",
+        "target_file": "src/components/interaktiv/info-filter-34.tsx",
+        "action_file": "src/actions/info-action-34.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/rechtliches/widerruf/erklaeren",
+      "source_file": "src/app/(site)/rechtliches/widerruf/erklaeren/page.tsx",
+      "target_word_count": 1071,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /rechtliches/widerruf/erklaeren",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter35",
+        "target_file": "src/components/interaktiv/info-filter-35.tsx",
+        "action_file": "src/actions/info-action-35.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 920,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /rechtliches/agb",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter36",
+        "target_file": "src/components/interaktiv/info-filter-36.tsx",
+        "action_file": "src/actions/info-action-36.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 943,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /rechtliches/datenschutz",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter37",
+        "target_file": "src/components/interaktiv/info-filter-37.tsx",
+        "action_file": "src/actions/info-action-37.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1653,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /artikel",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter38",
+        "target_file": "src/components/interaktiv/info-filter-38.tsx",
+        "action_file": "src/actions/info-action-38.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1973,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /artikel/[slug]",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter39",
+        "target_file": "src/components/interaktiv/info-filter-39.tsx",
+        "action_file": "src/actions/info-action-39.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 1296,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /standorte",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter40",
+        "target_file": "src/components/interaktiv/info-filter-40.tsx",
+        "action_file": "src/actions/info-action-40.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1640,
+      "content_expansion_topics": [
+        "Erweiterte technische Erkl\u00e4rung f\u00fcr /standorte/[city]",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "InfoFilter41",
+        "target_file": "src/components/interaktiv/info-filter-41.tsx",
+        "action_file": "src/actions/info-action-41.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 3297,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1583,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 2157,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 3460,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1891,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 2022,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1369,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1933,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1989,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 2007,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1842,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1921,
+      "content_expansion_topics": [
+        "Detaillierte Analyse und Spezifikation von Autoschl\u00fcssel-Technologien",
+        "Methodischer Prozess der Implementierung in dieser Domain",
+        "Detaillierte Fach-FAQ mit sechs tiefgreifenden Erl\u00e4uterungen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "VehicleKeySelector",
+        "target_file": "src/components/autoschluessel/vehicle-key-selector.tsx",
+        "action_file": "src/actions/autoschluessel-action.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
