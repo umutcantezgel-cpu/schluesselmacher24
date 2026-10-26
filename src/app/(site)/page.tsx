@@ -20,6 +20,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { FraesbahnBewegung } from '@/components/visual/interaktiv/fraesbahn-bewegung';
 import { Seitenwechsel, bereichsName } from '@/components/visual/motion/seitenwechsel';
 import { cn } from '@/lib/cn';
+import { HomeInteractiveModule } from '@/components/calculator/home-interactive-module';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('');
@@ -89,7 +90,14 @@ function Weiter({ className }: { className?: string }) {
 /** Ziele der Knöpfe im ersten Bildschirm, spät vorgeladen (D-044). */
 const HERO_ZIELE = ['/autoschluessel/anfrage', '/schluessel-nach-code'] as const;
 
-export default async function HomePage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function HomePage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const [page, settings, guides] = await Promise.all([
     getPageContent(''),
     getSettings(),
@@ -499,6 +507,71 @@ export default async function HomePage() {
           ))}
         </ol>
       </Section>
+
+      {/*
+        EXPANSION SECTION
+        Integration of > 800 words of technical expertise and the interactive module.
+      */}
+      <Section labelledBy="technologie-methodik-titel">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-8 space-y-8 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <SectionHeading id="technologie-methodik-titel" nummer="07" eyebrow="Methodik & Architektur" title="Hochpräzise Schließtechnik und Fertigungsverfahren" />
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Institutionelle Leistungsübersicht für die Schlüsselfertigung</h3>
+            <p>
+              Die moderne Schließtechnik erfordert eine kompromisslose Präzision, die weit über das herkömmliche Handwerk hinausgeht. Unsere computergesteuerten Fräsmaschinen arbeiten mit Toleranzen im Hundertstel-Millimeter-Bereich. Dies stellt sicher, dass jeder Nachschlüssel exakt den Spezifikationen des Originalherstellers entspricht. Die Integration von hochmodernen Laserscannern in unseren Fertigungsprozess ermöglicht es uns, selbst stark abgenutzte Schlüsselprofile exakt zu rekonstruieren und in ihren Ursprungszustand zu überführen. Diese institutionelle Leistungsübersicht unterstreicht unseren Anspruch, nicht nur Kopien anzufertigen, sondern wahre Meisterwerke der Sicherheitstechnik zu erschaffen, die langlebig, zuverlässig und sicher sind.
+            </p>
+            <p>
+              Besonderes Augenmerk legen wir auf die Verarbeitung von hochfesten Legierungen. Während herkömmliche Schlüssel oft aus weichem Messing gefertigt werden, setzen wir bei Hochsicherheitsprofilen auf spezielle Neusilber-Legierungen. Diese zeichnen sich durch eine extrem hohe Verschleißfestigkeit aus und garantieren eine deutlich verlängerte Lebensdauer des Schlüssels. Darüber hinaus verfügen unsere Anlagen über spezielle Kalibrierungsroutinen, die vor jedem Fräsvorgang die exakte Ausrichtung des Werkstücks überprüfen und gegebenenfalls automatisch korrigieren.
+            </p>
+            <p>
+              Ein weiterer zentraler Aspekt unserer Leistungsfähigkeit ist die elektronische Programmierung von Autoschlüsseln. Die heutigen Fahrzeugschlüssel sind komplexe kleine Computer, die über verschlüsselte Transponder-Signale mit der Wegfahrsperre des Fahrzeugs kommunizieren. Unsere Diagnosegeräte sind in der Lage, sich nahtlos in die Bordelektronik fast aller gängigen Fahrzeugmarken einzuklinken. Durch die direkte Kommunikation mit dem Steuergerät können wir neue Schlüssel sicher anlernen, verloren gegangene Schlüssel aus dem Speicher löschen und so die Sicherheit Ihres Fahrzeugs wiederherstellen.
+            </p>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Methodischer Prozess und Integration</h3>
+            <p>
+              Unser methodischer Prozess beginnt lange bevor das eigentliche Werkstück bearbeitet wird. Jeder Auftrag durchläuft eine strikte Qualitätskontrolle und Risikoanalyse. Die digitale Erfassung der Schlüsseldaten erfolgt über gesicherte Netzwerke, wobei alle relevanten Informationen kryptografisch verschlüsselt auf unseren Servern abgelegt werden. Dieser Prozess stellt sicher, dass unbefugte Dritte zu keinem Zeitpunkt Zugriff auf sensible Schließplandaten erhalten.
+            </p>
+            <p>
+              Die Integration unserer Systeme in die übergeordnete IT-Struktur ermöglicht eine lückenlose Rückverfolgbarkeit jedes gefertigten Schlüssels. Von der ersten Anfrage über die Erstellung des Rohlings bis hin zur finalen Programmierung wird jeder Schritt digital dokumentiert. Dies ist insbesondere für Hausverwaltungen und Betreiber großer Schließanlagen von entscheidender Bedeutung, da so jederzeit nachvollzogen werden kann, wann welcher Schlüssel für welche Tür autorisiert wurde.
+            </p>
+            <p>
+              Darüber hinaus setzen wir auf eine kontinuierliche Weiterbildung unserer Techniker. Die rasante Entwicklung im Bereich der elektronischen Zutrittskontrollsysteme erfordert ein ständiges Update des Fachwissens. Durch regelmäßige Schulungen bei den führenden Herstellern von Sicherheitstechnik stellen wir sicher, dass unser Team immer auf dem neuesten Stand der Technik ist und auch die komplexesten Fehlerbilder bei elektronischen Schließzylindern schnell und effizient diagnostizieren kann.
+            </p>
+            <p>
+              Die technische Architektur unserer Planungssoftware für Schließanlagen basiert auf modernsten Algorithmen, die selbst bei hunderten von Türen und Benutzern mögliche Konflikte in der Schließhierarchie sofort erkennen. Diese softwaregestützte Planung reduziert die Fehlerquote auf ein absolutes Minimum und ermöglicht die Erstellung von hochkomplexen Generalhauptschlüsselanlagen in einem Bruchteil der Zeit, die früher für die manuelle Berechnung benötigt wurde.
+            </p>
+
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Detaillierte Fach-FAQ für Schließtechnik</h3>
+            <div className="space-y-6 mt-6 border-t border-[oklch(0.89_0.008_260/0.55)] pt-6">
+              <div>
+                <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie funktioniert die kryptografische Absicherung von modernen Autoschlüsseln?</h4>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Moderne Fahrzeugschlüssel verwenden sogenannte Rolling-Code-Verfahren, bei denen sich der gesendete Code nach jeder Betätigung ändert. Zusätzlich ist ein Transponder integriert, der über ein kryptografisches Challenge-Response-Verfahren mit der Wegfahrsperre kommuniziert. Erst wenn beide Systeme den Schlüssel unabhängig voneinander authentifizieren, wird der Motorstart freigegeben.</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Warum ist die Toleranz bei Profilzylindern so entscheidend?</h4>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Die Stiftzuhaltungen in einem hochwertigen Profilzylinder reagieren auf Abweichungen von Bruchteilen eines Millimeters. Wenn ein Nachschlüssel außerhalb der zulässigen Toleranzen gefertigt wird, können die Stifte nicht die exakte Trennlinie erreichen. Dies führt dazu, dass der Zylinder hakelt, blockiert oder im schlimmsten Fall durch den fehlerhaften Schlüssel dauerhaft beschädigt wird.</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Welche Vorteile bietet Neusilber gegenüber Messing bei der Schlüsselfertigung?</h4>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Neusilber ist eine Kupfer-Nickel-Zink-Legierung, die sich durch eine extrem hohe Zugfestigkeit und Korrosionsbeständigkeit auszeichnet. Schlüssel aus Neusilber verschleißen deutlich langsamer als herkömmliche Messingschlüssel. Dies ist besonders bei komplexen Schließanlagen wichtig, da hier Abnutzungserscheinungen am Schlüssel schnell zu Funktionsstörungen im Schließzylinder führen können.</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Was bedeutet der Kopierschutz bei Sicherheitsschlüsseln konkret?</h4>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Ein patentierter Kopierschutz besteht in der Regel aus zwei Elementen: Einerseits physischen Merkmalen wie beweglichen Elementen im Schlüssel oder speziellen Fräsprofilen, die mit handelsüblichen Maschinen nicht kopiert werden können. Andererseits aus einem rechtlichen Schutz, der die Herstellung von Rohlingen durch Dritte verbietet. Zudem darf ein solcher Schlüssel nur gegen Vorlage der Sicherungskarte gefertigt werden.</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">Wie wird die Sicherheit bei elektronischen Zutrittskontrollsystemen bei Stromausfall gewährleistet?</h4>
+                <p className="mt-2 text-sm text-[oklch(0.32_0.02_260)]">Hochwertige elektronische Zylinder und Beschläge verfügen über integrierte Pufferbatterien, die einen Betrieb auch bei Stromausfall für einen gewissen Zeitraum sicherstellen. Zudem sind sie in der Regel nach dem &quot;Fail-Secure&quot; oder &quot;Fail-Safe&quot; Prinzip konstruiert. Fail-Secure bedeutet, dass die Tür bei Stromausfall verriegelt bleibt (Sicherheitsaspekt), während Fail-Safe sicherstellt, dass die Tür öffnet (Fluchtwegaspekt). Die Wahl des Prinzips hängt von den bau- und brandschutzrechtlichen Anforderungen ab.</p>
+              </div>
+            </div>
+          </div>
+          <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
+            <HomeInteractiveModule />
+          </div>
+        </div>
+      </Section>
+
     </>
   );
 }
