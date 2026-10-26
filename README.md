@@ -128,3 +128,6 @@ Alle offenen Punkte für Menschen: `docs/gestaltung/MENSCHEN.md`.
 ## Gestaltungslauf
 
 Die Unterlagen des Gestaltungslaufs liegen in `docs/gestaltung/`: der Kern des Designsystems (`KERN.md`), die Entscheidungen (`ENTSCHEIDUNGEN.md`), offene Punkte für Menschen (`MENSCHEN.md`), Textvorschläge (`TEXTVORSCHLAEGE.md`) und das Berichtsbuch mit Abnahme und Anleitung zum Zurückrollen (`BERICHT.md`). Der vollständige Arbeitsordner mit Auftrag, Plan, Prüfprotokollen, Bildsätzen, Vorher-Nachher-Galerie und Prüfwerkzeugen bleibt in der Git-Geschichte erhalten (Zweig `claude/projekt-gestaltung-entwicklung-tofodh`, Commit `b8e7ea7`, Ordner `_werkstatt/`).
+
+## Architectural Blueprint Generated
+The DNA profiling and architectural audit for hypermodernization have been successfully executed. See `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for the deterministic execution map.

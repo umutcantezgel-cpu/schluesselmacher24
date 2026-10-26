@@ -1,0 +1,1344 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-26T07:28:17.156Z",
+  "total_existing_routes": 54,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/[...unbekannt]",
+      "source_file": "app/(site)/[...unbekannt]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /[...unbekannt]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /[...unbekannt]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1574,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /artikel/[slug]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /artikel/[slug]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "READING_PROGRESS_OR_TOC",
+        "component_name": "InteractiveTableOfContents",
+        "target_file": "components/ui/interactive-toc.tsx",
+        "action_file": "actions/track-reading-progress.ts"
+      },
+      "signature_interaction": "OKLCH_CHROMA_SHIFT_HOVER",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1254,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /artikel",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /artikel",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "READING_PROGRESS_OR_TOC",
+        "component_name": "InteractiveTableOfContents",
+        "target_file": "components/ui/interactive-toc.tsx",
+        "action_file": "actions/track-reading-progress.ts"
+      },
+      "signature_interaction": "OKLCH_CHROMA_SHIFT_HOVER",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 970,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/anfrage",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/anfrage",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1522,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/fahrzeugoeffnung",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/fahrzeugoeffnung",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1492,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/funkschluessel",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/funkschluessel",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1534,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/kopieren",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/kopieren",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 3061,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/marken/[make]/[model]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/marken/[make]/[model]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1758,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/marken/[make]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/marken/[make]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1184,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/marken",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/marken",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1590,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/nachmachen",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/nachmachen",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 2898,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1623,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/programmieren",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/programmieren",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1443,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/schluesselbart-fraesen",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/schluesselbart-fraesen",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1608,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /autoschluessel/smart-key",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /autoschluessel/smart-key",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2352,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /bestellung/[id]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /bestellung/[id]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /elektronische-zutrittsloesungen/konfigurator",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /elektronische-zutrittsloesungen/konfigurator",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3383,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /elektronische-zutrittsloesungen",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /elektronische-zutrittsloesungen",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /gleichschliessende-zylinder/konfigurator",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /gleichschliessende-zylinder/konfigurator",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3005,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /gleichschliessende-zylinder",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /gleichschliessende-zylinder",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /kasse",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /kasse",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 2691,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für die Startseite",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/partner-werden",
+      "source_file": "app/(site)/partner-werden/page.tsx",
+      "target_word_count": 1137,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /partner-werden",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /partner-werden",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1176,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /ratgeber/[slug]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /ratgeber/[slug]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "READING_PROGRESS_OR_TOC",
+        "component_name": "InteractiveTableOfContents",
+        "target_file": "components/ui/interactive-toc.tsx",
+        "action_file": "actions/track-reading-progress.ts"
+      },
+      "signature_interaction": "OKLCH_CHROMA_SHIFT_HOVER",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /ratgeber",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /ratgeber",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "READING_PROGRESS_OR_TOC",
+        "component_name": "InteractiveTableOfContents",
+        "target_file": "components/ui/interactive-toc.tsx",
+        "action_file": "actions/track-reading-progress.ts"
+      },
+      "signature_interaction": "OKLCH_CHROMA_SHIFT_HOVER",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /rechtliches/agb",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /rechtliches/agb",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordion",
+        "target_file": "components/ui/legal-accordion.tsx",
+        "action_file": "actions/fetch-legal-details.ts"
+      },
+      "signature_interaction": "SUBTLE_FADE_IN_VIEW",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /rechtliches/cookie-einstellungen",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /rechtliches/cookie-einstellungen",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordion",
+        "target_file": "components/ui/legal-accordion.tsx",
+        "action_file": "actions/fetch-legal-details.ts"
+      },
+      "signature_interaction": "SUBTLE_FADE_IN_VIEW",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /rechtliches/datenschutz",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /rechtliches/datenschutz",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordion",
+        "target_file": "components/ui/legal-accordion.tsx",
+        "action_file": "actions/fetch-legal-details.ts"
+      },
+      "signature_interaction": "SUBTLE_FADE_IN_VIEW",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /rechtliches/impressum",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /rechtliches/impressum",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordion",
+        "target_file": "components/ui/legal-accordion.tsx",
+        "action_file": "actions/fetch-legal-details.ts"
+      },
+      "signature_interaction": "SUBTLE_FADE_IN_VIEW",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /rechtliches/versand-und-zahlung",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /rechtliches/versand-und-zahlung",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordion",
+        "target_file": "components/ui/legal-accordion.tsx",
+        "action_file": "actions/fetch-legal-details.ts"
+      },
+      "signature_interaction": "SUBTLE_FADE_IN_VIEW",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/rechtliches/widerruf/erklaeren",
+      "source_file": "app/(site)/rechtliches/widerruf/erklaeren/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /rechtliches/widerruf/erklaeren",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /rechtliches/widerruf/erklaeren",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordion",
+        "target_file": "components/ui/legal-accordion.tsx",
+        "action_file": "actions/fetch-legal-details.ts"
+      },
+      "signature_interaction": "SUBTLE_FADE_IN_VIEW",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 974,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /rechtliches/widerruf",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /rechtliches/widerruf",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "LEGAL_ACCORDION",
+        "component_name": "LegalAccordion",
+        "target_file": "components/ui/legal-accordion.tsx",
+        "action_file": "actions/fetch-legal-details.ts"
+      },
+      "signature_interaction": "SUBTLE_FADE_IN_VIEW",
+      "schema_entities": [
+        "WebPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /schliessanlagen/konfigurator",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /schliessanlagen/konfigurator",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2586,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /schliessanlagen",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /schliessanlagen",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/schluessel-einschicken",
+      "source_file": "app/(site)/schluessel-einschicken/page.tsx",
+      "target_word_count": 1557,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /schluessel-einschicken",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /schluessel-einschicken",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 1819,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /schluessel-nach-code/[slug]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /schluessel-nach-code/[slug]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/schluessel-nach-code/hersteller/[hersteller]",
+      "source_file": "app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx",
+      "target_word_count": 884,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /schluessel-nach-code/hersteller/[hersteller]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /schluessel-nach-code/hersteller/[hersteller]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/schluessel-nach-code/kategorie/[familie]",
+      "source_file": "app/(site)/schluessel-nach-code/kategorie/[familie]/page.tsx",
+      "target_word_count": 925,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /schluessel-nach-code/kategorie/[familie]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /schluessel-nach-code/kategorie/[familie]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1388,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /schluessel-nach-code",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /schluessel-nach-code",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /schluessel-nach-vorlage/anfrage",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /schluessel-nach-vorlage/anfrage",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 2761,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /schluessel-nach-vorlage",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /schluessel-nach-vorlage",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR",
+        "component_name": "KeyDuplicationCalculator",
+        "target_file": "components/calculator/key-duplication-calculator.tsx",
+        "action_file": "actions/calculate-key-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /service-und-termin/anfrage",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /service-und-termin/anfrage",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1109,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /service-und-termin/kontakt",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /service-und-termin/kontakt",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 2648,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /service-und-termin",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /service-und-termin",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /service-und-termin/terminstatus",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /service-und-termin/terminstatus",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1202,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /service-und-termin/vor-ort",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /service-und-termin/vor-ort",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1145,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /sicherheitstechnik/[slug]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /sicherheitstechnik/[slug]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 1832,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /sicherheitstechnik",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /sicherheitstechnik",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /sicherheitstechnik/sicherheitscheck",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /sicherheitstechnik/sicherheitscheck",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1241,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /standorte/[city]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /standorte/[city]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 897,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /standorte",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /standorte",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 939,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /tuer-und-schliesstechnik/[slug]",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /tuer-und-schliesstechnik/[slug]",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 2672,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /tuer-und-schliesstechnik",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /tuer-und-schliesstechnik",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Vertiefte technische Betrachtung der Architektur für /warenkorb",
+        "Methodische Analyse und strukturierte FAQ-Sektion spezifisch für /warenkorb",
+        "Erweiterte Leistungs- und Performancedetails inklusive Fallbeispiele"
+      ],
+      "interactive_module": {
+        "type": "INTERACTIVE_COMPARISON",
+        "component_name": "ServiceComparisonTable",
+        "target_file": "components/ui/service-comparison-table.tsx",
+        "action_file": "actions/fetch-service-details.ts"
+      },
+      "signature_interaction": "GLASSMORPHISM_ELEVATION",
+      "schema_entities": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "Service"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

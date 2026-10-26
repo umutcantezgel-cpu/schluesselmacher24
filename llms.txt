@@ -1,0 +1,3 @@
+
+## Architectural Revolution Blueprint
+The project has undergone Phase 1 of the Transformation Pipeline (Auditor Architect). The generated execution matrix is present in `.jules/revolution-plan.json` and `.jules/architecture-matrix.md`. These files specify target word counts (> 800) and kinetic signature interactions for each route.
