@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-26T14:37:51.859937Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf Visueller Hebelwirkung (35%), Nutzer-Mehrwert (35%) und Machbarkeit (30%).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_component_file": "src/components/calculator/locking-system-calc.tsx",
+      "title": "Interaktiver Schließanlagen-Kalkulator mit Server Actions",
+      "specification": "Entwicklung eines reaktiven Kalkulators mit React 19 Server Actions, useOptimistic und Bento-Ergebnis-Grid. Binde das Tool direkt in die bestehende Konfigurator-Seite ein und erweitere den umgebenden Fließtext.",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_001",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/ui/bento-grid.tsx",
+      "title": "Interaktives, physikalisch gedämpftes Bento-Grid für die Startseite",
+      "specification": "Überführung bestehender Listen auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), gedämpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts.",
+      "score": 9.6,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
