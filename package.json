@@ -53,21 +53,21 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^26",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@vitest/coverage-v8": "^2.1.0",
-    "autoprefixer": "^10.5.0",
+    "@vitest/coverage-v8": "^5.0.5",
+    "autoprefixer": "^10.6.1",
     "clsx": "^2.1.1",
-    "embedded-postgres": "^17.10.0-beta.17",
-    "eslint": "^9.39.5",
+    "embedded-postgres": "^18.0.0-beta.15",
+    "eslint": "^10.13.0",
     "eslint-config-next": "16.2.7",
-    "postcss": "^8.5.23",
+    "postcss": "^8.5.31",
     "schema-dts": "^2.0.0",
-    "tailwind-merge": "^3.6.0",
-    "tailwindcss": "^3.4.19",
-    "typescript": "^5.9.3",
-    "vitest": "^2.1.8"
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
   },
   "overrides": {
     "dompurify": "3.4.17",
