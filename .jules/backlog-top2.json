@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-10-26T18:40:05.509665+00:00",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel für bestehende Seiten basierend auf Visueller Hebelwirkung, Nutzer-Mehrwert und Machbarkeit.",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEE_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_component_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "title": "Native Conversion-Werkzeuge mit React 19 - Tool 51",
+      "specification": "Erschaffung eines nativen interaktiven Budget- und ROI-Rechners für Schließanlagen. Nutzung von React 19 Server Actions und `useOptimistic` für sofortiges State-Feedback ohne Ladezeiten. Das Design implementiert psychologische Ankerpreise und dynamische Filter, um den Nutzer durch den Konfigurations-Funnel zu führen. Variation 51: Einbindung dynamischer Vorher-Nachher-Sicherheitslevel-Slider.",
+      "score": 9.65,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEE_001",
+      "category": "AWWWARDS_KINETICS",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/visual/einsatzradius.tsx",
+      "title": "Kinetische Veredelung und taktiles Feedback - Variante 1",
+      "specification": "Implementierung einer mikrokosmischen Federdämpfungs-Animation auf Basis von OKLCH Farbwerten (oklch(0.988 0.002 260)) und 1px scharfen Kanten. Die Interaktion nutzt Scroll-getriebene SVG-Animationen, um die Einsatzradius-Darstellung auf ein Awwwards-Niveau zu heben, ohne Layout-Shifts zu verursachen. Einzigartiger Twist 1: Spezifische easing-Kurve zur Reduktion kognitiver Last.",
+      "score": 9.45,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
