@@ -1,0 +1,1002 @@
+[
+  {
+    "idea_id": "IDEA_001",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "Kinetisches Flow-Shell Subgrid",
+    "specification": "Transformation der Flow-Shell in ein 3D-Bento Grid mit okclh() Haarlinien und federgedämpfter Mausverfolgung via framer-motion.",
+    "score": 9.85,
+    "rank": 1
+  },
+  {
+    "idea_id": "IDEA_002",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/page.tsx",
+    "target_component_file": "src/components/visual/schluesselart-zeichnung.tsx",
+    "title": "Scroll-getriebene SVG Schlüssel-Explosion",
+    "specification": "Animation der Schlüsselzeichnung: Beim Scrollen zerfällt der Schlüssel in seine Fräskomponenten mit sanftem Parallax-Effekt.",
+    "score": 9.82,
+    "rank": 2
+  },
+  {
+    "idea_id": "IDEA_003",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+    "target_component_file": "src/components/vertrauen/nachweise-liste.tsx",
+    "title": "Haptische Nachweis-Karten mit Glow",
+    "specification": "Nachweise erhalten einen mikro-haptischen Tilt-Effekt (CSS transform) und einen dynamischen radial-gradient Glow basierend auf Mausposition.",
+    "score": 9.8,
+    "rank": 3
+  },
+  {
+    "idea_id": "IDEA_004",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/schliessanlagen/page.tsx",
+    "target_component_file": "src/components/schliessanlagen/system-erklaerung.tsx",
+    "title": "Fluid Morphing System-Architektur",
+    "specification": "Das Erklärungsmodell wechselt durch flüssiges Morphing zwischen den Schließanlagen-Typen ohne harte Ladezeiten.",
+    "score": 9.77,
+    "rank": 4
+  },
+  {
+    "idea_id": "IDEA_005",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/schluessel-nach-code/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/rechner.tsx",
+    "title": "Interaktive Rechner-Glyphe",
+    "specification": "Die SVG-Glyphe des Rechners animiert ihre Tasten taktil (scale: 0.95), sobald der User darüber hovert.",
+    "score": 9.75,
+    "rank": 5
+  },
+  {
+    "idea_id": "IDEA_006",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/haken.tsx",
+    "title": "Success-Path Morphing Haken",
+    "specification": "Der Haken wird aus einer Linie animiert gezeichnet (stroke-dasharray) bei erfolgreicher Validierung von Formular-Schritten.",
+    "score": 9.72,
+    "rank": 6
+  },
+  {
+    "idea_id": "IDEA_007",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/partner-werden/page.tsx",
+    "target_component_file": "src/components/visual/einsatzradius.tsx",
+    "title": "Pulse-Radar Einsatzradius",
+    "specification": "Der Einsatzradius pulsiert mit gedämpften oklch(0.988 0.002 260) Wellen, um die Live-Abdeckung visuell zu verstärken.",
+    "score": 9.7,
+    "rank": 7
+  },
+  {
+    "idea_id": "IDEA_008",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+    "target_component_file": "src/components/vertrauen/werkstatt-zeile.tsx",
+    "title": "Werkstatt-Zeile mit Elastic Scroll",
+    "specification": "Die Werkstatt-Zeilen schnappen beim Scrollen mit einer leichten Federverzögerung (Spring Physics) an ihre Position.",
+    "score": 9.68,
+    "rank": 8
+  },
+  {
+    "idea_id": "IDEA_009",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/info.tsx",
+    "title": "Magnetic Info-Glyphe",
+    "specification": "Die Info-Glyphe zieht den Cursor leicht magnetisch an (framer-motion useScroll) und klappt nahtlos ein Tooltip-Bento auf.",
+    "score": 9.65,
+    "rank": 9
+  },
+  {
+    "idea_id": "IDEA_010",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+    "target_component_file": "src/components/visual/registry.tsx",
+    "title": "Fluid Registry Reveal",
+    "specification": "Einträge im Registry-Komponent fächern sich kaskadierend mit weichen Stagger-Animationen auf.",
+    "score": 9.62,
+    "rank": 10
+  },
+  {
+    "idea_id": "IDEA_011",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/service-und-termin/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/uhr.tsx",
+    "title": "Echtzeit SVG Uhr",
+    "specification": "Die Zeiger der Uhr-Glyphe reflektieren synchron die aktuelle Systemzeit des Clients ohne Hydration-Mismatches.",
+    "score": 9.6,
+    "rank": 11
+  },
+  {
+    "idea_id": "IDEA_012",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/dokument.tsx",
+    "title": "Taktile Dokument-Faltung",
+    "specification": "Hover auf das Dokument-Icon faltet die obere Ecke der SVG-Glyphe um, als physisches Feedback-Signal.",
+    "score": 9.58,
+    "rank": 12
+  },
+  {
+    "idea_id": "IDEA_013",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+    "target_component_file": "src/components/recht/rechtstext.tsx",
+    "title": "Smooth Progress Reading Bar",
+    "specification": "Ein minimaler, 1px hoher oklch Lese-Fortschrittsbalken am oberen Bildschirmrand für lange Rechtstexte.",
+    "score": 9.55,
+    "rank": 13
+  },
+  {
+    "idea_id": "IDEA_014",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/schluessel-einschicken/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/mail.tsx",
+    "title": "Mail Envelope Opening",
+    "specification": "Bei Interaktion (z.B. Hover) klappt die Mail-Glyphe animiert auf und signalisiert den Versand-Intent.",
+    "score": 9.52,
+    "rank": 14
+  },
+  {
+    "idea_id": "IDEA_015",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/standorte/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/ort.tsx",
+    "title": "Bouncing Pin Drop",
+    "specification": "Die Standort-Pins (Ort-Glyphe) fallen von oben ins Layout und federn leicht nach (Bouncing-Physik).",
+    "score": 9.5,
+    "rank": 15
+  },
+  {
+    "idea_id": "IDEA_016",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/warenkorb/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/papierkorb.tsx",
+    "title": "Jittering Papierkorb",
+    "specification": "Vor dem endgültigen Löschen eines Elements wackelt die Papierkorb-Glyphe leicht (Jitter-Effekt) als Mikrointeraktion.",
+    "score": 9.48,
+    "rank": 16
+  },
+  {
+    "idea_id": "IDEA_017",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/schluessel-nach-code/kategorie/[familie]/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/filter.tsx",
+    "title": "Dynamic Filter Sorting",
+    "specification": "Filter-Änderungen lösen eine fluide Layout-Animation aus (z.B. mit AnimatePresence), keine harten DOM-Updates.",
+    "score": 9.45,
+    "rank": 17
+  },
+  {
+    "idea_id": "IDEA_018",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/gebaeude.tsx",
+    "title": "Building Blueprint Reveal",
+    "specification": "Das Gebäude-Icon wird zuerst als Blaupause (Linien) gezeichnet und füllt sich dann mit sanftem Fade-In-Solid.",
+    "score": 9.42,
+    "rank": 18
+  },
+  {
+    "idea_id": "IDEA_019",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/rechtliches/agb/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/waage.tsx",
+    "title": "Balance Scale Animation",
+    "specification": "Die Waagschalen balancieren sich sanft aus, sobald der Bereich in den Viewport gescrollt wird.",
+    "score": 9.4,
+    "rank": 19
+  },
+  {
+    "idea_id": "IDEA_020",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/kasse/page.tsx",
+    "target_component_file": "src/components/vertrauen/zahlarten-zeile.tsx",
+    "title": "Payment Method Highlight",
+    "specification": "Das ausgewählte Zahlungsmittel dimmt die anderen aus und vergrößert sich minimal mit einem AAA-Kontrast Rahmen.",
+    "score": 9.38,
+    "rank": 20
+  },
+  {
+    "idea_id": "IDEA_021",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/partner-werden/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/personen.tsx",
+    "title": "Network Connection Lines",
+    "specification": "Zwischen den Personen-Glyphen ziehen sich animierte Verbindungslinien (SVG-Pfad-Animation) bei Hover.",
+    "score": 9.35,
+    "rank": 21
+  },
+  {
+    "idea_id": "IDEA_022",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/telefon.tsx",
+    "title": "Ringing Phone Micro-Interaction",
+    "specification": "Das Telefon-Icon wackelt (Klingel-Effekt) dezent in großen Zeitabständen, um die Conversion zu triggern.",
+    "score": 9.32,
+    "rank": 22
+  },
+  {
+    "idea_id": "IDEA_023",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/laden.tsx",
+    "title": "RFID Scanning Animation",
+    "specification": "Ein animierter Scanner-Strahl fährt über das Laden-Icon, um elektronischen Zutritt visuell zu simulieren.",
+    "score": 9.3,
+    "rank": 23
+  },
+  {
+    "idea_id": "IDEA_024",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/pfeil-rechts.tsx",
+    "title": "Inertia Arrow Hover",
+    "specification": "Beim Hover über den Weiter-Pfeil schießt dieser mit Trägheit (Inertia) nach rechts und faded links wieder ein.",
+    "score": 9.28,
+    "rank": 24
+  },
+  {
+    "idea_id": "IDEA_025",
+    "category": "AWWWARDS_KINETICS",
+    "target_existing_route": "src/app/(site)/artikel/[slug]/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/nachricht.tsx",
+    "title": "Floating Message Bubbles",
+    "specification": "Beim Klick auf Nachricht/Kommentar steigen kleine, transparente SVG-Bubbles im Hintergrund auf.",
+    "score": 9.25,
+    "rank": 25
+  },
+  {
+    "idea_id": "IDEA_026",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+    "target_component_file": "src/components/recht/eigentext.tsx",
+    "title": "Autoschlüssel Master-Guide (> 1000 Wörter)",
+    "specification": "Erweiterung der Autoschlüssel-Root um eine gigantische Vergleichsmatrix (Transponder vs. Keyless Go), Fräs-Technologien und tiefes Expertenwissen.",
+    "score": 9.22,
+    "rank": 26
+  },
+  {
+    "idea_id": "IDEA_027",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/schliessanlagen/page.tsx",
+    "target_component_file": "src/components/schliessanlagen/system-erklaerung.tsx",
+    "title": "Schließanlagen Architektur-Deep-Dive",
+    "specification": "Einbau einer semantisch perfekten Tabelle mit Z-Schließung vs. HS-Schließung inklusive technischer Baupläne und 800+ Wörtern Erklärtext.",
+    "score": 9.2,
+    "rank": 27
+  },
+  {
+    "idea_id": "IDEA_028",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+    "target_component_file": "src/components/vertrauen/nachweise-liste.tsx",
+    "title": "Sicherheits-Normen Kompendium DIN EN",
+    "specification": "Hinzufügen eines umfassenden Lexikons zu DIN EN 1303, VdS-Klassen und Widerstandsgraden (RC) als semantische Content-Blöcke.",
+    "score": 9.18,
+    "rank": 28
+  },
+  {
+    "idea_id": "IDEA_029",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/schluessel-nach-code/page.tsx",
+    "target_component_file": "src/components/recht/preis-hinweis.tsx",
+    "title": "Code-Entschlüsselungs MythBuster",
+    "specification": "Umfassender 900-Wörter Bereich, der erklärt, wie Schlüsselcodes (z.B. Silca, Börkey) mathematisch ausgelesen werden, für maximale Trust-Autorität.",
+    "score": 9.15,
+    "rank": 29
+  },
+  {
+    "idea_id": "IDEA_030",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+    "target_component_file": "src/components/recht/eigentext.tsx",
+    "title": "OBD2 & EEPROM Programmier-Handbuch",
+    "specification": "Eine tieftechnische Abhandlung über das Anlernen von Wegfahrsperren via OBD2 vs. direktem EEPROM-Auslesen am Kombiinstrument.",
+    "score": 9.12,
+    "rank": 30
+  },
+  {
+    "idea_id": "IDEA_031",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+    "target_component_file": "src/components/schliessanlagen/system-erklaerung.tsx",
+    "title": "Gleichschließung vs. Einzelschließung Guide",
+    "specification": "Vor- und Nachteile von gleichschließenden Profilzylindern in Mehrfamilienhäusern, ausführlich diskutiert auf 850 Wörtern.",
+    "score": 9.1,
+    "rank": 31
+  },
+  {
+    "idea_id": "IDEA_032",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+    "target_component_file": "src/components/visual/einsatzradius.tsx",
+    "title": "RFID, NFC & Bluetooth Low Energy Analyse",
+    "specification": "Technischer Deep-Dive in die Übertragungsprotokolle von elektronischen Zutrittssystemen und deren AES-128 Verschlüsselung.",
+    "score": 9.08,
+    "rank": 32
+  },
+  {
+    "idea_id": "IDEA_033",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+    "target_component_file": "src/components/vertrauen/werkstatt-zeile.tsx",
+    "title": "Der CNC-Fräs-Prozess im Detail",
+    "specification": "Eine Schritt-für-Schritt Dokumentation (> 750 Wörter) wie Rohlinge in der CNC-Maschine auf den Millimeter genau gefräst werden.",
+    "score": 9.05,
+    "rank": 33
+  },
+  {
+    "idea_id": "IDEA_034",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+    "target_component_file": "src/components/visual/schluesselart-zeichnung.tsx",
+    "title": "Optische Schlüssel-Vermessung",
+    "specification": "Detaillierte Erläuterung der Laser-Optik-Verfahren zur Digitalisierung von physischen Schlüsselvorlagen für die perfekte Kopie.",
+    "score": 9.02,
+    "rank": 34
+  },
+  {
+    "idea_id": "IDEA_035",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+    "target_component_file": "src/components/recht/eigentext.tsx",
+    "title": "Einbruchschutz-Ratgeber nach Kripo-Standard",
+    "specification": "Erweiterung der Seite um verifizierte Empfehlungen der Kriminalpolizei zu Querriegeln, Schutzbeschlägen und Panzerriegeln.",
+    "score": 9.0,
+    "rank": 35
+  },
+  {
+    "idea_id": "IDEA_036",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+    "target_component_file": "src/components/visual/einsatzradius.tsx",
+    "title": "Vor-Ort Montage-Protokoll",
+    "specification": "Ausformulierung des exakten Ablaufs eines Vor-Ort-Termins: Anfahrt, Analyse, Demontage, Neuinstallation und Funktionsprüfung.",
+    "score": 8.98,
+    "rank": 36
+  },
+  {
+    "idea_id": "IDEA_037",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+    "target_component_file": "src/components/recht/rechtstext.tsx",
+    "title": "Zerstörungsfreie Öffnungstechniken (Lishi)",
+    "specification": "Fachtext über den Einsatz von Lishi-Tools und Lockpicking bei zugefallenen Fahrzeugtüren, ohne Schäden am Schließzylinder.",
+    "score": 8.95,
+    "rank": 37
+  },
+  {
+    "idea_id": "IDEA_038",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+    "target_component_file": "src/components/recht/eigentext.tsx",
+    "title": "Smart-Key Frequenz-Architektur (433 vs 868 MHz)",
+    "specification": "Technischer Bericht über die Funkfrequenzen von Keyless-Go Systemen und Schutzmaßnahmen gegen Relay-Attacken.",
+    "score": 8.92,
+    "rank": 38
+  },
+  {
+    "idea_id": "IDEA_039",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/schluessel-einschicken/page.tsx",
+    "target_component_file": "src/components/recht/anfrage-hinweis.tsx",
+    "title": "Sicherer Logistik-Prozess für Schlüssel",
+    "specification": "Dokumentation des versicherten Versandweges, der Anonymisierung im Labor und der getrennten Rücksendung zur maximalen Sicherheit.",
+    "score": 8.9,
+    "rank": 39
+  },
+  {
+    "idea_id": "IDEA_040",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+    "target_component_file": "src/components/visual/schluesselart-zeichnung.tsx",
+    "title": "Innenbahn vs. Außenbahn-Fräsung",
+    "specification": "Umfassender Vergleich der Frästechniken für moderne HU66, HU92 (Innenbahn) im Kontrast zu klassischen Zackenschlüsseln.",
+    "score": 8.88,
+    "rank": 40
+  },
+  {
+    "idea_id": "IDEA_041",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/ratgeber/page.tsx",
+    "target_component_file": "src/components/recht/eigentext.tsx",
+    "title": "Das große Schließtechnik-Glossar",
+    "specification": "Ein umfassendes A-Z Glossar aller Fachbegriffe (von Abtastsicherheit bis Zylinderstift) zur massiven SEO-Stärkung.",
+    "score": 8.85,
+    "rank": 41
+  },
+  {
+    "idea_id": "IDEA_042",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/partner-werden/page.tsx",
+    "target_component_file": "src/components/vertrauen/nachweise-liste.tsx",
+    "title": "Partner-Onboarding B2B-Prozess",
+    "specification": "Detaillierte Beschreibung des B2B-Vorteilsprogramms, API-Anbindung für Flottenmanager und Margen-Modelle.",
+    "score": 8.82,
+    "rank": 42
+  },
+  {
+    "idea_id": "IDEA_043",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx",
+    "target_component_file": "src/components/recht/rechtstext.tsx",
+    "title": "Hersteller-Spezifische Rohling-Datenbank",
+    "specification": "Umfassende Historie und Spezialitäten des jeweiligen Herstellers (z.B. ABUS, BKS) inkl. Patentlaufzeiten.",
+    "score": 8.8,
+    "rank": 43
+  },
+  {
+    "idea_id": "IDEA_044",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+    "target_component_file": "src/components/recht/eigentext.tsx",
+    "title": "Modellspezifische Wegfahrsperren-Generationen",
+    "specification": "Technischer Inhalt, der auflistet, welche Immobilizer-Generation (IMMO 1-5, MQB) in diesem spezifischen Modell verbaut wurde.",
+    "score": 8.78,
+    "rank": 44
+  },
+  {
+    "idea_id": "IDEA_045",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/rechtliches/widerruf/page.tsx",
+    "target_component_file": "src/components/recht/rechtstext.tsx",
+    "title": "Transparenter Widerrufs-Guide für Maßanfertigungen",
+    "specification": "Eine laiengerechte, freundliche Erklärung (> 500 Wörter), warum nach Code gefräste Schlüssel vom Widerruf ausgeschlossen sind (BGB §312g).",
+    "score": 8.75,
+    "rank": 45
+  },
+  {
+    "idea_id": "IDEA_046",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/standorte/[city]/page.tsx",
+    "target_component_file": "src/components/visual/einsatzradius.tsx",
+    "title": "Lokale Kriminalstatistik & Prävention",
+    "specification": "Einbindung lokaler Daten zu Einbruchsraten der spezifischen Stadt und darauf abgestimmte lokale Präventionstipps.",
+    "score": 8.72,
+    "rank": 46
+  },
+  {
+    "idea_id": "IDEA_047",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+    "target_component_file": "src/components/vertrauen/zahlarten-zeile.tsx",
+    "title": "Sicherheits-Architektur der Zahlungsabwicklung",
+    "specification": "Detaillierte Erläuterung der PCI-DSS Zertifizierung, SSL-Verschlüsselung und wie Kundengelder über Treuhand (PayPal) geschützt sind.",
+    "score": 8.7,
+    "rank": 47
+  },
+  {
+    "idea_id": "IDEA_048",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+    "target_component_file": "src/components/recht/eigentext.tsx",
+    "title": "Der 360-Grad Sicherheitscheck",
+    "specification": "Ausformulierung der 20 Prüfpunkte eines professionellen Sicherheitschecks (Fenster, Türen, Kellerschächte, Lichtschächte).",
+    "score": 8.68,
+    "rank": 48
+  },
+  {
+    "idea_id": "IDEA_049",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/autoschluessel/marken/page.tsx",
+    "target_component_file": "src/components/vertrauen/werkstatt-zeile.tsx",
+    "title": "Die Evolution der Autoschlüssel-Marken",
+    "specification": "Ein 800-Wörter-Essay über die Entwicklung vom rein mechanischen Schlüssel zum digitalen Smartphone-Key der verschiedenen Automarken.",
+    "score": 8.65,
+    "rank": 49
+  },
+  {
+    "idea_id": "IDEA_050",
+    "category": "CONTENT_MAXIMIZATION",
+    "target_existing_route": "src/app/(site)/artikel/page.tsx",
+    "target_component_file": "src/components/recht/eigentext.tsx",
+    "title": "Fachmagazin Leitartikel: Zukunft der Sicherheit",
+    "specification": "Ein umfassendes Editorial, das die Vision der Plattform, Trends wie Biometrie und Smart-Home Integration für die nächsten 5 Jahre skizziert.",
+    "score": 8.62,
+    "rank": 50
+  },
+  {
+    "idea_id": "IDEA_051",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "Einbruchschutz-Budget-Kalkulator",
+    "specification": "Ein reaktiver Schieberegler (React 19, useOptimistic), der Budgetvorgaben in konkrete Maßnahmen-Pakete (Basis, Plus, Premium) umrechnet.",
+    "score": 8.6,
+    "rank": 51
+  },
+  {
+    "idea_id": "IDEA_052",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/rechner.tsx",
+    "title": "Auto-Ersatzschlüssel Preis-Konfigurator",
+    "specification": "Ein mehrstufiger Bento-Konfigurator (Marke -> Modell -> Baujahr -> Keyless?), der sofort eine oklch-gestylte Preisspanne ausgibt.",
+    "score": 8.58,
+    "rank": 52
+  },
+  {
+    "idea_id": "IDEA_053",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "Visueller Schließplan-Matrix-Builder",
+    "specification": "Eine interaktive Drag & Drop Matrix (Türen vs. Schlüssel), mit der B2B-Kunden ihre Schließhierarchie visuell zusammenklicken können.",
+    "score": 8.55,
+    "rank": 53
+  },
+  {
+    "idea_id": "IDEA_054",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+    "target_component_file": "src/components/visual/einsatzradius.tsx",
+    "title": "3D-Zylinder Längen-Visualisierer",
+    "specification": "Ein interaktives Tool, das die Eingabe von Zylinderlängen (z.B. 30/35) sofort als prozentual korrekte 2D/3D-Skizze darstellt.",
+    "score": 8.52,
+    "rank": 54
+  },
+  {
+    "idea_id": "IDEA_055",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/schluessel-nach-code/page.tsx",
+    "target_component_file": "src/components/vertrauen/nachweise-liste.tsx",
+    "title": "Live Code-Format Validator",
+    "specification": "Ein Input-Feld, das während der Eingabe (z.B. A1234) per Regex validiert, um welchen Schlosstyp es sich handeln könnte (grüner Haken-Glow).",
+    "score": 8.5,
+    "rank": 55
+  },
+  {
+    "idea_id": "IDEA_056",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "Notdienst-Dringlichkeits-Radar",
+    "specification": "Ein Heatmap-Slider, bei dem der Kunde wählt zwischen 'Notfall (Tür zu)' und 'Planung'. Verändert dynamisch das UI in Warn- vs. Ruhefarben.",
+    "score": 8.48,
+    "rank": 56
+  },
+  {
+    "idea_id": "IDEA_057",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+    "target_component_file": "src/components/visual/schluesselart-zeichnung.tsx",
+    "title": "Foto-Upload Analyse-Simulator",
+    "specification": "Nach dem Foto-Upload fährt eine 'Scanning-Linie' über das Bild (Mock-Analyse), um die Prüfung der Fräsbarkeit psychologisch aufzuwerten.",
+    "score": 8.45,
+    "rank": 57
+  },
+  {
+    "idea_id": "IDEA_058",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "Smart-Home Kompatibilitäts-Checker",
+    "specification": "Ein Search-Input mit Auto-Suggest, das sofort anzeigt, ob das gewählte System mit Apple HomeKit, Matter oder KNX kompatibel ist.",
+    "score": 8.42,
+    "rank": 58
+  },
+  {
+    "idea_id": "IDEA_059",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/haken.tsx",
+    "title": "Interaktives Haus-Sicherheits-Quiz",
+    "specification": "Ein 5-Fragen-Quiz mit großen SVG-Visuals, das am Ende einen 'Gefährdungs-Score' als Fortschrittskreis (Radial Progress) ausgibt.",
+    "score": 8.4,
+    "rank": 59
+  },
+  {
+    "idea_id": "IDEA_060",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/waage.tsx",
+    "title": "RC-Klassen Vorher/Nachher-Slider",
+    "specification": "Ein interaktiver Slider, der die physische Gewalteinwirkung (Animation) bei einem RC1 vs. RC3 Beschlag demonstriert.",
+    "score": 8.38,
+    "rank": 60
+  },
+  {
+    "idea_id": "IDEA_061",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+    "target_component_file": "src/components/vertrauen/werkstatt-zeile.tsx",
+    "title": "Erfolgsraten-Gauge (Tacho)",
+    "specification": "Ein dynamischer Tacho (Gauge Chart), der die >98% Erfolgsrate für die Programmierung bestimmter Marken visualisiert und Vertrauen schafft.",
+    "score": 8.35,
+    "rank": 61
+  },
+  {
+    "idea_id": "IDEA_062",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/standorte/page.tsx",
+    "target_component_file": "src/components/visual/einsatzradius.tsx",
+    "title": "Live Anfahrtskosten-Rechner",
+    "specification": "Eingabe der PLZ berechnet sofort (Server Action) die exakten Anfahrtskosten basierend auf der Luftlinie zum nächsten Standort.",
+    "score": 8.32,
+    "rank": 62
+  },
+  {
+    "idea_id": "IDEA_063",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/partner-werden/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/rechner.tsx",
+    "title": "B2B Margen- und ROI-Simulator",
+    "specification": "Ein interaktiver Kalkulator für Autohäuser/Werkstätten, der anzeigt, wie viel Umsatz sie durch White-Labeling pro Monat generieren können.",
+    "score": 8.3,
+    "rank": 63
+  },
+  {
+    "idea_id": "IDEA_064",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/schluessel-einschicken/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/uhr.tsx",
+    "title": "Turnaround-Zeit Echtzeit-Prognose",
+    "specification": "Ein Tool, das (unter Berücksichtigung aktueller Auslastung und Wochentag) ausgibt: 'Wenn du heute einschickst, ist er ca. am [Datum] zurück'.",
+    "score": 8.28,
+    "rank": 64
+  },
+  {
+    "idea_id": "IDEA_065",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/ratgeber/[slug]/page.tsx",
+    "target_component_file": "src/components/recht/eigentext.tsx",
+    "title": "Dynamisches Inhaltsverzeichnis (Sticky TOC)",
+    "specification": "Ein Scroll-Spy Inhaltsverzeichnis, das den aktuellen Lese-Abschnitt mit einem markanten OKLCH-Indikator highlightet.",
+    "score": 8.25,
+    "rank": 65
+  },
+  {
+    "idea_id": "IDEA_066",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "Interaktive Paket-Tracking Timeline",
+    "specification": "Eine vertikale Timeline (wie bei DHL), die den Status des Schlüssels (Eingang, Fräsen, Qualitätskontrolle, Versand) visuell darstellt.",
+    "score": 8.22,
+    "rank": 66
+  },
+  {
+    "idea_id": "IDEA_067",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/filter.tsx",
+    "title": "Visueller Baujahr-Slider",
+    "specification": "Ein eleganter Range-Slider (1990 - 2024), der beim Schieben dynamisch die passenden Schlüssel-Bilder für die Dekade einblendet.",
+    "score": 8.2,
+    "rank": 67
+  },
+  {
+    "idea_id": "IDEA_068",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/kasse/page.tsx",
+    "target_component_file": "src/components/vertrauen/zahlarten-zeile.tsx",
+    "title": "Dynamischer Trust-Banner Generator",
+    "specification": "Ein Banner, das je nach Warenkorbwert dynamisch wechselt (z.B. 'Gratis Versand erreicht!' mit Konfetti-Mikrointeraktion).",
+    "score": 8.18,
+    "rank": 68
+  },
+  {
+    "idea_id": "IDEA_069",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/warenkorb/page.tsx",
+    "target_component_file": "src/components/vertrauen/nachweise-liste.tsx",
+    "title": "Upsell-Empfehlungs-Engine (Bento-Kacheln)",
+    "specification": "Zeigt basierend auf dem Warenkorb kontextuelle Add-ons (z.B. Schlüsselanhänger, Pflegespray) als klickbare Mini-Bento-Kacheln an.",
+    "score": 8.15,
+    "rank": 69
+  },
+  {
+    "idea_id": "IDEA_070",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+    "target_component_file": "src/components/recht/preis-hinweis.tsx",
+    "title": "Festpreis-Garantie Siegel-Interaktion",
+    "specification": "Ein goldenes/blaues Siegel, das beim Hover umklappt und die Details der Keine-Versteckten-Kosten-Garantie zeigt.",
+    "score": 8.12,
+    "rank": 70
+  },
+  {
+    "idea_id": "IDEA_071",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/schluessel-nach-code/kategorie/[familie]/page.tsx",
+    "target_component_file": "src/components/visual/registry.tsx",
+    "title": "Profil-Finder: Fragebaum",
+    "specification": "Ein schrittweiser 'Finde deinen Schlüssel'-Assistent (Ist er rund? Hat er Zacken?), der irrelevante Profile animiert ausblendet.",
+    "score": 8.1,
+    "rank": 71
+  },
+  {
+    "idea_id": "IDEA_072",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/rechtliches/widerruf/erklaeren/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "One-Click Widerrufs-Generator",
+    "specification": "Ein Formular, das nach Eingabe der Bestellnummer automatisch das juristisch korrekte PDF-Widerrufsformular im Browser generiert.",
+    "score": 8.08,
+    "rank": 72
+  },
+  {
+    "idea_id": "IDEA_073",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+    "target_component_file": "src/components/visual/glyphen/nachricht.tsx",
+    "title": "Floating Action Button (WhatsApp/Chat)",
+    "specification": "Ein persistenter, unaufdringlicher Kontakt-Button am rechten unteren Rand mit Puls-Effekt für sofortigen Support.",
+    "score": 8.05,
+    "rank": 73
+  },
+  {
+    "idea_id": "IDEA_074",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+    "target_component_file": "src/components/visual/schluesselart-zeichnung.tsx",
+    "title": "Vorher/Nachher Schlüssel-Zustand",
+    "specification": "Ein Image-Comparison-Slider, der einen extrem abgenutzten Schlüssel neben unserer perfekten CNC-Kopie zeigt (Drag to Compare).",
+    "score": 8.02,
+    "rank": 74
+  },
+  {
+    "idea_id": "IDEA_075",
+    "category": "CONVERSION_AND_TOOLS",
+    "target_existing_route": "src/app/(site)/artikel/[slug]/page.tsx",
+    "target_component_file": "src/components/recht/redaktions-hinweis.tsx",
+    "title": "Reading Time & Engagement Bar",
+    "specification": "Anzeige der geschätzten Lesezeit (z.B. '4 Min Lesezeit') gekoppelt mit einem 'Helpful?'-Daumen-Feedback-System (Server Actions).",
+    "score": 8.0,
+    "rank": 75
+  },
+  {
+    "idea_id": "IDEA_076",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/page.tsx",
+    "target_component_file": "src/components/seo/json-ld.tsx",
+    "title": "Striktes TypeScript Schema.org Validation",
+    "specification": "Refactoring des JSON-LD-Generators auf strenge `satisfies WithContext<LocalBusiness>` Validierung zur Vermeidung von Rich-Snippet-Abstürzen.",
+    "score": 7.98,
+    "rank": 76
+  },
+  {
+    "idea_id": "IDEA_077",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/autoschluessel/marken/page.tsx",
+    "target_component_file": "src/components/visual/registry.tsx",
+    "title": "Next.js 16 'use cache' für Marken-Listen",
+    "specification": "Implementierung der neuen 'use cache' Direktive für die Datenbank-Abfrage aller Automarken, um die TTFB (Time to First Byte) auf < 50ms zu senken.",
+    "score": 7.95,
+    "rank": 77
+  },
+  {
+    "idea_id": "IDEA_078",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "Container Queries für Flow-Shell",
+    "specification": "Migration von Media-Queries (`@media`) zu Container-Queries (`@container`) für die Flow-Shell, um sie kontextunabhängig platzierbar zu machen.",
+    "score": 7.92,
+    "rank": 78
+  },
+  {
+    "idea_id": "IDEA_079",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/autoschluessel/page.tsx",
+    "target_component_file": "src/components/visual/schluesselart-zeichnung.tsx",
+    "title": "AVIF Image Pipeline Integration",
+    "specification": "Zwingende Konfiguration der Next.js `next/image` Komponente für die Ausgabe im AVIF-Format für alle statischen Hero-Bilder.",
+    "score": 7.9,
+    "rank": 79
+  },
+  {
+    "idea_id": "IDEA_080",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/schliessanlagen/page.tsx",
+    "target_component_file": "src/components/schliessanlagen/system-erklaerung.tsx",
+    "title": "CSS Subgrid Harmonisierung",
+    "specification": "Nutzung von `grid-template-rows: subgrid` für die Feature-Karten, damit alle Titel und Buttons über Container hinweg pixelperfekt auf einer Linie liegen.",
+    "score": 7.88,
+    "rank": 80
+  },
+  {
+    "idea_id": "IDEA_081",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/schluessel-nach-code/page.tsx",
+    "target_component_file": "src/components/recht/preis-hinweis.tsx",
+    "title": "Zero-Layout-Shift (CLS) Skeleton Loaders",
+    "specification": "Einführung exakt dimensionierter Skeleton-States für asynchrone Preis-Hinweise, um Cumulative Layout Shift (CLS) auf 0.0 zu drücken.",
+    "score": 7.85,
+    "rank": 81
+  },
+  {
+    "idea_id": "IDEA_082",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+    "target_component_file": "src/components/vertrauen/werkstatt-zeile.tsx",
+    "title": "Dynamic Import (next/dynamic) für schwere SVGs",
+    "specification": "Auslagerung der komplexen Werkstatt-Zeilen-SVGs in asynchrone Chunks via `next/dynamic`, um das initiale JS-Bundle zu verkleinern.",
+    "score": 7.82,
+    "rank": 82
+  },
+  {
+    "idea_id": "IDEA_083",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "React 19 useActionState für Formulare",
+    "specification": "Migration aller Kontaktformulare auf den neuen React 19 `useActionState` Hook für persistentes Error-Handling ohne useState-Boilerplate.",
+    "score": 7.8,
+    "rank": 83
+  },
+  {
+    "idea_id": "IDEA_084",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+    "target_component_file": "src/components/statistik/einwilligung-hinweis.tsx",
+    "title": "Hydration-Mismatches Resolving",
+    "specification": "Behebung der Hydration-Warnungen beim Lesen von `localStorage` (Cookie-Consent) durch striktes Deferring auf den ersten `useEffect` Tick.",
+    "score": 7.78,
+    "rank": 84
+  },
+  {
+    "idea_id": "IDEA_085",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/standorte/[city]/page.tsx",
+    "target_component_file": "src/components/visual/einsatzradius.tsx",
+    "title": "Turbopack Build-Caching Optimierung",
+    "specification": "Optimierung der Datei-Struktur und Import-Pfade zur Maximierung der Turbopack HMR (Hot Module Replacement) Geschwindigkeit während der DX.",
+    "score": 7.75,
+    "rank": 85
+  },
+  {
+    "idea_id": "IDEA_086",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+    "target_component_file": "src/components/seo/json-ld.tsx",
+    "title": "Preload & Prefetching Strategie",
+    "specification": "Einsatz gezielter `<link rel=\"preload\">` Tags im Next.js Head für die LCP-Hero-Bilder der Auto-Modelle.",
+    "score": 7.72,
+    "rank": 86
+  },
+  {
+    "idea_id": "IDEA_087",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/kasse/page.tsx",
+    "target_component_file": "src/components/vertrauen/zahlarten-zeile.tsx",
+    "title": "Zustand Store für Cart-State statt Context",
+    "specification": "Migration des globalen Warenkorb-States von React Context API zu Zustand, um unnötige Re-Renders in tief verschachtelten Komponenten zu verhindern.",
+    "score": 7.7,
+    "rank": 87
+  },
+  {
+    "idea_id": "IDEA_088",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/warenkorb/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "Server-Side Calculation Security",
+    "specification": "Verlagerung aller preisrelevanten Berechnungen (Mengenrabatte, MwSt) strikt in Server Actions; der Client ist nur noch \"dumb\" Viewer.",
+    "score": 7.68,
+    "rank": 88
+  },
+  {
+    "idea_id": "IDEA_089",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx",
+    "target_component_file": "src/components/visual/registry.tsx",
+    "title": "Static Params Generation (SSG) Maximierung",
+    "specification": "Nutzung von `generateStaticParams()` für alle bekannten Hersteller und Kategorien, um diese Seiten zur Build-Zeit als statisches HTML/JSON zu pre-rendern.",
+    "score": 7.65,
+    "rank": 89
+  },
+  {
+    "idea_id": "IDEA_090",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/artikel/[slug]/page.tsx",
+    "target_component_file": "src/components/recht/rechtstext.tsx",
+    "title": "Webfont 'next/font' Zero-Shift",
+    "specification": "Konsequente Einbindung aller Fonts (z.B. Inter/Geist) über `next/font/google` mit `display: swap` und pre-berechneten Fallback-Metriken (size-adjust).",
+    "score": 7.62,
+    "rank": 90
+  },
+  {
+    "idea_id": "IDEA_091",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/ratgeber/page.tsx",
+    "target_component_file": "src/components/seo/json-ld.tsx",
+    "title": "Automatisierte Sitemap & RSS Generation",
+    "specification": "Einrichtung der Next.js `sitemap.ts` API für dynamische, stets aktuelle XML-Sitemaps basierend auf dem CMS/Datenbestand.",
+    "score": 7.6,
+    "rank": 91
+  },
+  {
+    "idea_id": "IDEA_092",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/partner-werden/page.tsx",
+    "target_component_file": "src/components/vertrauen/nachweise-liste.tsx",
+    "title": "CSS-in-JS Cleanup zu Tailwind v4",
+    "specification": "Entfernen jeglicher Inline-Styles oder gestylten Komponenten zugunsten reiner Tailwind Utility-Classes (Vorbereitung auf v4).",
+    "score": 7.58,
+    "rank": 92
+  },
+  {
+    "idea_id": "IDEA_093",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/rechtliches/impressum/page.tsx",
+    "target_component_file": "src/components/recht/rechtstext.tsx",
+    "title": "Robots.txt & Meta-Tags Härtung",
+    "specification": "Strikte Konfiguration der `robots.txt` und `metadata` API, um Admin-Routen, APIs und unfertige Entwürfe vor Indexierung zu schützen.",
+    "score": 7.55,
+    "rank": 93
+  },
+  {
+    "idea_id": "IDEA_094",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+    "target_component_file": "src/components/visual/einsatzradius.tsx",
+    "title": "Debouncing von User-Inputs",
+    "specification": "Einführung von `use-debounce` Hooks für alle PLZ/Orts-Eingaben, um die Anzahl der Server Action Aufrufe bei schnellem Tippen zu minimieren.",
+    "score": 7.52,
+    "rank": 94
+  },
+  {
+    "idea_id": "IDEA_095",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "Error Boundaries Implementierung",
+    "specification": "Setzen von fokussierten `error.tsx` Boundaries auf Komponenten-Ebene, damit bei einem Fehler im Konfigurator nicht die ganze Seite abstürzt.",
+    "score": 7.5,
+    "rank": 95
+  },
+  {
+    "idea_id": "IDEA_096",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "Suspense Streaming für Daten-Fetching",
+    "specification": "Einhüllung langsamer Daten-Queries in `<Suspense fallback={<Skeleton />}>`, um die First Paint Time der restlichen Shell zu beschleunigen.",
+    "score": 7.48,
+    "rank": 96
+  },
+  {
+    "idea_id": "IDEA_097",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+    "target_component_file": "src/components/seo/json-ld.tsx",
+    "title": "Canonical URL Consistency Check",
+    "specification": "Sicherstellen, dass jede Seite eine konsistente, absolute Canonical-URL im `<head>` via `metadataBase` in Next.js ausspielt.",
+    "score": 7.45,
+    "rank": 97
+  },
+  {
+    "idea_id": "IDEA_098",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+    "target_component_file": "src/components/flow/flow-shell.tsx",
+    "title": "PWA Offline-Fähigkeit (Service Worker)",
+    "specification": "Basis-Implementierung eines Service Workers zum Caching statischer Assets, damit das Formular auch bei kurzen Netzwerkausfällen gerendert bleibt.",
+    "score": 7.42,
+    "rank": 98
+  },
+  {
+    "idea_id": "IDEA_099",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+    "target_component_file": "src/components/statistik/google-analytics.tsx",
+    "title": "Partytown für Third-Party Scripts",
+    "specification": "Verlagerung von Google Analytics, Tag Manager oder anderen Third-Party-Scripts in Web Worker mithilfe von @builder.io/partytown.",
+    "score": 7.4,
+    "rank": 99
+  },
+  {
+    "idea_id": "IDEA_100",
+    "category": "PERFORMANCE_ARCH_DX",
+    "target_existing_route": "src/app/(site)/page.tsx",
+    "target_component_file": "src/components/vertrauen/nachweise-liste.tsx",
+    "title": "Lighthouse Score 100/100/100/100 CI/CD",
+    "specification": "Einrichtung eines GitHub Actions Workflows, der jeden PR mit Google Lighthouse (Puppeteer) prüft und bei Scores < 95 den Merge blockiert.",
+    "score": 7.38,
+    "rank": 100
+  }
+]
