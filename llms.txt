@@ -1,0 +1,9 @@
+# Codebase Architecture Blueprint
+
+This repository is powered by Next.js 16+, React 19.2+, and Tailwind CSS v4.x (OKLCH).
+
+## Core Principles
+
+- Zero-New-Routes Invariant
+- Read-Only Invariant for Application Code during Audit
+- Strict TypeScript 5.5+ Guidelines
