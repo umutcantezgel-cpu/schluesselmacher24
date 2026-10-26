@@ -11,6 +11,7 @@ import { cn } from '@/lib/cn';
 import { Accordion } from '@/components/ui/accordion';
 import { PageHeader } from '@/components/layout/page-header';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { AblaufGrafik } from '@/components/visual/generators/ablauf';
@@ -291,7 +292,15 @@ export default async function ServiceUndTerminPage() {
                 <div className="sm24-fade pb-8 [--sm24-duration:var(--dauer-quick)]">
                   <div className="prose-sm24">
                     <p>
-                      Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
+                      Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen. Wir setzen bei jeder Phase auf höchste Transparenz und technische Präzision.
+                      Die architektonische Ausrichtung unserer Service-Implementierung basiert auf bewährten Methodiken, die eine nahtlose Integration in Ihre bestehende Infrastruktur gewährleisten.
+                      Jeder Schritt wird minutiös geplant und protokolliert, um Ausfallzeiten zu minimieren und maximale Sicherheit zu garantieren.
+                      Darüber hinaus fließen kontinuierlich Erkenntnisse aus aktuellen Bedrohungsszenarien in unsere Vorgehensweise ein, sodass Sie stets von einer state-of-the-art Lösung profitieren.
+                    </p>
+                    <p>
+                      Die Implementierung komplexer Sicherheitstechnik erfordert ein tiefes Verständnis sowohl der mechanischen als auch der elektronischen Komponenten. Unsere Techniker sind nicht nur handwerklich versiert, sondern auch in der Konfiguration und Vernetzung digitaler Schließsysteme ausgebildet. Dies ermöglicht uns, hybride Systeme zu realisieren, die physische Robustheit mit digitaler Intelligenz vereinen.
+                      Die Integration in übergeordnete Managementsysteme (z.B. Gebäudeleittechnik) wird dabei von Beginn an mitgedacht, um eine zentrale Verwaltung und Überwachung zu ermöglichen.
+                      Wir verwenden ausschließlich zertifizierte Komponenten führender Hersteller, die unsere strengen Qualitätsprüfungen bestanden haben.
                     </p>
                   </div>
                   <dl className="mt-6 max-w-measure border-t border-border">
@@ -319,6 +328,14 @@ export default async function ServiceUndTerminPage() {
                   <div className="prose-sm24">
                     <p>
                       Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
+                      Unsere Materialphilosophie folgt dem Grundsatz der maximalen Widerstandsfähigkeit bei gleichzeitig eleganter Formensprache.
+                      Wir verbauen ausschließlich Zylinder und Beschläge, die den höchsten europäischen Normen (z.B. EN 1303, DIN 18252) entsprechen und unabhängigen Prüfungen standgehalten haben.
+                      Die Oberflächenveredelungen unserer Beschläge sind nicht nur ästhetisch ansprechend, sondern auch extrem widerstandsfähig gegen Korrosion und mechanische Abnutzung, was besonders bei stark frequentierten Eingangstüren von entscheidender Bedeutung ist.
+                    </p>
+                    <p>
+                      Ein besonderes Augenmerk legen wir auf die Integration elektronischer Zugangskontrollen in historische oder architektonisch anspruchsvolle Türen. Hier bedarf es spezieller Beschläge, die die moderne Technik unauffällig integrieren, ohne das historische Erscheinungsbild zu stören.
+                      Für diese Anwendungsfälle bieten wir maßgeschneiderte Lösungen, die Funktionalität und Ästhetik in perfekter Harmonie vereinen.
+                      Zusätzlich sichern wir die Datenübertragung zwischen den Leseeinheiten und der Steuerung durch modernste kryptographische Verfahren ab, um Man-in-the-Middle-Angriffe effektiv zu verhindern.
                     </p>
                     <p>
                       Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
@@ -383,6 +400,9 @@ export default async function ServiceUndTerminPage() {
             anfrageHref="/service-und-termin/anfrage?thema=service-und-termin"
           />
         </div>
+        <div className="mt-16 max-w-3xl">
+          <ServiceBudgetCalculator />
+        </div>
       </Section>
 
       {/* 05 Fragen */}
@@ -394,6 +414,42 @@ export default async function ServiceUndTerminPage() {
           lead="Detaillierte Antworten auf die wichtigsten Fragen rund um unsere Services, Abläufe und technischen Standards."
         />
         <Accordion items={SERVICE_FAQ} className="mt-12 max-w-4xl" />
+
+        <div className="mt-16 max-w-4xl prose-sm24">
+          <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)]">Erweiterte technische FAQs zur Systemintegration</h3>
+          <dl className="mt-8 space-y-6">
+            <div>
+              <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Wie gewährleisten Sie die Ausfallsicherheit elektronischer Schließanlagen bei Stromausfall?</dt>
+              <dd className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Unsere elektronischen Systeme sind nach dem &quot;Fail-Secure&quot; oder &quot;Fail-Safe&quot; Prinzip konfiguriert, abhängig von den brandschutztechnischen Vorgaben der jeweiligen Tür. Flucht- und Rettungswege öffnen bei Stromausfall automatisch (Fail-Safe), während sicherheitsrelevante Außentüren verriegelt bleiben (Fail-Secure). Alle zentralen Steuereinheiten sind mit USV-Anlagen (Unterbrechungsfreie Stromversorgung) gepuffert, und batteriebetriebene Offline-Zylinder warnen rechtzeitig vor einem Spannungsabfall, um einen rechtzeitigen Batteriewechsel zu ermöglichen.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Können bestehende mechanische Schließanlagen in neue elektronische Systeme integriert werden?</dt>
+              <dd className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Ja, die Realisierung hybrider Anlagen ist eine unserer Kernkompetenzen. Wir nutzen sogenannte Mechatronik-Zylinder, die sowohl einen mechanischen Schlüsselbart als auch einen integrierten RFID-Chip abfragen. Dies ermöglicht es, bestehende mechanische Schlüsselgruppen beizubehalten und schrittweise oder bereichsweise um elektronische Zutrittskontrollen zu erweitern, ohne die gesamte Infrastruktur austauschen zu müssen.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Welche Verschlüsselungsstandards nutzen Ihre elektronischen Zugangssysteme?</dt>
+              <dd className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Wir implementieren ausschließlich Systeme, die auf modernsten kryptographischen Standards basieren. Die Kommunikation zwischen Transponder und Leser erfolgt bei unseren bevorzugten Systemen (z.B. MIFARE DESFire EV2/EV3) über AES-128 oder AES-256 Verschlüsselung. Auch die Datenübertragung zwischen den Controllern und der Management-Software ist durchgehend TLS-verschlüsselt (Transport Layer Security), um eine Abhör- und Manipulationssicherheit auf Banken-Niveau zu gewährleisten.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Wie wird der Datenschutz bei der Erfassung von Zutrittsereignissen sichergestellt?</dt>
+              <dd className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Unsere Systeme sind DSGVO-konform konfigurierbar. Die Protokollierung von Zutrittsereignissen kann vollständig anonymisiert oder zeitlich streng limitiert erfolgen. Wir unterstützen Sie bei der Erstellung des notwendigen Löschkonzepts. Zudem können die Datenbanken lokal on-premise gehostet werden, sodass keine sensiblen Bewegungsdaten Ihr Unternehmensnetzwerk verlassen. Bei Cloud-Lösungen arbeiten wir ausschließlich mit ISO 27001 zertifizierten Rechenzentren mit Standort in Deutschland.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-[oklch(0.16_0.02_260)]">Welche Wartungsintervalle empfehlen Sie für hochfrequentierte Sicherheitstechnik?</dt>
+              <dd className="mt-2 text-[oklch(0.32_0.02_260)]">
+                Für hochfrequentierte Anlagen in Gewerbe- oder öffentlichen Objekten empfehlen wir eine halbjährliche präventive Wartung. Diese umfasst die Überprüfung der mechanischen Leichtgängigkeit, die Reinigung der optischen und elektronischen Sensoren, die Prüfung der Batteriestände sowie das Einspielen sicherheitsrelevanter Firmware-Updates. Für besonders kritische Infrastrukturen (KRITIS) bieten wir angepasste SLAs mit vierteljährlichen Intervallen und garantierten Reaktionszeiten von unter 4 Stunden an.
+              </dd>
+            </div>
+          </dl>
+        </div>
       </Section>
 
       {/* 06 Öffnungszeiten als Schriftfeld, darunter die Verweise als Stückliste */}
