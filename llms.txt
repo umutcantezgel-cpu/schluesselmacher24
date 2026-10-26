@@ -1,0 +1,9 @@
+# Codebase LLM Knowledge
+
+This repository operates on Next.js 16+ App Router, React 19.2+, and Tailwind CSS v4.
+The current status is heavily audited by JC-AUDITOR-ARCHITECT-v1.
+
+Please refer to the `.jules/revolution-plan.json` for the transformation queue
+and target interactive modules.
+
+See `.jules/architecture-matrix.md` for a tabular overview.
