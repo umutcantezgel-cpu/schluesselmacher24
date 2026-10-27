@@ -165,10 +165,10 @@ header a[aria-label$='Startseite'] > span {
     --dauer-slow: 400ms;
     --dauer-enter: 600ms;
     --dauer-scene: 900ms;
-    --kurve-standard: cubic-bezier(0.2, 0, 0, 1);
+    --kurve-standard: cubic-bezier(0.16, 1, 0.3, 1);
     --kurve-enter: cubic-bezier(0.16, 1, 0.3, 1);
-    --kurve-exit: cubic-bezier(0.4, 0, 1, 1);
-    --kurve-draw: cubic-bezier(0.65, 0, 0.35, 1);
+    --kurve-exit: cubic-bezier(0.16, 1, 0.3, 1);
+    --kurve-draw: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @media (min-width: 768px) {
@@ -184,6 +184,7 @@ header a[aria-label$='Startseite'] > span {
   }
 
   html {
+    overflow-x: clip;
     -webkit-text-size-adjust: 100%;
     /* Fokus und Sprungziele nie unter dem festen Kopf (WCAG 2.4.11). */
     scroll-padding-top: calc(var(--header-height) + 1rem);
@@ -223,6 +224,7 @@ header a[aria-label$='Startseite'] > span {
   }
 
   body {
+    overflow-x: clip;
     @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -798,6 +800,7 @@ header a[aria-label$='Startseite'] > span {
   }
 
   body {
+    overflow-x: clip;
     background: hsl(var(--surface));
   }
 
