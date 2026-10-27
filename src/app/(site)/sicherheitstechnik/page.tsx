@@ -9,6 +9,8 @@ import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { ServiceBudgetCalculator } from '@/components/calculator/service-budget-calculator';
+
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
@@ -92,7 +94,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -210,7 +219,7 @@ export default async function SicherheitstechnikPage() {
           nummer="02"
           eyebrow="Bereiche"
           title="Sieben Bereiche, die zusammen gedacht werden"
-          lead="Einzeln betrachtet bleibt jeder Bereich Stückwerk. Welche Kombination zu Ihrem Objekt passt, klären wir in der Bestandsaufnahme."
+          lead="Sicherheitstechnik in Wohn- und Gewerbeobjekten ist kein reines Produktgeschäft, sondern ein architektonisches Gesamtkonzept. Einzeln betrachtet bleibt jeder Bereich Stückwerk – eine Kamera ohne aufgeschaltete Alarmierung oder eine Zutrittskontrolle ohne mechanischen Grundschutz erzielen keine Resilienz gegen Einbruchsversuche. Moderne Sicherheitskonzepte erfordern eine tiefgreifende Methodik: Zunächst analysieren wir die bestehende Außenhaut, bewerten Schwachstellen an Fenstern, Türen und Lichtschächten und definieren Schutzzonen. Welche Kombination zu Ihrem Objekt passt, klären wir in der detaillierten Bestandsaufnahme, bei der wir physische Widerstandsklassen (RC2/RC3) mit smarter Sensorik und reaktiven Meldesystemen verzahnen. Unser Ansatz basiert auf der konsequenten Umsetzung der Empfehlungen der Kriminalpolizeilichen Beratungsstellen: Mechanik vor Elektronik, gepaart mit lückenloser visueller Verifikation im Ernstfall. So entstehen maßgeschneiderte Sicherheitsarchitekturen, die nicht nur abschrecken, sondern im Angriffsfall wertvolle Zeit für die Intervention gewinnen."
         />
 
         <ul className="mt-12 grid border-t border-border sm:grid-cols-2 lg:grid-cols-3">
@@ -283,6 +292,14 @@ export default async function SicherheitstechnikPage() {
         </ul>
       </Section>
 
+
+      {/* Budget Calculator */}
+      <Section tone="muted">
+        <div className="mx-auto max-w-3xl">
+          <ServiceBudgetCalculator />
+        </div>
+      </Section>
+
       {/* 03 Recht und Verantwortung: Kasten mit Haarlinien */}
       <Section id="recht-und-verantwortung">
         <SectionHeading
@@ -336,6 +353,49 @@ export default async function SicherheitstechnikPage() {
               >
                 Hinweise zum Datenschutz
               </Link>
+            </p>
+          </div>
+        </div>
+      </Section>
+
+
+      {/* 03b FAQ */}
+      <Section id="faq">
+        <SectionHeading
+          nummer="03b"
+          eyebrow="Häufige Fragen"
+          title="Technisches Fachwissen und Methodik"
+          lead="Unsere Antworten auf die wichtigsten Fragen zur architektonischen Sicherheitsplanung und Systemintegration."
+        />
+        <div className="mt-12 max-w-3xl divide-y divide-border mx-auto">
+          <div className="py-6">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Warum ist Mechanik wichtiger als Elektronik?</h3>
+            <p className="mt-3 text-small text-foreground-muted leading-relaxed">
+              Elektronische Systeme wie Alarmanlagen und Videoüberwachung melden einen Einbruchsversuch, können ihn aber physisch nicht verhindern. Solide Mechanik an Fenstern und Türen (z. B. Pilzkopfzapfen, Sicherheitsbeschläge, Mehrfachverriegelungen) setzt dem Täter direkten Widerstand entgegen. Einbruchsversuche werden in der Regel nach 3 bis 5 Minuten abgebrochen, wenn der mechanische Widerstand zu groß ist.
+            </p>
+          </div>
+          <div className="py-6">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Was bedeutet der Begriff &quot;Außenhautsicherung&quot;?</h3>
+            <p className="mt-3 text-small text-foreground-muted leading-relaxed">
+              Die Außenhautsicherung überwacht alle Zugänge (Türen, Fenster, Lichtschächte) von außen in das Objekt. Der Alarm wird ausgelöst, sobald jemand versucht, diese Begrenzung zu überwinden, noch bevor der Täter im Gebäude ist. Im Gegensatz zur reinen Fallenüberwachung (Bewegungsmelder im Inneren) können Sie sich bei aktivierter Außenhautsicherung frei im Gebäude bewegen.
+            </p>
+          </div>
+          <div className="py-6">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Welche Widerstandsklassen sind für den privaten Bereich sinnvoll?</h3>
+            <p className="mt-3 text-small text-foreground-muted leading-relaxed">
+              Die Kriminalpolizei empfiehlt für Privathaushalte mindestens Elemente der Widerstandsklasse RC2 (Resistance Class 2) nach DIN EN 1627. Diese Bauteile halten Gelegenheitstätern mit einfachen Werkzeugen (Schraubendreher, Zange, Keil) mindestens 3 Minuten stand. Für besonders gefährdete Bereiche oder Gebäude mit höherem Sicherheitsbedürfnis raten wir zu RC3-Elementen.
+            </p>
+          </div>
+          <div className="py-6">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Können bestehende Fenster und Türen nachgerüstet werden?</h3>
+            <p className="mt-3 text-small text-foreground-muted leading-relaxed">
+              In den meisten Fällen ja. Nachrüstungen nach DIN 18104-1 (aufgeschraubte Nachrüstprodukte wie Zusatzschlösser) oder DIN 18104-2 (im Falz eingelassene Nachrüstprodukte wie Pilzkopfzapfenbeschläge) erhöhen die Sicherheit erheblich, ohne dass die kompletten Fenster oder Türen ausgetauscht werden müssen. Die Machbarkeit prüfen wir im Rahmen unserer Bestandsaufnahme.
+            </p>
+          </div>
+          <div className="py-6">
+            <h3 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Wie funktioniert eine Aufschaltung auf eine Leitstelle?</h3>
+            <p className="mt-3 text-small text-foreground-muted leading-relaxed">
+              Bei einer Aufschaltung wird Ihre Gefahrenmeldeanlage mit einer VdS-anerkannten Notruf- und Serviceleitstelle (NSL) verbunden. Löst die Anlage Alarm aus, empfängt die Leitstelle das Signal über einen sicheren Übertragungsweg (z. B. IP/Mobilfunk-Redundanz) und leitet vordefinierte Maßnahmen ein (z. B. Benachrichtigung des Eigentümers, Intervention durch Wachdienst, Alarmierung der Polizei), 24 Stunden am Tag, 365 Tage im Jahr.
             </p>
           </div>
         </div>

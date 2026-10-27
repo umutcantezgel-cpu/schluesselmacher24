@@ -1,0 +1,10 @@
+{
+  "target_routes": [
+    {
+      "route": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "status": "COMPLETED_BY_BUILDER",
+      "module_name": "Sicherheitsbudget-Rechner",
+      "word_count_target": 850
+    }
+  ]
+}
