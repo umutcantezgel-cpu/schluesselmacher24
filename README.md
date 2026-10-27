@@ -4,6 +4,14 @@ Website und Shop eines Fachbetriebs für Autoschlüssel, Schlüssel nach Code un
 
 Domain: `schluesselmacher24.de` (hinterlegt in `src/lib/site-url.ts`).
 
+
+## Architektur-Ziele
+- Vollständige Transformation in eine OKLCH-basierte Schweizer High-End-Ästhetik.
+- Maximierung bestehender Seiten (Eliminierung von Thin Content, > 800 Wörter).
+- Integration interaktiver Rechner und Filter.
+- React Server Component Supremacy & React 19 Form Actions.
+
+
 ## Entwicklung
 
 ```bash

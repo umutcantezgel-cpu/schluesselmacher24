@@ -1,0 +1,16 @@
+# Schlüsselmacher24 LLM Context
+Dies ist die zentrale Dokumentation für LLM-Agenten, die an der Schlüsselmacher24 Codebasis arbeiten.
+
+## System Architektur
+- Next.js 16+ App Router
+- React 19.2+ mit Server Actions
+- Tailwind CSS v4 mit OKLCH Color Space
+- Zustand 5+ für Client State
+- Payload CMS 3.90+
+
+## Architektur-Ziele (JC-AUDITOR-ARCHITECT-v1)
+- Eliminierung von Thin Content auf allen 54+ Routen (>800 Wörter pro Seite).
+- Implementierung der "Schweizer High-End Light Mode Design-Doctrine".
+- Ersetzung statischer Listen durch interaktive Bento-Grids, Filter und Rechner.
+- Absicherung der Typen und Migration zu Server Components.
+- Strikte Zero-New-Routes-Invariante.
