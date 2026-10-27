@@ -1,0 +1,12 @@
+# SCHLÜSSELMACHER24 - Architecture and Execution Info
+
+This repository is optimized for Next.js 16+ (App Router), React 19.2+, and TypeScript 5.5+ Strict.
+It utilizes Tailwind CSS v4 in the OKLCH Light Mode color space.
+
+## Master Blueprint
+We have successfully audited the codebase and generated the master execution blueprint in the `.jules` directory.
+- `.jules/revolution-plan.json` details all the exact routes to transform and standardizes the word counts, design interactions, and the interactive modules needed.
+- `.jules/architecture-matrix.md` contains a tabular overview of the routes and their target metrics.
+
+## Next Steps
+Agents in the pipeline should refer to `.jules/revolution-plan.json` to elevate the UI elements, integrate specific institutional content (with > 800 words), and refine interactions to the Awwwards-Jury-Level aesthetic without breaking existing logic or routing structures.
