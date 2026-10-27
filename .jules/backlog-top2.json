@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2024-03-24T12:00:00Z",
+  "selection_rationale": "Mathematische Selektion der 2 wirkungsvollsten Hebel f\u00fcr bestehende Seiten (Score-Faktoren: Visuelle Hebelwirkung, Nutzer-Mehrwert/ROI, Machbarkeit).",
+  "top_ideas": [
+    {
+      "rank": 1,
+      "idea_id": "IDEA_051",
+      "category": "CONVERSION_AND_TOOLS",
+      "target_existing_route": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_component_file": "src/components/calculator/enterprise-roi-calculator.tsx",
+      "title": "Interaktiver ROI-Kalkulator f\u00fcr Elektronik-Zylinder",
+      "specification": "Ein React-basiertes Tool, das den Breakeven-Point berechnet, wenn man die Kosten f\u00fcr mechanische Schl\u00fcsselverluste gegen ein elektronisches System aufrechnet. Implementiert mit React 19 Server Actions, Bento-Grid Layout und nahtloser Einbettung in die bestehende Schlie\u00dfanlagen-Route (Textausbau auf > 800 W\u00f6rter).",
+      "score": 9.75,
+      "status": "READY_FOR_EXPANSION"
+    },
+    {
+      "rank": 2,
+      "idea_id": "IDEA_076",
+      "category": "PERFORMANCE_AND_ARCHITECTURE",
+      "target_existing_route": "src/app/(site)/page.tsx",
+      "target_component_file": "src/components/ui/spatial-bento-grid.tsx",
+      "title": "Spatial Bento Grid mit dynamischem Haarlinien-Lichtreflex",
+      "specification": "\u00dcberf\u00fchrung der bestehenden Feature-Karten auf der Startseite in ein CSS Subgrid Bento-Layout mit Haarlinien-Kanten (oklch(0.89 0.008 260 / 0.55)), ged\u00e4mpfter Federphysik und Cursor-Positions-Tracking ohne Layout-Shifts. Aufwertung des Content-Volumens der Startseite auf > 800 W\u00f6rter.",
+      "score": 9.55,
+      "status": "READY_FOR_EXPANSION"
+    }
+  ]
+}
