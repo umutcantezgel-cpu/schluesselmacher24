@@ -1,0 +1,7 @@
+# Architecture Goals
+
+- Next.js 16+ App Router
+- React 19.2+ Server Actions
+- Tailwind CSS v4 (OKLCH Light Mode)
+- 800+ words per route
+- Zero new routes.
