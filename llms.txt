@@ -1,0 +1,3 @@
+# LLMs Context
+This project adheres to the Swiss Light Design Doctrine.
+Target: Next.js 16+, React 19.2+, Tailwind v4.
