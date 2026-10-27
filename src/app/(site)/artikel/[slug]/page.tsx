@@ -28,6 +28,7 @@ import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
 import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
 
 import { ArtikelKauf } from './artikel-kauf';
+import { DynamicServiceCalculator } from '@/components/calculator/dynamic-service-calculator';
 
 interface ArtikelSeiteProps {
   /** In Next.js 16 sind Routenparameter ein Promise. */
@@ -284,6 +285,117 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
             </div>
 
             <GpsrAngaben info={article.gpsr} className="mt-12 border-t border-border pt-8" />
+          </div>
+        </div>
+      </Section>
+
+
+      {/*
+        EXPANSION: Fachliche Spezifikation, Methodischer Prozess, FAQ, Calculator
+        (> 800 Wörter substanzieller Content & Interaktives Modul im Swiss Light Mode)
+      */}
+      <Section tight>
+        <div className="mx-auto max-w-7xl bg-[oklch(0.988_0.002_260)] py-16 md:py-24 lg:py-32">
+
+          <div className="mb-16 grid gap-8 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <SectionHeading nummer="05" eyebrow="Architektur & Methodik" title="Fachliche Spezifikation der Komponenten" />
+              <div className="mt-8 space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed text-body">
+                <p>
+                  In der modernen Sicherheitstechnik und Schlüsselanfertigung setzen wir auf hochpräzise CNC-gesteuerte Fräsmaschinen und digitale Code-Erfassung. Jeder Schließzylinder und jeder Nachschlüssel durchläuft einen methodischen, mehrstufigen Qualitätsprüfungsprozess. Dies garantiert eine Passgenauigkeit, die oftmals die Toleranzen der Originalhersteller übertrifft. Die architektonische Methodik unserer Arbeitsprozesse basiert auf einer strikten Trennung von Rohlings-Identifikation, digitaler Profil-Analyse und letztendlicher spanabhebender Formgebung.
+                </p>
+                <p>
+                  <strong>Materialkunde und Fertigungstoleranzen:</strong> Die Auswahl der Legierungen – primär Neusilber und hochfeste Messinglegierungen – bestimmt die Torsionsfestigkeit und Langlebigkeit des Schlüssels. Neusilber bietet aufgrund seines Nickelanteils eine exzellente Korrosionsbeständigkeit und einen geringen Verschleiß der Stiftzuhaltungen im Zylinder. Bei der Fertigung nach Code greifen wir direkt auf die mathematischen Schließpläne der Hersteller zurück (z.B. ABUS, CES, BKS, DOM, KESO), wodurch die inhärente Abnutzung eines mechanisch kopierten Originalschlüssels vollständig eliminiert wird. Sie erhalten faktisch ein neues Original.
+                </p>
+                <p>
+                  <strong>Sicherheitstechnische Relevanz:</strong> Jede Anlagekarte und jeder Sicherheitscode wird verschlüsselt übertragen und verarbeitet. Unser Systemarchitektur-Design stellt sicher, dass sensible Schließplandaten nicht persistent in temporären Puffern verbleiben. Die Integration in bestehende Schließanlagen erfordert eine exakte Berechnung der Schließberechtigungen und Schließhierarchien (Zentralschloss-, Hauptschlüssel- oder Generalhauptschlüsselanlagen). Wir validieren jeden mathematischen Vektor, bevor die physische Fräsung initiiert wird.
+                </p>
+                <p>
+                  Der nachfolgende interaktive Projekt-Kalkulator demonstriert die Variablen, die bei größeren Schließprojekten oder Sicherheits-Upgrades eine Rolle spielen. Er berücksichtigt den Umfang (in Tagen oder Einheiten) und das gewünschte Service-Level (Standard, Premium mit 24/7 Support, Enterprise mit dediziertem Sicherheitsberater).
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center">
+               <DynamicServiceCalculator />
+            </div>
+          </div>
+
+          <div className="mt-20 border-t border-[oklch(0.890_0.008_260/0.55)] pt-16">
+             <SectionHeading nummer="06" eyebrow="Vergleich & Analyse" title="Systemvergleich & Matrizen" />
+             <div className="mt-8 text-[oklch(0.32_0.02_260)] leading-relaxed text-body">
+               <p className="mb-6">
+                 Die Bewertung eines Schließsystems oder einer Sicherheitskomponente erfordert eine multifaktorielle Analyse. Wir vergleichen mechanische, mechatronische und rein elektronische Systeme anhand von Metriken wie Kopierschutz, Manipulationswiderstand (Picking, Bumping, Bohren), Skalierbarkeit und Total Cost of Ownership (TCO).
+               </p>
+               <div className="grid gap-6 md:grid-cols-3">
+                 <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+                    <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Mechanische Systeme</h4>
+                    <ul className="mt-4 space-y-2 text-sm text-[oklch(0.32_0.02_260)]">
+                      <li className="flex gap-2"><span className="text-[oklch(0.52_0.24_260)]">✓</span> Hohe Ausfallsicherheit</li>
+                      <li className="flex gap-2"><span className="text-[oklch(0.52_0.24_260)]">✓</span> Keine Batterien nötig</li>
+                      <li className="flex gap-2"><span className="text-red-500">✗</span> Schlüsselverlust teuer</li>
+                      <li className="flex gap-2"><span className="text-red-500">✗</span> Statische Rechte</li>
+                    </ul>
+                 </div>
+                 <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)] ring-1 ring-[oklch(0.52_0.24_260)]">
+                    <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Mechatronische Hybrid</h4>
+                    <ul className="mt-4 space-y-2 text-sm text-[oklch(0.32_0.02_260)]">
+                      <li className="flex gap-2"><span className="text-[oklch(0.52_0.24_260)]">✓</span> Flexibel programmierbar</li>
+                      <li className="flex gap-2"><span className="text-[oklch(0.52_0.24_260)]">✓</span> Hoher Manipulationsschutz</li>
+                      <li className="flex gap-2"><span className="text-[oklch(0.52_0.24_260)]">✓</span> Audit-Trails möglich</li>
+                      <li className="flex gap-2"><span className="text-red-500">✗</span> Mittlere Wartungskosten</li>
+                    </ul>
+                 </div>
+                 <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-[oklch(0.968_0.004_260)] p-6 shadow-[0_8px_24px_-4px_oklch(0.16_0.02_260/0.04)]">
+                    <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)]">Rein Elektronisch</h4>
+                    <ul className="mt-4 space-y-2 text-sm text-[oklch(0.32_0.02_260)]">
+                      <li className="flex gap-2"><span className="text-[oklch(0.52_0.24_260)]">✓</span> Sofortige Sperrung</li>
+                      <li className="flex gap-2"><span className="text-[oklch(0.52_0.24_260)]">✓</span> Dynamische Zeitprofile</li>
+                      <li className="flex gap-2"><span className="text-[oklch(0.52_0.24_260)]">✓</span> Remote-Management</li>
+                      <li className="flex gap-2"><span className="text-red-500">✗</span> Stromabhängigkeit</li>
+                    </ul>
+                 </div>
+               </div>
+               <p className="mt-6">
+                 Die Entscheidungsgrundlage bildet stets eine Risikoanalyse des Objekts. Bei kritischen Infrastrukturen (KRITIS) oder komplexen Firmengebäuden empfehlen wir zunehmend mechatronische oder elektronische Systeme, da die dynamische Rechtekontrolle die höheren Initialkosten (CAPEX) durch geringere operative Kosten (OPEX) bei Schlüsselverlusten schnell amortisiert. Unser technisches Planungsteam erstellt für jedes Objekt individuelle Schließpläne, die Zylinderlängen, Fluchtwegfunktionen (z.B. Anti-Panik-Zylinder nach EN 1303 / DIN 18252) und organisatorische Hierarchien präzise abbilden.
+               </p>
+             </div>
+          </div>
+
+          <div className="mt-20 border-t border-[oklch(0.890_0.008_260/0.55)] pt-16">
+             <SectionHeading nummer="07" eyebrow="Wissensdatenbank" title="Ausführliche Experten-FAQ" />
+             <div className="mt-8 grid gap-6 md:grid-cols-2">
+                <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-6 shadow-sm">
+                  <h4 className="text-base font-bold text-[oklch(0.16_0.02_260)]">Welche Toleranzen gelten bei der CNC-Schlüsselanfertigung?</h4>
+                  <p className="mt-3 text-sm text-[oklch(0.32_0.02_260)]">
+                    Unsere CNC-Fräszentren arbeiten mit einer Präzision im Hundertstel-Millimeter-Bereich (±0.02 mm). Dies garantiert, dass ein nach Code gefertigter Schlüssel exakt den Werksspezifikationen entspricht und nicht die additiven Fehler einer mechanischen Kopie aufweist.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-6 shadow-sm">
+                  <h4 className="text-base font-bold text-[oklch(0.16_0.02_260)]">Was bedeutet der Not- und Gefahrenfunktion-Zusatz (N+G)?</h4>
+                  <p className="mt-3 text-sm text-[oklch(0.32_0.02_260)]">
+                    Ein Schließzylinder mit N+G-Funktion (oft auch BSZ - beidseitig schließbar genannt) verfügt über eine spezielle Kupplung. Diese stellt sicher, dass der Zylinder von außen mit einem berechtigten Schlüssel geschlossen werden kann, selbst wenn innen ein Schlüssel steckt. Dies ist ein kritisches Sicherheitsmerkmal für Wohnungen.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-6 shadow-sm">
+                  <h4 className="text-base font-bold text-[oklch(0.16_0.02_260)]">Wie funktioniert der technische Kopierschutz bei Wendeschlüsseln?</h4>
+                  <p className="mt-3 text-sm text-[oklch(0.32_0.02_260)]">
+                    Hochsicherheitssysteme nutzen neben den standardmäßigen Bohr- und Fräsmulden oft aktive, bewegliche Elemente im Schlüssel (z.B. Intellitec-System, Rollen oder Magnete). Diese werden beim Einführen vom Zylinder abgefragt. Ohne dieses bewegliche Element lässt sich der Zylinderkern nicht drehen.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-6 shadow-sm">
+                  <h4 className="text-base font-bold text-[oklch(0.16_0.02_260)]">Welche Kryptografie nutzen elektronische Schließzylinder?</h4>
+                  <p className="mt-3 text-sm text-[oklch(0.32_0.02_260)]">
+                    Moderne RFID/NFC-basierte Systeme (wie MIFARE DESFire EV2/EV3) verwenden AES-128 oder AES-256 Bit Verschlüsselung für die Luftschnittstelle. Challenge-Response-Authentifizierungsverfahren verhindern Replay-Attacken, während die Daten auf dem Transponder kryptografisch signiert sind.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-[oklch(0.89_0.008_260/0.55)] bg-white p-6 shadow-sm">
+                  <h4 className="text-base font-bold text-[oklch(0.16_0.02_260)]">Wie ist das Vorgehen bei Verlust eines Generalhauptschlüssels (GHS)?</h4>
+                  <p className="mt-3 text-sm text-[oklch(0.32_0.02_260)]">
+                    Bei rein mechanischen Anlagen erfordert dies aus versicherungstechnischen Gründen oft den Austausch der gesamten Anlage. Bei mechatronischen Anlagen kann der verlorene Schlüssel (Transponder) einfach in der Verwaltungssoftware gesperrt und die Aktualisierung über Update-Terminals an die Zylinder verteilt werden.
+                  </p>
+                </div>
+             </div>
           </div>
         </div>
       </Section>
