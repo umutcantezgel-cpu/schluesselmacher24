@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
+import { SicherheitsAuditSimulator } from '@/components/sicherheitstechnik/sicherheits-audit-simulator';
 
 import { getPageContent, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -92,7 +93,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -201,6 +209,92 @@ export default async function SicherheitstechnikPage() {
               </ButtonLink>
             </div>
           </div>
+        </div>
+      </Section>
+
+
+      <Section id="methodik-und-architektur">
+        <SectionHeading
+          nummer="01b"
+          eyebrow="Architektur & Methodik"
+          title="Tiefgehende Analyse: Wie wir Sicherheitstechnik denken"
+          lead="Moderne Sicherheitstechnik ist kein Produkt von der Stange. Es ist eine Architektur aus ineinandergreifenden Systemen, die auf die spezifischen Schwachstellen und Anforderungen Ihres Objekts zugeschnitten sein muss."
+        />
+        <div className="mt-8 space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed max-w-4xl">
+          <p>
+            Sicherheit beginnt weit vor der Installation der ersten Kamera oder des ersten Sensors. Sie beginnt mit einer schonungslosen Analyse der Ist-Situation. Wir betrachten Gebäude nicht als isolierte Hüllen, sondern als komplexe Systeme mit spezifischen Risikoprofilen. Jeder Zugangspunkt, jede Fensterfront, jeder Lichtschacht und sogar die umgebende Topographie spielen eine entscheidende Rolle bei der Konzeption einer effektiven Sicherheitsarchitektur.
+          </p>
+          <p>
+            Unsere Methodik basiert auf dem Prinzip der <strong>mehrstufigen Perimeterverteidigung</strong> (Defense in Depth). Dies bedeutet, dass wir nicht auf eine einzige, möglicherweise überwindbare Barriere vertrauen. Stattdessen konzipieren wir ein System aus konzentrischen Sicherheitsringen, die von der Grundstücksgrenze bis in das Allerheiligste des Gebäudes reichen. Die äußere Hülle &ndash; die Freifläche &ndash; wird durch intelligente Videoanalyse und Infrarot-Lichtschranken gesichert, die bereits Alarm schlagen, bevor ein Täter das Gebäude überhaupt berührt.
+          </p>
+          <p>
+            Der zweite Ring ist die Gebäudeaußenhaut. Hier kombinieren wir <em>mechanischen Hochsicherheitsschutz</em> (etwa durch Pilzkopfverriegelungen, Sicherheitsbeschläge und durchwurfhemmende Verglasung) mit <em>elektronischer Überwachung</em> (Glasbruchsensoren, Öffnungskontakte und Erschütterungssensoren). Der mechanische Schutz zwingt den Täter zum Einsatz von schwerem Werkzeug und kostet ihn wertvolle Zeit. Die elektronische Sensorik registriert diesen Versuch sofort und löst einen Voralarm aus, noch bevor die mechanische Barriere überwunden ist.
+          </p>
+          <p>
+            Der innere Ring schließlich umfasst die volumetrische Raumüberwachung (z. B. durch Dual-Melder, die Infrarot- und Mikrowellentechnologie kombinieren, um Fehlalarme durch Haustiere oder Zugluft zu minimieren), gezielte Fallenüberwachung an kritischen Durchgängen und den Schutz von Wertbehältnissen. Diese drei Ringe müssen nicht nur physisch existieren, sondern auch logisch und signaltechnisch über eine redundante, nach EN 50131 zertifizierte Gefahrenmeldezentrale miteinander verschmolzen werden.
+          </p>
+
+          <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-4">Vergleichsmatrix: Sicherheitsstufen im Überblick</h3>
+          <div className="overflow-x-auto rounded-xl border border-[oklch(0.89_0.008_260/0.55)]">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-[oklch(0.968_0.004_260)] text-[oklch(0.16_0.02_260)]">
+                <tr>
+                  <th className="p-4 font-semibold border-b border-[oklch(0.89_0.008_260/0.55)]">Kriterium</th>
+                  <th className="p-4 font-semibold border-b border-l border-[oklch(0.89_0.008_260/0.55)]">Basis-Schutz (Privat)</th>
+                  <th className="p-4 font-semibold border-b border-l border-[oklch(0.89_0.008_260/0.55)]">Erweiterter Schutz (Gewerbe)</th>
+                  <th className="p-4 font-semibold border-b border-l border-[oklch(0.89_0.008_260/0.55)]">Maximal-Schutz (Hochrisiko)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)]">
+                <tr>
+                  <td className="p-4 font-medium text-[oklch(0.16_0.02_260)]">Perimeterschutz</td>
+                  <td className="p-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Außenbeleuchtung, einfache Zäune</td>
+                  <td className="p-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Lichtschranken, Videoüberwachung</td>
+                  <td className="p-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Thermal-Kameras mit KI-Analyse, Radarsysteme</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium text-[oklch(0.16_0.02_260)]">Außenhautsicherung</td>
+                  <td className="p-4 border-l border-[oklch(0.89_0.008_260/0.55)]">RC2-Beschläge an Fenstern/Türen im EG</td>
+                  <td className="p-4 border-l border-[oklch(0.89_0.008_260/0.55)]">RC3, aktive Glasbruchmelder, Magnetkontakte an allen Zugängen</td>
+                  <td className="p-4 border-l border-[oklch(0.89_0.008_260/0.55)]">RC4+, Körperschallmelder, biometrische Zutrittskontrolle</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium text-[oklch(0.16_0.02_260)]">Alarmaufschaltung</td>
+                  <td className="p-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Lokaler Alarm (Sirene) &amp; App-Benachrichtigung</td>
+                  <td className="p-4 border-l border-[oklch(0.89_0.008_260/0.55)]">VdS-anerkannte Notruf- und Serviceleitstelle (NSL)</td>
+                  <td className="p-4 border-l border-[oklch(0.89_0.008_260/0.55)]">Redundante NSL-Aufschaltung mit Live-Täteransprache</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-12 mb-4">Häufig gestellte Fragen (FAQ) zur Sicherheitstechnik</h3>
+          <div className="space-y-6">
+            <div className="border-l-2 border-[oklch(0.52_0.24_260)] pl-4">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">1. Wie unterscheidet sich eine zertifizierte Alarmanlage von Smart-Home-Lösungen aus dem Baumarkt?</h4>
+              <p className="mt-2">Smart-Home-Systeme nutzen oft offene Funkprotokolle (wie WLAN oder Zigbee), die extrem störanfällig sind und sich leicht mit sogenannten Jammern blockieren lassen. Zudem fehlt ihnen die Notstromversorgung für längere Stromausfälle und die Sabotageüberwachung der einzelnen Komponenten. Zertifizierte Anlagen (nach EN 50131 oder VdS) arbeiten mit verschlüsselten, dedizierten Frequenzen, verfügen über redundante Übertragungswege (GSM/IP) und erkennen jeden Versuch der Manipulation sofort, selbst wenn sie unscharf geschaltet sind.</p>
+            </div>
+            <div className="border-l-2 border-[oklch(0.52_0.24_260)] pl-4">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">2. Ist eine Videoüberwachung bei Dunkelheit überhaupt nützlich?</h4>
+              <p className="mt-2">Absolut, sofern die richtige Technologie eingesetzt wird. Herkömmliche Infrarot-Kameras liefern nachts oft nur ein verrauschtes Schwarz-Weiß-Bild, auf dem Personen schwer zu identifizieren sind. Wir setzen auf Kameras mit ColorVu-Technologie für farbige Nachtsicht bei minimalem Restlicht, oder auf Thermalkameras, die ausschließlich Wärmesignaturen erfassen und somit selbst bei absolutem Null-Licht, Nebel oder dichtem Regen zuverlässig Bewegungen detektieren, ohne von Autoscheinwerfern geblendet zu werden.</p>
+            </div>
+            <div className="border-l-2 border-[oklch(0.52_0.24_260)] pl-4">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">3. Was passiert, wenn die Internetverbindung unterbrochen wird?</h4>
+              <p className="mt-2">Professionelle Systeme sind genau für diesen Fall ausgelegt. Sie verfügen über ein redundantes Übertragungskonzept (Dual-Path-Übertragung). Fällt das stationäre IP-Netzwerk aus, schaltet die Anlage ohne Verzögerung auf das integrierte LTE-Modul um (mit Roaming-SIM für höchste Netzverfügbarkeit). Die Leitstelle überwacht zudem die regelmäßigen Routine-Meldungen (Polling) der Anlage. Bleibt ein solches Lebenszeichen aus, wird sofort eine Störungsmeldung generiert.</p>
+            </div>
+            <div className="border-l-2 border-[oklch(0.52_0.24_260)] pl-4">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">4. Lassen sich Haustiere mit einer Alarmanlage vereinbaren?</h4>
+              <p className="mt-2">Ja, problemlos. Wir nutzen sogenannte &quot;tierimmune&quot; Bewegungsmelder. Diese arbeiten oft mit Dual-Technologie (Passiv-Infrarot gekoppelt mit Mikrowelle) und intelligenter Signalverarbeitung. Der Sensor ist in der Lage, die Masse und das Bewegungsmuster eines Hundes oder einer Katze (bis ca. 30 kg) von einem aufrecht gehenden Menschen zu unterscheiden. Alternativ können wir die Überwachung in Räumen mit Haustieren auf die Außenhaut (Fenster- und Türkontakte) beschränken, sodass das Tier sich im Raum frei bewegen kann.</p>
+            </div>
+            <div className="border-l-2 border-[oklch(0.52_0.24_260)] pl-4">
+              <h4 className="font-semibold text-[oklch(0.16_0.02_260)]">5. Wie hoch ist der Wartungsaufwand für eine komplexe Sicherheitsanlage?</h4>
+              <p className="mt-2">Die Anlage selbst ist äußerst wartungsarm, da sie permanente Eigendiagnosen durchführt (Batteriestand, Funkstreckenqualität, Sabotagekontakte). Für den Erhalt des Versicherungsschutzes und der VdS-Anerkennung ist jedoch eine jährliche Inspektion durch den Errichter vorgeschrieben. Dabei reinigen wir optische Sensoren, prüfen die Akkus der Zentrale (die alle 3-4 Jahre getauscht werden müssen), messen die Widerstandswerte der Melderlinien und simulieren einen Echt-Alarm, um die Kette bis zur Leitstelle zu verifizieren.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 max-w-4xl">
+          <SicherheitsAuditSimulator />
         </div>
       </Section>
 
