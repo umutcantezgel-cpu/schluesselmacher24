@@ -1,0 +1,4 @@
+
+
+## Architecture Targets Updated
+Blueprint ready for Next.js 16+, React 19.2+, Tailwind v4 OKLCH Light Mode.
