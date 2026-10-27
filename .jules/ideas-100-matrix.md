@@ -1,0 +1,109 @@
+# RED-TEAM PHILOSOPHER - 100 IDEAS MATRIX
+
+## KATEGORIE A: AWWWARDS-KINETIK & TAKTILE INTERAKTION (IDEEN 1 BIS 25)
+- IDEEN-001: Integration einer fluiden Bento-Grid-Animation für die Startseite-Hero-Sektion in src/app/(site)/page.tsx, mit gedämpfter Federphysik (framer-motion).
+- IDEEN-002: Hinzufügen von mikro-haptischen Feedback-Zuständen beim Hover über die Fahrzeugmarken in src/app/(site)/autoschluessel/marken/page.tsx.
+- IDEEN-003: Scroll-getriebene SVG-Pfadanimation für den Schlüssel-Fräsen-Prozess in src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx.
+- IDEEN-004: Taktile Button-Interaktionen mit OKLCH-Glow-Effekten für die Kategorieauswahl in src/app/(site)/schluessel-nach-code/page.tsx.
+- IDEEN-005: Fluid-Layout-Übergänge für die Artikel-Liste in src/app/(site)/artikel/artikel-liste.tsx mit View Transitions API.
+- IDEEN-006: Interaktive 3D-Drehung (via CSS-Transforms) der Schlüsselbilder in src/app/(site)/schluessel-nach-vorlage/page.tsx bei Cursor-Bewegung.
+- IDEEN-007: Implementierung eines magnetischen Cursors auf Call-to-Action-Buttons in src/app/(site)/service-und-termin/page.tsx.
+- IDEEN-008: Dynamisches, physikbasiertes Stacking-Layout für die FAQ-Akkordeons in src/app/(site)/ratgeber/page.tsx.
+- IDEEN-009: Parallax-Scroll-Effekte für die Hintergrundelemente der Elektronische-Zutrittslösungen-Seite (src/app/(site)/elektronische-zutrittsloesungen/page.tsx).
+- IDEEN-010: Visuelle Wellen-Effekte bei Klick auf die Standort-Karten in src/app/(site)/standorte/page.tsx.
+- IDEEN-011: Smooth-Reveal-Animationen für jedes Formularfeld in src/app/(site)/bestellung/[id]/jetzt-bezahlen.tsx.
+- IDEEN-012: Einblendung von Konfetti-ähnlichen Partikeln (als subtile OKLCH-Punkte) nach erfolgreicher Kontaktanfrage in src/app/(site)/service-und-termin/kontakt/page.tsx.
+- IDEEN-013: Kinetische Typografie-Übergänge für die Überschriften in src/app/(site)/rechtliches/datenschutz/page.tsx zur besseren Lesbarkeit.
+- IDEEN-014: Hover-induzierte Farbverläufe (oklch(0.988 0.002 260) Basis) für die Navigation in src/app/(site)/layout.tsx.
+- IDEEN-015: Dreidimensionale Schattenberechnung für die Produktkarten in src/app/(site)/schliessanlagen/page.tsx abhängig von der Scrollposition.
+- IDEEN-016: Interaktives Aufblättern (Flip-Book-Effekt) der AGB-Paragraphen in src/app/(site)/rechtliches/agb/page.tsx.
+- IDEEN-017: Morphing-Animation des Warenkorb-Icons bei Hinzufügen eines Artikels in src/app/(site)/warenkorb/page.tsx.
+- IDEEN-018: Elastische Band-Effekte beim Drag-and-Drop von Dateien im Upload-Bereich (falls vorhanden) in src/app/(site)/autoschluessel/anfrage/page.tsx.
+- IDEEN-019: Subtile Cursor-Trail-Effekte in der Fahrzeugöffnung-Ansicht (src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx).
+- IDEEN-020: Pulsierende Halo-Effekte um primäre Buttons in src/app/(site)/sicherheitstechnik/page.tsx.
+- IDEEN-021: Wackel-Animation (Shake) bei fehlerhafter Eingabe im Partner-Formular (src/app/(site)/partner-werden/partner-formular.tsx).
+- IDEEN-022: Dynamische Skalierung des Header-Logos beim Scrollen in src/app/(site)/layout.tsx.
+- IDEEN-023: Akkordeon-Aufklapp-Animation mit spring-physics in src/app/(site)/ratgeber/[slug]/page.tsx.
+- IDEEN-024: Verformung (Liquid-Hover) von Teaser-Bildern in src/app/(site)/artikel/page.tsx.
+- IDEEN-025: Fließende Farbadaption des Page-Hintergrunds basierend auf der dominanten Farbe des ausgewählten Schlüssels in src/app/(site)/schluessel-nach-code/[slug]/page.tsx.
+
+## KATEGORIE B: SEMANTISCHE AUTORITÄT & CONTENT-MAXIMIERUNG (IDEEN 26 BIS 50)
+- IDEEN-026: Ausbau des Inhalts in src/app/(site)/autoschluessel/page.tsx auf 850 Wörter, Fokus auf moderne Smart-Key-Technologien und Transponder-Sicherheit.
+- IDEEN-027: Integration einer tiefgehenden Vergleichsmatrix zwischen Gleichschließenden Zylindern und Schließanlagen in src/app/(site)/schliessanlagen/page.tsx (>800 Wörter).
+- IDEEN-028: Erweiterung der FAQ auf src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx um detaillierte rechtliche und technische Abläufe (900 Wörter).
+- IDEEN-029: Hinzufügen einer technischen Spezifikations-Sektion zu den Zutrittslösungen in src/app/(site)/elektronische-zutrittsloesungen/page.tsx.
+- IDEEN-030: Strukturierte Prozessschritte zum Ablauf der Schlüsselanfertigung in src/app/(site)/schluessel-nach-vorlage/page.tsx ergänzen (800 Wörter).
+- IDEEN-031: Vertiefung des Ratgebers zur Sicherheitstechnik in src/app/(site)/sicherheitstechnik/[slug]/page.tsx mit Experteninterviews (850 Wörter).
+- IDEEN-032: Detaillierte Fallstudien zu erfolgreichen Fahrzeugöffnungen in src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx integrieren.
+- IDEEN-033: Ausführliche Anleitung zur Identifikation von Schlüssel-Codes in src/app/(site)/schluessel-nach-code/page.tsx (800 Wörter).
+- IDEEN-034: Technische Hintergrundinformationen zum Fräsprozess in src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx hinzufügen.
+- IDEEN-035: Erweiterung der Tür- und Schließtechnik-Seite (src/app/(site)/tuer-und-schliesstechnik/page.tsx) um Materialkunde und DIN-Normen (850 Wörter).
+- IDEEN-036: Einbinden eines historischen Rückblicks zur Entwicklung von Autoschlüsseln in src/app/(site)/autoschluessel/funkschluessel/page.tsx.
+- IDEEN-037: Detaillierte Erklärung der Verschlüsselungsstandards (z.B. AES) bei Smart-Keys in src/app/(site)/autoschluessel/smart-key/page.tsx.
+- IDEEN-038: Umfangreiche Vorstellung der Partner-Vorteile in src/app/(site)/partner-werden/page.tsx (800 Wörter).
+- IDEEN-039: Integration von Pflegehinweisen für Schließanlagen in src/app/(site)/schliessanlagen/page.tsx.
+- IDEEN-040: Erweiterte Erklärung des Bestellablaufs für gleichschließende Zylinder in src/app/(site)/gleichschliessende-zylinder/page.tsx (850 Wörter).
+- IDEEN-041: Hinzufügen von Glossar-Begriffen zur Sicherheitstechnik am Ende von src/app/(site)/sicherheitstechnik/page.tsx.
+- IDEEN-042: Detaillierte Beschreibung der lokalen Einsatzgebiete in den Standort-Seiten (src/app/(site)/standorte/[city]/page.tsx) auf 800 Wörter erweitern.
+- IDEEN-043: Fachliche Vertiefung der Kriterien für elektronische Zutrittskontrollen in src/app/(site)/elektronische-zutrittsloesungen/page.tsx.
+- IDEEN-044: Ausführliche Darstellung der rechtlichen Grundlagen zur Schlüsselkopie in src/app/(site)/rechtliches/agb/page.tsx (erklärende Boxen).
+- IDEEN-045: Erstellung einer strukturierten Fehlerbehebungs-Checkliste für defekte Funkschlüssel in src/app/(site)/autoschluessel/funkschluessel/page.tsx.
+- IDEEN-046: Hinzufügen einer detaillierten Packanleitung für das Einschicken von Schlüsseln in src/app/(site)/schluessel-einschicken/page.tsx (850 Wörter).
+- IDEEN-047: Vertiefende Analyse der gängigen Sicherheitsklassen bei Zylindern in src/app/(site)/gleichschliessende-zylinder/page.tsx.
+- IDEEN-048: Erweiterung der Über-Uns / Impressum Seite um die Firmenhistorie und Philosophie in src/app/(site)/rechtliches/impressum/page.tsx.
+- IDEEN-049: Detaillierte Erklärung der Zahlungsmöglichkeiten und deren Sicherheit in src/app/(site)/rechtliches/versand-und-zahlung/page.tsx (800 Wörter).
+- IDEEN-050: Umfassende Darstellung der Datenschutzmaßnahmen bei Kundendaten in src/app/(site)/rechtliches/datenschutz/page.tsx.
+
+## KATEGORIE C: CONVERSION-PSYCHOLOGIE & NATIVE WERKZEUGE (IDEEN 51 BIS 75)
+- IDEEN-051: Interaktiver Sicherheits-Score-Kalkulator (React 19 Server Actions) in src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx.
+- IDEEN-052: ROI-Rechner für Unternehmen zur Umrüstung auf elektronische Zutrittslösungen in src/app/(site)/elektronische-zutrittsloesungen/page.tsx.
+- IDEEN-053: Dynamischer Preis-Schätzer für Autoschlüssel-Nachmachen in src/app/(site)/autoschluessel/nachmachen/page.tsx.
+- IDEEN-054: Vorher-Nachher-Slider (visuell) für aufbereitete Schlüssel in src/app/(site)/autoschluessel/kopieren/page.tsx.
+- IDEEN-055: Interaktives Trust-Badge-Karussell (Swiss Light Style) in src/app/(site)/page.tsx zur Steigerung der Conversion.
+- IDEEN-056: Intelligenter Filter-Assistent zur Findung des passenden Schließzylinders in src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx.
+- IDEEN-057: Schritt-für-Schritt Budgetplaner für komplexe Schließanlagen in src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx.
+- IDEEN-058: Progressions-Balken mit psychologischem Feedback während des Checkout-Prozesses in src/app/(site)/kasse/kasse-formular.tsx.
+- IDEEN-059: Live-Verfügbarkeits-Indikator für Termine vor Ort in src/app/(site)/service-und-termin/vor-ort/page.tsx.
+- IDEEN-060: Gamifizierter Schlüssel-Code-Finder, der Kunden durch Fragen zum richtigen Code leitet in src/app/(site)/schluessel-nach-code/page.tsx.
+- IDEEN-061: Countdown-Timer für Express-Zustellungs-Optionen bei Bestellung in src/app/(site)/bestellung/[id]/jetzt-bezahlen.tsx.
+- IDEEN-062: Dynamische Anzeige von 'X Personen betrachten gerade diesen Service' (simuliert/lokal) in src/app/(site)/autoschluessel/anfrage/page.tsx.
+- IDEEN-063: Interaktives Diagnose-Tool für defekte Schlüssel (Schritt-für-Schritt Entscheidungsbaum) in src/app/(site)/autoschluessel/funkschluessel/page.tsx.
+- IDEEN-064: Visualisierung der Ersparnis im Vergleich zur Vertragswerkstatt als interaktives Diagramm in src/app/(site)/autoschluessel/page.tsx.
+- IDEEN-065: Einbindung von verifizierten, klickbaren Kundenbewertungs-Modulen (Rich Snippets fähig) in src/app/(site)/page.tsx.
+- IDEEN-066: Konfigurierbares Wartungsvertrags-Modul für Partner in src/app/(site)/partner-werden/partner-formular.tsx.
+- IDEEN-067: Interaktive Karte zur Visualisierung des Einzugsgebiets für mobile Dienste in src/app/(site)/service-und-termin/vor-ort/page.tsx.
+- IDEEN-068: Tool zur Fotobewertung (Vorab-Check via KI-Mockup) beim Upload in src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx.
+- IDEEN-069: Dynamische Empfehlungs-Engine für passendes Zubehör (z.B. Schlüsselanhänger) im Warenkorb (src/app/(site)/warenkorb/warenkorb-ansicht.tsx).
+- IDEEN-070: Quiz-Format 'Welcher Schließanlagen-Typ bist du?' in src/app/(site)/ratgeber/page.tsx.
+- IDEEN-071: Interaktiver Schließplan-Generator (Drag & Drop) als Vorstufe zur Anfrage in src/app/(site)/schliessanlagen/konfigurator/page.tsx.
+- IDEEN-072: Rechner für die Amortisationszeit elektronischer Systeme (ROI) in src/app/(site)/elektronische-zutrittsloesungen/page.tsx.
+- IDEEN-073: Dynamisches Formular für den Widerruf, das auf Basis der Bestellnummer Felder vorausfüllt in src/app/(site)/rechtliches/widerruf/erklaeren/widerruf-formular.tsx.
+- IDEEN-074: Interaktives Dashboard für den Terminstatus mit Status-Zeitachse in src/app/(site)/service-und-termin/terminstatus/status-formular.tsx.
+- IDEEN-075: Live-Chatbot Mockup (als UI-Komponente) zur Erstberatung in src/app/(site)/layout.tsx (unten rechts).
+
+## KATEGORIE D: EXTREME PERFORMANCE, ARCHITEKTUR & DX (IDEEN 76 BIS 100)
+- IDEEN-076: Migration kritischer Daten-Abfragen in src/app/(site)/page.tsx auf Next.js 16 'use cache' zur maximalen Memoisierung.
+- IDEEN-077: Umstellung der Grid-Layouts in src/app/(site)/autoschluessel/marken/page.tsx auf CSS Subgrid zur perfekten vertikalen Ausrichtung.
+- IDEEN-078: Implementierung von @container Queries für hochgradig responsive Artikel-Karten in src/app/(site)/artikel/artikel-liste.tsx.
+- IDEEN-079: Integration einer AVIF-Hero-Pipeline mit next/image für minimale Ladezeiten in src/app/(site)/page.tsx.
+- IDEEN-080: Optimierung der Webfonts mit next/font und zero-shift Strategie (size-adjust) in src/app/(site)/layout.tsx.
+- IDEEN-081: Lazy-Loading von schweren interaktiven Komponenten (wie Konfiguratoren) mit next/dynamic in src/app/(site)/schliessanlagen/konfigurator/page.tsx.
+- IDEEN-082: Reduzierung der CSS-Bundle-Größe durch strikte Tailwind v4 Purge-Regeln und Utility-Klassen in src/app/(site)/globals.css.
+- IDEEN-083: Implementierung von Preloading-Strategien (rel=preload) für LCP-relevante Hero-Bilder in src/app/(site)/autoschluessel/page.tsx.
+- IDEEN-084: Verwendung von React 19 useOptimistic für das direkte UI-Feedback im Warenkorb (src/app/(site)/warenkorb/warenkorb-ansicht.tsx).
+- IDEEN-085: Entfernung ungenutzter Client-Side JavaScript-Bibliotheken (Moment.js ersetzen durch date-fns) in src/app/(site)/bestellung/[id]/page.tsx.
+- IDEEN-086: Implementierung einer stabilen Error-Boundary-Architektur für ausfallsichere UI in src/app/(site)/error.tsx.
+- IDEEN-087: Serverseitiges Rendering (SSR) mit Streaming (Suspense) für langsame API-Aufrufe bei den Artikeln in src/app/(site)/artikel/[slug]/page.tsx.
+- IDEEN-088: Caching der Hersteller-Daten in src/app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx mit React cache().
+- IDEEN-089: Optimierung der LCP (Largest Contentful Paint) durch Inline-Critical-CSS in src/app/(site)/layout.tsx.
+- IDEEN-090: Reduktion der DOM-Tiefe (Flattening) der Navigations-Komponente in src/app/(site)/layout.tsx.
+- IDEEN-091: Nutzung von server-only Modulen zur Verhinderung versehentlicher Geheimnis-Leaks in src/app/(site)/api/zahlung/stripe/route.ts.
+- IDEEN-092: Prefetching von wahrscheinlichen Folgeseiten beim Hover über Navigationslinks in src/app/(site)/layout.tsx.
+- IDEEN-093: Implementierung von Strict Content Security Policy (CSP) Headern in der next.config.mjs.
+- IDEEN-094: Reduzierung der Hydration-Mismatch Risiken durch strikte Überprüfung von typeof window Guard in src/app/(site)/rechtliches/cookie-einstellungen/cookie-einstellungen.tsx.
+- IDEEN-095: Aggressive Bild-Optimierung (quality=75, format=avif) für alle Teaser-Bilder in src/app/(site)/ratgeber/page.tsx.
+- IDEEN-096: Implementierung von Route Handlern mit Edge Runtime für ultraschnelle API-Antworten in src/app/(site)/api/zahlung/rueckkehr/route.ts.
+- IDEEN-097: Optimierung der SEO-Metadaten Generierung mit generateMetadata zur Laufzeit in src/app/(site)/artikel/[slug]/page.tsx.
+- IDEEN-098: Verwendung von CSS content-visibility: auto für Sektionen weiter unten auf der Seite (z.B. FAQ) in src/app/(site)/page.tsx.
+- IDEEN-099: Umbau der Formular-Validierung auf zod + react-hook-form mit Server Actions zur nahtlosen DX in src/app/(site)/service-und-termin/anfrage/anfrage-formular.tsx.
+- IDEEN-100: Entfernung von toten Event-Handlern und Konsolidierung der Status-Verwaltung in src/app/(site)/kasse/kasse-formular.tsx.
