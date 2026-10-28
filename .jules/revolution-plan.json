@@ -1,0 +1,1280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-28T09:28:11.024449Z",
+  "total_existing_routes": 55,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "src/app/(payload)/admin/[[...segments]]",
+      "source_file": "app/(payload)/admin/[[...segments]]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr src/app/(payload)/admin/[[...segments]]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/ratgeber",
+      "source_file": "app/(site)/ratgeber/page.tsx",
+      "target_word_count": 911,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /ratgeber",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 1450,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /ratgeber/[slug]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /schluessel-nach-vorlage/anfrage",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 3170,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /schluessel-nach-vorlage",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/[...unbekannt]",
+      "source_file": "app/(site)/[...unbekannt]/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /[...unbekannt]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/warenkorb",
+      "source_file": "app/(site)/warenkorb/page.tsx",
+      "target_word_count": 931,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /warenkorb",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/kasse",
+      "source_file": "app/(site)/kasse/page.tsx",
+      "target_word_count": 1013,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /kasse",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 1724,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /schluessel-nach-code",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CODE_VALIDATOR",
+        "component_name": "KeyCodeValidator",
+        "target_file": "components/schluessel-nach-code/key-code-validator.tsx",
+        "action_file": "actions/validate-code.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 2102,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /schluessel-nach-code/[slug]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CODE_VALIDATOR",
+        "component_name": "KeyCodeValidator",
+        "target_file": "components/schluessel-nach-code/key-code-validator.tsx",
+        "action_file": "actions/validate-code.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/schluessel-nach-code/hersteller/[hersteller]",
+      "source_file": "app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx",
+      "target_word_count": 1023,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /schluessel-nach-code/hersteller/[hersteller]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CODE_VALIDATOR",
+        "component_name": "KeyCodeValidator",
+        "target_file": "components/schluessel-nach-code/key-code-validator.tsx",
+        "action_file": "actions/validate-code.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/schluessel-nach-code/kategorie/[familie]",
+      "source_file": "app/(site)/schluessel-nach-code/kategorie/[familie]/page.tsx",
+      "target_word_count": 1095,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /schluessel-nach-code/kategorie/[familie]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CODE_VALIDATOR",
+        "component_name": "KeyCodeValidator",
+        "target_file": "components/schluessel-nach-code/key-code-validator.tsx",
+        "action_file": "actions/validate-code.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/",
+      "source_file": "app/(site)/page.tsx",
+      "target_word_count": 3664,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "EnterpriseRoiCalculator",
+        "target_file": "components/calculator/enterprise-roi-calculator.tsx",
+        "action_file": "actions/calculate-roi.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 2291,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /sicherheitstechnik",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "SECURITY_AUDIT_TOOL",
+        "component_name": "SecurityAuditChecklist",
+        "target_file": "components/sicherheitstechnik/security-audit-checklist.tsx",
+        "action_file": "actions/audit-security.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 1452,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /sicherheitstechnik/[slug]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "SECURITY_AUDIT_TOOL",
+        "component_name": "SecurityAuditChecklist",
+        "target_file": "components/sicherheitstechnik/security-audit-checklist.tsx",
+        "action_file": "actions/audit-security.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 941,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /sicherheitstechnik/sicherheitscheck",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "SECURITY_AUDIT_TOOL",
+        "component_name": "SecurityAuditChecklist",
+        "target_file": "components/sicherheitstechnik/security-audit-checklist.tsx",
+        "action_file": "actions/audit-security.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/partner-werden",
+      "source_file": "app/(site)/partner-werden/page.tsx",
+      "target_word_count": 1366,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /partner-werden",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/schluessel-einschicken",
+      "source_file": "app/(site)/schluessel-einschicken/page.tsx",
+      "target_word_count": 1792,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /schluessel-einschicken",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 3293,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /tuer-und-schliesstechnik",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1192,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /tuer-und-schliesstechnik/[slug]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/bestellung/[id]",
+      "source_file": "app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 2775,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /bestellung/[id]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 3776,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /gleichschliessende-zylinder",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 876,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /gleichschliessende-zylinder/konfigurator",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 3695,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /elektronische-zutrittsloesungen",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 954,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /elektronische-zutrittsloesungen/konfigurator",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/schliessanlagen",
+      "source_file": "app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 2887,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /schliessanlagen",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 942,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /schliessanlagen/konfigurator",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /service-und-termin/terminstatus",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /service-und-termin/anfrage",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/service-und-termin",
+      "source_file": "app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 3398,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /service-und-termin",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1466,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /service-und-termin/vor-ort",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1402,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /service-und-termin/kontakt",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /rechtliches/impressum",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 912,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /rechtliches/cookie-einstellungen",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /rechtliches/versand-und-zahlung",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1101,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /rechtliches/widerruf",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/rechtliches/widerruf/erklaeren",
+      "source_file": "app/(site)/rechtliches/widerruf/erklaeren/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /rechtliches/widerruf/erklaeren",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/rechtliches/agb",
+      "source_file": "app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /rechtliches/agb",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /rechtliches/datenschutz",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/artikel",
+      "source_file": "app/(site)/artikel/page.tsx",
+      "target_word_count": 1470,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /artikel",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/artikel/[slug]",
+      "source_file": "app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1885,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /artikel/[slug]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/standorte",
+      "source_file": "app/(site)/standorte/page.tsx",
+      "target_word_count": 1050,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /standorte",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/standorte/[city]",
+      "source_file": "app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1567,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /standorte/[city]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "GENERIC_INTERACTIVE_FILTER",
+        "component_name": "ContentFilter",
+        "target_file": "components/ui/content-filter.tsx",
+        "action_file": "actions/filter-content.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1437,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/marken",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 3783,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/marken/[make]/[model]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 2232,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/marken/[make]",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1451,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/funkschluessel",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1571,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/programmieren",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1119,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/anfrage",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/autoschluessel",
+      "source_file": "app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 3464,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1506,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/kopieren",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1547,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/nachmachen",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1560,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/smart-key",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1408,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/schluesselbart-fraesen",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 55,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1494,
+      "content_expansion_topics": [
+        "Tiefgreifende fachliche Analyse f\u00fcr /autoschluessel/fahrzeugoeffnung",
+        "Umfassende Spezifikationen und Leistungsmerkmale",
+        "Detaillierte FAQ mit mindestens 6 strukturierten Fragen"
+      ],
+      "interactive_module": {
+        "type": "VEHICLE_SELECTOR",
+        "component_name": "VehicleKeyConfigurator",
+        "target_file": "components/autoschluessel/vehicle-key-configurator.tsx",
+        "action_file": "actions/configure-key.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# SCHLÜSSELMACHER24 - Architecture and DNA
+This project uses Next.js 16+ App Router, React 19.2+, TypeScript 5.5+ Strict, and Tailwind CSS v4.
+All components follow the Swiss High-End Light Mode Design Doctrine (OKLCH Color Space).
+
+See `.jules/revolution-plan.json` and `.jules/architecture-matrix.md` for the full audit.
