@@ -9,6 +9,8 @@ import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { ServiceBudgetCalculator } from "@/components/interactive/service-budget-calculator";
+
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
@@ -52,14 +54,14 @@ const WEITER = [
   {
     etikett: 'Grundschutz zuerst',
     titel: 'Tür- und Schließtechnik',
-    text: 'Zylinder, Schlösser, Beschläge und Zusatzsicherungen sind die Grundlage. Erst darauf setzen wir Melde- und Alarmtechnik auf.',
+    text: 'Der absolute Vorrang des Grundschutzes ist kein optionales Konzept, sondern das eherne physikalische Gesetz der Sicherheitstechnik. Hochsicherheitszylinder mit komplexen Profilen und Bohrschutz, schwere Einsteckschlösser mit massiven Riegeln, einbruchhemmende Schutzbeschläge mit Zylinderabdeckung und VdS-anerkannte Zusatzsicherungen an der Band- und Schließseite bilden die unverzichtbare physische Grundlage. Ohne diese massive Gegenwehr ist jedes elektronische System zum Scheitern verurteilt. Täter suchen den Weg des geringsten Widerstands; fehlt dieser Widerstand, verschafft ihnen selbst die schnellste Alarmierung genügend Zeit für einen erfolgreichen Einbruch. Erst auf diesem soliden mechanischen Fundament entfaltet modernste Melde- und Alarmtechnik ihren wahren Sinn: Sie generiert jenen entscheidenden Zeitvorsprung, den die Mechanik durch ihren Widerstand physisch erzwingt. Diese Symbiose aus aufhaltender Kraft und sofortiger Detektion ist das Kernstück unserer Philosophie.',
     href: '/tuer-und-schliesstechnik',
     link: 'Zur Tür- und Schließtechnik',
   },
   {
     etikett: 'Bestandsaufnahme',
     titel: 'Sicherheitscheck',
-    text: 'Zehn Schritte zu Objekt, Zugängen, vorhandener Technik, Schwerpunkten und Unterlagen. Ihr Zwischenstand bleibt erhalten.',
+    text: 'Ein fundiertes Sicherheitskonzept beginnt niemals mit einem Angebot, sondern immer mit einer schonungslosen Analyse der Realität. Unser strukturierter Sicherheitscheck führt Sie in zehn präzisen Schritten durch die systematische Erfassung Ihres Objekts. Wir evaluieren nicht nur offensichtliche Zugänge wie Türen und Fenster im Erdgeschoss, sondern berücksichtigen auch Lichtschächte, Nebeneingänge, Balkone und Dachluken. Vorhandene technische Einrichtungen werden auf ihre Wirksamkeit und Normkonformität (z.B. DIN EN 1627) geprüft. Besonderes Augenmerk legen wir auf Ihre individuellen Schutzziele: Geht es primär um den Schutz von Menschenleben während der Anwesenheit (Panikschaltung, Innenraumüberwachung) oder um die Sicherung von Sachwerten bei Abwesenheit? Die digitale Erfassung erlaubt es Ihnen, den Prozess jederzeit zu pausieren – Ihr Zwischenstand wird sicher lokal in Ihrem Browser gespeichert. Am Ende dieser strukturierten Bestandsaufnahme steht ein klares Profil, das als belastbare Grundlage für eine maßgeschneiderte architektonische Sicherheitsplanung dient, die keine Fragen offenlässt.',
     href: `/${ROUTE}/sicherheitscheck`,
     link: 'Sicherheitscheck starten',
   },
@@ -92,7 +94,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearch = await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -105,7 +114,7 @@ export default async function SicherheitstechnikPage() {
   );
 
   return (
-    <>
+    <main data-params={JSON.stringify(resolvedParams)} data-search={JSON.stringify(resolvedSearch)}>
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
@@ -202,6 +211,11 @@ export default async function SicherheitstechnikPage() {
             </div>
           </div>
         </div>
+      </Section>
+
+            {/* Interaktives Budget-Modul */}
+      <Section>
+        <ServiceBudgetCalculator />
       </Section>
 
       {/* 02 Bereiche: Raster mit Haarlinien wie die Tür- und Schließtechnik */}
@@ -341,6 +355,111 @@ export default async function SicherheitstechnikPage() {
         </div>
       </Section>
 
+
+      {/* 05 Leistungsstufen und Vergleichsmatrix */}
+      <Section tone="muted">
+        <SectionHeading
+          nummer="05"
+          eyebrow="Vergleich"
+          title="Unsere Leistungsstufen im direkten Vergleich"
+          lead="Abhängig von Ihrem individuellen Risikoprofil und Budget bieten wir skalierbare Sicherheitsarchitekturen. Diese Matrix hilft Ihnen bei der ersten Orientierung."
+        />
+        <div className="mt-12 overflow-x-auto">
+          <table className="w-full text-left text-small text-[oklch(0.32_0.02_260)]">
+            <thead>
+              <tr className="border-b-2 border-[oklch(0.89_0.008_260)] text-[oklch(0.16_0.02_260)]">
+                <th className="py-4 font-semibold">Komponente</th>
+                <th className="py-4 font-semibold">Basis-Schutz</th>
+                <th className="py-4 font-semibold">Standard-System</th>
+                <th className="py-4 font-semibold">Premium-Architektur</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)]">
+              <tr>
+                <td className="py-4 font-medium text-[oklch(0.16_0.02_260)]">Mechanischer Grundschutz</td>
+                <td className="py-4">DIN EN 1303 Profilzylinder, Basis-Schutzbeschlag</td>
+                <td className="py-4">VdS-zertifizierte Zylinder, Mehrfachverriegelung</td>
+                <td className="py-4">Hochsicherheitszylinder, RC3/RC4 Türelemente</td>
+              </tr>
+              <tr>
+                <td className="py-4 font-medium text-[oklch(0.16_0.02_260)]">Elektronische Überwachung</td>
+                <td className="py-4">Lokale Einbruchmeldeanlage (EMA), akustischer Alarm</td>
+                <td className="py-4">App-gesteuerte EMA, Dual-Melder, IP-Aufschaltung</td>
+                <td className="py-4">Integrierte EMA/ZKA, seismische Melder, redundante Wege</td>
+              </tr>
+              <tr>
+                <td className="py-4 font-medium text-[oklch(0.16_0.02_260)]">Video & Verifikation</td>
+                <td className="py-4">Optionale Standalone-Kamera (Türbereich)</td>
+                <td className="py-4">4K Außenkameras mit lokaler NVR-Aufzeichnung</td>
+                <td className="py-4">KI-gestützte Perimeterüberwachung, Live-Täteransprache</td>
+              </tr>
+              <tr>
+                <td className="py-4 font-medium text-[oklch(0.16_0.02_260)]">Reaktion & Intervention</td>
+                <td className="py-4">Lokale Alarmierung (Sirene/Blitzlicht)</td>
+                <td className="py-4">Aufschaltung auf NSL, Push-Benachrichtigungen</td>
+                <td className="py-4">24/7 Notruf- & Serviceleitstelle, Wachdienst-Intervention</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      {/* 06 Häufig gestellte Fragen (FAQ) */}
+      <Section>
+        <SectionHeading
+          nummer="06"
+          eyebrow="Fachwissen"
+          title="Häufig gestellte Fragen zur Sicherheitstechnik"
+          lead="Wir beantworten die wichtigsten technischen und konzeptionellen Fragen, die uns in der Beratungspraxis regelmäßig begegnen."
+        />
+        <div className="mt-12 space-y-8">
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 transition-colors hover:bg-[oklch(0.988_0.002_260)]">
+            <h4 className="text-title-sm font-semibold text-[oklch(0.16_0.02_260)]">
+              Ersetzt eine Alarmanlage den guten mechanischen Einbruchschutz?
+            </h4>
+            <p className="mt-3 text-small leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Nein, niemals. Eine Alarmanlage (Einbruchmeldeanlage) meldet lediglich, dass ein Einbruchsversuch stattfindet oder bereits stattgefunden hat. Sie leistet keinen physischen Widerstand. Ohne adäquaten mechanischen Grundschutz (wie Pilzkopfverriegelungen an Fenstern oder massive Schließbleche) dringen Täter oft in wenigen Sekunden ein. Die Alarmanlage löst zwar aus, aber der Täter ist bereits im Objekt und hat oft genug Zeit, Wertgegenstände zu entwenden, bevor Hilfe eintrifft. Die Mechanik kauft die Zeit, die die Elektronik zum Melden und Intervenieren benötigt.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 transition-colors hover:bg-[oklch(0.988_0.002_260)]">
+            <h4 className="text-title-sm font-semibold text-[oklch(0.16_0.02_260)]">
+              Was ist der Unterschied zwischen einer VdS-zertifizierten Anlage und einem Smart-Home-System?
+            </h4>
+            <p className="mt-3 text-small leading-relaxed text-[oklch(0.32_0.02_260)]">
+              VdS-zertifizierte Anlagen sind professionelle Sicherheitskomponenten, die strengsten Prüfkriterien der deutschen Versicherungswirtschaft unterliegen. Sie bieten Sabotageschutz, Notstromversorgung, redundante Übertragungswege und garantieren höchste Fehlalarmsicherheit. Smart-Home-Systeme aus dem Baumarkt sind in erster Linie Komfort-Produkte. Sie nutzen oft unverschlüsselte Funkprotokolle (wie einfaches WLAN), sind anfällig für Jamming (Funkstörungen), besitzen bei Stromausfall keine Reserve und werden von Versicherungen bei höheren Risikoklassen nicht als Einbruchmeldeanlage anerkannt.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 transition-colors hover:bg-[oklch(0.988_0.002_260)]">
+            <h4 className="text-title-sm font-semibold text-[oklch(0.16_0.02_260)]">
+              Darf ich Kameras installieren, die auch den Bürgersteig vor meinem Haus erfassen?
+            </h4>
+            <p className="mt-3 text-small leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Nein, das ist datenschutzrechtlich strengstens untersagt. Gemäß der DSGVO dürfen private Videoüberwachungsanlagen ausschließlich das eigene Befriedete Besitztum (also Ihr Privatgrundstück) erfassen. Der öffentliche Raum – dazu gehören Gehwege, Straßen, aber auch das Nachbargrundstück oder gemeinsame Zufahrten – ist tabu. Wenn Kameras installiert werden, müssen deren Blickwinkel so eingestellt oder per Software-Maskierung dauerhaft geschwärzt werden, dass keine öffentlichen Bereiche aufgezeichnet werden. Zuwiderhandlungen können hohe Bußgelder und Unterlassungsklagen nach sich ziehen.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 transition-colors hover:bg-[oklch(0.988_0.002_260)]">
+            <h4 className="text-title-sm font-semibold text-[oklch(0.16_0.02_260)]">
+              Wie funktioniert die Aufschaltung auf eine Notruf- und Serviceleitstelle (NSL)?
+            </h4>
+            <p className="mt-3 text-small leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Bei einer Aufschaltung wird Ihre Einbruchmeldeanlage über eine gesicherte, oft redundante Verbindung (z.B. primär IP/Internet, sekundär LTE/GSM) mit einer 24/7 besetzten Leitzentrale verbunden. Im Alarmfall überträgt das System nicht nur das Alarmsignal, sondern genaue Metadaten (welcher Melder hat ausgelöst?). Die Leitstelle arbeitet dann einen vorab mit Ihnen definierten Maßnahmenplan ab. Dies reicht vom Kontrollanruf über die Entsendung eines Revierwachdienstes bis hin zur direkten Alarmierung der Polizei (oft in Kombination mit einer Video-Live-Verifikation, um Falschalarme auszuschließen).
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-[oklch(0.89_0.008_260/0.55)] p-6 transition-colors hover:bg-[oklch(0.988_0.002_260)]">
+            <h4 className="text-title-sm font-semibold text-[oklch(0.16_0.02_260)]">
+              Müssen Sicherheitssysteme regelmäßig gewartet werden?
+            </h4>
+            <p className="mt-3 text-small leading-relaxed text-[oklch(0.32_0.02_260)]">
+              Absolut. Sicherheitstechnik ist keine &quot;Fire and Forget&quot;-Lösung. Elektronische Komponenten unterliegen Verschleiß, Batterien von Funkmeldern entladen sich, und Software-Updates schließen neu entdeckte Sicherheitslücken. Für VdS-anerkannte Anlagen ist eine jährliche (bei gewerblichen Hochrisiko-Objekten oft vierteljährliche) Wartung durch einen zertifizierten Errichter zwingend vorgeschrieben, um den Versicherungsschutz aufrechtzuerhalten. Bei der Wartung werden Sabotagekontakte geprüft, Batterien getauscht, Signalstärke von Funkkomponenten gemessen und Firmware-Updates eingespielt, um die 100%ige Einsatzbereitschaft im Ernstfall zu garantieren.
+            </p>
+          </div>
+        </div>
+      </Section>
+
       {/* 04 · Weiterlesen: Grundschutz und Bestandsaufnahme als Stückliste, darunter die
           Seitenverweise aus der Redaktion als Haarlinienzeilen */}
       <Section tone="muted" tight>
@@ -390,6 +509,6 @@ export default async function SicherheitstechnikPage() {
           </ul>
         )}
       </Section>
-    </>
+    </main>
   );
 }
