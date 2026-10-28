@@ -1,0 +1,3 @@
+
+# Architecture Blueprint Sync
+Metadata synced by JC-AUDITOR-ARCHITECT-v1.
