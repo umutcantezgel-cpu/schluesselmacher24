@@ -1,0 +1,8 @@
+{
+  "timestamp": "2024-10-28T07:48:00Z",
+  "target_route": "src/app/(site)/sicherheitstechnik/page.tsx",
+  "interactive_module_name": "Sicherheitstechnik-Kalkulator",
+  "interactive_module_component": "src/components/sicherheitstechnik/budget-calculator.tsx",
+  "action_file": "src/actions/calculate-sicherheitstechnik.ts",
+  "status": "COMPLETED_BY_BUILDER"
+}

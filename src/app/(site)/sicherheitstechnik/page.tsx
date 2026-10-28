@@ -14,6 +14,7 @@ import { BereichIcon } from '@/components/visual/bereich-icon';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { ServiceBudgetCalculator } from '@/components/sicherheitstechnik/budget-calculator';
 import { IconAlarmtechnik } from '@/components/visual/icons/alarmtechnik';
 import { IconAussenhautsicherung } from '@/components/visual/icons/aussenhautsicherung';
 import { IconKombinierteKonzepte } from '@/components/visual/icons/kombinierte-konzepte';
@@ -337,6 +338,75 @@ export default async function SicherheitstechnikPage() {
                 Hinweise zum Datenschutz
               </Link>
             </p>
+          </div>
+        </div>
+      </Section>
+
+
+      {/* Fachliche Erweiterung (Phase 1) und Interaktives Modul (Phase 2) */}
+      <Section id="architektur-und-methodik" tone="muted">
+        <SectionHeading
+          nummer="05"
+          eyebrow="Architektur & Methodik"
+          title="Unsere Methodik für hochsichere Gebäudeinfrastruktur"
+          lead="Eine belastbare Sicherheitsarchitektur entsteht nicht durch das wahllose Aneinanderreihen von Technik, sondern durch ein tiefes Verständnis für das Objekt und seine Schutzziele."
+        />
+
+        <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-7 space-y-6 text-[oklch(0.32_0.02_260)] leading-relaxed">
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)]">Der Zwiebelschalenansatz (Defense in Depth)</h3>
+            <p>
+              In der modernen Sicherheitstechnik arbeiten wir nach dem Prinzip der gestaffelten Verteidigung.
+              Dies bedeutet, dass ein potenzieller Angreifer nicht nur eine einzige, sondern mehrere unabhängige
+              Barrieren überwinden muss. Die äußerste Schicht bildet oft eine intelligente Videoüberwachung mit
+              Perimeterschutz, gefolgt von einer soliden mechanischen Absicherung der Gebäudehülle. Die innerste
+              Schicht schützt schließlich sensible Kernbereiche durch biometrische Zutrittskontrollsysteme und
+              verschlüsselte Alarmtechnik.
+            </p>
+
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Integration statt Isolation</h3>
+            <p>
+              Ein häufiger Fehler bei der Planung von Sicherheitsanlagen ist die isolierte Betrachtung einzelner
+              Gewerke. Eine Alarmanlage, die nicht mit der Zutrittskontrolle kommuniziert, führt zu Fehlalarmen
+              und verkompliziert die Bedienung im Alltag. Unsere Architekturen setzen auf offene Protokolle
+              (wie OSDP für Leser oder ONVIF für Kameras) und zentrale Managementsysteme. So wird beispielsweise
+              bei einer scharfgeschalteten Einbruchmeldeanlage die Haupttür automatisch doppelt verriegelt und
+              die Heizung abgesenkt.
+            </p>
+
+            <h3 className="text-xl font-bold text-[oklch(0.16_0.02_260)] mt-8">Häufig gestellte Fragen (FAQ)</h3>
+            <div className="space-y-4">
+              <div>
+                <strong className="text-[oklch(0.16_0.02_260)]">1. Wie lange dauert die Installation einer vernetzten Sicherheitsanlage?</strong>
+                <p>Die reine Installationszeit vor Ort beträgt meist nur wenige Tage. Entscheidend ist die Planungsphase vorab, in der wir Kabelwege, Netzwerksegmentierung und die Konfiguration der Schnittstellen definieren. Bei Bestandsgebäuden setzen wir auf modernste Hybrid-Systeme, die kabelgebundene und funkbasierte Komponenten sicher vereinen.</p>
+              </div>
+              <div>
+                <strong className="text-[oklch(0.16_0.02_260)]">2. Ist die Technik gegen Stromausfall gesichert?</strong>
+                <p>Ja, alle kritischen Systeme – insbesondere Brandmelde-, Einbruchmelde- und Zutrittskontrollanlagen – verfügen über normgerechte Notstromakkus. Diese überbrücken Netzausfälle gemäß VdS-Richtlinien meist für 12 bis 60 Stunden, je nach Risikoklasse.</p>
+              </div>
+              <div>
+                <strong className="text-[oklch(0.16_0.02_260)]">3. Welche Folgekosten entstehen durch Wartung?</strong>
+                <p>Eine professionelle Anlage erfordert eine regelmäßige Wartung (meist jährlich), um die Funktion von Batterien, Sensoren und mechanischen Bauteilen zu gewährleisten. Kalkulieren Sie grob mit 3-5% der Investitionssumme pro Jahr für Wartung und Firmware-Updates.</p>
+              </div>
+              <div>
+                <strong className="text-[oklch(0.16_0.02_260)]">4. Kann ich das System über eine App steuern?</strong>
+                <p>Moderne Anlagen bieten verschlüsselte App-Zugriffe (AES-256) über sichere Cloud-Dienste der Hersteller oder via VPN. Wir konfigurieren diese Zugänge so, dass Komfort und höchste IT-Sicherheit keinen Widerspruch bilden.</p>
+              </div>
+              <div>
+                <strong className="text-[oklch(0.16_0.02_260)]">5. Was passiert bei Fehlalarmen?</strong>
+                <p>Durch die von uns geplante Zwei-Melder-Abhängigkeit und intelligente Verifikation (z.B. Videoübertragung an eine Leitstelle im Alarmfall) reduzieren wir Fehlalarme auf ein absolutes Minimum. Sollte dennoch ein Falschalarm ausgelöst werden, kann dieser meist via App oder Code vor dem Eintreffen von Interventionskräften storniert werden.</p>
+              </div>
+            </div>
+
+            <p className="mt-6 italic">
+              Diese tiefgreifende Expertise fließt in jede unserer Planungen ein. Wir verkaufen keine Produkte aus dem Katalog, sondern entwickeln maßgeschneiderte Sicherheitsarchitekturen für Ihr individuelles Schutzziel.
+            </p>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="sticky top-24">
+              <ServiceBudgetCalculator />
+            </div>
           </div>
         </div>
       </Section>
