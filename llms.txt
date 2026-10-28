@@ -1,0 +1,20 @@
+# SCHLÜSSELMACHER24 - Architecture and Setup
+
+Website und Shop eines Fachbetriebs für Autoschlüssel, Schlüssel nach Code und Vorlage, Schließzylinder, Schließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik.
+
+## Architecture Guidelines
+- **Framework**: Next.js 16+ (App Router)
+- **Runtime**: React 19.2+ with Server Components & Form Actions
+- **Styling**: Tailwind CSS v4 in OKLCH Color Space (Swiss Light Design Doctrine)
+- **Typing**: TypeScript 5.5+ Strict (No enums, no any)
+
+### Swiss Light Design Doctrine
+- **Base Canvas**: oklch(0.988 0.002 260)
+- **Typography**: Fluid via CSS clamp()
+- **Grid**: Subgrid for consistent alignment
+
+## Development Scripts
+- `npm run dev`: Starts local development server
+- `npm run build`: Production build
+- `npm run test:unit`: Unit tests
+- `npm run test:db`: DB tests

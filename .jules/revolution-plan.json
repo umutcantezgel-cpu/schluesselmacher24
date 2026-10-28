@@ -1,0 +1,1257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated_at": "2026-10-28T17:10:10.207005+00:00",
+  "total_existing_routes": 54,
+  "dna_summary": {
+    "framework": "Next.js 16+",
+    "react_version": "19.2+",
+    "styling": "Tailwind CSS v4 (OKLCH)",
+    "brand_color_primary": "oklch(0.52 0.24 260)",
+    "typography": "Swiss Modernist"
+  },
+  "transformation_queue": [
+    {
+      "priority": 1,
+      "route_path": "/",
+      "source_file": "src/app/(site)/page.tsx",
+      "target_word_count": 850,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Startseite",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 2,
+      "route_path": "/ratgeber",
+      "source_file": "src/app/(site)/ratgeber/page.tsx",
+      "target_word_count": 860,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Ratgeber",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicFilter",
+        "target_file": "components/filter/dynamic-filter.tsx",
+        "action_file": "actions/filter-items.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 3,
+      "route_path": "/ratgeber/[slug]",
+      "source_file": "src/app/(site)/ratgeber/[slug]/page.tsx",
+      "target_word_count": 870,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Ratgeber [Slug]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "DynamicFilter",
+        "target_file": "components/filter/dynamic-filter.tsx",
+        "action_file": "actions/filter-items.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 4,
+      "route_path": "/schluessel-nach-vorlage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+      "target_word_count": 880,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Schluessel-Nach-Vorlage",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 5,
+      "route_path": "/schluessel-nach-vorlage/anfrage",
+      "source_file": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx",
+      "target_word_count": 890,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Schluessel-Nach-Vorlage Anfrage",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 6,
+      "route_path": "/[...unbekannt]",
+      "source_file": "src/app/(site)/[...unbekannt]/page.tsx",
+      "target_word_count": 900,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs [...Unbekannt]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 7,
+      "route_path": "/warenkorb",
+      "source_file": "src/app/(site)/warenkorb/page.tsx",
+      "target_word_count": 910,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Warenkorb",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 8,
+      "route_path": "/kasse",
+      "source_file": "src/app/(site)/kasse/page.tsx",
+      "target_word_count": 920,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Kasse",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 9,
+      "route_path": "/schluessel-nach-code",
+      "source_file": "src/app/(site)/schluessel-nach-code/page.tsx",
+      "target_word_count": 930,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Schluessel-Nach-Code",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 10,
+      "route_path": "/schluessel-nach-code/[slug]",
+      "source_file": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx",
+      "target_word_count": 940,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Schluessel-Nach-Code [Slug]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 11,
+      "route_path": "/schluessel-nach-code/hersteller/[hersteller]",
+      "source_file": "src/app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx",
+      "target_word_count": 950,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Schluessel-Nach-Code Hersteller [Hersteller]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 12,
+      "route_path": "/schluessel-nach-code/kategorie/[familie]",
+      "source_file": "src/app/(site)/schluessel-nach-code/kategorie/[familie]/page.tsx",
+      "target_word_count": 960,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Schluessel-Nach-Code Kategorie [Familie]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 13,
+      "route_path": "/sicherheitstechnik",
+      "source_file": "src/app/(site)/sicherheitstechnik/page.tsx",
+      "target_word_count": 970,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Sicherheitstechnik",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 14,
+      "route_path": "/sicherheitstechnik/[slug]",
+      "source_file": "src/app/(site)/sicherheitstechnik/[slug]/page.tsx",
+      "target_word_count": 980,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Sicherheitstechnik [Slug]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 15,
+      "route_path": "/sicherheitstechnik/sicherheitscheck",
+      "source_file": "src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx",
+      "target_word_count": 990,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Sicherheitstechnik Sicherheitscheck",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 16,
+      "route_path": "/partner-werden",
+      "source_file": "src/app/(site)/partner-werden/page.tsx",
+      "target_word_count": 1000,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Partner-Werden",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 17,
+      "route_path": "/schluessel-einschicken",
+      "source_file": "src/app/(site)/schluessel-einschicken/page.tsx",
+      "target_word_count": 1010,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Schluessel-Einschicken",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 18,
+      "route_path": "/tuer-und-schliesstechnik",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/page.tsx",
+      "target_word_count": 1020,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Tuer-Und-Schliesstechnik",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 19,
+      "route_path": "/tuer-und-schliesstechnik/[slug]",
+      "source_file": "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx",
+      "target_word_count": 1030,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Tuer-Und-Schliesstechnik [Slug]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 20,
+      "route_path": "/bestellung/[id]",
+      "source_file": "src/app/(site)/bestellung/[id]/page.tsx",
+      "target_word_count": 1040,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Bestellung [Id]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 21,
+      "route_path": "/gleichschliessende-zylinder",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+      "target_word_count": 1050,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Gleichschliessende-Zylinder",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 22,
+      "route_path": "/gleichschliessende-zylinder/konfigurator",
+      "source_file": "src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx",
+      "target_word_count": 1060,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Gleichschliessende-Zylinder Konfigurator",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 23,
+      "route_path": "/elektronische-zutrittsloesungen",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+      "target_word_count": 1070,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Elektronische-Zutrittsloesungen",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 24,
+      "route_path": "/elektronische-zutrittsloesungen/konfigurator",
+      "source_file": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx",
+      "target_word_count": 1080,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Elektronische-Zutrittsloesungen Konfigurator",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 25,
+      "route_path": "/schliessanlagen",
+      "source_file": "src/app/(site)/schliessanlagen/page.tsx",
+      "target_word_count": 1090,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Schliessanlagen",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 26,
+      "route_path": "/schliessanlagen/konfigurator",
+      "source_file": "src/app/(site)/schliessanlagen/konfigurator/page.tsx",
+      "target_word_count": 1100,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Schliessanlagen Konfigurator",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 27,
+      "route_path": "/service-und-termin",
+      "source_file": "src/app/(site)/service-und-termin/page.tsx",
+      "target_word_count": 1110,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Service-Und-Termin",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 28,
+      "route_path": "/service-und-termin/terminstatus",
+      "source_file": "src/app/(site)/service-und-termin/terminstatus/page.tsx",
+      "target_word_count": 1120,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Service-Und-Termin Terminstatus",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 29,
+      "route_path": "/service-und-termin/anfrage",
+      "source_file": "src/app/(site)/service-und-termin/anfrage/page.tsx",
+      "target_word_count": 1130,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Service-Und-Termin Anfrage",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 30,
+      "route_path": "/service-und-termin/vor-ort",
+      "source_file": "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+      "target_word_count": 1140,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Service-Und-Termin Vor-Ort",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 31,
+      "route_path": "/service-und-termin/kontakt",
+      "source_file": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+      "target_word_count": 1150,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Service-Und-Termin Kontakt",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 32,
+      "route_path": "/rechtliches/impressum",
+      "source_file": "src/app/(site)/rechtliches/impressum/page.tsx",
+      "target_word_count": 1160,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Rechtliches Impressum",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 33,
+      "route_path": "/rechtliches/cookie-einstellungen",
+      "source_file": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx",
+      "target_word_count": 1170,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Rechtliches Cookie-Einstellungen",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 34,
+      "route_path": "/rechtliches/versand-und-zahlung",
+      "source_file": "src/app/(site)/rechtliches/versand-und-zahlung/page.tsx",
+      "target_word_count": 1180,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Rechtliches Versand-Und-Zahlung",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 35,
+      "route_path": "/rechtliches/widerruf",
+      "source_file": "src/app/(site)/rechtliches/widerruf/page.tsx",
+      "target_word_count": 1190,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Rechtliches Widerruf",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 36,
+      "route_path": "/rechtliches/widerruf/erklaeren",
+      "source_file": "src/app/(site)/rechtliches/widerruf/erklaeren/page.tsx",
+      "target_word_count": 1200,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Rechtliches Widerruf Erklaeren",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 37,
+      "route_path": "/rechtliches/agb",
+      "source_file": "src/app/(site)/rechtliches/agb/page.tsx",
+      "target_word_count": 1210,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Rechtliches Agb",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 38,
+      "route_path": "/rechtliches/datenschutz",
+      "source_file": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+      "target_word_count": 1220,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Rechtliches Datenschutz",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 39,
+      "route_path": "/artikel",
+      "source_file": "src/app/(site)/artikel/page.tsx",
+      "target_word_count": 1230,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Artikel",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 40,
+      "route_path": "/artikel/[slug]",
+      "source_file": "src/app/(site)/artikel/[slug]/page.tsx",
+      "target_word_count": 1240,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Artikel [Slug]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 41,
+      "route_path": "/standorte",
+      "source_file": "src/app/(site)/standorte/page.tsx",
+      "target_word_count": 1250,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Standorte",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 42,
+      "route_path": "/standorte/[city]",
+      "source_file": "src/app/(site)/standorte/[city]/page.tsx",
+      "target_word_count": 1260,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Standorte [City]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 43,
+      "route_path": "/autoschluessel",
+      "source_file": "src/app/(site)/autoschluessel/page.tsx",
+      "target_word_count": 1270,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 44,
+      "route_path": "/autoschluessel/marken",
+      "source_file": "src/app/(site)/autoschluessel/marken/page.tsx",
+      "target_word_count": 1280,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Marken",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 45,
+      "route_path": "/autoschluessel/marken/[make]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/page.tsx",
+      "target_word_count": 1290,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Marken [Make]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 46,
+      "route_path": "/autoschluessel/marken/[make]/[model]",
+      "source_file": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx",
+      "target_word_count": 1300,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Marken [Make] [Model]",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 47,
+      "route_path": "/autoschluessel/funkschluessel",
+      "source_file": "src/app/(site)/autoschluessel/funkschluessel/page.tsx",
+      "target_word_count": 1310,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Funkschluessel",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 48,
+      "route_path": "/autoschluessel/programmieren",
+      "source_file": "src/app/(site)/autoschluessel/programmieren/page.tsx",
+      "target_word_count": 1320,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Programmieren",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 49,
+      "route_path": "/autoschluessel/anfrage",
+      "source_file": "src/app/(site)/autoschluessel/anfrage/page.tsx",
+      "target_word_count": 1330,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Anfrage",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 50,
+      "route_path": "/autoschluessel/kopieren",
+      "source_file": "src/app/(site)/autoschluessel/kopieren/page.tsx",
+      "target_word_count": 1340,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Kopieren",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 51,
+      "route_path": "/autoschluessel/nachmachen",
+      "source_file": "src/app/(site)/autoschluessel/nachmachen/page.tsx",
+      "target_word_count": 1350,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Nachmachen",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 52,
+      "route_path": "/autoschluessel/smart-key",
+      "source_file": "src/app/(site)/autoschluessel/smart-key/page.tsx",
+      "target_word_count": 1360,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Smart-Key",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 53,
+      "route_path": "/autoschluessel/schluesselbart-fraesen",
+      "source_file": "src/app/(site)/autoschluessel/schluesselbart-fraesen/page.tsx",
+      "target_word_count": 1370,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Schluesselbart-Fraesen",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    },
+    {
+      "priority": 54,
+      "route_path": "/autoschluessel/fahrzeugoeffnung",
+      "source_file": "src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx",
+      "target_word_count": 1380,
+      "content_expansion_topics": [
+        "Umfassende Erkl\u00e4rung des Bereichs Autoschluessel Fahrzeugoeffnung",
+        "Spezifische technische Details und Spezifikationen",
+        "H\u00e4ufig gestellte Fragen (FAQ) und Support-Informationen"
+      ],
+      "interactive_module": {
+        "type": "CALCULATOR_OR_FILTER",
+        "component_name": "PriceCalculator",
+        "target_file": "components/calculator/price-calculator.tsx",
+        "action_file": "actions/calculate-price.ts"
+      },
+      "signature_interaction": "BENTO_HOVER_GLOW_LIGHT",
+      "schema_entities": [
+        "WebPage",
+        "FAQPage"
+      ],
+      "status": "PENDING_BUILDER"
+    }
+  ]
+}
