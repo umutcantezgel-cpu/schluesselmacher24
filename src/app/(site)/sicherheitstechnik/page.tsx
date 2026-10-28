@@ -9,6 +9,8 @@ import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { SecurityBudgetCalculator } from '@/components/sicherheitstechnik/security-budget-calculator';
+
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
@@ -92,7 +94,14 @@ const PRINCIPLE = [
   },
 ];
 
-export default async function SicherheitstechnikPage() {
+interface Props {
+  params: Promise<{ id?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function SicherheitstechnikPage({ params, searchParams }: Props) {
+  await params;
+  await searchParams;
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -200,6 +209,184 @@ export default async function SicherheitstechnikPage() {
                 Bestandsaufnahme starten
               </ButtonLink>
             </div>
+          </div>
+        </div>
+      </Section>
+
+
+      <Section id="architektur-und-methodik" tone="sunken">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-5">
+            <SectionHeading
+              nummer="01a"
+              eyebrow="Architektur & Methodik"
+              title="Fundierte Sicherheitskonzepte für komplexe Anforderungen"
+              lead="Eine moderne Sicherheitsarchitektur erfordert eine ganzheitliche Betrachtung von Mechanik, Elektronik und Netzwerktechnik. Wir planen und realisieren Systeme, die präventiv wirken und im Ernstfall zuverlässig reagieren."
+            />
+          </div>
+          <div className="lg:col-span-7 prose prose-slate text-[oklch(0.32_0.02_260)] leading-relaxed space-y-6">
+            <p>
+              Die Planung einer robusten Sicherheitsarchitektur beginnt stets mit einer detaillierten Schwachstellenanalyse des Objekts.
+              Hierbei bewerten wir nicht nur die physischen Zugangspunkte wie Türen, Fenster und Lichtschächte, sondern auch die
+              Umgebungsbedingungen und das spezifische Bedrohungspotenzial. Unsere Methodik basiert auf dem Prinzip der
+              <strong>Zwiebelschalen-Architektur (Defense in Depth)</strong>, bei der mehrere unabhängige Sicherheitsbarrieren
+              kombiniert werden, um einen unüberwindbaren Schutzschild zu bilden.
+            </p>
+            <p>
+              Im ersten Schritt konzentrieren wir uns auf die <strong>Außenhautsicherung</strong>. Durch den Einsatz von hochfesten
+              mechanischen Verriegelungen in Kombination mit intelligenten mechatronischen Zylindern erschweren wir das physische
+              Eindringen massiv. Diese erste Linie der Verteidigung wird ergänzt durch elektronische Überwachungssysteme.
+              Moderne <strong>Perimeterschutz-Systeme</strong> erkennen Annäherungen bereits, bevor es zu einem physischen Kontakt
+              kommt.
+            </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Integrierte Netzwerk-Sicherheitssysteme</h3>
+            <p>
+              Die zweite Schicht bildet das Herzstück der Anlage: ein vernetztes Alarmsystem, das nahtlos mit der Videoüberwachung
+              kommuniziert. Wir setzen ausschließlich auf VdS-anerkannte Komponenten, die höchste Ausfallsicherheit garantieren.
+              Diese Systeme verfügen über redundante Kommunikationswege (LTE/IP) und eine Notstromversorgung, um auch bei
+              manipulierten Versorgungsleitungen voll funktionsfähig zu bleiben.
+            </p>
+            <p>
+              Die Videoüberwachung dient nicht nur der reaktiven Aufklärung, sondern vor allem der präventiven Abschreckung und der
+              Live-Verifikation von Alarmen. Durch den Einsatz von KI-gestützter Videoanalytik können wir Fehlalarme (z.B. durch Tiere
+              oder Witterungseinflüsse) drastisch reduzieren und nur verifizierte Bedrohungen an die aufgeschaltete Notruf- und
+              Serviceleitstelle (NSL) weiterleiten. Dies gewährleistet eine schnelle und zielgerichtete Intervention durch die Polizei
+              oder private Sicherheitsdienste.
+            </p>
+            <h3 className="text-xl font-semibold text-[oklch(0.16_0.02_260)] mt-8 mb-4">Das Prinzip der ausfallsicheren Redundanz</h3>
+            <p>
+              Die dritte und letzte Schicht bildet die innere Überwachung, auch Fallenüberwachung genannt. Mittels Dual-Meldern
+              (Infrarot und Mikrowelle) sichern wir sensible Bereiche innerhalb des Objekts ab. Diese Sensoren sind extrem
+              zuverlässig und detektieren auch professionelle Eindringlinge, die versuchen, die Außenhautsicherung zu überwinden.
+              Zudem integrieren wir Panikschalter und Überfalltaster, um Personen in Notfällen eine schnelle und diskrete
+              Alarmierung zu ermöglichen.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="leistungsstufen">
+        <SectionHeading
+          nummer="01b"
+          eyebrow="Vergleichsmatrix"
+          title="Unsere Leistungsstufen im Detail"
+          lead="Abhängig von Ihrem spezifischen Schutzbedarf bieten wir verschiedene Ausbaustufen an, die alle auf der gleichen hochwertigen Systemarchitektur basieren."
+        />
+        <div className="mt-12 overflow-x-auto">
+          <table className="w-full text-left text-small text-[oklch(0.32_0.02_260)] border-collapse">
+            <thead>
+              <tr className="border-b-2 border-[oklch(0.89_0.008_260/0.55)]">
+                <th className="py-4 px-6 font-semibold text-[oklch(0.16_0.02_260)] w-1/4">Funktion / Merkmal</th>
+                <th className="py-4 px-6 font-semibold text-[oklch(0.16_0.02_260)] w-1/4 bg-[oklch(0.988_0.002_260)]">Basis-Schutz (Standard)</th>
+                <th className="py-4 px-6 font-semibold text-[oklch(0.16_0.02_260)] w-1/4 bg-[oklch(0.968_0.004_260)]">Erweitert (Premium)</th>
+                <th className="py-4 px-6 font-semibold text-[oklch(0.16_0.02_260)] w-1/4 bg-[oklch(0.92_0.01_260)]">Höchstschutz (Enterprise)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[oklch(0.89_0.008_260/0.55)]">
+              <tr className="hover:bg-area-soft transition-colors duration-quick">
+                <td className="py-4 px-6 font-medium">Mechanische Grundsicherung</td>
+                <td className="py-4 px-6 bg-[oklch(0.988_0.002_260)]">Zertifizierte Profilzylinder, Basis-Türbeschläge</td>
+                <td className="py-4 px-6 bg-[oklch(0.968_0.004_260)]">Mechatronische Zylinder, Panzerriegel</td>
+                <td className="py-4 px-6 bg-[oklch(0.92_0.01_260)]">VdS-Klasse B/C Mechanik, Sperrelemente</td>
+              </tr>
+              <tr className="hover:bg-area-soft transition-colors duration-quick">
+                <td className="py-4 px-6 font-medium">Elektronische Überwachung</td>
+                <td className="py-4 px-6 bg-[oklch(0.988_0.002_260)]">Lokale Alarmzentrale, Basis-Türkontakte</td>
+                <td className="py-4 px-6 bg-[oklch(0.968_0.004_260)]">IP/LTE angebundene Zentrale, Bewegungsmelder</td>
+                <td className="py-4 px-6 bg-[oklch(0.92_0.01_260)]">Vollintegrierte Gefahrenmeldeanlage (VdS)</td>
+              </tr>
+              <tr className="hover:bg-area-soft transition-colors duration-quick">
+                <td className="py-4 px-6 font-medium">Video-Verifikation</td>
+                <td className="py-4 px-6 bg-[oklch(0.988_0.002_260)]">Optional (lokale Speicherung)</td>
+                <td className="py-4 px-6 bg-[oklch(0.968_0.004_260)]">Cloud-Recording (EU-DSGVO), Live-Ansicht</td>
+                <td className="py-4 px-6 bg-[oklch(0.92_0.01_260)]">KI-Videoanalytik, Perimeter-Tracking</td>
+              </tr>
+              <tr className="hover:bg-area-soft transition-colors duration-quick">
+                <td className="py-4 px-6 font-medium">Notruf-Aufschaltung (NSL)</td>
+                <td className="py-4 px-6 bg-[oklch(0.988_0.002_260)]">Nicht enthalten</td>
+                <td className="py-4 px-6 bg-[oklch(0.968_0.004_260)]">Aufschaltung optional</td>
+                <td className="py-4 px-6 bg-[oklch(0.92_0.01_260)]">Redundante 24/7 Aufschaltung inklusive</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      <Section id="kalkulator" tone="muted">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter items-start">
+          <div className="lg:col-span-5">
+            <SectionHeading
+              nummer="01c"
+              eyebrow="Investitions-Schätzung"
+              title="Interaktiver Budget-Kalkulator"
+              lead="Erhalten Sie einen ersten Richtwert für die Installation einer professionellen Sicherheitstechnik, basierend auf der zu schützenden Fläche."
+            />
+            <p className="mt-6 text-[oklch(0.32_0.02_260)]">
+              Bitte beachten Sie, dass dies eine grobe Schätzung ist. Der tatsächliche Aufwand hängt von vielen Faktoren ab, wie z.B.
+              der vorhandenen Verkabelung, der Wandbeschaffenheit und Ihren spezifischen Sicherheitsanforderungen. Für ein
+              verbindliches Angebot führen wir stets eine Vor-Ort-Begehung durch.
+            </p>
+          </div>
+          <div className="lg:col-span-7">
+            <SecurityBudgetCalculator />
+          </div>
+        </div>
+      </Section>
+
+      <Section id="faq">
+        <SectionHeading
+          nummer="01d"
+          eyebrow="Häufige Fragen"
+          title="Experten-Antworten zur Sicherheitstechnik"
+          className="max-w-2xl"
+        />
+        <div className="mt-12 max-w-3xl space-y-8 text-[oklch(0.32_0.02_260)]">
+          <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">Wie sicher sind funkbasierte Alarmanlagen im Vergleich zu kabelgebundenen Systemen?</h4>
+            <p>
+              Moderne professionelle Funk-Alarmanlagen (z.B. mit bidirektionaler Kommunikation auf 868 MHz) bieten ein extrem hohes
+              Sicherheitsniveau. Sie nutzen proprietäre, verschlüsselte Protokolle und erkennen Jamming-Versuche (Störsender)
+              sofort. Für den Einsatz in hochsensiblen Bereichen (z.B. Banken, Juweliere) oder bei VdS-Klasse B/C Vorgaben
+              empfehlen wir dennoch hybride oder rein kabelgebundene Systeme, da diese resistent gegen jegliche Art von
+              Funkstörungen sind und keinen Batteriewechsel an den Meldern erfordern.
+            </p>
+          </div>
+          <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">Was passiert bei einem Stromausfall oder wenn das Internet ausfällt?</h4>
+            <p>
+              Jede professionelle Einbruchmeldeanlage ist mit einem Notstrom-Akku ausgestattet, der den Betrieb je nach Auslegung
+              für 12 bis 60 Stunden aufrechterhält. Auch die Sirenen verfügen über eigene Akkus. Zur Kommunikation mit der
+              Leitstelle oder Ihrem Smartphone nutzen unsere Systeme redundante Wege: Fällt die primäre IP-Verbindung (DSL/Glasfaser)
+              aus, übernimmt automatisch das integrierte LTE/4G-Modul die Übertragung. So bleibt die Alarmierungskette stets
+              geschlossen.
+            </p>
+          </div>
+          <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">Darf ich den öffentlichen Gehweg vor meinem Haus mit Kameras überwachen?</h4>
+            <p>
+              Nein. Nach geltendem Datenschutzrecht (DSGVO und BDSG) dürfen private Kameras ausschließlich das eigene Grundstück
+              erfassen. Öffentliche Bereiche, Gehwege oder Nachbargrundstücke müssen zwingend ausgeblendet werden (z.B. durch
+              Privacy-Masking in der Kamera-Software oder physische Blenden). Wir konfigurieren Ihre Kamerasysteme rechtssicher
+              und dokumentieren die zulässigen Erfassungsbereiche bei der Übergabe.
+            </p>
+          </div>
+          <div className="border-b border-[oklch(0.89_0.008_260/0.55)] pb-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">Sind mechanische Sicherungen wirklich notwendig, wenn ich eine Alarmanlage habe?</h4>
+            <p>
+              Absolut. Eine Alarmanlage verhindert keinen Einbruch, sie meldet ihn nur. Ohne adäquate mechanische Sicherung
+              (z.B. Pilzkopfzapfen an Fenstern, Sicherheitsschließbleche, Kernziehschutz) kann ein Einbrecher innerhalb von
+              Sekunden im Objekt sein. Der &quot;Blitz-Einbruch&quot; ist vollendet, bevor die Polizei oder der Sicherheitsdienst
+              eintreffen kann. Die Mechanik sorgt für den entscheidenden Zeitwiderstand, während die Elektronik sofort alarmiert.
+            </p>
+          </div>
+          <div className="pb-6">
+            <h4 className="text-lg font-semibold text-[oklch(0.16_0.02_260)] mb-3">Wie oft muss eine sicherheitstechnische Anlage gewartet werden?</h4>
+            <p>
+              Für private Anlagen empfehlen wir eine jährliche Inspektion. Bei gewerblichen Anlagen oder solchen mit
+              Polizeiaufschaltung ist eine jährliche bis halbjährliche Wartung nach VDE 0833 bzw. VdS-Richtlinien oft
+              vorgeschrieben. Bei der Wartung prüfen wir die Akkus, reinigen Melder, testen die Signalübertragung und
+              spielen wichtige Firmware-Updates ein, um die Anlage gegen neue Cyber-Bedrohungen abzusichern.
+            </p>
           </div>
         </div>
       </Section>
