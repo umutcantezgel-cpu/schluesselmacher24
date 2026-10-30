@@ -28,6 +28,18 @@ export const MINDESTBETRAG_CENT = 50;
  */
 export const ABLAUF_MINUTEN = { termin: 31, bestellung: 23 * 60 } as const;
 
+/**
+ * Fest eingestellte Stripe-API-Version, passend zum SDK `stripe` 22.x. Ab
+ * 2026-09-30.endive lehnt Stripe `payment_method_types` beim Anlegen einer
+ * Checkout-Sitzung ab (HTTP 400, „Payment methods are now managed from your
+ * Dashboard settings“) — `checkoutParameter` setzt die Zahlarten aber genau
+ * darüber (PAYMENT_METHODS). Ein SDK mit neuerer Version scheitert an der
+ * Typprüfung (`apiVersion` nimmt nur die Version des SDK): Dann zuerst die
+ * Zahlarten auf eine Zahlungskonfiguration im Dashboard umstellen, erst danach
+ * die Version anheben. Die Webhook-Ziele in Stripe nutzen dieselbe Version.
+ */
+export const STRIPE_API_VERSION = '2026-08-26.dahlia';
+
 let client: { schluessel: string; stripe: Stripe } | null = null;
 
 /** Stripe-Client, erst bei Bedarf angelegt. Wiederholungen übernimmt das SDK (mit eigenen Idempotenz-Schlüsseln). */
@@ -37,6 +49,7 @@ export function stripeClient(konfiguration: ZahlungKonfiguration | null = zahlun
     client = {
       schluessel: konfiguration.apiKey,
       stripe: new Stripe(konfiguration.apiKey, {
+        apiVersion: STRIPE_API_VERSION,
         maxNetworkRetries: 2,
         timeout: 20_000,
         appInfo: { name: 'schluesselmacher24' },
