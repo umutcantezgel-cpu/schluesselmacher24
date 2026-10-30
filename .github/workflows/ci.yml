@@ -33,6 +33,9 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm run typecheck
       - run: npm run lint
+      # Die Sicherung (sicherung.yml) läuft nur nachts mit Geheimnissen – ihre Skripte hier statisch prüfen.
+      - name: Shellcheck
+        run: shellcheck -x -P SCRIPTDIR scripts/sicherung/*.sh
       - run: npm run test:unit
       # Eigene Postgres-Instanz aus embedded-postgres (der Runner ist kein root).
       - name: DB-Tests

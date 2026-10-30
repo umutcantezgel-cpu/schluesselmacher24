@@ -14,10 +14,10 @@ import type { Settings } from '@/lib/types';
    ========================================================================== */
 
 /** Fassung der Liste. Bei jeder inhaltlichen Änderung hochzählen. */
-export const VERARBEITUNGEN_FASSUNG = { nummer: 2, stand: '2026-10-25' } as const;
+export const VERARBEITUNGEN_FASSUNG = { nummer: 3, stand: '2026-10-30' } as const;
 
 export interface Dienstleister {
-  id: 'vercel' | 'supabase' | 'stripe' | 'resend' | 'google';
+  id: 'vercel' | 'supabase' | 'github' | 'cloudflare' | 'stripe' | 'resend' | 'google';
   name: string;
   sitz: string;
   aufgabe: string;
@@ -27,7 +27,7 @@ export interface Dienstleister {
   pruefhinweis?: string;
 }
 
-/** Eingesetzte Dienstleister (Stack: Vercel, Supabase, Stripe, Resend). */
+/** Eingesetzte Dienstleister (Stack: Vercel, Supabase, Stripe, Resend; Sicherung: GitHub, Cloudflare). */
 export const DIENSTLEISTER: readonly Dienstleister[] = [
   {
     id: 'vercel',
@@ -46,6 +46,24 @@ export const DIENSTLEISTER: readonly Dienstleister[] = [
     pruefhinweis:
       'Vertragspartner und Anschrift von Supabase, Region des Projekts (Frankfurt) und '
       + 'Übermittlungsgrundlage (Standardvertragsklauseln) prüfen; DPA abschließen.',
+  },
+  {
+    id: 'github',
+    name: 'GitHub, Inc.',
+    sitz: 'USA',
+    aufgabe: 'Ausführung der nächtlichen Datensicherung (GitHub Actions); die Daten werden dabei verschlüsselt',
+    rolle: 'Auftragsverarbeiter',
+    pruefhinweis:
+      'Data Protection Agreement von GitHub und Übermittlungsgrundlage (DPF-Zertifizierung oder Standardvertragsklauseln) '
+      + 'prüfen; die Sicherungsläufe verarbeiten die Daten kurzzeitig unverschlüsselt.',
+  },
+  {
+    id: 'cloudflare',
+    name: 'Cloudflare, Inc.',
+    sitz: 'USA; Speicherort der Sicherungen: EU',
+    aufgabe: 'Aufbewahrung der verschlüsselten Sicherungskopien (R2, EU-Jurisdiktion)',
+    rolle: 'Auftragsverarbeiter',
+    pruefhinweis: 'DPA von Cloudflare und die EU-Jurisdiktion der Sicherungs-Buckets prüfen.',
   },
   {
     id: 'stripe',
@@ -180,6 +198,21 @@ export function verarbeitungen(
         'Die Daten liegen in der EU. Zugriffe von Supabase aus Drittländern zu Wartungszwecken sind möglich und durch Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) abgesichert.',
       speicherdauer: 'Wie bei den einzelnen Verarbeitungen angegeben.',
       pruefhinweis: 'Übermittlungsgrundlage und Unterauftragsverarbeiter von Supabase prüfen.',
+    },
+    {
+      id: 'sicherung',
+      titel: 'Datensicherung',
+      zweck: 'Schutz vor Datenverlust: nächtliche, verschlüsselte Sicherung der Datenbank und der hochgeladenen Dateien.',
+      daten: ['alle in der Datenbank gespeicherten Angaben (siehe die übrigen Verarbeitungen)', 'hochgeladene Dateien'],
+      rechtsgrundlage:
+        'Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse an der Verfügbarkeit und Wiederherstellbarkeit der Daten (vgl. Art. 32 Abs. 1 lit. c DSGVO).',
+      empfaenger:
+        'GitHub, Inc. (Ausführung der Sicherungsläufe, Auftragsverarbeiter) und Cloudflare, Inc. (Aufbewahrung der verschlüsselten Kopien in der EU, Auftragsverarbeiter)',
+      drittland:
+        'USA (GitHub, Inc.): Die Sicherungsläufe können auf Servern in den USA stattfinden; Grundlage: EU-US Data Privacy Framework (Art. 45 DSGVO) bzw. Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO). Die Kopien liegen verschlüsselt in der EU.',
+      speicherdauer:
+        'Tägliche Sicherungen 15 Tage, wöchentliche 8 Wochen, monatliche 6 Monate. Gelöschte Dateien verschwinden spätestens 31 Tage nach der Löschung auch aus der Sicherung.',
+      pruefhinweis: 'Dienstleister und Fristen vor der Freigabe bestätigen (docs/SUPABASE.md, Abschnitt Sicherung).',
     },
     {
       id: 'vorgaenge',

@@ -1,14 +1,17 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-/* Der tägliche Cron, wie Vercel ihn aufruft. Löschen, Zählerpflege und
- * Erinnerungen sind ersetzt; die echte Bereinigung prüft
- * kundendateien.db.test.ts, die Erinnerungen termin-erinnerungen.db.test.ts. */
+/* Der tägliche Cron, wie Vercel ihn aufruft. Löschen, Zählerpflege,
+ * Erinnerungen und Betriebsprüfung sind ersetzt; die echte Bereinigung prüft
+ * kundendateien.db.test.ts, die Erinnerungen termin-erinnerungen.db.test.ts,
+ * die Betriebsprüfung betriebszustand.db.test.ts. */
 
 const bereinige = vi.fn();
 const zaehler = vi.fn();
 const erinnere = vi.fn();
+const pruefe = vi.fn();
 
 const ERINNERUNGEN = { tageVorher: 1, termintag: '2026-10-26', termine: 2, gesendet: 1, bereitsErinnert: 1, fehlgeschlagen: 0 };
+const BETRIEB = { befunde: [], datenbankMb: 42, ablageMb: 7 };
 
 vi.mock('@/lib/server/kundendateien', () => ({
   bereinigeKundendateien: (...args: unknown[]) => bereinige(...args),
@@ -18,6 +21,9 @@ vi.mock('@/lib/server/rate-limit', () => ({
 }));
 vi.mock('@/lib/server/termin-erinnerungen', () => ({
   terminErinnerungenSenden: (...args: unknown[]) => erinnere(...args),
+}));
+vi.mock('@/lib/server/betriebszustand', () => ({
+  betriebPruefen: (...args: unknown[]) => pruefe(...args),
 }));
 
 const { GET } = await import('./route');
@@ -45,6 +51,8 @@ beforeEach(() => {
   zaehler.mockResolvedValue(7);
   erinnere.mockReset();
   erinnere.mockResolvedValue(ERINNERUNGEN);
+  pruefe.mockReset();
+  pruefe.mockResolvedValue(BETRIEB);
 });
 
 afterEach(() => {
@@ -80,6 +88,7 @@ describe('GET /api/cron/taeglich', () => {
     expect(response.status).toBe(401);
     expect(response.headers.get('cache-control')).toBe('no-store');
     expect(bereinige).not.toHaveBeenCalled();
+    expect(pruefe).not.toHaveBeenCalled();
   });
 
   it('antwortet ohne Datenbank mit 503', async () => {
@@ -98,11 +107,48 @@ describe('GET /api/cron/taeglich', () => {
       kundendateien: { geloescht: 1, fehlgeschlagen: 0, uebersprungen: 0 },
       ratenzaehler: { geloescht: 7 },
       erinnerungen: ERINNERUNGEN,
+      betrieb: BETRIEB,
     });
     expect(text).not.toContain('erika');
     expect(bereinige).toHaveBeenCalledTimes(1);
     expect(zaehler).toHaveBeenCalledTimes(1);
     expect(erinnere).toHaveBeenCalledTimes(1);
+    expect(pruefe).toHaveBeenCalledTimes(1);
+    expect(pruefe).toHaveBeenCalledWith({ cronStatus: 'ok' });
+  });
+
+  it('meldet Befunde der Betriebsprüfung, ohne den Lauf als fehlgeschlagen zu werten', async () => {
+    const befunde = [{ art: 'sicherung-db', stufe: 'kritisch', text: 'Sicherung der Datenbank: letzter Erfolg vor 40 Stunden.' }];
+    pruefe.mockResolvedValueOnce({ ...BETRIEB, befunde, mail: 'gesendet' });
+    const response = await GET(aufruf(`Bearer ${GEHEIM}`));
+    expect(response.status).toBe(200);
+    expect((await response.json()).betrieb).toEqual({ ...BETRIEB, befunde, mail: 'gesendet' });
+  });
+
+  it('antwortet mit 500, wenn die Betriebsprüfung selbst scheitert — ohne Details', async () => {
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    pruefe.mockRejectedValueOnce(new Error('relation "kundendateien" does not exist'));
+    const response = await GET(aufruf(`Bearer ${GEHEIM}`));
+    expect(response.status).toBe(500);
+    const body = await response.json();
+    expect(body.betrieb).toEqual({ fehler: 'Prüfung fehlgeschlagen.' });
+    expect(body.kundendateien.geloescht).toBe(1);
+    expect(JSON.stringify(body)).not.toContain('relation');
+    log.mockRestore();
+  });
+
+  it('gibt Fehlschläge als Status ins Lebenszeichen weiter — auch nach einem Absturz', async () => {
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    erinnere.mockResolvedValueOnce({ ...ERINNERUNGEN, gesendet: 0, fehlgeschlagen: 1 });
+    await GET(aufruf(`Bearer ${GEHEIM}`));
+    expect(pruefe).toHaveBeenLastCalledWith({ cronStatus: 'fehler' });
+
+    bereinige.mockRejectedValueOnce(new Error('Datenbank weg'));
+    const kaputt = await GET(aufruf(`Bearer ${GEHEIM}`));
+    expect(kaputt.status).toBe(500);
+    expect(await kaputt.json()).toEqual({ error: 'Lauf fehlgeschlagen.', betrieb: BETRIEB });
+    expect(pruefe).toHaveBeenLastCalledWith({ cronStatus: 'fehler' });
+    log.mockRestore();
   });
 
   it('meldet gescheiterte Erinnerungen mit 500 — die Bereinigung läuft trotzdem', async () => {

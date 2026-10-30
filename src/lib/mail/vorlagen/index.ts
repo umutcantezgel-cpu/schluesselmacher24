@@ -5,6 +5,7 @@
  * einzeln; die Vertragsbestätigung (mit den Rechtstexten) nur bei Bedarf.
  */
 export { betriebNeuerVorgang } from './betrieb-neuer-vorgang';
+export { betriebWarnung } from './betrieb-warnung';
 export { kundeEingang } from './kunde-eingang';
 export { istStatusMitMail, statusMail, STATUS_MIT_MAIL, type StatusMitMail } from './status';
 export { testmail } from './testmail';

@@ -3,15 +3,18 @@
  * Produktionsbuild (`npm run build`, auch auf Vercel).
  *
  * 1. Pflichtprüfungen: Ein Produktions-Build (VERCEL_ENV=production) bricht
- *    ab ohne Datenbank, PAYLOAD_SECRET oder NEXT_PUBLIC_SITE_URL und ohne
- *    verschlüsselte Datenbankverbindung (DATABASE_CA_CERT oder sslmode). Fehlende
- *    Anbindungen (Cron, Dateiablage, Mail, Zahlung) ergeben Warnungen.
+ *    ab ohne Datenbank, PAYLOAD_SECRET oder NEXT_PUBLIC_SITE_URL, ohne
+ *    verschlüsselte Datenbankverbindung (DATABASE_CA_CERT oder sslmode) und
+ *    ohne Rollentrennung (Laufzeit sm24_app, Migrationen sm24_migration).
+ *    Fehlende Anbindungen (Cron, Dateiablage, Mail, Zahlung) ergeben Warnungen.
  * 2. Mit Datenbank — lokal und in Produktion, in Vorschauen nur mit
  *    SM24_PREVIEW_MIGRATE=1:
  *    - lokales Postgres starten, falls keine externe Datenbank gesetzt ist
  *      (scripts/db.mjs ensure),
  *    - Migrationen über die direkte Verbindung (DATABASE_URL_UNPOOLED bzw.
  *      POSTGRES_URL_NON_POOLING, sonst DATABASE_URL),
+ *    - auf Vercel: Datenbankrechte prüfen (scripts/supabase-rechte.mjs, in
+ *      Produktion Pflicht, Notausgang SM24_RECHTE_PRUEFUNG=warnung),
  *    - Seed (jede Sammlung nur einmal),
  *    - ersten Inhaber-Zugang anlegen (in Produktion Pflicht),
  *    - Livegang-Prüfung (in Produktion Pflicht, sonst nur Warnung).
@@ -56,6 +59,44 @@ export function mitDatenbank(env) {
 /** @param {Umgebung} env */
 export function istProduktionsBuild(env) {
   return env.VERCEL_ENV === 'production';
+}
+
+/**
+ * Datenbankrolle einer Verbindungsadresse. Beim Pooler von Supabase heißt der
+ * Benutzer `<rolle>.<projekt-ref>`, maßgeblich ist der Teil vor dem Punkt.
+ * @param {string | undefined} url
+ */
+export function datenbankRolle(url) {
+  try {
+    const benutzer = decodeURIComponent(new URL(url ?? '').username);
+    return benutzer ? benutzer.split('.')[0] : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * Rollentrennung (docs/SUPABASE.md): Migrationen als Eigentümer sm24_migration
+ * über die direkte Verbindung, Laufzeit als sm24_app mit reinen Datenrechten.
+ * Das postgres-Passwort gehört in keine Umgebungsvariable.
+ * Notausgang: SM24_ROLLENTRENNUNG=aus.
+ * @param {Umgebung} env
+ * @returns {string[]}
+ */
+export function rollenFehler(env) {
+  if (env.SM24_ROLLENTRENNUNG === 'aus') return [];
+  const direkt = wert(env, 'DATABASE_URL_UNPOOLED') ?? wert(env, 'POSTGRES_URL_NON_POOLING');
+  if (!direkt) {
+    return ['DATABASE_URL_UNPOOLED fehlt — Migrationen laufen über den Session-Pooler als eigene Rolle sm24_migration (docs/SUPABASE.md).'];
+  }
+  const laufzeit = datenbankRolle(datenbankUrl(env));
+  if (laufzeit === 'postgres') {
+    return ['DATABASE_URL nutzt die Rolle postgres — zur Laufzeit gehört sm24_app mit reinen Datenrechten (docs/SUPABASE.md).'];
+  }
+  if (laufzeit && laufzeit === datenbankRolle(direkt)) {
+    return ['DATABASE_URL und DATABASE_URL_UNPOOLED nutzen dieselbe Rolle — Laufzeit (sm24_app) und Migrationen (sm24_migration) trennen.'];
+  }
+  return [];
 }
 
 /** sslmode-Werte, mit denen `pg` ohne eigenes Zertifikat verschlüsselt verbindet. */
@@ -106,6 +147,7 @@ export function pruefeUmgebung(env) {
         + 'Download certificate) oder sslmode in der URL angeben.',
     );
   }
+  if (datenbankUrl(env) && env.SM24_DATA !== 'json') fehler.push(...rollenFehler(env));
   const geheimnis = wert(env, 'PAYLOAD_SECRET');
   if (!geheimnis) fehler.push('PAYLOAD_SECRET fehlt (mindestens 32 zufällige Zeichen, z. B. `openssl rand -hex 32`).');
   else if (geheimnis.length < 32) warnungen.push('PAYLOAD_SECRET ist kürzer als 32 Zeichen.');
@@ -152,6 +194,16 @@ export function planeBuild(env, { node = process.execPath, wurzel = process.cwd(
     }
     // DDL über die direkte Verbindung, nicht über den Pooler.
     schritte.push({ name: 'Migrationen', befehl: payload('migrate'), env: { DATABASE_URL: datenbankUrlDirekt(env) } });
+    // Rechte und RLS nach den Migrationen, als Laufzeitrolle (supabase/pruefungen/rechte.sql).
+    // Nur auf Vercel: Das lokale Postgres hat keine Supabase-Rollen.
+    if (env.VERCEL || env.SM24_RECHTE_PRUEFUNG) {
+      schritte.push({
+        name: 'Datenbankrechte-Prüfung',
+        befehl: [node, path.join(wurzel, 'scripts/supabase-rechte.mjs'), 'pruefen'],
+        env: { SUPABASE_RECHTE_URL: url },
+        nurWarnung: !produktion || env.SM24_RECHTE_PRUEFUNG === 'warnung',
+      });
+    }
     schritte.push({ name: 'Seed', befehl: payload('run', 'src/scripts/seed.ts'), env: { DATABASE_URL: url } });
     schritte.push({
       name: 'Erster Backend-Zugang',

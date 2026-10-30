@@ -341,7 +341,7 @@ Drei Zeilen wurden nach den Messungen der anderen Analysen herabgestuft (mit „
 | P18-a | HTTPS, geschützter Upload, Zugriff nur für das Team (PL 18) | erfüllt | Kundendateien.ts:20-23; datei-pruefung.ts; privater Bucket | 0 | |
 | P18-b | Speicherfristen (PL 18) | erfüllt | Einstellungen.ts:321-323; Cron taeglich | 0 | |
 | P18-c | Cookie- und Tracking-Konzept (PL 18) | erfüllt | cookie-einstellungen.tsx | 0 | |
-| P18-d | Backup und Wiederherstellung (PL 18) | teilweise | LIVEGANG.md:161 nur DB; Storage nicht im Supabase-Backup | 0,75 | I-58 |
+| P18-d | Backup und Wiederherstellung (PL 18) | umgesetzt | nächtliche Sicherung von Datenbank und Dateien mit Probe-Wiederherstellung (`.github/workflows/sicherung.yml`, docs/SUPABASE.md); Free-Plan ohne Supabase-Backups | 0,75 | I-58 |
 | P18-e | Spamschutz (PL 18) | erfüllt | formular-schutz.ts, rate-limit.ts | 0 | |
 | P19 | MVP-Kernprozesse durchspielbar (PL 19) | erfüllt | Bestellungen SM24-B-2026-0001/0002 in der DB | 0 | |
 | P20 | Abnahmeziel Kurzbriefing (PL 20) | teilweise | bis auf die genannten Lücken | – | |

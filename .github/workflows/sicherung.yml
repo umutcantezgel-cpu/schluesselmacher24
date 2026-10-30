@@ -1,0 +1,189 @@
+name: Sicherung
+
+# Nächtliche Sicherung von Datenbank und Dateiablage nach Cloudflare R2
+# (docs/SUPABASE.md, „Sicherung und Wiederherstellung“). Läuft nur mit der
+# Repository-Variable SICHERUNG_AKTIV=true, nur aus main und mit dem
+# Environment „sicherung“, das allein die Geheimnisse kennt.
+#
+# Die Logs sind öffentlich: Die Skripte (scripts/sicherung/) geben nur feste
+# Texte aus; Ausgaben der Werkzeuge landen bei Fehlschlägen verschlüsselt in
+# R2 unter fehler/. Keine Artefakte, kein npm in diesen Jobs.
+
+on:
+  schedule:
+    # 00:41 UTC sichert; 12:41 UTC holt eine verpasste Sicherung nach und hält
+    # das Supabase-Projekt mit einer Abfrage wach. Nicht zur vollen Stunde,
+    # weil GitHub Zeitpläne dann oft verzögert.
+    - cron: '41 0 * * *'
+    - cron: '41 12 * * *'
+  workflow_dispatch:
+    inputs:
+      erzwingen:
+        description: Datenbank auch sichern, wenn es heute schon eine Sicherung gibt
+        type: boolean
+        default: false
+      max_loeschungen:
+        description: 'Dateien: höchstens so viele Löschungen übernehmen (Schutz vor Massenlöschung)'
+        type: number
+        default: 50
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sicherung
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  datenbank:
+    name: Datenbank
+    if: vars.SICHERUNG_AKTIV == 'true' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: sicherung
+    env:
+      SB_POOLER_HOST: ${{ vars.SB_POOLER_HOST }}
+      SB_PROJEKT_REF: ${{ vars.SB_PROJEKT_REF }}
+      ZIEL_S3_ENDPOINT: ${{ vars.ZIEL_S3_ENDPOINT }}
+      # Optional; leer gelten die Standardwerte der Skripte (200 MB, 36 Stunden).
+      SICHERUNG_GRENZE_MB: ${{ vars.SICHERUNG_GRENZE_MB }}
+      CRON_GRENZE_STUNDEN: ${{ vars.CRON_GRENZE_STUNDEN }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/sicherung
+            supabase
+
+      - name: Werkzeuge
+        run: scripts/sicherung/werkzeuge.sh
+        env:
+          SB_CA_CERT: ${{ vars.SB_CA_CERT }}
+
+      - name: Heute schon gesichert?
+        id: frisch
+        run: scripts/sicherung/frisch.sh
+        env:
+          SICHERUNG_DB_PASSWORT: ${{ secrets.SICHERUNG_DB_PASSWORT }}
+          ERZWINGEN: ${{ inputs.erzwingen }}
+
+      - name: Abzug mit Fingerabdruck
+        if: steps.frisch.outputs.noetig == 'true'
+        run: scripts/sicherung/abzug.sh
+        env:
+          SICHERUNG_DB_PASSWORT: ${{ secrets.SICHERUNG_DB_PASSWORT }}
+
+      - name: Probe-Wiederherstellung
+        if: steps.frisch.outputs.noetig == 'true'
+        run: scripts/sicherung/probe.sh
+
+      - name: Verschlüsseln und hochladen
+        if: steps.frisch.outputs.noetig == 'true'
+        run: scripts/sicherung/hochladen.sh
+        env:
+          ZIEL_S3_ZUGANG: ${{ secrets.ZIEL_S3_ZUGANG }}
+          ZIEL_S3_GEHEIMNIS: ${{ secrets.ZIEL_S3_GEHEIMNIS }}
+
+      - name: Lebenszeichen
+        if: steps.frisch.outputs.noetig == 'true'
+        run: scripts/sicherung/lebenszeichen.sh sicherung-db
+        env:
+          SICHERUNG_DB_PASSWORT: ${{ secrets.SICHERUNG_DB_PASSWORT }}
+
+      # Kreuzprüfung: auch wenn die Sicherung selbst gescheitert ist.
+      - name: Täglichen Cron prüfen
+        if: ${{ !cancelled() && steps.frisch.outcome == 'success' }}
+        run: scripts/sicherung/cron-pruefen.sh
+        env:
+          SICHERUNG_DB_PASSWORT: ${{ secrets.SICHERUNG_DB_PASSWORT }}
+
+      - name: Fehlerprotokoll verschlüsselt ablegen
+        if: failure()
+        run: scripts/sicherung/fehlerprotokoll.sh datenbank
+        env:
+          ZIEL_S3_ZUGANG: ${{ secrets.ZIEL_S3_ZUGANG }}
+          ZIEL_S3_GEHEIMNIS: ${{ secrets.ZIEL_S3_GEHEIMNIS }}
+
+      - name: Aufräumen
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/sm24-sicherung"
+
+  dateien:
+    name: Dateien
+    # Nach der Datenbank (auch wenn sie scheitert): So hält sm24_sicherung
+    # nie mehr Verbindungen als erlaubt.
+    needs: datenbank
+    if: ${{ !cancelled() && vars.SICHERUNG_AKTIV == 'true' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    environment: sicherung
+    env:
+      SB_POOLER_HOST: ${{ vars.SB_POOLER_HOST }}
+      SB_PROJEKT_REF: ${{ vars.SB_PROJEKT_REF }}
+      ZIEL_S3_ENDPOINT: ${{ vars.ZIEL_S3_ENDPOINT }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/sicherung
+            supabase
+
+      - name: Werkzeuge
+        run: scripts/sicherung/werkzeuge.sh
+        env:
+          SB_CA_CERT: ${{ vars.SB_CA_CERT }}
+
+      - name: Abgleich mit verschlüsseltem Remote
+        run: scripts/sicherung/dateien.sh
+        env:
+          QUELLE_S3_ENDPOINT: ${{ vars.QUELLE_S3_ENDPOINT }}
+          QUELLE_S3_REGION: ${{ vars.QUELLE_S3_REGION }}
+          QUELLE_S3_ZUGANG: ${{ secrets.QUELLE_S3_ZUGANG }}
+          QUELLE_S3_GEHEIMNIS: ${{ secrets.QUELLE_S3_GEHEIMNIS }}
+          ZIEL_S3_ZUGANG: ${{ secrets.ZIEL_S3_ZUGANG }}
+          ZIEL_S3_GEHEIMNIS: ${{ secrets.ZIEL_S3_GEHEIMNIS }}
+          ZIEL_CRYPT_PASSWORT: ${{ secrets.ZIEL_CRYPT_PASSWORT }}
+          ZIEL_CRYPT_SALZ: ${{ secrets.ZIEL_CRYPT_SALZ }}
+          MAX_LOESCHUNGEN: ${{ inputs.max_loeschungen || 50 }}
+
+      - name: Lebenszeichen
+        run: scripts/sicherung/lebenszeichen.sh sicherung-dateien
+        env:
+          SICHERUNG_DB_PASSWORT: ${{ secrets.SICHERUNG_DB_PASSWORT }}
+
+      - name: Fehlerprotokoll verschlüsselt ablegen
+        if: failure()
+        run: scripts/sicherung/fehlerprotokoll.sh dateien
+        env:
+          ZIEL_S3_ZUGANG: ${{ secrets.ZIEL_S3_ZUGANG }}
+          ZIEL_S3_GEHEIMNIS: ${{ secrets.ZIEL_S3_GEHEIMNIS }}
+
+      - name: Aufräumen
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/sm24-sicherung"
+
+  wachhalten:
+    name: Zeitplan wachhalten
+    # Einmal am Tag, unabhängig von SICHERUNG_AKTIV und ohne Geheimnisse.
+    if: github.event_name == 'schedule' && github.event.schedule == '41 0 * * *'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          sparse-checkout: scripts/sicherung
+
+      - name: Enable-API aufrufen
+        run: scripts/sicherung/wachhalten.sh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

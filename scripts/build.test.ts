@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
-import { planeBuild, pruefeUmgebung } from './build.mjs';
+import { datenbankRolle, planeBuild, pruefeUmgebung, rollenFehler } from './build.mjs';
 
 const PRODUKTION = {
   VERCEL: '1',
   VERCEL_ENV: 'production',
-  DATABASE_URL: 'postgres://pooler:6543/postgres',
-  DATABASE_URL_UNPOOLED: 'postgres://direkt:5432/postgres',
+  DATABASE_URL: 'postgres://sm24_app.ref:pw@pooler:6543/postgres',
+  DATABASE_URL_UNPOOLED: 'postgres://sm24_migration.ref:pw@pooler:5432/postgres',
   DATABASE_CA_CERT: '-----BEGIN CERTIFICATE-----\\nMIIC…\\n-----END CERTIFICATE-----',
   PAYLOAD_SECRET: '0123456789abcdef0123456789abcdef',
   NEXT_PUBLIC_SITE_URL: 'https://schluesselmacher24.de',
@@ -56,8 +56,8 @@ describe('pruefeUmgebung', () => {
         ...ohneCa,
         DATABASE_URL: undefined,
         DATABASE_URL_UNPOOLED: undefined,
-        POSTGRES_URL: 'postgres://u:p@pooler:6543/postgres?sslmode=require&supa=base-pooler.x',
-        POSTGRES_URL_NON_POOLING: 'postgres://u:p@pooler:5432/postgres?sslmode=require',
+        POSTGRES_URL: 'postgres://sm24_app.ref:p@pooler:6543/postgres?sslmode=require&supa=base-pooler.x',
+        POSTGRES_URL_NON_POOLING: 'postgres://sm24_migration.ref:p@pooler:5432/postgres?sslmode=require',
       }).fehler,
     ).toEqual([]);
 
@@ -84,6 +84,20 @@ describe('pruefeUmgebung', () => {
     expect(warnungen.join('\n')).toMatch(/STORAGE_SECRET_KEY/);
   });
 
+  it('verlangt in Produktion getrennte Rollen für Laufzeit und Migrationen', () => {
+    const mit = (aenderung: Record<string, string | undefined>) => pruefeUmgebung({ ...PRODUKTION, ...aenderung }).fehler;
+    expect(mit({ DATABASE_URL_UNPOOLED: undefined })).toEqual([expect.stringMatching(/^DATABASE_URL_UNPOOLED fehlt/)]);
+    expect(mit({ DATABASE_URL: 'postgres://postgres.ref:pw@pooler:6543/postgres' })).toEqual([
+      expect.stringMatching(/^DATABASE_URL nutzt die Rolle postgres/),
+    ]);
+    expect(mit({ DATABASE_URL_UNPOOLED: 'postgres://sm24_app.ref:pw@pooler:5432/postgres' })).toEqual([
+      expect.stringMatching(/dieselbe Rolle/),
+    ]);
+    // Notausgang, und ohne Datenbank gibt es nur den Fehler zur fehlenden Datenbank.
+    expect(mit({ DATABASE_URL_UNPOOLED: undefined, SM24_ROLLENTRENNUNG: 'aus' })).toEqual([]);
+    expect(mit({ DATABASE_URL: undefined })).toHaveLength(1);
+  });
+
   it('prüft außerhalb der Produktion nichts', () => {
     expect(pruefeUmgebung({ VERCEL: '1', VERCEL_ENV: 'preview' })).toEqual({ fehler: [], warnungen: [] });
     expect(pruefeUmgebung({})).toEqual({ fehler: [], warnungen: [] });
@@ -94,16 +108,26 @@ describe('planeBuild', () => {
   it('Produktion: Migration über die direkte Verbindung, Seed, Pflicht-Zugang, Pflicht-Prüfung, dann next build', () => {
     const { schritte } = planeBuild(PRODUKTION, { node: 'node', wurzel: '/repo' });
     expect(schritte.map((s) => s.name)).toEqual([
-      'Migrationen', 'Seed', 'Erster Backend-Zugang', 'Livegang-Prüfung', 'Next.js-Build',
+      'Migrationen', 'Datenbankrechte-Prüfung', 'Seed', 'Erster Backend-Zugang', 'Livegang-Prüfung', 'Next.js-Build',
     ]);
     expect(schritte[0]).toMatchObject({
       befehl: ['node', '/repo/node_modules/payload/bin.js', 'migrate'],
-      env: { DATABASE_URL: 'postgres://direkt:5432/postgres' },
+      env: { DATABASE_URL: PRODUKTION.DATABASE_URL_UNPOOLED },
     });
-    expect(schritte[1].env).toEqual({ DATABASE_URL: 'postgres://pooler:6543/postgres' });
-    expect(schritte[2].env?.SM24_ADMIN_PFLICHT).toBe('1');
-    expect(schritte[3].nurWarnung).toBe(false);
-    expect(schritte[4].befehl).toEqual(['node', '/repo/node_modules/next/dist/bin/next', 'build']);
+    // Rechte als Laufzeitrolle prüfen, in Produktion als Pflicht.
+    expect(schritte[1]).toEqual({
+      name: 'Datenbankrechte-Prüfung',
+      befehl: ['node', '/repo/scripts/supabase-rechte.mjs', 'pruefen'],
+      env: { SUPABASE_RECHTE_URL: PRODUKTION.DATABASE_URL },
+      nurWarnung: false,
+    });
+    expect(schritte[2].env).toEqual({ DATABASE_URL: PRODUKTION.DATABASE_URL });
+    expect(schritte[3].env?.SM24_ADMIN_PFLICHT).toBe('1');
+    expect(schritte[4].nurWarnung).toBe(false);
+    expect(schritte[5].befehl).toEqual(['node', '/repo/node_modules/next/dist/bin/next', 'build']);
+
+    const notausgang = planeBuild({ ...PRODUKTION, SM24_RECHTE_PRUEFUNG: 'warnung' }).schritte;
+    expect(notausgang.find((s) => s.name === 'Datenbankrechte-Prüfung')?.nurWarnung).toBe(true);
   });
 
   it('Vorschau mit Datenbank: nichts an der Datenbank ändern — außer mit SM24_PREVIEW_MIGRATE=1', () => {
@@ -115,6 +139,7 @@ describe('planeBuild', () => {
     expect(mitMigration.map((s) => s.name)).toContain('Migrationen');
     expect(mitMigration.find((s) => s.name === 'Erster Backend-Zugang')?.env?.SM24_ADMIN_PFLICHT).toBe('');
     expect(mitMigration.find((s) => s.name === 'Livegang-Prüfung')?.nurWarnung).toBe(true);
+    expect(mitMigration.find((s) => s.name === 'Datenbankrechte-Prüfung')?.nurWarnung).toBe(true);
   });
 
   it('ohne Datenbank nur next build', () => {
@@ -130,5 +155,24 @@ describe('planeBuild', () => {
     ]);
     expect(lokal[0].befehl).toEqual(['node', '/repo/scripts/db.mjs', 'ensure']);
     expect(lokal[4].nurWarnung).toBe(true);
+  });
+});
+
+describe('Rollentrennung', () => {
+  it('liest die Rolle aus der Pooler-Adresse', () => {
+    expect(datenbankRolle('postgres://sm24_app.abcdef:pw@aws-1-eu-central-1.pooler.supabase.com:6543/postgres')).toBe('sm24_app');
+    expect(datenbankRolle('postgres://postgres:pw@127.0.0.1:5433/sm24')).toBe('postgres');
+    expect(datenbankRolle('postgres://pooler:6543/postgres')).toBeUndefined();
+    expect(datenbankRolle(undefined)).toBeUndefined();
+    expect(datenbankRolle('kein url')).toBeUndefined();
+  });
+
+  it('akzeptiert die Vercel-Variablen der Integration als direkte Verbindung', () => {
+    expect(
+      rollenFehler({
+        DATABASE_URL: 'postgres://sm24_app.ref:pw@pooler:6543/postgres',
+        POSTGRES_URL_NON_POOLING: 'postgres://sm24_migration.ref:pw@pooler:5432/postgres',
+      }),
+    ).toEqual([]);
   });
 });
