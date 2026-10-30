@@ -9,7 +9,7 @@ Alle Variablen mit Erklärung stehen in `.env.example`. Auf Vercel gehören sie 
 | Dienst | Wofür | Tarif |
 |---|---|---|
 | Domain-/Mailhoster | Domain `schluesselmacher24.de`, Postfach `info@schluesselmacher24.de` | vorhanden bzw. beim Hoster |
-| Supabase (Region Frankfurt) | Postgres-Datenbank und privater Speicher für Fotos und Unterlagen | **Pro** (Free pausiert nach Inaktivität und hat keine Backups) |
+| Supabase (Region Frankfurt) | Postgres-Datenbank und privater Speicher für Fotos und Unterlagen | Start im **Free**-Plan: Wachhalten, eigene Sicherung und Überwachung sind eingerichtet ([SUPABASE.md](SUPABASE.md)). **Pro** zum echten Livegang empfohlen (keine Pausen, tägliche Backups) – Ablauf in SUPABASE.md, Abschnitt Pro-Wechsel |
 | Vercel | Hosting, Region Frankfurt (`vercel.json`), tägliche Crons | **Pro** (laut Vercel-Bedingungen für gewerbliche Seiten vorgeschrieben) |
 | Stripe | Online-Zahlung (Anzahlung Termin, Shop) | Gebühren je Zahlung |
 | Resend | Versand der E-Mails | Free genügt für den Start (100 Mails/Tag), sonst Pro |
@@ -24,21 +24,19 @@ Reihenfolge: **1 Postfach → 2 Supabase → 3 Resend → 4 Stripe (Testmodus) �
 
 ## 2. Supabase: Datenbank und Dateiablage
 
-1. Neues Projekt anlegen: Region **Frankfurt (eu-central-1)**, sicheres Datenbank-Passwort notieren. Tarif Pro.
-2. **Connect** öffnen und die Verbindungen kopieren (Passwort einsetzen):
-   - **Transaction pooler** (Port **6543**) → `DATABASE_URL`
-   - **Session pooler** (Port **5432**, Host `…pooler.supabase.com`) → `DATABASE_URL_UNPOOLED`
+Das Projekt `schluesselmacher24` (Region Frankfurt) ist angelegt und gehärtet. Alle Einzelheiten, Direktlinks und der Stand stehen in [SUPABASE.md](SUPABASE.md); hier nur die Reihenfolge.
 
-   Nicht die „Direct connection“ (`db.<ref>.supabase.co`) nehmen, sie ist nur per IPv6 erreichbar und funktioniert aus Vercel nicht.
-3. **Database → Settings → SSL Configuration → Download certificate**: Den Inhalt der Datei nach `DATABASE_CA_CERT` kopieren. Ohne Zertifikat bricht der Produktions-Build ab (sonst liefe die Verbindung unverschlüsselt).
-   Im selben Abschnitt **Database → Settings → Enforce SSL on incoming connections** einschalten: Dann nimmt die Datenbank keine unverschlüsselte Verbindung mehr an.
-4. **Storage → New bucket**: Name `sm24-dateien`, **Public aus**. Dort liegen Fahrzeugscheine, Schlüsselfotos und Grundrisse, sie dürfen nie öffentlich sein.
-5. **Storage → S3 Connection**:
-   - Endpoint → `STORAGE_ENDPOINT` (`https://<ref>.storage.supabase.co/storage/v1/s3`)
-   - Region → `STORAGE_REGION` (`eu-central-1`)
-   - **New access key** → `STORAGE_ACCESS_KEY` und `STORAGE_SECRET_KEY`
-   - `STORAGE_BUCKET=sm24-dateien`
-6. Tabellen müssen nicht von Hand angelegt werden, das erledigt der erste Produktions-Build über die Migrationen.
+1. **Härtung**: Die SQL-Dateien `supabase/sql/0001–0005` spielt Claude über das Supabase-MCP ein (Rechte, Rollen, RLS-Automatik, Lebenszeichen, privater Bucket `sm24-dateien`). Tabellen nie von Hand anlegen – das erledigen die Migrationen im ersten Produktions-Build.
+2. **Dashboard-Einstellungen** nach der Klickliste in SUPABASE.md: Data API aus, SSL erzwingen, Registrierung aus, Realtime nur privat, alte API-Schlüssel aus, Upload-Grenze, S3-Schlüssel.
+3. **Rollenpasswörter**: Für `sm24_migration`, `sm24_app` und `sm24_sicherung` je ein Zufallspasswort erzeugen und als SCRAM-Verifier setzen (`node scripts/scram-verifier.mjs <rolle>`, Ausgabe im SQL-Editor ausführen). Das `postgres`-Passwort zurücksetzen und nur im Passwortmanager aufbewahren – es gehört in keine Umgebungsvariable.
+4. **Verbindungen** (Host aus **Connect**, Passwort der jeweiligen Rolle einsetzen):
+   - `DATABASE_URL` = **Transaction pooler**, Port **6543**, Benutzer `sm24_app.<ref>` (Laufzeit, nur Datenrechte)
+   - `DATABASE_URL_UNPOOLED` = **Session pooler**, Port **5432**, Benutzer `sm24_migration.<ref>` (nur Migrationen im Build)
+
+   Nicht die „Direct connection“ (`db.<ref>.supabase.co`) nehmen, sie ist nur per IPv6 erreichbar und funktioniert aus Vercel nicht. Der Produktions-Build bricht ab, wenn die Laufzeit als `postgres` oder mit derselben Rolle wie die Migrationen läuft.
+5. **Database → Settings → SSL Configuration → Download certificate**: Den Inhalt der Datei nach `DATABASE_CA_CERT` kopieren. Ohne Zertifikat bricht der Produktions-Build ab (sonst liefe die Verbindung unverschlüsselt).
+6. **Storage → S3**: Endpoint `https://<ref>.storage.supabase.co/storage/v1/s3` → `STORAGE_ENDPOINT`, `STORAGE_REGION=eu-central-1`, `STORAGE_BUCKET=sm24-dateien`; Zugangsschlüssel „vercel-laufzeit“ → `STORAGE_ACCESS_KEY` und `STORAGE_SECRET_KEY`. Einen zweiten Schlüssel „sicherung“ für die nächtliche Sicherung anlegen (getrennt widerrufbar).
+7. Nach dem ersten Build prüft `npm run pruefen:supabase` (oder der Build selbst) die Rechte: RLS auf allen Tabellen, keine Rechte für die API-Rollen, Eigentümer `sm24_migration`.
 
 ## 3. Resend: E-Mail-Versand
 
@@ -97,7 +95,7 @@ Das Projekt `schluesselmacher24` ist bereits mit dem GitHub-Repo verbunden (Team
 | `CRON_SECRET` | `openssl rand -hex 32` |
 | `SEED_ADMIN_EMAIL` | E-Mail für den ersten Backend-Zugang |
 | `SEED_ADMIN_PASSWORD` | mindestens 12 Zeichen, nach der ersten Anmeldung ändern |
-| `DATABASE_URL`, `DATABASE_URL_UNPOOLED`, `DATABASE_CA_CERT` | aus Schritt 2 |
+| `DATABASE_URL` (`sm24_app`), `DATABASE_URL_UNPOOLED` (`sm24_migration`), `DATABASE_CA_CERT` | aus Schritt 2 |
 | `STORAGE_ENDPOINT`, `STORAGE_REGION`, `STORAGE_BUCKET`, `STORAGE_ACCESS_KEY`, `STORAGE_SECRET_KEY` | aus Schritt 2 |
 | `MAIL_*` | aus Schritt 3 |
 | `PAYMENT_*` | aus Schritt 4 |
@@ -109,7 +107,7 @@ Das Projekt `schluesselmacher24` ist bereits mit dem GitHub-Repo verbunden (Team
 
 1. **Deployments → Redeploy** auf `main`, ohne Build-Cache. Im Build-Log läuft:
    - Prüfung der Pflichtvariablen (bricht mit klarer Meldung ab, wenn etwas fehlt)
-   - Migrationen, Seed (Firmendaten, Preise, Inhalte)
+   - Migrationen (als `sm24_migration`), danach die Datenbankrechte-Prüfung, dann der Seed (Firmendaten, Preise, Inhalte)
    - Anlage des ersten Backend-Zugangs
    - Livegang-Prüfung (bricht ab, wenn Firmendaten oder Rechtsseiten noch Platzhalter enthalten)
    - `next build`

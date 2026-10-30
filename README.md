@@ -76,7 +76,7 @@ SM24_DATA=json npx next build
 ## Tests
 
 - **Unit-Tests:** `npm run test:unit` (Vitest 2, Umgebung `node`, ohne DOM; `vitest.config.ts`). 113 Unit-Testdateien mit 1531 Tests (`find src -name '*.test.ts*' ! -name '*.db.test.ts' | wc -l`).
-- **DB-Tests:** `npm run test:db` (`vitest.db.config.ts`), 11 Dateien `*.db.test.ts` mit 77 Tests. Die Datei `src/test/db-global-setup.ts` startet eine eigene Postgres-Instanz (Port 5434, änderbar mit `SM24_TEST_PG_PORT`) und spielt Migrationen und Seed ein.
+- **DB-Tests:** `npm run test:db` (`vitest.db.config.ts`), 16 Dateien `*.db.test.ts`. Die Datei `src/test/db-global-setup.ts` startet eine eigene Postgres-Instanz (Port 5434, änderbar mit `SM24_TEST_PG_PORT`), richtet Rollen und Rechte wie bei Supabase ein (`supabase/`), spielt die Migrationen als `sm24_migration` ein und führt Seed und alle Tests als Laufzeitrolle `sm24_app` aus – so fallen fehlende Rechte schon hier auf.
 - Als root sind die DB-Tests nicht lauffähig (`initdb` lehnt root ab); im Gestaltungslauf liefen sie über einen Nutzer ohne root-Rechte.
 - **Prüfungen:** `npm run typecheck` und `npm run lint`. Die CI (`.github/workflows/ci.yml`) führt alles samt DB-Tests und Build ohne Datenbank für jeden PR auf `main` aus.
 
@@ -113,7 +113,7 @@ Alle Anbindungen sind fertig programmiert und schalten sich ein, sobald ihre Var
 |---|---|---|---|
 | Online-Zahlung (Stripe Checkout) | `src/lib/integrations/stripe.ts`, `src/lib/zahlung/*`, Webhook `api/zahlung/stripe`, Rückkehr `api/zahlung/rueckkehr` | `PAYMENT_PROVIDER`, `PAYMENT_API_KEY`, `PAYMENT_WEBHOOK_SECRET`, `PAYMENT_METHODS`, `PAYMENT_INVOICES` | Vorgang mit Zahlung „offen“, Verbuchung von Hand |
 | E-Mail (Resend) | `src/lib/mail/*`, `src/lib/server/benachrichtigungen.ts`, Payload-Adapter `@payloadcms/email-resend` | `MAIL_PROVIDER`, `MAIL_API_KEY`, `MAIL_FROM_ADDRESS`, `MAIL_TEAM_ADDRESS`, `MAIL_REPLY_TO` | keine Mails, Vorgänge werden trotzdem gespeichert |
-| Datenbank (Supabase Postgres) | `src/payload.config.ts`, `src/payload/betrieb.ts` | `DATABASE_URL`, `DATABASE_URL_UNPOOLED`, `DATABASE_CA_CERT` | Seite liest `content/*.json`, keine Vorgänge (in Produktion verboten) |
+| Datenbank (Supabase Postgres, Einrichtung in [docs/SUPABASE.md](docs/SUPABASE.md)) | `src/payload.config.ts`, `src/payload/betrieb.ts`, `supabase/` | `DATABASE_URL` (`sm24_app`), `DATABASE_URL_UNPOOLED` (`sm24_migration`), `DATABASE_CA_CERT` | Seite liest `content/*.json`, keine Vorgänge (in Produktion verboten) |
 | Dateiablage (Supabase Storage, privater Bucket) | `@payloadcms/storage-s3` für Medien, Kundendateien, interne Dateien | `STORAGE_ENDPOINT`, `STORAGE_REGION`, `STORAGE_BUCKET`, `STORAGE_ACCESS_KEY`, `STORAGE_SECRET_KEY` | auf Vercel keine Uploads |
 | Crons (Vercel) | `api/cron/taeglich` (Löschfristen), `api/cron/zahlungen` (Abgleich), `vercel.json` | `CRON_SECRET` | Crons werden abgewiesen |
 

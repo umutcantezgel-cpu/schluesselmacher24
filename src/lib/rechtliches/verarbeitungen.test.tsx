@@ -30,10 +30,10 @@ describe('Verarbeitungsverzeichnis', () => {
 
   it('deckt den eingesetzten Stack und die Pflichtthemen ab', () => {
     const ids = liste.map((e) => e.id);
-    for (const id of ['hosting', 'datenbank', 'vorgaenge', 'dateien', 'zahlung', 'email', 'kontakt', 'browser', 'ratenbegrenzung', 'widerruf']) {
+    for (const id of ['hosting', 'datenbank', 'sicherung', 'vorgaenge', 'dateien', 'zahlung', 'email', 'kontakt', 'browser', 'ratenbegrenzung', 'widerruf']) {
       expect(ids).toContain(id);
     }
-    expect(DIENSTLEISTER.map((d) => d.id)).toEqual(['vercel', 'supabase', 'stripe', 'resend']);
+    expect(DIENSTLEISTER.map((d) => d.id)).toEqual(['vercel', 'supabase', 'github', 'cloudflare', 'stripe', 'resend']);
   });
 
   it('nennt den Upload beim Auswählen, die 24-Stunden-Löschung und die Fristen aus den Einstellungen', () => {
@@ -88,7 +88,7 @@ describe('Google Analytics in der Datenschutzerklärung', () => {
 
   it('erscheint nur, wenn eine Mess-ID gesetzt ist', () => {
     expect(verarbeitungen(settings).some((e) => e.id === 'statistik')).toBe(false);
-    expect(dienstleister().map((d) => d.id)).toEqual(['vercel', 'supabase', 'stripe', 'resend']);
+    expect(dienstleister().map((d) => d.id)).toEqual(['vercel', 'supabase', 'github', 'cloudflare', 'stripe', 'resend']);
     expect(verarbeitungen(settings, { statistik: true }).some((e) => e.id === 'statistik')).toBe(true);
     expect(dienstleister({ statistik: true }).map((d) => d.id)).toContain('google');
   });

@@ -96,6 +96,9 @@ export default buildConfig({
   editor: lexicalEditor(),
   db: postgresAdapter({
     pool: poolKonfiguration(),
+    // Payloads createDatabase() verbände ohne CA und sslmode, also unverschlüsselt;
+    // die Datenbank gibt es ohnehin immer (Supabase, scripts/db.mjs).
+    disableCreateDatabase: true,
     // Schema nur über committete Migrationen — gleich lokal und bei Supabase.
     push: false,
     migrationDir: path.resolve(dirname, 'migrations'),
