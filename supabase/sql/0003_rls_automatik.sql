@@ -40,11 +40,20 @@ $$;
 
 revoke all on function intern.rls_automatisch() from public;
 
-drop event trigger if exists sm24_rls_automatik;
-create event trigger sm24_rls_automatik
-  on ddl_command_end
-  when tag in ('CREATE TABLE', 'CREATE TABLE AS', 'SELECT INTO')
-  execute function intern.rls_automatisch();
+-- Anlegen ohne vorheriges DROP: Das Einspielen enthält so keine zerstörende
+-- Anweisung. Eine spätere Änderung am Trigger kommt in eine neue Datei.
+do $$
+begin
+  if not exists (select from pg_event_trigger where evtname = 'sm24_rls_automatik') then
+    create event trigger sm24_rls_automatik
+      on ddl_command_end
+      when tag in ('CREATE TABLE', 'CREATE TABLE AS', 'SELECT INTO')
+      execute function intern.rls_automatisch();
+  end if;
+end
+$$;
+-- Auch ein von Hand abgeschalteter Trigger ist danach wieder aktiv.
+alter event trigger sm24_rls_automatik enable;
 
 -- Schon vorhandene Tabellen nachziehen (etwa nach einer Wiederherstellung).
 do $$

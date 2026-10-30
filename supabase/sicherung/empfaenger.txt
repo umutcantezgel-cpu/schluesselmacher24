@@ -1,0 +1,16 @@
+# Öffentliche age-Schlüssel, an die die nächtliche Sicherung verschlüsselt
+# (.github/workflows/sicherung.yml, docs/SUPABASE.md). Eine Zeile je Schlüssel,
+# Kommentare mit #. Nur öffentliche Schlüssel (age1…) – sie dürfen im
+# öffentlichen Repo stehen. Die privaten Schlüssel liegen nie in CI, im Repo
+# oder bei Claude, sondern offline beim Inhaber (Passwortmanager und
+# ausgedruckte Notfallkopie).
+#
+# Schlüsselpaar erzeugen (auf dem eigenen Rechner):
+#   age-keygen -o sm24-sicherung-inhaber.txt
+# Die Zeile „# public key: age1…“ der Ausgabe ohne „# public key: “ hier eintragen.
+# Empfohlen: zwei Schlüssel – Inhaber und Notfall (zweite Person oder Tresor).
+#
+# Solange hier kein Schlüssel steht, bricht die Sicherung vor dem Hochladen ab.
+#
+# Inhaber:
+# Notfall:

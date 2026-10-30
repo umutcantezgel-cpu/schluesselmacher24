@@ -26,15 +26,19 @@ Die Datenbank-Einstellungen sind versioniert in `supabase/sql/` und werden von C
 |---|---|---|
 | `0001_grundschutz.sql` | `anon`, `authenticated`, `service_role` bekommen in `public` nichts, auch nicht für künftige Objekte | angewendet |
 | `0002_rollen.sql` | Rollen `sm24_migration`, `sm24_app`, `sm24_sicherung` mit Zeitgrenzen, Verbindungslimits und Rechten | angewendet |
-| `0003_rls_automatik.sql` | Event-Trigger `sm24_rls_automatik`: jede neue Tabelle in `public` und `intern` bekommt RLS; bricht eher ab, als eine Tabelle ohne RLS zuzulassen | offen |
-| `0004_lebenszeichen.sql` | `intern.lebenszeichen` und `intern.lebenszeichen_setzen()` für Wachhalten und Überwachung | offen |
-| `0005_ablage.sql` | privater Bucket `sm24-dateien`, 5 MB, nur die Dateitypen der Upload-Sammlungen | offen |
+| `0003_rls_automatik.sql` | Event-Trigger `sm24_rls_automatik`: jede neue Tabelle in `public` und `intern` bekommt RLS; bricht eher ab, als eine Tabelle ohne RLS zuzulassen | angewendet |
+| `0004_lebenszeichen.sql` | `intern.lebenszeichen` und `intern.lebenszeichen_setzen()` für Wachhalten und Überwachung | angewendet |
+| `0005_ablage.sql` | privater Bucket `sm24-dateien`, 5 MB, nur die Dateitypen der Upload-Sammlungen | angewendet |
+
+Stand 30.10.2026: Alle fünf Dateien sind in Projekt A angewendet. Die Rechte-Prüfung meldet nichts. Eine Probe bei Supabase hat bestätigt, dass eine von `sm24_migration` angelegte Tabelle sofort RLS bekommt; die Probe wurde zurückgerollt. Keine Datei enthält `DROP`: Der Event-Trigger wird nur angelegt, wenn er fehlt, und beim erneuten Einspielen wieder eingeschaltet.
+
+Projekt B hat seine eigenen Dateien im Repo schluesseldienst (`pipeline/betriebswerte/datenbank.sql` und `startwerte.sql`). Sie sind seit dem 30.10.2026 als `sd_0001_datenbank` und `sd_0002_startwerte` angewendet: 54 Werte, keiner bestätigt.
 
 Lokal und in CI spielt `node scripts/supabase-rechte.mjs anwenden --nachbildung` dieselben Dateien ein; `supabase/nachbildung.sql` bildet dafür die Supabase-Rollen nach. Die DB-Tests laufen so wie die Produktion: Migrationen als `sm24_migration`, alle Tests als `sm24_app` (`src/test/db-global-setup.ts`, `src/test/rollen.db.test.ts`).
 
 **Rechte-Prüfung**: `supabase/pruefungen/rechte.sql` listet jede Abweichung als Befund (RLS aus, Rechte für API-Rollen, falscher Eigentümer, fehlender Event-Trigger, Laufzeitrolle mit DDL-Rechten …). Sie läuft im Produktions-Build direkt nach den Migrationen als `sm24_app` und bricht den Build bei Befunden ab (Notausgang `SM24_RECHTE_PRUEFUNG=warnung`); von Hand mit `npm run pruefen:supabase`.
 
-Erwartete Hinweise der Supabase-Advisors: „RLS enabled, no policy“ (Stufe INFO) für alle Tabellen – gewollt, das ist die Sperre für die API-Rollen.
+Erwartete Hinweise der Supabase-Advisors: „RLS enabled, no policy“ (Stufe INFO) für alle Tabellen. Das ist gewollt, denn genau das sperrt die API-Rollen aus. Am 30.10.2026 betraf der Hinweis in beiden Projekten nur `intern.lebenszeichen`, die Performance-Advisors meldeten nichts. Die Payload-Tabellen kommen mit dem ersten Deploy dazu.
 
 ## Dashboard-Klickliste (Inhaber)
 
@@ -79,6 +83,10 @@ Nur im Scope **Production**, als „Sensitive“ markiert. Den Pooler-Host zeigt
 | `STORAGE_REGION` | `eu-central-1` |
 | `STORAGE_BUCKET` | `sm24-dateien` |
 | `STORAGE_ACCESS_KEY`, `STORAGE_SECRET_KEY` | S3-Schlüssel „vercel-laufzeit“ |
+| `GESUNDHEIT_SCHLUESSEL` | Zufallswert mit mindestens 24 Zeichen für `/api/gesundheit`. Ohne ihn antwortet die Route immer mit 404 |
+| `SM24_GRENZE_*`, `SM24_SICHERUNG_PRUEFEN` | optional, Schwellen der Überwachung (Abschnitt Überwachung) |
+
+Die drei öffentlichen Werte `STORAGE_ENDPOINT`, `STORAGE_REGION` und `STORAGE_BUCKET` dürfen schon vor den Schlüsseln eingetragen sein. Ohne Schlüssel bleibt die Dateiablage aus (`dateiablage()` in `src/lib/umgebung.ts`), und der Build gibt nur eine Warnung aus.
 
 Sonderzeichen im Passwort in der Adresse prozentkodieren. Der Produktions-Build prüft die Rollentrennung (`scripts/build.mjs`): Laufzeit als `postgres` oder dieselbe Rolle für Laufzeit und Migrationen bricht ab (Notausgang `SM24_ROLLENTRENNUNG=aus`).
 
@@ -90,7 +98,7 @@ Free-Projekte pausieren nach etwa sieben Tagen mit zu wenig Datenbank-Aktivität
 |---|---|---|
 | Arbeitslast | Vercel-Crons `taeglich` (02:17 UTC) und `zahlungen` (03:47 UTC); `taeglich` setzt das Lebenszeichen `cron-taeglich` | – |
 | Workflows über den Pooler | `sicherung.yml` um 00:41 und 12:41 UTC | `betriebswerte.yml` um 03:23 und 15:23 UTC |
-| Uptime-Monitor | `/api/gesundheit?schluessel=…` alle 3–5 Minuten (kostenloser Dienst, z. B. Better Stack oder UptimeRobot; Nutzungsbedingungen für gewerbliche Seiten prüfen) | – |
+| Uptime-Monitor | `/api/gesundheit?schluessel=<GESUNDHEIT_SCHLUESSEL>` alle 3–5 Minuten (kostenloser Dienst, z. B. Better Stack oder UptimeRobot; Nutzungsbedingungen für gewerbliche Seiten prüfen). Die Route führt `SELECT 1` mit 5 s Zeitgrenze aus und antwortet mit `{"ok":true}` (200) oder 503. Ohne gültigen Schlüssel antwortet sie mit 404 und fragt die Datenbank nicht ab | – |
 | Aufsicht | wöchentliche Claude-Aufgabe: Status, Lebenszeichen, Größe, Advisors; ein pausiertes Projekt wird wiederhergestellt und gemeldet | ebenso |
 | Netz | Supabase-Warnmail etwa sieben Tage vor einer Pause; Workflows halten sich über die GitHub-API aktiv (GitHub schaltet Zeitpläne öffentlicher Repos sonst nach 60 Tagen ohne Aktivität ab) | ebenso |
 
@@ -107,7 +115,22 @@ Free hat keine Backups, Pro-Backups sind nicht herunterladbar und enthalten kein
 - **Dateien**: `rclone sync` in einen verschlüsselten Remote; gelöschte Dateien wandern nach `geloescht/<datum>/` und verschwinden nach 31 Tagen – so gelten die Löschfristen auch für die Sicherung. `--max-delete 50` stoppt eine Massenlöschung.
 - **Logs**: öffentlich lesbar, deshalb nur feste Texte. Fehlerprotokolle werden verschlüsselt nach `fehler/` gelegt.
 - **Lebenszeichen**: `sicherung-db` und `sicherung-dateien`; der Workflow schlägt fehl, wenn `cron-taeglich` älter als 36 Stunden ist, und der tägliche Cron meldet eine veraltete Sicherung.
-- **Aktivieren**: Repository-Variable `SICHERUNG_AKTIV=true`, Environment `sicherung` (nur `main`) mit den Werten aus der Tabelle unten, `empfaenger.txt` mit den öffentlichen `age1…`-Schlüsseln (Inhaber und Notfall).
+- **Ablage in R2**:
+  - Datenbank-Bucket: `taeglich|woechentlich|monatlich/<datum>/sm24-datenbank-<UTC-Zeit>.dump.age`, jeweils mit `.sha256` daneben. Fehlerprotokolle liegen unter `fehler/<datum>/<lauf>-<versuch>-<job>.tar.gz.age`.
+  - Datei-Bucket: aktueller Stand unter `aktuell/`, Gelöschtes und Ersetztes unter `geloescht/<datum>/`.
+  - Das Datum ist deutsche Zeit. Sonntags kommt eine Kopie nach `woechentlich/`, am Monatsersten nach `monatlich/`.
+- **Bucket-Lock**: nur auf `sm24-sicherung-db`, und nicht länger als die kürzeste Lifecycle-Frist (14 Tage). Auf `sm24-sicherung-dateien` kein Lock, sonst kann rclone gelöschte Dateien nicht aus `aktuell/` verschieben.
+- **Neuer crypt-Schlüssel** heißt: neuer Ordner (oder neuer Bucket). Im alten würde rclone alles als gelöscht ansehen, und der Schutz vor Massenlöschung stoppt den Lauf.
+
+**Aktivieren**, in dieser Reihenfolge:
+
+1. In `supabase/sicherung/empfaenger.txt` die öffentlichen `age1…`-Schlüssel von Inhaber und Notfall eintragen. Plugin-Schlüssel (YubiKey) gehen in CI nicht. Ohne Schlüssel bricht der Job vor dem Abzug ab.
+2. Environment `sicherung` anlegen (Settings → Environments): unter „Deployment branches and tags“ nur `main`, **keine** Pflicht-Prüfer, sonst warten die nächtlichen Läufe auf eine Freigabe. Ohne vorab angelegtes Environment legt GitHub es beim ersten Lauf ungeschützt an.
+3. Secrets und Variablen aus der Tabelle unten eintragen.
+4. `SICHERUNG_AKTIV=true` als **Repository-Variable** setzen (Settings → Secrets and variables → Actions → Variables). Eine Environment-Variable reicht nicht, weil die Job-Bedingung sie nicht sieht.
+5. Actions → „Sicherung“ → „Run workflow“ auf `main` mit `erzwingen` starten. Der Datenbank-Job schlägt mit Absicht fehl, solange `/api/cron/taeglich` nach dem Deploy noch nie gelaufen ist (Kreuzprüfung, s. o.).
+
+Bis die Sicherung läuft, meldet der tägliche Cron einmal am Tag „noch nie gelaufen“. `SM24_SICHERUNG_PRUEFEN=0` in Vercel pausiert diese Meldung.
 
 | Environment `sicherung` | Art | Inhalt |
 |---|---|---|
@@ -117,23 +140,43 @@ Free hat keine Backups, Pro-Backups sind nicht herunterladbar und enthalten kein
 | `ZIEL_CRYPT_PASSWORT`, `ZIEL_CRYPT_SALZ` | Secret | rclone-crypt-Schlüssel der Dateisicherung (auch im Passwortmanager!) |
 | `SB_POOLER_HOST`, `SB_PROJEKT_REF`, `SB_CA_CERT` | Variable | Pooler-Host, `csheqgiqnxwbfbfrlmly`, CA-Zertifikat |
 | `QUELLE_S3_ENDPOINT`, `QUELLE_S3_REGION` | Variable | `https://csheqgiqnxwbfbfrlmly.storage.supabase.co/storage/v1/s3`, `eu-central-1` |
-| `ZIEL_S3_ENDPOINT` | Variable | R2-Endpunkt (EU) |
+| `ZIEL_S3_ENDPOINT` | Variable | R2-Endpunkt in EU-Jurisdiktion: `https://<account-id>.eu.r2.cloudflarestorage.com` |
+| `SICHERUNG_GRENZE_MB`, `CRON_GRENZE_STUNDEN` | Variable, optional | Abbruchgrenze der Tabellengröße (Standard 200) und Höchstalter des Cron-Lebenszeichens (Standard 36) |
+
+Die Variablen sind nicht geheim, liegen aber trotzdem im Environment, damit alles für die Sicherung an einer Stelle steht. Den Pooler-Host zeigt Supabase unter **Connect** → „Session pooler“ (ohne Port). Beim manuellen Start gibt es zwei Eingaben: `erzwingen` (Datenbank auch dann sichern, wenn es heute schon eine Sicherung gibt) und `max_loeschungen` (Standard 50).
 
 **Wiederherstellung** (Datenbank zuerst, dann Dateien):
 
 1. Bei Bedarf neues Projekt in Frankfurt, dann `supabase/sql/0001–0005` per MCP einspielen und die Verifier der Rollen setzen.
-2. Neueste Sicherung aus R2 laden und lokal mit dem privaten age-Schlüssel entschlüsseln: `age -d -i schluessel.txt datenbank.dump.age > datenbank.dump`.
-3. Als `sm24_migration` über den Session-Pooler einspielen: `pg_restore --no-owner --no-privileges --single-transaction --exit-on-error --dbname "<sm24_migration-Adresse>?sslmode=verify-full&sslrootcert=ca.crt" datenbank.dump`. Nie `REASSIGN OWNED BY postgres`.
+2. Neueste Sicherung aus R2 laden (`.dump.age` und `.sha256`, Prüfsumme mit `sha256sum -c` kontrollieren).
+3. Auf dem eigenen Rechner (PostgreSQL-Clientprogramme 17, `age`) als `sm24_migration` über den Session-Pooler einspielen:
+   ```bash
+   export PGHOST=<pooler-host> PGPORT=5432 PGDATABASE=postgres
+   export PGUSER=sm24_migration.csheqgiqnxwbfbfrlmly PGSSLMODE=verify-full PGSSLROOTCERT=supabase-ca.crt
+   AGE_SCHLUESSEL=schluessel.txt scripts/sicherung/wiederherstellen.sh sm24-datenbank-….dump.age
+   ```
+   Das Skript entschlüsselt die Datei und spielt sie mit `pg_restore --no-owner --no-privileges --single-transaction --exit-on-error` ein. Dabei lässt es den Eintrag `CREATE SCHEMA public` weg, weil ein reines `pg_restore` daran scheitert. Es arbeitet nur als `sm24_migration` und nur in ein leeres `public`; `--ersetzen` überschreibt bewusst. Nie `REASSIGN OWNED BY postgres`.
 4. `npm run pruefen:supabase` – keine Befunde erwartet; danach auf Vercel neu deployen.
-5. Dateien mit `rclone copy` aus dem verschlüsselten Remote zurück in `sm24-dateien`. Nach einer Wiederherstellung auf einen älteren Stand löscht der tägliche Cron abgelaufene Dateien von selbst wieder.
+5. Dateien mit `rclone copy` aus dem verschlüsselten Remote (`aktuell/`, dieselben crypt-Schlüssel) zurück in `sm24-dateien`. Nach einer Wiederherstellung auf einen älteren Stand löscht der tägliche Cron abgelaufene Dateien von selbst wieder.
 
-**Probe**: Die nächtliche Probe-Wiederherstellung prüft jede Sicherung. Zusätzlich vierteljährlich von Hand: neueste Sicherung lokal entschlüsseln und in die lokale Datenbank einspielen (`npm run db:start`, dann `pg_restore`). Der private Schlüssel liegt dabei nie in CI.
+**Probe**: Die nächtliche Probe-Wiederherstellung prüft jede Sicherung. Dazu gehört auch die Rechte-Prüfung als `sm24_app`. Zusätzlich vierteljährlich von Hand: die neueste Sicherung mit `wiederherstellen.sh` in eine leere lokale Datenbank einspielen. Vorbereitung: `npm run db:start`, dann `npm run db:rechte` (Rollen und Härtung wie bei Supabase); danach `sm24_migration` lokal ein Passwort geben. Der private Schlüssel liegt dabei nie in CI.
 
 Das Werkzeug für eine Sicherung auf einem Bürorechner bleibt `scripts/sicherung.mjs` (siehe [LIVEGANG.md](LIVEGANG.md#sicherung-und-wiederherstellung)).
 
 ## Überwachung
 
-Der tägliche Cron `/api/cron/taeglich` prüft zusätzlich den Zustand von Supabase und meldet Abweichungen per Betriebsmail (höchstens einmal am Tag): Datenbankgröße gegen die 500 MB des Free-Plans, belegter Speicher (aus den Dateigrößen der Sammlungen), Alter der Lebenszeichen der Sicherung, hochgerechneter Egress der Sicherung. Die Antwort des Crons enthält einen Block `betrieb` mit Befunden und Kennzahlen (Vercel → Logs). Die Schwellen lassen sich per Umgebungsvariable anpassen – nach einem Pro-Wechsel anheben.
+Der tägliche Cron `/api/cron/taeglich` prüft zusätzlich den Zustand von Supabase und meldet Abweichungen per Betriebsmail (höchstens einmal am Tag): Datenbankgröße gegen die 500 MB des Free-Plans, belegter Speicher (aus den Dateigrößen der Sammlungen), Alter der Lebenszeichen der Sicherung, hochgerechneter Egress der Sicherung. Die Antwort des Crons enthält einen Block `betrieb` mit Befunden und Kennzahlen (Vercel → Logs). Befunde allein lassen den Cron nicht scheitern; mit 500 antwortet er nur, wenn die Prüfung selbst abstürzt. Am Ende setzt er das Lebenszeichen `cron-taeglich` mit dem Ergebnis des Laufs. Die nächtliche Sicherung prüft es.
+
+Die Schwellen lassen sich per Umgebungsvariable in Vercel anpassen. Nach einem Pro-Wechsel werden sie angehoben:
+
+| Variable | Standard | Bedeutung |
+|---|---|---|
+| `SM24_GRENZE_DATENBANK_MB` | 500 | Größe der Datenbank, auf die sich die Prozente beziehen |
+| `SM24_GRENZE_ABLAGE_MB` | 800 | Speicher der Dateiablage (von 1 GB der Organisation) |
+| `SM24_GRENZE_WARNUNG_PROZENT`, `SM24_GRENZE_KRITISCH_PROZENT` | 60, 80 | Stufen „Warnung“ und „kritisch“ |
+| `SM24_GRENZE_SICHERUNG_STUNDEN` | 36 | Höchstalter der Lebenszeichen `sicherung-db` und `sicherung-dateien` |
+| `SM24_GRENZE_EGRESS_MB` | 1536 | hochgerechneter Egress der Sicherung je Monat |
+| `SM24_SICHERUNG_PRUEFEN` | – | `0` schaltet die Prüfung der Sicherung ab (bis sie eingerichtet ist) |
 
 ## Kontingente (Free, organisationsweit)
 

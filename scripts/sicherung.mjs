@@ -1,28 +1,36 @@
 #!/usr/bin/env node
 /**
- * Sicherung der Dateiablage und der Datenbank (Leitfaden Kap. 18).
+ * Sicherung der Dateiablage und der Datenbank auf einem Rechner des Betriebs
+ * (Leitfaden Kap. 18). Die tägliche, verschlüsselte Sicherung nach R2 macht
+ * .github/workflows/sicherung.yml (docs/SUPABASE.md); dieses Skript ist die
+ * zusätzliche Kopie fürs Büro. Supabase Free hat keine Backups.
  *
  * Lädt alle Objekte des Buckets (Kundendateien, interne Dateien, Medien)
- * über die S3-Schnittstelle in einen Zielordner und legt — wenn `pg_dump`
- * installiert ist — einen Abzug der Datenbank daneben. Läuft auf einem
- * Rechner des Betriebs, nicht auf Vercel; keine weiteren Dienste.
+ * über die S3-Schnittstelle in einen Zielordner und legt einen Abzug der
+ * Datenbank daneben – mit denselben pg_dump-Schaltern wie die nächtliche
+ * Sicherung (nur `public`, ohne die Daten der Ratenbegrenzung). Zurückspielen:
+ * scripts/sicherung/wiederherstellen.sh.
  *
  *   node --env-file=.env.sicherung scripts/sicherung.mjs
  *   SICHERUNG_ZIEL=./sicherung/2026-10-25 node --env-file=.env.sicherung scripts/sicherung.mjs
  *
- * Variablen wie im Betrieb (src/lib/umgebung.ts):
- *   STORAGE_BUCKET, STORAGE_ACCESS_KEY, STORAGE_SECRET_KEY,
+ * Variablen:
+ *   STORAGE_BUCKET, STORAGE_ACCESS_KEY, STORAGE_SECRET_KEY (S3-Schlüssel „sicherung“),
  *   STORAGE_ENDPOINT (Supabase: …/storage/v1/s3), STORAGE_REGION (Standard „auto“)
- *   DATABASE_URL_UNPOOLED (Session-Pooler, Port 5432; sonst POSTGRES_URL_NON_POOLING
- *   oder DATABASE_URL), DATABASE_CA_CERT (Zertifikat für die TLS-Prüfung)
- *   SICHERUNG_ZIEL (Standard ./sicherung/<heutiges Datum>)
+ *   SICHERUNG_DATABASE_URL  Rolle sm24_sicherung (nur lesen) über den Session-Pooler,
+ *                           Port 5432: postgresql://sm24_sicherung.<ref>:<passwort>@<pooler>:5432/postgres
+ *   DATABASE_CA_CERT        Zertifikat für die TLS-Prüfung (verify-full)
+ *   SICHERUNG_ZIEL          Standard ./sicherung/<heutiges Datum>
  *
  * Der Ordner enthält Fahrzeugscheine, Schlüsselfotos und Kundendaten:
  * verschlüsselt ablegen (z. B. verschlüsseltes Laufwerk), nie ins Repo
  * (`/sicherung/` steht in .gitignore). Schon vorhandene Dateien gleicher
  * Größe werden übersprungen — ein abgebrochener Lauf lässt sich fortsetzen.
+ * Die Konsole nennt keine Objektschlüssel (sie tragen Dateinamen von Kunden),
+ * sondern eine Kennung, die auch in dateien.json steht.
  */
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { createWriteStream, existsSync, mkdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -36,6 +44,26 @@ function heute() {
 }
 
 const ZIEL = path.resolve(wert('SICHERUNG_ZIEL') ?? path.join('sicherung', heute()));
+
+/** Dieselben Schalter wie scripts/sicherung/abzug.sh (nächtliche Sicherung). */
+const PG_DUMP_SCHALTER = [
+  '--format=custom',
+  '--schema=public',
+  '--no-owner',
+  '--no-privileges',
+  '--no-comments',
+  '--no-publications',
+  '--no-subscriptions',
+  '--no-security-labels',
+  '--no-tablespaces',
+  '--exclude-table-data=public.sm24_ratenbegrenzung',
+  '--lock-wait-timeout=120s',
+];
+
+/** Kurze Kennung eines Objektschlüssels für die Konsole; der Schlüssel selbst steht nur in dateien.json. */
+function kennung(schluessel) {
+  return createHash('sha256').update(schluessel).digest('hex').slice(0, 12);
+}
 
 /** Objektschlüssel als sicherer Pfad unterhalb von `basis` — nie außerhalb. */
 function zielPfad(basis, schluessel) {
@@ -85,13 +113,21 @@ async function bucketSichern() {
     const seite = await client.send(new ListObjectsV2Command({ Bucket: bucket, ContinuationToken: token }));
     for (const objekt of seite.Contents ?? []) {
       if (!objekt.Key || objekt.Key.endsWith('/')) continue;
+      const eintrag = {
+        schluessel: objekt.Key,
+        kennung: kennung(objekt.Key),
+        bytes: objekt.Size ?? 0,
+        geaendert: objekt.LastModified?.toISOString(),
+        etag: objekt.ETag,
+      };
+      verzeichnis.push(eintrag);
       const pfad = zielPfad(basis, objekt.Key);
       if (!pfad) {
-        console.warn(`Dateiablage: Schlüssel übersprungen (kein sicherer Pfad): ${JSON.stringify(objekt.Key)}`);
+        console.warn(`Dateiablage: Objekt ${eintrag.kennung} übersprungen (Schlüssel ist kein sicherer Pfad, siehe dateien.json)`);
+        eintrag.fehler = 'kein sicherer Pfad';
         fehler += 1;
         continue;
       }
-      verzeichnis.push({ schluessel: objekt.Key, bytes: objekt.Size ?? 0, geaendert: objekt.LastModified?.toISOString(), etag: objekt.ETag });
       if (existsSync(pfad) && statSync(pfad).size === objekt.Size) {
         vorhanden += 1;
         continue;
@@ -105,7 +141,8 @@ async function bucketSichern() {
       } catch (error) {
         fehler += 1;
         rmSync(pfad, { force: true });
-        console.error(`Dateiablage: ${objekt.Key} nicht geladen (${error instanceof Error ? error.name : 'Fehler'})`);
+        eintrag.fehler = error instanceof Error ? error.name : 'Fehler';
+        console.error(`Dateiablage: Objekt ${eintrag.kennung} nicht geladen (${eintrag.fehler}, siehe dateien.json)`);
       }
     }
     token = seite.IsTruncated ? seite.NextContinuationToken : undefined;
@@ -117,15 +154,21 @@ async function bucketSichern() {
 }
 
 function datenbankSichern() {
-  const url = wert('DATABASE_URL_UNPOOLED') ?? wert('POSTGRES_URL_NON_POOLING') ?? wert('DATABASE_URL');
+  // Nur die Leserolle sm24_sicherung – nie die Rollen der Website oder der Migrationen.
+  const url = wert('SICHERUNG_DATABASE_URL');
   if (!url) {
-    console.warn('Datenbank: DATABASE_URL_UNPOOLED fehlt — übersprungen.');
-    return { ok: true, uebersprungen: true };
+    const alt = ['DATABASE_URL_UNPOOLED', 'POSTGRES_URL_NON_POOLING', 'DATABASE_URL'].find((name) => wert(name));
+    console.error(
+      `Datenbank: SICHERUNG_DATABASE_URL fehlt — Datenbank NICHT gesichert.${
+        alt ? ` (${alt} wird bewusst nicht mehr verwendet: Die Sicherung liest als sm24_sicherung, siehe docs/SUPABASE.md.)` : ''
+      }`,
+    );
+    return { ok: false };
   }
   const version = spawnSync('pg_dump', ['--version'], { encoding: 'utf8' });
   if (version.status !== 0) {
-    console.warn('Datenbank: pg_dump nicht installiert — übersprungen. Supabase sichert die Datenbank täglich (siehe docs/LIVEGANG.md).');
-    return { ok: true, uebersprungen: true };
+    console.error('Datenbank: pg_dump nicht installiert — Datenbank NICHT gesichert. Supabase Free hat keine Backups; PostgreSQL-Client 17 installieren (pg_dump --version).');
+    return { ok: false };
   }
 
   // Zugangsdaten über Umgebungsvariablen statt in der Befehlszeile (sonst in `ps` sichtbar).
@@ -137,6 +180,7 @@ function datenbankSichern() {
     PGUSER: decodeURIComponent(verbindung.username),
     PGPASSWORD: decodeURIComponent(verbindung.password),
     PGDATABASE: decodeURIComponent(verbindung.pathname.replace(/^\//, '')) || 'postgres',
+    PGAPPNAME: 'sm24-sicherung-buero',
   };
   let zertifikat;
   const ca = wert('DATABASE_CA_CERT');
@@ -151,7 +195,7 @@ function datenbankSichern() {
 
   mkdirSync(ZIEL, { recursive: true });
   const datei = path.join(ZIEL, 'datenbank.dump');
-  const lauf = spawnSync('pg_dump', ['--format=custom', '--no-owner', '--no-privileges', '--file', datei], {
+  const lauf = spawnSync('pg_dump', [...PG_DUMP_SCHALTER, '--no-password', '--file', datei], {
     env,
     encoding: 'utf8',
     stdio: ['ignore', 'pipe', 'pipe'],
