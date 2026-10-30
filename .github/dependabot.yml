@@ -6,6 +6,12 @@ updates:
       interval: weekly
       day: monday
     open-pull-requests-limit: 5
+    ignore:
+      # Neue Stripe-Hauptversionen bringen eine neue API-Version mit. Ab
+      # 2026-09-30.endive scheitert der Checkout (STRIPE_API_VERSION in
+      # src/lib/integrations/stripe.ts): nur nach Umstellung der Zahlarten anheben.
+      - dependency-name: stripe
+        update-types: ['version-update:semver-major']
     groups:
       # Payload-Pakete müssen exakt dieselbe Version haben.
       payload:

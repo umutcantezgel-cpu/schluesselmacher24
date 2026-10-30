@@ -179,7 +179,8 @@ describe('starteCheckout und createPayment', () => {
       expiresAt: new Date(1_800_000_000 * 1000).toISOString(),
     });
     expect(ergebnis.providerRef).toBeUndefined();
-    expect(konstruktor).toHaveBeenCalledWith('sk_test_123', expect.objectContaining({ maxNetworkRetries: 2 }));
+    // Feste API-Version: Ab 2026-09-30.endive scheitert payment_method_types (siehe STRIPE_API_VERSION).
+    expect(konstruktor).toHaveBeenCalledWith('sk_test_123', expect.objectContaining({ apiVersion: '2026-08-26.dahlia', maxNetworkRetries: 2 }));
     // Kein eigener Idempotenz-Schlüssel (Kennungen wiederholen sich zwischen Umgebungen).
     expect(erstellen.mock.calls[0]).toHaveLength(1);
     expect(erstellen.mock.calls[0][0].metadata.umgebung).toBe('lokal');
