@@ -25,38 +25,38 @@ export const BILDER_EXTERN = process.env.SM24_BILDER ?? path.join(WERKSTATT, 'bi
 export const BASIS_URL = process.env.SM24_BASIS_URL ?? 'http://localhost:3000';
 export const CHROMIUM = process.env.SM24_CHROMIUM ?? '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome';
 
-/** Die zwölf Hauptansichten (in E0 festgelegt, danach unveränderlich). */
+/** Die 14 Hauptansichten des Ausbaulaufs (in E0 festgelegt, danach unveränderlich). */
 export const HAUPTANSICHTEN = [
   { id: 'H01-start', pfad: '/', art: 'erzaehl' },
   { id: 'H02-autoschluessel', pfad: '/autoschluessel', art: 'erzaehl' },
   { id: 'H03-modell-golf', pfad: '/autoschluessel/marken/volkswagen/golf', art: 'erzaehl' },
-  { id: 'H04-assistent', pfad: '/autoschluessel/anfrage', art: 'arbeit' },
-  { id: 'H05-code-shop', pfad: '/schluessel-nach-code', art: 'erzaehl' },
-  { id: 'H06-code-produkt', pfad: '/schluessel-nach-code/ms-01', art: 'erzaehl' },
-  { id: 'H07-zylinder-konfigurator', pfad: '/gleichschliessende-zylinder/konfigurator', art: 'arbeit' },
-  { id: 'H08-schliessanlagen', pfad: '/schliessanlagen', art: 'erzaehl' },
-  { id: 'H09-tuertechnik', pfad: '/tuer-und-schliesstechnik', art: 'erzaehl' },
-  { id: 'H10-warenkorb', pfad: '/warenkorb', art: 'arbeit' },
-  { id: 'H11-kasse', pfad: '/kasse', art: 'arbeit' },
-  { id: 'H12-ratgeber', pfad: '/ratgeber/autoschluessel-verloren-was-tun', art: 'erzaehl' },
+  { id: 'H04-autoschluessel-anfrage', pfad: '/autoschluessel/anfrage', art: 'arbeit' },
+  { id: 'H05-code', pfad: '/schluessel-nach-code', art: 'erzaehl' },
+  { id: 'H06-code-produkt', pfad: '/schluessel-nach-code/ms-01', art: 'arbeit' },
+  { id: 'H07-foto', pfad: '/schluessel-nach-vorlage', art: 'erzaehl' },
+  { id: 'H08-einschicken', pfad: '/schluessel-einschicken', art: 'erzaehl' },
+  { id: 'H09-sperrschliessung-konfigurator', pfad: '/gleichschliessende-zylinder/konfigurator', art: 'arbeit' },
+  { id: 'H10-schliessanlagen', pfad: '/schliessanlagen', art: 'erzaehl' },
+  { id: 'H11-schliessanlagen-konfigurator', pfad: '/schliessanlagen/konfigurator', art: 'arbeit' },
+  { id: 'H12-partner-werden', pfad: '/partner-werden', art: 'erzaehl' },
+  { id: 'H13-kasse', pfad: '/kasse', art: 'arbeit' },
+  { id: 'H14-ratgeber-messen', pfad: '/ratgeber/zylinder-richtig-ausmessen', art: 'erzaehl' },
 ];
 
-/** Übrige Ansichten (für Stichproben in Prüfstufe C). Dynamische Routen mit Beispiel-Slug. */
+/** Übrige Ansichten (Stichproben in Prüfstufe C). Dynamische Routen mit Beispiel-Slug. Stand E0. */
 export const UEBRIGE_ANSICHTEN = [
-  '/artikel', '/artikel/beispiel-schluesselkasten',
-  '/autoschluessel/nachmachen', '/autoschluessel/programmieren', '/autoschluessel/kopieren',
-  '/autoschluessel/funkschluessel', '/autoschluessel/smart-key', '/autoschluessel/schluesselbart-fraesen',
-  '/autoschluessel/fahrzeugoeffnung', '/autoschluessel/marken', '/autoschluessel/marken/volkswagen',
-  '/elektronische-zutrittsloesungen', '/elektronische-zutrittsloesungen/konfigurator',
-  '/gleichschliessende-zylinder', '/ratgeber',
-  '/rechtliches/agb', '/rechtliches/widerruf', '/rechtliches/impressum', '/rechtliches/datenschutz',
-  '/rechtliches/versand-und-zahlung', '/rechtliches/cookie-einstellungen',
-  '/schliessanlagen/konfigurator', '/schluessel-nach-vorlage', '/schluessel-nach-vorlage/anfrage',
-  '/service-und-termin', '/service-und-termin/anfrage', '/service-und-termin/kontakt',
-  '/service-und-termin/terminstatus', '/service-und-termin/vor-ort',
-  '/sicherheitstechnik', '/sicherheitstechnik/videoueberwachung', '/sicherheitstechnik/sicherheitscheck',
-  '/standorte', '/standorte/berlin', '/tuer-und-schliesstechnik/einsteckschloesser',
-  '/gibt-es-nicht-404',
+  '/artikel', '/autoschluessel/fahrzeugoeffnung', '/autoschluessel/funkschluessel', '/autoschluessel/kopieren',
+  '/autoschluessel/marken', '/autoschluessel/marken/volkswagen', '/autoschluessel/nachmachen',
+  '/autoschluessel/programmieren', '/autoschluessel/schluesselbart-fraesen', '/autoschluessel/smart-key',
+  '/elektronische-zutrittsloesungen', '/elektronische-zutrittsloesungen/konfigurator', '/gleichschliessende-zylinder',
+  '/ratgeber', '/ratgeber/autoschluessel-verloren-was-tun',
+  '/rechtliches/agb', '/rechtliches/cookie-einstellungen', '/rechtliches/datenschutz', '/rechtliches/impressum',
+  '/rechtliches/versand-und-zahlung', '/rechtliches/widerruf', '/rechtliches/widerruf/erklaeren',
+  '/schluessel-nach-code/kategorie/briefkasten-und-postanlagen', '/schluessel-nach-vorlage/anfrage',
+  '/service-und-termin', '/service-und-termin/anfrage', '/service-und-termin/kontakt', '/service-und-termin/terminstatus',
+  '/service-und-termin/vor-ort', '/sicherheitstechnik', '/sicherheitstechnik/sicherheitscheck', '/sicherheitstechnik/videoueberwachung',
+  '/standorte', '/standorte/wetzlar', '/tuer-und-schliesstechnik', '/tuer-und-schliesstechnik/einsteckschloesser',
+  '/warenkorb', '/gibt-es-nicht-404',
 ];
 
 /** Gerätegrößen aus den Einstellungen des Auftrags. */

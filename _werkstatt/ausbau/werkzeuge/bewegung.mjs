@@ -58,8 +58,8 @@ function routenWaehlen(text) {
   });
 }
 function geraetWahl(text) {
-  if (text === 'mobil') return GERAETE[0];
-  if (text === 'desktop') return GERAETE[2];
+  if (text === 'mobil') return GERAETE.find((g) => g.id === 'mobil');
+  if (text === 'desktop') return GERAETE.find((g) => g.id === 'desktop');
   return bedienfehler(`--geraet „${text}“ ist nicht erlaubt (mobil|desktop)`);
 }
 
@@ -189,7 +189,7 @@ async function reduziert(args) {
   const browser = await browserStarten();
   try {
     for (const r of routen) {
-      const context = await kontextFuer(browser, GERAETE[2], { reduziert: true });
+      const context = await kontextFuer(browser, GERAETE.find((g) => g.id === 'desktop'), { reduziert: true });
       try {
         await attrappenSetzen(context);
         const page = await context.newPage();
@@ -431,7 +431,7 @@ async function einzelbilder(args, pfad, dauer) {
 }
 
 async function bildrateLauf(args, pfad, dauer) {
-  const g = GERAETE[0];
+  const g = GERAETE.find((x) => x.id === 'mobil');
   let ergebnis = null;
   const browser = await browserStarten();
   try {
@@ -460,7 +460,7 @@ async function bildrateLauf(args, pfad, dauer) {
 }
 
 async function bildrate(args, pfad, dauer, laeufe = 1) {
-  const g = GERAETE[0];
+  const g = GERAETE.find((x) => x.id === 'mobil');
   const einzel = [];
   let treffer = null;
   for (let i = 0; i < laeufe; i += 1) {

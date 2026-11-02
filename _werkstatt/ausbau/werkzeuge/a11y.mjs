@@ -5,9 +5,9 @@
 // Je Ansicht: laden, einmal durchscrollen, dann axe. Ausgabe: Zahl der Regelverstöße je impact
 // (critical, serious, moderate, minor), Stellen gesamt; je critical oder serious: Regel-ID,
 // Hilfetext und bis zu 3 Ziel-Selektoren. Exit: 0 fertig (auch mit Befunden), 2 Bedienfehler, 1 technischer Fehler.
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { AxeBuilder } from '@axe-core/playwright';
+import { fileURLToPath } from 'node:url';
 import {
   HAUPTANSICHTEN, GERAETE, PROTOKOLLE, argumente, browserStarten, kontextFuer,
   attrappenSetzen, laden, durchscrollen, zeitstempel, ordner,
@@ -15,7 +15,11 @@ import {
 
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 const IMPACTS = ['critical', 'serious', 'moderate', 'minor'];
-const GERAET_WAHL = { mobil: [GERAETE[0]], desktop: [GERAETE[2]], beide: [GERAETE[0], GERAETE[2]] };
+const MOBIL = GERAETE.find((g) => g.id === 'mobil');
+const DESKTOP = GERAETE.find((g) => g.id === 'desktop');
+const GERAET_WAHL = { mobil: [MOBIL], desktop: [DESKTOP], beide: [MOBIL, DESKTOP] };
+/** axe-core aus node_modules neben diesem Werkzeug; wird je Ansicht in die Seite eingefügt (ohne @axe-core/playwright). */
+const AXE_DATEI = path.join(path.dirname(fileURLToPath(import.meta.url)), 'node_modules', 'axe-core', 'axe.min.js');
 
 const bedienfehler = (text) => { console.error(`Bedienfehler: ${text}`); process.exit(2); };
 const slug = (p) => (p === '/' ? 'start' : p.replace(/^\//, '').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase());
@@ -53,6 +57,7 @@ async function main() {
   const geraetWahl = args.geraet ?? 'beide';
   if (!GERAET_WAHL[geraetWahl]) bedienfehler(`--geraet „${geraetWahl}“ ist nicht erlaubt`);
   const geraete = GERAET_WAHL[geraetWahl];
+  const axeQuelle = readFileSync(AXE_DATEI, 'utf8');
 
   const zeilen = [];
   const browser = await browserStarten();
@@ -65,7 +70,19 @@ async function main() {
           const page = await context.newPage();
           await laden(page, r.pfad);
           await durchscrollen(page);
-          const erg = await new AxeBuilder({ page }).withTags(TAGS).analyze();
+          await page.addScriptTag({ content: axeQuelle });
+          const erg = await page.evaluate(async (tags) => {
+            const ergebnis = await window.axe.run(document, { runOnly: { type: 'tag', values: tags } });
+            return {
+              violations: ergebnis.violations.map((v) => ({
+                id: v.id,
+                impact: v.impact,
+                help: v.help,
+                helpUrl: v.helpUrl,
+                nodes: v.nodes.map((n) => ({ target: n.target, html: n.html })),
+              })),
+            };
+          }, TAGS);
           const zaehl = Object.fromEntries(IMPACTS.map((i) => [i, 0]));
           let stellen = 0;
           const details = [];

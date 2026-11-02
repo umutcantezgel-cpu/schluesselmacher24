@@ -1,0 +1,32 @@
+{
+  "skript": "konsole",
+  "zeit": "2026-11-02T21:55:32.889Z",
+  "argumente": {
+    "_": [],
+    "routen": "/",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-konsole-json.log"
+  },
+  "geraet": "desktop",
+  "ergebnisse": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=5CB68i4pnAekjehf",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=tXyZJ52UQVBCVsD3",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    }
+  ]
+}

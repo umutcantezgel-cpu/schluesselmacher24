@@ -10,6 +10,7 @@
 //   node logikwaechter.mjs sichern [dateien…]
 //   node logikwaechter.mjs pruefen [dateien…] [--basis <commit>]
 // Ohne Dateien gilt die Liste der geschützten Dateien.
+// Protokollort: Umgebungsvariable SM24_FINGERABDRUECKE (Standard protokolle/logik-fingerabdruecke.json).
 // Exit-Codes: 0 = alles gleich, 3 = Abweichung gefunden, 2 = Bedienfehler, 1 = technischer Fehler.
 //
 // Bewusst ohne Import von lib.mjs: Dieses Werkzeug braucht keinen Browser, und lib.mjs
@@ -25,7 +26,9 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const hier = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(hier, '..', '..', '..');
 const PROTOKOLLE = path.join(REPO, '_werkstatt', 'ausbau', 'protokolle');
-const FINGERABDRUECKE = path.join(PROTOKOLLE, 'logik-fingerabdruecke.json');
+const FINGERABDRUECKE = process.env.SM24_FINGERABDRUECKE
+  ? path.resolve(process.env.SM24_FINGERABDRUECKE)
+  : path.join(PROTOKOLLE, 'logik-fingerabdruecke.json');
 const AUSNAHMEN = path.join(hier, 'logik-ausnahmen.json');
 
 // TypeScript-Compiler aus dem Projekt, nicht aus dem Werkzeugordner.

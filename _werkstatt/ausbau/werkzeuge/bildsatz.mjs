@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // bildsatz.mjs – Bildsatz der Hauptansichten je Gerät, mit Überlaufprüfung.
 // Aufruf: node bildsatz.mjs [--routen <pfad,pfad>] [--ziel <ordner>] [--max <n>] [--json <datei>]
-// Standard: alle 12 Hauptansichten × 3 Gerätegrößen. Je Ansicht und Gerät: laden, durchscrollen,
+// Standard: alle 12 Hauptansichten × 5 Gerätegrößen (lib.mjs GERAETE). Je Ansicht und Gerät: laden, durchscrollen,
 // Überlaufprüfung (Seite breiter als Fenster; Elemente über den rechten Rand; abgeschnittener Text),
 // dann je Bildschirmhöhe ein Ausschnitt (scrollTo y = k·Höhe, 400 ms warten), höchstens --max
 // Ausschnitte (Standard 15). Dateiname <id>__<geraet>__<k zweistellig>.jpg, k ab 00.

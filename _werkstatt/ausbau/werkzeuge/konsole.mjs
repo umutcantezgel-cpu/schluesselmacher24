@@ -45,7 +45,7 @@ async function main() {
     if (args[k] === true) bedienfehler(`--${k} braucht einen Wert`);
   }
   const routen = routenWaehlen(args.routen);
-  const g = GERAETE[2];
+  const g = GERAETE.find((x) => x.id === 'desktop');
   const ergebnisse = [];
   let technischFehler = 0;
 

@@ -1,0 +1,53 @@
+{
+  "skript": "messung",
+  "zeit": "2026-11-02T21:56:08.200Z",
+  "argumente": {
+    "_": [],
+    "routen": "/",
+    "laeufe": "1",
+    "profil": "mobil",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-messung-json.log"
+  },
+  "budget": {
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "hinweis": "Werte: Median (Minimum–Maximum) je Ansicht und Profil; INP 0 = kein Ereignis über 16 ms",
+  "serien": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 648,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 158,
+          "jsKB": 204.2197265625,
+          "gesamtKB": 499.021484375,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    }
+  ],
+  "zusammenfassung": [
+    {
+      "ansicht": "H01-start",
+      "profil": "mobil",
+      "laeufe": "1 von 1",
+      "lcp": "648 (648–648)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "40 (40–40)",
+      "tbt": "158 (158–158)",
+      "jsKB": "204,2 (204,2–204,2)",
+      "gesamtKB": "499,0 (499,0–499,0)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // funktionsliste.mjs – prüft die Funktionen F-01 bis F-14 aus _werkstatt/ausbau/LAGEBILD.md im Browser.
-// Aufruf: node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs [--nur F-01,F-04] [--json <datei>] [--tastatur] [--geraet mobil|tablet|desktop]
+// Aufruf: node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs [--nur F-01,F-04] [--json <datei>] [--tastatur] [--geraet mobil|tablet|desktop] [--md <datei>]
 // --tastatur: jede Bedienung nur mit Tab, Pfeiltasten, Leertaste und Enter; je Bedienung werden Tab-Zahl und
 // sichtbarer Fokus protokolliert (Prüfstufe C, Z-07). Dateiauswahl: Der auslösende Knopf muss per Tab erreichbar sein,
 // die Datei selbst setzt das Werkzeug wie ein Dateidialog. --geraet überschreibt das Gerät jeder Funktion.
@@ -21,7 +21,8 @@ const SPERRE = '/tmp/sm24-messfenster.lock';
 // Server-Log und Vorgangsdatei des geprüften Stands; über Umgebungsvariablen anpassbar (Ausgangswert: E0-Server auf 3100).
 const SERVERLOG = process.env.SM24_SERVERLOG ?? '/tmp/sm24-next.log';
 const RECORDS = process.env.SM24_RECORDS ?? path.join(REPO, 'content', 'records.json');
-const FOTO = '/tmp/sm24-funktionsliste-foto.png';
+// Testbild für den Datei-Upload. SM24_FOTO legt einen anderen Ort fest (Probelauf im Ordner des Prüfers).
+const FOTO = process.env.SM24_FOTO ?? '/tmp/sm24-funktionsliste-foto.png';
 const ZEITLIMIT_MS = 60_000;
 const SPERRE_MAX_MS = 40 * 60_000;
 const SPERRE_PRUEF_MS = 2 * 60_000;
@@ -809,7 +810,7 @@ async function f11({ page, neuerKontext }) {
   }).catch(() => false);
   pruefe('Mobile Aktionsleiste sichtbar (390 px)', leisteOk);
   // Desktop (1440 px, eigener Kontext)
-  const dp = await neuerKontext(2);
+  const dp = await neuerKontext('desktop');
   await laden(dp, '/');
   const bereich = dp.getByRole('navigation', { name: 'Hauptnavigation' }).getByRole('button', { name: 'Autoschlüssel', exact: true });
   await bereich.focus();
@@ -909,20 +910,20 @@ async function f14({ page }) {
 }
 
 const FUNKTIONEN = [
-  { id: 'F-01', name: 'Warenkorb: Code-Schlüssel hinzufügen, Menge ändern, entfernen, Versandart, Summe', geraet: 2, lauf: f01 },
-  { id: 'F-02', name: 'Kasse: Pflichtfelder, zwei Bestätigungen, Absenden', geraet: 2, lauf: f02 },
-  { id: 'F-03', name: 'Bestellseite nur mit gültigem Zugangsschlüssel', geraet: 2, lauf: f03 },
-  { id: 'F-04', name: 'Autoschlüssel-Assistent: Schritte, Fotos, Preis, Termin, Absenden', geraet: 0, lauf: f04 },
-  { id: 'F-05', name: 'Zylinder-Konfigurator in den Warenkorb', geraet: 2, lauf: f05 },
-  { id: 'F-06', name: 'Schließanlagen-Konfigurator bis Zusammenfassung und Absenden', geraet: 2, lauf: f06 },
-  { id: 'F-07', name: 'Weitere Abläufe: vorlage, Sicherheitscheck, Zutritt, Service-Anfrage', geraet: 2, lauf: f07 },
-  { id: 'F-08', name: 'Terminstatus abfragen', geraet: 2, lauf: f08 },
-  { id: 'F-09', name: 'Cookie-Einstellungen speichern und löschen', geraet: 2, lauf: f09 },
-  { id: 'F-10', name: 'Zwischenspeicherung in Abläufen („Weitermachen“)', geraet: 0, lauf: f10 },
-  { id: 'F-11', name: 'Navigation: Megamenü, mobiler Drawer, Sprunglink, mobile Aktionsleiste', geraet: 0, lauf: f11 },
-  { id: 'F-12', name: 'robots.txt, sitemap.xml, llms.txt, JSON-LD', geraet: 2, lauf: f12 },
-  { id: 'F-13', name: 'Rechner Türabsicherung und Serviceeinsatz', geraet: 2, lauf: f13 },
-  { id: 'F-14', name: 'Shop-Filter und Liste der Codelinien', geraet: 2, lauf: f14 },
+  { id: 'F-01', name: 'Warenkorb: Code-Schlüssel hinzufügen, Menge ändern, entfernen, Versandart, Summe', geraet: 'desktop', lauf: f01 },
+  { id: 'F-02', name: 'Kasse: Pflichtfelder, zwei Bestätigungen, Absenden', geraet: 'desktop', lauf: f02 },
+  { id: 'F-03', name: 'Bestellseite nur mit gültigem Zugangsschlüssel', geraet: 'desktop', lauf: f03 },
+  { id: 'F-04', name: 'Autoschlüssel-Assistent: Schritte, Fotos, Preis, Termin, Absenden', geraet: 'mobil', lauf: f04 },
+  { id: 'F-05', name: 'Zylinder-Konfigurator in den Warenkorb', geraet: 'desktop', lauf: f05 },
+  { id: 'F-06', name: 'Schließanlagen-Konfigurator bis Zusammenfassung und Absenden', geraet: 'desktop', lauf: f06 },
+  { id: 'F-07', name: 'Weitere Abläufe: vorlage, Sicherheitscheck, Zutritt, Service-Anfrage', geraet: 'desktop', lauf: f07 },
+  { id: 'F-08', name: 'Terminstatus abfragen', geraet: 'desktop', lauf: f08 },
+  { id: 'F-09', name: 'Cookie-Einstellungen speichern und löschen', geraet: 'desktop', lauf: f09 },
+  { id: 'F-10', name: 'Zwischenspeicherung in Abläufen („Weitermachen“)', geraet: 'mobil', lauf: f10 },
+  { id: 'F-11', name: 'Navigation: Megamenü, mobiler Drawer, Sprunglink, mobile Aktionsleiste', geraet: 'mobil', lauf: f11 },
+  { id: 'F-12', name: 'robots.txt, sitemap.xml, llms.txt, JSON-LD', geraet: 'desktop', lauf: f12 },
+  { id: 'F-13', name: 'Rechner Türabsicherung und Serviceeinsatz', geraet: 'desktop', lauf: f13 },
+  { id: 'F-14', name: 'Shop-Filter und Liste der Codelinien', geraet: 'desktop', lauf: f14 },
 ];
 
 /* ---------- Ablauf ---------- */
@@ -961,8 +962,8 @@ async function fuehreAus(browser, f) {
   zuletzt = '';
   tastaturLog = [];
   const ziel = { liste: () => listen.flat() };
-  const neuerKontext = async (geraetIndex) => {
-    const ctx = await kontextFuer(browser, GERAETE[geraetIndex]);
+  const neuerKontext = async (geraetId) => {
+    const ctx = await kontextFuer(browser, GERAETE.find((g) => g.id === geraetId));
     ctx.setDefaultTimeout(10_000);
     kontexte.push(ctx);
     listen.push(await attrappenSetzen(ctx));
@@ -989,7 +990,7 @@ async function fuehreAus(browser, f) {
   return {
     id: f.id,
     funktion: f.name,
-    geraet: GERAETE[f.geraet].id,
+    geraet: f.geraet,
     ergebnis: ergebnis.ok ? 'BESTANDEN' : 'NICHT BESTANDEN',
     begruendung: ergebnis.begruendung,
     messwert: ergebnis.messwert ?? null,
@@ -1004,19 +1005,19 @@ const logGroesse = () => (existsSync(SERVERLOG) ? statSync(SERVERLOG).size : 0);
 
 async function main() {
   const args = argumente();
-  for (const k of ['nur', 'json', 'geraet']) {
+  for (const k of ['nur', 'json', 'geraet', 'md']) {
     if (args[k] === true) bedienfehler(`--${k} braucht einen Wert`);
   }
   TASTATUR = args.tastatur === true;
-  const geraetIndex = typeof args.geraet === 'string' ? GERAETE.findIndex((g) => g.id === args.geraet) : -1;
-  if (typeof args.geraet === 'string' && geraetIndex < 0) bedienfehler(`unbekanntes Gerät: ${args.geraet}`);
+  const geraetWahl = typeof args.geraet === 'string' ? args.geraet : null;
+  if (geraetWahl !== null && !GERAETE.some((g) => g.id === geraetWahl)) bedienfehler(`unbekanntes Gerät: ${args.geraet}`);
   const gewaehlt = typeof args.nur === 'string'
     ? args.nur.split(',').map((t) => t.trim().toUpperCase()).filter(Boolean)
     : FUNKTIONEN.map((f) => f.id);
   const unbekannt = gewaehlt.filter((id) => !FUNKTIONEN.some((f) => f.id === id));
   if (unbekannt.length) bedienfehler(`unbekannte Funktion: ${unbekannt.join(', ')}`);
   const laufen = FUNKTIONEN.filter((f) => gewaehlt.includes(f.id))
-    .map((f) => (geraetIndex >= 0 ? { ...f, geraet: geraetIndex } : f));
+    .map((f) => (geraetWahl !== null ? { ...f, geraet: geraetWahl } : f));
 
   try {
     await messfensterAbwarten();
@@ -1058,7 +1059,9 @@ async function main() {
   const datei = typeof args.json === 'string'
     ? path.resolve(args.json)
     : path.join(PROTOKOLLE, `funktionsliste-${stempel}.json`);
-  const mdDatei = path.join(PROTOKOLLE, `funktionsliste-${stempel}.md`);
+  const mdDatei = typeof args.md === 'string'
+    ? path.resolve(args.md)
+    : path.join(PROTOKOLLE, `funktionsliste-${stempel}.md`);
   const bestanden = ergebnisse.filter((e) => e.ergebnis === 'BESTANDEN').length;
 
   const tabelle = [
@@ -1077,7 +1080,7 @@ async function main() {
     }).join('\n')}\n`
     : '';
   const md = `${kopf}\n${tabelle}\n${fuss}${tastaturTeil}`;
-  ordner(PROTOKOLLE);
+  ordner(path.dirname(mdDatei));
   writeFileSync(mdDatei, md);
   writeFileSync(datei, `${JSON.stringify({
     skript: 'funktionsliste',

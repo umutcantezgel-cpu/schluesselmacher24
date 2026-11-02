@@ -36,3 +36,31 @@
 2026-11-02T21:41:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run pruefen:livegang
 2026-11-02T21:41:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
 2026-11-02T21:42:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-02T21:54:40+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/a11y.mjs
+2026-11-02T21:54:40+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/konsole.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/svg-pruefung.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/ladeweg.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/messung.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bewegung.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bild.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bildsatz.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/textabzug.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/logikwaechter.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/funktionsliste.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/gefuellt.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/animationen.mjs
+2026-11-02T21:54:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --check /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/werte-suche.mjs
+2026-11-02T21:54:47+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bild.mjs / --geraet mobil --ziel /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bild --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-bild-json.log
+2026-11-02T21:54:57+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bildsatz.mjs --routen /,/kasse --max 2 --ziel /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-bildsatz-json.log
+2026-11-02T21:55:29+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/konsole.mjs --routen / --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-konsole-json.log
+2026-11-02T21:55:37+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/a11y.mjs --routen / --geraet mobil --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-a11y-json.log
+2026-11-02T21:55:44+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/svg-pruefung.mjs --routen / --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-svg-pruefung-json.log
+2026-11-02T21:55:55+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/werte-suche.mjs --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-werte-suche-json-standard.log
+2026-11-02T21:55:56+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/werte-suche.mjs --seit b8e7ea7 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-werte-suche-json.log
+2026-11-02T21:56:01+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/messung.mjs --routen / --laeufe 1 --profil mobil --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-messung-json.log
+2026-11-02T21:56:11+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/ladeweg.mjs --routen / --laeufe 1 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-ladeweg-json.log
+2026-11-02T21:56:21+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bewegung.mjs reduziert --routen / --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-bewegung-reduziert-json.log
+2026-11-02T21:56:26+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/animationen.mjs --routen / --geraet mobil --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-animationen-json.log
+2026-11-02T21:56:41+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/textabzug.mjs vergleichen
+2026-11-02T21:56:42+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/textabzug.mjs sichern
+2026-11-02T21:56:49+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/textabzug.mjs vergleichen

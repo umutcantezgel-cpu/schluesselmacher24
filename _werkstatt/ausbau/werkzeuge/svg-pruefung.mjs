@@ -84,7 +84,7 @@ async function main() {
   const ansichten = [];
   try {
     for (const r of routen) {
-      const ctx = await kontextFuer(browser, GERAETE[2]);
+      const ctx = await kontextFuer(browser, GERAETE.find((g) => g.id === 'desktop'));
       await attrappenSetzen(ctx);
       const page = await ctx.newPage();
       try {

@@ -6,6 +6,7 @@
 // Aufruf (Server muss laufen: server.sh start):
 //   node textabzug.mjs sichern        schreibt _werkstatt/ausbau/protokolle/textabzug/<segment>.txt
 //   node textabzug.mjs vergleichen    vergleicht den aktuellen Stand mit dem gesicherten
+// Ablageordner: Umgebungsvariable SM24_TEXTABZUG (Standard protokolle/textabzug); den Ordner legt nur sichern an.
 // Exit-Codes: 0 = alles gleich, 3 = Abweichung gefunden, 2 = Bedienfehler, 1 = technischer Fehler.
 
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
@@ -32,7 +33,7 @@ const SEITEN = [
   '/rechtliches/cookie-einstellungen',
 ];
 
-const ORDNER = ordner(path.join(PROTOKOLLE, 'textabzug'));
+const ORDNER = path.resolve(process.env.SM24_TEXTABZUG ?? path.join(PROTOKOLLE, 'textabzug'));
 const DATEI = (pfad) => path.join(ORDNER, `${pfad.split('/').pop()}.txt`);
 
 class BedienFehler extends Error {}
@@ -88,6 +89,7 @@ function zeilenDiff(alt, neu) {
 }
 
 async function sichern(browser) {
+  ordner(ORDNER);
   const zeilen = ['# Textabzug · Sicherung', '', '| Seite | Zeilen | Ergebnis |', '|---|---|---|'];
   let fehler = 0;
   for (const pfad of SEITEN) {

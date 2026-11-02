@@ -4,7 +4,7 @@
 //         [--warte <ms>] [--ziel <ordner>] [--name <praefix>] [--json <datei>]
 // Lädt die Seite, löst alle Auftritte durch Durchscrollen aus, wartet --warte (Standard 800 ms)
 // und speichert den ersten Bildschirm (mit --ganz die ganze Seite) als JPEG, Qualität 60,
-// Gerätepixelverhältnis 1. Standard: alle drei Gerätegrößen (3 Bilder).
+// Gerätepixelverhältnis 1. Standard: alle fünf Gerätegrößen (5 Bilder).
 // Ausgabe: Tabelle mit den Dateipfaden auf stdout und JSON-Protokoll.
 // Exit: 0 Lauf fertig, 2 Bedienfehler, 1 technischer Fehler.
 import { writeFileSync, statSync } from 'node:fs';

@@ -21,6 +21,8 @@ import {
 } from './lib.mjs';
 
 const DROSSEL = { cpu: 4, latenzMs: 150, herunterMbit: 1.6, heraufMbit: 0.75 };
+/** Mobil ist die Größe mit der Kennung „mobil“ (390 × 844), nicht der erste Eintrag der Liste. */
+const MOBIL = GERAETE.find((g) => g.id === 'mobil');
 const SICHTBARE_TYPEN = ['Document', 'Stylesheet', 'Font', 'Script'];
 
 const bedienfehler = (text) => { console.error(`Bedienfehler: ${text}`); process.exit(2); };
@@ -199,7 +201,7 @@ function schriftenText(liste) {
 }
 
 async function einLauf(browser, route, basis) {
-  const context = await kontextFuer(browser, GERAETE[0]);
+  const context = await kontextFuer(browser, MOBIL);
   try {
     const abgefangen = await attrappenFuer(context, basis);
     const page = await context.newPage();
@@ -384,7 +386,7 @@ async function main() {
   const technischFehler = serien.reduce((s, x) => s + x.fehler.length, 0);
   const protokoll = jsonSchreiben('ladeweg', args, {
     basis,
-    geraet: `mobil ${GERAETE[0].breite} × ${GERAETE[0].hoehe}`,
+    geraet: `mobil ${MOBIL.breite} × ${MOBIL.hoehe}`,
     drosselung: { cpu: DROSSEL.cpu, latenzMs: DROSSEL.latenzMs, herunterMbit: DROSSEL.herunterMbit, heraufMbit: DROSSEL.heraufMbit },
     hinweis: 'Zeiten in ms ab Navigationsbeginn; Start unter 0 = Anfrage vor Navigationsbeginn. Median über die Läufe; bei Schriften nein (x von y) = nicht alle Schnitte geladen (ungenutzte Schnitte bleiben ungeladen).',
     serien,
@@ -392,7 +394,7 @@ async function main() {
   });
 
   const ms = (v) => zahl(v, 0);
-  console.log(`# Ladeweg · ${new Date().toISOString()} · Server ${basis} · mobil ${GERAETE[0].breite} × ${GERAETE[0].hoehe}, CPU ${DROSSEL.cpu}-fach, Netz ${DROSSEL.latenzMs} ms, ${fmt(DROSSEL.herunterMbit, 1)}/${fmt(DROSSEL.heraufMbit, 2)} Mbit/s · ${laeufe} Läufe je Route\n`);
+  console.log(`# Ladeweg · ${new Date().toISOString()} · Server ${basis} · mobil ${MOBIL.breite} × ${MOBIL.hoehe}, CPU ${DROSSEL.cpu}-fach, Netz ${DROSSEL.latenzMs} ms, ${fmt(DROSSEL.herunterMbit, 1)}/${fmt(DROSSEL.heraufMbit, 2)} Mbit/s · ${laeufe} Läufe je Route\n`);
   console.log(tabelle(
     ['Ansicht', 'Läufe', 'FCP ms', 'LCP ms', 'LCP-Element (mittlerer Lauf)', 'Long Tasks vor FCP (Anzahl · Summe ms)', 'DOM-Elemente', 'HTML KB (übertragen)', 'Bytes vor FCP KB', 'Schriften bei FCP (mittlerer Lauf)'],
     zusammenfassung.map((z) => [

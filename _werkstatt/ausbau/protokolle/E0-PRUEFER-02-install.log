@@ -1,0 +1,21 @@
+# E0-PRUEFER-02 · Einrichtung · 2026-11-02T21:53:02+00:00
+## 1. Abhängigkeiten
+lrwxrwxrwx 1 root root 33 Nov  2 21:32 /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/node_modules -> /root/sm24-werkzeuge/node_modules
+axe-core 4.10.2
+lighthouse 12.6.1
+svgo 3.3.2
+-rw-r--r-- 1 root root 553290 Nov  2 21:32 /root/sm24-werkzeuge/node_modules/axe-core/axe.min.js
+-rw-r--r-- 1 root root   2796 Nov  2 21:32 /root/sm24-werkzeuge/node_modules/svgo/package.json
+playwright 1.63.0 (/opt/node-tools)
+-rwxr-xr-x 1 root root 293285184 Oct 27 19:49 /opt/pw-browsers/chromium-1243/chrome-linux64/chrome
+## 2. Server
+läuft (Port 3000)
+Prozess auf Port 3000:
+20139 root     runuser -u ubuntu -- env HOME=/home/ubuntu npm_config_cache=/home/ubuntu/.npm npx next start -p 3000
+20164 ubuntu   npm exec next start -p 3000
+20175 ubuntu   sh -c next start -p 3000
+20176 ubuntu   next-server (v16.4.3)
+## 3. Git
+fatal: Not a valid object name fcbcfb2
+claude/affectionate-knuth-n7mjur
+58ee355 WERKSTATT [E0-PRUEFER-01] Datenweiche: libpq-Variablen lokal statt leer, Protokoll vor Postgres-Start, CA-Bündel für ubuntu; Einrichtung und Ausgangsstand belegt

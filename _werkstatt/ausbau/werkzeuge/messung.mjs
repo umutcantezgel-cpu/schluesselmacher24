@@ -169,7 +169,7 @@ async function ladenUnter(page, basis, pfad) {
 }
 
 async function einLauf(browser, route, profil, basis = null) {
-  const g = profil === 'mobil' ? GERAETE[0] : GERAETE[2];
+  const g = GERAETE.find((x) => x.id === profil);
   const context = await kontextFuer(browser, g);
   try {
     if (basis) await attrappenFuer(context, basis);

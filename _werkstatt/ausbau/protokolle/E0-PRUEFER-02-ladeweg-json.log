@@ -1,0 +1,826 @@
+{
+  "skript": "ladeweg",
+  "zeit": "2026-11-02T21:56:15.540Z",
+  "argumente": {
+    "_": [],
+    "routen": "/",
+    "laeufe": "1",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-ladeweg-json.log"
+  },
+  "basis": "http://localhost:3000",
+  "geraet": "mobil 390 × 844",
+  "drosselung": {
+    "cpu": 4,
+    "latenzMs": 150,
+    "herunterMbit": 1.6,
+    "heraufMbit": 0.75
+  },
+  "hinweis": "Zeiten in ms ab Navigationsbeginn; Start unter 0 = Anfrage vor Navigationsbeginn. Median über die Läufe; bei Schriften nein (x von y) = nicht alle Schnitte geladen (ungenutzte Schnitte bleiben ungeladen).",
+  "serien": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "laeufe": [
+        {
+          "fcp": 676,
+          "lcp": {
+            "zeit": 676,
+            "element": "h1.mt-5.text-display.font-bold „Autoschlüssel nachmachen und programmieren“"
+          },
+          "dom": 1024,
+          "htmlKB": 67.08984375,
+          "fcpSchriften": [
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "loading"
+            },
+            {
+              "familie": "IBM Plex Sans Fallback",
+              "status": "error"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "loading"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "loading"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "loading"
+            },
+            {
+              "familie": "Inter Fallback",
+              "status": "error"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "loading"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "loading"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "loading"
+            },
+            {
+              "familie": "IBM Plex Mono Fallback",
+              "status": "error"
+            },
+            {
+              "familie": "SM24 Ersatz Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "SM24 Ersatz Plex Sans",
+              "status": "loaded"
+            },
+            {
+              "familie": "SM24 Ersatz Wortmarke",
+              "status": "loaded"
+            },
+            {
+              "familie": "SM24 Ersatz Plex Mono",
+              "status": "loaded"
+            }
+          ],
+          "schriftenEnde": [
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Sans",
+              "status": "loaded"
+            },
+            {
+              "familie": "IBM Plex Sans Fallback",
+              "status": "error"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "loaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "loaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "unloaded"
+            },
+            {
+              "familie": "Inter",
+              "status": "loaded"
+            },
+            {
+              "familie": "Inter Fallback",
+              "status": "error"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "loaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "loaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "unloaded"
+            },
+            {
+              "familie": "IBM Plex Mono",
+              "status": "loaded"
+            },
+            {
+              "familie": "IBM Plex Mono Fallback",
+              "status": "error"
+            },
+            {
+              "familie": "SM24 Ersatz Plex Sans",
+              "status": "unloaded"
+            },
+            {
+              "familie": "SM24 Ersatz Plex Sans",
+              "status": "loaded"
+            },
+            {
+              "familie": "SM24 Ersatz Wortmarke",
+              "status": "loaded"
+            },
+            {
+              "familie": "SM24 Ersatz Plex Mono",
+              "status": "loaded"
+            }
+          ],
+          "schriftenAnfragen": {
+            "gesamt": 5,
+            "vorFcp": 0
+          },
+          "langeAufgabenVorFcp": {
+            "anzahl": 0,
+            "summe": 0
+          },
+          "bytesVorFcpJeTyp": {},
+          "bytesVorFcpKB": 0,
+          "unvollstaendigVorFcp": 18,
+          "abgefangen": 0,
+          "anfragen": [
+            {
+              "id": "C2A1B2327776A864E82CA2FF133AEC96",
+              "typ": "Document",
+              "prioritaet": "VeryHigh",
+              "url": "/",
+              "start": 0.763916015625,
+              "ende": 894.0009160153968,
+              "bytes": 68700,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.2",
+              "typ": "Font",
+              "prioritaet": "High",
+              "url": "/_next/static/media/07c7676b89ed2778-s.p.2bn3s6zvc0dyp.woff2",
+              "start": 230.123046875,
+              "ende": 1516.2110468752908,
+              "bytes": 49299,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.3",
+              "typ": "Font",
+              "prioritaet": "High",
+              "url": "/_next/static/media/2880e9b87afbd5d9-s.p.226pwps5o-gq_.woff2",
+              "start": 235.531982421875,
+              "ende": 747.2959824221871,
+              "bytes": 10987,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.4",
+              "typ": "Font",
+              "prioritaet": "High",
+              "url": "/_next/static/media/48eea41d8317494f-s.p.0wiir8udbzjvx.woff2",
+              "start": 235.679931640625,
+              "ende": 1396.5289316409508,
+              "bytes": 41107,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.5",
+              "typ": "Font",
+              "prioritaet": "High",
+              "url": "/_next/static/media/916cd8a3bde3edf8-s.p.0oace-s_gkfks.woff2",
+              "start": 237.265869140625,
+              "ende": 759.7368691408483,
+              "bytes": 10927,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.6",
+              "typ": "Font",
+              "prioritaet": "High",
+              "url": "/_next/static/media/d6c1ff7e86974212-s.p.40sczeszzbjw1.woff2",
+              "start": 237.407958984375,
+              "ende": 766.1979589842194,
+              "bytes": 10919,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.12",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/17jgc65no27l2.js",
+              "start": 274.969970703125,
+              "ende": 991.3419707029898,
+              "bytes": 3437,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.13",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/2nsn2slz5emql.js",
+              "start": 278.203857421875,
+              "ende": 1148.9938574218177,
+              "bytes": 9312,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.14",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/35i5yputl1187.js",
+              "start": 279.19287109375,
+              "ende": 2160.7858710933615,
+              "bytes": 74301,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.15",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/1fkaya2t7r343.js",
+              "start": 279.269775390625,
+              "ende": 2018.7637753905474,
+              "bytes": 45218,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.16",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+              "start": 279.325927734375,
+              "ende": 1298.2769277343905,
+              "bytes": 5354,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.17",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/0a-rekt06v0sv.js",
+              "start": 280.410888671875,
+              "ende": 1411.8828886719057,
+              "bytes": 4500,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.18",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/1wx21mruynt0m.js",
+              "start": 280.514892578125,
+              "ende": 1509.1388925779793,
+              "bytes": 1938,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.19",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/0y1cfd0e1a169.js",
+              "start": 280.56689453125,
+              "ende": 1778.3958945311606,
+              "bytes": 10070,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.20",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/2xi5-drvuaowz.js",
+              "start": 281.411865234375,
+              "ende": 1967.3268652343977,
+              "bytes": 17957,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.21",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/21r658ih6iau2.js",
+              "start": 281.96484375,
+              "ende": 1861.1018437501734,
+              "bytes": 6299,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.22",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/030k4qsi1csxj.js",
+              "start": 282.041015625,
+              "ende": 1875.9070156251619,
+              "bytes": 6134,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.23",
+              "typ": "Script",
+              "prioritaet": "Low",
+              "url": "/_next/static/chunks/3nmjifmt76qx_.js",
+              "start": 282.10791015625,
+              "ende": 2063.7979101565033,
+              "bytes": 7884,
+              "fehler": null,
+              "vorFcp": false
+            },
+            {
+              "id": "26769.86",
+              "typ": "Other",
+              "prioritaet": "High",
+              "url": "/icon.svg?icon.110197jur6yhm.svg",
+              "start": 2388.83203125,
+              "ende": 2558.0280312502837,
+              "bytes": 2069,
+              "fehler": null,
+              "vorFcp": false
+            }
+          ]
+        }
+      ],
+      "fehler": []
+    }
+  ],
+  "zusammenfassung": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "laeufe": "1 von 1",
+      "fcp": 676,
+      "lcp": 676,
+      "langeAufgabenAnzahl": 0,
+      "langeAufgabenSumme": 0,
+      "dom": 1024,
+      "htmlKB": 67.08984375,
+      "bytesVorFcpKB": 0,
+      "bytesVorFcpJeTypKB": {},
+      "mittlererLauf": 1,
+      "lcpElement": "h1.mt-5.text-display.font-bold „Autoschlüssel nachmachen und programmieren“",
+      "schriftenFcp": "IBM Plex Sans nein (0 von 1); IBM Plex Sans Fallback nein (0 von 1); Inter nein (0 von 3); Inter Fallback nein (0 von 1); IBM Plex Mono nein (0 von 3); IBM Plex Mono Fallback nein (0 von 1); SM24 Ersatz Plex Sans ja; SM24 Ersatz Wortmarke ja; SM24 Ersatz Plex Mono ja"
+    }
+  ]
+}
