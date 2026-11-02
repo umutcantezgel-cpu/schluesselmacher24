@@ -1,0 +1,14 @@
+# Arbeitsordner des Ausbaulaufs: nie committen
+# Vertrauliches nach G13 (Einkaufspreise, Provisionen, Antworten des Inhabers, Kundendaten)
+/daten/
+# Abhängigkeiten der Prüfwerkzeuge liegen außerhalb des Repositorys (Symlink)
+/werkzeuge/node_modules
+/werkzeuge/node_modules/
+# Rohbilder und Arbeitsbilder; committet werden nur vorher, referenz, abschluss, morgen und logo
+/bilder/arbeit/
+*.roh.png
+*.roh.jpg
+# Große Rohprotokolle (Zusammenfassungen werden committet)
+/protokolle/roh/
+*.trace.json
+*.har
