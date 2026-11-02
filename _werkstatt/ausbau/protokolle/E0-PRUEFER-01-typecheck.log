@@ -1,0 +1,9 @@
+
+> schluesselmacher24@0.1.0 typecheck
+> tsc --noEmit
+
+
+real	0m22.002s
+user	0m30.636s
+sys	0m4.651s
+EXIT=0

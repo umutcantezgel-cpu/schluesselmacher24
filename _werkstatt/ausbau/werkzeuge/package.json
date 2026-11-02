@@ -1,0 +1,11 @@
+{
+  "name": "sm24-werkzeuge-ausbau",
+  "private": true,
+  "type": "module",
+  "description": "Prüfwerkzeuge des Ausbaulaufs. Abhängigkeiten außerhalb des Repositorys (/root/sm24-werkzeuge), als node_modules verlinkt. Playwright kommt vorinstalliert aus /opt/node-tools (nie neu installieren).",
+  "dependencies": {
+    "axe-core": "4.10.2",
+    "lighthouse": "12.6.1",
+    "svgo": "3.3.2"
+  }
+}

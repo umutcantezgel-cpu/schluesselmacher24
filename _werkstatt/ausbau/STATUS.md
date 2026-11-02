@@ -26,7 +26,9 @@ STATUS · Sitzung m40jjmy9 · Branch claude/affectionate-knuth-n7mjur · Etappe 
 - HAIKU-PLÄTZE: Cloud 4; ohne Messwert und Kalibrierung halbe Plätze (2) bis zur ersten Kalibrierung.
 
 ## Vermerke
-- Wachhund: (wird in E0 eingerichtet)
+- Wachhund eingerichtet: geplante Aufgabe „SM24 Wachhund“ (trig_01E2ucuvFev7RmWBRwQsyLaw), alle 2 Stunden zur Minute 22 (UTC), frische Sitzung, Modell claude-opus-5-5, Text nach 8.8 mit Hinweis auf add_repo. Die Aufgabe speichert keine Connectoren (Hinweis des Werkzeugs); sie braucht nur Git.
+- Selbstweckung gespannt: trig_01UDim8Wy93f95XNuFs5qUCb (2026-11-03 00:24 MEZ) und trig_019YTPttJn5NGXTWyFKA84yo (2026-11-03 03:24 MEZ).
+- Kontingent-Messwert: rate_limit_event der Sitzung (list_events, Felder unifiedWindows.five_hour/seven_day mit utilization und resetsAt). Gilt als Messwert mit Zeitstempel; Sicherheitsziel damit 99 %, volle HAIKU-PLÄTZE (4).
 
 ## Stundenzeilen (L4)
 - 2026-11-02 22:21 · E0 begonnen: Branch, Arbeitsordner, Auftrag wörtlich, Datenweiche mit Selbsttest (9/9).
