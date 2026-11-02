@@ -31,6 +31,8 @@ export const FLOSKEL_LISTE = [
 ];
 
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+/** ß wird in Versalien zu SS; der sichtbare Text kommt aus innerText und trägt CSS-Großschreibung mit. */
+const wortRe = (s) => escapeRe(s).replace(/ß/g, '(?:ß|ss)');
 
 /** Muster je Floskel. „…“ steht für eine Lücke von höchstens 80 Zeichen innerhalb eines Satzes. */
 function floskelMuster(eintrag) {
@@ -38,9 +40,9 @@ function floskelMuster(eintrag) {
   if (kern.includes('…')) {
     const teile = kern.split('…').map((t) => t.trim()).filter(Boolean);
     const luecke = '[^.!?;:\\n]{1,80}?';
-    return new RegExp(teile.map((t) => `(?<!\\p{L})${escapeRe(t)}(?!\\p{L})`).join(luecke), 'giu');
+    return new RegExp(teile.map((t) => `(?<!\\p{L})${wortRe(t)}(?!\\p{L})`).join(luecke), 'giu');
   }
-  const koerper = escapeRe(kern).replace(/\s+/g, '\\s+');
+  const koerper = wortRe(kern).replace(/\s+/g, '\\s+');
   return new RegExp(`(?<!\\p{L})${koerper}(?!\\p{L})`, 'giu');
 }
 const FLOSKEL_MUSTER = FLOSKEL_LISTE.map((e) => [e, floskelMuster(e)]);
@@ -165,7 +167,9 @@ const TECHNIK_SCHLUESSEL = new Set([
   'pricingGroupId', 'serviceId', 'keyKind', 'mode', 'type', 'kind', 'icon', 'path', 'pfad', 'ctaHref',
   'codePattern', 'codeExample', 'scope', 'shippingClass',
 ]);
-const UEBERSCHRIFT_SCHLUESSEL = /^(title|headline|heading|ueberschrift|überschrift|frage|question|name|label)$/i;
+/** Kennungen wie gleichschliessende-zylinder sind keine Texte. */
+const SLUG = /^[a-z0-9äöüß]+(?:-[a-z0-9äöüß]+)+$/;
+const UEBERSCHRIFT_SCHLUESSEL = /^(title|titel|headline|heading|ueberschrift|überschrift|frage|question|name|label)$/i;
 
 export function jsonZeilen(daten) {
   const zeilen = [];
@@ -181,7 +185,7 @@ export function jsonZeilen(daten) {
     }
     if (typeof wert === 'string') {
       const t = wert.trim();
-      if (!t) return;
+      if (!t || SLUG.test(t)) return;
       zeilen.push(t);
       if (UEBERSCHRIFT_SCHLUESSEL.test(schluessel)) ueberschriften.add(t);
     }
@@ -217,6 +221,7 @@ export function tsxZeilen(quelltext) {
   for (const m of t.matchAll(/>([^<>{}]+)</g)) {
     const roh = m[1].trim();
     if (!roh || !/\p{L}/u.test(roh) || /&&|\|\||[=;'"`]/.test(roh)) continue;
+    if (/[a-z]\.[a-z]/.test(roh) || /\(\s*$/.test(roh)) continue;
     nimm(roh, m.index);
   }
   for (const m of t.matchAll(/"((?:[^"\\\n]|\\.)*)"|'((?:[^'\\\n]|\\.)*)'|`([^`\n]*)`/g)) {

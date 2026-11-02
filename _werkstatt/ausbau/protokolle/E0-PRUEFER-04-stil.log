@@ -1,0 +1,35 @@
+| Seite | Zeilen | Gedanken | Ausrufe | Emoji | Frage | Floskel | Bindestrich | Platzhalter | Befunde | Hinweise (Dreierreihe) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H01-start | 204 | 19 | 0 | 0 | 1 | 0 | 4 | 0 | 24 | 0 |
+| H02-autoschluessel | 212 | 18 | 0 | 0 | 1 | 0 | 2 | 0 | 21 | 0 |
+
+Seitenquelle: --routen
+
+### Fundstellen (je Regel bis zu fünf)
+
+- H01-start · Gedankenstrich (Befund, 19)
+  - „…einen klaren Ablauf — vom direkten Kauf b…“
+  - „…mmieren, reparieren — mit festem Termin.“
+  - „…rei Fotos hochladen — wir prüfen Machbark…“
+  - „…üren, ein Schlüssel — direkt konfigurierb…“
+  - „…Schmiede in Wetzlar – mit Werkstatt, fach…“
+- H01-start · Frage (Befund, 1)
+  - „Kopie oder Programmierung — wo ist der Unterschied?“
+- H01-start · Bindestrich (Befund, 4)
+  - „Autoschlüssel-Termin anfragen“
+  - „…Sicherheitstechnik; Code-Schlüssel bundesweit per Vers…“
+  - „So läuft Ihr Autoschlüssel-Auftrag ab“
+  - „Cookie-Einstellungen“
+- H02-autoschluessel · Gedankenstrich (Befund, 18)
+  - „…mmieren, reparieren — mit klarem Ablauf u…“
+  - „…rbeitet werden muss — davon hängen Aufwan…“
+  - „… weiterer Schlüssel — mechanisch gefertig…“
+  - „…Teil des Schlüssels — nach Vorlage oder g…“
+  - „…r schwache Batterie — die Elektronik blei…“
+- H02-autoschluessel · Frage (Befund, 1)
+  - „Erklärung zu Was ist der Schlüsselbart?“
+- H02-autoschluessel · Bindestrich (Befund, 2)
+  - „Mercedes-Benz“
+  - „Cookie-Einstellungen“
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/stil-2026-11-02_23-24-32.json

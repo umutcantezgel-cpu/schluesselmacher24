@@ -1,0 +1,317 @@
+{
+  "skript": "stil",
+  "zeit": "2026-11-02T22:24:32.181Z",
+  "argumente": {
+    "_": [],
+    "routen": "/,/autoschluessel"
+  },
+  "seitenQuelle": "--routen",
+  "ansichten": [
+    {
+      "name": "H01-start",
+      "zeilen": 204,
+      "zaehl": {
+        "Gedankenstrich": 19,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 0,
+        "Bindestrich": 4,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 24,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Termin anfragen",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…Sicherheitstechnik; Code-Schlüssel bundesweit per Vers…",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…einen klaren Ablauf — vom direkten Kauf b…",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…mmieren, reparieren — mit festem Termin.",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…rei Fotos hochladen — wir prüfen Machbark…",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…üren, ein Schlüssel — direkt konfigurierb…",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…Schmiede in Wetzlar – mit Werkstatt, fach…",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…gesehenen Maschinen — nicht unterwegs im …",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "So läuft Ihr Autoschlüssel-Auftrag ab",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…oschlüssel verloren — was jetzt zu tun is…",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…oder Programmierung — wo ist der Untersch…",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kopie oder Programmierung — wo ist der Unterschied?",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "Maß A und Maß B — gemessen ab der Mit…",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H01-start"
+        }
+      ]
+    },
+    {
+      "name": "H02-autoschluessel",
+      "zeilen": 212,
+      "zaehl": {
+        "Gedankenstrich": 18,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…mmieren, reparieren — mit klarem Ablauf u…",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…rbeitet werden muss — davon hängen Aufwan…",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… weiterer Schlüssel — mechanisch gefertig…",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Was ist der Schlüsselbart?",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…Teil des Schlüssels — nach Vorlage oder g…",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…r schwache Batterie — die Elektronik blei…",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…chende Werte gelten — diese sehen Sie im …",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Mercedes-Benz",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "Schlüssel verloren — was tun?",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "Schlüssel verloren — was tun?",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H02-autoschluessel"
+        }
+      ]
+    }
+  ]
+}

@@ -15,7 +15,7 @@
 // Optionen (für Tests): --plan <datei> --anf <datei> --abnahme <datei>
 // Ausgabe für zeichne: --ausgabe <datei>
 
-import { readFileSync, writeFileSync, renameSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, renameSync, mkdirSync } from 'node:fs';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -36,10 +36,6 @@ const KLASSEN = ['S', 'M', 'L'];
 const ARTEN = ['pflicht', 'kuer'];
 const ZAHL_KRITERIEN = 22;
 const ENDSTATUS_ANF = ['umgesetzt', 'später', 'menschensache', 'entfällt'];
-const STATUS_ANF = ['offen', 'in Arbeit', ...ENDSTATUS_ANF];
-const QUELLEN_ANF = ['G', 'L', 'EL', 'M', 'E', 'K'];
-const BESTAND_ANF = ['vorhanden', 'teilweise', 'fehlt', 'nicht pruefbar'];
-const STATUS_ABNAHME = ['offen', 'erfüllt', 'AUSNAHME', 'UMGEBUNGSAUSNAHME'];
 const AUSNAHME_VERBOTEN = ['Z-02', 'Z-03', 'Z-14', 'Z-20'];
 const MAX_AUSNAHMEN = 2;
 
@@ -267,4 +263,376 @@ export function pruefePlan(plan, anf) {
   return befunde;
 }
 
-// === Befehle folgen als Nächstes: pruefen (Ausgabe), naechste, setze, stand, zeichne, abschluss ===
+// --- Gemeinsame Hilfen ------------------------------------------------------------
+const offen = (p) => p.status !== 'committet';
+const erledigt = (p) => p.status === 'committet';
+const pflichtPakete = (plan) => (plan.pakete ?? []).filter((p) => p.art === 'pflicht');
+const kuerPakete = (plan) => (plan.pakete ?? []).filter((p) => p.art === 'kuer');
+
+function fehler(text, code) {
+  console.error(text);
+  return code;
+}
+
+function lade(datei) {
+  try {
+    return { plan: leseJson(datei) };
+  } catch (e) {
+    const grund = e.code === 'ENOENT' ? 'Datei fehlt' : 'kein gültiges JSON';
+    return { fehler: `${datei} konnte nicht gelesen werden (${grund}).` };
+  }
+}
+
+function ladeAnf(o) {
+  try {
+    return leseJson(o.anf);
+  } catch {
+    return null;
+  }
+}
+
+function leseTextOderNull(datei) {
+  try {
+    return readFileSync(datei, 'utf8');
+  } catch {
+    return null;
+  }
+}
+
+// Früheste Etappe (in der Reihenfolge von etappen) mit einem offenen Pflichtpaket, sonst null.
+export function aktuelleEtappe(plan) {
+  for (const e of plan.etappen ?? []) {
+    if (pflichtPakete(plan).some((p) => p.etappe === e.kennung && offen(p))) return e.kennung;
+  }
+  return null;
+}
+
+// Kleinste Welle mit offenen Paketen in dieser Etappe, sonst null.
+export function kleinsteOffeneWelle(plan, etappe) {
+  const wellen = (plan.pakete ?? []).filter((p) => p.etappe === etappe && offen(p)).map((p) => p.welle);
+  return wellen.length ? Math.min(...wellen) : null;
+}
+
+// Bereit: Status offen oder bereit und alle Abhängigkeiten abgenommen oder committet.
+export function istBereit(plan, p) {
+  const erfuellt = (dep) => {
+    const d = (plan.pakete ?? []).find((q) => q.kennung === dep);
+    return Boolean(d) && ['abgenommen', 'committet'].includes(d.status);
+  };
+  return ['offen', 'bereit'].includes(p.status) && p.abhaengigkeiten.every(erfuellt);
+}
+
+// --- naechste ---------------------------------------------------------------------
+// Etappe: aktuelle Etappe. Kür aus anderen Etappen nur, wenn die aktuelle keine bereiten Pakete hat.
+// Welle: nur die kleinste offene Welle der jeweiligen Etappe.
+export function naechsteListe(plan, { plaetze = 4, modell = 'alle' } = {}) {
+  const aktuell = aktuelleEtappe(plan);
+  const bereit = (plan.pakete ?? []).filter(
+    (p) => istBereit(plan, p) && p.welle === kleinsteOffeneWelle(plan, p.etappe),
+  );
+  let kandidaten = aktuell === null
+    ? bereit.filter((p) => p.art === 'kuer')
+    : bereit.filter((p) => p.etappe === aktuell);
+  if (aktuell !== null && kandidaten.length === 0) {
+    kandidaten = bereit.filter((p) => p.art === 'kuer' && p.etappe !== aktuell);
+  }
+  const laufend = new Set((plan.pakete ?? []).filter((p) => p.status === 'läuft').flatMap((p) => p.schreibrechte));
+  kandidaten = kandidaten.filter((p) => !p.schreibrechte.some((d) => laufend.has(d)));
+  if (modell !== 'alle') kandidaten = kandidaten.filter((p) => p.modell === modell);
+  kandidaten.sort((a, b) => (a.art === b.art ? 0 : a.art === 'pflicht' ? -1 : 1)
+    || (b.wirkung - a.wirkung)
+    || a.kennung.localeCompare(b.kennung));
+
+  // Haiku-Pakete zählen gegen --plaetze, Opus-Pakete nicht. Keine gemeinsame Datei in der Auswahl.
+  const gewaehlt = [];
+  const belegt = new Set();
+  let haiku = 0;
+  for (const p of kandidaten) {
+    if (p.schreibrechte.some((d) => belegt.has(d))) continue;
+    if (p.modell === 'haiku-5.5') {
+      if (haiku >= plaetze) continue;
+      haiku += 1;
+    }
+    gewaehlt.push(p);
+    for (const d of p.schreibrechte) belegt.add(d);
+  }
+  return { etappe: aktuell, welle: aktuell === null ? null : kleinsteOffeneWelle(plan, aktuell), pakete: gewaehlt };
+}
+
+function druckeNaechste(ergebnis) {
+  if (ergebnis.pakete.length === 0) return 'Keine bereiten Pakete.';
+  const kopf = ergebnis.etappe === null
+    ? 'Keine offenen Pflichtpakete mehr. Auswahl aus der Kür.'
+    : `Etappe ${ergebnis.etappe} · Welle ${ergebnis.welle}`;
+  const zeilen = [
+    ['Kennung', 'Titel', 'Modell', 'Klasse', 'Schreibrechte (Zahl)'],
+    ...ergebnis.pakete.map((p) => [p.kennung, p.titel, p.modell, p.kostenklasse, String(p.schreibrechte.length)]),
+  ];
+  const breiten = zeilen[0].map((_, i) => Math.max(...zeilen.map((z) => z[i].length)));
+  const tabelle = zeilen.map((z) => z.map((t, i) => t.padEnd(breiten[i])).join(' · ').trimEnd());
+  return [kopf, ...tabelle].join('\n');
+}
+
+function befehlNaechste(o, a) {
+  const geladen = lade(o.plan);
+  if (geladen.fehler) return fehler(geladen.fehler, 1);
+  const befunde = pruefePlan(geladen.plan);
+  if (befunde.length > 0) {
+    console.log(`PLAN-PRÜFUNG: ${befunde.length} Befunde`);
+    for (const b of befunde) console.log(`- ${b}`);
+    return fehler('Der Plan ist nicht gültig. Erst korrigieren, dann naechste aufrufen.', 1);
+  }
+  const plaetze = a.plaetze === undefined ? 4 : (typeof a.plaetze === 'string' ? Number(a.plaetze) : NaN);
+  if (!Number.isInteger(plaetze) || plaetze < 0) return fehler('--plaetze braucht eine ganze Zahl ab 0.', 2);
+  const modell = a.modell === undefined ? 'alle' : a.modell;
+  if (!['haiku-5.5', 'opus-5.5', 'alle'].includes(modell)) {
+    return fehler('--modell ist haiku-5.5, opus-5.5 oder alle.', 2);
+  }
+  console.log(druckeNaechste(naechsteListe(geladen.plan, { plaetze, modell })));
+  return 0;
+}
+
+// --- setze ------------------------------------------------------------------------
+function befehlSetze(o, a) {
+  const [kennung, status] = a._.slice(1);
+  if (!kennung || !status) {
+    return fehler('Aufruf: plan.mjs setze <kennung> <status> [--commit sha] [--grund text] [--versuch]', 2);
+  }
+  if (!STATUS_PAKET.includes(status)) {
+    return fehler(`Status "${status}" gibt es nicht. Erlaubt: ${STATUS_PAKET.join(', ')}.`, 2);
+  }
+  for (const option of ['commit', 'grund']) {
+    if (a[option] === true) return fehler(`--${option} braucht einen Wert.`, 2);
+  }
+  const geladen = lade(o.plan);
+  if (geladen.fehler) return fehler(geladen.fehler, 1);
+  const plan = geladen.plan;
+  const p = (plan.pakete ?? []).find((q) => q.kennung === kennung);
+  if (!p) return fehler(`Paket ${kennung} gibt es nicht.`, 1);
+  if (a.commit) p.commit = a.commit;
+  if (a.grund) p.grund = a.grund;
+  if (a.versuch) p.versuche = (p.versuche ?? 0) + 1;
+  p.status = status;
+  if (status === 'committet' && !istText(p.commit)) {
+    return fehler('Status committet braucht --commit mit der Commit-Kennung.', 1);
+  }
+  if (['blockiert', 'zurückgestellt'].includes(status) && !istText(p.grund)) {
+    return fehler(`Status ${status} braucht --grund mit einer Begründung.`, 1);
+  }
+  plan.stand = new Date().toISOString();
+  schreibeJson(o.plan, plan);
+  console.log(`Paket ${kennung}: Status ${status} gesetzt.`);
+  return 0;
+}
+
+// --- stand ------------------------------------------------------------------------
+// Etappe n/m zählt ab 1. Wenn alle Pflichtpakete committet sind, steht dort m/m und die Welle ist 0.
+export function kennzahlen(plan) {
+  const pakete = plan.pakete ?? [];
+  const etappen = plan.etappen ?? [];
+  const aktuell = aktuelleEtappe(plan);
+  const pflicht = pflichtPakete(plan);
+  const kuer = kuerPakete(plan);
+  return {
+    etappe: aktuell,
+    position: aktuell === null ? etappen.length : etappen.findIndex((e) => e.kennung === aktuell) + 1,
+    etappeGesamt: etappen.length,
+    welle: aktuell === null ? 0 : (kleinsteOffeneWelle(plan, aktuell) ?? 0),
+    pflichtErledigt: pflicht.filter(erledigt).length,
+    pflichtGesamt: pflicht.length,
+    kuerErledigt: kuer.filter(erledigt).length,
+    kuerGesamt: kuer.length,
+    laufend: pakete.filter((p) => p.status === 'läuft'),
+    blockiert: pakete.filter((p) => p.status === 'blockiert'),
+  };
+}
+
+export function statusZeile(k) {
+  return `Etappe ${k.position}/${k.etappeGesamt} · Welle ${k.welle} · Pflicht ${k.pflichtErledigt}/${k.pflichtGesamt} · Kür ${k.kuerErledigt}/${k.kuerGesamt} · läuft ${k.laufend.length} · blockiert ${k.blockiert.length}`;
+}
+
+function befehlStand(o, a) {
+  const geladen = lade(o.plan);
+  if (geladen.fehler) return fehler(geladen.fehler, 1);
+  const k = kennzahlen(geladen.plan);
+  if (a.zeile) {
+    console.log(statusZeile(k));
+    return 0;
+  }
+  const zeilen = [
+    k.etappe === null ? 'Etappe: keine offene Pflichtetappe, alle Pflichtpakete sind committet.'
+      : `Etappe: ${k.etappe} (${k.position} von ${k.etappeGesamt})`,
+    `Welle: ${k.welle}`,
+    `Pflicht: ${k.pflichtErledigt} von ${k.pflichtGesamt} committet`,
+    `Kür: ${k.kuerErledigt} von ${k.kuerGesamt} committet`,
+    `Laufend (${k.laufend.length}): ${k.laufend.map((p) => p.kennung).join(', ') || 'keine'}`,
+    `Blockiert (${k.blockiert.length}): ${k.blockiert.map((p) => `${p.kennung} (${p.grund ?? 'ohne Grund'})`).join(', ') || 'keine'}`,
+  ];
+  console.log(zeilen.join('\n'));
+  return 0;
+}
+
+// --- pruefen ----------------------------------------------------------------------
+function befehlPruefen(o) {
+  const geladen = lade(o.plan);
+  if (geladen.fehler) {
+    console.log('PLAN-PRÜFUNG: 1 Befund');
+    console.log(`- ${geladen.fehler}`);
+    return 1;
+  }
+  const befunde = pruefePlan(geladen.plan, ladeAnf(o));
+  if (befunde.length === 0) {
+    console.log('PLAN-PRÜFUNG: OK');
+    return 0;
+  }
+  console.log(`PLAN-PRÜFUNG: ${befunde.length} Befunde`);
+  for (const b of befunde) console.log(`- ${b}`);
+  return 1;
+}
+
+// --- zeichne ----------------------------------------------------------------------
+const zelle = (x) => String(x ?? '').replace(/\|/g, '\\|');
+
+export function renderePlan(plan) {
+  const k = kennzahlen(plan);
+  const zeilen = ['# Plan des Ausbaulaufs', '', `Stand: ${plan.stand}`, '', statusZeile(k), ''];
+  for (const e of plan.etappen ?? []) {
+    zeilen.push(
+      `## ${e.kennung} · ${e.ziel}`, '',
+      `Tor: ${e.tor}`,
+      `Kriterien: ${e.kriterien.join(', ') || 'keine'}`,
+      `Geplante Tage: ${e.tage}`, '',
+    );
+    const pakete = (plan.pakete ?? []).filter((p) => p.etappe === e.kennung);
+    if (pakete.length === 0) {
+      zeilen.push('Keine Pakete.', '');
+      continue;
+    }
+    const wellen = [...new Set(pakete.map((p) => p.welle))].sort((x, y) => x - y);
+    for (const w of wellen) {
+      zeilen.push(
+        `### Welle ${w}`, '',
+        '| Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |',
+        '| --- | --- | --- | --- | --- | --- | --- | --- |',
+      );
+      for (const p of pakete.filter((q) => q.welle === w)) {
+        const spalten = [p.kennung, p.titel, p.modell, p.kostenklasse, p.art, p.wirkung, p.status, p.commit];
+        zeilen.push(`| ${spalten.map(zelle).join(' | ')} |`);
+      }
+      zeilen.push('');
+    }
+  }
+  zeilen.push('## Kritischer Pfad', '', (plan.kritischer_pfad ?? []).join(' → ') || 'keiner', '');
+  zeilen.push('## Vorrat', '', (plan.vorrat ?? []).join(', ') || 'keiner', '');
+  return zeilen.join('\n');
+}
+
+function befehlZeichne(o) {
+  const geladen = lade(o.plan);
+  if (geladen.fehler) return fehler(geladen.fehler, 1);
+  const befunde = pruefePlan(geladen.plan);
+  if (befunde.length > 0) {
+    return fehler(`Der Plan ist nicht gültig (${befunde.length} Befunde). PLAN.md wird nicht geschrieben.`, 1);
+  }
+  const ziel = o.ausgabe ?? STANDARD.md;
+  schreibeAtomar(ziel, renderePlan(geladen.plan));
+  console.log(`Geschrieben: ${ziel}`);
+  return 0;
+}
+
+// --- abschluss --------------------------------------------------------------------
+// Liest die Zeilen | Z-01 | … | Status | Beleg | und gibt Kennung und Status (vorletzte Spalte) zurück.
+export function leseAbnahme(text) {
+  const zeilen = [];
+  for (const roh of text.split(/\r?\n/)) {
+    const t = roh.trim();
+    if (!t.startsWith('|')) continue;
+    const zellen = t.replace(/^\|/, '').replace(/\|$/, '').split('|').map((z) => z.trim());
+    if (!/^Z-\d{2}$/.test(zellen[0])) continue;
+    zeilen.push({ kennung: zellen[0], status: zellen.length >= 3 ? zellen[zellen.length - 2] : null });
+  }
+  return zeilen;
+}
+
+export function abschlussLuecken(plan, anf, abnahmeText) {
+  const luecken = [];
+  for (const p of pflichtPakete(plan)) {
+    if (!erledigt(p)) luecken.push(`Pflichtpaket ${p.kennung} ist nicht committet (Status ${p.status}).`);
+  }
+  if (anf === null) {
+    luecken.push('ANFORDERUNGEN.json fehlt oder ist nicht lesbar.');
+  } else {
+    const eintraege = istListe(anf.eintraege) ? anf.eintraege : [];
+    for (const e of eintraege) {
+      if (!ENDSTATUS_ANF.includes(e?.status)) {
+        luecken.push(`Anforderung ${e?.kennung} hat keinen Endstatus (Status ${e?.status}).`);
+      } else if (!istText(e.beleg)) {
+        luecken.push(`Anforderung ${e.kennung} hat keinen Beleg.`);
+      }
+    }
+  }
+  if (abnahmeText === null) {
+    luecken.push('ABNAHME.md fehlt oder ist nicht lesbar.');
+  } else {
+    const zeilen = leseAbnahme(abnahmeText);
+    const ausnahmen = [];
+    for (let n = 1; n <= ZAHL_KRITERIEN; n += 1) {
+      const z = `Z-${String(n).padStart(2, '0')}`;
+      const treffer = zeilen.filter((r) => r.kennung === z);
+      if (treffer.length === 0) {
+        luecken.push(`${z} fehlt in ABNAHME.md.`);
+        continue;
+      }
+      if (treffer.length > 1) luecken.push(`${z} steht mehrfach in ABNAHME.md.`);
+      const status = treffer[0].status;
+      if (!['erfüllt', 'AUSNAHME', 'UMGEBUNGSAUSNAHME'].includes(status)) {
+        luecken.push(`${z} hat den Status "${status}" (erlaubt: erfüllt, AUSNAHME, UMGEBUNGSAUSNAHME).`);
+      }
+      if (status === 'AUSNAHME') {
+        ausnahmen.push(z);
+        if (AUSNAHME_VERBOTEN.includes(z)) luecken.push(`${z} darf keine AUSNAHME haben.`);
+      }
+    }
+    if (ausnahmen.length > MAX_AUSNAHMEN) {
+      luecken.push(`Es gibt ${ausnahmen.length} AUSNAHME, erlaubt sind höchstens ${MAX_AUSNAHMEN} (${ausnahmen.join(', ')}).`);
+    }
+  }
+  return luecken;
+}
+
+function befehlAbschluss(o) {
+  const geladen = lade(o.plan);
+  const luecken = geladen.fehler ? [geladen.fehler] : abschlussLuecken(
+    geladen.plan, ladeAnf(o), leseTextOderNull(o.abnahme),
+  );
+  if (luecken.length === 0) {
+    console.log('ABSCHLUSS-PRÜFUNG: BEREIT');
+    return 0;
+  }
+  console.log('ABSCHLUSS-PRÜFUNG: LÜCKEN');
+  for (const l of luecken) console.log(`- ${l}`);
+  return 1;
+}
+
+// --- Einstieg ---------------------------------------------------------------------
+const BEFEHLE = {
+  pruefen: befehlPruefen,
+  naechste: befehlNaechste,
+  setze: befehlSetze,
+  stand: befehlStand,
+  zeichne: befehlZeichne,
+  abschluss: befehlAbschluss,
+};
+
+export function main(argv) {
+  const a = argumente(argv);
+  const befehl = a._[0];
+  if (!befehl || !Object.hasOwn(BEFEHLE, befehl)) {
+    return fehler('Aufruf: plan.mjs pruefen | naechste | setze | stand | zeichne | abschluss [Optionen]', 2);
+  }
+  return BEFEHLE[befehl](optionenAus(a), a);
+}
+
+const istHauptdatei = Boolean(process.argv[1])
+  && pathToFileURL(resolve(process.argv[1])).href === import.meta.url;
+if (istHauptdatei) process.exitCode = main(process.argv.slice(2));

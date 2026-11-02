@@ -1,4 +1,4 @@
-STATUS · Sitzung m40jjmy9 · Branch claude/affectionate-knuth-n7mjur · Etappe 0/11 · Welle E0-a · Pflicht 0/0 · Kür 0/0 · Anforderungen 0/0 · Kriterien 0/22 · Ausnahmen 0 · Bestand ungeprüft · Herzschlag 22:21 · Fenster ?/99 % · Woche ? % · Tempomat Halten (halbe Plätze, keine Kalibrierung) · Nächster Schritt: Einrichtung durch Haiku-Prüfer, Kundschafter E0
+STATUS · Sitzung m40jjmy9 · Branch claude/affectionate-knuth-n7mjur · Etappe 0/11 (E0 und E1 überlappend) · Welle E0-3/E1-1 · Pflicht 0/0 · Kür 0/0 · Anforderungen 0/622 · Kriterien 0/22 · Ausnahmen 0 · Bestand grün (E0-Ausgang) · Herzschlag 23:25 · Fenster ≈8/99 % · Woche ≈1 % · Tempomat Gas · Nächster Schritt: Werkzeuge E0-PRUEFER-03/04 abnehmen, Vorher-Stand B, Recherche E1
 
 # STATUS
 
@@ -32,3 +32,4 @@ STATUS · Sitzung m40jjmy9 · Branch claude/affectionate-knuth-n7mjur · Etappe 
 
 ## Stundenzeilen (L4)
 - 2026-11-02 22:21 · E0 begonnen: Branch, Arbeitsordner, Auftrag wörtlich, Datenweiche mit Selbsttest (9/9).
+- 2026-11-02 23:25 · E0: Kundschafter 1 bis 6, Anforderungs-Spur (622 Einträge), Planwerkzeug (58 Tests grün), übernommene Werkzeuge 14/14, Funktionsliste 14/14; E1 Recherche begonnen.

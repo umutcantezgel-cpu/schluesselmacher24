@@ -1,0 +1,36 @@
+Inventar http://localhost:3000 · 217 Adressen · 181 indexierbar
+
+| Kennzahl | Zahl |
+|---|---|
+| Adressen gesamt | 217 |
+| indexierbar | 181 |
+| noindex (Meta oder Kopf) | 18 |
+| Weiterleitungen (Status 3xx) | 0 |
+| Fehlerstatus (4xx, 5xx, Netzfehler) | 0 |
+| Weiterleitung auf Fehlerziel | 0 |
+| Status 200 ohne HTML | 18 |
+| title fehlt oder leer (HTML-Seiten) | 0 |
+| description fehlt oder leer (HTML-Seiten) | 0 |
+| h1 nicht genau eine (HTML-Seiten) | 0 |
+| kein main-Element (HTML-Seiten) | 0 |
+| JSON-LD mit Parsefehler | 0 |
+| canonical auf anderen Ursprung (gleicher Pfad) | 0 |
+| canonical abweichend oder ungültig | 0 |
+
+| Status | Adressen |
+|---|---|
+| 200 | 217 |
+
+### Dubletten unter indexierbaren Seiten
+
+keine
+
+### Quellen und Grenzen
+
+- Sitemap: 181 Einträge übernommen, 0 fremder Ursprung (nicht geprüft)
+- Prerender-Manifest: 216 Routen, 2 interne (/_) übersprungen, 10 dynamische Vorlagen übersprungen
+- Nur aus Links gefunden: 1
+- Grenze --max 2000: 0 weitere Adressen nicht aufgenommen
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/inventar-2026-11-02_23-23-33.json
+TSV: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/inventar-2026-11-02_23-23-33.tsv

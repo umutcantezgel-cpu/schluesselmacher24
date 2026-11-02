@@ -1,0 +1,12 @@
+{
+  "hinweis": "Punkte aus kontingent.mjs --kalibrieren. Faktor je Punkt = Prozent / gewichtete Summe von Fensterbeginn bis Zeit.",
+  "punkte": [
+    {
+      "zeit": "2026-11-02T21:23:09.000Z",
+      "fensterbeginn": "2026-11-02T16:23:09.000Z",
+      "gewichtet": 5634709.5,
+      "prozent": 2,
+      "faktor": 3.5494287682443964e-7
+    }
+  ]
+}

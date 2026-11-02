@@ -1,0 +1,38 @@
+{
+ "quelle": "L",
+ "eintraege": [
+  {
+   "kennung": "L-06",
+   "fundstelle": "Leitfaden 2.1, Kapitel 6",
+   "inhalt": "Schlüssel werden nach Code gefertigt.",
+   "bestand": "fehlt",
+   "bestand_fundstelle": null,
+   "status": "offen",
+   "pakete": [],
+   "beleg": null,
+   "gruppe": null
+  },
+  {
+   "kennung": "L-07",
+   "fundstelle": "Leitfaden 2.1, Kapitel 7",
+   "inhalt": "Zylinder werden geprüft.",
+   "bestand": null,
+   "bestand_fundstelle": null,
+   "status": "offen",
+   "pakete": [],
+   "beleg": null,
+   "gruppe": null
+  },
+  {
+   "kennung": "L-05",
+   "fundstelle": "Leitfaden 2.1, Kapitel 5",
+   "inhalt": "Doppelt, wird nicht übernommen.",
+   "bestand": "fehlt",
+   "bestand_fundstelle": null,
+   "status": "offen",
+   "pakete": [],
+   "beleg": null,
+   "gruppe": null
+  }
+ ]
+}

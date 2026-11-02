@@ -1,0 +1,356 @@
+{
+  "skript": "slopscan",
+  "zeit": "2026-11-02T22:19:37.955Z",
+  "argumente": {
+    "_": [],
+    "routen": "/",
+    "geraet": "mobil"
+  },
+  "kopf": [
+    "Ansicht",
+    "Gerät",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "Slop-Index"
+  ],
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "mobil",
+      "s": [
+        1,
+        31,
+        7,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 41,
+      "beispiele": {
+        "s1": [
+          "Inter 102x"
+        ],
+        "s2": [
+          "rgb(188,215,250)",
+          "rgb(25,97,240)",
+          "rgb(187,209,251)",
+          "rgb(25,78,184)",
+          "rgb(18,145,103)",
+          "rgb(174,234,214)",
+          "rgb(10,113,78)",
+          "rgb(105,82,224)",
+          "rgb(206,197,251)",
+          "rgb(80,57,192)",
+          "rgb(230,94,15)",
+          "rgb(253,204,175)",
+          "rgb(174,73,15)",
+          "rgb(192,69,211) lila",
+          "rgb(242,201,248) lila",
+          "rgb(153,56,168) lila",
+          "rgb(9,147,174)",
+          "rgb(166,229,242)",
+          "rgb(7,110,131)",
+          "rgb(77,119,34)",
+          "rgb(199,222,175)",
+          "rgb(56,91,21)",
+          "rgb(229,46,71)",
+          "rgb(250,198,205)",
+          "rgb(184,35,55)",
+          "rgb(242,240,255)",
+          "rgb(205,198,250)",
+          "rgb(255,240,232)",
+          "rgb(252,205,175)",
+          "rgb(253,203,175)",
+          "rgb(242,200,248) lila"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 78 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 7 von 7"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 102
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 102
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 11
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 89
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 26,
+          "verwendet": 42,
+          "offen": [
+            {
+              "farbe": "rgb(188,215,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(25,97,240)",
+              "bsp": "span.absolute.inset-y-0",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(187,209,251)",
+              "bsp": "rect.fill-area-muted",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(25,78,184)",
+              "bsp": "rect",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(18,145,103)",
+              "bsp": "span.absolute.inset-y-0",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(174,234,214)",
+              "bsp": "path.fill-area-muted",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(10,113,78)",
+              "bsp": "path",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(105,82,224)",
+              "bsp": "span.absolute.inset-y-0",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(206,197,251)",
+              "bsp": "rect.fill-area-muted",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(80,57,192)",
+              "bsp": "path",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(230,94,15)",
+              "bsp": "span.absolute.inset-y-0",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(253,204,175)",
+              "bsp": "path.fill-area-muted",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(174,73,15)",
+              "bsp": "path",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(192,69,211)",
+              "bsp": "span.absolute.inset-y-0",
+              "token": false,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(242,201,248)",
+              "bsp": "circle.fill-area-muted",
+              "token": false,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(153,56,168)",
+              "bsp": "path",
+              "token": false,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(9,147,174)",
+              "bsp": "span.absolute.inset-y-0",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(166,229,242)",
+              "bsp": "rect.fill-area-muted",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(7,110,131)",
+              "bsp": "rect",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(77,119,34)",
+              "bsp": "span.absolute.inset-y-0",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(199,222,175)",
+              "bsp": "path.fill-area-muted",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(56,91,21)",
+              "bsp": "path",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(229,46,71)",
+              "bsp": "span.absolute.inset-y-0",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(250,198,205)",
+              "bsp": "path.fill-area-muted",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(184,35,55)",
+              "bsp": "path",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(242,240,255)",
+              "bsp": "div.border-b.border-border",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(205,198,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(255,240,232)",
+              "bsp": "div.border-b.border-border",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(252,205,175)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(253,203,175)",
+              "bsp": "path.fill-area-muted/60",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(242,200,248)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": true
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.7777777777777778,
+          "radienGesamt": 63,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 7 von 7"
+          ],
+          "abschnitte": 7
+        },
+        "textElemente": 3
+      }
+    }
+  ]
+}
