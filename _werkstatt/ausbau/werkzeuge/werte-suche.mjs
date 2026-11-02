@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // werte-suche.mjs – Sucht im Quelltext nach festen Werten, die als Designtoken gelten sollen.
 // Aufruf: node werte-suche.mjs [--seit <commit>] [--json <datei>] [dateien…]
-// Ohne Dateien: alle .ts/.tsx/.css-Dateien unter src/, die seit --seit (Standard fcbcfb2) geändert sind
+// Ohne Dateien: alle .ts/.tsx/.css-Dateien unter src/, die seit --seit (Standard 063b752) geändert sind
 // (git diff --name-only). Gesucht wird je Zeile (Kommentare vorher ausgeblendet):
 //   - Tailwind-Klassen mit eckigen Klammern (auch mit Präfixen wie md: oder hover:)
 //   - Hex-Farben #rgb bis #rrggbbaa
@@ -16,7 +16,7 @@ import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { REPO, PROTOKOLLE, argumente, zeitstempel, ordner } from './lib.mjs';
 
-const BASIS_COMMIT = 'fcbcfb2';
+const BASIS_COMMIT = '063b752';
 const AUSNAHMEN = ['src/components/visual/generators/', 'src/components/visual/icons/'];
 const FARB_FUNKTIONEN_ERLAUBT = ['src/app/(site)/globals.css', 'tailwind.config.ts'];
 /** Einzelne Funde, die kein Gestaltungswert sind; jeder mit Entscheidung in ENTSCHEIDUNGEN.md. */

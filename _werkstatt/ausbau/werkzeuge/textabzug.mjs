@@ -103,7 +103,7 @@ async function sichern(browser) {
       zeilen.push(`| \`${pfad}\` | – | FEHLER: ${e.message} |`);
     }
   }
-  zeilen.push('', 'Ablage: `_werkstatt/ausbau/protokolle/textabzug/`');
+  zeilen.push('', 'Ablage: `' + ORDNER + '`');
   console.log(zeilen.join('\n'));
   return fehler ? 1 : 0;
 }

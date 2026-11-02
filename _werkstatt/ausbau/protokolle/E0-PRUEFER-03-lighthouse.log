@@ -1,0 +1,17 @@
+Lighthouse 12.6.1 · Chrome 153.0.0.0 · Profil mobil · 1 Läufe je Ansicht
+
+| Ansicht | Läufe | Leistung | Barrierefreiheit | Best Practices | SEO | LCP | CLS | TBT | INP | erfüllt |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H01-start | 1/1 | 85 (85–85) | 96 (96–96) | 100 (100–100) | 100 (100–100) | 2867 ms (2867–2867) | 0,000 (0,000–0,000) | 409 ms (409–409) | – | nein (Leistung, LCP, Barrierefreiheit) |
+
+### Befunde auf dem Median und fehlgeschlagene Läufe
+
+- H01-start: Leistung 85 (Grenze mindestens 90)
+- H01-start: LCP 2867 (Grenze höchstens 2500 ms)
+- H01-start: Barrierefreiheit 96 (Grenze 100)
+
+### Attrappen-Abbrüche je Ansicht (alle Läufe)
+
+- H01-start: fremd 0, schreibend 0, unbekannte Aktionen 0
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/lighthouse-2026-11-02_23-13-29.json

@@ -1,43 +1,61 @@
-# Prüfwerkzeuge des Gestaltungslaufs
+# Prüfwerkzeuge des Ausbaulaufs
+
+Stand 2. November 2026, geprüft im Paket E0-PRUEFER-02 gegen den Produktionsserver auf Port 3000. Die Werkzeuge liegen in `_werkstatt/ausbau/werkzeuge`. Gemeinsame Grundlage ist `lib.mjs`; sie ändert nur der Orchestrator.
 
 ## Einrichtung
 
-Auch in einer neu aufgesetzten Umgebung, im Repository-Wurzelordner:
+Die Abhängigkeiten liegen außerhalb des Repositorys und sind per Symlink verlinkt. Nichts wird nachinstalliert.
 
 ```
-mkdir -p /root/sm24-werkzeuge
-cp _werkstatt/werkzeuge/package.json /root/sm24-werkzeuge/
-(cd /root/sm24-werkzeuge && npm install --no-audit --no-fund)
-ln -sfn /root/sm24-werkzeuge/node_modules _werkstatt/werkzeuge/node_modules
+# 1. Abhängigkeiten prüfen (axe-core 4.10.2, lighthouse 12.6.1, svgo 3.3.2)
+ls -la _werkstatt/ausbau/werkzeuge/node_modules
+
+# 2. Produktionsserver (Port 3000), setzt einen aktuellen Build voraus
+_werkstatt/ausbau/werkzeuge/server.sh status      # start, stop, status, neu
+
+# 3. Jeder Projektbefehl und jeder Probelauf läuft über die Datenweiche
+_werkstatt/ausbau/werkzeuge/sicher.sh --json --als-root -- node _werkstatt/ausbau/werkzeuge/bild.mjs / --geraet mobil
 ```
 
-Die Abhängigkeiten liegen außerhalb des Repositorys. Der Symlink ist in `.gitignore` erfasst. Chromium kommt aus `lib.mjs` (`/opt/pw-browsers/…`, überschreibbar mit `SM24_CHROMIUM`). Ein Produktionsserver läuft über `./_werkstatt/werkzeuge/server.sh start` (Voraussetzung: `SM24_DATA=json npx next build`).
-
-## Skripte
-
-- `server.sh start|stop|status|neu` – Produktionsserver auf Port 3000, idempotent.
-- `node bild.mjs <pfad> [--geraet mobil|tablet|desktop|alle] [--ganz] [--reduziert] [--warte ms] [--ziel ordner] [--name praefix]` – Bildschirmfoto einer Seite je Gerät, JPEG Qualität 60.
-- `node bildsatz.mjs [--routen p,p] [--ziel ordner] [--max n]` – Bildsatz der Hauptansichten je Gerät mit Überlaufprüfung.
-- `node messung.mjs [--routen p,p] [--laeufe 3] [--profil mobil|desktop|beide]` – LCP, CLS, INP-Näherung, TBT, JS-Menge und Übertragung; Median (Min–Max) je Ansicht und Profil, Budgetverstöße am Median.
-  - `--vergleich <url>` misst Lauf um Lauf abwechselnd gegen einen zweiten Server (z. B. E0 auf 3100) und ergänzt eine Vergleichstabelle: Median jetzt, Median Vergleich, Spanne, Differenz, erfüllt (Differenz ≤ Spanne oder ≤ 0), dazu je Serie „Läufe (mit Wert)“. Spanne erst ab zwei Werten, sonst „–“ und „nicht bewertbar“. Zeigt der zweite Server auf denselben Rechner und Port wie die Messung (localhost, 127.0.0.1 und ::1 gelten als gleich), bricht das Werkzeug ab. JSON-Schlüssel `vergleich`. Beispiel: `node messung.mjs --routen / --laeufe 2 --profil mobil --vergleich http://localhost:3100`.
-- `node ladeweg.mjs [--routen p,p] [--laeufe 3] [--basis <url>] [--json datei]` – Ladeweg mobil wie `messung.mjs` (gleiche Drosselung): Anfragen mit Typ, Priorität, Start, Ende und Bytes über CDP, FCP, LCP mit Element, Schriftstand bei FCP, Long Tasks vor FCP, Bytes vor FCP je Typ, Wasserfall des mittleren Laufs. `--basis` überschreibt Port 3000, z. B. `node ladeweg.mjs --routen / --basis http://localhost:3100` für E0.
-- `node a11y.mjs [--routen p,p] [--geraet mobil|desktop|beide]` – axe-core, WCAG 2.0/2.1/2.2 Stufen A und AA.
-- `node konsole.mjs [--routen p,p]` – Konsolenfehler, Warnungen, Seitenfehler und Netzfehler (Desktop).
-- `node bewegung.mjs reduziert [--routen p,p]` – laufende Animationen und verborgene Textelemente bei „Bewegung reduzieren“.
-- `node bewegung.mjs einzelbilder <pfad> --selektor <css> [--dauer <ms>] [--echtzeit] [--rand <px>] [--geraet mobil|desktop] [--ziel ordner]` – 5 Bilder bei 0, ¼, ½, ¾, 1 der Animationszeit des Moments (Standard); `--echtzeit` = alter Wanduhr-Ablauf (braucht `--dauer`); `--rand` Standard 24 px.
-- `node bewegung.mjs bildrate <pfad> --selektor <css> --dauer <ms>` – verworfene Bilder in % (mobil, CPU 4-fach gedrosselt), Schwelle 5 %.
-- `node funktionsliste.mjs [--nur F-xx,…] [--json datei] [--tastatur] [--geraet mobil|tablet|desktop]` – Funktionen F-01 bis F-14 im Browser; `--tastatur` bedient alles nur mit Tab, Pfeiltasten, Leertaste und Enter und protokolliert je Bedienung Tab-Schritte und sichtbaren Fokus (Abschnitt „Tastatur“ im Markdown).
-- `node svg-pruefung.mjs [--routen p,p] [--json datei]` – alle SVG-Dateien (viewBox, Editor-Reste, Kommentare, Nachkommastellen) und die SVG je Ansicht (benannt oder verborgen, doppelte id, lucide-Reste, Familie).
-- `node animationen.mjs [--routen p,p] [--geraet mobil|desktop] [--json datei] [--bedienen]` – jede abgelaufene CSS-Animation, jeder Übergang und jede WAAPI-Animation je Ansicht; unbekannte Keyframes sind Befunde (Abgleich mit dem Register K-007).
-  - `--bedienen` bedient nach dem Durchscrollen Schublade und Untermenü (mobil) bzw. Megamenü (Desktop), Akkordeon und „Weiter“/„Zurück“; Spalte „Bedienung“ zeigt gefunden/ausgeführt je Schritt. Knöpfe, die absenden (type="submit" oder ohne type im Formular), werden für Akkordeon, Weiter und Zurück übergangen. Beispiel: `node animationen.mjs --routen /,/autoschluessel/anfrage --geraet mobil --bedienen`.
-- `node werte-suche.mjs [--seit commit] [dateien…]` – feste Werte im Quelltext: Tailwind-Klassen mit `[…]`, Hex-Farben, `rgb(`/`hsl(`/`oklch(`, `style` mit px/rem; Bildinhalte getrennt ausgewiesen.
+- `--als-root` ist nötig, weil die Abhängigkeiten unter `/root` liegen und der Nutzer `ubuntu` dort nicht lesen kann. Die Datenweiche leert die Umgebung und prüft die Hosts in beiden Fällen.
+- Die Datenweiche wechselt in den Repository-Wurzelordner. Relative Pfade in `--json`, `--ziel` und `--md` beziehen sich deshalb auf diesen Ordner; absolute Pfade sind sicherer.
+- Playwright 1.63 kommt aus `/opt/node-tools/node_modules/playwright`, Chromium aus `/opt/pw-browsers/chromium-1243/chrome-linux64/chrome` (überschreibbar mit `SM24_CHROMIUM`). Nie `playwright install` ausführen.
 
 ## Gemeinsame Regeln
 
-- Ausgabe: Markdown-Tabelle auf stdout und JSON-Protokoll. Standard `_werkstatt/protokolle/<skript>-<zeitstempel>.json`, mit `--json <datei>` anders.
+- Geräte: `lib.mjs` führt fünf Größen: mobil-klein 360 × 780, mobil 390 × 844, tablet 768 × 1024, desktop 1440 × 900, breit 1920 × 1080. Werkzeuge wählen ein Gerät über seine Kennung, nie über die Position in der Liste.
+- Routen: `HAUPTANSICHTEN` in `lib.mjs` (derzeit 14 Ansichten).
+- Ausgabe: Markdown-Tabelle auf stdout und JSON-Protokoll. Standard ist `protokolle/<skript>-<zeitstempel>.json`, mit `--json <datei>` anders. Bilder landen standardmäßig in `bilder/arbeit`, mit `--ziel` anders.
 - Exit-Codes: 0 Lauf fertig (auch mit Befunden), 2 Bedienfehler, 1 technischer Fehler.
-- Bilder landen standardmäßig außerhalb des Repositorys (`/root/sm24-bilder`, `SM24_BILDER`), nur mit `--ziel` anders.
-- Schreibende Anfragen fängt `attrappenSetzen()` aus `lib.mjs` ab. Fremde Anfragen außer Google-Schriften werden abgebrochen; dadurch fehlen Netzmengen externer Quellen in `messung.mjs`, und `konsole.mjs` zählt sie getrennt als Attrappen-Abbrüche.
-- `messung.mjs`: Der Klick trifft den ersten sichtbaren Knopf, der nicht im Formular liegt und kein Absende-Knopf ist. TBT = Summe (Dauer − 50 ms) der Long Tasks bis 5 s nach Ladebeginn. INP 0 bedeutet kein Ereignis über 16 ms.
-- `bewegung.mjs einzelbilder` und `bewegung.mjs bildrate` nehmen den ersten **gerenderten** Treffer des Selektors (Breite > 0). Protokoll und Text nennen Index unter allen Treffern, Größe in px und viewBox. Ohne gerenderten Treffer ist es ein Bedienfehler mit Zahl der versteckten Treffer. Beispiel: `node bewegung.mjs bildrate /schliessanlagen --selektor "main header [role=img]" --dauer 1600 --geraet mobil`.
-- `bewegung.mjs einzelbilder` lädt ohne Durchscrollen, scrollt das Element in den Blick und wartet auf die zugehörige Hülle (Vorfahre oder Nachfahre mit `data-motion`, höchstens 5 s, bis „play“). Danach werden alle endlichen Animationen des Elements und seiner Hülle (ohne CSS-Übergänge) nach `ready` gesetzt, zwei Frames gewartet, pausiert und je Bild auf dieselbe absolute Zeit gesetzt (`currentTime`, inkl. Verzögerung). Zeitfenster: kleinste Verzögerung bis größte endliche Endzeit; unendliche Animationen werden übersprungen. Ein Element kleiner als 200 × 120 px (eine Seite) wird auf den nächsten Vorfahren mit `role="img"` oder `<svg>` erweitert; das steht im Protokoll.
+- Schreibende Anfragen fängt `attrappenSetzen()` aus `lib.mjs` ab. Fremde Ursprünge werden abgebrochen, außer Google-Schriften. `konsole.mjs` zählt solche Abbrüche getrennt als Attrappen-Abbrüche, nicht als Befunde.
+- Probeläufe ohne Schreiben in Projektordner: `--json`, `--ziel` und `--md` lenken die Ausgaben um. Dazu kommen `SM24_FOTO` (funktionsliste, Testbild für den Upload), `SM24_TEXTABZUG` (textabzug) und `SM24_FINGERABDRUECKE` (logikwaechter).
+
+## Werkzeuge
+
+| Werkzeug | Aufruf (Beispiel) | Zweck | Stand |
+|---|---|---|---|
+| server.sh | `server.sh start`, `stop`, `status`, `neu` | Produktionsserver auf Port 3000 über die Datenweiche | läuft |
+| bild.mjs | `node bild.mjs / --geraet mobil` | Bildschirmfoto einer Seite je Gerät | läuft |
+| bildsatz.mjs | `node bildsatz.mjs --routen /,/kasse --max 2` | Bildsatz je Ansicht und Gerät mit Überlaufprüfung | läuft |
+| konsole.mjs | `node konsole.mjs --routen /` | Konsolenfehler, Warnungen und Netzfehler (Gerät desktop) | läuft |
+| a11y.mjs | `node a11y.mjs --routen / --geraet mobil` | axe-core, WCAG 2.0 bis 2.2, Stufen A und AA | läuft (axe-core aus node_modules je Ansicht eingefügt) |
+| svg-pruefung.mjs | `node svg-pruefung.mjs --routen /` | SVG-Dateien und SVG je Ansicht | läuft |
+| werte-suche.mjs | `node werte-suche.mjs --seit b8e7ea7` | feste Werte im Quelltext, ohne Browser | läuft mit Einschränkung: die Standardbasis fcbcfb2 fehlt im Repository, daher `--seit` angeben |
+| messung.mjs | `node messung.mjs --routen / --laeufe 3 --profil mobil` | LCP, CLS, INP, TBT und JS-Menge, Median aus den Läufen | läuft (Probelauf mit einem Lauf; Ergebnisse brauchen drei Läufe) |
+| ladeweg.mjs | `node ladeweg.mjs --routen / --laeufe 3` | Ladeweg mobil: Anfragen, FCP, LCP und Wasserfall | läuft |
+| bewegung.mjs | `node bewegung.mjs reduziert --routen /` | laufende Animationen bei „Bewegung reduzieren“ | läuft mit Einschränkung: Modi `einzelbilder` und `bildrate` noch nicht probiert |
+| animationen.mjs | `node animationen.mjs --routen / --geraet mobil` | CSS-Animationen, Übergänge und WAAPI je Ansicht | läuft mit Einschränkung: `--bedienen` noch nicht probiert |
+| textabzug.mjs | `node textabzug.mjs sichern`, `vergleichen` | Text der sechs Rechtsseiten festhalten und vergleichen | läuft (Probelauf sichern und vergleichen) |
+| gefuellt.mjs | `node gefuellt.mjs --geraet mobil` | Warenkorb und Kasse mit Inhalt fotografieren | läuft |
+| logikwaechter.mjs | `node logikwaechter.mjs sichern`, `pruefen` | Fingerabdruck geschützter Dateien, Abweichung bei Logikänderung | läuft (das Protokoll im Repository legt der Orchestrator an) |
+| funktionsliste.mjs | `node funktionsliste.mjs --nur F-01,F-04 --md <datei>` | Funktionen F-01 bis F-14 im Browser | läuft (Probelauf: 14 von 14 BESTANDEN) |
+
+## Hinweise je Werkzeug
+
+- `messung.mjs --vergleich <url>` misst abwechselnd gegen einen zweiten Server und ergänzt eine Vergleichstabelle. Zeigt der zweite Server auf denselben Rechner und Port, bricht das Werkzeug ab.
+- `ladeweg.mjs --basis <url>` überschreibt Port 3000, etwa für einen Vergleichsserver.
+- `bewegung.mjs einzelbilder` und `bildrate` nehmen den ersten gerenderten Treffer des Selektors. Ohne gerenderten Treffer ist es ein Bedienfehler.
+- `animationen.mjs --bedienen` bedient Schublade, Untermenü, Megamenü, Akkordeon, „Weiter“ und „Zurück“. Knöpfe, die absenden, übergeht es.
+- `funktionsliste.mjs --tastatur` bedient alles nur mit Tab, Pfeiltasten, Leertaste und Enter. Die Überschrift des Markdowns nennt noch die Kennung E0-PRUEFER-04; das ist ein Altbestand im Text.
+- `textabzug.mjs` legt den Ordner nur bei `sichern` an. `vergleichen` ohne vorherige Sicherung endet mit Bedienfehler 2.
+- `logikwaechter.mjs pruefen` braucht ein Protokoll; ohne `sichern` endet es mit Bedienfehler 2.

@@ -1,0 +1,24 @@
+{
+  "ziel": "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt",
+  "protokoll": [
+    {
+      "geraet": "mobil",
+      "warenkorb": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/warenkorb-gefuellt__mobil__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/warenkorb-gefuellt__mobil__01.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/warenkorb-gefuellt__mobil__02.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/warenkorb-gefuellt__mobil__03.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/warenkorb-gefuellt__mobil__04.jpg"
+      ],
+      "kasse": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/kasse-gefuellt__mobil__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/kasse-gefuellt__mobil__01.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/kasse-gefuellt__mobil__02.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/kasse-gefuellt__mobil__03.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/kasse-gefuellt__mobil__04.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/kasse-gefuellt__mobil__05.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/gefuellt/kasse-gefuellt__mobil__06.jpg"
+      ]
+    }
+  ]
+}
