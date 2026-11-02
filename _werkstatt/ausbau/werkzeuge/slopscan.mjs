@@ -73,6 +73,12 @@ function messeAnsicht(konfig) {
   const farbe = (css) => {
     if (typeof css !== 'string' || !css || css === 'none') return null;
     const roh = css.trim();
+    // rgb()/rgba() direkt lesen: die Leinwand würde Alphawerte unter 1 runden und Grundfarben verfälschen.
+    const direkt = /^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:[,\s/]+([\d.]+%?))?\s*\)$/i.exec(roh);
+    if (direkt) {
+      const a = direkt[4] === undefined ? 1 : (direkt[4].endsWith('%') ? parseFloat(direkt[4]) / 100 : parseFloat(direkt[4]));
+      return { r: Math.round(Number(direkt[1])), g: Math.round(Number(direkt[2])), b: Math.round(Number(direkt[3])), a: Math.round(a * 100) / 100 };
+    }
     ctx.fillStyle = FUEHLER;
     ctx.fillStyle = roh;
     if (ctx.fillStyle === FUEHLER && roh.toLowerCase() !== FUEHLER) return null;

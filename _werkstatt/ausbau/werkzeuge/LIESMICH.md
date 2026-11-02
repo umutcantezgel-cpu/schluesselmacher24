@@ -54,6 +54,10 @@ _werkstatt/ausbau/werkzeuge/sicher.sh --json --als-root -- node _werkstatt/ausba
 - `node kontaktbogen.mjs --bilder <ordner oder dateien> --ziel <datei.jpg> [--spalten 4] [--titel text]` – Kontaktbogen aus Bildern als ein JPEG mit Dateinamen
 - `node inventar.mjs [--basis http://localhost:3000] [--max 2000] [--manifest <datei>]` – Inventar der Seiten mit Status, Weiterleitungen, Meta-Angaben, Strukturdaten und Dubletten
 - `node snippet.mjs [--inventar <json>]` – Titelbreite in Pixeln (20px Arial, hier Liberation Sans) und Beschreibungslänge je indexierbarer Seite
+- `node slopscan.mjs [--routen p,p] [--geraet mobil|desktop|beide]` – Slop-Scan S1 bis S8 je Ansicht und Gerät mit Slop-Index
+- `node stil.mjs [--routen p,p | --alle] [--quellen]` – Stilprüfung nach Auftrag 14 und S9 (Gedankenstriche, Floskeln, Bindestriche, Fragen, Platzhalter)
+- `node svgo-pruefung.mjs [dateien…]` – SVGO-Voreinstellung je SVG prüfen, schreibt nichts
+- `node kontingent.mjs [--seit ISO] [--kalibrieren % --zeit ISO]` – Kontingent aus den Sitzungsprotokollen schätzen und kalibrieren
 - `node plan.mjs pruefen|naechste|setze|stand|zeichne|abschluss` und `node anforderungen.mjs pruefen|zeichne|zusammenfuehren` – Plan und Anforderungs-Spur (Selbsttest: `node --test plan.pruef.mjs`)
 - `./sicher.sh [--json|--pg] -- <befehl>` – Datenweiche für jeden Projektbefehl (Selbsttest: `./sicher.test.sh`)
 

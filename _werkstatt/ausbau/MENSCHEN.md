@@ -23,3 +23,6 @@ Die Liste des Gestaltungslaufs (docs/gestaltung/MENSCHEN.md, M-01 bis M-37, davo
 | MA-13 | **Zylindersätze**: Der Bestand verkauft gleichschließende Sätze bis 30 Zylinder direkt, das Gespräch nennt 2 bis 10 und darüber Anfrage (G-28). | Bestand geht vor Gespräch (Vorrang 3 vor 6). | Bis 30 bleibt bestellbar; ab 11 empfiehlt die Seite Beratung oder Schließanlage. | `ANTWORTEN: Zylindersätze …` |
 | MA-14 | **Begriff „Pro Cap“ / „Scun Cap“** für Schlüsselkappen oder Farbclips klären (G-27). | Produktnamen nur belegt (R4). | Neutral „Schlüsselkappe“ und „Farbclip“. | `ANTWORTEN` |
 | MA-15 | **Produktnamen elektronischer Systeme** (im Gespräch „Xialo“, „SE“, „One“). | G-33: bis dahin nur Hersteller und Technik. | Nur Hersteller und Technik. | Bogen PRODUKTE |
+
+## Vermerke nach G11 (fremde Inhalte mit Anweisungscharakter, nicht befolgt)
+- 2026-11-03 · E1-FACHKUNDLER-02: Die Seite von DIN Media zu VdS 2156-1 enthielt eine eingebettete Formatanweisung an KI-Systeme. Sie wurde nicht befolgt; die Seite wurde nur als Quelle für Titel und Ausgabe genutzt (erhebung/E1-schliesstechnik-normen.md, offene Frage 13).

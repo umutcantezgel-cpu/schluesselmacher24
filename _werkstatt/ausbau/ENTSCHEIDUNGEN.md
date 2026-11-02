@@ -12,3 +12,41 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 ## A-002 · Arbeitsordner aus Lint, Typprüfung und Tests ausschließen (2026-11-02 22:22, E0)
 - Ziel: Prüfwerkzeuge in _werkstatt beeinflussen weder Build noch Prüfungen der Seite (Auftrag 8.3).
 - Umsetzung: "_werkstatt/**" in eslint.config.mjs, "_werkstatt" in tsconfig.json, '_werkstatt/**' in vitest.config.ts. Kein Produktcode wird ausgenommen (G8 gewahrt). Beim Abschluss wieder entfernt, wie im Gestaltungslauf (Commit 504e905).
+
+## A-003 · Schriften: Inter weicht, IBM Plex Sans trägt Text und Überschrift (2026-11-02 23:56, E0 für E2)
+- Ziel: S1 ohne Treffer (Inter steht auf der Liste), Fließtext mobil mindestens 17 px, Schriften selbst gehostet als Dateien mit Teilmengen und angepasster Ersatzschrift, höchstens 250 KB, Handschrift der Werkstattzeichnung erhalten.
+- Wege: (1) IBM Plex Sans für Text und Überschrift, Plex Mono für Codes und Maße · (2) Plex Sans für Überschriften, Atkinson Hyperlegible Next für Text (sehr gut lesbar), Plex Mono · (3) eine neue Familie für alles.
+- Bewertung: (1) hält die Leitidee „Werkstattzeichnung“ (KERN 1.19, K-001, K-006) und eine Familie mit zwei Schnitten, rund 130 KB (Plex Sans latin 400/500/600/700 je etwa 22,6 KB, Plex Mono 400/500 je etwa 20 KB), liegt schon als @fontsource-Datei im Projekt (OFL). (2) liest sich für Ältere noch klarer, bringt aber eine dritte Familie, mehr Bytes und einen Stilbruch. (3) verwirft den Bestand ohne Not.
+- Gewählt: (1), lokal über next/font/local mit Dateien unter src/fonts (Lizenzdatei OFL daneben), Teilmenge latin, latin-ext über unicode-range nur bei Bedarf (Š in Škoda), adjustFontFallback Arial. Fließtext mobil 17 px, Zeilenlänge 60 bis 75 Zeichen, Silbentrennung hyphens auto mit lang de.
+- Umkehrprobe: Rückbau auf next/font/google ist eine Zeile je Familie. Folgen: Inter entfällt auch in Mails und Druck (Ersatzname Roboto in Mails bleibt Systemschrift); Tests, die Schriftnamen prüfen, anpassen.
+
+## A-004 · PDF-Bibliothek für Vorgangsblatt, Schließplan, Begleitschein und Partnervertrag (2026-11-02 23:56, E0 für E2)
+- Ziel: echte PDF-Dateien serverseitig (Anhang an Benachrichtigungen, Abruf im Admin), mit Fotos als Vorschau, Tabellen, Umlauten, ohne Browser.
+- Wege: (1) pdfkit 0.20.2 (MIT, gepflegt, Stand 2026-09-07, reines JavaScript, Bilder und eingebettete Schriften) · (2) @react-pdf/renderer 4.9.0 (MIT, gepflegt, baut auf pdfkit, JSX-Vorlagen, schwerer) · (3) pdf-lib 1.17.1 (MIT, seit 2022 ohne Release) · (4) Chromium-Druck (zu schwer für Serverfunktionen).
+- Bewertung: (1) kleinste gepflegte Grundlage ohne Browser, läuft in Vercel-Funktionen, landet nie im Client. (2) bequemer, aber zusätzliche Schicht und bekannte Bündelungsprobleme mit Next. (3) ungepflegt. (4) Kaltstart und Größe.
+- Gewählt: (1), nur serverseitig (serverExternalPackages, Schriftdaten über outputFileTracingIncludes), Plex Sans als TTF eingebettet. Neue Laufzeitbibliothek nach G7: Lizenz MIT, Größe ausgepackt 10,5 MB (Server), Pflege aktiv. Das HTML-Druckblatt bleibt als Ansicht bestehen (Bestand).
+- Umkehrprobe: Das Vorgangsblatt-System kapselt pdfkit hinter einer Funktion erzeugePdf(blatt); ein Wechsel betrifft eine Datei.
+
+## A-005 · Regeln für Stilprüfer und Slop-Scan (2026-11-02 23:56, E0)
+- Halbgeviertstrich in Zeit- und Zahlenbereichen (09:00–13:00, 30–35 mm) gilt nach Duden als Bis-Strich, nicht als Gedankenstrich; G-48 und Abschnitt 14 meinen den Gedankenstrich. Entscheidung: Bereiche schreiben wir mit „bis“ (09:00 bis 13:00 Uhr) wo Text ist, und lassen den Bis-Strich nur in Tabellen und Maßangaben zu; stil.mjs zählt ihn getrennt als „Bis-Strich“.
+- Die Firmierung „SCHLÜSSELMACHER24 – Inhaber Mina Saad“ ist eine Firmenangabe (G9, Firmendaten unantastbar). Sie bleibt; stil.mjs führt sie als Ausnahme.
+- Fragen in Akkordeon-Titeln (FAQ) sind Überschriften echter Kundenfragen und erlaubt; stil.mjs zählt nur Fragen im Fließtext.
+- Lila- und Indigoprüfung umfasst 230 bis 330 Grad. Die Bereichsfarbe Schließanlagen (292 Grad) verstößt gegen S2 und wird in E3 neu gesetzt.
+- „folgt“, „analog“ zählen nur in eckigen Klammern oder allein stehend als Platzhalter; Markennamen mit Bindestrich (Mercedes-Benz, Burg-Wächter, Rolls-Royce) stehen auf der Ausnahmeliste.
+
+## A-006 · Rubriken-Modell als eine Datenquelle (2026-11-02 23:56, E0 für E2)
+- Ziel (G-11, Auftrag 10): Hub, Navigation, Sitemap und Rubrikseiten lesen Rubriken aus einer Quelle; eine neue Rubrik entsteht ohne Umbau.
+- Wege: (1) neue Payload-Sammlung „rubriken“ mit Spiegel content/rubriken.json, gelesen über die vorhandene Datenweiche lib/data · (2) Erweiterung von „leistungsseiten“ · (3) Global „Navigation“.
+- Bewertung: (1) passt zum Muster aller Inhaltsdaten (Sammlung plus JSON-Fallback plus Seed mit Startwert-Abgleich), trennt Rubrik (Einstieg, Ablauf, Abschluss) von Leistungsseite (Fachinhalt). (2) vermischt zwei Zwecke und bricht Bestandsseiten. (3) wäre ohne Versionen, Papierkorb und Reihenfolge pro Eintrag schwer pflegbar.
+- Gewählt: (1). Felder: kennung, name, laienname, erklaerung (eine Zeile), icon (Schlüssel aus dem eigenen Formsystem), ziel (Pfad), ablaufschritte (Titel, Text, Icon), abschlussart (kasse, anfrage, termin-anzahlung, angebot-zahlungslink, beratung), formular (Kennung der Formulardefinition), pflichtUploads, berechtigungsnachweis, status (live, spaeter, aus), reihenfolge, navigationsgruppe (autoschluessel, code, sperrschliessung, schliessanlagen, mehr), imHub (ja/nein), bereich (Verweis auf den Vorgangsbereich). Bereiche der Vorgänge bleiben ein Enum und wachsen additiv.
+- Umkehrprobe: Ohne Datenbank liest die Seite content/rubriken.json; fällt die Sammlung weg, bleibt die Seite mit dem JSON lauffähig. Folgen: navigation.ts wird zur Ableitung aus Rubriken plus festen Einträgen (Ratgeber, Über uns, Kontakt, Partner werden); Header wird asynchron mit Daten versorgt.
+
+## A-007 · Bewegungsmodul mit Schalter (2026-11-02 23:56, E0 für E2)
+- Ziel (G-06, Auftrag 12): ein zentrales Modul liest reduzierte Bewegung, Zeigerart und die Wahl „Bewegung an oder ruhig“, startet nach der Systemeinstellung und merkt sich die Wahl im Gerät.
+- Gewählt: Attribut data-bewegung="an|ruhig" auf html, gesetzt von einem kleinen Inline-Skript vor dem ersten Rendern (CSP erlaubt script-src 'unsafe-inline' bereits; das Skript bekommt zusätzlich eine feste Prüfsumme im Test), localStorage-Schlüssel sm24-bewegung mit try/catch, Standard aus prefers-reduced-motion. CSS koppelt alle Animationen an [data-bewegung="an"]; die ruhige Fassung ist eigens gestaltet (gleiche Information, keine Lage- oder Größenänderung). Schalter im Fußbereich als Umschaltknopf mit aria-pressed, dazu Pause-Knöpfe an jeder Dauerschleife. Jede Animation trägt data-motion mit Registerkennung (B-xx). Die vorhandene CSS-Mechanik bleibt die einzige Bewegungsbibliothek; framer-motion bleibt ungenutzt (D-004, Entscheidung beim Inhaber).
+
+## A-008 · Hub und Eingangsinszenierung (2026-11-02 23:56, E0 für E2)
+- Ziel (G-01 bis G-05, G-07): erster Bildschirm mit Frage, einem Satz, zwölf Kacheln aus den Rubriken und Anrufen; alle Kacheln bei 390 × 844 und 1440 × 900 ohne Scrollen, mindestens neun bei 360 × 780; Inszenierung neben der Auswahl, die nichts zurückhält.
+- Wege für die Inszenierung: (1) Pfad-Morphing eines SVG (Schlüssel wird Zylinder) · (2) physische Erzählung aus erlaubten Eigenschaften: ein kurzer Autoschlüssel fährt in einen Profilzylinder (Lage), der Kern dreht (Drehung), der Zylinder rückt in einen Schließplan aus mehreren Türen (Lage, Größe, Deckkraft) · (3) Diashow von Einzelbildern.
+- Bewertung: (1) verletzt die Regel „nur Lage, Größe, Drehung und Deckkraft“ und ist teuer. (3) ist Vorlage. (2) erzählt das Angebot als einen Handgriff der Werkstatt, ist günstig zu rendern und hat eine natürliche ruhige Fassung (Endbild des Schließplans).
+- Gewählt: (2). Mobil steht die Inszenierung als kleines Band über der Frage (höchstens 96 px hoch), am Desktop rechts neben dem Kachelraster; das größte Element ist die Überschrift mit der Frage, nie die Grafik. Startzustand an einer Klasse, die das Inline-Skript setzt; nach 2 s zeigt ein Zeitlimit alles; ohne JavaScript ist alles sichtbar. Schlüssel mit glaubwürdigen Proportionen (G-07): Länge zu Reidenhöhe etwa 2,6 bis 3 zu 1 statt heute 4,15 zu 1 (Zielmaß nach FACHWISSEN zu bestätigen).

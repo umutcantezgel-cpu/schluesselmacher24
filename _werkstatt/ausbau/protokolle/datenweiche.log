@@ -91,3 +91,5 @@
 2026-11-02T22:34:12+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs --routen / --geraet mobil --json /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-p04/slop-token-test.json
 2026-11-02T22:34:35+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs --routen / --geraet mobil
 2026-11-02T22:34:39+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs
+2026-11-02T22:37:51+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs --routen / --geraet mobil
+2026-11-02T22:38:03+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs
