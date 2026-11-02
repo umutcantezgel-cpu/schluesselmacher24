@@ -70,7 +70,6 @@ LEEREN=(
   DATABASE_URL DATABASE_URL_UNPOOLED DATABASE_CA_CERT DIRECT_URL
   POSTGRES_URL POSTGRES_URL_NON_POOLING POSTGRES_PRISMA_URL POSTGRES_URL_NO_SSL
   POSTGRES_HOST POSTGRES_USER POSTGRES_PASSWORD POSTGRES_DATABASE
-  PGHOST PGHOSTADDR PGPORT PGUSER PGPASSWORD PGDATABASE PGSSLMODE PGSSLROOTCERT PGSERVICE PGPASSFILE
   SUPABASE_URL SUPABASE_ANON_KEY SUPABASE_SERVICE_ROLE_KEY SUPABASE_JWT_SECRET SUPABASE_SECRET_KEY
   NEXT_PUBLIC_SUPABASE_URL NEXT_PUBLIC_SUPABASE_ANON_KEY NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
   # Ablage
@@ -94,6 +93,10 @@ LEEREN=(
   NEXT_PUBLIC_SERVER_URL SM24_PREVIEW_MIGRATE SM24_READONLY_CONTENT SICHERUNG_ZIEL
 )
 for name in "${LEEREN[@]}"; do export "$name="; done
+# libpq-Variablen nicht leeren (ein leeres PGPORT bricht initdb und postgres ab),
+# sondern auf das lokale Postgres setzen bzw. entfernen.
+export PGHOST=127.0.0.1 PGPORT=5433 PGUSER=postgres PGPASSWORD=postgres PGDATABASE=schluesselmacher24 PGSSLMODE=disable
+unset PGHOSTADDR PGSERVICE PGPASSFILE PGSSLROOTCERT PGSSLCERT PGSSLKEY
 
 # --- 2. Jede Variable aus .env-Dateien der Wurzel leeren ----------------------
 ENV_HINWEIS=""
@@ -106,7 +109,7 @@ for datei in "$WURZEL"/.env "$WURZEL"/.env.*; do
     name="${zeile%%=*}"
     name="${name//[[:space:]]/}"
     [[ "$name" =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]] || continue
-    case "$name" in NODE_ENV|PATH|HOME) continue ;; esac
+    case "$name" in NODE_ENV|PATH|HOME|PGHOST|PGPORT|PGUSER|PGPASSWORD|PGDATABASE|PGSSLMODE) continue ;; esac
     export "$name="
     ENV_HINWEIS="$ENV_HINWEIS $name"
   done < <(grep -E '^[[:space:]]*(export[[:space:]]+)?[A-Za-z_][A-Za-z0-9_]*[[:space:]]*=' "$datei" || true)
@@ -218,11 +221,15 @@ if [ "$(id -u)" = 0 ] && [ "$ALS_ROOT" = 0 ]; then
     find "$WURZEL" -path "$WURZEL/.git" -prune -o -exec chmod a+rwX {} + 2>/dev/null || true
   fi
 fi
-if [ "$MODUS" = pg ] && [ "$TROCKEN" = 0 ]; then
-  pg_bereit
-fi
 printf '%s\t%s\tals=%s\thosts=localhost\tenv-dateien=%s\t%s\n' \
   "$(date -Iseconds)" "$MODUS" "$ALS" "${ENV_HINWEIS:- keine}" "$*" >>"$PROTOKOLL"
+if [ "$MODUS" = pg ] && [ "$TROCKEN" = 0 ]; then
+  pg_bereit || fehler "Postgres ließ sich nicht bereitstellen"
+fi
+# Das CA-Bündel des Proxys liegt unter /root und ist für ubuntu nicht lesbar: Kopie bereitstellen.
+if [ "$(id -u)" = 0 ] && [ "$ALS_ROOT" = 0 ] && [ -n "${NODE_EXTRA_CA_CERTS:-}" ] && [ -r "$NODE_EXTRA_CA_CERTS" ]; then
+  install -m 644 -o "$NUTZER" "$NODE_EXTRA_CA_CERTS" "/home/$NUTZER/.sm24-ca-bundle.crt" 2>/dev/null && export NODE_EXTRA_CA_CERTS="/home/$NUTZER/.sm24-ca-bundle.crt"
+fi
 [ -n "$ENV_HINWEIS" ] && echo "Datenweiche: Variablen aus .env-Dateien geleert:$ENV_HINWEIS" >&2
 
 cd "$WURZEL"

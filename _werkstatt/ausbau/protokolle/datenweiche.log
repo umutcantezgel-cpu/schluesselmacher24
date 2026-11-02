@@ -20,3 +20,19 @@
 2026-11-02T21:29:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
 2026-11-02T21:31:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
 2026-11-02T21:33:06+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-02T21:37:49+00:00	ABBRUCH	json	FREMD_DB zeigt auf Datenbank-Host db.gefaelscht-produktion.supabase.co
+2026-11-02T21:37:49+00:00	ABBRUCH	json	ALT_URL zeigt auf Datenbank-Host prod.beispiel-firma.de
+2026-11-02T21:37:49+00:00	ABBRUCH	json	MEIN_BUCKET enthält die Adresse eines Fremddienstes (r2.cloudflarestorage.com)
+2026-11-02T21:37:49+00:00	ABBRUCH	json	IRGENDWAS enthält einen Zahlungs- oder Mailschlüssel
+2026-11-02T21:37:49+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "[$DATABASE_URL$STORAGE_BUCKET$PAYMENT_API_KEY]"
+2026-11-02T21:37:49+00:00	json	als=root	hosts=localhost	env-dateien= DATABASE_URL GEHEIM_NEU NOCH_EINS	sh -c echo "[$DATABASE_URL|$GEHEIM_NEU|$NOCH_EINS|]"
+2026-11-02T21:37:49+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$SM24_DATA $SM24_STORAGE $NEXT_PUBLIC_SITE_URL"
+2026-11-02T21:37:49+00:00	pg	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$DATABASE_URL"
+2026-11-02T21:37:50+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	sh -c echo "$DATABASE_URL $PGPORT $(id -un)"; /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/../../../node_modules/@embedded-postgres/linux-x64/native/bin/psql -h 127.0.0.1 -p 5433 -U postgres -d schluesselmacher24 -tAc "select version()" | cut -c1-40
+2026-11-02T21:37:55+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	node -e const {Client}=require('pg');(async()=>{const c=new Client({connectionString:process.env.DATABASE_URL});await c.connect();const r=await c.query('select current_database() db, version() v');console.log(r.rows[0].db, r.rows[0].v.slice(0,30));await c.end();})()
+2026-11-02T21:39:13+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-02T21:40:21+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-02T21:41:28+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run pruefen:livegang
+2026-11-02T21:41:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run pruefen:livegang
+2026-11-02T21:41:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-02T21:42:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000

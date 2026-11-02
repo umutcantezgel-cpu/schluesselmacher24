@@ -87,3 +87,5 @@
   payloadInitError: true,
   digest: '966632145'
 }
+
+Session terminated, killing shell... ...killed.
