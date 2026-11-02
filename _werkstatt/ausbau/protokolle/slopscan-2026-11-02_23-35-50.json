@@ -1,0 +1,3601 @@
+{
+  "skript": "slopscan",
+  "zeit": "2026-11-02T22:35:50.648Z",
+  "argumente": {
+    "_": []
+  },
+  "kopf": [
+    "Ansicht",
+    "Gerät",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "Slop-Index"
+  ],
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "mobil",
+      "s": [
+        1,
+        8,
+        7,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 18,
+      "beispiele": {
+        "s1": [
+          "Inter 102x"
+        ],
+        "s2": [
+          "rgb(188,215,250)",
+          "rgb(192,69,211) lila",
+          "rgb(242,201,248) lila",
+          "rgb(153,56,168) lila",
+          "rgb(205,198,250)",
+          "rgb(252,205,175)",
+          "rgb(253,203,175)",
+          "rgb(242,200,248) lila"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 78 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 7 von 7"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 102
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 102
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 11
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 89
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 58,
+          "verwendet": 42,
+          "offen": [
+            {
+              "farbe": "rgb(188,215,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(192,69,211)",
+              "bsp": "span.absolute.inset-y-0",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(242,201,248)",
+              "bsp": "circle.fill-area-muted",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(153,56,168)",
+              "bsp": "path",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(205,198,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(252,205,175)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(253,203,175)",
+              "bsp": "path.fill-area-muted/60",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(242,200,248)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": true
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.7777777777777778,
+          "radienGesamt": 63,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 7 von 7"
+          ],
+          "abschnitte": 7
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "desktop",
+      "s": [
+        1,
+        9,
+        7,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 19,
+      "beispiele": {
+        "s1": [
+          "Inter 112x"
+        ],
+        "s2": [
+          "rgb(188,215,250)",
+          "rgb(192,69,211) lila",
+          "rgb(242,201,248) lila",
+          "rgb(153,56,168) lila",
+          "rgb(188,210,250)",
+          "rgb(205,198,250)",
+          "rgb(252,205,175)",
+          "rgb(253,203,175)",
+          "rgb(242,200,248) lila"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 81 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 7 von 7"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 112
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 112
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 11
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 95
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 58,
+          "verwendet": 43,
+          "offen": [
+            {
+              "farbe": "rgb(188,215,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(192,69,211)",
+              "bsp": "span.absolute.inset-y-0",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(242,201,248)",
+              "bsp": "circle.fill-area-muted",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(153,56,168)",
+              "bsp": "path",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(188,210,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(205,198,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(252,205,175)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(253,203,175)",
+              "bsp": "path.fill-area-muted/60",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(242,200,248)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": true
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.8095238095238095,
+          "radienGesamt": 63,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 7 von 7"
+          ],
+          "abschnitte": 7
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "mobil",
+      "s": [
+        1,
+        1,
+        7,
+        0,
+        1,
+        4,
+        0,
+        1
+      ],
+      "slopIndex": 15,
+      "beispiele": {
+        "s1": [
+          "Inter 136x"
+        ],
+        "s2": [
+          "rgb(188,210,250)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 67 %"
+        ],
+        "s6": [
+          "ul.mt-5.border-t (4)",
+          "ul.mt-5.border-t (3)",
+          "ul.mt-5.border-t (3)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 6 von 6"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 136
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 136
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 39
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 47
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 13,
+          "offen": [
+            {
+              "farbe": "rgb(188,210,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.6707317073170732,
+          "radienGesamt": 82,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 5,
+          "bsp": [
+            "ul.mt-5.border-t (4)",
+            "ul.mt-5.border-t (3)",
+            "ul.mt-5.border-t (3)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 6 von 6"
+          ],
+          "abschnitte": 6
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "desktop",
+      "s": [
+        1,
+        1,
+        7,
+        0,
+        1,
+        4,
+        0,
+        1
+      ],
+      "slopIndex": 15,
+      "beispiele": {
+        "s1": [
+          "Inter 138x"
+        ],
+        "s2": [
+          "rgb(188,210,250)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 72 %"
+        ],
+        "s6": [
+          "ul.mt-5.border-t (4)",
+          "ul.mt-5.border-t (3)",
+          "ul.mt-5.border-t (3)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 6 von 6"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 138
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 138
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 39
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 47
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 13,
+          "offen": [
+            {
+              "farbe": "rgb(188,210,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.7209302325581395,
+          "radienGesamt": 86,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 5,
+          "bsp": [
+            "ul.mt-5.border-t (4)",
+            "ul.mt-5.border-t (3)",
+            "ul.mt-5.border-t (3)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 6 von 6"
+          ],
+          "abschnitte": 6
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "mobil",
+      "s": [
+        1,
+        1,
+        10,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 14,
+      "beispiele": {
+        "s1": [
+          "Inter 127x"
+        ],
+        "s2": [
+          "rgb(188,210,250)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 79 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 8 von 8"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 127
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 127
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 21
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 75
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 15,
+          "offen": [
+            {
+              "farbe": "rgb(188,210,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 10,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.7857142857142857,
+          "radienGesamt": 70,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 8 von 8"
+          ],
+          "abschnitte": 8
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "desktop",
+      "s": [
+        1,
+        1,
+        10,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 14,
+      "beispiele": {
+        "s1": [
+          "Inter 129x"
+        ],
+        "s2": [
+          "rgb(188,210,250)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 83 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 8 von 8"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 129
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 129
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 21
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 75
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 15,
+          "offen": [
+            {
+              "farbe": "rgb(188,210,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 10,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.8333333333333334,
+          "radienGesamt": 72,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 8 von 8"
+          ],
+          "abschnitte": 8
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "mobil",
+      "s": [
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 4,
+      "beispiele": {
+        "s1": [
+          "Inter 70x"
+        ],
+        "s2": [],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 1 von 1"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 70
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 70
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 7
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 32
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 11,
+          "offen": [],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 2,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.37209302325581395,
+          "radienGesamt": 43,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 1 von 1"
+          ],
+          "abschnitte": 1
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "desktop",
+      "s": [
+        1,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 5,
+      "beispiele": {
+        "s1": [
+          "Inter 88x"
+        ],
+        "s2": [],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 44 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 1 von 1"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 88
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 88
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 7
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 45
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 11,
+          "offen": [],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 2,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.4375,
+          "radienGesamt": 48,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 1 von 1"
+          ],
+          "abschnitte": 1
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "mobil",
+      "s": [
+        1,
+        1,
+        14,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "slopIndex": 17,
+      "beispiele": {
+        "s1": [
+          "Inter 125x"
+        ],
+        "s2": [
+          "rgb(205,198,250)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "h3.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 92 %"
+        ],
+        "s6": [
+          "div.grid.gap-12 (10)"
+        ],
+        "s7": [],
+        "s8": []
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 125
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 125
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 8
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 239
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 16,
+          "offen": [
+            {
+              "farbe": "rgb(205,198,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 14,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "h3.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.9247311827956989,
+          "radienGesamt": 93,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.grid.gap-12 (10)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 0,
+          "bsp": [],
+          "abschnitte": 13
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "desktop",
+      "s": [
+        1,
+        1,
+        14,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "slopIndex": 17,
+      "beispiele": {
+        "s1": [
+          "Inter 132x"
+        ],
+        "s2": [
+          "rgb(205,198,250)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "h3.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 93 %"
+        ],
+        "s6": [
+          "div.grid.gap-12 (10)"
+        ],
+        "s7": [],
+        "s8": []
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 132
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 132
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 8
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 265
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 16,
+          "offen": [
+            {
+              "farbe": "rgb(205,198,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 14,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "h3.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.93,
+          "radienGesamt": 100,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.grid.gap-12 (10)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 0,
+          "bsp": [],
+          "abschnitte": 13
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "mobil",
+      "s": [
+        1,
+        1,
+        6,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 10,
+      "beispiele": {
+        "s1": [
+          "Inter 108x"
+        ],
+        "s2": [
+          "rgb(205,198,250)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 62 %"
+        ],
+        "s6": [
+          "div.divide-y.divide-border (4)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 1 von 1"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 108
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 108
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 15
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 83
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 17,
+          "offen": [
+            {
+              "farbe": "rgb(205,198,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 6,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.6153846153846154,
+          "radienGesamt": 65,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.divide-y.divide-border (4)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 1 von 1"
+          ],
+          "abschnitte": 1
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "desktop",
+      "s": [
+        1,
+        1,
+        6,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 10,
+      "beispiele": {
+        "s1": [
+          "Inter 110x"
+        ],
+        "s2": [
+          "rgb(205,198,250)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 67 %"
+        ],
+        "s6": [
+          "div.divide-y.divide-border (4)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 1 von 1"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 110
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 110
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 15
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 83
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 17,
+          "offen": [
+            {
+              "farbe": "rgb(205,198,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 6,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.6716417910447762,
+          "radienGesamt": 67,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.divide-y.divide-border (4)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 1 von 1"
+          ],
+          "abschnitte": 1
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "mobil",
+      "s": [
+        1,
+        1,
+        7,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 11,
+      "beispiele": {
+        "s1": [
+          "Inter 97x"
+        ],
+        "s2": [
+          "rgb(175,235,215)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 70 %"
+        ],
+        "s6": [
+          "div.divide-y.divide-border (7)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 6 von 6"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 97
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 97
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 27
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 51
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 15,
+          "offen": [
+            {
+              "farbe": "rgb(175,235,215)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.7017543859649122,
+          "radienGesamt": 57,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.divide-y.divide-border (7)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 6 von 6"
+          ],
+          "abschnitte": 6
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "desktop",
+      "s": [
+        1,
+        1,
+        7,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 11,
+      "beispiele": {
+        "s1": [
+          "Inter 99x"
+        ],
+        "s2": [
+          "rgb(175,235,215)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 77 %"
+        ],
+        "s6": [
+          "div.divide-y.divide-border (7)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 6 von 6"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 99
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 99
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 27
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 51
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 15,
+          "offen": [
+            {
+              "farbe": "rgb(175,235,215)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.7666666666666667,
+          "radienGesamt": 60,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.divide-y.divide-border (7)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 6 von 6"
+          ],
+          "abschnitte": 6
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "mobil",
+      "s": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 8,
+      "beispiele": {
+        "s1": [
+          "Inter 71x"
+        ],
+        "s2": [],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 57 %"
+        ],
+        "s6": [
+          "div.divide-y.divide-border (3)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 4 von 4"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 71
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 71
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 17
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 28
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 13,
+          "offen": [],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 5,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.5714285714285714,
+          "radienGesamt": 28,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.divide-y.divide-border (3)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 4 von 4"
+          ],
+          "abschnitte": 4
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "desktop",
+      "s": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 8,
+      "beispiele": {
+        "s1": [
+          "Inter 73x"
+        ],
+        "s2": [],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 70 %"
+        ],
+        "s6": [
+          "div.divide-y.divide-border (3)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 4 von 4"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 73
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 73
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 17
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 28
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 13,
+          "offen": [],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 5,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.7,
+          "radienGesamt": 30,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.divide-y.divide-border (3)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 4 von 4"
+          ],
+          "abschnitte": 4
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "mobil",
+      "s": [
+        1,
+        2,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 7,
+      "beispiele": {
+        "s1": [
+          "Inter 87x"
+        ],
+        "s2": [
+          "rgb(252,205,175)",
+          "rgb(253,203,175)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 48 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 2 von 2"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 87
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 87
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 9
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 47
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 17,
+          "offen": [
+            {
+              "farbe": "rgb(252,205,175)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(253,203,175)",
+              "bsp": "path.fill-area-muted/60",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 2,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.48,
+          "radienGesamt": 50,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 2 von 2"
+          ],
+          "abschnitte": 2
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "desktop",
+      "s": [
+        1,
+        2,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 7,
+      "beispiele": {
+        "s1": [
+          "Inter 97x"
+        ],
+        "s2": [
+          "rgb(252,205,175)",
+          "rgb(253,203,175)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 54 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 2 von 2"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 97
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 97
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 9
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 52
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 17,
+          "offen": [
+            {
+              "farbe": "rgb(252,205,175)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(253,203,175)",
+              "bsp": "path.fill-area-muted/60",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 2,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.5357142857142857,
+          "radienGesamt": 56,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 2 von 2"
+          ],
+          "abschnitte": 2
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "mobil",
+      "s": [
+        1,
+        6,
+        7,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 16,
+      "beispiele": {
+        "s1": [
+          "Inter 137x"
+        ],
+        "s2": [
+          "rgb(242,201,248) lila",
+          "rgb(153,56,168) lila",
+          "rgb(192,69,211) lila",
+          "rgb(242,200,248) lila",
+          "rgb(253,240,255) lila",
+          "rgb(252,240,255) lila"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 63 %"
+        ],
+        "s6": [
+          "div.divide-y.divide-border (10)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 7 von 7"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 137
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 137
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 29
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 91
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 15,
+          "offen": [
+            {
+              "farbe": "rgb(242,201,248)",
+              "bsp": "circle.fill-area-muted",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(153,56,168)",
+              "bsp": "path",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(192,69,211)",
+              "bsp": "path.stroke-current.sm24-draw",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(242,200,248)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(253,240,255)",
+              "bsp": "button.inline-flex.min-h-touch",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(252,240,255)",
+              "bsp": "div.-mx-5.overflow-hidden",
+              "token": false,
+              "violett": true
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.6309523809523809,
+          "radienGesamt": 84,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.divide-y.divide-border (10)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 7 von 7"
+          ],
+          "abschnitte": 7
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "desktop",
+      "s": [
+        1,
+        6,
+        7,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 16,
+      "beispiele": {
+        "s1": [
+          "Inter 144x"
+        ],
+        "s2": [
+          "rgb(242,201,248) lila",
+          "rgb(153,56,168) lila",
+          "rgb(192,69,211) lila",
+          "rgb(242,200,248) lila",
+          "rgb(253,240,255) lila",
+          "rgb(252,240,255) lila"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 67 %"
+        ],
+        "s6": [
+          "div.divide-y.divide-border (10)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 7 von 7"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 144
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 144
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 29
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 76
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 15,
+          "offen": [
+            {
+              "farbe": "rgb(242,201,248)",
+              "bsp": "circle.fill-area-muted",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(153,56,168)",
+              "bsp": "path",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(192,69,211)",
+              "bsp": "path.stroke-current.sm24-draw",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(242,200,248)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(253,240,255)",
+              "bsp": "button.inline-flex.min-h-touch",
+              "token": true,
+              "violett": true
+            },
+            {
+              "farbe": "rgb(252,240,255)",
+              "bsp": "div.-mx-5.overflow-hidden",
+              "token": false,
+              "violett": true
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.6710526315789473,
+          "radienGesamt": 76,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.divide-y.divide-border (10)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 7 von 7"
+          ],
+          "abschnitte": 7
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "mobil",
+      "s": [
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 6,
+      "beispiele": {
+        "s1": [
+          "Inter 72x"
+        ],
+        "s2": [
+          "rgb(153,56,168) lila"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 55 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 2 von 2"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 72
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 72
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 7
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 20
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 13,
+          "offen": [
+            {
+              "farbe": "rgb(153,56,168)",
+              "bsp": "p.eyebrow",
+              "token": true,
+              "violett": true
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 2,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.5483870967741935,
+          "radienGesamt": 31,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 2 von 2"
+          ],
+          "abschnitte": 2
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "desktop",
+      "s": [
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 6,
+      "beispiele": {
+        "s1": [
+          "Inter 88x"
+        ],
+        "s2": [
+          "rgb(153,56,168) lila"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 61 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 2 von 2"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 88
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 88
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 7
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 31
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 13,
+          "offen": [
+            {
+              "farbe": "rgb(153,56,168)",
+              "bsp": "p.eyebrow",
+              "token": true,
+              "violett": true
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 2,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.6111111111111112,
+          "radienGesamt": 36,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 2 von 2"
+          ],
+          "abschnitte": 2
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "mobil",
+      "s": [
+        1,
+        0,
+        4,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 7,
+      "beispiele": {
+        "s1": [
+          "Inter 79x"
+        ],
+        "s2": [],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 62 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 3 von 3"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 79
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 79
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 13
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 29
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 26,
+          "verwendet": 14,
+          "offen": [],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 4,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.6206896551724138,
+          "radienGesamt": 29,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 3 von 3"
+          ],
+          "abschnitte": 3
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "desktop",
+      "s": [
+        1,
+        0,
+        4,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 7,
+      "beispiele": {
+        "s1": [
+          "Inter 89x"
+        ],
+        "s2": [],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 68 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 3 von 3"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 89
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 89
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 13
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 34
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 26,
+          "verwendet": 14,
+          "offen": [],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 4,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.6764705882352942,
+          "radienGesamt": 34,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 3 von 3"
+          ],
+          "abschnitte": 3
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "mobil",
+      "s": [
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 6,
+      "beispiele": {
+        "s1": [
+          "Inter 48x"
+        ],
+        "s2": [
+          "rgb(188,215,250)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 80 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=play auf 1 von 2"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 48
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 48
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 7
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 16
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 26,
+          "verwendet": 11,
+          "offen": [
+            {
+              "farbe": "rgb(188,215,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 2,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.8,
+          "radienGesamt": 15,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=play auf 1 von 2"
+          ],
+          "abschnitte": 2
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "desktop",
+      "s": [
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 6,
+      "beispiele": {
+        "s1": [
+          "Inter 54x"
+        ],
+        "s2": [
+          "rgb(188,215,250)"
+        ],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 81 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=wait auf 1 von 2"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 54
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 54
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 7
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 16
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 26,
+          "verwendet": 10,
+          "offen": [
+            {
+              "farbe": "rgb(188,215,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 2,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.8095238095238095,
+          "radienGesamt": 21,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=wait auf 1 von 2"
+          ],
+          "abschnitte": 2
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "mobil",
+      "s": [
+        1,
+        2,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "slopIndex": 5,
+      "beispiele": {
+        "s1": [
+          "Inter 53x"
+        ],
+        "s2": [
+          "rgb(188,215,250)",
+          "rgb(187,215,252)"
+        ],
+        "s3": [
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 72 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": []
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 53
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 53
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 8
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 29
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 26,
+          "verwendet": 11,
+          "offen": [
+            {
+              "farbe": "rgb(188,215,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(187,215,252)",
+              "bsp": "path.fill-area-muted/60",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 1,
+          "verlaufBsp": [
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.7222222222222222,
+          "radienGesamt": 18,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 0,
+          "bsp": [],
+          "abschnitte": 3
+        },
+        "textElemente": 3
+      }
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "desktop",
+      "s": [
+        1,
+        2,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "slopIndex": 5,
+      "beispiele": {
+        "s1": [
+          "Inter 55x"
+        ],
+        "s2": [
+          "rgb(188,215,250)",
+          "rgb(187,215,252)"
+        ],
+        "s3": [
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 91 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": []
+      },
+      "messung": {
+        "s1": {
+          "befund": [
+            {
+              "name": "Inter",
+              "anzahl": 55
+            }
+          ],
+          "gesamt": [
+            {
+              "name": "Inter",
+              "anzahl": 55
+            },
+            {
+              "name": "IBM Plex Sans",
+              "anzahl": 8
+            },
+            {
+              "name": "IBM Plex Mono",
+              "anzahl": 28
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 26,
+          "verwendet": 11,
+          "offen": [
+            {
+              "farbe": "rgb(188,215,250)",
+              "bsp": "path.stroke-area-muted/40",
+              "token": false,
+              "violett": false
+            },
+            {
+              "farbe": "rgb(187,215,252)",
+              "bsp": "path.fill-area-muted/60",
+              "token": false,
+              "violett": false
+            }
+          ],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 1,
+          "verlaufBsp": [
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.9090909090909091,
+          "radienGesamt": 22,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 0,
+          "bsp": [],
+          "abschnitte": 3
+        },
+        "textElemente": 3
+      }
+    }
+  ]
+}

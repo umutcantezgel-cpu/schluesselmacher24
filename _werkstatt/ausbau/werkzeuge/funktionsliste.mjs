@@ -909,6 +909,244 @@ async function f14({ page }) {
   };
 }
 
+/* ---------- Funktionen F-15 bis F-19 (Bestand, den F-01 bis F-14 nicht prüfen) ---------- */
+
+/** Merkt die Körper der Server-Aktionen (Kopf next-action), damit eine Prüfung belegt, was abgesendet wurde. */
+function aktionenMerken(page) {
+  const koerper = [];
+  page.on('request', (r) => {
+    try {
+      if (r.method() === 'POST' && r.headers()['next-action']) koerper.push(r.postData() ?? '');
+    } catch { /* unlesbarer Körper: nicht gezählt */ }
+  });
+  return koerper;
+}
+
+/**
+ * Feste Testwerte je Feld: Muster auf das Label und Wert. `true` schaltet ein Kästchen an.
+ * Gibt zurück, wie viele Felder geändert wurden. Nur sichtbare Felder.
+ */
+async function vorgabenSetzen(page, vorgaben) {
+  let gesetzt = 0;
+  for (const [muster, wert] of vorgaben) {
+    const feld = page.getByLabel(muster).first();
+    if ((await feld.count()) === 0 || !(await feld.isVisible().catch(() => false))) continue;
+    if (wert === true) {
+      if (!(await feld.isChecked().catch(() => true))) {
+        await feld.check({ force: true });
+        gesetzt += 1;
+      }
+    } else if ((await feld.inputValue().catch(() => '')) !== wert) {
+      await feld.fill(wert);
+      gesetzt += 1;
+    }
+  }
+  return gesetzt;
+}
+
+/**
+ * Wie durchlaufe(), aber mit festen Testwerten vor jedem Schritt (Firma, PLZ, Ort, Radius, Einwilligung).
+ * Klickt NIE den Absende-Knopf; er wird zurückgegeben.
+ */
+async function durchlaufeMit(page, vorgaben, { maxSchritte = 10 } = {}) {
+  const schritte = [];
+  let absende = null;
+  let grund = null;
+  for (let n = 0; n < maxSchritte; n += 1) {
+    const titel = await schrittTitel(page);
+    zuletzt = titel;
+    await felderFuellen(page, { emailWert: PRUEF_EMAIL, stufe: 1 });
+    await vorgabenSetzen(page, vorgaben);
+    const weiter = page.getByRole('button', { name: 'Weiter', exact: true });
+    if ((await weiter.count()) > 0) {
+      let bereit = await weiter.first().isEnabled().catch(() => false);
+      if (!bereit) {
+        await felderFuellen(page, { emailWert: PRUEF_EMAIL, stufe: 2 });
+        await vorgabenSetzen(page, vorgaben);
+        await warteAufUploads(page);
+        bereit = await warteBis(() => weiter.first().isEnabled(), 2500, 250);
+      }
+      if (!bereit) {
+        const felder = await page.evaluate(beschreibeFelder);
+        const diag = felder.slice(0, 8)
+          .map((f) => `${f.typ}${f.name ? `(${f.name})` : ''}=${f.checked ? 'an' : (f.wert || 'leer')}`)
+          .join(', ');
+        await schrittBild(page, `${titel}-gesperrt`);
+        grund = `„Weiter“ gesperrt im Schritt „${titel}“ [Felder: ${diag}]${letzteFehler.length ? ` [Fehler: ${letzteFehler[0]}]` : ''}`;
+        schritte.push({ titel, aktion: 'gesperrt' });
+        break;
+      }
+      await schrittBild(page, titel);
+      await weiter.first().click();
+      schritte.push({ titel, aktion: 'weiter' });
+      await warteBis(async () => (await schrittTitel(page)) !== titel, 6000, 200);
+      continue;
+    }
+    await schrittBild(page, titel);
+    await warteBis(async () => {
+      absende = await absendeKnopf(page);
+      return absende !== null;
+    }, 4000, 200);
+    schritte.push({ titel, aktion: absende ? 'letzter' : 'ohne-weiter-und-absenden' });
+    if (!absende) grund = `weder „Weiter“ noch Absende-Knopf in „${titel}“`;
+    break;
+  }
+  return { schritte, absende, grund, letzterTitel: schritte.at(-1)?.titel ?? '' };
+}
+
+/** Titel des laufenden Schritts aus der Ablauf-Hülle (data-schritt-titel); sonst wie stepTitel. */
+async function schrittTitel(page) {
+  const t = await page.evaluate(() => document.querySelector('main [data-schritt-titel]')?.textContent?.replace(/\s+/g, ' ').trim() ?? '');
+  return t || (await stepTitel(page));
+}
+
+const wertVon = (locator) => locator.inputValue().catch(() => '');
+
+async function f15({ page, ziel }) {
+  const pr = [];
+  const pruefe = (name, ok, detail = '') => pr.push({ name, ok, detail });
+  const koerper = aktionenMerken(page);
+  await laden(page, '/partner-werden');
+  const w = await durchlaufeMit(page, [
+    [/^Firmenname/, 'Testschlüsseldienst Muster'],
+    [/^Postleitzahl/, '35578'],
+    [/^Ort\b/, 'Wetzlar'],
+    [/^Einsatzradius/, '25'],
+    [/^Ich bin einverstanden/, true],
+  ], { maxSchritte: 8 });
+  const titel = w.schritte.map((s) => s.titel);
+  const pflichtSchritte = ['Ihr Betrieb', 'Einsatzgebiet', 'Leistungen', 'Nachweise', 'Angaben prüfen'];
+  pruefe('Fünf Schritte bis „Angaben prüfen und absenden“',
+    pflichtSchritte.every((t) => titel.some((x) => x.includes(t))),
+    `${titel.length} Schritte: ${titel.join(' · ') || 'keine'}`);
+  pruefe('Datenschutz bestätigt', await page.getByLabel(/^Ich bin einverstanden/).first().isChecked().catch(() => false));
+  let gesendet = false;
+  if (w.absende) {
+    await w.absende.click();
+    gesendet = await warteBis(() => ziel.liste().some((a) => a.art === 'action-schreibend'), 12000, 300);
+  }
+  const bestaetigt = await page.getByText('Ihre Bewerbung ist bei uns').first().isVisible().catch(() => false);
+  pruefe('Bestätigung oder abgefangene schreibende Anfrage mit Prüf-E-Mail',
+    gesendet || bestaetigt,
+    gesendet ? 'Attrappe action-schreibend' : bestaetigt ? 'Bestätigung sichtbar' : (w.grund ?? 'kein Absende-Knopf'));
+  pruefe('Abgesendete Angaben: Firma, PLZ und Prüf-E-Mail',
+    koerper.some((k) => k.includes('Testschlüsseldienst Muster') && k.includes('35578') && k.includes(PRUEF_EMAIL)),
+    `Server-Aktionen mit Körper: ${koerper.length}`);
+  return {
+    ok: pr.every((p) => p.ok),
+    begruendung: pr.map((p) => `${p.name}: ${p.ok ? 'ja' : 'nein'}${p.detail ? ` (${p.detail})` : ''}`).join('; '),
+  };
+}
+
+async function f16({ page, ziel }) {
+  const pr = [];
+  const pruefe = (name, ok, detail = '') => pr.push({ name, ok, detail });
+  const koerper = aktionenMerken(page);
+  await laden(page, '/rechtliches/widerruf/erklaeren');
+  const name = page.getByLabel(/^Name\b/).first();
+  const mail = page.getByLabel(/^E-Mail/).first();
+  pruefe('Formular mit Feld „Name“ und „E-Mail-Adresse“', await warteBis(() => name.isVisible(), 8000));
+  await name.fill('Erika Mustermann');
+  await mail.fill(PRUEF_EMAIL);
+  pruefe('Name und Prüf-E-Mail eingetragen',
+    (await wertVon(name)) === 'Erika Mustermann' && (await wertVon(mail)) === PRUEF_EMAIL);
+  const knopf = page.getByRole('button', { name: 'Widerruf jetzt erklären', exact: true });
+  pruefe('Knopf „Widerruf jetzt erklären“ bedienbar', await warteBis(() => knopf.isEnabled(), 5000));
+  await knopf.click();
+  const gesendet = await warteBis(() => ziel.liste().some((a) => a.art === 'action-schreibend'), 15000, 300);
+  const bestaetigt = await page.getByText('Ihr Widerruf ist bei uns eingegangen').first().isVisible().catch(() => false);
+  pruefe('Bestätigung oder abgefangene schreibende Anfrage mit Prüf-E-Mail',
+    gesendet || bestaetigt,
+    gesendet ? 'Attrappe action-schreibend' : bestaetigt ? 'Bestätigung sichtbar' : 'keine Anfrage');
+  pruefe('Abgesendete Angaben: Name und Prüf-E-Mail',
+    koerper.some((k) => k.includes('Erika Mustermann') && k.includes(PRUEF_EMAIL)),
+    `Server-Aktionen mit Körper: ${koerper.length}`);
+  return {
+    ok: pr.every((p) => p.ok),
+    begruendung: pr.map((p) => `${p.name}: ${p.ok ? 'ja' : 'nein'}${p.detail ? ` (${p.detail})` : ''}`).join('; '),
+  };
+}
+
+async function f17({ page }) {
+  const pr = [];
+  const pruefe = (name, ok, detail = '') => pr.push({ name, ok, detail });
+  // Kennung und Beispielcode liest die Prüfung aus den Daten, nicht aus einer festen Liste.
+  const linien = JSON.parse(readFileSync(path.join(REPO, 'content', 'code-lines.json'), 'utf8'));
+  const linie = linien.find((z) => z.active && z.codeExample) ?? linien[0];
+  const titel = linie.name.replace(/\s*[—–-]\s*Serie\s+[A-Za-z0-9-]+\s*$/, '');
+  await laden(page, '/schluessel-nach-code');
+  const suche = page.getByLabel(/^Suche/).first();
+  await suche.fill(linie.slug);
+  const treffer = page.locator('main').getByRole('link', { name: titel });
+  pruefe(`Serie „${linie.slug}“ zeigt die Linie in der Trefferliste`, await warteBis(() => treffer.first().isVisible(), 8000), titel);
+  await suche.fill(String(linie.codeExample));
+  const passt = page.locator('main').getByRole('link', { name: titel }).filter({ hasText: 'passt zum Codeformat' });
+  pruefe(`Code „${linie.codeExample}“ markiert die Linie als „passt zum Codeformat“`,
+    await warteBis(async () => (await passt.count()) > 0, 8000, 200),
+    linie.codeFormatLabel);
+  await laden(page, '/schluessel-nach-code/kategorie/briefkasten-und-postanlagen');
+  const kennungen = page.locator('main').getByRole('link', { name: /[A-Z]{2}-\d{2}\b/ });
+  const anzahl = await kennungen.count();
+  pruefe('Kategorie „Briefkasten und Postanlagen“ listet mindestens eine Linie', anzahl >= 1, `${anzahl} Linien`);
+  return {
+    ok: pr.every((p) => p.ok),
+    begruendung: pr.map((p) => `${p.name}: ${p.ok ? 'ja' : 'nein'}${p.detail ? ` (${p.detail})` : ''}`).join('; '),
+    messwert: `${anzahl} Linien in der Kategorie`,
+  };
+}
+
+async function f18({ page }) {
+  const pr = [];
+  const pruefe = (name, ok, detail = '') => pr.push({ name, ok, detail });
+  await laden(page, '/autoschluessel/marken');
+  const marke = page.locator('main').getByRole('link', { name: /^Volkswagen/ }).filter({ visible: true }).first();
+  pruefe('Marke Volkswagen auf der Markenseite', await warteBis(() => marke.isVisible(), 8000));
+  await marke.click();
+  const golf = page.locator('main').getByRole('link', { name: /Volkswagen Golf\b/ }).filter({ visible: true }).first();
+  pruefe('Modell Golf unter Volkswagen', await warteBis(() => golf.isVisible(), 8000));
+  await golf.click();
+  const pfad = () => new URL(page.url()).pathname;
+  pruefe('Modellseite Golf erreicht', await warteBis(() => pfad() === '/autoschluessel/marken/volkswagen/golf', 10000, 200), pfad());
+  const termin = page.locator('main').getByRole('link', { name: 'Mit diesem Fahrzeug starten' }).filter({ visible: true }).first();
+  const ziel = (await termin.getAttribute('href').catch(() => null)) ?? '';
+  const par = new URL(ziel, 'http://pruefung.invalid').searchParams;
+  pruefe('Link in den Termin mit marke=volkswagen und modell=golf',
+    par.get('marke') === 'volkswagen' && par.get('modell') === 'golf', ziel || 'kein Link');
+  await termin.click();
+  pruefe('Termin-Assistent geöffnet', await warteBis(() => pfad() === '/autoschluessel/anfrage', 10000, 200), pfad());
+  // Vorauswahl heißt: die Option Volkswagen ist gewählt. Ein Text „Volkswagen“ allein beweist nichts, er steht auch in der Liste.
+  const vorgewaehlt = await warteBis(async () => (await page.getByRole('radio', { name: /^Volkswagen/, checked: true }).count()) > 0, 8000, 300);
+  pruefe('Marke im Assistenten vorausgewählt (Option Volkswagen gewählt)', vorgewaehlt, await schrittTitel(page));
+  return {
+    ok: pr.every((p) => p.ok),
+    begruendung: pr.map((p) => `${p.name}: ${p.ok ? 'ja' : 'nein'}${p.detail ? ` (${p.detail})` : ''}`).join('; '),
+  };
+}
+
+async function f19({ page }) {
+  const pr = [];
+  const pruefe = (name, ok, detail = '') => pr.push({ name, ok, detail });
+  await laden(page, '/service-und-termin/kontakt');
+  const tel = page.locator('main a[href^="tel:"]');
+  pruefe('Telefon als tel:-Link', await warteBis(async () => (await tel.count()) > 0, 8000),
+    (await tel.first().getAttribute('href').catch(() => '')) ?? '');
+  const mail = page.locator('main a[href^="mailto:"]');
+  pruefe('E-Mail als mailto:-Link', await warteBis(async () => (await mail.count()) > 0, 8000),
+    (await mail.first().getAttribute('href').catch(() => '')) ?? '');
+  await laden(page, '/service-und-termin/vor-ort');
+  const anfragen = page.locator('main a[href*="/anfrage"]');
+  const n = await anfragen.count();
+  pruefe('Vor-Ort-Seite verweist in eine Anfrage', n > 0, `${n} Verweise`);
+  await laden(page, '/schluessel-einschicken');
+  const foto = page.locator('main').getByRole('link', { name: /Foto prüfen lassen/ }).filter({ visible: true }).first();
+  const fotoZiel = (await foto.getAttribute('href').catch(() => null)) ?? '';
+  pruefe('Einsenden zeigt den Weg zur Foto-Anfrage', fotoZiel === '/schluessel-nach-vorlage/anfrage', fotoZiel || 'kein Link');
+  return {
+    ok: pr.every((p) => p.ok),
+    begruendung: pr.map((p) => `${p.name}: ${p.ok ? 'ja' : 'nein'}${p.detail ? ` (${p.detail})` : ''}`).join('; '),
+  };
+}
+
 const FUNKTIONEN = [
   { id: 'F-01', name: 'Warenkorb: Code-Schlüssel hinzufügen, Menge ändern, entfernen, Versandart, Summe', geraet: 'desktop', lauf: f01 },
   { id: 'F-02', name: 'Kasse: Pflichtfelder, zwei Bestätigungen, Absenden', geraet: 'desktop', lauf: f02 },
@@ -924,6 +1162,11 @@ const FUNKTIONEN = [
   { id: 'F-12', name: 'robots.txt, sitemap.xml, llms.txt, JSON-LD', geraet: 'desktop', lauf: f12 },
   { id: 'F-13', name: 'Rechner Türabsicherung und Serviceeinsatz', geraet: 'desktop', lauf: f13 },
   { id: 'F-14', name: 'Shop-Filter und Liste der Codelinien', geraet: 'desktop', lauf: f14 },
+  { id: 'F-15', name: 'Partner werden: fünf Schritte bis zur Bewerbung', geraet: 'desktop', lauf: f15 },
+  { id: 'F-16', name: 'Widerruf erklären: Name, Prüf-E-Mail, Absenden', geraet: 'desktop', lauf: f16 },
+  { id: 'F-17', name: 'Codesuche, Serie und Kategorie-Seite', geraet: 'desktop', lauf: f17 },
+  { id: 'F-18', name: 'Fahrzeugwahl: Marke, Modell und Termin mit Vorauswahl', geraet: 'mobil', lauf: f18 },
+  { id: 'F-19', name: 'Kontakt mit tel- und mailto-Link, Vor-Ort-Verweis, Einsenden', geraet: 'desktop', lauf: f19 },
 ];
 
 /* ---------- Ablauf ---------- */

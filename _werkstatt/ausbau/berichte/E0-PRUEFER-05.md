@@ -45,6 +45,7 @@ Aufruf: node --test _werkstatt/ausbau/werkzeuge/plan.pruef.mjs
 - Testdaten: testdaten/plan.json (korrigiert), plan-fehler.json (Dateiüberschneidung in Welle 2 und Haiku ohne muster), anf.json (5 Einträge), abnahme.md (22 Zeilen).
 - Echtlauf: /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/testdaten/ausgabe/echt-ANFORDERUNGEN.md
 - Der Selbsttest lief direkt mit node und nicht über sicher.sh. Die Werkzeuge sind reines Node ohne Projektcode, ohne Datenbank und ohne Netz.
+- Git: Commit 6801f19 (E0-DATENPFLEGER) enthält eine Zwischenfassung von plan.mjs (270 Zeilen, nur der Prüfteil, ohne Befehle). Die fertige Fassung liegt unkommittiert im Arbeitsbaum. Derselbe Commit nimmt Dateien anderer Pakete mit (u. a. stil.mjs, lighthouse.mjs, kontaktbogen.mjs, E0-PRUEFER-06 bis 08).
 
 ## OFFENE FRAGEN
 1. Abschnitt 7 sagt, anforderungen.mjs schreibt ANFORDERUNGEN.json nie. Schritt 2 verlangt, dass zusammenfuehren sie schreibt. Umgesetzt nach Schritt 2, nur in diesem Befehl. Bitte bestätigen.
@@ -52,3 +53,4 @@ Aufruf: node --test _werkstatt/ausbau/werkzeuge/plan.pruef.mjs
 3. naechste bietet Kür auch aus früheren Etappen an, wenn die aktuelle Etappe nichts bereit hat. Schritt 1 nennt nur spätere Etappen. Bitte bestätigen.
 4. stand zählt Etappen ab 1. Ohne offenes Pflichtpaket steht dort m/m und Welle 0. Bitte bestätigen.
 5. Die zusätzlichen Prüfungen unter WAS UND WARUM sind nicht im Paket genannt. Bitte bestätigen oder streichen.
+6. Commit-Hygiene: Der Sammel-Commit 6801f19 hat fremde Arbeitsdateien und eine unfertige plan.mjs mitgenommen. Für den nächsten Commit empfehle ich, nur gezielt gestagte Dateien zu committen.

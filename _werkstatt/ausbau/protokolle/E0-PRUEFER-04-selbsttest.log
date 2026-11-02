@@ -1,0 +1,33 @@
+ok  Gedankenstrich U+2013, U+2014 und Leerzeichen-Bindestrich
+ok  Ausrufezeichen und Emoji
+ok  Frage: außerhalb von Überschriften, Hub-Frage erlaubt
+ok  Floskel erkannt: Willkommen
+ok  Floskel erkannt: Entdecken Sie
+ok  Floskel erkannt: Erleben Sie
+ok  Floskel erkannt: Lassen Sie sich
+ok  Floskel erkannt: maßgeschneidert
+ok  Floskel erkannt: ganzheitlich
+ok  Floskel erkannt: innovativ
+ok  Floskel erkannt: nahtlos
+ok  Floskel erkannt: Mehrwert
+ok  Floskel erkannt: Herzstück
+ok  Floskel erkannt: Ihr Partner für
+ok  Floskel erkannt: Ihr Experte für
+ok  Floskel erkannt: Ihr zuverlässiger Schlüsseldienst
+ok  Floskel erkannt: schnell, sicher und zuverlässig
+ok  Floskel erkannt: professionell und kompetent
+ok  Floskel erkannt: mit Leidenschaft
+ok  Floskel erkannt: Qualität, die überzeugt
+ok  Floskel erkannt: auf höchstem Niveau
+ok  Floskel erkannt: rund um die Uhr (nur, wenn es stimmt)
+ok  Floskel erkannt: im Herzen von
+ok  Floskel erkannt: wo … auf … trifft
+ok  Floskel-Liste ist wörtlich die Liste aus AUFTRAG.md Abschnitt 14
+ok  Platzhalter: Klammern, TODO, Lorem, folgt, usw., Mustername, example.com, analog
+ok  Bindestrich: Ausnahmen und Kandidaten
+ok  Dreierreihe nur als Hinweis, nie als Befund
+ok  JSON: Slugs fallen heraus, Titel-Schlüssel zählen als Überschrift
+ok  TSX: Überschriftenbereich, Tailwind-Klassen und Import fallen heraus
+ok  svgo-pruefung: erkennt den Verlust von role unter der Voreinstellung des Auftrags
+
+Selbsttests: 31 von 31 bestanden

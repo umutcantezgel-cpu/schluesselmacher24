@@ -50,6 +50,13 @@ _werkstatt/ausbau/werkzeuge/sicher.sh --json --als-root -- node _werkstatt/ausba
 | logikwaechter.mjs | `node logikwaechter.mjs sichern`, `pruefen` | Fingerabdruck geschützter Dateien, Abweichung bei Logikänderung | läuft (das Protokoll im Repository legt der Orchestrator an) |
 | funktionsliste.mjs | `node funktionsliste.mjs --nur F-01,F-04 --md <datei>` | Funktionen F-01 bis F-14 im Browser | läuft (Probelauf: 14 von 14 BESTANDEN) |
 
+- `node lighthouse.mjs [--routen <pfad,pfad>] [--laeufe 3] [--profil mobil|desktop]` – Lighthouse je Hauptansicht als Median aus frischen Läufen, mit Budgetspalte „erfüllt“
+- `node kontaktbogen.mjs --bilder <ordner oder dateien> --ziel <datei.jpg> [--spalten 4] [--titel text]` – Kontaktbogen aus Bildern als ein JPEG mit Dateinamen
+- `node inventar.mjs [--basis http://localhost:3000] [--max 2000] [--manifest <datei>]` – Inventar der Seiten mit Status, Weiterleitungen, Meta-Angaben, Strukturdaten und Dubletten
+- `node snippet.mjs [--inventar <json>]` – Titelbreite in Pixeln (20px Arial, hier Liberation Sans) und Beschreibungslänge je indexierbarer Seite
+- `node plan.mjs pruefen|naechste|setze|stand|zeichne|abschluss` und `node anforderungen.mjs pruefen|zeichne|zusammenfuehren` – Plan und Anforderungs-Spur (Selbsttest: `node --test plan.pruef.mjs`)
+- `./sicher.sh [--json|--pg] -- <befehl>` – Datenweiche für jeden Projektbefehl (Selbsttest: `./sicher.test.sh`)
+
 ## Hinweise je Werkzeug
 
 - `messung.mjs --vergleich <url>` misst abwechselnd gegen einen zweiten Server und ergänzt eine Vergleichstabelle. Zeigt der zweite Server auf denselben Rechner und Port, bricht das Werkzeug ab.

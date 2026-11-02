@@ -27,6 +27,7 @@ STATUS · Sitzung m40jjmy9 · Branch claude/affectionate-knuth-n7mjur · Etappe 
 
 ## Vermerke
 - Wachhund eingerichtet: geplante Aufgabe „SM24 Wachhund“ (trig_01E2ucuvFev7RmWBRwQsyLaw), alle 2 Stunden zur Minute 22 (UTC), frische Sitzung, Modell claude-opus-5-5, Text nach 8.8 mit Hinweis auf add_repo. Die Aufgabe speichert keine Connectoren (Hinweis des Werkzeugs); sie braucht nur Git.
+- Wachhund-Probelauf 2026-11-02 23:22 MEZ: Sitzung cse_01VqD1EfpkfCgktaiUcF5Tee fand den Herzschlag von 22:57 frisch und beendete sich nach 33 s ohne Änderung (Beleg: list_events, result „WACHHUND · Herzschlag frisch“).
 - Selbstweckung gespannt: trig_01UDim8Wy93f95XNuFs5qUCb (2026-11-03 00:24 MEZ) und trig_019YTPttJn5NGXTWyFKA84yo (2026-11-03 03:24 MEZ).
 - Kontingent-Messwert: rate_limit_event der Sitzung (list_events, Felder unifiedWindows.five_hour/seven_day mit utilization und resetsAt). Gilt als Messwert mit Zeitstempel; Sicherheitsziel damit 99 %, volle HAIKU-PLÄTZE (4).
 

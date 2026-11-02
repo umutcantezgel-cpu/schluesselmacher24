@@ -108,30 +108,49 @@ function messeAnsicht(konfig) {
     return n.toLowerCase().replace(/[^a-z0-9]/g, '');
   };
 
-  // --- Token-Menge: Farbwerte der Variablen auf :root ----------------------------------------
-  const tokenNamen = new Set();
-  const sammle = (regeln) => {
+  // --- Token-Menge: aufgelöste Farbwerte aller Design-Variablen (--tw-* ausgenommen) -----------
+  // Erfasst werden :root und Bereichsschemata wie [data-area] sowie Variablen in Inline-Styles.
+  // Der Wert kommt je Treffer aus der berechneten Stilangabe, so dass Variablen mit var() aufgelöst sind.
+  const tokenFarben = new Set();
+  const nimmToken = (roh) => {
+    let wert = String(roh ?? '').trim();
+    if (!wert) return;
+    if (/^[\d.]+\s+[\d.]+%\s+[\d.]+%(\s*\/\s*[\d.]+%?)?$/.test(wert)) wert = `hsl(${wert})`;
+    const c = farbe(wert);
+    if (c) tokenFarben.add(rgbSchl(c));
+  };
+  const sammleTokens = (regeln) => {
     for (const regel of regeln) {
-      if (regel.cssRules) sammle(regel.cssRules);
-      if (regel.selectorText && /:root\b/.test(regel.selectorText) && regel.style) {
-        for (let i = 0; i < regel.style.length; i += 1) {
-          const name = regel.style[i];
-          if (name.startsWith('--')) tokenNamen.add(name);
-        }
+      if (regel.media && !window.matchMedia(regel.media.mediaText).matches) continue;
+      if (regel.cssRules) sammleTokens(regel.cssRules);
+      if (!regel.selectorText || !regel.style) continue;
+      const namen = [];
+      for (let i = 0; i < regel.style.length; i += 1) {
+        const n = regel.style[i];
+        if (n.startsWith('--') && !n.startsWith('--tw-')) namen.push(n);
+      }
+      if (!namen.length) continue;
+      let knoten;
+      try {
+        knoten = [...document.querySelectorAll(regel.selectorText)].slice(0, 20);
+      } catch {
+        continue;
+      }
+      for (const k of knoten) {
+        const st = getComputedStyle(k);
+        for (const n of namen) nimmToken(st.getPropertyValue(n));
       }
     }
   };
   for (const blatt of document.styleSheets) {
-    try { sammle(blatt.cssRules); } catch { /* fremdes Blatt ohne Zugriff */ }
+    try { sammleTokens(blatt.cssRules); } catch { /* fremdes Blatt ohne Zugriff */ }
   }
-  const wurzelStil = getComputedStyle(document.documentElement);
-  const tokenFarben = new Set();
-  for (const name of tokenNamen) {
-    let roh = wurzelStil.getPropertyValue(name).trim();
-    if (!roh) continue;
-    if (/^[\d.]+\s+[\d.]+%\s+[\d.]+%(\s*\/\s*[\d.]+%?)?$/.test(roh)) roh = `hsl(${roh})`;
-    const c = farbe(roh);
-    if (c) tokenFarben.add(rgbSchl(c));
+  for (const k of document.querySelectorAll('[style]')) {
+    const st = getComputedStyle(k);
+    for (let i = 0; i < k.style.length; i += 1) {
+      const n = k.style[i];
+      if (n.startsWith('--') && !n.startsWith('--tw-')) nimmToken(st.getPropertyValue(n));
+    }
   }
 
   // --- sichtbare Elemente ----------------------------------------------------------------------
