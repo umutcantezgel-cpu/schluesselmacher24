@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T23:26:43.055Z",
+ "stand": "2026-11-03T23:27:40.459Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -52,7 +52,7 @@
     "Z-12",
     "Z-20"
    ],
-   "tage": 2.33
+   "tage": 2.34
   },
   {
    "kennung": "E4",
@@ -68,7 +68,7 @@
     "Z-14",
     "Z-15"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "E5",
@@ -80,7 +80,7 @@
     "Z-05",
     "Z-06"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "E6",
@@ -93,7 +93,7 @@
     "Z-08",
     "Z-19"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "E7",
@@ -105,7 +105,7 @@
     "Z-09",
     "Z-10"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "E8",
@@ -120,7 +120,7 @@
     "Z-17",
     "Z-18"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "E9",
@@ -132,7 +132,7 @@
     "Z-19",
     "Z-20"
    ],
-   "tage": 1.24
+   "tage": 1.25
   },
   {
    "kennung": "E10",
@@ -144,7 +144,7 @@
     "Z-01",
     "Z-11"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "EA",
@@ -2912,10 +2912,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "591769a",
    "massstab": null,
    "muster": null
   },
@@ -4374,6 +4374,43 @@
    "muster": null
   },
   {
+   "kennung": "E9-OPUS-05",
+   "titel": "Leistung Rest nach E5-OPUS-04: LCP mobil in der Lighthouse-Simulation höchstens 2,5 s auf den Hauptansichten (Schriften vor dem ersten Bild, ungenutzter Code der Kopf- und Leistenbündel, Dokumentgewicht mit RSC-Nutzlast und Inline-SVG, Polyfills nach Entscheidung über Zielbrowser)",
+   "etappe": "E9",
+   "welle": 2,
+   "rolle": "Orchestrator",
+   "modell": "opus-5.5",
+   "stufe": 3,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "next.config.ts",
+    "src/app/(site)/layout.tsx",
+    "src/app/(site)/globals.css",
+    "src/components/layout/",
+    "src/fonts/",
+    "package.json"
+   ],
+   "abhaengigkeiten": [
+    "E5-OPUS-04"
+   ],
+   "anforderungen": [
+    "EL-33",
+    "G-06"
+   ],
+   "kriterien": [
+    "Z-15",
+    "Z-16"
+   ],
+   "art": "pflicht",
+   "wirkung": 4,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": null,
+   "muster": null
+  },
+  {
    "kennung": "E9-BAUMEISTER-01",
    "titel": "Aufbewahrung: alle neuen Upload-Zwecke in Fristen und Bereinigung",
    "etappe": "E9",
@@ -4455,6 +4492,7 @@
     "E9-BAUMEISTER-01",
     "E9-OPUS-01",
     "E9-OPUS-02",
+    "E9-OPUS-05",
     "E9-DOKUMENTAR-01"
    ],
    "anforderungen": [],
@@ -5677,13 +5715,13 @@
   }
  ],
  "mengengeruest": {
-  "pakete": 149,
-  "pflicht": 139,
+  "pakete": 150,
+  "pflicht": 140,
   "kuer": 10,
-  "opus": 53,
+  "opus": 54,
   "haiku": 96,
   "kostenklassen": {
-   "M": 94,
+   "M": 95,
    "L": 55
   },
   "anforderungen": 623,
@@ -5696,7 +5734,7 @@
    "L": 6
   },
   "puffer": 0.2,
-  "tage": 15.7
+  "tage": 15.8
  },
  "kritischer_pfad": [
   "E1-FACHKUNDLER-03",

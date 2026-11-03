@@ -195,3 +195,9 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Umgesetzt: Die Karte „Direkt kaufen“ auf der Startseite heißt „Sperrschließung“ wie die Kachel (Einzahl nach G-03, Mehrzahl im Menü nach G-08). Jeder Knopf zu /autoschluessel/anfrage heißt „Termin anfragen“ wie auf der Startseite und im Kopf der Seite.
 - Bewusst nicht umgesetzt: Die Kachel behält „Elektronisch schließen“. Mit dem Namen aus G-03 („Elektronische Schließsysteme“) stand der Titel bei 360 px auf vier Zeilen mit Trennung mitten im Wort (gemessen), entgegen der Regel aus E4 (Kacheltexte bei 360 px höchstens zweizeilig). Der Laienname führt auf die Seite mit dem Fachnamen (G-09); das Menü nennt den Fachnamen nach G-08.
 - Offen außerhalb dieses Pakets: In src/lib/navigation.ts heißt der Bereich „Gleichschließende Zylinder (Sperrschließung)“ (an E8-TEXTER-03).
+
+## A-032 · Messmodell für das LCP-Budget (2026-11-04 00:35, E5-OPUS-04)
+- Frage aus E5-PRUEFER-02: Die Lighthouse-Simulation liegt um 1,5 bis 2,3 s über der Gegenprobe mit echter Drosselung (LCP 1,0 bis 1,2 s). Welcher Wert gilt?
+- Entscheidung: Für die Budgets aus dem Auftrag gilt Lighthouse mobil mit seiner Standard-Simulation als Median aus drei Läufen (wie in Prüfstufe B), weil sie wiederholbar ist und dem Werkzeug des Auftrags entspricht. Die Gegenprobe mit echter Drosselung steht als zweiter Wert im Bericht, ersetzt das Budget aber nicht.
+- Folge: Das LCP-Budget ist nach E5 auf den Hauptansichten noch nicht erreicht (2,8 bis 3,2 s); Leistung mindestens 90, Barrierefreiheit, Best Practices und SEO 100 sind erreicht. Der Rest geht als E9-OPUS-05 in den Plan, damit E6 bis E8 nicht warten.
+- Umkehrprobe: Erreicht E9-OPUS-05 das Budget nicht ohne Verlust an Inszenierung oder Bestand, wird das Kriterium mit Begründung als Ausnahme geführt.

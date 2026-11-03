@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T23:26:43.055Z
+Stand: 2026-11-03T23:27:40.459Z
 
-Etappe 6/12 · Welle 3 · Pflicht 78/139 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 6/12 · Welle 4 · Pflicht 79/140 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -112,7 +112,7 @@ Geplante Tage: 0.47
 
 Tor: Prüfstufe B, Bestand mindestens wie in E0, Datenweiche belegt
 Kriterien: Z-02, Z-06, Z-07, Z-08, Z-09, Z-12, Z-20
-Geplante Tage: 2.33
+Geplante Tage: 2.34
 
 ### Welle 1
 
@@ -169,7 +169,7 @@ Geplante Tage: 2.33
 
 Tor: Prüfstufe B, Jury Start mindestens 8,5 und Weg mindestens 8, Personas ohne Abbruch, Blind- und Dominanzprobe Start
 Kriterien: Z-04, Z-05, Z-11, Z-12, Z-14, Z-15
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
@@ -237,7 +237,7 @@ Geplante Tage: 1.55
 
 Tor: Prüfstufe B, Tests jeder Regel, Probelauf Hausverwaltung
 Kriterien: Z-05, Z-06
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
@@ -261,7 +261,7 @@ Geplante Tage: 1.55
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E5-AUTOR-01 | Messhilfe-Text, Plausibilitätshinweise, Laienerklärung Sperrschließung gegen Schließanlage mit Beispiel, Empfehlung Privat oder Unternehmen | haiku-5.5 | M | pflicht | 3 | committet | 782b9e7 |
-| E5-OPUS-04 | Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand | opus-5.5 | M | pflicht | 4 | offen |  |
+| E5-OPUS-04 | Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand | opus-5.5 | M | pflicht | 4 | committet | 591769a |
 
 ### Welle 4
 
@@ -274,7 +274,7 @@ Geplante Tage: 1.55
 
 Tor: Prüfstufe B, Probelauf aller neuen Wege
 Kriterien: Z-05, Z-08, Z-19
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
@@ -323,7 +323,7 @@ Geplante Tage: 1.55
 
 Tor: Prüfstufe B, axe Karte, Stadt-Hubs noindex
 Kriterien: Z-09, Z-10
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
@@ -355,7 +355,7 @@ Geplante Tage: 1.55
 
 Tor: Prüfstufe B, Faktenprüfung, Dominanzprobe Schlüsselseiten
 Kriterien: Z-11, Z-13, Z-16, Z-17, Z-18
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
@@ -410,7 +410,7 @@ Geplante Tage: 1.55
 
 Tor: Prüfstufe B, Probelauf im Admin
 Kriterien: Z-19, Z-20
-Geplante Tage: 1.24
+Geplante Tage: 1.25
 
 ### Welle 1
 
@@ -425,6 +425,7 @@ Geplante Tage: 1.24
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E9-OPUS-03 | Livegang-Prüfung erweitern: jede neue Einstellung, jeder Schalter, jede Menschensache | opus-5.5 | M | pflicht | 4 | offen |  |
 | E9-OPUS-04 | Später-Bausteine: G-21 Einzel- und Teileverkauf (Datenmodell, Konzept, Schalter) und G-50 Chat-KI (Konzept, abgeschaltete Schnittstelle) | opus-5.5 | M | pflicht | 4 | offen |  |
+| E9-OPUS-05 | Leistung Rest nach E5-OPUS-04: LCP mobil in der Lighthouse-Simulation höchstens 2,5 s auf den Hauptansichten (Schriften vor dem ersten Bild, ungenutzter Code der Kopf- und Leistenbündel, Dokumentgewicht mit RSC-Nutzlast und Inline-SVG, Polyfills nach Entscheidung über Zielbrowser) | opus-5.5 | M | pflicht | 4 | offen |  |
 | E9-BAUMEISTER-01 | Aufbewahrung: alle neuen Upload-Zwecke in Fristen und Bereinigung | haiku-5.5 | M | pflicht | 3 | offen |  |
 | E9-DOKUMENTAR-01 | Menschensachen fertig vorbereiten: jede Anforderung mit Vorschlag menschensache bekommt einen vollständigen Eintrag in MENSCHEN.md oder AUSSEN.md | haiku-5.5 | M | pflicht | 3 | offen |  |
 
@@ -439,7 +440,7 @@ Geplante Tage: 1.24
 
 Tor: Vorrat leer oder LAUFZEIT erreicht (Einstellung: bis Pflicht und Kür erfüllt, also Vorrat leer); Prüfstufe B der Kür
 Kriterien: Z-01, Z-11
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
