@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T12:24:07.646Z
+Stand: 2026-11-03T13:03:32.832Z
 
-Etappe 5/12 · Welle 7 · Pflicht 63/137 · Kür 0/10 · läuft 1 · blockiert 0
+Etappe 5/12 · Welle 8 · Pflicht 67/137 · Kür 0/10 · läuft 2 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -216,16 +216,16 @@ Geplante Tage: 1.54
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E4-OPUS-06 | Zweiter Anlauf Startseite: Hub-Kacheln in der Zeichensprache, Autoschlüssel ab Tablet als Leitkachel (vier je Reihe, G-02), Bühne füllt die rechte Spalte mit Pausenknopf in der Bühne, Floskeln und Gedankenstriche, Berechtigungsnachweis im Ablauf (R13), Gleichschließung von der Schließanlage getrennt | opus-5.5 | L | pflicht | 5 | offen |  |
-| E4-OPUS-07 | Zweiter Anlauf /autoschluessel: Aufbauzeichnung des Autoschlüssels (Bart, Transponder, Funkteil, Gehäuse) mit Bezug zu den Leistungen statt Begriffsliste und doppelter Typenzeichnungen, Ablauf direkt unter dem Kopf, Überschriften ohne KI-Spur | opus-5.5 | L | pflicht | 5 | offen |  |
-| E4-OPUS-08 | Zweiter Anlauf Assistent: Etappen statt Schrittzählung, Treffer vorauswählen und Weiter freigeben, Zurück beschriftet, Kopf mobil verdichtet, KBA-Zeile ans Ende; ohne eigene Fotos ohne Abbruch (Anrufen oder Termin zur Sichtprüfung über die vorhandene Anfrage), Pflichtfotos und Zahlverhalten unverändert (G9) | opus-5.5 | L | pflicht | 5 | offen |  |
+| E4-OPUS-06 | Zweiter Anlauf Startseite: Hub-Kacheln in der Zeichensprache, Autoschlüssel ab Tablet als Leitkachel (vier je Reihe, G-02), Bühne füllt die rechte Spalte mit Pausenknopf in der Bühne, Floskeln und Gedankenstriche, Berechtigungsnachweis im Ablauf (R13), Gleichschließung von der Schließanlage getrennt | opus-5.5 | L | pflicht | 5 | committet | 85cdeb6 |
+| E4-OPUS-07 | Zweiter Anlauf /autoschluessel: Aufbauzeichnung des Autoschlüssels (Bart, Transponder, Funkteil, Gehäuse) mit Bezug zu den Leistungen statt Begriffsliste und doppelter Typenzeichnungen, Ablauf direkt unter dem Kopf, Überschriften ohne KI-Spur | opus-5.5 | L | pflicht | 5 | committet | ea3ee33 |
+| E4-OPUS-08 | Zweiter Anlauf Assistent: Etappen statt Schrittzählung, Treffer vorauswählen und Weiter freigeben, Zurück beschriftet, Kopf mobil verdichtet, KBA-Zeile ans Ende; ohne eigene Fotos ohne Abbruch (Anrufen oder Termin zur Sichtprüfung über die vorhandene Anfrage), Pflichtfotos und Zahlverhalten unverändert (G9) | opus-5.5 | L | pflicht | 5 | committet | c79e3fa |
 
 ### Welle 8
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E4-PRUEFER-02 | Prüfung des zweiten Anlaufs: Build beide Modi, ganze Testsuite, Funktionsliste, axe, Hub-Messung, Bildsatz und Referenzbilder der drei Ansichten, Bildfolge B-31 | haiku-5.5 | L | pflicht | 3 | offen |  |
-| E4-PROBENUTZER-02 | Probelauf zweiter Anlauf: vier Personas mobil und Desktop mit erfundenen Testbildern bis vor die Zahlung, ohne Abbruch | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E4-PRUEFER-02 | Prüfung des zweiten Anlaufs: Build beide Modi, ganze Testsuite, Funktionsliste, axe, Hub-Messung, Bildsatz und Referenzbilder der drei Ansichten, Bildfolge B-31 | haiku-5.5 | L | pflicht | 3 | läuft |  |
+| E4-PROBENUTZER-02 | Probelauf zweiter Anlauf: vier Personas mobil und Desktop mit erfundenen Testbildern bis vor die Zahlung, ohne Abbruch | haiku-5.5 | M | pflicht | 3 | läuft |  |
 
 ### Welle 9
 
@@ -245,7 +245,7 @@ Geplante Tage: 1.54
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E5-OPUS-01 | Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage | opus-5.5 | L | pflicht | 5 | offen |  |
 | E5-GRAFIKER-01 | Messhilfe-Grafik Maß A und B mit Stulpschraube, Beschlag, Überstand (SVG nach Formsystem) | haiku-5.5 | M | pflicht | 3 | offen |  |
-| E5-PRUEFER-02 | Leistungsdiagnose mobil aus Lighthouse-Spuren: LCP-Element und Zeitanteile, blockierende Ressourcen, JavaScript je Route, Hauptthread beim Seitenaufbau, SEO-Abzug der Unterseiten; Vorschläge mit erwarteter Wirkung | haiku-5.5 | M | pflicht | 3 | läuft |  |
+| E5-PRUEFER-02 | Leistungsdiagnose mobil aus Lighthouse-Spuren: LCP-Element und Zeitanteile, blockierende Ressourcen, JavaScript je Route, Hauptthread beim Seitenaufbau, SEO-Abzug der Unterseiten; Vorschläge mit erwarteter Wirkung | haiku-5.5 | M | pflicht | 3 | committet | b18db2a |
 
 ### Welle 2
 

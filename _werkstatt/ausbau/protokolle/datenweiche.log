@@ -701,3 +701,16 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T12:49:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/visual/registry.test.tsx src/components/visual/generators/autoschluessel-aufbau.test.tsx
 2026-11-03T12:49:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
 2026-11-03T12:50:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/visual
+2026-11-03T12:53:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T12:53:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T12:55:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T12:56:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T12:57:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T12:58:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/visual/registry.tsx src/components/visual/registry.test.tsx src/components/visual/generators/autoschluessel-aufbau.tsx src/components/hub/intent-hub.tsx src/components/visual/inszenierung/eingang-szene.tsx src/components/visual/inszenierung/eingangsinszenierung.tsx src/components/hub/hub-kachel.tsx
+2026-11-03T12:58:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-03T12:59:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/layout src/components/seo src/lib
+2026-11-03T12:59:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/layout/breadcrumbs.tsx src/components/seo/json-ld.tsx
+2026-11-03T13:00:10+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T13:00:59+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T13:02:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T13:02:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
