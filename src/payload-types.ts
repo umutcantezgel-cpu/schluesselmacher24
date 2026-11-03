@@ -2888,6 +2888,18 @@ export interface Einstellungen {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Ohne Retourenlabel bekommt der Kunde einen Begleitschein und frankiert selbst; die Seite nennt das Porto unten als Empfehlung und schreibt nie „kostenlos“. Das Retourenlabel braucht einen Vertrag mit dem Versanddienstleister und dessen Zugangsdaten (Variablen in Vercel).
+   */
+  einsenden?: {
+    labelAktiv?: boolean | null;
+    aufpreisVersichert?: number | null;
+    aufpreisUnversichert?: number | null;
+    portoVersichert?: number | null;
+    portoUnversichert?: number | null;
+    haftungVersichert?: number | null;
+    portoStand?: string | null;
+  };
   aufbewahrung: {
     fahrzeugschein: number;
     schluesselfotos: number;
@@ -3258,6 +3270,17 @@ export interface EinstellungenSelect<T extends boolean = true> {
         lieferzeit?: T;
         produktklassen?: T;
         id?: T;
+      };
+  einsenden?:
+    | T
+    | {
+        labelAktiv?: T;
+        aufpreisVersichert?: T;
+        aufpreisUnversichert?: T;
+        portoVersichert?: T;
+        portoUnversichert?: T;
+        haftungVersichert?: T;
+        portoStand?: T;
       };
   aufbewahrung?:
     | T

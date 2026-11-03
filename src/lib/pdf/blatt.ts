@@ -35,6 +35,8 @@ export interface BlattAbschnitt {
   tabelle?: BlattTabelle;
   /** Freier Text, etwa „Keine Notizen.“ */
   text?: string;
+  /** Anschrift zum Ausschneiden (gestrichelter Rahmen, große Schrift), etwa auf dem Begleitschein. */
+  adressfeld?: string[];
   bilder?: BlattBild[];
 }
 

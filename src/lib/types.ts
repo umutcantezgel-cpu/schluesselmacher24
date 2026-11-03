@@ -184,7 +184,27 @@ export interface Settings {
   };
   /** Nur gesetzt, wenn im Backend mindestens ein Eigentext hinterlegt ist. */
   legalTexts?: LegalTexts;
+  /** Einsenden von Schlüsseln (G-24, A-010). Fehlt in älteren Ständen; dann gelten die Standardwerte. */
+  sendIn?: EinsendeEinstellungen;
   updatedAt: string;
+}
+
+/**
+ * Einsenden von Schlüsseln (G-24, G-25, A-010, MA-08, MA-18). Ohne Retourenlabel bekommt der
+ * Kunde einen Begleitschein und frankiert selbst; die Seite nennt dann das Porto der Post als
+ * Empfehlung und verspricht nichts „kostenlos“ (R9).
+ */
+export interface EinsendeEinstellungen {
+  /** Retourenlabel des Versanddienstleisters aktiv (erst mit Vertrag und Zugang; MA-08). */
+  labelAktiv: boolean;
+  /** Aufpreise, die der Kunde für die Einsendung zahlt (Cent, 0 = keiner). */
+  aufpreisVersichertCents: number;
+  aufpreisUnversichertCents: number;
+  /** Portoempfehlung ohne Retourenlabel (Cent) mit Haftung und Stand der Preisliste. */
+  portoVersichertCents: number;
+  portoUnversichertCents: number;
+  haftungVersichertEuro: number;
+  portoStand: string;
 }
 
 export interface ShippingOption {

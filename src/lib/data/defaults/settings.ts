@@ -99,6 +99,15 @@ export function settings(): Settings {
       floorPlans: 365,
       projectDocuments: 365,
     },
+    sendIn: {
+      labelAktiv: false,
+      aufpreisVersichertCents: 0,
+      aufpreisUnversichertCents: 0,
+      portoVersichertCents: 445,
+      portoUnversichertCents: 180,
+      haftungVersichertEuro: 25,
+      portoStand: 'Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €',
+    },
     updatedAt: '2026-09-15T00:00:00.000Z',
   };
 }

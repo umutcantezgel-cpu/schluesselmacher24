@@ -195,6 +195,7 @@ class Zeichner {
     const zeile = abschnitt.zeilen?.find((z) => z.wert !== '');
     if (zeile) return this.hoehe(zeile.wert, { breite: INHALT * 0.68 - 8 }) + 6;
     if (abschnitt.text) return this.hoehe(abschnitt.text) + 4;
+    if (abschnitt.adressfeld) return 24 + abschnitt.adressfeld.length * 19 + 14;
     return INHALT * 0.25 + 28;
   }
 
@@ -218,6 +219,21 @@ class Zeichner {
       this.doc.y += h + 4;
     }
     if (abschnitt.bilder?.length) this.bilder(abschnitt.bilder);
+    if (abschnitt.adressfeld?.length) this.adressfeld(abschnitt.adressfeld);
+  }
+
+  private adressfeld(zeilen: string[]): void {
+    const breite = 260;
+    const hoehe = 24 + zeilen.length * 19;
+    this.platz(hoehe + 10);
+    const y = this.doc.y + 4;
+    this.doc.save();
+    this.doc.rect(SEITE.rand, y, breite, hoehe).dash(4, { space: 3 }).lineWidth(1).strokeColor(PDF_FARBEN.leise).stroke();
+    this.doc.restore();
+    zeilen.forEach((zeile, i) => {
+      this.schreibe(zeile, SEITE.rand + 14, y + 12 + i * 19, { schnitt: i === 0 ? 'fett' : 'normal', groesse: 13, breite: breite - 28 });
+    });
+    this.doc.y = y + hoehe + 8;
   }
 
   private tabelle(t: BlattTabelle): void {

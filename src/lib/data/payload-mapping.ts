@@ -761,6 +761,20 @@ export function rechtstexteZuSeite(gruppe: RechtstexteGruppe): LegalTexts | unde
   return Object.keys(texte).length ? texte : undefined;
 }
 
+/** Einsenden aus dem Global; fehlende Werte nehmen die Standardwerte (ältere Datenbankstände). */
+function einsendenZuSeite(e: Partial<Record<string, unknown>> | null | undefined): Settings['sendIn'] {
+  const zahl = (wert: unknown, ersatz: number) => (typeof wert === 'number' && Number.isFinite(wert) ? wert : ersatz);
+  return {
+    labelAktiv: e?.labelAktiv === true,
+    aufpreisVersichertCents: zuCent(zahl(e?.aufpreisVersichert, 0)),
+    aufpreisUnversichertCents: zuCent(zahl(e?.aufpreisUnversichert, 0)),
+    portoVersichertCents: zuCent(zahl(e?.portoVersichert, 4.45)),
+    portoUnversichertCents: zuCent(zahl(e?.portoUnversichert, 1.8)),
+    haftungVersichertEuro: zahl(e?.haftungVersichert, 25),
+    portoStand: typeof e?.portoStand === 'string' && e.portoStand ? e.portoStand : 'Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €',
+  };
+}
+
 export function einstellungenZuSeite(doc: Einstellungen): Settings {
   const f = doc.firma;
   const company: Settings['company'] = {
@@ -826,6 +840,7 @@ export function einstellungenZuSeite(doc: Einstellungen): Settings {
       floorPlans: doc.aufbewahrung.grundrisse,
       projectDocuments: doc.aufbewahrung.projektunterlagen,
     },
+    sendIn: einsendenZuSeite(doc.einsenden),
     updatedAt: doc.updatedAt ?? new Date(0).toISOString(),
   };
   if (doc.buchung.bundesland) settings.booking.federalState = doc.buchung.bundesland;
@@ -887,6 +902,17 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
       lieferzeit: v.deliveryTime,
       produktklassen: v.productClasses,
     })),
+    einsenden: s.sendIn
+      ? {
+          labelAktiv: s.sendIn.labelAktiv,
+          aufpreisVersichert: zuEuro(s.sendIn.aufpreisVersichertCents),
+          aufpreisUnversichert: zuEuro(s.sendIn.aufpreisUnversichertCents),
+          portoVersichert: zuEuro(s.sendIn.portoVersichertCents),
+          portoUnversichert: zuEuro(s.sendIn.portoUnversichertCents),
+          haftungVersichert: s.sendIn.haftungVersichertEuro,
+          portoStand: s.sendIn.portoStand,
+        }
+      : undefined,
     aufbewahrung: {
       fahrzeugschein: s.retentionDays.vehicleRegistration,
       schluesselfotos: s.retentionDays.keyPhotos,

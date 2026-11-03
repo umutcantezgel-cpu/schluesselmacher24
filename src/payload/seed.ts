@@ -613,7 +613,13 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
  * leer sind. Gepflegte Werte bleiben unberührt.
  */
 const GLOBAL_ERGAENZUNGEN = {
-  einstellungen: ['buchung.erinnerungTageVorher'],
+  einstellungen: [
+    'buchung.erinnerungTageVorher',
+    'einsenden.portoVersichert',
+    'einsenden.portoUnversichert',
+    'einsenden.haftungVersichert',
+    'einsenden.portoStand',
+  ],
   zylinderkatalog: [] as string[],
   richtwerte: [] as string[],
 } satisfies Record<'einstellungen' | 'zylinderkatalog' | 'richtwerte', string[]>;
