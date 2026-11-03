@@ -220,19 +220,14 @@ export function FlowShell<T extends object>({
     <div data-ablauf className="sm24-ablauf relative pb-40 md:pb-8">
       {schutz && <SchutzFelder schutz={schutz} />}
       {/* Fortschritt: klebendes Band über die ganze Breite der Shell, auf allen Breiten gleich
-          (eine Zeile „Schritt n von m · Name“, der Ablauftitel steht schon in der h1). */}
+          (eine Zeile „Schritt n von m · Name“, der Ablauftitel steht schon in der h1). Mit Etappen zählt
+          das Band nur die Etappen; die Teilschritte zeigt die Liste daneben (E5-OPUS-05, ein Zähler). */}
       <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background px-5 py-3 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div className="flex items-baseline justify-between gap-3">
           <p className="min-w-0 truncate whitespace-nowrap text-caption font-mono tabular-nums text-foreground-muted">
             {etappe ? (
               <>
                 Schritt {etappeJetzt + 1} von {etappen.length} · {etappe.name}
-                {etappe.bis > etappe.von && (
-                  <span className="text-foreground-subtle">
-                    {' '}
-                    · {flow.stepIndex - etappe.von + 1} von {etappe.bis - etappe.von + 1}
-                  </span>
-                )}
               </>
             ) : (
               <>

@@ -179,7 +179,7 @@ export const KEY_PHOTO_SLOTS: PhotoSlotDef[] = [
   },
   {
     id: 'bart',
-    label: 'Schlüsselbart beziehungsweise Spitze',
+    label: 'Schlüsselbart oder Spitze',
     description:
       'Bart von der Seite aufnehmen, sodass das Profil und die Fräsungen erkennbar sind. Bei einem '
       + 'Klappschlüssel bitte ausgeklappt fotografieren.',

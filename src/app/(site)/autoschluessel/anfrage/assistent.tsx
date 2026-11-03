@@ -119,7 +119,7 @@ const STEPS: FlowStep[] = [
   {
     id: 'vorhandene-schluessel',
     etappe: ETAPPEN.fahrzeug,
-    short: 'Vorhandene',
+    short: 'Vorhandene Schlüssel',
     title: 'Wie viele funktionierende Schlüssel haben Sie noch?',
     hint: 'Davon hängt ab, wie aufwendig die Arbeit wird und wie belastbar wir den Preis nennen können.',
   },
