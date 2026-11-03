@@ -44,7 +44,7 @@ import { GlyphPlus } from '@/components/visual/glyphen/plus';
 import { GlyphWarnung } from '@/components/visual/glyphen/warnung';
 import { ZylinderMassLive } from '@/components/visual/interaktiv/zylinder-mass-live';
 
-import { SET_UEBLICH, istStartzustand, masseRueckfragen, planZuPositionen, positionenZuPlan } from './kern';
+import { SET_UEBLICH, ausLink, istStartzustand, masseRueckfragen, planZuPositionen, positionenZuPlan } from './kern';
 
 const FLOW_ID = 'zylinder-konfigurator';
 
@@ -317,22 +317,22 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
   // unveränderter Start wird sofort ersetzt, eine eigene Zusammenstellung erst nach Rückfrage.
   const adresse = useSyncExternalStore(abonniereAdresse, () => window.location.search, () => '');
   const linkRoh = useMemo(() => new URLSearchParams(adresse).get('plan'), [adresse]);
-  const linkPositionen = useMemo(() => {
+  const linkInhalt = useMemo(() => {
     const plan = linkRoh ? dekodiere(linkRoh) : null;
-    return plan ? planZuPositionen(plan) : null;
-  }, [linkRoh]);
-  const linkFehler = Boolean(linkRoh) && !linkPositionen;
+    return plan ? planZuPositionen(plan, catalog) : null;
+  }, [linkRoh, catalog]);
+  const linkFehler = Boolean(linkRoh) && !linkInhalt;
   useEffect(() => {
-    if (linkPositionen && istStartzustand(flow.data.items, flow.data.keyCount, initial)) {
-      flow.update({ items: linkPositionen.items, keyCount: linkPositionen.keyCount });
+    if (linkInhalt && !linkInhalt.schutzTeilweise && istStartzustand(flow.data, initial)) {
+      flow.update(ausLink(linkInhalt, initial));
       adresseBereinigen();
     }
-  }, [linkPositionen, flow, initial]);
+  }, [linkInhalt, flow, initial]);
   const [linkStatus, setLinkStatus] = useState<{ url: string; kopiert: boolean } | { zuGross: true } | null>(null);
   const rueckfragen = useMemo(() => masseRueckfragen(data.items, catalog), [data.items, catalog]);
 
   async function linkKopieren() {
-    const plan = positionenZuPlan(data.items, data.keyCount);
+    const plan = positionenZuPlan(data.items, data.keyCount, { extraIds: data.extraIds, expandable: data.expandable });
     if (!passtInLink(plan)) {
       setLinkStatus({ zuGross: true });
       return;
@@ -596,18 +596,33 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
       <div className="space-y-6">
         {linkFehler && (
           <Alert tone="warning" title="Der Link ließ sich nicht öffnen">
-            Er enthält keine Sperrschließung oder ist unvollständig. Einen Plan mit unterschiedlichen
-            Schlüsseln öffnen Sie im Schließplan-Planer.
+            Er enthält keine Sperrschließung, die sich hier bestellen lässt, oder ist unvollständig. Einen Plan
+            mit unterschiedlichen Schlüsseln öffnen Sie im{' '}
+            <Link href="/schliessanlagen/konfigurator/schliessplan" className="font-semibold text-primary hover:underline">
+              Schließplan-Planer
+            </Link>
+            .
           </Alert>
         )}
-        {linkPositionen && !istStartzustand(data.items, data.keyCount, initial) && (
+        {linkInhalt && (linkInhalt.schutzTeilweise || !istStartzustand(data, initial)) && (
           <Alert tone="info" title="Zusammenstellung aus dem Link übernehmen?">
-            <p>Der Link enthält {linkPositionen.items.reduce((n, item) => n + item.qty, 0)} Zylinder und {linkPositionen.keyCount} Schlüssel. Ihre bisherige Zusammenstellung würde ersetzt.</p>
+            <p>
+              Der Link enthält {linkInhalt.items.reduce((n, item) => n + item.qty, 0)} Zylinder und {linkInhalt.keyCount}{' '}
+              Schlüssel{linkInhalt.extraIds.length ? ', mit Ziehschutz' : ''}
+              {linkInhalt.expandable ? ', später erweiterbar' : ''}. Ihre bisherige Zusammenstellung würde ersetzt, auch
+              Optionen und Hersteller.
+            </p>
+            {linkInhalt.schutzTeilweise && (
+              <p className="mt-2">
+                Ziehschutz nur an einigen Türen lässt sich hier nicht bestellen; dafür gibt es im Schließplan-Planer ein
+                Angebot. Übernommen werden die Zylinder ohne Ziehschutz.
+              </p>
+            )}
             <div className="mt-3 flex flex-wrap gap-2">
               <Button
                 size="sm"
                 onClick={() => {
-                  flow.update({ items: linkPositionen.items, keyCount: linkPositionen.keyCount });
+                  flow.update(ausLink(linkInhalt, initial));
                   adresseBereinigen();
                 }}
               >
