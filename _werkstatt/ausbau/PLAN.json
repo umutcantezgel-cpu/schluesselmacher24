@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T08:20:00.949Z",
+ "stand": "2026-11-03T08:29:21.702Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -2021,7 +2021,17 @@
    "kostenklasse": "L",
    "schreibrechte": [
     "src/components/rubrik/",
-    "src/components/visual/motion/seitenwechsel.tsx"
+    "src/components/visual/motion/seitenwechsel.tsx",
+    "src/components/layout/page-header.tsx",
+    "src/app/(site)/autoschluessel/page.tsx",
+    "src/app/(site)/schluessel-nach-code/page.tsx",
+    "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+    "src/app/(site)/schluessel-einschicken/page.tsx",
+    "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+    "src/app/(site)/schliessanlagen/page.tsx",
+    "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+    "src/app/(site)/sicherheitstechnik/page.tsx",
+    "src/app/(site)/service-und-termin/vor-ort/page.tsx"
    ],
    "abhaengigkeiten": [
     "E4-OPUS-03"
@@ -2041,10 +2051,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "f0f4bc5",
    "massstab": null,
    "muster": null
   },

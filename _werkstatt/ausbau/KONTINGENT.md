@@ -20,3 +20,4 @@ Fenster bis 2026-11-03 03:10 MEZ · Woche bis 2026-11-07 02:00 MEZ.
 | 2026-11-03 08:51 | 4,6 %/Soll 2,9/Fensterziel 22 (Fenster seit 08:10) | ≈16 % (Schätzung seit 07:22: 15 % gemessen) | 0 von 4 | Halten | kontingent.mjs --seit 07:10Z; E4-OPUS-01 kostete rund 4,6 % des Fensters |
 | 2026-11-03 09:06 | 6,8 %/Soll 4,2/Fensterziel 22 | ≈16 % (Schätzung) | 0 von 4 | Halten | kontingent.mjs; E4-OPUS-02 kostete rund 2,2 % |
 | 2026-11-03 09:20 | 9,0 %/Soll 5,1/Fensterziel 22 | ≈16 % (Schätzung) | 0 von 4 | Halten (3,9 Punkte über Soll) | kontingent.mjs; E4-OPUS-03 kostete rund 2,2 % |
+| 2026-11-03 09:29 | 10,8 %/Soll 5,8/Fensterziel 22 | ≈16 % (Schätzung) | 0 von 4 | Halten an der Schwelle (5,0 Punkte), Verbrauch etwa 12 %/h gegen 4,4 %/h Soll-Anstieg: Erkundung an Haiku, große Schritte, bei etwa 20 % Warten bis 13:10 | kontingent.mjs |
