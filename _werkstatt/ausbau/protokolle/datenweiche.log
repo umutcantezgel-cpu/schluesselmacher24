@@ -618,3 +618,16 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T08:51:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
 2026-11-03T08:51:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
 2026-11-03T08:52:26+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T09:07:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/hub src/components/rubrik src/lib/navigation.test.ts src/components/layout
+2026-11-03T09:07:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts src/lib/data/seitentexte.test.ts
+2026-11-03T09:11:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx prettier --check src/lib/data/defaults/rubriken.ts
+2026-11-03T09:11:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts src/components/hub src/components/rubrik src/lib/navigation.test.ts src/components/layout
+2026-11-03T09:11:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts
+2026-11-03T09:12:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx prettier --write src/lib/data/defaults/rubriken.ts
+2026-11-03T09:12:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts src/components/hub src/components/rubrik src/lib/navigation.test.ts src/components/layout
+2026-11-03T09:12:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx prettier --write src/lib/data/defaults/rubriken.ts
+2026-11-03T09:12:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T09:12:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T09:13:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T09:14:03+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T09:14:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000

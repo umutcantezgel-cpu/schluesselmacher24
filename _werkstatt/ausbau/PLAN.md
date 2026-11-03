@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T08:56:00.401Z
+Stand: 2026-11-03T09:14:46.632Z
 
-Etappe 5/12 · Welle 4 · Pflicht 57/128 · Kür 0/10 · läuft 1 · blockiert 0
+Etappe 5/12 · Welle 5 · Pflicht 58/128 · Kür 0/10 · läuft 1 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -195,13 +195,13 @@ Geplante Tage: 1.43
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E4-TEXTER-01 | Texte Hub, Kacheln, Autoschlüssel-Rubrik nach Muster ohne KI-Spuren, Längen gemessen | haiku-5.5 | M | pflicht | 3 | läuft |  |
+| E4-TEXTER-01 | Texte Hub, Kacheln, Autoschlüssel-Rubrik nach Muster ohne KI-Spuren, Längen gemessen | haiku-5.5 | M | pflicht | 3 | committet | cb3c0ea |
 
 ### Welle 5
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E4-PROBENUTZER-01 | Probelauf Startseite und Autoschlüssel-Weg mit vier Personas, mobil und Desktop | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E4-PROBENUTZER-01 | Probelauf Startseite und Autoschlüssel-Weg mit vier Personas, mobil und Desktop | haiku-5.5 | M | pflicht | 3 | läuft |  |
 | E4-PRUEFER-01 | Prüfstufe B Etappe E4 mit Bildfolgen der Inszenierung, Framezeiten, Lighthouse, axe | haiku-5.5 | L | pflicht | 3 | offen |  |
 
 ### Welle 6

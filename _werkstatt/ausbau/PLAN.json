@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T08:56:00.401Z",
+ "stand": "2026-11-03T09:14:46.632Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -2127,10 +2127,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "cb3c0ea",
    "massstab": "_werkstatt/ausbau/pakete/E4-TEXTER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
@@ -2155,7 +2155,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
