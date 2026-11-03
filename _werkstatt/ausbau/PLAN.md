@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T05:00:06.223Z
+Stand: 2026-11-03T07:49:16.354Z
 
-Etappe 5/12 · Welle 1 · Pflicht 52/128 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 5/12 · Welle 2 · Pflicht 53/128 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -175,7 +175,7 @@ Geplante Tage: 1.43
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E4-OPUS-01 | Startseite: Intent-Hub im ersten Bildschirm mit zwölf Kacheln aus den Rubriken, Frage, Satz, Anrufen, Code-Motiv | opus-5.5 | L | pflicht | 5 | offen |  |
+| E4-OPUS-01 | Startseite: Intent-Hub im ersten Bildschirm mit zwölf Kacheln aus den Rubriken, Frage, Satz, Anrufen, Code-Motiv | opus-5.5 | L | pflicht | 5 | committet | de6cb4f |
 
 ### Welle 2
 

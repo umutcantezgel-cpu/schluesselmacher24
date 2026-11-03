@@ -547,3 +547,20 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T04:59:54+00:00	json	als=root	hosts=localhost	env-dateien= DATABASE_URL GEHEIM_NEU NOCH_EINS	sh -c echo "[$DATABASE_URL|$GEHEIM_NEU|$NOCH_EINS|]"
 2026-11-03T04:59:55+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$SM24_DATA $SM24_STORAGE $NEXT_PUBLIC_SITE_URL"
 2026-11-03T04:59:55+00:00	pg	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$DATABASE_URL"
+2026-11-03T07:34:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/hub
+2026-11-03T07:34:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T07:35:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T07:35:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T07:36:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T07:37:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/hub src/components/visual/icons
+2026-11-03T07:37:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T07:37:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T07:38:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T07:40:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib src/components/hub src/payload
+2026-11-03T07:40:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T07:41:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T07:43:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T07:44:04+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T07:45:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T07:45:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T07:45:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit

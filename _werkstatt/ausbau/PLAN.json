@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T05:00:06.223Z",
+ "stand": "2026-11-03T07:49:16.354Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -1896,7 +1896,11 @@
    "kostenklasse": "L",
    "schreibrechte": [
     "src/app/(site)/page.tsx",
-    "src/components/hub/"
+    "src/components/hub/",
+    "src/components/visual/fach-icon.tsx",
+    "src/app/(site)/globals.css",
+    "tailwind.config.ts",
+    "src/lib/data/defaults/rubriken.ts"
    ],
    "abhaengigkeiten": [
     "E3-PRUEFER-01"
@@ -1918,10 +1922,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "de6cb4f",
    "massstab": null,
    "muster": null
   },
