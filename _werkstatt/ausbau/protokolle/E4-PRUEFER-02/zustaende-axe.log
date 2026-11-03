@@ -1,0 +1,24 @@
+| Zustand | Gerät | Öffnen | offen | critical | serious | moderate | minor | Regeln | Stellen |
+|---|---|---|---|---|---|---|---|---|---|
+| Megamenü Autoschlüssel | desktop 1024 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Nach Code | desktop 1024 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Sperrschließungen | desktop 1024 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Schließanlagen | desktop 1024 | DOM-Klick (in der Leiste ausgeblendet) | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Mehr | desktop 1024 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Leiste bei 1024 px sichtbar | desktop 1024 | – | – | – | – | – | – | – | Autoschlüssel · Nach Code · Sperrschließungen · Mehr |
+| Megamenü Autoschlüssel | desktop 1280 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Nach Code | desktop 1280 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Sperrschließungen | desktop 1280 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Schließanlagen | desktop 1280 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Mehr | desktop 1280 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Leiste bei 1280 px sichtbar | desktop 1280 | – | – | – | – | – | – | – | Autoschlüssel · Nach Code · Sperrschließungen · Schließanlagen · Mehr |
+| Megamenü Autoschlüssel | desktop 1440 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Nach Code | desktop 1440 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Sperrschließungen | desktop 1440 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Schließanlagen | desktop 1440 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Mehr | desktop 1440 | Überfahren | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Leiste bei 1440 px sichtbar | desktop 1440 | – | – | – | – | – | – | – | Autoschlüssel · Nach Code · Sperrschließungen · Schließanlagen · Mehr |
+| Schublade offen | mobil 390 | Klick | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+| Schublade offen | tablet 768 | Klick | ja | 0 | 0 | 0 | 0 | 0 | 0 |
+JSON: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/zustaende-axe.json
+EXIT 0

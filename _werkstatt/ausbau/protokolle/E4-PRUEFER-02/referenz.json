@@ -1,0 +1,186 @@
+{
+  "zeit": "2026-11-03T13:25:02.929Z",
+  "anzahl": 15,
+  "bilder": [
+    {
+      "datei": "H01-start__mobil-klein.jpg",
+      "viewport": [
+        360,
+        780
+      ],
+      "gespeichertBreite": 360,
+      "bytes": 47042,
+      "url": "http://localhost:3000/",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H01-start__mobil.jpg",
+      "viewport": [
+        390,
+        844
+      ],
+      "gespeichertBreite": 390,
+      "bytes": 50900,
+      "url": "http://localhost:3000/",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H01-start__tablet.jpg",
+      "viewport": [
+        768,
+        1024
+      ],
+      "gespeichertBreite": 768,
+      "bytes": 80356,
+      "url": "http://localhost:3000/",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H01-start__desktop.jpg",
+      "viewport": [
+        1440,
+        900
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 108536,
+      "url": "http://localhost:3000/",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H01-start__breit.jpg",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 82307,
+      "url": "http://localhost:3000/",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H02-autoschluessel__mobil-klein.jpg",
+      "viewport": [
+        360,
+        780
+      ],
+      "gespeichertBreite": 360,
+      "bytes": 33838,
+      "url": "http://localhost:3000/autoschluessel",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H02-autoschluessel__mobil.jpg",
+      "viewport": [
+        390,
+        844
+      ],
+      "gespeichertBreite": 390,
+      "bytes": 36941,
+      "url": "http://localhost:3000/autoschluessel",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H02-autoschluessel__tablet.jpg",
+      "viewport": [
+        768,
+        1024
+      ],
+      "gespeichertBreite": 768,
+      "bytes": 64441,
+      "url": "http://localhost:3000/autoschluessel",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H02-autoschluessel__desktop.jpg",
+      "viewport": [
+        1440,
+        900
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 90391,
+      "url": "http://localhost:3000/autoschluessel",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H02-autoschluessel__breit.jpg",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 77952,
+      "url": "http://localhost:3000/autoschluessel",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H04-autoschluessel-anfrage__mobil-klein.jpg",
+      "viewport": [
+        360,
+        780
+      ],
+      "gespeichertBreite": 360,
+      "bytes": 38805,
+      "url": "http://localhost:3000/autoschluessel/anfrage",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H04-autoschluessel-anfrage__mobil.jpg",
+      "viewport": [
+        390,
+        844
+      ],
+      "gespeichertBreite": 390,
+      "bytes": 41933,
+      "url": "http://localhost:3000/autoschluessel/anfrage",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H04-autoschluessel-anfrage__tablet.jpg",
+      "viewport": [
+        768,
+        1024
+      ],
+      "gespeichertBreite": 768,
+      "bytes": 64268,
+      "url": "http://localhost:3000/autoschluessel/anfrage",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H04-autoschluessel-anfrage__desktop.jpg",
+      "viewport": [
+        1440,
+        900
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 84815,
+      "url": "http://localhost:3000/autoschluessel/anfrage",
+      "status": 200,
+      "wartezeitMs": 2500
+    },
+    {
+      "datei": "H04-autoschluessel-anfrage__breit.jpg",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 67193,
+      "url": "http://localhost:3000/autoschluessel/anfrage",
+      "status": 200,
+      "wartezeitMs": 2500
+    }
+  ]
+}

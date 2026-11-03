@@ -1,0 +1,61 @@
+{
+  "skript": "kontaktbogen",
+  "zeit": "2026-11-03T13:24:07.911Z",
+  "argumente": {
+    "_": [],
+    "bilder": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen",
+    "ziel": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolge-b31-kontakt.jpg",
+    "spalten": "5",
+    "titel": "B-31 Eingangsinszenierung, 0 bis 1.200 ms (E4-PRUEFER-02)",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/kontaktbogen.json"
+  },
+  "ziel": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolge-b31-kontakt.jpg",
+  "spalten": 5,
+  "titel": "B-31 Eingangsinszenierung, 0 bis 1.200 ms (E4-PRUEFER-02)",
+  "bilder": [
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-desktop-buehne-0000ms.png",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-desktop-buehne-0200ms.png",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-desktop-buehne-0400ms.png",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-desktop-buehne-0800ms.png",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-desktop-buehne-1200ms.png",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-mobil-band-0000ms.png",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-mobil-band-0200ms.png",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-mobil-band-0400ms.png",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-mobil-band-0800ms.png",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-mobil-band-1200ms.png",
+      "geladen": true
+    }
+  ],
+  "breite": 1440,
+  "hoehe": 900,
+  "bytes": 61720,
+  "nichtGeladen": []
+}

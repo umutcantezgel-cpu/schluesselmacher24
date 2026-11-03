@@ -714,3 +714,84 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T13:00:59+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
 2026-11-03T13:02:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
 2026-11-03T13:02:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T13:06:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env NODE_PATH=/opt/node22/lib/node_modules node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/erkunden.mjs
+2026-11-03T13:06:29+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/erkunden.mjs
+2026-11-03T13:06:57+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/explore.mjs
+2026-11-03T13:07:29+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:07:43+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:07:46+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/probe-kachel.mjs
+2026-11-03T13:07:57+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:08:16+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:08:39+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/probe-weg.mjs
+2026-11-03T13:08:59+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:09:11+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:09:28+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:09:48+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:10:09+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:10:38+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:11:23+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:11:46+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/weg.mjs
+2026-11-03T13:11:54+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:12:10+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/probe-suche.mjs
+2026-11-03T13:12:33+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:12:36+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/probe-reihe.mjs
+2026-11-03T13:12:53+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/probe-reihe2.mjs
+2026-11-03T13:13:13+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/weg.mjs
+2026-11-03T13:13:15+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:13:55+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/weg.mjs
+2026-11-03T13:14:01+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:15:04+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:15:08+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/probe-baujahr.mjs
+2026-11-03T13:15:13+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:15:24+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:15:47+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/radio-probe.mjs
+2026-11-03T13:15:57+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/weg.mjs
+2026-11-03T13:16:01+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:16:17+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:16:43+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:16:49+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/zustaende.mjs
+2026-11-03T13:17:16+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:17:33+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/funktionsliste.mjs --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/funktionsliste.json --md /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/funktionsliste.md
+2026-11-03T13:18:04+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:18:10+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:18:22+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:18:24+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:18:32+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:18:40+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:18:45+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:18:52+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/konsole.mjs --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/konsole.json
+2026-11-03T13:19:18+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/werte-suche.mjs --seit b8e7ea7 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/werte-suche.json
+2026-11-03T13:19:28+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/a11y.mjs --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/a11y.json
+2026-11-03T13:19:28+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/href-probe.mjs
+2026-11-03T13:19:31+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/slopscan.json
+2026-11-03T13:21:28+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bewegung.mjs reduziert --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bewegung-reduziert.json
+2026-11-03T13:21:59+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:22:05+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/hub.mjs
+2026-11-03T13:22:05+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/pfad.mjs
+2026-11-03T13:22:23+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/bewegung.mjs
+2026-11-03T13:23:20+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:23:36+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:24:01+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:24:03+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/bildfolge.mjs
+2026-11-03T13:24:06+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/kontaktbogen.mjs --bilder /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen --ziel /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolge-b31-kontakt.jpg --spalten 5 --titel B-31 Eingangsinszenierung, 0 bis 1.200 ms (E4-PRUEFER-02) --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/kontaktbogen.json
+2026-11-03T13:24:07+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/referenz.mjs
+2026-11-03T13:24:11+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:24:57+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/debug-vorschlag.mjs
+2026-11-03T13:25:03+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bildsatz.mjs --routen /,/autoschluessel,/autoschluessel/anfrage --ziel /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildsatz --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildsatz.json
+2026-11-03T13:25:21+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:26:09+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/debug-weiter.mjs
+2026-11-03T13:26:23+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:28:01+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/b32-reduziert.mjs
+2026-11-03T13:28:38+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:29:53+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/zusatz.mjs
+2026-11-03T13:30:14+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/probe-zusatz-kacheln.mjs
+2026-11-03T13:30:16+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:30:39+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p02/hub.mjs
+2026-11-03T13:30:43+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:30:55+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:32:03+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:33:05+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:34:24+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:35:12+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:36:32+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs
+2026-11-03T13:37:24+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e4p2/laufe.mjs

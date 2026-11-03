@@ -1,0 +1,44 @@
+## mobil 390x844: Bilder 5
+  1-fahrzeug: Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Titel „Welches Fahrzeug haben Sie?“ · Weiter gesperrt · Zurück nein · axe 0 Regeln
+  Suche „vw golf“: Vorschlag ja
+  1b-suche-treffer: Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Titel „Welches Fahrzeug haben Sie?“ · Weiter aktiv · Zurück nein · axe 0 Regeln
+  Weiter nach Suche: Wartezeit 28 ms
+  Schritt 3: Auswahlliste „Jahr* (Pflichtangabe)“: „2016“ · Auswahlliste „Monat der Erstzulassung (freiwillig)“: „Januar“
+  3-baujahr: Schritt 1 von 5 · Fahrzeug wählen · 3 von 7 · Titel „Baujahr oder Erstzulassung“ · Weiter aktiv · Zurück Zurück · axe 0 Regeln
+  Schritt „Baujahr oder Erstzulassung“: keine Angaben nötig
+  Schritt „Weitere Fahrzeugdaten (freiwillig)“: keine Angaben nötig
+  Schritt „Welche Schlüsselart haben Sie?“: Auswahl „Schlüssel mit Transponder im KopfMechanischer SchlüsselSchlüssel ohne Tasten und ohne Fernbedienung.“
+  Schritt „Wie viele funktionierende Schlüssel haben Sie noch?“: Auswahl „Kein funktionierender SchlüsselAlle Schlüssel sind verloren, defekt oder eingeschlossen.“
+  Schritt „Was sollen wir für Sie tun?“: Auswahl „Ersatzschlüssel bei VerlustAlle Schlüssel verloren oder beschädigt. Umfang und Machbarkeit werden vorab geprüft.“
+  8-schluesselfotos: Schritt 2 von 5 · Fotos hochladen · 1 von 2 · Titel „Fotos Ihres Schlüssels“ · Weiter aktiv · Zurück Zurück · axe 0 Regeln
+  „Keine Fotos zur Hand?“ sichtbar: ja
+  Weg A Ende: Schritt „Fotos Ihres Schlüssels“
+  Marke Volkswagen, Schritt 2: Auswahl „Golfab 2003“
+  2-modell: Schritt 1 von 5 · Fahrzeug wählen · 2 von 7 · Titel „Welches Modell fahren Sie?“ · Weiter aktiv · Zurück Zurück
+  axe 1-fahrzeug: 0 Regeln
+  axe 1b-suche-treffer: 0 Regeln
+  axe 3-baujahr: 0 Regeln
+  axe 8-schluesselfotos: 0 Regeln
+## desktop 1440x900: Bilder 5
+  1-fahrzeug: Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Titel „Welches Fahrzeug haben Sie?“ · Weiter gesperrt · Zurück nein · axe 0 Regeln
+  Suche „vw golf“: Vorschlag ja
+  1b-suche-treffer: Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Titel „Welches Fahrzeug haben Sie?“ · Weiter aktiv · Zurück nein · axe 0 Regeln
+  Weiter nach Suche: Wartezeit 3 ms
+  Schritt 3: Auswahlliste „Jahr* (Pflichtangabe)“: „2016“ · Auswahlliste „Monat der Erstzulassung (freiwillig)“: „Januar“
+  3-baujahr: Schritt 1 von 5 · Fahrzeug wählen · 3 von 7 · Titel „Baujahr oder Erstzulassung“ · Weiter aktiv · Zurück Zurück · axe 0 Regeln
+  Schritt „Baujahr oder Erstzulassung“: keine Angaben nötig
+  Schritt „Weitere Fahrzeugdaten (freiwillig)“: keine Angaben nötig
+  Schritt „Welche Schlüsselart haben Sie?“: Auswahl „Schlüssel mit Transponder im KopfMechanischer SchlüsselSchlüssel ohne Tasten und ohne Fernbedienung.“
+  Schritt „Wie viele funktionierende Schlüssel haben Sie noch?“: Auswahl „Kein funktionierender SchlüsselAlle Schlüssel sind verloren, defekt oder eingeschlossen.“
+  Schritt „Was sollen wir für Sie tun?“: Auswahl „Ersatzschlüssel bei VerlustAlle Schlüssel verloren oder beschädigt. Umfang und Machbarkeit werden vorab geprüft.“
+  8-schluesselfotos: Schritt 2 von 5 · Fotos hochladen · 1 von 2 · Titel „Fotos Ihres Schlüssels“ · Weiter aktiv · Zurück Zurück · axe 0 Regeln
+  „Keine Fotos zur Hand?“ sichtbar: ja
+  Weg A Ende: Schritt „Fotos Ihres Schlüssels“
+  Marke Volkswagen, Schritt 2: Auswahl „Golfab 2003“
+  2-modell: Schritt 1 von 5 · Fahrzeug wählen · 2 von 7 · Titel „Welches Modell fahren Sie?“ · Weiter aktiv · Zurück Zurück
+  axe 1-fahrzeug: 0 Regeln
+  axe 1b-suche-treffer: 0 Regeln
+  axe 3-baujahr: 0 Regeln
+  axe 8-schluesselfotos: 0 Regeln
+JSON: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg.json
+EXIT 0

@@ -1,0 +1,821 @@
+{
+  "skript": "hub.mjs",
+  "zeit": "2026-11-03T13:30:58.094Z",
+  "messweg": "nach 2,5 s, ganz sichtbar = Unterkante bis Fensterhöhe",
+  "geraete": [
+    {
+      "geraet": "mobil-klein",
+      "viewport": [
+        360,
+        780
+      ],
+      "fensterBreite": 360,
+      "fensterHoehe": 780,
+      "scrollBreite": 360,
+      "h1": {
+        "text": "Wobei können wir Ihnen helfen?",
+        "oben": 144
+      },
+      "kacheln": [
+        {
+          "id": "Autoschlüssel",
+          "gefunden": true,
+          "links": 20,
+          "oben": 291,
+          "rechts": 121,
+          "unten": 394,
+          "breite": 101,
+          "hoehe": 103,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel nach Code",
+          "gefunden": true,
+          "links": 129,
+          "oben": 291,
+          "rechts": 231,
+          "unten": 394,
+          "breite": 101,
+          "hoehe": 103,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel nach Foto",
+          "gefunden": true,
+          "links": 239,
+          "oben": 291,
+          "rechts": 340,
+          "unten": 394,
+          "breite": 101,
+          "hoehe": 103,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel einschicken",
+          "gefunden": true,
+          "links": 20,
+          "oben": 402,
+          "rechts": 121,
+          "unten": 544,
+          "breite": 101,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Sperrschließung",
+          "gefunden": true,
+          "links": 129,
+          "oben": 402,
+          "rechts": 231,
+          "unten": 544,
+          "breite": 101,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        },
+        {
+          "id": "Schließanlage",
+          "gefunden": true,
+          "links": 239,
+          "oben": 402,
+          "rechts": 340,
+          "unten": 544,
+          "breite": 101,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        },
+        {
+          "id": "Elektronisch schließen",
+          "gefunden": true,
+          "links": 20,
+          "oben": 552,
+          "rechts": 121,
+          "unten": 694,
+          "breite": 101,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Sicherheitstechnik",
+          "gefunden": true,
+          "links": 129,
+          "oben": 552,
+          "rechts": 231,
+          "unten": 694,
+          "breite": 101,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüsseldienst vor Ort",
+          "gefunden": true,
+          "links": 239,
+          "oben": 552,
+          "rechts": 340,
+          "unten": 694,
+          "breite": 101,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        }
+      ],
+      "leiste": {
+        "oben": 724,
+        "unten": 780,
+        "sichtbar": true
+      },
+      "telefon": {
+        "unten": 750,
+        "imErstenBildschirm": true
+      },
+      "leitkachel": {
+        "spalten": 1,
+        "spaltenNaeherung": 1,
+        "zweiReihen": false,
+        "zusatzSichtbar": false
+      },
+      "auswertung": {
+        "kachelnGefunden": 9,
+        "kachelnGanzSichtbar": 9,
+        "kachelnOberhalbLeiste": 9,
+        "leisteSichtbar": true,
+        "leisteOben": 724,
+        "telefonImErstenBildschirm": true,
+        "telefonUnten": 750,
+        "maxZeilenName": 2,
+        "maxZeilenZusatz": 2,
+        "textezuViele": [],
+        "leitkachelSpalten": 1,
+        "leitkachelZweiReihen": false,
+        "ueberlauf": false,
+        "h1Oben": 144
+      }
+    },
+    {
+      "geraet": "mobil",
+      "viewport": [
+        390,
+        844
+      ],
+      "fensterBreite": 390,
+      "fensterHoehe": 844,
+      "scrollBreite": 390,
+      "h1": {
+        "text": "Wobei können wir Ihnen helfen?",
+        "oben": 144
+      },
+      "kacheln": [
+        {
+          "id": "Autoschlüssel",
+          "gefunden": true,
+          "links": 20,
+          "oben": 291,
+          "rechts": 131,
+          "unten": 394,
+          "breite": 111,
+          "hoehe": 103,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel nach Code",
+          "gefunden": true,
+          "links": 139,
+          "oben": 291,
+          "rechts": 251,
+          "unten": 394,
+          "breite": 111,
+          "hoehe": 103,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel nach Foto",
+          "gefunden": true,
+          "links": 259,
+          "oben": 291,
+          "rechts": 370,
+          "unten": 394,
+          "breite": 111,
+          "hoehe": 103,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel einschicken",
+          "gefunden": true,
+          "links": 20,
+          "oben": 402,
+          "rechts": 131,
+          "unten": 544,
+          "breite": 111,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Sperrschließung",
+          "gefunden": true,
+          "links": 139,
+          "oben": 402,
+          "rechts": 251,
+          "unten": 544,
+          "breite": 111,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        },
+        {
+          "id": "Schließanlage",
+          "gefunden": true,
+          "links": 259,
+          "oben": 402,
+          "rechts": 370,
+          "unten": 544,
+          "breite": 111,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        },
+        {
+          "id": "Elektronisch schließen",
+          "gefunden": true,
+          "links": 20,
+          "oben": 552,
+          "rechts": 131,
+          "unten": 694,
+          "breite": 111,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Sicherheitstechnik",
+          "gefunden": true,
+          "links": 139,
+          "oben": 552,
+          "rechts": 251,
+          "unten": 694,
+          "breite": 111,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüsseldienst vor Ort",
+          "gefunden": true,
+          "links": 259,
+          "oben": 552,
+          "rechts": 370,
+          "unten": 694,
+          "breite": 111,
+          "hoehe": 142,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        }
+      ],
+      "leiste": {
+        "oben": 788,
+        "unten": 844,
+        "sichtbar": true
+      },
+      "telefon": {
+        "unten": 750,
+        "imErstenBildschirm": true
+      },
+      "leitkachel": {
+        "spalten": 1,
+        "spaltenNaeherung": 1,
+        "zweiReihen": false,
+        "zusatzSichtbar": false
+      },
+      "auswertung": {
+        "kachelnGefunden": 9,
+        "kachelnGanzSichtbar": 9,
+        "kachelnOberhalbLeiste": 9,
+        "leisteSichtbar": true,
+        "leisteOben": 788,
+        "telefonImErstenBildschirm": true,
+        "telefonUnten": 750,
+        "maxZeilenName": 2,
+        "maxZeilenZusatz": 2,
+        "textezuViele": [],
+        "leitkachelSpalten": 1,
+        "leitkachelZweiReihen": false,
+        "ueberlauf": false,
+        "h1Oben": 144
+      }
+    },
+    {
+      "geraet": "tablet",
+      "viewport": [
+        768,
+        1024
+      ],
+      "fensterBreite": 768,
+      "fensterHoehe": 1024,
+      "scrollBreite": 768,
+      "h1": {
+        "text": "Wobei können wir Ihnen helfen?",
+        "oben": 168
+      },
+      "kacheln": [
+        {
+          "id": "Autoschlüssel",
+          "gefunden": true,
+          "links": 24,
+          "oben": 266,
+          "rechts": 378,
+          "unten": 566,
+          "breite": 354,
+          "hoehe": 300,
+          "ganzSichtbar": true,
+          "zeilenName": 1,
+          "zeilenZusatz": 3
+        },
+        {
+          "id": "Schlüssel nach Code",
+          "gefunden": true,
+          "links": 390,
+          "oben": 266,
+          "rechts": 561,
+          "unten": 395,
+          "breite": 171,
+          "hoehe": 129,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel nach Foto",
+          "gefunden": true,
+          "links": 573,
+          "oben": 266,
+          "rechts": 744,
+          "unten": 395,
+          "breite": 171,
+          "hoehe": 129,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel einschicken",
+          "gefunden": true,
+          "links": 390,
+          "oben": 407,
+          "rechts": 561,
+          "unten": 566,
+          "breite": 171,
+          "hoehe": 159,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Sperrschließung",
+          "gefunden": true,
+          "links": 573,
+          "oben": 407,
+          "rechts": 744,
+          "unten": 566,
+          "breite": 171,
+          "hoehe": 159,
+          "ganzSichtbar": true,
+          "zeilenName": 1,
+          "zeilenZusatz": 2
+        },
+        {
+          "id": "Schließanlage",
+          "gefunden": true,
+          "links": 24,
+          "oben": 578,
+          "rechts": 195,
+          "unten": 737,
+          "breite": 171,
+          "hoehe": 159,
+          "ganzSichtbar": true,
+          "zeilenName": 1,
+          "zeilenZusatz": 2
+        },
+        {
+          "id": "Elektronisch schließen",
+          "gefunden": true,
+          "links": 207,
+          "oben": 578,
+          "rechts": 378,
+          "unten": 737,
+          "breite": 171,
+          "hoehe": 159,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Sicherheitstechnik",
+          "gefunden": true,
+          "links": 390,
+          "oben": 578,
+          "rechts": 561,
+          "unten": 737,
+          "breite": 171,
+          "hoehe": 159,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüsseldienst vor Ort",
+          "gefunden": true,
+          "links": 573,
+          "oben": 578,
+          "rechts": 744,
+          "unten": 737,
+          "breite": 171,
+          "hoehe": 159,
+          "ganzSichtbar": true,
+          "zeilenName": 1,
+          "zeilenZusatz": 1
+        }
+      ],
+      "leiste": null,
+      "telefon": {
+        "unten": 873,
+        "imErstenBildschirm": true
+      },
+      "leitkachel": {
+        "spalten": 2,
+        "spaltenNaeherung": 2.1,
+        "zweiReihen": true,
+        "zusatzSichtbar": true
+      },
+      "auswertung": {
+        "kachelnGefunden": 9,
+        "kachelnGanzSichtbar": 9,
+        "kachelnOberhalbLeiste": null,
+        "leisteSichtbar": false,
+        "leisteOben": null,
+        "telefonImErstenBildschirm": true,
+        "telefonUnten": 873,
+        "maxZeilenName": 2,
+        "maxZeilenZusatz": 3,
+        "textezuViele": [
+          "Autoschlüssel Zusatz 3"
+        ],
+        "leitkachelSpalten": 2,
+        "leitkachelZweiReihen": true,
+        "ueberlauf": false,
+        "h1Oben": 168
+      }
+    },
+    {
+      "geraet": "desktop",
+      "viewport": [
+        1440,
+        900
+      ],
+      "fensterBreite": 1440,
+      "fensterHoehe": 900,
+      "scrollBreite": 1440,
+      "h1": {
+        "text": "Wobei können wir Ihnen helfen?",
+        "oben": 120
+      },
+      "kacheln": [
+        {
+          "id": "Autoschlüssel",
+          "gefunden": true,
+          "links": 132,
+          "oben": 355,
+          "rechts": 462,
+          "unten": 686,
+          "breite": 330,
+          "hoehe": 331,
+          "ganzSichtbar": true,
+          "zeilenName": 1,
+          "zeilenZusatz": 4
+        },
+        {
+          "id": "Schlüssel nach Code",
+          "gefunden": true,
+          "links": 474,
+          "oben": 355,
+          "rechts": 633,
+          "unten": 488,
+          "breite": 159,
+          "hoehe": 133,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel nach Foto",
+          "gefunden": true,
+          "links": 645,
+          "oben": 355,
+          "rechts": 805,
+          "unten": 488,
+          "breite": 159,
+          "hoehe": 133,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel einschicken",
+          "gefunden": true,
+          "links": 474,
+          "oben": 500,
+          "rechts": 633,
+          "unten": 686,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Sperrschließung",
+          "gefunden": true,
+          "links": 645,
+          "oben": 500,
+          "rechts": 805,
+          "unten": 686,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        },
+        {
+          "id": "Schließanlage",
+          "gefunden": true,
+          "links": 132,
+          "oben": 698,
+          "rechts": 291,
+          "unten": 884,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 1,
+          "zeilenZusatz": 2
+        },
+        {
+          "id": "Elektronisch schließen",
+          "gefunden": true,
+          "links": 303,
+          "oben": 698,
+          "rechts": 462,
+          "unten": 884,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Sicherheitstechnik",
+          "gefunden": true,
+          "links": 474,
+          "oben": 698,
+          "rechts": 633,
+          "unten": 884,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüsseldienst vor Ort",
+          "gefunden": true,
+          "links": 645,
+          "oben": 698,
+          "rechts": 805,
+          "unten": 884,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        }
+      ],
+      "leiste": null,
+      "telefon": {
+        "unten": 884,
+        "imErstenBildschirm": true
+      },
+      "leitkachel": {
+        "spalten": 2,
+        "spaltenNaeherung": 2.1,
+        "zweiReihen": true,
+        "zusatzSichtbar": true
+      },
+      "auswertung": {
+        "kachelnGefunden": 9,
+        "kachelnGanzSichtbar": 9,
+        "kachelnOberhalbLeiste": null,
+        "leisteSichtbar": false,
+        "leisteOben": null,
+        "telefonImErstenBildschirm": true,
+        "telefonUnten": 884,
+        "maxZeilenName": 2,
+        "maxZeilenZusatz": 4,
+        "textezuViele": [
+          "Autoschlüssel Zusatz 4"
+        ],
+        "leitkachelSpalten": 2,
+        "leitkachelZweiReihen": true,
+        "ueberlauf": false,
+        "h1Oben": 120
+      }
+    },
+    {
+      "geraet": "breit",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "fensterBreite": 1920,
+      "fensterHoehe": 1080,
+      "scrollBreite": 1920,
+      "h1": {
+        "text": "Wobei können wir Ihnen helfen?",
+        "oben": 120
+      },
+      "kacheln": [
+        {
+          "id": "Autoschlüssel",
+          "gefunden": true,
+          "links": 372,
+          "oben": 355,
+          "rechts": 702,
+          "unten": 686,
+          "breite": 330,
+          "hoehe": 332,
+          "ganzSichtbar": true,
+          "zeilenName": 1,
+          "zeilenZusatz": 4
+        },
+        {
+          "id": "Schlüssel nach Code",
+          "gefunden": true,
+          "links": 714,
+          "oben": 355,
+          "rechts": 873,
+          "unten": 488,
+          "breite": 159,
+          "hoehe": 133,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel nach Foto",
+          "gefunden": true,
+          "links": 885,
+          "oben": 355,
+          "rechts": 1045,
+          "unten": 488,
+          "breite": 159,
+          "hoehe": 133,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüssel einschicken",
+          "gefunden": true,
+          "links": 714,
+          "oben": 500,
+          "rechts": 873,
+          "unten": 686,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Sperrschließung",
+          "gefunden": true,
+          "links": 885,
+          "oben": 500,
+          "rechts": 1045,
+          "unten": 686,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        },
+        {
+          "id": "Schließanlage",
+          "gefunden": true,
+          "links": 372,
+          "oben": 698,
+          "rechts": 531,
+          "unten": 885,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        },
+        {
+          "id": "Elektronisch schließen",
+          "gefunden": true,
+          "links": 543,
+          "oben": 698,
+          "rechts": 702,
+          "unten": 885,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Sicherheitstechnik",
+          "gefunden": true,
+          "links": 714,
+          "oben": 698,
+          "rechts": 873,
+          "unten": 885,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": null
+        },
+        {
+          "id": "Schlüsseldienst vor Ort",
+          "gefunden": true,
+          "links": 885,
+          "oben": 698,
+          "rechts": 1045,
+          "unten": 885,
+          "breite": 159,
+          "hoehe": 186,
+          "ganzSichtbar": true,
+          "zeilenName": 2,
+          "zeilenZusatz": 2
+        }
+      ],
+      "leiste": null,
+      "telefon": {
+        "unten": 885,
+        "imErstenBildschirm": true
+      },
+      "leitkachel": {
+        "spalten": 2,
+        "spaltenNaeherung": 2.1,
+        "zweiReihen": true,
+        "zusatzSichtbar": true
+      },
+      "auswertung": {
+        "kachelnGefunden": 9,
+        "kachelnGanzSichtbar": 9,
+        "kachelnOberhalbLeiste": null,
+        "leisteSichtbar": false,
+        "leisteOben": null,
+        "telefonImErstenBildschirm": true,
+        "telefonUnten": 885,
+        "maxZeilenName": 2,
+        "maxZeilenZusatz": 4,
+        "textezuViele": [
+          "Autoschlüssel Zusatz 4"
+        ],
+        "leitkachelSpalten": 2,
+        "leitkachelZweiReihen": true,
+        "ueberlauf": false,
+        "h1Oben": 120
+      }
+    }
+  ]
+}
