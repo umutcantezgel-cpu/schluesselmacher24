@@ -315,7 +315,7 @@ export function FlowShell<T extends object>({
             </div>
           </div>
 
-          {/* Navigation — am Smartphone fest am unteren Rand, ab Tablet eine Zeile: Zurück links,
+          {/* Navigation – am Smartphone fest am unteren Rand, ab Tablet eine Zeile: Zurück links,
               Weiter rechtsbündig in Inhaltsbreite. */}
           <div
             className={cn(

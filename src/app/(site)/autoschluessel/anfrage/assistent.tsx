@@ -58,14 +58,14 @@ import {
 } from './unterlagen-pruefung';
 
 /* ==========================================================================
-   Autoschlüssel — geführter Ablauf in 13 Schritten
+   Autoschlüssel – geführter Ablauf in 13 Schritten
    Prozessart: Termin mit Anzahlung.
    Alle Fahrzeug-, Leistungs-, Preis- und Termindaten kommen aus der
    Datenschicht; in dieser Datei steht kein fachlicher Wert fest.
    ========================================================================== */
 
 const FLOW_ID = 'autoschluessel-anfrage';
-/** Erhöhen, sobald sich AssistentData ändert — alte Zwischenstände verfallen. */
+/** Erhöhen, sobald sich AssistentData ändert – alte Zwischenstände verfallen. */
 const FLOW_VERSION = 2;
 
 /** Kennung für „Modell nicht in der Liste“. */
@@ -257,11 +257,11 @@ export interface AssistentProps {
   paymentConfigured: boolean;
   /** Aufbewahrungsfristen in Tagen. */
   retentionDays: { vehicleRegistration: number; keyPhotos: number };
-  /** Aktuelles Jahr — auf dem Server ermittelt, damit Server und Browser übereinstimmen. */
+  /** Aktuelles Jahr – auf dem Server ermittelt, damit Server und Browser übereinstimmen. */
   currentYear: number;
   /** Vorbelegung aus ?marke=, ?modell= und ?vorhanden=. */
   preselect: { makeSlug: string; modelSlug: string; workingKeys: number | null };
-  /** Werkstatt und Telefon über dem Buchungsknopf — fehlt der Standort, entfällt die Zeile. */
+  /** Werkstatt und Telefon über dem Buchungsknopf – fehlt der Standort, entfällt die Zeile. */
   werkstatt?: WerkstattAngaben;
 }
 
@@ -308,7 +308,7 @@ export function Assistent({
     [preselect.makeSlug, preselect.modelSlug, preselect.workingKeys],
   );
 
-  /* Dateien bleiben bewusst außerhalb des Zwischenspeichers — sie lassen
+  /* Dateien bleiben bewusst außerhalb des Zwischenspeichers – sie lassen
      sich nicht im Browserspeicher ablegen und werden nach einem Neuladen
      erneut ausgewählt. */
   const [files, setFiles] = useState<Record<UploadSlotId, PickedFile[]>>(() => ({
@@ -321,7 +321,7 @@ export function Assistent({
 
   /* Preis und Termine werden zusammen mit dem Schlüssel gespeichert, aus dem
      sie ermittelt wurden. Ändert sich eine Eingabe, passt der Schlüssel nicht
-     mehr — das alte Ergebnis gilt damit automatisch als überholt. */
+     mehr – das alte Ergebnis gilt damit automatisch als überholt. */
   const [quoteResult, setQuoteResult] = useState<{
     key: string;
     quote: PriceQuote | null;
@@ -695,7 +695,7 @@ export function Assistent({
     }
     if (current.mode === 'rahmen') {
       if (current.priceFromCents !== undefined && current.priceToCents !== undefined) {
-        return `${formatCents(current.priceFromCents)} — ${formatCents(current.priceToCents)}`;
+        return `${formatCents(current.priceFromCents)} – ${formatCents(current.priceToCents)}`;
       }
       if (current.priceFromCents !== undefined) return `ab ${formatCents(current.priceFromCents)}`;
       return 'Preisrahmen wird nach Prüfung genannt';
@@ -705,10 +705,10 @@ export function Assistent({
 
   function buildSummary(current: PriceQuote): SummarySection[] {
     const vehicleRows = [
-      { label: 'Marke', value: make?.name ?? '—' },
+      { label: 'Marke', value: make?.name ?? '–' },
       {
         label: 'Modell',
-        value: isOtherModel ? `${modelName} (nicht in der Liste aufgeführt)` : modelName || '—',
+        value: isOtherModel ? `${modelName} (nicht in der Liste aufgeführt)` : modelName || '–',
       },
       {
         label: 'Baujahr / Erstzulassung',
@@ -722,10 +722,10 @@ export function Assistent({
       vehicleRows.push({ label: 'Fahrgestellnummer', value: data.vin.trim().toUpperCase() });
     }
 
-    const keyKindLabel = data.keyKind ? KEY_KIND_OPTIONS[data.keyKind as KeyKind].label : '—';
+    const keyKindLabel = data.keyKind ? KEY_KIND_OPTIONS[data.keyKind as KeyKind].label : '–';
     const anzahlFotos = KEY_PHOTO_SLOTS.reduce((sum, slot) => sum + files[slot.id].length, 0);
     const workingKeysLabel =
-      WORKING_KEYS_OPTIONS.find((option) => option.value === data.workingKeys)?.label ?? '—';
+      WORKING_KEYS_OPTIONS.find((option) => option.value === data.workingKeys)?.label ?? '–';
 
     const sections: SummarySection[] = [
       { title: 'Fahrzeug', rows: vehicleRows },
@@ -734,7 +734,7 @@ export function Assistent({
         rows: [
           { label: 'Schlüsselart', value: keyKindLabel },
           { label: 'Funktionierende Schlüssel', value: workingKeysLabel },
-          { label: 'Gewünschte Leistung', value: service?.label ?? '—' },
+          { label: 'Gewünschte Leistung', value: service?.label ?? '–' },
           {
             label: 'Fahrzeug beim Termin',
             value: current.requiresVehicleOnSite ? 'wird benötigt' : 'nicht zwingend nötig',
@@ -818,7 +818,7 @@ export function Assistent({
     return sections;
   }
 
-  /** Erster Schritt, der noch nicht vollständig ist — sonst null. */
+  /** Erster Schritt, der noch nicht vollständig ist – sonst null. */
   function firstIncompleteStep(): FlowStep | null {
     return STEPS.find((step) => !isStepComplete(data, step.id)) ?? null;
   }
@@ -887,7 +887,7 @@ export function Assistent({
           entitlementConfirmed: data.entitlementConfirmed,
           depositAccepted: data.depositAccepted,
         },
-        // Pflicht-Zustimmungen — der Server prüft sie und speichert sie mit Zeitpunkt.
+        // Pflicht-Zustimmungen – der Server prüft sie und speichert sie mit Zeitpunkt.
         consents: {
           terms: data.termsAccepted,
           deposit: data.depositAccepted,
@@ -927,7 +927,7 @@ export function Assistent({
           summary,
           notices: result.notices,
           redirectUrl: result.redirectUrl,
-          // Stripe hält die Zahlungsseite 31 Minuten offen — angezeigt wird die sichere Untergrenze.
+          // Stripe hält die Zahlungsseite 31 Minuten offen – angezeigt wird die sichere Untergrenze.
           reserviertBis: result.redirectUrl ? new Date(Date.now() + 30 * 60 * 1000).toISOString() : undefined,
         });
         clearFlow(FLOW_ID);
@@ -962,7 +962,7 @@ export function Assistent({
 
   /* ---------- Darstellung der einzelnen Schritte ------------------------ */
 
-  /* Bei Totalverlust ersetzt ein eigener Hinweis den des Fotoschritts —
+  /* Bei Totalverlust ersetzt ein eigener Hinweis den des Fotoschritts –
      der Rahmen zeigt den Hinweis aus dem aktuellen Schritt. */
   const anzeigeFlow =
     flow.step.id === 'schluesselfotos' && fotosFreiwillig
@@ -996,7 +996,7 @@ export function Assistent({
         </Alert>
       )}
 
-      {/* 1 — Marke */}
+      {/* 1 – Marke */}
       {flow.step.id === 'marke' && (
         <div className="space-y-4">
           {katalog.length > 0 && (
@@ -1030,7 +1030,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 2 — Modell */}
+      {/* 2 – Modell */}
       {flow.step.id === 'modell' && make && (
         <div className="space-y-4">
           <div className="grid gap-2 sm:grid-cols-2">
@@ -1080,7 +1080,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 3 — Baujahr / Erstzulassung */}
+      {/* 3 – Baujahr / Erstzulassung */}
       {flow.step.id === 'baujahr' && (
         <div className="grid gap-4 sm:grid-cols-2">
           {make && (
@@ -1100,7 +1100,7 @@ export function Assistent({
               title: 'Wo Sie das Jahr finden',
               body:
                 'Das Datum der Erstzulassung steht in der Zulassungsbescheinigung Teil I unter Feld B. '
-                + 'Wenn Sie unsicher sind, nehmen Sie das Baujahr — wir gleichen es mit Ihren Fotos ab.',
+                + 'Wenn Sie unsicher sind, nehmen Sie das Baujahr – wir gleichen es mit Ihren Fotos ab.',
             }}
           >
             {({ id, describedBy, invalid }) => (
@@ -1151,7 +1151,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 4 — Freiwillige Fahrzeugdaten */}
+      {/* 4 – Freiwillige Fahrzeugdaten */}
       {flow.step.id === 'fahrzeugdaten' && (
         <div className="space-y-5">
           <Field
@@ -1199,14 +1199,14 @@ export function Assistent({
               Die Fahrgestellnummer ist ein personenbezogenes Datum, weil sie sich einem Fahrzeug und
               damit seiner Halterin oder seinem Halter zuordnen lässt. Wir verwenden sie
               ausschließlich zur technischen Zuordnung des Schlüssels innerhalb dieses Vorgangs und
-              geben sie nicht zu anderen Zwecken weiter. Die Angabe ist freiwillig — ohne sie können
+              geben sie nicht zu anderen Zwecken weiter. Die Angabe ist freiwillig – ohne sie können
               wir Ihren Auftrag ebenfalls bearbeiten.
             </p>
           </Alert>
         </div>
       )}
 
-      {/* 5 — Schlüsselart */}
+      {/* 5 – Schlüsselart */}
       {flow.step.id === 'schluesselart' && (
         <div className="space-y-4">
           {keyKinds.length === 0 && (
@@ -1238,7 +1238,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 6 — Vorhandene Schlüssel */}
+      {/* 6 – Vorhandene Schlüssel */}
       {flow.step.id === 'vorhandene-schluessel' && (
         <div className="space-y-4">
           <div className="flex items-center gap-2">
@@ -1261,7 +1261,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 7 — Leistung */}
+      {/* 7 – Leistung */}
       {flow.step.id === 'leistung' && (
         <div className="space-y-4">
           {matchingServices.length === 0 ? (
@@ -1288,7 +1288,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 8 — Schlüsselfotos */}
+      {/* 8 – Schlüsselfotos */}
       {flow.step.id === 'schluesselfotos' && (
         <div className="space-y-7">
           {werkstatt?.telefon && (
@@ -1339,7 +1339,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 9 — Fahrzeugschein */}
+      {/* 9 – Fahrzeugschein */}
       {flow.step.id === 'fahrzeugschein' && (
         <div className="space-y-6">
           {werkstatt?.telefon && (
@@ -1393,7 +1393,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 10 — Kontaktdaten */}
+      {/* 10 – Kontaktdaten */}
       {flow.step.id === 'kontakt' && (
         <div className="space-y-5">
           <div className="grid gap-4 sm:grid-cols-2">
@@ -1539,7 +1539,7 @@ export function Assistent({
               </Field>
             </div>
 
-            {/* Erg. Leitfaden §1: Schwerpunkt Wetzlar — Kunden von außerhalb reisen an. */}
+            {/* Erg. Leitfaden §1: Schwerpunkt Wetzlar – Kunden von außerhalb reisen an. */}
             {ausserhalbDerRegion(data.postalCode, data.country) && (
               <Alert tone="info" title="Termin in unserer Werkstatt" className="sm:col-span-2">
                 {ausserhalbHinweis(werkstatt?.standort?.city)}
@@ -1553,7 +1553,7 @@ export function Assistent({
                 title: 'Wozu wir die Anschrift brauchen',
                 body:
                   'Termine finden in unserer Werkstatt statt. Ein Einsatz bei Ihnen ist nur nach '
-                  + 'individueller Prüfung möglich — dafür brauchen wir mindestens Postleitzahl und Ort.',
+                  + 'individueller Prüfung möglich – dafür brauchen wir mindestens Postleitzahl und Ort.',
               }}
             >
               {({ id, describedBy, invalid }) => (
@@ -1590,7 +1590,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 11 — Preis */}
+      {/* 11 – Preis */}
       {flow.step.id === 'preis' && (
         <div className="space-y-5">
           {quoteLoading && (
@@ -1656,7 +1656,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 12 — Anzahlung */}
+      {/* 12 – Anzahlung */}
       {flow.step.id === 'anzahlung' && quote && (
         <div className="space-y-5">
           <dl className="border-y border-border py-5">
@@ -1755,7 +1755,7 @@ export function Assistent({
         </div>
       )}
 
-      {/* 13 — Termin */}
+      {/* 13 – Termin */}
       {flow.step.id === 'termin' && quote && (
         <TerminAuswahl
           days={slots?.days ?? []}

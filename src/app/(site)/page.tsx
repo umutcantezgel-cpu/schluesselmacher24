@@ -55,7 +55,7 @@ const KOPF_AUSSCHNITT_MOBIL: GrafikAusschnitt = {
   vollHoehe: PROFILSCHNITT_GROESSE.hoehe,
 };
 
-/** Vertrauensbasis nach Erg. Leitfaden §1 — nur diese belegte Aussage, ohne Zahlen oder Siegel. */
+/** Vertrauensbasis nach Erg. Leitfaden §1 – nur diese belegte Aussage, ohne Zahlen oder Siegel. */
 const VERTRAUENSBASIS =
   'Hinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar mit Werkstatt, fachlicher '
   + 'Beratung und eigener Fertigung.';
@@ -212,7 +212,7 @@ export default async function HomePage() {
                 </div>
               ))}
             </dl>
-            {/* Die echte Werkstatt unter den Eckdaten — entfällt, solange kein Standort gepflegt ist */}
+            {/* Die echte Werkstatt unter den Eckdaten – entfällt, solange kein Standort gepflegt ist */}
             <WerkstattZeile {...werkstattAngaben(settings.company)} className="mt-4" />
           </div>
         </div>
@@ -224,12 +224,11 @@ export default async function HomePage() {
           <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:-mt-1.5 lg:self-start">
             <SectionHeading
               id="vertrauen-titel"
-              nummer="01"
               eyebrow="Warum wir"
               title="Eigene Werkstatt, Preis vor dem Termin"
               lead={VERTRAUENSBASIS}
             />
-            {/* Die echte Werkstatt — entfällt, solange kein Standort gepflegt ist */}
+            {/* Die echte Werkstatt – entfällt, solange kein Standort gepflegt ist */}
             <WerkstattZeile {...werkstattAngaben(settings.company)} className="mt-5" />
           </div>
 
@@ -267,7 +266,6 @@ export default async function HomePage() {
               <div>
                 <SectionHeading
                   id="ablauf-titel"
-                  nummer="02"
                   eyebrow="Schwerpunkt Autoschlüssel"
                   title="So läuft Ihr Autoschlüssel-Auftrag ab"
                   lead="Vom Fahrzeug bis zum Termin. Sie geben nur an, was für Ihr Fahrzeug zählt."
@@ -320,7 +318,7 @@ export default async function HomePage() {
 
       {/* Direkt kaufen: zwei Zeichnungsblätter */}
       <Section tone="muted" labelledBy="direktkauf-titel">
-        <SectionHeading id="direktkauf-titel" nummer="03" eyebrow="Direkt kaufen" title="Bestellen ohne Termin" />
+        <SectionHeading id="direktkauf-titel" eyebrow="Direkt kaufen" title="Bestellen ohne Termin" />
         {/* Mobil eine Leiste mit sichtbarem Anschnitt, ab 768 px zwei Spalten */}
         <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-gutter md:overflow-visible md:px-0 md:pb-0 scroll-px-5 sm:scroll-px-6 md:scroll-px-0">
           {[
@@ -389,7 +387,6 @@ export default async function HomePage() {
           <div className="order-1 lg:order-2 lg:col-span-5">
             <SectionHeading
               id="projekte-titel"
-              nummer="04"
               eyebrow="Projekte"
               title="Größere Vorhaben planen wir strukturiert"
               lead="Schließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik erfassen wir über geführte Konfiguratoren. Am Ende steht eine Zusammenfassung, aus der ein belastbares Angebot wird."
@@ -420,7 +417,7 @@ export default async function HomePage() {
       {/* Ratgeber: Kopf oben, drei Spalten wie eine Zeitungsseite */}
       <Section tone="muted" tight labelledBy="ratgeber-titel">
         <div className="flex flex-wrap items-end justify-between gap-x-gutter gap-y-4">
-          <SectionHeading id="ratgeber-titel" nummer="05" eyebrow="Ratgeber" title="Antworten auf die häufigsten Fragen" />
+          <SectionHeading id="ratgeber-titel" eyebrow="Ratgeber" title="Antworten auf die häufigsten Fragen" />
           <Link href="/ratgeber" className="group inline-flex min-h-touch items-center gap-1.5 text-body font-semibold text-primary">
             Alle Ratgeber
             <Weiter />

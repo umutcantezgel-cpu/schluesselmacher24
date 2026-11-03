@@ -214,7 +214,7 @@ export const REGISTRATION_EXAMPLE: ImageSlot = {
 };
 
 /**
- * Erklärung zu einer Leistung — aus den gepflegten Leistungsdaten gebaut. Mit Modell gilt dieselbe
+ * Erklärung zu einer Leistung – aus den gepflegten Leistungsdaten gebaut. Mit Modell gilt dieselbe
  * Regel wie in der Preisermittlung (`fahrzeugVorOrtNoetig`).
  */
 export function serviceInfo(service: CarKeyService, model?: VehicleModel | null): InfoHint {
