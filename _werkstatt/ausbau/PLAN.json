@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T01:53:08.023Z",
+ "stand": "2026-11-03T02:05:21.623Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -13,7 +13,7 @@
     "Z-20",
     "Z-21"
    ],
-   "tage": 0.5
+   "tage": 0.71
   },
   {
    "kennung": "E1",
@@ -24,7 +24,7 @@
    "kriterien": [
     "Z-17"
    ],
-   "tage": 0.5
+   "tage": 0.71
   },
   {
    "kennung": "E2",
@@ -35,7 +35,7 @@
    "kriterien": [
     "Z-01"
    ],
-   "tage": 0.3
+   "tage": 0.43
   },
   {
    "kennung": "E3",
@@ -52,7 +52,7 @@
     "Z-12",
     "Z-20"
    ],
-   "tage": 1.5
+   "tage": 2.14
   },
   {
    "kennung": "E4",
@@ -68,7 +68,7 @@
     "Z-14",
     "Z-15"
    ],
-   "tage": 1
+   "tage": 1.43
   },
   {
    "kennung": "E5",
@@ -80,7 +80,7 @@
     "Z-05",
     "Z-06"
    ],
-   "tage": 1
+   "tage": 1.43
   },
   {
    "kennung": "E6",
@@ -93,7 +93,7 @@
     "Z-08",
     "Z-19"
    ],
-   "tage": 1
+   "tage": 1.43
   },
   {
    "kennung": "E7",
@@ -105,7 +105,7 @@
     "Z-09",
     "Z-10"
    ],
-   "tage": 1
+   "tage": 1.43
   },
   {
    "kennung": "E8",
@@ -120,7 +120,7 @@
     "Z-17",
     "Z-18"
    ],
-   "tage": 1
+   "tage": 1.43
   },
   {
    "kennung": "E9",
@@ -132,19 +132,19 @@
     "Z-19",
     "Z-20"
    ],
-   "tage": 0.8
+   "tage": 1.14
   },
   {
    "kennung": "E10",
    "ziel": "Kür aus dem Vorrat nach Wirkung",
    "eingang": "Pflicht erledigt",
    "ausgang": "Kür",
-   "tor": "Vorrat leer oder Laufzeit",
+   "tor": "Vorrat leer oder LAUFZEIT erreicht (Einstellung: bis Pflicht und Kür erfüllt, also Vorrat leer); Prüfstufe B der Kür",
    "kriterien": [
     "Z-01",
     "Z-11"
    ],
-   "tage": 1
+   "tage": 1.43
   },
   {
    "kennung": "EA",
@@ -164,7 +164,7 @@
     "Z-21",
     "Z-22"
    ],
-   "tage": 0.5
+   "tage": 0.71
   }
  ],
  "pakete": [
@@ -906,7 +906,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -1153,10 +1153,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "cb4c5cb",
    "massstab": null,
    "muster": null
   },
@@ -1192,10 +1192,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "0760ee6",
    "massstab": null,
    "muster": null
   },
@@ -1220,10 +1220,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "abgenommen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "def6d00",
    "massstab": "_werkstatt/ausbau/pakete/E2-PRUEFER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
@@ -1249,7 +1249,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "abgenommen",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -1320,9 +1320,17 @@
     "tailwind.config.ts",
     "src/app/(site)/globals.css",
     "src/lib/visual/area-theme.ts",
+    "src/lib/visual/area-theme.test.ts",
     "src/fonts/",
     "src/app/(site)/layout.tsx",
-    "src/lib/design-tokens.test.ts"
+    "src/app/(site)/layout.test.ts",
+    "src/lib/design-tokens.test.ts",
+    "src/app/global-error.tsx",
+    "src/app/manifest.ts",
+    "src/lib/og/bereichsbild.tsx",
+    "src/lib/og/bereichsbild.test.ts",
+    "_werkstatt/ausbau/werkzeuge/slopscan.mjs",
+    "_werkstatt/ausbau/KERN.md"
    ],
    "abhaengigkeiten": [
     "E2-PRUEFER-01"
@@ -1338,7 +1346,7 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -1468,7 +1476,11 @@
    "schreibrechte": [
     "src/payload/collections/Fahrzeugmarken.ts",
     "src/lib/fahrzeuge/",
-    "content/vehicles.json"
+    "content/vehicles.json",
+    "src/payload.config.ts",
+    "src/migrations/",
+    "src/payload-types.ts",
+    "src/payload/seed.ts"
    ],
    "abhaengigkeiten": [
     "E3-OPUS-01"
@@ -1509,7 +1521,11 @@
    "schreibrechte": [
     "src/lib/konfigurator/",
     "src/payload/globals/Zylinderkatalog.ts",
-    "content/cylinder-catalog.json"
+    "content/cylinder-catalog.json",
+    "src/payload.config.ts",
+    "src/migrations/",
+    "src/payload-types.ts",
+    "src/payload/seed.ts"
    ],
    "abhaengigkeiten": [
     "E3-OPUS-06"
@@ -1540,7 +1556,7 @@
    "kennung": "E3-OPUS-08",
    "titel": "Partner-Modelle: Statusautomat Bewerbung, Vermittlungszustände, Abrechnung A und B als reine Funktionen, Zugriffsrechte",
    "etappe": "E3",
-   "welle": 4,
+   "welle": 5,
    "rolle": "Orchestrator",
    "modell": "opus-5.5",
    "stufe": 3,
@@ -1548,7 +1564,11 @@
    "schreibrechte": [
     "src/lib/partner/",
     "src/payload/collections/Partner.ts",
-    "src/payload/access/"
+    "src/payload/access/",
+    "src/payload.config.ts",
+    "src/migrations/",
+    "src/payload-types.ts",
+    "src/payload/seed.ts"
    ],
    "abhaengigkeiten": [
     "E3-OPUS-07"
@@ -1580,7 +1600,7 @@
    "kennung": "E3-OPUS-09",
    "titel": "Uploads: neue Kategorien, Pflicht-Uploads und Nachweise serverseitig je Weg, Fristen je Zweck",
    "etappe": "E3",
-   "welle": 5,
+   "welle": 3,
    "rolle": "Orchestrator",
    "modell": "opus-5.5",
    "stufe": 3,
@@ -1593,7 +1613,7 @@
     "src/lib/actions/orders.ts"
    ],
    "abhaengigkeiten": [
-    "E3-OPUS-08"
+    "E3-OPUS-04"
    ],
    "anforderungen": [
     "G-36",
@@ -1619,7 +1639,7 @@
    "kennung": "E3-OPUS-10",
    "titel": "Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten); Zahlungsverhalten unverändert, mit Test (G9)",
    "etappe": "E3",
-   "welle": 5,
+   "welle": 2,
    "rolle": "Orchestrator",
    "modell": "opus-5.5",
    "stufe": 3,
@@ -1631,7 +1651,7 @@
     "src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx"
    ],
    "abhaengigkeiten": [
-    "E3-OPUS-09"
+    "E2-PRUEFER-01"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -1661,6 +1681,8 @@
     "package-lock.json"
    ],
    "abhaengigkeiten": [
+    "E3-OPUS-08",
+    "E3-OPUS-09",
     "E3-OPUS-10"
    ],
    "anforderungen": [
@@ -1790,7 +1812,7 @@
    "kennung": "E3-DATENPFLEGER-03",
    "titel": "Erhebungsbögen PREISE, KLONBAR, SORTIMENT, PRODUKTE, PARTNER als CSV und Druckseite mit Vorschlägen",
    "etappe": "E3",
-   "welle": 2,
+   "welle": 1,
    "rolle": "Datenpfleger",
    "modell": "haiku-5.5",
    "stufe": 2,
@@ -2916,7 +2938,11 @@
    "kostenklasse": "L",
    "schreibrechte": [
     "src/payload/components/Vermittlung.tsx",
-    "src/payload/collections/Vorgaenge.ts"
+    "src/payload/collections/Vorgaenge.ts",
+    "src/payload.config.ts",
+    "src/migrations/",
+    "src/payload-types.ts",
+    "src/payload/seed.ts"
    ],
    "abhaengigkeiten": [
     "E7-OPUS-01"
@@ -3485,7 +3511,8 @@
     "src/components/layout/agenturnennung.test.tsx",
     "src/components/layout/site-footer.tsx",
     "_werkstatt/ausbau/LINKREGISTER.md",
-    "_werkstatt/ausbau/REFERENZ.md"
+    "_werkstatt/ausbau/REFERENZ.md",
+    "_werkstatt/ausbau/MENSCHEN.md"
    ],
    "abhaengigkeiten": [
     "E8-OPUS-02"
@@ -3990,7 +4017,7 @@
     "src/components/hub/"
    ],
    "abhaengigkeiten": [
-    "E9-PRUEFER-01"
+    "E4-JURY-01"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4019,7 +4046,7 @@
     "src/components/ui/zustaende/"
    ],
    "abhaengigkeiten": [
-    "E9-PRUEFER-01"
+    "E3-OPUS-02"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4049,7 +4076,7 @@
     "src/app/(site)/error.tsx"
    ],
    "abhaengigkeiten": [
-    "E9-PRUEFER-01"
+    "E4-OPUS-01"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4078,7 +4105,7 @@
     "src/lib/og/"
    ],
    "abhaengigkeiten": [
-    "E9-PRUEFER-01"
+    "E4-OPUS-04"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4107,7 +4134,7 @@
     "src/components/calculator/"
    ],
    "abhaengigkeiten": [
-    "E9-PRUEFER-01"
+    "E5-OPUS-02"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4137,7 +4164,7 @@
     "src/app/feed/"
    ],
    "abhaengigkeiten": [
-    "E9-PRUEFER-01"
+    "E8-OPUS-02"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4167,7 +4194,7 @@
     "src/app/(site)/layout.tsx"
    ],
    "abhaengigkeiten": [
-    "E9-PRUEFER-01"
+    "E4-PRUEFER-01"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4196,7 +4223,7 @@
     "src/app/(site)/globals.css"
    ],
    "abhaengigkeiten": [
-    "E9-PRUEFER-01"
+    "E3-OPUS-02"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4398,7 +4425,13 @@
     "EA-OPUS-01",
     "EA-PRUEFER-02",
     "EA-PRUEFER-03",
-    "EA-PRUEFER-04"
+    "EA-PRUEFER-04",
+    "EA-PRUEFER-05",
+    "EA-PRUEFER-06",
+    "EA-PRUEFER-07",
+    "EA-PRUEFER-08",
+    "EA-PRUEFER-09",
+    "EA-PRUEFER-10"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4417,15 +4450,145 @@
   },
   {
    "kennung": "EA-PRUEFER-02",
-   "titel": "Bestandsabgleich L-001 bis L-299: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "titel": "Bestandsabgleich E-07 bis EL-03: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
    "etappe": "EA",
    "welle": 1,
    "rolle": "Prüfer",
    "modell": "haiku-5.5",
    "stufe": 1,
-   "kostenklasse": "L",
+   "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-2.json"
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-02.json"
+   ],
+   "abhaengigkeiten": [
+    "E9-PRUEFER-01"
+   ],
+   "anforderungen": [
+    "E-07",
+    "E-09",
+    "E-12",
+    "E-15",
+    "E-19",
+    "E-20",
+    "E-25",
+    "E-26",
+    "E-27",
+    "E-30",
+    "E-34",
+    "E-41",
+    "E-42",
+    "E-46",
+    "E-47",
+    "E-48",
+    "E-52",
+    "E-53",
+    "E-61",
+    "E-64",
+    "E-66",
+    "E-71",
+    "E-73",
+    "E-80",
+    "E-82",
+    "E-93",
+    "E-96",
+    "E-99",
+    "E-101",
+    "E-105",
+    "E-106",
+    "E-108",
+    "E-111",
+    "E-121",
+    "E-136",
+    "EL-03"
+   ],
+   "kriterien": [
+    "Z-03"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-02.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "EA-PRUEFER-03",
+   "titel": "Bestandsabgleich EL-05 bis EL-65: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "etappe": "EA",
+   "welle": 1,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-03.json"
+   ],
+   "abhaengigkeiten": [
+    "E9-PRUEFER-01"
+   ],
+   "anforderungen": [
+    "EL-05",
+    "EL-06",
+    "EL-07",
+    "EL-08",
+    "EL-09",
+    "EL-10",
+    "EL-11",
+    "EL-13",
+    "EL-14",
+    "EL-17",
+    "EL-18",
+    "EL-19",
+    "EL-27",
+    "EL-28",
+    "EL-29",
+    "EL-30",
+    "EL-31",
+    "EL-32",
+    "EL-33",
+    "EL-35",
+    "EL-36",
+    "EL-41",
+    "EL-51",
+    "EL-52",
+    "EL-53",
+    "EL-55",
+    "EL-56",
+    "EL-57",
+    "EL-58",
+    "EL-59",
+    "EL-60",
+    "EL-61",
+    "EL-62",
+    "EL-63",
+    "EL-64",
+    "EL-65"
+   ],
+   "kriterien": [
+    "Z-03"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-03.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "EA-PRUEFER-04",
+   "titel": "Bestandsabgleich L-003 bis L-047: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "etappe": "EA",
+   "welle": 1,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-04.json"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
@@ -4466,7 +4629,36 @@
     "L-044",
     "L-045",
     "L-046",
-    "L-047",
+    "L-047"
+   ],
+   "kriterien": [
+    "Z-03"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-04.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "EA-PRUEFER-05",
+   "titel": "Bestandsabgleich L-048 bis L-083: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "etappe": "EA",
+   "welle": 1,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-05.json"
+   ],
+   "abhaengigkeiten": [
+    "E9-PRUEFER-01"
+   ],
+   "anforderungen": [
     "L-048",
     "L-049",
     "L-050",
@@ -4502,7 +4694,36 @@
     "L-080",
     "L-081",
     "L-082",
-    "L-083",
+    "L-083"
+   ],
+   "kriterien": [
+    "Z-03"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-05.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "EA-PRUEFER-06",
+   "titel": "Bestandsabgleich L-084 bis L-124: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "etappe": "EA",
+   "welle": 1,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-06.json"
+   ],
+   "abhaengigkeiten": [
+    "E9-PRUEFER-01"
+   ],
+   "anforderungen": [
     "L-084",
     "L-085",
     "L-086",
@@ -4538,18 +4759,7 @@
     "L-121",
     "L-122",
     "L-123",
-    "L-124",
-    "L-125",
-    "L-126",
-    "L-128",
-    "L-129",
-    "L-131",
-    "L-132",
-    "L-133",
-    "L-135",
-    "L-136",
-    "L-137",
-    "L-138"
+    "L-124"
    ],
    "kriterien": [
     "Z-03"
@@ -4560,25 +4770,36 @@
    "grund": null,
    "versuche": 0,
    "commit": null,
-   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-02.md",
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-06.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
-   "kennung": "EA-PRUEFER-03",
-   "titel": "Bestandsabgleich L-301 bis L-599: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "kennung": "EA-PRUEFER-07",
+   "titel": "Bestandsabgleich L-125 bis L-325: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
    "etappe": "EA",
    "welle": 1,
    "rolle": "Prüfer",
    "modell": "haiku-5.5",
    "stufe": 1,
-   "kostenklasse": "L",
+   "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-3.json"
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-07.json"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
    ],
    "anforderungen": [
+    "L-125",
+    "L-126",
+    "L-128",
+    "L-129",
+    "L-131",
+    "L-132",
+    "L-133",
+    "L-135",
+    "L-136",
+    "L-137",
+    "L-138",
     "L-301",
     "L-302",
     "L-303",
@@ -4603,7 +4824,36 @@
     "L-322",
     "L-323",
     "L-324",
-    "L-325",
+    "L-325"
+   ],
+   "kriterien": [
+    "Z-03"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-07.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "EA-PRUEFER-08",
+   "titel": "Bestandsabgleich L-326 bis L-361: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "etappe": "EA",
+   "welle": 1,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-08.json"
+   ],
+   "abhaengigkeiten": [
+    "E9-PRUEFER-01"
+   ],
+   "anforderungen": [
     "L-326",
     "L-327",
     "L-328",
@@ -4639,7 +4889,36 @@
     "L-358",
     "L-359",
     "L-360",
-    "L-361",
+    "L-361"
+   ],
+   "kriterien": [
+    "Z-03"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-08.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "EA-PRUEFER-09",
+   "titel": "Bestandsabgleich L-362 bis L-402: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "etappe": "EA",
+   "welle": 1,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-09.json"
+   ],
+   "abhaengigkeiten": [
+    "E9-PRUEFER-01"
+   ],
+   "anforderungen": [
     "L-362",
     "L-363",
     "L-364",
@@ -4675,7 +4954,36 @@
     "L-399",
     "L-400",
     "L-401",
-    "L-402",
+    "L-402"
+   ],
+   "kriterien": [
+    "Z-03"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-09.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "EA-PRUEFER-10",
+   "titel": "Bestandsabgleich L-403 bis M-17: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "etappe": "EA",
+   "welle": 1,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-10.json"
+   ],
+   "abhaengigkeiten": [
+    "E9-PRUEFER-01"
+   ],
+   "anforderungen": [
     "L-403",
     "L-404",
     "L-405",
@@ -4708,108 +5016,7 @@
     "L-442",
     "L-443",
     "L-444",
-    "L-445"
-   ],
-   "kriterien": [
-    "Z-03"
-   ],
-   "art": "pflicht",
-   "wirkung": 3,
-   "status": "offen",
-   "grund": null,
-   "versuche": 0,
-   "commit": null,
-   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-03.md",
-   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
-  },
-  {
-   "kennung": "EA-PRUEFER-04",
-   "titel": "Bestandsabgleich EL, M und E: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
-   "etappe": "EA",
-   "welle": 1,
-   "rolle": "Prüfer",
-   "modell": "haiku-5.5",
-   "stufe": 1,
-   "kostenklasse": "L",
-   "schreibrechte": [
-    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-4.json"
-   ],
-   "abhaengigkeiten": [
-    "E9-PRUEFER-01"
-   ],
-   "anforderungen": [
-    "EL-03",
-    "EL-05",
-    "EL-06",
-    "EL-07",
-    "EL-08",
-    "EL-09",
-    "EL-10",
-    "EL-11",
-    "EL-13",
-    "EL-14",
-    "EL-17",
-    "EL-18",
-    "EL-19",
-    "EL-27",
-    "EL-28",
-    "EL-29",
-    "EL-30",
-    "EL-31",
-    "EL-32",
-    "EL-33",
-    "EL-35",
-    "EL-36",
-    "EL-41",
-    "EL-51",
-    "EL-52",
-    "EL-53",
-    "EL-55",
-    "EL-56",
-    "EL-57",
-    "EL-58",
-    "EL-59",
-    "EL-60",
-    "EL-61",
-    "EL-62",
-    "EL-63",
-    "EL-64",
-    "EL-65",
-    "E-07",
-    "E-09",
-    "E-12",
-    "E-15",
-    "E-19",
-    "E-20",
-    "E-25",
-    "E-26",
-    "E-27",
-    "E-30",
-    "E-34",
-    "E-41",
-    "E-42",
-    "E-46",
-    "E-47",
-    "E-48",
-    "E-52",
-    "E-53",
-    "E-61",
-    "E-64",
-    "E-66",
-    "E-71",
-    "E-73",
-    "E-80",
-    "E-82",
-    "E-93",
-    "E-96",
-    "E-99",
-    "E-101",
-    "E-105",
-    "E-106",
-    "E-108",
-    "E-111",
-    "E-121",
-    "E-136",
+    "L-445",
     "M-17"
    ],
    "kriterien": [
@@ -4821,7 +5028,7 @@
    "grund": null,
    "versuche": 0,
    "commit": null,
-   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-04.md",
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-10.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
@@ -4845,10 +5052,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "abgenommen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "0760ee6",
    "massstab": "_werkstatt/ausbau/pakete/E2-DATENPFLEGER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
@@ -4996,14 +5203,14 @@
   }
  ],
  "mengengeruest": {
-  "pakete": 132,
-  "pflicht": 122,
+  "pakete": 138,
+  "pflicht": 128,
   "kuer": 10,
   "opus": 47,
-  "haiku": 85,
+  "haiku": 91,
   "kostenklassen": {
-   "M": 79,
-   "L": 53
+   "M": 88,
+   "L": 50
   },
   "anforderungen": 623,
   "kriterien": 22
@@ -5015,7 +5222,7 @@
    "L": 6
   },
   "puffer": 0.2,
-  "tage": 14.5
+  "tage": 14.4
  },
  "kritischer_pfad": [
   "E1-FACHKUNDLER-03",
@@ -5026,8 +5233,6 @@
   "E3-OPUS-06",
   "E3-OPUS-07",
   "E3-OPUS-08",
-  "E3-OPUS-09",
-  "E3-OPUS-10",
   "E3-UPGRADE-01",
   "E3-PRUEFER-01",
   "E4-OPUS-01",

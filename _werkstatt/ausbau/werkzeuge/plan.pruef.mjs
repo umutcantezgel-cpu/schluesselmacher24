@@ -336,7 +336,7 @@ test('P-15 Anforderungen: fehlt ANFORDERUNGEN.json, meldet pruefen einen Befund'
   assert.match(r.out, /ANFORDERUNGEN\.json fehlt oder ist nicht lesbar/);
 });
 
-// --- plan.mjs naechste (N-01 bis N-11) --------------------------------------------
+// --- plan.mjs naechste (N-01 bis N-12) --------------------------------------------
 // Liest die Kennungen aus der Tabelle. Zeile 0 ist der Kopf der Etappe, Zeile 1 die Tabellenüberschrift.
 const naechsteIds = (out) => out.trim().split('\n').slice(2).map((z) => z.split(' · ')[0].trim());
 
@@ -447,6 +447,21 @@ test('N-11 naechste: lehnt einen ungültigen Plan ab', () => {
   assert.equal(r.code, 1);
   assert.match(r.out, /PLAN-PRÜFUNG: \d+ Befunde/);
   assert.match(r.err, /Der Plan ist nicht gültig/);
+});
+
+test('N-12 naechste --auffuellen: freie Plätze mit bereiten Pflichtpaketen späterer Etappen, Kür bleibt im Vorrat', () => {
+  const datei = variante('n12-auffuellen.json', (o) => {
+    Object.assign(finde(o, 'E2-E-05'), { modell: 'haiku-5.5', stufe: 2, status: 'offen', abhaengigkeiten: [], muster: 'pakete/_MUSTER-TEST.md', massstab: 'pakete/E2-E-05-TEST.md' });
+  });
+  const ohne = planCli(['naechste'], { plan: datei });
+  assert.equal(ohne.code, 0, ohne.out + ohne.err);
+  assert.deepEqual(naechsteIds(ohne.out), ['E1-D-04', 'E1-C-03'], 'ohne Schalter bleibt die Auswahl in der aktuellen Etappe');
+  const mit = planCli(['naechste', '--auffuellen'], { plan: datei });
+  assert.equal(mit.code, 0, mit.out + mit.err);
+  assert.deepEqual(naechsteIds(mit.out), ['E1-D-04', 'E1-C-03', 'E2-E-05'], 'aktuelle Etappe zuerst, dann die spätere');
+  assert.ok(!naechsteIds(mit.out).includes('E2-F-06'), 'Kür bleibt im Vorrat, solange ein Pflichtpaket bereit ist');
+  const eng = planCli(['naechste', '--auffuellen', '--plaetze', '2'], { plan: datei });
+  assert.deepEqual(naechsteIds(eng.out), ['E1-D-04', 'E1-C-03'], 'die aktuelle Etappe hat Vorrang vor späteren');
 });
 
 // --- plan.mjs setze (S-01 bis S-06) -----------------------------------------------

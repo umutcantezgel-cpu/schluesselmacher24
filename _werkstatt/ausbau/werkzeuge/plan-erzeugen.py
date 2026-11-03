@@ -36,7 +36,7 @@ ETAPPEN = [
   dict(kennung='E7', ziel='Partnernetz, Einsatzgebiet, Karte, Stadt-Hub-Vorlage', eingang='Partner-Modelle', ausgang='Partnerwege, Karte', tor='Prüfstufe B, axe Karte, Stadt-Hubs noindex', kriterien=['Z-09', 'Z-10'], tage=1.0),
   dict(kennung='E8', ziel='Inhalte, Suche, KI-Antworten, Agenturnennung, Logo-Konzepte, AUSSEN.md', eingang='KARTE.md, FACHWISSEN.md', ausgang='Schlüsselseiten, Strukturdaten, Texte ohne KI-Spuren', tor='Prüfstufe B, Faktenprüfung, Dominanzprobe Schlüsselseiten', kriterien=['Z-11', 'Z-13', 'Z-16', 'Z-17', 'Z-18'], tage=1.0),
   dict(kennung='E9', ziel='Dashboard, Vorgangsblätter, Livegang-Prüfung, Bögen, Aufbewahrung, Konzepte für später', eingang='alle Wege', ausgang='Werkzeuge des Inhabers', tor='Prüfstufe B, Probelauf im Admin', kriterien=['Z-19', 'Z-20'], tage=0.8),
-  dict(kennung='E10', ziel='Kür aus dem Vorrat nach Wirkung', eingang='Pflicht erledigt', ausgang='Kür', tor='Vorrat leer oder Laufzeit', kriterien=['Z-01', 'Z-11'], tage=1.0),
+  dict(kennung='E10', ziel='Kür aus dem Vorrat nach Wirkung', eingang='Pflicht erledigt', ausgang='Kür', tor='Vorrat leer oder LAUFZEIT erreicht (Einstellung: bis Pflicht und Kür erfüllt, also Vorrat leer); Prüfstufe B der Kür', kriterien=['Z-01', 'Z-11'], tage=1.0),
   dict(kennung='EA', ziel='Abschluss: Prüfstufe C, Endjury, Bericht, Archiv, Endprüfer', eingang='E0 bis E10', ausgang='BERICHT.md, Archiv docs/ausbau, Entwurfs-PR', tor='plan.mjs abschluss BEREIT, Endprüfer bestätigt', kriterien=['Z-01', 'Z-02', 'Z-03', 'Z-11', 'Z-13', 'Z-14', 'Z-15', 'Z-20', 'Z-21', 'Z-22'], tage=0.5),
 ]
 
@@ -102,7 +102,7 @@ op('E3-OPUS-01', 'Rubriken-Modell: Sammlung, Migration, content/rubriken.json, D
    ['src/payload/collections/Rubriken.ts', 'src/payload.config.ts', 'src/migrations/', 'content/rubriken.json', 'src/lib/types.ts', 'src/lib/data/', 'src/payload/seed.ts', 'src/lib/rubriken.ts', 'src/lib/rubriken.test.ts', 'src/payload/fields/gemeinsam.ts'],
    ['E2-PRUEFER-01'], ['G-01', 'G-03', 'G-10', 'G-11', 'G-38'], ['Z-03', 'Z-04'], wirkung=5)
 op('E3-OPUS-02', 'Designsystem v2: OKLCH-Tokens mit Abstufungsregel, Typografie für Laien, Tippziele, Leuchten als System, Bereichsfarbe ohne Lila, Schriften lokal', 'E3', 1,
-   ['tailwind.config.ts', 'src/app/(site)/globals.css', 'src/lib/visual/area-theme.ts', 'src/fonts/', 'src/app/(site)/layout.tsx', 'src/lib/design-tokens.test.ts'],
+   ['tailwind.config.ts', 'src/app/(site)/globals.css', 'src/lib/visual/area-theme.ts', 'src/lib/visual/area-theme.test.ts', 'src/fonts/', 'src/app/(site)/layout.tsx', 'src/app/(site)/layout.test.ts', 'src/lib/design-tokens.test.ts', 'src/app/global-error.tsx', 'src/app/manifest.ts', 'src/lib/og/bereichsbild.tsx', 'src/lib/og/bereichsbild.test.ts', W + 'werkzeuge/slopscan.mjs', W + 'KERN.md'],
    ['E2-PRUEFER-01'], ['G-05', 'G-06'], ['Z-11', 'Z-13', 'Z-14'], wirkung=5)
 op('E3-OPUS-03', 'Bewegungsmodul mit Schalter „Bewegung an oder ruhig“, Inline-Startskript, data-motion-Register, Pause-Baustein', 'E3', 2,
    ['src/lib/bewegung.ts', 'src/lib/bewegung.test.ts', 'src/components/visual/motion/', 'src/components/layout/site-footer.tsx', 'src/components/layout/bewegung-schalter.tsx'],
@@ -113,24 +113,24 @@ op('E3-OPUS-04', 'Vorgangsblatt-System als PDF (pdfkit) mit Anhang an Benachrich
 op('E3-OPUS-05', 'Versand-Adapter: Schnittstelle, Attrappe, Begleitschein-PDF, Anbieter hinter Umgebungsvariablen, Aufpreise aus Einstellungen', 'E3', 3,
    ['src/lib/versand/', 'src/payload/globals/Einstellungen.ts'], ['E3-OPUS-04'], ['G-24', 'G-25'], ['Z-08'], wirkung=4)
 op('E3-OPUS-06', 'Fahrzeugkatalog-Modell: Baureihe, Baujahre, Schlüsselarten, Transponder mit Quelle, Klonbarkeit, Gehäuse, Leistungen, Suche mit Tippfehlertoleranz', 'E3', 3,
-   ['src/payload/collections/Fahrzeugmarken.ts', 'src/lib/fahrzeuge/', 'content/vehicles.json'], ['E3-OPUS-01'], ['G-14', 'G-15', 'G-17', 'G-18'], ['Z-07'], wirkung=5)
+   ['src/payload/collections/Fahrzeugmarken.ts', 'src/lib/fahrzeuge/', 'content/vehicles.json', 'src/payload.config.ts', 'src/migrations/', 'src/payload-types.ts', 'src/payload/seed.ts'], ['E3-OPUS-01'], ['G-14', 'G-15', 'G-17', 'G-18'], ['Z-07'], wirkung=5)
 op('E3-OPUS-07', 'Konfigurator-Kern: Systemdaten, Schließplan, Matrix mit Vorlagen, Preisfunktion über die vorhandenen Preisregeln (Preiswerte unverändert, G9), Maßprüfung, Zwischenstand per Link', 'E3', 4,
-   ['src/lib/konfigurator/', 'src/payload/globals/Zylinderkatalog.ts', 'content/cylinder-catalog.json'], ['E3-OPUS-06'], ['G-27', 'G-28', 'G-29'], ['Z-06'], wirkung=5)
-op('E3-OPUS-08', 'Partner-Modelle: Statusautomat Bewerbung, Vermittlungszustände, Abrechnung A und B als reine Funktionen, Zugriffsrechte', 'E3', 4,
-   ['src/lib/partner/', 'src/payload/collections/Partner.ts', 'src/payload/access/'], ['E3-OPUS-07'], ['G-39', 'G-40'], ['Z-09', 'Z-20'], wirkung=4)
-op('E3-OPUS-09', 'Uploads: neue Kategorien, Pflicht-Uploads und Nachweise serverseitig je Weg, Fristen je Zweck', 'E3', 5,
+   ['src/lib/konfigurator/', 'src/payload/globals/Zylinderkatalog.ts', 'content/cylinder-catalog.json', 'src/payload.config.ts', 'src/migrations/', 'src/payload-types.ts', 'src/payload/seed.ts'], ['E3-OPUS-06'], ['G-27', 'G-28', 'G-29'], ['Z-06'], wirkung=5)
+op('E3-OPUS-08', 'Partner-Modelle: Statusautomat Bewerbung, Vermittlungszustände, Abrechnung A und B als reine Funktionen, Zugriffsrechte', 'E3', 5,
+   ['src/lib/partner/', 'src/payload/collections/Partner.ts', 'src/payload/access/', 'src/payload.config.ts', 'src/migrations/', 'src/payload-types.ts', 'src/payload/seed.ts'], ['E3-OPUS-07'], ['G-39', 'G-40'], ['Z-09', 'Z-20'], wirkung=4)
+op('E3-OPUS-09', 'Uploads: neue Kategorien, Pflicht-Uploads und Nachweise serverseitig je Weg, Fristen je Zweck', 'E3', 3,
    ['src/lib/server/datei-pruefung.ts', 'src/lib/server/kundendateien.ts', 'src/lib/server/unterlagen-pflicht.ts', 'src/lib/actions/records.ts', 'src/lib/actions/orders.ts'],
-   ['E3-OPUS-08'], ['G-36'], ['Z-05', 'Z-20'], wirkung=5)
-op('E3-OPUS-10', 'Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten); Zahlungsverhalten unverändert, mit Test (G9)', 'E3', 5,
+   ['E3-OPUS-04'], ['G-36'], ['Z-05', 'Z-20'], wirkung=5)
+op('E3-OPUS-10', 'Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten); Zahlungsverhalten unverändert, mit Test (G9)', 'E3', 2,
    ['src/lib/integrations/stripe.ts', '.github/dependabot.yml', 'src/app/(site)/sicherheitstechnik/[slug]/page.tsx', 'src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx'],
-   ['E3-OPUS-09'], [], ['Z-02', 'Z-16'], klasse='M', wirkung=2)
-hk('E3-UPGRADE-01', 'Sicherheits- und Minor-Updates (React 19.3, eslint-config-next 16.4, npm audit ohne Major)', 6, 'Prüfer', ['package.json', 'package-lock.json'], [], ['Z-02'], deps=['E3-OPUS-10'], status='offen', stufe=2)
+   ['E2-PRUEFER-01'], [], ['Z-02', 'Z-16'], klasse='M', wirkung=2)
+hk('E3-UPGRADE-01', 'Sicherheits- und Minor-Updates (React 19.3, eslint-config-next 16.4, npm audit ohne Major)', 6, 'Prüfer', ['package.json', 'package-lock.json'], [], ['Z-02'], deps=['E3-OPUS-08', 'E3-OPUS-09', 'E3-OPUS-10'], status='offen', stufe=2)
 hk('E3-GRAFIKER-01', 'Neue Fach-Icons der Familie: Motorradschlüssel, Gehäuse, Transponder-Kopie, Schlüsselfinder, Vor-Ort, Karte, Video, Pause, Bewegung', 1, 'Grafiker',
    ['src/components/visual/icons/motorradschluessel.tsx', 'src/components/visual/icons/schluesselgehaeuse.tsx', 'src/components/visual/icons/transponder-kopie.tsx', 'src/components/visual/icons/schluesselfinder.tsx', 'src/components/visual/icons/vor-ort.tsx', 'src/components/visual/icons/karte.tsx', 'src/components/visual/icons/video.tsx', 'src/components/visual/glyphen/pause.tsx', 'src/components/visual/glyphen/bewegung.tsx', 'src/components/visual/icons/icons.test.tsx', 'src/components/visual/glyphen/glyphen.test.tsx'],
    ['G-03', 'G-47'], ['Z-11', 'Z-13'], deps=['E2-PRUEFER-01'], status='offen', stufe=2)
 hk('E3-DATENPFLEGER-01', 'Fahrzeugdaten-Import aus offenen Quellen mit Quelle je Eintrag und Abdeckungsmessung', 4, 'Datenpfleger', ['scripts/fahrzeuge-import.mjs', 'scripts/fahrzeuge-import.test.ts', 'content/fahrzeugkatalog.json', W + 'protokolle/E3-abdeckung.md'], ['G-14'], ['Z-07'], deps=['E3-OPUS-06'], status='offen', klasse='L', stufe=2)
 hk('E3-DATENPFLEGER-02', 'Kartendaten Hessen aufbereiten (Kreise, Gemeinden, Lizenzvermerk) als vereinfachte Formen', 2, 'Datenpfleger', ['scripts/karte-aufbereiten.mjs', 'content/karte/hessen.json', 'content/karte/LIZENZ.md'], ['G-42'], ['Z-10'], deps=['E2-PRUEFER-01', 'E1-RECHERCHEUR-06'], status='offen', stufe=2)
-hk('E3-DATENPFLEGER-03', 'Erhebungsbögen PREISE, KLONBAR, SORTIMENT, PRODUKTE, PARTNER als CSV und Druckseite mit Vorschlägen', 2, 'Datenpfleger', [W + 'erhebung/boegen/'], ['G-18', 'G-22', 'G-33', 'G-40'], ['Z-19'], deps=['E2-PRUEFER-01'], status='offen', stufe=2)
+hk('E3-DATENPFLEGER-03', 'Erhebungsbögen PREISE, KLONBAR, SORTIMENT, PRODUKTE, PARTNER als CSV und Druckseite mit Vorschlägen', 1, 'Datenpfleger', [W + 'erhebung/boegen/'], ['G-18', 'G-22', 'G-33', 'G-40'], ['Z-19'], deps=['E2-PRUEFER-01'], status='offen', stufe=2)
 hk('E3-PRUEFER-01', 'Prüfstufe B Etappe E3 (Build beide Modi, Tests, Funktionsliste, axe, Bildsatz, Datenweiche)', 7, 'Prüfer', [W + 'berichte/E3-PRUEFER-01.md'], [], ['Z-02', 'Z-20'], deps=['E3-UPGRADE-01', 'E3-DATENPFLEGER-01'], status='offen', klasse='L')
 
 # ---------------------------------------------------------------- E4 Referenz
@@ -181,7 +181,7 @@ hk('E6-PRUEFER-01', 'Prüfstufe B Etappe E6', 6, 'Prüfer', [W + 'berichte/E6-PR
 
 # ---------------------------------------------------------------- E7 Partner, Karte
 op('E7-OPUS-01', 'Partner werden: Bewerbungsdurchlauf mit Status, Nachweise, Vertrag-PDF aus Platzhalter-Vorlage, Unterschrift als Upload, Partner-AGB und Vertrag nur als markierter Entwurf zur Anwaltsprüfung (R10)', 'E7', 1, ['src/app/(site)/partner-werden/', 'src/lib/pdf/partnervertrag.ts'], ['E6-PRUEFER-01', 'E6-PROBENUTZER-01'], ['G-39'], ['Z-09'])
-op('E7-OPUS-02', 'Vermittlung und Abrechnung A und B im Admin, Provisionen aus den Einstellungen, B ausgeschaltet', 'E7', 2, ['src/payload/components/Vermittlung.tsx', 'src/payload/collections/Vorgaenge.ts'], ['E7-OPUS-01'], ['G-40'], ['Z-09'])
+op('E7-OPUS-02', 'Vermittlung und Abrechnung A und B im Admin, Provisionen aus den Einstellungen, B ausgeschaltet', 'E7', 2, ['src/payload/components/Vermittlung.tsx', 'src/payload/collections/Vorgaenge.ts', 'src/payload.config.ts', 'src/migrations/', 'src/payload-types.ts', 'src/payload/seed.ts'], ['E7-OPUS-01'], ['G-40'], ['Z-09'])
 op('E7-OPUS-03', 'Interaktive Karte Hessen (Kreise, Städte, Gemeinden, Partnergebiete), selbst gehostet, nachgeladen, Listenansicht mit Tastatur', 'E7', 2, ['src/components/karte/', 'src/app/(site)/standorte/'], ['E7-OPUS-01'], ['G-42'], ['Z-10', 'Z-14'])
 hk('E7-BAUMEISTER-01', 'Stadt-Hub-Vorlage mit Stadtteilen als Abschnitten, noindex bis aktiver Partner, Schalter je Stadt', 3, 'Baumeister', ['src/app/(site)/standorte/[city]/'], ['G-41'], ['Z-10'], deps=['E7-OPUS-03'], status='offen', stufe=2)
 hk('E7-AUTOR-01', 'Wetzlar, Lahn-Dill-Kreis und Hessen mit eigener Substanz (nur echte Leistungen je Gebiet)', 3, 'Autor', ['content/cities.json'], ['G-41', 'G-43'], ['Z-16', 'Z-17'], deps=['E7-OPUS-03'], status='offen', stufe=2)
@@ -205,7 +205,7 @@ for i, (t, s, anf) in enumerate([
     ('Glossar Schließtechnik als Seite aus KERN (Laienerklärungen)', ['src/app/(site)/ratgeber/glossar/'], ['G-09', 'G-32'])], start=1):
     hk(f'E8-AUTOR-0{i}', t, 3, 'Autor', s, anf, ['Z-17'], deps=['E8-OPUS-02'], status='offen', stufe=2, art='pflicht' if i < 3 else 'kuer', wirkung=4 if i < 3 else 3)
 op('E8-OPUS-03', 'Videofassade mit Schrittanleitung und Transkript, CSP gezielt erweitert, VideoObject nur mit echtem Video', 'E8', 3, ['src/components/video/', 'next.config.ts'], ['E8-OPUS-02'], ['G-44'], ['Z-18'], klasse='M')
-op('E8-OPUS-04', 'Agenturnennung nach Abschnitt 15: Fußzeile, nofollow außer Start, Schalter aus, creator im WebSite-Knoten, Test, Textvorschlag für die Zustimmung, LINKREGISTER.md und REFERENZ.md', 'E8', 3, ['src/components/layout/agenturnennung.tsx', 'src/components/layout/agenturnennung.test.tsx', 'src/components/layout/site-footer.tsx', W + 'LINKREGISTER.md', W + 'REFERENZ.md'], ['E8-OPUS-02'], [], ['Z-16'], klasse='M', wirkung=2)
+op('E8-OPUS-04', 'Agenturnennung nach Abschnitt 15: Fußzeile, nofollow außer Start, Schalter aus, creator im WebSite-Knoten, Test, Textvorschlag für die Zustimmung, LINKREGISTER.md und REFERENZ.md', 'E8', 3, ['src/components/layout/agenturnennung.tsx', 'src/components/layout/agenturnennung.test.tsx', 'src/components/layout/site-footer.tsx', W + 'LINKREGISTER.md', W + 'REFERENZ.md', W + 'MENSCHEN.md'], ['E8-OPUS-02'], [], ['Z-16'], klasse='M', wirkung=2)
 op('E8-OPUS-05', 'Drei Logo-Konzepte (Bildmarke, Wortmarke, Favicon ab 16 px, schwarz-weiß und farbig) mit Vergleichsseite', 'E8', 4, [W + 'logo/'], ['E8-OPUS-02'], ['G-12'], ['Z-11'], wirkung=3)
 hk('E8-PRUEFER-01', 'R12-Prüfung der Logo-Konzepte und Ähnlichkeit zu Zeichen der Branche', 5, 'Prüfer', [W + 'berichte/E8-PRUEFER-01.md'], ['G-12'], ['Z-11', 'Z-20'], deps=['E8-OPUS-05'], status='offen')
 hk('E8-DOKUMENTAR-01', 'AUSSEN.md: Profile, Verzeichnisse, Innung, Herstellerverzeichnisse, Bewertungsbitte, Anschreiben an Partner', 4, 'Dokumentar', [W + 'AUSSEN.md'], ['G-41', 'G-43'], ['Z-22'], deps=['E8-OPUS-02'], status='offen', stufe=2)
@@ -233,9 +233,10 @@ KUER = [
     ('Labor-Kanten: llms.txt aus denselben Daten, Händler-Feed für Schlüssel nach Code', 'Baumeister', 2, ['src/app/llms.txt/route.ts', 'src/app/feed/']),
     ('Leistung und Zugänglichkeit über die Budgets hinaus', 'Prüfer', 3, [W + 'protokolle/E10-leistung.md', 'src/app/(site)/layout.tsx']),
     ('Mikrotypografie (Silbentrennung, Ziffern, Anführungszeichen, Abstände)', 'Texter', 2, ['src/app/(site)/globals.css'])]
+KUER_VORGAENGER = {1: 'E4-JURY-01', 2: 'E3-OPUS-02', 3: 'E4-OPUS-01', 4: 'E4-OPUS-04', 5: 'E5-OPUS-02', 6: 'E8-OPUS-02', 7: 'E4-PRUEFER-01', 8: 'E3-OPUS-02'}
 for i, (t, rolle, w, schreib) in enumerate(KUER, start=1):
     mod = OPUS if rolle == 'Orchestrator' else HAIKU
-    P(f'E10-KUER-{i:02d}', t, 'E10', 1, rolle, mod, 3 if mod == OPUS else 2, 'M', schreib, ['E9-PRUEFER-01'], [], ['Z-01', 'Z-11'], 'kuer', w,
+    P(f'E10-KUER-{i:02d}', t, 'E10', 1, rolle, mod, 3 if mod == OPUS else 2, 'M', schreib, [KUER_VORGAENGER[i]], [], ['Z-01', 'Z-11'], 'kuer', w,
       massstab=(MP + f'E10-KUER-{i:02d}.md' if mod == HAIKU else None), muster=(W + 'pakete/_MUSTER-REFERENZ.md' if mod == HAIKU else None))
 hk('E10-PRUEFER-01', 'Prüfstufe B Etappe E10 (Kür)', 2, 'Prüfer', [W + 'berichte/E10-PRUEFER-01.md'], [], ['Z-02', 'Z-11'], deps=[f'E10-KUER-{i:02d}' for i in range(1, 9)], status='offen', klasse='L', art='kuer', wirkung=3)
 
@@ -244,15 +245,18 @@ hk('EA-PRUEFER-01', 'Prüfstufe C: alle Ansichten, Inventarvergleich, Personas, 
 hk('EA-SPOTTER-01', 'Sichtung durch drei Spotter V1 bis V9, Slop-Index nachher', 1, 'Prüfer', [W + 'SLOP-AUDIT.md'], ['G-48'], ['Z-13'], deps=['E9-PRUEFER-01'], status='offen')
 P('EA-JURY-01', 'Endjury mit Blindvergleich Vorher und Nachher (frischer Opus)', 'EA', 2, 'Jury', OPUS, 3, 'L', [W + 'berichte/EA-JURY-01.md'], ['EA-PRUEFER-01', 'EA-SPOTTER-01', 'E8-BLIND-01'], [], ['Z-11'])
 op('EA-OPUS-01', 'BERICHT.md mit Galerie und Vorführpfad, MESSPLAN.md, Archiv docs/ausbau, Anleitung Zusammenführen und Zurückrollen, Entwurfs-PR', 'EA', 3, ['docs/ausbau/', W + 'BERICHT.md', W + 'MESSPLAN.md'], ['EA-JURY-01'], [], ['Z-22'], klasse='L')
-P('EA-ENDPRUEFER-01', 'Endprüfer (frischer Opus): jedes Häkchen, jede Ausnahme, jeder Endstatus gegen Beleg', 'EA', 4, 'Jury', OPUS, 3, 'L', [W + 'berichte/EA-ENDPRUEFER-01.md'], ['EA-OPUS-01', 'EA-PRUEFER-02', 'EA-PRUEFER-03', 'EA-PRUEFER-04'], [], ['Z-01', 'Z-03', 'Z-22'])
+_vorh = sorted(json.load(open(os.path.join(AUSBAU, 'erhebung', 'E2-zuordnung-eingang.json')))['vorhanden'] + ['M-17'],
+               key=lambda k: (k.split('-')[0], int(k.split('-')[1])))
+_zahl = -(-len(_vorh) // 40)                                     # höchstens 40 je Paket (E2-PRUEFER-02, Szenario 6)
+_groesse = -(-len(_vorh) // _zahl)                               # gleich große Teile
+_teile = [_vorh[i:i + _groesse] for i in range(0, len(_vorh), _groesse)]
+_abgleich = [f'EA-PRUEFER-{n:02d}' for n in range(2, 2 + len(_teile))]
+P('EA-ENDPRUEFER-01', 'Endprüfer (frischer Opus): jedes Häkchen, jede Ausnahme, jeder Endstatus gegen Beleg', 'EA', 4, 'Jury', OPUS, 3, 'L', [W + 'berichte/EA-ENDPRUEFER-01.md'], ['EA-OPUS-01'] + _abgleich, [], ['Z-01', 'Z-03', 'Z-22'])
 
 # ---------------------------------------------------------------- Bestandsabgleich (deckt alle „vorhanden“)
-_vorh = json.load(open(os.path.join(AUSBAU, 'erhebung', 'E2-zuordnung-eingang.json')))['vorhanden'] + ['M-17']
-for _n, (_t, _filter) in enumerate([('L-001 bis L-299', lambda k: k.startswith('L-') and int(k[2:]) < 300),
-                                     ('L-301 bis L-599', lambda k: k.startswith('L-') and int(k[2:]) >= 300),
-                                     ('EL, M und E', lambda k: not k.startswith('L-'))], start=2):
-    hk(f'EA-PRUEFER-0{_n}', f'Bestandsabgleich {_t}: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen', 1, 'Prüfer',
-       [W + f'erhebung/EA-bestandsabgleich-{_n}.json'], [k for k in _vorh if _filter(k)], ['Z-03'], deps=['E9-PRUEFER-01'], status='offen', klasse='L')
+for _n, (_kennung, _teil) in enumerate(zip(_abgleich, _teile), start=2):
+    hk(_kennung, f'Bestandsabgleich {_teil[0]} bis {_teil[-1]}: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen', 1, 'Prüfer',
+       [W + f'erhebung/EA-bestandsabgleich-{_n:02d}.json'], _teil, ['Z-03'], deps=['E9-PRUEFER-01'], status='offen', klasse='M')
 hk('E2-DATENPFLEGER-01', 'Zuordnung jeder nicht vorhandenen Anforderung (L, EL, M, E) zu Paketen oder Menschensache', 2, 'Datenpfleger', [W + 'erhebung/E2-zuordnung.json'], [], ['Z-03'], deps=['E2-OPUS-02'], status='offen', stufe=2)
 
 hk('E6-BAUMEISTER-07', 'Schlüssel nach Code: Suche und Filter nach Typ, Codelinie und Hersteller, Codeerkennung in der Suche, kompakte Produktseite', 4, 'Baumeister', ['src/app/(site)/schluessel-nach-code/'], ['L-120', 'E-13', 'E-89', 'E-90'], ['Z-05'], deps=['E6-OPUS-01'], status='offen', stufe=2)
@@ -354,6 +358,10 @@ def plan():
     # L-Pakete (Opus-Kern, Jury, Bildsätze) nacheinander (etwa 6 je Tag); Tage = Summe je Klasse, Puffer 20 %.
     pro_tag = {'S': 36, 'M': 24, 'L': 6}
     tage = sum(kl[k] / pro_tag[k] for k in kl) * 1.2
+    # Etappen-Tage an die Kapazität angleichen (E2-PRUEFER-02): Gewichte der Etappen bleiben, die Summe folgt der Rechnung.
+    _summe = sum(e['tage'] for e in ETAPPEN)
+    for e in ETAPPEN:
+        e['tage'] = round(e['tage'] * tage / _summe, 2)
     pflicht = [p for p in P_LIST if p['art'] == 'pflicht']
     doc = {
         'version': 1,

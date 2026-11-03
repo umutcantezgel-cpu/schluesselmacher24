@@ -6,7 +6,7 @@
 //
 // Befehle:
 //   pruefen      Schema und Regeln von PLAN.json prüfen
-//   naechste     bereite Pakete für den nächsten Start ausgeben
+//   naechste     bereite Pakete für den nächsten Start ausgeben (--plaetze n, --modell m, --auffuellen)
 //   setze        Status, Commit, Grund oder Versuch eines Pakets setzen
 //   stand        Zahlen für die Statuszeile
 //   zeichne      PLAN.md als gerenderte Ansicht schreiben
@@ -15,12 +15,13 @@
 // Optionen (für Tests): --plan <datei> --anf <datei> --abnahme <datei>
 // Ausgabe für zeichne: --ausgabe <datei>
 
-import { readFileSync, writeFileSync, renameSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, renameSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
 const AUSBAU = resolve(HIER, '..');
+const REPO_WURZEL = resolve(AUSBAU, '..', '..');
 
 const STANDARD = {
   plan: join(AUSBAU, 'PLAN.json'),
@@ -325,14 +326,19 @@ export function istBereit(plan, p) {
 // --- naechste ---------------------------------------------------------------------
 // Etappe: aktuelle Etappe. Kür aus anderen Etappen nur, wenn die aktuelle keine bereiten Pakete hat.
 // Welle: nur die kleinste offene Welle der jeweiligen Etappe.
-export function naechsteListe(plan, { plaetze = 4, modell = 'alle' } = {}) {
+// Mit --auffuellen (E2-PRUEFER-02, Szenario 5): reicht die aktuelle Etappe nicht für alle Plätze, kommen
+// bereite Pflichtpakete späterer Etappen dazu (Abhängigkeiten erfüllt, kleinste offene Welle ihrer Etappe),
+// früheste Etappe zuerst. Kür bleibt im Vorrat, solange irgendein Pflichtpaket bereit ist (Auftrag L2).
+export function naechsteListe(plan, { plaetze = 4, modell = 'alle', auffuellen = false } = {}) {
   const aktuell = aktuelleEtappe(plan);
   const bereit = (plan.pakete ?? []).filter(
     (p) => istBereit(plan, p) && p.welle === kleinsteOffeneWelle(plan, p.etappe),
   );
+  const etappenRang = new Map((plan.etappen ?? []).map((e, i) => [e.kennung, i]));
+  const rang = (p) => (p.etappe === aktuell ? -1 : (etappenRang.get(p.etappe) ?? 999));
   let kandidaten = aktuell === null
     ? bereit.filter((p) => p.art === 'kuer')
-    : bereit.filter((p) => p.etappe === aktuell);
+    : bereit.filter((p) => p.etappe === aktuell || (auffuellen && p.art === 'pflicht'));
   if (aktuell !== null && kandidaten.length === 0) {
     kandidaten = bereit.filter((p) => p.art === 'kuer' && p.etappe !== aktuell);
   }
@@ -340,6 +346,7 @@ export function naechsteListe(plan, { plaetze = 4, modell = 'alle' } = {}) {
   kandidaten = kandidaten.filter((p) => !p.schreibrechte.some((d) => laufend.has(d)));
   if (modell !== 'alle') kandidaten = kandidaten.filter((p) => p.modell === modell);
   kandidaten.sort((a, b) => (a.art === b.art ? 0 : a.art === 'pflicht' ? -1 : 1)
+    || (auffuellen ? rang(a) - rang(b) : 0)
     || (b.wirkung - a.wirkung)
     || a.kennung.localeCompare(b.kennung));
 
@@ -366,7 +373,14 @@ function druckeNaechste(ergebnis) {
     : `Etappe ${ergebnis.etappe} · Welle ${ergebnis.welle}`;
   const zeilen = [
     ['Kennung', 'Titel', 'Modell', 'Klasse', 'Schreibrechte (Zahl)'],
-    ...ergebnis.pakete.map((p) => [p.kennung, p.titel, p.modell, p.kostenklasse, String(p.schreibrechte.length)]),
+    ...ergebnis.pakete.map((p) => [
+      p.kennung,
+      p.titel,
+      p.modell,
+      p.kostenklasse,
+      String(p.schreibrechte.length)
+        + (p.modell === 'haiku-5.5' && p.massstab && !existsSync(resolve(REPO_WURZEL, p.massstab)) ? ' · PAKETDATEI FEHLT' : ''),
+    ]),
   ];
   const breiten = zeilen[0].map((_, i) => Math.max(...zeilen.map((z) => z[i].length)));
   const tabelle = zeilen.map((z) => z.map((t, i) => t.padEnd(breiten[i])).join(' · ').trimEnd());
@@ -388,7 +402,7 @@ function befehlNaechste(o, a) {
   if (!['haiku-5.5', 'opus-5.5', 'alle'].includes(modell)) {
     return fehler('--modell ist haiku-5.5, opus-5.5 oder alle.', 2);
   }
-  console.log(druckeNaechste(naechsteListe(geladen.plan, { plaetze, modell })));
+  console.log(druckeNaechste(naechsteListe(geladen.plan, { plaetze, modell, auffuellen: a.auffuellen === true })));
   return 0;
 }
 

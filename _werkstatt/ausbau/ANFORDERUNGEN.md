@@ -1,15 +1,15 @@
 # Anforderungen des Ausbaulaufs
 
-Stand: 2026-11-03T01:28:25+00:00
+Stand: 2026-11-03T01:51:12+00:00
 
-Einträge: 623 · belegt: 1
+Einträge: 623 · belegt: 0
 
 | Quelle | Einträge | belegt | offen | in Arbeit | umgesetzt | später | menschensache | entfällt |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | G | 51 | 0 | 51 | 0 | 0 | 0 | 0 | 0 |
 | L | 284 | 0 | 284 | 0 | 0 | 0 | 0 | 0 |
 | EL | 79 | 0 | 79 | 0 | 0 | 0 | 0 | 0 |
-| M | 37 | 1 | 36 | 0 | 1 | 0 | 0 | 0 |
+| M | 37 | 0 | 37 | 0 | 0 | 0 | 0 | 0 |
 | E | 138 | 0 | 138 | 0 | 0 | 0 | 0 | 0 |
 | K | 34 | 0 | 34 | 0 | 0 | 0 | 0 | 0 |
 
@@ -75,287 +75,287 @@ Einträge: 623 · belegt: 1
 | --- | --- | --- | --- | --- | --- |
 | L-001 | Priorität: einfache Kundenführung, hochwertige Wirkung, starke Autoschlüssel Kompetenz und skalierbarer Online Vertrieb | nicht pruefbar | offen | E3-OPUS-01, E4-JURY-01, E4-OPUS-01, EA-JURY-01 |  |
 | L-002 | SCHLÜSSELMACHER24 soll nicht wie eine klassische Türöffnungs Notdienstseite wirken. | nicht pruefbar | offen | E4-JURY-01, EA-JURY-01 |  |
-| L-003 | Die Website soll als moderner Fachbetrieb und Online Plattform für Autoschlüssel, Schlüssel, Schließtechnik, elektronis… | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-003 | Die Website soll als moderner Fachbetrieb und Online Plattform für Autoschlüssel, Schlüssel, Schließtechnik, elektronis… | vorhanden | offen | EA-PRUEFER-04 |  |
 | L-004 | Autoschlüssel bilden rund 70 Prozent des sichtbaren Leistungs, Shop und SEO Fokus. | teilweise | offen | E4-OPUS-01, E4-OPUS-03, E8-OPUS-02 |  |
 | L-005 | Schlüssel, Schließtechnik und Sicherheitstechnik bilden rund 30 Prozent und werden als vollwertige Kompetenzbereiche da… | teilweise | offen | E3-OPUS-01, E4-OPUS-03 |  |
-| L-006 | Die Seite soll lokal Termine und Montageaufträge erzeugen und gleichzeitig deutschlandweit Produkte, Schlüssel nach Cod… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-007 | Jede Hauptleistung erhält einen klaren Prozess: direkter Kauf, geführte Anfrage, Termin mit Anzahlung oder Projektkonfi… | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-006 | Die Seite soll lokal Termine und Montageaufträge erzeugen und gleichzeitig deutschlandweit Produkte, Schlüssel nach Cod… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-007 | Jede Hauptleistung erhält einen klaren Prozess: direkter Kauf, geführte Anfrage, Termin mit Anzahlung oder Projektkonfi… | vorhanden | offen | EA-PRUEFER-04 |  |
 | L-008 | SCHLÜSSELMACHER24 soll technisch, fachlich, modern und vertrauenswürdig wirken. | nicht pruefbar | offen | E4-JURY-01, EA-JURY-01 |  |
 | L-009 | Die 24 ist Teil des Namens, die Seite darf deshalb trotzdem nicht wie ein austauschbarer 24 Stunden Vermittler aussehen. | nicht pruefbar | offen | E4-JURY-01, E4-TEXTER-01, EA-JURY-01 |  |
-| L-010 | Erfolgskriterien, Ziel: Kunde versteht Angebot in wenigen Sekunden; Umsetzung: Autoschlüssel als sichtbarer Schwerpunkt… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-011 | Erfolgskriterien, Ziel: Weniger Rückfragen; Umsetzung: Formulare sammeln Fahrzeugdaten, Schlüsselbilder, Maße, Dokument… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-012 | Erfolgskriterien, Ziel: Mehr verbindliche Termine; Umsetzung: Anzahlung und Terminbuchung direkt im Autoschlüssel Proze… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-013 | Erfolgskriterien, Ziel: Skalierbarer Shop; Umsetzung: Code Schlüssel, gleichschließende Zylinder und geeignete Standard… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-014 | Erfolgskriterien, Ziel: Planbare Projekte; Umsetzung: Schließanlagen, Zutritt und Sicherheitstechnik über strukturierte… | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-010 | Erfolgskriterien, Ziel: Kunde versteht Angebot in wenigen Sekunden; Umsetzung: Autoschlüssel als sichtbarer Schwerpunkt… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-011 | Erfolgskriterien, Ziel: Weniger Rückfragen; Umsetzung: Formulare sammeln Fahrzeugdaten, Schlüsselbilder, Maße, Dokument… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-012 | Erfolgskriterien, Ziel: Mehr verbindliche Termine; Umsetzung: Anzahlung und Terminbuchung direkt im Autoschlüssel Proze… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-013 | Erfolgskriterien, Ziel: Skalierbarer Shop; Umsetzung: Code Schlüssel, gleichschließende Zylinder und geeignete Standard… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-014 | Erfolgskriterien, Ziel: Planbare Projekte; Umsetzung: Schließanlagen, Zutritt und Sicherheitstechnik über strukturierte… | vorhanden | offen | EA-PRUEFER-04 |  |
 | L-015 | Erfolgskriterien, Ziel: SEO Wachstum; Umsetzung: Leistungsseiten, Fahrzeugseiten und Stadtseiten mit sauberer interner … | teilweise | offen | E3-OPUS-06, E7-BAUMEISTER-01, E8-OPUS-02 |  |
 | L-016 | Die Hauptnavigation muss den 70 Prozent Autoschlüssel Schwerpunkt sofort zeigen, die übrigen Kompetenzbereiche aber sic… | teilweise | offen | E4-OPUS-03 |  |
-| L-017 | Hauptnavigation, Bereich Autoschlüssel: Zentrale Themenwelt für Kopie, Zweitschlüssel, Programmierung, Smart Key, Repar… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-018 | Hauptnavigation, Bereich Schlüssel nach Vorlage: Geführte Fotoanfrage mit drei Ansichten und optionaler Einsendung des … | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-019 | Hauptnavigation, Bereich Schlüssel nach Code: Shop mit etwa 50 bis 52 einzelnen Codelinien. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-020 | Hauptnavigation, Bereich Gleichschließende Zylinder: Direkter Konfigurator und Shop für Sperrschließungen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-021 | Hauptnavigation, Bereich Schließanlagen: Projektplanung für Z, HS, GHS und erweiterbare mechanische Anlagen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-022 | Hauptnavigation, Bereich Elektronische Zutrittslösungen: RFID, Karte, Transponder, PIN, App, digitale Zylinder und Besc… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-023 | Hauptnavigation, Bereich Tür und Schließtechnik: Zylinder, Schlösser, Mehrfachverriegelungen, Beschläge und Türtechnik. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-024 | Hauptnavigation, Bereich Sicherheitstechnik: Kameras, Alarm, Glasbruch, Bewegungsmelder, Tür und Fenstersicherung und E… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-025 | Hauptnavigation, Bereich Service und Termin: Allgemeine Anfrage, Terminstatus, Kontakt und Vor Ort Leistungen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-026 | Footer Pflichtbereiche: Impressum. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-027 | Footer Pflichtbereiche: Datenschutz. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-028 | Footer Pflichtbereiche: Widerruf und Rückgabe. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-029 | Footer Pflichtbereiche: Zahlungs und Versandinformationen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-030 | Footer Pflichtbereiche: AGB sofern verwendet. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-031 | Footer Pflichtbereiche: Cookie Einstellungen. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-017 | Hauptnavigation, Bereich Autoschlüssel: Zentrale Themenwelt für Kopie, Zweitschlüssel, Programmierung, Smart Key, Repar… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-018 | Hauptnavigation, Bereich Schlüssel nach Vorlage: Geführte Fotoanfrage mit drei Ansichten und optionaler Einsendung des … | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-019 | Hauptnavigation, Bereich Schlüssel nach Code: Shop mit etwa 50 bis 52 einzelnen Codelinien. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-020 | Hauptnavigation, Bereich Gleichschließende Zylinder: Direkter Konfigurator und Shop für Sperrschließungen. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-021 | Hauptnavigation, Bereich Schließanlagen: Projektplanung für Z, HS, GHS und erweiterbare mechanische Anlagen. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-022 | Hauptnavigation, Bereich Elektronische Zutrittslösungen: RFID, Karte, Transponder, PIN, App, digitale Zylinder und Besc… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-023 | Hauptnavigation, Bereich Tür und Schließtechnik: Zylinder, Schlösser, Mehrfachverriegelungen, Beschläge und Türtechnik. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-024 | Hauptnavigation, Bereich Sicherheitstechnik: Kameras, Alarm, Glasbruch, Bewegungsmelder, Tür und Fenstersicherung und E… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-025 | Hauptnavigation, Bereich Service und Termin: Allgemeine Anfrage, Terminstatus, Kontakt und Vor Ort Leistungen. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-026 | Footer Pflichtbereiche: Impressum. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-027 | Footer Pflichtbereiche: Datenschutz. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-028 | Footer Pflichtbereiche: Widerruf und Rückgabe. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-029 | Footer Pflichtbereiche: Zahlungs und Versandinformationen. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-030 | Footer Pflichtbereiche: AGB sofern verwendet. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-031 | Footer Pflichtbereiche: Cookie Einstellungen. | vorhanden | offen | EA-PRUEFER-04 |  |
 | L-032 | Rechtstexte vor Livegang juristisch prüfen, insbesondere bei Sonderanfertigungen, kundenspezifischen Produkten und Anza… | teilweise | offen | E9-DOKUMENTAR-01 |  |
-| L-033 | Der erste Bildschirm soll sofort vermitteln: Autoschlüssel professionell nachmachen und programmieren, dazu Schlüssel, … | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-034 | Startseite, Bereich Hero: Autoschlüssel nachmachen oder programmieren. Hauptbutton: Fahrzeug auswählen und Termin start… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-035 | Startseite, Bereich Schnelleinstiege: Autoschlüssel, Schlüssel nach Vorlage, Schlüssel nach Code, Schließanlagen, Zutri… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-036 | Startseite, Bereich Vertrauen: Fachbetrieb, echte Werkstatt, professionelle Maschinen, transparente Abläufe, sichere Za… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-037 | Startseite, Bereich Autoschlüssel Prozess: Fahrzeug wählen, Fotos hochladen, Preis oder Prüfung, Anzahlung, Termin. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-038 | Startseite, Bereich Shop Teaser: Code Schlüssel und gleichschließende Zylinder direkt online bestellen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-039 | Startseite, Bereich Projektbereiche: Schließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik mit geführte… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-040 | Startseite, Bereich SEO und Ratgeber: Hilfreiche Inhalte zu Schlüsselarten, Fahrzeugen, Schließsystemen und Einbruchsch… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-041 | Keine typische gelb schwarze Notdienst Optik. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-033 | Der erste Bildschirm soll sofort vermitteln: Autoschlüssel professionell nachmachen und programmieren, dazu Schlüssel, … | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-034 | Startseite, Bereich Hero: Autoschlüssel nachmachen oder programmieren. Hauptbutton: Fahrzeug auswählen und Termin start… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-035 | Startseite, Bereich Schnelleinstiege: Autoschlüssel, Schlüssel nach Vorlage, Schlüssel nach Code, Schließanlagen, Zutri… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-036 | Startseite, Bereich Vertrauen: Fachbetrieb, echte Werkstatt, professionelle Maschinen, transparente Abläufe, sichere Za… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-037 | Startseite, Bereich Autoschlüssel Prozess: Fahrzeug wählen, Fotos hochladen, Preis oder Prüfung, Anzahlung, Termin. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-038 | Startseite, Bereich Shop Teaser: Code Schlüssel und gleichschließende Zylinder direkt online bestellen. | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-039 | Startseite, Bereich Projektbereiche: Schließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik mit geführte… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-040 | Startseite, Bereich SEO und Ratgeber: Hilfreiche Inhalte zu Schlüsselarten, Fahrzeugen, Schließsystemen und Einbruchsch… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-041 | Keine typische gelb schwarze Notdienst Optik. | vorhanden | offen | EA-PRUEFER-04 |  |
 | L-042 | Die Seite soll hochwertig, technisch und ruhig wirken. | nicht pruefbar | offen | E4-JURY-01, EA-JURY-01 |  |
 | L-043 | Echte Produkt und Werkstattbilder haben Vorrang vor generischen Stockfotos. | teilweise | offen | E9-DOKUMENTAR-01 |  |
-| L-044 | Der Autoschlüssel Bereich ist der größte Teil der Website und muss sowohl für Kunden als auch für Suchmaschinen sehr sa… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-045 | Leistungsbegriff: Autoschlüssel nachmachen und Autoschlüssel kopieren | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-046 | Leistungsbegriff: Zweitschlüssel und Ersatzschlüssel | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-047 | Leistungsbegriff: Autoschlüssel programmieren und anlernen | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-048 | Leistungsbegriff: Transponder und Wegfahrsperre | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-049 | Leistungsbegriff: Funkschlüssel und Funkfernbedienung | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-050 | Leistungsbegriff: Smart Key und Keyless Systeme | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-051 | Leistungsbegriff: Schlüsselbart fräsen nach Original oder Fahrzeugdaten | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-052 | Leistungsbegriff: Schlüsselgehäuse, Tasten, Batterie und Reparatur | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-053 | Leistungsbegriff: Schlüsselverlust und Prüfung einer Ersatzlösung | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-054 | Leistungsbegriff: Fahrzeugöffnung als eigene Serviceleistung | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-055 | Unterseite Autoschlüssel nachmachen: Hauptseite für Zweitschlüssel und Ersatzschlüssel. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-056 | Unterseite Autoschlüssel programmieren: Elektronische Anlernung, Transponder, Funk und Smart Key. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-057 | Unterseite Autoschlüssel kopieren: Mechanische und technisch mögliche Kopierlösungen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-058 | Unterseite Funkschlüssel: Fernbedienung, Tasten, Funkfunktion und Ersatz. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-059 | Unterseite Smart Key / Keyless: Schlüsselloser Zugang und Start je nach Fahrzeug. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-060 | Unterseite Schlüsselbart fräsen: Mechanische Fertigung nach Vorlage oder geeigneten Daten. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-061 | Unterseite Fahrzeugmarken und Modelle: SEO Seiten für häufige Hersteller und Modelle mit echtem Mehrwert. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-062 | Der Kunde soll nicht mit einem langen Formular erschlagen werden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-063 | Ein Schritt für Schritt Assistent sammelt nur die Daten, die für sein Fahrzeug und seinen Auftrag benötigt werden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-064 | Schritt 1: Fahrzeugmarke auswählen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-065 | Schritt 2: Modell auswählen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-066 | Schritt 3: Baujahr oder Erstzulassung angeben. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-067 | Schritt 4: Optional Motorisierung beziehungsweise relevante Fahrzeugdaten ergänzen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-068 | Schritt 5: Schlüsselart auswählen: mechanisch, Funk, Klappschlüssel, Smart Key oder Keyless. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-069 | Schritt 6: Anzahl vorhandener funktionierender Schlüssel angeben. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-070 | Schritt 7: Gewünschte Leistung auswählen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-071 | Schritt 8: Schlüsselfotos hochladen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-072 | Schritt 9: Fahrzeugschein hochladen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-073 | Schritt 10: Kontaktdaten eingeben. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-074 | Schritt 11: Preis, Preisrahmen oder Hinweis auf manuelle Prüfung anzeigen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-075 | Schritt 12: Anzahlung leisten. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-076 | Schritt 13: Termin auswählen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-077 | Fotofunktion: Direkter Kamera Upload auf dem Smartphone und alternativ Upload aus der Galerie. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-078 | Fotofunktion: Vorderseite, Rückseite, Schlüsselbart beziehungsweise Spitze und bei Bedarf Nahaufnahme von Nummern oder … | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-079 | Fotofunktion: Direkt am Uploadfeld Beispielbilder zeigen, damit Beschriftungen und Details scharf und vollständig fotog… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-080 | Fotofunktion: Fahrzeugschein als Foto oder Datei hochladen und eindeutig dem Vorgang zuordnen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-081 | Wichtig: Wo Fahrzeugzugriff zum Programmieren erforderlich ist, muss der Prozess automatisch in eine Vor Ort Terminbuch… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-082 | Die Terminlogik muss ausreichend Beschaffungs und Vorbereitungszeit einplanen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-083 | Standardmäßig sollen Autoschlüssel Termine erst mit ungefähr sieben bis acht Tagen Vorlauf angeboten werden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-084 | Regel Mindestvorlauf: Standard 7 bis 8 Tage, im Backend flexibel veränderbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-085 | Regel Anzahlung: Standard 69,90 Euro, je Fahrzeug oder Leistung etwa 50 bis 80 Euro einstellbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-086 | Regel Verrechnung: Anzahlung wird vollständig auf den späteren Gesamtpreis angerechnet. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-087 | Regel Preis sicher bekannt: Gesamtpreis direkt anzeigen, dazu bereits bezahlte Anzahlung und Restbetrag. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-088 | Regel Preis noch zu prüfen: Preisrahmen oder manuelle Prüfung vor verbindlicher Buchung. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-089 | Regel Terminlänge: Je Leistung oder Fahrzeuggruppe im Backend steuerbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-090 | Regel Sperrtage: Urlaub, Feiertage, ausgebuchte Tage und interne Sperrzeiten pflegbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-091 | Zahlungsarten: Gängige Online Zahlung integrieren und erweiterbar halten. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-092 | Zahlungsarten: Automatische Bestell und Terminbestätigung nach erfolgreicher Zahlung. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-044 | Der Autoschlüssel Bereich ist der größte Teil der Website und muss sowohl für Kunden als auch für Suchmaschinen sehr sa… | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-045 | Leistungsbegriff: Autoschlüssel nachmachen und Autoschlüssel kopieren | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-046 | Leistungsbegriff: Zweitschlüssel und Ersatzschlüssel | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-047 | Leistungsbegriff: Autoschlüssel programmieren und anlernen | vorhanden | offen | EA-PRUEFER-04 |  |
+| L-048 | Leistungsbegriff: Transponder und Wegfahrsperre | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-049 | Leistungsbegriff: Funkschlüssel und Funkfernbedienung | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-050 | Leistungsbegriff: Smart Key und Keyless Systeme | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-051 | Leistungsbegriff: Schlüsselbart fräsen nach Original oder Fahrzeugdaten | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-052 | Leistungsbegriff: Schlüsselgehäuse, Tasten, Batterie und Reparatur | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-053 | Leistungsbegriff: Schlüsselverlust und Prüfung einer Ersatzlösung | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-054 | Leistungsbegriff: Fahrzeugöffnung als eigene Serviceleistung | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-055 | Unterseite Autoschlüssel nachmachen: Hauptseite für Zweitschlüssel und Ersatzschlüssel. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-056 | Unterseite Autoschlüssel programmieren: Elektronische Anlernung, Transponder, Funk und Smart Key. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-057 | Unterseite Autoschlüssel kopieren: Mechanische und technisch mögliche Kopierlösungen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-058 | Unterseite Funkschlüssel: Fernbedienung, Tasten, Funkfunktion und Ersatz. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-059 | Unterseite Smart Key / Keyless: Schlüsselloser Zugang und Start je nach Fahrzeug. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-060 | Unterseite Schlüsselbart fräsen: Mechanische Fertigung nach Vorlage oder geeigneten Daten. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-061 | Unterseite Fahrzeugmarken und Modelle: SEO Seiten für häufige Hersteller und Modelle mit echtem Mehrwert. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-062 | Der Kunde soll nicht mit einem langen Formular erschlagen werden. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-063 | Ein Schritt für Schritt Assistent sammelt nur die Daten, die für sein Fahrzeug und seinen Auftrag benötigt werden. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-064 | Schritt 1: Fahrzeugmarke auswählen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-065 | Schritt 2: Modell auswählen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-066 | Schritt 3: Baujahr oder Erstzulassung angeben. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-067 | Schritt 4: Optional Motorisierung beziehungsweise relevante Fahrzeugdaten ergänzen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-068 | Schritt 5: Schlüsselart auswählen: mechanisch, Funk, Klappschlüssel, Smart Key oder Keyless. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-069 | Schritt 6: Anzahl vorhandener funktionierender Schlüssel angeben. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-070 | Schritt 7: Gewünschte Leistung auswählen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-071 | Schritt 8: Schlüsselfotos hochladen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-072 | Schritt 9: Fahrzeugschein hochladen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-073 | Schritt 10: Kontaktdaten eingeben. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-074 | Schritt 11: Preis, Preisrahmen oder Hinweis auf manuelle Prüfung anzeigen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-075 | Schritt 12: Anzahlung leisten. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-076 | Schritt 13: Termin auswählen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-077 | Fotofunktion: Direkter Kamera Upload auf dem Smartphone und alternativ Upload aus der Galerie. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-078 | Fotofunktion: Vorderseite, Rückseite, Schlüsselbart beziehungsweise Spitze und bei Bedarf Nahaufnahme von Nummern oder … | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-079 | Fotofunktion: Direkt am Uploadfeld Beispielbilder zeigen, damit Beschriftungen und Details scharf und vollständig fotog… | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-080 | Fotofunktion: Fahrzeugschein als Foto oder Datei hochladen und eindeutig dem Vorgang zuordnen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-081 | Wichtig: Wo Fahrzeugzugriff zum Programmieren erforderlich ist, muss der Prozess automatisch in eine Vor Ort Terminbuch… | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-082 | Die Terminlogik muss ausreichend Beschaffungs und Vorbereitungszeit einplanen. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-083 | Standardmäßig sollen Autoschlüssel Termine erst mit ungefähr sieben bis acht Tagen Vorlauf angeboten werden. | vorhanden | offen | EA-PRUEFER-05 |  |
+| L-084 | Regel Mindestvorlauf: Standard 7 bis 8 Tage, im Backend flexibel veränderbar. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-085 | Regel Anzahlung: Standard 69,90 Euro, je Fahrzeug oder Leistung etwa 50 bis 80 Euro einstellbar. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-086 | Regel Verrechnung: Anzahlung wird vollständig auf den späteren Gesamtpreis angerechnet. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-087 | Regel Preis sicher bekannt: Gesamtpreis direkt anzeigen, dazu bereits bezahlte Anzahlung und Restbetrag. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-088 | Regel Preis noch zu prüfen: Preisrahmen oder manuelle Prüfung vor verbindlicher Buchung. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-089 | Regel Terminlänge: Je Leistung oder Fahrzeuggruppe im Backend steuerbar. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-090 | Regel Sperrtage: Urlaub, Feiertage, ausgebuchte Tage und interne Sperrzeiten pflegbar. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-091 | Zahlungsarten: Gängige Online Zahlung integrieren und erweiterbar halten. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-092 | Zahlungsarten: Automatische Bestell und Terminbestätigung nach erfolgreicher Zahlung. | vorhanden | offen | EA-PRUEFER-06 |  |
 | L-093 | Zahlungsarten: Rechnung beziehungsweise Zahlungsbeleg nachvollziehbar am Auftrag hinterlegen. | teilweise | offen | E3-OPUS-04 |  |
 | L-094 | Backend Regel: Preis, Anzahlung, Vorlaufzeit und Terminlänge dürfen nicht fest im Quellcode stehen. | teilweise | offen | E3-OPUS-07, E4-OPUS-05 |  |
-| L-095 | Backend Regel: Diese Werte müssen ohne Entwickler je Fahrzeuggruppe, Produkt oder Leistung geändert werden können. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-096 | Schlüssel nach Vorlage: Dieser Bereich ist eine eigenständige geführte Anfrage. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-097 | Schlüssel nach Vorlage: Er muss den Schlüssel zunächst nicht einsenden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-098 | Schritt 1: Foto der Vorderseite hochladen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-099 | Schritt 2: Foto der Rückseite hochladen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-100 | Schritt 3: Foto von vorne auf Spitze und Profil hochladen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-101 | Schritt 4: Hersteller oder Marke angeben, falls bekannt. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-102 | Schritt 5: Nummern und Beschriftungen eintragen oder deutlich fotografieren. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-103 | Schritt 6: Gewünschte Stückzahl angeben. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-104 | Schritt 7: Kontaktdaten und Versandland angeben. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-105 | Schritt 8: Anfrage absenden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-106 | Nach der Prüfung: Der Kunde erhält Machbarkeit und Preis. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-107 | Nach der Prüfung: Wenn der Originalschlüssel benötigt wird, bekommt er eine klare Einsendeanweisung. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-108 | Nach der Prüfung: Der Originalschlüssel kann je nach Fall versichert oder per geeigneter nachverfolgbarer Sendungsart e… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-109 | Auch für mechanische Autoschlüssel: Mechanische Autoschlüssel oder einzelne Schlüsselbärte können in dieser Rubrik eben… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-110 | Auch für mechanische Autoschlüssel: Es muss klar erklärt werden, dass ein kopierter Bart bei vielen Fahrzeugen nicht au… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-111 | Schlüssel nach Code wird als echter Online Shop aufgebaut. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-112 | Geplant sind ungefähr 50 bis 52 einzelne Codelinien beziehungsweise Produkte. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-113 | Bei diesen Artikeln ist grundsätzlich keine Einsendung des Originalschlüssels erforderlich. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-114 | Jede Codelinie erhält eine eigene Produktseite mit verständlicher Beschreibung. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-095 | Backend Regel: Diese Werte müssen ohne Entwickler je Fahrzeuggruppe, Produkt oder Leistung geändert werden können. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-096 | Schlüssel nach Vorlage: Dieser Bereich ist eine eigenständige geführte Anfrage. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-097 | Schlüssel nach Vorlage: Er muss den Schlüssel zunächst nicht einsenden. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-098 | Schritt 1: Foto der Vorderseite hochladen. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-099 | Schritt 2: Foto der Rückseite hochladen. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-100 | Schritt 3: Foto von vorne auf Spitze und Profil hochladen. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-101 | Schritt 4: Hersteller oder Marke angeben, falls bekannt. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-102 | Schritt 5: Nummern und Beschriftungen eintragen oder deutlich fotografieren. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-103 | Schritt 6: Gewünschte Stückzahl angeben. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-104 | Schritt 7: Kontaktdaten und Versandland angeben. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-105 | Schritt 8: Anfrage absenden. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-106 | Nach der Prüfung: Der Kunde erhält Machbarkeit und Preis. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-107 | Nach der Prüfung: Wenn der Originalschlüssel benötigt wird, bekommt er eine klare Einsendeanweisung. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-108 | Nach der Prüfung: Der Originalschlüssel kann je nach Fall versichert oder per geeigneter nachverfolgbarer Sendungsart e… | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-109 | Auch für mechanische Autoschlüssel: Mechanische Autoschlüssel oder einzelne Schlüsselbärte können in dieser Rubrik eben… | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-110 | Auch für mechanische Autoschlüssel: Es muss klar erklärt werden, dass ein kopierter Bart bei vielen Fahrzeugen nicht au… | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-111 | Schlüssel nach Code wird als echter Online Shop aufgebaut. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-112 | Geplant sind ungefähr 50 bis 52 einzelne Codelinien beziehungsweise Produkte. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-113 | Bei diesen Artikeln ist grundsätzlich keine Einsendung des Originalschlüssels erforderlich. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-114 | Jede Codelinie erhält eine eigene Produktseite mit verständlicher Beschreibung. | vorhanden | offen | EA-PRUEFER-06 |  |
 | L-115 | Beispielbilder zeigen, wo der Code typischerweise zu finden ist. | teilweise | offen | E9-DOKUMENTAR-01 |  |
-| L-116 | Eingabefeld für den Schlüsselcode mit Plausibilitätsprüfung des erwarteten Formats. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-117 | Optionaler oder verpflichtender Foto Upload nur bei Codelinien, bei denen ein optischer Abgleich sinnvoll ist. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-116 | Eingabefeld für den Schlüsselcode mit Plausibilitätsprüfung des erwarteten Formats. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-117 | Optionaler oder verpflichtender Foto Upload nur bei Codelinien, bei denen ein optischer Abgleich sinnvoll ist. | vorhanden | offen | EA-PRUEFER-06 |  |
 | L-118 | Hersteller, Anwendung, Codeformat, Lieferumfang und Stückzahl klar darstellen. | teilweise | offen | E8-TEXTER-01 |  |
-| L-119 | Direkt bezahlen, automatische Bestellbestätigung und interne Produktionsansicht. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-119 | Direkt bezahlen, automatische Bestellbestätigung und interne Produktionsansicht. | vorhanden | offen | EA-PRUEFER-06 |  |
 | L-120 | Shoplogik, Suche und Filter: Hersteller, Schlüsseltyp, Codelinie, Anwendung. | teilweise | offen | E6-BAUMEISTER-07 |  |
-| L-121 | Shoplogik, Produktpflege: Alle etwa 50 bis 52 Produkte ohne Programmierer bearbeitbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-122 | Shoplogik, Status: Neu, geprüft, in Fertigung, versendet, abgeschlossen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-123 | Shoplogik, Versand: Passende Versandart und Sendungsverfolgung je Produktklasse. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-124 | Shoplogik, Interne Ansicht: Code, Stückzahl, Kundendaten, Hinweise und Produktionsstatus auf einen Blick. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-125 | Kleine gleichschließende Systeme sollen direkt im Online Shop konfigurierbar und bestellbar sein. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-126 | Der Kunde stellt mehrere Zylinder zusammen, die alle mit demselben Schlüssel bedient werden. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-121 | Shoplogik, Produktpflege: Alle etwa 50 bis 52 Produkte ohne Programmierer bearbeitbar. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-122 | Shoplogik, Status: Neu, geprüft, in Fertigung, versendet, abgeschlossen. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-123 | Shoplogik, Versand: Passende Versandart und Sendungsverfolgung je Produktklasse. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-124 | Shoplogik, Interne Ansicht: Code, Stückzahl, Kundendaten, Hinweise und Produktionsstatus auf einen Blick. | vorhanden | offen | EA-PRUEFER-06 |  |
+| L-125 | Kleine gleichschließende Systeme sollen direkt im Online Shop konfigurierbar und bestellbar sein. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-126 | Der Kunde stellt mehrere Zylinder zusammen, die alle mit demselben Schlüssel bedient werden. | vorhanden | offen | EA-PRUEFER-07 |  |
 | L-127 | Auswahl, Zylinderart: Doppelzylinder, Knaufzylinder, Halbzylinder und weitere passende Bauformen je Hersteller. | teilweise | offen | E3-OPUS-07, E5-OPUS-02 |  |
-| L-128 | Auswahl, Maße: Maß A und Maß B beziehungsweise das jeweils passende Zylindermaß. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-129 | Auswahl, Funktion: Standard oder Not und Gefahrenfunktion, soweit für das Produkt verfügbar. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-128 | Auswahl, Maße: Maß A und Maß B beziehungsweise das jeweils passende Zylindermaß. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-129 | Auswahl, Funktion: Standard oder Not und Gefahrenfunktion, soweit für das Produkt verfügbar. | vorhanden | offen | EA-PRUEFER-07 |  |
 | L-130 | Auswahl, Menge: Beliebig viele Zylinder mit unterschiedlichen Maßen in derselben Schließung. | teilweise | offen | E5-OPUS-02 |  |
-| L-131 | Auswahl, Schlüssel: Gewünschte Gesamtanzahl gemeinsamer Schlüssel. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-132 | Auswahl, Schutz: Optional Sicherungskarte beziehungsweise geschütztes System. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-133 | Auswahl, Erweiterung: Option, ob spätere Erweiterbarkeit gewünscht ist. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-131 | Auswahl, Schlüssel: Gewünschte Gesamtanzahl gemeinsamer Schlüssel. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-132 | Auswahl, Schutz: Optional Sicherungskarte beziehungsweise geschütztes System. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-133 | Auswahl, Erweiterung: Option, ob spätere Erweiterbarkeit gewünscht ist. | vorhanden | offen | EA-PRUEFER-07 |  |
 | L-134 | Auswahl, Zusatzkomponenten: Je Hersteller mögliche weitere gleichschließende Komponenten. | teilweise | offen | E3-OPUS-07, E5-OPUS-02 |  |
-| L-135 | Maßauswahl: Eine einfache Zeichnung zeigt Innen und Außenmaß und erklärt, wie richtig gemessen wird. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-136 | Maßauswahl: Doppelzylinder, Knaufzylinder und Halbzylinder müssen optisch unterscheidbar erklärt werden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-137 | Maßauswahl: Fehleingaben durch Plausibilitätsprüfung und kurze Messhinweise reduzieren. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-138 | Bestellbeispiel: Drei gleichschließende Zylinder: 30/35, 40/40 und 55/30. Alle drei erhalten dieselbe Schließung und di… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-301 | Schließanlagen benötigen einen eigenen Projektkonfigurator. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-302 | Die Maske muss für ein Einfamilienhaus genauso funktionieren wie für Unternehmen, Hausverwaltungen, mehrere Gebäude ode… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-303 | Gleichschließung: Mehrere Zylinder werden mit demselben Schlüssel geöffnet. Geeignet für kleinere Objekte oder klar abg… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-304 | Zentralschlossanlage Z: Mehrere Einzelschlüssel öffnen jeweils eigene Türen und zusätzlich eine gemeinsame zentrale Tür… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-305 | Hauptschlüsselanlage HS: Einzelschlüssel öffnen definierte Türen. Ein Hauptschlüssel kann alle oder eine größere Gruppe… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-306 | Generalhauptschlüsselanlage GHS: Mehrere Hierarchiestufen und Bereiche werden kombiniert. Über Bereichs und Hauptschlüs… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-307 | Erweiterbare Anlage: Die Anlage wird so gewählt und geplant, dass später weitere Türen, Nutzer oder Gebäude ergänzt wer… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-308 | Neben jeder Auswahl steht ein Info Symbol. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-309 | Beim Antippen erscheint eine kurze Erklärung und möglichst eine einfache Grafik. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-310 | Der Kunde muss die Abkürzungen Z, HS oder GHS nicht vorher kennen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-311 | Der Konfigurator soll am Ende eine strukturierte Zusammenfassung erzeugen, sodass aus der Kundenanfrage bereits ein bra… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-312 | Kundentyp: Privat, Unternehmen, Hausverwaltung, öffentliche Einrichtung, sonstige Organisation. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-313 | Objekt: Anzahl Gebäude, Liegenschaften, Bereiche und Schließstellen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-314 | Nutzer: Anzahl Nutzer, Rollen, Abteilungen oder Schlüsselinhaber. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-315 | Bestehende Anlage: Hersteller, System, vorhandene Sicherungskarte, Fotos oder Schließplan. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-316 | Erweiterung: Soll die Anlage später um Türen, Nutzer oder weitere Immobilien ergänzt werden? | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-317 | Türen: Bezeichnung, Zylindertyp und Zylindermaß je Tür. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-318 | Berechtigungen: Wer darf welche Türen öffnen? Berechtigungsgruppen und Hierarchien. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-319 | Schlüssel: Anzahl je Person, Rolle oder Gruppe. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-320 | Dokumente: Upload von Türlisten, Grundrissen, Fotos und vorhandenen Plänen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-321 | Service: Montage, Beratungstermin, gewünschter Projektzeitraum, Budgetrahmen optional. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-322 | Vor dem Absenden sieht der Kunde eine Zusammenfassung. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-323 | Im Backend entsteht dieselbe strukturierte Projektübersicht, die als PDF oder interne Auftragszusammenfassung gespeiche… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-324 | Elektronische Zutrittslösungen sind eine eigene Hauptkategorie. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-325 | Sie werden nicht nur als Unterpunkt von Schließanlagen oder Sicherheitstechnik versteckt. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-326 | RFID Transponder und Zutrittskarten | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-327 | Smartphone und App Steuerung | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-328 | PIN Code und Tastatur | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-329 | Digitale Zylinder | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-330 | Elektronische Beschläge und Smart Locks | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-331 | Zeitlich begrenzte Zugangsberechtigungen | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-332 | Benutzerverwaltung und Berechtigungsgruppen | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-333 | Berechtigungen nach Wochentag oder Uhrzeit | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-334 | Schnelles Sperren verlorener Karten oder Transponder | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-335 | Optional Ereignisprotokoll, soweit System und Einsatzbereich dies rechtmäßig ermöglichen | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-336 | Kombination aus mechanischer und elektronischer Lösung | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-337 | Objekt: Privat, Büro, Praxis, Gewerbe, Hausverwaltung, mehrere Standorte. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-338 | Umfang: Anzahl Türen und Nutzer. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-339 | Identmedium: Karte, Transponder, Smartphone, PIN oder Kombination. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-340 | Verwaltung: Lokal oder online verwaltet. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-341 | Berechtigungen: Zeitlich begrenzt, nach Gruppen, Wochentagen oder Uhrzeiten. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-342 | Standorte: Ein Objekt oder mehrere Liegenschaften. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-343 | Integration: Kombination mit vorhandener mechanischer Anlage gewünscht. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-344 | Service: Montage, Einrichtung und Einweisung vor Ort. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-345 | Dieser Bereich bündelt klassische Schließ und Türtechnik, die weder ausschließlich zu Schließanlagen noch zum Autoschlü… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-346 | Profilzylinder und Spezialzylinder | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-347 | Einsteckschlösser | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-348 | Mehrfachverriegelungen | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-349 | Schutzbeschläge | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-350 | Türzusatzschlösser | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-351 | Türschließer | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-352 | Panik und Fluchttürtechnik im passenden Leistungsrahmen | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-353 | Reparatur und Austausch von Schließkomponenten | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-354 | Technische Beratung zu bestehenden Türen | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-355 | Montage und Anpassung | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-356 | Produkt und Leistungsseiten können sinnvoll auf gleichschließende Zylinder, Schließanlagen, elektronische Zutrittslösun… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-357 | Die Hauptnavigation soll trotzdem klar getrennt bleiben. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-358 | Sicherheitstechnik wird als eigener, sichtbarer Kompetenzbereich aufgebaut. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-359 | Schwerpunkt sind Einbruchschutz, Überwachung, Alarmierung und die kombinierte Absicherung von Gebäuden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-360 | Videoüberwachung: Kameras für Innen und Außen, geeignete Aufzeichnung, Netzwerk und App Zugriff. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-361 | Alarmtechnik: Alarmanlagen, Bewegungsmelder, Glasbruchsensoren, Tür und Fensterkontakte. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-362 | Außenhaut: Absicherung erreichbarer Türen, Fenster, Keller, Garage und Nebengebäude. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-363 | Mechanischer Schutz: Zusatzschlösser, Schutzbeschläge, Sicherheitszylinder und weitere mechanische Sicherungen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-364 | Smarte Funktionen: Anwesenheitssimulation, Sicherheitsbeleuchtung, geeignete Schaltmodule und Fernsteuerung. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-365 | Panik und Alarm: Geeignete Panik oder Alarmtaster und Benachrichtigungswege. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-366 | Kombinierte Konzepte: Mechanik, Elektronik, Zutrittskontrolle, Kamera und Alarm sinnvoll zusammenführen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-367 | Objektart, Anzahl Zugänge und leicht erreichbare Fenster abfragen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-368 | Garage, Keller, Nebengebäude und Außenflächen berücksichtigen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-369 | Vorhandene Kamera, Alarm oder Schließtechnik erfassen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-370 | Schwerpunkte auswählen: Kamera, Alarm, Glasbruch, Fenster, Türen, Zutritt oder Außenbereich. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-371 | Internet, WLAN und gewünschte App Steuerung abfragen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-372 | Fotos und Grundriss Upload ermöglichen, Budgetrahmen optional, Vor Ort Termin anfragbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-373 | Bei Video, Audio und Protokollfunktionen muss die Website auf rechtmäßige Nutzung und die Verantwortung des Betreibers … | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-374 | Verdeckte Audioüberwachung wird nicht als Standardprodukt beworben. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-375 | Gegensprech und Alarmfunktionen werden nur für zulässige Einsatzzwecke angeboten. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-376 | Nicht jede Leistung soll technisch in denselben Shop Ablauf gezwungen werden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-377 | Vier unterschiedliche Wege sorgen für eine verständliche und saubere Nutzerführung. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-378 | Direkt kaufen: Schlüssel nach Code, gleichschließende Zylinder, geeignete Standardprodukte. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-379 | Geführte Anfrage: Schlüssel nach Vorlage, unklare Autoschlüssel Fälle, Reparaturen und Sicherheitstechnik. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-135 | Maßauswahl: Eine einfache Zeichnung zeigt Innen und Außenmaß und erklärt, wie richtig gemessen wird. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-136 | Maßauswahl: Doppelzylinder, Knaufzylinder und Halbzylinder müssen optisch unterscheidbar erklärt werden. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-137 | Maßauswahl: Fehleingaben durch Plausibilitätsprüfung und kurze Messhinweise reduzieren. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-138 | Bestellbeispiel: Drei gleichschließende Zylinder: 30/35, 40/40 und 55/30. Alle drei erhalten dieselbe Schließung und di… | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-301 | Schließanlagen benötigen einen eigenen Projektkonfigurator. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-302 | Die Maske muss für ein Einfamilienhaus genauso funktionieren wie für Unternehmen, Hausverwaltungen, mehrere Gebäude ode… | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-303 | Gleichschließung: Mehrere Zylinder werden mit demselben Schlüssel geöffnet. Geeignet für kleinere Objekte oder klar abg… | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-304 | Zentralschlossanlage Z: Mehrere Einzelschlüssel öffnen jeweils eigene Türen und zusätzlich eine gemeinsame zentrale Tür… | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-305 | Hauptschlüsselanlage HS: Einzelschlüssel öffnen definierte Türen. Ein Hauptschlüssel kann alle oder eine größere Gruppe… | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-306 | Generalhauptschlüsselanlage GHS: Mehrere Hierarchiestufen und Bereiche werden kombiniert. Über Bereichs und Hauptschlüs… | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-307 | Erweiterbare Anlage: Die Anlage wird so gewählt und geplant, dass später weitere Türen, Nutzer oder Gebäude ergänzt wer… | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-308 | Neben jeder Auswahl steht ein Info Symbol. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-309 | Beim Antippen erscheint eine kurze Erklärung und möglichst eine einfache Grafik. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-310 | Der Kunde muss die Abkürzungen Z, HS oder GHS nicht vorher kennen. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-311 | Der Konfigurator soll am Ende eine strukturierte Zusammenfassung erzeugen, sodass aus der Kundenanfrage bereits ein bra… | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-312 | Kundentyp: Privat, Unternehmen, Hausverwaltung, öffentliche Einrichtung, sonstige Organisation. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-313 | Objekt: Anzahl Gebäude, Liegenschaften, Bereiche und Schließstellen. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-314 | Nutzer: Anzahl Nutzer, Rollen, Abteilungen oder Schlüsselinhaber. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-315 | Bestehende Anlage: Hersteller, System, vorhandene Sicherungskarte, Fotos oder Schließplan. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-316 | Erweiterung: Soll die Anlage später um Türen, Nutzer oder weitere Immobilien ergänzt werden? | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-317 | Türen: Bezeichnung, Zylindertyp und Zylindermaß je Tür. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-318 | Berechtigungen: Wer darf welche Türen öffnen? Berechtigungsgruppen und Hierarchien. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-319 | Schlüssel: Anzahl je Person, Rolle oder Gruppe. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-320 | Dokumente: Upload von Türlisten, Grundrissen, Fotos und vorhandenen Plänen. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-321 | Service: Montage, Beratungstermin, gewünschter Projektzeitraum, Budgetrahmen optional. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-322 | Vor dem Absenden sieht der Kunde eine Zusammenfassung. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-323 | Im Backend entsteht dieselbe strukturierte Projektübersicht, die als PDF oder interne Auftragszusammenfassung gespeiche… | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-324 | Elektronische Zutrittslösungen sind eine eigene Hauptkategorie. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-325 | Sie werden nicht nur als Unterpunkt von Schließanlagen oder Sicherheitstechnik versteckt. | vorhanden | offen | EA-PRUEFER-07 |  |
+| L-326 | RFID Transponder und Zutrittskarten | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-327 | Smartphone und App Steuerung | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-328 | PIN Code und Tastatur | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-329 | Digitale Zylinder | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-330 | Elektronische Beschläge und Smart Locks | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-331 | Zeitlich begrenzte Zugangsberechtigungen | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-332 | Benutzerverwaltung und Berechtigungsgruppen | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-333 | Berechtigungen nach Wochentag oder Uhrzeit | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-334 | Schnelles Sperren verlorener Karten oder Transponder | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-335 | Optional Ereignisprotokoll, soweit System und Einsatzbereich dies rechtmäßig ermöglichen | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-336 | Kombination aus mechanischer und elektronischer Lösung | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-337 | Objekt: Privat, Büro, Praxis, Gewerbe, Hausverwaltung, mehrere Standorte. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-338 | Umfang: Anzahl Türen und Nutzer. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-339 | Identmedium: Karte, Transponder, Smartphone, PIN oder Kombination. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-340 | Verwaltung: Lokal oder online verwaltet. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-341 | Berechtigungen: Zeitlich begrenzt, nach Gruppen, Wochentagen oder Uhrzeiten. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-342 | Standorte: Ein Objekt oder mehrere Liegenschaften. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-343 | Integration: Kombination mit vorhandener mechanischer Anlage gewünscht. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-344 | Service: Montage, Einrichtung und Einweisung vor Ort. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-345 | Dieser Bereich bündelt klassische Schließ und Türtechnik, die weder ausschließlich zu Schließanlagen noch zum Autoschlü… | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-346 | Profilzylinder und Spezialzylinder | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-347 | Einsteckschlösser | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-348 | Mehrfachverriegelungen | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-349 | Schutzbeschläge | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-350 | Türzusatzschlösser | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-351 | Türschließer | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-352 | Panik und Fluchttürtechnik im passenden Leistungsrahmen | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-353 | Reparatur und Austausch von Schließkomponenten | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-354 | Technische Beratung zu bestehenden Türen | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-355 | Montage und Anpassung | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-356 | Produkt und Leistungsseiten können sinnvoll auf gleichschließende Zylinder, Schließanlagen, elektronische Zutrittslösun… | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-357 | Die Hauptnavigation soll trotzdem klar getrennt bleiben. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-358 | Sicherheitstechnik wird als eigener, sichtbarer Kompetenzbereich aufgebaut. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-359 | Schwerpunkt sind Einbruchschutz, Überwachung, Alarmierung und die kombinierte Absicherung von Gebäuden. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-360 | Videoüberwachung: Kameras für Innen und Außen, geeignete Aufzeichnung, Netzwerk und App Zugriff. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-361 | Alarmtechnik: Alarmanlagen, Bewegungsmelder, Glasbruchsensoren, Tür und Fensterkontakte. | vorhanden | offen | EA-PRUEFER-08 |  |
+| L-362 | Außenhaut: Absicherung erreichbarer Türen, Fenster, Keller, Garage und Nebengebäude. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-363 | Mechanischer Schutz: Zusatzschlösser, Schutzbeschläge, Sicherheitszylinder und weitere mechanische Sicherungen. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-364 | Smarte Funktionen: Anwesenheitssimulation, Sicherheitsbeleuchtung, geeignete Schaltmodule und Fernsteuerung. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-365 | Panik und Alarm: Geeignete Panik oder Alarmtaster und Benachrichtigungswege. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-366 | Kombinierte Konzepte: Mechanik, Elektronik, Zutrittskontrolle, Kamera und Alarm sinnvoll zusammenführen. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-367 | Objektart, Anzahl Zugänge und leicht erreichbare Fenster abfragen. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-368 | Garage, Keller, Nebengebäude und Außenflächen berücksichtigen. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-369 | Vorhandene Kamera, Alarm oder Schließtechnik erfassen. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-370 | Schwerpunkte auswählen: Kamera, Alarm, Glasbruch, Fenster, Türen, Zutritt oder Außenbereich. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-371 | Internet, WLAN und gewünschte App Steuerung abfragen. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-372 | Fotos und Grundriss Upload ermöglichen, Budgetrahmen optional, Vor Ort Termin anfragbar. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-373 | Bei Video, Audio und Protokollfunktionen muss die Website auf rechtmäßige Nutzung und die Verantwortung des Betreibers … | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-374 | Verdeckte Audioüberwachung wird nicht als Standardprodukt beworben. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-375 | Gegensprech und Alarmfunktionen werden nur für zulässige Einsatzzwecke angeboten. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-376 | Nicht jede Leistung soll technisch in denselben Shop Ablauf gezwungen werden. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-377 | Vier unterschiedliche Wege sorgen für eine verständliche und saubere Nutzerführung. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-378 | Direkt kaufen: Schlüssel nach Code, gleichschließende Zylinder, geeignete Standardprodukte. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-379 | Geführte Anfrage: Schlüssel nach Vorlage, unklare Autoschlüssel Fälle, Reparaturen und Sicherheitstechnik. | vorhanden | offen | EA-PRUEFER-09 |  |
 | L-380 | Projektkonfigurator: Mechanische Schließanlagen, elektronische Zutrittslösungen und größere Sicherheitsprojekte. | teilweise | offen | E5-OPUS-01, E6-BAUMEISTER-04 |  |
-| L-381 | Termin mit Anzahlung: Autoschlüssel Aufträge, bei denen Fahrzeug und Kunde vor Ort benötigt werden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-382 | Die Prozesse dürfen technisch unterschiedlich sein, müssen aber dasselbe Design, dieselbe klare Sprache und dieselbe mo… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-383 | Die Website muss von Beginn an für viele hochwertige Unterseiten vorbereitet sein, ohne dass Navigation oder Technik sp… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-384 | Autoschlüssel nachmachen, kopieren, programmieren und anlernen | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-385 | Zweitschlüssel, Funkschlüssel, Smart Key, Keyless und Schlüsselbart | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-386 | Schlüssel nach Code und Schlüssel nach Vorlage | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-387 | Gleichschließende Zylinder und Sperrschließungen | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-388 | Schließanlagen, Z Anlage, HS und GHS | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-389 | Elektronische Schließsysteme, RFID und Zutrittskontrolle | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-390 | Videoüberwachung, Alarmanlagen und Einbruchschutz | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-381 | Termin mit Anzahlung: Autoschlüssel Aufträge, bei denen Fahrzeug und Kunde vor Ort benötigt werden. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-382 | Die Prozesse dürfen technisch unterschiedlich sein, müssen aber dasselbe Design, dieselbe klare Sprache und dieselbe mo… | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-383 | Die Website muss von Beginn an für viele hochwertige Unterseiten vorbereitet sein, ohne dass Navigation oder Technik sp… | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-384 | Autoschlüssel nachmachen, kopieren, programmieren und anlernen | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-385 | Zweitschlüssel, Funkschlüssel, Smart Key, Keyless und Schlüsselbart | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-386 | Schlüssel nach Code und Schlüssel nach Vorlage | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-387 | Gleichschließende Zylinder und Sperrschließungen | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-388 | Schließanlagen, Z Anlage, HS und GHS | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-389 | Elektronische Schließsysteme, RFID und Zutrittskontrolle | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-390 | Videoüberwachung, Alarmanlagen und Einbruchschutz | vorhanden | offen | EA-PRUEFER-09 |  |
 | L-391 | Eigene Hersteller und Modellseiten für häufige Fahrzeuge, mit echten technischen Informationen und klarem Ablauf. | teilweise | offen | E3-OPUS-06, E8-OPUS-02 |  |
 | L-392 | Stadtseiten für lokale Sichtbarkeit, jeweils mit individuellem lokalen Mehrwert statt massenhaft identischem Text. | teilweise | offen | E7-AUTOR-01, E7-BAUMEISTER-01 |  |
-| L-393 | Ratgeberseiten für typische Fragen, Probleme und Suchanfragen rund um Autoschlüssel, Schließtechnik und Sicherheit. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-393 | Ratgeberseiten für typische Fragen, Probleme und Suchanfragen rund um Autoschlüssel, Schließtechnik und Sicherheit. | vorhanden | offen | EA-PRUEFER-09 |  |
 | L-394 | Keine dünnen Massenkopien. | teilweise | offen | E8-TEXTER-01 |  |
 | L-395 | Jede wichtige Seite soll die konkrete Suchabsicht beantworten, passende interne Links enthalten und zu einem klaren näc… | teilweise | offen | E4-OPUS-04, E8-OPUS-02 |  |
-| L-396 | Der Webdesigner soll nicht nur die sichtbare Kundenseite bauen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-397 | Entscheidend ist eine saubere interne Bearbeitung von Bestellungen, Terminen, Anfragen und Projekten. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-398 | Zentrale Vorgänge: Bestellungen, Anfragen, Termine und Projekte in einer übersichtlichen Struktur. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-399 | Uploads: Fotos, Fahrzeugschein, Grundrisse und Dokumente direkt am Vorgang. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-400 | Status: Filter und Status je Bereich, inklusive interner Notizen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-401 | Preise: Preis, Anzahlung, Terminlänge und Vorlauf flexibel änderbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-402 | Termine: Verschieben, sperren, Auslastung steuern und Erinnerungen versenden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-403 | Produkte: Code Schlüssel und Zylinderprodukte ohne Programmierkenntnisse pflegbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-404 | Projektberichte: Zusammenfassung für Schließanlage, Zutritt und Sicherheit als PDF oder interne Ansicht. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-405 | SEO: Title, Description, Texte, Bilder und interne Verlinkung je Seite pflegbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-406 | Ausbau: Schnittstellen zu Buchhaltung, Warenwirtschaft oder CRM später möglich. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-396 | Der Webdesigner soll nicht nur die sichtbare Kundenseite bauen. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-397 | Entscheidend ist eine saubere interne Bearbeitung von Bestellungen, Terminen, Anfragen und Projekten. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-398 | Zentrale Vorgänge: Bestellungen, Anfragen, Termine und Projekte in einer übersichtlichen Struktur. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-399 | Uploads: Fotos, Fahrzeugschein, Grundrisse und Dokumente direkt am Vorgang. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-400 | Status: Filter und Status je Bereich, inklusive interner Notizen. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-401 | Preise: Preis, Anzahlung, Terminlänge und Vorlauf flexibel änderbar. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-402 | Termine: Verschieben, sperren, Auslastung steuern und Erinnerungen versenden. | vorhanden | offen | EA-PRUEFER-09 |  |
+| L-403 | Produkte: Code Schlüssel und Zylinderprodukte ohne Programmierkenntnisse pflegbar. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-404 | Projektberichte: Zusammenfassung für Schließanlage, Zutritt und Sicherheit als PDF oder interne Ansicht. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-405 | SEO: Title, Description, Texte, Bilder und interne Verlinkung je Seite pflegbar. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-406 | Ausbau: Schnittstellen zu Buchhaltung, Warenwirtschaft oder CRM später möglich. | vorhanden | offen | EA-PRUEFER-10 |  |
 | L-407 | Kamera Upload, Formulare und Terminbuchung müssen auf Smartphones besonders einfach funktionieren. | teilweise | offen | E3-OPUS-09, E6-OPUS-01 |  |
-| L-408 | Lange Konfiguratoren mit Fortschrittsanzeige und möglichst Zwischenspeicherung bauen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-409 | Schutz und Zugriffskontrolle müssen bereits in der technischen Planung berücksichtigt werden. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-408 | Lange Konfiguratoren mit Fortschrittsanzeige und möglichst Zwischenspeicherung bauen. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-409 | Schutz und Zugriffskontrolle müssen bereits in der technischen Planung berücksichtigt werden. | vorhanden | offen | EA-PRUEFER-10 |  |
 | L-410 | Datenschutzerklärung und Impressum | teilweise | offen | E9-DOKUMENTAR-01 |  |
-| L-411 | Widerrufsbelehrung, Versand und Zahlungsinformationen und Shop Pflichtinformationen | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-411 | Widerrufsbelehrung, Versand und Zahlungsinformationen und Shop Pflichtinformationen | vorhanden | offen | EA-PRUEFER-10 |  |
 | L-412 | AGB, sofern eingesetzt und juristisch abgestimmt | teilweise | offen | E9-DOKUMENTAR-01 |  |
-| L-413 | HTTPS und geschützter Datei Upload | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-414 | Speicherfristen für Fahrzeugschein, Bilder, Grundrisse und Projektunterlagen definieren | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-415 | Zugriff auf Kundendokumente nur für berechtigte interne Nutzer | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-416 | Datenschutzkonformes Cookie und Tracking Konzept | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-417 | Backup und Wiederherstellungskonzept | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-418 | Spamschutz ohne unnötige Hürden für echte Kunden | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-419 | Rechtliche Hinweise bei Videoüberwachung, Aufzeichnung und Zutrittsprotokollierung | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-413 | HTTPS und geschützter Datei Upload | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-414 | Speicherfristen für Fahrzeugschein, Bilder, Grundrisse und Projektunterlagen definieren | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-415 | Zugriff auf Kundendokumente nur für berechtigte interne Nutzer | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-416 | Datenschutzkonformes Cookie und Tracking Konzept | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-417 | Backup und Wiederherstellungskonzept | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-418 | Spamschutz ohne unnötige Hürden für echte Kunden | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-419 | Rechtliche Hinweise bei Videoüberwachung, Aufzeichnung und Zutrittsprotokollierung | vorhanden | offen | EA-PRUEFER-10 |  |
 | L-420 | Rechtstexte und datenschutzrelevante Prozesse müssen vor Veröffentlichung geprüft werden. | teilweise | offen | E9-OPUS-03 |  |
 | L-421 | Besonders zu beachten sind kundenspezifische Sonderanfertigungen, Anzahlungen, Dokument Uploads und Überwachungstechnik. | teilweise | offen | E9-DOKUMENTAR-01 |  |
 | L-422 | Das Projekt kann in Phasen umgesetzt werden, ohne die spätere Gesamtarchitektur zu verbauen. | nicht pruefbar | offen | E2-OPUS-01 |  |
-| L-423 | Phase 1: Grunddesign, Navigation, Autoschlüssel Bereich, Schlüssel nach Vorlage, Schlüssel nach Code, Shopbasis, Zahlun… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-424 | Phase 2: Gleichschließende Zylinder, Sperrschließungen, mechanische Schließanlagen und Projektzusammenfassung. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-425 | Phase 3: Elektronische Zutrittslösungen, Sicherheitstechnik, Sicherheitscheck und weitere Shopprodukte. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-423 | Phase 1: Grunddesign, Navigation, Autoschlüssel Bereich, Schlüssel nach Vorlage, Schlüssel nach Code, Shopbasis, Zahlun… | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-424 | Phase 2: Gleichschließende Zylinder, Sperrschließungen, mechanische Schließanlagen und Projektzusammenfassung. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-425 | Phase 3: Elektronische Zutrittslösungen, Sicherheitstechnik, Sicherheitscheck und weitere Shopprodukte. | vorhanden | offen | EA-PRUEFER-10 |  |
 | L-426 | Phase 4: SEO Ausbau mit Fahrzeugmarken, Modellen, Städten, Ratgeber und zusätzlichen Produktlinien. | teilweise | offen | E3-OPUS-06, E7-BAUMEISTER-01, E8-AUTOR-01, E8-OPUS-02 |  |
 | L-427 | Phase 5: Automatisierungen, weitere Zahlungsarten, CRM oder Warenwirtschaft Anbindungen und zusätzliche Auswertungen. | teilweise | offen | E9-DOKUMENTAR-01 |  |
-| L-428 | Der erste klickbare Prototyp soll mindestens die Kernprozesse Autoschlüssel Termin, Schlüssel nach Vorlage, Schlüssel n… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-429 | Name und Domain: SCHLÜSSELMACHER24 beziehungsweise schluesselmacher24.de. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-428 | Der erste klickbare Prototyp soll mindestens die Kernprozesse Autoschlüssel Termin, Schlüssel nach Vorlage, Schlüssel n… | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-429 | Name und Domain: SCHLÜSSELMACHER24 beziehungsweise schluesselmacher24.de. | vorhanden | offen | EA-PRUEFER-10 |  |
 | L-430 | 70 Prozent Fokus auf Autoschlüssel und Fahrzeugschlüssel Dienstleistungen. | nicht pruefbar | offen | E4-OPUS-01, E4-OPUS-05 |  |
 | L-431 | 30 Prozent Fokus auf klassische Schlüssel, Schließtechnik, Schließanlagen, elektronische Zutrittslösungen und Sicherhei… | nicht pruefbar | offen | E4-OPUS-03, E6-BAUMEISTER-04 |  |
-| L-432 | Autoschlüssel mit geführtem Formular, Schlüsselbildern, Fahrzeugschein Upload, Preislogik, Anzahlung und Terminbuchung. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-433 | Termine im Regelfall erst nach etwa sieben bis acht Tagen buchbar, Vorlauf im Backend steuerbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-434 | Standard Anzahlung 69,90 Euro, je Fahrzeug oder Leistung flexibel etwa 50 bis 80 Euro anpassbar. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-435 | Schlüssel nach Vorlage als Anfrage mit drei Fotos und möglicher späterer Einsendung des Originals. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-436 | Schlüssel nach Code als Online Shop mit ungefähr 50 bis 52 einzelnen Codelinien. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-437 | Gleichschließende Zylinder und Sperrschließungen als direkter Konfigurator mit Zylinderart, Maßen, Funktion und Schlüss… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-438 | Schließanlagen als umfangreicher Projektkonfigurator mit verständlicher Erklärung von Gleichschließung, Z, HS, GHS und … | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-439 | Elektronische Zutrittslösungen als eigene Hauptkategorie mit RFID, Karte, Transponder, PIN, App und digitalen Zylindern. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-440 | Tür und Schließtechnik als eigener Bereich. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-441 | Sicherheitstechnik als eigener Bereich mit Kameras, Videoüberwachung, Alarmtechnik, Glasbruch, Bewegungsmeldern, Tür un… | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-442 | Klare Trennung zwischen direktem Kauf, geführter Anfrage, Projektkonfigurator und Terminauftrag. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-443 | Mobile Bedienung und Kamera Upload haben von Anfang an Priorität. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-444 | Die Architektur muss deutschlandweiten Shopbetrieb, lokale Servicebereiche und starken SEO Ausbau ermöglichen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| L-445 | Der Webdesigner soll nicht nur eine schöne Oberfläche bauen. | vorhanden | offen | EA-PRUEFER-02 |  |
+| L-432 | Autoschlüssel mit geführtem Formular, Schlüsselbildern, Fahrzeugschein Upload, Preislogik, Anzahlung und Terminbuchung. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-433 | Termine im Regelfall erst nach etwa sieben bis acht Tagen buchbar, Vorlauf im Backend steuerbar. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-434 | Standard Anzahlung 69,90 Euro, je Fahrzeug oder Leistung flexibel etwa 50 bis 80 Euro anpassbar. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-435 | Schlüssel nach Vorlage als Anfrage mit drei Fotos und möglicher späterer Einsendung des Originals. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-436 | Schlüssel nach Code als Online Shop mit ungefähr 50 bis 52 einzelnen Codelinien. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-437 | Gleichschließende Zylinder und Sperrschließungen als direkter Konfigurator mit Zylinderart, Maßen, Funktion und Schlüss… | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-438 | Schließanlagen als umfangreicher Projektkonfigurator mit verständlicher Erklärung von Gleichschließung, Z, HS, GHS und … | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-439 | Elektronische Zutrittslösungen als eigene Hauptkategorie mit RFID, Karte, Transponder, PIN, App und digitalen Zylindern. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-440 | Tür und Schließtechnik als eigener Bereich. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-441 | Sicherheitstechnik als eigener Bereich mit Kameras, Videoüberwachung, Alarmtechnik, Glasbruch, Bewegungsmeldern, Tür un… | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-442 | Klare Trennung zwischen direktem Kauf, geführter Anfrage, Projektkonfigurator und Terminauftrag. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-443 | Mobile Bedienung und Kamera Upload haben von Anfang an Priorität. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-444 | Die Architektur muss deutschlandweiten Shopbetrieb, lokale Servicebereiche und starken SEO Ausbau ermöglichen. | vorhanden | offen | EA-PRUEFER-10 |  |
+| L-445 | Der Webdesigner soll nicht nur eine schöne Oberfläche bauen. | vorhanden | offen | EA-PRUEFER-10 |  |
 | L-446 | Die Seite muss die wichtigsten Kundenprozesse verständlich, mobil und technisch belastbar abbilden und später ohne komp… | teilweise | offen | E3-OPUS-01, E6-OPUS-01 |  |
 
 ## EL · Ergänzender Leitfaden
@@ -366,21 +366,21 @@ Einträge: 623 · belegt: 1
 | EL-02 | Wichtig sind eine einfache Bedienung, fachlich richtige Angaben und eine gute technische Basis für späteres Wachstum. | nicht pruefbar | offen | E2-OPUS-01 |  |
 | EL-03 | Rund 50–55 Schlüsselangebote nach Code: Eigene bestellbare Produktseiten für die tatsächlich angebotenen Schlüsseltypen. | vorhanden | offen | EA-PRUEFER-02 |  |
 | EL-04 | Saubere Zuordnung nach Hersteller/Profil/Codeserie, verständliche Eingabe und klare Preis- und Versandinformationen. | teilweise | offen | E6-OPUS-01 |  |
-| EL-05 | Schlüssel nach Foto oder Einsendung: Kunde lädt ein Foto hoch und sendet eine Anfrage. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-06 | Interne manuelle Prüfung, ob die Anfertigung möglich ist. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-07 | Rückmeldung als Freigabe („grün“), Rückfrage oder Absage. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-08 | Erst nach Freigabe bestellt der Kunde bzw. sendet seinen Originalschlüssel ein, wenn erforderlich. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-09 | Autoschlüssel: Schwerpunkt Wetzlar und Umgebung, aber Terminanfragen aus ganz Deutschland sind möglich. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-10 | Kunden können für einen Termin anreisen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-11 | überregionale Außeneinsätze nur nach individueller Prüfung von Aufwand und Kosten. | vorhanden | offen | EA-PRUEFER-02 |  |
+| EL-05 | Schlüssel nach Foto oder Einsendung: Kunde lädt ein Foto hoch und sendet eine Anfrage. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-06 | Interne manuelle Prüfung, ob die Anfertigung möglich ist. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-07 | Rückmeldung als Freigabe („grün“), Rückfrage oder Absage. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-08 | Erst nach Freigabe bestellt der Kunde bzw. sendet seinen Originalschlüssel ein, wenn erforderlich. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-09 | Autoschlüssel: Schwerpunkt Wetzlar und Umgebung, aber Terminanfragen aus ganz Deutschland sind möglich. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-10 | Kunden können für einen Termin anreisen. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-11 | überregionale Außeneinsätze nur nach individueller Prüfung von Aufwand und Kosten. | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-12 | Konfiguratoren: ABUS-Sperrschließungen sowie Schließanlagen über ABUS und BKS. | teilweise | offen | E5-OPUS-01, E5-OPUS-02 |  |
-| EL-13 | weitere Hersteller oder Sonderlösungen auf Anfrage. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-14 | Konfiguratoren sollen klar erklären, was ausgewählt und bestellt wird. | vorhanden | offen | EA-PRUEFER-02 |  |
+| EL-13 | weitere Hersteller oder Sonderlösungen auf Anfrage. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-14 | Konfiguratoren sollen klar erklären, was ausgewählt und bestellt wird. | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-15 | Vertrauensbasis: Hinter dem Shop steht die echte Schlüssel Schmiede in Wetzlar, mit Werkstatt, fachlicher Beratung und … | teilweise | offen | E4-JURY-01, E8-AUTOR-02, EA-JURY-01 |  |
 | EL-16 | Jede Rubrik braucht eine eindeutige Handlungsaufforderung: „Nach Code bestellen“, „Foto prüfen lassen“, „Termin anfrage… | teilweise | offen | E3-OPUS-01, E4-OPUS-04 |  |
-| EL-17 | Der Status einer Fotoanfrage muss intern nachvollziehbar sein: eingegangen → geprüft → freigegeben / Rückfrage / nicht … | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-18 | Kundinnen und Kunden dürfen eine Prüfung nicht mit einer Fertigungszusage verwechseln. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-19 | Mobile Nutzung besonders einfach halten: gut erkennbare Formulare, sichere Foto-Uploads, verständliche Bestätigungen un… | vorhanden | offen | EA-PRUEFER-02 |  |
+| EL-17 | Der Status einer Fotoanfrage muss intern nachvollziehbar sein: eingegangen → geprüft → freigegeben / Rückfrage / nicht … | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-18 | Kundinnen und Kunden dürfen eine Prüfung nicht mit einer Fertigungszusage verwechseln. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-19 | Mobile Nutzung besonders einfach halten: gut erkennbare Formulare, sichere Foto-Uploads, verständliche Bestätigungen un… | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-20 | Grundsatz: Fachlich korrekte Produktdaten und zuverlässige Abläufe gehen vor möglichst vielen Funktionen. | nicht pruefbar | offen | E2-OPUS-01 |  |
 | EL-21 | Von Anfang an sauber vorbereiten. | nicht pruefbar | offen | E2-OPUS-01 |  |
 | EL-22 | Die rund 55 Produktseiten SEO-fähig aufbauen. | teilweise | offen | E8-OPUS-01 |  |
@@ -388,21 +388,21 @@ Einträge: 623 · belegt: 1
 | EL-24 | Keine 55 nahezu identischen Seiten ohne eigenständigen Nutzen erzeugen. | teilweise | offen | E8-TEXTER-01 |  |
 | EL-25 | Für jedes Angebot: passender Seitentitel, klare H1-Überschrift, kurze eigene Beschreibung, echte Produktinformationen/B… | teilweise | offen | E8-TEXTER-01 |  |
 | EL-26 | Kategorien logisch verlinken: Startseite → Schlüssel nach Code → Hersteller/Schlüsseltyp → Produkt. | teilweise | offen | E8-OPUS-01 |  |
-| EL-27 | Wichtige Produkte sollen nicht nur über eine Suche oder einen Filter erreichbar sein. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-28 | Eigene, gut verständliche Hauptseite für „Schlüssel nach Foto“. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-29 | Eigene, gut verständliche Hauptseite für „Schlüssel einschicken“. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-30 | Eigene, gut verständliche Hauptseite für „Autoschlüssel anfertigen/programmieren“. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-31 | Eigene, gut verständliche Hauptseite für „Sperrschließungen“. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-32 | Eigene, gut verständliche Hauptseite für „Schließanlagen“. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-33 | Mobile-first, gute Ladezeiten, stabile Darstellung, HTTPS und barrierearme Formulare. | vorhanden | offen | EA-PRUEFER-02 |  |
+| EL-27 | Wichtige Produkte sollen nicht nur über eine Suche oder einen Filter erreichbar sein. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-28 | Eigene, gut verständliche Hauptseite für „Schlüssel nach Foto“. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-29 | Eigene, gut verständliche Hauptseite für „Schlüssel einschicken“. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-30 | Eigene, gut verständliche Hauptseite für „Autoschlüssel anfertigen/programmieren“. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-31 | Eigene, gut verständliche Hauptseite für „Sperrschließungen“. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-32 | Eigene, gut verständliche Hauptseite für „Schließanlagen“. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-33 | Mobile-first, gute Ladezeiten, stabile Darstellung, HTTPS und barrierearme Formulare. | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-34 | Sprechende URLs, individuelle Title-Tags und Meta-Beschreibungen, saubere Überschriften. | teilweise | offen | E8-OPUS-01, E8-OPUS-02 |  |
-| EL-35 | XML-Sitemap, interne Links, korrekte robots-/Indexierungssteuerung und Canonical-Angaben. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-36 | Produkt-Strukturdaten nur mit zutreffenden Angaben zu Preis und Verfügbarkeit. | vorhanden | offen | EA-PRUEFER-02 |  |
+| EL-35 | XML-Sitemap, interne Links, korrekte robots-/Indexierungssteuerung und Canonical-Angaben. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-36 | Produkt-Strukturdaten nur mit zutreffenden Angaben zu Preis und Verfügbarkeit. | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-37 | Unfertige Test-/Vorschauseiten vor Suchmaschinen schützen. | teilweise | offen | E8-OPUS-01, E9-OPUS-03 |  |
 | EL-38 | zur Liveschaltung finale Domain und Weiterleitungen sauber konfigurieren. | teilweise | offen | E8-OPUS-01 |  |
 | EL-39 | Nach dem Start Google Search Console und bei geeigneten Verkaufsprodukten Google Merchant Center anbinden. | teilweise | offen | E9-DOKUMENTAR-01 |  |
 | EL-40 | Wichtige Aktionen messen: Bestellungen, Fotoanfragen, Terminanfragen und spätere Partneranmeldungen. | teilweise | offen | E9-OPUS-01 |  |
-| EL-41 | Datenschutz/Cookie-Regeln beachten. | vorhanden | offen | EA-PRUEFER-02 |  |
+| EL-41 | Datenschutz/Cookie-Regeln beachten. | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-42 | Echte Werkstatt-, Maschinen- und Produktfotos statt austauschbarer Werbetexte. | teilweise | offen | E9-DOKUMENTAR-01 |  |
 | EL-43 | nachvollziehbare Angaben zu Verfahren, Bearbeitung, Versand und Erreichbarkeit. | teilweise | offen | E6-OPUS-02, E8-TEXTER-03 |  |
 | EL-44 | Keine künstlich erzeugten Städte-Seiten oder falschen Filialangaben. | teilweise | offen | E6-BAUMEISTER-05, E7-BAUMEISTER-01 |  |
@@ -412,21 +412,21 @@ Einträge: 623 · belegt: 1
 | EL-48 | Schluesselmacher24.de soll mittelfristig auch Anfragen von Kundinnen und Kunden aus anderen Regionen an geprüfte, unabh… | teilweise | offen | E3-OPUS-08, E7-OPUS-02 |  |
 | EL-49 | Beispiel: Anfrage aus Hamburg → Schluesselmacher24 prüft die Anfrage → passender Partnerbetrieb übernimmt nach Abstimmu… | teilweise | offen | E3-OPUS-08, E7-OPUS-02 |  |
 | EL-50 | Transparenz: Der Kunde erfährt, welcher Betrieb ausführt und sein Vertragspartner ist. | teilweise | offen | E7-OPUS-02, E8-TEXTER-05 |  |
-| EL-51 | Die interne Höhe der Partnerprovision muss nicht als Marketinginformation ausgewiesen werden. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-52 | Eine eigene Infoseite mit kurzem, professionellem Bewerbungsformular. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-53 | Als Start reichen E-Mail-Benachrichtigung und einfache interne Bearbeitung. | vorhanden | offen | EA-PRUEFER-02 |  |
+| EL-51 | Die interne Höhe der Partnerprovision muss nicht als Marketinginformation ausgewiesen werden. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-52 | Eine eigene Infoseite mit kurzem, professionellem Bewerbungsformular. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-53 | Als Start reichen E-Mail-Benachrichtigung und einfache interne Bearbeitung. | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-54 | kein komplexes Partnerportal nötig. | nicht pruefbar | offen | E3-OPUS-08 |  |
-| EL-55 | Formularfeld: Firmenname. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-56 | Formularfeld: Ansprechpartner. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-57 | Formularfeld: Kontakt. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-58 | Formularfeld: PLZ/Ort. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-59 | Formularfeld: Einsatzradius. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-60 | Formularfeld: Leistungen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-61 | Formularfeld: Autohersteller/Systeme. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-62 | Formularfeld: mobile Einsätze. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-63 | Formularfeld: Qualifikationen. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-64 | Formularfeld: optionale Nachweise. | vorhanden | offen | EA-PRUEFER-02 |  |
-| EL-65 | Aufträge intern markieren: neu → geprüft → Partner angefragt → angenommen → erledigt → Provision abgerechnet. | vorhanden | offen | EA-PRUEFER-02 |  |
+| EL-55 | Formularfeld: Firmenname. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-56 | Formularfeld: Ansprechpartner. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-57 | Formularfeld: Kontakt. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-58 | Formularfeld: PLZ/Ort. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-59 | Formularfeld: Einsatzradius. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-60 | Formularfeld: Leistungen. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-61 | Formularfeld: Autohersteller/Systeme. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-62 | Formularfeld: mobile Einsätze. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-63 | Formularfeld: Qualifikationen. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-64 | Formularfeld: optionale Nachweise. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-65 | Aufträge intern markieren: neu → geprüft → Partner angefragt → angenommen → erledigt → Provision abgerechnet. | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-66 | Später erweiterbar zu einem geschützten Partnerbereich. | nicht pruefbar | offen | E3-OPUS-08 |  |
 | EL-67 | Vor Freischaltung von Partnern: Gewerbe und fachliche Eignung prüfen. | nicht pruefbar | offen | E9-DOKUMENTAR-01 |  |
 | EL-68 | Vor Freischaltung von Partnern: klare Preisregeln und Zuverlässigkeit vereinbaren. | nicht pruefbar | offen | E9-DOKUMENTAR-01 |  |
@@ -482,7 +482,7 @@ Einträge: 623 · belegt: 1
 | M-35 | Festhalten, ob die Ausnahme für Kleinstunternehmen greift (unter 10 Beschäftigte, höchstens 2 Mio. € Umsatz); sonst Erk… | nicht pruefbar | offen | E9-DOKUMENTAR-01 |  |
 | M-36 | Je Versandart die Lieferzeit eintragen; bis dahin fehlen die Angaben auf „Zahlung und Versand“. | teilweise | offen | E9-DOKUMENTAR-01 |  |
 | M-37 | Hersteller, Codeserie und Adresse der Codelinien pflegen. | teilweise | offen | E9-DOKUMENTAR-01 |  |
-| M-17 | Codelinien-Texte: Startwerte korrigiert (laut Wortlaut erledigt). | vorhanden | umgesetzt |  | docs/gestaltung/MENSCHEN.md:25 vermerkt die Erledigung im Gestaltungslauf; Prüfung im Bestandsabgleich EA-PRUEFER-02 |
+| M-17 | Codelinien-Texte: Startwerte korrigiert (laut Wortlaut erledigt). | vorhanden | offen | EA-PRUEFER-10 |  |
 
 ## E · Offene Befunde EVALUIERUNG
 
