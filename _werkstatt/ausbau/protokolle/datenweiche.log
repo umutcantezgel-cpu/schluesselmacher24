@@ -886,3 +886,11 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T19:31:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
 2026-11-03T19:32:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/konfigurator src/lib/pdf src/lib/actions src/components/konfigurator src/app/(site)/schliessanlagen
 2026-11-03T19:32:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T19:35:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/flow src/components/autoschluessel src/app/(site)/autoschluessel src/app/(site)/page src/components/hub
+2026-11-03T19:35:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/page.tsx src/app/(site)/autoschluessel/page.tsx src/app/(site)/autoschluessel/anfrage src/components/flow/flow-shell.tsx src/components/autoschluessel/optionen.ts
+2026-11-03T19:35:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T19:38:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/forms src/components/autoschluessel src/app/(site)/autoschluessel
+2026-11-03T19:38:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/forms/photo-upload.tsx src/components/autoschluessel/optionen.ts
+2026-11-03T19:40:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T19:41:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T19:41:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/data src/app/(site)/autoschluessel
