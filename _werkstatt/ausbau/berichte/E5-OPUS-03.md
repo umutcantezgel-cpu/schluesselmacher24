@@ -11,7 +11,13 @@ Paket der Etappe E5, Welle 2 (Opus, Klasse M). Anforderungen G-27 (Schließplan 
 ## Prüfung
 - Prüfstufe A: Typprüfung und Lint sauber, Unit 2041 von 2041 (neu: vorgang.test.ts 8, schliessplan.test.ts 4, security.test.ts 1), DB-Tests 97 von 97, Build ohne Datenbank 226 Seiten (Route dynamisch).
 - Beleg am laufenden Server: Antwort 200 mit `application/pdf`, `inline; filename="Schliessplan.pdf"`, `no-store`, `noindex`; ungültiger Link 400. Bild der Seiten: Plan mit 2 Türen (eine Seite) und mit 14 Türen (drei Seiten, Tabellenköpfe wiederholt, Matrix in Blöcken 1 bis 12 und 13 bis 14).
-- Wegen des Kontofensters (fremde Nutzung, A-027) keine breite Gegenprüfung; ein Haiku-Skeptiker folgt.
+- Gegenprüfung durch einen Haiku-Skeptiker (schmal wegen des Kontofensters, A-027), fünf Befunde, behoben in 34a4342:
+  1. hoch: Ein Schnappschuss ließ sich mit einer anderen Vorgangsart einschleusen. Jetzt entfernt die Aktion das Feld aus allen anderen Anfragen, und das Vorgangsblatt liest ihn nur bei Projekt, Projektkonfigurator und Quelle des Planers (Test in security.test.ts und schliessplan.test.ts).
+  2. mittel bis hoch: Die Zusammenfassung kam aus dem Browser. Jetzt bildet der Server sie aus dem Schnappschuss, mit der Nachricht des Kunden, die vorher in keinem Blatt stand.
+  3. mittel: Das PDF zum Herunterladen rechnete ohne Zusatzwünsche. Jetzt trägt der Link `?wuensche=` (nur bekannte Kennungen).
+  4. niedrig: Die Route antwortet bei einem Fehler mit 500 und eigenem Text statt mit der Fehlerseite.
+  5. niedrig, bewusst offen: Die Route prüft nicht wie der Vorgang, damit auch Entwürfe druckbar sind; Größe begrenzt durch den Link (6000 Zeichen) und die Ratenbegrenzung.
+- Danach Unit 2042 von 2042, Typprüfung und Lint sauber.
 
 ## Offen
 - Die HTML-Druckansicht im Admin zeigt den Plan weiter nur über die Zusammenfassung; das PDF ist vollständiger (an E9, Vorgangsblätter).
