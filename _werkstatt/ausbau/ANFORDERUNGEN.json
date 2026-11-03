@@ -27,7 +27,8 @@
       "bestand_fundstelle": null,
       "status": "offen",
       "pakete": [
-        "E4-OPUS-01"
+        "E4-OPUS-01",
+        "E4-OPUS-06"
       ],
       "beleg": null
     },
@@ -44,6 +45,7 @@
         "E3-GRAFIKER-01",
         "E3-OPUS-01",
         "E4-OPUS-01",
+        "E4-OPUS-06",
         "E4-TEXTER-01"
       ],
       "beleg": null
@@ -59,7 +61,8 @@
       "status": "offen",
       "pakete": [
         "E4-OPUS-02",
-        "E4-OPUS-04"
+        "E4-OPUS-04",
+        "E4-OPUS-06"
       ],
       "beleg": null
     },
@@ -75,7 +78,8 @@
       "pakete": [
         "E2-OPUS-01",
         "E3-OPUS-02",
-        "E4-OPUS-01"
+        "E4-OPUS-01",
+        "E4-OPUS-06"
       ],
       "beleg": null
     },
@@ -107,7 +111,8 @@
       "bestand_fundstelle": null,
       "status": "offen",
       "pakete": [
-        "E4-OPUS-02"
+        "E4-OPUS-02",
+        "E4-OPUS-07"
       ],
       "beleg": null
     },
@@ -155,6 +160,7 @@
       "pakete": [
         "E3-OPUS-01",
         "E4-OPUS-04",
+        "E4-OPUS-07",
         "E6-OPUS-01"
       ],
       "beleg": null
@@ -203,7 +209,8 @@
       "status": "offen",
       "pakete": [
         "E2-OPUS-01",
-        "E4-OPUS-01"
+        "E4-OPUS-01",
+        "E4-OPUS-07"
       ],
       "beleg": null
     },
@@ -220,7 +227,8 @@
         "E1-RECHERCHEUR-01",
         "E3-DATENPFLEGER-01",
         "E3-OPUS-06",
-        "E4-OPUS-05"
+        "E4-OPUS-05",
+        "E4-OPUS-08"
       ],
       "beleg": null
     },
@@ -235,7 +243,8 @@
       "status": "offen",
       "pakete": [
         "E3-OPUS-06",
-        "E4-OPUS-05"
+        "E4-OPUS-05",
+        "E4-OPUS-08"
       ],
       "beleg": null
     },
@@ -249,7 +258,8 @@
       "bestand_fundstelle": null,
       "status": "offen",
       "pakete": [
-        "E4-OPUS-05"
+        "E4-OPUS-05",
+        "E4-OPUS-08"
       ],
       "beleg": null
     },
@@ -762,6 +772,7 @@
       "status": "offen",
       "pakete": [
         "E2-OPUS-01",
+        "E4-OPUS-06",
         "E4-TEXTER-01",
         "E8-FAKTENPRUEFER-01",
         "E8-TEXTER-01",

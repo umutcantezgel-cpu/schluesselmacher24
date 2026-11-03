@@ -18,21 +18,21 @@ Einträge: 623 · belegt: 7
 | Kennung | Inhalt | Bestand | Status | Pakete | Beleg |
 | --- | --- | --- | --- | --- | --- |
 | G-01 | Ganz oben steht „Wobei können wir Ihnen helfen?“ mit allen Leistungen als kleine, app-artige Kacheln, die sofort in die… | nicht angegeben | offen | E3-OPUS-01, E4-OPUS-01 |  |
-| G-02 | Die Kacheln stehen untereinander im Raster, mobil drei, ab Tablet vier oder mehr je Reihe; nichts wird seitlich gewisch… | nicht angegeben | offen | E4-OPUS-01 |  |
-| G-03 | Kacheln in dieser Reihenfolge, als Daten pflegbar: Autoschlüssel · Motorradschlüssel · Autoschlüssel-Gehäuse · Schlüsse… | nicht angegeben | offen | E3-GRAFIKER-01, E3-OPUS-01, E4-OPUS-01, E4-TEXTER-01 |  |
-| G-04 | Eingangsinszenierung: Ein Autoschlüssel wandelt sich in einen Profilzylinder, dann in eine Schließanlage und weiter dur… | nicht angegeben | offen | E4-OPUS-02, E4-OPUS-04 |  |
-| G-05 | Ruhe wie bei Apple: viel Weißraum, wenig Text, große Schrift, große Tippflächen; eine Oma, ein Opa und jemand ohne Gedu… | nicht angegeben | offen | E2-OPUS-01, E3-OPUS-02, E4-OPUS-01 |  |
+| G-02 | Die Kacheln stehen untereinander im Raster, mobil drei, ab Tablet vier oder mehr je Reihe; nichts wird seitlich gewisch… | nicht angegeben | offen | E4-OPUS-01, E4-OPUS-06 |  |
+| G-03 | Kacheln in dieser Reihenfolge, als Daten pflegbar: Autoschlüssel · Motorradschlüssel · Autoschlüssel-Gehäuse · Schlüsse… | nicht angegeben | offen | E3-GRAFIKER-01, E3-OPUS-01, E4-OPUS-01, E4-OPUS-06, E4-TEXTER-01 |  |
+| G-04 | Eingangsinszenierung: Ein Autoschlüssel wandelt sich in einen Profilzylinder, dann in eine Schließanlage und weiter dur… | nicht angegeben | offen | E4-OPUS-02, E4-OPUS-04, E4-OPUS-06 |  |
+| G-05 | Ruhe wie bei Apple: viel Weißraum, wenig Text, große Schrift, große Tippflächen; eine Oma, ein Opa und jemand ohne Gedu… | nicht angegeben | offen | E2-OPUS-01, E3-OPUS-02, E4-OPUS-01, E4-OPUS-06 |  |
 | G-06 | Lebendig: mehr Bewegung; das vorhandene Leuchten beim Überfahren gefällt und wird zum System; dezente Dauerbewegung ist… | nicht angegeben | offen | E2-OPUS-01, E3-OPUS-02, E3-OPUS-03, E4-OPUS-02, E5-OPUS-04 |  |
-| G-07 | Der Schlüssel in der vorhandenen Startseiten-Animation ist zu lang; er bekommt glaubwürdige, kürzere Proportionen. | nicht angegeben | offen | E4-OPUS-02 |  |
+| G-07 | Der Schlüssel in der vorhandenen Startseiten-Animation ist zu lang; er bekommt glaubwürdige, kürzere Proportionen. | nicht angegeben | offen | E4-OPUS-02, E4-OPUS-07 |  |
 | G-08 | Hauptnavigation: Autoschlüssel · Schlüssel nach Code · Sperrschließungen · Schließanlagen · Mehr. Unter Autoschlüssel l… | nicht angegeben | offen | E4-OPUS-03 |  |
 | G-09 | Sperrschließung trägt überall eine Laienerklärung, etwa „Sperrschließung (ein Schlüssel für alle Türen)“; der Unterschi… | nicht angegeben | offen | E1-FACHKUNDLER-01, E4-OPUS-03, E5-AUTOR-01, E5-OPUS-02, E8-AUTOR-03 |  |
-| G-10 | Jede Rubrik zeigt „So läuft Ihr Auftrag ab“ als Schritte mit Icons, beim Autoschlüssel etwa Fahrzeug wählen, Fotos hoch… | nicht angegeben | offen | E3-OPUS-01, E4-OPUS-04, E6-OPUS-01 |  |
+| G-10 | Jede Rubrik zeigt „So läuft Ihr Auftrag ab“ als Schritte mit Icons, beim Autoschlüssel etwa Fahrzeug wählen, Fotos hoch… | nicht angegeben | offen | E3-OPUS-01, E4-OPUS-04, E4-OPUS-07, E6-OPUS-01 |  |
 | G-11 | Modular und erweiterbar: Rubriken, Kacheln, Abläufe, Navigation und Formulare kommen aus Daten; eine neue Rubrik entste… | nicht angegeben | offen | E2-OPUS-01, E3-OPUS-01, E4-OPUS-03, E6-OPUS-01 |  |
 | G-12 | Logo: neu, stark, auch schwarz-weiß tragfähig, mit der Idee „Schlüsselmacher“, etwa eine Hand, die einen Schlüssel hält… | nicht angegeben | offen | E2-OPUS-01, E8-OPUS-05, E8-PRUEFER-01 |  |
-| G-13 | Ein Hintergrundmotiv im Stil eines Zeichencodes an wenigen Elementen, nur wenn es schön aussieht. Lösung: ein eigenes M… | nicht angegeben | offen | E2-OPUS-01, E4-OPUS-01 |  |
-| G-14 | Fahrzeugwahl Marke, Modell, Baujahr für alle in Deutschland gängigen Pkw von 1998 bis 2026, europäische, japanische und… | nicht angegeben | offen | E1-RECHERCHEUR-01, E3-DATENPFLEGER-01, E3-OPUS-06, E4-OPUS-05 |  |
-| G-15 | Fahrzeug nicht gefunden: Anfrage mit Fahrzeugschein und Foto des Schlüssels. | nicht angegeben | offen | E3-OPUS-06, E4-OPUS-05 |  |
-| G-16 | Ablauf mit Anzahlung: Fahrzeug wählen, Fahrzeugschein hochladen, Schlüsselbild hochladen, Anzahlung zahlen, Termin- ode… | nicht angegeben | offen | E4-OPUS-05 |  |
+| G-13 | Ein Hintergrundmotiv im Stil eines Zeichencodes an wenigen Elementen, nur wenn es schön aussieht. Lösung: ein eigenes M… | nicht angegeben | offen | E2-OPUS-01, E4-OPUS-01, E4-OPUS-07 |  |
+| G-14 | Fahrzeugwahl Marke, Modell, Baujahr für alle in Deutschland gängigen Pkw von 1998 bis 2026, europäische, japanische und… | nicht angegeben | offen | E1-RECHERCHEUR-01, E3-DATENPFLEGER-01, E3-OPUS-06, E4-OPUS-05, E4-OPUS-08 |  |
+| G-15 | Fahrzeug nicht gefunden: Anfrage mit Fahrzeugschein und Foto des Schlüssels. | nicht angegeben | offen | E3-OPUS-06, E4-OPUS-05, E4-OPUS-08 |  |
+| G-16 | Ablauf mit Anzahlung: Fahrzeug wählen, Fahrzeugschein hochladen, Schlüsselbild hochladen, Anzahlung zahlen, Termin- ode… | nicht angegeben | offen | E4-OPUS-05, E4-OPUS-08 |  |
 | G-17 | Autoschlüssel-Finder als Wissensseite: Nach der Fahrzeugwahl sieht der Kunde, was SCHLÜSSELMACHER24 für dieses Fahrzeug… | nicht angegeben | offen | E1-FACHKUNDLER-03, E1-RECHERCHEUR-01, E3-OPUS-06, E4-OPUS-05 |  |
 | G-18 | Transponder-Kopie ohne Fahrzeug: Wo sich der Transponder in der Werkstatt klonen lässt, wird Einsenden, Klonen und Zurü… | nicht angegeben | offen | E1-FACHKUNDLER-03, E3-DATENPFLEGER-03, E3-OPUS-06, E6-OPUS-03, E9-OPUS-02 |  |
 | G-19 | Motorradschlüssel nur als Anfrage: Typ, Baujahr, Fahrzeugschein, Foto des Schlüssels und die Pflichtfrage Transponder j… | nicht angegeben | offen | E6-BAUMEISTER-01 |  |
@@ -64,7 +64,7 @@ Einträge: 623 · belegt: 7
 | G-45 | Beispielfotos „so soll Ihr Schlüsselfoto aussehen“ liefert der Inhaber; bis dahin zeigt eine gezeichnete Anleitung den … | nicht angegeben | offen | E6-BAUMEISTER-06, E8-DOKUMENTAR-02 |  |
 | G-46 | Bilder: keine fremden Bilder eins zu eins; Herstellerbilder nur mit nachgewiesener Händlerlizenz. Fotorealistische neue… | nicht angegeben | offen | E8-DOKUMENTAR-02 |  |
 | G-47 | SVG-Visualisierungen nur, wenn sie das Gemeinte genau zeigen, etwa Zylinderaufbau, Messpunkte A und B, Schließplan. | nicht angegeben | offen | E1-FACHKUNDLER-02, E3-GRAFIKER-01, E5-GRAFIKER-01 |  |
-| G-48 | Texte ohne KI-Spuren: keine Gedankenstriche, keine unnötigen Bindestriche, keine Floskeln; die Seite darf nicht nach KI… | nicht angegeben | offen | E2-OPUS-01, E4-TEXTER-01, E8-FAKTENPRUEFER-01, E8-TEXTER-01, E8-TEXTER-02, E8-TEXTER-03, E8-TEXTER-04, E8-TEXTER-05, EA-SPOTTER-01 |  |
+| G-48 | Texte ohne KI-Spuren: keine Gedankenstriche, keine unnötigen Bindestriche, keine Floskeln; die Seite darf nicht nach KI… | nicht angegeben | offen | E2-OPUS-01, E4-OPUS-06, E4-TEXTER-01, E8-FAKTENPRUEFER-01, E8-TEXTER-01, E8-TEXTER-02, E8-TEXTER-03, E8-TEXTER-04, E8-TEXTER-05, EA-SPOTTER-01 |  |
 | G-49 | Dashboard für den Inhaber: alle Vorgänge mit Status, Fälligkeiten, Anzahlungen und Umsätzen, Anfragen je Rubrik und Par… | nicht angegeben | offen | E9-OPUS-01, E9-PROBENUTZER-01 |  |
 | G-50 | Chat-KI als erste Support-Anlaufstelle: später; Konzept mit Kosten, Datenschutz und Grenzen sowie eine abgeschaltete Sc… | nicht angegeben | offen | E9-OPUS-04 |  |
 | G-51 | Arbeitsweise: wie für die eigene Firma, ehrlich in der Beratung, groß gedacht. Wo Daten oder Zugänge fehlen, baust du d… | nicht angegeben | offen | E1-AUTOR-01, E2-OPUS-01, E8-AUTOR-02 |  |

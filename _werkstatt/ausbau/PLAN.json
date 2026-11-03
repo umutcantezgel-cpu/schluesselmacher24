@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T11:14:02.783Z",
+ "stand": "2026-11-03T12:24:07.646Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -13,7 +13,7 @@
     "Z-20",
     "Z-21"
    ],
-   "tage": 0.72
+   "tage": 0.77
   },
   {
    "kennung": "E1",
@@ -24,7 +24,7 @@
    "kriterien": [
     "Z-17"
    ],
-   "tage": 0.72
+   "tage": 0.77
   },
   {
    "kennung": "E2",
@@ -35,7 +35,7 @@
    "kriterien": [
     "Z-01"
    ],
-   "tage": 0.43
+   "tage": 0.46
   },
   {
    "kennung": "E3",
@@ -52,7 +52,7 @@
     "Z-12",
     "Z-20"
    ],
-   "tage": 2.16
+   "tage": 2.32
   },
   {
    "kennung": "E4",
@@ -68,7 +68,7 @@
     "Z-14",
     "Z-15"
    ],
-   "tage": 1.44
+   "tage": 1.54
   },
   {
    "kennung": "E5",
@@ -80,7 +80,7 @@
     "Z-05",
     "Z-06"
    ],
-   "tage": 1.44
+   "tage": 1.54
   },
   {
    "kennung": "E6",
@@ -93,7 +93,7 @@
     "Z-08",
     "Z-19"
    ],
-   "tage": 1.44
+   "tage": 1.54
   },
   {
    "kennung": "E7",
@@ -105,7 +105,7 @@
     "Z-09",
     "Z-10"
    ],
-   "tage": 1.44
+   "tage": 1.54
   },
   {
    "kennung": "E8",
@@ -120,7 +120,7 @@
     "Z-17",
     "Z-18"
    ],
-   "tage": 1.44
+   "tage": 1.54
   },
   {
    "kennung": "E9",
@@ -132,7 +132,7 @@
     "Z-19",
     "Z-20"
    ],
-   "tage": 1.15
+   "tage": 1.24
   },
   {
    "kennung": "E10",
@@ -144,7 +144,7 @@
     "Z-01",
     "Z-11"
    ],
-   "tage": 1.44
+   "tage": 1.54
   },
   {
    "kennung": "EA",
@@ -164,7 +164,7 @@
     "Z-21",
     "Z-22"
    ],
-   "tage": 0.72
+   "tage": 0.77
   }
  ],
  "pakete": [
@@ -2230,10 +2230,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "c1b40fc",
    "massstab": null,
    "muster": null
   },
@@ -2289,6 +2289,214 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
+   "status": "committet",
+   "grund": null,
+   "versuche": 0,
+   "commit": "c1b40fc",
+   "massstab": null,
+   "muster": null
+  },
+  {
+   "kennung": "E4-OPUS-06",
+   "titel": "Zweiter Anlauf Startseite: Hub-Kacheln in der Zeichensprache, Autoschlüssel ab Tablet als Leitkachel (vier je Reihe, G-02), Bühne füllt die rechte Spalte mit Pausenknopf in der Bühne, Floskeln und Gedankenstriche, Berechtigungsnachweis im Ablauf (R13), Gleichschließung von der Schließanlage getrennt",
+   "etappe": "E4",
+   "welle": 7,
+   "rolle": "Orchestrator",
+   "modell": "opus-5.5",
+   "stufe": 3,
+   "kostenklasse": "L",
+   "schreibrechte": [
+    "src/app/(site)/page.tsx",
+    "src/components/hub/",
+    "src/components/visual/inszenierung/",
+    "src/components/visual/fach-icon.tsx",
+    "src/app/(site)/globals.css",
+    "tailwind.config.ts",
+    "content/rubriken.json",
+    "src/lib/data/defaults/rubriken.ts"
+   ],
+   "abhaengigkeiten": [
+    "E4-JURY-01",
+    "E4-BLIND-01"
+   ],
+   "anforderungen": [
+    "G-02",
+    "G-03",
+    "G-04",
+    "G-05",
+    "G-48"
+   ],
+   "kriterien": [
+    "Z-04",
+    "Z-11"
+   ],
+   "art": "pflicht",
+   "wirkung": 5,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": null,
+   "muster": null
+  },
+  {
+   "kennung": "E4-OPUS-07",
+   "titel": "Zweiter Anlauf /autoschluessel: Aufbauzeichnung des Autoschlüssels (Bart, Transponder, Funkteil, Gehäuse) mit Bezug zu den Leistungen statt Begriffsliste und doppelter Typenzeichnungen, Ablauf direkt unter dem Kopf, Überschriften ohne KI-Spur",
+   "etappe": "E4",
+   "welle": 7,
+   "rolle": "Orchestrator",
+   "modell": "opus-5.5",
+   "stufe": 3,
+   "kostenklasse": "L",
+   "schreibrechte": [
+    "src/app/(site)/autoschluessel/page.tsx",
+    "src/components/visual/generators/autoschluessel-aufbau.tsx",
+    "src/components/visual/generators/autoschluessel-aufbau.test.tsx",
+    "src/components/rubrik/"
+   ],
+   "abhaengigkeiten": [
+    "E4-JURY-01"
+   ],
+   "anforderungen": [
+    "G-07",
+    "G-10",
+    "G-13"
+   ],
+   "kriterien": [
+    "Z-04",
+    "Z-11"
+   ],
+   "art": "pflicht",
+   "wirkung": 5,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": null,
+   "muster": null
+  },
+  {
+   "kennung": "E4-OPUS-08",
+   "titel": "Zweiter Anlauf Assistent: Etappen statt Schrittzählung, Treffer vorauswählen und Weiter freigeben, Zurück beschriftet, Kopf mobil verdichtet, KBA-Zeile ans Ende; ohne eigene Fotos ohne Abbruch (Anrufen oder Termin zur Sichtprüfung über die vorhandene Anfrage), Pflichtfotos und Zahlverhalten unverändert (G9)",
+   "etappe": "E4",
+   "welle": 7,
+   "rolle": "Orchestrator",
+   "modell": "opus-5.5",
+   "stufe": 3,
+   "kostenklasse": "L",
+   "schreibrechte": [
+    "src/app/(site)/autoschluessel/anfrage/",
+    "src/components/autoschluessel/",
+    "src/components/flow/",
+    "src/lib/flow/",
+    "src/components/layout/page-header.tsx",
+    "_werkstatt/ausbau/testdaten/"
+   ],
+   "abhaengigkeiten": [
+    "E4-JURY-01",
+    "E4-PROBENUTZER-01"
+   ],
+   "anforderungen": [
+    "G-14",
+    "G-15",
+    "G-16"
+   ],
+   "kriterien": [
+    "Z-05"
+   ],
+   "art": "pflicht",
+   "wirkung": 5,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": null,
+   "muster": null
+  },
+  {
+   "kennung": "E4-PRUEFER-02",
+   "titel": "Prüfung des zweiten Anlaufs: Build beide Modi, ganze Testsuite, Funktionsliste, axe, Hub-Messung, Bildsatz und Referenzbilder der drei Ansichten, Bildfolge B-31",
+   "etappe": "E4",
+   "welle": 8,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "L",
+   "schreibrechte": [
+    "_werkstatt/ausbau/berichte/E4-PRUEFER-02.md"
+   ],
+   "abhaengigkeiten": [
+    "E4-OPUS-06",
+    "E4-OPUS-07",
+    "E4-OPUS-08"
+   ],
+   "anforderungen": [],
+   "kriterien": [
+    "Z-04",
+    "Z-12",
+    "Z-14"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/E4-PRUEFER-02.md",
+   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+  },
+  {
+   "kennung": "E4-PROBENUTZER-02",
+   "titel": "Probelauf zweiter Anlauf: vier Personas mobil und Desktop mit erfundenen Testbildern bis vor die Zahlung, ohne Abbruch",
+   "etappe": "E4",
+   "welle": 8,
+   "rolle": "Probenutzer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "_werkstatt/ausbau/berichte/E4-PROBENUTZER-02.md"
+   ],
+   "abhaengigkeiten": [
+    "E4-OPUS-06",
+    "E4-OPUS-07",
+    "E4-OPUS-08"
+   ],
+   "anforderungen": [],
+   "kriterien": [
+    "Z-05"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/E4-PROBENUTZER-02.md",
+   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+  },
+  {
+   "kennung": "E4-JURY-02",
+   "titel": "Jury zweiter Anlauf (frischer Opus, ohne Kenntnis des ersten Urteils)",
+   "etappe": "E4",
+   "welle": 9,
+   "rolle": "Jury",
+   "modell": "opus-5.5",
+   "stufe": 3,
+   "kostenklasse": "L",
+   "schreibrechte": [
+    "_werkstatt/ausbau/berichte/E4-JURY-02.md"
+   ],
+   "abhaengigkeiten": [
+    "E4-PRUEFER-02",
+    "E4-PROBENUTZER-02"
+   ],
+   "anforderungen": [],
+   "kriterien": [
+    "Z-11"
+   ],
+   "art": "pflicht",
+   "wirkung": 4,
    "status": "offen",
    "grund": null,
    "versuche": 0,
@@ -2567,7 +2775,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -5373,14 +5581,14 @@
   }
  ],
  "mengengeruest": {
-  "pakete": 141,
-  "pflicht": 131,
+  "pakete": 147,
+  "pflicht": 137,
   "kuer": 10,
-  "opus": 48,
-  "haiku": 93,
+  "opus": 52,
+  "haiku": 95,
   "kostenklassen": {
-   "M": 91,
-   "L": 50
+   "M": 92,
+   "L": 55
   },
   "anforderungen": 623,
   "kriterien": 22
@@ -5392,7 +5600,7 @@
    "L": 6
   },
   "puffer": 0.2,
-  "tage": 14.5
+  "tage": 15.6
  },
  "kritischer_pfad": [
   "E1-FACHKUNDLER-03",

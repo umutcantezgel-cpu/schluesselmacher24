@@ -150,6 +150,19 @@ hk('E4-PRUEFER-01', 'Prüfstufe B Etappe E4 mit Bildfolgen der Inszenierung, Fra
 P('E4-JURY-01', 'Jury Referenztor (frischer Opus): Studio-Wert Startseite und Autoschlüssel-Weg', 'E4', 6, 'Jury', OPUS, 3, 'L', [W + 'berichte/E4-JURY-01.md'], ['E4-PRUEFER-01', 'E4-PROBENUTZER-01'], [], ['Z-11'], wirkung=4)
 hk('E4-DOKUMENTAR-01', 'Unterlagen der Blind- und Dominanzprobe der Startseite: vier neutral benannte Startseitentexte, Faktenblatt, Zuordnung getrennt', 5, 'Dokumentar', [W + 'daten/E4-blind-startseite.md', W + 'daten/E4-blind-schluessel.md', W + 'berichte/E4-DOKUMENTAR-01.md'], [], ['Z-17'], deps=['E4-TEXTER-01'], status='offen')
 P('E4-BLIND-01', 'Blind- und Dominanzprobe der Startseite (frischer Opus)', 'E4', 6, 'Jury', OPUS, 3, 'L', [W + 'berichte/E4-BLIND-01.md'], ['E4-PRUEFER-01', 'E4-DOKUMENTAR-01'], [], ['Z-17'], wirkung=3)
+# Zweiter Anlauf am Tor E4 (Befunde E4-JURY-01, E4-BLIND-01, E4-PROBENUTZER-01, Sichtabnahme; Auftrag 18: höchstens zwei Anläufe)
+op('E4-OPUS-06', 'Zweiter Anlauf Startseite: Hub-Kacheln in der Zeichensprache, Autoschlüssel ab Tablet als Leitkachel (vier je Reihe, G-02), Bühne füllt die rechte Spalte mit Pausenknopf in der Bühne, Floskeln und Gedankenstriche, Berechtigungsnachweis im Ablauf (R13), Gleichschließung von der Schließanlage getrennt', 'E4', 7,
+   ['src/app/(site)/page.tsx', 'src/components/hub/', 'src/components/visual/inszenierung/', 'src/components/visual/fach-icon.tsx', 'src/app/(site)/globals.css', 'tailwind.config.ts', 'content/rubriken.json', 'src/lib/data/defaults/rubriken.ts'],
+   ['E4-JURY-01', 'E4-BLIND-01'], ['G-02', 'G-03', 'G-04', 'G-05', 'G-48'], ['Z-04', 'Z-11'], wirkung=5)
+op('E4-OPUS-07', 'Zweiter Anlauf /autoschluessel: Aufbauzeichnung des Autoschlüssels (Bart, Transponder, Funkteil, Gehäuse) mit Bezug zu den Leistungen statt Begriffsliste und doppelter Typenzeichnungen, Ablauf direkt unter dem Kopf, Überschriften ohne KI-Spur', 'E4', 7,
+   ['src/app/(site)/autoschluessel/page.tsx', 'src/components/visual/generators/autoschluessel-aufbau.tsx', 'src/components/visual/generators/autoschluessel-aufbau.test.tsx', 'src/components/rubrik/'],
+   ['E4-JURY-01'], ['G-07', 'G-10', 'G-13'], ['Z-04', 'Z-11'], wirkung=5)
+op('E4-OPUS-08', 'Zweiter Anlauf Assistent: Etappen statt Schrittzählung, Treffer vorauswählen und Weiter freigeben, Zurück beschriftet, Kopf mobil verdichtet, KBA-Zeile ans Ende; ohne eigene Fotos ohne Abbruch (Anrufen oder Termin zur Sichtprüfung über die vorhandene Anfrage), Pflichtfotos und Zahlverhalten unverändert (G9)', 'E4', 7,
+   ['src/app/(site)/autoschluessel/anfrage/', 'src/components/autoschluessel/', 'src/components/flow/', 'src/lib/flow/', 'src/components/layout/page-header.tsx', W + 'testdaten/'],
+   ['E4-JURY-01', 'E4-PROBENUTZER-01'], ['G-14', 'G-15', 'G-16'], ['Z-05'], wirkung=5)
+hk('E4-PRUEFER-02', 'Prüfung des zweiten Anlaufs: Build beide Modi, ganze Testsuite, Funktionsliste, axe, Hub-Messung, Bildsatz und Referenzbilder der drei Ansichten, Bildfolge B-31', 8, 'Prüfer', [W + 'berichte/E4-PRUEFER-02.md'], [], ['Z-04', 'Z-12', 'Z-14'], deps=['E4-OPUS-06', 'E4-OPUS-07', 'E4-OPUS-08'], status='offen', klasse='L')
+hk('E4-PROBENUTZER-02', 'Probelauf zweiter Anlauf: vier Personas mobil und Desktop mit erfundenen Testbildern bis vor die Zahlung, ohne Abbruch', 8, 'Probenutzer', [W + 'berichte/E4-PROBENUTZER-02.md'], [], ['Z-05'], deps=['E4-OPUS-06', 'E4-OPUS-07', 'E4-OPUS-08'], status='offen')
+P('E4-JURY-02', 'Jury zweiter Anlauf (frischer Opus, ohne Kenntnis des ersten Urteils)', 'E4', 9, 'Jury', OPUS, 3, 'L', [W + 'berichte/E4-JURY-02.md'], ['E4-PRUEFER-02', 'E4-PROBENUTZER-02'], [], ['Z-11'], wirkung=4)
 
 # ---------------------------------------------------------------- E5 Konfiguratoren
 op('E5-OPUS-01', 'Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage', 'E5', 1,
