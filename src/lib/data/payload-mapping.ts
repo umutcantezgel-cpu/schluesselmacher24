@@ -19,6 +19,7 @@ import type {
   Preisregeln,
   Produkte,
   Ratgeber,
+  Fahrzeugreihen,
   Rubriken,
   Seiten,
   Sperrtage,
@@ -51,6 +52,7 @@ import type {
   PricingGroup,
   PricingRule,
   ReferralInfo,
+  FahrzeugReihe,
   Rubrik,
   SeoFields,
   ServicePage,
@@ -541,6 +543,54 @@ export function fahrzeugmarkeZuPayload(
 }
 
 /* ---------- Inhalte ------------------------------------------------------ */
+
+export function fahrzeugreiheZuSeite(doc: Fahrzeugreihen): FahrzeugReihe {
+  const reihe: FahrzeugReihe = {
+    id: kennung(doc),
+    marke: doc.marke,
+    reihe: doc.reihe,
+    quelle: doc.quelle,
+    klonbar: (doc.klonbar ?? 'unbekannt') as FahrzeugReihe['klonbar'],
+    gehaeuse: (doc.gehaeuse ?? 'unbekannt') as FahrzeugReihe['gehaeuse'],
+    leistungen: (doc.leistungen ?? []) as FahrzeugReihe['leistungen'],
+    sichtbar: doc.sichtbar !== false,
+  };
+  if (doc.kbaName) reihe.kbaName = doc.kbaName;
+  if (doc.segment) reihe.segment = doc.segment;
+  if (typeof doc.bestand === 'number') reihe.bestand = doc.bestand;
+  if (typeof doc.rang === 'number') reihe.rang = doc.rang;
+  if (doc.bestandsModell) reihe.bestandsModell = doc.bestandsModell;
+  if (typeof doc.baujahrVon === 'number') reihe.baujahrVon = doc.baujahrVon;
+  if (typeof doc.baujahrBis === 'number') reihe.baujahrBis = doc.baujahrBis;
+  if (doc.baujahrQuelle) reihe.baujahrQuelle = doc.baujahrQuelle;
+  if (doc.transponder?.typ && doc.transponder.quelle) reihe.transponder = { typ: doc.transponder.typ, quelle: doc.transponder.quelle };
+  const alias = (doc.alias ?? []).map((a) => a.begriff).filter((b): b is string => Boolean(b));
+  if (alias.length) reihe.alias = alias;
+  return reihe;
+}
+
+export function fahrzeugreiheZuPayload(reihe: FahrzeugReihe): RequiredDataFromCollectionSlug<'fahrzeugreihen'> {
+  return {
+    kennung: reihe.id,
+    marke: reihe.marke,
+    reihe: reihe.reihe,
+    kbaName: reihe.kbaName,
+    segment: reihe.segment,
+    bestand: reihe.bestand,
+    rang: reihe.rang,
+    quelle: reihe.quelle,
+    bestandsModell: reihe.bestandsModell,
+    baujahrVon: reihe.baujahrVon,
+    baujahrBis: reihe.baujahrBis,
+    baujahrQuelle: reihe.baujahrQuelle,
+    transponder: reihe.transponder ? { typ: reihe.transponder.typ, quelle: reihe.transponder.quelle } : undefined,
+    klonbar: reihe.klonbar,
+    gehaeuse: reihe.gehaeuse,
+    leistungen: reihe.leistungen,
+    alias: (reihe.alias ?? []).map((begriff) => ({ begriff })),
+    sichtbar: reihe.sichtbar,
+  };
+}
 
 export function rubrikZuSeite(doc: Rubriken): Rubrik {
   const rubrik: Rubrik = {

@@ -25,6 +25,7 @@ import { Preisregeln } from './payload/collections/Preisregeln';
 import { Produkte } from './payload/collections/Produkte';
 import { Ratgeber } from './payload/collections/Ratgeber';
 import { Rubriken } from './payload/collections/Rubriken';
+import { Fahrzeugreihen } from './payload/collections/Fahrzeugreihen';
 import { Seiten } from './payload/collections/Seiten';
 import { Sperrtage } from './payload/collections/Sperrtage';
 import { Vorgaenge } from './payload/collections/Vorgaenge';
@@ -76,6 +77,7 @@ export default buildConfig({
     Produkte,
     // Autoschlüssel
     Fahrzeugmarken,
+    Fahrzeugreihen,
     AutoschluesselLeistungen,
     Preisregeln,
     Preisgruppen,

@@ -72,6 +72,7 @@ export interface Config {
     widerrufe: Widerrufe;
     produkte: Produkte;
     fahrzeugmarken: Fahrzeugmarken;
+    fahrzeugreihen: Fahrzeugreihen;
     'autoschluessel-leistungen': AutoschluesselLeistungen;
     preisregeln: Preisregeln;
     preisgruppen: Preisgruppen;
@@ -99,6 +100,7 @@ export interface Config {
     widerrufe: WiderrufeSelect<false> | WiderrufeSelect<true>;
     produkte: ProdukteSelect<false> | ProdukteSelect<true>;
     fahrzeugmarken: FahrzeugmarkenSelect<false> | FahrzeugmarkenSelect<true>;
+    fahrzeugreihen: FahrzeugreihenSelect<false> | FahrzeugreihenSelect<true>;
     'autoschluessel-leistungen': AutoschluesselLeistungenSelect<false> | AutoschluesselLeistungenSelect<true>;
     preisregeln: PreisregelnSelect<false> | PreisregelnSelect<true>;
     preisgruppen: PreisgruppenSelect<false> | PreisgruppenSelect<true>;
@@ -769,6 +771,59 @@ export interface Preisgruppen {
   kennung?: string | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * Modellreihen für die Fahrzeugsuche. Preise und Schlüsselarten kommen aus den gepflegten Marken und Modellen (Spalte „Gepflegtes Modell“).
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "fahrzeugreihen".
+ */
+export interface Fahrzeugreihen {
+  id: number;
+  marke: string;
+  reihe: string;
+  kbaName?: string | null;
+  bestand?: number | null;
+  rang?: number | null;
+  segment?: string | null;
+  sichtbar?: boolean | null;
+  /**
+   * Etwa „KBA FZ 12, Stand 1.1.2026“.
+   */
+  quelle: string;
+  /**
+   * Marke/Modell aus „Fahrzeugmarken“, etwa volkswagen/golf. Nur dann zeigt die Seite Preise und Schlüsselarten.
+   */
+  bestandsModell?: string | null;
+  baujahrVon?: number | null;
+  baujahrBis?: number | null;
+  baujahrQuelle?: string | null;
+  /**
+   * Nur mit Quelle; ohne Quelle leer lassen.
+   */
+  transponder?: {
+    typ?: string | null;
+    quelle?: string | null;
+  };
+  /**
+   * „Bestätigt“ nur nach dem Bogen KLONBAR.
+   */
+  klonbar: 'unbekannt' | 'bestaetigt' | 'nein';
+  gehaeuse: 'unbekannt' | 'verfuegbar' | 'nicht-verfuegbar';
+  leistungen?: ('nachmachen' | 'programmieren' | 'gehaeuse-tausch' | 'transponder-kopie')[] | null;
+  alias?:
+    | {
+        begriff: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1565,6 +1620,10 @@ export interface PayloadLockedDocument {
         value: number | Fahrzeugmarken;
       } | null)
     | ({
+        relationTo: 'fahrzeugreihen';
+        value: number | Fahrzeugreihen;
+      } | null)
+    | ({
         relationTo: 'autoschluessel-leistungen';
         value: number | AutoschluesselLeistungen;
       } | null)
@@ -2022,6 +2081,43 @@ export interface FahrzeugmarkenSelect<T extends boolean = true> {
   createdAt?: T;
   deletedAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "fahrzeugreihen_select".
+ */
+export interface FahrzeugreihenSelect<T extends boolean = true> {
+  marke?: T;
+  reihe?: T;
+  kbaName?: T;
+  bestand?: T;
+  rang?: T;
+  segment?: T;
+  sichtbar?: T;
+  quelle?: T;
+  bestandsModell?: T;
+  baujahrVon?: T;
+  baujahrBis?: T;
+  baujahrQuelle?: T;
+  transponder?:
+    | T
+    | {
+        typ?: T;
+        quelle?: T;
+      };
+  klonbar?: T;
+  gehaeuse?: T;
+  leistungen?: T;
+  alias?:
+    | T
+    | {
+        begriff?: T;
+        id?: T;
+      };
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

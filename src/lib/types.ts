@@ -918,6 +918,41 @@ export interface ServicePage {
 /* ---------- Rubriken (Intent-Hub, Navigation, Abläufe) ------------------- */
 
 /** Wie ein Weg endet (KERN K-014): Kasse, Anfrage, Termin mit Anzahlung, Angebot mit Zahlungslink oder Beratung. */
+/* ---------- Fahrzeugkatalog (G-14, G-17, G-18, A-009) ---------- */
+
+export type Klonbarkeit = 'unbekannt' | 'bestaetigt' | 'nein';
+export type GehaeuseStand = 'unbekannt' | 'verfuegbar' | 'nicht-verfuegbar';
+export type FahrzeugLeistung = 'nachmachen' | 'programmieren' | 'gehaeuse-tausch' | 'transponder-kopie';
+
+/** Eine Modellreihe des Katalogs (KBA FZ 12 oder Bestand), mit Quelle je Angabe. */
+export interface FahrzeugReihe {
+  id: string;
+  marke: string;
+  reihe: string;
+  /** Name in der KBA-Statistik, etwa „VW GOLF, JETTA“. */
+  kbaName?: string;
+  segment?: string;
+  /** Fahrzeuge im Bestand laut KBA (Gewicht für die Suche, Abdeckung Z-07). */
+  bestand?: number;
+  rang?: number;
+  /** Herkunft der Zeile, etwa „KBA FZ 12, Stand 1.1.2026“ oder „Bestand: content/vehicles.json“. */
+  quelle: string;
+  /** Verweis auf ein gepflegtes Modell des Bestands („volkswagen/golf“): nur dann Preise und Schlüsselarten. */
+  bestandsModell?: string;
+  /** Bauzeitraum nur mit Quelle; sonst wählt der Kunde das Baujahr (A-009). */
+  baujahrVon?: number;
+  baujahrBis?: number;
+  baujahrQuelle?: string;
+  transponder?: { typ: string; quelle: string };
+  /** Klonbarkeit erscheint nur nach Bestätigung im Bogen KLONBAR (G-18). */
+  klonbar: Klonbarkeit;
+  gehaeuse: GehaeuseStand;
+  leistungen: FahrzeugLeistung[];
+  /** Weitere Suchbegriffe, etwa „Golf Variant“. */
+  alias?: string[];
+  sichtbar: boolean;
+}
+
 export type RubrikAbschluss = 'kasse' | 'anfrage' | 'termin-anzahlung' | 'angebot-zahlungslink' | 'beratung';
 
 /** Sichtbarkeit: live im Hub und in der Navigation, später (vorbereitet, unsichtbar) oder aus. */

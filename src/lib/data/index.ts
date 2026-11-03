@@ -14,7 +14,7 @@ import {
   type VorgangsAenderung,
 } from './payload-mapping';
 import { buildRecordId, buildReference, counterKey, nextSequenceFromExisting } from '@/lib/reference';
-import type { AppointmentInfo, RecordKind, Rubrik } from '@/lib/types';
+import type { AppointmentInfo, FahrzeugReihe, RecordKind, Rubrik } from '@/lib/types';
 import { mitDatenbank } from '@/lib/umgebung';
 import type { Vorgaenge } from '@/payload-types';
 
@@ -87,6 +87,12 @@ export async function getRubriken(): Promise<Rubrik[]> {
 /** Kacheln des Intent-Hubs: live geschaltet und für den Hub vorgesehen, Reihenfolge nach G-03. */
 export async function getHubRubriken(): Promise<Rubrik[]> {
   return (await getRubriken()).filter((r) => r.status === 'live' && r.imHub);
+}
+
+/** Sichtbare Reihen des Fahrzeugkatalogs, nach Marke und Reihe (A-009). */
+export async function getFahrzeugkatalog(): Promise<FahrzeugReihe[]> {
+  const reihen = await getCollection('fahrzeugkatalog');
+  return reihen.filter((r) => r.sichtbar).sort((a, b) => a.marke.localeCompare(b.marke, 'de') || a.reihe.localeCompare(b.reihe, 'de'));
 }
 
 export async function getRubrik(id: string): Promise<Rubrik | null> {

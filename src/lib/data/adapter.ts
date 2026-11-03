@@ -1,4 +1,5 @@
 import type {
+  FahrzeugReihe,
   BlockedDay,
   BusinessRecord,
   CityPage,
@@ -37,6 +38,8 @@ export interface Collections {
   records: BusinessRecord[];
   /** Rubriken des Hubs und der Navigation (KERN K-014). */
   rubriken: Rubrik[];
+  /** Fahrzeugkatalog: Modellreihen mit Quelle (A-009). */
+  fahrzeugkatalog: FahrzeugReihe[];
 }
 
 export type CollectionName = keyof Collections;

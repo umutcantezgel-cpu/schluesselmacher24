@@ -57,6 +57,7 @@ const STARTWERT_DATEIEN = {
   blockedDays: 'blocked-days.json',
   nachweise: 'nachweise.json',
   rubriken: 'rubriken.json',
+  fahrzeugkatalog: 'fahrzeugkatalog.json',
 } as const;
 
 export type StartwertName = keyof typeof STARTWERT_DATEIEN;
@@ -516,6 +517,17 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
         { pfad: 'erklaerung' },
         { pfad: 'ablauf', spalten: ['titel', 'text'] },
       ],
+    });
+    // Fahrzeugkatalog (A-009): Zeilen anlegen, gepflegte Angaben (Klonbarkeit, Transponder) nie überschreiben.
+    await eintraegeUebernehmen({
+      name: 'fahrzeugreihen',
+      collection: 'fahrzeugreihen',
+      inhalt: await quelle.read('fahrzeugkatalog'),
+      startwert: 'fahrzeugkatalog',
+      schluessel: (r) => r.id,
+      dbSchluessel: kennung,
+      zuDaten: m.fahrzeugreiheZuPayload,
+      abgleich: [],
     });
     await eintraegeUebernehmen({
       name: 'leistungsseiten',
