@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { produktionslisteHandler, vorgangsblattHandler } from './druckansichten';
+import { produktionslisteHandler, vorgangsblattHandler, vorgangsblattPdfHandler } from './druckansichten';
 
 /* Druckansichten: Rechte (401/403), Nonce in Skript und CSP, keine
  * Zwischenspeicherung — mit nachgebildetem `req`. */
@@ -31,7 +31,7 @@ function req(user: unknown, routeParams: Record<string, unknown> = {}) {
     user,
     context: {},
     routeParams,
-    payload: { findByID, find, findGlobal, config: { routes: { admin: '/admin' } }, logger: { warn: vi.fn() } },
+    payload: { findByID, find, findGlobal, collections: {}, config: { routes: { admin: '/admin' } }, logger: { warn: vi.fn() } },
   } as never;
 }
 
@@ -76,5 +76,24 @@ describe('Druckansichten', () => {
         },
       }),
     );
+  });
+});
+
+describe('Vorgangsblatt als PDF (G-37)', () => {
+  it('verlangt Anmeldung und eine Team-Rolle', async () => {
+    expect((await vorgangsblattPdfHandler(req(null, { id: '42' }))).status).toBe(401);
+    expect((await vorgangsblattPdfHandler(req({ id: 3, rollen: [] }, { id: '42' }))).status).toBe(403);
+    expect((await vorgangsblattPdfHandler(req(MITARBEITER, { id: '4x' }))).status).toBe(404);
+  });
+
+  it('liefert ein PDF zum Ansehen, ohne Zwischenspeicher und ohne Einbetten', async () => {
+    const antwort = await vorgangsblattPdfHandler(req(MITARBEITER, { id: '42' }));
+    expect(antwort.status).toBe(200);
+    expect(antwort.headers.get('content-type')).toBe('application/pdf');
+    expect(antwort.headers.get('content-disposition')).toBe('inline; filename="Vorgangsblatt-SM24-A-2026-0042.pdf"');
+    expect(antwort.headers.get('cache-control')).toBe('no-store');
+    expect(antwort.headers.get('x-robots-tag')).toBe('noindex, nofollow');
+    const daten = Buffer.from(await antwort.arrayBuffer());
+    expect(daten.subarray(0, 5).toString('latin1')).toBe('%PDF-');
   });
 });

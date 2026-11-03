@@ -15,12 +15,12 @@ const BUDGET_MS = 8000;
 /** Wartezeit vor der Wiederholung bei 429/5xx. */
 const WARTEN_MS = 1000;
 
-/** Anhang als Text, z. B. ein Kalendereintrag (.ics). */
+/** Anhang als Text, z. B. ein Kalendereintrag (.ics), oder als Bytes, z. B. ein Vorgangsblatt (PDF). */
 export interface MailAnhang {
   /** Dateiname, nur Buchstaben, Ziffern, Punkt, Binde- und Unterstrich. */
   dateiname: string;
-  /** Inhalt als Text (UTF-8); Resend erhält ihn Base64-kodiert. */
-  inhalt: string;
+  /** Inhalt als Text (UTF-8) oder Bytes; Resend erhält ihn Base64-kodiert. */
+  inhalt: string | Uint8Array;
   /** MIME-Typ, z. B. „text/calendar; charset=utf-8; method=PUBLISH“. Ohne Angabe leitet Resend ihn aus dem Namen ab. */
   typ?: string;
 }
@@ -99,7 +99,7 @@ function anhaengeFuerResend(anhaenge: MailAnhang[] | undefined) {
   if (!anhaenge?.length) return undefined;
   return anhaenge.map((anhang) => ({
     filename: sichererDateiname(anhang.dateiname),
-    content: Buffer.from(anhang.inhalt, 'utf8').toString('base64'),
+    content: (typeof anhang.inhalt === 'string' ? Buffer.from(anhang.inhalt, 'utf8') : Buffer.from(anhang.inhalt)).toString('base64'),
     ...(anhang.typ ? { content_type: anhang.typ.replace(/[\r\n]/g, '') } : {}),
   }));
 }

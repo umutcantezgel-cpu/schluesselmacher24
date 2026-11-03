@@ -12,3 +12,4 @@
 - Maße (fontkit): Einheiten 1000, Oberlänge 1025, Unterlänge 275, mittlere Breite 533 (Sans) und 600 (Mono); gleich wie die statischen Schnitte, auf die der Ersatz in `globals.css` abgestimmt ist.
 - Eingebunden in `schriften.ts` über `next/font/local`; das Vorschaubild (`src/lib/og/bereichsbild.tsx`) liest weiter die WOFF-Dateien aus `@fontsource/ibm-plex-sans`, weil Satori kein WOFF2 liest.
 - Typische Seite: 45,7 KB Plex Sans plus bis 45,2 KB Mono, also unter dem Budget von 250 KB.
+- `pdf/ibm-plex-mono-latin-400.woff` (13,1 KB, aus `@fontsource/ibm-plex-mono@5.3.0`): nur für die PDF-Blätter (`src/lib/pdf/schriften.ts`); fontkit liest die WOFF2-Fassung nicht sauber (A-015).

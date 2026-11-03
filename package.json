@@ -43,6 +43,7 @@
     "graphql": "^16.14.2",
     "next": "^16.4.3",
     "payload": "^3.90.2",
+    "pdfkit": "0.20.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-hook-form": "^7.77.0",
@@ -54,6 +55,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/pdfkit": "0.17.7",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitest/coverage-v8": "^2.1.0",

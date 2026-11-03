@@ -63,8 +63,23 @@ const nextConfig: NextConfig = {
      */
     inlineCss: true,
   },
+  /*
+   * pdfkit liest seine Schriftmaße zur Laufzeit aus eigenen Dateien und bleibt deshalb ungebündelt
+   * (A-004, E3-OPUS-04). Die Schriften der Vorgangsblätter liest src/lib/pdf/schriften.ts zur
+   * Laufzeit; sie müssen in jeder Funktion liegen, die ein Blatt erzeugt (Admin-Abruf, Betriebsmail
+   * aus den Anfragewegen), daher für alle Routen.
+   */
+  serverExternalPackages: ['pdfkit'],
   outputFileTracingIncludes: {
     '/*': ['./content/**/*'],
+    '/**': [
+      './src/fonts/pdf/*.woff',
+      './node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff',
+      './node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff',
+      './node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-ext-400-normal.woff',
+      './node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-ext-600-normal.woff',
+      './node_modules/pdfkit/js/data/*.afm',
+    ],
   },
   turbopack: {
     root: path.resolve(dirname),
